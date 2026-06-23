@@ -1,0 +1,42 @@
+{
+  "name": "code",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "agent:verify": "tsx scripts/agent-verify.ts",
+    "agent:demo": "tsx scripts/agent-demo-check.ts",
+    "sync:legislators": "tsx scripts/sync-legislators.ts",
+    "sync:fec": "tsx scripts/sync-fec-finance.ts",
+    "sync:votes": "tsx scripts/sync-congress-votes.ts",
+    "sync:stock-trades": "tsx scripts/sync-stock-trades.ts",
+    "verify:office": "tsx scripts/verify-office-resolution.ts"
+  },
+  "dependencies": {
+    "@types/d3": "^7.4.3",
+    "d3": "^7.9.0",
+    "framer-motion": "^12.40.0",
+    "lucide-react": "^1.21.0",
+    "next": "16.2.9",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-simple-maps": "^3.0.0",
+    "recharts": "^3.8.1"
+  },
+  "devDependencies": {
+    "@cursor/sdk": "^1.0.19",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.9",
+    "pdf-parse": "^1.1.1",
+    "tailwindcss": "^4",
+    "tsx": "^4.22.4",
+    "typescript": "^5"
+  }
+}

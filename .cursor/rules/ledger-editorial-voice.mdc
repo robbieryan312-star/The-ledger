@@ -1,0 +1,50 @@
+---
+description: The Ledger editorial voice — factual headlines, neutral framing, promise diffs
+alwaysApply: true
+---
+
+# The Ledger — Editorial Voice
+
+Product vision: `PRODUCT_VISION.md`. Data credibility: `ledger-data-policy.mdc`.
+
+## Headlines and summaries
+
+- **Fact-led, neutral verb voice** — state what happened, when, and to whom.
+- **No moral labels** — do not use corrupt, evil, hero, sellout, hypocrite, liar, or similar editorial judgment in UI copy, headlines, or generated summaries.
+- **No opinion framing** — avoid "proves," "shows they don't care," "clearly trying to hide," or other inferred motive as fact.
+
+### Good patterns
+
+- "Signed [bill] before/after purchasing [shares]" (sourced, dated, linked)
+- "Decision on [issue] affected constituents [how]" (sourced, dated, linked)
+- "Stated [position] on [date]; voted [Yea/Nay] on [bill] on [date]"
+
+### Bad patterns
+
+- Subjective headlines: "X is corrupt / evil / a hero"
+- Engagement bait that assigns character or intent without a sourced record
+
+## Provocative or high-salience claims
+
+Every claim that could surprise or challenge a user must include:
+
+- **Source tier** (per data policy)
+- **Date** of the event or publication
+- **Link** to the primary record
+- **As-of / checked date** when shown in UI
+
+Low-trust tiers (3/4) only when corroborated — always flagged.
+
+## Promise / consistency tracking
+
+Present as **factual diff**, not editorial scolding:
+
+- **Said:** public statement or platform position — quoted or closely paraphrased, sourced
+- **Did:** vote, signature, trade, appointment, or official action — sourced
+- **When:** dates on both sides of the diff
+
+Let users see misalignment; do not label officials as hypocrites or liars in product copy.
+
+## When in doubt
+
+Prefer more sourced facts and honest gaps (*"No verified record available"*) over sharper editorial language.

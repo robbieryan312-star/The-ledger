@@ -1,0 +1,47 @@
+---
+description: The Ledger data credibility and scope policy — highest priority
+alwaysApply: true
+---
+
+# The Ledger — Data Credibility (Highest Priority)
+
+## Current office
+
+- Derive current office from **authoritative feeds** (official `.gov`, official-derived datasets like `unitedstates/congress-legislators`).
+- **Never** rely on hand-typed `inOffice` flags alone.
+- **Recency-weighted resolution**: most recent authoritative record wins for current office; older records only for historical summaries (dated, sourced, topic-grouped, newest-first).
+
+## Source tiers (show in UI)
+
+| Tier | Type |
+|------|------|
+| 1 | Official `.gov` |
+| 2 | Nonpartisan `.org` / research |
+| 3 | Journalism |
+| 4 | Speculative |
+
+Low-trust (Tier 3/4) only when corroborated by multiple sources — always flagged.
+
+## Every claim, vote, and fact
+
+Include: **date**, **source tier**, **link**, **as-of / checked date**.
+
+- Do **not** fabricate facts to fill gaps — use honest placeholders: *"No verified record available"*.
+- Do **not** expand hand-written mock data for national coverage — use the real integration pipeline (sync scripts, generated JSON, `officeResolution.ts`).
+
+## Scope priority
+
+1. All federal Congress members
+2. Governors / top statewide via state `.gov` / SoS sources
+3. Rich featured profiles with real office labels
+4. Finance / votes / trades via APIs
+5. Local / small elections **last**
+
+Local profiles (e.g. Palm Beach sheriff) are **demo templates only** until a local data pipeline exists.
+
+## Reference implementation
+
+- `lib/data/DATA_INTEGRATION_PLAN.md`
+- `lib/data/officeResolution.ts`
+- `scripts/sync-legislators.ts`
+- `scripts/verify-office-resolution.ts`

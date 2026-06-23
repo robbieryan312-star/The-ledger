@@ -1,0 +1,24 @@
+---
+description: The Ledger build workflow, verification, and agent decision authority
+alwaysApply: true
+---
+
+# The Ledger — Build Workflow
+
+## Integration before polish
+
+Finish integration passes before demo polish unless the user explicitly asks to demo.
+
+## Data change discipline
+
+- Do **not** launch parallel agents editing the same data files (causes regressions).
+- After data changes, run:
+  - `npm run sync:legislators`
+  - `npm run verify:office`
+- Build must pass: `npm run build`
+- User runs `npm run dev` in their own terminal for demos — agent-started dev servers get reaped.
+
+## Decision authority
+
+- Make routine implementation decisions without asking.
+- Pause for user input only on: **scope changes**, **credibility tradeoffs**, or **major UX direction changes**.

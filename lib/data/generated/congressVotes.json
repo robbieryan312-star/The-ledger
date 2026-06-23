@@ -1,0 +1,3540 @@
+{
+  "meta": {
+    "source": {
+      "name": "Congress.gov",
+      "url": "https://www.congress.gov",
+      "tier": "official",
+      "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
+    },
+    "asOf": "2026-06-23",
+    "featuredQueried": 17,
+    "withVoteData": 16,
+    "keyConfigured": true,
+    "houseMembersQueried": 9,
+    "senateMembersQueried": 7,
+    "senateMembersSkipped": 0,
+    "note": "House roll-call votes from Congress.gov API v3 when CONGRESS_API_KEY is set. Senate roll-call votes from official senate.gov LIS XML (no key). Governors and profiles without bioguideId show honest missing-data labels."
+  },
+  "byPoliticianId": {
+    "bernie-sanders": {
+      "politicianId": "bernie-sanders",
+      "bioguideId": "S000033",
+      "chamber": "senate",
+      "votes": [
+        {
+          "id": "bernie-sanders-s119-2-182",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+          "billDescription": "On the Motion (Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)) — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-22",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00182.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-22"
+          }
+        },
+        {
+          "id": "bernie-sanders-s119-2-181",
+          "billId": "PN730-33",
+          "billTitle": "Confirmation: George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development",
+          "billDescription": "On the Nomination PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-18",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00181.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-18"
+          }
+        },
+        {
+          "id": "bernie-sanders-s119-2-180",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Invoke Cloture: Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+          "billDescription": "On the Cloture Motion H.R. 6644 — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-18",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00180.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-18"
+          }
+        },
+        {
+          "id": "bernie-sanders-s119-2-179",
+          "billId": "S.Res. 616",
+          "billTitle": "Motion to Discharge: S.Res. 616 from the Committee on Foreign Relations",
+          "billDescription": "On the Motion to Discharge S.Res. 616 — A resolution requesting information on Honduras's human rights practices pursuant to section 502B(c) of the Foreign Assistance Act of 1961.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00179.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "bernie-sanders-s119-2-178",
+          "billId": "PN730-33",
+          "billTitle": "Motion to Invoke Cloture: George Holding to be United States Director of the European Bank for Reconstruction and Development",
+          "billDescription": "On the Cloture Motion PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00178.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "bernie-sanders-s119-2-177",
+          "billId": "PN901-8",
+          "billTitle": "Confirmation: Michelle Steel, of California, to be Ambassador of the United States of America to the Republic of Korea",
+          "billDescription": "On the Nomination PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00177.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "bernie-sanders-s119-2-176",
+          "billId": "PN901-8",
+          "billTitle": "Motion to Invoke Cloture: Michelle Steel to be Ambassador of the United States of America to the Republic of Korea",
+          "billDescription": "On the Cloture Motion PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00176.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "bernie-sanders-s119-2-175",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Proceed to House Message to Accompany H.R. 6644",
+          "billDescription": "On the Motion to Proceed H.R. 6644 — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00175.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "bernie-sanders-s119-2-174",
+          "billId": "S.J.Res. 172",
+          "billTitle": "Motion to Discharge S.J.Res. 172",
+          "billDescription": "On the Motion to Discharge S.J.Res. 172 — A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Not Voting",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00174.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "bernie-sanders-s119-2-173",
+          "billId": "S.J.Res. 190",
+          "billTitle": "Motion to Proceed to S.J.Res. 190",
+          "billDescription": "On the Motion to Proceed S.J.Res. 190 — A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Executive Office for Immigration Review relating to \"Appellate Procedures for the Board of Immigration Appeals\".. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Not Voting",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00173.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "bernie-sanders-s119-2-172",
+          "billId": "PN851-7",
+          "billTitle": "Confirmation: Justin D. Smith, of Missouri, to be U.S. Circuit Judge for the Eighth Circuit",
+          "billDescription": "On the Nomination PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-15",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00172.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-15"
+          }
+        },
+        {
+          "id": "bernie-sanders-s119-2-171",
+          "billId": "PN851-7",
+          "billTitle": "Motion to Invoke Cloture: Justin D. Smith to be U.S. Circuit Judge for the Eighth Circuit",
+          "billDescription": "On the Cloture Motion PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00171.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-11"
+          }
+        }
+      ],
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/votes_new.htm",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)"
+      },
+      "asOf": "2026-06-23",
+      "congressGovUrl": "https://www.senate.gov/legislative/votes_new.htm",
+      "note": "12 recent Senate roll-call positions from official senate.gov LIS XML (119th Congress)."
+    },
+    "mitch-mcconnell": {
+      "politicianId": "mitch-mcconnell",
+      "bioguideId": "M000355",
+      "chamber": "senate",
+      "votes": [
+        {
+          "id": "mitch-mcconnell-s119-2-182",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+          "billDescription": "On the Motion (Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)) — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-22",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00182.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-22"
+          }
+        },
+        {
+          "id": "mitch-mcconnell-s119-2-181",
+          "billId": "PN730-33",
+          "billTitle": "Confirmation: George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development",
+          "billDescription": "On the Nomination PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-18",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00181.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-18"
+          }
+        },
+        {
+          "id": "mitch-mcconnell-s119-2-180",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Invoke Cloture: Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+          "billDescription": "On the Cloture Motion H.R. 6644 — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-18",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00180.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-18"
+          }
+        },
+        {
+          "id": "mitch-mcconnell-s119-2-179",
+          "billId": "S.Res. 616",
+          "billTitle": "Motion to Discharge: S.Res. 616 from the Committee on Foreign Relations",
+          "billDescription": "On the Motion to Discharge S.Res. 616 — A resolution requesting information on Honduras's human rights practices pursuant to section 502B(c) of the Foreign Assistance Act of 1961.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Not Voting",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00179.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "mitch-mcconnell-s119-2-178",
+          "billId": "PN730-33",
+          "billTitle": "Motion to Invoke Cloture: George Holding to be United States Director of the European Bank for Reconstruction and Development",
+          "billDescription": "On the Cloture Motion PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00178.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "mitch-mcconnell-s119-2-177",
+          "billId": "PN901-8",
+          "billTitle": "Confirmation: Michelle Steel, of California, to be Ambassador of the United States of America to the Republic of Korea",
+          "billDescription": "On the Nomination PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00177.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "mitch-mcconnell-s119-2-176",
+          "billId": "PN901-8",
+          "billTitle": "Motion to Invoke Cloture: Michelle Steel to be Ambassador of the United States of America to the Republic of Korea",
+          "billDescription": "On the Cloture Motion PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00176.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "mitch-mcconnell-s119-2-175",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Proceed to House Message to Accompany H.R. 6644",
+          "billDescription": "On the Motion to Proceed H.R. 6644 — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00175.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "mitch-mcconnell-s119-2-174",
+          "billId": "S.J.Res. 172",
+          "billTitle": "Motion to Discharge S.J.Res. 172",
+          "billDescription": "On the Motion to Discharge S.J.Res. 172 — A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Not Voting",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00174.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "mitch-mcconnell-s119-2-173",
+          "billId": "S.J.Res. 190",
+          "billTitle": "Motion to Proceed to S.J.Res. 190",
+          "billDescription": "On the Motion to Proceed S.J.Res. 190 — A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Executive Office for Immigration Review relating to \"Appellate Procedures for the Board of Immigration Appeals\".. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Not Voting",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00173.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "mitch-mcconnell-s119-2-172",
+          "billId": "PN851-7",
+          "billTitle": "Confirmation: Justin D. Smith, of Missouri, to be U.S. Circuit Judge for the Eighth Circuit",
+          "billDescription": "On the Nomination PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-15",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00172.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-15"
+          }
+        },
+        {
+          "id": "mitch-mcconnell-s119-2-171",
+          "billId": "PN851-7",
+          "billTitle": "Motion to Invoke Cloture: Justin D. Smith to be U.S. Circuit Judge for the Eighth Circuit",
+          "billDescription": "On the Cloture Motion PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00171.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-11"
+          }
+        }
+      ],
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/votes_new.htm",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)"
+      },
+      "asOf": "2026-06-23",
+      "congressGovUrl": "https://www.senate.gov/legislative/votes_new.htm",
+      "note": "12 recent Senate roll-call positions from official senate.gov LIS XML (119th Congress)."
+    },
+    "sen-moody": {
+      "politicianId": "sen-moody",
+      "bioguideId": "M001244",
+      "chamber": "senate",
+      "votes": [
+        {
+          "id": "sen-moody-s119-2-182",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+          "billDescription": "On the Motion (Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)) — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-22",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00182.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-22"
+          }
+        },
+        {
+          "id": "sen-moody-s119-2-181",
+          "billId": "PN730-33",
+          "billTitle": "Confirmation: George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development",
+          "billDescription": "On the Nomination PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-18",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00181.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-18"
+          }
+        },
+        {
+          "id": "sen-moody-s119-2-180",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Invoke Cloture: Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+          "billDescription": "On the Cloture Motion H.R. 6644 — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-18",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00180.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-18"
+          }
+        },
+        {
+          "id": "sen-moody-s119-2-179",
+          "billId": "S.Res. 616",
+          "billTitle": "Motion to Discharge: S.Res. 616 from the Committee on Foreign Relations",
+          "billDescription": "On the Motion to Discharge S.Res. 616 — A resolution requesting information on Honduras's human rights practices pursuant to section 502B(c) of the Foreign Assistance Act of 1961.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00179.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-moody-s119-2-178",
+          "billId": "PN730-33",
+          "billTitle": "Motion to Invoke Cloture: George Holding to be United States Director of the European Bank for Reconstruction and Development",
+          "billDescription": "On the Cloture Motion PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00178.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-moody-s119-2-177",
+          "billId": "PN901-8",
+          "billTitle": "Confirmation: Michelle Steel, of California, to be Ambassador of the United States of America to the Republic of Korea",
+          "billDescription": "On the Nomination PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00177.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-moody-s119-2-176",
+          "billId": "PN901-8",
+          "billTitle": "Motion to Invoke Cloture: Michelle Steel to be Ambassador of the United States of America to the Republic of Korea",
+          "billDescription": "On the Cloture Motion PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00176.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-moody-s119-2-175",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Proceed to House Message to Accompany H.R. 6644",
+          "billDescription": "On the Motion to Proceed H.R. 6644 — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00175.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "sen-moody-s119-2-174",
+          "billId": "S.J.Res. 172",
+          "billTitle": "Motion to Discharge S.J.Res. 172",
+          "billDescription": "On the Motion to Discharge S.J.Res. 172 — A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00174.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "sen-moody-s119-2-173",
+          "billId": "S.J.Res. 190",
+          "billTitle": "Motion to Proceed to S.J.Res. 190",
+          "billDescription": "On the Motion to Proceed S.J.Res. 190 — A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Executive Office for Immigration Review relating to \"Appellate Procedures for the Board of Immigration Appeals\".. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00173.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "sen-moody-s119-2-172",
+          "billId": "PN851-7",
+          "billTitle": "Confirmation: Justin D. Smith, of Missouri, to be U.S. Circuit Judge for the Eighth Circuit",
+          "billDescription": "On the Nomination PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-15",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00172.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-15"
+          }
+        },
+        {
+          "id": "sen-moody-s119-2-171",
+          "billId": "PN851-7",
+          "billTitle": "Motion to Invoke Cloture: Justin D. Smith to be U.S. Circuit Judge for the Eighth Circuit",
+          "billDescription": "On the Cloture Motion PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00171.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-11"
+          }
+        }
+      ],
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/votes_new.htm",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)"
+      },
+      "asOf": "2026-06-23",
+      "congressGovUrl": "https://www.senate.gov/legislative/votes_new.htm",
+      "note": "12 recent Senate roll-call positions from official senate.gov LIS XML (119th Congress)."
+    },
+    "sen-scott": {
+      "politicianId": "sen-scott",
+      "bioguideId": "S001217",
+      "chamber": "senate",
+      "votes": [
+        {
+          "id": "sen-scott-s119-2-182",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+          "billDescription": "On the Motion (Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)) — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-22",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00182.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-22"
+          }
+        },
+        {
+          "id": "sen-scott-s119-2-181",
+          "billId": "PN730-33",
+          "billTitle": "Confirmation: George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development",
+          "billDescription": "On the Nomination PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-18",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00181.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-18"
+          }
+        },
+        {
+          "id": "sen-scott-s119-2-180",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Invoke Cloture: Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+          "billDescription": "On the Cloture Motion H.R. 6644 — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-18",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00180.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-18"
+          }
+        },
+        {
+          "id": "sen-scott-s119-2-179",
+          "billId": "S.Res. 616",
+          "billTitle": "Motion to Discharge: S.Res. 616 from the Committee on Foreign Relations",
+          "billDescription": "On the Motion to Discharge S.Res. 616 — A resolution requesting information on Honduras's human rights practices pursuant to section 502B(c) of the Foreign Assistance Act of 1961.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00179.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-scott-s119-2-178",
+          "billId": "PN730-33",
+          "billTitle": "Motion to Invoke Cloture: George Holding to be United States Director of the European Bank for Reconstruction and Development",
+          "billDescription": "On the Cloture Motion PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00178.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-scott-s119-2-177",
+          "billId": "PN901-8",
+          "billTitle": "Confirmation: Michelle Steel, of California, to be Ambassador of the United States of America to the Republic of Korea",
+          "billDescription": "On the Nomination PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00177.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-scott-s119-2-176",
+          "billId": "PN901-8",
+          "billTitle": "Motion to Invoke Cloture: Michelle Steel to be Ambassador of the United States of America to the Republic of Korea",
+          "billDescription": "On the Cloture Motion PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00176.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-scott-s119-2-175",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Proceed to House Message to Accompany H.R. 6644",
+          "billDescription": "On the Motion to Proceed H.R. 6644 — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00175.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "sen-scott-s119-2-174",
+          "billId": "S.J.Res. 172",
+          "billTitle": "Motion to Discharge S.J.Res. 172",
+          "billDescription": "On the Motion to Discharge S.J.Res. 172 — A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00174.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "sen-scott-s119-2-173",
+          "billId": "S.J.Res. 190",
+          "billTitle": "Motion to Proceed to S.J.Res. 190",
+          "billDescription": "On the Motion to Proceed S.J.Res. 190 — A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Executive Office for Immigration Review relating to \"Appellate Procedures for the Board of Immigration Appeals\".. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00173.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "sen-scott-s119-2-172",
+          "billId": "PN851-7",
+          "billTitle": "Confirmation: Justin D. Smith, of Missouri, to be U.S. Circuit Judge for the Eighth Circuit",
+          "billDescription": "On the Nomination PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-15",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00172.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-15"
+          }
+        },
+        {
+          "id": "sen-scott-s119-2-171",
+          "billId": "PN851-7",
+          "billTitle": "Motion to Invoke Cloture: Justin D. Smith to be U.S. Circuit Judge for the Eighth Circuit",
+          "billDescription": "On the Cloture Motion PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00171.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-11"
+          }
+        }
+      ],
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/votes_new.htm",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)"
+      },
+      "asOf": "2026-06-23",
+      "congressGovUrl": "https://www.senate.gov/legislative/votes_new.htm",
+      "note": "12 recent Senate roll-call positions from official senate.gov LIS XML (119th Congress)."
+    },
+    "sen-paul": {
+      "politicianId": "sen-paul",
+      "bioguideId": "P000603",
+      "chamber": "senate",
+      "votes": [
+        {
+          "id": "sen-paul-s119-2-182",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+          "billDescription": "On the Motion (Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)) — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-22",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00182.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-22"
+          }
+        },
+        {
+          "id": "sen-paul-s119-2-181",
+          "billId": "PN730-33",
+          "billTitle": "Confirmation: George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development",
+          "billDescription": "On the Nomination PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-18",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00181.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-18"
+          }
+        },
+        {
+          "id": "sen-paul-s119-2-180",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Invoke Cloture: Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+          "billDescription": "On the Cloture Motion H.R. 6644 — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-18",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00180.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-18"
+          }
+        },
+        {
+          "id": "sen-paul-s119-2-179",
+          "billId": "S.Res. 616",
+          "billTitle": "Motion to Discharge: S.Res. 616 from the Committee on Foreign Relations",
+          "billDescription": "On the Motion to Discharge S.Res. 616 — A resolution requesting information on Honduras's human rights practices pursuant to section 502B(c) of the Foreign Assistance Act of 1961.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00179.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-paul-s119-2-178",
+          "billId": "PN730-33",
+          "billTitle": "Motion to Invoke Cloture: George Holding to be United States Director of the European Bank for Reconstruction and Development",
+          "billDescription": "On the Cloture Motion PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00178.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-paul-s119-2-177",
+          "billId": "PN901-8",
+          "billTitle": "Confirmation: Michelle Steel, of California, to be Ambassador of the United States of America to the Republic of Korea",
+          "billDescription": "On the Nomination PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00177.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-paul-s119-2-176",
+          "billId": "PN901-8",
+          "billTitle": "Motion to Invoke Cloture: Michelle Steel to be Ambassador of the United States of America to the Republic of Korea",
+          "billDescription": "On the Cloture Motion PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00176.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-paul-s119-2-175",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Proceed to House Message to Accompany H.R. 6644",
+          "billDescription": "On the Motion to Proceed H.R. 6644 — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00175.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "sen-paul-s119-2-174",
+          "billId": "S.J.Res. 172",
+          "billTitle": "Motion to Discharge S.J.Res. 172",
+          "billDescription": "On the Motion to Discharge S.J.Res. 172 — A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00174.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "sen-paul-s119-2-173",
+          "billId": "S.J.Res. 190",
+          "billTitle": "Motion to Proceed to S.J.Res. 190",
+          "billDescription": "On the Motion to Proceed S.J.Res. 190 — A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Executive Office for Immigration Review relating to \"Appellate Procedures for the Board of Immigration Appeals\".. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00173.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "sen-paul-s119-2-172",
+          "billId": "PN851-7",
+          "billTitle": "Confirmation: Justin D. Smith, of Missouri, to be U.S. Circuit Judge for the Eighth Circuit",
+          "billDescription": "On the Nomination PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-15",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00172.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-15"
+          }
+        },
+        {
+          "id": "sen-paul-s119-2-171",
+          "billId": "PN851-7",
+          "billTitle": "Motion to Invoke Cloture: Justin D. Smith to be U.S. Circuit Judge for the Eighth Circuit",
+          "billDescription": "On the Cloture Motion PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00171.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-11"
+          }
+        }
+      ],
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/votes_new.htm",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)"
+      },
+      "asOf": "2026-06-23",
+      "congressGovUrl": "https://www.senate.gov/legislative/votes_new.htm",
+      "note": "12 recent Senate roll-call positions from official senate.gov LIS XML (119th Congress)."
+    },
+    "sen-schumer": {
+      "politicianId": "sen-schumer",
+      "bioguideId": "S000148",
+      "chamber": "senate",
+      "votes": [
+        {
+          "id": "sen-schumer-s119-2-182",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+          "billDescription": "On the Motion (Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)) — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-22",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00182.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-22"
+          }
+        },
+        {
+          "id": "sen-schumer-s119-2-181",
+          "billId": "PN730-33",
+          "billTitle": "Confirmation: George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development",
+          "billDescription": "On the Nomination PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-18",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00181.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-18"
+          }
+        },
+        {
+          "id": "sen-schumer-s119-2-180",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Invoke Cloture: Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+          "billDescription": "On the Cloture Motion H.R. 6644 — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-18",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00180.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-18"
+          }
+        },
+        {
+          "id": "sen-schumer-s119-2-179",
+          "billId": "S.Res. 616",
+          "billTitle": "Motion to Discharge: S.Res. 616 from the Committee on Foreign Relations",
+          "billDescription": "On the Motion to Discharge S.Res. 616 — A resolution requesting information on Honduras's human rights practices pursuant to section 502B(c) of the Foreign Assistance Act of 1961.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00179.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-schumer-s119-2-178",
+          "billId": "PN730-33",
+          "billTitle": "Motion to Invoke Cloture: George Holding to be United States Director of the European Bank for Reconstruction and Development",
+          "billDescription": "On the Cloture Motion PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00178.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-schumer-s119-2-177",
+          "billId": "PN901-8",
+          "billTitle": "Confirmation: Michelle Steel, of California, to be Ambassador of the United States of America to the Republic of Korea",
+          "billDescription": "On the Nomination PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00177.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-schumer-s119-2-176",
+          "billId": "PN901-8",
+          "billTitle": "Motion to Invoke Cloture: Michelle Steel to be Ambassador of the United States of America to the Republic of Korea",
+          "billDescription": "On the Cloture Motion PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00176.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-schumer-s119-2-175",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Proceed to House Message to Accompany H.R. 6644",
+          "billDescription": "On the Motion to Proceed H.R. 6644 — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00175.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "sen-schumer-s119-2-174",
+          "billId": "S.J.Res. 172",
+          "billTitle": "Motion to Discharge S.J.Res. 172",
+          "billDescription": "On the Motion to Discharge S.J.Res. 172 — A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00174.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "sen-schumer-s119-2-173",
+          "billId": "S.J.Res. 190",
+          "billTitle": "Motion to Proceed to S.J.Res. 190",
+          "billDescription": "On the Motion to Proceed S.J.Res. 190 — A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Executive Office for Immigration Review relating to \"Appellate Procedures for the Board of Immigration Appeals\".. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00173.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "sen-schumer-s119-2-172",
+          "billId": "PN851-7",
+          "billTitle": "Confirmation: Justin D. Smith, of Missouri, to be U.S. Circuit Judge for the Eighth Circuit",
+          "billDescription": "On the Nomination PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-15",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00172.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-15"
+          }
+        },
+        {
+          "id": "sen-schumer-s119-2-171",
+          "billId": "PN851-7",
+          "billTitle": "Motion to Invoke Cloture: Justin D. Smith to be U.S. Circuit Judge for the Eighth Circuit",
+          "billDescription": "On the Cloture Motion PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00171.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-11"
+          }
+        }
+      ],
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/votes_new.htm",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)"
+      },
+      "asOf": "2026-06-23",
+      "congressGovUrl": "https://www.senate.gov/legislative/votes_new.htm",
+      "note": "12 recent Senate roll-call positions from official senate.gov LIS XML (119th Congress)."
+    },
+    "sen-gillibrand": {
+      "politicianId": "sen-gillibrand",
+      "bioguideId": "G000555",
+      "chamber": "senate",
+      "votes": [
+        {
+          "id": "sen-gillibrand-s119-2-182",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+          "billDescription": "On the Motion (Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)) — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-22",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00182.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-22"
+          }
+        },
+        {
+          "id": "sen-gillibrand-s119-2-181",
+          "billId": "PN730-33",
+          "billTitle": "Confirmation: George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development",
+          "billDescription": "On the Nomination PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-18",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00181.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-18"
+          }
+        },
+        {
+          "id": "sen-gillibrand-s119-2-180",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Invoke Cloture: Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+          "billDescription": "On the Cloture Motion H.R. 6644 — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-18",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00180.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-18"
+          }
+        },
+        {
+          "id": "sen-gillibrand-s119-2-179",
+          "billId": "S.Res. 616",
+          "billTitle": "Motion to Discharge: S.Res. 616 from the Committee on Foreign Relations",
+          "billDescription": "On the Motion to Discharge S.Res. 616 — A resolution requesting information on Honduras's human rights practices pursuant to section 502B(c) of the Foreign Assistance Act of 1961.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00179.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-gillibrand-s119-2-178",
+          "billId": "PN730-33",
+          "billTitle": "Motion to Invoke Cloture: George Holding to be United States Director of the European Bank for Reconstruction and Development",
+          "billDescription": "On the Cloture Motion PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00178.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-gillibrand-s119-2-177",
+          "billId": "PN901-8",
+          "billTitle": "Confirmation: Michelle Steel, of California, to be Ambassador of the United States of America to the Republic of Korea",
+          "billDescription": "On the Nomination PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00177.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-gillibrand-s119-2-176",
+          "billId": "PN901-8",
+          "billTitle": "Motion to Invoke Cloture: Michelle Steel to be Ambassador of the United States of America to the Republic of Korea",
+          "billDescription": "On the Cloture Motion PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-17",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00176.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-17"
+          }
+        },
+        {
+          "id": "sen-gillibrand-s119-2-175",
+          "billId": "H.R. 6644",
+          "billTitle": "Motion to Proceed to House Message to Accompany H.R. 6644",
+          "billDescription": "On the Motion to Proceed H.R. 6644 — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00175.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "sen-gillibrand-s119-2-174",
+          "billId": "S.J.Res. 172",
+          "billTitle": "Motion to Discharge S.J.Res. 172",
+          "billDescription": "On the Motion to Discharge S.J.Res. 172 — A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00174.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "sen-gillibrand-s119-2-173",
+          "billId": "S.J.Res. 190",
+          "billTitle": "Motion to Proceed to S.J.Res. 190",
+          "billDescription": "On the Motion to Proceed S.J.Res. 190 — A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Executive Office for Immigration Review relating to \"Appellate Procedures for the Board of Immigration Appeals\".. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-16",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00173.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-16"
+          }
+        },
+        {
+          "id": "sen-gillibrand-s119-2-172",
+          "billId": "PN851-7",
+          "billTitle": "Confirmation: Justin D. Smith, of Missouri, to be U.S. Circuit Judge for the Eighth Circuit",
+          "billDescription": "On the Nomination PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-15",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00172.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-15"
+          }
+        },
+        {
+          "id": "sen-gillibrand-s119-2-171",
+          "billId": "PN851-7",
+          "billTitle": "Motion to Invoke Cloture: Justin D. Smith to be U.S. Circuit Judge for the Eighth Circuit",
+          "billDescription": "On the Cloture Motion PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00171.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-11"
+          }
+        }
+      ],
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/votes_new.htm",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)"
+      },
+      "asOf": "2026-06-23",
+      "congressGovUrl": "https://www.senate.gov/legislative/votes_new.htm",
+      "note": "12 recent Senate roll-call positions from official senate.gov LIS XML (119th Congress)."
+    },
+    "alexandria-ocasio-cortez": {
+      "politicianId": "alexandria-ocasio-cortez",
+      "bioguideId": "O000172",
+      "chamber": "house",
+      "votes": [
+        {
+          "id": "alexandria-ocasio-cortez-119-2-222",
+          "billId": "H.Res.1335",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1335. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/222",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "alexandria-ocasio-cortez-119-2-221",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/221",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "alexandria-ocasio-cortez-119-2-220",
+          "billId": "H.R.8464",
+          "billTitle": "H.R.8464",
+          "billDescription": "On Passage — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/220",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "alexandria-ocasio-cortez-119-2-219",
+          "billId": "H.R.8464",
+          "billTitle": "On Motion to Recommit",
+          "billDescription": "On Motion to Recommit — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/219",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "alexandria-ocasio-cortez-119-2-218",
+          "billId": "H.R.8312",
+          "billTitle": "H.R.8312",
+          "billDescription": "On Passage — H.R.8312. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/218",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "alexandria-ocasio-cortez-119-2-217",
+          "billId": "H.R.7892",
+          "billTitle": "H.R.7892",
+          "billDescription": "On Passage — H.R.7892. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/217",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "alexandria-ocasio-cortez-119-2-216",
+          "billId": "H.R.5408",
+          "billTitle": "H.R.5408",
+          "billDescription": "On Passage — H.R.5408. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/216",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "alexandria-ocasio-cortez-119-2-215",
+          "billId": "H.Res.1140",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/215",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "alexandria-ocasio-cortez-119-2-214",
+          "billId": "S.2",
+          "billTitle": "S.2",
+          "billDescription": "On Passage — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/214",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "alexandria-ocasio-cortez-119-2-213",
+          "billId": "S.2",
+          "billTitle": "On Motion to Commit",
+          "billDescription": "On Motion to Commit — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/213",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "alexandria-ocasio-cortez-119-2-212",
+          "billId": "H.Res.1140",
+          "billTitle": "On Motion to Discharge",
+          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "alexandria-ocasio-cortez-119-2-211",
+          "billId": "H.Res.1345",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        }
+      ],
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
+      },
+      "asOf": "2026-06-23",
+      "congressGovUrl": "https://www.congress.gov",
+      "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
+    },
+    "rep-bean": {
+      "politicianId": "rep-bean",
+      "bioguideId": "B001314",
+      "chamber": "house",
+      "votes": [
+        {
+          "id": "rep-bean-119-2-222",
+          "billId": "H.Res.1335",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1335. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/222",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "rep-bean-119-2-221",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/221",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "rep-bean-119-2-220",
+          "billId": "H.R.8464",
+          "billTitle": "H.R.8464",
+          "billDescription": "On Passage — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/220",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-bean-119-2-219",
+          "billId": "H.R.8464",
+          "billTitle": "On Motion to Recommit",
+          "billDescription": "On Motion to Recommit — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/219",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-bean-119-2-218",
+          "billId": "H.R.8312",
+          "billTitle": "H.R.8312",
+          "billDescription": "On Passage — H.R.8312. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/218",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-bean-119-2-217",
+          "billId": "H.R.7892",
+          "billTitle": "H.R.7892",
+          "billDescription": "On Passage — H.R.7892. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/217",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-bean-119-2-216",
+          "billId": "H.R.5408",
+          "billTitle": "H.R.5408",
+          "billDescription": "On Passage — H.R.5408. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/216",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-bean-119-2-215",
+          "billId": "H.Res.1140",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/215",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-bean-119-2-214",
+          "billId": "S.2",
+          "billTitle": "S.2",
+          "billDescription": "On Passage — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/214",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-bean-119-2-213",
+          "billId": "S.2",
+          "billTitle": "On Motion to Commit",
+          "billDescription": "On Motion to Commit — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/213",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-bean-119-2-212",
+          "billId": "H.Res.1140",
+          "billTitle": "On Motion to Discharge",
+          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-bean-119-2-211",
+          "billId": "H.Res.1345",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        }
+      ],
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
+      },
+      "asOf": "2026-06-23",
+      "congressGovUrl": "https://www.congress.gov",
+      "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
+    },
+    "rep-moskowitz": {
+      "politicianId": "rep-moskowitz",
+      "bioguideId": "M001217",
+      "chamber": "house",
+      "votes": [
+        {
+          "id": "rep-moskowitz-119-2-222",
+          "billId": "H.Res.1335",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1335. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/222",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "rep-moskowitz-119-2-221",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/221",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "rep-moskowitz-119-2-220",
+          "billId": "H.R.8464",
+          "billTitle": "H.R.8464",
+          "billDescription": "On Passage — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/220",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-moskowitz-119-2-219",
+          "billId": "H.R.8464",
+          "billTitle": "On Motion to Recommit",
+          "billDescription": "On Motion to Recommit — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/219",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-moskowitz-119-2-218",
+          "billId": "H.R.8312",
+          "billTitle": "H.R.8312",
+          "billDescription": "On Passage — H.R.8312. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/218",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-moskowitz-119-2-217",
+          "billId": "H.R.7892",
+          "billTitle": "H.R.7892",
+          "billDescription": "On Passage — H.R.7892. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/217",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-moskowitz-119-2-216",
+          "billId": "H.R.5408",
+          "billTitle": "H.R.5408",
+          "billDescription": "On Passage — H.R.5408. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/216",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-moskowitz-119-2-215",
+          "billId": "H.Res.1140",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/215",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-moskowitz-119-2-214",
+          "billId": "S.2",
+          "billTitle": "S.2",
+          "billDescription": "On Passage — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/214",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-moskowitz-119-2-213",
+          "billId": "S.2",
+          "billTitle": "On Motion to Commit",
+          "billDescription": "On Motion to Commit — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/213",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-moskowitz-119-2-212",
+          "billId": "H.Res.1140",
+          "billTitle": "On Motion to Discharge",
+          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-moskowitz-119-2-211",
+          "billId": "H.Res.1345",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        }
+      ],
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
+      },
+      "asOf": "2026-06-23",
+      "congressGovUrl": "https://www.congress.gov",
+      "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
+    },
+    "rep-salazar": {
+      "politicianId": "rep-salazar",
+      "bioguideId": "S000168",
+      "chamber": "house",
+      "votes": [
+        {
+          "id": "rep-salazar-119-2-222",
+          "billId": "H.Res.1335",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1335. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/222",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "rep-salazar-119-2-221",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/221",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "rep-salazar-119-2-220",
+          "billId": "H.R.8464",
+          "billTitle": "H.R.8464",
+          "billDescription": "On Passage — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/220",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-salazar-119-2-219",
+          "billId": "H.R.8464",
+          "billTitle": "On Motion to Recommit",
+          "billDescription": "On Motion to Recommit — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/219",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-salazar-119-2-218",
+          "billId": "H.R.8312",
+          "billTitle": "H.R.8312",
+          "billDescription": "On Passage — H.R.8312. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/218",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-salazar-119-2-217",
+          "billId": "H.R.7892",
+          "billTitle": "H.R.7892",
+          "billDescription": "On Passage — H.R.7892. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/217",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-salazar-119-2-216",
+          "billId": "H.R.5408",
+          "billTitle": "H.R.5408",
+          "billDescription": "On Passage — H.R.5408. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/216",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-salazar-119-2-215",
+          "billId": "H.Res.1140",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/215",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-salazar-119-2-214",
+          "billId": "S.2",
+          "billTitle": "S.2",
+          "billDescription": "On Passage — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/214",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-salazar-119-2-213",
+          "billId": "S.2",
+          "billTitle": "On Motion to Commit",
+          "billDescription": "On Motion to Commit — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/213",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-salazar-119-2-212",
+          "billId": "H.Res.1140",
+          "billTitle": "On Motion to Discharge",
+          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-salazar-119-2-211",
+          "billId": "H.Res.1345",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        }
+      ],
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
+      },
+      "asOf": "2026-06-23",
+      "congressGovUrl": "https://www.congress.gov",
+      "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
+    },
+    "rep-donalds": {
+      "politicianId": "rep-donalds",
+      "bioguideId": "D000032",
+      "chamber": "house",
+      "votes": [
+        {
+          "id": "rep-donalds-119-2-222",
+          "billId": "H.Res.1335",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1335. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/222",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "rep-donalds-119-2-221",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Not Voting",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/221",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "rep-donalds-119-2-220",
+          "billId": "H.R.8464",
+          "billTitle": "H.R.8464",
+          "billDescription": "On Passage — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/220",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-donalds-119-2-219",
+          "billId": "H.R.8464",
+          "billTitle": "On Motion to Recommit",
+          "billDescription": "On Motion to Recommit — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/219",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-donalds-119-2-218",
+          "billId": "H.R.8312",
+          "billTitle": "H.R.8312",
+          "billDescription": "On Passage — H.R.8312. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/218",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-donalds-119-2-217",
+          "billId": "H.R.7892",
+          "billTitle": "H.R.7892",
+          "billDescription": "On Passage — H.R.7892. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/217",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-donalds-119-2-216",
+          "billId": "H.R.5408",
+          "billTitle": "H.R.5408",
+          "billDescription": "On Passage — H.R.5408. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/216",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-donalds-119-2-215",
+          "billId": "H.Res.1140",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/215",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-donalds-119-2-214",
+          "billId": "S.2",
+          "billTitle": "S.2",
+          "billDescription": "On Passage — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/214",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-donalds-119-2-213",
+          "billId": "S.2",
+          "billTitle": "On Motion to Commit",
+          "billDescription": "On Motion to Commit — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/213",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-donalds-119-2-212",
+          "billId": "H.Res.1140",
+          "billTitle": "On Motion to Discharge",
+          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-donalds-119-2-211",
+          "billId": "H.Res.1345",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        }
+      ],
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
+      },
+      "asOf": "2026-06-23",
+      "congressGovUrl": "https://www.congress.gov",
+      "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
+    },
+    "rep-wilson": {
+      "politicianId": "rep-wilson",
+      "bioguideId": "W000808",
+      "chamber": "house",
+      "votes": [
+        {
+          "id": "rep-wilson-119-2-222",
+          "billId": "H.Res.1335",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1335. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/222",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "rep-wilson-119-2-221",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/221",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "rep-wilson-119-2-220",
+          "billId": "H.R.8464",
+          "billTitle": "H.R.8464",
+          "billDescription": "On Passage — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/220",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-wilson-119-2-219",
+          "billId": "H.R.8464",
+          "billTitle": "On Motion to Recommit",
+          "billDescription": "On Motion to Recommit — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/219",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-wilson-119-2-218",
+          "billId": "H.R.8312",
+          "billTitle": "H.R.8312",
+          "billDescription": "On Passage — H.R.8312. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/218",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-wilson-119-2-217",
+          "billId": "H.R.7892",
+          "billTitle": "H.R.7892",
+          "billDescription": "On Passage — H.R.7892. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/217",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-wilson-119-2-216",
+          "billId": "H.R.5408",
+          "billTitle": "H.R.5408",
+          "billDescription": "On Passage — H.R.5408. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/216",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-wilson-119-2-215",
+          "billId": "H.Res.1140",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/215",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-wilson-119-2-214",
+          "billId": "S.2",
+          "billTitle": "S.2",
+          "billDescription": "On Passage — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/214",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-wilson-119-2-213",
+          "billId": "S.2",
+          "billTitle": "On Motion to Commit",
+          "billDescription": "On Motion to Commit — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/213",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-wilson-119-2-212",
+          "billId": "H.Res.1140",
+          "billTitle": "On Motion to Discharge",
+          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-wilson-119-2-211",
+          "billId": "H.Res.1345",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        }
+      ],
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
+      },
+      "asOf": "2026-06-23",
+      "congressGovUrl": "https://www.congress.gov",
+      "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
+    },
+    "rep-mast": {
+      "politicianId": "rep-mast",
+      "bioguideId": "M001199",
+      "chamber": "house",
+      "votes": [
+        {
+          "id": "rep-mast-119-2-222",
+          "billId": "H.Res.1335",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1335. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/222",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "rep-mast-119-2-221",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/221",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "rep-mast-119-2-220",
+          "billId": "H.R.8464",
+          "billTitle": "H.R.8464",
+          "billDescription": "On Passage — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/220",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-mast-119-2-219",
+          "billId": "H.R.8464",
+          "billTitle": "On Motion to Recommit",
+          "billDescription": "On Motion to Recommit — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/219",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-mast-119-2-218",
+          "billId": "H.R.8312",
+          "billTitle": "H.R.8312",
+          "billDescription": "On Passage — H.R.8312. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/218",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-mast-119-2-217",
+          "billId": "H.R.7892",
+          "billTitle": "H.R.7892",
+          "billDescription": "On Passage — H.R.7892. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/217",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-mast-119-2-216",
+          "billId": "H.R.5408",
+          "billTitle": "H.R.5408",
+          "billDescription": "On Passage — H.R.5408. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/216",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-mast-119-2-215",
+          "billId": "H.Res.1140",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/215",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-mast-119-2-214",
+          "billId": "S.2",
+          "billTitle": "S.2",
+          "billDescription": "On Passage — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/214",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-mast-119-2-213",
+          "billId": "S.2",
+          "billTitle": "On Motion to Commit",
+          "billDescription": "On Motion to Commit — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/213",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-mast-119-2-212",
+          "billId": "H.Res.1140",
+          "billTitle": "On Motion to Discharge",
+          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-mast-119-2-211",
+          "billId": "H.Res.1345",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        }
+      ],
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
+      },
+      "asOf": "2026-06-23",
+      "congressGovUrl": "https://www.congress.gov",
+      "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
+    },
+    "rep-franklin": {
+      "politicianId": "rep-franklin",
+      "bioguideId": "F000472",
+      "chamber": "house",
+      "votes": [
+        {
+          "id": "rep-franklin-119-2-222",
+          "billId": "H.Res.1335",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1335. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/222",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "rep-franklin-119-2-221",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Yea",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/221",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "rep-franklin-119-2-220",
+          "billId": "H.R.8464",
+          "billTitle": "H.R.8464",
+          "billDescription": "On Passage — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/220",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-franklin-119-2-219",
+          "billId": "H.R.8464",
+          "billTitle": "On Motion to Recommit",
+          "billDescription": "On Motion to Recommit — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/219",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-franklin-119-2-218",
+          "billId": "H.R.8312",
+          "billTitle": "H.R.8312",
+          "billDescription": "On Passage — H.R.8312. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/218",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-franklin-119-2-217",
+          "billId": "H.R.7892",
+          "billTitle": "H.R.7892",
+          "billDescription": "On Passage — H.R.7892. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/217",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-franklin-119-2-216",
+          "billId": "H.R.5408",
+          "billTitle": "H.R.5408",
+          "billDescription": "On Passage — H.R.5408. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/216",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-franklin-119-2-215",
+          "billId": "H.Res.1140",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/215",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-franklin-119-2-214",
+          "billId": "S.2",
+          "billTitle": "S.2",
+          "billDescription": "On Passage — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/214",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-franklin-119-2-213",
+          "billId": "S.2",
+          "billTitle": "On Motion to Commit",
+          "billDescription": "On Motion to Commit — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/213",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-franklin-119-2-212",
+          "billId": "H.Res.1140",
+          "billTitle": "On Motion to Discharge",
+          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-franklin-119-2-211",
+          "billId": "H.Res.1345",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        }
+      ],
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
+      },
+      "asOf": "2026-06-23",
+      "congressGovUrl": "https://www.congress.gov",
+      "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
+    },
+    "rep-massie": {
+      "politicianId": "rep-massie",
+      "bioguideId": "M001184",
+      "chamber": "house",
+      "votes": [
+        {
+          "id": "rep-massie-119-2-222",
+          "billId": "H.Res.1335",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1335. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/222",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "rep-massie-119-2-221",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-11",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/221",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-11"
+          }
+        },
+        {
+          "id": "rep-massie-119-2-220",
+          "billId": "H.R.8464",
+          "billTitle": "H.R.8464",
+          "billDescription": "On Passage — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/220",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-massie-119-2-219",
+          "billId": "H.R.8464",
+          "billTitle": "On Motion to Recommit",
+          "billDescription": "On Motion to Recommit — H.R.8464. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/219",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-massie-119-2-218",
+          "billId": "H.R.8312",
+          "billTitle": "H.R.8312",
+          "billDescription": "On Passage — H.R.8312. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/218",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-massie-119-2-217",
+          "billId": "H.R.7892",
+          "billTitle": "H.R.7892",
+          "billDescription": "On Passage — H.R.7892. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-10",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/217",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-10"
+          }
+        },
+        {
+          "id": "rep-massie-119-2-216",
+          "billId": "H.R.5408",
+          "billTitle": "H.R.5408",
+          "billDescription": "On Passage — H.R.5408. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/216",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-massie-119-2-215",
+          "billId": "H.Res.1140",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/215",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-massie-119-2-214",
+          "billId": "S.2",
+          "billTitle": "S.2",
+          "billDescription": "On Passage — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/214",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-massie-119-2-213",
+          "billId": "S.2",
+          "billTitle": "On Motion to Commit",
+          "billDescription": "On Motion to Commit — S.2. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Failed",
+          "category": "Legislation",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/213",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-massie-119-2-212",
+          "billId": "H.Res.1140",
+          "billTitle": "On Motion to Discharge",
+          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        },
+        {
+          "id": "rep-massie-119-2-211",
+          "billId": "H.Res.1345",
+          "billTitle": "On Agreeing to the Resolution",
+          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-09",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-09"
+          }
+        }
+      ],
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
+      },
+      "asOf": "2026-06-23",
+      "congressGovUrl": "https://www.congress.gov",
+      "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
+    }
+  }
+}

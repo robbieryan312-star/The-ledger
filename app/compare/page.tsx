@@ -1,0 +1,359 @@
+'use client';
+
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { mockPoliticians } from '@/lib/data/mockPoliticians';
+import { mockElections } from '@/lib/data/mockElections';
+import { mergeCampaignFinance, getFecFinanceSnapshot } from '@/lib/data/fecFinance';
+import SourceBadge from '@/components/ui/SourceBadge';
+import { Politician } from '@/lib/types';
+import { CheckCircle, XCircle, AlertTriangle, MinusCircle, Info } from 'lucide-react';
+
+function formatMoney(n: number): string {
+  if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
+  if (n >= 1_000) return `$${(n / 1_000).toFixed(0)}K`;
+  return `$${n}`;
+}
+
+function CompareCell({ label, aVal, bVal, higherIsBetter = true, format = 'number' }: {
+  label: string;
+  aVal: number; bVal: number; higherIsBetter?: boolean; format?: 'money' | 'percent' | 'number';
+}) {
+  const aBetter = higherIsBetter ? aVal >= bVal : aVal <= bVal;
+  const fmt = (v: number) => format === 'money' ? formatMoney(v) : format === 'percent' ? `${v}%` : v.toString();
+
+  return (
+    <div className="grid grid-cols-3 gap-3 items-center py-3 border-b border-white/[0.05] last:border-0">
+      <div className={`text-sm font-bold text-right ${aBetter ? 'text-white' : 'text-white/35'}`}>
+        {fmt(aVal)}
+        {aBetter && aVal !== bVal && <span className="ml-1 text-green-400">✓</span>}
+      </div>
+      <div className="text-xs text-white/35 text-center">{label}</div>
+      <div className={`text-sm font-bold text-left ${!aBetter ? 'text-white' : 'text-white/35'}`}>
+        {!aBetter && aVal !== bVal && <span className="mr-1 text-green-400">✓</span>}
+        {fmt(bVal)}
+      </div>
+    </div>
+  );
+}
+
+const cardStyle = { background: 'rgba(11,25,41,0.7)', backdropFilter: 'blur(12px)' };
+const headerStyle = { background: 'rgba(5,9,15,0.5)' };
+
+function CompareContent() {
+  const searchParams = useSearchParams();
+  const defaultA = mockPoliticians[0]?.id || '';
+  const defaultB = mockPoliticians[1]?.id || '';
+
+  const [aPick, setAPick] = useState<string>(defaultA);
+  const [bPick, setBPick] = useState<string>(defaultB);
+  const [electionContext, setElectionContext] = useState<string | null>(null);
+
+  useEffect(() => {
+    const paramA = searchParams.get('a');
+    const paramB = searchParams.get('b');
+    const electionId = searchParams.get('election');
+
+    if (electionId) {
+      const election = mockElections.find((e) => e.id === electionId);
+      if (election) {
+        setElectionContext(election.title);
+
+        const resolvePolitician = (candidateId: string) => {
+          const candidate = election.candidates.find((c) => c.id === candidateId);
+          if (!candidate) return null;
+          if (candidate.incumbentId) {
+            return mockPoliticians.find((p) => p.id === candidate.incumbentId) ?? null;
+          }
+          return mockPoliticians.find((p) => p.name === candidate.name) ?? null;
+        };
+
+        const picks: Politician[] = [];
+        for (const c of election.candidates) {
+          const p = resolvePolitician(c.id);
+          if (p && !picks.some((x) => x.id === p.id)) picks.push(p);
+          if (picks.length >= 2) break;
+        }
+
+        if (picks.length >= 2) {
+          setAPick(picks[0].id);
+          setBPick(picks[1].id);
+          return;
+        }
+      }
+    } else {
+      setElectionContext(null);
+    }
+
+    if (paramA && mockPoliticians.find((p) => p.id === paramA)) setAPick(paramA);
+    if (paramB && mockPoliticians.find((p) => p.id === paramB)) setBPick(paramB);
+  }, [searchParams]);
+
+  const pA = mockPoliticians.find((p) => p.id === aPick);
+  const pB = mockPoliticians.find((p) => p.id === bPick);
+
+  const financeA = pA ? mergeCampaignFinance(pA.id, pA.campaignFinance) : null;
+  const financeB = pB ? mergeCampaignFinance(pB.id, pB.campaignFinance) : null;
+  const fecMeta = getFecFinanceSnapshot().meta;
+
+  const allIssueCategories = pA && pB
+    ? [...new Set([...pA.topIssues.map((i) => i.category), ...pB.topIssues.map((i) => i.category)])]
+    : [];
+  const sharedCategories = allIssueCategories.filter((cat) =>
+    pA?.topIssues.some((i) => i.category === cat) && pB?.topIssues.some((i) => i.category === cat)
+  );
+  const uniqueCategories = allIssueCategories.filter((cat) =>
+    !(pA?.topIssues.some((i) => i.category === cat) && pB?.topIssues.some((i) => i.category === cat))
+  );
+
+  const selectStyle: React.CSSProperties = {
+    background: 'rgba(5,9,15,0.7)',
+    border: '1px solid rgba(255,255,255,0.08)',
+    color: 'rgba(255,255,255,0.7)',
+  };
+
+  return (
+    <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-white mb-2">Compare Politicians</h1>
+        <p className="text-white/40">Side-by-side comparison of 17 featured demo profiles — FEC totals where synced, other metrics demo-labeled</p>
+        {electionContext && (
+          <p className="text-[#c8a951] text-sm mt-2">
+            Comparing candidates from: {electionContext}
+          </p>
+        )}
+      </div>
+
+      {/* Picker */}
+      <div className="grid grid-cols-2 gap-4 mb-8">
+        {(['a', 'b'] as const).map((side) => {
+          const pick = side === 'a' ? aPick : bPick;
+          const other = side === 'a' ? bPick : aPick;
+          const setPick = side === 'a' ? setAPick : setBPick;
+          return (
+            <div key={side}>
+              <label className="text-white/35 text-xs font-medium uppercase tracking-wider mb-2 block">
+                Politician {side.toUpperCase()}
+              </label>
+              <select
+                value={pick}
+                onChange={(e) => setPick(e.target.value)}
+                className="w-full rounded-xl px-4 py-3 text-sm focus:outline-none"
+                style={selectStyle}
+              >
+                {mockPoliticians.map((p) => (
+                  <option key={p.id} value={p.id} disabled={p.id === other}>
+                    {p.name} ({p.state}){p.id === other ? ' — already selected' : ''}
+                  </option>
+                ))}
+              </select>
+            </div>
+          );
+        })}
+      </div>
+
+      {aPick === bPick && (
+        <div className="rounded-xl p-4 mb-6 border border-yellow-400/25 text-yellow-400 text-sm" style={{ background: 'rgba(212,172,82,0.08)' }}>
+          Select two different politicians to compare them side-by-side.
+        </div>
+      )}
+
+      {pA && pB && aPick !== bPick && (
+        <div className="space-y-5">
+          <div className="rounded-xl border border-white/[0.08] p-4 flex items-start gap-3" style={cardStyle}>
+            <Info className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
+            <div className="text-xs text-white/50 leading-relaxed">
+              <strong className="text-white/80">Data tiers:</strong> Total raised uses{' '}
+              <span className="text-green-400/90">Tier 1 OpenFEC</span> when available (as of {fecMeta.asOf}).
+              Consistency scores, votes, lobbyist money, stock trades, and promise tracker rows are{' '}
+              <span className="text-yellow-400/90">demo data</span> for featured profiles only — not national coverage.
+              {(financeA?.fecEntry || financeB?.fecEntry) && (
+                <span className="inline-flex items-center gap-1.5 ml-2">
+                  <SourceBadge source={fecMeta.source} size="xs" />
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Profile Headers */}
+          <div className="grid grid-cols-2 gap-4">
+            {[pA, pB].map((p) => (
+              <div key={p.id} className="rounded-2xl p-5 border border-white/[0.08]" style={cardStyle}>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 border border-white/[0.09]"
+                       style={{ background: 'linear-gradient(135deg, #0f2236 0%, #07101f 100%)' }}>
+                    {p.imageUrl ? (
+                      <img src={p.imageUrl} alt={p.name} className="w-full h-full object-cover object-top" />
+                    ) : (
+                      <span className="font-bold text-xl" style={{ color: '#d4ac52' }}>{p.firstName[0]}{p.lastName[0]}</span>
+                    )}
+                  </div>
+                  <div>
+                    <div className="text-white font-bold">{p.name}</div>
+                    <div className="text-white/40 text-xs">{p.party} · {p.state}</div>
+                    <div className="text-white/30 text-xs">{p.chamber.replaceAll('_', ' ')}</div>
+                  </div>
+                </div>
+                <p className="text-white/40 text-xs leading-relaxed line-clamp-3">{p.bio}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Platform & Where They Stand — shown first so voters can align by agenda */}
+          <div className="rounded-2xl border border-white/[0.08] overflow-hidden" style={cardStyle}>
+            <div className="px-5 py-4 border-b border-white/[0.06]" style={headerStyle}>
+              <h2 className="text-white font-bold">Platform & Where They Stand</h2>
+              <p className="text-white/35 text-xs mt-1">
+                Compare each candidate&apos;s stated positions to find where your priorities align
+              </p>
+              <div className="flex items-center gap-3 mt-2.5 text-xs text-white/30">
+                <span>{sharedCategories.length} shared policy areas</span>
+                {uniqueCategories.length > 0 && <><span>·</span><span>{uniqueCategories.length} stated by only one</span></>}
+              </div>
+            </div>
+
+            {sharedCategories.length > 0 && (
+              <div>
+                <div className="px-5 py-2 border-b border-white/[0.04] bg-white/[0.015]">
+                  <span className="text-[10px] text-white/25 uppercase tracking-widest font-medium">Both candidates have stated positions</span>
+                </div>
+                {sharedCategories.map((cat) => {
+                  const aIssue = pA.topIssues.find((i) => i.category === cat)!;
+                  const bIssue = pB.topIssues.find((i) => i.category === cat)!;
+                  return (
+                    <div key={cat} className="grid grid-cols-[1fr_90px_1fr] gap-3 px-5 py-4 border-b border-white/[0.04] last:border-0">
+                      <div>
+                        <div className="text-sm font-semibold text-white mb-1">{aIssue.position}</div>
+                        <div className="text-white/40 text-xs leading-relaxed">{aIssue.detail}</div>
+                      </div>
+                      <div className="flex items-start justify-center pt-0.5">
+                        <span className="text-[10px] text-white/35 text-center px-2 py-1 rounded-full border border-white/[0.07] leading-tight">{cat}</span>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-sm font-semibold text-white mb-1">{bIssue.position}</div>
+                        <div className="text-white/40 text-xs leading-relaxed">{bIssue.detail}</div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {uniqueCategories.length > 0 && (
+              <div>
+                <div className="px-5 py-2 border-b border-white/[0.04] bg-white/[0.015]">
+                  <span className="text-[10px] text-white/25 uppercase tracking-widest font-medium">Positions stated by one candidate only</span>
+                </div>
+                {uniqueCategories.map((cat) => {
+                  const aIssue = pA.topIssues.find((i) => i.category === cat);
+                  const bIssue = pB.topIssues.find((i) => i.category === cat);
+                  return (
+                    <div key={cat} className="grid grid-cols-[1fr_90px_1fr] gap-3 px-5 py-4 border-b border-white/[0.04] last:border-0">
+                      <div>
+                        {aIssue ? (
+                          <>
+                            <div className="text-sm font-semibold text-white mb-1">{aIssue.position}</div>
+                            <div className="text-white/40 text-xs leading-relaxed">{aIssue.detail}</div>
+                          </>
+                        ) : (
+                          <div className="text-white/20 text-xs italic mt-1">No stated position</div>
+                        )}
+                      </div>
+                      <div className="flex items-start justify-center pt-0.5">
+                        <span className="text-[10px] text-white/35 text-center px-2 py-1 rounded-full border border-white/[0.07] leading-tight">{cat}</span>
+                      </div>
+                      <div className="text-right">
+                        {bIssue ? (
+                          <>
+                            <div className="text-sm font-semibold text-white mb-1">{bIssue.position}</div>
+                            <div className="text-white/40 text-xs leading-relaxed">{bIssue.detail}</div>
+                          </>
+                        ) : (
+                          <div className="text-white/20 text-xs italic mt-1 text-left">No stated position</div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Numeric Comparison */}
+          <div className="rounded-2xl border border-white/[0.08] overflow-hidden" style={cardStyle}>
+            <div className="px-5 py-4 border-b border-white/[0.06]" style={headerStyle}>
+              <h2 className="text-white font-bold">Key Metrics</h2>
+              <p className="text-white/30 text-xs mt-1">Total raised from OpenFEC when synced; other finance rows are demo</p>
+              <div className="grid grid-cols-3 mt-2">
+                <div className="text-xs font-medium text-right" style={{ color: '#d4ac52' }}>{pA.lastName}</div>
+                <div className="text-white/25 text-xs text-center">Metric</div>
+                <div className="text-xs font-medium text-left" style={{ color: '#d4ac52' }}>{pB.lastName}</div>
+              </div>
+            </div>
+            <div className="px-5">
+              <CompareCell label="Consistency Score (demo)" aVal={pA.consistency.overallScore} bVal={pB.consistency.overallScore} />
+              <CompareCell label="Bipartisan Vote % (demo)" aVal={100 - pA.consistency.partyLineVotePercentage} bVal={100 - pB.consistency.partyLineVotePercentage} higherIsBetter={true} format="percent" />
+              <CompareCell
+                label={`Total Raised${financeA?.fecEntry || financeB?.fecEntry ? ' (FEC)' : ''}`}
+                aVal={financeA?.finance.totalRaised ?? pA.campaignFinance.totalRaised}
+                bVal={financeB?.finance.totalRaised ?? pB.campaignFinance.totalRaised}
+                higherIsBetter={false}
+                format="money"
+              />
+              <CompareCell
+                label="Individual Donors %"
+                aVal={(financeA?.finance.totalRaised ?? 0) > 0 ? Math.round(((financeA?.finance.individualDonations ?? 0) / (financeA?.finance.totalRaised ?? 1)) * 100) : 0}
+                bVal={(financeB?.finance.totalRaised ?? 0) > 0 ? Math.round(((financeB?.finance.individualDonations ?? 0) / (financeB?.finance.totalRaised ?? 1)) * 100) : 0}
+                higherIsBetter={true}
+                format="percent"
+              />
+              <CompareCell label="Lobbyist Money (demo)" aVal={pA.campaignFinance.lobbyistMoney.reduce((s, l) => s + l.amount, 0)} bVal={pB.campaignFinance.lobbyistMoney.reduce((s, l) => s + l.amount, 0)} higherIsBetter={false} format="money" />
+              <CompareCell label="Lobbyist Alignment % (demo)" aVal={pA.consistency.lobbyistAlignmentPercentage} bVal={pB.consistency.lobbyistAlignmentPercentage} higherIsBetter={false} format="percent" />
+              <CompareCell label="Stock Trades (demo)" aVal={pA.stockTrades.length} bVal={pB.stockTrades.length} higherIsBetter={false} />
+              <CompareCell label="High Review-Priority Trades (demo)" aVal={pA.stockTrades.filter((t) => t.conflictScore >= 70).length} bVal={pB.stockTrades.filter((t) => t.conflictScore >= 70).length} higherIsBetter={false} />
+            </div>
+          </div>
+
+          {/* Promise Tracker */}
+          <div className="rounded-2xl border border-white/[0.08] overflow-hidden" style={cardStyle}>
+            <div className="px-5 py-4 border-b border-white/[0.06]" style={headerStyle}>
+              <h2 className="text-white font-bold">Campaign Promise Tracker</h2>
+              <p className="text-white/30 text-xs mt-1">Demo editorial tracking for featured profiles — not sourced from official records</p>
+            </div>
+            <div className="grid grid-cols-2 divide-x divide-white/[0.05]">
+              {[pA, pB].map((p) => (
+                <div key={p.id} className="p-5">
+                  <div className="font-semibold mb-3 text-sm" style={{ color: '#d4ac52' }}>{p.firstName} {p.lastName}</div>
+                  <div className="space-y-2">
+                    {p.consistency.campaignPromises.map((promise) => (
+                      <div key={promise.id} className="flex items-start gap-2">
+                        {promise.status === 'Kept'        ? <CheckCircle   className="h-4 w-4 text-green-400  flex-shrink-0 mt-0.5" /> :
+                         promise.status === 'Broken'      ? <XCircle       className="h-4 w-4 text-red-400    flex-shrink-0 mt-0.5" /> :
+                         promise.status === 'Compromised' ? <AlertTriangle  className="h-4 w-4 text-yellow-400 flex-shrink-0 mt-0.5" /> :
+                                                            <MinusCircle   className="h-4 w-4 text-blue-400   flex-shrink-0 mt-0.5" />}
+                        <div>
+                          <div className="text-xs text-white font-medium">{promise.issue}</div>
+                          <div className={`text-xs ${promise.status === 'Kept' ? 'text-green-400' : promise.status === 'Broken' ? 'text-red-400' : promise.status === 'Compromised' ? 'text-yellow-400' : 'text-blue-400'}`}>
+                            {promise.status}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function ComparePage() {
+  return (
+    <Suspense>
+      <CompareContent />
+    </Suspense>
+  );
+}
