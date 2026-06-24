@@ -1,0 +1,63 @@
+name: Refresh Florida data
+
+# Keeps /data snapshots current automatically. No-key public sources refresh on
+# every run; keyed sources refresh only when their GitHub Actions secret is set
+# (so a missing secret never overwrites real data with a placeholder). Pushing
+# changed snapshots to main triggers the Vercel production deploy.
+
+on:
+  schedule:
+    - cron: '23 9 * * *' # daily at 09:23 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm ci
+
+      - name: No-key ingests (always)
+        run: npm run ingest:no-key
+
+      - name: Keyed ingests (only when the matching secret is set)
+        env:
+          FEC_API_KEY: ${{ secrets.FEC_API_KEY }}
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+          CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
+          DATA_GOV_API_KEY: ${{ secrets.DATA_GOV_API_KEY }}
+          GOVINFO_API_KEY: ${{ secrets.GOVINFO_API_KEY }}
+          LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
+          OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
+          NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
+        run: |
+          [ -n "$CENSUS_API_KEY" ] && npm run ingest:census-fl || echo "skip census (no secret)"
+          [ -n "$LEGISCAN_API_KEY" ] && npm run ingest:legiscan-fl || echo "skip legiscan (no secret)"
+          [ -n "$OPENSTATES_API_KEY" ] && npm run ingest:openstates-fl || echo "skip openstates (no secret)"
+          [ -n "$NEWSAPI_KEY" ] && npm run ingest:news-fl || echo "skip news (no secret)"
+          { [ -n "$GOVINFO_API_KEY" ] || [ -n "$DATA_GOV_API_KEY" ]; } && npm run ingest:govinfo-fl || echo "skip govinfo (no secret)"
+          [ -n "$FEC_API_KEY" ] && npm run ingest:fec-fl || echo "skip fec (no secret)"
+          [ -n "$CONGRESS_API_KEY" ] && npm run ingest:congress-fl || echo "skip congress (no secret)"
+
+      - name: Commit & push changed snapshots
+        run: |
+          git config user.name "ledger-data-bot"
+          git config user.email "ledger-data-bot@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "chore(data): scheduled snapshot refresh"
+            git push
+          fi
