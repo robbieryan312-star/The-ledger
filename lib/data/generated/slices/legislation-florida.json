@@ -1,0 +1,703 @@
+{
+  "asOf": "2026-06-24",
+  "fetchedAt": "2026-06-24T15:29:37.411Z",
+  "sections": [
+    {
+      "sourceId": "legiscan",
+      "label": "LegiScan — Florida bills",
+      "meta": {
+        "source": {
+          "name": "LegiScan",
+          "url": "https://legiscan.com",
+          "tier": "nonpartisan",
+          "description": "State and federal bill tracking via legiscan.com API"
+        },
+        "asOf": "2026-06-24",
+        "totalCount": 100,
+        "datasetUrl": "https://api.legiscan.com/",
+        "note": "Florida state legislation master list (up to 100 bills). Tier 2."
+      },
+      "records": [
+        {
+          "id": "legiscan-0",
+          "title": "Designation of the State Birds",
+          "detail": "2044045 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044045",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "legiscan-1",
+          "title": "Social Work Licensure Interstate Compact",
+          "detail": "2044116 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044116",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "legiscan-2",
+          "title": "Pub. Rec. and Meetings/Social Work Licensure Interstate Compact",
+          "detail": "2044098 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044098",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "legiscan-3",
+          "title": "Criminal Offenses Against Law Enforcement Officers and Other Personnel",
+          "detail": "2044121 · FL",
+          "date": "2025-09-15",
+          "link": "https://legiscan.com/FL/bill/2044121",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "legiscan-4",
+          "title": "Educational Dollars for Duty Program",
+          "detail": "2044120 · FL",
+          "date": "2025-09-15",
+          "link": "https://legiscan.com/FL/bill/2044120",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "legiscan-5",
+          "title": "Pub. Rec./Agency Employees",
+          "detail": "2044114 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044114",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "legiscan-6",
+          "title": "Educator Certifications and Training",
+          "detail": "2044218 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044218",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "legiscan-7",
+          "title": "Transportation Facility Designations",
+          "detail": "2044230 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044230",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "legiscan-8",
+          "title": "Sale and Purchase of Ivermectin",
+          "detail": "2044901 · FL",
+          "date": "2025-09-23",
+          "link": "https://legiscan.com/FL/bill/2044901",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "legiscan-9",
+          "title": "Recognizing Judea and Samaria",
+          "detail": "2044907 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044907",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "legiscan-10",
+          "title": "Transportation Facility Designations",
+          "detail": "2044913 · FL",
+          "date": "2026-03-04",
+          "link": "https://legiscan.com/FL/bill/2044913",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "legiscan-11",
+          "title": "Habitual Traffic Offender Designation",
+          "detail": "2044915 · FL",
+          "date": "2026-04-24",
+          "link": "https://legiscan.com/FL/bill/2044915",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-06-24"
+        }
+      ]
+    },
+    {
+      "sourceId": "openstates",
+      "label": "OpenStates — Florida legislators",
+      "meta": {
+        "source": {
+          "name": "Open States",
+          "url": "https://openstates.org",
+          "tier": "nonpartisan",
+          "description": "State legislator records via openstates.org API"
+        },
+        "asOf": "2026-06-24",
+        "totalCount": 163,
+        "datasetUrl": "https://v3.openstates.org/people",
+        "note": "Florida state legislators. Tier 2 nonpartisan Open States."
+      },
+      "records": [
+        {
+          "id": "openstates-0",
+          "title": "Adam Anderson",
+          "detail": "ocd-person/6a3fae94-a613-49f5-acec-355e4a2722d8 · Republican · Florida",
+          "link": "https://openstates.org/person/adam-anderson-3EUHwR5pv456z8MMnIz7sG/",
+          "source": {
+            "name": "Open States",
+            "url": "https://openstates.org",
+            "tier": "nonpartisan",
+            "description": "State legislator records via openstates.org API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "openstates-1",
+          "title": "Adam Botana",
+          "detail": "ocd-person/c94b1151-5034-482b-8d7b-f91f9bb5f951 · Republican · Florida",
+          "link": "https://openstates.org/person/adam-botana-67plLnPC6qQqKUD4ehxLZh/",
+          "source": {
+            "name": "Open States",
+            "url": "https://openstates.org",
+            "tier": "nonpartisan",
+            "description": "State legislator records via openstates.org API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "openstates-2",
+          "title": "Alex Andrade",
+          "detail": "ocd-person/de5ddba1-d7fe-41da-9f36-16a03b0b22fc · Republican · Florida",
+          "link": "https://openstates.org/person/alex-andrade-6lbBlXxwEesk0cmBnjlPyO/",
+          "source": {
+            "name": "Open States",
+            "url": "https://openstates.org",
+            "tier": "nonpartisan",
+            "description": "State legislator records via openstates.org API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "openstates-3",
+          "title": "Alex Rizo",
+          "detail": "ocd-person/b2fce1a8-4ba6-483b-a534-fa48cc43ee7f · Republican · Florida",
+          "link": "https://openstates.org/person/alex-rizo-5RkCU1oHYXogGSQ7OFgrU7/",
+          "source": {
+            "name": "Open States",
+            "url": "https://openstates.org",
+            "tier": "nonpartisan",
+            "description": "State legislator records via openstates.org API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "openstates-4",
+          "title": "Alexis Calatayud",
+          "detail": "ocd-person/7f1e874f-ae8b-42a0-90d9-fe867cf9fb45 · Republican · Florida",
+          "link": "https://openstates.org/person/alexis-calatayud-3rrya2aQgU3IWcwrwT9QcX/",
+          "source": {
+            "name": "Open States",
+            "url": "https://openstates.org",
+            "tier": "nonpartisan",
+            "description": "State legislator records via openstates.org API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "openstates-5",
+          "title": "Allison Tant",
+          "detail": "ocd-person/c26599eb-5ef8-44c3-93a6-77cf23a9567e · Democratic · Florida",
+          "link": "https://openstates.org/person/allison-tant-5uowUBEorjyn4gtgCiQvk6/",
+          "source": {
+            "name": "Open States",
+            "url": "https://openstates.org",
+            "tier": "nonpartisan",
+            "description": "State legislator records via openstates.org API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "openstates-6",
+          "title": "Ana Maria Rodriguez",
+          "detail": "ocd-person/afd55a58-b8f6-4dd7-9d93-a2207b65e425 · Republican · Florida",
+          "link": "https://openstates.org/person/ana-maria-rodriguez-5Ln9uBYMxYvKnM41eVuMI1/",
+          "source": {
+            "name": "Open States",
+            "url": "https://openstates.org",
+            "tier": "nonpartisan",
+            "description": "State legislator records via openstates.org API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "openstates-7",
+          "title": "Angie Nixon",
+          "detail": "ocd-person/66c3a112-3008-4332-a6b0-8990a7d992d5 · Democratic · Florida",
+          "link": "https://openstates.org/person/angie-nixon-37ucRobbjxT3HSd7yyFNIL/",
+          "source": {
+            "name": "Open States",
+            "url": "https://openstates.org",
+            "tier": "nonpartisan",
+            "description": "State legislator records via openstates.org API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "openstates-8",
+          "title": "Anna Eskamani",
+          "detail": "ocd-person/1f8e10ad-0047-4854-b696-38e15fda7afa · Democratic · Florida",
+          "link": "https://openstates.org/person/anna-eskamani-xXgXJiyRZTNpr1YG9X1Yo/",
+          "source": {
+            "name": "Open States",
+            "url": "https://openstates.org",
+            "tier": "nonpartisan",
+            "description": "State legislator records via openstates.org API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "openstates-9",
+          "title": "Anne Gerwig",
+          "detail": "ocd-person/ad877adf-e8f2-4f31-bdd2-38a6aaf74884 · Republican · Florida",
+          "link": "https://openstates.org/person/anne-gerwig-5HRaOmVQX21MG3JmEbfbsK/",
+          "source": {
+            "name": "Open States",
+            "url": "https://openstates.org",
+            "tier": "nonpartisan",
+            "description": "State legislator records via openstates.org API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "openstates-10",
+          "title": "Ashley Gantt",
+          "detail": "ocd-person/2c62c9ae-8d1d-4dc3-a86a-fcc5dd7ba286 · Democratic · Florida",
+          "link": "https://openstates.org/person/ashley-gantt-1Lko83QzatJb19tT1lwzJu/",
+          "source": {
+            "name": "Open States",
+            "url": "https://openstates.org",
+            "tier": "nonpartisan",
+            "description": "State legislator records via openstates.org API"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "openstates-11",
+          "title": "Barbara Sharief",
+          "detail": "ocd-person/2af7bd80-7f71-4530-8d69-ee448bc32255 · Democratic · Florida",
+          "link": "https://openstates.org/person/barbara-sharief-1J4tVghQxDWRuqtJq2C8FJ/",
+          "source": {
+            "name": "Open States",
+            "url": "https://openstates.org",
+            "tier": "nonpartisan",
+            "description": "State legislator records via openstates.org API"
+          },
+          "asOf": "2026-06-24"
+        }
+      ]
+    },
+    {
+      "sourceId": "govinfo",
+      "label": "GovInfo — Florida documents",
+      "meta": {
+        "source": {
+          "name": "GovInfo (U.S. GPO)",
+          "url": "https://www.govinfo.gov",
+          "tier": "official",
+          "description": "U.S. Government Publishing Office official publications via api.govinfo.gov"
+        },
+        "asOf": "2026-06-24",
+        "fetchedAt": "2026-06-24T15:29:37.411Z",
+        "totalCount": 40,
+        "datasetUrl": "https://api.govinfo.gov/search",
+        "note": "Recent Florida-related federal legislative documents (bills, Congressional Record, committee reports) via GovInfo. Tier 1 official GPO."
+      },
+      "records": [
+        {
+          "id": "govinfo-0",
+          "title": "ADDITIONAL COSPONSORS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-22",
+          "date": "2026-06-22",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-22",
+          "source": {
+            "name": "GovInfo (U.S. GPO)",
+            "url": "https://www.govinfo.gov",
+            "tier": "official",
+            "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+            "date": "2026-06-22"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "govinfo-1",
+          "title": "SENATE COMMITTEE MEETINGS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-22",
+          "date": "2026-06-22",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-22",
+          "source": {
+            "name": "GovInfo (U.S. GPO)",
+            "url": "https://www.govinfo.gov",
+            "tier": "official",
+            "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+            "date": "2026-06-22"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "govinfo-2",
+          "title": "HONORING MARTHA ANN HART CUSIMANO FOR HER CONTRIBUTIONS TO CENTRAL FLORIDA",
+          "detail": "Congressional Record · CREC · CREC-2026-06-22",
+          "date": "2026-06-22",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-22",
+          "source": {
+            "name": "GovInfo (U.S. GPO)",
+            "url": "https://www.govinfo.gov",
+            "tier": "official",
+            "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+            "date": "2026-06-22"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "govinfo-3",
+          "title": "Daily Digest/CONGRESSIONAL PROGRAM AHEAD",
+          "detail": "Congressional Record · CREC · CREC-2026-06-22",
+          "date": "2026-06-22",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-22",
+          "source": {
+            "name": "GovInfo (U.S. GPO)",
+            "url": "https://www.govinfo.gov",
+            "tier": "official",
+            "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+            "date": "2026-06-22"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "govinfo-4",
+          "title": "ADDITIONAL COSPONSORS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18",
+          "source": {
+            "name": "GovInfo (U.S. GPO)",
+            "url": "https://www.govinfo.gov",
+            "tier": "official",
+            "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+            "date": "2026-06-18"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "govinfo-5",
+          "title": "INTRODUCTION OF BILLS AND JOINT RESOLUTIONS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18",
+          "source": {
+            "name": "GovInfo (U.S. GPO)",
+            "url": "https://www.govinfo.gov",
+            "tier": "official",
+            "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+            "date": "2026-06-18"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "govinfo-6",
+          "title": "EXECUTIVE REPORTS OF COMMITTEES",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18",
+          "source": {
+            "name": "GovInfo (U.S. GPO)",
+            "url": "https://www.govinfo.gov",
+            "tier": "official",
+            "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+            "date": "2026-06-18"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "govinfo-7",
+          "title": "Vote on Holding Nomination (Executive Calendar)",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18",
+          "source": {
+            "name": "GovInfo (U.S. GPO)",
+            "url": "https://www.govinfo.gov",
+            "tier": "official",
+            "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+            "date": "2026-06-18"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "govinfo-8",
+          "title": "Unanimous Consent Request--S. Res. 554 (Executive Calendar)",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18",
+          "source": {
+            "name": "GovInfo (U.S. GPO)",
+            "url": "https://www.govinfo.gov",
+            "tier": "official",
+            "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+            "date": "2026-06-18"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "govinfo-9",
+          "title": "ADDITIONAL SPONSORS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18",
+          "source": {
+            "name": "GovInfo (U.S. GPO)",
+            "url": "https://www.govinfo.gov",
+            "tier": "official",
+            "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+            "date": "2026-06-18"
+          },
+          "asOf": "2026-06-24"
+        }
+      ]
+    },
+    {
+      "sourceId": "fedregister",
+      "label": "Federal Register — Florida",
+      "meta": {
+        "source": {
+          "name": "Federal Register",
+          "url": "https://www.federalregister.gov",
+          "tier": "official",
+          "description": "Official daily journal of the U.S. government via federalregister.gov API"
+        },
+        "asOf": "2026-06-24",
+        "totalCount": 100,
+        "datasetUrl": "https://www.federalregister.gov/api/v1/documents.json?conditions[term]=Florida",
+        "note": "Most recent 100 Federal Register documents matching \"Florida\" (rules, proposed rules, notices, presidential documents). Tier 1 official."
+      },
+      "records": [
+        {
+          "id": "fedregister-0",
+          "title": "Foreign-Trade Zone (FTZ) 32; Authorization of Production Activity; 3nStar, Inc.; (Point of Sale Terminals); Doral, Florida",
+          "detail": "2026-12659 · Notice",
+          "date": "2026-06-24",
+          "link": "https://www.federalregister.gov/documents/2026/06/24/2026-12659/foreign-trade-zone-ftz-32-authorization-of-production-activity-3nstar-inc-point-of-sale-terminals",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-24"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "fedregister-1",
+          "title": "Foreign-Trade Zone (FTZ) 193; Authorization of Production Activity; Lithionics Battery, LLC; (Lithium-Ion Battery Systems and Accessories); Clearwater, Florida",
+          "detail": "2026-12501 · Notice",
+          "date": "2026-06-22",
+          "link": "https://www.federalregister.gov/documents/2026/06/22/2026-12501/foreign-trade-zone-ftz-193-authorization-of-production-activity-lithionics-battery-llc-lithium-ion",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-22"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "fedregister-2",
+          "title": "Qualification of Drivers; Exemption Applications; Epilepsy and Seizure Disorders",
+          "detail": "2026-12455 · Notice · FMCSA announces receipt of applications from six individuals for an exemption from the prohibition in the Federal Motor Carrier Safety Regulations (FMCSRs) against persons with a clinical diagnosis of epilepsy or any other condition that is likely to cause a loss of consciousness or any loss of ability to control a commercial motor vehicle (CMV) to drive in interstate commerce. If granted, the exemptions would enable these individuals who have had one or more seizures and are taking anti-seizure medication to operate CMVs in interstate commerce.",
+          "date": "2026-06-22",
+          "link": "https://www.federalregister.gov/documents/2026/06/22/2026-12455/qualification-of-drivers-exemption-applications-epilepsy-and-seizure-disorders",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-22"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "fedregister-3",
+          "title": "Notice of Intended Repatriation: University of Alabama Museums, Tuscaloosa, AL",
+          "detail": "2026-12389 · Notice · In accordance with the Native American Graves Protection and Repatriation Act (NAGPRA), the University of Alabama Museums intends to repatriate certain cultural items that meet the definition of unassociated funerary objects and that have a cultural affiliation with the Indian Tribes or Native Hawaiian organizations in this notice.",
+          "date": "2026-06-22",
+          "link": "https://www.federalregister.gov/documents/2026/06/22/2026-12389/notice-of-intended-repatriation-university-of-alabama-museums-tuscaloosa-al",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-22"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "fedregister-4",
+          "title": "Notice of Inventory Completion: School of Social Science and Global Studies, University of Southern Mississippi, Hattiesburg, MS",
+          "detail": "2026-12383 · Notice · In accordance with the Native American Graves Protection and Repatriation Act (NAGPRA), the University of Southern Mississippi (USM) has completed an inventory of human remains and has determined that there is a cultural affiliation between the human remains and Indian Tribes or Native Hawaiian organizations in this notice.",
+          "date": "2026-06-22",
+          "link": "https://www.federalregister.gov/documents/2026/06/22/2026-12383/notice-of-inventory-completion-school-of-social-science-and-global-studies-university-of-southern",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-22"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "fedregister-5",
+          "title": "Combined Notice of Filings #1",
+          "detail": "2026-12317 · Notice",
+          "date": "2026-06-18",
+          "link": "https://www.federalregister.gov/documents/2026/06/18/2026-12317/combined-notice-of-filings-1",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-18"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "fedregister-6",
+          "title": "Combined Notice of Filings #1",
+          "detail": "2026-12184 · Notice",
+          "date": "2026-06-17",
+          "link": "https://www.federalregister.gov/documents/2026/06/17/2026-12184/combined-notice-of-filings-1",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-17"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "fedregister-7",
+          "title": "Reef Fish Fishery of the Gulf of America; Shallow-Water Grouper Management Measures",
+          "detail": "2026-12175 · Rule · NMFS issues regulations to implement management measures described in a framework action under the Fishery Management Plan for the Reef Fish Resources of the Gulf (FMP), as prepared by the Gulf Council (Council). This final rule modifies the Gulf of America (Gulf) Other Shallow-Water Grouper (SWG) complex catch limits and sets a recreational fixed-closed season for Gulf Other SWG. The purpose of this final rule is to reduce harvest of Gulf scamp and yellowmouth grouper while the Council develops Amendment 58A to the FMP (Amendment 58A), which considers additional Other SWG management measures.",
+          "date": "2026-06-17",
+          "link": "https://www.federalregister.gov/documents/2026/06/17/2026-12175/reef-fish-fishery-of-the-gulf-of-america-shallow-water-grouper-management-measures",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-17"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "fedregister-8",
+          "title": "Security Zone; FIFA World Cup and Fan Fest 2026, Bayfront Park, Miami, FL",
+          "detail": "2026-12168 · Rule · The Coast Guard is establishing a temporary security zone for certain navigable waters of Biscayne Bay in connection with the 2026 Miami FIFA World Cup and the World Cup Fan Fest events in Miami, Florida. This security zone is necessary to safeguard official parties, VIP's and other participants (\"attendees\") attending the Miami 2026 FIFA World Cup and the World Cup Fan Fest because the ease of waterfront access to the various venues hosting the World Cup events presents a security concern for all attendees. This rulemaking prohibits anchoring or remaining within the security zone during enforcement periods unless specifically authorized by the Captain of the Port (COTP), Sector Miami or their designated representative.",
+          "date": "2026-06-17",
+          "link": "https://www.federalregister.gov/documents/2026/06/17/2026-12168/security-zone-fifa-world-cup-and-fan-fest-2026-bayfront-park-miami-fl",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-17"
+          },
+          "asOf": "2026-06-24"
+        },
+        {
+          "id": "fedregister-9",
+          "title": "Medicare Program; Strengthening Oversight of Accrediting Organizations (AOs) and Preventing AO Conflicts of Interest, and Related Provisions",
+          "detail": "2026-12069 · Rule · This final rule with comment period sets forth provisions to strengthen the oversight of Medicare national accrediting organizations by addressing conflicts of interest, establishing consistent standards, processes, and definitions, and updating the validation and performance standards systems. Additionally, this final rule with comment period revises the psychiatric hospital survey process, adds a limitation on terminated deemed providers and suppliers when reentering the program, and provides technical corrections for End-Stage Renal Disease facilities and Transplant Programs.",
+          "date": "2026-06-16",
+          "link": "https://www.federalregister.gov/documents/2026/06/16/2026-12069/medicare-program-strengthening-oversight-of-accrediting-organizations-aos-and-preventing-ao",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-16"
+          },
+          "asOf": "2026-06-24"
+        }
+      ]
+    }
+  ]
+}

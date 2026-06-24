@@ -1,0 +1,241 @@
+{
+  "meta": {
+    "source": {
+      "name": "CourtListener (Free Law Project)",
+      "url": "https://www.courtlistener.com",
+      "tier": "nonpartisan",
+      "description": "Nonpartisan Free Law Project legal database; opinions are official court records"
+    },
+    "asOf": "2026-06-24",
+    "totalCount": 60,
+    "datasetUrl": "https://www.courtlistener.com/api/rest/v4/search/?type=o&court=fla",
+    "note": "Most recent Supreme Court of Florida opinions (newest-first). Tier 2 aggregator of official court records."
+  },
+  "records": [
+    {
+      "id": "court-0",
+      "title": "Dusty Ray Spencer v. State of Florida",
+      "detail": "Supreme Court of Florida · SC2026-0880 · Published",
+      "date": "2026-06-18",
+      "link": "https://www.courtlistener.com/opinion/10877287/dusty-ray-spencer-v-state-of-florida/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "court-1",
+      "title": "Eric Desmond Parrish v. State of Florida",
+      "detail": "Supreme Court of Florida · SC2022-1457 · Published",
+      "date": "2026-06-18",
+      "link": "https://www.courtlistener.com/opinion/10876940/eric-desmond-parrish-v-state-of-florida/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "court-2",
+      "title": "Gary Richard Whitton v. State of Florida",
+      "detail": "Supreme Court of Florida · SC2025-1357 · Published",
+      "date": "2026-06-18",
+      "link": "https://www.courtlistener.com/opinion/10876939/gary-richard-whitton-v-state-of-florida/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "court-3",
+      "title": "Harold Lee Harvey, Jr. v. State of Florida",
+      "detail": "Supreme Court of Florida · SC2024-0648 · Published",
+      "date": "2026-06-18",
+      "link": "https://www.courtlistener.com/opinion/10876938/harold-lee-harvey-jr-v-state-of-florida/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "court-4",
+      "title": "In Re: Amendments to Florida Probate Rules",
+      "detail": "Supreme Court of Florida · SC2025-1462 · Published",
+      "date": "2026-06-18",
+      "link": "https://www.courtlistener.com/opinion/10876937/in-re-amendments-to-florida-probate-rules/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "court-5",
+      "title": "In Re: Amendments to Florida Rules of Appellate Procedure",
+      "detail": "Supreme Court of Florida · SC2025-0241 · Published",
+      "date": "2026-06-11",
+      "link": "https://www.courtlistener.com/opinion/10873672/in-re-amendments-to-florida-rules-of-appellate-procedure/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "court-6",
+      "title": "In Re: Amendments to Florida Rules of Juvenile Procedure 8.203 and 8.330",
+      "detail": "Supreme Court of Florida · SC2025-1362 · Published",
+      "date": "2026-06-11",
+      "link": "https://www.courtlistener.com/opinion/10873671/in-re-amendments-to-florida-rules-of-juvenile-procedure-8203-and-8330/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "court-7",
+      "title": "Isaac \"Ike\" Perlmutter v. Federal Insurance Company",
+      "detail": "Supreme Court of Florida · SC2024-0058 · Published",
+      "date": "2026-06-11",
+      "link": "https://www.courtlistener.com/opinion/10873670/isaac-ike-perlmutter-v-federal-insurance-company/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "court-8",
+      "title": "Michael Lawrence Woodbury v. State of Florida & Michael Lawrence Woodbury v. Secretary, Department of Corrections",
+      "detail": "Supreme Court of Florida · SC2024-0232 & SC2024-1127 · Published",
+      "date": "2026-06-11",
+      "link": "https://www.courtlistener.com/opinion/10873669/michael-lawrence-woodbury-v-state-of-florida-michael-lawrence-woodbury/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "court-9",
+      "title": "The Florida Bar v. Kenneth Chesebro",
+      "detail": "Supreme Court of Florida · SC2024-1528 · Published",
+      "date": "2026-06-11",
+      "link": "https://www.courtlistener.com/opinion/10873668/the-florida-bar-v-kenneth-chesebro/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "court-10",
+      "title": "Equal Ground Education Fund, Inc. v. Secretary, Florida Department of State",
+      "detail": "Supreme Court of Florida · SC2026-0857 · Published",
+      "date": "2026-06-10",
+      "link": "https://www.courtlistener.com/opinion/10873345/equal-ground-education-fund-inc-v-secretary-florida-department-of-state/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-10"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "court-11",
+      "title": "Citizens of the State of Florida, Etc. v. Florida Public Service Commission",
+      "detail": "Supreme Court of Florida · SC2023-0988 · Published",
+      "date": "2026-06-04",
+      "link": "https://www.courtlistener.com/opinion/10870072/citizens-of-the-state-of-florida-etc-v-florida-public-service-commission/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-04"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "court-12",
+      "title": "In Re: Amendments to Florida Small Claims Rule 7.070",
+      "detail": "Supreme Court of Florida · SC2025-1254 · Published",
+      "date": "2026-06-04",
+      "link": "https://www.courtlistener.com/opinion/10870071/in-re-amendments-to-florida-small-claims-rule-7070/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-04"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "court-13",
+      "title": "In Re: Amendments to Rules Regulating the Florida Bar - Rule 5-1.1",
+      "detail": "Supreme Court of Florida · SC2025-1730 · Published",
+      "date": "2026-06-04",
+      "link": "https://www.courtlistener.com/opinion/10870070/in-re-amendments-to-rules-regulating-the-florida-bar-rule-5-11/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-04"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "court-14",
+      "title": "Clint Shannon Gessner v. Southern Company",
+      "detail": "Supreme Court of Florida · SC2024-1835 · Published",
+      "date": "2026-05-28",
+      "link": "https://www.courtlistener.com/opinion/10865531/clint-shannon-gessner-v-southern-company/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-05-28"
+      },
+      "asOf": "2026-06-24"
+    }
+  ]
+}

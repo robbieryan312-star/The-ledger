@@ -1,0 +1,392 @@
+{
+  "meta": {
+    "source": {
+      "name": "Florida Division of Elections",
+      "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "tier": "official",
+      "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)"
+    },
+    "asOf": "2026-06-24",
+    "fetchedAt": "2026-06-24T15:26:30.623Z",
+    "totalCount": 179,
+    "datasetUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+    "note": "Florida campaign contributions of $25,000+ filed 2025-01-01 through 2026-06-24, from the official FL Campaign Finance Database (tab-delimited export). Tier 1 official public record. Captured via the public search form; refreshing requires a browser session (the export endpoint blocks non-browser requests)."
+  },
+  "records": [
+    {
+      "id": "fldoe-0",
+      "title": "Steele, Kevin M.",
+      "detail": "REP · State Representative · $5,000,000",
+      "date": "2025-12-29",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-29"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-1",
+      "title": "Bergermann, Vera",
+      "detail": "NOP · County Judge · $300,000",
+      "date": "2026-01-26",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-01-26"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-2",
+      "title": "Kessler, Bryan S.",
+      "detail": "NOP · County Judge · $250,000",
+      "date": "2026-02-17",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-17"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-3",
+      "title": "Russo, Frank J.",
+      "detail": "NPA · Governor · $250,000",
+      "date": "2026-01-05",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-01-05"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-4",
+      "title": "Stuzin, Laura Anne",
+      "detail": "NOP · County Judge · $250,000",
+      "date": "2025-01-17",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-01-17"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-5",
+      "title": "Wilson, Mark",
+      "detail": "NOP · County Judge · $250,000",
+      "date": "2025-11-04",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-11-04"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-6",
+      "title": "Baez, Rita Maria",
+      "detail": "NOP · County Judge · $200,000",
+      "date": "2026-02-05",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-05"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-7",
+      "title": "Barakat, Michelle Alvarez",
+      "detail": "NOP · County Judge · $200,000",
+      "date": "2025-09-15",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-09-15"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-8",
+      "title": "Tomkow, Josie",
+      "detail": "REP · State Senator · $200,000",
+      "date": "2026-03-19",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-19"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-9",
+      "title": "Goerner, Donna M.",
+      "detail": "NOP · County Judge · $200,000",
+      "date": "2026-02-25",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-25"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-10",
+      "title": "Brinkley, Tanya Jeanette",
+      "detail": "NOP · County Judge · $200,000",
+      "date": "2025-03-27",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-03-27"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-11",
+      "title": "Reichling, Trent",
+      "detail": "NOP · County Judge · $150,050",
+      "date": "2025-12-29",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-29"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-12",
+      "title": "Burkett, Charles",
+      "detail": "NPA · Governor · $150,000",
+      "date": "2026-05-21",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-05-21"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-13",
+      "title": "Hawthorne, Amy",
+      "detail": "NOP · County Judge · $150,000",
+      "date": "2025-12-12",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-12"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-14",
+      "title": "Norton, Virginia",
+      "detail": "NOP · County Judge · $150,000",
+      "date": "2025-12-31",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-31"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-15",
+      "title": "Roth, Rick",
+      "detail": "REP · State Senator · $150,000",
+      "date": "2025-12-30",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-30"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-16",
+      "title": "Tomkow, Josie",
+      "detail": "REP · State Senator · $137,904.2",
+      "date": "2026-03-16",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-16"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-17",
+      "title": "Tompkins, Joseph",
+      "detail": "NOP · County Judge · $125,000",
+      "date": "2026-03-30",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-30"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-18",
+      "title": "Blocker, Lauren P.",
+      "detail": "NOP · County Judge · $110,000",
+      "date": "2026-03-30",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-30"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-19",
+      "title": "Anijar, Yoni",
+      "detail": "REP · State Representative · $100,000",
+      "date": "2025-06-26",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-06-26"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-20",
+      "title": "Anthony-Smith, Coretta",
+      "detail": "DEM · State Senator · $100,000",
+      "date": "2025-04-23",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-04-23"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-21",
+      "title": "Arguelles, Christina",
+      "detail": "NOP · County Judge · $100,000",
+      "date": "2025-12-30",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-30"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-22",
+      "title": "Avalos, Catalina M.",
+      "detail": "NOP · County Judge · $100,000",
+      "date": "2026-03-30",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-30"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-23",
+      "title": "Baez-Geller, Lucia",
+      "detail": "DEM · State Representative · $100,000",
+      "date": "2025-12-29",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-29"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "fldoe-24",
+      "title": "Barra, Deb",
+      "detail": "NOP · County Judge · $100,000",
+      "date": "2025-12-22",
+      "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-22"
+      },
+      "asOf": "2026-06-24"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "meta": {
+    "source": {
+      "name": "U.S. Census Bureau ACS",
+      "url": "https://api.census.gov",
+      "tier": "official",
+      "description": "American Community Survey 5-year estimates via api.census.gov"
+    },
+    "asOf": "2026-06-24",
+    "totalCount": 7,
+    "note": "Florida state-level Census ACS demographics and BLS labor statistics."
+  },
+  "stateCode": "FL",
+  "stateName": "Florida",
+  "indicators": [
+    {
+      "label": "Population",
+      "value": "21,928,881",
+      "period": "ACS 5-Year 2023",
+      "link": "https://api.census.gov/data/2023/acs/acs5",
+      "source": {
+        "name": "U.S. Census Bureau ACS",
+        "url": "https://api.census.gov",
+        "tier": "official",
+        "description": "American Community Survey 5-year estimates via api.census.gov"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "label": "Median household income",
+      "value": "$71,711",
+      "period": "ACS 5-Year 2023",
+      "link": "https://api.census.gov/data/2023/acs/acs5",
+      "source": {
+        "name": "U.S. Census Bureau ACS",
+        "url": "https://api.census.gov",
+        "tier": "official",
+        "description": "American Community Survey 5-year estimates via api.census.gov"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "label": "Median home value",
+      "value": "$325,000",
+      "period": "ACS 5-Year 2023",
+      "link": "https://api.census.gov/data/2023/acs/acs5",
+      "source": {
+        "name": "U.S. Census Bureau ACS",
+        "url": "https://api.census.gov",
+        "tier": "official",
+        "description": "American Community Survey 5-year estimates via api.census.gov"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "label": "Unemployment rate",
+      "value": "4.4 %",
+      "period": "May 2026",
+      "link": "https://data.bls.gov/timeseries/LAUST120000000000003",
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
+        "date": "2026-05-01"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "label": "Unemployment level",
+      "value": "492809 persons",
+      "period": "May 2026",
+      "link": "https://data.bls.gov/timeseries/LAUST120000000000004",
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
+        "date": "2026-05-01"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "label": "Employment",
+      "value": "10606048 persons",
+      "period": "May 2026",
+      "link": "https://data.bls.gov/timeseries/LAUST120000000000005",
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
+        "date": "2026-05-01"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "label": "Labor force",
+      "value": "11098857 persons",
+      "period": "May 2026",
+      "link": "https://data.bls.gov/timeseries/LAUST120000000000006",
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
+        "date": "2026-05-01"
+      },
+      "asOf": "2026-06-24"
+    }
+  ]
+}

@@ -1,0 +1,317 @@
+{
+  "meta": {
+    "source": {
+      "name": "SEC EDGAR",
+      "url": "https://www.sec.gov/edgar",
+      "tier": "official",
+      "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)"
+    },
+    "asOf": "2026-06-24",
+    "fetchedAt": "2026-06-24T16:09:49.496Z",
+    "totalCount": 74,
+    "datasetUrl": "https://efts.sec.gov/LATEST/search-index?q=%22Florida%22&forms=8-K",
+    "note": "Recent 8-K material-event filings (last 60 days) referencing Florida via SEC EDGAR full-text search. Each record carries the filer business/incorporation state and a floridaDomiciled flag — EDGAR location filters are unreliable, so Florida relevance is by full-text match. Tier 1 official."
+  },
+  "records": [
+    {
+      "id": "edgar-0",
+      "title": "HCI Group, Inc.",
+      "detail": "8-K · 0001400810 · 0001193125-26-249754",
+      "date": "2026-06-01",
+      "link": "https://www.sec.gov/Archives/edgar/data/1400810/000119312526249754/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-06-01"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-1",
+      "title": "Vivos Therapeutics, Inc.",
+      "detail": "EX-99.1 · 0001716166 · 0001493152-26-028775",
+      "date": "2026-06-16",
+      "link": "https://www.sec.gov/Archives/edgar/data/1716166/000149315226028775/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-06-16"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-2",
+      "title": "HANCOCK WHITNEY CORP",
+      "detail": "EX-99.2 · 0000750577 · 0001193125-26-225443",
+      "date": "2026-05-15",
+      "link": "https://www.sec.gov/Archives/edgar/data/750577/000119312526225443/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-05-15"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-3",
+      "title": "American Integrity Insurance Group, Inc.",
+      "detail": "EX-99.1 · 0002007587 · 0002007587-26-000068",
+      "date": "2026-05-20",
+      "link": "https://www.sec.gov/Archives/edgar/data/2007587/000200758726000068/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-05-20"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-4",
+      "title": "CHESAPEAKE UTILITIES CORP",
+      "detail": "EX-99.1 · 0000019745 · 0001628280-26-031368",
+      "date": "2026-05-06",
+      "link": "https://www.sec.gov/Archives/edgar/data/19745/000162828026031368/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-05-06"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-5",
+      "title": "NEXTERA ENERGY INC",
+      "detail": "8-K · 0000753308 · 0001104659-26-062992",
+      "date": "2026-05-18",
+      "link": "https://www.sec.gov/Archives/edgar/data/753308/000110465926062992/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-05-18"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-6",
+      "title": "NEXTERA ENERGY INC",
+      "detail": "8-K · 0000753308 · 0000753308-26-000039",
+      "date": "2026-05-26",
+      "link": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000039/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-05-26"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-7",
+      "title": "PMGC Holdings Inc.",
+      "detail": "EX-10.1 · 0001840563 · 0001213900-26-065791",
+      "date": "2026-06-05",
+      "link": "https://www.sec.gov/Archives/edgar/data/1840563/000121390026065791/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-06-05"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-8",
+      "title": "WORLD OMNI AUTO RECEIVABLES LLC",
+      "detail": "EX-1.1 · 0001083199 · 0001104659-26-057011",
+      "date": "2026-05-07",
+      "link": "https://www.sec.gov/Archives/edgar/data/1083199/000110465926057011/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-05-07"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-9",
+      "title": "NEXTERA ENERGY INC",
+      "detail": "8-K · 0000753308 · 0000753308-26-000043",
+      "date": "2026-06-01",
+      "link": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000043/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-06-01"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-10",
+      "title": "USCB FINANCIAL HOLDINGS, INC.",
+      "detail": "EX-99.1 · 0001901637 · 0000927089-26-000099",
+      "date": "2026-05-27",
+      "link": "https://www.sec.gov/Archives/edgar/data/1901637/000092708926000099/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-05-27"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-11",
+      "title": "SEACOAST BANKING CORP OF FLORIDA",
+      "detail": "EX-3.1 · 0000730708 · 0001628280-26-036953",
+      "date": "2026-05-20",
+      "link": "https://www.sec.gov/Archives/edgar/data/730708/000162828026036953/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-05-20"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-12",
+      "title": "Tecnoglass Inc.",
+      "detail": "8-K · 0001534675 · 0001493152-26-028897",
+      "date": "2026-06-16",
+      "link": "https://www.sec.gov/Archives/edgar/data/1534675/000149315226028897/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-06-16"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-13",
+      "title": "GENERATION INCOME PROPERTIES, INC.",
+      "detail": "EX-10.1 · 0001651721 · 0001193125-26-237019",
+      "date": "2026-05-22",
+      "link": "https://www.sec.gov/Archives/edgar/data/1651721/000119312526237019/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-05-22"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-14",
+      "title": "Helio Corp /FL/",
+      "detail": "EX-10.1 · 0001953988 · 0001213900-26-048545",
+      "date": "2026-04-28",
+      "link": "https://www.sec.gov/Archives/edgar/data/1953988/000121390026048545/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-04-28"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-15",
+      "title": "NEXTERA ENERGY INC",
+      "detail": "EX-5.B AND 8 · 0000753308 · 0000753308-26-000052",
+      "date": "2026-06-22",
+      "link": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000052/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-06-22"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-16",
+      "title": "SEACOAST BANKING CORP OF FLORIDA",
+      "detail": "8-K · 0000730708 · 0001628280-26-027918",
+      "date": "2026-04-28",
+      "link": "https://www.sec.gov/Archives/edgar/data/730708/000162828026027918/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-04-28"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-17",
+      "title": "HALLMARK VENTURE GROUP, INC.",
+      "detail": "EX-10.1 · 0001331421 · 0001493152-26-026929",
+      "date": "2026-06-03",
+      "link": "https://www.sec.gov/Archives/edgar/data/1331421/000149315226026929/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-06-03"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-18",
+      "title": "Sensus Healthcare, Inc.",
+      "detail": "EX-10.1 · 0001494891 · 0001753926-26-000983",
+      "date": "2026-06-05",
+      "link": "https://www.sec.gov/Archives/edgar/data/1494891/000175392626000983/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-06-05"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "edgar-19",
+      "title": "Myseum.AI, Inc.",
+      "detail": "EX-99.1 · 0001648960 · 0001213900-26-048582",
+      "date": "2026-04-28",
+      "link": "https://www.sec.gov/Archives/edgar/data/1648960/000121390026048582/",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-04-28"
+      },
+      "asOf": "2026-06-24"
+    }
+  ]
+}

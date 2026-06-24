@@ -1,0 +1,417 @@
+{
+  "asOf": "2026-06-24",
+  "fetchedAt": "2026-06-24T16:13:03.182Z",
+  "sections": [
+    {
+      "sourceId": "newsapi",
+      "label": "NewsAPI — Florida coverage",
+      "meta": {
+        "source": {
+          "name": "NewsAPI",
+          "url": "https://newsapi.org",
+          "tier": "media",
+          "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+        },
+        "asOf": "2026-06-24",
+        "totalCount": 45,
+        "datasetUrl": "https://newsapi.org/v2/everything",
+        "note": "Tier 3 journalism — always corroborate with Tier 1/2 sources before presenting as fact.",
+        "tierFlag": "Tier 3 — corroborate with official records"
+      },
+      "records": [
+        {
+          "id": "newsapi-0",
+          "title": "Mamdani’s bid to become a Democratic socialist kingmaker—and other races to watch in the New York primary",
+          "detail": "Eight months into his first term, NYC's democratic socialist mayor is trying to remake the city's congressional delegation. · Fortune",
+          "date": "2026-06-23T14:11:54Z",
+          "link": "https://fortune.com/2026/06/23/mamdani-democratic-socialist-kingmaker-new-york-primary/",
+          "source": {
+            "name": "NewsAPI",
+            "url": "https://newsapi.org",
+            "tier": "media",
+            "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 journalism — corroborate with official records"
+        },
+        {
+          "id": "newsapi-1",
+          "title": "Trump May Not Like His Senate Visit This Week",
+          "detail": "President Trump is heading to the Senate this week, and he may not receive as warm a reception as he hopes. Trump, at the invitation of Florida Sen. Rick Scott, will attend the GOP's Wednesday lunch and press for his top priority, the SAVE America Act electio… · Newser",
+          "date": "2026-06-23T12:18:00Z",
+          "link": "https://www.newser.com/story/391530/trump-may-not-like-his-senate-visit-this-week.html",
+          "source": {
+            "name": "NewsAPI",
+            "url": "https://newsapi.org",
+            "tier": "media",
+            "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 journalism — corroborate with official records"
+        },
+        {
+          "id": "newsapi-2",
+          "title": "Downballot Democrats Are Smashing Recruitment Records",
+          "detail": "When the Kansas legislature took up a bill in early 2026 that would strip transgender residents’ driver’s licenses and bar them from government bathrooms, Bobby Joe Robertson Jr., a financial analyst at a petroleum refinery in the small town of McPherson, abo… · Mother Jones",
+          "date": "2026-06-23T12:00:00Z",
+          "link": "https://www.motherjones.com/politics/2026/06/downballot-democratic-candidate-recruitment-2026/",
+          "source": {
+            "name": "NewsAPI",
+            "url": "https://newsapi.org",
+            "tier": "media",
+            "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 journalism — corroborate with official records"
+        },
+        {
+          "id": "newsapi-3",
+          "title": "Erik Visits an American Grave, Part 2,168",
+          "detail": "This is the unmarked grave of Herman Cain, who is buried near his family but does not have a marker of his own. Supposedly this is to stop publicity, but really, how many people other than myself want to see the grave of Hermain Cain? Born in 1945 in Memphis,… · Lawyersgunsmoneyblog.com",
+          "date": "2026-06-23T11:00:00Z",
+          "link": "https://www.lawyersgunsmoneyblog.com/2026/06/erik-visits-an-american-grave-part-2168",
+          "source": {
+            "name": "NewsAPI",
+            "url": "https://newsapi.org",
+            "tier": "media",
+            "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 journalism — corroborate with official records"
+        },
+        {
+          "id": "newsapi-4",
+          "title": "NBA mock draft 19.0: Final predictions for every pick ahead of first round today",
+          "detail": "With just a few more hours until the 2026 NBA Draft, fans will soon know exactly where each prospect will begin their professional careers. · USA Today",
+          "date": "2026-06-23T10:31:13Z",
+          "link": "https://www.usatoday.com/story/sports/nba/draft/2026/06/23/nba-mock-draft-2026-final-projections-first-second-round/90651727007/",
+          "source": {
+            "name": "NewsAPI",
+            "url": "https://newsapi.org",
+            "tier": "media",
+            "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 journalism — corroborate with official records"
+        },
+        {
+          "id": "newsapi-5",
+          "title": "One Day in America",
+          "detail": "Thirty-eight glimpses of a day 250 years in the making. · esquire.com",
+          "date": "2026-06-23T10:13:24Z",
+          "link": "https://www.esquire.com/news-politics/a71427015/one-day-in-america/",
+          "source": {
+            "name": "NewsAPI",
+            "url": "https://newsapi.org",
+            "tier": "media",
+            "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 journalism — corroborate with official records"
+        },
+        {
+          "id": "newsapi-6",
+          "title": "Their Album Was Banned. Their Members Were Arrested. But at Trial, the Jurors Couldn’t Stop Laughing.",
+          "detail": "It was the only album in U.S. history to be deemed “obscene.” It was saved by a few old ladies. · Slate Magazine",
+          "date": "2026-06-23T09:45:00Z",
+          "link": "https://slate.com/culture/2026/06/2-live-crew-me-so-horny-censorship-song-lyrics-luke.html",
+          "source": {
+            "name": "NewsAPI",
+            "url": "https://newsapi.org",
+            "tier": "media",
+            "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 journalism — corroborate with official records"
+        },
+        {
+          "id": "newsapi-7",
+          "title": "The Colorado River is vanishing — and the fixes are getting weird",
+          "detail": "Desalination. Pipelines. Cloud seeding. Those are just a few ideas for how the Trump administration should save the desiccated waterway. · Grist",
+          "date": "2026-06-23T08:45:00Z",
+          "link": "https://grist.org/solutions/the-colorado-river-is-vanishing-and-the-fixes-are-getting-weird/",
+          "source": {
+            "name": "NewsAPI",
+            "url": "https://newsapi.org",
+            "tier": "media",
+            "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 journalism — corroborate with official records"
+        },
+        {
+          "id": "newsapi-8",
+          "title": "Florida’s ‘Free Kill’ law leaves grieving families with no day in court",
+          "detail": "Florida is the only state in the nation where an adult child of unmarried parents can lose their parent to a doctor’s negligence and never be allowed to tell a jury what that loss cost them. Florida also suppresses the grief of a parent who loses an adult chi… · Naturalnews.com",
+          "date": "2026-06-23T06:00:00Z",
+          "link": "https://www.naturalnews.com/2026-06-23-floridas-free-kill-law-no-court-day.html",
+          "source": {
+            "name": "NewsAPI",
+            "url": "https://newsapi.org",
+            "tier": "media",
+            "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 journalism — corroborate with official records"
+        },
+        {
+          "id": "newsapi-9",
+          "title": "5 Years After Surfside Collapse: Safer Condos, More Transparency for Underwriters",
+          "detail": "June 24, 2026 marks the fifth anniversary of the tragic collapse of Champlain Towers South in Surfside, Florida. Like many Floridians, I remember exactly where I was when I first heard the news. The loss of 98 lives was heartbreaking, … · Insurance Journal",
+          "date": "2026-06-23T05:02:22Z",
+          "link": "https://www.insurancejournal.com/news/southeast/2026/06/23/874845.htm",
+          "source": {
+            "name": "NewsAPI",
+            "url": "https://newsapi.org",
+            "tier": "media",
+            "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 journalism — corroborate with official records"
+        },
+        {
+          "id": "newsapi-10",
+          "title": "‘We’ll Want Some Proof’: State Farm CEO’s Take on NY Auto Insurance Reforms",
+          "detail": "While State Farm publicly supported auto insurance reform measures in New York this year, now that a package of changes has been written into the state’s statutes, the insurance giant is taking a measured business approach. “We want some proof … · Carriermanagement.com",
+          "date": "2026-06-23T05:00:41Z",
+          "link": "https://www.carriermanagement.com/features/2026/06/17/289163.htm",
+          "source": {
+            "name": "NewsAPI",
+            "url": "https://newsapi.org",
+            "tier": "media",
+            "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 journalism — corroborate with official records"
+        },
+        {
+          "id": "newsapi-11",
+          "title": "I am the child whom abortion advocates would call a ‘hard case’",
+          "detail": "My mother’s decision to spare my life challenges a troubling assumption that often underlies abortion advocacy: that some lives become less valuable when conceived under undesirable conditions. · Americanthinker.com",
+          "date": "2026-06-23T04:00:00Z",
+          "link": "https://www.americanthinker.com/blog/2026/06/i-am-the-child-whom-abortion-advocates-would-call-a-hard-case/",
+          "source": {
+            "name": "NewsAPI",
+            "url": "https://newsapi.org",
+            "tier": "media",
+            "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 journalism — corroborate with official records"
+        }
+      ]
+    },
+    {
+      "sourceId": "gdelt",
+      "label": "GDELT — Florida coverage",
+      "meta": {
+        "source": {
+          "name": "GDELT Project",
+          "url": "https://www.gdeltproject.org",
+          "tier": "media",
+          "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing"
+        },
+        "asOf": "2026-06-24",
+        "fetchedAt": "2026-06-24T16:13:03.182Z",
+        "totalCount": 50,
+        "datasetUrl": "https://api.gdeltproject.org/api/v2/doc/doc?query=Florida%20(governor%20OR%20legislature%20OR%20senate%20OR%20election%20OR%20congress)&mode=artlist&maxrecords=50&format=json&sort=datedesc&timespan=14d",
+        "note": "Florida political news coverage (last 14 days) via the GDELT 2.0 DOC API. Tier 3 automated aggregator over global journalism — always corroborate with Tier 1/2 records before treating as fact.",
+        "tierFlag": "Tier 3 — corroborate with official records"
+      },
+      "records": [
+        {
+          "id": "gdelt-0",
+          "title": "Map Shows Where a Right - to - Carry Law Would Hit Hardest",
+          "detail": "newsweek.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.newsweek.com/map-shows-states-where-right-to-carry-law-would-have-biggest-impact-12114023",
+          "source": {
+            "name": "GDELT Project",
+            "url": "https://www.gdeltproject.org",
+            "tier": "media",
+            "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+            "date": "2026-06-24"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+        },
+        {
+          "id": "gdelt-1",
+          "title": "Trump heads to Capitol to speak with Republican senators",
+          "detail": "wcvb.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.wcvb.com/article/trump-gop-senators-capitol-hill-save-america-act/71692552",
+          "source": {
+            "name": "GDELT Project",
+            "url": "https://www.gdeltproject.org",
+            "tier": "media",
+            "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+            "date": "2026-06-24"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+        },
+        {
+          "id": "gdelt-2",
+          "title": "The Filibuster Is Saving Trump",
+          "detail": "newsweek.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.newsweek.com/trump-senate-filibuster-republicans-save-act-midterms-12114076",
+          "source": {
+            "name": "GDELT Project",
+            "url": "https://www.gdeltproject.org",
+            "tier": "media",
+            "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+            "date": "2026-06-24"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+        },
+        {
+          "id": "gdelt-3",
+          "title": "Trump heads to Capitol to speak with frustrated GOP senators",
+          "detail": "redlandsdailyfacts.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.redlandsdailyfacts.com/2026/06/24/trump-republican-senators-meeting/",
+          "source": {
+            "name": "GDELT Project",
+            "url": "https://www.gdeltproject.org",
+            "tier": "media",
+            "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+            "date": "2026-06-24"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+        },
+        {
+          "id": "gdelt-4",
+          "title": "Florida Health Information Exchange Selects CRISP Shared Services to Modernize Interoperability and Transform Care Across the State",
+          "detail": "prnewswire.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.prnewswire.com/news-releases/florida-health-information-exchange-selects-crisp-shared-services-to-modernize-interoperability-and-transform-care-across-the-state-302809372.html",
+          "source": {
+            "name": "GDELT Project",
+            "url": "https://www.gdeltproject.org",
+            "tier": "media",
+            "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+            "date": "2026-06-24"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+        },
+        {
+          "id": "gdelt-5",
+          "title": "Tinubu greets ex - presidential contender , Nicolas Felix on his birthday",
+          "detail": "theeagleonline.com.ng · English · Nigeria",
+          "date": "2026-06-24",
+          "link": "https://theeagleonline.com.ng/tinubu-greets-ex-presidential-contender-nicolas-felix-on-his-birthday/",
+          "source": {
+            "name": "GDELT Project",
+            "url": "https://www.gdeltproject.org",
+            "tier": "media",
+            "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+            "date": "2026-06-24"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+        },
+        {
+          "id": "gdelt-6",
+          "title": "8 - year - old drowns in Boynton . How parents can boost pool safety",
+          "detail": "yahoo.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.yahoo.com/news/us/articles/8-old-drowns-boynton-parents-134623963.html",
+          "source": {
+            "name": "GDELT Project",
+            "url": "https://www.gdeltproject.org",
+            "tier": "media",
+            "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+            "date": "2026-06-24"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+        },
+        {
+          "id": "gdelt-7",
+          "title": "Congress passes major housing bill . And , Mamdani - backed candidates sweep NYC primaries",
+          "detail": "northcountrypublicradio.org · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.northcountrypublicradio.org/news/npr/g-s1-129769/congress-passes-major-housing-bill-and-mamdani-backed-candidates-sweep-nyc-primaries",
+          "source": {
+            "name": "GDELT Project",
+            "url": "https://www.gdeltproject.org",
+            "tier": "media",
+            "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+            "date": "2026-06-24"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+        },
+        {
+          "id": "gdelt-8",
+          "title": "Economic , Election Integrity & Political Realities – Top 3 Takeaways | Vero Patriot",
+          "detail": "veropatriot.iheart.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://veropatriot.iheart.com/featured/brian-mudd/content/2026-06-24-economic-election-integrity-political-realities-top-3-takeaways/",
+          "source": {
+            "name": "GDELT Project",
+            "url": "https://www.gdeltproject.org",
+            "tier": "media",
+            "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+            "date": "2026-06-24"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+        },
+        {
+          "id": "gdelt-9",
+          "title": "Congress passes major housing bill . And , Mamdani - backed candidates sweep NYC primaries",
+          "detail": "ketr.org · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.ketr.org/2026-06-24/congress-passes-major-housing-bill-and-mamdani-backed-candidates-sweep-nyc-primaries",
+          "source": {
+            "name": "GDELT Project",
+            "url": "https://www.gdeltproject.org",
+            "tier": "media",
+            "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+            "date": "2026-06-24"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+        },
+        {
+          "id": "gdelt-10",
+          "title": "Trump heads to Capitol to speak with Republican senators",
+          "detail": "koco.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.koco.com/article/trump-gop-senators-capitol-hill-save-america-act/71692552",
+          "source": {
+            "name": "GDELT Project",
+            "url": "https://www.gdeltproject.org",
+            "tier": "media",
+            "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+            "date": "2026-06-24"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+        },
+        {
+          "id": "gdelt-11",
+          "title": "Trump heads to Capitol to speak with GOP senators who have grown increasingly frustrated with him",
+          "detail": "newsday.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.newsday.com/news/nation/trump-capitol-republican-senators-n15364",
+          "source": {
+            "name": "GDELT Project",
+            "url": "https://www.gdeltproject.org",
+            "tier": "media",
+            "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+            "date": "2026-06-24"
+          },
+          "asOf": "2026-06-24",
+          "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+        }
+      ]
+    }
+  ]
+}
