@@ -1,0 +1,869 @@
+{
+  "meta": {
+    "source": {
+      "name": "GDELT Project",
+      "url": "https://www.gdeltproject.org",
+      "tier": "media",
+      "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing"
+    },
+    "asOf": "2026-06-24",
+    "fetchedAt": "2026-06-24T16:13:03.182Z",
+    "count": 50,
+    "stateCode": "FL",
+    "fetchedLive": true,
+    "datasetUrl": "https://api.gdeltproject.org/api/v2/doc/doc?query=Florida%20(governor%20OR%20legislature%20OR%20senate%20OR%20election%20OR%20congress)&mode=artlist&maxrecords=50&format=json&sort=datedesc&timespan=14d",
+    "note": "Florida political news coverage (last 14 days) via the GDELT 2.0 DOC API. Tier 3 automated aggregator over global journalism — always corroborate with Tier 1/2 records before treating as fact."
+  },
+  "records": [
+    {
+      "title": "Map Shows Where a Right - to - Carry Law Would Hit Hardest",
+      "url": "https://www.newsweek.com/map-shows-states-where-right-to-carry-law-would-have-biggest-impact-12114023",
+      "domain": "newsweek.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Trump heads to Capitol to speak with Republican senators",
+      "url": "https://www.wcvb.com/article/trump-gop-senators-capitol-hill-save-america-act/71692552",
+      "domain": "wcvb.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "The Filibuster Is Saving Trump",
+      "url": "https://www.newsweek.com/trump-senate-filibuster-republicans-save-act-midterms-12114076",
+      "domain": "newsweek.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Trump heads to Capitol to speak with frustrated GOP senators",
+      "url": "https://www.redlandsdailyfacts.com/2026/06/24/trump-republican-senators-meeting/",
+      "domain": "redlandsdailyfacts.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Florida Health Information Exchange Selects CRISP Shared Services to Modernize Interoperability and Transform Care Across the State",
+      "url": "https://www.prnewswire.com/news-releases/florida-health-information-exchange-selects-crisp-shared-services-to-modernize-interoperability-and-transform-care-across-the-state-302809372.html",
+      "domain": "prnewswire.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Tinubu greets ex - presidential contender , Nicolas Felix on his birthday",
+      "url": "https://theeagleonline.com.ng/tinubu-greets-ex-presidential-contender-nicolas-felix-on-his-birthday/",
+      "domain": "theeagleonline.com.ng",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "Nigeria",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "8 - year - old drowns in Boynton . How parents can boost pool safety",
+      "url": "https://www.yahoo.com/news/us/articles/8-old-drowns-boynton-parents-134623963.html",
+      "domain": "yahoo.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Congress passes major housing bill . And , Mamdani - backed candidates sweep NYC primaries",
+      "url": "https://www.northcountrypublicradio.org/news/npr/g-s1-129769/congress-passes-major-housing-bill-and-mamdani-backed-candidates-sweep-nyc-primaries",
+      "domain": "northcountrypublicradio.org",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Economic , Election Integrity & Political Realities – Top 3 Takeaways | Vero Patriot",
+      "url": "https://veropatriot.iheart.com/featured/brian-mudd/content/2026-06-24-economic-election-integrity-political-realities-top-3-takeaways/",
+      "domain": "veropatriot.iheart.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Congress passes major housing bill . And , Mamdani - backed candidates sweep NYC primaries",
+      "url": "https://www.ketr.org/2026-06-24/congress-passes-major-housing-bill-and-mamdani-backed-candidates-sweep-nyc-primaries",
+      "domain": "ketr.org",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Trump heads to Capitol to speak with Republican senators",
+      "url": "https://www.koco.com/article/trump-gop-senators-capitol-hill-save-america-act/71692552",
+      "domain": "koco.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Trump heads to Capitol to speak with GOP senators who have grown increasingly frustrated with him",
+      "url": "https://www.newsday.com/news/nation/trump-capitol-republican-senators-n15364",
+      "domain": "newsday.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "2026 Midterm Election Update – June 24th , 2026 | Vero Patriot",
+      "url": "https://veropatriot.iheart.com/featured/brian-mudd/content/2026-06-24-2026-midterm-election-update-june-24th-2026/",
+      "domain": "veropatriot.iheart.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Ο άνθρωπος των 288 δισ . δολαρίων . Και τα 45 εκατ . δολάρια που τον έφεραν κοντά στον Τραμπ",
+      "url": "https://www.naftemporiki.gr/stories/2128717/o-anthropos-ton-288-dis-dolarion-kai-ta-45-ekat-dolaria-poy-ton-eferan-konta-ston-tramp/",
+      "domain": "naftemporiki.gr",
+      "date": "2026-06-24",
+      "language": "Greek",
+      "sourceCountry": "Greece",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Trump heads to Capitol to speak with GOP senators who have grown increasingly frustrated with him",
+      "url": "https://www.wfmj.com/news/political/trump-heads-to-capitol-to-speak-with-gop-senators-who-have-grown-increasingly-frustrated-with/article_231429f1-6f28-5145-8830-d58cae23dc54.html",
+      "domain": "wfmj.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Battle over single - use plastics erupts as 17 states , including Missouri , move to block California law",
+      "url": "https://www.newstribune.com/news/2026/jun/24/battle-over-single-use-plastics-erupts-as-17/",
+      "domain": "newstribune.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Trump heads to Capitol to speak with Republican senators",
+      "url": "https://www.wesh.com/article/trump-gop-senators-capitol-hill-save-america-act/71692552",
+      "domain": "wesh.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "WA rich are leaving ? Another tax on wealth smashes records",
+      "url": "https://www.seattletimes.com/seattle-news/politics/was-rich-are-leaving-another-tax-on-wealth-smashes-records/",
+      "domain": "seattletimes.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Trump heads to Capitol to speak with frustrated GOP senators",
+      "url": "https://www.sgvtribune.com/2026/06/24/trump-republican-senators-meeting/",
+      "domain": "sgvtribune.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "President Donald Trump heads to Capitol to speak with GOP senators who have grown increasingly frustrated with him",
+      "url": "https://abc7news.com/post/president-donald-trump-heads-capitol-speak-gop-senators-have-grown-increasingly-frustrated/19369954/",
+      "domain": "abc7news.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Trump heads to Capitol to speak with frustrated GOP senators",
+      "url": "https://www.nydailynews.com/2026/06/24/trump-republican-senators-meeting/",
+      "domain": "nydailynews.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Stop city ugly  gotcha  politics | Letters to the editor – Sun Sentinel",
+      "url": "https://www.sun-sentinel.com/2026/06/24/stop-citys-ugly-gotcha-politics-letters-to-the-editor/",
+      "domain": "sun-sentinel.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Trump heads to Capitol to speak with frustrated GOP senators",
+      "url": "https://www.dailylocal.com/2026/06/24/trump-republican-senators-meeting/",
+      "domain": "dailylocal.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Congress passes major housing bill . And , Mamdani - backed candidates sweep NYC primaries",
+      "url": "https://www.ksut.org/2026-06-24/congress-passes-major-housing-bill-and-mamdani-backed-candidates-sweep-nyc-primaries",
+      "domain": "ksut.org",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Rick Scott Circulates Plan on Government Shutdowns In The United States",
+      "url": "https://www.el-balad.com/17025599",
+      "domain": "el-balad.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "Egypt",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Congress passes major housing bill . And , Mamdani - backed candidates sweep NYC primaries",
+      "url": "https://news.wjct.org/national-news/2026-06-24/congress-passes-major-housing-bill-and-mamdani-backed-candidates-sweep-nyc-primaries",
+      "domain": "news.wjct.org",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Trump heads to Capitol to speak with frustrated GOP senators",
+      "url": "https://www.dailybreeze.com/2026/06/24/trump-republican-senators-meeting/",
+      "domain": "dailybreeze.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "President Donald Trump heads to Capitol to speak with GOP senators who have grown increasingly frustrated with him",
+      "url": "https://abc11.com/post/president-donald-trump-heads-capitol-speak-gop-senators-have-grown-increasingly-frustrated/19369954/",
+      "domain": "abc11.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "President Donald Trump heads to Capitol to speak with GOP senators who have grown increasingly frustrated with him",
+      "url": "https://abc7chicago.com/post/president-donald-trump-heads-capitol-speak-gop-senators-have-grown-increasingly-frustrated/19369954/",
+      "domain": "abc7chicago.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Congress passes major housing bill . And , Mamdani - backed candidates sweep NYC primaries",
+      "url": "https://www.northernpublicradio.org/2026-06-24/congress-passes-major-housing-bill-and-mamdani-backed-candidates-sweep-nyc-primaries",
+      "domain": "northernpublicradio.org",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Congress passes major housing bill . And , Mamdani - backed candidates sweep NYC primaries",
+      "url": "https://www.kunr.org/npr-news/2026-06-24/congress-passes-major-housing-bill-and-mamdani-backed-candidates-sweep-nyc-primaries",
+      "domain": "kunr.org",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Congress passes major housing bill . And , Mamdani - backed candidates sweep NYC primaries",
+      "url": "https://www.wbaa.org/npr-news/2026-06-24/congress-passes-major-housing-bill-and-mamdani-backed-candidates-sweep-nyc-primaries",
+      "domain": "wbaa.org",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Congress passes major housing bill . And , Mamdani - backed candidates sweep NYC primaries",
+      "url": "https://www.iowapublicradio.org/news-from-npr/2026-06-24/congress-passes-major-housing-bill-and-mamdani-backed-candidates-sweep-nyc-primaries",
+      "domain": "iowapublicradio.org",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Congress passes major housing bill . And , Mamdani - backed candidates sweep NYC primaries",
+      "url": "https://www.wkyufm.org/news/2026-06-24/congress-passes-major-housing-bill-and-mamdani-backed-candidates-sweep-nyc-primaries",
+      "domain": "wkyufm.org",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Dems rattled after progressive wave sweeps New York primaries and more top headlines",
+      "url": "https://www.foxnews.com/us/dems-rattled-after-progressive-wave-sweeps-new-york-primaries-more-top-headlines",
+      "domain": "foxnews.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Com ultradireita na Colômbia , Brasil é ilha de esquerda na América do Sul",
+      "url": "https://www.acessa.com/mundo/2026/06/331723-com-ultradireita-na-colombia-brasil-e-ilha-de-esquerda-na-america-do-sul.html",
+      "domain": "acessa.com",
+      "date": "2026-06-24",
+      "language": "Portuguese",
+      "sourceCountry": "Brazil",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Constantino earns GOP nod in 21st District ; Mamdani slate sweeps Democratic primaries in New York",
+      "url": "https://www.saratogian.com/2026/06/24/mamdani-slate-sweeps-democratic-primaries-in-new-york-ousts-2-incumbents-from-congress/",
+      "domain": "saratogian.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Congress passes major housing bill . And , Mamdani - backed candidates sweep NYC primaries",
+      "url": "https://news.wfsu.org/npr-news/2026-06-24/congress-passes-major-housing-bill-and-mamdani-backed-candidates-sweep-nyc-primaries",
+      "domain": "news.wfsu.org",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "How It Really Works : The California Billionaire Wealth Tax",
+      "url": "https://ivn.us/2026/03/04/how-it-really-works/how-it-really-works-the-california-billionaire-wealth-tax-2026-03-03/",
+      "domain": "ivn.us",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "UMH PROPERTIES , INC . WELCOMES THE 21ST CENTURY ROAD TO HOUSING ACT : A MAJOR BOOST FOR AFFORDABLE MANUFACTURED HOUSING",
+      "url": "https://www.manilatimes.net/2026/06/24/tmt-newswire/globenewswire/umh-properties-inc-welcomes-the-21st-century-road-to-housing-act-a-major-boost-for-affordable-manufactured-housing/2371781",
+      "domain": "manilatimes.net",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "Philippines",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "GOP senators to meet with Trump | The Arkansas Democrat - Gazette - Arkansa Best News Source",
+      "url": "https://www.arkansasonline.com/news/2026/jun/24/gop-senators-to-meet-with-trump/",
+      "domain": "arkansasonline.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Il presidente più di destra della storia del Cile",
+      "url": "https://www.ilpost.it/2026/03/11/cile-insediamento-jose-antonio-kast/?homepagePosition=25.2&referrerPost=3612616",
+      "domain": "ilpost.it",
+      "date": "2026-06-24",
+      "language": "Italian",
+      "sourceCountry": "Italy",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Trump says the U . S . doesnt need a trade deal with its neighbors . Farm groups push hard for renewal",
+      "url": "https://www.wglt.org/2026-06-24/usmca-trade-agreement-mexico-canada",
+      "domain": "wglt.org",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Trump heads to Capitol to speak with GOP senators who have grown increasingly frustrated with him",
+      "url": "https://www.ksat.com/news/politics/2026/06/24/trump-heads-to-capitol-to-speak-with-gop-senators-who-have-grown-increasingly-frustrated-with-him/",
+      "domain": "ksat.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Ce sărbătoresc americanii pe 4 iulie , de Ziua Independenței",
+      "url": "https://www.dcnews.ro/ce-sarbatoresc-americanii-pe-4-iulie-de-ziua-independentei_1064183.html",
+      "domain": "dcnews.ro",
+      "date": "2026-06-24",
+      "language": "Romanian",
+      "sourceCountry": "Romania",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Former Pentagon strategist says America is asking the wrong question about UAPs",
+      "url": "https://www.foxnews.com/opinion/america-right-investigate-uap-claims-thats-beginning",
+      "domain": "foxnews.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "After Barron Made Headlines With UFC Appearance , Donald Trump Private Nickname For Him Comes To Light",
+      "url": "https://www.boredpanda.com/donald-trumps-private-nickname-for-barron-is-revealed-after-ufc-appearance/",
+      "domain": "boredpanda.com",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Mamdani - backed candidates win New York primaries",
+      "url": "https://www.pakistantoday.com.pk/2026/06/24/mamdani-backed-candidates-win-three-new-york-democratic-primaries",
+      "domain": "pakistantoday.com.pk",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "Pakistan",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Il presidente più di destra della storia del Cile",
+      "url": "https://www.ilpost.it/2026/03/11/cile-insediamento-jose-antonio-kast/?homepagePosition=24.2&referrerPost=3612616",
+      "domain": "ilpost.it",
+      "date": "2026-06-24",
+      "language": "Italian",
+      "sourceCountry": "Italy",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    },
+    {
+      "title": "Trump says the U . S . doesnt need a trade deal with its neighbors . Farm groups push hard for renewal",
+      "url": "https://kansaspublicradio.org/2026-06-24/usmca-trade-agreement-mexico-canada",
+      "domain": "kansaspublicradio.org",
+      "date": "2026-06-24",
+      "language": "English",
+      "sourceCountry": "United States",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 aggregator — corroborate with Tier 1/2 sources before presenting as fact"
+    }
+  ]
+}
