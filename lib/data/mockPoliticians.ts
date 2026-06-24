@@ -252,10 +252,22 @@ export const mockPoliticians: Politician[] = [
       individualDonations: 41500000,
       pacDonations: 0,
       selfFunding: 0,
+      donorCompositionCycle: '2018',
+      donorNote:
+        'Illustrative donor composition for the 2018 cycle (amounts in $M). ActBlue is a conduit, not a PAC: it forwards earmarked small-dollar individual donations, which FEC reports as individual contributions — separate from the PAC-contribution total shown above.',
       donors: [
-        { id: 'd1', name: 'ActBlue (small-dollar bundler)', type: 'PAC', amount: 24000000, date: '2018-01-01', isLobbyist: false },
-        { id: 'd2', name: 'University employees (aggregate)', type: 'Individual', amount: 890000, date: '2018-06-30', employer: 'Various universities' },
-        { id: 'd3', name: 'Tech industry employees (aggregate)', type: 'Individual', amount: 760000, date: '2018-09-15', employer: 'Various tech companies' },
+        {
+          id: 'd1',
+          name: 'ActBlue',
+          type: 'Conduit',
+          amount: 24000000,
+          date: '2018-01-01',
+          isLobbyist: false,
+          cycle: '2018',
+          note: 'Conduit / small-dollar bundler — forwards earmarked individual contributions. Reported as individual money, not PAC contributions.',
+        },
+        { id: 'd2', name: 'University employees (aggregate)', type: 'Individual', amount: 890000, date: '2018-06-30', employer: 'Various universities', cycle: '2018' },
+        { id: 'd3', name: 'Tech industry employees (aggregate)', type: 'Individual', amount: 760000, date: '2018-09-15', employer: 'Various tech companies', cycle: '2018' },
       ],
       topIndustries: [
         { industry: 'Education', amount: 2100000, donors: 18400, percentage: 5.1 },
@@ -842,9 +854,28 @@ export const mockPoliticians: Politician[] = [
       individualDonations: 9800000,
       pacDonations: 0,
       selfFunding: 0,
+      donorCompositionCycle: '2022',
+      donorNote:
+        'Illustrative donor composition for the 2022 cycle (amounts in $M). ActBlue is a conduit, not a PAC: it forwards earmarked small-dollar individual donations, which FEC reports as individual contributions — separate from the small PAC-contribution total shown above.',
       donors: [
-        { id: 'd1', name: 'ActBlue (small-dollar bundler)', type: 'PAC', amount: 7200000, date: '2022-01-01' },
-        { id: 'd2', name: 'Small-dollar donors (avg <$50)', type: 'Individual', amount: 2600000, date: '2022-11-08' },
+        {
+          id: 'd1',
+          name: 'ActBlue',
+          type: 'Conduit',
+          amount: 7200000,
+          date: '2022-01-01',
+          cycle: '2022',
+          note: 'Conduit / small-dollar bundler — forwards earmarked individual contributions. Reported as individual money, not PAC contributions.',
+        },
+        {
+          id: 'd2',
+          name: 'Small-dollar individual donors (avg <$50)',
+          type: 'Individual',
+          amount: 2600000,
+          date: '2022-11-08',
+          cycle: '2022',
+          note: 'Aggregated individual contributions under $200.',
+        },
       ],
       topIndustries: [
         { industry: 'Education', amount: 890000, donors: 9200, percentage: 9.1 },

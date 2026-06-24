@@ -1,0 +1,4419 @@
+{
+  "meta": {
+    "source": {
+      "name": "GovTrack.us",
+      "url": "https://www.govtrack.us",
+      "tier": "nonpartisan",
+      "date": "2026-06-24",
+      "description": "Nonpartisan congressional voting record tracker"
+    },
+    "asOf": "2026-06-24",
+    "count": 120,
+    "congress": 119,
+    "fetchedLive": true,
+    "datasetUrl": "https://www.govtrack.us/api/v2/bill?congress=119&sort=-current_status_date",
+    "officialDeepLinkSource": {
+      "name": "Congress.gov",
+      "url": "https://www.congress.gov",
+      "tier": "official",
+      "description": "Official U.S. federal legislative records, bill text, and roll-call votes"
+    },
+    "nextSteps": [
+      "Cosponsor counts and CBO/JCT cost estimates are not in the keyless GovTrack list feed; integrate the Congress.gov API (CONGRESS_API_KEY) to add them.",
+      "GovTrack no longer publishes a passage prognosis via the public API; passage probability stays hidden until a sourced model is wired in (govTrackPrognosis + passageProbabilitySource).",
+      "Re-run `npm run sync:legislation` with network access to refresh the snapshot."
+    ],
+    "note": "Recent and active bills from the 119th Congress via GovTrack's keyless public API (Tier 2, nonpartisan), with constructed Congress.gov (Tier 1) deep links. Sorted by most recent action. Cosponsor counts and passage prognosis are not available from this feed and are omitted rather than estimated."
+  },
+  "bills": [
+    {
+      "id": "119-senate_resolution-783",
+      "congress": 119,
+      "billNumber": "S.Res.783",
+      "billType": "senate_resolution",
+      "chamber": "senate",
+      "title": "A resolution expressing support for the designation of June 11, 2026, as “Anti-Illicit Trade Awareness Day”.",
+      "sponsor": {
+        "name": "Bill Cassidy",
+        "bioguideId": "C001075",
+        "party": "Republican",
+        "state": "LA",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/bill_cassidy/412269"
+      },
+      "introducedDate": "2026-06-22",
+      "latestAction": {
+        "text": "Agreed To (Simple Resolution)",
+        "date": "2026-06-22",
+        "detail": "This simple resolution was agreed to on June 22, 2026. That is the end of the legislative process for a simple resolution."
+      },
+      "status": "passed_simpleres",
+      "statusLabel": "Agreed To (Simple Resolution)",
+      "stage": "passed_one_chamber",
+      "isAlive": false,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-resolution/783",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/sres783",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_resolution-782",
+      "congress": 119,
+      "billNumber": "S.Res.782",
+      "billType": "senate_resolution",
+      "chamber": "senate",
+      "title": "A resolution recognizing the importance of pollinators to ecosystem health and agriculture in the United States by designating June 22 through June 28, 2026, as “National Pollinator Week”.",
+      "sponsor": {
+        "name": "Jeff Merkley",
+        "bioguideId": "M001176",
+        "party": "Democrat",
+        "state": "OR",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/jeff_merkley/412325"
+      },
+      "introducedDate": "2026-06-22",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-22",
+        "detail": "This resolution is in the first stage of the legislative process. It was introduced into Congress on June 22, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-resolution/782",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/sres782",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_resolution-768",
+      "congress": 119,
+      "billNumber": "S.Res.768",
+      "billType": "senate_resolution",
+      "chamber": "senate",
+      "title": "A resolution commemorating the anniversary of the antisemitic attack on participants in the Run for Their Lives walk in Boulder, Colorado on June 1, 2025.",
+      "sponsor": {
+        "name": "John Hickenlooper",
+        "bioguideId": "H000273",
+        "party": "Democrat",
+        "state": "CO",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/john_hickenlooper/456797"
+      },
+      "introducedDate": "2026-06-11",
+      "latestAction": {
+        "text": "Agreed To (Simple Resolution)",
+        "date": "2026-06-22",
+        "detail": "This simple resolution was agreed to on June 22, 2026. That is the end of the legislative process for a simple resolution."
+      },
+      "status": "passed_simpleres",
+      "statusLabel": "Agreed To (Simple Resolution)",
+      "stage": "passed_one_chamber",
+      "isAlive": false,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-resolution/768",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/sres768",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_resolution-761",
+      "congress": 119,
+      "billNumber": "S.Res.761",
+      "billType": "senate_resolution",
+      "chamber": "senate",
+      "title": "A resolution designating June 23, 2026, as “Social Media Harms Victim Remembrance Day”.",
+      "sponsor": {
+        "name": "Amy Klobuchar",
+        "bioguideId": "K000367",
+        "party": "Democrat",
+        "state": "MN",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/amy_klobuchar/412242"
+      },
+      "introducedDate": "2026-06-09",
+      "latestAction": {
+        "text": "Agreed To (Simple Resolution)",
+        "date": "2026-06-22",
+        "detail": "This simple resolution was agreed to on June 22, 2026. That is the end of the legislative process for a simple resolution."
+      },
+      "status": "passed_simpleres",
+      "statusLabel": "Agreed To (Simple Resolution)",
+      "stage": "passed_one_chamber",
+      "isAlive": false,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-resolution/761",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/sres761",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-675",
+      "congress": 119,
+      "billNumber": "S.675",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "Theodore Roosevelt Presidential Library Act",
+      "sponsor": {
+        "name": "John Hoeven",
+        "bioguideId": "H001061",
+        "party": "Republican",
+        "state": "ND",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/john_hoeven/412494"
+      },
+      "introducedDate": "2025-02-20",
+      "latestAction": {
+        "text": "Passed Senate (House next)",
+        "date": "2026-06-22",
+        "detail": "This bill passed in the Senate on June 22, 2026 and goes to the House next for consideration."
+      },
+      "status": "pass_over_senate",
+      "statusLabel": "Passed Senate (House next)",
+      "stage": "passed_one_chamber",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/675",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s675",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4853",
+      "congress": 119,
+      "billNumber": "S.4853",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend the National Agricultural Research, Extension, and Teaching Policy Act of 1977 to modify the BARD Fund, and for other purposes.",
+      "sponsor": {
+        "name": "John Hoeven",
+        "bioguideId": "H001061",
+        "party": "Republican",
+        "state": "ND",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/john_hoeven/412494"
+      },
+      "introducedDate": "2026-06-22",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-22",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 22, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4853",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4853",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4852",
+      "congress": 119,
+      "billNumber": "S.4852",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend the Food, Conservation, and Energy Act of 2008 to make fertilizer storage facilities eligible for farm storage facility loans, and for other purposes.",
+      "sponsor": {
+        "name": "John Hoeven",
+        "bioguideId": "H001061",
+        "party": "Republican",
+        "state": "ND",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/john_hoeven/412494"
+      },
+      "introducedDate": "2026-06-22",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-22",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 22, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4852",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4852",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4851",
+      "congress": 119,
+      "billNumber": "S.4851",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend the Food Security Act of 1985 to establish State assistance for soil health and wildlife habitat, and for other purposes.",
+      "sponsor": {
+        "name": "John Hoeven",
+        "bioguideId": "H001061",
+        "party": "Republican",
+        "state": "ND",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/john_hoeven/412494"
+      },
+      "introducedDate": "2026-06-22",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-22",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 22, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4851",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4851",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4850",
+      "congress": 119,
+      "billNumber": "S.4850",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend title 28, United States Code, to adjust thresholds relating to jurisdiction for inflation.",
+      "sponsor": {
+        "name": "John Kennedy",
+        "bioguideId": "K000393",
+        "party": "Republican",
+        "state": "LA",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/john_kennedy/412679"
+      },
+      "introducedDate": "2026-06-22",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-22",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 22, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4850",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4850",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4849",
+      "congress": 119,
+      "billNumber": "S.4849",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to authorize funding for election security grants for fiscal years 2026, 2027, and 2028, and for other purposes.",
+      "sponsor": {
+        "name": "Alejandro Padilla",
+        "bioguideId": "P000145",
+        "party": "Democrat",
+        "state": "CA",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/alejandro_padilla/456856"
+      },
+      "introducedDate": "2026-06-22",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-22",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 22, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4849",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4849",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4848",
+      "congress": 119,
+      "billNumber": "S.4848",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend the Food, Agriculture, Conservation, and Trade Act of 1990 to improve assistance for socially disadvantaged farmers and ranchers and veteran farmers and ranchers, and for other purposes.",
+      "sponsor": {
+        "name": "Tina Smith",
+        "bioguideId": "S001203",
+        "party": "Democrat",
+        "state": "MN",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/tina_smith/412742"
+      },
+      "introducedDate": "2026-06-22",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-22",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 22, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4848",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4848",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4847",
+      "congress": 119,
+      "billNumber": "S.4847",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to establish a Summer for All program through summer enrichment expansion grants and summer programming State grants, and for other purposes.",
+      "sponsor": {
+        "name": "Christopher Murphy",
+        "bioguideId": "M001169",
+        "party": "Democrat",
+        "state": "CT",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/christopher_murphy/412194"
+      },
+      "introducedDate": "2026-06-22",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-22",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 22, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4847",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4847",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4846",
+      "congress": 119,
+      "billNumber": "S.4846",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend the United States-Mexico Transboundary Aquifer Assessment Act to reauthorize the United States-Mexico transboundary aquifer assessment program, and for other purposes.",
+      "sponsor": {
+        "name": "Mark Kelly",
+        "bioguideId": "K000377",
+        "party": "Democrat",
+        "state": "AZ",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/mark_kelly/456794"
+      },
+      "introducedDate": "2026-06-22",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-22",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 22, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4846",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4846",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9387",
+      "congress": 119,
+      "billNumber": "H.R.9387",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend the Federal Food, Drug, and Cosmetic Act to ensure consumer choice by requiring truthful labeling of lab-created butter, and for other purposes.",
+      "sponsor": {
+        "name": "Tony Wied",
+        "bioguideId": "W000829",
+        "party": "Republican",
+        "state": "WI",
+        "district": "8",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/tony_wied/456963"
+      },
+      "introducedDate": "2026-06-22",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-22",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 22, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9387",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9387",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9386",
+      "congress": 119,
+      "billNumber": "H.R.9386",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To establish the United States Commission on an Open Society with Security.",
+      "sponsor": {
+        "name": "Eleanor Norton",
+        "bioguideId": "N000147",
+        "party": "Democrat",
+        "state": "DC",
+        "district": "0",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/eleanor_norton/400295"
+      },
+      "introducedDate": "2026-06-22",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-22",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 22, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9386",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9386",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9385",
+      "congress": 119,
+      "billNumber": "H.R.9385",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To prohibit entities integral to the national interests of the United States from participating in any foreign sustainability due diligence regulation, including the Corporate Sustainability Due Diligence Directive of the European Union, and for other purposes.",
+      "sponsor": {
+        "name": "Scott Fitzgerald",
+        "bioguideId": "F000471",
+        "party": "Republican",
+        "state": "WI",
+        "district": "5",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/scott_fitzgerald/456855"
+      },
+      "introducedDate": "2026-06-22",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-22",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 22, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9385",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9385",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9384",
+      "congress": 119,
+      "billNumber": "H.R.9384",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend the Stephen Beck, Jr., ABLE Act of 2014 to adjust the amounts in ABLE accounts excluded from consideration with respect to the Supplemental Security Income Program, and for other purposes.",
+      "sponsor": {
+        "name": "Debbie Dingell",
+        "bioguideId": "D000624",
+        "party": "Democrat",
+        "state": "MI",
+        "district": "6",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/debbie_dingell/412637"
+      },
+      "introducedDate": "2026-06-22",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-22",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 22, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9384",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9384",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9383",
+      "congress": 119,
+      "billNumber": "H.R.9383",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend the Internal Revenue Code of 1986 to provide special rules with respect to the net operating losses of certain financial institutions.",
+      "sponsor": {
+        "name": "Mike Carey",
+        "bioguideId": "C001126",
+        "party": "Republican",
+        "state": "OH",
+        "district": "15",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/mike_carey/456864"
+      },
+      "introducedDate": "2026-06-22",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-22",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 22, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9383",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9383",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9382",
+      "congress": 119,
+      "billNumber": "H.R.9382",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To require the Commissioner of U.S. Customs and Border Protection to link together applications of family members throughout the NEXUS application process, and for other purposes.",
+      "sponsor": {
+        "name": "Timothy Kennedy",
+        "bioguideId": "K000402",
+        "party": "Democrat",
+        "state": "NY",
+        "district": "26",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/timothy_kennedy/456957"
+      },
+      "introducedDate": "2026-06-22",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-22",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 22, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9382",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9382",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9381",
+      "congress": 119,
+      "billNumber": "H.R.9381",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "AWARE Act",
+      "sponsor": {
+        "name": "Tim Walberg",
+        "bioguideId": "W000798",
+        "party": "Republican",
+        "state": "MI",
+        "district": "5",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/tim_walberg/412213"
+      },
+      "introducedDate": "2026-06-22",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-22",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 22, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9381",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9381",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-6644",
+      "congress": 119,
+      "billNumber": "H.R.6644",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "21st Century ROAD to Housing Act",
+      "sponsor": {
+        "name": "J. Hill",
+        "bioguideId": "H001072",
+        "party": "Republican",
+        "state": "AR",
+        "district": "2",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/french_hill/412609"
+      },
+      "introducedDate": "2025-12-11",
+      "latestAction": {
+        "text": "Passed Senate with Changes (back to House)",
+        "date": "2026-06-22",
+        "detail": "This bill has been passed in the House and the Senate, but the Senate made changes and sent it back to the House on June 22, 2026."
+      },
+      "status": "pass_back_senate",
+      "statusLabel": "Passed Senate with Changes (back to House)",
+      "stage": "passed_one_chamber",
+      "isAlive": true,
+      "scheduledConsiderationDate": "2026-06-22",
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/6644",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr6644",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_resolution-781",
+      "congress": 119,
+      "billNumber": "S.Res.781",
+      "billType": "senate_resolution",
+      "chamber": "senate",
+      "title": "A resolution commemorating June 19, 2026, as “Juneteenth National Independence Day” in recognition of June 19, 1865, the date on which news of the end of slavery reached the slaves in the Southwestern States.",
+      "sponsor": {
+        "name": "John Cornyn",
+        "bioguideId": "C001056",
+        "party": "Republican",
+        "state": "TX",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/john_cornyn/300027"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This resolution is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-resolution/781",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/sres781",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_resolution-780",
+      "congress": 119,
+      "billNumber": "S.Res.780",
+      "billType": "senate_resolution",
+      "chamber": "senate",
+      "title": "A resolution expressing support for the designation of June 19, 2026, as “World Sickle Cell Awareness Day” in order to increase public awareness across the United States and global community about sickle cell disease and the continued need for empirical research, early detection screenings, novel effective treatments leading to a cure, and preventative care programs with respect to complications from sickle cell anemia and conditions relating to sickle cell disease.",
+      "sponsor": {
+        "name": "Cory Booker",
+        "bioguideId": "B001288",
+        "party": "Democrat",
+        "state": "NJ",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/cory_booker/412598"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This resolution is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-resolution/780",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/sres780",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_resolution-779",
+      "congress": 119,
+      "billNumber": "S.Res.779",
+      "billType": "senate_resolution",
+      "chamber": "senate",
+      "title": "A resolution recognizing the contributions of Black people to the musical heritage of the United States and the need for greater access to music education for Black students and designating June 2026 as “Black Music Month”.",
+      "sponsor": {
+        "name": "Cory Booker",
+        "bioguideId": "B001288",
+        "party": "Democrat",
+        "state": "NJ",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/cory_booker/412598"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This resolution is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-resolution/779",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/sres779",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_resolution-778",
+      "congress": 119,
+      "billNumber": "S.Res.778",
+      "billType": "senate_resolution",
+      "chamber": "senate",
+      "title": "A resolution recognizing and honoring Cambodian veterans of the Khmer National Armed Forces for their sacrifices, their support of the Armed Forces of the United States, and their defense of freedom in Southeast Asia.",
+      "sponsor": {
+        "name": "Adam Schiff",
+        "bioguideId": "S001150",
+        "party": "Democrat",
+        "state": "CA",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/adam_schiff/400361"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This resolution is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-resolution/778",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/sres778",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4845",
+      "congress": 119,
+      "billNumber": "S.4845",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to require explicit Congressional approval for troops or armed men at polling places for the only exception in the United States Code, and for other purposes.",
+      "sponsor": {
+        "name": "Elissa Slotkin",
+        "bioguideId": "S001208",
+        "party": "Democrat",
+        "state": "MI",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/elissa_slotkin/412784"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4845",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4845",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4844",
+      "congress": 119,
+      "billNumber": "S.4844",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to drive innovation in developing next-generation protection for firefighters by accelerating the development of PFAS-free turnout gear, and for other purposes.",
+      "sponsor": {
+        "name": "Martin Heinrich",
+        "bioguideId": "H001046",
+        "party": "Democrat",
+        "state": "NM",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/martin_heinrich/412281"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4844",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4844",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4843",
+      "congress": 119,
+      "billNumber": "S.4843",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend the Higher Education Act of 1965 to promote comprehensive campus mental health and suicide prevention plans, and for other purposes.",
+      "sponsor": {
+        "name": "Richard Blumenthal",
+        "bioguideId": "B001277",
+        "party": "Democrat",
+        "state": "CT",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/richard_blumenthal/412490"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4843",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4843",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4842",
+      "congress": 119,
+      "billNumber": "S.4842",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend the Agricultural Marketing Act of 1946 to permanently authorize the Resilient Food Systems Infrastructure Program, to establish regional food systems hubs, and for other purposes.",
+      "sponsor": {
+        "name": "Adam Schiff",
+        "bioguideId": "S001150",
+        "party": "Democrat",
+        "state": "CA",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/adam_schiff/400361"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4842",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4842",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4841",
+      "congress": 119,
+      "billNumber": "S.4841",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend the Emergency Food Assistance Act of 1983 to allow for commodities under the emergency food assistance program to be ordered through the Department of Defense Fresh Fruit and Vegetable Program.",
+      "sponsor": {
+        "name": "Adam Schiff",
+        "bioguideId": "S001150",
+        "party": "Democrat",
+        "state": "CA",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/adam_schiff/400361"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4841",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4841",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4840",
+      "congress": 119,
+      "billNumber": "S.4840",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to expedite consideration of proposals for additions to, removals from, or other modifications with respect to entities on the Entity List.",
+      "sponsor": {
+        "name": "Marsha Blackburn",
+        "bioguideId": "B001243",
+        "party": "Republican",
+        "state": "TN",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/marsha_blackburn/400032"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4840",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4840",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4839",
+      "congress": 119,
+      "billNumber": "S.4839",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to require the Board of Governors of the Federal Reserve System, the Comptroller of the Currency, and the Federal Deposit Insurance Corporation to study how partnerships between financial technology companies and banking organizations can support new banking organization formation and community bank health, and for other purposes.",
+      "sponsor": {
+        "name": "Pete Ricketts",
+        "bioguideId": "R000618",
+        "party": "Republican",
+        "state": "NE",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/pete_ricketts/456952"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4839",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4839",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4838",
+      "congress": 119,
+      "billNumber": "S.4838",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend the Fair Labor Standards Act of 1938 to exempt certain employees engaged in outdoor recreational outfitting or guiding services from minimum wage and maximum hours requirements.",
+      "sponsor": {
+        "name": "Steve Daines",
+        "bioguideId": "D000618",
+        "party": "Republican",
+        "state": "MT",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/steve_daines/412549"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4838",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4838",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4837",
+      "congress": 119,
+      "billNumber": "S.4837",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend the District of Columbia Home Rule Act to provide for the automatic appointment of judges to the District of Columbia courts without the advice and consent of the Senate, and for other purposes.",
+      "sponsor": {
+        "name": "Chris Van Hollen",
+        "bioguideId": "V000128",
+        "party": "Democrat",
+        "state": "MD",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/chris_van_hollen/400415"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4837",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4837",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4836",
+      "congress": 119,
+      "billNumber": "S.4836",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend the Food and Nutrition Act of 2008 to allow for blended workforces to carry out the supplemental nutrition assistance program under certain conditions, and for other purposes.",
+      "sponsor": {
+        "name": "Pete Ricketts",
+        "bioguideId": "R000618",
+        "party": "Republican",
+        "state": "NE",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/pete_ricketts/456952"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4836",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4836",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4835",
+      "congress": 119,
+      "billNumber": "S.4835",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to enhance the administration of export control licenses under the Export Control Reform Act of 2018, and for other purposes.",
+      "sponsor": {
+        "name": "Kevin Cramer",
+        "bioguideId": "C001096",
+        "party": "Republican",
+        "state": "ND",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/kevin_cramer/412555"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4835",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4835",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4834",
+      "congress": 119,
+      "billNumber": "S.4834",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to limit expenditures for foreign student work authorizations, and for other purposes.",
+      "sponsor": {
+        "name": "Rick Scott",
+        "bioguideId": "S001217",
+        "party": "Republican",
+        "state": "FL",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/rick_scott/412838"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4834",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4834",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4833",
+      "congress": 119,
+      "billNumber": "S.4833",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to prohibit certain uses of automated decision systems by employers, and for other purposes.",
+      "sponsor": {
+        "name": "Edward Markey",
+        "bioguideId": "M000133",
+        "party": "Democrat",
+        "state": "MA",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/edward_markey/400253"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4833",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4833",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4832",
+      "congress": 119,
+      "billNumber": "S.4832",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend the Indian Self-Determination and Education Assistance Act to allow the Secretary of Agriculture to enter into self-determination contracts with Indian Tribes and Tribal organizations to carry out supplemental nutrition assistance programs.",
+      "sponsor": {
+        "name": "Tina Smith",
+        "bioguideId": "S001203",
+        "party": "Democrat",
+        "state": "MN",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/tina_smith/412742"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4832",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4832",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4831",
+      "congress": 119,
+      "billNumber": "S.4831",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to prohibit, or require disclosure of, the surveillance, monitoring, and collection of certain worker data by employers, and for other purposes.",
+      "sponsor": {
+        "name": "Edward Markey",
+        "bioguideId": "M000133",
+        "party": "Democrat",
+        "state": "MA",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/edward_markey/400253"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4831",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4831",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4830",
+      "congress": 119,
+      "billNumber": "S.4830",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to designate the facility of the United States Postal Service located at 86-014 Farrington Highway in Waianae, Hawaii, as the “United States Representative Colleen Hanabusa Post Office Building”.",
+      "sponsor": {
+        "name": "Brian Schatz",
+        "bioguideId": "S001194",
+        "party": "Democrat",
+        "state": "HI",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/brian_schatz/412507"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4830",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4830",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4829",
+      "congress": 119,
+      "billNumber": "S.4829",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend title 49, United States Code, to provide for certain remedies for air transportation passengers with disabilities who are discriminated against, and for other purposes.",
+      "sponsor": {
+        "name": "Tammy Baldwin",
+        "bioguideId": "B001230",
+        "party": "Democrat",
+        "state": "WI",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/tammy_baldwin/400013"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4829",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4829",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4828",
+      "congress": 119,
+      "billNumber": "S.4828",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "Declaration of Independence Reaffirmation Act of 2026",
+      "sponsor": {
+        "name": "Eric Schmitt",
+        "bioguideId": "S001227",
+        "party": "Republican",
+        "state": "MO",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/eric_schmitt/456875"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Passed Senate (House next)",
+        "date": "2026-06-18",
+        "detail": "This bill passed in the Senate on June 18, 2026 and goes to the House next for consideration."
+      },
+      "status": "pass_over_senate",
+      "statusLabel": "Passed Senate (House next)",
+      "stage": "passed_one_chamber",
+      "isAlive": true,
+      "scheduledConsiderationDate": "2026-06-29",
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4828",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4828",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4827",
+      "congress": 119,
+      "billNumber": "S.4827",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to reauthorize a program for preventing outages and enhancing the resilience of the electric grid, and for other purposes.",
+      "sponsor": {
+        "name": "John Cornyn",
+        "bioguideId": "C001056",
+        "party": "Republican",
+        "state": "TX",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/john_cornyn/300027"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4827",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4827",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4826",
+      "congress": 119,
+      "billNumber": "S.4826",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend the Rebuilding Economic Prosperity and Opportunity for Ukrainians Act to authorize the use of amounts in the Ukraine Support Fund for purchases by the Government of Ukraine of defense articles and services to respond to and recover from the consequences of the aggression of the Russian Federation.",
+      "sponsor": {
+        "name": "John Cornyn",
+        "bioguideId": "C001056",
+        "party": "Republican",
+        "state": "TX",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/john_cornyn/300027"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4826",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4826",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4825",
+      "congress": 119,
+      "billNumber": "S.4825",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend the Internal Revenue Code of 1986 to impose an excise tax on systemically important AI activity, and for other purposes.",
+      "sponsor": {
+        "name": "Bernard Sanders",
+        "bioguideId": "S000033",
+        "party": "Independent",
+        "state": "VT",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/bernard_sanders/400357"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4825",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4825",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4824",
+      "congress": 119,
+      "billNumber": "S.4824",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend section 5545 of title 5, United States Code, to provide hazard pay for carrying out prescribed burns, and for other purposes.",
+      "sponsor": {
+        "name": "Tim Sheehy",
+        "bioguideId": "S001232",
+        "party": "Republican",
+        "state": "MT",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/tim_sheehy/456966"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4824",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4824",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4823",
+      "congress": 119,
+      "billNumber": "S.4823",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "A bill to amend the Export-Import Bank Act of 1945 to include quantum information science and technology in the areas covered by the Program on China and Transformational Exports.",
+      "sponsor": {
+        "name": "Andy Kim",
+        "bioguideId": "K000394",
+        "party": "Democrat",
+        "state": "NJ",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/andy_kim/412797"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4823",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4823",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4668",
+      "congress": 119,
+      "billNumber": "S.4668",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "Protect College Sports Act of 2026",
+      "sponsor": {
+        "name": "Ted Cruz",
+        "bioguideId": "C001098",
+        "party": "Republican",
+        "state": "TX",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/ted_cruz/412573"
+      },
+      "introducedDate": "2026-06-02",
+      "latestAction": {
+        "text": "Ordered Reported",
+        "date": "2026-06-18",
+        "detail": "The committees assigned to this bill sent it to the House or Senate as a whole for consideration on June 18, 2026."
+      },
+      "status": "reported",
+      "statusLabel": "Ordered Reported",
+      "stage": "committee",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4668",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4668",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4591",
+      "congress": 119,
+      "billNumber": "S.4591",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "NO FAKES Act of 2026",
+      "sponsor": {
+        "name": "Christopher Coons",
+        "bioguideId": "C001088",
+        "party": "Democrat",
+        "state": "DE",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/christopher_coons/412390"
+      },
+      "introducedDate": "2026-05-20",
+      "latestAction": {
+        "text": "Ordered Reported",
+        "date": "2026-06-18",
+        "detail": "The committees assigned to this bill sent it to the House or Senate as a whole for consideration on June 18, 2026."
+      },
+      "status": "reported",
+      "statusLabel": "Ordered Reported",
+      "stage": "committee",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4591",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4591",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-2585",
+      "congress": 119,
+      "billNumber": "S.2585",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "MAP for Broadband Funding Act",
+      "sponsor": {
+        "name": "Deb Fischer",
+        "bioguideId": "F000463",
+        "party": "Republican",
+        "state": "NE",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/deb_fischer/412556"
+      },
+      "introducedDate": "2025-07-31",
+      "latestAction": {
+        "text": "Passed Senate (House next)",
+        "date": "2026-06-18",
+        "detail": "This bill passed in the Senate on June 18, 2026 and goes to the House next for consideration."
+      },
+      "status": "pass_over_senate",
+      "statusLabel": "Passed Senate (House next)",
+      "stage": "passed_one_chamber",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/2585",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s2585",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-1146",
+      "congress": 119,
+      "billNumber": "S.1146",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "Cameras in the Courtroom Act",
+      "sponsor": {
+        "name": "Richard Durbin",
+        "bioguideId": "D000563",
+        "party": "Democrat",
+        "state": "IL",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/richard_durbin/300038"
+      },
+      "introducedDate": "2025-03-26",
+      "latestAction": {
+        "text": "Ordered Reported",
+        "date": "2026-06-18",
+        "detail": "The committees assigned to this bill sent it to the House or Senate as a whole for consideration on June 18, 2026."
+      },
+      "status": "reported",
+      "statusLabel": "Ordered Reported",
+      "stage": "committee",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/1146",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s1146",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-1133",
+      "congress": 119,
+      "billNumber": "S.1133",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "Sunshine in the Courtroom Act of 2025",
+      "sponsor": {
+        "name": "Charles Grassley",
+        "bioguideId": "G000386",
+        "party": "Republican",
+        "state": "IA",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/charles_grassley/300048"
+      },
+      "introducedDate": "2025-03-26",
+      "latestAction": {
+        "text": "Ordered Reported",
+        "date": "2026-06-18",
+        "detail": "The committees assigned to this bill sent it to the House or Senate as a whole for consideration on June 18, 2026."
+      },
+      "status": "reported",
+      "statusLabel": "Ordered Reported",
+      "stage": "committee",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/1133",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s1133",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_resolution-1376",
+      "congress": 119,
+      "billNumber": "H.Res.1376",
+      "billType": "house_resolution",
+      "chamber": "house",
+      "title": "Supporting the contributions and goals of Lavender Growers Month.",
+      "sponsor": {
+        "name": "Mike Thompson",
+        "bioguideId": "T000460",
+        "party": "Democrat",
+        "state": "CA",
+        "district": "4",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/mike_thompson/400403"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This resolution is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-resolution/1376",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hres1376",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_resolution-1375",
+      "congress": 119,
+      "billNumber": "H.Res.1375",
+      "billType": "house_resolution",
+      "chamber": "house",
+      "title": "Reaffirming the importance of the United States promoting the safety, health, and well-being of refugees and displaced persons in the United States and around the world.",
+      "sponsor": {
+        "name": "Ted Lieu",
+        "bioguideId": "L000582",
+        "party": "Democrat",
+        "state": "CA",
+        "district": "36",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/ted_lieu/412616"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This resolution is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-resolution/1375",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hres1375",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_resolution-1374",
+      "congress": 119,
+      "billNumber": "H.Res.1374",
+      "billType": "house_resolution",
+      "chamber": "house",
+      "title": "Expressing the sense of the House of Representatives that parents should be provided clear, accurate, and useful information about the content of video programming so they can make informed decisions for their children.",
+      "sponsor": {
+        "name": "Harriet Hageman",
+        "bioguideId": "H001096",
+        "party": "Republican",
+        "state": "WY",
+        "district": "0",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/harriet_hageman/456951"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This resolution is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-resolution/1374",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hres1374",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_resolution-1373",
+      "congress": 119,
+      "billNumber": "H.Res.1373",
+      "billType": "house_resolution",
+      "chamber": "house",
+      "title": "Expressing support for the designation of June 21, 2026, as National ASK (Asking Saves Kids) Day to promote children’s health and secure storage of guns in the home.",
+      "sponsor": {
+        "name": "Jason Crow",
+        "bioguideId": "C001121",
+        "party": "Democrat",
+        "state": "CO",
+        "district": "6",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/jason_crow/412762"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This resolution is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-resolution/1373",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hres1373",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_resolution-1372",
+      "congress": 119,
+      "billNumber": "H.Res.1372",
+      "billType": "house_resolution",
+      "chamber": "house",
+      "title": "Remembering kindness in the United States and affirming our commitment to fostering community and building resiliency through every day acts of kindness.",
+      "sponsor": {
+        "name": "J. Correa",
+        "bioguideId": "C001110",
+        "party": "Democrat",
+        "state": "CA",
+        "district": "46",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/luis_correa/412688"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This resolution is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-resolution/1372",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hres1372",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_resolution-1371",
+      "congress": 119,
+      "billNumber": "H.Res.1371",
+      "billType": "house_resolution",
+      "chamber": "house",
+      "title": "Expressing support for a “World Sickle Cell Awareness Day” in order to increase public awareness across the United States and global community about sickle cell disease and the continued need for empirical research, early detection screenings, novel effective treatments leading to a cure, and preventative care programs with respect to complications from sickle cell anemia and conditions relating to sickle cell disease.",
+      "sponsor": {
+        "name": "Danny Davis",
+        "bioguideId": "D000096",
+        "party": "Democrat",
+        "state": "IL",
+        "district": "7",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/danny_davis/400093"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This resolution is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-resolution/1371",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hres1371",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9380",
+      "congress": 119,
+      "billNumber": "H.R.9380",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend the Equal Credit Opportunity Act to require creditors to consider certain additional credit information when making mortgage loans, and for other purposes.",
+      "sponsor": {
+        "name": "Nikema Williams",
+        "bioguideId": "W000788",
+        "party": "Democrat",
+        "state": "GA",
+        "district": "5",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/nikema_williams/456811"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9380",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9380",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9379",
+      "congress": 119,
+      "billNumber": "H.R.9379",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To codify processing timelines for applications for the assumption of a loan guaranteed by the Department of Veterans Affairs, to require the Inspector General of the Department to conduct an assessment of loan servicer compliance with such timelines, and for other purposes.",
+      "sponsor": {
+        "name": "Eugene Vindman",
+        "bioguideId": "V000138",
+        "party": "Democrat",
+        "state": "VA",
+        "district": "7",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/eugene_vindman/457027"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9379",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9379",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9378",
+      "congress": 119,
+      "billNumber": "H.R.9378",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend the Internal Revenue Code of 1986 to establish a tax credit for grocery stores located in food deserts.",
+      "sponsor": {
+        "name": "Eugene Vindman",
+        "bioguideId": "V000138",
+        "party": "Democrat",
+        "state": "VA",
+        "district": "7",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/eugene_vindman/457027"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9378",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9378",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9377",
+      "congress": 119,
+      "billNumber": "H.R.9377",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To establish a grant program for preparing and responding to New World screwworm outbreaks, and for other purposes.",
+      "sponsor": {
+        "name": "Gabriel (Gabe) Vasquez",
+        "bioguideId": "V000136",
+        "party": "Democrat",
+        "state": "NM",
+        "district": "2",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/gabriel_gabe_vasquez/456919"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9377",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9377",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9376",
+      "congress": 119,
+      "billNumber": "H.R.9376",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend title 38, United States Code, to codify the National Veteran Suicide Prevention Annual Report and to direct the Secretary of Veterans Affairs to study the effects of the Chaplain Service of the Department on the risk of suicide among veterans.",
+      "sponsor": {
+        "name": "David Valadao",
+        "bioguideId": "V000129",
+        "party": "Republican",
+        "state": "CA",
+        "district": "22",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/david_valadao/412515"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9376",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9376",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9375",
+      "congress": 119,
+      "billNumber": "H.R.9375",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend title 38, United States Code, to authorize the Secretary of Veterans Affairs to award grants to eligible entities to provide immigration legal services to noncitizen veterans, and for other purposes.",
+      "sponsor": {
+        "name": "Norma Torres",
+        "bioguideId": "T000474",
+        "party": "Democrat",
+        "state": "CA",
+        "district": "35",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/norma_torres/412617"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9375",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9375",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9374",
+      "congress": 119,
+      "billNumber": "H.R.9374",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To require the Secretary of Homeland Security to develop and maintain an online detainee locator system, and for other purposes.",
+      "sponsor": {
+        "name": "Rashida Tlaib",
+        "bioguideId": "T000481",
+        "party": "Democrat",
+        "state": "MI",
+        "district": "12",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/rashida_tlaib/412787"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9374",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9374",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9373",
+      "congress": 119,
+      "billNumber": "H.R.9373",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend title 49, United States Code, to provide for certain remedies for air transportation passengers with disabilities who are discriminated against, and for other purposes.",
+      "sponsor": {
+        "name": "Dina Titus",
+        "bioguideId": "T000468",
+        "party": "Democrat",
+        "state": "NV",
+        "district": "1",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/dina_titus/412318"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9373",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9373",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9372",
+      "congress": 119,
+      "billNumber": "H.R.9372",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To direct the Director of the National Institute of Standards and Technology to develop best practices for measuring data center energy use, study data availability for the purpose of improving energy demand forecasting capabilities, and for other purposes.",
+      "sponsor": {
+        "name": "Suhas Subramanyam",
+        "bioguideId": "S001230",
+        "party": "Democrat",
+        "state": "VA",
+        "district": "10",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/suhas_subramanyam/457028"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9372",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9372",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9371",
+      "congress": 119,
+      "billNumber": "H.R.9371",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To require disclosure when personalized algorithmic pricing is used, and for other purposes.",
+      "sponsor": {
+        "name": "Suhas Subramanyam",
+        "bioguideId": "S001230",
+        "party": "Democrat",
+        "state": "VA",
+        "district": "10",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/suhas_subramanyam/457028"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9371",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9371",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9370",
+      "congress": 119,
+      "billNumber": "H.R.9370",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To prohibit the finalization, implementation, or enforcement of a proposed rule with respect to Federal financial assistance, and for other purposes.",
+      "sponsor": {
+        "name": "Haley Stevens",
+        "bioguideId": "S001215",
+        "party": "Democrat",
+        "state": "MI",
+        "district": "11",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/haley_stevens/412786"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9370",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9370",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9369",
+      "congress": 119,
+      "billNumber": "H.R.9369",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend title 49, United States Code, to authorize employees or authorized agents to edit or annotate electronic logging device records as long as such employee or agent is physically located in North America and the edit or annotation is subject to driver approval, and for other purposes.",
+      "sponsor": {
+        "name": "W. Steube",
+        "bioguideId": "S001214",
+        "party": "Republican",
+        "state": "FL",
+        "district": "17",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/gregory_steube/412766"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9369",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9369",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9368",
+      "congress": 119,
+      "billNumber": "H.R.9368",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "Voter ID Act",
+      "sponsor": {
+        "name": "Bryan Steil",
+        "bioguideId": "S001213",
+        "party": "Republican",
+        "state": "WI",
+        "district": "1",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/bryan_steil/412836"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9368",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9368",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9367",
+      "congress": 119,
+      "billNumber": "H.R.9367",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "Stop Lawmakers From Predicting Act",
+      "sponsor": {
+        "name": "Bryan Steil",
+        "bioguideId": "S001213",
+        "party": "Republican",
+        "state": "WI",
+        "district": "1",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/bryan_steil/412836"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9367",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9367",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9366",
+      "congress": 119,
+      "billNumber": "H.R.9366",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To require a report on Eastern Frontier infrastructure readiness.",
+      "sponsor": {
+        "name": "Keith Self",
+        "bioguideId": "S001224",
+        "party": "Republican",
+        "state": "TX",
+        "district": "3",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/keith_self/456941"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9366",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9366",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9365",
+      "congress": 119,
+      "billNumber": "H.R.9365",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To direct the Secretary of Health and Human Services to establish an office to assist communities in providing mental health services to individuals experiencing fear-based trauma related to immigration law enforcement actions taken by Federal agencies, and for other purposes.",
+      "sponsor": {
+        "name": "Luz Rivas",
+        "bioguideId": "R000620",
+        "party": "Democrat",
+        "state": "CA",
+        "district": "29",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/luz_rivas/456978"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9365",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9365",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9364",
+      "congress": 119,
+      "billNumber": "H.R.9364",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "FAST Repairs for Wheelchairs Act",
+      "sponsor": {
+        "name": "Ayanna Pressley",
+        "bioguideId": "P000617",
+        "party": "Democrat",
+        "state": "MA",
+        "district": "7",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/ayanna_pressley/412782"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9364",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9364",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9363",
+      "congress": 119,
+      "billNumber": "H.R.9363",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend the National Artificial Intelligence Initiative Act of 2020 to establish a center on artificial intelligence to ensure continued United States leadership in research, development, and evaluation of artificial intelligence systems, and for other purposes.",
+      "sponsor": {
+        "name": "Jay Obernolte",
+        "bioguideId": "O000019",
+        "party": "Republican",
+        "state": "CA",
+        "district": "23",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/jay_obernolte/456801"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9363",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9363",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9362",
+      "congress": 119,
+      "billNumber": "H.R.9362",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend the District of Columbia Home Rule Act to provide for the automatic appointment of judges to the District of Columbia courts without the advice and consent of the Senate, and for other purposes.",
+      "sponsor": {
+        "name": "Eleanor Norton",
+        "bioguideId": "N000147",
+        "party": "Democrat",
+        "state": "DC",
+        "district": "0",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/eleanor_norton/400295"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9362",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9362",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9361",
+      "congress": 119,
+      "billNumber": "H.R.9361",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To direct the Secretary of Homeland Security to create and maintain a publicly accessible database that contains information about each criminal alien who is released from custody, and for other purposes.",
+      "sponsor": {
+        "name": "Ralph Norman",
+        "bioguideId": "N000190",
+        "party": "Republican",
+        "state": "SC",
+        "district": "5",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/ralph_norman/412738"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9361",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9361",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9360",
+      "congress": 119,
+      "billNumber": "H.R.9360",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To sunset the Advisory Committee on the Records of Congress, and for other purposes.",
+      "sponsor": {
+        "name": "Mary Miller",
+        "bioguideId": "M001211",
+        "party": "Republican",
+        "state": "IL",
+        "district": "15",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/mary_miller/456820"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9360",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9360",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9359",
+      "congress": 119,
+      "billNumber": "H.R.9359",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend the Food and Nutrition Act of 2008 to provide for the reissuance to households of supplemental nutrition assistance program benefits to replace benefits stolen by identity theft or typical skimming practices, and for other purposes.",
+      "sponsor": {
+        "name": "Grace Meng",
+        "bioguideId": "M001188",
+        "party": "Democrat",
+        "state": "NY",
+        "district": "6",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/grace_meng/412560"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9359",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9359",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9358",
+      "congress": 119,
+      "billNumber": "H.R.9358",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To improve the lives of the American people, and for other purposes.",
+      "sponsor": {
+        "name": "Seth Magaziner",
+        "bioguideId": "M001223",
+        "party": "Democrat",
+        "state": "RI",
+        "district": "2",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/seth_magaziner/456937"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9358",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9358",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9357",
+      "congress": 119,
+      "billNumber": "H.R.9357",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To cancel the registration of all uses of the pesticide paraquat, and for other purposes.",
+      "sponsor": {
+        "name": "Anna Luna",
+        "bioguideId": "L000596",
+        "party": "Republican",
+        "state": "FL",
+        "district": "13",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/anna_luna/456891"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9357",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9357",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9356",
+      "congress": 119,
+      "billNumber": "H.R.9356",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "Veteran Headstone Honor Act",
+      "sponsor": {
+        "name": "Michael Lawler",
+        "bioguideId": "L000599",
+        "party": "Republican",
+        "state": "NY",
+        "district": "17",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/michael_lawler/456924"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9356",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9356",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9355",
+      "congress": 119,
+      "billNumber": "H.R.9355",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend title 28, United States Code, to reform the process for payment of certain compromise settlements, and for other purposes.",
+      "sponsor": {
+        "name": "John Larson",
+        "bioguideId": "L000557",
+        "party": "Democrat",
+        "state": "CT",
+        "district": "1",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/john_larson/400233"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9355",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9355",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9354",
+      "congress": 119,
+      "billNumber": "H.R.9354",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To reform the financing of House elections, and for other purposes.",
+      "sponsor": {
+        "name": "John Larson",
+        "bioguideId": "L000557",
+        "party": "Democrat",
+        "state": "CT",
+        "district": "1",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/john_larson/400233"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9354",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9354",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9353",
+      "congress": 119,
+      "billNumber": "H.R.9353",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend the Internal Revenue Code of 1986 to exempt qualified religious institutions from the excise tax on investment income.",
+      "sponsor": {
+        "name": "Mike Kelly",
+        "bioguideId": "K000376",
+        "party": "Republican",
+        "state": "PA",
+        "district": "16",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/mike_kelly/412465"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9353",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9353",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9352",
+      "congress": 119,
+      "billNumber": "H.R.9352",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To require reports regarding artificial intelligence-related job impacts, and for other purposes.",
+      "sponsor": {
+        "name": "Steven Horsford",
+        "bioguideId": "H001066",
+        "party": "Democrat",
+        "state": "NV",
+        "district": "4",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/steven_horsford/412559"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9352",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9352",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9351",
+      "congress": 119,
+      "billNumber": "H.R.9351",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend the Servicemembers Civil Relief Act to provide relief for members of the uniformed services who homeschool their dependent children, and for other purposes.",
+      "sponsor": {
+        "name": "Pat Harrigan",
+        "bioguideId": "H001101",
+        "party": "Republican",
+        "state": "NC",
+        "district": "10",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/pat_harrigan/457003"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9351",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9351",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9350",
+      "congress": 119,
+      "billNumber": "H.R.9350",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend the Justice for United States Victims of State Sponsored Terrorism Act with respect to lump sum catch up payment for certain eligible parties.",
+      "sponsor": {
+        "name": "Dan Goldman",
+        "bioguideId": "G000599",
+        "party": "Democrat",
+        "state": "NY",
+        "district": "10",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/dan_goldman/456923"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9350",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9350",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9349",
+      "congress": 119,
+      "billNumber": "H.R.9349",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend title 52 and title 18, United States Code, to ensure the integrity of voting systems.",
+      "sponsor": {
+        "name": "Dan Goldman",
+        "bioguideId": "G000599",
+        "party": "Democrat",
+        "state": "NY",
+        "district": "10",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/dan_goldman/456923"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9349",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9349",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9348",
+      "congress": 119,
+      "billNumber": "H.R.9348",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To require the Secretary of the Army to include in any final recommendation for a water resources development project of the Corps of Engineers a plan to maintain equivalent levels of access to existing public recreational amenities, and for other purposes.",
+      "sponsor": {
+        "name": "Laura Friedman",
+        "bioguideId": "F000483",
+        "party": "Democrat",
+        "state": "CA",
+        "district": "30",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/laura_friedman/456979"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9348",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9348",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9347",
+      "congress": 119,
+      "billNumber": "H.R.9347",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To strengthen protections against child labor violations, and for other purposes.",
+      "sponsor": {
+        "name": "Rosa DeLauro",
+        "bioguideId": "D000216",
+        "party": "Democrat",
+        "state": "CT",
+        "district": "3",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/rosa_delauro/400103"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9347",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9347",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9346",
+      "congress": 119,
+      "billNumber": "H.R.9346",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To prohibit the closure or relocation of certain Department of Agriculture offices, and for other purposes.",
+      "sponsor": {
+        "name": "Sharice Davids",
+        "bioguideId": "D000629",
+        "party": "Democrat",
+        "state": "KS",
+        "district": "3",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/sharice_davids/412780"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9346",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9346",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9345",
+      "congress": 119,
+      "billNumber": "H.R.9345",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "Medicaid Equal Standards Act",
+      "sponsor": {
+        "name": "Michael Cloud",
+        "bioguideId": "C001115",
+        "party": "Republican",
+        "state": "TX",
+        "district": "27",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/michael_cloud/412746"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9345",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9345",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9344",
+      "congress": 119,
+      "billNumber": "H.R.9344",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend the National Agricultural Research, Extension, and Teaching Policy Act of 1977, to provide for marijuana agricultural research program at 1890 institutions, and for other purposes.",
+      "sponsor": {
+        "name": "Troy Carter",
+        "bioguideId": "C001125",
+        "party": "Democrat",
+        "state": "LA",
+        "district": "2",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/troy_carter/456860"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9344",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9344",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9343",
+      "congress": 119,
+      "billNumber": "H.R.9343",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend title 39, United States Code, to establish rules and procedures for the United States Postal Service regarding the use of centralized delivery of the mail with respect to residential housing units, and for other purposes.",
+      "sponsor": {
+        "name": "Tim Burchett",
+        "bioguideId": "B001309",
+        "party": "Republican",
+        "state": "TN",
+        "district": "2",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/tim_burchett/412817"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9343",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9343",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9342",
+      "congress": 119,
+      "billNumber": "H.R.9342",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To revise certain authorities of the Government Publishing Office, and for other purposes.",
+      "sponsor": {
+        "name": "Stephanie Bice",
+        "bioguideId": "B000740",
+        "party": "Republican",
+        "state": "OK",
+        "district": "5",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/stephanie_bice/456841"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9342",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9342",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9341",
+      "congress": 119,
+      "billNumber": "H.R.9341",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "AI-Ready Federal Data Guidelines Act",
+      "sponsor": {
+        "name": "Brian Babin",
+        "bioguideId": "B001291",
+        "party": "Republican",
+        "state": "TX",
+        "district": "36",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/brian_babin/412655"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9341",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9341",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9340",
+      "congress": 119,
+      "billNumber": "H.R.9340",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "Ratepayer Protection Act",
+      "sponsor": {
+        "name": "Gabe Evans",
+        "bioguideId": "E000300",
+        "party": "Republican",
+        "state": "CO",
+        "district": "8",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/gabe_evans/456984"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9340",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9340",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9339",
+      "congress": 119,
+      "billNumber": "H.R.9339",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "Affordable Innovation for the Grid Act",
+      "sponsor": {
+        "name": "Diana Harshbarger",
+        "bioguideId": "H001086",
+        "party": "Republican",
+        "state": "TN",
+        "district": "1",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/diana_harshbarger/456844"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9339",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9339",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9338",
+      "congress": 119,
+      "billNumber": "H.R.9338",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "Pipeline Safety Authorization Act of 2026",
+      "sponsor": {
+        "name": "Randy Weber",
+        "bioguideId": "W000814",
+        "party": "Republican",
+        "state": "TX",
+        "district": "14",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/randy_weber/412574"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9338",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9338",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9337",
+      "congress": 119,
+      "billNumber": "H.R.9337",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend the Federal Power Act to modernize the hydropower licensing process, and for other purposes.",
+      "sponsor": {
+        "name": "Cliff Bentz",
+        "bioguideId": "B000668",
+        "party": "Republican",
+        "state": "OR",
+        "district": "2",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/cliff_bentz/456842"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9337",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9337",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9336",
+      "congress": 119,
+      "billNumber": "H.R.9336",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend title XIX of the Social Security Act to require States to take into account performance when assigning individuals to managed care entities under the Medicaid program.",
+      "sponsor": {
+        "name": "Craig Goldman",
+        "bioguideId": "G000601",
+        "party": "Republican",
+        "state": "TX",
+        "district": "12",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/craig_goldman/457021"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9336",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9336",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9335",
+      "congress": 119,
+      "billNumber": "H.R.9335",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "Advanced Transmission Technology to Reduce Rates Act",
+      "sponsor": {
+        "name": "Craig Goldman",
+        "bioguideId": "G000601",
+        "party": "Republican",
+        "state": "TX",
+        "district": "12",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/craig_goldman/457021"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9335",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9335",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9334",
+      "congress": 119,
+      "billNumber": "H.R.9334",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "Workforce for AI Trust Act",
+      "sponsor": {
+        "name": "Zoe Lofgren",
+        "bioguideId": "L000397",
+        "party": "Democrat",
+        "state": "CA",
+        "district": "18",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/zoe_lofgren/400245"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9334",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9334",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9333",
+      "congress": 119,
+      "billNumber": "H.R.9333",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "AI Flaw Reporting and Security Enhancement Act",
+      "sponsor": {
+        "name": "Deborah Ross",
+        "bioguideId": "R000305",
+        "party": "Democrat",
+        "state": "NC",
+        "district": "2",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/deborah_ross/456831"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9333",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9333",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9332",
+      "congress": 119,
+      "billNumber": "H.R.9332",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "Load Forecasting Enhancement Act",
+      "sponsor": {
+        "name": "Troy Balderson",
+        "bioguideId": "B001306",
+        "party": "Republican",
+        "state": "OH",
+        "district": "12",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/troy_balderson/412747"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9332",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9332",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9331",
+      "congress": 119,
+      "billNumber": "H.R.9331",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To amend the Expedited Funds Availability Act to provide exceptions in the case of fraudulent checks or wire transfers, and for other purposes.",
+      "sponsor": {
+        "name": "Young Kim",
+        "bioguideId": "K000397",
+        "party": "Republican",
+        "state": "CA",
+        "district": "40",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/young_kim/456802"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9331",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9331",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9330",
+      "congress": 119,
+      "billNumber": "H.R.9330",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "Earned Wage Access Consumer Protection Act",
+      "sponsor": {
+        "name": "Bryan Steil",
+        "bioguideId": "S001213",
+        "party": "Republican",
+        "state": "WI",
+        "district": "1",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/bryan_steil/412836"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9330",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9330",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9329",
+      "congress": 119,
+      "billNumber": "H.R.9329",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "To make improvements to the securities laws, and for other purposes.",
+      "sponsor": {
+        "name": "Ann Wagner",
+        "bioguideId": "W000812",
+        "party": "Republican",
+        "state": "MO",
+        "district": "2",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/ann_wagner/412548"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9329",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9329",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9328",
+      "congress": 119,
+      "billNumber": "H.R.9328",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "Improving Travel for Military Members Act",
+      "sponsor": {
+        "name": "Sheri Biggs",
+        "bioguideId": "B001325",
+        "party": "Republican",
+        "state": "SC",
+        "district": "3",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/sheri_biggs/457020"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9328",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9328",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_bill-9327",
+      "congress": 119,
+      "billNumber": "H.R.9327",
+      "billType": "house_bill",
+      "chamber": "house",
+      "title": "PEARL Act",
+      "sponsor": {
+        "name": "David Joyce",
+        "bioguideId": "J000295",
+        "party": "Republican",
+        "state": "OH",
+        "district": "14",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/david_joyce/412566"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This bill is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/9327",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hr9327",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-house_joint_resolution-197",
+      "congress": 119,
+      "billNumber": "H.J.Res.197",
+      "billType": "house_joint_resolution",
+      "chamber": "house",
+      "title": "Providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Centers for Medicare & Medicaid Services of the Department of Health and Human Services relating to “Patient Protection and Affordable Care Act, HHS Notice of Benefit and Payment Parameters for 2027; and Basic Health Program”.",
+      "sponsor": {
+        "name": "Kathy Castor",
+        "bioguideId": "C001066",
+        "party": "Democrat",
+        "state": "FL",
+        "district": "14",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/kathy_castor/412195"
+      },
+      "introducedDate": "2026-06-18",
+      "latestAction": {
+        "text": "Introduced",
+        "date": "2026-06-18",
+        "detail": "This resolution is in the first stage of the legislative process. It was introduced into Congress on June 18, 2026. It will typically be considered by committee next before it is possibly sent on to the House or Senate as a whole."
+      },
+      "status": "introduced",
+      "statusLabel": "Introduced",
+      "stage": "introduced",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-joint-resolution/197",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/hjres197",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4665",
+      "congress": 119,
+      "billNumber": "S.4665",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "BANNED in Latin America Act",
+      "sponsor": {
+        "name": "John Curtis",
+        "bioguideId": "C001114",
+        "party": "Republican",
+        "state": "UT",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/john_curtis/412740"
+      },
+      "introducedDate": "2026-06-02",
+      "latestAction": {
+        "text": "Ordered Reported",
+        "date": "2026-06-17",
+        "detail": "The committees assigned to this bill sent it to the House or Senate as a whole for consideration on June 17, 2026."
+      },
+      "status": "reported",
+      "statusLabel": "Ordered Reported",
+      "stage": "committee",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4665",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4665",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-4600",
+      "congress": 119,
+      "billNumber": "S.4600",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "South China Sea Strategy Act of 2026",
+      "sponsor": {
+        "name": "Tammy Duckworth",
+        "bioguideId": "D000622",
+        "party": "Democrat",
+        "state": "IL",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/tammy_duckworth/412533"
+      },
+      "introducedDate": "2026-05-20",
+      "latestAction": {
+        "text": "Ordered Reported",
+        "date": "2026-06-17",
+        "detail": "The committees assigned to this bill sent it to the House or Senate as a whole for consideration on June 17, 2026."
+      },
+      "status": "reported",
+      "statusLabel": "Ordered Reported",
+      "stage": "committee",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4600",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s4600",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-3900",
+      "congress": 119,
+      "billNumber": "S.3900",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "Iran Human Rights, Internet Freedom, and Accountability Act of 2026",
+      "sponsor": {
+        "name": "Dave McCormick",
+        "bioguideId": "M001243",
+        "party": "Republican",
+        "state": "PA",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/dave_mccormick/456968"
+      },
+      "introducedDate": "2026-02-24",
+      "latestAction": {
+        "text": "Ordered Reported",
+        "date": "2026-06-17",
+        "detail": "The committees assigned to this bill sent it to the House or Senate as a whole for consideration on June 17, 2026."
+      },
+      "status": "reported",
+      "statusLabel": "Ordered Reported",
+      "stage": "committee",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/3900",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s3900",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-3676",
+      "congress": 119,
+      "billNumber": "S.3676",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "American Decade of Sports Act",
+      "sponsor": {
+        "name": "Jacky Rosen",
+        "bioguideId": "R000608",
+        "party": "Democrat",
+        "state": "NV",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/jacky_rosen/412715"
+      },
+      "introducedDate": "2026-01-15",
+      "latestAction": {
+        "text": "Ordered Reported",
+        "date": "2026-06-17",
+        "detail": "The committees assigned to this bill sent it to the House or Senate as a whole for consideration on June 17, 2026."
+      },
+      "status": "reported",
+      "statusLabel": "Ordered Reported",
+      "stage": "committee",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/3676",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s3676",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-2578",
+      "congress": 119,
+      "billNumber": "S.2578",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "Strengthening the Rule of Law in the Brazilian Amazon Act",
+      "sponsor": {
+        "name": "Timothy Kaine",
+        "bioguideId": "K000384",
+        "party": "Democrat",
+        "state": "VA",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/timothy_kaine/412582"
+      },
+      "introducedDate": "2025-07-31",
+      "latestAction": {
+        "text": "Ordered Reported",
+        "date": "2026-06-17",
+        "detail": "The committees assigned to this bill sent it to the House or Senate as a whole for consideration on June 17, 2026."
+      },
+      "status": "reported",
+      "statusLabel": "Ordered Reported",
+      "stage": "committee",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/2578",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s2578",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "id": "119-senate_bill-1542",
+      "congress": 119,
+      "billNumber": "S.1542",
+      "billType": "senate_bill",
+      "chamber": "senate",
+      "title": "Uyghur Policy Act of 2025",
+      "sponsor": {
+        "name": "John Curtis",
+        "bioguideId": "C001114",
+        "party": "Republican",
+        "state": "UT",
+        "govTrackUrl": "https://www.govtrack.us/congress/members/john_curtis/412740"
+      },
+      "introducedDate": "2025-04-30",
+      "latestAction": {
+        "text": "Ordered Reported",
+        "date": "2026-06-17",
+        "detail": "The committees assigned to this bill sent it to the House or Senate as a whole for consideration on June 17, 2026."
+      },
+      "status": "reported",
+      "statusLabel": "Ordered Reported",
+      "stage": "committee",
+      "isAlive": true,
+      "scheduledConsiderationDate": null,
+      "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/1542",
+      "govTrackUrl": "https://www.govtrack.us/congress/bills/119/s1542",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "date": "2026-06-24",
+        "description": "Nonpartisan congressional voting record tracker"
+      },
+      "asOf": "2026-06-24"
+    }
+  ]
+}

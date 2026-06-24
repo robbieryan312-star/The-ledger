@@ -5,6 +5,7 @@ import { StockTrade, TradeTimelineEvent, Source } from '@/lib/types';
 import { TrendingUp, TrendingDown, AlertTriangle, Info, ArrowUpDown, ChevronDown, ChevronRight, Vote, MessageSquare, Landmark, BarChart2, FileText, Calendar, Filter, ExternalLink } from 'lucide-react';
 import SourceBadge from '@/components/ui/SourceBadge';
 import SourceTierHelp from '@/components/ui/SourceTierHelp';
+import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 
 type SortKey = 'date' | 'amount' | 'gain_pct' | 'conflict';
 type ConflictFilter = 'All' | 'High' | 'Medium' | 'Low';
@@ -312,6 +313,7 @@ function TradeCard({ trade, profileName }: { trade: StockTrade; profileName: str
                 </span>
               </div>
               <div className="text-lg font-bold text-[#c8a951] mt-1">{formatRange(trade)}</div>
+              <div className="text-[10px] text-gray-500">Disclosed range · estimate, not exact trade price</div>
             </div>
             <div className="text-right flex-shrink-0">
               {pct !== null && (
@@ -411,6 +413,66 @@ function TradeCard({ trade, profileName }: { trade: StockTrade; profileName: str
   );
 }
 
+/**
+ * Cumulative net of disclosed STOCK Act transactions using the midpoint of each
+ * reported dollar range (purchases add, sales subtract). This estimates transaction
+ * flow, NOT market value or total holdings — pre-period holdings and exact prices are
+ * not in PTR data — so it is labeled and caveated, never presented as net worth.
+ */
+function PortfolioValueChart({
+  series,
+}: {
+  series: { date: string; value: number; label: string }[];
+}) {
+  const data = series.map((p) => ({
+    date: new Date(p.date).toLocaleDateString('en-US', { month: 'short', year: '2-digit' }),
+    value: Math.round(p.value / 1000),
+    label: p.label,
+  }));
+
+  return (
+    <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#1e3a5f]">
+      <div className="flex items-start justify-between gap-2 mb-1 flex-wrap">
+        <h3 className="text-white font-semibold text-sm">Estimated Disclosed Portfolio Value Over Time</h3>
+        <span className="text-[10px] uppercase tracking-wide text-gray-500 border border-[#1e3a5f] px-1.5 py-0.5 rounded whitespace-nowrap">
+          STOCK Act range midpoints
+        </span>
+      </div>
+      <p className="text-gray-500 text-[11px] leading-snug mb-3">
+        Cumulative net of disclosed transactions, using the midpoint of each reported dollar range
+        (purchases add, sales subtract). This estimates transaction flow, not market value, and excludes
+        holdings disclosed before the tracked period — it can differ from actual net worth.
+      </p>
+      <ResponsiveContainer width="100%" height={200}>
+        <AreaChart data={data} margin={{ left: 0, right: 8, top: 4, bottom: 0 }}>
+          <defs>
+            <linearGradient id="pv-gradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#c8a951" stopOpacity={0.4} />
+              <stop offset="100%" stopColor="#c8a951" stopOpacity={0} />
+            </linearGradient>
+          </defs>
+          <CartesianGrid strokeDasharray="3 3" stroke="#1e3a5f" vertical={false} />
+          <XAxis dataKey="date" tick={{ fill: '#9ca3af', fontSize: 10 }} axisLine={false} tickLine={false} />
+          <YAxis
+            tick={{ fill: '#9ca3af', fontSize: 10 }}
+            axisLine={false}
+            tickLine={false}
+            tickFormatter={(v) => `$${v}K`}
+            width={52}
+          />
+          <Tooltip
+            formatter={(v) => [`$${Number(v)}K`, 'Cumulative (est.)']}
+            labelStyle={{ color: '#c8a951' }}
+            contentStyle={{ background: '#0a1628', border: '1px solid #1e3a5f', borderRadius: 8, fontSize: 12 }}
+            itemStyle={{ color: '#fff' }}
+          />
+          <Area type="monotone" dataKey="value" stroke="#c8a951" strokeWidth={2} fill="url(#pv-gradient)" />
+        </AreaChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}
+
 export default function StockTrades({
   trades,
   name,
@@ -483,6 +545,18 @@ export default function StockTrades({
   const totalValue = trades.reduce((s, t) => s + tradeSortValue(t), 0);
   const totalFlagged = trades.reduce((s, t) => s + (t.timelineEvents?.filter((e) => e.isFlagged).length ?? 0), 0);
 
+  // Cumulative net of disclosed transactions (purchases +midpoint, sales -midpoint),
+  // ordered chronologically. Estimate of transaction flow only — see chart caveat.
+  const portfolioSeries = (() => {
+    const chrono = [...trades].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    let cum = 0;
+    return chrono.map((t) => {
+      const midpoint = (t.amountMin + t.amountMax) / 2;
+      cum += t.type === 'Purchase' ? midpoint : -midpoint;
+      return { date: t.date, value: Math.round(cum), label: `${t.type} ${t.ticker}` };
+    });
+  })();
+
   return (
     <div className="space-y-5">
       <div className="flex items-baseline justify-between gap-3 flex-wrap">
@@ -492,11 +566,6 @@ export default function StockTrades({
         <span className="text-xs text-gray-500">for {name}</span>
       </div>
 
-      <DataSourceStrip
-        usingOfficialTrades={usingOfficialTrades}
-        officialSource={officialSource}
-        demoTradeCount={demoTradeCount}
-      />
       <MethodologyPanel context="profile" />
       <div className="flex justify-end">
         <SourceTierHelp />
@@ -531,6 +600,8 @@ export default function StockTrades({
           <div className="text-xs text-gray-400">High Review Priority</div>
         </div>
       </div>
+
+      {portfolioSeries.length >= 2 && <PortfolioValueChart series={portfolioSeries} />}
 
       <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#1e3a5f] space-y-3">
         <div className="flex flex-wrap gap-2">
@@ -592,6 +663,12 @@ export default function StockTrades({
       <div className="space-y-3">
         {sorted.map((trade) => <TradeCard key={trade.id} trade={trade} profileName={name} />)}
       </div>
+
+      <DataSourceStrip
+        usingOfficialTrades={usingOfficialTrades}
+        officialSource={officialSource}
+        demoTradeCount={demoTradeCount}
+      />
 
       <div className="flex items-start gap-2 text-xs text-gray-500 bg-[#0d1f35] rounded-lg p-3 border border-[#1e3a5f]">
         <Info className="h-4 w-4 flex-shrink-0 mt-0.5" />

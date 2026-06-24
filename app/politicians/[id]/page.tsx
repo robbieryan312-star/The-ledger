@@ -14,7 +14,7 @@ import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
 import VotingRecord from '@/components/politicians/VotingRecord';
 import DonorChart from '@/components/politicians/DonorChart';
 import StockTrades from '@/components/politicians/StockTrades';
-import ConsistencyScore from '@/components/politicians/ConsistencyScore';
+import CredibilityConsistency from '@/components/politicians/CredibilityConsistency';
 import RelatedOfficialRecords from '@/components/politicians/RelatedOfficialRecords';
 import PublicActionsAccordion from '@/components/politicians/PublicActionsAccordion';
 import ExecutiveActions from '@/components/politicians/ExecutiveActions';
@@ -23,13 +23,13 @@ import ExpandableEvidenceRow from '@/components/politicians/ExpandableEvidenceRo
 import { findRecordJuxtapositions } from '@/lib/data/recordJuxtapositions';
 import SourceTierHelp from '@/components/ui/SourceTierHelp';
 import ControversySection from '@/components/politicians/ControversySection';
-import NewsSection from '@/components/politicians/NewsSection';
+import ProfileNewsExplorer from '@/components/politicians/ProfileNewsExplorer';
 import Link from 'next/link';
 import {
   ArrowLeft, X, Globe, Calendar, MapPin,
   TrendingUp, DollarSign, Vote, AlertTriangle, Briefcase, Newspaper, Scale,
   ExternalLink, Users, ChevronDown, ChevronRight, Baby, Crosshair, Plane,
-  Heart, Leaf, Landmark, BookOpen, Globe2, Shield, Clock, Gavel,
+  Heart, Leaf, Landmark, BookOpen, Globe2, Shield, Clock, Gavel, Home, Award,
 } from 'lucide-react';
 import {
   STANDARD_POLICY_TOPICS,
@@ -48,7 +48,7 @@ const BASE_TABS = [
   { id: 'votes',         label: 'Voting Record',  icon: Vote },
   { id: 'finance',       label: 'Money & Donors', icon: DollarSign },
   { id: 'stocks',        label: 'Stock Trades',   icon: TrendingUp },
-  { id: 'consistency',   label: 'Promises',       icon: AlertTriangle },
+  { id: 'consistency',   label: 'Track Record',   icon: AlertTriangle },
   { id: 'controversies', label: 'Controversies',  icon: Scale },
   { id: 'news',          label: 'News',           icon: Newspaper },
   { id: 'endorsements',  label: 'Endorsements',   icon: Users },
@@ -73,10 +73,13 @@ const TOPIC_ICONS: Record<string, React.ElementType> = {
   healthcare: Heart,
   climate: Leaf,
   economy: Landmark,
+  taxes: DollarSign,
   education: BookOpen,
   foreign: Globe2,
   civil: Shield,
   criminal: Gavel,
+  housing: Home,
+  veterans: Award,
 };
 
 const HOT_TOPICS: Array<PolicyTopicDef & { Icon: React.ElementType }> = STANDARD_POLICY_TOPICS.map((t) => ({
@@ -196,6 +199,19 @@ function formatMoney(n: number): string {
   if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
   if (n >= 1_000) return `$${(n / 1_000).toFixed(0)}K`;
   return `$${n}`;
+}
+
+// Full calendar date (month + day + year) from an ISO string, parsed from parts to
+// avoid UTC off-by-one shifts. Used for term and election dates per demo feedback.
+function formatFullDate(iso?: string): string {
+  if (!iso) return '';
+  const [y, m, d] = iso.split('-').map(Number);
+  if (!y) return iso;
+  return new Date(y, (m ?? 1) - 1, d ?? 1).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
 }
 
 function BioExpandable({ bio }: { bio: string }) {
@@ -566,7 +582,7 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
                 return (
                   <span className={`flex items-center gap-1 ${soon ? 'text-[#c8a951]' : 'text-gray-400'}`}>
                     <Clock className="h-3.5 w-3.5" />
-                    Term ends {politician.termEnd.split('-')[0]}
+                    Term ends {formatFullDate(politician.termEnd)}
                     {soon && <span className="text-xs bg-[#c8a951]/20 px-1.5 py-0.5 rounded-full">({monthsLeft}mo)</span>}
                   </span>
                 );
@@ -585,7 +601,7 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
             <div className="flex flex-wrap gap-2">
               {politician.termStart && (
                 <span className="text-xs text-gray-600 flex items-center gap-1">
-                  <Calendar className="h-3 w-3" /> In office since {politician.termStart.split('-')[0]}
+                  <Calendar className="h-3 w-3" /> In office since {formatFullDate(politician.termStart)}
                 </span>
               )}
               {politician.website && (
@@ -730,11 +746,13 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Individual Donations</span>
+                    <span className="text-gray-400">Individual contributions</span>
                     <span className="text-white font-medium">{formatMoney(displayFinance.individualDonations)}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">PAC/Super PAC Money</span>
+                    <span className="text-gray-400" title="Money from PACs' own treasuries. Conduit-bundled small-dollar money (e.g. ActBlue) is reported as individual contributions, not PAC money.">
+                      PAC contributions
+                    </span>
                     <span className={`font-medium ${displayFinance.pacDonations > 0 ? 'text-yellow-400' : 'text-green-400'}`}>
                       {displayFinance.pacDonations > 0 ? formatMoney(displayFinance.pacDonations) : 'None'}
                     </span>
@@ -757,6 +775,12 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
                       {highConflictTrades.length > 0 ? `${highConflictTrades.length} detected` : 'None'}
                     </span>
                   </div>
+                  {fecEntry && (
+                    <p className="text-[10px] text-gray-600 pt-2 border-t border-white/[0.06]">
+                      Individual &amp; PAC contributions from OpenFEC (Tier 1), {fecEntry.electionYear} cycle
+                      {fecEntry.coverageEnd ? `, coverage through ${fecEntry.coverageEnd}` : ''}. Checked {fecEntry.asOf}.
+                    </p>
+                  )}
                 </div>
                 )}
               </div>
@@ -870,8 +894,20 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
 
         {activeTab === 'consistency' && (
           <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
-            <h2 className="text-white font-bold mb-4">Promise vs. Official Record</h2>
-            {isLightweight ? <MissingRecordPanel kind="campaign-promise tracking" /> : <ConsistencyScore data={politician.consistency} name={politician.name} />}
+            <h2 className="text-white font-bold mb-1">Track Record — Statements vs. Official Actions</h2>
+            <p className="text-gray-500 text-xs mb-4">
+              Statements and platform positions paired with the official record — votes, signatures, and executive
+              actions — shown as a neutral, dated factual diff.
+            </p>
+            {isLightweight ? (
+              <MissingRecordPanel kind="statement-to-action consistency tracking" />
+            ) : (
+              <CredibilityConsistency
+                data={politician.consistency}
+                issues={politician.topIssues}
+                name={politician.name}
+              />
+            )}
           </div>
         )}
 
@@ -885,7 +921,7 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
         {activeTab === 'news' && (
           <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
             <h2 className="text-white font-bold mb-4">News & Coverage</h2>
-            {isLightweight ? <MissingRecordPanel kind="news coverage" /> : <NewsSection news={politician.news} name={politician.name} />}
+            {isLightweight ? <MissingRecordPanel kind="news coverage" /> : <ProfileNewsExplorer news={politician.news} name={politician.name} />}
           </div>
         )}
 

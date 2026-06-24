@@ -8,16 +8,19 @@ export interface PolicyTopicDef {
 }
 
 export const STANDARD_POLICY_TOPICS: PolicyTopicDef[] = [
-  { id: 'abortion', label: 'Abortion', keywords: ['abortion', 'reproductive', 'pro-life', 'pro-choice', 'roe', '6-week', '15-week'] },
-  { id: 'guns', label: 'Gun Control', keywords: ['gun', 'firearm', 'second amendment', '2nd amendment', '2a', 'nra', 'carry', 'weapon'] },
-  { id: 'healthcare', label: 'Healthcare', keywords: ['healthcare', 'health care', 'medicaid', 'medicare', 'aca', 'obamacare', 'insurance', 'hospital'] },
-  { id: 'immigration', label: 'Immigration', keywords: ['immigration', 'border', 'migrants', 'undocumented', 'sanctuary', 'e-verify', 'dreamer', 'daca'] },
-  { id: 'economy', label: 'Economy / Taxes', keywords: ['economy', 'tax', 'fiscal', 'budget', 'debt', 'spending', 'esg', 'inflation', 'minimum wage'] },
-  { id: 'climate', label: 'Climate / Energy', keywords: ['climate', 'environment', 'energy', 'green', 'carbon', 'fossil', 'everglades', 'drilling', 'renewable'] },
-  { id: 'education', label: 'Education', keywords: ['education', 'school', 'learning', 'student', 'teacher', 'curriculum', 'book', 'woke', 'hbcu'] },
-  { id: 'foreign', label: 'Foreign Policy', keywords: ['foreign', 'ukraine', 'israel', 'nato', 'war', 'military', 'aid', 'china', 'taiwan', 'cuba', 'venezuela', 'haiti'] },
-  { id: 'civil', label: 'Civil Liberties', keywords: ['civil liberties', 'surveillance', 'privacy', 'fisa', 'patriot', '4th amendment', 'speech', 'censorship'] },
-  { id: 'criminal', label: 'Criminal Justice', keywords: ['criminal justice', 'sentencing', 'incarceration', 'police reform', 'bail', 'death penalty', 'prison', 'law enforcement'] },
+  { id: 'abortion', label: 'Abortion & Reproductive Rights', keywords: ['abortion', 'reproductive', 'pro-life', 'pro-choice', 'roe', '6-week', '15-week', 'contraception', 'ivf', 'dobbs'] },
+  { id: 'guns', label: 'Gun Policy', keywords: ['gun', 'firearm', 'second amendment', '2nd amendment', '2a', 'nra', 'carry', 'weapon', 'assault weapon', 'background check'] },
+  { id: 'healthcare', label: 'Healthcare', keywords: ['healthcare', 'health care', 'medicaid', 'medicare', 'aca', 'obamacare', 'insurance', 'hospital', 'prescription', 'drug price'] },
+  { id: 'immigration', label: 'Immigration', keywords: ['immigration', 'border', 'migrants', 'undocumented', 'sanctuary', 'e-verify', 'dreamer', 'daca', 'asylum'] },
+  { id: 'economy', label: 'Economy', keywords: ['economy', 'fiscal', 'budget', 'debt', 'spending', 'inflation', 'jobs', 'wage', 'minimum wage', 'trade', 'tariff'] },
+  { id: 'taxes', label: 'Taxes & Corporate Power', keywords: ['tax', 'taxes', 'corporate', 'irs', 'estate tax', 'capital gains', 'tax cut', 'antitrust', 'monopoly', 'esg'] },
+  { id: 'climate', label: 'Climate & Energy', keywords: ['climate', 'environment', 'energy', 'green', 'carbon', 'fossil', 'everglades', 'drilling', 'renewable', 'emissions', 'paris'] },
+  { id: 'education', label: 'Education', keywords: ['education', 'school', 'learning', 'student', 'teacher', 'curriculum', 'book', 'woke', 'hbcu', 'tuition', 'student loan'] },
+  { id: 'foreign', label: 'Foreign Policy & Military Spending', keywords: ['foreign', 'ukraine', 'israel', 'nato', 'war', 'military', 'aid', 'china', 'taiwan', 'cuba', 'venezuela', 'haiti', 'defense', 'pentagon', 'troops'] },
+  { id: 'civil', label: 'Civil Liberties', keywords: ['civil liberties', 'surveillance', 'privacy', 'fisa', 'patriot', '4th amendment', 'speech', 'censorship', 'voting rights'] },
+  { id: 'criminal', label: 'Criminal Justice', keywords: ['criminal justice', 'sentencing', 'incarceration', 'police reform', 'bail', 'death penalty', 'prison', 'law enforcement', 'crime'] },
+  { id: 'housing', label: 'Housing & Community', keywords: ['housing', 'rent', 'mortgage', 'homeless', 'affordable housing', 'zoning', 'eviction', 'community development', 'hud'] },
+  { id: 'veterans', label: 'Veterans & Military Families', keywords: ['veteran', 'veterans', 'gi bill', 'military family', 'service member', 'ptsd', 'tricare', 'va benefits', 'veterans affairs'] },
 ];
 
 export const TOPIC_GAP_LABEL = 'No verified record in integrated data';

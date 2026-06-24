@@ -128,7 +128,7 @@ function ElectionsContent() {
     <div className="max-w-7xl mx-auto px-4 py-8">
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-white mb-2">Elections</h1>
-        <p className="text-gray-400">Research every candidate — platform, money, and polling data in one place</p>
+        <p className="text-gray-400">A 2% tax on tea was once enough to demand accountability. They didn&apos;t just protest and complain — they built a democracy, elected representatives, and made every vote count. Today most voters walk into a booth and can&apos;t recognize most of the names on the bottom half of their ballot. We&apos;re here to change that.</p>
         {calendarView && (
           <p className="text-[#c8a951] text-sm mt-2 flex items-center gap-1.5">
             <Calendar className="h-4 w-4" /> Calendar view — sorted chronologically

@@ -8,6 +8,8 @@ import {
   BookOpen,
   Building2,
   Calendar,
+  ChevronDown,
+  ChevronRight,
   DollarSign,
   ExternalLink,
   FileText,
@@ -17,12 +19,12 @@ import {
   Landmark,
   ListChecks,
   Microscope,
+  Quote,
   Users,
 } from 'lucide-react';
 import {
   getDominantParty,
   getTotalSpending,
-  lobbyScopeLabel,
   mockLobbyingGroups,
 } from '@/lib/data/mockLobbyingGroups';
 import SourceBadge from '@/components/ui/SourceBadge';
@@ -91,6 +93,39 @@ function PartyDistribution({ group }: { group: (typeof mockLobbyingGroups)[numbe
   );
 }
 
+function StatedAgenda({
+  agenda,
+}: {
+  agenda: NonNullable<(typeof mockLobbyingGroups)[number]['statedAgenda']>;
+}) {
+  const [open, setOpen] = useState(true);
+  return (
+    <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
+      <button type="button" onClick={() => setOpen(!open)} className="w-full flex items-center justify-between gap-2 text-left">
+        <h2 className="text-white font-bold flex items-center gap-2">
+          <Quote className="h-4 w-4 text-[#d4ac52]" /> In their own words — stated agenda
+        </h2>
+        {open ? <ChevronDown className="h-4 w-4 text-white/40" /> : <ChevronRight className="h-4 w-4 text-white/40" />}
+      </button>
+      {open && (
+        <div className="mt-3">
+          <p className="text-white/40 text-xs leading-relaxed mb-3">{agenda.intro}</p>
+          <div className="space-y-2.5">
+            {agenda.claims.map((claim, i) => (
+              <div key={i} className="rounded-lg border border-white/[0.06] p-3" style={{ background: 'rgba(5,9,15,0.38)' }}>
+                <p className="text-white/70 text-sm leading-relaxed italic">{claim.text}</p>
+                <div className="mt-2">
+                  <SourceProvenance source={claim.source} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function LobbyingGroupProfile({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const group = mockLobbyingGroups.find((item) => item.id === id);
@@ -120,17 +155,8 @@ export default function LobbyingGroupProfile({ params }: { params: Promise<{ id:
           <div className="flex-1 min-w-0">
             <div className="flex flex-wrap items-start gap-3 mb-2">
               <h1 className="text-2xl md:text-3xl font-bold text-white">{group.shortName}</h1>
-              <span
-                className={`text-xs px-2.5 py-1 rounded-full font-medium tracking-wide border ${
-                  group.lobbyScope === 'foreign'
-                    ? 'text-amber-200/90 border-amber-400/25 bg-amber-400/10'
-                    : 'text-emerald-200/80 border-emerald-400/20 bg-emerald-400/8'
-                }`}
-              >
-                {lobbyScopeLabel(group.lobbyScope)}
-              </span>
               <span className="text-xs bg-[#d4ac52]/15 text-[#d4ac52] border border-[#d4ac52]/25 px-2.5 py-1 rounded-full font-medium tracking-wide">
-                {group.category.replaceAll('-', ' ')}
+                Policy area: {group.category.replaceAll('-', ' ')}
               </span>
             </div>
             <div className="text-white/55 text-sm mb-3">{group.name}</div>
@@ -187,6 +213,8 @@ export default function LobbyingGroupProfile({ params }: { params: Promise<{ id:
 
       {activeTab === 'overview' && (
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-6">
+          <div className="space-y-6">
+          {group.statedAgenda && <StatedAgenda agenda={group.statedAgenda} />}
           <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
             <h2 className="text-white font-bold mb-1 flex items-center gap-2">
               <ListChecks className="h-4 w-4 text-[#d4ac52]" /> Stated Platform Sections
@@ -203,6 +231,7 @@ export default function LobbyingGroupProfile({ params }: { params: Promise<{ id:
                 </div>
               ))}
             </div>
+          </div>
           </div>
 
           {group.researchContext && group.researchContext.length > 0 && (
@@ -269,6 +298,27 @@ export default function LobbyingGroupProfile({ params }: { params: Promise<{ id:
                 ))}
               </div>
             </div>
+
+            {group.registrations && group.registrations.length > 0 && (
+              <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
+                <h2 className="text-white font-bold mb-1 flex items-center gap-2">
+                  <FileText className="h-4 w-4 text-[#d4ac52]" /> Registrations
+                </h2>
+                <p className="text-white/35 text-xs mb-3">What kind of organization this is, by its official filings — not a functional label.</p>
+                <div className="space-y-3">
+                  {group.registrations.map((reg) => (
+                    <div key={reg.type} className="rounded-lg border border-white/[0.06] p-3" style={{ background: 'rgba(5,9,15,0.38)' }}>
+                      <div className="flex items-center justify-between gap-2 mb-1">
+                        <span className="text-white text-sm font-medium">{reg.type}</span>
+                        <SourceBadge source={reg.source} />
+                      </div>
+                      <div className="text-[#d4ac52] text-xs mb-1">{reg.status}</div>
+                      <p className="text-white/45 text-xs leading-relaxed">{reg.detail}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}

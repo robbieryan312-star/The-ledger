@@ -141,6 +141,26 @@ export interface LobbyingGroup {
     lastUpdated: string;
     notes: string[];
   };
+  /**
+   * Legal registrations shown as sourced facts — the authoritative "what kind of
+   * organization is this" descriptor (LDA lobbying, FEC committees, IRS tax status,
+   * and FARA only where actually registered). Replaces any inferred functional label.
+   */
+  registrations?: {
+    type: string;
+    status: string;
+    detail: string;
+    source: LobbyingGroupSource;
+  }[];
+  /**
+   * The organization's OWN stated agenda, in its own attributed claims — presented for
+   * context with source links so users judge for themselves, never as The Ledger's
+   * characterization. Quotes/paraphrases must be attributable to the linked source.
+   */
+  statedAgenda?: {
+    intro: string;
+    claims: { text: string; source: LobbyingGroupSource }[];
+  };
   caveat: string;
 }
 
@@ -162,6 +182,13 @@ const LDA: LobbyingGroupSource = {
 const OPENSECRETS: LobbyingGroupSource = {
   ...toSource(OPENSECRETS_TRUSTED),
   sourceType: 'aggregate',
+};
+
+const AIPAC_SITE: LobbyingGroupSource = {
+  name: 'AIPAC',
+  url: 'https://www.aipac.org/about',
+  tier: 'official',
+  sourceType: 'official-site',
 };
 
 function pewContext(source: Source, description?: string): LobbyingGroupSource {
@@ -189,6 +216,57 @@ export const mockLobbyingGroups: LobbyingGroup[] = [
     description:
       'AIPAC is a U.S.-based pro-Israel advocacy organization founded in the 1950s; historical accounts report it operated under the name American Zionist Committee for Public Affairs before adopting the AIPAC branding. It advocates for a close U.S.-Israel relationship through grassroots lobbying, annual policy conferences, and affiliated PAC and independent-expenditure vehicles disclosed separately in FEC records. LDA filings show registered federal lobbying on foreign-aid and defense-cooperation measures; OpenSecrets aggregates commonly report roughly balanced direct PAC contributions across parties in recent cycles — the illustrative 2024 demo split below is approximately 48% Democratic and 51% Republican.',
     issueFocus: ['U.S.-Israel relations', 'Foreign aid', 'Middle East policy', 'Defense cooperation'],
+    registrations: [
+      {
+        type: 'Federal lobbying (LDA)',
+        status: 'Registered',
+        detail:
+          'Registered to lobby Congress under the Lobbying Disclosure Act; filings cover foreign-aid and defense-cooperation measures.',
+        source: LDA,
+      },
+      {
+        type: 'Affiliated committees (FEC)',
+        status: 'Registered',
+        detail:
+          'Affiliated political committees — AIPAC PAC and the United Democracy Project (a super PAC) — are registered with the FEC and file independently.',
+        source: FEC,
+      },
+      {
+        type: 'Tax status (IRS)',
+        status: '501(c)(4) social welfare organization',
+        detail: 'Organized as a 501(c)(4); affiliated political committees file separately with the FEC.',
+        source: { name: 'IRS Exempt Organizations', url: 'https://www.irs.gov/charities-non-profits', tier: 'official', sourceType: 'official-site' },
+      },
+      {
+        type: 'Foreign agent (FARA)',
+        status: 'Not registered',
+        detail:
+          'AIPAC is not listed as a registrant in the U.S. Department of Justice FARA database. AIPAC states it is not funded or directed by any foreign government.',
+        source: { name: 'DOJ FARA Registry', url: 'https://efile.fara.gov', tier: 'official', sourceType: 'filing' },
+      },
+    ],
+    statedAgenda: {
+      intro:
+        "The points below are AIPAC's own stated positions, drawn from its public materials and linked to the source — presented for context so readers can judge for themselves, not as The Ledger's characterization.",
+      claims: [
+        {
+          text: 'AIPAC states its mission is to advocate for policies that strengthen the U.S.\u2013Israel relationship and to help elect candidates who support that alliance.',
+          source: AIPAC_SITE,
+        },
+        {
+          text: '\u201CAmerica is safer, stronger, and more prosperous when its relationship with Israel is ironclad.\u201D (AIPAC)',
+          source: AIPAC_SITE,
+        },
+        {
+          text: 'AIPAC describes itself as \u201Cleading the political fight to keep Congress pro-Israel,\u201D and says it works to help pro-Israel candidates win elections in both parties.',
+          source: AIPAC_SITE,
+        },
+        {
+          text: 'AIPAC states that it is not funded by or directed by the Israeli government or any foreign entity.',
+          source: AIPAC_SITE,
+        },
+      ],
+    },
     currentStatus: 'Active advocacy organization with federal lobbying and affiliated electoral spending records.',
     website: 'https://www.aipac.org',
     sources: [

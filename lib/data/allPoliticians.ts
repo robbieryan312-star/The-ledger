@@ -80,8 +80,25 @@ export const allPoliticians: Politician[] = [
 
 const byId = new Map<string, Politician>(allPoliticians.map((p) => [p.id, p]));
 
+// Resolve a bioguide ID to the roster's profile id. For featured profiles this is
+// their slug; for lightweight congressional records it is the bioguide itself.
+// Featured profiles win (listed before lightweight dupes in the roster).
+const profileIdByBioguide = new Map<string, string>();
+for (const p of allPoliticians) {
+  if (p.bioguideId && !profileIdByBioguide.has(p.bioguideId)) {
+    profileIdByBioguide.set(p.bioguideId, p.id);
+  }
+}
+
 export function getPoliticianById(id: string): Politician | undefined {
   return byId.get(id);
+}
+
+/** Find a roster profile by bioguide ID (used to link bill sponsors when resolvable). */
+export function getPoliticianByBioguide(bioguideId?: string): Politician | undefined {
+  if (!bioguideId) return undefined;
+  const id = profileIdByBioguide.get(bioguideId);
+  return id ? byId.get(id) : undefined;
 }
 
 /** Resolve a politician's current office from authoritative data (cached helper). */

@@ -117,6 +117,10 @@ export default function DashboardPage() {
         )}
       </div>
 
+      <p className="text-gray-300 text-sm leading-relaxed max-w-3xl mb-6">
+        The politicians making decisions about your community, your family&apos;s future, and the issues you actually care about will never trend on social media. They&apos;ll just appear on your ballot. Know them before that moment.
+      </p>
+
       <div className="mb-8 flex items-start gap-2 rounded-xl border border-yellow-400/20 bg-yellow-400/5 px-4 py-3 text-xs text-yellow-100/80">
         <AlertTriangle className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-yellow-400/80" />
         <p>

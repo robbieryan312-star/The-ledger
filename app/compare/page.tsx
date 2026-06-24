@@ -166,7 +166,7 @@ function CompareContent() {
     <div className="max-w-6xl mx-auto px-4 py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-2">Compare Politicians</h1>
-        <p className="text-white/40">Side-by-side comparison — FEC totals where synced, election-sourced positions where profiles are not yet integrated</p>
+        <p className="text-white/40">The two-party system has turned politics into a tribal identity. While voters dig deeper into opposing camps, the politicians at the top often have more in common than either side realizes. Find the candidate who actually shares your values — not just your team.</p>
         {electionContext && (
           <p className="text-[#c8a951] text-sm mt-2">
             Comparing candidates from: {electionContext}

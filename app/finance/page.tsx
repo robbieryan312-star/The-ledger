@@ -4,9 +4,10 @@ import { useState, useEffect, Suspense, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { mockPoliticians } from '@/lib/data/mockPoliticians';
 import { mergeCampaignFinance, getFecFinanceSnapshot } from '@/lib/data/fecFinance';
+import { mockLobbyingGroups, getTotalSpending, getDominantParty, lobbyingGroupCategories } from '@/lib/data/mockLobbyingGroups';
 import SourceBadge from '@/components/ui/SourceBadge';
 import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
-import { DollarSign, AlertTriangle, Globe, TrendingUp, ArrowRight, Info } from 'lucide-react';
+import { DollarSign, AlertTriangle, TrendingUp, ArrowRight, Info, Building2 } from 'lucide-react';
 import Link from 'next/link';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 
@@ -18,7 +19,7 @@ function formatMoney(n: number): string {
 
 function FinanceContent() {
   const searchParams = useSearchParams();
-  const [view, setView] = useState<'overview' | 'lobbyists' | 'foreign'>('overview');
+  const [view, setView] = useState<'overview' | 'lobbyists' | 'pacs'>('overview');
   const [sortBy, setSortBy] = useState<'total' | 'lobbyist' | 'pac'>('total');
   const fecMeta = getFecFinanceSnapshot().meta;
 
@@ -33,7 +34,10 @@ function FinanceContent() {
 
   useEffect(() => {
     const viewParam = searchParams.get('view');
-    if (viewParam === 'lobbyists' || viewParam === 'foreign' || viewParam === 'overview') {
+    // 'foreign' is the legacy alias for the reworked PAC & advocacy view.
+    if (viewParam === 'pacs' || viewParam === 'foreign') {
+      setView('pacs');
+    } else if (viewParam === 'lobbyists' || viewParam === 'overview') {
       setView(viewParam);
     }
   }, [searchParams]);
@@ -51,7 +55,8 @@ function FinanceContent() {
   const totalRaised = featuredWithFinance.reduce((s, row) => s + row.finance.totalRaised, 0);
   const totalLobbyist = featuredWithFinance.reduce((s, row) => s + row.finance.lobbyistMoney.reduce((sl, l) => sl + l.amount, 0), 0);
   const totalPAC = featuredWithFinance.reduce((s, row) => s + row.finance.pacDonations, 0);
-  const totalForeign = featuredWithFinance.reduce((s, row) => s + row.finance.foreignPAC.reduce((sf, f) => sf + f.amount, 0), 0);
+  const advocacyGroups = mockLobbyingGroups;
+  const foreignPolicyAlignedCount = advocacyGroups.filter((g) => g.lobbyScope === 'foreign').length;
   const fecBackedCount = featuredWithFinance.filter((row) => !!row.fecEntry).length;
 
   const chartData = sorted.slice(0, 6).map((row) => ({
@@ -70,11 +75,13 @@ function FinanceContent() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-2">Money & Donors</h1>
         <p className="text-gray-400">
-          Full transparency on campaign finance, lobbying, and foreign-connected advocacy records
-          {fecBackedCount > 0 && (
-            <span className="text-gray-500"> — {fecBackedCount} featured profile{fecBackedCount === 1 ? '' : 's'} with official FEC totals (as of {fecMeta.asOf})</span>
-          )}
+          Every politician has two agendas — the one they campaign on, and the one their donors paid for. The money tells the real story 90% of the time. Follow it.
         </p>
+        {fecBackedCount > 0 && (
+          <p className="text-gray-500 text-xs mt-1">
+            {fecBackedCount} featured profile{fecBackedCount === 1 ? '' : 's'} with official FEC totals (as of {fecMeta.asOf})
+          </p>
+        )}
       </div>
 
       {fecBackedCount > 0 && (
@@ -108,21 +115,34 @@ function FinanceContent() {
         <div className="bg-[#0d1f35] rounded-xl p-4 border border-orange-400/30">
           <TrendingUp className="h-5 w-5 text-orange-400 mb-1" />
           <div className="text-2xl font-bold text-orange-400">{formatMoney(totalPAC)}</div>
-          <div className="text-xs text-gray-400">PAC/Super PAC{fecBackedCount > 0 ? ' (FEC where available)' : ''}</div>
+          <div className="text-xs text-gray-400" title="Money from PACs' own treasuries. Conduit-bundled small-dollar money (e.g. ActBlue, WinRed) is reported as individual contributions, not PAC money.">
+            PAC contributions{fecBackedCount > 0 ? ' (FEC where available)' : ''}
+          </div>
         </div>
-        <div className="bg-[#0d1f35] rounded-xl p-4 border border-red-400/30">
-          <Globe className="h-5 w-5 text-red-400 mb-1" />
-          <div className="text-2xl font-bold text-red-400">{formatMoney(totalForeign)}</div>
-          <div className="text-xs text-gray-400">Foreign-Connected</div>
+        <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#1e3a5f]">
+          <Building2 className="h-5 w-5 text-[#c8a951] mb-1" />
+          <div className="text-2xl font-bold text-white">{advocacyGroups.length}</div>
+          <div className="text-xs text-gray-400" title="Advocacy organizations and affiliated PACs with source-linked, profiled records. Includes domestic issue advocacy and foreign-policy-aligned groups (e.g. AIPAC).">
+            PAC &amp; advocacy groups{foreignPolicyAlignedCount > 0 ? ` · ${foreignPolicyAlignedCount} foreign-policy` : ''}
+          </div>
         </div>
       </div>
+
+      <p className="text-gray-500 text-xs leading-relaxed mb-8 -mt-4">
+        <span className="text-gray-400 font-medium">How to read these categories:</span>{' '}
+        <span className="text-gray-300">Individual contributions</span> are from people;{' '}
+        <span className="text-gray-300">PAC contributions</span> are from committees&apos; own treasuries.
+        Conduits/bundlers such as ActBlue and WinRed forward earmarked small-dollar individual donations — that
+        money is reported as individual contributions, not PAC money, so a low PAC figure does not contradict a
+        large conduit total on a profile.
+      </p>
 
       {/* View Tabs */}
       <div className="flex gap-2 mb-6 flex-wrap">
         {[
           { id: 'overview', label: 'Overview' },
           { id: 'lobbyists', label: 'Lobbyists' },
-          { id: 'foreign', label: 'Foreign-Connected PACs' },
+          { id: 'pacs', label: 'PACs & Advocacy' },
         ].map((tab) => (
           <button
             key={tab.id}
@@ -159,6 +179,9 @@ function FinanceContent() {
 
       {view === 'overview' && (
         <div className="space-y-6">
+          <p className="text-white/50 text-sm leading-relaxed border-l-2 border-[#c8a951]/30 pl-3">
+            The candidate who raises more money wins roughly 90% of the time. Which raises a question worth asking — who are they actually working for once they get there? Follow the money and decide for yourself.
+          </p>
           {/* Chart */}
           <div className="bg-[#0d1f35] rounded-2xl p-5 border border-[#1e3a5f]">
             <div className="flex items-center justify-between mb-4">
@@ -234,7 +257,7 @@ function FinanceContent() {
                       <div className={`text-sm font-bold ${finance.pacDonations > 0 ? 'text-red-400' : 'text-green-400'}`}>
                         {finance.pacDonations > 0 ? formatMoney(finance.pacDonations) : '$0'}
                       </div>
-                      <div className="text-gray-500 text-xs">PAC{row.fecEntry ? '' : ' (demo)'}</div>
+                      <div className="text-gray-500 text-xs">PAC contributions{row.fecEntry ? '' : ' (demo)'}</div>
                     </div>
                     <div className="text-right flex items-center gap-2 justify-end">
                       {lobbyistTotal > 0 && <AlertTriangle className="h-3.5 w-3.5 text-yellow-400" />}
@@ -308,25 +331,112 @@ function FinanceContent() {
         </div>
       )}
 
-      {view === 'foreign' && (
-        <div className="space-y-4">
-          <div className="bg-red-400/10 border border-red-400/30 rounded-xl p-4 flex items-start gap-3">
-            <Globe className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
+      {view === 'pacs' && (
+        <div className="space-y-6">
+          <div className="bg-[#0d1f35] border border-[#1e3a5f] rounded-xl p-4 flex items-start gap-3">
+            <Info className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
             <div>
-              <div className="text-red-400 font-semibold text-sm">About Foreign-Connected PAC Records</div>
+              <div className="text-white font-semibold text-sm">PAC &amp; advocacy records, grouped by policy area</div>
               <p className="text-gray-300 text-xs mt-1 leading-relaxed">
-                Federal law prohibits direct contributions from foreign nationals to federal candidates.
-                Foreign-connected PACs, domestic subsidiaries, and issue-advocacy organizations may appear in legal disclosed records.
-                Data should be sourced from FEC, LDA, FARA, and organization filings with clear labels and no unsupported conclusions.
+                Groups are organized by the policy area they advocate on. Each organization is described on its profile
+                by its own <span className="text-gray-200">registration</span> — lobbying (LDA), PAC/Super PAC (FEC), tax
+                status, and FARA only where documented — and its stated agenda; we don&apos;t apply functional labels
+                like &ldquo;foreign&rdquo; beyond a documented DOJ FARA registration. Totals are disclosed PAC /
+                outside-spending aggregates tied to a reporting cycle and source filing; amounts marked with{' '}
+                <span className="text-gray-400">*</span> are illustrative demo values pending refresh from FEC and LDA records.
               </p>
             </div>
           </div>
 
-          <div className="bg-[#0d1f35] rounded-2xl border border-[#1e3a5f] p-6 text-center">
-            <Globe className="h-10 w-10 text-gray-600 mx-auto mb-3" />
-            <p className="text-gray-400">No foreign-connected PAC records in current data sample</p>
-            <p className="text-gray-500 text-xs mt-1">Future integration should combine FEC, LDA, FARA, and source-linked organization profiles</p>
-          </div>
+          {lobbyingGroupCategories
+            .filter((cat) => cat.value !== 'all')
+            .map((cat) => {
+            const groups = advocacyGroups.filter((g) => g.category === cat.value);
+            if (groups.length === 0) return null;
+            return (
+              <div key={cat.value} className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <h2 className="text-white font-bold text-lg">{cat.label}</h2>
+                  <span className="text-xs text-gray-500">{groups.length} group{groups.length === 1 ? '' : 's'}</span>
+                  <span className="text-[11px] text-gray-600">· policy area</span>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {groups.map((g) => {
+                      const total = getTotalSpending(g);
+                      const dominant = getDominantParty(g);
+                      return (
+                        <Link
+                          key={g.id}
+                          href={`/lobbying/${g.id}`}
+                          className="bg-[#0d1f35] rounded-xl border border-[#1e3a5f] p-4 hover:border-[#c8a951]/50 transition-colors block"
+                        >
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="min-w-0">
+                              <div className="text-white font-semibold text-sm truncate">{g.name}</div>
+                              <div className="text-gray-500 text-xs mt-0.5">{g.shortName}</div>
+                            </div>
+                            <span className="text-[10px] uppercase tracking-wide text-gray-400 border border-[#1e3a5f] px-1.5 py-0.5 rounded whitespace-nowrap">
+                              {g.dataCompleteness.level}
+                            </span>
+                          </div>
+
+                          <div className="flex flex-wrap gap-1 mt-2">
+                            {g.issueFocus.slice(0, 3).map((issue) => (
+                              <span key={issue} className="text-[11px] px-1.5 py-0.5 bg-[#1e3a5f]/60 text-gray-300 rounded">
+                                {issue}
+                              </span>
+                            ))}
+                          </div>
+
+                          <div className="mt-3 flex items-end justify-between gap-2">
+                            <div>
+                              <div className="text-[#c8a951] font-bold text-lg">{formatMoney(total)}</div>
+                              <div className="text-gray-500 text-[11px]">
+                                {g.spendingByParty.recordType} · {g.spendingByParty.cycle} cycle
+                              </div>
+                            </div>
+                            <div className="text-right text-[11px] text-gray-400">
+                              <div>Largest share: {dominant.party}</div>
+                              <div className="text-gray-600">As of {g.dataCompleteness.lastUpdated}</div>
+                            </div>
+                          </div>
+
+                          {g.federalRecipients.length > 0 && (
+                            <div className="mt-3 pt-3 border-t border-[#1e3a5f]">
+                              <div className="text-gray-400 text-[11px] mb-1">
+                                Linked federal recipients · {g.spendingByParty.cycle} cycle
+                              </div>
+                              <div className="space-y-1">
+                                {g.federalRecipients.slice(0, 3).map((r) => (
+                                  <div key={r.politicianId} className="flex items-center justify-between text-xs">
+                                    <span className="text-gray-300 truncate">
+                                      {r.name} <span className="text-gray-600">({r.party})</span>
+                                    </span>
+                                    <span className="text-white font-medium whitespace-nowrap">
+                                      {r.amount > 0 ? formatMoney(r.amount) : '$0'}{r.isDemo ? '*' : ''}
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          <div className="mt-3 text-[#c8a951] text-xs font-medium inline-flex items-center gap-1">
+                            View full record <ArrowRight className="h-3 w-3" />
+                          </div>
+                        </Link>
+                      );
+                    })}
+                </div>
+              </div>
+            );
+          })}
+
+          <p className="text-gray-600 text-[11px] leading-relaxed">
+            <span className="text-gray-400">*</span> Demo amount — illustrative, pending refresh from FEC itemized filings; the reporting
+            cycle is shown per group. Foreign-government registrants (FARA) and additional PACs will appear here as
+            source-linked records are integrated. No unverified entries are shown.
+          </p>
         </div>
       )}
     </div>

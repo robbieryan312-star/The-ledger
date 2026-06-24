@@ -31,6 +31,16 @@ const navItems = [
     ],
   },
   {
+    label: 'Legislation',
+    href: '/legislation',
+    sub: [
+      { label: 'Upcoming Legislation', href: '/legislation' },
+      { label: 'House Bills', href: '/legislation?chamber=house' },
+      { label: 'Senate Bills', href: '/legislation?chamber=senate' },
+      { label: 'Passed a Chamber', href: '/legislation?status=passed_one_chamber' },
+    ],
+  },
+  {
     label: 'Follow the Money',
     href: '/finance',
     sub: [
@@ -38,7 +48,7 @@ const navItems = [
       { label: 'Lobbying Profiles', href: '/lobbying' },
       { label: 'Lobbyist Tracker', href: '/finance?view=lobbyists' },
       { label: 'Congress Stock Trades', href: '/congress' },
-      { label: 'Foreign-Connected Records', href: '/finance?view=foreign' },
+      { label: 'PACs & Advocacy', href: '/finance?view=pacs' },
     ],
   },
   { label: 'Compare', href: '/compare' },

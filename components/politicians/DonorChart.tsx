@@ -25,10 +25,18 @@ export default function DonorChart({
   const hasFecTotals = !!fecEntry;
 
   const sourceData = [
-    { name: 'Individual', value: finance.individualDonations, color: '#4ade80' },
-    { name: 'PAC / Super PAC', value: finance.pacDonations, color: '#f87171' },
-    { name: 'Self-Funding', value: finance.selfFunding, color: '#a78bfa' },
+    { name: 'Individual contributions', value: finance.individualDonations, color: '#4ade80' },
+    { name: 'PAC contributions', value: finance.pacDonations, color: '#f87171' },
+    { name: 'Candidate self-funding', value: finance.selfFunding, color: '#a78bfa' },
   ].filter((d) => d.value > 0);
+
+  const conduitDonors = finance.donors.filter((d) => d.type === 'Conduit');
+  const hasConduit = conduitDonors.length > 0;
+  const donorCycle = finance.donorCompositionCycle ?? finance.cycle;
+  // When FEC totals are overlaid, the headline cycle can differ from the cycle the
+  // demo donor composition reflects — flag that so amounts can't be misread as the
+  // current reporting period.
+  const donorCycleDiffersFromFec = hasFecTotals && !!finance.donorCompositionCycle && String(fecEntry?.electionYear) !== finance.donorCompositionCycle;
 
   const industryData = finance.topIndustries.map((ind) => ({
     name: ind.industry.length > 18 ? ind.industry.slice(0, 18) + '…' : ind.industry,
@@ -81,13 +89,19 @@ export default function DonorChart({
           </div>
           <div className="text-xs text-gray-400">Lobbyist Money</div>
         </div>
-        <div className={`bg-[#0d1f35] rounded-xl p-4 border ${foreignTotal > 0 ? 'border-red-400/30' : 'border-[#1e3a5f]'}`}>
-          <Globe className={`h-5 w-5 mb-1 ${foreignTotal > 0 ? 'text-red-400' : 'text-gray-500'}`} />
-          <div className={`text-xl font-bold ${foreignTotal > 0 ? 'text-red-400' : 'text-gray-400'}`}>
-            {formatMoney(foreignTotal)}
+        {foreignTotal > 0 ? (
+          <div className="bg-[#0d1f35] rounded-xl p-4 border border-red-400/30">
+            <Globe className="h-5 w-5 mb-1 text-red-400" />
+            <div className="text-xl font-bold text-red-400">{formatMoney(foreignTotal)}</div>
+            <div className="text-xs text-gray-400">Foreign-connected PAC</div>
           </div>
-          <div className="text-xs text-gray-400">Foreign PAC</div>
-        </div>
+        ) : (
+          <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#1e3a5f]">
+            <Users className="h-5 w-5 text-green-400 mb-1" />
+            <div className="text-xl font-bold text-white">{formatMoney(finance.individualDonations)}</div>
+            <div className="text-xs text-gray-400">Individual contributions</div>
+          </div>
+        )}
         <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#1e3a5f]">
           <DollarSign className="h-5 w-5 text-blue-400 mb-1" />
           <div className="text-xl font-bold text-white">{formatMoney(finance.cashOnHand)}</div>
@@ -98,7 +112,18 @@ export default function DonorChart({
       {/* Donation Source Breakdown */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#1e3a5f]">
-          <h3 className="text-white font-semibold mb-4 text-sm">Funding Sources</h3>
+          <div className="flex items-start justify-between gap-2 mb-1">
+            <h3 className="text-white font-semibold text-sm">Funding Sources by Category</h3>
+            {hasFecTotals && (
+              <span className="text-[10px] uppercase tracking-wide text-green-400/90 border border-green-400/25 bg-green-400/5 px-1.5 py-0.5 rounded whitespace-nowrap">
+                FEC · cycle {fecEntry.electionYear}
+              </span>
+            )}
+          </div>
+          <p className="text-gray-500 text-[11px] leading-snug mb-3">
+            Who the money is from. PAC contributions come from committees&apos; own treasuries; conduit-bundled
+            small-dollar money (e.g. ActBlue) is reported as individual contributions, not PAC money.
+          </p>
           <ResponsiveContainer width="100%" height={160}>
             <PieChart>
               <Pie data={sourceData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={65} innerRadius={35}>
@@ -107,7 +132,7 @@ export default function DonorChart({
                 ))}
               </Pie>
               <Tooltip
-                formatter={(v) => formatMoney(Number(v))}
+                formatter={(v, name) => [formatMoney(Number(v)), name as string]}
                 contentStyle={{ background: '#0a1628', border: '1px solid #1e3a5f', borderRadius: 8, fontSize: 12 }}
                 itemStyle={{ color: '#fff' }}
               />
@@ -124,6 +149,11 @@ export default function DonorChart({
               </div>
             ))}
           </div>
+          {hasFecTotals && (
+            <p className="text-gray-600 text-[10px] mt-2 pt-2 border-t border-[#1e3a5f]">
+              Category totals from OpenFEC (Tier 1){fecEntry.coverageEnd ? `, coverage through ${fecEntry.coverageEnd}` : ''}. Checked {fecEntry.asOf}.
+            </p>
+          )}
         </div>
 
         <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#1e3a5f]">
@@ -186,33 +216,73 @@ export default function DonorChart({
       {/* Top Donors */}
       {finance.donors.length > 0 && (
         <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#1e3a5f]">
-          <div className="flex items-center gap-2 mb-3 flex-wrap">
+          <div className="flex items-center gap-2 mb-1 flex-wrap">
             <Building2 className="h-4 w-4 text-[#c8a951]" />
-            <h3 className="text-white font-semibold text-sm">Top Donors</h3>
+            <h3 className="text-white font-semibold text-sm">
+              Top Donors{donorCycle ? ` — ${donorCycle} cycle` : ''}
+            </h3>
             {hasFecTotals && (
               <span className="text-[10px] uppercase tracking-wide text-yellow-400/80 border border-yellow-400/20 px-1.5 py-0.5 rounded ml-auto">
-                Demo data — not from FEC sync
+                Demo composition — not from FEC sync
               </span>
             )}
           </div>
-          <div className="space-y-2">
+
+          {/* Category / reconciliation caption — keeps these figures from being misread
+              against the headline PAC and individual totals above. */}
+          {finance.donorNote ? (
+            <p className="text-gray-500 text-[11px] leading-snug mb-3">{finance.donorNote}</p>
+          ) : (
+            <p className="text-gray-500 text-[11px] leading-snug mb-3">
+              Largest contributors by category. Amounts shown with explicit units ($M / $K).
+            </p>
+          )}
+
+          {hasConduit && (
+            <div className="mb-3 flex items-start gap-2 rounded-lg border border-cyan-400/25 bg-cyan-400/5 px-3 py-2">
+              <Info className="h-3.5 w-3.5 text-cyan-300 flex-shrink-0 mt-0.5" />
+              <p className="text-cyan-100/80 text-[11px] leading-snug">
+                <span className="font-semibold text-cyan-200">Conduit ≠ PAC.</span>{' '}
+                {conduitDonors.map((d) => d.name).join(', ')}{' '}
+                {conduitDonors.length === 1 ? 'is a conduit/bundler' : 'are conduits/bundlers'}: the amount is
+                earmarked small-dollar <span className="font-medium">individual</span> money passed through, and is
+                reported within individual contributions — not the{' '}
+                {hasFecTotals ? formatMoney(finance.pacDonations) : ''} in PAC contributions.
+              </p>
+            </div>
+          )}
+
+          <div className="space-y-2.5">
             {finance.donors.slice(0, 8).map((donor) => (
-              <div key={donor.id} className="flex items-center justify-between gap-2">
-                <div className="flex items-center gap-2 min-w-0">
-                  <div className={`text-xs px-1.5 py-0.5 rounded flex-shrink-0 ${
-                    donor.type === 'Super PAC' ? 'bg-red-400/20 text-red-400' :
-                    donor.type === 'PAC' ? 'bg-yellow-400/20 text-yellow-400' :
-                    'bg-blue-400/20 text-blue-400'
-                  }`}>
-                    {donor.type}
+              <div key={donor.id}>
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <div className={`text-xs px-1.5 py-0.5 rounded flex-shrink-0 ${
+                      donor.type === 'Super PAC' ? 'bg-red-400/20 text-red-400' :
+                      donor.type === 'PAC' ? 'bg-yellow-400/20 text-yellow-400' :
+                      donor.type === 'Conduit' ? 'bg-cyan-400/20 text-cyan-300' :
+                      'bg-blue-400/20 text-blue-400'
+                    }`}>
+                      {donor.type}
+                    </div>
+                    <span className="text-gray-300 text-sm truncate">{donor.name}</span>
+                    {donor.isLobbyist && <AlertTriangle className="h-3 w-3 text-yellow-400 flex-shrink-0" />}
                   </div>
-                  <span className="text-gray-300 text-sm truncate">{donor.name}</span>
-                  {donor.isLobbyist && <AlertTriangle className="h-3 w-3 text-yellow-400 flex-shrink-0" />}
+                  <span className="text-white font-medium text-sm whitespace-nowrap">{formatMoney(donor.amount)}</span>
                 </div>
-                <span className="text-white font-medium text-sm whitespace-nowrap">{formatMoney(donor.amount)}</span>
+                {donor.note && (
+                  <p className="text-gray-500 text-[10px] leading-snug mt-0.5 ml-1">{donor.note}</p>
+                )}
               </div>
             ))}
           </div>
+
+          {donorCycleDiffersFromFec && (
+            <p className="text-gray-600 text-[10px] mt-3 pt-2 border-t border-[#1e3a5f]">
+              This donor composition reflects the {finance.donorCompositionCycle} cycle and is shown for illustration;
+              the category totals above are official FEC figures for the {fecEntry?.electionYear} cycle.
+            </p>
+          )}
         </div>
       )}
     </div>

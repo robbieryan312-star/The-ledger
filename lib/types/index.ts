@@ -110,6 +110,8 @@ export interface NewsItem {
   isOpinion: boolean;
   isVerified: boolean;
   url?: string;
+  /** Date we last checked this item against its source. Optional — shown only when present, never fabricated. */
+  asOf?: string;
 }
 
 // Chronological event tied to a specific stock trade
@@ -218,18 +220,39 @@ export interface CampaignFinance {
   individualDonations: number;
   pacDonations: number;
   selfFunding: number;
+  /**
+   * Optional caption for the top-donor / funding-source breakdown: which cycle it
+   * covers and how its categories reconcile with the headline FEC totals (e.g. that
+   * conduit-bundled money is reported as individual, not PAC). Never fabricated — demo
+   * composition blocks use this to stay non-contradictory with Tier-1 FEC figures.
+   */
+  donorNote?: string;
+  /** Reporting cycle the donor/industry composition reflects, when it predates current FEC totals. */
+  donorCompositionCycle?: string;
 }
 
+/**
+ * Donor `type` distinguishes who the money is *from* for FEC reporting purposes:
+ * - `Individual` — a person's contribution (incl. aggregated small-dollar).
+ * - `PAC` / `Super PAC` — a committee giving from its own treasury (PAC money).
+ * - `Conduit` — a bundler (e.g. ActBlue, WinRed) that forwards *earmarked individual*
+ *   contributions. Conduit dollars are reported as individual money, NOT PAC money,
+ *   so they must never be summed into PAC totals.
+ */
 export interface Donor {
   id: string;
   name: string;
-  type: 'Individual' | 'PAC' | 'Super PAC' | 'Corporation' | 'Union' | '501(c)(4)';
+  type: 'Individual' | 'PAC' | 'Super PAC' | 'Corporation' | 'Union' | '501(c)(4)' | 'Conduit';
   amount: number;
   date: string;
   occupation?: string;
   employer?: string;
   isLobbyist?: boolean;
   isForeign?: boolean;
+  /** Reporting cycle this figure covers (e.g. "2022") — shown when it differs from current FEC totals. */
+  cycle?: string;
+  /** Clarifying note, e.g. that a conduit's total is earmarked individual money reported as individual, not PAC. */
+  note?: string;
 }
 
 export interface IndustryDonation {
@@ -480,4 +503,82 @@ export interface CountyData {
   elections?: CountyElection[];
   mapCenter?: [number, number];
   mapZoom?: number;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Legislation tracker (feature #7)
+//
+// Real-sourced congressional bills from GovTrack's keyless public API (Tier 2,
+// nonpartisan) with constructed Congress.gov (Tier 1) deep links. Every Bill
+// carries its own `source` + `asOf`. Fields the keyless GovTrack list feed does
+// NOT provide — cosponsor counts and a passage prognosis — are OPTIONAL and are
+// shown only when a real, attributed value is present. They are never fabricated.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type BillChamber = 'house' | 'senate';
+
+/** Coarse, neutral stage groupings for filtering — derived from GovTrack status. */
+export type BillStage =
+  | 'introduced'
+  | 'committee'
+  | 'passed_one_chamber'
+  | 'passed_both'
+  | 'enacted'
+  | 'failed'
+  | 'other';
+
+export interface BillSponsor {
+  name: string;
+  bioguideId?: string;
+  party?: string;
+  state?: string;
+  district?: string;
+  /** GovTrack member page for the sponsor, when available. */
+  govTrackUrl?: string;
+}
+
+export interface BillAction {
+  /** Human-readable latest action / status label. */
+  text: string;
+  /** ISO date of the latest action. */
+  date: string;
+  /** Longer status description from GovTrack, when present (attributed in UI). */
+  detail?: string;
+}
+
+export interface Bill {
+  /** Stable id: `${congress}-${billType}-${number}` e.g. "119-house_bill-815". */
+  id: string;
+  congress: number;
+  /** Display number, e.g. "H.R.815" / "S.4847". */
+  billNumber: string;
+  /** GovTrack bill_type, e.g. "house_bill", "senate_joint_resolution". */
+  billType: string;
+  chamber: BillChamber;
+  title: string;
+  sponsor?: BillSponsor;
+  /** Not provided by the keyless GovTrack list feed — shown only when present, never fabricated. */
+  cosponsorCount?: number;
+  introducedDate: string;
+  latestAction: BillAction;
+  /** Machine status from GovTrack (current_status). */
+  status: string;
+  /** Human status label from GovTrack (current_status_label). */
+  statusLabel: string;
+  /** Coarse neutral stage grouping for filters. */
+  stage: BillStage;
+  /** Whether GovTrack still considers the bill active in this Congress. */
+  isAlive: boolean;
+  /** Scheduled floor consideration date when GovTrack has one (a genuine "upcoming" signal). */
+  scheduledConsiderationDate?: string | null;
+  /** GovTrack passage prognosis 0–100 — set only when sourced (not in the keyless feed today). */
+  govTrackPrognosis?: number;
+  /** Source for the passage probability, attached only when a probability is shown. */
+  passageProbabilitySource?: Source;
+  /** Constructed Congress.gov (Tier 1, official) deep link. */
+  congressGovUrl: string;
+  /** GovTrack (Tier 2, nonpartisan) bill page. */
+  govTrackUrl: string;
+  source: Source;
+  asOf: string;
 }

@@ -44,12 +44,7 @@ export default function HomePage() {
               <Shield className="h-6 w-6 text-[#c8a951] flex-shrink-0 mt-0.5" />
               <div className="space-y-3">
                 <p className="text-white text-base sm:text-lg font-semibold leading-snug">
-                  Democracy works best when voters can see the record behind the campaign.
-                </p>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  Money and lobbying do not decide every race, but they shape who gets heard, who gains access, and which issues stay in view.
-                  In many congressional contests, the higher-spending candidate wins roughly 80-90% of the time. The Ledger helps voters look
-                  past slogans by comparing voting records, funding, lobbying ties, trades, and official actions in one place.
+                  Your elected officials make decisions that shape your daily life — yet most voters know more about celebrities than the people casting those votes. The Ledger puts every politician&apos;s record, funding, and promises in one place. Nonpartisan. Verified. Because democracy only works when voters are informed.
                 </p>
               </div>
             </div>

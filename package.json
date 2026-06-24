@@ -10,6 +10,7 @@
     "agent:verify": "tsx scripts/agent-verify.ts",
     "agent:demo": "tsx scripts/agent-demo-check.ts",
     "sync:legislators": "tsx scripts/sync-legislators.ts",
+    "sync:legislation": "tsx scripts/sync-legislation.ts",
     "sync:fec": "tsx scripts/sync-fec-finance.ts",
     "sync:votes": "tsx scripts/sync-congress-votes.ts",
     "sync:stock-trades": "tsx scripts/sync-stock-trades.ts",

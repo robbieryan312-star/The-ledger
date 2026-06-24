@@ -294,7 +294,12 @@ function PoliticiansContent() {
                   </div>
 
                   <div className="flex items-center justify-between text-xs">
-                    <span className={`flex items-center gap-1 ${lobbyistTotal > 0 ? 'text-yellow-400' : 'text-white/35'}`}>
+                    <span
+                      className={`flex items-center gap-1 ${lobbyistTotal > 0 ? 'text-yellow-400' : 'text-white/35'}`}
+                      title={lobbyistTotal > 0
+                        ? 'This profile discloses contributions tied to registered lobbying organizations — see Money & Donors. Informational, not an allegation.'
+                        : 'No lobbyist-linked contributions on record.'}
+                    >
                       <AlertTriangle className="h-3 w-3" /> Lobbyist $
                     </span>
                     <span className={`font-medium ${lobbyistTotal > 0 ? 'text-yellow-400' : 'text-green-400'}`}>

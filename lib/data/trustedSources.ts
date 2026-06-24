@@ -23,6 +23,21 @@ export interface TrustedSourceEntry extends Source {
   /** Date this catalog entry was last reviewed against the live source */
   asOf: string;
   notes?: string;
+  /** Programmatic access root, when this conduit exposes an API. */
+  apiBaseUrl?: string;
+  /** True when the API requires a key/token to call. */
+  requiresApiKey?: boolean;
+  /** Env var (in .env.local) that holds the key, when one is required. */
+  keyEnvVar?: string;
+  /** What kind of data this conduit supplies — its intended ingestion use. */
+  dataCoverage?: string;
+  /**
+   * Ingestion status, kept honest so the catalog never implies data is flowing:
+   *   'live'        — a sync adapter is wired and pulling real data now
+   *   'planned'     — vetted/approved conduit, adapter not built yet
+   *   'unavailable' — source retired or not publicly accessible (kept for the record)
+   */
+  integrationStatus?: 'live' | 'planned' | 'unavailable';
 }
 
 const CATALOG_AS_OF = '2026-06-23';
@@ -38,6 +53,11 @@ export const CONGRESS_GOV: TrustedSourceEntry = {
   urlPatterns: ['congress.gov'],
   asOf: CATALOG_AS_OF,
   description: 'Official U.S. federal legislative records, bill text, and roll-call votes',
+  dataCoverage: 'Bills, roll-call votes, sponsorship, and committee records',
+  apiBaseUrl: 'https://api.congress.gov/v3/',
+  requiresApiKey: true,
+  keyEnvVar: 'CONGRESS_API_KEY',
+  integrationStatus: 'live',
 };
 
 export const FEC: TrustedSourceEntry = {
@@ -49,6 +69,11 @@ export const FEC: TrustedSourceEntry = {
   urlPatterns: ['fec.gov'],
   asOf: CATALOG_AS_OF,
   description: 'Official federal campaign finance filings and independent expenditure records',
+  dataCoverage: 'Direct federal campaign finance: receipts, disbursements, PACs, independent expenditures',
+  apiBaseUrl: 'https://api.open.fec.gov/v1/',
+  requiresApiKey: true,
+  keyEnvVar: 'FEC_API_KEY',
+  integrationStatus: 'live',
 };
 
 export const SENATE_GOV: TrustedSourceEntry = {
@@ -173,6 +198,10 @@ export const GOVTRACK: TrustedSourceEntry = {
   urlPatterns: ['govtrack.us'],
   asOf: CATALOG_AS_OF,
   description: 'Nonpartisan congressional voting record tracker',
+  dataCoverage: 'Legislation: bills, status, and member voting records',
+  apiBaseUrl: 'https://www.govtrack.us/api/v2/',
+  requiresApiKey: false,
+  integrationStatus: 'live',
 };
 
 export const OPENSECRETS: TrustedSourceEntry = {
@@ -184,6 +213,11 @@ export const OPENSECRETS: TrustedSourceEntry = {
   urlPatterns: ['opensecrets.org'],
   asOf: CATALOG_AS_OF,
   description: 'Nonpartisan campaign finance and lobbying aggregates (API/exports — no scraping)',
+  dataCoverage: 'Campaign finance, lobbying, and donor aggregates',
+  apiBaseUrl: 'https://www.opensecrets.org/api/',
+  requiresApiKey: true,
+  keyEnvVar: 'OPENSECRETS_API_KEY',
+  integrationStatus: 'planned',
 };
 
 export const NGA: TrustedSourceEntry = {
@@ -311,7 +345,82 @@ export const PEW_CLIMATE_VIEWS: Source = {
   description: 'Aggregated survey data on U.S. public views of climate change and policy',
 };
 
+// ── Owner-prioritized ingestion sources ──────────────────────────────────────
+// Registered conduits from the owner's source list, each with access metadata
+// and an honest integration status. Cataloging approves a source for citation;
+// real data still arrives via per-source sync adapters (see scripts/sync-*.ts).
+
+export const USASPENDING: TrustedSourceEntry = {
+  id: 'usaspending',
+  name: 'USASpending.gov',
+  url: 'https://www.usaspending.gov',
+  tier: 'official',
+  orgType: 'government',
+  urlPatterns: ['usaspending.gov', 'api.usaspending.gov'],
+  asOf: CATALOG_AS_OF,
+  description: 'Official U.S. federal spending: contracts, grants, loans, and recipient records',
+  dataCoverage: 'Federal contracts, grants, and SBA loans by recipient and awarding agency',
+  apiBaseUrl: 'https://api.usaspending.gov/api/v2/',
+  requiresApiKey: false,
+  integrationStatus: 'planned',
+  notes: 'Keyless REST API. Use exact recipient matches only — never infer family/entity links without a verified record.',
+};
+
+export const FARA_DOJ: TrustedSourceEntry = {
+  id: 'fara-doj',
+  name: 'DOJ FARA Registry',
+  url: 'https://efile.fara.gov',
+  tier: 'official',
+  orgType: 'government',
+  urlPatterns: ['efile.fara.gov', 'fara.gov'],
+  asOf: CATALOG_AS_OF,
+  description: 'U.S. Department of Justice Foreign Agents Registration Act filings and registrant list',
+  dataCoverage: 'Foreign-agent registrations: registrants, foreign principals, and disclosed activities',
+  apiBaseUrl: 'https://efile.fara.gov/api/v1/',
+  requiresApiKey: false,
+  integrationStatus: 'planned',
+  notes: 'Authoritative basis for any "FARA-registered" label — only label an organization foreign-registered if it appears here.',
+};
+
+export const BALLOTREADY: TrustedSourceEntry = {
+  id: 'ballotready',
+  name: 'BallotReady',
+  url: 'https://www.ballotready.org',
+  tier: 'nonpartisan',
+  orgType: 'dataset',
+  urlPatterns: ['ballotready.org', 'civicengine.com'],
+  asOf: CATALOG_AS_OF,
+  description: 'Down-ballot candidate and race data with national local-office coverage',
+  dataCoverage: 'Down-ballot / local candidate and race data',
+  requiresApiKey: true,
+  keyEnvVar: 'BALLOTREADY_API_KEY',
+  integrationStatus: 'planned',
+  notes: 'Licensed/partner API (CivicEngine) — not a free open feed; ingestion requires an access agreement.',
+};
+
+/**
+ * ProPublica Congress API — RETIRED. ProPublica wound down its standalone
+ * Congress API, so it is NOT wired as a live source. Voting records and bill
+ * data are covered instead by Congress.gov (Tier 1) + GovTrack (Tier 2).
+ * Kept here only to record the evaluation; excluded from the live catalog.
+ */
+export const PROPUBLICA_CONGRESS_RETIRED: TrustedSourceEntry = {
+  id: 'propublica-congress',
+  name: 'ProPublica Congress API',
+  url: 'https://www.propublica.org/datastore/apis',
+  tier: 'nonpartisan',
+  orgType: 'research',
+  urlPatterns: ['api.propublica.org/congress'],
+  asOf: CATALOG_AS_OF,
+  description: 'Historically: congressional votes, members, and bill data',
+  dataCoverage: 'Voting records and bill data (now served by Congress.gov + GovTrack)',
+  integrationStatus: 'unavailable',
+  notes: 'Retired by ProPublica; replaced in The Ledger by Congress.gov (Tier 1) and GovTrack (Tier 2).',
+};
+
 // ── Catalog registry ─────────────────────────────────────────────────────────
+// Live + planned conduits approved for citation. ProPublica (retired) is
+// intentionally excluded; it remains exported above for the record.
 
 export const TRUSTED_SOURCE_CATALOG: TrustedSourceEntry[] = [
   CONGRESS_GOV,
@@ -321,6 +430,8 @@ export const TRUSTED_SOURCE_CATALOG: TrustedSourceEntry[] = [
   WHITEHOUSE_GOV,
   SUPREME_COURT_GOV,
   LDA_SENATE,
+  USASPENDING,
+  FARA_DOJ,
   PEW_RESEARCH,
   CBO,
   GAO,
@@ -330,10 +441,21 @@ export const TRUSTED_SOURCE_CATALOG: TrustedSourceEntry[] = [
   OPENSECRETS,
   NGA,
   BALLOTPEDIA,
+  BALLOTREADY,
   BROOKINGS,
   AP_NEWS,
   REUTERS,
 ];
+
+/** Convenience: conduits with a sync adapter already pulling real data. */
+export function getLiveSources(): TrustedSourceEntry[] {
+  return TRUSTED_SOURCE_CATALOG.filter((e) => e.integrationStatus === 'live');
+}
+
+/** Convenience: vetted conduits whose ingestion adapter is not built yet. */
+export function getPlannedSources(): TrustedSourceEntry[] {
+  return TRUSTED_SOURCE_CATALOG.filter((e) => e.integrationStatus === 'planned');
+}
 
 export function getTrustedSource(id: string): TrustedSourceEntry | undefined {
   return TRUSTED_SOURCE_CATALOG.find((entry) => entry.id === id);

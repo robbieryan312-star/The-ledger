@@ -8,7 +8,7 @@ import { AlertTriangle, Shield, ChevronDown, ChevronRight, CheckCircle, XCircle,
 const STATUS_CONFIG: Record<Controversy['status'], { color: string; bg: string; border: string; icon: typeof Clock }> = {
   'Alleged':             { color: 'text-orange-400', bg: 'bg-orange-400/10', border: 'border-orange-400/30', icon: AlertTriangle },
   'Under Investigation': { color: 'text-yellow-400', bg: 'bg-yellow-400/10', border: 'border-yellow-400/30', icon: Clock },
-  'Ongoing':             { color: 'text-yellow-400', bg: 'bg-yellow-400/10', border: 'border-yellow-400/30', icon: Clock },
+  'Ongoing':             { color: 'text-slate-300',  bg: 'bg-slate-400/10',  border: 'border-slate-400/20', icon: Clock },
   'Resolved':            { color: 'text-gray-400',   bg: 'bg-gray-400/10',   border: 'border-gray-400/20',  icon: CheckCircle },
   'Dismissed':           { color: 'text-gray-400',   bg: 'bg-gray-400/10',   border: 'border-gray-400/20',  icon: XCircle },
   'Acquitted':           { color: 'text-gray-400',   bg: 'bg-gray-400/10',   border: 'border-gray-400/20',  icon: CheckCircle },
@@ -110,7 +110,9 @@ export default function ControversySection({ controversies, name }: { controvers
 
   const verified = controversies.filter((c) => c.isVerified);
   const alleged = controversies.filter((c) => !c.isVerified);
-  const shown = filter === 'verified' ? verified : filter === 'alleged' ? alleged : controversies;
+  const base = filter === 'verified' ? verified : filter === 'alleged' ? alleged : controversies;
+  // Sort by recency (newest first) — all tab content is ordered by time first.
+  const shown = [...base].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   if (controversies.length === 0) {
     return (
