@@ -1225,11 +1225,11 @@ export const mockPoliticians: Politician[] = [
     ],
     endorsements: {
       endorses: [
-        { name: 'Donald Trump', office: 'U.S. President (2024 candidate)', politicianId: 'donald-trump', date: '2024-01-21', source: { name: 'AP News', tier: 'nonpartisan', date: '2024-01-21', description: 'DeSantis endorses Trump upon suspending presidential campaign' } },
+        { name: 'Donald Trump', office: 'U.S. President (2024 candidate)', politicianId: 'pres-us', date: '2024-01-21', source: { name: 'AP News', tier: 'nonpartisan', date: '2024-01-21', description: 'DeSantis endorses Trump upon suspending presidential campaign' } },
       ],
       endorsedBy: [
-        { name: 'Donald Trump', office: 'U.S. President', date: '2018-01-22', source: { name: 'AP News', tier: 'nonpartisan', date: '2018-01-22', description: 'Trump\'s endorsement credited with helping DeSantis win 2018 primary over Adam Putnam' } },
-        { name: 'Marco Rubio', office: 'Former U.S. Senator (FL); U.S. Secretary of State', date: '2022-08-01', source: BALLOTPEDIA },
+        { name: 'Donald Trump', office: 'U.S. President', politicianId: 'pres-us', date: '2018-01-22', source: { name: 'AP News', tier: 'nonpartisan', date: '2018-01-22', description: 'Trump\'s endorsement credited with helping DeSantis win 2018 primary over Adam Putnam' } },
+        { name: 'Marco Rubio', office: 'Former U.S. Senator (FL); U.S. Secretary of State', politicianId: 'cab-rubio', date: '2022-08-01', source: BALLOTPEDIA },
       ],
     },
   },
@@ -1496,7 +1496,7 @@ export const mockPoliticians: Politician[] = [
       endorses: [],
       endorsedBy: [
         { name: 'Ron Paul', office: 'Former U.S. Representative (TX-14)', date: '2012-09-01', source: { name: 'Ballotpedia', tier: 'nonpartisan', date: '2012-09-01', description: 'Ron Paul endorsement credited as critical to Massie\'s 2012 primary win' } },
-        { name: 'Rand Paul', office: 'U.S. Senator (KY)', date: '2024-04-01', source: { name: 'AP News', tier: 'nonpartisan', date: '2024-04-01', description: 'Rand Paul endorsement ahead of 2024 primary despite AIPAC pressure' } },
+        { name: 'Rand Paul', office: 'U.S. Senator (KY)', politicianId: 'sen-paul', date: '2024-04-01', source: { name: 'AP News', tier: 'nonpartisan', date: '2024-04-01', description: 'Rand Paul endorsement ahead of 2024 primary despite AIPAC pressure' } },
         { name: 'Club for Growth', office: 'Conservative PAC', date: '2024-03-15', source: OPENSECRETS },
       ],
     },

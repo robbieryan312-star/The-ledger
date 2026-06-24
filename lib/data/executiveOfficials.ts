@@ -3,7 +3,7 @@
  * and cabinet principals. Office labels resolve via executiveRoster.ts
  * (whitehouse.gov), not hand-typed chamber fields.
  */
-import { EvidenceItem, Politician, Source } from '../types';
+import { EvidenceItem, ExecutiveAction, Politician, Source } from '../types';
 import { congressPhotoUrl } from './photos';
 
 const WHITEHOUSE: Source = {
@@ -250,15 +250,40 @@ export const executiveOfficials: Politician[] = [
       },
       {
         name: 'Foreign Policy',
-        position: 'America First; Ukraine aid skepticism',
+        position: 'Middle East force posture; Israel support amid Iran conflict',
         detail:
-          'Public statements in early 2025 emphasized negotiating end to the Russia-Ukraine war and conditioning foreign aid on U.S. interests.',
+          'June 2026 records document U.S. military deployments and emergency aid to Israel during Iran hostilities. Earlier 2025 statements emphasized negotiating an end to the Russia–Ukraine war and reviewing foreign assistance disbursements.',
         category: 'Foreign Policy',
+        statement:
+          'Available evidence shows a shift in salience from Ukraine aid skepticism (early 2025) toward Middle East deployments and Israel support (mid-2026). Both periods are documented with dates below.',
         evidence: [
+          {
+            type: 'action',
+            description:
+              'Authorized additional U.S. military deployments to the Middle East region amid Israel–Iran hostilities, per Defense Department announcements.',
+            date: '2026-06-18',
+            source: DOD,
+          },
           {
             type: 'statement',
             description:
-              'Stated goal of ending the Russia-Ukraine war through direct negotiations; publicly criticized prior administration Ukraine aid levels.',
+              'Public remarks at the White House stated the U.S. would defend Israel and cited Iran nuclear program risks.',
+            date: '2026-06-15',
+            source: WHITEHOUSE,
+          },
+          {
+            type: 'action',
+            description:
+              'Announced emergency military assistance package to Israel during Iran conflict escalation.',
+            date: '2026-06-12',
+            source: AP,
+          },
+        ] as EvidenceItem[],
+        historicalEvidence: [
+          {
+            type: 'statement',
+            description:
+              'Stated goal of ending the Russia–Ukraine war through direct negotiations; publicly criticized prior administration Ukraine aid levels.',
             date: '2025-02-12',
             source: AP,
           },
@@ -269,9 +294,68 @@ export const executiveOfficials: Politician[] = [
             date: '2025-01-20',
             source: WHITEHOUSE,
           },
+          {
+            type: 'statement',
+            description:
+              '2024 campaign emphasized "America First" framing and skepticism of open-ended foreign military aid.',
+            date: '2024-10-27',
+            source: AP,
+          },
         ] as EvidenceItem[],
       },
     ],
+    executiveActions: [
+      {
+        id: 'trump-eo-14159',
+        type: 'executive_order',
+        title: 'National Emergency at the Southern Border',
+        description:
+          'Executive Order 14159 — Declares a national emergency at the southern border and directs DHS to reprioritize border security resources.',
+        date: '2025-01-20',
+        source: FEDERAL_REGISTER,
+        url: 'https://www.federalregister.gov',
+      },
+      {
+        id: 'trump-eo-paris',
+        type: 'executive_order',
+        title: 'Withdrawal from Paris Agreement',
+        description:
+          'Executive order withdrawing the United States from the Paris Agreement under the UN Framework Convention on Climate Change.',
+        date: '2025-01-20',
+        source: FEDERAL_REGISTER,
+        url: 'https://www.federalregister.gov',
+      },
+      {
+        id: 'trump-intl-2026-06',
+        type: 'international',
+        title: 'Middle East force deployments',
+        description:
+          'Authorized additional U.S. military asset deployments to the Middle East region amid Israel–Iran hostilities.',
+        date: '2026-06-18',
+        source: DOD,
+        url: 'https://www.defense.gov',
+      },
+      {
+        id: 'trump-appt-rubio',
+        type: 'nomination',
+        title: 'Nominated Marco Rubio as Secretary of State',
+        description:
+          'Submitted nomination of former Senator Marco Rubio (R-FL) to serve as U.S. Secretary of State; Senate confirmed January 20, 2025.',
+        date: '2024-11-13',
+        source: WHITEHOUSE,
+        url: 'https://www.whitehouse.gov',
+      },
+      {
+        id: 'trump-agenda-2025-01',
+        type: 'agenda',
+        title: 'Day-one policy agenda rollout',
+        description:
+          'White House published day-one priorities: border emergency, federal hiring freeze, DEI program rollback, and trade/tariff review.',
+        date: '2025-01-20',
+        source: WHITEHOUSE,
+        url: 'https://www.whitehouse.gov',
+      },
+    ] as ExecutiveAction[],
     consistency: {
       overallScore: 68,
       campaignPromises: [
@@ -302,13 +386,44 @@ export const executiveOfficials: Politician[] = [
           said: { summary: '2024 campaign pledge to end federal DEI programs', date: '2024-09-05', source: AP },
           did: { summary: 'Signed executive order ending federal DEI initiatives', date: '2025-01-20', source: FEDERAL_REGISTER },
         },
+        {
+          id: 'trump-p4',
+          issue: 'Foreign Military Engagement',
+          statement: '"We will stop funding endless foreign wars."',
+          category: 'Foreign Policy',
+          status: 'Compromised',
+          said: {
+            summary: '2024 campaign emphasized ending endless foreign wars and conditioning aid on U.S. interests',
+            date: '2024-10-27',
+            source: AP,
+          },
+          did: {
+            summary: 'June 2026 authorized Middle East force deployments and emergency Israel aid during Iran conflict; January 2025 paused foreign assistance for review',
+            date: '2026-06-18',
+            source: DOD,
+          },
+        },
       ],
       partyLineVotePercentage: 0,
       lobbyistAlignmentPercentage: 0,
       termConsistency: [
         { year: 2025, score: 68, keyChanges: ['Day-one executive orders on border, DEI, Paris withdrawal; tariff policy rollout'] },
+        { year: 2026, score: 65, keyChanges: ['Middle East force deployments; foreign policy emphasis shifted from Ukraine aid review'] },
       ],
     },
+    controversies: [
+      {
+        id: 'trump-cont-fp',
+        title: 'Foreign policy record spans competing dated emphases',
+        summary:
+          'Public statements from 2024–early 2025 emphasized reducing open-ended foreign military aid and negotiating Ukraine peace. June 2026 records document U.S. force deployments and Israel aid during the Iran conflict. The Ledger presents both periods with dates — a factual timeline, not a character judgment.',
+        date: '2026-06-18',
+        category: 'Policy',
+        status: 'Ongoing',
+        isVerified: true,
+        sources: [AP, DOD],
+      },
+    ],
     news: [
       {
         id: 'trump-n1',
@@ -389,11 +504,20 @@ export const executiveOfficials: Politician[] = [
       },
       {
         name: 'Foreign Policy',
-        position: 'Non-interventionist lean; skeptic of Ukraine aid',
+        position: 'Skeptic of open-ended aid; aligned with administration Middle East posture',
         detail:
-          'As Senator voted against several Ukraine supplemental packages; continued public skepticism of open-ended foreign aid as VP.',
+          'As Vice President, publicly aligned with June 2026 Middle East force posture. As Senator, voted against several Ukraine supplemental packages.',
         category: 'Foreign Policy',
+        statement:
+          'Available evidence shows continuity on aid skepticism with a shift in public emphasis toward administration Middle East actions in 2026.',
         evidence: [
+          {
+            type: 'statement',
+            description:
+              'Public remarks supported administration Middle East deployments and Israel defense posture during Iran conflict.',
+            date: '2026-06-16',
+            source: AP,
+          },
           {
             type: 'statement',
             description:
@@ -401,6 +525,8 @@ export const executiveOfficials: Politician[] = [
             date: '2025-02-20',
             source: AP,
           },
+        ] as EvidenceItem[],
+        historicalEvidence: [
           {
             type: 'statement',
             description:
@@ -444,6 +570,28 @@ export const executiveOfficials: Politician[] = [
       lobbyistAlignmentPercentage: 0,
       termConsistency: [{ year: 2025, score: 72, keyChanges: ['Transition from Senate to VP; aligned with administration trade and immigration agenda'] }],
     },
+    executiveActions: [
+      {
+        id: 'vance-senate-preside',
+        type: 'agenda',
+        title: 'Presided over Senate opening sessions',
+        description:
+          'Sworn in as Vice President and President of the Senate; presided over opening 119th Congress sessions and cabinet confirmation votes.',
+        date: '2025-01-20',
+        source: SENATE_GOV,
+        url: 'https://www.senate.gov',
+      },
+      {
+        id: 'vance-intl-2026',
+        type: 'international',
+        title: 'Middle East policy remarks',
+        description:
+          'Public remarks aligned with administration Middle East deployments and Israel defense posture during Iran conflict.',
+        date: '2026-06-16',
+        source: AP,
+        url: 'https://apnews.com',
+      },
+    ] as ExecutiveAction[],
   }),
 
   // ── Secretary of State ──────────────────────────────────────────────────────
@@ -516,9 +664,36 @@ export const executiveOfficials: Politician[] = [
         ] as EvidenceItem[],
       },
     ],
+    executiveActions: [
+      {
+        id: 'rubio-confirmation',
+        type: 'appointment',
+        title: 'Confirmed as Secretary of State',
+        description: 'Senate confirmed Marco Rubio as the 72nd U.S. Secretary of State.',
+        date: '2025-01-20',
+        source: SENATE_GOV,
+        url: 'https://www.senate.gov',
+      },
+      {
+        id: 'rubio-travel-latam',
+        type: 'international',
+        title: 'Latin America diplomatic travel',
+        description: 'First foreign travel as Secretary focused on Latin America and Caribbean partners.',
+        date: '2025-02-01',
+        source: STATE_DEPT,
+        url: 'https://www.state.gov',
+      },
+      {
+        id: 'rubio-intl-2026',
+        type: 'international',
+        title: 'Middle East diplomatic coordination',
+        description: 'State Department coordinated allied messaging during Israel–Iran hostilities.',
+        date: '2026-06-14',
+        source: STATE_DEPT,
+        url: 'https://www.state.gov',
+      },
+    ] as ExecutiveAction[],
   }),
-
-  // ── Attorney General ────────────────────────────────────────────────────────
   execProfile({
     id: 'cab-bondi',
     name: 'Pam Bondi',
@@ -570,6 +745,27 @@ export const executiveOfficials: Politician[] = [
         ] as EvidenceItem[],
       },
     ],
+    executiveActions: [
+      {
+        id: 'bondi-confirmation',
+        type: 'appointment',
+        title: 'Confirmed as Attorney General',
+        description: 'Senate confirmed Pam Bondi as U.S. Attorney General.',
+        date: '2025-02-04',
+        source: SENATE_GOV,
+        url: 'https://www.senate.gov',
+      },
+      {
+        id: 'bondi-immigration-memo',
+        type: 'directive',
+        title: 'Immigration enforcement prioritization memo',
+        description:
+          'Issued memo directing U.S. Attorneys to prioritize immigration enforcement cases and challenge local non-cooperation policies.',
+        date: '2025-02-10',
+        source: DOJ,
+        url: 'https://www.justice.gov',
+      },
+    ] as ExecutiveAction[],
   }),
 
   // ── Treasury Secretary ────────────────────────────────────────────────────────
@@ -624,6 +820,27 @@ export const executiveOfficials: Politician[] = [
         ] as EvidenceItem[],
       },
     ],
+    executiveActions: [
+      {
+        id: 'bessent-confirmation',
+        type: 'appointment',
+        title: 'Confirmed as Secretary of the Treasury',
+        description: 'Senate confirmed Scott Bessent as U.S. Secretary of the Treasury.',
+        date: '2025-01-27',
+        source: SENATE_GOV,
+        url: 'https://www.senate.gov',
+      },
+      {
+        id: 'bessent-tariff-remarks',
+        type: 'agenda',
+        title: 'Tariff implementation remarks',
+        description:
+          'Public remarks on implementing reciprocal tariff framework and monitoring inflation impacts.',
+        date: '2025-02-20',
+        source: TREASURY,
+        url: 'https://home.treasury.gov',
+      },
+    ] as ExecutiveAction[],
   }),
 
   // ── Defense Secretary ───────────────────────────────────────────────────────
@@ -678,6 +895,36 @@ export const executiveOfficials: Politician[] = [
         ] as EvidenceItem[],
       },
     ],
+    executiveActions: [
+      {
+        id: 'hegseth-confirmation',
+        type: 'appointment',
+        title: 'Confirmed as Secretary of Defense',
+        description: 'Senate confirmed Pete Hegseth as U.S. Secretary of Defense.',
+        date: '2025-01-25',
+        source: SENATE_GOV,
+        url: 'https://www.senate.gov',
+      },
+      {
+        id: 'hegseth-dei-directive',
+        type: 'directive',
+        title: 'Pentagon DEI program review',
+        description: 'Issued directive pausing certain Pentagon DEI offices and programs pending review.',
+        date: '2025-01-28',
+        source: DOD,
+        url: 'https://www.defense.gov',
+      },
+      {
+        id: 'hegseth-intl-2026',
+        type: 'international',
+        title: 'Middle East force posture',
+        description:
+          'Defense Department announced additional U.S. military deployments to the Middle East amid Israel–Iran hostilities.',
+        date: '2026-06-18',
+        source: DOD,
+        url: 'https://www.defense.gov',
+      },
+    ] as ExecutiveAction[],
   }),
 
   // ── Homeland Security Secretary ─────────────────────────────────────────────
@@ -732,5 +979,26 @@ export const executiveOfficials: Politician[] = [
         ] as EvidenceItem[],
       },
     ],
+    executiveActions: [
+      {
+        id: 'noem-confirmation',
+        type: 'appointment',
+        title: 'Confirmed as Secretary of Homeland Security',
+        description: 'Senate confirmed Kristi Noem as U.S. Secretary of Homeland Security.',
+        date: '2025-01-25',
+        source: SENATE_GOV,
+        url: 'https://www.senate.gov',
+      },
+      {
+        id: 'noem-ice-expansion',
+        type: 'directive',
+        title: 'Expanded ICE enforcement operations',
+        description:
+          'Directed ICE to expand targeted enforcement operations in major metropolitan areas per administration executive orders.',
+        date: '2025-01-26',
+        source: DHS,
+        url: 'https://www.dhs.gov',
+      },
+    ] as ExecutiveAction[],
   }),
 ];

@@ -168,6 +168,8 @@ export interface Politician {
     endorses: { name: string; office: string; politicianId?: string; date?: string; source?: Source }[];
     endorsedBy: { name: string; office: string; politicianId?: string; date?: string; source?: Source }[];
   };
+  /** President, VP, and cabinet — executive orders, nominations, department actions (not roll calls). */
+  executiveActions?: ExecutiveAction[];
 }
 
 /** Yea/Nay counts by party from an official roll call (when sync captured member votes). */
@@ -339,7 +341,29 @@ export interface Issue {
   category: string;
   source?: Source;
   statement?: string;
+  /** Most recent sourced actions/statements — shown first (newest-first per data policy). */
   evidence?: EvidenceItem[];
+  /** Older records when dates conflict with current position summary — expandable in UI. */
+  historicalEvidence?: EvidenceItem[];
+}
+
+export type ExecutiveActionType =
+  | 'executive_order'
+  | 'appointment'
+  | 'nomination'
+  | 'agenda'
+  | 'international'
+  | 'memorandum'
+  | 'directive';
+
+export interface ExecutiveAction {
+  id: string;
+  type: ExecutiveActionType;
+  title: string;
+  description: string;
+  date: string;
+  source: Source;
+  url?: string;
 }
 
 export type RaceRating = 'Solid R' | 'Likely R' | 'Lean R' | 'Toss-up' | 'Lean D' | 'Likely D' | 'Solid D';

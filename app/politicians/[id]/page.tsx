@@ -17,6 +17,8 @@ import StockTrades from '@/components/politicians/StockTrades';
 import ConsistencyScore from '@/components/politicians/ConsistencyScore';
 import RelatedOfficialRecords from '@/components/politicians/RelatedOfficialRecords';
 import PublicActionsAccordion from '@/components/politicians/PublicActionsAccordion';
+import ExecutiveActions from '@/components/politicians/ExecutiveActions';
+import EarlierRecordSection from '@/components/politicians/EarlierRecordSection';
 import ExpandableEvidenceRow from '@/components/politicians/ExpandableEvidenceRow';
 import { findRecordJuxtapositions } from '@/lib/data/recordJuxtapositions';
 import SourceTierHelp from '@/components/ui/SourceTierHelp';
@@ -34,14 +36,14 @@ import {
   TOPIC_GAP_LABEL,
   TOPIC_GAP_DETAIL,
   issuesWithTopicCoverage,
+  issueEvidenceSections,
   matchTopic,
-  sortEvidenceByDate,
   type PolicyTopicDef,
 } from '@/lib/data/topicCoverage';
 import { use } from 'react';
 import TrackButton from '@/components/ui/TrackButton';
 
-const tabs = [
+const BASE_TABS = [
   { id: 'overview',      label: 'Overview',       icon: Briefcase },
   { id: 'votes',         label: 'Voting Record',  icon: Vote },
   { id: 'finance',       label: 'Money & Donors', icon: DollarSign },
@@ -50,7 +52,16 @@ const tabs = [
   { id: 'controversies', label: 'Controversies',  icon: Scale },
   { id: 'news',          label: 'News',           icon: Newspaper },
   { id: 'endorsements',  label: 'Endorsements',   icon: Users },
-];
+] as const;
+
+function profileTabs(isExecutive: boolean) {
+  if (!isExecutive) return [...BASE_TABS];
+  return BASE_TABS.map((tab) =>
+    tab.id === 'votes'
+      ? { ...tab, id: 'executive-actions', label: 'Executive Actions', icon: Landmark }
+      : tab,
+  );
+}
 
 import { EvidenceItem, Issue, Politician, VoteRecord } from '@/lib/types';
 
@@ -131,9 +142,10 @@ function HotTopicsPanel({ issues, votes, isFeatured }: { issues: Issue[]; votes:
                   {matched.evidence && matched.evidence.length > 0 ? (
                     <div className="pt-2 border-t border-[#1e3a5f] space-y-1.5">
                       <div className="text-[10px] text-gray-500 uppercase tracking-wide font-medium">Evidence (newest first)</div>
-                      {sortEvidenceByDate(matched.evidence).map((ev, j) => (
+                      {issueEvidenceSections(matched).current.map((ev, j) => (
                         <ExpandableEvidenceRow key={j} item={ev} />
                       ))}
+                      <EarlierRecordSection items={issueEvidenceSections(matched).historical} />
                     </div>
                   ) : matched.source ? (
                     <div className="pt-1 border-t border-[#1e3a5f]">
@@ -283,9 +295,10 @@ function IssueAccordion({ issues, politicianName }: { issues: Issue[]; politicia
                 </div>
               ) : issue.evidence && issue.evidence.length > 0 ? (
                 <div className="space-y-2">
-                  {sortEvidenceByDate(issue.evidence).map((ev, j) => (
+                  {issueEvidenceSections(issue).current.map((ev, j) => (
                     <ExpandableEvidenceRow key={j} item={ev} />
                   ))}
+                  <EarlierRecordSection items={issueEvidenceSections(issue).historical} />
                 </div>
               ) : issue.source ? (
                 <div className="pt-1">
@@ -427,9 +440,13 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
   const { id } = use(params);
   const { tab } = use(searchParams);
   const politician = getPoliticianById(id);
-  const [activeTab, setActiveTab] = useState(() => tab ?? 'overview');
 
   if (!politician) return notFound();
+
+  const isExecutive = EXECUTIVE_CHAMBERS.includes(politician.chamber);
+  const tabs = profileTabs(isExecutive);
+  const initialTab = tab === 'votes' && isExecutive ? 'executive-actions' : (tab ?? 'overview');
+  const [activeTab, setActiveTab] = useState(() => initialTab);
 
   const isLightweight = politician.recordType === 'lightweight';
   const isFeatured = !isLightweight;
@@ -756,12 +773,19 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
               </div>
             </div>
           </div>
-          {!isLightweight && displayVotes.length > 0 && (
+          {!isLightweight && !isExecutive && displayVotes.length > 0 && (
             <PublicActionsAccordion
               votes={displayVotes}
               finance={displayFinance}
               isFeatured={isFeatured}
             />
+          )}
+          {!isLightweight && isExecutive && politician.executiveActions && politician.executiveActions.length > 0 && (
+            <div className="mt-6 rounded-xl border border-white/[0.08] p-5" style={{ background: 'rgba(11,25,41,0.7)' }}>
+              <h2 className="text-white font-bold mb-1">Recent Executive Actions</h2>
+              <p className="text-gray-500 text-xs mb-4">Sourced orders, nominations, and international actions — open the Executive Actions tab for the full list</p>
+              <ExecutiveActions actions={politician.executiveActions.slice(0, 3)} name={politician.name} />
+            </div>
           )}
           {recordJuxtapositions.length > 0 && (
             <RelatedOfficialRecords juxtapositions={recordJuxtapositions} name={politician.name} />
@@ -787,15 +811,6 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
                 finance={displayFinance}
                 isFeatured={isFeatured}
               />
-            ) : EXECUTIVE_CHAMBERS.includes(politician.chamber) ? (
-              <div className="rounded-xl p-8 border border-white/[0.07] text-center" style={{ background: 'rgba(11,25,41,0.6)' }}>
-                <Vote className="h-10 w-10 text-[#c8a951]/40 mx-auto mb-3" />
-                <p className="text-white/60 text-sm font-medium">No congressional voting record</p>
-                <p className="text-white/35 text-xs mt-1 max-w-md mx-auto leading-relaxed">
-                  The President, Vice President, and cabinet officials do not cast roll-call votes in Congress.
-                  Executive orders, memoranda, and department actions are listed under Overview → key issues with sourced evidence.
-                </p>
-              </div>
             ) : JUDICIAL_CHAMBERS.includes(politician.chamber) ? (
               <div className="rounded-xl p-8 border border-white/[0.07] text-center" style={{ background: 'rgba(11,25,41,0.6)' }}>
                 <Vote className="h-10 w-10 text-[#c8a951]/40 mx-auto mb-3" />
@@ -816,6 +831,16 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
                 }
               />
             )}
+          </div>
+        )}
+
+        {activeTab === 'executive-actions' && (
+          <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
+            <div className="flex items-center gap-2 mb-4 flex-wrap">
+              <h2 className="text-white font-bold">Executive Actions</h2>
+              <SourceTierHelp />
+            </div>
+            <ExecutiveActions actions={politician.executiveActions ?? []} name={politician.name} />
           </div>
         )}
 

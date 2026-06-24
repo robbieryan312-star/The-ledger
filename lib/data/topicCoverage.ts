@@ -72,3 +72,14 @@ export function issuesWithTopicCoverage(issues: Issue[], includeGaps: boolean): 
 export function sortEvidenceByDate(items: EvidenceItem[]): EvidenceItem[] {
   return [...items].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
+
+/** Split issue evidence into current (primary) and historical (earlier record) sections. */
+export function issueEvidenceSections(issue: Issue): {
+  current: EvidenceItem[];
+  historical: EvidenceItem[];
+} {
+  return {
+    current: sortEvidenceByDate(issue.evidence ?? []),
+    historical: sortEvidenceByDate(issue.historicalEvidence ?? []),
+  };
+}
