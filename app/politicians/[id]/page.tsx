@@ -440,13 +440,13 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
   const { id } = use(params);
   const { tab } = use(searchParams);
   const politician = getPoliticianById(id);
+  const isExecutive = politician ? EXECUTIVE_CHAMBERS.includes(politician.chamber) : false;
+  const initialTab = tab === 'votes' && isExecutive ? 'executive-actions' : (tab ?? 'overview');
+  const [activeTab, setActiveTab] = useState(() => initialTab);
 
   if (!politician) return notFound();
 
-  const isExecutive = EXECUTIVE_CHAMBERS.includes(politician.chamber);
   const tabs = profileTabs(isExecutive);
-  const initialTab = tab === 'votes' && isExecutive ? 'executive-actions' : (tab ?? 'overview');
-  const [activeTab, setActiveTab] = useState(() => initialTab);
 
   const isLightweight = politician.recordType === 'lightweight';
   const isFeatured = !isLightweight;
