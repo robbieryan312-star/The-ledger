@@ -286,105 +286,127 @@ function TradeCard({ trade, profileName }: { trade: StockTrade; profileName: str
   const [expanded, setExpanded] = useState(false);
   const hasTimeline = (trade.timelineEvents?.length ?? 0) > 0;
   const flaggedEvents = trade.timelineEvents?.filter((e) => e.isFlagged) ?? [];
+  const pct = priceMovePct(trade);
+
+  const borderClass =
+    trade.conflictScore >= 70 ? 'border-red-400/30' :
+    trade.conflictScore >= 40 ? 'border-yellow-400/30' : 'border-[#1e3a5f]';
 
   return (
-    <div className={`bg-[#0d1f35] rounded-xl border overflow-hidden ${
-      trade.conflictScore >= 70 ? 'border-red-400/30' :
-      trade.conflictScore >= 40 ? 'border-yellow-400/30' : 'border-[#1e3a5f]'
-    }`}>
-      <div className="p-4">
-        <div className="flex items-start justify-between gap-4 mb-3">
-          <LeadMetric trade={trade} />
-          <div className="text-right flex-shrink-0">
-            <span className={`text-xs px-2 py-0.5 rounded-full ${
-              trade.type === 'Purchase' ? 'bg-green-400/10 text-green-400' : 'bg-red-400/10 text-red-400'
-            }`}>
-              {trade.type === 'Purchase' ? '↑' : '↓'} {trade.type}
-            </span>
+    <div className={`bg-[#0d1f35] rounded-xl border overflow-hidden ${borderClass}`}>
+      <button
+        type="button"
+        onClick={() => setExpanded(!expanded)}
+        className="w-full p-4 flex items-start gap-3 hover:bg-white/[0.02] transition-colors text-left"
+      >
+        <div className="flex-1 min-w-0">
+          <div className="flex items-start justify-between gap-3 mb-2">
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="font-mono text-xs px-1.5 py-0.5 rounded bg-[#0a1628] text-gray-300">{trade.ticker}</span>
+                <span className="text-white font-semibold text-sm truncate">{trade.companyName}</span>
+                <span className={`text-xs px-2 py-0.5 rounded-full ${
+                  trade.type === 'Purchase' ? 'bg-green-400/10 text-green-400' : 'bg-red-400/10 text-red-400'
+                }`}>
+                  {trade.type === 'Purchase' ? '↑' : '↓'} {trade.type}
+                </span>
+              </div>
+              <div className="text-lg font-bold text-[#c8a951] mt-1">{formatRange(trade)}</div>
+            </div>
+            <div className="text-right flex-shrink-0">
+              {pct !== null && (
+                <div className={`text-sm font-bold ${pct >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                  {pct >= 0 ? '+' : ''}{pct.toFixed(1)}%
+                </div>
+              )}
+              <ConflictBadge score={trade.conflictScore} />
+            </div>
           </div>
+
+          <div className="flex items-center gap-3 text-xs text-gray-500 flex-wrap">
+            <span className="flex items-center gap-1">
+              <Calendar className="h-3 w-3" />
+              {new Date(trade.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+            </span>
+            <span>{trade.daysToDisclose}d disclosure lag</span>
+            <span className="text-xs px-2 py-0.5 bg-[#1e3a5f] rounded-full">{trade.sector}</span>
+            {flaggedEvents.length > 0 && (
+              <span className="inline-flex items-center gap-1 text-xs text-red-400">
+                <AlertTriangle className="h-3 w-3" />
+                {flaggedEvents.length} review event{flaggedEvents.length > 1 ? 's' : ''}
+              </span>
+            )}
+          </div>
+
+          {!expanded && (trade.relatedVotes?.length || trade.relatedCommittees?.length) ? (
+            <div className="mt-2 text-[11px] text-gray-500 line-clamp-1">
+              {trade.relatedVotes?.length ? `${trade.relatedVotes.length} related vote${trade.relatedVotes.length > 1 ? 's' : ''}` : ''}
+              {trade.relatedVotes?.length && trade.relatedCommittees?.length ? ' · ' : ''}
+              {trade.relatedCommittees?.length ? `${trade.relatedCommittees.length} committee overlap${trade.relatedCommittees.length > 1 ? 's' : ''}` : ''}
+            </div>
+          ) : null}
         </div>
 
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2 flex-wrap mb-1">
-              <span className="text-white font-semibold text-sm">{profileName}</span>
-            </div>
+        {expanded
+          ? <ChevronDown className="h-4 w-4 text-[#c8a951]/60 flex-shrink-0 mt-1" />
+          : <ChevronRight className="h-4 w-4 text-[#c8a951]/60 flex-shrink-0 mt-1" />}
+      </button>
 
-            <div className="flex items-center gap-2 flex-wrap text-sm text-gray-400">
-              <span className="font-mono text-xs px-1.5 py-0.5 rounded bg-[#0a1628] text-gray-300">{trade.ticker}</span>
-              <span className="text-gray-500">{trade.companyName}</span>
-              <span className="text-xs px-2 py-0.5 bg-[#1e3a5f] rounded-full">{trade.sector}</span>
-            </div>
+      {expanded && (
+        <div className="px-4 pb-4 border-t border-[#1e3a5f] space-y-3">
+          <LeadMetric trade={trade} />
 
-            <div className="flex items-center gap-3 mt-2 text-xs text-gray-500 flex-wrap">
-              <span className="flex items-center gap-1">
-                <Calendar className="h-3 w-3" />
-                Traded: {new Date(trade.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-              </span>
-              <span>Disclosed: {new Date(trade.disclosureDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-              <span className={`px-2 py-0.5 rounded-full ${trade.daysToDisclose > 30 ? 'bg-yellow-400/10 text-yellow-400' : 'bg-[#1e3a5f] text-gray-400'}`}>
-                {trade.daysToDisclose}d disclosure
-              </span>
-            </div>
+          <div className="text-xs text-gray-400">
+            <span className="text-white/50">Disclosed by </span>{profileName}
+            <span className="text-white/30"> · filed {new Date(trade.disclosureDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+          </div>
 
-            {trade.purchasePriceApprox != null && (
-              <div className="flex flex-wrap items-center gap-3 mt-1.5 text-xs text-gray-500">
-                <span>At trade: <span className="text-gray-300">${trade.purchasePriceApprox.toFixed(2)}</span></span>
-                {trade.currentPrice != null && (
-                  <span>Current: <span className="text-gray-300">${trade.currentPrice.toFixed(2)}</span></span>
-                )}
-              </div>
-            )}
-
-            {(trade.relatedVotes?.length || trade.relatedCommittees?.length) && (
-              <div className="mt-2 flex flex-wrap gap-1">
-                {trade.relatedVotes?.map((v) => (
-                  <span key={v} className="text-xs px-2 py-0.5 bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 rounded">
-                    Related Vote: {v}
-                  </span>
-                ))}
-                {trade.relatedCommittees?.map((c) => (
-                  <span key={c} className="text-xs px-2 py-0.5 bg-blue-400/10 text-blue-400 border border-blue-400/20 rounded">
-                    Committee: {c}
-                  </span>
-                ))}
-              </div>
-            )}
-
-            <div className="mt-2 flex items-center gap-2 flex-wrap">
-              <ConflictBadge score={trade.conflictScore} />
-              {flaggedEvents.length > 0 && (
-                <span className="inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full bg-red-400/15 text-red-400 border border-red-400/30 font-bold">
-                  <AlertTriangle className="h-3 w-3" />
-                  {flaggedEvents.length} review event{flaggedEvents.length > 1 ? 's' : ''}
-                </span>
+          {trade.purchasePriceApprox != null && (
+            <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500">
+              <span>At trade: <span className="text-gray-300">${trade.purchasePriceApprox.toFixed(2)}</span></span>
+              {trade.currentPrice != null && (
+                <span>Current: <span className="text-gray-300">${trade.currentPrice.toFixed(2)}</span></span>
               )}
-              {trade.source?.url && (
+            </div>
+          )}
+
+          {(trade.relatedVotes?.length || trade.relatedCommittees?.length) && (
+            <div className="flex flex-wrap gap-1">
+              {trade.relatedVotes?.map((v) => (
+                <span key={v} className="text-xs px-2 py-0.5 bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 rounded">
+                  Related Vote: {v}
+                </span>
+              ))}
+              {trade.relatedCommittees?.map((c) => (
+                <span key={c} className="text-xs px-2 py-0.5 bg-blue-400/10 text-blue-400 border border-blue-400/20 rounded">
+                  Committee: {c}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <div className="rounded-lg border border-[#1e3a5f] p-3 text-xs text-gray-400 leading-relaxed" style={{ background: 'rgba(5,9,15,0.5)' }}>
+            <div className="text-[10px] uppercase tracking-wide text-gray-500 font-semibold mb-1">Disclosure methodology</div>
+            Exposure uses the disclosed dollar range from STOCK Act filings — Congress reports ranges, not exact trade sizes.
+            Estimated gain/loss uses approximate price fields when available. Review priority reflects sector, committee relevance, and timing — not proof of wrongdoing.
+          </div>
+
+          {trade.source && (
+            <div className="flex items-center gap-2 flex-wrap pt-1">
+              <SourceBadge source={trade.source} size="xs" showTierHelp />
+              {trade.source.url && (
                 <a href={trade.source.url} target="_blank" rel="noopener noreferrer" className="text-xs text-gray-500 hover:text-[#c8a951] inline-flex items-center gap-0.5">
-                  {trade.source.name} <ExternalLink className="h-3 w-3" />
+                  View filing <ExternalLink className="h-3 w-3" />
                 </a>
               )}
             </div>
-          </div>
+          )}
+
+          {hasTimeline && trade.timelineEvents && (
+            <TradeTimeline events={trade.timelineEvents} tradeDate={trade.date} />
+          )}
         </div>
-
-        {hasTimeline && (
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="mt-3 flex items-center gap-1.5 text-xs text-[#c8a951] hover:text-white transition-colors"
-          >
-            {expanded ? <ChevronDown className="h-3.5 w-3.5" /> : <ChevronRight className="h-3.5 w-3.5" />}
-            {expanded ? 'Hide' : 'Show'} full event timeline
-            {flaggedEvents.length > 0 && (
-              <span className="text-red-400 ml-1">({flaggedEvents.length} to review)</span>
-            )}
-          </button>
-        )}
-
-        {expanded && trade.timelineEvents && (
-          <TradeTimeline events={trade.timelineEvents} tradeDate={trade.date} />
-        )}
-      </div>
+      )}
     </div>
   );
 }

@@ -1,7 +1,9 @@
 'use client';
 
+import { useState } from 'react';
 import { ConsistencyData, CampaignPromise } from '@/lib/types';
 import SourceProvenance from '@/components/ui/SourceProvenance';
+import { ProfileExpandableRow } from '@/components/politicians/ProfileSectionAccordion';
 import { CheckCircle, XCircle, Clock, AlertCircle } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -13,45 +15,35 @@ const statusConfig = {
   Stalled: { icon: AlertCircle, color: 'text-orange-400', bg: 'bg-orange-400/10 border-orange-400/30', label: 'Stalled' },
 };
 
-function ScoreRing({ score, size = 80 }: { score: number; size?: number }) {
-  const radius = (size - 10) / 2;
-  const circumference = 2 * Math.PI * radius;
-  const offset = circumference - (score / 100) * circumference;
-  const color = score >= 75 ? '#4ade80' : score >= 50 ? '#facc15' : '#f87171';
-
-  return (
-    <svg width={size} height={size} className="transform -rotate-90 flex-shrink-0">
-      <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="#1e3a5f" strokeWidth={8} />
-      <circle
-        cx={size / 2} cy={size / 2} r={radius} fill="none"
-        stroke={color} strokeWidth={8}
-        strokeDasharray={circumference} strokeDashoffset={offset}
-        strokeLinecap="round"
-        style={{ transition: 'stroke-dashoffset 0.8s ease' }}
-      />
-      <text
-        x={size / 2} y={size / 2} textAnchor="middle" dominantBaseline="middle"
-        className="rotate-90" style={{ transform: `rotate(90deg)`, transformOrigin: `${size / 2}px ${size / 2}px` }}
-        fill={color} fontSize={size > 60 ? 18 : 14} fontWeight="bold"
-      >
-        {score}
-      </text>
-    </svg>
-  );
+function scoreColor(score: number): string {
+  return score >= 75 ? 'text-green-400' : score >= 50 ? 'text-yellow-400' : 'text-red-400';
 }
 
-function PromiseDiff({ promise }: { promise: CampaignPromise }) {
-  const said = promise.said ?? {
+function truncate(text: string, max = 100): string {
+  if (text.length <= max) return text;
+  return `${text.slice(0, max - 1)}…`;
+}
+
+function promiseSaid(promise: CampaignPromise) {
+  return promise.said ?? {
     summary: promise.statement,
     date: undefined,
     source: promise.evidenceSource,
   };
-  const did = promise.did ?? (promise.evidence
+}
+
+function promiseDid(promise: CampaignPromise) {
+  return promise.did ?? (promise.evidence
     ? { summary: promise.evidence, date: undefined, source: promise.evidenceSource }
     : undefined);
+}
+
+function PromiseDiffPanels({ promise }: { promise: CampaignPromise }) {
+  const said = promiseSaid(promise);
+  const did = promiseDid(promise);
 
   return (
-    <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
       <div className="rounded-lg border border-purple-400/20 p-3" style={{ background: 'rgba(147,51,234,0.05)' }}>
         <div className="text-[10px] uppercase tracking-wide text-purple-300/80 font-semibold mb-1.5">Said</div>
         <p className="text-gray-300 text-xs leading-relaxed">{said.summary}</p>
@@ -82,28 +74,104 @@ function PromiseDiff({ promise }: { promise: CampaignPromise }) {
   );
 }
 
+function PromiseRow({ promise }: { promise: CampaignPromise }) {
+  const [open, setOpen] = useState(false);
+  const config = statusConfig[promise.status];
+  const Icon = config.icon;
+  const said = promiseSaid(promise);
+  const did = promiseDid(promise);
+
+  return (
+    <ProfileExpandableRow
+      open={open}
+      onToggle={() => setOpen(!open)}
+      borderClass={config.bg}
+      header={
+        <div className="flex items-start gap-3">
+          <Icon className={`h-5 w-5 ${config.color} flex-shrink-0 mt-0.5`} />
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-white font-medium text-sm">{promise.issue}</span>
+              <span className={`text-xs px-2 py-0.5 rounded-full border ${config.bg} ${config.color}`}>
+                {config.label}
+              </span>
+              <span className="text-xs text-gray-500 px-2 py-0.5 bg-[#1e3a5f] rounded-full">{promise.category}</span>
+            </div>
+          </div>
+        </div>
+      }
+      summary={
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs ml-8">
+          <div>
+            <span className="text-purple-300/80 font-semibold uppercase text-[10px] tracking-wide">Said · </span>
+            <span className="text-gray-400">{truncate(said.summary)}</span>
+          </div>
+          <div>
+            <span className="text-blue-300/80 font-semibold uppercase text-[10px] tracking-wide">Did · </span>
+            <span className="text-gray-400">
+              {did ? truncate(did.summary) : 'No verified official action on record.'}
+            </span>
+          </div>
+        </div>
+      }
+    >
+      <div className="pt-3 space-y-3">
+        {promise.statement && (
+          <blockquote className="text-gray-300 text-xs italic leading-relaxed pl-3 border-l-2 border-[#c8a951]/40">
+            {promise.statement}
+          </blockquote>
+        )}
+        <PromiseDiffPanels promise={promise} />
+        {promise.evidence && promise.did && promise.evidence !== promise.did.summary && (
+          <div className="rounded-lg border border-white/[0.06] p-3 text-xs" style={{ background: 'rgba(255,255,255,0.02)' }}>
+            <div className="text-[10px] uppercase tracking-wide text-gray-500 font-semibold mb-1">Additional evidence</div>
+            <p className="text-gray-300 leading-relaxed">{promise.evidence}</p>
+            {promise.evidenceSource && (
+              <div className="mt-2">
+                <SourceProvenance source={promise.evidenceSource} size="xs" />
+              </div>
+            )}
+          </div>
+        )}
+        {promise.relatedVotes && promise.relatedVotes.length > 0 && (
+          <div className="text-xs text-gray-400">
+            <span className="text-white/50 font-medium">Related votes: </span>
+            {promise.relatedVotes.join(' · ')}
+          </div>
+        )}
+      </div>
+    </ProfileExpandableRow>
+  );
+}
+
 export default function ConsistencyScore({ data, name }: { data: ConsistencyData; name: string }) {
   const chartData = data.termConsistency.map((t) => ({ year: t.year, score: t.score }));
+  const lastName = name.split(' ').pop() ?? name;
 
   return (
     <div className="space-y-6">
+      {/* Horizontal score strip — single row on desktop, stack on mobile */}
       <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#1e3a5f]">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-6">
           <div className="flex items-center gap-4 flex-shrink-0">
-            <ScoreRing score={data.overallScore} size={72} />
+            <div className={`text-4xl font-bold tabular-nums leading-none ${scoreColor(data.overallScore)}`}>
+              {data.overallScore}
+            </div>
             <div>
               <div className="text-white font-semibold text-sm">Consistency Score</div>
-              <div className="text-xs text-gray-400">Statement-to-action alignment for {name.split(' ').pop()}</div>
+              <div className="text-xs text-gray-400">Statement-to-action alignment for {lastName}</div>
             </div>
           </div>
-          <div className="hidden sm:block w-px h-14 bg-[#1e3a5f] flex-shrink-0" />
-          <div className="flex flex-1 gap-6 sm:gap-8">
+
+          <div className="hidden md:block w-px self-stretch min-h-[3rem] bg-[#1e3a5f] flex-shrink-0" />
+
+          <div className="flex flex-1 flex-wrap items-baseline gap-x-8 gap-y-3">
             <div>
-              <div className="text-2xl font-bold text-blue-400">{data.partyLineVotePercentage}%</div>
+              <div className="text-2xl font-bold text-blue-400 tabular-nums">{data.partyLineVotePercentage}%</div>
               <div className="text-xs text-gray-400">Party-Line Vote Rate</div>
             </div>
             <div>
-              <div className={`text-2xl font-bold ${data.lobbyistAlignmentPercentage > 50 ? 'text-yellow-400' : 'text-green-400'}`}>
+              <div className={`text-2xl font-bold tabular-nums ${data.lobbyistAlignmentPercentage > 50 ? 'text-yellow-400' : 'text-green-400'}`}>
                 {data.lobbyistAlignmentPercentage}%
               </div>
               <div className="text-xs text-gray-400">Lobbyist Alignment</div>
@@ -133,7 +201,7 @@ export default function ConsistencyScore({ data, name }: { data: ConsistencyData
       <div>
         <h3 className="text-white font-semibold mb-1">Promise vs. Official Record</h3>
         <p className="text-gray-500 text-xs mb-3">
-          Public statements paired with votes, filings, or actions — sourced dates and tiers shown; you draw conclusions.
+          Public statements paired with votes, filings, or actions — expand each row for full sourced text, links, and dates.
         </p>
         <div className="space-y-3">
           {data.campaignPromises.length === 0 ? (
@@ -141,27 +209,9 @@ export default function ConsistencyScore({ data, name }: { data: ConsistencyData
               No verified campaign-promise records integrated for this profile yet.
             </div>
           ) : (
-            data.campaignPromises.map((promise) => {
-              const config = statusConfig[promise.status];
-              const Icon = config.icon;
-              return (
-                <div key={promise.id} className={`rounded-xl p-4 border ${config.bg}`}>
-                  <div className="flex items-start gap-3">
-                    <Icon className={`h-5 w-5 ${config.color} flex-shrink-0 mt-0.5`} />
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-white font-medium text-sm">{promise.issue}</span>
-                        <span className={`text-xs px-2 py-0.5 rounded-full border ${config.bg} ${config.color}`}>
-                          {config.label}
-                        </span>
-                        <span className="text-xs text-gray-500 px-2 py-0.5 bg-[#1e3a5f] rounded-full">{promise.category}</span>
-                      </div>
-                      <PromiseDiff promise={promise} />
-                    </div>
-                  </div>
-                </div>
-              );
-            })
+            data.campaignPromises.map((promise) => (
+              <PromiseRow key={promise.id} promise={promise} />
+            ))
           )}
         </div>
       </div>

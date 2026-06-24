@@ -17,6 +17,7 @@ import StockTrades from '@/components/politicians/StockTrades';
 import ConsistencyScore from '@/components/politicians/ConsistencyScore';
 import RelatedOfficialRecords from '@/components/politicians/RelatedOfficialRecords';
 import PublicActionsAccordion from '@/components/politicians/PublicActionsAccordion';
+import ExpandableEvidenceRow from '@/components/politicians/ExpandableEvidenceRow';
 import { findRecordJuxtapositions } from '@/lib/data/recordJuxtapositions';
 import SourceTierHelp from '@/components/ui/SourceTierHelp';
 import ControversySection from '@/components/politicians/ControversySection';
@@ -131,7 +132,7 @@ function HotTopicsPanel({ issues, votes, isFeatured }: { issues: Issue[]; votes:
                     <div className="pt-2 border-t border-[#1e3a5f] space-y-1.5">
                       <div className="text-[10px] text-gray-500 uppercase tracking-wide font-medium">Evidence (newest first)</div>
                       {sortEvidenceByDate(matched.evidence).map((ev, j) => (
-                        <EvidenceRow key={j} item={ev} />
+                        <ExpandableEvidenceRow key={j} item={ev} />
                       ))}
                     </div>
                   ) : matched.source ? (
@@ -185,34 +186,25 @@ function formatMoney(n: number): string {
   return `$${n}`;
 }
 
-const EVIDENCE_TYPE_STYLE: Record<string, string> = {
-  vote:             'bg-blue-500/20 text-blue-300 border-blue-500/20',
-  legislation:      'bg-green-500/20 text-green-300 border-green-500/20',
-  quote:            'bg-purple-500/20 text-purple-300 border-purple-500/20',
-  statement:        'bg-gray-500/20 text-gray-300 border-gray-500/20',
-  action:           'bg-orange-500/20 text-orange-300 border-orange-500/20',
-  committee_action: 'bg-teal-500/20 text-teal-300 border-teal-500/20',
-};
+function BioExpandable({ bio }: { bio: string }) {
+  const [open, setOpen] = useState(false);
+  const needsExpand = bio.length > 220;
 
-function EvidenceRow({ item }: { item: EvidenceItem }) {
   return (
-    <div className="rounded-lg p-2.5 border border-white/[0.05]" style={{ background: 'rgba(255,255,255,0.02)' }}>
-      <div className="flex items-start gap-2">
-        <span className={`text-[10px] px-1.5 py-0.5 rounded border font-semibold uppercase tracking-wide flex-shrink-0 mt-0.5 ${EVIDENCE_TYPE_STYLE[item.type] || EVIDENCE_TYPE_STYLE.statement}`}>
-          {item.type.replace('_', ' ')}
-        </span>
-        <div className="flex-1 min-w-0">
-          <p className="text-white/65 text-xs leading-relaxed">{item.description}</p>
-          {item.quote && (
-            <blockquote className="mt-1 pl-2.5 border-l-2 border-[#c8a951]/40 text-[#c8a951]/70 text-xs italic leading-relaxed">
-              &ldquo;{item.quote}&rdquo;
-            </blockquote>
-          )}
-          <div className="mt-1.5">
-            <SourceProvenance source={item.source} recordDate={item.date} />
-          </div>
-        </div>
-      </div>
+    <div className="mb-2 max-w-2xl">
+      <p className={`text-white/40 text-xs leading-relaxed ${!open && needsExpand ? 'line-clamp-3' : ''}`}>
+        {bio}
+      </p>
+      {needsExpand && (
+        <button
+          type="button"
+          onClick={() => setOpen(!open)}
+          className="mt-1 flex items-center gap-1 text-[11px] text-[#c8a951] hover:text-white transition-colors"
+        >
+          {open ? <ChevronDown className="h-3 w-3" /> : <ChevronRight className="h-3 w-3" />}
+          {open ? 'Show less' : 'Read full record summary'}
+        </button>
+      )}
     </div>
   );
 }
@@ -292,7 +284,7 @@ function IssueAccordion({ issues, politicianName }: { issues: Issue[]; politicia
               ) : issue.evidence && issue.evidence.length > 0 ? (
                 <div className="space-y-2">
                   {sortEvidenceByDate(issue.evidence).map((ev, j) => (
-                    <EvidenceRow key={j} item={ev} />
+                    <ExpandableEvidenceRow key={j} item={ev} />
                   ))}
                 </div>
               ) : issue.source ? (
@@ -571,9 +563,7 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
             </div>
 
             {/* Political record summary */}
-            <p className="text-white/40 text-xs leading-relaxed mb-2 max-w-2xl line-clamp-3">
-              {politician.bio}
-            </p>
+            <BioExpandable bio={politician.bio} />
 
             <div className="flex flex-wrap gap-2">
               {politician.termStart && (

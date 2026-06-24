@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import type { RecordJuxtaposition } from '@/lib/types';
 import SourceProvenance from '@/components/ui/SourceProvenance';
+import { ProfileSectionAccordion } from '@/components/politicians/ProfileSectionAccordion';
 import { plainVoteSubtitle, plainVoteTitle } from '@/lib/data/voteDisplay';
-import { ArrowRight, Calendar, ChevronDown, ChevronRight, TrendingUp, Vote } from 'lucide-react';
+import { ArrowRight, Calendar, TrendingUp, Vote } from 'lucide-react';
 
 interface Props {
   juxtapositions: RecordJuxtaposition[];
@@ -12,90 +12,72 @@ interface Props {
 }
 
 export default function RelatedOfficialRecords({ juxtapositions, name }: Props) {
-  const [open, setOpen] = useState(false);
-
   if (juxtapositions.length === 0) return null;
 
   const lastName = name.split(' ').pop() ?? name;
 
   return (
-    <div
-      className="rounded-xl border border-white/[0.08] mb-6 overflow-hidden"
-      style={{ background: 'rgba(11,25,41,0.7)' }}
+    <ProfileSectionAccordion
+      title="Official records timeline (trades & votes)"
+      subtitle={`${juxtapositions.length} STOCK Act disclosure${juxtapositions.length !== 1 ? 's' : ''} near roll-call votes for ${lastName} — proximity only, not proof of misconduct`}
+      icon={TrendingUp}
+      defaultOpen={false}
     >
-      <button
-        type="button"
-        onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between gap-3 px-5 py-4 hover:bg-white/[0.02] transition-colors text-left"
-      >
-        <div>
-          <h2 className="text-white font-bold text-sm">Official records timeline (trades &amp; votes)</h2>
-          <p className="text-white/35 text-xs mt-0.5 leading-relaxed">
-            {juxtapositions.length} STOCK Act disclosure{juxtapositions.length !== 1 ? 's' : ''} near roll-call votes for {lastName} — proximity only, not proof of misconduct
-          </p>
-        </div>
-        {open
-          ? <ChevronDown className="h-4 w-4 text-white/30 flex-shrink-0" />
-          : <ChevronRight className="h-4 w-4 text-white/30 flex-shrink-0" />}
-      </button>
+      <div className="space-y-3 pt-1">
+        {juxtapositions.map((row) => (
+          <div
+            key={row.id}
+            className="rounded-xl border border-[#1e3a5f] p-4"
+            style={{ background: 'rgba(5,9,15,0.55)' }}
+          >
+            <p className="text-white text-sm leading-relaxed mb-3">{row.headline}</p>
 
-      {open && (
-        <div className="px-5 pb-5 border-t border-white/[0.06] space-y-3">
-          {juxtapositions.map((row) => (
-            <div
-              key={row.id}
-              className="rounded-xl border border-[#1e3a5f] p-4"
-              style={{ background: 'rgba(5,9,15,0.55)' }}
-            >
-              <p className="text-white text-sm leading-relaxed mb-3">{row.headline}</p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] gap-3 items-center">
-                <div className="rounded-lg border border-white/[0.06] p-3" style={{ background: 'rgba(255,255,255,0.02)' }}>
-                  <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wide text-[#c8a951] mb-1.5">
-                    <TrendingUp className="h-3 w-3" />
-                    Stock disclosure
-                  </div>
-                  <div className="text-white text-xs font-semibold">
-                    {row.trade.type} · {row.trade.ticker}
-                  </div>
-                  <div className="text-gray-400 text-[11px] mt-0.5 flex items-center gap-1">
-                    <Calendar className="h-3 w-3" />
-                    Traded {row.tradeDate} · filed {row.disclosureDate}
-                  </div>
-                  <div className="mt-2">
-                    <SourceProvenance source={row.trade.source} recordDate={row.disclosureDate} size="xs" showTierNumber={false} />
-                  </div>
+            <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] gap-3 items-center">
+              <div className="rounded-lg border border-white/[0.06] p-3" style={{ background: 'rgba(255,255,255,0.02)' }}>
+                <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wide text-[#c8a951] mb-1.5">
+                  <TrendingUp className="h-3 w-3" />
+                  Stock disclosure
                 </div>
-
-                <div className="hidden sm:flex flex-col items-center text-gray-600 px-1">
-                  <span className="text-[10px] mb-0.5">{row.daysBetween}d apart</span>
-                  <ArrowRight className="h-4 w-4 text-[#c8a951]/50" />
+                <div className="text-white text-xs font-semibold">
+                  {row.trade.type} · {row.trade.ticker}
                 </div>
-
-                <div className="rounded-lg border border-white/[0.06] p-3" style={{ background: 'rgba(255,255,255,0.02)' }}>
-                  <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wide text-blue-300 mb-1.5">
-                    <Vote className="h-3 w-3" />
-                    Floor vote
-                  </div>
-                  <div className="text-white text-xs font-semibold line-clamp-3">{plainVoteTitle(row.vote)}</div>
-                  <div className="text-gray-400 text-[11px] mt-0.5">
-                    {row.vote.vote} · {row.voteDate} · {plainVoteSubtitle(row.vote)}
-                  </div>
-                  <div className="mt-2">
-                    <SourceProvenance source={row.vote.source} recordDate={row.voteDate} size="xs" showTierNumber={false} />
-                  </div>
+                <div className="text-gray-400 text-[11px] mt-0.5 flex items-center gap-1">
+                  <Calendar className="h-3 w-3" />
+                  Traded {row.tradeDate} · filed {row.disclosureDate}
+                </div>
+                <div className="mt-2">
+                  <SourceProvenance source={row.trade.source} recordDate={row.disclosureDate} size="xs" showTierNumber={false} />
                 </div>
               </div>
 
-              {row.connection === 'sector' && (
-                <div className="mt-2 text-[10px] text-gray-500">
-                  Bill topic and trade sector overlap in integrated records — shown for timeline context.
+              <div className="hidden sm:flex flex-col items-center text-gray-600 px-1">
+                <span className="text-[10px] mb-0.5">{row.daysBetween}d apart</span>
+                <ArrowRight className="h-4 w-4 text-[#c8a951]/50" />
+              </div>
+
+              <div className="rounded-lg border border-white/[0.06] p-3" style={{ background: 'rgba(255,255,255,0.02)' }}>
+                <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wide text-blue-300 mb-1.5">
+                  <Vote className="h-3 w-3" />
+                  Floor vote
                 </div>
-              )}
+                <div className="text-white text-xs font-semibold line-clamp-3">{plainVoteTitle(row.vote)}</div>
+                <div className="text-gray-400 text-[11px] mt-0.5">
+                  {row.vote.vote} · {row.voteDate} · {plainVoteSubtitle(row.vote)}
+                </div>
+                <div className="mt-2">
+                  <SourceProvenance source={row.vote.source} recordDate={row.voteDate} size="xs" showTierNumber={false} />
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
-      )}
-    </div>
+
+            {row.connection === 'sector' && (
+              <div className="mt-2 text-[10px] text-gray-500">
+                Bill topic and trade sector overlap in integrated records — shown for timeline context.
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </ProfileSectionAccordion>
   );
 }
