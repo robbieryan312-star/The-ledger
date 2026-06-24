@@ -1,4 +1,5 @@
-export type Chamber = 'senate' | 'house' | 'governor' | 'state_senate' | 'state_house' | 'mayor' | 'city_council' | 'school_board' | 'president';
+export type Chamber = 'senate' | 'house' | 'governor' | 'state_senate' | 'state_house' | 'mayor' | 'city_council' | 'school_board' | 'president' | 'vice_president' | 'cabinet' | 'scotus';
+export type GovernmentBranch = 'executive' | 'legislative' | 'judicial' | 'state';
 export type Party = 'Democrat' | 'Republican' | 'Independent' | 'Green' | 'Libertarian' | 'Other';
 export type Level = 'federal' | 'state' | 'local';
 export type VoteChoice = 'Yea' | 'Nay' | 'Not Voting' | 'Present';
@@ -135,6 +136,8 @@ export interface Politician {
   district?: string;
   chamber: Chamber;
   level: Level;
+  /** Branch of government — explicit on executive/judicial profiles; derived for others. */
+  branch?: GovernmentBranch;
   // Bioguide ID links this profile to authoritative congressional datasets
   // (unitedstates/congress-legislators, congress.gov). When present, the
   // CURRENT office label is derived from real data, not hand-typed fields.

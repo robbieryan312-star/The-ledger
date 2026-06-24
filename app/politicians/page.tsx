@@ -3,7 +3,9 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { mockStates } from '@/lib/data/mockPoliticians';
-import { allPoliticians, resolveOffice, getCoverageStats, comparePoliticiansByProminence } from '@/lib/data/allPoliticians';
+import { allPoliticians, resolveOffice, getCoverageStats, comparePoliticiansByProminence, getPoliticianBranch } from '@/lib/data/allPoliticians';
+import type { GovernmentBranch } from '@/lib/data/branches';
+import { EXECUTIVE_CHAMBERS } from '@/lib/data/officeResolution';
 import { fecFinanceCount } from '@/lib/data/fecFinance';
 import { congressVotesCount, mergeVotingRecord } from '@/lib/data/congressVotes';
 import { PHOTO_ATTRIBUTION } from '@/lib/data/photos';
@@ -28,6 +30,13 @@ const partyColors: Record<string, string> = {
 
 const PAGE_SIZE = 48;
 
+const BRANCH_FILTERS: { value: '' | GovernmentBranch; label: string }[] = [
+  { value: '', label: 'All' },
+  { value: 'executive', label: 'Executive' },
+  { value: 'legislative', label: 'Legislative' },
+  { value: 'judicial', label: 'Judicial' },
+];
+
 const coverageStats = getCoverageStats();
 
 function PoliticiansContent() {
@@ -36,6 +45,7 @@ function PoliticiansContent() {
   const [selectedParty, setSelectedParty] = useState<string>('');
   const [selectedChamber, setSelectedChamber] = useState<string>('');
   const [selectedLevel, setSelectedLevel] = useState<string>('');
+  const [selectedBranch, setSelectedBranch] = useState<string>('');
   const [sortBy, setSortBy] = useState<'name' | 'consistency' | 'lobbyist'>('name');
   const [searchText, setSearchText] = useState<string>('');
 
@@ -44,11 +54,13 @@ function PoliticiansContent() {
   useEffect(() => {
     const chamber = searchParams.get('chamber');
     const level = searchParams.get('level');
+    const branch = searchParams.get('branch');
     const state = searchParams.get('state');
     const party = searchParams.get('party');
     const q = searchParams.get('q');
     if (chamber) setSelectedChamber(chamber);
     if (level) setSelectedLevel(level);
+    if (branch) setSelectedBranch(branch);
     if (state) setSelectedState(state);
     if (party) setSelectedParty(party);
     if (q) setSearchText(q);
@@ -57,7 +69,7 @@ function PoliticiansContent() {
 
   useEffect(() => {
     setPage(1);
-  }, [selectedState, selectedParty, selectedChamber, selectedLevel, searchText, sortBy]);
+  }, [selectedState, selectedParty, selectedChamber, selectedLevel, selectedBranch, searchText, sortBy]);
 
   const filtered = allPoliticians
     .filter((p) => {
@@ -67,7 +79,10 @@ function PoliticiansContent() {
       }
       if (selectedState && p.stateCode !== selectedState) return false;
       if (selectedParty && p.party !== selectedParty) return false;
-      if (selectedChamber && p.chamber !== selectedChamber) return false;
+      if (selectedBranch && getPoliticianBranch(p) !== selectedBranch) return false;
+      if (selectedChamber === 'executive') {
+        if (!EXECUTIVE_CHAMBERS.includes(p.chamber)) return false;
+      } else if (selectedChamber && p.chamber !== selectedChamber) return false;
       if (selectedLevel && p.level !== selectedLevel) return false;
       return true;
     })
@@ -96,8 +111,8 @@ function PoliticiansContent() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-2">Politicians</h1>
         <p className="text-white/40">
-          National coverage: every current U.S. senator, representative, and governor — current office
-          derived from authoritative datasets, not hand-typed flags.
+          National coverage: executive officials, Supreme Court justices, Congress, and governors —
+          current office derived from authoritative sources.
         </p>
         <p className="text-white/25 text-xs mt-1">
           {PHOTO_ATTRIBUTION.label}.{' '}
@@ -108,6 +123,8 @@ function PoliticiansContent() {
         <div className="mt-4 flex flex-wrap gap-2 text-xs">
           {[
             { label: `${coverageStats.total} officials`, sub: 'national roster' },
+            { label: `${coverageStats.executives} executive`, sub: 'Tier 1 · whitehouse.gov' },
+            { label: `${coverageStats.justices} justices`, sub: 'Tier 1 · supremecourt.gov' },
             { label: `${coverageStats.senators + coverageStats.representatives} Congress`, sub: 'Tier 1 · legislators-current' },
             { label: `${coverageStats.governors} governors`, sub: 'Tier 2 · NGA roster' },
             { label: `${coverageStats.withPhotos} with photos`, sub: 'bioguide portraits' },
@@ -131,6 +148,27 @@ function PoliticiansContent() {
         <SearchBar />
       </div>
 
+      {/* Branch filter chips */}
+      <div className="flex flex-wrap gap-2 mb-4">
+        {BRANCH_FILTERS.map((b) => {
+          const active = selectedBranch === b.value;
+          return (
+            <button
+              key={b.label}
+              type="button"
+              onClick={() => setSelectedBranch(b.value)}
+              className={`px-4 py-2 rounded-full text-sm font-medium border transition-all ${
+                active
+                  ? 'bg-[#c8a951]/20 text-[#d4ac52] border-[#c8a951]/40'
+                  : 'bg-white/[0.04] text-white/50 border-white/[0.08] hover:text-white/80 hover:border-white/[0.15]'
+              }`}
+            >
+              {b.label}
+            </button>
+          );
+        })}
+      </div>
+
       {/* Filters */}
       <div className="rounded-xl p-4 border border-white/[0.07] mb-6" style={{ background: 'rgba(11,25,41,0.6)' }}>
         <div className="flex items-center gap-2 mb-3">
@@ -141,7 +179,7 @@ function PoliticiansContent() {
           {[
             { value: selectedState, set: setSelectedState, opts: [['', 'All States'], ...mockStates.map(s => [s.code, s.name])] },
             { value: selectedParty, set: setSelectedParty, opts: [['', 'All Parties'], ...['Democrat', 'Republican', 'Independent', 'Green', 'Libertarian'].map(p => [p, p])] },
-            { value: selectedChamber, set: setSelectedChamber, opts: [['', 'All Chambers'], ...['senate', 'house', 'governor', 'state_senate', 'state_house', 'mayor', 'city_council'].map(c => [c, c.replaceAll('_', ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())])] },
+            { value: selectedChamber, set: setSelectedChamber, opts: [['', 'All Chambers'], ['executive', 'Executive'], ...['president', 'vice_president', 'cabinet', 'scotus', 'senate', 'house', 'governor', 'state_senate', 'state_house', 'mayor', 'city_council'].map(c => [c, c.replaceAll('_', ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())])] },
             { value: selectedLevel, set: setSelectedLevel, opts: [['', 'All Levels'], ['federal', 'Federal'], ['state', 'State'], ['local', 'Local']] },
             { value: sortBy, set: (v: string) => setSortBy(v as 'name' | 'consistency' | 'lobbyist'), opts: [['name', 'Sort: Name'], ['consistency', 'Sort: Consistency'], ['lobbyist', 'Sort: Lobbyist $']] },
           ].map((sel, idx) => (

@@ -11,37 +11,68 @@
  * is derived from `resolveCurrentOffice` (the authoritative datasets), NEVER the
  * hand-typed `inOffice` flag. A former official can no longer appear as current.
  */
-import { Politician, ResolvedOffice } from '../types';
+import { Politician, ResolvedOffice, Chamber } from '../types';
 import { mockPoliticians } from './mockPoliticians';
+import { executiveOfficials } from './executiveOfficials';
+import { judicialOfficials } from './judicialOfficials';
+import { getPoliticianBranch, GovernmentBranch } from './branches';
 import {
   generatedCongressPoliticians,
   generatedGovernorPoliticians,
 } from './generatedPoliticians';
 import { resolveCurrentOffice } from './officeResolution';
-import { congressPhotoUrl } from './photos';
+import { congressPhotoUrl, executivePortraitUrl } from './photos';
+
+function withOfficialPhoto(p: Politician): Politician {
+  if (p.imageUrl) return p;
+  if (p.bioguideId) return { ...p, imageUrl: congressPhotoUrl(p.bioguideId) };
+  const execPhoto = executivePortraitUrl(p.id);
+  return execPhoto ? { ...p, imageUrl: execPhoto } : p;
+}
+
+const executiveOfficialsWithPhotos = executiveOfficials.map(withOfficialPhoto);
+
+const EXECUTIVE_CHAMBERS: Chamber[] = ['president', 'vice_president', 'cabinet'];
+const EXECUTIVE_ORDER: Record<string, number> = {
+  president: 0,
+  vice_president: 1,
+  cabinet: 2,
+};
+
+export { getPoliticianBranch };
+export type { GovernmentBranch };
 
 // Featured profiles ALSO get an official photo: when a hand-authored profile has
 // a bioguide ID but no explicit imageUrl, derive its public-domain portrait.
-const featured: Politician[] = mockPoliticians.map((p) =>
-  !p.imageUrl && p.bioguideId ? { ...p, imageUrl: congressPhotoUrl(p.bioguideId) } : p,
-);
+const featured: Politician[] = mockPoliticians.map(withOfficialPhoto);
 
 const featuredBioguides = new Set(
-  featured.map((p) => p.bioguideId).filter((b): b is string => !!b),
+  [
+    ...featured.map((p) => p.bioguideId),
+    ...executiveOfficialsWithPhotos.map((p) => p.bioguideId),
+  ].filter((b): b is string => !!b),
 );
+const featuredProfileIds = new Set([
+  ...executiveOfficialsWithPhotos.map((p) => p.id),
+  ...judicialOfficials.map((p) => p.id),
+]);
 const featuredGovernorStates = new Set(
   featured.filter((p) => p.chamber === 'governor').map((p) => p.stateCode),
 );
 
 const dedupedCongress = generatedCongressPoliticians.filter(
-  (p) => !p.bioguideId || !featuredBioguides.has(p.bioguideId),
+  (p) =>
+    (!p.bioguideId || !featuredBioguides.has(p.bioguideId)) &&
+    !featuredProfileIds.has(p.id),
 );
 const dedupedGovernors = generatedGovernorPoliticians.filter(
   (p) => !featuredGovernorStates.has(p.stateCode),
 );
 
-/** The complete national roster: featured first, then lightweight records. */
+/** The complete national roster: executives and justices first, then featured, then lightweight. */
 export const allPoliticians: Politician[] = [
+  ...executiveOfficialsWithPhotos,
+  ...judicialOfficials,
   ...featured,
   ...dedupedCongress,
   ...dedupedGovernors,
@@ -88,16 +119,35 @@ export function getCurrentPoliticians(): Politician[] {
  * Within a tier: House by district number, then last name.
  */
 export function getPoliticianProminenceTier(p: Politician): number {
-  if (p.chamber === 'president') return 0;
+  if (EXECUTIVE_CHAMBERS.includes(p.chamber)) return 0;
+  if (p.chamber === 'scotus') return 0;
   if (p.level === 'federal' && p.chamber === 'senate') return 1;
   if (p.level === 'federal' && p.chamber === 'house') return 2;
   if (p.chamber === 'governor') return 3;
   return 4;
 }
 
+function executiveSortKey(p: Politician): number {
+  return EXECUTIVE_ORDER[p.chamber] ?? 9;
+}
+
+function judicialSortKey(p: Politician): number {
+  if (!p.termStart) return 99;
+  return new Date(p.termStart).getTime();
+}
+
 export function comparePoliticiansByProminence(a: Politician, b: Politician): number {
   const tierDiff = getPoliticianProminenceTier(a) - getPoliticianProminenceTier(b);
   if (tierDiff !== 0) return tierDiff;
+  if (EXECUTIVE_CHAMBERS.includes(a.chamber) && EXECUTIVE_CHAMBERS.includes(b.chamber)) {
+    const execDiff = executiveSortKey(a) - executiveSortKey(b);
+    if (execDiff !== 0) return execDiff;
+  }
+  if (a.chamber === 'scotus' && b.chamber === 'scotus') {
+    if (a.id === 'scotus-roberts') return -1;
+    if (b.id === 'scotus-roberts') return 1;
+    return judicialSortKey(a) - judicialSortKey(b);
+  }
   if (a.chamber === 'house' && b.chamber === 'house') {
     return (
       (parseInt(a.district ?? '0', 10) || 0) - (parseInt(b.district ?? '0', 10) || 0)
@@ -119,6 +169,7 @@ export function searchPoliticians(query: string, limit = 8): Politician[] {
         p.party.toLowerCase().includes(q) ||
         (p.district != null && p.district.includes(q)),
     )
+    .sort(comparePoliticiansByProminence)
     .slice(0, limit);
 }
 
@@ -133,6 +184,8 @@ export function getCoverageStats(): {
   featured: number;
   lightweight: number;
   withPhotos: number;
+  executives: number;
+  justices: number;
   senators: number;
   representatives: number;
   governors: number;
@@ -143,6 +196,8 @@ export function getCoverageStats(): {
     featured,
     lightweight: allPoliticians.length - featured,
     withPhotos: allPoliticians.filter((p) => !!p.imageUrl).length,
+    executives: allPoliticians.filter((p) => EXECUTIVE_CHAMBERS.includes(p.chamber)).length,
+    justices: allPoliticians.filter((p) => p.chamber === 'scotus').length,
     senators: allPoliticians.filter((p) => p.chamber === 'senate').length,
     representatives: allPoliticians.filter((p) => p.chamber === 'house').length,
     governors: allPoliticians.filter((p) => p.chamber === 'governor').length,

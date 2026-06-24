@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { notFound } from 'next/navigation';
 import { getPoliticianById } from '@/lib/data/allPoliticians';
-import { resolveCurrentOffice } from '@/lib/data/officeResolution';
+import { resolveCurrentOffice, EXECUTIVE_CHAMBERS, JUDICIAL_CHAMBERS } from '@/lib/data/officeResolution';
 import { mergeCampaignFinance } from '@/lib/data/fecFinance';
 import { mergeVotingRecord } from '@/lib/data/congressVotes';
 import { mergeStockTrades } from '@/lib/data/stockTrades';
@@ -787,6 +787,24 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
                 finance={displayFinance}
                 isFeatured={isFeatured}
               />
+            ) : EXECUTIVE_CHAMBERS.includes(politician.chamber) ? (
+              <div className="rounded-xl p-8 border border-white/[0.07] text-center" style={{ background: 'rgba(11,25,41,0.6)' }}>
+                <Vote className="h-10 w-10 text-[#c8a951]/40 mx-auto mb-3" />
+                <p className="text-white/60 text-sm font-medium">No congressional voting record</p>
+                <p className="text-white/35 text-xs mt-1 max-w-md mx-auto leading-relaxed">
+                  The President, Vice President, and cabinet officials do not cast roll-call votes in Congress.
+                  Executive orders, memoranda, and department actions are listed under Overview → key issues with sourced evidence.
+                </p>
+              </div>
+            ) : JUDICIAL_CHAMBERS.includes(politician.chamber) ? (
+              <div className="rounded-xl p-8 border border-white/[0.07] text-center" style={{ background: 'rgba(11,25,41,0.6)' }}>
+                <Vote className="h-10 w-10 text-[#c8a951]/40 mx-auto mb-3" />
+                <p className="text-white/60 text-sm font-medium">No legislative voting record</p>
+                <p className="text-white/35 text-xs mt-1 max-w-md mx-auto leading-relaxed">
+                  Supreme Court justices are appointed, not elected; they do not cast roll-call votes in Congress.
+                  Published opinions and appointment records are listed under Overview → key issues with sourced evidence.
+                </p>
+              </div>
             ) : politician.chamber === 'governor' ? (
               <VotingRecord votes={[]} />
             ) : (

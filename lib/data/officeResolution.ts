@@ -24,6 +24,12 @@ import {
 } from '../types';
 import legislatorsSnapshot from './generated/currentLegislators.json';
 import { findCurrentGovernor, governorOfficeRecord } from './governors';
+import {
+  findExecutiveByBioguide,
+  findExecutiveByProfileId,
+  executiveOfficeRecord,
+} from './executiveRoster';
+import { findJusticeByProfileId, justiceOfficeRecord } from './scotusRoster';
 
 interface RawLegislatorRecord {
   bioguideId: string;
@@ -57,6 +63,48 @@ const byBioguide = new Map<string, RawLegislatorRecord>(
 );
 
 const CONGRESSIONAL_CHAMBERS: Chamber[] = ['senate', 'house'];
+const EXECUTIVE_CHAMBERS: Chamber[] = ['president', 'vice_president', 'cabinet'];
+const JUDICIAL_CHAMBERS: Chamber[] = ['scotus'];
+
+const FORMER_PREFIX: Record<string, string> = {
+  senate: 'Former U.S. Senator',
+  house: 'Former U.S. Representative',
+  governor: 'Former Governor',
+  president: 'Former President',
+  vice_president: 'Former Vice President',
+  cabinet: 'Former Cabinet Official',
+  scotus: 'Former Justice of the Supreme Court',
+};
+
+function resolveExecutiveOffice(politician: Politician): ResolvedOffice | undefined {
+  const exec =
+    findExecutiveByProfileId(politician.id) ??
+    findExecutiveByBioguide(politician.bioguideId);
+  if (!exec) return undefined;
+  const rec = executiveOfficeRecord(exec);
+  return {
+    isCurrent: true,
+    label: rec.office,
+    current: rec,
+    reason: 'real-current',
+    source: rec.source,
+    asOf: rec.asOf,
+  };
+}
+
+function resolveJudicialOffice(politician: Politician): ResolvedOffice | undefined {
+  const justice = findJusticeByProfileId(politician.id);
+  if (!justice) return undefined;
+  const rec = justiceOfficeRecord(justice);
+  return {
+    isCurrent: true,
+    label: rec.office,
+    current: rec,
+    reason: 'real-current',
+    source: rec.source,
+    asOf: rec.asOf,
+  };
+}
 
 function toOfficeRecord(rec: RawLegislatorRecord): OfficeRecord {
   return {
@@ -103,12 +151,6 @@ export function resolveMostRecentOffice(records: OfficeRecord[]): OfficeRecord |
   })[0];
 }
 
-const FORMER_PREFIX: Record<string, string> = {
-  senate: 'Former U.S. Senator',
-  house: 'Former U.S. Representative',
-  governor: 'Former Governor',
-};
-
 function normalizeLastName(s: string): string {
   return s.trim().toLowerCase();
 }
@@ -121,6 +163,14 @@ function normalizeLastName(s: string): string {
  * - No bioguide / non-congressional office -> unresolved-demo (mock, flagged).
  */
 export function resolveCurrentOffice(politician: Politician): ResolvedOffice {
+  // Executive branch roster (whitehouse.gov) takes precedence — e.g. a former
+  // senator now serving as Secretary of State resolves to cabinet, not "Former".
+  const executive = resolveExecutiveOffice(politician);
+  if (executive) return executive;
+
+  const judicial = resolveJudicialOffice(politician);
+  if (judicial) return judicial;
+
   const real = findCurrentByBioguide(politician.bioguideId);
   if (real) {
     const districtSuffix = real.chamber === 'house' && real.district ? `, District ${real.district}` : '';
@@ -177,6 +227,31 @@ export function resolveCurrentOffice(politician: Politician): ResolvedOffice {
     }
   }
 
+  // Judicial chamber profiles not on the roster fall through to demo resolution.
+  if (JUDICIAL_CHAMBERS.includes(politician.chamber)) {
+    return {
+      isCurrent: politician.inOffice,
+      label: 'Justice of the Supreme Court',
+      reason: 'unresolved-demo',
+      source: { name: 'Demo profile data', tier: 'unverified', description: 'Not yet linked to an authoritative dataset' },
+      asOf: politician.termStart ?? 'n/a',
+    };
+  }
+
+  // Executive chamber profiles not on the roster fall through to demo resolution.
+  if (EXECUTIVE_CHAMBERS.includes(politician.chamber)) {
+    const demoLabel = politician.chamber
+      .replaceAll('_', ' ')
+      .replace(/\b\w/g, (l) => l.toUpperCase());
+    return {
+      isCurrent: politician.inOffice,
+      label: demoLabel,
+      reason: 'unresolved-demo',
+      source: { name: 'Demo profile data', tier: 'unverified', description: 'Not yet linked to an authoritative dataset' },
+      asOf: politician.termStart ?? 'n/a',
+    };
+  }
+
   // Not yet wired to an authoritative source (e.g. local offices).
   const demoLabel = politician.chamber
     .replaceAll('_', ' ')
@@ -206,7 +281,7 @@ export function isLowTrust(tier: SourceTier): boolean {
   return !AUTHORITATIVE_TIERS.includes(tier);
 }
 
-/** Convenience: every current FL senator from the real dataset. */
+export { EXECUTIVE_CHAMBERS, JUDICIAL_CHAMBERS };
 export function currentSenatorsForState(stateCode: string): OfficeRecord[] {
   return snapshot.legislators
     .filter((l) => l.stateCode === stateCode && l.chamber === 'senate')
