@@ -1,0 +1,2000 @@
+{
+  "meta": {
+    "source": {
+      "name": "Federal Register",
+      "url": "https://www.federalregister.gov",
+      "tier": "official",
+      "description": "Official daily journal of the U.S. government via federalregister.gov API"
+    },
+    "asOf": "2026-06-24",
+    "count": 100,
+    "stateCode": "FL",
+    "fetchedLive": true,
+    "datasetUrl": "https://www.federalregister.gov/api/v1/documents.json?conditions[term]=Florida",
+    "note": "Most recent 100 Federal Register documents matching \"Florida\" (rules, proposed rules, notices, presidential documents). Tier 1 official."
+  },
+  "records": [
+    {
+      "documentNumber": "2026-12659",
+      "title": "Foreign-Trade Zone (FTZ) 32; Authorization of Production Activity; 3nStar, Inc.; (Point of Sale Terminals); Doral, Florida",
+      "type": "Notice",
+      "publicationDate": "2026-06-24",
+      "agencies": [
+        "Commerce Department",
+        "Foreign-Trade Zones Board"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-24"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/24/2026-12659/foreign-trade-zone-ftz-32-authorization-of-production-activity-3nstar-inc-point-of-sale-terminals"
+    },
+    {
+      "documentNumber": "2026-12501",
+      "title": "Foreign-Trade Zone (FTZ) 193; Authorization of Production Activity; Lithionics Battery, LLC; (Lithium-Ion Battery Systems and Accessories); Clearwater, Florida",
+      "type": "Notice",
+      "publicationDate": "2026-06-22",
+      "agencies": [
+        "Commerce Department",
+        "Foreign-Trade Zones Board"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-22"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/22/2026-12501/foreign-trade-zone-ftz-193-authorization-of-production-activity-lithionics-battery-llc-lithium-ion"
+    },
+    {
+      "documentNumber": "2026-12455",
+      "title": "Qualification of Drivers; Exemption Applications; Epilepsy and Seizure Disorders",
+      "type": "Notice",
+      "publicationDate": "2026-06-22",
+      "agencies": [
+        "Transportation Department",
+        "Federal Motor Carrier Safety Administration"
+      ],
+      "abstract": "FMCSA announces receipt of applications from six individuals for an exemption from the prohibition in the Federal Motor Carrier Safety Regulations (FMCSRs) against persons with a clinical diagnosis of epilepsy or any other condition that is likely to cause a loss of consciousness or any loss of ability to control a commercial motor vehicle (CMV) to drive in interstate commerce. If granted, the exemptions would enable these individuals who have had one or more seizures and are taking anti-seizure medication to operate CMVs in interstate commerce.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-22"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/22/2026-12455/qualification-of-drivers-exemption-applications-epilepsy-and-seizure-disorders"
+    },
+    {
+      "documentNumber": "2026-12389",
+      "title": "Notice of Intended Repatriation: University of Alabama Museums, Tuscaloosa, AL",
+      "type": "Notice",
+      "publicationDate": "2026-06-22",
+      "agencies": [
+        "Interior Department",
+        "National Park Service"
+      ],
+      "abstract": "In accordance with the Native American Graves Protection and Repatriation Act (NAGPRA), the University of Alabama Museums intends to repatriate certain cultural items that meet the definition of unassociated funerary objects and that have a cultural affiliation with the Indian Tribes or Native Hawaiian organizations in this notice.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-22"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/22/2026-12389/notice-of-intended-repatriation-university-of-alabama-museums-tuscaloosa-al"
+    },
+    {
+      "documentNumber": "2026-12383",
+      "title": "Notice of Inventory Completion: School of Social Science and Global Studies, University of Southern Mississippi, Hattiesburg, MS",
+      "type": "Notice",
+      "publicationDate": "2026-06-22",
+      "agencies": [
+        "Interior Department",
+        "National Park Service"
+      ],
+      "abstract": "In accordance with the Native American Graves Protection and Repatriation Act (NAGPRA), the University of Southern Mississippi (USM) has completed an inventory of human remains and has determined that there is a cultural affiliation between the human remains and Indian Tribes or Native Hawaiian organizations in this notice.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-22"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/22/2026-12383/notice-of-inventory-completion-school-of-social-science-and-global-studies-university-of-southern"
+    },
+    {
+      "documentNumber": "2026-12317",
+      "title": "Combined Notice of Filings #1",
+      "type": "Notice",
+      "publicationDate": "2026-06-18",
+      "agencies": [
+        "Energy Department",
+        "Federal Energy Regulatory Commission"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/18/2026-12317/combined-notice-of-filings-1"
+    },
+    {
+      "documentNumber": "2026-12184",
+      "title": "Combined Notice of Filings #1",
+      "type": "Notice",
+      "publicationDate": "2026-06-17",
+      "agencies": [
+        "Energy Department",
+        "Federal Energy Regulatory Commission"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-17"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/17/2026-12184/combined-notice-of-filings-1"
+    },
+    {
+      "documentNumber": "2026-12175",
+      "title": "Reef Fish Fishery of the Gulf of America; Shallow-Water Grouper Management Measures",
+      "type": "Rule",
+      "publicationDate": "2026-06-17",
+      "agencies": [
+        "Commerce Department",
+        "National Oceanic and Atmospheric Administration"
+      ],
+      "abstract": "NMFS issues regulations to implement management measures described in a framework action under the Fishery Management Plan for the Reef Fish Resources of the Gulf (FMP), as prepared by the Gulf Council (Council). This final rule modifies the Gulf of America (Gulf) Other Shallow-Water Grouper (SWG) complex catch limits and sets a recreational fixed-closed season for Gulf Other SWG. The purpose of this final rule is to reduce harvest of Gulf scamp and yellowmouth grouper while the Council develops Amendment 58A to the FMP (Amendment 58A), which considers additional Other SWG management measures.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-17"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/17/2026-12175/reef-fish-fishery-of-the-gulf-of-america-shallow-water-grouper-management-measures"
+    },
+    {
+      "documentNumber": "2026-12168",
+      "title": "Security Zone; FIFA World Cup and Fan Fest 2026, Bayfront Park, Miami, FL",
+      "type": "Rule",
+      "publicationDate": "2026-06-17",
+      "agencies": [
+        "Homeland Security Department",
+        "Coast Guard"
+      ],
+      "abstract": "The Coast Guard is establishing a temporary security zone for certain navigable waters of Biscayne Bay in connection with the 2026 Miami FIFA World Cup and the World Cup Fan Fest events in Miami, Florida. This security zone is necessary to safeguard official parties, VIP's and other participants (\"attendees\") attending the Miami 2026 FIFA World Cup and the World Cup Fan Fest because the ease of waterfront access to the various venues hosting the World Cup events presents a security concern for all attendees. This rulemaking prohibits anchoring or remaining within the security zone during enforcement periods unless specifically authorized by the Captain of the Port (COTP), Sector Miami or their designated representative.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-17"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/17/2026-12168/security-zone-fifa-world-cup-and-fan-fest-2026-bayfront-park-miami-fl"
+    },
+    {
+      "documentNumber": "2026-12069",
+      "title": "Medicare Program; Strengthening Oversight of Accrediting Organizations (AOs) and Preventing AO Conflicts of Interest, and Related Provisions",
+      "type": "Rule",
+      "publicationDate": "2026-06-16",
+      "agencies": [
+        "Health and Human Services Department",
+        "Centers for Medicare & Medicaid Services"
+      ],
+      "abstract": "This final rule with comment period sets forth provisions to strengthen the oversight of Medicare national accrediting organizations by addressing conflicts of interest, establishing consistent standards, processes, and definitions, and updating the validation and performance standards systems. Additionally, this final rule with comment period revises the psychiatric hospital survey process, adds a limitation on terminated deemed providers and suppliers when reentering the program, and provides technical corrections for End-Stage Renal Disease facilities and Transplant Programs.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-16"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/16/2026-12069/medicare-program-strengthening-oversight-of-accrediting-organizations-aos-and-preventing-ao"
+    },
+    {
+      "documentNumber": "2026-12040",
+      "title": "National Register of Historic Places; Notification of Pending Nominations and Related Actions",
+      "type": "Notice",
+      "publicationDate": "2026-06-16",
+      "agencies": [
+        "Interior Department",
+        "National Park Service"
+      ],
+      "abstract": "The National Park Service is soliciting electronic comments on the significance of properties nominated before May 30, 2026, for listing or related actions in the National Register of Historic Places.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-16"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/16/2026-12040/national-register-of-historic-places-notification-of-pending-nominations-and-related-actions"
+    },
+    {
+      "documentNumber": "2026-11972",
+      "title": "National Vaccine Injury Compensation Program; List of Petitions Received",
+      "type": "Notice",
+      "publicationDate": "2026-06-15",
+      "agencies": [
+        "Health and Human Services Department",
+        "Health Resources and Services Administration"
+      ],
+      "abstract": "HRSA is publishing this notice of petitions received under the National Vaccine Injury Compensation Program (the Program), as required by the Public Health Service (PHS) Act, as amended. While the Secretary of HHS is named as the respondent in all proceedings brought by the filing of petitions for compensation under the Program, the United States Court of Federal Claims is charged by statute with responsibility for considering and acting upon the petitions.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-15"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/15/2026-11972/national-vaccine-injury-compensation-program-list-of-petitions-received"
+    },
+    {
+      "documentNumber": "2026-11907",
+      "title": "Certain TOPCon Solar Cells, Modules, Panels, Components Thereof, and Products Containing Same; Notice of a Commission Determination Not To Review an Initial Determination Granting Tesla, Inc.'s Motion To Intervene",
+      "type": "Notice",
+      "publicationDate": "2026-06-15",
+      "agencies": [
+        "International Trade Commission"
+      ],
+      "abstract": "Notice is hereby given that the U.S. International Trade Commission has determined not to review an initial determination (\"ID\") (Order No. 10) of the presiding administrative law judge (\"ALJ\") granting a motion to intervene filed by non-party Tesla, Inc. (\"Tesla\").",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-15"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/15/2026-11907/certain-topcon-solar-cells-modules-panels-components-thereof-and-products-containing-same-notice-of"
+    },
+    {
+      "documentNumber": "2026-11884",
+      "title": "Partial Withdrawals of Findings of Failure To Submit State Implementation Plan (SIP) Revisions To Amend Provisions Applying to Excess Emissions During Periods of Startup, Shutdown, and Malfunction",
+      "type": "Rule",
+      "publicationDate": "2026-06-12",
+      "agencies": [
+        "Environmental Protection Agency"
+      ],
+      "abstract": "The U.S. Environmental Protection Agency (EPA) is partially withdrawing two final actions finding that 13 States and/or local air pollution control agencies failed to submit State Implementation Plan (SIP) revisions to address the Agency's 2015 findings of substantial inadequacy and \"SIP call\" for provisions applying to excess emissions during periods of startup, shutdown, and malfunction (SSM). The partial withdrawal affects six air pollution control agencies. Withdrawing relevant parts of the findings for failure to submit is consistent with the decision from the U.S. Court of Appeals for the District of Columbia Circuit Court (D.C. Circuit) partially vacating the findings of substantial inadequacy and SIP call. This final action renders no longer applicable certain CAA deadlines for the EPA to impose sanctions if a State does not submit a complete SIP revision addressing the outstanding requirements, and to promulgate a Federal Implementation Plan (FIP).",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-12"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/12/2026-11884/partial-withdrawals-of-findings-of-failure-to-submit-state-implementation-plan-sip-revisions-to"
+    },
+    {
+      "documentNumber": "2026-11883",
+      "title": "Pecans Grown in the States of Alabama, Arkansas, Arizona, California, Florida, Georgia, Kansas, Louisiana, Missouri, Mississippi, North Carolina, New Mexico, Oklahoma, South Carolina, and Texas; Continuance Referendum",
+      "type": "Notice",
+      "publicationDate": "2026-06-12",
+      "agencies": [
+        "Agriculture Department",
+        "Agricultural Marketing Service"
+      ],
+      "abstract": "This document directs that a referendum be conducted among eligible pecan growers to determine whether they favor continuance of the marketing order regulating the handling of pecans grown in the states of Alabama, Arkansas, Arizona, California, Florida, Georgia, Kansas, Louisiana, Missouri, Mississippi, North Carolina, New Mexico, Oklahoma, South Carolina, and Texas.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-12"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/12/2026-11883/pecans-grown-in-the-states-of-alabama-arkansas-arizona-california-florida-georgia-kansas-louisiana"
+    },
+    {
+      "documentNumber": "2026-11870",
+      "title": "Receipt of Incidental Take Permit Application and Proposed Habitat Conservation Plan for Sand Skink; Lake County, FL; Categorical Exclusion",
+      "type": "Notice",
+      "publicationDate": "2026-06-12",
+      "agencies": [
+        "Interior Department",
+        "Fish and Wildlife Service"
+      ],
+      "abstract": "We, the Fish and Wildlife Service (Service), announce receipt of an application from Lake County Development Partners, LLC (Casa del Rosa) (applicant) for an incidental take permit (ITP) under the Endangered Species Act (ESA). The applicant requests the ITP to take the federally listed threatened sand skink (Neopseps=(Plestiodon) reynoldsi) (skinks) incidental to the construction of a mixed multi- phase residential and commercial development and the associated clearing, infrastructure, and landscaping in Lake County, Florida. We request public comment on the application, which includes the applicant's proposed habitat conservation plan, and on the Service's preliminary determination that the proposed permitting action may be eligible for a categorical exclusion pursuant to the National Environmental Policy Act (NEPA), the Department of the Interior's (DOI) NEPA regulations, and the DOI Departmental Manual. To make this preliminary determination, we prepared a draft screening form and NEPA statement for habitat conservation plans, which are available for public review. We invite comment from the public and local, State, Tribal, and Federal agencies.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-12"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/12/2026-11870/receipt-of-incidental-take-permit-application-and-proposed-habitat-conservation-plan-for-sand-skink"
+    },
+    {
+      "documentNumber": "2026-11847",
+      "title": "Pecans Grown in the States of Alabama, Arkansas, Arizona, California, Florida, Georgia, Kansas, Louisiana, Missouri, Mississippi, North Carolina, New Mexico, Oklahoma, South Carolina, and Texas; Notice of Request for Extension and Revision of a Currently Approved Information Collection",
+      "type": "Notice",
+      "publicationDate": "2026-06-12",
+      "agencies": [
+        "Agriculture Department",
+        "Agricultural Marketing Service"
+      ],
+      "abstract": "In accordance with the Paperwork Reduction Act of 1995, this notice announces the Agricultural Marketing Service's (AMS) intention to request an extension for, and revision to, a currently approved information collection for Pecans Grown in the States of Alabama, Arkansas, Arizona, California, Florida, Georgia, Kansas, Louisiana, Missouri, Mississippi, North Carolina, New Mexico, Oklahoma, South Carolina, and Texas, Marketing Order No. 986.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-12"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/12/2026-11847/pecans-grown-in-the-states-of-alabama-arkansas-arizona-california-florida-georgia-kansas-louisiana"
+    },
+    {
+      "documentNumber": "2026-11838",
+      "title": "Drawbridge Operation Regulation; Big Carlos Pass, Estero Island, FL",
+      "type": "Rule",
+      "publicationDate": "2026-06-12",
+      "agencies": [
+        "Homeland Security Department",
+        "Coast Guard"
+      ],
+      "abstract": "The Coast Guard is removing the existing drawbridge operation regulation for the SR 865 Bridge, across Big Carlos Pass, mile 0.0, at Estero Island and Black Island, FL. The drawbridge was replaced with a fixed bridge in April 2026, and the operating regulation is no longer applicable or necessary.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-12"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/12/2026-11838/drawbridge-operation-regulation-big-carlos-pass-estero-island-fl"
+    },
+    {
+      "documentNumber": "2026-11770",
+      "title": "Uniform Procedures for State Highway Safety Grant Programs",
+      "type": "Rule",
+      "publicationDate": "2026-06-11",
+      "agencies": [
+        "Transportation Department",
+        "National Highway Traffic Safety Administration"
+      ],
+      "abstract": "This action finalizes proposed revisions to certain documentation requirements relating to public participation and engagement in the Uniform Procedures for State Highway Safety Grant Programs.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11770/uniform-procedures-for-state-highway-safety-grant-programs"
+    },
+    {
+      "documentNumber": "2026-11726",
+      "title": "Special Local Regulation; CFK Swim Around Key West, Key West, FL",
+      "type": "Rule",
+      "publicationDate": "2026-06-11",
+      "agencies": [
+        "Homeland Security Department",
+        "Coast Guard"
+      ],
+      "abstract": "The Coast Guard will enforce the special local regulation for the College of the Florida Keys Swim Around Key West on June 13, 2026, to provide for the safety of life on navigable waterways during this event. Our regulation for recurring marine events within the Southeast Coast Guard District identifies the regulated area for this event. During the enforcement periods, the operator of any vessel in the regulated area must comply with directions from the Patrol Commander or any Official Patrol displaying a Coast Guard ensign.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11726/special-local-regulation-cfk-swim-around-key-west-key-west-fl"
+    },
+    {
+      "documentNumber": "2026-11677",
+      "title": "Changes in Flood Hazard Determinations",
+      "type": "Notice",
+      "publicationDate": "2026-06-11",
+      "agencies": [
+        "Homeland Security Department",
+        "Federal Emergency Management Agency"
+      ],
+      "abstract": "This notice lists communities where the addition or modification of Base Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, or the regulatory floodway (hereinafter referred to as flood hazard determinations), as shown on the Flood Insurance Rate Maps (FIRMs), and where applicable, in the supporting Flood Insurance Study (FIS) reports, prepared by the Federal Emergency Management Agency (FEMA) for each community, is appropriate because of new scientific or technical data. The FIRM, and where applicable, portions of the FIS report, have been revised to reflect these flood hazard determinations through issuance of a Letter of Map Revision (LOMR), in accordance with Federal Regulations. The current effective community number is shown in the table below and must be used for all new policies and renewals.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11677/changes-in-flood-hazard-determinations"
+    },
+    {
+      "documentNumber": "2026-11676",
+      "title": "Changes in Flood Hazard Determinations",
+      "type": "Notice",
+      "publicationDate": "2026-06-11",
+      "agencies": [
+        "Homeland Security Department",
+        "Federal Emergency Management Agency"
+      ],
+      "abstract": "This notice lists communities where the addition or modification of Base Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, or the regulatory floodway (hereinafter referred to as flood hazard determinations), as shown on the Flood Insurance Rate Maps (FIRMs), and where applicable, in the supporting Flood Insurance Study (FIS) reports, prepared by the Federal Emergency Management Agency (FEMA) for each community, is appropriate because of new scientific or technical data. The FIRM, and where applicable, portions of the FIS report, have been revised to reflect these flood hazard determinations through issuance of a Letter of Map Revision (LOMR), in accordance with Federal Regulations. The current effective community number is shown in the table below and must be used for all new policies and renewals.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11676/changes-in-flood-hazard-determinations"
+    },
+    {
+      "documentNumber": "2026-11675",
+      "title": "Changes in Flood Hazard Determinations",
+      "type": "Notice",
+      "publicationDate": "2026-06-11",
+      "agencies": [
+        "Homeland Security Department",
+        "Federal Emergency Management Agency"
+      ],
+      "abstract": "New or modified Base (1-percent annual chance) Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, and/or regulatory floodways (hereinafter referred to as flood hazard determinations) as shown on the indicated Letter of Map Revision (LOMR) for each of the communities listed in the table below are finalized. Each LOMR revises the Flood Insurance Rate Maps (FIRMs), and in some cases the Flood Insurance Study (FIS) reports, currently in effect for the listed communities.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11675/changes-in-flood-hazard-determinations"
+    },
+    {
+      "documentNumber": "2026-11674",
+      "title": "Changes in Flood Hazard Determinations",
+      "type": "Notice",
+      "publicationDate": "2026-06-11",
+      "agencies": [
+        "Homeland Security Department",
+        "Federal Emergency Management Agency"
+      ],
+      "abstract": "New or modified Base (1-percent annual chance) Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, and/or regulatory floodways (hereinafter referred to as flood hazard determinations) as shown on the indicated Letter of Map Revision (LOMR) for each of the communities listed in the table below are finalized. Each LOMR revises the Flood Insurance Rate Maps (FIRMs), and in some cases the Flood Insurance Study (FIS) reports, currently in effect for the listed communities.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11674/changes-in-flood-hazard-determinations"
+    },
+    {
+      "documentNumber": "2026-11670",
+      "title": "Changes in Flood Hazard Determinations",
+      "type": "Notice",
+      "publicationDate": "2026-06-11",
+      "agencies": [
+        "Homeland Security Department",
+        "Federal Emergency Management Agency"
+      ],
+      "abstract": "This notice lists communities where the addition or modification of Base Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, or the regulatory floodway (hereinafter referred to as flood hazard determinations), as shown on the Flood Insurance Rate Maps (FIRMs), and where applicable, in the supporting Flood Insurance Study (FIS) reports, prepared by the Federal Emergency Management Agency (FEMA) for each community, is appropriate because of new scientific or technical data. The FIRM, and where applicable, portions of the FIS report, have been revised to reflect these flood hazard determinations through issuance of a Letter of Map Revision (LOMR), in accordance with Federal Regulations. The current effective community number is shown in the table below and must be used for all new policies and renewals.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11670/changes-in-flood-hazard-determinations"
+    },
+    {
+      "documentNumber": "2026-11669",
+      "title": "Changes in Flood Hazard Determinations",
+      "type": "Notice",
+      "publicationDate": "2026-06-11",
+      "agencies": [
+        "Homeland Security Department",
+        "Federal Emergency Management Agency"
+      ],
+      "abstract": "This notice lists communities where the addition or modification of Base Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, or the regulatory floodway (hereinafter referred to as flood hazard determinations), as shown on the Flood Insurance Rate Maps (FIRMs), and where applicable, in the supporting Flood Insurance Study (FIS) reports, prepared by the Federal Emergency Management Agency (FEMA) for each community, is appropriate because of new scientific or technical data. The FIRM, and where applicable, portions of the FIS report, have been revised to reflect these flood hazard determinations through issuance of a Letter of Map Revision (LOMR), in accordance with Federal Regulations. The current effective community number is shown in the table below and must be used for all new policies and renewals.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11669/changes-in-flood-hazard-determinations"
+    },
+    {
+      "documentNumber": "2026-11668",
+      "title": "Changes in Flood Hazard Determinations",
+      "type": "Notice",
+      "publicationDate": "2026-06-11",
+      "agencies": [
+        "Homeland Security Department",
+        "Federal Emergency Management Agency"
+      ],
+      "abstract": "This notice lists communities where the addition or modification of Base Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, or the regulatory floodway (hereinafter referred to as flood hazard determinations), as shown on the Flood Insurance Rate Maps (FIRMs), and where applicable, in the supporting Flood Insurance Study (FIS) reports, prepared by the Federal Emergency Management Agency (FEMA) for each community, is appropriate because of new scientific or technical data. The FIRM, and where applicable, portions of the FIS report, have been revised to reflect these flood hazard determinations through issuance of a Letter of Map Revision (LOMR), in accordance with Federal Regulations. The current effective community number is shown in the table below and must be used for all new policies and renewals.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11668/changes-in-flood-hazard-determinations"
+    },
+    {
+      "documentNumber": "2026-11667",
+      "title": "Changes in Flood Hazard Determinations",
+      "type": "Notice",
+      "publicationDate": "2026-06-11",
+      "agencies": [
+        "Homeland Security Department",
+        "Federal Emergency Management Agency"
+      ],
+      "abstract": "This notice lists communities where the addition or modification of Base Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, or the regulatory floodway (hereinafter referred to as flood hazard determinations), as shown on the Flood Insurance Rate Maps (FIRMs), and where applicable, in the supporting Flood Insurance Study (FIS) reports, prepared by the Federal Emergency Management Agency (FEMA) for each community, is appropriate because of new scientific or technical data. The FIRM, and where applicable, portions of the FIS report, have been revised to reflect these flood hazard determinations through issuance of a Letter of Map Revision (LOMR), in accordance with Federal Regulations. The current effective community number is shown in the table below and must be used for all new policies and renewals.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11667/changes-in-flood-hazard-determinations"
+    },
+    {
+      "documentNumber": "2026-11665",
+      "title": "Changes in Flood Hazard Determinations",
+      "type": "Notice",
+      "publicationDate": "2026-06-11",
+      "agencies": [
+        "Homeland Security Department",
+        "Federal Emergency Management Agency"
+      ],
+      "abstract": "New or modified Base (1-percent annual chance) Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, and/or regulatory floodways (hereinafter referred to as flood hazard determinations) as shown on the indicated Letter of Map Revision (LOMR) for each of the communities listed in the table below are finalized. Each LOMR revises the Flood Insurance Rate Maps (FIRMs), and in some cases the Flood Insurance Study (FIS) reports, currently in effect for the listed communities.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11665/changes-in-flood-hazard-determinations"
+    },
+    {
+      "documentNumber": "2026-11635",
+      "title": "Ascension Health Alliance; Analysis of Proposed Agreement Containing Consent Orders To Aid Public Comment",
+      "type": "Notice",
+      "publicationDate": "2026-06-10",
+      "agencies": [
+        "Federal Trade Commission"
+      ],
+      "abstract": "The consent agreement in this matter settles alleged violations of Federal law prohibiting unfair methods of competition. The attached Analysis of Proposed Agreement Containing Consent Orders to Aid Public Comment describes both the allegations in the complaint and the terms of the consent order--embodied in the consent agreement-- that would settle these allegations.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-10"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/10/2026-11635/ascension-health-alliance-analysis-of-proposed-agreement-containing-consent-orders-to-aid-public"
+    },
+    {
+      "documentNumber": "2026-11617",
+      "title": "High Purity Dissolving Pulp From Brazil and Norway; Scheduling of the Final Phase of Countervailing Duty and Antidumping Duty Investigations",
+      "type": "Notice",
+      "publicationDate": "2026-06-10",
+      "agencies": [
+        "International Trade Commission"
+      ],
+      "abstract": "The Commission hereby gives notice of the scheduling of the final phase of antidumping and countervailing duty investigation Nos. 701-TA-777 and 731-TA-1762-1763 (Final) pursuant to the Tariff Act of 1930 to determine whether an industry in the United States is materially injured or threatened with material injury, or the establishment of an industry in the United States is materially retarded, by reason of imports of high purity dissolving pulp (\"HPDP\") from Brazil and Norway, provided for in subheading 4702.00.00 of the Harmonized Tariff Schedule of the United States, preliminarily determined by the Department of Commerce (\"Commerce\") to be subsidized by the government of Brazil and sold at less-than- fair-value.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-10"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/10/2026-11617/high-purity-dissolving-pulp-from-brazil-and-norway-scheduling-of-the-final-phase-of-countervailing"
+    },
+    {
+      "documentNumber": "2026-11600",
+      "title": "Combined Notice of Filings #1",
+      "type": "Notice",
+      "publicationDate": "2026-06-10",
+      "agencies": [
+        "Energy Department",
+        "Federal Energy Regulatory Commission"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-10"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/10/2026-11600/combined-notice-of-filings-1"
+    },
+    {
+      "documentNumber": "2026-11547",
+      "title": "Foreign-Trade Zone (FTZ) 218, Notification of Proposed Production Activity; OCULUS Surgical, Inc.; (Ophthalmic Diagnostic Equipment); Port St. Lucie, Florida",
+      "type": "Notice",
+      "publicationDate": "2026-06-09",
+      "agencies": [
+        "Commerce Department",
+        "Foreign-Trade Zones Board"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-09"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/09/2026-11547/foreign-trade-zone-ftz-218-notification-of-proposed-production-activity-oculus-surgical-inc"
+    },
+    {
+      "documentNumber": "2026-11491",
+      "title": "Qualification of Drivers; Exemption Applications; Hearing",
+      "type": "Notice",
+      "publicationDate": "2026-06-09",
+      "agencies": [
+        "Transportation Department",
+        "Federal Motor Carrier Safety Administration"
+      ],
+      "abstract": "FMCSA announces receipt of applications from 11 individuals for an exemption from the hearing requirement in the Federal Motor Carrier Safety Regulations (FMCSRs) to operate a commercial motor vehicle (CMV) in interstate commerce. If granted, the exemptions would enable these hard of hearing and deaf individuals to operate CMVs in interstate commerce.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-09"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/09/2026-11491/qualification-of-drivers-exemption-applications-hearing"
+    },
+    {
+      "documentNumber": "2026-11468",
+      "title": "Fiscal Year List of Requests From States or Tribes for a Small Business Administration Disaster Declaration",
+      "type": "Notice",
+      "publicationDate": "2026-06-08",
+      "agencies": [
+        "Small Business Administration"
+      ],
+      "abstract": "This notice provides an updated monthly summary of requests received by the U. S. Small Business Administration to make a disaster declaration for a state, territory, or tribe. The published list complies with a directive in the explanatory statement of the Consolidated Appropriations Act, 2026, Public Law 119-75.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-08"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/08/2026-11468/fiscal-year-list-of-requests-from-states-or-tribes-for-a-small-business-administration-disaster"
+    },
+    {
+      "documentNumber": "2026-11459",
+      "title": "Certain Pickleball Paddles; Notice of Institution of Investigation",
+      "type": "Notice",
+      "publicationDate": "2026-06-08",
+      "agencies": [
+        "International Trade Commission"
+      ],
+      "abstract": "Notice is hereby given that a complaint was filed with the U.S. International Trade Commission on April 7, 2026, under section 337 of the Tariff Act of 1930, as amended, on behalf of Sport Squad, Inc. d/b/a JOOLA of North Bethesda, Maryland. An amended complaint was filed on April 17, 2026. A supplement to the amended complaint was filed on May 19, 2026. The amended complaint, as supplemented, alleges violations of section 337 based upon the importation into the United States, the sale for importation, and the sale within the United States after importation of certain pickleball paddles by reason of the infringement of certain claims of U.S. Patent No. 12,465,826 (\"the '826 patent\") and U.S. Patent No. 12,357,891 (\"the '891 patent\"). The amended complaint, as supplemented, further alleges that an industry in the United States exists or is in the process of being established, as required by the applicable Federal Statute. The complainant requests that the Commission institute an investigation and, after the investigation, issue a limited exclusion order and cease and desist orders.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-08"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/08/2026-11459/certain-pickleball-paddles-notice-of-institution-of-investigation"
+    },
+    {
+      "documentNumber": "2026-11438",
+      "title": "Combined Notice of Filings #2",
+      "type": "Notice",
+      "publicationDate": "2026-06-08",
+      "agencies": [
+        "Energy Department",
+        "Federal Energy Regulatory Commission"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-08"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/08/2026-11438/combined-notice-of-filings-2"
+    },
+    {
+      "documentNumber": "2026-11437",
+      "title": "Combined Notice of Filings #1",
+      "type": "Notice",
+      "publicationDate": "2026-06-08",
+      "agencies": [
+        "Energy Department",
+        "Federal Energy Regulatory Commission"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-08"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/08/2026-11437/combined-notice-of-filings-1"
+    },
+    {
+      "documentNumber": "2026-11354",
+      "title": "Formations of, Acquisitions by, and Mergers of Bank Holding Companies",
+      "type": "Notice",
+      "publicationDate": "2026-06-05",
+      "agencies": [
+        "Federal Reserve System"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-05"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/05/2026-11354/formations-of-acquisitions-by-and-mergers-of-bank-holding-companies"
+    },
+    {
+      "documentNumber": "2026-11340",
+      "title": "Combined Notice of Filings #1",
+      "type": "Notice",
+      "publicationDate": "2026-06-05",
+      "agencies": [
+        "Energy Department",
+        "Federal Energy Regulatory Commission"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-05"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/05/2026-11340/combined-notice-of-filings-1"
+    },
+    {
+      "documentNumber": "2026-11332",
+      "title": "Foreign-Trade Zone (FTZ) 213, Notification of Proposed Production Activity; Project and Construction Welding, Inc. dba IMS Inc.; (Marine Watertight Sliding Doors); Cape Coral, Florida",
+      "type": "Notice",
+      "publicationDate": "2026-06-05",
+      "agencies": [
+        "Commerce Department",
+        "Foreign-Trade Zones Board"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-05"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/05/2026-11332/foreign-trade-zone-ftz-213-notification-of-proposed-production-activity-project-and-construction"
+    },
+    {
+      "documentNumber": "2026-11310",
+      "title": "Safety Zone; Hurricanes, Tropical Storms, and Severe Weather Events in the Sector Mobile Captain of the Port Zone",
+      "type": "Proposed Rule",
+      "publicationDate": "2026-06-05",
+      "agencies": [
+        "Homeland Security Department",
+        "Coast Guard"
+      ],
+      "abstract": "The Coast Guard is proposing to establish a safety zone in the navigable waters within the Sector Mobile Captain of the Port (COTP) zone, to be enforced in the event of hurricanes, tropical storms, and other severe weather events. This regulation establishes requirements for industry and vessel operators in the Mobile COTP zone, to ensure the safety of the safety of the ports and waters within the zone prior to, during and immediately following these events.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-05"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/05/2026-11310/safety-zone-hurricanes-tropical-storms-and-severe-weather-events-in-the-sector-mobile-captain-of-the"
+    },
+    {
+      "documentNumber": "2026-11213",
+      "title": "South Atlantic Fishery Management Council; Public Meeting",
+      "type": "Notice",
+      "publicationDate": "2026-06-04",
+      "agencies": [
+        "Commerce Department",
+        "National Oceanic and Atmospheric Administration"
+      ],
+      "abstract": "The South Atlantic Fishery Management Council (Council) will hold a meeting of the Habitat and Ecosystem Advisory Panel (AP) on June 30 and July 1, 2026.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-04"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/04/2026-11213/south-atlantic-fishery-management-council-public-meeting"
+    },
+    {
+      "documentNumber": "2026-11182",
+      "title": "Prevailing Rate Systems; Redefinition of the Raven Rock Mountain Complex to the Washington-Baltimore-Arlington Federal Wage System Wage Area",
+      "type": "Rule",
+      "publicationDate": "2026-06-04",
+      "agencies": [
+        "Personnel Management Office"
+      ],
+      "abstract": "The Office of Personnel Management (OPM) is issuing a final rule to redefine the Federal Wage System (FWS) wage area coverage of the Raven Rock Mountain Complex (RRMC), which spans small portions of Washington County, Maryland, which is in the Washington-Baltimore- Arlington wage area, and Adams County, Pennsylvania, which is in the Harrisburg-York-Lebanon, PA wage area. OPM will redefine the RRMC portion of Adams County from the Harrisburg-York-Lebanon, PA wage area to the Washington-Baltimore-Arlington wage area so that all of the RRMC is in the same wage area. Portions of Adams County outside of RRMC will continue to be defined to the Harrisburg-York-Lebanon, PA, wage area. This change will align wage area coverage for installations within the Pentagon Reservation and prevent pay disparities among FWS employees working at the RRMC.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-04"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/04/2026-11182/prevailing-rate-systems-redefinition-of-the-raven-rock-mountain-complex-to-the"
+    },
+    {
+      "documentNumber": "2026-11158",
+      "title": "Notice of Determination and Request for Comments Concerning Action Pursuant to Section 301: Brazil's Acts, Policies, and Practices Related to Digital Trade and Electronic Payment Services; Unfair, Preferential Tariffs; Anti-Corruption Enforcement; Intellectual Property Protection; Ethanol Market Access; and Illegal Deforestation",
+      "type": "Notice",
+      "publicationDate": "2026-06-04",
+      "agencies": [
+        "Trade Representative, Office of United States"
+      ],
+      "abstract": "The United States Trade Representative (Trade Representative) has determined that certain of Brazil's acts, policies, and practices at issue in this investigation are actionable under Section 301(b) and Section 304(a) of the Trade Act of 1974, as amended (Trade Act). The Trade Representative is proposing action, including tariffs on articles of Brazil and certain exemptions, and invites comments from the public.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-04"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/04/2026-11158/notice-of-determination-and-request-for-comments-concerning-action-pursuant-to-section-301-brazils"
+    },
+    {
+      "documentNumber": "2026-11005",
+      "title": "HEARTH Act Approval of Peoria Tribe of Indians of Oklahoma Business Leasing Ordinance",
+      "type": "Notice",
+      "publicationDate": "2026-06-02",
+      "agencies": [
+        "Interior Department",
+        "Indian Affairs Bureau"
+      ],
+      "abstract": "The Assistant Secretary--Indian Affairs approved the Peoria Tribe of Indians of Oklahoma Business Leasing Ordinance under the Helping Expedite and Advance Responsible Tribal Homeownership Act of 2012 (HEARTH Act). With this approval, the Tribe is authorized to enter into leases without further approval from the Secretary of the Interior.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-02"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/02/2026-11005/hearth-act-approval-of-peoria-tribe-of-indians-of-oklahoma-business-leasing-ordinance"
+    },
+    {
+      "documentNumber": "2026-10991",
+      "title": "Combined Notice of Filings",
+      "type": "Notice",
+      "publicationDate": "2026-06-02",
+      "agencies": [
+        "Energy Department",
+        "Federal Energy Regulatory Commission"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-02"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/02/2026-10991/combined-notice-of-filings"
+    },
+    {
+      "documentNumber": "2026-10885",
+      "title": "Endangered Wildlife and Plants; Receipt of Recovery Permit Applications",
+      "type": "Notice",
+      "publicationDate": "2026-06-01",
+      "agencies": [
+        "Interior Department",
+        "Fish and Wildlife Service"
+      ],
+      "abstract": "We, the U.S. Fish and Wildlife Service, invite the public to comment on the following applications for a permit to conduct scientific research to promote conservation or other activities intended to recover and enhance endangered species survival. With some exceptions, the Endangered Species Act (ESA) prohibits certain activities that may impact endangered species, unless a Federal permit allows such activity. The ESA also requires that we invite public comment before issuing these permits.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-01"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/01/2026-10885/endangered-wildlife-and-plants-receipt-of-recovery-permit-applications"
+    },
+    {
+      "documentNumber": "2026-10856",
+      "title": "Endangered Species; Receipt of Recovery Permit Applications",
+      "type": "Notice",
+      "publicationDate": "2026-06-01",
+      "agencies": [
+        "Interior Department",
+        "Fish and Wildlife Service"
+      ],
+      "abstract": "We, the U.S. Fish and Wildlife Service, have received applications for permits to conduct scientific research to promote conservation or other activities intended to enhance the propagation or survival of endangered or threatened species under the Endangered Species Act. We invite local, State, and Federal agencies; Tribes; and the public to comment on these applications. Before issuing the requested permits, we will take into consideration any information that we receive during the public comment period.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-01"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/01/2026-10856/endangered-species-receipt-of-recovery-permit-applications"
+    },
+    {
+      "documentNumber": "2026-10848",
+      "title": "Certain TOPCon Solar Cells, Modules, Panels, Components Thereof, and Products Containing Same; Commission Determination Not To Review an Initial Determination Granting a Motion To Intervene",
+      "type": "Notice",
+      "publicationDate": "2026-06-01",
+      "agencies": [
+        "International Trade Commission"
+      ],
+      "abstract": "Notice is hereby given that the U.S. International Trade Commission has determined not to review an initial determination (\"ID\") (Order No. 7) of the presiding administrative law judge (\"ALJ\") granting a motion to intervene filed by non-party BYD America LLC (\"BYD\").",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-01"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/01/2026-10848/certain-topcon-solar-cells-modules-panels-components-thereof-and-products-containing-same-commission"
+    },
+    {
+      "documentNumber": "2026-10798",
+      "title": "Notice of Intent To Prepare an Environmental Impact Statement for the Proposed DeLamar Mine Project-Owyhee County, Idaho",
+      "type": "Notice",
+      "publicationDate": "2026-05-29",
+      "agencies": [
+        "Interior Department",
+        "Land Management Bureau"
+      ],
+      "abstract": "In compliance with the National Environmental Policy Act (NEPA) of 1969, as amended, and the Federal Land Policy and Management Act (FLPMA) of 1976, as amended, the Bureau of Land Management (BLM) Owyhee Field Office, Marsing, Idaho intends to prepare an Environmental Impact Statement (EIS) to consider the effects of DeLamar Mining Company's proposed DeLamar Mine Project in Owyhee County, Idaho. This notice announces the beginning of the scoping process to solicit public comments and identify issues.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-29"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10798/notice-of-intent-to-prepare-an-environmental-impact-statement-for-the-proposed-delamar-mine"
+    },
+    {
+      "documentNumber": "2026-10785",
+      "title": "Combined Notice of Filings #1",
+      "type": "Notice",
+      "publicationDate": "2026-05-29",
+      "agencies": [
+        "Energy Department",
+        "Federal Energy Regulatory Commission"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-29"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10785/combined-notice-of-filings-1"
+    },
+    {
+      "documentNumber": "2026-10780",
+      "title": "Shipping Safety Fairways and Associated Vessel Routing Measures Along the Atlantic Coast",
+      "type": "Notice",
+      "publicationDate": "2026-05-29",
+      "agencies": [
+        "Homeland Security Department",
+        "Coast Guard"
+      ],
+      "abstract": "The Coast Guard will host public meetings regarding the draft Programmatic Environmental Impact Statement/Overseas Environmental Impact Statement (draft PEIS/OEIS) for Establishing Shipping Safety Fairways and Associated Vessel Routing Measures Along the Atlantic Coast. In person meetings will be held in Bangor, Maine, Groton, Connecticut, and Salisbury, Maryland, along with two virtual meetings. We are also accepting written comments on the draft PEIS/OEIS.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-29"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10780/shipping-safety-fairways-and-associated-vessel-routing-measures-along-the-atlantic-coast"
+    },
+    {
+      "documentNumber": "2026-10774",
+      "title": "Endangered Species; Recovery Permit Applications",
+      "type": "Notice",
+      "publicationDate": "2026-05-29",
+      "agencies": [
+        "Interior Department",
+        "Fish and Wildlife Service"
+      ],
+      "abstract": "We, the U.S. Fish and Wildlife Service, have received applications for permits to conduct scientific research to promote conservation or other activities intended to enhance the propagation or survival of endangered and threatened species under the Endangered Species Act (Act). We invite the public and local, State, Tribal, and Federal agencies to provide written data, views, or arguments with respect to any application noticed within 30 days following the publication of this notice. Before issuing any of the requested permits, we will take into consideration all information that we receive during the public comment period.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-29"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10774/endangered-species-recovery-permit-applications"
+    },
+    {
+      "documentNumber": "2026-10714",
+      "title": "Pesticide Experimental Use Permit; Receipt of Application; Comment Request (March 2026)",
+      "type": "Notice",
+      "publicationDate": "2026-05-29",
+      "agencies": [
+        "Environmental Protection Agency"
+      ],
+      "abstract": "This notice announces EPA's receipt of an application 100506- EUP-R from the State University of New York College of Environmental Science and Forestry (SUNY ESF) requesting an experimental use permit (EUP) for OxO American Chestnut (oxalate oxidase OxO) and the genetic material necessary for its expression in American chestnut (Castanea dentata). The Agency has determined that the permit may be of regional and national significance. Therefore, because of the potential significance, EPA is seeking comments on this application.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-29"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10714/pesticide-experimental-use-permit-receipt-of-application-comment-request-march-2026"
+    },
+    {
+      "documentNumber": "2026-10668",
+      "title": "Self-Regulatory Organizations; MIAX Sapphire, LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend the MIAX Sapphire Options Exchange Fee Schedule To Establish a Firm Fee Cap",
+      "type": "Notice",
+      "publicationDate": "2026-05-29",
+      "agencies": [
+        "Securities and Exchange Commission"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-29"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10668/self-regulatory-organizations-miax-sapphire-llc-notice-of-filing-and-immediate-effectiveness-of-a"
+    },
+    {
+      "documentNumber": "2026-10642",
+      "title": "Approval of Source-Specific Air Quality Implementation Plan; New York; Big Six Towers Inc.",
+      "type": "Proposed Rule",
+      "publicationDate": "2026-05-28",
+      "agencies": [
+        "Environmental Protection Agency"
+      ],
+      "abstract": "The Environmental Protection Agency (EPA) is proposing to determine a revision to the State of New York's State Implementation Plan (SIP) for the ozone National Ambient Air Quality Standard (NAAQS) related to a source-specific SIP (SSSIP) revision, for Big Six Towers Inc. (the Big Six), located at 59-55 47th Ave. Woodside, NY 11377 (the Facility), is approvable. The EPA is proposing to find that the control options in this SSSIP revision implement Reasonably Available Control Technology (RACT) with respect to oxides of nitrogen (NO<INF>X</INF>) emissions from the relevant Facility sources, which are identified as three oil-fired engines. This SSSIP revision is intended to implement NO<INF>X</INF> RACT for the relevant Facility sources in accordance with the requirements for implementation of the 2008 and 2015 ozone NAAQS. The EPA proposes to determine that this rulemaking will not interfere with ozone NAAQS requirements and meets all applicable requirements of the Clean Air Act (CAA).",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-28"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/28/2026-10642/approval-of-source-specific-air-quality-implementation-plan-new-york-big-six-towers-inc"
+    },
+    {
+      "documentNumber": "2026-10584",
+      "title": "Qualification of Drivers; Exemption Applications; Epilepsy and Seizure Disorders",
+      "type": "Notice",
+      "publicationDate": "2026-05-28",
+      "agencies": [
+        "Transportation Department",
+        "Federal Motor Carrier Safety Administration"
+      ],
+      "abstract": "FMCSA announces receipt of applications from 11 individuals for an exemption from the prohibition in the Federal Motor Carrier Safety Regulations (FMCSRs) against persons with a clinical diagnosis of epilepsy or any other condition that is likely to cause a loss of consciousness or any loss of ability to control a commercial motor vehicle (CMV) to drive in interstate commerce. If granted, the exemptions would enable these individuals who have had one or more seizures and are taking anti-seizure medication to operate CMVs in interstate commerce.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-28"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/28/2026-10584/qualification-of-drivers-exemption-applications-epilepsy-and-seizure-disorders"
+    },
+    {
+      "documentNumber": "2026-10583",
+      "title": "Qualification of Drivers; Exemption Applications; Epilepsy and Seizure Disorders",
+      "type": "Notice",
+      "publicationDate": "2026-05-28",
+      "agencies": [
+        "Transportation Department",
+        "Federal Motor Carrier Safety Administration"
+      ],
+      "abstract": "FMCSA announces receipt of applications from 12 individuals for an exemption from the prohibition in the Federal Motor Carrier Safety Regulations (FMCSRs) against persons with a clinical diagnosis of epilepsy or any other condition that is likely to cause a loss of consciousness or any loss of ability to control a commercial motor vehicle (CMV) to drive in interstate commerce. If granted, the exemptions would enable these individuals who have had one or more seizures and are taking anti-seizure medication to operate CMVs in interstate commerce.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-28"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/28/2026-10583/qualification-of-drivers-exemption-applications-epilepsy-and-seizure-disorders"
+    },
+    {
+      "documentNumber": "2026-10387",
+      "title": "Phasedown of Hydrofluorocarbons: Reconsideration of Certain Regulatory Requirements Promulgated Under the Technology Transitions Provisions of the American Innovation and Manufacturing Act of 2020",
+      "type": "Rule",
+      "publicationDate": "2026-05-26",
+      "agencies": [
+        "Environmental Protection Agency"
+      ],
+      "abstract": "The U.S. Environmental Protection Agency (EPA) is finalizing changes to regulations promulgated under the Technology Transitions provision of the American Innovation and Manufacturing Act of 2020 (AIM Act), which authorizes the Administrator to restrict fully, partially, or on a graduated schedule, the use of a \"regulated substance\" in the sector or subsector in which they are used. This final rule addresses administrative petitions and input received from regulated industry and other interested parties relevant to requirements and restrictions across various refrigeration and air conditioning subsectors, including: refrigerated transport--intermodal containers; industrial process refrigeration and chillers for industrial process refrigeration used in semiconductor manufacturing; retail food supermarket systems; retail food remote condensing unit systems; cold storage warehouses; refrigerated laboratory centrifuges and laboratory shakers; and condensing units in residential and light commercial air conditioning and heat pumps. This final rule also allows the inventory of residential and light commercial air conditioning and heat pump equipment that was manufactured in the United States or imported into the United States before January 1, 2025, to continue to be installed.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-26"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/26/2026-10387/phasedown-of-hydrofluorocarbons-reconsideration-of-certain-regulatory-requirements-promulgated-under"
+    },
+    {
+      "documentNumber": "2026-10380",
+      "title": "Schedules of Controlled Substances: Placement of Diphenidine in Schedule I",
+      "type": "Proposed Rule",
+      "publicationDate": "2026-05-26",
+      "agencies": [
+        "Justice Department",
+        "Drug Enforcement Administration"
+      ],
+      "abstract": "The Drug Enforcement Administration proposes placing diphenidine (1-(1,2-diphenylethyl)piperidine), including its salts, isomers, and salts of isomers whenever the existence of such salts, isomers, and salts of isomers is possible, in schedule I of the Controlled Substances Act. This action is being taken, in part, to enable the United States to meet its obligations under the 1971 Convention on Psychotropic Substances. If finalized, this action would impose the regulatory controls and administrative, civil, and criminal sanctions applicable to schedule I controlled substances on persons who handle (manufacture, distribute, reverse distribute, import, export, engage in research, conduct instructional activities or chemical analysis with, or possess) or propose to handle diphenidine.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-26"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/26/2026-10380/schedules-of-controlled-substances-placement-of-diphenidine-in-schedule-i"
+    },
+    {
+      "documentNumber": "2026-10253",
+      "title": "Schedules of Controlled Substances: Temporary Placement of 2-Fluorodeschloroketamine in Schedule I",
+      "type": "Rule",
+      "publicationDate": "2026-05-22",
+      "agencies": [
+        "Justice Department",
+        "Drug Enforcement Administration"
+      ],
+      "abstract": "The Drug Enforcement Administration (DEA) issues this temporary order to schedule 2-(2-fluorophenyl)-2- (methylamino)cyclohexan-1-one (commonly known as 2- fluorodeschloroketamine or 2-FDCK), including its salts, isomers, and salts of isomers whenever the existence of such salts, isomers, and salts of isomers is possible within the specific chemical designation, in schedule I of the Controlled Substances Act. DEA bases this action on a finding that placing 2-fluorodeschloroketamine in schedule I is necessary to avoid an imminent hazard to public safety. This order imposes the regulatory controls and administrative, civil, and criminal sanctions applicable to schedule I controlled substances on persons who handle (manufacture, distribute, reverse distribute, import, export, engage in research, conduct instructional activities or chemical analysis, or possess), or propose to handle this substance.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-22"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/22/2026-10253/schedules-of-controlled-substances-temporary-placement-of-2-fluorodeschloroketamine-in-schedule-i"
+    },
+    {
+      "documentNumber": "2026-10214",
+      "title": "Formations of, Acquisitions by, and Mergers of Bank Holding Companies",
+      "type": "Notice",
+      "publicationDate": "2026-05-21",
+      "agencies": [
+        "Federal Reserve System"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-21"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/21/2026-10214/formations-of-acquisitions-by-and-mergers-of-bank-holding-companies"
+    },
+    {
+      "documentNumber": "2026-10207",
+      "title": "Air Plan Approval; FL; Emissions Reporting Requirements and Permitting Forms",
+      "type": "Proposed Rule",
+      "publicationDate": "2026-05-21",
+      "agencies": [
+        "Environmental Protection Agency"
+      ],
+      "abstract": "The Environmental Protection Agency (EPA) is proposing to approve a State Implementation Plan (SIP) revision submitted by the Florida Department of Environmental Protection (FDEP) on August 15, 2023. The proposed revision makes minor updates to reporting requirements; adds, updates, and renames forms for several permit applications; renumbers and updates the effective dates of various forms to align with programmatic changes; and improves the process for submitting forms across several rules within the Florida SIP. Additionally, the revision removes a rule concerning administrative permit corrections from the SIP. EPA is proposing to approve these changes pursuant to the Clean Air Act (CAA or Act).",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-21"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/21/2026-10207/air-plan-approval-fl-emissions-reporting-requirements-and-permitting-forms"
+    },
+    {
+      "documentNumber": "2026-10166",
+      "title": "Marine Mammals and Endangered Species",
+      "type": "Notice",
+      "publicationDate": "2026-05-21",
+      "agencies": [
+        "Commerce Department",
+        "National Oceanic and Atmospheric Administration"
+      ],
+      "abstract": "Notice is hereby given that permits have been issued under the Marine Mammal Protection Act (MMPA) and the Endangered Species Act (ESA), as applicable.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-21"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/21/2026-10166/marine-mammals-and-endangered-species"
+    },
+    {
+      "documentNumber": "2026-10096",
+      "title": "Atlantic Highly Migratory Species; Prohibit Retention of Mobulid Rays in Fisheries for Atlantic Highly Migratory Species",
+      "type": "Rule",
+      "publicationDate": "2026-05-20",
+      "agencies": [
+        "Commerce Department",
+        "National Oceanic and Atmospheric Administration"
+      ],
+      "abstract": "In this final rule, NMFS is changing regulations to implement the binding International Commission for the Conservation of Atlantic Tunas (ICCAT) Recommendation 24-12 on mobulid rays of the family Mobulidae. Specifically, this action prohibits retention of mobulid rays in fisheries for Atlantic highly migratory species (HMS), requires mobulid rays to be released unharmed in HMS fisheries, and implements mobulid ray handling practices for vessels fishing with pelagic longline gear.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-20"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/20/2026-10096/atlantic-highly-migratory-species-prohibit-retention-of-mobulid-rays-in-fisheries-for-atlantic"
+    },
+    {
+      "documentNumber": "2026-10050",
+      "title": "Patient Protection and Affordable Care Act, HHS Notice of Benefit and Payment Parameters for 2027; and Basic Health Program",
+      "type": "Rule",
+      "publicationDate": "2026-05-20",
+      "agencies": [
+        "Health and Human Services Department",
+        "Centers for Medicare & Medicaid Services",
+        "Office of the Secretary"
+      ],
+      "abstract": "This final rule contains provisions to improve implementation of the Patient Protection and Affordable Care Act, including payment parameters and provisions related to the HHS-operated risk adjustment and risk adjustment data validation (HHS-RADV) programs, as well as 2027 user fee rates for issuers offering qualified health plans (QHPs) through Federally-facilitated Exchanges (FFEs) and State-based Exchanges on the Federal platform (SBE-FPs). This final rule also includes provisions related to civil money penalties (CMPs) for noncompliant issuers and other responsible entities; standards governing agents, brokers, and web-brokers; the expansion and codification of hardship exemption eligibility; implementation of the State Exchange Improper Payment Measurement (SEIPM); provider access standards and essential community provider standards for QHP certification; QHP certification of non-network plans; a prohibition on issuers from including routine non-pediatric dental services as an Essential Health Benefit (EHB); requirements related to defrayal for the cost of any State-required benefits in addition to the EHB; cost- sharing flexibilities for catastrophic and individual market bronze plans; establishment of catastrophic plans with plan terms of up to 10 consecutive plan years; QHP issuer quality improvement strategies (QISs); and revisions affecting which enrollees are included in Federal Basic Health Program (BHP) payment calculations to States. This final rule also includes amendments to implement certain provisions of the Working Families Tax Cut (WFTC) legislation.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-20"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/20/2026-10050/patient-protection-and-affordable-care-act-hhs-notice-of-benefit-and-payment-parameters-for-2027-and"
+    },
+    {
+      "documentNumber": "2026-10037",
+      "title": "Preemption Determination: State Interest-on-Escrow Laws",
+      "type": "Rule",
+      "publicationDate": "2026-05-19",
+      "agencies": [
+        "Treasury Department",
+        "Comptroller of the Currency"
+      ],
+      "abstract": "The OCC is issuing a preemption determination concluding that Federal law preempts State laws that restrict OCC-regulated banks' flexibility to decide whether and to what extent to pay interest or other compensation on funds placed in real estate escrow accounts; or assess fees in connection with such accounts. This preemption determination will provide much-needed clarity to banks and other stakeholders.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-19"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/19/2026-10037/preemption-determination-state-interest-on-escrow-laws"
+    },
+    {
+      "documentNumber": "2026-09994",
+      "title": "Combined Notice of Filings #1",
+      "type": "Notice",
+      "publicationDate": "2026-05-19",
+      "agencies": [
+        "Energy Department",
+        "Federal Energy Regulatory Commission"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-19"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/19/2026-09994/combined-notice-of-filings-1"
+    },
+    {
+      "documentNumber": "2026-09969",
+      "title": "Notice of Intent To Prepare a Supplemental Programmatic Environmental Impact Statement for the Coral Reef Conservation Program and To Solicit Public Input",
+      "type": "Notice",
+      "publicationDate": "2026-05-19",
+      "agencies": [
+        "Commerce Department",
+        "National Oceanic and Atmospheric Administration"
+      ],
+      "abstract": "NOAA announces its intent to prepare a supplemental Programmatic Environmental Impact Statement (PEIS) in accordance with the National Environmental Policy Act (NEPA) for its Coral Reef Conservation Program (CRCP). The CRCP conducts and funds activities throughout parts of the United States, including Florida, Hawai'i, Puerto Rico, the U.S. Virgin Islands, Guam, the Commonwealth of the Northern Mariana Islands, and American Samoa. The CRCP funds monitoring activities and occasional research within the Gulf of America and the U.S. Pacific Remote Island Area, and provides technical support and capacity-building in targeted international regions, including the wider Caribbean, Micronesia, and the Coral Triangle. The supplemental PEIS will address the environmental impacts of new coral reef conservation and restoration activities and expanded methods to be conducted by the CRCP.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-19"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/19/2026-09969/notice-of-intent-to-prepare-a-supplemental-programmatic-environmental-impact-statement-for-the-coral"
+    },
+    {
+      "documentNumber": "2026-09955",
+      "title": "Public Combined Board and Board Committees Meeting",
+      "type": "Notice",
+      "publicationDate": "2026-05-19",
+      "agencies": [
+        "Commerce Department",
+        "National Telecommunications and Information Administration",
+        "First Responder Network Authority"
+      ],
+      "abstract": "The FirstNet Authority Board will convene an open public meeting of the Board and Board Committees.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-19"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/19/2026-09955/public-combined-board-and-board-committees-meeting"
+    },
+    {
+      "documentNumber": "2026-09850",
+      "title": "Changes in Flood Hazard Determinations",
+      "type": "Notice",
+      "publicationDate": "2026-05-18",
+      "agencies": [
+        "Homeland Security Department",
+        "Federal Emergency Management Agency"
+      ],
+      "abstract": "This notice lists communities where the addition or modification of Base Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, or the regulatory floodway (hereinafter referred to as flood hazard determinations), as shown on the Flood Insurance Rate Maps (FIRMs), and where applicable, in the supporting Flood Insurance Study (FIS) reports, prepared by the Federal Emergency Management Agency (FEMA) for each community, is appropriate because of new scientific or technical data. The FIRM, and where applicable, portions of the FIS report, have been revised to reflect these flood hazard determinations through issuance of a Letter of Map Revision (LOMR), in accordance with Federal Regulations. The current effective community number is shown in the table below and must be used for all new policies and renewals.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-18"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/18/2026-09850/changes-in-flood-hazard-determinations"
+    },
+    {
+      "documentNumber": "2026-09805",
+      "title": "Agency Information Collection Activities; Submission to the Office of Management and Budget; Federal Fish and Wildlife Permit Applications and Reports-Management Authority",
+      "type": "Notice",
+      "publicationDate": "2026-05-15",
+      "agencies": [
+        "Interior Department",
+        "Fish and Wildlife Service"
+      ],
+      "abstract": "In accordance with the Paperwork Reduction Act of 1995, we, the U.S. Fish and Wildlife Service (Service), are proposing to renew a currently approved information collection without change.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-15"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09805/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-federal"
+    },
+    {
+      "documentNumber": "2026-09784",
+      "title": "Proposed Rate Adjustment, Jim Woodruff Project",
+      "type": "Notice",
+      "publicationDate": "2026-05-15",
+      "agencies": [
+        "Energy Department",
+        "Southeastern Power Administration"
+      ],
+      "abstract": "Southeastern Power Administration (Southeastern or SEPA) proposes to revise existing schedules of rates and charges applicable to the sale of power from the Jim Woodruff Project, effective October 1, 2026, through September 30, 2031. Opportunities will be available for interested persons to review the present rates, supporting studies, to participate in a public forum and to submit written comments. Southeastern will evaluate all comments received in this process.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-15"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09784/proposed-rate-adjustment-jim-woodruff-project"
+    },
+    {
+      "documentNumber": "2026-09766",
+      "title": "Notice of Final Federal Agency Actions on Proposed Transportation Project in State Florida",
+      "type": "Notice",
+      "publicationDate": "2026-05-15",
+      "agencies": [
+        "Transportation Department",
+        "Federal Highway Administration"
+      ],
+      "abstract": "The FHWA, on behalf of the State Department of Transportation (FDOT), is issuing this notice to announce actions taken by FDOT and other Federal agencies that are final agency actions. These actions relate to the proposed Clearlake Road (State Road (S.R.) 501) Project Development and Environment (PD&E) Study from Michigan Avenue to Industry Road (Financial Project Identification 433605-1). The proposed improvements consist of widening the existing two-lane roadway to a four-lane divided urban roadway; replacing the existing 90-degree roadway curve with a roundabout; and constructing shared-use paths on both sides of S.R. 501.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-15"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09766/notice-of-final-federal-agency-actions-on-proposed-transportation-project-in-state-florida"
+    },
+    {
+      "documentNumber": "2026-09751",
+      "title": "Agency Information Collection Activities; Submission to the Office of Management and Budget; Horseshoe Crab and Cooperative Fish Tagging Programs",
+      "type": "Notice",
+      "publicationDate": "2026-05-15",
+      "agencies": [
+        "Interior Department",
+        "Fish and Wildlife Service"
+      ],
+      "abstract": "In accordance with the Paperwork Reduction Act of 1995 (PRA), we, the U.S. Fish and Wildlife Service (Service), are proposing to renew a currently approved information collection without change.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-15"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09751/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-horseshoe"
+    },
+    {
+      "documentNumber": "2026-09719",
+      "title": "HEARTH Act Approval of Buena Vista Rancheria of Me-Wuk Indians of California, Leasing Ordinance",
+      "type": "Notice",
+      "publicationDate": "2026-05-15",
+      "agencies": [
+        "Interior Department",
+        "Indian Affairs Bureau"
+      ],
+      "abstract": "The Assistant Secretary--Indian Affairs approved the Buena Vista Rancheria of Me-Wuk Indians of California Leasing Ordinance under the Helping Expedite and Advance Responsible Tribal Homeownership Act of 2012 (HEARTH Act). With this approval, the Tribe is authorized to enter into leases without further Secretary of the Interior approval.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-15"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09719/hearth-act-approval-of-buena-vista-rancheria-of-me-wuk-indians-of-california-leasing-ordinance"
+    },
+    {
+      "documentNumber": "2026-09718",
+      "title": "Medicare, Medicaid, and Children's Health Insurance Programs: Announcement of Nationwide Temporary Moratorium on Enrollment of Hospices",
+      "type": "Notice",
+      "publicationDate": "2026-05-15",
+      "agencies": [
+        "Health and Human Services Department",
+        "Centers for Medicare & Medicaid Services"
+      ],
+      "abstract": "This notice announces the imposition of a 6-month nationwide moratorium on the Medicare enrollment of hospices.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-15"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09718/medicare-medicaid-and-childrens-health-insurance-programs-announcement-of-nationwide-temporary"
+    },
+    {
+      "documentNumber": "2026-09717",
+      "title": "Medicare, Medicaid, and Children's Health Insurance Programs: Announcement of Nationwide Temporary Moratoria on Enrollment of Home Health Agencies (HHAs)",
+      "type": "Notice",
+      "publicationDate": "2026-05-15",
+      "agencies": [
+        "Health and Human Services Department",
+        "Centers for Medicare & Medicaid Services"
+      ],
+      "abstract": "This notice announces the imposition of a 6-month nationwide moratorium on the Medicare enrollment of home health agencies (HHAs).",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-15"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09717/medicare-medicaid-and-childrens-health-insurance-programs-announcement-of-nationwide-temporary"
+    },
+    {
+      "documentNumber": "2026-09695",
+      "title": "General Conference Committee of the National Poultry Improvement Plan; Solicitation for Membership",
+      "type": "Notice",
+      "publicationDate": "2026-05-14",
+      "agencies": [
+        "Agriculture Department",
+        "Animal and Plant Health Inspection Service"
+      ],
+      "abstract": "We are giving notice that the Secretary of Agriculture is soliciting nominations for the election of regional members and their alternates for the General Conference Committee of the National Poultry Improvement Plan.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-14"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/14/2026-09695/general-conference-committee-of-the-national-poultry-improvement-plan-solicitation-for-membership"
+    },
+    {
+      "documentNumber": "2026-09656",
+      "title": "Amendment of Class C Airspace and Class E Airspace; Palm Beach International Airport, West Palm Beach, FL",
+      "type": "Rule",
+      "publicationDate": "2026-05-14",
+      "agencies": [
+        "Transportation Department",
+        "Federal Aviation Administration"
+      ],
+      "abstract": "This action amends the Class C and Class E airspace descriptions for the former Palm Beach International Airport, West Palm Beach, FL, to update the airport name to the \"President Donald J. Trump International Airport\" to match the FAA National Airspace System Resources (NASR) database information. This action does not change the boundaries, altitudes, or operating requirements of the Class C airspace or Class E airspace areas.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-14"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/14/2026-09656/amendment-of-class-c-airspace-and-class-e-airspace-palm-beach-international-airport-west-palm-beach"
+    },
+    {
+      "documentNumber": "2026-09629",
+      "title": "Agency Information Collection Activities; Turtle Distribution Database",
+      "type": "Notice",
+      "publicationDate": "2026-05-14",
+      "agencies": [
+        "Interior Department",
+        "Geological Survey"
+      ],
+      "abstract": "In accordance with the Paperwork Reduction Act (PRA) of 1995, the U.S. Geological Survey (USGS) is proposing to renew an information collection.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-14"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/14/2026-09629/agency-information-collection-activities-turtle-distribution-database"
+    },
+    {
+      "documentNumber": "2026-09625",
+      "title": "Safety Zone; Gulf Intracoastal Waterway; Florida Avenue Bridge; Temporary Waterway Closure",
+      "type": "Rule",
+      "publicationDate": "2026-05-14",
+      "agencies": [
+        "Homeland Security Department",
+        "Coast Guard"
+      ],
+      "abstract": "The Coast Guard is establishing a temporary safety zone for navigable waters extending from MM 6.5 East of Harvey Lock to MM 10 East of Harvey Lock along the Gulf Intracoastal Waterway (GIWW) which includes the Inner Harbor Navigational Canal (IHNC) Lock. The safety zone is needed to protect personnel, vessels, and the marine environment from potential hazards associated with an ongoing sewage leak in the vicinity of the Florida Avenue Bridge at position 29[deg]58.860 N, 90[deg].01.300 W. Entry of vessels or persons into this zone is prohibited unless specifically authorized by the Captain of the Port, Sector New Orleans, or their designated representative.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-14"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/14/2026-09625/safety-zone-gulf-intracoastal-waterway-florida-avenue-bridge-temporary-waterway-closure"
+    },
+    {
+      "documentNumber": "2026-09620",
+      "title": "Proposed Information Collection Activity; Community Services Block Grant Disaster Supplemental Annual Report (New Collection)",
+      "type": "Notice",
+      "publicationDate": "2026-05-14",
+      "agencies": [
+        "Health and Human Services Department",
+        "Children and Families Administration"
+      ],
+      "abstract": "The Office of Community Services (OCS), Administration for Children and Families (ACF) requests approval of the Community Services Block Grant (CSBG) Disaster Supplemental Annual Report. This is a new information collection request, based on a previously approved version of this report under Office of Management and Budget (OMB) #: 0970- 0492. This covers CSBG Disaster Supplemental Funds as appropriated by the Robert T. Stafford Disaster Relief and Emergency Assistance Act and potential future disaster supplemental funding.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-14"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/14/2026-09620/proposed-information-collection-activity-community-services-block-grant-disaster-supplemental-annual"
+    },
+    {
+      "documentNumber": "2026-09469",
+      "title": "Drug and Alcohol Clearinghouse Requirements; Driver Qualification Requirements: Waste Management Holdings, Inc.; Application for Exemptions",
+      "type": "Notice",
+      "publicationDate": "2026-05-13",
+      "agencies": [
+        "Transportation Department",
+        "Federal Motor Carrier Safety Administration"
+      ],
+      "abstract": "FMCSA announces its decision to grant in part and deny in part the exemption application from Waste Management Holdings, Inc. (WM) for a period of two years. FMCSA grants WM's request for limited relief from certain driver qualification requirements to allow WM to use the exception for a \"single-employer driver\" when it transfers drivers among affiliates. FMCSA also grants a limited exemption from the requirement for the driver to undergo controlled substances testing when being transferred among affiliates if the driver has participated in a WM random controlled substances testing pool for any WM-affiliated employer for the previous 12 months. Finally, FMCSA grants an exemption to allow WM to conduct a limited, rather than full, Clearinghouse query when transferring drivers among affiliates. FMCSA denies WM's request for broad exemptions from the pre-employment controlled substance testing and Clearinghouse requirements. FMCSA concludes that the exemptions will likely achieve a level of safety equivalent to or greater than the level of safety that would be achieved absent the exemptions.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-13"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/13/2026-09469/drug-and-alcohol-clearinghouse-requirements-driver-qualification-requirements-waste-management"
+    },
+    {
+      "documentNumber": "2026-09450",
+      "title": "Rulemaking Procedures",
+      "type": "Proposed Rule",
+      "publicationDate": "2026-05-13",
+      "agencies": [
+        "Federal Maritime Commission"
+      ],
+      "abstract": "The Federal Maritime Commission (FMC or the Commission) is proposing to revise its rulemaking procedures. The changes would: consolidate informal rulemaking and rulemaking petition requirements into subpart D, clarify ambiguities, remove unnecessary, overly restrictive requirements (such as ex parte requirements), and allow for the FMC to integrate its rulemaking procedures into the Executive Order 12866 centralized regulatory review process, as directed by Executive Order 14215. This proposal would also make conforming changes associated with the FMC's transition to eRulemaking. The FMC invites public comment on all aspects of this proposed rule.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-13"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/13/2026-09450/rulemaking-procedures"
+    },
+    {
+      "documentNumber": "2026-09389",
+      "title": "Change in Bank Control Notices; Acquisitions of Shares of a Bank or Bank Holding Company",
+      "type": "Notice",
+      "publicationDate": "2026-05-12",
+      "agencies": [
+        "Federal Reserve System"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-12"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/12/2026-09389/change-in-bank-control-notices-acquisitions-of-shares-of-a-bank-or-bank-holding-company"
+    },
+    {
+      "documentNumber": "2026-09388",
+      "title": "Qualification of Drivers; Exemption Applications; Hearing",
+      "type": "Notice",
+      "publicationDate": "2026-05-12",
+      "agencies": [
+        "Transportation Department",
+        "Federal Motor Carrier Safety Administration"
+      ],
+      "abstract": "FMCSA announces receipt of applications from 11 individuals for an exemption from the hearing requirement in the Federal Motor Carrier Safety Regulations (FMCSRs) to operate a commercial motor vehicle (CMV) in interstate commerce. If granted, the exemptions would enable these hard of hearing and deaf individuals to operate CMVs in interstate commerce.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-12"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/12/2026-09388/qualification-of-drivers-exemption-applications-hearing"
+    },
+    {
+      "documentNumber": "2026-09375",
+      "title": "Safety Zone; Seddon Channel, Tampa, FL",
+      "type": "Rule",
+      "publicationDate": "2026-05-12",
+      "agencies": [
+        "Homeland Security Department",
+        "Coast Guard"
+      ],
+      "abstract": "The Coast Guard is establishing a temporary safety zone for navigable waters of Seddon Channel, Tampa Florida. The safety zone is needed to protect personnel, vessels, and the marine environment from potential hazards associated with airborne and waterborne activities occurring during the Special Operation Forces (SOF) Week Conference 2026. Entry of vessels or persons into this zone is prohibited unless specifically authorized by the Captain of the Port, Sector St. Petersburg, or their designated representative.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-12"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/12/2026-09375/safety-zone-seddon-channel-tampa-fl"
+    },
+    {
+      "documentNumber": "2026-09369",
+      "title": "Monthly Notice; Applications and Amendments to Facility Operating Licenses and Combined Licenses Involving No Significant Hazards Considerations",
+      "type": "Notice",
+      "publicationDate": "2026-05-12",
+      "agencies": [
+        "Nuclear Regulatory Commission"
+      ],
+      "abstract": "Pursuant to section 189a.(2) of the Atomic Energy Act of 1954, as amended (the Act), the U.S. Nuclear Regulatory Commission (NRC) is publishing this regular monthly notice. The Act requires the Commission to publish notice of any amendments issued, or proposed to be issued, and grants the Commission the authority to issue and make immediately effective any amendment to an operating license or combined license, as applicable, upon a determination by the Commission that such amendment involves no significant hazards consideration (NSHC), notwithstanding the pendency before the Commission of a request for a hearing from any person.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-12"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/12/2026-09369/monthly-notice-applications-and-amendments-to-facility-operating-licenses-and-combined-licenses"
+    },
+    {
+      "documentNumber": "2026-09273",
+      "title": "Combined Notice of Filings #1",
+      "type": "Notice",
+      "publicationDate": "2026-05-11",
+      "agencies": [
+        "Energy Department",
+        "Federal Energy Regulatory Commission"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-11"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/11/2026-09273/combined-notice-of-filings-1"
+    },
+    {
+      "documentNumber": "2026-09227",
+      "title": "Gulf Fishery Management Council; Public Meeting",
+      "type": "Notice",
+      "publicationDate": "2026-05-11",
+      "agencies": [
+        "DEPARTMENT OF COMMERCE:",
+        "National Oceanic and Atmospheric Administration"
+      ],
+      "abstract": "The Gulf Fishery Management Council (Council) will hold a 3- day meeting to consider actions affecting the Gulf of America fisheries in the exclusive economic zone (EEZ).",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-11"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/11/2026-09227/gulf-fishery-management-council-public-meeting"
+    },
+    {
+      "documentNumber": "2026-09194",
+      "title": "Combined Notice of Filings #1",
+      "type": "Notice",
+      "publicationDate": "2026-05-08",
+      "agencies": [
+        "Energy Department",
+        "Federal Energy Regulatory Commission"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-08"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/08/2026-09194/combined-notice-of-filings-1"
+    },
+    {
+      "documentNumber": "2026-09182",
+      "title": "Revising Firearms Transaction Record, “Form 4473”",
+      "type": "Proposed Rule",
+      "publicationDate": "2026-05-08",
+      "agencies": [
+        "Justice Department",
+        "Alcohol, Tobacco, Firearms, and Explosives Bureau"
+      ],
+      "abstract": "The Bureau of Alcohol, Tobacco, Firearms, and Explosives (\"ATF\") is proposing to amend Department of Justice (\"Department\") regulations governing ATF Form 5300.9, Firearms Transaction Record, (\"Form 4473\"). Specifically, ATF proposes streamlining identity and residence verification requirements and documents; doubling the performance timeframe for transactions under Form 4473 following a National Instant Criminal Background Check System (\"NICS\") check; permitting electronic forms and notice, auto-populating, and attached copies; addressing private party transfers and firearms handler checks; incorporating ATF rulings and other guidance; further aligning regulations with statutory text; and making minor technical revisions.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-08"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/08/2026-09182/revising-firearms-transaction-record-form-4473"
+    },
+    {
+      "documentNumber": "2026-09142",
+      "title": "Employment and Training Administration Program Year 2026 Workforce Innovation and Opportunity Act Section 167, National Farmworker Jobs Program State Allotments",
+      "type": "Notice",
+      "publicationDate": "2026-05-08",
+      "agencies": [
+        "Labor Department",
+        "Employment and Training Administration"
+      ],
+      "abstract": "This notice announces allotments for the National Farmworker Jobs Program (NFJP) Career Services and Training grants for Program Year (PY) 2026.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-08"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/08/2026-09142/employment-and-training-administration-program-year-2026-workforce-innovation-and-opportunity-act"
+    },
+    {
+      "documentNumber": "2026-09130",
+      "title": "Self-Regulatory Organizations; MIAX Sapphire, LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend Exchange Rule 2040, Qualified Floor Orders",
+      "type": "Notice",
+      "publicationDate": "2026-05-08",
+      "agencies": [
+        "Securities and Exchange Commission"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-08"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/08/2026-09130/self-regulatory-organizations-miax-sapphire-llc-notice-of-filing-and-immediate-effectiveness-of-a"
+    },
+    {
+      "documentNumber": "2026-09093",
+      "title": "Receipt of Incidental Take Permit Application and Proposed Habitat Conservation Plan for Sand Skink and Blue-Tailed Mole Skink; Polk County, FL; Categorical Exclusion",
+      "type": "Notice",
+      "publicationDate": "2026-05-07",
+      "agencies": [
+        "Interior Department",
+        "Fish and Wildlife Service"
+      ],
+      "abstract": "We, the Fish and Wildlife Service (Service), announce receipt of an application from FLLWCC, LLC/FLOW CC, LLC (Oakwood & Lake Wales Country Club (Vintage)) (applicant) for an incidental take permit (ITP) under the Endangered Species Act (ESA). The applicant requests the ITP to take the federally listed threatened sand skink and blue-tailed mole skink (skinks) incidental to the construction of a multi-phase residential development and associated clearing and infrastructure installation in Polk County, Florida. We request public comment on the application, which includes the applicant's proposed habitat conservation plan, and on the Service's preliminary determination that the proposed permitting action may be eligible for a categorical exclusion pursuant to the National Environmental Policy Act (NEPA), the Department of the Interior's (DOI) NEPA regulations, and the DOI Departmental Manual. To make this preliminary determination, we prepared a draft screening form and NEPA statement for HCPs, which are available for public review. We invite comment from the public and local, State, Tribal, and Federal agencies.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-07"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/07/2026-09093/receipt-of-incidental-take-permit-application-and-proposed-habitat-conservation-plan-for-sand-skink"
+    },
+    {
+      "documentNumber": "2026-09020",
+      "title": "Changes in Flood Hazard Determinations",
+      "type": "Notice",
+      "publicationDate": "2026-05-07",
+      "agencies": [
+        "Homeland Security Department",
+        "Federal Emergency Management Agency"
+      ],
+      "abstract": "This notice lists communities where the addition or modification of Base Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, or the regulatory floodway (hereinafter referred to as flood hazard determinations), as shown on the Flood Insurance Rate Maps (FIRMs), and where applicable, in the supporting Flood Insurance Study (FIS) reports, prepared by the Federal Emergency Management Agency (FEMA) for each community, is appropriate because of new scientific or technical data. The FIRM, and where applicable, portions of the FIS report, have been revised to reflect these flood hazard determinations through issuance of a Letter of Map Revision (LOMR), in accordance with Federal Regulations. The current effective community number is shown in the table below and must be used for all new policies and renewals.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-07"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/07/2026-09020/changes-in-flood-hazard-determinations"
+    },
+    {
+      "documentNumber": "2026-09014",
+      "title": "Changes in Flood Hazard Determinations",
+      "type": "Notice",
+      "publicationDate": "2026-05-07",
+      "agencies": [
+        "Homeland Security Department",
+        "Federal Emergency Management Agency"
+      ],
+      "abstract": "New or modified Base (1-percent annual chance) Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, and/or regulatory floodways (hereinafter referred to as flood hazard determinations) as shown on the indicated Letter of Map Revision (LOMR) for each of the communities listed in the table below are finalized. Each LOMR revises the Flood Insurance Rate Maps (FIRMs), and in some cases the Flood Insurance Study (FIS) reports, currently in effect for the listed communities.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-07"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/07/2026-09014/changes-in-flood-hazard-determinations"
+    },
+    {
+      "documentNumber": "2026-08984",
+      "title": "Fisheries of the Caribbean, Gulf of America, and South Atlantic; Reef Fish Fishery of the Gulf of America; Accountability Measure for Recreational Harvest of Red Snapper in Federal Waters off Louisiana",
+      "type": "Rule",
+      "publicationDate": "2026-05-06",
+      "agencies": [
+        "Commerce Department",
+        "National Oceanic and Atmospheric Administration"
+      ],
+      "abstract": "Recreational landings of red snapper in Louisiana during 2025 exceeded the annual catch limit (ACL) apportioned to the state for the private angling component of the recreational sector. According to the accountability measure (AM), NMFS reduces Louisiana's 2026 ACL for red snapper in the Gulf of America (Gulf) by the amount of the overage in 2025. NMFS implements this AM for the 2026 fishing year to protect the red snapper resource in the Gulf.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-05-06"
+      },
+      "asOf": "2026-06-24",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/05/06/2026-08984/fisheries-of-the-caribbean-gulf-of-america-and-south-atlantic-reef-fish-fishery-of-the-gulf-of"
+    }
+  ]
+}
