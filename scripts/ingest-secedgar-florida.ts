@@ -1,10 +1,11 @@
 /**
- * SEC EDGAR — recent 8-K material-event filings by Florida-located filers (no key).
+ * SEC EDGAR — recent 8-K material-event filings referencing Florida (no key).
  * Output: data/secedgar/florida-filings.json
  *
- * Tier 1 official (U.S. SEC). Full-text search filtered to filers whose location
- * is Florida. Each filing dated and linked to the EDGAR filing index. SEC fair-
- * access policy requires a descriptive User-Agent, set on every request.
+ * Tier 1 official (U.S. SEC). Uses EDGAR full-text search q="Florida" (the
+ * locationCode filter is silently ignored by EFTS, so it is not used); each
+ * record carries the filer's business/incorporation state and a floridaDomiciled
+ * flag. SEC fair-access policy requires a descriptive User-Agent on every request.
  */
 import { fetchJson, sleep, writeFloridaSnapshot } from './lib/ingest-utils';
 
@@ -20,7 +21,7 @@ const UA = 'The Ledger civic-data project (contact: robbie.ryan312@gmail.com)';
 interface EftsResp {
   hits: {
     total: { value: number };
-    hits: Array<{ _id: string; _source: { file_date?: string; file_type?: string; display_names?: string[]; ciks?: string[] } }>;
+    hits: Array<{ _id: string; _source: { file_date?: string; file_type?: string; display_names?: string[]; ciks?: string[]; biz_states?: string[]; inc_states?: string[] } }>;
   };
 }
 
@@ -38,9 +39,11 @@ async function main(): Promise<void> {
 
   const seen = new Set<string>();
   try {
-    // EDGAR FTS returns up to 100 hits per request; one page is plenty for a snapshot.
+    // NOTE: EDGAR FTS silently ignores locationCode, so we use the working full-text
+    // filter (q="Florida") and record each filer's business/incorporation state. EFTS
+    // returns up to 100 hits per request; one page of the most recent is a fair snapshot.
     for (let from = 0; from < 100; from += 100) {
-      const url = `https://efts.sec.gov/LATEST/search-index?q=&forms=8-K&locationCode=FL&startdt=${startdt}&enddt=${enddt}&from=${from}`;
+      const url = `https://efts.sec.gov/LATEST/search-index?q=%22Florida%22&forms=8-K&startdt=${startdt}&enddt=${enddt}&from=${from}`;
       const data = await fetchJson<EftsResp>(url, { headers: { 'User-Agent': UA } });
       const hits = data.hits?.hits ?? [];
       if (hits.length === 0) break;
@@ -53,12 +56,17 @@ async function main(): Promise<void> {
         const company = dn.replace(/\s*\(CIK.*$/i, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
         const cik = (s.ciks ?? [])[0] ?? '';
         const accNoDash = accession.replace(/-/g, '');
+        const bizStates = Array.isArray(s.biz_states) ? s.biz_states : [];
+        const incStates = Array.isArray(s.inc_states) ? s.inc_states : [];
         records.push({
           company: company || dn || 'No record on file',
           formType: s.file_type ?? '8-K',
           filingDate: s.file_date ?? 'No record on file',
           cik,
           accessionNumber: accession,
+          bizStates,
+          incStates,
+          floridaDomiciled: bizStates.includes('FL') || incStates.includes('FL'),
           source: { ...SEC_SOURCE, date: s.file_date },
           asOf,
           filingUrl: cik && accNoDash
@@ -81,8 +89,8 @@ async function main(): Promise<void> {
       stateCode: 'FL',
       fetchedLive: errors.length === 0 && records.length > 0,
       errors: errors.length ? errors : undefined,
-      datasetUrl: 'https://efts.sec.gov/LATEST/search-index?forms=8-K&locationCode=FL',
-      note: 'Recent 8-K material-event filings (last 60 days) by Florida-located SEC filers. Tier 1 official SEC EDGAR.',
+      datasetUrl: 'https://efts.sec.gov/LATEST/search-index?q=%22Florida%22&forms=8-K',
+      note: 'Recent 8-K material-event filings (last 60 days) referencing Florida via SEC EDGAR full-text search. Each record carries the filer business/incorporation state and a floridaDomiciled flag — EDGAR location filters are unreliable, so Florida relevance is by full-text match. Tier 1 official.',
     },
     records,
   });
