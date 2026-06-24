@@ -12,7 +12,7 @@ Agent session log and status checkpoint. Read at the start of every session; upd
 
 **Phase 1 — Florida first:** Federal/state FL featured profiles + Palm Beach county demo. Data pipeline uses `lib/data/generated/*.json` (not `/data/` folders yet).
 
-**Next queued (awaiting instruction):** No fetch tasks started. Endpoint configs registered in `.env.local`.
+**Next queued:** Continue UX corrections (donor/PAC split, map labels, Follow the Money). Commit remaining `/data/` snapshots and push.
 
 ---
 
@@ -20,7 +20,8 @@ Agent session log and status checkpoint. Read at the start of every session; upd
 
 | Date | Task | Commit |
 |------|------|--------|
-| 2026-06-24 | Recovery session merged to `main` (copy, legislation, votes, nav) | `efb6a20` |
+| 2026-06-24 | Florida Congress votes ingested — 29/29 members, 232 positions | (pending) |
+| 2026-06-24 | Florida FEC candidates ingested (2,439 records) + pipeline scaffolding | `1aa4beb` |
 | 2026-06-24 | Sync safeguards for FEC/House votes when keys missing | `35b6dfa` |
 | 2026-06-24 | `.env.example` template added | `f3e6cbf` |
 | 2026-06-24 | Section 7 deployment rule + PROGRESS.md + no-key endpoint configs in `.env.local` | `23b12c2` |
