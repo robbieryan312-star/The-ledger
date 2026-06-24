@@ -1,0 +1,595 @@
+{
+  "meta": {
+    "source": {
+      "name": "Voteview (UCLA)",
+      "url": "https://voteview.com",
+      "tier": "nonpartisan",
+      "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+    },
+    "asOf": "2026-06-24",
+    "fetchedAt": "2026-06-24T15:48:55.845Z",
+    "count": 32,
+    "stateCode": "FL",
+    "fetchedLive": true,
+    "datasetUrl": "https://voteview.com/static/data/out/members/H119_members.csv",
+    "note": "DW-NOMINATE ideology scores for Florida U.S. House & Senate members, 119th Congress. nominateEconomic is the 1st dimension (economic/redistribution axis), nominateSocial the 2nd; values roughly -1 to +1. A sourced nonpartisan political-science metric, not an editorial label. Tier 2."
+  },
+  "records": [
+    {
+      "name": "DIAZ-BALART, Mario",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "26",
+      "bioguideId": "D000600",
+      "nominateEconomic": 0.282,
+      "nominateSocial": 0.163,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/20316"
+    },
+    {
+      "name": "WASSERMAN SCHULTZ, Debbie",
+      "chamber": "House",
+      "party": "Democrat",
+      "district": "25",
+      "bioguideId": "W000797",
+      "nominateEconomic": -0.413,
+      "nominateSocial": 0.105,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/20504"
+    },
+    {
+      "name": "CASTOR, Kathy",
+      "chamber": "House",
+      "party": "Democrat",
+      "district": "14",
+      "bioguideId": "C001066",
+      "nominateEconomic": -0.434,
+      "nominateSocial": 0.08,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/20708"
+    },
+    {
+      "name": "BUCHANAN, Vernon G.",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "16",
+      "bioguideId": "B001260",
+      "nominateEconomic": 0.362,
+      "nominateSocial": -0.077,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/20709"
+    },
+    {
+      "name": "BILIRAKIS, Gus",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "12",
+      "bioguideId": "B001257",
+      "nominateEconomic": 0.424,
+      "nominateSocial": -0.029,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/20758"
+    },
+    {
+      "name": "WEBSTER, Daniel A.",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "11",
+      "bioguideId": "W000806",
+      "nominateEconomic": 0.524,
+      "nominateSocial": -0.075,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/21116"
+    },
+    {
+      "name": "WILSON, Frederica",
+      "chamber": "House",
+      "party": "Democrat",
+      "district": "24",
+      "bioguideId": "W000808",
+      "nominateEconomic": -0.476,
+      "nominateSocial": -0.003,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/21118"
+    },
+    {
+      "name": "FRANKEL, Lois",
+      "chamber": "House",
+      "party": "Democrat",
+      "district": "22",
+      "bioguideId": "F000462",
+      "nominateEconomic": -0.396,
+      "nominateSocial": -0.019,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/21321"
+    },
+    {
+      "name": "DUNN, Neal Patrick",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "2",
+      "bioguideId": "D000628",
+      "nominateEconomic": 0.508,
+      "nominateSocial": 0.337,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/21714"
+    },
+    {
+      "name": "MAST, Brian Jeffrey",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "21",
+      "bioguideId": "M001199",
+      "nominateEconomic": 0.461,
+      "nominateSocial": -0.326,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/21735"
+    },
+    {
+      "name": "RUTHERFORD, John Henry",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "5",
+      "bioguideId": "R000609",
+      "nominateEconomic": 0.434,
+      "nominateSocial": 0.072,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/21744"
+    },
+    {
+      "name": "SOTO, Darren Michael",
+      "chamber": "House",
+      "party": "Democrat",
+      "district": "9",
+      "bioguideId": "S001200",
+      "nominateEconomic": -0.339,
+      "nominateSocial": 0.222,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/21746"
+    },
+    {
+      "name": "STEUBE, W. Greg",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "17",
+      "bioguideId": "S001214",
+      "nominateEconomic": 0.688,
+      "nominateSocial": -0.361,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/21971"
+    },
+    {
+      "name": "WALTZ, Michael",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "6",
+      "bioguideId": "W000823",
+      "nominateEconomic": 0.452,
+      "nominateSocial": -0.113,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/21981"
+    },
+    {
+      "name": "CAMMACK, Kat",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "3",
+      "bioguideId": "C001039",
+      "nominateEconomic": 0.59,
+      "nominateSocial": -0.258,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/22107"
+    },
+    {
+      "name": "DONALDS, Byron",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "19",
+      "bioguideId": "D000032",
+      "nominateEconomic": 0.638,
+      "nominateSocial": -0.301,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/22111"
+    },
+    {
+      "name": "FRANKLIN, C. Scott",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "18",
+      "bioguideId": "F000472",
+      "nominateEconomic": 0.625,
+      "nominateSocial": 0.205,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/22116"
+    },
+    {
+      "name": "GIMENEZ, Carlos A.",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "28",
+      "bioguideId": "G000593",
+      "nominateEconomic": 0.328,
+      "nominateSocial": 0.15,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/22118"
+    },
+    {
+      "name": "SALAZAR, Maria Elvira",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "27",
+      "bioguideId": "S000168",
+      "nominateEconomic": 0.273,
+      "nominateSocial": 0.156,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/22150"
+    },
+    {
+      "name": "CHERFILUS-MCCORMICK, Sheila",
+      "chamber": "House",
+      "party": "Democrat",
+      "district": "20",
+      "bioguideId": "C001127",
+      "nominateEconomic": -0.429,
+      "nominateSocial": -0.005,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/22163"
+    },
+    {
+      "name": "BEAN, Aaron",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "4",
+      "bioguideId": "B001314",
+      "nominateEconomic": 0.697,
+      "nominateSocial": -0.157,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/22302"
+    },
+    {
+      "name": "FROST, Maxwell",
+      "chamber": "House",
+      "party": "Democrat",
+      "district": "10",
+      "bioguideId": "F000476",
+      "nominateEconomic": -0.441,
+      "nominateSocial": -0.704,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/22321"
+    },
+    {
+      "name": "LEE, Laurel",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "15",
+      "bioguideId": "L000597",
+      "nominateEconomic": 0.418,
+      "nominateSocial": 0.159,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/22341"
+    },
+    {
+      "name": "LUNA, Anna",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "13",
+      "bioguideId": "L000596",
+      "nominateEconomic": 0.568,
+      "nominateSocial": -0.492,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/22343"
+    },
+    {
+      "name": "MILLS, Cory",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "7",
+      "bioguideId": "M001216",
+      "nominateEconomic": 0.602,
+      "nominateSocial": -0.318,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/22350"
+    },
+    {
+      "name": "MOSKOWITZ, Jared",
+      "chamber": "House",
+      "party": "Democrat",
+      "district": "23",
+      "bioguideId": "M001217",
+      "nominateEconomic": -0.226,
+      "nominateSocial": 0.297,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/22353"
+    },
+    {
+      "name": "HARIDOPOLOS, Mike",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "8",
+      "bioguideId": "H001099",
+      "nominateEconomic": 0.437,
+      "nominateSocial": 0.065,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/22523"
+    },
+    {
+      "name": "FINE, Randy",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "6",
+      "bioguideId": "F000484",
+      "nominateEconomic": 0.606,
+      "nominateSocial": -0.335,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/22562"
+    },
+    {
+      "name": "PATRONIS, Jimmy",
+      "chamber": "House",
+      "party": "Republican",
+      "district": "1",
+      "bioguideId": "P000622",
+      "nominateEconomic": 0.56,
+      "nominateSocial": -0.042,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/22563"
+    },
+    {
+      "name": "RUBIO, Marco",
+      "chamber": "Senate",
+      "party": "Republican",
+      "district": null,
+      "bioguideId": "R000595",
+      "nominateEconomic": 0.616,
+      "nominateSocial": -0.184,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/41102"
+    },
+    {
+      "name": "SCOTT, Richard Lynn (Rick)",
+      "chamber": "Senate",
+      "party": "Republican",
+      "district": null,
+      "bioguideId": "S001217",
+      "nominateEconomic": 0.735,
+      "nominateSocial": -0.088,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/41903"
+    },
+    {
+      "name": "MOODY, Ashley Brooke",
+      "chamber": "Senate",
+      "party": "Republican",
+      "district": null,
+      "bioguideId": "M001244",
+      "nominateEconomic": 0.609,
+      "nominateSocial": 0.065,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "voteviewUrl": "https://voteview.com/person/42506"
+    }
+  ]
+}
