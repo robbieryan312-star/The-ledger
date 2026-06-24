@@ -51,7 +51,7 @@ jobs:
           [ -n "$CONGRESS_API_KEY" ] && npm run ingest:congress-fl || echo "skip congress (no secret)"
 
       - name: Rebuild Records & Sources index
-        run: npm run build:sources-index
+        run: npm run build:sources-index && npm run build:data-slices
 
       - name: Commit & push changed snapshots
         run: |
