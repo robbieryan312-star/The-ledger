@@ -1,0 +1,659 @@
+{
+  "meta": {
+    "source": {
+      "name": "Florida Lobbyist Registration",
+      "url": "https://floridalobbyist.gov",
+      "tier": "official",
+      "description": "Official Florida legislative & executive branch lobbying firm directories"
+    },
+    "asOf": "2026-06-24",
+    "fetchedAt": "2026-06-24T16:05:59.562Z",
+    "count": 40,
+    "stateCode": "FL",
+    "fetchedLive": true,
+    "datasetUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory",
+    "note": "Authoritative index of Florida annual lobbying firm directories (Legislative & Executive branches). Detailed firm rosters and quarterly compensation figures are published as PDFs and are not machine-readable in this snapshot — each record links to the official PDF. Tier 1 official."
+  },
+  "records": [
+    {
+      "branch": "Executive",
+      "year": "2026",
+      "title": "2026 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2026.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2026-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2026",
+      "title": "2026 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2026.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2026-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2025",
+      "title": "2025 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2025.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2025-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2025",
+      "title": "2025 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2025.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2025-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2024",
+      "title": "2024 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2024.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2024-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2024",
+      "title": "2024 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2024.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2024-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2023",
+      "title": "2023 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2023.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2023-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2023",
+      "title": "2023 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2023.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2023-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2022",
+      "title": "2022 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2022.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2022-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2022",
+      "title": "2022 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2022.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2022-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2021",
+      "title": "2021 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2021.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2021-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2021",
+      "title": "2021 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2021.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2021-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2020",
+      "title": "2020 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2020.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2020-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2020",
+      "title": "2020 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2020.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2020-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2019",
+      "title": "2019 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2019.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2019-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2019",
+      "title": "2019 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2019.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2019-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2018",
+      "title": "2018 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2018.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2018-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2018",
+      "title": "2018 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2018.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2018-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2017",
+      "title": "2017 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2017.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2017-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2017",
+      "title": "2017 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2017.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2017-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2016",
+      "title": "2016 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2016.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2016-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2016",
+      "title": "2016 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2016.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2016-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2015",
+      "title": "2015 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2015.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2015-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2015",
+      "title": "2015 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2015.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2015-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2014",
+      "title": "2014 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2014.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2014-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2014",
+      "title": "2014 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2014.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2014-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2013",
+      "title": "2013 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2013.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2013-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2013",
+      "title": "2013 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2013.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2013-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2012",
+      "title": "2012 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2012.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2012-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2012",
+      "title": "2012 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2012.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2012-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2011",
+      "title": "2011 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2011.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2011-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2011",
+      "title": "2011 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2011.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2011-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2010",
+      "title": "2010 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2010.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2010-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2010",
+      "title": "2010 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2010.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2010-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2009",
+      "title": "2009 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2009.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2009-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2009",
+      "title": "2009 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2009.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2009-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2008",
+      "title": "2008 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2008.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2008-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2008",
+      "title": "2008 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2008.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2008-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    },
+    {
+      "branch": "Executive",
+      "year": "2007",
+      "title": "2007 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirme_2007.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2007-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/ExecutiveFirmDirectory"
+    },
+    {
+      "branch": "Legislative",
+      "year": "2007",
+      "title": "2007 Lobbying Firm Directory",
+      "format": "PDF",
+      "documentUrl": "https://floridalobbyist.gov/reports/lobfirml_2007.pdf",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories",
+        "date": "2007-01-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory"
+    }
+  ]
+}
