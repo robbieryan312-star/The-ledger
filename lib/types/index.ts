@@ -167,17 +167,37 @@ export interface Politician {
   };
 }
 
+/** Yea/Nay counts by party from an official roll call (when sync captured member votes). */
+export interface PartyVoteBreakdown {
+  republican: { yea: number; nay: number; notVoting?: number };
+  democrat: { yea: number; nay: number; notVoting?: number };
+  independent?: { yea: number; nay: number; notVoting?: number };
+}
+
+/** Optional donor/lobby overlap note — demo-flagged or sourced from finance records. */
+export interface VoteDonorConnection {
+  text: string;
+  isDemo: boolean;
+  source?: Source;
+}
+
 export interface VoteRecord {
   id: string;
   billId: string;
   billTitle: string;
   billDescription: string;
+  /** Plain-language vote action, e.g. "Final passage vote" (from sync metadata). */
+  voteAction?: string;
+  /** Bill purpose line from Congress.gov when available. */
+  billSummary?: string;
   date: string;
   vote: VoteChoice;
   result: 'Passed' | 'Failed';
   category: string;
   alignsWithCampaign?: boolean;
   alignsWithDonors?: boolean;
+  partyBreakdown?: PartyVoteBreakdown;
+  donorConnection?: VoteDonorConnection;
   source: Source;
 }
 

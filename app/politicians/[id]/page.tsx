@@ -16,7 +16,9 @@ import DonorChart from '@/components/politicians/DonorChart';
 import StockTrades from '@/components/politicians/StockTrades';
 import ConsistencyScore from '@/components/politicians/ConsistencyScore';
 import RelatedOfficialRecords from '@/components/politicians/RelatedOfficialRecords';
+import PublicActionsAccordion from '@/components/politicians/PublicActionsAccordion';
 import { findRecordJuxtapositions } from '@/lib/data/recordJuxtapositions';
+import SourceTierHelp from '@/components/ui/SourceTierHelp';
 import ControversySection from '@/components/politicians/ControversySection';
 import NewsSection from '@/components/politicians/NewsSection';
 import Link from 'next/link';
@@ -539,12 +541,8 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
                   className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wide bg-[#c8a951]/15 text-[#d4ac52] border border-[#c8a951]/30 px-2 py-0.5 rounded-full hover:bg-[#c8a951]/25 transition-colors"
                 >
                   <Shield className="h-3 w-3" />
-                  {resolvedOffice.source.tier === 'official'
-                    ? 'Tier 1 · Official'
-                    : resolvedOffice.source.tier === 'nonpartisan'
-                      ? 'Tier 2 · Nonpartisan'
-                      : resolvedOffice.source.tier}
-                  {' · '}as of {resolvedOffice.asOf}
+                  Official record · as of {resolvedOffice.asOf}
+                  <SourceTierHelp tier={resolvedOffice.source.tier} />
                 </a>
               ) : (
                 <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wide bg-gray-500/15 text-gray-400 border border-gray-500/25 px-2 py-0.5 rounded-full">
@@ -689,9 +687,6 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
             </div>
           )}
           <HotTopicsPanel issues={displayIssues} votes={displayVotes} isFeatured={isFeatured} />
-          {recordJuxtapositions.length > 0 && (
-            <RelatedOfficialRecords juxtapositions={recordJuxtapositions} name={politician.name} />
-          )}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Top Issues */}
             <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
@@ -771,6 +766,16 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
               </div>
             </div>
           </div>
+          {!isLightweight && displayVotes.length > 0 && (
+            <PublicActionsAccordion
+              votes={displayVotes}
+              finance={displayFinance}
+              isFeatured={isFeatured}
+            />
+          )}
+          {recordJuxtapositions.length > 0 && (
+            <RelatedOfficialRecords juxtapositions={recordJuxtapositions} name={politician.name} />
+          )}
           </>
         )}
 
@@ -781,11 +786,17 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
               {usingOfficialVotes && congressEntry && (
                 <SourceBadge source={congressEntry.source} size="xs" />
               )}
+              <SourceTierHelp />
             </div>
             {isLightweight ? (
               <MissingRecordPanel kind="the roll-call voting record" />
             ) : usingOfficialVotes ? (
-              <VotingRecord votes={displayVotes} officialSource />
+              <VotingRecord
+                votes={displayVotes}
+                officialSource
+                finance={displayFinance}
+                isFeatured={isFeatured}
+              />
             ) : politician.chamber === 'governor' ? (
               <VotingRecord votes={[]} />
             ) : (

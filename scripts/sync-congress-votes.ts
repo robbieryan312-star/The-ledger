@@ -20,16 +20,20 @@ import { mockPoliticians } from '../lib/data/mockPoliticians';
 import type { Politician, Source, VoteChoice, VoteRecord } from '../lib/types';
 import {
   CONGRESS_GOV_SOURCE,
+  fetchBioguidePartyMap,
+  fetchBillSummary,
   fetchHouseVoteList,
   fetchHouseVoteMembers,
   formatBillId,
   houseVoteCongressUrl,
+  humanHouseVoteAction,
   isCongressConfigured,
   normalizeVoteChoice,
   policyCategoryFromQuestion,
   voteResultLabel,
   type HouseVoteSummary,
 } from '../lib/data/congressClient';
+import { computePartyBreakdown } from '../lib/data/partyVoteBreakdown';
 import type { CongressVoteEntry } from '../lib/data/congressVotes';
 import {
   SENATE_GOV_SOURCE,
@@ -89,6 +93,7 @@ function toVoteRecord(
   vote: HouseVoteSummary,
   position: VoteChoice,
   question: string | undefined,
+  extras?: { billSummary?: string; partyBreakdown?: ReturnType<typeof computePartyBreakdown> },
 ): VoteRecord {
   const billId = formatBillId(vote.legislationType, vote.legislationNumber);
   const title = voteTitle(vote, question);
@@ -98,18 +103,23 @@ function toVoteRecord(
     url,
     date: isoDate(vote.startDate),
   };
+  const voteAction = humanHouseVoteAction(question);
+  const summaryLine = extras?.billSummary;
 
   return {
     id: `${politicianId}-${vote.congress}-${vote.sessionNumber}-${vote.rollCallNumber}`,
     billId,
-    billTitle: title,
+    billTitle: summaryLine ?? title,
     billDescription: question
       ? `${question}${billId !== 'Roll Call Vote' ? ` — ${billId}` : ''}. Official House roll-call record from Congress.gov (119th Congress).`
       : `Official House roll-call vote ${vote.rollCallNumber}, ${vote.congress}th Congress, session ${vote.sessionNumber}.`,
+    voteAction,
+    billSummary: summaryLine,
     date: isoDate(vote.startDate),
     vote: position,
     result: voteResultLabel(vote.result),
     category: policyCategoryFromQuestion(question, vote.legislationType),
+    partyBreakdown: extras?.partyBreakdown,
     source,
   };
 }
@@ -232,6 +242,14 @@ async function syncHouseVotes(
   const voteList = await collectRecentHouseVotes();
   console.log(`  ${voteList.length} House roll calls loaded — matching member positions...`);
 
+  let partyMap: Map<string, string> = new Map();
+  try {
+    partyMap = await fetchBioguidePartyMap();
+  } catch (err) {
+    console.warn('  Could not load bioguide party map — party breakdown will be omitted for House votes.');
+  }
+
+  const billSummaryCache = new Map<string, string | undefined>();
   let votesScanned = 0;
   for (const vote of voteList) {
     const pending = houseTargets.filter(
@@ -247,6 +265,23 @@ async function syncHouseVotes(
       );
       votesScanned += 1;
 
+      const cacheKey = `${vote.congress}-${vote.legislationType}-${vote.legislationNumber}`;
+      let billSummary = billSummaryCache.get(cacheKey);
+      if (billSummary === undefined && vote.legislationType && vote.legislationNumber) {
+        billSummary = await fetchBillSummary(vote.congress, vote.legislationType, vote.legislationNumber);
+        billSummaryCache.set(cacheKey, billSummary);
+        await sleep(80);
+      }
+
+      const partyBreakdown = computePartyBreakdown(
+        (members.results ?? [])
+          .map((m) => {
+            const party = partyMap.get(m.bioguideId);
+            return party ? { party, voteCast: normalizeVoteChoice(m.voteCast) } : null;
+          })
+          .filter((x): x is { party: string; voteCast: VoteChoice } => x !== null),
+      );
+
       for (const member of members.results ?? []) {
         const politicianId = bioguideToPolitician.get(member.bioguideId);
         if (!politicianId) continue;
@@ -259,6 +294,7 @@ async function syncHouseVotes(
             { ...vote, voteQuestion: members.voteQuestion },
             normalizeVoteChoice(member.voteCast),
             members.voteQuestion,
+            { billSummary: billSummary ?? undefined, partyBreakdown },
           ),
         );
       }

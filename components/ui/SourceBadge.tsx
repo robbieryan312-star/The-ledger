@@ -2,6 +2,8 @@
 
 import { Source, SourceTier } from '@/lib/types';
 import { Shield, CheckCircle, FileText, AlertTriangle, HelpCircle, ExternalLink } from 'lucide-react';
+import { TIER_HELP, tierHelpText } from '@/lib/data/sourceTiers';
+import SourceTierHelp from '@/components/ui/SourceTierHelp';
 
 const TIER_CONFIG: Record<SourceTier, {
   label: string;
@@ -9,69 +11,66 @@ const TIER_CONFIG: Record<SourceTier, {
   color: string;
   bg: string;
   border: string;
-  tooltip: string;
 }> = {
   official: {
-    label: 'Official Record',
+    label: 'Official',
     icon: Shield,
     color: 'text-green-400',
     bg: 'bg-green-400/10',
     border: 'border-green-400/30',
-    tooltip: 'Government record — .gov, FEC, Congress.gov, court filing, STOCK Act disclosure',
   },
   nonpartisan: {
-    label: 'Nonpartisan',
+    label: 'Research',
     icon: CheckCircle,
     color: 'text-blue-400',
     bg: 'bg-blue-400/10',
     border: 'border-blue-400/30',
-    tooltip: 'Established nonpartisan organization — Ballotpedia, OpenSecrets, GovTrack, AP, Reuters, Pew',
   },
   media: {
-    label: 'Tier 3 · Media',
+    label: 'Journalism',
     icon: FileText,
     color: 'text-gray-300',
     bg: 'bg-gray-400/10',
     border: 'border-gray-400/20',
-    tooltip: 'Tier 3 journalism — named outlet with editorial process; corroborate with official records',
   },
   alleged: {
-    label: 'ALLEGED',
+    label: 'Unverified',
     icon: AlertTriangle,
     color: 'text-orange-400',
     bg: 'bg-orange-400/10',
     border: 'border-orange-400/30',
-    tooltip: 'Credible but unproven claim — reported but not officially confirmed or adjudicated',
   },
   unverified: {
-    label: 'UNVERIFIED',
+    label: 'Unverified',
     icon: HelpCircle,
     color: 'text-red-400',
     bg: 'bg-red-400/10',
     border: 'border-red-400/30',
-    tooltip: 'Circulating claim with no verified sourcing — treat with significant skepticism',
   },
 };
 
 interface Props {
   source: Source;
   showName?: boolean;
+  showTierHelp?: boolean;
   size?: 'xs' | 'sm';
 }
 
-export default function SourceBadge({ source, showName = false, size = 'xs' }: Props) {
+export default function SourceBadge({ source, showName = false, showTierHelp = true, size = 'xs' }: Props) {
   const cfg = TIER_CONFIG[source.tier];
   const Icon = cfg.icon;
   const padding = size === 'xs' ? 'px-1.5 py-0' : 'px-2 py-0.5';
-  const text = size === 'xs' ? 'text-xs' : 'text-xs';
+  const text = size === 'xs' ? 'text-[10px]' : 'text-xs';
+  const tierNum = TIER_HELP[source.tier].number;
 
   return (
     <span
       className={`inline-flex items-center gap-1 ${padding} rounded-full border ${cfg.bg} ${cfg.border} ${cfg.color} ${text} font-medium`}
-      title={cfg.tooltip}
+      title={tierHelpText(source.tier)}
     >
       <Icon className="h-3 w-3 flex-shrink-0" />
-      {showName ? source.name : cfg.label}
+      {showName ? source.name : `T${tierNum} · ${cfg.label}`}
+      {showTierHelp && <SourceTierHelp tier={source.tier} className="opacity-70" />}
       {source.url && (
         <a
           href={source.url}
@@ -98,10 +97,10 @@ export function TierLegend() {
           <span
             key={tier}
             className={`inline-flex items-center gap-1 px-1.5 py-0 rounded-full border ${cfg.bg} ${cfg.border} ${cfg.color} text-xs`}
-            title={cfg.tooltip}
+            title={tierHelpText(tier)}
           >
             <Icon className="h-3 w-3" />
-            {cfg.label}
+            T{TIER_HELP[tier].number} · {cfg.label}
           </span>
         );
       })}

@@ -39,19 +39,28 @@ function factualHeadline(
   connection: 'sector' | 'temporal',
 ): string {
   const tradeVerb =
-    trade.type === 'Purchase' ? 'Purchased' : trade.type === 'Sale' ? 'Sold' : 'Disclosed';
-  const votePhrase = `voted ${vote.vote} on ${vote.billTitle}`;
-  const datePhrase =
+    trade.type === 'Purchase' ? 'bought' : trade.type === 'Sale' ? 'sold' : 'disclosed';
+  const company = trade.companyName.split(',')[0].split('(')[0].trim();
+  const voteAction = vote.vote === 'Yea' ? 'voted yes' : vote.vote === 'Nay' ? 'voted no' : `voted ${vote.vote.toLowerCase()}`;
+
+  const billLabel =
+    vote.billSummary ??
+    (vote.billTitle.length > 60 || /^H\.R\.\d+$/i.test(vote.billTitle)
+      ? vote.billId
+      : vote.billTitle);
+
+  const timing =
     days === 0
-      ? 'same day as'
+      ? 'the same day as the trade was filed'
       : days === 1
-        ? '1 day from'
-        : `${days} days from`;
+        ? '1 day after the trade was filed'
+        : `${days} days after the trade was filed`;
 
   if (connection === 'sector') {
-    return `${tradeVerb} ${trade.ticker} (${trade.date}); ${votePhrase} (${vote.date}) — ${datePhrase} trade date, bill category overlaps ${trade.sector.toLowerCase()} sector`;
+    return `On ${trade.date}, ${tradeVerb} ${trade.ticker} (${company}). On ${vote.date}, ${voteAction} on ${billLabel} — ${timing}; the bill topic overlaps the ${trade.sector.toLowerCase()} sector in integrated records.`;
   }
-  return `Disclosed ${trade.type.toLowerCase()} of ${trade.ticker} on ${trade.date} (filed ${trade.disclosureDate}); ${votePhrase} on ${vote.date} (${datePhrase} PTR filing)`;
+
+  return `On ${trade.date}, ${tradeVerb} ${trade.ticker} (${company}; STOCK Act filing dated ${trade.disclosureDate}). On ${vote.date}, ${voteAction} on ${billLabel} — ${timing}. These dates are close in the official record; proximity alone does not show wrongdoing.`;
 }
 
 function dedupeTrades(trades: StockTrade[]): StockTrade[] {

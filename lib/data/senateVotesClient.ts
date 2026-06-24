@@ -3,6 +3,7 @@
  * No API key. Tier 1 (official .gov).
  */
 import type { Source, VoteChoice, VoteRecord } from '../types';
+import { computePartyBreakdown } from './partyVoteBreakdown';
 
 export const SENATE_GOV_SOURCE: Source = {
   name: 'senate.gov',
@@ -31,6 +32,7 @@ interface SenateVoteMenuItem {
 export interface SenateMemberVote {
   lisMemberId: string;
   voteCast: VoteChoice;
+  party?: string;
 }
 
 export interface SenateRollCall {
@@ -115,6 +117,7 @@ export async function fetchSenateRollCall(
   const members: SenateMemberVote[] = memberBlocks.map((block) => ({
     lisMemberId: tag(block, 'lis_member_id'),
     voteCast: normalizeSenateVote(tag(block, 'vote_cast')),
+    party: tag(block, 'party') || undefined,
   })).filter((m) => m.lisMemberId);
 
   const documentName = tag(xml, 'document_name') || undefined;
@@ -155,6 +158,17 @@ function isoDateFromSenate(dateStr: string): string {
   return new Date().toISOString().slice(0, 10);
 }
 
+function humanVoteAction(question: string): string {
+  const q = question.trim();
+  if (/^on passage$/i.test(q)) return 'Final passage vote';
+  if (/^on agreeing to the resolution$/i.test(q)) return 'Vote to agree to the resolution';
+  if (/^on the concurrent resolution/i.test(q)) return 'Vote on the concurrent resolution';
+  if (/^on the nomination/i.test(q)) return 'Confirmation vote';
+  if (/^on cloture/i.test(q)) return 'Cloture vote (end debate)';
+  if (q.startsWith('On ')) return q.charAt(0).toUpperCase() + q.slice(1);
+  return 'Roll-call vote';
+}
+
 export function senateVoteToRecord(
   politicianId: string,
   roll: SenateRollCall,
@@ -171,6 +185,11 @@ export function senateVoteToRecord(
     roll.result.toLowerCase().includes('confirmed') ||
     roll.result.toLowerCase().includes('passed');
 
+  const billSummary = roll.documentText || undefined;
+  const partyBreakdown = computePartyBreakdown(
+    roll.members.filter((m) => m.party).map((m) => ({ party: m.party!, voteCast: m.voteCast })),
+  );
+
   return {
     id: `${politicianId}-s${roll.congress}-${roll.session}-${roll.voteNumber}`,
     billId,
@@ -178,10 +197,13 @@ export function senateVoteToRecord(
     billDescription: roll.documentText
       ? `${roll.question} — ${roll.documentText}. Official Senate roll-call from senate.gov (${roll.congress}th Congress).`
       : `${roll.question}. Official Senate roll-call from senate.gov (${roll.congress}th Congress).`,
+    voteAction: humanVoteAction(roll.question),
+    billSummary,
     date,
     vote: position,
     result: passed ? 'Passed' : 'Failed',
     category: policyCategory(roll.question, roll.documentName),
+    partyBreakdown,
     source,
   };
 }

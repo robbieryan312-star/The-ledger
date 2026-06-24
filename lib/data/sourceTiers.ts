@@ -83,3 +83,37 @@ export function completenessConfig(status: EvidenceCompleteness) {
 export function formatSourceDate(source: Source, fallbackDate?: string): string | undefined {
   return source.date ?? fallbackDate;
 }
+
+/** Plain-language tier definitions for tooltips and help panels. */
+export const TIER_HELP: Record<SourceTier, { number: number; short: string; description: string }> = {
+  official: {
+    number: 1,
+    short: 'Tier 1 · Official',
+    description: 'U.S. government primary record — .gov sites, Congress.gov, FEC, STOCK Act filings, court records',
+  },
+  nonpartisan: {
+    number: 2,
+    short: 'Tier 2 · Research',
+    description: 'Established nonpartisan research — OpenSecrets, GovTrack, Ballotpedia, AP, Reuters, Pew',
+  },
+  media: {
+    number: 3,
+    short: 'Tier 3 · Journalism',
+    description: 'Named news outlet with editorial process — corroborate with official records when possible',
+  },
+  alleged: {
+    number: 4,
+    short: 'Tier 4 · Unverified claim',
+    description: 'Credible allegation not yet officially confirmed — shown with caution',
+  },
+  unverified: {
+    number: 4,
+    short: 'Tier 4 · Unverified',
+    description: 'Circulating claim without verified sourcing — treat with significant skepticism',
+  },
+};
+
+export function tierHelpText(tier: SourceTier): string {
+  const h = TIER_HELP[tier];
+  return `${h.short}: ${h.description}`;
+}

@@ -3,6 +3,8 @@
 import { useMemo, useState } from 'react';
 import { StockTrade, TradeTimelineEvent, Source } from '@/lib/types';
 import { TrendingUp, TrendingDown, AlertTriangle, Info, ArrowUpDown, ChevronDown, ChevronRight, Vote, MessageSquare, Landmark, BarChart2, FileText, Calendar, Filter, ExternalLink } from 'lucide-react';
+import SourceBadge from '@/components/ui/SourceBadge';
+import SourceTierHelp from '@/components/ui/SourceTierHelp';
 
 type SortKey = 'date' | 'amount' | 'gain_pct' | 'conflict';
 type ConflictFilter = 'All' | 'High' | 'Medium' | 'Low';
@@ -53,21 +55,39 @@ function estimatedDollarMove(trade: StockTrade): number | null {
   return (trade.currentPrice - trade.purchasePriceApprox) * ((trade.amount ?? trade.amountMin) / trade.purchasePriceApprox);
 }
 
-function GainLossBadge({ trade }: { trade: StockTrade }) {
+function formatRange(trade: StockTrade): string {
+  return `${formatMoney(trade.amountMin)} – ${formatMoney(trade.amountMax)}`;
+}
+
+function LeadMetric({ trade }: { trade: StockTrade }) {
   const pct = priceMovePct(trade);
-  if (pct === null) return null;
-  const positive = pct >= 0;
-  const Icon = positive ? TrendingUp : TrendingDown;
   const dollar = estimatedDollarMove(trade);
+  const hasEstimate = pct !== null;
+
+  if (hasEstimate) {
+    const positive = pct! >= 0;
+    const Icon = positive ? TrendingUp : TrendingDown;
+    return (
+      <div>
+        <div className={`text-2xl font-bold flex items-center gap-1.5 ${positive ? 'text-green-400' : 'text-red-400'}`}>
+          <Icon className="h-5 w-5" />
+          {positive ? '+' : ''}{pct!.toFixed(1)}%
+          {dollar !== null && (
+            <span className="text-base font-semibold opacity-80">
+              ({positive ? '+' : ''}{formatMoney(Math.abs(dollar))})
+            </span>
+          )}
+        </div>
+        <div className="text-[10px] text-gray-500 mt-0.5">Est. from disclosure range · not exact trade price</div>
+        <div className="text-sm text-[#c8a951]/90 mt-1">{formatRange(trade)} disclosed</div>
+      </div>
+    );
+  }
+
   return (
-    <div className={`inline-flex items-center gap-1 text-sm font-bold ${positive ? 'text-green-400' : 'text-red-400'}`}>
-      <Icon className="h-3.5 w-3.5" />
-      {positive ? '+' : ''}{pct.toFixed(1)}%
-      {dollar !== null && (
-        <span className="text-xs font-normal opacity-70">
-          ({positive ? '+' : ''}{formatMoney(Math.abs(dollar))})
-        </span>
-      )}
+    <div>
+      <div className="text-2xl font-bold text-[#c8a951]">{formatRange(trade)}</div>
+      <div className="text-[10px] text-gray-500 mt-0.5">Disclosed dollar range (STOCK Act)</div>
     </div>
   );
 }
@@ -114,8 +134,10 @@ function DataSourceStrip({
       <p className="text-xs text-gray-500 leading-relaxed">
         {usingOfficialTrades ? (
           <>
-            <span className="text-green-400/90 font-medium">Tier 1 official STOCK Act filings.</span>{' '}
-            Transactions are parsed from Senate eFD or House Clerk PTR disclosures. Amounts are reported ranges from the filing, not exact trade sizes.
+            <span className="inline-flex items-center gap-1">
+              <SourceBadge source={officialSource ?? { name: 'House/Senate Clerk', tier: 'official', url: 'https://disclosures-clerk.house.gov' }} size="xs" showTierHelp />
+            </span>{' '}
+            Transactions parsed from Senate eFD or House Clerk PTR disclosures. Amounts are reported ranges, not exact trade sizes.
           </>
         ) : (
           <>
@@ -132,26 +154,35 @@ function DataSourceStrip({
 }
 
 function MethodologyPanel({ context }: { context: 'profile' | 'congress' }) {
+  const [open, setOpen] = useState(false);
   return (
-    <div className="bg-[#0d1f35] rounded-xl border border-[#1e3a5f] p-4">
-      <div className="flex items-start gap-2">
-        <Info className="h-4 w-4 text-blue-400 flex-shrink-0 mt-0.5" />
-        <div>
-          <div className="text-white font-semibold text-sm mb-1">How this is calculated</div>
-          <p className="text-xs text-gray-400 leading-relaxed">
+    <div className="bg-[#0d1f35] rounded-xl border border-[#1e3a5f] overflow-hidden">
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between gap-2 px-4 py-3 text-left hover:bg-white/[0.02] transition-colors"
+      >
+        <div className="flex items-center gap-2">
+          <Info className="h-4 w-4 text-blue-400 flex-shrink-0" />
+          <span className="text-white font-semibold text-sm">How gain/loss and exposure are estimated</span>
+        </div>
+        {open ? <ChevronDown className="h-4 w-4 text-gray-500" /> : <ChevronRight className="h-4 w-4 text-gray-500" />}
+      </button>
+      {open && (
+        <div className="px-4 pb-4 border-t border-[#1e3a5f]">
+          <p className="text-xs text-gray-400 leading-relaxed mt-3">
             Exposure uses the midpoint or maximum of the disclosed dollar range from STOCK Act-style filings; Congress reports ranges,
-            not exact trade sizes, and exposure is not an accusation. Estimated gain/loss is a rough demo price-move estimate using
-            approximate price fields when available. For sales or partial sales, it shows movement after the reported trade, not a
-            verified realized profit. Review priority is a rules-based potential conflict indicator using sector, committee or office
-            relevance, nearby votes/actions, and disclosure timing. It is not investment advice and not proof of wrongdoing.
+            not exact trade sizes. Estimated gain/loss uses approximate price fields when available — labeled as estimated from the disclosure range.
+            For sales, it shows price movement after the reported trade, not verified realized profit. Review priority is a rules-based indicator
+            using sector, committee relevance, nearby votes, and disclosure timing — not investment advice and not proof of wrongdoing.
           </p>
           <p className="text-xs text-gray-500 mt-2">
             Default sort: {context === 'profile'
-              ? 'newest disclosures first for profile review.'
-              : 'largest disclosed exposure first as an investigative review order.'}
+              ? 'newest disclosures first.'
+              : 'largest disclosed exposure first.'}
           </p>
         </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -255,7 +286,6 @@ function TradeCard({ trade, profileName }: { trade: StockTrade; profileName: str
   const [expanded, setExpanded] = useState(false);
   const hasTimeline = (trade.timelineEvents?.length ?? 0) > 0;
   const flaggedEvents = trade.timelineEvents?.filter((e) => e.isFlagged) ?? [];
-  const pct = priceMovePct(trade);
 
   return (
     <div className={`bg-[#0d1f35] rounded-xl border overflow-hidden ${
@@ -263,22 +293,21 @@ function TradeCard({ trade, profileName }: { trade: StockTrade; profileName: str
       trade.conflictScore >= 40 ? 'border-yellow-400/30' : 'border-[#1e3a5f]'
     }`}>
       <div className="p-4">
+        <div className="flex items-start justify-between gap-4 mb-3">
+          <LeadMetric trade={trade} />
+          <div className="text-right flex-shrink-0">
+            <span className={`text-xs px-2 py-0.5 rounded-full ${
+              trade.type === 'Purchase' ? 'bg-green-400/10 text-green-400' : 'bg-red-400/10 text-red-400'
+            }`}>
+              {trade.type === 'Purchase' ? '↑' : '↓'} {trade.type}
+            </span>
+          </div>
+        </div>
+
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap mb-1">
-              <span className="text-white font-semibold text-base">{profileName}</span>
-              <span className={`text-xs px-2 py-0.5 rounded-full ${
-                trade.type === 'Purchase' ? 'bg-green-400/10 text-green-400' : 'bg-red-400/10 text-red-400'
-              }`}>
-                {trade.type === 'Purchase' ? '↑' : '↓'} {trade.type}
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3 flex-wrap mb-2">
-              <span className="text-xl font-bold text-[#c8a951]">
-                {formatMoney(trade.amountMin)} – {formatMoney(trade.amountMax)}
-              </span>
-              {pct !== null && <GainLossBadge trade={trade} />}
+              <span className="text-white font-semibold text-sm">{profileName}</span>
             </div>
 
             <div className="flex items-center gap-2 flex-wrap text-sm text-gray-400">
@@ -336,16 +365,6 @@ function TradeCard({ trade, profileName }: { trade: StockTrade; profileName: str
                 </a>
               )}
             </div>
-          </div>
-
-          <div className="text-right flex-shrink-0">
-            <div className="text-white font-bold text-lg">{formatMoney(tradeSortValue(trade))}</div>
-            <div className="text-gray-500 text-xs">est. max value</div>
-            {pct !== null && (
-              <div className={`text-sm font-bold mt-1 ${pct >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                {pct >= 0 ? '+' : ''}{pct.toFixed(1)}%
-              </div>
-            )}
           </div>
         </div>
 
@@ -457,6 +476,9 @@ export default function StockTrades({
         demoTradeCount={demoTradeCount}
       />
       <MethodologyPanel context="profile" />
+      <div className="flex justify-end">
+        <SourceTierHelp />
+      </div>
 
       {totalFlagged > 0 && (
         <div className="bg-yellow-400/10 border border-yellow-400/30 rounded-xl p-4">

@@ -230,3 +230,77 @@ export function policyCategoryFromQuestion(question?: string, legislationType?: 
   if (legislationType?.toUpperCase().startsWith('HRES')) return 'Procedural';
   return 'Legislation';
 }
+
+/** Map legislation type + number to Congress.gov bill API path segment. */
+export function billApiPath(legislationType?: string, legislationNumber?: string): string | undefined {
+  if (!legislationType || !legislationNumber) return undefined;
+  const t = legislationType.toUpperCase().replace(/\./g, '');
+  const map: Record<string, string> = {
+    HR: 'hr',
+    HRES: 'hres',
+    HJRES: 'hjres',
+    HCONRES: 'hconres',
+    S: 's',
+    SRES: 'sres',
+    SJRES: 'sjres',
+    SCONRES: 'sconres',
+  };
+  const slug = map[t];
+  return slug ? `${slug}/${legislationNumber}` : undefined;
+}
+
+export function humanHouseVoteAction(question?: string): string {
+  if (!question) return 'Roll-call vote';
+  const q = question.trim();
+  if (/^on passage$/i.test(q)) return 'Final passage vote';
+  if (/^on agreeing to the resolution$/i.test(q)) return 'Vote to agree to the resolution';
+  if (/^on motion to suspend/i.test(q)) return 'Vote to suspend rules and pass';
+  if (q.startsWith('On ')) return q.charAt(0).toUpperCase() + q.slice(1);
+  return q;
+}
+
+interface BillApiResponse {
+  bill?: {
+    title?: string;
+    shortTitle?: string;
+  };
+}
+
+/** Fetch bill title from Congress.gov when API key is configured. */
+export async function fetchBillSummary(
+  congress: number,
+  legislationType?: string,
+  legislationNumber?: string,
+): Promise<string | undefined> {
+  const path = billApiPath(legislationType, legislationNumber);
+  if (!path) return undefined;
+  try {
+    const data = await congressFetch<BillApiResponse>(`/bill/${congress}/${path}`);
+    return data.bill?.title ?? data.bill?.shortTitle ?? undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+const LEGISLATORS_URL =
+  'https://unitedstates.github.io/congress-legislators/legislators-current.json';
+
+let bioguidePartyCache: Map<string, string> | null = null;
+
+/** Party letter (R/D/I) by bioguide ID from unitedstates/congress-legislators. */
+export async function fetchBioguidePartyMap(): Promise<Map<string, string>> {
+  if (bioguidePartyCache) return bioguidePartyCache;
+  const res = await fetch(LEGISLATORS_URL);
+  if (!res.ok) throw new Error(`legislators-current fetch failed: HTTP ${res.status}`);
+  const raw = (await res.json()) as Array<{ id: { bioguide: string }; terms: Array<{ party?: string }> }>;
+  const map = new Map<string, string>();
+  for (const leg of raw) {
+    const party = leg.terms[leg.terms.length - 1]?.party;
+    if (leg.id.bioguide && party) {
+      const letter = party.startsWith('Dem') ? 'D' : party.startsWith('Rep') ? 'R' : 'I';
+      map.set(leg.id.bioguide, letter);
+    }
+  }
+  bioguidePartyCache = map;
+  return map;
+}
