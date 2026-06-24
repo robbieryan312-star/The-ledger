@@ -3,17 +3,691 @@
     "source": {
       "name": "NewsAPI",
       "url": "https://newsapi.org",
-      "tier": "journalism",
+      "tier": "media",
       "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
     },
     "asOf": "2026-06-24",
-    "count": 0,
+    "count": 45,
     "stateCode": "FL",
-    "fetchedLive": false,
-    "errors": [
-      "NEWSAPI_KEY not configured"
-    ],
-    "note": "No record on file — API key required. Register at newsapi.org/register"
+    "fetchedLive": true,
+    "datasetUrl": "https://newsapi.org/v2/everything",
+    "note": "Tier 3 journalism — always corroborate with Tier 1/2 sources before presenting as fact."
   },
-  "records": []
+  "records": [
+    {
+      "title": "Mamdani’s bid to become a Democratic socialist kingmaker—and other races to watch in the New York primary",
+      "description": "Eight months into his first term, NYC's democratic socialist mayor is trying to remake the city's congressional delegation.",
+      "url": "https://fortune.com/2026/06/23/mamdani-democratic-socialist-kingmaker-new-york-primary/",
+      "publishedAt": "2026-06-23T14:11:54Z",
+      "outlet": "Fortune",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Trump May Not Like His Senate Visit This Week",
+      "description": "President Trump is heading to the Senate this week, and he may not receive as warm a reception as he hopes. Trump, at the invitation of Florida Sen. Rick Scott, will attend the GOP's Wednesday lunch and press for his top priority, the SAVE America Act electio…",
+      "url": "https://www.newser.com/story/391530/trump-may-not-like-his-senate-visit-this-week.html",
+      "publishedAt": "2026-06-23T12:18:00Z",
+      "outlet": "Newser",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Downballot Democrats Are Smashing Recruitment Records",
+      "description": "When the Kansas legislature took up a bill in early 2026 that would strip transgender residents’ driver’s licenses and bar them from government bathrooms, Bobby Joe Robertson Jr., a financial analyst at a petroleum refinery in the small town of McPherson, abo…",
+      "url": "https://www.motherjones.com/politics/2026/06/downballot-democratic-candidate-recruitment-2026/",
+      "publishedAt": "2026-06-23T12:00:00Z",
+      "outlet": "Mother Jones",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Erik Visits an American Grave, Part 2,168",
+      "description": "This is the unmarked grave of Herman Cain, who is buried near his family but does not have a marker of his own. Supposedly this is to stop publicity, but really, how many people other than myself want to see the grave of Hermain Cain? Born in 1945 in Memphis,…",
+      "url": "https://www.lawyersgunsmoneyblog.com/2026/06/erik-visits-an-american-grave-part-2168",
+      "publishedAt": "2026-06-23T11:00:00Z",
+      "outlet": "Lawyersgunsmoneyblog.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "NBA mock draft 19.0: Final predictions for every pick ahead of first round today",
+      "description": "With just a few more hours until the 2026 NBA Draft, fans will soon know exactly where each prospect will begin their professional careers.",
+      "url": "https://www.usatoday.com/story/sports/nba/draft/2026/06/23/nba-mock-draft-2026-final-projections-first-second-round/90651727007/",
+      "publishedAt": "2026-06-23T10:31:13Z",
+      "outlet": "USA Today",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "One Day in America",
+      "description": "Thirty-eight glimpses of a day 250 years in the making.",
+      "url": "https://www.esquire.com/news-politics/a71427015/one-day-in-america/",
+      "publishedAt": "2026-06-23T10:13:24Z",
+      "outlet": "esquire.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Their Album Was Banned. Their Members Were Arrested. But at Trial, the Jurors Couldn’t Stop Laughing.",
+      "description": "It was the only album in U.S. history to be deemed “obscene.” It was saved by a few old ladies.",
+      "url": "https://slate.com/culture/2026/06/2-live-crew-me-so-horny-censorship-song-lyrics-luke.html",
+      "publishedAt": "2026-06-23T09:45:00Z",
+      "outlet": "Slate Magazine",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "The Colorado River is vanishing — and the fixes are getting weird",
+      "description": "Desalination. Pipelines. Cloud seeding. Those are just a few ideas for how the Trump administration should save the desiccated waterway.",
+      "url": "https://grist.org/solutions/the-colorado-river-is-vanishing-and-the-fixes-are-getting-weird/",
+      "publishedAt": "2026-06-23T08:45:00Z",
+      "outlet": "Grist",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Florida’s ‘Free Kill’ law leaves grieving families with no day in court",
+      "description": "Florida is the only state in the nation where an adult child of unmarried parents can lose their parent to a doctor’s negligence and never be allowed to tell a jury what that loss cost them. Florida also suppresses the grief of a parent who loses an adult chi…",
+      "url": "https://www.naturalnews.com/2026-06-23-floridas-free-kill-law-no-court-day.html",
+      "publishedAt": "2026-06-23T06:00:00Z",
+      "outlet": "Naturalnews.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "5 Years After Surfside Collapse: Safer Condos, More Transparency for Underwriters",
+      "description": "June 24, 2026 marks the fifth anniversary of the tragic collapse of Champlain Towers South in Surfside, Florida. Like many Floridians, I remember exactly where I was when I first heard the news. The loss of 98 lives was heartbreaking, …",
+      "url": "https://www.insurancejournal.com/news/southeast/2026/06/23/874845.htm",
+      "publishedAt": "2026-06-23T05:02:22Z",
+      "outlet": "Insurance Journal",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "‘We’ll Want Some Proof’: State Farm CEO’s Take on NY Auto Insurance Reforms",
+      "description": "While State Farm publicly supported auto insurance reform measures in New York this year, now that a package of changes has been written into the state’s statutes, the insurance giant is taking a measured business approach. “We want some proof …",
+      "url": "https://www.carriermanagement.com/features/2026/06/17/289163.htm",
+      "publishedAt": "2026-06-23T05:00:41Z",
+      "outlet": "Carriermanagement.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "I am the child whom abortion advocates would call a ‘hard case’",
+      "description": "My mother’s decision to spare my life challenges a troubling assumption that often underlies abortion advocacy: that some lives become less valuable when conceived under undesirable conditions.",
+      "url": "https://www.americanthinker.com/blog/2026/06/i-am-the-child-whom-abortion-advocates-would-call-a-hard-case/",
+      "publishedAt": "2026-06-23T04:00:00Z",
+      "outlet": "Americanthinker.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "California Democrat Pushes Bill Increasing Cost For Government Records Requests",
+      "description": "A California State Assembly bill has been amended to increase the difficulty and burden for Californians seeking government records. Democrat California Assemblywoman Blanca Pacheco amended CA AB 1821, named the California Public Records Act, on June 10 to al…",
+      "url": "https://freerepublic.com/focus/f-bloggers/4385000/posts",
+      "publishedAt": "2026-06-23T02:30:45Z",
+      "outlet": "Freerepublic.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "'Deep state purge' begins at Tulsi Gabbard's old office as Trump's new spy chief seeks to fire hundreds",
+      "description": "Bill Pulte, 38, wasted no time on his first day as President Trump's new spy chief as he seeks to fire hundreds.",
+      "url": "https://www.dailymail.com/news/article-15921433/purge-tulsi-gabbard-trump-spy-chief-fire-hundreds.html",
+      "publishedAt": "2026-06-23T02:24:43Z",
+      "outlet": "Dailymail.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Ruben Gallego swings through deep-red Trump counties during desperate plot as voters sound off on ex-bestie's sex scandals",
+      "description": "South Carolina voters weigh in on whether they have concerns about Ruben Gallego's ties to two of his longtime colleagues who have been accused of sexual misconduct.",
+      "url": "https://www.dailymail.com/news/article-15916413/Democrat-Ruben-Gallego-Eric-Swalwell-scandal.html",
+      "publishedAt": "2026-06-23T01:32:34Z",
+      "outlet": "Dailymail.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Florida's \"Alligator Alcatraz\" shutting down permanently, sources say",
+      "description": "Companies hired by the state to operate the Florida immigration facility known as \"Alligator Alcatraz\" were notified Monday morning to begin \"full demobilization\" of the facility, quietly bringing an ignominious close a $1.2 billion experiment that had once b…",
+      "url": "https://freerepublic.com/focus/f-news/4384979/posts",
+      "publishedAt": "2026-06-22T23:41:05Z",
+      "outlet": "Freerepublic.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Trump To Attend Wednesday Senate Lunch To Discuss Embattled Election Integrity Measure",
+      "description": "By Elizabeth Troutman Mitchell, The Daily Signal | June 22, 2026\nPresident Donald Trump will discuss the SAVE America Act with senators at Wednesday’s closed-door luncheon, at the invite of Florida Republican Sen. Rick Scott.\n“He wants, we all want to get the…",
+      "url": "https://biztoc.com/x/a90252b7fef0f207",
+      "publishedAt": "2026-06-22T23:39:07Z",
+      "outlet": "Biztoc.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Senate Passes Major Housing Bill As Citizens Continue To Miss Out On Key Pillar Of American Dream",
+      "description": "The Senate passed a piece of bipartisan legislation Monday that aimed to lower the cost of housing.",
+      "url": "https://dailycaller.com/2026/06/22/senate-housing-bill-trumps-desk/",
+      "publishedAt": "2026-06-22T22:36:43Z",
+      "outlet": "The Daily Caller",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "SCOOP: SAVE America Act Could Be Voted On Everyday Before November",
+      "description": "In a letter obtained by the Daily Signal, the chairman of the Republican Steering Committee outlined his priorities for the Wednesday lunch that will be attended by President Donald Trump, including a proposal to vote on legislation requiring voter ID and pro…",
+      "url": "https://www.dailysignal.com/2026/06/22/scoop-save-america-act-could-be-voted-on-everyday-before-november/",
+      "publishedAt": "2026-06-22T22:20:00Z",
+      "outlet": "Daily Signal",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Florida Shuts Down Alligator Alcatraz After a Year of Lawsuits and Brutality",
+      "description": "After using $1 billion to brutalize immigrants, Alligator Alcatraz has been emptied. Its victims still need justice.",
+      "url": "https://truthout.org/articles/florida-shuts-down-alligator-alcatraz-after-a-year-of-lawsuits-and-brutality/",
+      "publishedAt": "2026-06-22T21:38:38Z",
+      "outlet": "Truthout",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Organizers in Idaho, Nevada, and Virginia Are Putting Abortion Rights on Ballot",
+      "description": "Grassroots canvassers are hitting the streets to urge voters to defend abortion rights in their states this November.",
+      "url": "https://truthout.org/articles/organizers-in-idaho-nevada-and-virginia-are-putting-abortion-rights-on-ballot/",
+      "publishedAt": "2026-06-22T20:52:55Z",
+      "outlet": "Truthout",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "May's exit may reflect shaky world of college athletics, experts say",
+      "description": "The prevalence of college coaches leaving might increase due to frustrations with the shaky world of college athletics, experts said.",
+      "url": "https://www.detroitnews.com/story/sports/college/university-michigan/wolverines/2026/06/22/college-athletics-coaches-leave-dusty-may-michigan-mavericks/90648194007/",
+      "publishedAt": "2026-06-22T20:42:12Z",
+      "outlet": "The Detroit News",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "AI is cursing renters with the promise of impossible homes",
+      "description": "Joyce, a native New Yorker, didn't think finding her first solo apartment in the city would be easy. But she also didn't think it'd be \"hell.\" After looking at a lot of tiny, overpriced places she described as \"shitholes,\" Joyce found her dream apartment: a r…",
+      "url": "https://www.theverge.com/report/953888/ai-virtual-staging-real-estate-apartment-listings",
+      "publishedAt": "2026-06-22T19:52:26Z",
+      "outlet": "The Verge",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Coffee Break: Mamdani Endorses in New York Dem Congressional Primaries",
+      "description": "Zohran Mamdani has endorsed multiple candidates in Democratic congressional primaries as part of a \"vigorous push by the DSA to claim more ground in Congress.\"",
+      "url": "https://www.nakedcapitalism.com/2026/06/mamdani-endorses-new-york-democratic-congressional-primaries.html",
+      "publishedAt": "2026-06-22T18:00:36Z",
+      "outlet": "Nakedcapitalism.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "35 Retired Federal Judges Slam Trump's 'Laughable' Defense of His 'Obviously Collusive' IRS Settlement",
+      "description": "The DOJ's unilateral abandonment of the Anti-Weaponization Fund \"makes it crystal clear that these parties were never adverse,\" the former judges argue.",
+      "url": "https://www.yahoo.com/news/politics/articles/35-retired-federal-judges-slam-trumps-laughable-defense-of-his-obviously-collusive-irs-settlement-180033529.html",
+      "publishedAt": "2026-06-22T18:00:33Z",
+      "outlet": "Yahoo Entertainment",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "35 Retired Federal Judges Slam Trump's 'Laughable' Defense of His 'Obviously Collusive' IRS Settlement",
+      "description": "The DOJ's unilateral abandonment of the Anti-Weaponization Fund \"makes it crystal clear that these parties were never adverse,\" the former judges argue.",
+      "url": "https://www.yahoo.com/news/politics/articles/35-retired-federal-judges-slam-180033529.html",
+      "publishedAt": "2026-06-22T18:00:33Z",
+      "outlet": "Yahoo Entertainment",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "35 Retired Federal Judges Slam Trump's 'Laughable' Defense of His 'Obviously Collusive' IRS Settlement",
+      "description": "The DOJ's unilateral abandonment of the Anti-Weaponization Fund \"makes it crystal clear that these parties were never adverse,\" the former judges argue.",
+      "url": "https://reason.com/2026/06/22/35-retired-federal-judges-slam-trumps-laughable-defense-of-his-obviously-collusive-irs-settlement/",
+      "publishedAt": "2026-06-22T17:55:12Z",
+      "outlet": "Reason",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Experts warn next California exodus has been triggered as brokers are flooded with calls",
+      "description": "A massive exodus out of California is expected to happen after SpaceX's historic and OpenAI's confidential IPO, unleashing an unprecedented wave of tech millionaires to Florida.",
+      "url": "https://nypost.com/2026/06/22/us-news/experts-warn-next-california-exodus-has-been-triggered-as-brokers-are-flooded-with-calls/",
+      "publishedAt": "2026-06-22T17:50:42Z",
+      "outlet": "New York Post",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "'This guy is running for congress?' MAGA candidate confuses with false Trump claim",
+      "description": "Republican congressional candidate Michael Carbonara of Florida took to social media Monday to laud the Trump administration's \"massive accountability\" push – only to be immediately fact-checked for a blatant falsehood in his post.“Wow: [FBI Director] Kash Pa…",
+      "url": "https://www.rawstory.com/michael-carbonara-false-trump-claim/",
+      "publishedAt": "2026-06-22T17:22:16Z",
+      "outlet": "Raw Story",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Michigan is scrambling for a new coach after Dusty May leaves to lead NBA's Dallas Mavericks",
+      "description": "Michigan, coming off a national championship in basketball, is suddenly searching for a coach with big sneakers to fill. Dusty May and the Dallas Mavericks are finalizing a contract for him to make the jump to the NBA, a person with knowledge of the deal told…",
+      "url": "https://sports.yahoo.com/articles/michigan-scrambling-coach-dusty-may-163533614.html",
+      "publishedAt": "2026-06-22T16:35:33Z",
+      "outlet": "Yahoo Entertainment",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "California Democrat Pushes Bill Increasing Cost For Government Records Requests",
+      "description": "A California General Assembly bill has been amended to increase the difficulty and burden for Californians seeking government records.",
+      "url": "https://dailycaller.com/2026/06/22/california-democrat-blanca-pacheco-bill-1821-government-transparency-fees-costs/",
+      "publishedAt": "2026-06-22T16:14:37Z",
+      "outlet": "The Daily Caller",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Trump to Attend Wednesday Senate Lunch to Discuss Embattled Election Integrity Measure",
+      "description": "President Donald Trump will discuss the SAVE America Act with senators at Wednesday’s closed-door luncheon, at the invite of Florida Republican Sen. Rick Scott. “He wants, we all want to get the SAVE America Act done,” Scott told Fox News’ Kayleigh McEnany on…",
+      "url": "https://www.dailysignal.com/2026/06/22/trump-discuss-save-act-senate-lunch/",
+      "publishedAt": "2026-06-22T15:53:40Z",
+      "outlet": "Daily Signal",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Why Washington’s reflecting pool has gone from ‘US blue’ to algae green",
+      "description": "Donald Trump, who spent $14m relining the iconic pool, claims it has been vandalised by 'radical left lunatics'.",
+      "url": "https://www.aljazeera.com/news/2026/6/22/why-washingtons-reflecting-pool-has-gone-from-us-blue-to-algae-green",
+      "publishedAt": "2026-06-22T15:35:16Z",
+      "outlet": "Al Jazeera English",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Florida AG Launches Investigation Into MLB Over Alleged Religious Discrimination Against Christian Players",
+      "description": "Florida Attorney General James Uthmeier investigates MLB for alleged religious discrimination against Christian players displaying Bible verses, questioning the league's uniform rule enforcement consistency.",
+      "url": "https://www.ibtimes.com.au/florida-ag-investigates-mlb-religious-discrimination-1871102",
+      "publishedAt": "2026-06-22T14:07:13Z",
+      "outlet": "Ibtimes.com.au",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Monday, June 22, 2026",
+      "description": "KFF Health News is a national newsroom that produces in-depth journalism about health issues and is one of the core operating programs at KFF—an independent source of health policy research, polling, and journalism. Learn more about KFF. This articleKFF Healt…",
+      "url": "https://kffhealthnews.org/morning-briefing/monday-june-22-2026/",
+      "publishedAt": "2026-06-22T13:11:46Z",
+      "outlet": "Kffhealthnews.org",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Deed fraud can cause vulnerable Detroiters to lose their homes – here’s why it’s hard to catch the thieves",
+      "description": "Deed fraud is a persistent problem in the Detroit area. Only a fraction of victims get justice.",
+      "url": "https://theconversation.com/deed-fraud-can-cause-vulnerable-detroiters-to-lose-their-homes-heres-why-its-hard-to-catch-the-thieves-276596",
+      "publishedAt": "2026-06-22T12:35:44Z",
+      "outlet": "The Conversation Africa",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Why many older Americans are losing ground even with an 80-year-old president",
+      "description": "Federal policy changes are likely to make life harder for many Americans of modest means as they age.",
+      "url": "https://theconversation.com/why-many-older-americans-are-losing-ground-even-with-an-80-year-old-president-285221",
+      "publishedAt": "2026-06-22T12:34:50Z",
+      "outlet": "The Conversation Africa",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "AIF Poll Shows Ashley Moody Leading Alex Vindman in Senate Race",
+      "description": "U.S. Sen. Ashley Moody leads Democrat Alex Vindman in Florida’s U.S. Senate race, according to a new poll released by the Associated Industries of Florida (AIF) Center for Political Strategy. The survey found Moody, the AIF-endorsed candidate, with 47% suppor…",
+      "url": "https://freerepublic.com/focus/f-bloggers/4384888/posts",
+      "publishedAt": "2026-06-22T12:18:31Z",
+      "outlet": "Freerepublic.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Another Week From Hell. A Bid to End a War Might Be Sabotaged by Netanyahu",
+      "description": "The week started on a positive note with President Donald Trump uncharacteristically declaring that a “memorandum of understanding” (MOU) had been achieved by US and Iranian negotiators assisted by Pakistani and Qatari mediators to suspend military action and…",
+      "url": "https://www.globalresearch.ca/bid-end-war-sabotaged-netanyahu/5930893",
+      "publishedAt": "2026-06-22T12:04:34Z",
+      "outlet": "Globalresearch.ca",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "5 Years Post-Covid, Public Middle Schoolers Still Can’t Read Or Do Math",
+      "description": "While some students have made promising gains, test results suggest that our public schools continue to fall short for far too many children.",
+      "url": "https://thefederalist.com/2026/06/22/5-years-post-covid-public-middle-schoolers-still-cant-read-or-do-math/",
+      "publishedAt": "2026-06-22T11:23:43Z",
+      "outlet": "The Federalist",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Weekly Climate and Energy News Roundup #695",
+      "description": "“If we knew what it was we were doing, it would not be called research, would it?” —Albert Einstein\nThe post Weekly Climate and Energy News Roundup #695 appeared first on Watts Up With That?.",
+      "url": "https://wattsupwiththat.com/2026/06/22/weekly-climate-and-energy-news-roundup-695/",
+      "publishedAt": "2026-06-22T09:00:00Z",
+      "outlet": "Wattsupwiththat.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "An AI proxy war could reshape Congress — before Congress reshapes AI",
+      "description": "The massive spending and heated rhetoric in midterm races reflect the AI industry's political fault lines and competing visions of what the future should look like.",
+      "url": "https://www.npr.org/2026/06/22/nx-s1-5856359/ai-anthropic-congress-spending-openai-midterms-election",
+      "publishedAt": "2026-06-22T09:00:00Z",
+      "outlet": "NPR",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "The Obama Center Sets a Dangerous Precedent",
+      "description": "Some of the basic functions of presidential libraries are fading.",
+      "url": "http://foreignpolicy.com/2026/06/22/obama-center-presidential-libraries-dangerous-precedent/",
+      "publishedAt": "2026-06-22T04:50:33Z",
+      "outlet": "Foreign Policy",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Black Democrats push back on Wasserman Schultz’s bid in Florida’s 20th District",
+      "description": "Some Black Democrats are frustrated with Rep. Debbie Wasserman Schultz’s (D-Fla.) decision to run in a South Florida congressional district home to a large Black voting population, sparking an intraparty clash that is poised to become a defining battle of the…",
+      "url": "https://freerepublic.com/focus/f-chat/4384847/posts",
+      "publishedAt": "2026-06-22T00:24:40Z",
+      "outlet": "Freerepublic.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "More New Tax Stupidity: Will the Last Productive Person to Leave California Please Turn Out the Lights?",
+      "description": "California seems determined to prove out that old saying of President Reagan's, about government: If it moves, tax it. If it keeps moving, regulate it. And if it stops moving, subsidize it. California has become a veritable tax-a-palooza, and they have alread…",
+      "url": "https://freerepublic.com/focus/f-news/4384845/posts",
+      "publishedAt": "2026-06-22T00:06:25Z",
+      "outlet": "Freerepublic.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    }
+  ]
 }
