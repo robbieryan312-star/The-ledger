@@ -1,0 +1,282 @@
+{
+  "meta": {
+    "source": {
+      "name": "U.S. Bureau of Labor Statistics",
+      "url": "https://www.bls.gov",
+      "tier": "official",
+      "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov"
+    },
+    "asOf": "2026-06-24",
+    "count": 4,
+    "stateCode": "FL",
+    "fetchedLive": true,
+    "datasetUrl": "https://api.bls.gov/publicAPI/v1/timeseries/data/",
+    "note": "Florida statewide labor statistics (LAUS): latest reading + recent monthly history. Tier 1 official BLS."
+  },
+  "records": [
+    {
+      "indicator": "Unemployment rate",
+      "unit": "%",
+      "seriesId": "LAUST120000000000003",
+      "latestPeriod": "May 2026",
+      "latestValue": "4.4",
+      "recent": [
+        {
+          "period": "May 2026",
+          "value": "4.4"
+        },
+        {
+          "period": "April 2026",
+          "value": "4.6"
+        },
+        {
+          "period": "March 2026",
+          "value": "4.4"
+        },
+        {
+          "period": "February 2026",
+          "value": "4.8"
+        },
+        {
+          "period": "January 2026",
+          "value": "4.9"
+        },
+        {
+          "period": "December 2025",
+          "value": "4.4"
+        },
+        {
+          "period": "November 2025",
+          "value": "4.8"
+        },
+        {
+          "period": "October 2025",
+          "value": "-"
+        },
+        {
+          "period": "September 2025",
+          "value": "4.2"
+        },
+        {
+          "period": "August 2025",
+          "value": "4.3"
+        },
+        {
+          "period": "July 2025",
+          "value": "4.1"
+        },
+        {
+          "period": "June 2025",
+          "value": "3.9"
+        }
+      ],
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
+        "date": "2026-05-01"
+      },
+      "asOf": "2026-06-24",
+      "blsUrl": "https://data.bls.gov/timeseries/LAUST120000000000003"
+    },
+    {
+      "indicator": "Unemployment level",
+      "unit": "persons",
+      "seriesId": "LAUST120000000000004",
+      "latestPeriod": "May 2026",
+      "latestValue": "492809",
+      "recent": [
+        {
+          "period": "May 2026",
+          "value": "492809"
+        },
+        {
+          "period": "April 2026",
+          "value": "509580"
+        },
+        {
+          "period": "March 2026",
+          "value": "493387"
+        },
+        {
+          "period": "February 2026",
+          "value": "530008"
+        },
+        {
+          "period": "January 2026",
+          "value": "541997"
+        },
+        {
+          "period": "December 2025",
+          "value": "489837"
+        },
+        {
+          "period": "November 2025",
+          "value": "537702"
+        },
+        {
+          "period": "October 2025",
+          "value": "-"
+        },
+        {
+          "period": "September 2025",
+          "value": "470921"
+        },
+        {
+          "period": "August 2025",
+          "value": "475708"
+        },
+        {
+          "period": "July 2025",
+          "value": "459908"
+        },
+        {
+          "period": "June 2025",
+          "value": "435289"
+        }
+      ],
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
+        "date": "2026-05-01"
+      },
+      "asOf": "2026-06-24",
+      "blsUrl": "https://data.bls.gov/timeseries/LAUST120000000000004"
+    },
+    {
+      "indicator": "Employment",
+      "unit": "persons",
+      "seriesId": "LAUST120000000000005",
+      "latestPeriod": "May 2026",
+      "latestValue": "10606048",
+      "recent": [
+        {
+          "period": "May 2026",
+          "value": "10606048"
+        },
+        {
+          "period": "April 2026",
+          "value": "10636902"
+        },
+        {
+          "period": "March 2026",
+          "value": "10637631"
+        },
+        {
+          "period": "February 2026",
+          "value": "10617483"
+        },
+        {
+          "period": "January 2026",
+          "value": "10513533"
+        },
+        {
+          "period": "December 2025",
+          "value": "10615436"
+        },
+        {
+          "period": "November 2025",
+          "value": "10598529"
+        },
+        {
+          "period": "October 2025",
+          "value": "-"
+        },
+        {
+          "period": "September 2025",
+          "value": "10663892"
+        },
+        {
+          "period": "August 2025",
+          "value": "10621508"
+        },
+        {
+          "period": "July 2025",
+          "value": "10649513"
+        },
+        {
+          "period": "June 2025",
+          "value": "10672472"
+        }
+      ],
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
+        "date": "2026-05-01"
+      },
+      "asOf": "2026-06-24",
+      "blsUrl": "https://data.bls.gov/timeseries/LAUST120000000000005"
+    },
+    {
+      "indicator": "Labor force",
+      "unit": "persons",
+      "seriesId": "LAUST120000000000006",
+      "latestPeriod": "May 2026",
+      "latestValue": "11098857",
+      "recent": [
+        {
+          "period": "May 2026",
+          "value": "11098857"
+        },
+        {
+          "period": "April 2026",
+          "value": "11146482"
+        },
+        {
+          "period": "March 2026",
+          "value": "11131018"
+        },
+        {
+          "period": "February 2026",
+          "value": "11147491"
+        },
+        {
+          "period": "January 2026",
+          "value": "11055530"
+        },
+        {
+          "period": "December 2025",
+          "value": "11105273"
+        },
+        {
+          "period": "November 2025",
+          "value": "11136231"
+        },
+        {
+          "period": "October 2025",
+          "value": "-"
+        },
+        {
+          "period": "September 2025",
+          "value": "11134813"
+        },
+        {
+          "period": "August 2025",
+          "value": "11097216"
+        },
+        {
+          "period": "July 2025",
+          "value": "11109421"
+        },
+        {
+          "period": "June 2025",
+          "value": "11107761"
+        }
+      ],
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
+        "date": "2026-05-01"
+      },
+      "asOf": "2026-06-24",
+      "blsUrl": "https://data.bls.gov/timeseries/LAUST120000000000006"
+    }
+  ]
+}

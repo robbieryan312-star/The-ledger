@@ -29,7 +29,8 @@
     "ingest:sam-fl": "tsx scripts/ingest-sam-florida.ts",
     "ingest:fedregister-fl": "tsx scripts/ingest-fedregister-florida.ts",
     "ingest:courts-fl": "tsx scripts/ingest-courtlistener-florida.ts",
-    "ingest:florida-all": "npm run ingest:fec-fl && npm run ingest:congress-fl && npm run ingest:govtrack-fl && npm run ingest:usaspending-fl && npm run ingest:fara-fl && npm run ingest:civic-fl && npm run ingest:census-fl && npm run ingest:lobbying-fl && npm run ingest:openstates-fl && npm run ingest:legiscan-fl && npm run ingest:news-fl && npm run ingest:sam-fl && npm run ingest:fedregister-fl && npm run ingest:courts-fl"
+    "ingest:bls-fl": "tsx scripts/ingest-bls-florida.ts",
+    "ingest:florida-all": "npm run ingest:fec-fl && npm run ingest:congress-fl && npm run ingest:govtrack-fl && npm run ingest:usaspending-fl && npm run ingest:fara-fl && npm run ingest:civic-fl && npm run ingest:census-fl && npm run ingest:lobbying-fl && npm run ingest:openstates-fl && npm run ingest:legiscan-fl && npm run ingest:news-fl && npm run ingest:sam-fl && npm run ingest:fedregister-fl && npm run ingest:courts-fl && npm run ingest:bls-fl"
   },
   "dependencies": {
     "@types/d3": "^7.4.3",
