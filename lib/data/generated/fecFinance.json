@@ -6,7 +6,7 @@
       "tier": "official",
       "description": "Official campaign finance disclosures via api.open.fec.gov"
     },
-    "asOf": "2026-06-23",
+    "asOf": "2026-06-24",
     "featuredQueried": 17,
     "withFinanceData": 16,
     "keyConfigured": true,
@@ -33,7 +33,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4VT00033/"
     },
     "mitch-mcconnell": {
@@ -41,22 +41,22 @@
       "bioguideId": "M000355",
       "fecCandidateId": "S2KY00012",
       "electionYear": 2026,
-      "receipts": 7878213.74,
-      "disbursements": 7356642.97,
+      "receipts": 174224.95,
+      "disbursements": 934417.29,
       "cashOnHand": 7333272.06,
-      "individualContributions": 6095915.41,
-      "pacContributions": 760552.37,
+      "individualContributions": 18653.82,
+      "pacContributions": 15000,
       "selfFunding": 0,
-      "coverageStart": "2021-01-01",
+      "coverageStart": "2025-01-01",
       "coverageEnd": "2026-03-31",
-      "reportType": "YEAR-END",
+      "reportType": "APRIL QUARTERLY",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
         "url": "https://www.fec.gov/data/",
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2KY00012/"
     },
     "alexandria-ocasio-cortez": {
@@ -79,7 +79,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8NY15148/"
     },
     "sen-moody": {
@@ -102,7 +102,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S6FL00640/"
     },
     "sen-scott": {
@@ -125,7 +125,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S8FL00273/"
     },
     "rep-bean": {
@@ -148,7 +148,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2FL04211/"
     },
     "rep-moskowitz": {
@@ -171,7 +171,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2FL22171/"
     },
     "rep-salazar": {
@@ -194,7 +194,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8FL27185/"
     },
     "rep-donalds": {
@@ -217,7 +217,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2FL14186/"
     },
     "rep-wilson": {
@@ -240,7 +240,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0FL17068/"
     },
     "rep-mast": {
@@ -263,7 +263,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6FL18097/"
     },
     "rep-franklin": {
@@ -286,7 +286,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0FL15104/"
     },
     "sen-paul": {
@@ -309,7 +309,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0KY00156/"
     },
     "sen-schumer": {
@@ -332,7 +332,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S8NY00082/"
     },
     "sen-gillibrand": {
@@ -355,7 +355,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0NY00410/"
     },
     "rep-massie": {
@@ -378,7 +378,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2KY04121/"
     }
   }

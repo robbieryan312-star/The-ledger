@@ -78,11 +78,33 @@ export function getCurrentPoliticians(): Politician[] {
   return allPoliticians.filter(isCurrentlyInOffice);
 }
 
-const CHAMBER_DISPLAY_ORDER: Record<string, number> = {
-  senate: 0,
-  governor: 1,
-  house: 2,
-};
+/**
+ * Tiered federal→local prominence for default roster ordering:
+ * (0) President / executive federal
+ * (1) U.S. Senate
+ * (2) U.S. House
+ * (3) Governors
+ * (4) State & local offices
+ * Within a tier: House by district number, then last name.
+ */
+export function getPoliticianProminenceTier(p: Politician): number {
+  if (p.chamber === 'president') return 0;
+  if (p.level === 'federal' && p.chamber === 'senate') return 1;
+  if (p.level === 'federal' && p.chamber === 'house') return 2;
+  if (p.chamber === 'governor') return 3;
+  return 4;
+}
+
+export function comparePoliticiansByProminence(a: Politician, b: Politician): number {
+  const tierDiff = getPoliticianProminenceTier(a) - getPoliticianProminenceTier(b);
+  if (tierDiff !== 0) return tierDiff;
+  if (a.chamber === 'house' && b.chamber === 'house') {
+    return (
+      (parseInt(a.district ?? '0', 10) || 0) - (parseInt(b.district ?? '0', 10) || 0)
+    );
+  }
+  return a.lastName.localeCompare(b.lastName);
+}
 
 /** Search the national roster by name, state, party, or district number. */
 export function searchPoliticians(query: string, limit = 8): Politician[] {
@@ -100,17 +122,9 @@ export function searchPoliticians(query: string, limit = 8): Politician[] {
     .slice(0, limit);
 }
 
-/** Senators → governor → representatives (by district) for map sidebars. */
+/** Federal-first tier order for map sidebars and browse lists. */
 export function sortOfficialsForDisplay(politicians: Politician[]): Politician[] {
-  return [...politicians].sort((a, b) => {
-    const ca = CHAMBER_DISPLAY_ORDER[a.chamber] ?? 9;
-    const cb = CHAMBER_DISPLAY_ORDER[b.chamber] ?? 9;
-    if (ca !== cb) return ca - cb;
-    if (a.chamber === 'house' && b.chamber === 'house') {
-      return (parseInt(a.district ?? '0', 10) || 0) - (parseInt(b.district ?? '0', 10) || 0);
-    }
-    return a.lastName.localeCompare(b.lastName);
-  });
+  return [...politicians].sort(comparePoliticiansByProminence);
 }
 
 /** National coverage stats for surfacing in the UI / docs. */

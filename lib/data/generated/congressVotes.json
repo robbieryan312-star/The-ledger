@@ -6,7 +6,7 @@
       "tier": "official",
       "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
     },
-    "asOf": "2026-06-23",
+    "asOf": "2026-06-24",
     "featuredQueried": 17,
     "withVoteData": 16,
     "keyConfigured": true,
@@ -21,6 +21,40 @@
       "bioguideId": "S000033",
       "chamber": "senate",
       "votes": [
+        {
+          "id": "bernie-sanders-s119-2-184",
+          "billId": "H.Con.Res. 86",
+          "billTitle": "H. Con. Res. 86",
+          "billDescription": "On the Concurrent Resolution H.Con.Res. 86 — A concurrent resolution directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00184.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-23"
+          }
+        },
+        {
+          "id": "bernie-sanders-s119-2-183",
+          "billId": "PN859-3",
+          "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
+          "billDescription": "On the Nomination PN859-3 — Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe, with the rank of Ambassador. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00183.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-23"
+          }
+        },
         {
           "id": "bernie-sanders-s119-2-182",
           "billId": "H.R. 6644",
@@ -190,40 +224,6 @@
             "description": "Official U.S. Senate roll-call vote records (LIS XML)",
             "date": "2026-06-16"
           }
-        },
-        {
-          "id": "bernie-sanders-s119-2-172",
-          "billId": "PN851-7",
-          "billTitle": "Confirmation: Justin D. Smith, of Missouri, to be U.S. Circuit Judge for the Eighth Circuit",
-          "billDescription": "On the Nomination PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
-          "date": "2026-06-15",
-          "vote": "Not Voting",
-          "result": "Passed",
-          "category": "Judiciary",
-          "source": {
-            "name": "senate.gov",
-            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00172.xml",
-            "tier": "official",
-            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2026-06-15"
-          }
-        },
-        {
-          "id": "bernie-sanders-s119-2-171",
-          "billId": "PN851-7",
-          "billTitle": "Motion to Invoke Cloture: Justin D. Smith to be U.S. Circuit Judge for the Eighth Circuit",
-          "billDescription": "On the Cloture Motion PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
-          "date": "2026-06-11",
-          "vote": "Nay",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "senate.gov",
-            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00171.xml",
-            "tier": "official",
-            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2026-06-11"
-          }
         }
       ],
       "source": {
@@ -232,7 +232,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "congressGovUrl": "https://www.senate.gov/legislative/votes_new.htm",
       "note": "12 recent Senate roll-call positions from official senate.gov LIS XML (119th Congress)."
     },
@@ -241,6 +241,40 @@
       "bioguideId": "M000355",
       "chamber": "senate",
       "votes": [
+        {
+          "id": "mitch-mcconnell-s119-2-184",
+          "billId": "H.Con.Res. 86",
+          "billTitle": "H. Con. Res. 86",
+          "billDescription": "On the Concurrent Resolution H.Con.Res. 86 — A concurrent resolution directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00184.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-23"
+          }
+        },
+        {
+          "id": "mitch-mcconnell-s119-2-183",
+          "billId": "PN859-3",
+          "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
+          "billDescription": "On the Nomination PN859-3 — Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe, with the rank of Ambassador. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00183.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-23"
+          }
+        },
         {
           "id": "mitch-mcconnell-s119-2-182",
           "billId": "H.R. 6644",
@@ -410,40 +444,6 @@
             "description": "Official U.S. Senate roll-call vote records (LIS XML)",
             "date": "2026-06-16"
           }
-        },
-        {
-          "id": "mitch-mcconnell-s119-2-172",
-          "billId": "PN851-7",
-          "billTitle": "Confirmation: Justin D. Smith, of Missouri, to be U.S. Circuit Judge for the Eighth Circuit",
-          "billDescription": "On the Nomination PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
-          "date": "2026-06-15",
-          "vote": "Not Voting",
-          "result": "Passed",
-          "category": "Judiciary",
-          "source": {
-            "name": "senate.gov",
-            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00172.xml",
-            "tier": "official",
-            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2026-06-15"
-          }
-        },
-        {
-          "id": "mitch-mcconnell-s119-2-171",
-          "billId": "PN851-7",
-          "billTitle": "Motion to Invoke Cloture: Justin D. Smith to be U.S. Circuit Judge for the Eighth Circuit",
-          "billDescription": "On the Cloture Motion PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
-          "date": "2026-06-11",
-          "vote": "Yea",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "senate.gov",
-            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00171.xml",
-            "tier": "official",
-            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2026-06-11"
-          }
         }
       ],
       "source": {
@@ -452,7 +452,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "congressGovUrl": "https://www.senate.gov/legislative/votes_new.htm",
       "note": "12 recent Senate roll-call positions from official senate.gov LIS XML (119th Congress)."
     },
@@ -461,6 +461,40 @@
       "bioguideId": "M001244",
       "chamber": "senate",
       "votes": [
+        {
+          "id": "sen-moody-s119-2-184",
+          "billId": "H.Con.Res. 86",
+          "billTitle": "H. Con. Res. 86",
+          "billDescription": "On the Concurrent Resolution H.Con.Res. 86 — A concurrent resolution directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00184.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-23"
+          }
+        },
+        {
+          "id": "sen-moody-s119-2-183",
+          "billId": "PN859-3",
+          "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
+          "billDescription": "On the Nomination PN859-3 — Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe, with the rank of Ambassador. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00183.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-23"
+          }
+        },
         {
           "id": "sen-moody-s119-2-182",
           "billId": "H.R. 6644",
@@ -630,40 +664,6 @@
             "description": "Official U.S. Senate roll-call vote records (LIS XML)",
             "date": "2026-06-16"
           }
-        },
-        {
-          "id": "sen-moody-s119-2-172",
-          "billId": "PN851-7",
-          "billTitle": "Confirmation: Justin D. Smith, of Missouri, to be U.S. Circuit Judge for the Eighth Circuit",
-          "billDescription": "On the Nomination PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
-          "date": "2026-06-15",
-          "vote": "Yea",
-          "result": "Passed",
-          "category": "Judiciary",
-          "source": {
-            "name": "senate.gov",
-            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00172.xml",
-            "tier": "official",
-            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2026-06-15"
-          }
-        },
-        {
-          "id": "sen-moody-s119-2-171",
-          "billId": "PN851-7",
-          "billTitle": "Motion to Invoke Cloture: Justin D. Smith to be U.S. Circuit Judge for the Eighth Circuit",
-          "billDescription": "On the Cloture Motion PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
-          "date": "2026-06-11",
-          "vote": "Not Voting",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "senate.gov",
-            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00171.xml",
-            "tier": "official",
-            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2026-06-11"
-          }
         }
       ],
       "source": {
@@ -672,7 +672,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "congressGovUrl": "https://www.senate.gov/legislative/votes_new.htm",
       "note": "12 recent Senate roll-call positions from official senate.gov LIS XML (119th Congress)."
     },
@@ -681,6 +681,40 @@
       "bioguideId": "S001217",
       "chamber": "senate",
       "votes": [
+        {
+          "id": "sen-scott-s119-2-184",
+          "billId": "H.Con.Res. 86",
+          "billTitle": "H. Con. Res. 86",
+          "billDescription": "On the Concurrent Resolution H.Con.Res. 86 — A concurrent resolution directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00184.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-23"
+          }
+        },
+        {
+          "id": "sen-scott-s119-2-183",
+          "billId": "PN859-3",
+          "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
+          "billDescription": "On the Nomination PN859-3 — Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe, with the rank of Ambassador. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00183.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-23"
+          }
+        },
         {
           "id": "sen-scott-s119-2-182",
           "billId": "H.R. 6644",
@@ -850,40 +884,6 @@
             "description": "Official U.S. Senate roll-call vote records (LIS XML)",
             "date": "2026-06-16"
           }
-        },
-        {
-          "id": "sen-scott-s119-2-172",
-          "billId": "PN851-7",
-          "billTitle": "Confirmation: Justin D. Smith, of Missouri, to be U.S. Circuit Judge for the Eighth Circuit",
-          "billDescription": "On the Nomination PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
-          "date": "2026-06-15",
-          "vote": "Yea",
-          "result": "Passed",
-          "category": "Judiciary",
-          "source": {
-            "name": "senate.gov",
-            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00172.xml",
-            "tier": "official",
-            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2026-06-15"
-          }
-        },
-        {
-          "id": "sen-scott-s119-2-171",
-          "billId": "PN851-7",
-          "billTitle": "Motion to Invoke Cloture: Justin D. Smith to be U.S. Circuit Judge for the Eighth Circuit",
-          "billDescription": "On the Cloture Motion PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
-          "date": "2026-06-11",
-          "vote": "Yea",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "senate.gov",
-            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00171.xml",
-            "tier": "official",
-            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2026-06-11"
-          }
         }
       ],
       "source": {
@@ -892,7 +892,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "congressGovUrl": "https://www.senate.gov/legislative/votes_new.htm",
       "note": "12 recent Senate roll-call positions from official senate.gov LIS XML (119th Congress)."
     },
@@ -901,6 +901,40 @@
       "bioguideId": "P000603",
       "chamber": "senate",
       "votes": [
+        {
+          "id": "sen-paul-s119-2-184",
+          "billId": "H.Con.Res. 86",
+          "billTitle": "H. Con. Res. 86",
+          "billDescription": "On the Concurrent Resolution H.Con.Res. 86 — A concurrent resolution directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00184.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-23"
+          }
+        },
+        {
+          "id": "sen-paul-s119-2-183",
+          "billId": "PN859-3",
+          "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
+          "billDescription": "On the Nomination PN859-3 — Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe, with the rank of Ambassador. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00183.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-23"
+          }
+        },
         {
           "id": "sen-paul-s119-2-182",
           "billId": "H.R. 6644",
@@ -1070,40 +1104,6 @@
             "description": "Official U.S. Senate roll-call vote records (LIS XML)",
             "date": "2026-06-16"
           }
-        },
-        {
-          "id": "sen-paul-s119-2-172",
-          "billId": "PN851-7",
-          "billTitle": "Confirmation: Justin D. Smith, of Missouri, to be U.S. Circuit Judge for the Eighth Circuit",
-          "billDescription": "On the Nomination PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
-          "date": "2026-06-15",
-          "vote": "Yea",
-          "result": "Passed",
-          "category": "Judiciary",
-          "source": {
-            "name": "senate.gov",
-            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00172.xml",
-            "tier": "official",
-            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2026-06-15"
-          }
-        },
-        {
-          "id": "sen-paul-s119-2-171",
-          "billId": "PN851-7",
-          "billTitle": "Motion to Invoke Cloture: Justin D. Smith to be U.S. Circuit Judge for the Eighth Circuit",
-          "billDescription": "On the Cloture Motion PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
-          "date": "2026-06-11",
-          "vote": "Yea",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "senate.gov",
-            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00171.xml",
-            "tier": "official",
-            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2026-06-11"
-          }
         }
       ],
       "source": {
@@ -1112,7 +1112,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "congressGovUrl": "https://www.senate.gov/legislative/votes_new.htm",
       "note": "12 recent Senate roll-call positions from official senate.gov LIS XML (119th Congress)."
     },
@@ -1121,6 +1121,40 @@
       "bioguideId": "S000148",
       "chamber": "senate",
       "votes": [
+        {
+          "id": "sen-schumer-s119-2-184",
+          "billId": "H.Con.Res. 86",
+          "billTitle": "H. Con. Res. 86",
+          "billDescription": "On the Concurrent Resolution H.Con.Res. 86 — A concurrent resolution directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00184.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-23"
+          }
+        },
+        {
+          "id": "sen-schumer-s119-2-183",
+          "billId": "PN859-3",
+          "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
+          "billDescription": "On the Nomination PN859-3 — Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe, with the rank of Ambassador. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00183.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-23"
+          }
+        },
         {
           "id": "sen-schumer-s119-2-182",
           "billId": "H.R. 6644",
@@ -1290,40 +1324,6 @@
             "description": "Official U.S. Senate roll-call vote records (LIS XML)",
             "date": "2026-06-16"
           }
-        },
-        {
-          "id": "sen-schumer-s119-2-172",
-          "billId": "PN851-7",
-          "billTitle": "Confirmation: Justin D. Smith, of Missouri, to be U.S. Circuit Judge for the Eighth Circuit",
-          "billDescription": "On the Nomination PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
-          "date": "2026-06-15",
-          "vote": "Nay",
-          "result": "Passed",
-          "category": "Judiciary",
-          "source": {
-            "name": "senate.gov",
-            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00172.xml",
-            "tier": "official",
-            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2026-06-15"
-          }
-        },
-        {
-          "id": "sen-schumer-s119-2-171",
-          "billId": "PN851-7",
-          "billTitle": "Motion to Invoke Cloture: Justin D. Smith to be U.S. Circuit Judge for the Eighth Circuit",
-          "billDescription": "On the Cloture Motion PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
-          "date": "2026-06-11",
-          "vote": "Nay",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "senate.gov",
-            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00171.xml",
-            "tier": "official",
-            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2026-06-11"
-          }
         }
       ],
       "source": {
@@ -1332,7 +1332,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "congressGovUrl": "https://www.senate.gov/legislative/votes_new.htm",
       "note": "12 recent Senate roll-call positions from official senate.gov LIS XML (119th Congress)."
     },
@@ -1341,6 +1341,40 @@
       "bioguideId": "G000555",
       "chamber": "senate",
       "votes": [
+        {
+          "id": "sen-gillibrand-s119-2-184",
+          "billId": "H.Con.Res. 86",
+          "billTitle": "H. Con. Res. 86",
+          "billDescription": "On the Concurrent Resolution H.Con.Res. 86 — A concurrent resolution directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran.. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Legislation",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00184.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-23"
+          }
+        },
+        {
+          "id": "sen-gillibrand-s119-2-183",
+          "billId": "PN859-3",
+          "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
+          "billDescription": "On the Nomination PN859-3 — Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe, with the rank of Ambassador. Official Senate roll-call from senate.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Judiciary",
+          "source": {
+            "name": "senate.gov",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00183.xml",
+            "tier": "official",
+            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+            "date": "2026-06-23"
+          }
+        },
         {
           "id": "sen-gillibrand-s119-2-182",
           "billId": "H.R. 6644",
@@ -1510,40 +1544,6 @@
             "description": "Official U.S. Senate roll-call vote records (LIS XML)",
             "date": "2026-06-16"
           }
-        },
-        {
-          "id": "sen-gillibrand-s119-2-172",
-          "billId": "PN851-7",
-          "billTitle": "Confirmation: Justin D. Smith, of Missouri, to be U.S. Circuit Judge for the Eighth Circuit",
-          "billDescription": "On the Nomination PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
-          "date": "2026-06-15",
-          "vote": "Nay",
-          "result": "Passed",
-          "category": "Judiciary",
-          "source": {
-            "name": "senate.gov",
-            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00172.xml",
-            "tier": "official",
-            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2026-06-15"
-          }
-        },
-        {
-          "id": "sen-gillibrand-s119-2-171",
-          "billId": "PN851-7",
-          "billTitle": "Motion to Invoke Cloture: Justin D. Smith to be U.S. Circuit Judge for the Eighth Circuit",
-          "billDescription": "On the Cloture Motion PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
-          "date": "2026-06-11",
-          "vote": "Nay",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "senate.gov",
-            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00171.xml",
-            "tier": "official",
-            "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2026-06-11"
-          }
         }
       ],
       "source": {
@@ -1552,7 +1552,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "congressGovUrl": "https://www.senate.gov/legislative/votes_new.htm",
       "note": "12 recent Senate roll-call positions from official senate.gov LIS XML (119th Congress)."
     },
@@ -1561,6 +1561,40 @@
       "bioguideId": "O000172",
       "chamber": "house",
       "votes": [
+        {
+          "id": "alexandria-ocasio-cortez-119-2-224",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt",
+          "billDescription": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/224",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
+        {
+          "id": "alexandria-ocasio-cortez-119-2-223",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/223",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
         {
           "id": "alexandria-ocasio-cortez-119-2-222",
           "billId": "H.Res.1335",
@@ -1730,40 +1764,6 @@
             "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
             "date": "2026-06-09"
           }
-        },
-        {
-          "id": "alexandria-ocasio-cortez-119-2-212",
-          "billId": "H.Res.1140",
-          "billTitle": "On Motion to Discharge",
-          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Yea",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
-        },
-        {
-          "id": "alexandria-ocasio-cortez-119-2-211",
-          "billId": "H.Res.1345",
-          "billTitle": "On Agreeing to the Resolution",
-          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Nay",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
         }
       ],
       "source": {
@@ -1772,7 +1772,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "congressGovUrl": "https://www.congress.gov",
       "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
     },
@@ -1781,6 +1781,40 @@
       "bioguideId": "B001314",
       "chamber": "house",
       "votes": [
+        {
+          "id": "rep-bean-119-2-224",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt",
+          "billDescription": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/224",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
+        {
+          "id": "rep-bean-119-2-223",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/223",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
         {
           "id": "rep-bean-119-2-222",
           "billId": "H.Res.1335",
@@ -1950,40 +1984,6 @@
             "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
             "date": "2026-06-09"
           }
-        },
-        {
-          "id": "rep-bean-119-2-212",
-          "billId": "H.Res.1140",
-          "billTitle": "On Motion to Discharge",
-          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Nay",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
-        },
-        {
-          "id": "rep-bean-119-2-211",
-          "billId": "H.Res.1345",
-          "billTitle": "On Agreeing to the Resolution",
-          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Yea",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
         }
       ],
       "source": {
@@ -1992,7 +1992,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "congressGovUrl": "https://www.congress.gov",
       "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
     },
@@ -2001,6 +2001,40 @@
       "bioguideId": "M001217",
       "chamber": "house",
       "votes": [
+        {
+          "id": "rep-moskowitz-119-2-224",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt",
+          "billDescription": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/224",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
+        {
+          "id": "rep-moskowitz-119-2-223",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/223",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
         {
           "id": "rep-moskowitz-119-2-222",
           "billId": "H.Res.1335",
@@ -2170,40 +2204,6 @@
             "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
             "date": "2026-06-09"
           }
-        },
-        {
-          "id": "rep-moskowitz-119-2-212",
-          "billId": "H.Res.1140",
-          "billTitle": "On Motion to Discharge",
-          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Yea",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
-        },
-        {
-          "id": "rep-moskowitz-119-2-211",
-          "billId": "H.Res.1345",
-          "billTitle": "On Agreeing to the Resolution",
-          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Nay",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
         }
       ],
       "source": {
@@ -2212,7 +2212,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "congressGovUrl": "https://www.congress.gov",
       "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
     },
@@ -2221,6 +2221,40 @@
       "bioguideId": "S000168",
       "chamber": "house",
       "votes": [
+        {
+          "id": "rep-salazar-119-2-224",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt",
+          "billDescription": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/224",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
+        {
+          "id": "rep-salazar-119-2-223",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/223",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
         {
           "id": "rep-salazar-119-2-222",
           "billId": "H.Res.1335",
@@ -2390,40 +2424,6 @@
             "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
             "date": "2026-06-09"
           }
-        },
-        {
-          "id": "rep-salazar-119-2-212",
-          "billId": "H.Res.1140",
-          "billTitle": "On Motion to Discharge",
-          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Nay",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
-        },
-        {
-          "id": "rep-salazar-119-2-211",
-          "billId": "H.Res.1345",
-          "billTitle": "On Agreeing to the Resolution",
-          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Yea",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
         }
       ],
       "source": {
@@ -2432,7 +2432,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "congressGovUrl": "https://www.congress.gov",
       "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
     },
@@ -2441,6 +2441,40 @@
       "bioguideId": "D000032",
       "chamber": "house",
       "votes": [
+        {
+          "id": "rep-donalds-119-2-224",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt",
+          "billDescription": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/224",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
+        {
+          "id": "rep-donalds-119-2-223",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/223",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
         {
           "id": "rep-donalds-119-2-222",
           "billId": "H.Res.1335",
@@ -2610,40 +2644,6 @@
             "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
             "date": "2026-06-09"
           }
-        },
-        {
-          "id": "rep-donalds-119-2-212",
-          "billId": "H.Res.1140",
-          "billTitle": "On Motion to Discharge",
-          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Nay",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
-        },
-        {
-          "id": "rep-donalds-119-2-211",
-          "billId": "H.Res.1345",
-          "billTitle": "On Agreeing to the Resolution",
-          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Yea",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
         }
       ],
       "source": {
@@ -2652,7 +2652,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "congressGovUrl": "https://www.congress.gov",
       "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
     },
@@ -2661,6 +2661,40 @@
       "bioguideId": "W000808",
       "chamber": "house",
       "votes": [
+        {
+          "id": "rep-wilson-119-2-224",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt",
+          "billDescription": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/224",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
+        {
+          "id": "rep-wilson-119-2-223",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Not Voting",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/223",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
         {
           "id": "rep-wilson-119-2-222",
           "billId": "H.Res.1335",
@@ -2830,40 +2864,6 @@
             "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
             "date": "2026-06-09"
           }
-        },
-        {
-          "id": "rep-wilson-119-2-212",
-          "billId": "H.Res.1140",
-          "billTitle": "On Motion to Discharge",
-          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Yea",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
-        },
-        {
-          "id": "rep-wilson-119-2-211",
-          "billId": "H.Res.1345",
-          "billTitle": "On Agreeing to the Resolution",
-          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Nay",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
         }
       ],
       "source": {
@@ -2872,7 +2872,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "congressGovUrl": "https://www.congress.gov",
       "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
     },
@@ -2881,6 +2881,40 @@
       "bioguideId": "M001199",
       "chamber": "house",
       "votes": [
+        {
+          "id": "rep-mast-119-2-224",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt",
+          "billDescription": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/224",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
+        {
+          "id": "rep-mast-119-2-223",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/223",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
         {
           "id": "rep-mast-119-2-222",
           "billId": "H.Res.1335",
@@ -3050,40 +3084,6 @@
             "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
             "date": "2026-06-09"
           }
-        },
-        {
-          "id": "rep-mast-119-2-212",
-          "billId": "H.Res.1140",
-          "billTitle": "On Motion to Discharge",
-          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Nay",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
-        },
-        {
-          "id": "rep-mast-119-2-211",
-          "billId": "H.Res.1345",
-          "billTitle": "On Agreeing to the Resolution",
-          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Yea",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
         }
       ],
       "source": {
@@ -3092,7 +3092,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "congressGovUrl": "https://www.congress.gov",
       "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
     },
@@ -3101,6 +3101,40 @@
       "bioguideId": "F000472",
       "chamber": "house",
       "votes": [
+        {
+          "id": "rep-franklin-119-2-224",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt",
+          "billDescription": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/224",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
+        {
+          "id": "rep-franklin-119-2-223",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Yea",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/223",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
         {
           "id": "rep-franklin-119-2-222",
           "billId": "H.Res.1335",
@@ -3270,40 +3304,6 @@
             "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
             "date": "2026-06-09"
           }
-        },
-        {
-          "id": "rep-franklin-119-2-212",
-          "billId": "H.Res.1140",
-          "billTitle": "On Motion to Discharge",
-          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Nay",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
-        },
-        {
-          "id": "rep-franklin-119-2-211",
-          "billId": "H.Res.1345",
-          "billTitle": "On Agreeing to the Resolution",
-          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Yea",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
         }
       ],
       "source": {
@@ -3312,7 +3312,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "congressGovUrl": "https://www.congress.gov",
       "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
     },
@@ -3321,6 +3321,40 @@
       "bioguideId": "M001184",
       "chamber": "house",
       "votes": [
+        {
+          "id": "rep-massie-119-2-224",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt",
+          "billDescription": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/224",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
+        {
+          "id": "rep-massie-119-2-223",
+          "billId": "Roll Call Vote",
+          "billTitle": "On Motion to Suspend the Rules and Pass",
+          "billDescription": "On Motion to Suspend the Rules and Pass. Official House roll-call record from Congress.gov (119th Congress).",
+          "date": "2026-06-23",
+          "vote": "Nay",
+          "result": "Passed",
+          "category": "Procedural",
+          "source": {
+            "name": "Congress.gov",
+            "url": "https://www.congress.gov/roll-call-vote/119/2/223",
+            "tier": "official",
+            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+            "date": "2026-06-23"
+          }
+        },
         {
           "id": "rep-massie-119-2-222",
           "billId": "H.Res.1335",
@@ -3490,40 +3524,6 @@
             "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
             "date": "2026-06-09"
           }
-        },
-        {
-          "id": "rep-massie-119-2-212",
-          "billId": "H.Res.1140",
-          "billTitle": "On Motion to Discharge",
-          "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Nay",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/212",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
-        },
-        {
-          "id": "rep-massie-119-2-211",
-          "billId": "H.Res.1345",
-          "billTitle": "On Agreeing to the Resolution",
-          "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call record from Congress.gov (119th Congress).",
-          "date": "2026-06-09",
-          "vote": "Yea",
-          "result": "Passed",
-          "category": "Procedural",
-          "source": {
-            "name": "Congress.gov",
-            "url": "https://www.congress.gov/roll-call-vote/119/2/211",
-            "tier": "official",
-            "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
-            "date": "2026-06-09"
-          }
         }
       ],
       "source": {
@@ -3532,7 +3532,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "congressGovUrl": "https://www.congress.gov",
       "note": "12 recent House roll-call positions from Congress.gov API (119th Congress)."
     }

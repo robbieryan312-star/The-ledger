@@ -252,8 +252,16 @@ export const mockPoliticians: Politician[] = [
         {
           id: 'cp1', issue: 'Medicare for All', statement: '"I will fight for a Medicare for All single-payer healthcare system."',
           category: 'Healthcare', status: 'In Progress',
-          evidence: 'Introduced S.1129 Medicare for All Act in 2017, 2019, 2021, and 2023. Has not passed committee.',
-          evidenceSource: CONGRESS_GOV,
+          said: {
+            summary: 'Publicly stated support for Medicare for All across Senate floor speeches and presidential campaigns.',
+            date: '2019-04-09',
+            source: CSPAN,
+          },
+          did: {
+            summary: 'Introduced S.1129 Medicare for All Act as lead sponsor in 2017, 2019, 2021, and 2023 — bill has not passed committee.',
+            date: '2023-05-17',
+            source: CONGRESS_GOV,
+          },
         },
         {
           id: 'cp2', issue: 'Minimum Wage', statement: '"Raise the federal minimum wage to $15 per hour."',
@@ -264,14 +272,30 @@ export const mockPoliticians: Politician[] = [
         {
           id: 'cp3', issue: 'Campaign Finance', statement: '"I do not take money from corporate PACs or billionaires."',
           category: 'Democracy', status: 'Kept',
-          evidence: 'FEC records show zero corporate PAC receipts in 2016, 2018, 2020, 2024 cycles. Funded by small-dollar donations averaging under $30.',
-          evidenceSource: FEC,
+          said: {
+            summary: 'Public pledge not to accept corporate PAC or billionaire bundler money in Senate campaigns.',
+            date: '2018-01-01',
+            source: FEC,
+          },
+          did: {
+            summary: 'FEC records show $27 in PAC contributions and $22.47M in individual contributions in the current cycle (as of OpenFEC sync).',
+            date: '2026-03-31',
+            source: FEC,
+          },
         },
         {
           id: 'cp4', issue: 'Green New Deal', statement: '"I support the Green New Deal to address climate change."',
           category: 'Environment', status: 'In Progress',
-          evidence: 'Cosponsored S.J.Res.8 (Green New Deal) in 2021 and subsequent sessions. Voted for Inflation Reduction Act climate provisions.',
-          evidenceSource: CONGRESS_GOV,
+          said: {
+            summary: 'Public endorsement of the Green New Deal framework in Senate floor speeches and campaign materials.',
+            date: '2021-02-04',
+            source: CONGRESS_GOV,
+          },
+          did: {
+            summary: 'Cosponsored S.J.Res.8 (Green New Deal) in 2021; voted Yea on Inflation Reduction Act (S.3600) climate provisions.',
+            date: '2022-08-07',
+            source: CONGRESS_GOV,
+          },
         },
       ],
       termConsistency: [
@@ -681,14 +705,30 @@ export const mockPoliticians: Politician[] = [
         {
           id: 'cp1', issue: 'Green New Deal', statement: '"I will push for the Green New Deal to address the climate crisis."',
           category: 'Environment', status: 'In Progress',
-          evidence: 'Introduced H.Res.109 (2019), H.Res.332 (2021), H.Res.55 (2023). Has not passed committee in any Congress.',
-          evidenceSource: CONGRESS_GOV,
+          said: {
+            summary: 'Public pledge to advance the Green New Deal as a framework for climate and jobs policy.',
+            date: '2019-02-07',
+            source: CONGRESS_GOV,
+          },
+          did: {
+            summary: 'Introduced H.Res.109 (2019), H.Res.332 (2021), and H.Res.55 (2023) — none have passed committee.',
+            date: '2023-01-09',
+            source: CONGRESS_GOV,
+          },
         },
         {
           id: 'cp2', issue: 'No Corporate PAC Money', statement: '"I do not take corporate PAC money."',
           category: 'Democracy', status: 'Kept',
-          evidence: 'FEC records show zero corporate PAC receipts across all election cycles 2018–2024.',
-          evidenceSource: FEC,
+          said: {
+            summary: 'Public pledge not to accept corporate PAC contributions.',
+            date: '2018-06-26',
+            source: FEC,
+          },
+          did: {
+            summary: 'OpenFEC sync shows $0 in PAC contributions for the current cycle; receipts are overwhelmingly individual small-dollar donations.',
+            date: '2026-03-31',
+            source: FEC,
+          },
         },
         {
           id: 'cp3', issue: 'Medicare for All', statement: '"I support Medicare for All."',
@@ -699,8 +739,16 @@ export const mockPoliticians: Politician[] = [
         {
           id: 'cp4', issue: 'Infrastructure Bill', statement: 'Voted against bipartisan infrastructure bill, arguing it should be paired with reconciliation.',
           category: 'Policy', status: 'Kept',
-          evidence: 'Voted Nay on H.R.3684 as promised. Bill passed 228-206 with six progressive Democrats joining Republicans.',
-          evidenceSource: GOVTRACK,
+          said: {
+            summary: 'Public position that bipartisan infrastructure should be paired with reconciliation spending, not passed standalone.',
+            date: '2021-08-24',
+            source: GOVTRACK,
+          },
+          did: {
+            summary: 'Voted Nay on H.R.3684 Infrastructure Investment and Jobs Act; bill passed 228–206 with six progressive Democrats joining Republicans.',
+            date: '2021-11-05',
+            source: CONGRESS_GOV,
+          },
         },
       ],
       termConsistency: [

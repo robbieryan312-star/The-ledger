@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { mockStates } from '@/lib/data/mockPoliticians';
-import { allPoliticians, resolveOffice, getCoverageStats } from '@/lib/data/allPoliticians';
+import { allPoliticians, resolveOffice, getCoverageStats, comparePoliticiansByProminence } from '@/lib/data/allPoliticians';
 import { fecFinanceCount } from '@/lib/data/fecFinance';
 import { congressVotesCount, mergeVotingRecord } from '@/lib/data/congressVotes';
 import { PHOTO_ATTRIBUTION } from '@/lib/data/photos';
@@ -78,7 +78,7 @@ function PoliticiansContent() {
         const bL = b.campaignFinance.lobbyistMoney.reduce((s, l) => s + l.amount, 0);
         return bL - aL;
       }
-      return a.lastName.localeCompare(b.lastName);
+      return comparePoliticiansByProminence(a, b);
     });
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));

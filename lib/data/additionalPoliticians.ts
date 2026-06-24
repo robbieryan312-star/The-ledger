@@ -288,6 +288,35 @@ export const additionalPoliticians: Politician[] = [
             source: CONGRESS_GOV,
           },
         },
+        {
+          id: 'mosk-cp3',
+          issue: 'STOCK Act Disclosures',
+          statement: 'Periodic transaction reports filed with the House Clerk under the STOCK Act.',
+          category: 'Ethics',
+          status: 'Kept',
+          said: {
+            summary: 'STOCK Act requires members to disclose stock transactions within statutory windows.',
+            date: '2012-04-04',
+            source: {
+              name: 'STOCK Act (P.L. 112-105)',
+              url: 'https://www.congress.gov/bill/112th-congress/senate-bill/2038',
+              tier: 'official',
+              description: 'Federal financial disclosure law for Congress',
+            },
+          },
+          did: {
+            summary:
+              'Filed House PTR #20034749 (disclosed 2026-05-31) with Cencora (COR) and Gilead Sciences (GILD) transactions per House Clerk records.',
+            date: '2026-05-31',
+            source: {
+              name: 'House Clerk Financial Disclosure',
+              url: 'https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034749.pdf',
+              tier: 'official',
+              date: '2026-06-24',
+              description: 'STOCK Act PTR filed with the U.S. House',
+            },
+          },
+        },
       ],
       termConsistency: [
         { year: 2023, score: 76, keyChanges: ['First House term; gun-safety legislation priority'] },

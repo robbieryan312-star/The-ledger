@@ -6,7 +6,11 @@ import { mockElections } from '@/lib/data/mockElections';
 import { lookupZip } from '@/lib/data/zipLookup';
 import { Poll } from '@/lib/types';
 import Link from 'next/link';
-import { Calendar, MapPin, Users, ArrowRight, Filter, Vote, AlertTriangle, ExternalLink, TrendingUp, BarChart2, Star } from 'lucide-react';
+import { Calendar, MapPin, Users, ArrowRight, Filter, Vote, AlertTriangle, ExternalLink, BarChart2, Star, ChevronDown, ChevronRight } from 'lucide-react';
+import { buildCompareUrl } from '@/lib/data/electionCompare';
+import { getPoliticianById } from '@/lib/data/allPoliticians';
+import { resolveCurrentOffice } from '@/lib/data/officeResolution';
+import { getFecFinance, hasFecFinance } from '@/lib/data/fecFinance';
 
 function formatMoney(n: number): string {
   if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
@@ -218,6 +222,15 @@ function ElectionsContent() {
 
       <p className="text-gray-500 text-sm mb-4">{displayElections.length} election{displayElections.length !== 1 ? 's' : ''}</p>
 
+      {stateFilter === 'FL' && (
+        <div className="mb-4 bg-[#0a1628] rounded-xl p-3 border border-dashed border-[#1e3a5f]">
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Additional 2026 Florida ballot races (U.S. House districts, statewide cabinet, local): not yet integrated.
+            U.S. Senate seats are not on the 2026 general ballot.
+          </p>
+        </div>
+      )}
+
       <div className="space-y-5">
         {displayElections.map((election) => {
           const isHighlighted = highlightId === election.id;
@@ -349,7 +362,7 @@ function ElectionsContent() {
 
                 <div className="mt-4 flex gap-3">
                   <Link
-                    href={`/compare?election=${election.id}`}
+                    href={buildCompareUrl(election.id)}
                     className="flex items-center gap-1.5 text-sm bg-[#1e3a5f] hover:bg-[#2d5a8e] text-white px-4 py-2 rounded-lg transition-colors"
                   >
                     <Vote className="h-4 w-4" />
@@ -384,29 +397,154 @@ export default function ElectionsPage() {
 }
 
 // ── Candidate card sub-component ──────────────────────────────────────────────
-import { Candidate } from '@/lib/types';
+import { Candidate, Issue } from '@/lib/types';
+import { resolveCandidatePoliticianId } from '@/lib/data/electionCompare';
+
+function CandidateNameLink({ candidate }: { candidate: Candidate }) {
+  const profileId = resolveCandidatePoliticianId(candidate);
+  if (profileId) {
+    return (
+      <Link href={`/politicians/${profileId}`} className="text-white font-semibold truncate hover:text-[#c8a951] transition-colors">
+        {candidate.name}
+      </Link>
+    );
+  }
+  return (
+    <span className="text-white font-semibold truncate cursor-default" title="Full profile not yet integrated">
+      {candidate.name}
+    </span>
+  );
+}
+
+function DonorBreakdownHover({ candidate }: { candidate: Candidate }) {
+  const [open, setOpen] = useState(false);
+  const profileId = candidate.incumbentId ?? resolveCandidatePoliticianId(candidate);
+  const fec = profileId && hasFecFinance(profileId) ? getFecFinance(profileId) : undefined;
+
+  return (
+    <div
+      className="relative text-right ml-3 shrink-0"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <div className="text-[#c8a951] font-bold text-sm cursor-default">
+        {candidate.fundsRaised > 0 ? formatMoney(candidate.fundsRaised) : '—'}
+      </div>
+      <div className="text-gray-500 text-xs">raised</div>
+
+      {open && (
+        <div className="absolute right-0 top-full mt-1 z-20 w-64 bg-[#0a1628] border border-[#1e3a5f] rounded-xl p-3 shadow-xl text-left">
+          {fec ? (
+            <>
+              <div className="text-[10px] text-gray-500 uppercase tracking-wide mb-2">
+                FEC breakdown · {fec.electionYear} cycle
+              </div>
+              <table className="w-full text-xs">
+                <tbody>
+                  <tr className="border-b border-[#1e3a5f]">
+                    <td className="py-1.5 text-gray-400">Receipts</td>
+                    <td className="py-1.5 text-white text-right font-medium">{formatMoney(fec.receipts)}</td>
+                  </tr>
+                  <tr className="border-b border-[#1e3a5f]">
+                    <td className="py-1.5 text-gray-400">Individual</td>
+                    <td className="py-1.5 text-white text-right">{formatMoney(fec.individualContributions)}</td>
+                  </tr>
+                  <tr className="border-b border-[#1e3a5f]">
+                    <td className="py-1.5 text-gray-400">PAC</td>
+                    <td className="py-1.5 text-white text-right">{formatMoney(fec.pacContributions)}</td>
+                  </tr>
+                  <tr>
+                    <td className="py-1.5 text-gray-400">Self-funding</td>
+                    <td className="py-1.5 text-white text-right">{formatMoney(fec.selfFunding)}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a
+                href={fec.fecProfileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 flex items-center gap-1 text-[10px] text-[#c8a951] hover:text-white"
+              >
+                OpenFEC profile <ExternalLink className="h-3 w-3" />
+              </a>
+              {fec.electionYear !== 2026 && (
+                <p className="text-[10px] text-gray-500 mt-1.5 leading-relaxed">
+                  Synced FEC record may not reflect the current race cycle.
+                </p>
+              )}
+            </>
+          ) : (
+            <p className="text-xs text-gray-400 leading-relaxed">
+              Detailed donor breakdown: not yet integrated (FEC schedule A)
+            </p>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CandidateIssuesAccordion({ issues }: { issues: Issue[] }) {
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  if (issues.length === 0) return null;
+
+  return (
+    <div className="space-y-1.5 mb-3">
+      <div className="text-[10px] text-gray-500 uppercase tracking-wide">Platform positions</div>
+      {issues.map((issue, i) => (
+        <div key={`${issue.name}-${i}`} className="border border-[#1e3a5f] rounded-lg overflow-hidden">
+          <button
+            type="button"
+            onClick={() => setOpenIdx(openIdx === i ? null : i)}
+            className="w-full flex items-center gap-2 px-2.5 py-2 text-left hover:bg-[#1e3a5f]/30 transition-colors"
+          >
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className="text-xs text-white font-medium">{issue.name}</span>
+                <span className="text-[10px] text-gray-500 px-1.5 py-0 rounded border border-[#1e3a5f]">{issue.category}</span>
+              </div>
+              <div className="text-[11px] text-[#c8a951] mt-0.5 truncate">{issue.position}</div>
+            </div>
+            {openIdx === i
+              ? <ChevronDown className="h-3 w-3 text-gray-500 shrink-0" />
+              : <ChevronRight className="h-3 w-3 text-gray-500 shrink-0" />}
+          </button>
+          {openIdx === i && (
+            <div className="px-2.5 pb-2.5 text-xs text-gray-400 leading-relaxed border-t border-[#1e3a5f] pt-2">
+              {issue.detail}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 function CandidateCard({ candidate, isPrimary }: { candidate: Candidate; isPrimary: boolean }) {
   const prob = isPrimary ? candidate.primaryProbability : candidate.winProbability;
   const probLabel = isPrimary ? 'Primary prob.' : 'Win prob.';
   const barColor = partyBarColor[candidate.party] || 'bg-gray-400';
+  const profileId = resolveCandidatePoliticianId(candidate);
+  const politician = profileId ? getPoliticianById(profileId) : undefined;
+  const office = politician ? resolveCurrentOffice(politician) : null;
 
   return (
     <div className="bg-[#0a1628] rounded-xl p-4 border border-[#1e3a5f]">
       <div className="flex items-start justify-between mb-2">
         <div className="flex-1 min-w-0">
-          <div className="text-white font-semibold truncate">{candidate.name}</div>
+          <CandidateNameLink candidate={candidate} />
           <span className={`text-xs px-2 py-0.5 rounded-full border ${partyColors[candidate.party] || 'bg-gray-500/20 text-gray-300 border-gray-500/30'}`}>
             {candidate.party}
           </span>
+          {office && (
+            <div className="text-[11px] text-gray-500 mt-1 truncate" title={office.label}>
+              Current: {office.label}
+            </div>
+          )}
         </div>
-        <div className="text-right ml-3 shrink-0">
-          <div className="text-[#c8a951] font-bold text-sm">{candidate.fundsRaised > 0 ? formatMoney(candidate.fundsRaised) : '—'}</div>
-          <div className="text-gray-500 text-xs">raised</div>
-        </div>
+        <DonorBreakdownHover candidate={candidate} />
       </div>
 
-      {/* Win / primary probability */}
       {prob !== undefined && (
         <div className="mb-3">
           <div className="flex justify-between items-center mb-0.5">
@@ -419,7 +557,6 @@ function CandidateCard({ candidate, isPrimary }: { candidate: Candidate; isPrima
         </div>
       )}
 
-      {/* Approval rating (incumbents only) */}
       {candidate.approvalRating !== undefined && (
         <div className="mb-3 flex items-center gap-1.5 bg-white/[0.03] rounded-lg px-2 py-1.5">
           <Star className="h-3 w-3 text-[#c8a951] shrink-0" />
@@ -436,17 +573,8 @@ function CandidateCard({ candidate, isPrimary }: { candidate: Candidate; isPrima
         </div>
       )}
 
-      {/* Top Issues */}
-      <div className="space-y-1.5 mb-3">
-        {candidate.topIssues.slice(0, 2).map((issue) => (
-          <div key={issue.name} className="text-xs">
-            <span className="text-[#c8a951] font-medium">{issue.name}: </span>
-            <span className="text-gray-400">{issue.position}</span>
-          </div>
-        ))}
-      </div>
+      <CandidateIssuesAccordion issues={candidate.topIssues} />
 
-      {/* Endorsements */}
       {candidate.endorsements.length > 0 && (
         <div className="flex flex-wrap gap-1 mb-2">
           {candidate.endorsements.slice(0, 3).map((e) => (
@@ -457,14 +585,17 @@ function CandidateCard({ candidate, isPrimary }: { candidate: Candidate; isPrima
         </div>
       )}
 
-      {/* Link to politician profile */}
-      {candidate.incumbentId && (
+      {profileId ? (
         <Link
-          href={`/politicians/${candidate.incumbentId}`}
+          href={`/politicians/${profileId}`}
           className="flex items-center gap-1 text-xs text-[#c8a951] hover:text-white transition-colors"
         >
           View full record <ArrowRight className="h-3 w-3" />
         </Link>
+      ) : (
+        <span className="text-[10px] text-gray-600" title="No verified profile in The Ledger yet">
+          Full profile: not yet integrated
+        </span>
       )}
     </div>
   );

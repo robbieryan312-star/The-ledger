@@ -22,7 +22,7 @@ export const mockElections: Election[] = [
     chamber: 'president',
     isUpcoming: true,
     isPrimary: true,
-    dataNote: 'Trump is term-limited. Both parties are in early primary phases. Primary probabilities are illustrative estimates — verify at RealClearPolitics.com.',
+    dataNote: 'Both parties are in early primary phases. Primary probabilities are illustrative estimates — verify at RealClearPolitics.com.',
     raceRating: 'Toss-up',
     raceRatingSource: 'Illustrative — too early to project',
     candidates: [
@@ -139,6 +139,8 @@ export const mockElections: Election[] = [
 
   // ── FLORIDA GOVERNOR 2026 ─────────────────────────────────────────────────
   // Source: Ballotpedia.org — verify current candidates at ballotpedia.org/Florida_gubernatorial_election,_2026
+  // FL U.S. Senate seats (Scott, Moody) are not on the 2026 ballot; U.S. House district
+  // races are not integrated here — see additionalBallotRacesNote on the state map panel.
   {
     id: 'fl-gov-2026',
     title: 'Florida Governor 2026 — Open Seat (DeSantis Term-Limited)',

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "asOf": "2026-06-23",
+    "asOf": "2026-06-24",
     "featuredQueried": 16,
     "withTradeData": 5,
     "integrationStatus": "partial",
@@ -28,7 +28,7 @@
         "tier": "official",
         "description": "STOCK Act periodic transaction reports filed with the U.S. Senate"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "note": "Senate eFD sync unavailable (Senate eFD search API under maintenance (HTTP 503)). Demo trades on profile, if any, are labeled separately."
     },
     "mitch-mcconnell": {
@@ -42,7 +42,7 @@
         "tier": "official",
         "description": "STOCK Act periodic transaction reports filed with the U.S. Senate"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "note": "Senate eFD sync unavailable (Senate eFD search API under maintenance (HTTP 503)). Demo trades on profile, if any, are labeled separately."
     },
     "alexandria-ocasio-cortez": {
@@ -56,7 +56,7 @@
         "tier": "official",
         "description": "STOCK Act periodic transaction reports filed with the U.S. House"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "note": "No House PTR filings matched this member in the synced index window — profile demo trades (if any) remain labeled separately."
     },
     "sen-moody": {
@@ -70,7 +70,7 @@
         "tier": "official",
         "description": "STOCK Act periodic transaction reports filed with the U.S. Senate"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "note": "Senate eFD sync unavailable (Senate eFD search API under maintenance (HTTP 503)). Demo trades on profile, if any, are labeled separately."
     },
     "sen-scott": {
@@ -84,7 +84,7 @@
         "tier": "official",
         "description": "STOCK Act periodic transaction reports filed with the U.S. Senate"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "note": "Senate eFD sync unavailable (Senate eFD search API under maintenance (HTTP 503)). Demo trades on profile, if any, are labeled separately."
     },
     "rep-bean": {
@@ -98,7 +98,7 @@
         "tier": "official",
         "description": "STOCK Act periodic transaction reports filed with the U.S. House"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "note": "No House PTR filings matched this member in the synced index window — profile demo trades (if any) remain labeled separately."
     },
     "rep-moskowitz": {
@@ -3536,7 +3536,7 @@
         "tier": "official",
         "description": "STOCK Act periodic transaction reports filed with the U.S. House"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "note": "163 official PTR transaction(s) from House Clerk filings (Tier 1)."
     },
     "rep-salazar": {
@@ -4769,7 +4769,7 @@
         "tier": "official",
         "description": "STOCK Act periodic transaction reports filed with the U.S. House"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "note": "58 official PTR transaction(s) from House Clerk filings (Tier 1)."
     },
     "rep-donalds": {
@@ -6212,7 +6212,7 @@
         "tier": "official",
         "description": "STOCK Act periodic transaction reports filed with the U.S. House"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "note": "68 official PTR transaction(s) from House Clerk filings (Tier 1)."
     },
     "rep-wilson": {
@@ -6226,7 +6226,7 @@
         "tier": "official",
         "description": "STOCK Act periodic transaction reports filed with the U.S. House"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "note": "No House PTR filings matched this member in the synced index window — profile demo trades (if any) remain labeled separately."
     },
     "rep-mast": {
@@ -6304,7 +6304,7 @@
         "tier": "official",
         "description": "STOCK Act periodic transaction reports filed with the U.S. House"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "note": "3 official PTR transaction(s) from House Clerk filings (Tier 1)."
     },
     "rep-franklin": {
@@ -7957,7 +7957,7 @@
         "tier": "official",
         "description": "STOCK Act periodic transaction reports filed with the U.S. House"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "note": "78 official PTR transaction(s) from House Clerk filings (Tier 1)."
     },
     "sen-paul": {
@@ -7971,7 +7971,7 @@
         "tier": "official",
         "description": "STOCK Act periodic transaction reports filed with the U.S. Senate"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "note": "Senate eFD sync unavailable (Senate eFD search API under maintenance (HTTP 503)). Demo trades on profile, if any, are labeled separately."
     },
     "sen-schumer": {
@@ -7985,7 +7985,7 @@
         "tier": "official",
         "description": "STOCK Act periodic transaction reports filed with the U.S. Senate"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "note": "Senate eFD sync unavailable (Senate eFD search API under maintenance (HTTP 503)). Demo trades on profile, if any, are labeled separately."
     },
     "sen-gillibrand": {
@@ -7999,7 +7999,7 @@
         "tier": "official",
         "description": "STOCK Act periodic transaction reports filed with the U.S. Senate"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "note": "Senate eFD sync unavailable (Senate eFD search API under maintenance (HTTP 503)). Demo trades on profile, if any, are labeled separately."
     },
     "rep-massie": {
@@ -8013,7 +8013,7 @@
         "tier": "official",
         "description": "STOCK Act periodic transaction reports filed with the U.S. House"
       },
-      "asOf": "2026-06-23",
+      "asOf": "2026-06-24",
       "note": "No House PTR filings matched this member in the synced index window — profile demo trades (if any) remain labeled separately."
     }
   }

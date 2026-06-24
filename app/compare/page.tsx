@@ -1,12 +1,18 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { mockPoliticians } from '@/lib/data/mockPoliticians';
 import { mockElections } from '@/lib/data/mockElections';
+import { getPoliticianById } from '@/lib/data/allPoliticians';
+import {
+  pickComparePair,
+  isCandidatePick,
+  findElectionCandidate,
+} from '@/lib/data/electionCompare';
 import { mergeCampaignFinance, getFecFinanceSnapshot } from '@/lib/data/fecFinance';
 import SourceBadge from '@/components/ui/SourceBadge';
-import { Politician } from '@/lib/types';
+import { Candidate, Election, Issue, Politician } from '@/lib/types';
 import { CheckCircle, XCircle, AlertTriangle, MinusCircle, Info } from 'lucide-react';
 
 function formatMoney(n: number): string {
@@ -37,6 +43,47 @@ function CompareCell({ label, aVal, bVal, higherIsBetter = true, format = 'numbe
   );
 }
 
+type CompareSide = {
+  pick: string;
+  politician?: Politician;
+  candidate?: Candidate;
+  displayName: string;
+  lastName: string;
+  issues: Issue[];
+  isElectionOnly: boolean;
+};
+
+function resolveSide(pick: string, election?: Election): CompareSide | null {
+  if (isCandidatePick(pick)) {
+    const candidate = findElectionCandidate(election, pick);
+    if (!candidate) return null;
+    const parts = candidate.name.split(' ');
+    return {
+      pick,
+      candidate,
+      displayName: candidate.name,
+      lastName: parts[parts.length - 1] ?? candidate.name,
+      issues: candidate.topIssues,
+      isElectionOnly: true,
+    };
+  }
+  const politician = getPoliticianById(pick) ?? mockPoliticians.find((p) => p.id === pick);
+  if (!politician) return null;
+  return {
+    pick,
+    politician,
+    displayName: politician.name,
+    lastName: politician.lastName,
+    issues: politician.topIssues,
+    isElectionOnly: false,
+  };
+}
+
+function isValidPick(pick: string, election?: Election): boolean {
+  if (isCandidatePick(pick)) return !!findElectionCandidate(election, pick);
+  return !!(getPoliticianById(pick) ?? mockPoliticians.find((p) => p.id === pick));
+}
+
 const cardStyle = { background: 'rgba(11,25,41,0.7)', backdropFilter: 'blur(12px)' };
 const headerStyle = { background: 'rgba(5,9,15,0.5)' };
 
@@ -48,6 +95,7 @@ function CompareContent() {
   const [aPick, setAPick] = useState<string>(defaultA);
   const [bPick, setBPick] = useState<string>(defaultB);
   const [electionContext, setElectionContext] = useState<string | null>(null);
+  const [activeElection, setActiveElection] = useState<Election | undefined>();
 
   useEffect(() => {
     const paramA = searchParams.get('a');
@@ -58,53 +106,52 @@ function CompareContent() {
       const election = mockElections.find((e) => e.id === electionId);
       if (election) {
         setElectionContext(election.title);
+        setActiveElection(election);
 
-        const resolvePolitician = (candidateId: string) => {
-          const candidate = election.candidates.find((c) => c.id === candidateId);
-          if (!candidate) return null;
-          if (candidate.incumbentId) {
-            return mockPoliticians.find((p) => p.id === candidate.incumbentId) ?? null;
-          }
-          return mockPoliticians.find((p) => p.name === candidate.name) ?? null;
-        };
+        const pair = pickComparePair(election);
+        const nextA = paramA && isValidPick(paramA, election) ? paramA : pair?.a;
+        const nextB = paramB && isValidPick(paramB, election) ? paramB : pair?.b;
 
-        const picks: Politician[] = [];
-        for (const c of election.candidates) {
-          const p = resolvePolitician(c.id);
-          if (p && !picks.some((x) => x.id === p.id)) picks.push(p);
-          if (picks.length >= 2) break;
-        }
-
-        if (picks.length >= 2) {
-          setAPick(picks[0].id);
-          setBPick(picks[1].id);
-          return;
-        }
+        if (nextA) setAPick(nextA);
+        if (nextB) setBPick(nextB);
+        return;
       }
-    } else {
-      setElectionContext(null);
     }
 
-    if (paramA && mockPoliticians.find((p) => p.id === paramA)) setAPick(paramA);
-    if (paramB && mockPoliticians.find((p) => p.id === paramB)) setBPick(paramB);
+    setElectionContext(null);
+    setActiveElection(undefined);
+
+    if (paramA && isValidPick(paramA)) setAPick(paramA);
+    if (paramB && isValidPick(paramB)) setBPick(paramB);
   }, [searchParams]);
 
-  const pA = mockPoliticians.find((p) => p.id === aPick);
-  const pB = mockPoliticians.find((p) => p.id === bPick);
+  const sideA = useMemo(() => resolveSide(aPick, activeElection), [aPick, activeElection]);
+  const sideB = useMemo(() => resolveSide(bPick, activeElection), [bPick, activeElection]);
 
-  const financeA = pA ? mergeCampaignFinance(pA.id, pA.campaignFinance) : null;
-  const financeB = pB ? mergeCampaignFinance(pB.id, pB.campaignFinance) : null;
+  const financeA = sideA?.politician
+    ? mergeCampaignFinance(sideA.politician.id, sideA.politician.campaignFinance)
+    : null;
+  const financeB = sideB?.politician
+    ? mergeCampaignFinance(sideB.politician.id, sideB.politician.campaignFinance)
+    : null;
   const fecMeta = getFecFinanceSnapshot().meta;
 
-  const allIssueCategories = pA && pB
-    ? [...new Set([...pA.topIssues.map((i) => i.category), ...pB.topIssues.map((i) => i.category)])]
+  const allIssueCategories = sideA && sideB
+    ? [...new Set([...sideA.issues.map((i) => i.category), ...sideB.issues.map((i) => i.category)])]
     : [];
   const sharedCategories = allIssueCategories.filter((cat) =>
-    pA?.topIssues.some((i) => i.category === cat) && pB?.topIssues.some((i) => i.category === cat)
+    sideA?.issues.some((i) => i.category === cat) && sideB?.issues.some((i) => i.category === cat),
   );
   const uniqueCategories = allIssueCategories.filter((cat) =>
-    !(pA?.topIssues.some((i) => i.category === cat) && pB?.topIssues.some((i) => i.category === cat))
+    !(sideA?.issues.some((i) => i.category === cat) && sideB?.issues.some((i) => i.category === cat)),
   );
+
+  const raisedA = sideA?.politician
+    ? (financeA?.finance.totalRaised ?? sideA.politician.campaignFinance.totalRaised)
+    : (sideA?.candidate?.fundsRaised ?? 0);
+  const raisedB = sideB?.politician
+    ? (financeB?.finance.totalRaised ?? sideB.politician.campaignFinance.totalRaised)
+    : (sideB?.candidate?.fundsRaised ?? 0);
 
   const selectStyle: React.CSSProperties = {
     background: 'rgba(5,9,15,0.7)',
@@ -112,11 +159,13 @@ function CompareContent() {
     color: 'rgba(255,255,255,0.7)',
   };
 
+  const canCompare = sideA && sideB && aPick !== bPick;
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-2">Compare Politicians</h1>
-        <p className="text-white/40">Side-by-side comparison of 17 featured demo profiles — FEC totals where synced, other metrics demo-labeled</p>
+        <p className="text-white/40">Side-by-side comparison — FEC totals where synced, election-sourced positions where profiles are not yet integrated</p>
         {electionContext && (
           <p className="text-[#c8a951] text-sm mt-2">
             Comparing candidates from: {electionContext}
@@ -124,29 +173,38 @@ function CompareContent() {
         )}
       </div>
 
-      {/* Picker */}
       <div className="grid grid-cols-2 gap-4 mb-8">
         {(['a', 'b'] as const).map((side) => {
           const pick = side === 'a' ? aPick : bPick;
           const other = side === 'a' ? bPick : aPick;
           const setPick = side === 'a' ? setAPick : setBPick;
+          const resolved = side === 'a' ? sideA : sideB;
+          const selectValue = isCandidatePick(pick) ? '' : pick;
+
           return (
             <div key={side}>
               <label className="text-white/35 text-xs font-medium uppercase tracking-wider mb-2 block">
-                Politician {side.toUpperCase()}
+                Candidate {side.toUpperCase()}
               </label>
-              <select
-                value={pick}
-                onChange={(e) => setPick(e.target.value)}
-                className="w-full rounded-xl px-4 py-3 text-sm focus:outline-none"
-                style={selectStyle}
-              >
-                {mockPoliticians.map((p) => (
-                  <option key={p.id} value={p.id} disabled={p.id === other}>
-                    {p.name} ({p.state}){p.id === other ? ' — already selected' : ''}
-                  </option>
-                ))}
-              </select>
+              {isCandidatePick(pick) && resolved ? (
+                <div className="w-full rounded-xl px-4 py-3 text-sm border border-white/[0.08] text-white/80" style={selectStyle}>
+                  {resolved.displayName}
+                  <span className="block text-[10px] text-gray-500 mt-0.5">Election profile — full record not yet integrated</span>
+                </div>
+              ) : (
+                <select
+                  value={selectValue}
+                  onChange={(e) => setPick(e.target.value)}
+                  className="w-full rounded-xl px-4 py-3 text-sm focus:outline-none"
+                  style={selectStyle}
+                >
+                  {mockPoliticians.map((p) => (
+                    <option key={p.id} value={p.id} disabled={p.id === other}>
+                      {p.name} ({p.state}){p.id === other ? ' — already selected' : ''}
+                    </option>
+                  ))}
+                </select>
+              )}
             </div>
           );
         })}
@@ -154,19 +212,20 @@ function CompareContent() {
 
       {aPick === bPick && (
         <div className="rounded-xl p-4 mb-6 border border-yellow-400/25 text-yellow-400 text-sm" style={{ background: 'rgba(212,172,82,0.08)' }}>
-          Select two different politicians to compare them side-by-side.
+          Select two different candidates to compare them side-by-side.
         </div>
       )}
 
-      {pA && pB && aPick !== bPick && (
+      {canCompare && (
         <div className="space-y-5">
           <div className="rounded-xl border border-white/[0.08] p-4 flex items-start gap-3" style={cardStyle}>
             <Info className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
             <div className="text-xs text-white/50 leading-relaxed">
               <strong className="text-white/80">Data tiers:</strong> Total raised uses{' '}
-              <span className="text-green-400/90">Tier 1 OpenFEC</span> when available (as of {fecMeta.asOf}).
+              <span className="text-green-400/90">Tier 1 OpenFEC</span> when a synced profile exists (as of {fecMeta.asOf}).
+              Election-only candidates use illustrative race totals until a profile is integrated.
               Consistency scores, votes, lobbyist money, stock trades, and promise tracker rows are{' '}
-              <span className="text-yellow-400/90">demo data</span> for featured profiles only — not national coverage.
+              <span className="text-yellow-400/90">demo data</span> for featured profiles only.
               {(financeA?.fecEntry || financeB?.fecEntry) && (
                 <span className="inline-flex items-center gap-1.5 ml-2">
                   <SourceBadge source={fecMeta.source} size="xs" />
@@ -175,31 +234,40 @@ function CompareContent() {
             </div>
           </div>
 
-          {/* Profile Headers */}
           <div className="grid grid-cols-2 gap-4">
-            {[pA, pB].map((p) => (
-              <div key={p.id} className="rounded-2xl p-5 border border-white/[0.08]" style={cardStyle}>
+            {[sideA, sideB].map((side) => (
+              <div key={side.pick} className="rounded-2xl p-5 border border-white/[0.08]" style={cardStyle}>
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-14 h-14 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 border border-white/[0.09]"
                        style={{ background: 'linear-gradient(135deg, #0f2236 0%, #07101f 100%)' }}>
-                    {p.imageUrl ? (
-                      <img src={p.imageUrl} alt={p.name} className="w-full h-full object-cover object-top" />
+                    {side.politician?.imageUrl ? (
+                      <img src={side.politician.imageUrl} alt={side.displayName} className="w-full h-full object-cover object-top" />
                     ) : (
-                      <span className="font-bold text-xl" style={{ color: '#d4ac52' }}>{p.firstName[0]}{p.lastName[0]}</span>
+                      <span className="font-bold text-xl" style={{ color: '#d4ac52' }}>
+                        {side.displayName.split(' ').map((n) => n[0]).join('').slice(0, 2)}
+                      </span>
                     )}
                   </div>
                   <div>
-                    <div className="text-white font-bold">{p.name}</div>
-                    <div className="text-white/40 text-xs">{p.party} · {p.state}</div>
-                    <div className="text-white/30 text-xs">{p.chamber.replaceAll('_', ' ')}</div>
+                    <div className="text-white font-bold">{side.displayName}</div>
+                    <div className="text-white/40 text-xs">
+                      {(side.politician?.party ?? side.candidate?.party) ?? '—'}
+                      {side.politician ? ` · ${side.politician.state}` : ''}
+                    </div>
+                    <div className="text-white/30 text-xs">
+                      {side.isElectionOnly
+                        ? 'Election candidate — profile not yet integrated'
+                        : side.politician?.chamber.replaceAll('_', ' ')}
+                    </div>
                   </div>
                 </div>
-                <p className="text-white/40 text-xs leading-relaxed line-clamp-3">{p.bio}</p>
+                <p className="text-white/40 text-xs leading-relaxed line-clamp-3">
+                  {side.politician?.bio ?? 'No verified full profile available. Platform positions below are sourced from the election record.'}
+                </p>
               </div>
             ))}
           </div>
 
-          {/* Platform & Where They Stand — shown first so voters can align by agenda */}
           <div className="rounded-2xl border border-white/[0.08] overflow-hidden" style={cardStyle}>
             <div className="px-5 py-4 border-b border-white/[0.06]" style={headerStyle}>
               <h2 className="text-white font-bold">Platform & Where They Stand</h2>
@@ -218,8 +286,8 @@ function CompareContent() {
                   <span className="text-[10px] text-white/25 uppercase tracking-widest font-medium">Both candidates have stated positions</span>
                 </div>
                 {sharedCategories.map((cat) => {
-                  const aIssue = pA.topIssues.find((i) => i.category === cat)!;
-                  const bIssue = pB.topIssues.find((i) => i.category === cat)!;
+                  const aIssue = sideA.issues.find((i) => i.category === cat)!;
+                  const bIssue = sideB.issues.find((i) => i.category === cat)!;
                   return (
                     <div key={cat} className="grid grid-cols-[1fr_90px_1fr] gap-3 px-5 py-4 border-b border-white/[0.04] last:border-0">
                       <div>
@@ -245,8 +313,8 @@ function CompareContent() {
                   <span className="text-[10px] text-white/25 uppercase tracking-widest font-medium">Positions stated by one candidate only</span>
                 </div>
                 {uniqueCategories.map((cat) => {
-                  const aIssue = pA.topIssues.find((i) => i.category === cat);
-                  const bIssue = pB.topIssues.find((i) => i.category === cat);
+                  const aIssue = sideA.issues.find((i) => i.category === cat);
+                  const bIssue = sideB.issues.find((i) => i.category === cat);
                   return (
                     <div key={cat} className="grid grid-cols-[1fr_90px_1fr] gap-3 px-5 py-4 border-b border-white/[0.04] last:border-0">
                       <div>
@@ -277,73 +345,93 @@ function CompareContent() {
                 })}
               </div>
             )}
+
+            {allIssueCategories.length === 0 && (
+              <div className="px-5 py-6 text-center text-white/30 text-sm">
+                No verified platform positions available for this comparison.
+              </div>
+            )}
           </div>
 
-          {/* Numeric Comparison */}
           <div className="rounded-2xl border border-white/[0.08] overflow-hidden" style={cardStyle}>
             <div className="px-5 py-4 border-b border-white/[0.06]" style={headerStyle}>
               <h2 className="text-white font-bold">Key Metrics</h2>
-              <p className="text-white/30 text-xs mt-1">Total raised from OpenFEC when synced; other finance rows are demo</p>
+              <p className="text-white/30 text-xs mt-1">Total raised from OpenFEC when synced; election totals otherwise illustrative</p>
               <div className="grid grid-cols-3 mt-2">
-                <div className="text-xs font-medium text-right" style={{ color: '#d4ac52' }}>{pA.lastName}</div>
+                <div className="text-xs font-medium text-right" style={{ color: '#d4ac52' }}>{sideA.lastName}</div>
                 <div className="text-white/25 text-xs text-center">Metric</div>
-                <div className="text-xs font-medium text-left" style={{ color: '#d4ac52' }}>{pB.lastName}</div>
+                <div className="text-xs font-medium text-left" style={{ color: '#d4ac52' }}>{sideB.lastName}</div>
               </div>
             </div>
             <div className="px-5">
-              <CompareCell label="Consistency Score (demo)" aVal={pA.consistency.overallScore} bVal={pB.consistency.overallScore} />
-              <CompareCell label="Bipartisan Vote % (demo)" aVal={100 - pA.consistency.partyLineVotePercentage} bVal={100 - pB.consistency.partyLineVotePercentage} higherIsBetter={true} format="percent" />
+              {sideA.politician && sideB.politician ? (
+                <>
+                  <CompareCell label="Consistency Score (demo)" aVal={sideA.politician.consistency.overallScore} bVal={sideB.politician.consistency.overallScore} />
+                  <CompareCell label="Bipartisan Vote % (demo)" aVal={100 - sideA.politician.consistency.partyLineVotePercentage} bVal={100 - sideB.politician.consistency.partyLineVotePercentage} higherIsBetter={true} format="percent" />
+                </>
+              ) : null}
               <CompareCell
-                label={`Total Raised${financeA?.fecEntry || financeB?.fecEntry ? ' (FEC)' : ''}`}
-                aVal={financeA?.finance.totalRaised ?? pA.campaignFinance.totalRaised}
-                bVal={financeB?.finance.totalRaised ?? pB.campaignFinance.totalRaised}
+                label={`Total Raised${financeA?.fecEntry || financeB?.fecEntry ? ' (FEC)' : sideA.isElectionOnly || sideB.isElectionOnly ? ' (race est.)' : ''}`}
+                aVal={raisedA}
+                bVal={raisedB}
                 higherIsBetter={false}
                 format="money"
               />
-              <CompareCell
-                label="Individual Donors %"
-                aVal={(financeA?.finance.totalRaised ?? 0) > 0 ? Math.round(((financeA?.finance.individualDonations ?? 0) / (financeA?.finance.totalRaised ?? 1)) * 100) : 0}
-                bVal={(financeB?.finance.totalRaised ?? 0) > 0 ? Math.round(((financeB?.finance.individualDonations ?? 0) / (financeB?.finance.totalRaised ?? 1)) * 100) : 0}
-                higherIsBetter={true}
-                format="percent"
-              />
-              <CompareCell label="Lobbyist Money (demo)" aVal={pA.campaignFinance.lobbyistMoney.reduce((s, l) => s + l.amount, 0)} bVal={pB.campaignFinance.lobbyistMoney.reduce((s, l) => s + l.amount, 0)} higherIsBetter={false} format="money" />
-              <CompareCell label="Lobbyist Alignment % (demo)" aVal={pA.consistency.lobbyistAlignmentPercentage} bVal={pB.consistency.lobbyistAlignmentPercentage} higherIsBetter={false} format="percent" />
-              <CompareCell label="Stock Trades (demo)" aVal={pA.stockTrades.length} bVal={pB.stockTrades.length} higherIsBetter={false} />
-              <CompareCell label="High Review-Priority Trades (demo)" aVal={pA.stockTrades.filter((t) => t.conflictScore >= 70).length} bVal={pB.stockTrades.filter((t) => t.conflictScore >= 70).length} higherIsBetter={false} />
+              {sideA.politician && sideB.politician ? (
+                <>
+                  <CompareCell
+                    label="Individual Donors %"
+                    aVal={(financeA?.finance.totalRaised ?? 0) > 0 ? Math.round(((financeA?.finance.individualDonations ?? 0) / (financeA?.finance.totalRaised ?? 1)) * 100) : 0}
+                    bVal={(financeB?.finance.totalRaised ?? 0) > 0 ? Math.round(((financeB?.finance.individualDonations ?? 0) / (financeB?.finance.totalRaised ?? 1)) * 100) : 0}
+                    higherIsBetter={true}
+                    format="percent"
+                  />
+                  <CompareCell label="Lobbyist Money (demo)" aVal={sideA.politician.campaignFinance.lobbyistMoney.reduce((s, l) => s + l.amount, 0)} bVal={sideB.politician.campaignFinance.lobbyistMoney.reduce((s, l) => s + l.amount, 0)} higherIsBetter={false} format="money" />
+                  <CompareCell label="Lobbyist Alignment % (demo)" aVal={sideA.politician.consistency.lobbyistAlignmentPercentage} bVal={sideB.politician.consistency.lobbyistAlignmentPercentage} higherIsBetter={false} format="percent" />
+                  <CompareCell label="Stock Trades (demo)" aVal={sideA.politician.stockTrades.length} bVal={sideB.politician.stockTrades.length} higherIsBetter={false} />
+                  <CompareCell label="High Review-Priority Trades (demo)" aVal={sideA.politician.stockTrades.filter((t) => t.conflictScore >= 70).length} bVal={sideB.politician.stockTrades.filter((t) => t.conflictScore >= 70).length} higherIsBetter={false} />
+                </>
+              ) : (
+                <p className="py-4 text-xs text-white/35 text-center">
+                  Additional finance and voting metrics require integrated politician profiles on both sides.
+                </p>
+              )}
             </div>
           </div>
 
-          {/* Promise Tracker */}
-          <div className="rounded-2xl border border-white/[0.08] overflow-hidden" style={cardStyle}>
-            <div className="px-5 py-4 border-b border-white/[0.06]" style={headerStyle}>
-              <h2 className="text-white font-bold">Campaign Promise Tracker</h2>
-              <p className="text-white/30 text-xs mt-1">Demo editorial tracking for featured profiles — not sourced from official records</p>
-            </div>
-            <div className="grid grid-cols-2 divide-x divide-white/[0.05]">
-              {[pA, pB].map((p) => (
-                <div key={p.id} className="p-5">
-                  <div className="font-semibold mb-3 text-sm" style={{ color: '#d4ac52' }}>{p.firstName} {p.lastName}</div>
-                  <div className="space-y-2">
-                    {p.consistency.campaignPromises.map((promise) => (
-                      <div key={promise.id} className="flex items-start gap-2">
-                        {promise.status === 'Kept'        ? <CheckCircle   className="h-4 w-4 text-green-400  flex-shrink-0 mt-0.5" /> :
-                         promise.status === 'Broken'      ? <XCircle       className="h-4 w-4 text-red-400    flex-shrink-0 mt-0.5" /> :
-                         promise.status === 'Compromised' ? <AlertTriangle  className="h-4 w-4 text-yellow-400 flex-shrink-0 mt-0.5" /> :
-                                                            <MinusCircle   className="h-4 w-4 text-blue-400   flex-shrink-0 mt-0.5" />}
-                        <div>
-                          <div className="text-xs text-white font-medium">{promise.issue}</div>
-                          <div className={`text-xs ${promise.status === 'Kept' ? 'text-green-400' : promise.status === 'Broken' ? 'text-red-400' : promise.status === 'Compromised' ? 'text-yellow-400' : 'text-blue-400'}`}>
-                            {promise.status}
+          {sideA.politician && sideB.politician ? (
+            <div className="rounded-2xl border border-white/[0.08] overflow-hidden" style={cardStyle}>
+              <div className="px-5 py-4 border-b border-white/[0.06]" style={headerStyle}>
+                <h2 className="text-white font-bold">Campaign Promise Tracker</h2>
+                <p className="text-white/30 text-xs mt-1">Demo editorial tracking for featured profiles — not sourced from official records</p>
+              </div>
+              <div className="grid grid-cols-2 divide-x divide-white/[0.05]">
+                {[sideA.politician, sideB.politician].map((p) => (
+                  <div key={p.id} className="p-5">
+                    <div className="font-semibold mb-3 text-sm" style={{ color: '#d4ac52' }}>{p.firstName} {p.lastName}</div>
+                    <div className="space-y-2">
+                      {p.consistency.campaignPromises.length > 0 ? p.consistency.campaignPromises.map((promise) => (
+                        <div key={promise.id} className="flex items-start gap-2">
+                          {promise.status === 'Kept'        ? <CheckCircle   className="h-4 w-4 text-green-400  flex-shrink-0 mt-0.5" /> :
+                           promise.status === 'Broken'      ? <XCircle       className="h-4 w-4 text-red-400    flex-shrink-0 mt-0.5" /> :
+                           promise.status === 'Compromised' ? <AlertTriangle  className="h-4 w-4 text-yellow-400 flex-shrink-0 mt-0.5" /> :
+                                                              <MinusCircle   className="h-4 w-4 text-blue-400   flex-shrink-0 mt-0.5" />}
+                          <div>
+                            <div className="text-xs text-white font-medium">{promise.issue}</div>
+                            <div className={`text-xs ${promise.status === 'Kept' ? 'text-green-400' : promise.status === 'Broken' ? 'text-red-400' : promise.status === 'Compromised' ? 'text-yellow-400' : 'text-blue-400'}`}>
+                              {promise.status}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      )) : (
+                        <p className="text-xs text-white/30">No verified promise tracker data.</p>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          ) : null}
         </div>
       )}
     </div>

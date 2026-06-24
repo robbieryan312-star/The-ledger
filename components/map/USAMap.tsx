@@ -2,13 +2,16 @@
 
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps';
+import { ComposableMap, Geographies, Geography, ZoomableGroup, Marker } from 'react-simple-maps';
 import { mockStates } from '@/lib/data/mockPoliticians';
-import { getPoliticiansForState, sortOfficialsForDisplay } from '@/lib/data/allPoliticians';
+import { getPoliticiansForState, sortOfficialsForDisplay, resolveOffice } from '@/lib/data/allPoliticians';
+import { GOVERNOR_MAP_FILLS, getGovernorPartyKey } from '@/lib/data/governorMapColors';
 import { mockElections } from '@/lib/data/mockElections';
+import { buildCompareUrl } from '@/lib/data/electionCompare';
 import { countyByFips, countiesByState } from '@/lib/data/mockCounties';
 import { useMapNavigation } from '@/lib/context/MapNavigationContext';
 import OfficialCard from '@/components/counties/OfficialCard';
+import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
 import Link from 'next/link';
 import {
   X, ChevronDown, ChevronRight, Calendar, Users, AlertTriangle, Vote,
@@ -100,6 +103,63 @@ const STATE_ABBR: Record<string, string> = {
 };
 
 const NATIONAL: MapPosition = { center: [-97, 38], zoom: 1 };
+const DC_COORDS: [number, number] = [-77.04, 38.91];
+
+function nationalStateStyle(
+  stateCode: string,
+  mapLevel: MapLevel,
+  isSel: boolean,
+  isHov: boolean,
+  isDimmed: boolean,
+) {
+  if (isDimmed) {
+    return {
+      fill: '#04080f',
+      stroke: '#04080f',
+      strokeWidth: 0,
+      fillOpacity: 0.15,
+      outline: 'none' as const,
+      cursor: 'default' as const,
+    };
+  }
+
+  const isDc = stateCode === 'DC';
+  const palette = GOVERNOR_MAP_FILLS[getGovernorPartyKey(stateCode)];
+
+  if (mapLevel === 'state' && isSel) {
+    return {
+      fill: 'transparent',
+      stroke: '#e8c96a',
+      strokeWidth: 0.35,
+      fillOpacity: 1,
+      outline: 'none' as const,
+      cursor: 'pointer' as const,
+    };
+  }
+
+  if (isSel) {
+    return {
+      fill: isHov ? '#d4b86a' : '#c8a951',
+      stroke: '#e8c96a',
+      strokeWidth: isDc ? 0.55 : 0.35,
+      fillOpacity: 1,
+      outline: 'none' as const,
+      cursor: 'pointer' as const,
+      filter: isHov ? 'drop-shadow(0 0 4px rgba(200, 169, 81, 0.55))' : undefined,
+    };
+  }
+
+  return {
+    fill: isHov ? palette.hover : palette.base,
+    stroke: isHov ? palette.strokeHover : isDc ? '#c8a951' : palette.stroke,
+    strokeWidth: isHov ? (isDc ? 0.55 : 0.35) : isDc ? 0.45 : 0.22,
+    fillOpacity: 1,
+    outline: 'none' as const,
+    cursor: 'pointer' as const,
+    transition: 'fill 0.2s ease, stroke 0.2s ease',
+    filter: isHov ? 'drop-shadow(0 0 4px rgba(200, 169, 81, 0.45))' : undefined,
+  };
+}
 
 function formatMoney(n: number): string {
   if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
@@ -152,21 +212,25 @@ function PoliticianRow({ politician }: { politician: Politician }) {
     'bg-gray-500/20 text-gray-300';
 
   return (
-    <div className={`border border-[#1e3a5f] rounded-xl overflow-hidden ${expanded ? 'border-[#c8a951]/40' : ''}`}>
+    <div className={`border border-[#1e3a5f] rounded-xl overflow-hidden transition-all ${expanded ? 'border-[#c8a951]/40 shadow-[0_0_12px_rgba(200,169,81,0.15)]' : 'hover:border-[#2d5a8e]/60'}`}>
       <button
         onClick={() => setExpanded(!expanded)}
         className="w-full flex items-center gap-2.5 p-3 hover:bg-[#1e3a5f]/40 transition-colors text-left"
       >
-        <div className="w-9 h-9 rounded-full bg-[#1e3a5f] flex items-center justify-center overflow-hidden flex-shrink-0">
-          {politician.imageUrl
-            ? <img src={politician.imageUrl} alt={politician.name} className="w-full h-full object-cover object-top" />
-            : <span className="text-[#c8a951] text-xs font-bold">{politician.firstName[0]}{politician.lastName[0]}</span>}
+        <div className="w-9 h-9 rounded-full bg-[#1e3a5f] flex items-center justify-center overflow-hidden flex-shrink-0 border border-white/[0.06]">
+          <PoliticianAvatar
+            name={politician.name}
+            firstName={politician.firstName}
+            lastName={politician.lastName}
+            imageUrl={politician.imageUrl}
+            textClassName="text-[#c8a951] text-xs font-bold"
+          />
         </div>
         <div className="flex-1 min-w-0">
           <div className="text-white text-sm font-semibold truncate">{politician.name}</div>
           <div className="flex items-center gap-1.5">
             <span className={`text-xs px-1.5 py-0 rounded ${partyColor}`}>{politician.party[0]}</span>
-            <span className="text-gray-400 text-xs">{politician.chamber.replace('_',' ').replace(/\b\w/g, l => l.toUpperCase())}</span>
+            <span className="text-gray-400 text-xs">{resolveOffice(politician).label}</span>
           </div>
         </div>
         <div className="flex items-center gap-1.5 flex-shrink-0">
@@ -314,6 +378,7 @@ export default function USAMap() {
   useEffect(() => () => cancelAnimationFrame(animRef.current), []);
 
   const handleStateClick = (stateCode: string) => {
+    if (!stateCode) return;
     if (mapLevel === 'state' && stateCode !== selectedState) return;
     if (mapLevel === 'national') {
       navigateToTarget(stateCode);
@@ -416,38 +481,73 @@ export default function USAMap() {
                 const isSel     = selectedState === stateCode;
                 const isHov     = hoveredState === stateCode;
                 const isDimmed  = mapLevel === 'state' && !isSel;
+                const defaultStyle = nationalStateStyle(stateCode, mapLevel, isSel, isHov, isDimmed);
+                const hoverStyle = nationalStateStyle(stateCode, mapLevel, isSel, true, isDimmed);
 
                 return (
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
-                    onMouseEnter={() => !isDimmed && setHoveredState(stateCode)}
+                    onMouseEnter={() => !isDimmed && stateCode && setHoveredState(stateCode)}
                     onMouseLeave={() => setHoveredState(null)}
-                    onClick={() => !isDimmed && handleStateClick(stateCode)}
+                    onClick={() => !isDimmed && stateCode && handleStateClick(stateCode)}
                     style={{
-                      default: {
-                        fill:        isDimmed ? '#04080f' : isSel && mapLevel === 'state' ? 'transparent' : isSel ? '#c8a951' : isHov ? '#2a5580' : '#1a3352',
-                        stroke:      isDimmed ? '#04080f' : isSel ? '#e8c96a' : '#4a7ab5',
-                        strokeWidth: isDimmed ? 0 : isSel ? 0.35 : 0.2,
-                        outline:     'none',
-                        cursor:      isDimmed ? 'default' : 'pointer',
-                        fillOpacity: isDimmed ? 0.15 : 1,
-                        transition:  'fill 0.2s ease',
+                      default: defaultStyle,
+                      hover: hoverStyle,
+                      pressed: {
+                        fill: '#c8a951',
+                        stroke: '#e8c96a',
+                        strokeWidth: stateCode === 'DC' ? 0.55 : 0.35,
+                        outline: 'none',
                       },
-                      hover: {
-                        fill:        isDimmed ? '#04080f' : isSel ? '#d4b86a' : '#2a5580',
-                        stroke:      isDimmed ? '#04080f' : '#c8a951',
-                        strokeWidth: isDimmed ? 0 : 0.3,
-                        outline:     'none',
-                        cursor:      isDimmed ? 'default' : 'pointer',
-                      },
-                      pressed: { fill: '#c8a951', stroke: '#e8c96a', strokeWidth: 0.35, outline: 'none' },
                     }}
                   />
                 );
               })
             }
           </Geographies>
+
+          {/* DC callout — visible clickable target when the district polygon is too small */}
+          {mapLevel === 'national' && (
+            <Marker coordinates={DC_COORDS}>
+              <g
+                role="button"
+                tabIndex={0}
+                aria-label="District of Columbia"
+                style={{ cursor: 'pointer' }}
+                onMouseEnter={() => setHoveredState('DC')}
+                onMouseLeave={() => setHoveredState(null)}
+                onClick={() => handleStateClick('DC')}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleStateClick('DC'); }}
+              >
+                <circle
+                  r={selectedState === 'DC' ? 3.2 : hoveredState === 'DC' ? 3 : 2.6}
+                  fill={selectedState === 'DC' ? '#c8a951' : hoveredState === 'DC' ? '#254a75' : '#1a3555'}
+                  stroke="#c8a951"
+                  strokeWidth={0.45}
+                  style={{ filter: hoveredState === 'DC' ? 'drop-shadow(0 0 3px rgba(200,169,81,0.7))' : undefined }}
+                />
+                <rect
+                  x={3.2}
+                  y={-5}
+                  width={10}
+                  height={6}
+                  rx={1.2}
+                  fill="#08152a"
+                  stroke="#c8a951"
+                  strokeWidth={0.35}
+                />
+                <text
+                  x={8.2}
+                  y={-0.8}
+                  textAnchor="middle"
+                  style={{ fill: '#c8a951', fontSize: 3.2, fontWeight: 600, pointerEvents: 'none' }}
+                >
+                  DC
+                </text>
+              </g>
+            </Marker>
+          )}
         </ZoomableGroup>
       </ComposableMap>
 
@@ -458,7 +558,34 @@ export default function USAMap() {
             <span className="text-[#c8a951] font-semibold text-sm">
               {mockStates.find(s => s.code === hoveredState)?.name ?? hoveredState}
             </span>
+            {hoveredState !== 'DC' && (
+              <span className="text-gray-500 text-xs ml-2">
+                · Gov: {getGovernorPartyKey(hoveredState) === 'unknown' ? 'No data' : getGovernorPartyKey(hoveredState).replace(/^./, c => c.toUpperCase())}
+              </span>
+            )}
             <span className="text-gray-400 text-xs ml-2">Click to explore</span>
+          </div>
+        </div>
+      )}
+
+      {/* Governor party legend (national view) */}
+      {mapLevel === 'national' && !selectedState && (
+        <div className="absolute bottom-4 left-4 z-20 pointer-events-none">
+          <div className="bg-[#08152a]/92 backdrop-blur-md border border-white/[0.08] rounded-xl px-3 py-2.5 shadow-lg">
+            <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">Current governor party</div>
+            <div className="flex flex-wrap gap-x-3 gap-y-1">
+              {([
+                ['democrat', 'Democrat', GOVERNOR_MAP_FILLS.democrat.base],
+                ['republican', 'Republican', GOVERNOR_MAP_FILLS.republican.base],
+                ['independent', 'Independent', GOVERNOR_MAP_FILLS.independent.base],
+                ['unknown', 'No data', GOVERNOR_MAP_FILLS.unknown.base],
+              ] as const).map(([, label, color]) => (
+                <div key={label} className="flex items-center gap-1.5">
+                  <span className="w-3 h-3 rounded-sm border border-white/10" style={{ background: color }} />
+                  <span className="text-[10px] text-gray-400">{label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}
@@ -520,7 +647,9 @@ export default function USAMap() {
                   {selectedCountyData ? selectedCountyData.name : selectedCountyPending ? (selectedCountyName ?? 'County') : (selectedStateData?.name ?? selectedState)}
                 </div>
                 <div className="text-gray-400 text-xs">
-                  {selectedCountyData
+                  {selectedState === 'DC'
+                    ? 'Federal district · non-voting House delegate'
+                    : selectedCountyData
                     ? `${selectedCountyData.officials.length} official(s) tracked`
                     : selectedCountyPending
                       ? 'Official records integration in progress'
@@ -646,13 +775,22 @@ export default function USAMap() {
                     (2) then counties below, (3) then elections / other. */}
 
                 {/* Currently elected officials */}
+                {selectedState === 'DC' && (
+                  <div className="bg-[#0d1f35] rounded-xl p-3 border border-[#c8a951]/20 text-xs text-gray-400 leading-relaxed">
+                    District of Columbia has no governor or voting members of Congress.
+                    The non-voting delegate to the U.S. House is listed below when present in the authoritative legislators dataset.
+                  </div>
+                )}
+
                 {statePoliticians.length > 0 && (
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-2">
                       <div className="flex items-center gap-2">
                         <Users className="h-4 w-4 text-blue-400" />
                         <span className="text-blue-400 text-xs font-semibold uppercase tracking-wider">
-                          Federal &amp; State Officials ({statePoliticians.length})
+                          {selectedState === 'DC'
+                            ? `Federal Officials (${statePoliticians.length})`
+                            : `Federal & State Officials (${statePoliticians.length})`}
                         </span>
                       </div>
                       {selectedState && statePoliticians.length > MAP_SIDEBAR_OFFICIAL_LIMIT && (
@@ -744,13 +882,21 @@ export default function USAMap() {
                               </div>
                             ))}
                           </div>
-                          <Link href={`/compare?election=${election.id}`}
+                          <Link href={buildCompareUrl(election.id)}
                                 className="mt-2 flex items-center gap-1 text-xs text-[#c8a951] hover:text-white transition-colors">
                             <Vote className="h-3 w-3" /> Compare candidates
                           </Link>
                         </div>
                       ))}
                     </div>
+                    {selectedState === 'FL' && (
+                      <div className="mt-2 bg-[#0a1628] rounded-xl p-3 border border-dashed border-[#1e3a5f]">
+                        <p className="text-[11px] text-gray-500 leading-relaxed">
+                          Additional ballot races (U.S. House districts, statewide cabinet, local): not yet integrated.
+                          FL U.S. Senate seats are not on the 2026 general ballot.
+                        </p>
+                      </div>
+                    )}
                   </div>
                 )}
 
@@ -778,8 +924,8 @@ export default function USAMap() {
 
       {/* ── National hint ── */}
       {!selectedState && mapLevel === 'national' && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[#0a1628]/90 backdrop-blur-md border border-white/[0.08] rounded-full px-5 py-2.5 text-xs text-white/50 pointer-events-none shadow-lg">
-          Select a state to zoom in · Explore counties & local officials
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[#0a1628]/90 backdrop-blur-md border border-white/[0.08] rounded-full px-5 py-2.5 text-xs text-white/50 pointer-events-none shadow-lg sm:translate-x-0 sm:left-[calc(50%+6rem)]">
+          Select a state to zoom in · DC label marks the federal district
         </div>
       )}
 

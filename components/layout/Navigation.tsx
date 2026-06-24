@@ -12,6 +12,7 @@ const navItems = [
     href: '/politicians',
     sub: [
       { label: 'Browse All', href: '/politicians' },
+      { label: 'Executive', href: '/politicians?chamber=president' },
       { label: 'Senate', href: '/politicians?chamber=senate' },
       { label: 'House', href: '/politicians?chamber=house' },
       { label: 'Governors', href: '/politicians?chamber=governor' },
