@@ -50,11 +50,14 @@ jobs:
           [ -n "$FEC_API_KEY" ] && npm run ingest:fec-fl || echo "skip fec (no secret)"
           [ -n "$CONGRESS_API_KEY" ] && npm run ingest:congress-fl || echo "skip congress (no secret)"
 
+      - name: Rebuild Records & Sources index
+        run: npm run build:sources-index
+
       - name: Commit & push changed snapshots
         run: |
           git config user.name "ledger-data-bot"
           git config user.email "ledger-data-bot@users.noreply.github.com"
-          git add data/
+          git add data/ lib/data/generated/sourcesIndex.json
           if git diff --cached --quiet; then
             echo "No data changes to commit."
           else

@@ -1,0 +1,3029 @@
+{
+  "generatedAt": "2026-06-24T16:44:32.145Z",
+  "sourceCount": 21,
+  "sources": [
+    {
+      "id": "secedgar",
+      "label": "Florida SEC Filings",
+      "category": "Campaign finance",
+      "file": "data/secedgar/florida-filings.json",
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": "2026-06-24T16:09:49.496Z",
+      "fetchedLive": true,
+      "count": 74,
+      "datasetUrl": "https://efts.sec.gov/LATEST/search-index?q=%22Florida%22&forms=8-K",
+      "note": "Recent 8-K material-event filings (last 60 days) referencing Florida via SEC EDGAR full-text search. Each record carries the filer business/incorporation state and a floridaDomiciled flag — EDGAR location filters are unreliable, so Florida relevance is by full-text match. Tier 1 official.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "HCI Group, Inc.",
+          "detail": "8-K · 0001400810 · 0001193125-26-249754",
+          "date": "2026-06-01",
+          "link": "https://www.sec.gov/Archives/edgar/data/1400810/000119312526249754/"
+        },
+        {
+          "title": "Vivos Therapeutics, Inc.",
+          "detail": "EX-99.1 · 0001716166 · 0001493152-26-028775",
+          "date": "2026-06-16",
+          "link": "https://www.sec.gov/Archives/edgar/data/1716166/000149315226028775/"
+        },
+        {
+          "title": "HANCOCK WHITNEY CORP",
+          "detail": "EX-99.2 · 0000750577 · 0001193125-26-225443",
+          "date": "2026-05-15",
+          "link": "https://www.sec.gov/Archives/edgar/data/750577/000119312526225443/"
+        },
+        {
+          "title": "American Integrity Insurance Group, Inc.",
+          "detail": "EX-99.1 · 0002007587 · 0002007587-26-000068",
+          "date": "2026-05-20",
+          "link": "https://www.sec.gov/Archives/edgar/data/2007587/000200758726000068/"
+        },
+        {
+          "title": "CHESAPEAKE UTILITIES CORP",
+          "detail": "EX-99.1 · 0000019745 · 0001628280-26-031368",
+          "date": "2026-05-06",
+          "link": "https://www.sec.gov/Archives/edgar/data/19745/000162828026031368/"
+        },
+        {
+          "title": "NEXTERA ENERGY INC",
+          "detail": "8-K · 0000753308 · 0001104659-26-062992",
+          "date": "2026-05-18",
+          "link": "https://www.sec.gov/Archives/edgar/data/753308/000110465926062992/"
+        },
+        {
+          "title": "NEXTERA ENERGY INC",
+          "detail": "8-K · 0000753308 · 0000753308-26-000039",
+          "date": "2026-05-26",
+          "link": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000039/"
+        },
+        {
+          "title": "PMGC Holdings Inc.",
+          "detail": "EX-10.1 · 0001840563 · 0001213900-26-065791",
+          "date": "2026-06-05",
+          "link": "https://www.sec.gov/Archives/edgar/data/1840563/000121390026065791/"
+        },
+        {
+          "title": "WORLD OMNI AUTO RECEIVABLES LLC",
+          "detail": "EX-1.1 · 0001083199 · 0001104659-26-057011",
+          "date": "2026-05-07",
+          "link": "https://www.sec.gov/Archives/edgar/data/1083199/000110465926057011/"
+        },
+        {
+          "title": "NEXTERA ENERGY INC",
+          "detail": "8-K · 0000753308 · 0000753308-26-000043",
+          "date": "2026-06-01",
+          "link": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000043/"
+        },
+        {
+          "title": "USCB FINANCIAL HOLDINGS, INC.",
+          "detail": "EX-99.1 · 0001901637 · 0000927089-26-000099",
+          "date": "2026-05-27",
+          "link": "https://www.sec.gov/Archives/edgar/data/1901637/000092708926000099/"
+        },
+        {
+          "title": "SEACOAST BANKING CORP OF FLORIDA",
+          "detail": "EX-3.1 · 0000730708 · 0001628280-26-036953",
+          "date": "2026-05-20",
+          "link": "https://www.sec.gov/Archives/edgar/data/730708/000162828026036953/"
+        },
+        {
+          "title": "Tecnoglass Inc.",
+          "detail": "8-K · 0001534675 · 0001493152-26-028897",
+          "date": "2026-06-16",
+          "link": "https://www.sec.gov/Archives/edgar/data/1534675/000149315226028897/"
+        },
+        {
+          "title": "GENERATION INCOME PROPERTIES, INC.",
+          "detail": "EX-10.1 · 0001651721 · 0001193125-26-237019",
+          "date": "2026-05-22",
+          "link": "https://www.sec.gov/Archives/edgar/data/1651721/000119312526237019/"
+        },
+        {
+          "title": "Helio Corp /FL/",
+          "detail": "EX-10.1 · 0001953988 · 0001213900-26-048545",
+          "date": "2026-04-28",
+          "link": "https://www.sec.gov/Archives/edgar/data/1953988/000121390026048545/"
+        },
+        {
+          "title": "NEXTERA ENERGY INC",
+          "detail": "EX-5.B AND 8 · 0000753308 · 0000753308-26-000052",
+          "date": "2026-06-22",
+          "link": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000052/"
+        },
+        {
+          "title": "SEACOAST BANKING CORP OF FLORIDA",
+          "detail": "8-K · 0000730708 · 0001628280-26-027918",
+          "date": "2026-04-28",
+          "link": "https://www.sec.gov/Archives/edgar/data/730708/000162828026027918/"
+        },
+        {
+          "title": "HALLMARK VENTURE GROUP, INC.",
+          "detail": "EX-10.1 · 0001331421 · 0001493152-26-026929",
+          "date": "2026-06-03",
+          "link": "https://www.sec.gov/Archives/edgar/data/1331421/000149315226026929/"
+        },
+        {
+          "title": "Sensus Healthcare, Inc.",
+          "detail": "EX-10.1 · 0001494891 · 0001753926-26-000983",
+          "date": "2026-06-05",
+          "link": "https://www.sec.gov/Archives/edgar/data/1494891/000175392626000983/"
+        },
+        {
+          "title": "Myseum.AI, Inc.",
+          "detail": "EX-99.1 · 0001648960 · 0001213900-26-048582",
+          "date": "2026-04-28",
+          "link": "https://www.sec.gov/Archives/edgar/data/1648960/000121390026048582/"
+        },
+        {
+          "title": "SEACOAST BANKING CORP OF FLORIDA",
+          "detail": "8-K · 0000730708 · 0001628280-26-039243",
+          "date": "2026-05-29",
+          "link": "https://www.sec.gov/Archives/edgar/data/730708/000162828026039243/"
+        },
+        {
+          "title": "RADIAN GROUP INC",
+          "detail": "EX-10.4 · 0000890926 · 0001193125-26-234920",
+          "date": "2026-05-21",
+          "link": "https://www.sec.gov/Archives/edgar/data/890926/000119312526234920/"
+        },
+        {
+          "title": "NOBILITY HOMES INC",
+          "detail": "EX-99.1 · 0000072205 · 0001193125-26-270396",
+          "date": "2026-06-15",
+          "link": "https://www.sec.gov/Archives/edgar/data/72205/000119312526270396/"
+        },
+        {
+          "title": "GENERATION INCOME PROPERTIES, INC.",
+          "detail": "8-K · 0001651721 · 0001193125-26-221748",
+          "date": "2026-05-13",
+          "link": "https://www.sec.gov/Archives/edgar/data/1651721/000119312526221748/"
+        },
+        {
+          "title": "SEACOAST BANKING CORP OF FLORIDA",
+          "detail": "8-K · 0000730708 · 0001628280-26-034576",
+          "date": "2026-05-13",
+          "link": "https://www.sec.gov/Archives/edgar/data/730708/000162828026034576/"
+        }
+      ]
+    },
+    {
+      "id": "fec",
+      "label": "Florida Federal Candidates",
+      "category": "Campaign finance",
+      "file": "data/fec/florida-candidates.json",
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": null,
+      "fetchedLive": true,
+      "count": 2439,
+      "datasetUrl": "https://api.open.fec.gov/v1/candidates/?state=FL",
+      "note": "Florida candidates from OpenFEC. Tier 1 official source.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "ANTROPOV, JAYDEN",
+          "detail": "H4FL22128 · H · FL",
+          "date": "2034",
+          "link": "https://www.fec.gov/data/candidate/H4FL22128/"
+        },
+        {
+          "title": "CAMPBELL, WALTER L DR.",
+          "detail": "H0FL18223 · H · FL",
+          "date": "2029",
+          "link": "https://www.fec.gov/data/candidate/H0FL18223/"
+        },
+        {
+          "title": "CAMPBELL, WALTER L DR.",
+          "detail": "H0FL18249 · H · FL",
+          "date": "2029",
+          "link": "https://www.fec.gov/data/candidate/H0FL18249/"
+        },
+        {
+          "title": "CAMPBELL, WALTER L DR.",
+          "detail": "H0FL18231 · H · FL",
+          "date": "2029",
+          "link": "https://www.fec.gov/data/candidate/H0FL18231/"
+        },
+        {
+          "title": "LELLE, TRAVIS MATTHEW",
+          "detail": "S8FL00331 · S · FL",
+          "date": "2028",
+          "link": "https://www.fec.gov/data/candidate/S8FL00331/"
+        },
+        {
+          "title": "BROWN, TYRONE DAWAYNE BISHOP",
+          "detail": "S8FL00307 · S · FL",
+          "date": "2028",
+          "link": "https://www.fec.gov/data/candidate/S8FL00307/"
+        },
+        {
+          "title": "PARROT, ANDREW",
+          "detail": "H6FL06316 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL06316/"
+        },
+        {
+          "title": "BILZERIAN, DANIEL BRANDON",
+          "detail": "H6FL06415 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL06415/"
+        },
+        {
+          "title": "GIBSON, CURTIS",
+          "detail": "H6FL18212 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL18212/"
+        },
+        {
+          "title": "BOCK, GEORGE LOUIS MR",
+          "detail": "H6FL07199 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL07199/"
+        },
+        {
+          "title": "PEDERSEN, MIKE",
+          "detail": "H6FL19145 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL19145/"
+        },
+        {
+          "title": "MARTIN, JAMES",
+          "detail": "H6FL21075 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL21075/"
+        },
+        {
+          "title": "DELLINGER, PAUL LYAL",
+          "detail": "H6FL08270 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL08270/"
+        },
+        {
+          "title": "DANDIYA, PIA",
+          "detail": "H6FL21059 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL21059/"
+        },
+        {
+          "title": "PANDICH, ELIZABETH",
+          "detail": "H6FL21042 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL21042/"
+        },
+        {
+          "title": "FARBER, STUART DR",
+          "detail": "H6FL09245 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL09245/"
+        },
+        {
+          "title": "HASKIN, SETH",
+          "detail": "H6FL19319 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL19319/"
+        },
+        {
+          "title": "ARIAS, VICTOR M.",
+          "detail": "H6FL19277 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL19277/"
+        },
+        {
+          "title": "SIMMONS, DEVA",
+          "detail": "H6FL18204 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL18204/"
+        },
+        {
+          "title": "GONZALEZ, ALEXANDER",
+          "detail": "H6FL18238 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL18238/"
+        },
+        {
+          "title": "GRUTERS, SYDNEY",
+          "detail": "H6FL16141 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL16141/"
+        },
+        {
+          "title": "RAZACK, MD JD, NIZAM",
+          "detail": "H6FL11316 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL11316/"
+        },
+        {
+          "title": "BAKER, CAREY",
+          "detail": "H6FL11340 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL11340/"
+        },
+        {
+          "title": "POPE, EDWARD PETER DR.",
+          "detail": "H6FL16133 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL16133/"
+        },
+        {
+          "title": "WILLIAMS, SHAY",
+          "detail": "H6FL12215 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL12215/"
+        }
+      ]
+    },
+    {
+      "id": "fldoe",
+      "label": "Florida Campaign Contributions",
+      "category": "Campaign finance",
+      "file": "data/fldoe/florida-contributions.json",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": "2026-06-24T15:26:30.623Z",
+      "fetchedLive": true,
+      "count": 179,
+      "datasetUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "note": "Florida campaign contributions of $25,000+ filed 2025-01-01 through 2026-06-24, from the official FL Campaign Finance Database (tab-delimited export). Tier 1 official public record. Captured via the public search form; refreshing requires a browser session (the export endpoint blocks non-browser requests).",
+      "errors": null,
+      "sample": [
+        {
+          "title": "Steele, Kevin M.",
+          "detail": "REP · State Representative · $5,000,000",
+          "date": "2025-12-29",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Bergermann, Vera",
+          "detail": "NOP · County Judge · $300,000",
+          "date": "2026-01-26",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Kessler, Bryan S.",
+          "detail": "NOP · County Judge · $250,000",
+          "date": "2026-02-17",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Russo, Frank J.",
+          "detail": "NPA · Governor · $250,000",
+          "date": "2026-01-05",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Stuzin, Laura Anne",
+          "detail": "NOP · County Judge · $250,000",
+          "date": "2025-01-17",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Wilson, Mark",
+          "detail": "NOP · County Judge · $250,000",
+          "date": "2025-11-04",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Baez, Rita Maria",
+          "detail": "NOP · County Judge · $200,000",
+          "date": "2026-02-05",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Barakat, Michelle Alvarez",
+          "detail": "NOP · County Judge · $200,000",
+          "date": "2025-09-15",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Tomkow, Josie",
+          "detail": "REP · State Senator · $200,000",
+          "date": "2026-03-19",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Goerner, Donna M.",
+          "detail": "NOP · County Judge · $200,000",
+          "date": "2026-02-25",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Brinkley, Tanya Jeanette",
+          "detail": "NOP · County Judge · $200,000",
+          "date": "2025-03-27",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Reichling, Trent",
+          "detail": "NOP · County Judge · $150,050",
+          "date": "2025-12-29",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Burkett, Charles",
+          "detail": "NPA · Governor · $150,000",
+          "date": "2026-05-21",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Hawthorne, Amy",
+          "detail": "NOP · County Judge · $150,000",
+          "date": "2025-12-12",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Norton, Virginia",
+          "detail": "NOP · County Judge · $150,000",
+          "date": "2025-12-31",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Roth, Rick",
+          "detail": "REP · State Senator · $150,000",
+          "date": "2025-12-30",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Tomkow, Josie",
+          "detail": "REP · State Senator · $137,904.2",
+          "date": "2026-03-16",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Tompkins, Joseph",
+          "detail": "NOP · County Judge · $125,000",
+          "date": "2026-03-30",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Blocker, Lauren P.",
+          "detail": "NOP · County Judge · $110,000",
+          "date": "2026-03-30",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Anijar, Yoni",
+          "detail": "REP · State Representative · $100,000",
+          "date": "2025-06-26",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Anthony-Smith, Coretta",
+          "detail": "DEM · State Senator · $100,000",
+          "date": "2025-04-23",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Arguelles, Christina",
+          "detail": "NOP · County Judge · $100,000",
+          "date": "2025-12-30",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Avalos, Catalina M.",
+          "detail": "NOP · County Judge · $100,000",
+          "date": "2026-03-30",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Baez-Geller, Lucia",
+          "detail": "DEM · State Representative · $100,000",
+          "date": "2025-12-29",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        },
+        {
+          "title": "Barra, Deb",
+          "detail": "NOP · County Judge · $100,000",
+          "date": "2025-12-22",
+          "link": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+        }
+      ]
+    },
+    {
+      "id": "spending",
+      "label": "Florida Federal Contracts",
+      "category": "Campaign finance",
+      "file": "data/spending/florida-contracts.json",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": null,
+      "fetchedLive": true,
+      "count": 100,
+      "datasetUrl": "https://api.usaspending.gov/api/v2/search/spending_by_award/",
+      "note": "Top 100 federal awards with Florida place of performance, FY2024–present. Tier 1 official.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "NORTHROP GRUMMAN SYSTEMS CORPORATION",
+          "detail": "$8,478,019,987.67 · Department of Defense · Department of the Navy",
+          "date": "2018-02-15",
+          "link": "https://www.usaspending.gov/award/N0001918C1037"
+        },
+        {
+          "title": "LOCKHEED MARTIN CORPORATION",
+          "detail": "$6,948,968,023.22 · Department of Defense · Department of the Air Force",
+          "date": "2024-09-27",
+          "link": "https://www.usaspending.gov/award/FA868224CB001"
+        },
+        {
+          "title": "NORTHROP GRUMMAN SYSTEMS CORPORATION",
+          "detail": "$5,374,740,355.12 · Department of Defense · Department of the Navy",
+          "date": "2013-05-13",
+          "link": "https://www.usaspending.gov/award/N0001913C9999"
+        },
+        {
+          "title": "LOCKHEED MARTIN CORPORATION",
+          "detail": "$3,158,372,223.06 · Department of Defense · Department of the Army",
+          "date": "2018-09-29",
+          "link": "https://www.usaspending.gov/award/W31P4Q18C0130"
+        },
+        {
+          "title": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "detail": "$3,029,850,123.69 · National Aeronautics and Space Administration · National Aeronautics and Space Administration",
+          "date": "2016-12-30",
+          "link": "https://www.usaspending.gov/award/NNK17MA01T"
+        },
+        {
+          "title": "LOCKHEED MARTIN CORPORATION",
+          "detail": "$2,876,623,988 · Department of Defense · Department of the Navy",
+          "date": "2024-09-12",
+          "link": "https://www.usaspending.gov/award/N0003024C0100"
+        },
+        {
+          "title": "THALLE CONSTRUCTION CO INC",
+          "detail": "$2,510,603,694.68 · Department of Defense · Department of the Army",
+          "date": "2024-09-27",
+          "link": "https://www.usaspending.gov/award/W912EP24C0018"
+        },
+        {
+          "title": "LOCKHEED MARTIN CORPORATION",
+          "detail": "$2,213,842,633.09 · Department of Defense · Department of the Army",
+          "date": "2023-03-30",
+          "link": "https://www.usaspending.gov/award/W31P4Q23C0005"
+        },
+        {
+          "title": "AMENTUM TECHNOLOGY, INC.",
+          "detail": "$2,099,373,524.58 · National Aeronautics and Space Administration · National Aeronautics and Space Administration",
+          "date": "2013-03-01",
+          "link": "https://www.usaspending.gov/award/NNK13MA14C"
+        },
+        {
+          "title": "LOCKHEED MARTIN CORPORATION",
+          "detail": "$1,841,506,960.81 · Department of Defense · Department of the Army",
+          "date": "2015-09-14",
+          "link": "https://www.usaspending.gov/award/W31P4Q15C0151"
+        },
+        {
+          "title": "L3HARRIS TECHNOLOGIES, INC.",
+          "detail": "$1,826,088,581.86 · Department of Commerce · National Oceanic and Atmospheric Administration",
+          "date": "2009-05-27",
+          "link": "https://www.usaspending.gov/award/DOCDG133E09CN0094"
+        },
+        {
+          "title": "EASTERN SHIPBUILDING GROUP, INC.",
+          "detail": "$1,578,692,803.24 · Department of Homeland Security · U.S. Coast Guard",
+          "date": "2014-06-17",
+          "link": "https://www.usaspending.gov/award/HSCG2314CAPC002"
+        },
+        {
+          "title": "HARRIS CORPORATION",
+          "detail": "$1,558,797,291.63 · Department of Transportation · Federal Aviation Administration",
+          "date": "2008-07-25",
+          "link": "https://www.usaspending.gov/award/DTFA0102D03006CALL0001"
+        },
+        {
+          "title": "LOCKHEED MARTIN CORPORATION",
+          "detail": "$1,316,629,676 · Department of Defense · Department of the Air Force",
+          "date": "2018-08-13",
+          "link": "https://www.usaspending.gov/award/FA868118C0021"
+        },
+        {
+          "title": "LOCKHEED MARTIN CORPORATION",
+          "detail": "$1,285,393,895 · Department of Defense · Defense Contract Management Agency",
+          "date": "2023-09-05",
+          "link": "https://www.usaspending.gov/award/N0003023C0100"
+        },
+        {
+          "title": "RELIANCE TEST & TECHNOLOGY, LLC",
+          "detail": "$1,283,851,515.8 · Department of Defense · Department of the Air Force",
+          "date": "2016-04-01",
+          "link": "https://www.usaspending.gov/award/FA248616C0002"
+        },
+        {
+          "title": "LOCKHEED MARTIN CORPORATION",
+          "detail": "$1,253,498,024.34 · Department of Defense · Defense Contract Management Agency",
+          "date": "2019-08-30",
+          "link": "https://www.usaspending.gov/award/N0003019C0100"
+        },
+        {
+          "title": "HARRIS CORPORATION",
+          "detail": "$1,240,364,575.99 · Department of Transportation · Federal Aviation Administration",
+          "date": "2011-09-28",
+          "link": "https://www.usaspending.gov/award/DTFA0102D03006CALL0016"
+        },
+        {
+          "title": "LOCKHEED MARTIN CORPORATION",
+          "detail": "$1,223,741,780.87 · Department of Defense · Defense Contract Management Agency",
+          "date": "2020-08-07",
+          "link": "https://www.usaspending.gov/award/N0003020C0100"
+        },
+        {
+          "title": "LOCKHEED MARTIN CORPORATION",
+          "detail": "$1,188,295,253.82 · Department of Defense · Defense Contract Management Agency",
+          "date": "2021-08-10",
+          "link": "https://www.usaspending.gov/award/N0003021C0100"
+        },
+        {
+          "title": "LOCKHEED MARTIN CORPORATION",
+          "detail": "$1,164,277,426 · Department of Defense · Department of the Air Force",
+          "date": "2023-05-18",
+          "link": "https://www.usaspending.gov/award/FA868223CB001"
+        },
+        {
+          "title": "LOCKHEED MARTIN CORPORATION",
+          "detail": "$1,114,490,573.13 · Department of Defense · Department of the Air Force",
+          "date": "2021-02-22",
+          "link": "https://www.usaspending.gov/award/FA868221C0001"
+        },
+        {
+          "title": "AEROJET ROCKETDYNE COLEMAN AEROSPACE INC",
+          "detail": "$1,107,782,933.35 · Department of Defense · Missile Defense Agency",
+          "date": "2013-10-31",
+          "link": "https://www.usaspending.gov/award/HQ014714C0001"
+        },
+        {
+          "title": "LOCKHEED MARTIN CORPORATION",
+          "detail": "$1,028,083,764 · Department of Defense · Department of the Navy",
+          "date": "2022-08-18",
+          "link": "https://www.usaspending.gov/award/N0003022C0100"
+        },
+        {
+          "title": "AMENTUM TECHNOLOGY, INC.",
+          "detail": "$979,192,262.73 · Department of Defense · U.S. Special Operations Command",
+          "date": "2017-02-24",
+          "link": "https://www.usaspending.gov/award/H9222217F0069"
+        }
+      ]
+    },
+    {
+      "id": "bls",
+      "label": "Florida Labor Statistics",
+      "category": "Economic",
+      "file": "data/bls/florida-labor.json",
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": null,
+      "fetchedLive": true,
+      "count": 4,
+      "datasetUrl": "https://api.bls.gov/publicAPI/v1/timeseries/data/",
+      "note": "Florida statewide labor statistics (LAUS): latest reading + recent monthly history. Tier 1 official BLS.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "Unemployment rate",
+          "detail": "% · LAUST120000000000003 · 4.4",
+          "date": "May 2026",
+          "link": "https://data.bls.gov/timeseries/LAUST120000000000003"
+        },
+        {
+          "title": "Unemployment level",
+          "detail": "persons · LAUST120000000000004 · 492809",
+          "date": "May 2026",
+          "link": "https://data.bls.gov/timeseries/LAUST120000000000004"
+        },
+        {
+          "title": "Employment",
+          "detail": "persons · LAUST120000000000005 · 10606048",
+          "date": "May 2026",
+          "link": "https://data.bls.gov/timeseries/LAUST120000000000005"
+        },
+        {
+          "title": "Labor force",
+          "detail": "persons · LAUST120000000000006 · 11098857",
+          "date": "May 2026",
+          "link": "https://data.bls.gov/timeseries/LAUST120000000000006"
+        }
+      ]
+    },
+    {
+      "id": "census",
+      "label": "Florida Demographics (ACS)",
+      "category": "Economic",
+      "file": "data/census/florida-demographics.json",
+      "source": {
+        "name": "U.S. Census Bureau ACS",
+        "url": "https://api.census.gov",
+        "tier": "official",
+        "description": "American Community Survey 5-year estimates via api.census.gov"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": null,
+      "fetchedLive": true,
+      "count": 1,
+      "datasetUrl": "https://api.census.gov/data/2023/acs/acs5?get=NAME,B01003_001E,B19013_001E,B25077_001E&for=state:12&key=***",
+      "note": "State-level ACS demographics. Tier 1 official Census Bureau.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "Florida",
+          "detail": "21928881 · $71,711 · $325,000",
+          "date": "",
+          "link": "https://api.census.gov/data/2023/acs/acs5"
+        }
+      ]
+    },
+    {
+      "id": "civic",
+      "label": "Florida Congressional Districts",
+      "category": "Elections & districts",
+      "file": "data/civic/florida-districts.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": null,
+      "fetchedLive": true,
+      "count": 28,
+      "datasetUrl": null,
+      "note": "Substitute for deprecated Google Civic representatives API. District seats from congress-legislators; geocoder for address lookup.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "[object Object]",
+          "detail": "Senate seats are statewide; district field 0 denotes statewide senators. · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        },
+        {
+          "title": "[object Object]",
+          "detail": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1). · https://unitedstates.github.io/congress-legislators/legislators-current.json",
+          "date": "",
+          "link": "https://geocoding.geo.census.gov/geocoder/geographies/address"
+        }
+      ]
+    },
+    {
+      "id": "fedregister",
+      "label": "Federal Register — Florida",
+      "category": "Government actions",
+      "file": "data/fedregister/florida-documents.json",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": null,
+      "fetchedLive": true,
+      "count": 100,
+      "datasetUrl": "https://www.federalregister.gov/api/v1/documents.json?conditions[term]=Florida",
+      "note": "Most recent 100 Federal Register documents matching \"Florida\" (rules, proposed rules, notices, presidential documents). Tier 1 official.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "Foreign-Trade Zone (FTZ) 32; Authorization of Production Activity; 3nStar, Inc.; (Point of Sale Terminals); Doral, Florida",
+          "detail": "Notice",
+          "date": "2026-06-24",
+          "link": "https://www.federalregister.gov/documents/2026/06/24/2026-12659/foreign-trade-zone-ftz-32-authorization-of-production-activity-3nstar-inc-point-of-sale-terminals"
+        },
+        {
+          "title": "Foreign-Trade Zone (FTZ) 193; Authorization of Production Activity; Lithionics Battery, LLC; (Lithium-Ion Battery Systems and Accessories); Clearwater, Florida",
+          "detail": "Notice",
+          "date": "2026-06-22",
+          "link": "https://www.federalregister.gov/documents/2026/06/22/2026-12501/foreign-trade-zone-ftz-193-authorization-of-production-activity-lithionics-battery-llc-lithium-ion"
+        },
+        {
+          "title": "Qualification of Drivers; Exemption Applications; Epilepsy and Seizure Disorders",
+          "detail": "Notice · FMCSA announces receipt of applications from six individuals for an exemption from the prohibition in the Federal Motor Carrier Safety Regulations (FMCSRs) against persons with a clinical diagnosis of epilepsy or any other condition that is likely to cause a loss of consciousness or any loss of ability to control a commercial motor vehicle (CMV) to drive in interstate commerce. If granted, the exemptions would enable these individuals who have had one or more seizures and are taking anti-seizure medication to operate CMVs in interstate commerce.",
+          "date": "2026-06-22",
+          "link": "https://www.federalregister.gov/documents/2026/06/22/2026-12455/qualification-of-drivers-exemption-applications-epilepsy-and-seizure-disorders"
+        },
+        {
+          "title": "Notice of Intended Repatriation: University of Alabama Museums, Tuscaloosa, AL",
+          "detail": "Notice · In accordance with the Native American Graves Protection and Repatriation Act (NAGPRA), the University of Alabama Museums intends to repatriate certain cultural items that meet the definition of unassociated funerary objects and that have a cultural affiliation with the Indian Tribes or Native Hawaiian organizations in this notice.",
+          "date": "2026-06-22",
+          "link": "https://www.federalregister.gov/documents/2026/06/22/2026-12389/notice-of-intended-repatriation-university-of-alabama-museums-tuscaloosa-al"
+        },
+        {
+          "title": "Notice of Inventory Completion: School of Social Science and Global Studies, University of Southern Mississippi, Hattiesburg, MS",
+          "detail": "Notice · In accordance with the Native American Graves Protection and Repatriation Act (NAGPRA), the University of Southern Mississippi (USM) has completed an inventory of human remains and has determined that there is a cultural affiliation between the human remains and Indian Tribes or Native Hawaiian organizations in this notice.",
+          "date": "2026-06-22",
+          "link": "https://www.federalregister.gov/documents/2026/06/22/2026-12383/notice-of-inventory-completion-school-of-social-science-and-global-studies-university-of-southern"
+        },
+        {
+          "title": "Combined Notice of Filings #1",
+          "detail": "Notice",
+          "date": "2026-06-18",
+          "link": "https://www.federalregister.gov/documents/2026/06/18/2026-12317/combined-notice-of-filings-1"
+        },
+        {
+          "title": "Combined Notice of Filings #1",
+          "detail": "Notice",
+          "date": "2026-06-17",
+          "link": "https://www.federalregister.gov/documents/2026/06/17/2026-12184/combined-notice-of-filings-1"
+        },
+        {
+          "title": "Reef Fish Fishery of the Gulf of America; Shallow-Water Grouper Management Measures",
+          "detail": "Rule · NMFS issues regulations to implement management measures described in a framework action under the Fishery Management Plan for the Reef Fish Resources of the Gulf (FMP), as prepared by the Gulf Council (Council). This final rule modifies the Gulf of America (Gulf) Other Shallow-Water Grouper (SWG) complex catch limits and sets a recreational fixed-closed season for Gulf Other SWG. The purpose of this final rule is to reduce harvest of Gulf scamp and yellowmouth grouper while the Council develops Amendment 58A to the FMP (Amendment 58A), which considers additional Other SWG management measures.",
+          "date": "2026-06-17",
+          "link": "https://www.federalregister.gov/documents/2026/06/17/2026-12175/reef-fish-fishery-of-the-gulf-of-america-shallow-water-grouper-management-measures"
+        },
+        {
+          "title": "Security Zone; FIFA World Cup and Fan Fest 2026, Bayfront Park, Miami, FL",
+          "detail": "Rule · The Coast Guard is establishing a temporary security zone for certain navigable waters of Biscayne Bay in connection with the 2026 Miami FIFA World Cup and the World Cup Fan Fest events in Miami, Florida. This security zone is necessary to safeguard official parties, VIP's and other participants (\"attendees\") attending the Miami 2026 FIFA World Cup and the World Cup Fan Fest because the ease of waterfront access to the various venues hosting the World Cup events presents a security concern for all attendees. This rulemaking prohibits anchoring or remaining within the security zone during enforcement periods unless specifically authorized by the Captain of the Port (COTP), Sector Miami or their designated representative.",
+          "date": "2026-06-17",
+          "link": "https://www.federalregister.gov/documents/2026/06/17/2026-12168/security-zone-fifa-world-cup-and-fan-fest-2026-bayfront-park-miami-fl"
+        },
+        {
+          "title": "Medicare Program; Strengthening Oversight of Accrediting Organizations (AOs) and Preventing AO Conflicts of Interest, and Related Provisions",
+          "detail": "Rule · This final rule with comment period sets forth provisions to strengthen the oversight of Medicare national accrediting organizations by addressing conflicts of interest, establishing consistent standards, processes, and definitions, and updating the validation and performance standards systems. Additionally, this final rule with comment period revises the psychiatric hospital survey process, adds a limitation on terminated deemed providers and suppliers when reentering the program, and provides technical corrections for End-Stage Renal Disease facilities and Transplant Programs.",
+          "date": "2026-06-16",
+          "link": "https://www.federalregister.gov/documents/2026/06/16/2026-12069/medicare-program-strengthening-oversight-of-accrediting-organizations-aos-and-preventing-ao"
+        },
+        {
+          "title": "National Register of Historic Places; Notification of Pending Nominations and Related Actions",
+          "detail": "Notice · The National Park Service is soliciting electronic comments on the significance of properties nominated before May 30, 2026, for listing or related actions in the National Register of Historic Places.",
+          "date": "2026-06-16",
+          "link": "https://www.federalregister.gov/documents/2026/06/16/2026-12040/national-register-of-historic-places-notification-of-pending-nominations-and-related-actions"
+        },
+        {
+          "title": "National Vaccine Injury Compensation Program; List of Petitions Received",
+          "detail": "Notice · HRSA is publishing this notice of petitions received under the National Vaccine Injury Compensation Program (the Program), as required by the Public Health Service (PHS) Act, as amended. While the Secretary of HHS is named as the respondent in all proceedings brought by the filing of petitions for compensation under the Program, the United States Court of Federal Claims is charged by statute with responsibility for considering and acting upon the petitions.",
+          "date": "2026-06-15",
+          "link": "https://www.federalregister.gov/documents/2026/06/15/2026-11972/national-vaccine-injury-compensation-program-list-of-petitions-received"
+        },
+        {
+          "title": "Certain TOPCon Solar Cells, Modules, Panels, Components Thereof, and Products Containing Same; Notice of a Commission Determination Not To Review an Initial Determination Granting Tesla, Inc.'s Motion To Intervene",
+          "detail": "Notice · Notice is hereby given that the U.S. International Trade Commission has determined not to review an initial determination (\"ID\") (Order No. 10) of the presiding administrative law judge (\"ALJ\") granting a motion to intervene filed by non-party Tesla, Inc. (\"Tesla\").",
+          "date": "2026-06-15",
+          "link": "https://www.federalregister.gov/documents/2026/06/15/2026-11907/certain-topcon-solar-cells-modules-panels-components-thereof-and-products-containing-same-notice-of"
+        },
+        {
+          "title": "Partial Withdrawals of Findings of Failure To Submit State Implementation Plan (SIP) Revisions To Amend Provisions Applying to Excess Emissions During Periods of Startup, Shutdown, and Malfunction",
+          "detail": "Rule · The U.S. Environmental Protection Agency (EPA) is partially withdrawing two final actions finding that 13 States and/or local air pollution control agencies failed to submit State Implementation Plan (SIP) revisions to address the Agency's 2015 findings of substantial inadequacy and \"SIP call\" for provisions applying to excess emissions during periods of startup, shutdown, and malfunction (SSM). The partial withdrawal affects six air pollution control agencies. Withdrawing relevant parts of the findings for failure to submit is consistent with the decision from the U.S. Court of Appeals for the District of Columbia Circuit Court (D.C. Circuit) partially vacating the findings of substantial inadequacy and SIP call. This final action renders no longer applicable certain CAA deadlines for the EPA to impose sanctions if a State does not submit a complete SIP revision addressing the outstanding requirements, and to promulgate a Federal Implementation Plan (FIP).",
+          "date": "2026-06-12",
+          "link": "https://www.federalregister.gov/documents/2026/06/12/2026-11884/partial-withdrawals-of-findings-of-failure-to-submit-state-implementation-plan-sip-revisions-to"
+        },
+        {
+          "title": "Pecans Grown in the States of Alabama, Arkansas, Arizona, California, Florida, Georgia, Kansas, Louisiana, Missouri, Mississippi, North Carolina, New Mexico, Oklahoma, South Carolina, and Texas; Continuance Referendum",
+          "detail": "Notice · This document directs that a referendum be conducted among eligible pecan growers to determine whether they favor continuance of the marketing order regulating the handling of pecans grown in the states of Alabama, Arkansas, Arizona, California, Florida, Georgia, Kansas, Louisiana, Missouri, Mississippi, North Carolina, New Mexico, Oklahoma, South Carolina, and Texas.",
+          "date": "2026-06-12",
+          "link": "https://www.federalregister.gov/documents/2026/06/12/2026-11883/pecans-grown-in-the-states-of-alabama-arkansas-arizona-california-florida-georgia-kansas-louisiana"
+        },
+        {
+          "title": "Receipt of Incidental Take Permit Application and Proposed Habitat Conservation Plan for Sand Skink; Lake County, FL; Categorical Exclusion",
+          "detail": "Notice · We, the Fish and Wildlife Service (Service), announce receipt of an application from Lake County Development Partners, LLC (Casa del Rosa) (applicant) for an incidental take permit (ITP) under the Endangered Species Act (ESA). The applicant requests the ITP to take the federally listed threatened sand skink (Neopseps=(Plestiodon) reynoldsi) (skinks) incidental to the construction of a mixed multi- phase residential and commercial development and the associated clearing, infrastructure, and landscaping in Lake County, Florida. We request public comment on the application, which includes the applicant's proposed habitat conservation plan, and on the Service's preliminary determination that the proposed permitting action may be eligible for a categorical exclusion pursuant to the National Environmental Policy Act (NEPA), the Department of the Interior's (DOI) NEPA regulations, and the DOI Departmental Manual. To make this preliminary determination, we prepared a draft screening form and NEPA statement for habitat conservation plans, which are available for public review. We invite comment from the public and local, State, Tribal, and Federal agencies.",
+          "date": "2026-06-12",
+          "link": "https://www.federalregister.gov/documents/2026/06/12/2026-11870/receipt-of-incidental-take-permit-application-and-proposed-habitat-conservation-plan-for-sand-skink"
+        },
+        {
+          "title": "Pecans Grown in the States of Alabama, Arkansas, Arizona, California, Florida, Georgia, Kansas, Louisiana, Missouri, Mississippi, North Carolina, New Mexico, Oklahoma, South Carolina, and Texas; Notice of Request for Extension and Revision of a Currently Approved Information Collection",
+          "detail": "Notice · In accordance with the Paperwork Reduction Act of 1995, this notice announces the Agricultural Marketing Service's (AMS) intention to request an extension for, and revision to, a currently approved information collection for Pecans Grown in the States of Alabama, Arkansas, Arizona, California, Florida, Georgia, Kansas, Louisiana, Missouri, Mississippi, North Carolina, New Mexico, Oklahoma, South Carolina, and Texas, Marketing Order No. 986.",
+          "date": "2026-06-12",
+          "link": "https://www.federalregister.gov/documents/2026/06/12/2026-11847/pecans-grown-in-the-states-of-alabama-arkansas-arizona-california-florida-georgia-kansas-louisiana"
+        },
+        {
+          "title": "Drawbridge Operation Regulation; Big Carlos Pass, Estero Island, FL",
+          "detail": "Rule · The Coast Guard is removing the existing drawbridge operation regulation for the SR 865 Bridge, across Big Carlos Pass, mile 0.0, at Estero Island and Black Island, FL. The drawbridge was replaced with a fixed bridge in April 2026, and the operating regulation is no longer applicable or necessary.",
+          "date": "2026-06-12",
+          "link": "https://www.federalregister.gov/documents/2026/06/12/2026-11838/drawbridge-operation-regulation-big-carlos-pass-estero-island-fl"
+        },
+        {
+          "title": "Uniform Procedures for State Highway Safety Grant Programs",
+          "detail": "Rule · This action finalizes proposed revisions to certain documentation requirements relating to public participation and engagement in the Uniform Procedures for State Highway Safety Grant Programs.",
+          "date": "2026-06-11",
+          "link": "https://www.federalregister.gov/documents/2026/06/11/2026-11770/uniform-procedures-for-state-highway-safety-grant-programs"
+        },
+        {
+          "title": "Special Local Regulation; CFK Swim Around Key West, Key West, FL",
+          "detail": "Rule · The Coast Guard will enforce the special local regulation for the College of the Florida Keys Swim Around Key West on June 13, 2026, to provide for the safety of life on navigable waterways during this event. Our regulation for recurring marine events within the Southeast Coast Guard District identifies the regulated area for this event. During the enforcement periods, the operator of any vessel in the regulated area must comply with directions from the Patrol Commander or any Official Patrol displaying a Coast Guard ensign.",
+          "date": "2026-06-11",
+          "link": "https://www.federalregister.gov/documents/2026/06/11/2026-11726/special-local-regulation-cfk-swim-around-key-west-key-west-fl"
+        },
+        {
+          "title": "Changes in Flood Hazard Determinations",
+          "detail": "Notice · This notice lists communities where the addition or modification of Base Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, or the regulatory floodway (hereinafter referred to as flood hazard determinations), as shown on the Flood Insurance Rate Maps (FIRMs), and where applicable, in the supporting Flood Insurance Study (FIS) reports, prepared by the Federal Emergency Management Agency (FEMA) for each community, is appropriate because of new scientific or technical data. The FIRM, and where applicable, portions of the FIS report, have been revised to reflect these flood hazard determinations through issuance of a Letter of Map Revision (LOMR), in accordance with Federal Regulations. The current effective community number is shown in the table below and must be used for all new policies and renewals.",
+          "date": "2026-06-11",
+          "link": "https://www.federalregister.gov/documents/2026/06/11/2026-11677/changes-in-flood-hazard-determinations"
+        },
+        {
+          "title": "Changes in Flood Hazard Determinations",
+          "detail": "Notice · This notice lists communities where the addition or modification of Base Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, or the regulatory floodway (hereinafter referred to as flood hazard determinations), as shown on the Flood Insurance Rate Maps (FIRMs), and where applicable, in the supporting Flood Insurance Study (FIS) reports, prepared by the Federal Emergency Management Agency (FEMA) for each community, is appropriate because of new scientific or technical data. The FIRM, and where applicable, portions of the FIS report, have been revised to reflect these flood hazard determinations through issuance of a Letter of Map Revision (LOMR), in accordance with Federal Regulations. The current effective community number is shown in the table below and must be used for all new policies and renewals.",
+          "date": "2026-06-11",
+          "link": "https://www.federalregister.gov/documents/2026/06/11/2026-11676/changes-in-flood-hazard-determinations"
+        },
+        {
+          "title": "Changes in Flood Hazard Determinations",
+          "detail": "Notice · New or modified Base (1-percent annual chance) Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, and/or regulatory floodways (hereinafter referred to as flood hazard determinations) as shown on the indicated Letter of Map Revision (LOMR) for each of the communities listed in the table below are finalized. Each LOMR revises the Flood Insurance Rate Maps (FIRMs), and in some cases the Flood Insurance Study (FIS) reports, currently in effect for the listed communities.",
+          "date": "2026-06-11",
+          "link": "https://www.federalregister.gov/documents/2026/06/11/2026-11675/changes-in-flood-hazard-determinations"
+        },
+        {
+          "title": "Changes in Flood Hazard Determinations",
+          "detail": "Notice · New or modified Base (1-percent annual chance) Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, and/or regulatory floodways (hereinafter referred to as flood hazard determinations) as shown on the indicated Letter of Map Revision (LOMR) for each of the communities listed in the table below are finalized. Each LOMR revises the Flood Insurance Rate Maps (FIRMs), and in some cases the Flood Insurance Study (FIS) reports, currently in effect for the listed communities.",
+          "date": "2026-06-11",
+          "link": "https://www.federalregister.gov/documents/2026/06/11/2026-11674/changes-in-flood-hazard-determinations"
+        },
+        {
+          "title": "Changes in Flood Hazard Determinations",
+          "detail": "Notice · This notice lists communities where the addition or modification of Base Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, or the regulatory floodway (hereinafter referred to as flood hazard determinations), as shown on the Flood Insurance Rate Maps (FIRMs), and where applicable, in the supporting Flood Insurance Study (FIS) reports, prepared by the Federal Emergency Management Agency (FEMA) for each community, is appropriate because of new scientific or technical data. The FIRM, and where applicable, portions of the FIS report, have been revised to reflect these flood hazard determinations through issuance of a Letter of Map Revision (LOMR), in accordance with Federal Regulations. The current effective community number is shown in the table below and must be used for all new policies and renewals.",
+          "date": "2026-06-11",
+          "link": "https://www.federalregister.gov/documents/2026/06/11/2026-11670/changes-in-flood-hazard-determinations"
+        }
+      ]
+    },
+    {
+      "id": "fara",
+      "label": "Foreign Agent Registrations",
+      "category": "Government actions",
+      "file": "data/fara/florida-registrants.json",
+      "source": {
+        "name": "DOJ FARA eFile",
+        "url": "https://www.fara.gov",
+        "tier": "official",
+        "description": "Foreign Agents Registration Act disclosures via efts.fara.justice.gov"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": null,
+      "fetchedLive": false,
+      "count": 0,
+      "datasetUrl": "https://efts.fara.justice.gov/motd-search/api/documents",
+      "note": "FARA registrants with Florida address. Tier 1 official DOJ source.",
+      "errors": [
+        "fetch failed"
+      ],
+      "sample": []
+    },
+    {
+      "id": "sam",
+      "label": "Florida Federal Contractors",
+      "category": "Government actions",
+      "file": "data/sam/florida-contractors.json",
+      "source": {
+        "name": "SAM.gov",
+        "url": "https://sam.gov",
+        "tier": "official",
+        "description": "System for Award Management entity registrations via api.sam.gov"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": null,
+      "fetchedLive": false,
+      "count": 0,
+      "datasetUrl": null,
+      "note": "Blocked: SAM.gov API requires login.gov identity-verified account. No record on file until SAM_API_KEY obtained.",
+      "errors": [
+        "SAM_API_KEY not configured"
+      ],
+      "sample": []
+    },
+    {
+      "id": "courts",
+      "label": "Florida Supreme Court Opinions",
+      "category": "Judiciary",
+      "file": "data/courts/florida-court-opinions.json",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": null,
+      "fetchedLive": true,
+      "count": 60,
+      "datasetUrl": "https://www.courtlistener.com/api/rest/v4/search/?type=o&court=fla",
+      "note": "Most recent Supreme Court of Florida opinions (newest-first). Tier 2 aggregator of official court records.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "Dusty Ray Spencer v. State of Florida",
+          "detail": "Supreme Court of Florida · SC2026-0880 · Published",
+          "date": "2026-06-18",
+          "link": "https://www.courtlistener.com/opinion/10877287/dusty-ray-spencer-v-state-of-florida/"
+        },
+        {
+          "title": "Eric Desmond Parrish v. State of Florida",
+          "detail": "Supreme Court of Florida · SC2022-1457 · Published",
+          "date": "2026-06-18",
+          "link": "https://www.courtlistener.com/opinion/10876940/eric-desmond-parrish-v-state-of-florida/"
+        },
+        {
+          "title": "Gary Richard Whitton v. State of Florida",
+          "detail": "Supreme Court of Florida · SC2025-1357 · Published",
+          "date": "2026-06-18",
+          "link": "https://www.courtlistener.com/opinion/10876939/gary-richard-whitton-v-state-of-florida/"
+        },
+        {
+          "title": "Harold Lee Harvey, Jr. v. State of Florida",
+          "detail": "Supreme Court of Florida · SC2024-0648 · Published",
+          "date": "2026-06-18",
+          "link": "https://www.courtlistener.com/opinion/10876938/harold-lee-harvey-jr-v-state-of-florida/"
+        },
+        {
+          "title": "In Re: Amendments to Florida Probate Rules",
+          "detail": "Supreme Court of Florida · SC2025-1462 · Published",
+          "date": "2026-06-18",
+          "link": "https://www.courtlistener.com/opinion/10876937/in-re-amendments-to-florida-probate-rules/"
+        },
+        {
+          "title": "In Re: Amendments to Florida Rules of Appellate Procedure",
+          "detail": "Supreme Court of Florida · SC2025-0241 · Published",
+          "date": "2026-06-11",
+          "link": "https://www.courtlistener.com/opinion/10873672/in-re-amendments-to-florida-rules-of-appellate-procedure/"
+        },
+        {
+          "title": "In Re: Amendments to Florida Rules of Juvenile Procedure 8.203 and 8.330",
+          "detail": "Supreme Court of Florida · SC2025-1362 · Published",
+          "date": "2026-06-11",
+          "link": "https://www.courtlistener.com/opinion/10873671/in-re-amendments-to-florida-rules-of-juvenile-procedure-8203-and-8330/"
+        },
+        {
+          "title": "Isaac \"Ike\" Perlmutter v. Federal Insurance Company",
+          "detail": "Supreme Court of Florida · SC2024-0058 · Published",
+          "date": "2026-06-11",
+          "link": "https://www.courtlistener.com/opinion/10873670/isaac-ike-perlmutter-v-federal-insurance-company/"
+        },
+        {
+          "title": "Michael Lawrence Woodbury v. State of Florida & Michael Lawrence Woodbury v. Secretary, Department of Corrections",
+          "detail": "Supreme Court of Florida · SC2024-0232 & SC2024-1127 · Published",
+          "date": "2026-06-11",
+          "link": "https://www.courtlistener.com/opinion/10873669/michael-lawrence-woodbury-v-state-of-florida-michael-lawrence-woodbury/"
+        },
+        {
+          "title": "The Florida Bar v. Kenneth Chesebro",
+          "detail": "Supreme Court of Florida · SC2024-1528 · Published",
+          "date": "2026-06-11",
+          "link": "https://www.courtlistener.com/opinion/10873668/the-florida-bar-v-kenneth-chesebro/"
+        },
+        {
+          "title": "Equal Ground Education Fund, Inc. v. Secretary, Florida Department of State",
+          "detail": "Supreme Court of Florida · SC2026-0857 · Published",
+          "date": "2026-06-10",
+          "link": "https://www.courtlistener.com/opinion/10873345/equal-ground-education-fund-inc-v-secretary-florida-department-of-state/"
+        },
+        {
+          "title": "Citizens of the State of Florida, Etc. v. Florida Public Service Commission",
+          "detail": "Supreme Court of Florida · SC2023-0988 · Published",
+          "date": "2026-06-04",
+          "link": "https://www.courtlistener.com/opinion/10870072/citizens-of-the-state-of-florida-etc-v-florida-public-service-commission/"
+        },
+        {
+          "title": "In Re: Amendments to Florida Small Claims Rule 7.070",
+          "detail": "Supreme Court of Florida · SC2025-1254 · Published",
+          "date": "2026-06-04",
+          "link": "https://www.courtlistener.com/opinion/10870071/in-re-amendments-to-florida-small-claims-rule-7070/"
+        },
+        {
+          "title": "In Re: Amendments to Rules Regulating the Florida Bar - Rule 5-1.1",
+          "detail": "Supreme Court of Florida · SC2025-1730 · Published",
+          "date": "2026-06-04",
+          "link": "https://www.courtlistener.com/opinion/10870070/in-re-amendments-to-rules-regulating-the-florida-bar-rule-5-11/"
+        },
+        {
+          "title": "Clint Shannon Gessner v. Southern Company",
+          "detail": "Supreme Court of Florida · SC2024-1835 · Published",
+          "date": "2026-05-28",
+          "link": "https://www.courtlistener.com/opinion/10865531/clint-shannon-gessner-v-southern-company/"
+        },
+        {
+          "title": "In Re: Amendments to Florida Rule of General Practice and Judicial Administration 2.515",
+          "detail": "Supreme Court of Florida · SC2026-0673 · Published",
+          "date": "2026-05-28",
+          "link": "https://www.courtlistener.com/opinion/10865530/in-re-amendments-to-florida-rule-of-general-practice-and-judicial/"
+        },
+        {
+          "title": "Andrew Richard Lukehart v. State of Florida",
+          "detail": "Supreme Court of Florida · SC2026-0736 · Published",
+          "date": "2026-05-27",
+          "link": "https://www.courtlistener.com/opinion/10865092/andrew-richard-lukehart-v-state-of-florida/"
+        },
+        {
+          "title": "Darious Wilcox v. State of Florida & Darious Wilcox v. Secretary, Department of Corrections",
+          "detail": "Supreme Court of Florida · SC2023-1498 & SC2024-0785 · Published",
+          "date": "2026-05-21",
+          "link": "https://www.courtlistener.com/opinion/10862767/darious-wilcox-v-state-of-florida-darious-wilcox-v-secretary/"
+        },
+        {
+          "title": "Walter Javier Arrazola Mendivil v. the Florida Bar",
+          "detail": "Supreme Court of Florida · SC2026-0210 · Published",
+          "date": "2026-05-21",
+          "link": "https://www.courtlistener.com/opinion/10862766/walter-javier-arrazola-mendivil-v-the-florida-bar/"
+        },
+        {
+          "title": "Marcus Roland Maye v. State of Florida",
+          "detail": "Supreme Court of Florida · SC2023-1184 · Published",
+          "date": "2026-05-15",
+          "link": "https://www.courtlistener.com/opinion/10860155/marcus-roland-maye-v-state-of-florida/"
+        },
+        {
+          "title": "Richard Knight v. State of Florida",
+          "detail": "Supreme Court of Florida · SC2026-0718 · Published",
+          "date": "2026-05-15",
+          "link": "https://www.courtlistener.com/opinion/10860154/richard-knight-v-state-of-florida/"
+        },
+        {
+          "title": "In Re: Amendments to Florida Rules of General Practice and Judicial Administration 2.530 and 2.540",
+          "detail": "Supreme Court of Florida · SC2025-0725 · Published",
+          "date": "2026-05-14",
+          "link": "https://www.courtlistener.com/opinion/10858764/in-re-amendments-to-florida-rules-of-general-practice-and-judicial/"
+        },
+        {
+          "title": "Marcus Roland Maye v. State of Florida",
+          "detail": "Supreme Court of Florida · SC2023-1184 · Published",
+          "date": "2026-05-14",
+          "link": "https://www.courtlistener.com/opinion/10858763/marcus-roland-maye-v-state-of-florida/"
+        },
+        {
+          "title": "James Aren Duckett v. State of Florida",
+          "detail": "Supreme Court of Florida · SC2026-0528 · Published",
+          "date": "2026-04-30",
+          "link": "https://www.courtlistener.com/opinion/10851061/james-aren-duckett-v-state-of-florida/"
+        },
+        {
+          "title": "James Ernest Hitchcock v. State of Florida",
+          "detail": "Supreme Court of Florida · SC2026-0574 · Published",
+          "date": "2026-04-23",
+          "link": "https://www.courtlistener.com/opinion/10847348/james-ernest-hitchcock-v-state-of-florida/"
+        }
+      ]
+    },
+    {
+      "id": "govinfo",
+      "label": "Florida Legislative Documents",
+      "category": "Legislative",
+      "file": "data/govinfo/florida-legislative-docs.json",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": "2026-06-24T15:29:37.411Z",
+      "fetchedLive": true,
+      "count": 40,
+      "datasetUrl": "https://api.govinfo.gov/search",
+      "note": "Recent Florida-related federal legislative documents (bills, Congressional Record, committee reports) via GovInfo. Tier 1 official GPO.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "ADDITIONAL COSPONSORS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-22",
+          "date": "2026-06-22",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-22"
+        },
+        {
+          "title": "SENATE COMMITTEE MEETINGS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-22",
+          "date": "2026-06-22",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-22"
+        },
+        {
+          "title": "HONORING MARTHA ANN HART CUSIMANO FOR HER CONTRIBUTIONS TO CENTRAL FLORIDA",
+          "detail": "Congressional Record · CREC · CREC-2026-06-22",
+          "date": "2026-06-22",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-22"
+        },
+        {
+          "title": "Daily Digest/CONGRESSIONAL PROGRAM AHEAD",
+          "detail": "Congressional Record · CREC · CREC-2026-06-22",
+          "date": "2026-06-22",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-22"
+        },
+        {
+          "title": "ADDITIONAL COSPONSORS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+        },
+        {
+          "title": "INTRODUCTION OF BILLS AND JOINT RESOLUTIONS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+        },
+        {
+          "title": "EXECUTIVE REPORTS OF COMMITTEES",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+        },
+        {
+          "title": "Vote on Holding Nomination (Executive Calendar)",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+        },
+        {
+          "title": "Unanimous Consent Request--S. Res. 554 (Executive Calendar)",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+        },
+        {
+          "title": "ADDITIONAL SPONSORS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+        },
+        {
+          "title": "Constitutional Authority Statement for H.J. Res. 197",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+        },
+        {
+          "title": "PUBLIC BILLS AND RESOLUTIONS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+        },
+        {
+          "title": "HONORING THE LIFE OF GEDONE RAULERSON PRACHAR",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+        },
+        {
+          "title": "HONORING MISS PRESLEY BENNETT MISS ARKANSAS' TEEN 2026",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+        },
+        {
+          "title": "HONORING THE LIFE AND LEGACY OF COLONEL FRANCIS \"LEN\" LEONARD LOVING",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+        },
+        {
+          "title": "Daily Digest/Senate Committee Meetings",
+          "detail": "Congressional Record · CREC · CREC-2026-06-18",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+        },
+        {
+          "title": "Remembering kindness in the United States and affirming our commitment to fostering community and building resiliency through every day acts of kindness.",
+          "detail": "Congressional Bill · BILLS · BILLS-119hres1372ih",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/BILLS-119hres1372ih"
+        },
+        {
+          "title": "Expressing support for a World Sickle Cell Awareness Day in order to increase public awareness across the United States and global community about sickle cell disease and the continued need for empirical research, early detection screenings, novel effective treatments leading to a cure, and preventative care programs with respect to complications from sickle cell anemia and conditions relating to sickle cell disease.",
+          "detail": "Congressional Bill · BILLS · BILLS-119hres1371ih",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/BILLS-119hres1371ih"
+        },
+        {
+          "title": "Ratepayer Protection Act",
+          "detail": "Congressional Bill · BILLS · BILLS-119hr9340ih",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/BILLS-119hr9340ih"
+        },
+        {
+          "title": "Repealing Big Brother Overreach Act",
+          "detail": "Congressional Bill · BILLS · BILLS-119hr425rh",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/BILLS-119hr425rh"
+        },
+        {
+          "title": "FDA Modernization Act 3.0",
+          "detail": "Congressional Bill · BILLS · BILLS-119hr2821rh",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/BILLS-119hr2821rh"
+        },
+        {
+          "title": "Providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Centers for Medicare & Medicaid Services of the Department of Health and Human Services relating to Patient Protection and Affordable Care Act, HHS Notice of Benefit and Payment Parameters for 2027; and Basic Health Program.",
+          "detail": "Congressional Bill · BILLS · BILLS-119hjres197ih",
+          "date": "2026-06-18",
+          "link": "https://www.govinfo.gov/app/details/BILLS-119hjres197ih"
+        },
+        {
+          "title": "Text of Senate Amendment 5831",
+          "detail": "Congressional Record · CREC · CREC-2026-06-17",
+          "date": "2026-06-17",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-17"
+        },
+        {
+          "title": "TEXT OF AMENDMENTS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-17",
+          "date": "2026-06-17",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-17"
+        },
+        {
+          "title": "AMENDMENTS SUBMITTED AND PROPOSED",
+          "detail": "Congressional Record · CREC · CREC-2026-06-17",
+          "date": "2026-06-17",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-17"
+        }
+      ]
+    },
+    {
+      "id": "voteview",
+      "label": "Florida Congressional Ideology",
+      "category": "Legislative",
+      "file": "data/voteview/florida-ideology.json",
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": "2026-06-24T15:48:55.845Z",
+      "fetchedLive": true,
+      "count": 32,
+      "datasetUrl": "https://voteview.com/static/data/out/members/H119_members.csv",
+      "note": "DW-NOMINATE ideology scores for Florida U.S. House & Senate members, 119th Congress. nominateEconomic is the 1st dimension (economic/redistribution axis), nominateSocial the 2nd; values roughly -1 to +1. A sourced nonpartisan political-science metric, not an editorial label. Tier 2.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "DIAZ-BALART, Mario",
+          "detail": "House · Republican · 26",
+          "date": "",
+          "link": "https://voteview.com/person/20316"
+        },
+        {
+          "title": "WASSERMAN SCHULTZ, Debbie",
+          "detail": "House · Democrat · 25",
+          "date": "",
+          "link": "https://voteview.com/person/20504"
+        },
+        {
+          "title": "CASTOR, Kathy",
+          "detail": "House · Democrat · 14",
+          "date": "",
+          "link": "https://voteview.com/person/20708"
+        },
+        {
+          "title": "BUCHANAN, Vernon G.",
+          "detail": "House · Republican · 16",
+          "date": "",
+          "link": "https://voteview.com/person/20709"
+        },
+        {
+          "title": "BILIRAKIS, Gus",
+          "detail": "House · Republican · 12",
+          "date": "",
+          "link": "https://voteview.com/person/20758"
+        },
+        {
+          "title": "WEBSTER, Daniel A.",
+          "detail": "House · Republican · 11",
+          "date": "",
+          "link": "https://voteview.com/person/21116"
+        },
+        {
+          "title": "WILSON, Frederica",
+          "detail": "House · Democrat · 24",
+          "date": "",
+          "link": "https://voteview.com/person/21118"
+        },
+        {
+          "title": "FRANKEL, Lois",
+          "detail": "House · Democrat · 22",
+          "date": "",
+          "link": "https://voteview.com/person/21321"
+        },
+        {
+          "title": "DUNN, Neal Patrick",
+          "detail": "House · Republican · 2",
+          "date": "",
+          "link": "https://voteview.com/person/21714"
+        },
+        {
+          "title": "MAST, Brian Jeffrey",
+          "detail": "House · Republican · 21",
+          "date": "",
+          "link": "https://voteview.com/person/21735"
+        },
+        {
+          "title": "RUTHERFORD, John Henry",
+          "detail": "House · Republican · 5",
+          "date": "",
+          "link": "https://voteview.com/person/21744"
+        },
+        {
+          "title": "SOTO, Darren Michael",
+          "detail": "House · Democrat · 9",
+          "date": "",
+          "link": "https://voteview.com/person/21746"
+        },
+        {
+          "title": "STEUBE, W. Greg",
+          "detail": "House · Republican · 17",
+          "date": "",
+          "link": "https://voteview.com/person/21971"
+        },
+        {
+          "title": "WALTZ, Michael",
+          "detail": "House · Republican · 6",
+          "date": "",
+          "link": "https://voteview.com/person/21981"
+        },
+        {
+          "title": "CAMMACK, Kat",
+          "detail": "House · Republican · 3",
+          "date": "",
+          "link": "https://voteview.com/person/22107"
+        },
+        {
+          "title": "DONALDS, Byron",
+          "detail": "House · Republican · 19",
+          "date": "",
+          "link": "https://voteview.com/person/22111"
+        },
+        {
+          "title": "FRANKLIN, C. Scott",
+          "detail": "House · Republican · 18",
+          "date": "",
+          "link": "https://voteview.com/person/22116"
+        },
+        {
+          "title": "GIMENEZ, Carlos A.",
+          "detail": "House · Republican · 28",
+          "date": "",
+          "link": "https://voteview.com/person/22118"
+        },
+        {
+          "title": "SALAZAR, Maria Elvira",
+          "detail": "House · Republican · 27",
+          "date": "",
+          "link": "https://voteview.com/person/22150"
+        },
+        {
+          "title": "CHERFILUS-MCCORMICK, Sheila",
+          "detail": "House · Democrat · 20",
+          "date": "",
+          "link": "https://voteview.com/person/22163"
+        },
+        {
+          "title": "BEAN, Aaron",
+          "detail": "House · Republican · 4",
+          "date": "",
+          "link": "https://voteview.com/person/22302"
+        },
+        {
+          "title": "FROST, Maxwell",
+          "detail": "House · Democrat · 10",
+          "date": "",
+          "link": "https://voteview.com/person/22321"
+        },
+        {
+          "title": "LEE, Laurel",
+          "detail": "House · Republican · 15",
+          "date": "",
+          "link": "https://voteview.com/person/22341"
+        },
+        {
+          "title": "LUNA, Anna",
+          "detail": "House · Republican · 13",
+          "date": "",
+          "link": "https://voteview.com/person/22343"
+        },
+        {
+          "title": "MILLS, Cory",
+          "detail": "House · Republican · 7",
+          "date": "",
+          "link": "https://voteview.com/person/22350"
+        }
+      ]
+    },
+    {
+      "id": "congress",
+      "label": "Florida Congressional Votes",
+      "category": "Legislative",
+      "file": "data/congress/florida-votes.json",
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": null,
+      "fetchedLive": true,
+      "count": 29,
+      "datasetUrl": null,
+      "note": "29/29 FL federal members with roll-call records; 232 total vote positions (up to 8 per chamber). House via Congress.gov API; Senate via senate.gov LIS.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "Gus M. Bilirakis",
+          "detail": "B001257 · house · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Vern Buchanan",
+          "detail": "B001260 · house · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Kathy Castor",
+          "detail": "C001066 · house · Democrat",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Mario Diaz-Balart",
+          "detail": "D000600 · house · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Debbie Wasserman Schultz",
+          "detail": "W000797 · house · Democrat",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Daniel Webster",
+          "detail": "W000806 · house · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Frederica S. Wilson",
+          "detail": "W000808 · house · Democrat",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Lois Frankel",
+          "detail": "F000462 · house · Democrat",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Neal P. Dunn",
+          "detail": "D000628 · house · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "John H. Rutherford",
+          "detail": "R000609 · house · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Darren Soto",
+          "detail": "S001200 · house · Democrat",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Brian J. Mast",
+          "detail": "M001199 · house · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "W. Gregory Steube",
+          "detail": "S001214 · house · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Rick Scott",
+          "detail": "S001217 · senate · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Kat Cammack",
+          "detail": "C001039 · house · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Scott Franklin",
+          "detail": "F000472 · house · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Byron Donalds",
+          "detail": "D000032 · house · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Carlos A. Gimenez",
+          "detail": "G000593 · house · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Maria Elvira Salazar",
+          "detail": "S000168 · house · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Aaron Bean",
+          "detail": "B001314 · house · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Cory Mills",
+          "detail": "M001216 · house · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Maxwell Frost",
+          "detail": "F000476 · house · Democrat",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Anna Paulina Luna",
+          "detail": "L000596 · house · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Laurel M. Lee",
+          "detail": "L000597 · house · Republican",
+          "date": "",
+          "link": "https://www.congress.gov"
+        },
+        {
+          "title": "Jared Moskowitz",
+          "detail": "M001217 · house · Democrat",
+          "date": "",
+          "link": "https://www.congress.gov"
+        }
+      ]
+    },
+    {
+      "id": "govtrack",
+      "label": "Florida Members (GovTrack)",
+      "category": "Legislative",
+      "file": "data/govtrack/florida-members.json",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": null,
+      "fetchedLive": false,
+      "count": 29,
+      "datasetUrl": "https://www.govtrack.us/api/v2/role",
+      "note": "Substitute for retired ProPublica Congress API. Tier 2 nonpartisan.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "Gus M. Bilirakis",
+          "detail": "412250 · B001257",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/B001257"
+        },
+        {
+          "title": "Vern Buchanan",
+          "detail": "412196 · B001260",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/B001260"
+        },
+        {
+          "title": "Kathy Castor",
+          "detail": "412195 · C001066",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/C001066"
+        },
+        {
+          "title": "Mario Diaz-Balart",
+          "detail": "400108 · D000600",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/D000600"
+        },
+        {
+          "title": "Debbie Wasserman Schultz",
+          "detail": "400623 · W000797",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/W000797"
+        },
+        {
+          "title": "Daniel Webster",
+          "detail": "412410 · W000806",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/W000806"
+        },
+        {
+          "title": "Frederica S. Wilson",
+          "detail": "412412 · W000808",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/W000808"
+        },
+        {
+          "title": "Lois Frankel",
+          "detail": "412529 · F000462",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/F000462"
+        },
+        {
+          "title": "Neal P. Dunn",
+          "detail": "412691 · D000628",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/D000628"
+        },
+        {
+          "title": "John H. Rutherford",
+          "detail": "412692 · R000609",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/R000609"
+        },
+        {
+          "title": "Darren Soto",
+          "detail": "412695 · S001200",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/S001200"
+        },
+        {
+          "title": "Brian J. Mast",
+          "detail": "412698 · M001199",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/M001199"
+        },
+        {
+          "title": "W. Gregory Steube",
+          "detail": "412766 · S001214",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/S001214"
+        },
+        {
+          "title": "Rick Scott",
+          "detail": "412838 · S001217",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/S001217"
+        },
+        {
+          "title": "Kat Cammack",
+          "detail": "456806 · C001039",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/C001039"
+        },
+        {
+          "title": "Scott Franklin",
+          "detail": "456807 · F000472",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/F000472"
+        },
+        {
+          "title": "Byron Donalds",
+          "detail": "456808 · D000032",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/D000032"
+        },
+        {
+          "title": "Carlos A. Gimenez",
+          "detail": "456809 · G000593",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/G000593"
+        },
+        {
+          "title": "Maria Elvira Salazar",
+          "detail": "456810 · S000168",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/S000168"
+        },
+        {
+          "title": "Aaron Bean",
+          "detail": "456888 · B001314",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/B001314"
+        },
+        {
+          "title": "Cory Mills",
+          "detail": "456889 · M001216",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/M001216"
+        },
+        {
+          "title": "Maxwell Frost",
+          "detail": "456890 · F000476",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/F000476"
+        },
+        {
+          "title": "Anna Paulina Luna",
+          "detail": "456891 · L000596",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/L000596"
+        },
+        {
+          "title": "Laurel M. Lee",
+          "detail": "456892 · L000597",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/L000597"
+        },
+        {
+          "title": "Jared Moskowitz",
+          "detail": "456893 · M001217",
+          "date": "",
+          "link": "https://www.govtrack.us/congress/members/M001217"
+        }
+      ]
+    },
+    {
+      "id": "openstates",
+      "label": "Florida State Legislators",
+      "category": "Legislative",
+      "file": "data/openstates/florida-legislators.json",
+      "source": {
+        "name": "Open States",
+        "url": "https://openstates.org",
+        "tier": "nonpartisan",
+        "description": "State legislator records via openstates.org API"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": null,
+      "fetchedLive": true,
+      "count": 163,
+      "datasetUrl": "https://v3.openstates.org/people",
+      "note": "Florida state legislators. Tier 2 nonpartisan Open States.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "Adam Anderson",
+          "detail": "ocd-person/6a3fae94-a613-49f5-acec-355e4a2722d8 · Republican · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/adam-anderson-3EUHwR5pv456z8MMnIz7sG/"
+        },
+        {
+          "title": "Adam Botana",
+          "detail": "ocd-person/c94b1151-5034-482b-8d7b-f91f9bb5f951 · Republican · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/adam-botana-67plLnPC6qQqKUD4ehxLZh/"
+        },
+        {
+          "title": "Alex Andrade",
+          "detail": "ocd-person/de5ddba1-d7fe-41da-9f36-16a03b0b22fc · Republican · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/alex-andrade-6lbBlXxwEesk0cmBnjlPyO/"
+        },
+        {
+          "title": "Alex Rizo",
+          "detail": "ocd-person/b2fce1a8-4ba6-483b-a534-fa48cc43ee7f · Republican · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/alex-rizo-5RkCU1oHYXogGSQ7OFgrU7/"
+        },
+        {
+          "title": "Alexis Calatayud",
+          "detail": "ocd-person/7f1e874f-ae8b-42a0-90d9-fe867cf9fb45 · Republican · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/alexis-calatayud-3rrya2aQgU3IWcwrwT9QcX/"
+        },
+        {
+          "title": "Allison Tant",
+          "detail": "ocd-person/c26599eb-5ef8-44c3-93a6-77cf23a9567e · Democratic · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/allison-tant-5uowUBEorjyn4gtgCiQvk6/"
+        },
+        {
+          "title": "Ana Maria Rodriguez",
+          "detail": "ocd-person/afd55a58-b8f6-4dd7-9d93-a2207b65e425 · Republican · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/ana-maria-rodriguez-5Ln9uBYMxYvKnM41eVuMI1/"
+        },
+        {
+          "title": "Angie Nixon",
+          "detail": "ocd-person/66c3a112-3008-4332-a6b0-8990a7d992d5 · Democratic · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/angie-nixon-37ucRobbjxT3HSd7yyFNIL/"
+        },
+        {
+          "title": "Anna Eskamani",
+          "detail": "ocd-person/1f8e10ad-0047-4854-b696-38e15fda7afa · Democratic · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/anna-eskamani-xXgXJiyRZTNpr1YG9X1Yo/"
+        },
+        {
+          "title": "Anne Gerwig",
+          "detail": "ocd-person/ad877adf-e8f2-4f31-bdd2-38a6aaf74884 · Republican · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/anne-gerwig-5HRaOmVQX21MG3JmEbfbsK/"
+        },
+        {
+          "title": "Ashley Gantt",
+          "detail": "ocd-person/2c62c9ae-8d1d-4dc3-a86a-fcc5dd7ba286 · Democratic · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/ashley-gantt-1Lko83QzatJb19tT1lwzJu/"
+        },
+        {
+          "title": "Barbara Sharief",
+          "detail": "ocd-person/2af7bd80-7f71-4530-8d69-ee448bc32255 · Democratic · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/barbara-sharief-1J4tVghQxDWRuqtJq2C8FJ/"
+        },
+        {
+          "title": "Ben Albritton",
+          "detail": "ocd-person/5c81dfe7-1cec-45e8-8044-6d9cd324f2e8 · Republican · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/ben-albritton-2oYe6sKJPblPg3Sf9T4gpM/"
+        },
+        {
+          "title": "Berny Jacques",
+          "detail": "ocd-person/8e396afa-17d2-404c-9024-7aa8d7e00e0d · Republican · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/berny-jacques-4KN9KQdYkCFlVNPrFxVRbJ/"
+        },
+        {
+          "title": "Bill Conerly",
+          "detail": "ocd-person/43724cbb-0b19-4fad-ae9b-1e8bcd47c16d · Republican · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/bill-conerly-23GihdhfclGhe2kmKnPwJZ/"
+        },
+        {
+          "title": "Bill Partington",
+          "detail": "ocd-person/92e88cfe-0a68-45e1-b84c-9f181a46554e · Republican · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/bill-partington-4TD9ecvYmxPMffIkc1SPOg/"
+        },
+        {
+          "title": "Brad Yeager",
+          "detail": "ocd-person/8d746fc8-370b-4d12-bcf8-3dd4a4061707 · Republican · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/brad-yeager-4Iv82xWzoFeruJSqHayYoZ/"
+        },
+        {
+          "title": "Brian Hodgers",
+          "detail": "ocd-person/4737f2dc-8241-4329-85fc-59a9c405d7b6 · Republican · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/brian-hodgers-2AO1Tc4LjXhLCgPmeB1te2/"
+        },
+        {
+          "title": "Brian Nathan",
+          "detail": "ocd-person/528bc47a-e8c7-4a28-9923-aba1deefd976 · Democratic · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/brian-nathan-2VlFAmBgvJ42g4uGR9TPiY/"
+        },
+        {
+          "title": "Bruce Antone",
+          "detail": "ocd-person/617888c1-3369-49cd-a264-18ab663d2e8a · Democratic · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/bruce-antone-2xvL4xYX4SCRW44xZpigNW/"
+        },
+        {
+          "title": "Bryan Ávila",
+          "detail": "ocd-person/a4a5f92e-62cf-401b-9fc6-9d9a63498d5c · Republican · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/bryan-avila-50gagMNTQlTSmyt8zMcpQq/"
+        },
+        {
+          "title": "Carlos Smith",
+          "detail": "ocd-person/df1d6ab6-b2cd-4a6f-b7cc-aa5a63d8011f · Democratic · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/carlos-smith-6n0jPYoSGs5wmgEHSQyAEJ/"
+        },
+        {
+          "title": "Chad Johnson",
+          "detail": "ocd-person/2aa3b059-b565-413d-9eac-24e34b541c1d · Republican · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/chad-johnson-1ISTzYUzrrjqR9e4h6Z1PZ/"
+        },
+        {
+          "title": "Chase Tramont",
+          "detail": "ocd-person/47cd160b-1e9e-469c-a939-002be336302f · Republican · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/chase-tramont-2BUB9GHW3XMqNrX67ck3Kx/"
+        },
+        {
+          "title": "Chip LaMarca",
+          "detail": "ocd-person/54cd0ebc-6f93-489e-a919-3583fa32b26a · Republican · Florida",
+          "date": "",
+          "link": "https://openstates.org/person/chip-lamarca-2a149gJfurp4YgpH2xUUiA/"
+        }
+      ]
+    },
+    {
+      "id": "legiscan",
+      "label": "Florida State Legislation",
+      "category": "Legislative",
+      "file": "data/legiscan/florida-legislation.json",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": null,
+      "fetchedLive": true,
+      "count": 100,
+      "datasetUrl": "https://api.legiscan.com/",
+      "note": "Florida state legislation master list (up to 100 bills). Tier 2.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "Designation of the State Birds",
+          "detail": "2044045 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044045"
+        },
+        {
+          "title": "Social Work Licensure Interstate Compact",
+          "detail": "2044116 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044116"
+        },
+        {
+          "title": "Pub. Rec. and Meetings/Social Work Licensure Interstate Compact",
+          "detail": "2044098 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044098"
+        },
+        {
+          "title": "Criminal Offenses Against Law Enforcement Officers and Other Personnel",
+          "detail": "2044121 · FL",
+          "date": "2025-09-15",
+          "link": "https://legiscan.com/FL/bill/2044121"
+        },
+        {
+          "title": "Educational Dollars for Duty Program",
+          "detail": "2044120 · FL",
+          "date": "2025-09-15",
+          "link": "https://legiscan.com/FL/bill/2044120"
+        },
+        {
+          "title": "Pub. Rec./Agency Employees",
+          "detail": "2044114 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044114"
+        },
+        {
+          "title": "Educator Certifications and Training",
+          "detail": "2044218 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044218"
+        },
+        {
+          "title": "Transportation Facility Designations",
+          "detail": "2044230 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044230"
+        },
+        {
+          "title": "Sale and Purchase of Ivermectin",
+          "detail": "2044901 · FL",
+          "date": "2025-09-23",
+          "link": "https://legiscan.com/FL/bill/2044901"
+        },
+        {
+          "title": "Recognizing Judea and Samaria",
+          "detail": "2044907 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044907"
+        },
+        {
+          "title": "Transportation Facility Designations",
+          "detail": "2044913 · FL",
+          "date": "2026-03-04",
+          "link": "https://legiscan.com/FL/bill/2044913"
+        },
+        {
+          "title": "Habitual Traffic Offender Designation",
+          "detail": "2044915 · FL",
+          "date": "2026-04-24",
+          "link": "https://legiscan.com/FL/bill/2044915"
+        },
+        {
+          "title": "Removal, Storage, and Cleanup of Electric Vehicles",
+          "detail": "2045011 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045011"
+        },
+        {
+          "title": "Assessments Levied on Recreational Vehicle Parks",
+          "detail": "2045013 · FL",
+          "date": "2025-09-25",
+          "link": "https://legiscan.com/FL/bill/2045013"
+        },
+        {
+          "title": "Sales of Ammunition",
+          "detail": "2045027 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045027"
+        },
+        {
+          "title": "Pub. Rec./Sales of Ammunition",
+          "detail": "2045020 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045020"
+        },
+        {
+          "title": "Sexual Offenders and Sexual Predators",
+          "detail": "2045032 · FL",
+          "date": "2025-09-25",
+          "link": "https://legiscan.com/FL/bill/2045032"
+        },
+        {
+          "title": "Specific Medical Diagnoses in Child Protective Investigations",
+          "detail": "2045076 · FL",
+          "date": "2026-03-05",
+          "link": "https://legiscan.com/FL/bill/2045076"
+        },
+        {
+          "title": "Political Activities on School Grounds",
+          "detail": "2045172 · FL",
+          "date": "2025-09-26",
+          "link": "https://legiscan.com/FL/bill/2045172"
+        },
+        {
+          "title": "Tax Credits for Housing for Homeless Employees",
+          "detail": "2045245 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045245"
+        },
+        {
+          "title": "Rapid Rail Transit Compact",
+          "detail": "2045278 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045278"
+        },
+        {
+          "title": "Treatment of Inmates",
+          "detail": "2045323 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045323"
+        },
+        {
+          "title": "Agreement Among the States to Elect the President by National Popular Vote",
+          "detail": "2045317 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045317"
+        },
+        {
+          "title": "Pregnant Women in Custody",
+          "detail": "2045313 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045313"
+        },
+        {
+          "title": "Objective Parole Guidelines",
+          "detail": "2045320 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045320"
+        }
+      ]
+    },
+    {
+      "id": "fllobbyist",
+      "label": "Florida Lobbying Firm Directories",
+      "category": "Lobbying",
+      "file": "data/fllobbyist/florida-lobbying-firm-directories.json",
+      "source": {
+        "name": "Florida Lobbyist Registration",
+        "url": "https://floridalobbyist.gov",
+        "tier": "official",
+        "description": "Official Florida legislative & executive branch lobbying firm directories"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": "2026-06-24T16:05:59.562Z",
+      "fetchedLive": true,
+      "count": 40,
+      "datasetUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory",
+      "note": "Authoritative index of Florida annual lobbying firm directories (Legislative & Executive branches). Detailed firm rosters and quarterly compensation figures are published as PDFs and are not machine-readable in this snapshot — each record links to the official PDF. Tier 1 official.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "2026 Lobbying Firm Directory",
+          "detail": "Executive · PDF",
+          "date": "2026",
+          "link": "https://floridalobbyist.gov/reports/lobfirme_2026.pdf"
+        },
+        {
+          "title": "2026 Lobbying Firm Directory",
+          "detail": "Legislative · PDF",
+          "date": "2026",
+          "link": "https://floridalobbyist.gov/reports/lobfirml_2026.pdf"
+        },
+        {
+          "title": "2025 Lobbying Firm Directory",
+          "detail": "Executive · PDF",
+          "date": "2025",
+          "link": "https://floridalobbyist.gov/reports/lobfirme_2025.pdf"
+        },
+        {
+          "title": "2025 Lobbying Firm Directory",
+          "detail": "Legislative · PDF",
+          "date": "2025",
+          "link": "https://floridalobbyist.gov/reports/lobfirml_2025.pdf"
+        },
+        {
+          "title": "2024 Lobbying Firm Directory",
+          "detail": "Executive · PDF",
+          "date": "2024",
+          "link": "https://floridalobbyist.gov/reports/lobfirme_2024.pdf"
+        },
+        {
+          "title": "2024 Lobbying Firm Directory",
+          "detail": "Legislative · PDF",
+          "date": "2024",
+          "link": "https://floridalobbyist.gov/reports/lobfirml_2024.pdf"
+        },
+        {
+          "title": "2023 Lobbying Firm Directory",
+          "detail": "Executive · PDF",
+          "date": "2023",
+          "link": "https://floridalobbyist.gov/reports/lobfirme_2023.pdf"
+        },
+        {
+          "title": "2023 Lobbying Firm Directory",
+          "detail": "Legislative · PDF",
+          "date": "2023",
+          "link": "https://floridalobbyist.gov/reports/lobfirml_2023.pdf"
+        },
+        {
+          "title": "2022 Lobbying Firm Directory",
+          "detail": "Executive · PDF",
+          "date": "2022",
+          "link": "https://floridalobbyist.gov/reports/lobfirme_2022.pdf"
+        },
+        {
+          "title": "2022 Lobbying Firm Directory",
+          "detail": "Legislative · PDF",
+          "date": "2022",
+          "link": "https://floridalobbyist.gov/reports/lobfirml_2022.pdf"
+        },
+        {
+          "title": "2021 Lobbying Firm Directory",
+          "detail": "Executive · PDF",
+          "date": "2021",
+          "link": "https://floridalobbyist.gov/reports/lobfirme_2021.pdf"
+        },
+        {
+          "title": "2021 Lobbying Firm Directory",
+          "detail": "Legislative · PDF",
+          "date": "2021",
+          "link": "https://floridalobbyist.gov/reports/lobfirml_2021.pdf"
+        },
+        {
+          "title": "2020 Lobbying Firm Directory",
+          "detail": "Executive · PDF",
+          "date": "2020",
+          "link": "https://floridalobbyist.gov/reports/lobfirme_2020.pdf"
+        },
+        {
+          "title": "2020 Lobbying Firm Directory",
+          "detail": "Legislative · PDF",
+          "date": "2020",
+          "link": "https://floridalobbyist.gov/reports/lobfirml_2020.pdf"
+        },
+        {
+          "title": "2019 Lobbying Firm Directory",
+          "detail": "Executive · PDF",
+          "date": "2019",
+          "link": "https://floridalobbyist.gov/reports/lobfirme_2019.pdf"
+        },
+        {
+          "title": "2019 Lobbying Firm Directory",
+          "detail": "Legislative · PDF",
+          "date": "2019",
+          "link": "https://floridalobbyist.gov/reports/lobfirml_2019.pdf"
+        },
+        {
+          "title": "2018 Lobbying Firm Directory",
+          "detail": "Executive · PDF",
+          "date": "2018",
+          "link": "https://floridalobbyist.gov/reports/lobfirme_2018.pdf"
+        },
+        {
+          "title": "2018 Lobbying Firm Directory",
+          "detail": "Legislative · PDF",
+          "date": "2018",
+          "link": "https://floridalobbyist.gov/reports/lobfirml_2018.pdf"
+        },
+        {
+          "title": "2017 Lobbying Firm Directory",
+          "detail": "Executive · PDF",
+          "date": "2017",
+          "link": "https://floridalobbyist.gov/reports/lobfirme_2017.pdf"
+        },
+        {
+          "title": "2017 Lobbying Firm Directory",
+          "detail": "Legislative · PDF",
+          "date": "2017",
+          "link": "https://floridalobbyist.gov/reports/lobfirml_2017.pdf"
+        },
+        {
+          "title": "2016 Lobbying Firm Directory",
+          "detail": "Executive · PDF",
+          "date": "2016",
+          "link": "https://floridalobbyist.gov/reports/lobfirme_2016.pdf"
+        },
+        {
+          "title": "2016 Lobbying Firm Directory",
+          "detail": "Legislative · PDF",
+          "date": "2016",
+          "link": "https://floridalobbyist.gov/reports/lobfirml_2016.pdf"
+        },
+        {
+          "title": "2015 Lobbying Firm Directory",
+          "detail": "Executive · PDF",
+          "date": "2015",
+          "link": "https://floridalobbyist.gov/reports/lobfirme_2015.pdf"
+        },
+        {
+          "title": "2015 Lobbying Firm Directory",
+          "detail": "Legislative · PDF",
+          "date": "2015",
+          "link": "https://floridalobbyist.gov/reports/lobfirml_2015.pdf"
+        },
+        {
+          "title": "2014 Lobbying Firm Directory",
+          "detail": "Executive · PDF",
+          "date": "2014",
+          "link": "https://floridalobbyist.gov/reports/lobfirme_2014.pdf"
+        }
+      ]
+    },
+    {
+      "id": "lobbying",
+      "label": "Federal Lobbying Disclosures (LDA)",
+      "category": "Lobbying",
+      "file": "data/lobbying/florida-disclosures.json",
+      "source": {
+        "name": "Senate Lobbying Disclosure Act Database",
+        "url": "https://lda.senate.gov",
+        "tier": "official",
+        "description": "Federal lobbying registrations and reports via lda.senate.gov/api"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": null,
+      "fetchedLive": true,
+      "count": 25,
+      "datasetUrl": "https://lda.senate.gov/api/v1/filings/",
+      "note": "0 filings tagged Florida by name match; 25 total recent filings included. Tier 1 official Senate LDA.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · first_quarter",
+          "date": "2026-06-24T00:35:42-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/666bdbf7-7123-4804-8a28-529de510dac6/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · first_quarter",
+          "date": "2026-06-23T20:27:24-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/a25dc459-444b-40ee-9dd9-1ec7598f8318/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · second_quarter",
+          "date": "2026-06-23T20:26:12-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/8a12cb9a-b630-4e00-b30d-fd6f5e888d3b/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · third_quarter",
+          "date": "2026-06-23T20:24:11-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/a68cd666-92e0-4e3b-a933-09342b4e65c3/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · fourth_quarter",
+          "date": "2026-06-23T20:21:53-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/3f68dae8-871e-4ce3-8464-098e759ab928/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · first_quarter",
+          "date": "2026-06-23T20:19:59-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/1e946881-b9b9-4f4f-92d6-37449d0692bb/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · fourth_quarter",
+          "date": "2026-06-23T18:38:35-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/c1f994da-deb2-40a7-9ba3-264099d92b59/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · fourth_quarter",
+          "date": "2026-06-23T17:44:46-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/b44c7756-d20c-4b1b-bec0-9504a428b6ea/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · fourth_quarter",
+          "date": "2026-06-23T17:41:45-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/e2082bec-ca1f-49e1-8b68-ebb51fab6832/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · third_quarter",
+          "date": "2026-06-23T17:28:58-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/5d9c6ad3-6ca8-49be-b161-6205330e9c66/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · first_quarter",
+          "date": "2026-06-23T16:07:02-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/eb04c6ac-ed04-406e-bacf-2e849d48c072/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · second_quarter",
+          "date": "2026-06-23T14:22:35-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/660d1227-504d-42e5-af1b-576f7f522578/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · second_quarter",
+          "date": "2026-06-23T14:22:02-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/68358112-06fb-4c47-ae79-e1d478ab6400/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · second_quarter",
+          "date": "2026-06-23T13:48:41-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/9d3e8e4b-4aaf-468f-afb7-3b3004464f4a/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · first_quarter",
+          "date": "2026-06-23T13:26:29-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/b66a0710-23fa-465c-99c8-05e67b403e16/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · second_quarter",
+          "date": "2026-06-23T13:15:04-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/5f941ae9-025d-402c-973e-7f3b10b5d091/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · second_quarter",
+          "date": "2026-06-23T12:40:23-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/167711d3-0896-4369-aaaf-e64ff074eca1/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · second_quarter",
+          "date": "2026-06-23T12:13:48-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/acaec329-5715-4d97-bf80-b10ee575a23a/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · first_quarter",
+          "date": "2026-06-23T12:00:55-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/eb3760fa-5986-4e48-8268-66e5d4c7f4dd/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · second_quarter",
+          "date": "2026-06-23T12:00:30-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/152d2c89-9661-4cd8-b235-2654209c1106/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · fourth_quarter",
+          "date": "2026-06-23T11:58:53-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/022ea91c-554a-4827-9a68-d4f03913dd9d/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · second_quarter",
+          "date": "2026-06-23T11:54:24-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/523bc093-c1ff-43cf-8e0f-ebf454269475/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · third_quarter",
+          "date": "2026-06-23T11:51:40-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/77da465a-0efb-4676-8bc8-994483547bc0/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · second_quarter",
+          "date": "2026-06-23T11:43:36-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/6aa228da-f8cd-4b94-866c-a854a9be6bfd/"
+        },
+        {
+          "title": "No record on file",
+          "detail": "No record on file · No record on file · second_quarter",
+          "date": "2026-06-23T11:19:52-04:00",
+          "link": "https://lda.senate.gov/api/v1/filings/f8206366-4211-49fb-8a88-b7da1291435f/"
+        }
+      ]
+    },
+    {
+      "id": "gdelt",
+      "label": "Florida News Coverage (GDELT)",
+      "category": "News",
+      "file": "data/gdelt/florida-coverage.json",
+      "source": {
+        "name": "GDELT Project",
+        "url": "https://www.gdeltproject.org",
+        "tier": "media",
+        "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": "2026-06-24T16:13:03.182Z",
+      "fetchedLive": true,
+      "count": 50,
+      "datasetUrl": "https://api.gdeltproject.org/api/v2/doc/doc?query=Florida%20(governor%20OR%20legislature%20OR%20senate%20OR%20election%20OR%20congress)&mode=artlist&maxrecords=50&format=json&sort=datedesc&timespan=14d",
+      "note": "Florida political news coverage (last 14 days) via the GDELT 2.0 DOC API. Tier 3 automated aggregator over global journalism — always corroborate with Tier 1/2 records before treating as fact.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "Map Shows Where a Right - to - Carry Law Would Hit Hardest",
+          "detail": "newsweek.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.newsweek.com/map-shows-states-where-right-to-carry-law-would-have-biggest-impact-12114023"
+        },
+        {
+          "title": "Trump heads to Capitol to speak with Republican senators",
+          "detail": "wcvb.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.wcvb.com/article/trump-gop-senators-capitol-hill-save-america-act/71692552"
+        },
+        {
+          "title": "The Filibuster Is Saving Trump",
+          "detail": "newsweek.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.newsweek.com/trump-senate-filibuster-republicans-save-act-midterms-12114076"
+        },
+        {
+          "title": "Trump heads to Capitol to speak with frustrated GOP senators",
+          "detail": "redlandsdailyfacts.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.redlandsdailyfacts.com/2026/06/24/trump-republican-senators-meeting/"
+        },
+        {
+          "title": "Florida Health Information Exchange Selects CRISP Shared Services to Modernize Interoperability and Transform Care Across the State",
+          "detail": "prnewswire.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.prnewswire.com/news-releases/florida-health-information-exchange-selects-crisp-shared-services-to-modernize-interoperability-and-transform-care-across-the-state-302809372.html"
+        },
+        {
+          "title": "Tinubu greets ex - presidential contender , Nicolas Felix on his birthday",
+          "detail": "theeagleonline.com.ng · English · Nigeria",
+          "date": "2026-06-24",
+          "link": "https://theeagleonline.com.ng/tinubu-greets-ex-presidential-contender-nicolas-felix-on-his-birthday/"
+        },
+        {
+          "title": "8 - year - old drowns in Boynton . How parents can boost pool safety",
+          "detail": "yahoo.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.yahoo.com/news/us/articles/8-old-drowns-boynton-parents-134623963.html"
+        },
+        {
+          "title": "Congress passes major housing bill . And , Mamdani - backed candidates sweep NYC primaries",
+          "detail": "northcountrypublicradio.org · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.northcountrypublicradio.org/news/npr/g-s1-129769/congress-passes-major-housing-bill-and-mamdani-backed-candidates-sweep-nyc-primaries"
+        },
+        {
+          "title": "Economic , Election Integrity & Political Realities – Top 3 Takeaways | Vero Patriot",
+          "detail": "veropatriot.iheart.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://veropatriot.iheart.com/featured/brian-mudd/content/2026-06-24-economic-election-integrity-political-realities-top-3-takeaways/"
+        },
+        {
+          "title": "Congress passes major housing bill . And , Mamdani - backed candidates sweep NYC primaries",
+          "detail": "ketr.org · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.ketr.org/2026-06-24/congress-passes-major-housing-bill-and-mamdani-backed-candidates-sweep-nyc-primaries"
+        },
+        {
+          "title": "Trump heads to Capitol to speak with Republican senators",
+          "detail": "koco.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.koco.com/article/trump-gop-senators-capitol-hill-save-america-act/71692552"
+        },
+        {
+          "title": "Trump heads to Capitol to speak with GOP senators who have grown increasingly frustrated with him",
+          "detail": "newsday.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.newsday.com/news/nation/trump-capitol-republican-senators-n15364"
+        },
+        {
+          "title": "2026 Midterm Election Update – June 24th , 2026 | Vero Patriot",
+          "detail": "veropatriot.iheart.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://veropatriot.iheart.com/featured/brian-mudd/content/2026-06-24-2026-midterm-election-update-june-24th-2026/"
+        },
+        {
+          "title": "Ο άνθρωπος των 288 δισ . δολαρίων . Και τα 45 εκατ . δολάρια που τον έφεραν κοντά στον Τραμπ",
+          "detail": "naftemporiki.gr · Greek · Greece",
+          "date": "2026-06-24",
+          "link": "https://www.naftemporiki.gr/stories/2128717/o-anthropos-ton-288-dis-dolarion-kai-ta-45-ekat-dolaria-poy-ton-eferan-konta-ston-tramp/"
+        },
+        {
+          "title": "Trump heads to Capitol to speak with GOP senators who have grown increasingly frustrated with him",
+          "detail": "wfmj.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.wfmj.com/news/political/trump-heads-to-capitol-to-speak-with-gop-senators-who-have-grown-increasingly-frustrated-with/article_231429f1-6f28-5145-8830-d58cae23dc54.html"
+        },
+        {
+          "title": "Battle over single - use plastics erupts as 17 states , including Missouri , move to block California law",
+          "detail": "newstribune.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.newstribune.com/news/2026/jun/24/battle-over-single-use-plastics-erupts-as-17/"
+        },
+        {
+          "title": "Trump heads to Capitol to speak with Republican senators",
+          "detail": "wesh.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.wesh.com/article/trump-gop-senators-capitol-hill-save-america-act/71692552"
+        },
+        {
+          "title": "WA rich are leaving ? Another tax on wealth smashes records",
+          "detail": "seattletimes.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.seattletimes.com/seattle-news/politics/was-rich-are-leaving-another-tax-on-wealth-smashes-records/"
+        },
+        {
+          "title": "Trump heads to Capitol to speak with frustrated GOP senators",
+          "detail": "sgvtribune.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.sgvtribune.com/2026/06/24/trump-republican-senators-meeting/"
+        },
+        {
+          "title": "President Donald Trump heads to Capitol to speak with GOP senators who have grown increasingly frustrated with him",
+          "detail": "abc7news.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://abc7news.com/post/president-donald-trump-heads-capitol-speak-gop-senators-have-grown-increasingly-frustrated/19369954/"
+        },
+        {
+          "title": "Trump heads to Capitol to speak with frustrated GOP senators",
+          "detail": "nydailynews.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.nydailynews.com/2026/06/24/trump-republican-senators-meeting/"
+        },
+        {
+          "title": "Stop city ugly  gotcha  politics | Letters to the editor – Sun Sentinel",
+          "detail": "sun-sentinel.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.sun-sentinel.com/2026/06/24/stop-citys-ugly-gotcha-politics-letters-to-the-editor/"
+        },
+        {
+          "title": "Trump heads to Capitol to speak with frustrated GOP senators",
+          "detail": "dailylocal.com · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.dailylocal.com/2026/06/24/trump-republican-senators-meeting/"
+        },
+        {
+          "title": "Congress passes major housing bill . And , Mamdani - backed candidates sweep NYC primaries",
+          "detail": "ksut.org · English · United States",
+          "date": "2026-06-24",
+          "link": "https://www.ksut.org/2026-06-24/congress-passes-major-housing-bill-and-mamdani-backed-candidates-sweep-nyc-primaries"
+        },
+        {
+          "title": "Rick Scott Circulates Plan on Government Shutdowns In The United States",
+          "detail": "el-balad.com · English · Egypt",
+          "date": "2026-06-24",
+          "link": "https://www.el-balad.com/17025599"
+        }
+      ]
+    },
+    {
+      "id": "news",
+      "label": "Florida News Coverage (NewsAPI)",
+      "category": "News",
+      "file": "data/news/florida-coverage.json",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-06-24",
+      "fetchedAt": null,
+      "fetchedLive": true,
+      "count": 45,
+      "datasetUrl": "https://newsapi.org/v2/everything",
+      "note": "Tier 3 journalism — always corroborate with Tier 1/2 sources before presenting as fact.",
+      "errors": null,
+      "sample": [
+        {
+          "title": "Mamdani’s bid to become a Democratic socialist kingmaker—and other races to watch in the New York primary",
+          "detail": "Eight months into his first term, NYC's democratic socialist mayor is trying to remake the city's congressional delegation. · Fortune",
+          "date": "2026-06-23T14:11:54Z",
+          "link": "https://fortune.com/2026/06/23/mamdani-democratic-socialist-kingmaker-new-york-primary/"
+        },
+        {
+          "title": "Trump May Not Like His Senate Visit This Week",
+          "detail": "President Trump is heading to the Senate this week, and he may not receive as warm a reception as he hopes. Trump, at the invitation of Florida Sen. Rick Scott, will attend the GOP's Wednesday lunch and press for his top priority, the SAVE America Act electio… · Newser",
+          "date": "2026-06-23T12:18:00Z",
+          "link": "https://www.newser.com/story/391530/trump-may-not-like-his-senate-visit-this-week.html"
+        },
+        {
+          "title": "Downballot Democrats Are Smashing Recruitment Records",
+          "detail": "When the Kansas legislature took up a bill in early 2026 that would strip transgender residents’ driver’s licenses and bar them from government bathrooms, Bobby Joe Robertson Jr., a financial analyst at a petroleum refinery in the small town of McPherson, abo… · Mother Jones",
+          "date": "2026-06-23T12:00:00Z",
+          "link": "https://www.motherjones.com/politics/2026/06/downballot-democratic-candidate-recruitment-2026/"
+        },
+        {
+          "title": "Erik Visits an American Grave, Part 2,168",
+          "detail": "This is the unmarked grave of Herman Cain, who is buried near his family but does not have a marker of his own. Supposedly this is to stop publicity, but really, how many people other than myself want to see the grave of Hermain Cain? Born in 1945 in Memphis,… · Lawyersgunsmoneyblog.com",
+          "date": "2026-06-23T11:00:00Z",
+          "link": "https://www.lawyersgunsmoneyblog.com/2026/06/erik-visits-an-american-grave-part-2168"
+        },
+        {
+          "title": "NBA mock draft 19.0: Final predictions for every pick ahead of first round today",
+          "detail": "With just a few more hours until the 2026 NBA Draft, fans will soon know exactly where each prospect will begin their professional careers. · USA Today",
+          "date": "2026-06-23T10:31:13Z",
+          "link": "https://www.usatoday.com/story/sports/nba/draft/2026/06/23/nba-mock-draft-2026-final-projections-first-second-round/90651727007/"
+        },
+        {
+          "title": "One Day in America",
+          "detail": "Thirty-eight glimpses of a day 250 years in the making. · esquire.com",
+          "date": "2026-06-23T10:13:24Z",
+          "link": "https://www.esquire.com/news-politics/a71427015/one-day-in-america/"
+        },
+        {
+          "title": "Their Album Was Banned. Their Members Were Arrested. But at Trial, the Jurors Couldn’t Stop Laughing.",
+          "detail": "It was the only album in U.S. history to be deemed “obscene.” It was saved by a few old ladies. · Slate Magazine",
+          "date": "2026-06-23T09:45:00Z",
+          "link": "https://slate.com/culture/2026/06/2-live-crew-me-so-horny-censorship-song-lyrics-luke.html"
+        },
+        {
+          "title": "The Colorado River is vanishing — and the fixes are getting weird",
+          "detail": "Desalination. Pipelines. Cloud seeding. Those are just a few ideas for how the Trump administration should save the desiccated waterway. · Grist",
+          "date": "2026-06-23T08:45:00Z",
+          "link": "https://grist.org/solutions/the-colorado-river-is-vanishing-and-the-fixes-are-getting-weird/"
+        },
+        {
+          "title": "Florida’s ‘Free Kill’ law leaves grieving families with no day in court",
+          "detail": "Florida is the only state in the nation where an adult child of unmarried parents can lose their parent to a doctor’s negligence and never be allowed to tell a jury what that loss cost them. Florida also suppresses the grief of a parent who loses an adult chi… · Naturalnews.com",
+          "date": "2026-06-23T06:00:00Z",
+          "link": "https://www.naturalnews.com/2026-06-23-floridas-free-kill-law-no-court-day.html"
+        },
+        {
+          "title": "5 Years After Surfside Collapse: Safer Condos, More Transparency for Underwriters",
+          "detail": "June 24, 2026 marks the fifth anniversary of the tragic collapse of Champlain Towers South in Surfside, Florida. Like many Floridians, I remember exactly where I was when I first heard the news. The loss of 98 lives was heartbreaking, … · Insurance Journal",
+          "date": "2026-06-23T05:02:22Z",
+          "link": "https://www.insurancejournal.com/news/southeast/2026/06/23/874845.htm"
+        },
+        {
+          "title": "‘We’ll Want Some Proof’: State Farm CEO’s Take on NY Auto Insurance Reforms",
+          "detail": "While State Farm publicly supported auto insurance reform measures in New York this year, now that a package of changes has been written into the state’s statutes, the insurance giant is taking a measured business approach. “We want some proof … · Carriermanagement.com",
+          "date": "2026-06-23T05:00:41Z",
+          "link": "https://www.carriermanagement.com/features/2026/06/17/289163.htm"
+        },
+        {
+          "title": "I am the child whom abortion advocates would call a ‘hard case’",
+          "detail": "My mother’s decision to spare my life challenges a troubling assumption that often underlies abortion advocacy: that some lives become less valuable when conceived under undesirable conditions. · Americanthinker.com",
+          "date": "2026-06-23T04:00:00Z",
+          "link": "https://www.americanthinker.com/blog/2026/06/i-am-the-child-whom-abortion-advocates-would-call-a-hard-case/"
+        },
+        {
+          "title": "California Democrat Pushes Bill Increasing Cost For Government Records Requests",
+          "detail": "A California State Assembly bill has been amended to increase the difficulty and burden for Californians seeking government records. Democrat California Assemblywoman Blanca Pacheco amended CA AB 1821, named the California Public Records Act, on June 10 to al… · Freerepublic.com",
+          "date": "2026-06-23T02:30:45Z",
+          "link": "https://freerepublic.com/focus/f-bloggers/4385000/posts"
+        },
+        {
+          "title": "'Deep state purge' begins at Tulsi Gabbard's old office as Trump's new spy chief seeks to fire hundreds",
+          "detail": "Bill Pulte, 38, wasted no time on his first day as President Trump's new spy chief as he seeks to fire hundreds. · Dailymail.com",
+          "date": "2026-06-23T02:24:43Z",
+          "link": "https://www.dailymail.com/news/article-15921433/purge-tulsi-gabbard-trump-spy-chief-fire-hundreds.html"
+        },
+        {
+          "title": "Ruben Gallego swings through deep-red Trump counties during desperate plot as voters sound off on ex-bestie's sex scandals",
+          "detail": "South Carolina voters weigh in on whether they have concerns about Ruben Gallego's ties to two of his longtime colleagues who have been accused of sexual misconduct. · Dailymail.com",
+          "date": "2026-06-23T01:32:34Z",
+          "link": "https://www.dailymail.com/news/article-15916413/Democrat-Ruben-Gallego-Eric-Swalwell-scandal.html"
+        },
+        {
+          "title": "Florida's \"Alligator Alcatraz\" shutting down permanently, sources say",
+          "detail": "Companies hired by the state to operate the Florida immigration facility known as \"Alligator Alcatraz\" were notified Monday morning to begin \"full demobilization\" of the facility, quietly bringing an ignominious close a $1.2 billion experiment that had once b… · Freerepublic.com",
+          "date": "2026-06-22T23:41:05Z",
+          "link": "https://freerepublic.com/focus/f-news/4384979/posts"
+        },
+        {
+          "title": "Trump To Attend Wednesday Senate Lunch To Discuss Embattled Election Integrity Measure",
+          "detail": "By Elizabeth Troutman Mitchell, The Daily Signal | June 22, 2026\nPresident Donald Trump will discuss the SAVE America Act with senators at Wednesday’s closed-door luncheon, at the invite of Florida Republican Sen. Rick Scott.\n“He wants, we all want to get the… · Biztoc.com",
+          "date": "2026-06-22T23:39:07Z",
+          "link": "https://biztoc.com/x/a90252b7fef0f207"
+        },
+        {
+          "title": "Senate Passes Major Housing Bill As Citizens Continue To Miss Out On Key Pillar Of American Dream",
+          "detail": "The Senate passed a piece of bipartisan legislation Monday that aimed to lower the cost of housing. · The Daily Caller",
+          "date": "2026-06-22T22:36:43Z",
+          "link": "https://dailycaller.com/2026/06/22/senate-housing-bill-trumps-desk/"
+        },
+        {
+          "title": "SCOOP: SAVE America Act Could Be Voted On Everyday Before November",
+          "detail": "In a letter obtained by the Daily Signal, the chairman of the Republican Steering Committee outlined his priorities for the Wednesday lunch that will be attended by President Donald Trump, including a proposal to vote on legislation requiring voter ID and pro… · Daily Signal",
+          "date": "2026-06-22T22:20:00Z",
+          "link": "https://www.dailysignal.com/2026/06/22/scoop-save-america-act-could-be-voted-on-everyday-before-november/"
+        },
+        {
+          "title": "Florida Shuts Down Alligator Alcatraz After a Year of Lawsuits and Brutality",
+          "detail": "After using $1 billion to brutalize immigrants, Alligator Alcatraz has been emptied. Its victims still need justice. · Truthout",
+          "date": "2026-06-22T21:38:38Z",
+          "link": "https://truthout.org/articles/florida-shuts-down-alligator-alcatraz-after-a-year-of-lawsuits-and-brutality/"
+        },
+        {
+          "title": "Organizers in Idaho, Nevada, and Virginia Are Putting Abortion Rights on Ballot",
+          "detail": "Grassroots canvassers are hitting the streets to urge voters to defend abortion rights in their states this November. · Truthout",
+          "date": "2026-06-22T20:52:55Z",
+          "link": "https://truthout.org/articles/organizers-in-idaho-nevada-and-virginia-are-putting-abortion-rights-on-ballot/"
+        },
+        {
+          "title": "May's exit may reflect shaky world of college athletics, experts say",
+          "detail": "The prevalence of college coaches leaving might increase due to frustrations with the shaky world of college athletics, experts said. · The Detroit News",
+          "date": "2026-06-22T20:42:12Z",
+          "link": "https://www.detroitnews.com/story/sports/college/university-michigan/wolverines/2026/06/22/college-athletics-coaches-leave-dusty-may-michigan-mavericks/90648194007/"
+        },
+        {
+          "title": "AI is cursing renters with the promise of impossible homes",
+          "detail": "Joyce, a native New Yorker, didn't think finding her first solo apartment in the city would be easy. But she also didn't think it'd be \"hell.\" After looking at a lot of tiny, overpriced places she described as \"shitholes,\" Joyce found her dream apartment: a r… · The Verge",
+          "date": "2026-06-22T19:52:26Z",
+          "link": "https://www.theverge.com/report/953888/ai-virtual-staging-real-estate-apartment-listings"
+        },
+        {
+          "title": "Coffee Break: Mamdani Endorses in New York Dem Congressional Primaries",
+          "detail": "Zohran Mamdani has endorsed multiple candidates in Democratic congressional primaries as part of a \"vigorous push by the DSA to claim more ground in Congress.\" · Nakedcapitalism.com",
+          "date": "2026-06-22T18:00:36Z",
+          "link": "https://www.nakedcapitalism.com/2026/06/mamdani-endorses-new-york-democratic-congressional-primaries.html"
+        },
+        {
+          "title": "35 Retired Federal Judges Slam Trump's 'Laughable' Defense of His 'Obviously Collusive' IRS Settlement",
+          "detail": "The DOJ's unilateral abandonment of the Anti-Weaponization Fund \"makes it crystal clear that these parties were never adverse,\" the former judges argue. · Yahoo Entertainment",
+          "date": "2026-06-22T18:00:33Z",
+          "link": "https://www.yahoo.com/news/politics/articles/35-retired-federal-judges-slam-trumps-laughable-defense-of-his-obviously-collusive-irs-settlement-180033529.html"
+        }
+      ]
+    }
+  ]
+}

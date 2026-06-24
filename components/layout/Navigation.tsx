@@ -52,6 +52,7 @@ const navItems = [
     ],
   },
   { label: 'Compare', href: '/compare' },
+  { label: 'Sources', href: '/sources' },
 ];
 
 export default function Navigation() {
@@ -129,12 +130,12 @@ export default function Navigation() {
           </Link>
 
           {/* Right badge */}
-          <div className="hidden md:flex items-center gap-2">
+          <Link href="/sources" className="hidden md:flex items-center gap-2 group" title="Browse all data sources">
             <div className="text-right">
-              <div className="text-[10px] font-semibold tracking-wider uppercase text-[#d4ac52]/80">Data Sources</div>
-              <div className="text-[10px] text-white/35">FEC · ProPublica · OpenSecrets</div>
+              <div className="text-[10px] font-semibold tracking-wider uppercase text-[#d4ac52]/80 group-hover:text-[#d4ac52]">Data Sources</div>
+              <div className="text-[10px] text-white/35 group-hover:text-white/55">FEC · Census · LegiScan · +18</div>
             </div>
-          </div>
+          </Link>
 
           {/* Mobile button */}
           <button
