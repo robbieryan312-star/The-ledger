@@ -12,7 +12,7 @@ Agent session log and status checkpoint. Read at the start of every session; upd
 
 **Phase 1 — Florida first:** Federal/state FL featured profiles + Palm Beach county demo. Data pipeline uses `lib/data/generated/*.json` (not `/data/` folders yet).
 
-**Next queued:** Continue UX corrections (donor/PAC split, map labels, Follow the Money). Commit remaining `/data/` snapshots and push.
+**Next queued:** Register API keys for blocked sources (LegiScan, NewsAPI, OpenStates) per owner authorization; then wire `/data/` Florida snapshots into the app (currently the app still reads `lib/data/generated/*.json`).
 
 ---
 
@@ -20,7 +20,9 @@ Agent session log and status checkpoint. Read at the start of every session; upd
 
 | Date | Task | Commit |
 |------|------|--------|
-| 2026-06-24 | Florida Congress votes ingested — 29/29 members, 232 positions | (pending) |
+| 2026-06-24 | UX: donor split (individual/PAC/lobbying), map office labels, Follow-the-Money leaderboard, StockTrades time range, lobbying history→overview | `cb58ace` |
+| 2026-06-24 | Florida ingestion pipeline for 10 more sources + snapshots + build fixes | `51b7896` |
+| 2026-06-24 | Florida Congress votes ingested — 29/29 members, 232 positions | `243ad02` |
 | 2026-06-24 | Florida FEC candidates ingested (2,439 records) + pipeline scaffolding | `1aa4beb` |
 | 2026-06-24 | Sync safeguards for FEC/House votes when keys missing | `35b6dfa` |
 | 2026-06-24 | `.env.example` template added | `f3e6cbf` |
@@ -119,3 +121,9 @@ Saving and deploying to the live demo is a **primary priority**, not an aftertho
 | `FEC_API_KEY` / `CONGRESS_API_KEY` in cloud agent | Not in cloud `.env.local` — owner keys on local Mac; snapshots checked into git |
 | Senate eFD stock trades | HTTP 503 maintenance |
 | ProPublica Congress API | Retired — do not use |
+| `LEGISCAN_API_KEY` | Not set — FL legislation snapshot is placeholder. Register at legiscan.com/legiscan |
+| `NEWSAPI_KEY` | Not set — FL news snapshot is placeholder. Register at newsapi.org/register |
+| `OPENSTATES_API_KEY` | Not set — FL legislators snapshot is placeholder. Register at openstates.org/api |
+| `SAM_API_KEY` | Requires login.gov identity-verified account — FL contractors snapshot is placeholder |
+| `CENSUS_API_KEY` | Not set — keyless ACS request returned HTML; FL demographics snapshot is placeholder |
+| FARA eFile endpoint | `efts.fara.gov` fetch failed — FL registrants snapshot is placeholder |
