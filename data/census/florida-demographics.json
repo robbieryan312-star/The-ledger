@@ -7,13 +7,28 @@
       "description": "American Community Survey 5-year estimates via api.census.gov"
     },
     "asOf": "2026-06-24",
-    "count": 0,
+    "count": 1,
     "stateCode": "FL",
-    "fetchedLive": false,
-    "errors": [
-      "Unexpected token '<', \"\n<html styl\"... is not valid JSON"
-    ],
-    "note": "Census fetch failed."
+    "fetchedLive": true,
+    "datasetUrl": "https://api.census.gov/data/2023/acs/acs5?get=NAME,B01003_001E,B19013_001E,B25077_001E&for=state:12&key=***",
+    "note": "State-level ACS demographics. Tier 1 official Census Bureau."
   },
-  "records": []
+  "records": [
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "population": 21928881,
+      "medianHouseholdIncome": 71711,
+      "medianHomeValue": 325000,
+      "survey": "ACS 5-Year 2023",
+      "source": {
+        "name": "U.S. Census Bureau ACS",
+        "url": "https://api.census.gov",
+        "tier": "official",
+        "description": "American Community Survey 5-year estimates via api.census.gov"
+      },
+      "asOf": "2026-06-24",
+      "censusApiUrl": "https://api.census.gov/data/2023/acs/acs5"
+    }
+  ]
 }
