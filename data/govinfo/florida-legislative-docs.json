@@ -1,0 +1,787 @@
+{
+  "meta": {
+    "source": {
+      "name": "GovInfo (U.S. GPO)",
+      "url": "https://www.govinfo.gov",
+      "tier": "official",
+      "description": "U.S. Government Publishing Office official publications via api.govinfo.gov"
+    },
+    "asOf": "2026-06-24",
+    "fetchedAt": "2026-06-24T15:29:37.411Z",
+    "count": 40,
+    "stateCode": "FL",
+    "fetchedLive": true,
+    "datasetUrl": "https://api.govinfo.gov/search",
+    "note": "Recent Florida-related federal legislative documents (bills, Congressional Record, committee reports) via GovInfo. Tier 1 official GPO."
+  },
+  "records": [
+    {
+      "title": "ADDITIONAL COSPONSORS",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-22",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-22",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-22"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-22"
+    },
+    {
+      "title": "SENATE COMMITTEE MEETINGS",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-22",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-22",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-22"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-22"
+    },
+    {
+      "title": "HONORING MARTHA ANN HART CUSIMANO FOR HER CONTRIBUTIONS TO CENTRAL FLORIDA",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-22",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-22",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-22"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-22"
+    },
+    {
+      "title": "Daily Digest/CONGRESSIONAL PROGRAM AHEAD",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-22",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-22",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-22"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-22"
+    },
+    {
+      "title": "ADDITIONAL COSPONSORS",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-18",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+    },
+    {
+      "title": "INTRODUCTION OF BILLS AND JOINT RESOLUTIONS",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-18",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+    },
+    {
+      "title": "EXECUTIVE REPORTS OF COMMITTEES",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-18",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+    },
+    {
+      "title": "Vote on Holding Nomination (Executive Calendar)",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-18",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+    },
+    {
+      "title": "Unanimous Consent Request--S. Res. 554 (Executive Calendar)",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-18",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+    },
+    {
+      "title": "ADDITIONAL SPONSORS",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-18",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+    },
+    {
+      "title": "Constitutional Authority Statement for H.J. Res. 197",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-18",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+    },
+    {
+      "title": "PUBLIC BILLS AND RESOLUTIONS",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-18",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+    },
+    {
+      "title": "HONORING THE LIFE OF GEDONE RAULERSON PRACHAR",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-18",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+    },
+    {
+      "title": "HONORING MISS PRESLEY BENNETT MISS ARKANSAS' TEEN 2026",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-18",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+    },
+    {
+      "title": "HONORING THE LIFE AND LEGACY OF COLONEL FRANCIS \"LEN\" LEONARD LOVING",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-18",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+    },
+    {
+      "title": "Daily Digest/Senate Committee Meetings",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-18",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-18"
+    },
+    {
+      "title": "Remembering kindness in the United States and affirming our commitment to fostering community and building resiliency through every day acts of kindness.",
+      "documentType": "Congressional Bill",
+      "collectionCode": "BILLS",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress",
+        "House of Representatives"
+      ],
+      "packageId": "BILLS-119hres1372ih",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/BILLS-119hres1372ih"
+    },
+    {
+      "title": "Expressing support for a World Sickle Cell Awareness Day in order to increase public awareness across the United States and global community about sickle cell disease and the continued need for empirical research, early detection screenings, novel effective treatments leading to a cure, and preventative care programs with respect to complications from sickle cell anemia and conditions relating to sickle cell disease.",
+      "documentType": "Congressional Bill",
+      "collectionCode": "BILLS",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress",
+        "House of Representatives"
+      ],
+      "packageId": "BILLS-119hres1371ih",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/BILLS-119hres1371ih"
+    },
+    {
+      "title": "Ratepayer Protection Act",
+      "documentType": "Congressional Bill",
+      "collectionCode": "BILLS",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress",
+        "House of Representatives"
+      ],
+      "packageId": "BILLS-119hr9340ih",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/BILLS-119hr9340ih"
+    },
+    {
+      "title": "Repealing Big Brother Overreach Act",
+      "documentType": "Congressional Bill",
+      "collectionCode": "BILLS",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress",
+        "House of Representatives"
+      ],
+      "packageId": "BILLS-119hr425rh",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/BILLS-119hr425rh"
+    },
+    {
+      "title": "FDA Modernization Act 3.0",
+      "documentType": "Congressional Bill",
+      "collectionCode": "BILLS",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress",
+        "House of Representatives"
+      ],
+      "packageId": "BILLS-119hr2821rh",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/BILLS-119hr2821rh"
+    },
+    {
+      "title": "Providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Centers for Medicare & Medicaid Services of the Department of Health and Human Services relating to Patient Protection and Affordable Care Act, HHS Notice of Benefit and Payment Parameters for 2027; and Basic Health Program.",
+      "documentType": "Congressional Bill",
+      "collectionCode": "BILLS",
+      "dateIssued": "2026-06-18",
+      "governmentAuthor": [
+        "Congress",
+        "House of Representatives"
+      ],
+      "packageId": "BILLS-119hjres197ih",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/BILLS-119hjres197ih"
+    },
+    {
+      "title": "Text of Senate Amendment 5831",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-17",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-17",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-17"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-17"
+    },
+    {
+      "title": "TEXT OF AMENDMENTS",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-17",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-17",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-17"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-17"
+    },
+    {
+      "title": "AMENDMENTS SUBMITTED AND PROPOSED",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-17",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-17",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-17"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-17"
+    },
+    {
+      "title": "SENATE RESOLUTION 773--RECOGNIZING FATHER'S DAY AND THE ROLE A FATHER PLAYS IN THE LIVES OF CHILDREN AND ADULTS",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-17",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-17",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-17"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-17"
+    },
+    {
+      "title": "ADDITIONAL COSPONSORS",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-17",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-17",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-17"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-17"
+    },
+    {
+      "title": "UNANIMOUS CONSENT REQUESTS",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-17",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-17",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-17"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-17"
+    },
+    {
+      "title": "Cloture Motion (Executive Calendar)",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-17",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-17",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-17"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-17"
+    },
+    {
+      "title": "Unanimous Consent Requests--S. 1032 (Executive Calendar)",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-17",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-17",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-17"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-17"
+    },
+    {
+      "title": "Cloture Motion (Executive Calendar)",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-17",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-17",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-17"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-17"
+    },
+    {
+      "title": "SENATE COMMITTEE MEETINGS",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-17",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-17",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-17"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-17"
+    },
+    {
+      "title": "Daily Digest/COMMITTEE MEETINGS FOR 2026-06-18",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-17",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-17",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-17"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-17"
+    },
+    {
+      "title": "Daily Digest/Senate Committee Meetings",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-17",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-17",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-17"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-17"
+    },
+    {
+      "title": "ADDITIONAL COSPONSORS",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-16",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-16",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-16"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-16"
+    },
+    {
+      "title": "CONDEMNING THE DICTATOR OF THE PEOPLE'S REPUBLIC OF CHINA, XI JINPING, FOR DECEIT, UNDERMINING PROSPECTS FOR PEACE AND SECURITY, AND ORCHESTRATING CRIMES AGAINST HUMANITY",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-16",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-16",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-16"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-16"
+    },
+    {
+      "title": "DIRECTING THE REMOVAL OF UNITED STATES ARMED FORCES FROM HOSTILITIES WITHIN OR AGAINST THE ISLAMIC REPUBLIC OF IRAN THAT HAVE NOT BEEN AUTHORIZED BY CONGRESS--Motion to Discharge",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-16",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-16",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-16"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-16"
+    },
+    {
+      "title": "Daily Digest/COMMITTEE MEETINGS FOR 2026-06-17",
+      "documentType": "Congressional Record",
+      "collectionCode": "CREC",
+      "dateIssued": "2026-06-16",
+      "governmentAuthor": [
+        "Congress"
+      ],
+      "packageId": "CREC-2026-06-16",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-16"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-16"
+    },
+    {
+      "title": "Condemning the dictator of the People’s Republic of China, Xi Jinping, for deceit, undermining prospects for peace and security, and orchestrating crimes against humanity.",
+      "documentType": "Congressional Bill",
+      "collectionCode": "BILLS",
+      "dateIssued": "2026-06-16",
+      "governmentAuthor": [
+        "Congress",
+        "Senate"
+      ],
+      "packageId": "BILLS-119sres444ats",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-16"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/BILLS-119sres444ats"
+    },
+    {
+      "title": "NATIONAL DEFENSE AUTHORIZATION ACT FOR FISCAL YEAR 2027",
+      "documentType": "Committee Report",
+      "collectionCode": "CRPT",
+      "dateIssued": "2026-06-15",
+      "governmentAuthor": [
+        "Congress",
+        "Senate"
+      ],
+      "packageId": "CRPT-119srpt127",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-15"
+      },
+      "asOf": "2026-06-24",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CRPT-119srpt127"
+    }
+  ]
+}
