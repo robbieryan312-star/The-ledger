@@ -24,6 +24,10 @@ import { findRecordJuxtapositions } from '@/lib/data/recordJuxtapositions';
 import SourceTierHelp from '@/components/ui/SourceTierHelp';
 import ControversySection from '@/components/politicians/ControversySection';
 import ProfileNewsExplorer from '@/components/politicians/ProfileNewsExplorer';
+import VoteviewIdeologyPanel from '@/components/records/VoteviewIdeologyPanel';
+import { FloridaNewsSections } from '@/components/records/FloridaRecordPanel';
+import { getVoteviewByBioguide } from '@/lib/data/slices/voteview';
+import { getNewsFloridaBundle } from '@/lib/data/slices/newsFlorida';
 import Link from 'next/link';
 import {
   ArrowLeft, X, Globe, Calendar, MapPin,
@@ -494,6 +498,8 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
   const pacTotal = displayFinance.pacDonations;
   const individualTotal = displayFinance.individualDonations;
   const highConflictTrades = displayStockTrades.filter((t) => t.conflictScore >= 70);
+  const voteviewMember = getVoteviewByBioguide(politician.bioguideId);
+  const floridaNewsBundle = politician.stateCode === 'FL' ? getNewsFloridaBundle() : null;
 
   const recordJuxtapositions =
     isFeatured && usingOfficialVotes && usingOfficialTrades
@@ -714,6 +720,7 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
             </div>
           )}
           <HotTopicsPanel issues={displayIssues} votes={displayVotes} isFeatured={isFeatured} />
+          {voteviewMember && <VoteviewIdeologyPanel member={voteviewMember} />}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Top Issues */}
             <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
@@ -923,9 +930,14 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
         )}
 
         {activeTab === 'news' && (
-          <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
-            <h2 className="text-white font-bold mb-4">News & Coverage</h2>
-            {isLightweight ? <MissingRecordPanel kind="news coverage" /> : <ProfileNewsExplorer news={politician.news} name={politician.name} />}
+          <div className="space-y-6">
+            <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
+              <h2 className="text-white font-bold mb-4">News & Coverage</h2>
+              {isLightweight ? <MissingRecordPanel kind="news coverage" /> : <ProfileNewsExplorer news={politician.news} name={politician.name} />}
+            </div>
+            {floridaNewsBundle && floridaNewsBundle.sections.some((s) => s.records.length > 0) && (
+              <FloridaNewsSections bundle={floridaNewsBundle} />
+            )}
           </div>
         )}
 
