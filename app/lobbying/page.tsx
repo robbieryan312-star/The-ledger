@@ -14,6 +14,8 @@ import {
   mockLobbyingGroups,
 } from '@/lib/data/mockLobbyingGroups';
 import SourceBadge from '@/components/ui/SourceBadge';
+import { FloridaRecordPanel } from '@/components/records/FloridaRecordPanel';
+import { getLobbyingFllobbyistSlice } from '@/lib/data/slices/lobbyingFllobbyist';
 
 function formatMoney(n: number): string {
   if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
@@ -253,6 +255,14 @@ export default function LobbyingPage() {
           <p className="text-sm mt-1">Try a broader issue category or search term</p>
         </div>
       )}
+
+      <div className="mt-10">
+        <FloridaRecordPanel
+          title="Florida lobbying firm directories (official PDF index)"
+          subtitle="Tier 1 Florida Commission on Ethics lobbyist registration directories — PDF links from the public search portal."
+          slice={getLobbyingFllobbyistSlice()}
+        />
+      </div>
     </div>
   );
 }
