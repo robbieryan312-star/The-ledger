@@ -7,6 +7,9 @@ import { mergeCampaignFinance, getFecFinanceSnapshot } from '@/lib/data/fecFinan
 import { mockLobbyingGroups, getTotalSpending, getDominantParty, lobbyingGroupCategories } from '@/lib/data/mockLobbyingGroups';
 import SourceBadge from '@/components/ui/SourceBadge';
 import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
+import { FloridaRecordPanel } from '@/components/records/FloridaRecordPanel';
+import { getFinanceFldoeSlice } from '@/lib/data/slices/financeFldoe';
+import { getFilingsSecedgarSlice } from '@/lib/data/slices/filingsSecedgar';
 import { DollarSign, AlertTriangle, TrendingUp, ArrowRight, Info, Building2 } from 'lucide-react';
 import Link from 'next/link';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
@@ -19,7 +22,9 @@ function formatMoney(n: number): string {
 
 function FinanceContent() {
   const searchParams = useSearchParams();
-  const [view, setView] = useState<'overview' | 'lobbyists' | 'pacs'>('overview');
+  const [view, setView] = useState<'overview' | 'lobbyists' | 'pacs' | 'filings'>('overview');
+  const fldoeSlice = getFinanceFldoeSlice();
+  const filingsSlice = getFilingsSecedgarSlice();
   const [sortBy, setSortBy] = useState<'total' | 'lobbyist' | 'pac'>('total');
   const fecMeta = getFecFinanceSnapshot().meta;
 
@@ -37,7 +42,7 @@ function FinanceContent() {
     // 'foreign' is the legacy alias for the reworked PAC & advocacy view.
     if (viewParam === 'pacs' || viewParam === 'foreign') {
       setView('pacs');
-    } else if (viewParam === 'lobbyists' || viewParam === 'overview') {
+    } else if (viewParam === 'lobbyists' || viewParam === 'overview' || viewParam === 'filings') {
       setView(viewParam);
     }
   }, [searchParams]);
@@ -143,6 +148,7 @@ function FinanceContent() {
           { id: 'overview', label: 'Overview' },
           { id: 'lobbyists', label: 'Lobbyists' },
           { id: 'pacs', label: 'PACs & Advocacy' },
+          { id: 'filings', label: 'SEC Filings' },
         ].map((tab) => (
           <button
             key={tab.id}
@@ -291,6 +297,12 @@ function FinanceContent() {
               </BarChart>
             </ResponsiveContainer>
           </div>
+
+          <FloridaRecordPanel
+            title="Florida state campaign contributions ($25,000+)"
+            subtitle="Official Tier 1 disclosures from the Florida Division of Elections Campaign Finance Database."
+            slice={fldoeSlice}
+          />
         </div>
       )}
 
@@ -455,6 +467,19 @@ function FinanceContent() {
             cycle is shown per group. Foreign-government registrants (FARA) and additional PACs will appear here as
             source-linked records are integrated. No unverified entries are shown.
           </p>
+        </div>
+      )}
+
+      {view === 'filings' && (
+        <div className="space-y-4">
+          <p className="text-white/50 text-sm leading-relaxed border-l-2 border-[#c8a951]/30 pl-3">
+            SEC EDGAR filings for companies with Florida domicile or headquarters mentions in recent submissions.
+          </p>
+          <FloridaRecordPanel
+            title="Florida-linked SEC EDGAR filings"
+            subtitle="Tier 1 official SEC submissions — company name, form type, and filing date from EDGAR full-text search."
+            slice={filingsSlice}
+          />
         </div>
       )}
     </div>
