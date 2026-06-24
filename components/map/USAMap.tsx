@@ -203,9 +203,15 @@ function CountyElectionRow({ election }: { election: CountyElection }) {
 }
 
 // ── PoliticianRow ─────────────────────────────────────────────────────────────
+function officialsSectionLabel(stateCode: string, count: number): string {
+  if (stateCode === 'DC') return `U.S. House Delegate (${count})`;
+  return `Governor, U.S. Senate & House (${count})`;
+}
+
 function PoliticianRow({ politician }: { politician: Politician }) {
   const [expanded, setExpanded] = useState(false);
-  const lobbyistTotal = politician.campaignFinance.lobbyistMoney.reduce((s, l) => s + l.amount, 0);
+  const finance = politician.campaignFinance;
+  const lobbyOrgTotal = finance.lobbyistMoney.reduce((s, l) => s + l.amount, 0);
   const partyColor =
     politician.party === 'Democrat'   ? 'bg-blue-500/20 text-blue-400' :
     politician.party === 'Republican' ? 'bg-red-500/20 text-red-400' :
@@ -234,7 +240,6 @@ function PoliticianRow({ politician }: { politician: Politician }) {
           </div>
         </div>
         <div className="flex items-center gap-1.5 flex-shrink-0">
-          {lobbyistTotal > 0 && <AlertTriangle className="h-3.5 w-3.5 text-yellow-400" />}
           {expanded ? <ChevronDown className="h-4 w-4 text-gray-400" /> : <ChevronRight className="h-4 w-4 text-gray-400" />}
         </div>
       </button>
@@ -251,8 +256,8 @@ function PoliticianRow({ politician }: { politician: Politician }) {
             </div>
           ) : (
             <>
-              <div className="space-y-1 mb-2.5">
-                {politician.topIssues.slice(0, 2).map(issue => (
+              <div className="space-y-1.5 mb-2.5">
+                {politician.topIssues.slice(0, 5).map(issue => (
                   <div key={issue.name} className="text-xs">
                     <span className="text-[#c8a951] font-medium">{issue.name}: </span>
                     <span className="text-gray-400">{issue.position}</span>
@@ -261,15 +266,21 @@ function PoliticianRow({ politician }: { politician: Politician }) {
               </div>
               <div className="grid grid-cols-2 gap-2 mb-2.5">
                 <div className="bg-[#0d1f35] rounded-lg p-2">
-                  <div className="text-xs text-gray-500">Consistency</div>
-                  <div className={`text-sm font-bold ${politician.consistency.overallScore >= 75 ? 'text-green-400' : politician.consistency.overallScore >= 50 ? 'text-yellow-400' : 'text-red-400'}`}>
-                    {politician.consistency.overallScore}/100
-                  </div>
+                  <div className="text-xs text-gray-500">Total raised</div>
+                  <div className="text-sm font-bold text-[#c8a951]">{formatMoney(finance.totalRaised)}</div>
                 </div>
-                <div className={`rounded-lg p-2 ${lobbyistTotal > 0 ? 'bg-yellow-400/10' : 'bg-[#0d1f35]'}`}>
-                  <div className="text-xs text-gray-500">Lobbyist $</div>
-                  <div className={`text-sm font-bold ${lobbyistTotal > 0 ? 'text-yellow-400' : 'text-green-400'}`}>
-                    {lobbyistTotal > 0 ? formatMoney(lobbyistTotal) : 'None'}
+                <div className="bg-[#0d1f35] rounded-lg p-2">
+                  <div className="text-xs text-gray-500">Individual donors</div>
+                  <div className="text-sm font-bold text-green-400">{formatMoney(finance.individualDonations)}</div>
+                </div>
+                <div className="bg-[#0d1f35] rounded-lg p-2">
+                  <div className="text-xs text-gray-500">PAC contributions</div>
+                  <div className="text-sm font-bold text-red-400">{formatMoney(finance.pacDonations)}</div>
+                </div>
+                <div className="bg-[#0d1f35] rounded-lg p-2">
+                  <div className="text-xs text-gray-500">Lobbying orgs</div>
+                  <div className={`text-sm font-bold ${lobbyOrgTotal > 0 ? 'text-yellow-400' : 'text-gray-400'}`}>
+                    {lobbyOrgTotal > 0 ? formatMoney(lobbyOrgTotal) : 'No record on file'}
                   </div>
                 </div>
               </div>
@@ -684,14 +695,16 @@ export default function USAMap() {
                     Official records integration in progress for {selectedCountyName ?? 'this county'}
                   </p>
                   <p className="text-gray-500 text-xs leading-relaxed">
-                    County-level official directories are being connected. Federal and state officials for {selectedStateData?.name ?? selectedState} are available below.
+                    County-level official directories are being connected. The governor, U.S. senators, and U.S. representatives for {selectedStateData?.name ?? selectedState} are listed below.
                   </p>
                 </div>
                 {statePoliticians.length > 0 && (
                   <div>
                     <div className="flex items-center gap-2 mb-2">
                       <Users className="h-4 w-4 text-blue-400" />
-                      <span className="text-blue-400 text-xs font-semibold uppercase tracking-wider">State Officials</span>
+                      <span className="text-blue-400 text-xs font-semibold uppercase tracking-wider">
+                        {selectedState ? officialsSectionLabel(selectedState, statePoliticians.length) : 'Elected Officials'}
+                      </span>
                     </div>
                     <div className="space-y-2">
                       {statePoliticians.slice(0, MAP_SIDEBAR_OFFICIAL_LIMIT).map(p => <PoliticianRow key={p.id} politician={p} />)}
@@ -788,9 +801,7 @@ export default function USAMap() {
                       <div className="flex items-center gap-2">
                         <Users className="h-4 w-4 text-blue-400" />
                         <span className="text-blue-400 text-xs font-semibold uppercase tracking-wider">
-                          {selectedState === 'DC'
-                            ? `Federal Officials (${statePoliticians.length})`
-                            : `Federal & State Officials (${statePoliticians.length})`}
+                          {officialsSectionLabel(selectedState, statePoliticians.length)}
                         </span>
                       </div>
                       {selectedState && statePoliticians.length > MAP_SIDEBAR_OFFICIAL_LIMIT && (

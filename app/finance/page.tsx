@@ -180,45 +180,20 @@ function FinanceContent() {
       {view === 'overview' && (
         <div className="space-y-6">
           <p className="text-white/50 text-sm leading-relaxed border-l-2 border-[#c8a951]/30 pl-3">
-            The candidate who raises more money wins roughly 90% of the time. Which raises a question worth asking — who are they actually working for once they get there? Follow the money and decide for yourself.
+            Politicians ranked by total funds raised. Hover any dollar amount for a contribution breakdown by category and top donors.
           </p>
-          {/* Chart */}
-          <div className="bg-[#0d1f35] rounded-2xl p-5 border border-[#1e3a5f]">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-white font-bold">Funding Comparison ($K)</h2>
-              <div className="flex gap-3 text-xs">
-                <div className="flex items-center gap-1.5"><div className="w-2.5 h-2.5 rounded bg-[#c8a951]" />Total</div>
-                <div className="flex items-center gap-1.5"><div className="w-2.5 h-2.5 rounded bg-red-400" />PAC</div>
-                <div className="flex items-center gap-1.5"><div className="w-2.5 h-2.5 rounded bg-yellow-400" />Lobbyist</div>
-              </div>
-            </div>
-            <ResponsiveContainer width="100%" height={240}>
-              <BarChart data={chartData}>
-                <XAxis dataKey="name" tick={{ fill: '#9ca3af', fontSize: 11 }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: '#9ca3af', fontSize: 11 }} axisLine={false} tickLine={false} />
-                <Tooltip
-                  formatter={(v) => `$${v}K`}
-                  contentStyle={{ background: '#0a1628', border: '1px solid #1e3a5f', borderRadius: 8, fontSize: 12 }}
-                  itemStyle={{ color: '#fff' }}
-                />
-                <Bar dataKey="total" fill="#c8a951" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="pac" fill="#f87171" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="lobbyist" fill="#facc15" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
 
-          {/* Politician Table */}
+          {/* Politician leaderboard — primary */}
           <div className="bg-[#0d1f35] rounded-2xl border border-[#1e3a5f] overflow-hidden">
             <div className="px-5 py-4 border-b border-[#1e3a5f] bg-[#0a1628] flex items-center justify-between">
-              <h2 className="text-white font-bold">All Tracked Politicians</h2>
+              <h2 className="text-white font-bold">Most Funded Politicians</h2>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
                 className="bg-[#0d1f35] border border-[#1e3a5f] rounded-lg px-3 py-1.5 text-xs text-gray-300 focus:outline-none"
               >
                 <option value="total">Sort: Total Raised</option>
-                <option value="lobbyist">Sort: Lobbyist Money</option>
+                <option value="lobbyist">Sort: Lobbying Orgs</option>
                 <option value="pac">Sort: PAC Money</option>
               </select>
             </div>
@@ -226,10 +201,11 @@ function FinanceContent() {
               {sorted.map((row) => {
                 const p = row.politician;
                 const finance = row.finance;
-                const lobbyistTotal = finance.lobbyistMoney.reduce((s, l) => s + l.amount, 0);
+                const lobbyOrgTotal = finance.lobbyistMoney.reduce((s, l) => s + l.amount, 0);
                 const indivPct = finance.totalRaised > 0
                   ? Math.round((finance.individualDonations / finance.totalRaised) * 100)
                   : 0;
+                const topDonors = finance.donors.slice(0, 5);
 
                 return (
                   <Link
@@ -249,29 +225,71 @@ function FinanceContent() {
                         <div className="text-gray-500 text-xs">{p.party} · {p.stateCode}</div>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <div className="text-white text-sm font-bold">{formatMoney(finance.totalRaised)}</div>
+                    <div className="text-right relative group">
+                      <div className="text-white text-sm font-bold cursor-default">{formatMoney(finance.totalRaised)}</div>
                       <div className="text-gray-500 text-xs">{indivPct}% individual{row.fecEntry ? ' · FEC' : ' · demo'}</div>
+                      <div className="absolute right-0 top-full z-30 mt-1 hidden group-hover:block w-64 rounded-xl border border-[#1e3a5f] bg-[#0a1628] p-3 shadow-xl text-left">
+                        <div className="text-[10px] uppercase tracking-wide text-gray-500 font-semibold mb-2">Contribution breakdown</div>
+                        <div className="space-y-1 text-xs mb-2">
+                          <div className="flex justify-between"><span className="text-green-400">Individual</span><span className="text-white">{formatMoney(finance.individualDonations)}</span></div>
+                          <div className="flex justify-between"><span className="text-red-400">PAC</span><span className="text-white">{formatMoney(finance.pacDonations)}</span></div>
+                          <div className="flex justify-between"><span className="text-yellow-400">Lobbying orgs</span><span className="text-white">{formatMoney(lobbyOrgTotal)}</span></div>
+                        </div>
+                        {topDonors.length > 0 && (
+                          <>
+                            <div className="text-[10px] uppercase tracking-wide text-gray-500 font-semibold mb-1 pt-1 border-t border-[#1e3a5f]">Top donors</div>
+                            {topDonors.map((d) => (
+                              <div key={d.id} className="flex justify-between text-xs gap-2">
+                                <span className="text-gray-400 truncate">{d.name}</span>
+                                <span className="text-white flex-shrink-0">{formatMoney(d.amount)}</span>
+                              </div>
+                            ))}
+                          </>
+                        )}
+                      </div>
                     </div>
-                    <div className="text-right">
+                    <div className="text-right relative group">
                       <div className={`text-sm font-bold ${finance.pacDonations > 0 ? 'text-red-400' : 'text-green-400'}`}>
                         {finance.pacDonations > 0 ? formatMoney(finance.pacDonations) : '$0'}
                       </div>
-                      <div className="text-gray-500 text-xs">PAC contributions{row.fecEntry ? '' : ' (demo)'}</div>
+                      <div className="text-gray-500 text-xs">PAC{row.fecEntry ? '' : ' (demo)'}</div>
                     </div>
-                    <div className="text-right flex items-center gap-2 justify-end">
-                      {lobbyistTotal > 0 && <AlertTriangle className="h-3.5 w-3.5 text-yellow-400" />}
-                      <div>
-                        <div className={`text-sm font-bold ${lobbyistTotal > 0 ? 'text-yellow-400' : 'text-green-400'}`}>
-                          {formatMoney(lobbyistTotal)}
-                        </div>
-                        <div className="text-gray-500 text-xs">Lobbyist{row.fecEntry ? ' (demo)' : ''}</div>
+                    <div className="text-right relative group">
+                      <div className={`text-sm font-bold ${lobbyOrgTotal > 0 ? 'text-yellow-400' : 'text-gray-500'}`}>
+                        {lobbyOrgTotal > 0 ? formatMoney(lobbyOrgTotal) : '—'}
                       </div>
+                      <div className="text-gray-500 text-xs">Lobbying orgs</div>
                     </div>
                   </Link>
                 );
               })}
             </div>
+          </div>
+
+          {/* Comparison chart — secondary */}
+          <div className="bg-[#0d1f35] rounded-2xl p-5 border border-[#1e3a5f]">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-white font-bold text-sm">Funding Comparison ($K) — top 6</h2>
+              <div className="flex gap-3 text-xs">
+                <div className="flex items-center gap-1.5"><div className="w-2.5 h-2.5 rounded bg-[#c8a951]" />Total</div>
+                <div className="flex items-center gap-1.5"><div className="w-2.5 h-2.5 rounded bg-red-400" />PAC</div>
+                <div className="flex items-center gap-1.5"><div className="w-2.5 h-2.5 rounded bg-yellow-400" />Lobbying orgs</div>
+              </div>
+            </div>
+            <ResponsiveContainer width="100%" height={200}>
+              <BarChart data={chartData}>
+                <XAxis dataKey="name" tick={{ fill: '#9ca3af', fontSize: 11 }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fill: '#9ca3af', fontSize: 11 }} axisLine={false} tickLine={false} />
+                <Tooltip
+                  formatter={(v) => `$${v}K`}
+                  contentStyle={{ background: '#0a1628', border: '1px solid #1e3a5f', borderRadius: 8, fontSize: 12 }}
+                  itemStyle={{ color: '#fff' }}
+                />
+                <Bar dataKey="total" fill="#c8a951" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="pac" fill="#f87171" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="lobbyist" fill="#facc15" radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
         </div>
       )}

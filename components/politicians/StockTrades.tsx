@@ -9,6 +9,26 @@ import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianG
 
 type SortKey = 'date' | 'amount' | 'gain_pct' | 'conflict';
 type ConflictFilter = 'All' | 'High' | 'Medium' | 'Low';
+type TimeRange = '6m' | '1y' | '2y' | '5y' | 'all';
+
+const TIME_RANGE_MS: Record<Exclude<TimeRange, 'all'>, number> = {
+  '6m': 183 * 86_400_000,
+  '1y': 365 * 86_400_000,
+  '2y': 730 * 86_400_000,
+  '5y': 1825 * 86_400_000,
+};
+
+function tradesInRange(trades: StockTrade[], range: TimeRange): StockTrade[] {
+  if (range === 'all') return trades;
+  const cutoff = Date.now() - TIME_RANGE_MS[range];
+  return trades.filter((t) => new Date(t.date).getTime() >= cutoff);
+}
+
+function portfolioGainPct(trades: StockTrade[]): number | null {
+  const withPct = trades.map(priceMovePct).filter((p): p is number => p !== null);
+  if (withPct.length === 0) return null;
+  return withPct.reduce((s, p) => s + p, 0) / withPct.length;
+}
 
 const EVENT_ICONS: Record<TradeTimelineEvent['type'], typeof Vote> = {
   vote: Vote,
@@ -490,10 +510,13 @@ export default function StockTrades({
   const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc');
   const [filterSector, setFilterSector] = useState('All');
   const [filterConflict, setFilterConflict] = useState<ConflictFilter>('All');
+  const [timeRange, setTimeRange] = useState<TimeRange>('all');
+
+  const rangeTrades = useMemo(() => tradesInRange(trades, timeRange), [trades, timeRange]);
 
   const sectors = useMemo(
-    () => ['All', ...Array.from(new Set(trades.map((t) => t.sector)))],
-    [trades],
+    () => ['All', ...Array.from(new Set(rangeTrades.map((t) => t.sector)))],
+    [rangeTrades],
   );
 
   function toggleSort(k: SortKey) {
@@ -502,14 +525,14 @@ export default function StockTrades({
   }
 
   const filtered = useMemo(() => {
-    return trades.filter((t) => {
+    return rangeTrades.filter((t) => {
       if (filterSector !== 'All' && t.sector !== filterSector) return false;
       if (filterConflict === 'High' && t.conflictScore < 70) return false;
       if (filterConflict === 'Medium' && (t.conflictScore < 40 || t.conflictScore >= 70)) return false;
       if (filterConflict === 'Low' && t.conflictScore >= 40) return false;
       return true;
     });
-  }, [trades, filterSector, filterConflict]);
+  }, [rangeTrades, filterSector, filterConflict]);
 
   const sorted = useMemo(() => {
     return [...filtered].sort((a, b) => {
@@ -541,14 +564,13 @@ export default function StockTrades({
     );
   }
 
-  const highConflict = trades.filter((t) => t.conflictScore >= 70);
-  const totalValue = trades.reduce((s, t) => s + tradeSortValue(t), 0);
-  const totalFlagged = trades.reduce((s, t) => s + (t.timelineEvents?.filter((e) => e.isFlagged).length ?? 0), 0);
+  const highConflict = rangeTrades.filter((t) => t.conflictScore >= 70);
+  const totalValue = rangeTrades.reduce((s, t) => s + tradeSortValue(t), 0);
+  const totalFlagged = rangeTrades.reduce((s, t) => s + (t.timelineEvents?.filter((e) => e.isFlagged).length ?? 0), 0);
+  const estGainPct = portfolioGainPct(rangeTrades);
 
-  // Cumulative net of disclosed transactions (purchases +midpoint, sales -midpoint),
-  // ordered chronologically. Estimate of transaction flow only — see chart caveat.
   const portfolioSeries = (() => {
-    const chrono = [...trades].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    const chrono = [...rangeTrades].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
     let cum = 0;
     return chrono.map((t) => {
       const midpoint = (t.amountMin + t.amountMax) / 2;
@@ -561,9 +583,57 @@ export default function StockTrades({
     <div className="space-y-5">
       <div className="flex items-baseline justify-between gap-3 flex-wrap">
         <h3 className="text-lg font-bold text-white">
-          {trades.length} STOCK Act disclosure{trades.length !== 1 ? 's' : ''}
+          {rangeTrades.length} STOCK Act disclosure{rangeTrades.length !== 1 ? 's' : ''}
         </h3>
         <span className="text-xs text-gray-500">for {name}</span>
+      </div>
+
+      {/* Portfolio summary — visible immediately */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#c8a951]/30 text-center">
+          <div className="text-2xl font-bold text-[#c8a951]">{formatMoney(totalValue)}</div>
+          <div className="text-[10px] text-gray-500 mt-0.5">Est. disclosed exposure (range midpoints)</div>
+        </div>
+        <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#1e3a5f] text-center">
+          {estGainPct !== null ? (
+            <>
+              <div className={`text-2xl font-bold ${estGainPct >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                {estGainPct >= 0 ? '+' : ''}{estGainPct.toFixed(1)}%
+              </div>
+              <div className="text-[10px] text-gray-500 mt-0.5">Est. avg. price move (disclosed trades)</div>
+            </>
+          ) : (
+            <>
+              <div className="text-2xl font-bold text-gray-500">—</div>
+              <div className="text-[10px] text-gray-500 mt-0.5">No price estimate on file</div>
+            </>
+          )}
+        </div>
+        <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#1e3a5f] text-center col-span-2 md:col-span-2">
+          <div className="text-[10px] text-gray-500 uppercase tracking-wide mb-2">Time range</div>
+          <div className="flex flex-wrap justify-center gap-1.5">
+            {([
+              ['6m', '6 mo'],
+              ['1y', '1 yr'],
+              ['2y', '2 yr'],
+              ['5y', '5 yr'],
+              ['all', 'All'],
+            ] as [TimeRange, string][]).map(([key, label]) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => setTimeRange(key)}
+                className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
+                  timeRange === key
+                    ? 'bg-[#c8a951] text-[#0a1628]'
+                    : 'bg-[#0a1628] text-gray-400 border border-[#1e3a5f] hover:border-[#c8a951]'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       <MethodologyPanel context="profile" />
@@ -585,21 +655,6 @@ export default function StockTrades({
           </div>
         </div>
       )}
-
-      <div className="grid grid-cols-3 gap-3">
-        <div className="bg-[#0d1f35] rounded-xl p-3 border border-[#1e3a5f] text-center">
-          <div className="text-2xl font-bold text-white">{trades.length}</div>
-          <div className="text-xs text-gray-400">Disclosures</div>
-        </div>
-        <div className="bg-[#0d1f35] rounded-xl p-3 border border-[#1e3a5f] text-center">
-          <div className="text-2xl font-bold text-[#c8a951]">{formatMoney(totalValue)}</div>
-          <div className="text-xs text-gray-400">Est. Disclosed Exposure</div>
-        </div>
-        <div className={`rounded-xl p-3 border text-center ${highConflict.length > 0 ? 'border-red-400/30 bg-red-400/5' : 'border-[#1e3a5f]'}`}>
-          <div className={`text-2xl font-bold ${highConflict.length > 0 ? 'text-red-400' : 'text-green-400'}`}>{highConflict.length}</div>
-          <div className="text-xs text-gray-400">High Review Priority</div>
-        </div>
-      </div>
 
       {portfolioSeries.length >= 2 && <PortfolioValueChart series={portfolioSeries} />}
 
@@ -658,7 +713,7 @@ export default function StockTrades({
         </div>
       </div>
 
-      <div className="text-xs text-gray-500">Showing {sorted.length} of {trades.length} disclosures</div>
+      <div className="text-xs text-gray-500">Showing {sorted.length} of {rangeTrades.length} disclosures in selected range</div>
 
       <div className="space-y-3">
         {sorted.map((trade) => <TradeCard key={trade.id} trade={trade} profileName={name} />)}

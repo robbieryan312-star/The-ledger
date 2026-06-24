@@ -490,7 +490,9 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
     demoTradeCount,
   } = mergeStockTrades(politician.id, politician.stockTrades, politician.recordType);
 
-  const lobbyistTotal = displayFinance.lobbyistMoney.reduce((s, l) => s + l.amount, 0);
+  const lobbyOrgTotal = displayFinance.lobbyistMoney.reduce((s, l) => s + l.amount, 0);
+  const pacTotal = displayFinance.pacDonations;
+  const individualTotal = displayFinance.individualDonations;
   const highConflictTrades = displayStockTrades.filter((t) => t.conflictScore >= 70);
 
   const recordJuxtapositions =
@@ -635,22 +637,24 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
           ) : (
             <div className="flex md:flex-col gap-2 flex-wrap md:flex-nowrap">
               <div className="rounded-xl p-3 border border-white/[0.07] text-center min-w-[90px]" style={{ background: 'rgba(5,9,15,0.5)' }}>
-                <div className={`text-2xl font-bold ${politician.consistency.overallScore >= 75 ? 'text-green-400' : politician.consistency.overallScore >= 50 ? 'text-yellow-400' : 'text-red-400'}`}>
-                  {politician.consistency.overallScore}
-                </div>
-                <div className="text-xs text-white/40">Consistency</div>
-              </div>
-              <div className="rounded-xl p-3 border border-white/[0.07] text-center min-w-[90px]" style={{ background: 'rgba(5,9,15,0.5)' }}>
                 <div className="text-2xl font-bold" style={{ color: '#d4ac52' }}>{formatMoney(displayFinance.totalRaised)}</div>
                 <div className="text-xs text-white/40 flex items-center justify-center gap-1 flex-wrap">
-                  Total Raised
+                  Total raised
                   {fecEntry && <SourceBadge source={fecEntry.source} size="xs" />}
                 </div>
               </div>
-              {lobbyistTotal > 0 && (
+              <div className="rounded-xl p-3 border border-green-400/15 text-center min-w-[90px]" style={{ background: 'rgba(5,9,15,0.5)' }}>
+                <div className="text-2xl font-bold text-green-400">{formatMoney(individualTotal)}</div>
+                <div className="text-xs text-white/40">Individual donors</div>
+              </div>
+              <div className="rounded-xl p-3 border border-red-400/15 text-center min-w-[90px]" style={{ background: 'rgba(5,9,15,0.5)' }}>
+                <div className="text-2xl font-bold text-red-400">{formatMoney(pacTotal)}</div>
+                <div className="text-xs text-white/40">PAC contributions</div>
+              </div>
+              {lobbyOrgTotal > 0 && (
                 <div className="rounded-xl p-3 border border-yellow-400/20 text-center min-w-[90px]" style={{ background: 'rgba(5,9,15,0.5)' }}>
-                  <div className="text-2xl font-bold text-yellow-400">{formatMoney(lobbyistTotal)}</div>
-                  <div className="text-xs text-white/40">Lobbyist $</div>
+                  <div className="text-2xl font-bold text-yellow-400">{formatMoney(lobbyOrgTotal)}</div>
+                  <div className="text-xs text-white/40">Lobbying orgs</div>
                 </div>
               )}
             </div>
@@ -758,9 +762,9 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Lobbyist Money</span>
-                    <span className={`font-medium ${lobbyistTotal > 0 ? 'text-yellow-400' : 'text-green-400'}`}>
-                      {lobbyistTotal > 0 ? formatMoney(lobbyistTotal) : 'None'}
+                    <span className="text-gray-400">Lobbying organizations</span>
+                    <span className={`font-medium ${lobbyOrgTotal > 0 ? 'text-yellow-400' : 'text-green-400'}`}>
+                      {lobbyOrgTotal > 0 ? formatMoney(lobbyOrgTotal) : 'None'}
                     </span>
                   </div>
                   <div className="flex justify-between">

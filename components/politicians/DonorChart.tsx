@@ -85,9 +85,9 @@ export default function DonorChart({
         <div className={`bg-[#0d1f35] rounded-xl p-4 border ${lobbyistTotal > 0 ? 'border-yellow-400/30' : 'border-[#1e3a5f]'}`}>
           <AlertTriangle className={`h-5 w-5 mb-1 ${lobbyistTotal > 0 ? 'text-yellow-400' : 'text-gray-500'}`} />
           <div className={`text-xl font-bold ${lobbyistTotal > 0 ? 'text-yellow-400' : 'text-gray-400'}`}>
-            {formatMoney(lobbyistTotal)}
+            {lobbyistTotal > 0 ? formatMoney(lobbyistTotal) : 'No record on file'}
           </div>
-          <div className="text-xs text-gray-400">Lobbyist Money</div>
+          <div className="text-xs text-gray-400">Lobbying organizations</div>
         </div>
         {foreignTotal > 0 ? (
           <div className="bg-[#0d1f35] rounded-xl p-4 border border-red-400/30">
@@ -180,12 +180,12 @@ export default function DonorChart({
         </div>
       </div>
 
-      {/* Lobbyist Detail */}
+      {/* Lobbying organizations — separate from PAC committees */}
       {finance.lobbyistMoney.length > 0 && (
         <div className="bg-[#0d1f35] rounded-xl p-4 border border-yellow-400/30">
           <div className="flex items-center gap-2 mb-3 flex-wrap">
             <AlertTriangle className="h-4 w-4 text-yellow-400" />
-            <h3 className="text-yellow-400 font-semibold text-sm">Lobbyist Contributions</h3>
+            <h3 className="text-yellow-400 font-semibold text-sm">Lobbying Organization Contributions</h3>
             {hasFecTotals && (
               <span className="text-[10px] uppercase tracking-wide text-yellow-400/80 border border-yellow-400/20 px-1.5 py-0.5 rounded ml-auto">
                 Demo data — not from FEC sync
@@ -213,77 +213,117 @@ export default function DonorChart({
         </div>
       )}
 
-      {/* Top Donors */}
-      {finance.donors.length > 0 && (
-        <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#1e3a5f]">
-          <div className="flex items-center gap-2 mb-1 flex-wrap">
-            <Building2 className="h-4 w-4 text-[#c8a951]" />
-            <h3 className="text-white font-semibold text-sm">
-              Top Donors{donorCycle ? ` — ${donorCycle} cycle` : ''}
-            </h3>
+      {/* Individual donors */}
+      {finance.donors.filter((d) => d.type === 'Individual' || d.type === 'Conduit').length > 0 && (
+        <div className="bg-[#0d1f35] rounded-xl p-4 border border-green-400/20">
+          <div className="flex items-center gap-2 mb-3 flex-wrap">
+            <Users className="h-4 w-4 text-green-400" />
+            <h3 className="text-white font-semibold text-sm">Individual Donors</h3>
             {hasFecTotals && (
               <span className="text-[10px] uppercase tracking-wide text-yellow-400/80 border border-yellow-400/20 px-1.5 py-0.5 rounded ml-auto">
                 Demo composition — not from FEC sync
               </span>
             )}
           </div>
-
-          {/* Category / reconciliation caption — keeps these figures from being misread
-              against the headline PAC and individual totals above. */}
-          {finance.donorNote ? (
-            <p className="text-gray-500 text-[11px] leading-snug mb-3">{finance.donorNote}</p>
-          ) : (
-            <p className="text-gray-500 text-[11px] leading-snug mb-3">
-              Largest contributors by category. Amounts shown with explicit units ($M / $K).
-            </p>
-          )}
-
-          {hasConduit && (
-            <div className="mb-3 flex items-start gap-2 rounded-lg border border-cyan-400/25 bg-cyan-400/5 px-3 py-2">
-              <Info className="h-3.5 w-3.5 text-cyan-300 flex-shrink-0 mt-0.5" />
-              <p className="text-cyan-100/80 text-[11px] leading-snug">
-                <span className="font-semibold text-cyan-200">Conduit ≠ PAC.</span>{' '}
-                {conduitDonors.map((d) => d.name).join(', ')}{' '}
-                {conduitDonors.length === 1 ? 'is a conduit/bundler' : 'are conduits/bundlers'}: the amount is
-                earmarked small-dollar <span className="font-medium">individual</span> money passed through, and is
-                reported within individual contributions — not the{' '}
-                {hasFecTotals ? formatMoney(finance.pacDonations) : ''} in PAC contributions.
-              </p>
-            </div>
-          )}
-
           <div className="space-y-2.5">
-            {finance.donors.slice(0, 8).map((donor) => (
+            {finance.donors.filter((d) => d.type === 'Individual' || d.type === 'Conduit').slice(0, 8).map((donor) => (
               <div key={donor.id}>
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2 min-w-0">
                     <div className={`text-xs px-1.5 py-0.5 rounded flex-shrink-0 ${
-                      donor.type === 'Super PAC' ? 'bg-red-400/20 text-red-400' :
-                      donor.type === 'PAC' ? 'bg-yellow-400/20 text-yellow-400' :
-                      donor.type === 'Conduit' ? 'bg-cyan-400/20 text-cyan-300' :
-                      'bg-blue-400/20 text-blue-400'
+                      donor.type === 'Conduit' ? 'bg-cyan-400/20 text-cyan-300' : 'bg-blue-400/20 text-blue-400'
                     }`}>
                       {donor.type}
                     </div>
                     <span className="text-gray-300 text-sm truncate">{donor.name}</span>
-                    {donor.isLobbyist && <AlertTriangle className="h-3 w-3 text-yellow-400 flex-shrink-0" />}
                   </div>
                   <span className="text-white font-medium text-sm whitespace-nowrap">{formatMoney(donor.amount)}</span>
                 </div>
-                {donor.note && (
-                  <p className="text-gray-500 text-[10px] leading-snug mt-0.5 ml-1">{donor.note}</p>
-                )}
+                {donor.note && <p className="text-gray-500 text-[10px] leading-snug mt-0.5 ml-1">{donor.note}</p>}
               </div>
             ))}
           </div>
-
-          {donorCycleDiffersFromFec && (
-            <p className="text-gray-600 text-[10px] mt-3 pt-2 border-t border-[#1e3a5f]">
-              This donor composition reflects the {finance.donorCompositionCycle} cycle and is shown for illustration;
-              the category totals above are official FEC figures for the {fecEntry?.electionYear} cycle.
-            </p>
-          )}
         </div>
+      )}
+
+      {/* PAC & committee donors */}
+      {finance.donors.filter((d) => d.type === 'PAC' || d.type === 'Super PAC').length > 0 && (
+        <div className="bg-[#0d1f35] rounded-xl p-4 border border-red-400/20">
+          <div className="flex items-center gap-2 mb-3 flex-wrap">
+            <Building2 className="h-4 w-4 text-red-400" />
+            <h3 className="text-white font-semibold text-sm">PAC & Committee Contributions</h3>
+            <span className="text-gray-500 text-xs ml-auto">Total PAC: {formatMoney(finance.pacDonations)}</span>
+          </div>
+          <div className="space-y-2.5">
+            {finance.donors.filter((d) => d.type === 'PAC' || d.type === 'Super PAC').slice(0, 8).map((donor) => (
+              <div key={donor.id}>
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <div className={`text-xs px-1.5 py-0.5 rounded flex-shrink-0 ${
+                      donor.type === 'Super PAC' ? 'bg-red-400/20 text-red-400' : 'bg-yellow-400/20 text-yellow-400'
+                    }`}>
+                      {donor.type}
+                    </div>
+                    <span className="text-gray-300 text-sm truncate">{donor.name}</span>
+                  </div>
+                  <span className="text-white font-medium text-sm whitespace-nowrap">{formatMoney(donor.amount)}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Legacy combined donor list — only if uncategorized donors remain */}
+      {finance.donors.filter((d) => !['Individual', 'Conduit', 'PAC', 'Super PAC'].includes(d.type)).length > 0 && (
+        <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#1e3a5f]">
+          <div className="flex items-center gap-2 mb-1 flex-wrap">
+            <Building2 className="h-4 w-4 text-[#c8a951]" />
+            <h3 className="text-white font-semibold text-sm">
+              Other Contributors{donorCycle ? ` — ${donorCycle} cycle` : ''}
+            </h3>
+          </div>
+          <div className="space-y-2.5 mt-3">
+            {finance.donors.filter((d) => !['Individual', 'Conduit', 'PAC', 'Super PAC'].includes(d.type)).slice(0, 8).map((donor) => (
+              <div key={donor.id}>
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-gray-300 text-sm truncate">{donor.name}</span>
+                  <span className="text-white font-medium text-sm whitespace-nowrap">{formatMoney(donor.amount)}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {finance.donors.length === 0 && (
+        <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#1e3a5f] text-center text-gray-500 text-sm">
+          No itemized donor records on file for this profile.
+        </div>
+      )}
+
+      {hasConduit && (
+        <div className="flex items-start gap-2 rounded-lg border border-cyan-400/25 bg-cyan-400/5 px-3 py-2">
+          <Info className="h-3.5 w-3.5 text-cyan-300 flex-shrink-0 mt-0.5" />
+          <p className="text-cyan-100/80 text-[11px] leading-snug">
+            <span className="font-semibold text-cyan-200">Conduit ≠ PAC.</span>{' '}
+            {conduitDonors.map((d) => d.name).join(', ')}{' '}
+            {conduitDonors.length === 1 ? 'is a conduit/bundler' : 'are conduits/bundlers'}: the amount is
+            earmarked small-dollar <span className="font-medium">individual</span> money passed through, and is
+            reported within individual contributions — not the{' '}
+            {hasFecTotals ? formatMoney(finance.pacDonations) : ''} in PAC contributions.
+          </p>
+        </div>
+      )}
+
+      {finance.donorNote && (
+        <p className="text-gray-500 text-[11px] leading-snug">{finance.donorNote}</p>
+      )}
+
+      {donorCycleDiffersFromFec && (
+        <p className="text-gray-600 text-[10px] pt-2 border-t border-[#1e3a5f]">
+          Donor composition reflects the {finance.donorCompositionCycle} cycle; category totals above are official FEC figures for the {fecEntry?.electionYear} cycle.
+        </p>
       )}
     </div>
   );

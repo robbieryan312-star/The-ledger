@@ -14,7 +14,6 @@ import {
   ExternalLink,
   FileText,
   Globe,
-  History,
   Info,
   Landmark,
   ListChecks,
@@ -34,7 +33,6 @@ const tabs = [
   { id: 'overview', label: 'Overview', icon: Building2 },
   { id: 'spending', label: 'Spending & Recipients', icon: DollarSign },
   { id: 'issues', label: 'Issues/Bills', icon: Landmark },
-  { id: 'history', label: 'History', icon: History },
   { id: 'sources', label: 'Sources', icon: FileText },
 ] as const;
 
@@ -232,6 +230,27 @@ export default function LobbyingGroupProfile({ params }: { params: Promise<{ id:
               ))}
             </div>
           </div>
+          {group.historyTimeline && group.historyTimeline.length > 0 && (
+            <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
+              <h2 className="text-white font-bold mb-4 flex items-center gap-2">
+                <Calendar className="h-4 w-4 text-[#d4ac52]" /> Timeline
+              </h2>
+              <div className="space-y-4">
+                {group.historyTimeline.map((event) => (
+                  <div key={`${event.year}-${event.title}`} className="grid grid-cols-[82px_1fr] gap-4">
+                    <div className="text-[#d4ac52] font-bold text-sm">{event.year}</div>
+                    <div className="rounded-xl border border-white/[0.06] p-4" style={{ background: 'rgba(5,9,15,0.38)' }}>
+                      <div className="flex items-start justify-between gap-3 mb-2">
+                        <h3 className="text-white font-medium">{event.title}</h3>
+                        <SourceBadge source={event.source} />
+                      </div>
+                      <p className="text-white/50 text-sm leading-relaxed">{event.detail}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
           </div>
 
           {group.researchContext && group.researchContext.length > 0 && (
@@ -489,28 +508,6 @@ export default function LobbyingGroupProfile({ params }: { params: Promise<{ id:
                     <p className="text-white/50 text-sm leading-relaxed">{item.summary}</p>
                   </div>
                   <SourceBadge source={item.source} showName />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {activeTab === 'history' && (
-        <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
-          <h2 className="text-white font-bold mb-4 flex items-center gap-2">
-            <Calendar className="h-4 w-4 text-[#d4ac52]" /> Timeline
-          </h2>
-          <div className="space-y-4">
-            {group.historyTimeline.map((event) => (
-              <div key={`${event.year}-${event.title}`} className="grid grid-cols-[82px_1fr] gap-4">
-                <div className="text-[#d4ac52] font-bold text-sm">{event.year}</div>
-                <div className="rounded-xl border border-white/[0.06] p-4" style={{ background: 'rgba(5,9,15,0.38)' }}>
-                  <div className="flex items-start justify-between gap-3 mb-2">
-                    <h3 className="text-white font-medium">{event.title}</h3>
-                    <SourceBadge source={event.source} />
-                  </div>
-                  <p className="text-white/50 text-sm leading-relaxed">{event.detail}</p>
                 </div>
               </div>
             ))}
