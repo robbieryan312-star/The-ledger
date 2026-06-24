@@ -9,7 +9,7 @@
     "asOf": "2026-06-24",
     "featuredQueried": 17,
     "withVoteData": 16,
-    "keyConfigured": true,
+    "keyConfigured": false,
     "houseMembersQueried": 9,
     "senateMembersQueried": 7,
     "senateMembersSkipped": 0,

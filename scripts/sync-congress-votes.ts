@@ -355,6 +355,23 @@ async function main(): Promise<void> {
   let houseResult = { byPoliticianId: {} as Record<string, CongressVoteEntry>, withData: 0, votesScanned: 0 };
   if (!keyConfigured) {
     console.warn('CONGRESS_API_KEY not configured — skipping House Congress.gov sync (Senate still synced).');
+    try {
+      const existing = JSON.parse(await readFile(OUT_FILE, 'utf8')) as {
+        byPoliticianId?: Record<string, CongressVoteEntry>;
+      };
+      for (const politician of houseTargets) {
+        const prior = existing.byPoliticianId?.[politician.id];
+        if (prior?.chamber === 'house' && (prior.votes?.length ?? 0) > 0) {
+          houseResult.byPoliticianId[politician.id] = prior;
+          houseResult.withData += 1;
+        }
+      }
+      if (houseResult.withData > 0) {
+        console.log(`  retained ${houseResult.withData} House profile(s) from existing congressVotes.json`);
+      }
+    } catch {
+      // No prior snapshot — House entries stay empty until key is set.
+    }
   } else {
     try {
       houseResult = await syncHouseVotes(houseTargets, asOf);

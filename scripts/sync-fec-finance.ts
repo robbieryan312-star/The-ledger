@@ -96,6 +96,20 @@ async function main(): Promise<void> {
   const keyConfigured = isFecConfigured();
 
   if (!keyConfigured) {
+    try {
+      const existing = JSON.parse(await readFile(OUT_FILE, 'utf8')) as {
+        meta?: { withFinanceData?: number };
+      };
+      if ((existing.meta?.withFinanceData ?? 0) > 0) {
+        console.warn(
+          'FEC_API_KEY not configured — keeping existing fecFinance.json snapshot ' +
+            `(${existing.meta?.withFinanceData} profiles). Set FEC_API_KEY in .env.local to refresh.`,
+        );
+        return;
+      }
+    } catch {
+      // No prior snapshot — write empty stub below.
+    }
     console.warn('FEC_API_KEY not configured — writing empty fecFinance.json snapshot.');
     const empty = {
       meta: {
