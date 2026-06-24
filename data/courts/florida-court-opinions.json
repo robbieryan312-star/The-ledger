@@ -1,0 +1,1038 @@
+{
+  "meta": {
+    "source": {
+      "name": "CourtListener (Free Law Project)",
+      "url": "https://www.courtlistener.com",
+      "tier": "nonpartisan",
+      "description": "Nonpartisan Free Law Project legal database; opinions are official court records"
+    },
+    "asOf": "2026-06-24",
+    "count": 60,
+    "stateCode": "FL",
+    "fetchedLive": true,
+    "datasetUrl": "https://www.courtlistener.com/api/rest/v4/search/?type=o&court=fla",
+    "note": "Most recent Supreme Court of Florida opinions (newest-first). Tier 2 aggregator of official court records."
+  },
+  "records": [
+    {
+      "caseName": "Dusty Ray Spencer v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-06-18",
+      "docketNumber": "SC2026-0880",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10877287/dusty-ray-spencer-v-state-of-florida/"
+    },
+    {
+      "caseName": "Eric Desmond Parrish v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-06-18",
+      "docketNumber": "SC2022-1457",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10876940/eric-desmond-parrish-v-state-of-florida/"
+    },
+    {
+      "caseName": "Gary Richard Whitton v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-06-18",
+      "docketNumber": "SC2025-1357",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10876939/gary-richard-whitton-v-state-of-florida/"
+    },
+    {
+      "caseName": "Harold Lee Harvey, Jr. v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-06-18",
+      "docketNumber": "SC2024-0648",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10876938/harold-lee-harvey-jr-v-state-of-florida/"
+    },
+    {
+      "caseName": "In Re: Amendments to Florida Probate Rules",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-06-18",
+      "docketNumber": "SC2025-1462",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-18"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10876937/in-re-amendments-to-florida-probate-rules/"
+    },
+    {
+      "caseName": "In Re: Amendments to Florida Rules of Appellate Procedure",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-06-11",
+      "docketNumber": "SC2025-0241",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10873672/in-re-amendments-to-florida-rules-of-appellate-procedure/"
+    },
+    {
+      "caseName": "In Re: Amendments to Florida Rules of Juvenile Procedure 8.203 and 8.330",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-06-11",
+      "docketNumber": "SC2025-1362",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10873671/in-re-amendments-to-florida-rules-of-juvenile-procedure-8203-and-8330/"
+    },
+    {
+      "caseName": "Isaac \"Ike\" Perlmutter v. Federal Insurance Company",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-06-11",
+      "docketNumber": "SC2024-0058",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10873670/isaac-ike-perlmutter-v-federal-insurance-company/"
+    },
+    {
+      "caseName": "Michael Lawrence Woodbury v. State of Florida & Michael Lawrence Woodbury v. Secretary, Department of Corrections",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-06-11",
+      "docketNumber": "SC2024-0232 & SC2024-1127",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10873669/michael-lawrence-woodbury-v-state-of-florida-michael-lawrence-woodbury/"
+    },
+    {
+      "caseName": "The Florida Bar v. Kenneth Chesebro",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-06-11",
+      "docketNumber": "SC2024-1528",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10873668/the-florida-bar-v-kenneth-chesebro/"
+    },
+    {
+      "caseName": "Equal Ground Education Fund, Inc. v. Secretary, Florida Department of State",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-06-10",
+      "docketNumber": "SC2026-0857",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-10"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10873345/equal-ground-education-fund-inc-v-secretary-florida-department-of-state/"
+    },
+    {
+      "caseName": "Citizens of the State of Florida, Etc. v. Florida Public Service Commission",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-06-04",
+      "docketNumber": "SC2023-0988",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-04"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10870072/citizens-of-the-state-of-florida-etc-v-florida-public-service-commission/"
+    },
+    {
+      "caseName": "In Re: Amendments to Florida Small Claims Rule 7.070",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-06-04",
+      "docketNumber": "SC2025-1254",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-04"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10870071/in-re-amendments-to-florida-small-claims-rule-7070/"
+    },
+    {
+      "caseName": "In Re: Amendments to Rules Regulating the Florida Bar - Rule 5-1.1",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-06-04",
+      "docketNumber": "SC2025-1730",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-04"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10870070/in-re-amendments-to-rules-regulating-the-florida-bar-rule-5-11/"
+    },
+    {
+      "caseName": "Clint Shannon Gessner v. Southern Company",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-05-28",
+      "docketNumber": "SC2024-1835",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-05-28"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10865531/clint-shannon-gessner-v-southern-company/"
+    },
+    {
+      "caseName": "In Re: Amendments to Florida Rule of General Practice and Judicial Administration 2.515",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-05-28",
+      "docketNumber": "SC2026-0673",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-05-28"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10865530/in-re-amendments-to-florida-rule-of-general-practice-and-judicial/"
+    },
+    {
+      "caseName": "Andrew Richard Lukehart v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-05-27",
+      "docketNumber": "SC2026-0736",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-05-27"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10865092/andrew-richard-lukehart-v-state-of-florida/"
+    },
+    {
+      "caseName": "Darious Wilcox v. State of Florida & Darious Wilcox v. Secretary, Department of Corrections",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-05-21",
+      "docketNumber": "SC2023-1498 & SC2024-0785",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-05-21"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10862767/darious-wilcox-v-state-of-florida-darious-wilcox-v-secretary/"
+    },
+    {
+      "caseName": "Walter Javier Arrazola Mendivil v. the Florida Bar",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-05-21",
+      "docketNumber": "SC2026-0210",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-05-21"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10862766/walter-javier-arrazola-mendivil-v-the-florida-bar/"
+    },
+    {
+      "caseName": "Marcus Roland Maye v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-05-15",
+      "docketNumber": "SC2023-1184",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-05-15"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10860155/marcus-roland-maye-v-state-of-florida/"
+    },
+    {
+      "caseName": "Richard Knight v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-05-15",
+      "docketNumber": "SC2026-0718",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-05-15"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10860154/richard-knight-v-state-of-florida/"
+    },
+    {
+      "caseName": "In Re: Amendments to Florida Rules of General Practice and Judicial Administration 2.530 and 2.540",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-05-14",
+      "docketNumber": "SC2025-0725",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-05-14"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10858764/in-re-amendments-to-florida-rules-of-general-practice-and-judicial/"
+    },
+    {
+      "caseName": "Marcus Roland Maye v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-05-14",
+      "docketNumber": "SC2023-1184",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-05-14"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10858763/marcus-roland-maye-v-state-of-florida/"
+    },
+    {
+      "caseName": "James Aren Duckett v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-04-30",
+      "docketNumber": "SC2026-0528",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-04-30"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10851061/james-aren-duckett-v-state-of-florida/"
+    },
+    {
+      "caseName": "James Ernest Hitchcock v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-04-23",
+      "docketNumber": "SC2026-0574",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-04-23"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10847348/james-ernest-hitchcock-v-state-of-florida/"
+    },
+    {
+      "caseName": "Armando Arce v. Chief Judge Timothy D. Osterhaus",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-04-23",
+      "docketNumber": "SC2025-1811",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-04-23"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10847203/armando-arce-v-chief-judge-timothy-d-osterhaus/"
+    },
+    {
+      "caseName": "In Re: Amendments to Rules Regulating the Florida Bar - Substance Use Terminology",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-04-16",
+      "docketNumber": "SC2025-1172",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-04-16"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10843933/in-re-amendments-to-rules-regulating-the-florida-bar-substance-use/"
+    },
+    {
+      "caseName": "Joseph Zieler v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-04-16",
+      "docketNumber": "SC2023-1003",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-04-16"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10843932/joseph-zieler-v-state-of-florida/"
+    },
+    {
+      "caseName": "Chadwick Willacy v. State of Florida & Chadwick Willacy v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-04-15",
+      "docketNumber": "SC2026-0519 & SC2026-0526",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-04-15"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10843529/chadwick-willacy-v-state-of-florida-chadwick-willacy-v-state-of-florida/"
+    },
+    {
+      "caseName": "In Re: Amendments to Florida Rules of Appellate Procedure",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-04-09",
+      "docketNumber": "SC2025-1458",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-04-09"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10839758/in-re-amendments-to-florida-rules-of-appellate-procedure/"
+    },
+    {
+      "caseName": "In Re: Amendments to Florida Rules of Appellate Procedure",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-03-19",
+      "docketNumber": "SC2025-1458",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-03-19"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10811081/in-re-amendments-to-florida-rules-of-appellate-procedure/"
+    },
+    {
+      "caseName": "In Re: Amendments to Rules Regulating the Florida Bar - Professionalism Expectations",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-03-19",
+      "docketNumber": "SC2025-1347",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-03-19"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10811080/in-re-amendments-to-rules-regulating-the-florida-bar-professionalism/"
+    },
+    {
+      "caseName": "Jeromee Saffold v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-03-19",
+      "docketNumber": "SC2023-1749",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-03-19"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10811079/jeromee-saffold-v-state-of-florida/"
+    },
+    {
+      "caseName": "In Re: Amendments to Florida Rule of Appellate Procedure 9.710",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-03-12",
+      "docketNumber": "SC2025-1415",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-03-12"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10807798/in-re-amendments-to-florida-rule-of-appellate-procedure-9710/"
+    },
+    {
+      "caseName": "Inquiry Concerning a Judge JQC No. 2025-001 Re: Woody Robert Clermont",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-03-12",
+      "docketNumber": "SC2025-1319",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-03-12"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10807797/inquiry-concerning-a-judge-jqc-no-2025-001-re-woody-robert-clermont/"
+    },
+    {
+      "caseName": "Michael L. King v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-03-10",
+      "docketNumber": "SC2026-0336",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-03-10"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10806685/michael-l-king-v-state-of-florida/"
+    },
+    {
+      "caseName": "In Re: Amendment to Florida Rule of Appellate Procedure 9.140",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-03-05",
+      "docketNumber": "SC2026-0073",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-03-05"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10804312/in-re-amendment-to-florida-rule-of-appellate-procedure-9140/"
+    },
+    {
+      "caseName": "Michael H. Hunt v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-03-05",
+      "docketNumber": "SC2024-0096",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-03-05"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10804311/michael-h-hunt-v-state-of-florida/"
+    },
+    {
+      "caseName": "Raymond Bright v. State of Florida & Raymond Bright v. Secretary, Department of Corrections",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-02-26",
+      "docketNumber": "SC2023-1735 & SC2024-0876",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-02-26"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10800865/raymond-bright-v-state-of-florida-raymond-bright-v-secretary/"
+    },
+    {
+      "caseName": "Billy Leon Kearse v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-02-25",
+      "docketNumber": "SC2026-0250 & SC2026-0251",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-02-25"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10800500/billy-leon-kearse-v-state-of-florida/"
+    },
+    {
+      "caseName": "State of Florida v. Leo Louis Kaczmar, III & Leo Louis Kaczmar, III v. Secretary, Department of Corrections",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-02-19",
+      "docketNumber": "SC2022-1671 & SC2023-0725",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-02-19"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10796133/state-of-florida-v-leo-louis-kaczmar-iii-leo-louis-kaczmar-iii-v/"
+    },
+    {
+      "caseName": "Melvin Trotter v. State of Florida & Melvin Trotter v. Secretary, Department of Corrections",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-02-17",
+      "docketNumber": "SC2026-0214 & SC2026-0217",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-02-17"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10795138/melvin-trotter-v-state-of-florida-melvin-trotter-v-secretary/"
+    },
+    {
+      "caseName": "In Re: Amendments to Rules Regulating the Florida Bar - Chapter 3",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-02-12",
+      "docketNumber": "SC2025-1180",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-02-12"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10790594/in-re-amendments-to-rules-regulating-the-florida-bar-chapter-3/"
+    },
+    {
+      "caseName": "Ronald Palmer Heath v. State of Florida & Ronald Palmer Heath v. Secretary, Department of Corrections",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-02-03",
+      "docketNumber": "SC2026-0112 & SC2026-0113",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-02-03"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10783543/ronald-palmer-heath-v-state-of-florida-ronald-palmer-heath-v-secretary/"
+    },
+    {
+      "caseName": "In Re: Amendment to Florida Rule of Appellate Procedure 9.200",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-01-22",
+      "docketNumber": "SC2025-1378",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-01-22"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10777960/in-re-amendment-to-florida-rule-of-appellate-procedure-9200/"
+    },
+    {
+      "caseName": "In Re: Amendments to Florida Rules of Civil Procedure 1.070, 1.430, and Form 1.902",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-01-15",
+      "docketNumber": "SC2025-0582",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-01-15"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10774893/in-re-amendments-to-florida-rules-of-civil-procedure-1070-1430-and/"
+    },
+    {
+      "caseName": "In Re: Amendments to Florida Rules of Civil Procedure 1.350 and 1.370",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-01-15",
+      "docketNumber": "SC2024-0779",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-01-15"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10774892/in-re-amendments-to-florida-rules-of-civil-procedure-1350-and-1370/"
+    },
+    {
+      "caseName": "In Re: Amendments to Rules Regulating the Florida Bar and Rules of the Supreme Court Relating to Admissions to the Bar",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2026-01-15",
+      "docketNumber": "SC2025-2064",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-01-15"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10774891/in-re-amendments-to-rules-regulating-the-florida-bar-and-rules-of-the/"
+    },
+    {
+      "caseName": "James Terry Colley, Jr. v. State of Florida & James Terry Colley, Jr. v. Secretary, Department of Corrections",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2025-12-30",
+      "docketNumber": "SC2024-1011 & SC2024-1647",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2025-12-30"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10766784/james-terry-colley-jr-v-state-of-florida-james-terry-colley-jr-v/"
+    },
+    {
+      "caseName": "Ashley Nicole Isabel Brito v. Jennifer Salas & Angel Giovanni Rivera v. Jennifer Salas",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2025-12-30",
+      "docketNumber": "SC2024-1184 & SC2024-1190",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2025-12-30"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10766750/ashley-nicole-isabel-brito-v-jennifer-salas-angel-giovanni-rivera-v/"
+    },
+    {
+      "caseName": "State of Florida v. Bryan Allen Repple",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2025-12-30",
+      "docketNumber": "SC2024-1088",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2025-12-30"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10766749/state-of-florida-v-bryan-allen-repple/"
+    },
+    {
+      "caseName": "Michael James Jackson v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2025-12-19",
+      "docketNumber": "SC2023-1298",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2025-12-19"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10761718/michael-james-jackson-v-state-of-florida/"
+    },
+    {
+      "caseName": "In Re: Amendment to Florida Rule of General Practice and Judicial Administration 2.140",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2025-12-18",
+      "docketNumber": "SC2025-1750",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2025-12-18"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10760845/in-re-amendment-to-florida-rule-of-general-practice-and-judicial/"
+    },
+    {
+      "caseName": "In Re: Amendments to Florida Rules of General Practice and Judicial Administration",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2025-12-18",
+      "docketNumber": "SC2024-1403",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2025-12-18"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10760844/in-re-amendments-to-florida-rules-of-general-practice-and-judicial/"
+    },
+    {
+      "caseName": "In Re: Amendments to Rules Regulating the Florida Bar - Chapter 3",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2025-12-18",
+      "docketNumber": "SC2025-1180",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2025-12-18"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10760843/in-re-amendments-to-rules-regulating-the-florida-bar-chapter-3/"
+    },
+    {
+      "caseName": "In Re: Amendments to Rules Regulating the Florida Bar - Rule 4-8.6",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2025-12-18",
+      "docketNumber": "SC2025-1173",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2025-12-18"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10760842/in-re-amendments-to-rules-regulating-the-florida-bar-rule-4-86/"
+    },
+    {
+      "caseName": "Michael H. Hunt v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2025-12-18",
+      "docketNumber": "SC2024-0096",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2025-12-18"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10760841/michael-h-hunt-v-state-of-florida/"
+    },
+    {
+      "caseName": "Michael James Jackson v. State of Florida",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2025-12-18",
+      "docketNumber": "SC2023-1298",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2025-12-18"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10760840/michael-james-jackson-v-state-of-florida/"
+    },
+    {
+      "caseName": "State Attorneys for the Second, Seventh and Ninth Judicial Circuits v. Florida Pace Funding Agency, Etc.; Alachua County Tax Collector v. Florida Pace Funding Agency; Palm Beach County, Florida v. Florida Pace Funding Agency; Alachua County, Florida v. Florida Pace Funding Agency",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2025-12-18",
+      "docketNumber": "SC2024-0652 & SC2024-0656 & SC2024-0664 & SC2024-0681",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2025-12-18"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10760839/state-attorneys-for-the-second-seventh-and-ninth-judicial-circuits-v/"
+    },
+    {
+      "caseName": "Frank A. Walls v. State of Florida & Frank A. Walls v. Secretary, Department of Corrections",
+      "court": "Supreme Court of Florida",
+      "dateFiled": "2025-12-11",
+      "docketNumber": "SC2025-1915 & SC2025-1917",
+      "citation": [],
+      "status": "Published",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2025-12-11"
+      },
+      "asOf": "2026-06-24",
+      "opinionUrl": "https://www.courtlistener.com/opinion/10754167/frank-a-walls-v-state-of-florida-frank-a-walls-v-secretary/"
+    }
+  ]
+}
