@@ -6,7 +6,8 @@ import { mockElections } from '@/lib/data/mockElections';
 import { lookupZip } from '@/lib/data/zipLookup';
 import { Poll } from '@/lib/types';
 import Link from 'next/link';
-import { Calendar, MapPin, Users, ArrowRight, Filter, Vote, AlertTriangle, ExternalLink, BarChart2, Star, ChevronDown, ChevronRight } from 'lucide-react';
+import { Calendar, MapPin, Users, ArrowRight, Filter, Vote, AlertTriangle, ExternalLink, BarChart2, Star } from 'lucide-react';
+import CandidateTopicAccordion from '@/components/elections/CandidateTopicAccordion';
 import { buildCompareUrl } from '@/lib/data/electionCompare';
 import { getPoliticianById } from '@/lib/data/allPoliticians';
 import { resolveCurrentOffice } from '@/lib/data/officeResolution';
@@ -397,7 +398,7 @@ export default function ElectionsPage() {
 }
 
 // ── Candidate card sub-component ──────────────────────────────────────────────
-import { Candidate, Issue } from '@/lib/types';
+import { Candidate } from '@/lib/types';
 import { resolveCandidatePoliticianId } from '@/lib/data/electionCompare';
 
 function CandidateNameLink({ candidate }: { candidate: Candidate }) {
@@ -484,42 +485,6 @@ function DonorBreakdownHover({ candidate }: { candidate: Candidate }) {
   );
 }
 
-function CandidateIssuesAccordion({ issues }: { issues: Issue[] }) {
-  const [openIdx, setOpenIdx] = useState<number | null>(null);
-  if (issues.length === 0) return null;
-
-  return (
-    <div className="space-y-1.5 mb-3">
-      <div className="text-[10px] text-gray-500 uppercase tracking-wide">Platform positions</div>
-      {issues.map((issue, i) => (
-        <div key={`${issue.name}-${i}`} className="border border-[#1e3a5f] rounded-lg overflow-hidden">
-          <button
-            type="button"
-            onClick={() => setOpenIdx(openIdx === i ? null : i)}
-            className="w-full flex items-center gap-2 px-2.5 py-2 text-left hover:bg-[#1e3a5f]/30 transition-colors"
-          >
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-1.5 flex-wrap">
-                <span className="text-xs text-white font-medium">{issue.name}</span>
-                <span className="text-[10px] text-gray-500 px-1.5 py-0 rounded border border-[#1e3a5f]">{issue.category}</span>
-              </div>
-              <div className="text-[11px] text-[#c8a951] mt-0.5 truncate">{issue.position}</div>
-            </div>
-            {openIdx === i
-              ? <ChevronDown className="h-3 w-3 text-gray-500 shrink-0" />
-              : <ChevronRight className="h-3 w-3 text-gray-500 shrink-0" />}
-          </button>
-          {openIdx === i && (
-            <div className="px-2.5 pb-2.5 text-xs text-gray-400 leading-relaxed border-t border-[#1e3a5f] pt-2">
-              {issue.detail}
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function CandidateCard({ candidate, isPrimary }: { candidate: Candidate; isPrimary: boolean }) {
   const prob = isPrimary ? candidate.primaryProbability : candidate.winProbability;
   const probLabel = isPrimary ? 'Primary prob.' : 'Win prob.';
@@ -573,7 +538,13 @@ function CandidateCard({ candidate, isPrimary }: { candidate: Candidate; isPrima
         </div>
       )}
 
-      <CandidateIssuesAccordion issues={candidate.topIssues} />
+      <CandidateTopicAccordion
+        issues={candidate.topIssues}
+        profileIssues={politician?.topIssues}
+        hasProfile={Boolean(profileId)}
+        profileId={profileId}
+        candidateName={candidate.name}
+      />
 
       {candidate.endorsements.length > 0 && (
         <div className="flex flex-wrap gap-1 mb-2">
