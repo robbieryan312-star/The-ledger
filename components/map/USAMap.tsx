@@ -12,6 +12,9 @@ import { countyByFips, countiesByState } from '@/lib/data/mockCounties';
 import { useMapNavigation } from '@/lib/context/MapNavigationContext';
 import OfficialCard from '@/components/counties/OfficialCard';
 import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
+import { FloridaRecordPanel, FloridaStateEconomicPanel } from '@/components/records/FloridaRecordPanel';
+import { getStateEconomicSlice } from '@/lib/data/slices/stateEconomic';
+import { getJudiciaryCourtsSlice } from '@/lib/data/slices/judiciaryCourts';
 import Link from 'next/link';
 import {
   X, ChevronDown, ChevronRight, Calendar, Users, AlertTriangle, Vote,
@@ -793,6 +796,17 @@ export default function USAMap() {
                     District of Columbia has no governor or voting members of Congress.
                     The non-voting delegate to the U.S. House is listed below when present in the authoritative legislators dataset.
                   </div>
+                )}
+
+                {selectedState === 'FL' && (
+                  <>
+                    <FloridaStateEconomicPanel slice={getStateEconomicSlice()} />
+                    <FloridaRecordPanel
+                      title="Florida Supreme Court opinions"
+                      subtitle="Recent opinions from the Supreme Court of Florida via CourtListener (Free Law Project)."
+                      slice={getJudiciaryCourtsSlice()}
+                    />
+                  </>
                 )}
 
                 {statePoliticians.length > 0 && (

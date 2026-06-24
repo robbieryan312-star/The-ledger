@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { countyByFips, countiesByState } from '@/lib/data/mockCounties';
 import OfficialCard from '@/components/counties/OfficialCard';
+import FloridaCountyEconomicContext from '@/components/records/FloridaCountyEconomicContext';
 import { ArrowLeft, Building2, Calendar, ExternalLink, History, MapPin, Users } from 'lucide-react';
 
 export default async function CountyPage({ params }: { params: Promise<{ fips: string }> }) {
@@ -46,6 +47,12 @@ export default async function CountyPage({ params }: { params: Promise<{ fips: s
           )}
         </div>
       </div>
+
+      {county.stateCode === 'FL' && (
+        <div className="mb-8">
+          <FloridaCountyEconomicContext />
+        </div>
+      )}
 
       {(county.seat || county.population) && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
