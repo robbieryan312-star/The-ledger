@@ -1,20 +1,26 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { useUserProfile } from '@/lib/hooks/useUserProfile';
-import { allPoliticians, getPoliticiansForState, resolveOffice } from '@/lib/data/allPoliticians';
+import { allPoliticians, resolveOffice } from '@/lib/data/allPoliticians';
 import { fecFinanceCount } from '@/lib/data/fecFinance';
 import { congressVotesCount } from '@/lib/data/congressVotes';
 import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
 import { mockElections } from '@/lib/data/mockElections';
 import { lookupZip } from '@/lib/data/zipLookup';
+import StateRosterControls from '@/components/dashboard/StateRosterControls';
+import {
+  DEFAULT_ROSTER_FILTERS,
+  applyStateRosterFilters,
+  getPoliticiansForStateRoster,
+  type StateRosterFilters,
+} from '@/lib/dashboard/stateRoster';
 import {
   User, MapPin, Bookmark, BookmarkCheck, ArrowRight, Calendar,
-  AlertTriangle, ExternalLink, TrendingUp, X, ChevronDown,
+  AlertTriangle, ExternalLink, X,
 } from 'lucide-react';
 import TrackButton from '@/components/ui/TrackButton';
-import { Politician } from '@/lib/types';
 
 function formatMoney(n: number): string {
   if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
@@ -42,13 +48,11 @@ const US_STATES: { code: string; name: string }[] = [
   { code: 'WI', name: 'Wisconsin' }, { code: 'WY', name: 'Wyoming' }, { code: 'DC', name: 'Washington, DC' },
 ];
 
-type PartisanFilter = 'all' | 'bipartisan' | 'noPAC' | 'noLobbyist';
-
 export default function DashboardPage() {
   const { profile, hydrated, setLocation, clearLocation, untrackPolitician, isTracked } = useUserProfile();
   const [stateCode, setStateCode] = useState('');
   const [zipInput, setZipInput] = useState('');
-  const [filter, setFilter] = useState<PartisanFilter>('all');
+  const [rosterFilters, setRosterFilters] = useState<StateRosterFilters>(DEFAULT_ROSTER_FILTERS);
 
   // Auto-fill state when a recognized ZIP is entered
   useEffect(() => {
@@ -58,6 +62,18 @@ export default function DashboardPage() {
     }
   }, [zipInput, stateCode]);
 
+  const hasLocation = hydrated && !!profile.stateCode;
+
+  const stateReps = useMemo(
+    () => (hasLocation ? getPoliticiansForStateRoster(profile.stateCode, rosterFilters.inOfficeOnly) : []),
+    [hasLocation, profile.stateCode, rosterFilters.inOfficeOnly],
+  );
+
+  const filteredReps = useMemo(
+    () => applyStateRosterFilters(stateReps, rosterFilters),
+    [stateReps, rosterFilters],
+  );
+
   if (!hydrated) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-16 text-center">
@@ -66,31 +82,11 @@ export default function DashboardPage() {
     );
   }
 
-  const hasLocation = !!profile.stateCode;
-
-  const stateReps = hasLocation ? getPoliticiansForState(profile.stateCode) : [];
-
   const stateElections = hasLocation
     ? mockElections.filter((e) => e.stateCode === profile.stateCode && e.isUpcoming)
     : [];
 
   const trackedPoliticians = allPoliticians.filter((p) => isTracked(p.id));
-
-  const filterLabel: Record<PartisanFilter, string> = {
-    all: 'All',
-    bipartisan: 'Bipartisan Voters',
-    noPAC: 'No PAC Money',
-    noLobbyist: 'No Lobbyist $',
-  };
-
-  const applyFilter = (list: Politician[]) => {
-    if (filter === 'bipartisan') return list.filter((p) => (100 - p.consistency.partyLineVotePercentage) >= 15);
-    if (filter === 'noPAC') return list.filter((p) => p.campaignFinance.pacDonations === 0);
-    if (filter === 'noLobbyist') return list.filter((p) => p.campaignFinance.lobbyistMoney.length === 0);
-    return list;
-  };
-
-  const filteredReps = applyFilter(stateReps);
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -266,31 +262,20 @@ export default function DashboardPage() {
         <>
           {/* State Representatives */}
           <section className="mb-10">
-            <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
-              <div className="flex items-center gap-2">
+            <div className="mb-4">
+              <div className="flex items-center gap-2 mb-4">
                 <MapPin className="h-5 w-5 text-[#c8a951]" />
                 <h2 className="text-white font-bold text-lg">{profile.stateName} Representatives</h2>
                 {stateReps.length > 0 && (
                   <span className="text-xs bg-[#1e3a5f] text-gray-400 px-2 py-0.5 rounded-full">{stateReps.length} in database</span>
                 )}
               </div>
-              {/* Filter bar */}
-              <div className="flex gap-2 flex-wrap">
-                {(['all', 'bipartisan', 'noPAC', 'noLobbyist'] as PartisanFilter[]).map((f) => (
-                  <button
-                    key={f}
-                    type="button"
-                    onClick={() => setFilter(f)}
-                    className={`text-xs px-3 py-1.5 rounded-lg border transition-colors ${
-                      filter === f
-                        ? 'bg-[#c8a951] text-[#0a1628] border-[#c8a951] font-semibold'
-                        : 'bg-[#0d1f35] text-gray-400 border-[#1e3a5f] hover:text-white'
-                    }`}
-                  >
-                    {filterLabel[f]}
-                  </button>
-                ))}
-              </div>
+              <StateRosterControls
+                filters={rosterFilters}
+                onChange={setRosterFilters}
+                totalCount={stateReps.length}
+                filteredCount={filteredReps.length}
+              />
             </div>
 
             {stateReps.length === 0 ? (
