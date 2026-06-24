@@ -1,0 +1,1918 @@
+{
+  "meta": {
+    "source": {
+      "name": "USASpending.gov",
+      "url": "https://www.usaspending.gov",
+      "tier": "official",
+      "description": "Official federal spending and contract awards via api.usaspending.gov"
+    },
+    "asOf": "2026-06-24",
+    "count": 100,
+    "stateCode": "FL",
+    "fetchedLive": true,
+    "datasetUrl": "https://api.usaspending.gov/api/v2/search/spending_by_award/",
+    "note": "Top 100 federal awards with Florida place of performance, FY2024–present. Tier 1 official."
+  },
+  "records": [
+    {
+      "awardId": "N0001918C1037",
+      "recipientName": "NORTHROP GRUMMAN SYSTEMS CORPORATION",
+      "awardAmount": 8478019987.67,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Navy",
+      "startDate": "2018-02-15",
+      "endDate": "2030-02-01",
+      "placeOfPerformanceState": "FL",
+      "description": "E-2D ADVANCED HAWKEYE AIRCRAFT (FRP-7)",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0001918C1037"
+    },
+    {
+      "awardId": "FA868224CB001",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 6948968023.22,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2024-09-27",
+      "endDate": "2033-01-31",
+      "placeOfPerformanceState": "FL",
+      "description": "LONG RANGE ANTI-SHIP MISSILE/JOINT AIR-TO-SURFACE STANDOFF MISSILE LARGE LOT PROCUREMENT",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA868224CB001"
+    },
+    {
+      "awardId": "N0001913C9999",
+      "recipientName": "NORTHROP GRUMMAN SYSTEMS CORPORATION",
+      "awardAmount": 5374740355.12,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Navy",
+      "startDate": "2013-05-13",
+      "endDate": "2026-12-31",
+      "placeOfPerformanceState": "FL",
+      "description": "E-2D ADVANCED HAWKEYE AIRCRAFT (FRP-2)",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0001913C9999"
+    },
+    {
+      "awardId": "W31P4Q18C0130",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 3158372223.06,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2018-09-29",
+      "endDate": "2025-05-31",
+      "placeOfPerformanceState": "FL",
+      "description": "HELLFIRE BUY 17 PRODUCTION.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W31P4Q18C0130"
+    },
+    {
+      "awardId": "NNK17MA01T",
+      "recipientName": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+      "awardAmount": 3029850123.69,
+      "awardingAgency": "National Aeronautics and Space Administration",
+      "awardingSubAgency": "National Aeronautics and Space Administration",
+      "startDate": "2016-12-30",
+      "endDate": "2030-12-31",
+      "placeOfPerformanceState": "FL",
+      "description": "IGF::OT::IGF THE COMMERCIAL CREW PROGRAM (CCP) COMMERCIAL CREW TRANSPORTATION CAPABILITY (CCTCAP) CONTRACT WILL PROVIDE COMPLETION OF THE DESIGN, DEVELOPMENT, TEST, EVALUATION, AND CERTIFICATION OF AN INTEGRATED CREW TRANSPORTATION SYSTEM (CTS) CAPABLE OF TRANSPORTING NASA CREW TO AND FROM THE ISS, IN ACCORDANCE WITH THE DESIGN REFERENCE MISSIONS AND NASA'S CERTIFICATION STANDARDS AND REQUIREMENTS.  CERTIFICATION OF THE CTS WILL BE DETERMINED BY NASA.  NASA PLANS TO ISSUE TASK ORDERS FOR POST CERTIFICATION MISSIONS (PCM) TO AND FROM ISS THAT INCLUDE GROUND, LAUNCH, LIFEBOAT, ON-ORBIT, RETURN AND RECOVERY OPERATIONS. THE MINIMUM QUANTITY OF MISSIONS TO BE ORDERED IS TWO (2) AND THE MAXIMUM POTENTIAL QUANTITY OF MISSIONS WHICH MAY BE ORDERED IS SIX (6).  IN ADDITION, NASA MAY ISSUE TASK ORDERS FOR SPECIAL STUDIES USED FOR RISK REDUCTION AND OTHER PURPOSES RELATED TO THE CTS.      NASA CERTIFICATION UNDER CLIN 001 IS COMPLETE WHEN THE CONTRACTOR'S CREW TRANSPORTATION SYSTEM (CTS) HAS MET NASA'S REQUIREMENTS FOR SAFELY TRANSPORTING CREW TO AND FROM THE INTERNATIONAL SPACE STATION (ISS) IN ACCORDANCE WITH DOCUMENTS IDENTIFIED IN SECTION C.1, SPECIFICATIONS/STATEMENT OF WORK. SUBCLINS 001A AND 001B, IDENTIFIED IN TABLE B.3,DDTE/CERTIFICATION SUBCLINS, ARE DELIVERY MILESTONES THAT REPRESENT COMPLETION OF REQUIRED WORK NECESSARY TO ACHIEVE NASA CERTIFICATION. DELIVERY PAYMENT FOR THE ISS DESIGN CERTIFICATION REVIEW (DCR) FOR THE CREWED FLIGHT TO THE ISS INCLUDES ALL WORK UNDER THIS CLIN THAT OCCURS FROM THE CONTRACT EFFECTIVE DATE THROUGH THE ISS DCR COMPLETION. THE DELIVERY PAYMENT FOR THE CERTIFICATION REVIEW (CR) WILL INCLUDE ALL WORK THAT OCCURS FROM THE ISS DCR DELIVERY DATE THROUGH THE END OF THE DDTE/CERTIFICATION CLIN 001.  IN ACCORDANCE WITH CLAUSE C.1, SPECIFICATION/STATEMENT OF WORK, THE TASK ORDERING PROCEDURES AND OTHER TERMS AND CONDITIONS IN THE CONTRACT, THE CONTRACTING OFFICER MAY ISSUE POST CERTIFICATION MISSION (PCM) TASK ORDERS. THE CONTRACTOR SHALL USE THE MISSION PRICING RATES SHOWN IN TABLE B.4.1, POST CERTIFICATION MISSION PRICES. THE PER MISSION PRICES ARE FOR A SINGLE ORDER AT THE PRICE STATED PER THE CALENDAR YEAR (CY) BASED ON THE NUMBER OF MISSIONS ORDERED. CTS FULL MISSION CAPABILITY PRICES SHALL BE BASED ON (1) FULFILLMENT OF THE DESIGN REFERENCE MISSION TO THE ISS FOUND IN CCT-DRM-1110, CREW TRANSPORTATION SYSTEM DESIGN REFERENCE MISSIONS, ATTACHMENT J-03, CONTRACT PERFORMANCE WORK STATEMENT, AND OTHER TERMS AND CONDITIONS IN THE CONTRACT AND (2) ALL INHERENT CTS CAPABILITIES THAT ARE WITHIN THE PROPOSED MISSION PRICES.  IN ACCORDANCE WITH ATTACHMENT J-03, CONTRACT PERFORMANCE WORK STATEMENT, THE TASK ORDERING PROCEDURES AND OTHER TERMS AND CONDITIONS IN THE CONTRACT, THE CONTRACTOR SHALL PERFORM SPECIAL STUDIES, TEST AND ANALYSES, AS INITIATED BY WRITTEN DIRECTION FROM THE CONTRACTING OFFICER.  SPACEX CCTCAP POST CERTIFICATION MISSIONS 3-6(PCM-3-6) TASK ORDER AGAINST NNK14MA74C CLIN 002, AS DESCRIBED IN CLAUSE B.4 POST CERTIFICATION MISSIONS (IDIQ)(CLIN 002) AND ALL OTHER APPLICABLE TERMS AND CONDITIONS.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/NNK17MA01T"
+    },
+    {
+      "awardId": "N0003024C0100",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 2876623988,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Navy",
+      "startDate": "2024-09-12",
+      "endDate": "2030-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "FY25 TRIDENT PRODUCTION AND DEPLOYED SYSTEMS SUPPORT",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0003024C0100"
+    },
+    {
+      "awardId": "W912EP24C0018",
+      "recipientName": "THALLE CONSTRUCTION CO INC",
+      "awardAmount": 2510603694.68,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2024-09-27",
+      "endDate": "2034-12-02",
+      "placeOfPerformanceState": "FL",
+      "description": "CENTRAL EVERGLADES PLANNING PROJECT (CEPP) CONTRACT 11B, EVERGLADES AGRICULTURAL AREA (EAA) A-2 RESERVOIR EMBANKMENT AND STRUCTURES, PALM BEACH COUNTY, FLORIDA",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W912EP24C0018"
+    },
+    {
+      "awardId": "W31P4Q23C0005",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 2213842633.09,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2023-03-30",
+      "endDate": "2028-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "AGMS PRODUCTION",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W31P4Q23C0005"
+    },
+    {
+      "awardId": "NNK13MA14C",
+      "recipientName": "AMENTUM TECHNOLOGY, INC.",
+      "awardAmount": 2099373524.58,
+      "awardingAgency": "National Aeronautics and Space Administration",
+      "awardingSubAgency": "National Aeronautics and Space Administration",
+      "startDate": "2013-03-01",
+      "endDate": "2023-04-30",
+      "placeOfPerformanceState": "FL",
+      "description": "IGF::OT::IGF THE TEST AND OPERATIONS SUPPORT CONTRACT (TOSC) IS A COST-PLUS-AWARD-FEE CONTRACT WITH AN INDEFINITE DELIVERY INDEFINITE QUANTITY TASK ORDERING PROVISION. TOSC PROVIDES A PROCESSING CONTRACT FOR THE KENNEDY SPACE CENTER (KSC) SUPPORTING MULTIPLE CUSTOMERS. THE SCOPE OF THIS CONTRACT INCLUDES PROGRAM MANAGEMENT AND CONTROL; SAFETY AND MISSION ASSURANCE; INFORMATION MANAGEMENT; PROCESSING SUPPORT SYSTEMS AND INTEGRATION; FLIGHT HARDWARE PROCESSING; GROUND SYSTEMS OPERATIONS, MAINTENANCE AND SUSTAINING ENGINEERING; LOGISTICS AND SPACEPORT SERVICES. TOSC PROVIDES OVERALL MANAGEMENT AND IMPLEMENTATION OF GROUND SYSTEMS CAPABILITIES, FLIGHT HARDWARE PROCESSING AND LAUNCH OPERATIONS AT KSC IN FLORIDA. THESE TASKS WILL SUPPORT THE INTERNATIONAL SPACE STATION, GROUND SYSTEMS DEVELOPMENT AND OPERATIONS, AND THE SPACE LAUNCH SYSTEM, ORION MULTI-PURPOSE CREW VEHICLE AND LAUNCH SERVICES PROGRAMS. TOSC ALSO PROVIDES GROUND PROCESSING FOR LAUNCH VEHICLES, SPACECRAFT AND PAYLOADS IN SUPPORT OF EMERGING PROGRAMS, COMMERCIAL ENTITIES AND OTHER GOVERNMENT AGENCIES AS DESIGNATED BY THE GOVERNMENT. SERVICES INCLUDE ADVANCED PLANNING AND SPECIAL STUDIES; DEVELOPMENT OF DESIGNATED GROUND SYSTEMS; OPERATIONAL SUPPORT FOR DESIGN AND DEVELOPMENT OF FLIGHT HARDWARE AND GROUND SYSTEMS; SPACECRAFT, PAYLOAD, AND LAUNCH VEHICLE SERVICING AND PROCESSING; GROUND SYSTEMS SERVICES; AND LOGISTICS AND OTHER PROCESSING SUPPORT SERVICES. FLIGHT HARDWARE PROCESSING AND SERVICING ACTIVITIES INCLUDE ASSEMBLY, INTEGRATION, CHECKOUT, AND DEPOT-LEVEL MAINTENANCE AND REPAIR. LAUNCH VEHICLE AND SPACECRAFT OPERATIONS INCLUDE ADVANCED PLANNING, ELEMENT PROCESSING, INTEGRATION, TEST, LAUNCH AND RECOVERY SERVICES. GROUND SYSTEMS SERVICES INCLUDE OPERATIONS, MAINTENANCE AND VALIDATION OF ASSOCIATED GROUND SYSTEMS AND SUPPORT EQUIPMENT NECESSARY FOR HUMAN SPACE FLIGHT AND EXPLORATION. CONTRACT ACTIVITIES WILL BE PERFORMED IN THE MOST COST-EFFECTIVE AND EFFICIENT MANNER SUPPORTING THE GOVERNMENT S PRIORITIES FOR SAFETY, MISSION SUCCESS, CUSTOMER SATISFACTION AND INNOVATION WHILE MAINTAINING FLEXIBILITY AND RESPONSIVENESS TO CHANGING REQUIREMENTS. WITH THE AWARD OF THIS CONTRACT, KSC IS POSITIONING ITSELF FOR THE NEXT ERA OF SPACE EXPLORATION. KSC IS TRANSITIONING TO A 21ST-CENTURY LAUNCH FACILITY WITH MULTIPLE USERS, BOTH PRIVATE AND GOVERNMENT. A DYNAMIC INFRASTRUCTURE IS TAKING SHAPE, DESIGNED TO HOST MANY KINDS OF SPACECRAFT AND ROCKETS SENDING PEOPLE ON AMERICA'S NEXT VOYAGES IN SPACE.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/NNK13MA14C"
+    },
+    {
+      "awardId": "W31P4Q15C0151",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 1841506960.81,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2015-09-14",
+      "endDate": "2023-01-06",
+      "placeOfPerformanceState": "FL",
+      "description": "THIS LETTER CONTRACT IS ISSUED TO ACQUIRE BUY 16 FISCAL YEAR (FY) 2015 HELLFIRE II MISSILE HARDWARE/COMPONENT PRODUCTION REQUIREMENTS FOR THE U.S. ARMY, U.S. AIR FORCE, AND FOREIGN MILITARY SALES COUNTRIES (TUNISIA, INDONESIA, IRAQ, PAKISTAN, EGYPT). THE MAXIMUM NOT-TO-EXCEED (NTE) FIRM FIXED PRICE CEILING AMOUNT FOR THIS LETTER CONTRACT IS $375,804,316. ALL NTE AMOUNTS ARE SUBJECT TO DOWNWARD NEGOTIATION ONLY. IN NO EVENT SHALL THE FINAL DEFINITIZED FIRM FIXED PRICES EXCEED THE ESTABLISHED NTE PRICES.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W31P4Q15C0151"
+    },
+    {
+      "awardId": "DOCDG133E09CN0094",
+      "recipientName": "L3HARRIS TECHNOLOGIES, INC.",
+      "awardAmount": 1826088581.86,
+      "awardingAgency": "Department of Commerce",
+      "awardingSubAgency": "National Oceanic and Atmospheric Administration",
+      "startDate": "2009-05-27",
+      "endDate": "2024-01-31",
+      "placeOfPerformanceState": "FL",
+      "description": "THE PURPOSE OF THIS CONTRACT IS TO DEVELOP THE GROUND SYSTEM THAT WILL SUPPORT NOAA S NEXT GENERATION GEOSTATIONARY SATELLITE SERIES, GOES-R. THIS NEW SERIES OF SPACECRAFT, SET TO BEGIN LAUNCHING IN 2015, IS EXPECTED TO DOUBLE THE CLARITY OF TODAY S SATELLITE IMAGERY AND PROVIDE AT LEAST 20 TIMES MORE ATMOSPHERIC OBSERVATIONS FROM SPACE. THE CONTRACTOR IS TO DESIGN, DEVELOP, TEST AND IMPLEMENT THE GOES-R GROUND SYSTEM. THE GROUND SYSTEM WILL CAPTURE DATA FROM THE GOES-R SATELLITES, AND PROCESS AND DISTRIBUTE THE INFORMATION TO OPERATIONAL USERS.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/DOCDG133E09CN0094"
+    },
+    {
+      "awardId": "HSCG2314CAPC002",
+      "recipientName": "EASTERN SHIPBUILDING GROUP, INC.",
+      "awardAmount": 1578692803.24,
+      "awardingAgency": "Department of Homeland Security",
+      "awardingSubAgency": "U.S. Coast Guard",
+      "startDate": "2014-06-17",
+      "endDate": "2027-12-31",
+      "placeOfPerformanceState": "FL",
+      "description": "OPC P&CD CONTRACT 2 REFERENCE SOLICITATION NUMBER HSCG23-12-R-OPC0001",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/HSCG2314CAPC002"
+    },
+    {
+      "awardId": "DTFA0102D03006CALL0001",
+      "recipientName": "HARRIS CORPORATION",
+      "awardAmount": 1558797291.63,
+      "awardingAgency": "Department of Transportation",
+      "awardingSubAgency": "Federal Aviation Administration",
+      "startDate": "2008-07-25",
+      "endDate": "2025-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "DAFIS UDO RECONSTRUCT W/O ADVANCE",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/DTFA0102D03006CALL0001"
+    },
+    {
+      "awardId": "FA868118C0021",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 1316629676,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2018-08-13",
+      "endDate": "2026-08-31",
+      "placeOfPerformanceState": "FL",
+      "description": "ARRW DEVELOPMENT",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA868118C0021"
+    },
+    {
+      "awardId": "N0003023C0100",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 1285393895,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Defense Contract Management Agency",
+      "startDate": "2023-09-05",
+      "endDate": "2028-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "FY24 TRIDENT PRODUCTION AND DEPLOYED SYSTEMS SUPPORT",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0003023C0100"
+    },
+    {
+      "awardId": "FA248616C0002",
+      "recipientName": "RELIANCE TEST & TECHNOLOGY, LLC",
+      "awardAmount": 1283851515.8,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2016-04-01",
+      "endDate": "2026-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "IGF::OT::IGF EGLIN - OPERATION&MAINTENANCE SERVICES (E-OMS)",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA248616C0002"
+    },
+    {
+      "awardId": "N0003019C0100",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 1253498024.34,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Defense Contract Management Agency",
+      "startDate": "2019-08-30",
+      "endDate": "2026-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "FY20 TRIDENT PRODUCTION AND DEPLOYED SYSTEMS SUPPORT",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0003019C0100"
+    },
+    {
+      "awardId": "DTFA0102D03006CALL0016",
+      "recipientName": "HARRIS CORPORATION",
+      "awardAmount": 1240364575.99,
+      "awardingAgency": "Department of Transportation",
+      "awardingSubAgency": "Federal Aviation Administration",
+      "startDate": "2011-09-28",
+      "endDate": "2024-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "THE PURPOSE OF THIS DELIVERY ORDER AWARD IS TO ADD FUNDING FOR FTI TELECOMMUNICATIONS SERVICES.  THIS DELIVERY ORDER SUCCEEDS DELIVERY ORDER 0004 AND DELIVERY ORDER 0015.  DELIVERY ORDER 0004, DELIVERY ORDER 0015, AND THIS DELIVERY ORDER COMPRISE THE AGGREGATE OF FTI TELECOMMUNICATION SERVICE ORDERS.    TAS::69 1301::TAS",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/DTFA0102D03006CALL0016"
+    },
+    {
+      "awardId": "N0003020C0100",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 1223741780.87,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Defense Contract Management Agency",
+      "startDate": "2020-08-07",
+      "endDate": "2026-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "FY21 TRIDENT PRODUCTION AND DEPLOYED SYSTEMS SUPPORT",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0003020C0100"
+    },
+    {
+      "awardId": "N0003021C0100",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 1188295253.82,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Defense Contract Management Agency",
+      "startDate": "2021-08-10",
+      "endDate": "2026-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "FY22 TRIDENT PRODUCTION AND DEPLOYED SYSTEMS SUPPORT",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0003021C0100"
+    },
+    {
+      "awardId": "FA868223CB001",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 1164277426,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2023-05-18",
+      "endDate": "2029-01-31",
+      "placeOfPerformanceState": "FL",
+      "description": "LONG RANGE ANTI-SHIP MISSILE (LRASM) LOT 7/8",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA868223CB001"
+    },
+    {
+      "awardId": "FA868221C0001",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 1114490573.13,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2021-02-22",
+      "endDate": "2028-01-30",
+      "placeOfPerformanceState": "FL",
+      "description": "JOINT AIR TO SURFACE STANDOFF MISSILE LOT 19",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA868221C0001"
+    },
+    {
+      "awardId": "HQ014714C0001",
+      "recipientName": "AEROJET ROCKETDYNE COLEMAN AEROSPACE INC",
+      "awardAmount": 1107782933.35,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Missile Defense Agency",
+      "startDate": "2013-10-31",
+      "endDate": "2029-12-31",
+      "placeOfPerformanceState": "FL",
+      "description": "MRBM TARGETS",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/HQ014714C0001"
+    },
+    {
+      "awardId": "N0003022C0100",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 1028083764,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Navy",
+      "startDate": "2022-08-18",
+      "endDate": "2027-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "FY23 TRIDENT PRODUCTION AND DEPLOYED SYSTEMS SUPPORT",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0003022C0100"
+    },
+    {
+      "awardId": "H9222217F0069",
+      "recipientName": "AMENTUM TECHNOLOGY, INC.",
+      "awardAmount": 979192262.73,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "U.S. Special Operations Command",
+      "startDate": "2017-02-24",
+      "endDate": "2023-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "IGF::CT::IGF ENTERPRISE CORE SERVICES (ENDURING)",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/H9222217F0069"
+    },
+    {
+      "awardId": "W58RGZ25F0182",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 956764300.77,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2025-06-06",
+      "endDate": "2031-07-31",
+      "placeOfPerformanceState": "FL",
+      "description": "GEN III MODERNIZED TARGET ACQUISITION DESIGNATION SIGHT/PILOT NIGHT VISION SYSTEM (MTADS/PNVS), INDEFINITE DELIVERY INDEFINITE QUANTITY (IDIQ) 2",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W58RGZ25F0182"
+    },
+    {
+      "awardId": "N6238715C3135",
+      "recipientName": "CROWLEY GOVERNMENT SERVICES, INC.",
+      "awardAmount": 902579582.91,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Navy",
+      "startDate": "2015-10-01",
+      "endDate": "2022-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "IGF::CT::IGF AWARD OF BOBO CLASS/STOCKHAM CONTRACT",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N6238715C3135"
+    },
+    {
+      "awardId": "N0001925C0130",
+      "recipientName": "NORTHROP GRUMMAN SYSTEMS CORPORATION",
+      "awardAmount": 882849793,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Navy",
+      "startDate": "2024-12-18",
+      "endDate": "2027-03-02",
+      "placeOfPerformanceState": "FL",
+      "description": "E130J ENGINEERING AND MANUFACTURING DEVELOPMENT (EMD)",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0001925C0130"
+    },
+    {
+      "awardId": "FA868220C0001",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 878755915.83,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2020-03-31",
+      "endDate": "2026-04-30",
+      "placeOfPerformanceState": "FL",
+      "description": "JOINT AIR TO SURFACE STANDOFF MISSILE LOT 17 AND 18.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA868220C0001"
+    },
+    {
+      "awardId": "47QFCA21F0058",
+      "recipientName": "PERATON INC.",
+      "awardAmount": 837885761.59,
+      "awardingAgency": "General Services Administration",
+      "awardingSubAgency": "Federal Acquisition Service",
+      "startDate": "2021-07-06",
+      "endDate": "2027-01-05",
+      "placeOfPerformanceState": "FL",
+      "description": "OPERATIONAL PLANNING IMPLEMENTATION AND ASSESSMENT SERVICES (OPIAS) BASE AWARD.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/47QFCA21F0058"
+    },
+    {
+      "awardId": "N0001924F0181",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 833479197.21,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Navy",
+      "startDate": "2023-12-29",
+      "endDate": "2028-12-29",
+      "placeOfPerformanceState": "FL",
+      "description": "TRAINING PRODUCTION REQUIREMENTS FOR FY23 AND FY24 OPTIONS",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0001924F0181"
+    },
+    {
+      "awardId": "47QFCA24F0002",
+      "recipientName": "PERATON INC.",
+      "awardAmount": 798269912,
+      "awardingAgency": "General Services Administration",
+      "awardingSubAgency": "Federal Acquisition Service",
+      "startDate": "2023-10-31",
+      "endDate": "2027-05-16",
+      "placeOfPerformanceState": "FL",
+      "description": "SITEC 3 EOM PROVIDES USSOCOM WITH O&M SERVICES TO MAINTAIN NETOPS, MAINTAIN SYSTEMS & NETWORK INFRASTRUCTURE, PROVIDE END USER & COMMON DEVICE SUPPORT, PROVIDE CONFIGURATION, CHANGE, LICENSE, & ASSET MGMT. CONDUCT TRAINING AND PERFORM IMACS SERVICES.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/47QFCA24F0002"
+    },
+    {
+      "awardId": "FA868216C0005",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 774954149.77,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2015-10-09",
+      "endDate": "2022-08-31",
+      "placeOfPerformanceState": "FL",
+      "description": "JOINT AIR-TO-SURFACE STRIKE MISSILE LOT 13 PRODUCTION BUY",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA868216C0005"
+    },
+    {
+      "awardId": "W58RGZ11C0120",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 773700076.49,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2011-06-16",
+      "endDate": "2020-04-30",
+      "placeOfPerformanceState": "FL",
+      "description": "TT&E",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W58RGZ11C0120"
+    },
+    {
+      "awardId": "W912EP22C0017",
+      "recipientName": "FORGEN-ODIN JV",
+      "awardAmount": 768149589.03,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2022-09-30",
+      "endDate": "2028-03-15",
+      "placeOfPerformanceState": "FL",
+      "description": "CENTRAL EVERGLADES PLANNING PROJECT (CEPP) CONTRACT 11A, EVERGLADES AGRICULTURAL AREA (EAA) A-2 RESERVOIR FOUNDATION & CUTOFF WALL PROJECT",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W912EP22C0017"
+    },
+    {
+      "awardId": "FA868223CB003",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 765847312,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2023-05-18",
+      "endDate": "2027-08-31",
+      "placeOfPerformanceState": "FL",
+      "description": "JOINT AIR TO SURFACE STANDOFF MISSILE LOT 21",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA868223CB003"
+    },
+    {
+      "awardId": "36C10X26N0040",
+      "recipientName": "LOYAL SOURCE GOVERNMENT SERVICES LLC",
+      "awardAmount": 754312385.78,
+      "awardingAgency": "Department of Veterans Affairs",
+      "awardingSubAgency": "Department of Veterans Affairs",
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31",
+      "placeOfPerformanceState": "FL",
+      "description": "MEDICAL DISABILITY EXAMINATIONS - TO FY26 FUNDING",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/36C10X26N0040"
+    },
+    {
+      "awardId": "N6833518C0681",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 712881808.34,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Navy",
+      "startDate": "2018-07-31",
+      "endDate": "2028-06-30",
+      "placeOfPerformanceState": "FL",
+      "description": "ECASS CORE STATIONS",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N6833518C0681"
+    },
+    {
+      "awardId": "FA862117F0026",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 662670219.24,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2017-04-21",
+      "endDate": "2025-09-24",
+      "placeOfPerformanceState": "FL",
+      "description": "C-130J MATS III",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA862117F0026"
+    },
+    {
+      "awardId": "0001",
+      "recipientName": "SIERRA NEVADA COMPANY, LLC",
+      "awardAmount": 655269890.71,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2013-02-27",
+      "endDate": "2020-06-30",
+      "placeOfPerformanceState": "FL",
+      "description": "SNC MODEL DO 0001",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/0001"
+    },
+    {
+      "awardId": "DTFA0102D03006CALL0002",
+      "recipientName": "HARRIS CORPORATION",
+      "awardAmount": 652892384.77,
+      "awardingAgency": "Department of Transportation",
+      "awardingSubAgency": "Federal Aviation Administration",
+      "startDate": "2008-07-25",
+      "endDate": "2025-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "DAFIS UDO RECONSTRUCT W/O ADVANCE",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/DTFA0102D03006CALL0002"
+    },
+    {
+      "awardId": "W9127822C0008",
+      "recipientName": "HENSEL PHELPS CONSTRUCTION CO",
+      "awardAmount": 651519794.32,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2022-05-20",
+      "endDate": "2026-07-26",
+      "placeOfPerformanceState": "FL",
+      "description": "ZONE 1 TYNDALL AFB, FL",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W9127822C0008"
+    },
+    {
+      "awardId": "HHSM5002014M0021Z",
+      "recipientName": "FIRST COAST SERVICE OPTIONS, INC.",
+      "awardAmount": 642539515.36,
+      "awardingAgency": "Department of Health and Human Services",
+      "awardingSubAgency": "Centers for Medicare and Medicaid Services",
+      "startDate": "2014-02-14",
+      "endDate": "2022-08-31",
+      "placeOfPerformanceState": "FL",
+      "description": "IGF::OT::IGF JURISDICTION N A/B MEDICARE ADMINISTRATIVE CONTRACTOR SERVICES",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/HHSM5002014M0021Z"
+    },
+    {
+      "awardId": "W519TC25F0388",
+      "recipientName": "GLOBAL MILITARY PRODUCTS INC",
+      "awardAmount": 638318025.69,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2025-09-23",
+      "endDate": "2027-07-10",
+      "placeOfPerformanceState": "FL",
+      "description": "SPECIAL AMMUNITION AND WEAPONS SYSTEM REQUIREMENT",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W519TC25F0388"
+    },
+    {
+      "awardId": "FA862118F6251",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 632998084.56,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2018-02-08",
+      "endDate": "2027-01-31",
+      "placeOfPerformanceState": "FL",
+      "description": "IGF::OT::IGF  AFSOC ACTS AWARD OF CONTRACT FOR CLS, ENGINEERING, INSTRUCTION, CYBERSECURITY, DMO",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA862118F6251"
+    },
+    {
+      "awardId": "N6238715C2505",
+      "recipientName": "CROWLEY GOVERNMENT SERVICES, INC.",
+      "awardAmount": 630713990.59,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Navy",
+      "startDate": "2014-11-20",
+      "endDate": "2023-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "OPERATION&MAINTENANCE OF T-AGOS/T-AGM VESSELS, FIRM PERIOD CONTRACT AWARD",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N6238715C2505"
+    },
+    {
+      "awardId": "GSQ0017AJ0001",
+      "recipientName": "SCIENCE APPLICATIONS INTERNATIONAL CORPORATION",
+      "awardAmount": 627008057.24,
+      "awardingAgency": "General Services Administration",
+      "awardingSubAgency": "Federal Acquisition Service",
+      "startDate": "2017-06-21",
+      "endDate": "2024-04-30",
+      "placeOfPerformanceState": "FL",
+      "description": "IGF::OT::IGF TO GSQ0017AJ0001 IS AWARDED TO SUPPORT USCENTCOM SUPPORT THE J6 DIRECTORATE (CCJ6) ENTERPRISE IT PROGRAMS AND ASSETS AT DESIGNATED LOCATIONS.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/GSQ0017AJ0001"
+    },
+    {
+      "awardId": "80KSC018C0017",
+      "recipientName": "AMENTUM SPACEPORT LLC",
+      "awardAmount": 608219286.31,
+      "awardingAgency": "National Aeronautics and Space Administration",
+      "awardingSubAgency": "National Aeronautics and Space Administration",
+      "startDate": "2019-04-01",
+      "endDate": "2026-07-31",
+      "placeOfPerformanceState": "FL",
+      "description": "BASE OPERATIONS AND SPACEPORT SERVICES (BOSS) CONTRACT",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/80KSC018C0017"
+    },
+    {
+      "awardId": "F1962803C0014",
+      "recipientName": "NORTHROP GRUMMAN SYSTEMS CORPORATION",
+      "awardAmount": 607121667,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2003-05-14",
+      "endDate": "2008-07-31",
+      "placeOfPerformanceState": "FL",
+      "description": "200308!000003!5700!GV38  !ESC/MAK                         !F1962803C0014  !A!N! !N!                   !20030514!20040930!152670030!008255408!016435559!N!NORTHROP GRUMMAN SYSTEMS CORPO!2000 W NASA BLVD          !MELBOURNE           !FL!32902!43975!009!12!MELBOURNE           !BREVARD               !FLORIDA   !+000054000000!N!N!000180200000!AD93!RDTE/OTHER DEFENSE-ADV TECH DEV                   !A7 !ELECTRONICS AND COMMUNICATION !3000!NOT DISCERNABLE OR CLASSIFIED !334511!E! !1! ! ! ! ! !99990909!B!F!N!A! !D!N!R!1!001!N!1A!Z!N!Z!  !  !N!C!N! ! ! !Z!Z!A!A!000!A!C!Y! ! ! !Y!    !      !0001! !",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/F1962803C0014"
+    },
+    {
+      "awardId": "FA868221C0004",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 576532133.41,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2021-02-22",
+      "endDate": "2026-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "LONG RANGE ANTI-SHIP MISSILE (LRASM) LOT 4/5",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA868221C0004"
+    },
+    {
+      "awardId": "DTFA0102D03006CALL0010",
+      "recipientName": "HARRIS CORPORATION",
+      "awardAmount": 575688107.75,
+      "awardingAgency": "Department of Transportation",
+      "awardingSubAgency": "Federal Aviation Administration",
+      "startDate": "2005-02-01",
+      "endDate": "2025-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "DAFIS UDO RECONSTRUCT W/O ADVANCE",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/DTFA0102D03006CALL0010"
+    },
+    {
+      "awardId": "HSBP1015C00064",
+      "recipientName": "PAE AVIATION AND TECHNICAL SERVICES LLC",
+      "awardAmount": 572055897.24,
+      "awardingAgency": "Department of Homeland Security",
+      "awardingSubAgency": "U.S. Customs and Border Protection",
+      "startDate": "2015-10-01",
+      "endDate": "2020-03-31",
+      "placeOfPerformanceState": "FL",
+      "description": "IGF::OT::IGF THIS IS A CHANGE IN CONTRACT PID# FROM HSBP1014C00044 TO HSBP1015C00064 DUE TO A LEGAL CORPORATE NAME CHANGE FROM DEFENSE SUPPORT SERVICES, LLC (DS2) TO PAE AVIATION AND TECHNICAL SERVICES, LLC (PAE).",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/HSBP1015C00064"
+    },
+    {
+      "awardId": "FA868217C0037",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 553470895.19,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2017-06-01",
+      "endDate": "2022-08-31",
+      "placeOfPerformanceState": "FL",
+      "description": "JOINT AIR TO SURFACE STANDOFF MISSILE--LOT 15",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA868217C0037"
+    },
+    {
+      "awardId": "FA822310C0013",
+      "recipientName": "CAE USA, INC.",
+      "awardAmount": 545323008.15,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Defense Contract Management Agency",
+      "startDate": "2010-08-31",
+      "endDate": "2021-03-31",
+      "placeOfPerformanceState": "FL",
+      "description": "OTHER AIRCRAFT PART AND AUXILIARY EQUIPMENT MANUFACTURING",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA822310C0013"
+    },
+    {
+      "awardId": "N0001922F0010",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 539772068.08,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Navy",
+      "startDate": "2022-06-09",
+      "endDate": "2026-11-30",
+      "placeOfPerformanceState": "FL",
+      "description": "LRASM 158C-2 INTEGRATION AND TEST",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0001922F0010"
+    },
+    {
+      "awardId": "47QFCA24F0033",
+      "recipientName": "VERTEX AEROSPACE LLC",
+      "awardAmount": 512902613,
+      "awardingAgency": "General Services Administration",
+      "awardingSubAgency": "Federal Acquisition Service",
+      "startDate": "2024-08-29",
+      "endDate": "2027-08-28",
+      "placeOfPerformanceState": "FL",
+      "description": "WARFIGHTER TRAINING READINESS SOLUTIONS W-TRS",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/47QFCA24F0033"
+    },
+    {
+      "awardId": "47QFCA20F0004",
+      "recipientName": "SCIENCE APPLICATIONS INTERNATIONAL CORPORATION",
+      "awardAmount": 482888512,
+      "awardingAgency": "General Services Administration",
+      "awardingSubAgency": "Federal Acquisition Service",
+      "startDate": "2020-06-12",
+      "endDate": "2025-06-11",
+      "placeOfPerformanceState": "FL",
+      "description": "THE PURPOSE OF THIS TO IS TO PROVIDE AFAMS AND ITS MISSION PARTNERS WITH ENGINEERING, OPERATIONAL, TECHNICAL, CONSULTING, CYBER SECURITY, AND PLANNING SUBJECT MATTER EXPERTISE TO DEVELOP, MAINTAIN, SUSTAIN, AND ENHANCE M&S TRAINING CAPABILITIES.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/47QFCA20F0004"
+    },
+    {
+      "awardId": "W52P1J22C0023",
+      "recipientName": "GENERAL DYNAMICS ORDNANCE AND TACTICAL SYSTEMS, INC.",
+      "awardAmount": 464427554.9,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2022-05-26",
+      "endDate": "2028-07-03",
+      "placeOfPerformanceState": "FL",
+      "description": "120MM TANK TRAINING AMMUNITION M1002 NEW PRODUCTION M865A1 NEW PRODUCTION",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W52P1J22C0023"
+    },
+    {
+      "awardId": "W31P4Q15C0102",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 456076316.5,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2015-07-31",
+      "endDate": "2023-11-21",
+      "placeOfPerformanceState": "FL",
+      "description": "IGF::OT::IGF  THIS REQUIREMENT IS FOR FULL AND OPEN COMPETITION FOR THE JOINT AIR-TO-GROUND MISSILE (JAGM) IN SUPPORT OF THE JAGM PRODUCT OFFICE OF THE JOINT ATTACK MUNITION SYSTEMS PROJECT OFFICE. JAGM IS AN AIR TO SURFACE MISSILE CONSISTING OF A NEWLY DEVELOPED GUIDANCE SECTION (GS) MATED TO THE EXISTING HELLFIRE ROMEO BACKEND (MOTOR, WARHEAD AND ASSOCIATED ELECTRONICS).  THE JAGM REQUIREMENT WILL BE AWARDED AS A FIXED PRICE INCENTIVE (FIRM TARGET) (FPIF) CONTRACT FOR A 2 YEAR BASE CONTRACT FOR A QUANTITY OF 96 ARMY UNITS PLUS 52 NAVY UNITS FOR EMD.  THE ANTICIPATED AWARD OF 420 UNITS FOR ADVANCED PROCUREMENT ITEMS (API) AND LRIP I OPTION, 600 UNITS FOR LRIP II OPTION AND THE COST SHARING DEFENSE EXPORTABILITY FEATURES (DEF) OPTIONS WILL BE DEPENDENT UPON THE ACTUAL AMOUNT OF PROCUREMENT FUNDING APPROVED BY THE ARMY.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W31P4Q15C0102"
+    },
+    {
+      "awardId": "FA868219C0008",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 449507635.05,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2018-12-19",
+      "endDate": "2029-08-29",
+      "placeOfPerformanceState": "FL",
+      "description": "JOINT AIR TO SURFACE STANDOFF MISSILE",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA868219C0008"
+    },
+    {
+      "awardId": "19AQMM21F1511",
+      "recipientName": "AAR GOVERNMENT SERVICES, INC.",
+      "awardAmount": 448872514.35,
+      "awardingAgency": "Department of State",
+      "awardingSubAgency": "Department of State",
+      "startDate": "2021-06-01",
+      "endDate": "2024-05-31",
+      "placeOfPerformanceState": "FL",
+      "description": "ESTABLISHED OPTION YEAR THREE AVIATION SERVICE CONTRACTOR LINE ITEM NUMBERS (CLINS) FOR EACH WORLDWIDE LOCATION---LABOR, OTHER DIRECT COST (ODC) AND MATERIAL LINE ITEMS.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/19AQMM21F1511"
+    },
+    {
+      "awardId": "SPRPA119FE31N",
+      "recipientName": "NORTHROP GRUMMAN SYSTEMS CORPORATION",
+      "awardAmount": 438315691.84,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Defense Logistics Agency",
+      "startDate": "2019-09-23",
+      "endDate": "2029-05-13",
+      "placeOfPerformanceState": "FL",
+      "description": "COMPUTER,RADAR DATA",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/SPRPA119FE31N"
+    },
+    {
+      "awardId": "36C10B23F0007",
+      "recipientName": "ALL POINTS LOGISTICS, LLC",
+      "awardAmount": 432610032,
+      "awardingAgency": "Department of Veterans Affairs",
+      "awardingSubAgency": "Department of Veterans Affairs",
+      "startDate": "2022-10-01",
+      "endDate": "2025-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "INTERSYSTEMS SOFTWARE MAINTENAINCE",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/36C10B23F0007"
+    },
+    {
+      "awardId": "N0003025C0100",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 427602231,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Navy",
+      "startDate": "2025-09-12",
+      "endDate": "2030-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "FY26 TRIDENT PRODUCTION AND DEPLOYED SYSTEMS SUPPORT",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0003025C0100"
+    },
+    {
+      "awardId": "N3220522C3101",
+      "recipientName": "CROWLEY GOVERNMENT SERVICES, INC.",
+      "awardAmount": 418652314.98,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Navy",
+      "startDate": "2022-10-01",
+      "endDate": "2029-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "N105A/PM3 HAYCOX CONTRACT AWARD FOR OPERATION & MAINTENANCE OF 6 GOVERNMENT-OWNED MARITIME PREPOSITIONING FORCE VESSELS.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N3220522C3101"
+    },
+    {
+      "awardId": "N0002419C5200",
+      "recipientName": "RAYTHEON COMPANY",
+      "awardAmount": 414485186.58,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Defense Contract Management Agency",
+      "startDate": "2019-05-08",
+      "endDate": "2024-11-30",
+      "placeOfPerformanceState": "FL",
+      "description": "COOPERATIVE ENGAGEMENT CAPABILITY DESIGN AGENT AND ENGINEERING SERVICES",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0002419C5200"
+    },
+    {
+      "awardId": "70B03C24F00000046",
+      "recipientName": "LOYAL SOURCE GOVERNMENT SERVICES LLC",
+      "awardAmount": 412314286.02,
+      "awardingAgency": "Department of Homeland Security",
+      "awardingSubAgency": "U.S. Customs and Border Protection",
+      "startDate": "2023-11-30",
+      "endDate": "2025-09-27",
+      "placeOfPerformanceState": "FL",
+      "description": "MEDICAL SERVICES",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/70B03C24F00000046"
+    },
+    {
+      "awardId": "47QFCA20F0022",
+      "recipientName": "APPLIED RESEARCH ASSOCIATES, INC.",
+      "awardAmount": 411059347.07,
+      "awardingAgency": "General Services Administration",
+      "awardingSubAgency": "Federal Acquisition Service",
+      "startDate": "2020-09-29",
+      "endDate": "2026-03-29",
+      "placeOfPerformanceState": "FL",
+      "description": "TASK ORDER AWARD",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/47QFCA20F0022"
+    },
+    {
+      "awardId": "W519TC23F0091",
+      "recipientName": "GLOBAL MILITARY PRODUCTS INC",
+      "awardAmount": 401956810,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2023-01-30",
+      "endDate": "2024-05-31",
+      "placeOfPerformanceState": "FL",
+      "description": "SAWS RFP 07 155MM HE COMPLETE REQUIREMENTS",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W519TC23F0091"
+    },
+    {
+      "awardId": "FA862116C6331",
+      "recipientName": "CAE USA MISSION SOLUTIONS INC.",
+      "awardAmount": 400890855.58,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2016-08-01",
+      "endDate": "2024-03-31",
+      "placeOfPerformanceState": "FL",
+      "description": "IGF::OT::IGF  SCAT III - KDAM ATARS",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA862116C6331"
+    },
+    {
+      "awardId": "N0003020C0101",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 397990664.28,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Navy",
+      "startDate": "2020-01-31",
+      "endDate": "2026-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "TRIDENT II (D5) LIFE EXTENSION 2 (D5LE2) SSP ALTERATION (SPALT) ADVANCED DEVELOPMENT PROGRAM",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0003020C0101"
+    },
+    {
+      "awardId": "N0001916C0035",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 397326093,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Defense Contract Management Agency",
+      "startDate": "2016-04-01",
+      "endDate": "2022-05-22",
+      "placeOfPerformanceState": "FL",
+      "description": "LRASM INTEGRATION AND TEST PHASE",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0001916C0035"
+    },
+    {
+      "awardId": "47QFCA20F0049",
+      "recipientName": "GENERAL DYNAMICS INFORMATION TECHNOLOGY, INC.",
+      "awardAmount": 396604521.78,
+      "awardingAgency": "General Services Administration",
+      "awardingSubAgency": "Federal Acquisition Service",
+      "startDate": "2020-09-25",
+      "endDate": "2025-10-24",
+      "placeOfPerformanceState": "FL",
+      "description": "THE SCOPE OF THIS REQUIREMENT INCLUDES PROGRAM MANAGEMENT SERVICES, TRANSITION SERVICES, AND A FULL RANGE OF ENTERPRISE IT-RELATED SERVICES AND TECHNICAL SOLUTIONS THAT SPAN CYBERSECURITY AND IT MANAGEMENT.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/47QFCA20F0049"
+    },
+    {
+      "awardId": "FA248622FA003",
+      "recipientName": "OASIS SYSTEMS, LLC",
+      "awardAmount": 395983006.8,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2022-10-01",
+      "endDate": "2026-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "TECHNICAL MANAGEMENT & ADVISORY SERVICES (TMAS 2) 96TH CTG",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA248622FA003"
+    },
+    {
+      "awardId": "FA868219C0009",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 395088590.1,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2018-10-05",
+      "endDate": "2026-07-29",
+      "placeOfPerformanceState": "FL",
+      "description": "JOINT AIR TO SURFACE STANDOFF MISSILE LOT 16",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA868219C0009"
+    },
+    {
+      "awardId": "36C10X26N0041",
+      "recipientName": "LOYAL SOURCE GOVERNMENT SERVICES LLC",
+      "awardAmount": 392676748.18,
+      "awardingAgency": "Department of Veterans Affairs",
+      "awardingSubAgency": "Department of Veterans Affairs",
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31",
+      "placeOfPerformanceState": "FL",
+      "description": "MEDICAL DISABILITY EXAMINATIONS - TO FY26 FUNDING",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/36C10X26N0041"
+    },
+    {
+      "awardId": "N0001923F2625",
+      "recipientName": "NORTHROP GRUMMAN SYSTEMS CORPORATION",
+      "awardAmount": 392581726.6,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Navy",
+      "startDate": "2023-09-12",
+      "endDate": "2028-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "D6 TCID HARDWARE DEVELOPMENT",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0001923F2625"
+    },
+    {
+      "awardId": "0006",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 387180117.35,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2018-06-29",
+      "endDate": "2026-12-31",
+      "placeOfPerformanceState": "FL",
+      "description": "MODERNIZED TARGET ACQUISITION DESIGNATION SIGHT/PILOT NIGHT VISION SENSOR (M-TADS/PNVS) SYSTEMS, SUBCOMPONENT PRODUCTION, AND TECHNICAL SERVICES IN SUPPORT OF APACHE ATTACK HELICOPTER.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/0006"
+    },
+    {
+      "awardId": "N0002413C5212",
+      "recipientName": "RAYTHEON COMPANY",
+      "awardAmount": 379896941.59,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Defense Contract Management Agency",
+      "startDate": "2013-09-27",
+      "endDate": "2019-10-31",
+      "placeOfPerformanceState": "FL",
+      "description": "COOPERATIVE ENGAGEMENT CAPABILITY (CEC)",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0002413C5212"
+    },
+    {
+      "awardId": "W58RGZ21C0016",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 363776446.58,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2021-07-01",
+      "endDate": "2027-08-31",
+      "placeOfPerformanceState": "FL",
+      "description": "AH-64 APACHE MODERNIZED TARGET ACQUISITION DESIGNATION SIGHT/PILOT NIGHT VISION SENSOR (MTADS/PNVS) PERFORMANCE BASED LOGISTICS (PBL)",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W58RGZ21C0016"
+    },
+    {
+      "awardId": "W9127822C0017",
+      "recipientName": "THE LANE CONSTRUCTION CORPORATION",
+      "awardAmount": 362746452.94,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2022-05-02",
+      "endDate": "2026-06-25",
+      "placeOfPerformanceState": "FL",
+      "description": "TYNDALL AIR FORCE BASE SITE DEVELOPMENT AND INFRASTRUCTURE PHASE I & II",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W9127822C0017"
+    },
+    {
+      "awardId": "NNK15MA50T",
+      "recipientName": "THE BOEING COMPANY",
+      "awardAmount": 360607891,
+      "awardingAgency": "National Aeronautics and Space Administration",
+      "awardingSubAgency": "National Aeronautics and Space Administration",
+      "startDate": "2015-05-22",
+      "endDate": "2026-06-30",
+      "placeOfPerformanceState": "FL",
+      "description": "IGF::OT::IGF  THE COMMERCIAL CREW PROGRAM (CCP) COMMERCIAL CREW TRANSPORTATION CAPABILITY (CCTCAP) CONTRACT WILL PROVIDE COMPLETION OF THE DESIGN, DEVELOPMENT, TEST, EVALUATION, AND CERTIFICATION OF AN INTEGRATED CREW TRANSPORTATION SYSTEM (CTS) CAPABLE OF TRANSPORTING NASA CREW TO AND FROM THE ISS, IN ACCORDANCE WITH THE DESIGN REFERENCE MISSIONS AND NASA'S CERTIFICATION STANDARDS AND REQUIREMENTS.  CERTIFICATION OF THE CTS WILL BE DETERMINED BY NASA.  NASA PLANS TO ISSUE TASK ORDERS FOR POST CERTIFICATION MISSIONS (PCM) TO AND FROM ISS THAT INCLUDE GROUND, LAUNCH, LIFEBOAT, ON-ORBIT, RETURN AND RECOVERY OPERATIONS. THE MINIMUM QUANTITY OF MISSIONS TO BE ORDERED IS TWO (2) AND THE MAXIMUM POTENTIAL QUANTITY OF MISSIONS WHICH MAY BE ORDERED IS SIX (6).  IN ADDITION, NASA MAY ISSUE TASK ORDERS FOR SPECIAL STUDIES USED FOR RISK REDUCTION AND OTHER PURPOSES RELATED TO THE CTS.      NASA CERTIFICATION UNDER CLIN 001 IS COMPLETE WHEN THE CONTRACTOR'S CREW TRANSPORTATION SYSTEM (CTS) HAS MET NASA S REQUIREMENTS FOR SAFELY TRANSPORTING CREW TO AND FROM THE INTERNATIONAL SPACE STATION (ISS) IN ACCORDANCE WITH DOCUMENTS IDENTIFIED IN SECTION C.1, SPECIFICATIONS/STATEMENT OF WORK. SUBCLINS 001A AND 001B, IDENTIFIED IN TABLE B.3, DDTE/CERTIFICATION SUBCLINS, ARE DELIVERY MILESTONES THAT REPRESENT COMPLETION OF REQUIRED WORK NECESSARY TO ACHIEVE NASA CERTIFICATION. DELIVERY PAYMENT FOR THE ISS DESIGN CERTIFICATION REVIEW (DCR) FOR THE CREWED FLIGHT TO THE ISS INCLUDES ALL WORK UNDER THIS CLIN THAT OCCURS FROM THE CONTRACT EFFECTIVE DATE THROUGH THE ISS DCR COMPLETION. THE DELIVERY PAYMENT FOR THE CERTIFICATION REVIEW (CR) WILL INCLUDE ALL WORK THAT OCCURS FROMTHE ISS DCR DELIVERY DATE THROUGH THE END OF THE DDTE/CERTIFICATION CLIN 001.  IN ACCORDANCE WITH CLAUSE C.1, SPECIFICATION/STATEMENT OF WORK, THE TASK ORDERING PROCEDURES AND OTHER TERMS AND CONDITIONS IN THE CONTRACT, THE CONTRACTING OFFICER MAY ISSUE POST CERTIFICATION MISSION (PCM) TASK ORDERS. THE CONTRACTOR SHALL USE THE MISSION PRICING RATES SHOWN IN TABLE B.4.1, POST CERTIFICATION MISSION PRICES. THE PER MISSION PRICES ARE FOR A SINGLE ORDER AT THE PRICE STATED PER THE CALENDAR YEAR (CY) BASED ON THE NUMBER OF MISSIONS ORDERED. CTS FULL MISSION CAPABILITY PRICES SHALL BE BASED ON (1) FULFILLMENT OF THE DESIGN REFERENCE MISSION TO THE ISS FOUND IN CCT-DRM-1110, CREW TRANSPORTATION SYSTEM DESIGN REFERENCE MISSIONS, ATTACHMENT J-03, CONTRACT PERFORMANCE WORK STATEMENT, AND OTHER TERMS AND CONDITIONS IN THE CONTRACT AND (2) ALL INHERENT CTS CAPABILITIES THAT ARE WITHIN THE PROPOSED MISSION PRICES.  IN ACCORDANCE WITH ATTACHMENT J-03, CONTRACT PERFORMANCE WORK STATEMENT, THE TASK ORDERING PROCEDURES AND OTHER TERMS AND CONDITIONS IN THE CONTRACT, THE CONTRACTOR SHALL PERFORM SPECIAL STUDIES, TEST AND ANALYSES, AS INITIATED BY WRITTEN DIRECTION FROM THE CONTRACTING OFFICER.  BOEING CCTCAP POST CERTIFICATION MISSION 1 (PCM-1) TASK ORDER AGAINST NNK14MA75C CLIN 002, AS DESCRIBED IN CLAUSE B.4 POST CERTIFICATION MISSIONS (IDIQ)(CLIN 002) AND ALL OTHER APPLICABLE TERMS AND CONDITIONS.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/NNK15MA50T"
+    },
+    {
+      "awardId": "W58RGZ16C0008",
+      "recipientName": "LOCKHEED MARTIN CORPORATION",
+      "awardAmount": 356653858.49,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2016-01-01",
+      "endDate": "2021-06-30",
+      "placeOfPerformanceState": "FL",
+      "description": "IGF::CL,CT::IGF CONTRACT W58RGZ-16-C-0008 IS HEREBY AWARDED AS AN UNDEFINITIZED CONTRACT FOR THE MODERNIZED TARGET ACQUISITION DESIGNATION SIGHT/PILOT NIGHT VISION SENSOR PERFORMANCE BASED LOGISTICS  PROGRAM, INCLUSIVE OF OBSOLESCENCE MANAGEMENT, CRASH BATTLE DAMAGE SUPPORT/ CORPUS CHRISTI ARMY DEPOT SUPPORT, DEMAND DIAGNOSTICS AND CONTRACTOR SUPPLY SUPPORT ACTIVITIES  BOTH THE CONTINENTAL UNITED STATES  AND OUTSIDE THE CONTINENTAL UNITED STATES.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W58RGZ16C0008"
+    },
+    {
+      "awardId": "80KSC023FA026",
+      "recipientName": "AIR PRODUCTS AND CHEMICALS, INC",
+      "awardAmount": 352593356.29,
+      "awardingAgency": "National Aeronautics and Space Administration",
+      "awardingSubAgency": "National Aeronautics and Space Administration",
+      "startDate": "2022-12-01",
+      "endDate": "2026-10-31",
+      "placeOfPerformanceState": "FL",
+      "description": "THIS DELIVERY ORDER IS ISSUED PURSUANT TO THE SCHEDULE OF SUPPLIES, CONTRACT PERIOD PRICING, OTHER PRICING OPTIONS, AND TERMS AND CONDITIONS OF CONTRACT 80KSC023DA010 FOR HELIUM AT KENNEDY SPACE CENTER.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/80KSC023FA026"
+    },
+    {
+      "awardId": "36C10X26N0021",
+      "recipientName": "LOYAL SOURCE GOVERNMENT SERVICES LLC",
+      "awardAmount": 348691285.48,
+      "awardingAgency": "Department of Veterans Affairs",
+      "awardingSubAgency": "Department of Veterans Affairs",
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31",
+      "placeOfPerformanceState": "FL",
+      "description": "MEDICAL DISABILITY EXAMINATIONS - TO FY26 FUNDING",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/36C10X26N0021"
+    },
+    {
+      "awardId": "N0002408C5202",
+      "recipientName": "RAYTHEON COMPANY",
+      "awardAmount": 346307728.7,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Defense Contract Management Agency",
+      "startDate": "2008-01-17",
+      "endDate": "2018-12-30",
+      "placeOfPerformanceState": "FL",
+      "description": "BASE YEAR ENGINEERING SERVICES",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0002408C5202"
+    },
+    {
+      "awardId": "DTFAWA07C00014CALL0001",
+      "recipientName": "L3HARRIS TECHNOLOGIES, INC.",
+      "awardAmount": 338571299,
+      "awardingAgency": "Department of Transportation",
+      "awardingSubAgency": "Federal Aviation Administration",
+      "startDate": "2007-02-24",
+      "endDate": "2032-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "VOICE SWITCHING AND CONTROL SYSTEMS (VSCS)",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/DTFAWA07C00014CALL0001"
+    },
+    {
+      "awardId": "FA862121F6253",
+      "recipientName": "CAE USA INC.",
+      "awardAmount": 334725517.86,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2021-04-01",
+      "endDate": "2028-08-31",
+      "placeOfPerformanceState": "FL",
+      "description": "KC-135 TRAINING SYSTEMS",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA862121F6253"
+    },
+    {
+      "awardId": "FA863719C6009",
+      "recipientName": "SIERRA NEVADA COMPANY, LLC",
+      "awardAmount": 334489326.7,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2018-11-28",
+      "endDate": "2024-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "PURCHASE OF 12 A-29 AIRCRAFT FOR NIGERIA",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA863719C6009"
+    },
+    {
+      "awardId": "W519TC23F0196",
+      "recipientName": "GLOBAL MILITARY PRODUCTS INC",
+      "awardAmount": 334199060,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2023-04-17",
+      "endDate": "2026-12-31",
+      "placeOfPerformanceState": "FL",
+      "description": "PURCHASE OF AMMUNITION",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W519TC23F0196"
+    },
+    {
+      "awardId": "FA248622FA005",
+      "recipientName": "TORCH TECHNOLOGIES INC",
+      "awardAmount": 333339327.7,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2022-10-01",
+      "endDate": "2026-09-30",
+      "placeOfPerformanceState": "FL",
+      "description": "TECHNICAL AND MANAGEMENT ADVISORY SERVICES (TMAS) 2 TENANTS",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA248622FA005"
+    },
+    {
+      "awardId": "FA862118F6260",
+      "recipientName": "CAE USA INC.",
+      "awardAmount": 331210681.55,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2018-08-28",
+      "endDate": "2026-08-24",
+      "placeOfPerformanceState": "FL",
+      "description": "C-130H AIRCREW TRAINING SYSTEM",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA862118F6260"
+    },
+    {
+      "awardId": "W15P7T04CA205",
+      "recipientName": "DRS NETWORK & IMAGING SYSTEMS LLC",
+      "awardAmount": 330713498.35,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Defense Contract Management Agency",
+      "startDate": "2004-03-30",
+      "endDate": "2009-07-31",
+      "placeOfPerformanceState": "FL",
+      "description": "No record on file",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W15P7T04CA205"
+    },
+    {
+      "awardId": "W519TC25F0015",
+      "recipientName": "REPKON USA - DEFENSE, LLC",
+      "awardAmount": 326250000,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Army",
+      "startDate": "2024-11-06",
+      "endDate": "2029-02-15",
+      "placeOfPerformanceState": "FL",
+      "description": "ESTABLISHMENT WITHIN THE CONTINENTAL UNITED STATES OF A CAPABILITY TO PRODUCE TRINITROTOLUENE (TNT).",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/W519TC25F0015"
+    },
+    {
+      "awardId": "FA862120F6310",
+      "recipientName": "NOVA TECHNOLOGIES AN EMPLOYEE-OWNED ENGINEERING COMPANY",
+      "awardAmount": 324318584.5,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2020-01-08",
+      "endDate": "2026-12-31",
+      "placeOfPerformanceState": "FL",
+      "description": "C130-J MAINTENANCE AND AIRCREW TRAINING SYSTEM",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA862120F6310"
+    },
+    {
+      "awardId": "75FCMC22C0018",
+      "recipientName": "FIRST COAST SERVICE OPTIONS, INC.",
+      "awardAmount": 322170150,
+      "awardingAgency": "Department of Health and Human Services",
+      "awardingSubAgency": "Centers for Medicare and Medicaid Services",
+      "startDate": "2022-05-01",
+      "endDate": "2027-04-30",
+      "placeOfPerformanceState": "FL",
+      "description": "PART A/PART B MEDICARE ADMINISTRATIVE CONTRACTOR (MAC) JURISDICTION N (JN). JURISDICTION N INCLUDES THE FOLLOWING STATES AND AREAS:  FLORIDA AND THE U.S. TERRITORIES OF PUERTO RICO AND THE U.S. VIRGIN ISLANDS.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/75FCMC22C0018"
+    },
+    {
+      "awardId": "N0002422C5218",
+      "recipientName": "L3 TECHNOLOGIES, INC.",
+      "awardAmount": 315901176.3,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Navy",
+      "startDate": "2022-07-18",
+      "endDate": "2026-09-29",
+      "placeOfPerformanceState": "FL",
+      "description": "CEC SYSTEM PRODUCTION AND REPAIR",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/N0002422C5218"
+    },
+    {
+      "awardId": "FA810625F7503",
+      "recipientName": "JPATS LOGISTICS SERVICES, LLC",
+      "awardAmount": 311834805.75,
+      "awardingAgency": "Department of Defense",
+      "awardingSubAgency": "Department of the Air Force",
+      "startDate": "2024-12-11",
+      "endDate": "2026-03-02",
+      "placeOfPerformanceState": "FL",
+      "description": "CONTRACTOR OPERATED AND MAINTAINED BASE SUPPLY (COMBS III)",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/FA810625F7503"
+    },
+    {
+      "awardId": "693JF722F000044",
+      "recipientName": "TOTE SERVICES, LLC",
+      "awardAmount": 309561461,
+      "awardingAgency": "Department of Transportation",
+      "awardingSubAgency": "Maritime Administration",
+      "startDate": "2022-04-14",
+      "endDate": "2029-08-31",
+      "placeOfPerformanceState": "FL",
+      "description": "THE CONTRACTOR IS HEREBY TASKED TO DELIVER NSMV V TO THE GOVERNMENT (IN ACCORDANCE WITH THE TERMS AND CONDITIONS OF THE CONTRACT) AT A FIRM-FIXED PRICE OF $301,711,505.00. THIS DELIVERY ORDER ALSO PROVIDES AND OBLIGATES THE FUND ($301,711,505.00) FO",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/693JF722F000044"
+    },
+    {
+      "awardId": "47QFCA24F0009",
+      "recipientName": "GENERAL DYNAMICS INFORMATION TECHNOLOGY, INC.",
+      "awardAmount": 308629991,
+      "awardingAgency": "General Services Administration",
+      "awardingSubAgency": "Federal Acquisition Service",
+      "startDate": "2024-02-05",
+      "endDate": "2027-02-04",
+      "placeOfPerformanceState": "FL",
+      "description": "THE PURPOSE OF THIS IS TO INCREMENTALLY FUND AND AWARD THE CITS TASK ORDER.",
+      "source": {
+        "name": "USASpending.gov",
+        "url": "https://www.usaspending.gov",
+        "tier": "official",
+        "description": "Official federal spending and contract awards via api.usaspending.gov"
+      },
+      "asOf": "2026-06-24",
+      "usaspendingUrl": "https://www.usaspending.gov/award/47QFCA24F0009"
+    }
+  ]
+}

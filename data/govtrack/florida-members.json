@@ -1,0 +1,569 @@
+{
+  "meta": {
+    "source": {
+      "name": "GovTrack.us",
+      "url": "https://www.govtrack.us",
+      "tier": "nonpartisan",
+      "description": "Nonpartisan congressional member records via GovTrack public API"
+    },
+    "asOf": "2026-06-24",
+    "count": 29,
+    "stateCode": "FL",
+    "fetchedLive": false,
+    "datasetUrl": "https://www.govtrack.us/api/v2/role",
+    "note": "Substitute for retired ProPublica Congress API. Tier 2 nonpartisan."
+  },
+  "records": [
+    {
+      "govtrackId": 412250,
+      "bioguideId": "B001257",
+      "name": "Gus M. Bilirakis",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/B001257",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 412196,
+      "bioguideId": "B001260",
+      "name": "Vern Buchanan",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/B001260",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 412195,
+      "bioguideId": "C001066",
+      "name": "Kathy Castor",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Democrat",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/C001066",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 400108,
+      "bioguideId": "D000600",
+      "name": "Mario Diaz-Balart",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/D000600",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 400623,
+      "bioguideId": "W000797",
+      "name": "Debbie Wasserman Schultz",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Democrat",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/W000797",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 412410,
+      "bioguideId": "W000806",
+      "name": "Daniel Webster",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/W000806",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 412412,
+      "bioguideId": "W000808",
+      "name": "Frederica S. Wilson",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Democrat",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/W000808",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 412529,
+      "bioguideId": "F000462",
+      "name": "Lois Frankel",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Democrat",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/F000462",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 412691,
+      "bioguideId": "D000628",
+      "name": "Neal P. Dunn",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/D000628",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 412692,
+      "bioguideId": "R000609",
+      "name": "John H. Rutherford",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/R000609",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 412695,
+      "bioguideId": "S001200",
+      "name": "Darren Soto",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Democrat",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/S001200",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 412698,
+      "bioguideId": "M001199",
+      "name": "Brian J. Mast",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/M001199",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 412766,
+      "bioguideId": "S001214",
+      "name": "W. Gregory Steube",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/S001214",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 412838,
+      "bioguideId": "S001217",
+      "name": "Rick Scott",
+      "currentRole": {
+        "roleType": "senator",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/S001217",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 456806,
+      "bioguideId": "C001039",
+      "name": "Kat Cammack",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/C001039",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 456807,
+      "bioguideId": "F000472",
+      "name": "Scott Franklin",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/F000472",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 456808,
+      "bioguideId": "D000032",
+      "name": "Byron Donalds",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/D000032",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 456809,
+      "bioguideId": "G000593",
+      "name": "Carlos A. Gimenez",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/G000593",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 456810,
+      "bioguideId": "S000168",
+      "name": "Maria Elvira Salazar",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/S000168",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 456888,
+      "bioguideId": "B001314",
+      "name": "Aaron Bean",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/B001314",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 456889,
+      "bioguideId": "M001216",
+      "name": "Cory Mills",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/M001216",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 456890,
+      "bioguideId": "F000476",
+      "name": "Maxwell Frost",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Democrat",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/F000476",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 456891,
+      "bioguideId": "L000596",
+      "name": "Anna Paulina Luna",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/L000596",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 456892,
+      "bioguideId": "L000597",
+      "name": "Laurel M. Lee",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/L000597",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 456893,
+      "bioguideId": "M001217",
+      "name": "Jared Moskowitz",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Democrat",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/M001217",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 456986,
+      "bioguideId": "H001099",
+      "name": "Mike Haridopolos",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/H001099",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 457033,
+      "bioguideId": "M001244",
+      "name": "Ashley Moody",
+      "currentRole": {
+        "roleType": "senator",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/M001244",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 457034,
+      "bioguideId": "P000622",
+      "name": "Jimmy Patronis",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/P000622",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "govtrackId": 457035,
+      "bioguideId": "F000484",
+      "name": "Randy Fine",
+      "currentRole": {
+        "roleType": "representative",
+        "state": "FL",
+        "party": "Republican",
+        "startDate": "2026-06-24"
+      },
+      "profileUrl": "https://www.govtrack.us/congress/members/F000484",
+      "source": {
+        "name": "GovTrack.us",
+        "url": "https://www.govtrack.us",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan congressional member records via GovTrack public API"
+      },
+      "asOf": "2026-06-24"
+    }
+  ]
+}

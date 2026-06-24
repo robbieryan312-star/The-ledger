@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "source": {
+      "name": "LegiScan",
+      "url": "https://legiscan.com",
+      "tier": "nonpartisan",
+      "description": "State and federal bill tracking via legiscan.com API"
+    },
+    "asOf": "2026-06-24",
+    "count": 0,
+    "stateCode": "FL",
+    "fetchedLive": false,
+    "errors": [
+      "LEGISCAN_API_KEY not configured"
+    ],
+    "note": "No record on file — API key required. Register at legiscan.com/legiscan"
+  },
+  "records": []
+}

@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "source": {
+      "name": "DOJ FARA eFile",
+      "url": "https://www.fara.gov",
+      "tier": "official",
+      "description": "Foreign Agents Registration Act disclosures via efts.fara.justice.gov"
+    },
+    "asOf": "2026-06-24",
+    "count": 0,
+    "stateCode": "FL",
+    "fetchedLive": false,
+    "errors": [
+      "fetch failed"
+    ],
+    "datasetUrl": "https://efts.fara.justice.gov/motd-search/api/documents",
+    "note": "FARA registrants with Florida address. Tier 1 official DOJ source."
+  },
+  "records": []
+}

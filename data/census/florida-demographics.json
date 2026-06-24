@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "source": {
+      "name": "U.S. Census Bureau ACS",
+      "url": "https://api.census.gov",
+      "tier": "official",
+      "description": "American Community Survey 5-year estimates via api.census.gov"
+    },
+    "asOf": "2026-06-24",
+    "count": 0,
+    "stateCode": "FL",
+    "fetchedLive": false,
+    "errors": [
+      "Unexpected token '<', \"\n<html styl\"... is not valid JSON"
+    ],
+    "note": "Census fetch failed."
+  },
+  "records": []
+}

@@ -126,7 +126,7 @@ async function syncFloridaHouseVotes(
         const breakdown = computePartyBreakdown(
           (members.results ?? []).map((m) => ({
             party: partyMap.get(m.bioguideId) ?? 'I',
-            vote: normalizeVoteChoice(m.voteCast),
+            voteCast: normalizeVoteChoice(m.voteCast),
           })),
         );
 
@@ -193,16 +193,7 @@ async function syncFloridaSenateVotes(
         if (!memberVote) continue;
         const list = collected.get(sen.bioguideId) ?? [];
         if (list.length >= VOTES_PER_MEMBER) continue;
-        list.push(
-          senateVoteToRecord(sen.bioguideId, roll, memberVote.voteCast, {
-            partyBreakdown: computePartyBreakdown(
-              roll.members.map((m) => ({
-                party: m.party ?? 'I',
-                vote: m.voteCast,
-              })),
-            ),
-          }),
-        );
+        list.push(senateVoteToRecord(sen.bioguideId, roll, memberVote.voteCast));
         collected.set(sen.bioguideId, list);
       }
     } catch (err) {

@@ -101,6 +101,7 @@ export async function loadFloridaLegislators(): Promise<
     chamber: string;
     party: string;
     office: string;
+    district?: string;
     govtrackId?: number;
     fecIds?: string[];
   }>
@@ -117,6 +118,7 @@ export async function loadFloridaLegislators(): Promise<
       chamber: String(l.chamber),
       party: String(l.party),
       office: String(l.office),
+      district: l.district != null ? String(l.district) : undefined,
       govtrackId: typeof l.govtrackId === 'number' ? l.govtrackId : undefined,
       fecIds: Array.isArray(l.fecIds) ? (l.fecIds as string[]) : undefined,
     }));

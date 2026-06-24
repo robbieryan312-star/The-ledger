@@ -1,0 +1,605 @@
+{
+  "meta": {
+    "source": {
+      "name": "U.S. Census Bureau / congress-legislators",
+      "url": "https://www.census.gov",
+      "tier": "official",
+      "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+    },
+    "asOf": "2026-06-24",
+    "count": 28,
+    "stateCode": "FL",
+    "fetchedLive": true,
+    "note": "Substitute for deprecated Google Civic representatives API. District seats from congress-legislators; geocoder for address lookup."
+  },
+  "records": [
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 0,
+      "representative": {
+        "name": "Rick Scott; Ashley Moody",
+        "bioguideId": "S001217; M001244",
+        "party": "Republican; Republican",
+        "office": "U.S. Senate (at-large by state)"
+      },
+      "censusGeocoderNote": "Senate seats are statewide; district field 0 denotes statewide senators.",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 1,
+      "representative": {
+        "bioguideId": "P000622",
+        "name": "Jimmy Patronis",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 2,
+      "representative": {
+        "bioguideId": "D000628",
+        "name": "Neal P. Dunn",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 3,
+      "representative": {
+        "bioguideId": "C001039",
+        "name": "Kat Cammack",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 4,
+      "representative": {
+        "bioguideId": "B001314",
+        "name": "Aaron Bean",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 5,
+      "representative": {
+        "bioguideId": "R000609",
+        "name": "John H. Rutherford",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 6,
+      "representative": {
+        "bioguideId": "F000484",
+        "name": "Randy Fine",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 7,
+      "representative": {
+        "bioguideId": "M001216",
+        "name": "Cory Mills",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 8,
+      "representative": {
+        "bioguideId": "H001099",
+        "name": "Mike Haridopolos",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 9,
+      "representative": {
+        "bioguideId": "S001200",
+        "name": "Darren Soto",
+        "party": "Democrat",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 10,
+      "representative": {
+        "bioguideId": "F000476",
+        "name": "Maxwell Frost",
+        "party": "Democrat",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 11,
+      "representative": {
+        "bioguideId": "W000806",
+        "name": "Daniel Webster",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 12,
+      "representative": {
+        "bioguideId": "B001257",
+        "name": "Gus M. Bilirakis",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 13,
+      "representative": {
+        "bioguideId": "L000596",
+        "name": "Anna Paulina Luna",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 14,
+      "representative": {
+        "bioguideId": "C001066",
+        "name": "Kathy Castor",
+        "party": "Democrat",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 15,
+      "representative": {
+        "bioguideId": "L000597",
+        "name": "Laurel M. Lee",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 16,
+      "representative": {
+        "bioguideId": "B001260",
+        "name": "Vern Buchanan",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 17,
+      "representative": {
+        "bioguideId": "S001214",
+        "name": "W. Gregory Steube",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 18,
+      "representative": {
+        "bioguideId": "F000472",
+        "name": "Scott Franklin",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 19,
+      "representative": {
+        "bioguideId": "D000032",
+        "name": "Byron Donalds",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 21,
+      "representative": {
+        "bioguideId": "M001199",
+        "name": "Brian J. Mast",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 22,
+      "representative": {
+        "bioguideId": "F000462",
+        "name": "Lois Frankel",
+        "party": "Democrat",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 23,
+      "representative": {
+        "bioguideId": "M001217",
+        "name": "Jared Moskowitz",
+        "party": "Democrat",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 24,
+      "representative": {
+        "bioguideId": "W000808",
+        "name": "Frederica S. Wilson",
+        "party": "Democrat",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 25,
+      "representative": {
+        "bioguideId": "W000797",
+        "name": "Debbie Wasserman Schultz",
+        "party": "Democrat",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 26,
+      "representative": {
+        "bioguideId": "D000600",
+        "name": "Mario Diaz-Balart",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 27,
+      "representative": {
+        "bioguideId": "S000168",
+        "name": "Maria Elvira Salazar",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    },
+    {
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "congressionalDistrict": 28,
+      "representative": {
+        "bioguideId": "G000593",
+        "name": "Carlos A. Gimenez",
+        "party": "Republican",
+        "office": "U.S. Representative"
+      },
+      "censusGeocoderNote": "District geometry available via Census TIGER/Line; seat holder from unitedstates/congress-legislators (Tier 1).",
+      "censusGeocoderUrl": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "legislatorsSourceUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "source": {
+        "name": "U.S. Census Bureau / congress-legislators",
+        "url": "https://www.census.gov",
+        "tier": "official",
+        "description": "Congressional district boundaries and current seat assignments from official-derived datasets"
+      },
+      "asOf": "2026-06-24"
+    }
+  ]
+}

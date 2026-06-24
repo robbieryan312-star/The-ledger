@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "source": {
+      "name": "NewsAPI",
+      "url": "https://newsapi.org",
+      "tier": "journalism",
+      "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+    },
+    "asOf": "2026-06-24",
+    "count": 0,
+    "stateCode": "FL",
+    "fetchedLive": false,
+    "errors": [
+      "NEWSAPI_KEY not configured"
+    ],
+    "note": "No record on file — API key required. Register at newsapi.org/register"
+  },
+  "records": []
+}

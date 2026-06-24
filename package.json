@@ -14,7 +14,20 @@
     "sync:fec": "tsx scripts/sync-fec-finance.ts",
     "sync:votes": "tsx scripts/sync-congress-votes.ts",
     "sync:stock-trades": "tsx scripts/sync-stock-trades.ts",
-    "verify:office": "tsx scripts/verify-office-resolution.ts"
+    "verify:office": "tsx scripts/verify-office-resolution.ts",
+    "ingest:fec-fl": "tsx scripts/ingest-fec-florida.ts",
+    "ingest:congress-fl": "tsx scripts/ingest-congress-florida.ts",
+    "ingest:govtrack-fl": "tsx scripts/ingest-govtrack-florida.ts",
+    "ingest:usaspending-fl": "tsx scripts/ingest-usaspending-florida.ts",
+    "ingest:fara-fl": "tsx scripts/ingest-fara-florida.ts",
+    "ingest:civic-fl": "tsx scripts/ingest-civic-florida.ts",
+    "ingest:census-fl": "tsx scripts/ingest-census-florida.ts",
+    "ingest:lobbying-fl": "tsx scripts/ingest-lobbying-florida.ts",
+    "ingest:openstates-fl": "tsx scripts/ingest-openstates-florida.ts",
+    "ingest:legiscan-fl": "tsx scripts/ingest-legiscan-florida.ts",
+    "ingest:news-fl": "tsx scripts/ingest-news-florida.ts",
+    "ingest:sam-fl": "tsx scripts/ingest-sam-florida.ts",
+    "ingest:florida-all": "npm run ingest:fec-fl && npm run ingest:congress-fl && npm run ingest:govtrack-fl && npm run ingest:usaspending-fl && npm run ingest:fara-fl && npm run ingest:civic-fl && npm run ingest:census-fl && npm run ingest:lobbying-fl && npm run ingest:openstates-fl && npm run ingest:legiscan-fl && npm run ingest:news-fl && npm run ingest:sam-fl"
   },
   "dependencies": {
     "@types/d3": "^7.4.3",

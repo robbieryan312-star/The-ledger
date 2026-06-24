@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "source": {
+      "name": "Open States",
+      "url": "https://openstates.org",
+      "tier": "nonpartisan",
+      "description": "State legislator records via openstates.org API"
+    },
+    "asOf": "2026-06-24",
+    "count": 0,
+    "stateCode": "FL",
+    "fetchedLive": false,
+    "errors": [
+      "OPENSTATES_API_KEY not configured"
+    ],
+    "note": "No record on file — API key required. Register at openstates.org/api"
+  },
+  "records": []
+}
