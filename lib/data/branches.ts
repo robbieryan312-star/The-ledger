@@ -3,6 +3,8 @@
  */
 import { Chamber, GovernmentBranch, Politician } from '../types';
 
+export type { GovernmentBranch };
+
 const EXECUTIVE_CHAMBERS: Chamber[] = ['president', 'vice_president', 'cabinet'];
 const LEGISLATIVE_CHAMBERS: Chamber[] = ['senate', 'house'];
 const STATE_CHAMBERS: Chamber[] = [

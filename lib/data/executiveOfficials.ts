@@ -100,12 +100,6 @@ function execProfile(
     | 'chamber'
     | 'bio'
     | 'topIssues'
-    | 'imageUrl'
-    | 'website'
-    | 'bioguideId'
-    | 'consistency'
-    | 'news'
-    | 'controversies'
   > &
     Partial<Politician>,
 ): Politician {
@@ -117,13 +111,13 @@ function execProfile(
     inOffice: true,
     termStart: '2025-01-20',
     termEnd: '2029-01-20',
-    votingRecord: [],
-    campaignFinance: EXECUTIVE_FINANCE,
-    stockTrades: [],
-    consistency: EXECUTIVE_CONSISTENCY,
-    controversies: [],
-    news: [],
     ...p,
+    votingRecord: p.votingRecord ?? [],
+    campaignFinance: p.campaignFinance ?? EXECUTIVE_FINANCE,
+    stockTrades: p.stockTrades ?? [],
+    consistency: p.consistency ?? EXECUTIVE_CONSISTENCY,
+    controversies: p.controversies ?? [],
+    news: p.news ?? [],
   };
 }
 

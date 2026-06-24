@@ -131,6 +131,18 @@ export const mockPoliticians: Politician[] = [
             date: '2022-08-07',
             source: CONGRESS_GOV,
           },
+          {
+            type: 'statement',
+            description: 'Senate floor speech during IRA debate emphasized climate provisions as insufficient but necessary step toward decarbonization.',
+            date: '2022-08-06',
+            source: CSPAN,
+          },
+          {
+            type: 'legislation',
+            description: 'Co-sponsored S.Res.59 — resolution recognizing the need for the federal government to create a Green New Deal (2019).',
+            date: '2019-02-07',
+            source: CONGRESS_GOV,
+          },
         ] as EvidenceItem[],
       },
       {
@@ -144,6 +156,18 @@ export const mockPoliticians: Politician[] = [
             type: 'legislation',
             description: 'Introduced the College for All Act (multiple sessions) — would make public 4-year colleges tuition-free and community colleges debt-free. Funded via tax on Wall Street speculation.',
             date: '2017-04-03',
+            source: CONGRESS_GOV,
+          },
+          {
+            type: 'legislation',
+            description: 'Introduced S.2128 — College for All Act of 2023, expanding tuition-free public college and canceling student debt for borrowers under income thresholds.',
+            date: '2023-06-22',
+            source: CONGRESS_GOV,
+          },
+          {
+            type: 'vote',
+            description: 'Voted YEA on amendment to H.R.5376 (Inflation Reduction Act) extending Pell Grant maximum award — part of broader higher-education access package in reconciliation.',
+            date: '2022-08-07',
             source: CONGRESS_GOV,
           },
         ] as EvidenceItem[],
@@ -387,6 +411,18 @@ export const mockPoliticians: Politician[] = [
         evidence: [
           { type: 'action', description: 'Confirmed Justice Neil Gorsuch (2017), Brett Kavanaugh (2018), Amy Coney Barrett (2020) — shifted Supreme Court composition.', date: '2020-10-26', source: CONGRESS_GOV },
           { type: 'action', description: 'Senate confirmed 234 federal judges in the 116th Congress under McConnell leadership — highest pace in modern history.', date: '2021-01-03', source: BALLOTPEDIA },
+          {
+            type: 'action',
+            description: 'As Senate Majority Leader, declined to hold hearings on President Obama\'s Supreme Court nominee Merrick Garland (2016), citing election-year precedent.',
+            date: '2016-02-13',
+            source: SENATE_GOV,
+          },
+          {
+            type: 'statement',
+            description: 'Floor remarks on judicial confirmations: "The most important thing we have done is confirm judges."',
+            date: '2020-10-26',
+            source: CSPAN,
+          },
         ] as EvidenceItem[],
       },
       {
@@ -397,6 +433,12 @@ export const mockPoliticians: Politician[] = [
         evidence: [
           { type: 'vote', description: 'Voted YEA on H.R.1 Tax Cuts and Jobs Act — corporate rate cut from 35% to 21%.', date: '2017-12-20', source: CONGRESS_GOV },
           { type: 'statement', description: 'CBO projected $1.9T deficit increase over 10 years from 2017 tax cuts — McConnell disputed pay-for-itself claims.', date: '2018-04-09', source: { name: 'Congressional Budget Office', url: 'https://www.cbo.gov', tier: 'official' } },
+          {
+            type: 'vote',
+            description: 'Voted NAY on H.R.5376 Inflation Reduction Act (2022), which included a 15% corporate minimum tax on large companies.',
+            date: '2022-08-07',
+            source: SENATE_GOV,
+          },
         ] as EvidenceItem[],
       },
       {
@@ -407,6 +449,12 @@ export const mockPoliticians: Politician[] = [
         evidence: [
           { type: 'vote', description: 'Voted YEA on NDAA FY2024 authorizing $886B in defense spending.', date: '2023-12-13', source: SENATE_GOV },
           { type: 'vote', description: 'Voted YEA on $40B Ukraine supplemental (2022) — primary beneficiary contractors include LMT, RTX.', date: '2022-05-19', source: SENATE_GOV },
+          {
+            type: 'vote',
+            description: 'Voted YEA on S.1605 — National Defense Authorization Act for Fiscal Year 2022 ($768B authorized).',
+            date: '2021-12-15',
+            source: SENATE_GOV,
+          },
         ] as EvidenceItem[],
       },
       {
@@ -417,6 +465,52 @@ export const mockPoliticians: Politician[] = [
         evidence: [
           { type: 'vote', description: 'Voted YEA on Ukraine Security Supplemental ($61B) — April 2024.', date: '2024-04-23', source: SENATE_GOV },
           { type: 'statement', description: 'Floor speech: "The most important thing going on in the world right now is to beat the Russians in Ukraine."', date: '2023-02-28', source: CSPAN },
+          {
+            type: 'vote',
+            description: 'Voted YEA on H.R.7691 — Additional Ukraine Supplemental Appropriations Act ($40B), May 2022.',
+            date: '2022-05-19',
+            source: SENATE_GOV,
+          },
+        ] as EvidenceItem[],
+      },
+      {
+        name: 'Gun Policy',
+        position: 'Generally pro-gun-rights; voted for 2022 gun safety bill',
+        detail: 'Maintains high NRA ratings historically but voted Yea on Bipartisan Safer Communities Act.',
+        category: 'Guns',
+        evidence: [
+          { type: 'vote', description: 'Voted YEA on S.2938 Bipartisan Safer Communities Act (2022) — among 15 Senate Republicans supporting the bill.', date: '2022-06-23', source: CONGRESS_GOV },
+          { type: 'statement', description: 'Public statement after Uvalde shooting cited school safety and mental health provisions as rationale for supporting the bill.', date: '2022-06-22', source: AP },
+        ] as EvidenceItem[],
+      },
+      {
+        name: 'Healthcare',
+        position: 'Opposes ACA expansion; supports private-market framework',
+        detail: 'Led multiple ACA repeal efforts as Majority Leader.',
+        category: 'Healthcare',
+        evidence: [
+          { type: 'vote', description: 'Voted YEA on multiple ACA repeal measures including "skinny repeal" attempt (2017).', date: '2017-07-25', source: CONGRESS_GOV },
+          { type: 'action', description: 'As Majority Leader, scheduled floor votes on ACA repeal-and-replace legislation in 2017.', date: '2017-07-26', source: BALLOTPEDIA },
+        ] as EvidenceItem[],
+      },
+      {
+        name: 'Immigration',
+        position: 'Border security; opposed comprehensive reform bills',
+        detail: 'Supported border-wall funding and opposed pathway-to-citizenship packages.',
+        category: 'Immigration',
+        evidence: [
+          { type: 'vote', description: 'Voted NAY on S.744 comprehensive immigration reform (2013).', date: '2013-06-27', source: CONGRESS_GOV },
+          { type: 'statement', description: 'Public remarks emphasized border security prerequisites before legalization discussions.', date: '2024-02-05', source: CSPAN },
+        ] as EvidenceItem[],
+      },
+      {
+        name: 'Criminal Justice',
+        position: 'Supported First Step Act sentencing reforms',
+        detail: 'Voted for First Step Act while emphasizing law-enforcement support in public remarks.',
+        category: 'Criminal Justice',
+        evidence: [
+          { type: 'vote', description: 'Voted YEA on S.756 First Step Act (2018).', date: '2018-12-18', source: CONGRESS_GOV },
+          { type: 'statement', description: 'Floor remarks described the bill as balancing public safety with modest sentencing adjustments.', date: '2018-12-18', source: CSPAN },
         ] as EvidenceItem[],
       },
     ],
@@ -612,6 +706,12 @@ export const mockPoliticians: Politician[] = [
         evidence: [
           { type: 'legislation', description: 'Introduced H.Res.109 — Green New Deal resolution calling for net-zero emissions and federal jobs guarantee.', date: '2023-04-18', source: CONGRESS_GOV },
           { type: 'vote', description: 'Voted YEA on Inflation Reduction Act — $369B in climate investments.', date: '2022-08-12', source: CONGRESS_GOV },
+          {
+            type: 'statement',
+            description: 'House floor remarks during IRA debate described climate provisions as a down payment while calling for larger Green New Deal-scale investment.',
+            date: '2022-08-12',
+            source: CSPAN,
+          },
         ] as EvidenceItem[],
       },
       {
@@ -622,6 +722,12 @@ export const mockPoliticians: Politician[] = [
         evidence: [
           { type: 'legislation', description: 'Cosponsored H.R.3421 Medicare for All Act in multiple Congresses.', date: '2023-02-28', source: CONGRESS_GOV },
           { type: 'vote', description: 'Voted YEA on Inflation Reduction Act Medicare drug price negotiation provisions.', date: '2022-08-12', source: CONGRESS_GOV },
+          {
+            type: 'statement',
+            description: 'Town hall remarks in NY-14 reiterated support for single-payer healthcare beyond IRA drug-pricing provisions.',
+            date: '2023-03-15',
+            source: CSPAN,
+          },
         ] as EvidenceItem[],
       },
       {
@@ -632,6 +738,12 @@ export const mockPoliticians: Politician[] = [
         evidence: [
           { type: 'legislation', description: 'Introduced Green New Deal for Public Housing Act — CBO estimated $172B over 10 years for retrofits.', date: '2023-11-02', source: CONGRESS_GOV },
           { type: 'statement', description: 'Advocated for federal rent stabilization and tenant protections in Financial Services Committee hearings.', date: '2024-01-25', source: CSPAN },
+          {
+            type: 'legislation',
+            description: 'Cosponsored H.R.3075 — Tenant Protection Act of 2023, establishing federal just-cause eviction standards.',
+            date: '2023-05-04',
+            source: CONGRESS_GOV,
+          },
         ] as EvidenceItem[],
       },
       {
@@ -642,6 +754,53 @@ export const mockPoliticians: Politician[] = [
         evidence: [
           { type: 'legislation', description: 'Cosponsored Student Debt Cancellation Act directing ED to cancel all federal student loans.', date: '2023-06-14', source: CONGRESS_GOV },
           { type: 'statement', description: 'Publicly urged Biden administration to use executive authority for broad debt cancellation beyond targeted programs.', date: '2022-08-24', source: AP },
+          {
+            type: 'vote',
+            description: 'Voted YEA on H.R.5376 Inflation Reduction Act, which included Pell Grant increases and income-driven repayment adjustments.',
+            date: '2022-08-12',
+            source: CONGRESS_GOV,
+          },
+        ] as EvidenceItem[],
+      },
+      {
+        name: 'Foreign Policy',
+        position: 'Reduced military spending; skeptic of unconditional aid',
+        detail: 'Voted against NDAA at elevated spending levels; opposed separating infrastructure from reconciliation.',
+        category: 'Foreign Policy',
+        evidence: [
+          { type: 'vote', description: 'Voted NAY on H.R.7900 National Defense Authorization Act FY2023 ($857.9B).', date: '2022-07-14', source: CONGRESS_GOV },
+          { type: 'statement', description: 'Committee remarks questioned Pentagon budget growth relative to domestic social spending priorities.', date: '2023-03-15', source: CSPAN },
+          { type: 'vote', description: 'Voted NAY on H.R.3684 Infrastructure Investment and Jobs Act — argued it should be paired with reconciliation.', date: '2021-11-05', source: CONGRESS_GOV },
+        ] as EvidenceItem[],
+      },
+      {
+        name: 'Immigration',
+        position: 'Pathway to citizenship; opposes detention expansion',
+        detail: 'Co-sponsored immigration reform and criticized border enforcement funding increases without oversight.',
+        category: 'Immigration',
+        evidence: [
+          { type: 'legislation', description: 'Co-sponsored American Dream and Promise Act pathways for DACA recipients.', date: '2021-03-03', source: CONGRESS_GOV },
+          { type: 'statement', description: 'Public statements opposed expanding immigrant detention bed funding without due-process reforms.', date: '2022-09-15', source: AP },
+        ] as EvidenceItem[],
+      },
+      {
+        name: 'Civil Liberties',
+        position: 'Surveillance reform; police accountability',
+        detail: 'Supported George Floyd Justice in Policing Act; criticized FISA abuses.',
+        category: 'Civil Liberties',
+        evidence: [
+          { type: 'vote', description: 'Voted YEA on H.R.1280 George Floyd Justice in Policing Act (2021).', date: '2021-03-03', source: CONGRESS_GOV },
+          { type: 'statement', description: 'Public remarks linked surveillance reform to civil liberties concerns in over-policed communities.', date: '2020-06-08', source: AP },
+        ] as EvidenceItem[],
+      },
+      {
+        name: 'Gun Policy',
+        position: 'Supports gun-safety measures',
+        detail: 'Co-sponsored assault-weapons ban legislation; voted for Inflation Reduction Act in Congress with related safety votes.',
+        category: 'Guns',
+        evidence: [
+          { type: 'legislation', description: 'Co-sponsored Assault Weapons Ban of 2023 (H.R.698).', date: '2023-02-01', source: CONGRESS_GOV },
+          { type: 'statement', description: 'Public statements after mass shootings supported federal background-check expansion.', date: '2022-05-25', source: AP },
         ] as EvidenceItem[],
       },
     ],
@@ -877,6 +1036,12 @@ export const mockPoliticians: Politician[] = [
         evidence: [
           { type: 'legislation', description: 'Signed HB 543 — permitless concealed carry effective July 1, 2023; background check requirements for purchase unchanged.', date: '2023-04-03', source: FL_GOV },
           { type: 'statement', description: 'Signing ceremony statement: "Constitutional carry is about the constitutional right to bear arms."', date: '2023-04-03', source: AP },
+          {
+            type: 'legislation',
+            description: 'Signed HB 1557 (Parental Rights in Education) and related measures expanding school safety officer funding alongside carry expansion.',
+            date: '2022-03-28',
+            source: FL_GOV,
+          },
         ] as EvidenceItem[],
       },
       {
@@ -1103,6 +1268,12 @@ export const mockPoliticians: Politician[] = [
           { type: 'vote', description: 'Voted NAY on H.R.8035 Ukraine Security Supplemental ($61B) — April 2024.', date: '2024-04-20', source: CONGRESS_GOV },
           { type: 'vote', description: 'Voted NAY on H.R.815 Israel supplemental ($14.3B) — February 2024.', date: '2024-02-13', source: CONGRESS_GOV },
           { type: 'statement', description: '"Not one penny of American taxpayer money should go abroad until we balance the budget."', quote: 'Not one penny of American taxpayer money should go abroad until we balance the budget.', date: '2024-04-20', source: CSPAN },
+          {
+            type: 'vote',
+            description: 'Voted NAY on H.R.815 consolidated supplemental including Taiwan security assistance (April 2024).',
+            date: '2024-04-20',
+            source: CONGRESS_GOV,
+          },
         ] as EvidenceItem[],
       },
       {
@@ -1113,6 +1284,12 @@ export const mockPoliticians: Politician[] = [
         evidence: [
           { type: 'vote', description: 'Voted NAY on H.R.1319 American Rescue Plan ($1.9T COVID relief).', date: '2021-03-10', source: CONGRESS_GOV },
           { type: 'vote', description: 'Voted NAY on Fiscal Responsibility Act (2023 debt ceiling deal).', date: '2023-05-31', source: CONGRESS_GOV },
+          {
+            type: 'vote',
+            description: 'Voted NAY on H.R.3684 Infrastructure Investment and Jobs Act ($1.2T) — cited insufficient spending offsets.',
+            date: '2021-11-05',
+            source: CONGRESS_GOV,
+          },
         ] as EvidenceItem[],
       },
       {

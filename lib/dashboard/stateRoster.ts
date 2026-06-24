@@ -3,23 +3,26 @@ import {
   isCurrentlyInOffice,
   sortOfficialsForDisplay,
 } from '@/lib/data/allPoliticians';
-import { hasCongressVotes } from '@/lib/data/congressVotes';
-import { getFecFinance, hasFecFinance } from '@/lib/data/fecFinance';
+import { getFecFinance } from '@/lib/data/fecFinance';
 import { mergeStockTrades } from '@/lib/data/stockTrades';
 import type { Politician } from '@/lib/types';
 
 export type OfficeFilter = 'all' | 'senate' | 'house' | 'governor' | 'state' | 'local';
 export type PartyFilter = 'all' | 'Democrat' | 'Republican' | 'Independent';
-export type DataCompletenessFilter = 'fec' | 'votes' | 'trades';
-export type ValuePreset = 'bipartisan' | 'noPAC' | 'noLobbyist';
-export type RosterSort = 'prominence' | 'name' | 'raised' | 'consistency' | 'newestTrade';
+export type VoterTopicFilter =
+  | 'immigration'
+  | 'education'
+  | 'abortion'
+  | 'guns'
+  | 'healthcare'
+  | 'economy';
+export type RosterSort = 'office' | 'name' | 'raised' | 'consistency' | 'newestTrade';
 
 export interface StateRosterFilters {
   search: string;
   office: OfficeFilter;
   party: PartyFilter;
-  dataCompleteness: DataCompletenessFilter[];
-  valuePresets: ValuePreset[];
+  voterTopics: VoterTopicFilter[];
   inOfficeOnly: boolean;
   sort: RosterSort;
 }
@@ -28,10 +31,18 @@ export const DEFAULT_ROSTER_FILTERS: StateRosterFilters = {
   search: '',
   office: 'all',
   party: 'all',
-  dataCompleteness: [],
-  valuePresets: [],
+  voterTopics: [],
   inOfficeOnly: true,
-  sort: 'prominence',
+  sort: 'office',
+};
+
+const TOPIC_CATEGORY_MATCH: Record<VoterTopicFilter, string[]> = {
+  immigration: ['immigration'],
+  education: ['education'],
+  abortion: ['abortion', 'reproductive'],
+  guns: ['gun', 'guns', 'firearm'],
+  healthcare: ['healthcare', 'health care'],
+  economy: ['economy', 'fiscal', 'tax', 'budget'],
 };
 
 export function getPoliticiansForStateRoster(stateCode: string, inOfficeOnly: boolean): Politician[] {
@@ -58,31 +69,21 @@ function matchesParty(p: Politician, party: PartyFilter): boolean {
   return p.party === party;
 }
 
-function hasTradeData(p: Politician): boolean {
-  const { trades } = mergeStockTrades(p.id, p.stockTrades, p.recordType);
-  return trades.length > 0;
-}
-
-function matchesDataCompleteness(p: Politician, filters: DataCompletenessFilter[]): boolean {
-  if (filters.length === 0) return true;
-  return filters.every((f) => {
-    if (f === 'fec') return hasFecFinance(p.id);
-    if (f === 'votes') return hasCongressVotes(p.id);
-    return hasTradeData(p);
+function politicianHasTopicEvidence(p: Politician, topic: VoterTopicFilter): boolean {
+  const needles = TOPIC_CATEGORY_MATCH[topic];
+  const issues = p.topIssues ?? [];
+  return issues.some((issue) => {
+    const cat = (issue.category ?? issue.name).toLowerCase();
+    const matchesTopic = needles.some((n) => cat.includes(n));
+    if (!matchesTopic) return false;
+    const evidence = issue.evidence ?? [];
+    return evidence.length > 0 || Boolean(issue.statement);
   });
 }
 
-function bipartisanPct(p: Politician): number {
-  return 100 - p.consistency.partyLineVotePercentage;
-}
-
-function matchesValuePresets(p: Politician, presets: ValuePreset[]): boolean {
-  if (presets.length === 0) return true;
-  return presets.every((preset) => {
-    if (preset === 'bipartisan') return bipartisanPct(p) >= 15;
-    if (preset === 'noPAC') return p.campaignFinance.pacDonations === 0;
-    return p.campaignFinance.lobbyistMoney.length === 0;
-  });
+function matchesVoterTopics(p: Politician, topics: VoterTopicFilter[]): boolean {
+  if (topics.length === 0) return true;
+  return topics.every((topic) => politicianHasTopicEvidence(p, topic));
 }
 
 export function totalRaisedForSort(p: Politician): number {
@@ -104,8 +105,7 @@ export function filterStateRoster(roster: Politician[], filters: StateRosterFilt
     if (q && !p.name.toLowerCase().includes(q)) return false;
     if (!matchesOffice(p, filters.office)) return false;
     if (!matchesParty(p, filters.party)) return false;
-    if (!matchesDataCompleteness(p, filters.dataCompleteness)) return false;
-    if (!matchesValuePresets(p, filters.valuePresets)) return false;
+    if (!matchesVoterTopics(p, filters.voterTopics)) return false;
     return true;
   });
 }
@@ -113,7 +113,7 @@ export function filterStateRoster(roster: Politician[], filters: StateRosterFilt
 export function sortStateRoster(roster: Politician[], sort: RosterSort): Politician[] {
   const list = [...roster];
 
-  if (sort === 'prominence') {
+  if (sort === 'office') {
     return sortOfficialsForDisplay(list);
   }
 
@@ -140,19 +140,15 @@ export function applyStateRosterFilters(
 }
 
 export function rosterUsesDemoFinance(filters: StateRosterFilters): boolean {
-  return (
-    filters.sort === 'raised' ||
-    filters.valuePresets.includes('noPAC') ||
-    filters.valuePresets.includes('noLobbyist')
-  );
+  return filters.sort === 'raised';
 }
 
 export function rosterUsesDemoConsistency(filters: StateRosterFilters): boolean {
-  return filters.sort === 'consistency' || filters.valuePresets.includes('bipartisan');
+  return filters.sort === 'consistency';
 }
 
 export function rosterUsesDemoTrades(filters: StateRosterFilters): boolean {
-  return filters.sort === 'newestTrade' || filters.dataCompleteness.includes('trades');
+  return filters.sort === 'newestTrade';
 }
 
 export function officeFilterLabel(office: OfficeFilter): string {
@@ -167,9 +163,21 @@ export function officeFilterLabel(office: OfficeFilter): string {
   return labels[office];
 }
 
+export function voterTopicLabel(topic: VoterTopicFilter): string {
+  const labels: Record<VoterTopicFilter, string> = {
+    immigration: 'Immigration',
+    education: 'Education',
+    abortion: 'Abortion',
+    guns: 'Gun policy',
+    healthcare: 'Healthcare',
+    economy: 'Economy & taxes',
+  };
+  return labels[topic];
+}
+
 export function sortLabel(sort: RosterSort): string {
   const labels: Record<RosterSort, string> = {
-    prominence: 'Office prominence',
+    office: 'By office',
     name: 'Name A–Z',
     raised: 'Total raised',
     consistency: 'Consistency score',

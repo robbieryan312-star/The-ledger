@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Search, MapPin, User, Vote, X, Building2 } from 'lucide-react';
+import { Search, MapPin, Vote, X, Building2 } from 'lucide-react';
+import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
 import { mockStates } from '@/lib/data/mockPoliticians';
 import { searchPoliticians, resolveOffice } from '@/lib/data/allPoliticians';
 import { mockElections } from '@/lib/data/mockElections';
@@ -20,6 +21,9 @@ interface SearchResult {
   stateCode?: string;
   countyFips?: string;
   zipCode?: string;
+  imageUrl?: string;
+  firstName?: string;
+  lastName?: string;
 }
 
 export default function HomeSearchBar() {
@@ -122,6 +126,9 @@ export default function HomeSearchBar() {
         sublabel: `${p.party} · ${resolveOffice(p).label}`,
         href: `/politicians/${p.id}`,
         stateCode: p.stateCode,
+        imageUrl: p.imageUrl,
+        firstName: p.firstName,
+        lastName: p.lastName,
       });
     });
 
@@ -182,12 +189,24 @@ export default function HomeSearchBar() {
     }
   };
 
-  const iconForType = (type: string) => {
-    if (type === 'zip') return <MapPin className="h-4 w-4 text-green-400" />;
-    if (type === 'county') return <Building2 className="h-4 w-4 text-teal-400" />;
-    if (type === 'official') return <User className="h-4 w-4 text-cyan-400" />;
-    if (type === 'state') return <MapPin className="h-4 w-4 text-blue-400" />;
-    if (type === 'politician') return <User className="h-4 w-4 text-[#c8a951]" />;
+  const iconForType = (result: SearchResult) => {
+    if (result.type === 'politician') {
+      return (
+        <div className="w-8 h-8 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 border border-white/[0.08] bg-[#0a1628]">
+          <PoliticianAvatar
+            name={result.label}
+            firstName={result.firstName}
+            lastName={result.lastName}
+            imageUrl={result.imageUrl}
+            textClassName="text-[#c8a951] font-bold text-xs"
+          />
+        </div>
+      );
+    }
+    if (result.type === 'zip') return <MapPin className="h-4 w-4 text-green-400" />;
+    if (result.type === 'county') return <Building2 className="h-4 w-4 text-teal-400" />;
+    if (result.type === 'official') return <MapPin className="h-4 w-4 text-cyan-400" />;
+    if (result.type === 'state') return <MapPin className="h-4 w-4 text-blue-400" />;
     return <Vote className="h-4 w-4 text-purple-400" />;
   };
 
@@ -226,7 +245,7 @@ export default function HomeSearchBar() {
               onClick={() => handleSelect(result)}
               className="w-full flex items-center gap-3 px-4 py-3 hover:bg-white/[0.04] transition-colors border-b border-white/[0.04] last:border-0 text-left"
             >
-              <div className="flex-shrink-0">{iconForType(result.type)}</div>
+              <div className="flex-shrink-0">{iconForType(result)}</div>
               <div className="flex-1 min-w-0">
                 <div className="text-white text-sm font-medium truncate">{result.label}</div>
                 <div className="text-gray-400 text-xs truncate">{result.sublabel}</div>

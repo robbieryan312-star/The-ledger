@@ -8,6 +8,7 @@ import { Poll } from '@/lib/types';
 import Link from 'next/link';
 import { Calendar, MapPin, Users, ArrowRight, Filter, Vote, AlertTriangle, ExternalLink, BarChart2, Star } from 'lucide-react';
 import CandidateTopicAccordion from '@/components/elections/CandidateTopicAccordion';
+import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
 import { buildCompareUrl } from '@/lib/data/electionCompare';
 import { getPoliticianById } from '@/lib/data/allPoliticians';
 import { resolveCurrentOffice } from '@/lib/data/officeResolution';
@@ -495,9 +496,20 @@ function CandidateCard({ candidate, isPrimary }: { candidate: Candidate; isPrima
 
   return (
     <div className="bg-[#0a1628] rounded-xl p-4 border border-[#1e3a5f]">
-      <div className="flex items-start justify-between mb-2">
+      <div className="flex items-start gap-3 mb-2">
+        <div className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 border border-[#1e3a5f] bg-[#0d1f35]">
+          <PoliticianAvatar
+            name={candidate.name}
+            firstName={politician?.firstName ?? candidate.name.split(' ')[0]}
+            lastName={politician?.lastName ?? candidate.name.split(' ').slice(1).join(' ')}
+            imageUrl={politician?.imageUrl}
+            textClassName="text-[#c8a951] font-bold text-sm"
+          />
+        </div>
         <div className="flex-1 min-w-0">
-          <CandidateNameLink candidate={candidate} />
+          <div className="flex items-start justify-between mb-1">
+            <div className="flex-1 min-w-0">
+              <CandidateNameLink candidate={candidate} />
           <span className={`text-xs px-2 py-0.5 rounded-full border ${partyColors[candidate.party] || 'bg-gray-500/20 text-gray-300 border-gray-500/30'}`}>
             {candidate.party}
           </span>
@@ -506,8 +518,10 @@ function CandidateCard({ candidate, isPrimary }: { candidate: Candidate; isPrima
               Current: {office.label}
             </div>
           )}
+            </div>
+            <DonorBreakdownHover candidate={candidate} />
+          </div>
         </div>
-        <DonorBreakdownHover candidate={candidate} />
       </div>
 
       {prob !== undefined && (

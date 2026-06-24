@@ -16,10 +16,17 @@ import {
   Info,
   Landmark,
   ListChecks,
+  Microscope,
   Users,
 } from 'lucide-react';
-import { getDominantParty, getTotalSpending, lobbyScopeLabel, mockLobbyingGroups } from '@/lib/data/mockLobbyingGroups';
+import {
+  getDominantParty,
+  getTotalSpending,
+  lobbyScopeLabel,
+  mockLobbyingGroups,
+} from '@/lib/data/mockLobbyingGroups';
 import SourceBadge from '@/components/ui/SourceBadge';
+import SourceProvenance from '@/components/ui/SourceProvenance';
 
 const tabs = [
   { id: 'overview', label: 'Overview', icon: Building2 },
@@ -129,18 +136,6 @@ export default function LobbyingGroupProfile({ params }: { params: Promise<{ id:
             <div className="text-white/55 text-sm mb-3">{group.name}</div>
             <p className="text-white/50 text-sm leading-relaxed max-w-3xl">{group.description}</p>
 
-            {group.formerNames.length > 0 && (
-              <div className="mt-3 rounded-xl border border-white/[0.06] p-3" style={{ background: 'rgba(5,9,15,0.35)' }}>
-                <div className="text-white/35 text-xs mb-1">Former names / historical context</div>
-                {group.formerNames.map((former) => (
-                  <div key={former.name} className="text-sm text-white/70">
-                    {former.name}{former.years ? ` (${former.years})` : ''}
-                    <span className="block text-xs text-white/30 mt-0.5">{former.sourceNote}</span>
-                  </div>
-                ))}
-              </div>
-            )}
-
             <div className="mt-4 flex flex-wrap gap-2">
               <a href={group.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-xs text-gray-400 hover:text-white border border-[#1e3a5f] rounded-lg px-2 py-1 hover:border-white transition-colors">
                 <Globe className="h-3 w-3" /> Website
@@ -210,6 +205,37 @@ export default function LobbyingGroupProfile({ params }: { params: Promise<{ id:
             </div>
           </div>
 
+          {group.researchContext && group.researchContext.length > 0 && (
+            <div className="rounded-xl p-5 border border-white/[0.08] lg:col-span-2" style={{ background: 'rgba(11,25,41,0.7)' }}>
+              <h2 className="text-white font-bold mb-1 flex items-center gap-2">
+                <Microscope className="h-4 w-4 text-[#d4ac52]" /> Independent research context
+              </h2>
+              <p className="text-white/35 text-xs mb-4">
+                Nonpartisan survey and research summaries for background — not advocacy positions. Each item is dated and tier-labeled.
+              </p>
+              <div className="space-y-3">
+                {group.researchContext.map((item) => (
+                  <div key={item.topic} className="rounded-xl border border-white/[0.06] p-4" style={{ background: 'rgba(5,9,15,0.38)' }}>
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+                      <h3 className="text-white font-medium text-sm">{item.topic}</h3>
+                      <span className="text-[10px] text-white/30">as of {item.asOf}</span>
+                    </div>
+                    <p className="text-white/50 text-sm leading-relaxed mb-3">{item.summary}</p>
+                    <SourceProvenance
+                      source={item.source}
+                      recordDate={item.recordDate}
+                      asOf={item.asOf}
+                      showCompleteness={false}
+                    />
+                    {item.relevanceNote && (
+                      <p className="text-white/30 text-xs mt-2 border-l-2 border-white/[0.06] pl-3">{item.relevanceNote}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="space-y-4">
             <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
               <h2 className="text-white font-bold mb-3">At a Glance</h2>
@@ -248,35 +274,145 @@ export default function LobbyingGroupProfile({ params }: { params: Promise<{ id:
       )}
 
       {activeTab === 'spending' && (
-        <div className="grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-6">
-          <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
-            <h2 className="text-white font-bold mb-1">Party Support Distribution</h2>
-            <p className="text-white/35 text-xs mb-5">{group.spendingByParty.disclosureNote}</p>
-            <PartyDistribution group={group} />
+        <div className="space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-6">
+            <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
+              <h2 className="text-white font-bold mb-1">Party Support Distribution</h2>
+              <p className="text-white/35 text-xs mb-2">{group.spendingByParty.disclosureNote}</p>
+              <p className="text-white/30 text-xs mb-5 leading-relaxed border-l-2 border-[#d4ac52]/20 pl-3">
+                <span className="text-white/40 font-medium">Methodology: </span>
+                {group.spendingByParty.methodologyNote}
+              </p>
+              <PartyDistribution group={group} />
+            </div>
+
+            <div className="rounded-xl border border-white/[0.08] overflow-hidden" style={{ background: 'rgba(11,25,41,0.7)' }}>
+              <div className="px-5 py-4 border-b border-white/[0.07] bg-[#05090f]/35">
+                <h2 className="text-white font-bold flex items-center gap-2">
+                  <Users className="h-4 w-4 text-[#d4ac52]" /> Top Recipients / Record Buckets
+                </h2>
+                <p className="text-white/35 text-xs mt-1">Aggregate spending categories from disclosure records — not individual member line items.</p>
+              </div>
+              <div className="divide-y divide-white/[0.06]">
+                {group.topRecipients.map((recipient) => (
+                  <div key={recipient.name} className="px-5 py-4 grid grid-cols-[1fr_auto] gap-4">
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-white font-medium">{recipient.name}</span>
+                        <PartyPill party={recipient.party} />
+                      </div>
+                      <div className="text-white/35 text-xs">{recipient.office} · {recipient.recordType} · {recipient.cycle}</div>
+                      <p className="text-white/35 text-xs mt-1">{recipient.sourceNote}</p>
+                    </div>
+                    <div className="text-right text-[#d4ac52] font-bold">{formatMoney(recipient.amount)}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="rounded-xl border border-white/[0.08] overflow-hidden" style={{ background: 'rgba(11,25,41,0.7)' }}>
             <div className="px-5 py-4 border-b border-white/[0.07] bg-[#05090f]/35">
               <h2 className="text-white font-bold flex items-center gap-2">
-                <Users className="h-4 w-4 text-[#d4ac52]" /> Top Recipients / Record Buckets
+                <Users className="h-4 w-4 text-[#d4ac52]" /> Federal Recipients
               </h2>
+              <p className="text-white/35 text-xs mt-1 leading-relaxed">
+                Recipients and roll-call positions on selected legislation — sourced records. Demo-flagged amounts are illustrative until live FEC imports replace them.
+              </p>
             </div>
             <div className="divide-y divide-white/[0.06]">
-              {group.topRecipients.map((recipient) => (
-                <div key={recipient.name} className="px-5 py-4 grid grid-cols-[1fr_auto] gap-4">
+              {group.federalRecipients.map((recipient) => (
+                <div key={recipient.politicianId} className="px-5 py-4 grid grid-cols-[1fr_auto] gap-4">
                   <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-white font-medium">{recipient.name}</span>
+                    <div className="flex items-center gap-2 mb-1 flex-wrap">
+                      <Link href={`/politicians/${recipient.politicianId}`} className="text-white font-medium hover:text-[#d4ac52] transition-colors">
+                        {recipient.name}
+                      </Link>
                       <PartyPill party={recipient.party} />
+                      {recipient.isDemo && (
+                        <span className="text-[10px] uppercase tracking-wide text-amber-300/80 border border-amber-400/25 bg-amber-400/10 px-1.5 py-0.5 rounded">
+                          Demo
+                        </span>
+                      )}
                     </div>
                     <div className="text-white/35 text-xs">{recipient.office} · {recipient.recordType} · {recipient.cycle}</div>
                     <p className="text-white/35 text-xs mt-1">{recipient.sourceNote}</p>
                   </div>
-                  <div className="text-right text-[#d4ac52] font-bold">{formatMoney(recipient.amount)}</div>
+                  <div className="text-right text-[#d4ac52] font-bold">{recipient.amount > 0 ? formatMoney(recipient.amount) : '$0'}</div>
                 </div>
               ))}
             </div>
           </div>
+
+          {group.relatedVotes.length > 0 && (
+            <div className="rounded-xl border border-white/[0.08] overflow-hidden" style={{ background: 'rgba(11,25,41,0.7)' }}>
+              <div className="px-5 py-4 border-b border-white/[0.07] bg-[#05090f]/35">
+                <h2 className="text-white font-bold flex items-center gap-2">
+                  <Landmark className="h-4 w-4 text-[#d4ac52]" /> Related Votes
+                </h2>
+                <p className="text-white/35 text-xs mt-1">Bills the group publicly tracked or lobbied on, paired with how linked federal recipients voted — factual Yea/Nay records with dates.</p>
+              </div>
+              <div className="divide-y divide-white/[0.06]">
+                {group.relatedVotes.map((bill) => (
+                  <div key={`${bill.billId}-${bill.cycle}`} className="px-5 py-5">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4">
+                      <div>
+                        <div className="flex flex-wrap items-center gap-2 mb-1">
+                          <h3 className="text-white font-medium">{bill.billTitle}</h3>
+                          <span className="text-xs text-[#d4ac52] border border-[#d4ac52]/20 bg-[#d4ac52]/10 rounded-full px-2 py-0.5">
+                            {bill.groupPositionLabel}
+                          </span>
+                        </div>
+                        <div className="text-white/35 text-xs mb-2">
+                          {bill.billId} · {bill.chamber} · {bill.cycle}
+                        </div>
+                        {bill.disclosureNote && <p className="text-white/35 text-xs leading-relaxed">{bill.disclosureNote}</p>}
+                      </div>
+                      <a
+                        href={bill.congressGovUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-xs text-gray-400 hover:text-white border border-[#1e3a5f] rounded-lg px-2 py-1 hover:border-white transition-colors flex-shrink-0"
+                      >
+                        Congress.gov <ExternalLink className="h-3 w-3" />
+                      </a>
+                    </div>
+                    <div className="rounded-xl border border-white/[0.06] overflow-hidden" style={{ background: 'rgba(5,9,15,0.38)' }}>
+                      <div className="grid grid-cols-[1fr_auto_auto] gap-3 px-4 py-2 text-[10px] uppercase tracking-wide text-white/30 border-b border-white/[0.06]">
+                        <span>Recipient</span>
+                        <span>Vote</span>
+                        <span>Date</span>
+                      </div>
+                      {bill.recipientVotes.map((rv) => {
+                        const recipientMeta = group.federalRecipients.find((r) => r.politicianId === rv.politicianId);
+                        const voteCls =
+                          rv.vote === 'Yea'
+                            ? 'text-green-400'
+                            : rv.vote === 'Nay'
+                              ? 'text-red-400'
+                              : 'text-gray-400';
+                        return (
+                          <div key={`${bill.billId}-${rv.politicianId}`} className="grid grid-cols-[1fr_auto_auto] gap-3 px-4 py-3 border-b border-white/[0.04] last:border-0 items-center text-sm">
+                            <div>
+                              <Link href={`/politicians/${rv.politicianId}`} className="text-white hover:text-[#d4ac52] transition-colors">
+                                {recipientMeta?.name ?? rv.politicianId}
+                              </Link>
+                              {rv.isDemo && (
+                                <span className="ml-2 text-[10px] uppercase tracking-wide text-amber-300/70">demo</span>
+                              )}
+                              {rv.note && <p className="text-white/30 text-xs mt-0.5">{rv.note}</p>}
+                            </div>
+                            <span className={`font-bold ${voteCls}`}>{rv.vote}</span>
+                            <span className="text-white/40 text-xs">{rv.date}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
 

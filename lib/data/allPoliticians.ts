@@ -110,22 +110,26 @@ export function getCurrentPoliticians(): Politician[] {
 }
 
 /**
- * Tiered federal→local prominence for default roster ordering:
- * (0) President / executive federal
- * (1) U.S. Senate
- * (2) U.S. House
- * (3) Governors
- * (4) State & local offices
+ * Office hierarchy for default roster ordering (neutral, not editorial "prominence"):
+ * (0) President / VP / cabinet
+ * (1) Supreme Court
+ * (2) Governor — state chief executive before federal delegation in state views
+ * (3) U.S. Senate
+ * (4) U.S. House
+ * (5) State & local offices
  * Within a tier: House by district number, then last name.
  */
-export function getPoliticianProminenceTier(p: Politician): number {
+export function getOfficeSortTier(p: Politician): number {
   if (EXECUTIVE_CHAMBERS.includes(p.chamber)) return 0;
-  if (p.chamber === 'scotus') return 0;
-  if (p.level === 'federal' && p.chamber === 'senate') return 1;
-  if (p.level === 'federal' && p.chamber === 'house') return 2;
-  if (p.chamber === 'governor') return 3;
-  return 4;
+  if (p.chamber === 'scotus') return 1;
+  if (p.chamber === 'governor') return 2;
+  if (p.level === 'federal' && p.chamber === 'senate') return 3;
+  if (p.level === 'federal' && p.chamber === 'house') return 4;
+  return 5;
 }
+
+/** @deprecated Use getOfficeSortTier */
+export const getPoliticianProminenceTier = getOfficeSortTier;
 
 function executiveSortKey(p: Politician): number {
   return EXECUTIVE_ORDER[p.chamber] ?? 9;
@@ -136,8 +140,8 @@ function judicialSortKey(p: Politician): number {
   return new Date(p.termStart).getTime();
 }
 
-export function comparePoliticiansByProminence(a: Politician, b: Politician): number {
-  const tierDiff = getPoliticianProminenceTier(a) - getPoliticianProminenceTier(b);
+export function comparePoliticiansByOffice(a: Politician, b: Politician): number {
+  const tierDiff = getOfficeSortTier(a) - getOfficeSortTier(b);
   if (tierDiff !== 0) return tierDiff;
   if (EXECUTIVE_CHAMBERS.includes(a.chamber) && EXECUTIVE_CHAMBERS.includes(b.chamber)) {
     const execDiff = executiveSortKey(a) - executiveSortKey(b);
@@ -156,6 +160,9 @@ export function comparePoliticiansByProminence(a: Politician, b: Politician): nu
   return a.lastName.localeCompare(b.lastName);
 }
 
+/** @deprecated Use comparePoliticiansByOffice */
+export const comparePoliticiansByProminence = comparePoliticiansByOffice;
+
 /** Search the national roster by name, state, party, or district number. */
 export function searchPoliticians(query: string, limit = 8): Politician[] {
   const q = query.trim().toLowerCase();
@@ -169,13 +176,13 @@ export function searchPoliticians(query: string, limit = 8): Politician[] {
         p.party.toLowerCase().includes(q) ||
         (p.district != null && p.district.includes(q)),
     )
-    .sort(comparePoliticiansByProminence)
+    .sort(comparePoliticiansByOffice)
     .slice(0, limit);
 }
 
-/** Federal-first tier order for map sidebars and browse lists. */
+/** Default office hierarchy for map sidebars and browse lists. */
 export function sortOfficialsForDisplay(politicians: Politician[]): Politician[] {
-  return [...politicians].sort(comparePoliticiansByProminence);
+  return [...politicians].sort(comparePoliticiansByOffice);
 }
 
 /** National coverage stats for surfacing in the UI / docs. */

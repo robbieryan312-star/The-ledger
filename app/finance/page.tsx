@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { mockPoliticians } from '@/lib/data/mockPoliticians';
 import { mergeCampaignFinance, getFecFinanceSnapshot } from '@/lib/data/fecFinance';
 import SourceBadge from '@/components/ui/SourceBadge';
+import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
 import { DollarSign, AlertTriangle, Globe, TrendingUp, ArrowRight, Info } from 'lucide-react';
 import Link from 'next/link';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
@@ -215,7 +216,7 @@ function FinanceContent() {
                   >
                     <div className="col-span-2 flex items-center gap-2">
                       <div className="w-8 h-8 rounded-full bg-[#1e3a5f] flex items-center justify-center text-xs font-bold text-[#c8a951] overflow-hidden">
-                        {p.imageUrl ? <img src={p.imageUrl} alt={p.name} className="w-full h-full object-cover object-top" /> : p.firstName[0]}
+                        <PoliticianAvatar name={p.name} firstName={p.firstName} lastName={p.lastName} imageUrl={p.imageUrl} textClassName="text-[#c8a951] font-bold text-xs" />
                       </div>
                       <div>
                         <div className="text-white text-sm font-medium flex items-center gap-1.5 flex-wrap">

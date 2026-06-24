@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Search, User, MapPin, Vote, X } from 'lucide-react';
+import { Search, MapPin, Vote, X } from 'lucide-react';
+import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
 import { searchPoliticians, resolveOffice } from '@/lib/data/allPoliticians';
 import Link from 'next/link';
 
@@ -11,6 +12,9 @@ interface SearchResult {
   name: string;
   subtitle: string;
   href: string;
+  imageUrl?: string;
+  firstName?: string;
+  lastName?: string;
 }
 
 export default function SearchBar({ large = false }: { large?: boolean }) {
@@ -44,15 +48,31 @@ export default function SearchBar({ large = false }: { large?: boolean }) {
       name: p.name,
       subtitle: `${p.party} · ${resolveOffice(p).label}`,
       href: `/politicians/${p.id}`,
+      imageUrl: p.imageUrl,
+      firstName: p.firstName,
+      lastName: p.lastName,
     }));
 
     setResults(politicianResults);
     setOpen(true);
   };
 
-  const icon = (type: string) => {
-    if (type === 'politician') return <User className="h-4 w-4" style={{ color: '#d4ac52' }} />;
-    if (type === 'state') return <MapPin className="h-4 w-4 text-blue-400" />;
+  const resultIcon = (result: SearchResult) => {
+    if (result.type === 'politician') {
+      return (
+        <div className="w-8 h-8 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 border border-white/[0.08]"
+             style={{ background: 'linear-gradient(135deg, #0f2236 0%, #07101f 100%)' }}>
+          <PoliticianAvatar
+            name={result.name}
+            firstName={result.firstName}
+            lastName={result.lastName}
+            imageUrl={result.imageUrl}
+            textClassName="text-[#d4ac52] font-bold text-xs"
+          />
+        </div>
+      );
+    }
+    if (result.type === 'state') return <MapPin className="h-4 w-4 text-blue-400" />;
     return <Vote className="h-4 w-4 text-green-400" />;
   };
 
@@ -95,7 +115,7 @@ export default function SearchBar({ large = false }: { large?: boolean }) {
               onClick={() => { setOpen(false); setQuery(''); }}
               className="flex items-center gap-3 px-4 py-3 hover:bg-white/[0.05] transition-colors border-b border-white/[0.05] last:border-0"
             >
-              <div className="flex-shrink-0">{icon(result.type)}</div>
+              <div className="flex-shrink-0">{resultIcon(result)}</div>
               <div>
                 <div className="text-white text-sm font-medium">{result.name}</div>
                 <div className="text-white/40 text-xs">{result.subtitle}</div>

@@ -12,6 +12,7 @@ import {
 } from '@/lib/data/electionCompare';
 import { mergeCampaignFinance, getFecFinanceSnapshot } from '@/lib/data/fecFinance';
 import SourceBadge from '@/components/ui/SourceBadge';
+import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
 import { Candidate, Election, Issue, Politician } from '@/lib/types';
 import { CheckCircle, XCircle, AlertTriangle, MinusCircle, Info } from 'lucide-react';
 
@@ -240,13 +241,13 @@ function CompareContent() {
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-14 h-14 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 border border-white/[0.09]"
                        style={{ background: 'linear-gradient(135deg, #0f2236 0%, #07101f 100%)' }}>
-                    {side.politician?.imageUrl ? (
-                      <img src={side.politician.imageUrl} alt={side.displayName} className="w-full h-full object-cover object-top" />
-                    ) : (
-                      <span className="font-bold text-xl" style={{ color: '#d4ac52' }}>
-                        {side.displayName.split(' ').map((n) => n[0]).join('').slice(0, 2)}
-                      </span>
-                    )}
+                    <PoliticianAvatar
+                      name={side.displayName}
+                      firstName={side.politician?.firstName}
+                      lastName={side.politician?.lastName}
+                      imageUrl={side.politician?.imageUrl}
+                      textClassName="font-bold text-xl text-[#d4ac52]"
+                    />
                   </div>
                   <div>
                     <div className="text-white font-bold">{side.displayName}</div>

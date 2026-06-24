@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { mockStates } from '@/lib/data/mockPoliticians';
-import { allPoliticians, resolveOffice, getCoverageStats, comparePoliticiansByProminence, getPoliticianBranch } from '@/lib/data/allPoliticians';
+import { allPoliticians, resolveOffice, getCoverageStats, comparePoliticiansByOffice, getPoliticianBranch } from '@/lib/data/allPoliticians';
 import type { GovernmentBranch } from '@/lib/data/branches';
 import { EXECUTIVE_CHAMBERS } from '@/lib/data/officeResolution';
 import { fecFinanceCount } from '@/lib/data/fecFinance';
@@ -46,7 +46,7 @@ function PoliticiansContent() {
   const [selectedChamber, setSelectedChamber] = useState<string>('');
   const [selectedLevel, setSelectedLevel] = useState<string>('');
   const [selectedBranch, setSelectedBranch] = useState<string>('');
-  const [sortBy, setSortBy] = useState<'name' | 'consistency' | 'lobbyist'>('name');
+  const [sortBy, setSortBy] = useState<'office' | 'name' | 'consistency' | 'lobbyist'>('office');
   const [searchText, setSearchText] = useState<string>('');
 
   const [page, setPage] = useState(1);
@@ -93,7 +93,8 @@ function PoliticiansContent() {
         const bL = b.campaignFinance.lobbyistMoney.reduce((s, l) => s + l.amount, 0);
         return bL - aL;
       }
-      return comparePoliticiansByProminence(a, b);
+      if (sortBy === 'name') return a.name.localeCompare(b.name);
+      return comparePoliticiansByOffice(a, b);
     });
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
@@ -181,7 +182,7 @@ function PoliticiansContent() {
             { value: selectedParty, set: setSelectedParty, opts: [['', 'All Parties'], ...['Democrat', 'Republican', 'Independent', 'Green', 'Libertarian'].map(p => [p, p])] },
             { value: selectedChamber, set: setSelectedChamber, opts: [['', 'All Chambers'], ['executive', 'Executive'], ...['president', 'vice_president', 'cabinet', 'scotus', 'senate', 'house', 'governor', 'state_senate', 'state_house', 'mayor', 'city_council'].map(c => [c, c.replaceAll('_', ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())])] },
             { value: selectedLevel, set: setSelectedLevel, opts: [['', 'All Levels'], ['federal', 'Federal'], ['state', 'State'], ['local', 'Local']] },
-            { value: sortBy, set: (v: string) => setSortBy(v as 'name' | 'consistency' | 'lobbyist'), opts: [['name', 'Sort: Name'], ['consistency', 'Sort: Consistency'], ['lobbyist', 'Sort: Lobbyist $']] },
+            { value: sortBy, set: (v: string) => setSortBy(v as 'office' | 'name' | 'consistency' | 'lobbyist'), opts: [['office', 'Sort: By office'], ['name', 'Sort: Name A–Z'], ['consistency', 'Sort: Consistency'], ['lobbyist', 'Sort: Lobbyist $']] },
           ].map((sel, idx) => (
             <select
               key={idx}

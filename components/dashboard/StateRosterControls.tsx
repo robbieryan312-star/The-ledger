@@ -12,11 +12,11 @@ import {
   type StateRosterFilters,
   type OfficeFilter,
   type PartyFilter,
-  type DataCompletenessFilter,
-  type ValuePreset,
+  type VoterTopicFilter,
   type RosterSort,
   DEFAULT_ROSTER_FILTERS,
   officeFilterLabel,
+  voterTopicLabel,
   sortLabel,
   rosterUsesDemoConsistency,
   rosterUsesDemoFinance,
@@ -37,17 +37,15 @@ const PARTY_OPTIONS: { value: PartyFilter; label: string }[] = [
   { value: 'Republican', label: 'R' },
   { value: 'Independent', label: 'I' },
 ];
-const DATA_OPTIONS: { value: DataCompletenessFilter; label: string; hint: string }[] = [
-  { value: 'fec', label: 'FEC finance', hint: 'Tier 1 · OpenFEC sync' },
-  { value: 'votes', label: 'Congress votes', hint: 'Tier 1 · Congress.gov sync' },
-  { value: 'trades', label: 'Stock trades', hint: 'Official or demo on featured' },
+const VOTER_TOPIC_OPTIONS: VoterTopicFilter[] = [
+  'immigration',
+  'education',
+  'abortion',
+  'guns',
+  'healthcare',
+  'economy',
 ];
-const VALUE_PRESETS: { value: ValuePreset; label: string }[] = [
-  { value: 'bipartisan', label: 'Bipartisan voters' },
-  { value: 'noPAC', label: 'No PAC money' },
-  { value: 'noLobbyist', label: 'No lobbyist $' },
-];
-const SORT_OPTIONS: RosterSort[] = ['prominence', 'name', 'raised', 'consistency', 'newestTrade'];
+const SORT_OPTIONS: RosterSort[] = ['office', 'name', 'raised', 'consistency', 'newestTrade'];
 
 function chipClass(active: boolean): string {
   return active
@@ -73,10 +71,9 @@ export default function StateRosterControls({
     filters.search.trim() !== '' ||
     filters.office !== 'all' ||
     filters.party !== 'all' ||
-    filters.dataCompleteness.length > 0 ||
-    filters.valuePresets.length > 0 ||
+    filters.voterTopics.length > 0 ||
     !filters.inOfficeOnly ||
-    filters.sort !== 'prominence';
+    filters.sort !== 'office';
 
   const showDemoFinance = rosterUsesDemoFinance(filters);
   const showDemoConsistency = rosterUsesDemoConsistency(filters);
@@ -142,7 +139,7 @@ export default function StateRosterControls({
       <p className="text-xs text-gray-500">
         Showing {filteredCount} of {totalCount} officials
         {filters.inOfficeOnly ? ' · in office (resolver)' : ' · including former'}
-        {filters.sort !== 'prominence' && (
+        {filters.sort !== 'office' && (
           <> · sorted by {sortLabel(filters.sort).toLowerCase()}</>
         )}
       </p>
@@ -153,13 +150,13 @@ export default function StateRosterControls({
           <AlertTriangle className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-yellow-400/80" />
           <div className="space-y-0.5">
             {showDemoFinance && (
-              <p>Finance filters/sorts use OpenFEC totals where synced; otherwise modeled demo finance on featured profiles (lightweight records show $0).</p>
+              <p>Finance sorts use OpenFEC totals where synced; otherwise modeled demo finance on featured profiles.</p>
             )}
             {showDemoConsistency && (
-              <p>Bipartisan and consistency metrics are modeled on featured profiles only — not verified roll-call analysis for every member.</p>
+              <p>Consistency scores are modeled on featured profiles only — not verified roll-call analysis for every member.</p>
             )}
             {showDemoTrades && (
-              <p>Trade filters/sorts prefer official STOCK Act filings where synced; featured profiles may include illustrative demo trades.</p>
+              <p>Trade sorts prefer official STOCK Act filings where synced; featured profiles may include illustrative demo trades.</p>
             )}
           </div>
         </div>
@@ -202,37 +199,21 @@ export default function StateRosterControls({
             </div>
           </div>
 
-          {/* Data completeness */}
+          {/* Voter topics */}
           <div>
-            <h3 className="text-[10px] uppercase tracking-wider text-gray-500 font-medium mb-2">Data completeness</h3>
+            <h3 className="text-[10px] uppercase tracking-wider text-gray-500 font-medium mb-1">Voter topics</h3>
+            <p className="text-[11px] text-gray-600 mb-2">
+              Officials with sourced records on selected issues — combine multiple topics
+            </p>
             <div className="flex flex-wrap gap-2">
-              {DATA_OPTIONS.map(({ value, label, hint }) => (
+              {VOTER_TOPIC_OPTIONS.map((topic) => (
                 <button
-                  key={value}
+                  key={topic}
                   type="button"
-                  title={hint}
-                  onClick={() => set({ dataCompleteness: toggleInList(filters.dataCompleteness, value) })}
-                  className={`text-xs px-3 py-1.5 rounded-lg border transition-colors ${chipClass(filters.dataCompleteness.includes(value))}`}
+                  onClick={() => set({ voterTopics: toggleInList(filters.voterTopics, topic) })}
+                  className={`text-xs px-3 py-1.5 rounded-lg border transition-colors ${chipClass(filters.voterTopics.includes(topic))}`}
                 >
-                  {label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Value presets */}
-          <div>
-            <h3 className="text-[10px] uppercase tracking-wider text-gray-500 font-medium mb-1">Value presets</h3>
-            <p className="text-[11px] text-gray-600 mb-2">Optional — combine multiple; off by default</p>
-            <div className="flex flex-wrap gap-2">
-              {VALUE_PRESETS.map(({ value, label }) => (
-                <button
-                  key={value}
-                  type="button"
-                  onClick={() => set({ valuePresets: toggleInList(filters.valuePresets, value) })}
-                  className={`text-xs px-3 py-1.5 rounded-lg border transition-colors ${chipClass(filters.valuePresets.includes(value))}`}
-                >
-                  {label}
+                  {voterTopicLabel(topic)}
                 </button>
               ))}
             </div>
