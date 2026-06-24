@@ -21,6 +21,7 @@
     "sync:positions-national": "tsx scripts/sync-positions-national.ts",
     "sync:topic-positions": "tsx scripts/sync-topic-positions.ts",
     "verify:office": "tsx scripts/verify-office-resolution.ts",
+    "verify:lobbying-votes": "tsx scripts/verify-lobbying-votes.ts",
     "ingest:fec-fl": "tsx scripts/ingest-fec-florida.ts",
     "ingest:congress-fl": "tsx scripts/ingest-congress-florida.ts",
     "ingest:govtrack-fl": "tsx scripts/ingest-govtrack-florida.ts",
