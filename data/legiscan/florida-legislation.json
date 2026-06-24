@@ -7,13 +7,1512 @@
       "description": "State and federal bill tracking via legiscan.com API"
     },
     "asOf": "2026-06-24",
-    "count": 0,
+    "count": 100,
     "stateCode": "FL",
-    "fetchedLive": false,
-    "errors": [
-      "LEGISCAN_API_KEY not configured"
-    ],
-    "note": "No record on file — API key required. Register at legiscan.com/legiscan"
+    "fetchedLive": true,
+    "datasetUrl": "https://api.legiscan.com/",
+    "note": "Florida state legislation master list (up to 100 bills). Tier 2."
   },
-  "records": []
+  "records": [
+    {
+      "billId": 2044045,
+      "billNumber": "H0011",
+      "title": "Designation of the State Birds",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2044045"
+    },
+    {
+      "billId": 2044116,
+      "billNumber": "H0013",
+      "title": "Social Work Licensure Interstate Compact",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2044116"
+    },
+    {
+      "billId": 2044098,
+      "billNumber": "H0015",
+      "title": "Pub. Rec. and Meetings/Social Work Licensure Interstate Compact",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2044098"
+    },
+    {
+      "billId": 2044121,
+      "billNumber": "H0017",
+      "title": "Criminal Offenses Against Law Enforcement Officers and Other Personnel",
+      "statusDate": "2025-09-15",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2044121"
+    },
+    {
+      "billId": 2044120,
+      "billNumber": "H0019",
+      "title": "Educational Dollars for Duty Program",
+      "statusDate": "2025-09-15",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2044120"
+    },
+    {
+      "billId": 2044114,
+      "billNumber": "H0021",
+      "title": "Pub. Rec./Agency Employees",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2044114"
+    },
+    {
+      "billId": 2044218,
+      "billNumber": "H0023",
+      "title": "Educator Certifications and Training",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2044218"
+    },
+    {
+      "billId": 2044230,
+      "billNumber": "H0025",
+      "title": "Transportation Facility Designations",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2044230"
+    },
+    {
+      "billId": 2044901,
+      "billNumber": "H0029",
+      "title": "Sale and Purchase of Ivermectin",
+      "statusDate": "2025-09-23",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2044901"
+    },
+    {
+      "billId": 2044907,
+      "billNumber": "H0031",
+      "title": "Recognizing Judea and Samaria",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2044907"
+    },
+    {
+      "billId": 2044913,
+      "billNumber": "H0033",
+      "title": "Transportation Facility Designations",
+      "statusDate": "2026-03-04",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2044913"
+    },
+    {
+      "billId": 2044915,
+      "billNumber": "H0035",
+      "title": "Habitual Traffic Offender Designation",
+      "statusDate": "2026-04-24",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2044915"
+    },
+    {
+      "billId": 2045011,
+      "billNumber": "H0037",
+      "title": "Removal, Storage, and Cleanup of Electric Vehicles",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045011"
+    },
+    {
+      "billId": 2045013,
+      "billNumber": "H0039",
+      "title": "Assessments Levied on Recreational Vehicle Parks",
+      "statusDate": "2025-09-25",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045013"
+    },
+    {
+      "billId": 2045027,
+      "billNumber": "H0041",
+      "title": "Sales of Ammunition",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045027"
+    },
+    {
+      "billId": 2045020,
+      "billNumber": "H0043",
+      "title": "Pub. Rec./Sales of Ammunition",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045020"
+    },
+    {
+      "billId": 2045032,
+      "billNumber": "H0045",
+      "title": "Sexual Offenders and Sexual Predators",
+      "statusDate": "2025-09-25",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045032"
+    },
+    {
+      "billId": 2045076,
+      "billNumber": "H0047",
+      "title": "Specific Medical Diagnoses in Child Protective Investigations",
+      "statusDate": "2026-03-05",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045076"
+    },
+    {
+      "billId": 2045172,
+      "billNumber": "H0049",
+      "title": "Political Activities on School Grounds",
+      "statusDate": "2025-09-26",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045172"
+    },
+    {
+      "billId": 2045245,
+      "billNumber": "H0051",
+      "title": "Tax Credits for Housing for Homeless Employees",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045245"
+    },
+    {
+      "billId": 2045278,
+      "billNumber": "H0053",
+      "title": "Rapid Rail Transit Compact",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045278"
+    },
+    {
+      "billId": 2045323,
+      "billNumber": "H0055",
+      "title": "Treatment of Inmates",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045323"
+    },
+    {
+      "billId": 2045317,
+      "billNumber": "H0057",
+      "title": "Agreement Among the States to Elect the President by National Popular Vote",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045317"
+    },
+    {
+      "billId": 2045313,
+      "billNumber": "H0059",
+      "title": "Pregnant Women in Custody",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045313"
+    },
+    {
+      "billId": 2045320,
+      "billNumber": "H0061",
+      "title": "Objective Parole Guidelines",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045320"
+    },
+    {
+      "billId": 2045368,
+      "billNumber": "H0063",
+      "title": "Carrying a Handgun, Weapon, or Firearm",
+      "statusDate": "2025-09-30",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045368"
+    },
+    {
+      "billId": 2045379,
+      "billNumber": "H0065",
+      "title": "Home Inspectors",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045379"
+    },
+    {
+      "billId": 2045372,
+      "billNumber": "H0069",
+      "title": "Assessment of Homestead Property",
+      "statusDate": "2025-09-30",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045372"
+    },
+    {
+      "billId": 2045383,
+      "billNumber": "H0071",
+      "title": "Distribution of Funds to Homestead Property Owners",
+      "statusDate": "2025-09-30",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045383"
+    },
+    {
+      "billId": 2045386,
+      "billNumber": "H0073",
+      "title": "Restoration of Rights Voting Database",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045386"
+    },
+    {
+      "billId": 2045555,
+      "billNumber": "H0075",
+      "title": "Public Works Employee Identification Cards",
+      "statusDate": "2025-10-02",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045555"
+    },
+    {
+      "billId": 2045552,
+      "billNumber": "H0077",
+      "title": "Public Postsecondary Safety Policies and Procedures",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045552"
+    },
+    {
+      "billId": 2045558,
+      "billNumber": "H0079",
+      "title": "Water Safety Requirements for the Rental of Residential Property",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045558"
+    },
+    {
+      "billId": 2045713,
+      "billNumber": "H0081",
+      "title": "Postsurgical Recovery Homes",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045713"
+    },
+    {
+      "billId": 2045767,
+      "billNumber": "H0083",
+      "title": "Booking Officer Duties Related to Minor Children of Arrested Persons",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045767"
+    },
+    {
+      "billId": 2045763,
+      "billNumber": "H0085",
+      "title": "Swimming Lesson Voucher Program",
+      "statusDate": "2025-10-06",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045763"
+    },
+    {
+      "billId": 2045766,
+      "billNumber": "H0087",
+      "title": "Issuance of Special Beverage Licenses",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045766"
+    },
+    {
+      "billId": 2045754,
+      "billNumber": "H0089",
+      "title": "Veterinary Prescription Disclosure",
+      "statusDate": "2026-05-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045754"
+    },
+    {
+      "billId": 2045760,
+      "billNumber": "H0091",
+      "title": "Candidate Qualification",
+      "statusDate": "2026-04-02",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045760"
+    },
+    {
+      "billId": 2045867,
+      "billNumber": "H0093",
+      "title": "Protection from Surgical Smoke",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045867"
+    },
+    {
+      "billId": 2045845,
+      "billNumber": "H0095",
+      "title": "Security Services on Religious Premises",
+      "statusDate": "2025-10-07",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045845"
+    },
+    {
+      "billId": 2045859,
+      "billNumber": "H0097",
+      "title": "Transportation Concurrency",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045859"
+    },
+    {
+      "billId": 2045849,
+      "billNumber": "H0099",
+      "title": "Reinsurance Intermediary Managers",
+      "statusDate": "2025-10-07",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045849"
+    },
+    {
+      "billId": 2045862,
+      "billNumber": "H0101",
+      "title": "Utility Terrain Vehicles",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045862"
+    },
+    {
+      "billId": 2045893,
+      "billNumber": "H0103",
+      "title": "Local Business Taxes",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045893"
+    },
+    {
+      "billId": 2045890,
+      "billNumber": "H0105",
+      "title": "Local Government Enforcement Actions",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045890"
+    },
+    {
+      "billId": 2045907,
+      "billNumber": "H0107",
+      "title": "Termination of Rental Agreement by Victim of Domestic Violence, Dating Violence, Sexual Violence, or Stalking",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045907"
+    },
+    {
+      "billId": 2045887,
+      "billNumber": "H0109",
+      "title": "Corporal Punishment",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045887"
+    },
+    {
+      "billId": 2045897,
+      "billNumber": "H0111",
+      "title": "Antisemitism Task Force",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045897"
+    },
+    {
+      "billId": 2045902,
+      "billNumber": "H0113",
+      "title": "Redesignations of State University and Florida College System Institution Roads",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045902"
+    },
+    {
+      "billId": 2045913,
+      "billNumber": "H0115",
+      "title": "Property Damage Caused by Limestone Mining Operations",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045913"
+    },
+    {
+      "billId": 2045914,
+      "billNumber": "H0117",
+      "title": "Residential Swimming Pool Requirements",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045914"
+    },
+    {
+      "billId": 2045929,
+      "billNumber": "H0119",
+      "title": "Shari&#39;a and Other Foreign Law",
+      "statusDate": "2025-10-08",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045929"
+    },
+    {
+      "billId": 2045926,
+      "billNumber": "H0121",
+      "title": "Nursing Education Programs",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045926"
+    },
+    {
+      "billId": 2045942,
+      "billNumber": "H0123",
+      "title": "Special Districts",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045942"
+    },
+    {
+      "billId": 2045933,
+      "billNumber": "H0125",
+      "title": "Charlie Kirk Day of Remembrance",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045933"
+    },
+    {
+      "billId": 2045984,
+      "billNumber": "H0127",
+      "title": "Required Instruction in Cursive Writing",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045984"
+    },
+    {
+      "billId": 2045968,
+      "billNumber": "H0129",
+      "title": "The Florida Virtual School",
+      "statusDate": "2025-10-08",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2045968"
+    },
+    {
+      "billId": 2046000,
+      "billNumber": "H0131",
+      "title": "Curators of Estates",
+      "statusDate": "2026-05-22",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046000"
+    },
+    {
+      "billId": 2046001,
+      "billNumber": "H0133",
+      "title": "Minimum Age for Firearm Purchase or Transfer",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046001"
+    },
+    {
+      "billId": 2046016,
+      "billNumber": "H0135",
+      "title": "Self-storage Spaces",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046016"
+    },
+    {
+      "billId": 2046129,
+      "billNumber": "H0137",
+      "title": "Coverage for Mammograms and Supplemental Breast Cancer Screenings",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046129"
+    },
+    {
+      "billId": 2046134,
+      "billNumber": "H0139",
+      "title": "Adverse Personnel Actions and Ethics Complaints",
+      "statusDate": "2025-10-09",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046134"
+    },
+    {
+      "billId": 2046195,
+      "billNumber": "H0141",
+      "title": "Florida Health Choices Program",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046195"
+    },
+    {
+      "billId": 2046188,
+      "billNumber": "H0143",
+      "title": "Offenses Evidencing Prejudice",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046188"
+    },
+    {
+      "billId": 2046180,
+      "billNumber": "H0145",
+      "title": "Claims Against the Government",
+      "statusDate": "2026-03-12",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046180"
+    },
+    {
+      "billId": 2046233,
+      "billNumber": "H0147",
+      "title": "Oaths of Classroom Teachers",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046233"
+    },
+    {
+      "billId": 2046234,
+      "billNumber": "H0149",
+      "title": "Maximum Millage Rates for the 2027-2028 Fiscal Year",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046234"
+    },
+    {
+      "billId": 2046235,
+      "billNumber": "H0151",
+      "title": "Licensure by Endorsement to Practice Dentistry and Dental Hygiene",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046235"
+    },
+    {
+      "billId": 2046237,
+      "billNumber": "H0153",
+      "title": "Reports of Child Abuse, Abandonment, or Neglect",
+      "statusDate": "2025-10-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046237"
+    },
+    {
+      "billId": 2046246,
+      "billNumber": "H0155",
+      "title": "Mental Health Programs for Gun Violence Prevention",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046246"
+    },
+    {
+      "billId": 2046251,
+      "billNumber": "H0157",
+      "title": "School Teacher Training and Mentoring Program",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046251"
+    },
+    {
+      "billId": 2046256,
+      "billNumber": "H0159",
+      "title": "Storage of Handguns in Private Conveyances and Vessels",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046256"
+    },
+    {
+      "billId": 2046260,
+      "billNumber": "H0161",
+      "title": "Impact of Perimenopause and Menopause on Women&#39;s Health",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046260"
+    },
+    {
+      "billId": 2046367,
+      "billNumber": "H0163",
+      "title": "Access to Medicaid Providers",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046367"
+    },
+    {
+      "billId": 2046324,
+      "billNumber": "H0165",
+      "title": "Law Enforcement, Correctional, and Institutional Security Specialist Officers",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046324"
+    },
+    {
+      "billId": 2046311,
+      "billNumber": "H0167",
+      "title": "Former Phosphate Mining Lands",
+      "statusDate": "2026-05-26",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046311"
+    },
+    {
+      "billId": 2046453,
+      "billNumber": "H0169",
+      "title": "Acupuncture",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046453"
+    },
+    {
+      "billId": 2046459,
+      "billNumber": "H0171",
+      "title": "Responsible Firearm Safety Awareness Month",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046459"
+    },
+    {
+      "billId": 2046495,
+      "billNumber": "H0173",
+      "title": "Parental Rights",
+      "statusDate": "2025-10-15",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046495"
+    },
+    {
+      "billId": 2046515,
+      "billNumber": "H0175",
+      "title": "Payment Stablecoin",
+      "statusDate": "2026-03-05",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046515"
+    },
+    {
+      "billId": 2046466,
+      "billNumber": "H0177",
+      "title": "Offices of Criminal Conflict and Civil Regional Counsel",
+      "statusDate": "2026-03-09",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046466"
+    },
+    {
+      "billId": 2046504,
+      "billNumber": "H0179",
+      "title": "Pub. Rec./Current Appellate Court Clerks",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046504"
+    },
+    {
+      "billId": 2046548,
+      "billNumber": "H0181",
+      "title": "Pub. Rec./ Pawnbroker Transactions",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046548"
+    },
+    {
+      "billId": 2046541,
+      "billNumber": "H0183",
+      "title": "Investments and Deposits of Public Funds",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046541"
+    },
+    {
+      "billId": 2046562,
+      "billNumber": "H0185",
+      "title": "Home Hardening Products",
+      "statusDate": "2025-10-15",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046562"
+    },
+    {
+      "billId": 2046572,
+      "billNumber": "H0187",
+      "title": "Florida Public Service Commission",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046572"
+    },
+    {
+      "billId": 2046598,
+      "billNumber": "H0189",
+      "title": "Gambling",
+      "statusDate": "2025-10-15",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046598"
+    },
+    {
+      "billId": 2046620,
+      "billNumber": "H0191",
+      "title": "Verification of Reemployment Assistance Benefit Eligibility",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046620"
+    },
+    {
+      "billId": 2046650,
+      "billNumber": "H0193",
+      "title": "Utilities",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046650"
+    },
+    {
+      "billId": 2046708,
+      "billNumber": "H0195",
+      "title": "Payment Scam Task Force",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046708"
+    },
+    {
+      "billId": 2046695,
+      "billNumber": "H0197",
+      "title": "Employment Eligibility",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046695"
+    },
+    {
+      "billId": 2046684,
+      "billNumber": "H0199",
+      "title": "Veterans Affairs",
+      "statusDate": "2026-02-26",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046684"
+    },
+    {
+      "billId": 2046712,
+      "billNumber": "H0215",
+      "title": "Ad Valorem Taxation",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046712"
+    },
+    {
+      "billId": 2046688,
+      "billNumber": "H0217",
+      "title": "Land Use Regulations",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046688"
+    },
+    {
+      "billId": 2046778,
+      "billNumber": "H0219",
+      "title": "Parity for Nonnursing Services Under Long-term Managed Care Plans",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046778"
+    },
+    {
+      "billId": 2046750,
+      "billNumber": "H0221",
+      "title": "Minimum Wage Requirements",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046750"
+    },
+    {
+      "billId": 2046804,
+      "billNumber": "H0223",
+      "title": "Naturopathic Medicine",
+      "statusDate": "2025-10-17",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2046804"
+    },
+    {
+      "billId": 2047008,
+      "billNumber": "H0225",
+      "title": "Consumer Fairness in Utility Rates",
+      "statusDate": "2026-03-13",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2047008"
+    },
+    {
+      "billId": 2047012,
+      "billNumber": "H0227",
+      "title": "Eligibility of Leasehold Interests for Homestead Exemptions",
+      "statusDate": "2025-10-21",
+      "state": "FL",
+      "source": {
+        "name": "LegiScan",
+        "url": "https://legiscan.com",
+        "tier": "nonpartisan",
+        "description": "State and federal bill tracking via legiscan.com API"
+      },
+      "asOf": "2026-06-24",
+      "legiscanUrl": "https://legiscan.com/FL/bill/2047012"
+    }
+  ]
 }
