@@ -21,6 +21,8 @@ import {
 import { getPoliticianByBioguide } from '@/lib/data/allPoliticians';
 import SourceBadge from '@/components/ui/SourceBadge';
 import SourceProvenance from '@/components/ui/SourceProvenance';
+import { FloridaLegislationSections } from '@/components/records/FloridaRecordPanel';
+import { getLegislationFloridaBundle } from '@/lib/data/slices/legislationFlorida';
 
 const STAGE_BADGE: Record<BillStage, string> = {
   introduced: 'bg-slate-400/10 text-slate-300 border-slate-400/30',
@@ -229,6 +231,7 @@ function LegislationContent() {
     [allBills],
   );
   const committeeCount = useMemo(() => allBills.filter((b) => b.stage === 'committee').length, [allBills]);
+  const floridaLegislation = getLegislationFloridaBundle();
 
   const chamberTabs: { id: ChamberFilter; label: string }[] = [
     { id: 'all', label: 'All chambers' },
@@ -416,6 +419,17 @@ function LegislationContent() {
           record (Tier 1). Snapshot as of {meta.asOf}. Sorted by most recent legislative action by default.
         </p>
       </div>
+
+      {floridaLegislation.sections.length > 0 && (
+        <div className="mt-10">
+          <h2 className="text-xl font-bold text-white mb-2">Florida legislative &amp; regulatory records</h2>
+          <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+            State bills (LegiScan), legislators (OpenStates), GovInfo documents, and Federal Register items mentioning Florida.
+            Each row includes source link and fetch timestamp.
+          </p>
+          <FloridaLegislationSections bundle={floridaLegislation} />
+        </div>
+      )}
     </div>
   );
 }
