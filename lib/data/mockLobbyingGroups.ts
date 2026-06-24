@@ -344,7 +344,7 @@ export const mockLobbyingGroups: LobbyingGroup[] = [
         disclosureNote: 'NAR publicly tracks housing-supply bills; roll-call rows use Congress.gov snapshot votes where synced, else demo-flagged.',
         recipientVotes: [
           { politicianId: 'bernie-sanders', vote: 'Yea', date: '2026-06-22', isDemo: false, congressGovUrl: 'https://www.congress.gov/bill/119th-congress/house-bill/6644', note: 'Senate motion to concur — official roll-call from congressVotes snapshot.' },
-          { politicianId: 'mitch-mcconnell', vote: 'Yea', date: '2026-06-22', isDemo: false, congressGovUrl: 'https://www.congress.gov/bill/119th-congress/house-bill/6644', note: 'Senate motion to concur — official roll-call from congressVotes snapshot.' },
+          { politicianId: 'mitch-mcconnell', vote: 'Not Voting', date: '2026-06-22', isDemo: false, congressGovUrl: 'https://www.congress.gov/bill/119th-congress/house-bill/6644', note: 'Senate motion to concur — official roll-call from congressVotes snapshot.' },
           { politicianId: 'rep-bean', vote: 'Yea', date: '2026-06-15', isDemo: true, congressGovUrl: 'https://www.congress.gov/bill/119th-congress/house-bill/6644', note: 'Demo-flagged House vote pending sync for this member.' },
           { politicianId: 'alexandria-ocasio-cortez', vote: 'Yea', date: '2026-06-15', isDemo: true, congressGovUrl: 'https://www.congress.gov/bill/119th-congress/house-bill/6644', note: 'Demo-flagged; AOC has supported housing-investment bills in prior Congresses.' },
         ],

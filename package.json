@@ -13,6 +13,7 @@
     "sync:fec": "tsx scripts/sync-fec-finance.ts",
     "sync:votes": "tsx scripts/sync-congress-votes.ts",
     "sync:stock-trades": "tsx scripts/sync-stock-trades.ts",
+    "verify:lobbying-votes": "tsx scripts/verify-lobbying-votes.ts",
     "verify:office": "tsx scripts/verify-office-resolution.ts"
   },
   "dependencies": {
