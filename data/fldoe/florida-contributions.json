@@ -1,0 +1,3599 @@
+{
+  "meta": {
+    "source": {
+      "name": "Florida Division of Elections",
+      "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+      "tier": "official",
+      "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)"
+    },
+    "asOf": "2026-06-24",
+    "fetchedAt": "2026-06-24T15:26:30.623Z",
+    "count": 179,
+    "stateCode": "FL",
+    "fetchedLive": true,
+    "datasetUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+    "note": "Florida campaign contributions of $25,000+ filed 2025-01-01 through 2026-06-24, from the official FL Campaign Finance Database (tab-delimited export). Tier 1 official public record. Captured via the public search form; refreshing requires a browser session (the export endpoint blocks non-browser requests)."
+  },
+  "records": [
+    {
+      "recipient": "Steele, Kevin M.",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-12-29",
+      "amount": 5000000,
+      "contributionType": "Loan",
+      "contributorName": "STEELE KEVIN M",
+      "contributorCity": "DADE CITY, FL 33523",
+      "contributorOccupation": "FINANCE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-29"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Bergermann, Vera",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-01-26",
+      "amount": 300000,
+      "contributionType": "Loan",
+      "contributorName": "BERGERMANN VERA",
+      "contributorCity": "FORT MYERS, FL 33902",
+      "contributorOccupation": "LOAN",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-01-26"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Kessler, Bryan S.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-02-17",
+      "amount": 250000,
+      "contributionType": "Loan",
+      "contributorName": "KESSLER BRYAN",
+      "contributorCity": "VENICE, FL 34293",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-17"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Russo, Frank J.",
+      "recipientParty": "NPA",
+      "recipientOffice": "Governor",
+      "date": "2026-01-05",
+      "amount": 250000,
+      "contributionType": "Loan",
+      "contributorName": "RUSSO FRANK",
+      "contributorCity": "NEW SMYRNA BEACH, FL 32169",
+      "contributorOccupation": "RETIRED BUSINESS",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-01-05"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Stuzin, Laura Anne",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-01-17",
+      "amount": 250000,
+      "contributionType": "Loan",
+      "contributorName": "STUZIN LAURA ANNE",
+      "contributorCity": "CORAL GABLES, FL 33134",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-01-17"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Wilson, Mark",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-11-04",
+      "amount": 250000,
+      "contributionType": "Loan",
+      "contributorName": "WILSON MARK",
+      "contributorCity": "MIAMI, FL 33155",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-11-04"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Baez, Rita Maria",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-02-05",
+      "amount": 200000,
+      "contributionType": "Loan",
+      "contributorName": "BAEZ RITA M.",
+      "contributorCity": "CORAL GABLES, FL 33134",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-05"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Barakat, Michelle Alvarez",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-09-15",
+      "amount": 200000,
+      "contributionType": "Loan",
+      "contributorName": "BARAKAT MICHELLE",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-09-15"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Tomkow, Josie",
+      "recipientParty": "REP",
+      "recipientOffice": "State Senator",
+      "date": "2026-03-19",
+      "amount": 200000,
+      "contributionType": "In-kind",
+      "contributorName": "FLORIDA REPUBLICAN SENATORIAL CAMPAIGN COMMITTEE, INC.",
+      "contributorCity": "TALLAHASSEE, FL 32308",
+      "contributorOccupation": "AFFILIATED PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-19"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Goerner, Donna M.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-02-25",
+      "amount": 200000,
+      "contributionType": "Loan",
+      "contributorName": "GOERNER DONNA M",
+      "contributorCity": "SANFORD, FL 32701",
+      "contributorOccupation": "CIRCUIT JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-25"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Brinkley, Tanya Jeanette",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-03-27",
+      "amount": 200000,
+      "contributionType": "Loan",
+      "contributorName": "TANYA BRINKLEY",
+      "contributorCity": "CORAL GABLES, FL 33134",
+      "contributorOccupation": "LOAN FROM CANDIDATE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-03-27"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Reichling, Trent",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-12-29",
+      "amount": 150050,
+      "contributionType": "Loan",
+      "contributorName": "REICHLING TRENT",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-29"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Burkett, Charles",
+      "recipientParty": "NPA",
+      "recipientOffice": "Governor",
+      "date": "2026-05-21",
+      "amount": 150000,
+      "contributionType": "Loan",
+      "contributorName": "BURKETT CHARLES, WILLIAM",
+      "contributorCity": "SURFSIDE, FL",
+      "contributorOccupation": "BURKETT PROPERTIES INC.",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-05-21"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Hawthorne, Amy",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-12-12",
+      "amount": 150000,
+      "contributionType": "Loan",
+      "contributorName": "HAWTHORNE AMY",
+      "contributorCity": "FORT MYERS, FL 33902",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-12"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Norton, Virginia",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-12-31",
+      "amount": 150000,
+      "contributionType": "Loan",
+      "contributorName": "NORTON VIRGINIA BAKER",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Roth, Rick",
+      "recipientParty": "REP",
+      "recipientOffice": "State Senator",
+      "date": "2025-12-30",
+      "amount": 150000,
+      "contributionType": "Loan",
+      "contributorName": "ROTH RICK",
+      "contributorCity": "WELLINGTON, FL 33414",
+      "contributorOccupation": "AGRICULTURE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Tomkow, Josie",
+      "recipientParty": "REP",
+      "recipientOffice": "State Senator",
+      "date": "2026-03-16",
+      "amount": 137904.2,
+      "contributionType": "In-kind",
+      "contributorName": "FLORIDA REPUBLICAN SENATORIAL CAMPAIGN COMMITTEE, INC.",
+      "contributorCity": "TALLAHASSEE, FL 32308",
+      "contributorOccupation": "AFFILIATED PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-16"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Tompkins, Joseph",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-30",
+      "amount": 125000,
+      "contributionType": "Loan",
+      "contributorName": "TOMPKINS JOSEPH",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Blocker, Lauren P.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-30",
+      "amount": 110000,
+      "contributionType": "Loan",
+      "contributorName": "BLOCKER LAUREN PATRICIA",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Anijar, Yoni",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-06-26",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "ANIJAR YONI",
+      "contributorCity": "LIGHTHOUSE POINT, FL 33064",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-06-26"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Anthony-Smith, Coretta",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Senator",
+      "date": "2025-04-23",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "ANTHONY-SMITH CORETTA",
+      "contributorCity": "GOTHA, FL 34734",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-04-23"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Arguelles, Christina",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-12-30",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "ARGUELLES CHRISTINA",
+      "contributorCity": "ORLANDO, FL 32803",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Avalos, Catalina M.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-30",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "AVALOS CATALINA M.",
+      "contributorCity": "FORT LAUDERDALE, FL 33301",
+      "contributorOccupation": "CIRCUIT JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Baez-Geller, Lucia",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Representative",
+      "date": "2025-12-29",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "BAEZ-GELLER LUCIA",
+      "contributorCity": "SURFSIDE, FL 33154",
+      "contributorOccupation": "No record on file",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-29"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Barra, Deb",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-12-22",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "BARRA DEBORAH",
+      "contributorCity": "ORLANDO, FL",
+      "contributorOccupation": "LAWYER",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-22"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Barreiro, Bruno A.",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-12-31",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "BARREIRO BRUNO",
+      "contributorCity": "***************",
+      "contributorOccupation": "HEALTHCARE EXEC",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Berry, Tricia",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-05-31",
+      "amount": 100000,
+      "contributionType": "Check",
+      "contributorName": "BERRY TRICIA",
+      "contributorCity": "PANAMA CITY, FL 32401",
+      "contributorOccupation": "HEALTH CARE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-05-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Costello, Jessica",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-26",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "COSTELLO JESSICA",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-26"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Cynamon, Abby",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-27",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "CYNAMON ABBY",
+      "contributorCity": "SOUTH MIAMI, FL 33143",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-27"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Denaro, Dawn Veronica",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-01-10",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "DENARO DAWN VERONICA",
+      "contributorCity": "SOUTH MIAMI, FL 33143",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-01-10"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Faddis, Tiffany Marie",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-12-26",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "FADDIS TIFFANY",
+      "contributorCity": "WINTER PARK, FL 32792",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-26"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Frantz, Susan",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-03-30",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "FRANTZ SUSAN",
+      "contributorCity": "FORT MYERS, FL 33907",
+      "contributorOccupation": "CEO/FOUNDER/FRANTZ MKTG SOL",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Griffin, Melanie S.",
+      "recipientParty": "REP",
+      "recipientOffice": "State Senator",
+      "date": "2025-11-08",
+      "amount": 100000,
+      "contributionType": "Check",
+      "contributorName": "GRIFFIN MELANIE",
+      "contributorCity": "TAMPA, FL 33606",
+      "contributorOccupation": "STATE GOVERNMENT EXEC.",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-11-08"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Hamilton, Tamar",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-02-19",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "HAMILTON TAMAR",
+      "contributorCity": "CORAL SPRINGS, FL 33067",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-19"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Herr, Mark E.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-02-02",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "HERR MARK E.",
+      "contributorCity": "LAKE MARY, FL 32795",
+      "contributorOccupation": "CIRCUIT JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-02"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Levy-Reis, Amanda",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-12-05",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "LEVY-REIS AMANDA",
+      "contributorCity": "FORT MYERS, FL 33901",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-05"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Little, Melton",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-02-05",
+      "amount": 100000,
+      "contributionType": "Check",
+      "contributorName": "LITTLE MELTON",
+      "contributorCity": "BRADENTON, FL 34210",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-05"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Milian, Alberto",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-06-27",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "MILIAN ALBERTO",
+      "contributorCity": "MIAMI, FL 33125",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-06-27"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Multack, Spencer",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-12-15",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "MULTACK SPENCER",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-15"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Pachota, Nick",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-05-25",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "PACHOTA NICK",
+      "contributorCity": "VENICE, FL 34284",
+      "contributorOccupation": "CITY OF VENICE MAYOR",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-05-25"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Reicherter, Bill",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-07-25",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "REICHERTER WILLIAM \"BILL\"",
+      "contributorCity": "PARKLAND, FL 33076",
+      "contributorOccupation": "PRINTER",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-07-25"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Wolfson, Andrea Ricker",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-04-04",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "RICKER WOLFSON ANDREA DOTTIE",
+      "contributorCity": "CORAL GABLES, FL 33134",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-04-04"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Russo, Frank J.",
+      "recipientParty": "NPA",
+      "recipientOffice": "Governor",
+      "date": "2026-03-27",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "RUSSO FRANK",
+      "contributorCity": "NEW SMYRNA BEACH, FL 32169",
+      "contributorOccupation": "RETIRED",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-27"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Scionti, Michael J.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-12-19",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "SCIONTI, MICHAEL, J.",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-19"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Spath, Chris P.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-30",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "SPATH CHRIS",
+      "contributorCity": "BARTOW, FL 33830",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Stelnicki, Eric \"Doc\"",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-09-30",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "STELNICKI ERIC",
+      "contributorCity": "FORT LAUDERDALE, FL 33301",
+      "contributorOccupation": "PHYSICIAN",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-09-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Walker, Kelly Ann",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-10-02",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "WALKER KELLY ANN",
+      "contributorCity": "SARASOTA, FL 34241",
+      "contributorOccupation": "BUSINESS CONSULTING",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-10-02"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Wigand, Christopher",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-30",
+      "amount": 100000,
+      "contributionType": "Loan",
+      "contributorName": "WIGAND CHRISTOPHER",
+      "contributorCity": "FT. LAUDERDALE, FL 33301",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Campbell, Lisa D.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-30",
+      "amount": 99500,
+      "contributionType": "Loan",
+      "contributorName": "CAMPBELL LISA D.",
+      "contributorCity": "***************",
+      "contributorOccupation": "No record on file",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Arguelles, Christina",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-12-31",
+      "amount": 98000,
+      "contributionType": "Loan",
+      "contributorName": "ARGUELLES CHRISTINA",
+      "contributorCity": "ORLANDO, FL 32803",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Burkett, Charles",
+      "recipientParty": "NPA",
+      "recipientOffice": "Governor",
+      "date": "2026-05-14",
+      "amount": 90000,
+      "contributionType": "Loan",
+      "contributorName": "BURKETT CHARLES, WILLIAM",
+      "contributorCity": "SURFSIDE, FL",
+      "contributorOccupation": "BURKETT PROPERTIES INC.",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-05-14"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Romero Roses, Gloria",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Representative",
+      "date": "2026-03-30",
+      "amount": 90000,
+      "contributionType": "Loan",
+      "contributorName": "ROMERO ROSES GLORIA",
+      "contributorCity": "MIAMI, FL 33131",
+      "contributorOccupation": "RETIRED",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Anijar, Yoni",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-03-31",
+      "amount": 85000,
+      "contributionType": "Loan",
+      "contributorName": "ANIJAR YONI",
+      "contributorCity": "LIGHTHOUSE POINT, FL 33064",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-03-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "McHugh, Michael T.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-25",
+      "amount": 80000,
+      "contributionType": "Loan",
+      "contributorName": "MCHUGH MICHAEL THOMAS",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-25"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Anthony-Smith, Coretta",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Senator",
+      "date": "2025-04-15",
+      "amount": 75000,
+      "contributionType": "Loan",
+      "contributorName": "ANTHONY-SMITH CORETTA",
+      "contributorCity": "GOTHA, FL 34734",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-04-15"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Mitchell, Christie Lou",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-02",
+      "amount": 75000,
+      "contributionType": "Loan",
+      "contributorName": "MITCHELL CHRISTIE",
+      "contributorCity": "ORLANDO, FL 32819",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-02"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Nazaretian, Nick",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-09-02",
+      "amount": 75000,
+      "contributionType": "Loan",
+      "contributorName": "NAZARETIAN, NICK",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-09-02"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Stewart, James",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-12-17",
+      "amount": 75000,
+      "contributionType": "Loan",
+      "contributorName": "STEWART JAMES",
+      "contributorCity": "VENICE, FL 34285",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-17"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Hart, Charles",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-05-29",
+      "amount": 70000,
+      "contributionType": "Loan",
+      "contributorName": "HART CHARLES",
+      "contributorCity": "ORLANDO, FL 32801",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-05-29"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Miller, Zachary W.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-20",
+      "amount": 70000,
+      "contributionType": "Loan",
+      "contributorName": "MILLER ZACHARY W",
+      "contributorCity": "PONTE VEDRA BEACH, FL 32082",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-20"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Miller, Zachary W.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-30",
+      "amount": 70000,
+      "contributionType": "Loan",
+      "contributorName": "MILLER ZACHARY W",
+      "contributorCity": "PONTE VEDRA BEACH, FL 32082",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Donalds, Byron",
+      "recipientParty": "REP",
+      "recipientOffice": "Governor",
+      "date": "2026-05-06",
+      "amount": 63985.75,
+      "contributionType": "In-kind",
+      "contributorName": "REPUBLICAN PARTY OF FLORIDA",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "POLITICAL ORGANIZATION",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-05-06"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Campbell, Daphne",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Representative",
+      "date": "2026-02-28",
+      "amount": 60000,
+      "contributionType": "In-kind",
+      "contributorName": "CAMPBELL DAPHNE",
+      "contributorCity": "NORTH MIAMI, FL 33168",
+      "contributorOccupation": "REGISTERED NURSE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-28"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Maples, Jon",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-03-18",
+      "amount": 60000,
+      "contributionType": "In-kind",
+      "contributorName": "FLORIDA HOUSE REPUBLICAN CAMPAIGN COMMITTEE",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "AFFILIATED PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-18"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Maples, Jon",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-01-21",
+      "amount": 60000,
+      "contributionType": "In-kind",
+      "contributorName": "FLORIDA HOUSE REPUBLICAN CAMPAIGN COMMITTEE",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "AFFILIATED PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-01-21"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Renner, Paul",
+      "recipientParty": "REP",
+      "recipientOffice": "Governor",
+      "date": "2026-06-08",
+      "amount": 60000,
+      "contributionType": "In-kind",
+      "contributorName": "REPUBLICAN PARTY OF FLORIDA",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-06-08"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Stacy, Susan",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-01-28",
+      "amount": 60000,
+      "contributionType": "Loan",
+      "contributorName": "STACY SUSAN",
+      "contributorCity": "SANFORD, FL",
+      "contributorOccupation": "PUBLIC SERVANT",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-01-28"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Wasserman, Lew",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Senator",
+      "date": "2026-06-03",
+      "amount": 60000,
+      "contributionType": "Loan",
+      "contributorName": "WASSERMAN LEWIS",
+      "contributorCity": "BRADENTON, FL 34202",
+      "contributorOccupation": "RETIRED",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-06-03"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Wasserman, Lewis Michael",
+      "recipientParty": "DEM",
+      "recipientOffice": "AGR",
+      "date": "2026-05-20",
+      "amount": 60000,
+      "contributionType": "Loan",
+      "contributorName": "WASSERMAN LEWIS",
+      "contributorCity": "BRADENTON, FL 34202",
+      "contributorOccupation": "RETIRED",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-05-20"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Wooten, Wayne",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-27",
+      "amount": 60000,
+      "contributionType": "Loan",
+      "contributorName": "WOOTEN WAYNE",
+      "contributorCity": "KISSIMMEE, FL 34742",
+      "contributorOccupation": "CIRCUIT COURT JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-27"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Alvarez, Nina McGucken",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-06-30",
+      "amount": 57000,
+      "contributionType": "Loan",
+      "contributorName": "MCGUCKEN ALVAREZ NINA",
+      "contributorCity": "TAMPA, FL 33611",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-06-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Weed, John",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-04-18",
+      "amount": 55000,
+      "contributionType": "Loan",
+      "contributorName": "WEED JOHN, N.",
+      "contributorCity": "PERRY, FL 32348",
+      "contributorOccupation": "LAWYER",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-04-18"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Roth, Rick",
+      "recipientParty": "REP",
+      "recipientOffice": "State Senator",
+      "date": "2026-03-31",
+      "amount": 50100,
+      "contributionType": "Loan",
+      "contributorName": "ROTH RICK",
+      "contributorCity": "WELLINGTON, FL 33414",
+      "contributorOccupation": "AGRICULTURE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Anijar, Yoni",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-03-31",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "ANIJAR YONI",
+      "contributorCity": "LIGHTHOUSE POINT, FL 33064",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Baez-Geller, Lucia",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Representative",
+      "date": "2025-09-30",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "BAEZ-GELLER LUCIA",
+      "contributorCity": "SURFSIDE, FL 33154",
+      "contributorOccupation": "NA",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-09-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Baez-Geller, Lucia",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Representative",
+      "date": "2026-03-31",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "BAEZ-GELLER LUCIA",
+      "contributorCity": "SURFSIDE, FL 33154",
+      "contributorOccupation": "CANDIDATE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Baez-Geller, Lucia",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Representative",
+      "date": "2026-05-29",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "BAEZ-GELLER LUCIA",
+      "contributorCity": "SURFSIDE, FL 33154",
+      "contributorOccupation": "CANDIDATE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-05-29"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Black, Dean",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-05-04",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "BLACK DEAN",
+      "contributorCity": "JACKSONVILLE, FL 32218",
+      "contributorOccupation": "CATTLE RANCHER",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-05-04"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Cabarga, Carmen",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-03-07",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "CABARGA CARMEN",
+      "contributorCity": "MIAMI, FL 33130",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-03-07"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Davis, N. Hunter",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-02-20",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "DAVIS NICKOLAUS HUNTER",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-20"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Rodriguez, Ana Maria",
+      "recipientParty": "REP",
+      "recipientOffice": "State Senator",
+      "date": "2025-12-11",
+      "amount": 50000,
+      "contributionType": "In-kind",
+      "contributorName": "FLORIDA REPUBLICAN SENATORIAL CAMPAIGN COMMITTEE",
+      "contributorCity": "TALLAHASSEE, FL 32302",
+      "contributorOccupation": "STATE PARTY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-11"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Garcia, Ileana",
+      "recipientParty": "REP",
+      "recipientOffice": "State Senator",
+      "date": "2025-11-18",
+      "amount": 50000,
+      "contributionType": "In-kind",
+      "contributorName": "FLORIDA REPUBLICAN SENATORIAL CAMPAIGN COMMITTEE INC",
+      "contributorCity": "TALLAHASSEE, FL 32302",
+      "contributorOccupation": "PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-11-18"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Calatayud, Alexis Maria",
+      "recipientParty": "REP",
+      "recipientOffice": "State Senator",
+      "date": "2025-12-11",
+      "amount": 50000,
+      "contributionType": "In-kind",
+      "contributorName": "FLORIDA REPUBLICAN SENATORIAL CAMPAIGN COMMITTEE, INC.",
+      "contributorCity": "TALLAHASSEE, FL 32308",
+      "contributorOccupation": "STATE PARTY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-11"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Gerwig, Anne",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-10-27",
+      "amount": 50000,
+      "contributionType": "Check",
+      "contributorName": "GERWIG, ANNE",
+      "contributorCity": "WELLINGTON, FL 33414",
+      "contributorOccupation": "LEGISLATOR",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-10-27"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Grayson, Alan",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Senator",
+      "date": "2025-05-28",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "GRAYSON ALAN",
+      "contributorCity": "INDIALANTIC, FL 32903",
+      "contributorOccupation": "LAWYER",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-05-28"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Grayson, Alan",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Senator",
+      "date": "2025-06-11",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "GRAYSON ALAN",
+      "contributorCity": "INDIALANTIC, FL 32903",
+      "contributorOccupation": "LAWYER",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-06-11"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Hyde, Martin",
+      "recipientParty": "NPA",
+      "recipientOffice": "State Senator",
+      "date": "2026-06-17",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "HYDE MARTIN",
+      "contributorCity": "SARASOTA, FL 34240",
+      "contributorOccupation": "RETIRED",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-06-17"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Kalil, Michael",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-12-29",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "KALIL MICHAEL",
+      "contributorCity": "***************",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-29"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Kuhl, Ryan",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-02-20",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "KUHL RYAN",
+      "contributorCity": "NAPLES, FL 34108",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-20"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Lamondin, Richard",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Senator",
+      "date": "2026-04-17",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "LAMONDIN RICHARD",
+      "contributorCity": "MIAMI, FL 33129",
+      "contributorOccupation": "STATE SENATE CANDIDATE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-04-17"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Lamondin, Richard",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Senator",
+      "date": "2026-04-21",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "LAMONDIN RICHARD",
+      "contributorCity": "MIAMI, FL 33129",
+      "contributorOccupation": "STATE SENATE CANDIDATE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-04-21"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Lee, Adam J.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-08-29",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "LEE ADAM",
+      "contributorCity": "***************",
+      "contributorOccupation": "COUNTY COURT JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-08-29"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Maltz, Howard M.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-10-14",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "MALTZ HOWARD",
+      "contributorCity": "ST. AUGUSTINE, FL 32084",
+      "contributorOccupation": "CIRCUIT JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-10-14"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Massullo, Ralph E.",
+      "recipientParty": "REP",
+      "recipientOffice": "State Senator",
+      "date": "2025-07-17",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "MASSULLO JR. RALPH E.",
+      "contributorCity": "LECANTO, FL 34461",
+      "contributorOccupation": "PHYSICIAN",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-07-17"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "McCourt, Timothy T.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-31",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "MCCOURT TIMOTHY, THOMAS",
+      "contributorCity": "***************",
+      "contributorOccupation": "CIRCUIT JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Mendoza-Routt, Justin",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Representative",
+      "date": "2026-05-31",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "MENDOZA-ROUTT JUSTIN",
+      "contributorCity": "MIAMI, FL 33139",
+      "contributorOccupation": "FINANCIAL CONSULTANT",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-05-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Miranda, Cristina M.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-05",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "MIRANDA CRISTINA MARIA",
+      "contributorCity": "MIAMI, FL 33125",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-05"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Nazaretian, Nick",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-06-27",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "NAZARETIAN NICK",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-06-27"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Romero Roses, Gloria",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Representative",
+      "date": "2026-05-29",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "ROMERO ROSES GLORIA",
+      "contributorCity": "MIAMI, FL 33131",
+      "contributorOccupation": "RETIRED",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-05-29"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Roth, Rick",
+      "recipientParty": "REP",
+      "recipientOffice": "State Senator",
+      "date": "2025-03-27",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "ROTH JR RAYMOND",
+      "contributorCity": "WELLINGTON, FL 33414",
+      "contributorOccupation": "AGRICULTURE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-03-27"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Sisco, Michelle",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-30",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "SISCO DEBORAH MICHELLE",
+      "contributorCity": "TAMPA, FL 33609",
+      "contributorOccupation": "No record on file",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Smith, Kathleen A.",
+      "recipientParty": "REP",
+      "recipientOffice": "PUB",
+      "date": "2026-02-02",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "SMITH KATHLEEN",
+      "contributorCity": "***************",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-02"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Smith, Kathleen A.",
+      "recipientParty": "REP",
+      "recipientOffice": "PUB",
+      "date": "2026-03-30",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "SMITH KATHLEEN",
+      "contributorCity": "***************",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Stuzin, Laura Anne",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-12-02",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "STUZIN LAURA",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-02"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Weiss, Kevin B.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-23",
+      "amount": 50000,
+      "contributionType": "Loan",
+      "contributorName": "WEISS KEVIN",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-23"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Hodgers, Brian",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-06-02",
+      "amount": 49000,
+      "contributionType": "Check",
+      "contributorName": "FLORIDA HOUSE REPUBLICAN CAMPAIGN COMMITTEE",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "PARTY AFFILIATED COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-06-02"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Lionheart, Amaro",
+      "recipientParty": "REP",
+      "recipientOffice": "State Senator",
+      "date": "2025-05-16",
+      "amount": 47000,
+      "contributionType": "Loan",
+      "contributorName": "LIONHEART NJ�LLSSEN AMARO",
+      "contributorCity": "CLEARWATER, FL",
+      "contributorOccupation": "POLITICIAN/TEACHER",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-05-16"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Donalds, Byron",
+      "recipientParty": "REP",
+      "recipientOffice": "Governor",
+      "date": "2026-04-13",
+      "amount": 45886.5,
+      "contributionType": "In-kind",
+      "contributorName": "REPUBLICAN PARTY OF FLORIDA",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "POLITICAL ORGANIZATION",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-04-13"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Atkins, William",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Representative",
+      "date": "2025-03-24",
+      "amount": 40000,
+      "contributionType": "Loan",
+      "contributorName": "ATKINS WILLIAM",
+      "contributorCity": "TAMPA, FL 33646",
+      "contributorOccupation": "RETIRED",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-03-24"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Bauman, Robert A.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-02-25",
+      "amount": 40000,
+      "contributionType": "Loan",
+      "contributorName": "BAUMAN ROBERT A.",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-25"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Denaro, Dawn Veronica",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-12-18",
+      "amount": 40000,
+      "contributionType": "Loan",
+      "contributorName": "DENARO DAWN VERONICA",
+      "contributorCity": "SOUTH MIAMI, FL 33143",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-18"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Shaw, James W.",
+      "recipientParty": "REP",
+      "recipientOffice": "Governor",
+      "date": "2026-04-10",
+      "amount": 40000,
+      "contributionType": "Check",
+      "contributorName": "SHAW JAMES",
+      "contributorCity": "OKEECHOBEE, FL",
+      "contributorOccupation": "COMPOST FARMER",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-04-10"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Stacy, Susan",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-01-29",
+      "amount": 40000,
+      "contributionType": "Loan",
+      "contributorName": "STACY SUSAN",
+      "contributorCity": "SANFORD, FL",
+      "contributorOccupation": "PUBLIC SERVANT",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-01-29"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Gallon, Raul",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-03-11",
+      "amount": 39860,
+      "contributionType": "Loan",
+      "contributorName": "GALLON RAUL",
+      "contributorCity": "FORT LAUDERDALE, FL 33301",
+      "contributorOccupation": "INSURANCE ADJUSTER",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-11"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Donalds, Byron",
+      "recipientParty": "REP",
+      "recipientOffice": "Governor",
+      "date": "2026-02-02",
+      "amount": 38683,
+      "contributionType": "In-kind",
+      "contributorName": "REPUBLICAN PARTY OF FLORIDA",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "POLITICAL ORGANIZATION",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-02"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Priddy, Liesa",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-09-30",
+      "amount": 38000,
+      "contributionType": "Loan",
+      "contributorName": "PRIDDY LIESA",
+      "contributorCity": "IMMOKALEE, FL 34143",
+      "contributorOccupation": "AGRICULTURE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-09-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Donalds, Byron",
+      "recipientParty": "REP",
+      "recipientOffice": "Governor",
+      "date": "2026-03-12",
+      "amount": 35941.5,
+      "contributionType": "In-kind",
+      "contributorName": "REPUBLICAN PARTY OF FLORIDA",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "POLITICAL ORGANIZATION",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-12"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Ingoglia, Blaise",
+      "recipientParty": "REP",
+      "recipientOffice": "Chief Financial Officer",
+      "date": "2025-10-09",
+      "amount": 35853,
+      "contributionType": "In-kind",
+      "contributorName": "REPUBLICAN PARTY OF FLORIDA",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "POLITICAL PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-10-09"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Cronin, Terry",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-03-27",
+      "amount": 35000,
+      "contributionType": "Loan",
+      "contributorName": "CRONIN JR. TERRENCE A.",
+      "contributorCity": "MELBOURNE, FL 32901",
+      "contributorOccupation": "PHYSICIAN",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-03-27"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Mendoza-Routt, Justin",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Representative",
+      "date": "2026-03-31",
+      "amount": 35000,
+      "contributionType": "Loan",
+      "contributorName": "ROUTT JUSTIN",
+      "contributorCity": "MIAMI, FL 33231",
+      "contributorOccupation": "FINANCIAL CONSULTANT/ CANDIDAT",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Voelz, Jason Marshall",
+      "recipientParty": "REP",
+      "recipientOffice": "State Senator",
+      "date": "2025-03-20",
+      "amount": 35000,
+      "contributionType": "Loan",
+      "contributorName": "VOELZ JASON M",
+      "contributorCity": "DELAND, FL 32720",
+      "contributorOccupation": "TRUE INSPIRATION HOMES LLC",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-03-20"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Tomkow, Josie",
+      "recipientParty": "REP",
+      "recipientOffice": "State Senator",
+      "date": "2026-03-17",
+      "amount": 33225,
+      "contributionType": "In-kind",
+      "contributorName": "FLORIDA REPUBLICAN SENATORIAL CAMPAIGN COMMITTEE, INC.",
+      "contributorCity": "TALLAHASSEE, FL 32308",
+      "contributorOccupation": "AFFILIATED PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-17"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Maples, Jon",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-12-08",
+      "amount": 32625,
+      "contributionType": "In-kind",
+      "contributorName": "FLORIDA HOUSE REPUBLICAN CAMPAIGN COMMITTEE",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "AFFILIATED PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-08"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Maples, Jon",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-01-21",
+      "amount": 32625,
+      "contributionType": "In-kind",
+      "contributorName": "FLORIDA HOUSE REPUBLICAN CAMPAIGN COMMITTEE",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "AFFILIATED PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-01-21"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Winer, Yerucham zvi",
+      "recipientParty": "NPA",
+      "recipientOffice": "Governor",
+      "date": "2026-05-18",
+      "amount": 31000,
+      "contributionType": "Check",
+      "contributorName": "WINER YERUCHAM",
+      "contributorCity": "MIAMI, FL",
+      "contributorOccupation": "No record on file",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-05-18"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Holley, Hilary",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-02-18",
+      "amount": 30860,
+      "contributionType": "In-kind",
+      "contributorName": "FLORIDA HOUSE REPUBLICAN CAMPAIGN COMMITTEE",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "AFFILIATED PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-18"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Arendas, Christine",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-02-03",
+      "amount": 30000,
+      "contributionType": "Loan",
+      "contributorName": "ARENDAS CHRISTINE",
+      "contributorCity": "ST CLOUD, FL 34770",
+      "contributorOccupation": "JUDGE/CANDIDATE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-03"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Bell, Carolyn",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-12-30",
+      "amount": 30000,
+      "contributionType": "Loan",
+      "contributorName": "BELL CAROLYN",
+      "contributorCity": "WEST PALM BEACH, FL 33411",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Campbell, Daphne",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Representative",
+      "date": "2026-04-27",
+      "amount": 30000,
+      "contributionType": "Loan",
+      "contributorName": "CAMPBELL DAPHNE",
+      "contributorCity": "NORTH MIAMI, FL 33168",
+      "contributorOccupation": "REGISTERED NURSE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-04-27"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Brodeur, Jason",
+      "recipientParty": "REP",
+      "recipientOffice": "State Senator",
+      "date": "2026-06-04",
+      "amount": 30000,
+      "contributionType": "In-kind",
+      "contributorName": "FLORIDA REPUBLICAN SENATORIAL CAMPAIGN COMMITTEE, INC.",
+      "contributorCity": "TALLAHASSEE, FL 32308",
+      "contributorOccupation": "AFFILIATED PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-06-04"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Tomkow, Josie",
+      "recipientParty": "REP",
+      "recipientOffice": "State Senator",
+      "date": "2026-06-04",
+      "amount": 30000,
+      "contributionType": "In-kind",
+      "contributorName": "FLORIDA REPUBLICAN SENATORIAL CAMPAIGN COMMITTEE, INC.",
+      "contributorCity": "TALLAHASSEE, FL 32308",
+      "contributorOccupation": "AFFILIATED PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-06-04"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Little, Melton",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-12-31",
+      "amount": 30000,
+      "contributionType": "Check",
+      "contributorName": "LITTLE MELTON",
+      "contributorCity": "BRADENTON, FL 34210",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Mitchell, Christie Lou",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-06-12",
+      "amount": 30000,
+      "contributionType": "Loan",
+      "contributorName": "MITCHELL CHRISTIE",
+      "contributorCity": "ORLANDO, FL 32819",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-06-12"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Morris, Nicole M.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-06-08",
+      "amount": 30000,
+      "contributionType": "Loan",
+      "contributorName": "MORRIS NICOLE",
+      "contributorCity": "INVERNESS, FL 34451",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-06-08"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Myers, Dawn",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-06-26",
+      "amount": 30000,
+      "contributionType": "Loan",
+      "contributorName": "MYERS DAWN",
+      "contributorCity": "TAMPA, FL 33606",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-06-26"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Pickens, Robert W.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-01-27",
+      "amount": 30000,
+      "contributionType": "Loan",
+      "contributorName": "PICKENS, III ROBERT W",
+      "contributorCity": "CRESCENT CITY, FL 32112",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-01-27"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Collins, Jay",
+      "recipientParty": "REP",
+      "recipientOffice": "Governor",
+      "date": "2026-03-11",
+      "amount": 30000,
+      "contributionType": "In-kind",
+      "contributorName": "REPUBLICAN PARTY OF FLORIDA",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "POLITICAL PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-11"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Romero Roses, Gloria",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Representative",
+      "date": "2025-12-31",
+      "amount": 30000,
+      "contributionType": "Loan",
+      "contributorName": "ROMERO-ROSES GLORIA",
+      "contributorCity": "MIAMI, FL 33231",
+      "contributorOccupation": "CANDIDATE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Wimsatt, Jim",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-07-25",
+      "amount": 30000,
+      "contributionType": "Loan",
+      "contributorName": "WIMSATT JAMES",
+      "contributorCity": "TAMPA, FL 33672",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-07-25"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Zack, Maria",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-08-28",
+      "amount": 30000,
+      "contributionType": "Loan",
+      "contributorName": "ZACK MARIA",
+      "contributorCity": "LANTANA, FL 33465",
+      "contributorOccupation": "CANDIDATE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-08-28"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Maples, Jon",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-03-18",
+      "amount": 29086.53,
+      "contributionType": "In-kind",
+      "contributorName": "REPUBLICAN PARTY OF FLORIDA",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "POLITICAL PARTY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-18"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Redondo, Mike",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-05-30",
+      "amount": 29000,
+      "contributionType": "In-kind",
+      "contributorName": "FLORIDA HOUSE REPUBLICAN CAMPAIGN COMMITTEE",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "AFFILIATED PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-05-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Maples, Jon",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-03-17",
+      "amount": 28125.45,
+      "contributionType": "In-kind",
+      "contributorName": "REPUBLICAN PARTY OF FLORIDA",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "POLITICAL PARTY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-17"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Adkins, Marcie",
+      "recipientParty": "REP",
+      "recipientOffice": "State Senator",
+      "date": "2025-02-11",
+      "amount": 28000,
+      "contributionType": "Check",
+      "contributorName": "ADKINS MARCIE",
+      "contributorCity": "VALKYRIE RD, FL 32950",
+      "contributorOccupation": "RETIRED",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-02-11"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Grayson, Alan",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Senator",
+      "date": "2025-06-16",
+      "amount": 27106.73,
+      "contributionType": "Loan",
+      "contributorName": "GRAYSON ALAN",
+      "contributorCity": "INDIALANTIC, FL 32903",
+      "contributorOccupation": "LAWYER",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-06-16"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Cassel, Hillary",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-07-01",
+      "amount": 27000,
+      "contributionType": "In-kind",
+      "contributorName": "FLORIDA HOUSE REPUBLICAN CAMPAIGN COMMITTEE",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "POLITICAL PARTY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-07-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Diaz, Tony",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-12-24",
+      "amount": 26500,
+      "contributionType": "Check",
+      "contributorName": "DIAZ TONY J",
+      "contributorCity": "MIAMI, FL 33145",
+      "contributorOccupation": "FRUIT TREE NURSERY OWNER",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-24"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Grayson, Alan",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Senator",
+      "date": "2025-08-22",
+      "amount": 26000,
+      "contributionType": "Loan",
+      "contributorName": "GRAYSON ALAN",
+      "contributorCity": "INDIALANTIC, FL 32903",
+      "contributorOccupation": "LAWYER",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-08-22"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Perkins, Joe",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-05-01",
+      "amount": 25100,
+      "contributionType": "Check",
+      "contributorName": "PERKINS JOSEPH",
+      "contributorCity": "***************",
+      "contributorOccupation": "CANDIDATE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-05-01"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Baldwin, Leland Ann",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-06-29",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "BALDWIN, LELAND, ANN",
+      "contributorCity": "TAMPA, FL",
+      "contributorOccupation": "LAWYER/LAW OFFICE OF LELAND T",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-06-29"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Peacock, Sara",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-06-25",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "BARTOS SARA PEACOCK",
+      "contributorCity": "***************",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-06-25"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Peacock, Sara",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-04-11",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "BARTOS SARA PECOCK",
+      "contributorCity": "***************",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-04-11"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Book, Lauren",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Senator",
+      "date": "2026-05-27",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "BOOK LAUREN",
+      "contributorCity": "HOLLYWOOD, FL 33021",
+      "contributorOccupation": "NON-PROFIT EXECUTIVE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-05-27"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Carlin, John",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-01-12",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "CARLIN JOHN S",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-01-12"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "D'Onofrio, Jayden",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Representative",
+      "date": "2025-07-24",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "D'ONOFRIO JAYDEN",
+      "contributorCity": "WESTON, FL 33326",
+      "contributorOccupation": "STUDENT",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-07-24"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Daniels, Kimberly",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Representative",
+      "date": "2026-05-29",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "DANIELS KIMBERLY",
+      "contributorCity": "***************",
+      "contributorOccupation": "MINISTER",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-05-29"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Ferguson, Michael Terence",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Representative",
+      "date": "2026-04-09",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "FERGUSON MICHAEL TERENCE",
+      "contributorCity": "LAUDERDALE BY THE SEA, FL 33308",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-04-09"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Gregory, Emily",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Representative",
+      "date": "2026-02-17",
+      "amount": 25000,
+      "contributionType": "Check",
+      "contributorName": "FLORIDA HOUSE DEMOCRATIC CAMPAIGN COMMITTEE",
+      "contributorCity": "TALLAHASSEE, FL 32303",
+      "contributorOccupation": "POLITICAL COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-17"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Basabe, Fabian",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-08-18",
+      "amount": 25000,
+      "contributionType": "Check",
+      "contributorName": "FLORIDA HOUSE REPUBLICAN CAMPAIGN COMMITTEE",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "AFFILIATED PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-08-18"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Maples, Jon",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-10-31",
+      "amount": 25000,
+      "contributionType": "Check",
+      "contributorName": "FLORIDA HOUSE REPUBLICAN CAMPAIGN COMMITTEE",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "AFFILIATED PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-10-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Maples, Jon",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-03-31",
+      "amount": 25000,
+      "contributionType": "Check",
+      "contributorName": "FLORIDA HOUSE REPUBLICAN CAMPAIGN COMMITTEE",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "AFFILIATED PARTY COMMITTEE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Zack, Maria",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-10-03",
+      "amount": 25000,
+      "contributionType": "Check",
+      "contributorName": "FLORIDA HOUSE REPUBLICAN CAMPAIGN COMMITTEE",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "OTHER",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-10-03"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Grayson, Alan",
+      "recipientParty": "DEM",
+      "recipientOffice": "State Senator",
+      "date": "2025-06-05",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "GRAYSON ALAN",
+      "contributorCity": "INDIALANTIC, FL 32903",
+      "contributorOccupation": "LAWYER",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-06-05"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Weiss, Marlon Jay",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-26",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "JAY WEISS MARLON",
+      "contributorCity": "HOLLYWOOD, FL 33022",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-26"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Jones, Jason",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-30",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "JONES JASON L.",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-30"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Lago, Frank",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2025-12-31",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "LAGO FRANCISCO",
+      "contributorCity": "MIAMI, FL 33131",
+      "contributorOccupation": "REAL ESTATE BROKER/CANDIDATE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Ledee, Frank David",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-03-09",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "LEDEE FRANK",
+      "contributorCity": "FT. LAUDERDALE, FL 33301",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-09"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Lee, Adam J.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2025-12-31",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "LEE ADAM",
+      "contributorCity": "***************",
+      "contributorOccupation": "JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-12-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Leskovich, Steven",
+      "recipientParty": "REP",
+      "recipientOffice": "Attorney General",
+      "date": "2025-04-10",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "LESKOVICH STEVEN",
+      "contributorCity": "PUNTA GORDA, FL 33950",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-04-10"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Leskovich, Steven",
+      "recipientParty": "REP",
+      "recipientOffice": "Attorney General",
+      "date": "2025-09-11",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "LESKOVICH STEVEN",
+      "contributorCity": "PUNTA GORDA, FL 33950",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-09-11"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Little, Melton",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-05-29",
+      "amount": 25000,
+      "contributionType": "Check",
+      "contributorName": "LITTLE MELTON",
+      "contributorCity": "BRADENTON, FL 34210",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-05-29"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "McNeil, Arthur LeMar \"Marty\"",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-04-08",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "MCNEIL, ARTHUR LEMAR",
+      "contributorCity": "***************",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-04-08"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Mitchell, Christie Lou",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-01-29",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "MITCHELL CHRISTIE",
+      "contributorCity": "ORLANDO, FL 32819",
+      "contributorOccupation": "ATTORNEY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-01-29"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Orlando, Michael J.",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-01-27",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "ORLANDO MICHAEL",
+      "contributorCity": "***************",
+      "contributorOccupation": "CIRCUIT COURT JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-01-27"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Uthmeier, James",
+      "recipientParty": "REP",
+      "recipientOffice": "Attorney General",
+      "date": "2025-03-31",
+      "amount": 25000,
+      "contributionType": "Check",
+      "contributorName": "REPUBLICAN PARTY OF FLORIDA",
+      "contributorCity": "TALLAHASSEE, FL 32301",
+      "contributorOccupation": "STATE PARTY",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2025-03-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Rubin, Jonathan",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-03-31",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "RUBIN JONATHAN",
+      "contributorCity": "JENSEN BEACH, FL 34957",
+      "contributorOccupation": "EXECUTIVE DIRECTOR/NONPROFIT",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-31"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Schulman, Stacey",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-02-04",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "SCHULMAN STACEY",
+      "contributorCity": "***************",
+      "contributorOccupation": "CIRCUIT COURT JUDGE",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-02-04"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Walker, Kelly Ann",
+      "recipientParty": "REP",
+      "recipientOffice": "State Representative",
+      "date": "2026-03-24",
+      "amount": 25000,
+      "contributionType": "Check",
+      "contributorName": "WALKER KELLY ANN",
+      "contributorCity": "SARASOTA, FL 34241",
+      "contributorOccupation": "GOVERNMENT RELATIONS",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-03-24"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    },
+    {
+      "recipient": "Baez, Yaneth Del Carmen",
+      "recipientParty": "NOP",
+      "recipientOffice": "County Judge",
+      "date": "2026-04-29",
+      "amount": 25000,
+      "contributionType": "Loan",
+      "contributorName": "YANETH DEL CARMEN BAEZ",
+      "contributorCity": "MIAMI, FL 33130",
+      "contributorOccupation": "ASSISTANT DA",
+      "source": {
+        "name": "Florida Division of Elections",
+        "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
+        "tier": "official",
+        "description": "Official Florida campaign contribution disclosures (Campaign Finance Database)",
+        "date": "2026-04-29"
+      },
+      "asOf": "2026-06-24",
+      "sourceUrl": "https://dos.elections.myflorida.com/campaign-finance/contributions/"
+    }
+  ]
+}

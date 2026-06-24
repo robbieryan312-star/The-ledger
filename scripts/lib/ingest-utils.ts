@@ -58,6 +58,8 @@ export interface DataSnapshotMeta {
   errors?: string[];
   note?: string;
   datasetUrl?: string;
+  /** ISO timestamp of when this snapshot was fetched/generated (UI provenance recency). */
+  fetchedAt?: string;
 }
 
 export async function writeFloridaSnapshot<T>(
