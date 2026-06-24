@@ -23,7 +23,7 @@ Agent session log and status checkpoint. Read at the start of every session; upd
 | 2026-06-24 | Recovery session merged to `main` (copy, legislation, votes, nav) | `efb6a20` |
 | 2026-06-24 | Sync safeguards for FEC/House votes when keys missing | `35b6dfa` |
 | 2026-06-24 | `.env.example` template added | `f3e6cbf` |
-| 2026-06-24 | Section 7 deployment rule + PROGRESS.md + no-key endpoint configs in `.env.local` | *(this commit)* |
+| 2026-06-24 | Section 7 deployment rule + PROGRESS.md + no-key endpoint configs in `.env.local` | `23b12c2` |
 
 ---
 
