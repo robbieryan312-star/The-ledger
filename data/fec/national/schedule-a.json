@@ -1,0 +1,5126 @@
+{
+  "meta": {
+    "source": {
+      "name": "Federal Election Commission (OpenFEC)",
+      "url": "https://www.fec.gov/data/",
+      "tier": "official",
+      "description": "Official campaign finance disclosures via api.open.fec.gov"
+    },
+    "asOf": "2026-06-24",
+    "fetchedAt": "2026-06-24T17:56:14.602Z",
+    "membersWithScheduleA": 37,
+    "failureCount": 185,
+    "datasetUrl": "https://api.open.fec.gov/v1/schedules/schedule_a/",
+    "note": "Itemized individual contributions (Schedule A). Tier 1 official FEC records."
+  },
+  "byBioguideId": {
+    "C000127": {
+      "bioguideId": "C000127",
+      "fecCandidateId": "S8WA00194",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S8WA00194/"
+    },
+    "K000367": {
+      "bioguideId": "K000367",
+      "fecCandidateId": "S6MN00267",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S6MN00267/"
+    },
+    "S000033": {
+      "bioguideId": "S000033",
+      "fecCandidateId": "S4VT00033",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S4VT00033/"
+    },
+    "W000802": {
+      "bioguideId": "W000802",
+      "fecCandidateId": "S6RI00221",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S6RI00221/"
+    },
+    "B001261": {
+      "bioguideId": "B001261",
+      "fecCandidateId": "S6WY00068",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S6WY00068/"
+    },
+    "W000437": {
+      "bioguideId": "W000437",
+      "fecCandidateId": "S8MS00196",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S8MS00196/"
+    },
+    "C001035": {
+      "bioguideId": "C001035",
+      "fecCandidateId": "S6ME00159",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S6ME00159/"
+    },
+    "C001056": {
+      "bioguideId": "C001056",
+      "fecCandidateId": "S2TX00106",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S2TX00106/"
+    },
+    "D000563": {
+      "bioguideId": "D000563",
+      "fecCandidateId": "S6IL00151",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S6IL00151/"
+    },
+    "G000359": {
+      "bioguideId": "G000359",
+      "fecCandidateId": "S0SC00149",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S0SC00149/"
+    },
+    "M000355": {
+      "bioguideId": "M000355",
+      "fecCandidateId": "S2KY00012",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S2KY00012/"
+    },
+    "M001176": {
+      "bioguideId": "M001176",
+      "fecCandidateId": "S8OR00207",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S8OR00207/"
+    },
+    "R000122": {
+      "bioguideId": "R000122",
+      "fecCandidateId": "S6RI00163",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S6RI00163/"
+    },
+    "R000584": {
+      "bioguideId": "R000584",
+      "fecCandidateId": "S8ID00092",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S8ID00092/"
+    },
+    "S001181": {
+      "bioguideId": "S001181",
+      "fecCandidateId": "S0NH00219",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S0NH00219/"
+    },
+    "W000805": {
+      "bioguideId": "W000805",
+      "fecCandidateId": "S6VA00093",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S6VA00093/"
+    },
+    "G000555": {
+      "bioguideId": "G000555",
+      "fecCandidateId": "S0NY00410",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S0NY00410/"
+    },
+    "C001088": {
+      "bioguideId": "C001088",
+      "fecCandidateId": "S0DE00092",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S0DE00092/"
+    },
+    "A000055": {
+      "bioguideId": "A000055",
+      "fecCandidateId": "H6AL04098",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/H6AL04098/"
+    },
+    "B001230": {
+      "bioguideId": "B001230",
+      "fecCandidateId": "S2WI00219",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S2WI00219/"
+    },
+    "B001267": {
+      "bioguideId": "B001267",
+      "fecCandidateId": "S0CO00211",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S0CO00211/"
+    },
+    "B001257": {
+      "bioguideId": "B001257",
+      "fecCandidateId": "H6FL09070",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/H6FL09070/"
+    },
+    "B000490": {
+      "bioguideId": "B000490",
+      "fecCandidateId": "H2GA02031",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/H2GA02031/"
+    },
+    "B001243": {
+      "bioguideId": "B001243",
+      "fecCandidateId": "S8TN00337",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S8TN00337/"
+    },
+    "B001277": {
+      "bioguideId": "B001277",
+      "fecCandidateId": "S0CT00177",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S0CT00177/"
+    },
+    "B001236": {
+      "bioguideId": "B001236",
+      "fecCandidateId": "S0AR00150",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S0AR00150/"
+    },
+    "B001260": {
+      "bioguideId": "B001260",
+      "fecCandidateId": "H6FL13148",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/H6FL13148/"
+    },
+    "C000059": {
+      "bioguideId": "C000059",
+      "fecCandidateId": "H2CA37023",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/H2CA37023/"
+    },
+    "C001047": {
+      "bioguideId": "C001047",
+      "fecCandidateId": "S4WV00159",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S4WV00159/"
+    },
+    "C001072": {
+      "bioguideId": "C001072",
+      "fecCandidateId": "H8IN07184",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/H8IN07184/"
+    },
+    "C001051": {
+      "bioguideId": "C001051",
+      "fecCandidateId": "H2TX31044",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/H2TX31044/"
+    },
+    "C001075": {
+      "bioguideId": "C001075",
+      "fecCandidateId": "S4LA00107",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/S4LA00107/"
+    },
+    "C001066": {
+      "bioguideId": "C001066",
+      "fecCandidateId": "H6FL11126",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/H6FL11126/"
+    },
+    "C001080": {
+      "bioguideId": "C001080",
+      "fecCandidateId": "H0CA32101",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/H0CA32101/"
+    },
+    "C001067": {
+      "bioguideId": "C001067",
+      "fecCandidateId": "H4NY11138",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/H4NY11138/"
+    },
+    "C001061": {
+      "bioguideId": "C001061",
+      "fecCandidateId": "H4MO05234",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/H4MO05234/"
+    },
+    "C000537": {
+      "bioguideId": "C000537",
+      "fecCandidateId": "H2SC02042",
+      "contributors": [
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 90000000,
+          "date": "2024-10-17",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "EMPOWER PARENTS PAC",
+          "amount": 82500000,
+          "date": "2023-05-31",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00834077"
+        },
+        {
+          "name": "FUND FOR POLICY REFORM",
+          "amount": 60000000,
+          "date": "2024-01-11",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00693382"
+        },
+        {
+          "name": "SECURING AMERICAN GREATNESS",
+          "amount": 52558283.79,
+          "date": "2024-10-22",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-07-15",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MELLON, TIMOTHY",
+          "amount": 50000000,
+          "date": "2024-05-31",
+          "employer": "SELF-EMPLOYED",
+          "occupation": "INVESTMENTS",
+          "committeeId": "C00825851"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 40495178,
+          "date": "2024-11-25",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-10-08",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 40000000,
+          "date": "2024-09-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "FUTURE FORWARD USA ACTION",
+          "amount": 35000000,
+          "date": "2024-10-25",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00669259"
+        },
+        {
+          "name": "HOUSE MAJORITY FORWARD",
+          "amount": 34000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00495028"
+        },
+        {
+          "name": "MUSK, ELON",
+          "amount": 30000000,
+          "date": "2024-09-05",
+          "employer": "SPACE EXPLORATION TECHNOLOGIES CORP.",
+          "occupation": "CEO",
+          "committeeId": "C00879510"
+        },
+        {
+          "name": "MAJORITY FORWARD",
+          "amount": 30000000,
+          "date": "2024-09-30",
+          "employer": null,
+          "occupation": null,
+          "committeeId": "C00484642"
+        }
+      ],
+      "source": {
+        "name": "Federal Election Commission (OpenFEC)",
+        "url": "https://www.fec.gov/data/",
+        "tier": "official",
+        "description": "Official campaign finance disclosures via api.open.fec.gov"
+      },
+      "asOf": "2026-06-24",
+      "fecUrl": "https://www.fec.gov/data/candidate/H2SC02042/"
+    }
+  },
+  "failures": [
+    {
+      "bioguideId": "C001068",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "C001053",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "C001059",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "C001069",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "C000880",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "C001087",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "C001063",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "D000096",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "D000197",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "D000216",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "D000616",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "D000600",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "D000399",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "F000459",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "F000450",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "G000559",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "G000565",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "G000386",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "G000546",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "G000553",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "G000568",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "G000558",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H001052",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H001046",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H001047",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H001042",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H001061",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H000874",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H001058",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "J000288",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "J000293",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "J000289",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "K000009",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "K000375",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "K000376",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "L000575",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "L000560",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "L000557",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "L000566",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "L000577",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "L000397",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "L000491",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "L000570",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "L000562",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M000133",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001196",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "W000822",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "S001196",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "B001296",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "P000610",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "N000189",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "G000576",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "R000600",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "S001198",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "E000295",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "T000476",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "R000605",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "K000388",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "L000585",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "D000626",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "C001108",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "E000296",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "K000393",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H001076",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "C001113",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "S001190",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "B001302",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "K000389",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "P000613",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "C001112",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "B001300",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "C001110",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "B001303",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "D000628",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "R000609",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "S001200",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001199",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H001081",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "B001307",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "T000482",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "G000591",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "P000614",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "D000631",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "J000302",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "R000610",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "T000480",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "J000301",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "B001309",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "R000612",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "G000589",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "E000299",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H000601",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001212",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "L000602",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "C001131",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H001095",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "V000135",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H001096",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "R000618",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001227",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "A000380",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001228",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "F000480",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "R000619",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001229",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "W000829",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "F000110",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "S001188",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "C001123",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "A000382",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "S001232",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001242",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001243",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "B001323",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "F000481",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "A000381",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H001098",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "S001231",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "G000605",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "L000607",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "W000830",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "R000620",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "F000483",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "T000491",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001241",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H001100",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "C001137",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "E000300",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001238",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H001099",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "J000311",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "S001229",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001233",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "S001228",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "O000176",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "E000301",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001232",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "B001321",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001237",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001234",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "B001324",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "O000177",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "K000404",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "D000634",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001240",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H001102",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H001101",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "K000405",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001236",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "F000482",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "G000604",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "C001136",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "P000621",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "L000606",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "R000622",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001231",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "T000490",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "D000635",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "B001326",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001230",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "B001327",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H001103",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "B001325",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "G000601",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "G000603",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "J000310",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "K000403",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001239",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "V000138",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "S001230",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "B001322",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "R000621",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001235",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "J000312",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "H001104",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001244",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "P000622",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "F000484",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "W000831",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "G000606",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "V000139",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001245",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "F000485",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "M001246",
+      "reason": "fetch failed"
+    },
+    {
+      "bioguideId": "G000607",
+      "reason": "fetch failed"
+    }
+  ]
+}
