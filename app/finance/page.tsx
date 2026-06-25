@@ -4,6 +4,8 @@ import { useState, useEffect, Suspense, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { mockPoliticians } from '@/lib/data/mockPoliticians';
 import { mergeCampaignFinance, getFecFinanceSnapshot } from '@/lib/data/fecFinance';
+import { mergeVotingRecord } from '@/lib/data/congressVotes';
+import FollowTheMoneyPanel from '@/components/finance/FollowTheMoneyPanel';
 import { mockLobbyingGroups, getTotalSpending, getDominantParty, lobbyingGroupCategories } from '@/lib/data/mockLobbyingGroups';
 import SourceBadge from '@/components/ui/SourceBadge';
 import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
@@ -31,7 +33,7 @@ function FinanceContent() {
   const featuredWithFinance = useMemo(
     () =>
       mockPoliticians.map((p) => {
-        const { finance, fecEntry } = mergeCampaignFinance(p.id, p.campaignFinance);
+        const { finance, fecEntry } = mergeCampaignFinance(p.id, p.campaignFinance, p.bioguideId);
         return { politician: p, finance, fecEntry };
       }),
     [],
@@ -63,6 +65,17 @@ function FinanceContent() {
   const advocacyGroups = mockLobbyingGroups;
   const foreignPolicyAlignedCount = advocacyGroups.filter((g) => g.lobbyScope === 'foreign').length;
   const fecBackedCount = featuredWithFinance.filter((row) => !!row.fecEntry).length;
+  const linkageExample = useMemo(() => {
+    const row = featuredWithFinance.find((r) => r.fecEntry && r.politician.bioguideId);
+    if (!row) return null;
+    const { congressEntry } = mergeVotingRecord(
+      row.politician.id,
+      row.politician.votingRecord,
+      row.politician.recordType,
+      row.politician.bioguideId,
+    );
+    return { row, congressEntry };
+  }, [featuredWithFinance]);
 
   const chartData = sorted.slice(0, 6).map((row) => ({
     name: row.politician.lastName,
@@ -303,6 +316,22 @@ function FinanceContent() {
             subtitle="Official Tier 1 disclosures from the Florida Division of Elections Campaign Finance Database."
             slice={fldoeSlice}
           />
+
+          {linkageExample && (
+            <div className="bg-[#0d1f35] rounded-2xl border border-[#1e3a5f] p-5">
+              <h2 className="text-white font-bold mb-1">Follow the Money — record linkage</h2>
+              <p className="text-gray-500 text-xs mb-4">
+                Example for {linkageExample.row.politician.name}: Schedule A donors paired with roll-call votes (facts only).
+              </p>
+              <FollowTheMoneyPanel
+                bioguideId={linkageExample.row.politician.bioguideId}
+                politicianId={linkageExample.row.politician.id}
+                politicianName={linkageExample.row.politician.name}
+                fecEntry={linkageExample.row.fecEntry}
+                congressEntry={linkageExample.congressEntry}
+              />
+            </div>
+          )}
         </div>
       )}
 

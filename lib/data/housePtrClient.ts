@@ -259,20 +259,29 @@ export async function fetchAndParseHousePtr(
   filing: HousePtrFiling,
   politicianId: string,
 ): Promise<StockTrade[]> {
-  const res = await fetch(filing.pdfUrl, {
-    headers: { 'User-Agent': 'TheLedger/1.0 (civic research; STOCK Act sync)' },
-  });
-  if (!res.ok) {
-    console.warn(`  skip PTR PDF ${filing.docId}: HTTP ${res.status}`);
-    return [];
+  let lastErr: unknown;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const res = await fetch(filing.pdfUrl, {
+        headers: { 'User-Agent': 'TheLedger/1.0 (civic research; STOCK Act sync)' },
+      });
+      if (!res.ok) {
+        console.warn(`  skip PTR PDF ${filing.docId}: HTTP ${res.status}`);
+        return [];
+      }
+      const buf = Buffer.from(await res.arrayBuffer());
+      const parsed = await pdf(buf);
+      const trades = parseHousePtrPdfText(parsed.text, filing, politicianId);
+      if (trades.length === 0) {
+        console.warn(`  no rows parsed from PTR ${filing.docId} (${filing.lastName})`);
+      }
+      return trades;
+    } catch (err) {
+      lastErr = err;
+      if (attempt < 2) await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
+    }
   }
-  const buf = Buffer.from(await res.arrayBuffer());
-  const parsed = await pdf(buf);
-  const trades = parseHousePtrPdfText(parsed.text, filing, politicianId);
-  if (trades.length === 0) {
-    console.warn(`  no rows parsed from PTR ${filing.docId} (${filing.lastName})`);
-  }
-  return trades;
+  throw lastErr;
 }
 
 export async function syncHousePtrForTarget(
@@ -309,8 +318,16 @@ export async function syncHousePtrForTarget(
 
   const trades: StockTrade[] = [];
   for (const filing of filings) {
-    const rows = await fetchAndParseHousePtr(filing, target.politicianId);
-    trades.push(...rows);
+    try {
+      const rows = await fetchAndParseHousePtr(filing, target.politicianId);
+      trades.push(...rows);
+    } catch (err) {
+      console.warn(
+        `  skip PTR ${filing.docId} (${filing.lastName}):`,
+        err instanceof Error ? err.message : err,
+      );
+    }
+    await new Promise((r) => setTimeout(r, 300));
   }
 
   // Newest transaction first

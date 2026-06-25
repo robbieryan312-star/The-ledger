@@ -92,11 +92,20 @@ async function fecFetch<T>(path: string, params: Record<string, string> = {}): P
     url.searchParams.set(k, v);
   }
 
-  const res = await fetch(url.toString());
-  if (!res.ok) {
-    throw new Error(`OpenFEC request failed: HTTP ${res.status} ${res.statusText}`);
+  let lastErr: unknown;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const res = await fetch(url.toString());
+      if (!res.ok) {
+        throw new Error(`OpenFEC request failed: HTTP ${res.status} ${res.statusText}`);
+      }
+      return (await res.json()) as T;
+    } catch (err) {
+      lastErr = err;
+      if (attempt < 2) await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));
+    }
   }
-  return (await res.json()) as T;
+  throw lastErr;
 }
 
 function mapTotalsRow(row: RawTotalsRow): FecCandidateTotals | null {
@@ -207,4 +216,49 @@ export async function resolveBestCandidateTotals(
     }
   }
   return best;
+}
+
+export interface FecScheduleAContributor {
+  name: string;
+  amount: number;
+  date: string;
+  employer?: string;
+  occupation?: string;
+  committeeId?: string;
+}
+
+interface RawScheduleARow {
+  contributor_name?: string;
+  contribution_receipt_amount?: number;
+  contribution_receipt_date?: string;
+  contributor_employer?: string;
+  contributor_occupation?: string;
+  committee_id?: string;
+}
+
+/** Itemized Schedule A contributions for a candidate committee (Tier 1). */
+export async function fetchScheduleAContributors(
+  candidateId: string,
+  limit = 20,
+  twoYearPeriod = '2024',
+): Promise<FecScheduleAContributor[]> {
+  const data = await fecFetch<{ results: RawScheduleARow[] }>('/schedules/schedule_a/', {
+    candidate_id: candidateId,
+    two_year_transaction_period: twoYearPeriod,
+    sort: '-contribution_receipt_amount',
+    per_page: String(Math.min(limit, 100)),
+    is_individual: 'true',
+  });
+
+  return (data.results ?? [])
+    .filter((r) => r.contributor_name && r.contribution_receipt_amount != null)
+    .slice(0, limit)
+    .map((r) => ({
+      name: r.contributor_name!,
+      amount: r.contribution_receipt_amount!,
+      date: isoDate(r.contribution_receipt_date) ?? new Date().toISOString().slice(0, 10),
+      employer: r.contributor_employer,
+      occupation: r.contributor_occupation,
+      committeeId: r.committee_id,
+    }));
 }

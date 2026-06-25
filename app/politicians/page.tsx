@@ -215,6 +215,7 @@ function PoliticiansContent() {
             politician.id,
             politician.votingRecord,
             politician.recordType,
+            politician.bioguideId,
           );
           return (
             <Link

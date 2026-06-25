@@ -1,7 +1,5 @@
 # The Ledger — Progress Log
 
-Agent session log and status checkpoint. Read at the start of every session; update after every completed task.
-
 **Last updated:** 2026-06-24  
 **Branch:** `main`  
 **Live demo:** https://the-ledger-gamma.vercel.app
@@ -10,9 +8,12 @@ Agent session log and status checkpoint. Read at the start of every session; upd
 
 ## Current phase
 
-**Phase 1 — Florida first:** Federal/state FL featured profiles + Palm Beach county demo. Data pipeline uses `lib/data/generated/*.json` (not `/data/` folders yet).
+**Sprint 1 — National depth + Follow the Money v1 (in progress)**
 
-**Next queued:** Register API keys for blocked sources (LegiScan, NewsAPI, OpenStates) per owner authorization; then wire `/data/` Florida snapshots into the app (currently the app still reads `lib/data/generated/*.json`).
+- ✅ ~21 Florida data sources ingested; `/sources` explorer; in-page slices on finance, profiles, legislation, map, lobbying
+- ✅ Daily GitHub Actions refresh for no-key ingests + data slices
+- 🔄 **Sprint 1:** National FEC/votes sync for all 537 Congress members; FL profile depth; Follow the Money v1; House PTR for full House roster
+- ⏳ **GitHub Actions secrets:** `scripts/setup-github-secrets.sh` ready — requires `gh auth login` once, then run script (blocked: gh not authenticated in agent shell)
 
 ---
 
@@ -20,80 +21,36 @@ Agent session log and status checkpoint. Read at the start of every session; upd
 
 | Date | Task | Commit |
 |------|------|--------|
-| 2026-06-24 | UX: donor split (individual/PAC/lobbying), map office labels, Follow-the-Money leaderboard, StockTrades time range, lobbying history→overview | `cb58ace` |
-| 2026-06-24 | Florida ingestion pipeline for 10 more sources + snapshots + build fixes | `51b7896` |
-| 2026-06-24 | Florida Congress votes ingested — 29/29 members, 232 positions | `243ad02` |
-| 2026-06-24 | Florida FEC candidates ingested (2,439 records) + pipeline scaffolding | `1aa4beb` |
-| 2026-06-24 | Sync safeguards for FEC/House votes when keys missing | `35b6dfa` |
-| 2026-06-24 | `.env.example` template added | `f3e6cbf` |
-| 2026-06-24 | Section 7 deployment rule + PROGRESS.md + no-key endpoint configs in `.env.local` | `23b12c2` |
+| 2026-06-24 | In-page data slices: finance, profiles, legislation, map, lobbying, news + `/sources` explorer | `608332c` |
+| 2026-06-24 | Florida ingestion pipeline (17+ sources) + auto-refresh workflow | `51b7896` |
+| 2026-06-24 | Florida Congress votes — 29/29 members, 232 positions | `243ad02` |
+| 2026-06-24 | UX: donor split, map labels, Follow-the-Money leaderboard, StockTrades time range | `cb58ace` |
+| 2026-06-24 | API keys wired: Census, LegiScan, OpenStates, NewsAPI, DATA_GOV | (session) |
 
 ---
 
-## Section 7 — Agent behavior rules
+## Sprint 1 step status
 
-### EVERY SESSION START
+| Step | Status | Notes |
+|------|--------|-------|
+| 1 GitHub secrets | ⏳ Blocked | Run `gh auth login` then `./scripts/setup-github-secrets.sh` |
+| 2 Update docs | ✅ | PROGRESS.md + DATA_INTEGRATION_PLAN.md |
+| 3 National FEC sync | ✅ Done | 222 members with FEC totals → `data/fec/national/congress-finance.json` |
+| 4 National votes sync | ✅ Done | 537/537 members, 5,370 positions → `data/votes/national/congress-votes.json` |
+| 5 FL federal depth | ✅ Code | Merge by `bioguideId` — lightweight FL members get real FEC + votes |
+| 6 Follow the Money v1 | ✅ Code | Schedule A + donor/vote linkage panel; domestic/foreign lobbying labels |
+| 7 House STOCK Act PTR | ✅ Code | Extended `sync:stock-trades` to full House roster (Senate eFD still down) |
 
-- Read `AGENTS.md` and this `PROGRESS.md`
-- Confirm `.env.local` keys and endpoint configs present
-- Check `lib/data/generated/` for existing snapshots
-- Report status before taking action
-- Continue from where this log last ended
+---
 
-### DURING WORK
+## Blockers
 
-- **One agent at a time. Always.**
-- Never auto-start Next.js dev server
-- Never auto-start debug or test agents
-- Never stop mid-task to ask questions unless blocked on scope/credibility/UX
-- If blocked, log it here and move to the next task
-- Never propose architecture changes mid-task
-
-### DEPLOYMENT RULE (PRIMARY PRIORITY)
-
-Saving and deploying to the live demo is a **primary priority**, not an afterthought.
-
-**COMMIT AND PUSH AFTER EVERY COMPLETED TASK** — not just at end of session. After every single completed unit of work including:
-
-- Any data file successfully written to `/data/` or `lib/data/generated/`
-- Any feature fully implemented
-- Any copy or text update applied
-- Any bug fixed or error resolved
-
-**Sequence after every completed task:**
-
-1. `git add .`
-2. `git commit -m "[specific description of exactly what was just completed]"`
-3. `git push origin main`
-4. Confirm Vercel deployment triggered
-5. Log completion in this `PROGRESS.md`
-6. Then immediately begin next task
-
-**Reason:** If Cursor crashes, restarts, or loses context between tasks, every completed unit of work is permanently saved and live on the demo. Nothing gets lost regardless of what happens to the session.
-
-**Never accumulate more than one completed task worth of uncommitted changes at any time.**
-
-### BROWSER PRIORITY
-
-1. REST API endpoint with key in header
-2. If blocked, Playwright/Chrome
-3. If both fail, log and continue
-
-### DATA PRIORITY
-
-1. Check existing JSON snapshots first
-2. If missing, hit REST API
-3. If blocked, use browser
-4. If all fail, log in this file
-
-### END OF EVERY SESSION
-
-- Update this `PROGRESS.md` with full summary
-- `git add .`
-- `git commit -m "[descriptive message]"`
-- `git push origin main`
-- Confirm Vercel deployment triggered
-- Stop and await next instruction
+| Item | Status |
+|------|--------|
+| GitHub Actions secrets | Needs `gh auth login` on owner machine, then `scripts/setup-github-secrets.sh` |
+| Senate eFD stock trades | HTTP 503 maintenance — House PTR sync proceeds |
+| FARA eFile | Fetch blocked — domestic/foreign labels documented honestly in UI |
+| SAM.gov | login.gov identity verification required |
 
 ---
 
@@ -111,19 +68,3 @@ Saving and deploying to the live demo is a **primary priority**, not an aftertho
 | `GDELT_ENDPOINT` | https://api.gdeltproject.org/api/v2 |
 | `MIT_ELECTIONS_URL` | https://electionlab.mit.edu/data |
 | `OPENCORPORATES_ENDPOINT` | https://api.opencorporates.com/v0.4 |
-
----
-
-## Blockers
-
-| Item | Status |
-|------|--------|
-| `FEC_API_KEY` / `CONGRESS_API_KEY` in cloud agent | Not in cloud `.env.local` — owner keys on local Mac; snapshots checked into git |
-| Senate eFD stock trades | HTTP 503 maintenance |
-| ProPublica Congress API | Retired — do not use |
-| `LEGISCAN_API_KEY` | Not set — FL legislation snapshot is placeholder. Register at legiscan.com/legiscan |
-| `NEWSAPI_KEY` | Not set — FL news snapshot is placeholder. Register at newsapi.org/register |
-| `OPENSTATES_API_KEY` | Not set — FL legislators snapshot is placeholder. Register at openstates.org/api |
-| `SAM_API_KEY` | Requires login.gov identity-verified account — FL contractors snapshot is placeholder |
-| `CENSUS_API_KEY` | Not set — keyless ACS request returned HTML; FL demographics snapshot is placeholder |
-| FARA eFile endpoint | `efts.fara.gov` fetch failed — FL registrants snapshot is placeholder |

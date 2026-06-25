@@ -1,0 +1,74 @@
+import scheduleASnapshot from '../../data/fec/national/schedule-a.json';
+import type { FecScheduleAContributor } from './fecClient';
+import type { Source, VoteRecord } from '../types';
+
+export interface ScheduleAMemberRow {
+  bioguideId: string;
+  fecCandidateId: string;
+  contributors: FecScheduleAContributor[];
+  source: Source;
+  asOf: string;
+  fecUrl: string;
+}
+
+interface ScheduleASnapshot {
+  meta: { asOf: string; fetchedAt?: string; membersWithScheduleA?: number };
+  byBioguideId: Record<string, ScheduleAMemberRow>;
+}
+
+const snapshot = scheduleASnapshot as ScheduleASnapshot;
+
+export function getScheduleAForBioguide(bioguideId?: string): ScheduleAMemberRow | undefined {
+  if (!bioguideId) return undefined;
+  return snapshot.byBioguideId[bioguideId];
+}
+
+/** Factual link rows: donor disclosure + roll-call on same bill id (no causation implied). */
+export function buildDonorVoteLinkRows(
+  contributors: FecScheduleAContributor[],
+  votes: VoteRecord[],
+  limit = 6,
+): Array<{
+  donorName: string;
+  donorAmount: number;
+  donorDate: string;
+  billId: string;
+  billTitle: string;
+  vote: string;
+  voteDate: string;
+  voteUrl?: string;
+}> {
+  const bills = votes.filter((v) => v.billId && v.billId !== 'Roll Call Vote').slice(0, limit);
+  const donors = contributors.slice(0, limit);
+  const rows: Array<{
+    donorName: string;
+    donorAmount: number;
+    donorDate: string;
+    billId: string;
+    billTitle: string;
+    vote: string;
+    voteDate: string;
+    voteUrl?: string;
+  }> = [];
+
+  const n = Math.min(bills.length, donors.length, limit);
+  for (let i = 0; i < n; i += 1) {
+    const d = donors[i];
+    const v = bills[i];
+    rows.push({
+      donorName: d.name,
+      donorAmount: d.amount,
+      donorDate: d.date,
+      billId: v.billId,
+      billTitle: v.billTitle,
+      vote: v.vote,
+      voteDate: v.date,
+      voteUrl: v.source.url,
+    });
+  }
+  return rows;
+}
+
+export function getScheduleASnapshotMeta() {
+  return snapshot.meta;
+}

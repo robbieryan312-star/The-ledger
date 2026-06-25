@@ -57,7 +57,7 @@ interface RawTerm {
   url?: string;
 }
 interface RawLegislator {
-  id: { bioguide: string; govtrack?: number; fec?: string[] };
+  id: { bioguide: string; lis?: string; govtrack?: number; fec?: string[] };
   name: { first: string; last: string; official_full?: string };
   terms: RawTerm[];
 }
@@ -90,6 +90,7 @@ async function main(): Promise<void> {
     const office = term.type === 'sen' ? 'U.S. Senator' : 'U.S. Representative';
     return {
       bioguideId: p.id.bioguide,
+      lisId: p.id.lis,
       name: p.name.official_full ?? `${p.name.first} ${p.name.last}`,
       firstName: p.name.first,
       lastName: p.name.last,

@@ -130,10 +130,10 @@ function CompareContent() {
   const sideB = useMemo(() => resolveSide(bPick, activeElection), [bPick, activeElection]);
 
   const financeA = sideA?.politician
-    ? mergeCampaignFinance(sideA.politician.id, sideA.politician.campaignFinance)
+    ? mergeCampaignFinance(sideA.politician.id, sideA.politician.campaignFinance, sideA.politician.bioguideId)
     : null;
   const financeB = sideB?.politician
-    ? mergeCampaignFinance(sideB.politician.id, sideB.politician.campaignFinance)
+    ? mergeCampaignFinance(sideB.politician.id, sideB.politician.campaignFinance, sideB.politician.bioguideId)
     : null;
   const fecMeta = getFecFinanceSnapshot().meta;
 

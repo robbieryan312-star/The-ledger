@@ -47,8 +47,8 @@ jobs:
           [ -n "$OPENSTATES_API_KEY" ] && npm run ingest:openstates-fl || echo "skip openstates (no secret)"
           [ -n "$NEWSAPI_KEY" ] && npm run ingest:news-fl || echo "skip news (no secret)"
           { [ -n "$GOVINFO_API_KEY" ] || [ -n "$DATA_GOV_API_KEY" ]; } && npm run ingest:govinfo-fl || echo "skip govinfo (no secret)"
-          [ -n "$FEC_API_KEY" ] && npm run ingest:fec-fl || echo "skip fec (no secret)"
-          [ -n "$CONGRESS_API_KEY" ] && npm run ingest:congress-fl || echo "skip congress (no secret)"
+          [ -n "$FEC_API_KEY" ] && npm run ingest:fec-fl && npm run sync:fec-national && npm run sync:fec-schedule-a || echo "skip fec (no secret)"
+          [ -n "$CONGRESS_API_KEY" ] && npm run ingest:congress-fl && npm run sync:votes-national || echo "skip congress (no secret)"
 
       - name: Rebuild Records & Sources index
         run: npm run build:sources-index && npm run build:data-slices
@@ -57,7 +57,7 @@ jobs:
         run: |
           git config user.name "ledger-data-bot"
           git config user.email "ledger-data-bot@users.noreply.github.com"
-          git add data/ lib/data/generated/sourcesIndex.json
+          git add data/ lib/data/generated/sourcesIndex.json lib/data/generated/slices/
           if git diff --cached --quiet; then
             echo "No data changes to commit."
           else
