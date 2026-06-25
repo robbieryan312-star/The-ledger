@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { ComposableMap, Geographies, Geography, ZoomableGroup, Marker } from 'react-simple-maps';
 import { mockStates } from '@/lib/data/mockPoliticians';
@@ -105,6 +105,10 @@ const STATE_ABBR: Record<string, string> = {
   'West Virginia':'WV','Wisconsin':'WI','Wyoming':'WY','District of Columbia':'DC',
 };
 
+const STATE_NAME_BY_CODE: Record<string, string> = Object.fromEntries(
+  mockStates.map((s) => [s.code, s.name]),
+);
+
 const NATIONAL: MapPosition = { center: [-97, 38], zoom: 1 };
 const DC_COORDS: [number, number] = [-77.04, 38.91];
 
@@ -115,6 +119,17 @@ function nationalStateStyle(
   isHov: boolean,
   isDimmed: boolean,
 ) {
+  if (!stateCode) {
+    return {
+      fill: '#1a3555',
+      stroke: '#2a4a6e',
+      strokeWidth: 0.22,
+      fillOpacity: 1,
+      outline: 'none' as const,
+      cursor: 'default' as const,
+    };
+  }
+
   if (isDimmed) {
     return {
       fill: '#04080f',
@@ -420,16 +435,43 @@ export default function USAMap() {
     }
   };
 
-  const selectedStateData  = selectedState ? mockStates.find(s => s.code === selectedState) : null;
-  const statePoliticians   = selectedState
-    ? sortOfficialsForDisplay(getPoliticiansForState(selectedState))
-    : [];
+  const selectedStateData = useMemo(
+    () => (selectedState ? mockStates.find((s) => s.code === selectedState) ?? null : null),
+    [selectedState],
+  );
+  const statePoliticians = useMemo(
+    () => (selectedState ? sortOfficialsForDisplay(getPoliticiansForState(selectedState)) : []),
+    [selectedState],
+  );
   const MAP_SIDEBAR_OFFICIAL_LIMIT = 8;
-  const stateElections     = selectedState ? mockElections.filter(e => e.stateCode === selectedState) : [];
-  const stateFips          = selectedState ? STATE_FIPS[selectedState] : null;
-  const stateCounties: CountyData[] = selectedState ? (countiesByState[selectedState] || []) : [];
+  const stateElections = useMemo(
+    () => (selectedState ? mockElections.filter((e) => e.stateCode === selectedState) : []),
+    [selectedState],
+  );
+  const upcomingStateElections = useMemo(
+    () => stateElections.filter((e) => e.isUpcoming),
+    [stateElections],
+  );
+  const stateFips = selectedState ? STATE_FIPS[selectedState] ?? null : null;
+  const stateCounties: CountyData[] = selectedState ? (countiesByState[selectedState] ?? []) : [];
   const selectedCountyData = selectedCounty ? countyByFips[selectedCounty] : null;
   const selectedCountyPending = selectedCounty && !selectedCountyData;
+  const hoveredCountyData = hoveredCounty ? countyByFips[hoveredCounty.fips] : undefined;
+  const hoveredStateSummary = useMemo(() => {
+    if (!hoveredState || mapLevel !== 'national' || selectedState) return null;
+    const officials = getPoliticiansForState(hoveredState);
+    const governor = officials.find((p) => p.chamber === 'governor');
+    const econSlice = hoveredState === 'FL' ? getStateEconomicSlice() : null;
+    const medianIncome = econSlice?.indicators.find((i) => i.label === 'Median household income');
+    const medianHomeValue = econSlice?.indicators.find((i) => i.label === 'Median home value');
+    return {
+      stateLabel: STATE_NAME_BY_CODE[hoveredState] ?? hoveredState,
+      governorName: governor?.name,
+      medianIncome: medianIncome?.value,
+      medianHomeValue: medianHomeValue?.value,
+      officialCount: officials.length,
+    };
+  }, [hoveredState, mapLevel, selectedState]);
 
   return (
     <div className="relative w-full h-full overflow-hidden">
@@ -566,20 +608,32 @@ export default function USAMap() {
       </ComposableMap>
 
       {/* ── State hover tooltip ── */}
-      {hoveredState && mapLevel === 'national' && !selectedState && (
-        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-          <div className="bg-[#08152a]/95 backdrop-blur-md border border-[#c8a951]/30 rounded-xl px-4 py-2 shadow-xl">
-            <span className="text-[#c8a951] font-semibold text-sm">
-              {mockStates.find(s => s.code === hoveredState)?.name ?? hoveredState}
-            </span>
-            {hoveredState !== 'DC' && (
-              <span className="text-gray-500 text-xs ml-2">
-                · Gov: {getGovernorPartyKey(hoveredState) === 'unknown' ? 'No data' : getGovernorPartyKey(hoveredState).replace(/^./, c => c.toUpperCase())}
-              </span>
-            )}
-            <span className="text-gray-400 text-xs ml-2">Click to explore</span>
+      {hoveredStateSummary && (
+          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+            <div className="bg-[#08152a]/95 backdrop-blur-md border border-[#c8a951]/30 rounded-xl px-4 py-2.5 shadow-xl min-w-[200px]">
+              <div className="text-[#c8a951] font-semibold text-sm">
+                {hoveredStateSummary.stateLabel}
+              </div>
+              {hoveredStateSummary.governorName && (
+                <div className="text-gray-300 text-xs mt-0.5">
+                  Gov. {hoveredStateSummary.governorName}
+                </div>
+              )}
+              {hoveredStateSummary.medianIncome && (
+                <div className="text-gray-400 text-xs mt-0.5">
+                  Median income: {hoveredStateSummary.medianIncome}
+                </div>
+              )}
+              {hoveredStateSummary.medianHomeValue && (
+                <div className="text-gray-400 text-xs mt-0.5">
+                  Median home value: {hoveredStateSummary.medianHomeValue}
+                </div>
+              )}
+              <div className="text-gray-500 text-[11px] mt-1">
+                {hoveredStateSummary.officialCount} official{hoveredStateSummary.officialCount !== 1 ? 's' : ''} — click to explore
+              </div>
+            </div>
           </div>
-        </div>
       )}
 
       {/* Governor party legend (national view) */}
@@ -624,9 +678,9 @@ export default function USAMap() {
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
           <div className="bg-[#08152a]/95 border border-[#1e3a5f] rounded-lg px-3 py-1.5 text-sm text-white">
             <span className="text-[#c8a951] font-medium">{hoveredCounty.name}</span>
-            {countyByFips[hoveredCounty.fips] && (
+            {hoveredCountyData && (
               <span className="text-gray-400 ml-2 text-xs">
-                {countyByFips[hoveredCounty.fips].officials.length} official{countyByFips[hoveredCounty.fips].officials.length !== 1 ? 's' : ''} tracked
+                {hoveredCountyData.officials.length} official{hoveredCountyData.officials.length !== 1 ? 's' : ''} tracked
               </span>
             )}
           </div>
@@ -798,24 +852,13 @@ export default function USAMap() {
                   </div>
                 )}
 
-                {selectedState === 'FL' && (
-                  <>
-                    <FloridaStateEconomicPanel slice={getStateEconomicSlice()} />
-                    <FloridaRecordPanel
-                      title="Florida Supreme Court opinions"
-                      subtitle="Recent opinions from the Supreme Court of Florida via CourtListener (Free Law Project)."
-                      slice={getJudiciaryCourtsSlice()}
-                    />
-                  </>
-                )}
-
                 {statePoliticians.length > 0 && (
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-2">
                       <div className="flex items-center gap-2">
                         <Users className="h-4 w-4 text-blue-400" />
                         <span className="text-blue-400 text-xs font-semibold uppercase tracking-wider">
-                          {officialsSectionLabel(selectedState, statePoliticians.length)}
+                          {selectedState ? officialsSectionLabel(selectedState, statePoliticians.length) : 'Elected Officials'}
                         </span>
                       </div>
                       {selectedState && statePoliticians.length > MAP_SIDEBAR_OFFICIAL_LIMIT && (
@@ -839,6 +882,20 @@ export default function USAMap() {
                       </Link>
                     )}
                   </div>
+                )}
+
+                {selectedState === 'FL' && (
+                  <>
+                    <FloridaStateEconomicPanel
+                      slice={getStateEconomicSlice()}
+                      collapsedLabels={['Population', 'Unemployment level', 'Employment', 'Labor force']}
+                    />
+                    <FloridaRecordPanel
+                      title="Recent Supreme Court Opinions"
+                      subtitle="Case summaries — click title for full opinion."
+                      slice={getJudiciaryCourtsSlice()}
+                    />
+                  </>
                 )}
 
                 {/* County directory (only when zoomed into state) */}
@@ -879,14 +936,14 @@ export default function USAMap() {
                 )}
 
                 {/* Upcoming elections */}
-                {stateElections.filter(e => e.isUpcoming).length > 0 && (
+                {upcomingStateElections.length > 0 && (
                   <div>
                     <div className="flex items-center gap-2 mb-2">
                       <Calendar className="h-4 w-4 text-[#c8a951]" />
                       <span className="text-[#c8a951] text-xs font-semibold uppercase tracking-wider">Upcoming Elections</span>
                     </div>
                     <div className="space-y-2">
-                      {stateElections.filter(e => e.isUpcoming).map(election => (
+                      {upcomingStateElections.map(election => (
                         <div key={election.id} className="bg-[#0d1f35] rounded-xl p-3 border border-[#1e3a5f]">
                           <div className="text-white text-sm font-medium mb-1">{election.title}</div>
                           <div className="text-[#c8a951] text-xs mb-2">
