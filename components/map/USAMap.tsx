@@ -21,6 +21,7 @@ import {
   MapPin, Building2, ArrowLeft, ExternalLink, History,
 } from 'lucide-react';
 import { Politician, CountyData, CountyElection } from '@/lib/types';
+import type { SnapshotSlice } from '@/lib/data/snapshotTypes';
 
 const GEO_STATES   = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json';
 const GEO_COUNTIES = 'https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json';
@@ -183,6 +184,23 @@ function formatMoney(n: number): string {
   if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
   if (n >= 1_000) return `$${(n / 1_000).toFixed(0)}K`;
   return `$${n}`;
+}
+
+function plainCourtSummary(title: string): string {
+  if (title.startsWith('In Re:')) {
+    const topic = title.replace(/^In Re:\s*/i, '');
+    return `Rulemaking order about ${topic.toLowerCase()}.`;
+  }
+  if (title.includes(' v. State of Florida')) {
+    return 'Criminal appeal where the court reviewed the conviction or sentence.';
+  }
+  if (title.startsWith('The Florida Bar v.')) {
+    return 'Attorney-discipline case brought by The Florida Bar.';
+  }
+  if (title.includes(' v. ')) {
+    return 'Civil dispute where the court resolved a legal question on appeal.';
+  }
+  return 'Florida Supreme Court opinion resolving a statewide legal question.';
 }
 
 function easeInOutCubic(t: number): number {
@@ -457,6 +475,16 @@ export default function USAMap() {
   const selectedCountyData = selectedCounty ? countyByFips[selectedCounty] : null;
   const selectedCountyPending = selectedCounty && !selectedCountyData;
   const hoveredCountyData = hoveredCounty ? countyByFips[hoveredCounty.fips] : undefined;
+  const floridaCourtSlice = useMemo<SnapshotSlice>(() => {
+    const base = getJudiciaryCourtsSlice();
+    return {
+      ...base,
+      records: base.records.map((row) => ({
+        ...row,
+        detail: `${row.detail}. Pattern-based context: ${plainCourtSummary(row.title)}`,
+      })),
+    };
+  }, []);
   const hoveredStateSummary = useMemo(() => {
     if (!hoveredState || mapLevel !== 'national' || selectedState) return null;
     const officials = getPoliticiansForState(hoveredState);
@@ -891,9 +919,9 @@ export default function USAMap() {
                       collapsedLabels={['Population', 'Unemployment level', 'Employment', 'Labor force']}
                     />
                     <FloridaRecordPanel
-                      title="Recent Supreme Court Opinions"
-                      subtitle="Case summaries — click title for full opinion."
-                      slice={getJudiciaryCourtsSlice()}
+                      title="Florida Supreme Court Decisions"
+                      subtitle="Recent opinions with plain-language case context — click title for full text."
+                      slice={floridaCourtSlice}
                     />
                   </>
                 )}

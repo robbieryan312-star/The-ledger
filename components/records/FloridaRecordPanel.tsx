@@ -121,17 +121,28 @@ export function FloridaRecordPanel({ title, subtitle, slice, moreHref = '/source
 }
 
 function EconomicIndicatorCard({ ind }: { ind: StateEconomicSlice['indicators'][0] }) {
+  const display = (() => {
+    if (ind.label !== 'Unemployment rate') return ind;
+    const numeric = Number.parseFloat(ind.value.replace('%', ''));
+    if (!Number.isFinite(numeric)) return ind;
+    return {
+      ...ind,
+      label: 'Employment rate (calculated)',
+      value: `${(100 - numeric).toFixed(1)}%`,
+    };
+  })();
+
   return (
     <div className="bg-[#0a1628] rounded-lg p-3 border border-[#1e3a5f]/60">
-      <dt className="text-[10px] text-gray-500 uppercase tracking-wide">{ind.label}</dt>
-      <dd className="text-white font-bold text-lg mt-0.5">{ind.value}</dd>
-      {ind.period && <dd className="text-[10px] text-gray-500">{ind.period}</dd>}
+      <dt className="text-[10px] text-gray-500 uppercase tracking-wide">{display.label}</dt>
+      <dd className="text-white font-bold text-lg mt-0.5">{display.value}</dd>
+      {display.period && <dd className="text-[10px] text-gray-500">{display.period}</dd>}
       <dd className="mt-1.5">
-        <SourceProvenance source={ind.source} recordDate={ind.period} asOf={ind.asOf} />
+        <SourceProvenance source={display.source} recordDate={display.period} asOf={display.asOf} />
       </dd>
-      {ind.link && (
+      {display.link && (
         <a
-          href={ind.link}
+          href={display.link}
           target="_blank"
           rel="noopener noreferrer"
           className="text-[10px] text-[#c8a951] hover:text-white inline-flex items-center gap-0.5 mt-1"

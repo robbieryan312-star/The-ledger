@@ -14,7 +14,6 @@ import { mergeCampaignFinance, getFecFinanceSnapshot } from '@/lib/data/fecFinan
 import SourceBadge from '@/components/ui/SourceBadge';
 import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
 import { Candidate, Election, Issue, Politician } from '@/lib/types';
-import { ProfileExpandableRow } from '@/components/politicians/ProfileSectionAccordion';
 import { CheckCircle, XCircle, AlertTriangle, MinusCircle, Info } from 'lucide-react';
 
 function formatMoney(n: number): string {
@@ -88,43 +87,6 @@ function isValidPick(pick: string, election?: Election): boolean {
 
 const cardStyle = { background: 'rgba(11,25,41,0.7)', backdropFilter: 'blur(12px)' };
 const headerStyle = { background: 'rgba(5,9,15,0.5)' };
-
-function CompareSideSummary({ side }: { side: CompareSide }) {
-  const [open, setOpen] = useState(false);
-  const politician = side.politician;
-  if (!politician) return null;
-  const score = politician.consistency.overallScore;
-  const promises = politician.consistency.campaignPromises.slice(0, 4);
-
-  return (
-    <ProfileExpandableRow
-      open={open}
-      onToggle={() => setOpen(!open)}
-      borderClass="border-white/[0.08]"
-      header={
-        <div className="text-sm text-white/80 font-medium">
-          {side.displayName} — key metrics &amp; promises
-        </div>
-      }
-      summary={
-        <div className="text-xs text-white/40 mt-1">
-          Consistency: {score === 0 ? 'Insufficient record' : `${score}/100`} · {promises.length} promise{promises.length === 1 ? '' : 's'} tracked
-        </div>
-      }
-    >
-      <div className="pt-2 space-y-2 text-xs">
-        <div className="text-white/50">
-          Party-line votes: {politician.consistency.partyLineVotePercentage}% · Lobbyist alignment: {politician.consistency.lobbyistAlignmentPercentage}%
-        </div>
-        {promises.map((p) => (
-          <div key={p.id} className="text-white/60">
-            <span className="text-white/80">{p.issue}</span> — {p.status}
-          </div>
-        ))}
-      </div>
-    </ProfileExpandableRow>
-  );
-}
 
 function CompareContent() {
   const searchParams = useSearchParams();
@@ -244,11 +206,6 @@ function CompareContent() {
                     </option>
                   ))}
                 </select>
-              )}
-              {resolved?.politician && (
-                <div className="mt-3">
-                  <CompareSideSummary side={resolved} />
-                </div>
               )}
             </div>
           );

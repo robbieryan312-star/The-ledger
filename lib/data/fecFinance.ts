@@ -4,7 +4,6 @@
  */
 import type { CampaignFinance, Source } from '../types';
 import fecSnapshot from './generated/fecFinance.json';
-import nationalFecSnapshot from '../../data/fec/national/congress-finance.json';
 
 export interface FecFinanceEntry {
   politicianId: string;
@@ -41,38 +40,14 @@ export interface FecFinanceSnapshot {
 
 const snapshot = fecSnapshot as FecFinanceSnapshot;
 
-interface NationalFecSnapshotMeta {
-  source: Source;
-  asOf: string;
-  fetchedAt?: string;
-  membersQueried?: number;
-  withFinanceData?: number;
-  failureCount?: number;
-  keyConfigured?: boolean;
-  note?: string;
-}
-
-interface NationalFecSnapshot {
-  meta: NationalFecSnapshotMeta;
-  byBioguideId: Record<string, FecFinanceEntry>;
-}
-
-const nationalSnapshot = nationalFecSnapshot as NationalFecSnapshot;
-
 export function getFecFinanceSnapshot(): FecFinanceSnapshot {
   return snapshot;
-}
-
-export function getNationalFecSnapshot(): NationalFecSnapshot {
-  return nationalSnapshot;
 }
 
 function lookupFecEntry(politicianId: string, bioguideId?: string): FecFinanceEntry | undefined {
   return (
     snapshot.byPoliticianId[politicianId] ??
-    (bioguideId ? snapshot.byPoliticianId[bioguideId] : undefined) ??
-    (bioguideId ? nationalSnapshot.byBioguideId[bioguideId] : undefined) ??
-    nationalSnapshot.byBioguideId[politicianId]
+    (bioguideId ? snapshot.byPoliticianId[bioguideId] : undefined)
   );
 }
 
@@ -85,9 +60,7 @@ export function hasFecFinance(politicianId: string, bioguideId?: string): boolea
 }
 
 export function fecFinanceCount(): number {
-  const featured = new Set(Object.keys(snapshot.byPoliticianId));
-  const nationalOnly = Object.keys(nationalSnapshot.byBioguideId).filter((id) => !featured.has(id));
-  return featured.size + nationalOnly.length;
+  return Object.keys(snapshot.byPoliticianId).length;
 }
 
 /** Overlay official FEC totals onto a profile finance block (featured or national). */

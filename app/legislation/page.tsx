@@ -130,8 +130,7 @@ function BillCard({ bill }: { bill: Bill }) {
       <h3 className="text-white text-sm font-medium leading-snug mb-1">{bill.title}</h3>
 
       <p className="text-gray-400 text-xs leading-relaxed mb-2">
-        <span className="text-white/50 font-medium">What it does: </span>
-        {bill.latestAction.detail ?? bill.title}
+        {bill.latestAction.detail}
       </p>
 
       {bill.latestAction.detail && bill.latestAction.detail !== bill.title && (

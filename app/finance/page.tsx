@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import FinanceContent from './FinanceContent';
 import Link from 'next/link';
 import { mockPoliticians } from '@/lib/data/mockPoliticians';
-import { fecFinanceCount, getNationalFecSnapshot, mergeCampaignFinance } from '@/lib/data/fecFinance';
+import { fecFinanceCount, mergeCampaignFinance } from '@/lib/data/fecFinance';
 
 export const metadata = {
   title: 'Follow the Money — The Ledger',
@@ -28,7 +28,7 @@ export default async function FinancePage({
   }));
   const totalRaised = featuredFinance.reduce((sum, row) => sum + row.merged.finance.totalRaised, 0);
   const fecBackedFeatured = featuredFinance.filter((row) => !!row.merged.fecEntry).length;
-  const nationalFinanceCount = getNationalFecSnapshot().meta.withFinanceData ?? fecFinanceCount();
+  const nationalFinanceCount = fecFinanceCount();
 
   return (
     <>
