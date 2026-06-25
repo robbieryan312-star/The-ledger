@@ -199,14 +199,16 @@ source #8 (Ballotpedia / state SoS) once a key/feed is chosen.
 
 ### API keys the owner should request next
 
-To turn the remaining mock fields into real data, sign up for:
+Most Sprint 1 keys are **already wired** in `.env.local`. Remaining optional keys:
 
-1. ~~**FEC / OpenFEC** — campaign finance.~~ ✅ **Integrated** — set `FEC_API_KEY` in `.env.local`, run `npm run sync:fec`.
-2. **Congress.gov API** — roll-call votes, sponsorship, committees. Request a key
-   at `api.congress.gov` (api.data.gov). (GovTrack bulk is a no-key Tier-2 fallback.)
-3. **ProPublica Congress API** — votes/positions corroboration. Request at
-   ProPublica's data store. (Optional second source for the corroboration rule.)
-4. Stock trades use **Senate eFD** + **House Clerk** disclosures (no key). Run `npm run sync:stock-trades` for the integration stub; see generated `stockTrades.json` `nextSteps`.
+1. ~~**FEC / OpenFEC**~~ ✅ Integrated — `FEC_API_KEY`, `npm run sync:fec` + `sync:fec-national`
+2. ~~**Congress.gov API**~~ ✅ Integrated — `CONGRESS_API_KEY`, `sync:votes` + `sync:votes-national`
+3. ~~**Census, LegiScan, OpenStates, NewsAPI**~~ ✅ Integrated for Florida ingests
+4. **GitHub Actions secrets** — run `gh auth login` then `./scripts/setup-github-secrets.sh` so production auto-refreshes keyed sources
+5. **DATAVERSE_API_TOKEN** — MIT Election Lab (guestbook-gated)
+6. **OPENSECRETS_API_KEY** — industry/donor aggregates (emailed)
+7. **SAM_API_KEY** — login.gov identity verification
+8. Stock trades: **House PTR** via `npm run sync:stock-trades` (no key). Senate eFD still maintenance (503).
 
 ---
 
@@ -229,6 +231,15 @@ continue to show **demo-labeled** mock trades until official PTR parsing lands.
 - ✅ `scripts/sync-legislators.ts` (`npm run sync:legislators`) fetches the dataset
   and writes `lib/data/generated/currentLegislators.json` (537 members, as-of date,
   Tier-1 source metadata). No API key.
+- ✅ **Florida data pipeline** — 17+ sources in `/data/<source>/florida-*.json` with
+  ingest scripts (`npm run ingest:*-fl`), daily refresh via `.github/workflows/refresh-data.yml`,
+  `/sources` explorer, and per-page data slices (`lib/data/generated/slices/`).
+- ✅ API keys integrated locally: FEC, Congress, Census, DATA_GOV, LegiScan, OpenStates, NewsAPI.
+- ✅ **Sprint 1 (2026-06-24):** National FEC + votes sync scripts (`npm run sync:fec-national`,
+  `npm run sync:votes-national`, `npm run sync:fec-schedule-a`); merge layers read
+  `data/fec/national/` and `data/votes/national/` by `bioguideId` for all 537 Congress members;
+  Follow the Money v1 (`FollowTheMoneyPanel`); House PTR extended to full House roster in
+  `sync:stock-trades`. GitHub Actions secrets: run `scripts/setup-github-secrets.sh` after `gh auth login`.
 - ✅ `lib/data/officeResolution.ts` implements recency resolution + corroboration,
   extended to resolve **governors** against the curated NGA roster.
 - ✅ `lib/data/generatedPoliticians.ts` builds lightweight, real-sourced records for

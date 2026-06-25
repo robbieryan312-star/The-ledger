@@ -7,7 +7,7 @@
  *
  * Run with: npm run sync:stock-trades
  */
-import { mkdir, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { mockPoliticians } from '../lib/data/mockPoliticians';
@@ -28,6 +28,16 @@ import type { StockTradeEntry, StockTradesSnapshot } from '../lib/data/stockTrad
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
 const OUT_FILE = path.join(OUT_DIR, 'stockTrades.json');
+const LEGISLATORS_FILE = path.join(projectRoot, 'lib', 'data', 'generated', 'currentLegislators.json');
+
+interface LegislatorRow {
+  bioguideId: string;
+  firstName: string;
+  lastName: string;
+  stateCode: string;
+  chamber: string;
+  district?: string;
+}
 
 const HOUSE_INDEX_YEARS = [2024, 2025, 2026];
 const MAX_HOUSE_FILINGS_PER_MEMBER = 10;
@@ -93,9 +103,33 @@ async function probeSenateEfd(retries = 2): Promise<{ reachable: boolean; error?
 
 async function main(): Promise<void> {
   const asOf = new Date().toISOString().slice(0, 10);
+
+  const legislatorsRaw = JSON.parse(await readFile(LEGISLATORS_FILE, 'utf8')) as {
+    legislators: LegislatorRow[];
+  };
+  const houseFromRoster = legislatorsRaw.legislators
+    .filter((l) => l.chamber === 'house')
+    .map((l) => ({
+      id: l.bioguideId,
+      bioguideId: l.bioguideId,
+      lastName: l.lastName,
+      stateCode: l.stateCode,
+      district: l.district,
+      chamber: 'house' as const,
+    }));
+
   const featured = mockPoliticians.filter((p) => p.chamber === 'house' || p.chamber === 'senate');
-  const houseMembers = featured.filter((p) => p.chamber === 'house');
+  const featuredIds = new Set(featured.map((p) => p.id));
+  const featuredBioguides = new Set(featured.map((p) => p.bioguideId).filter(Boolean));
+
+  const houseMembers = [
+    ...featured.filter((p) => p.chamber === 'house'),
+    ...houseFromRoster.filter(
+      (h) => !featuredIds.has(h.id) && !featuredBioguides.has(h.bioguideId),
+    ),
+  ];
   const senateMembers = featured.filter((p) => p.chamber === 'senate');
+  const allTargets = [...houseMembers, ...senateMembers];
 
   const senateProbe = await probeSenateEfd();
   let senateError: string | undefined = senateProbe.error;
@@ -104,7 +138,7 @@ async function main(): Promise<void> {
 
   const byPoliticianId: Record<string, StockTradeEntry> = {};
 
-  for (const p of featured) {
+  for (const p of allTargets) {
     byPoliticianId[p.id] = {
       politicianId: p.id,
       bioguideId: p.bioguideId,
@@ -116,25 +150,31 @@ async function main(): Promise<void> {
     };
   }
 
-  console.log(`Syncing House PTRs for ${houseMembers.length} featured representatives…`);
+  console.log(`Syncing House PTRs for ${houseMembers.length} representatives (national roster + featured)…`);
   for (const p of houseMembers) {
-    const { trades, filingsParsed } = await syncHousePtrForTarget(houseTarget(p), HOUSE_INDEX_YEARS, {
-      maxFilings: MAX_HOUSE_FILINGS_PER_MEMBER,
-      sinceDate: PTR_SINCE_DATE,
-    });
-    houseFilingsParsed += filingsParsed;
-    totalOfficialTrades += trades.length;
+    try {
+      const { trades, filingsParsed } = await syncHousePtrForTarget(houseTarget(p), HOUSE_INDEX_YEARS, {
+        maxFilings: MAX_HOUSE_FILINGS_PER_MEMBER,
+        sinceDate: PTR_SINCE_DATE,
+      });
+      houseFilingsParsed += filingsParsed;
+      totalOfficialTrades += trades.length;
 
-    const entry = byPoliticianId[p.id];
-    entry.trades = trades;
-    if (trades.length > 0) {
-      entry.note = `${trades.length} official PTR transaction(s) from House Clerk filings (Tier 1).`;
-    } else {
-      entry.note =
-        'No House PTR filings matched this member in the synced index window — profile demo trades (if any) remain labeled separately.';
+      const entry = byPoliticianId[p.id];
+      entry.trades = trades;
+      if (trades.length > 0) {
+        entry.note = `${trades.length} official PTR transaction(s) from House Clerk filings (Tier 1).`;
+      } else {
+        entry.note =
+          'No House PTR filings matched this member in the synced index window — profile demo trades (if any) remain labeled separately.';
+      }
+      console.log(`  ${p.id}: ${trades.length} trade(s)`);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      console.warn(`  ${p.id}: House PTR fetch failed (${msg})`);
+      byPoliticianId[p.id].note = `House PTR sync error for this member (${msg}). Demo trades on profile, if any, are labeled separately.`;
     }
-    console.log(`  ${p.id}: ${trades.length} trade(s)`);
-    await sleep(150);
+    await sleep(200);
   }
 
   if (senateProbe.reachable) {
@@ -169,7 +209,7 @@ async function main(): Promise<void> {
 
   const withTradeData = Object.values(byPoliticianId).filter((e) => e.trades.length > 0).length;
   const integrationStatus: StockTradesSnapshot['meta']['integrationStatus'] =
-    withTradeData === 0 ? 'stub' : withTradeData < featured.length ? 'partial' : 'live';
+    withTradeData === 0 ? 'stub' : withTradeData < allTargets.length ? 'partial' : 'live';
 
   const nextSteps: string[] = [];
   if (!senateProbe.reachable || senateError?.includes('503') || senateError?.includes('maintenance')) {
@@ -188,7 +228,7 @@ async function main(): Promise<void> {
   const snapshot: StockTradesSnapshot = {
     meta: {
       asOf,
-      featuredQueried: featured.length,
+      featuredQueried: allTargets.length,
       withTradeData,
       integrationStatus,
       note:
@@ -208,7 +248,7 @@ async function main(): Promise<void> {
   await writeFile(OUT_FILE, JSON.stringify(snapshot, null, 2) + '\n', 'utf8');
 
   console.log(`\nWrote ${OUT_FILE}`);
-  console.log(`  featured Congress members: ${featured.length}`);
+  console.log(`  Congress members queried: ${allTargets.length}`);
   console.log(`  politicians with official trades: ${withTradeData}`);
   console.log(`  total official trades: ${totalOfficialTrades}`);
   console.log(`  integration status: ${integrationStatus}`);

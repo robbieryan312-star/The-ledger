@@ -15,14 +15,21 @@ const EVIDENCE_TYPE_STYLE: Record<string, string> = {
 };
 
 function previewText(item: EvidenceItem): string {
-  const text = item.description;
+  const text = item.quote && (item.source.tier === 'official' || item.type === 'quote')
+    ? item.quote
+    : item.description;
+  if (item.source.tier === 'official' || item.type === 'vote' || item.type === 'legislation') {
+    return text;
+  }
   if (text.length <= 120) return text;
   return `${text.slice(0, 117)}…`;
 }
 
 export default function ExpandableEvidenceRow({ item }: { item: EvidenceItem }) {
   const [open, setOpen] = useState(false);
-  const hasDetail = Boolean(item.quote) || item.description.length > 120;
+  const hasDetail =
+    Boolean(item.quote) ||
+    (item.source.tier !== 'official' && item.type !== 'vote' && item.type !== 'legislation' && item.description.length > 120);
   const typeStyle = EVIDENCE_TYPE_STYLE[item.type] || EVIDENCE_TYPE_STYLE.statement;
 
   if (!hasDetail) {

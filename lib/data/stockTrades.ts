@@ -39,12 +39,15 @@ export function getStockTradesSnapshot(): StockTradesSnapshot {
   return snapshot;
 }
 
-export function getOfficialStockTrades(politicianId: string): StockTradeEntry | undefined {
-  return snapshot.byPoliticianId[politicianId];
+export function getOfficialStockTrades(politicianId: string, bioguideId?: string): StockTradeEntry | undefined {
+  return (
+    snapshot.byPoliticianId[politicianId] ??
+    (bioguideId ? snapshot.byPoliticianId[bioguideId] : undefined)
+  );
 }
 
-export function hasOfficialStockTrades(politicianId: string): boolean {
-  const entry = snapshot.byPoliticianId[politicianId];
+export function hasOfficialStockTrades(politicianId: string, bioguideId?: string): boolean {
+  const entry = getOfficialStockTrades(politicianId, bioguideId);
   return !!entry && entry.trades.length > 0;
 }
 
@@ -64,17 +67,14 @@ export function mergeStockTrades(
   politicianId: string,
   demoTrades: StockTrade[],
   recordType?: 'featured' | 'lightweight',
+  bioguideId?: string,
 ): {
   trades: StockTrade[];
   officialEntry?: StockTradeEntry;
   usingOfficialTrades: boolean;
   demoTradeCount: number;
 } {
-  if (recordType === 'lightweight') {
-    return { trades: [], usingOfficialTrades: false, demoTradeCount: 0 };
-  }
-
-  const official = getOfficialStockTrades(politicianId);
+  const official = getOfficialStockTrades(politicianId, bioguideId);
   const officialTrades = official?.trades ?? [];
 
   if (officialTrades.length > 0) {
@@ -86,6 +86,10 @@ export function mergeStockTrades(
       usingOfficialTrades: true,
       demoTradeCount: 0,
     };
+  }
+
+  if (recordType === 'lightweight') {
+    return { trades: [], usingOfficialTrades: false, demoTradeCount: 0 };
   }
 
   return {

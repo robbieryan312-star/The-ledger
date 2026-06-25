@@ -31,16 +31,6 @@ const navItems = [
     ],
   },
   {
-    label: 'Legislation',
-    href: '/legislation',
-    sub: [
-      { label: 'Upcoming Legislation', href: '/legislation' },
-      { label: 'House Bills', href: '/legislation?chamber=house' },
-      { label: 'Senate Bills', href: '/legislation?chamber=senate' },
-      { label: 'Passed a Chamber', href: '/legislation?status=passed_one_chamber' },
-    ],
-  },
-  {
     label: 'Follow the Money',
     href: '/finance',
     sub: [
@@ -53,6 +43,16 @@ const navItems = [
   },
   { label: 'Compare', href: '/compare' },
   { label: 'Sources', href: '/sources' },
+  {
+    label: 'Legislation',
+    href: '/legislation',
+    sub: [
+      { label: 'Upcoming Legislation', href: '/legislation' },
+      { label: 'House Bills', href: '/legislation?chamber=house' },
+      { label: 'Senate Bills', href: '/legislation?chamber=senate' },
+      { label: 'Passed a Chamber', href: '/legislation?status=passed_one_chamber' },
+    ],
+  },
 ];
 
 export default function Navigation() {

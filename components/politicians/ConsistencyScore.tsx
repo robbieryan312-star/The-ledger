@@ -154,13 +154,25 @@ export default function ConsistencyScore({ data, name }: { data: ConsistencyData
       <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#1e3a5f]">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-6">
           <div className="flex items-center gap-4 flex-shrink-0">
-            <div className={`text-4xl font-bold tabular-nums leading-none ${scoreColor(data.overallScore)}`}>
-              {data.overallScore}
-            </div>
-            <div>
-              <div className="text-white font-semibold text-sm">Consistency Score</div>
-              <div className="text-xs text-gray-400">Statement-to-action alignment for {lastName}</div>
-            </div>
+            {data.overallScore === 0 ? (
+              <div>
+                <div className="text-sm font-semibold text-gray-400">Insufficient record to score</div>
+                <div className="text-xs text-gray-600 mt-0.5 max-w-[220px]">
+                  Score reflects documented votes and public statements. A thin record is shown honestly — not scored as zero.{' '}
+                  <span title="The consistency score is computed from matched statement/vote pairs in our dataset. Members with few on-record statements or votes will not have enough data to generate a reliable score." className="cursor-help underline decoration-dotted">Why?</span>
+                </div>
+              </div>
+            ) : (
+              <>
+                <div className={`text-4xl font-bold tabular-nums leading-none ${scoreColor(data.overallScore)}`}>
+                  {data.overallScore}
+                </div>
+                <div>
+                  <div className="text-white font-semibold text-sm">Consistency Score</div>
+                  <div className="text-xs text-gray-400">Statement-to-action alignment for {lastName}</div>
+                </div>
+              </>
+            )}
           </div>
 
           <div className="hidden md:block w-px self-stretch min-h-[3rem] bg-[#1e3a5f] flex-shrink-0" />

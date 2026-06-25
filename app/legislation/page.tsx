@@ -127,14 +127,25 @@ function BillCard({ bill }: { bill: Bill }) {
         )}
       </div>
 
-      <h3 className="text-white text-sm font-medium leading-snug mb-2">{bill.title}</h3>
+      <h3 className="text-white text-sm font-medium leading-snug mb-1">{bill.title}</h3>
+
+      <p className="text-gray-400 text-xs leading-relaxed mb-2">
+        <span className="text-white/50 font-medium">What it does: </span>
+        {bill.latestAction.detail ?? bill.title}
+      </p>
+
+      {bill.latestAction.detail && bill.latestAction.detail !== bill.title && (
+        <p className="text-gray-500 text-xs leading-relaxed mt-0 mb-2 italic">
+          Latest action: {bill.latestAction.text}
+        </p>
+      )}
 
       <SponsorLine bill={bill} />
 
       <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
         <span>
-          Latest action: <span className="text-gray-300">{bill.latestAction.text}</span>{' '}
-          <span className="text-gray-500">· {formatDate(bill.latestAction.date)}</span>
+          Latest action: <span className="text-gray-400">{bill.latestAction.text}</span>{' '}
+          <span className="text-gray-600">· {formatDate(bill.latestAction.date)}</span>
         </span>
         <span>Introduced {formatDate(bill.introducedDate)}</span>
         {bill.cosponsorCount != null && (
@@ -142,21 +153,14 @@ function BillCard({ bill }: { bill: Bill }) {
         )}
       </div>
 
-      {bill.latestAction.detail && (
-        <p className="text-gray-500 text-xs leading-relaxed mt-2 border-l-2 border-[#1e3a5f] pl-2">
-          {bill.latestAction.detail}{' '}
-          <span className="text-gray-600">(status summary — GovTrack)</span>
-        </p>
-      )}
-
       <div className="flex items-center gap-3 mt-3 pt-3 border-t border-[#1e3a5f] flex-wrap">
         <a
           href={bill.congressGovUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-xs text-[#c8a951]/90 hover:text-[#c8a951] font-medium transition-colors"
+          className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-gray-300 transition-colors"
         >
-          Congress.gov <ExternalLink className="h-2.5 w-2.5" />
+          Read full text <ExternalLink className="h-2.5 w-2.5" />
         </a>
         <span className="text-gray-700">·</span>
         <a

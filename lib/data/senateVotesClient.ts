@@ -72,10 +72,7 @@ function menuUrl(congress: number, session: number): string {
   return `https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_${congress}_${session}.xml`;
 }
 
-export async function fetchLisToBioguideMap(): Promise<Map<string, string>> {
-  const res = await fetch(LEGISLATORS_URL);
-  if (!res.ok) throw new Error(`legislators-current fetch failed: HTTP ${res.status}`);
-  const raw = (await res.json()) as Array<{ id: RawLegislatorId }>;
+function lisMapFromRaw(raw: Array<{ id: RawLegislatorId }>): Map<string, string> {
   const map = new Map<string, string>();
   for (const leg of raw) {
     if (leg.id.lis && leg.id.bioguide) {
@@ -83,6 +80,55 @@ export async function fetchLisToBioguideMap(): Promise<Map<string, string>> {
     }
   }
   return map;
+}
+
+async function fetchLisMapFromNetwork(retries = 3): Promise<Map<string, string>> {
+  let lastErr: unknown;
+  for (let attempt = 0; attempt < retries; attempt++) {
+    try {
+      const res = await fetch(LEGISLATORS_URL);
+      if (!res.ok) throw new Error(`legislators-current fetch failed: HTTP ${res.status}`);
+      const raw = (await res.json()) as Array<{ id: RawLegislatorId }>;
+      return lisMapFromRaw(raw);
+    } catch (err) {
+      lastErr = err;
+      if (attempt < retries - 1) {
+        await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
+      }
+    }
+  }
+  throw lastErr;
+}
+
+async function fetchLisMapFromLocalSnapshot(): Promise<Map<string, string> | null> {
+  try {
+    const { readFile } = await import('node:fs/promises');
+    const { fileURLToPath } = await import('node:url');
+    const path = await import('node:path');
+    const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+    const file = path.join(root, 'lib', 'data', 'generated', 'currentLegislators.json');
+    const data = JSON.parse(await readFile(file, 'utf8')) as {
+      legislators?: Array<{ bioguideId: string; lisId?: string }>;
+    };
+    const map = new Map<string, string>();
+    for (const leg of data.legislators ?? []) {
+      if (leg.lisId && leg.bioguideId) map.set(leg.lisId, leg.bioguideId);
+    }
+    return map.size > 0 ? map : null;
+  } catch {
+    return null;
+  }
+}
+
+export async function fetchLisToBioguideMap(): Promise<Map<string, string>> {
+  const local = await fetchLisMapFromLocalSnapshot();
+  if (local && local.size >= 90) return local;
+  try {
+    return await fetchLisMapFromNetwork();
+  } catch (err) {
+    if (local && local.size > 0) return local;
+    throw err;
+  }
 }
 
 export async function fetchSenateVoteMenu(congress: number, session: number): Promise<SenateVoteMenuItem[]> {

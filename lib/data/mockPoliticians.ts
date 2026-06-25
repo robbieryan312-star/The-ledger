@@ -1102,7 +1102,7 @@ export const mockPoliticians: Politician[] = [
       totalRaised: 216000000,
       totalSpent: 192000000,
       cashOnHand: 24000000,
-      cycle: '2022 Gubernatorial + 2024 Presidential',
+      cycle: '2022 Gubernatorial (state finance — not federal FEC PAC totals; figures below are illustrative until state finance integration)',
       donors: [
         { id: 'des-d1', name: 'Ken Griffin', type: 'Individual', amount: 5000000, date: '2022-06-15', occupation: 'Hedge Fund Manager', employer: 'Citadel LLC', isLobbyist: false },
         { id: 'des-d2', name: 'Miriam Adelson', type: 'Individual', amount: 4500000, date: '2022-08-20', occupation: 'Physician / Philanthropist', isLobbyist: false },
@@ -1122,7 +1122,7 @@ export const mockPoliticians: Politician[] = [
       ],
       foreignPAC: [],
       individualDonations: 98000000,
-      pacDonations: 118000000,
+      pacDonations: 0,
       selfFunding: 0,
     },
     stockTrades: desantisStockTrades,

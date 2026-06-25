@@ -14,6 +14,7 @@ import { mergeCampaignFinance, getFecFinanceSnapshot } from '@/lib/data/fecFinan
 import SourceBadge from '@/components/ui/SourceBadge';
 import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
 import { Candidate, Election, Issue, Politician } from '@/lib/types';
+import { ProfileExpandableRow } from '@/components/politicians/ProfileSectionAccordion';
 import { CheckCircle, XCircle, AlertTriangle, MinusCircle, Info } from 'lucide-react';
 
 function formatMoney(n: number): string {
@@ -88,6 +89,43 @@ function isValidPick(pick: string, election?: Election): boolean {
 const cardStyle = { background: 'rgba(11,25,41,0.7)', backdropFilter: 'blur(12px)' };
 const headerStyle = { background: 'rgba(5,9,15,0.5)' };
 
+function CompareSideSummary({ side }: { side: CompareSide }) {
+  const [open, setOpen] = useState(false);
+  const politician = side.politician;
+  if (!politician) return null;
+  const score = politician.consistency.overallScore;
+  const promises = politician.consistency.campaignPromises.slice(0, 4);
+
+  return (
+    <ProfileExpandableRow
+      open={open}
+      onToggle={() => setOpen(!open)}
+      borderClass="border-white/[0.08]"
+      header={
+        <div className="text-sm text-white/80 font-medium">
+          {side.displayName} — key metrics &amp; promises
+        </div>
+      }
+      summary={
+        <div className="text-xs text-white/40 mt-1">
+          Consistency: {score === 0 ? 'Insufficient record' : `${score}/100`} · {promises.length} promise{promises.length === 1 ? '' : 's'} tracked
+        </div>
+      }
+    >
+      <div className="pt-2 space-y-2 text-xs">
+        <div className="text-white/50">
+          Party-line votes: {politician.consistency.partyLineVotePercentage}% · Lobbyist alignment: {politician.consistency.lobbyistAlignmentPercentage}%
+        </div>
+        {promises.map((p) => (
+          <div key={p.id} className="text-white/60">
+            <span className="text-white/80">{p.issue}</span> — {p.status}
+          </div>
+        ))}
+      </div>
+    </ProfileExpandableRow>
+  );
+}
+
 function CompareContent() {
   const searchParams = useSearchParams();
   const defaultA = mockPoliticians[0]?.id || '';
@@ -130,10 +168,10 @@ function CompareContent() {
   const sideB = useMemo(() => resolveSide(bPick, activeElection), [bPick, activeElection]);
 
   const financeA = sideA?.politician
-    ? mergeCampaignFinance(sideA.politician.id, sideA.politician.campaignFinance)
+    ? mergeCampaignFinance(sideA.politician.id, sideA.politician.campaignFinance, sideA.politician.bioguideId)
     : null;
   const financeB = sideB?.politician
-    ? mergeCampaignFinance(sideB.politician.id, sideB.politician.campaignFinance)
+    ? mergeCampaignFinance(sideB.politician.id, sideB.politician.campaignFinance, sideB.politician.bioguideId)
     : null;
   const fecMeta = getFecFinanceSnapshot().meta;
 
@@ -165,8 +203,9 @@ function CompareContent() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white mb-2">Compare Politicians</h1>
-        <p className="text-white/40">The two-party system has turned politics into a tribal identity. While voters dig deeper into opposing camps, the politicians at the top often have more in common than either side realizes. Find the candidate who actually shares your values — not just your team.</p>
+        <h1 className="text-3xl font-bold text-white mb-2">Compare officials across the field.</h1>
+        <p className="text-white/60 text-base mb-1">Side-by-side votes, money, and stated positions — fact for fact, no spin.</p>
+        <p className="text-white/35 text-sm">No framing, no spin. Select two officials and let the record speak.</p>
         {electionContext && (
           <p className="text-[#c8a951] text-sm mt-2">
             Comparing candidates from: {electionContext}
@@ -174,7 +213,7 @@ function CompareContent() {
         )}
       </div>
 
-      <div className="grid grid-cols-2 gap-4 mb-8">
+      <div className="grid grid-cols-2 gap-6 mb-8">
         {(['a', 'b'] as const).map((side) => {
           const pick = side === 'a' ? aPick : bPick;
           const other = side === 'a' ? bPick : aPick;
@@ -184,19 +223,19 @@ function CompareContent() {
 
           return (
             <div key={side}>
-              <label className="text-white/35 text-xs font-medium uppercase tracking-wider mb-2 block">
-                Candidate {side.toUpperCase()}
+              <label className="text-[#c8a951] text-xs font-semibold uppercase tracking-widest mb-3 block">
+                Official {side.toUpperCase()}
               </label>
               {isCandidatePick(pick) && resolved ? (
-                <div className="w-full rounded-xl px-4 py-3 text-sm border border-white/[0.08] text-white/80" style={selectStyle}>
+                <div className="w-full rounded-2xl px-5 py-5 text-lg font-semibold border border-[#c8a951]/30 text-white shadow-lg shadow-[#c8a951]/5" style={selectStyle}>
                   {resolved.displayName}
-                  <span className="block text-[10px] text-gray-500 mt-0.5">Election profile — full record not yet integrated</span>
+                  <span className="block text-[11px] text-gray-500 mt-1">Election profile — full record not yet integrated</span>
                 </div>
               ) : (
                 <select
                   value={selectValue}
                   onChange={(e) => setPick(e.target.value)}
-                  className="w-full rounded-xl px-4 py-3 text-sm focus:outline-none"
+                  className="w-full rounded-2xl px-5 py-5 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[#c8a951]/50 border border-[#c8a951]/25 hover:border-[#c8a951]/60 transition-colors shadow-lg shadow-[#c8a951]/5"
                   style={selectStyle}
                 >
                   {mockPoliticians.map((p) => (
@@ -205,6 +244,11 @@ function CompareContent() {
                     </option>
                   ))}
                 </select>
+              )}
+              {resolved?.politician && (
+                <div className="mt-3">
+                  <CompareSideSummary side={resolved} />
+                </div>
               )}
             </div>
           );

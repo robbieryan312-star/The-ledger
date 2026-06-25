@@ -120,36 +120,62 @@ export function FloridaRecordPanel({ title, subtitle, slice, moreHref = '/source
   );
 }
 
-export function FloridaStateEconomicPanel({ slice }: { slice: StateEconomicSlice }) {
+function EconomicIndicatorCard({ ind }: { ind: StateEconomicSlice['indicators'][0] }) {
+  return (
+    <div className="bg-[#0a1628] rounded-lg p-3 border border-[#1e3a5f]/60">
+      <dt className="text-[10px] text-gray-500 uppercase tracking-wide">{ind.label}</dt>
+      <dd className="text-white font-bold text-lg mt-0.5">{ind.value}</dd>
+      {ind.period && <dd className="text-[10px] text-gray-500">{ind.period}</dd>}
+      <dd className="mt-1.5">
+        <SourceProvenance source={ind.source} recordDate={ind.period} asOf={ind.asOf} />
+      </dd>
+      {ind.link && (
+        <a
+          href={ind.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[10px] text-[#c8a951] hover:text-white inline-flex items-center gap-0.5 mt-1"
+        >
+          Source record <ExternalLink className="h-2.5 w-2.5" />
+        </a>
+      )}
+    </div>
+  );
+}
+
+export function FloridaStateEconomicPanel({
+  slice,
+  collapsedLabels = [],
+}: {
+  slice: StateEconomicSlice;
+  collapsedLabels?: string[];
+}) {
   if (!slice.indicators.length) return null;
+  const visible = slice.indicators.filter((ind) => !collapsedLabels.includes(ind.label));
+  const collapsed = slice.indicators.filter((ind) => collapsedLabels.includes(ind.label));
   return (
     <section className="bg-[#0d1f35] rounded-xl border border-[#1e3a5f] p-4 mb-4">
       <h3 className="text-white font-semibold text-sm mb-1">
-        {slice.stateName} — official demographics & labor
+        {slice.stateName} — By the Numbers
       </h3>
       <MetaStrip meta={slice.meta} />
-      <dl className="grid grid-cols-2 gap-3 mt-2">
-        {slice.indicators.map((ind) => (
-          <div key={ind.label} className="bg-[#0a1628] rounded-lg p-3 border border-[#1e3a5f]/60">
-            <dt className="text-[10px] text-gray-500 uppercase tracking-wide">{ind.label}</dt>
-            <dd className="text-white font-bold text-lg mt-0.5">{ind.value}</dd>
-            {ind.period && <dd className="text-[10px] text-gray-500">{ind.period}</dd>}
-            <dd className="mt-1.5">
-              <SourceProvenance source={ind.source} recordDate={ind.period} asOf={ind.asOf} />
-            </dd>
-            {ind.link && (
-              <a
-                href={ind.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[10px] text-[#c8a951] hover:text-white inline-flex items-center gap-0.5 mt-1"
-              >
-                Source record <ExternalLink className="h-2.5 w-2.5" />
-              </a>
-            )}
-          </div>
+      <dl className="grid grid-cols-3 gap-2 mt-2">
+        {visible.map((ind) => (
+          <EconomicIndicatorCard key={ind.label} ind={ind} />
         ))}
       </dl>
+      {collapsed.length > 0 && (
+        <details className="mt-3">
+          <summary className="text-[11px] text-gray-500 cursor-pointer hover:text-gray-300 select-none">
+            Workforce detail ▸
+          </summary>
+          <dl className="grid grid-cols-2 gap-2 mt-2">
+            {collapsed.map((ind) => (
+              <EconomicIndicatorCard key={ind.label} ind={ind} />
+            ))}
+          </dl>
+        </details>
+      )}
     </section>
   );
 }

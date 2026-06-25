@@ -28,7 +28,7 @@ export default function HomePage() {
                 <span className="text-[11px] text-white/60 tracking-wide uppercase">Official Records · Every Source Verified</span>
               </div>
               <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-1 drop-shadow-lg">
-                Explore Your Political Landscape
+                The record speaks for itself.
               </h1>
               <p className="text-sm text-white/45 max-w-lg mx-auto">
                 Click any state to zoom in · Select a county · Search by ZIP, politician, or county name
@@ -44,7 +44,10 @@ export default function HomePage() {
               <Shield className="h-6 w-6 text-[#c8a951] flex-shrink-0 mt-0.5" />
               <div className="space-y-3">
                 <p className="text-white text-base sm:text-lg font-semibold leading-snug">
-                  Your elected officials make decisions that shape your daily life — yet most voters know more about celebrities than the people casting those votes. The Ledger puts every politician&apos;s record, funding, and promises in one place. Nonpartisan. Verified. Because democracy only works when voters are informed.
+                  Every vote, every dollar, every promise — sourced, dated, and yours to judge.
+                </p>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  Know who really represents you. The Ledger puts every politician&apos;s record, funding, and public statements in one place. Nonpartisan. Verified. No spin.
                 </p>
               </div>
             </div>
