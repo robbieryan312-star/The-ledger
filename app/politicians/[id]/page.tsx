@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { notFound } from 'next/navigation';
 import { getPoliticianById } from '@/lib/data/allPoliticians';
 import { resolveCurrentOffice, EXECUTIVE_CHAMBERS, JUDICIAL_CHAMBERS } from '@/lib/data/officeResolution';
@@ -25,6 +25,7 @@ import SourceTierHelp from '@/components/ui/SourceTierHelp';
 import ControversySection from '@/components/politicians/ControversySection';
 import ProfileNewsExplorer from '@/components/politicians/ProfileNewsExplorer';
 import VoteviewIdeologyPanel from '@/components/records/VoteviewIdeologyPanel';
+import FollowTheMoneyPanel from '@/components/finance/FollowTheMoneyPanel';
 import { FloridaNewsSections } from '@/components/records/FloridaRecordPanel';
 import { getVoteviewByBioguide } from '@/lib/data/slices/voteview';
 import { getNewsFloridaBundle } from '@/lib/data/slices/newsFlorida';
@@ -460,14 +461,18 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
   const { id } = use(params);
   const { tab } = use(searchParams);
   const politician = getPoliticianById(id);
+  const [activeTab, setActiveTab] = useState('overview');
+
+  useEffect(() => {
+    if (!politician) return;
+    const isExecutive = EXECUTIVE_CHAMBERS.includes(politician.chamber);
+    setActiveTab(tab === 'votes' && isExecutive ? 'executive-actions' : (tab ?? 'overview'));
+  }, [politician, tab]);
 
   if (!politician) return notFound();
 
   const isExecutive = EXECUTIVE_CHAMBERS.includes(politician.chamber);
   const tabs = profileTabs(isExecutive);
-  const initialTab = tab === 'votes' && isExecutive ? 'executive-actions' : (tab ?? 'overview');
-  const [activeTab, setActiveTab] = useState(() => initialTab);
-
   const isLightweight = politician.recordType === 'lightweight';
   const isFeatured = !isLightweight;
   const displayIssues = issuesWithTopicCoverage(politician.topIssues, isFeatured);
@@ -479,12 +484,14 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
   const { finance: displayFinance, fecEntry } = mergeCampaignFinance(
     politician.id,
     politician.campaignFinance,
+    politician.bioguideId,
   );
 
   const { votes: displayVotes, congressEntry, usingOfficialVotes } = mergeVotingRecord(
     politician.id,
     politician.votingRecord,
     politician.recordType,
+    politician.bioguideId,
   );
 
   const {
@@ -492,7 +499,7 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
     officialEntry: stockEntry,
     usingOfficialTrades,
     demoTradeCount,
-  } = mergeStockTrades(politician.id, politician.stockTrades, politician.recordType);
+  } = mergeStockTrades(politician.id, politician.stockTrades, politician.recordType, politician.bioguideId);
 
   const lobbyOrgTotal = displayFinance.lobbyistMoney.reduce((s, l) => s + l.amount, 0);
   const pacTotal = displayFinance.pacDonations;
@@ -837,7 +844,7 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
               )}
               <SourceTierHelp />
             </div>
-            {isLightweight ? (
+            {isLightweight && !usingOfficialVotes ? (
               <MissingRecordPanel kind="the roll-call voting record" />
             ) : usingOfficialVotes ? (
               <VotingRecord
@@ -880,16 +887,34 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
         )}
 
         {activeTab === 'finance' && (
-          <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
-            <h2 className="text-white font-bold mb-4">Campaign Finance & Donors</h2>
-            {isLightweight ? <MissingRecordPanel kind="campaign finance data" /> : <DonorChart finance={displayFinance} fecEntry={fecEntry} />}
+          <div className="space-y-6">
+            <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
+              <h2 className="text-white font-bold mb-4">Campaign Finance & Donors</h2>
+              {isLightweight && !fecEntry ? (
+                <MissingRecordPanel kind="campaign finance data" />
+              ) : (
+                <DonorChart finance={displayFinance} fecEntry={fecEntry} />
+              )}
+            </div>
+            {politician.bioguideId && (fecEntry || congressEntry) && (
+              <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
+                <h2 className="text-white font-bold mb-4">Follow the Money</h2>
+                <FollowTheMoneyPanel
+                  bioguideId={politician.bioguideId}
+                  politicianId={politician.id}
+                  politicianName={politician.name}
+                  fecEntry={fecEntry}
+                  congressEntry={congressEntry}
+                />
+              </div>
+            )}
           </div>
         )}
 
         {activeTab === 'stocks' && (
           <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
             <h2 className="text-white font-bold mb-4">Stock Trade Disclosures</h2>
-            {isLightweight ? (
+            {isLightweight && !usingOfficialTrades ? (
               <MissingRecordPanel kind="STOCK Act trade disclosures" />
             ) : (
               <StockTrades

@@ -24,8 +24,14 @@ import { resolveCurrentOffice } from './officeResolution';
 import { congressPhotoUrl, executivePortraitUrl } from './photos';
 
 function withOfficialPhoto(p: Politician): Politician {
+  const hasLegacyCongressHost =
+    !!p.imageUrl &&
+    (p.imageUrl.includes('theunitedstates.io/images/congress') ||
+      p.imageUrl.includes('bioguide.congress.gov/bioguide/photo'));
+  if (p.bioguideId && (!p.imageUrl || hasLegacyCongressHost)) {
+    return { ...p, imageUrl: congressPhotoUrl(p.bioguideId) };
+  }
   if (p.imageUrl) return p;
-  if (p.bioguideId) return { ...p, imageUrl: congressPhotoUrl(p.bioguideId) };
   const execPhoto = executivePortraitUrl(p.id);
   return execPhoto ? { ...p, imageUrl: execPhoto } : p;
 }
@@ -60,11 +66,13 @@ const featuredGovernorStates = new Set(
   featured.filter((p) => p.chamber === 'governor').map((p) => p.stateCode),
 );
 
-const dedupedCongress = generatedCongressPoliticians.filter(
-  (p) =>
-    (!p.bioguideId || !featuredBioguides.has(p.bioguideId)) &&
-    !featuredProfileIds.has(p.id),
-);
+const dedupedCongress = generatedCongressPoliticians
+  .filter(
+    (p) =>
+      (!p.bioguideId || !featuredBioguides.has(p.bioguideId)) &&
+      !featuredProfileIds.has(p.id),
+  )
+  .map(withOfficialPhoto);
 const dedupedGovernors = generatedGovernorPoliticians.filter(
   (p) => !featuredGovernorStates.has(p.stateCode),
 );

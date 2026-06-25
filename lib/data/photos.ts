@@ -1,29 +1,52 @@
 /**
  * photos.ts — official, key-free portrait URLs.
  *
- * Members of Congress are wired to the public-domain `unitedstates/images`
- * collection (https://github.com/unitedstates/images), which is keyed by
- * bioguide ID and served from theunitedstates.io. Images are public domain
- * (works of the U.S. federal government). No API key required.
+ * Congressional portraits use GovTrack's public static image host keyed by
+ * `govtrackId` (which is carried in our synced current-legislators dataset).
+ * The underlying photos are public-domain member portraits from Congress.
  *
- * Governors, demo entries, and anyone without a bioguide portrait fall back to
- * an initials avatar in the UI (see components/ui/PoliticianAvatar.tsx).
+ * Governors, demo entries, and anyone without a resolvable portrait fall back
+ * to an initials avatar in the UI (see components/ui/PoliticianAvatar.tsx).
  */
+import currentLegislators from './generated/currentLegislators.json';
 
 export type CongressPhotoSize = '225x275' | '450x550' | 'original';
 
-/** Canonical public-domain congressional portrait URL for a bioguide ID. */
+const bioguideToGovtrackId = new Map<string, number>(
+  (
+    currentLegislators as {
+      legislators: Array<{ bioguideId: string; govtrackId?: number }>;
+    }
+  ).legislators
+    .filter((row) => typeof row.govtrackId === 'number')
+    .map((row) => [row.bioguideId, row.govtrackId as number]),
+);
+
+/** Canonical public-domain congressional portrait URL for a bioguide ID.
+ *
+ * Primary: official bioguide.congress.gov endpoint (Tier 1, .gov host).
+ * The `size` param is kept for API compatibility but bioguide serves one
+ * canonical size — the size arg is ignored for the primary host.
+ */
 export function congressPhotoUrl(
   bioguideId: string,
   size: CongressPhotoSize = '450x550',
 ): string {
-  return `https://theunitedstates.io/images/congress/${size}/${bioguideId}.jpg`;
+  const govtrackId = bioguideToGovtrackId.get(bioguideId);
+  const px = size === '225x275' ? '100px' : size === '450x550' ? '200px' : '450px';
+  if (govtrackId) {
+    return `https://www.govtrack.us/static/legislator-photos/${govtrackId}-${px}.jpeg`;
+  }
+
+  // Fallback for unexpected IDs not found in the synced legislators dataset.
+  const firstLetter = bioguideId[0].toUpperCase();
+  return `https://bioguide.congress.gov/bioguide/photo/${firstLetter}/${bioguideId}.jpg`;
 }
 
 /** Human-facing attribution for the portrait collection. */
 export const PHOTO_ATTRIBUTION = {
-  label: 'Photo: public domain · unitedstates/images project',
-  url: 'https://github.com/unitedstates/images',
+  label: 'Photo: public domain · GovTrack congressional portraits',
+  url: 'https://www.govtrack.us/congress/members',
 };
 
 /**
