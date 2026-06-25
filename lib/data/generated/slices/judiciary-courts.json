@@ -6,7 +6,7 @@
       "tier": "nonpartisan",
       "description": "Nonpartisan Free Law Project legal database; opinions are official court records"
     },
-    "asOf": "2026-06-24",
+    "asOf": "2026-06-25",
     "totalCount": 60,
     "datasetUrl": "https://www.courtlistener.com/api/rest/v4/search/?type=o&court=fla",
     "note": "Most recent Supreme Court of Florida opinions (newest-first). Tier 2 aggregator of official court records."
@@ -14,6 +14,66 @@
   "records": [
     {
       "id": "court-0",
+      "title": "In Re: Amendments to Florida Probate Rules",
+      "detail": "Supreme Court of Florida · SC2025-1478 · Published",
+      "date": "2026-06-25",
+      "link": "https://www.courtlistener.com/opinion/10880249/in-re-amendments-to-florida-probate-rules/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-25"
+      },
+      "asOf": "2026-06-25"
+    },
+    {
+      "id": "court-1",
+      "title": "In Re: Amendments to Florida Rules of Appellate Procedure",
+      "detail": "Supreme Court of Florida · SC2025-0241 · Published",
+      "date": "2026-06-25",
+      "link": "https://www.courtlistener.com/opinion/10880248/in-re-amendments-to-florida-rules-of-appellate-procedure/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-25"
+      },
+      "asOf": "2026-06-25"
+    },
+    {
+      "id": "court-2",
+      "title": "State of Florida v. Keith Alexander Times",
+      "detail": "Supreme Court of Florida · SC2024-0647 · Published",
+      "date": "2026-06-25",
+      "link": "https://www.courtlistener.com/opinion/10880247/state-of-florida-v-keith-alexander-times/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-25"
+      },
+      "asOf": "2026-06-25"
+    },
+    {
+      "id": "court-3",
+      "title": "William F. Roberts v. State of Florida",
+      "detail": "Supreme Court of Florida · SC2022-1176 · Published",
+      "date": "2026-06-25",
+      "link": "https://www.courtlistener.com/opinion/10880246/william-f-roberts-v-state-of-florida/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-06-25"
+      },
+      "asOf": "2026-06-25"
+    },
+    {
+      "id": "court-4",
       "title": "Dusty Ray Spencer v. State of Florida",
       "detail": "Supreme Court of Florida · SC2026-0880 · Published",
       "date": "2026-06-18",
@@ -25,10 +85,10 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-18"
       },
-      "asOf": "2026-06-24"
+      "asOf": "2026-06-25"
     },
     {
-      "id": "court-1",
+      "id": "court-5",
       "title": "Eric Desmond Parrish v. State of Florida",
       "detail": "Supreme Court of Florida · SC2022-1457 · Published",
       "date": "2026-06-18",
@@ -40,10 +100,10 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-18"
       },
-      "asOf": "2026-06-24"
+      "asOf": "2026-06-25"
     },
     {
-      "id": "court-2",
+      "id": "court-6",
       "title": "Gary Richard Whitton v. State of Florida",
       "detail": "Supreme Court of Florida · SC2025-1357 · Published",
       "date": "2026-06-18",
@@ -55,10 +115,10 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-18"
       },
-      "asOf": "2026-06-24"
+      "asOf": "2026-06-25"
     },
     {
-      "id": "court-3",
+      "id": "court-7",
       "title": "Harold Lee Harvey, Jr. v. State of Florida",
       "detail": "Supreme Court of Florida · SC2024-0648 · Published",
       "date": "2026-06-18",
@@ -70,10 +130,10 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-18"
       },
-      "asOf": "2026-06-24"
+      "asOf": "2026-06-25"
     },
     {
-      "id": "court-4",
+      "id": "court-8",
       "title": "In Re: Amendments to Florida Probate Rules",
       "detail": "Supreme Court of Florida · SC2025-1462 · Published",
       "date": "2026-06-18",
@@ -85,10 +145,10 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-18"
       },
-      "asOf": "2026-06-24"
+      "asOf": "2026-06-25"
     },
     {
-      "id": "court-5",
+      "id": "court-9",
       "title": "In Re: Amendments to Florida Rules of Appellate Procedure",
       "detail": "Supreme Court of Florida · SC2025-0241 · Published",
       "date": "2026-06-11",
@@ -100,10 +160,10 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-24"
+      "asOf": "2026-06-25"
     },
     {
-      "id": "court-6",
+      "id": "court-10",
       "title": "In Re: Amendments to Florida Rules of Juvenile Procedure 8.203 and 8.330",
       "detail": "Supreme Court of Florida · SC2025-1362 · Published",
       "date": "2026-06-11",
@@ -115,10 +175,10 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-24"
+      "asOf": "2026-06-25"
     },
     {
-      "id": "court-7",
+      "id": "court-11",
       "title": "Isaac \"Ike\" Perlmutter v. Federal Insurance Company",
       "detail": "Supreme Court of Florida · SC2024-0058 · Published",
       "date": "2026-06-11",
@@ -130,10 +190,10 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-24"
+      "asOf": "2026-06-25"
     },
     {
-      "id": "court-8",
+      "id": "court-12",
       "title": "Michael Lawrence Woodbury v. State of Florida & Michael Lawrence Woodbury v. Secretary, Department of Corrections",
       "detail": "Supreme Court of Florida · SC2024-0232 & SC2024-1127 · Published",
       "date": "2026-06-11",
@@ -145,10 +205,10 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-24"
+      "asOf": "2026-06-25"
     },
     {
-      "id": "court-9",
+      "id": "court-13",
       "title": "The Florida Bar v. Kenneth Chesebro",
       "detail": "Supreme Court of Florida · SC2024-1528 · Published",
       "date": "2026-06-11",
@@ -160,10 +220,10 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-24"
+      "asOf": "2026-06-25"
     },
     {
-      "id": "court-10",
+      "id": "court-14",
       "title": "Equal Ground Education Fund, Inc. v. Secretary, Florida Department of State",
       "detail": "Supreme Court of Florida · SC2026-0857 · Published",
       "date": "2026-06-10",
@@ -175,67 +235,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-10"
       },
-      "asOf": "2026-06-24"
-    },
-    {
-      "id": "court-11",
-      "title": "Citizens of the State of Florida, Etc. v. Florida Public Service Commission",
-      "detail": "Supreme Court of Florida · SC2023-0988 · Published",
-      "date": "2026-06-04",
-      "link": "https://www.courtlistener.com/opinion/10870072/citizens-of-the-state-of-florida-etc-v-florida-public-service-commission/",
-      "source": {
-        "name": "CourtListener (Free Law Project)",
-        "url": "https://www.courtlistener.com",
-        "tier": "nonpartisan",
-        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
-        "date": "2026-06-04"
-      },
-      "asOf": "2026-06-24"
-    },
-    {
-      "id": "court-12",
-      "title": "In Re: Amendments to Florida Small Claims Rule 7.070",
-      "detail": "Supreme Court of Florida · SC2025-1254 · Published",
-      "date": "2026-06-04",
-      "link": "https://www.courtlistener.com/opinion/10870071/in-re-amendments-to-florida-small-claims-rule-7070/",
-      "source": {
-        "name": "CourtListener (Free Law Project)",
-        "url": "https://www.courtlistener.com",
-        "tier": "nonpartisan",
-        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
-        "date": "2026-06-04"
-      },
-      "asOf": "2026-06-24"
-    },
-    {
-      "id": "court-13",
-      "title": "In Re: Amendments to Rules Regulating the Florida Bar - Rule 5-1.1",
-      "detail": "Supreme Court of Florida · SC2025-1730 · Published",
-      "date": "2026-06-04",
-      "link": "https://www.courtlistener.com/opinion/10870070/in-re-amendments-to-rules-regulating-the-florida-bar-rule-5-11/",
-      "source": {
-        "name": "CourtListener (Free Law Project)",
-        "url": "https://www.courtlistener.com",
-        "tier": "nonpartisan",
-        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
-        "date": "2026-06-04"
-      },
-      "asOf": "2026-06-24"
-    },
-    {
-      "id": "court-14",
-      "title": "Clint Shannon Gessner v. Southern Company",
-      "detail": "Supreme Court of Florida · SC2024-1835 · Published",
-      "date": "2026-05-28",
-      "link": "https://www.courtlistener.com/opinion/10865531/clint-shannon-gessner-v-southern-company/",
-      "source": {
-        "name": "CourtListener (Free Law Project)",
-        "url": "https://www.courtlistener.com",
-        "tier": "nonpartisan",
-        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
-        "date": "2026-05-28"
-      },
-      "asOf": "2026-06-24"
+      "asOf": "2026-06-25"
     }
   ]
 }
