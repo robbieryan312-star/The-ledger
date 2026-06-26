@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ExternalLink, Info } from 'lucide-react';
 import type { FecFinanceEntry } from '@/lib/data/fecFinance';
 import type { CongressVoteEntry } from '@/lib/data/congressVotes';
-import { buildDonorVoteLinkRows, getScheduleAForBioguide } from '@/lib/data/fecScheduleA';
+import { getScheduleAForBioguide } from '@/lib/data/fecScheduleA';
 import SourceProvenance from '@/components/ui/SourceProvenance';
 
 function formatMoney(n: number): string {
@@ -30,10 +30,6 @@ export default function FollowTheMoneyPanel({
 }) {
   const scheduleA = getScheduleAForBioguide(bioguideId);
   const votes = congressEntry?.votes ?? [];
-  const linkRows =
-    scheduleA && scheduleA.contributors.length > 0 && votes.length > 0
-      ? buildDonorVoteLinkRows(scheduleA.contributors, votes)
-      : [];
 
   if (!fecEntry && !scheduleA && votes.length === 0) {
     return (
@@ -56,8 +52,8 @@ export default function FollowTheMoneyPanel({
 
       {scheduleA && scheduleA.contributors.length > 0 && (
         <div className="rounded-xl border border-green-400/20 bg-[#0d1f35] p-4">
-          <h3 className="text-white font-semibold text-sm mb-1">Schedule A — itemized individual donors</h3>
-          <p className="text-gray-500 text-xs mb-3">Tier 1 · OpenFEC itemized receipts</p>
+          <h3 className="text-white font-semibold text-sm mb-1">Schedule A — committee-scoped itemized receipts</h3>
+          <p className="text-gray-500 text-xs mb-3">Tier 1 · OpenFEC receipts for authorized candidate committees</p>
           <div className="space-y-2">
             {scheduleA.contributors.slice(0, 10).map((c, i) => (
               <div key={`${c.name}-${i}`} className="flex justify-between gap-2 text-sm">
@@ -91,38 +87,6 @@ export default function FollowTheMoneyPanel({
             >
               FEC candidate profile <ExternalLink className="h-3 w-3" />
             </a>
-          </div>
-        </div>
-      )}
-
-      {linkRows.length > 0 && (
-        <div className="rounded-xl border border-[#1e3a5f] bg-[#0d1f35] p-4">
-          <h3 className="text-white font-semibold text-sm mb-1">Official record pairs (donor disclosure + roll call)</h3>
-          <p className="text-gray-500 text-xs mb-3">
-            Each row pairs one Schedule A contributor with one roll-call record. Shown for transparency; not ranked by influence.
-          </p>
-          <div className="space-y-3">
-            {linkRows.map((row, i) => (
-              <div key={i} className="rounded-lg border border-white/[0.06] p-3 text-xs">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <div>
-                    <div className="text-[10px] uppercase tracking-wide text-green-400/80 mb-1">Disclosed contribution</div>
-                    <div className="text-gray-200">{row.donorName}</div>
-                    <div className="text-green-400">{formatMoney(row.donorAmount)} · {row.donorDate}</div>
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase tracking-wide text-blue-400/80 mb-1">Roll-call vote</div>
-                    <div className="text-gray-200">{row.billTitle}</div>
-                    <div className="text-gray-400">{row.billId} · {row.vote} · {row.voteDate}</div>
-                    {row.voteUrl && (
-                      <a href={row.voteUrl} target="_blank" rel="noopener noreferrer" className="text-[#c8a951] hover:underline inline-flex items-center gap-1 mt-1">
-                        Congress.gov <ExternalLink className="h-3 w-3" />
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       )}
