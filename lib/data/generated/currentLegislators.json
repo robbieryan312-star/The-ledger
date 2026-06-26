@@ -7,7 +7,7 @@
       "description": "Public-domain dataset of all current members of Congress, maintained from official House/Senate records, GPO, and the Biographical Directory of Congress."
     },
     "datasetUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
-    "asOf": "2026-06-25",
+    "asOf": "2026-06-26",
     "count": 537,
     "note": "Membership in this snapshot is the source of truth for current office. A featured politician not present here has left Congress and must resolve to a FORMER office."
   },
