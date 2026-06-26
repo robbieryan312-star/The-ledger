@@ -52,6 +52,10 @@ interface LegislatorRow {
   stateCode: string;
 }
 
+interface ExistingNationalVotesSnapshot {
+  byBioguideId?: Record<string, { chamber?: string; votes?: VoteRecord[] }>;
+}
+
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -228,6 +232,32 @@ async function syncSenateVotes(
   return collected;
 }
 
+async function readExistingVoteSnapshot(): Promise<ExistingNationalVotesSnapshot | null> {
+  try {
+    return JSON.parse(await readFile(OUT_FILE, 'utf8')) as ExistingNationalVotesSnapshot;
+  } catch {
+    return null;
+  }
+}
+
+function preserveExistingHouseVotes(
+  houseVotes: Map<string, VoteRecord[]>,
+  houseMembers: LegislatorRow[],
+  existing: ExistingNationalVotesSnapshot | null,
+): number {
+  if (!existing?.byBioguideId) return 0;
+
+  let retained = 0;
+  for (const leg of houseMembers) {
+    const prior = existing.byBioguideId[leg.bioguideId];
+    if (prior?.chamber === 'house' && (prior.votes?.length ?? 0) > 0) {
+      houseVotes.set(leg.bioguideId, prior.votes ?? []);
+      retained += 1;
+    }
+  }
+  return retained;
+}
+
 async function main(): Promise<void> {
   config({ path: path.join(projectRoot, '.env.local') });
   const asOf = new Date().toISOString().slice(0, 10);
@@ -241,10 +271,17 @@ async function main(): Promise<void> {
   );
   const allBioguides = new Set(legislators.map((l) => l.bioguideId));
   const senators = legislators.filter((l) => l.chamber === 'senate');
+  const houseMembers = legislators.filter((l) => l.chamber === 'house');
 
   console.log(`National vote sync: ${legislators.length} members (${senators.length} Senate)`);
 
   const houseVotes = await syncHouseVotes(allBioguides, asOf);
+  if (!isCongressConfigured()) {
+    const retained = preserveExistingHouseVotes(houseVotes, houseMembers, await readExistingVoteSnapshot());
+    if (retained > 0) {
+      console.log(`  retained ${retained} House member vote lists from existing congress-votes.json`);
+    }
+  }
   const senateVotes = await syncSenateVotes(senators, asOf);
 
   const failures: Array<{ bioguideId: string; name: string; reason: string }> = [];

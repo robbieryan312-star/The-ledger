@@ -227,6 +227,13 @@ export interface FecScheduleAContributor {
   committeeId?: string;
 }
 
+export interface FecCandidateCommittee {
+  committeeId: string;
+  name?: string;
+  designation?: string;
+  committeeType?: string;
+}
+
 interface RawScheduleARow {
   contributor_name?: string;
   contribution_receipt_amount?: number;
@@ -236,14 +243,57 @@ interface RawScheduleARow {
   committee_id?: string;
 }
 
-/** Itemized Schedule A contributions for a candidate committee (Tier 1). */
-export async function fetchScheduleAContributors(
+interface RawCandidateCommitteeRow {
+  committee_id?: string;
+  name?: string;
+  designation?: string;
+  committee_type?: string;
+}
+
+function preferredCandidateCommittees(committees: FecCandidateCommittee[]): FecCandidateCommittee[] {
+  const authorized = committees.filter((c) => c.designation === 'P' || c.designation === 'A');
+  return authorized.length > 0 ? authorized : [];
+}
+
+export async function fetchCandidateCommittees(
   candidateId: string,
+  cycle?: string,
+): Promise<FecCandidateCommittee[]> {
+  const params: Record<string, string> = {
+    per_page: '20',
+  };
+  if (cycle) params.cycle = cycle;
+
+  const data = await fecFetch<{ results: RawCandidateCommitteeRow[] }>(
+    `/candidate/${encodeURIComponent(candidateId)}/committees/`,
+    params,
+  );
+
+  const seen = new Set<string>();
+  const committees = (data.results ?? [])
+    .filter((r) => r.committee_id)
+    .map((r) => ({
+      committeeId: r.committee_id!,
+      name: r.name,
+      designation: r.designation,
+      committeeType: r.committee_type,
+    }))
+    .filter((c) => {
+      if (seen.has(c.committeeId)) return false;
+      seen.add(c.committeeId);
+      return true;
+    });
+
+  return preferredCandidateCommittees(committees);
+}
+
+async function fetchScheduleAContributorsForCommittee(
+  committeeId: string,
+  twoYearPeriod: string,
   limit = 20,
-  twoYearPeriod = '2024',
 ): Promise<FecScheduleAContributor[]> {
   const data = await fecFetch<{ results: RawScheduleARow[] }>('/schedules/schedule_a/', {
-    candidate_id: candidateId,
+    committee_id: committeeId,
     two_year_transaction_period: twoYearPeriod,
     sort: '-contribution_receipt_amount',
     per_page: String(Math.min(limit, 100)),
@@ -251,7 +301,7 @@ export async function fetchScheduleAContributors(
   });
 
   return (data.results ?? [])
-    .filter((r) => r.contributor_name && r.contribution_receipt_amount != null)
+    .filter((r) => r.committee_id === committeeId && r.contributor_name && r.contribution_receipt_amount != null)
     .slice(0, limit)
     .map((r) => ({
       name: r.contributor_name!,
@@ -261,4 +311,27 @@ export async function fetchScheduleAContributors(
       occupation: r.contributor_occupation,
       committeeId: r.committee_id,
     }));
+}
+
+/** Itemized Schedule A receipts for authorized candidate committees (Tier 1). */
+export async function fetchScheduleAContributorsForCommittees(
+  committeeIds: string[],
+  twoYearPeriod: string,
+  limit = 20,
+): Promise<FecScheduleAContributor[]> {
+  const uniqueCommitteeIds = [...new Set(committeeIds)].slice(0, 5);
+  const contributors = (
+    await Promise.all(
+      uniqueCommitteeIds.map((committeeId) =>
+        fetchScheduleAContributorsForCommittee(committeeId, twoYearPeriod, limit),
+      ),
+    )
+  ).flat();
+
+  return contributors
+    .sort((a, b) => {
+      if (b.amount !== a.amount) return b.amount - a.amount;
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    })
+    .slice(0, limit);
 }

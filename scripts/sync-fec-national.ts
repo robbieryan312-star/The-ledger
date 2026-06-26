@@ -32,6 +32,11 @@ interface LegislatorRow {
   fecIds?: string[];
 }
 
+interface ExistingNationalFecSnapshot {
+  meta?: { withFinanceData?: number };
+  byBioguideId?: Record<string, FecFinanceEntry>;
+}
+
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -51,6 +56,17 @@ async function resolveFecIds(leg: LegislatorRow): Promise<string[]> {
   return (active.length > 0 ? active : hits).map((h) => h.candidateId);
 }
 
+async function countExistingFinanceRows(): Promise<number> {
+  try {
+    const existing = JSON.parse(await readFile(OUT_FILE, 'utf8')) as ExistingNationalFecSnapshot;
+    const rows = Object.values(existing.byBioguideId ?? {});
+    const rowCount = rows.filter((row) => row?.receipts != null || row?.disbursements != null).length;
+    return Math.max(existing.meta?.withFinanceData ?? 0, rowCount);
+  } catch {
+    return 0;
+  }
+}
+
 async function main(): Promise<void> {
   config({ path: path.join(projectRoot, '.env.local') });
   const asOf = new Date().toISOString().slice(0, 10);
@@ -64,6 +80,15 @@ async function main(): Promise<void> {
   );
 
   if (!isFecConfigured()) {
+    const existingCount = await countExistingFinanceRows();
+    if (existingCount > 0) {
+      console.warn(
+        'FEC_API_KEY not configured — keeping existing congress-finance.json snapshot ' +
+          `(${existingCount} member records). Set FEC_API_KEY in .env.local to refresh.`,
+      );
+      return;
+    }
+
     console.warn('FEC_API_KEY not configured — writing empty national snapshot.');
     await mkdir(OUT_DIR, { recursive: true });
     await writeFile(

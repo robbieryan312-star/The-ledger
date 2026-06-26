@@ -5,6 +5,7 @@ import type { Source, VoteRecord } from '../types';
 export interface ScheduleAMemberRow {
   bioguideId: string;
   fecCandidateId: string;
+  committeeIds?: string[];
   contributors: FecScheduleAContributor[];
   source: Source;
   asOf: string;
@@ -12,7 +13,7 @@ export interface ScheduleAMemberRow {
 }
 
 interface ScheduleASnapshot {
-  meta: { asOf: string; fetchedAt?: string; membersWithScheduleA?: number };
+  meta: { asOf: string; fetchedAt?: string; membersWithScheduleA?: number; queryMode?: string };
   byBioguideId: Record<string, ScheduleAMemberRow>;
 }
 
@@ -20,6 +21,7 @@ const snapshot = scheduleASnapshot as ScheduleASnapshot;
 
 export function getScheduleAForBioguide(bioguideId?: string): ScheduleAMemberRow | undefined {
   if (!bioguideId) return undefined;
+  if (snapshot.meta?.queryMode !== 'committee_id') return undefined;
   return snapshot.byBioguideId[bioguideId];
 }
 
