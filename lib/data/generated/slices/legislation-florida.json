@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-06-25",
+  "asOf": "2026-06-26",
   "fetchedAt": "2026-06-24T15:29:37.411Z",
   "sections": [
     {
@@ -541,7 +541,7 @@
           "tier": "official",
           "description": "Official daily journal of the U.S. government via federalregister.gov API"
         },
-        "asOf": "2026-06-25",
+        "asOf": "2026-06-26",
         "totalCount": 100,
         "datasetUrl": "https://www.federalregister.gov/api/v1/documents.json?conditions[term]=Florida",
         "note": "Most recent 100 Federal Register documents matching \"Florida\" (rules, proposed rules, notices, presidential documents). Tier 1 official."
@@ -549,6 +549,141 @@
       "records": [
         {
           "id": "fedregister-0",
+          "title": "Modernizing Security Requirements",
+          "detail": "2026-12989 · Proposed Rule · The U.S. Nuclear Regulatory Commission (NRC) is proposing to revise its regulations to modernize security and fitness-for-duty requirements to enhance efficiency, consistent with Executive Order 14300, \"Ordering the Reform of the Nuclear Regulatory Commission.\" The proposed revisions are intended to reduce regulatory burden, where appropriate, while continuing to provide reasonable assurance that safety and security will be adequately maintained at NRC-licensed facilities.",
+          "date": "2026-06-26",
+          "link": "https://www.federalregister.gov/documents/2026/06/26/2026-12989/modernizing-security-requirements",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-26"
+          },
+          "asOf": "2026-06-26"
+        },
+        {
+          "id": "fedregister-1",
+          "title": "Agency Information Collection Activities: Request for Comments for a New Information Collection",
+          "detail": "2026-12979 · Notice · The FHWA has forwarded the information collection request described in this notice to the Office of Management and Budget (OMB) to approve a new information collection. We are required to publish this notice in the Federal Register by the Paperwork Reduction Act of 1995.",
+          "date": "2026-06-26",
+          "link": "https://www.federalregister.gov/documents/2026/06/26/2026-12979/agency-information-collection-activities-request-for-comments-for-a-new-information-collection",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-26"
+          },
+          "asOf": "2026-06-26"
+        },
+        {
+          "id": "fedregister-2",
+          "title": "HEARTH Act Approval of Caddo Nation of Oklahoma Leasing Ordinance",
+          "detail": "2026-12969 · Notice · The Assistant Secretary--Indian Affairs approved the Caddo Nation of Oklahoma Leasing Ordinance under the Helping Expedite and Advance Responsible Tribal Homeownership Act of 2012 (HEARTH Act). With this approval, the Tribe is authorized to enter into leases without further approval from the Secretary of the Interior.",
+          "date": "2026-06-26",
+          "link": "https://www.federalregister.gov/documents/2026/06/26/2026-12969/hearth-act-approval-of-caddo-nation-of-oklahoma-leasing-ordinance",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-26"
+          },
+          "asOf": "2026-06-26"
+        },
+        {
+          "id": "fedregister-3",
+          "title": "HEARTH Act Approval of Cachil DeHe Band of Wintun Indians of the Colusa Indian Community of the Colusa Rancheria, California, Leasing Ordinance",
+          "detail": "2026-12968 · Notice · The Assistant Secretary--Indian Affairs approved the Cachil DeHe Band of Wintun Indians of the Colusa Indian Community of the Colusa Rancheria, California, Leasing Ordinance under the Helping Expedite and Advance Responsible Tribal Homeownership Act of 2012 (HEARTH Act). With this approval, the Tribe is authorized to enter into leases without further Secretary of the Interior approval.",
+          "date": "2026-06-26",
+          "link": "https://www.federalregister.gov/documents/2026/06/26/2026-12968/hearth-act-approval-of-cachil-dehe-band-of-wintun-indians-of-the-colusa-indian-community-of-the",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-26"
+          },
+          "asOf": "2026-06-26"
+        },
+        {
+          "id": "fedregister-4",
+          "title": "Process for Authorizing Seasonal Migratory Game Bird Hunting",
+          "detail": "2026-12955 · Proposed Rule · The U.S. Fish and Wildlife Service (Service or we) is proposing changes to the administrative process for authorizing seasonal migratory game bird hunting in the United States. Migratory game bird hunting regulations are currently promulgated annually to provide opportunities for recreation and sustenance; aid Federal, State, and Tribal governments in the management of migratory game birds; and allow harvests at levels compatible with migratory game bird population status and habitat conditions.The Service proposes a more efficient administrative process for authorizing seasonal migratory game bird hunting. The Service would issue a memorandum for migratory game bird hunting once every 3 years. The Service would continue to make annual decisions on harvest levels and would update the memorandum sooner than 3 years if changes are prescribed by our decision frameworks. The process eliminates the need for subsequent annual Federal regulation promulgation and rulemaking and is expected to increase efficiency; better meet State, Tribal, and Federal rulemaking constraints; and reduce the complexity and costs. Our goal is to better serve State partners and the hunting public while continuing to meet the legal and conservation purposes of the Migratory Bird Treaty Act. Tribes are already authorized under a similar process.",
+          "date": "2026-06-26",
+          "link": "https://www.federalregister.gov/documents/2026/06/26/2026-12955/process-for-authorizing-seasonal-migratory-game-bird-hunting",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-26"
+          },
+          "asOf": "2026-06-26"
+        },
+        {
+          "id": "fedregister-5",
+          "title": "Process for Authorizing Seasonal Migratory Game Bird Hunting",
+          "detail": "2026-12951 · Rule · This direct final rule changes the administrative process for authorizing seasonal migratory game bird hunting in the United States. Migratory game bird hunting regulations are currently promulgated annually to provide opportunities for recreation and sustenance; aid Federal, State, and Tribal governments in the management of migratory game birds; and allow harvests at levels compatible with migratory game bird population status and habitat conditions.The U.S. Fish and Wildlife Service (Service or we) is adopting a more efficient administrative process for authorizing seasonal migratory game bird hunting. The Service will issue a memorandum for migratory game bird hunting once every 3 years. The Service will continue to make annual decisions on harvest levels and will update the memorandum sooner than 3 years if changes are prescribed by our decision frameworks. The process eliminates the need for subsequent annual Federal regulation promulgation and rulemaking and is expected to increase efficiency; better meet State, Tribal, and Federal rulemaking constraints; and reduce the complexity and costs. Our goal is to better serve State partners and the hunting public while continuing to meet the legal and conservation purposes of the Migratory Bird Treaty Act.Tribes are already authorized under a similar process.",
+          "date": "2026-06-26",
+          "link": "https://www.federalregister.gov/documents/2026/06/26/2026-12951/process-for-authorizing-seasonal-migratory-game-bird-hunting",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-26"
+          },
+          "asOf": "2026-06-26"
+        },
+        {
+          "id": "fedregister-6",
+          "title": "Transport Airplane and Propulsion Certification Modernization",
+          "detail": "2026-12922 · Proposed Rule · FAA proposes to amend various airworthiness regulations to modernize certain certification standards for transport category airplanes and propulsion systems. This rule would be both deregulatory and relieving by reducing the number of exemptions, special conditions, and equivalent level of safety findings required during the certification process. FAA expects that this proposal would reduce certification costs and time to certify new and changed products for both industry and FAA while maintaining or increasing the level of safety provided by the current regulations. FAA proposes to remove Special Federal Aviation Regulation (SFAR) No. 109 from part 25 and relocate certain of its requirements. Finally, this action would address industry and National Transportation Safety Board recommendations while also harmonizing FAA's regulations with international standards.",
+          "date": "2026-06-26",
+          "link": "https://www.federalregister.gov/documents/2026/06/26/2026-12922/transport-airplane-and-propulsion-certification-modernization",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-26"
+          },
+          "asOf": "2026-06-26"
+        },
+        {
+          "id": "fedregister-7",
+          "title": "Combined Notice of Filings #1",
+          "detail": "2026-12893 · Notice",
+          "date": "2026-06-26",
+          "link": "https://www.federalregister.gov/documents/2026/06/26/2026-12893/combined-notice-of-filings-1",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-26"
+          },
+          "asOf": "2026-06-26"
+        },
+        {
+          "id": "fedregister-8",
+          "title": "TBL Group, Inc.-Acquisition of Control-Escot Bus Lines, L.L.C.",
+          "detail": "2026-12859 · Notice · TBL Group, Inc. (TBL Group), a noncarrier holding company that controls multiple interstate motor passenger carriers, has filed an application to acquire control of the primary assets of, or the member interest in, Escot Bus Lines, L.L.C. (Escot), a federally regulated motor passenger carrier. The Board is tentatively approving and authorizing the transaction. If no opposing comments are timely filed, this notice will be the final Board action.",
+          "date": "2026-06-26",
+          "link": "https://www.federalregister.gov/documents/2026/06/26/2026-12859/tbl-group-inc-acquisition-of-control-escot-bus-lines-llc",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-26"
+          },
+          "asOf": "2026-06-26"
+        },
+        {
+          "id": "fedregister-9",
           "title": "United States Standards for Grades of Orange Juice",
           "detail": "2026-12846 · Notice · The Agricultural Marketing Service (AMS) is revising the U.S. Standards for Grades of Orange Juice (U.S. OJ Standards or Standards) by revising the limits for Grade B Brix allowances in Pasteurized Orange Juice (POJ) under the U.S. OJ Standards to reference the Food and Drug Administration's (FDA) Standard of Identity (SOI) for POJ.",
           "date": "2026-06-25",
@@ -560,142 +695,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-25"
           },
-          "asOf": "2026-06-25"
-        },
-        {
-          "id": "fedregister-1",
-          "title": "Certain Topcon Solar Cells, Modules, Panels, Components Thereof, and Products Containing Same; Notice of a Commission Determination Not To Review an Initial Determination Amending the Complaint and Notice of Investigation To Correct the Name of Respondent JA Solar AZ, LLC to American Panel Solutions LLC",
-          "detail": "2026-12831 · Notice · Notice is hereby given that the U.S. International Trade Commission has determined not to review an initial determination (\"ID\") (Order No. 13) of the presiding administrative law judge (\"ALJ\") granting a motion to amend the complaint and notice of investigation to correct the name of respondent JA Solar AZ, LLC to American Panel Solutions LLC.",
-          "date": "2026-06-25",
-          "link": "https://www.federalregister.gov/documents/2026/06/25/2026-12831/certain-topcon-solar-cells-modules-panels-components-thereof-and-products-containing-same-notice-of",
-          "source": {
-            "name": "Federal Register",
-            "url": "https://www.federalregister.gov",
-            "tier": "official",
-            "description": "Official daily journal of the U.S. government via federalregister.gov API",
-            "date": "2026-06-25"
-          },
-          "asOf": "2026-06-25"
-        },
-        {
-          "id": "fedregister-2",
-          "title": "National Vaccine Injury Compensation Program; List of Petitions Received",
-          "detail": "2026-12788 · Notice · HRSA is publishing this notice of petitions received under the National Vaccine Injury Compensation Program (the Program), as required by the Public Health Service (PHS) Act, as amended. While the Secretary of HHS is named as the respondent in all proceedings brought by the filing of petitions for compensation under the Program, the United States Court of Federal Claims is charged by statute with responsibility for considering and acting upon the petitions.",
-          "date": "2026-06-25",
-          "link": "https://www.federalregister.gov/documents/2026/06/25/2026-12788/national-vaccine-injury-compensation-program-list-of-petitions-received",
-          "source": {
-            "name": "Federal Register",
-            "url": "https://www.federalregister.gov",
-            "tier": "official",
-            "description": "Official daily journal of the U.S. government via federalregister.gov API",
-            "date": "2026-06-25"
-          },
-          "asOf": "2026-06-25"
-        },
-        {
-          "id": "fedregister-3",
-          "title": "Pesticide Registration Maintenance Fee; Requested and Proposed Cancellations of Certain Pesticide Registrations",
-          "detail": "2026-12752 · Notice · Pursuant to the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA), the Environmental Protection Agency (EPA or Agency) is issuing this notice of receipt of requests by registrants to voluntarily cancel the pesticide registrations identified in Unit II. The registrants submitted their requests as part of their response to a registration maintenance fee payment notice for 2026. EPA intends to grant these requests to cancel at the close of the comment period unless the Agency receives substantive comments within the comment period that would merit its further review of the requests to cancel, or unless the registrants withdraw their requests. If these requests to cancel are granted, EPA will issue an order in the Federal Register cancelling the listed product registrations, after which any sale, distribution, or use of products listed in this notice will be permitted after the registrations have been cancelled only if such sale, distribution, or use is consistent with the terms as described in the final order. In addition, as a result of other registrants' non- payment of the 2026 fees, EPA is issuing this notice of intent to cancel the pesticide product registrations identified in Unit III. Unless the Agency receives prompt payment of maintenance fees due for the registrations listed in Unit III, the Agency will issue an order in the Federal Register cancelling the listed registrations for which inadequate or no payment has been received.",
-          "date": "2026-06-25",
-          "link": "https://www.federalregister.gov/documents/2026/06/25/2026-12752/pesticide-registration-maintenance-fee-requested-and-proposed-cancellations-of-certain-pesticide",
-          "source": {
-            "name": "Federal Register",
-            "url": "https://www.federalregister.gov",
-            "tier": "official",
-            "description": "Official daily journal of the U.S. government via federalregister.gov API",
-            "date": "2026-06-25"
-          },
-          "asOf": "2026-06-25"
-        },
-        {
-          "id": "fedregister-4",
-          "title": "Foreign-Trade Zone (FTZ) 32; Authorization of Production Activity; 3nStar, Inc.; (Point of Sale Terminals); Doral, Florida",
-          "detail": "2026-12659 · Notice",
-          "date": "2026-06-24",
-          "link": "https://www.federalregister.gov/documents/2026/06/24/2026-12659/foreign-trade-zone-ftz-32-authorization-of-production-activity-3nstar-inc-point-of-sale-terminals",
-          "source": {
-            "name": "Federal Register",
-            "url": "https://www.federalregister.gov",
-            "tier": "official",
-            "description": "Official daily journal of the U.S. government via federalregister.gov API",
-            "date": "2026-06-24"
-          },
-          "asOf": "2026-06-25"
-        },
-        {
-          "id": "fedregister-5",
-          "title": "Foreign-Trade Zone (FTZ) 193; Authorization of Production Activity; Lithionics Battery, LLC; (Lithium-Ion Battery Systems and Accessories); Clearwater, Florida",
-          "detail": "2026-12501 · Notice",
-          "date": "2026-06-22",
-          "link": "https://www.federalregister.gov/documents/2026/06/22/2026-12501/foreign-trade-zone-ftz-193-authorization-of-production-activity-lithionics-battery-llc-lithium-ion",
-          "source": {
-            "name": "Federal Register",
-            "url": "https://www.federalregister.gov",
-            "tier": "official",
-            "description": "Official daily journal of the U.S. government via federalregister.gov API",
-            "date": "2026-06-22"
-          },
-          "asOf": "2026-06-25"
-        },
-        {
-          "id": "fedregister-6",
-          "title": "Qualification of Drivers; Exemption Applications; Epilepsy and Seizure Disorders",
-          "detail": "2026-12455 · Notice · FMCSA announces receipt of applications from six individuals for an exemption from the prohibition in the Federal Motor Carrier Safety Regulations (FMCSRs) against persons with a clinical diagnosis of epilepsy or any other condition that is likely to cause a loss of consciousness or any loss of ability to control a commercial motor vehicle (CMV) to drive in interstate commerce. If granted, the exemptions would enable these individuals who have had one or more seizures and are taking anti-seizure medication to operate CMVs in interstate commerce.",
-          "date": "2026-06-22",
-          "link": "https://www.federalregister.gov/documents/2026/06/22/2026-12455/qualification-of-drivers-exemption-applications-epilepsy-and-seizure-disorders",
-          "source": {
-            "name": "Federal Register",
-            "url": "https://www.federalregister.gov",
-            "tier": "official",
-            "description": "Official daily journal of the U.S. government via federalregister.gov API",
-            "date": "2026-06-22"
-          },
-          "asOf": "2026-06-25"
-        },
-        {
-          "id": "fedregister-7",
-          "title": "Notice of Intended Repatriation: University of Alabama Museums, Tuscaloosa, AL",
-          "detail": "2026-12389 · Notice · In accordance with the Native American Graves Protection and Repatriation Act (NAGPRA), the University of Alabama Museums intends to repatriate certain cultural items that meet the definition of unassociated funerary objects and that have a cultural affiliation with the Indian Tribes or Native Hawaiian organizations in this notice.",
-          "date": "2026-06-22",
-          "link": "https://www.federalregister.gov/documents/2026/06/22/2026-12389/notice-of-intended-repatriation-university-of-alabama-museums-tuscaloosa-al",
-          "source": {
-            "name": "Federal Register",
-            "url": "https://www.federalregister.gov",
-            "tier": "official",
-            "description": "Official daily journal of the U.S. government via federalregister.gov API",
-            "date": "2026-06-22"
-          },
-          "asOf": "2026-06-25"
-        },
-        {
-          "id": "fedregister-8",
-          "title": "Notice of Inventory Completion: School of Social Science and Global Studies, University of Southern Mississippi, Hattiesburg, MS",
-          "detail": "2026-12383 · Notice · In accordance with the Native American Graves Protection and Repatriation Act (NAGPRA), the University of Southern Mississippi (USM) has completed an inventory of human remains and has determined that there is a cultural affiliation between the human remains and Indian Tribes or Native Hawaiian organizations in this notice.",
-          "date": "2026-06-22",
-          "link": "https://www.federalregister.gov/documents/2026/06/22/2026-12383/notice-of-inventory-completion-school-of-social-science-and-global-studies-university-of-southern",
-          "source": {
-            "name": "Federal Register",
-            "url": "https://www.federalregister.gov",
-            "tier": "official",
-            "description": "Official daily journal of the U.S. government via federalregister.gov API",
-            "date": "2026-06-22"
-          },
-          "asOf": "2026-06-25"
-        },
-        {
-          "id": "fedregister-9",
-          "title": "Combined Notice of Filings #1",
-          "detail": "2026-12317 · Notice",
-          "date": "2026-06-18",
-          "link": "https://www.federalregister.gov/documents/2026/06/18/2026-12317/combined-notice-of-filings-1",
-          "source": {
-            "name": "Federal Register",
-            "url": "https://www.federalregister.gov",
-            "tier": "official",
-            "description": "Official daily journal of the U.S. government via federalregister.gov API",
-            "date": "2026-06-18"
-          },
-          "asOf": "2026-06-25"
+          "asOf": "2026-06-26"
         }
       ]
     }

@@ -6,7 +6,7 @@
       "tier": "nonpartisan",
       "description": "Nonpartisan Free Law Project legal database; opinions are official court records"
     },
-    "asOf": "2026-06-25",
+    "asOf": "2026-06-26",
     "totalCount": 60,
     "datasetUrl": "https://www.courtlistener.com/api/rest/v4/search/?type=o&court=fla",
     "note": "Most recent Supreme Court of Florida opinions (newest-first). Tier 2 aggregator of official court records."
@@ -25,7 +25,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-25"
       },
-      "asOf": "2026-06-25"
+      "asOf": "2026-06-26"
     },
     {
       "id": "court-1",
@@ -40,7 +40,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-25"
       },
-      "asOf": "2026-06-25"
+      "asOf": "2026-06-26"
     },
     {
       "id": "court-2",
@@ -55,7 +55,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-25"
       },
-      "asOf": "2026-06-25"
+      "asOf": "2026-06-26"
     },
     {
       "id": "court-3",
@@ -70,7 +70,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-25"
       },
-      "asOf": "2026-06-25"
+      "asOf": "2026-06-26"
     },
     {
       "id": "court-4",
@@ -85,7 +85,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-18"
       },
-      "asOf": "2026-06-25"
+      "asOf": "2026-06-26"
     },
     {
       "id": "court-5",
@@ -100,7 +100,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-18"
       },
-      "asOf": "2026-06-25"
+      "asOf": "2026-06-26"
     },
     {
       "id": "court-6",
@@ -115,7 +115,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-18"
       },
-      "asOf": "2026-06-25"
+      "asOf": "2026-06-26"
     },
     {
       "id": "court-7",
@@ -130,7 +130,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-18"
       },
-      "asOf": "2026-06-25"
+      "asOf": "2026-06-26"
     },
     {
       "id": "court-8",
@@ -145,7 +145,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-18"
       },
-      "asOf": "2026-06-25"
+      "asOf": "2026-06-26"
     },
     {
       "id": "court-9",
@@ -160,7 +160,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-25"
+      "asOf": "2026-06-26"
     },
     {
       "id": "court-10",
@@ -175,7 +175,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-25"
+      "asOf": "2026-06-26"
     },
     {
       "id": "court-11",
@@ -190,7 +190,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-25"
+      "asOf": "2026-06-26"
     },
     {
       "id": "court-12",
@@ -205,7 +205,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-25"
+      "asOf": "2026-06-26"
     },
     {
       "id": "court-13",
@@ -220,7 +220,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-25"
+      "asOf": "2026-06-26"
     },
     {
       "id": "court-14",
@@ -235,7 +235,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-10"
       },
-      "asOf": "2026-06-25"
+      "asOf": "2026-06-26"
     }
   ]
 }
