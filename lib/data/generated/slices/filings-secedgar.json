@@ -6,8 +6,8 @@
       "tier": "official",
       "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)"
     },
-    "asOf": "2026-06-26",
-    "fetchedAt": "2026-06-26T16:34:45.290Z",
+    "asOf": "2026-06-27",
+    "fetchedAt": "2026-06-27T15:03:53.599Z",
     "totalCount": 75,
     "datasetUrl": "https://efts.sec.gov/LATEST/search-index?q=%22Florida%22&forms=8-K",
     "note": "Recent 8-K material-event filings (last 60 days) referencing Florida via SEC EDGAR full-text search. Each record carries the filer business/incorporation state and a floridaDomiciled flag — EDGAR location filters are unreliable, so Florida relevance is by full-text match. Tier 1 official."
@@ -26,7 +26,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-01"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-1",
@@ -41,7 +41,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-16"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-2",
@@ -56,7 +56,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-15"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-3",
@@ -71,7 +71,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-20"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-4",
@@ -86,7 +86,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-06"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-5",
@@ -101,7 +101,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-18"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-6",
@@ -116,7 +116,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-26"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-7",
@@ -131,7 +131,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-05"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-8",
@@ -146,7 +146,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-07"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-9",
@@ -161,7 +161,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-01"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-10",
@@ -176,7 +176,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-27"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-11",
@@ -191,7 +191,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-20"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-12",
@@ -206,7 +206,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-16"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-13",
@@ -221,7 +221,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-22"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-14",
@@ -236,7 +236,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-04-28"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-15",
@@ -251,7 +251,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-22"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-16",
@@ -266,7 +266,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-04-28"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-17",
@@ -281,7 +281,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-03"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-18",
@@ -296,7 +296,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-05"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "id": "edgar-19",
@@ -311,7 +311,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-04-28"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     }
   ]
 }

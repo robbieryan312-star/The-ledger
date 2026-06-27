@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-06-26",
+  "asOf": "2026-06-27",
   "fetchedAt": "2026-06-24T15:29:37.411Z",
   "sections": [
     {
@@ -541,7 +541,7 @@
           "tier": "official",
           "description": "Official daily journal of the U.S. government via federalregister.gov API"
         },
-        "asOf": "2026-06-26",
+        "asOf": "2026-06-27",
         "totalCount": 100,
         "datasetUrl": "https://www.federalregister.gov/api/v1/documents.json?conditions[term]=Florida",
         "note": "Most recent 100 Federal Register documents matching \"Florida\" (rules, proposed rules, notices, presidential documents). Tier 1 official."
@@ -549,6 +549,51 @@
       "records": [
         {
           "id": "fedregister-0",
+          "title": "Change in Bank Control Notices; Acquisitions of Shares of a Bank or Bank Holding Company",
+          "detail": "2026-13067 · Notice",
+          "date": "2026-06-29",
+          "link": "https://www.federalregister.gov/documents/2026/06/29/2026-13067/change-in-bank-control-notices-acquisitions-of-shares-of-a-bank-or-bank-holding-company",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-29"
+          },
+          "asOf": "2026-06-27"
+        },
+        {
+          "id": "fedregister-1",
+          "title": "Alien Registration Form and Evidence of Registration",
+          "detail": "2026-13057 · Rule · On March 12, 2025, DHS issued an interim final rule (IFR) with request for comments amending DHS regulations to designate a new registration form for aliens to comply with statutory alien registration and fingerprinting provisions. Unregistered aliens may use this general registration form to satisfy their statutory obligations. This final rule responds to public comments, amends DHS regulations to adjust the lists of forms and processes that may serve as registration forms and evidence of alien registration, and seeks comments on other potential changes to the regulations relating to alien registration and fingerprinting.",
+          "date": "2026-06-29",
+          "link": "https://www.federalregister.gov/documents/2026/06/29/2026-13057/alien-registration-form-and-evidence-of-registration",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-29"
+          },
+          "asOf": "2026-06-27"
+        },
+        {
+          "id": "fedregister-2",
+          "title": "Air Plan Approval; Ohio; Redesignation of the Cleveland, OH Area to Attainment of the 2015 Ozone Standard",
+          "detail": "2026-13027 · Rule · The Environmental Protection Agency (EPA) is approving the request from the Ohio Environmental Protection Agency (Ohio EPA) to redesignate the Cleveland, Ohio area to attainment for the 2015 ozone National Ambient Air Quality Standards (NAAQS) because the request meets the statutory requirements for redesignation under the Clean Air Act (CAA). Ohio EPA submitted this request on December 8, 2025. The EPA is approving, as a revision to the Ohio State Implementation Plan (SIP), the State's plan for maintaining the 2015 ozone NAAQS through 2038 in the Cleveland area. The EPA is also finding adequate and approving Ohio's 2032 and 2038 volatile organic compound (VOC) and oxides of nitrogen (NO<INF>X</INF>) motor vehicle emissions budgets (budgets) for the Cleveland area. Additionally, the EPA is adjusting the deadline for Ohio to submit Serious SIP revisions for the Cleveland area. Finally, the EPA is approving the Enhanced motor vehicle inspection and maintenance (I/M) program certification and clean fuel vehicle program (CFVP) certification SIP revisions submitted by Ohio EPA on December 19, 2025, and January 12, 2026, pursuant to section 110 and part D of the CAA, because they satisfy Serious SIP requirements for the Cleveland area under the 2015 ozone NAAQS.",
+          "date": "2026-06-29",
+          "link": "https://www.federalregister.gov/documents/2026/06/29/2026-13027/air-plan-approval-ohio-redesignation-of-the-cleveland-oh-area-to-attainment-of-the-2015-ozone",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-29"
+          },
+          "asOf": "2026-06-27"
+        },
+        {
+          "id": "fedregister-3",
           "title": "Modernizing Security Requirements",
           "detail": "2026-12989 · Proposed Rule · The U.S. Nuclear Regulatory Commission (NRC) is proposing to revise its regulations to modernize security and fitness-for-duty requirements to enhance efficiency, consistent with Executive Order 14300, \"Ordering the Reform of the Nuclear Regulatory Commission.\" The proposed revisions are intended to reduce regulatory burden, where appropriate, while continuing to provide reasonable assurance that safety and security will be adequately maintained at NRC-licensed facilities.",
           "date": "2026-06-26",
@@ -560,10 +605,10 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-26"
+          "asOf": "2026-06-27"
         },
         {
-          "id": "fedregister-1",
+          "id": "fedregister-4",
           "title": "Agency Information Collection Activities: Request for Comments for a New Information Collection",
           "detail": "2026-12979 · Notice · The FHWA has forwarded the information collection request described in this notice to the Office of Management and Budget (OMB) to approve a new information collection. We are required to publish this notice in the Federal Register by the Paperwork Reduction Act of 1995.",
           "date": "2026-06-26",
@@ -575,10 +620,10 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-26"
+          "asOf": "2026-06-27"
         },
         {
-          "id": "fedregister-2",
+          "id": "fedregister-5",
           "title": "HEARTH Act Approval of Caddo Nation of Oklahoma Leasing Ordinance",
           "detail": "2026-12969 · Notice · The Assistant Secretary--Indian Affairs approved the Caddo Nation of Oklahoma Leasing Ordinance under the Helping Expedite and Advance Responsible Tribal Homeownership Act of 2012 (HEARTH Act). With this approval, the Tribe is authorized to enter into leases without further approval from the Secretary of the Interior.",
           "date": "2026-06-26",
@@ -590,10 +635,10 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-26"
+          "asOf": "2026-06-27"
         },
         {
-          "id": "fedregister-3",
+          "id": "fedregister-6",
           "title": "HEARTH Act Approval of Cachil DeHe Band of Wintun Indians of the Colusa Indian Community of the Colusa Rancheria, California, Leasing Ordinance",
           "detail": "2026-12968 · Notice · The Assistant Secretary--Indian Affairs approved the Cachil DeHe Band of Wintun Indians of the Colusa Indian Community of the Colusa Rancheria, California, Leasing Ordinance under the Helping Expedite and Advance Responsible Tribal Homeownership Act of 2012 (HEARTH Act). With this approval, the Tribe is authorized to enter into leases without further Secretary of the Interior approval.",
           "date": "2026-06-26",
@@ -605,10 +650,10 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-26"
+          "asOf": "2026-06-27"
         },
         {
-          "id": "fedregister-4",
+          "id": "fedregister-7",
           "title": "Process for Authorizing Seasonal Migratory Game Bird Hunting",
           "detail": "2026-12955 · Proposed Rule · The U.S. Fish and Wildlife Service (Service or we) is proposing changes to the administrative process for authorizing seasonal migratory game bird hunting in the United States. Migratory game bird hunting regulations are currently promulgated annually to provide opportunities for recreation and sustenance; aid Federal, State, and Tribal governments in the management of migratory game birds; and allow harvests at levels compatible with migratory game bird population status and habitat conditions.The Service proposes a more efficient administrative process for authorizing seasonal migratory game bird hunting. The Service would issue a memorandum for migratory game bird hunting once every 3 years. The Service would continue to make annual decisions on harvest levels and would update the memorandum sooner than 3 years if changes are prescribed by our decision frameworks. The process eliminates the need for subsequent annual Federal regulation promulgation and rulemaking and is expected to increase efficiency; better meet State, Tribal, and Federal rulemaking constraints; and reduce the complexity and costs. Our goal is to better serve State partners and the hunting public while continuing to meet the legal and conservation purposes of the Migratory Bird Treaty Act. Tribes are already authorized under a similar process.",
           "date": "2026-06-26",
@@ -620,10 +665,10 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-26"
+          "asOf": "2026-06-27"
         },
         {
-          "id": "fedregister-5",
+          "id": "fedregister-8",
           "title": "Process for Authorizing Seasonal Migratory Game Bird Hunting",
           "detail": "2026-12951 · Rule · This direct final rule changes the administrative process for authorizing seasonal migratory game bird hunting in the United States. Migratory game bird hunting regulations are currently promulgated annually to provide opportunities for recreation and sustenance; aid Federal, State, and Tribal governments in the management of migratory game birds; and allow harvests at levels compatible with migratory game bird population status and habitat conditions.The U.S. Fish and Wildlife Service (Service or we) is adopting a more efficient administrative process for authorizing seasonal migratory game bird hunting. The Service will issue a memorandum for migratory game bird hunting once every 3 years. The Service will continue to make annual decisions on harvest levels and will update the memorandum sooner than 3 years if changes are prescribed by our decision frameworks. The process eliminates the need for subsequent annual Federal regulation promulgation and rulemaking and is expected to increase efficiency; better meet State, Tribal, and Federal rulemaking constraints; and reduce the complexity and costs. Our goal is to better serve State partners and the hunting public while continuing to meet the legal and conservation purposes of the Migratory Bird Treaty Act.Tribes are already authorized under a similar process.",
           "date": "2026-06-26",
@@ -635,10 +680,10 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-26"
+          "asOf": "2026-06-27"
         },
         {
-          "id": "fedregister-6",
+          "id": "fedregister-9",
           "title": "Transport Airplane and Propulsion Certification Modernization",
           "detail": "2026-12922 · Proposed Rule · FAA proposes to amend various airworthiness regulations to modernize certain certification standards for transport category airplanes and propulsion systems. This rule would be both deregulatory and relieving by reducing the number of exemptions, special conditions, and equivalent level of safety findings required during the certification process. FAA expects that this proposal would reduce certification costs and time to certify new and changed products for both industry and FAA while maintaining or increasing the level of safety provided by the current regulations. FAA proposes to remove Special Federal Aviation Regulation (SFAR) No. 109 from part 25 and relocate certain of its requirements. Finally, this action would address industry and National Transportation Safety Board recommendations while also harmonizing FAA's regulations with international standards.",
           "date": "2026-06-26",
@@ -650,52 +695,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-26"
-        },
-        {
-          "id": "fedregister-7",
-          "title": "Combined Notice of Filings #1",
-          "detail": "2026-12893 · Notice",
-          "date": "2026-06-26",
-          "link": "https://www.federalregister.gov/documents/2026/06/26/2026-12893/combined-notice-of-filings-1",
-          "source": {
-            "name": "Federal Register",
-            "url": "https://www.federalregister.gov",
-            "tier": "official",
-            "description": "Official daily journal of the U.S. government via federalregister.gov API",
-            "date": "2026-06-26"
-          },
-          "asOf": "2026-06-26"
-        },
-        {
-          "id": "fedregister-8",
-          "title": "TBL Group, Inc.-Acquisition of Control-Escot Bus Lines, L.L.C.",
-          "detail": "2026-12859 · Notice · TBL Group, Inc. (TBL Group), a noncarrier holding company that controls multiple interstate motor passenger carriers, has filed an application to acquire control of the primary assets of, or the member interest in, Escot Bus Lines, L.L.C. (Escot), a federally regulated motor passenger carrier. The Board is tentatively approving and authorizing the transaction. If no opposing comments are timely filed, this notice will be the final Board action.",
-          "date": "2026-06-26",
-          "link": "https://www.federalregister.gov/documents/2026/06/26/2026-12859/tbl-group-inc-acquisition-of-control-escot-bus-lines-llc",
-          "source": {
-            "name": "Federal Register",
-            "url": "https://www.federalregister.gov",
-            "tier": "official",
-            "description": "Official daily journal of the U.S. government via federalregister.gov API",
-            "date": "2026-06-26"
-          },
-          "asOf": "2026-06-26"
-        },
-        {
-          "id": "fedregister-9",
-          "title": "United States Standards for Grades of Orange Juice",
-          "detail": "2026-12846 · Notice · The Agricultural Marketing Service (AMS) is revising the U.S. Standards for Grades of Orange Juice (U.S. OJ Standards or Standards) by revising the limits for Grade B Brix allowances in Pasteurized Orange Juice (POJ) under the U.S. OJ Standards to reference the Food and Drug Administration's (FDA) Standard of Identity (SOI) for POJ.",
-          "date": "2026-06-25",
-          "link": "https://www.federalregister.gov/documents/2026/06/25/2026-12846/united-states-standards-for-grades-of-orange-juice",
-          "source": {
-            "name": "Federal Register",
-            "url": "https://www.federalregister.gov",
-            "tier": "official",
-            "description": "Official daily journal of the U.S. government via federalregister.gov API",
-            "date": "2026-06-25"
-          },
-          "asOf": "2026-06-26"
+          "asOf": "2026-06-27"
         }
       ]
     }

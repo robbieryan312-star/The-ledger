@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-06-26",
-  "fetchedAt": "2026-06-26T16:34:50.812Z",
+  "asOf": "2026-06-27",
+  "fetchedAt": "2026-06-27T15:03:58.531Z",
   "sections": [
     {
       "sourceId": "newsapi",
@@ -211,8 +211,8 @@
           "tier": "media",
           "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing"
         },
-        "asOf": "2026-06-26",
-        "fetchedAt": "2026-06-26T16:34:50.812Z",
+        "asOf": "2026-06-27",
+        "fetchedAt": "2026-06-27T15:03:58.531Z",
         "totalCount": 0,
         "datasetUrl": "https://api.gdeltproject.org/api/v2/doc/doc?query=Florida%20(governor%20OR%20legislature%20OR%20senate%20OR%20election%20OR%20congress)&mode=artlist&maxrecords=50&format=json&sort=datedesc&timespan=14d",
         "note": "Florida political news coverage (last 14 days) via the GDELT 2.0 DOC API. Tier 3 automated aggregator over global journalism — always corroborate with Tier 1/2 records before treating as fact.",

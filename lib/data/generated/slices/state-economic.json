@@ -64,7 +64,7 @@
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
         "date": "2026-05-01"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "label": "Unemployment level",
@@ -78,7 +78,7 @@
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
         "date": "2026-05-01"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "label": "Employment",
@@ -92,7 +92,7 @@
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
         "date": "2026-05-01"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     },
     {
       "label": "Labor force",
@@ -106,7 +106,7 @@
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
         "date": "2026-05-01"
       },
-      "asOf": "2026-06-26"
+      "asOf": "2026-06-27"
     }
   ]
 }
