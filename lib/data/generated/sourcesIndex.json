@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-27T15:04:05.807Z",
+  "generatedAt": "2026-06-28T15:06:09.069Z",
   "sourceCount": 21,
   "sources": [
     {
@@ -13,10 +13,10 @@
         "tier": "official",
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)"
       },
-      "asOf": "2026-06-27",
-      "fetchedAt": "2026-06-27T15:03:53.599Z",
+      "asOf": "2026-06-28",
+      "fetchedAt": "2026-06-28T15:05:55.516Z",
       "fetchedLive": true,
-      "count": 75,
+      "count": 73,
       "datasetUrl": "https://efts.sec.gov/LATEST/search-index?q=%22Florida%22&forms=8-K",
       "note": "Recent 8-K material-event filings (last 60 days) referencing Florida via SEC EDGAR full-text search. Each record carries the filer business/incorporation state and a floridaDomiciled flag — EDGAR location filters are unreliable, so Florida relevance is by full-text match. Tier 1 official.",
       "errors": null,
@@ -106,22 +106,10 @@
           "link": "https://www.sec.gov/Archives/edgar/data/1651721/000119312526237019/"
         },
         {
-          "title": "Helio Corp /FL/",
-          "detail": "EX-10.1 · 0001953988 · 0001213900-26-048545",
-          "date": "2026-04-28",
-          "link": "https://www.sec.gov/Archives/edgar/data/1953988/000121390026048545/"
-        },
-        {
           "title": "NEXTERA ENERGY INC",
           "detail": "EX-5.B AND 8 · 0000753308 · 0000753308-26-000052",
           "date": "2026-06-22",
           "link": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000052/"
-        },
-        {
-          "title": "SEACOAST BANKING CORP OF FLORIDA",
-          "detail": "8-K · 0000730708 · 0001628280-26-027918",
-          "date": "2026-04-28",
-          "link": "https://www.sec.gov/Archives/edgar/data/730708/000162828026027918/"
         },
         {
           "title": "HALLMARK VENTURE GROUP, INC.",
@@ -134,12 +122,6 @@
           "detail": "EX-10.1 · 0001494891 · 0001753926-26-000983",
           "date": "2026-06-05",
           "link": "https://www.sec.gov/Archives/edgar/data/1494891/000175392626000983/"
-        },
-        {
-          "title": "Myseum.AI, Inc.",
-          "detail": "EX-99.1 · 0001648960 · 0001213900-26-048582",
-          "date": "2026-04-28",
-          "link": "https://www.sec.gov/Archives/edgar/data/1648960/000121390026048582/"
         },
         {
           "title": "SEACOAST BANKING CORP OF FLORIDA",
@@ -170,6 +152,24 @@
           "detail": "8-K · 0000730708 · 0001628280-26-034576",
           "date": "2026-05-13",
           "link": "https://www.sec.gov/Archives/edgar/data/730708/000162828026034576/"
+        },
+        {
+          "title": "OFF THE HOOK YS INC.",
+          "detail": "EX-4.2 · 0002067767 · 0001493152-26-022878",
+          "date": "2026-05-14",
+          "link": "https://www.sec.gov/Archives/edgar/data/2067767/000149315226022878/"
+        },
+        {
+          "title": "BayFirst Financial Corp.",
+          "detail": "8-K · 0001649739 · 0001649739-26-000032",
+          "date": "2026-05-21",
+          "link": "https://www.sec.gov/Archives/edgar/data/1649739/000164973926000032/"
+        },
+        {
+          "title": "Vireo Growth Inc.",
+          "detail": "EX-99.1 · 0001771706 · 0001104659-26-055624",
+          "date": "2026-05-05",
+          "link": "https://www.sec.gov/Archives/edgar/data/1771706/000110465926055624/"
         }
       ]
     },
@@ -526,7 +526,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-27",
+      "asOf": "2026-06-28",
       "fetchedAt": null,
       "fetchedLive": true,
       "count": 100,
@@ -697,7 +697,7 @@
         "tier": "official",
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov"
       },
-      "asOf": "2026-06-27",
+      "asOf": "2026-06-28",
       "fetchedAt": null,
       "fetchedLive": true,
       "count": 4,
@@ -940,7 +940,7 @@
         "tier": "official",
         "description": "Official daily journal of the U.S. government via federalregister.gov API"
       },
-      "asOf": "2026-06-27",
+      "asOf": "2026-06-28",
       "fetchedAt": null,
       "fetchedLive": true,
       "count": 100,
@@ -1155,7 +1155,7 @@
         "tier": "nonpartisan",
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records"
       },
-      "asOf": "2026-06-27",
+      "asOf": "2026-06-28",
       "fetchedAt": null,
       "fetchedLive": true,
       "count": 60,
@@ -1497,8 +1497,8 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-06-27",
-      "fetchedAt": "2026-06-27T15:03:56.044Z",
+      "asOf": "2026-06-28",
+      "fetchedAt": "2026-06-28T15:05:57.737Z",
       "fetchedLive": true,
       "count": 32,
       "datasetUrl": "https://voteview.com/static/data/out/members/H119_members.csv",
@@ -2352,8 +2352,8 @@
         "tier": "official",
         "description": "Official Florida legislative & executive branch lobbying firm directories"
       },
-      "asOf": "2026-06-27",
-      "fetchedAt": "2026-06-27T15:03:57.502Z",
+      "asOf": "2026-06-28",
+      "fetchedAt": "2026-06-28T15:05:58.960Z",
       "fetchedLive": true,
       "count": 40,
       "datasetUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory",
@@ -2865,8 +2865,8 @@
         "tier": "media",
         "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing"
       },
-      "asOf": "2026-06-27",
-      "fetchedAt": "2026-06-27T15:03:58.531Z",
+      "asOf": "2026-06-28",
+      "fetchedAt": "2026-06-28T15:06:00.370Z",
       "fetchedLive": false,
       "count": 0,
       "datasetUrl": "https://api.gdeltproject.org/api/v2/doc/doc?query=Florida%20(governor%20OR%20legislature%20OR%20senate%20OR%20election%20OR%20congress)&mode=artlist&maxrecords=50&format=json&sort=datedesc&timespan=14d",

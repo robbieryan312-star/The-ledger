@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-06-27",
+  "asOf": "2026-06-28",
   "fetchedAt": "2026-06-24T15:29:37.411Z",
   "sections": [
     {
@@ -541,7 +541,7 @@
           "tier": "official",
           "description": "Official daily journal of the U.S. government via federalregister.gov API"
         },
-        "asOf": "2026-06-27",
+        "asOf": "2026-06-28",
         "totalCount": 100,
         "datasetUrl": "https://www.federalregister.gov/api/v1/documents.json?conditions[term]=Florida",
         "note": "Most recent 100 Federal Register documents matching \"Florida\" (rules, proposed rules, notices, presidential documents). Tier 1 official."
@@ -560,7 +560,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-29"
           },
-          "asOf": "2026-06-27"
+          "asOf": "2026-06-28"
         },
         {
           "id": "fedregister-1",
@@ -575,7 +575,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-29"
           },
-          "asOf": "2026-06-27"
+          "asOf": "2026-06-28"
         },
         {
           "id": "fedregister-2",
@@ -590,7 +590,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-29"
           },
-          "asOf": "2026-06-27"
+          "asOf": "2026-06-28"
         },
         {
           "id": "fedregister-3",
@@ -605,7 +605,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-27"
+          "asOf": "2026-06-28"
         },
         {
           "id": "fedregister-4",
@@ -620,7 +620,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-27"
+          "asOf": "2026-06-28"
         },
         {
           "id": "fedregister-5",
@@ -635,7 +635,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-27"
+          "asOf": "2026-06-28"
         },
         {
           "id": "fedregister-6",
@@ -650,7 +650,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-27"
+          "asOf": "2026-06-28"
         },
         {
           "id": "fedregister-7",
@@ -665,7 +665,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-27"
+          "asOf": "2026-06-28"
         },
         {
           "id": "fedregister-8",
@@ -680,7 +680,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-27"
+          "asOf": "2026-06-28"
         },
         {
           "id": "fedregister-9",
@@ -695,7 +695,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-27"
+          "asOf": "2026-06-28"
         }
       ]
     }
