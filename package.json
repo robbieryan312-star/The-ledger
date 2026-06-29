@@ -43,6 +43,7 @@
     "ingest:fllobbyist-fl": "tsx scripts/ingest-fllobbyist-florida.ts",
     "ingest:gdelt-fl": "tsx scripts/ingest-gdelt-florida.ts",
     "ingest:member": "tsx scripts/ingest-member-deep.ts",
+    "ingest:member-all": "tsx scripts/ingest-member-deep.ts -- --all",
     "ingest:florida-all": "npm run ingest:fec-fl && npm run ingest:congress-fl && npm run ingest:govtrack-fl && npm run ingest:usaspending-fl && npm run ingest:fara-fl && npm run ingest:civic-fl && npm run ingest:census-fl && npm run ingest:lobbying-fl && npm run ingest:openstates-fl && npm run ingest:legiscan-fl && npm run ingest:news-fl && npm run ingest:sam-fl && npm run ingest:fedregister-fl && npm run ingest:courts-fl && npm run ingest:bls-fl && npm run ingest:fldoe-fl && npm run ingest:govinfo-fl && npm run ingest:secedgar-fl && npm run ingest:voteview-fl && npm run ingest:fllobbyist-fl && npm run ingest:gdelt-fl",
     "ingest:no-key": "npm run ingest:usaspending-fl && npm run ingest:fedregister-fl && npm run ingest:courts-fl && npm run ingest:bls-fl && npm run ingest:secedgar-fl && npm run ingest:voteview-fl && npm run ingest:fllobbyist-fl && npm run ingest:gdelt-fl",
     "ingest:all": "npm run ingest:florida-all",

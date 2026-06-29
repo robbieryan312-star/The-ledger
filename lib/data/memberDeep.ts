@@ -1,8 +1,10 @@
 /**
  * memberDeep.ts — deep per-member Congress.gov snapshots from ingest-member-deep.ts.
+ * Reads lib/data/generated/members/{bioguideId}.json at request/build time (server only).
  */
+import { existsSync, readFileSync } from 'node:fs';
+import path from 'node:path';
 import type { Source, SourceTier } from '../types';
-import sandersDeep from './generated/members/S000033.json';
 
 export interface MemberDeepBill {
   topicId: string;
@@ -46,13 +48,17 @@ export interface MemberDeepProfile {
   byTopic: Record<string, MemberDeepTopicBlock>;
 }
 
-const MEMBER_DEEP_REGISTRY: Record<string, MemberDeepProfile> = {
-  S000033: sandersDeep as MemberDeepProfile,
-};
+const MEMBERS_DIR = path.join(process.cwd(), 'lib', 'data', 'generated', 'members');
 
 /** Returns null when no generated snapshot exists for this bioguideId. */
 export function getMemberDeep(bioguideId: string): MemberDeepProfile | null {
-  return MEMBER_DEEP_REGISTRY[bioguideId] ?? null;
+  const filePath = path.join(MEMBERS_DIR, `${bioguideId}.json`);
+  if (!existsSync(filePath)) return null;
+  try {
+    return JSON.parse(readFileSync(filePath, 'utf8')) as MemberDeepProfile;
+  } catch {
+    return null;
+  }
 }
 
 export function getMemberDeepTopic(

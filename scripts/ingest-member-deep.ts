@@ -1,11 +1,12 @@
 /**
- * ingest-member-deep.ts — deep Congress.gov profile for one member (pilot: S000033).
+ * ingest-member-deep.ts — deep Congress.gov profile per member via Congress.gov API v3.
  * Output: lib/data/generated/members/{bioguideId}.json
  *
  * Run: npm run ingest:member
  *      npm run ingest:member -- --bioguide S000033
+ *      npm run ingest:member -- --all
  */
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Source, SourceTier } from '../lib/types';
@@ -14,6 +15,9 @@ import { loadEnvLocal, sleep } from './lib/ingest-utils';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated', 'members');
+const LEGISLATORS_FILE = path.join(projectRoot, 'lib', 'data', 'generated', 'currentLegislators.json');
+const CHECKPOINT_FILE = '/tmp/ingest-member-deep-checkpoint.json';
+const MANIFEST_FILE = path.join(OUT_DIR, 'manifest.json');
 const API_BASE = 'https://api.congress.gov/v3';
 const PAGE_LIMIT = 250;
 const REQUEST_DELAY_MS = 400;
@@ -98,16 +102,23 @@ export interface MemberDeepProfile {
   byTopic: Record<string, MemberDeepTopicBlock>;
 }
 
-function parseArgs(): { bioguideId: string } {
+interface LegislatorRow {
+  bioguideId: string;
+  chamber: string;
+}
+
+function parseArgs(): { all: boolean; bioguideId: string } {
   const args = process.argv.slice(2);
+  let all = false;
   let bioguideId = 'S000033';
   for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--all') all = true;
     if (args[i] === '--bioguide' && args[i + 1]) {
       bioguideId = args[i + 1];
       i += 1;
     }
   }
-  return { bioguideId };
+  return { all, bioguideId };
 }
 
 function getCongressApiKey(): string {
@@ -299,13 +310,8 @@ async function fetchMemberProfile(bioguideId: string, key: string): Promise<Memb
   };
 }
 
-async function main(): Promise<void> {
-  await loadEnvLocal();
-  const { bioguideId } = parseArgs();
-  const key = getCongressApiKey();
-  const asOf = new Date().toISOString().slice(0, 10);
-
-  console.log(`Deep ingest for ${bioguideId} via Congress.gov API v3`);
+async function ingestOneMember(bioguideId: string, key: string, asOf: string): Promise<MemberDeepProfile> {
+  console.log(`\nDeep ingest for ${bioguideId} via Congress.gov API v3`);
 
   console.log('Step A — member profile');
   const profile = await fetchMemberProfile(bioguideId, key);
@@ -352,6 +358,82 @@ async function main(): Promise<void> {
   console.log(
     `Coverage: ${sponsored.length} sponsored · ${cosponsored.length} cosponsored · ${Object.values(snapshot.meta.topicCoverage).filter((n) => n > 0).length} topics with bills`,
   );
+
+  return snapshot;
+}
+
+async function loadCongressMembers(): Promise<LegislatorRow[]> {
+  const raw = JSON.parse(await readFile(LEGISLATORS_FILE, 'utf8')) as { legislators: LegislatorRow[] };
+  return raw.legislators.filter((l) => l.chamber === 'senate' || l.chamber === 'house');
+}
+
+async function writeManifest(asOf: string): Promise<void> {
+  const files = await readdir(OUT_DIR);
+  const bioguideIds = files
+    .filter((f) => f.endsWith('.json') && f !== 'manifest.json')
+    .map((f) => f.replace(/\.json$/, ''))
+    .sort();
+  await writeFile(
+    MANIFEST_FILE,
+    JSON.stringify({ asOf, count: bioguideIds.length, bioguideIds }, null, 2) + '\n',
+    'utf8',
+  );
+}
+
+async function main(): Promise<void> {
+  await loadEnvLocal();
+  const { all, bioguideId } = parseArgs();
+  const key = getCongressApiKey();
+  const asOf = new Date().toISOString().slice(0, 10);
+
+  if (!all) {
+    await ingestOneMember(bioguideId, key, asOf);
+    await writeManifest(asOf);
+    return;
+  }
+
+  const members = await loadCongressMembers();
+  let checkpoint: Record<string, boolean> = {};
+  try {
+    checkpoint = JSON.parse(await readFile(CHECKPOINT_FILE, 'utf8')) as Record<string, boolean>;
+  } catch {
+    /* fresh run */
+  }
+
+  console.log(
+    `Deep ingest --all: ${members.length} members (${Object.keys(checkpoint).length} checkpointed)`,
+  );
+
+  let completed = 0;
+  for (let i = 0; i < members.length; i += 1) {
+    const leg = members[i];
+    if (checkpoint[leg.bioguideId]) continue;
+
+    try {
+      await ingestOneMember(leg.bioguideId, key, asOf);
+      checkpoint[leg.bioguideId] = true;
+      completed += 1;
+      await writeFile(CHECKPOINT_FILE, JSON.stringify(checkpoint) + '\n', 'utf8');
+      if (completed % 5 === 0) {
+        await writeManifest(asOf);
+      }
+    } catch (err) {
+      console.error(
+        `FAILED ${leg.bioguideId}:`,
+        err instanceof Error ? err.message : err,
+      );
+    }
+
+    if ((i + 1) % 10 === 0 || i === members.length - 1) {
+      console.log(`  progress: ${i + 1}/${members.length} processed · ${Object.keys(checkpoint).length} checkpointed`);
+    }
+  }
+
+  await writeManifest(asOf);
+  console.log('');
+  console.log('── ingest:member --all complete ──');
+  console.log(`Checkpointed: ${Object.keys(checkpoint).length}/${members.length}`);
+  console.log(`Manifest: ${MANIFEST_FILE}`);
 }
 
 main().catch((err) => {

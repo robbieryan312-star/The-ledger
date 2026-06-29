@@ -100,7 +100,9 @@ function TopicGroupRow({
 
   const hasStatedPosition = Boolean(topicPositions?.statedPosition);
   const hasStatements = (topicPositions?.statements.length ?? 0) > 0;
-  const hasStatedBlock = hasStatedPosition || hasStatements;
+  const platformPositions = topicPositions?.platformPositions ?? [];
+  const hasPlatformPositions = platformPositions.length > 0;
+  const hasStatedBlock = hasStatedPosition || hasStatements || hasPlatformPositions;
 
   const legislationBillCount = deepSponsoredCount + deepCosponsoredCount;
   const hasLegislation =
@@ -166,7 +168,36 @@ function TopicGroupRow({
                 </div>
               )}
 
-              {!hasStatedPosition && hasStatements && (
+              {!hasStatedPosition && hasPlatformPositions && (
+                <div>
+                  <div className="text-white font-semibold mb-1">Platform position</div>
+                  {platformPositions.map((pos, idx) => (
+                    <div key={idx} className={idx > 0 ? 'mt-3' : ''}>
+                      <p className="text-gray-200 leading-relaxed">{pos.text}</p>
+                      <div className="mt-2 flex flex-wrap items-center gap-2">
+                        <SourceBadge
+                          source={{
+                            name: pos.source,
+                            url: pos.url,
+                            tier: pos.tier,
+                            date: pos.asOf,
+                          }}
+                        />
+                        <Link
+                          href={pos.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white transition-colors"
+                        >
+                          {pos.source} <ExternalLink className="h-3 w-3" />
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {!hasStatedPosition && !hasPlatformPositions && hasStatements && (
                 <div>
                   <div className="text-white font-semibold mb-1">Stated position</div>
                   {topicPositions.statements.map((statement, idx) => (
@@ -361,7 +392,7 @@ export default function ProfileRecordByTopicPanel({
         {memberDeep
           ? ` (${deepSponsoredTotal} sponsored · ${deepCosponsoredTotal} cosponsored via Congress.gov)`
           : ''}
-        ; stated positions from VoteSmart; Congressional Record statements from GovInfo.
+        ; stated positions from VoteSmart NPAT; platform positions from Ballotpedia where available.
       </p>
       <div className="space-y-2">
         {record.topics.map((group) => (

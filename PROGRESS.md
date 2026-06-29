@@ -1,6 +1,6 @@
 # The Ledger — Progress Log
 
-**Last updated:** 2026-06-28
+**Last updated:** 2026-06-29
 **Branch:** `phase-5-national-wiring`
 **Live demo:** https://the-ledger-gamma.vercel.app
 
@@ -8,9 +8,9 @@
 
 ## Current phase
 
-**National coverage complete. Next: SSR conversion + quote layer.**
+**Phases 10–15 complete. Phase 16 in progress — member deep ingest scaling.**
 
-All 537 Congress members have integrated votes, FEC finance, and GDELT news. GitHub Actions secrets are pushed — live demo auto-refreshes. Build passes. The core product feature (verbatim "Said → Did" quote layer) is the next priority.
+Said→Did panel wired with Ballotpedia platform positions + vote links (428/537 members). Topic panel shows platform positions first, votes second, legislation collapsed last. Phase 16 adds `--all` ingest with checkpointing and dynamic member file loading.
 
 ---
 
@@ -26,7 +26,13 @@ All 537 Congress members have integrated votes, FEC finance, and GDELT news. Git
 | 2026-06-25 | Phase 6 | FEC national coverage raised to 527/537 via fecIds dataset; rate-limit backoff | `863ca06` |
 | 2026-06-25 | Phase 7 | Honest empty states: DonorChart, ConsistencyScore; isDisplayableFecEntry guard | `57311f1`, `863ca06` |
 | 2026-06-28 | Phase 8/9a | Topic record panel (537/537 members), FL member news, self-hosted Inter font | `32c3fba` |
-| 2026-06-28 | Phase 10 | Banner truncation, guard comment on countProfilesWithTopicRecord | (uncommitted) |
+| 2026-06-29 | Phase 10 | Deep profile pilot (S000033), positions sync scripts, rule file updates | `0bf2468` |
+| 2026-06-29 | Phase 11 | SSR conversion — politician profile page now server-rendered | `a2d76ee` |
+| 2026-06-29 | Phase 12 | Said → Did panel component — wired into Track Record tab | `b48b205` |
+| 2026-06-29 | Phase 13 | Mock data disclaimers on /lobbying and /elections | `830a25d` |
+| 2026-06-29 | Phase 14 | Remove broken nav sub-links (Lobbyist Tracker, PACs & Advocacy, Election Calendar) | `376aff9` |
+| 2026-06-29 | Phase 15a | Topic panel hierarchy — stated positions first, legislation collapsed last | `8cd4c0f` |
+| 2026-06-29 | Phase 15b | Ballotpedia platform positions + Said→Did vote correlation (442 members) | `56a8cd2` |
 | 2026-06-28 | — | GitHub Actions secrets pushed via `setup-github-secrets.sh` — live auto-refresh unlocked | — |
 
 ---
@@ -35,9 +41,8 @@ All 537 Congress members have integrated votes, FEC finance, and GDELT news. Git
 
 | Item | Status |
 |------|--------|
-| `sync:news-national` | Running — estimated completion ~107 min from start |
-| Phase 10 fixes | Uncommitted — commit after sync confirms |
-| `MemberNewsPanel` wiring | Uncommitted — part of Brief 2 |
+| Phase 16: Member deep ingest `--all` | In progress — script + dynamic loader done; full 537 run pending |
+| VoteSmart NPAT re-sync | Blocked locally — `VOTESMART_API_KEY` not in agent env; re-run when key present |
 
 ---
 
@@ -45,19 +50,17 @@ All 537 Congress members have integrated votes, FEC finance, and GDELT news. Git
 
 | Item | Impact |
 |------|--------|
-| `app/politicians/[id]/page.tsx` is `'use client'` | Individual profiles not crawler-visible — critical for "Beat Google" goal |
-| `/lobbying`, `/elections` show mock data | Credibility risk — need disclaimers or real data pipeline |
-| Nav sub-links "Lobbyist Tracker", "PACs & Advocacy", "Election Calendar" point to unbuilt views | Silent broken navigation |
+| `membersWithStatedPosition: 0` in topicPositions.json | VoteSmart NPAT skipped — needs re-run with key |
+| `lib/data/generated/members/` has only S000033 | Full `--all` ingest not yet run |
+| `memberPositions.json` has hollow GovInfo data | Same statements for every member — discard and replace |
 
 ---
 
 ## Next priorities (in order)
 
-1. **Commit Phase 10 + Brief 2 results** after sync completes and build passes
-2. **"Said → Did" verbatim quote layer** — wire verbatim journalism quotes into Track Record tab for featured profiles; this is the core product differentiator
-3. **SSR conversion** — convert `app/politicians/[id]/page.tsx` from `'use client'` to server component shell with client sub-components
-4. **Mock data disclaimers** — add visible banners to `/lobbying` and `/elections` until real pipelines replace them
-5. **Fix broken nav sub-links** — remove or route correctly
+1. **Phase 16 — Run `npm run ingest:member-all`** — generate all 537 `lib/data/generated/members/{bioguideId}.json` files (checkpointed, resumable)
+2. **Phase 15c — VoteSmart NPAT re-sync** — clear `/tmp/sync-topic-positions-checkpoint.json`, re-run with `VOTESMART_API_KEY` set
+3. **Phase 17 — Donor sector breakdown** — FEC sector data per topic; show "Funded by healthcare industry: $X" next to vote summary
 
 ---
 
