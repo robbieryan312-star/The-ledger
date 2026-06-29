@@ -2,6 +2,7 @@
  * memberDeep.ts — deep per-member Congress.gov snapshots from ingest-member-deep.ts.
  */
 import type { Source, SourceTier } from '../types';
+import sandersDeep from './generated/members/S000033.json';
 
 export interface MemberDeepBill {
   topicId: string;
@@ -45,24 +46,13 @@ export interface MemberDeepProfile {
   byTopic: Record<string, MemberDeepTopicBlock>;
 }
 
-const cache = new Map<string, MemberDeepProfile | null>();
+const MEMBER_DEEP_REGISTRY: Record<string, MemberDeepProfile> = {
+  S000033: sandersDeep as MemberDeepProfile,
+};
 
 /** Returns null when no generated snapshot exists for this bioguideId. */
 export function getMemberDeep(bioguideId: string): MemberDeepProfile | null {
-  if (cache.has(bioguideId)) {
-    return cache.get(bioguideId) ?? null;
-  }
-
-  try {
-    // Dynamic require keeps the registry open as new member JSON files are added.
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const data = require(`./generated/members/${bioguideId}.json`) as MemberDeepProfile;
-    cache.set(bioguideId, data);
-    return data;
-  } catch {
-    cache.set(bioguideId, null);
-    return null;
-  }
+  return MEMBER_DEEP_REGISTRY[bioguideId] ?? null;
 }
 
 export function getMemberDeepTopic(
