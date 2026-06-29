@@ -16,6 +16,7 @@ import VotingRecord from '@/components/politicians/VotingRecord';
 import DonorChart from '@/components/politicians/DonorChart';
 import StockTrades from '@/components/politicians/StockTrades';
 import CredibilityConsistency from '@/components/politicians/CredibilityConsistency';
+import SaidDidPanel from '@/components/politicians/SaidDidPanel';
 import RelatedOfficialRecords from '@/components/politicians/RelatedOfficialRecords';
 import PublicActionsAccordion from '@/components/politicians/PublicActionsAccordion';
 import ExecutiveActions from '@/components/politicians/ExecutiveActions';
@@ -953,11 +954,14 @@ export default function PoliticianProfileClient({
             {isLightweight ? (
               <MissingRecordPanel kind="statement-to-action consistency tracking" />
             ) : (
-              <CredibilityConsistency
-                data={politician.consistency}
-                issues={politician.topIssues}
-                name={politician.name}
-              />
+              <>
+                <SaidDidPanel diffs={politician.saidDidDiffs ?? []} />
+                <CredibilityConsistency
+                  data={politician.consistency}
+                  issues={politician.topIssues}
+                  name={politician.name}
+                />
+              </>
             )}
           </div>
         )}

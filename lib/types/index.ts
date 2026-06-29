@@ -127,6 +127,24 @@ export interface TradeTimelineEvent {
   source: Source;
 }
 
+export interface SaidDidDiff {
+  said: {
+    quote: string;
+    speaker: string;
+    date: string;
+    outlet: string;
+    url: string;
+    tier: 'media' | 'official';
+  };
+  did: {
+    action: string;
+    date: string;
+    url: string;
+    tier: 'official';
+  };
+  gapDays: number | null;
+}
+
 export interface Politician {
   id: string;
   name: string;
@@ -172,6 +190,8 @@ export interface Politician {
   };
   /** President, VP, and cabinet — executive orders, nominations, department actions (not roll calls). */
   executiveActions?: ExecutiveAction[];
+  /** Verbatim quote paired with official action — Said → Did diffs for Track Record tab. */
+  saidDidDiffs?: SaidDidDiff[];
 }
 
 /** Yea/Nay counts by party from an official roll call (when sync captured member votes). */
