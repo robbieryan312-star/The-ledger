@@ -6,7 +6,7 @@
       "tier": "official",
       "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
     },
-    "asOf": "2026-06-24",
+    "asOf": "2026-06-29",
     "count": 29,
     "stateCode": "FL",
     "fetchedLive": true,
@@ -32,6 +32,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -51,6 +68,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -70,6 +104,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -89,6 +140,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -108,6 +176,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -127,6 +212,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -146,6 +248,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -179,7 +298,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -201,6 +320,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -220,6 +356,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -239,6 +392,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -258,6 +428,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -277,6 +464,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -296,6 +500,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -315,6 +536,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -348,7 +586,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -370,6 +608,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -389,6 +644,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -408,6 +680,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -427,6 +716,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -446,6 +752,23 @@
           "vote": "Nay",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -465,6 +788,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -484,6 +824,23 @@
           "vote": "Nay",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -517,7 +874,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -539,6 +896,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -558,6 +932,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -577,6 +968,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -596,6 +1004,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -615,6 +1040,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -634,6 +1076,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -653,6 +1112,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -686,7 +1162,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -708,6 +1184,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -727,6 +1220,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -746,6 +1256,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -765,6 +1292,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -784,6 +1328,23 @@
           "vote": "Nay",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -803,6 +1364,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -822,6 +1400,23 @@
           "vote": "Nay",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -855,7 +1450,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -877,6 +1472,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -896,6 +1508,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -915,6 +1544,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -934,6 +1580,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -953,6 +1616,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -972,6 +1652,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -991,6 +1688,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -1024,7 +1738,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -1046,6 +1760,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -1065,6 +1796,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -1084,6 +1832,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -1103,6 +1868,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -1122,6 +1904,23 @@
           "vote": "Nay",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -1141,6 +1940,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -1160,6 +1976,23 @@
           "vote": "Nay",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -1193,7 +2026,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -1215,6 +2048,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -1234,6 +2084,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -1253,6 +2120,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -1272,6 +2156,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -1291,6 +2192,23 @@
           "vote": "Nay",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -1310,6 +2228,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -1329,6 +2264,23 @@
           "vote": "Nay",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -1362,7 +2314,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -1384,6 +2336,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -1403,6 +2372,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -1422,6 +2408,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -1441,6 +2444,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -1460,6 +2480,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -1479,6 +2516,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -1498,6 +2552,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -1531,7 +2602,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -1553,6 +2624,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -1572,6 +2660,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -1591,6 +2696,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -1610,6 +2732,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -1629,6 +2768,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -1648,6 +2804,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -1667,6 +2840,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -1700,7 +2890,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -1722,6 +2912,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -1741,6 +2948,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -1760,6 +2984,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -1779,6 +3020,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -1798,6 +3056,23 @@
           "vote": "Nay",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -1817,6 +3092,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -1836,6 +3128,23 @@
           "vote": "Nay",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -1869,7 +3178,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -1891,6 +3200,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -1910,6 +3236,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -1929,6 +3272,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -1948,6 +3308,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -1967,6 +3344,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -1986,6 +3380,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -2005,6 +3416,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -2038,7 +3466,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -2060,6 +3488,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -2079,6 +3524,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -2098,6 +3560,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -2117,6 +3596,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -2136,6 +3632,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -2155,6 +3668,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -2174,6 +3704,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -2207,7 +3754,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -2225,7 +3772,7 @@
           "billDescription": "On the Cloture Motion PN373 — Sara Bailey, of Texas, to be Director of National Drug Control Policy. Official Senate roll-call from senate.gov (119th Congress).",
           "voteAction": "On the Cloture Motion PN373",
           "billSummary": "Sara Bailey, of Texas, to be Director of National Drug Control Policy",
-          "date": "2025-12-19",
+          "date": "2025-12-18",
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
@@ -2251,7 +3798,7 @@
             "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00659.xml",
             "tier": "official",
             "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2025-12-19"
+            "date": "2025-12-18"
           }
         },
         {
@@ -2261,7 +3808,7 @@
           "billDescription": "On the Cloture Motion PN615-2 — Alexander C. Van Hook, of Louisiana, to be United States District Judge for the Western District of Louisiana. Official Senate roll-call from senate.gov (119th Congress).",
           "voteAction": "On the Cloture Motion PN615-2",
           "billSummary": "Alexander C. Van Hook, of Louisiana, to be United States District Judge for the Western District of Louisiana",
-          "date": "2025-12-19",
+          "date": "2025-12-18",
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
@@ -2287,7 +3834,7 @@
             "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00658.xml",
             "tier": "official",
             "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2025-12-19"
+            "date": "2025-12-18"
           }
         },
         {
@@ -2297,7 +3844,7 @@
           "billDescription": "On the Cloture Motion PN12-1 — Keith Bass, of Texas, to be an Assistant Secretary of Defense. Official Senate roll-call from senate.gov (119th Congress).",
           "voteAction": "On the Cloture Motion PN12-1",
           "billSummary": "Keith Bass, of Texas, to be an Assistant Secretary of Defense",
-          "date": "2025-12-19",
+          "date": "2025-12-18",
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
@@ -2323,7 +3870,7 @@
             "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00657.xml",
             "tier": "official",
             "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2025-12-19"
+            "date": "2025-12-18"
           }
         },
         {
@@ -2333,7 +3880,7 @@
           "billDescription": "On the Cloture Motion PN499-11 — Joshua Simmons, of Virginia, to be General Counsel of the Central Intelligence Agency. Official Senate roll-call from senate.gov (119th Congress).",
           "voteAction": "On the Cloture Motion PN499-11",
           "billSummary": "Joshua Simmons, of Virginia, to be General Counsel of the Central Intelligence Agency",
-          "date": "2025-12-19",
+          "date": "2025-12-18",
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
@@ -2359,7 +3906,7 @@
             "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00656.xml",
             "tier": "official",
             "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2025-12-19"
+            "date": "2025-12-18"
           }
         },
         {
@@ -2369,7 +3916,7 @@
           "billDescription": "On the Nomination PN416-9 and PN141-12 and PN499-12 and PN465-1 and PN345-14 and PN345-13 and PN345-10 and PN55-2 and PN624-2 and PN624-1 and PN379-17 and PN379-16 and PN416-6 and PN519-2 and PN445-3 and PN416-12 and PN55-7 and PN345-12 and PN465-2 and PN55-26 and PN55-10 and PN416-2 and PN379-20 and PN246-6 and PN560-3 and PN462-3 and PN462-1 and PN416-5 and PN518-5 and PN499-10 and PN499-2 and PN462-4 and PN141-10 and PN26-24 and PN445-10 and PN445-7 and PN445-2 and PN379-4 and PN246-12 and PN141-27 and PN141-8 and PN129-17 and PN129-1 and PN60-17 and PN60-11 and PN60-4 and PN22-11 and PN445-5 and PN466-9 and PN466-8 and PN466-7 and PN447 and PN141-5 and PN499-8 and PN345-8 and PN246-3 and PN246-11 and PN60-8 and PN445-11 and PN416-4 and PN379-15 and PN379-13 and PN379-11 and PN141-20 and PN141-25 and PN246-2 and PN26-47 and PN60-13 and PN26-26 and PN379-19 and PN445-1 and PN379-26 and PN379-22 and PN416-3 and PN379-9 and PN379-3 and PN379-18 and PN246-1 and PN141-14 and PN416-10 and PN379-21 and PN55-13 and PN129-6 and PN55-44 and PN141-39 and PN379-7 and PN246-13 and PN246-4 and PN141-26 and PN141-22 and PN141-16 and PN129-7 and PN60-12 and PN55-34 and PN141-2 and PN26-37 and PN25-29 — Scott Mayer, of Pennsylvania, to be a Member of the National Labor Relations Board for the term of five years expiring December 16, 2029; and Mary Anne Carter, of Tennessee, to be Chairperson of the National Endowment for the Arts for a term of four years; and Christopher Yeaw, of Virginia, to be an Assistant Secretary of State (Arms Control, Nonproliferation, and Stability); and Tammy Bruce, of California, to be the Deputy Representative of the United States of America to the United Nations, with the rank and status of Ambassador; the Deputy Representative of the United States of America in the Security Council of the United Nations; and to serve concurrently and without additional compensation as Representative of the United States of America to the Sessions of the General Assembly of the United Nations, during her tenure of service as Deputy Representative of the United States of America to the United Nations; and Darryl Nirenberg, of Virginia, to be Ambassador to Romania; and Bernardo Navarro, of Puerto Rico, to be Ambassador to the Republic of Peru; and Yehuda Kaploun, of Florida, to be Special Envoy to Monitor and Combat Anti-Semitism, with the rank of Ambassador; and Melissa Argyros, of California, to be Ambassador to the Republic of Latvia; and Michael Selig, of Florida, to be a Commissioner of the Commodity Futures Trading Commission for a term expiring April 13, 2029; and Michael Selig, of Florida, to be Chairman of the Commodity Futures Trading Commission; and Scott Leary, of Mississippi, to be United States Attorney for the Northern District of Mississippi for the term of four years; and James Kruger, of Mississippi, to be United States Attorney for the Southern District of Mississippi for the term of four years; and Ryan Anthony Kriegshauser, of Kansas, to be United States Attorney for the District of Kansas for the term of four years; and Erin Creegan, of New Hampshire, to be United States Attorney for the District of New Hampshire for the term of four years; and Andrew Duva, of Florida, to be an Assistant Attorney General; and John Walk, of Virginia, to be Inspector General, Department of Agriculture; and Thomas Bell, of Virginia, to be Inspector General, Department of Health and Human Services; and Morvared Namdarkhan, of Texas, to be an Assistant Secretary of State (Consular Affairs); and Brent Christensen, of Virginia, to be Ambassador to the People's Republic of Bangladesh; and Benjamin Leon, Jr., of Florida, to be Ambassador to the Kingdom of Spain, and to serve concurrently and without additional compensation as Ambassador to the Principality of Andorra; and Leo Brent Bozell III, of Virginia, to be Ambassador to the Republic of South Africa; and Julie Callahan, of the District of Columbia, to be Chief Agricultural Negotiator, Office of the United States Trade Representative, with the rank of Ambassador; and Arjun Mody, of New Jersey, to be Deputy Commissioner Social Security for the term expiring January 19, 2031; and Jeffrey Goettman, of Virginia, to be a Deputy United States Trade Representative (Africa, Western Hemisphere, Europe, the Middle East, Environment, Labor, and Industrial Competitiveness), with the Rank of Ambassador; and Travis Hill, of Maryland, to be Chairperson of the Board of Directors of the Federal Deposit Insurance Corporation for a term of five years; and Joseph Gormley, of Maryland, to be President, Government National Mortgage Association; and Francis Cassidy, of Pennsylvania, to be an Assistant Secretary of Housing and Urban Development; and Paul Hollis, of Louisiana, to be Director of the Mint for a term of five years; and Michelle A. Schultz, of Pennsylvania, to be a Member of the Surface Transportation Board for a term expiring November 30, 2030; and Trent Morse, of Florida, to be a Member of the Board of Directors of the Metropolitan Washington Airports Authority for a term expiring May 30, 2030; and Laura DiBella, of Florida, to be a Federal Maritime Commissioner for a term expiring June 30, 2028; and Timothy Petty, of Indiana, to be Assistant Secretary of Commerce for Oceans and Atmosphere; and Stephen Carmel, of Virginia, to be Administrator of the Maritime Administration; and Ethan Klein, of New Jersey, to be an Associate Director of the Office of Science and Technology Policy; and Maurice Todd, of Florida, to be an Assistant Secretary of Defense; and Michael Payne, of Virginia, to be Director of Cost Assessment and Program Evaluation, Department of Defense; and Timothy Dill, of Ohio, to be an Assistant Secretary of Defense; and James Caggy, of New York, to be an Assistant Secretary of Defense; and John Noh, of Texas, to be an Assistant Secretary of Defense; and William Lane III, of Virginia, to be General Counsel of the Department of the Air Force; and Michael Borders, of Florida, to be an Assistant Secretary of the Air Force; and Charles Young III, of West Virginia, to be General Counsel of the Department of the Army; and David Beck, of Tennessee, to be Deputy Administrator for Defense Programs, National Nuclear Security Administration; and Brendan Rogers, of Connecticut, to be an Assistant Secretary of the Navy; and Joseph Jewell, of Indiana, to be an Assistant Secretary of Defense; and Marc Berkowitz, of Virginia, to be an Assistant Secretary of Defense; and Robert Kadlec, of New York, to be an Assistant Secretary of Defense; and Thomas Ferguson III, of North Carolina, to be United States Attorney for the Western District of North Carolina for the term of four years; and John Cuong Truong, of the District of Columbia, to be an Associate Judge of the Superior Court of the District of Columbia for the term of fifteen years; and Elana S. Suttenberg, of the District of Columbia, to be an Associate Judge of the Superior Court of the District of Columbia for the term of fifteen years; and Stephen F. Rickard, of the District of Columbia, to be an Associate Judge of the Superior Court of the District of Columbia for the term of fifteen years; and Edward Forst, of Florida, to be Administrator of General Services; and Charles Arrington, of Illinois, to be a Member of the Federal Labor Relations Authority for a term expiring July 1, 2030; and Peter Metzger, of the District of Columbia, to be Assistant Secretary for Intelligence and Analysis, Department of the Treasury; and Stella Herrell, of New Mexico, to be an Assistant Secretary of Agriculture; and Mindy Brashears, of Texas, to be Under Secretary of Agriculture for Food Safety; and Platte Moring, of South Carolina, to be Inspector General, Department of Defense; and Anthony D'Esposito, of New York, to be Inspector General, Department of Labor; and Douglas Troutman, of Maryland, to be Assistant Administrator for Toxic Substances of the Environmental Protection Agency; and Arthur Graham, of Florida, to be a Member of the Board of Directors of the Tennessee Valley Authority for the remainder of the term expiring May 18, 2026; and Randall Jones, of Alabama, to be a Member of the Board of Directors of the Tennessee Valley Authority for a term expiring May 18, 2028; and Jeff Hagood, of Tennessee, to be a Member of the Board of Directors of the Tennessee Valley Authority for a term of expiring May 18, 2029; and Mitch Graves, of Tennessee, to be a Member of the Board of Directors of the Tennessee Valley Authority for a term expiring May 18, 2029; and Jeffrey Hall, of Virginia, to be an Assistant Administrator of the Environmental Protection Agency; and William Kirk, of Maryland, to be Inspector General, Small Business Administration; and John Bartrum, of Indiana, to be Under Secretary for Health of the Department of Veterans Affairs; and Andrew Veprek, of Louisiana, to be an Assistant Secretary of State (Population, Refugees, and Migration); and Joyce Meyer, of Virginia, to be Under Secretary of Commerce for Economic Affairs; and Harry Kumar, of New York, to be an Assistant Secretary of Commerce; and Adam Mildred, of Indiana, to be United States Attorney for the Northern District of Indiana for the term of four years; and Thomas Albus, of Missouri, to be United States Attorney for the Eastern District of Missouri for the term of four years; and Thomas Wheeler II, of Indiana, to be United States Attorney for the Southern District of Indiana for the term of four years; and Bryan Stirling, of South Carolina, to be United States Attorney for the District of South Carolina for the term of four years; and Jerome Francis Gorgon, Jr., of Michigan, to be United States Attorney for the Eastern District of Michigan for the term of four years; and Dominick Gerace II, of Ohio, to be United States Attorney for the Southern District of Ohio for the term of four years; and Braden Boucek, of Tennessee, to be United States Attorney for the Middle District of Tennessee for the term of four years; and James Mazol, of Virginia, to be a Deputy Under Secretary of Defense; and Derrick Anderson, of Virginia, to be an Assistant Secretary of Defense; and Kirsten Davies, of Tennessee, to be Chief Information Officer of the Department of Defense; and James Murphy, of Maryland, to be a Member of the National Labor Relations Board for the term of five years expiring December 16, 2027; and Rosario Palmieri, of Virginia, to be an Assistant Secretary of Labor; and Crystal Carey, of New Jersey, to be General Counsel of the National Labor Relations Board for term of four years; and Jonathan Greenstein, of New York, to be a Deputy Under Secretary of the Treasury; and Derek Theurer, of Virginia, to be a Deputy Under Secretary of the Treasury; and Jeremiah Workman, of Ohio, to be Assistant Secretary of Labor for Veterans' Employment and Training; and David Courcelle, of Louisiana, to be United States Attorney for the Eastern District of Louisiana for the term of four years; and Chris Pilkerton, of Maryland, to be Assistant Secretary of the Treasury for Investment Security; and Jonathan Burke, of Georgia, to be Assistant Secretary for Terrorist Financing, Department of the Treasury; and Ronald Kurtz, of Georgia, to be an Assistant Secretary of Housing and Urban Development; and Benjamin Hobbs, of Ohio, to be Assistant Secretary of Housing and Urban Development; and David Denton, Jr., of Virginia, to be General Counsel of the Department of the Navy; and Amy Henninger, of Virginia, to be Director of Operational Test and Evaluation, Department of Defense; and Benjamin Kohlmann, of Texas, to be an Assistant Secretary of the Navy; and Michael Powers, of Virginia, to be Deputy Under Secretary of Defense; and Pedro Allende, of Florida, to be Under Secretary for Science and Technology, Department of Homeland Security; and James Percival, of Florida, to be General Counsel, Department of Homeland Security; and Henry Mack III, of Florida, to be an Assistant Secretary of Labor. Official Senate roll-call from senate.gov (119th Congress).",
           "voteAction": "Confirmation vote",
           "billSummary": "Scott Mayer, of Pennsylvania, to be a Member of the National Labor Relations Board for the term of five years expiring December 16, 2029; and Mary Anne Carter, of Tennessee, to be Chairperson of the National Endowment for the Arts for a term of four years; and Christopher Yeaw, of Virginia, to be an Assistant Secretary of State (Arms Control, Nonproliferation, and Stability); and Tammy Bruce, of California, to be the Deputy Representative of the United States of America to the United Nations, with the rank and status of Ambassador; the Deputy Representative of the United States of America in the Security Council of the United Nations; and to serve concurrently and without additional compensation as Representative of the United States of America to the Sessions of the General Assembly of the United Nations, during her tenure of service as Deputy Representative of the United States of America to the United Nations; and Darryl Nirenberg, of Virginia, to be Ambassador to Romania; and Bernardo Navarro, of Puerto Rico, to be Ambassador to the Republic of Peru; and Yehuda Kaploun, of Florida, to be Special Envoy to Monitor and Combat Anti-Semitism, with the rank of Ambassador; and Melissa Argyros, of California, to be Ambassador to the Republic of Latvia; and Michael Selig, of Florida, to be a Commissioner of the Commodity Futures Trading Commission for a term expiring April 13, 2029; and Michael Selig, of Florida, to be Chairman of the Commodity Futures Trading Commission; and Scott Leary, of Mississippi, to be United States Attorney for the Northern District of Mississippi for the term of four years; and James Kruger, of Mississippi, to be United States Attorney for the Southern District of Mississippi for the term of four years; and Ryan Anthony Kriegshauser, of Kansas, to be United States Attorney for the District of Kansas for the term of four years; and Erin Creegan, of New Hampshire, to be United States Attorney for the District of New Hampshire for the term of four years; and Andrew Duva, of Florida, to be an Assistant Attorney General; and John Walk, of Virginia, to be Inspector General, Department of Agriculture; and Thomas Bell, of Virginia, to be Inspector General, Department of Health and Human Services; and Morvared Namdarkhan, of Texas, to be an Assistant Secretary of State (Consular Affairs); and Brent Christensen, of Virginia, to be Ambassador to the People's Republic of Bangladesh; and Benjamin Leon, Jr., of Florida, to be Ambassador to the Kingdom of Spain, and to serve concurrently and without additional compensation as Ambassador to the Principality of Andorra; and Leo Brent Bozell III, of Virginia, to be Ambassador to the Republic of South Africa; and Julie Callahan, of the District of Columbia, to be Chief Agricultural Negotiator, Office of the United States Trade Representative, with the rank of Ambassador; and Arjun Mody, of New Jersey, to be Deputy Commissioner Social Security for the term expiring January 19, 2031; and Jeffrey Goettman, of Virginia, to be a Deputy United States Trade Representative (Africa, Western Hemisphere, Europe, the Middle East, Environment, Labor, and Industrial Competitiveness), with the Rank of Ambassador; and Travis Hill, of Maryland, to be Chairperson of the Board of Directors of the Federal Deposit Insurance Corporation for a term of five years; and Joseph Gormley, of Maryland, to be President, Government National Mortgage Association; and Francis Cassidy, of Pennsylvania, to be an Assistant Secretary of Housing and Urban Development; and Paul Hollis, of Louisiana, to be Director of the Mint for a term of five years; and Michelle A. Schultz, of Pennsylvania, to be a Member of the Surface Transportation Board for a term expiring November 30, 2030; and Trent Morse, of Florida, to be a Member of the Board of Directors of the Metropolitan Washington Airports Authority for a term expiring May 30, 2030; and Laura DiBella, of Florida, to be a Federal Maritime Commissioner for a term expiring June 30, 2028; and Timothy Petty, of Indiana, to be Assistant Secretary of Commerce for Oceans and Atmosphere; and Stephen Carmel, of Virginia, to be Administrator of the Maritime Administration; and Ethan Klein, of New Jersey, to be an Associate Director of the Office of Science and Technology Policy; and Maurice Todd, of Florida, to be an Assistant Secretary of Defense; and Michael Payne, of Virginia, to be Director of Cost Assessment and Program Evaluation, Department of Defense; and Timothy Dill, of Ohio, to be an Assistant Secretary of Defense; and James Caggy, of New York, to be an Assistant Secretary of Defense; and John Noh, of Texas, to be an Assistant Secretary of Defense; and William Lane III, of Virginia, to be General Counsel of the Department of the Air Force; and Michael Borders, of Florida, to be an Assistant Secretary of the Air Force; and Charles Young III, of West Virginia, to be General Counsel of the Department of the Army; and David Beck, of Tennessee, to be Deputy Administrator for Defense Programs, National Nuclear Security Administration; and Brendan Rogers, of Connecticut, to be an Assistant Secretary of the Navy; and Joseph Jewell, of Indiana, to be an Assistant Secretary of Defense; and Marc Berkowitz, of Virginia, to be an Assistant Secretary of Defense; and Robert Kadlec, of New York, to be an Assistant Secretary of Defense; and Thomas Ferguson III, of North Carolina, to be United States Attorney for the Western District of North Carolina for the term of four years; and John Cuong Truong, of the District of Columbia, to be an Associate Judge of the Superior Court of the District of Columbia for the term of fifteen years; and Elana S. Suttenberg, of the District of Columbia, to be an Associate Judge of the Superior Court of the District of Columbia for the term of fifteen years; and Stephen F. Rickard, of the District of Columbia, to be an Associate Judge of the Superior Court of the District of Columbia for the term of fifteen years; and Edward Forst, of Florida, to be Administrator of General Services; and Charles Arrington, of Illinois, to be a Member of the Federal Labor Relations Authority for a term expiring July 1, 2030; and Peter Metzger, of the District of Columbia, to be Assistant Secretary for Intelligence and Analysis, Department of the Treasury; and Stella Herrell, of New Mexico, to be an Assistant Secretary of Agriculture; and Mindy Brashears, of Texas, to be Under Secretary of Agriculture for Food Safety; and Platte Moring, of South Carolina, to be Inspector General, Department of Defense; and Anthony D'Esposito, of New York, to be Inspector General, Department of Labor; and Douglas Troutman, of Maryland, to be Assistant Administrator for Toxic Substances of the Environmental Protection Agency; and Arthur Graham, of Florida, to be a Member of the Board of Directors of the Tennessee Valley Authority for the remainder of the term expiring May 18, 2026; and Randall Jones, of Alabama, to be a Member of the Board of Directors of the Tennessee Valley Authority for a term expiring May 18, 2028; and Jeff Hagood, of Tennessee, to be a Member of the Board of Directors of the Tennessee Valley Authority for a term of expiring May 18, 2029; and Mitch Graves, of Tennessee, to be a Member of the Board of Directors of the Tennessee Valley Authority for a term expiring May 18, 2029; and Jeffrey Hall, of Virginia, to be an Assistant Administrator of the Environmental Protection Agency; and William Kirk, of Maryland, to be Inspector General, Small Business Administration; and John Bartrum, of Indiana, to be Under Secretary for Health of the Department of Veterans Affairs; and Andrew Veprek, of Louisiana, to be an Assistant Secretary of State (Population, Refugees, and Migration); and Joyce Meyer, of Virginia, to be Under Secretary of Commerce for Economic Affairs; and Harry Kumar, of New York, to be an Assistant Secretary of Commerce; and Adam Mildred, of Indiana, to be United States Attorney for the Northern District of Indiana for the term of four years; and Thomas Albus, of Missouri, to be United States Attorney for the Eastern District of Missouri for the term of four years; and Thomas Wheeler II, of Indiana, to be United States Attorney for the Southern District of Indiana for the term of four years; and Bryan Stirling, of South Carolina, to be United States Attorney for the District of South Carolina for the term of four years; and Jerome Francis Gorgon, Jr., of Michigan, to be United States Attorney for the Eastern District of Michigan for the term of four years; and Dominick Gerace II, of Ohio, to be United States Attorney for the Southern District of Ohio for the term of four years; and Braden Boucek, of Tennessee, to be United States Attorney for the Middle District of Tennessee for the term of four years; and James Mazol, of Virginia, to be a Deputy Under Secretary of Defense; and Derrick Anderson, of Virginia, to be an Assistant Secretary of Defense; and Kirsten Davies, of Tennessee, to be Chief Information Officer of the Department of Defense; and James Murphy, of Maryland, to be a Member of the National Labor Relations Board for the term of five years expiring December 16, 2027; and Rosario Palmieri, of Virginia, to be an Assistant Secretary of Labor; and Crystal Carey, of New Jersey, to be General Counsel of the National Labor Relations Board for term of four years; and Jonathan Greenstein, of New York, to be a Deputy Under Secretary of the Treasury; and Derek Theurer, of Virginia, to be a Deputy Under Secretary of the Treasury; and Jeremiah Workman, of Ohio, to be Assistant Secretary of Labor for Veterans' Employment and Training; and David Courcelle, of Louisiana, to be United States Attorney for the Eastern District of Louisiana for the term of four years; and Chris Pilkerton, of Maryland, to be Assistant Secretary of the Treasury for Investment Security; and Jonathan Burke, of Georgia, to be Assistant Secretary for Terrorist Financing, Department of the Treasury; and Ronald Kurtz, of Georgia, to be an Assistant Secretary of Housing and Urban Development; and Benjamin Hobbs, of Ohio, to be Assistant Secretary of Housing and Urban Development; and David Denton, Jr., of Virginia, to be General Counsel of the Department of the Navy; and Amy Henninger, of Virginia, to be Director of Operational Test and Evaluation, Department of Defense; and Benjamin Kohlmann, of Texas, to be an Assistant Secretary of the Navy; and Michael Powers, of Virginia, to be Deputy Under Secretary of Defense; and Pedro Allende, of Florida, to be Under Secretary for Science and Technology, Department of Homeland Security; and James Percival, of Florida, to be General Counsel, Department of Homeland Security; and Henry Mack III, of Florida, to be an Assistant Secretary of Labor",
-          "date": "2025-12-19",
+          "date": "2025-12-18",
           "vote": "Yea",
           "result": "Passed",
           "category": "Judiciary",
@@ -2395,7 +3942,7 @@
             "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00655.xml",
             "tier": "official",
             "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2025-12-19"
+            "date": "2025-12-18"
           }
         },
         {
@@ -2513,7 +4060,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -2535,6 +4082,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -2554,6 +4118,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -2573,6 +4154,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -2592,6 +4190,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -2611,6 +4226,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -2630,6 +4262,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -2649,6 +4298,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -2682,7 +4348,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -2704,6 +4370,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -2723,6 +4406,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -2742,6 +4442,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -2761,6 +4478,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -2780,6 +4514,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -2799,6 +4550,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -2818,6 +4586,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -2851,7 +4636,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -2873,6 +4658,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -2892,6 +4694,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -2911,6 +4730,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -2930,6 +4766,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -2949,6 +4802,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -2968,6 +4838,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -2987,6 +4874,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -3020,7 +4924,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -3042,6 +4946,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -3061,6 +4982,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -3080,6 +5018,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -3099,6 +5054,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -3118,6 +5090,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -3137,6 +5126,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -3156,6 +5162,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -3189,7 +5212,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -3211,6 +5234,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -3230,6 +5270,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -3249,6 +5306,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -3268,6 +5342,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -3287,6 +5378,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -3306,6 +5414,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -3325,6 +5450,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -3358,7 +5500,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -3380,6 +5522,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -3399,6 +5558,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -3418,6 +5594,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -3437,6 +5630,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -3456,6 +5666,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -3475,6 +5702,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -3494,6 +5738,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -3527,7 +5788,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -3549,6 +5810,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -3568,6 +5846,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -3587,6 +5882,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -3606,6 +5918,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -3625,6 +5954,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -3644,6 +5990,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -3663,6 +6026,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -3696,7 +6076,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -3718,6 +6098,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -3737,6 +6134,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -3756,6 +6170,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -3775,6 +6206,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -3794,6 +6242,23 @@
           "vote": "Nay",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -3813,6 +6278,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -3832,6 +6314,23 @@
           "vote": "Nay",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -3865,7 +6364,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -3887,6 +6386,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -3906,6 +6422,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -3925,6 +6458,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -3944,6 +6494,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -3963,6 +6530,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -3982,6 +6566,23 @@
           "vote": "Nay",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -4001,6 +6602,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -4034,7 +6652,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -4056,6 +6674,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -4075,6 +6710,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -4094,6 +6746,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -4113,6 +6782,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -4132,6 +6818,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -4151,6 +6854,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -4170,6 +6890,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -4203,7 +6940,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -4225,6 +6962,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -4244,6 +6998,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -4263,6 +7034,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -4282,6 +7070,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -4301,6 +7106,23 @@
           "vote": "Nay",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -4320,6 +7142,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -4339,6 +7178,23 @@
           "vote": "Nay",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -4372,7 +7228,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -4394,6 +7250,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -4413,6 +7286,23 @@
           "vote": "Not Voting",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -4432,6 +7322,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -4451,6 +7358,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -4470,6 +7394,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -4489,6 +7430,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -4508,6 +7466,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -4541,7 +7516,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -4559,7 +7534,7 @@
           "billDescription": "On the Cloture Motion PN373 — Sara Bailey, of Texas, to be Director of National Drug Control Policy. Official Senate roll-call from senate.gov (119th Congress).",
           "voteAction": "On the Cloture Motion PN373",
           "billSummary": "Sara Bailey, of Texas, to be Director of National Drug Control Policy",
-          "date": "2025-12-19",
+          "date": "2025-12-18",
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
@@ -4585,7 +7560,7 @@
             "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00659.xml",
             "tier": "official",
             "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2025-12-19"
+            "date": "2025-12-18"
           }
         },
         {
@@ -4595,7 +7570,7 @@
           "billDescription": "On the Cloture Motion PN615-2 — Alexander C. Van Hook, of Louisiana, to be United States District Judge for the Western District of Louisiana. Official Senate roll-call from senate.gov (119th Congress).",
           "voteAction": "On the Cloture Motion PN615-2",
           "billSummary": "Alexander C. Van Hook, of Louisiana, to be United States District Judge for the Western District of Louisiana",
-          "date": "2025-12-19",
+          "date": "2025-12-18",
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
@@ -4621,7 +7596,7 @@
             "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00658.xml",
             "tier": "official",
             "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2025-12-19"
+            "date": "2025-12-18"
           }
         },
         {
@@ -4631,7 +7606,7 @@
           "billDescription": "On the Cloture Motion PN12-1 — Keith Bass, of Texas, to be an Assistant Secretary of Defense. Official Senate roll-call from senate.gov (119th Congress).",
           "voteAction": "On the Cloture Motion PN12-1",
           "billSummary": "Keith Bass, of Texas, to be an Assistant Secretary of Defense",
-          "date": "2025-12-19",
+          "date": "2025-12-18",
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
@@ -4657,7 +7632,7 @@
             "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00657.xml",
             "tier": "official",
             "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2025-12-19"
+            "date": "2025-12-18"
           }
         },
         {
@@ -4667,7 +7642,7 @@
           "billDescription": "On the Cloture Motion PN499-11 — Joshua Simmons, of Virginia, to be General Counsel of the Central Intelligence Agency. Official Senate roll-call from senate.gov (119th Congress).",
           "voteAction": "On the Cloture Motion PN499-11",
           "billSummary": "Joshua Simmons, of Virginia, to be General Counsel of the Central Intelligence Agency",
-          "date": "2025-12-19",
+          "date": "2025-12-18",
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
@@ -4693,7 +7668,7 @@
             "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00656.xml",
             "tier": "official",
             "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2025-12-19"
+            "date": "2025-12-18"
           }
         },
         {
@@ -4703,7 +7678,7 @@
           "billDescription": "On the Nomination PN416-9 and PN141-12 and PN499-12 and PN465-1 and PN345-14 and PN345-13 and PN345-10 and PN55-2 and PN624-2 and PN624-1 and PN379-17 and PN379-16 and PN416-6 and PN519-2 and PN445-3 and PN416-12 and PN55-7 and PN345-12 and PN465-2 and PN55-26 and PN55-10 and PN416-2 and PN379-20 and PN246-6 and PN560-3 and PN462-3 and PN462-1 and PN416-5 and PN518-5 and PN499-10 and PN499-2 and PN462-4 and PN141-10 and PN26-24 and PN445-10 and PN445-7 and PN445-2 and PN379-4 and PN246-12 and PN141-27 and PN141-8 and PN129-17 and PN129-1 and PN60-17 and PN60-11 and PN60-4 and PN22-11 and PN445-5 and PN466-9 and PN466-8 and PN466-7 and PN447 and PN141-5 and PN499-8 and PN345-8 and PN246-3 and PN246-11 and PN60-8 and PN445-11 and PN416-4 and PN379-15 and PN379-13 and PN379-11 and PN141-20 and PN141-25 and PN246-2 and PN26-47 and PN60-13 and PN26-26 and PN379-19 and PN445-1 and PN379-26 and PN379-22 and PN416-3 and PN379-9 and PN379-3 and PN379-18 and PN246-1 and PN141-14 and PN416-10 and PN379-21 and PN55-13 and PN129-6 and PN55-44 and PN141-39 and PN379-7 and PN246-13 and PN246-4 and PN141-26 and PN141-22 and PN141-16 and PN129-7 and PN60-12 and PN55-34 and PN141-2 and PN26-37 and PN25-29 — Scott Mayer, of Pennsylvania, to be a Member of the National Labor Relations Board for the term of five years expiring December 16, 2029; and Mary Anne Carter, of Tennessee, to be Chairperson of the National Endowment for the Arts for a term of four years; and Christopher Yeaw, of Virginia, to be an Assistant Secretary of State (Arms Control, Nonproliferation, and Stability); and Tammy Bruce, of California, to be the Deputy Representative of the United States of America to the United Nations, with the rank and status of Ambassador; the Deputy Representative of the United States of America in the Security Council of the United Nations; and to serve concurrently and without additional compensation as Representative of the United States of America to the Sessions of the General Assembly of the United Nations, during her tenure of service as Deputy Representative of the United States of America to the United Nations; and Darryl Nirenberg, of Virginia, to be Ambassador to Romania; and Bernardo Navarro, of Puerto Rico, to be Ambassador to the Republic of Peru; and Yehuda Kaploun, of Florida, to be Special Envoy to Monitor and Combat Anti-Semitism, with the rank of Ambassador; and Melissa Argyros, of California, to be Ambassador to the Republic of Latvia; and Michael Selig, of Florida, to be a Commissioner of the Commodity Futures Trading Commission for a term expiring April 13, 2029; and Michael Selig, of Florida, to be Chairman of the Commodity Futures Trading Commission; and Scott Leary, of Mississippi, to be United States Attorney for the Northern District of Mississippi for the term of four years; and James Kruger, of Mississippi, to be United States Attorney for the Southern District of Mississippi for the term of four years; and Ryan Anthony Kriegshauser, of Kansas, to be United States Attorney for the District of Kansas for the term of four years; and Erin Creegan, of New Hampshire, to be United States Attorney for the District of New Hampshire for the term of four years; and Andrew Duva, of Florida, to be an Assistant Attorney General; and John Walk, of Virginia, to be Inspector General, Department of Agriculture; and Thomas Bell, of Virginia, to be Inspector General, Department of Health and Human Services; and Morvared Namdarkhan, of Texas, to be an Assistant Secretary of State (Consular Affairs); and Brent Christensen, of Virginia, to be Ambassador to the People's Republic of Bangladesh; and Benjamin Leon, Jr., of Florida, to be Ambassador to the Kingdom of Spain, and to serve concurrently and without additional compensation as Ambassador to the Principality of Andorra; and Leo Brent Bozell III, of Virginia, to be Ambassador to the Republic of South Africa; and Julie Callahan, of the District of Columbia, to be Chief Agricultural Negotiator, Office of the United States Trade Representative, with the rank of Ambassador; and Arjun Mody, of New Jersey, to be Deputy Commissioner Social Security for the term expiring January 19, 2031; and Jeffrey Goettman, of Virginia, to be a Deputy United States Trade Representative (Africa, Western Hemisphere, Europe, the Middle East, Environment, Labor, and Industrial Competitiveness), with the Rank of Ambassador; and Travis Hill, of Maryland, to be Chairperson of the Board of Directors of the Federal Deposit Insurance Corporation for a term of five years; and Joseph Gormley, of Maryland, to be President, Government National Mortgage Association; and Francis Cassidy, of Pennsylvania, to be an Assistant Secretary of Housing and Urban Development; and Paul Hollis, of Louisiana, to be Director of the Mint for a term of five years; and Michelle A. Schultz, of Pennsylvania, to be a Member of the Surface Transportation Board for a term expiring November 30, 2030; and Trent Morse, of Florida, to be a Member of the Board of Directors of the Metropolitan Washington Airports Authority for a term expiring May 30, 2030; and Laura DiBella, of Florida, to be a Federal Maritime Commissioner for a term expiring June 30, 2028; and Timothy Petty, of Indiana, to be Assistant Secretary of Commerce for Oceans and Atmosphere; and Stephen Carmel, of Virginia, to be Administrator of the Maritime Administration; and Ethan Klein, of New Jersey, to be an Associate Director of the Office of Science and Technology Policy; and Maurice Todd, of Florida, to be an Assistant Secretary of Defense; and Michael Payne, of Virginia, to be Director of Cost Assessment and Program Evaluation, Department of Defense; and Timothy Dill, of Ohio, to be an Assistant Secretary of Defense; and James Caggy, of New York, to be an Assistant Secretary of Defense; and John Noh, of Texas, to be an Assistant Secretary of Defense; and William Lane III, of Virginia, to be General Counsel of the Department of the Air Force; and Michael Borders, of Florida, to be an Assistant Secretary of the Air Force; and Charles Young III, of West Virginia, to be General Counsel of the Department of the Army; and David Beck, of Tennessee, to be Deputy Administrator for Defense Programs, National Nuclear Security Administration; and Brendan Rogers, of Connecticut, to be an Assistant Secretary of the Navy; and Joseph Jewell, of Indiana, to be an Assistant Secretary of Defense; and Marc Berkowitz, of Virginia, to be an Assistant Secretary of Defense; and Robert Kadlec, of New York, to be an Assistant Secretary of Defense; and Thomas Ferguson III, of North Carolina, to be United States Attorney for the Western District of North Carolina for the term of four years; and John Cuong Truong, of the District of Columbia, to be an Associate Judge of the Superior Court of the District of Columbia for the term of fifteen years; and Elana S. Suttenberg, of the District of Columbia, to be an Associate Judge of the Superior Court of the District of Columbia for the term of fifteen years; and Stephen F. Rickard, of the District of Columbia, to be an Associate Judge of the Superior Court of the District of Columbia for the term of fifteen years; and Edward Forst, of Florida, to be Administrator of General Services; and Charles Arrington, of Illinois, to be a Member of the Federal Labor Relations Authority for a term expiring July 1, 2030; and Peter Metzger, of the District of Columbia, to be Assistant Secretary for Intelligence and Analysis, Department of the Treasury; and Stella Herrell, of New Mexico, to be an Assistant Secretary of Agriculture; and Mindy Brashears, of Texas, to be Under Secretary of Agriculture for Food Safety; and Platte Moring, of South Carolina, to be Inspector General, Department of Defense; and Anthony D'Esposito, of New York, to be Inspector General, Department of Labor; and Douglas Troutman, of Maryland, to be Assistant Administrator for Toxic Substances of the Environmental Protection Agency; and Arthur Graham, of Florida, to be a Member of the Board of Directors of the Tennessee Valley Authority for the remainder of the term expiring May 18, 2026; and Randall Jones, of Alabama, to be a Member of the Board of Directors of the Tennessee Valley Authority for a term expiring May 18, 2028; and Jeff Hagood, of Tennessee, to be a Member of the Board of Directors of the Tennessee Valley Authority for a term of expiring May 18, 2029; and Mitch Graves, of Tennessee, to be a Member of the Board of Directors of the Tennessee Valley Authority for a term expiring May 18, 2029; and Jeffrey Hall, of Virginia, to be an Assistant Administrator of the Environmental Protection Agency; and William Kirk, of Maryland, to be Inspector General, Small Business Administration; and John Bartrum, of Indiana, to be Under Secretary for Health of the Department of Veterans Affairs; and Andrew Veprek, of Louisiana, to be an Assistant Secretary of State (Population, Refugees, and Migration); and Joyce Meyer, of Virginia, to be Under Secretary of Commerce for Economic Affairs; and Harry Kumar, of New York, to be an Assistant Secretary of Commerce; and Adam Mildred, of Indiana, to be United States Attorney for the Northern District of Indiana for the term of four years; and Thomas Albus, of Missouri, to be United States Attorney for the Eastern District of Missouri for the term of four years; and Thomas Wheeler II, of Indiana, to be United States Attorney for the Southern District of Indiana for the term of four years; and Bryan Stirling, of South Carolina, to be United States Attorney for the District of South Carolina for the term of four years; and Jerome Francis Gorgon, Jr., of Michigan, to be United States Attorney for the Eastern District of Michigan for the term of four years; and Dominick Gerace II, of Ohio, to be United States Attorney for the Southern District of Ohio for the term of four years; and Braden Boucek, of Tennessee, to be United States Attorney for the Middle District of Tennessee for the term of four years; and James Mazol, of Virginia, to be a Deputy Under Secretary of Defense; and Derrick Anderson, of Virginia, to be an Assistant Secretary of Defense; and Kirsten Davies, of Tennessee, to be Chief Information Officer of the Department of Defense; and James Murphy, of Maryland, to be a Member of the National Labor Relations Board for the term of five years expiring December 16, 2027; and Rosario Palmieri, of Virginia, to be an Assistant Secretary of Labor; and Crystal Carey, of New Jersey, to be General Counsel of the National Labor Relations Board for term of four years; and Jonathan Greenstein, of New York, to be a Deputy Under Secretary of the Treasury; and Derek Theurer, of Virginia, to be a Deputy Under Secretary of the Treasury; and Jeremiah Workman, of Ohio, to be Assistant Secretary of Labor for Veterans' Employment and Training; and David Courcelle, of Louisiana, to be United States Attorney for the Eastern District of Louisiana for the term of four years; and Chris Pilkerton, of Maryland, to be Assistant Secretary of the Treasury for Investment Security; and Jonathan Burke, of Georgia, to be Assistant Secretary for Terrorist Financing, Department of the Treasury; and Ronald Kurtz, of Georgia, to be an Assistant Secretary of Housing and Urban Development; and Benjamin Hobbs, of Ohio, to be Assistant Secretary of Housing and Urban Development; and David Denton, Jr., of Virginia, to be General Counsel of the Department of the Navy; and Amy Henninger, of Virginia, to be Director of Operational Test and Evaluation, Department of Defense; and Benjamin Kohlmann, of Texas, to be an Assistant Secretary of the Navy; and Michael Powers, of Virginia, to be Deputy Under Secretary of Defense; and Pedro Allende, of Florida, to be Under Secretary for Science and Technology, Department of Homeland Security; and James Percival, of Florida, to be General Counsel, Department of Homeland Security; and Henry Mack III, of Florida, to be an Assistant Secretary of Labor. Official Senate roll-call from senate.gov (119th Congress).",
           "voteAction": "Confirmation vote",
           "billSummary": "Scott Mayer, of Pennsylvania, to be a Member of the National Labor Relations Board for the term of five years expiring December 16, 2029; and Mary Anne Carter, of Tennessee, to be Chairperson of the National Endowment for the Arts for a term of four years; and Christopher Yeaw, of Virginia, to be an Assistant Secretary of State (Arms Control, Nonproliferation, and Stability); and Tammy Bruce, of California, to be the Deputy Representative of the United States of America to the United Nations, with the rank and status of Ambassador; the Deputy Representative of the United States of America in the Security Council of the United Nations; and to serve concurrently and without additional compensation as Representative of the United States of America to the Sessions of the General Assembly of the United Nations, during her tenure of service as Deputy Representative of the United States of America to the United Nations; and Darryl Nirenberg, of Virginia, to be Ambassador to Romania; and Bernardo Navarro, of Puerto Rico, to be Ambassador to the Republic of Peru; and Yehuda Kaploun, of Florida, to be Special Envoy to Monitor and Combat Anti-Semitism, with the rank of Ambassador; and Melissa Argyros, of California, to be Ambassador to the Republic of Latvia; and Michael Selig, of Florida, to be a Commissioner of the Commodity Futures Trading Commission for a term expiring April 13, 2029; and Michael Selig, of Florida, to be Chairman of the Commodity Futures Trading Commission; and Scott Leary, of Mississippi, to be United States Attorney for the Northern District of Mississippi for the term of four years; and James Kruger, of Mississippi, to be United States Attorney for the Southern District of Mississippi for the term of four years; and Ryan Anthony Kriegshauser, of Kansas, to be United States Attorney for the District of Kansas for the term of four years; and Erin Creegan, of New Hampshire, to be United States Attorney for the District of New Hampshire for the term of four years; and Andrew Duva, of Florida, to be an Assistant Attorney General; and John Walk, of Virginia, to be Inspector General, Department of Agriculture; and Thomas Bell, of Virginia, to be Inspector General, Department of Health and Human Services; and Morvared Namdarkhan, of Texas, to be an Assistant Secretary of State (Consular Affairs); and Brent Christensen, of Virginia, to be Ambassador to the People's Republic of Bangladesh; and Benjamin Leon, Jr., of Florida, to be Ambassador to the Kingdom of Spain, and to serve concurrently and without additional compensation as Ambassador to the Principality of Andorra; and Leo Brent Bozell III, of Virginia, to be Ambassador to the Republic of South Africa; and Julie Callahan, of the District of Columbia, to be Chief Agricultural Negotiator, Office of the United States Trade Representative, with the rank of Ambassador; and Arjun Mody, of New Jersey, to be Deputy Commissioner Social Security for the term expiring January 19, 2031; and Jeffrey Goettman, of Virginia, to be a Deputy United States Trade Representative (Africa, Western Hemisphere, Europe, the Middle East, Environment, Labor, and Industrial Competitiveness), with the Rank of Ambassador; and Travis Hill, of Maryland, to be Chairperson of the Board of Directors of the Federal Deposit Insurance Corporation for a term of five years; and Joseph Gormley, of Maryland, to be President, Government National Mortgage Association; and Francis Cassidy, of Pennsylvania, to be an Assistant Secretary of Housing and Urban Development; and Paul Hollis, of Louisiana, to be Director of the Mint for a term of five years; and Michelle A. Schultz, of Pennsylvania, to be a Member of the Surface Transportation Board for a term expiring November 30, 2030; and Trent Morse, of Florida, to be a Member of the Board of Directors of the Metropolitan Washington Airports Authority for a term expiring May 30, 2030; and Laura DiBella, of Florida, to be a Federal Maritime Commissioner for a term expiring June 30, 2028; and Timothy Petty, of Indiana, to be Assistant Secretary of Commerce for Oceans and Atmosphere; and Stephen Carmel, of Virginia, to be Administrator of the Maritime Administration; and Ethan Klein, of New Jersey, to be an Associate Director of the Office of Science and Technology Policy; and Maurice Todd, of Florida, to be an Assistant Secretary of Defense; and Michael Payne, of Virginia, to be Director of Cost Assessment and Program Evaluation, Department of Defense; and Timothy Dill, of Ohio, to be an Assistant Secretary of Defense; and James Caggy, of New York, to be an Assistant Secretary of Defense; and John Noh, of Texas, to be an Assistant Secretary of Defense; and William Lane III, of Virginia, to be General Counsel of the Department of the Air Force; and Michael Borders, of Florida, to be an Assistant Secretary of the Air Force; and Charles Young III, of West Virginia, to be General Counsel of the Department of the Army; and David Beck, of Tennessee, to be Deputy Administrator for Defense Programs, National Nuclear Security Administration; and Brendan Rogers, of Connecticut, to be an Assistant Secretary of the Navy; and Joseph Jewell, of Indiana, to be an Assistant Secretary of Defense; and Marc Berkowitz, of Virginia, to be an Assistant Secretary of Defense; and Robert Kadlec, of New York, to be an Assistant Secretary of Defense; and Thomas Ferguson III, of North Carolina, to be United States Attorney for the Western District of North Carolina for the term of four years; and John Cuong Truong, of the District of Columbia, to be an Associate Judge of the Superior Court of the District of Columbia for the term of fifteen years; and Elana S. Suttenberg, of the District of Columbia, to be an Associate Judge of the Superior Court of the District of Columbia for the term of fifteen years; and Stephen F. Rickard, of the District of Columbia, to be an Associate Judge of the Superior Court of the District of Columbia for the term of fifteen years; and Edward Forst, of Florida, to be Administrator of General Services; and Charles Arrington, of Illinois, to be a Member of the Federal Labor Relations Authority for a term expiring July 1, 2030; and Peter Metzger, of the District of Columbia, to be Assistant Secretary for Intelligence and Analysis, Department of the Treasury; and Stella Herrell, of New Mexico, to be an Assistant Secretary of Agriculture; and Mindy Brashears, of Texas, to be Under Secretary of Agriculture for Food Safety; and Platte Moring, of South Carolina, to be Inspector General, Department of Defense; and Anthony D'Esposito, of New York, to be Inspector General, Department of Labor; and Douglas Troutman, of Maryland, to be Assistant Administrator for Toxic Substances of the Environmental Protection Agency; and Arthur Graham, of Florida, to be a Member of the Board of Directors of the Tennessee Valley Authority for the remainder of the term expiring May 18, 2026; and Randall Jones, of Alabama, to be a Member of the Board of Directors of the Tennessee Valley Authority for a term expiring May 18, 2028; and Jeff Hagood, of Tennessee, to be a Member of the Board of Directors of the Tennessee Valley Authority for a term of expiring May 18, 2029; and Mitch Graves, of Tennessee, to be a Member of the Board of Directors of the Tennessee Valley Authority for a term expiring May 18, 2029; and Jeffrey Hall, of Virginia, to be an Assistant Administrator of the Environmental Protection Agency; and William Kirk, of Maryland, to be Inspector General, Small Business Administration; and John Bartrum, of Indiana, to be Under Secretary for Health of the Department of Veterans Affairs; and Andrew Veprek, of Louisiana, to be an Assistant Secretary of State (Population, Refugees, and Migration); and Joyce Meyer, of Virginia, to be Under Secretary of Commerce for Economic Affairs; and Harry Kumar, of New York, to be an Assistant Secretary of Commerce; and Adam Mildred, of Indiana, to be United States Attorney for the Northern District of Indiana for the term of four years; and Thomas Albus, of Missouri, to be United States Attorney for the Eastern District of Missouri for the term of four years; and Thomas Wheeler II, of Indiana, to be United States Attorney for the Southern District of Indiana for the term of four years; and Bryan Stirling, of South Carolina, to be United States Attorney for the District of South Carolina for the term of four years; and Jerome Francis Gorgon, Jr., of Michigan, to be United States Attorney for the Eastern District of Michigan for the term of four years; and Dominick Gerace II, of Ohio, to be United States Attorney for the Southern District of Ohio for the term of four years; and Braden Boucek, of Tennessee, to be United States Attorney for the Middle District of Tennessee for the term of four years; and James Mazol, of Virginia, to be a Deputy Under Secretary of Defense; and Derrick Anderson, of Virginia, to be an Assistant Secretary of Defense; and Kirsten Davies, of Tennessee, to be Chief Information Officer of the Department of Defense; and James Murphy, of Maryland, to be a Member of the National Labor Relations Board for the term of five years expiring December 16, 2027; and Rosario Palmieri, of Virginia, to be an Assistant Secretary of Labor; and Crystal Carey, of New Jersey, to be General Counsel of the National Labor Relations Board for term of four years; and Jonathan Greenstein, of New York, to be a Deputy Under Secretary of the Treasury; and Derek Theurer, of Virginia, to be a Deputy Under Secretary of the Treasury; and Jeremiah Workman, of Ohio, to be Assistant Secretary of Labor for Veterans' Employment and Training; and David Courcelle, of Louisiana, to be United States Attorney for the Eastern District of Louisiana for the term of four years; and Chris Pilkerton, of Maryland, to be Assistant Secretary of the Treasury for Investment Security; and Jonathan Burke, of Georgia, to be Assistant Secretary for Terrorist Financing, Department of the Treasury; and Ronald Kurtz, of Georgia, to be an Assistant Secretary of Housing and Urban Development; and Benjamin Hobbs, of Ohio, to be Assistant Secretary of Housing and Urban Development; and David Denton, Jr., of Virginia, to be General Counsel of the Department of the Navy; and Amy Henninger, of Virginia, to be Director of Operational Test and Evaluation, Department of Defense; and Benjamin Kohlmann, of Texas, to be an Assistant Secretary of the Navy; and Michael Powers, of Virginia, to be Deputy Under Secretary of Defense; and Pedro Allende, of Florida, to be Under Secretary for Science and Technology, Department of Homeland Security; and James Percival, of Florida, to be General Counsel, Department of Homeland Security; and Henry Mack III, of Florida, to be an Assistant Secretary of Labor",
-          "date": "2025-12-19",
+          "date": "2025-12-18",
           "vote": "Yea",
           "result": "Passed",
           "category": "Judiciary",
@@ -4729,7 +7704,7 @@
             "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00655.xml",
             "tier": "official",
             "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-            "date": "2025-12-19"
+            "date": "2025-12-18"
           }
         },
         {
@@ -4847,7 +7822,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -4869,6 +7844,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -4888,6 +7880,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -4907,6 +7916,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 209,
+              "nay": 0,
+              "notVoting": 5
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 204,
+              "notVoting": 4
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 3,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/242",
@@ -4926,6 +7952,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -4945,6 +7988,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -4964,6 +8024,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -4983,6 +8060,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -5002,6 +8096,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -5017,7 +8128,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     },
     {
@@ -5039,6 +8150,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "democrat": {
+              "yea": 189,
+              "nay": 0,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 0,
+              "notVoting": 3
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/306",
@@ -5058,6 +8186,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 23
+            },
+            "democrat": {
+              "yea": 191,
+              "nay": 0,
+              "notVoting": 19
+            },
+            "independent": {
+              "yea": 3,
+              "nay": 0,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/307",
@@ -5077,6 +8222,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 209,
+              "nay": 0,
+              "notVoting": 5
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 204,
+              "notVoting": 4
+            },
+            "independent": {
+              "yea": 4,
+              "nay": 3,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/242",
@@ -5096,6 +8258,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 198,
+              "nay": 0,
+              "notVoting": 16
+            },
+            "democrat": {
+              "yea": 192,
+              "nay": 1,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/240",
@@ -5115,6 +8294,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 202,
+              "nay": 0,
+              "notVoting": 12
+            },
+            "democrat": {
+              "yea": 193,
+              "nay": 0,
+              "notVoting": 15
+            },
+            "independent": {
+              "yea": 7,
+              "nay": 0,
+              "notVoting": 1
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/241",
@@ -5134,6 +8330,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 206,
+              "nay": 1,
+              "notVoting": 8
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 202,
+              "notVoting": 6
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 3,
+              "notVoting": 2
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/122",
@@ -5153,6 +8366,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Procedural",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 165,
+              "nay": 33,
+              "notVoting": 17
+            },
+            "democrat": {
+              "yea": 179,
+              "nay": 8,
+              "notVoting": 21
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 1,
+              "notVoting": 4
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/116",
@@ -5172,6 +8402,23 @@
           "vote": "Yea",
           "result": "Passed",
           "category": "Legislation",
+          "partyBreakdown": {
+            "republican": {
+              "yea": 212,
+              "nay": 1,
+              "notVoting": 2
+            },
+            "democrat": {
+              "yea": 0,
+              "nay": 205,
+              "notVoting": 3
+            },
+            "independent": {
+              "yea": 5,
+              "nay": 5,
+              "notVoting": 0
+            }
+          },
           "source": {
             "name": "Congress.gov",
             "url": "https://www.congress.gov/roll-call-vote/119/1/96",
@@ -5187,7 +8434,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-24",
+      "asOf": "2026-06-29",
       "congressGovUrl": "https://www.congress.gov"
     }
   ]

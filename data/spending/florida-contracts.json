@@ -6,7 +6,7 @@
       "tier": "official",
       "description": "Official federal spending and contract awards via api.usaspending.gov"
     },
-    "asOf": "2026-06-28",
+    "asOf": "2026-06-29",
     "count": 100,
     "stateCode": "FL",
     "fetchedLive": true,
@@ -30,7 +30,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0001918C1037"
     },
     {
@@ -49,7 +49,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA868224CB001"
     },
     {
@@ -68,7 +68,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0001913C9999"
     },
     {
@@ -87,7 +87,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W31P4Q18C0130"
     },
     {
@@ -106,7 +106,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/NNK17MA01T"
     },
     {
@@ -125,7 +125,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0003024C0100"
     },
     {
@@ -144,7 +144,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W912EP24C0018"
     },
     {
@@ -163,7 +163,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W31P4Q23C0005"
     },
     {
@@ -182,7 +182,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/NNK13MA14C"
     },
     {
@@ -201,7 +201,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W31P4Q15C0151"
     },
     {
@@ -220,7 +220,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/DOCDG133E09CN0094"
     },
     {
@@ -239,7 +239,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/HSCG2314CAPC002"
     },
     {
@@ -258,7 +258,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/DTFA0102D03006CALL0001"
     },
     {
@@ -277,7 +277,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA868118C0021"
     },
     {
@@ -296,7 +296,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0003023C0100"
     },
     {
@@ -315,7 +315,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA248616C0002"
     },
     {
@@ -334,7 +334,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0003019C0100"
     },
     {
@@ -353,7 +353,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/DTFA0102D03006CALL0016"
     },
     {
@@ -372,7 +372,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0003020C0100"
     },
     {
@@ -391,7 +391,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0003021C0100"
     },
     {
@@ -410,7 +410,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0001925C0130"
     },
     {
@@ -429,7 +429,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA868223CB001"
     },
     {
@@ -448,7 +448,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA868221C0001"
     },
     {
@@ -467,7 +467,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/HQ014714C0001"
     },
     {
@@ -486,7 +486,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0003022C0100"
     },
     {
@@ -505,7 +505,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/H9222217F0069"
     },
     {
@@ -524,7 +524,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W58RGZ25F0182"
     },
     {
@@ -543,7 +543,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N6238715C3135"
     },
     {
@@ -562,7 +562,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA868220C0001"
     },
     {
@@ -581,7 +581,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/47QFCA21F0058"
     },
     {
@@ -600,7 +600,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0001924F0181"
     },
     {
@@ -619,7 +619,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/47QFCA24F0002"
     },
     {
@@ -638,7 +638,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA868216C0005"
     },
     {
@@ -657,7 +657,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W58RGZ11C0120"
     },
     {
@@ -676,7 +676,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W912EP22C0017"
     },
     {
@@ -695,7 +695,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA868223CB003"
     },
     {
@@ -714,7 +714,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/36C10X26N0040"
     },
     {
@@ -733,7 +733,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N6833518C0681"
     },
     {
@@ -752,7 +752,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA862117F0026"
     },
     {
@@ -771,7 +771,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/0001"
     },
     {
@@ -790,7 +790,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/DTFA0102D03006CALL0002"
     },
     {
@@ -809,7 +809,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W9127822C0008"
     },
     {
@@ -828,7 +828,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/HHSM5002014M0021Z"
     },
     {
@@ -847,7 +847,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W519TC25F0388"
     },
     {
@@ -866,7 +866,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA862118F6251"
     },
     {
@@ -885,7 +885,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N6238715C2505"
     },
     {
@@ -904,7 +904,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/GSQ0017AJ0001"
     },
     {
@@ -923,7 +923,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/80KSC018C0017"
     },
     {
@@ -942,7 +942,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/F1962803C0014"
     },
     {
@@ -961,7 +961,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA868221C0004"
     },
     {
@@ -980,7 +980,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/DTFA0102D03006CALL0010"
     },
     {
@@ -999,7 +999,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/HSBP1015C00064"
     },
     {
@@ -1018,7 +1018,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/47QFCA24F0033"
     },
     {
@@ -1037,7 +1037,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA868217C0037"
     },
     {
@@ -1056,7 +1056,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA822310C0013"
     },
     {
@@ -1075,7 +1075,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0001922F0010"
     },
     {
@@ -1094,7 +1094,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/47QFCA20F0004"
     },
     {
@@ -1113,7 +1113,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W52P1J22C0023"
     },
     {
@@ -1132,7 +1132,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W31P4Q15C0102"
     },
     {
@@ -1151,7 +1151,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA868219C0008"
     },
     {
@@ -1170,7 +1170,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/19AQMM21F1511"
     },
     {
@@ -1189,7 +1189,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/SPRPA119FE31N"
     },
     {
@@ -1208,7 +1208,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/36C10B23F0007"
     },
     {
@@ -1227,7 +1227,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0003025C0100"
     },
     {
@@ -1246,7 +1246,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N3220522C3101"
     },
     {
@@ -1265,7 +1265,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0002419C5200"
     },
     {
@@ -1284,7 +1284,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/70B03C24F00000046"
     },
     {
@@ -1303,7 +1303,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/47QFCA20F0022"
     },
     {
@@ -1322,7 +1322,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W519TC23F0091"
     },
     {
@@ -1341,7 +1341,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA862116C6331"
     },
     {
@@ -1360,7 +1360,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0003020C0101"
     },
     {
@@ -1379,7 +1379,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0001916C0035"
     },
     {
@@ -1398,7 +1398,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/47QFCA20F0049"
     },
     {
@@ -1417,7 +1417,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA248622FA003"
     },
     {
@@ -1436,7 +1436,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA868219C0009"
     },
     {
@@ -1455,7 +1455,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/36C10X26N0041"
     },
     {
@@ -1474,7 +1474,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0001923F2625"
     },
     {
@@ -1493,7 +1493,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/0006"
     },
     {
@@ -1512,7 +1512,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0002413C5212"
     },
     {
@@ -1531,7 +1531,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W58RGZ21C0016"
     },
     {
@@ -1550,7 +1550,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W9127822C0017"
     },
     {
@@ -1569,7 +1569,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/NNK15MA50T"
     },
     {
@@ -1588,7 +1588,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W58RGZ16C0008"
     },
     {
@@ -1607,7 +1607,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/80KSC023FA026"
     },
     {
@@ -1626,7 +1626,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/36C10X26N0021"
     },
     {
@@ -1645,7 +1645,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0002408C5202"
     },
     {
@@ -1664,7 +1664,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA248622FA005"
     },
     {
@@ -1683,7 +1683,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/DTFAWA07C00014CALL0001"
     },
     {
@@ -1702,7 +1702,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA862121F6253"
     },
     {
@@ -1721,7 +1721,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA863719C6009"
     },
     {
@@ -1740,7 +1740,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W519TC23F0196"
     },
     {
@@ -1759,7 +1759,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA862118F6260"
     },
     {
@@ -1778,7 +1778,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W15P7T04CA205"
     },
     {
@@ -1797,7 +1797,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/W519TC25F0015"
     },
     {
@@ -1816,7 +1816,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA862120F6310"
     },
     {
@@ -1835,7 +1835,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/75FCMC22C0018"
     },
     {
@@ -1854,7 +1854,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/N0002422C5218"
     },
     {
@@ -1873,7 +1873,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/FA810625F7503"
     },
     {
@@ -1892,7 +1892,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/693JF722F000044"
     },
     {
@@ -1911,7 +1911,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-29",
       "usaspendingUrl": "https://www.usaspending.gov/award/47QFCA24F0009"
     }
   ]

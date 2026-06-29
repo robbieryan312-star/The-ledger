@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-06-28",
-  "fetchedAt": "2026-06-24T15:29:37.411Z",
+  "asOf": "2026-06-29",
+  "fetchedAt": "2026-06-29T18:01:42.109Z",
   "sections": [
     {
       "sourceId": "legiscan",
@@ -12,181 +12,12 @@
           "tier": "nonpartisan",
           "description": "State and federal bill tracking via legiscan.com API"
         },
-        "asOf": "2026-06-24",
-        "totalCount": 100,
+        "asOf": "2026-06-29",
+        "totalCount": 0,
         "datasetUrl": "https://api.legiscan.com/",
         "note": "Florida state legislation master list (up to 100 bills). Tier 2."
       },
-      "records": [
-        {
-          "id": "legiscan-0",
-          "title": "Designation of the State Birds",
-          "detail": "2044045 · FL",
-          "date": "2026-03-13",
-          "link": "https://legiscan.com/FL/bill/2044045",
-          "source": {
-            "name": "LegiScan",
-            "url": "https://legiscan.com",
-            "tier": "nonpartisan",
-            "description": "State and federal bill tracking via legiscan.com API"
-          },
-          "asOf": "2026-06-24"
-        },
-        {
-          "id": "legiscan-1",
-          "title": "Social Work Licensure Interstate Compact",
-          "detail": "2044116 · FL",
-          "date": "2026-03-13",
-          "link": "https://legiscan.com/FL/bill/2044116",
-          "source": {
-            "name": "LegiScan",
-            "url": "https://legiscan.com",
-            "tier": "nonpartisan",
-            "description": "State and federal bill tracking via legiscan.com API"
-          },
-          "asOf": "2026-06-24"
-        },
-        {
-          "id": "legiscan-2",
-          "title": "Pub. Rec. and Meetings/Social Work Licensure Interstate Compact",
-          "detail": "2044098 · FL",
-          "date": "2026-03-13",
-          "link": "https://legiscan.com/FL/bill/2044098",
-          "source": {
-            "name": "LegiScan",
-            "url": "https://legiscan.com",
-            "tier": "nonpartisan",
-            "description": "State and federal bill tracking via legiscan.com API"
-          },
-          "asOf": "2026-06-24"
-        },
-        {
-          "id": "legiscan-3",
-          "title": "Criminal Offenses Against Law Enforcement Officers and Other Personnel",
-          "detail": "2044121 · FL",
-          "date": "2025-09-15",
-          "link": "https://legiscan.com/FL/bill/2044121",
-          "source": {
-            "name": "LegiScan",
-            "url": "https://legiscan.com",
-            "tier": "nonpartisan",
-            "description": "State and federal bill tracking via legiscan.com API"
-          },
-          "asOf": "2026-06-24"
-        },
-        {
-          "id": "legiscan-4",
-          "title": "Educational Dollars for Duty Program",
-          "detail": "2044120 · FL",
-          "date": "2025-09-15",
-          "link": "https://legiscan.com/FL/bill/2044120",
-          "source": {
-            "name": "LegiScan",
-            "url": "https://legiscan.com",
-            "tier": "nonpartisan",
-            "description": "State and federal bill tracking via legiscan.com API"
-          },
-          "asOf": "2026-06-24"
-        },
-        {
-          "id": "legiscan-5",
-          "title": "Pub. Rec./Agency Employees",
-          "detail": "2044114 · FL",
-          "date": "2026-03-13",
-          "link": "https://legiscan.com/FL/bill/2044114",
-          "source": {
-            "name": "LegiScan",
-            "url": "https://legiscan.com",
-            "tier": "nonpartisan",
-            "description": "State and federal bill tracking via legiscan.com API"
-          },
-          "asOf": "2026-06-24"
-        },
-        {
-          "id": "legiscan-6",
-          "title": "Educator Certifications and Training",
-          "detail": "2044218 · FL",
-          "date": "2026-03-13",
-          "link": "https://legiscan.com/FL/bill/2044218",
-          "source": {
-            "name": "LegiScan",
-            "url": "https://legiscan.com",
-            "tier": "nonpartisan",
-            "description": "State and federal bill tracking via legiscan.com API"
-          },
-          "asOf": "2026-06-24"
-        },
-        {
-          "id": "legiscan-7",
-          "title": "Transportation Facility Designations",
-          "detail": "2044230 · FL",
-          "date": "2026-03-13",
-          "link": "https://legiscan.com/FL/bill/2044230",
-          "source": {
-            "name": "LegiScan",
-            "url": "https://legiscan.com",
-            "tier": "nonpartisan",
-            "description": "State and federal bill tracking via legiscan.com API"
-          },
-          "asOf": "2026-06-24"
-        },
-        {
-          "id": "legiscan-8",
-          "title": "Sale and Purchase of Ivermectin",
-          "detail": "2044901 · FL",
-          "date": "2025-09-23",
-          "link": "https://legiscan.com/FL/bill/2044901",
-          "source": {
-            "name": "LegiScan",
-            "url": "https://legiscan.com",
-            "tier": "nonpartisan",
-            "description": "State and federal bill tracking via legiscan.com API"
-          },
-          "asOf": "2026-06-24"
-        },
-        {
-          "id": "legiscan-9",
-          "title": "Recognizing Judea and Samaria",
-          "detail": "2044907 · FL",
-          "date": "2026-03-13",
-          "link": "https://legiscan.com/FL/bill/2044907",
-          "source": {
-            "name": "LegiScan",
-            "url": "https://legiscan.com",
-            "tier": "nonpartisan",
-            "description": "State and federal bill tracking via legiscan.com API"
-          },
-          "asOf": "2026-06-24"
-        },
-        {
-          "id": "legiscan-10",
-          "title": "Transportation Facility Designations",
-          "detail": "2044913 · FL",
-          "date": "2026-03-04",
-          "link": "https://legiscan.com/FL/bill/2044913",
-          "source": {
-            "name": "LegiScan",
-            "url": "https://legiscan.com",
-            "tier": "nonpartisan",
-            "description": "State and federal bill tracking via legiscan.com API"
-          },
-          "asOf": "2026-06-24"
-        },
-        {
-          "id": "legiscan-11",
-          "title": "Habitual Traffic Offender Designation",
-          "detail": "2044915 · FL",
-          "date": "2026-04-24",
-          "link": "https://legiscan.com/FL/bill/2044915",
-          "source": {
-            "name": "LegiScan",
-            "url": "https://legiscan.com",
-            "tier": "nonpartisan",
-            "description": "State and federal bill tracking via legiscan.com API"
-          },
-          "asOf": "2026-06-24"
-        }
-      ]
+      "records": []
     },
     {
       "sourceId": "openstates",
@@ -198,7 +29,7 @@
           "tier": "nonpartisan",
           "description": "State legislator records via openstates.org API"
         },
-        "asOf": "2026-06-24",
+        "asOf": "2026-06-29",
         "totalCount": 163,
         "datasetUrl": "https://v3.openstates.org/people",
         "note": "Florida state legislators. Tier 2 nonpartisan Open States."
@@ -215,7 +46,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "openstates-1",
@@ -228,7 +59,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "openstates-2",
@@ -241,7 +72,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "openstates-3",
@@ -254,7 +85,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "openstates-4",
@@ -267,7 +98,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "openstates-5",
@@ -280,7 +111,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "openstates-6",
@@ -293,7 +124,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "openstates-7",
@@ -306,7 +137,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "openstates-8",
@@ -319,7 +150,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "openstates-9",
@@ -332,7 +163,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "openstates-10",
@@ -345,7 +176,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "openstates-11",
@@ -358,7 +189,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         }
       ]
     },
@@ -372,8 +203,8 @@
           "tier": "official",
           "description": "U.S. Government Publishing Office official publications via api.govinfo.gov"
         },
-        "asOf": "2026-06-24",
-        "fetchedAt": "2026-06-24T15:29:37.411Z",
+        "asOf": "2026-06-29",
+        "fetchedAt": "2026-06-29T18:01:42.109Z",
         "totalCount": 40,
         "datasetUrl": "https://api.govinfo.gov/search",
         "note": "Recent Florida-related federal legislative documents (bills, Congressional Record, committee reports) via GovInfo. Tier 1 official GPO."
@@ -381,153 +212,153 @@
       "records": [
         {
           "id": "govinfo-0",
-          "title": "ADDITIONAL COSPONSORS",
-          "detail": "Congressional Record · CREC · CREC-2026-06-22",
-          "date": "2026-06-22",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-22",
+          "title": "APPOINTMENT OF ACTING PRESIDENT PRO TEMPORE",
+          "detail": "Congressional Record · CREC · CREC-2026-06-25",
+          "date": "2026-06-25",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-22"
+            "date": "2026-06-25"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "govinfo-1",
-          "title": "SENATE COMMITTEE MEETINGS",
-          "detail": "Congressional Record · CREC · CREC-2026-06-22",
-          "date": "2026-06-22",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-22",
+          "title": "Senate",
+          "detail": "Congressional Record · CREC · CREC-2026-06-25",
+          "date": "2026-06-25",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-22"
+            "date": "2026-06-25"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "govinfo-2",
-          "title": "HONORING MARTHA ANN HART CUSIMANO FOR HER CONTRIBUTIONS TO CENTRAL FLORIDA",
-          "detail": "Congressional Record · CREC · CREC-2026-06-22",
-          "date": "2026-06-22",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-22",
+          "title": "ADDITIONAL SPONSORS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-25",
+          "date": "2026-06-25",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-22"
+            "date": "2026-06-25"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "govinfo-3",
-          "title": "Daily Digest/CONGRESSIONAL PROGRAM AHEAD",
-          "detail": "Congressional Record · CREC · CREC-2026-06-22",
-          "date": "2026-06-22",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-22",
+          "title": "Constitutional Authority Statement for H.R. 9494",
+          "detail": "Congressional Record · CREC · CREC-2026-06-25",
+          "date": "2026-06-25",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-22"
+            "date": "2026-06-25"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "govinfo-4",
-          "title": "ADDITIONAL COSPONSORS",
-          "detail": "Congressional Record · CREC · CREC-2026-06-18",
-          "date": "2026-06-18",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18",
+          "title": "Constitutional Authority Statement for H.R. 9455",
+          "detail": "Congressional Record · CREC · CREC-2026-06-25",
+          "date": "2026-06-25",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-18"
+            "date": "2026-06-25"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "govinfo-5",
-          "title": "INTRODUCTION OF BILLS AND JOINT RESOLUTIONS",
-          "detail": "Congressional Record · CREC · CREC-2026-06-18",
-          "date": "2026-06-18",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18",
+          "title": "PUBLIC BILLS AND RESOLUTIONS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-25",
+          "date": "2026-06-25",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-18"
+            "date": "2026-06-25"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "govinfo-6",
-          "title": "EXECUTIVE REPORTS OF COMMITTEES",
-          "detail": "Congressional Record · CREC · CREC-2026-06-18",
-          "date": "2026-06-18",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18",
+          "title": "ADJOURNMENT FROM THURSDAY, JUNE 25, 2026, TO MONDAY, JUNE 29, 2026",
+          "detail": "Congressional Record · CREC · CREC-2026-06-25",
+          "date": "2026-06-25",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-18"
+            "date": "2026-06-25"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "govinfo-7",
-          "title": "Vote on Holding Nomination (Executive Calendar)",
-          "detail": "Congressional Record · CREC · CREC-2026-06-18",
-          "date": "2026-06-18",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18",
+          "title": "Diversity Visa Protection and Modernization Act",
+          "detail": "Congressional Bill · BILLS · BILLS-119hr9457ih",
+          "date": "2026-06-25",
+          "link": "https://www.govinfo.gov/app/details/BILLS-119hr9457ih",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-18"
+            "date": "2026-06-25"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "govinfo-8",
-          "title": "Unanimous Consent Request--S. Res. 554 (Executive Calendar)",
-          "detail": "Congressional Record · CREC · CREC-2026-06-18",
-          "date": "2026-06-18",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18",
+          "title": "NOMINATIONS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-24",
+          "date": "2026-06-24",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-18"
+            "date": "2026-06-24"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         },
         {
           "id": "govinfo-9",
-          "title": "ADDITIONAL SPONSORS",
-          "detail": "Congressional Record · CREC · CREC-2026-06-18",
-          "date": "2026-06-18",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-18",
+          "title": "Text of Senate Amendment 6409",
+          "detail": "Congressional Record · CREC · CREC-2026-06-24",
+          "date": "2026-06-24",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-18"
+            "date": "2026-06-24"
           },
-          "asOf": "2026-06-24"
+          "asOf": "2026-06-29"
         }
       ]
     },
@@ -541,7 +372,7 @@
           "tier": "official",
           "description": "Official daily journal of the U.S. government via federalregister.gov API"
         },
-        "asOf": "2026-06-28",
+        "asOf": "2026-06-29",
         "totalCount": 100,
         "datasetUrl": "https://www.federalregister.gov/api/v1/documents.json?conditions[term]=Florida",
         "note": "Most recent 100 Federal Register documents matching \"Florida\" (rules, proposed rules, notices, presidential documents). Tier 1 official."
@@ -560,7 +391,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-29"
           },
-          "asOf": "2026-06-28"
+          "asOf": "2026-06-29"
         },
         {
           "id": "fedregister-1",
@@ -575,7 +406,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-29"
           },
-          "asOf": "2026-06-28"
+          "asOf": "2026-06-29"
         },
         {
           "id": "fedregister-2",
@@ -590,7 +421,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-29"
           },
-          "asOf": "2026-06-28"
+          "asOf": "2026-06-29"
         },
         {
           "id": "fedregister-3",
@@ -605,7 +436,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-28"
+          "asOf": "2026-06-29"
         },
         {
           "id": "fedregister-4",
@@ -620,7 +451,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-28"
+          "asOf": "2026-06-29"
         },
         {
           "id": "fedregister-5",
@@ -635,7 +466,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-28"
+          "asOf": "2026-06-29"
         },
         {
           "id": "fedregister-6",
@@ -650,7 +481,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-28"
+          "asOf": "2026-06-29"
         },
         {
           "id": "fedregister-7",
@@ -665,7 +496,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-28"
+          "asOf": "2026-06-29"
         },
         {
           "id": "fedregister-8",
@@ -680,7 +511,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-28"
+          "asOf": "2026-06-29"
         },
         {
           "id": "fedregister-9",
@@ -695,7 +526,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-28"
+          "asOf": "2026-06-29"
         }
       ]
     }
