@@ -1,34 +1,33 @@
 /**
- * sync-topic-positions.ts — per-member, per-topic targeted queries for
- * ProfileRecordByTopicPanel "On The Record" data.
+ * sync-topic-positions.ts — Ballotpedia platform positions, VoteSmart NPAT stated
+ * positions, and Said→Did vote correlation per topic bucket.
  *
- * Sources: Congress.gov sponsored legislation, GovInfo CREC, VoteSmart bio.
  * Output: lib/data/generated/topicPositions.json
  * Run: npm run sync:topic-positions
  */
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import type { SourceTier } from '../lib/types';
-import { RECORD_TOPIC_BUCKETS } from '../lib/data/profileRecordByTopic';
+import type { SourceTier, VoteChoice, VoteRecord } from '../lib/types';
+import { RECORD_TOPIC_BUCKETS, voteCongressGovUrl, voteTopicId } from '../lib/data/profileRecordByTopic';
 import { fetchJson, loadEnvLocal, sleep } from './lib/ingest-utils';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
 const OUT_FILE = path.join(OUT_DIR, 'topicPositions.json');
 const LEGISLATORS_FILE = path.join(OUT_DIR, 'currentLegislators.json');
+const NATIONAL_VOTES_FILE = path.join(projectRoot, 'data', 'votes', 'national', 'congress-votes.json');
 const CHECKPOINT_FILE = '/tmp/sync-topic-positions-checkpoint.json';
 
-const CONGRESS_BASE = 'https://api.congress.gov/v3';
-const GOVINFO_SEARCH = 'https://api.govinfo.gov/search';
 const VOTESMART_BASE = 'https://api.votesmart.org';
-
-const CONGRESS_DELAY_MS = 500;
-const GOVINFO_DELAY_MS = 500;
+const BALLOTPEDIA_BASE = 'https://ballotpedia.org';
+const BALLOTPEDIA_DELAY_MS = 1500;
 const VOTESMART_DELAY_MS = 300;
+const MAX_PLATFORM_PER_TOPIC = 3;
+const MAX_SAID_DID_LINKS = 3;
 
-const MAX_BILLS_PER_TOPIC = 2;
-const GOVINFO_PAGE_SIZE = 3;
+const BALLOTPEDIA_UA =
+  'TheLedger-DataSync/1.0 (civic research; contact: data@theledger.app)';
 
 interface LegislatorRow {
   bioguideId: string;
@@ -39,22 +38,12 @@ interface LegislatorRow {
   chamber: string;
 }
 
-interface TopicBillEntry {
-  title: string;
-  billNumber: string;
-  date: string;
-  url: string;
-  role: 'sponsored';
-  tier: SourceTier;
-  topicId: string;
-}
-
-interface TopicStatementEntry {
-  title: string;
-  date: string;
+interface PlatformPositionEntry {
+  text: string;
+  source: string;
   url: string;
   tier: SourceTier;
-  topicId: string;
+  asOf: string;
 }
 
 interface StatedPositionSourceEntry {
@@ -63,11 +52,22 @@ interface StatedPositionSourceEntry {
   url: string;
 }
 
-interface MemberTopicData {
-  bills?: TopicBillEntry[];
-  statements?: TopicStatementEntry[];
+interface SaidDidLinkEntry {
+  statedPositionDate: string | null;
+  voteDate: string;
+  billTitle: string;
+  billNumber: string;
+  congressGovUrl: string;
+  voteChoice: VoteChoice;
+  tier: 'official';
+}
+
+interface TopicPositionData {
+  platformPositions?: PlatformPositionEntry[];
   statedPosition?: string;
   statedPositionSource?: StatedPositionSourceEntry;
+  statements: [];
+  saidDidLinks: SaidDidLinkEntry[];
 }
 
 interface TopicPositionsSnapshot {
@@ -76,40 +76,14 @@ interface TopicPositionsSnapshot {
     source: string;
     totalMembers: number;
     membersWithData: number;
+    membersWithPlatformPositions: number;
+    membersWithStatedPosition: number;
+    membersWithSaidDidLinks: number;
     perTopicCoverage: Record<string, number>;
-    validationKept: number;
-    validationDiscarded: number;
-    validationPassRatePct: number;
+    votesmartConfigured: boolean;
+    note?: string;
   };
-  byBioguideId: Record<string, Record<string, MemberTopicData>>;
-}
-
-interface CongressBill {
-  title?: string;
-  number?: string;
-  type?: string;
-  congress?: number;
-  introducedDate?: string;
-  url?: string;
-}
-
-interface CongressSponsoredResponse {
-  sponsoredLegislation?: {
-    bills?: CongressBill[];
-  } | CongressBill[];
-}
-
-interface GovInfoResult {
-  title?: string;
-  packageId?: string;
-  granuleId?: string;
-  dateIssued?: string;
-  packageLink?: string;
-  granuleText?: string;
-}
-
-interface GovInfoSearchResponse {
-  results?: GovInfoResult[];
+  byBioguideId: Record<string, Record<string, TopicPositionData>>;
 }
 
 interface VoteSmartCandidate {
@@ -120,222 +94,182 @@ interface VoteSmartCandidate {
   officeStateId?: string;
 }
 
-let validationKept = 0;
-let validationDiscarded = 0;
+interface NpatRow {
+  rowText?: string;
+  answerText?: string;
+  optionText?: string;
+}
+
+interface NpatSection {
+  name?: string;
+  row?: NpatRow | NpatRow[];
+}
+
+interface NationalVoteMember {
+  bioguideId: string;
+  votes: VoteRecord[];
+}
+
+const NPAT_SECTION_TO_TOPIC: Array<{ patterns: string[]; topicId: string }> = [
+  { patterns: ['health care', 'healthcare', 'medicare', 'medicaid'], topicId: 'healthcare' },
+  { patterns: ['immigration', 'border'], topicId: 'immigration' },
+  { patterns: ['national security', 'defense', 'military', 'foreign'], topicId: 'defense' },
+  { patterns: ['economy', 'budget', 'taxes', 'fiscal', 'trade'], topicId: 'economy' },
+  { patterns: ['environment', 'energy', 'climate'], topicId: 'environment' },
+  { patterns: ['education'], topicId: 'education' },
+  { patterns: ['criminal justice', 'crime', 'police'], topicId: 'crime' },
+  { patterns: ['civil rights', 'civil liberties', 'social', 'abortion', 'reproductive'], topicId: 'civil' },
+  { patterns: ['judiciary', 'constitutional', 'court'], topicId: 'judiciary' },
+];
 
 function normalizeArray<T>(value: T | T[] | undefined | null): T[] {
   if (value == null) return [];
   return Array.isArray(value) ? value : [value];
 }
 
-function ordinalCongress(n: number): string {
-  const mod100 = n % 100;
-  if (mod100 >= 11 && mod100 <= 13) return `${n}th`;
-  switch (n % 10) {
-    case 1: return `${n}st`;
-    case 2: return `${n}nd`;
-    case 3: return `${n}rd`;
-    default: return `${n}th`;
-  }
-}
-
-function billTypeSlug(type?: string): string | null {
-  const t = (type ?? '').toUpperCase();
-  switch (t) {
-    case 'HR': return 'house-bill';
-    case 'S': return 'senate-bill';
-    case 'HRES': return 'house-resolution';
-    case 'SRES': return 'senate-resolution';
-    case 'HJRES': return 'house-joint-resolution';
-    case 'SJRES': return 'senate-joint-resolution';
-    case 'HCONRES': return 'house-concurrent-resolution';
-    case 'SCONRES': return 'senate-concurrent-resolution';
-    default: return null;
-  }
-}
-
-function formatBillNumber(type?: string, number?: string): string {
-  if (!number) return '';
-  const t = (type ?? '').toUpperCase();
-  if (t === 'HR') return `H.R. ${number}`;
-  if (t === 'S') return `S. ${number}`;
-  if (t === 'HRES') return `H.Res. ${number}`;
-  if (t === 'SRES') return `S.Res. ${number}`;
-  if (t === 'HJRES') return `H.J.Res. ${number}`;
-  if (t === 'SJRES') return `S.J.Res. ${number}`;
-  if (t === 'HCONRES') return `H.Con.Res. ${number}`;
-  if (t === 'SCONRES') return `S.Con.Res. ${number}`;
-  return `${t} ${number}`.trim();
-}
-
-function congressBillPublicUrl(bill: CongressBill, bioguideId: string): string {
-  if (bill.url?.includes('www.congress.gov')) return bill.url;
-  const slug = billTypeSlug(bill.type);
-  const congress = bill.congress ?? 119;
-  if (slug && bill.number) {
-    return `https://www.congress.gov/bill/${ordinalCongress(congress)}-congress/${slug}/${bill.number}`;
-  }
-  return `https://www.congress.gov/members/${bioguideId}`;
-}
-
-function govinfoPackageUrl(result: GovInfoResult): string | null {
-  if (result.packageLink?.startsWith('http')) return result.packageLink;
-  if (result.packageId && result.granuleId) {
-    return `https://www.govinfo.gov/app/details/${result.packageId}/granule/${result.granuleId}`;
-  }
-  if (result.packageId) {
-    return `https://www.govinfo.gov/app/details/${result.packageId}`;
-  }
-  return null;
-}
-
 function textMatchesKeyword(text: string, keywords: string[]): boolean {
-  if (keywords.length === 0) return false;
   const hay = text.toLowerCase();
   return keywords.some((k) => hay.includes(k.trim().toLowerCase()));
 }
 
-function passesValidationGate(
-  entry: {
-    title?: string;
-    position?: string;
-    date?: string;
-    url?: string;
-    tier?: SourceTier;
-    topicId?: string;
-  },
-  keywords: string[],
-): boolean {
-  const text = `${entry.title ?? ''} ${entry.position ?? ''}`;
-  const hasDateOrPosition = Boolean(entry.date?.trim() || entry.position?.trim());
-  const hasUrl = Boolean(entry.url?.trim()?.startsWith('http'));
-  const hasTier = Boolean(entry.tier);
-  const hasTopicId = Boolean(entry.topicId);
-  const hasKeyword = textMatchesKeyword(text, keywords);
-
-  if (!hasDateOrPosition || !hasUrl || !hasTier || !hasTopicId || !hasKeyword) {
-    validationDiscarded += 1;
-    return false;
+function mapNpatSectionToTopic(sectionName: string): string | null {
+  const hay = sectionName.toLowerCase();
+  for (const row of NPAT_SECTION_TO_TOPIC) {
+    if (row.patterns.some((p) => hay.includes(p))) return row.topicId;
   }
-  validationKept += 1;
-  return true;
-}
-
-function extractSponsoredBills(data: CongressSponsoredResponse): CongressBill[] {
-  const raw = data.sponsoredLegislation;
-  if (Array.isArray(raw)) return raw;
-  return raw?.bills ?? [];
-}
-
-async function fetchSponsoredLegislation(
-  bioguideId: string,
-  congressKey: string,
-): Promise<CongressBill[]> {
-  const params = new URLSearchParams({
-    api_key: congressKey,
-    limit: '20',
-    format: 'json',
-  });
-  const url = `${CONGRESS_BASE}/member/${bioguideId}/sponsored-legislation?${params.toString()}`;
-  await sleep(CONGRESS_DELAY_MS);
-  try {
-    const data = await fetchJson<CongressSponsoredResponse>(url);
-    return extractSponsoredBills(data);
-  } catch (err) {
-    console.warn(`  Congress.gov sponsored bills failed for ${bioguideId}: ${err instanceof Error ? err.message : err}`);
-    return [];
+  for (const bucket of RECORD_TOPIC_BUCKETS) {
+    if (bucket.id === 'legislation') continue;
+    if (bucket.keywords.some((k) => hay.includes(k.trim()))) return bucket.id;
   }
+  return null;
 }
 
-function billsForTopic(
-  bills: CongressBill[],
-  topicId: string,
-  keywords: string[],
-  bioguideId: string,
-): TopicBillEntry[] {
-  const matched = bills
-    .filter((b) => textMatchesKeyword(b.title ?? '', keywords))
-    .sort((a, b) => new Date(b.introducedDate ?? 0).getTime() - new Date(a.introducedDate ?? 0).getTime())
-    .slice(0, MAX_BILLS_PER_TOPIC);
-
-  const out: TopicBillEntry[] = [];
-  for (const bill of matched) {
-    const entry: TopicBillEntry = {
-      title: (bill.title ?? '').trim(),
-      billNumber: formatBillNumber(bill.type, bill.number),
-      date: (bill.introducedDate ?? '').slice(0, 10),
-      url: congressBillPublicUrl(bill, bioguideId),
-      role: 'sponsored',
-      tier: 'official',
-      topicId,
-    };
-    if (passesValidationGate(entry, keywords)) out.push(entry);
-  }
-  return out;
+function stripWikitext(text: string): string {
+  return text
+    .replace(/\{\{[\s\S]*?\}\}/g, ' ')
+    .replace(/\[\[([^|\]]+\|)?([^\]]+)\]\]/g, '$2')
+    .replace(/'''+/g, '')
+    .replace(/<ref[\s\S]*?<\/ref>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&#39;/g, "'")
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
-async function fetchGovInfoStatements(
-  leg: LegislatorRow,
-  topicId: string,
-  keywords: string[],
-  govinfoKey: string,
-): Promise<TopicStatementEntry[]> {
-  if (keywords.length === 0) return [];
-  const firstKeyword = keywords[0];
-  const query = `"${leg.firstName} ${leg.lastName}" ${firstKeyword} AND collection:CREC`;
+function extractPositionSectionTextsFromWikitext(wikitext: string): string[] {
+  const texts: string[] = [];
+  const headingPatterns = [
+    'Political positions',
+    'Issues',
+    'Campaign themes',
+    'Political positions and issues',
+  ];
 
-  await sleep(GOVINFO_DELAY_MS);
-  try {
-    const data = await fetchJson<GovInfoSearchResponse>(
-      `${GOVINFO_SEARCH}?api_key=${encodeURIComponent(govinfoKey)}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          query,
-          pageSize: GOVINFO_PAGE_SIZE,
-          offsetMark: '*',
-          sorts: [{ field: 'publishdate', sortOrder: 'DESC' }],
-        }),
-      },
+  for (const heading of headingPatterns) {
+    const sectionRe = new RegExp(
+      `==\\s*${heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*==([\\s\\S]*?)(?=\\n==[^=]|$)`,
+      'i',
     );
+    const match = sectionRe.exec(wikitext);
+    if (!match) continue;
 
-    const out: TopicStatementEntry[] = [];
-    const lastNameLower = leg.lastName.toLowerCase();
-
-    for (const result of data.results ?? []) {
-      const title = (result.title ?? '').trim();
-      const granuleText = (result.granuleText ?? '').trim();
-      const dateIssued = (result.dateIssued ?? '').slice(0, 10);
-      const url = govinfoPackageUrl(result);
-
-      if (!title.toLowerCase().includes(lastNameLower)) {
-        validationDiscarded += 1;
+    const body = match[1];
+    for (const line of body.split('\n')) {
+      const trimmed = line.trim();
+      if (!trimmed) continue;
+      const bullet = trimmed.match(/^\*+\s*(.+)/);
+      if (bullet) {
+        const t = stripWikitext(bullet[1]);
+        if (t.length >= 20) texts.push(t);
         continue;
       }
-      if (!textMatchesKeyword(`${title} ${granuleText}`, keywords)) {
-        validationDiscarded += 1;
-        continue;
-      }
-      if (!dateIssued || !url) {
-        validationDiscarded += 1;
-        continue;
-      }
-
-      const entry: TopicStatementEntry = {
-        title,
-        date: dateIssued,
-        url,
-        tier: 'official',
-        topicId,
-      };
-      if (passesValidationGate(entry, keywords)) out.push(entry);
+      if (/^[|{<#]/.test(trimmed)) continue;
+      if (/^=+/.test(trimmed)) continue;
+      const t = stripWikitext(trimmed);
+      if (t.length >= 30) texts.push(t);
     }
-    return out;
-  } catch (err) {
-    console.warn(`  GovInfo failed for ${leg.name} (${topicId}): ${err instanceof Error ? err.message : err}`);
-    return [];
   }
+
+  return texts;
+}
+
+async function fetchBallotpediaWikitext(slug: string): Promise<string | null> {
+  const title = slug.replace(/ /g, '_');
+  const url = `${BALLOTPEDIA_BASE}/wiki/index.php?action=raw&title=${encodeURIComponent(title)}`;
+  await sleep(BALLOTPEDIA_DELAY_MS);
+  try {
+    const res = await fetch(url, {
+      headers: { 'User-Agent': BALLOTPEDIA_UA, Accept: 'text/plain' },
+    });
+    if (res.status === 404) return null;
+    if (!res.ok) return null;
+    const text = await res.text();
+    if (!text.trim()) return null;
+    return text;
+  } catch {
+    return null;
+  }
+}
+
+function ballotpediaSlugCandidates(leg: LegislatorRow): string[] {
+  const candidates = new Set<string>();
+  const add = (s: string) => {
+    const slug = s.trim().replace(/\s+/g, '_');
+    if (slug) candidates.add(slug);
+  };
+  add(leg.name);
+  add(`${leg.firstName}_${leg.lastName}`);
+  add(`${leg.lastName}_${leg.firstName}`);
+  // Common Ballotpedia pattern drops middle initials/parentheticals from display name.
+  const firstToken = leg.firstName.split(/\s+/)[0] ?? leg.firstName;
+  add(`${firstToken}_${leg.lastName}`);
+  return [...candidates];
+}
+
+async function fetchBallotpediaPositions(
+  leg: LegislatorRow,
+  asOf: string,
+): Promise<Map<string, PlatformPositionEntry[]>> {
+  let wikitext: string | null = null;
+  let pageUrl = `${BALLOTPEDIA_BASE}/`;
+
+  for (const slug of ballotpediaSlugCandidates(leg)) {
+    const candidate = await fetchBallotpediaWikitext(slug);
+    if (candidate) {
+      wikitext = candidate;
+      pageUrl = `${BALLOTPEDIA_BASE}/${encodeURIComponent(slug.replace(/ /g, '_'))}`;
+      break;
+    }
+  }
+
+  if (!wikitext) {
+    console.warn(`  WARN Ballotpedia: no page found for ${leg.name}`);
+    return new Map();
+  }
+
+  const positionTexts = extractPositionSectionTextsFromWikitext(wikitext);
+  if (positionTexts.length === 0) return new Map();
+
+  const byTopic = new Map<string, PlatformPositionEntry[]>();
+  const topicBuckets = RECORD_TOPIC_BUCKETS.filter((b) => b.id !== 'legislation');
+
+  for (const bucket of topicBuckets) {
+    const matched = positionTexts.filter((t) => textMatchesKeyword(t, bucket.keywords));
+    if (matched.length === 0) continue;
+    byTopic.set(
+      bucket.id,
+      matched.slice(0, MAX_PLATFORM_PER_TOPIC).map((text) => ({
+        text,
+        source: 'Ballotpedia',
+        url: pageUrl,
+        tier: 'nonpartisan' as const,
+        asOf,
+      })),
+    );
+  }
+  return byTopic;
 }
 
 async function votesmartFetch(
@@ -352,126 +286,184 @@ async function votesmartFetch(
 }
 
 async function findVoteSmartCandidateId(leg: LegislatorRow, key: string): Promise<number | null> {
+  const officeId = leg.chamber === 'senate' ? 6 : 5;
   try {
-    const data = await votesmartFetch('Candidates.getByName', { lastName: leg.lastName }, key);
+    const data = await votesmartFetch('Candidates.getByOfficeState', {
+      officeId,
+      stateId: leg.stateCode,
+    }, key);
     const candidates = normalizeArray(
-      (data.candidate as VoteSmartCandidate | VoteSmartCandidate[] | undefined) ??
-        (data.candidates as { candidate?: VoteSmartCandidate | VoteSmartCandidate[] } | undefined)?.candidate,
+      (data.candidateList as { candidate?: VoteSmartCandidate | VoteSmartCandidate[] } | undefined)?.candidate,
     );
 
-    const chamberMatch = (office?: string) => {
-      const o = (office ?? '').toLowerCase();
-      if (leg.chamber === 'senate') return o.includes('senator') || o.includes('senate');
-      return o.includes('representative') || o.includes('house');
-    };
+    const firstLower = leg.firstName.toLowerCase();
+    const lastLower = leg.lastName.toLowerCase();
 
     const exact = candidates.find(
       (c) =>
-        (c.firstName ?? '').toLowerCase() === leg.firstName.toLowerCase() &&
-        c.officeStateId === leg.stateCode &&
-        chamberMatch(c.office),
+        (c.firstName ?? '').toLowerCase() === firstLower &&
+        (c.lastName ?? '').toLowerCase() === lastLower,
     );
     if (exact?.candidateId != null) return Number(exact.candidateId);
 
-    const byName = candidates.find(
-      (c) => (c.firstName ?? '').toLowerCase() === leg.firstName.toLowerCase() && c.officeStateId === leg.stateCode,
+    const partial = candidates.find(
+      (c) =>
+        (c.lastName ?? '').toLowerCase() === lastLower &&
+        (c.firstName ?? '').toLowerCase().startsWith(firstLower.slice(0, 3)),
     );
-    if (byName?.candidateId != null) return Number(byName.candidateId);
-  } catch {
-    // skip
+    if (partial?.candidateId != null) return Number(partial.candidateId);
+  } catch (err) {
+    console.warn(
+      `  WARN VoteSmart candidate lookup failed for ${leg.name}: ${err instanceof Error ? err.message : err}`,
+    );
   }
   return null;
 }
 
-function collectBioPositionTexts(bioRoot: Record<string, unknown>): string[] {
-  const texts: string[] = [];
-  const walk = (node: unknown): void => {
-    if (node == null) return;
-    if (typeof node === 'string') {
-      const t = node.trim();
-      if (t.length > 20) texts.push(t);
-      return;
-    }
-    if (Array.isArray(node)) {
-      for (const item of node) walk(item);
-      return;
-    }
-    if (typeof node === 'object') {
-      for (const [key, value] of Object.entries(node as Record<string, unknown>)) {
-        if (/position|issue|bio|statement|answer|text|summary|description/i.test(key)) {
-          walk(value);
-        }
-      }
-    }
+function extractNpatByTopic(
+  npatRoot: Record<string, unknown>,
+  candidateId: number,
+): Map<string, { position: string; date: string | null }> {
+  const out = new Map<string, { position: string; date: string | null }>();
+  const npat = (npatRoot.npat ?? npatRoot) as {
+    section?: NpatSection | NpatSection[];
+    electionDate?: string;
   };
-  walk(bioRoot);
-  return texts;
+  const positionDate = (npat.electionDate ?? '').slice(0, 10) || null;
+  const profileUrl = `https://votesmart.org/candidate/${candidateId}/political-courage-test`;
+
+  for (const section of normalizeArray(npat.section)) {
+    const topicId = mapNpatSectionToTopic(section.name ?? '');
+    if (!topicId) continue;
+
+    const lines: string[] = [];
+    for (const row of normalizeArray(section.row)) {
+      const answer = (row.answerText ?? row.optionText ?? '').trim();
+      if (!answer || /^n\/?a$/i.test(answer) || /^no opinion$/i.test(answer)) continue;
+      lines.push(answer);
+    }
+    if (lines.length === 0) continue;
+    out.set(topicId, { position: lines.join('; '), date: positionDate });
+  }
+
+  void profileUrl;
+  return out;
 }
 
-async function fetchVoteSmartPositionsByTopic(
+async function fetchVoteSmartNpatByTopic(
   candidateId: number,
   key: string,
-): Promise<Map<string, { position: string; url: string }>> {
-  const out = new Map<string, { position: string; url: string }>();
+): Promise<Map<string, { position: string; date: string | null }>> {
   try {
-    const bioData = await votesmartFetch('CandidateBio.getBio', { candidateId }, key);
-    const positionTexts = collectBioPositionTexts(bioData);
-    const profileUrl = `https://votesmart.org/candidate/${candidateId}`;
-
-    for (const bucket of RECORD_TOPIC_BUCKETS) {
-      if (bucket.keywords.length === 0) continue;
-      const matches = positionTexts.filter((t) => textMatchesKeyword(t, bucket.keywords));
-      if (matches.length === 0) continue;
-      const position = matches.slice(0, 2).join('; ');
-      const entry = { position, url: profileUrl, tier: 'nonpartisan' as const, topicId: bucket.id };
-      if (passesValidationGate({ position, url: profileUrl, tier: 'nonpartisan', topicId: bucket.id }, bucket.keywords)) {
-        out.set(bucket.id, { position, url: profileUrl });
-      }
-    }
+    const npatData = await votesmartFetch('Npat.getNpat', { candidateId }, key);
+    return extractNpatByTopic(npatData, candidateId);
   } catch {
-    // no bio on file
+    return new Map();
   }
-  return out;
+}
+
+async function loadNationalVotesAsync(): Promise<Map<string, VoteRecord[]>> {
+  try {
+    const raw = JSON.parse(await readFile(NATIONAL_VOTES_FILE, 'utf8')) as {
+      byBioguideId?: Record<string, NationalVoteMember>;
+    };
+    const map = new Map<string, VoteRecord[]>();
+    for (const [id, entry] of Object.entries(raw.byBioguideId ?? {})) {
+      map.set(id, entry.votes ?? []);
+    }
+    return map;
+  } catch {
+    console.warn('WARN: could not load national votes — Said→Did links will be empty.');
+    return new Map();
+  }
+}
+
+function buildSaidDidLinks(
+  topicId: string,
+  statedPositionDate: string | null,
+  votes: VoteRecord[],
+): SaidDidLinkEntry[] {
+  const filtered = votes
+    .filter((vote) => voteTopicId(vote) === topicId)
+    .filter((vote) => {
+      if (!statedPositionDate) return true;
+      return vote.date >= statedPositionDate;
+    })
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, MAX_SAID_DID_LINKS);
+
+  return filtered.map((vote) => ({
+    statedPositionDate,
+    voteDate: vote.date,
+    billTitle: vote.billTitle,
+    billNumber: vote.billId,
+    congressGovUrl: voteCongressGovUrl(vote),
+    voteChoice: vote.vote,
+    tier: 'official' as const,
+  }));
 }
 
 function buildSnapshotMeta(
   members: LegislatorRow[],
-  byBioguideId: Record<string, Record<string, MemberTopicData>>,
+  byBioguideId: Record<string, Record<string, TopicPositionData>>,
   asOf: string,
-  topicBuckets: typeof RECORD_TOPIC_BUCKETS,
+  votesmartConfigured: boolean,
 ): TopicPositionsSnapshot['meta'] {
-  const membersWithData = Object.values(byBioguideId).filter((m) => Object.keys(m).length > 0).length;
+  const topicBuckets = RECORD_TOPIC_BUCKETS.filter((b) => b.id !== 'legislation');
   const perTopicCoverage: Record<string, number> = {};
   for (const bucket of topicBuckets) perTopicCoverage[bucket.id] = 0;
-  for (const member of Object.values(byBioguideId)) {
-    for (const topicId of Object.keys(member)) {
-      perTopicCoverage[topicId] = (perTopicCoverage[topicId] ?? 0) + 1;
+
+  let membersWithPlatformPositions = 0;
+  let membersWithStatedPosition = 0;
+  let membersWithSaidDidLinks = 0;
+
+  for (const memberTopics of Object.values(byBioguideId)) {
+    let hasPlatform = false;
+    let hasStated = false;
+    let hasLinks = false;
+    for (const [topicId, data] of Object.entries(memberTopics)) {
+      if (data.platformPositions?.length) hasPlatform = true;
+      if (data.statedPosition) hasStated = true;
+      if (data.saidDidLinks.length) hasLinks = true;
+      if (
+        data.platformPositions?.length ||
+        data.statedPosition ||
+        data.saidDidLinks.length
+      ) {
+        perTopicCoverage[topicId] = (perTopicCoverage[topicId] ?? 0) + 1;
+      }
     }
+    if (hasPlatform) membersWithPlatformPositions += 1;
+    if (hasStated) membersWithStatedPosition += 1;
+    if (hasLinks) membersWithSaidDidLinks += 1;
   }
-  const totalValidation = validationKept + validationDiscarded;
-  const validationPassRatePct =
-    totalValidation > 0 ? Math.round((validationKept / totalValidation) * 1000) / 10 : 0;
+
+  const membersWithData = Object.values(byBioguideId).filter((m) => Object.keys(m).length > 0).length;
 
   return {
     asOf,
-    source: 'Congress.gov API v3 + GovInfo CREC + VoteSmart',
+    source: 'Ballotpedia + VoteSmart NPAT + Congress roll-call votes (Said→Did)',
     totalMembers: members.length,
     membersWithData,
+    membersWithPlatformPositions,
+    membersWithStatedPosition,
+    membersWithSaidDidLinks,
     perTopicCoverage,
-    validationKept,
-    validationDiscarded,
-    validationPassRatePct,
+    votesmartConfigured,
+    note: votesmartConfigured
+      ? 'Platform positions from Ballotpedia; NPAT from VoteSmart; vote links from national roll-call snapshot.'
+      : 'VoteSmart skipped (no key). Platform positions from Ballotpedia where available.',
   };
 }
 
-async function writePartialSnapshot(
+async function writeSnapshot(
   members: LegislatorRow[],
-  byBioguideId: Record<string, Record<string, MemberTopicData>>,
+  byBioguideId: Record<string, Record<string, TopicPositionData>>,
   asOf: string,
-  topicBuckets: typeof RECORD_TOPIC_BUCKETS,
+  votesmartConfigured: boolean,
 ): Promise<void> {
   const snapshot: TopicPositionsSnapshot = {
-    meta: buildSnapshotMeta(members, byBioguideId, asOf, topicBuckets),
+    meta: buildSnapshotMeta(members, byBioguideId, asOf, votesmartConfigured),
     byBioguideId,
   };
   await mkdir(OUT_DIR, { recursive: true });
@@ -481,17 +473,10 @@ async function writePartialSnapshot(
 async function main(): Promise<void> {
   await loadEnvLocal();
 
-  const congressKey = (process.env.CONGRESS_API_KEY ?? '').trim();
-  const govinfoKey = (
-    process.env.GOVINFO_API_KEY ??
-    process.env.DATA_GOV_API_KEY ??
-    ''
-  ).trim();
   const votesmartKey = (process.env.VOTESMART_API_KEY ?? '').trim();
-
-  if (!govinfoKey) {
-    console.error('Missing GOVINFO_API_KEY — cannot query Congressional Record.');
-    process.exit(1);
+  console.log('DEBUG: VOTESMART_API_KEY length:', votesmartKey.length);
+  if (!votesmartKey) {
+    console.warn('WARN: VOTESMART_API_KEY missing — NPAT stated positions will be skipped.');
   }
 
   const legislatorsRaw = JSON.parse(await readFile(LEGISLATORS_FILE, 'utf8')) as {
@@ -502,114 +487,106 @@ async function main(): Promise<void> {
   );
 
   const asOf = new Date().toISOString().slice(0, 10);
-  const topicBuckets = RECORD_TOPIC_BUCKETS;
+  const topicBuckets = RECORD_TOPIC_BUCKETS.filter((b) => b.id !== 'legislation');
+  const nationalVotes = await loadNationalVotesAsync();
 
   let checkpoint: Record<string, boolean> = {};
   try {
     checkpoint = JSON.parse(await readFile(CHECKPOINT_FILE, 'utf8')) as Record<string, boolean>;
   } catch {
-    /* fresh run */
+    /* fresh */
   }
 
-  let byBioguideId: Record<string, Record<string, MemberTopicData>> = {};
+  let byBioguideId: Record<string, Record<string, TopicPositionData>> = {};
   try {
     const prev = JSON.parse(await readFile(OUT_FILE, 'utf8')) as TopicPositionsSnapshot;
     byBioguideId = prev.byBioguideId ?? {};
   } catch {
-    /* fresh run */
-  }
-
-  const checkpointed = Object.keys(checkpoint).length;
-  const savedMembers = Object.keys(byBioguideId).length;
-  if (checkpointed > savedMembers) {
-    console.warn(
-      `Checkpoint has ${checkpointed} members but output file has ${savedMembers} — clearing stale checkpoint (prior run did not persist data).`,
-    );
-    checkpoint = {};
-    await writeFile(CHECKPOINT_FILE, JSON.stringify(checkpoint));
+    /* fresh */
   }
 
   console.log(
-    `Syncing topic positions for ${members.length} members (${checkpointed} checkpointed, ${savedMembers} saved). Congress: ${congressKey ? 'yes' : 'SKIP'}, GovInfo: yes, VoteSmart: ${votesmartKey ? 'yes' : 'SKIP'}`,
+    `Syncing topic positions for ${members.length} members (${Object.keys(checkpoint).length} checkpointed). VoteSmart: ${votesmartKey ? 'yes' : 'SKIP'}`,
   );
 
   for (let i = 0; i < members.length; i += 1) {
     const leg = members[i];
     if (checkpoint[leg.bioguideId]) continue;
 
-    const memberTopics: Record<string, MemberTopicData> = {};
+    const memberTopics: Record<string, TopicPositionData> = {};
+    const ballotByTopic = await fetchBallotpediaPositions(leg, asOf);
 
-    let sponsoredBills: CongressBill[] = [];
-    if (congressKey) {
-      sponsoredBills = await fetchSponsoredLegislation(leg.bioguideId, congressKey);
-    }
-
-    let votesmartByTopic = new Map<string, { position: string; url: string }>();
+    let npatByTopic = new Map<string, { position: string; date: string | null }>();
+    let voteSmartCandidateId: number | null = null;
     if (votesmartKey) {
-      const vsId = await findVoteSmartCandidateId(leg, votesmartKey);
-      if (vsId != null) {
-        votesmartByTopic = await fetchVoteSmartPositionsByTopic(vsId, votesmartKey);
+      voteSmartCandidateId = await findVoteSmartCandidateId(leg, votesmartKey);
+      if (voteSmartCandidateId != null) {
+        try {
+          await votesmartFetch('CandidateBio.getBio', { candidateId: voteSmartCandidateId }, votesmartKey);
+        } catch {
+          /* optional validation call */
+        }
+        npatByTopic = await fetchVoteSmartNpatByTopic(voteSmartCandidateId, votesmartKey);
       }
     }
+
+    const memberVotes = nationalVotes.get(leg.bioguideId) ?? [];
 
     for (const bucket of topicBuckets) {
-      const topicData: MemberTopicData = {};
-      const keywords = bucket.keywords;
+      const platformPositions = ballotByTopic.get(bucket.id);
+      const npat = npatByTopic.get(bucket.id);
 
-      if (congressKey && keywords.length > 0) {
-        const bills = billsForTopic(sponsoredBills, bucket.id, keywords, leg.bioguideId);
-        if (bills.length > 0) topicData.bills = bills;
-      }
+      const hasPlatform = platformPositions && platformPositions.length > 0;
+      const hasNpat = Boolean(npat?.position);
 
-      const statements = await fetchGovInfoStatements(leg, bucket.id, keywords, govinfoKey);
-      if (statements.length > 0) topicData.statements = statements;
+      if (!hasPlatform && !hasNpat) continue;
 
-      const vs = votesmartByTopic.get(bucket.id);
-      if (vs) {
-        topicData.statedPosition = vs.position;
+      const statedPositionDate = npat?.date ?? platformPositions?.[0]?.asOf ?? null;
+
+      const topicData: TopicPositionData = {
+        statements: [],
+        saidDidLinks: buildSaidDidLinks(bucket.id, statedPositionDate, memberVotes),
+      };
+
+      if (hasPlatform) topicData.platformPositions = platformPositions;
+      if (hasNpat && npat) {
+        topicData.statedPosition = npat.position;
         topicData.statedPositionSource = {
           tier: 'nonpartisan',
           source: 'VoteSmart',
-          url: vs.url,
+          url:
+            voteSmartCandidateId != null
+              ? `https://votesmart.org/candidate/${voteSmartCandidateId}/political-courage-test`
+              : 'https://votesmart.org',
         };
       }
 
-      if (topicData.bills?.length || topicData.statements?.length || topicData.statedPosition) {
-        memberTopics[bucket.id] = topicData;
-      }
+      memberTopics[bucket.id] = topicData;
     }
 
-    byBioguideId[leg.bioguideId] = memberTopics;
+    if (Object.keys(memberTopics).length > 0) {
+      byBioguideId[leg.bioguideId] = memberTopics;
+    }
 
     checkpoint[leg.bioguideId] = true;
-    await writeFile(CHECKPOINT_FILE, JSON.stringify(checkpoint));
-    await writePartialSnapshot(members, byBioguideId, asOf, topicBuckets);
+    await writeFile(CHECKPOINT_FILE, JSON.stringify(checkpoint) + '\n', 'utf8');
 
     if ((i + 1) % 10 === 0 || i === members.length - 1) {
-      const withData = Object.values(byBioguideId).filter((m) => Object.keys(m).length > 0).length;
-      console.log(`  progress: ${i + 1}/${members.length} — ${withData} members with topic data`);
+      await writeSnapshot(members, byBioguideId, asOf, !!votesmartKey);
+      const withData = Object.keys(byBioguideId).length;
+      console.log(`  progress: ${i + 1}/${members.length} — ${withData} members with topic position data`);
     }
   }
 
-  const snapshot: TopicPositionsSnapshot = {
-    meta: buildSnapshotMeta(members, byBioguideId, asOf, topicBuckets),
-    byBioguideId,
-  };
+  await writeSnapshot(members, byBioguideId, asOf, !!votesmartKey);
 
-  await writeFile(OUT_FILE, JSON.stringify(snapshot, null, 2) + '\n', 'utf8');
-
-  const { membersWithData, perTopicCoverage, validationKept: kept, validationDiscarded: discarded, validationPassRatePct } = snapshot.meta;
-
+  const meta = buildSnapshotMeta(members, byBioguideId, asOf, !!votesmartKey);
   console.log('');
   console.log('── sync:topic-positions complete ──');
-  console.log(`Members with ≥1 validated result: ${membersWithData}/${members.length}`);
-  console.log('Per-topic coverage:');
-  for (const bucket of topicBuckets) {
-    console.log(`  ${bucket.id}: ${perTopicCoverage[bucket.id] ?? 0}`);
-  }
-  console.log(
-    `Validation: ${kept} kept / ${discarded} discarded (${validationPassRatePct}% pass rate)`,
-  );
+  console.log(`Members with data: ${meta.membersWithData}/${members.length}`);
+  console.log(`Platform positions: ${meta.membersWithPlatformPositions}`);
+  console.log(`VoteSmart NPAT positions: ${meta.membersWithStatedPosition}`);
+  console.log(`Said→Did links: ${meta.membersWithSaidDidLinks} members`);
   console.log(`Output: ${OUT_FILE}`);
 }
 

@@ -1,13 +1,176 @@
 {
   "meta": {
-    "asOf": "2026-06-28",
-    "source": "Congress.gov API v3 + GovInfo CREC + VoteSmart",
+    "asOf": "2026-06-29",
+    "source": "Ballotpedia + VoteSmart NPAT + Congress roll-call votes (Said→Did)",
     "totalMembers": 537,
-    "membersWithData": 0,
-    "perTopicCoverage": {},
-    "validationKept": 0,
-    "validationDiscarded": 0,
-    "validationPassRatePct": 0
+    "membersWithData": 1,
+    "membersWithPlatformPositions": 1,
+    "membersWithStatedPosition": 0,
+    "membersWithSaidDidLinks": 0,
+    "perTopicCoverage": {
+      "healthcare": 1,
+      "immigration": 1,
+      "defense": 1,
+      "economy": 1,
+      "environment": 0,
+      "education": 1,
+      "crime": 1,
+      "civil": 0,
+      "judiciary": 0
+    },
+    "votesmartConfigured": false,
+    "note": "VoteSmart skipped (no key). Platform positions from Ballotpedia where available."
   },
-  "byBioguideId": {}
+  "byBioguideId": {
+    "W000437": {
+      "healthcare": {
+        "statements": [],
+        "saidDidLinks": [],
+        "platformPositions": [
+          {
+            "text": "As a former Lt. Colonel and retired Air Force Reservist, Roger has long been at the forefront of military and veterans’ issues. Roger vigorously supports the rebuilding of America’s military, and he led passage of a proposal, signed by President Trump this year, that ensures America’s Navy has no less than 355 ships. Roger is working to make sure Mississippi’s military communities and defense contractors continue playing a vital role in America’s defense. For our former service members, he is committed to making the VA more responsive and accessible giving our vets more healthcare choices that are closer to home.",
+            "source": "Ballotpedia",
+            "url": "https://ballotpedia.org/Roger_F._Wicker",
+            "tier": "nonpartisan",
+            "asOf": "2026-06-29"
+          },
+          {
+            "text": "During my time in Congress, I have cosponsored several bills designed to strengthen and preserve the 2nd Amendment. I support the sensible measures upholding the right of veterans to own firearms and to expand the reciprocity of concealed-carry gun laws across state lines. I oppose universal background checks, and I have voted against measures to expand background checks for firearm sales at gun shows and on the Internet. We should focus on strengthening our mental health services and the enforcement of existing laws before creating more regulatory burdens that would diminish our Constitutional rights.",
+            "source": "Ballotpedia",
+            "url": "https://ballotpedia.org/Roger_F._Wicker",
+            "tier": "nonpartisan",
+            "asOf": "2026-06-29"
+          },
+          {
+            "text": "Some people these days like to call Social Security an entitlement like Medicaid or other social welfare programs. Social Security is not an entitlement. Working Americans paid into the Social Security trust fund, with the expectation that they would receive their money back from that fund upon retirement.",
+            "source": "Ballotpedia",
+            "url": "https://ballotpedia.org/Roger_F._Wicker",
+            "tier": "nonpartisan",
+            "asOf": "2026-06-29"
+          }
+        ]
+      },
+      "immigration": {
+        "statements": [],
+        "saidDidLinks": [],
+        "platformPositions": [
+          {
+            "text": "Stopping Illegal Immigration and Protecting the Border",
+            "source": "Ballotpedia",
+            "url": "https://ballotpedia.org/Roger_F._Wicker",
+            "tier": "nonpartisan",
+            "asOf": "2026-06-29"
+          },
+          {
+            "text": "I oppose amnesty for illegal immigrants, and I believe the first step toward solving the illegal immigration problem is securing our borders. I support President Trump’s efforts to secure our border, and I support hiring more border patrol agents and increased use of technology to help stop or catch illegal immigrants. I also support stiffening penalties on employers who knowingly employ illegals.",
+            "source": "Ballotpedia",
+            "url": "https://ballotpedia.org/Roger_F._Wicker",
+            "tier": "nonpartisan",
+            "asOf": "2026-06-29"
+          },
+          {
+            "text": "I strongly oppose so-called “sanctuary cities,” which seek to defy immigration law and provide harbor for illegals. During the past two Congresses, I have supported legislation to withhold federal funds from these sanctuary cities. Furthermore, I have supported legislation to detain those who engage in criminal activity while unlawfully residing in the United States.",
+            "source": "Ballotpedia",
+            "url": "https://ballotpedia.org/Roger_F._Wicker",
+            "tier": "nonpartisan",
+            "asOf": "2026-06-29"
+          }
+        ]
+      },
+      "defense": {
+        "statements": [],
+        "saidDidLinks": [],
+        "platformPositions": [
+          {
+            "text": "As a former Lt. Colonel and retired Air Force Reservist, Roger has long been at the forefront of military and veterans’ issues. Roger vigorously supports the rebuilding of America’s military, and he led passage of a proposal, signed by President Trump this year, that ensures America’s Navy has no less than 355 ships. Roger is working to make sure Mississippi’s military communities and defense contractors continue playing a vital role in America’s defense. For our former service members, he is committed to making the VA more responsive and accessible giving our vets more healthcare choices that are closer to home.",
+            "source": "Ballotpedia",
+            "url": "https://ballotpedia.org/Roger_F._Wicker",
+            "tier": "nonpartisan",
+            "asOf": "2026-06-29"
+          },
+          {
+            "text": "Having served in the U.S. Air Force and being a retired Air Force Reserve Lt. Colonel, I am committed to America’s men and women in uniform, and to Mississippi’s numerous military communities and the bases and defense contractors who play such a vital role in securing America.",
+            "source": "Ballotpedia",
+            "url": "https://ballotpedia.org/Roger_F._Wicker",
+            "tier": "nonpartisan",
+            "asOf": "2026-06-29"
+          },
+          {
+            "text": "I believe the solution lies in allowing states to experiment with their own plans giving each state an opportunity to enact initiatives that work best within their markets. I have voted at every opportunity to repeal Obamacare and replace it with market-driven solutions, such as the Graham-Cassidy proposal, which would have been a step in the right direction. However, clearly, the fight to fully repeal and replace Obamacare with something much better is still unfolding. As your Senator, I will remain committed to securing a healthcare solution that puts more power in the hands of patients and providers, not the government.",
+            "source": "Ballotpedia",
+            "url": "https://ballotpedia.org/Roger_F._Wicker",
+            "tier": "nonpartisan",
+            "asOf": "2026-06-29"
+          }
+        ]
+      },
+      "economy": {
+        "statements": [],
+        "saidDidLinks": [],
+        "platformPositions": [
+          {
+            "text": "Most Americans are now feeling the impact of this tax law with bigger paychecks. The new federal withholding guidelines based on the law’s lower tax rates took effect in February, and the Treasury Department has estimated 90 percent of U.S. workers will now bring home more money rather than sending it to Uncle Sam.",
+            "source": "Ballotpedia",
+            "url": "https://ballotpedia.org/Roger_F._Wicker",
+            "tier": "nonpartisan",
+            "asOf": "2026-06-29"
+          },
+          {
+            "text": "In fact, according to the Tax Foundation, an average family making the median income in Mississippi could keep hundreds of dollars more this year thanks to these tax reforms.",
+            "source": "Ballotpedia",
+            "url": "https://ballotpedia.org/Roger_F._Wicker",
+            "tier": "nonpartisan",
+            "asOf": "2026-06-29"
+          },
+          {
+            "text": "On the business side, we’ve seen more than 500 companies using the tax savings to benefit employees, with about four million Americans slated to receive bonuses. I will work with President Trump to seek even more ways to reduce America’s tax burden and put money back into the pockets of those who actually create jobs and economic growth, rather than the government.",
+            "source": "Ballotpedia",
+            "url": "https://ballotpedia.org/Roger_F._Wicker",
+            "tier": "nonpartisan",
+            "asOf": "2026-06-29"
+          }
+        ]
+      },
+      "education": {
+        "statements": [],
+        "saidDidLinks": [],
+        "platformPositions": [
+          {
+            "text": "Spurred by a Mississippi child’s battle with the disease, I authored the original “Muscular Dystrophy Community Assistance, Research and Education (MD-CARE) Act,” which was designed to focus more federal resources toward curing muscular dystrophy. Prior to this act, no legislation had specifically addressed Duchenne muscular dystrophy, which is the most common fatal genetic disorder diagnosed in childhood.",
+            "source": "Ballotpedia",
+            "url": "https://ballotpedia.org/Roger_F._Wicker",
+            "tier": "nonpartisan",
+            "asOf": "2026-06-29"
+          },
+          {
+            "text": "Since this act was signed, federal research has paved the way for groundbreaking therapies, extending lives of muscular dystrophy patients by an average of 12 years, and significantly improving their quality of life. Some of these children are now even going to college, getting married and having children of their own.",
+            "source": "Ballotpedia",
+            "url": "https://ballotpedia.org/Roger_F._Wicker",
+            "tier": "nonpartisan",
+            "asOf": "2026-06-29"
+          },
+          {
+            "text": "We must also expand educational offerings, primarily through workforce development programs. This will ensure our nation, and our state, maintains a workforce that is best suited for the job market’s ever-changing demands and opportunities.",
+            "source": "Ballotpedia",
+            "url": "https://ballotpedia.org/Roger_F._Wicker",
+            "tier": "nonpartisan",
+            "asOf": "2026-06-29"
+          }
+        ]
+      },
+      "crime": {
+        "statements": [],
+        "saidDidLinks": [],
+        "platformPositions": [
+          {
+            "text": "During my time in Congress, I have cosponsored several bills designed to strengthen and preserve the 2nd Amendment. I support the sensible measures upholding the right of veterans to own firearms and to expand the reciprocity of concealed-carry gun laws across state lines. I oppose universal background checks, and I have voted against measures to expand background checks for firearm sales at gun shows and on the Internet. We should focus on strengthening our mental health services and the enforcement of existing laws before creating more regulatory burdens that would diminish our Constitutional rights.",
+            "source": "Ballotpedia",
+            "url": "https://ballotpedia.org/Roger_F._Wicker",
+            "tier": "nonpartisan",
+            "asOf": "2026-06-29"
+          }
+        ]
+      }
+    }
+  }
 }
