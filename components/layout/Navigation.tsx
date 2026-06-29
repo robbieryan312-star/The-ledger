@@ -27,7 +27,6 @@ const navItems = [
     sub: [
       { label: 'Upcoming Elections', href: '/elections' },
       { label: 'Compare Candidates', href: '/compare' },
-      { label: 'Election Calendar', href: '/elections?view=calendar' },
     ],
   },
   {
@@ -36,9 +35,7 @@ const navItems = [
     sub: [
       { label: 'Campaign Finance', href: '/finance' },
       { label: 'Lobbying Profiles', href: '/lobbying' },
-      { label: 'Lobbyist Tracker', href: '/finance?view=lobbyists' },
       { label: 'Congress Stock Trades', href: '/congress' },
-      { label: 'PACs & Advocacy', href: '/finance?view=pacs' },
     ],
   },
   { label: 'Compare', href: '/compare' },
