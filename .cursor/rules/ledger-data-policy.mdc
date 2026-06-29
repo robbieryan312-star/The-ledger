@@ -5,43 +5,72 @@ alwaysApply: true
 
 # The Ledger — Data Credibility (Highest Priority)
 
-## Current office
+Data credibility is the product. Every decision defers to it.
 
-- Derive current office from **authoritative feeds** (official `.gov`, official-derived datasets like `unitedstates/congress-legislators`).
-- **Never** rely on hand-typed `inOffice` flags alone.
-- **Recency-weighted resolution**: most recent authoritative record wins for current office; older records only for historical summaries (dated, sourced, topic-grouped, newest-first).
+## Source tiers — use these exact string values in code
 
-## Source tiers (show in UI)
+| Code value | Meaning | Example sources |
+|------------|---------|-----------------|
+| `'official'` | Authoritative government record | congress.gov, FEC, senate.gov, house.gov, STOCK Act filings |
+| `'nonpartisan'` | Established nonpartisan or official-derived research | GovTrack, OpenSecrets, Ballotpedia, AP, Reuters, ProPublica, unitedstates/congress-legislators |
+| `'media'` | Named mainstream journalism outlet | NYT, WaPo, WSJ, Politico, The Hill — verbatim quotes with attribution only, never paraphrased |
+| `'alleged'` | Credible but unproven claim | Corroborated by multiple media sources, clearly flagged |
+| `'unverified'` | Circulating claim with no verified sourcing | Maximum caveat, shown only when explicitly relevant |
 
-| Tier | Type |
-|------|------|
-| 1 | Official `.gov` |
-| 2 | Nonpartisan `.org` / research |
-| 3 | Journalism |
-| 4 | Speculative |
+**Never write "Tier 1", "Tier 2", "Tier 3", or "Tier 4" in code or JSX.** Use the string values above.
 
-Low-trust (Tier 3/4) only when corroborated by multiple sources — always flagged.
+Low-trust (`'media'`, `'alleged'`, `'unverified'`) only when corroborated by multiple independent sources — always flagged in UI.
 
-## Every claim, vote, and fact
+## Banned sources
 
-Include: **date**, **source tier**, **link**, **as-of / checked date**.
+- **Wikipedia** — never use as a source under any tier. It is user-editable and not authoritative.
+- Any source without a verifiable URL and publication date.
 
-- Do **not** fabricate facts to fill gaps — use honest placeholders: *"No verified record available"*.
-- Do **not** expand hand-written mock data for national coverage — use the real integration pipeline (sync scripts, generated JSON, `officeResolution.ts`).
+## Journalism quotes (Tier 'media')
+
+Verbatim quotes from journalism must be:
+- Exact — word for word, in quotation marks, with speaker attribution
+- Linked to the original article URL
+- Dated to the article's publication date
+- Never paraphrased or summarized as if they are the politician's words
+
+Approved journalism sources (Tier 'media'): NYT, Washington Post, Wall Street Journal, Politico, The Hill, AP, Reuters, NPR, PBS NewsHour, Roll Call, CQ, The Atlantic, Bloomberg, ProPublica, The Guardian, Miami Herald, Tampa Bay Times, Sun Sentinel, Orlando Sentinel, Florida Phoenix, WUSF, WLRN.
+
+## Current office — authoritative feeds only
+
+- Must come from `unitedstates/congress-legislators`, senate.gov, house.gov, or governor.gov equivalents
+- Never from hand-typed `inOffice: true` flags alone
+- **Recency-weighted resolution**: most recent authoritative record wins; older records are historical only (dated, sourced, newest-first)
+
+## Every claim, vote, and fact must include
+
+- **Date** of the event or publication
+- **Source tier** (the code value above, visible in UI)
+- **Link** to primary record
+- **As-of / checked date** when shown in UI
+
+Do **not** fabricate facts to fill gaps — use `"No verified record available"` placeholder.
+Do **not** expand hand-written mock data for national coverage — use sync scripts and `officeResolution.ts`.
+
+## Mock data policy
+
+Mock data exists ONLY for the 16 featured profiles (mockPoliticians.ts) and as UI scaffolding.
+- Mock data must never appear on routes without a prominent "Demo data — not verified" label
+- `/lobbying`, `/elections`, `/compare` currently show mock data — these pages must carry visible disclaimers until real pipelines replace them
+- Demo stock trades must be labeled distinctly from STOCK Act official trades
 
 ## Scope priority
 
-1. All federal Congress members
-2. Governors / top statewide via state `.gov` / SoS sources
-3. Rich featured profiles with real office labels
-4. Finance / votes / trades via APIs
-5. Local / small elections **last**
-
-Local profiles (e.g. Palm Beach sheriff) are **demo templates only** until a local data pipeline exists.
+1. All 537 federal Congress members (votes, FEC, office)
+2. Governors and top statewide via state `.gov` / SoS sources
+3. Rich featured profiles with real office, votes, finance, and verbatim quotes
+4. The "promise vs. record" diff for featured profiles (core product feature)
+5. Local/small elections — demo templates only until a local data pipeline exists
 
 ## Reference implementation
 
-- `lib/data/DATA_INTEGRATION_PLAN.md`
-- `lib/data/officeResolution.ts`
-- `scripts/sync-legislators.ts`
-- `scripts/verify-office-resolution.ts`
+- `lib/data/officeResolution.ts` — office resolution
+- `lib/types/index.ts` — SourceTier union (use these values)
+- `scripts/sync-legislators.ts` — roster sync
+- `scripts/verify-office-resolution.ts` — post-sync verification
+- `lib/data/DATA_INTEGRATION_PLAN.md` — pipeline roadmap

@@ -1,24 +1,86 @@
 ---
-description: The Ledger build workflow, verification, and agent decision authority
+description: The Ledger build workflow, architecture rules, and quality standard
 alwaysApply: true
 ---
 
-# The Ledger — Build Workflow
+# The Ledger — Build Workflow & Quality Standard
 
-## Integration before polish
+## Quality standard
 
-Finish integration passes before demo polish unless the user explicitly asks to demo.
+"Does it build" is the floor, not the bar. Every change must meet:
+- Correct data (no fabricated facts presented as real)
+- Correct sourcing (tier values, dates, and links visible in UI)
+- Correct rendering (SSR for all route pages — see below)
+- No regressions (build passes, existing features still work)
+- Honest empty states (no fabricated fill-ins when data is missing)
+
+## Architecture rule — SSR on all route pages
+
+**Route pages (`app/**/page.tsx`) must be server components.** Do not add `'use client'` to a route page file. Interactive sub-components (tabs, accordions, charts) use `'use client'` — the route page itself does not.
+
+Why: crawlers index server-rendered HTML. A `'use client'` route page is invisible to Google. The product goal is to be the best political research resource — that requires search visibility.
+
+Current violation: `app/politicians/[id]/page.tsx` is `'use client'`. This must be converted to a server component shell with client sub-components in a future phase.
+
+## Branch workflow
+
+- All work on `phase-5-national-wiring` or a named feature branch — **never directly on `main`**
+- Commit after each completed task before starting the next
+- `npm run build` must pass before any commit
+- Do not merge to `main` without explicit owner instruction
+
+## Phase gates
+
+Stop and wait for owner review after each phase:
+1. Commit completed work to the branch
+2. Run `npm run build` — report pass/fail
+3. Report: what was changed, what was tested, what was NOT changed
+4. Do not start the next phase until the owner confirms
+
+Report format (3 lines max):
+```
+Build: pass | fail
+Files changed: [list]
+Verified: [what you actually tested]
+```
 
 ## Data change discipline
 
-- Do **not** launch parallel agents editing the same data files (causes regressions).
-- After data changes, run:
-  - `npm run sync:legislators`
-  - `npm run verify:office`
+- Never launch parallel agents editing the same data files — causes regressions
+- After data changes, run: `npm run sync:legislators` then `npm run verify:office`
 - Build must pass: `npm run build`
-- User runs `npm run dev` in their own terminal for demos — agent-started dev servers get reaped.
+- Owner runs `npm run dev` in their own terminal — do not start dev servers
 
-## Decision authority
+## Scope discipline
 
-- Make routine implementation decisions without asking.
-- Pause for user input only on: **scope changes**, **credibility tradeoffs**, or **major UX direction changes**.
+- Do not add features, refactor, or introduce abstractions beyond what the task requires
+- Do not add error handling for scenarios that cannot happen
+- Do not write comments that explain WHAT the code does — only WHY when non-obvious
+- Scope creep (adding unrequested components, changing copy, renaming things) is a task failure
+
+## When to stop and ask
+
+Stop and ask the owner only for:
+- Scope changes (adding features not in the brief)
+- Credibility tradeoffs (which source to trust when records conflict)
+- Major UX direction changes
+
+Do not stop and ask for routine implementation decisions.
+
+## Mock data rules
+
+- Mock data pages (`/lobbying`, `/elections`) must carry a visible "Demo — not verified" banner until replaced by real data pipelines
+- Never silently present demo data as if it were official
+- `demoTradeCount` in stock trades must be visible to the user — not just tracked in code
+
+## Sync script commands
+
+```bash
+npm run sync:legislators      # refresh congressional roster
+npm run sync:fec-national     # FEC finance for all 537 members
+npm run sync:congress-votes   # roll-call votes
+npm run sync:stock-trades     # STOCK Act PTR trades
+npm run sync:news-national    # GDELT news for all members
+npm run verify:office         # confirm office resolution is clean
+npm run build                 # must pass before any commit
+```

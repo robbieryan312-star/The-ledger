@@ -7,42 +7,133 @@ This version has breaking changes — APIs, conventions, and file structure may 
 <!-- BEGIN:ledger-data-rules -->
 # The Ledger — Project Rules
 
-Civic-info Next.js app. Data credibility is the highest priority. Product vision and editorial voice: `PRODUCT_VISION.md`, `.cursor/rules/ledger-editorial-voice.mdc`.
+Civic-info Next.js app. **Data credibility is the highest priority.** Every decision defers to it.
+
+Product vision and editorial voice: `PRODUCT_VISION.md`, `.cursor/rules/ledger-editorial-voice.mdc`.
+
+---
+
+## What this product does
+
+The Ledger presents what politicians promised versus what they actually did in office — using verified, sourced, dated facts. The core feature is the "Said → Did" factual diff: verbatim quote from a vetted journalism source paired with the official voting or financial record. No editorializing. No moral labels. The record speaks.
+
+---
 
 ## Data credibility
 
-- **Current office** must come from authoritative feeds (official `.gov`, official-derived datasets like `unitedstates/congress-legislators`) — never hand-typed `inOffice` flags alone.
-- **Recency-weighted resolution**: most recent authoritative record wins; older records only for historical summaries (dated, sourced, topic-grouped, newest-first).
-- **Source tiers** (visible in UI): Tier 1 official `.gov` → Tier 2 nonpartisan `.org`/research → Tier 3 journalism → Tier 4 speculative. Low-trust (3/4) only when corroborated by multiple sources, always flagged.
-- Every claim/vote/fact needs: date, source tier, link, as-of/checked date.
-- Do not fabricate facts — show *"No verified record available"* placeholders.
-- Never expand hand-written mock data for national coverage; use the real integration pipeline (sync scripts, generated JSON, `officeResolution.ts`).
+### Source tiers — exact code values (never write "Tier 1/2/3/4")
 
-## Scope priority
+| Code value | Meaning |
+|------------|---------|
+| `'official'` | `.gov`, FEC, STOCK Act, congress.gov, senate.gov, house.gov |
+| `'nonpartisan'` | GovTrack, OpenSecrets, Ballotpedia, AP, Reuters, unitedstates/congress-legislators |
+| `'media'` | Named mainstream outlet — verbatim quotes ONLY, never paraphrased |
+| `'alleged'` | Credible but unproven — multi-source corroboration required, always flagged |
+| `'unverified'` | No verified sourcing — maximum caveat, rarely shown |
 
-1. All federal Congress members
-2. Governors/top statewide via state `.gov` / SoS sources
-3. Rich featured profiles with real office labels
-4. Finance/votes/trades via APIs
-5. Local/small elections last
+### Banned sources
 
-Local profiles (e.g. Palm Beach sheriff) are demo templates only until a local data pipeline exists.
+- **Wikipedia** — never under any tier. User-editable, not authoritative.
+- Any source without a verifiable URL and publication date.
+
+### Approved journalism sources (Tier `'media'`)
+
+NYT, Washington Post, Wall Street Journal, Politico, The Hill, AP, Reuters, NPR, PBS NewsHour, Roll Call, CQ, The Atlantic, Bloomberg, ProPublica, The Guardian, Miami Herald, Tampa Bay Times, Sun Sentinel, Orlando Sentinel, Florida Phoenix, WUSF, WLRN.
+
+Journalism quotes must be **verbatim**, in quotation marks, with named outlet, author, date, and URL. Never paraphrase a quote and present it as the politician's words.
+
+### Office resolution
+
+Current office must come from `unitedstates/congress-legislators`, senate.gov LIS XML, house.gov, or governor.gov equivalents. Never from hand-typed `inOffice: true` flags alone. Most recent authoritative record wins.
+
+### No fabrication
+
+Show `"No verified record available"` for gaps. Never fabricate or paraphrase to fill holes.
+
+---
+
+## Architecture rules
+
+### SSR on all route pages — non-negotiable
+
+Route pages (`app/**/page.tsx`) must be **server components**. Do not add `'use client'` to a route page file. Interactive sub-components use `'use client'` — the route page shell does not.
+
+Reason: crawlers index server-rendered HTML. A `'use client'` route page is invisible to Google. Individual politician profiles must be crawler-visible.
+
+Known violation to fix: `app/politicians/[id]/page.tsx` is currently `'use client'`. Convert to server shell + client sub-components in the next architecture phase.
+
+### Data flow
+
+```
+sync scripts → lib/data/generated/*.json → Next.js build-time import → UI
+```
+
+No Postgres. No runtime API calls from the browser. All data is static JSON pre-rendered at build time, refreshed via GitHub Actions on a schedule.
+
+### bioguideId is the universal key
+
+Links profiles across all data layers: votes, FEC finance, news, stock trades. Primary join key for all Congress member data. Never duplicate or alias this key.
+
+---
 
 ## Build workflow
 
-- Finish integration passes before demo polish unless user explicitly asks to demo.
-- Do not launch parallel agents editing the same data files.
-- After data changes: `npm run sync:legislators` and `npm run verify:office`.
-- Build must pass (`npm run build`). User runs `npm run dev` for demos.
+- Work on feature branches — never directly on `main`
+- `npm run build` must pass before any commit
+- Commit after each completed task before starting the next
+- Stop and wait for owner review after each phase — do not chain phases
+- Report in 3 lines: `Build: pass/fail | Files changed: [list] | Verified: [what you tested]`
+
+After data changes always run: `npm run sync:legislators` → `npm run verify:office` → `npm run build`
+
+---
+
+## Scope discipline
+
+- Do not add features, refactor, or introduce abstractions beyond what the task requires
+- Do not change UI copy, rename things, or touch files not mentioned in the brief
+- Scope creep is a task failure — the owner will reject and require a revert
+
+---
+
+## Mock data policy
+
+- Mock data (`mockLobbyingGroups`, `mockElections`, `mockStockTrades`) exists only for the 16 featured profiles and as UI scaffolding
+- Pages that display mock data to users must carry a visible disclaimer
+- Never present demo or fabricated data as official records
+- Never expand hand-written mock data for national coverage
+
+---
+
+## Scope priority
+
+1. All 537 federal Congress members — votes, FEC, office, news
+2. Governors and top statewide via state `.gov` / SoS sources
+3. Rich featured profiles with verbatim journalism quotes and "Said → Did" diffs
+4. Follow the Money: FEC schedule A, STOCK Act trades, lobbying disclosures
+5. Local elections — demo templates only until a real local data pipeline exists
+
+---
 
 ## Decision authority
 
-Routine implementation: proceed without asking. Pause only for scope changes, credibility tradeoffs, or major UX direction changes.
+Routine implementation: proceed without asking. Stop and ask the owner only for:
+- Scope changes
+- Credibility tradeoffs (conflicting sources, which record to trust)
+- Major UX direction changes
 
-## Reference
+---
 
-- `lib/data/DATA_INTEGRATION_PLAN.md`
-- `lib/data/officeResolution.ts`
-- `scripts/sync-legislators.ts`
-- `scripts/verify-office-resolution.ts`
+## Key reference files
+
+| File | Purpose |
+|------|---------|
+| `PROGRESS.md` | Sprint status and completed phase log |
+| `PRODUCT_VISION.md` | What "desirable" means — voice, depth, Beat Google standard |
+| `ARCHITECTURE.md` | System design, data sources, trusted outlets in full |
+| `lib/data/DATA_INTEGRATION_PLAN.md` | Data pipeline roadmap |
+| `lib/data/officeResolution.ts` | Office resolution logic |
+| `lib/types/index.ts` | SourceTier union — the authoritative list of tier values |
+| `.env.local` | API keys (never paste values in chat or commit to any file) |
+| `scripts/setup-github-secrets.sh` | Push keys to GitHub Actions |
 <!-- END:ledger-data-rules -->

@@ -26,6 +26,9 @@ import ControversySection from '@/components/politicians/ControversySection';
 import ProfileNewsExplorer from '@/components/politicians/ProfileNewsExplorer';
 import VoteviewIdeologyPanel from '@/components/records/VoteviewIdeologyPanel';
 import FollowTheMoneyPanel from '@/components/finance/FollowTheMoneyPanel';
+import ProfileRecordByTopicPanel from '@/components/politicians/ProfileRecordByTopicPanel';
+import { getProfileRecordByTopic } from '@/lib/data/profileRecordByTopic';
+import { getMemberDeep } from '@/lib/data/memberDeep';
 import { FloridaNewsSections } from '@/components/records/FloridaRecordPanel';
 import { getVoteviewByBioguide } from '@/lib/data/slices/voteview';
 import { getNewsFloridaBundle } from '@/lib/data/slices/newsFlorida';
@@ -507,6 +510,16 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
   const highConflictTrades = displayStockTrades.filter((t) => t.conflictScore >= 70);
   const voteviewMember = getVoteviewByBioguide(politician.bioguideId);
   const floridaNewsBundle = politician.stateCode === 'FL' ? getNewsFloridaBundle() : null;
+  const isFederalCongress =
+    politician.level === 'federal' &&
+    (politician.chamber === 'senate' || politician.chamber === 'house');
+  const recordByTopic = isFederalCongress
+    ? getProfileRecordByTopic(politician.id, politician.bioguideId)
+    : null;
+  const memberDeep =
+    isFederalCongress && politician.bioguideId
+      ? getMemberDeep(politician.bioguideId)
+      : null;
 
   const recordJuxtapositions =
     isFeatured && usingOfficialVotes && usingOfficialTrades
@@ -725,6 +738,20 @@ export default function PoliticianProfile({ params, searchParams }: { params: Pr
                 as &ldquo;{MISSING_RECORD_LABEL}&rdquo;. No positions or quotes are fabricated.
               </p>
             </div>
+          )}
+          {isFederalCongress && (recordByTopic || memberDeep) && (
+            <ProfileRecordByTopicPanel
+              record={
+                recordByTopic ?? {
+                  topics: [],
+                  totalVotes: 0,
+                  totalSponsored: 0,
+                  asOf: memberDeep!.meta.asOf,
+                }
+              }
+              bioguideId={politician.bioguideId}
+              memberDeep={memberDeep}
+            />
           )}
           <HotTopicsPanel issues={displayIssues} votes={displayVotes} isFeatured={isFeatured} />
           {voteviewMember && <VoteviewIdeologyPanel member={voteviewMember} />}

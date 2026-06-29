@@ -5,46 +5,64 @@ alwaysApply: true
 
 # The Ledger — Editorial Voice
 
-Product vision: `PRODUCT_VISION.md`. Data credibility: `ledger-data-policy.mdc`.
+The platform's voice is a structured fact base, not a news outlet and not a watchdog. It presents what happened, when, sourced — and lets users draw their own conclusions.
 
-## Headlines and summaries
+## Core principle
 
-- **Fact-led, neutral verb voice** — state what happened, when, and to whom.
-- **No moral labels** — do not use corrupt, evil, hero, sellout, hypocrite, liar, or similar editorial judgment in UI copy, headlines, or generated summaries.
-- **No opinion framing** — avoid "proves," "shows they don't care," "clearly trying to hide," or other inferred motive as fact.
+Every piece of copy in the UI should pass this test: **"Could this sentence appear in a court filing?"** Facts, dates, sources. No adjectives that assign character.
 
-### Good patterns
+## Headlines and UI copy
 
-- "Signed [bill] before/after purchasing [shares]" (sourced, dated, linked)
-- "Decision on [issue] affected constituents [how]" (sourced, dated, linked)
-- "Stated [position] on [date]; voted [Yea/Nay] on [bill] on [date]"
+- **Fact-led, neutral verb voice** — state what happened, when, and who was involved
+- **No moral labels** — banned words in UI copy: corrupt, evil, hero, sellout, hypocrite, liar, scandal, betrayal, shocking, alarming, disturbing
+- **No inferred motive** — never write "clearly trying to hide," "proves they don't care," "shows their real priorities"
+- **No engagement bait** — no headlines designed to provoke outrage
 
-### Bad patterns
+### Good patterns (use these)
 
-- Subjective headlines: "X is corrupt / evil / a hero"
-- Engagement bait that assigns character or intent without a sourced record
+- "Voted Yea on H.R. 1234 — [bill title] — on [date]" (linked to congress.gov)
+- "Purchased [ticker] shares on [date]; voted on [related bill] [X] days later" (sourced, linked)
+- "Stated [position] on [date] (source); voted [Yea/Nay] on [bill] on [date] (source)"
+- "Received $[amount] from [sector] PACs in [cycle] per FEC records"
 
-## Provocative or high-salience claims
+### Bad patterns (never use)
 
-Every claim that could surprise or challenge a user must include:
+- "X is corrupt / evil / a hypocrite"
+- "Caught trading stocks while voting on related legislation" — "caught" is editorial
+- "Shocking vote reversal" — "shocking" assigns judgment
+- "Proves X doesn't care about [group]" — inferred motive
 
-- **Source tier** (per data policy)
-- **Date** of the event or publication
-- **Link** to the primary record
-- **As-of / checked date** when shown in UI
+## Promise / consistency tracking — the core product feature
 
-Low-trust tiers (3/4) only when corroborated — always flagged.
+This is the product's primary differentiator. Present as a **factual diff**:
 
-## Promise / consistency tracking
+```
+Said: "[exact verbatim quote]" — [Name], [date], [source name] (Tier 'media' or 'official')
+Did:  Voted [Yea/Nay] on [bill] on [date] — congress.gov (Tier 'official')
+Gap:  [X] days / [X] months between statement and action
+```
 
-Present as **factual diff**, not editorial scolding:
+Rules:
+- The "Said" side must be a verbatim quote in quotation marks with named source and link — never a paraphrase
+- The "Did" side must be an official record (vote, signature, trade, appointment) with a Tier 'official' source
+- Do not editorialize the gap — show the dates and let the user see it
+- When no verbatim quote is available, show "No verified statement on record" — never fabricate or paraphrase into a quote
 
-- **Said:** public statement or platform position — quoted or closely paraphrased, sourced
-- **Did:** vote, signature, trade, appointment, or official action — sourced
-- **When:** dates on both sides of the diff
+## Sourcing requirements for every UI claim
 
-Let users see misalignment; do not label officials as hypocrites or liars in product copy.
+All claims that could challenge or surprise a user must show in the UI:
+- Source tier (the code string value — 'official', 'nonpartisan', 'media')
+- Date of the event or publication
+- Link to the primary record
+
+Journalism (Tier 'media') sources must be from the approved outlet list in `ledger-data-policy.mdc`. Anonymous sources, blogs, and social media posts are not acceptable at any tier.
 
 ## When in doubt
 
-Prefer more sourced facts and honest gaps (*"No verified record available"*) over sharper editorial language.
+Show the sourced fact and the honest gap. "No verified record available" is always better than a paraphrase, a summary, or a fabricated fill-in.
+
+## UI labels and section headers
+
+- Section headers should name what the data IS, not what it means: "Roll-Call Votes" not "Voting History Reveals..."
+- Tab labels: factual nouns — "Money & Donors", "Voting Record", "Stock Trades", "Track Record"
+- Empty state copy: honest and neutral — "No integrated data for this member yet" not "This politician is hiding their record"

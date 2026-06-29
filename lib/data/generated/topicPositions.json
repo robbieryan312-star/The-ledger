@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "asOf": "2026-06-28",
+    "source": "Congress.gov API v3 + GovInfo CREC + VoteSmart",
+    "totalMembers": 537,
+    "membersWithData": 0,
+    "perTopicCoverage": {},
+    "validationKept": 0,
+    "validationDiscarded": 0,
+    "validationPassRatePct": 0
+  },
+  "byBioguideId": {}
+}
