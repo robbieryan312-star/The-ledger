@@ -79,12 +79,16 @@ function TopicGroupRow({
   memberDeep?: MemberDeepProfile | null;
 }) {
   const [open, setOpen] = useState(false);
+  const [showLegislation, setShowLegislation] = useState(false);
   const topicPositions = bioguideId ? getTopicPositions(bioguideId, group.topicId) : null;
   const deepTopic = memberDeep?.byTopic[group.topicId];
   const deepSponsored = deepTopic?.sponsored ?? [];
   const deepCosponsored = deepTopic?.cosponsored ?? [];
   const deepSponsoredCount = deepSponsored.length;
   const deepCosponsoredCount = deepCosponsored.length;
+
+  const voteExamples = group.examples.filter((ex) => ex.role === 'vote');
+  const sponsorExamples = group.examples.filter((ex) => ex.role === 'sponsor');
 
   const exampleBillKeys = new Set(
     group.examples
@@ -97,14 +101,18 @@ function TopicGroupRow({
       return key && !exampleBillKeys.has(key);
     }) ?? [];
 
-  const hasOnTheRecord =
-    Boolean(topicPositions?.statedPosition) ||
-    (topicPositions?.statements.length ?? 0) > 0 ||
+  const hasStatedPosition = Boolean(topicPositions?.statedPosition);
+  const hasStatements = (topicPositions?.statements.length ?? 0) > 0;
+  const hasStatedBlock = hasStatedPosition || hasStatements;
+
+  const legislationBillCount = deepSponsoredCount + deepCosponsoredCount;
+  const hasLegislation =
+    legislationBillCount > 0 ||
+    sponsorExamples.length > 0 ||
     additionalBills.length > 0;
 
-  const hasLegislation = deepSponsoredCount > 0 || deepCosponsoredCount > 0;
-  const hasExpandable = group.examples.length > 0 || hasOnTheRecord || hasLegislation;
-  const displaySponsoredCount = Math.max(group.sponsoredCount, deepSponsoredCount);
+  const hasExpandable =
+    voteExamples.length > 0 || hasStatedBlock || hasLegislation;
 
   return (
     <div className="rounded-lg border border-white/[0.08] bg-[#0a1628]/60">
@@ -127,89 +135,18 @@ function TopicGroupRow({
                 {voteSplitSummary(group) ? ` · ${voteSplitSummary(group)}` : ''}
               </span>
             )}
-            {group.voteCount > 0 && displaySponsoredCount > 0 && <span> · </span>}
-            {displaySponsoredCount > 0 && (
-              <span>
-                {displaySponsoredCount} sponsored bill{displaySponsoredCount === 1 ? '' : 's'}
-              </span>
-            )}
-            {displaySponsoredCount > 0 && deepCosponsoredCount > 0 && <span> · </span>}
-            {deepCosponsoredCount > 0 && (
-              <span>
-                {deepCosponsoredCount} cosponsored bill{deepCosponsoredCount === 1 ? '' : 's'}
-              </span>
-            )}
           </div>
         </div>
       </button>
 
       {open && hasExpandable && (
         <div className="border-t border-white/[0.06] px-4 py-3 space-y-3">
-          {group.examples.map((ex, i) => (
-            <div key={i} className="flex items-start gap-2 text-xs">
-              <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0 mt-0.5" />
-              <div className="flex-1 min-w-0">
-                <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                  {ex.role === 'vote' && ex.vote && (
-                    <span
-                      className={`font-bold ${
-                        ex.vote === 'Yea'
-                          ? 'text-green-400'
-                          : ex.vote === 'Nay'
-                            ? 'text-red-400'
-                            : 'text-gray-400'
-                      }`}
-                    >
-                      {ex.vote}
-                    </span>
-                  )}
-                  {ex.role === 'sponsor' && (
-                    <span className="text-[#c8a951] font-medium">Sponsored</span>
-                  )}
-                  {ex.billNumber && (
-                    <span className="text-gray-500">{ex.billNumber}</span>
-                  )}
-                  <span className="text-gray-500">{formatShortDate(ex.date)}</span>
-                </div>
-                <p className="text-gray-300 leading-snug mt-0.5 line-clamp-2">{ex.title}</p>
-                <Link
-                  href={ex.congressGovUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white mt-1 transition-colors"
-                >
-                  Congress.gov <ExternalLink className="h-3 w-3" />
-                </Link>
-              </div>
-            </div>
-          ))}
-
-          {hasLegislation && memberDeep && (
-            <div className="text-xs border-t border-white/[0.06] pt-3 space-y-3">
-              <div className="text-gray-400 font-medium">Legislation — Congress.gov</div>
-              {deepSponsored.slice(0, 5).map((bill, idx) => (
-                <LegislationBillRow key={`s-${idx}`} bill={bill} label="Sponsored" />
-              ))}
-              {deepCosponsored.slice(0, 5).map((bill, idx) => (
-                <LegislationBillRow key={`c-${idx}`} bill={bill} label="Cosponsored" />
-              ))}
-              {(deepSponsoredCount > 5 || deepCosponsoredCount > 5) && (
-                <p className="text-gray-600 text-[10px]">
-                  Showing up to 5 sponsored and 5 cosponsored bills per topic. Full record:{' '}
-                  {deepSponsoredCount + deepCosponsoredCount} bills as of {memberDeep.meta.asOf}.
-                </p>
-              )}
-            </div>
-          )}
-
-          {hasOnTheRecord && topicPositions && (
-            <div className="text-xs border-t border-white/[0.06] pt-3 space-y-3">
-              <div className="text-gray-400 font-medium">On The Record</div>
-
-              {topicPositions.statedPosition && (
+          {hasStatedBlock && topicPositions && (
+            <div className="text-xs space-y-3">
+              {hasStatedPosition && (
                 <div>
-                  <div className="text-gray-500 mb-1">Stated position</div>
-                  <p className="text-gray-300 leading-relaxed">{topicPositions.statedPosition}</p>
+                  <div className="text-white font-semibold mb-1">Stated position</div>
+                  <p className="text-gray-200 leading-relaxed">{topicPositions.statedPosition}</p>
                   {topicPositions.statedPositionSource && (
                     <div className="mt-2 flex flex-wrap items-center gap-2">
                       <SourceBadge
@@ -232,54 +169,70 @@ function TopicGroupRow({
                 </div>
               )}
 
-              {topicPositions.statements.map((statement, idx) => (
-                <div key={idx} className="flex items-start gap-2">
-                  <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0 mt-0.5" />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                      <span className="text-gray-500">{formatShortDate(statement.date)}</span>
-                      <SourceBadge
-                        source={{
-                          name: 'Congressional Record',
-                          url: statement.url,
-                          tier: statement.tier,
-                          date: statement.date,
-                        }}
-                      />
+              {!hasStatedPosition && hasStatements && (
+                <div>
+                  <div className="text-white font-semibold mb-1">Stated position</div>
+                  {topicPositions.statements.map((statement, idx) => (
+                    <div key={idx} className="flex items-start gap-2 mt-2">
+                      <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0 mt-0.5" />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                          <span className="text-gray-500">{formatShortDate(statement.date)}</span>
+                          <SourceBadge
+                            source={{
+                              name: 'Congressional Record',
+                              url: statement.url,
+                              tier: statement.tier,
+                              date: statement.date,
+                            }}
+                          />
+                        </div>
+                        <Link
+                          href={statement.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-200 hover:text-white mt-0.5 leading-snug transition-colors inline-flex items-start gap-1"
+                        >
+                          {truncateTitle(statement.title)}{' '}
+                          <ExternalLink className="h-3 w-3 flex-shrink-0 mt-0.5" />
+                        </Link>
+                      </div>
                     </div>
-                    <Link
-                      href={statement.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-300 hover:text-white mt-0.5 leading-snug transition-colors inline-flex items-start gap-1"
-                    >
-                      {truncateTitle(statement.title)} <ExternalLink className="h-3 w-3 flex-shrink-0 mt-0.5" />
-                    </Link>
-                  </div>
+                  ))}
                 </div>
-              ))}
+              )}
+            </div>
+          )}
 
-              {additionalBills.map((bill, idx) => (
-                <div key={idx} className="flex items-start gap-2">
+          {voteExamples.length > 0 && (
+            <div className="text-xs space-y-3">
+              <div className="text-gray-500 text-[11px] font-medium">How they voted</div>
+              {voteExamples.map((ex, i) => (
+                <div key={i} className="flex items-start gap-2">
                   <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0 mt-0.5" />
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                      {bill.billNumber && (
-                        <span className="text-gray-500">{bill.billNumber}</span>
+                      {ex.vote && (
+                        <span
+                          className={`font-bold ${
+                            ex.vote === 'Yea'
+                              ? 'text-green-400'
+                              : ex.vote === 'Nay'
+                                ? 'text-red-400'
+                                : 'text-gray-400'
+                          }`}
+                        >
+                          {ex.vote}
+                        </span>
                       )}
-                      <span className="text-gray-500">{formatShortDate(bill.date)}</span>
-                      <SourceBadge
-                        source={{
-                          name: 'Congress.gov',
-                          url: bill.url,
-                          tier: bill.tier,
-                          date: bill.date,
-                        }}
-                      />
+                      {ex.billNumber && (
+                        <span className="text-gray-500">{ex.billNumber}</span>
+                      )}
+                      <span className="text-gray-500">{formatShortDate(ex.date)}</span>
                     </div>
-                    <p className="text-gray-300 leading-snug mt-0.5 line-clamp-2">{bill.title}</p>
+                    <p className="text-gray-300 leading-snug mt-0.5 line-clamp-2">{ex.title}</p>
                     <Link
-                      href={bill.url}
+                      href={ex.congressGovUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white mt-1 transition-colors"
@@ -289,6 +242,97 @@ function TopicGroupRow({
                   </div>
                 </div>
               ))}
+            </div>
+          )}
+
+          {hasLegislation && (
+            <div className="text-xs border-t border-white/[0.06] pt-3">
+              <button
+                type="button"
+                onClick={() => setShowLegislation((v) => !v)}
+                className="text-[#c8a951] hover:text-white transition-colors text-[11px] font-medium"
+              >
+                {showLegislation
+                  ? `Hide proposed legislation (${legislationBillCount} bills ↑)`
+                  : `Show proposed legislation (${legislationBillCount} bills ↓)`}
+              </button>
+
+              {showLegislation && (
+                <div className="mt-3 space-y-3">
+                  <div className="text-gray-500 text-[11px] font-medium">Proposed legislation</div>
+
+                  {sponsorExamples.map((ex, i) => (
+                    <div key={`sp-${i}`} className="flex items-start gap-2">
+                      <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0 mt-0.5" />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                          <span className="text-[#c8a951] font-medium">Sponsored</span>
+                          {ex.billNumber && (
+                            <span className="text-gray-500">{ex.billNumber}</span>
+                          )}
+                          <span className="text-gray-500">{formatShortDate(ex.date)}</span>
+                        </div>
+                        <p className="text-gray-300 leading-snug mt-0.5 line-clamp-2">{ex.title}</p>
+                        <Link
+                          href={ex.congressGovUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white mt-1 transition-colors"
+                        >
+                          Congress.gov <ExternalLink className="h-3 w-3" />
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+
+                  {memberDeep &&
+                    deepSponsored.slice(0, 5).map((bill, idx) => (
+                      <LegislationBillRow key={`s-${idx}`} bill={bill} label="Sponsored" />
+                    ))}
+                  {memberDeep &&
+                    deepCosponsored.slice(0, 5).map((bill, idx) => (
+                      <LegislationBillRow key={`c-${idx}`} bill={bill} label="Cosponsored" />
+                    ))}
+
+                  {additionalBills.map((bill, idx) => (
+                    <div key={`ab-${idx}`} className="flex items-start gap-2">
+                      <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0 mt-0.5" />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                          {bill.billNumber && (
+                            <span className="text-gray-500">{bill.billNumber}</span>
+                          )}
+                          <span className="text-gray-500">{formatShortDate(bill.date)}</span>
+                          <SourceBadge
+                            source={{
+                              name: 'Congress.gov',
+                              url: bill.url,
+                              tier: bill.tier,
+                              date: bill.date,
+                            }}
+                          />
+                        </div>
+                        <p className="text-gray-300 leading-snug mt-0.5 line-clamp-2">{bill.title}</p>
+                        <Link
+                          href={bill.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white mt-1 transition-colors"
+                        >
+                          Congress.gov <ExternalLink className="h-3 w-3" />
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+
+                  {memberDeep && (deepSponsoredCount > 5 || deepCosponsoredCount > 5) && (
+                    <p className="text-gray-600 text-[10px]">
+                      Showing up to 5 sponsored and 5 cosponsored bills per topic. Full record:{' '}
+                      {legislationBillCount} bills as of {memberDeep.meta.asOf}.
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
           )}
         </div>
