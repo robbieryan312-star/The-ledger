@@ -92,6 +92,11 @@ export default function LobbyingPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="mb-4 rounded-md border border-yellow-400 bg-yellow-50 px-4 py-3 text-sm text-yellow-900">
+        <strong>Demo data — not verified.</strong> This page displays sample records for
+        UI demonstration only. No real lobbying registrations are shown. Official
+        data pipeline is not yet active.
+      </div>
       <div className="mb-8">
         <Link href="/finance" className="text-sm text-white/35 hover:text-[#d4ac52] transition-colors">
           Money & Donors / Lobbying Profiles
