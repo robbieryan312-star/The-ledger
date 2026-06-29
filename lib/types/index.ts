@@ -134,7 +134,9 @@ export interface SaidDidDiff {
     date: string;
     outlet: string;
     url: string;
-    tier: 'media' | 'official';
+    tier: 'media' | 'official' | 'nonpartisan';
+    /** When false, UI renders platform summary text without quotation marks. */
+    verbatim?: boolean;
   };
   did: {
     action: string;

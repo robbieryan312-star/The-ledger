@@ -37,7 +37,11 @@ export default function SaidDidPanel({ diffs }: { diffs: SaidDidDiff[] }) {
                 Said
               </div>
               <p className="text-gray-200 text-sm leading-relaxed">
-                &ldquo;{diff.said.quote}&rdquo;
+                {diff.said.verbatim ? (
+                  <>&ldquo;{diff.said.quote}&rdquo;</>
+                ) : (
+                  diff.said.quote
+                )}
               </p>
               <div className="flex flex-wrap items-center gap-2 mt-2 text-xs text-gray-500">
                 <span>{diff.said.speaker}</span>

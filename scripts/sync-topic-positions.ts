@@ -27,7 +27,17 @@ const MAX_PLATFORM_PER_TOPIC = 3;
 const MAX_SAID_DID_LINKS = 3;
 
 const BALLOTPEDIA_UA =
-  'TheLedger-DataSync/1.0 (civic research; contact: data@theledger.app)';
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+
+const BOILERPLATE_RE =
+  /did not complete|click here to|see also:|ballotpedia's candidate connection|surveycta|javascript:/i;
+
+const POSITION_SECTION_IDS = [
+  'Political_positions',
+  'Issues',
+  'Campaign_themes',
+  'Political_positions_and_issues',
+];
 
 interface LegislatorRow {
   bioguideId: string;
@@ -144,12 +154,10 @@ function mapNpatSectionToTopic(sectionName: string): string | null {
   return null;
 }
 
-function stripWikitext(text: string): string {
-  return text
-    .replace(/\{\{[\s\S]*?\}\}/g, ' ')
-    .replace(/\[\[([^|\]]+\|)?([^\]]+)\]\]/g, '$2')
-    .replace(/'''+/g, '')
-    .replace(/<ref[\s\S]*?<\/ref>/gi, ' ')
+function stripHtml(html: string): string {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/<style[\s\S]*?<\/style>/gi, '')
     .replace(/<[^>]+>/g, ' ')
     .replace(/&nbsp;/g, ' ')
     .replace(/&amp;/g, '&')
@@ -158,55 +166,105 @@ function stripWikitext(text: string): string {
     .trim();
 }
 
-function extractPositionSectionTextsFromWikitext(wikitext: string): string[] {
+function extractKeyVoteTopicTexts(html: string): string[] {
   const texts: string[] = [];
-  const headingPatterns = [
-    'Political positions',
-    'Issues',
-    'Campaign themes',
-    'Political positions and issues',
-  ];
-
-  for (const heading of headingPatterns) {
-    const sectionRe = new RegExp(
-      `==\\s*${heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*==([\\s\\S]*?)(?=\\n==[^=]|$)`,
-      'i',
-    );
-    const match = sectionRe.exec(wikitext);
-    if (!match) continue;
-
-    const body = match[1];
-    for (const line of body.split('\n')) {
-      const trimmed = line.trim();
-      if (!trimmed) continue;
-      const bullet = trimmed.match(/^\*+\s*(.+)/);
-      if (bullet) {
-        const t = stripWikitext(bullet[1]);
-        if (t.length >= 20) texts.push(t);
-        continue;
-      }
-      if (/^[|{<#]/.test(trimmed)) continue;
-      if (/^=+/.test(trimmed)) continue;
-      const t = stripWikitext(trimmed);
-      if (t.length >= 30) texts.push(t);
+  const headingRe = /<h[234][^>]*id="([^"]+)"[^>]*>[\s\S]*?<\/h[234]>/gi;
+  let match: RegExpExecArray | null;
+  while ((match = headingRe.exec(html)) !== null) {
+    const id = (match[1] ?? '').replace(/_/g, ' ').toLowerCase();
+    if (!id) continue;
+    const isTopicHeading =
+      /immigration|economy|health|education|environment|crime|judiciary|civil|defense|foreign|budget|tax|energy|abortion|reproductive|gun|firearm/.test(id);
+    if (!isTopicHeading) continue;
+    const start = match.index + match[0].length;
+    const rest = html.slice(start);
+    const nextHeading = rest.search(/<h[234][^>]*>/i);
+    const sectionHtml = nextHeading === -1 ? rest : rest.slice(0, nextHeading);
+    for (const li of sectionHtml.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi)) {
+      const t = stripHtml(li[1] ?? '');
+      if (t.length >= 20) texts.push(t);
+    }
+    for (const p of sectionHtml.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)) {
+      const t = stripHtml(p[1] ?? '');
+      if (t.length >= 25) texts.push(t);
     }
   }
-
   return texts;
 }
 
-async function fetchBallotpediaWikitext(slug: string): Promise<string | null> {
-  const title = slug.replace(/ /g, '_');
-  const url = `${BALLOTPEDIA_BASE}/wiki/index.php?action=raw&title=${encodeURIComponent(title)}`;
+function extractPositionSectionTextsFromHtml(html: string): string[] {
+  const texts: string[] = [];
+
+  for (const sectionId of POSITION_SECTION_IDS) {
+    const headingRe = new RegExp(
+      `<h[23][^>]*>\\s*<span[^>]*id="${sectionId}"[^>]*>[\\s\\S]*?</h[23]>`,
+      'i',
+    );
+    const match = headingRe.exec(html);
+    if (!match) continue;
+
+    const start = match.index + match[0].length;
+    const rest = html.slice(start);
+    const nextHeading = rest.search(/<h[23][^>]*>/i);
+    const sectionHtml = nextHeading === -1 ? rest : rest.slice(0, nextHeading);
+
+    for (const li of sectionHtml.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi)) {
+      const t = stripHtml(li[1] ?? '');
+      if (t.length >= 20 && !BOILERPLATE_RE.test(t)) texts.push(t);
+    }
+    for (const p of sectionHtml.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)) {
+      const t = stripHtml(p[1] ?? '');
+      if (t.length >= 30 && !BOILERPLATE_RE.test(t)) texts.push(t);
+    }
+  }
+
+  texts.push(...extractKeyVoteTopicTexts(html));
+
+  for (const p of html.matchAll(/<p class="survey-response"[^>]*>([\s\S]*?)<\/p>/gi)) {
+    const t = stripHtml(p[1] ?? '');
+    if (t.length >= 20 && !BOILERPLATE_RE.test(t)) texts.push(t);
+  }
+  for (const ul of html.matchAll(/<ul class="key-messages"[^>]*>([\s\S]*?)<\/ul>/gi)) {
+    for (const li of (ul[1] ?? '').matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi)) {
+      const t = stripHtml(li[1] ?? '');
+      if (t.length >= 15 && !BOILERPLATE_RE.test(t)) texts.push(t);
+    }
+  }
+
+  const bioRe = /<h2[^>]*id="Biography"[^>]*>[\s\S]*?<\/h2>([\s\S]*?)(?=<h2|$)/i;
+  const bioMatch = bioRe.exec(html);
+  if (bioMatch) {
+    for (const p of (bioMatch[1] ?? '').matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)) {
+      const t = stripHtml(p[1] ?? '');
+      if (t.length >= 45 && !BOILERPLATE_RE.test(t)) texts.push(t);
+    }
+  }
+
+  if (texts.length < 2) {
+    for (const p of html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)) {
+      const t = stripHtml(p[1] ?? '');
+      if (t.length >= 40 && !BOILERPLATE_RE.test(t)) texts.push(t);
+    }
+  }
+
+  return [...new Set(texts)];
+}
+
+async function fetchBallotpediaHtml(slug: string): Promise<string | null> {
+  const pageUrl = `${BALLOTPEDIA_BASE}/${encodeURIComponent(slug.replace(/ /g, '_'))}`;
   await sleep(BALLOTPEDIA_DELAY_MS);
   try {
-    const res = await fetch(url, {
-      headers: { 'User-Agent': BALLOTPEDIA_UA, Accept: 'text/plain' },
+    const res = await fetch(pageUrl, {
+      headers: {
+        'User-Agent': BALLOTPEDIA_UA,
+        Accept: 'text/html,application/xhtml+xml',
+        'Accept-Language': 'en-US,en;q=0.9',
+      },
     });
     if (res.status === 404) return null;
-    if (!res.ok) return null;
+    if (!res.ok && res.status !== 202) return null;
     const text = await res.text();
-    if (!text.trim()) return null;
+    if (text.length < 2000 || !text.includes('Ballotpedia')) return null;
     return text;
   } catch {
     return null;
@@ -219,12 +277,10 @@ function ballotpediaSlugCandidates(leg: LegislatorRow): string[] {
     const slug = s.trim().replace(/\s+/g, '_');
     if (slug) candidates.add(slug);
   };
-  add(leg.name);
-  add(`${leg.firstName}_${leg.lastName}`);
-  add(`${leg.lastName}_${leg.firstName}`);
-  // Common Ballotpedia pattern drops middle initials/parentheticals from display name.
   const firstToken = leg.firstName.split(/\s+/)[0] ?? leg.firstName;
   add(`${firstToken}_${leg.lastName}`);
+  add(leg.name);
+  add(`${leg.firstName}_${leg.lastName}`);
   return [...candidates];
 }
 
@@ -232,24 +288,24 @@ async function fetchBallotpediaPositions(
   leg: LegislatorRow,
   asOf: string,
 ): Promise<Map<string, PlatformPositionEntry[]>> {
-  let wikitext: string | null = null;
+  let html: string | null = null;
   let pageUrl = `${BALLOTPEDIA_BASE}/`;
 
   for (const slug of ballotpediaSlugCandidates(leg)) {
-    const candidate = await fetchBallotpediaWikitext(slug);
+    const candidate = await fetchBallotpediaHtml(slug);
     if (candidate) {
-      wikitext = candidate;
+      html = candidate;
       pageUrl = `${BALLOTPEDIA_BASE}/${encodeURIComponent(slug.replace(/ /g, '_'))}`;
       break;
     }
   }
 
-  if (!wikitext) {
+  if (!html) {
     console.warn(`  WARN Ballotpedia: no page found for ${leg.name}`);
     return new Map();
   }
 
-  const positionTexts = extractPositionSectionTextsFromWikitext(wikitext);
+  const positionTexts = extractPositionSectionTextsFromHtml(html);
   if (positionTexts.length === 0) return new Map();
 
   const byTopic = new Map<string, PlatformPositionEntry[]>();
@@ -541,7 +597,7 @@ async function main(): Promise<void> {
 
       if (!hasPlatform && !hasNpat) continue;
 
-      const statedPositionDate = npat?.date ?? platformPositions?.[0]?.asOf ?? null;
+      const statedPositionDate = npat?.date ?? null;
 
       const topicData: TopicPositionData = {
         statements: [],

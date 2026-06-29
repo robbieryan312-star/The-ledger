@@ -90,16 +90,13 @@ function TopicGroupRow({
   const voteExamples = group.examples.filter((ex) => ex.role === 'vote');
   const sponsorExamples = group.examples.filter((ex) => ex.role === 'sponsor');
 
-  const exampleBillKeys = new Set(
-    group.examples
-      .map((ex) => (ex.billNumber ?? ex.title).toLowerCase().trim())
-      .filter(Boolean),
-  );
-  const additionalBills =
-    topicPositions?.bills.filter((bill) => {
-      const key = (bill.billNumber || bill.title).toLowerCase().trim();
-      return key && !exampleBillKeys.has(key);
-    }) ?? [];
+  const additionalBills: Array<{
+    title: string;
+    billNumber: string;
+    date: string;
+    url: string;
+    tier: 'official';
+  }> = [];
 
   const hasStatedPosition = Boolean(topicPositions?.statedPosition);
   const hasStatements = (topicPositions?.statements.length ?? 0) > 0;

@@ -195,7 +195,7 @@ function billTopicId(bill: Bill): string {
   return classifyRecordText(`${bill.title} ${bill.billNumber}`, bill.statusLabel);
 }
 
-function voteTopicId(vote: VoteRecord): string {
+export function voteTopicId(vote: VoteRecord): string {
   const text = [
     vote.billTitle,
     vote.billDescription,

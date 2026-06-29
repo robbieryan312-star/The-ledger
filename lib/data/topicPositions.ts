@@ -1,18 +1,16 @@
 /**
- * topicPositions.ts — per-topic bills, Congressional Record statements, and
- * VoteSmart stated positions keyed by bioguideId. Produced by sync-topic-positions.ts.
+ * topicPositions.ts — platform positions, VoteSmart NPAT stated positions, and
+ * Said→Did vote links keyed by bioguideId. Produced by sync-topic-positions.ts.
  */
-import type { SourceTier } from '../types';
+import type { SourceTier, VoteChoice } from '../types';
 import snapshot from './generated/topicPositions.json';
 
-export interface TopicBillEntry {
-  title: string;
-  billNumber: string;
-  date: string;
+export interface PlatformPositionEntry {
+  text: string;
+  source: string;
   url: string;
-  role: 'sponsored';
   tier: SourceTier;
-  topicId: string;
+  asOf: string;
 }
 
 export interface TopicStatementEntry {
@@ -29,11 +27,22 @@ export interface StatedPositionSourceEntry {
   url: string;
 }
 
+export interface SaidDidLinkEntry {
+  statedPositionDate: string | null;
+  voteDate: string;
+  billTitle: string;
+  billNumber: string;
+  congressGovUrl: string;
+  voteChoice: VoteChoice;
+  tier: 'official';
+}
+
 export interface TopicPositionData {
-  bills: TopicBillEntry[];
-  statements: TopicStatementEntry[];
+  platformPositions?: PlatformPositionEntry[];
   statedPosition?: string;
   statedPositionSource?: StatedPositionSourceEntry;
+  statements: TopicStatementEntry[];
+  saidDidLinks: SaidDidLinkEntry[];
 }
 
 export interface TopicPositionsSnapshotMeta {
@@ -41,18 +50,17 @@ export interface TopicPositionsSnapshotMeta {
   source: string;
   totalMembers: number;
   membersWithData: number;
+  membersWithPlatformPositions: number;
+  membersWithStatedPosition: number;
+  membersWithSaidDidLinks: number;
   perTopicCoverage: Record<string, number>;
-  validationKept: number;
-  validationDiscarded: number;
-  validationPassRatePct: number;
+  votesmartConfigured: boolean;
+  note?: string;
 }
 
 export interface TopicPositionsSnapshot {
   meta: TopicPositionsSnapshotMeta;
-  byBioguideId: Record<string, Record<string, Omit<TopicPositionData, 'bills' | 'statements'> & {
-    bills?: TopicBillEntry[];
-    statements?: TopicStatementEntry[];
-  }>>;
+  byBioguideId: Record<string, Record<string, TopicPositionData>>;
 }
 
 const data = snapshot as TopicPositionsSnapshot;
@@ -66,18 +74,27 @@ export function getTopicPositions(
   const topic = member[topicId];
   if (!topic) return null;
 
-  const bills = topic.bills ?? [];
+  const platformPositions = topic.platformPositions ?? [];
   const statements = topic.statements ?? [];
+  const saidDidLinks = topic.saidDidLinks ?? [];
   const hasPosition = Boolean(topic.statedPosition?.trim());
+  const hasPlatform = platformPositions.length > 0;
 
-  if (bills.length === 0 && statements.length === 0 && !hasPosition) return null;
+  if (!hasPlatform && statements.length === 0 && !hasPosition && saidDidLinks.length === 0) {
+    return null;
+  }
 
   return {
-    bills,
-    statements,
+    platformPositions: platformPositions.length > 0 ? platformPositions : undefined,
     statedPosition: topic.statedPosition,
     statedPositionSource: topic.statedPositionSource,
+    statements,
+    saidDidLinks,
   };
+}
+
+export function getMemberTopicPositions(bioguideId: string): Record<string, TopicPositionData> | null {
+  return data.byBioguideId[bioguideId] ?? null;
 }
 
 export function countMembersWithTopicPositions(): number {

@@ -46,6 +46,7 @@ import {
   type PolicyTopicDef,
 } from '@/lib/data/topicCoverage';
 import TrackButton from '@/components/ui/TrackButton';
+import { buildSaidDidDiffsFromTopicPositions } from '@/lib/data/buildSaidDidDiffs';
 import type { NewsBundleSlice } from '@/lib/data/snapshotTypes';
 import type { StockTradeEntry } from '@/lib/data/stockTrades';
 
@@ -508,6 +509,10 @@ export default function PoliticianProfileClient({
   const tabs = profileTabs(isExecutive);
   const isLightweight = politician.recordType === 'lightweight';
   const isFeatured = !isLightweight;
+  const topicSaidDidDiffs = politician.bioguideId
+    ? buildSaidDidDiffsFromTopicPositions(politician.bioguideId, politician.name)
+    : [];
+  const saidDidDiffs = [...topicSaidDidDiffs, ...(politician.saidDidDiffs ?? [])];
   const displayIssues = issuesWithTopicCoverage(politician.topIssues, isFeatured);
 
   const lobbyOrgTotal = displayFinance.lobbyistMoney.reduce((s, l) => s + l.amount, 0);
@@ -955,7 +960,7 @@ export default function PoliticianProfileClient({
               <MissingRecordPanel kind="statement-to-action consistency tracking" />
             ) : (
               <>
-                <SaidDidPanel diffs={politician.saidDidDiffs ?? []} />
+                <SaidDidPanel diffs={saidDidDiffs} />
                 <CredibilityConsistency
                   data={politician.consistency}
                   issues={politician.topIssues}
