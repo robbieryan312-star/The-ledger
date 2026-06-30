@@ -18,7 +18,7 @@ Said→Did live for 442/537 via Ballotpedia + roll-call votes. VoteSmart deferre
 
 | Date | Phase | Task | Commit |
 |------|-------|------|--------|
-| 2026-06-30 | Phase 16 | Cosponsor ingest optimization (early-stop, retry, no broken sort); 537/537 deep JSON + manifest; topicAliases panel fix | `1b8a4a0`, `5d76c86` |
+| 2026-06-30 | Phase 17a | S000033 pilot: GovInfo CREC Said, org→vote topic joins, PILOT_PROFILE_CHECKLIST | pending |
 | 2026-06-24 | — | In-page data slices: finance, profiles, legislation, map, lobbying, news + `/sources` explorer | `608332c` |
 | 2026-06-24 | — | Florida ingestion pipeline (17+ sources) + auto-refresh workflow | `51b7896` |
 | 2026-06-24 | — | Florida Congress votes — 29/29 members, 232 positions | `243ad02` |
@@ -43,7 +43,7 @@ Said→Did live for 442/537 via Ballotpedia + roll-call votes. VoteSmart deferre
 | Item | Status |
 |------|--------|
 | Phase 16: Member deep ingest `--all` | **Done** — 537/537 checkpointed; manifest + JSON on disk |
-| Phase 17 pilot (S000033) | Next — GovInfo CREC Said + FEC Schedule A org→topic votes; see `PILOT_PROFILE_CHECKLIST` |
+| Phase 17 pilot (S000033) | **Done (17a)** — CREC Said + org→vote join + checklist; see `PILOT_PROFILE_CHECKLIST.md` |
 
 ---
 
