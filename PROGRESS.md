@@ -8,7 +8,7 @@
 
 ## Current phase
 
-**Phase 16 in progress (member deep ingest). Phase 17 reframed: full-profile pilot on S000033, then scale to 537.**
+**Phase 16 complete (537/537 member deep ingest). Phase 17 next: full-profile pilot on S000033.**
 
 Said→Did live for 442/537 via Ballotpedia + roll-call votes. VoteSmart deferred. Source catalog: `lib/data/sourceCatalog.ts` + `lib/data/SOURCE_LOOKUP.md`.
 
@@ -18,6 +18,7 @@ Said→Did live for 442/537 via Ballotpedia + roll-call votes. VoteSmart deferre
 
 | Date | Phase | Task | Commit |
 |------|-------|------|--------|
+| 2026-06-30 | Phase 16 | Cosponsor ingest optimization (early-stop, retry, no broken sort); 537/537 deep JSON + manifest; topicAliases panel fix | `1b8a4a0`, `5d76c86` |
 | 2026-06-24 | — | In-page data slices: finance, profiles, legislation, map, lobbying, news + `/sources` explorer | `608332c` |
 | 2026-06-24 | — | Florida ingestion pipeline (17+ sources) + auto-refresh workflow | `51b7896` |
 | 2026-06-24 | — | Florida Congress votes — 29/29 members, 232 positions | `243ad02` |
@@ -41,7 +42,7 @@ Said→Did live for 442/537 via Ballotpedia + roll-call votes. VoteSmart deferre
 
 | Item | Status |
 |------|--------|
-| Phase 16: Member deep ingest `--all` | In progress — script + dynamic loader done; full 537 run pending |
+| Phase 16: Member deep ingest `--all` | **Done** — 537/537 checkpointed; manifest + JSON on disk |
 | Phase 17 pilot (S000033) | Next — GovInfo CREC Said + FEC Schedule A org→topic votes; see `PILOT_PROFILE_CHECKLIST` |
 
 ---
@@ -51,16 +52,15 @@ Said→Did live for 442/537 via Ballotpedia + roll-call votes. VoteSmart deferre
 | Item | Impact |
 |------|--------|
 | `membersWithStatedPosition: 0` in topicPositions.json | Expected — VoteSmart deferred; wire GovInfo CREC + Ballotpedia |
-| `lib/data/generated/members/` partial | Full `--all` ingest not yet run |
+| `lib/data/generated/members/` | **537/537** — PR #6 merged; checkpoint matches disk |
 | Phase 17 org→vote join | Schedule A exists; needs org registry + topic match (not index-paired rows) |
 
 ---
 
 ## Next priorities (in order)
 
-1. **Phase 16 — Run `npm run ingest:member-all`** — 537 `members/{bioguideId}.json` files
-2. **Phase 17a — S000033 full profile pilot** — GovInfo CREC statements + FEC Schedule A org registry + topic-vote donor context (see `SOURCE_LOOKUP.md`)
-3. **Phase 17b — Scale to 537** — same pipelines with checkpointing
+1. **Phase 17a — S000033 full profile pilot** — GovInfo CREC statements + FEC Schedule A org registry + topic-vote donor context (see `SOURCE_LOOKUP.md`)
+2. **Phase 17b — Scale donor/org joins to 537** — same pipelines with checkpointing
 
 ---
 
