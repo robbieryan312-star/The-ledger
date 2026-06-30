@@ -16,7 +16,9 @@ The owner has delegated to the agent:
 | File | Contents |
 |------|----------|
 | `KEYS.md` | Env var pool, signup URLs, SET/EMPTY status, owner email |
-| `lib/data/reference-sources.ts` | Full source catalog with `keyVar` |
+| `lib/data/SOURCE_LOOKUP.md` | Data need → source → destination → credibility tier |
+| `lib/data/sourceCatalog.ts` | Full catalog with lookFor lists + pilot checklist |
+| `lib/data/reference-sources.ts` | Backward-compatible re-export |
 | `.env.local` | Actual values (gitignored) — audit SET vs EMPTY only |
 | `scripts/setup-github-secrets.sh` | GitHub Actions secret groups |
 
@@ -28,4 +30,4 @@ Constraints that still apply:
 - Never force-push to `main`
 - Stop only for scope changes, credibility tradeoffs, or major UX direction — not for "please paste your API key"
 
-When a vendor form hits CAPTCHA or login.gov identity verification, open the URL and ask the owner to complete that step once; then write the key to `.env.local` and continue.
+When a vendor form hits CAPTCHA or login.gov identity verification, open the URL in Google Chrome (`open -a "Google Chrome" "<url>"`) and continue other work — do not ask the owner if they are ready; they will interrupt when human steps are needed.

@@ -197,18 +197,16 @@ so this list must be **manually re-verified after each gubernatorial election**
 (and on any mid-term resignation/succession). Future automation candidate:
 source #8 (Ballotpedia / state SoS) once a key/feed is chosen.
 
-### API keys the owner should request next
+### API keys — status (see KEYS.md + sourceCatalog.ts)
 
-Most Sprint 1 keys are **already wired** in `.env.local`. Remaining optional keys:
+Most Sprint 1 keys are **SET** in `.env.local`. **Deferred** (alternatives wired):
 
-1. ~~**FEC / OpenFEC**~~ ✅ Integrated — `FEC_API_KEY`, `npm run sync:fec` + `sync:fec-national`
-2. ~~**Congress.gov API**~~ ✅ Integrated — `CONGRESS_API_KEY`, `sync:votes` + `sync:votes-national`
-3. ~~**Census, LegiScan, OpenStates, NewsAPI**~~ ✅ Integrated for Florida ingests
-4. **GitHub Actions secrets** — run `gh auth login` then `./scripts/setup-github-secrets.sh` so production auto-refreshes keyed sources
-5. **DATAVERSE_API_TOKEN** — MIT Election Lab (guestbook-gated)
-6. **OPENSECRETS_API_KEY** — industry/donor aggregates (emailed)
-7. **SAM_API_KEY** — login.gov identity verification
-8. Stock trades: **House PTR** via `npm run sync:stock-trades` (no key). Senate eFD still maintenance (503).
+- ~~**VoteSmart NPAT**~~ → Ballotpedia + GovInfo Congressional Record
+- ~~**OpenSecrets**~~ → FEC Schedule A + org registry (Phase 17)
+
+Optional later: FRED, FollowTheMoney, OpenCorporates, SAM (login.gov).
+
+**Phase 17 approach:** pilot full data matrix on `S000033`, then scale to 537 — see `lib/data/SOURCE_LOOKUP.md`.
 
 ---
 

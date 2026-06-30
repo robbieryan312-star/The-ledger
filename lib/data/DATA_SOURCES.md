@@ -1,6 +1,9 @@
 # The Ledger — Data Sources
 
-This document describes what is **mock/demo data** in the current build versus the **production integration path**. The demo is intentionally rich and verifiable-looking; it does not call live government APIs yet.
+> **Production source routing:** see [`SOURCE_LOOKUP.md`](./SOURCE_LOOKUP.md) and [`sourceCatalog.ts`](./sourceCatalog.ts).  
+> This file describes mock vs live data history; the catalog is authoritative for agents.
+
+This document describes what is **mock/demo data** in the current build versus the **production integration path**.
 
 ## Demo (current)
 

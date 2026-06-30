@@ -151,6 +151,9 @@ Routine implementation: proceed without asking. Stop and ask the owner only for:
 | `PROGRESS.md` | Sprint status and completed phase log |
 | `PRODUCT_VISION.md` | What "desirable" means — voice, depth, Beat Google standard |
 | `ARCHITECTURE.md` | System design, data sources, trusted outlets in full |
+| `lib/data/SOURCE_LOOKUP.md` | Agent routing — data need → source → destination → tier |
+| `lib/data/sourceCatalog.ts` | Machine-readable catalog with lookFor lists |
+| `KEYS.md` | API key SET/EMPTY status |
 | `lib/data/DATA_INTEGRATION_PLAN.md` | Data pipeline roadmap |
 | `lib/data/officeResolution.ts` | Office resolution logic |
 | `lib/types/index.ts` | SourceTier union — the authoritative list of tier values |

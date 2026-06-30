@@ -1,6 +1,6 @@
 # The Ledger — Progress Log
 
-**Last updated:** 2026-06-29
+**Last updated:** 2026-06-30
 **Branch:** `phase-5-national-wiring`
 **Live demo:** https://the-ledger-gamma.vercel.app
 
@@ -8,9 +8,9 @@
 
 ## Current phase
 
-**Phases 10–15 complete. Phase 16 in progress — member deep ingest scaling.**
+**Phase 16 in progress (member deep ingest). Phase 17 reframed: full-profile pilot on S000033, then scale to 537.**
 
-Said→Did panel wired with Ballotpedia platform positions + vote links (428/537 members). Topic panel shows platform positions first, votes second, legislation collapsed last. Phase 16 adds `--all` ingest with checkpointing and dynamic member file loading.
+Said→Did live for 442/537 via Ballotpedia + roll-call votes. VoteSmart deferred. Source catalog: `lib/data/sourceCatalog.ts` + `lib/data/SOURCE_LOOKUP.md`.
 
 ---
 
@@ -42,7 +42,7 @@ Said→Did panel wired with Ballotpedia platform positions + vote links (428/537
 | Item | Status |
 |------|--------|
 | Phase 16: Member deep ingest `--all` | In progress — script + dynamic loader done; full 537 run pending |
-| VoteSmart NPAT re-sync | Blocked locally — `VOTESMART_API_KEY` not in agent env; re-run when key present |
+| Phase 17 pilot (S000033) | Next — GovInfo CREC Said + FEC Schedule A org→topic votes; see `PILOT_PROFILE_CHECKLIST` |
 
 ---
 
@@ -50,17 +50,17 @@ Said→Did panel wired with Ballotpedia platform positions + vote links (428/537
 
 | Item | Impact |
 |------|--------|
-| `membersWithStatedPosition: 0` in topicPositions.json | VoteSmart NPAT skipped — needs re-run with key |
-| `lib/data/generated/members/` has only S000033 | Full `--all` ingest not yet run |
-| `memberPositions.json` has hollow GovInfo data | Same statements for every member — discard and replace |
+| `membersWithStatedPosition: 0` in topicPositions.json | Expected — VoteSmart deferred; wire GovInfo CREC + Ballotpedia |
+| `lib/data/generated/members/` partial | Full `--all` ingest not yet run |
+| Phase 17 org→vote join | Schedule A exists; needs org registry + topic match (not index-paired rows) |
 
 ---
 
 ## Next priorities (in order)
 
-1. **Phase 16 — Run `npm run ingest:member-all`** — generate all 537 `lib/data/generated/members/{bioguideId}.json` files (checkpointed, resumable)
-2. **Phase 15c — VoteSmart NPAT re-sync** — clear `/tmp/sync-topic-positions-checkpoint.json`, re-run with `VOTESMART_API_KEY` set
-3. **Phase 17 — Donor sector breakdown** — FEC sector data per topic; show "Funded by healthcare industry: $X" next to vote summary
+1. **Phase 16 — Run `npm run ingest:member-all`** — 537 `members/{bioguideId}.json` files
+2. **Phase 17a — S000033 full profile pilot** — GovInfo CREC statements + FEC Schedule A org registry + topic-vote donor context (see `SOURCE_LOOKUP.md`)
+3. **Phase 17b — Scale to 537** — same pipelines with checkpointing
 
 ---
 
@@ -68,6 +68,8 @@ Said→Did panel wired with Ballotpedia platform positions + vote links (428/537
 
 | Item | Status |
 |------|--------|
+| VoteSmart NPAT | Deferred — use Ballotpedia + GovInfo CREC (`SOURCE_LOOKUP.md`) |
+| OpenSecrets API | Deferred — FEC Schedule A for Phase 17 donor/org data |
 | Senate eFD stock trades | HTTP 503 maintenance — House PTR proceeds |
 | FARA eFile | Fetch blocked — documented honestly in UI |
 | SAM.gov | login.gov identity verification required |

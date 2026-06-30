@@ -1,58 +1,52 @@
 # API key pool — The Ledger
 
-Canonical registry for env vars, signup URLs, and status. **Values live only in `.env.local`** (gitignored).
+**Agent source routing:** `lib/data/SOURCE_LOOKUP.md` + `lib/data/sourceCatalog.ts`  
+**Credibility tiers:** code values `'official'` | `'nonpartisan'` | `'media'` | `'alleged'` | `'unverified'`
 
 | Source of truth | Purpose |
 |-----------------|---------|
-| `lib/data/reference-sources.ts` | Full catalog — tiers, integration status, `keyVar` names |
+| `lib/data/sourceCatalog.ts` | What to pull from where, destination view, lookFor lists |
+| `lib/data/reference-sources.ts` | Backward-compatible re-export of catalog |
 | `scripts/setup-github-secrets.sh` | Groups pushed to GitHub Actions |
 | `.env.local` | Actual key values (never commit) |
 
-**Owner contact (registration forms):** `robbie.ryan312@gmail.com` — see `scripts/ingest-secedgar-florida.ts` User-Agent string.
+**Owner contact (registration forms):** `robbie.ryan312@gmail.com`
 
 ---
 
-## Tier 1 — have keys (`.env.local` SET)
+## SET in `.env.local` (working)
 
-| Env var | Signup | Powers |
-|---------|--------|--------|
-| `FEC_API_KEY` | [api.data.gov/signup](https://api.data.gov/signup/) | `sync:fec`, `sync:fec-national`, `sync:fec-schedule-a` |
-| `CONGRESS_API_KEY` | [api.congress.gov/sign-up](https://api.congress.gov/sign-up/) | `sync:votes`, `sync:votes-national`, `ingest:member` |
-| `CENSUS_API_KEY` | [api.census.gov/data/key_signup.html](https://api.census.gov/data/key_signup.html) | Florida census ingest |
-| `DATA_GOV_API_KEY` | [api.data.gov/signup](https://api.data.gov/signup/) | Shared api.data.gov key |
-| `GOVINFO_API_KEY` | [api.data.gov/signup](https://api.data.gov/signup/) | GovInfo / GPO ingest |
-| `LEGISCAN_API_KEY` | [legiscan.com/legiscan](https://legiscan.com/legiscan) | FL state legislation |
-| `OPENSTATES_API_KEY` | [openstates.org/account/profile/](https://openstates.org/account/profile/) | FL state legislators |
-| `NEWSAPI_KEY` | [newsapi.org/register](https://newsapi.org/register) | News (426 plan — GDELT used nationally) |
-| `PROPUBLICA_CONGRESS_KEY` | — | **Retired API** — key may remain in env; do not use for new work |
-
----
-
-## Tier 2 — EMPTY in `.env.local` (register when wired)
-
-| Env var | Signup | Priority | Notes |
-|---------|--------|----------|-------|
-| `VOTESMART_API_KEY` | [votesmart.org/share/api/register](https://www.votesmart.org/share/api/register) | **Now** | NPAT stated positions — Phase 15c blocker |
-| `OPENSECRETS_API_KEY` | Email [opendata@opensecrets.org](mailto:opendata@opensecrets.org) | Later | Public API discontinued Apr 2025; FEC Schedule A preferred |
-| `FRED_API_KEY` | [fred.stlouisfed.org/docs/api/api_key.html](https://fred.stlouisfed.org/docs/api/api_key.html) | Later | Instant after free account |
-| `FOLLOWTHEMONEY_API_KEY` | [followthemoney.org/our-data/apis](https://www.followthemoney.org/our-data/apis) | Later | State money-in-politics request form |
-| `GOOGLE_CIVIC_API_KEY` | [Google Cloud Console](https://console.cloud.google.com/) | Later | Representatives endpoint deprecated |
-| `MEDIASTACK_API_KEY` | [mediastack.com](https://mediastack.com) | Later | Supplementary news |
-| `OPENCORPORATES_API_KEY` | [opencorporates.com/api_accounts/new](https://opencorporates.com/api_accounts/new) | Later | Company records |
+| Env var | Powers |
+|---------|--------|
+| `FEC_API_KEY` | `sync:fec`, `sync:fec-national`, `sync:fec-schedule-a` |
+| `CONGRESS_API_KEY` | `sync:votes`, `sync:votes-national`, `ingest:member` |
+| `CENSUS_API_KEY` | FL census ingest |
+| `DATA_GOV_API_KEY` / `GOVINFO_API_KEY` | GovInfo / GPO (Congressional Record pilot) |
+| `LEGISCAN_API_KEY` | FL state bills |
+| `OPENSTATES_API_KEY` | FL state legislators |
+| `NEWSAPI_KEY` | FL news (national uses GDELT) |
+| `PROPUBLICA_CONGRESS_KEY` | **Retired** — do not use |
 
 ---
 
-## Tier 3 — login / identity (manual)
+## EMPTY — priority
 
-| Env var | Signup | Notes |
-|---------|--------|-------|
-| `SAM_API_KEY` | [sam.gov](https://sam.gov) + login.gov | Identity verification required |
+| Env var | Action |
+|---------|--------|
+| `VOTESMART_API_KEY` | **Deferred** — use Ballotpedia + GovInfo CREC |
+| `OPENSECRETS_API_KEY` | **Deferred** — use FEC Schedule A (Phase 17) |
+| `GOOGLE_CIVIC_API_KEY` | **Deferred** — elections demo until MIT bulk pipeline |
+| `MEDIASTACK_API_KEY` | **Deferred** — GDELT covers news |
+| `FRED_API_KEY` | Optional later — instant free signup when economic charts wired |
+| `FOLLOWTHEMONEY_API_KEY` | Optional later — state finance beyond FEC |
+| `OPENCORPORATES_API_KEY` | Optional later — employer→company crosswalk |
+| `SAM_API_KEY` | Optional — login.gov verification required |
 
 ---
 
-## No key required (already integrated)
+## No key required (integrated)
 
-GovTrack, USASpending, Senate LDA, GDELT, Voteview bulk, MIT Election Lab, House/Senate disclosures — see `REFERENCE_SOURCES` in `lib/data/reference-sources.ts`.
+GovTrack, USASpending, Senate LDA, GDELT, Voteview, MIT Election Lab, House/Senate disclosures, unitedstates/congress-legislators, Ballotpedia scrape — see `SOURCE_CATALOG`.
 
 ---
 
@@ -60,7 +54,8 @@ GovTrack, USASpending, Senate LDA, GDELT, Voteview bulk, MIT Election Lab, House
 
 ```bash
 # Write value in .env.local, then:
-npm run sync:topic-positions -- --member S000033   # VoteSmart pilot
-./scripts/setup-github-secrets.sh                  # push to GitHub Actions
+./scripts/setup-github-secrets.sh
 npm run build
 ```
+
+Pilot member before 537 scale: `npm run sync:topic-positions -- --member S000033`
