@@ -1,0 +1,31 @@
+---
+description: Owner delegates API keys, env setup, and external blockers to the agent
+alwaysApply: true
+---
+
+# Owner delegation — keys and blockers
+
+The owner has delegated to the agent:
+
+- Register for API keys, write values to `.env.local`, and push GitHub secrets via `scripts/setup-github-secrets.sh` when needed
+- Run sync/build/verify pipelines without stopping for routine owner actions
+- Pursue vendor access (forms, email to opendata@ / webmaster@) when a key is required
+
+**Before asking the owner for email, URLs, or key locations — read these local files:**
+
+| File | Contents |
+|------|----------|
+| `KEYS.md` | Env var pool, signup URLs, SET/EMPTY status, owner email |
+| `lib/data/reference-sources.ts` | Full source catalog with `keyVar` |
+| `.env.local` | Actual values (gitignored) — audit SET vs EMPTY only |
+| `scripts/setup-github-secrets.sh` | GitHub Actions secret groups |
+
+**Owner email for registrations:** `robbie.ryan312@gmail.com` (canonical in `KEYS.md` / SEC EDGAR User-Agent).
+
+Constraints that still apply:
+
+- Never paste secret values into chat, commits, or tracked files
+- Never force-push to `main`
+- Stop only for scope changes, credibility tradeoffs, or major UX direction — not for "please paste your API key"
+
+When a vendor form hits CAPTCHA or login.gov identity verification, open the URL and ask the owner to complete that step once; then write the key to `.env.local` and continue.

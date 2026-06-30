@@ -871,6 +871,7 @@ export default function PoliticianProfileClient({
               <VotingRecord
                 votes={displayVotes}
                 officialSource
+                integratedRollCalls={displayVotes}
                 finance={displayFinance}
                 isFeatured={isFeatured}
               />

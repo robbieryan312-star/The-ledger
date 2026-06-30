@@ -6,14 +6,29 @@ import VoteRow from '@/components/politicians/VoteRow';
 import SourceTierHelp from '@/components/ui/SourceTierHelp';
 import { AlertTriangle, Filter } from 'lucide-react';
 
+function IntegratedRollCallSummary({ votes }: { votes: VoteRecord[] }) {
+  return (
+    <div className="rounded-xl border border-white/[0.08] p-4" style={{ background: 'rgba(5,9,15,0.5)' }}>
+      <div>
+        <div className="text-2xl font-bold text-white">{votes.length}</div>
+        <div className="text-xs text-white/35">Total votes</div>
+      </div>
+      <p className="text-xs text-white/30 mt-3">(calculated from integrated roll-calls)</p>
+    </div>
+  );
+}
+
 export default function VotingRecord({
   votes,
   officialSource = false,
+  integratedRollCalls,
   finance,
   isFeatured = false,
 }: {
   votes: VoteRecord[];
   officialSource?: boolean;
+  /** When set, show summary counts from these roll-calls only (not derived demo flags). */
+  integratedRollCalls?: VoteRecord[];
   finance?: CampaignFinance;
   isFeatured?: boolean;
 }) {
@@ -44,6 +59,9 @@ export default function VotingRecord({
 
   return (
     <div className="space-y-4">
+      {integratedRollCalls && integratedRollCalls.length > 0 && (
+        <IntegratedRollCallSummary votes={integratedRollCalls} />
+      )}
       <div className="grid grid-cols-4 gap-2">
         <div className="rounded-xl p-3 border border-green-400/20 text-center" style={{ background: 'rgba(5,9,15,0.5)' }}>
           <div className="text-xl font-bold text-green-400">{yeas}</div>

@@ -4,15 +4,16 @@
     {
       "name": "Next.js dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
-      "port": 3000,
+      "runtimeArgs": ["run", "dev", "--", "-p", "4100"],
+      "port": 4100,
       "autoPort": true
     },
     {
       "name": "Next.js production preview",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "start"],
-      "port": 3000
+      "runtimeArgs": ["run", "start", "--", "-p", "4101"],
+      "port": 4101,
+      "autoPort": true
     }
   ]
 }

@@ -163,5 +163,21 @@ Routine implementation: proceed without asking. Stop and ask the owner only for:
 - The app runs fully on committed data (mock + `lib/data/generated`), so `npm run dev` and `npm run build` work without any API keys or external services.
 - API keys (`FEC_API_KEY`, `CONGRESS_API_KEY` in a gitignored `.env.local`) are only needed for the optional `npm run sync:fec` / `npm run sync:votes` data-refresh scripts; `npm run sync:legislators` and `npm run verify:office` need no key.
 - `npm run lint` currently reports pre-existing errors (e.g. `lib/hooks/useUserProfile.ts` set-state-in-effect) unrelated to environment setup; lint tooling itself works.
-- Start the dev server in tmux (agent-started servers can otherwise be reaped); it serves http://localhost:3000.
+
+### Port 3000 is reserved — never start or kill anything on it
+
+`localhost:3000` is the owner's manual browser window onto the live Ledger demo. It is not
+a sandbox port.
+
+- **Never** run `npm run dev`, `npm run start`, or any server bound to port 3000 from an
+  agent session. Use an explicit alternate port instead: `npm run dev -- -p 4100` (pick any
+  free port in the 4100–4999 range, or let the tooling auto-assign one).
+- **Never** kill a process holding port 3000, even if it looks idle or "in the way" — it is
+  very likely the owner's own browser-connected session, not an orphaned agent process.
+- Always stop any dev/test server you started yourself once verification is done — do not
+  leave long-running background servers from agent sessions. A leaked agent server is what
+  causes the next session to wrongly suspect port 3000 itself and go looking for something
+  to kill there.
+- If you need a live preview to verify a change, start it on a non-3000 port and report that
+  port back — do not assume 3000 is free or available to you.
 <!-- END:ledger-data-rules -->
