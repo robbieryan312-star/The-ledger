@@ -5,12 +5,13 @@
  * Output: lib/data/generated/memberPositions.json
  * Run: npm run sync:positions-national
  */
+import { config } from 'dotenv';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Source, SourceTier } from '../lib/types';
 import { RECORD_TOPIC_BUCKETS } from '../lib/data/profileRecordByTopic';
-import { fetchJson, loadEnvLocal, sleep } from './lib/ingest-utils';
+import { fetchJson, sleep } from './lib/ingest-utils';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
@@ -289,7 +290,7 @@ async function saveCheckpoint(completed: Set<string>): Promise<void> {
 }
 
 async function main(): Promise<void> {
-  await loadEnvLocal();
+  config({ path: path.join(projectRoot, '.env.local') });
   const votesmartKey = (process.env.VOTESMART_API_KEY ?? '').trim();
   const govinfoKey = (
     process.env.GOVINFO_API_KEY ??

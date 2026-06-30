@@ -31,16 +31,36 @@ The Ledger presents what politicians promised versus what they actually did in o
 | `'alleged'` | Credible but unproven — multi-source corroboration required, always flagged |
 | `'unverified'` | No verified sourcing — maximum caveat, rarely shown |
 
+### Multi-source corroboration rule
+
+Any statement attributed to a politician from a `'media'` or lower tier source requires **2+ independent approved sources** before it can be displayed as verified.
+
+- 1 source, tier `'official'` or `'nonpartisan'` → verified, display as-is
+- 1 source, tier `'media'` → label `'alleged'`, show with caveat, never verified
+- 2+ independent `'media'` sources → verified, list all sources
+- Cannot corroborate → do not display; show "No verified statement on record"
+
+AP/Reuters wire + an outlet republishing that wire = 1 source, not 2.
+
 ### Banned sources
 
 - **Wikipedia** — never under any tier. User-editable, not authoritative.
+- Social media posts — not verifiable at any tier without corroboration from an approved outlet.
+- Anonymous sources — never, at any tier.
+- Press releases from campaigns or PACs — `'alleged'` only, requires corroboration.
 - Any source without a verifiable URL and publication date.
 
-### Approved journalism sources (Tier `'media'`)
+### Approved journalism sources (tier `'media'`)
 
 NYT, Washington Post, Wall Street Journal, Politico, The Hill, AP, Reuters, NPR, PBS NewsHour, Roll Call, CQ, The Atlantic, Bloomberg, ProPublica, The Guardian, Miami Herald, Tampa Bay Times, Sun Sentinel, Orlando Sentinel, Florida Phoenix, WUSF, WLRN.
 
 Journalism quotes must be **verbatim**, in quotation marks, with named outlet, author, date, and URL. Never paraphrase a quote and present it as the politician's words.
+
+### Data organized by destination view
+
+Every generated file is named and structured for the UI section it feeds — not by its source.
+Before creating any new data file, confirm which profile tab or page section it belongs to.
+See `ledger-data-policy.mdc` for the full destination map.
 
 ### Office resolution
 

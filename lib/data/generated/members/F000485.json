@@ -1,0 +1,848 @@
+{
+  "meta": {
+    "bioguideId": "F000485",
+    "asOf": "2026-06-29",
+    "source": "Congress.gov API v3",
+    "totalSponsored": 5,
+    "totalCosponsored": 54,
+    "topicCoverage": {
+      "healthcare": 2,
+      "immigration": 4,
+      "defense": 1,
+      "economy": 2,
+      "environment": 1,
+      "education": 0,
+      "crime": 4,
+      "civil": 2,
+      "judiciary": 0,
+      "legislation": 43
+    }
+  },
+  "profile": {
+    "bioguideId": "F000485",
+    "officialPhotoUrl": "https://www.congress.gov/img/member/69eb95e5277642362f6112c5_200.jpg",
+    "officialWebsite": "https://fuller.house.gov/",
+    "officeAddress": "2201 Rayburn House Office Building",
+    "phone": "(202) 225-5211",
+    "currentMember": true,
+    "source": {
+      "name": "Congress.gov",
+      "url": "https://www.congress.gov",
+      "tier": "official"
+    }
+  },
+  "byTopic": {
+    "healthcare": {
+      "sponsored": [],
+      "cosponsored": [
+        {
+          "topicId": "healthcare",
+          "title": "To amend title 38, United States Code, to require the Secretary of Veterans Affairs to transmit a veteran's history of opioid prescriptions to a Community Care health care provider.",
+          "billNumber": "8679",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-05-07",
+          "latestAction": "Referred to the House Committee on Veterans' Affairs.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8679",
+          "policyArea": "Armed Forces and National Security",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "healthcare",
+          "title": "Great American Healthcare Plan",
+          "billNumber": "8324",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-30",
+          "latestAction": "Referred to the Committee on Energy and Commerce, and in addition to the Committees on Ways and Means, Education and Workforce, the Judiciary, Armed Services, Veterans' Affairs, and Foreign Affairs, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8324",
+          "policyArea": "Taxation",
+          "tier": "official",
+          "role": "cosponsor"
+        }
+      ]
+    },
+    "immigration": {
+      "sponsored": [],
+      "cosponsored": [
+        {
+          "topicId": "immigration",
+          "title": "Americans First Immigration Act",
+          "billNumber": "8586",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-05-13",
+          "latestAction": "Referred to the Committee on the Judiciary, and in addition to the Committee on Education and Workforce, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8586",
+          "policyArea": "Immigration",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "immigration",
+          "title": "Encouraging States to establish \"Veterans Tax Relief Weekends\" that coincide with Memorial Day, Independence Day, and Veterans Day, providing a practical way for communities across the country to recognize the service of veterans and members of the Armed Forces by providing financial relief to them.",
+          "billNumber": "158",
+          "type": "HJRES",
+          "congress": 119,
+          "introducedDate": "2026-04-21",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-joint-resolution/158",
+          "policyArea": "Armed Forces and National Security",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "immigration",
+          "title": "Expressing the sense of the House of Representatives that as the United States marks 250 years of independence, establishing a \"Veterans Appreciation Month\" offers a simple but powerful way for the Nation to recognize the men and women whose service has protected American freedom for generations.",
+          "billNumber": "1204",
+          "type": "HRES",
+          "congress": 119,
+          "introducedDate": "2026-04-21",
+          "latestAction": "Referred to the House Committee on Oversight and Government Reform.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-resolution/1204",
+          "policyArea": "Armed Forces and National Security",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "immigration",
+          "title": "Somalia Immigration Moratorium Act",
+          "billNumber": "7359",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-15",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/7359",
+          "policyArea": "Immigration",
+          "tier": "official",
+          "role": "cosponsor"
+        }
+      ]
+    },
+    "defense": {
+      "sponsored": [],
+      "cosponsored": [
+        {
+          "topicId": "defense",
+          "title": "Encouraging military discounts in honor of the 250th anniversary of the United States.",
+          "billNumber": "1205",
+          "type": "HRES",
+          "congress": 119,
+          "introducedDate": "2026-04-21",
+          "latestAction": "Referred to the Committee on Energy and Commerce, and in addition to the Committee on Small Business, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-resolution/1205",
+          "policyArea": "Armed Forces and National Security",
+          "tier": "official",
+          "role": "cosponsor"
+        }
+      ]
+    },
+    "economy": {
+      "sponsored": [],
+      "cosponsored": [
+        {
+          "topicId": "economy",
+          "title": "To amend the Congressional Budget and Impoundment Control Act of 1974 to establish certain procedures for consideration of annual appropriation bills, and for other purposes.",
+          "billNumber": "8380",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-04",
+          "latestAction": "Referred to the Committee on Rules, and in addition to the Committee on the Budget, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8380",
+          "policyArea": "Economics and Public Finance",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "economy",
+          "title": "Small Business Tax Cut Act",
+          "billNumber": "8415",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-05-22",
+          "latestAction": "Referred to the House Committee on Ways and Means.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8415",
+          "policyArea": "Taxation",
+          "tier": "official",
+          "role": "cosponsor"
+        }
+      ]
+    },
+    "environment": {
+      "sponsored": [
+        {
+          "topicId": "environment",
+          "title": "Expressing support for rural communities across the United States as stewards of the environment, major suppliers of United States energy resources, critical providers of food production and manufacturing capacity, and drivers of national economic stability, and recognizing the work of the House of Representatives in the 119th Congress in support of those vital communities.",
+          "billNumber": "1182",
+          "type": "HRES",
+          "congress": 119,
+          "introducedDate": "2026-04-16",
+          "latestAction": "Motion to reconsider laid on the table Agreed to without objection.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-resolution/1182",
+          "policyArea": "Commerce",
+          "tier": "official"
+        }
+      ],
+      "cosponsored": []
+    },
+    "education": {
+      "sponsored": [],
+      "cosponsored": []
+    },
+    "crime": {
+      "sponsored": [
+        {
+          "topicId": "crime",
+          "title": "Impeaching Eleanor L. Ross, Judge of the United States District Court for the Northern District of Georgia, for high crimes and misdemeanors.",
+          "billNumber": "1346",
+          "type": "HRES",
+          "congress": 119,
+          "introducedDate": "2026-06-08",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-resolution/1346",
+          "policyArea": "Law",
+          "tier": "official"
+        }
+      ],
+      "cosponsored": [
+        {
+          "topicId": "crime",
+          "title": "Firearm Freedom Act of 2026",
+          "billNumber": "9009",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-02",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/9009",
+          "policyArea": "Crime and Law Enforcement",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "crime",
+          "title": "Expressing support for America's law enforcement professionals.",
+          "billNumber": "98",
+          "type": "HCONRES",
+          "congress": 119,
+          "introducedDate": "2026-05-12",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-concurrent-resolution/98",
+          "policyArea": "Crime and Law Enforcement",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "crime",
+          "title": "Gun Owner Registration Information Protection Act",
+          "billNumber": "7678",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-16",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/7678",
+          "policyArea": "Crime and Law Enforcement",
+          "tier": "official",
+          "role": "cosponsor"
+        }
+      ]
+    },
+    "civil": {
+      "sponsored": [],
+      "cosponsored": [
+        {
+          "topicId": "civil",
+          "title": "Servicemember Payment Data Privacy and Security Act",
+          "billNumber": "8787",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-05-22",
+          "latestAction": "Referred to the House Committee on Armed Services.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8787",
+          "policyArea": "Armed Forces and National Security",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "civil",
+          "title": "Child Interstate Abortion Notification Act",
+          "billNumber": "4964",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-16",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/4964",
+          "policyArea": "Crime and Law Enforcement",
+          "tier": "official",
+          "role": "cosponsor"
+        }
+      ]
+    },
+    "judiciary": {
+      "sponsored": [],
+      "cosponsored": []
+    },
+    "legislation": {
+      "sponsored": [
+        {
+          "topicId": "legislation",
+          "title": "Millstone Act",
+          "billNumber": "9146",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-04",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/9146",
+          "policyArea": null,
+          "tier": "official"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Proposing an amendment to the Constitution of the United States to protect United States citizenship.",
+          "billNumber": "172",
+          "type": "HJRES",
+          "congress": 119,
+          "introducedDate": "2026-05-04",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-joint-resolution/172",
+          "policyArea": "Immigration",
+          "tier": "official"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Congressional Gold Medal For Inspiring Great Heroism and Tenacity (FIGHT) Act",
+          "billNumber": "8594",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-30",
+          "latestAction": "Referred to the House Committee on Financial Services.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8594",
+          "policyArea": "Crime and Law Enforcement",
+          "tier": "official"
+        }
+      ],
+      "cosponsored": [
+        {
+          "topicId": "legislation",
+          "title": "To amend the Clean Air Act to preserve consumer vehicle choice, protect the electric grid, and impose limits on regulations under that Act, and for other purposes.",
+          "billNumber": "9453",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-25",
+          "latestAction": "Referred to the House Committee on Energy and Commerce.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/9453",
+          "policyArea": null,
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Ocmulgee Mounds National Park Redesignation Act",
+          "billNumber": "9416",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-24",
+          "latestAction": "Referred to the Subcommittee on Federal Lands.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/9416",
+          "policyArea": null,
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "DROP Act of 2026",
+          "billNumber": "8922",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-04",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8922",
+          "policyArea": "Crime and Law Enforcement",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Deport the Terrorists Act of 2026",
+          "billNumber": "9096",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-04",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/9096",
+          "policyArea": "Immigration",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "CLEAR LABELS Act",
+          "billNumber": "8269",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-03",
+          "latestAction": "Referred to the Committee on Ways and Means, and in addition to the Committee on Energy and Commerce, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8269",
+          "policyArea": "Commerce",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "761st Tank Battalion Congressional Gold Medal Act",
+          "billNumber": "1628",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-03",
+          "latestAction": "Referred to the Committee on Financial Services, and in addition to the Committee on House Administration, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/1628",
+          "policyArea": "Finance and Financial Sector",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Supporting the designation of June as Family Month.",
+          "billNumber": "1338",
+          "type": "HRES",
+          "congress": 119,
+          "introducedDate": "2026-06-03",
+          "latestAction": "Referred to the House Committee on Education and Workforce.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-resolution/1338",
+          "policyArea": null,
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Abolish the ATF Act",
+          "billNumber": "221",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-03",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/221",
+          "policyArea": "Government Operations and Politics",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Repeal the NFA Act",
+          "billNumber": "335",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-03",
+          "latestAction": "Referred to the House Committee on Ways and Means.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/335",
+          "policyArea": "Taxation",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Buying American Cotton Act of 2026",
+          "billNumber": "7230",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-02",
+          "latestAction": "Referred to the House Committee on Ways and Means.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/7230",
+          "policyArea": "Taxation",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Chip Security Act",
+          "billNumber": "3447",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-02",
+          "latestAction": "Ordered to be Reported in the Nature of a Substitute by the Yeas and Nays: 42 - 0.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/3447",
+          "policyArea": "Foreign Trade and International Finance",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Designation of English as the Official Language of the United States Act of 2025",
+          "billNumber": "1772",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-02",
+          "latestAction": "Referred to the Committee on Education and Workforce, and in addition to the Committee on the Judiciary, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/1772",
+          "policyArea": "Government Operations and Politics",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Never Fight Alone Act",
+          "billNumber": "8737",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-05-26",
+          "latestAction": "Referred to the House Committee on Veterans' Affairs.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8737",
+          "policyArea": "Armed Forces and National Security",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Stop Gang Violence Act",
+          "billNumber": "8856",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-05-26",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8856",
+          "policyArea": "Crime and Law Enforcement",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Proposing an amendment to the Constitution of the United States to ensure that only citizens are eligible to vote in Federal elections.",
+          "billNumber": "152",
+          "type": "HJRES",
+          "congress": 119,
+          "introducedDate": "2026-05-22",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-joint-resolution/152",
+          "policyArea": "Government Operations and Politics",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "America 250 Commemorative Flag Act.",
+          "billNumber": "1314",
+          "type": "HRES",
+          "congress": 119,
+          "introducedDate": "2026-05-21",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-resolution/1314",
+          "policyArea": "Government Operations and Politics",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Inhibiting Militant Adversarial Mullahs Act",
+          "billNumber": "8905",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-05-20",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8905",
+          "policyArea": "Immigration",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "SNAP Fraud Reporting Act of 2026",
+          "billNumber": "8028",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-05-19",
+          "latestAction": "Referred to the House Committee on Agriculture.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8028",
+          "policyArea": "Agriculture and Food",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Disqualifying Dual Loyalty Act of 2025",
+          "billNumber": "5817",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-05-19",
+          "latestAction": "Referred to the House Committee on House Administration.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/5817",
+          "policyArea": "Congress",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "End the Vaccine Carveout Act",
+          "billNumber": "4668",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-05-19",
+          "latestAction": "Referred to the House Committee on Energy and Commerce.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/4668",
+          "policyArea": "Health",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "ASSIMILATION Act",
+          "billNumber": "8827",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-05-15",
+          "latestAction": "Referred to the Committee on the Judiciary, and in addition to the Committee on Education and Workforce, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8827",
+          "policyArea": "Immigration",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Veteran Suicide Prevention Act",
+          "billNumber": "6858",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-05-14",
+          "latestAction": "Referred to the Subcommittee on Health.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/6858",
+          "policyArea": "Armed Forces and National Security",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "CRUSADE Act",
+          "billNumber": "8756",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-05-12",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8756",
+          "policyArea": "Immigration",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Make DC Square Again Act",
+          "billNumber": "8455",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-30",
+          "latestAction": "Referred to the Committee on the Judiciary, and in addition to the Committee on Oversight and Government Reform, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8455",
+          "policyArea": "Government Operations and Politics",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "TREY'S Law",
+          "billNumber": "8571",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-30",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8571",
+          "policyArea": "Law",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Condemning the attempted assassination of President Donald J. Trump on April 25, 2026, condemning the multiple attempts against the President's life, and recognizing the critical mission of the Department of Homeland Security.",
+          "billNumber": "1220",
+          "type": "HRES",
+          "congress": 119,
+          "introducedDate": "2026-04-28",
+          "latestAction": "Referred to the Committee on the Judiciary, and in addition to the Committee on Homeland Security, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-resolution/1220",
+          "policyArea": "Government Operations and Politics",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "FAITH Act",
+          "billNumber": "8353",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-28",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8353",
+          "policyArea": "Civil Rights and Liberties, Minority Issues",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Muslim Brotherhood Terrorist Designation Act of 2025",
+          "billNumber": "4397",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-27",
+          "latestAction": "Ordered to be Reported in the Nature of a Substitute by the Yeas and Nays: 35 - 14.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/4397",
+          "policyArea": "International Affairs",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Life at Conception Act",
+          "billNumber": "722",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-22",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/722",
+          "policyArea": "Civil Rights and Liberties, Minority Issues",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "SHUSH Act",
+          "billNumber": "850",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-22",
+          "latestAction": "Referred to the Committee on Ways and Means, and in addition to the Committee on the Judiciary, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/850",
+          "policyArea": "Crime and Law Enforcement",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Proposing an amendment to the Constitution of the United States to limit the number of terms that a Member of Congress may serve.",
+          "billNumber": "12",
+          "type": "HJRES",
+          "congress": 119,
+          "introducedDate": "2026-04-21",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-joint-resolution/12",
+          "policyArea": "Congress",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "HONOR Gold Star Families Act",
+          "billNumber": "7932",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-20",
+          "latestAction": "Referred to the House Committee on Armed Services.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/7932",
+          "policyArea": "Armed Forces and National Security",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "DEPORT Act of 2026",
+          "billNumber": "8341",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-20",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8341",
+          "policyArea": "Immigration",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Swalwell Act",
+          "billNumber": "8300",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-20",
+          "latestAction": "Referred to the House Committee on House Administration.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8300",
+          "policyArea": "Congress",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "SCAM Act",
+          "billNumber": "7156",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-16",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/7156",
+          "policyArea": "Immigration",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "PRESS Act",
+          "billNumber": "7184",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-16",
+          "latestAction": "Referred to the Committee on Energy and Commerce, and in addition to the Committee on the Judiciary, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/7184",
+          "policyArea": "Crime and Law Enforcement",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "National Constitutional Carry Act",
+          "billNumber": "645",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-15",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/645",
+          "policyArea": "Crime and Law Enforcement",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "LAND Act",
+          "billNumber": "2124",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-15",
+          "latestAction": "Referred to the Subcommittee on Nutrition and Foreign Agriculture.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/2124",
+          "policyArea": "Agriculture and Food",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "SAVE America Act",
+          "billNumber": "7296",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-15",
+          "latestAction": "Referred to the House Committee on House Administration.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/7296",
+          "policyArea": "Government Operations and Politics",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "PARTS Act of 2025",
+          "billNumber": "631",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-04-15",
+          "latestAction": "Referred to the House Committee on the Judiciary.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/631",
+          "policyArea": "Crime and Law Enforcement",
+          "tier": "official",
+          "role": "cosponsor"
+        }
+      ]
+    }
+  }
+}

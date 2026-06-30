@@ -4,10 +4,10 @@
  *
  * Run: npm run sync:votes-national
  */
+import { config } from 'dotenv';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { loadEnvLocal } from './lib/ingest-utils';
 import {
   CONGRESS_GOV_SOURCE,
   fetchBioguidePartyMap,
@@ -229,7 +229,7 @@ async function syncSenateVotes(
 }
 
 async function main(): Promise<void> {
-  await loadEnvLocal();
+  config({ path: path.join(projectRoot, '.env.local') });
   const asOf = new Date().toISOString().slice(0, 10);
   const fetchedAt = new Date().toISOString();
 

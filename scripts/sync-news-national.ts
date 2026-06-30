@@ -5,11 +5,11 @@
  * Tier 3 (media). Every displayed field is copied verbatim from the API response.
  * Run: npm run sync:news-national
  */
+import { config } from 'dotenv';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Source } from '../lib/types';
-import { loadEnvLocal } from './lib/ingest-utils';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
@@ -172,7 +172,7 @@ async function fetchGdeltMemberNews(
 }
 
 async function main(): Promise<void> {
-  await loadEnvLocal();
+  config({ path: path.join(projectRoot, '.env.local') });
 
   const asOf = new Date().toISOString().slice(0, 10);
   const fetchedAt = new Date().toISOString();

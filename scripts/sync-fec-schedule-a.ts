@@ -2,11 +2,11 @@
  * sync-fec-schedule-a.ts — Schedule A itemized donors for Congress members with FEC IDs.
  * Output: data/fec/national/schedule-a.json
  */
+import { config } from 'dotenv';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { FEC_SOURCE, fetchScheduleAContributors, isFecConfigured } from '../lib/data/fecClient';
-import { loadEnvLocal } from './lib/ingest-utils';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const FEC_NATIONAL = path.join(projectRoot, 'data', 'fec', 'national', 'congress-finance.json');
@@ -17,7 +17,7 @@ function sleep(ms: number): Promise<void> {
 }
 
 async function main(): Promise<void> {
-  await loadEnvLocal();
+  config({ path: path.join(projectRoot, '.env.local') });
   const asOf = new Date().toISOString().slice(0, 10);
   const fetchedAt = new Date().toISOString();
 

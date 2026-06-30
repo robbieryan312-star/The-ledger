@@ -4,6 +4,7 @@
  *
  * Run: npm run sync:fec-national
  */
+import { config } from 'dotenv';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -16,7 +17,6 @@ import {
 } from '../lib/data/fecClient';
 import type { FecFinanceEntry } from '../lib/data/fecFinance';
 import type { Source } from '../lib/types';
-import { loadEnvLocal } from './lib/ingest-utils';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'data', 'fec', 'national');
@@ -52,7 +52,7 @@ async function resolveFecIds(leg: LegislatorRow): Promise<string[]> {
 }
 
 async function main(): Promise<void> {
-  await loadEnvLocal();
+  config({ path: path.join(projectRoot, '.env.local') });
   const asOf = new Date().toISOString().slice(0, 10);
   const fetchedAt = new Date().toISOString();
 

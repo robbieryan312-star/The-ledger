@@ -1,0 +1,143 @@
+{
+  "meta": {
+    "bioguideId": "G000607",
+    "asOf": "2026-06-29",
+    "source": "Congress.gov API v3",
+    "totalSponsored": 0,
+    "totalCosponsored": 5,
+    "topicCoverage": {
+      "healthcare": 0,
+      "immigration": 0,
+      "defense": 0,
+      "economy": 2,
+      "environment": 0,
+      "education": 0,
+      "crime": 0,
+      "civil": 0,
+      "judiciary": 0,
+      "legislation": 3
+    }
+  },
+  "profile": {
+    "bioguideId": "G000607",
+    "officialPhotoUrl": "https://www.congress.gov/img/member/6a29d4f81c6ce0de6fbae1f7_200.jpg",
+    "officialWebsite": "https://gallagher.house.gov",
+    "officeAddress": "408 Cannon House Office Building",
+    "phone": "(202) 225-3076",
+    "currentMember": true,
+    "source": {
+      "name": "Congress.gov",
+      "url": "https://www.congress.gov",
+      "tier": "official"
+    }
+  },
+  "byTopic": {
+    "healthcare": {
+      "sponsored": [],
+      "cosponsored": []
+    },
+    "immigration": {
+      "sponsored": [],
+      "cosponsored": []
+    },
+    "defense": {
+      "sponsored": [],
+      "cosponsored": []
+    },
+    "economy": {
+      "sponsored": [],
+      "cosponsored": [
+        {
+          "topicId": "economy",
+          "title": "Disaster Mitigation and Tax Parity Act of 2025",
+          "billNumber": "1849",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-24",
+          "latestAction": "ASSUMING FIRST SPONSORSHIP - Mr. Murphy asked unanimous consent that he may hereafter be considered as the first sponsor of H.R. 1849, a bill originally introduced by Representative LaMalfa, for the purpose of adding cosponsors and requesting reprintings pursuant to clause 7 of rule XII. Agreed to without objection.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/1849",
+          "policyArea": "Taxation",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "economy",
+          "title": "To amend the Internal Revenue Code of 1986 to extend and modify the enhanced premium tax credit, and for other purposes.",
+          "billNumber": "6010",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-23",
+          "latestAction": "Referred to the Committee on Ways and Means, and in addition to the Committee on Energy and Commerce, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/6010",
+          "policyArea": "Health",
+          "tier": "official",
+          "role": "cosponsor"
+        }
+      ]
+    },
+    "environment": {
+      "sponsored": [],
+      "cosponsored": []
+    },
+    "education": {
+      "sponsored": [],
+      "cosponsored": []
+    },
+    "crime": {
+      "sponsored": [],
+      "cosponsored": []
+    },
+    "civil": {
+      "sponsored": [],
+      "cosponsored": []
+    },
+    "judiciary": {
+      "sponsored": [],
+      "cosponsored": []
+    },
+    "legislation": {
+      "sponsored": [],
+      "cosponsored": [
+        {
+          "topicId": "legislation",
+          "title": "Hydropower Licensing Affordability Act",
+          "billNumber": "9337",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-25",
+          "latestAction": "Referred to the House Committee on Energy and Commerce.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/9337",
+          "policyArea": "Energy",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "TORCH Act",
+          "billNumber": "7578",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-23",
+          "latestAction": "Referred to the Committee on Agriculture, and in addition to the Committee on Natural Resources, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/7578",
+          "policyArea": "Public Lands and Natural Resources",
+          "tier": "official",
+          "role": "cosponsor"
+        },
+        {
+          "topicId": "legislation",
+          "title": "Uplifting First-Time Homebuyers Act of 2025",
+          "billNumber": "3526",
+          "type": "HR",
+          "congress": 119,
+          "introducedDate": "2026-06-23",
+          "latestAction": "Referred to the House Committee on Ways and Means.",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/3526",
+          "policyArea": "Taxation",
+          "tier": "official",
+          "role": "cosponsor"
+        }
+      ]
+    }
+  }
+}

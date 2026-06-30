@@ -12,60 +12,120 @@ Data credibility is the product. Every decision defers to it.
 | Code value | Meaning | Example sources |
 |------------|---------|-----------------|
 | `'official'` | Authoritative government record | congress.gov, FEC, senate.gov, house.gov, STOCK Act filings |
-| `'nonpartisan'` | Established nonpartisan or official-derived research | GovTrack, OpenSecrets, Ballotpedia, AP, Reuters, ProPublica, unitedstates/congress-legislators |
+| `'nonpartisan'` | Established nonpartisan or official-derived research | GovTrack, OpenSecrets, Ballotpedia, VoteSmart, AP, Reuters, ProPublica, unitedstates/congress-legislators |
 | `'media'` | Named mainstream journalism outlet | NYT, WaPo, WSJ, Politico, The Hill — verbatim quotes with attribution only, never paraphrased |
-| `'alleged'` | Credible but unproven claim | Corroborated by multiple media sources, clearly flagged |
+| `'alleged'` | Credible but unproven claim | Corroborated by 2+ independent sources, always visibly flagged |
 | `'unverified'` | Circulating claim with no verified sourcing | Maximum caveat, shown only when explicitly relevant |
 
 **Never write "Tier 1", "Tier 2", "Tier 3", or "Tier 4" in code or JSX.** Use the string values above.
 
-Low-trust (`'media'`, `'alleged'`, `'unverified'`) only when corroborated by multiple independent sources — always flagged in UI.
+---
+
+## Multi-source corroboration rule (non-negotiable)
+
+Any statement attributed to a politician that comes from a `'media'` or lower tier source
+**must be corroborated by at least 2 independent approved sources** before it can be
+displayed as a verified statement.
+
+- **1 source, tier `'official'` or `'nonpartisan'`** → display as verified with that single source
+- **1 source, tier `'media'`** → label as `'alleged'`, show with caveat, never as verified
+- **2+ independent sources, tier `'media'`** → display as verified, list all sources
+- **Cannot corroborate** → do not display the statement at all; show "No verified statement on record"
+
+A source corroborates another ONLY if it is independent (different outlet, different author,
+different publication date). A wire service (AP/Reuters) and an outlet republishing that wire
+are NOT independent — count as one source.
+
+This rule applies to: quotes, position statements, platform claims, and any other assertion
+attributed to the politician's words or stated beliefs sourced from journalism.
+
+---
 
 ## Banned sources
 
-- **Wikipedia** — never use as a source under any tier. It is user-editable and not authoritative.
+- **Wikipedia** — never under any tier. User-editable, not authoritative.
+- Social media posts (Twitter/X, Facebook, Instagram) — not verifiable as tier 'official' even from a politician's own account unless corroborated by an approved outlet.
+- Anonymous sources — never, at any tier.
+- Press releases from campaigns or PACs — tier 'alleged' only, requires corroboration.
 - Any source without a verifiable URL and publication date.
 
-## Journalism quotes (Tier 'media')
+---
+
+## Journalism quotes (tier 'media')
 
 Verbatim quotes from journalism must be:
 - Exact — word for word, in quotation marks, with speaker attribution
 - Linked to the original article URL
 - Dated to the article's publication date
-- Never paraphrased or summarized as if they are the politician's words
+- Corroborated by 2+ approved outlets before displaying as verified (see rule above)
+- **Never paraphrased** or summarized as if they are the politician's words
 
-Approved journalism sources (Tier 'media'): NYT, Washington Post, Wall Street Journal, Politico, The Hill, AP, Reuters, NPR, PBS NewsHour, Roll Call, CQ, The Atlantic, Bloomberg, ProPublica, The Guardian, Miami Herald, Tampa Bay Times, Sun Sentinel, Orlando Sentinel, Florida Phoenix, WUSF, WLRN.
+Approved journalism sources (tier 'media'):
+NYT, Washington Post, Wall Street Journal, Politico, The Hill, AP, Reuters, NPR,
+PBS NewsHour, Roll Call, CQ, The Atlantic, Bloomberg, ProPublica, The Guardian,
+Miami Herald, Tampa Bay Times, Sun Sentinel, Orlando Sentinel, Florida Phoenix, WUSF, WLRN.
+
+---
+
+## Data organization — by destination view, not by source
+
+Every generated data file must be named and structured for the UI view it feeds.
+When a sync script produces output, ask: "which menu section or profile tab does this go into?"
+Structure and name the output accordingly.
+
+| Data type | Destination view | File |
+|-----------|-----------------|------|
+| Roll-call votes | Profile → Voting Record tab | `congressVotes.json` |
+| FEC campaign finance | Profile → Money & Donors tab | `fecFinance.json` |
+| STOCK Act trades | Profile → Stock Trades tab | `stockTrades.json` |
+| Stated positions + platform | Profile → Track Record tab (Said→Did) | `topicPositions.json` |
+| News articles | Profile → News section | `newsNational.json` |
+| Per-topic vote + position summary | Profile → Topic Record panel | `profileRecordByTopic` (build-time) |
+| Member deep bills | Profile → Topic Record → Proposed legislation (collapsed) | `members/{bioguideId}.json` |
+
+If a new data type does not map cleanly to an existing view: STOP and ask the owner
+which view it belongs in before creating a new file or new panel.
+
+---
 
 ## Current office — authoritative feeds only
 
 - Must come from `unitedstates/congress-legislators`, senate.gov, house.gov, or governor.gov equivalents
 - Never from hand-typed `inOffice: true` flags alone
-- **Recency-weighted resolution**: most recent authoritative record wins; older records are historical only (dated, sourced, newest-first)
+- **Recency-weighted resolution**: most recent authoritative record wins; older records are historical only
+
+---
 
 ## Every claim, vote, and fact must include
 
 - **Date** of the event or publication
 - **Source tier** (the code value above, visible in UI)
 - **Link** to primary record
-- **As-of / checked date** when shown in UI
+- **Corroboration count** for any media-tier statement (how many sources confirm it)
 
-Do **not** fabricate facts to fill gaps — use `"No verified record available"` placeholder.
-Do **not** expand hand-written mock data for national coverage — use sync scripts and `officeResolution.ts`.
+Do **not** fabricate facts to fill gaps — use `"No verified record available"`.
+Do **not** expand hand-written mock data for national coverage.
+
+---
 
 ## Mock data policy
 
-Mock data exists ONLY for the 16 featured profiles (mockPoliticians.ts) and as UI scaffolding.
-- Mock data must never appear on routes without a prominent "Demo data — not verified" label
-- `/lobbying`, `/elections`, `/compare` currently show mock data — these pages must carry visible disclaimers until real pipelines replace them
+Mock data exists ONLY for the 16 featured profiles and as UI scaffolding.
+- Mock data must never appear without a prominent "Demo data — not verified" label
+- `/lobbying`, `/elections`, `/compare` currently show mock data — visible disclaimers required
 - Demo stock trades must be labeled distinctly from STOCK Act official trades
+
+---
 
 ## Scope priority
 
 1. All 537 federal Congress members (votes, FEC, office)
 2. Governors and top statewide via state `.gov` / SoS sources
 3. Rich featured profiles with real office, votes, finance, and verbatim quotes
-4. The "promise vs. record" diff for featured profiles (core product feature)
+4. The "platform promise vs. voting record" diff for all members (core product)
 5. Local/small elections — demo templates only until a local data pipeline exists
+
+---
 
 ## Reference implementation
 

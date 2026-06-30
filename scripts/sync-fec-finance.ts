@@ -9,6 +9,7 @@
  *
  * Run with: npm run sync:fec
  */
+import { config } from 'dotenv';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -31,24 +32,6 @@ const LEGISLATORS_FILE = path.join(OUT_DIR, 'currentLegislators.json');
 interface LegislatorRow {
   bioguideId: string;
   fecIds?: string[];
-}
-
-async function loadEnvLocalAsync(): Promise<void> {
-  const envPath = path.join(projectRoot, '.env.local');
-  try {
-    const content = await readFile(envPath, 'utf8');
-    for (const line of content.split('\n')) {
-      const trimmed = line.trim();
-      if (!trimmed || trimmed.startsWith('#')) continue;
-      const eq = trimmed.indexOf('=');
-      if (eq === -1) continue;
-      const key = trimmed.slice(0, eq).trim();
-      const val = trimmed.slice(eq + 1).trim();
-      if (!process.env[key]) process.env[key] = val;
-    }
-  } catch {
-    // .env.local optional — key may be set in the environment already.
-  }
 }
 
 function officeCode(p: Politician): 'S' | 'H' | 'P' | 'G' | undefined {
@@ -89,7 +72,7 @@ function sleep(ms: number): Promise<void> {
 }
 
 async function main(): Promise<void> {
-  await loadEnvLocalAsync();
+  config({ path: path.join(projectRoot, '.env.local') });
 
   const asOf = new Date().toISOString().slice(0, 10);
   const featured = mockPoliticians;

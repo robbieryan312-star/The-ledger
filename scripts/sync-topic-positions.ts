@@ -5,12 +5,13 @@
  * Output: lib/data/generated/topicPositions.json
  * Run: npm run sync:topic-positions
  */
+import { config } from 'dotenv';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { SourceTier, VoteChoice, VoteRecord } from '../lib/types';
 import { RECORD_TOPIC_BUCKETS, voteCongressGovUrl, voteTopicId } from '../lib/data/profileRecordByTopic';
-import { fetchJson, loadEnvLocal, sleep } from './lib/ingest-utils';
+import { fetchJson, sleep } from './lib/ingest-utils';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
@@ -72,12 +73,27 @@ interface SaidDidLinkEntry {
   tier: 'official';
 }
 
+interface TopicStatementEntry {
+  title: string;
+  date: string;
+  url: string;
+  tier: SourceTier;
+  topicId: string;
+}
+
 interface TopicPositionData {
   platformPositions?: PlatformPositionEntry[];
   statedPosition?: string;
   statedPositionSource?: StatedPositionSourceEntry;
-  statements: [];
+  statements: TopicStatementEntry[];
   saidDidLinks: SaidDidLinkEntry[];
+}
+
+function parseMemberFlag(): string | null {
+  const idx = process.argv.indexOf('--member');
+  if (idx === -1) return null;
+  const value = process.argv[idx + 1]?.trim();
+  return value || null;
 }
 
 interface TopicPositionsSnapshot {
@@ -527,20 +543,29 @@ async function writeSnapshot(
 }
 
 async function main(): Promise<void> {
-  await loadEnvLocal();
+  config({ path: path.join(projectRoot, '.env.local') });
 
   const votesmartKey = (process.env.VOTESMART_API_KEY ?? '').trim();
-  console.log('DEBUG: VOTESMART_API_KEY length:', votesmartKey.length);
+  console.log('VoteSmart key length:', votesmartKey.length);
   if (!votesmartKey) {
     console.warn('WARN: VOTESMART_API_KEY missing — NPAT stated positions will be skipped.');
   }
 
+  const memberFilter = parseMemberFlag();
+
   const legislatorsRaw = JSON.parse(await readFile(LEGISLATORS_FILE, 'utf8')) as {
     legislators: LegislatorRow[];
   };
-  const members = legislatorsRaw.legislators.filter(
+  let members = legislatorsRaw.legislators.filter(
     (l) => l.chamber === 'senate' || l.chamber === 'house',
   );
+  if (memberFilter) {
+    members = members.filter((l) => l.bioguideId === memberFilter);
+    if (members.length === 0) {
+      console.error(`No current legislator found for --member ${memberFilter}`);
+      process.exit(1);
+    }
+  }
 
   const asOf = new Date().toISOString().slice(0, 10);
   const topicBuckets = RECORD_TOPIC_BUCKETS.filter((b) => b.id !== 'legislation');
@@ -561,13 +586,17 @@ async function main(): Promise<void> {
     /* fresh */
   }
 
+  if (memberFilter) {
+    delete checkpoint[memberFilter];
+  }
+
   console.log(
-    `Syncing topic positions for ${members.length} members (${Object.keys(checkpoint).length} checkpointed). VoteSmart: ${votesmartKey ? 'yes' : 'SKIP'}`,
+    `Syncing topic positions for ${members.length} member${members.length === 1 ? '' : 's'} (${Object.keys(checkpoint).length} checkpointed). VoteSmart: ${votesmartKey ? 'yes' : 'SKIP'}`,
   );
 
   for (let i = 0; i < members.length; i += 1) {
     const leg = members[i];
-    if (checkpoint[leg.bioguideId]) continue;
+    if (!memberFilter && checkpoint[leg.bioguideId]) continue;
 
     const memberTopics: Record<string, TopicPositionData> = {};
     const ballotByTopic = await fetchBallotpediaPositions(leg, asOf);
@@ -598,6 +627,10 @@ async function main(): Promise<void> {
       if (!hasPlatform && !hasNpat) continue;
 
       const statedPositionDate = npat?.date ?? null;
+      const npatUrl =
+        voteSmartCandidateId != null
+          ? `https://votesmart.org/candidate/${voteSmartCandidateId}/political-courage-test`
+          : 'https://votesmart.org';
 
       const topicData: TopicPositionData = {
         statements: [],
@@ -610,11 +643,17 @@ async function main(): Promise<void> {
         topicData.statedPositionSource = {
           tier: 'nonpartisan',
           source: 'VoteSmart',
-          url:
-            voteSmartCandidateId != null
-              ? `https://votesmart.org/candidate/${voteSmartCandidateId}/political-courage-test`
-              : 'https://votesmart.org',
+          url: npatUrl,
         };
+        topicData.statements = [
+          {
+            title: npat.position,
+            date: npat.date ?? asOf,
+            url: npatUrl,
+            tier: 'nonpartisan',
+            topicId: bucket.id,
+          },
+        ];
       }
 
       memberTopics[bucket.id] = topicData;
