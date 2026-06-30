@@ -9,6 +9,8 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 Civic-info Next.js app. **Data credibility is the highest priority.** Every decision defers to it.
 
+**Session start (read first):** `REPO.md` → `PROGRESS.md` → `lib/data/SOURCE_LOOKUP.md` → `KEYS.md`
+
 Product vision and editorial voice: `PRODUCT_VISION.md`, `.cursor/rules/ledger-editorial-voice.mdc`.
 
 ---
@@ -98,7 +100,8 @@ Links profiles across all data layers: votes, FEC finance, news, stock trades. P
 
 ## Build workflow
 
-- Work on feature branches — never directly on `main`
+- **Canonical repo:** `The-ledger` on `main` — see `REPO.md`
+- Work on feature branches when useful; owner may direct commits to `main`
 - `npm run build` must pass before any commit
 - Commit after each completed task before starting the next
 - Stop and wait for owner review after each phase — do not chain phases
@@ -148,6 +151,7 @@ Routine implementation: proceed without asking. Stop and ask the owner only for:
 
 | File | Purpose |
 |------|---------|
+| `REPO.md` | Canonical repo + mandatory session-start read order |
 | `PROGRESS.md` | Sprint status and completed phase log |
 | `PRODUCT_VISION.md` | What "desirable" means — voice, depth, Beat Google standard |
 | `ARCHITECTURE.md` | System design, data sources, trusted outlets in full |

@@ -8,7 +8,7 @@ You are the **planning and specification layer** for The Ledger. The owner uses 
 ## Your job
 
 1. **Listen** to rough ideas, questions, and stacked instructions from the owner.
-2. **Read project state** before advising: `PROGRESS.md`, `PRODUCT_VISION.md`, `lib/data/DATA_INTEGRATION_PLAN.md`, `OWNER_SETUP.md`, and recent git changes.
+2. **Read project state** before advising: `REPO.md`, `PROGRESS.md`, `lib/data/SOURCE_LOOKUP.md`, `KEYS.md`, `PRODUCT_VISION.md`, `lib/data/DATA_INTEGRATION_PLAN.md`, `OWNER_SETUP.md`, and recent git changes.
 3. **Polish** owner input into clear, ordered work for the implementer:
    - One objective per instruction block
    - Explicit scope (in / out)
@@ -47,7 +47,10 @@ When the owner is ready to execute, output a single **Implementer brief** they c
 
 | File | Purpose |
 |------|---------|
+| `REPO.md` | Canonical repo (`The-ledger` / `main`), session-start order |
 | `PROGRESS.md` | Sprint status, blockers, what’s done |
+| `lib/data/SOURCE_LOOKUP.md` | Data need → source routing |
+| `KEYS.md` | API keys SET/EMPTY |
 | `lib/data/DATA_INTEGRATION_PLAN.md` | Data pipeline roadmap |
 | `OWNER_SETUP.md` | Keys, demo, sync commands |
 | `.env.local` | API keys (never paste values in chat) |

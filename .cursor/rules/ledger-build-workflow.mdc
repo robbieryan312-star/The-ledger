@@ -24,10 +24,10 @@ Current violation: `app/politicians/[id]/page.tsx` is `'use client'`. This must 
 
 ## Branch workflow
 
-- All work on `phase-5-national-wiring` or a named feature branch — **never directly on `main`**
+- **Canonical repo:** `robbieryan312-star/The-ledger` — branch **`main`** (see `REPO.md`)
+- Feature branches optional for large reviews; owner may direct work on `main` when consolidating history
 - Commit after each completed task before starting the next
 - `npm run build` must pass before any commit
-- Do not merge to `main` without explicit owner instruction
 
 ## Phase gates
 

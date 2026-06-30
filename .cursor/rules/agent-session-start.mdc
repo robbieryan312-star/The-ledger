@@ -1,0 +1,26 @@
+---
+description: Mandatory reads before any task — do not guess owner expectations
+alwaysApply: true
+---
+
+# Agent session start (non-negotiable)
+
+Before advising, coding, syncing data, or asking the owner for keys/email/scope:
+
+1. **`PROGRESS.md`** — current phase, blockers, next priorities  
+2. **`lib/data/SOURCE_LOOKUP.md`** — which source to use for each data need  
+3. **`KEYS.md`** — SET vs EMPTY env vars (never ask for values already documented)  
+4. **`REPO.md`** — canonical repo is `The-ledger` on `main`  
+5. Task-specific: **`AGENTS.md`**, **`.cursor/rules/ledger-data-policy.mdc`**, **`.cursor/rules/ledger-editorial-voice.mdc`**
+
+## Do not
+
+- Ask the owner if they are "ready to continue" — proceed until CAPTCHA/login.gov blocks you  
+- Ask for owner email — use `robbie.ryan312@gmail.com` from `KEYS.md`  
+- Treat VoteSmart or OpenSecrets as required — deferred in `SOURCE_LOOKUP.md`  
+- Create or work in the legacy `code` GitHub repo  
+- Assume API keys are missing without reading `.env.local` key **names** (SET vs EMPTY only — never log values)
+
+## When blocked
+
+Only stop for: scope changes, credibility tradeoffs, major UX direction, or human-only verification (CAPTCHA, login.gov).

@@ -1,7 +1,7 @@
 # The Ledger — Progress Log
 
 **Last updated:** 2026-06-30
-**Branch:** `phase-5-national-wiring`
+**Branch:** `main`
 **Live demo:** https://the-ledger-gamma.vercel.app
 
 ---
