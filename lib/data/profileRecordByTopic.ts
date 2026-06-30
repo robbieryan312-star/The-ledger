@@ -6,6 +6,7 @@
 import type { Bill, VoteChoice, VoteRecord } from '../types';
 import { getCongressVotes } from './congressVotes';
 import { getBills } from './legislation';
+import { normalizeTopicId } from './topicAliases';
 
 export interface TopicRecordExample {
   title: string;
@@ -215,7 +216,8 @@ export function classifyTextToRecordTopicId(text: string, category?: string): st
 }
 
 export function recordTopicLabel(id: string): string {
-  return RECORD_TOPIC_BUCKETS.find((b) => b.id === id)?.label ?? 'Federal Legislation';
+  const canonicalId = normalizeTopicId(id);
+  return RECORD_TOPIC_BUCKETS.find((b) => b.id === canonicalId)?.label ?? 'Federal Legislation';
 }
 
 function emptySplit(): TopicVoteSplit {

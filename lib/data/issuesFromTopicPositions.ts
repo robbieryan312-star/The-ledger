@@ -8,20 +8,7 @@ import {
   matchTopic,
 } from './topicCoverage';
 import { getMemberTopicPositions, type TopicPositionData } from './topicPositions';
-
-/** Legacy sync keys before 10-topic consolidation — merged at read time until full re-sync. */
-const LEGACY_TOPIC_ALIASES: Record<string, string> = {
-  environment: 'climate',
-  defense: 'defense-veterans',
-  crime: 'public-safety',
-  civil: 'civil-liberties',
-  judiciary: 'civil-liberties',
-  economy: 'economy-taxes',
-};
-
-function normalizeTopicId(rawId: string): string {
-  return LEGACY_TOPIC_ALIASES[rawId] ?? rawId;
-}
+import { normalizeTopicId } from './topicAliases';
 
 function firstSentence(text: string, max = 90): string {
   const sentence = text.split(/(?<=[.!?])\s+/)[0]?.trim() ?? text.trim();

@@ -9,6 +9,7 @@ import { getTopicPositions } from '@/lib/data/topicPositions';
 import { buildTopicConsistencyTimeline } from '@/lib/data/buildTopicConsistencyTimeline';
 import type { OrgVoteTopicLink } from '@/lib/data/buildOrgVoteTopicLinks';
 import { recordTopicLabel } from '@/lib/data/profileRecordByTopic';
+import { getMergedDeepTopicBlock, normalizeTopicId } from '@/lib/data/topicAliases';
 import SourceBadge from '@/components/ui/SourceBadge';
 import ExpandableQuoteBlock from '@/components/ui/ExpandableQuoteBlock';
 
@@ -89,7 +90,7 @@ function TopicGroupRow({
   const [open, setOpen] = useState(false);
   const [showLegislation, setShowLegislation] = useState(false);
   const topicPositions = bioguideId ? getTopicPositions(bioguideId, group.topicId) : null;
-  const deepTopic = memberDeep?.byTopic[group.topicId];
+  const deepTopic = memberDeep ? getMergedDeepTopicBlock(memberDeep.byTopic, group.topicId) : null;
   const deepSponsored = deepTopic?.sponsored ?? [];
   const deepCosponsored = deepTopic?.cosponsored ?? [];
   const deepSponsoredCount = deepSponsored.length;
@@ -499,7 +500,7 @@ export default function ProfileRecordByTopicPanel({
         ))}
         {memberDeep &&
           RECORD_TOPIC_IDS_ONLY_IN_DEEP(memberDeep, record).map((topicId) => {
-            const block = memberDeep.byTopic[topicId];
+            const block = getMergedDeepTopicBlock(memberDeep.byTopic, topicId);
             if (!block || (block.sponsored.length === 0 && block.cosponsored.length === 0)) {
               return null;
             }
@@ -544,8 +545,14 @@ function RECORD_TOPIC_IDS_ONLY_IN_DEEP(
   memberDeep: MemberDeepProfile,
   record: ProfileRecordByTopic,
 ): string[] {
-  const inRecord = new Set(record.topics.map((t) => t.topicId));
-  return Object.entries(memberDeep.meta.topicCoverage)
-    .filter(([topicId, count]) => count > 0 && !inRecord.has(topicId))
+  const inRecord = new Set(record.topics.map((t) => normalizeTopicId(t.topicId)));
+  const deepOnly = new Map<string, number>();
+  for (const [rawTopicId, count] of Object.entries(memberDeep.meta.topicCoverage)) {
+    if (count <= 0) continue;
+    const canonicalId = normalizeTopicId(rawTopicId);
+    deepOnly.set(canonicalId, (deepOnly.get(canonicalId) ?? 0) + count);
+  }
+  return [...deepOnly.entries()]
+    .filter(([topicId]) => !inRecord.has(topicId))
     .map(([topicId]) => topicId);
 }

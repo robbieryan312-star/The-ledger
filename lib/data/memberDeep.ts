@@ -5,6 +5,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import type { Source, SourceTier } from '../types';
+import { getMergedDeepTopicBlock } from './topicAliases';
 
 export interface MemberDeepBill {
   topicId: string;
@@ -67,5 +68,5 @@ export function getMemberDeepTopic(
 ): MemberDeepTopicBlock | null {
   const profile = getMemberDeep(bioguideId);
   if (!profile) return null;
-  return profile.byTopic[topicId] ?? null;
+  return getMergedDeepTopicBlock(profile.byTopic, topicId);
 }
