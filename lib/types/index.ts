@@ -390,6 +390,8 @@ export interface Issue {
   evidence?: EvidenceItem[];
   /** Older records when dates conflict with current position summary — expandable in UI. */
   historicalEvidence?: EvidenceItem[];
+  /** Legacy mockPoliticians content shown until topicPositions pipeline covers this profile. */
+  pendingIntegration?: boolean;
 }
 
 export type ExecutiveActionType =

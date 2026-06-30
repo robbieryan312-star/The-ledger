@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
 import SourceBadge from '@/components/ui/SourceBadge';
+import ExpandableQuoteBlock from '@/components/ui/ExpandableQuoteBlock';
 import type { SaidDidDiff } from '@/lib/types';
 
 function formatGapDays(gapDays: number): string {
@@ -36,13 +37,13 @@ export default function SaidDidPanel({ diffs }: { diffs: SaidDidDiff[] }) {
               <div className="text-[10px] uppercase tracking-wide text-blue-400 font-semibold mb-1">
                 Said
               </div>
-              <p className="text-gray-200 text-sm leading-relaxed">
-                {diff.said.verbatim ? (
-                  <>&ldquo;{diff.said.quote}&rdquo;</>
-                ) : (
-                  diff.said.quote
-                )}
-              </p>
+              <ExpandableQuoteBlock
+                summary={
+                  diff.said.quote.split(/(?<=[.!?])\s+/)[0]?.slice(0, 120) ?? diff.said.quote.slice(0, 120)
+                }
+                fullText={diff.said.quote}
+                verbatim={diff.said.verbatim}
+              />
               <div className="flex flex-wrap items-center gap-2 mt-2 text-xs text-gray-500">
                 <span>{diff.said.speaker}</span>
                 <span>·</span>
@@ -76,7 +77,10 @@ export default function SaidDidPanel({ diffs }: { diffs: SaidDidDiff[] }) {
               <div className="text-[10px] uppercase tracking-wide text-green-500 font-semibold mb-1">
                 Did
               </div>
-              <p className="text-gray-200 text-sm leading-relaxed">{diff.did.action}</p>
+              <ExpandableQuoteBlock
+                summary={diff.did.action.split(/(?<=[.!?])\s+/)[0] ?? diff.did.action}
+                fullText={diff.did.action}
+              />
               <div className="flex flex-wrap items-center gap-2 mt-2 text-xs text-gray-500">
                 <span>{diff.did.date}</span>
                 <SourceBadge

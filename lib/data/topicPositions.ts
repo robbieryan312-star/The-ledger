@@ -28,6 +28,7 @@ export interface StatedPositionSourceEntry {
 }
 
 export interface SaidDidLinkEntry {
+  topicId?: string;
   statedPositionDate: string | null;
   voteDate: string;
   billTitle: string;

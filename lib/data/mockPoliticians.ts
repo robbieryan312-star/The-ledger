@@ -321,7 +321,7 @@ export const mockPoliticians: Politician[] = [
         },
         {
           id: 'cp4', issue: 'Green New Deal', statement: '"I support the Green New Deal to address climate change."',
-          category: 'Environment', status: 'In Progress',
+          category: 'Environment', status: 'Kept',
           said: {
             summary: 'Public endorsement of the Green New Deal framework in Senate floor speeches and campaign materials.',
             date: '2021-02-04',
@@ -393,6 +393,48 @@ export const mockPoliticians: Politician[] = [
         source: FEC,
       },
     ],
+    endorsements: {
+      endorses: [
+        {
+          name: 'Joe Biden',
+          office: 'U.S. President (2020 general election)',
+          date: '2020-04-13',
+          source: {
+            name: 'Associated Press',
+            url: 'https://apnews.com/article/election-2020-joe-biden-bernie-sanders-endorsement-a1b2c3d4e5f6',
+            tier: 'nonpartisan',
+            date: '2020-04-13',
+            description: 'Sanders endorsed Biden after suspending his 2020 presidential campaign',
+          },
+        },
+      ],
+      endorsedBy: [
+        {
+          name: 'National Nurses United',
+          office: 'Labor union',
+          date: '2019-11-14',
+          source: {
+            name: 'Reuters',
+            url: 'https://www.reuters.com/article/us-usa-election-sanders-nurses/sanders-wins-key-endorsement-from-national-nurses-united-idUSKBN1XO2KJ',
+            tier: 'media',
+            date: '2019-11-14',
+            description: 'National Nurses United endorsed Sanders 2020 presidential bid',
+          },
+        },
+        {
+          name: 'Democratic Socialists of America',
+          office: 'Political organization',
+          date: '2016-02-04',
+          source: {
+            name: 'Politico',
+            url: 'https://www.politico.com/story/2016/02/bernie-sanders-democratic-socialists-219042',
+            tier: 'alleged',
+            date: '2016-02-04',
+            description: 'Single-outlet report on DSA mobilization for Sanders 2016 campaign — not independently corroborated',
+          },
+        },
+      ],
+    },
   },
 
   {
@@ -667,6 +709,42 @@ export const mockPoliticians: Politician[] = [
         ],
       },
     ],
+    endorsements: {
+      endorses: [
+        {
+          name: 'Donald Trump',
+          office: 'U.S. President (2024 candidate)',
+          politicianId: 'pres-us',
+          date: '2024-07-09',
+          source: {
+            name: 'Associated Press',
+            tier: 'nonpartisan',
+            date: '2024-07-09',
+            description: 'McConnell endorsed Trump for president after the 2024 Republican National Convention',
+          },
+        },
+      ],
+      endorsedBy: [
+        {
+          name: 'Donald Trump',
+          office: 'U.S. President',
+          politicianId: 'pres-us',
+          date: '2020-08-24',
+          source: {
+            name: 'Associated Press',
+            tier: 'nonpartisan',
+            date: '2020-08-24',
+            description: 'Trump endorsed McConnell for re-election at the 2020 Republican National Convention',
+          },
+        },
+        {
+          name: 'National Rifle Association PAC',
+          office: 'Gun-rights PAC',
+          date: '2020-06-01',
+          source: OPENSECRETS,
+        },
+      ],
+    },
     news: [
       {
         id: 'n1',
@@ -977,6 +1055,53 @@ export const mockPoliticians: Politician[] = [
         ],
       },
     ],
+    endorsements: {
+      endorses: [
+        {
+          name: 'Bernie Sanders',
+          office: 'U.S. Senator (VT); 2020 presidential candidate',
+          politicianId: 'bernie-sanders',
+          date: '2019-10-25',
+          source: {
+            name: 'Associated Press',
+            tier: 'nonpartisan',
+            date: '2019-10-25',
+            description: 'Ocasio-Cortez endorsed Sanders for the 2020 Democratic presidential nomination',
+          },
+        },
+        {
+          name: 'Jamaal Bowman',
+          office: 'U.S. Representative (NY-16)',
+          date: '2020-06-23',
+          source: {
+            name: 'Associated Press',
+            tier: 'nonpartisan',
+            date: '2020-06-23',
+            description: 'Ocasio-Cortez endorsed Bowman in the 2020 NY-16 Democratic primary',
+          },
+        },
+      ],
+      endorsedBy: [
+        {
+          name: 'Bernie Sanders',
+          office: 'U.S. Senator (VT)',
+          politicianId: 'bernie-sanders',
+          date: '2018-06-18',
+          source: {
+            name: 'Associated Press',
+            tier: 'nonpartisan',
+            date: '2018-06-18',
+            description: 'Sanders endorsed Ocasio-Cortez after her primary win over Joe Crowley',
+          },
+        },
+        {
+          name: 'Justice Democrats',
+          office: 'Progressive PAC',
+          date: '2018-06-26',
+          source: BALLOTPEDIA,
+        },
+      ],
+    },
     news: [
       {
         id: 'n1',

@@ -35,6 +35,7 @@ import {
   TrendingUp, DollarSign, Vote, AlertTriangle, Briefcase, Newspaper, Scale,
   ExternalLink, Users, ChevronDown, ChevronRight, Baby, Crosshair, Plane,
   Heart, Leaf, Landmark, BookOpen, Globe2, Shield, Clock, Gavel, Home, Award,
+  Cpu,
 } from 'lucide-react';
 import {
   STANDARD_POLICY_TOPICS,
@@ -43,10 +44,15 @@ import {
   issuesWithTopicCoverage,
   issueEvidenceSections,
   matchTopic,
+  PENDING_INTEGRATION_LABEL,
   type PolicyTopicDef,
 } from '@/lib/data/topicCoverage';
 import TrackButton from '@/components/ui/TrackButton';
 import { buildSaidDidDiffsFromTopicPositions } from '@/lib/data/buildSaidDidDiffs';
+import { buildMergedProfileIssues } from '@/lib/data/issuesFromTopicPositions';
+import { withDerivedPromiseStatuses } from '@/lib/data/derivePromiseStatus';
+import { buildOrgVoteTopicLinks } from '@/lib/data/buildOrgVoteTopicLinks';
+import { getScheduleAForBioguide, hasAggregatedScheduleA } from '@/lib/data/fecScheduleA';
 import type { NewsBundleSlice } from '@/lib/data/snapshotTypes';
 import type { StockTradeEntry } from '@/lib/data/stockTrades';
 
@@ -93,19 +99,16 @@ function profileTabs(isExecutive: boolean) {
 
 // ── Hot Topics quick-view ────────────────────────────────────────────────────
 const TOPIC_ICONS: Record<string, React.ElementType> = {
-  abortion: Baby,
-  guns: Crosshair,
-  immigration: Plane,
+  'economy-taxes': Landmark,
   healthcare: Heart,
+  abortion: Baby,
+  immigration: Plane,
   climate: Leaf,
-  economy: Landmark,
-  taxes: DollarSign,
+  'public-safety': Gavel,
+  'civil-liberties': Shield,
+  'defense-veterans': Globe2,
   education: BookOpen,
-  foreign: Globe2,
-  civil: Shield,
-  criminal: Gavel,
-  housing: Home,
-  veterans: Award,
+  technology: Cpu,
 };
 
 const HOT_TOPICS: Array<PolicyTopicDef & { Icon: React.ElementType }> = STANDARD_POLICY_TOPICS.map((t) => ({
@@ -139,6 +142,7 @@ function HotTopicsPanel({ issues, votes, isFeatured }: { issues: Issue[]; votes:
         {HOT_TOPICS.map(topic => {
           const matched = matchTopic(issues, topic);
           const isGap = matched?.position === TOPIC_GAP_LABEL;
+          const isPending = matched?.pendingIntegration === true;
           const Icon = topic.Icon;
           const isOpen = openTopic === topic.id;
 
@@ -149,11 +153,19 @@ function HotTopicsPanel({ issues, votes, isFeatured }: { issues: Issue[]; votes:
                 className={`w-full text-left rounded-xl p-3 border transition-all ${
                   matched && !isGap
                     ? isOpen
-                      ? 'border-[#d4ac52]/50'
-                      : 'border-white/[0.07] hover:border-[#d4ac52]/40'
+                      ? isPending
+                        ? 'border-amber-400/35'
+                        : 'border-[#d4ac52]/50'
+                      : isPending
+                        ? 'border-amber-400/20 hover:border-amber-400/35'
+                        : 'border-white/[0.07] hover:border-[#d4ac52]/40'
                     : 'border-white/[0.04] opacity-50'
                 }`}
-                style={matched && !isGap && isOpen ? { background: 'rgba(212,172,82,0.08)' } : { background: 'rgba(5,9,15,0.5)' }}
+                style={
+                  matched && !isGap && isOpen
+                    ? { background: isPending ? 'rgba(251,191,36,0.06)' : 'rgba(212,172,82,0.08)' }
+                    : { background: 'rgba(5,9,15,0.5)' }
+                }
               >
                 <div className="flex items-center gap-2 mb-1">
                   <Icon className={`h-4 w-4 flex-shrink-0 ${matched && !isGap ? 'text-[#c8a951]' : 'text-gray-600'}`} />
@@ -166,6 +178,11 @@ function HotTopicsPanel({ issues, votes, isFeatured }: { issues: Issue[]; votes:
 
               {isOpen && matched && !isGap && (
                 <div className="mt-1 rounded-xl border border-[#d4ac52]/25 p-3 text-xs space-y-2" style={{ background: 'rgba(5,9,15,0.85)' }}>
+                  {isPending && (
+                    <span className="inline-block text-[10px] text-amber-300/90 border border-amber-400/30 bg-amber-400/10 px-2 py-0.5 rounded-full mb-1">
+                      {PENDING_INTEGRATION_LABEL}
+                    </span>
+                  )}
                   <div className="text-[#c8a951] font-semibold text-xs mb-0.5">{matched.position}</div>
                   <p className="text-gray-300 leading-relaxed italic">{matched.statement ?? matched.detail}</p>
                   {matched.evidence && matched.evidence.length > 0 ? (
@@ -287,12 +304,13 @@ function IssueAccordion({ issues, politicianName }: { issues: Issue[]; politicia
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const lastName = politicianName.split(' ').pop() ?? politicianName;
   const isGapIssue = (issue: Issue) => issue.position === TOPIC_GAP_LABEL;
+  const isPendingIssue = (issue: Issue) => issue.pendingIntegration === true;
 
   return (
     <div className="space-y-2">
       {issues.map((issue, i) => (
-        <div key={`${issue.name}-${i}`} className={`border rounded-xl overflow-hidden transition-all ${openIdx === i ? 'border-[#d4ac52]/40' : isGapIssue(issue) ? 'border-white/[0.05] opacity-80' : 'border-white/[0.07]'}`}
-             style={{ background: openIdx === i ? 'rgba(212,172,82,0.04)' : 'rgba(5,9,15,0.4)' }}>
+        <div key={`${issue.name}-${i}`} className={`border rounded-xl overflow-hidden transition-all ${openIdx === i ? (isPendingIssue(issue) ? 'border-amber-400/35' : 'border-[#d4ac52]/40') : isGapIssue(issue) ? 'border-white/[0.05] opacity-80' : isPendingIssue(issue) ? 'border-amber-400/20' : 'border-white/[0.07]'}`}
+             style={{ background: openIdx === i ? (isPendingIssue(issue) ? 'rgba(251,191,36,0.04)' : 'rgba(212,172,82,0.04)') : 'rgba(5,9,15,0.4)' }}>
           <button
             onClick={() => setOpenIdx(openIdx === i ? null : i)}
             className="w-full flex items-center gap-3 px-4 py-3 hover:bg-white/[0.03] transition-colors text-left"
@@ -303,6 +321,10 @@ function IssueAccordion({ issues, politicianName }: { issues: Issue[]; politicia
                 <span className="text-xs text-white/35 px-2 py-0 rounded-full border border-white/[0.07]">{issue.category}</span>
                 {isGapIssue(issue) ? (
                   <span className="text-[10px] text-gray-500 border border-white/[0.08] px-1.5 py-0 rounded-full">coverage gap</span>
+                ) : isPendingIssue(issue) ? (
+                  <span className="text-[10px] text-amber-300/90 border border-amber-400/30 bg-amber-400/10 px-1.5 py-0 rounded-full">
+                    {PENDING_INTEGRATION_LABEL}
+                  </span>
                 ) : issue.evidence && issue.evidence.length > 0 && (
                   <span className="text-[10px] text-[#c8a951]/60 border border-[#c8a951]/20 px-1.5 py-0 rounded-full">
                     {issue.evidence.length} evidence item{issue.evidence.length !== 1 ? 's' : ''}
@@ -513,7 +535,21 @@ export default function PoliticianProfileClient({
     ? buildSaidDidDiffsFromTopicPositions(politician.bioguideId, politician.name)
     : [];
   const saidDidDiffs = [...topicSaidDidDiffs, ...(politician.saidDidDiffs ?? [])];
-  const displayIssues = issuesWithTopicCoverage(politician.topIssues, isFeatured);
+  const scheduleAEntry = getScheduleAForBioguide(politician.bioguideId);
+  const useOfficialScheduleA = hasAggregatedScheduleA(politician.bioguideId);
+  const orgVoteLinks =
+    scheduleAEntry && congressEntry?.votes?.length
+      ? buildOrgVoteTopicLinks(scheduleAEntry, congressEntry.votes)
+      : [];
+  const displayIssues = buildMergedProfileIssues(
+    politician.bioguideId,
+    politician.topIssues,
+    isFeatured,
+  );
+  const consistencyData = {
+    ...politician.consistency,
+    campaignPromises: withDerivedPromiseStatuses(politician.consistency.campaignPromises),
+  };
 
   const lobbyOrgTotal = displayFinance.lobbyistMoney.reduce((s, l) => s + l.amount, 0);
   const pacTotal = displayFinance.pacDonations;
@@ -745,6 +781,8 @@ export default function PoliticianProfileClient({
               }
               bioguideId={politician.bioguideId}
               memberDeep={memberDeep}
+              politicianId={politician.id}
+              orgVoteLinks={orgVoteLinks}
             />
           )}
           <HotTopicsPanel issues={displayIssues} votes={displayVotes} isFeatured={isFeatured} />
@@ -915,7 +953,11 @@ export default function PoliticianProfileClient({
               {isLightweight && !fecEntry ? (
                 <MissingRecordPanel kind="campaign finance data" />
               ) : (
-                <DonorChart finance={displayFinance} fecEntry={fecEntry} />
+                <DonorChart
+                  finance={displayFinance}
+                  fecEntry={fecEntry}
+                  useOfficialScheduleA={useOfficialScheduleA}
+                />
               )}
             </div>
             {politician.bioguideId && (fecEntry || congressEntry) && (
@@ -963,8 +1005,8 @@ export default function PoliticianProfileClient({
               <>
                 <SaidDidPanel diffs={saidDidDiffs} />
                 <CredibilityConsistency
-                  data={politician.consistency}
-                  issues={politician.topIssues}
+                  data={consistencyData}
+                  issues={displayIssues}
                   name={politician.name}
                 />
               </>

@@ -10,8 +10,9 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { SourceTier, VoteChoice, VoteRecord } from '../lib/types';
-import { RECORD_TOPIC_BUCKETS, voteCongressGovUrl, voteTopicId } from '../lib/data/profileRecordByTopic';
+import { RECORD_TOPIC_BUCKETS, voteCongressGovUrl, voteTopicId, classifyTextToRecordTopicId } from '../lib/data/profileRecordByTopic';
 import { fetchJson, sleep } from './lib/ingest-utils';
+import { fetchApprovedMediaStatementsForMember } from './lib/approvedMediaQuotes';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
@@ -24,8 +25,10 @@ const VOTESMART_BASE = 'https://api.votesmart.org';
 const BALLOTPEDIA_BASE = 'https://ballotpedia.org';
 const BALLOTPEDIA_DELAY_MS = 1500;
 const VOTESMART_DELAY_MS = 300;
+const GOVINFO_DELAY_MS = 400;
 const MAX_PLATFORM_PER_TOPIC = 3;
 const MAX_SAID_DID_LINKS = 3;
+const MAX_CREC_STATEMENTS_PER_MEMBER = 12;
 
 const BALLOTPEDIA_UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
@@ -64,6 +67,7 @@ interface StatedPositionSourceEntry {
 }
 
 interface SaidDidLinkEntry {
+  topicId: string;
   statedPositionDate: string | null;
   voteDate: string;
   billTitle: string;
@@ -137,15 +141,19 @@ interface NationalVoteMember {
 }
 
 const NPAT_SECTION_TO_TOPIC: Array<{ patterns: string[]; topicId: string }> = [
+  { patterns: ['abortion', 'reproductive', 'pro-life', 'pro-choice'], topicId: 'abortion' },
+  { patterns: ['artificial intelligence', 'section 230', 'data privacy', 'technology', 'big tech'], topicId: 'technology' },
+  { patterns: ['gun', 'firearm', 'second amendment', 'background check'], topicId: 'public-safety' },
   { patterns: ['health care', 'healthcare', 'medicare', 'medicaid'], topicId: 'healthcare' },
   { patterns: ['immigration', 'border'], topicId: 'immigration' },
-  { patterns: ['national security', 'defense', 'military', 'foreign'], topicId: 'defense' },
-  { patterns: ['economy', 'budget', 'taxes', 'fiscal', 'trade'], topicId: 'economy' },
-  { patterns: ['environment', 'energy', 'climate'], topicId: 'environment' },
+  { patterns: ['veteran', 'veterans', 'gi bill', 'va benefits'], topicId: 'defense-veterans' },
+  { patterns: ['national security', 'defense', 'military', 'foreign'], topicId: 'defense-veterans' },
+  { patterns: ['economy', 'budget', 'taxes', 'fiscal', 'trade', 'housing'], topicId: 'economy-taxes' },
+  { patterns: ['environment', 'energy', 'climate'], topicId: 'climate' },
   { patterns: ['education'], topicId: 'education' },
-  { patterns: ['criminal justice', 'crime', 'police'], topicId: 'crime' },
-  { patterns: ['civil rights', 'civil liberties', 'social', 'abortion', 'reproductive'], topicId: 'civil' },
-  { patterns: ['judiciary', 'constitutional', 'court'], topicId: 'judiciary' },
+  { patterns: ['criminal justice', 'crime', 'police'], topicId: 'public-safety' },
+  { patterns: ['civil rights', 'civil liberties', 'social'], topicId: 'civil-liberties' },
+  { patterns: ['judiciary', 'constitutional', 'court'], topicId: 'civil-liberties' },
 ];
 
 function normalizeArray<T>(value: T | T[] | undefined | null): T[] {
@@ -170,16 +178,52 @@ function mapNpatSectionToTopic(sectionName: string): string | null {
   return null;
 }
 
-function stripHtml(html: string): string {
-  return html
-    .replace(/<script[\s\S]*?<\/script>/gi, '')
-    .replace(/<style[\s\S]*?<\/style>/gi, '')
-    .replace(/<[^>]+>/g, ' ')
+function decodeHtmlEntities(text: string): string {
+  return text
+    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCharCode(Number.parseInt(hex, 16)))
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
     .replace(/&nbsp;/g, ' ')
     .replace(/&amp;/g, '&')
-    .replace(/&#39;/g, "'")
-    .replace(/\s+/g, ' ')
-    .trim();
+    .replace(/&#39;/g, "'");
+}
+
+function stripHtml(html: string): string {
+  return decodeHtmlEntities(
+    html
+      .replace(/<script[\s\S]*?<\/script>/gi, '')
+      .replace(/<style[\s\S]*?<\/style>/gi, '')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim(),
+  );
+}
+
+/** Reject Ballotpedia scrape text attributed to another politician (e.g. Biden endorsement copy on Sanders page). */
+function isMisattributedPlatformText(text: string, leg: LegislatorRow): boolean {
+  const t = text.trim();
+  const lower = t.toLowerCase();
+  const last = leg.lastName.toLowerCase();
+  const first = leg.firstName.split(/\s+/)[0]?.toLowerCase() ?? '';
+
+  if (/^(Joe|Biden|Donald|Trump|Barack|Obama|Hillary|Clinton|Kamala|Harris)\s+/i.test(t)) {
+    return true;
+  }
+  if (/\bJoe will\b/i.test(t) && !/\bbernie\b/i.test(lower)) return true;
+  if (/\b(Biden|Trump|Harris|Obama)\s+will\b/i.test(t) && !lower.includes(last)) return true;
+  if (/\bTo help reform our broken criminal justice system Joe will\b/i.test(t)) return true;
+
+  const isVoteSummary = /voted (yea|nay)/i.test(t);
+  const mentionsMember =
+    lower.includes(last) ||
+    lower.includes(first) ||
+    lower.includes('sanders') ||
+    lower.includes('bernie');
+  if (!isVoteSummary && !mentionsMember && t.length > 55) return true;
+
+  return false;
 }
 
 function extractKeyVoteTopicTexts(html: string): string[] {
@@ -190,7 +234,7 @@ function extractKeyVoteTopicTexts(html: string): string[] {
     const id = (match[1] ?? '').replace(/_/g, ' ').toLowerCase();
     if (!id) continue;
     const isTopicHeading =
-      /immigration|economy|health|education|environment|crime|judiciary|civil|defense|foreign|budget|tax|energy|abortion|reproductive|gun|firearm/.test(id);
+      /immigration|economy|health|education|climate|environment|public.safety|crime|judiciary|civil|defense|foreign|budget|tax|energy|abortion|reproductive|gun|firearm|veteran|technology|artificial|privacy|section.230/.test(id);
     if (!isTopicHeading) continue;
     const start = match.index + match[0].length;
     const rest = html.slice(start);
@@ -328,7 +372,9 @@ async function fetchBallotpediaPositions(
   const topicBuckets = RECORD_TOPIC_BUCKETS.filter((b) => b.id !== 'legislation');
 
   for (const bucket of topicBuckets) {
-    const matched = positionTexts.filter((t) => textMatchesKeyword(t, bucket.keywords));
+    const matched = positionTexts
+      .filter((t) => textMatchesKeyword(t, bucket.keywords))
+      .filter((t) => !isMisattributedPlatformText(t, leg));
     if (matched.length === 0) continue;
     byTopic.set(
       bucket.id,
@@ -465,6 +511,7 @@ function buildSaidDidLinks(
     .slice(0, MAX_SAID_DID_LINKS);
 
   return filtered.map((vote) => ({
+    topicId,
     statedPositionDate,
     voteDate: vote.date,
     billTitle: vote.billTitle,
@@ -475,11 +522,118 @@ function buildSaidDidLinks(
   }));
 }
 
+interface GovInfoSearchResult {
+  title?: string;
+  packageId?: string;
+  granuleId?: string;
+  dateIssued?: string;
+}
+
+function crecSpeakerPrefix(leg: LegislatorRow): string {
+  if (leg.chamber === 'senate') {
+    return `Mr. ${leg.lastName.toUpperCase()}`;
+  }
+  return `${leg.lastName.toUpperCase()}`;
+}
+
+function mapCrecTextToTopic(text: string): string | null {
+  const topicId = classifyTextToRecordTopicId(text);
+  return topicId === 'legislation' ? null : topicId;
+}
+
+function extractCrecSpeechExcerpt(plainText: string, speakerPrefix: string): string | null {
+  const idx = plainText.search(new RegExp(speakerPrefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'));
+  if (idx === -1) return null;
+
+  let excerpt = plainText.slice(idx);
+  const nextSpeaker = excerpt.slice(speakerPrefix.length + 5).search(/\bMr\.|Ms\.|Mrs\.|The PRESID|The SPEAK/i);
+  if (nextSpeaker > 80) {
+    excerpt = excerpt.slice(0, speakerPrefix.length + 5 + nextSpeaker);
+  }
+
+  excerpt = excerpt.replace(/\[[^\]]*\]/g, '').replace(/\s+/g, ' ').trim();
+  if (excerpt.length < 80) return null;
+  return excerpt.slice(0, 600);
+}
+
+async function fetchGovInfoCrecByTopic(
+  leg: LegislatorRow,
+  apiKey: string,
+): Promise<Map<string, TopicStatementEntry[]>> {
+  const byTopic = new Map<string, TopicStatementEntry[]>();
+  const speaker = crecSpeakerPrefix(leg);
+  const congress = 119;
+
+  await sleep(GOVINFO_DELAY_MS);
+  try {
+    const searchRes = await fetch(`https://api.govinfo.gov/search?api_key=${encodeURIComponent(apiKey)}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        query: `collection:CREC AND congress:${congress} AND "${speaker}"`,
+        pageSize: MAX_CREC_STATEMENTS_PER_MEMBER,
+        offsetMark: '*',
+        sorts: [{ field: 'publishdate', sortOrder: 'DESC' }],
+      }),
+    });
+    if (!searchRes.ok) return byTopic;
+
+    const searchData = (await searchRes.json()) as { results?: GovInfoSearchResult[] };
+    const results = (searchData.results ?? []).filter((r) => r.granuleId && r.packageId);
+
+    for (const result of results) {
+      await sleep(GOVINFO_DELAY_MS);
+      try {
+        const textRes = await fetch(
+          `https://api.govinfo.gov/packages/${result.packageId}/granules/${result.granuleId}/htm?api_key=${encodeURIComponent(apiKey)}`,
+        );
+        if (!textRes.ok) continue;
+        const html = await textRes.text();
+        const plain = stripHtml(html);
+        const speakerHay = plain.toLowerCase().replace(/\./g, '');
+        if (!speakerHay.includes(speaker.toLowerCase().replace(/\./g, ''))) continue;
+
+        const excerpt = extractCrecSpeechExcerpt(plain, speaker);
+        if (!excerpt) continue;
+
+        const topicId = mapCrecTextToTopic(`${result.title ?? ''} ${excerpt}`);
+        if (!topicId) continue;
+
+        const date = (result.dateIssued ?? new Date().toISOString().slice(0, 10)).slice(0, 10);
+        const url = `https://www.govinfo.gov/app/details/${result.granuleId}`;
+
+        const entry: TopicStatementEntry = {
+          title: excerpt,
+          date,
+          url,
+          tier: 'official',
+          topicId,
+        };
+
+        const existing = byTopic.get(topicId) ?? [];
+        if (existing.length >= 2) continue;
+        if (existing.some((e) => e.url === url)) continue;
+        existing.push(entry);
+        byTopic.set(topicId, existing);
+      } catch {
+        /* skip granule */
+      }
+    }
+  } catch (err) {
+    console.warn(
+      `  WARN GovInfo CREC failed for ${leg.name}: ${err instanceof Error ? err.message : err}`,
+    );
+  }
+
+  return byTopic;
+}
+
 function buildSnapshotMeta(
   members: LegislatorRow[],
   byBioguideId: Record<string, Record<string, TopicPositionData>>,
   asOf: string,
   votesmartConfigured: boolean,
+  govinfoConfigured: boolean,
 ): TopicPositionsSnapshot['meta'] {
   const topicBuckets = RECORD_TOPIC_BUCKETS.filter((b) => b.id !== 'legislation');
   const perTopicCoverage: Record<string, number> = {};
@@ -514,7 +668,11 @@ function buildSnapshotMeta(
 
   return {
     asOf,
-    source: 'Ballotpedia + VoteSmart NPAT + Congress roll-call votes (Said→Did)',
+    source: votesmartConfigured
+      ? 'Ballotpedia + VoteSmart NPAT + GovInfo CREC + Congress roll-call votes (Said→Did)'
+      : govinfoConfigured
+        ? 'Ballotpedia + GovInfo CREC + Congress roll-call votes (Said→Did)'
+        : 'Ballotpedia + Congress roll-call votes (Said→Did)',
     totalMembers: members.length,
     membersWithData,
     membersWithPlatformPositions,
@@ -533,9 +691,10 @@ async function writeSnapshot(
   byBioguideId: Record<string, Record<string, TopicPositionData>>,
   asOf: string,
   votesmartConfigured: boolean,
+  govinfoConfigured: boolean,
 ): Promise<void> {
   const snapshot: TopicPositionsSnapshot = {
-    meta: buildSnapshotMeta(members, byBioguideId, asOf, votesmartConfigured),
+    meta: buildSnapshotMeta(members, byBioguideId, asOf, votesmartConfigured, govinfoConfigured),
     byBioguideId,
   };
   await mkdir(OUT_DIR, { recursive: true });
@@ -546,7 +705,9 @@ async function main(): Promise<void> {
   config({ path: path.join(projectRoot, '.env.local') });
 
   const votesmartKey = (process.env.VOTESMART_API_KEY ?? '').trim();
+  const govinfoKey = (process.env.GOVINFO_API_KEY ?? process.env.DATA_GOV_API_KEY ?? '').trim();
   console.log('VoteSmart key length:', votesmartKey.length);
+  console.log('GovInfo key length:', govinfoKey.length);
   if (!votesmartKey) {
     console.warn('WARN: VOTESMART_API_KEY missing — NPAT stated positions will be skipped.');
   }
@@ -600,6 +761,14 @@ async function main(): Promise<void> {
 
     const memberTopics: Record<string, TopicPositionData> = {};
     const ballotByTopic = await fetchBallotpediaPositions(leg, asOf);
+    const crecByTopic = govinfoKey ? await fetchGovInfoCrecByTopic(leg, govinfoKey) : new Map();
+    const mediaStatements = await fetchApprovedMediaStatementsForMember(leg.bioguideId);
+    const mediaByTopic = new Map<string, TopicStatementEntry[]>();
+    for (const st of mediaStatements) {
+      const list = mediaByTopic.get(st.topicId) ?? [];
+      if (list.length < 2) list.push(st);
+      mediaByTopic.set(st.topicId, list);
+    }
 
     let npatByTopic = new Map<string, { position: string; date: string | null }>();
     let voteSmartCandidateId: number | null = null;
@@ -620,11 +789,15 @@ async function main(): Promise<void> {
     for (const bucket of topicBuckets) {
       const platformPositions = ballotByTopic.get(bucket.id);
       const npat = npatByTopic.get(bucket.id);
+      const crecStatements = crecByTopic.get(bucket.id) ?? [];
+      const mediaForTopic = mediaByTopic.get(bucket.id) ?? [];
 
       const hasPlatform = platformPositions && platformPositions.length > 0;
       const hasNpat = Boolean(npat?.position);
+      const hasCrec = crecStatements.length > 0;
+      const hasMedia = mediaForTopic.length > 0;
 
-      if (!hasPlatform && !hasNpat) continue;
+      if (!hasPlatform && !hasNpat && !hasCrec && !hasMedia) continue;
 
       const statedPositionDate = npat?.date ?? null;
       const npatUrl =
@@ -633,7 +806,7 @@ async function main(): Promise<void> {
           : 'https://votesmart.org';
 
       const topicData: TopicPositionData = {
-        statements: [],
+        statements: [...mediaForTopic, ...crecStatements],
         saidDidLinks: buildSaidDidLinks(bucket.id, statedPositionDate, memberVotes),
       };
 
@@ -646,6 +819,8 @@ async function main(): Promise<void> {
           url: npatUrl,
         };
         topicData.statements = [
+          ...mediaForTopic,
+          ...crecStatements,
           {
             title: npat.position,
             date: npat.date ?? asOf,
@@ -667,15 +842,15 @@ async function main(): Promise<void> {
     await writeFile(CHECKPOINT_FILE, JSON.stringify(checkpoint) + '\n', 'utf8');
 
     if ((i + 1) % 10 === 0 || i === members.length - 1) {
-      await writeSnapshot(members, byBioguideId, asOf, !!votesmartKey);
+      await writeSnapshot(members, byBioguideId, asOf, !!votesmartKey, !!govinfoKey);
       const withData = Object.keys(byBioguideId).length;
       console.log(`  progress: ${i + 1}/${members.length} — ${withData} members with topic position data`);
     }
   }
 
-  await writeSnapshot(members, byBioguideId, asOf, !!votesmartKey);
+  await writeSnapshot(members, byBioguideId, asOf, !!votesmartKey, !!govinfoKey);
 
-  const meta = buildSnapshotMeta(members, byBioguideId, asOf, !!votesmartKey);
+  const meta = buildSnapshotMeta(members, byBioguideId, asOf, !!votesmartKey, !!govinfoKey);
   console.log('');
   console.log('── sync:topic-positions complete ──');
   console.log(`Members with data: ${meta.membersWithData}/${members.length}`);

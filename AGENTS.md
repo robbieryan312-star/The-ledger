@@ -130,9 +130,9 @@ After data changes always run: `npm run sync:legislators` → `npm run verify:of
 
 ## Scope priority
 
-1. All 537 federal Congress members — votes, FEC, office, news
-2. Governors and top statewide via state `.gov` / SoS sources
-3. Rich featured profiles with verbatim journalism quotes and "Said → Did" diffs
+1. Rich featured profiles with verbatim journalism quotes and "Said → Did" diffs — depth before breadth
+2. All 537 federal Congress members — votes, FEC, office, news
+3. Governors and top statewide via state `.gov` / SoS sources
 4. Follow the Money: FEC schedule A, STOCK Act trades, lobbying disclosures
 5. Local elections — demo templates only until a real local data pipeline exists
 

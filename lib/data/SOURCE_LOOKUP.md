@@ -93,10 +93,32 @@ Full entries with **lookFor** field lists: `SOURCE_CATALOG` in `sourceCatalog.ts
 
 ---
 
+## Shared article cache (cross-politician search efficiency)
+
+**Problem:** Searching for journalism/news content one politician at a time re-fetches and re-verifies the same articles repeatedly — a single vote story, endorsement story, or debate recap often mentions multiple politicians, but each profile's sync hits it fresh. This gets expensive fast as coverage scales toward 537 members.
+
+**Rule:** Targeted searches for journalism quotes, statements, or endorsements must persist a shared, reusable index — not just per-politician output.
+
+- Index key: article URL.
+- Stored per article: outlet, publish date, full-article-verified text (or a verified excerpt), which `bioguideId`s it mentions, which of the 10 standard topics it touches, and any quotes already extracted and corroborated from it.
+- **Before** running a new targeted search for a politician/topic, check this cache first. Only hit the network for genuinely new ground.
+- When an article is fetched and verified for one politician, scan it for mentions of other tracked politicians (especially endorsement language) and record those hits too — this is a byproduct of the search already running, not a separate pass.
+- No NLP/ML tagging needed — the same name + keyword matching already used for targeted search is sufficient to populate `mentionedBioguideIds`.
+- This cache is infrastructure, not a sourcing-rule change — every tier/corroboration rule above still applies per-claim, per-politician. The cache only avoids redundant fetching, it never substitutes for verification.
+
+## Search strategy — targeted, not broad-scan
+
+Searches for journalism quotes, statements, and endorsements must be **targeted forward** (politician + topic + approved-outlet domain), never a broad scan classified after the fact.
+
+- Query restricted to approved-outlet domains (see AGENTS.md list) + politician name + the relevant topic's keyword set (`STANDARD_POLICY_TOPICS` in `lib/data/topicCoverage.ts`).
+- Fetch full article text only for short-listed candidates that already look like a match — not as a first-pass blanket fetch over a broad result set.
+- Display output is always a short objective summary + verbatim quote + link behind an expand control (`ExpandableQuoteBlock`) — never the full article rendered in the UI.
+
 ## Agent workflow
 
 1. Read `DATA_NEED_ROUTING` or table above for the task.
 2. Open matching `SOURCE_CATALOG` entry → read **lookFor** + **syncCommand**.
 3. Check `KEYS.md` for `keyVar` SET vs EMPTY.
-4. Run sync; verify output file; `npm run build`.
-5. Never fabricate — use “No verified record available” for gaps.
+4. For journalism/news searches: check the shared article cache before searching; search targeted, not broad-scan (see above).
+5. Run sync; verify output file; `npm run build`.
+6. Never fabricate — use “No verified record available” for gaps.

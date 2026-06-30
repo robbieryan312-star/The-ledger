@@ -6,7 +6,11 @@ import { ChevronDown, ChevronRight, ExternalLink, FileText } from 'lucide-react'
 import type { ProfileRecordByTopic, TopicRecordGroup } from '@/lib/data/profileRecordByTopic';
 import type { MemberDeepBill, MemberDeepProfile } from '@/lib/data/memberDeep';
 import { getTopicPositions } from '@/lib/data/topicPositions';
+import { buildTopicConsistencyTimeline } from '@/lib/data/buildTopicConsistencyTimeline';
+import type { OrgVoteTopicLink } from '@/lib/data/buildOrgVoteTopicLinks';
+import { recordTopicLabel } from '@/lib/data/profileRecordByTopic';
 import SourceBadge from '@/components/ui/SourceBadge';
+import ExpandableQuoteBlock from '@/components/ui/ExpandableQuoteBlock';
 
 function voteSplitSummary(group: TopicRecordGroup): string {
   const parts: string[] = [];
@@ -73,10 +77,14 @@ function TopicGroupRow({
   group,
   bioguideId,
   memberDeep,
+  politicianId,
+  orgVoteLinks,
 }: {
   group: TopicRecordGroup;
   bioguideId?: string;
   memberDeep?: MemberDeepProfile | null;
+  politicianId?: string;
+  orgVoteLinks?: OrgVoteTopicLink[];
 }) {
   const [open, setOpen] = useState(false);
   const [showLegislation, setShowLegislation] = useState(false);
@@ -110,8 +118,15 @@ function TopicGroupRow({
     sponsorExamples.length > 0 ||
     additionalBills.length > 0;
 
+  const topicOrgLinks = orgVoteLinks?.filter((l) => l.orgTopicId === group.topicId) ?? [];
+  const timeline =
+    bioguideId && politicianId && topicPositions
+      ? buildTopicConsistencyTimeline(bioguideId, group.topicId, topicPositions, politicianId)
+      : [];
+  const hasTimeline = timeline.length >= 2;
+
   const hasExpandable =
-    voteExamples.length > 0 || hasStatedBlock || hasLegislation;
+    voteExamples.length > 0 || hasStatedBlock || hasLegislation || topicOrgLinks.length > 0 || hasTimeline;
 
   return (
     <div className="rounded-lg border border-white/[0.08] bg-[#0a1628]/60">
@@ -145,7 +160,10 @@ function TopicGroupRow({
               {hasStatedPosition && (
                 <div>
                   <div className="text-white font-semibold mb-1">Stated position</div>
-                  <p className="text-gray-200 leading-relaxed">{topicPositions.statedPosition}</p>
+                  <ExpandableQuoteBlock
+                    summary={topicPositions.statedPosition!.split(/(?<=[.!?])\s+/)[0] ?? topicPositions.statedPosition!}
+                    fullText={topicPositions.statedPosition!}
+                  />
                   {topicPositions.statedPositionSource && (
                     <div className="mt-2 flex flex-wrap items-center gap-2">
                       <SourceBadge
@@ -161,7 +179,8 @@ function TopicGroupRow({
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white transition-colors"
                       >
-                        VoteSmart <ExternalLink className="h-3 w-3" />
+                        {topicPositions.statedPositionSource.source}{' '}
+                        <ExternalLink className="h-3 w-3" />
                       </Link>
                     </div>
                   )}
@@ -173,7 +192,10 @@ function TopicGroupRow({
                   <div className="text-white font-semibold mb-1">Platform position</div>
                   {platformPositions.map((pos, idx) => (
                     <div key={idx} className={idx > 0 ? 'mt-3' : ''}>
-                      <p className="text-gray-200 leading-relaxed">{pos.text}</p>
+                      <ExpandableQuoteBlock
+                        summary={pos.text.split(/(?<=[.!?])\s+/)[0] ?? pos.text}
+                        fullText={pos.text}
+                      />
                       <div className="mt-2 flex flex-wrap items-center gap-2">
                         <SourceBadge
                           source={{
@@ -215,14 +237,18 @@ function TopicGroupRow({
                             }}
                           />
                         </div>
+                        <ExpandableQuoteBlock
+                          summary={statement.title.split(/(?<=[.!?])\s+/)[0] ?? statement.title}
+                          fullText={statement.title}
+                          verbatim={statement.tier === 'official' || statement.tier === 'media'}
+                        />
                         <Link
                           href={statement.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-200 hover:text-white mt-0.5 leading-snug transition-colors inline-flex items-start gap-1"
+                          className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white transition-colors mt-1 text-[11px]"
                         >
-                          {truncateTitle(statement.title)}{' '}
-                          <ExternalLink className="h-3 w-3 flex-shrink-0 mt-0.5" />
+                          Source <ExternalLink className="h-3 w-3" />
                         </Link>
                       </div>
                     </div>
@@ -258,7 +284,16 @@ function TopicGroupRow({
                       )}
                       <span className="text-gray-500">{formatShortDate(ex.date)}</span>
                     </div>
-                    <p className="text-gray-300 leading-snug mt-0.5 line-clamp-2">{ex.title}</p>
+                    <div className="mt-0.5">
+                      <ExpandableQuoteBlock
+                        summary={
+                          ex.billSummary?.split(/(?<=[.!?])\s+/)[0] ??
+                          ex.title.split(/(?<=[.!?])\s+/)[0] ??
+                          ex.title
+                        }
+                        fullText={ex.billSummary ?? ex.title}
+                      />
+                    </div>
                     <Link
                       href={ex.congressGovUrl}
                       target="_blank"
@@ -270,6 +305,59 @@ function TopicGroupRow({
                   </div>
                 </div>
               ))}
+            </div>
+          )}
+
+          {topicOrgLinks.length > 0 && (
+            <div className="text-xs space-y-2 border-t border-white/[0.06] pt-3">
+              <div className="text-gray-500 text-[11px] font-medium">
+                PAC/committee receipts and roll-call votes on the same topic
+              </div>
+              {topicOrgLinks.slice(0, 3).map((link, i) => (
+                <div key={i} className="rounded border border-white/[0.06] bg-[#0a1628]/40 px-3 py-2">
+                  <p className="text-gray-200 leading-snug">
+                    {link.orgName} — ${link.totalAmount.toLocaleString()} ({link.receiptCount} receipt
+                    {link.receiptCount === 1 ? '' : 's'}) · roll-call {link.voteChoice} on{' '}
+                    {formatShortDate(link.voteDate)} — {truncateTitle(link.billTitle, 60)}
+                  </p>
+                  <div className="flex flex-wrap items-center gap-2 mt-1">
+                    <SourceBadge
+                      source={{
+                        name: 'Federal Election Commission (OpenFEC)',
+                        url: 'https://www.fec.gov/data/',
+                        tier: 'official',
+                      }}
+                      size="xs"
+                    />
+                    <Link
+                      href={link.voteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white transition-colors"
+                    >
+                      Congress.gov <ExternalLink className="h-3 w-3" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {hasTimeline && (
+            <div className="text-xs space-y-2 border-t border-white/[0.06] pt-3">
+              <div className="text-gray-500 text-[11px] font-medium">Topic record timeline</div>
+              <ul className="space-y-2 list-none pl-0">
+                {timeline.map((bullet, i) => (
+                  <li key={i} className="flex gap-2 text-gray-300 leading-snug">
+                    <span className="text-gray-500 flex-shrink-0">{formatShortDate(bullet.date)}</span>
+                    <span className="text-[#c8a951] flex-shrink-0">{bullet.kind}</span>
+                    <span className="flex-1 min-w-0">{truncateTitle(bullet.claim, 120)}</span>
+                    <span className="text-gray-500 flex-shrink-0 hidden sm:inline">
+                      {bullet.sourceName}, {bullet.tier}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
 
@@ -373,10 +461,14 @@ export default function ProfileRecordByTopicPanel({
   record,
   bioguideId,
   memberDeep,
+  politicianId,
+  orgVoteLinks,
 }: {
   record: ProfileRecordByTopic;
   bioguideId?: string;
   memberDeep?: MemberDeepProfile | null;
+  politicianId?: string;
+  orgVoteLinks?: OrgVoteTopicLink[];
 }) {
   const deepSponsoredTotal = memberDeep?.meta.totalSponsored ?? 0;
   const deepCosponsoredTotal = memberDeep?.meta.totalCosponsored ?? 0;
@@ -392,7 +484,7 @@ export default function ProfileRecordByTopicPanel({
         {memberDeep
           ? ` (${deepSponsoredTotal} sponsored · ${deepCosponsoredTotal} cosponsored via Congress.gov)`
           : ''}
-        ; stated positions from VoteSmart NPAT; platform positions from Ballotpedia where available.
+        ; platform positions from Ballotpedia where available.
       </p>
       <div className="space-y-2">
         {record.topics.map((group) => (
@@ -401,6 +493,8 @@ export default function ProfileRecordByTopicPanel({
             group={group}
             bioguideId={bioguideId}
             memberDeep={memberDeep}
+            politicianId={politicianId}
+            orgVoteLinks={orgVoteLinks}
           />
         ))}
         {memberDeep &&
@@ -409,8 +503,7 @@ export default function ProfileRecordByTopicPanel({
             if (!block || (block.sponsored.length === 0 && block.cosponsored.length === 0)) {
               return null;
             }
-            const label =
-              TOPIC_LABELS[topicId] ?? topicId.charAt(0).toUpperCase() + topicId.slice(1);
+            const label = recordTopicLabel(topicId);
             return (
               <TopicGroupRow
                 key={topicId}
@@ -424,6 +517,8 @@ export default function ProfileRecordByTopicPanel({
                 }}
                 bioguideId={bioguideId}
                 memberDeep={memberDeep}
+                politicianId={politicianId}
+                orgVoteLinks={orgVoteLinks}
               />
             );
           })}
@@ -444,19 +539,6 @@ export default function ProfileRecordByTopicPanel({
     </div>
   );
 }
-
-const TOPIC_LABELS: Record<string, string> = {
-  healthcare: 'Healthcare',
-  immigration: 'Immigration & Border',
-  defense: 'Defense & Foreign Policy',
-  economy: 'Economy & Budget',
-  environment: 'Environment & Energy',
-  education: 'Education',
-  crime: 'Crime & Public Safety',
-  civil: 'Civil Rights & Liberties',
-  judiciary: 'Judiciary & Nominations',
-  legislation: 'Federal Legislation',
-};
 
 function RECORD_TOPIC_IDS_ONLY_IN_DEEP(
   memberDeep: MemberDeepProfile,

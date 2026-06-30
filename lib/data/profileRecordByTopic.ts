@@ -6,7 +6,6 @@
 import type { Bill, VoteChoice, VoteRecord } from '../types';
 import { getCongressVotes } from './congressVotes';
 import { getBills } from './legislation';
-import legislatorsSnapshot from './generated/currentLegislators.json';
 
 export interface TopicRecordExample {
   title: string;
@@ -16,6 +15,8 @@ export interface TopicRecordExample {
   role: 'vote' | 'sponsor';
   congressGovUrl: string;
   billNumber?: string;
+  /** Plain-language CRS summary from Congress.gov when synced. */
+  billSummary?: string;
 }
 
 export interface TopicVoteSplit {
@@ -47,8 +48,31 @@ interface TopicBucketDef {
   keywords: string[];
 }
 
-/** Fixed ~10 topic buckets for federal record grouping. */
+/** Raw sync / record buckets — aligned to the 10 finalized profile topics (+ legislation catch-all). */
 export const RECORD_TOPIC_BUCKETS: TopicBucketDef[] = [
+  {
+    id: 'abortion',
+    label: 'Abortion & Reproductive Rights',
+    keywords: ['abortion', 'reproductive', 'pro-life', 'pro-choice', 'roe', 'contraception', 'ivf', 'dobbs', 'pregnancy'],
+  },
+  {
+    id: 'technology',
+    label: 'Technology, Privacy & AI',
+    keywords: [
+      'artificial intelligence', ' section 230', 'section 230', 'data privacy', 'algorithm', 'big tech',
+      'content moderation', 'deepfake', 'social media platform', 'tech platform', 'online platform',
+      'surveillance tech', 'facial recognition',
+    ],
+  },
+  {
+    id: 'public-safety',
+    label: 'Public Safety',
+    keywords: [
+      'gun', 'firearm', 'second amendment', 'background check', 'assault weapon', 'weapon',
+      'criminal justice', 'sentencing', 'incarceration', 'police reform', 'bail', 'death penalty',
+      'prison', 'law enforcement', 'crime', 'fentanyl', 'illicit trade', 'trafficking',
+    ],
+  },
   {
     id: 'healthcare',
     label: 'Healthcare',
@@ -60,19 +84,18 @@ export const RECORD_TOPIC_BUCKETS: TopicBucketDef[] = [
     keywords: ['immigration', 'border', 'migrant', 'asylum', 'daca', 'dreamer', 'e-verify', 'sanctuary', 'visa', 'refugee', 'deportation', 'ice '],
   },
   {
-    id: 'defense',
-    label: 'Defense & Foreign Policy',
-    keywords: ['defense', 'military', 'armed forces', 'war powers', 'nato', 'ukraine', 'israel', 'iran', 'china', 'taiwan', 'foreign aid', 'pentagon', 'troops', 'hostilities', 'national security'],
+    id: 'climate',
+    label: 'Climate & Energy',
+    keywords: ['climate', 'environment', 'energy', 'pollution', 'emission', 'renewable', 'fossil', 'drilling', 'wildlife', 'conservation', 'pollinator', 'everglades', 'water quality', 'carbon'],
   },
   {
-    id: 'economy',
-    label: 'Economy & Budget',
-    keywords: ['budget', 'appropriat', 'fiscal', 'debt', 'spending', 'inflation', 'jobs', 'wage', 'trade', 'tariff', 'tax', 'revenue', 'deficit', 'commerce'],
-  },
-  {
-    id: 'environment',
-    label: 'Environment & Energy',
-    keywords: ['climate', 'environment', 'energy', 'pollution', 'emission', 'renewable', 'fossil', 'drilling', 'wildlife', 'conservation', 'pollinator', 'everglades', 'water quality'],
+    id: 'defense-veterans',
+    label: 'Defense & Veterans',
+    keywords: [
+      'defense', 'military', 'armed forces', 'war powers', 'nato', 'ukraine', 'israel', 'iran', 'china',
+      'taiwan', 'foreign aid', 'pentagon', 'troops', 'hostilities', 'national security', 'veteran',
+      'veterans', 'gi bill', 'va benefits', 'tricare', 'military family', 'service member',
+    ],
   },
   {
     id: 'education',
@@ -80,19 +103,22 @@ export const RECORD_TOPIC_BUCKETS: TopicBucketDef[] = [
     keywords: ['education', 'school', 'student', 'teacher', 'university', 'college', 'tuition', 'loan', 'curriculum', 'child care', 'head start'],
   },
   {
-    id: 'crime',
-    label: 'Crime & Public Safety',
-    keywords: ['crime', 'police', 'law enforcement', 'gun', 'firearm', 'weapon', 'sentencing', 'prison', 'fentanyl', 'illicit trade', 'trafficking'],
+    id: 'civil-liberties',
+    label: 'Civil Liberties & Regulation',
+    keywords: [
+      'civil rights', 'civil liberties', 'voting rights', 'discrimination', 'fisa', 'surveillance',
+      'speech', 'censorship', 'lgbt', 'equality', 'judiciary', 'judicial', 'nomination', 'confirm',
+      'justice', 'court', 'judge', 'attorney general', 'ambassador', 'constitutional',
+    ],
   },
   {
-    id: 'civil',
-    label: 'Civil Rights & Liberties',
-    keywords: ['civil rights', 'voting rights', 'discrimination', 'privacy', 'surveillance', 'fisa', 'speech', 'abortion', 'reproductive', 'lgbt', 'equality'],
-  },
-  {
-    id: 'judiciary',
-    label: 'Judiciary & Nominations',
-    keywords: ['judiciary', 'judicial', 'nomination', 'confirm', 'justice', 'court', 'judge', 'attorney general', 'ambassador'],
+    id: 'economy-taxes',
+    label: 'Economy & Taxes',
+    keywords: [
+      'budget', 'appropriat', 'fiscal', 'debt', 'spending', 'inflation', 'jobs', 'wage', 'trade',
+      'tariff', 'tax', 'revenue', 'deficit', 'commerce', 'housing', 'rent', 'mortgage', 'homeless',
+      'affordable housing', 'zoning', 'eviction', 'hud', 'antitrust', 'monopoly', 'corporate power',
+    ],
   },
   {
     id: 'legislation',
@@ -153,17 +179,33 @@ export function voteCongressGovUrl(vote: VoteRecord): string {
   return sourceUrl || 'https://www.congress.gov';
 }
 
-function classifyRecordText(text: string, category?: string): string {
+/**
+ * Route record text to a topic bucket. Order-sensitive: abortion and technology checked before
+ * broader civil/economy buckets. Tech-platform antitrust (big tech / platform co-occurrence) →
+ * technology; general corporate antitrust → economy-taxes.
+ */
+export function classifyTextToRecordTopicId(text: string, category?: string): string {
   const hay = `${text} ${category ?? ''}`.toLowerCase();
   const cat = (category ?? '').toLowerCase();
 
   if (cat === 'procedural') return 'legislation';
-  if (cat === 'budget') return 'economy';
-  if (cat === 'judiciary') return 'judiciary';
+  if (cat === 'budget') return 'economy-taxes';
+  if (cat === 'judiciary') return 'civil-liberties';
+
+  if (/\b(data privacy|artificial intelligence|\bai\b|algorithm|deepfake|content moderation|section 230|big tech)\b/.test(hay)) {
+    return 'technology';
+  }
+
+  if (/\b(antitrust|monopoly)\b/.test(hay)) {
+    if (/\b(big tech|tech platform|platform|google|meta|facebook|amazon|apple|microsoft|silicon valley)\b/.test(hay)) {
+      return 'technology';
+    }
+    return 'economy-taxes';
+  }
 
   for (const bucket of RECORD_TOPIC_BUCKETS) {
     if (bucket.id === 'legislation') continue;
-    if (bucket.keywords.some((k) => hay.includes(k))) return bucket.id;
+    if (bucket.keywords.some((k) => hay.includes(k.trim().toLowerCase()))) return bucket.id;
   }
 
   if (cat === 'legislation' || hay.includes('bill') || hay.includes('resolution')) {
@@ -172,7 +214,7 @@ function classifyRecordText(text: string, category?: string): string {
   return 'legislation';
 }
 
-function bucketLabel(id: string): string {
+export function recordTopicLabel(id: string): string {
   return RECORD_TOPIC_BUCKETS.find((b) => b.id === id)?.label ?? 'Federal Legislation';
 }
 
@@ -192,7 +234,7 @@ function sponsoredBillsForBioguide(bioguideId: string): Bill[] {
 }
 
 function billTopicId(bill: Bill): string {
-  return classifyRecordText(`${bill.title} ${bill.billNumber}`, bill.statusLabel);
+  return classifyTextToRecordTopicId(`${bill.title} ${bill.billNumber}`, bill.statusLabel);
 }
 
 export function voteTopicId(vote: VoteRecord): string {
@@ -203,7 +245,7 @@ export function voteTopicId(vote: VoteRecord): string {
     vote.billId,
     vote.voteAction ?? '',
   ].join(' ');
-  return classifyRecordText(text, vote.category);
+  return classifyTextToRecordTopicId(text, vote.category);
 }
 
 function sortByDateDesc<T extends { date: string }>(items: T[]): T[] {
@@ -227,11 +269,7 @@ export function getProfileRecordByTopic(
 
   const groups = new Map<
     string,
-    {
-      votes: VoteRecord[];
-      sponsored: Bill[];
-      split: TopicVoteSplit;
-    }
+    { votes: VoteRecord[]; sponsored: Bill[]; split: TopicVoteSplit }
   >();
 
   for (const bucket of RECORD_TOPIC_BUCKETS) {
@@ -269,6 +307,7 @@ export function getProfileRecordByTopic(
         role: 'vote',
         congressGovUrl: voteCongressGovUrl(vote),
         billNumber: vote.billId !== 'Roll Call Vote' ? vote.billId : undefined,
+        billSummary: vote.billSummary,
       });
     }
 
@@ -296,24 +335,10 @@ export function getProfileRecordByTopic(
     });
   }
 
-  if (topics.length === 0) return null;
-
   return {
     topics,
     totalVotes: votes.length,
     totalSponsored: sponsored.length,
     asOf,
   };
-}
-
-/** Build-time diagnostic only — do not call from page render or API routes. */
-export function countProfilesWithTopicRecord(): number {
-  const legislators = (legislatorsSnapshot as { legislators: Array<{ bioguideId: string; chamber: string }> }).legislators;
-  let count = 0;
-  for (const leg of legislators) {
-    if (leg.chamber !== 'senate' && leg.chamber !== 'house') continue;
-    const record = getProfileRecordByTopic(leg.bioguideId, leg.bioguideId);
-    if (record && record.topics.length > 0) count += 1;
-  }
-  return count;
 }
