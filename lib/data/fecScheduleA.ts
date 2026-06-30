@@ -1,4 +1,5 @@
 import scheduleASnapshot from '../../data/fec/national/schedule-a.json';
+import pilotSandersScheduleA from '../../data/fec/pilot/S000033-schedule-a.json';
 import type { FecScheduleAContributor } from './fecClient';
 import type { Source, VoteRecord } from '../types';
 
@@ -35,8 +36,32 @@ interface ScheduleASnapshot {
 
 const snapshot = scheduleASnapshot as ScheduleASnapshot;
 
+interface PilotScheduleASnapshot {
+  meta?: { queryMode?: string; bioguideId?: string };
+  row?: ScheduleAMemberRow;
+}
+
+const pilotSanders = pilotSandersScheduleA as PilotScheduleASnapshot;
+
+function pilotScheduleRow(bioguideId: string): ScheduleAMemberRow | undefined {
+  if (bioguideId !== 'S000033') return undefined;
+  if (pilotSanders.meta?.queryMode !== 'committee_id' || !pilotSanders.row) return undefined;
+  const row = pilotSanders.row;
+  return {
+    ...row,
+    aggregatedByEmployer: row.aggregatedByEmployer?.map((e) => ({
+      employer: e.employer,
+      occupation: e.occupation,
+      totalAmount: e.totalAmount,
+      receiptCount: e.receiptCount,
+    })),
+  };
+}
+
 export function getScheduleAForBioguide(bioguideId?: string): ScheduleAMemberRow | undefined {
   if (!bioguideId) return undefined;
+  const pilot = pilotScheduleRow(bioguideId);
+  if (pilot) return pilot;
   if (snapshot.meta?.queryMode !== 'committee_id') return undefined;
   return snapshot.byBioguideId[bioguideId];
 }
@@ -44,6 +69,8 @@ export function getScheduleAForBioguide(bioguideId?: string): ScheduleAMemberRow
 /** True when Schedule A itemized contributors exist for this member in the national snapshot. */
 export function hasAggregatedScheduleA(bioguideId?: string): boolean {
   if (!bioguideId) return false;
+  const pilot = pilotScheduleRow(bioguideId);
+  if (pilot) return pilot.contributors.length > 0;
   const row = snapshot.byBioguideId[bioguideId];
   return Boolean(row && row.contributors.length > 0);
 }

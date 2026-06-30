@@ -1,6 +1,7 @@
 import type { VoteRecord } from '../types';
-import { RECORD_TOPIC_BUCKETS, voteCongressGovUrl, voteTopicId } from './profileRecordByTopic';
-import type { AggregatedCommitteeReceipt, AggregatedEmployerReceipt, ScheduleAMemberRow } from './fecScheduleA';
+import { voteCongressGovUrl, voteTopicId } from './profileRecordByTopic';
+import type { ScheduleAMemberRow } from './fecScheduleA';
+import { aggregateScheduleAOrgs } from './fecOrgRegistry';
 
 export interface OrgVoteTopicLink {
   orgName: string;
@@ -12,28 +13,7 @@ export interface OrgVoteTopicLink {
   billTitle: string;
   billNumber: string;
   voteUrl: string;
-}
-
-function classifyOrgText(text: string): string | null {
-  const hay = text.toLowerCase();
-  for (const bucket of RECORD_TOPIC_BUCKETS) {
-    if (bucket.id === 'legislation') continue;
-    if (
-      bucket.keywords.some((k) => {
-        const keyword = k.trim().toLowerCase();
-        if (!keyword) return false;
-        if (/\s/.test(keyword)) return hay.includes(keyword);
-        return new RegExp(`\\b${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`).test(hay);
-      })
-    ) {
-      return bucket.id;
-    }
-  }
-  return null;
-}
-
-function orgTopicId(name: string, employer?: string, occupation?: string): string | null {
-  return classifyOrgText([name, employer, occupation].filter(Boolean).join(' '));
+  sector?: string;
 }
 
 function latestVoteForTopic(votes: VoteRecord[], topicId: string): VoteRecord | null {
@@ -48,65 +28,30 @@ export function buildOrgVoteTopicLinks(
 ): OrgVoteTopicLink[] {
   const links: OrgVoteTopicLink[] = [];
   const seen = new Set<string>();
+  const orgs = aggregateScheduleAOrgs(scheduleA.contributors ?? []);
 
-  const orgRows: Array<{
-    name: string;
-    totalAmount: number;
-    receiptCount: number;
-    employer?: string;
-    occupation?: string;
-  }> = [];
+  for (const org of orgs) {
+    for (const topicId of org.topicIds) {
+      const vote = latestVoteForTopic(votes, topicId);
+      if (!vote) continue;
 
-  for (const c of scheduleA.aggregatedByCommittee ?? []) {
-    orgRows.push({
-      name: c.committeeName ?? c.committeeId,
-      totalAmount: c.totalAmount,
-      receiptCount: c.receiptCount,
-    });
-  }
+      const key = `${topicId}:${org.orgName}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
 
-  for (const e of scheduleA.aggregatedByEmployer ?? []) {
-    orgRows.push({
-      name: e.employer,
-      totalAmount: e.totalAmount,
-      receiptCount: e.receiptCount,
-      employer: e.employer,
-      occupation: e.occupation,
-    });
-  }
-
-  for (const c of scheduleA.contributors ?? []) {
-    orgRows.push({
-      name: c.name,
-      totalAmount: c.amount,
-      receiptCount: 1,
-      employer: c.employer,
-      occupation: c.occupation,
-    });
-  }
-
-  for (const org of orgRows) {
-    const topicId = orgTopicId(org.name, org.employer, org.occupation);
-    if (!topicId) continue;
-
-    const vote = latestVoteForTopic(votes, topicId);
-    if (!vote) continue;
-
-    const key = `${topicId}:${org.name}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
-
-    links.push({
-      orgName: org.name,
-      totalAmount: org.totalAmount,
-      receiptCount: org.receiptCount,
-      orgTopicId: topicId,
-      voteDate: vote.date,
-      voteChoice: vote.vote,
-      billTitle: vote.billTitle,
-      billNumber: vote.billId,
-      voteUrl: voteCongressGovUrl(vote),
-    });
+      links.push({
+        orgName: org.orgName,
+        totalAmount: org.totalAmount,
+        receiptCount: org.receiptCount,
+        orgTopicId: topicId,
+        voteDate: vote.date,
+        voteChoice: vote.vote,
+        billTitle: vote.billTitle,
+        billNumber: vote.billId,
+        voteUrl: voteCongressGovUrl(vote),
+        sector: org.sector,
+      });
+    }
   }
 
   return links.sort((a, b) => b.totalAmount - a.totalAmount);
