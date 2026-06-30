@@ -17,10 +17,14 @@ const SOURCE_COLORS = ['#c8a951', '#2d5a8e', '#4ade80', '#f87171', '#a78bfa'];
 export default function DonorChart({
   finance,
   fecEntry,
+  useOfficialScheduleA: _useOfficialScheduleA,
 }: {
   finance: CampaignFinance;
   fecEntry?: FecFinanceEntry;
+  /** When true, member has aggregated Schedule A in the national FEC snapshot. */
+  useOfficialScheduleA?: boolean;
 }) {
+  void _useOfficialScheduleA;
   const total = finance.totalRaised;
   const hasFecTotals = !!fecEntry;
 

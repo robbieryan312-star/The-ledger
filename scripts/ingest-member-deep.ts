@@ -5,6 +5,7 @@
  * Run: npm run ingest:member
  *      npm run ingest:member -- --bioguide S000033
  *      npm run ingest:member -- --all
+ *      npm run ingest:member-all -- --limit 30
  */
 import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -21,7 +22,34 @@ const MANIFEST_FILE = path.join(OUT_DIR, 'manifest.json');
 const API_BASE = 'https://api.congress.gov/v3';
 const PAGE_LIMIT = 250;
 const REQUEST_DELAY_MS = 400;
+const REQUEST_TIMEOUT_MS = 60_000;
+const MAX_FETCH_RETRIES = 2;
+const RETRY_BACKOFF_MS = 2_000;
 const MAX_COSPONSORED_PER_TOPIC = 50;
+const TOPIC_BUCKET_COUNT = RECORD_TOPIC_BUCKETS.length;
+const MAX_COSPONSORED_FETCH = MAX_COSPONSORED_PER_TOPIC * TOPIC_BUCKET_COUNT;
+
+let apiCallCount = 0;
+
+export class CongressApiError extends Error {
+  readonly status: number;
+  readonly body: string;
+
+  constructor(status: number, body: string) {
+    super(`Congress.gov request failed: HTTP ${status}`);
+    this.name = 'CongressApiError';
+    this.status = status;
+    this.body = body;
+  }
+}
+
+export function resetApiCallCount(): void {
+  apiCallCount = 0;
+}
+
+export function getApiCallCount(): number {
+  return apiCallCount;
+}
 
 const CONGRESS_SOURCE: Source = {
   name: 'Congress.gov',
@@ -107,18 +135,27 @@ interface LegislatorRow {
   chamber: string;
 }
 
-function parseArgs(): { all: boolean; bioguideId: string } {
+function parseArgs(): { all: boolean; bioguideId: string; limit?: number } {
   const args = process.argv.slice(2);
   let all = false;
   let bioguideId = 'S000033';
+  let limit: number | undefined;
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--all') all = true;
     if (args[i] === '--bioguide' && args[i + 1]) {
       bioguideId = args[i + 1];
       i += 1;
     }
+    if (args[i] === '--limit' && args[i + 1]) {
+      const n = Number.parseInt(args[i + 1], 10);
+      if (!Number.isFinite(n) || n < 1) {
+        throw new Error('--limit requires a positive integer');
+      }
+      limit = n;
+      i += 1;
+    }
   }
-  return { all, bioguideId };
+  return { all, bioguideId, limit };
 }
 
 function getCongressApiKey(): string {
@@ -138,19 +175,65 @@ async function congressGet<T>(url: string, key: string): Promise<T> {
   if (!resolved.searchParams.has('format')) {
     resolved.searchParams.set('format', 'json');
   }
-  const res = await fetch(resolved.toString());
-  if (!res.ok) {
-    const body = await res.text().catch(() => '');
-    throw new Error(`Congress.gov request failed: HTTP ${res.status} ${body.slice(0, 200)}`);
+  const resolvedUrl = resolved.toString();
+
+  let lastError: Error | null = null;
+  for (let attempt = 0; attempt <= MAX_FETCH_RETRIES; attempt += 1) {
+    if (attempt > 0) {
+      const backoff = RETRY_BACKOFF_MS * attempt;
+      console.log(`  retry ${attempt}/${MAX_FETCH_RETRIES} after ${backoff}ms…`);
+      await sleep(backoff);
+    }
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+    try {
+      apiCallCount += 1;
+      const res = await fetch(resolvedUrl, { signal: controller.signal });
+      if (!res.ok) {
+        const body = await res.text().catch(() => '');
+        throw new CongressApiError(res.status, body);
+      }
+      return (await res.json()) as T;
+    } catch (err) {
+      if (err instanceof CongressApiError) {
+        throw err;
+      }
+      const message = err instanceof Error ? err.message : String(err);
+      const retryable =
+        message.includes('abort') ||
+        message.includes('terminated') ||
+        message.includes('ECONNRESET') ||
+        message.includes('ETIMEDOUT') ||
+        message.includes('fetch failed') ||
+        message.includes('network');
+      lastError = err instanceof Error ? err : new Error(message);
+      if (!retryable || attempt >= MAX_FETCH_RETRIES) {
+        throw lastError;
+      }
+    } finally {
+      clearTimeout(timeout);
+    }
   }
-  return (await res.json()) as T;
+
+  throw lastError ?? new Error('Congress.gov request failed');
 }
 
-function buildUrl(bioguideId: string, pathSuffix: string, key: string): string {
+function buildUrl(
+  bioguideId: string,
+  pathSuffix: string,
+  key: string,
+  extraParams?: Record<string, string>,
+): string {
   const url = new URL(`${API_BASE}${pathSuffix}`);
   url.searchParams.set('api_key', key);
   url.searchParams.set('format', 'json');
   url.searchParams.set('limit', String(PAGE_LIMIT));
+  if (extraParams) {
+    for (const [param, value] of Object.entries(extraParams)) {
+      url.searchParams.set(param, value);
+    }
+  }
   return url.toString();
 }
 
@@ -230,18 +313,149 @@ function mapBill(bill: CongressBillRaw, bioguideId: string, role?: 'cosponsor'):
   };
 }
 
+interface TopicFetchBuffer {
+  bills: MemberDeepBill[];
+  exhausted: boolean;
+}
+
+interface CosponsoredFetchResult {
+  bills: MemberDeepBill[];
+  totalCount: number | null;
+  pagesFetched: number;
+  earlyStopped: boolean;
+}
+
+function initTopicFetchBuffers(): Record<string, TopicFetchBuffer> {
+  const out: Record<string, TopicFetchBuffer> = {};
+  for (const bucket of RECORD_TOPIC_BUCKETS) {
+    out[bucket.id] = { bills: [], exhausted: false };
+  }
+  return out;
+}
+
+function billDedupeKey(bill: MemberDeepBill): string {
+  return `${bill.type ?? ''}-${bill.billNumber}-${bill.congress ?? ''}`;
+}
+
+function minIntroducedDate(bills: MemberDeepBill[]): string | null {
+  let min: string | null = null;
+  for (const bill of bills) {
+    const date = bill.introducedDate;
+    if (!date) continue;
+    if (min === null || date < min) min = date;
+  }
+  return min;
+}
+
+function isPageNewestFirst(bills: MemberDeepBill[]): boolean | null {
+  const dated = bills.filter((b) => b.introducedDate);
+  if (dated.length < 2) return null;
+  const first = dated[0].introducedDate;
+  const last = dated[dated.length - 1].introducedDate;
+  return first >= last;
+}
+
+function allTopicCapsResolved(buffers: Record<string, TopicFetchBuffer>): boolean {
+  return RECORD_TOPIC_BUCKETS.every((bucket) => {
+    const buf = buffers[bucket.id];
+    return buf.bills.length >= MAX_COSPONSORED_PER_TOPIC || buf.exhausted;
+  });
+}
+
+function markTopicExhaustion(
+  buffers: Record<string, TopicFetchBuffer>,
+  pageOldest: string | null,
+  pageAdded: Record<string, boolean>,
+): void {
+  if (!pageOldest) return;
+  for (const bucket of RECORD_TOPIC_BUCKETS) {
+    const buf = buffers[bucket.id];
+    if (buf.exhausted || buf.bills.length >= MAX_COSPONSORED_PER_TOPIC) continue;
+    const bufOldest = minIntroducedDate(buf.bills);
+    if (bufOldest !== null && pageOldest < bufOldest && !pageAdded[bucket.id]) {
+      buf.exhausted = true;
+    }
+  }
+}
+
+export async function fetchCosponsoredLegislation(
+  bioguideId: string,
+  key: string,
+): Promise<CosponsoredFetchResult> {
+  const pathSuffix = `/member/${bioguideId}/cosponsored-legislation`;
+  // Default API sort is newest-first. Do NOT pass sort=introducedDate+desc — at limit=250
+  // the API returns oldest-first (asc), breaking early-stop and topic-cap logic.
+  let nextUrl: string | undefined = buildUrl(bioguideId, pathSuffix, key);
+  const mapped: MemberDeepBill[] = [];
+  const seenBillKeys = new Set<string>();
+  const topicBuffers = initTopicFetchBuffers();
+  let page = 0;
+  let totalCount: number | null = null;
+  let earlyStopped = false;
+  let useTopicExhaustion = true;
+
+  while (nextUrl) {
+    page += 1;
+    console.log(`  cosponsored page ${page}…`);
+    const pageData: LegislationPage = await congressGet<LegislationPage>(nextUrl, key);
+    if (totalCount === null && pageData.pagination?.count != null) {
+      totalCount = pageData.pagination.count;
+    }
+
+    const pageBills: MemberDeepBill[] = [];
+    const pageAdded: Record<string, boolean> = {};
+    for (const raw of extractLegislationList(pageData, 'cosponsoredLegislation')) {
+      const bill = mapBill(raw, bioguideId, 'cosponsor');
+      if (!bill) continue;
+      const dedupeKey = billDedupeKey(bill);
+      if (seenBillKeys.has(dedupeKey)) continue;
+      seenBillKeys.add(dedupeKey);
+
+      pageBills.push(bill);
+      mapped.push(bill);
+
+      const buf = topicBuffers[bill.topicId];
+      if (buf && buf.bills.length < MAX_COSPONSORED_PER_TOPIC) {
+        buf.bills.push(bill);
+        pageAdded[bill.topicId] = true;
+      }
+    }
+
+    if (page === 1) {
+      const orderCheck = isPageNewestFirst(pageBills);
+      if (orderCheck === false) {
+        useTopicExhaustion = false;
+        console.log('  cosponsored page order not newest-first — topic exhaustion early-stop disabled');
+      }
+    }
+
+    if (useTopicExhaustion) {
+      const pageOldest = minIntroducedDate(pageBills);
+      markTopicExhaustion(topicBuffers, pageOldest, pageAdded);
+    }
+
+    nextUrl = pageData.pagination?.next;
+
+    if (allTopicCapsResolved(topicBuffers)) {
+      earlyStopped = true;
+      console.log(
+        `  cosponsored early stop after page ${page} (${mapped.length} fetched, ${totalCount ?? '?'} total)`,
+      );
+      break;
+    }
+  }
+
+  return { bills: mapped, totalCount, pagesFetched: page, earlyStopped };
+}
+
 async function fetchAllLegislation(
   bioguideId: string,
-  kind: 'sponsored' | 'cosponsored',
+  kind: 'sponsored',
   key: string,
 ): Promise<MemberDeepBill[]> {
-  const pathSuffix =
-    kind === 'sponsored'
-      ? `/member/${bioguideId}/sponsored-legislation`
-      : `/member/${bioguideId}/cosponsored-legislation`;
+  const pathSuffix = `/member/${bioguideId}/sponsored-legislation`;
 
   let nextUrl: string | undefined = buildUrl(bioguideId, pathSuffix, key);
-  const field = kind === 'sponsored' ? 'sponsoredLegislation' : 'cosponsoredLegislation';
   const mapped: MemberDeepBill[] = [];
   let page = 0;
 
@@ -249,8 +463,8 @@ async function fetchAllLegislation(
     page += 1;
     console.log(`  ${kind} page ${page}…`);
     const pageData: LegislationPage = await congressGet<LegislationPage>(nextUrl, key);
-    for (const raw of extractLegislationList(pageData, field)) {
-      const bill = mapBill(raw, bioguideId, kind === 'cosponsored' ? 'cosponsor' : undefined);
+    for (const raw of extractLegislationList(pageData, 'sponsoredLegislation')) {
+      const bill = mapBill(raw, bioguideId);
       if (bill) mapped.push(bill);
     }
     nextUrl = pageData.pagination?.next;
@@ -310,7 +524,7 @@ async function fetchMemberProfile(bioguideId: string, key: string): Promise<Memb
   };
 }
 
-async function ingestOneMember(bioguideId: string, key: string, asOf: string): Promise<MemberDeepProfile> {
+export async function ingestOneMember(bioguideId: string, key: string, asOf: string): Promise<MemberDeepProfile> {
   console.log(`\nDeep ingest for ${bioguideId} via Congress.gov API v3`);
 
   console.log('Step A — member profile');
@@ -321,8 +535,12 @@ async function ingestOneMember(bioguideId: string, key: string, asOf: string): P
   console.log(`  ${sponsored.length} sponsored bills mapped`);
 
   console.log('Step C — cosponsored legislation');
-  const cosponsored = await fetchAllLegislation(bioguideId, 'cosponsored', key);
-  console.log(`  ${cosponsored.length} cosponsored bills mapped`);
+  const cosponsoredResult = await fetchCosponsoredLegislation(bioguideId, key);
+  const cosponsored = cosponsoredResult.bills;
+  const totalCosponsored = cosponsoredResult.totalCount ?? cosponsored.length;
+  console.log(
+    `  ${cosponsored.length} cosponsored bills fetched (${totalCosponsored} total) · ${cosponsoredResult.pagesFetched} pages${cosponsoredResult.earlyStopped ? ' · early stop' : ''}`,
+  );
 
   const byTopic = emptyByTopic();
   for (const bill of sponsored) {
@@ -343,7 +561,7 @@ async function ingestOneMember(bioguideId: string, key: string, asOf: string): P
       asOf,
       source: 'Congress.gov API v3',
       totalSponsored: sponsored.length,
-      totalCosponsored: cosponsored.length,
+      totalCosponsored,
       topicCoverage: buildTopicCoverage(byTopic),
     },
     profile,
@@ -356,7 +574,7 @@ async function ingestOneMember(bioguideId: string, key: string, asOf: string): P
 
   console.log(`Wrote ${outFile}`);
   console.log(
-    `Coverage: ${sponsored.length} sponsored · ${cosponsored.length} cosponsored · ${Object.values(snapshot.meta.topicCoverage).filter((n) => n > 0).length} topics with bills`,
+    `Coverage: ${sponsored.length} sponsored · ${totalCosponsored} cosponsored (${cosponsored.length} fetched) · ${Object.values(snapshot.meta.topicCoverage).filter((n) => n > 0).length} topics with bills`,
   );
 
   return snapshot;
@@ -382,7 +600,7 @@ async function writeManifest(asOf: string): Promise<void> {
 
 async function main(): Promise<void> {
   await loadEnvLocal();
-  const { all, bioguideId } = parseArgs();
+  const { all, bioguideId, limit } = parseArgs();
   const key = getCongressApiKey();
   const asOf = new Date().toISOString().slice(0, 10);
 
@@ -400,14 +618,19 @@ async function main(): Promise<void> {
     /* fresh run */
   }
 
+  const limitLabel = limit !== undefined ? ` · --limit ${limit}` : '';
   console.log(
-    `Deep ingest --all: ${members.length} members (${Object.keys(checkpoint).length} checkpointed)`,
+    `Deep ingest --all: ${members.length} members (${Object.keys(checkpoint).length} checkpointed)${limitLabel}`,
   );
 
   let completed = 0;
   for (let i = 0; i < members.length; i += 1) {
     const leg = members[i];
     if (checkpoint[leg.bioguideId]) continue;
+    if (limit !== undefined && completed >= limit) {
+      console.log(`--limit ${limit} reached (${completed} new members this run)`);
+      break;
+    }
 
     try {
       await ingestOneMember(leg.bioguideId, key, asOf);
@@ -418,10 +641,17 @@ async function main(): Promise<void> {
         await writeManifest(asOf);
       }
     } catch (err) {
-      console.error(
-        `FAILED ${leg.bioguideId}:`,
-        err instanceof Error ? err.message : err,
-      );
+      if (err instanceof CongressApiError) {
+        console.error(`FAILED ${leg.bioguideId}: HTTP ${err.status} — ${err.message}`);
+        if (err.body) {
+          console.error(`  response body: ${err.body.slice(0, 1000)}`);
+        }
+      } else {
+        console.error(
+          `FAILED ${leg.bioguideId}:`,
+          err instanceof Error ? err.message : err,
+        );
+      }
     }
 
     if ((i + 1) % 10 === 0 || i === members.length - 1) {
@@ -432,11 +662,18 @@ async function main(): Promise<void> {
   await writeManifest(asOf);
   console.log('');
   console.log('── ingest:member --all complete ──');
+  console.log(`New this run: ${completed}${limit !== undefined ? ` (limit ${limit})` : ''}`);
   console.log(`Checkpointed: ${Object.keys(checkpoint).length}/${members.length}`);
   console.log(`Manifest: ${MANIFEST_FILE}`);
 }
 
-main().catch((err) => {
-  console.error(err instanceof Error ? err.message : err);
-  process.exit(1);
-});
+const isDirectRun =
+  process.argv[1] != null &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (isDirectRun) {
+  main().catch((err) => {
+    console.error(err instanceof Error ? err.message : err);
+    process.exit(1);
+  });
+}

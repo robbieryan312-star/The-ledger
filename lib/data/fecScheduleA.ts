@@ -2,11 +2,27 @@ import scheduleASnapshot from '../../data/fec/national/schedule-a.json';
 import type { FecScheduleAContributor } from './fecClient';
 import type { Source, VoteRecord } from '../types';
 
+export interface AggregatedCommitteeReceipt {
+  committeeId: string;
+  committeeName?: string;
+  totalAmount: number;
+  receiptCount: number;
+}
+
+export interface AggregatedEmployerReceipt {
+  employer: string;
+  occupation?: string;
+  totalAmount: number;
+  receiptCount: number;
+}
+
 export interface ScheduleAMemberRow {
   bioguideId: string;
   fecCandidateId: string;
   committeeIds?: string[];
   contributors: FecScheduleAContributor[];
+  aggregatedByCommittee?: AggregatedCommitteeReceipt[];
+  aggregatedByEmployer?: AggregatedEmployerReceipt[];
   source: Source;
   asOf: string;
   fecUrl: string;
@@ -23,6 +39,13 @@ export function getScheduleAForBioguide(bioguideId?: string): ScheduleAMemberRow
   if (!bioguideId) return undefined;
   if (snapshot.meta?.queryMode !== 'committee_id') return undefined;
   return snapshot.byBioguideId[bioguideId];
+}
+
+/** True when Schedule A itemized contributors exist for this member in the national snapshot. */
+export function hasAggregatedScheduleA(bioguideId?: string): boolean {
+  if (!bioguideId) return false;
+  const row = snapshot.byBioguideId[bioguideId];
+  return Boolean(row && row.contributors.length > 0);
 }
 
 /** Factual link rows: donor disclosure + roll-call on same bill id (no causation implied). */
