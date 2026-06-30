@@ -18,7 +18,6 @@
     "sync:votes-national": "tsx scripts/sync-votes-national.ts",
     "sync:stock-trades": "tsx scripts/sync-stock-trades.ts",
     "sync:news-national": "tsx scripts/sync-news-national.ts",
-    "sync:positions-national": "tsx scripts/sync-positions-national.ts",
     "sync:topic-positions": "tsx scripts/sync-topic-positions.ts",
     "verify:office": "tsx scripts/verify-office-resolution.ts",
     "verify:lobbying-votes": "tsx scripts/verify-lobbying-votes.ts",

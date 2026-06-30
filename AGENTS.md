@@ -156,4 +156,12 @@ Routine implementation: proceed without asking. Stop and ask the owner only for:
 | `lib/types/index.ts` | SourceTier union — the authoritative list of tier values |
 | `.env.local` | API keys (never paste values in chat or commit to any file) |
 | `scripts/setup-github-secrets.sh` | Push keys to GitHub Actions |
+
+## Cursor Cloud specific instructions
+
+- Single Next.js 16 (Turbopack) app. Dependencies install via `npm install`; `.npmrc` sets `legacy-peer-deps=true`, so non-npm package managers will mis-resolve peers — use npm.
+- The app runs fully on committed data (mock + `lib/data/generated`), so `npm run dev` and `npm run build` work without any API keys or external services.
+- API keys (`FEC_API_KEY`, `CONGRESS_API_KEY` in a gitignored `.env.local`) are only needed for the optional `npm run sync:fec` / `npm run sync:votes` data-refresh scripts; `npm run sync:legislators` and `npm run verify:office` need no key.
+- `npm run lint` currently reports pre-existing errors (e.g. `lib/hooks/useUserProfile.ts` set-state-in-effect) unrelated to environment setup; lint tooling itself works.
+- Start the dev server in tmux (agent-started servers can otherwise be reaped); it serves http://localhost:3000.
 <!-- END:ledger-data-rules -->
