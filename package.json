@@ -14,6 +14,7 @@
     "sync:fec": "tsx scripts/sync-fec-finance.ts",
     "sync:fec-national": "tsx scripts/sync-fec-national.ts",
     "sync:fec-schedule-a": "tsx scripts/sync-fec-schedule-a.ts",
+    "sync:fec-schedule-a-pilot": "tsx scripts/sync-fec-schedule-a-pilot.ts",
     "sync:votes": "tsx scripts/sync-congress-votes.ts",
     "sync:votes-national": "tsx scripts/sync-votes-national.ts",
     "sync:stock-trades": "tsx scripts/sync-stock-trades.ts",

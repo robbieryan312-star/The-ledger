@@ -1,0 +1,544 @@
+{
+  "meta": {
+    "source": {
+      "name": "Federal Election Commission (OpenFEC)",
+      "url": "https://www.fec.gov/data/",
+      "tier": "official",
+      "description": "Official campaign finance disclosures via api.open.fec.gov"
+    },
+    "asOf": "2026-06-30",
+    "fetchedAt": "2026-06-30T20:24:30.833Z",
+    "bioguideId": "S000033",
+    "fecCandidateId": "S4VT00033",
+    "queryMode": "committee_id",
+    "twoYearPeriod": "2026",
+    "note": "Phase 17 pilot — committee-scoped Schedule A for Bernie Sanders only."
+  },
+  "row": {
+    "bioguideId": "S000033",
+    "fecCandidateId": "S4VT00033",
+    "committeeIds": [
+      "C00411330"
+    ],
+    "contributors": [
+      {
+        "name": "NUPEN, RIENALDY",
+        "amount": 7000,
+        "date": "2025-03-13",
+        "employer": "NOT EMPLOYED",
+        "occupation": "ACCOUNTANT",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "LIU, ALLEN",
+        "amount": 5000,
+        "date": "2025-05-24",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "SHAPIRO, EVAN",
+        "amount": 4000,
+        "date": "2025-09-10",
+        "employer": "USERNODE LABS AG",
+        "occupation": "CEO",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "NELSON, CARL",
+        "amount": 3500,
+        "date": "2025-11-03",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "NELSON, CARL",
+        "amount": 3500,
+        "date": "2025-11-03",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "COHN, MARTIN",
+        "amount": 3500,
+        "date": "2025-06-13",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "COHN, MARTIN",
+        "amount": 3500,
+        "date": "2025-06-13",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "RAITT, BONNIE",
+        "amount": 3500,
+        "date": "2025-05-08",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "GREEN, LAURA",
+        "amount": 3500,
+        "date": "2025-05-04",
+        "employer": "RETIRED",
+        "occupation": "RETIRED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "SOBRATO, JOHN",
+        "amount": 3500,
+        "date": "2025-04-12",
+        "employer": "THE SOBRATO ORGANIZATION",
+        "occupation": "REAL ESTATE DEVELOPMENT",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "WINDRUM, TIM",
+        "amount": 3500,
+        "date": "2025-04-04",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "NORTHROP, ANDREA",
+        "amount": 3500,
+        "date": "2025-04-03",
+        "employer": "PATRIOT GROWTH INSURANCE SERVICES",
+        "occupation": "INSURANCE AGENT",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "RASSWEILER, MARILYN",
+        "amount": 3500,
+        "date": "2025-04-01",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "RASSWEILER, CLIFFORD",
+        "amount": 3500,
+        "date": "2025-04-01",
+        "employer": "SELF EMPLOYED",
+        "occupation": "DRIVER",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "JACKREL, MADELYN",
+        "amount": 3500,
+        "date": "2025-03-28",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "JACKREL, MADELYN",
+        "amount": 3500,
+        "date": "2025-03-28",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "RUTTENBERG, KATHERINE",
+        "amount": 3500,
+        "date": "2025-03-24",
+        "employer": "SELF EMPLOYED",
+        "occupation": "ARTIST",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "WISEMAN, EILEEN",
+        "amount": 3500,
+        "date": "2025-03-21",
+        "employer": "AGERO",
+        "occupation": "DIRECTOR",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "WELCH, LINDEN",
+        "amount": 3500,
+        "date": "2025-03-15",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "WELCH, LINDEN",
+        "amount": 3500,
+        "date": "2025-03-15",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "NUPEN, RIENALDY",
+        "amount": 3500,
+        "date": "2025-03-12",
+        "employer": "NOT EMPLOYED",
+        "occupation": "ACCOUNTANT",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "NUPEN, RIENALDY",
+        "amount": 3500,
+        "date": "2025-03-12",
+        "employer": "NOT EMPLOYED",
+        "occupation": "ACCOUNTANT",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "LEE, TROY",
+        "amount": 3500,
+        "date": "2025-03-12",
+        "employer": "EPIC SYSTEMS",
+        "occupation": "SOFTWARE DEVELOPER",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "BOUCHER, ROSS",
+        "amount": 3500,
+        "date": "2025-03-11",
+        "employer": "PLAYGROUND THEORY",
+        "occupation": "ENGINEER",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "GASPARYAN, KARINE",
+        "amount": 3500,
+        "date": "2025-03-08",
+        "employer": "SELF EMPLOYED",
+        "occupation": "SEAMSTRESS",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "ROBINSON, LINCOLN",
+        "amount": 3500,
+        "date": "2025-03-02",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "ROBINSON, LINCOLN",
+        "amount": 3500,
+        "date": "2025-03-02",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "FOWLER, WYMAN",
+        "amount": 3500,
+        "date": "2025-02-24",
+        "employer": "LANCASTER-LEBANON IU#13",
+        "occupation": "TESCHER",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "PLUMMER, CHAD",
+        "amount": 3500,
+        "date": "2025-02-22",
+        "employer": "NVIDIA",
+        "occupation": "SOFTWARE ENGINEER",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "HALL, CAROL",
+        "amount": 3500,
+        "date": "2025-02-22",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "BEROL, LAURA M",
+        "amount": 3500,
+        "date": "2025-02-19",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "ROULY, MICHEL",
+        "amount": 3500,
+        "date": "2025-02-06",
+        "employer": "ZEPHYR AI",
+        "occupation": "SOFTWARE ENGINEERING",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "MURPHEY, JOHN",
+        "amount": 3473,
+        "date": "2026-02-16",
+        "employer": "SELF EMPLOYED",
+        "occupation": "ARCHITECT",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "LI, NYAO",
+        "amount": 3300,
+        "date": "2026-01-27",
+        "employer": "AMAZON.COM INC",
+        "occupation": "DATA SCIENTIST",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "KNIGHT, KRISTEN",
+        "amount": 3300,
+        "date": "2025-02-21",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "MELVIN, COURTNEY",
+        "amount": 3100,
+        "date": "2025-10-29",
+        "employer": "AMSURG",
+        "occupation": "ANALYST",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "YU, KAIWEN",
+        "amount": 3100,
+        "date": "2025-06-14",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "SHAPIRO, EVAN",
+        "amount": 3000,
+        "date": "2025-09-10",
+        "employer": "USERNODE LABS AG",
+        "occupation": "CEO",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "CHEN, JAMES",
+        "amount": 3000,
+        "date": "2025-05-02",
+        "employer": "NOLLA USA LLC",
+        "occupation": "CHIEF OPERATING OFFICER",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "OMARA, CHARLES",
+        "amount": 3000,
+        "date": "2025-03-25",
+        "employer": "JANE STREET CAPITAL",
+        "occupation": "TRADER",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "JOHNSON, ZINZI",
+        "amount": 3000,
+        "date": "2025-03-05",
+        "employer": "SELF EMPLOYED",
+        "occupation": "ARTIST",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "SHRAKE, DENNIS",
+        "amount": 3000,
+        "date": "2025-03-03",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "LIU, ALLEN",
+        "amount": 3000,
+        "date": "2025-02-24",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "WRIGHT, KAY",
+        "amount": 2900,
+        "date": "2025-03-24",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "CHOW, KYLE",
+        "amount": 2700,
+        "date": "2026-02-16",
+        "employer": "N INC",
+        "occupation": "COORDINATOR",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "SPANEL, ANN",
+        "amount": 2500,
+        "date": "2025-09-11",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "PURCELL, LENDR",
+        "amount": 2500,
+        "date": "2025-05-14",
+        "employer": "SELF EMPLOYED",
+        "occupation": "TEACHER/NONPROFIT",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "CAWLEY, JOHN",
+        "amount": 2500,
+        "date": "2025-04-17",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "LIU, ALLEN",
+        "amount": 2500,
+        "date": "2025-04-08",
+        "employer": "NOT EMPLOYED",
+        "occupation": "NOT EMPLOYED",
+        "committeeId": "C00411330"
+      },
+      {
+        "name": "MALLOY, TIMON JOSEPH",
+        "amount": 2500,
+        "date": "2025-03-31",
+        "employer": "FRED F. FRENCH INVESTING LLC",
+        "occupation": "REAL ESTATE",
+        "committeeId": "C00411330"
+      }
+    ],
+    "aggregatedOrgs": [
+      {
+        "orgName": "NORTHROP, ANDREA",
+        "totalAmount": 3500,
+        "receiptCount": 1,
+        "topicIds": [
+          "defense-veterans"
+        ],
+        "employer": "PATRIOT GROWTH INSURANCE SERVICES",
+        "occupation": "INSURANCE AGENT",
+        "sector": "Defense contractor"
+      },
+      {
+        "orgName": "PURCELL, LENDR",
+        "totalAmount": 2500,
+        "receiptCount": 1,
+        "topicIds": [
+          "education"
+        ],
+        "employer": "SELF EMPLOYED",
+        "occupation": "TEACHER/NONPROFIT"
+      }
+    ],
+    "aggregatedByEmployer": [
+      {
+        "employer": "NOT EMPLOYED",
+        "totalAmount": 94300,
+        "receiptCount": 27
+      },
+      {
+        "employer": "SELF EMPLOYED",
+        "totalAmount": 19473,
+        "receiptCount": 6
+      },
+      {
+        "employer": "USERNODE LABS AG",
+        "totalAmount": 7000,
+        "receiptCount": 2
+      },
+      {
+        "employer": "THE SOBRATO ORGANIZATION",
+        "totalAmount": 3500,
+        "receiptCount": 1
+      },
+      {
+        "employer": "PATRIOT GROWTH INSURANCE SERVICES",
+        "totalAmount": 3500,
+        "receiptCount": 1
+      },
+      {
+        "employer": "AGERO",
+        "totalAmount": 3500,
+        "receiptCount": 1
+      },
+      {
+        "employer": "EPIC SYSTEMS",
+        "totalAmount": 3500,
+        "receiptCount": 1
+      },
+      {
+        "employer": "PLAYGROUND THEORY",
+        "totalAmount": 3500,
+        "receiptCount": 1
+      },
+      {
+        "employer": "LANCASTER-LEBANON IU#13",
+        "totalAmount": 3500,
+        "receiptCount": 1
+      },
+      {
+        "employer": "NVIDIA",
+        "totalAmount": 3500,
+        "receiptCount": 1
+      },
+      {
+        "employer": "ZEPHYR AI",
+        "totalAmount": 3500,
+        "receiptCount": 1
+      },
+      {
+        "employer": "AMAZON.COM INC",
+        "totalAmount": 3300,
+        "receiptCount": 1
+      },
+      {
+        "employer": "AMSURG",
+        "totalAmount": 3100,
+        "receiptCount": 1
+      },
+      {
+        "employer": "NOLLA USA LLC",
+        "totalAmount": 3000,
+        "receiptCount": 1
+      },
+      {
+        "employer": "JANE STREET CAPITAL",
+        "totalAmount": 3000,
+        "receiptCount": 1
+      },
+      {
+        "employer": "N INC",
+        "totalAmount": 2700,
+        "receiptCount": 1
+      },
+      {
+        "employer": "FRED F. FRENCH INVESTING LLC",
+        "totalAmount": 2500,
+        "receiptCount": 1
+      }
+    ],
+    "source": {
+      "name": "Federal Election Commission (OpenFEC)",
+      "url": "https://www.fec.gov/data/",
+      "tier": "official",
+      "description": "Official campaign finance disclosures via api.open.fec.gov"
+    },
+    "asOf": "2026-06-30",
+    "fecUrl": "https://www.fec.gov/data/candidate/S4VT00033/"
+  }
+}

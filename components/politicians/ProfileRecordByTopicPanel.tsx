@@ -108,10 +108,15 @@ function TopicGroupRow({
   }> = [];
 
   const hasStatedPosition = Boolean(topicPositions?.statedPosition);
-  const hasStatements = (topicPositions?.statements.length ?? 0) > 0;
+  const officialStatements =
+    topicPositions?.statements.filter((s) => s.tier === 'official') ?? [];
+  const mediaStatements = topicPositions?.statements.filter((s) => s.tier === 'media') ?? [];
+  const hasOfficialStatements = officialStatements.length > 0;
+  const hasMediaStatements = mediaStatements.length > 0;
   const platformPositions = topicPositions?.platformPositions ?? [];
   const hasPlatformPositions = platformPositions.length > 0;
-  const hasStatedBlock = hasStatedPosition || hasStatements || hasPlatformPositions;
+  const hasStatedBlock =
+    hasStatedPosition || hasOfficialStatements || hasMediaStatements || hasPlatformPositions;
 
   const legislationBillCount = deepSponsoredCount + deepCosponsoredCount;
   const hasLegislation =
@@ -220,10 +225,10 @@ function TopicGroupRow({
                 </div>
               )}
 
-              {!hasStatedPosition && !hasPlatformPositions && hasStatements && (
+              {!hasStatedPosition && !hasPlatformPositions && hasMediaStatements && (
                 <div>
                   <div className="text-white font-semibold mb-1">Stated position</div>
-                  {topicPositions.statements.map((statement, idx) => (
+                  {mediaStatements.map((statement, idx) => (
                     <div key={idx} className="flex items-start gap-2 mt-2">
                       <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0 mt-0.5" />
                       <div className="flex-1 min-w-0">
@@ -231,7 +236,7 @@ function TopicGroupRow({
                           <span className="text-gray-500">{formatShortDate(statement.date)}</span>
                           <SourceBadge
                             source={{
-                              name: 'Congressional Record',
+                              name: 'Journalism',
                               url: statement.url,
                               tier: statement.tier,
                               date: statement.date,
@@ -241,7 +246,7 @@ function TopicGroupRow({
                         <ExpandableQuoteBlock
                           summary={statement.title.split(/(?<=[.!?])\s+/)[0] ?? statement.title}
                           fullText={statement.title}
-                          verbatim={statement.tier === 'official' || statement.tier === 'media'}
+                          verbatim
                         />
                         <Link
                           href={statement.url}
@@ -250,6 +255,43 @@ function TopicGroupRow({
                           className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white transition-colors mt-1 text-[11px]"
                         >
                           Source <ExternalLink className="h-3 w-3" />
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {hasOfficialStatements && (
+                <div>
+                  <div className="text-white font-semibold mb-1">Floor statement — Congressional Record</div>
+                  {officialStatements.map((statement, idx) => (
+                    <div key={idx} className="flex items-start gap-2 mt-2">
+                      <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0 mt-0.5" />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                          <span className="text-gray-500">{formatShortDate(statement.date)}</span>
+                          <SourceBadge
+                            source={{
+                              name: 'Congressional Record (GovInfo)',
+                              url: statement.url,
+                              tier: 'official',
+                              date: statement.date,
+                            }}
+                          />
+                        </div>
+                        <ExpandableQuoteBlock
+                          summary={statement.title.split(/(?<=[.!?])\s+/)[0] ?? statement.title}
+                          fullText={statement.title}
+                          verbatim
+                        />
+                        <Link
+                          href={statement.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white transition-colors mt-1 text-[11px]"
+                        >
+                          GovInfo <ExternalLink className="h-3 w-3" />
                         </Link>
                       </div>
                     </div>
@@ -312,7 +354,7 @@ function TopicGroupRow({
           {topicOrgLinks.length > 0 && (
             <div className="text-xs space-y-2 border-t border-white/[0.06] pt-3">
               <div className="text-gray-500 text-[11px] font-medium">
-                PAC/committee receipts and roll-call votes on the same topic
+                Itemized receipts (Schedule A) and roll-call votes on the same topic — no causation implied
               </div>
               {topicOrgLinks.slice(0, 3).map((link, i) => (
                 <div key={i} className="rounded border border-white/[0.06] bg-[#0a1628]/40 px-3 py-2">

@@ -501,12 +501,15 @@ function buildSaidDidLinks(
   statedPositionDate: string | null,
   votes: VoteRecord[],
 ): SaidDidLinkEntry[] {
-  const filtered = votes
-    .filter((vote) => voteTopicId(vote) === topicId)
-    .filter((vote) => {
-      if (!statedPositionDate) return true;
-      return vote.date >= statedPositionDate;
-    })
+  let filtered = votes.filter((vote) => voteTopicId(vote) === topicId);
+  if (statedPositionDate) {
+    const afterStatement = filtered.filter((vote) => vote.date >= statedPositionDate);
+    if (afterStatement.length > 0) {
+      filtered = afterStatement;
+    }
+  }
+
+  const selected = filtered
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, MAX_SAID_DID_LINKS);
 
@@ -546,14 +549,32 @@ function extractCrecSpeechExcerpt(plainText: string, speakerPrefix: string): str
   if (idx === -1) return null;
 
   let excerpt = plainText.slice(idx);
+  if (/submitted the following resolution|were referred to the Committee|A bill to amend/i.test(excerpt.slice(0, 120))) {
+    return null;
+  }
+
   const nextSpeaker = excerpt.slice(speakerPrefix.length + 5).search(/\bMr\.|Ms\.|Mrs\.|The PRESID|The SPEAK/i);
   if (nextSpeaker > 80) {
     excerpt = excerpt.slice(0, speakerPrefix.length + 5 + nextSpeaker);
   }
 
   excerpt = excerpt.replace(/\[[^\]]*\]/g, '').replace(/\s+/g, ' ').trim();
+  if (!excerpt.toUpperCase().startsWith(speakerPrefix.replace(/\./g, '').slice(0, 10))) {
+    const normalizedStart = excerpt.slice(0, 20).toUpperCase();
+    if (!normalizedStart.includes('SANDERS') && !normalizedStart.includes(speakerPrefix.split('.')[1]?.trim() ?? '')) {
+      return null;
+    }
+  }
   if (excerpt.length < 80) return null;
   return excerpt.slice(0, 600);
+}
+
+function earliestStatementDate(statements: TopicStatementEntry[]): string | null {
+  const dates = statements
+    .map((s) => s.date)
+    .filter(Boolean)
+    .sort();
+  return dates[0] ?? null;
 }
 
 async function fetchGovInfoCrecByTopic(
@@ -595,6 +616,7 @@ async function fetchGovInfoCrecByTopic(
 
         const excerpt = extractCrecSpeechExcerpt(plain, speaker);
         if (!excerpt) continue;
+        if (/Mr\.\s+Sanders,\s+Mr\./i.test(excerpt.slice(0, 80))) continue;
 
         const topicId = mapCrecTextToTopic(`${result.title ?? ''} ${excerpt}`);
         if (!topicId) continue;
@@ -799,7 +821,8 @@ async function main(): Promise<void> {
 
       if (!hasPlatform && !hasNpat && !hasCrec && !hasMedia) continue;
 
-      const statedPositionDate = npat?.date ?? null;
+      const statedPositionDate =
+        npat?.date ?? earliestStatementDate([...crecStatements, ...mediaForTopic]) ?? null;
       const npatUrl =
         voteSmartCandidateId != null
           ? `https://votesmart.org/candidate/${voteSmartCandidateId}/political-courage-test`

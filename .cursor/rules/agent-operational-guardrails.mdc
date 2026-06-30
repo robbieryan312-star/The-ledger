@@ -1,0 +1,35 @@
+---
+description: Scope guardrails and session-state consolidation
+alwaysApply: true
+---
+
+# Operational guardrails
+
+## Consolidate session state every 5 owner messages
+
+After roughly every 5 owner messages in a session, write a short status update to
+`PROGRESS.md` (or append to a `SESSION_LOG.md` if `PROGRESS.md` is reserved for sprint-level
+status) covering: what changed, what's still open, what the owner is waiting on. This is
+for continuity across context resets — it must not drop information the owner gave you or
+decisions already made. When in doubt, keep it rather than condense it away.
+
+## Before asking the owner anything already answered in the repo
+
+Grep `KEYS.md`, `REPO.md`, `PROGRESS.md`, and `lib/data/SOURCE_LOOKUP.md` for the term first.
+If a prior owner instruction isn't in a tracked file yet, that's a bug — add it to the
+relevant file in the same task, don't just hold it in conversation memory where it will be
+lost on the next session.
+
+## Log long-running data scripts to a file
+
+Any sync/ingest script expected to run more than a couple minutes (FEC, Congress.gov,
+member-deep ingests, etc.) should have its output teed to a fixed log path so Claude Code
+can inspect real error/progress text directly from disk instead of relying on a paraphrased
+summary — e.g.:
+
+```
+npm run ingest:member-all 2>&1 | tee /tmp/ledger-ingest.log
+```
+
+Use a descriptive name per script (`/tmp/ledger-<script-name>.log`) so concurrent runs don't
+overwrite each other's logs.
