@@ -6,8 +6,8 @@
       "tier": "official",
       "description": "Official Florida legislative & executive branch lobbying firm directories"
     },
-    "asOf": "2026-06-28",
-    "fetchedAt": "2026-06-28T15:05:58.960Z",
+    "asOf": "2026-06-29",
+    "fetchedAt": "2026-06-29T18:01:24.505Z",
     "totalCount": 40,
     "datasetUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory",
     "note": "Authoritative index of Florida annual lobbying firm directories (Legislative & Executive branches). Detailed firm rosters and quarterly compensation figures are published as PDFs and are not machine-readable in this snapshot — each record links to the official PDF. Tier 1 official."
@@ -25,7 +25,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2026-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-1",
@@ -39,7 +39,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2026-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-2",
@@ -53,7 +53,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2025-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-3",
@@ -67,7 +67,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2025-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-4",
@@ -81,7 +81,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2024-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-5",
@@ -95,7 +95,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2024-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-6",
@@ -109,7 +109,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2023-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-7",
@@ -123,7 +123,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2023-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-8",
@@ -137,7 +137,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2022-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-9",
@@ -151,7 +151,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2022-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-10",
@@ -165,7 +165,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2021-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-11",
@@ -179,7 +179,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2021-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-12",
@@ -193,7 +193,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2020-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-13",
@@ -207,7 +207,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2020-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-14",
@@ -221,7 +221,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2019-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-15",
@@ -235,7 +235,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2019-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-16",
@@ -249,7 +249,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2018-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-17",
@@ -263,7 +263,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2018-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-18",
@@ -277,7 +277,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2017-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "id": "fllobby-19",
@@ -291,7 +291,7 @@
         "description": "Official Florida legislative & executive branch lobbying firm directories",
         "date": "2017-01-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     }
   ]
 }

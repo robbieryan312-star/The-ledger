@@ -6,7 +6,7 @@
       "tier": "official",
       "description": "American Community Survey 5-year estimates via api.census.gov"
     },
-    "asOf": "2026-06-24",
+    "asOf": "2026-06-29",
     "totalCount": 7,
     "note": "Florida state-level Census ACS demographics and BLS labor statistics."
   },
@@ -24,7 +24,7 @@
         "tier": "official",
         "description": "American Community Survey 5-year estimates via api.census.gov"
       },
-      "asOf": "2026-06-24"
+      "asOf": "2026-06-29"
     },
     {
       "label": "Median household income",
@@ -37,7 +37,7 @@
         "tier": "official",
         "description": "American Community Survey 5-year estimates via api.census.gov"
       },
-      "asOf": "2026-06-24"
+      "asOf": "2026-06-29"
     },
     {
       "label": "Median home value",
@@ -50,7 +50,7 @@
         "tier": "official",
         "description": "American Community Survey 5-year estimates via api.census.gov"
       },
-      "asOf": "2026-06-24"
+      "asOf": "2026-06-29"
     },
     {
       "label": "Unemployment rate",
@@ -64,7 +64,7 @@
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
         "date": "2026-05-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "label": "Unemployment level",
@@ -78,7 +78,7 @@
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
         "date": "2026-05-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "label": "Employment",
@@ -92,7 +92,7 @@
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
         "date": "2026-05-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     },
     {
       "label": "Labor force",
@@ -106,7 +106,7 @@
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
         "date": "2026-05-01"
       },
-      "asOf": "2026-06-28"
+      "asOf": "2026-06-29"
     }
   ]
 }
