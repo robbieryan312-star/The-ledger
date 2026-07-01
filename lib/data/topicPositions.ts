@@ -3,7 +3,10 @@
  * Said→Did vote links keyed by bioguideId. Produced by sync-topic-positions.ts.
  */
 import type { SourceTier, VoteChoice } from '../types';
+import { RECORD_TOPIC_BUCKETS } from './profileRecordByTopic';
 import snapshot from './generated/topicPositions.json';
+import { normalizeTopicId, topicIdsForMergedLookup } from './topicAliases';
+import { bestTopicIdForText } from './topicKeywordMatch';
 
 export interface PlatformPositionEntry {
   text: string;
@@ -66,27 +69,42 @@ export interface TopicPositionsSnapshot {
 
 const data = snapshot as TopicPositionsSnapshot;
 
-export function getTopicPositions(
-  bioguideId: string,
-  topicId: string,
-): TopicPositionData | null {
-  const member = data.byBioguideId[bioguideId];
-  if (!member) return null;
-  const topic = member[topicId];
-  if (!topic) return null;
+function mergeTopicData(existing: TopicPositionData | null, incoming: TopicPositionData): TopicPositionData {
+  if (!existing) return incoming;
+  return {
+    platformPositions: [
+      ...(existing.platformPositions ?? []),
+      ...(incoming.platformPositions ?? []),
+    ],
+    statedPosition: existing.statedPosition ?? incoming.statedPosition,
+    statedPositionSource: existing.statedPositionSource ?? incoming.statedPositionSource,
+    statements: [...existing.statements, ...incoming.statements],
+    saidDidLinks: [...existing.saidDidLinks, ...incoming.saidDidLinks],
+  };
+}
 
-  const platformPositions = topic.platformPositions ?? [];
-  const statements = topic.statements ?? [];
-  const saidDidLinks = topic.saidDidLinks ?? [];
+function sanitizeTopicData(rawTopicId: string, topic: TopicPositionData): TopicPositionData | null {
+  const canonicalTopicId = normalizeTopicId(rawTopicId);
+  const platformPositions = (topic.platformPositions ?? []).filter((position) => {
+    return bestTopicIdForText(
+      position.text,
+      RECORD_TOPIC_BUCKETS.filter((bucket) => bucket.id !== 'legislation'),
+    ) === canonicalTopicId;
+  });
+  const statements = (topic.statements ?? []).filter((statement) => {
+    return normalizeTopicId(statement.topicId) === canonicalTopicId;
+  });
   const hasPosition = Boolean(topic.statedPosition?.trim());
   const hasPlatform = platformPositions.length > 0;
+  const hasStatements = statements.length > 0;
+  const saidDidLinks = hasPlatform || hasPosition || hasStatements ? (topic.saidDidLinks ?? []) : [];
 
-  if (!hasPlatform && statements.length === 0 && !hasPosition && saidDidLinks.length === 0) {
+  if (!hasPlatform && !hasStatements && !hasPosition && saidDidLinks.length === 0) {
     return null;
   }
 
   return {
-    platformPositions: platformPositions.length > 0 ? platformPositions : undefined,
+    platformPositions: hasPlatform ? platformPositions : undefined,
     statedPosition: topic.statedPosition,
     statedPositionSource: topic.statedPositionSource,
     statements,
@@ -94,8 +112,36 @@ export function getTopicPositions(
   };
 }
 
+export function getTopicPositions(
+  bioguideId: string,
+  topicId: string,
+): TopicPositionData | null {
+  const member = data.byBioguideId[bioguideId];
+  if (!member) return null;
+  const canonicalTopicId = normalizeTopicId(topicId);
+  let merged: TopicPositionData | null = null;
+
+  for (const candidateTopicId of topicIdsForMergedLookup(canonicalTopicId)) {
+    const topic = member[candidateTopicId];
+    if (!topic) continue;
+    const sanitized = sanitizeTopicData(candidateTopicId, topic);
+    if (sanitized) merged = mergeTopicData(merged, sanitized);
+  }
+
+  return merged;
+}
+
 export function getMemberTopicPositions(bioguideId: string): Record<string, TopicPositionData> | null {
-  return data.byBioguideId[bioguideId] ?? null;
+  const member = data.byBioguideId[bioguideId];
+  if (!member) return null;
+
+  const sanitizedMember: Record<string, TopicPositionData> = {};
+  for (const [topicId, topic] of Object.entries(member)) {
+    const sanitized = sanitizeTopicData(topicId, topic);
+    if (sanitized) sanitizedMember[topicId] = sanitized;
+  }
+
+  return Object.keys(sanitizedMember).length > 0 ? sanitizedMember : null;
 }
 
 export function countMembersWithTopicPositions(): number {
