@@ -34,6 +34,17 @@ Honest gaps are required — never fill with paraphrase or fabrication. Use `"No
 - `tier`: `'official'` (CREC), `'nonpartisan'` (Ballotpedia platform), or `'media'` (approved journalism only)
 - Date + URL visible in UI
 - `'media'` requires **2+ independent approved outlets** before displaying as verified — otherwise `'alleged'` or omit
+- **A "Said" statement is spoken floor remarks or a direct quote — never a procedural
+  record**, even when verbatim and attributed. CREC text qualifies only if it opens with
+  the member actually speaking (e.g. `"Mr. SANDERS. Mr. President, ..."`). It does NOT
+  qualify if it is:
+  - a bill/amendment/resolution **submission** (`"submitted an amendment intended to be
+    proposed by..."`, `"submitted the following resolution..."`)
+  - a roll-call or cosponsor **name-list** fragment (`"Mr. Sanders), the Senator from...,
+    and Mr. X):"`)
+  - any other clerk/procedural boilerplate from the Record
+- De-duplicate statements within a topic by URL stem and by identical title text — the
+  same CREC page must never appear twice in one topic's `statements[]`
 
 ### Did (actions)
 
