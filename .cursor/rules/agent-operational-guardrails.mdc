@@ -20,6 +20,35 @@ If a prior owner instruction isn't in a tracked file yet, that's a bug — add i
 relevant file in the same task, don't just hold it in conversation memory where it will be
 lost on the next session.
 
+## Spec self-check before deviating or asking — read the file that owns the answer
+
+The owner has built detailed spec files so standards are set once and reused at scale. Before
+producing UI/data that has a format or quality standard, or before flagging something as
+ambiguous, read the file that owns the answer. A spec *violation* is a bug to fix against the
+written rule — never ship it and never treat it as a judgment call.
+
+| If the work touches… | Authoritative file (read first) |
+|----------------------|----------------------------------|
+| What a complete profile requires; per-member data layers; what "done" means | `PILOT_PROFILE_CHECKLIST.md` |
+| What counts as a "Said" statement (floor remark vs. amendment/resolution submission boilerplate or senator-list fragments) | `PILOT_PROFILE_CHECKLIST.md` layer 7 + Said acceptance rule |
+| How much shows per article/row; truncation; counts per section | the demo profile components in `components/politicians/` — these ARE the locked layout, do not redesign |
+| UI copy tone, banned words, Said→Did diff format | `.cursor/rules/ledger-editorial-voice.mdc` |
+| Source tiers, corroboration, banned sources, destination-view map | `.cursor/rules/ledger-data-policy.mdc` |
+| Which source/API feeds a data need | `lib/data/SOURCE_LOOKUP.md`, `lib/data/sourceCatalog.ts` |
+
+The demo profiles (Sanders `S000033` + 3 others) are the locked spec. Phase 17b feeds the
+other 536 members through the SAME components and SAME checklist — it never redesigns them.
+Hand-cleaning one member's data is not a fix; fix the script/extractor that produced it so the
+standard holds at scale.
+
+## Network fetches in sync/ingest scripts must have a timeout
+
+Every `fetch()` to an external API in a sync or ingest script must pass
+`signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS)` (or an equivalent AbortController). An
+unguarded fetch can hang the entire script indefinitely with no output — this has already
+caused two stuck runs. When adding a timeout to one fetch in a function, add it to EVERY
+fetch in that function, not just the obvious one.
+
 ## Log long-running data scripts to a file
 
 Any sync/ingest script expected to run more than a couple minutes (FEC, Congress.gov,
