@@ -11,6 +11,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { SourceTier, VoteChoice, VoteRecord } from '../lib/types';
 import { RECORD_TOPIC_BUCKETS, voteCongressGovUrl, voteTopicId, classifyTextToRecordTopicId } from '../lib/data/profileRecordByTopic';
+import { bestTopicIdForText, keywordMatchesText } from '../lib/data/topicKeywordMatch';
 import { fetchJson, sleep } from './lib/ingest-utils';
 import { fetchApprovedMediaStatementsForMember } from './lib/approvedMediaQuotes';
 
@@ -162,8 +163,7 @@ function normalizeArray<T>(value: T | T[] | undefined | null): T[] {
 }
 
 function textMatchesKeyword(text: string, keywords: string[]): boolean {
-  const hay = text.toLowerCase();
-  return keywords.some((k) => hay.includes(k.trim().toLowerCase()));
+  return keywords.some((k) => keywordMatchesText(text, k));
 }
 
 function mapNpatSectionToTopic(sectionName: string): string | null {
@@ -371,21 +371,20 @@ async function fetchBallotpediaPositions(
   const byTopic = new Map<string, PlatformPositionEntry[]>();
   const topicBuckets = RECORD_TOPIC_BUCKETS.filter((b) => b.id !== 'legislation');
 
-  for (const bucket of topicBuckets) {
-    const matched = positionTexts
-      .filter((t) => textMatchesKeyword(t, bucket.keywords))
-      .filter((t) => !isMisattributedPlatformText(t, leg));
-    if (matched.length === 0) continue;
-    byTopic.set(
-      bucket.id,
-      matched.slice(0, MAX_PLATFORM_PER_TOPIC).map((text) => ({
-        text,
-        source: 'Ballotpedia',
-        url: pageUrl,
-        tier: 'nonpartisan' as const,
-        asOf,
-      })),
-    );
+  for (const text of positionTexts) {
+    if (isMisattributedPlatformText(text, leg)) continue;
+    const topicId = bestTopicIdForText(text, topicBuckets);
+    if (!topicId) continue;
+    const entries = byTopic.get(topicId) ?? [];
+    if (entries.length >= MAX_PLATFORM_PER_TOPIC) continue;
+    entries.push({
+      text,
+      source: 'Ballotpedia',
+      url: pageUrl,
+      tier: 'nonpartisan' as const,
+      asOf,
+    });
+    byTopic.set(topicId, entries);
   }
   return byTopic;
 }

@@ -7,6 +7,7 @@ import type { Bill, VoteChoice, VoteRecord } from '../types';
 import { getCongressVotes } from './congressVotes';
 import { getBills } from './legislation';
 import { normalizeTopicId } from './topicAliases';
+import { bestTopicIdForText } from './topicKeywordMatch';
 
 export interface TopicRecordExample {
   title: string;
@@ -70,7 +71,7 @@ export const RECORD_TOPIC_BUCKETS: TopicBucketDef[] = [
     label: 'Public Safety',
     keywords: [
       'gun', 'firearm', 'second amendment', 'background check', 'assault weapon', 'weapon',
-      'criminal justice', 'sentencing', 'incarceration', 'police reform', 'bail', 'death penalty',
+      '2nd amendment', 'criminal justice', 'sentencing', 'incarceration', 'police reform', 'bail', 'death penalty',
       'prison', 'law enforcement', 'crime', 'fentanyl', 'illicit trade', 'trafficking',
     ],
   },
@@ -204,10 +205,11 @@ export function classifyTextToRecordTopicId(text: string, category?: string): st
     return 'economy-taxes';
   }
 
-  for (const bucket of RECORD_TOPIC_BUCKETS) {
-    if (bucket.id === 'legislation') continue;
-    if (bucket.keywords.some((k) => hay.includes(k.trim().toLowerCase()))) return bucket.id;
-  }
+  const bestTopicId = bestTopicIdForText(
+    hay,
+    RECORD_TOPIC_BUCKETS.filter((bucket) => bucket.id !== 'legislation'),
+  );
+  if (bestTopicId) return bestTopicId;
 
   if (cat === 'legislation' || hay.includes('bill') || hay.includes('resolution')) {
     return 'legislation';

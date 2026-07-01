@@ -2,6 +2,7 @@ import type { SourceTier } from '../types';
 import { voteCongressGovUrl, voteTopicId } from './profileRecordByTopic';
 import { getCongressVotes } from './congressVotes';
 import { getMemberTopicPositions, type TopicPositionData } from './topicPositions';
+import { normalizeTopicId } from './topicAliases';
 
 export interface TopicTimelineBullet {
   date: string;
@@ -25,9 +26,10 @@ export function buildTopicConsistencyTimeline(
   politicianId: string,
 ): TopicTimelineBullet[] {
   const bullets: TopicTimelineBullet[] = [];
+  const canonicalTopicId = normalizeTopicId(topicId);
 
   for (const statement of topicData.statements) {
-    if (statement.topicId !== topicId) continue;
+    if (normalizeTopicId(statement.topicId) !== canonicalTopicId) continue;
     bullets.push({
       date: statement.date,
       kind: 'SAID',
@@ -51,7 +53,7 @@ export function buildTopicConsistencyTimeline(
 
   const congressEntry = getCongressVotes(politicianId, bioguideId);
   for (const vote of congressEntry?.votes ?? []) {
-    if (voteTopicId(vote) !== topicId) continue;
+    if (normalizeTopicId(voteTopicId(vote)) !== canonicalTopicId) continue;
     bullets.push({
       date: vote.date,
       kind: 'DID',
@@ -76,7 +78,7 @@ export function buildAllTopicTimelines(
   for (const [topicId, topicData] of Object.entries(memberTopics)) {
     const bullets = buildTopicConsistencyTimeline(bioguideId, topicId, topicData, politicianId);
     if (bullets.length >= 2) {
-      out.set(topicId, bullets);
+      out.set(normalizeTopicId(topicId), bullets);
     }
   }
 

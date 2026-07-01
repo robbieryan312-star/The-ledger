@@ -2,6 +2,8 @@ import type { SaidDidDiff } from '../types';
 import { RECORD_TOPIC_BUCKETS } from './profileRecordByTopic';
 import { getMemberTopicPositions, type TopicPositionData } from './topicPositions';
 import type { SaidDidLinkEntry } from './topicPositions';
+import { normalizeTopicId } from './topicAliases';
+import { keywordMatchesText } from './topicKeywordMatch';
 
 function gapDaysBetween(statedDate: string | null, voteDate: string): number | null {
   if (!statedDate?.trim()) return null;
@@ -12,17 +14,12 @@ function gapDaysBetween(statedDate: string | null, voteDate: string): number | n
 }
 
 function topicKeywords(topicId: string): string[] {
-  return RECORD_TOPIC_BUCKETS.find((b) => b.id === topicId)?.keywords ?? [];
+  const canonicalTopicId = normalizeTopicId(topicId);
+  return RECORD_TOPIC_BUCKETS.find((b) => b.id === canonicalTopicId)?.keywords ?? [];
 }
 
 function textMatchesTopic(text: string, topicId: string): boolean {
-  const hay = text.toLowerCase();
-  return topicKeywords(topicId).some((k) => {
-    const keyword = k.trim().toLowerCase();
-    if (!keyword) return false;
-    if (/\s/.test(keyword)) return hay.includes(keyword);
-    return new RegExp(`\\b${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`).test(hay);
-  });
+  return topicKeywords(topicId).some((k) => keywordMatchesText(text, k));
 }
 
 function voteContext(link: SaidDidLinkEntry): string {
@@ -64,11 +61,12 @@ function pickSaidForLink(
   topicData: TopicPositionData,
   link: SaidDidLinkEntry,
 ): SaidSource | null {
+  const canonicalTopicId = normalizeTopicId(topicId);
   const mediaStatement = topicData.statements.find(
     (s) =>
-      s.topicId === topicId &&
+      normalizeTopicId(s.topicId) === canonicalTopicId &&
       s.tier === 'media' &&
-      (statementMatchesVote(s.title, link, topicId) || textMatchesTopic(s.title, topicId)),
+      (statementMatchesVote(s.title, link, canonicalTopicId) || textMatchesTopic(s.title, canonicalTopicId)),
   );
   if (mediaStatement) {
     return {
@@ -82,7 +80,10 @@ function pickSaidForLink(
   }
 
   const officialStatement = topicData.statements.find(
-    (s) => s.topicId === topicId && s.tier === 'official' && statementMatchesVote(s.title, link, topicId),
+    (s) =>
+      normalizeTopicId(s.topicId) === canonicalTopicId &&
+      s.tier === 'official' &&
+      statementMatchesVote(s.title, link, canonicalTopicId),
   );
   if (officialStatement) {
     return {
