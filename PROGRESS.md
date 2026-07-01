@@ -1,6 +1,6 @@
 # The Ledger — Progress Log
 
-**Last updated:** 2026-06-30
+**Last updated:** 2026-07-01
 **Branch:** `main`
 **Live demo:** https://the-ledger-gamma.vercel.app
 
@@ -8,7 +8,12 @@
 
 ## Current phase
 
-**Phase 16 complete (537/537 member deep ingest). Phase 17 next: full-profile pilot on S000033.**
+**Phase 17a complete + verified (S000033 pilot). Phase 17b next: scale Said→Did + org joins to 537.**
+
+Phase 17a verified 2026-07-01: CREC boilerplate filter live (`sync-topic-positions.ts`);
+S000033 statements = 3, zero procedural boilerplate, zero dupes, per the tightened
+`PILOT_PROFILE_CHECKLIST.md` Said rule; build passes. Single always-read ruleset added:
+`.cursor/rules/ledger-core-rules.mdc` (binds Claude Code + all Cursor agents).
 
 Said→Did live for 442/537 via Ballotpedia + roll-call votes. VoteSmart deferred. Source catalog: `lib/data/sourceCatalog.ts` + `lib/data/SOURCE_LOOKUP.md`.
 
