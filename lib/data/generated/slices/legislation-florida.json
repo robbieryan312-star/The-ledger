@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-06-29",
-  "fetchedAt": "2026-06-29T18:01:42.109Z",
+  "asOf": "2026-07-01",
+  "fetchedAt": "2026-07-01T17:25:30.899Z",
   "sections": [
     {
       "sourceId": "legiscan",
@@ -12,12 +12,181 @@
           "tier": "nonpartisan",
           "description": "State and federal bill tracking via legiscan.com API"
         },
-        "asOf": "2026-06-29",
-        "totalCount": 0,
+        "asOf": "2026-07-01",
+        "totalCount": 100,
         "datasetUrl": "https://api.legiscan.com/",
         "note": "Florida state legislation master list (up to 100 bills). Tier 2."
       },
-      "records": []
+      "records": [
+        {
+          "id": "legiscan-0",
+          "title": "Designation of the State Birds",
+          "detail": "2044045 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044045",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-07-01"
+        },
+        {
+          "id": "legiscan-1",
+          "title": "Social Work Licensure Interstate Compact",
+          "detail": "2044116 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044116",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-07-01"
+        },
+        {
+          "id": "legiscan-2",
+          "title": "Pub. Rec. and Meetings/Social Work Licensure Interstate Compact",
+          "detail": "2044098 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044098",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-07-01"
+        },
+        {
+          "id": "legiscan-3",
+          "title": "Criminal Offenses Against Law Enforcement Officers and Other Personnel",
+          "detail": "2044121 · FL",
+          "date": "2025-09-15",
+          "link": "https://legiscan.com/FL/bill/2044121",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-07-01"
+        },
+        {
+          "id": "legiscan-4",
+          "title": "Educational Dollars for Duty Program",
+          "detail": "2044120 · FL",
+          "date": "2025-09-15",
+          "link": "https://legiscan.com/FL/bill/2044120",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-07-01"
+        },
+        {
+          "id": "legiscan-5",
+          "title": "Pub. Rec./Agency Employees",
+          "detail": "2044114 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044114",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-07-01"
+        },
+        {
+          "id": "legiscan-6",
+          "title": "Educator Certifications and Training",
+          "detail": "2044218 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044218",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-07-01"
+        },
+        {
+          "id": "legiscan-7",
+          "title": "Transportation Facility Designations",
+          "detail": "2044230 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044230",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-07-01"
+        },
+        {
+          "id": "legiscan-8",
+          "title": "Sale and Purchase of Ivermectin",
+          "detail": "2044901 · FL",
+          "date": "2025-09-23",
+          "link": "https://legiscan.com/FL/bill/2044901",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-07-01"
+        },
+        {
+          "id": "legiscan-9",
+          "title": "Recognizing Judea and Samaria",
+          "detail": "2044907 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044907",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-07-01"
+        },
+        {
+          "id": "legiscan-10",
+          "title": "Transportation Facility Designations",
+          "detail": "2044913 · FL",
+          "date": "2026-03-04",
+          "link": "https://legiscan.com/FL/bill/2044913",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-07-01"
+        },
+        {
+          "id": "legiscan-11",
+          "title": "Habitual Traffic Offender Designation",
+          "detail": "2044915 · FL",
+          "date": "2026-04-24",
+          "link": "https://legiscan.com/FL/bill/2044915",
+          "source": {
+            "name": "LegiScan",
+            "url": "https://legiscan.com",
+            "tier": "nonpartisan",
+            "description": "State and federal bill tracking via legiscan.com API"
+          },
+          "asOf": "2026-07-01"
+        }
+      ]
     },
     {
       "sourceId": "openstates",
@@ -29,7 +198,7 @@
           "tier": "nonpartisan",
           "description": "State legislator records via openstates.org API"
         },
-        "asOf": "2026-06-29",
+        "asOf": "2026-07-01",
         "totalCount": 163,
         "datasetUrl": "https://v3.openstates.org/people",
         "note": "Florida state legislators. Tier 2 nonpartisan Open States."
@@ -46,7 +215,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "openstates-1",
@@ -59,7 +228,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "openstates-2",
@@ -72,7 +241,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "openstates-3",
@@ -85,7 +254,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "openstates-4",
@@ -98,7 +267,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "openstates-5",
@@ -111,7 +280,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "openstates-6",
@@ -124,7 +293,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "openstates-7",
@@ -137,7 +306,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "openstates-8",
@@ -150,7 +319,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "openstates-9",
@@ -163,7 +332,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "openstates-10",
@@ -176,7 +345,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "openstates-11",
@@ -189,7 +358,7 @@
             "tier": "nonpartisan",
             "description": "State legislator records via openstates.org API"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         }
       ]
     },
@@ -203,8 +372,8 @@
           "tier": "official",
           "description": "U.S. Government Publishing Office official publications via api.govinfo.gov"
         },
-        "asOf": "2026-06-29",
-        "fetchedAt": "2026-06-29T18:01:42.109Z",
+        "asOf": "2026-07-01",
+        "fetchedAt": "2026-07-01T17:25:30.899Z",
         "totalCount": 40,
         "datasetUrl": "https://api.govinfo.gov/search",
         "note": "Recent Florida-related federal legislative documents (bills, Congressional Record, committee reports) via GovInfo. Tier 1 official GPO."
@@ -212,153 +381,153 @@
       "records": [
         {
           "id": "govinfo-0",
-          "title": "APPOINTMENT OF ACTING PRESIDENT PRO TEMPORE",
-          "detail": "Congressional Record · CREC · CREC-2026-06-25",
-          "date": "2026-06-25",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25",
+          "title": "ADDITIONAL SPONSORS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-25"
+            "date": "2026-06-30"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "govinfo-1",
-          "title": "Senate",
-          "detail": "Congressional Record · CREC · CREC-2026-06-25",
-          "date": "2026-06-25",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25",
+          "title": "PUBLIC BILLS AND RESOLUTIONS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-25"
+            "date": "2026-06-30"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "govinfo-2",
-          "title": "ADDITIONAL SPONSORS",
-          "detail": "Congressional Record · CREC · CREC-2026-06-25",
-          "date": "2026-06-25",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25",
+          "title": "HONORING PRIDE MONTH",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-25"
+            "date": "2026-06-30"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "govinfo-3",
-          "title": "Constitutional Authority Statement for H.R. 9494",
-          "detail": "Congressional Record · CREC · CREC-2026-06-25",
-          "date": "2026-06-25",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25",
+          "title": "HONORING THE LIFE OF MICHAEL A. CARRICARTE",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-25"
+            "date": "2026-06-30"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "govinfo-4",
-          "title": "Constitutional Authority Statement for H.R. 9455",
-          "detail": "Congressional Record · CREC · CREC-2026-06-25",
-          "date": "2026-06-25",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25",
+          "title": "HONORING BRANDON BRACALE-LLEWELLYN AS A DISTINGUISHED LEADER IN CENTRAL FLORIDA FOR LGBTQ+ PRIDE",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-25"
+            "date": "2026-06-30"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "govinfo-5",
-          "title": "PUBLIC BILLS AND RESOLUTIONS",
-          "detail": "Congressional Record · CREC · CREC-2026-06-25",
-          "date": "2026-06-25",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25",
+          "title": "HONORING JOSE RAMON AGUILAR COLINA AS A DISTINGUISHED LEADER IN CENTRAL FLORIDA FOR LGBTQ+ PRIDE MONTH",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-25"
+            "date": "2026-06-30"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "govinfo-6",
-          "title": "ADJOURNMENT FROM THURSDAY, JUNE 25, 2026, TO MONDAY, JUNE 29, 2026",
-          "detail": "Congressional Record · CREC · CREC-2026-06-25",
-          "date": "2026-06-25",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25",
+          "title": "HONORING DIANA COLON AS A DISTINGUISHED LEADER IN CENTRAL FLORIDA FOR LGBTQ+ PRIDE MONTH",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-25"
+            "date": "2026-06-30"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "govinfo-7",
-          "title": "Diversity Visa Protection and Modernization Act",
-          "detail": "Congressional Bill · BILLS · BILLS-119hr9457ih",
-          "date": "2026-06-25",
-          "link": "https://www.govinfo.gov/app/details/BILLS-119hr9457ih",
+          "title": "HONORING AXEL J SOMEILLAN AS A DISTINGUISHED LEADER IN CENTRAL FLORIDA FOR LGBTQ+ PRIDE MONTH",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-25"
+            "date": "2026-06-30"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "govinfo-8",
-          "title": "NOMINATIONS",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24",
+          "title": "HONORING MASTER DEPUTY MARA EVERSON AS A DISTINGUISHED LEADER IN CENTRAL FLORIDA FOR LGBTQ+ PRIDE MONTH",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-24"
+            "date": "2026-06-30"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
           "id": "govinfo-9",
-          "title": "Text of Senate Amendment 6409",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24",
+          "title": "HONORING STEPHANIE FLORCZYK AS A DISTINGUISHED LEADER IN CENTRAL FLORIDA FOR LGBTQ+ PRIDE MONTH",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30",
           "source": {
             "name": "GovInfo (U.S. GPO)",
             "url": "https://www.govinfo.gov",
             "tier": "official",
             "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-            "date": "2026-06-24"
+            "date": "2026-06-30"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         }
       ]
     },
@@ -372,7 +541,7 @@
           "tier": "official",
           "description": "Official daily journal of the U.S. government via federalregister.gov API"
         },
-        "asOf": "2026-06-29",
+        "asOf": "2026-07-01",
         "totalCount": 100,
         "datasetUrl": "https://www.federalregister.gov/api/v1/documents.json?conditions[term]=Florida",
         "note": "Most recent 100 Federal Register documents matching \"Florida\" (rules, proposed rules, notices, presidential documents). Tier 1 official."
@@ -380,6 +549,81 @@
       "records": [
         {
           "id": "fedregister-0",
+          "title": "Schedules of Controlled Substances: Temporary Placement of 5,6- Dichloro Brorphine, 5,6-Dichloro Desmethylchlorphine, N-Propionitrile Chlorphine, and Spirochlorphine in Schedule I of the Controlled Substances Act",
+          "detail": "2026-13364 · Proposed Rule · The Administrator of the Drug Enforcement Administration is issuing this notice of intent to publish a temporary order to schedule 1-(1-(1-(4-bromophenyl)ethyl)piperidin-4-yl)-5,6-dichloro-1,3-dihydro- 2H-benzo[d]imidazol-2-one (commonly known as 5,6-dichloro brorphine or SR-14968); 5,6-dichloro-1-(1-(4-chlorobenzyl)piperidin-4-yl)-1,3- dihydro-2H-benzo[d]imidazol-2-one (commonly known as 5,6-dichloro desmethylchlorphine or SR-17018); 3-(3-(1-(1-(4- chlorophenyl)ethyl)piperidin-4-yl)-2-oxo-2,3-dihydro-1H- benzo[d]imidazol-1-yl)propanenitrile (commonly known as N-propionitrile chlorphine or cychlorphine); and 8-(1-(4-chlorophenyl)ethyl)-1-phenyl- 1,3,8-triazaspiro[4.5]decan-4-one (commonly known as spirochlorphine or R-6890), including their isomers, esters, ethers, salts, and salts of isomers, esters, and ethers, whenever the existence of such isomers, esters, ethers, and salts is possible within the specific chemical designation, in schedule I of the Controlled Substances Act. When it is issued, the temporary scheduling order will impose the regulatory controls and administrative, civil, and criminal sanctions applicable to schedule I controlled substances on persons who handle (manufacture, distribute, reverse distribute, import, export, engage in research, conduct instructional activities or chemical analysis, or possess) or propose to handle these four specific substances.",
+          "date": "2026-07-01",
+          "link": "https://www.federalregister.gov/documents/2026/07/01/2026-13364/schedules-of-controlled-substances-temporary-placement-of-56--dichloro-brorphine-56-dichloro",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-07-01"
+          },
+          "asOf": "2026-07-01"
+        },
+        {
+          "id": "fedregister-1",
+          "title": "National Register of Historic Places; Notification of Pending Nominations and Related Actions",
+          "detail": "2026-13249 · Notice · The National Park Service is soliciting electronic comments on the significance of properties nominated before May 30, 2026, for listing or related actions in the National Register of Historic Places.",
+          "date": "2026-07-01",
+          "link": "https://www.federalregister.gov/documents/2026/07/01/2026-13249/national-register-of-historic-places-notification-of-pending-nominations-and-related-actions",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-07-01"
+          },
+          "asOf": "2026-07-01"
+        },
+        {
+          "id": "fedregister-2",
+          "title": "Endangered Species; File No. 29126",
+          "detail": "2026-13232 · Notice · Notice is hereby given that Florida Sea Grant, P.O. Box 7640, St. Thomas, Virginia 00801 (Logan Williams, Responsible Party), has applied in due form for a permit to take pillar coral (Dendrogyra cylindrus) for purposes of scientific research and enhancement.",
+          "date": "2026-07-01",
+          "link": "https://www.federalregister.gov/documents/2026/07/01/2026-13232/endangered-species-file-no-29126",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-07-01"
+          },
+          "asOf": "2026-07-01"
+        },
+        {
+          "id": "fedregister-3",
+          "title": "Deregistration Under Section 8(f) of the Investment Company Act of 1940",
+          "detail": "2026-13197 · Notice · Applicant seeks an order declaring that it has ceased to be an investment company. On November 29, 2025, applicant made liquidating distributions to its shareholders based on net asset value. Expenses of $140,000 incurred in connection with the liquidation were paid by the adviser and the fund, with the adviser paying legal expenses of $120,000 and the fund paying proxy solicitation fees of $20,000. Filing Date: The application was filed on April 23, 2026, and amended on June 12, 2026. Applicant's Address: 1605 Main Street, Suite 912, Sarasota, Florida 34236.",
+          "date": "2026-06-30",
+          "link": "https://www.federalregister.gov/documents/2026/06/30/2026-13197/deregistration-under-section-8f-of-the-investment-company-act-of-1940",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-30"
+          },
+          "asOf": "2026-07-01"
+        },
+        {
+          "id": "fedregister-4",
+          "title": "Certain Disposable and Other Closed-System Electronic Nicotine Delivery Systems (ENDS); Devices and Components Thereof; Notice of a Commission Determination Not To Review an Initial Determination Amending the Complaint and Notice of Investigation To Add Proposed Respondents",
+          "detail": "2026-13181 · Notice · Notice is hereby given that the U.S. International Trade Commission has determined not to review an initial determination (\"ID\") (Order No. 13) of the presiding administrative law judge (\"ALJ\") granting a motion to amend the complaint and notice of investigation to add proposed respondents Nevera (HK) Limited, Wonder Ladies Limited, Sailing South Limited, Palma Terra Limited, and Marea Morada Limited (the \"Proposed Respondents\").",
+          "date": "2026-06-30",
+          "link": "https://www.federalregister.gov/documents/2026/06/30/2026-13181/certain-disposable-and-other-closed-system-electronic-nicotine-delivery-systems-ends-devices-and",
+          "source": {
+            "name": "Federal Register",
+            "url": "https://www.federalregister.gov",
+            "tier": "official",
+            "description": "Official daily journal of the U.S. government via federalregister.gov API",
+            "date": "2026-06-30"
+          },
+          "asOf": "2026-07-01"
+        },
+        {
+          "id": "fedregister-5",
           "title": "Change in Bank Control Notices; Acquisitions of Shares of a Bank or Bank Holding Company",
           "detail": "2026-13067 · Notice",
           "date": "2026-06-29",
@@ -391,10 +635,10 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-29"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
-          "id": "fedregister-1",
+          "id": "fedregister-6",
           "title": "Alien Registration Form and Evidence of Registration",
           "detail": "2026-13057 · Rule · On March 12, 2025, DHS issued an interim final rule (IFR) with request for comments amending DHS regulations to designate a new registration form for aliens to comply with statutory alien registration and fingerprinting provisions. Unregistered aliens may use this general registration form to satisfy their statutory obligations. This final rule responds to public comments, amends DHS regulations to adjust the lists of forms and processes that may serve as registration forms and evidence of alien registration, and seeks comments on other potential changes to the regulations relating to alien registration and fingerprinting.",
           "date": "2026-06-29",
@@ -406,10 +650,10 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-29"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
-          "id": "fedregister-2",
+          "id": "fedregister-7",
           "title": "Air Plan Approval; Ohio; Redesignation of the Cleveland, OH Area to Attainment of the 2015 Ozone Standard",
           "detail": "2026-13027 · Rule · The Environmental Protection Agency (EPA) is approving the request from the Ohio Environmental Protection Agency (Ohio EPA) to redesignate the Cleveland, Ohio area to attainment for the 2015 ozone National Ambient Air Quality Standards (NAAQS) because the request meets the statutory requirements for redesignation under the Clean Air Act (CAA). Ohio EPA submitted this request on December 8, 2025. The EPA is approving, as a revision to the Ohio State Implementation Plan (SIP), the State's plan for maintaining the 2015 ozone NAAQS through 2038 in the Cleveland area. The EPA is also finding adequate and approving Ohio's 2032 and 2038 volatile organic compound (VOC) and oxides of nitrogen (NO<INF>X</INF>) motor vehicle emissions budgets (budgets) for the Cleveland area. Additionally, the EPA is adjusting the deadline for Ohio to submit Serious SIP revisions for the Cleveland area. Finally, the EPA is approving the Enhanced motor vehicle inspection and maintenance (I/M) program certification and clean fuel vehicle program (CFVP) certification SIP revisions submitted by Ohio EPA on December 19, 2025, and January 12, 2026, pursuant to section 110 and part D of the CAA, because they satisfy Serious SIP requirements for the Cleveland area under the 2015 ozone NAAQS.",
           "date": "2026-06-29",
@@ -421,10 +665,10 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-29"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
-          "id": "fedregister-3",
+          "id": "fedregister-8",
           "title": "Modernizing Security Requirements",
           "detail": "2026-12989 · Proposed Rule · The U.S. Nuclear Regulatory Commission (NRC) is proposing to revise its regulations to modernize security and fitness-for-duty requirements to enhance efficiency, consistent with Executive Order 14300, \"Ordering the Reform of the Nuclear Regulatory Commission.\" The proposed revisions are intended to reduce regulatory burden, where appropriate, while continuing to provide reasonable assurance that safety and security will be adequately maintained at NRC-licensed facilities.",
           "date": "2026-06-26",
@@ -436,10 +680,10 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         },
         {
-          "id": "fedregister-4",
+          "id": "fedregister-9",
           "title": "Agency Information Collection Activities: Request for Comments for a New Information Collection",
           "detail": "2026-12979 · Notice · The FHWA has forwarded the information collection request described in this notice to the Office of Management and Budget (OMB) to approve a new information collection. We are required to publish this notice in the Federal Register by the Paperwork Reduction Act of 1995.",
           "date": "2026-06-26",
@@ -451,82 +695,7 @@
             "description": "Official daily journal of the U.S. government via federalregister.gov API",
             "date": "2026-06-26"
           },
-          "asOf": "2026-06-29"
-        },
-        {
-          "id": "fedregister-5",
-          "title": "HEARTH Act Approval of Caddo Nation of Oklahoma Leasing Ordinance",
-          "detail": "2026-12969 · Notice · The Assistant Secretary--Indian Affairs approved the Caddo Nation of Oklahoma Leasing Ordinance under the Helping Expedite and Advance Responsible Tribal Homeownership Act of 2012 (HEARTH Act). With this approval, the Tribe is authorized to enter into leases without further approval from the Secretary of the Interior.",
-          "date": "2026-06-26",
-          "link": "https://www.federalregister.gov/documents/2026/06/26/2026-12969/hearth-act-approval-of-caddo-nation-of-oklahoma-leasing-ordinance",
-          "source": {
-            "name": "Federal Register",
-            "url": "https://www.federalregister.gov",
-            "tier": "official",
-            "description": "Official daily journal of the U.S. government via federalregister.gov API",
-            "date": "2026-06-26"
-          },
-          "asOf": "2026-06-29"
-        },
-        {
-          "id": "fedregister-6",
-          "title": "HEARTH Act Approval of Cachil DeHe Band of Wintun Indians of the Colusa Indian Community of the Colusa Rancheria, California, Leasing Ordinance",
-          "detail": "2026-12968 · Notice · The Assistant Secretary--Indian Affairs approved the Cachil DeHe Band of Wintun Indians of the Colusa Indian Community of the Colusa Rancheria, California, Leasing Ordinance under the Helping Expedite and Advance Responsible Tribal Homeownership Act of 2012 (HEARTH Act). With this approval, the Tribe is authorized to enter into leases without further Secretary of the Interior approval.",
-          "date": "2026-06-26",
-          "link": "https://www.federalregister.gov/documents/2026/06/26/2026-12968/hearth-act-approval-of-cachil-dehe-band-of-wintun-indians-of-the-colusa-indian-community-of-the",
-          "source": {
-            "name": "Federal Register",
-            "url": "https://www.federalregister.gov",
-            "tier": "official",
-            "description": "Official daily journal of the U.S. government via federalregister.gov API",
-            "date": "2026-06-26"
-          },
-          "asOf": "2026-06-29"
-        },
-        {
-          "id": "fedregister-7",
-          "title": "Process for Authorizing Seasonal Migratory Game Bird Hunting",
-          "detail": "2026-12955 · Proposed Rule · The U.S. Fish and Wildlife Service (Service or we) is proposing changes to the administrative process for authorizing seasonal migratory game bird hunting in the United States. Migratory game bird hunting regulations are currently promulgated annually to provide opportunities for recreation and sustenance; aid Federal, State, and Tribal governments in the management of migratory game birds; and allow harvests at levels compatible with migratory game bird population status and habitat conditions.The Service proposes a more efficient administrative process for authorizing seasonal migratory game bird hunting. The Service would issue a memorandum for migratory game bird hunting once every 3 years. The Service would continue to make annual decisions on harvest levels and would update the memorandum sooner than 3 years if changes are prescribed by our decision frameworks. The process eliminates the need for subsequent annual Federal regulation promulgation and rulemaking and is expected to increase efficiency; better meet State, Tribal, and Federal rulemaking constraints; and reduce the complexity and costs. Our goal is to better serve State partners and the hunting public while continuing to meet the legal and conservation purposes of the Migratory Bird Treaty Act. Tribes are already authorized under a similar process.",
-          "date": "2026-06-26",
-          "link": "https://www.federalregister.gov/documents/2026/06/26/2026-12955/process-for-authorizing-seasonal-migratory-game-bird-hunting",
-          "source": {
-            "name": "Federal Register",
-            "url": "https://www.federalregister.gov",
-            "tier": "official",
-            "description": "Official daily journal of the U.S. government via federalregister.gov API",
-            "date": "2026-06-26"
-          },
-          "asOf": "2026-06-29"
-        },
-        {
-          "id": "fedregister-8",
-          "title": "Process for Authorizing Seasonal Migratory Game Bird Hunting",
-          "detail": "2026-12951 · Rule · This direct final rule changes the administrative process for authorizing seasonal migratory game bird hunting in the United States. Migratory game bird hunting regulations are currently promulgated annually to provide opportunities for recreation and sustenance; aid Federal, State, and Tribal governments in the management of migratory game birds; and allow harvests at levels compatible with migratory game bird population status and habitat conditions.The U.S. Fish and Wildlife Service (Service or we) is adopting a more efficient administrative process for authorizing seasonal migratory game bird hunting. The Service will issue a memorandum for migratory game bird hunting once every 3 years. The Service will continue to make annual decisions on harvest levels and will update the memorandum sooner than 3 years if changes are prescribed by our decision frameworks. The process eliminates the need for subsequent annual Federal regulation promulgation and rulemaking and is expected to increase efficiency; better meet State, Tribal, and Federal rulemaking constraints; and reduce the complexity and costs. Our goal is to better serve State partners and the hunting public while continuing to meet the legal and conservation purposes of the Migratory Bird Treaty Act.Tribes are already authorized under a similar process.",
-          "date": "2026-06-26",
-          "link": "https://www.federalregister.gov/documents/2026/06/26/2026-12951/process-for-authorizing-seasonal-migratory-game-bird-hunting",
-          "source": {
-            "name": "Federal Register",
-            "url": "https://www.federalregister.gov",
-            "tier": "official",
-            "description": "Official daily journal of the U.S. government via federalregister.gov API",
-            "date": "2026-06-26"
-          },
-          "asOf": "2026-06-29"
-        },
-        {
-          "id": "fedregister-9",
-          "title": "Transport Airplane and Propulsion Certification Modernization",
-          "detail": "2026-12922 · Proposed Rule · FAA proposes to amend various airworthiness regulations to modernize certain certification standards for transport category airplanes and propulsion systems. This rule would be both deregulatory and relieving by reducing the number of exemptions, special conditions, and equivalent level of safety findings required during the certification process. FAA expects that this proposal would reduce certification costs and time to certify new and changed products for both industry and FAA while maintaining or increasing the level of safety provided by the current regulations. FAA proposes to remove Special Federal Aviation Regulation (SFAR) No. 109 from part 25 and relocate certain of its requirements. Finally, this action would address industry and National Transportation Safety Board recommendations while also harmonizing FAA's regulations with international standards.",
-          "date": "2026-06-26",
-          "link": "https://www.federalregister.gov/documents/2026/06/26/2026-12922/transport-airplane-and-propulsion-certification-modernization",
-          "source": {
-            "name": "Federal Register",
-            "url": "https://www.federalregister.gov",
-            "tier": "official",
-            "description": "Official daily journal of the U.S. government via federalregister.gov API",
-            "date": "2026-06-26"
-          },
-          "asOf": "2026-06-29"
+          "asOf": "2026-07-01"
         }
       ]
     }

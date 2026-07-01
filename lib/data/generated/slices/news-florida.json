@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-06-29",
-  "fetchedAt": "2026-06-29T18:01:26.058Z",
+  "asOf": "2026-07-01",
+  "fetchedAt": "2026-07-01T17:25:16.606Z",
   "sections": [
     {
       "sourceId": "newsapi",
@@ -12,7 +12,7 @@
           "tier": "media",
           "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
         },
-        "asOf": "2026-06-29",
+        "asOf": "2026-07-01",
         "totalCount": 46,
         "datasetUrl": "https://newsapi.org/v2/everything",
         "note": "Tier 3 journalism — always corroborate with Tier 1/2 sources before presenting as fact.",
@@ -21,182 +21,182 @@
       "records": [
         {
           "id": "newsapi-0",
-          "title": "Three firefighters killed on Colorado-Utah border as wildfires intensify",
-          "detail": "The deaths occurred as crews battled multiple blazes across a parched region. Two other firefighters were also injured. · NPR",
-          "date": "2026-06-28T14:46:48Z",
-          "link": "https://www.npr.org/2026/06/28/g-s1-130737/wildfires-utah-colorado-firefighter-deaths-snyder",
+          "title": "Texas To Include The Bible As Part Of New K-12 Required Reading Lists",
+          "detail": "The Texas Board of Education approved a new reading list June 26 that will require public school students to read excerpts from the Bible. · The Federalist",
+          "date": "2026-06-30T15:47:28Z",
+          "link": "https://thefederalist.com/2026/06/30/texas-to-include-the-bible-as-part-of-new-k-12-required-reading-lists/",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-06-29",
+          "asOf": "2026-07-01",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-1",
-          "title": "Are Republicans Souring on Data Centers?",
-          "detail": "In recent elections, Republican voters have expressed their dissatisfaction with policies responding to the construction of data centers—the rapidly expanding physical infrastructure that supports the internet. At the same time, Republican governors are incre… · Daily Signal",
-          "date": "2026-06-28T14:00:00Z",
-          "link": "https://www.dailysignal.com/2026/06/28/are-republicans-souring-on-data-centers/",
+          "title": "Today in White Sox History: June 30",
+          "detail": "Cy Young takes his last start against the South Siders square on the chin · Southsidesox.com",
+          "date": "2026-06-30T15:47:00Z",
+          "link": "https://www.southsidesox.com/chicago-white-sox-history/129376/today-in-white-sox-history-june-30",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-06-29",
+          "asOf": "2026-07-01",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-2",
-          "title": "‘WOLF IN SHEEP’S CLOTHING’: Republicans Call on Democrat Opponents to Swear Off Leftist Group’s Support",
-          "detail": "Republicans are calling on their Democrat opponents to distance themselves from a leftist group accused of propping up the Ku Klux Klan in order to fundraise against it. Kevin Martin, a Republican challenging Rep. Lucy McBath in Georgia’s 6th Congressional Di… · Daily Signal",
-          "date": "2026-06-28T11:00:00Z",
-          "link": "https://www.dailysignal.com/2026/06/28/wolf-sheeps-clothing-republicans-call-democrat-opponents-swear-off-leftist-groups-support/",
+          "title": "Collier County Icon Alfie Oakes, Founder of Seed to Table, Endorses Michael Carbonara for Congress",
+          "detail": "Naples, Florida, June 30, 2026 (GLOBE NEWSWIRE) -- Carbonara for Congress today announced the endorsement of Alfie Oakes, founder and owner of Seed to Table and one of Southwest Florida’s most recognized farmers and business leaders, in the Republican primary… · GlobeNewswire",
+          "date": "2026-06-30T15:44:00Z",
+          "link": "https://www.globenewswire.com/news-release/2026/06/30/3319960/0/en/Collier-County-Icon-Alfie-Oakes-Founder-of-Seed-to-Table-Endorses-Michael-Carbonara-for-Congress.html",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-06-29",
+          "asOf": "2026-07-01",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-3",
-          "title": "What Ron DeSantis’ closure of ‘Alligator Alcatraz’ reveals about MAGA",
-          "detail": "After nearly a year of controversy and several lawsuits, the notorious “Alligator Alcatraz” immigration detention center in Florida is officially shuttering. But Florida Gov. Ron DeSantis’ explanation for why it’s closing is disingenuous. \nAt a news conferenc… · Biztoc.com",
-          "date": "2026-06-28T10:23:51Z",
-          "link": "https://biztoc.com/x/0076c7e6feb94f63",
+          "title": "WATCH: The history of Levi's",
+          "detail": "As America approaches its 250th birthday, \"GMA\" explores the history of Levi's, one of the country's most iconic brands. · Abcnews.com",
+          "date": "2026-06-30T15:37:07Z",
+          "link": "https://abcnews.com/video/134338007/",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-06-29",
+          "asOf": "2026-07-01",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-4",
-          "title": "Gun-wielding couple in viral BLM standoff got firepower — and 'a voice' — back after legal saga",
-          "detail": "From misdemeanor pleas to gubernatorial pardons, the McCloskey case reshaped debates over self-defense, property rights, and prosecutorial power. · Fox News",
-          "date": "2026-06-28T10:00:14Z",
-          "link": "https://www.foxnews.com/us/gun-wielding-couple-viral-blm-standoff-got-firepower-voice-back-legal-saga",
+          "title": "Ron DeSantis Cools on Property Tax Cut as Opposition Mounts",
+          "detail": "Florida Governor Ron DeSantis said he will not campaign to promote a much-debated property tax cut that would be put to voters in November, saying the one on the ballot isn’t exactly the plan he suggested.\n“What the Legislature did wasn’t my proposal,” he sai… · Biztoc.com",
+          "date": "2026-06-30T14:47:39Z",
+          "link": "https://biztoc.com/x/c42ebfa46b66c39a",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-06-29",
+          "asOf": "2026-07-01",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-5",
-          "title": "Thousands flock to national Eucharistic procession in Boston",
-          "detail": "“It was a beautiful moment to see the people of God sort of show up for Jesus.\" · Ewtnnews.com",
-          "date": "2026-06-28T10:00:00Z",
-          "link": "https://www.ewtnnews.com/world/us/eucharistic-procession-boston",
+          "title": "Why we need a Resilient Florida",
+          "detail": "Extreme weather like hurricanes, tropical storms and torrential rainfall are facts of life for many Florida communities. And the risks of such weather are increasing and worsening in severity with sea level rise, warming ocean temperatures and stressed ecosys… · Environmental Defense Fund",
+          "date": "2026-06-30T14:41:17Z",
+          "link": "https://blogs.edf.org/growingreturns/2026/06/30/why-we-need-a-resilient-florida/",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-06-29",
+          "asOf": "2026-07-01",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-6",
-          "title": "California's failed governor, Gavin Newsom, calls for a 'national' billionaire's tax",
-          "detail": "Using the Berlin Wall as a model, Gavin Newsom seeks a financial Berlin Wall for the U.S, so he can keep spending other people's money. · Americanthinker.com",
-          "date": "2026-06-28T04:00:00Z",
-          "link": "https://www.americanthinker.com/blog/2026/06/california-s-failed-governor-gavin-newsom-calls-for-a-national-billionaire-s-tax-and-others-say-make-it-international/",
+          "title": "The Great American State Fair Goes MAHA?",
+          "detail": "The Great American State Fair kicked off “MAHA Monday” by spotlighting the Make America Healthy Again movement, featuring healthier food choices and wellness speakers, hosted by the U.S. Department of Agriculture. The dedicated day is a testament that MAHA is… · Daily Signal",
+          "date": "2026-06-30T14:40:00Z",
+          "link": "https://www.dailysignal.com/2026/06/30/great-american-state-fair-goes-maha/",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-06-29",
+          "asOf": "2026-07-01",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-7",
-          "title": "Michael Goodwin: Kathy Hochul will never satisfy Mamdani’s far-left crew — and yet she keeps appeasing them",
-          "detail": "The political threats aimed at Gov. Hochul by mad-dog leftists are almost enough to make you feel sorry for her. Almost. · New York Post",
-          "date": "2026-06-28T01:00:08Z",
-          "link": "https://nypost.com/2026/06/27/opinion/michael-goodwin-kathy-hochul-will-never-satisfy-mamdanis-far-left-crew-and-yet-she-keeps-appeasing-them/",
+          "title": "DeSantis signs Live Local Act amendment into law",
+          "detail": "Gov. Ron DeSantis signed into law a bill amending the Live Local Act workforce housing law, further expanding the state’s authority over local municipalities.  Florida House Bill 1389 does a few things to Live Local, which became law three years ago. Sen. Ale… · The Real Deal",
+          "date": "2026-06-30T14:30:00Z",
+          "link": "https://therealdeal.com/miami/2026/06/30/desantis-expands-live-local-act-with-latest-tweak/",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-06-29",
+          "asOf": "2026-07-01",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-8",
-          "title": "CNN Host Reminds Republican Lawmaker The Housing Bill Trump Refused To Sign Has Bipartisan Support",
-          "detail": "Omar Jimenez pressed Byron Donalds over why he was prioritizing Donald Trump's SAVE America Act over the bipartisan housing bill that still awaits signature.\nThe post CNN Host Reminds Republican Lawmaker The Housing Bill Trump Refused To Sign Has Bipartisan S… · Mediaite",
-          "date": "2026-06-28T00:05:29Z",
-          "link": "https://www.mediaite.com/media/news/cnn-host-reminds-republican-lawmaker-the-housing-bill-trump-refused-to-sign-has-bipartisan-support/",
+          "title": "Supreme Court Upholds Bans On Transgender Women In Sports",
+          "detail": "The ruling will impact laws in more than 25 states. · Forbes",
+          "date": "2026-06-30T14:04:39Z",
+          "link": "https://www.forbes.com/sites/alisondurkee/2026/06/30/supreme-court-upholds-bans-on-transgender-women-in-sports/",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-06-29",
+          "asOf": "2026-07-01",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-9",
-          "title": "Uruguayan Football Association ‘cancel’ chartered flight for players after World Cup misery",
-          "detail": "The disappointment has continued for the Uruguay players following their dismal exit from the FIFA World Cup 2026. The two-time winners were eliminated from the group stage with only two points after losing to Spain in Guadalajara. · HITC - Football, Gaming, Movies, TV, Music",
-          "date": "2026-06-27T20:38:21Z",
-          "link": "https://www.hitc.com/uruguayan-football-association-cancel-chartered-flight-for-players-after-world-cup-misery/",
+          "title": "National League of Cities, America's Newspapers launch \"Sign ON 250\"",
+          "detail": "Year-long Initiative Unites Americans to Renew Commitment to Ideals of the Declaration of Independence WASHINGTON, June 30, 2026 /PRNewswire/ -- To unite millions of Americans in a year-long celebration of the nation's founding principles, The National League… · PRNewswire",
+          "date": "2026-06-30T14:03:00Z",
+          "link": "https://www.prnewswire.com/news-releases/national-league-of-cities-americas-newspapers-launch-sign-on-250-302814641.html",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-06-29",
+          "asOf": "2026-07-01",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-10",
-          "title": "Powerful Rebuke from Rep. Kat Cammack After Disgusting Media Hit About Her Ectopic Pregnancy Leads to ‘Hundreds of Death Threats’",
-          "detail": "Rep.\nThe post Powerful Rebuke from Rep. Kat Cammack After Disgusting Media Hit About Her Ectopic Pregnancy Leads to ‘Hundreds of Death Threats’ appeared first on The Gateway Pundit. · Thegatewaypundit.com",
-          "date": "2026-06-27T20:20:49Z",
-          "link": "https://www.thegatewaypundit.com/2026/06/powerful-rebuke-rep-kat-cammack-digusting-lies-about/",
+          "title": "Lookn Like Trouble Continues Her Winning Streak at 2026 APHA World",
+          "detail": "They’re now instantly recognizable: the feminine, sorrel mare with chrome ridden skillfully and lovingly by the beautiful trainer, Angie Cannizzaro, dressed in pink. The softness emulating from both creatures – gentle movement from Mya, Lookn Like Trouble, an… · Equinechronicle.com",
+          "date": "2026-06-30T13:43:30Z",
+          "link": "http://www.equinechronicle.com/lookn-like-trouble-continues-her-winning-streak-at-2026-apha-world/",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-06-29",
+          "asOf": "2026-07-01",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-11",
-          "title": "Drone nearly hits United plane landing in Newark, pilot says",
-          "detail": "A United Airlines passenger jet nearly collided with a drone as it was coming in to land in New Jersey on Friday, its pilot said. · CNN",
-          "date": "2026-06-27T17:22:00Z",
-          "link": "https://www.cnn.com/2026/06/27/us/drone-nearly-hits-united-plane-newark-hnk",
+          "title": "Supreme Court Will Rule On Birthright Citizenship Today—After Trump’s Opposed It For More Than 10 Years",
+          "detail": "The president has opposed automatic citizenship by birth since his first presidential run. · Forbes",
+          "date": "2026-06-30T13:31:05Z",
+          "link": "https://www.forbes.com/sites/alisondurkee/2026/06/30/supreme-court-will-rule-on-birthright-citizenship-today-after-trumps-opposed-it-for-more-than-10-years/",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-06-29",
+          "asOf": "2026-07-01",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         }
       ]
@@ -211,8 +211,8 @@
           "tier": "media",
           "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing"
         },
-        "asOf": "2026-06-29",
-        "fetchedAt": "2026-06-29T18:01:26.058Z",
+        "asOf": "2026-07-01",
+        "fetchedAt": "2026-07-01T17:25:16.606Z",
         "totalCount": 0,
         "datasetUrl": "https://api.gdeltproject.org/api/v2/doc/doc?query=Florida%20(governor%20OR%20legislature%20OR%20senate%20OR%20election%20OR%20congress)&mode=artlist&maxrecords=50&format=json&sort=datedesc&timespan=14d",
         "note": "Florida political news coverage (last 14 days) via the GDELT 2.0 DOC API. Tier 3 automated aggregator over global journalism — always corroborate with Tier 1/2 records before treating as fact.",

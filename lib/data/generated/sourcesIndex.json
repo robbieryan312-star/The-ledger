@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-29T20:12:21.402Z",
+  "generatedAt": "2026-07-01T21:50:47.773Z",
   "sourceCount": 21,
   "sources": [
     {
@@ -13,7 +13,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "fetchedAt": null,
       "fetchedLive": true,
       "count": 2440,
@@ -29,12 +29,6 @@
         },
         {
           "title": "CAMPBELL, WALTER L DR.",
-          "detail": "H0FL18249 · H · FL",
-          "date": "2029",
-          "link": "https://www.fec.gov/data/candidate/H0FL18249/"
-        },
-        {
-          "title": "CAMPBELL, WALTER L DR.",
           "detail": "H0FL18223 · H · FL",
           "date": "2029",
           "link": "https://www.fec.gov/data/candidate/H0FL18223/"
@@ -46,10 +40,10 @@
           "link": "https://www.fec.gov/data/candidate/H0FL18231/"
         },
         {
-          "title": "BROWN, TYRONE DAWAYNE BISHOP",
-          "detail": "S8FL00307 · S · FL",
-          "date": "2028",
-          "link": "https://www.fec.gov/data/candidate/S8FL00307/"
+          "title": "CAMPBELL, WALTER L DR.",
+          "detail": "H0FL18249 · H · FL",
+          "date": "2029",
+          "link": "https://www.fec.gov/data/candidate/H0FL18249/"
         },
         {
           "title": "LELLE, TRAVIS MATTHEW",
@@ -58,118 +52,124 @@
           "link": "https://www.fec.gov/data/candidate/S8FL00331/"
         },
         {
-          "title": "PANDICH, ELIZABETH",
-          "detail": "H6FL21042 · H · FL",
-          "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/H6FL21042/"
+          "title": "BROWN, TYRONE DAWAYNE BISHOP",
+          "detail": "S8FL00307 · S · FL",
+          "date": "2028",
+          "link": "https://www.fec.gov/data/candidate/S8FL00307/"
         },
         {
-          "title": "METWALLY, AMR",
-          "detail": "H6FL21067 · H · FL",
+          "title": "GRAGE, RACHEL",
+          "detail": "H6FL05250 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/H6FL21067/"
+          "link": "https://www.fec.gov/data/candidate/H6FL05250/"
         },
         {
-          "title": "FRANZESE, DANIEL JOHN",
-          "detail": "H6FL22149 · H · FL",
+          "title": "SELL, MIKE",
+          "detail": "H6FL04246 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/H6FL22149/"
+          "link": "https://www.fec.gov/data/candidate/H6FL04246/"
         },
         {
-          "title": "BAXTER, SARA",
-          "detail": "H6FL22255 · H · FL",
+          "title": "VALERIO, ANTHONY",
+          "detail": "H6FL04212 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/H6FL22255/"
+          "link": "https://www.fec.gov/data/candidate/H6FL04212/"
         },
         {
-          "title": "ASKAR, CASEY",
-          "detail": "H6FL22248 · H · FL",
+          "title": "WIMAN, ANGELA",
+          "detail": "H6FL03107 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/H6FL22248/"
+          "link": "https://www.fec.gov/data/candidate/H6FL03107/"
         },
         {
-          "title": "HASDORFF, TERRI",
-          "detail": "H6FL22214 · H · FL",
+          "title": "HARP, SETH ALLAN",
+          "detail": "H6FL03099 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/H6FL22214/"
+          "link": "https://www.fec.gov/data/candidate/H6FL03099/"
         },
         {
-          "title": "KEISER, BELINDA",
-          "detail": "H6FL22206 · H · FL",
+          "title": "GRAY, LEELA J",
+          "detail": "H6FL13312 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/H6FL22206/"
+          "link": "https://www.fec.gov/data/candidate/H6FL13312/"
         },
         {
-          "title": "AVILA, STEVE",
-          "detail": "H6FL22198 · H · FL",
+          "title": "MODARELLI, DYLAN",
+          "detail": "H6FL19152 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/H6FL22198/"
+          "link": "https://www.fec.gov/data/candidate/H6FL19152/"
         },
         {
-          "title": "THOMPSON, MICHAEL",
-          "detail": "H6FL22180 · H · FL",
+          "title": "BOCK, GEORGE LOUIS MR",
+          "detail": "H6FL07199 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/H6FL22180/"
+          "link": "https://www.fec.gov/data/candidate/H6FL07199/"
         },
         {
-          "title": "BURCK, DAVID",
-          "detail": "H6FL22156 · H · FL",
+          "title": "FORNINO, ALEXANDER",
+          "detail": "H6FL27064 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/H6FL22156/"
+          "link": "https://www.fec.gov/data/candidate/H6FL27064/"
         },
         {
-          "title": "BRANDA, PAOLA",
-          "detail": "H6FL22172 · H · FL",
+          "title": "BARNES, CHANELLE KRISETTE",
+          "detail": "H6FL11258 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/H6FL22172/"
+          "link": "https://www.fec.gov/data/candidate/H6FL11258/"
         },
         {
-          "title": "STANDRIDGE, JASON CLYDE MR.",
-          "detail": "S6FL00574 · S · FL",
+          "title": "BARNES, BRICE",
+          "detail": "H6FL02398 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/S6FL00574/"
+          "link": "https://www.fec.gov/data/candidate/H6FL02398/"
         },
         {
-          "title": "SRADO, ANTONIO",
-          "detail": "H6FL22131 · H · FL",
+          "title": "NORTON, JIM",
+          "detail": "H6FL02356 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/H6FL22131/"
+          "link": "https://www.fec.gov/data/candidate/H6FL02356/"
         },
         {
-          "title": "DOYLE, VICTORIA JANE BOKER",
-          "detail": "H6FL22107 · H · FL",
+          "title": "POWER, EVAN MR",
+          "detail": "H6FL02315 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/H6FL22107/"
+          "link": "https://www.fec.gov/data/candidate/H6FL02315/"
         },
         {
-          "title": "PRECOURT, SAM",
-          "detail": "H6FL22230 · H · FL",
+          "title": "CHICO, DOUGLAS CONNOR",
+          "detail": "H6FL01515 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/H6FL22230/"
+          "link": "https://www.fec.gov/data/candidate/H6FL01515/"
         },
         {
-          "title": "STEVENS, DENNIS GENE MR",
-          "detail": "S6FL00715 · S · FL",
+          "title": "HAFNER, ERIC",
+          "detail": "H6FL01424 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/S6FL00715/"
+          "link": "https://www.fec.gov/data/candidate/H6FL01424/"
         },
         {
-          "title": "JASSENOFF, PETER",
-          "detail": "H6FL25068 · H · FL",
+          "title": "DANDIYA, PIA",
+          "detail": "H6FL21059 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/H6FL25068/"
+          "link": "https://www.fec.gov/data/candidate/H6FL21059/"
         },
         {
-          "title": "COOKE, ALEXANDER R",
-          "detail": "H6FL21109 · H · FL",
+          "title": "ELIJAH, RYAN",
+          "detail": "H6FL07231 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/H6FL21109/"
+          "link": "https://www.fec.gov/data/candidate/H6FL07231/"
         },
         {
-          "title": "WINDHAUSER, ANGIE",
-          "detail": "S6FL00814 · S · FL",
+          "title": "WIDMANN, NOAH",
+          "detail": "H6FL07173 · H · FL",
           "date": "2026",
-          "link": "https://www.fec.gov/data/candidate/S6FL00814/"
+          "link": "https://www.fec.gov/data/candidate/H6FL07173/"
+        },
+        {
+          "title": "JENKINS, JENNIFER",
+          "detail": "H6FL06399 · H · FL",
+          "date": "2026",
+          "link": "https://www.fec.gov/data/candidate/H6FL06399/"
         }
       ]
     },
@@ -355,7 +355,7 @@
         "tier": "official",
         "description": "Official federal spending and contract awards via api.usaspending.gov"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "fetchedAt": null,
       "fetchedLive": true,
       "count": 100,
@@ -371,7 +371,7 @@
         },
         {
           "title": "LOCKHEED MARTIN CORPORATION",
-          "detail": "$6,948,968,023.22 · Department of Defense · Department of the Air Force",
+          "detail": "$7,202,488,023.22 · Department of Defense · Department of the Air Force",
           "date": "2024-09-27",
           "link": "https://www.usaspending.gov/award/FA868224CB001"
         },
@@ -437,13 +437,13 @@
         },
         {
           "title": "HARRIS CORPORATION",
-          "detail": "$1,558,797,291.63 · Department of Transportation · Federal Aviation Administration",
+          "detail": "$1,568,875,082.68 · Department of Transportation · Federal Aviation Administration",
           "date": "2008-07-25",
           "link": "https://www.usaspending.gov/award/DTFA0102D03006CALL0001"
         },
         {
           "title": "LOCKHEED MARTIN CORPORATION",
-          "detail": "$1,316,629,676 · Department of Defense · Department of the Air Force",
+          "detail": "$1,334,629,676 · Department of Defense · Department of the Air Force",
           "date": "2018-08-13",
           "link": "https://www.usaspending.gov/award/FA868118C0021"
         },
@@ -479,6 +479,12 @@
         },
         {
           "title": "LOCKHEED MARTIN CORPORATION",
+          "detail": "$1,205,415,035 · Department of Defense · Department of the Navy",
+          "date": "2025-09-12",
+          "link": "https://www.usaspending.gov/award/N0003025C0100"
+        },
+        {
+          "title": "LOCKHEED MARTIN CORPORATION",
           "detail": "$1,188,295,253.82 · Department of Defense · Defense Contract Management Agency",
           "date": "2021-08-10",
           "link": "https://www.usaspending.gov/award/N0003021C0100"
@@ -506,12 +512,6 @@
           "detail": "$1,107,782,933.35 · Department of Defense · Missile Defense Agency",
           "date": "2013-10-31",
           "link": "https://www.usaspending.gov/award/HQ014714C0001"
-        },
-        {
-          "title": "LOCKHEED MARTIN CORPORATION",
-          "detail": "$1,028,083,764 · Department of Defense · Department of the Navy",
-          "date": "2022-08-18",
-          "link": "https://www.usaspending.gov/award/N0003022C0100"
         }
       ]
     },
@@ -526,14 +526,14 @@
         "tier": "official",
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)"
       },
-      "asOf": "2026-06-29",
-      "fetchedAt": "2026-06-29T18:01:22.561Z",
+      "asOf": "2026-07-01",
+      "fetchedAt": "2026-07-01T17:25:13.343Z",
       "fetchedLive": false,
       "count": 0,
       "datasetUrl": "https://efts.sec.gov/LATEST/search-index?q=%22Florida%22&forms=8-K",
       "note": "Recent 8-K material-event filings (last 60 days) referencing Florida via SEC EDGAR full-text search. Each record carries the filer business/incorporation state and a floridaDomiciled flag — EDGAR location filters are unreliable, so Florida relevance is by full-text match. Tier 1 official.",
       "errors": [
-        "HTTP 500 for https://efts.sec.gov/LATEST/search-index?q=%22Florida%22&forms=8-K&startdt=2026-04-30&enddt=2026-06-29&from=0"
+        "HTTP 500 for https://efts.sec.gov/LATEST/search-index?q=%22Florida%22&forms=8-K&startdt=2026-05-02&enddt=2026-07-01&from=0"
       ],
       "sample": []
     },
@@ -548,7 +548,7 @@
         "tier": "official",
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "fetchedAt": null,
       "fetchedLive": true,
       "count": 4,
@@ -593,7 +593,7 @@
         "tier": "official",
         "description": "American Community Survey 5-year estimates via api.census.gov"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "fetchedAt": null,
       "fetchedLive": true,
       "count": 1,
@@ -791,7 +791,7 @@
         "tier": "official",
         "description": "Official daily journal of the U.S. government via federalregister.gov API"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "fetchedAt": null,
       "fetchedLive": true,
       "count": 100,
@@ -799,6 +799,36 @@
       "note": "Most recent 100 Federal Register documents matching \"Florida\" (rules, proposed rules, notices, presidential documents). Tier 1 official.",
       "errors": null,
       "sample": [
+        {
+          "title": "Schedules of Controlled Substances: Temporary Placement of 5,6- Dichloro Brorphine, 5,6-Dichloro Desmethylchlorphine, N-Propionitrile Chlorphine, and Spirochlorphine in Schedule I of the Controlled Substances Act",
+          "detail": "Proposed Rule · The Administrator of the Drug Enforcement Administration is issuing this notice of intent to publish a temporary order to schedule 1-(1-(1-(4-bromophenyl)ethyl)piperidin-4-yl)-5,6-dichloro-1,3-dihydro- 2H-benzo[d]imidazol-2-one (commonly known as 5,6-dichloro brorphine or SR-14968); 5,6-dichloro-1-(1-(4-chlorobenzyl)piperidin-4-yl)-1,3- dihydro-2H-benzo[d]imidazol-2-one (commonly known as 5,6-dichloro desmethylchlorphine or SR-17018); 3-(3-(1-(1-(4- chlorophenyl)ethyl)piperidin-4-yl)-2-oxo-2,3-dihydro-1H- benzo[d]imidazol-1-yl)propanenitrile (commonly known as N-propionitrile chlorphine or cychlorphine); and 8-(1-(4-chlorophenyl)ethyl)-1-phenyl- 1,3,8-triazaspiro[4.5]decan-4-one (commonly known as spirochlorphine or R-6890), including their isomers, esters, ethers, salts, and salts of isomers, esters, and ethers, whenever the existence of such isomers, esters, ethers, and salts is possible within the specific chemical designation, in schedule I of the Controlled Substances Act. When it is issued, the temporary scheduling order will impose the regulatory controls and administrative, civil, and criminal sanctions applicable to schedule I controlled substances on persons who handle (manufacture, distribute, reverse distribute, import, export, engage in research, conduct instructional activities or chemical analysis, or possess) or propose to handle these four specific substances.",
+          "date": "2026-07-01",
+          "link": "https://www.federalregister.gov/documents/2026/07/01/2026-13364/schedules-of-controlled-substances-temporary-placement-of-56--dichloro-brorphine-56-dichloro"
+        },
+        {
+          "title": "National Register of Historic Places; Notification of Pending Nominations and Related Actions",
+          "detail": "Notice · The National Park Service is soliciting electronic comments on the significance of properties nominated before May 30, 2026, for listing or related actions in the National Register of Historic Places.",
+          "date": "2026-07-01",
+          "link": "https://www.federalregister.gov/documents/2026/07/01/2026-13249/national-register-of-historic-places-notification-of-pending-nominations-and-related-actions"
+        },
+        {
+          "title": "Endangered Species; File No. 29126",
+          "detail": "Notice · Notice is hereby given that Florida Sea Grant, P.O. Box 7640, St. Thomas, Virginia 00801 (Logan Williams, Responsible Party), has applied in due form for a permit to take pillar coral (Dendrogyra cylindrus) for purposes of scientific research and enhancement.",
+          "date": "2026-07-01",
+          "link": "https://www.federalregister.gov/documents/2026/07/01/2026-13232/endangered-species-file-no-29126"
+        },
+        {
+          "title": "Deregistration Under Section 8(f) of the Investment Company Act of 1940",
+          "detail": "Notice · Applicant seeks an order declaring that it has ceased to be an investment company. On November 29, 2025, applicant made liquidating distributions to its shareholders based on net asset value. Expenses of $140,000 incurred in connection with the liquidation were paid by the adviser and the fund, with the adviser paying legal expenses of $120,000 and the fund paying proxy solicitation fees of $20,000. Filing Date: The application was filed on April 23, 2026, and amended on June 12, 2026. Applicant's Address: 1605 Main Street, Suite 912, Sarasota, Florida 34236.",
+          "date": "2026-06-30",
+          "link": "https://www.federalregister.gov/documents/2026/06/30/2026-13197/deregistration-under-section-8f-of-the-investment-company-act-of-1940"
+        },
+        {
+          "title": "Certain Disposable and Other Closed-System Electronic Nicotine Delivery Systems (ENDS); Devices and Components Thereof; Notice of a Commission Determination Not To Review an Initial Determination Amending the Complaint and Notice of Investigation To Add Proposed Respondents",
+          "detail": "Notice · Notice is hereby given that the U.S. International Trade Commission has determined not to review an initial determination (\"ID\") (Order No. 13) of the presiding administrative law judge (\"ALJ\") granting a motion to amend the complaint and notice of investigation to add proposed respondents Nevera (HK) Limited, Wonder Ladies Limited, Sailing South Limited, Palma Terra Limited, and Marea Morada Limited (the \"Proposed Respondents\").",
+          "date": "2026-06-30",
+          "link": "https://www.federalregister.gov/documents/2026/06/30/2026-13181/certain-disposable-and-other-closed-system-electronic-nicotine-delivery-systems-ends-devices-and"
+        },
         {
           "title": "Change in Bank Control Notices; Acquisitions of Shares of a Bank or Bank Holding Company",
           "detail": "Notice",
@@ -918,36 +948,6 @@
           "detail": "Notice · In accordance with the Native American Graves Protection and Repatriation Act (NAGPRA), the University of Alabama Museums intends to repatriate certain cultural items that meet the definition of unassociated funerary objects and that have a cultural affiliation with the Indian Tribes or Native Hawaiian organizations in this notice.",
           "date": "2026-06-22",
           "link": "https://www.federalregister.gov/documents/2026/06/22/2026-12389/notice-of-intended-repatriation-university-of-alabama-museums-tuscaloosa-al"
-        },
-        {
-          "title": "Notice of Inventory Completion: School of Social Science and Global Studies, University of Southern Mississippi, Hattiesburg, MS",
-          "detail": "Notice · In accordance with the Native American Graves Protection and Repatriation Act (NAGPRA), the University of Southern Mississippi (USM) has completed an inventory of human remains and has determined that there is a cultural affiliation between the human remains and Indian Tribes or Native Hawaiian organizations in this notice.",
-          "date": "2026-06-22",
-          "link": "https://www.federalregister.gov/documents/2026/06/22/2026-12383/notice-of-inventory-completion-school-of-social-science-and-global-studies-university-of-southern"
-        },
-        {
-          "title": "Combined Notice of Filings #1",
-          "detail": "Notice",
-          "date": "2026-06-18",
-          "link": "https://www.federalregister.gov/documents/2026/06/18/2026-12317/combined-notice-of-filings-1"
-        },
-        {
-          "title": "Combined Notice of Filings #1",
-          "detail": "Notice",
-          "date": "2026-06-17",
-          "link": "https://www.federalregister.gov/documents/2026/06/17/2026-12184/combined-notice-of-filings-1"
-        },
-        {
-          "title": "Reef Fish Fishery of the Gulf of America; Shallow-Water Grouper Management Measures",
-          "detail": "Rule · NMFS issues regulations to implement management measures described in a framework action under the Fishery Management Plan for the Reef Fish Resources of the Gulf (FMP), as prepared by the Gulf Council (Council). This final rule modifies the Gulf of America (Gulf) Other Shallow-Water Grouper (SWG) complex catch limits and sets a recreational fixed-closed season for Gulf Other SWG. The purpose of this final rule is to reduce harvest of Gulf scamp and yellowmouth grouper while the Council develops Amendment 58A to the FMP (Amendment 58A), which considers additional Other SWG management measures.",
-          "date": "2026-06-17",
-          "link": "https://www.federalregister.gov/documents/2026/06/17/2026-12175/reef-fish-fishery-of-the-gulf-of-america-shallow-water-grouper-management-measures"
-        },
-        {
-          "title": "Security Zone; FIFA World Cup and Fan Fest 2026, Bayfront Park, Miami, FL",
-          "detail": "Rule · The Coast Guard is establishing a temporary security zone for certain navigable waters of Biscayne Bay in connection with the 2026 Miami FIFA World Cup and the World Cup Fan Fest events in Miami, Florida. This security zone is necessary to safeguard official parties, VIP's and other participants (\"attendees\") attending the Miami 2026 FIFA World Cup and the World Cup Fan Fest because the ease of waterfront access to the various venues hosting the World Cup events presents a security concern for all attendees. This rulemaking prohibits anchoring or remaining within the security zone during enforcement periods unless specifically authorized by the Captain of the Port (COTP), Sector Miami or their designated representative.",
-          "date": "2026-06-17",
-          "link": "https://www.federalregister.gov/documents/2026/06/17/2026-12168/security-zone-fifa-world-cup-and-fan-fest-2026-bayfront-park-miami-fl"
         }
       ]
     },
@@ -1006,7 +1006,7 @@
         "tier": "nonpartisan",
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "fetchedAt": null,
       "fetchedLive": true,
       "count": 60,
@@ -1177,8 +1177,8 @@
         "tier": "official",
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov"
       },
-      "asOf": "2026-06-29",
-      "fetchedAt": "2026-06-29T18:01:42.109Z",
+      "asOf": "2026-07-01",
+      "fetchedAt": "2026-07-01T17:25:30.899Z",
       "fetchedLive": true,
       "count": 40,
       "datasetUrl": "https://api.govinfo.gov/search",
@@ -1186,154 +1186,154 @@
       "errors": null,
       "sample": [
         {
-          "title": "APPOINTMENT OF ACTING PRESIDENT PRO TEMPORE",
-          "detail": "Congressional Record · CREC · CREC-2026-06-25",
-          "date": "2026-06-25",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25"
-        },
-        {
-          "title": "Senate",
-          "detail": "Congressional Record · CREC · CREC-2026-06-25",
-          "date": "2026-06-25",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25"
-        },
-        {
           "title": "ADDITIONAL SPONSORS",
-          "detail": "Congressional Record · CREC · CREC-2026-06-25",
-          "date": "2026-06-25",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25"
-        },
-        {
-          "title": "Constitutional Authority Statement for H.R. 9494",
-          "detail": "Congressional Record · CREC · CREC-2026-06-25",
-          "date": "2026-06-25",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25"
-        },
-        {
-          "title": "Constitutional Authority Statement for H.R. 9455",
-          "detail": "Congressional Record · CREC · CREC-2026-06-25",
-          "date": "2026-06-25",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25"
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
         },
         {
           "title": "PUBLIC BILLS AND RESOLUTIONS",
-          "detail": "Congressional Record · CREC · CREC-2026-06-25",
-          "date": "2026-06-25",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25"
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
         },
         {
-          "title": "ADJOURNMENT FROM THURSDAY, JUNE 25, 2026, TO MONDAY, JUNE 29, 2026",
-          "detail": "Congressional Record · CREC · CREC-2026-06-25",
-          "date": "2026-06-25",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-25"
+          "title": "HONORING PRIDE MONTH",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
         },
         {
-          "title": "Diversity Visa Protection and Modernization Act",
-          "detail": "Congressional Bill · BILLS · BILLS-119hr9457ih",
-          "date": "2026-06-25",
-          "link": "https://www.govinfo.gov/app/details/BILLS-119hr9457ih"
+          "title": "HONORING THE LIFE OF MICHAEL A. CARRICARTE",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
         },
         {
-          "title": "NOMINATIONS",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24"
+          "title": "HONORING BRANDON BRACALE-LLEWELLYN AS A DISTINGUISHED LEADER IN CENTRAL FLORIDA FOR LGBTQ+ PRIDE",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
         },
         {
-          "title": "Text of Senate Amendment 6409",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24"
+          "title": "HONORING JOSE RAMON AGUILAR COLINA AS A DISTINGUISHED LEADER IN CENTRAL FLORIDA FOR LGBTQ+ PRIDE MONTH",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
         },
         {
-          "title": "Text of Senate Amendment 6105",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24"
+          "title": "HONORING DIANA COLON AS A DISTINGUISHED LEADER IN CENTRAL FLORIDA FOR LGBTQ+ PRIDE MONTH",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
         },
         {
-          "title": "Text of Senate Amendment 6049",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24"
+          "title": "HONORING AXEL J SOMEILLAN AS A DISTINGUISHED LEADER IN CENTRAL FLORIDA FOR LGBTQ+ PRIDE MONTH",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
         },
         {
-          "title": "TEXT OF AMENDMENTS",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24"
+          "title": "HONORING MASTER DEPUTY MARA EVERSON AS A DISTINGUISHED LEADER IN CENTRAL FLORIDA FOR LGBTQ+ PRIDE MONTH",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
         },
         {
-          "title": "AMENDMENTS SUBMITTED AND PROPOSED",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24"
+          "title": "HONORING STEPHANIE FLORCZYK AS A DISTINGUISHED LEADER IN CENTRAL FLORIDA FOR LGBTQ+ PRIDE MONTH",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
         },
         {
-          "title": "SENATE RESOLUTION 794--EXPRESSING SUPPORT FOR THE DESIGNATION OF JULY 10, 2026, AS JOURNEYMAN LINEWORKERS RECOGNITION DAY",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24"
+          "title": "HONORING THE SERVICE OF KERSANDRA \"SARGE\" BROOKS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
         },
         {
-          "title": "SENATE RESOLUTION 789--RECOGNIZING JUNE 2026, AS \"LGBTQ PRIDE MONTH\"",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24"
+          "title": "HONORING ALBERT HARRIS AS DISTINGUISHED LEADER IN CENTRAL FLORIDA FOR LGBTQ+ PRIDE MONTH",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
         },
         {
-          "title": "SENATE RESOLUTION 788--COMMEMORATING THE PASSAGE OF 5 YEARS SINCE THE TRAGIC BUILDING COLLAPSE IN SURFSIDE, FLORIDA, ON JUNE 24, 2021",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24"
+          "title": "HONORING URLA KING AS A DISTINGUISHED LEADER IN CENTRAL FLORIDA FOR CARIBBEAN HERITAGE MONTH",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
         },
         {
-          "title": "SENATE RESOLUTION 787--CELEBRATING THE HISTORIC ANNIVERSARY OF THE JUNE 24, 2022, DECISION OF THE SUPREME COURT OF THE UNITED STATES IN DOBBS V. JACKSON WOMEN'S HEALTH ORGANIZATION",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24"
+          "title": "HONORING DAVID MINK AS A DISTINGUISHED LEADER IN CENTRAL FLORIDA FOR LGBTQ+ PRIDE MONTH",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
         },
         {
-          "title": "Introductory Statement on S. 4944",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24"
+          "title": "HONORING HAROLD CLAYTON WRIGHT AS A DISTINGUISHED LEADER IN CENTRAL FLORIDA FOR LGBTQ+ PRIDE MONTH",
+          "detail": "Congressional Record · CREC · CREC-2026-06-30",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
         },
         {
-          "title": "STATEMENTS ON INTRODUCED BILLS AND JOINT RESOLUTIONS",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24"
+          "title": "Encouraging the celebration of the month of June as LGBTQIA+ Pride Month.",
+          "detail": "Congressional Bill · BILLS · BILLS-119hres1405ih",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/BILLS-119hres1405ih"
         },
         {
-          "title": "ADDITIONAL COSPONSORS",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24"
+          "title": "Supporting the goals and ideals of Alzheimer’s and Brain Awareness Month.",
+          "detail": "Congressional Bill · BILLS · BILLS-119hres1402ih",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/BILLS-119hres1402ih"
         },
         {
-          "title": "SUBMISSION OF CONCURRENT AND SENATE RESOLUTIONS",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24"
+          "title": "Blair Holt Firearm Owner Licensing and Record of Sale Act of 2026",
+          "detail": "Congressional Bill · BILLS · BILLS-119hr9548ih",
+          "date": "2026-06-30",
+          "link": "https://www.govinfo.gov/app/details/BILLS-119hr9548ih"
         },
         {
-          "title": "INTRODUCTION OF BILLS AND JOINT RESOLUTIONS",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24"
+          "title": "Text of House Amendment 1",
+          "detail": "Congressional Record · CREC · CREC-2026-06-29",
+          "date": "2026-06-29",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
         },
         {
-          "title": "Unanimous Consent Request--S. 4876 (Executive Session)",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24"
+          "title": "AMENDMENTS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-29",
+          "date": "2026-06-29",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
         },
         {
           "title": "ADDITIONAL SPONSORS",
-          "detail": "Congressional Record · CREC · CREC-2026-06-24",
-          "date": "2026-06-24",
-          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-24"
+          "detail": "Congressional Record · CREC · CREC-2026-06-29",
+          "date": "2026-06-29",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
+        },
+        {
+          "title": "PUBLIC BILLS AND RESOLUTIONS",
+          "detail": "Congressional Record · CREC · CREC-2026-06-29",
+          "date": "2026-06-29",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
+        },
+        {
+          "title": "DIRECTING THE PRESIDENT PURSUANT TO SECTION 5(c) OF THE WAR POWERS RESOLUTION TO REMOVE UNITED STATES ARMED FORCES FROM LEBANON",
+          "detail": "Congressional Record · CREC · CREC-2026-06-29",
+          "date": "2026-06-29",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
+        },
+        {
+          "title": "MAKING IN ORDER AT ANY TIME CONSIDERATION OF H. CON. RES. 108, DIRECTING THE PRESIDENT PURSUANT TO SECTION 5(c) OF THE WAR POWERS RESOLUTION TO REMOVE UNITED STATES ARMED FORCES FROM LEBANON",
+          "detail": "Congressional Record · CREC · CREC-2026-06-29",
+          "date": "2026-06-29",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
+        },
+        {
+          "title": "ENERGY THREAT ANALYSIS CENTER ACT OF 2026",
+          "detail": "Congressional Record · CREC · CREC-2026-06-29",
+          "date": "2026-06-29",
+          "link": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
         }
       ]
     },
@@ -1348,8 +1348,8 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-06-29",
-      "fetchedAt": "2026-06-29T18:01:23.197Z",
+      "asOf": "2026-07-01",
+      "fetchedAt": "2026-07-01T17:25:14.059Z",
       "fetchedLive": true,
       "count": 32,
       "datasetUrl": "https://voteview.com/static/data/out/members/H119_members.csv",
@@ -1519,7 +1519,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "fetchedAt": null,
       "fetchedLive": true,
       "count": 29,
@@ -1861,7 +1861,7 @@
         "tier": "nonpartisan",
         "description": "State legislator records via openstates.org API"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "fetchedAt": null,
       "fetchedLive": true,
       "count": 163,
@@ -2032,16 +2032,165 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "fetchedAt": null,
-      "fetchedLive": false,
-      "count": 0,
+      "fetchedLive": true,
+      "count": 100,
       "datasetUrl": "https://api.legiscan.com/",
       "note": "Florida state legislation master list (up to 100 bills). Tier 2.",
-      "errors": [
-        "fetch failed"
-      ],
-      "sample": []
+      "errors": null,
+      "sample": [
+        {
+          "title": "Designation of the State Birds",
+          "detail": "2044045 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044045"
+        },
+        {
+          "title": "Social Work Licensure Interstate Compact",
+          "detail": "2044116 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044116"
+        },
+        {
+          "title": "Pub. Rec. and Meetings/Social Work Licensure Interstate Compact",
+          "detail": "2044098 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044098"
+        },
+        {
+          "title": "Criminal Offenses Against Law Enforcement Officers and Other Personnel",
+          "detail": "2044121 · FL",
+          "date": "2025-09-15",
+          "link": "https://legiscan.com/FL/bill/2044121"
+        },
+        {
+          "title": "Educational Dollars for Duty Program",
+          "detail": "2044120 · FL",
+          "date": "2025-09-15",
+          "link": "https://legiscan.com/FL/bill/2044120"
+        },
+        {
+          "title": "Pub. Rec./Agency Employees",
+          "detail": "2044114 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044114"
+        },
+        {
+          "title": "Educator Certifications and Training",
+          "detail": "2044218 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044218"
+        },
+        {
+          "title": "Transportation Facility Designations",
+          "detail": "2044230 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044230"
+        },
+        {
+          "title": "Sale and Purchase of Ivermectin",
+          "detail": "2044901 · FL",
+          "date": "2025-09-23",
+          "link": "https://legiscan.com/FL/bill/2044901"
+        },
+        {
+          "title": "Recognizing Judea and Samaria",
+          "detail": "2044907 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2044907"
+        },
+        {
+          "title": "Transportation Facility Designations",
+          "detail": "2044913 · FL",
+          "date": "2026-03-04",
+          "link": "https://legiscan.com/FL/bill/2044913"
+        },
+        {
+          "title": "Habitual Traffic Offender Designation",
+          "detail": "2044915 · FL",
+          "date": "2026-04-24",
+          "link": "https://legiscan.com/FL/bill/2044915"
+        },
+        {
+          "title": "Removal, Storage, and Cleanup of Electric Vehicles",
+          "detail": "2045011 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045011"
+        },
+        {
+          "title": "Assessments Levied on Recreational Vehicle Parks",
+          "detail": "2045013 · FL",
+          "date": "2025-09-25",
+          "link": "https://legiscan.com/FL/bill/2045013"
+        },
+        {
+          "title": "Sales of Ammunition",
+          "detail": "2045027 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045027"
+        },
+        {
+          "title": "Pub. Rec./Sales of Ammunition",
+          "detail": "2045020 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045020"
+        },
+        {
+          "title": "Sexual Offenders and Sexual Predators",
+          "detail": "2045032 · FL",
+          "date": "2025-09-25",
+          "link": "https://legiscan.com/FL/bill/2045032"
+        },
+        {
+          "title": "Specific Medical Diagnoses in Child Protective Investigations",
+          "detail": "2045076 · FL",
+          "date": "2026-03-05",
+          "link": "https://legiscan.com/FL/bill/2045076"
+        },
+        {
+          "title": "Political Activities on School Grounds",
+          "detail": "2045172 · FL",
+          "date": "2025-09-26",
+          "link": "https://legiscan.com/FL/bill/2045172"
+        },
+        {
+          "title": "Tax Credits for Housing for Homeless Employees",
+          "detail": "2045245 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045245"
+        },
+        {
+          "title": "Rapid Rail Transit Compact",
+          "detail": "2045278 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045278"
+        },
+        {
+          "title": "Treatment of Inmates",
+          "detail": "2045323 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045323"
+        },
+        {
+          "title": "Agreement Among the States to Elect the President by National Popular Vote",
+          "detail": "2045317 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045317"
+        },
+        {
+          "title": "Pregnant Women in Custody",
+          "detail": "2045313 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045313"
+        },
+        {
+          "title": "Objective Parole Guidelines",
+          "detail": "2045320 · FL",
+          "date": "2026-03-13",
+          "link": "https://legiscan.com/FL/bill/2045320"
+        }
+      ]
     },
     {
       "id": "fllobbyist",
@@ -2054,8 +2203,8 @@
         "tier": "official",
         "description": "Official Florida legislative & executive branch lobbying firm directories"
       },
-      "asOf": "2026-06-29",
-      "fetchedAt": "2026-06-29T18:01:24.505Z",
+      "asOf": "2026-07-01",
+      "fetchedAt": "2026-07-01T17:25:15.652Z",
       "fetchedLive": true,
       "count": 40,
       "datasetUrl": "https://floridalobbyist.gov/LobbyistInformation/LegislativeFirmDirectory",
@@ -2396,7 +2545,7 @@
         "tier": "media",
         "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "fetchedAt": null,
       "fetchedLive": true,
       "count": 46,
@@ -2405,154 +2554,154 @@
       "errors": null,
       "sample": [
         {
-          "title": "Three firefighters killed on Colorado-Utah border as wildfires intensify",
-          "detail": "The deaths occurred as crews battled multiple blazes across a parched region. Two other firefighters were also injured. · NPR",
-          "date": "2026-06-28T14:46:48Z",
-          "link": "https://www.npr.org/2026/06/28/g-s1-130737/wildfires-utah-colorado-firefighter-deaths-snyder"
+          "title": "Texas To Include The Bible As Part Of New K-12 Required Reading Lists",
+          "detail": "The Texas Board of Education approved a new reading list June 26 that will require public school students to read excerpts from the Bible. · The Federalist",
+          "date": "2026-06-30T15:47:28Z",
+          "link": "https://thefederalist.com/2026/06/30/texas-to-include-the-bible-as-part-of-new-k-12-required-reading-lists/"
         },
         {
-          "title": "Are Republicans Souring on Data Centers?",
-          "detail": "In recent elections, Republican voters have expressed their dissatisfaction with policies responding to the construction of data centers—the rapidly expanding physical infrastructure that supports the internet. At the same time, Republican governors are incre… · Daily Signal",
-          "date": "2026-06-28T14:00:00Z",
-          "link": "https://www.dailysignal.com/2026/06/28/are-republicans-souring-on-data-centers/"
+          "title": "Today in White Sox History: June 30",
+          "detail": "Cy Young takes his last start against the South Siders square on the chin · Southsidesox.com",
+          "date": "2026-06-30T15:47:00Z",
+          "link": "https://www.southsidesox.com/chicago-white-sox-history/129376/today-in-white-sox-history-june-30"
         },
         {
-          "title": "‘WOLF IN SHEEP’S CLOTHING’: Republicans Call on Democrat Opponents to Swear Off Leftist Group’s Support",
-          "detail": "Republicans are calling on their Democrat opponents to distance themselves from a leftist group accused of propping up the Ku Klux Klan in order to fundraise against it. Kevin Martin, a Republican challenging Rep. Lucy McBath in Georgia’s 6th Congressional Di… · Daily Signal",
-          "date": "2026-06-28T11:00:00Z",
-          "link": "https://www.dailysignal.com/2026/06/28/wolf-sheeps-clothing-republicans-call-democrat-opponents-swear-off-leftist-groups-support/"
+          "title": "Collier County Icon Alfie Oakes, Founder of Seed to Table, Endorses Michael Carbonara for Congress",
+          "detail": "Naples, Florida, June 30, 2026 (GLOBE NEWSWIRE) -- Carbonara for Congress today announced the endorsement of Alfie Oakes, founder and owner of Seed to Table and one of Southwest Florida’s most recognized farmers and business leaders, in the Republican primary… · GlobeNewswire",
+          "date": "2026-06-30T15:44:00Z",
+          "link": "https://www.globenewswire.com/news-release/2026/06/30/3319960/0/en/Collier-County-Icon-Alfie-Oakes-Founder-of-Seed-to-Table-Endorses-Michael-Carbonara-for-Congress.html"
         },
         {
-          "title": "What Ron DeSantis’ closure of ‘Alligator Alcatraz’ reveals about MAGA",
-          "detail": "After nearly a year of controversy and several lawsuits, the notorious “Alligator Alcatraz” immigration detention center in Florida is officially shuttering. But Florida Gov. Ron DeSantis’ explanation for why it’s closing is disingenuous. \nAt a news conferenc… · Biztoc.com",
-          "date": "2026-06-28T10:23:51Z",
-          "link": "https://biztoc.com/x/0076c7e6feb94f63"
+          "title": "WATCH: The history of Levi's",
+          "detail": "As America approaches its 250th birthday, \"GMA\" explores the history of Levi's, one of the country's most iconic brands. · Abcnews.com",
+          "date": "2026-06-30T15:37:07Z",
+          "link": "https://abcnews.com/video/134338007/"
         },
         {
-          "title": "Gun-wielding couple in viral BLM standoff got firepower — and 'a voice' — back after legal saga",
-          "detail": "From misdemeanor pleas to gubernatorial pardons, the McCloskey case reshaped debates over self-defense, property rights, and prosecutorial power. · Fox News",
-          "date": "2026-06-28T10:00:14Z",
-          "link": "https://www.foxnews.com/us/gun-wielding-couple-viral-blm-standoff-got-firepower-voice-back-legal-saga"
+          "title": "Ron DeSantis Cools on Property Tax Cut as Opposition Mounts",
+          "detail": "Florida Governor Ron DeSantis said he will not campaign to promote a much-debated property tax cut that would be put to voters in November, saying the one on the ballot isn’t exactly the plan he suggested.\n“What the Legislature did wasn’t my proposal,” he sai… · Biztoc.com",
+          "date": "2026-06-30T14:47:39Z",
+          "link": "https://biztoc.com/x/c42ebfa46b66c39a"
         },
         {
-          "title": "Thousands flock to national Eucharistic procession in Boston",
-          "detail": "“It was a beautiful moment to see the people of God sort of show up for Jesus.\" · Ewtnnews.com",
-          "date": "2026-06-28T10:00:00Z",
-          "link": "https://www.ewtnnews.com/world/us/eucharistic-procession-boston"
+          "title": "Why we need a Resilient Florida",
+          "detail": "Extreme weather like hurricanes, tropical storms and torrential rainfall are facts of life for many Florida communities. And the risks of such weather are increasing and worsening in severity with sea level rise, warming ocean temperatures and stressed ecosys… · Environmental Defense Fund",
+          "date": "2026-06-30T14:41:17Z",
+          "link": "https://blogs.edf.org/growingreturns/2026/06/30/why-we-need-a-resilient-florida/"
         },
         {
-          "title": "California's failed governor, Gavin Newsom, calls for a 'national' billionaire's tax",
-          "detail": "Using the Berlin Wall as a model, Gavin Newsom seeks a financial Berlin Wall for the U.S, so he can keep spending other people's money. · Americanthinker.com",
-          "date": "2026-06-28T04:00:00Z",
-          "link": "https://www.americanthinker.com/blog/2026/06/california-s-failed-governor-gavin-newsom-calls-for-a-national-billionaire-s-tax-and-others-say-make-it-international/"
+          "title": "The Great American State Fair Goes MAHA?",
+          "detail": "The Great American State Fair kicked off “MAHA Monday” by spotlighting the Make America Healthy Again movement, featuring healthier food choices and wellness speakers, hosted by the U.S. Department of Agriculture. The dedicated day is a testament that MAHA is… · Daily Signal",
+          "date": "2026-06-30T14:40:00Z",
+          "link": "https://www.dailysignal.com/2026/06/30/great-american-state-fair-goes-maha/"
         },
         {
-          "title": "Michael Goodwin: Kathy Hochul will never satisfy Mamdani’s far-left crew — and yet she keeps appeasing them",
-          "detail": "The political threats aimed at Gov. Hochul by mad-dog leftists are almost enough to make you feel sorry for her. Almost. · New York Post",
-          "date": "2026-06-28T01:00:08Z",
-          "link": "https://nypost.com/2026/06/27/opinion/michael-goodwin-kathy-hochul-will-never-satisfy-mamdanis-far-left-crew-and-yet-she-keeps-appeasing-them/"
+          "title": "DeSantis signs Live Local Act amendment into law",
+          "detail": "Gov. Ron DeSantis signed into law a bill amending the Live Local Act workforce housing law, further expanding the state’s authority over local municipalities.  Florida House Bill 1389 does a few things to Live Local, which became law three years ago. Sen. Ale… · The Real Deal",
+          "date": "2026-06-30T14:30:00Z",
+          "link": "https://therealdeal.com/miami/2026/06/30/desantis-expands-live-local-act-with-latest-tweak/"
         },
         {
-          "title": "CNN Host Reminds Republican Lawmaker The Housing Bill Trump Refused To Sign Has Bipartisan Support",
-          "detail": "Omar Jimenez pressed Byron Donalds over why he was prioritizing Donald Trump's SAVE America Act over the bipartisan housing bill that still awaits signature.\nThe post CNN Host Reminds Republican Lawmaker The Housing Bill Trump Refused To Sign Has Bipartisan S… · Mediaite",
-          "date": "2026-06-28T00:05:29Z",
-          "link": "https://www.mediaite.com/media/news/cnn-host-reminds-republican-lawmaker-the-housing-bill-trump-refused-to-sign-has-bipartisan-support/"
+          "title": "Supreme Court Upholds Bans On Transgender Women In Sports",
+          "detail": "The ruling will impact laws in more than 25 states. · Forbes",
+          "date": "2026-06-30T14:04:39Z",
+          "link": "https://www.forbes.com/sites/alisondurkee/2026/06/30/supreme-court-upholds-bans-on-transgender-women-in-sports/"
         },
         {
-          "title": "Uruguayan Football Association ‘cancel’ chartered flight for players after World Cup misery",
-          "detail": "The disappointment has continued for the Uruguay players following their dismal exit from the FIFA World Cup 2026. The two-time winners were eliminated from the group stage with only two points after losing to Spain in Guadalajara. · HITC - Football, Gaming, Movies, TV, Music",
-          "date": "2026-06-27T20:38:21Z",
-          "link": "https://www.hitc.com/uruguayan-football-association-cancel-chartered-flight-for-players-after-world-cup-misery/"
+          "title": "National League of Cities, America's Newspapers launch \"Sign ON 250\"",
+          "detail": "Year-long Initiative Unites Americans to Renew Commitment to Ideals of the Declaration of Independence WASHINGTON, June 30, 2026 /PRNewswire/ -- To unite millions of Americans in a year-long celebration of the nation's founding principles, The National League… · PRNewswire",
+          "date": "2026-06-30T14:03:00Z",
+          "link": "https://www.prnewswire.com/news-releases/national-league-of-cities-americas-newspapers-launch-sign-on-250-302814641.html"
         },
         {
-          "title": "Powerful Rebuke from Rep. Kat Cammack After Disgusting Media Hit About Her Ectopic Pregnancy Leads to ‘Hundreds of Death Threats’",
-          "detail": "Rep.\nThe post Powerful Rebuke from Rep. Kat Cammack After Disgusting Media Hit About Her Ectopic Pregnancy Leads to ‘Hundreds of Death Threats’ appeared first on The Gateway Pundit. · Thegatewaypundit.com",
-          "date": "2026-06-27T20:20:49Z",
-          "link": "https://www.thegatewaypundit.com/2026/06/powerful-rebuke-rep-kat-cammack-digusting-lies-about/"
+          "title": "Lookn Like Trouble Continues Her Winning Streak at 2026 APHA World",
+          "detail": "They’re now instantly recognizable: the feminine, sorrel mare with chrome ridden skillfully and lovingly by the beautiful trainer, Angie Cannizzaro, dressed in pink. The softness emulating from both creatures – gentle movement from Mya, Lookn Like Trouble, an… · Equinechronicle.com",
+          "date": "2026-06-30T13:43:30Z",
+          "link": "http://www.equinechronicle.com/lookn-like-trouble-continues-her-winning-streak-at-2026-apha-world/"
         },
         {
-          "title": "Drone nearly hits United plane landing in Newark, pilot says",
-          "detail": "A United Airlines passenger jet nearly collided with a drone as it was coming in to land in New Jersey on Friday, its pilot said. · CNN",
-          "date": "2026-06-27T17:22:00Z",
-          "link": "https://www.cnn.com/2026/06/27/us/drone-nearly-hits-united-plane-newark-hnk"
+          "title": "Supreme Court Will Rule On Birthright Citizenship Today—After Trump’s Opposed It For More Than 10 Years",
+          "detail": "The president has opposed automatic citizenship by birth since his first presidential run. · Forbes",
+          "date": "2026-06-30T13:31:05Z",
+          "link": "https://www.forbes.com/sites/alisondurkee/2026/06/30/supreme-court-will-rule-on-birthright-citizenship-today-after-trumps-opposed-it-for-more-than-10-years/"
         },
         {
-          "title": "Islamification becomes Public Enemy No. 1",
-          "detail": "Survey shows it's a bigger concern than abortion, health care and Iran · Wnd.com",
-          "date": "2026-06-27T16:38:04Z",
-          "link": "https://www.wnd.com/2026/06/islamification-becomes-public-enemy-no-1/"
+          "title": "Trump's niece sends 'resounding message' to her uncle with move in his own 'backyard'",
+          "detail": "Mary Trump is once again training her fire on her uncle — this time throwing her weight behind a Senate campaign in Florida, the state President Donald Trump now calls home.In an email sent on behalf of Senate candidate Alex Vindman, the psychologist and outs… · Raw Story",
+          "date": "2026-06-30T12:36:32Z",
+          "link": "https://www.rawstory.com/trump-2677131998/"
         },
         {
-          "title": "The Two Sides of Ron DeSantis’ Florida Data Center Policy",
-          "detail": "Florida Governor Ron DeSantis has emerged as one of the nation’s most vocal opponents of the rapid expansion of artificial intelligence data centers, arguing that residential utility customers should not be forced to subsidize the energy-intensive facilities.… · Biztoc.com",
-          "date": "2026-06-27T16:10:18Z",
-          "link": "https://biztoc.com/x/4d5c13f403967809"
+          "title": "How a tiny Caribbean island made American independence possible",
+          "detail": "The American Revolution was won not just by ideals and armies, but by the strategic trade networks of a small Caribbean port. · The Conversation Africa",
+          "date": "2026-06-30T12:34:58Z",
+          "link": "https://theconversation.com/how-a-tiny-caribbean-island-made-american-independence-possible-284412"
         },
         {
-          "title": "Todd Golden provides an update on Aberdeen’s eligibility",
-          "detail": "In an interview with On3, Florida basketball head coach Todd Golden provides an update on Denzel Aberdeen's waiver process. · USA Today",
-          "date": "2026-06-27T15:53:06Z",
-          "link": "https://gatorswire.usatoday.com/story/sports/college/gators/mens-basketball/2026/06/27/florida-basketball-denzel-aberdeen-eligibility-todd-golden-update/90719367007/"
+          "title": "Broken Promises in Cuban Miami",
+          "detail": "Donald Trump has reversed the government’s longstanding benevolence toward Cuban asylum seekers, even as his administration exacerbates the crisis they fled. · The New York Review of Books",
+          "date": "2026-06-30T12:00:00Z",
+          "link": "https://www.nybooks.com/articles/2026/07/23/broken-promises-in-cuban-miami-ferrer-pensack/"
         },
         {
-          "title": "WATCH: Wimbledon preview 2026",
-          "detail": "ABC News' Morgan Norwood takes a look at some of the biggest story lines as we count down to Wimbledon. · Abcnews.com",
-          "date": "2026-06-27T15:12:42Z",
-          "link": "https://abcnews.com/video/134270931/"
+          "title": "House GOP's SAVE Act rescue plan hits resistance from conservative holdouts",
+          "detail": "Speaker Johnson's plan to merge the SAVE America Act with the defense bill faced resistance from GOP holdouts demanding stronger Senate assurances. · Fox News",
+          "date": "2026-06-30T11:46:12Z",
+          "link": "https://www.foxnews.com/politics/house-gops-save-act-rescue-plan-hits-resistance-from-conservative-holdouts"
         },
         {
-          "title": "EXCLUSIVE: Islamification Becomes Public Enemy No. 1",
-          "detail": "Rep. Randy Fine, R-Fla., told the Daily Signal that a recent campaign poll of his found many of his constituents view the rise of “Islamification” and Islamic rule as a top concern. As stated by Fine, respondents prioritized the issue above topics such as abo… · Daily Signal",
-          "date": "2026-06-27T14:00:00Z",
-          "link": "https://www.dailysignal.com/2026/06/27/exclusive-islamification-becomes-public-enemy-no-1/"
+          "title": "Transcript: Trump Erupts After SCOTUS Thwarts His Plot to Rig Midterms",
+          "detail": "The following is a lightly edited transcript of the June 30 episode of the Daily Blast podcast. Listen to it here.Greg Sargent: This is The Daily Blast from The New Republic, produced and presented by the DSR Network. I’m your host, Greg Sargent.Donald Trump … · The New Republic",
+          "date": "2026-06-30T10:29:03Z",
+          "link": "https://newrepublic.com/article/212521/transcript-trump-erupts-scotus-thwarts-plot-rig-midterms"
         },
         {
-          "title": "Governor of Florida gives his verdict on Scottish soccer fans after they drank bars dry",
-          "detail": "Scotland fans have made quite an impact on the United States during the 2026 World Cup. Competing at the tournament for the first time this century, the Tartan Army became fan favourites in Boston during their side’s first two group matches of the competition. · HITC - Football, Gaming, Movies, TV, Music",
-          "date": "2026-06-27T13:30:00Z",
-          "link": "https://www.hitc.com/governor-of-florida-gives-his-verdict-on-scottish-soccer-fans-after-they-drank-bars-dry/"
+          "title": "Clinton confidant who called Maxwell his 'lover' grilled by Congress over Epstein ties",
+          "detail": "Doug Band is expected to face a House Oversight grilling over Epstein ties, including a 2003 dinner and flirtatious emails with Ghislaine Maxwell in DOJ files. · Fox News",
+          "date": "2026-06-30T10:00:15Z",
+          "link": "https://www.foxnews.com/politics/clinton-confidant-who-called-maxwell-his-lover-grilled-congress-over-epstein-ties"
         },
         {
-          "title": "Every State’s ‘America 250’ Time Capsule Contributions, Ranked",
-          "detail": "Where did your state rank? · Gizmodo.com",
-          "date": "2026-06-27T12:00:42Z",
-          "link": "https://gizmodo.com/every-states-america-250-time-capsule-contributions-ranked-2000776096"
+          "title": "The Coming Census Time Bomb",
+          "detail": "In late April, Virginia voters narrowly approved an aggressive gerrymander that would have given Democrats a largely unbeatable advantage in 10 of the commonwealth’s 11 U.S. House seats, counteracting GOP power plays in Ohio, Missouri, and North Carolina. Dem… · The New Republic",
+          "date": "2026-06-30T10:00:00Z",
+          "link": "https://newrepublic.com/article/211774/coming-census-time-bomb"
         },
         {
-          "title": "The Strange American State Fair",
-          "detail": "A dizzying showcase on the National Mall has Abraham Lincoln holograms, free Frosties, and a lot of Donald Trump. · The Atlantic",
-          "date": "2026-06-27T11:30:00Z",
-          "link": "https://www.theatlantic.com/culture/2026/06/great-state-fair-trump/687719/"
+          "title": "Federal money for workforce training begins, but few programs qualify",
+          "detail": "July 1 marks the official opening of a program that allows federal dollars to go toward short-term workforce training programs. So far just 11 states have created roadmaps for colleges to apply. · NPR",
+          "date": "2026-06-30T09:00:00Z",
+          "link": "https://www.npr.org/2026/06/30/nx-s1-5869642/workforce-pell-grants-programs-dont-quality"
         },
         {
-          "title": "Extreme heat watch: Hot, dry, windy weather hit Utah, Colorado, Arizona, New Mexico, fireworks restrictions ordered",
-          "detail": "Extreme heat watch in U. S: A cold front on Sunday will bring winds that could push the fire in new directions before the weather starts stabilizing next week · The Times of India",
-          "date": "2026-06-27T10:55:05Z",
-          "link": "https://economictimes.indiatimes.com/news/international/us/extreme-heat-watch-hot-dry-windy-weather-hit-utah-colorado-arizona-new-mexico-fireworks-restrictions-ordered/articleshow/132033105.cms"
+          "title": "Florida Is Executing Prisoners at a Record Pace, Even as Most of the U.S. Abandons the Death Penalty",
+          "detail": "Early last year, Gov. Ron DeSantis began signing death warrants at a faster rate than ever before. What followed was the most intense period of executions the state has carried out in more than eight decades. · ProPublica",
+          "date": "2026-06-30T09:00:00Z",
+          "link": "https://www.propublica.org/article/florida-death-penalty-executions-ron-desantis"
         },
         {
-          "title": "Brett Phillips Is Right At Home Selling The Tampa Bay Rays",
-          "detail": "To Brett Phillips, being a brand engagement executive means doing anything he can to help the Tampa Bay Rays, the team he grew up rooting for and playing with. · Forbes",
-          "date": "2026-06-27T09:00:00Z",
-          "link": "https://www.forbes.com/sites/tomlayberger/2026/06/27/brett-phillips-is-right-at-home-selling-the-tampa-bay-rays/"
+          "title": "He Dreamed of Becoming a Physician Assistant. New Loan Rules May Thwart Him.",
+          "detail": "Starting in July, the government will cap what graduate students may borrow in federal loans, forcing many toward private lenders with higher interest rates. The borrowing limits will affect students pursuing healthcare degrees, and some clinicians and studen… · Kffhealthnews.org",
+          "date": "2026-06-30T09:00:00Z",
+          "link": "https://kffhealthnews.org/health-industry/physician-assistant-professional-graduate-degrees-student-loan-limits/"
         },
         {
-          "title": "CARE AT HOME GUARANTEE CORPORATION FILES PATENT APPLICATION FOR PROPRIETARY BUSINESS MANAGEMENT SYSTEM",
-          "detail": "Patent-Pending Designation Reflects Company's Commitment to Innovation and Protection of Its Proprietary Operational Processes Patent-Pending Designation Reflects Company's Commitment to Innovation and Protection of Its Proprietary Operational Processes · GlobeNewswire",
-          "date": "2026-06-27T05:38:00Z",
-          "link": "https://www.globenewswire.com/news-release/2026/06/27/3318530/0/en/CARE-AT-HOME-GUARANTEE-CORPORATION-FILES-PATENT-APPLICATION-FOR-PROPRIETARY-BUSINESS-MANAGEMENT-SYSTEM.html"
+          "title": "‘I’m going to miss this place’: Aqueduct bids farewell after 132 years as New York City’s racetrack",
+          "detail": "The last thoroughbred racetrack in New York City went dark after its final races on Sunday, closing the book on 132 years of history and one of the city’s last great communal spaces · Yahoo Entertainment",
+          "date": "2026-06-30T08:30:42Z",
+          "link": "https://sports.yahoo.com/articles/m-going-miss-place-aqueduct-083042495.html"
         },
         {
-          "title": "Dangerous weather hampers firefighters and leads to fireworks bans in western US",
-          "detail": "The largest fire in the United States has marched through thousands of acres of tinder-dry forest in Utah, fueled by conditions that fire managers and experts call unprecedented · Abcnews.com",
-          "date": "2026-06-27T05:22:15Z",
-          "link": "https://abcnews.com/US/wireStory/dangerous-weather-hampers-firefighters-leads-fireworks-bans-western-134266231"
+          "title": "Buffett delays annual donation to Gates Foundation pending review of Jeffrey Epstein ties: WSJ",
+          "detail": "This comes as the foundation continues to review its ties to the late sex offender Jeffery Epstein. · CNBC",
+          "date": "2026-06-30T08:03:05Z",
+          "link": "https://www.cnbc.com/2026/06/30/warren-buffett-delays-gates-foundation-donation-epstein-review.html"
         },
         {
-          "title": "Why Latinos are California’s best hope for a sane housing market",
-          "detail": "Californians rank housing as their biggest concern — and Sacramento politicians seem determined to  keep it that way. · New York Post",
-          "date": "2026-06-27T00:41:32Z",
-          "link": "https://nypost.com/2026/06/26/opinion/why-latinos-are-californias-best-hope-for-a-sane-housing-market/"
+          "title": "Alabama officials won't release Senator Tuberville's driver license history to confirm his eligibility to run for Governor. Maybe him having a Florida driver's license until February 2023 has something to do with it? [Murica]",
+          "detail": "Alabama officials won't release Senator Tuberville's driver license history to confirm his eligibility to run for Governor. Maybe him having a Florida driver's license until February 2023 has something to do with it? · Fark.com",
+          "date": "2026-06-30T06:03:48Z",
+          "link": "https://www.fark.com/comments/14114184/Alabama-officials-wont-release-Senator-Tubervilles-driver-license-history-to-confirm-his-eligibility-to-run-for-Governor-Maybe-him-having-a-Florida-drivers-license-until-February-2023-has-something-to-do-with-it"
         }
       ]
     },
@@ -2567,14 +2716,14 @@
         "tier": "media",
         "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing"
       },
-      "asOf": "2026-06-29",
-      "fetchedAt": "2026-06-29T18:01:26.058Z",
+      "asOf": "2026-07-01",
+      "fetchedAt": "2026-07-01T17:25:16.606Z",
       "fetchedLive": false,
       "count": 0,
       "datasetUrl": "https://api.gdeltproject.org/api/v2/doc/doc?query=Florida%20(governor%20OR%20legislature%20OR%20senate%20OR%20election%20OR%20congress)&mode=artlist&maxrecords=50&format=json&sort=datedesc&timespan=14d",
       "note": "Florida political news coverage (last 14 days) via the GDELT 2.0 DOC API. Tier 3 automated aggregator over global journalism — always corroborate with Tier 1/2 records before treating as fact.",
       "errors": [
-        "fetch failed"
+        "HTTP 429"
       ],
       "sample": []
     }

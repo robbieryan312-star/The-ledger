@@ -6,7 +6,7 @@
       "tier": "official",
       "description": "American Community Survey 5-year estimates via api.census.gov"
     },
-    "asOf": "2026-06-29",
+    "asOf": "2026-07-01",
     "count": 1,
     "stateCode": "FL",
     "fetchedLive": true,
@@ -27,7 +27,7 @@
         "tier": "official",
         "description": "American Community Survey 5-year estimates via api.census.gov"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "censusApiUrl": "https://api.census.gov/data/2023/acs/acs5"
     }
   ]

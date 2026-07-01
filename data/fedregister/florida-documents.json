@@ -6,7 +6,7 @@
       "tier": "official",
       "description": "Official daily journal of the U.S. government via federalregister.gov API"
     },
-    "asOf": "2026-06-29",
+    "asOf": "2026-07-01",
     "count": 100,
     "stateCode": "FL",
     "fetchedLive": true,
@@ -14,6 +14,104 @@
     "note": "Most recent 100 Federal Register documents matching \"Florida\" (rules, proposed rules, notices, presidential documents). Tier 1 official."
   },
   "records": [
+    {
+      "documentNumber": "2026-13364",
+      "title": "Schedules of Controlled Substances: Temporary Placement of 5,6- Dichloro Brorphine, 5,6-Dichloro Desmethylchlorphine, N-Propionitrile Chlorphine, and Spirochlorphine in Schedule I of the Controlled Substances Act",
+      "type": "Proposed Rule",
+      "publicationDate": "2026-07-01",
+      "agencies": [
+        "Justice Department",
+        "Drug Enforcement Administration"
+      ],
+      "abstract": "The Administrator of the Drug Enforcement Administration is issuing this notice of intent to publish a temporary order to schedule 1-(1-(1-(4-bromophenyl)ethyl)piperidin-4-yl)-5,6-dichloro-1,3-dihydro- 2H-benzo[d]imidazol-2-one (commonly known as 5,6-dichloro brorphine or SR-14968); 5,6-dichloro-1-(1-(4-chlorobenzyl)piperidin-4-yl)-1,3- dihydro-2H-benzo[d]imidazol-2-one (commonly known as 5,6-dichloro desmethylchlorphine or SR-17018); 3-(3-(1-(1-(4- chlorophenyl)ethyl)piperidin-4-yl)-2-oxo-2,3-dihydro-1H- benzo[d]imidazol-1-yl)propanenitrile (commonly known as N-propionitrile chlorphine or cychlorphine); and 8-(1-(4-chlorophenyl)ethyl)-1-phenyl- 1,3,8-triazaspiro[4.5]decan-4-one (commonly known as spirochlorphine or R-6890), including their isomers, esters, ethers, salts, and salts of isomers, esters, and ethers, whenever the existence of such isomers, esters, ethers, and salts is possible within the specific chemical designation, in schedule I of the Controlled Substances Act. When it is issued, the temporary scheduling order will impose the regulatory controls and administrative, civil, and criminal sanctions applicable to schedule I controlled substances on persons who handle (manufacture, distribute, reverse distribute, import, export, engage in research, conduct instructional activities or chemical analysis, or possess) or propose to handle these four specific substances.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-01"
+      },
+      "asOf": "2026-07-01",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/01/2026-13364/schedules-of-controlled-substances-temporary-placement-of-56--dichloro-brorphine-56-dichloro"
+    },
+    {
+      "documentNumber": "2026-13249",
+      "title": "National Register of Historic Places; Notification of Pending Nominations and Related Actions",
+      "type": "Notice",
+      "publicationDate": "2026-07-01",
+      "agencies": [
+        "Interior Department",
+        "National Park Service"
+      ],
+      "abstract": "The National Park Service is soliciting electronic comments on the significance of properties nominated before May 30, 2026, for listing or related actions in the National Register of Historic Places.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-01"
+      },
+      "asOf": "2026-07-01",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/01/2026-13249/national-register-of-historic-places-notification-of-pending-nominations-and-related-actions"
+    },
+    {
+      "documentNumber": "2026-13232",
+      "title": "Endangered Species; File No. 29126",
+      "type": "Notice",
+      "publicationDate": "2026-07-01",
+      "agencies": [
+        "Commerce Department",
+        "National Oceanic and Atmospheric Administration"
+      ],
+      "abstract": "Notice is hereby given that Florida Sea Grant, P.O. Box 7640, St. Thomas, Virginia 00801 (Logan Williams, Responsible Party), has applied in due form for a permit to take pillar coral (Dendrogyra cylindrus) for purposes of scientific research and enhancement.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-01"
+      },
+      "asOf": "2026-07-01",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/01/2026-13232/endangered-species-file-no-29126"
+    },
+    {
+      "documentNumber": "2026-13197",
+      "title": "Deregistration Under Section 8(f) of the Investment Company Act of 1940",
+      "type": "Notice",
+      "publicationDate": "2026-06-30",
+      "agencies": [
+        "Securities and Exchange Commission"
+      ],
+      "abstract": "Applicant seeks an order declaring that it has ceased to be an investment company. On November 29, 2025, applicant made liquidating distributions to its shareholders based on net asset value. Expenses of $140,000 incurred in connection with the liquidation were paid by the adviser and the fund, with the adviser paying legal expenses of $120,000 and the fund paying proxy solicitation fees of $20,000. Filing Date: The application was filed on April 23, 2026, and amended on June 12, 2026. Applicant's Address: 1605 Main Street, Suite 912, Sarasota, Florida 34236.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-30"
+      },
+      "asOf": "2026-07-01",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/30/2026-13197/deregistration-under-section-8f-of-the-investment-company-act-of-1940"
+    },
+    {
+      "documentNumber": "2026-13181",
+      "title": "Certain Disposable and Other Closed-System Electronic Nicotine Delivery Systems (ENDS); Devices and Components Thereof; Notice of a Commission Determination Not To Review an Initial Determination Amending the Complaint and Notice of Investigation To Add Proposed Respondents",
+      "type": "Notice",
+      "publicationDate": "2026-06-30",
+      "agencies": [
+        "International Trade Commission"
+      ],
+      "abstract": "Notice is hereby given that the U.S. International Trade Commission has determined not to review an initial determination (\"ID\") (Order No. 13) of the presiding administrative law judge (\"ALJ\") granting a motion to amend the complaint and notice of investigation to add proposed respondents Nevera (HK) Limited, Wonder Ladies Limited, Sailing South Limited, Palma Terra Limited, and Marea Morada Limited (the \"Proposed Respondents\").",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-06-30"
+      },
+      "asOf": "2026-07-01",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/06/30/2026-13181/certain-disposable-and-other-closed-system-electronic-nicotine-delivery-systems-ends-devices-and"
+    },
     {
       "documentNumber": "2026-13067",
       "title": "Change in Bank Control Notices; Acquisitions of Shares of a Bank or Bank Holding Company",
@@ -30,7 +128,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-29"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/29/2026-13067/change-in-bank-control-notices-acquisitions-of-shares-of-a-bank-or-bank-holding-company"
     },
     {
@@ -49,7 +147,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-29"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/29/2026-13057/alien-registration-form-and-evidence-of-registration"
     },
     {
@@ -68,7 +166,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-29"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/29/2026-13027/air-plan-approval-ohio-redesignation-of-the-cleveland-oh-area-to-attainment-of-the-2015-ozone"
     },
     {
@@ -87,7 +185,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12989/modernizing-security-requirements"
     },
     {
@@ -107,7 +205,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12979/agency-information-collection-activities-request-for-comments-for-a-new-information-collection"
     },
     {
@@ -127,7 +225,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12969/hearth-act-approval-of-caddo-nation-of-oklahoma-leasing-ordinance"
     },
     {
@@ -147,7 +245,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12968/hearth-act-approval-of-cachil-dehe-band-of-wintun-indians-of-the-colusa-indian-community-of-the"
     },
     {
@@ -167,7 +265,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12955/process-for-authorizing-seasonal-migratory-game-bird-hunting"
     },
     {
@@ -187,7 +285,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12951/process-for-authorizing-seasonal-migratory-game-bird-hunting"
     },
     {
@@ -207,7 +305,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12922/transport-airplane-and-propulsion-certification-modernization"
     },
     {
@@ -227,7 +325,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12893/combined-notice-of-filings-1"
     },
     {
@@ -246,7 +344,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12859/tbl-group-inc-acquisition-of-control-escot-bus-lines-llc"
     },
     {
@@ -266,7 +364,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-25"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/25/2026-12846/united-states-standards-for-grades-of-orange-juice"
     },
     {
@@ -285,7 +383,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-25"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/25/2026-12831/certain-topcon-solar-cells-modules-panels-components-thereof-and-products-containing-same-notice-of"
     },
     {
@@ -305,7 +403,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-25"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/25/2026-12788/national-vaccine-injury-compensation-program-list-of-petitions-received"
     },
     {
@@ -324,7 +422,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-25"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/25/2026-12752/pesticide-registration-maintenance-fee-requested-and-proposed-cancellations-of-certain-pesticide"
     },
     {
@@ -344,7 +442,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-24"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/24/2026-12659/foreign-trade-zone-ftz-32-authorization-of-production-activity-3nstar-inc-point-of-sale-terminals"
     },
     {
@@ -364,7 +462,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-22"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/22/2026-12501/foreign-trade-zone-ftz-193-authorization-of-production-activity-lithionics-battery-llc-lithium-ion"
     },
     {
@@ -384,7 +482,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-22"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/22/2026-12455/qualification-of-drivers-exemption-applications-epilepsy-and-seizure-disorders"
     },
     {
@@ -404,7 +502,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-22"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/22/2026-12389/notice-of-intended-repatriation-university-of-alabama-museums-tuscaloosa-al"
     },
     {
@@ -424,7 +522,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-22"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/22/2026-12383/notice-of-inventory-completion-school-of-social-science-and-global-studies-university-of-southern"
     },
     {
@@ -444,7 +542,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-18"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/18/2026-12317/combined-notice-of-filings-1"
     },
     {
@@ -464,7 +562,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-17"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/17/2026-12184/combined-notice-of-filings-1"
     },
     {
@@ -484,7 +582,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-17"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/17/2026-12175/reef-fish-fishery-of-the-gulf-of-america-shallow-water-grouper-management-measures"
     },
     {
@@ -504,7 +602,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-17"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/17/2026-12168/security-zone-fifa-world-cup-and-fan-fest-2026-bayfront-park-miami-fl"
     },
     {
@@ -524,7 +622,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-16"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/16/2026-12069/medicare-program-strengthening-oversight-of-accrediting-organizations-aos-and-preventing-ao"
     },
     {
@@ -544,7 +642,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-16"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/16/2026-12040/national-register-of-historic-places-notification-of-pending-nominations-and-related-actions"
     },
     {
@@ -564,7 +662,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-15"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/15/2026-11972/national-vaccine-injury-compensation-program-list-of-petitions-received"
     },
     {
@@ -583,7 +681,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-15"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/15/2026-11907/certain-topcon-solar-cells-modules-panels-components-thereof-and-products-containing-same-notice-of"
     },
     {
@@ -602,7 +700,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-12"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/12/2026-11884/partial-withdrawals-of-findings-of-failure-to-submit-state-implementation-plan-sip-revisions-to"
     },
     {
@@ -622,7 +720,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-12"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/12/2026-11883/pecans-grown-in-the-states-of-alabama-arkansas-arizona-california-florida-georgia-kansas-louisiana"
     },
     {
@@ -642,7 +740,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-12"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/12/2026-11870/receipt-of-incidental-take-permit-application-and-proposed-habitat-conservation-plan-for-sand-skink"
     },
     {
@@ -662,7 +760,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-12"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/12/2026-11847/pecans-grown-in-the-states-of-alabama-arkansas-arizona-california-florida-georgia-kansas-louisiana"
     },
     {
@@ -682,7 +780,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-12"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/12/2026-11838/drawbridge-operation-regulation-big-carlos-pass-estero-island-fl"
     },
     {
@@ -702,7 +800,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11770/uniform-procedures-for-state-highway-safety-grant-programs"
     },
     {
@@ -722,7 +820,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11726/special-local-regulation-cfk-swim-around-key-west-key-west-fl"
     },
     {
@@ -742,7 +840,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11677/changes-in-flood-hazard-determinations"
     },
     {
@@ -762,7 +860,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11676/changes-in-flood-hazard-determinations"
     },
     {
@@ -782,7 +880,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11675/changes-in-flood-hazard-determinations"
     },
     {
@@ -802,7 +900,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11674/changes-in-flood-hazard-determinations"
     },
     {
@@ -822,7 +920,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11670/changes-in-flood-hazard-determinations"
     },
     {
@@ -842,7 +940,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11669/changes-in-flood-hazard-determinations"
     },
     {
@@ -862,7 +960,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11668/changes-in-flood-hazard-determinations"
     },
     {
@@ -882,7 +980,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11667/changes-in-flood-hazard-determinations"
     },
     {
@@ -902,7 +1000,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11665/changes-in-flood-hazard-determinations"
     },
     {
@@ -921,7 +1019,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-10"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/10/2026-11635/ascension-health-alliance-analysis-of-proposed-agreement-containing-consent-orders-to-aid-public"
     },
     {
@@ -940,7 +1038,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-10"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/10/2026-11617/high-purity-dissolving-pulp-from-brazil-and-norway-scheduling-of-the-final-phase-of-countervailing"
     },
     {
@@ -960,7 +1058,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-10"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/10/2026-11600/combined-notice-of-filings-1"
     },
     {
@@ -980,7 +1078,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-09"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/09/2026-11547/foreign-trade-zone-ftz-218-notification-of-proposed-production-activity-oculus-surgical-inc"
     },
     {
@@ -1000,7 +1098,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-09"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/09/2026-11491/qualification-of-drivers-exemption-applications-hearing"
     },
     {
@@ -1019,7 +1117,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-08"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/08/2026-11468/fiscal-year-list-of-requests-from-states-or-tribes-for-a-small-business-administration-disaster"
     },
     {
@@ -1038,7 +1136,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-08"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/08/2026-11459/certain-pickleball-paddles-notice-of-institution-of-investigation"
     },
     {
@@ -1058,7 +1156,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-08"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/08/2026-11438/combined-notice-of-filings-2"
     },
     {
@@ -1078,7 +1176,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-08"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/08/2026-11437/combined-notice-of-filings-1"
     },
     {
@@ -1097,7 +1195,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-05"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/05/2026-11354/formations-of-acquisitions-by-and-mergers-of-bank-holding-companies"
     },
     {
@@ -1117,7 +1215,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-05"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/05/2026-11340/combined-notice-of-filings-1"
     },
     {
@@ -1137,7 +1235,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-05"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/05/2026-11332/foreign-trade-zone-ftz-213-notification-of-proposed-production-activity-project-and-construction"
     },
     {
@@ -1157,7 +1255,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-05"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/05/2026-11310/safety-zone-hurricanes-tropical-storms-and-severe-weather-events-in-the-sector-mobile-captain-of-the"
     },
     {
@@ -1177,7 +1275,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-04"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/04/2026-11213/south-atlantic-fishery-management-council-public-meeting"
     },
     {
@@ -1196,7 +1294,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-04"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/04/2026-11182/prevailing-rate-systems-redefinition-of-the-raven-rock-mountain-complex-to-the"
     },
     {
@@ -1215,7 +1313,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-04"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/04/2026-11158/notice-of-determination-and-request-for-comments-concerning-action-pursuant-to-section-301-brazils"
     },
     {
@@ -1235,7 +1333,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-02"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/02/2026-11005/hearth-act-approval-of-peoria-tribe-of-indians-of-oklahoma-business-leasing-ordinance"
     },
     {
@@ -1255,7 +1353,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-02"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/02/2026-10991/combined-notice-of-filings"
     },
     {
@@ -1275,7 +1373,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-01"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/01/2026-10885/endangered-wildlife-and-plants-receipt-of-recovery-permit-applications"
     },
     {
@@ -1295,7 +1393,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-01"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/01/2026-10856/endangered-species-receipt-of-recovery-permit-applications"
     },
     {
@@ -1314,7 +1412,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-01"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/01/2026-10848/certain-topcon-solar-cells-modules-panels-components-thereof-and-products-containing-same-commission"
     },
     {
@@ -1334,7 +1432,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-29"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10798/notice-of-intent-to-prepare-an-environmental-impact-statement-for-the-proposed-delamar-mine"
     },
     {
@@ -1354,7 +1452,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-29"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10785/combined-notice-of-filings-1"
     },
     {
@@ -1374,7 +1472,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-29"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10780/shipping-safety-fairways-and-associated-vessel-routing-measures-along-the-atlantic-coast"
     },
     {
@@ -1394,7 +1492,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-29"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10774/endangered-species-recovery-permit-applications"
     },
     {
@@ -1413,7 +1511,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-29"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10714/pesticide-experimental-use-permit-receipt-of-application-comment-request-march-2026"
     },
     {
@@ -1432,7 +1530,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-29"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10668/self-regulatory-organizations-miax-sapphire-llc-notice-of-filing-and-immediate-effectiveness-of-a"
     },
     {
@@ -1451,7 +1549,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-28"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/28/2026-10642/approval-of-source-specific-air-quality-implementation-plan-new-york-big-six-towers-inc"
     },
     {
@@ -1471,7 +1569,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-28"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/28/2026-10584/qualification-of-drivers-exemption-applications-epilepsy-and-seizure-disorders"
     },
     {
@@ -1491,7 +1589,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-28"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/28/2026-10583/qualification-of-drivers-exemption-applications-epilepsy-and-seizure-disorders"
     },
     {
@@ -1510,7 +1608,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-26"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/26/2026-10387/phasedown-of-hydrofluorocarbons-reconsideration-of-certain-regulatory-requirements-promulgated-under"
     },
     {
@@ -1530,7 +1628,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-26"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/26/2026-10380/schedules-of-controlled-substances-placement-of-diphenidine-in-schedule-i"
     },
     {
@@ -1550,7 +1648,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-22"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/22/2026-10253/schedules-of-controlled-substances-temporary-placement-of-2-fluorodeschloroketamine-in-schedule-i"
     },
     {
@@ -1569,7 +1667,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-21"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/21/2026-10214/formations-of-acquisitions-by-and-mergers-of-bank-holding-companies"
     },
     {
@@ -1588,7 +1686,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-21"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/21/2026-10207/air-plan-approval-fl-emissions-reporting-requirements-and-permitting-forms"
     },
     {
@@ -1608,7 +1706,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-21"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/21/2026-10166/marine-mammals-and-endangered-species"
     },
     {
@@ -1628,7 +1726,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-20"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/20/2026-10096/atlantic-highly-migratory-species-prohibit-retention-of-mobulid-rays-in-fisheries-for-atlantic"
     },
     {
@@ -1649,7 +1747,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-20"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/20/2026-10050/patient-protection-and-affordable-care-act-hhs-notice-of-benefit-and-payment-parameters-for-2027-and"
     },
     {
@@ -1669,7 +1767,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-19"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/19/2026-10037/preemption-determination-state-interest-on-escrow-laws"
     },
     {
@@ -1689,7 +1787,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-19"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/19/2026-09994/combined-notice-of-filings-1"
     },
     {
@@ -1709,7 +1807,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-19"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/19/2026-09969/notice-of-intent-to-prepare-a-supplemental-programmatic-environmental-impact-statement-for-the-coral"
     },
     {
@@ -1730,7 +1828,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-19"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/19/2026-09955/public-combined-board-and-board-committees-meeting"
     },
     {
@@ -1750,7 +1848,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-18"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/18/2026-09850/changes-in-flood-hazard-determinations"
     },
     {
@@ -1770,7 +1868,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-15"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09805/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-federal"
     },
     {
@@ -1790,7 +1888,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-15"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09784/proposed-rate-adjustment-jim-woodruff-project"
     },
     {
@@ -1810,7 +1908,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-15"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09766/notice-of-final-federal-agency-actions-on-proposed-transportation-project-in-state-florida"
     },
     {
@@ -1830,7 +1928,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-15"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09751/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-horseshoe"
     },
     {
@@ -1850,7 +1948,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-15"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09719/hearth-act-approval-of-buena-vista-rancheria-of-me-wuk-indians-of-california-leasing-ordinance"
     },
     {
@@ -1870,7 +1968,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-15"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09718/medicare-medicaid-and-childrens-health-insurance-programs-announcement-of-nationwide-temporary"
     },
     {
@@ -1890,108 +1988,8 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-05-15"
       },
-      "asOf": "2026-06-29",
+      "asOf": "2026-07-01",
       "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09717/medicare-medicaid-and-childrens-health-insurance-programs-announcement-of-nationwide-temporary"
-    },
-    {
-      "documentNumber": "2026-09695",
-      "title": "General Conference Committee of the National Poultry Improvement Plan; Solicitation for Membership",
-      "type": "Notice",
-      "publicationDate": "2026-05-14",
-      "agencies": [
-        "Agriculture Department",
-        "Animal and Plant Health Inspection Service"
-      ],
-      "abstract": "We are giving notice that the Secretary of Agriculture is soliciting nominations for the election of regional members and their alternates for the General Conference Committee of the National Poultry Improvement Plan.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-14"
-      },
-      "asOf": "2026-06-29",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/14/2026-09695/general-conference-committee-of-the-national-poultry-improvement-plan-solicitation-for-membership"
-    },
-    {
-      "documentNumber": "2026-09656",
-      "title": "Amendment of Class C Airspace and Class E Airspace; Palm Beach International Airport, West Palm Beach, FL",
-      "type": "Rule",
-      "publicationDate": "2026-05-14",
-      "agencies": [
-        "Transportation Department",
-        "Federal Aviation Administration"
-      ],
-      "abstract": "This action amends the Class C and Class E airspace descriptions for the former Palm Beach International Airport, West Palm Beach, FL, to update the airport name to the \"President Donald J. Trump International Airport\" to match the FAA National Airspace System Resources (NASR) database information. This action does not change the boundaries, altitudes, or operating requirements of the Class C airspace or Class E airspace areas.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-14"
-      },
-      "asOf": "2026-06-29",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/14/2026-09656/amendment-of-class-c-airspace-and-class-e-airspace-palm-beach-international-airport-west-palm-beach"
-    },
-    {
-      "documentNumber": "2026-09629",
-      "title": "Agency Information Collection Activities; Turtle Distribution Database",
-      "type": "Notice",
-      "publicationDate": "2026-05-14",
-      "agencies": [
-        "Interior Department",
-        "Geological Survey"
-      ],
-      "abstract": "In accordance with the Paperwork Reduction Act (PRA) of 1995, the U.S. Geological Survey (USGS) is proposing to renew an information collection.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-14"
-      },
-      "asOf": "2026-06-29",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/14/2026-09629/agency-information-collection-activities-turtle-distribution-database"
-    },
-    {
-      "documentNumber": "2026-09625",
-      "title": "Safety Zone; Gulf Intracoastal Waterway; Florida Avenue Bridge; Temporary Waterway Closure",
-      "type": "Rule",
-      "publicationDate": "2026-05-14",
-      "agencies": [
-        "Homeland Security Department",
-        "Coast Guard"
-      ],
-      "abstract": "The Coast Guard is establishing a temporary safety zone for navigable waters extending from MM 6.5 East of Harvey Lock to MM 10 East of Harvey Lock along the Gulf Intracoastal Waterway (GIWW) which includes the Inner Harbor Navigational Canal (IHNC) Lock. The safety zone is needed to protect personnel, vessels, and the marine environment from potential hazards associated with an ongoing sewage leak in the vicinity of the Florida Avenue Bridge at position 29[deg]58.860 N, 90[deg].01.300 W. Entry of vessels or persons into this zone is prohibited unless specifically authorized by the Captain of the Port, Sector New Orleans, or their designated representative.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-14"
-      },
-      "asOf": "2026-06-29",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/14/2026-09625/safety-zone-gulf-intracoastal-waterway-florida-avenue-bridge-temporary-waterway-closure"
-    },
-    {
-      "documentNumber": "2026-09620",
-      "title": "Proposed Information Collection Activity; Community Services Block Grant Disaster Supplemental Annual Report (New Collection)",
-      "type": "Notice",
-      "publicationDate": "2026-05-14",
-      "agencies": [
-        "Health and Human Services Department",
-        "Children and Families Administration"
-      ],
-      "abstract": "The Office of Community Services (OCS), Administration for Children and Families (ACF) requests approval of the Community Services Block Grant (CSBG) Disaster Supplemental Annual Report. This is a new information collection request, based on a previously approved version of this report under Office of Management and Budget (OMB) #: 0970- 0492. This covers CSBG Disaster Supplemental Funds as appropriated by the Robert T. Stafford Disaster Relief and Emergency Assistance Act and potential future disaster supplemental funding.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-14"
-      },
-      "asOf": "2026-06-29",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/14/2026-09620/proposed-information-collection-activity-community-services-block-grant-disaster-supplemental-annual"
     }
   ]
 }

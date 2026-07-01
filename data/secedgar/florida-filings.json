@@ -6,13 +6,13 @@
       "tier": "official",
       "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)"
     },
-    "asOf": "2026-06-29",
-    "fetchedAt": "2026-06-29T18:01:22.561Z",
+    "asOf": "2026-07-01",
+    "fetchedAt": "2026-07-01T17:25:13.343Z",
     "count": 0,
     "stateCode": "FL",
     "fetchedLive": false,
     "errors": [
-      "HTTP 500 for https://efts.sec.gov/LATEST/search-index?q=%22Florida%22&forms=8-K&startdt=2026-04-30&enddt=2026-06-29&from=0"
+      "HTTP 500 for https://efts.sec.gov/LATEST/search-index?q=%22Florida%22&forms=8-K&startdt=2026-05-02&enddt=2026-07-01&from=0"
     ],
     "datasetUrl": "https://efts.sec.gov/LATEST/search-index?q=%22Florida%22&forms=8-K",
     "note": "Recent 8-K material-event filings (last 60 days) referencing Florida via SEC EDGAR full-text search. Each record carries the filer business/incorporation state and a floridaDomiciled flag — EDGAR location filters are unreliable, so Florida relevance is by full-text match. Tier 1 official."
