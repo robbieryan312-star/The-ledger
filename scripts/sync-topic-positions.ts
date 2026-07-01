@@ -26,6 +26,7 @@ const BALLOTPEDIA_BASE = 'https://ballotpedia.org';
 const BALLOTPEDIA_DELAY_MS = 1500;
 const VOTESMART_DELAY_MS = 300;
 const GOVINFO_DELAY_MS = 400;
+const REQUEST_TIMEOUT_MS = 60_000;
 const MAX_PLATFORM_PER_TOPIC = 3;
 const MAX_SAID_DID_LINKS = 3;
 const MAX_CREC_STATEMENTS_PER_MEMBER = 12;
@@ -544,28 +545,64 @@ function mapCrecTextToTopic(text: string): string | null {
   return topicId === 'legislation' ? null : topicId;
 }
 
-function extractCrecSpeechExcerpt(plainText: string, speakerPrefix: string): string | null {
-  const idx = plainText.search(new RegExp(speakerPrefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'));
-  if (idx === -1) return null;
+function crecMemberLastName(leg: LegislatorRow): string {
+  return leg.lastName.toUpperCase();
+}
 
-  let excerpt = plainText.slice(idx);
-  if (/submitted the following resolution|were referred to the Committee|A bill to amend/i.test(excerpt.slice(0, 120))) {
-    return null;
-  }
+function crecFloorSpeechOpenerRegex(lastName: string): RegExp {
+  const escaped = lastName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(
+    `Mr\\.\\s+${escaped}\\.\\s+(?:Mr\\.|Madam)\\s+(?:President|Speaker)\\b`,
+    'i',
+  );
+}
 
-  const nextSpeaker = excerpt.slice(speakerPrefix.length + 5).search(/\bMr\.|Ms\.|Mrs\.|The PRESID|The SPEAK/i);
+/** Procedural CREC text — amendments, resolutions, cosponsor lists — not floor remarks. */
+function isProceduralCrecText(text: string): boolean {
+  if (/submitted an amendment/i.test(text)) return true;
+  if (/submitted the following resolution/i.test(text)) return true;
+  if (/were added as cosponsors/i.test(text)) return true;
+  if (/were removed as cosponsors/i.test(text)) return true;
+  if (/^\s*Mr\.\s+\w+\),/i.test(text)) return true;
+  if (/,\s*the Senator from/i.test(text.slice(0, 120))) return true;
+  if (/names of the Senator/i.test(text.slice(0, 160))) return true;
+  if (/At the request of/i.test(text.slice(0, 120))) return true;
+  if (/A bill to amend/i.test(text.slice(0, 120))) return true;
+  if (/were referred to the Committee/i.test(text.slice(0, 160))) return true;
+  if (/which was ordered to lie on the table/i.test(text)) return true;
+  return false;
+}
+
+function crecGovInfoUrlStem(url: string): string {
+  const granule = url.match(/CREC-[^/?#]+/i)?.[0] ?? url;
+  // Same physical page can appear as ...-PgS3474-2 vs ...-PgS3474-3
+  return granule.replace(/-\d+$/, '');
+}
+
+function shouldAddCrecStatement(existing: TopicStatementEntry[], entry: TopicStatementEntry): boolean {
+  const titleKey = entry.title.trim().toLowerCase();
+  const stem = crecGovInfoUrlStem(entry.url);
+  if (existing.some((e) => e.title.trim().toLowerCase() === titleKey)) return false;
+  if (existing.some((e) => crecGovInfoUrlStem(e.url) === stem)) return false;
+  return true;
+}
+
+function extractCrecSpeechExcerpt(plainText: string, leg: LegislatorRow): string | null {
+  const lastName = crecMemberLastName(leg);
+  const opener = crecFloorSpeechOpenerRegex(lastName);
+  const match = opener.exec(plainText);
+  if (!match || match.index === undefined) return null;
+
+  let excerpt = plainText.slice(match.index);
+  const nextSpeaker = excerpt.slice(40).search(/\bMr\.|Ms\.|Mrs\.|The PRESID|The SPEAK/i);
   if (nextSpeaker > 80) {
-    excerpt = excerpt.slice(0, speakerPrefix.length + 5 + nextSpeaker);
+    excerpt = excerpt.slice(0, 40 + nextSpeaker);
   }
 
   excerpt = excerpt.replace(/\[[^\]]*\]/g, '').replace(/\s+/g, ' ').trim();
-  if (!excerpt.toUpperCase().startsWith(speakerPrefix.replace(/\./g, '').slice(0, 10))) {
-    const normalizedStart = excerpt.slice(0, 20).toUpperCase();
-    if (!normalizedStart.includes('SANDERS') && !normalizedStart.includes(speakerPrefix.split('.')[1]?.trim() ?? '')) {
-      return null;
-    }
-  }
   if (excerpt.length < 80) return null;
+  if (isProceduralCrecText(excerpt)) return null;
+  if (!opener.test(excerpt)) return null;
   return excerpt.slice(0, 600);
 }
 
@@ -607,6 +644,7 @@ async function fetchGovInfoCrecByTopic(
       try {
         const textRes = await fetch(
           `https://api.govinfo.gov/packages/${result.packageId}/granules/${result.granuleId}/htm?api_key=${encodeURIComponent(apiKey)}`,
+          { signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) },
         );
         if (!textRes.ok) continue;
         const html = await textRes.text();
@@ -614,9 +652,8 @@ async function fetchGovInfoCrecByTopic(
         const speakerHay = plain.toLowerCase().replace(/\./g, '');
         if (!speakerHay.includes(speaker.toLowerCase().replace(/\./g, ''))) continue;
 
-        const excerpt = extractCrecSpeechExcerpt(plain, speaker);
+        const excerpt = extractCrecSpeechExcerpt(plain, leg);
         if (!excerpt) continue;
-        if (/Mr\.\s+Sanders,\s+Mr\./i.test(excerpt.slice(0, 80))) continue;
 
         const topicId = mapCrecTextToTopic(`${result.title ?? ''} ${excerpt}`);
         if (!topicId) continue;
@@ -634,7 +671,7 @@ async function fetchGovInfoCrecByTopic(
 
         const existing = byTopic.get(topicId) ?? [];
         if (existing.length >= 2) continue;
-        if (existing.some((e) => e.url === url)) continue;
+        if (!shouldAddCrecStatement(existing, entry)) continue;
         existing.push(entry);
         byTopic.set(topicId, existing);
       } catch {
