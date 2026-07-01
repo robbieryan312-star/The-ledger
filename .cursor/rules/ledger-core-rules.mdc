@@ -1,0 +1,111 @@
+---
+description: The Ledger — core operating rules. Read in full before every response. Highest priority.
+alwaysApply: true
+---
+
+# The Ledger — Core Rules (read before EVERY response)
+
+**These rules bind EVERY agent equally — Claude Code AND every Cursor agent (Auto, cloud
+agents, background agents). No agent is exempt.** This is the one file all of them reload every
+turn (`alwaysApply: true`). The owner approved these standards once; they are concrete and
+persist until the owner explicitly changes them. If you are about to ask the owner something,
+or deviate from a format — STOP and check this file and the file it points to first. The
+detailed specs already exist; use them. Re-requesting approved information — by any agent — is
+the specific failure this file was created to stop.
+
+---
+
+## 1. How to operate (the anti-ignore rules — these are why this file exists)
+
+- **The spec already exists — read it, never re-ask.** Before asking the owner ANY question
+  about a standard, format, count, or past decision, read the file that owns the answer
+  (table in §2). Only ask if the answer is genuinely not in any file — and then say
+  "this isn't recorded in <file>" so the gap is known. Re-requesting approved information is
+  the #1 failure this file prevents.
+- **A spec violation is never a question.** If data or UI breaks a written rule, fix it
+  against the rule decisively. Do not ship it, do not ask if it's acceptable.
+- **Be decisive.** On routine/verified calls (merge a green PR, reconcile a stale checkpoint,
+  commit verified work, apply a written standard) — act and report. Do not lay out options and
+  ask which to pick. Escalate ONLY genuine scope changes, credibility tradeoffs between
+  conflicting sources, or irreversible/destructive actions.
+- **Verify, never trust "done."** Independently check every completion claim (especially
+  Cursor's) against the actual repo/data/build before accepting it. "It builds" ≠ "it's correct."
+- **The demo profiles are the locked spec.** Sanders `S000033` + the 3 other featured profiles
+  are concrete. Phase 17b feeds the other 536 members through the SAME components and SAME
+  checklist — it never redesigns them. Fix the script/extractor that produced bad data; never
+  hand-clean one member and call it done.
+
+---
+
+## 2. Where the authoritative detail lives — read the file that owns the answer
+
+| If the work touches… | Read this first |
+|----------------------|-----------------|
+| What a complete profile requires; data layers; what "done" means | `PILOT_PROFILE_CHECKLIST.md` |
+| What counts as a "Said" statement (floor remark vs. submission boilerplate/fragment) | `PILOT_PROFILE_CHECKLIST.md` → Said acceptance rule |
+| How much shows per row/article; truncation; counts per section; layout | the demo components in `components/politicians/` — these ARE the locked layout |
+| UI copy tone, banned words, Said→Did diff format | `.cursor/rules/ledger-editorial-voice.mdc` |
+| Source tiers, corroboration, banned sources, destination-view map | `.cursor/rules/ledger-data-policy.mdc` |
+| Which source/API feeds a data need | `lib/data/SOURCE_LOOKUP.md`, `lib/data/sourceCatalog.ts` |
+| What's done / in progress / blocked; phase status | `PROGRESS.md` |
+| API key SET/EMPTY; sync commands | `KEYS.md`, `OWNER_SETUP.md` |
+
+---
+
+## 3. Data credibility (non-negotiable — full detail in ledger-data-policy.mdc)
+
+- Tiers are exact code strings: `'official'`, `'nonpartisan'`, `'media'`, `'alleged'`,
+  `'unverified'`. Never write "Tier 1/2/3".
+- **2+ independent approved sources** to display a `'media'`-tier statement as verified.
+  1 media source → `'alleged'`, shown with caveat, never as verified. AP/Reuters wire + a
+  republisher = 1 source.
+- **Banned always:** Wikipedia, social-media posts (uncorroborated), anonymous sources,
+  campaign/PAC press releases (→ `'alleged'` only), anything without a URL + date.
+- Journalism quotes are **verbatim, in quotes, attributed, dated, linked** — never paraphrased.
+- **Honest gaps:** show `"No verified record available"`. Never fabricate or paraphrase to fill.
+- **A "Said" record is a spoken floor remark (e.g. opens "Mr. SANDERS. Mr. President, ...") or
+  a verbatim sourced media quote — NEVER amendment/resolution submission boilerplate, clerk
+  procedural text, or senator-list fragments**, even if verbatim and attributed.
+
+---
+
+## 4. Locked profile layout (the owner's standing directives)
+
+- **Unified "Where They Stand" box** — Where They Stand + The Record + Key Positions combine
+  into ONE box. Key issues at top, each with its summarized piece of evidence directly under it.
+  Use the Ballotpedia Key-Positions format as the presentation reference.
+- **Collection quality** — every position/statement must be a substantive, complete, sourced
+  claim. Ban bio-boilerplate ("X is a member of the US…") and truncated fragments ("Mr.").
+  Can't produce a real claim → honest gap, never a fragment.
+- **Voting Record** — presentation stays; the expandable drop-down must add REAL detail (bill
+  summary + vote context), not repeat the collapsed headline.
+- **Money & Donors** — Organizations & PACs section ordered ABOVE individual donors. Individuals
+  are less prominent, below.
+- **Track Record** — remove the Consistency Score entirely. Target **15** Said→Did / evidence
+  records per profile where the verified record supports it (honest gaps otherwise).
+- **Controversies** — no hard cap. Short for most members; for those with a substantial record,
+  show it, objectively and sourced.
+- **News** — collect relevant, impactful items; stick to quotes or fact-based statements.
+  Single-source items shown as `'alleged'`; 2+ sources to present as verified fact.
+  [OWNER TO CONFIRM: owner suggested 1 corroborating source for news — kept at credibility-safe
+  default pending explicit confirmation.]
+- **Endorsements** — filled out thoroughly but not a giant section; moderate depth.
+- **Exact display numbers (from demo components — do not drift):** evidence quote 117 chars
+  (`ExpandableEvidenceRow.tsx`); topic bill title 80 chars, 5 sponsored + 5 cosponsored per
+  topic (`ProfileRecordByTopicPanel.tsx`); 8 donors per category (`DonorChart.tsx`);
+  Said→Did first sentence 120 chars (`SaidDidPanel.tsx`); 3 org-vote links.
+
+---
+
+## 5. Operational guardrails
+
+- **Port 3000 is the owner's — never start/kill anything on it.** Use 4100+ for any dev server;
+  stop any server you start once verification is done.
+- **Log long-running syncs:** tee to `/tmp/ledger-<script>.log` so failures are inspectable.
+- **Every external `fetch()` in a sync/ingest script needs a timeout** (`AbortSignal.timeout`).
+  An unguarded fetch can hang the whole script with no output.
+- **Stay in scope.** Don't touch files outside the brief, rename things, or add abstractions.
+- `npm run build` must pass before any commit. After data changes:
+  `sync:legislators` → `verify:office` → `build`.
+- **bioguideId** is the universal join key — never duplicate or alias it.
+- Route pages (`app/**/page.tsx`) are server components — never add `'use client'` to them.

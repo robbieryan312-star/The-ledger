@@ -1,5 +1,11 @@
 @AGENTS.md
 
+> **MANDATORY EVERY RESPONSE:** Read `.cursor/rules/ledger-core-rules.mdc` — the single
+> concrete ruleset. It exists because approved specs were being ignored and re-requested.
+> Before asking the owner anything about a standard/format/count/past decision, or deviating
+> from a format, check that file and the file it points to first. A spec violation is a bug to
+> fix decisively, never a question.
+
 <!-- BEGIN:pm-workflow -->
 # Claude Code — Project manager role
 

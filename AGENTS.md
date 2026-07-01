@@ -9,6 +9,10 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 Civic-info Next.js app. **Data credibility is the highest priority.** Every decision defers to it.
 
+**READ EVERY RESPONSE:** `.cursor/rules/ledger-core-rules.mdc` — the single concrete ruleset
+(operating rules, data credibility, locked profile layout, guardrails). It exists because
+approved specs were being ignored and re-requested. Do not re-ask what a file already answers.
+
 **Session start (read first):** `REPO.md` → `PROGRESS.md` → `lib/data/SOURCE_LOOKUP.md` → `KEYS.md`
 
 Product vision and editorial voice: `PRODUCT_VISION.md`, `.cursor/rules/ledger-editorial-voice.mdc`.
