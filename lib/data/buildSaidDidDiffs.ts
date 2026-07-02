@@ -95,20 +95,6 @@ function pickSaidForLink(
     };
   }
 
-  const officialStatementLoose = topicData.statements.find(
-    (s) => s.topicId === topicId && s.tier === 'official',
-  );
-  if (officialStatementLoose) {
-    return {
-      quote: officialStatementLoose.title,
-      outlet: 'Congressional Record (GovInfo)',
-      url: officialStatementLoose.url,
-      tier: 'official',
-      date: officialStatementLoose.date,
-      verbatim: true,
-    };
-  }
-
   const statedPosition = topicData.statedPosition?.trim();
   if (statedPosition && statementMatchesVote(statedPosition, link, topicId)) {
     return {

@@ -11,6 +11,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { SourceTier, VoteChoice, VoteRecord } from '../lib/types';
 import { RECORD_TOPIC_BUCKETS, voteCongressGovUrl, voteTopicId, classifyTextToRecordTopicId } from '../lib/data/profileRecordByTopic';
+import { isQualifiedOfficialCrecStatement } from '../lib/data/crecStatements';
 import { fetchJson, sleep } from './lib/ingest-utils';
 import { fetchApprovedMediaStatementsForMember } from './lib/approvedMediaQuotes';
 
@@ -514,7 +515,7 @@ function buildSaidDidLinks(
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, MAX_SAID_DID_LINKS);
 
-  return filtered.map((vote) => ({
+  return selected.map((vote) => ({
     topicId,
     statedPositionDate,
     voteDate: vote.date,
@@ -557,22 +558,6 @@ function crecFloorSpeechOpenerRegex(lastName: string): RegExp {
   );
 }
 
-/** Procedural CREC text — amendments, resolutions, cosponsor lists — not floor remarks. */
-function isProceduralCrecText(text: string): boolean {
-  if (/submitted an amendment/i.test(text)) return true;
-  if (/submitted the following resolution/i.test(text)) return true;
-  if (/were added as cosponsors/i.test(text)) return true;
-  if (/were removed as cosponsors/i.test(text)) return true;
-  if (/^\s*Mr\.\s+\w+\),/i.test(text)) return true;
-  if (/,\s*the Senator from/i.test(text.slice(0, 120))) return true;
-  if (/names of the Senator/i.test(text.slice(0, 160))) return true;
-  if (/At the request of/i.test(text.slice(0, 120))) return true;
-  if (/A bill to amend/i.test(text.slice(0, 120))) return true;
-  if (/were referred to the Committee/i.test(text.slice(0, 160))) return true;
-  if (/which was ordered to lie on the table/i.test(text)) return true;
-  return false;
-}
-
 function crecGovInfoUrlStem(url: string): string {
   const granule = url.match(/CREC-[^/?#]+/i)?.[0] ?? url;
   // Same physical page can appear as ...-PgS3474-2 vs ...-PgS3474-3
@@ -600,9 +585,8 @@ function extractCrecSpeechExcerpt(plainText: string, leg: LegislatorRow): string
   }
 
   excerpt = excerpt.replace(/\[[^\]]*\]/g, '').replace(/\s+/g, ' ').trim();
-  if (excerpt.length < 80) return null;
-  if (isProceduralCrecText(excerpt)) return null;
   if (!opener.test(excerpt)) return null;
+  if (!isQualifiedOfficialCrecStatement(excerpt)) return null;
   return excerpt.slice(0, 600);
 }
 
