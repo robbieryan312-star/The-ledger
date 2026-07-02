@@ -6,7 +6,7 @@
       "tier": "nonpartisan",
       "description": "State and federal bill tracking via legiscan.com API"
     },
-    "asOf": "2026-07-01",
+    "asOf": "2026-07-02",
     "count": 100,
     "stateCode": "FL",
     "fetchedLive": true,
@@ -26,7 +26,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2044045"
     },
     {
@@ -41,7 +41,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2044116"
     },
     {
@@ -56,7 +56,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2044098"
     },
     {
@@ -71,7 +71,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2044121"
     },
     {
@@ -86,7 +86,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2044120"
     },
     {
@@ -101,7 +101,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2044114"
     },
     {
@@ -116,7 +116,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2044218"
     },
     {
@@ -131,7 +131,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2044230"
     },
     {
@@ -146,7 +146,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2044901"
     },
     {
@@ -161,7 +161,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2044907"
     },
     {
@@ -176,7 +176,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2044913"
     },
     {
@@ -191,7 +191,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2044915"
     },
     {
@@ -206,7 +206,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045011"
     },
     {
@@ -221,7 +221,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045013"
     },
     {
@@ -236,7 +236,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045027"
     },
     {
@@ -251,7 +251,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045020"
     },
     {
@@ -266,7 +266,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045032"
     },
     {
@@ -281,7 +281,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045076"
     },
     {
@@ -296,7 +296,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045172"
     },
     {
@@ -311,7 +311,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045245"
     },
     {
@@ -326,7 +326,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045278"
     },
     {
@@ -341,7 +341,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045323"
     },
     {
@@ -356,7 +356,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045317"
     },
     {
@@ -371,7 +371,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045313"
     },
     {
@@ -386,7 +386,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045320"
     },
     {
@@ -401,7 +401,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045368"
     },
     {
@@ -416,7 +416,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045379"
     },
     {
@@ -431,7 +431,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045372"
     },
     {
@@ -446,7 +446,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045383"
     },
     {
@@ -461,7 +461,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045386"
     },
     {
@@ -476,7 +476,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045555"
     },
     {
@@ -491,7 +491,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045552"
     },
     {
@@ -506,7 +506,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045558"
     },
     {
@@ -521,7 +521,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045713"
     },
     {
@@ -536,7 +536,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045767"
     },
     {
@@ -551,7 +551,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045763"
     },
     {
@@ -566,7 +566,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045766"
     },
     {
@@ -581,7 +581,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045754"
     },
     {
@@ -596,7 +596,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045760"
     },
     {
@@ -611,7 +611,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045867"
     },
     {
@@ -626,7 +626,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045845"
     },
     {
@@ -641,7 +641,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045859"
     },
     {
@@ -656,7 +656,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045849"
     },
     {
@@ -671,7 +671,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045862"
     },
     {
@@ -686,7 +686,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045893"
     },
     {
@@ -701,7 +701,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045890"
     },
     {
@@ -716,7 +716,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045907"
     },
     {
@@ -731,7 +731,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045887"
     },
     {
@@ -746,7 +746,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045897"
     },
     {
@@ -761,7 +761,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045902"
     },
     {
@@ -776,7 +776,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045913"
     },
     {
@@ -791,7 +791,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045914"
     },
     {
@@ -806,7 +806,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045929"
     },
     {
@@ -821,7 +821,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045926"
     },
     {
@@ -836,7 +836,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045942"
     },
     {
@@ -851,7 +851,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045933"
     },
     {
@@ -866,7 +866,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045984"
     },
     {
@@ -881,7 +881,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2045968"
     },
     {
@@ -896,7 +896,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046000"
     },
     {
@@ -911,7 +911,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046001"
     },
     {
@@ -926,7 +926,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046016"
     },
     {
@@ -941,7 +941,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046129"
     },
     {
@@ -956,7 +956,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046134"
     },
     {
@@ -971,7 +971,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046195"
     },
     {
@@ -986,7 +986,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046188"
     },
     {
@@ -1001,7 +1001,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046180"
     },
     {
@@ -1016,7 +1016,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046233"
     },
     {
@@ -1031,7 +1031,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046234"
     },
     {
@@ -1046,7 +1046,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046235"
     },
     {
@@ -1061,7 +1061,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046237"
     },
     {
@@ -1076,7 +1076,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046246"
     },
     {
@@ -1091,7 +1091,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046251"
     },
     {
@@ -1106,7 +1106,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046256"
     },
     {
@@ -1121,7 +1121,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046260"
     },
     {
@@ -1136,7 +1136,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046367"
     },
     {
@@ -1151,7 +1151,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046324"
     },
     {
@@ -1166,7 +1166,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046311"
     },
     {
@@ -1181,7 +1181,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046453"
     },
     {
@@ -1196,7 +1196,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046459"
     },
     {
@@ -1211,7 +1211,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046495"
     },
     {
@@ -1226,7 +1226,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046515"
     },
     {
@@ -1241,7 +1241,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046466"
     },
     {
@@ -1256,7 +1256,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046504"
     },
     {
@@ -1271,7 +1271,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046548"
     },
     {
@@ -1286,7 +1286,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046541"
     },
     {
@@ -1301,7 +1301,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046562"
     },
     {
@@ -1316,7 +1316,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046572"
     },
     {
@@ -1331,7 +1331,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046598"
     },
     {
@@ -1346,7 +1346,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046620"
     },
     {
@@ -1361,7 +1361,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046650"
     },
     {
@@ -1376,7 +1376,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046708"
     },
     {
@@ -1391,7 +1391,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046695"
     },
     {
@@ -1406,7 +1406,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046684"
     },
     {
@@ -1421,7 +1421,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046712"
     },
     {
@@ -1436,7 +1436,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046688"
     },
     {
@@ -1451,7 +1451,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046778"
     },
     {
@@ -1466,7 +1466,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046750"
     },
     {
@@ -1481,7 +1481,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2046804"
     },
     {
@@ -1496,7 +1496,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2047008"
     },
     {
@@ -1511,7 +1511,7 @@
         "tier": "nonpartisan",
         "description": "State and federal bill tracking via legiscan.com API"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "legiscanUrl": "https://legiscan.com/FL/bill/2047012"
     }
   ]

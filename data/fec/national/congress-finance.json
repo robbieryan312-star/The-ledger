@@ -6,11 +6,11 @@
       "tier": "official",
       "description": "Official campaign finance disclosures via api.open.fec.gov"
     },
-    "asOf": "2026-07-01",
-    "fetchedAt": "2026-07-01T17:26:43.020Z",
+    "asOf": "2026-07-02",
+    "fetchedAt": "2026-07-02T16:25:46.622Z",
     "membersQueried": 537,
-    "withFinanceData": 533,
-    "failureCount": 4,
+    "withFinanceData": 514,
+    "failureCount": 23,
     "keyConfigured": true,
     "datasetUrl": "https://api.open.fec.gov/v1/",
     "note": "Receipts, disbursements, and cash-on-hand from OpenFEC candidate totals for all current Congress members."
@@ -36,7 +36,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S8WA00194/"
     },
     "K000367": {
@@ -59,7 +59,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S6MN00267/"
     },
     "S000033": {
@@ -82,7 +82,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4VT00033/"
     },
     "W000802": {
@@ -105,7 +105,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S6RI00221/"
     },
     "B001261": {
@@ -128,7 +128,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S6WY00068/"
     },
     "W000437": {
@@ -151,7 +151,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S8MS00196/"
     },
     "C001035": {
@@ -174,7 +174,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S6ME00159/"
     },
     "C001056": {
@@ -182,14 +182,14 @@
       "bioguideId": "C001056",
       "fecCandidateId": "S2TX00106",
       "electionYear": 2026,
-      "receipts": 13574708.8,
-      "disbursements": 10130088.29,
-      "cashOnHand": 4078081.2,
-      "individualContributions": 6054842.36,
-      "pacContributions": 2335829.41,
+      "receipts": 3377426.45,
+      "disbursements": 851024.74,
+      "cashOnHand": 4122282.66,
+      "individualContributions": 1270535.55,
+      "pacContributions": 595022.42,
       "selfFunding": 0,
-      "coverageStart": "2021-01-01",
-      "coverageEnd": "2026-05-06",
+      "coverageStart": "2023-01-01",
+      "coverageEnd": "2024-12-31",
       "reportType": "YEAR-END",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
@@ -197,7 +197,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2TX00106/"
     },
     "D000563": {
@@ -220,7 +220,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S6IL00151/"
     },
     "G000359": {
@@ -228,22 +228,22 @@
       "bioguideId": "G000359",
       "fecCandidateId": "S0SC00149",
       "electionYear": 2026,
-      "receipts": 4534983.47,
-      "disbursements": 3559491.56,
-      "cashOnHand": 15623617.29,
-      "individualContributions": 2756240.43,
-      "pacContributions": 222810,
+      "receipts": 6157140.81,
+      "disbursements": 17552989.02,
+      "cashOnHand": 4227769.08,
+      "individualContributions": 1221166.12,
+      "pacContributions": 603973.68,
       "selfFunding": 0,
-      "coverageStart": "2023-01-01",
-      "coverageEnd": "2024-12-31",
-      "reportType": "YEAR-END",
+      "coverageStart": "2025-01-01",
+      "coverageEnd": "2026-05-20",
+      "reportType": "PRE-PRIMARY",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
         "url": "https://www.fec.gov/data/",
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0SC00149/"
     },
     "M000355": {
@@ -266,7 +266,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2KY00012/"
     },
     "M001176": {
@@ -274,22 +274,22 @@
       "bioguideId": "M001176",
       "fecCandidateId": "S8OR00207",
       "electionYear": 2026,
-      "receipts": 7297473.44,
-      "disbursements": 4617385.54,
+      "receipts": 3944598.07,
+      "disbursements": 1725947.65,
       "cashOnHand": 6485649.07,
-      "individualContributions": 5869185.14,
-      "pacContributions": 457225,
+      "individualContributions": 3072756.16,
+      "pacContributions": 402500,
       "selfFunding": 0,
-      "coverageStart": "2021-01-01",
+      "coverageStart": "2025-01-01",
       "coverageEnd": "2026-04-29",
-      "reportType": "YEAR-END",
+      "reportType": "PRE-PRIMARY",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
         "url": "https://www.fec.gov/data/",
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S8OR00207/"
     },
     "R000122": {
@@ -312,7 +312,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S6RI00163/"
     },
     "R000584": {
@@ -320,14 +320,14 @@
       "bioguideId": "R000584",
       "fecCandidateId": "S8ID00092",
       "electionYear": 2026,
-      "receipts": 3937857.3,
-      "disbursements": 2402936.49,
-      "cashOnHand": 3729779.9,
-      "individualContributions": 2345091.49,
-      "pacContributions": 1113629,
+      "receipts": 441336.61,
+      "disbursements": 385819.74,
+      "cashOnHand": 2243062.03,
+      "individualContributions": 171148.32,
+      "pacContributions": 147500,
       "selfFunding": 0,
       "coverageStart": "2021-01-01",
-      "coverageEnd": "2026-04-29",
+      "coverageEnd": "2022-12-31",
       "reportType": "YEAR-END",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
@@ -335,7 +335,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S8ID00092/"
     },
     "S001181": {
@@ -358,7 +358,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0NH00219/"
     },
     "W000805": {
@@ -381,7 +381,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S6VA00093/"
     },
     "G000555": {
@@ -404,7 +404,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0NY00410/"
     },
     "C001088": {
@@ -412,14 +412,14 @@
       "bioguideId": "C001088",
       "fecCandidateId": "S0DE00092",
       "electionYear": 2026,
-      "receipts": 5773706.18,
-      "disbursements": 3484548.05,
-      "cashOnHand": 4129671.39,
-      "individualContributions": 3263825.43,
-      "pacContributions": 1877150,
+      "receipts": 1749727.9,
+      "disbursements": 1385630.43,
+      "cashOnHand": 2185199.85,
+      "individualContributions": 1055486.82,
+      "pacContributions": 536200,
       "selfFunding": 0,
-      "coverageStart": "2021-01-01",
-      "coverageEnd": "2026-03-31",
+      "coverageStart": "2023-01-01",
+      "coverageEnd": "2024-12-31",
       "reportType": "YEAR-END",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
@@ -427,7 +427,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0DE00092/"
     },
     "A000055": {
@@ -450,7 +450,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6AL04098/"
     },
     "B001230": {
@@ -473,7 +473,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2WI00219/"
     },
     "B001267": {
@@ -496,7 +496,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0CO00211/"
     },
     "B001257": {
@@ -519,7 +519,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6FL09070/"
     },
     "B000490": {
@@ -542,7 +542,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2GA02031/"
     },
     "B001243": {
@@ -565,7 +565,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S8TN00337/"
     },
     "B001277": {
@@ -588,7 +588,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0CT00177/"
     },
     "B001236": {
@@ -611,7 +611,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0AR00150/"
     },
     "B001260": {
@@ -634,7 +634,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6FL13148/"
     },
     "C000059": {
@@ -657,7 +657,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2CA37023/"
     },
     "C001047": {
@@ -680,7 +680,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4WV00159/"
     },
     "C001072": {
@@ -703,7 +703,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8IN07184/"
     },
     "C001051": {
@@ -726,7 +726,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2TX31044/"
     },
     "C001075": {
@@ -749,7 +749,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4LA00107/"
     },
     "C001066": {
@@ -772,7 +772,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6FL11126/"
     },
     "C001080": {
@@ -795,7 +795,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0CA32101/"
     },
     "C001067": {
@@ -818,7 +818,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NY11138/"
     },
     "C001061": {
@@ -841,7 +841,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MO05234/"
     },
     "C000537": {
@@ -864,7 +864,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2SC02042/"
     },
     "C001068": {
@@ -887,7 +887,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6TN09068/"
     },
     "C001053": {
@@ -910,7 +910,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2OK04055/"
     },
     "C001059": {
@@ -933,7 +933,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4CA20082/"
     },
     "C001069": {
@@ -956,7 +956,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2CT02112/"
     },
     "C000880": {
@@ -979,7 +979,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S8ID00027/"
     },
     "C001087": {
@@ -1002,7 +1002,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0AR01083/"
     },
     "C001063": {
@@ -1025,7 +1025,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2TX23082/"
     },
     "D000096": {
@@ -1048,7 +1048,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4IL07037/"
     },
     "D000197": {
@@ -1071,7 +1071,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6CO01141/"
     },
     "D000216": {
@@ -1094,7 +1094,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0CT03072/"
     },
     "D000616": {
@@ -1117,7 +1117,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0TN04195/"
     },
     "D000600": {
@@ -1140,7 +1140,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2FL25018/"
     },
     "D000399": {
@@ -1163,7 +1163,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4TX10028/"
     },
     "F000459": {
@@ -1186,7 +1186,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0TN03254/"
     },
     "F000450": {
@@ -1209,7 +1209,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NC05146/"
     },
     "G000559": {
@@ -1232,7 +1232,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0CA10149/"
     },
     "G000565": {
@@ -1255,7 +1255,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0AZ01259/"
     },
     "G000386": {
@@ -1278,7 +1278,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0IA00028/"
     },
     "G000546": {
@@ -1301,7 +1301,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0MO06073/"
     },
     "G000553": {
@@ -1324,7 +1324,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4TX09095/"
     },
     "G000568": {
@@ -1347,7 +1347,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0VA09055/"
     },
     "G000558": {
@@ -1370,7 +1370,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8KY02031/"
     },
     "H001052": {
@@ -1393,7 +1393,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8MD01094/"
     },
     "H001046": {
@@ -1416,7 +1416,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2NM00088/"
     },
     "H001047": {
@@ -1439,7 +1439,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8CT04172/"
     },
     "H001042": {
@@ -1462,7 +1462,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2HI00106/"
     },
     "H001061": {
@@ -1485,7 +1485,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0ND00093/"
     },
     "H000874": {
@@ -1508,7 +1508,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2MD05155/"
     },
     "H001058": {
@@ -1531,7 +1531,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0MI02094/"
     },
     "J000288": {
@@ -1554,7 +1554,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6GA04129/"
     },
     "J000293": {
@@ -1577,7 +1577,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0WI00197/"
     },
     "J000289": {
@@ -1600,7 +1600,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6OH04082/"
     },
     "K000009": {
@@ -1623,7 +1623,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2OH09031/"
     },
     "K000375": {
@@ -1646,7 +1646,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0MA10082/"
     },
     "K000376": {
@@ -1669,7 +1669,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0PA03271/"
     },
     "L000575": {
@@ -1692,7 +1692,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4OK00232/"
     },
     "L000560": {
@@ -1715,7 +1715,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0WA02080/"
     },
     "L000557": {
@@ -1738,7 +1738,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8CT01046/"
     },
     "L000566": {
@@ -1761,7 +1761,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8OH05036/"
     },
     "L000577": {
@@ -1784,7 +1784,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0UT00165/"
     },
     "L000397": {
@@ -1807,7 +1807,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4CA16049/"
     },
     "L000491": {
@@ -1830,7 +1830,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4OK06056/"
     },
     "L000570": {
@@ -1853,7 +1853,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0NM00058/"
     },
     "L000562": {
@@ -1876,7 +1876,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2MA09072/"
     },
     "M000133": {
@@ -1899,7 +1899,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6MA07101/"
     },
     "M001163": {
@@ -1922,7 +1922,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6CA05195/"
     },
     "M001157": {
@@ -1945,7 +1945,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4TX10093/"
     },
     "M001177": {
@@ -1968,7 +1968,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8CA04152/"
     },
     "M001143": {
@@ -1991,7 +1991,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0MN04049/"
     },
     "M000312": {
@@ -2014,7 +2014,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MA03022/"
     },
     "M001137": {
@@ -2037,7 +2037,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8NY06048/"
     },
     "M001160": {
@@ -2060,7 +2060,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4WI04183/"
     },
     "M000934": {
@@ -2083,7 +2083,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0KS00091/"
     },
     "M001153": {
@@ -2091,22 +2091,22 @@
       "bioguideId": "M001153",
       "fecCandidateId": "S4AK00099",
       "electionYear": 2028,
-      "receipts": 1762560.96,
-      "disbursements": 1041190.2,
+      "receipts": 1073320.2,
+      "disbursements": 311423.23,
       "cashOnHand": 1379057.22,
-      "individualContributions": 1106712.92,
-      "pacContributions": 556100,
+      "individualContributions": 750387.13,
+      "pacContributions": 279300,
       "selfFunding": 0,
-      "coverageStart": "2023-01-01",
+      "coverageStart": "2025-01-01",
       "coverageEnd": "2026-03-31",
-      "reportType": "YEAR-END",
+      "reportType": "APRIL QUARTERLY",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
         "url": "https://www.fec.gov/data/",
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4AK00099/"
     },
     "M001169": {
@@ -2129,7 +2129,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2CT00132/"
     },
     "M001111": {
@@ -2152,7 +2152,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2WA00189/"
     },
     "N000002": {
@@ -2175,7 +2175,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NY17071/"
     },
     "N000015": {
@@ -2198,7 +2198,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8MA02041/"
     },
     "N000147": {
@@ -2221,7 +2221,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0DC00058/"
     },
     "P000034": {
@@ -2244,7 +2244,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8NJ03073/"
     },
     "P000603": {
@@ -2252,14 +2252,14 @@
       "bioguideId": "P000603",
       "fecCandidateId": "S0KY00156",
       "electionYear": 2028,
-      "receipts": 11803635.7,
-      "disbursements": 10358979.14,
-      "cashOnHand": 6810091.73,
-      "individualContributions": 10534617.89,
-      "pacContributions": 183446.15,
+      "receipts": 8490873.16,
+      "disbursements": 7162710.96,
+      "cashOnHand": 6693597.37,
+      "individualContributions": 7722803.91,
+      "pacContributions": 97900,
       "selfFunding": 0,
       "coverageStart": "2023-01-01",
-      "coverageEnd": "2026-03-31",
+      "coverageEnd": "2024-12-31",
       "reportType": "YEAR-END",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
@@ -2267,7 +2267,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0KY00156/"
     },
     "P000197": {
@@ -2290,7 +2290,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8CA05035/"
     },
     "P000595": {
@@ -2313,7 +2313,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4MI00355/"
     },
     "P000597": {
@@ -2336,7 +2336,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8ME01120/"
     },
     "Q000023": {
@@ -2359,7 +2359,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0IL05096/"
     },
     "R000395": {
@@ -2382,7 +2382,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0KY05015/"
     },
     "R000575": {
@@ -2405,7 +2405,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2AL03032/"
     },
     "S001176": {
@@ -2428,7 +2428,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0LA01087/"
     },
     "S001145": {
@@ -2451,7 +2451,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8IL09067/"
     },
     "S001150": {
@@ -2474,7 +2474,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4CA00555/"
     },
     "S000148": {
@@ -2497,7 +2497,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S8NY00082/"
     },
     "S001183": {
@@ -2520,7 +2520,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4AZ06045/"
     },
     "S001189": {
@@ -2543,7 +2543,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0GA08099/"
     },
     "S000185": {
@@ -2566,7 +2566,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6VA01117/"
     },
     "S001184": {
@@ -2589,7 +2589,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4SC00240/"
     },
     "S001185": {
@@ -2612,7 +2612,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0AL07086/"
     },
     "S000344": {
@@ -2635,7 +2635,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6CA24113/"
     },
     "S001148": {
@@ -2658,7 +2658,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8ID02064/"
     },
     "S000510": {
@@ -2681,7 +2681,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6WA09025/"
     },
     "S001172": {
@@ -2704,7 +2704,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6NE03115/"
     },
     "S000522": {
@@ -2727,7 +2727,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8NJ04014/"
     },
     "S001156": {
@@ -2750,7 +2750,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2CA39078/"
     },
     "T000193": {
@@ -2773,7 +2773,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MS02068/"
     },
     "T000460": {
@@ -2796,7 +2796,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8CA01109/"
     },
     "T000467": {
@@ -2819,7 +2819,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8PA05071/"
     },
     "T000250": {
@@ -2842,7 +2842,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2SD00068/"
     },
     "T000469": {
@@ -2865,7 +2865,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8NY21203/"
     },
     "T000463": {
@@ -2888,7 +2888,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2OH03067/"
     },
     "V000128": {
@@ -2911,7 +2911,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S6MD03441/"
     },
     "V000081": {
@@ -2934,7 +2934,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NY00010/"
     },
     "W000798": {
@@ -2957,7 +2957,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MI07103/"
     },
     "W000797": {
@@ -2980,7 +2980,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4FL20023/"
     },
     "W000187": {
@@ -3003,7 +3003,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4CA23011/"
     },
     "W000806": {
@@ -3026,7 +3026,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0FL08208/"
     },
     "W000800": {
@@ -3034,14 +3034,14 @@
       "bioguideId": "W000800",
       "fecCandidateId": "S2VT00235",
       "electionYear": 2028,
-      "receipts": 330882.07,
-      "disbursements": 577300.13,
-      "cashOnHand": 1713252,
-      "individualContributions": 67398.72,
-      "pacContributions": 43110,
+      "receipts": 484480.25,
+      "disbursements": 811738.3,
+      "cashOnHand": 1632412.01,
+      "individualContributions": 101932.56,
+      "pacContributions": 66110,
       "selfFunding": 0,
       "coverageStart": "2023-01-01",
-      "coverageEnd": "2024-12-31",
+      "coverageEnd": "2026-03-31",
       "reportType": "YEAR-END",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
@@ -3049,7 +3049,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2VT00235/"
     },
     "W000795": {
@@ -3072,7 +3072,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2SC02059/"
     },
     "W000808": {
@@ -3095,68 +3095,22 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0FL17068/"
     },
-    "W000804": {
-      "politicianId": "W000804",
-      "bioguideId": "W000804",
-      "fecCandidateId": "H8VA01147",
-      "electionYear": 2026,
-      "receipts": 3398633.75,
-      "disbursements": 914724.08,
-      "cashOnHand": 3859789.8,
-      "individualContributions": 1191625.06,
-      "pacContributions": 965350,
-      "selfFunding": 0,
-      "coverageStart": "2025-01-01",
-      "coverageEnd": "2026-03-31",
-      "reportType": "APRIL QUARTERLY",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/H8VA01147/"
-    },
-    "W000809": {
-      "politicianId": "W000809",
-      "bioguideId": "W000809",
-      "fecCandidateId": "H0AR03055",
-      "electionYear": 2026,
-      "receipts": 1547664.7,
-      "disbursements": 970553.58,
-      "cashOnHand": 2293004.78,
-      "individualContributions": 712560.15,
-      "pacContributions": 742750,
-      "selfFunding": 0,
-      "coverageStart": "2025-01-01",
-      "coverageEnd": "2026-03-31",
-      "reportType": "APRIL QUARTERLY",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/H0AR03055/"
-    },
-    "W000779": {
-      "politicianId": "W000779",
-      "bioguideId": "W000779",
-      "fecCandidateId": "S6OR00110",
+    "Y000064": {
+      "politicianId": "Y000064",
+      "bioguideId": "Y000064",
+      "fecCandidateId": "S6IN00191",
       "electionYear": 2028,
-      "receipts": 2732974.61,
-      "disbursements": 4662914.88,
-      "cashOnHand": 1415984.72,
-      "individualContributions": 1346687.07,
-      "pacContributions": 530850,
+      "receipts": 1754997.99,
+      "disbursements": 1065950.31,
+      "cashOnHand": 4425942.64,
+      "individualContributions": 661649.75,
+      "pacContributions": 330350,
       "selfFunding": 0,
       "coverageStart": "2023-01-01",
-      "coverageEnd": "2026-03-31",
+      "coverageEnd": "2024-12-31",
       "reportType": "YEAR-END",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
@@ -3164,30 +3118,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/S6OR00110/"
-    },
-    "Y000064": {
-      "politicianId": "Y000064",
-      "bioguideId": "Y000064",
-      "fecCandidateId": "S6IN00191",
-      "electionYear": 2028,
-      "receipts": 3599267.98,
-      "disbursements": 1234309.96,
-      "cashOnHand": 6790900.66,
-      "individualContributions": 953813.54,
-      "pacContributions": 492510,
-      "selfFunding": 0,
-      "coverageStart": "2025-01-01",
-      "coverageEnd": "2026-03-31",
-      "reportType": "APRIL QUARTERLY",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S6IN00191/"
     },
     "A000369": {
@@ -3210,7 +3141,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NV02395/"
     },
     "B001278": {
@@ -3233,7 +3164,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2OR01133/"
     },
     "D000617": {
@@ -3256,7 +3187,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0WA08046/"
     },
     "M001184": {
@@ -3279,31 +3210,8 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2KY04121/"
-    },
-    "S001194": {
-      "politicianId": "S001194",
-      "bioguideId": "S001194",
-      "fecCandidateId": "S4HI00136",
-      "electionYear": 2028,
-      "receipts": 1185717.89,
-      "disbursements": 508868.78,
-      "cashOnHand": 2333473.53,
-      "individualContributions": 835861.95,
-      "pacContributions": 261047.21,
-      "selfFunding": 0,
-      "coverageStart": "2025-01-01",
-      "coverageEnd": "2026-03-31",
-      "reportType": "APRIL QUARTERLY",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/S4HI00136/"
     },
     "F000454": {
       "politicianId": "F000454",
@@ -3325,7 +3233,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8IL14067/"
     },
     "T000468": {
@@ -3348,7 +3256,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8NV03036/"
     },
     "C001095": {
@@ -3371,7 +3279,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4AR00103/"
     },
     "H001068": {
@@ -3394,31 +3302,8 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2CA06259/"
-    },
-    "B001287": {
-      "politicianId": "B001287",
-      "bioguideId": "B001287",
-      "fecCandidateId": "H0CA03078",
-      "electionYear": 2026,
-      "receipts": 1038702.34,
-      "disbursements": 1221177.59,
-      "cashOnHand": 1690896.46,
-      "individualContributions": 495798,
-      "pacContributions": 513068.4,
-      "selfFunding": 0,
-      "coverageStart": "2025-01-01",
-      "coverageEnd": "2026-05-13",
-      "reportType": "PRE-PRIMARY",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/H0CA03078/"
     },
     "B001285": {
       "politicianId": "B001285",
@@ -3440,7 +3325,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2CA00120/"
     },
     "R000599": {
@@ -3463,31 +3348,8 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2CA36439/"
-    },
-    "T000472": {
-      "politicianId": "T000472",
-      "bioguideId": "T000472",
-      "fecCandidateId": "H2CA43245",
-      "electionYear": 1996,
-      "receipts": 3040,
-      "disbursements": 7173,
-      "cashOnHand": 0,
-      "individualContributions": 805,
-      "pacContributions": 0,
-      "selfFunding": 0,
-      "coverageStart": "1995-01-01",
-      "coverageEnd": "1996-12-31",
-      "reportType": "YEAR-END",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/H2CA43245/"
     },
     "V000130": {
       "politicianId": "V000130",
@@ -3509,7 +3371,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2CA50026/"
     },
     "P000608": {
@@ -3532,54 +3394,8 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2CA52089/"
-    },
-    "F000462": {
-      "politicianId": "F000462",
-      "bioguideId": "F000462",
-      "fecCandidateId": "H2FL14053",
-      "electionYear": 1994,
-      "receipts": 157010,
-      "disbursements": 156306,
-      "cashOnHand": 1068,
-      "individualContributions": 470,
-      "pacContributions": 0,
-      "selfFunding": 0,
-      "coverageStart": "1993-01-01",
-      "coverageEnd": "1994-12-31",
-      "reportType": "YEAR-END",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/H2FL14053/"
-    },
-    "D000622": {
-      "politicianId": "D000622",
-      "bioguideId": "D000622",
-      "fecCandidateId": "S6IL00292",
-      "electionYear": 2028,
-      "receipts": 8872266.62,
-      "disbursements": 6653277.61,
-      "cashOnHand": 3801810.77,
-      "individualContributions": 7413335.29,
-      "pacContributions": 358503.03,
-      "selfFunding": 0,
-      "coverageStart": "2023-01-01",
-      "coverageEnd": "2026-03-31",
-      "reportType": "YEAR-END",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/S6IL00292/"
     },
     "B001282": {
       "politicianId": "B001282",
@@ -3601,7 +3417,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0KY06104/"
     },
     "W000817": {
@@ -3624,7 +3440,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2MA00170/"
     },
     "K000383": {
@@ -3647,7 +3463,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2ME00109/"
     },
     "W000812": {
@@ -3670,7 +3486,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2MO02102/"
     },
     "D000618": {
@@ -3693,7 +3509,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2MT00096/"
     },
     "H001067": {
@@ -3716,7 +3532,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NC08185/"
     },
     "C001096": {
@@ -3739,7 +3555,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S8ND00120/"
     },
     "F000463": {
@@ -3762,7 +3578,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2NE00094/"
     },
     "M001188": {
@@ -3785,7 +3601,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NY06116/"
     },
     "J000294": {
@@ -3808,7 +3624,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NY10092/"
     },
     "B001281": {
@@ -3831,7 +3647,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2OH03125/"
     },
     "J000295": {
@@ -3854,7 +3670,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2OH14064/"
     },
     "P000605": {
@@ -3877,7 +3693,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2PA04135/"
     },
     "C001098": {
@@ -3900,7 +3716,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2TX00312/"
     },
     "W000814": {
@@ -3923,7 +3739,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2TX14149/"
     },
     "C001091": {
@@ -3946,31 +3762,8 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2TX35011/"
-    },
-    "W000816": {
-      "politicianId": "W000816",
-      "bioguideId": "W000816",
-      "fecCandidateId": "H2TX33040",
-      "electionYear": 2026,
-      "receipts": 1301335.29,
-      "disbursements": 767016.44,
-      "cashOnHand": 1105819.81,
-      "individualContributions": 54110.93,
-      "pacContributions": 401478,
-      "selfFunding": 0,
-      "coverageStart": "2025-01-01",
-      "coverageEnd": "2026-03-31",
-      "reportType": "APRIL QUARTERLY",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/H2TX33040/"
     },
     "V000131": {
       "politicianId": "V000131",
@@ -3992,7 +3785,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2TX33073/"
     },
     "K000384": {
@@ -4015,7 +3808,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2VA00142/"
     },
     "P000607": {
@@ -4038,7 +3831,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2WI02124/"
     },
     "K000385": {
@@ -4061,7 +3854,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2IL02172/"
     },
     "S001195": {
@@ -4084,7 +3877,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MO08162/"
     },
     "B001288": {
@@ -4107,7 +3900,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4NJ00185/"
     },
     "C001101": {
@@ -4130,7 +3923,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MA05084/"
     },
     "N000188": {
@@ -4153,7 +3946,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NJ01084/"
     },
     "A000370": {
@@ -4176,7 +3969,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NC12100/"
     },
     "P000609": {
@@ -4199,7 +3992,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4AL06098/"
     },
     "H001072": {
@@ -4222,7 +4015,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4AR02141/"
     },
     "W000821": {
@@ -4245,7 +4038,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4AR04048/"
     },
     "G000574": {
@@ -4268,7 +4061,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4AZ00139/"
     },
     "D000623": {
@@ -4291,7 +4084,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0CA10073/"
     },
     "A000371": {
@@ -4314,7 +4107,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2CA31125/"
     },
     "L000582": {
@@ -4337,7 +4130,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4CA33119/"
     },
     "T000474": {
@@ -4360,7 +4153,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4CA35031/"
     },
     "C001103": {
@@ -4383,7 +4176,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4GA01039/"
     },
     "L000583": {
@@ -4406,7 +4199,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4GA11061/"
     },
     "A000372": {
@@ -4429,7 +4222,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2GA12121/"
     },
     "B001295": {
@@ -4452,7 +4245,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4IL12060/"
     },
     "M001196": {
@@ -4475,7 +4268,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MA06090/"
     },
     "M001194": {
@@ -4498,7 +4291,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MI04126/"
     },
     "D000624": {
@@ -4521,7 +4314,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MI12079/"
     },
     "E000294": {
@@ -4544,7 +4337,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MN06087/"
     },
     "R000603": {
@@ -4567,7 +4360,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NC07096/"
     },
     "W000822": {
@@ -4590,7 +4383,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NJ12149/"
     },
     "S001196": {
@@ -4613,7 +4406,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NY21079/"
     },
     "B001296": {
@@ -4636,7 +4429,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4PA13199/"
     },
     "B001291": {
@@ -4659,7 +4452,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6TX02079/"
     },
     "B001292": {
@@ -4682,7 +4475,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4VA08224/"
     },
     "P000610": {
@@ -4705,7 +4498,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2VI00082/"
     },
     "N000189": {
@@ -4728,7 +4521,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4WA04104/"
     },
     "G000576": {
@@ -4751,54 +4544,8 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4WI06048/"
-    },
-    "R000600": {
-      "politicianId": "R000600",
-      "bioguideId": "R000600",
-      "fecCandidateId": "H4AS00036",
-      "electionYear": 1998,
-      "receipts": 1000,
-      "disbursements": 923,
-      "cashOnHand": 241,
-      "individualContributions": 0,
-      "pacContributions": 0,
-      "selfFunding": 0,
-      "coverageStart": "1997-01-01",
-      "coverageEnd": "1998-06-30",
-      "reportType": "MID-YEAR REPORT",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/H4AS00036/"
-    },
-    "S001198": {
-      "politicianId": "S001198",
-      "bioguideId": "S001198",
-      "fecCandidateId": "S4AK00214",
-      "electionYear": 2026,
-      "receipts": 6500847.42,
-      "disbursements": 1505699.66,
-      "cashOnHand": 7086052.55,
-      "individualContributions": 2531692.06,
-      "pacContributions": 1398300,
-      "selfFunding": 0,
-      "coverageStart": "2025-01-01",
-      "coverageEnd": "2026-03-31",
-      "reportType": "APRIL QUARTERLY",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/S4AK00214/"
     },
     "E000295": {
       "politicianId": "E000295",
@@ -4820,7 +4567,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4IA00129/"
     },
     "T000476": {
@@ -4828,14 +4575,14 @@
       "bioguideId": "T000476",
       "fecCandidateId": "S4NC00162",
       "electionYear": 2026,
-      "receipts": 8113422.14,
-      "disbursements": 5270438.89,
-      "cashOnHand": 3677891.81,
-      "individualContributions": 4599628.76,
-      "pacContributions": 2847324,
+      "receipts": 2474642.46,
+      "disbursements": 971773.72,
+      "cashOnHand": 2238086.49,
+      "individualContributions": 1372519.17,
+      "pacContributions": 1053189.98,
       "selfFunding": 0,
-      "coverageStart": "2021-01-01",
-      "coverageEnd": "2026-03-31",
+      "coverageStart": "2023-01-01",
+      "coverageEnd": "2024-12-31",
       "reportType": "YEAR-END",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
@@ -4843,7 +4590,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4NC00162/"
     },
     "R000605": {
@@ -4851,22 +4598,22 @@
       "bioguideId": "R000605",
       "fecCandidateId": "S4SD00049",
       "electionYear": 2026,
-      "receipts": 2646193.92,
-      "disbursements": 1858947.01,
-      "cashOnHand": 2657275.98,
-      "individualContributions": 1138140.42,
-      "pacContributions": 1119800,
+      "receipts": 1084383.8,
+      "disbursements": 611893.88,
+      "cashOnHand": 1870029.07,
+      "individualContributions": 342206.42,
+      "pacContributions": 535150,
       "selfFunding": 0,
-      "coverageStart": "2025-01-01",
-      "coverageEnd": "2026-05-13",
-      "reportType": "PRE-PRIMARY",
+      "coverageStart": "2023-01-01",
+      "coverageEnd": "2024-12-31",
+      "reportType": "YEAR-END",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
         "url": "https://www.fec.gov/data/",
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4SD00049/"
     },
     "K000388": {
@@ -4889,7 +4636,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6MS01131/"
     },
     "L000585": {
@@ -4912,7 +4659,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6IL18088/"
     },
     "D000626": {
@@ -4935,7 +4682,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6OH08315/"
     },
     "C001108": {
@@ -4958,7 +4705,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6KY01110/"
     },
     "E000296": {
@@ -4981,7 +4728,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6PA02171/"
     },
     "K000393": {
@@ -5004,7 +4751,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4LA00065/"
     },
     "H001076": {
@@ -5012,22 +4759,22 @@
       "bioguideId": "H001076",
       "fecCandidateId": "S6NH00091",
       "electionYear": 2028,
-      "receipts": 1982475.86,
-      "disbursements": 1437212.77,
-      "cashOnHand": 1495997.46,
-      "individualContributions": 1517205,
-      "pacContributions": 438898.14,
+      "receipts": 2900607.97,
+      "disbursements": 2073973.73,
+      "cashOnHand": 950734.37,
+      "individualContributions": 1994701.65,
+      "pacContributions": 588433,
       "selfFunding": 0,
-      "coverageStart": "2025-01-01",
-      "coverageEnd": "2026-03-31",
-      "reportType": "APRIL QUARTERLY",
+      "coverageStart": "2023-01-01",
+      "coverageEnd": "2024-12-31",
+      "reportType": "YEAR-END",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
         "url": "https://www.fec.gov/data/",
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S6NH00091/"
     },
     "C001113": {
@@ -5050,7 +4797,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S6NV00200/"
     },
     "S001190": {
@@ -5073,7 +4820,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2IL10068/"
     },
     "B001302": {
@@ -5096,7 +4843,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6AZ05083/"
     },
     "K000389": {
@@ -5119,7 +4866,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4CA12055/"
     },
     "P000613": {
@@ -5142,7 +4889,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6CA20152/"
     },
     "C001112": {
@@ -5165,7 +4912,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6CA24303/"
     },
     "B001300": {
@@ -5188,7 +4935,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6CA44103/"
     },
     "C001110": {
@@ -5211,7 +4958,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6CA46116/"
     },
     "B001303": {
@@ -5234,7 +4981,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4DE00060/"
     },
     "D000628": {
@@ -5257,7 +5004,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6FL02208/"
     },
     "R000609": {
@@ -5280,7 +5027,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6FL04105/"
     },
     "S001200": {
@@ -5303,7 +5050,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6FL09179/"
     },
     "M001199": {
@@ -5326,7 +5073,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6FL18097/"
     },
     "K000391": {
@@ -5349,7 +5096,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6IL08147/"
     },
     "B001299": {
@@ -5372,7 +5119,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4IN00196/"
     },
     "M001198": {
@@ -5395,7 +5142,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0KS00315/"
     },
     "H001077": {
@@ -5418,7 +5165,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6LA03148/"
     },
     "J000299": {
@@ -5441,7 +5188,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6LA04138/"
     },
     "R000606": {
@@ -5464,7 +5211,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6MD08457/"
     },
     "B001301": {
@@ -5487,7 +5234,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6MI01226/"
     },
     "B001305": {
@@ -5510,7 +5257,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2NC00505/"
     },
     "B001298": {
@@ -5533,7 +5280,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6NE02125/"
     },
     "G000583": {
@@ -5556,7 +5303,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6NJ05171/"
     },
     "R000608": {
@@ -5579,7 +5326,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S8NV00156/"
     },
     "E000297": {
@@ -5602,7 +5349,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NY13096/"
     },
     "F000466": {
@@ -5625,7 +5372,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6PA08277/"
     },
     "S001199": {
@@ -5648,7 +5395,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6PA16320/"
     },
     "K000392": {
@@ -5671,7 +5418,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2TN07103/"
     },
     "G000581": {
@@ -5694,7 +5441,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6TX15162/"
     },
     "A000375": {
@@ -5717,7 +5464,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6TX19099/"
     },
     "J000298": {
@@ -5740,7 +5487,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6WA07458/"
     },
     "E000298": {
@@ -5763,7 +5510,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8KS04112/"
     },
     "N000190": {
@@ -5786,7 +5533,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8SC05158/"
     },
     "G000585": {
@@ -5809,7 +5556,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8CA34266/"
     },
     "C001114": {
@@ -5832,7 +5579,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4UT00282/"
     },
     "S001203": {
@@ -5840,22 +5587,22 @@
       "bioguideId": "S001203",
       "fecCandidateId": "S8MN00578",
       "electionYear": 2026,
-      "receipts": 3056970.44,
-      "disbursements": 3588468.57,
+      "receipts": 48581.55,
+      "disbursements": 506058.16,
       "cashOnHand": 270257.23,
-      "individualContributions": 2506132.26,
-      "pacContributions": 492249,
+      "individualContributions": 15204.03,
+      "pacContributions": 23000,
       "selfFunding": 0,
-      "coverageStart": "2021-01-01",
+      "coverageStart": "2025-01-01",
       "coverageEnd": "2026-03-31",
-      "reportType": "YEAR-END",
+      "reportType": "APRIL QUARTERLY",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
         "url": "https://www.fec.gov/data/",
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S8MN00578/"
     },
     "H001079": {
@@ -5878,7 +5625,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S8MS00261/"
     },
     "C001115": {
@@ -5901,7 +5648,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8TX27049/"
     },
     "B001306": {
@@ -5924,7 +5671,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8OH12180/"
     },
     "H001082": {
@@ -5936,7 +5683,7 @@
       "disbursements": 3454363.12,
       "cashOnHand": 206987.05,
       "individualContributions": 514460.04,
-      "pacContributions": 1321419.27,
+      "pacContributions": 1156658.96,
       "selfFunding": 0,
       "coverageStart": "2025-01-01",
       "coverageEnd": "2026-03-31",
@@ -5947,7 +5694,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8OK01157/"
     },
     "M001206": {
@@ -5970,7 +5717,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8NY25105/"
     },
     "S001205": {
@@ -5993,7 +5740,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8PA07200/"
     },
     "C001055": {
@@ -6016,7 +5763,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2HI02128/"
     },
     "H001066": {
@@ -6039,7 +5786,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NV04011/"
     },
     "S001211": {
@@ -6062,7 +5809,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8AZ09040/"
     },
     "H001090": {
@@ -6085,7 +5832,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8CA10126/"
     },
     "L000593": {
@@ -6108,7 +5855,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8CA49058/"
     },
     "N000191": {
@@ -6131,7 +5878,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8CO02160/"
     },
     "C001121": {
@@ -6154,7 +5901,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8CO06229/"
     },
     "H001081": {
@@ -6177,7 +5924,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8CT05245/"
     },
     "S001214": {
@@ -6200,7 +5947,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8FL17053/"
     },
     "M001208": {
@@ -6223,7 +5970,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8GA06393/"
     },
     "F000469": {
@@ -6246,7 +5993,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8ID01124/"
     },
     "G000586": {
@@ -6269,7 +6016,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8IL04134/"
     },
     "C001117": {
@@ -6292,7 +6039,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8IL06139/"
     },
     "U000040": {
@@ -6315,7 +6062,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8IL14174/"
     },
     "B001307": {
@@ -6338,7 +6085,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8IN04199/"
     },
     "D000629": {
@@ -6361,7 +6108,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8KS03155/"
     },
     "T000482": {
@@ -6384,7 +6131,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8MA03106/"
     },
     "P000617": {
@@ -6407,31 +6154,8 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8MA07032/"
-    },
-    "S001208": {
-      "politicianId": "S001208",
-      "bioguideId": "S001208",
-      "fecCandidateId": "S4MI00470",
-      "electionYear": 2030,
-      "receipts": 4378578.6,
-      "disbursements": 2296328.03,
-      "cashOnHand": 2364965.95,
-      "individualContributions": 4146863.02,
-      "pacContributions": 13000,
-      "selfFunding": 0,
-      "coverageStart": "2025-01-01",
-      "coverageEnd": "2026-03-31",
-      "reportType": "APRIL QUARTERLY",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/S4MI00470/"
     },
     "S001215": {
       "politicianId": "S001215",
@@ -6453,7 +6177,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8MI11254/"
     },
     "T000481": {
@@ -6476,7 +6200,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8MI13250/"
     },
     "C001119": {
@@ -6499,7 +6223,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6MN02131/"
     },
     "O000173": {
@@ -6522,7 +6246,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8MN05239/"
     },
     "S001212": {
@@ -6545,7 +6269,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8MN08043/"
     },
     "G000591": {
@@ -6568,7 +6292,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8MS03125/"
     },
     "P000614": {
@@ -6591,7 +6315,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8NH01210/"
     },
     "V000133": {
@@ -6614,7 +6338,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8NJ02166/"
     },
     "K000394": {
@@ -6637,7 +6361,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4NJ00466/"
     },
     "L000590": {
@@ -6660,7 +6384,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6NV04020/"
     },
     "O000172": {
@@ -6683,7 +6407,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8NY15148/"
     },
     "D000631": {
@@ -6706,7 +6430,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8PA04116/"
     },
     "H001085": {
@@ -6729,7 +6453,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8PA06087/"
     },
     "M001204": {
@@ -6752,7 +6476,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8PA10147/"
     },
     "J000302": {
@@ -6775,7 +6499,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8PA13125/"
     },
     "R000610": {
@@ -6798,7 +6522,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8PA18199/"
     },
     "T000480": {
@@ -6821,7 +6545,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8SC04250/"
     },
     "J000301": {
@@ -6844,7 +6568,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8SD01055/"
     },
     "B001309": {
@@ -6867,7 +6591,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8TN02119/"
     },
     "R000612": {
@@ -6890,7 +6614,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8TN06094/"
     },
     "C001120": {
@@ -6913,7 +6637,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8TX02166/"
     },
     "G000589": {
@@ -6936,7 +6660,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8TX05144/"
     },
     "F000468": {
@@ -6959,7 +6683,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8TX07140/"
     },
     "E000299": {
@@ -6982,7 +6706,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8TX16109/"
     },
     "R000614": {
@@ -7005,7 +6729,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8TX21307/"
     },
     "G000587": {
@@ -7028,7 +6752,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8TX29052/"
     },
     "C001118": {
@@ -7051,7 +6775,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8VA06104/"
     },
     "S001216": {
@@ -7074,7 +6798,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8WA08189/"
     },
     "S001213": {
@@ -7097,7 +6821,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8WI01156/"
     },
     "M001205": {
@@ -7120,7 +6844,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8WV03097/"
     },
     "S001217": {
@@ -7143,7 +6867,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S8FL00273/"
     },
     "H001089": {
@@ -7166,7 +6890,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S8MO00160/"
     },
     "G000592": {
@@ -7189,7 +6913,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8ME02185/"
     },
     "M001210": {
@@ -7212,7 +6936,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0NC03172/"
     },
     "M000687": {
@@ -7235,7 +6959,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S6MD03185/"
     },
     "T000165": {
@@ -7258,7 +6982,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0WI07101/"
     },
     "K000377": {
@@ -7281,7 +7005,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0AZ00350/"
     },
     "L000571": {
@@ -7304,7 +7028,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0WY00137/"
     },
     "I000056": {
@@ -7327,7 +7051,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0CA48024/"
     },
     "S000250": {
@@ -7350,7 +7074,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2TX03126/"
     },
     "V000129": {
@@ -7373,7 +7097,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2CA20094/"
     },
     "T000278": {
@@ -7396,7 +7120,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0AL00230/"
     },
     "H000273": {
@@ -7404,22 +7128,22 @@
       "bioguideId": "H000273",
       "fecCandidateId": "S0CO00575",
       "electionYear": 2026,
-      "receipts": 7718308.61,
-      "disbursements": 6189379.51,
+      "receipts": 9884304.8,
+      "disbursements": 8561825.74,
       "cashOnHand": 2964562.08,
-      "individualContributions": 5544101.85,
-      "pacContributions": 829467.77,
+      "individualContributions": 7318110.39,
+      "pacContributions": 1012277.27,
       "selfFunding": 0,
-      "coverageStart": "2025-01-01",
+      "coverageStart": "2021-01-01",
       "coverageEnd": "2026-06-10",
-      "reportType": "PRE-PRIMARY",
+      "reportType": "YEAR-END",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
         "url": "https://www.fec.gov/data/",
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0CO00575/"
     },
     "H000601": {
@@ -7442,7 +7166,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0TN00169/"
     },
     "M001212": {
@@ -7465,7 +7189,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8AL02171/"
     },
     "O000019": {
@@ -7488,7 +7212,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0CA08135/"
     },
     "K000397": {
@@ -7511,7 +7235,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8CA39240/"
     },
     "J000305": {
@@ -7534,7 +7258,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8CA49074/"
     },
     "B000825": {
@@ -7557,7 +7281,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0CO03165/"
     },
     "C001039": {
@@ -7580,7 +7304,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0FL03175/"
     },
     "F000472": {
@@ -7603,7 +7327,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0FL15104/"
     },
     "D000032": {
@@ -7626,7 +7350,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2FL14186/"
     },
     "G000593": {
@@ -7649,7 +7373,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0FL26036/"
     },
     "S000168": {
@@ -7672,7 +7396,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8FL27185/"
     },
     "W000788": {
@@ -7695,7 +7419,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0GA05301/"
     },
     "C001116": {
@@ -7718,7 +7442,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0GA09246/"
     },
     "H001091": {
@@ -7741,100 +7465,8 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0IA01174/"
-    },
-    "M001215": {
-      "politicianId": "M001215",
-      "bioguideId": "M001215",
-      "fecCandidateId": "H8IA02043",
-      "electionYear": 2016,
-      "receipts": 5000,
-      "disbursements": 5000,
-      "cashOnHand": 144.61,
-      "individualContributions": 0,
-      "pacContributions": 0,
-      "selfFunding": 0,
-      "coverageStart": "2015-01-01",
-      "coverageEnd": "2016-12-31",
-      "reportType": "YEAR-END",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/H8IA02043/"
-    },
-    "F000446": {
-      "politicianId": "F000446",
-      "bioguideId": "F000446",
-      "fecCandidateId": "H0IA04145",
-      "electionYear": 2026,
-      "receipts": 1117087.35,
-      "disbursements": 2287481.84,
-      "cashOnHand": 0,
-      "individualContributions": 306146.73,
-      "pacContributions": 597473.25,
-      "selfFunding": 0,
-      "coverageStart": "2025-01-01",
-      "coverageEnd": "2026-03-31",
-      "reportType": "APRIL QUARTERLY",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/H0IA04145/"
-    },
-    "M001211": {
-      "politicianId": "M001211",
-      "bioguideId": "M001211",
-      "fecCandidateId": "H0IL15129",
-      "electionYear": 2026,
-      "receipts": 1104318.74,
-      "disbursements": 917339.48,
-      "cashOnHand": 833235.6,
-      "individualContributions": 964510.25,
-      "pacContributions": 113000,
-      "selfFunding": 0,
-      "coverageStart": "2025-01-01",
-      "coverageEnd": "2026-03-31",
-      "reportType": "APRIL QUARTERLY",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/H0IL15129/"
-    },
-    "M001214": {
-      "politicianId": "M001214",
-      "bioguideId": "M001214",
-      "fecCandidateId": "H0IN01150",
-      "electionYear": 2026,
-      "receipts": 1873645.08,
-      "disbursements": 873154.31,
-      "cashOnHand": 1088950.49,
-      "individualContributions": 997233.45,
-      "pacContributions": 783350,
-      "selfFunding": 0,
-      "coverageStart": "2025-01-01",
-      "coverageEnd": "2026-04-15",
-      "reportType": "PRE-PRIMARY",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/H0IN01150/"
     },
     "S000929": {
       "politicianId": "S000929",
@@ -7856,7 +7488,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0IN05326/"
     },
     "M000871": {
@@ -7879,7 +7511,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0KS01123/"
     },
     "A000148": {
@@ -7902,7 +7534,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0MA04192/"
     },
     "M001136": {
@@ -7925,7 +7557,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0MI10287/"
     },
     "F000470": {
@@ -7948,7 +7580,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0MN07091/"
     },
     "R000305": {
@@ -7971,7 +7603,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0NC02125/"
     },
     "L000273": {
@@ -7994,7 +7626,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0NM03102/"
     },
     "G000597": {
@@ -8017,7 +7649,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0NY02234/"
     },
     "M000317": {
@@ -8040,7 +7672,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0NY11078/"
     },
     "T000486": {
@@ -8063,7 +7695,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0NY15160/"
     },
     "B000740": {
@@ -8086,7 +7718,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0OK05205/"
     },
     "B000668": {
@@ -8109,7 +7741,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0OR02127/"
     },
     "M000194": {
@@ -8132,7 +7764,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0SC01394/"
     },
     "H001086": {
@@ -8155,7 +7787,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0TN01118/"
     },
     "F000246": {
@@ -8178,7 +7810,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0TX04219/"
     },
     "P000048": {
@@ -8201,7 +7833,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0TX11230/"
     },
     "J000304": {
@@ -8224,7 +7856,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0TX13228/"
     },
     "N000026": {
@@ -8247,7 +7879,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0TX22302/"
     },
     "V000134": {
@@ -8270,7 +7902,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0TX24209/"
     },
     "M001213": {
@@ -8293,7 +7925,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0UT01205/"
     },
     "O000086": {
@@ -8316,7 +7948,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0UT04076/"
     },
     "S001159": {
@@ -8339,7 +7971,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0WA10034/"
     },
     "F000471": {
@@ -8362,7 +7994,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0WI05113/"
     },
     "P000145": {
@@ -8385,7 +8017,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2CA00955/"
     },
     "O000174": {
@@ -8408,7 +8040,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S8GA00180/"
     },
     "W000790": {
@@ -8416,22 +8048,22 @@
       "bioguideId": "W000790",
       "fecCandidateId": "S0GA00559",
       "electionYear": 2028,
-      "receipts": 6769553.76,
-      "disbursements": 8581894.11,
+      "receipts": 1949646.61,
+      "disbursements": 2646725.5,
       "cashOnHand": 4041496.1,
-      "individualContributions": 5621044.23,
-      "pacContributions": 138816.93,
+      "individualContributions": 1832128.63,
+      "pacContributions": 51500,
       "selfFunding": 0,
-      "coverageStart": "2023-01-01",
+      "coverageStart": "2025-01-01",
       "coverageEnd": "2026-03-31",
-      "reportType": "YEAR-END",
+      "reportType": "APRIL QUARTERLY",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
         "url": "https://www.fec.gov/data/",
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S0GA00559/"
     },
     "T000478": {
@@ -8454,7 +8086,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NY22051/"
     },
     "L000595": {
@@ -8477,54 +8109,8 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2LA05126/"
-    },
-    "C001125": {
-      "politicianId": "C001125",
-      "bioguideId": "C001125",
-      "fecCandidateId": "H2LA02149",
-      "electionYear": 2026,
-      "receipts": 1097646.4,
-      "disbursements": 1174020.88,
-      "cashOnHand": 433034.67,
-      "individualContributions": 310811.35,
-      "pacContributions": 746292.45,
-      "selfFunding": 0,
-      "coverageStart": "2025-01-01",
-      "coverageEnd": "2026-03-31",
-      "reportType": "APRIL QUARTERLY",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/H2LA02149/"
-    },
-    "S001218": {
-      "politicianId": "S001218",
-      "bioguideId": "S001218",
-      "fecCandidateId": "H2NM01144",
-      "electionYear": 2020,
-      "receipts": 53385.03,
-      "disbursements": 2262.1,
-      "cashOnHand": 51122.93,
-      "individualContributions": 51385.03,
-      "pacContributions": 2000,
-      "selfFunding": 0,
-      "coverageStart": "2020-12-21",
-      "coverageEnd": "2020-12-31",
-      "reportType": "YEAR-END",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NM01144/"
     },
     "E000071": {
       "politicianId": "E000071",
@@ -8546,7 +8132,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8TX06266/"
     },
     "B001313": {
@@ -8569,7 +8155,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2OH11169/"
     },
     "C001126": {
@@ -8592,7 +8178,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2OH15228/"
     },
     "F000474": {
@@ -8615,31 +8201,8 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NE01118/"
-    },
-    "F000475": {
-      "politicianId": "F000475",
-      "bioguideId": "F000475",
-      "fecCandidateId": "H2MN01223",
-      "electionYear": 2026,
-      "receipts": 1372246.6,
-      "disbursements": 599941.5,
-      "cashOnHand": 833714.33,
-      "individualContributions": 600940.18,
-      "pacContributions": 626000,
-      "selfFunding": 0,
-      "coverageStart": "2025-01-01",
-      "coverageEnd": "2026-03-31",
-      "reportType": "APRIL QUARTERLY",
-      "source": {
-        "name": "Federal Election Commission (OpenFEC)",
-        "url": "https://www.fec.gov/data/",
-        "tier": "official",
-        "description": "Official campaign finance disclosures via api.open.fec.gov"
-      },
-      "asOf": "2026-07-01",
-      "fecProfileUrl": "https://www.fec.gov/data/candidate/H2MN01223/"
     },
     "R000579": {
       "politicianId": "R000579",
@@ -8661,7 +8224,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8NY19223/"
     },
     "Y000067": {
@@ -8684,7 +8247,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2IN02295/"
     },
     "Z000018": {
@@ -8707,7 +8270,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MT01041/"
     },
     "B001319": {
@@ -8715,14 +8278,14 @@
       "bioguideId": "B001319",
       "fecCandidateId": "S2AL00145",
       "electionYear": 2028,
-      "receipts": 3907112.1,
-      "disbursements": 1506294.88,
-      "cashOnHand": 4109548.7,
-      "individualContributions": 3017323.47,
-      "pacContributions": 863600,
+      "receipts": 6261230.95,
+      "disbursements": 2746365.13,
+      "cashOnHand": 5223597.3,
+      "individualContributions": 4984833.93,
+      "pacContributions": 1219650,
       "selfFunding": 0,
       "coverageStart": "2023-01-01",
-      "coverageEnd": "2024-12-31",
+      "coverageEnd": "2026-03-31",
       "reportType": "YEAR-END",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
@@ -8730,7 +8293,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2AL00145/"
     },
     "S001227": {
@@ -8753,7 +8316,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2MO00544/"
     },
     "F000479": {
@@ -8761,14 +8324,14 @@
       "bioguideId": "F000479",
       "fecCandidateId": "S6PA00274",
       "electionYear": 2028,
-      "receipts": 9405260.38,
-      "disbursements": 8035929.1,
-      "cashOnHand": 1996681.1,
-      "individualContributions": 8516113.44,
-      "pacContributions": 61588.01,
+      "receipts": 7442913.67,
+      "disbursements": 5755576.9,
+      "cashOnHand": 2314686.59,
+      "individualContributions": 6818809.43,
+      "pacContributions": 36088.01,
       "selfFunding": 0,
       "coverageStart": "2023-01-01",
-      "coverageEnd": "2026-03-31",
+      "coverageEnd": "2024-12-31",
       "reportType": "YEAR-END",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
@@ -8776,7 +8339,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S6PA00274/"
     },
     "S001220": {
@@ -8799,7 +8362,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2AL05102/"
     },
     "C001132": {
@@ -8822,7 +8385,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2AZ01354/"
     },
     "C001133": {
@@ -8845,7 +8408,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2AZ02360/"
     },
     "K000401": {
@@ -8868,7 +8431,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2CA03157/"
     },
     "M001225": {
@@ -8891,7 +8454,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2CA14162/"
     },
     "K000400": {
@@ -8914,7 +8477,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2CA37304/"
     },
     "G000598": {
@@ -8937,7 +8500,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2CA47188/"
     },
     "P000620": {
@@ -8960,7 +8523,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8CO07045/"
     },
     "B001314": {
@@ -8983,7 +8546,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2FL04211/"
     },
     "M001216": {
@@ -9006,7 +8569,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2FL07156/"
     },
     "F000476": {
@@ -9029,7 +8592,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2FL10259/"
     },
     "L000596": {
@@ -9052,7 +8615,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0FL13158/"
     },
     "L000597": {
@@ -9075,7 +8638,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2FL15241/"
     },
     "M001217": {
@@ -9098,7 +8661,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2FL22171/"
     },
     "M001218": {
@@ -9121,7 +8684,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0GA07273/"
     },
     "C001129": {
@@ -9144,7 +8707,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4GA10071/"
     },
     "M001219": {
@@ -9167,7 +8730,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2GU01031/"
     },
     "T000487": {
@@ -9190,7 +8753,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2HI02581/"
     },
     "N000193": {
@@ -9213,7 +8776,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2IA03119/"
     },
     "J000309": {
@@ -9236,7 +8799,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2IL01349/"
     },
     "R000617": {
@@ -9259,7 +8822,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2IL03162/"
     },
     "B001315": {
@@ -9282,7 +8845,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2IL13153/"
     },
     "S001225": {
@@ -9305,7 +8868,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2IL17147/"
     },
     "H001093": {
@@ -9328,7 +8891,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6IN09143/"
     },
     "M001220": {
@@ -9351,7 +8914,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2KY03206/"
     },
     "S001221": {
@@ -9374,7 +8937,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0MI03316/"
     },
     "J000307": {
@@ -9397,7 +8960,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2MI10150/"
     },
     "T000488": {
@@ -9420,7 +8983,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2MI13204/"
     },
     "A000379": {
@@ -9443,7 +9006,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2MO04207/"
     },
     "B001316": {
@@ -9466,7 +9029,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2MO07143/"
     },
     "E000235": {
@@ -9489,7 +9052,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2MS04258/"
     },
     "D000230": {
@@ -9512,7 +9075,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NC02287/"
     },
     "F000477": {
@@ -9535,7 +9098,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NC06114/"
     },
     "E000246": {
@@ -9558,7 +9121,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NC14050/"
     },
     "K000398": {
@@ -9581,7 +9144,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0NJ07261/"
     },
     "M001226": {
@@ -9604,7 +9167,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NJ08232/"
     },
     "V000136": {
@@ -9627,7 +9190,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NM02191/"
     },
     "L000598": {
@@ -9650,7 +9213,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NY01190/"
     },
     "G000599": {
@@ -9673,7 +9236,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NY10308/"
     },
     "L000599": {
@@ -9696,7 +9259,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NY17162/"
     },
     "L000600": {
@@ -9719,7 +9282,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NY23228/"
     },
     "L000601": {
@@ -9742,7 +9305,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2OH01194/"
     },
     "M001222": {
@@ -9765,7 +9328,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2OH16051/"
     },
     "S001223": {
@@ -9788,7 +9351,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2OH13264/"
     },
     "B001317": {
@@ -9811,7 +9374,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2OK02315/"
     },
     "H001094": {
@@ -9834,7 +9397,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2OR04095/"
     },
     "S001226": {
@@ -9857,7 +9420,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2OR06066/"
     },
     "L000602": {
@@ -9880,7 +9443,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2PA18200/"
     },
     "D000530": {
@@ -9903,7 +9466,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2PA17103/"
     },
     "M001223": {
@@ -9926,7 +9489,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2RI02184/"
     },
     "F000478": {
@@ -9949,7 +9512,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2SC07280/"
     },
     "O000175": {
@@ -9972,7 +9535,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2TN05446/"
     },
     "M001224": {
@@ -9995,7 +9558,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2TX01112/"
     },
     "L000603": {
@@ -10018,7 +9581,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2TX08182/"
     },
     "D000594": {
@@ -10041,7 +9604,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0TX15124/"
     },
     "C001130": {
@@ -10064,7 +9627,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2TX30178/"
     },
     "C001131": {
@@ -10087,7 +9650,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2TX35144/"
     },
     "H001095": {
@@ -10110,7 +9673,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0TX07170/"
     },
     "K000399": {
@@ -10133,7 +9696,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2VA02064/"
     },
     "B001318": {
@@ -10156,7 +9719,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2VT01076/"
     },
     "G000600": {
@@ -10179,7 +9742,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2WA03217/"
     },
     "V000135": {
@@ -10202,7 +9765,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0WI03175/"
     },
     "H001096": {
@@ -10225,7 +9788,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2WY00166/"
     },
     "R000618": {
@@ -10248,7 +9811,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S6NE00129/"
     },
     "M001227": {
@@ -10271,7 +9834,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4VA04066/"
     },
     "A000380": {
@@ -10294,7 +9857,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4RI01265/"
     },
     "M001228": {
@@ -10317,7 +9880,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4UT02296/"
     },
     "S001201": {
@@ -10340,7 +9903,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6NY03247/"
     },
     "K000402": {
@@ -10363,7 +9926,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NY26078/"
     },
     "F000480": {
@@ -10386,7 +9949,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4CA20181/"
     },
     "R000619": {
@@ -10409,7 +9972,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4OH06165/"
     },
     "M001229": {
@@ -10432,7 +9995,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NJ10176/"
     },
     "W000829": {
@@ -10455,7 +10018,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4WI08119/"
     },
     "F000110": {
@@ -10478,7 +10041,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4LA06211/"
     },
     "S001188": {
@@ -10501,7 +10064,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0IN03198/"
     },
     "C001123": {
@@ -10524,7 +10087,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8CA39174/"
     },
     "A000382": {
@@ -10547,7 +10110,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4MD00327/"
     },
     "S001232": {
@@ -10570,7 +10133,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4MT00183/"
     },
     "M001242": {
@@ -10593,7 +10156,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4OH00192/"
     },
     "M001243": {
@@ -10616,7 +10179,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S2PA00661/"
     },
     "B001323": {
@@ -10639,7 +10202,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2AK01083/"
     },
     "F000481": {
@@ -10662,7 +10225,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4AL02170/"
     },
     "A000381": {
@@ -10685,7 +10248,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4AZ03109/"
     },
     "H001098": {
@@ -10708,7 +10271,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4AZ08108/"
     },
     "S001231": {
@@ -10731,7 +10294,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4CA12154/"
     },
     "G000605": {
@@ -10754,7 +10317,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2CA13115/"
     },
     "L000607": {
@@ -10777,7 +10340,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4CA16197/"
     },
     "W000830": {
@@ -10800,7 +10363,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4CA27111/"
     },
     "R000620": {
@@ -10823,7 +10386,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4CA29141/"
     },
     "F000483": {
@@ -10846,7 +10409,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4CA30149/"
     },
     "T000491": {
@@ -10869,7 +10432,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4CA45170/"
     },
     "M001241": {
@@ -10892,7 +10455,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4CA47085/"
     },
     "H001100": {
@@ -10915,7 +10478,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4CO03357/"
     },
     "C001137": {
@@ -10938,7 +10501,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6CO05142/"
     },
     "E000300": {
@@ -10961,7 +10524,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4CO08034/"
     },
     "M001238": {
@@ -10984,7 +10547,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4DE00045/"
     },
     "H001099": {
@@ -11007,7 +10570,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4FL08168/"
     },
     "J000311": {
@@ -11030,7 +10593,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4GA03126/"
     },
     "S001229": {
@@ -11053,7 +10616,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4IN06185/"
     },
     "M001233": {
@@ -11076,7 +10639,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4IN08249/"
     },
     "S001228": {
@@ -11099,7 +10662,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4KS02164/"
     },
     "O000176": {
@@ -11122,7 +10685,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MD02232/"
     },
     "E000301": {
@@ -11145,7 +10708,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MD03156/"
     },
     "M001232": {
@@ -11168,7 +10731,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MD06340/"
     },
     "B001321": {
@@ -11191,7 +10754,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2MI07123/"
     },
     "M001237": {
@@ -11214,7 +10777,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MI08218/"
     },
     "M001234": {
@@ -11237,7 +10800,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MN03118/"
     },
     "B001324": {
@@ -11260,7 +10823,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MO01134/"
     },
     "O000177": {
@@ -11283,7 +10846,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MO03221/"
     },
     "K000404": {
@@ -11306,7 +10869,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MP01022/"
     },
     "D000634": {
@@ -11329,7 +10892,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4MT02098/"
     },
     "M001240": {
@@ -11352,7 +10915,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NC06177/"
     },
     "H001102": {
@@ -11375,7 +10938,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NC08066/"
     },
     "H001101": {
@@ -11398,7 +10961,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H2NC13243/"
     },
     "K000405": {
@@ -11421,7 +10984,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NC13116/"
     },
     "M001236": {
@@ -11444,7 +11007,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NC14015/"
     },
     "F000482": {
@@ -11467,7 +11030,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4ND00061/"
     },
     "G000604": {
@@ -11490,7 +11053,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NH02399/"
     },
     "C001136": {
@@ -11513,7 +11076,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NJ03080/"
     },
     "P000621": {
@@ -11536,7 +11099,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NJ09194/"
     },
     "L000606": {
@@ -11559,7 +11122,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NY16087/"
     },
     "R000622": {
@@ -11582,7 +11145,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8NY22177/"
     },
     "M001231": {
@@ -11605,7 +11168,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4NY22085/"
     },
     "T000490": {
@@ -11628,7 +11191,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4OH02248/"
     },
     "D000635": {
@@ -11651,7 +11214,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4OR03192/"
     },
     "B001326": {
@@ -11674,7 +11237,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4OR05304/"
     },
     "M001230": {
@@ -11697,7 +11260,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H8PA15195/"
     },
     "B001327": {
@@ -11720,7 +11283,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4PA08124/"
     },
     "H001103": {
@@ -11743,7 +11306,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4PR01010/"
     },
     "B001325": {
@@ -11766,7 +11329,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4SC01313/"
     },
     "G000601": {
@@ -11789,7 +11352,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4TX12065/"
     },
     "G000603": {
@@ -11812,7 +11375,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4TX26149/"
     },
     "J000310": {
@@ -11835,7 +11398,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4TX32089/"
     },
     "K000403": {
@@ -11858,7 +11421,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4UT03260/"
     },
     "M001239": {
@@ -11881,7 +11444,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0VA07133/"
     },
     "V000138": {
@@ -11904,7 +11467,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4VA07234/"
     },
     "S001230": {
@@ -11927,7 +11490,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4VA10279/"
     },
     "B001322": {
@@ -11950,7 +11513,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4WA05234/"
     },
     "R000621": {
@@ -11973,7 +11536,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4WA06117/"
     },
     "M001235": {
@@ -11996,7 +11559,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H4WV02205/"
     },
     "J000312": {
@@ -12019,7 +11582,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4WV00332/"
     },
     "H001104": {
@@ -12042,7 +11605,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S6OH00304/"
     },
     "M001244": {
@@ -12065,7 +11628,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S6FL00640/"
     },
     "P000622": {
@@ -12088,7 +11651,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6FL01390/"
     },
     "F000484": {
@@ -12111,7 +11674,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6FL06258/"
     },
     "W000831": {
@@ -12134,7 +11697,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6VA11066/"
     },
     "G000606": {
@@ -12157,7 +11720,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6AZ07121/"
     },
     "V000139": {
@@ -12180,7 +11743,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6TN07161/"
     },
     "M001245": {
@@ -12203,7 +11766,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6TX18232/"
     },
     "F000485": {
@@ -12226,7 +11789,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H0GA14030/"
     },
     "M001246": {
@@ -12249,7 +11812,7 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6NJ11286/"
     },
     "G000607": {
@@ -12272,11 +11835,106 @@
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6CA01285/"
     }
   },
   "failures": [
+    {
+      "bioguideId": "W000804",
+      "name": "Robert J. Wittman",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "W000809",
+      "name": "Steve Womack",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "W000779",
+      "name": "Ron Wyden",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "S001194",
+      "name": "Brian Schatz",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "B001287",
+      "name": "Ami Bera",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "T000472",
+      "name": "Mark Takano",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "F000462",
+      "name": "Lois Frankel",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "D000622",
+      "name": "Tammy Duckworth",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "W000816",
+      "name": "Roger Williams",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "R000600",
+      "name": "Aumua Amata Coleman Radewagen",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "S001198",
+      "name": "Dan Sullivan",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "S001208",
+      "name": "Elissa Slotkin",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "M001215",
+      "name": "Mariannette Miller-Meeks",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "F000446",
+      "name": "Randy Feenstra",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "M001211",
+      "name": "Mary E. Miller",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "M001214",
+      "name": "Frank J. Mrvan",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "C001125",
+      "name": "Troy A. Carter",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "S001218",
+      "name": "Melanie A. Stansbury",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
+    {
+      "bioguideId": "F000475",
+      "name": "Brad Finstad",
+      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
+    },
     {
       "bioguideId": "I000058",
       "name": "Glenn Ivey",

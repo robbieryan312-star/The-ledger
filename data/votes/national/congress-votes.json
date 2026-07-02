@@ -6,8 +6,8 @@
       "tier": "official",
       "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
     },
-    "asOf": "2026-07-01",
-    "fetchedAt": "2026-07-01T20:57:35.035Z",
+    "asOf": "2026-07-02",
+    "fetchedAt": "2026-07-02T17:57:08.392Z",
     "membersQueried": 537,
     "withVoteData": 537,
     "totalVotePositions": 5370,
@@ -389,7 +389,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000367": {
       "bioguideId": "K000367",
@@ -763,7 +763,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S000033": {
       "bioguideId": "S000033",
@@ -1137,7 +1137,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000802": {
       "bioguideId": "W000802",
@@ -1511,7 +1511,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001261": {
       "bioguideId": "B001261",
@@ -1885,7 +1885,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000437": {
       "bioguideId": "W000437",
@@ -2259,7 +2259,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001035": {
       "bioguideId": "C001035",
@@ -2633,7 +2633,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001056": {
       "bioguideId": "C001056",
@@ -3007,7 +3007,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000563": {
       "bioguideId": "D000563",
@@ -3381,7 +3381,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000359": {
       "bioguideId": "G000359",
@@ -3755,7 +3755,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M000355": {
       "bioguideId": "M000355",
@@ -4129,7 +4129,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001176": {
       "bioguideId": "M001176",
@@ -4503,7 +4503,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000122": {
       "bioguideId": "R000122",
@@ -4877,7 +4877,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000584": {
       "bioguideId": "R000584",
@@ -5251,7 +5251,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001181": {
       "bioguideId": "S001181",
@@ -5625,7 +5625,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000805": {
       "bioguideId": "W000805",
@@ -5999,7 +5999,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000555": {
       "bioguideId": "G000555",
@@ -6373,7 +6373,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001088": {
       "bioguideId": "C001088",
@@ -6747,7 +6747,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "A000055": {
       "bioguideId": "A000055",
@@ -7121,7 +7121,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001230": {
       "bioguideId": "B001230",
@@ -7495,7 +7495,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001267": {
       "bioguideId": "B001267",
@@ -7869,7 +7869,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001257": {
       "bioguideId": "B001257",
@@ -8243,7 +8243,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B000490": {
       "bioguideId": "B000490",
@@ -8617,7 +8617,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001243": {
       "bioguideId": "B001243",
@@ -8991,7 +8991,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001277": {
       "bioguideId": "B001277",
@@ -9365,7 +9365,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001236": {
       "bioguideId": "B001236",
@@ -9739,7 +9739,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001260": {
       "bioguideId": "B001260",
@@ -10113,7 +10113,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C000059": {
       "bioguideId": "C000059",
@@ -10487,7 +10487,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001047": {
       "bioguideId": "C001047",
@@ -10861,7 +10861,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001072": {
       "bioguideId": "C001072",
@@ -11235,7 +11235,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001051": {
       "bioguideId": "C001051",
@@ -11609,7 +11609,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001075": {
       "bioguideId": "C001075",
@@ -11983,7 +11983,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001066": {
       "bioguideId": "C001066",
@@ -12357,7 +12357,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001080": {
       "bioguideId": "C001080",
@@ -12731,7 +12731,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001067": {
       "bioguideId": "C001067",
@@ -13105,7 +13105,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001061": {
       "bioguideId": "C001061",
@@ -13479,7 +13479,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C000537": {
       "bioguideId": "C000537",
@@ -13853,7 +13853,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001068": {
       "bioguideId": "C001068",
@@ -14227,7 +14227,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001053": {
       "bioguideId": "C001053",
@@ -14601,7 +14601,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001059": {
       "bioguideId": "C001059",
@@ -14975,7 +14975,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001069": {
       "bioguideId": "C001069",
@@ -15349,7 +15349,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C000880": {
       "bioguideId": "C000880",
@@ -15723,7 +15723,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001087": {
       "bioguideId": "C001087",
@@ -16097,7 +16097,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001063": {
       "bioguideId": "C001063",
@@ -16471,7 +16471,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000096": {
       "bioguideId": "D000096",
@@ -16845,7 +16845,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000197": {
       "bioguideId": "D000197",
@@ -17219,7 +17219,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000216": {
       "bioguideId": "D000216",
@@ -17593,7 +17593,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000616": {
       "bioguideId": "D000616",
@@ -17967,7 +17967,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000600": {
       "bioguideId": "D000600",
@@ -18341,7 +18341,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000399": {
       "bioguideId": "D000399",
@@ -18715,7 +18715,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000459": {
       "bioguideId": "F000459",
@@ -19089,7 +19089,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000450": {
       "bioguideId": "F000450",
@@ -19463,7 +19463,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000559": {
       "bioguideId": "G000559",
@@ -19837,7 +19837,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000565": {
       "bioguideId": "G000565",
@@ -20211,7 +20211,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000386": {
       "bioguideId": "G000386",
@@ -20585,7 +20585,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000546": {
       "bioguideId": "G000546",
@@ -20959,7 +20959,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000553": {
       "bioguideId": "G000553",
@@ -21333,7 +21333,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000568": {
       "bioguideId": "G000568",
@@ -21707,7 +21707,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000558": {
       "bioguideId": "G000558",
@@ -22081,7 +22081,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001052": {
       "bioguideId": "H001052",
@@ -22455,7 +22455,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001046": {
       "bioguideId": "H001046",
@@ -22829,7 +22829,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001047": {
       "bioguideId": "H001047",
@@ -23203,7 +23203,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001042": {
       "bioguideId": "H001042",
@@ -23577,7 +23577,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001061": {
       "bioguideId": "H001061",
@@ -23951,7 +23951,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H000874": {
       "bioguideId": "H000874",
@@ -24325,7 +24325,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001058": {
       "bioguideId": "H001058",
@@ -24699,7 +24699,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "J000288": {
       "bioguideId": "J000288",
@@ -25073,7 +25073,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "J000293": {
       "bioguideId": "J000293",
@@ -25447,7 +25447,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "J000289": {
       "bioguideId": "J000289",
@@ -25821,7 +25821,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000009": {
       "bioguideId": "K000009",
@@ -26195,7 +26195,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000375": {
       "bioguideId": "K000375",
@@ -26569,7 +26569,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000376": {
       "bioguideId": "K000376",
@@ -26943,7 +26943,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000575": {
       "bioguideId": "L000575",
@@ -27317,7 +27317,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000560": {
       "bioguideId": "L000560",
@@ -27691,7 +27691,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000557": {
       "bioguideId": "L000557",
@@ -28065,7 +28065,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000566": {
       "bioguideId": "L000566",
@@ -28439,7 +28439,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000577": {
       "bioguideId": "L000577",
@@ -28813,7 +28813,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000397": {
       "bioguideId": "L000397",
@@ -29187,7 +29187,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000491": {
       "bioguideId": "L000491",
@@ -29561,7 +29561,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000570": {
       "bioguideId": "L000570",
@@ -29935,7 +29935,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000562": {
       "bioguideId": "L000562",
@@ -30309,7 +30309,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M000133": {
       "bioguideId": "M000133",
@@ -30683,7 +30683,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001163": {
       "bioguideId": "M001163",
@@ -31057,7 +31057,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001157": {
       "bioguideId": "M001157",
@@ -31431,7 +31431,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001177": {
       "bioguideId": "M001177",
@@ -31805,7 +31805,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001143": {
       "bioguideId": "M001143",
@@ -32179,7 +32179,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M000312": {
       "bioguideId": "M000312",
@@ -32553,7 +32553,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001137": {
       "bioguideId": "M001137",
@@ -32927,7 +32927,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001160": {
       "bioguideId": "M001160",
@@ -33301,7 +33301,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M000934": {
       "bioguideId": "M000934",
@@ -33675,7 +33675,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001153": {
       "bioguideId": "M001153",
@@ -34049,7 +34049,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001169": {
       "bioguideId": "M001169",
@@ -34423,7 +34423,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001111": {
       "bioguideId": "M001111",
@@ -34797,7 +34797,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "N000002": {
       "bioguideId": "N000002",
@@ -35171,7 +35171,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "N000015": {
       "bioguideId": "N000015",
@@ -35545,7 +35545,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "N000147": {
       "bioguideId": "N000147",
@@ -35909,7 +35909,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000034": {
       "bioguideId": "P000034",
@@ -36283,7 +36283,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000603": {
       "bioguideId": "P000603",
@@ -36657,7 +36657,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000197": {
       "bioguideId": "P000197",
@@ -37031,7 +37031,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000595": {
       "bioguideId": "P000595",
@@ -37405,7 +37405,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000597": {
       "bioguideId": "P000597",
@@ -37779,7 +37779,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "Q000023": {
       "bioguideId": "Q000023",
@@ -38153,7 +38153,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000395": {
       "bioguideId": "R000395",
@@ -38527,7 +38527,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000575": {
       "bioguideId": "R000575",
@@ -38901,7 +38901,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001176": {
       "bioguideId": "S001176",
@@ -39275,7 +39275,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001145": {
       "bioguideId": "S001145",
@@ -39649,7 +39649,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001150": {
       "bioguideId": "S001150",
@@ -40023,7 +40023,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S000148": {
       "bioguideId": "S000148",
@@ -40397,7 +40397,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001183": {
       "bioguideId": "S001183",
@@ -40771,7 +40771,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001189": {
       "bioguideId": "S001189",
@@ -41145,7 +41145,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S000185": {
       "bioguideId": "S000185",
@@ -41519,7 +41519,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001184": {
       "bioguideId": "S001184",
@@ -41893,7 +41893,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001185": {
       "bioguideId": "S001185",
@@ -42267,7 +42267,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S000344": {
       "bioguideId": "S000344",
@@ -42641,7 +42641,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001148": {
       "bioguideId": "S001148",
@@ -43015,7 +43015,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S000510": {
       "bioguideId": "S000510",
@@ -43389,7 +43389,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001172": {
       "bioguideId": "S001172",
@@ -43763,7 +43763,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S000522": {
       "bioguideId": "S000522",
@@ -44137,7 +44137,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001156": {
       "bioguideId": "S001156",
@@ -44511,7 +44511,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000193": {
       "bioguideId": "T000193",
@@ -44885,7 +44885,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000460": {
       "bioguideId": "T000460",
@@ -45259,7 +45259,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000467": {
       "bioguideId": "T000467",
@@ -45633,7 +45633,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000250": {
       "bioguideId": "T000250",
@@ -46007,7 +46007,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000469": {
       "bioguideId": "T000469",
@@ -46381,7 +46381,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000463": {
       "bioguideId": "T000463",
@@ -46755,7 +46755,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "V000128": {
       "bioguideId": "V000128",
@@ -47129,7 +47129,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "V000081": {
       "bioguideId": "V000081",
@@ -47503,7 +47503,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000798": {
       "bioguideId": "W000798",
@@ -47877,7 +47877,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000797": {
       "bioguideId": "W000797",
@@ -48251,7 +48251,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000187": {
       "bioguideId": "W000187",
@@ -48625,7 +48625,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000806": {
       "bioguideId": "W000806",
@@ -48999,7 +48999,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000800": {
       "bioguideId": "W000800",
@@ -49373,7 +49373,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000795": {
       "bioguideId": "W000795",
@@ -49747,7 +49747,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000808": {
       "bioguideId": "W000808",
@@ -50121,7 +50121,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000804": {
       "bioguideId": "W000804",
@@ -50495,7 +50495,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000809": {
       "bioguideId": "W000809",
@@ -50869,7 +50869,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000779": {
       "bioguideId": "W000779",
@@ -51243,7 +51243,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "Y000064": {
       "bioguideId": "Y000064",
@@ -51617,7 +51617,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "A000369": {
       "bioguideId": "A000369",
@@ -51991,7 +51991,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001278": {
       "bioguideId": "B001278",
@@ -52365,7 +52365,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000617": {
       "bioguideId": "D000617",
@@ -52739,7 +52739,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001184": {
       "bioguideId": "M001184",
@@ -53113,7 +53113,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001194": {
       "bioguideId": "S001194",
@@ -53487,7 +53487,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000454": {
       "bioguideId": "F000454",
@@ -53861,7 +53861,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000468": {
       "bioguideId": "T000468",
@@ -54235,7 +54235,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001095": {
       "bioguideId": "C001095",
@@ -54609,7 +54609,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001068": {
       "bioguideId": "H001068",
@@ -54983,7 +54983,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001287": {
       "bioguideId": "B001287",
@@ -55357,7 +55357,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001285": {
       "bioguideId": "B001285",
@@ -55731,7 +55731,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000599": {
       "bioguideId": "R000599",
@@ -56105,7 +56105,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000472": {
       "bioguideId": "T000472",
@@ -56479,7 +56479,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "V000130": {
       "bioguideId": "V000130",
@@ -56853,7 +56853,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000608": {
       "bioguideId": "P000608",
@@ -57227,7 +57227,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000462": {
       "bioguideId": "F000462",
@@ -57601,7 +57601,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000622": {
       "bioguideId": "D000622",
@@ -57975,7 +57975,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001282": {
       "bioguideId": "B001282",
@@ -58349,7 +58349,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000817": {
       "bioguideId": "W000817",
@@ -58723,7 +58723,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000383": {
       "bioguideId": "K000383",
@@ -59097,7 +59097,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000812": {
       "bioguideId": "W000812",
@@ -59471,7 +59471,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000618": {
       "bioguideId": "D000618",
@@ -59845,7 +59845,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001067": {
       "bioguideId": "H001067",
@@ -60219,7 +60219,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001096": {
       "bioguideId": "C001096",
@@ -60593,7 +60593,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000463": {
       "bioguideId": "F000463",
@@ -60967,7 +60967,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001188": {
       "bioguideId": "M001188",
@@ -61341,7 +61341,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "J000294": {
       "bioguideId": "J000294",
@@ -61715,7 +61715,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001281": {
       "bioguideId": "B001281",
@@ -62089,7 +62089,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "J000295": {
       "bioguideId": "J000295",
@@ -62463,7 +62463,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000605": {
       "bioguideId": "P000605",
@@ -62837,7 +62837,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001098": {
       "bioguideId": "C001098",
@@ -63211,7 +63211,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000814": {
       "bioguideId": "W000814",
@@ -63585,7 +63585,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001091": {
       "bioguideId": "C001091",
@@ -63959,7 +63959,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000816": {
       "bioguideId": "W000816",
@@ -64333,7 +64333,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "V000131": {
       "bioguideId": "V000131",
@@ -64707,7 +64707,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000384": {
       "bioguideId": "K000384",
@@ -65081,7 +65081,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000607": {
       "bioguideId": "P000607",
@@ -65455,7 +65455,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000385": {
       "bioguideId": "K000385",
@@ -65829,7 +65829,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001195": {
       "bioguideId": "S001195",
@@ -66203,7 +66203,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001288": {
       "bioguideId": "B001288",
@@ -66577,7 +66577,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001101": {
       "bioguideId": "C001101",
@@ -66951,7 +66951,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "N000188": {
       "bioguideId": "N000188",
@@ -67325,7 +67325,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "A000370": {
       "bioguideId": "A000370",
@@ -67699,7 +67699,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000609": {
       "bioguideId": "P000609",
@@ -68073,7 +68073,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001072": {
       "bioguideId": "H001072",
@@ -68447,7 +68447,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000821": {
       "bioguideId": "W000821",
@@ -68821,7 +68821,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000574": {
       "bioguideId": "G000574",
@@ -69195,7 +69195,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000623": {
       "bioguideId": "D000623",
@@ -69569,7 +69569,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "A000371": {
       "bioguideId": "A000371",
@@ -69943,7 +69943,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000582": {
       "bioguideId": "L000582",
@@ -70317,7 +70317,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000474": {
       "bioguideId": "T000474",
@@ -70691,7 +70691,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001103": {
       "bioguideId": "C001103",
@@ -71065,7 +71065,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000583": {
       "bioguideId": "L000583",
@@ -71439,7 +71439,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "A000372": {
       "bioguideId": "A000372",
@@ -71813,7 +71813,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001295": {
       "bioguideId": "B001295",
@@ -72187,7 +72187,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001196": {
       "bioguideId": "M001196",
@@ -72561,7 +72561,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001194": {
       "bioguideId": "M001194",
@@ -72935,7 +72935,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000624": {
       "bioguideId": "D000624",
@@ -73309,7 +73309,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "E000294": {
       "bioguideId": "E000294",
@@ -73683,7 +73683,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000603": {
       "bioguideId": "R000603",
@@ -74057,7 +74057,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000822": {
       "bioguideId": "W000822",
@@ -74431,7 +74431,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001196": {
       "bioguideId": "S001196",
@@ -74805,7 +74805,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001296": {
       "bioguideId": "B001296",
@@ -75179,7 +75179,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001291": {
       "bioguideId": "B001291",
@@ -75553,7 +75553,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001292": {
       "bioguideId": "B001292",
@@ -75927,7 +75927,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000610": {
       "bioguideId": "P000610",
@@ -76291,7 +76291,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "N000189": {
       "bioguideId": "N000189",
@@ -76665,7 +76665,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000576": {
       "bioguideId": "G000576",
@@ -77039,7 +77039,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000600": {
       "bioguideId": "R000600",
@@ -77403,7 +77403,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001198": {
       "bioguideId": "S001198",
@@ -77777,7 +77777,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "E000295": {
       "bioguideId": "E000295",
@@ -78151,7 +78151,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000476": {
       "bioguideId": "T000476",
@@ -78525,7 +78525,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000605": {
       "bioguideId": "R000605",
@@ -78899,7 +78899,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000388": {
       "bioguideId": "K000388",
@@ -79273,7 +79273,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000585": {
       "bioguideId": "L000585",
@@ -79647,7 +79647,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000626": {
       "bioguideId": "D000626",
@@ -80021,7 +80021,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001108": {
       "bioguideId": "C001108",
@@ -80395,7 +80395,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "E000296": {
       "bioguideId": "E000296",
@@ -80769,7 +80769,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000393": {
       "bioguideId": "K000393",
@@ -81143,7 +81143,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001076": {
       "bioguideId": "H001076",
@@ -81517,7 +81517,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001113": {
       "bioguideId": "C001113",
@@ -81891,7 +81891,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001190": {
       "bioguideId": "S001190",
@@ -82265,7 +82265,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001302": {
       "bioguideId": "B001302",
@@ -82639,7 +82639,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000389": {
       "bioguideId": "K000389",
@@ -83013,7 +83013,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000613": {
       "bioguideId": "P000613",
@@ -83387,7 +83387,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001112": {
       "bioguideId": "C001112",
@@ -83761,7 +83761,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001300": {
       "bioguideId": "B001300",
@@ -84135,7 +84135,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001110": {
       "bioguideId": "C001110",
@@ -84509,7 +84509,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001303": {
       "bioguideId": "B001303",
@@ -84883,7 +84883,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000628": {
       "bioguideId": "D000628",
@@ -85257,7 +85257,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000609": {
       "bioguideId": "R000609",
@@ -85631,7 +85631,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001200": {
       "bioguideId": "S001200",
@@ -86005,7 +86005,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001199": {
       "bioguideId": "M001199",
@@ -86379,7 +86379,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000391": {
       "bioguideId": "K000391",
@@ -86753,7 +86753,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001299": {
       "bioguideId": "B001299",
@@ -87127,7 +87127,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001198": {
       "bioguideId": "M001198",
@@ -87501,7 +87501,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001077": {
       "bioguideId": "H001077",
@@ -87875,7 +87875,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "J000299": {
       "bioguideId": "J000299",
@@ -88249,7 +88249,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000606": {
       "bioguideId": "R000606",
@@ -88623,7 +88623,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001301": {
       "bioguideId": "B001301",
@@ -88997,7 +88997,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001305": {
       "bioguideId": "B001305",
@@ -89371,7 +89371,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001298": {
       "bioguideId": "B001298",
@@ -89745,7 +89745,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000583": {
       "bioguideId": "G000583",
@@ -90119,7 +90119,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000608": {
       "bioguideId": "R000608",
@@ -90493,7 +90493,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "E000297": {
       "bioguideId": "E000297",
@@ -90867,7 +90867,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000466": {
       "bioguideId": "F000466",
@@ -91241,7 +91241,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001199": {
       "bioguideId": "S001199",
@@ -91615,7 +91615,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000392": {
       "bioguideId": "K000392",
@@ -91989,7 +91989,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000581": {
       "bioguideId": "G000581",
@@ -92363,7 +92363,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "A000375": {
       "bioguideId": "A000375",
@@ -92737,7 +92737,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "J000298": {
       "bioguideId": "J000298",
@@ -93111,7 +93111,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "E000298": {
       "bioguideId": "E000298",
@@ -93485,7 +93485,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "N000190": {
       "bioguideId": "N000190",
@@ -93859,7 +93859,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000585": {
       "bioguideId": "G000585",
@@ -94233,7 +94233,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001114": {
       "bioguideId": "C001114",
@@ -94607,7 +94607,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001203": {
       "bioguideId": "S001203",
@@ -94981,7 +94981,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001079": {
       "bioguideId": "H001079",
@@ -95355,7 +95355,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001115": {
       "bioguideId": "C001115",
@@ -95729,7 +95729,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001306": {
       "bioguideId": "B001306",
@@ -96103,7 +96103,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001082": {
       "bioguideId": "H001082",
@@ -96477,7 +96477,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001206": {
       "bioguideId": "M001206",
@@ -96851,7 +96851,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001205": {
       "bioguideId": "S001205",
@@ -97225,7 +97225,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001055": {
       "bioguideId": "C001055",
@@ -97599,7 +97599,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001066": {
       "bioguideId": "H001066",
@@ -97973,7 +97973,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001211": {
       "bioguideId": "S001211",
@@ -98347,7 +98347,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001090": {
       "bioguideId": "H001090",
@@ -98721,7 +98721,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000593": {
       "bioguideId": "L000593",
@@ -99095,7 +99095,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "N000191": {
       "bioguideId": "N000191",
@@ -99469,7 +99469,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001121": {
       "bioguideId": "C001121",
@@ -99843,7 +99843,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001081": {
       "bioguideId": "H001081",
@@ -100217,7 +100217,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001214": {
       "bioguideId": "S001214",
@@ -100591,7 +100591,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001208": {
       "bioguideId": "M001208",
@@ -100965,7 +100965,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000469": {
       "bioguideId": "F000469",
@@ -101339,7 +101339,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000586": {
       "bioguideId": "G000586",
@@ -101713,7 +101713,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001117": {
       "bioguideId": "C001117",
@@ -102087,7 +102087,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "U000040": {
       "bioguideId": "U000040",
@@ -102461,7 +102461,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001307": {
       "bioguideId": "B001307",
@@ -102835,7 +102835,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000629": {
       "bioguideId": "D000629",
@@ -103209,7 +103209,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000482": {
       "bioguideId": "T000482",
@@ -103583,7 +103583,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000617": {
       "bioguideId": "P000617",
@@ -103957,7 +103957,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001208": {
       "bioguideId": "S001208",
@@ -104331,7 +104331,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001215": {
       "bioguideId": "S001215",
@@ -104705,7 +104705,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000481": {
       "bioguideId": "T000481",
@@ -105079,7 +105079,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001119": {
       "bioguideId": "C001119",
@@ -105453,7 +105453,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "O000173": {
       "bioguideId": "O000173",
@@ -105827,7 +105827,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001212": {
       "bioguideId": "S001212",
@@ -106201,7 +106201,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000591": {
       "bioguideId": "G000591",
@@ -106575,7 +106575,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000614": {
       "bioguideId": "P000614",
@@ -106949,7 +106949,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "V000133": {
       "bioguideId": "V000133",
@@ -107323,7 +107323,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000394": {
       "bioguideId": "K000394",
@@ -107697,7 +107697,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000590": {
       "bioguideId": "L000590",
@@ -108071,7 +108071,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "O000172": {
       "bioguideId": "O000172",
@@ -108445,7 +108445,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000631": {
       "bioguideId": "D000631",
@@ -108819,7 +108819,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001085": {
       "bioguideId": "H001085",
@@ -109193,7 +109193,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001204": {
       "bioguideId": "M001204",
@@ -109567,7 +109567,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "J000302": {
       "bioguideId": "J000302",
@@ -109941,7 +109941,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000610": {
       "bioguideId": "R000610",
@@ -110315,7 +110315,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000480": {
       "bioguideId": "T000480",
@@ -110689,7 +110689,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "J000301": {
       "bioguideId": "J000301",
@@ -111063,7 +111063,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001309": {
       "bioguideId": "B001309",
@@ -111437,7 +111437,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000612": {
       "bioguideId": "R000612",
@@ -111811,7 +111811,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001120": {
       "bioguideId": "C001120",
@@ -112185,7 +112185,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000589": {
       "bioguideId": "G000589",
@@ -112559,7 +112559,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000468": {
       "bioguideId": "F000468",
@@ -112933,7 +112933,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "E000299": {
       "bioguideId": "E000299",
@@ -113307,7 +113307,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000614": {
       "bioguideId": "R000614",
@@ -113681,7 +113681,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000587": {
       "bioguideId": "G000587",
@@ -114055,7 +114055,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001118": {
       "bioguideId": "C001118",
@@ -114429,7 +114429,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001216": {
       "bioguideId": "S001216",
@@ -114803,7 +114803,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001213": {
       "bioguideId": "S001213",
@@ -115177,7 +115177,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001205": {
       "bioguideId": "M001205",
@@ -115551,7 +115551,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001217": {
       "bioguideId": "S001217",
@@ -115925,7 +115925,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001089": {
       "bioguideId": "H001089",
@@ -116299,7 +116299,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000592": {
       "bioguideId": "G000592",
@@ -116673,7 +116673,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001210": {
       "bioguideId": "M001210",
@@ -117047,7 +117047,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M000687": {
       "bioguideId": "M000687",
@@ -117421,7 +117421,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000165": {
       "bioguideId": "T000165",
@@ -117795,7 +117795,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000377": {
       "bioguideId": "K000377",
@@ -118169,7 +118169,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000571": {
       "bioguideId": "L000571",
@@ -118543,7 +118543,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "I000056": {
       "bioguideId": "I000056",
@@ -118917,7 +118917,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S000250": {
       "bioguideId": "S000250",
@@ -119291,7 +119291,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "V000129": {
       "bioguideId": "V000129",
@@ -119665,7 +119665,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000278": {
       "bioguideId": "T000278",
@@ -120039,7 +120039,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H000273": {
       "bioguideId": "H000273",
@@ -120413,7 +120413,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H000601": {
       "bioguideId": "H000601",
@@ -120787,7 +120787,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001212": {
       "bioguideId": "M001212",
@@ -121161,7 +121161,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "O000019": {
       "bioguideId": "O000019",
@@ -121535,7 +121535,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000397": {
       "bioguideId": "K000397",
@@ -121909,7 +121909,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "J000305": {
       "bioguideId": "J000305",
@@ -122283,7 +122283,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B000825": {
       "bioguideId": "B000825",
@@ -122657,7 +122657,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001039": {
       "bioguideId": "C001039",
@@ -123031,7 +123031,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000472": {
       "bioguideId": "F000472",
@@ -123405,7 +123405,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000032": {
       "bioguideId": "D000032",
@@ -123779,7 +123779,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000593": {
       "bioguideId": "G000593",
@@ -124153,7 +124153,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S000168": {
       "bioguideId": "S000168",
@@ -124527,7 +124527,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000788": {
       "bioguideId": "W000788",
@@ -124901,7 +124901,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001116": {
       "bioguideId": "C001116",
@@ -125275,7 +125275,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001091": {
       "bioguideId": "H001091",
@@ -125649,7 +125649,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001215": {
       "bioguideId": "M001215",
@@ -126023,7 +126023,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000446": {
       "bioguideId": "F000446",
@@ -126397,7 +126397,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001211": {
       "bioguideId": "M001211",
@@ -126771,7 +126771,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001214": {
       "bioguideId": "M001214",
@@ -127145,7 +127145,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S000929": {
       "bioguideId": "S000929",
@@ -127519,7 +127519,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M000871": {
       "bioguideId": "M000871",
@@ -127893,7 +127893,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "A000148": {
       "bioguideId": "A000148",
@@ -128267,7 +128267,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001136": {
       "bioguideId": "M001136",
@@ -128641,7 +128641,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000470": {
       "bioguideId": "F000470",
@@ -129015,7 +129015,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000305": {
       "bioguideId": "R000305",
@@ -129389,7 +129389,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000273": {
       "bioguideId": "L000273",
@@ -129763,7 +129763,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000597": {
       "bioguideId": "G000597",
@@ -130137,7 +130137,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M000317": {
       "bioguideId": "M000317",
@@ -130511,7 +130511,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000486": {
       "bioguideId": "T000486",
@@ -130885,7 +130885,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B000740": {
       "bioguideId": "B000740",
@@ -131259,7 +131259,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B000668": {
       "bioguideId": "B000668",
@@ -131633,7 +131633,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M000194": {
       "bioguideId": "M000194",
@@ -132007,7 +132007,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001086": {
       "bioguideId": "H001086",
@@ -132381,7 +132381,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000246": {
       "bioguideId": "F000246",
@@ -132755,7 +132755,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000048": {
       "bioguideId": "P000048",
@@ -133129,7 +133129,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "J000304": {
       "bioguideId": "J000304",
@@ -133503,7 +133503,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "N000026": {
       "bioguideId": "N000026",
@@ -133877,7 +133877,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "V000134": {
       "bioguideId": "V000134",
@@ -134251,7 +134251,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001213": {
       "bioguideId": "M001213",
@@ -134625,7 +134625,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "O000086": {
       "bioguideId": "O000086",
@@ -134999,7 +134999,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001159": {
       "bioguideId": "S001159",
@@ -135373,7 +135373,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000471": {
       "bioguideId": "F000471",
@@ -135747,7 +135747,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000145": {
       "bioguideId": "P000145",
@@ -136121,7 +136121,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "O000174": {
       "bioguideId": "O000174",
@@ -136495,7 +136495,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000790": {
       "bioguideId": "W000790",
@@ -136869,7 +136869,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000478": {
       "bioguideId": "T000478",
@@ -137243,7 +137243,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000595": {
       "bioguideId": "L000595",
@@ -137617,7 +137617,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001125": {
       "bioguideId": "C001125",
@@ -137991,7 +137991,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001218": {
       "bioguideId": "S001218",
@@ -138365,7 +138365,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "E000071": {
       "bioguideId": "E000071",
@@ -138739,7 +138739,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001313": {
       "bioguideId": "B001313",
@@ -139113,7 +139113,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001126": {
       "bioguideId": "C001126",
@@ -139487,7 +139487,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000474": {
       "bioguideId": "F000474",
@@ -139861,7 +139861,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000475": {
       "bioguideId": "F000475",
@@ -140235,7 +140235,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000579": {
       "bioguideId": "R000579",
@@ -140609,7 +140609,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "Y000067": {
       "bioguideId": "Y000067",
@@ -140983,7 +140983,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "Z000018": {
       "bioguideId": "Z000018",
@@ -141357,7 +141357,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001319": {
       "bioguideId": "B001319",
@@ -141731,7 +141731,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001227": {
       "bioguideId": "S001227",
@@ -142105,7 +142105,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000479": {
       "bioguideId": "F000479",
@@ -142479,7 +142479,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001220": {
       "bioguideId": "S001220",
@@ -142853,7 +142853,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001132": {
       "bioguideId": "C001132",
@@ -143227,7 +143227,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001133": {
       "bioguideId": "C001133",
@@ -143601,7 +143601,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000401": {
       "bioguideId": "K000401",
@@ -143975,7 +143975,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001225": {
       "bioguideId": "M001225",
@@ -144349,7 +144349,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000400": {
       "bioguideId": "K000400",
@@ -144723,7 +144723,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000598": {
       "bioguideId": "G000598",
@@ -145097,7 +145097,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000620": {
       "bioguideId": "P000620",
@@ -145471,7 +145471,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001314": {
       "bioguideId": "B001314",
@@ -145845,7 +145845,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001216": {
       "bioguideId": "M001216",
@@ -146219,7 +146219,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000476": {
       "bioguideId": "F000476",
@@ -146593,7 +146593,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000596": {
       "bioguideId": "L000596",
@@ -146967,7 +146967,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000597": {
       "bioguideId": "L000597",
@@ -147341,7 +147341,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001217": {
       "bioguideId": "M001217",
@@ -147715,7 +147715,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001218": {
       "bioguideId": "M001218",
@@ -148089,7 +148089,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001129": {
       "bioguideId": "C001129",
@@ -148463,7 +148463,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001219": {
       "bioguideId": "M001219",
@@ -148827,7 +148827,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000487": {
       "bioguideId": "T000487",
@@ -149201,7 +149201,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "N000193": {
       "bioguideId": "N000193",
@@ -149575,7 +149575,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "J000309": {
       "bioguideId": "J000309",
@@ -149949,7 +149949,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000617": {
       "bioguideId": "R000617",
@@ -150323,7 +150323,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001315": {
       "bioguideId": "B001315",
@@ -150697,7 +150697,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001225": {
       "bioguideId": "S001225",
@@ -151071,7 +151071,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001093": {
       "bioguideId": "H001093",
@@ -151445,7 +151445,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001220": {
       "bioguideId": "M001220",
@@ -151819,7 +151819,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "I000058": {
       "bioguideId": "I000058",
@@ -152193,7 +152193,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001221": {
       "bioguideId": "S001221",
@@ -152567,7 +152567,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "J000307": {
       "bioguideId": "J000307",
@@ -152941,7 +152941,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000488": {
       "bioguideId": "T000488",
@@ -153315,7 +153315,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "A000379": {
       "bioguideId": "A000379",
@@ -153689,7 +153689,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001316": {
       "bioguideId": "B001316",
@@ -154063,7 +154063,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "E000235": {
       "bioguideId": "E000235",
@@ -154437,7 +154437,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000230": {
       "bioguideId": "D000230",
@@ -154811,7 +154811,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000477": {
       "bioguideId": "F000477",
@@ -155185,7 +155185,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "E000246": {
       "bioguideId": "E000246",
@@ -155559,7 +155559,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000398": {
       "bioguideId": "K000398",
@@ -155933,7 +155933,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001226": {
       "bioguideId": "M001226",
@@ -156307,7 +156307,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "V000136": {
       "bioguideId": "V000136",
@@ -156681,7 +156681,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000598": {
       "bioguideId": "L000598",
@@ -157055,7 +157055,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000599": {
       "bioguideId": "G000599",
@@ -157429,7 +157429,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000599": {
       "bioguideId": "L000599",
@@ -157803,7 +157803,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000600": {
       "bioguideId": "L000600",
@@ -158177,7 +158177,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000601": {
       "bioguideId": "L000601",
@@ -158551,7 +158551,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001222": {
       "bioguideId": "M001222",
@@ -158925,7 +158925,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001223": {
       "bioguideId": "S001223",
@@ -159299,7 +159299,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001317": {
       "bioguideId": "B001317",
@@ -159673,7 +159673,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001094": {
       "bioguideId": "H001094",
@@ -160047,7 +160047,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001226": {
       "bioguideId": "S001226",
@@ -160421,7 +160421,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000602": {
       "bioguideId": "L000602",
@@ -160795,7 +160795,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000530": {
       "bioguideId": "D000530",
@@ -161169,7 +161169,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001223": {
       "bioguideId": "M001223",
@@ -161543,7 +161543,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000478": {
       "bioguideId": "F000478",
@@ -161917,7 +161917,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "O000175": {
       "bioguideId": "O000175",
@@ -162291,7 +162291,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001224": {
       "bioguideId": "M001224",
@@ -162665,7 +162665,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001224": {
       "bioguideId": "S001224",
@@ -163039,7 +163039,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000603": {
       "bioguideId": "L000603",
@@ -163413,7 +163413,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000594": {
       "bioguideId": "D000594",
@@ -163787,7 +163787,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001130": {
       "bioguideId": "C001130",
@@ -164161,7 +164161,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001131": {
       "bioguideId": "C001131",
@@ -164535,7 +164535,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001095": {
       "bioguideId": "H001095",
@@ -164909,7 +164909,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000399": {
       "bioguideId": "K000399",
@@ -165283,7 +165283,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001318": {
       "bioguideId": "B001318",
@@ -165657,7 +165657,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000600": {
       "bioguideId": "G000600",
@@ -166031,7 +166031,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "V000135": {
       "bioguideId": "V000135",
@@ -166405,7 +166405,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001096": {
       "bioguideId": "H001096",
@@ -166779,7 +166779,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000618": {
       "bioguideId": "R000618",
@@ -167153,7 +167153,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001227": {
       "bioguideId": "M001227",
@@ -167527,7 +167527,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "A000380": {
       "bioguideId": "A000380",
@@ -167901,7 +167901,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001228": {
       "bioguideId": "M001228",
@@ -168275,7 +168275,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001201": {
       "bioguideId": "S001201",
@@ -168649,7 +168649,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000402": {
       "bioguideId": "K000402",
@@ -169023,7 +169023,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000480": {
       "bioguideId": "F000480",
@@ -169397,7 +169397,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000619": {
       "bioguideId": "R000619",
@@ -169771,7 +169771,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001229": {
       "bioguideId": "M001229",
@@ -170145,7 +170145,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000829": {
       "bioguideId": "W000829",
@@ -170519,7 +170519,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000110": {
       "bioguideId": "F000110",
@@ -170893,7 +170893,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001188": {
       "bioguideId": "S001188",
@@ -171267,7 +171267,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001123": {
       "bioguideId": "C001123",
@@ -171641,7 +171641,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "A000382": {
       "bioguideId": "A000382",
@@ -172015,7 +172015,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001232": {
       "bioguideId": "S001232",
@@ -172389,7 +172389,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001242": {
       "bioguideId": "M001242",
@@ -172763,7 +172763,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001243": {
       "bioguideId": "M001243",
@@ -173137,7 +173137,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001323": {
       "bioguideId": "B001323",
@@ -173511,7 +173511,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000481": {
       "bioguideId": "F000481",
@@ -173885,7 +173885,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "A000381": {
       "bioguideId": "A000381",
@@ -174259,7 +174259,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001098": {
       "bioguideId": "H001098",
@@ -174633,7 +174633,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001231": {
       "bioguideId": "S001231",
@@ -175007,7 +175007,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000605": {
       "bioguideId": "G000605",
@@ -175381,7 +175381,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000607": {
       "bioguideId": "L000607",
@@ -175755,7 +175755,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000830": {
       "bioguideId": "W000830",
@@ -176129,7 +176129,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000620": {
       "bioguideId": "R000620",
@@ -176503,7 +176503,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000483": {
       "bioguideId": "F000483",
@@ -176877,7 +176877,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000491": {
       "bioguideId": "T000491",
@@ -177251,7 +177251,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001241": {
       "bioguideId": "M001241",
@@ -177625,7 +177625,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001100": {
       "bioguideId": "H001100",
@@ -177999,7 +177999,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001137": {
       "bioguideId": "C001137",
@@ -178373,7 +178373,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "E000300": {
       "bioguideId": "E000300",
@@ -178747,7 +178747,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001238": {
       "bioguideId": "M001238",
@@ -179121,7 +179121,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001099": {
       "bioguideId": "H001099",
@@ -179495,7 +179495,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "J000311": {
       "bioguideId": "J000311",
@@ -179869,7 +179869,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001229": {
       "bioguideId": "S001229",
@@ -180243,7 +180243,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001233": {
       "bioguideId": "M001233",
@@ -180617,7 +180617,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001228": {
       "bioguideId": "S001228",
@@ -180991,7 +180991,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "O000176": {
       "bioguideId": "O000176",
@@ -181365,7 +181365,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "E000301": {
       "bioguideId": "E000301",
@@ -181739,7 +181739,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001232": {
       "bioguideId": "M001232",
@@ -182113,7 +182113,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001321": {
       "bioguideId": "B001321",
@@ -182487,7 +182487,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001237": {
       "bioguideId": "M001237",
@@ -182861,7 +182861,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001234": {
       "bioguideId": "M001234",
@@ -183235,7 +183235,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001324": {
       "bioguideId": "B001324",
@@ -183609,7 +183609,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "O000177": {
       "bioguideId": "O000177",
@@ -183983,7 +183983,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000404": {
       "bioguideId": "K000404",
@@ -184347,7 +184347,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000634": {
       "bioguideId": "D000634",
@@ -184721,7 +184721,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001240": {
       "bioguideId": "M001240",
@@ -185095,7 +185095,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001102": {
       "bioguideId": "H001102",
@@ -185469,7 +185469,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001101": {
       "bioguideId": "H001101",
@@ -185843,7 +185843,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000405": {
       "bioguideId": "K000405",
@@ -186217,7 +186217,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001236": {
       "bioguideId": "M001236",
@@ -186591,7 +186591,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000482": {
       "bioguideId": "F000482",
@@ -186965,7 +186965,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000604": {
       "bioguideId": "G000604",
@@ -187339,7 +187339,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "C001136": {
       "bioguideId": "C001136",
@@ -187713,7 +187713,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000621": {
       "bioguideId": "P000621",
@@ -188087,7 +188087,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000602": {
       "bioguideId": "G000602",
@@ -188461,7 +188461,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "L000606": {
       "bioguideId": "L000606",
@@ -188835,7 +188835,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000622": {
       "bioguideId": "R000622",
@@ -189209,7 +189209,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001231": {
       "bioguideId": "M001231",
@@ -189583,7 +189583,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "T000490": {
       "bioguideId": "T000490",
@@ -189957,7 +189957,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "D000635": {
       "bioguideId": "D000635",
@@ -190331,7 +190331,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001326": {
       "bioguideId": "B001326",
@@ -190705,7 +190705,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001230": {
       "bioguideId": "M001230",
@@ -191079,7 +191079,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001327": {
       "bioguideId": "B001327",
@@ -191453,7 +191453,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001103": {
       "bioguideId": "H001103",
@@ -191817,7 +191817,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001325": {
       "bioguideId": "B001325",
@@ -192191,7 +192191,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000601": {
       "bioguideId": "G000601",
@@ -192565,7 +192565,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000603": {
       "bioguideId": "G000603",
@@ -192939,7 +192939,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "J000310": {
       "bioguideId": "J000310",
@@ -193313,7 +193313,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "K000403": {
       "bioguideId": "K000403",
@@ -193687,7 +193687,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001239": {
       "bioguideId": "M001239",
@@ -194061,7 +194061,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "V000138": {
       "bioguideId": "V000138",
@@ -194435,7 +194435,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "S001230": {
       "bioguideId": "S001230",
@@ -194809,7 +194809,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "B001322": {
       "bioguideId": "B001322",
@@ -195183,7 +195183,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "R000621": {
       "bioguideId": "R000621",
@@ -195557,7 +195557,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001235": {
       "bioguideId": "M001235",
@@ -195931,7 +195931,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "J000312": {
       "bioguideId": "J000312",
@@ -196305,7 +196305,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "H001104": {
       "bioguideId": "H001104",
@@ -196679,7 +196679,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001244": {
       "bioguideId": "M001244",
@@ -197053,7 +197053,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "P000622": {
       "bioguideId": "P000622",
@@ -197427,7 +197427,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000484": {
       "bioguideId": "F000484",
@@ -197801,7 +197801,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "W000831": {
       "bioguideId": "W000831",
@@ -198175,7 +198175,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000606": {
       "bioguideId": "G000606",
@@ -198549,7 +198549,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "V000139": {
       "bioguideId": "V000139",
@@ -198923,7 +198923,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001245": {
       "bioguideId": "M001245",
@@ -199297,7 +199297,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "A000383": {
       "bioguideId": "A000383",
@@ -199671,7 +199671,7 @@
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "F000485": {
       "bioguideId": "F000485",
@@ -200045,7 +200045,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "M001246": {
       "bioguideId": "M001246",
@@ -200419,7 +200419,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     },
     "G000607": {
       "bioguideId": "G000607",
@@ -200793,7 +200793,7 @@
         "tier": "official",
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
       },
-      "asOf": "2026-07-01"
+      "asOf": "2026-07-02"
     }
   },
   "failures": []

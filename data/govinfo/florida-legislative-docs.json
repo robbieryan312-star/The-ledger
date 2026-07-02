@@ -6,8 +6,8 @@
       "tier": "official",
       "description": "U.S. Government Publishing Office official publications via api.govinfo.gov"
     },
-    "asOf": "2026-07-01",
-    "fetchedAt": "2026-07-01T17:25:30.899Z",
+    "asOf": "2026-07-02",
+    "fetchedAt": "2026-07-02T16:21:57.614Z",
     "count": 40,
     "stateCode": "FL",
     "fetchedLive": true,
@@ -15,6 +15,26 @@
     "note": "Recent Florida-related federal legislative documents (bills, Congressional Record, committee reports) via GovInfo. Tier 1 official GPO."
   },
   "records": [
+    {
+      "title": "PROVIDING FOR CONSIDERATION OF THE BILL (H.R. 8800) TO AUTHORIZE APPROPRIATIONS FOR FISCAL YEAR 2027 FOR MILITARY ACTIVITIES OF THE DEPARTMENT OF DEFENSE, FOR MILITARY CONSTRUCTION, AND FOR DEFENSE ACTIVITIES OF THE DEPARTMENT OF ENERGY, TO PRESCRIBE MILITARY PERSONNEL STRENGTHS FOR SUCH FISCAL YEAR, AND FOR OTHER PURPOSES; PROVIDING FOR CONSIDERATION OF THE BILL (H.R. 8595) MAKING APPROPRIATIONS FOR NATIONAL SECURITY, DEPARTMENT OF STATE, AND RELATED PROGRAMS FOR THE FISCAL YEAR ENDING SEPTEMBER 30, 2027, AND FOR OTHER PURPOSES; PROVIDING FOR CONSIDERATION OF THE BILL (H.R. 8884) TO AMEND TITLE II OF THE SOCIAL SECURITY ACT TO REAUTHORIZE DEMONSTRATION AUTHORITY FOR THE DISABILITY INSURANCE PROGRAM; PROVIDING FOR CONSIDERATION OF THE RESOLUTION",
+      "documentType": "Committee Report",
+      "collectionCode": "CRPT",
+      "dateIssued": "2026-06-30",
+      "governmentAuthor": [
+        "Congress",
+        "House of Representatives"
+      ],
+      "packageId": "CRPT-119hrpt718",
+      "source": {
+        "name": "GovInfo (U.S. GPO)",
+        "url": "https://www.govinfo.gov",
+        "tier": "official",
+        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
+        "date": "2026-06-30"
+      },
+      "asOf": "2026-07-02",
+      "govinfoUrl": "https://www.govinfo.gov/app/details/CRPT-119hrpt718"
+    },
     {
       "title": "ADDITIONAL SPONSORS",
       "documentType": "Congressional Record",
@@ -31,7 +51,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
     },
     {
@@ -50,7 +70,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
     },
     {
@@ -69,7 +89,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
     },
     {
@@ -88,7 +108,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
     },
     {
@@ -107,7 +127,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
     },
     {
@@ -126,7 +146,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
     },
     {
@@ -145,7 +165,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
     },
     {
@@ -164,7 +184,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
     },
     {
@@ -183,7 +203,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
     },
     {
@@ -202,7 +222,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
     },
     {
@@ -221,7 +241,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
     },
     {
@@ -240,7 +260,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
     },
     {
@@ -259,7 +279,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
     },
     {
@@ -278,7 +298,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
     },
     {
@@ -297,7 +317,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-30"
     },
     {
@@ -317,7 +337,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/BILLS-119hres1405ih"
     },
     {
@@ -337,7 +357,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/BILLS-119hres1402ih"
     },
     {
@@ -357,7 +377,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/BILLS-119hr9548ih"
     },
     {
@@ -376,7 +396,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -395,7 +415,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -414,7 +434,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -433,7 +453,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -452,7 +472,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -471,7 +491,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -490,7 +510,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -509,7 +529,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -528,7 +548,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -547,7 +567,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -566,7 +586,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -585,7 +605,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -604,7 +624,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -623,7 +643,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -642,7 +662,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -661,7 +681,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -680,7 +700,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -699,7 +719,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -718,7 +738,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -737,7 +757,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     },
     {
@@ -756,26 +776,7 @@
         "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-01",
-      "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
-    },
-    {
-      "title": "HONORING DARIO AND HUNNIE EMANS AS DISTINGUISHED LEADERS IN CENTRAL FLORIDA FOR CARIBBEAN HERITAGE MONTH",
-      "documentType": "Congressional Record",
-      "collectionCode": "CREC",
-      "dateIssued": "2026-06-29",
-      "governmentAuthor": [
-        "Congress"
-      ],
-      "packageId": "CREC-2026-06-29",
-      "source": {
-        "name": "GovInfo (U.S. GPO)",
-        "url": "https://www.govinfo.gov",
-        "tier": "official",
-        "description": "U.S. Government Publishing Office official publications via api.govinfo.gov",
-        "date": "2026-06-29"
-      },
-      "asOf": "2026-07-01",
+      "asOf": "2026-07-02",
       "govinfoUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-29"
     }
   ]
