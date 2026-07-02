@@ -114,15 +114,13 @@ export const VERIFIED_MEDIA_QUOTES_BY_BIOGUIDE: Record<string, CuratedMediaQuote
       quote:
         'In order for us to combat that threat, we must be as ambitious and innovative as possible.',
       topicId: 'climate',
+      // Single verifiable source. The previously listed PBS NewsHour URL does not contain
+      // this verbatim quote (checked live + 2019-02-07 wayback), so it is not independent
+      // corroboration; keeping it caused a false 'media' upgrade. Atlantic alone → 'alleged'.
       sources: [
         {
           outlet: 'The Atlantic',
           url: 'https://www.theatlantic.com/science/archive/2019/02/aocgreen-new-deal-new-era-millennial-climate-politics/582295/',
-          date: '2019-02-07',
-        },
-        {
-          outlet: 'PBS NewsHour',
-          url: 'https://www.pbs.org/newshour/show/why-democrats-say-the-u-s-needs-a-green-new-deal-to-combat-climate-change',
           date: '2019-02-07',
         },
       ],

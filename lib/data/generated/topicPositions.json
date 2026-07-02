@@ -1,12 +1,12 @@
 {
   "meta": {
-    "asOf": "2026-07-01",
+    "asOf": "2026-07-02",
     "source": "Ballotpedia + GovInfo CREC + Congress roll-call votes (Said→Did)",
     "totalMembers": 1,
     "membersWithData": 443,
     "membersWithPlatformPositions": 442,
     "membersWithStatedPosition": 0,
-    "membersWithSaidDidLinks": 425,
+    "membersWithSaidDidLinks": 429,
     "perTopicCoverage": {
       "abortion": 7,
       "technology": 0,
@@ -1108,22 +1108,7 @@
         ]
       },
       "immigration": {
-        "statements": [
-          {
-            "title": "Mr. McConnell). Mr. DURBIN. I announce that the Senator from Colorado (Mr. Bennet) and the Senator from Massachusetts (Mr. Markey) are necessarily absent. The yeas and nays resulted--yeas 52, nays 45, as follows: YEAS--52 Armstrong Banks Barrasso Blackburn Boozman Britt Budd Capito Cassidy Collins Cornyn Cotton Cramer Crapo Cruz Curtis Daines Ernst Fischer Graham Grassley Hagerty Hawley Hoeven Husted Hyde-Smith Johnson Justice Kennedy Lankford Lee Lummis Marshall McCormick Moody Moran Moreno Murkowski Paul Ricketts Risch Rounds Schmitt Scott (FL) Scott (SC) Sheehy Sullivan Thune Tillis Tubervi",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3193-4",
-            "tier": "official",
-            "topicId": "immigration"
-          },
-          {
-            "title": "Mr. McConnell), and the Senator from Alabama (Mr. Tuberville). Mr. DURBIN. I announce that the Senator from Colorado (Mr. Bennet), the Senator from California (Mr. Schiff), and the Senator from New Hampshire (Mrs. Shaheen) are necessarily absent. The yeas and nays resulted--yeas 50, nays 44, as follows: YEAS--50 Armstrong Banks Barrasso Blackburn Boozman Britt Budd Capito Collins Cornyn Cotton Cramer Crapo Cruz Curtis Daines Ernst Fischer Graham Grassley Hagerty Hawley Hoeven Husted Hyde-Smith Johnson Justice Kennedy Lankford Lee Lummis Marshall McCormick Moody Moran Moreno Murkowski Paul Rick",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3184",
-            "tier": "official",
-            "topicId": "immigration"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -1150,22 +1135,7 @@
         ]
       },
       "climate": {
-        "statements": [
-          {
-            "title": "Mr. McConnell, and Mr. Merkley) submitted an amendment intended to be proposed by him to the bill S. 4784, to authorize appropriations for fiscal year 2027 for military activities of the Department of Defense, for military construction, and for defense activities of the Department of Energy, to prescribe military personnel strengths for such fiscal year, and for other purposes; which was ordered to lie on the table; as follows: At the end of title XII, add the following: Subtitle F--Bringing Real Accountability Via Enforcement in Burma Act SEC. 1281. SHORT TITLE. This subtitle may be cited as ",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3428-2",
-            "tier": "official",
-            "topicId": "climate"
-          },
-          {
-            "title": "Mr. McConnell, and Mr. Merkley) submitted an amendment intended to be proposed by him to the bill S. 4784, to authorize appropriations for fiscal year 2027 for military activities of the Department of Defense, for military construction, and for defense activities of the Department of Energy, to prescribe military personnel strengths for such fiscal year, and for other purposes; which was ordered to lie on the table; as follows: At the end of title XII, add the following: Subtitle F--Bringing Real Accountability Via Enforcement in Burma Act SEC. 1281. SHORT TITLE. This subtitle may be cited as ",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3230",
-            "tier": "official",
-            "topicId": "climate"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -1194,13 +1164,6 @@
       "defense-veterans": {
         "statements": [
           {
-            "title": "It is not an act of charity for the United States and our NATO allies to help supply the Ukrainian people’s self-defense. It is a direct investment in our own core national interests.",
-            "date": "2023-02-24",
-            "url": "https://thehill.com/homenews/senate/3873707-mcconnell-calls-ukraine-aid-a-direct-investment-for-us-against-putins-war-machine/",
-            "tier": "alleged",
-            "topicId": "defense-veterans"
-          },
-          {
             "title": "Continuing our support for Ukraine is morally right, but it is not only that. It is also a direct investment in cold, hard, American interests.",
             "date": "2022-12-21",
             "url": "https://apnews.com/article/putin-zelenskyy-washington-4d5fc23be5518e689fbbcac334769d59",
@@ -1208,24 +1171,17 @@
             "topicId": "defense-veterans"
           },
           {
-            "title": "Mr. McConnell). Mr. DURBIN. I announce that the Senator from Colorado (Mr. Bennet) is necessarily absent. The result was announced--yeas 47, nays 50, as follows: YEAS--47 Alsobrooks Baldwin Blumenthal Blunt Rochester Booker Cantwell Collins Coons Cortez Masto Duckworth Durbin Gallego Gillibrand Hassan Heinrich Hickenlooper Hirono Kaine Kelly Kim King Klobuchar Lujan Markey Merkley Murkowski Murphy Murray Ossoff Padilla Peters Reed Rosen Sanders Schatz Schiff Schumer Shaheen Slotkin Smith Van Hollen Warner Warnock Warren Welch Whitehouse Wyden NAYS--50 Armstrong Banks Barrasso Blackburn Boozman",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3194-3",
-            "tier": "official",
-            "topicId": "defense-veterans"
-          },
-          {
-            "title": "Mr. McConnell). Mr. DURBIN. I announce that the Senator from Colorado (Mr. Bennet) and the Senator from New Hampshire (Mrs. Shaheen) are necessarily absent. The result was announced--yeas 45, nays 52, as follows: YEAS--45 Alsobrooks Baldwin Blumenthal Blunt Rochester Booker Cantwell Coons Cortez Masto Duckworth Durbin Fetterman Gallego Gillibrand Hassan Heinrich Hickenlooper Hirono Kaine Kelly Kim King Klobuchar Lujan Markey Merkley Murphy Murray Ossoff Padilla Peters Reed Rosen Sanders Schatz Schiff Schumer Slotkin Smith Van Hollen Warner Warnock Warren Welch Whitehouse Wyden NAYS--52 Armstro",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3193-3",
-            "tier": "official",
+            "title": "Let me be clear: this assistance means more jobs for American workers and newer weapons for American service members.",
+            "date": "2023-06-16",
+            "url": "https://www.politico.com/minutes/congress/06-16-2023/mcconnell-talks-ukraine/",
+            "tier": "alleged",
             "topicId": "defense-veterans"
           }
         ],
         "saidDidLinks": [
           {
             "topicId": "defense-veterans",
-            "statedPositionDate": null,
+            "statedPositionDate": "2022-12-21",
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
             "billNumber": "H.Con.Res. 86",
@@ -16241,7 +16197,7 @@
             "title": "Together we are going to end the international embarrassment of the United States of America, our great country, being the only major nation on earth not to guarantee health care to all as a right.",
             "date": "2019-04-10",
             "url": "https://www.washingtonpost.com/politics/bernie-sanders-set-to-unveil-new-medicare-for-all-legislation-a-key-component-of-his-2020-presidential-bid/2019/04/10/dc625de8-5b7a-11e9-842d-7d3ed7eb3957_story.html",
-            "tier": "media",
+            "tier": "alleged",
             "topicId": "healthcare"
           }
         ],
@@ -19102,15 +19058,7 @@
         ]
       },
       "healthcare": {
-        "statements": [
-          {
-            "title": "Pelosi, Mrs. Beatty, Mr. Carbajal, Mr. Carter of Louisiana, Ms. Barragan, Mr. Cisneros, Ms. Escobar, Mr. Davis of Illinois, Ms. Dean of Pennsylvania, Mr. Thompson of Mississippi, Mr. Moulton, Ms. Kaptur, Mr. Johnson of Georgia, Mr. Courtney, Ms. Clarke of New York, Mr. Stanton, Mrs. Grijalva, Ms. Leger Fernandez, and Ms. Garcia of Texas): H. Res. 1380. A resolution commemorating 50 years of women at the service academies; to the Committee on Armed Services, and in addition to the Committee on Transportation and Infrastructure, for a period to be subsequently determined by the Speaker, in each ",
-            "date": "2026-06-23",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgH4205-4",
-            "tier": "official",
-            "topicId": "healthcare"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -19137,15 +19085,7 @@
         ]
       },
       "immigration": {
-        "statements": [
-          {
-            "title": "Pelosi, Mr. Casar, Mr. Castro of Texas, Mr. McGovern, Mr. Goldman of New York, Mr. Lieu, Mrs. Ramirez, Mr. Frost, Ms. Hoyle of Oregon, Ms. Salinas, Ms. Tlaib, Ms. Escobar, Ms. Ansari, Ms. Crockett, Ms. Garcia of Texas, Ms. Jacobs, Ms. Simon, Mr. Thanedar, Ms. McClellan, Ms. Randall, Mr. Garcia of Illinois, Ms. Mejia, Mrs. Foushee, Mrs. Fletcher, and Ms. Norton): H.R. 9270. A bill to address the enforcement of the immigration laws with respect to unaccompanied minors; to the Committee on the Judiciary, and in addition to the Committee on Armed Services, for a period to be subsequently determine",
-            "date": "2026-06-11",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-11-pt1-PgH4109-4",
-            "tier": "official",
-            "topicId": "immigration"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -19172,15 +19112,7 @@
         ]
       },
       "climate": {
-        "statements": [
-          {
-            "title": "Pelosi Perez Peters Pettersen Pfluger Pingree Pocan Pou Pressley Quigley Ramirez Randall Raskin Reschenthaler Riley (NY) Rivas Rogers (AL) Rogers (KY) Ross Rouzer Ruiz Rulli Rutherford Salinas Sanchez Scalise Scanlon Schmidt Schneider Scholten Schrier Schweikert Scott (VA) Scott, Austin Sessions Sewell Sherman Shreve Simon Simpson Smith (MO) Smith (NE) Smith (NJ) Smith (WA) Sorensen Soto Stanton Stauber Stefanik Steil Steube Stevens Strickland Strong Subramanyam Suozzi Sykes Takano Taylor Tenney Thanedar Thompson (CA) Thompson (MS) Timmons Titus Tlaib Tokuda Tonko Torres (CA) Trahan Tran Turne",
-            "date": "2026-06-23",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgH4192-4",
-            "tier": "official",
-            "topicId": "climate"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -19208,7 +19140,18 @@
       },
       "defense-veterans": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Yea",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "Nancy Pelosi was born in Baltimore, Maryland . Pelosi graduated from the Institute of Notre Dame in 1958 and earned a bachelor's degree from Trinity College in 1962. She served as the chair of the California State Democratic Party and the finance chairwoman of the Democratic Senatorial Campaign Committee. [6]",
@@ -19281,15 +19224,7 @@
         ]
       },
       "economy-taxes": {
-        "statements": [
-          {
-            "title": "Pelosi Perez Peters Pettersen Pfluger Pingree Pocan Pou Pressley Quigley Ramirez Randall Raskin Reschenthaler Riley (NY) Rivas Rogers (AL) Rogers (KY) Ross Rouzer Ruiz Rulli Rutherford Salinas Sanchez Scalise Scanlon Schmidt Schneider Scholten Schrier Scott (VA) Scott, Austin Sessions Sewell Sherman Shreve Simon Simpson Smith (MO) Smith (NE) Smith (NJ) Smith (WA) Sorensen Soto Spartz Stansbury Stanton Stauber Stefanik Steil Stevens Strickland Strong Subramanyam Suozzi Sykes Takano Taylor Tenney Thanedar Thompson (CA) Thompson (MS) Timmons Titus Tlaib Tokuda Tonko Torres (CA) Trahan Tran Turner",
-            "date": "2026-06-23",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgH4193",
-            "tier": "official",
-            "topicId": "economy-taxes"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -26757,9 +26692,9 @@
       "immigration": {
         "statements": [
           {
-            "title": "MASSIE CARL B. MUEHLER MATTHEW G. PRINCE ROBERT A. SLAUGHTER JASON D. WEATHERWAX MARLIN WILLIAMS THE FOLLOWING NAMED OFFICERS FOR APPOINTMENT TO THE GRADE INDICATED IN THE UNITED STATES NAVY UNDER TITLE 10, U.S.C., SECTION 624: To be captain JON A. ANGLE KIMBERLY M. CAUDLE BRIAN W. CHRISTNER MARJORIE J. GRUBER MICHAEL R. HIGHTOWER CODY W. KEESEE NIGEL T. MORRISSEY JOHN V. RUGGIERO CHRISTOPHER A. SANDMEL MICHAEL L. SAPIENZA JAMES O. SHAMBLEY RYAN W. THRUN RUSSELL B. TORGESEN CHRISTOPHER J. WIDHALM ____________________",
-            "date": "2026-06-10",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-10-pt1-PgS2738-3",
+            "title": "Mr. MASSIE. Mr. Speaker, I rise to raise a question of the privileges of the House and offer a resolution previously noticed.",
+            "date": "2026-06-30",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-30-pt1-PgH4345-4",
             "tier": "official",
             "topicId": "immigration"
           }
@@ -26790,15 +26725,7 @@
         ]
       },
       "climate": {
-        "statements": [
-          {
-            "title": "Massie Miller (IL) Norman Perry Roy Self NOT VOTING--44 Baumgartner Boyle (PA) Brecheen Buchanan Carbajal Carter (TX) Clarke (NY) Crenshaw Davidson Dunn (FL) Espaillat Golden (ME) Goldman (NY) Gray Hayes Jackson (IL) James Kean Mace McCaul McClain Delaney McIver Meeks Meng Mfume Morelle Moulton Nadler Nunn (IA) Ogles Rose Ryan Salazar Schakowsky Smucker Spartz Stansbury Stutzman Thompson (PA) Tiffany Torres (NY) Velazquez Wilson (FL) Wilson (SC) {time} 1858",
-            "date": "2026-06-23",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgH4192-4",
-            "tier": "official",
-            "topicId": "climate"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -26825,8 +26752,27 @@
         ]
       },
       "defense-veterans": {
-        "statements": [],
-        "saidDidLinks": [],
+        "statements": [
+          {
+            "title": "Congress has voted for ten bills now that will put US citizens at risk, prolong the conflict in Ukraine, waste tax-payer money, increase domestic food and energy prices, and draw us further into this conflict. I have voted against all of them.",
+            "date": "2022-05-11",
+            "url": "https://thehill.com/homenews/house/3485384-here-are-the-two-republicans-who-voted-against-four-bills-related-to-the-russia-ukraine-conflict/",
+            "tier": "alleged",
+            "topicId": "defense-veterans"
+          }
+        ],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": "2022-05-11",
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Yea",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "On May 15, 2012, Senator Rand Paul endorsed Thomas Massie in a video. [22]",
@@ -26879,22 +26825,7 @@
         ]
       },
       "civil-liberties": {
-        "statements": [
-          {
-            "title": "Massie Matsui McBath McBride McClain Delaney McClellan McCollum McGarvey McGovern McIver Meeks Mejia Menefee Menendez Meng Mfume Min Moore (WI) Morelle Morrison Moskowitz Moulton Mrvan Mullin Nadler Neal Neguse Norcross Ocasio-Cortez Olszewski Omar Pallone Panetta Pappas Pelosi Peters Pettersen Pingree Pocan Pou Pressley Ramirez Randall Raskin Riley (NY) Rivas Rose Ross Roy Ruiz Rulli Ryan Salinas Sanchez Scanlon Schakowsky Schneider Scholten Schrier Scott (VA) Self Sewell Sherman Simon Smith (WA) Sorensen Soto Stansbury Stanton Stevens Strickland Subramanyam Suozzi Sykes Takano Thanedar Thomp",
-            "date": "2026-06-11",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-11-pt1-PgH4098-2",
-            "tier": "official",
-            "topicId": "civil-liberties"
-          },
-          {
-            "title": "Massie), the very distinguished gentleman and a great champion of the Constitution and civil liberties.",
-            "date": "2026-06-10",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-10-pt1-PgH4079-8",
-            "tier": "official",
-            "topicId": "civil-liberties"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -26923,10 +26854,10 @@
       "economy-taxes": {
         "statements": [
           {
-            "title": "Massie McClintock Miller (IL) Moore (AL) Norman Onder Perry Roy Schweikert Self Steube NOT VOTING--41 Baumgartner Boyle (PA) Brecheen Buchanan Carbajal Carter (TX) Clarke (NY) Crenshaw Dunn (FL) Espaillat Golden (ME) Goldman (NY) Gosar Gray Hayes James Kean Mace McCaul McClain Delaney McIver Meeks Meng Mfume Morelle Moulton Nadler Ogles Rose Ryan Salazar Schakowsky Smucker Stutzman Thompson (PA) Tiffany Torres (NY) Velazquez Weber (TX) Wilson (FL) Wilson (SC) {time} 1925 So (two-thirds being in the affirmative) the rules were suspended and the Senate amendment to the House amendment to the Sen",
-            "date": "2026-06-23",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgH4193",
-            "tier": "official",
+            "title": "I knew all along they would trade the cow for magic beans. These beans are like the rest. They don't sprout.",
+            "date": "2025-04-10",
+            "url": "https://www.politico.com/news/2025/04/10/house-gop-adopts-budget-framework-paving-the-way-for-trumps-big-beautiful-bill-00283511",
+            "tier": "alleged",
             "topicId": "economy-taxes"
           }
         ],
@@ -34566,15 +34497,7 @@
         ]
       },
       "public-safety": {
-        "statements": [
-          {
-            "title": "Clark, the late, great John Lewis, John Larson, David Cicilline, and myself led the sit-in on the floor because we could not get any movement to deal with gun violence prevention. I am proud to say the Democrats all participated in that sit-in that lasted almost 24 hours. Nothing happened right away, but we were making a statement that needed to be made, and, eventually, we did get a Bipartisan Safer Communities Act. But we all know more needs to be done. This past Juneteenth weekend, nearly 40 people were shot in Chicago, and 7 people died. What should have been a celebration of freedom turne",
-            "date": "2026-06-23",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgH4195-4",
-            "tier": "official",
-            "topicId": "public-safety"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -34614,22 +34537,7 @@
         ]
       },
       "immigration": {
-        "statements": [
-          {
-            "title": "Clark and Lincoln Counties, Nevada, to be known as the ``Southern Paiute Wilderness''. (2) Boundary.--The boundary of any portion of the wilderness area that is bordered by a road shall be not less than 50 feet from the centerline of the road. (3) Map and legal description.-- (A) In general.--As soon as practicable after the date of enactment of this Act, the Secretary shall prepare a map and legal description of the wilderness area. (B) Effect.--The map and legal description prepared under subparagraph (A) shall have the same force and effect as if included in this section, except that the Se",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3510",
-            "tier": "official",
-            "topicId": "immigration"
-          },
-          {
-            "title": "Clark and Lincoln Counties, Nevada, to be known as the ``Southern Paiute Wilderness''. (2) Boundary.--The boundary of any portion of the wilderness area that is bordered by a road shall be not less than 50 feet from the centerline of the road. (3) Map and legal description.-- (A) In general.--As soon as practicable after the date of enactment of this Act, the Secretary shall prepare a map and legal description of the wilderness area. (B) Effect.--The map and legal description prepared under subparagraph (A) shall have the same force and effect as if included in this section, except that the Se",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3230",
-            "tier": "official",
-            "topicId": "immigration"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -34656,15 +34564,7 @@
         ]
       },
       "climate": {
-        "statements": [
-          {
-            "title": "Clark (MA) Cleaver Cline Clyburn Cohen Cole Collins Comer Conaway Correa Costa Courtney Craig Crane Crank Crawford Crockett Crow Cuellar Davids (KS) Davis (IL) Davis (NC) De La Cruz Dean (PA) DeGette DeLauro DelBene Deluzio DeSaulnier DesJarlais Dexter Diaz-Balart Dingell Doggett Donalds Downing Edwards Elfreth Ellzey Emmer Escobar Estes Evans (CO) Evans (PA) Ezell Fallon Fedorchak Feenstra Fields Figures Finstad Fischbach Fitzgerald Fitzpatrick Fleischmann Fletcher Flood Fong Foster Foushee Foxx Frankel, Lois Franklin, Scott Friedman Frost Fry Fulcher Fuller Gallagher Garamendi Garbarino Garc",
-            "date": "2026-06-23",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgH4192-4",
-            "tier": "official",
-            "topicId": "climate"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -34692,7 +34592,18 @@
       },
       "defense-veterans": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Yea",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "Voted Yea on:  Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (Conference report) (HR 6157)",
@@ -34745,22 +34656,7 @@
         ]
       },
       "civil-liberties": {
-        "statements": [
-          {
-            "title": "Clark (MA) Clarke (NY) Cleaver Cline Cloud Clyburn Clyde Cohen Cole Collins Comer Conaway Correa Costa Courtney Craig Crane Crank Crawford Crenshaw Crockett Crow Cuellar Davids (KS) Davidson Davis (IL) Davis (NC) De La Cruz Dean (PA) DeGette DeLauro DelBene Deluzio DeSaulnier DesJarlais Dexter Diaz-Balart Dingell Doggett Donalds Downing Edwards Elfreth Ellzey Emmer Escobar Espaillat Estes Evans (CO) Evans (PA) Ezell Fallon Fedorchak Feenstra Fields Figures Fine Finstad Fischbach Fitzgerald Fitzpatrick Fleischmann Fletcher Flood Fong Foster Foushee Foxx Frankel, Lois Franklin, Scott Friedman Fr",
-            "date": "2026-06-25",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-25-pt1-PgH4251-4",
-            "tier": "official",
-            "topicId": "civil-liberties"
-          },
-          {
-            "title": "Clark (MA) Clarke (NY) Cleaver Cline Cloud Clyburn Clyde Cohen Cole Collins Comer Conaway Correa Costa Courtney Craig Crane Crank Crawford Crenshaw Crockett Crow Cuellar Davids (KS) Davidson Davis (IL) Davis (NC) De La Cruz Dean (PA) DeGette DeLauro DelBene Deluzio DeSaulnier DesJarlais Dexter Diaz-Balart Dingell Doggett Downing Edwards Elfreth Ellzey Emmer Escobar Espaillat Estes Evans (CO) Evans (PA) Ezell Fallon Fedorchak Feenstra Fields Figures Fine Finstad Fischbach Fitzgerald Fitzpatrick Fleischmann Fletcher Flood Fong Foster Foushee Foxx Frankel, Lois Franklin, Scott Friedman Frost Fry ",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgH4227",
-            "tier": "official",
-            "topicId": "civil-liberties"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -54056,22 +53952,7 @@
         ]
       },
       "technology": {
-        "statements": [
-          {
-            "title": "OCASIO-CORTEZ (for herself, Mr. McGovern, Ms. Tlaib, Mrs. Watson Coleman, Mrs. Grijalva, Ms. Sewell, Mr. Garcia of Illinois, Mr. Goldman of New York, Mr. Cohen, and Mr. Carson): H.R. 9442. A bill to impose a moratorium on the construction of new data centers until legislation is enacted that safeguards the public from the dangers of artificial intelligence; to the Committee on Energy and Commerce, and in addition to the Committee on Foreign Affairs, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of th",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgH4244",
-            "tier": "official",
-            "topicId": "technology"
-          },
-          {
-            "title": "Ocasio-Cortez and I first introduced that legislation, 3 months ago, the response from many in the establishment was: This is radical. This is crazy. What are you doing? Well, guess what. According to a recent poll from Data for Progress, 63 percent of the American people now support a national moratorium on the construction of new AI data centers for at least 1 year, including 67 percent of Democrats, 66 percent of Independents, and 58 percent of Republicans. If you want bipartisanship, take a look at the support we are getting for a moratorium on the construction of new data centers. And acc",
-            "date": "2026-06-22",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-22-pt1-PgS3025-4",
-            "tier": "official",
-            "topicId": "technology"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": []
       },
       "public-safety": {
@@ -54102,15 +53983,7 @@
         ]
       },
       "healthcare": {
-        "statements": [
-          {
-            "title": "OCASIO-CORTEZ: H.R. 9395. A bill to amend title XVIII of the Social Security Act to require certain reporting with respect to agents and brokers of Medicare Advantage organizations; to the Committee on Ways and Means, and in addition to the Committee on Energy and Commerce, for a period to be subsequently determined by",
-            "date": "2026-06-23",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgH4205-4",
-            "tier": "official",
-            "topicId": "healthcare"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -54169,14 +54042,7 @@
             "title": "In order for us to combat that threat, we must be as ambitious and innovative as possible.",
             "date": "2019-02-07",
             "url": "https://www.theatlantic.com/science/archive/2019/02/aocgreen-new-deal-new-era-millennial-climate-politics/582295/",
-            "tier": "media",
-            "topicId": "climate"
-          },
-          {
-            "title": "Ocasio-Cortez Olszewski Omar Onder Owens Pallone Palmer Panetta Pappas Patronis Pelosi Perez Peters Pettersen Pfluger Pingree Pocan Pou Pressley Quigley Ramirez Randall Raskin Reschenthaler Riley (NY) Rivas Rogers (AL) Rogers (KY) Ross Rouzer Ruiz Rulli Rutherford Salinas Sanchez Scalise Scanlon Schmidt Schneider Scholten Schrier Schweikert Scott (VA) Scott, Austin Sessions Sewell Sherman Shreve Simon Simpson Smith (MO) Smith (NE) Smith (NJ) Smith (WA) Sorensen Soto Stanton Stauber Stefanik Steil Steube Stevens Strickland Strong Subramanyam Suozzi Sykes Takano Taylor Tenney Thanedar Thompson (",
-            "date": "2026-06-23",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgH4192-4",
-            "tier": "official",
+            "tier": "alleged",
             "topicId": "climate"
           }
         ],
@@ -54207,7 +54073,18 @@
       },
       "defense-veterans": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Yea",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "The Citizens United ruling is centered around the notion that money is speech and that corporations are people. This idea is far from any reasonable interpretation of the Constitution, and is deeply harmful to the institutions of social democracy. Not only does this situation favor those with extreme wealth, but also discourages those who are less privileged from even considering a run. After growing up in a working class family and working in Senator Ted Kennedy’s office as college student, Alexandria left thinking there wasn’t a place in politics for someone like her. As someone unable to fund her own campaign and without the connections to wealthy individuals willing to invest, she felt as though her party, the Democratic Party, had no place for her.",
@@ -54246,22 +54123,7 @@
         ]
       },
       "civil-liberties": {
-        "statements": [
-          {
-            "title": "OCASIO-CORTEZ: H.R. 9442. Congress has the power to enact this legislation pursuant to the following: Clause 3 of section 8 of article I of the Constitution and clause 18 of section 8 of article I of the Constitution.",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgH4246-28",
-            "tier": "official",
-            "topicId": "civil-liberties"
-          },
-          {
-            "title": "OCASIO-CORTEZ: H.R. 9395. Congress has the power to enact this legislation pursuant to the following: clause 1 of section 8 of article I of the Constitution and clause 18 of section 8 of article I of the Constitution. By",
-            "date": "2026-06-23",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgH4207",
-            "tier": "official",
-            "topicId": "civil-liberties"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -54288,15 +54150,7 @@
         ]
       },
       "economy-taxes": {
-        "statements": [
-          {
-            "title": "Ocasio-Cortez Olszewski Omar Owens Pallone Palmer Panetta Pappas Patronis Pelosi Perez Peters Pettersen Pfluger Pingree Pocan Pou Pressley Quigley Ramirez Randall Raskin Reschenthaler Riley (NY) Rivas Rogers (AL) Rogers (KY) Ross Rouzer Ruiz Rulli Rutherford Salinas Sanchez Scalise Scanlon Schmidt Schneider Scholten Schrier Scott (VA) Scott, Austin Sessions Sewell Sherman Shreve Simon Simpson Smith (MO) Smith (NE) Smith (NJ) Smith (WA) Sorensen Soto Spartz Stansbury Stanton Stauber Stefanik Steil Stevens Strickland Strong Subramanyam Suozzi Sykes Takano Taylor Tenney Thanedar Thompson (CA) Tho",
-            "date": "2026-06-23",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgH4193",
-            "tier": "official",
-            "topicId": "economy-taxes"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -86173,65 +86027,19 @@
     },
     "B001267": {
       "abortion": {
-        "statements": [
-          {
-            "title": "Mr. Bennet, Mr. Blumenthal, Mr. Heinrich, Ms. Hirono, Mr. Hickenlooper, Ms. Klobuchar, Mr. Merkley, Mr. Markey, Mr. Reed, Mrs. Shaheen, Mr. Van Hollen, Ms. Warren, Mr. Whitehouse, Mr. Wyden, Mr. Padilla, Ms. Rosen, Mr. Lujan, Ms. Cortez Masto, and Mr. Schiff): S. 4879. A bill to ensure the right to provide reproductive health care services, and for other purposes; to the Committee on the Judiciary. By Mr. ROUNDS (for himself, Mrs. Hyde-Smith, Mr. Budd, Mr. Risch, Mr. Daines, Mr. Banks, Mr. Lankford, Mr. Cramer, Mr. Marshall, Mr. Hawley, and Mrs. Blackburn): S. 4880. A bill to amend title 18, U",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3200",
-            "tier": "official",
-            "topicId": "abortion"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": []
       },
       "immigration": {
-        "statements": [
-          {
-            "title": "Mr. Bennet, Ms. Hirono, Mr. Schiff, Mr. Van Hollen, Ms. Warren, Mr. Wyden, Mr. Padilla, and Mr. Booker) submitted the following resolution; which was referred to the Committee on the Judiciary: S. Res. 796 Whereas, as the United States approaches the 250th anniversary of its founding, the people of the United States reflect on the Nation's history, progress, and enduring commitment to the principles of liberty and justice; Whereas, despite attacks from the current Administration, the Senate reaffirms that all people are created equal in dignity and worth and are entitled to unalienable rights,",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3219",
-            "tier": "official",
-            "topicId": "immigration"
-          },
-          {
-            "title": "Mr. Bennet) and the Senator from Massachusetts (Mr. Markey) are necessarily absent. The yeas and nays resulted--yeas 52, nays 45, as follows: YEAS--52 Armstrong Banks Barrasso Blackburn Boozman Britt Budd Capito Cassidy Collins Cornyn Cotton Cramer Crapo Cruz Curtis Daines Ernst Fischer Graham Grassley Hagerty Hawley Hoeven Husted Hyde-Smith Johnson Justice Kennedy Lankford Lee Lummis Marshall McCormick Moody Moran Moreno Murkowski Paul Ricketts Risch Rounds Schmitt Scott (FL) Scott (SC) Sheehy Sullivan Thune Tillis Tuberville Wicker Young NAYS--45 Alsobrooks Baldwin Blumenthal Blunt Rochester",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3193-4",
-            "tier": "official",
-            "topicId": "immigration"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": []
       },
       "climate": {
-        "statements": [
-          {
-            "title": "Mr. Bennet) submitted an amendment intended to be proposed by him to the bill S. 4784, to authorize appropriations for fiscal year 2027 for military activities of the Department of Defense, for military construction, and for defense activities of the Department of Energy, to prescribe military personnel strengths for such fiscal year, and for other purposes; which was ordered to lie on the table; as follows: In section 1224(a), strike paragraph (1) and insert the following: (1) In general.--Not later than 90 days after the date of the enactment of this Act, the Secretary of Defense, in coordin",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3531",
-            "tier": "official",
-            "topicId": "climate"
-          },
-          {
-            "title": "Mr. Bennet, Mr. Gallego, Ms. Duckworth, Ms. Klobuchar, Mr. Whitehouse, Ms. Rosen, Mr. Van Hollen, and Mr. Booker) submitted an amendment intended to be proposed by him to the bill S. 4784, to authorize appropriations for fiscal year 2027 for military activities of the Department of Defense, for military construction, and for defense activities of the Department of Energy, to prescribe military personnel strengths for such fiscal year, and for other purposes; which was ordered to lie on the table; as follows: At the end of subtitle C of title XII, add the following: SEC. 1229A. BALTIC SECURITY ",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3456",
-            "tier": "official",
-            "topicId": "climate"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": []
       },
       "defense-veterans": {
-        "statements": [
-          {
-            "title": "Mr. Bennet) is necessarily absent. The result was announced--yeas 47, nays 50, as follows: YEAS--47 Alsobrooks Baldwin Blumenthal Blunt Rochester Booker Cantwell Collins Coons Cortez Masto Duckworth Durbin Gallego Gillibrand Hassan Heinrich Hickenlooper Hirono Kaine Kelly Kim King Klobuchar Lujan Markey Merkley Murkowski Murphy Murray Ossoff Padilla Peters Reed Rosen Sanders Schatz Schiff Schumer Shaheen Slotkin Smith Van Hollen Warner Warnock Warren Welch Whitehouse Wyden NAYS--50 Armstrong Banks Barrasso Blackburn Boozman Britt Budd Capito Cassidy Cornyn Cotton Cramer Crapo Cruz Curtis Daine",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3194-3",
-            "tier": "official",
-            "topicId": "defense-veterans"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [
           {
             "topicId": "defense-veterans",
@@ -86246,22 +86054,7 @@
         ]
       },
       "civil-liberties": {
-        "statements": [
-          {
-            "title": "Mr. Bennet, Mr. Lujan, Mr. Kim, Ms. Hassan, and Ms. Blunt Rochester) submitted the following resolution; which was referred to the Committee on the Judiciary: S. Res. 790 Whereas there are over 70,000,000 adults with disabilities living in the United States; Whereas section 504 of the Rehabilitation Act of 1973 (29 U.S.C. 794) (referred to in this resolution as ``section 504'') prohibits discrimination on the basis of disability in all federally assisted programs or activities and laid the foundation for the passage of the Americans with Disabilities Act of 1990 (42 U.S.C. 12101 et seq.) (refe",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3216",
-            "tier": "official",
-            "topicId": "civil-liberties"
-          },
-          {
-            "title": "Mr. Bennet, Mr. Blumenthal, Ms. Blunt Rochester, Mr. Booker, Ms. Cantwell, Mr. Coons, Ms. Cortez Masto, Ms. Duckworth, Mr. Durbin, Mr. Fetterman, Mrs. Gillibrand, Ms. Hassan, Mr. Heinrich, Mr. Hickenlooper, Ms. Hirono, Mr. Kaine, Mr. Kelly, Mr. Kim, Mr. King, Ms. Klobuchar, Mr. Lujan, Mr. Markey, Mr. Merkley, Mr. Murphy, Mrs. Murray, Mr. Ossoff, Mr. Padilla, Mr. Peters, Mr. Reed, Ms. Rosen, Mr. Sanders, Mr. Schatz, Mr. Schiff, Mrs. Shaheen, Ms. Slotkin, Mr. Van Hollen, Mr. Warner, Mr. Warnock, Ms. Warren, Mr. Welch, Mr. Whitehouse, and Mr. Wyden) submitted the following resolution; which was r",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3215-2",
-            "tier": "official",
-            "topicId": "civil-liberties"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [
           {
             "topicId": "civil-liberties",
@@ -86296,15 +86089,7 @@
         ]
       },
       "economy-taxes": {
-        "statements": [
-          {
-            "title": "Mr. Bennet, Mr. Blumenthal, Ms. Blunt Rochester, Mr. Booker, Ms. Cantwell, Mr. Coons, Ms. Cortez Masto, Ms. Duckworth, Mr. Durbin, Mr. Fetterman, Mrs. Gillibrand, Ms. Hassan, Mr. Heinrich, Mr. Hickenlooper, Ms. Hirono, Mr. Kaine, Mr. Kelly, Mr. Kim, Mr. King, Ms. Klobuchar, Mr. Lujan, Mr. Markey, Mr. Merkley, Mr. Murphy, Mrs. Murray, Mr. Ossoff, Mr. Padilla, Mr. Peters, Mr. Reed, Ms. Rosen, Mr. Sanders, Mr. Schatz, Mr. Schiff, Mrs. Shaheen, Ms. Slotkin, Mr. Van Hollen, Mr. Warner, Mr. Warnock, Ms. Warren, Mr. Welch, Mr. Whitehouse, and Mr. Wyden): S. Res. 789. A resolution recognizing June 202",
-            "date": "2026-06-24",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3202",
-            "tier": "official",
-            "topicId": "economy-taxes"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": []
       }
     }

@@ -11,8 +11,10 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { SourceTier, VoteChoice, VoteRecord } from '../lib/types';
 import { RECORD_TOPIC_BUCKETS, voteCongressGovUrl, voteTopicId, classifyTextToRecordTopicId } from '../lib/data/profileRecordByTopic';
+import { normalizeTopicId } from '../lib/data/topicAliases';
 import { fetchJson, sleep } from './lib/ingest-utils';
 import { fetchApprovedMediaStatementsForMember } from './lib/approvedMediaQuotes';
+import { isProceduralCrecText } from './lib/crecProceduralFilter';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
@@ -23,13 +25,98 @@ const CHECKPOINT_FILE = '/tmp/sync-topic-positions-checkpoint.json';
 
 const VOTESMART_BASE = 'https://api.votesmart.org';
 const BALLOTPEDIA_BASE = 'https://ballotpedia.org';
-const BALLOTPEDIA_DELAY_MS = 1500;
 const VOTESMART_DELAY_MS = 300;
-const GOVINFO_DELAY_MS = 400;
-const REQUEST_TIMEOUT_MS = 60_000;
+const REQUEST_TIMEOUT_MS = 20_000;
 const MAX_PLATFORM_PER_TOPIC = 3;
 const MAX_SAID_DID_LINKS = 3;
 const MAX_CREC_STATEMENTS_PER_MEMBER = 12;
+
+// --- 17b throughput controls ---
+// GovInfo signed-key limit is 36,000 req/hr (10 req/s). Cap global GovInfo request rate
+// below that and process members concurrently. Skipping clerk/section-header granules that
+// never contain a floor-speech opener is output-preserving (the excerpt extractor already
+// discards them), and cuts HTML fetches per member from ~12 to ~2-4.
+const MEMBER_CONCURRENCY = Number(process.env.TOPIC_SYNC_CONCURRENCY ?? 5);
+const GOVINFO_MAX_RPS = Number(process.env.GOVINFO_MAX_RPS ?? 8);
+const CREC_SKIP_PROCEDURAL = (process.env.CREC_SKIP_PROCEDURAL ?? '1') !== '0';
+
+/**
+ * CREC section-header granules that are clerk-generated lists, never single-member floor
+ * remarks. The excerpt extractor requires a "Mr. LASTNAME. Mr./Madam President/Speaker"
+ * opener, which these never contain — so skipping the HTML fetch produces identical output.
+ */
+const CREC_PROCEDURAL_TITLE_RE =
+  /^(text of (the )?(senate |house )?amendments?|amendments? submitted|submission of .*resolutions?|additional cosponsors|additional sponsors|public bills and resolutions|introduction of bills|reports? of committees?|executive communications?|petitions and memorials|enrolled bills?( and joint resolutions)? signed|constitutional authority statement|daily digest)\b/i;
+
+function isProceduralCrecTitle(title: string): boolean {
+  return CREC_PROCEDURAL_TITLE_RE.test(title.trim());
+}
+
+/** Token-bucket rate limiter shared across concurrent members. */
+class RateLimiter {
+  private tokens: number;
+  private last: number;
+  constructor(private readonly rps: number, private readonly burst = rps) {
+    this.tokens = burst;
+    this.last = Date.now();
+  }
+  async acquire(): Promise<void> {
+    for (;;) {
+      const now = Date.now();
+      this.tokens = Math.min(this.burst, this.tokens + ((now - this.last) / 1000) * this.rps);
+      this.last = now;
+      if (this.tokens >= 1) {
+        this.tokens -= 1;
+        return;
+      }
+      await sleep(Math.max(10, ((1 - this.tokens) / this.rps) * 1000));
+    }
+  }
+}
+
+const govinfoLimiter = new RateLimiter(GOVINFO_MAX_RPS);
+const ballotpediaLimiter = new RateLimiter(Number(process.env.BALLOTPEDIA_MAX_RPS ?? 2), 2);
+
+/** Fetch with retry/backoff on network errors and 429/503 — protects data layers whose
+ *  loss on a transient blip would wipe good data (GovInfo search, Ballotpedia page). */
+async function fetchWithRetry(
+  url: string,
+  init: RequestInit,
+  attempts = 3,
+): Promise<Response | null> {
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
+    try {
+      const res = await fetch(url, init);
+      if ((res.status === 429 || res.status === 503) && attempt < attempts - 1) {
+        await sleep(1000 * (attempt + 1));
+        continue;
+      }
+      return res;
+    } catch {
+      if (attempt === attempts - 1) return null;
+      await sleep(800 * (attempt + 1));
+    }
+  }
+  return null;
+}
+
+/** Run an async worker over items with bounded concurrency. */
+async function runPool<T>(
+  items: T[],
+  concurrency: number,
+  worker: (item: T, index: number) => Promise<void>,
+): Promise<void> {
+  let next = 0;
+  const runners = Array.from({ length: Math.min(Math.max(1, concurrency), items.length) }, async () => {
+    for (;;) {
+      const index = next;
+      next += 1;
+      if (index >= items.length) break;
+      await worker(items[index], index);
+    }
+  });
+  await Promise.all(runners);
+}
 
 const BALLOTPEDIA_UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
@@ -94,11 +181,22 @@ interface TopicPositionData {
   saidDidLinks: SaidDidLinkEntry[];
 }
 
-function parseMemberFlag(): string | null {
-  const idx = process.argv.indexOf('--member');
-  if (idx === -1) return null;
-  const value = process.argv[idx + 1]?.trim();
-  return value || null;
+/** Accepts `--member ID` (single) or `--members ID1,ID2,...` (batch). Returns null for full run. */
+function parseMemberFilter(): Set<string> | null {
+  const ids = new Set<string>();
+  const single = process.argv.indexOf('--member');
+  if (single !== -1) {
+    const value = process.argv[single + 1]?.trim();
+    if (value) ids.add(value);
+  }
+  const batch = process.argv.indexOf('--members');
+  if (batch !== -1) {
+    for (const raw of (process.argv[batch + 1] ?? '').split(',')) {
+      const value = raw.trim();
+      if (value) ids.add(value);
+    }
+  }
+  return ids.size > 0 ? ids : null;
 }
 
 interface TopicPositionsSnapshot {
@@ -311,25 +409,25 @@ function extractPositionSectionTextsFromHtml(html: string): string[] {
   return [...new Set(texts)];
 }
 
-async function fetchBallotpediaHtml(slug: string): Promise<string | null> {
+/** connected=false only when the host was unreachable after retries (network failure) —
+ *  distinct from a 404/empty page, which is a legitimate "no page" (connected=true). */
+async function fetchBallotpediaHtml(slug: string): Promise<{ html: string | null; connected: boolean }> {
   const pageUrl = `${BALLOTPEDIA_BASE}/${encodeURIComponent(slug.replace(/ /g, '_'))}`;
-  await sleep(BALLOTPEDIA_DELAY_MS);
-  try {
-    const res = await fetch(pageUrl, {
-      headers: {
-        'User-Agent': BALLOTPEDIA_UA,
-        Accept: 'text/html,application/xhtml+xml',
-        'Accept-Language': 'en-US,en;q=0.9',
-      },
-    });
-    if (res.status === 404) return null;
-    if (!res.ok && res.status !== 202) return null;
-    const text = await res.text();
-    if (text.length < 2000 || !text.includes('Ballotpedia')) return null;
-    return text;
-  } catch {
-    return null;
-  }
+  await ballotpediaLimiter.acquire();
+  const res = await fetchWithRetry(pageUrl, {
+    headers: {
+      'User-Agent': BALLOTPEDIA_UA,
+      Accept: 'text/html,application/xhtml+xml',
+      'Accept-Language': 'en-US,en;q=0.9',
+    },
+    signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+  });
+  if (!res) return { html: null, connected: false };
+  if (res.status === 404) return { html: null, connected: true };
+  if (!res.ok && res.status !== 202) return { html: null, connected: true };
+  const text = await res.text().catch(() => '');
+  if (text.length < 2000 || !text.includes('Ballotpedia')) return { html: null, connected: true };
+  return { html: text, connected: true };
 }
 
 function ballotpediaSlugCandidates(leg: LegislatorRow): string[] {
@@ -345,29 +443,40 @@ function ballotpediaSlugCandidates(leg: LegislatorRow): string[] {
   return [...candidates];
 }
 
+interface BallotpediaResult {
+  byTopic: Map<string, PlatformPositionEntry[]>;
+  /** True only when a usable Ballotpedia page was parsed. False (404/empty/network) means the
+   *  caller must NOT treat this as "member has no platform positions" — carry prior forward. */
+  reached: boolean;
+  /** True if the host answered at all. False = network-unreachable after retries. */
+  connected: boolean;
+}
+
 async function fetchBallotpediaPositions(
   leg: LegislatorRow,
   asOf: string,
-): Promise<Map<string, PlatformPositionEntry[]>> {
+): Promise<BallotpediaResult> {
   let html: string | null = null;
   let pageUrl = `${BALLOTPEDIA_BASE}/`;
+  let connected = false;
 
   for (const slug of ballotpediaSlugCandidates(leg)) {
     const candidate = await fetchBallotpediaHtml(slug);
-    if (candidate) {
-      html = candidate;
+    if (candidate.connected) connected = true;
+    if (candidate.html) {
+      html = candidate.html;
       pageUrl = `${BALLOTPEDIA_BASE}/${encodeURIComponent(slug.replace(/ /g, '_'))}`;
       break;
     }
   }
 
   if (!html) {
-    console.warn(`  WARN Ballotpedia: no page found for ${leg.name}`);
-    return new Map();
+    console.warn(`  WARN Ballotpedia: no page found for ${leg.name}${connected ? '' : ' (unreachable)'}`);
+    return { byTopic: new Map(), reached: false, connected };
   }
 
   const positionTexts = extractPositionSectionTextsFromHtml(html);
-  if (positionTexts.length === 0) return new Map();
+  if (positionTexts.length === 0) return { byTopic: new Map(), reached: true, connected: true };
 
   const byTopic = new Map<string, PlatformPositionEntry[]>();
   const topicBuckets = RECORD_TOPIC_BUCKETS.filter((b) => b.id !== 'legislation');
@@ -388,7 +497,7 @@ async function fetchBallotpediaPositions(
       })),
     );
   }
-  return byTopic;
+  return { byTopic, reached: true, connected: true };
 }
 
 async function votesmartFetch(
@@ -557,22 +666,6 @@ function crecFloorSpeechOpenerRegex(lastName: string): RegExp {
   );
 }
 
-/** Procedural CREC text — amendments, resolutions, cosponsor lists — not floor remarks. */
-function isProceduralCrecText(text: string): boolean {
-  if (/submitted an amendment/i.test(text)) return true;
-  if (/submitted the following resolution/i.test(text)) return true;
-  if (/were added as cosponsors/i.test(text)) return true;
-  if (/were removed as cosponsors/i.test(text)) return true;
-  if (/^\s*Mr\.\s+\w+\),/i.test(text)) return true;
-  if (/,\s*the Senator from/i.test(text.slice(0, 120))) return true;
-  if (/names of the Senator/i.test(text.slice(0, 160))) return true;
-  if (/At the request of/i.test(text.slice(0, 120))) return true;
-  if (/A bill to amend/i.test(text.slice(0, 120))) return true;
-  if (/were referred to the Committee/i.test(text.slice(0, 160))) return true;
-  if (/which was ordered to lie on the table/i.test(text)) return true;
-  return false;
-}
-
 function crecGovInfoUrlStem(url: string): string {
   const granule = url.match(/CREC-[^/?#]+/i)?.[0] ?? url;
   // Same physical page can appear as ...-PgS3474-2 vs ...-PgS3474-3
@@ -614,17 +707,31 @@ function earliestStatementDate(statements: TopicStatementEntry[]): string | null
   return dates[0] ?? null;
 }
 
+interface CrecFetchResult {
+  byTopic: Map<string, TopicStatementEntry[]>;
+  /** True when the GovInfo search request itself succeeded (even with 0 results). False =
+   *  search unreachable — a transient failure, not a genuine "no floor speeches". */
+  searchOk: boolean;
+  searchResults: number;
+  htmlFetches: number;
+  skippedProcedural: number;
+}
+
 async function fetchGovInfoCrecByTopic(
   leg: LegislatorRow,
   apiKey: string,
-): Promise<Map<string, TopicStatementEntry[]>> {
+): Promise<CrecFetchResult> {
   const byTopic = new Map<string, TopicStatementEntry[]>();
   const speaker = crecSpeakerPrefix(leg);
   const congress = 119;
+  let searchOk = false;
+  let searchResults = 0;
+  let htmlFetches = 0;
+  let skippedProcedural = 0;
 
-  await sleep(GOVINFO_DELAY_MS);
   try {
-    const searchRes = await fetch(`https://api.govinfo.gov/search?api_key=${encodeURIComponent(apiKey)}`, {
+    await govinfoLimiter.acquire();
+    const searchRes = await fetchWithRetry(`https://api.govinfo.gov/search?api_key=${encodeURIComponent(apiKey)}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -633,15 +740,23 @@ async function fetchGovInfoCrecByTopic(
         offsetMark: '*',
         sorts: [{ field: 'publishdate', sortOrder: 'DESC' }],
       }),
+      signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
     });
-    if (!searchRes.ok) return byTopic;
+    if (!searchRes || !searchRes.ok) return { byTopic, searchOk, searchResults, htmlFetches, skippedProcedural };
+    searchOk = true;
 
     const searchData = (await searchRes.json()) as { results?: GovInfoSearchResult[] };
     const results = (searchData.results ?? []).filter((r) => r.granuleId && r.packageId);
+    searchResults = results.length;
 
     for (const result of results) {
-      await sleep(GOVINFO_DELAY_MS);
+      if (CREC_SKIP_PROCEDURAL && isProceduralCrecTitle(result.title ?? '')) {
+        skippedProcedural += 1;
+        continue;
+      }
       try {
+        await govinfoLimiter.acquire();
+        htmlFetches += 1;
         const textRes = await fetch(
           `https://api.govinfo.gov/packages/${result.packageId}/granules/${result.granuleId}/htm?api_key=${encodeURIComponent(apiKey)}`,
           { signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) },
@@ -684,7 +799,7 @@ async function fetchGovInfoCrecByTopic(
     );
   }
 
-  return byTopic;
+  return { byTopic, searchOk, searchResults, htmlFetches, skippedProcedural };
 }
 
 function buildSnapshotMeta(
@@ -771,7 +886,7 @@ async function main(): Promise<void> {
     console.warn('WARN: VOTESMART_API_KEY missing — NPAT stated positions will be skipped.');
   }
 
-  const memberFilter = parseMemberFlag();
+  const memberFilter = parseMemberFilter();
 
   const legislatorsRaw = JSON.parse(await readFile(LEGISLATORS_FILE, 'utf8')) as {
     legislators: LegislatorRow[];
@@ -780,9 +895,9 @@ async function main(): Promise<void> {
     (l) => l.chamber === 'senate' || l.chamber === 'house',
   );
   if (memberFilter) {
-    members = members.filter((l) => l.bioguideId === memberFilter);
+    members = members.filter((l) => memberFilter.has(l.bioguideId));
     if (members.length === 0) {
-      console.error(`No current legislator found for --member ${memberFilter}`);
+      console.error(`No current legislators found for filter: ${[...memberFilter].join(', ')}`);
       process.exit(1);
     }
   }
@@ -807,20 +922,49 @@ async function main(): Promise<void> {
   }
 
   if (memberFilter) {
-    delete checkpoint[memberFilter];
+    for (const id of memberFilter) delete checkpoint[id];
   }
 
+  const pending = members.filter((leg) => memberFilter || !checkpoint[leg.bioguideId]);
+
   console.log(
-    `Syncing topic positions for ${members.length} member${members.length === 1 ? '' : 's'} (${Object.keys(checkpoint).length} checkpointed). VoteSmart: ${votesmartKey ? 'yes' : 'SKIP'}`,
+    `Syncing topic positions for ${pending.length}/${members.length} member${members.length === 1 ? '' : 's'} (${Object.keys(checkpoint).length} checkpointed). Concurrency: ${MEMBER_CONCURRENCY}, GovInfo cap: ${GOVINFO_MAX_RPS}/s, procedural-skip: ${CREC_SKIP_PROCEDURAL ? 'on' : 'off'}. VoteSmart: ${votesmartKey ? 'yes' : 'SKIP'}`,
   );
 
-  for (let i = 0; i < members.length; i += 1) {
-    const leg = members[i];
-    if (!memberFilter && checkpoint[leg.bioguideId]) continue;
+  async function processMember(leg: LegislatorRow): Promise<Record<string, TopicPositionData>> {
+    const priorTopics = byBioguideId[leg.bioguideId];
+    const priorHasPlatform = Boolean(
+      priorTopics && Object.values(priorTopics).some((d) => d.platformPositions?.length),
+    );
 
-    const memberTopics: Record<string, TopicPositionData> = {};
-    const ballotByTopic = await fetchBallotpediaPositions(leg, asOf);
-    const crecByTopic = govinfoKey ? await fetchGovInfoCrecByTopic(leg, govinfoKey) : new Map();
+    // Locked platform layer: only scrape Ballotpedia for members who don't already have
+    // curated platform positions. This preserves the committed layer byte-for-byte (including
+    // its legacy topic keys), avoids re-hammering Ballotpedia (throttling), and keeps the run
+    // focused on the CREC/Said→Did work this phase adds.
+    let ballotByTopic = new Map<string, PlatformPositionEntry[]>();
+    let ballotConnected = true;
+    if (!priorHasPlatform) {
+      const ballot = await fetchBallotpediaPositions(leg, asOf);
+      ballotByTopic = ballot.byTopic;
+      ballotConnected = ballot.connected;
+    }
+
+    const crec = govinfoKey
+      ? await fetchGovInfoCrecByTopic(leg, govinfoKey)
+      : { byTopic: new Map<string, TopicStatementEntry[]>(), searchOk: true, searchResults: 0, htmlFetches: 0, skippedProcedural: 0 };
+    const crecByTopic = crec.byTopic;
+    if (govinfoKey) {
+      console.log(
+        `  CREC ${leg.bioguideId} (${leg.name}): search=${crec.searchResults} htmlFetches=${crec.htmlFetches} skippedProcedural=${crec.skippedProcedural} statements=${[...crecByTopic.values()].reduce((n, a) => n + a.length, 0)}`,
+      );
+    }
+
+    // Nothing new could be gathered and prior exists → keep prior entry intact.
+    if (priorTopics && !crec.searchOk && (priorHasPlatform || !ballotConnected)) {
+      console.log(`  PRESERVE ${leg.bioguideId} (${leg.name}): no refreshable source — kept prior entry`);
+      return priorTopics;
+    }
+
     const mediaStatements = await fetchApprovedMediaStatementsForMember(leg.bioguideId);
     const mediaByTopic = new Map<string, TopicStatementEntry[]>();
     for (const st of mediaStatements) {
@@ -842,71 +986,114 @@ async function main(): Promise<void> {
         npatByTopic = await fetchVoteSmartNpatByTopic(voteSmartCandidateId, votesmartKey);
       }
     }
+    const npatUrl =
+      voteSmartCandidateId != null
+        ? `https://votesmart.org/candidate/${voteSmartCandidateId}/political-courage-test`
+        : 'https://votesmart.org';
 
     const memberVotes = nationalVotes.get(leg.bioguideId) ?? [];
 
+    // Build fresh (this-run) statements + Said→Did per canonical topic.
+    interface FreshTopic {
+      statements: TopicStatementEntry[];
+      saidDidLinks: SaidDidLinkEntry[];
+      statedPosition?: string;
+      statedPositionSource?: StatedPositionSourceEntry;
+    }
+    const freshByTopic = new Map<string, FreshTopic>();
     for (const bucket of topicBuckets) {
-      const platformPositions = ballotByTopic.get(bucket.id);
-      const npat = npatByTopic.get(bucket.id);
       const crecStatements = crecByTopic.get(bucket.id) ?? [];
       const mediaForTopic = mediaByTopic.get(bucket.id) ?? [];
-
-      const hasPlatform = platformPositions && platformPositions.length > 0;
-      const hasNpat = Boolean(npat?.position);
-      const hasCrec = crecStatements.length > 0;
-      const hasMedia = mediaForTopic.length > 0;
-
-      if (!hasPlatform && !hasNpat && !hasCrec && !hasMedia) continue;
-
-      const statedPositionDate =
-        npat?.date ?? earliestStatementDate([...crecStatements, ...mediaForTopic]) ?? null;
-      const npatUrl =
-        voteSmartCandidateId != null
-          ? `https://votesmart.org/candidate/${voteSmartCandidateId}/political-courage-test`
-          : 'https://votesmart.org';
-
-      const topicData: TopicPositionData = {
-        statements: [...mediaForTopic, ...crecStatements],
-        saidDidLinks: buildSaidDidLinks(bucket.id, statedPositionDate, memberVotes),
-      };
-
-      if (hasPlatform) topicData.platformPositions = platformPositions;
-      if (hasNpat && npat) {
-        topicData.statedPosition = npat.position;
-        topicData.statedPositionSource = {
-          tier: 'nonpartisan',
-          source: 'VoteSmart',
+      const npat = npatByTopic.get(bucket.id);
+      const statements = [...mediaForTopic, ...crecStatements];
+      if (npat?.position) {
+        statements.push({
+          title: npat.position,
+          date: npat.date ?? asOf,
           url: npatUrl,
-        };
-        topicData.statements = [
-          ...mediaForTopic,
-          ...crecStatements,
-          {
-            title: npat.position,
-            date: npat.date ?? asOf,
-            url: npatUrl,
-            tier: 'nonpartisan',
-            topicId: bucket.id,
-          },
-        ];
+          tier: 'nonpartisan',
+          topicId: bucket.id,
+        });
       }
-
-      memberTopics[bucket.id] = topicData;
+      const statedPositionDate = npat?.date ?? earliestStatementDate(statements) ?? null;
+      const saidDidLinks = buildSaidDidLinks(bucket.id, statedPositionDate, memberVotes);
+      if (statements.length > 0 || saidDidLinks.length > 0) {
+        const fresh: FreshTopic = { statements, saidDidLinks };
+        if (npat?.position) {
+          fresh.statedPosition = npat.position;
+          fresh.statedPositionSource = { tier: 'nonpartisan', source: 'VoteSmart', url: npatUrl };
+        }
+        freshByTopic.set(bucket.id, fresh);
+      }
     }
 
-    if (Object.keys(memberTopics).length > 0) {
-      byBioguideId[leg.bioguideId] = memberTopics;
+    // Start from a clone of the prior entry so the platform layer is preserved exactly.
+    const memberTopics: Record<string, TopicPositionData> = priorTopics ? structuredClone(priorTopics) : {};
+    const keyByNorm = new Map<string, string>();
+    for (const key of Object.keys(memberTopics)) keyByNorm.set(normalizeTopicId(key), key);
+
+    for (const bucket of topicBuckets) {
+      const fresh = freshByTopic.get(bucket.id);
+      const freshPlatform = ballotByTopic.get(bucket.id);
+      const existingKey = keyByNorm.get(bucket.id);
+
+      if (existingKey) {
+        const entry = memberTopics[existingKey];
+        // Said→Did is deterministic from roll-call votes — always refresh.
+        entry.saidDidLinks = fresh?.saidDidLinks ?? [];
+        // Only overlay statements when CREC actually refreshed; never wipe on a failed fetch.
+        if (crec.searchOk) {
+          entry.statements = fresh?.statements ?? [];
+          if (fresh?.statedPosition) {
+            entry.statedPosition = fresh.statedPosition;
+            entry.statedPositionSource = fresh.statedPositionSource;
+          }
+        }
+        if (!entry.platformPositions?.length && freshPlatform?.length) {
+          entry.platformPositions = freshPlatform;
+        }
+      } else if (fresh || freshPlatform?.length) {
+        const entry: TopicPositionData = {
+          statements: fresh?.statements ?? [],
+          saidDidLinks: fresh?.saidDidLinks ?? [],
+        };
+        if (freshPlatform?.length) entry.platformPositions = freshPlatform;
+        if (fresh?.statedPosition) {
+          entry.statedPosition = fresh.statedPosition;
+          entry.statedPositionSource = fresh.statedPositionSource;
+        }
+        memberTopics[bucket.id] = entry;
+      }
     }
 
-    checkpoint[leg.bioguideId] = true;
-    await writeFile(CHECKPOINT_FILE, JSON.stringify(checkpoint) + '\n', 'utf8');
-
-    if ((i + 1) % 10 === 0 || i === members.length - 1) {
-      await writeSnapshot(members, byBioguideId, asOf, !!votesmartKey, !!govinfoKey);
-      const withData = Object.keys(byBioguideId).length;
-      console.log(`  progress: ${i + 1}/${members.length} — ${withData} members with topic position data`);
-    }
+    return memberTopics;
   }
+
+  let ioChain: Promise<void> = Promise.resolve();
+  const runExclusive = (fn: () => Promise<void>): Promise<void> => {
+    const run = ioChain.then(fn);
+    ioChain = run.catch(() => {});
+    return run;
+  };
+
+  let completed = 0;
+  await runPool(pending, MEMBER_CONCURRENCY, async (leg) => {
+    const memberTopics = await processMember(leg);
+    await runExclusive(async () => {
+      if (Object.keys(memberTopics).length > 0) {
+        byBioguideId[leg.bioguideId] = memberTopics;
+      }
+      checkpoint[leg.bioguideId] = true;
+      await writeFile(CHECKPOINT_FILE, JSON.stringify(checkpoint) + '\n', 'utf8');
+      completed += 1;
+      if (completed % 10 === 0 || completed === pending.length) {
+        await writeSnapshot(members, byBioguideId, asOf, !!votesmartKey, !!govinfoKey);
+        console.log(
+          `  progress: ${completed}/${pending.length} — ${Object.keys(byBioguideId).length} members with topic position data`,
+        );
+      }
+    });
+  });
 
   await writeSnapshot(members, byBioguideId, asOf, !!votesmartKey, !!govinfoKey);
 

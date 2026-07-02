@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "npm run test:crec",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "agent:verify": "tsx scripts/agent-verify.ts",
+    "test:crec": "tsx --test scripts/__tests__/crecProceduralFilter.test.ts",
     "agent:demo": "tsx scripts/agent-demo-check.ts",
     "sync:legislators": "tsx scripts/sync-legislators.ts",
     "sync:legislation": "tsx scripts/sync-legislation.ts",
