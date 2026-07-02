@@ -118,3 +118,26 @@ the specific failure this file was created to stop.
   `sync:legislators` → `verify:office` → `build`.
 - **bioguideId** is the universal join key — never duplicate or alias it.
 - Route pages (`app/**/page.tsx`) are server components — never add `'use client'` to them.
+
+## 6. Integrity & anti-regression (each rule earned by a real failure — never relax them)
+
+- **Failure is NEVER absence.** A fetch/sync/operation that errors is UNVERIFIED — never record
+  it as empty, complete, or "No verified record." Distinguish a failed lookup from a genuine gap,
+  and always preserve prior good data over a failed re-fetch. (A batch once recorded 17 fetch
+  failures as 17 empty profiles and overwrote good data — this rule exists to prevent that.)
+- **Every data-quality bug becomes a permanent, build-gated guard — for ALL pipelines, not just
+  CREC.** When bad data is found anywhere (votes, FEC, news, statements…), freeze the VERBATIM
+  bad example into a committed fixture + the correct good counter-example, and wire it into
+  `npm run build` so a regression fails the build. Fixtures are APPEND-ONLY — they only grow,
+  never reset. A fix without a regression guard is incomplete: it fixes the symptom and discards
+  the evidence, which is the exact cycle that wasted the most time.
+- **Verify independently of the producer.** Check the actual output artifact with a method that
+  does NOT share the producer's logic — never validate a filter with the filter's own regex; read
+  the RAW text/data. A verifier that shares the producer's blind spot turns "passed" into a
+  false pass.
+- **Read the real error before any restart or re-brief.** Never blindly restart a failed run or
+  re-send a brief — read the tee'd log / actual error first. A blind restart repeats the failure
+  and burns time.
+- **Profile, then partial-batch, before any full-scale run.** Before a full-corpus run, measure
+  per-item cost and run a substantial partial batch (e.g. 20–50). Scale to the full set only after
+  the batch passes review — catch data-quality AND throughput problems on 30 items, not 537.
