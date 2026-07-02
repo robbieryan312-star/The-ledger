@@ -2,11 +2,11 @@
   "meta": {
     "asOf": "2026-07-02",
     "source": "Ballotpedia + GovInfo CREC + Congress roll-call votes (Said→Did)",
-    "totalMembers": 1,
-    "membersWithData": 443,
+    "totalMembers": 50,
+    "membersWithData": 449,
     "membersWithPlatformPositions": 442,
     "membersWithStatedPosition": 0,
-    "membersWithSaidDidLinks": 429,
+    "membersWithSaidDidLinks": 435,
     "perTopicCoverage": {
       "abortion": 7,
       "technology": 0,
@@ -14,9 +14,9 @@
       "healthcare": 375,
       "immigration": 442,
       "climate": 8,
-      "defense-veterans": 9,
+      "defense-veterans": 15,
       "education": 435,
-      "civil-liberties": 9,
+      "civil-liberties": 13,
       "economy-taxes": 8,
       "defense": 342,
       "economy": 428,
@@ -88,6 +88,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -185,6 +186,41 @@
             "url": "https://ballotpedia.org/Roger_Wicker",
             "tier": "nonpartisan",
             "asOf": "2026-06-29"
+          }
+        ]
+      },
+      "civil-liberties": {
+        "statements": [],
+        "saidDidLinks": [
+          {
+            "topicId": "civil-liberties",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-24",
+            "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
+            "billNumber": "PN930-2",
+            "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00188.xml",
+            "voteChoice": "Yea",
+            "tier": "official"
+          },
+          {
+            "topicId": "civil-liberties",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-24",
+            "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
+            "billNumber": "PN930-7",
+            "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00186.xml",
+            "voteChoice": "Yea",
+            "tier": "official"
+          },
+          {
+            "topicId": "civil-liberties",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-23",
+            "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
+            "billNumber": "PN859-3",
+            "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00183.xml",
+            "voteChoice": "Yea",
+            "tier": "official"
           }
         ]
       }
@@ -523,7 +559,15 @@
         ]
       },
       "immigration": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. DURBIN. Mr. President, I ask unanimous consent that the order for the quorum call be rescinded. The PRESIDING OFFICER. Without objection, it is so ordered. The Democratic whip. ____________________",
+            "date": "2026-06-23",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgS3028-2",
+            "tier": "official",
+            "topicId": "immigration"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -553,6 +597,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -704,6 +749,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -713,6 +759,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -722,6 +769,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -815,6 +863,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -980,6 +1029,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -989,6 +1039,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -998,6 +1049,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -1386,6 +1438,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -1523,6 +1576,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -1532,6 +1586,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -1541,6 +1596,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -9224,6 +9280,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -9375,6 +9432,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -9384,6 +9442,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -9393,6 +9452,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -13151,6 +13211,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -13323,6 +13384,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -13332,6 +13394,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -13341,6 +13404,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -15921,6 +15985,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -16072,6 +16137,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -16081,6 +16147,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -16090,6 +16157,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -16477,6 +16545,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -16635,6 +16704,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -16644,6 +16714,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -16653,6 +16724,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -16746,6 +16818,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -16897,6 +16970,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -16906,6 +16980,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -16915,6 +16990,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -86091,6 +86167,213 @@
       "economy-taxes": {
         "statements": [],
         "saidDidLinks": []
+      }
+    },
+    "L000577": {
+      "defense-veterans": {
+        "statements": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-23",
+            "billTitle": "H. Con. Res. 86",
+            "billNumber": "H.Con.Res. 86",
+            "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-concurrent-resolution/86",
+            "voteChoice": "Nay",
+            "tier": "official"
+          }
+        ]
+      },
+      "civil-liberties": {
+        "statements": [],
+        "saidDidLinks": [
+          {
+            "topicId": "civil-liberties",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-24",
+            "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
+            "billNumber": "PN930-2",
+            "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00188.xml",
+            "voteChoice": "Yea",
+            "tier": "official"
+          },
+          {
+            "topicId": "civil-liberties",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-24",
+            "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
+            "billNumber": "PN930-7",
+            "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00186.xml",
+            "voteChoice": "Yea",
+            "tier": "official"
+          },
+          {
+            "topicId": "civil-liberties",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-23",
+            "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
+            "billNumber": "PN859-3",
+            "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00183.xml",
+            "voteChoice": "Yea",
+            "tier": "official"
+          }
+        ]
+      }
+    },
+    "M000312": {
+      "defense-veterans": {
+        "statements": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Yea",
+            "tier": "official"
+          }
+        ]
+      }
+    },
+    "M001169": {
+      "defense-veterans": {
+        "statements": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-23",
+            "billTitle": "H. Con. Res. 86",
+            "billNumber": "H.Con.Res. 86",
+            "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-concurrent-resolution/86",
+            "voteChoice": "Yea",
+            "tier": "official"
+          }
+        ]
+      },
+      "civil-liberties": {
+        "statements": [],
+        "saidDidLinks": [
+          {
+            "topicId": "civil-liberties",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-24",
+            "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
+            "billNumber": "PN930-2",
+            "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00188.xml",
+            "voteChoice": "Nay",
+            "tier": "official"
+          },
+          {
+            "topicId": "civil-liberties",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-24",
+            "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
+            "billNumber": "PN930-7",
+            "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00186.xml",
+            "voteChoice": "Nay",
+            "tier": "official"
+          },
+          {
+            "topicId": "civil-liberties",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-23",
+            "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
+            "billNumber": "PN859-3",
+            "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00183.xml",
+            "voteChoice": "Nay",
+            "tier": "official"
+          }
+        ]
+      }
+    },
+    "K000393": {
+      "defense-veterans": {
+        "statements": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-23",
+            "billTitle": "H. Con. Res. 86",
+            "billNumber": "H.Con.Res. 86",
+            "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-concurrent-resolution/86",
+            "voteChoice": "Nay",
+            "tier": "official"
+          }
+        ]
+      },
+      "civil-liberties": {
+        "statements": [],
+        "saidDidLinks": [
+          {
+            "topicId": "civil-liberties",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-24",
+            "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
+            "billNumber": "PN930-2",
+            "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00188.xml",
+            "voteChoice": "Yea",
+            "tier": "official"
+          },
+          {
+            "topicId": "civil-liberties",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-24",
+            "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
+            "billNumber": "PN930-7",
+            "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00186.xml",
+            "voteChoice": "Yea",
+            "tier": "official"
+          },
+          {
+            "topicId": "civil-liberties",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-23",
+            "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
+            "billNumber": "PN859-3",
+            "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00183.xml",
+            "voteChoice": "Yea",
+            "tier": "official"
+          }
+        ]
+      }
+    },
+    "J000289": {
+      "defense-veterans": {
+        "statements": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Nay",
+            "tier": "official"
+          }
+        ]
+      }
+    },
+    "F000476": {
+      "defense-veterans": {
+        "statements": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Yea",
+            "tier": "official"
+          }
+        ]
       }
     }
   }

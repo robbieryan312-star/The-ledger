@@ -30,6 +30,14 @@ the specific failure this file was created to stop.
   conflicting sources, or irreversible/destructive actions.
 - **Verify, never trust "done."** Independently check every completion claim (especially
   Cursor's) against the actual repo/data/build before accepting it. "It builds" ≠ "it's correct."
+- **Commit the instant work passes review — NON-NEGOTIABLE.** The moment any Cursor action,
+  generated data, or file is confirmed complete and passing quality/acceptance criteria, it is
+  IMMEDIATELY committed (locally, for the owner to push) — never left dirty in the working tree.
+  This applies automatically on every sign of completion or moving on from a task; no one should
+  have to ask each time. Verified work sitting uncommitted is treated as a bug. If Cursor can
+  commit it, instruct it to; if not, Claude Code commits it directly once no sync/writer is
+  active. Losing or re-deriving already-completed, verified work is the single most wasteful
+  failure and must not recur.
 - **The demo profiles are the locked spec.** Sanders `S000033` + the 3 other featured profiles
   are concrete. Phase 17b feeds the other 536 members through the SAME components and SAME
   checklist — it never redesigns them. Fix the script/extractor that produced bad data; never
