@@ -3,6 +3,7 @@
  * Said→Did vote links keyed by bioguideId. Produced by sync-topic-positions.ts.
  */
 import type { SourceTier, VoteChoice } from '../types';
+import { isQualifiedOfficialCrecStatement } from './crecStatements';
 import snapshot from './generated/topicPositions.json';
 
 export interface PlatformPositionEntry {
@@ -66,17 +67,14 @@ export interface TopicPositionsSnapshot {
 
 const data = snapshot as TopicPositionsSnapshot;
 
-export function getTopicPositions(
-  bioguideId: string,
-  topicId: string,
-): TopicPositionData | null {
-  const member = data.byBioguideId[bioguideId];
-  if (!member) return null;
-  const topic = member[topicId];
-  if (!topic) return null;
+function statementIsDisplayable(statement: TopicStatementEntry): boolean {
+  if (statement.tier !== 'official') return true;
+  return isQualifiedOfficialCrecStatement(statement.title);
+}
 
+function sanitizeTopicPositionData(topic: TopicPositionData): TopicPositionData | null {
   const platformPositions = topic.platformPositions ?? [];
-  const statements = topic.statements ?? [];
+  const statements = (topic.statements ?? []).filter(statementIsDisplayable);
   const saidDidLinks = topic.saidDidLinks ?? [];
   const hasPosition = Boolean(topic.statedPosition?.trim());
   const hasPlatform = platformPositions.length > 0;
@@ -86,7 +84,7 @@ export function getTopicPositions(
   }
 
   return {
-    platformPositions: platformPositions.length > 0 ? platformPositions : undefined,
+    platformPositions: hasPlatform ? platformPositions : undefined,
     statedPosition: topic.statedPosition,
     statedPositionSource: topic.statedPositionSource,
     statements,
@@ -94,8 +92,29 @@ export function getTopicPositions(
   };
 }
 
+export function getTopicPositions(
+  bioguideId: string,
+  topicId: string,
+): TopicPositionData | null {
+  const member = data.byBioguideId[bioguideId];
+  if (!member) return null;
+  const topic = member[topicId];
+  if (!topic) return null;
+
+  return sanitizeTopicPositionData(topic);
+}
+
 export function getMemberTopicPositions(bioguideId: string): Record<string, TopicPositionData> | null {
-  return data.byBioguideId[bioguideId] ?? null;
+  const member = data.byBioguideId[bioguideId];
+  if (!member) return null;
+
+  const sanitized: Record<string, TopicPositionData> = {};
+  for (const [topicId, topic] of Object.entries(member)) {
+    const sanitizedTopic = sanitizeTopicPositionData(topic);
+    if (sanitizedTopic) sanitized[topicId] = sanitizedTopic;
+  }
+
+  return Object.keys(sanitized).length > 0 ? sanitized : null;
 }
 
 export function countMembersWithTopicPositions(): number {
