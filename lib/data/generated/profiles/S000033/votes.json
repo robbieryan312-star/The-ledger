@@ -1,0 +1,439 @@
+{
+  "bioguideId": "S000033",
+  "politicianId": "bernie-sanders",
+  "votes": [
+    {
+      "id": "bernie-sanders-s119-2-184",
+      "billId": "H.Con.Res. 86",
+      "billTitle": "H. Con. Res. 86",
+      "billDescription": "On the Concurrent Resolution H.Con.Res. 86 — A concurrent resolution directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "Vote on the concurrent resolution",
+      "billSummary": "A concurrent resolution directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran.",
+      "date": "2026-06-23",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 4,
+          "nay": 47,
+          "notVoting": 2
+        },
+        "democrat": {
+          "yea": 44,
+          "nay": 1,
+          "notVoting": 0
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00184.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-23"
+      }
+    },
+    {
+      "id": "bernie-sanders-s119-2-183",
+      "billId": "PN859-3",
+      "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
+      "billDescription": "On the Nomination PN859-3 — Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe, with the rank of Ambassador. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "Confirmation vote",
+      "billSummary": "Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe, with the rank of Ambassador",
+      "date": "2026-06-23",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Judiciary",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 50,
+          "nay": 0,
+          "notVoting": 3
+        },
+        "democrat": {
+          "yea": 16,
+          "nay": 29,
+          "notVoting": 0
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 1,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00183.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-23"
+      }
+    },
+    {
+      "id": "bernie-sanders-s119-2-182",
+      "billId": "H.R. 6644",
+      "billTitle": "Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+      "billDescription": "On the Motion (Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)) — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion (Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823))",
+      "billSummary": "A bill a bill to increase the supply of housing in America, and for other purposes.",
+      "date": "2026-06-22",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 42,
+          "nay": 5,
+          "notVoting": 6
+        },
+        "democrat": {
+          "yea": 41,
+          "nay": 0,
+          "notVoting": 4
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00182.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-22"
+      }
+    },
+    {
+      "id": "bernie-sanders-s119-2-181",
+      "billId": "PN730-33",
+      "billTitle": "Confirmation: George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development",
+      "billDescription": "On the Nomination PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "Confirmation vote",
+      "billSummary": "George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development",
+      "date": "2026-06-18",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Judiciary",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 47,
+          "nay": 0,
+          "notVoting": 6
+        },
+        "democrat": {
+          "yea": 1,
+          "nay": 37,
+          "notVoting": 7
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00181.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-18"
+      }
+    },
+    {
+      "id": "bernie-sanders-s119-2-180",
+      "billId": "H.R. 6644",
+      "billTitle": "Motion to Invoke Cloture: Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+      "billDescription": "On the Cloture Motion H.R. 6644 — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Cloture Motion H.R. 6644",
+      "billSummary": "A bill a bill to increase the supply of housing in America, and for other purposes.",
+      "date": "2026-06-18",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 43,
+          "nay": 8,
+          "notVoting": 2
+        },
+        "democrat": {
+          "yea": 39,
+          "nay": 0,
+          "notVoting": 6
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00180.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-18"
+      }
+    },
+    {
+      "id": "bernie-sanders-s119-2-179",
+      "billId": "S.Res. 616",
+      "billTitle": "Motion to Discharge: S.Res. 616 from the Committee on Foreign Relations",
+      "billDescription": "On the Motion to Discharge S.Res. 616 — A resolution requesting information on Honduras's human rights practices pursuant to section 502B(c) of the Foreign Assistance Act of 1961.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion to Discharge S.Res. 616",
+      "billSummary": "A resolution requesting information on Honduras's human rights practices pursuant to section 502B(c) of the Foreign Assistance Act of 1961.",
+      "date": "2026-06-17",
+      "vote": "Yea",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 2,
+          "nay": 50,
+          "notVoting": 1
+        },
+        "democrat": {
+          "yea": 40,
+          "nay": 0,
+          "notVoting": 5
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00179.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-17"
+      }
+    },
+    {
+      "id": "bernie-sanders-s119-2-178",
+      "billId": "PN730-33",
+      "billTitle": "Motion to Invoke Cloture: George Holding to be United States Director of the European Bank for Reconstruction and Development",
+      "billDescription": "On the Cloture Motion PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Cloture Motion PN730-33",
+      "billSummary": "George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development",
+      "date": "2026-06-17",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 52,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "democrat": {
+          "yea": 2,
+          "nay": 39,
+          "notVoting": 4
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00178.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-17"
+      }
+    },
+    {
+      "id": "bernie-sanders-s119-2-177",
+      "billId": "PN901-8",
+      "billTitle": "Confirmation: Michelle Steel, of California, to be Ambassador of the United States of America to the Republic of Korea",
+      "billDescription": "On the Nomination PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "Confirmation vote",
+      "billSummary": "Michelle Steel, of California, to be Ambassador to the Republic of Korea",
+      "date": "2026-06-17",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Judiciary",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 52,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "democrat": {
+          "yea": 2,
+          "nay": 38,
+          "notVoting": 5
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 1,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00177.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-17"
+      }
+    },
+    {
+      "id": "bernie-sanders-s119-2-176",
+      "billId": "PN901-8",
+      "billTitle": "Motion to Invoke Cloture: Michelle Steel to be Ambassador of the United States of America to the Republic of Korea",
+      "billDescription": "On the Cloture Motion PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Cloture Motion PN901-8",
+      "billSummary": "Michelle Steel, of California, to be Ambassador to the Republic of Korea",
+      "date": "2026-06-17",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 51,
+          "nay": 0,
+          "notVoting": 2
+        },
+        "democrat": {
+          "yea": 2,
+          "nay": 40,
+          "notVoting": 3
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 1,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00176.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-17"
+      }
+    },
+    {
+      "id": "bernie-sanders-s119-2-175",
+      "billId": "H.R. 6644",
+      "billTitle": "Motion to Proceed to House Message to Accompany H.R. 6644",
+      "billDescription": "On the Motion to Proceed H.R. 6644 — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion to Proceed H.R. 6644",
+      "billSummary": "A bill a bill to increase the supply of housing in America, and for other purposes.",
+      "date": "2026-06-16",
+      "vote": "Not Voting",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 43,
+          "nay": 8,
+          "notVoting": 2
+        },
+        "democrat": {
+          "yea": 43,
+          "nay": 0,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 1
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00175.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-16"
+      }
+    },
+    {
+      "id": "bernie-sanders-s119-2-174",
+      "billId": "S.J.Res. 172",
+      "billTitle": "Motion to Discharge S.J.Res. 172",
+      "billDescription": "On the Motion to Discharge S.J.Res. 172 — A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion to Discharge S.J.Res. 172",
+      "billSummary": "A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.",
+      "date": "2026-06-16",
+      "vote": "Not Voting",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 4,
+          "nay": 47,
+          "notVoting": 2
+        },
+        "democrat": {
+          "yea": 42,
+          "nay": 1,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 1
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00174.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-16"
+      }
+    },
+    {
+      "id": "bernie-sanders-s119-2-173",
+      "billId": "S.J.Res. 190",
+      "billTitle": "Motion to Proceed to S.J.Res. 190",
+      "billDescription": "On the Motion to Proceed S.J.Res. 190 — A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Executive Office for Immigration Review relating to \"Appellate Procedures for the Board of Immigration Appeals\".. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion to Proceed S.J.Res. 190",
+      "billSummary": "A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Executive Office for Immigration Review relating to \"Appellate Procedures for the Board of Immigration Appeals\".",
+      "date": "2026-06-16",
+      "vote": "Not Voting",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 2,
+          "nay": 48,
+          "notVoting": 3
+        },
+        "democrat": {
+          "yea": 43,
+          "nay": 0,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 1
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00173.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-16"
+      }
+    }
+  ],
+  "asOf": "2026-06-24"
+}

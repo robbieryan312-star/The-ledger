@@ -1,6 +1,7 @@
 /**
  * FEC Schedule A org registry — maps donor entity names to topic buckets for Phase 17 joins.
- * Registry entries are curated; unknown orgs fall back to keyword classification on name/employer.
+ * Registry entries are curated; ONLY non-individual contributors whose name matches a
+ * curated org/PAC entry qualify for org→topic→vote joins.
  */
 import { RECORD_TOPIC_BUCKETS } from './profileRecordByTopic';
 import type { FecScheduleAContributor } from './fecClient';
@@ -36,12 +37,6 @@ export const FEC_ORG_REGISTRY: FecOrgRegistryEntry[] = [
   { name: 'LIUNA', topicIds: ['economy-taxes'], sector: 'Laborers union' },
   { name: 'ACTBLUE', topicIds: ['economy-taxes'], sector: 'Conduit' },
   { name: 'ACTBLUE LLC', topicIds: ['economy-taxes'], sector: 'Conduit' },
-  { name: 'BERNIE', topicIds: ['economy-taxes'], sector: 'Campaign committee' },
-  { name: 'SANDERS', topicIds: ['economy-taxes'], sector: 'Campaign committee' },
-  { name: 'TEACHER', topicIds: ['education'], sector: 'Education' },
-  { name: 'NONPROFIT', topicIds: ['civil-liberties', 'economy-taxes'], sector: 'Nonprofit' },
-  { name: 'RETIRED', topicIds: ['healthcare'], sector: 'Individual donor' },
-  { name: 'SELF-EMPLOYED', topicIds: ['economy-taxes'], sector: 'Individual donor' },
   { name: 'GOOGLE', topicIds: ['technology'], sector: 'Technology' },
   { name: 'META', topicIds: ['technology'], sector: 'Technology' },
   { name: 'FACEBOOK', topicIds: ['technology'], sector: 'Technology' },
@@ -49,11 +44,12 @@ export const FEC_ORG_REGISTRY: FecOrgRegistryEntry[] = [
   { name: 'AMAZON', topicIds: ['technology', 'economy-taxes'], sector: 'Technology' },
   { name: 'APPLE', topicIds: ['technology'], sector: 'Technology' },
   { name: 'LOCKHEED', topicIds: ['defense-veterans'], sector: 'Defense contractor' },
+  { name: 'LOCKHEED MARTIN', topicIds: ['defense-veterans'], sector: 'Defense contractor' },
   { name: 'BOEING', topicIds: ['defense-veterans'], sector: 'Defense contractor' },
   { name: 'RAYTHEON', topicIds: ['defense-veterans'], sector: 'Defense contractor' },
-  { name: 'NORTHROP', topicIds: ['defense-veterans'], sector: 'Defense contractor' },
+  { name: 'NORTHROP GRUMMAN', topicIds: ['defense-veterans'], sector: 'Defense contractor' },
   { name: 'GENERAL DYNAMICS', topicIds: ['defense-veterans'], sector: 'Defense contractor' },
-  { name: 'VETERANS', topicIds: ['defense-veterans'], sector: 'Veterans' },
+  { name: 'VETERANS OF FOREIGN WARS', topicIds: ['defense-veterans'], sector: 'Veterans' },
   { name: 'AMVETS', topicIds: ['defense-veterans'], sector: 'Veterans' },
   { name: 'NAACP', topicIds: ['civil-liberties'], sector: 'Civil rights' },
   { name: 'ACLU', topicIds: ['civil-liberties'], sector: 'Civil liberties' },
@@ -66,52 +62,74 @@ export const FEC_ORG_REGISTRY: FecOrgRegistryEntry[] = [
   { name: 'J STREET', topicIds: ['defense-veterans'], sector: 'Foreign policy' },
 ];
 
+/** FEC Schedule A personal-name pattern: "LAST, FIRST" (individual itemized contributor). */
+const INDIVIDUAL_NAME_RE = /^[A-Z][A-Za-z\-']+,\s+[A-Z][A-Za-z\s.\-']+$/;
+
+/** Org-name signals that override a LAST, FIRST-shaped committee/PAC label. */
+const ORG_NAME_SIGNAL_RE =
+  /\b(PAC|COMMITTEE|LLC|INC|CORP|UNION|ASSOCIATION|FEDERATION|PARTY|FUND|ACTION|COALITION|COUNCIL|LEAGUE|FOUNDATION)\b/i;
+
 function normalizeOrgKey(name: string): string {
   return name.trim().toUpperCase().replace(/\s+/g, ' ');
 }
 
-function classifyOrgText(text: string): string[] {
-  const hay = text.toLowerCase();
-  const matched = new Set<string>();
-  for (const bucket of RECORD_TOPIC_BUCKETS) {
-    if (bucket.id === 'legislation') continue;
-    if (
-      bucket.keywords.some((k) => {
-        const keyword = k.trim().toLowerCase();
-        if (!keyword) return false;
-        if (/\s/.test(keyword)) return hay.includes(keyword);
-        return new RegExp(`\\b${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`).test(hay);
-      })
-    ) {
-      matched.add(bucket.id);
-    }
-  }
-  return [...matched];
+/**
+ * True when a Schedule A row is an individual donor — never eligible for org→topic joins.
+ * Uses FEC entity type when present, otherwise the "LAST, FIRST" personal-name pattern.
+ */
+export function isIndividualScheduleAContributor(
+  contributor: Pick<FecScheduleAContributor, 'name'> & { entityType?: string | null },
+): boolean {
+  const entity = contributor.entityType?.trim().toUpperCase();
+  if (entity === 'IND' || entity === 'INDIVIDUAL') return true;
+
+  const name = contributor.name.trim();
+  if (!INDIVIDUAL_NAME_RE.test(name)) return false;
+  if (ORG_NAME_SIGNAL_RE.test(name)) return false;
+  return true;
 }
 
-/** Resolve one or more topic ids for a Schedule A org row. */
+/** Match contributor org name against a curated registry entry (exact or org-name substring). */
+function matchesCuratedRegistryEntry(orgName: string, entry: FecOrgRegistryEntry): boolean {
+  const name = normalizeOrgKey(orgName);
+  const key = normalizeOrgKey(entry.name);
+  if (name === key) return true;
+  // Require a minimum key length so short tokens cannot match inside personal surnames.
+  if (key.length >= 5 && name.includes(key)) return true;
+  return false;
+}
+
+/** Resolve topic ids for a curated org/PAC contributor name only. */
+export function resolveCuratedOrgTopicIds(orgName: string): string[] {
+  const topics = new Set<string>();
+  for (const entry of FEC_ORG_REGISTRY) {
+    if (matchesCuratedRegistryEntry(orgName, entry)) {
+      for (const id of entry.topicIds) topics.add(id);
+    }
+  }
+  return [...topics];
+}
+
+function registrySector(orgName: string): string | undefined {
+  for (const entry of FEC_ORG_REGISTRY) {
+    if (matchesCuratedRegistryEntry(orgName, entry)) return entry.sector;
+  }
+  return undefined;
+}
+
+/**
+ * @deprecated Use resolveCuratedOrgTopicIds on non-individual org names only.
+ * Kept for callers that pass explicit org entity names (not personal names).
+ */
 export function resolveOrgTopicIds(
   orgName: string,
   employer?: string | null,
   occupation?: string | null,
 ): string[] {
-  const context = normalizeOrgKey([orgName, employer, occupation].filter(Boolean).join(' '));
-  const topics = new Set<string>();
-
-  for (const entry of FEC_ORG_REGISTRY) {
-    const key = normalizeOrgKey(entry.name);
-    if (context.includes(key) || key.includes(context)) {
-      for (const id of entry.topicIds) topics.add(id);
-    }
-  }
-
-  if (topics.size === 0) {
-    for (const id of classifyOrgText([orgName, employer, occupation].filter(Boolean).join(' '))) {
-      topics.add(id);
-    }
-  }
-
-  return [...topics];
+  void employer;
+  void occupation;
+  if (isIndividualScheduleAContributor({ name: orgName })) return [];
+  return resolveCuratedOrgTopicIds(orgName);
 }
 
 export interface AggregatedOrgReceipt {
@@ -124,24 +142,20 @@ export interface AggregatedOrgReceipt {
   sector?: string;
 }
 
-function registrySector(orgName: string): string | undefined {
-  const hay = normalizeOrgKey(orgName);
-  for (const entry of FEC_ORG_REGISTRY) {
-    const key = normalizeOrgKey(entry.name);
-    if (hay.includes(key) || key.includes(hay)) return entry.sector;
-  }
-  return undefined;
-}
-
-/** Aggregate itemized Schedule A contributors by normalized org name with registry topic tags. */
+/** Aggregate itemized Schedule A contributors by curated org name with registry topic tags. */
 export function aggregateScheduleAOrgs(contributors: FecScheduleAContributor[]): AggregatedOrgReceipt[] {
   const byKey = new Map<string, AggregatedOrgReceipt>();
 
   for (const c of contributors) {
+    if (isIndividualScheduleAContributor(c)) continue;
+
     const orgName = c.name.trim();
     if (!orgName) continue;
+
+    const topicIds = resolveCuratedOrgTopicIds(orgName);
+    if (topicIds.length === 0) continue;
+
     const key = normalizeOrgKey(orgName);
-    const topicIds = resolveOrgTopicIds(orgName, c.employer, c.occupation);
     const existing = byKey.get(key);
     if (existing) {
       existing.totalAmount += c.amount;

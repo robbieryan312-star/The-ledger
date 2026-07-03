@@ -1,0 +1,36 @@
+{
+  "bioguideId": "S000033",
+  "items": [
+    {
+      "id": "n1",
+      "headline": "Sanders introduces Medicare for All Act for fifth consecutive Congress",
+      "summary": "Senator Sanders reintroduced the Medicare for All Act of 2023 with 14 Senate cosponsors. The bill would eliminate private health insurance in favor of a government-administered program covering all U.S. residents.",
+      "date": "2023-05-11",
+      "category": "Healthcare",
+      "isOpinion": false,
+      "isVerified": true,
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov",
+        "tier": "official",
+        "description": "Official legislative records and roll-call votes"
+      },
+      "url": "https://www.congress.gov"
+    },
+    {
+      "id": "n2",
+      "headline": "FEC reports show Sanders 2024 fundraising relies on small-dollar donations",
+      "summary": "Federal Election Commission quarterly filings show over 99% of Sanders campaign contributions come from individuals giving under $200, with an average donation of $27.",
+      "date": "2024-01-31",
+      "category": "Campaign Finance",
+      "isOpinion": false,
+      "isVerified": true,
+      "source": {
+        "name": "Federal Election Commission",
+        "url": "https://www.fec.gov",
+        "tier": "official",
+        "description": "Campaign finance disclosures"
+      }
+    }
+  ]
+}

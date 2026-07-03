@@ -1,0 +1,26 @@
+{
+  "bioguideId": "S000033",
+  "entry": {
+    "politicianId": "bernie-sanders",
+    "bioguideId": "S000033",
+    "fecCandidateId": "S4VT00033",
+    "electionYear": 2030,
+    "receipts": 23468953.69,
+    "disbursements": 11332584.7,
+    "cashOnHand": 22877129.65,
+    "individualContributions": 22470390.5,
+    "pacContributions": 27,
+    "selfFunding": 0,
+    "coverageStart": "2025-01-01",
+    "coverageEnd": "2026-03-31",
+    "reportType": "APRIL QUARTERLY",
+    "source": {
+      "name": "Federal Election Commission (OpenFEC)",
+      "url": "https://www.fec.gov/data/",
+      "tier": "official",
+      "description": "Official campaign finance disclosures via api.open.fec.gov"
+    },
+    "asOf": "2026-06-24",
+    "fecProfileUrl": "https://www.fec.gov/data/candidate/S4VT00033/"
+  }
+}

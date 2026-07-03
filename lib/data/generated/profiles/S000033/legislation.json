@@ -1,0 +1,24 @@
+{
+  "bioguideId": "S000033",
+  "status": "filled",
+  "sourcePath": "lib/data/generated/members/S000033.json",
+  "meta": {
+    "bioguideId": "S000033",
+    "asOf": "2026-06-29",
+    "source": "Congress.gov API v3",
+    "totalSponsored": 565,
+    "totalCosponsored": 7424,
+    "topicCoverage": {
+      "healthcare": 136,
+      "immigration": 69,
+      "defense": 97,
+      "economy": 97,
+      "environment": 77,
+      "education": 75,
+      "crime": 50,
+      "civil": 51,
+      "judiciary": 33,
+      "legislation": 360
+    }
+  }
+}

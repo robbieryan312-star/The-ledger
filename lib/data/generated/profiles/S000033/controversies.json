@@ -1,0 +1,51 @@
+{
+  "bioguideId": "S000033",
+  "items": [
+    {
+      "id": "c1",
+      "title": "Honeymoon trip to Soviet Union (1988)",
+      "summary": "As mayor of Burlington, VT, Sanders led a sister-city delegation to Yaroslavl, USSR in 1988. At the time he praised some aspects of Soviet social programs. These statements are documented and publicly available.",
+      "category": "Policy",
+      "status": "Resolved",
+      "date": "1988-06-01",
+      "isVerified": true,
+      "sources": [
+        {
+          "name": "Burlington Free Press archive",
+          "tier": "media",
+          "date": "1988-06-01",
+          "description": "Contemporary reporting on the trip"
+        },
+        {
+          "name": "C-SPAN archive",
+          "url": "https://www.c-span.org",
+          "tier": "official",
+          "description": "Video record of Sanders comments"
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "Campaign staff wage dispute (2019)",
+      "summary": "Field organizers on the 2020 Sanders presidential campaign publicly stated their effective hourly wage fell below $15/hr due to hours worked vs. salary paid — which conflicted with his $15 minimum wage position. The campaign subsequently raised pay.",
+      "category": "Campaign",
+      "status": "Resolved",
+      "date": "2019-07-18",
+      "isVerified": true,
+      "sources": [
+        {
+          "name": "The Guardian",
+          "tier": "media",
+          "date": "2019-07-18",
+          "description": "Reporting on organizer open letter"
+        },
+        {
+          "name": "Washington Post",
+          "tier": "media",
+          "date": "2019-07-19",
+          "description": "Campaign confirmed pay increase"
+        }
+      ]
+    }
+  ]
+}

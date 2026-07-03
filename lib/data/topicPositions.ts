@@ -4,6 +4,7 @@
  */
 import type { SourceTier, VoteChoice } from '../types';
 import snapshot from './generated/topicPositions.json';
+import { getMemberProfileTopicPositions } from './memberProfile';
 
 export interface PlatformPositionEntry {
   text: string;
@@ -70,7 +71,7 @@ export function getTopicPositions(
   bioguideId: string,
   topicId: string,
 ): TopicPositionData | null {
-  const member = data.byBioguideId[bioguideId];
+  const member = getMemberTopicPositions(bioguideId);
   if (!member) return null;
   const topic = member[topicId];
   if (!topic) return null;
@@ -95,6 +96,8 @@ export function getTopicPositions(
 }
 
 export function getMemberTopicPositions(bioguideId: string): Record<string, TopicPositionData> | null {
+  const profile = getMemberProfileTopicPositions(bioguideId);
+  if (profile) return profile;
   return data.byBioguideId[bioguideId] ?? null;
 }
 

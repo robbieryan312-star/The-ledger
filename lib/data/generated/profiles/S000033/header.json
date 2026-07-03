@@ -1,0 +1,35 @@
+{
+  "bioguideId": "S000033",
+  "profile": {
+    "bioguideId": "S000033",
+    "officialPhotoUrl": "https://www.congress.gov/img/member/s000033_200.jpg",
+    "officialWebsite": "https://www.sanders.senate.gov/",
+    "officeAddress": "332 Dirksen Senate Office Building  Washington, DC 20510",
+    "phone": "(202) 224-5141",
+    "currentMember": true,
+    "source": {
+      "name": "Congress.gov",
+      "url": "https://www.congress.gov",
+      "tier": "official"
+    }
+  },
+  "meta": {
+    "bioguideId": "S000033",
+    "asOf": "2026-06-29",
+    "source": "Congress.gov API v3",
+    "totalSponsored": 565,
+    "totalCosponsored": 7424,
+    "topicCoverage": {
+      "healthcare": 136,
+      "immigration": 69,
+      "defense": 97,
+      "economy": 97,
+      "environment": 77,
+      "education": 75,
+      "crime": 50,
+      "civil": 51,
+      "judiciary": 33,
+      "legislation": 360
+    }
+  }
+}
