@@ -26,7 +26,9 @@ const LEGISLATORS_FILE = path.join(projectRoot, 'lib/data/generated/currentLegis
 const REQUEST_TIMEOUT_MS = 20_000;
 const MAX_CREC_STATEMENTS_PER_MEMBER = 12;
 
-const TARGETS = ['K000377', 'S001217', 'R000600', 'J000294', 'C001098'];
+const TARGETS = process.env.AUDIT_IDS
+  ? process.env.AUDIT_IDS.split(',').map((s) => s.trim()).filter(Boolean)
+  : ['K000377', 'S001217', 'R000600', 'J000294', 'C001098'];
 
 interface LegislatorRow {
   bioguideId: string;
