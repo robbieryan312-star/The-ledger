@@ -1,8 +1,8 @@
 {
   "meta": {
-    "asOf": "2026-07-02",
+    "asOf": "2026-07-03",
     "source": "Ballotpedia + GovInfo CREC + Congress roll-call votes (Said→Did)",
-    "totalMembers": 50,
+    "totalMembers": 3,
     "membersWithData": 450,
     "membersWithPlatformPositions": 442,
     "membersWithStatedPosition": 0,
@@ -322,7 +322,7 @@
         "saidDidLinks": [
           {
             "topicId": "defense-veterans",
-            "statedPositionDate": "2026-06-23",
+            "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
             "billNumber": "H.Con.Res. 86",
@@ -1223,13 +1223,6 @@
             "title": "Continuing our support for Ukraine is morally right, but it is not only that. It is also a direct investment in cold, hard, American interests.",
             "date": "2022-12-21",
             "url": "https://apnews.com/article/putin-zelenskyy-washington-4d5fc23be5518e689fbbcac334769d59",
-            "tier": "alleged",
-            "topicId": "defense-veterans"
-          },
-          {
-            "title": "Let me be clear: this assistance means more jobs for American workers and newer weapons for American service members.",
-            "date": "2023-06-16",
-            "url": "https://www.politico.com/minutes/congress/06-16-2023/mcconnell-talks-ukraine/",
             "tier": "alleged",
             "topicId": "defense-veterans"
           }
@@ -2963,7 +2956,15 @@
         ]
       },
       "immigration": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Ms. BALDWIN. Mr. President, today, I rise in opposition to Donald Trump's illegal war in Iran. I come to ask a simple question: What has this war gotten us? Here is what we do know: It has tragically cost the lives of 13 servicemembers. It has caused hundreds of others to be injured. It has cost taxpayers tens upon tens of billions of dollars. It has cost the average American more than $250 more at the pump on average. It has cost farmers nearly 50 percent more on fertilizer. This war has been a disaster, and the American people agree. When the war began, it was the most unpopular war in U.S. ",
+            "date": "2026-06-23",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgS3035",
+            "tier": "official",
+            "topicId": "immigration"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -3457,7 +3458,15 @@
         ]
       },
       "immigration": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. BISHOP. Mr. Speaker, I rise today to honor a Marine, a public servant, a friend, and a man who has carried a sacred trust for more than three decades--the Honorable Ed Harbison, the Dean of the Georgia State Senate, who is retiring after thirty-four years of faithful service to the people of the 15th Senate District. This evening, at the Columbus Museum in Columbus, Georgia, the people he has served for a lifetime will gather to thank him.",
+            "date": "2026-06-04",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-04-pt1-PgE528-3",
+            "tier": "official",
+            "topicId": "immigration"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -4743,7 +4752,15 @@
         ]
       },
       "immigration": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. CALVERT. Mr. Speaker, I thank the gentlewoman for yielding. Mr. Speaker, as chair of the California Republican delegation, I rise to welcome our newest Member of the body, the gentleman from California (Mr. Gallagher). Today, the people of California's First District have chosen a champion, once again. James comes to this floor having devoted his entire career to what we affectionately call the North State: 6 years on the Sutter County Board of Supervisors, more than a decade in the California State Assembly, and years of service as his party's leader in Sacramento. He fills the seat made ",
+            "date": "2026-06-10",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-10-pt1-PgH4076-2",
+            "tier": "official",
+            "topicId": "immigration"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -5268,7 +5285,18 @@
       },
       "defense": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Yea",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "Voted Yea on:&#160; Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (Conference report) (HR 6157)",
@@ -5349,17 +5377,7 @@
       },
       "education": {
         "statements": [],
-        "saidDidLinks": [
-          {
-            "statedPositionDate": null,
-            "voteDate": "2026-06-10",
-            "billTitle": "No Aid for Ghost Students Act of 2026",
-            "billNumber": "H.R.7892",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
-            "voteChoice": "Nay",
-            "tier": "official"
-          }
-        ],
+        "saidDidLinks": [],
         "platformPositions": [
           {
             "text": "Carson was born in Indianapolis, Indiana in 1974. Cite error: Invalid &lt;ref&gt; tag; invalid names, e.g. too many He earned a bachelor's degree in criminal justice management from Concordia University- Wisconsin and a master's in business management from Indiana Wesleyan University. &#91;1&#93; Prior to serving in the U.S. Congress, Carson worked for the Indiana Department of Homeland Security, Counterterrorism and Counter intelligence. &#91;2&#93; He also served on the Indianapolis City-County Council from 2007 to 2008. Cite error: Closing &lt;/ref&gt; missing for &lt;ref&gt; tag &lt;/ref&gt; Carson was the second Muslim ever elected to the U.S. Congress. &#91;3&#93;",
@@ -9107,7 +9125,18 @@
       },
       "defense": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Nay",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "Voted Nay on:&#160; Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (Conference report) (HR 6157)",
@@ -9133,7 +9162,15 @@
         ]
       },
       "economy": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. GOSAR. Mr. Speaker, on the vote on the 21st Century ROAD to Housing Act, I intended to vote ``Yea.'' Unfortunately, due to a malfunction of my electronic voting card, my vote was not recorded. This was an unusual occurrence, as my electronic voting card successfully registered my vote on the immediately preceding vote. By the time the malfunction was discovered, the vote had closed and the period for recording votes had expired, preventing my vote from being officially recorded. I strongly support the 21st Century ROAD to Housing Act. Had my voting card functioned properly, I would have vo",
+            "date": "2026-06-25",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-25-pt1-PgE619-4",
+            "tier": "official",
+            "topicId": "economy-taxes"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -9188,17 +9225,7 @@
       },
       "education": {
         "statements": [],
-        "saidDidLinks": [
-          {
-            "statedPositionDate": null,
-            "voteDate": "2026-06-10",
-            "billTitle": "No Aid for Ghost Students Act of 2026",
-            "billNumber": "H.R.7892",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
-            "voteChoice": "Yea",
-            "tier": "official"
-          }
-        ],
+        "saidDidLinks": [],
         "platformPositions": [
           {
             "text": "Paul Gosar was born in Rock Springs, Wyoming , in 1958. Gosar graduated from Pinedale High School in 1977. He earned a B.S. and D.D.S. from Creighton University in 1981 and 1985, respectively. Gosar's career experience includes working as a dentist. &#91;1&#93;",
@@ -10027,7 +10054,15 @@
     },
     "G000558": {
       "healthcare": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. GUTHRIE. Mr. Speaker, I rise today to congratulate my constituent and fellow Kentuckian, Robert Magalong, upon his acceptance to the United States Military Academy at West Point. Nominating young people to our service academies is one of my greatest honors as a Member of Congress. As a future West Point cadet, he will soon embark on a life-changing journey, joining the greatest fighting force on the face of the earth, the United States military. Throughout the entire application process, Robert showed himself to be a talented and well-rounded candidate. I do not doubt that he will succeed ",
+            "date": "2026-05-07",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-05-07-pt1-PgE421",
+            "tier": "official",
+            "topicId": "healthcare"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -15372,7 +15407,15 @@
         ]
       },
       "crime": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Ms. MURKOWSKI. Madam President, like so many of us here in the Senate and really across the country, I think we have all been watching the news this weekend to see whether or not we would have an announcement from the Trump administration on a possible agreement to reopen the Strait of Hormuz and ensure that Iran never develops a nuclear weapon, among other objectives. I think the news this morning was promising, and we are all waiting to see what the contours of that agreement will be. We can debate the way the administration started this war, but I certainly stand here today genuinely wishin",
+            "date": "2026-06-15",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-15-pt1-PgS2776-5",
+            "tier": "official",
+            "topicId": "public-safety"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -20469,8 +20512,27 @@
         ]
       },
       "defense": {
-        "statements": [],
-        "saidDidLinks": [],
+        "statements": [
+          {
+            "title": "Mr. SCALISE. Mr. Speaker, I have a motion at the desk. The SPEAKER pro tempore. The Clerk will report the motion to reconsider. The Clerk read as follows: Mr. Scalise of Louisiana moves to reconsider the vote on adoption of H. Res. 1398. The SPEAKER pro tempore. The question is on the motion to reconsider. The question was taken; and the Speaker pro tempore announced that the ayes appeared to have it. Recorded Vote Mr. McGOVERN. Mr. Speaker, I demand a recorded vote. A recorded vote was ordered. The SPEAKER pro tempore. Pursuant to clause 8 of rule XX, further proceedings on this question will",
+            "date": "2026-06-30",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-30-pt1-PgH4335-4",
+            "tier": "official",
+            "topicId": "defense-veterans"
+          }
+        ],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": "2026-06-30",
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Nay",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "Voted Yea on:&#160; Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (Conference report) (HR 6157)",
@@ -20496,7 +20558,15 @@
         ]
       },
       "economy": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. SCALISE. Mr. Speaker, I thank my friend from Minnesota for yielding and all the applause coming from the other side. Look,",
+            "date": "2026-03-27",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-03-27-pt2-PgH2793-6",
+            "tier": "official",
+            "topicId": "economy-taxes"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -20551,17 +20621,7 @@
       },
       "education": {
         "statements": [],
-        "saidDidLinks": [
-          {
-            "statedPositionDate": null,
-            "voteDate": "2026-06-10",
-            "billTitle": "No Aid for Ghost Students Act of 2026",
-            "billNumber": "H.R.7892",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
-            "voteChoice": "Yea",
-            "tier": "official"
-          }
-        ],
+        "saidDidLinks": [],
         "platformPositions": [
           {
             "text": "Scalise was born in 1965 in New Orleans, Louisiana , and graduated from Rummel High School. He earned his B.S. from Louisiana State University and worked as both a software engineer and a technology company marketing executive prior to his political career. &#91;9&#93;",
@@ -21254,7 +21314,7 @@
         "saidDidLinks": [
           {
             "topicId": "defense-veterans",
-            "statedPositionDate": "2026-06-18",
+            "statedPositionDate": "2026-06-23",
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
             "billNumber": "H.Con.Res. 86",
@@ -27034,7 +27094,15 @@
         ]
       },
       "civil-liberties": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. MASSIE. Mr. Speaker, I rise in opposition to this clean reauthorization of an unconstitutional program that is being used to spy on Americans without warrants. This would be the third temporary, clean extension of this unconstitutional program, and I find myself on the unfortunate opposition to the chairman of the committee of jurisdiction, the distinguished gentleman from Ohio (",
+            "date": "2026-06-10",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-10-pt1-PgH4079-8",
+            "tier": "official",
+            "topicId": "civil-liberties"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -29823,7 +29891,15 @@
         ]
       },
       "immigration": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Ms. WARREN. Madam President, I rise today in support of the 21st Century ROAD to Housing Act. We are closer than ever to passing the biggest housing bill since 1990, when the average price of a home in America sold for $150,000. Today, 36 years later, the average home is selling for over $500,000. The American dream of home ownership is now out of reach for millions of families. The median age of a first-time home buyer is now at an alltime high, and it is no secret why this has happened. Our Nation has a shortage of millions of homes. And our housing crisis doesn't just affect the opportunity",
+            "date": "2026-06-22",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-22-pt1-PgS2982",
+            "tier": "official",
+            "topicId": "immigration"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -31786,7 +31862,15 @@
         ]
       },
       "immigration": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. JEFFRIES. Madam Speaker, I thank my good friend and colleague Representative Brendan Boyle from the great Commonwealth of Pennsylvania for yielding and for his leadership. Madam Speaker, I rise today in strong opposition to this Republican scheme to waste $70 billion in taxpayer money to give a blank check to ICE without any guardrails, any oversight, or any accountability. Immigration enforcement in this country should be fair, it should be just, and it should be humane. That is not what is going on right now as it relates to Donald Trump's violent mass deportation machine. Donald Trump p",
+            "date": "2026-06-09",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-09-pt1-PgH4017",
+            "tier": "official",
+            "topicId": "immigration"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -31851,7 +31935,15 @@
         ]
       },
       "economy": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. JEFFRIES. Mr. Speaker, I thank my good friend and colleague, the distinguished gentleman from the great State of California, Representative Mike Thompson, for yielding and for his leadership. We are here on the House floor debating this resolution that Republicans have introduced on tax day to celebrate themselves. This is an extraordinary thing. I have seen a lot during my time here in the United States Congress for more than 10 years. I have never seen a resolution introduced by Members of Congress, let alone a party, the Republican Party, to celebrate themselves for a bill that has dama",
+            "date": "2026-04-15",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-04-15-pt1-PgH2913",
+            "tier": "official",
+            "topicId": "economy-taxes"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -32768,7 +32860,7 @@
         "saidDidLinks": [
           {
             "topicId": "defense-veterans",
-            "statedPositionDate": "2026-06-18",
+            "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
             "billNumber": "H.Con.Res. 86",
@@ -40868,7 +40960,15 @@
     },
     "R000600": {
       "immigration": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mrs. RADEWAGEN. Mr. Speaker, I rise today to honor the life of David Thomas Pangelinan Perez, who passed away on February 16, 2026. He is preceded by his wife, Maria Luisa Cruz Paulino, to whom he was married for 53 years; and survived by seven children, fifteen grandchildren, seventeen great-grandchildren, and two great-great grandchildren. David was born in Guam on August 19, 1937. He retired as a Department of the Army civilian after 35 years of service, traveling on assignment in Asia, Europe, and throughout the U.S. After retiring he worked with the government of the Federated States of t",
+            "date": "2026-06-10",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-10-pt1-PgE558",
+            "tier": "official",
+            "topicId": "immigration"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -86623,6 +86723,18 @@
             "tier": "official"
           }
         ]
+      },
+      "healthcare": {
+        "statements": [
+          {
+            "title": "Ms. SMITH. Mr. President, reserving the right to object, I want to say a couple of words about this bill that I strongly oppose. This bill would expand the already draconian global gag rule to apply to more types of foreign aid, more services, and more organizations by codifying the Trump administration's so-called human flourishing policy. So this would basically be a gag rule not just on global health programs, which is bad enough, but on all nonmilitary foreign assistance. What it would do is it would say that any organization anywhere in the world that provides, refers, or even mentions ab",
+            "date": "2026-06-23",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgS3048",
+            "tier": "official",
+            "topicId": "healthcare"
+          }
+        ],
+        "saidDidLinks": []
       }
     }
   }
