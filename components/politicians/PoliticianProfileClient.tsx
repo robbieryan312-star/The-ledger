@@ -7,7 +7,7 @@ import type { FecFinanceEntry } from '@/lib/data/fecFinance';
 import type { CongressVoteEntry } from '@/lib/data/congressVotes';
 import type { ProfileRecordByTopic } from '@/lib/data/profileRecordByTopic';
 import type { MemberDeepProfile } from '@/lib/data/memberDeep';
-import type { RecordJuxtaposition, CampaignFinance, Politician, StockTrade, VoteRecord, EvidenceItem, Issue } from '@/lib/types';
+import type { RecordJuxtaposition, CampaignFinance, Politician, StockTrade, VoteRecord, EvidenceItem, Issue, NewsItem } from '@/lib/types';
 import SourceBadge from '@/components/ui/SourceBadge';
 import SourceProvenance from '@/components/ui/SourceProvenance';
 import { PHOTO_ATTRIBUTION } from '@/lib/data/photos';
@@ -70,6 +70,7 @@ export interface PoliticianProfileClientProps {
   recordByTopic: ProfileRecordByTopic | null;
   memberDeep: MemberDeepProfile | null;
   voteviewMember: ReturnType<typeof import('@/lib/data/slices/voteview').getVoteviewByBioguide>;
+  displayNews: NewsItem[];
   floridaNewsBundle: NewsBundleSlice | null;
   recordJuxtapositions: RecordJuxtaposition[];
   isFederalCongress: boolean;
@@ -510,6 +511,7 @@ export default function PoliticianProfileClient({
   recordByTopic,
   memberDeep,
   voteviewMember,
+  displayNews,
   floridaNewsBundle,
   recordJuxtapositions,
   isFederalCongress,
@@ -1021,7 +1023,7 @@ export default function PoliticianProfileClient({
           <div className="space-y-6">
             <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
               <h2 className="text-white font-bold mb-4">News & Coverage</h2>
-              {isLightweight ? <MissingRecordPanel kind="news coverage" /> : <ProfileNewsExplorer news={politician.news} name={politician.name} />}
+              {isLightweight ? <MissingRecordPanel kind="news coverage" /> : <ProfileNewsExplorer news={displayNews} name={politician.name} />}
             </div>
             {floridaNewsBundle && floridaNewsBundle.sections.some((s) => s.records.length > 0) && (
               <FloridaNewsSections bundle={floridaNewsBundle} />

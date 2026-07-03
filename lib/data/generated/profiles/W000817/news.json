@@ -1,6 +1,22 @@
 {
   "bioguideId": "W000817",
-  "items": [],
-  "status": "fetch-blocked",
-  "note": "GDELT DOC API returned rate-limit responses after retries; news absence not verified."
+  "items": [
+    {
+      "id": "w000817-gdelt-1",
+      "headline": "Elizabeth Warren says  frenzy  of mergers under Trump could be reversed | Elizabeth Warren",
+      "summary": "Elizabeth Warren says  frenzy  of mergers under Trump could be reversed | Elizabeth Warren",
+      "date": "2026-06-25",
+      "category": "Congress",
+      "isOpinion": false,
+      "isVerified": false,
+      "url": "https://www.theguardian.com/us-news/2026/jun/25/elizabeth-warren-trump-mergers",
+      "source": {
+        "name": "The Guardian",
+        "url": "https://www.theguardian.com/us-news/2026/jun/25/elizabeth-warren-trump-mergers",
+        "tier": "media",
+        "date": "2026-06-25"
+      }
+    }
+  ],
+  "note": "1 relevant article found in approved-outlet GDELT coverage (target 15)."
 }

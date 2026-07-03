@@ -1,4 +1,6 @@
 {
   "bioguideId": "O000172",
-  "items": []
+  "items": [],
+  "status": "fetch-blocked",
+  "note": "GDELT DOC API rate-limited after 5 attempts with exponential backoff (5000ms, 15000ms, 30000ms, 60000ms, 120000ms). News absence not verified — retry once the shared egress quota clears."
 }

@@ -12,6 +12,7 @@ import sandersSaidDid from './generated/profiles/S000033/saidDid.json';
 import sandersOrgVoteLinks from './generated/profiles/S000033/orgVoteLinks.json';
 import sandersVotes from './generated/profiles/S000033/votes.json';
 import sandersFinance from './generated/profiles/S000033/finance.json';
+import sandersNews from './generated/profiles/S000033/news.json';
 
 import o000172Statements from './generated/profiles/O000172/statements.json';
 import o000172Positions from './generated/profiles/O000172/positions.json';
@@ -19,6 +20,7 @@ import o000172SaidDid from './generated/profiles/O000172/saidDid.json';
 import o000172OrgVoteLinks from './generated/profiles/O000172/orgVoteLinks.json';
 import o000172Votes from './generated/profiles/O000172/votes.json';
 import o000172Finance from './generated/profiles/O000172/finance.json';
+import o000172News from './generated/profiles/O000172/news.json';
 
 import m000355Statements from './generated/profiles/M000355/statements.json';
 import m000355Positions from './generated/profiles/M000355/positions.json';
@@ -26,6 +28,7 @@ import m000355SaidDid from './generated/profiles/M000355/saidDid.json';
 import m000355OrgVoteLinks from './generated/profiles/M000355/orgVoteLinks.json';
 import m000355Votes from './generated/profiles/M000355/votes.json';
 import m000355Finance from './generated/profiles/M000355/finance.json';
+import m000355News from './generated/profiles/M000355/news.json';
 
 import m001184Statements from './generated/profiles/M001184/statements.json';
 import m001184Positions from './generated/profiles/M001184/positions.json';
@@ -33,6 +36,7 @@ import m001184SaidDid from './generated/profiles/M001184/saidDid.json';
 import m001184OrgVoteLinks from './generated/profiles/M001184/orgVoteLinks.json';
 import m001184Votes from './generated/profiles/M001184/votes.json';
 import m001184Finance from './generated/profiles/M001184/finance.json';
+import m001184News from './generated/profiles/M001184/news.json';
 
 import w000817Statements from './generated/profiles/W000817/statements.json';
 import w000817Positions from './generated/profiles/W000817/positions.json';
@@ -40,6 +44,7 @@ import w000817SaidDid from './generated/profiles/W000817/saidDid.json';
 import w000817OrgVoteLinks from './generated/profiles/W000817/orgVoteLinks.json';
 import w000817Votes from './generated/profiles/W000817/votes.json';
 import w000817Finance from './generated/profiles/W000817/finance.json';
+import w000817News from './generated/profiles/W000817/news.json';
 
 import c001098Statements from './generated/profiles/C001098/statements.json';
 import c001098Positions from './generated/profiles/C001098/positions.json';
@@ -47,16 +52,18 @@ import c001098SaidDid from './generated/profiles/C001098/saidDid.json';
 import c001098OrgVoteLinks from './generated/profiles/C001098/orgVoteLinks.json';
 import c001098Votes from './generated/profiles/C001098/votes.json';
 import c001098Finance from './generated/profiles/C001098/finance.json';
+import c001098News from './generated/profiles/C001098/news.json';
 
 import type { OrgVoteTopicLink } from './buildOrgVoteTopicLinks';
 import type { FecFinanceEntry } from './fecFinance';
-import type { Source, VoteRecord } from '../types';
+import type { NewsItem, Source, VoteRecord } from '../types';
 import type {
   PlatformPositionEntry,
   SaidDidLinkEntry,
   TopicPositionData,
   TopicStatementEntry,
 } from './topicPositions';
+import { leadSummary } from './displaySummary';
 
 function isDisplayableStatement(statement: TopicStatementEntry): boolean {
   if (statement.tier === 'media' || statement.tier === 'alleged') {
@@ -180,6 +187,15 @@ const PROFILE_FINANCE: Record<string, ProfileFinanceFile> = {
   C001098: c001098Finance as ProfileFinanceFile,
 };
 
+const PROFILE_NEWS: Record<string, ProfileNewsFile> = {
+  S000033: sandersNews as ProfileNewsFile,
+  O000172: o000172News as ProfileNewsFile,
+  M000355: m000355News as ProfileNewsFile,
+  M001184: m001184News as ProfileNewsFile,
+  W000817: w000817News as ProfileNewsFile,
+  C001098: c001098News as ProfileNewsFile,
+};
+
 /**
  * Reconstruct TopicPositionData map from per-category profile files.
  * Returns null when the member has not been migrated.
@@ -258,4 +274,44 @@ function inferChamberFromVotes(votes: VoteRecord[]): 'house' | 'senate' {
 export function getMemberProfileFinance(bioguideId: string): FecFinanceEntry | null {
   if (!MIGRATED_PROFILE_BIOGUIDES.has(bioguideId)) return null;
   return PROFILE_FINANCE[bioguideId]?.entry ?? null;
+}
+
+interface ProfileNewsFile {
+  bioguideId: string;
+  items: NewsItem[];
+  status?: 'fetch-blocked';
+  note?: string;
+}
+
+/**
+ * News items for migrated profiles — materialized from
+ * generated/profiles/{bioguideId}/news.json (Group C: approved-outlet journalism only).
+ * Rendered headline/summary text is display-only here; the underlying `headline` and
+ * `summary` fields on disk are never mutated (source-integrity guards check the raw fields).
+ * Returns null (never `[]` as a false "verified empty") when the fetch is blocked and no
+ * prior verified items exist, so callers can fall back rather than show an honest-gap that
+ * isn't actually verified absence.
+ */
+export function getMemberProfileNews(bioguideId: string): NewsItem[] | null {
+  const file = PROFILE_NEWS[bioguideId];
+  if (!file) return null;
+  if (file.items.length === 0 && file.status === 'fetch-blocked') return null;
+  return file.items.map((item) => ({
+    ...item,
+    summary: leadSummary(item.summary || item.headline, 200) || item.headline,
+  }));
+}
+
+/**
+ * Display news for a politician page: prefer the migrated profile's news.json
+ * (Group C GDELT pipeline, approved outlets only) when it has verified items; otherwise
+ * fall back to the existing hand-curated `mockNews` so a GDELT rate-limit never regresses
+ * a profile that already has real, previously-vetted coverage on display (core-rules §6:
+ * "always preserve prior good data over a failed re-fetch").
+ */
+export function mergeProfileNews(mockNews: NewsItem[], bioguideId?: string): NewsItem[] {
+  if (!bioguideId || !MIGRATED_PROFILE_BIOGUIDES.has(bioguideId)) return mockNews;
+  const profileNews = getMemberProfileNews(bioguideId);
+  if (profileNews && profileNews.length > 0) return profileNews;
+  return mockNews;
 }
