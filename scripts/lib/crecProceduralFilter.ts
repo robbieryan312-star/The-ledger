@@ -106,5 +106,19 @@ export function isProceduralCrecText(text: string): boolean {
   // 7. Bare surname roster.
   if (hasSurnameRun(t)) return true;
 
+  // 8. Procedural floor actions / chamber housekeeping. The member is recognized and addresses
+  //    the chair, but the excerpt is a motion, a unanimous-consent housekeeping request, a
+  //    quorum-call action, or a committee nomination report — not a substantive remark that
+  //    states a position. (Surfaced by the Phase 17b 50-member speaking-diversity batch.)
+  if (/quorum call be rescinded/i.test(t)) return true;
+  if (/resume legislative session/i.test(t)) return true;
+  if (/\bI move to proceed to\b/i.test(t)) return true;
+  if (/I report favorably the following nomination/i.test(t)) return true;
+  if (/granted floor privileges/i.test(t)) return true;
+  if (/the previously scheduled recess/i.test(t)) return true;
+
+  // 8b. Ceremonial intern recognition — a thank-you to office staff, not a policy statement.
+  if (/\ban intern in (my|his|her|the|our)\b/i.test(t)) return true;
+
   return false;
 }

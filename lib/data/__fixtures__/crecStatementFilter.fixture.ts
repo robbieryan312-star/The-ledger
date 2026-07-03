@@ -93,6 +93,44 @@ export const KNOWN_BAD: CrecFilterFixtureCase[] = [
     label: 'C001101 quoted statutory bill text (wilderness)',
     text: 'Clark and Lincoln Counties, Nevada, to be known as the ``Southern Paiute Wilderness\'\'. (2) Boundary.--The boundary of any portion of the wilderness area that is bordered by a road shall be not less than 50 feet from the centerline of the road. (3) Map and legal description.-- (A) In general.--As soon as practicable after the date of enactment of this Act, the Secretary shall prepare a map and legal description of the wilderness area. (B) Effect.--The map and legal description prepared under subparagraph (A) shall have the same force and effect as if included in this section, except that the Se',
   },
+  // --- Phase 17b 50-member speaking-diversity batch: procedural floor actions that open with an
+  //     address to the chair but carry no substantive position. ---
+  {
+    label: 'D000563 quorum-call rescission',
+    text: 'Mr. DURBIN. Mr. President, I ask unanimous consent that the order for the quorum call be rescinded. The PRESIDING OFFICER. Without objection, it is so ordered. The Democratic whip. ____________________',
+  },
+  {
+    label: 'H001042 quorum-call rescission',
+    text: 'Mr. HIRONO. Mr. President, I ask unanimous consent that the order for the quorum call be rescinded. The PRESIDING OFFICER. Without objection, it is so ordered. The online Record has been corrected to read: Ms. HIRONO. Mr. President, I ask unanimous consent that the order for the quorum call be rescinded.',
+  },
+  {
+    label: 'S000148 quorum-call rescission + recognition',
+    text: 'Mr. SCHUMER. Mr. President, I ask unanimous consent that the order for the quorum call be rescinded. The ACTING PRESIDENT pro tempore. Without objection, it is so ordered. Recognition of the Minority Leader The Democratic leader is recognized. Iran',
+  },
+  {
+    label: 'T000250 motion to proceed to executive session',
+    text: 'Mr. THUNE. Mr. President, I move to proceed to executive session to consider Calendar No. 776. The PRESIDING OFFICER. The question is on agreeing to the motion. The motion was agreed to. The PRESIDING OFFICER. The clerk will report the nomination.',
+  },
+  {
+    label: 'T000250 resume legislative session / morning business',
+    text: 'Mr. THUNE. Mr. President, I ask unanimous consent that the Senate resume legislative session and be in a period of morning business, with Senators permitted to speak therein for up to 10 minutes each.',
+  },
+  {
+    label: 'C001098 committee nomination report',
+    text: 'Mr. CRUZ. Mr. President, for the Committee on Commerce, Science, and Transportation I report favorably the following nomination lists which were printed in the Record on the dates indicated, and ask unanimous consent, to save the expense of reprinting on the Executive Calendar that these nominations lie at the Secretary\'s desk for the information of Senators.',
+  },
+  {
+    label: 'C001075 intern floor-privileges request',
+    text: 'Mr. CASSIDY. Mr. President, I ask unanimous consent for the following interns in my office to be granted floor privileges until June 24, 2026: Stella Israelite and William Homes.',
+  },
+  {
+    label: 'R000584 request to speak before scheduled recess',
+    text: 'Mr. RISCH. Mr. President, I ask unanimous consent to speak for up to 5 minutes before the previously scheduled recess. The PRESIDING OFFICER. Without objection, it is so ordered. ____________________',
+  },
+  {
+    label: 'T000250 ceremonial intern recognition',
+    text: 'Mr. THUNE. Mr. President, today I recognize Elena Rossi, an intern in my Washington, DC, office, for all of the hard work she has done for me, my staff, and the State of South Dakota over the past several weeks. Elena is a graduate of Georgetown Visitation Preparatory School in Washington, DC.',
+  },
 ];
 
 /** Genuine spoken floor prose / verified media quotes — MUST all pass the filter. */
@@ -112,5 +150,27 @@ export const KNOWN_GOOD: CrecFilterFixtureCase[] = [
   {
     label: 'M001184 floor speech — question of privilege',
     text: 'Mr. MASSIE. Mr. Speaker, I rise to raise a question of the privileges of the House and offer a resolution previously noticed.',
+  },
+  // --- Phase 17b batch: substantive floor speeches that MUST survive the expanded procedural
+  //     rules (guard against over-rejection of genuine remarks that mention procedural nouns). ---
+  {
+    label: 'S000148 floor speech — Republican agenda',
+    text: 'Mr. SCHUMER. Mr. President, everywhere you look, Republicans are one big, hot mess. The reason is simple: Donald Trump is pursuing policies that are terrible for America and despised by the American people. The Republicans know just how unpopular Trump\'s agenda is, but they fall into line out of fear or blind loyalty or some of each.',
+  },
+  {
+    label: 'C001056 floor speech — China / Deng Xiaoping',
+    text: 'Mr. CORNYN. Mr. President, there is an old Chinese saying attributed to Deng Xiaoping that goes: Hide your strength, bide your time. Hide your strength, bide your time. China has, of course, been hiding its strength and biding its time for many years now.',
+  },
+  {
+    label: 'C001075 floor speech — health insurance tax treatment',
+    text: 'Mr. CASSIDY. Mr. President, people know that the Federal Government helps Americans purchase health insurance. We do that by making health insurance tax deductible. When you pay for your premiums, it is on what is called a pretax basis, but something is wrong.',
+  },
+  {
+    label: 'R000584 floor speech — H. Con. Res. 86',
+    text: 'Mr. RISCH. Mr. President, I am going to talk for a minute about H. Con. Res. 86, the item of business that is before the U.S. Senate this morning. This is a House concurrent resolution, which states, in operative part: Congress directs',
+  },
+  {
+    label: 'B001277 floor speech — DACA',
+    text: 'Mr. BLUMENTHAL. Mr. President, I am honored to join my colleagues this afternoon in celebrating the Deferred Action for Children Arrivals, or DACA, Program and its absolutely historic impact on our country, but also to mourn and to express outrage at the all-out assault launched against this program by the Trump administration.',
   },
 ];

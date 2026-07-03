@@ -3,10 +3,10 @@
     "asOf": "2026-07-02",
     "source": "Ballotpedia + GovInfo CREC + Congress roll-call votes (Said→Did)",
     "totalMembers": 50,
-    "membersWithData": 449,
+    "membersWithData": 450,
     "membersWithPlatformPositions": 442,
     "membersWithStatedPosition": 0,
-    "membersWithSaidDidLinks": 435,
+    "membersWithSaidDidLinks": 438,
     "perTopicCoverage": {
       "abortion": 7,
       "technology": 0,
@@ -14,9 +14,9 @@
       "healthcare": 375,
       "immigration": 442,
       "climate": 8,
-      "defense-veterans": 15,
+      "defense-veterans": 19,
       "education": 435,
-      "civil-liberties": 13,
+      "civil-liberties": 14,
       "economy-taxes": 8,
       "defense": 342,
       "economy": 428,
@@ -310,10 +310,19 @@
         ]
       },
       "defense": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. CORNYN. Mr. President, there is an old Chinese saying attributed to Deng Xiaoping that goes: Hide your strength, bide your time. Hide your strength, bide your time. China has, of course, been hiding its strength and biding its time for many years now. For too long, the West has turned a blind eye to what has been happening in the People's Republic of China--controlled, of course, by the Chinese Communist Party. We allowed them to join the World Trade Organization, naively hoping that, by allowing them to participate in the global economy, that they would somehow adopt Western principles of",
+            "date": "2026-06-23",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgS3044",
+            "tier": "official",
+            "topicId": "defense-veterans"
+          }
+        ],
         "saidDidLinks": [
           {
-            "statedPositionDate": null,
+            "topicId": "defense-veterans",
+            "statedPositionDate": "2026-06-23",
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
             "billNumber": "H.Con.Res. 86",
@@ -478,6 +487,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -487,6 +497,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -496,6 +507,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -559,15 +571,7 @@
         ]
       },
       "immigration": {
-        "statements": [
-          {
-            "title": "Mr. DURBIN. Mr. President, I ask unanimous consent that the order for the quorum call be rescinded. The PRESIDING OFFICER. Without objection, it is so ordered. The Democratic whip. ____________________",
-            "date": "2026-06-23",
-            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgS3028-2",
-            "tier": "official",
-            "topicId": "immigration"
-          }
-        ],
+        "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -1687,10 +1691,19 @@
         ]
       },
       "defense": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. RISCH. Mr. President, I am going to talk for a minute about H. Con. Res. 86, the item of business that is before the U.S. Senate this morning. This is a House concurrent resolution, which states, in operative part: Congress directs",
+            "date": "2026-06-23",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgS3039",
+            "tier": "official",
+            "topicId": "defense-veterans"
+          }
+        ],
         "saidDidLinks": [
           {
-            "statedPositionDate": null,
+            "topicId": "defense-veterans",
+            "statedPositionDate": "2026-06-23",
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
             "billNumber": "H.Con.Res. 86",
@@ -1841,6 +1854,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -1850,6 +1864,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -1859,6 +1874,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -2200,6 +2216,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -2351,6 +2368,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -2360,6 +2378,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -2369,6 +2388,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -2729,7 +2749,18 @@
       },
       "defense": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Nay",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "Voted Yea on:&#160; Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (Conference report) (HR 6157)",
@@ -2810,17 +2841,7 @@
       },
       "education": {
         "statements": [],
-        "saidDidLinks": [
-          {
-            "statedPositionDate": null,
-            "voteDate": "2026-06-10",
-            "billTitle": "No Aid for Ghost Students Act of 2026",
-            "billNumber": "H.R.7892",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
-            "voteChoice": "Yea",
-            "tier": "official"
-          }
-        ],
+        "saidDidLinks": [],
         "platformPositions": [
           {
             "text": "Robert Aderholt was born in Haleyville, Alabama , in 1965. &#91;1&#93; He attended the University of North Alabama from 1983 to 1984, and graduated from Birmingham-Southern College in 1987 with bachelor's degrees in history and political science. He earned a J.D. from The Cumberland School of Law at Samford University in 1990. &#91;2&#93; He previously worked as a lawyer, as a municipal judge, and as a staffer for Gov. Fob James (R). &#91;1&#93;",
@@ -2972,6 +2993,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -3123,6 +3145,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -3132,6 +3155,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -3141,6 +3165,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -3232,7 +3257,18 @@
       },
       "defense": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Nay",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "Voted Yea on:&#160; Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (Conference report) (HR 6157)",
@@ -3313,17 +3349,7 @@
       },
       "education": {
         "statements": [],
-        "saidDidLinks": [
-          {
-            "statedPositionDate": null,
-            "voteDate": "2026-06-10",
-            "billTitle": "No Aid for Ghost Students Act of 2026",
-            "billNumber": "H.R.7892",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
-            "voteChoice": "Yea",
-            "tier": "official"
-          }
-        ],
+        "saidDidLinks": [],
         "platformPositions": [
           {
             "text": "Gus Bilirakis was born in Gainesville, Florida. He earned a bachelor's degree from the University of Florida in 1986 and a law degree from Stetson Law School in 1989. &#91;1&#93; Bilirakis owned a law practice focused on estate planning. He served on the board of Lighthouse for the Blind, as a member of the Rotary Club, and as a member of his local chamber of commerce. &#91;2&#93;",
@@ -3459,7 +3485,18 @@
       },
       "defense": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Yea",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "Voted Yea on:&#160; Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (Conference report) (HR 6157)",
@@ -3540,17 +3577,7 @@
       },
       "education": {
         "statements": [],
-        "saidDidLinks": [
-          {
-            "statedPositionDate": null,
-            "voteDate": "2026-06-10",
-            "billTitle": "No Aid for Ghost Students Act of 2026",
-            "billNumber": "H.R.7892",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
-            "voteChoice": "Yea",
-            "tier": "official"
-          }
-        ],
+        "saidDidLinks": [],
         "platformPositions": [
           {
             "text": "Sanford Bishop was born in Mobile, Alabama , in 1947. He earned a bachelor's degree from Moorehouse College in 1968, and a J.D. from Emory University in 1971. His previous work experience included working as a lawyer. Bishop served in the Georgia House of Representatives from 1977 to 1990 and the Georgia Senate from 1992 to 1993. &#91;1&#93;",
@@ -3914,7 +3941,15 @@
     },
     "B001277": {
       "healthcare": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. BLUMENTHAL. Mr. President, I am honored to join my colleagues this afternoon in celebrating the Deferred Action for Children Arrivals, or DACA, Program and its absolutely historic impact on our country, but also to mourn and to express outrage at the all-out assault launched against this program by the Trump administration. The point of it, once again, seems to be cruelty--purposeful, relentless cruelty--which we have seen in the implementation of immigration practices in so many different ways by this administration. Just this morning--literally, this morning--I participated in the announ",
+            "date": "2026-06-15",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-15-pt1-PgS2796",
+            "tier": "official",
+            "topicId": "healthcare"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -3971,6 +4006,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -4122,6 +4158,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -4131,6 +4168,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -4140,6 +4178,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -4233,6 +4272,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -4314,7 +4354,15 @@
         ]
       },
       "education": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. BOOZMAN. Mr. President, I rise today to recognize the 80th anniversary of the Boys & Girls Club of Jefferson County in Pine Bluff, AR. For eight decades, the Boys & Girls Club of Jefferson County has been a cornerstone of opportunity, mentorship, and hope for generations of young Arkansans. Since its founding, the organization has remained steadfast in its mission to inspire young people--especially those who need it most--to reach their full potential as productive, responsible, and caring citizens. The Boys & Girls Club provides far more than an afterschool program. It offers a safe and ",
+            "date": "2026-06-23",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgS3055-2",
+            "tier": "official",
+            "topicId": "education"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -4377,6 +4425,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -4386,6 +4435,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -4395,6 +4445,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -4720,7 +4771,18 @@
       },
       "defense": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Nay",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "Voted Yea on:&#160; Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (Conference report) (HR 6157)",
@@ -4801,17 +4863,7 @@
       },
       "education": {
         "statements": [],
-        "saidDidLinks": [
-          {
-            "statedPositionDate": null,
-            "voteDate": "2026-06-10",
-            "billTitle": "No Aid for Ghost Students Act of 2026",
-            "billNumber": "H.R.7892",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
-            "voteChoice": "Yea",
-            "tier": "official"
-          }
-        ],
+        "saidDidLinks": [],
         "platformPositions": [
           {
             "text": "Ken Calvert was born in Corona, California , in 1953. &#91;1&#93; He graduated from Corona High School in 1971. He earned an A.A. from Chaffey College in 1973 and a bachelor's degree in economics from San Diego State University in 1975. &#91;1&#93; &#91;2&#93; Calvert's career experience includes owning a business and working as a restaurant manager. He was chair of the Riverside County Republican Party. &#91;1&#93;",
@@ -5395,7 +5447,15 @@
     },
     "C001075": {
       "healthcare": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. CASSIDY. Mr. President, people know that the Federal Government helps Americans purchase health insurance. We do that by making health insurance tax deductible. When you pay for your premiums, it is on what is called a pretax basis, but something is wrong. The lowest paid Americans in the employer-sponsored insurance market get the least amount of help from the Federal Government. Now, if you are poor, you get 100 percent of your health insurance paid for by Medicaid. If you are on the exchange, you get below a certain income level, almost 90 percent of your expenses paid, but if you are m",
+            "date": "2026-06-23",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgS3041-2",
+            "tier": "official",
+            "topicId": "healthcare"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -5452,6 +5512,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -5617,6 +5678,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -5626,6 +5688,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -5635,6 +5698,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -6194,7 +6258,18 @@
       },
       "defense": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Yea",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "Voted Yea on:&#160; Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (Conference report) (HR 6157)",
@@ -6275,17 +6350,7 @@
       },
       "education": {
         "statements": [],
-        "saidDidLinks": [
-          {
-            "statedPositionDate": null,
-            "voteDate": "2026-06-10",
-            "billTitle": "No Aid for Ghost Students Act of 2026",
-            "billNumber": "H.R.7892",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
-            "voteChoice": "Nay",
-            "tier": "official"
-          }
-        ],
+        "saidDidLinks": [],
         "platformPositions": [
           {
             "text": "Emanuel Cleaver was born in Waxahachie, Texas , in 1944. He earned a bachelor's degree from Prairie View A&M University in sociology in 1972 and earned a Master of Divinity degree from St. Paul School of Theology in 1974. &#91;1&#93; &#91;2&#93; He served as the Senior Pastor at St. James United Methodist Church from 1973 to 2009. &#91;3&#93; He also worked as a radio show host. &#91;1&#93; From 1979 to 1991, Cleaver served on the Kansas City City Council, and served as mayor of Kansas City from 1991 to 1999. &#91;1&#93; He was the city's first African-American. &#91;4&#93;",
@@ -7132,6 +7197,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -7283,6 +7349,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -7292,6 +7359,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -7301,6 +7369,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -7640,7 +7709,18 @@
       },
       "defense": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Not Voting",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "Diana has taken a leading role in advocating for the protection of our nation’s food supply. Diana believes that the protection of our nation’s food supply should be recognized as a critical component of our national security. She is the author of two key pieces of legislation that go a long way toward securing our nation’s food supply.",
@@ -7721,17 +7801,7 @@
       },
       "education": {
         "statements": [],
-        "saidDidLinks": [
-          {
-            "statedPositionDate": null,
-            "voteDate": "2026-06-10",
-            "billTitle": "No Aid for Ghost Students Act of 2026",
-            "billNumber": "H.R.7892",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
-            "voteChoice": "Nay",
-            "tier": "official"
-          }
-        ],
+        "saidDidLinks": [],
         "platformPositions": [
           {
             "text": "Diana DeGette was born in Tokyo, Japan. &#91;1&#93; She graduated from South High School in Denver, Colorado before earning her bachelor's degree from Colorado College and her law degree from New York University. &#91;1&#93; Before her election to Congress, she worked as an attorney and law journal editor and served in the Colorado House of Representatives . &#91;2&#93; &#91;1&#93;",
@@ -10012,7 +10082,18 @@
       },
       "defense": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Nay",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "Guthrie was born in 1964 in Florence, Alabama . He earned a bachelor's degree in economics from the U.S. Military Academy at West Point in 1987 and his master's in Public and Private Management from Yale University in 1997. Prior to his political career, Guthrie had served in the United States Army and worked as a businessman. From 1999 to 2008, Guthrie served in the Kentucky State Senate . &#91;1&#93; &#91;2&#93;",
@@ -10093,17 +10174,7 @@
       },
       "education": {
         "statements": [],
-        "saidDidLinks": [
-          {
-            "statedPositionDate": null,
-            "voteDate": "2026-06-10",
-            "billTitle": "No Aid for Ghost Students Act of 2026",
-            "billNumber": "H.R.7892",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
-            "voteChoice": "Yea",
-            "tier": "official"
-          }
-        ],
+        "saidDidLinks": [],
         "platformPositions": [
           {
             "text": "Guthrie was born in 1964 in Florence, Alabama . He earned a bachelor's degree in economics from the U.S. Military Academy at West Point in 1987 and his master's in Public and Private Management from Yale University in 1997. Prior to his political career, Guthrie had served in the United States Army and worked as a businessman. From 1999 to 2008, Guthrie served in the Kentucky State Senate . &#91;1&#93; &#91;2&#93;",
@@ -10186,6 +10257,21 @@
             "url": "https://ballotpedia.org/Andy_Harris",
             "tier": "nonpartisan",
             "asOf": "2026-06-29"
+          }
+        ]
+      },
+      "defense-veterans": {
+        "statements": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Nay",
+            "tier": "official"
           }
         ]
       }
@@ -10752,6 +10838,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -10924,6 +11011,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -10933,6 +11021,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -10942,6 +11031,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -11274,7 +11364,18 @@
       },
       "defense": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Nay",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "Voted Yea on:&#160; Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (Conference report) (HR 6157)",
@@ -11355,17 +11456,7 @@
       },
       "education": {
         "statements": [],
-        "saidDidLinks": [
-          {
-            "statedPositionDate": null,
-            "voteDate": "2026-06-10",
-            "billTitle": "No Aid for Ghost Students Act of 2026",
-            "billNumber": "H.R.7892",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
-            "voteChoice": "Yea",
-            "tier": "official"
-          }
-        ],
+        "saidDidLinks": [],
         "platformPositions": [
           {
             "text": "Huizenga was born in Zeeland, Michigan . After graduating from Holland Christian High School in 1987, Huizenga went on to earn his B.A. at Calvin College in 1991. &#91;1&#93; Before holding elected office, Huizenga worked as Director of Public Policy to then-U.S. Rep. Pete Hoekstra (R) from 1997 to 2003. &#91;2&#93; His other career experience includes being a co-owner of Huizenga Gravel Inc., a gravel business located in located in Jenison, Michigan. &#91;3&#93;",
@@ -11756,7 +11847,18 @@
       },
       "defense": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Yea",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "On November 2, 2010, William Keating won election to the United States House . He defeated Jeffrey Davis Perry (R), Maryanne Lewis (I), James A. Sheets (I) and Joe van Nes (Bring Home Troops) in the general election. &#91;13&#93;",
@@ -11837,17 +11939,7 @@
       },
       "education": {
         "statements": [],
-        "saidDidLinks": [
-          {
-            "statedPositionDate": null,
-            "voteDate": "2026-06-10",
-            "billTitle": "No Aid for Ghost Students Act of 2026",
-            "billNumber": "H.R.7892",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
-            "voteChoice": "Nay",
-            "tier": "official"
-          }
-        ],
+        "saidDidLinks": [],
         "platformPositions": [
           {
             "text": "Keating earned a bachelor's degree from Boston College in 1974, a master's degree from Boston College in 1982, and a law degree from Suffolk University in 1985. He served in the Massachusetts House of Representatives from 1977 to 1984 and in the state Senate from 1985 to 1998. Keating worked at the Norfolk district attorney from 1999 to 2010 and was elected to the U.S. House in 2013. &#91;1&#93;",
@@ -15171,6 +15263,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -15322,6 +15415,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -15331,6 +15425,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -15340,6 +15435,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -17084,6 +17180,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "defense-veterans",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
@@ -17235,6 +17332,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -17244,6 +17342,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -17253,6 +17352,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -19667,7 +19767,18 @@
       },
       "defense": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Yea",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "Voted Yea on:&#160; Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (Conference report) (HR 6157)",
@@ -19748,17 +19859,7 @@
       },
       "education": {
         "statements": [],
-        "saidDidLinks": [
-          {
-            "statedPositionDate": null,
-            "voteDate": "2026-06-10",
-            "billTitle": "No Aid for Ghost Students Act of 2026",
-            "billNumber": "H.R.7892",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
-            "voteChoice": "Nay",
-            "tier": "official"
-          }
-        ],
+        "saidDidLinks": [],
         "platformPositions": [
           {
             "text": "Pingree was born on April 2, 1955, in Minneapolis, Minnesota . She earned her B.A. from the College of the Atlantic in 1979 after having previously attended the University of Southern Maine in 1983. Pingree was a member of the Maine Senate from 1992 to 2000 and was Senate majority leader from 1996 to 2000. Before her political career, Pingree worked as a farmer and businesswoman in North Haven, Maine. &#91;1&#93;",
@@ -21106,7 +21207,15 @@
         ]
       },
       "immigration": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. SCHUMER. Mr. President, everywhere you look, Republicans are one big, hot mess. The reason is simple: Donald Trump is pursuing policies that are terrible for America and despised by the American people. The Republicans know just how unpopular Trump's agenda is, but they fall into line out of fear or blind loyalty or some of each. Republicans better smarten up and press Trump to back off his radical proposals during their lunch tomorrow or they will pay a price for ignoring the American people. ____________________",
+            "date": "2026-06-23",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgS3030-2",
+            "tier": "official",
+            "topicId": "immigration"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -21133,10 +21242,19 @@
         ]
       },
       "defense": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. SCHUMER. Mr. President, on Tulsi Gabbard and the Pulte purge, there are reports that Tulsi Gabbard was receiving instructions from a so-called guru and repeating them word for word. That ought to concern all of us if it is true. No one knows who this guru really is, what his connections are, and where the instructions came from. Maybe it was completely innocent or maybe not, but we need answers. In appointing Bill Pulte to act as Acting DNI after Tulsi Gabbard, Donald Trump is replacing a guru with a grifter. Bill Pulte doesn't have an ounce of national security experience or an ounce of i",
+            "date": "2026-06-23",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgS3030-5",
+            "tier": "official",
+            "topicId": "defense-veterans"
+          }
+        ],
         "saidDidLinks": [
           {
-            "statedPositionDate": null,
+            "topicId": "defense-veterans",
+            "statedPositionDate": "2026-06-18",
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
             "billNumber": "H.Con.Res. 86",
@@ -21284,10 +21402,19 @@
         ]
       },
       "judiciary": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. SCHUMER. Mr. President, on the SAVE database, yesterday's court decision bodes very poorly for the SAVE Act's survival. Free and fair elections in America got a big boost in court yesterday when a judge, a Federal judge, blocked Donald Trump's effort to set up a massive voter purge database. The absolute last person Americans want combing through their personal data is Donald Trump. Letting Trump scrape through Americans' private data to purge them from the voter rolls isn't just unpopular, it is illegal. Donald Trump, Elon Musk, and Russel Vought wanted to plug Americans' sensitive, perso",
+            "date": "2026-06-23",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-23-pt1-PgS3030-4",
+            "tier": "official",
+            "topicId": "civil-liberties"
+          }
+        ],
         "saidDidLinks": [
           {
-            "statedPositionDate": null,
+            "topicId": "civil-liberties",
+            "statedPositionDate": "2026-06-23",
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
             "billNumber": "PN930-2",
@@ -21296,7 +21423,8 @@
             "tier": "official"
           },
           {
-            "statedPositionDate": null,
+            "topicId": "civil-liberties",
+            "statedPositionDate": "2026-06-23",
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
             "billNumber": "PN930-7",
@@ -21305,7 +21433,8 @@
             "tier": "official"
           },
           {
-            "statedPositionDate": null,
+            "topicId": "civil-liberties",
+            "statedPositionDate": "2026-06-23",
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
             "billNumber": "PN859-3",
@@ -22823,7 +22952,8 @@
         "statements": [],
         "saidDidLinks": [
           {
-            "statedPositionDate": null,
+            "topicId": "defense-veterans",
+            "statedPositionDate": "2026-06-23",
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
             "billNumber": "H.Con.Res. 86",
@@ -22974,6 +23104,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -22983,6 +23114,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -22992,6 +23124,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -31681,7 +31814,18 @@
       },
       "defense": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Yea",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "Barron was endorsed by the state's largest public employees union, as well as the retiring incumbent, Ed Towns . &#91;19&#93; A former Black Panther, Barron expressed a desire to \"go up to the closest white person and... slap him,\" and said Israel was \"the world's greatest terrorist.\" &#91;20&#93; &#91;19&#93; Senator Kirsten Gillibrand (D-NY), among others, denounced Barron's anti-Israel stance. &#91;21&#93;",
@@ -31762,17 +31906,7 @@
       },
       "education": {
         "statements": [],
-        "saidDidLinks": [
-          {
-            "statedPositionDate": null,
-            "voteDate": "2026-06-10",
-            "billTitle": "No Aid for Ghost Students Act of 2026",
-            "billNumber": "H.R.7892",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
-            "voteChoice": "Nay",
-            "tier": "official"
-          }
-        ],
+        "saidDidLinks": [],
         "platformPositions": [
           {
             "text": "Jeffries was born in the Crown Heights neighborhood of Brooklyn. He earned a B.S. in political science from State University of New York at Binghamton, a master's in public policy from Georgetown University, and a J.D. from New York University Law School. &#91;8&#93; &#91;9&#93;",
@@ -32633,7 +32767,8 @@
         "statements": [],
         "saidDidLinks": [
           {
-            "statedPositionDate": null,
+            "topicId": "defense-veterans",
+            "statedPositionDate": "2026-06-18",
             "voteDate": "2026-06-23",
             "billTitle": "H. Con. Res. 86",
             "billNumber": "H.Con.Res. 86",
@@ -32784,6 +32919,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -32793,6 +32929,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -32802,6 +32939,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -38830,7 +38968,18 @@
       },
       "defense": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Nay",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "Voted Yea on:&#160; Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (Conference report) (HR 6157)",
@@ -38911,17 +39060,7 @@
       },
       "education": {
         "statements": [],
-        "saidDidLinks": [
-          {
-            "statedPositionDate": null,
-            "voteDate": "2026-06-10",
-            "billTitle": "No Aid for Ghost Students Act of 2026",
-            "billNumber": "H.R.7892",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
-            "voteChoice": "Yea",
-            "tier": "official"
-          }
-        ],
+        "saidDidLinks": [],
         "platformPositions": [
           {
             "text": "David Rouzer was born on a U.S. Army base in Landstuhl, Germany in 1972. &#91;1&#93; Rouzer earned his B.A. in agricultural business management, agricultural economics, and chemistry from North Carolina State University in 1994. &#91;2&#93; Rouzer's previous work experience includes working as an aide to Sens. Jesse Helms (R) and Elizabeth Dole (R), working at the College of Agriculture and Life Sciences at North Carolina State Universit, as an associate administrator for the United States Department of Agriculture and has owned The Rouzer Company. From 2009 to 2012, Rouzer was a member of the North Carolina Senate . &#91;3&#93;",
@@ -54900,7 +55039,18 @@
       },
       "defense": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Nay",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "Border Security is national security and in just months President Trump has reversed the crisis Biden created in four years. It’s important we make permanent the effective policies President Trump has put in place.",
@@ -54981,17 +55131,7 @@
       },
       "education": {
         "statements": [],
-        "saidDidLinks": [
-          {
-            "statedPositionDate": null,
-            "voteDate": "2026-06-10",
-            "billTitle": "No Aid for Ghost Students Act of 2026",
-            "billNumber": "H.R.7892",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
-            "voteChoice": "Yea",
-            "tier": "official"
-          }
-        ],
+        "saidDidLinks": [],
         "platformPositions": [
           {
             "text": "Crenshaw graduated from Tufts University in 2006, then served as a Navy SEAL from 2006 to 2016. &#91;1&#93; He was deployed to Iraq and Afghanistan and lost his right eye in an IED explosion in Afghanistan. &#91;2&#93; In 2017, he earned a master's degree in public administration from Harvard University. &#91;3&#93;",
@@ -56629,6 +56769,7 @@
         "statements": [],
         "saidDidLinks": [
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
@@ -56638,6 +56779,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-24",
             "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
@@ -56647,6 +56789,7 @@
             "tier": "official"
           },
           {
+            "topicId": "civil-liberties",
             "statedPositionDate": null,
             "voteDate": "2026-06-23",
             "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
@@ -56677,6 +56820,21 @@
             "url": "https://ballotpedia.org/Rick_Scott",
             "tier": "nonpartisan",
             "asOf": "2026-06-29"
+          }
+        ]
+      },
+      "defense-veterans": {
+        "statements": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-23",
+            "billTitle": "H. Con. Res. 86",
+            "billNumber": "H.Con.Res. 86",
+            "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-concurrent-resolution/86",
+            "voteChoice": "Nay",
+            "tier": "official"
           }
         ]
       }
@@ -57740,6 +57898,56 @@
             "url": "https://ballotpedia.org/Mark_Kelly",
             "tier": "nonpartisan",
             "asOf": "2026-06-29"
+          }
+        ]
+      },
+      "defense-veterans": {
+        "statements": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-23",
+            "billTitle": "H. Con. Res. 86",
+            "billNumber": "H.Con.Res. 86",
+            "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-concurrent-resolution/86",
+            "voteChoice": "Yea",
+            "tier": "official"
+          }
+        ]
+      },
+      "civil-liberties": {
+        "statements": [],
+        "saidDidLinks": [
+          {
+            "topicId": "civil-liberties",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-24",
+            "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
+            "billNumber": "PN930-2",
+            "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00188.xml",
+            "voteChoice": "Nay",
+            "tier": "official"
+          },
+          {
+            "topicId": "civil-liberties",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-24",
+            "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
+            "billNumber": "PN930-7",
+            "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00186.xml",
+            "voteChoice": "Nay",
+            "tier": "official"
+          },
+          {
+            "topicId": "civil-liberties",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-23",
+            "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
+            "billNumber": "PN859-3",
+            "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00183.xml",
+            "voteChoice": "Nay",
+            "tier": "official"
           }
         ]
       }
@@ -67823,7 +68031,15 @@
     },
     "M001219": {
       "healthcare": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. MOYLAN. Mr. Speaker, I rise today to honor the life and legacy of Rey Mora Vega. a distinguished healthcare leader, dedicated public servant, and compassionate member of our island community whose decades of service helped strengthen Guam's healthcare system and improve the lives of countless individuals. Rey Mora Vega passed away on February 7, 2026, leaving behind a legacy defined by humility, integrity, and an unwavering commitment to serving others. Throughout his life, he demonstrated that true leadership is measured not by titles or recognition, but by a genuine desire to make a mean",
+            "date": "2026-06-30",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-30-pt1-PgE640-2",
+            "tier": "official",
+            "topicId": "healthcare"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -67836,7 +68052,22 @@
         ]
       },
       "immigration": {
-        "statements": [],
+        "statements": [
+          {
+            "title": "Mr. MOYLAN. Mr. Speaker, I rise today to honor the life and legacy of Manuel, best known as Manny, Duenas, a beloved son of Guam and one of the strongest voices our island has ever had for its fishing community. For decades, Manny was more than",
+            "date": "2026-06-08",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-08-pt1-PgH3914-2",
+            "tier": "official",
+            "topicId": "immigration"
+          },
+          {
+            "title": "Mr. MOYLAN. Mr. Speaker, I rise today to recognize and congratulate the Guam State Council of the Knights of Columbus as they celebrate their 25th Anniversary of faithful service, charitable outreach, and dedication to the people of Guam. For the past twenty-five years, the Knights of Columbus on Guam have exemplified the values of charity, unity, fraternity, and patriotism through their unwavering commitment to serving others and strengthening our island community. Across Guam, the Knights have supported parish communities, organized charitable initiatives, assisted families in times of hards",
+            "date": "2026-06-08",
+            "url": "https://www.govinfo.gov/app/details/CREC-2026-06-08-pt1-PgE545-2",
+            "tier": "official",
+            "topicId": "immigration"
+          }
+        ],
         "saidDidLinks": [],
         "platformPositions": [
           {
@@ -74013,7 +74244,18 @@
       },
       "defense": {
         "statements": [],
-        "saidDidLinks": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Nay",
+            "tier": "official"
+          }
+        ],
         "platformPositions": [
           {
             "text": "When our local machine shop shut down due to the retirement of their machinists and lack of available apprentices we took proactive steps to keep that equipment in-service and bought out the shop. We need to retool our economy to make things here again, and provide the family wage jobs you can buy a house with. We need to stand up to China and make things in America again. As owners of an auto repair shop, we know better than most that the quality of parts out of China is unreliable, and when cars are repaired with substandard parts it is the middle class who suffers most.",
@@ -74080,17 +74322,7 @@
       },
       "education": {
         "statements": [],
-        "saidDidLinks": [
-          {
-            "statedPositionDate": null,
-            "voteDate": "2026-06-10",
-            "billTitle": "No Aid for Ghost Students Act of 2026",
-            "billNumber": "H.R.7892",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
-            "voteChoice": "Yea",
-            "tier": "official"
-          }
-        ],
+        "saidDidLinks": [],
         "platformPositions": [
           {
             "text": "Marie Gluesenkamp Pérez was born in Harris County, Texas , and lives in Skamania County, Washington. She earned a bachelor's degree in economics from Reed College in 2012. Her career experience includes being a business owner of an auto repair shop. &#91;1&#93; &#91;2&#93; &#91;3&#93;",
@@ -86360,6 +86592,23 @@
       }
     },
     "F000476": {
+      "defense-veterans": {
+        "statements": [],
+        "saidDidLinks": [
+          {
+            "topicId": "defense-veterans",
+            "statedPositionDate": null,
+            "voteDate": "2026-06-30",
+            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+            "billNumber": "HCONRES 108",
+            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
+            "voteChoice": "Yea",
+            "tier": "official"
+          }
+        ]
+      }
+    },
+    "S000510": {
       "defense-veterans": {
         "statements": [],
         "saidDidLinks": [
