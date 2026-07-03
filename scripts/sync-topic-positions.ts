@@ -15,6 +15,7 @@ import { normalizeTopicId } from '../lib/data/topicAliases';
 import { fetchJson, sleep } from './lib/ingest-utils';
 import { fetchApprovedMediaStatementsForMember } from './lib/approvedMediaQuotes';
 import { isProceduralCrecText } from './lib/crecProceduralFilter';
+import { crecFloorSpeechOpenerRegex } from './lib/crecOpener';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
@@ -642,11 +643,24 @@ interface GovInfoSearchResult {
   dateIssued?: string;
 }
 
-function crecSpeakerPrefix(leg: LegislatorRow): string {
-  if (leg.chamber === 'senate') {
-    return `Mr. ${leg.lastName.toUpperCase()}`;
-  }
-  return `${leg.lastName.toUpperCase()}`;
+/**
+ * GovInfo CREC search query fragment for a member, gender-agnostic for BOTH chambers.
+ *
+ * The Record addresses a speaker by their own honorific + surname ("Mr. SANDERS.",
+ * "Ms. WARREN.", "Mrs. RADEWAGEN."). Hardcoding "Mr. LASTNAME" for senators returned 0
+ * granules for every female senator (PROVEN: "Mr. WARREN" -> 0, bare "WARREN" -> 1054,
+ * OR-phrase -> 494 live). OR-ing the honorific forms keeps the query as on-target as the
+ * old male-only phrase (surname adjacency) while including women — chosen over a bare
+ * surname because bare matches every roster/cosponsor mention, flooding the 12-granule
+ * window with procedural noise (bare WARREN 1054 vs OR 494). */
+function crecSearchQuery(leg: LegislatorRow): string {
+  const surname = leg.lastName.toUpperCase();
+  return `("Mr. ${surname}" OR "Ms. ${surname}" OR "Mrs. ${surname}" OR "Miss ${surname}")`;
+}
+
+/** Honorific-agnostic presence token: the bare uppercase surname shared by every OR form. */
+function crecSpeakerHay(leg: LegislatorRow): string {
+  return leg.lastName.toUpperCase();
 }
 
 function mapCrecTextToTopic(text: string): string | null {
@@ -658,18 +672,15 @@ function crecMemberLastName(leg: LegislatorRow): string {
   return leg.lastName.toUpperCase();
 }
 
-function crecFloorSpeechOpenerRegex(lastName: string): RegExp {
-  const escaped = lastName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  return new RegExp(
-    `Mr\\.\\s+${escaped}\\.\\s+(?:Mr\\.|Madam)\\s+(?:President|Speaker)\\b`,
-    'i',
-  );
-}
-
 function crecGovInfoUrlStem(url: string): string {
   const granule = url.match(/CREC-[^/?#]+/i)?.[0] ?? url;
   // Same physical page can appear as ...-PgS3474-2 vs ...-PgS3474-3
   return granule.replace(/-\d+$/, '');
+}
+
+/** A committed CREC floor statement: tier 'official' with a GovInfo CREC granule URL. */
+function isCommittedCrecStatement(s: TopicStatementEntry): boolean {
+  return s.tier === 'official' && /\/CREC-/i.test(s.url);
 }
 
 function shouldAddCrecStatement(existing: TopicStatementEntry[], entry: TopicStatementEntry): boolean {
@@ -722,7 +733,8 @@ async function fetchGovInfoCrecByTopic(
   apiKey: string,
 ): Promise<CrecFetchResult> {
   const byTopic = new Map<string, TopicStatementEntry[]>();
-  const speaker = crecSpeakerPrefix(leg);
+  const searchQuery = crecSearchQuery(leg);
+  const speakerHayNeedle = crecSpeakerHay(leg).toLowerCase().replace(/\./g, '');
   const congress = 119;
   let searchOk = false;
   let searchResults = 0;
@@ -735,7 +747,7 @@ async function fetchGovInfoCrecByTopic(
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        query: `collection:CREC AND congress:${congress} AND "${speaker}"`,
+        query: `collection:CREC AND congress:${congress} AND ${searchQuery}`,
         pageSize: MAX_CREC_STATEMENTS_PER_MEMBER,
         offsetMark: '*',
         sorts: [{ field: 'publishdate', sortOrder: 'DESC' }],
@@ -765,7 +777,7 @@ async function fetchGovInfoCrecByTopic(
         const html = await textRes.text();
         const plain = stripHtml(html);
         const speakerHay = plain.toLowerCase().replace(/\./g, '');
-        if (!speakerHay.includes(speaker.toLowerCase().replace(/\./g, ''))) continue;
+        if (!speakerHay.includes(speakerHayNeedle)) continue;
 
         const excerpt = extractCrecSpeechExcerpt(plain, leg);
         if (!excerpt) continue;
@@ -1043,7 +1055,20 @@ async function main(): Promise<void> {
         entry.saidDidLinks = fresh?.saidDidLinks ?? [];
         // Only overlay statements when CREC actually refreshed; never wipe on a failed fetch.
         if (crec.searchOk) {
-          entry.statements = fresh?.statements ?? [];
+          // FAILURE≠ABSENCE (§6): the fresh re-fetch only sees the 12 most-recent granules, so
+          // a genuine older committed floor speech can age out of the window on a later run. A
+          // search returning it today is a bonus, not a licence to blank committed-good data.
+          // Union fresh statements with any prior committed official CREC speeches (dedup by
+          // URL stem / title, re-filtered against the current procedural rules) so a re-sync can
+          // only ADD (e.g. newly-included female speeches) — never silently drop a prior one.
+          const merged: TopicStatementEntry[] = [...(fresh?.statements ?? [])];
+          for (const prior of entry.statements ?? []) {
+            if (!isCommittedCrecStatement(prior)) continue;
+            if (isProceduralCrecText(prior.title)) continue;
+            if (!shouldAddCrecStatement(merged, prior)) continue;
+            merged.push(prior);
+          }
+          entry.statements = merged;
           if (fresh?.statedPosition) {
             entry.statedPosition = fresh.statedPosition;
             entry.statedPositionSource = fresh.statedPositionSource;

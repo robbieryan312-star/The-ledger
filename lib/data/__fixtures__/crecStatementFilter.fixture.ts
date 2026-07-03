@@ -173,4 +173,16 @@ export const KNOWN_GOOD: CrecFilterFixtureCase[] = [
     label: 'B001277 floor speech — DACA',
     text: 'Mr. BLUMENTHAL. Mr. President, I am honored to join my colleagues this afternoon in celebrating the Deferred Action for Children Arrivals, or DACA, Program and its absolutely historic impact on our country, but also to mourn and to express outrage at the all-out assault launched against this program by the Trump administration.',
   },
+  // --- Phase 17b gendered-honorific fix: real female floor remarks that opened with a NON-"Mr."
+  //     honorific ("Mrs./Ms. NAME. Mr./Madam President/Speaker, ...") and were silently excluded
+  //     while the opener regex only accepted "Mr." These MUST pass the procedural filter (they are
+  //     spoken floor prose, not clerk boilerplate). Verbatim from GovInfo CREC. ---
+  {
+    label: 'R000600 floor tribute (female honorific)',
+    text: 'Mrs. RADEWAGEN. Mr. Speaker, I rise today to honor the life of David Thomas Pangelinan Perez, who passed away on February 16, 2026.',
+  },
+  {
+    label: 'B001230 floor speech — Iran war (female honorific)',
+    text: "Ms. BALDWIN. Mr. President, today, I rise in opposition to Donald Trump's illegal war in Iran. I come to ask a simple question: What has this war gotten us?",
+  },
 ];

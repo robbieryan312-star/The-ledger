@@ -18,6 +18,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { classifyTextToRecordTopicId } from '../lib/data/profileRecordByTopic';
 import { isProceduralCrecText, matchedProceduralRule } from './lib/crecProceduralFilter';
+import { crecFloorSpeechOpenerRegex } from './lib/crecOpener';
 
 config({ path: '.env.local' });
 
@@ -66,15 +67,17 @@ function stripHtml(html: string): string {
       .trim(),
   );
 }
-function crecSpeakerPrefix(leg: LegislatorRow): string {
-  return leg.chamber === 'senate' ? `Mr. ${leg.lastName.toUpperCase()}` : `${leg.lastName.toUpperCase()}`;
+/** Gender-agnostic GovInfo CREC search query, mirrors sync-topic-positions.ts crecSearchQuery. */
+function crecSearchQuery(leg: LegislatorRow): string {
+  const surname = leg.lastName.toUpperCase();
+  return `("Mr. ${surname}" OR "Ms. ${surname}" OR "Mrs. ${surname}" OR "Miss ${surname}")`;
+}
+/** Honorific-agnostic presence token: the bare uppercase surname shared by every OR form. */
+function crecSpeakerHay(leg: LegislatorRow): string {
+  return leg.lastName.toUpperCase();
 }
 function crecMemberLastName(leg: LegislatorRow): string {
   return leg.lastName.toUpperCase();
-}
-function crecFloorSpeechOpenerRegex(lastName: string): RegExp {
-  const escaped = lastName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  return new RegExp(`Mr\\.\\s+${escaped}\\.\\s+(?:Mr\\.|Madam)\\s+(?:President|Speaker)\\b`, 'i');
 }
 function mapCrecTextToTopic(text: string): string | null {
   const topicId = classifyTextToRecordTopicId(text);
@@ -90,7 +93,7 @@ function extractExcerptDiag(plainText: string, leg: LegislatorRow): { excerpt: s
     // Show what honorific actually precedes the surname, to detect Mr.-only opener bugs.
     const anyOpener = new RegExp(`(Mr|Mrs|Ms|Miss|Madam)\\.?\\s+${lastName}\\.`, 'i').exec(plainText);
     const near = anyOpener ? plainText.slice(anyOpener.index, anyOpener.index + 60) : '(surname+addr-to-chair not found)';
-    return { excerpt: null, reason: `no "Mr. ${lastName}. Mr./Madam President/Speaker" opener [nearby: ${near}]` };
+    return { excerpt: null, reason: `no "(Mr|Ms|Mrs|Miss). ${lastName}. Mr./Madam President/Speaker" opener [nearby: ${near}]` };
   }
   let excerpt = plainText.slice(match.index);
   const nextSpeaker = excerpt.slice(40).search(/\bMr\.|Ms\.|Mrs\.|The PRESID|The SPEAK/i);
@@ -109,13 +112,14 @@ function isProceduralCrecTitle(title: string): boolean {
 }
 
 async function auditMember(leg: LegislatorRow, apiKey: string): Promise<void> {
-  const speaker = crecSpeakerPrefix(leg);
-  console.log(`\n================ ${leg.bioguideId} (${leg.name}) — chamber=${leg.chamber} speaker="${speaker}" ================`);
+  const searchQuery = crecSearchQuery(leg);
+  const speakerNeedle = crecSpeakerHay(leg).toLowerCase().replace(/\./g, '');
+  console.log(`\n================ ${leg.bioguideId} (${leg.name}) — chamber=${leg.chamber} searchQuery=${searchQuery} ================`);
   const searchRes = await fetch(`https://api.govinfo.gov/search?api_key=${encodeURIComponent(apiKey)}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      query: `collection:CREC AND congress:119 AND "${speaker}"`,
+      query: `collection:CREC AND congress:119 AND ${searchQuery}`,
       pageSize: MAX_CREC_STATEMENTS_PER_MEMBER,
       offsetMark: '*',
       sorts: [{ field: 'publishdate', sortOrder: 'DESC' }],
@@ -153,7 +157,7 @@ async function auditMember(leg: LegislatorRow, apiKey: string): Promise<void> {
       continue;
     }
     const speakerHay = plain.toLowerCase().replace(/\./g, '');
-    if (!speakerHay.includes(speaker.toLowerCase().replace(/\./g, ''))) {
+    if (!speakerHay.includes(speakerNeedle)) {
       console.log('    -> speaker string not present in granule text (skip)');
       continue;
     }
