@@ -110,7 +110,7 @@ async function fetchGdeltForMember(leg: LegislatorRow): Promise<FetchResult> {
       await sleep(waitMs);
     }
     try {
-      const res = await fetch(url, { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(30_000) });
+      const res = await fetch(url, { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(45_000) });
       const text = await res.text();
       if (res.status === 429 || text.includes('Please limit requests')) {
         lastError = 'GDELT rate-limit (429 / "Please limit requests")';
@@ -202,7 +202,9 @@ function articlesToCandidates(articles: GdeltArticle[], lastName: string): Candi
     if (!isArticleTypeIntegrityUrl(a.url)) continue;
     if (!isRelevantHeadline(a.title, lastName)) continue;
     candidates.push({
-      headline: a.title.trim(),
+      // Whitespace-only cleanup (GDELT occasionally strips quote characters from titles,
+      // leaving double spaces) — never alters wording, so the headline stays verbatim.
+      headline: a.title.replace(/\s+/g, ' ').trim(),
       url: a.url.trim(),
       date: formatGdeltDate(a.seendate),
       outlet: outletNameFromDomain(a.domain),
@@ -307,7 +309,7 @@ async function main(): Promise<void> {
             bioguideId,
             items: [],
             status: 'fetch-blocked',
-            note: `GDELT DOC API rate-limited after ${result.attempts} attempts with exponential backoff (${RETRY_DELAYS_MS.join('ms, ')}ms). News absence not verified — retry once the shared egress quota clears.`,
+            note: `GDELT DOC API fetch failed after ${result.attempts} attempts with exponential backoff (${RETRY_DELAYS_MS.join('ms, ')}ms) — last error: ${result.lastError ?? 'unknown'}. News absence not verified — retry once the shared egress/API issue clears.`,
           };
       await writeFile(newsPath, JSON.stringify(output, null, 2) + '\n');
       checkpoint[bioguideId] = { status: 'fetch-blocked', count: output.items.length };
