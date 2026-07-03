@@ -6,11 +6,11 @@
       "office": "U.S. President (2020 general election)",
       "date": "2020-04-13",
       "source": {
-        "name": "Associated Press",
-        "url": "https://apnews.com/article/election-2020-joe-biden-bernie-sanders-endorsement-a1b2c3d4e5f6",
-        "tier": "nonpartisan",
+        "name": "PBS NewsHour",
+        "url": "https://www.pbs.org/newshour/politics/watch-live-sanders-endorses-biden-for-president-during-virtual-covid-19-event",
+        "tier": "media",
         "date": "2020-04-13",
-        "description": "Sanders endorsed Biden after suspending his 2020 presidential campaign"
+        "description": "Sanders endorsed Biden during a virtual campaign event; PBS NewsHour reported the endorsement with AP wire copy"
       }
     }
   ],

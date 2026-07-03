@@ -1,5 +1,6 @@
 import type { SaidDidDiff } from '../types';
 import { RECORD_TOPIC_BUCKETS } from './profileRecordByTopic';
+import { isVoteRestatementSaid } from './sourceIntegrity';
 import { getMemberTopicPositions, type TopicPositionData } from './topicPositions';
 import type { SaidDidLinkEntry } from './topicPositions';
 
@@ -81,6 +82,31 @@ function pickSaidForLink(
     };
   }
 
+  const allegedStatement = topicData.statements.find(
+    (s) =>
+      s.topicId === topicId &&
+      s.tier === 'alleged' &&
+      (statementMatchesVote(s.title, link, topicId) || textMatchesTopic(s.title, topicId)),
+  );
+  if (allegedStatement) {
+    let outlet = 'Journalism';
+    try {
+      const host = new URL(allegedStatement.url).hostname.replace(/^www\./, '');
+      if (host.includes('washingtonpost')) outlet = 'Washington Post';
+      else if (host.includes('nytimes')) outlet = 'New York Times';
+    } catch {
+      /* keep generic */
+    }
+    return {
+      quote: allegedStatement.title,
+      outlet,
+      url: allegedStatement.url,
+      tier: 'alleged',
+      date: allegedStatement.date,
+      verbatim: true,
+    };
+  }
+
   const officialStatement = topicData.statements.find(
     (s) => s.topicId === topicId && s.tier === 'official' && textMatchesTopic(s.title, topicId),
   );
@@ -122,6 +148,7 @@ function pickSaidForLink(
   }
 
   for (const pos of topicData.platformPositions ?? []) {
+    if (isVoteRestatementSaid(pos.text)) continue;
     if (platformKeyVoteMatchesLink(pos.text, link)) {
       return {
         quote: pos.text,
@@ -129,7 +156,7 @@ function pickSaidForLink(
         url: pos.url,
         tier: 'nonpartisan',
         date: link.statedPositionDate ?? pos.asOf,
-        verbatim: false,
+        verbatim: true,
       };
     }
   }

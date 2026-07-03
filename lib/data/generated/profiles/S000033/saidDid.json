@@ -1,46 +1,26 @@
 {
   "bioguideId": "S000033",
   "byTopic": {
-    "defense-veterans": [
+    "healthcare": [
       {
-        "topicId": "defense-veterans",
-        "statedPositionDate": null,
-        "voteDate": "2026-06-23",
-        "billTitle": "H. Con. Res. 86",
-        "billNumber": "H.Con.Res. 86",
-        "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-concurrent-resolution/86",
-        "voteChoice": "Yea",
+        "topicId": "healthcare",
+        "statedPositionDate": "2019-04-10",
+        "voteDate": "2017-07-25",
+        "billTitle": "Motion to begin debate on the American Health Care Act of 2017 (HR 1628)",
+        "billNumber": "HR 1628",
+        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1151/vote_115_1_00167.htm",
+        "voteChoice": "Nay",
         "tier": "official"
       }
     ],
-    "civil-liberties": [
+    "education": [
       {
-        "topicId": "civil-liberties",
-        "statedPositionDate": null,
-        "voteDate": "2026-06-24",
-        "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
-        "billNumber": "PN930-2",
-        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00188.xml",
-        "voteChoice": "Nay",
-        "tier": "official"
-      },
-      {
-        "topicId": "civil-liberties",
-        "statedPositionDate": null,
-        "voteDate": "2026-06-24",
-        "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
-        "billNumber": "PN930-7",
-        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00186.xml",
-        "voteChoice": "Nay",
-        "tier": "official"
-      },
-      {
-        "topicId": "civil-liberties",
-        "statedPositionDate": null,
-        "voteDate": "2026-06-23",
-        "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
-        "billNumber": "PN859-3",
-        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00183.xml",
+        "topicId": "education",
+        "statedPositionDate": "2026-06-24",
+        "voteDate": "2018-09-18",
+        "billTitle": "Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (HR 6157)",
+        "billNumber": "HR 6157",
+        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1152/vote_115_2_00212.htm",
         "voteChoice": "Nay",
         "tier": "official"
       }

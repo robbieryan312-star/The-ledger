@@ -7,20 +7,22 @@
       "summary": "As mayor of Burlington, VT, Sanders led a sister-city delegation to Yaroslavl, USSR in 1988. At the time he praised some aspects of Soviet social programs. These statements are documented and publicly available.",
       "category": "Policy",
       "status": "Resolved",
-      "date": "1988-06-01",
+      "date": "1988-06-13",
       "isVerified": true,
       "sources": [
         {
-          "name": "Burlington Free Press archive",
+          "name": "Politico",
+          "url": "https://www.politico.com/story/2019/05/17/bernie-sanders-mystery-soviet-video-revealed-1330347",
           "tier": "media",
-          "date": "1988-06-01",
-          "description": "Contemporary reporting on the trip"
+          "date": "2019-05-17",
+          "description": "Reporting on archived footage of Sanders's 1988 Yaroslavl sister-city trip"
         },
         {
-          "name": "C-SPAN archive",
-          "url": "https://www.c-span.org",
+          "name": "CCTV Center for Media & Democracy",
+          "url": "https://www.cctv.org/watch-tv/programs/sanders-and-soviet-delegation-return-press-conference",
           "tier": "official",
-          "description": "Video record of Sanders comments"
+          "date": "1988-06-13",
+          "description": "Burlington government access recording of Sanders press conference upon return from Yaroslavl"
         }
       ]
     },
@@ -31,19 +33,21 @@
       "category": "Campaign",
       "status": "Resolved",
       "date": "2019-07-18",
-      "isVerified": true,
+      "isVerified": false,
       "sources": [
         {
-          "name": "The Guardian",
+          "name": "Washington Post",
+          "url": "https://www.washingtonpost.com/politics/labor-fight-roils-bernie-sanders-campaign-as-workers-demand-the-15-hourly-pay-the-candidate-has-proposed-for-employees-nationwide/2019/07/18/3a6df9f4-a966-11e9-9214-246e594de5d5_story.html",
           "tier": "media",
           "date": "2019-07-18",
-          "description": "Reporting on organizer open letter"
+          "description": "Reporting on unionized field organizers' pay dispute"
         },
         {
           "name": "Washington Post",
+          "url": "https://www.washingtonpost.com/politics/bernie-sanders-defends-campaign-salaries-after-post-report-of-labor-dispute-with-unionized-organizers/2019/07/19/c60558ec-aa68-11e9-86dd-d7f0e60391e9_story.html",
           "tier": "media",
           "date": "2019-07-19",
-          "description": "Campaign confirmed pay increase"
+          "description": "Sanders response; campaign limited hours so pay met $15/hr equivalent"
         }
       ]
     }

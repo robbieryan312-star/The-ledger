@@ -1,0 +1,46 @@
+/**
+ * Build-gated fixtures for source URL integrity regression tests.
+ * APPEND-ONLY — never reset.
+ */
+
+export const SOURCE_INTEGRITY_KNOWN_BAD_URLS: Array<{ label: string; url: string }> = [
+  {
+    label: 'verbatim fabricated AP endorsement slug (S000033 pilot)',
+    url: 'https://apnews.com/article/election-2020-joe-biden-bernie-sanders-endorsement-a1b2c3d4e5f6',
+  },
+  {
+    label: 'word-prefix + invented hex slug placeholder',
+    url: 'https://apnews.com/article/election-2020-joe-biden-bernie-sanders-endorsement-b1c2d3e4f5a6',
+  },
+  {
+    label: 'example.com placeholder host',
+    url: 'https://example.com/fake-article',
+  },
+];
+
+export const SOURCE_INTEGRITY_KNOWN_GOOD_URLS: Array<{ label: string; url: string }> = [
+  {
+    label: 'fetch-verifiable PBS Sanders→Biden endorsement article',
+    url: 'https://www.pbs.org/newshour/politics/watch-live-sanders-endorses-biden-for-president-during-virtual-covid-19-event',
+  },
+  {
+    label: 'real WaPo campaign wage dispute article',
+    url: 'https://www.washingtonpost.com/politics/labor-fight-roils-bernie-sanders-campaign-as-workers-demand-the-15-hourly-pay-the-candidate-has-proposed-for-employees-nationwide/2019/07/18/3a6df9f4-a966-11e9-9214-246e594de5d5_story.html',
+  },
+];
+
+/** Vote-as-Said tautology — SJ Res 54 Ballotpedia row diffed against the same vote (must reject). */
+export const SAID_DID_KNOWN_BAD_TAUTOLOGY = {
+  label: 'SJ Res 54 Ballotpedia vote restated as Said',
+  said: {
+    quote:
+      'Voted Yea on: "A joint resolution to direct the removal of United States Armed Forces from hostilities in the Republic of Yemen that have not been authorized by Congress." (SJ Res 54)',
+    url: 'https://ballotpedia.org/Bernard_Sanders',
+    verbatim: false,
+  },
+  did: {
+    action:
+      'Voted Yea — SJ Res 54: A joint resolution to direct the removal of United States Armed Forces from hostilities in the Republic of Yemen that have not been authorized by Congress.',
+    url: 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1152/vote_115_2_00266.htm',
+  },
+};
