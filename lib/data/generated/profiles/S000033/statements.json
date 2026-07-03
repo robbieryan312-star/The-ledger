@@ -4,6 +4,14 @@
     "technology": {
       "statements": [
         {
+          "title": "Mr. SANDERS. Mr. President, we are at the beginning of the most profound technological revolution in world history, a revolution which will bring unimaginable changes to every aspect of our society. Artificial intelligence and robotics will impact our economy, our political lives, our privacy, our emotional well-being, our environment, and even our survival--the survival of humanity on this planet. The scale, scope, and speed of this change will be unprecedented. That is not the view of Bernie Sanders. That is the view of some of the most knowledgeable people in the world who have developed AI",
+          "date": "2026-03-24",
+          "url": "https://www.govinfo.gov/app/details/CREC-2026-03-24-pt1-PgS1584-6",
+          "tier": "official",
+          "topicId": "technology",
+          "verbatim": true
+        },
+        {
           "title": "Mr. SANDERS. Mr. President, I want to say a few words about what I consider to be one of the most important issues not only facing our country but facing the world, and that is the advent of artificial intelligence, which most experts agree will almost certainly be the most transformational technology in the history of humanity. It will profoundly impact the lives of every man, woman, and child in our country. Before I go further, I find it rather odd that, whereas everybody agrees that artificial intelligence is going to have a huge impact on our society, as of today, there has not been one s",
           "date": "2026-06-22",
           "url": "https://www.govinfo.gov/app/details/CREC-2026-06-22-pt1-PgS3025-4",
@@ -21,15 +29,18 @@
           "url": "https://www.washingtonpost.com/politics/bernie-sanders-set-to-unveil-new-medicare-for-all-legislation-a-key-component-of-his-2020-presidential-bid/2019/04/10/dc625de8-5b7a-11e9-842d-7d3ed7eb3957_story.html",
           "tier": "alleged",
           "topicId": "healthcare",
+          "verbatim": true,
+          "outlet": "Washington Post"
+        },
+        {
+          "title": "Mr. SANDERS. Madam President, it is no secret to the American people that our country today faces a series of enormous crises: our healthcare system basically collapsing, despite the huge amount of money we spend on it; millions of Americans cannot afford housing; 800,000 people are homeless. We have massive levels of income and wealth inequality. People on top have never ever done as well as they are doing right now while at the same time 60 percent of our people are living paycheck to paycheck. Working people are struggling to put food on the table, pay for housing, pay for healthcare, pay f",
+          "date": "2026-01-30",
+          "url": "https://www.govinfo.gov/app/details/CREC-2026-01-30-pt1-PgS401-7",
+          "tier": "official",
+          "topicId": "healthcare",
           "verbatim": true
         }
       ]
-    },
-    "climate": {
-      "statements": []
-    },
-    "defense-veterans": {
-      "statements": []
     },
     "education": {
       "statements": [
@@ -42,12 +53,6 @@
           "verbatim": true
         }
       ]
-    },
-    "civil-liberties": {
-      "statements": []
-    },
-    "economy-taxes": {
-      "statements": []
     }
   }
 }

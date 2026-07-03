@@ -61,6 +61,8 @@ interface ProceduralRule {
 
 const PROCEDURAL_RULES: ProceduralRule[] = [
   // 1. Amendment / resolution submissions and cosponsor bookkeeping.
+  { name: 'amendment-call-up', test: (t) => /\bI call up my amendment\b/i.test(t) },
+  { name: 'amendment-reported-by-number', test: (t) => /\bask that it be reported by number\b/i.test(t) },
   { name: 'amendment-submission', test: (t) => /submitted an amendment/i.test(t) },
   {
     name: 'resolution-submission',

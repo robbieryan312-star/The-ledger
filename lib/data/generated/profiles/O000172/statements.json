@@ -1,15 +1,63 @@
 {
   "bioguideId": "O000172",
   "byTopic": {
+    "healthcare": {
+      "statements": [
+        {
+          "title": "Ms. OCASIO-CORTEZ. Mr. Speaker, President Trump issued some statements throughout this process saying, urging, and insisting that this bill does not cut Medicaid. He has also said some things. He says he doesn't think I am too much of a smart person. I will tell you one thing. It doesn't take a smart person to know if you are being lied to. President Trump, you are either being lied to or you are lying to the American people because this bill represents, in the text of this bill, the largest and greatest loss of healthcare in American history. Seventeen million Americans will lose their health",
+          "date": "2025-07-02",
+          "url": "https://www.govinfo.gov/app/details/CREC-2025-07-02-pt1-PgH3039-8",
+          "tier": "official",
+          "topicId": "healthcare",
+          "verbatim": true
+        }
+      ]
+    },
     "climate": {
       "statements": [
         {
-          "title": "In order for us to combat that threat, we must be as ambitious and innovative in our solution as possible.",
+          "title": "In order for us to combat that threat we must be as ambitious and innovative in our solution as possible.",
           "date": "2019-02-07",
-          "url": "https://www.npr.org/2019/02/07/691997301/rep-alexandria-ocasio-cortez-releases-green-new-deal-outline",
+          "url": "https://www.npr.org/2019/02/07/692259103/ocasio-cortez-to-unveil-ambitious-plan-to-combat-climate-change",
           "tier": "media",
           "topicId": "climate",
           "outlet": "NPR",
+          "verbatim": true
+        }
+      ]
+    },
+    "defense-veterans": {
+      "statements": [
+        {
+          "title": "Ms. OCASIO-CORTEZ. Mr. Speaker, in February, the Trump administration, in conjunction with the Israeli Government, launched an illegal and disastrous war in Iran. They provided no rationale to the American people. They sought no legal authority from Congress, and they have since descended our world and our global economy into chaos. That was just the beginning. Now, President Trump has threatened to use the United States military to carry out acts of genocide against the Iranian people, who are innocent civilians. Up until today, he has done this on his own as a rogue actor. Yet, today, we vot",
+          "date": "2026-04-16",
+          "url": "https://www.govinfo.gov/app/details/CREC-2026-04-16-pt1-PgH2929-2",
+          "tier": "official",
+          "topicId": "defense-veterans",
+          "verbatim": true
+        }
+      ]
+    },
+    "education": {
+      "statements": [
+        {
+          "title": "Ms. OCASIO-CORTEZ. Mr. Speaker, I ask unanimous consent that I may hereafter be considered to be the first sponsor of H.R. 5658, the Child Care for Every Community Act, a bill originally introduced by Representative Sherrill of New Jersey, for the purpose of adding cosponsors and requesting reprintings pursuant to clause 7 of rule XII.",
+          "date": "2026-02-04",
+          "url": "https://www.govinfo.gov/app/details/CREC-2026-02-04-pt1-PgH2011-4",
+          "tier": "official",
+          "topicId": "education",
+          "verbatim": true
+        }
+      ]
+    },
+    "economy-taxes": {
+      "statements": [
+        {
+          "title": "Ms. OCASIO-CORTEZ. Mr. Speaker, it is great. It is great that Democrats have a line of people who are willing to fight for working- class Americans from coast to coast in this country.",
+          "date": "2025-11-12",
+          "url": "https://www.govinfo.gov/app/details/CREC-2025-11-12-pt1-PgH4595-3",
+          "tier": "official",
+          "topicId": "economy-taxes",
           "verbatim": true
         }
       ]

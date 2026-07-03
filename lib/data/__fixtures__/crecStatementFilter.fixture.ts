@@ -50,6 +50,10 @@ export const KNOWN_BAD: CrecFilterFixtureCase[] = [
     text: 'Mr. Bennet) submitted an amendment intended to be proposed by him to the bill S. 4784, to authorize appropriations for fiscal year 2027 for military activities of the Department of Defense, and for other purposes; which was ordered to lie on the table; as follows: In section 1224(a), strike paragraph (1) and insert the following: (1) In general.--Not later than 90 days after the date of the enactment of this Act, the Secretary of Defense, in coordin',
   },
   {
+    label: 'S000033 amendment call-up (5159)',
+    text: 'Mr. SANDERS. Mr. President, I call up my amendment 5159 and ask that it be reported by number. The ACTING PRESIDENT pro tempore. The clerk will report. The legislative clerk read as follows: The Senator from Vermont [',
+  },
+  {
     label: 'O000172 bill intro (H.R. 9395)',
     text: 'OCASIO-CORTEZ: H.R. 9395. A bill to amend title XVIII of the Social Security Act to require certain reporting with respect to agents and brokers of Medicare Advantage organizations; to the Committee on Ways and Means, and in addition to the Committee on Energy and Commerce, for a period to be subsequently determined by',
   },

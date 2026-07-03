@@ -30,9 +30,9 @@ const profilesRoot = path.join(projectRoot, 'lib', 'data', 'generated', 'profile
 const topicPositionsFile = path.join(projectRoot, 'lib', 'data', 'generated', 'topicPositions.json');
 const legislatorsFile = path.join(projectRoot, 'lib', 'data', 'generated', 'currentLegislators.json');
 
-const CREC_MEMBERS = ['O000172', 'M000355', 'W000817', 'C001098'] as const;
+const CREC_MEMBERS = ['S000033', 'O000172', 'M000355', 'W000817', 'C001098'] as const;
 const NEWS_MEMBERS = ['W000817', 'C001098'] as const;
-const BATCH_ALL = ['O000172', 'M000355', 'M001184', 'W000817', 'C001098'] as const;
+const BATCH_ALL = ['S000033', 'O000172', 'M000355', 'M001184', 'W000817', 'C001098'] as const;
 
 /** Approved tier-'media' domains (subset — GDELT domain match). */
 const APPROVED_NEWS_DOMAINS = [
@@ -253,7 +253,7 @@ async function applyCrecMember(
   if (totalOfficialCrec === 0 && crecSearchOk && stmtCount === 0) {
     statementsPayload.status = 'none-in-range';
     statementsPayload.note =
-      'GovInfo CREC search completed for the 119th Congress window; no verbatim floor-remark granules passed procedural filter.';
+      'GovInfo CREC search completed across the 119th and 118th Congress windows; no verbatim floor-remark granules passed procedural filter.';
   }
 
   await writeFile(path.join(profileDir, 'statements.json'), JSON.stringify(statementsPayload, null, 2) + '\n');
@@ -283,6 +283,32 @@ async function applyCrecMember(
       saidDidLinks: saidDidByTopic[topicId] ?? [],
     };
   }
+
+  // Preserve prior profile Said→Did links that still pair — national vote snapshot is only
+  // the most recent roll calls; gold pairs on older votes must not drop on CREC refresh.
+  try {
+    const priorSaidDid = JSON.parse(
+      await readFile(path.join(profileDir, 'saidDid.json'), 'utf8'),
+    ) as { byTopic: Record<string, SaidDidLinkEntry[]> };
+    for (const [topicId, links] of Object.entries(priorSaidDid.byTopic ?? {})) {
+      for (const link of links) {
+        const key = `${topicId}:${link.billNumber}:${link.voteDate}`;
+        const bucket = topicDataForPrune[topicId] ?? {
+          statements: byTopicClean[topicId]?.statements ?? [],
+          platformPositions: byTopicClean[topicId]?.platformPositions,
+          saidDidLinks: [],
+        };
+        if (!topicDataForPrune[topicId]) topicDataForPrune[topicId] = bucket;
+        const dup = (bucket.saidDidLinks ?? []).some(
+          (l) => `${topicId}:${l.billNumber}:${l.voteDate}` === key,
+        );
+        if (!dup) bucket.saidDidLinks = [...(bucket.saidDidLinks ?? []), link];
+      }
+    }
+  } catch {
+    /* no prior saidDid.json */
+  }
+
   saidDidByTopic = pruneSaidDidLinksByTopic(topicDataForPrune);
 
   await writeFile(

@@ -75,9 +75,14 @@ function pickSaidForLink(
   topicId: string,
   topicData: TopicPositionData,
   link: SaidDidLinkEntry,
+  allTopics?: Record<string, TopicPositionData>,
 ): SaidSource | null {
-  const officialStatement = topicData.statements.find(
-    (s) => s.topicId === topicId && s.tier === 'official' && textMatchesTopic(s.title, topicId),
+  const statementPool = allTopics
+    ? Object.values(allTopics).flatMap((t) => t.statements ?? [])
+    : topicData.statements;
+
+  const officialStatement = statementPool.find(
+    (s) => s.tier === 'official' && textMatchesTopic(s.title, topicId),
   );
   if (officialStatement) {
     return {
@@ -90,8 +95,8 @@ function pickSaidForLink(
     };
   }
 
-  const officialStatementLoose = topicData.statements.find(
-    (s) => s.topicId === topicId && s.tier === 'official',
+  const officialStatementLoose = statementPool.find(
+    (s) => s.tier === 'official' && s.topicId === topicId,
   );
   if (officialStatementLoose) {
     return {
@@ -187,7 +192,7 @@ export function pruneSaidDidLinksByTopic(
   for (const [topicId, topicData] of Object.entries(byTopic)) {
     const kept: SaidDidLinkEntry[] = [];
     for (const link of topicData.saidDidLinks ?? []) {
-      const said = pickSaidForLink(topicId, topicData, link);
+      const said = pickSaidForLink(topicId, topicData, link, byTopic);
       if (!said?.quote?.trim() || !said.url?.trim()) continue;
       if (isVoteRestatementSaid(said.quote)) continue;
       kept.push({ ...link, topicId });
@@ -208,7 +213,7 @@ export function buildSaidDidDiffsFromTopicPositions(
 
   for (const [topicId, topicData] of Object.entries(memberTopics)) {
     for (const link of topicData.saidDidLinks ?? []) {
-      const said = pickSaidForLink(topicId, topicData, link);
+      const said = pickSaidForLink(topicId, topicData, link, memberTopics);
       if (!said) continue;
 
       diffs.push({

@@ -31,6 +31,12 @@ const REQUEST_TIMEOUT_MS = 20_000;
 const MAX_PLATFORM_PER_TOPIC = 3;
 const MAX_SAID_DID_LINKS = 3;
 const MAX_CREC_STATEMENTS_PER_MEMBER = 12;
+/** Max GovInfo search granules to examine per member (pre-filter pool; not a display cap). */
+const CREC_SEARCH_POOL = 150;
+/** GovInfo /search page size — paginate via offsetMark until pool exhausted. */
+const CREC_SEARCH_PAGE_SIZE = 100;
+/** Congress numbers to search, most-recent first; dedupe by granule stem across sessions. */
+const CREC_CONGRESSES = [119, 118] as const;
 
 // --- 17b throughput controls ---
 // GovInfo signed-key limit is 36,000 req/hr (10 req/s). Cap global GovInfo request rate
@@ -643,6 +649,81 @@ interface GovInfoSearchResult {
   dateIssued?: string;
 }
 
+interface GovInfoSearchResponse {
+  results?: GovInfoSearchResult[];
+  offsetMark?: string;
+}
+
+async function fetchGovInfoCrecSearchPage(
+  apiKey: string,
+  congress: number,
+  searchQuery: string,
+  offsetMark: string,
+): Promise<{ results: GovInfoSearchResult[]; nextOffset: string | null; ok: boolean }> {
+  await govinfoLimiter.acquire();
+  const searchRes = await fetchWithRetry(`https://api.govinfo.gov/search?api_key=${encodeURIComponent(apiKey)}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query: `collection:CREC AND congress:${congress} AND ${searchQuery}`,
+      pageSize: CREC_SEARCH_PAGE_SIZE,
+      offsetMark,
+      sorts: [{ field: 'publishdate', sortOrder: 'DESC' }],
+    }),
+    signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+  });
+  if (!searchRes || !searchRes.ok) {
+    return { results: [], nextOffset: null, ok: false };
+  }
+  const searchData = (await searchRes.json()) as GovInfoSearchResponse;
+  const results = (searchData.results ?? []).filter((r) => r.granuleId && r.packageId);
+  const nextOffset = searchData.offsetMark?.trim();
+  const hasMore = Boolean(nextOffset && nextOffset !== offsetMark && results.length > 0);
+  return { results, nextOffset: hasMore ? nextOffset! : null, ok: true };
+}
+
+async function processCrecGranule(
+  result: GovInfoSearchResult,
+  leg: LegislatorRow,
+  apiKey: string,
+  speakerHayNeedle: string,
+): Promise<{ entry: TopicStatementEntry | null; htmlFetched: boolean; skippedProcedural: boolean }> {
+  if (CREC_SKIP_PROCEDURAL && isProceduralCrecTitle(result.title ?? '')) {
+    return { entry: null, htmlFetched: false, skippedProcedural: true };
+  }
+  try {
+    await govinfoLimiter.acquire();
+    const textRes = await fetch(
+      `https://api.govinfo.gov/packages/${result.packageId}/granules/${result.granuleId}/htm?api_key=${encodeURIComponent(apiKey)}`,
+      { signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) },
+    );
+    if (!textRes.ok) return { entry: null, htmlFetched: true, skippedProcedural: false };
+    const html = await textRes.text();
+    const plain = stripHtml(html);
+    const speakerHay = plain.toLowerCase().replace(/\./g, '');
+    if (!speakerHay.includes(speakerHayNeedle)) {
+      return { entry: null, htmlFetched: true, skippedProcedural: false };
+    }
+
+    const excerpt = extractCrecSpeechExcerpt(plain, leg);
+    if (!excerpt) return { entry: null, htmlFetched: true, skippedProcedural: false };
+
+    const topicId = mapCrecTextToTopic(excerpt) ?? mapCrecTextToTopic(result.title ?? '');
+    if (!topicId) return { entry: null, htmlFetched: true, skippedProcedural: false };
+
+    const date = (result.dateIssued ?? new Date().toISOString().slice(0, 10)).slice(0, 10);
+    const url = `https://www.govinfo.gov/app/details/${result.granuleId}`;
+
+    return {
+      entry: { title: excerpt, date, url, tier: 'official', topicId },
+      htmlFetched: true,
+      skippedProcedural: false,
+    };
+  } catch {
+    return { entry: null, htmlFetched: true, skippedProcedural: false };
+  }
+}
+
 /**
  * GovInfo CREC search query fragment for a member, gender-agnostic for BOTH chambers.
  *
@@ -651,8 +732,8 @@ interface GovInfoSearchResult {
  * granules for every female senator (PROVEN: "Mr. WARREN" -> 0, bare "WARREN" -> 1054,
  * OR-phrase -> 494 live). OR-ing the honorific forms keeps the query as on-target as the
  * old male-only phrase (surname adjacency) while including women — chosen over a bare
- * surname because bare matches every roster/cosponsor mention, flooding the 12-granule
- * window with procedural noise (bare WARREN 1054 vs OR 494). */
+ * surname because bare matches every roster/cosponsor mention, flooding the search pool
+ * with procedural noise (bare WARREN 1054 vs OR 494). */
 function crecSearchQuery(leg: LegislatorRow): string {
   const surname = leg.lastName.toUpperCase();
   return `("Mr. ${surname}" OR "Ms. ${surname}" OR "Mrs. ${surname}" OR "Miss ${surname}")`;
@@ -735,75 +816,66 @@ async function fetchGovInfoCrecByTopic(
   const byTopic = new Map<string, TopicStatementEntry[]>();
   const searchQuery = crecSearchQuery(leg);
   const speakerHayNeedle = crecSpeakerHay(leg).toLowerCase().replace(/\./g, '');
-  const congress = 119;
   let searchOk = false;
   let searchResults = 0;
   let htmlFetches = 0;
   let skippedProcedural = 0;
+  let granulesExamined = 0;
+
+  const collected: TopicStatementEntry[] = [];
+  const seenStems = new Set<string>();
 
   try {
-    await govinfoLimiter.acquire();
-    const searchRes = await fetchWithRetry(`https://api.govinfo.gov/search?api_key=${encodeURIComponent(apiKey)}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        query: `collection:CREC AND congress:${congress} AND ${searchQuery}`,
-        pageSize: MAX_CREC_STATEMENTS_PER_MEMBER,
-        offsetMark: '*',
-        sorts: [{ field: 'publishdate', sortOrder: 'DESC' }],
-      }),
-      signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
-    });
-    if (!searchRes || !searchRes.ok) return { byTopic, searchOk, searchResults, htmlFetches, skippedProcedural };
-    searchOk = true;
+    for (const congress of CREC_CONGRESSES) {
+      if (granulesExamined >= CREC_SEARCH_POOL) break;
+      let offsetMark = '*';
 
-    const searchData = (await searchRes.json()) as { results?: GovInfoSearchResult[] };
-    const results = (searchData.results ?? []).filter((r) => r.granuleId && r.packageId);
-    searchResults = results.length;
+      for (;;) {
+        if (granulesExamined >= CREC_SEARCH_POOL) break;
 
-    for (const result of results) {
-      if (CREC_SKIP_PROCEDURAL && isProceduralCrecTitle(result.title ?? '')) {
-        skippedProcedural += 1;
-        continue;
+        const page = await fetchGovInfoCrecSearchPage(apiKey, congress, searchQuery, offsetMark);
+        if (!page.ok) {
+          if (!searchOk) return { byTopic, searchOk, searchResults, htmlFetches, skippedProcedural };
+          break;
+        }
+        searchOk = true;
+        searchResults += page.results.length;
+
+        if (page.results.length === 0) break;
+
+        for (const result of page.results) {
+          granulesExamined += 1;
+          if (granulesExamined > CREC_SEARCH_POOL) break;
+
+          const processed = await processCrecGranule(result, leg, apiKey, speakerHayNeedle);
+          if (processed.skippedProcedural) {
+            skippedProcedural += 1;
+            continue;
+          }
+          if (processed.htmlFetched) htmlFetches += 1;
+          const entry = processed.entry;
+          if (!entry) continue;
+
+          const stem = crecGovInfoUrlStem(entry.url);
+          if (seenStems.has(stem)) continue;
+          if (!shouldAddCrecStatement(collected, entry)) continue;
+          seenStems.add(stem);
+          collected.push(entry);
+        }
+
+        if (!page.nextOffset) break;
+        offsetMark = page.nextOffset;
       }
-      try {
-        await govinfoLimiter.acquire();
-        htmlFetches += 1;
-        const textRes = await fetch(
-          `https://api.govinfo.gov/packages/${result.packageId}/granules/${result.granuleId}/htm?api_key=${encodeURIComponent(apiKey)}`,
-          { signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) },
-        );
-        if (!textRes.ok) continue;
-        const html = await textRes.text();
-        const plain = stripHtml(html);
-        const speakerHay = plain.toLowerCase().replace(/\./g, '');
-        if (!speakerHay.includes(speakerHayNeedle)) continue;
+    }
 
-        const excerpt = extractCrecSpeechExcerpt(plain, leg);
-        if (!excerpt) continue;
+    const capped = collected
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      .slice(0, MAX_CREC_STATEMENTS_PER_MEMBER);
 
-        const topicId = mapCrecTextToTopic(`${result.title ?? ''} ${excerpt}`);
-        if (!topicId) continue;
-
-        const date = (result.dateIssued ?? new Date().toISOString().slice(0, 10)).slice(0, 10);
-        const url = `https://www.govinfo.gov/app/details/${result.granuleId}`;
-
-        const entry: TopicStatementEntry = {
-          title: excerpt,
-          date,
-          url,
-          tier: 'official',
-          topicId,
-        };
-
-        const existing = byTopic.get(topicId) ?? [];
-        if (existing.length >= 2) continue;
-        if (!shouldAddCrecStatement(existing, entry)) continue;
-        existing.push(entry);
-        byTopic.set(topicId, existing);
-      } catch {
-        /* skip granule */
-      }
+    for (const entry of capped) {
+      const existing = byTopic.get(entry.topicId) ?? [];
+      existing.push(entry);
+      byTopic.set(entry.topicId, existing);
     }
   } catch (err) {
     console.warn(
@@ -1055,12 +1127,9 @@ async function main(): Promise<void> {
         entry.saidDidLinks = fresh?.saidDidLinks ?? [];
         // Only overlay statements when CREC actually refreshed; never wipe on a failed fetch.
         if (crec.searchOk) {
-          // FAILURE≠ABSENCE (§6): the fresh re-fetch only sees the 12 most-recent granules, so
-          // a genuine older committed floor speech can age out of the window on a later run. A
-          // search returning it today is a bonus, not a licence to blank committed-good data.
-          // Union fresh statements with any prior committed official CREC speeches (dedup by
-          // URL stem / title, re-filtered against the current procedural rules) so a re-sync can
-          // only ADD (e.g. newly-included female speeches) — never silently drop a prior one.
+          // FAILURE≠ABSENCE (§6): a re-fetch only sees the current search pool, so a genuine
+          // older committed floor speech can age out on a later run. Union fresh with prior
+          // committed official CREC (dedup by URL stem) so re-sync only ADDs — never drops.
           const merged: TopicStatementEntry[] = [...(fresh?.statements ?? [])];
           for (const prior of entry.statements ?? []) {
             if (!isCommittedCrecStatement(prior)) continue;
