@@ -15,7 +15,6 @@ import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
 import VotingRecord from '@/components/politicians/VotingRecord';
 import DonorChart from '@/components/politicians/DonorChart';
 import StockTrades from '@/components/politicians/StockTrades';
-import CredibilityConsistency from '@/components/politicians/CredibilityConsistency';
 import SaidDidPanel from '@/components/politicians/SaidDidPanel';
 import RelatedOfficialRecords from '@/components/politicians/RelatedOfficialRecords';
 import PublicActionsAccordion from '@/components/politicians/PublicActionsAccordion';
@@ -50,7 +49,6 @@ import {
 import TrackButton from '@/components/ui/TrackButton';
 import { buildSaidDidDiffsFromTopicPositions } from '@/lib/data/buildSaidDidDiffs';
 import { buildMergedProfileIssues } from '@/lib/data/issuesFromTopicPositions';
-import { withDerivedPromiseStatuses } from '@/lib/data/derivePromiseStatus';
 import { buildOrgVoteTopicLinks } from '@/lib/data/buildOrgVoteTopicLinks';
 import { getScheduleAForBioguide, hasAggregatedScheduleA } from '@/lib/data/fecScheduleA';
 import type { NewsBundleSlice } from '@/lib/data/snapshotTypes';
@@ -80,9 +78,9 @@ export interface PoliticianProfileClientProps {
 const BASE_TABS = [
   { id: 'overview',      label: 'Overview',       icon: Briefcase },
   { id: 'votes',         label: 'Voting Record',  icon: Vote },
-  { id: 'finance',       label: 'Money & Donors', icon: DollarSign },
-  { id: 'stocks',        label: 'Stock Trades',   icon: TrendingUp },
   { id: 'consistency',   label: 'Track Record',   icon: AlertTriangle },
+  { id: 'stocks',        label: 'Stock Trades',   icon: TrendingUp },
+  { id: 'finance',       label: 'Money & Donors', icon: DollarSign },
   { id: 'controversies', label: 'Controversies',  icon: Scale },
   { id: 'news',          label: 'News',           icon: Newspaper },
   { id: 'endorsements',  label: 'Endorsements',   icon: Users },
@@ -422,12 +420,7 @@ function EndorsementsTab({ politician }: { politician: Politician }) {
                     <div className="text-white/40 text-xs">{endorser.office}</div>
                     {endorser.date && <div className="text-white/25 text-xs">{endorser.date.split('-')[0]}</div>}
                     {endorser.source && (
-                      <div className="flex items-center gap-1.5 mt-1">
-                        <span className={`text-xs px-1.5 py-0 rounded font-medium ${
-                          endorser.source.tier === 'official' ? 'bg-green-500/15 text-green-400' :
-                          endorser.source.tier === 'nonpartisan' ? 'bg-blue-500/15 text-blue-400' :
-                          'bg-gray-500/15 text-gray-400'
-                        }`}>{endorser.source.tier}</span>
+                      <div className="flex items-center gap-1.5 mt-1 flex-wrap">
                         {endorser.source.url ? (
                           <a href={endorser.source.url} target="_blank" rel="noopener noreferrer"
                              className="text-xs text-white/30 hover:text-[#d4ac52] transition-colors flex items-center gap-1">
@@ -436,6 +429,9 @@ function EndorsementsTab({ politician }: { politician: Politician }) {
                         ) : (
                           <span className="text-xs text-white/25">{endorser.source.name}</span>
                         )}
+                        <span className="text-[9px] uppercase tracking-wide text-white/25 font-normal">
+                          {endorser.source.tier}
+                        </span>
                       </div>
                     )}
                   </div>
@@ -473,12 +469,7 @@ function EndorsementsTab({ politician }: { politician: Politician }) {
                     <div className="text-white/40 text-xs">{endorsed.office}</div>
                     {endorsed.date && <div className="text-white/25 text-xs">{endorsed.date.split('-')[0]}</div>}
                     {endorsed.source && (
-                      <div className="flex items-center gap-1.5 mt-1">
-                        <span className={`text-xs px-1.5 py-0 rounded font-medium ${
-                          endorsed.source.tier === 'official' ? 'bg-green-500/15 text-green-400' :
-                          endorsed.source.tier === 'nonpartisan' ? 'bg-blue-500/15 text-blue-400' :
-                          'bg-gray-500/15 text-gray-400'
-                        }`}>{endorsed.source.tier}</span>
+                      <div className="flex items-center gap-1.5 mt-1 flex-wrap">
                         {endorsed.source.url ? (
                           <a href={endorsed.source.url} target="_blank" rel="noopener noreferrer"
                              className="text-xs text-white/30 hover:text-[#d4ac52] transition-colors flex items-center gap-1">
@@ -487,6 +478,9 @@ function EndorsementsTab({ politician }: { politician: Politician }) {
                         ) : (
                           <span className="text-xs text-white/25">{endorsed.source.name}</span>
                         )}
+                        <span className="text-[9px] uppercase tracking-wide text-white/25 font-normal">
+                          {endorsed.source.tier}
+                        </span>
                       </div>
                     )}
                   </div>
@@ -546,10 +540,6 @@ export default function PoliticianProfileClient({
     politician.topIssues,
     isFeatured,
   );
-  const consistencyData = {
-    ...politician.consistency,
-    campaignPromises: withDerivedPromiseStatuses(politician.consistency.campaignPromises),
-  };
 
   const lobbyOrgTotal = displayFinance.lobbyistMoney.reduce((s, l) => s + l.amount, 0);
   const pacTotal = displayFinance.pacDonations;
@@ -770,7 +760,19 @@ export default function PoliticianProfileClient({
             </div>
           )}
           {isFederalCongress && (recordByTopic || memberDeep) && (
+            <>
+          <HotTopicsPanel issues={displayIssues} votes={displayVotes} isFeatured={isFeatured} />
+          <div
+            className="rounded-xl border border-white/[0.08] p-5 mb-6"
+            style={{ background: 'rgba(11,25,41,0.7)' }}
+          >
+            <h2 className="text-white font-bold mb-1">Where They Stand — By the Record</h2>
+            <p className="text-gray-500 text-xs mb-4 leading-relaxed">
+              Roll-call votes, sourced statements, and platform positions from official congressional records
+              and verified journalism — evidence grouped by topic, not editorial opinion.
+            </p>
             <ProfileRecordByTopicPanel
+              embedded
               record={
                 recordByTopic ?? {
                   topics: [],
@@ -784,14 +786,12 @@ export default function PoliticianProfileClient({
               politicianId={politician.id}
               orgVoteLinks={orgVoteLinks}
             />
-          )}
-          <HotTopicsPanel issues={displayIssues} votes={displayVotes} isFeatured={isFeatured} />
-          {voteviewMember && <VoteviewIdeologyPanel member={voteviewMember} />}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Top Issues */}
-            <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
-              <h2 className="text-white font-bold mb-1">Key Positions</h2>
-              <p className="text-gray-500 text-xs mb-4">Click each issue to see evidence and sources — positions expressed as what available records show, not as definitive statements</p>
+            <div className="border-t border-white/[0.06] pt-4 mt-4">
+              <h3 className="text-white font-semibold text-sm mb-1">Key Positions</h3>
+              <p className="text-gray-500 text-xs mb-3">
+                Click each issue to see evidence and sources — positions expressed as what available records show,
+                not as definitive statements
+              </p>
               {displayIssues.length > 0 ? (
                 <IssueAccordion issues={displayIssues} politicianName={politician.name} />
               ) : (
@@ -801,9 +801,16 @@ export default function PoliticianProfileClient({
                 </div>
               )}
             </div>
-
-            {/* Quick Stats */}
-            <div className="space-y-4">
+          </div>
+            </>
+          )}
+          {!isFederalCongress || (!recordByTopic && !memberDeep) ? (
+          <HotTopicsPanel issues={displayIssues} votes={displayVotes} isFeatured={isFeatured} />
+          ) : null}
+          {voteviewMember && <VoteviewIdeologyPanel member={voteviewMember} />}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Quick Stats — At a Glance only (Key Positions moved into combined record section) */}
+            <div className="space-y-4 md:col-span-2">
               <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
                 <h2 className="text-white font-bold mb-4">At a Glance</h2>
                 {isLightweight ? (
@@ -1000,16 +1007,9 @@ export default function PoliticianProfileClient({
               actions — shown as a neutral, dated factual diff.
             </p>
             {isLightweight ? (
-              <MissingRecordPanel kind="statement-to-action consistency tracking" />
+              <MissingRecordPanel kind="statement-to-action tracking" />
             ) : (
-              <>
-                <SaidDidPanel diffs={saidDidDiffs} />
-                <CredibilityConsistency
-                  data={consistencyData}
-                  issues={displayIssues}
-                  name={politician.name}
-                />
-              </>
+              <SaidDidPanel diffs={saidDidDiffs} />
             )}
           </div>
         )}

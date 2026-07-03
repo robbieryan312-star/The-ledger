@@ -551,29 +551,21 @@ export default function ProfileRecordByTopicPanel({
   memberDeep,
   politicianId,
   orgVoteLinks,
+  embedded = false,
 }: {
   record: ProfileRecordByTopic;
   bioguideId?: string;
   memberDeep?: MemberDeepProfile | null;
   politicianId?: string;
   orgVoteLinks?: OrgVoteTopicLink[];
+  /** When true, render topic rows only — parent supplies section chrome. */
+  embedded?: boolean;
 }) {
   const deepSponsoredTotal = memberDeep?.meta.totalSponsored ?? 0;
   const deepCosponsoredTotal = memberDeep?.meta.totalCosponsored ?? 0;
 
-  return (
-    <div
-      className="rounded-xl border border-white/[0.08] p-5 mb-6"
-      style={{ background: 'rgba(11,25,41,0.7)' }}
-    >
-      <h2 className="text-white font-bold mb-1">Where they stand — by the record</h2>
-      <p className="text-gray-500 text-xs mb-4 leading-relaxed">
-        Roll-call votes and sponsored bills from official congressional records
-        {memberDeep
-          ? ` (${deepSponsoredTotal} sponsored · ${deepCosponsoredTotal} cosponsored via Congress.gov)`
-          : ''}
-        ; platform positions from Ballotpedia where available.
-      </p>
+  const topicRows = (
+    <>
       <div className="space-y-2">
         {record.topics.map((group) => (
           <TopicGroupRow
@@ -624,6 +616,27 @@ export default function ProfileRecordByTopicPanel({
           : ''}
         .
       </p>
+    </>
+  );
+
+  if (embedded) {
+    return topicRows;
+  }
+
+  return (
+    <div
+      className="rounded-xl border border-white/[0.08] p-5 mb-6"
+      style={{ background: 'rgba(11,25,41,0.7)' }}
+    >
+      <h2 className="text-white font-bold mb-1">Where they stand — by the record</h2>
+      <p className="text-gray-500 text-xs mb-4 leading-relaxed">
+        Roll-call votes and sponsored bills from official congressional records
+        {memberDeep
+          ? ` (${deepSponsoredTotal} sponsored · ${deepCosponsoredTotal} cosponsored via Congress.gov)`
+          : ''}
+        ; platform positions from Ballotpedia where available.
+      </p>
+      {topicRows}
     </div>
   );
 }
