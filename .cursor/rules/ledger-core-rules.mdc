@@ -33,12 +33,17 @@ the specific failure this file was created to stop.
   action. Re-routing routine code/data calls back to the owner is the exact time-wasting failure
   this rule bans.
 - **The loop that ends the ping-pong.** Owner gives input + reviews the visual side only.
-  Claude decides every code/data question and writes an EXPLICIT brief. **Cursor executes the
-  brief EXACTLY and makes NO independent assumptions or changes** — if a brief is ambiguous,
-  Cursor stops and asks Claude, it does not guess. Claude then reviews Cursor's output for
-  correctness before it is accepted; anything short of the standard is rejected and re-briefed.
-  Standard for everything that ships: flawless, 100% accurate, pristine, presented exactly to
-  spec.
+  Claude decides every code/data question, DIAGNOSES the root cause + solution, and writes an
+  EXPLICIT brief carrying both the problem AND the fix (never bare "try again"). **Cursor is the
+  ONLY agent that collects data, runs syncs, and creates/edits files** — Claude does read-only
+  inspection to diagnose and verify, and never collects/syncs/generates data itself (two agents
+  writing similar data into separate places is banned). Cursor executes the brief EXACTLY and
+  makes NO independent assumptions — if ambiguous, it stops and asks. Claude reviews Cursor's
+  output for correctness before acceptance; anything short of standard is rejected and
+  re-briefed with the specific fix. **Single source of truth:** when data seems missing, check
+  whether it already exists in another generated file (usually it does) and the real fix is
+  wiring/joining to it — never re-collect into a new location. Standard for everything that
+  ships: flawless, 100% accurate, pristine, presented exactly to spec.
 - **One file per destination view — never a mega-bundle.** Each data category is written to its
   own file named/structured for the profile section or search location it feeds, keyed by
   `bioguideId`, so it is independently wipeable and verifiable. Do not bundle multiple
