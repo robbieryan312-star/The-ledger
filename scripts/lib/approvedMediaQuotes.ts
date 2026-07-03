@@ -88,13 +88,14 @@ export const VERIFIED_MEDIA_QUOTES_BY_BIOGUIDE: Record<string, CuratedMediaQuote
   O000172: [
     {
       quote:
-        'In order for us to combat that threat we must be as ambitious and innovative in our solution as possible.',
+        'In order for us to combat that threat, we must be as ambitious and innovative in our solution as possible.',
       topicId: 'climate',
       sources: [
         {
           outlet: 'NPR',
-          url: 'https://www.npr.org/2019/02/07/692259103/ocasio-cortez-to-unveil-ambitious-plan-to-combat-climate-change',
+          url: 'https://www.npr.org/2019/02/07/691997301/rep-alexandria-ocasio-cortez-releases-green-new-deal-outline',
           date: '2019-02-07',
+          waybackStamps: ['20190208', '20190210', '20190207180000'],
         },
       ],
     },

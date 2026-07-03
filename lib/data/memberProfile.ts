@@ -58,6 +58,13 @@ import type {
   TopicStatementEntry,
 } from './topicPositions';
 
+function isDisplayableStatement(statement: TopicStatementEntry): boolean {
+  if (statement.tier === 'media' || statement.tier === 'alleged') {
+    return statement.verbatim === true;
+  }
+  return true;
+}
+
 /** Members migrated off the topicPositions mega-bundle. */
 export const MIGRATED_PROFILE_BIOGUIDES = new Set([
   'S000033',
@@ -192,7 +199,9 @@ export function getMemberProfileTopicPositions(
   const out: Record<string, TopicPositionData> = {};
 
   for (const topicId of topicIds) {
-    const statements = bundle.statements.byTopic[topicId]?.statements ?? [];
+    const statements = (bundle.statements.byTopic[topicId]?.statements ?? []).filter(
+      isDisplayableStatement,
+    );
     const platformPositions = bundle.positions.byTopic[topicId]?.platformPositions ?? [];
     const saidDidLinks = bundle.saidDid.byTopic[topicId] ?? [];
 

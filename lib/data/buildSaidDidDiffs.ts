@@ -76,6 +76,34 @@ function pickSaidForLink(
   topicData: TopicPositionData,
   link: SaidDidLinkEntry,
 ): SaidSource | null {
+  const officialStatement = topicData.statements.find(
+    (s) => s.topicId === topicId && s.tier === 'official' && textMatchesTopic(s.title, topicId),
+  );
+  if (officialStatement) {
+    return {
+      quote: officialStatement.title,
+      outlet: officialStatement.outlet ?? officialOutletLabel(officialStatement.url),
+      url: officialStatement.url,
+      tier: 'official',
+      date: officialStatement.date,
+      verbatim: officialStatement.verbatim ?? true,
+    };
+  }
+
+  const officialStatementLoose = topicData.statements.find(
+    (s) => s.topicId === topicId && s.tier === 'official',
+  );
+  if (officialStatementLoose) {
+    return {
+      quote: officialStatementLoose.title,
+      outlet: officialStatementLoose.outlet ?? officialOutletLabel(officialStatementLoose.url),
+      url: officialStatementLoose.url,
+      tier: 'official',
+      date: officialStatementLoose.date,
+      verbatim: officialStatementLoose.verbatim ?? true,
+    };
+  }
+
   const mediaStatement = topicData.statements.find(
     (s) =>
       s.topicId === topicId &&
@@ -119,34 +147,6 @@ function pickSaidForLink(
       tier: 'alleged',
       date: allegedStatement.date,
       verbatim: true,
-    };
-  }
-
-  const officialStatement = topicData.statements.find(
-    (s) => s.topicId === topicId && s.tier === 'official' && textMatchesTopic(s.title, topicId),
-  );
-  if (officialStatement) {
-    return {
-      quote: officialStatement.title,
-      outlet: officialStatement.outlet ?? officialOutletLabel(officialStatement.url),
-      url: officialStatement.url,
-      tier: 'official',
-      date: officialStatement.date,
-      verbatim: officialStatement.verbatim ?? true,
-    };
-  }
-
-  const officialStatementLoose = topicData.statements.find(
-    (s) => s.topicId === topicId && s.tier === 'official',
-  );
-  if (officialStatementLoose) {
-    return {
-      quote: officialStatementLoose.title,
-      outlet: officialStatementLoose.outlet ?? officialOutletLabel(officialStatementLoose.url),
-      url: officialStatementLoose.url,
-      tier: 'official',
-      date: officialStatementLoose.date,
-      verbatim: officialStatementLoose.verbatim ?? true,
     };
   }
 
