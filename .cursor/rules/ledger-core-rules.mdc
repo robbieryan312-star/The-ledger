@@ -116,8 +116,10 @@ the specific failure this file was created to stop.
   are less prominent, below.
 - **Track Record** — remove the Consistency Score entirely. Target **15** Said→Did / evidence
   records per profile where the verified record supports it (honest gaps otherwise).
-- **Controversies** — no hard cap. Short for most members; for those with a substantial record,
-  show it, objectively and sourced.
+- **Controversies** — its OWN menu/nav option toward the end of the profile, **directly
+  navigable** (anchor/tab the user can jump straight to). No hard cap: short for most members,
+  but scales up for high-profile figures (e.g. Trump) where the record is large. Always
+  objective and sourced.
 - **News** — collect relevant, impactful items; stick to quotes or fact-based statements.
   Single-source items shown as `'alleged'`; 2+ sources to present as verified fact.
   [OWNER TO CONFIRM: owner suggested 1 corroborating source for news — kept at credibility-safe
