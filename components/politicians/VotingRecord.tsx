@@ -49,8 +49,7 @@ export default function VotingRecord({
   const present = votes.filter(v => v.vote === 'Present').length;
   const conflicts = votes.filter(v => v.alignsWithDonors).length;
   const broken = votes.filter(v => v.alignsWithCampaign === false).length;
-  const castTotal = yeas + nays;
-  const showNotVotingTile = notVoting > 0 && (castTotal === 0 || notVoting >= castTotal);
+  const showNotVotingTile = notVoting > 0;
 
   if (votes.length === 0) {
     return (

@@ -35,6 +35,10 @@ export const SOURCE_INTEGRITY_KNOWN_GOOD_URLS: Array<{ label: string; url: strin
     label: 'real WaPo campaign wage dispute article',
     url: 'https://www.washingtonpost.com/politics/labor-fight-roils-bernie-sanders-campaign-as-workers-demand-the-15-hourly-pay-the-candidate-has-proposed-for-employees-nationwide/2019/07/18/3a6df9f4-a966-11e9-9214-246e594de5d5_story.html',
   },
+  {
+    label: 'real Politico article with numeric slug suffix (not a placeholder)',
+    url: 'https://www.politico.com/news/2025/02/12/bernie-sanders-iowa-midterms-trump-musk-00203974',
+  },
 ];
 
 /** Alleged/media journalism quote without verbatim:true — must fail statements integrity guard. */

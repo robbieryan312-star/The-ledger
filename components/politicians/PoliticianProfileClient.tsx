@@ -429,8 +429,8 @@ function EndorsementsTab({ politician }: { politician: Politician }) {
                         ) : (
                           <span className="text-xs text-white/25">{endorser.source.name}</span>
                         )}
-                        <span className="text-[9px] uppercase tracking-wide text-white/25 font-normal">
-                          {endorser.source.tier}
+                        <span className="text-[8px] uppercase tracking-wider text-white/20 font-normal ml-0.5">
+                          · {endorser.source.tier}
                         </span>
                       </div>
                     )}
@@ -478,8 +478,8 @@ function EndorsementsTab({ politician }: { politician: Politician }) {
                         ) : (
                           <span className="text-xs text-white/25">{endorsed.source.name}</span>
                         )}
-                        <span className="text-[9px] uppercase tracking-wide text-white/25 font-normal">
-                          {endorsed.source.tier}
+                        <span className="text-[8px] uppercase tracking-wider text-white/20 font-normal ml-0.5">
+                          · {endorsed.source.tier}
                         </span>
                       </div>
                     )}
@@ -766,10 +766,10 @@ export default function PoliticianProfileClient({
             className="rounded-xl border border-white/[0.08] p-5 mb-6"
             style={{ background: 'rgba(11,25,41,0.7)' }}
           >
-            <h2 className="text-white font-bold mb-1">Where They Stand — By the Record</h2>
+            <h2 className="text-white font-bold mb-1">Where They Stand — Evidence &amp; Key Positions</h2>
             <p className="text-gray-500 text-xs mb-4 leading-relaxed">
               Roll-call votes, sourced statements, and platform positions from official congressional records
-              and verified journalism — evidence grouped by topic, not editorial opinion.
+              and verified journalism — grouped by topic with expandable evidence, not editorial opinion.
             </p>
             <ProfileRecordByTopicPanel
               embedded
@@ -787,11 +787,7 @@ export default function PoliticianProfileClient({
               orgVoteLinks={orgVoteLinks}
             />
             <div className="border-t border-white/[0.06] pt-4 mt-4">
-              <h3 className="text-white font-semibold text-sm mb-1">Key Positions</h3>
-              <p className="text-gray-500 text-xs mb-3">
-                Click each issue to see evidence and sources — positions expressed as what available records show,
-                not as definitive statements
-              </p>
+              <h3 className="text-white/70 font-medium text-sm mb-3">Key positions by issue</h3>
               {displayIssues.length > 0 ? (
                 <IssueAccordion issues={displayIssues} politicianName={politician.name} />
               ) : (

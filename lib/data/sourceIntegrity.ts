@@ -121,8 +121,8 @@ export function validateSaidDidDiffs(diffs: SaidDidDiffLike[], label: string): S
 
 const PLACEHOLDER_PATTERNS: RegExp[] = [
   /endorsement-a1b2c3d4e5f6/i,
-  // Human-readable prefix + invented hex tail (e.g. endorsement-a1b2c3d4e5f6) — not AP-style pure-hex slugs.
-  /\b[a-z]{4,}-[a-f0-9]{8,}\b/i,
+  // Human-readable prefix + invented hex tail with at least one a–f letter (Politico numeric -00156257 IDs are OK).
+  /\b[a-z]{4,}-(?=[a-f0-9]{8,}\b)(?=[a-f]*[a-f])[a-f0-9]{8,}\b/i,
   /example\.com/i,
   /\/example\//i,
   /\bxxxx\b/i,

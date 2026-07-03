@@ -23,12 +23,12 @@ export interface TopicStatementCorroboratingSource {
 
 export interface TopicStatementEntry {
   title: string;
-  /** UI-only excerpt with CREC floor opener stripped; raw `title` stays verbatim in storage. */
-  displayText?: string;
   date: string;
   url: string;
   tier: SourceTier;
   topicId: string;
+  /** UI display excerpt — CREC opener stripped; raw title kept for verbatim integrity. */
+  displayText?: string;
   /** Required true for tier 'media' or 'alleged' (build-gated). Official CREC floor remarks: true. */
   verbatim?: boolean;
   outlet?: string;

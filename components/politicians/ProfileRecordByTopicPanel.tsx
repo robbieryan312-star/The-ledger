@@ -8,7 +8,6 @@ import type { MemberDeepBill, MemberDeepProfile } from '@/lib/data/memberDeep';
 import { getTopicPositions } from '@/lib/data/topicPositions';
 import { statementDisplayText } from '@/lib/data/crecDisplayText';
 import { isCeremonialCrecRemark } from '@/lib/data/ceremonialCrecFilter';
-import { buildTopicConsistencyTimeline } from '@/lib/data/buildTopicConsistencyTimeline';
 import type { OrgVoteTopicLink } from '@/lib/data/buildOrgVoteTopicLinks';
 import { recordTopicLabel } from '@/lib/data/profileRecordByTopic';
 import { getMergedDeepTopicBlock, normalizeTopicId } from '@/lib/data/topicAliases';
@@ -135,14 +134,9 @@ function TopicGroupRow({
     additionalBills.length > 0;
 
   const topicOrgLinks = orgVoteLinks?.filter((l) => l.orgTopicId === group.topicId) ?? [];
-  const timeline =
-    bioguideId && politicianId && topicPositions
-      ? buildTopicConsistencyTimeline(bioguideId, group.topicId, topicPositions, politicianId)
-      : [];
-  const hasTimeline = timeline.length >= 2;
 
   const hasExpandable =
-    voteExamples.length > 0 || hasStatedBlock || hasLegislation || topicOrgLinks.length > 0 || hasTimeline;
+    voteExamples.length > 0 || hasStatedBlock || hasLegislation || topicOrgLinks.length > 0;
 
   return (
     <div className="rounded-lg border border-white/[0.08] bg-[#0a1628]/60">
@@ -430,24 +424,6 @@ function TopicGroupRow({
                   </div>
                 </div>
               ))}
-            </div>
-          )}
-
-          {hasTimeline && (
-            <div className="text-xs space-y-2 border-t border-white/[0.06] pt-3">
-              <div className="text-gray-500 text-[11px] font-medium">Topic record timeline</div>
-              <ul className="space-y-2 list-none pl-0">
-                {timeline.map((bullet, i) => (
-                  <li key={i} className="flex gap-2 text-gray-300 leading-snug">
-                    <span className="text-gray-500 flex-shrink-0">{formatShortDate(bullet.date)}</span>
-                    <span className="text-[#c8a951] flex-shrink-0">{bullet.kind}</span>
-                    <span className="flex-1 min-w-0">{truncateTitle(bullet.claim, 120)}</span>
-                    <span className="text-gray-500 flex-shrink-0 hidden sm:inline">
-                      {bullet.sourceName}, {bullet.tier}
-                    </span>
-                  </li>
-                ))}
-              </ul>
             </div>
           )}
 
