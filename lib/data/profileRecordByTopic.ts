@@ -181,10 +181,33 @@ export function voteCongressGovUrl(vote: VoteRecord): string {
 }
 
 /**
- * Route record text to a topic bucket. Order-sensitive: abortion and technology checked before
- * broader civil/economy buckets. Tech-platform antitrust (big tech / platform co-occurrence) →
- * technology; general corporate antitrust → economy-taxes.
+ * Route record text to a topic bucket. Uses word-boundary keyword matching (not substring)
+ * so "price of" does not hit immigration `ice` and "senator" does not hit defense `nato`.
+ * When multiple buckets match, the bucket with the highest keyword-weight score wins.
  */
+export function recordKeywordMatches(hay: string, keyword: string): boolean {
+  const k = keyword.trim().toLowerCase();
+  if (!k) return false;
+  if (/\s/.test(k)) return hay.includes(k);
+  const escaped = k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`\\b${escaped}\\b`).test(hay);
+}
+
+function scoreTopicBuckets(hay: string): Map<string, number> {
+  const scores = new Map<string, number>();
+  for (const bucket of RECORD_TOPIC_BUCKETS) {
+    if (bucket.id === 'legislation') continue;
+    let score = 0;
+    for (const keyword of bucket.keywords) {
+      if (recordKeywordMatches(hay, keyword)) {
+        score += keyword.trim().length;
+      }
+    }
+    if (score > 0) scores.set(bucket.id, score);
+  }
+  return scores;
+}
+
 export function classifyTextToRecordTopicId(text: string, category?: string): string {
   const hay = `${text} ${category ?? ''}`.toLowerCase();
   const cat = (category ?? '').toLowerCase();
@@ -204,9 +227,17 @@ export function classifyTextToRecordTopicId(text: string, category?: string): st
     return 'economy-taxes';
   }
 
-  for (const bucket of RECORD_TOPIC_BUCKETS) {
-    if (bucket.id === 'legislation') continue;
-    if (bucket.keywords.some((k) => hay.includes(k.trim().toLowerCase()))) return bucket.id;
+  const scores = scoreTopicBuckets(hay);
+  if (scores.size > 0) {
+    let bestId = 'legislation';
+    let bestScore = 0;
+    for (const [id, score] of scores) {
+      if (score > bestScore) {
+        bestScore = score;
+        bestId = id;
+      }
+    }
+    return bestId;
   }
 
   if (cat === 'legislation' || hay.includes('bill') || hay.includes('resolution')) {

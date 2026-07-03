@@ -40,6 +40,7 @@ const LEGISLATORS_FILE = path.join(projectRoot, 'lib', 'data', 'generated', 'cur
 
 const TARGET_CONGRESS = 119;
 const VOTES_PER_MEMBER = 10;
+const MAX_SENATE_VOTES_COLLECT = 45;
 const MAX_VOTE_PAGES = 6;
 const PAGE_SIZE = 50;
 
@@ -58,6 +59,21 @@ interface ExistingNationalVotesSnapshot {
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/** Prefer recent Yea/Nay votes when the newest roll calls are all Not Voting. */
+function finalizeMemberVotes(candidates: VoteRecord[], targetCount: number): VoteRecord[] {
+  const sorted = [...candidates].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
+  const cast = sorted.filter((v) => v.vote === 'Yea' || v.vote === 'Nay');
+  const absent = sorted.filter((v) => v.vote !== 'Yea' && v.vote !== 'Nay');
+  if (cast.length === 0) return sorted.slice(0, targetCount);
+  const out = cast.slice(0, targetCount);
+  if (out.length < targetCount) {
+    out.push(...absent.slice(0, targetCount - out.length));
+  }
+  return out.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 function isoDate(value?: string): string {
@@ -207,7 +223,9 @@ async function syncSenateVotes(
   const menu = (await fetchSenateVoteMenu(TARGET_CONGRESS, 2)).sort((a, b) => b.voteNumber - a.voteNumber);
 
   for (const item of menu) {
-    const pending = senators.filter((s) => (collected.get(s.bioguideId)?.length ?? 0) < VOTES_PER_MEMBER);
+    const pending = senators.filter(
+      (s) => (collected.get(s.bioguideId)?.length ?? 0) < MAX_SENATE_VOTES_COLLECT,
+    );
     if (pending.length === 0) break;
 
     try {
@@ -218,7 +236,7 @@ async function syncSenateVotes(
         const memberVote = roll.members.find((m) => m.lisMemberId === lis);
         if (!memberVote) continue;
         const list = collected.get(sen.bioguideId) ?? [];
-        if (list.length >= VOTES_PER_MEMBER) continue;
+        if (list.length >= MAX_SENATE_VOTES_COLLECT) continue;
         list.push(senateVoteToRecord(sen.bioguideId, roll, memberVote.voteCast));
         collected.set(sen.bioguideId, list);
       }
@@ -227,6 +245,11 @@ async function syncSenateVotes(
       console.warn(`  skip Senate vote ${item.voteNumber}: ${msg}`);
     }
     await sleep(120);
+  }
+
+  for (const sen of senators) {
+    const raw = collected.get(sen.bioguideId) ?? [];
+    collected.set(sen.bioguideId, finalizeMemberVotes(raw, VOTES_PER_MEMBER));
   }
 
   return collected;

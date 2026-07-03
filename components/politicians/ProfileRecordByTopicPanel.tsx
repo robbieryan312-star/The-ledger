@@ -6,6 +6,8 @@ import { ChevronDown, ChevronRight, ExternalLink, FileText } from 'lucide-react'
 import type { ProfileRecordByTopic, TopicRecordGroup } from '@/lib/data/profileRecordByTopic';
 import type { MemberDeepBill, MemberDeepProfile } from '@/lib/data/memberDeep';
 import { getTopicPositions } from '@/lib/data/topicPositions';
+import { statementDisplayText } from '@/lib/data/crecDisplayText';
+import { isCeremonialCrecRemark } from '@/lib/data/ceremonialCrecFilter';
 import { buildTopicConsistencyTimeline } from '@/lib/data/buildTopicConsistencyTimeline';
 import type { OrgVoteTopicLink } from '@/lib/data/buildOrgVoteTopicLinks';
 import { recordTopicLabel } from '@/lib/data/profileRecordByTopic';
@@ -109,7 +111,7 @@ function TopicGroupRow({
 
   const hasStatedPosition = Boolean(topicPositions?.statedPosition);
   const officialStatements =
-    topicPositions?.statements.filter((s) => s.tier === 'official') ?? [];
+    topicPositions?.statements.filter((s) => s.tier === 'official' && !isCeremonialCrecRemark(s.title)) ?? [];
   const mediaStatements =
     topicPositions?.statements.filter((s) => s.tier === 'media' && s.verbatim === true) ?? [];
   const allegedStatements =
@@ -252,8 +254,8 @@ function TopicGroupRow({
                           />
                         </div>
                         <ExpandableQuoteBlock
-                          summary={statement.title.split(/(?<=[.!?])\s+/)[0] ?? statement.title}
-                          fullText={statement.title}
+                          summary={(statementDisplayText(statement)).split(/(?<=[.!?])\s+/)[0] ?? statementDisplayText(statement)}
+                          fullText={statementDisplayText(statement)}
                           verbatim
                         />
                         <Link
@@ -289,8 +291,8 @@ function TopicGroupRow({
                           />
                         </div>
                         <ExpandableQuoteBlock
-                          summary={statement.title.split(/(?<=[.!?])\s+/)[0] ?? statement.title}
-                          fullText={statement.title}
+                          summary={(statementDisplayText(statement)).split(/(?<=[.!?])\s+/)[0] ?? statementDisplayText(statement)}
+                          fullText={statementDisplayText(statement)}
                           verbatim
                         />
                         <Link
@@ -326,8 +328,8 @@ function TopicGroupRow({
                           />
                         </div>
                         <ExpandableQuoteBlock
-                          summary={statement.title.split(/(?<=[.!?])\s+/)[0] ?? statement.title}
-                          fullText={statement.title}
+                          summary={(statementDisplayText(statement)).split(/(?<=[.!?])\s+/)[0] ?? statementDisplayText(statement)}
+                          fullText={statementDisplayText(statement)}
                           verbatim
                         />
                         <Link

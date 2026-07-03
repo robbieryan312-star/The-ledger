@@ -133,6 +133,10 @@ const PROCEDURAL_RULES: ProceduralRule[] = [
 
   // 8b. Ceremonial intern recognition — a thank-you to office staff, not a policy statement.
   { name: 'intern-recognition', test: (t) => /\ban intern in (my|his|her|the|our)\b/i.test(t) },
+
+  // 9. Unanimous-consent procedural requests (first-sponsor / cosponsor bookkeeping).
+  { name: 'unanimous-consent-request', test: (t) => /\bask unanimous consent\b/i.test(t) },
+  { name: 'first-sponsor-uc', test: (t) => /\bbe considered to be the first sponsor of\b/i.test(t) },
 ];
 
 /** Returns the first matching procedural-rule name, or null when the text is not procedural. */

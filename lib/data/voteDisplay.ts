@@ -118,3 +118,34 @@ export function hasPartyBreakdown(vote: VoteRecord): boolean {
     (b.independent?.yea ?? 0) + (b.independent?.nay ?? 0);
   return total > 0;
 }
+
+/**
+ * Plain-language citizen impact line derived strictly from an official bill summary string.
+ * Does not invent facts beyond rephrasing the congress.gov summary text.
+ */
+export function citizenImpactFromBillSummary(summary: string, vote?: VoteRecord): string | null {
+  const raw = summary.trim();
+  if (!raw || raw.length < 12) return null;
+
+  let body = raw.replace(/\.\s*$/, '').trim();
+
+  const billLead =
+    /^A (?:bill|joint resolution|concurrent resolution|resolution) to (.+)$/i.exec(body);
+  if (billLead?.[1]) {
+    body = billLead[1].trim();
+  }
+
+  const confirmLead =
+    /^(?:Confirmation|Nomination):\s*(.+)$/i.exec(body) ??
+    /^(.+?),?\s+of [A-Za-z .]+,?\s+to be (.+)$/i.exec(body);
+  if (confirmLead && vote?.voteAction?.toLowerCase().includes('confirmation')) {
+    const nominee = confirmLead[1]?.trim();
+    const role = confirmLead[2]?.trim() ?? vote.billTitle.replace(/^Confirmation:\s*/i, '').trim();
+    if (nominee && role) {
+      return `If confirmed, ${nominee} would serve as ${role.replace(/\.$/, '')}.`;
+    }
+  }
+
+  const lower = body.charAt(0).toLowerCase() + body.slice(1);
+  return `If enacted, this measure would ${lower.replace(/\.$/, '')}.`;
+}

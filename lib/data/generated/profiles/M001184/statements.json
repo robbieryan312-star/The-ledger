@@ -1,23 +1,27 @@
 {
   "bioguideId": "M001184",
   "byTopic": {
-    "healthcare": {
-      "statements": []
-    },
-    "immigration": {
+    "legislation": {
       "statements": [
         {
           "title": "Mr. MASSIE. Mr. Speaker, I rise to raise a question of the privileges of the House and offer a resolution previously noticed.",
           "date": "2026-06-30",
           "url": "https://www.govinfo.gov/app/details/CREC-2026-06-30-pt1-PgH4345-4",
           "tier": "official",
-          "topicId": "immigration",
-          "verbatim": true
+          "topicId": "legislation",
+          "verbatim": true,
+          "displayText": "I rise to raise a question of the privileges of the House and offer a resolution previously noticed."
+        },
+        {
+          "title": "Mr. MASSIE. Mr. Speaker, I rise in opposition to this clean reauthorization of an unconstitutional program that is being used to spy on Americans without warrants. This would be the third temporary, clean extension of this unconstitutional program, and I find myself on the unfortunate opposition to the chairman of the committee of jurisdiction, the distinguished gentleman from Ohio (",
+          "date": "2026-06-10",
+          "url": "https://www.govinfo.gov/app/details/CREC-2026-06-10-pt1-PgH4079-8",
+          "tier": "official",
+          "topicId": "legislation",
+          "verbatim": true,
+          "displayText": "I rise in opposition to this clean reauthorization of an unconstitutional program that is being used to spy on Americans without warrants. This would be the third temporary, clean extension of this unconstitutional program, and I find myself on the unfortunate opposition to the chairman of the committee of jurisdiction, the distinguished gentleman from Ohio ("
         }
       ]
-    },
-    "climate": {
-      "statements": []
     },
     "defense-veterans": {
       "statements": [
@@ -27,21 +31,6 @@
           "url": "https://thehill.com/homenews/house/3485384-here-are-the-two-republicans-who-voted-against-four-bills-related-to-the-russia-ukraine-conflict/",
           "tier": "alleged",
           "topicId": "defense-veterans",
-          "verbatim": true
-        }
-      ]
-    },
-    "education": {
-      "statements": []
-    },
-    "civil-liberties": {
-      "statements": [
-        {
-          "title": "Mr. MASSIE. Mr. Speaker, I rise in opposition to this clean reauthorization of an unconstitutional program that is being used to spy on Americans without warrants. This would be the third temporary, clean extension of this unconstitutional program, and I find myself on the unfortunate opposition to the chairman of the committee of jurisdiction, the distinguished gentleman from Ohio (",
-          "date": "2026-06-10",
-          "url": "https://www.govinfo.gov/app/details/CREC-2026-06-10-pt1-PgH4079-8",
-          "tier": "official",
-          "topicId": "civil-liberties",
           "verbatim": true
         }
       ]

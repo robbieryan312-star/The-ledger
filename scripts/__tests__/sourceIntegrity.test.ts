@@ -7,6 +7,7 @@ import path from 'node:path';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH,
   SAID_DID_KNOWN_BAD_TAUTOLOGY,
   SOURCE_INTEGRITY_KNOWN_BAD_URLS,
   SOURCE_INTEGRITY_KNOWN_GOOD_URLS,
@@ -19,6 +20,7 @@ import {
   isGenuineSaidDidDiff,
   isPlaceholderUrl,
   isVoteRestatementSaid,
+  saidDidSubjectsOverlap,
   validateProfileSources,
   validateSaidDidDiffs,
   validateStatementsFile,
@@ -67,6 +69,16 @@ test('known-bad vote-as-Said tautology is rejected', () => {
   assert.equal(isGenuineSaidDidDiff(SAID_DID_KNOWN_BAD_TAUTOLOGY), false);
   const violations = validateSaidDidDiffs([SAID_DID_KNOWN_BAD_TAUTOLOGY], 'fixture');
   assert.ok(violations.length > 0, 'expected tautology fixture to produce violations');
+});
+
+test('known-bad subject-mismatched Said→Did is rejected', () => {
+  assert.equal(saidDidSubjectsOverlap(SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH.said.quote, SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH.did.action), false);
+  assert.equal(isGenuineSaidDidDiff(SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH), false);
+  const violations = validateSaidDidDiffs([SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH], 'fixture');
+  assert.ok(
+    violations.some((v) => v.message.includes('no meaningful overlap')),
+    'expected subject-mismatch fixture to fail overlap guard',
+  );
 });
 
 test('known-bad non-verbatim alleged statement fails statements integrity', () => {

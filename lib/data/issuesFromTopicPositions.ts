@@ -7,8 +7,14 @@ import {
   issuesWithTopicCoverage,
   matchTopic,
 } from './topicCoverage';
-import { getMemberTopicPositions, type TopicPositionData } from './topicPositions';
+import { getMemberTopicPositions, type TopicPositionData, type TopicStatementEntry } from './topicPositions';
 import { normalizeTopicId } from './topicAliases';
+import { isCeremonialCrecRemark } from './ceremonialCrecFilter';
+import { statementDisplayText } from './crecDisplayText';
+
+function isPolicyStatement(st: TopicStatementEntry): boolean {
+  return !isCeremonialCrecRemark(st.title);
+}
 
 function firstSentence(text: string, max = 90): string {
   const sentence = text.split(/(?<=[.!?])\s+/)[0]?.trim() ?? text.trim();
@@ -19,12 +25,13 @@ function firstSentence(text: string, max = 90): string {
 function buildEvidence(topicId: string, data: TopicPositionData): EvidenceItem[] {
   const items: EvidenceItem[] = [];
 
-  for (const st of data.statements) {
+  for (const st of data.statements.filter(isPolicyStatement)) {
     const isVerbatim = st.tier === 'official' || st.tier === 'media';
+    const display = statementDisplayText(st);
     items.push({
       type: isVerbatim ? 'quote' : 'statement',
-      description: firstSentence(st.title, 140),
-      quote: isVerbatim ? st.title : undefined,
+      description: firstSentence(display, 140),
+      quote: isVerbatim ? display : undefined,
       date: st.date,
       source: {
         name:
@@ -92,24 +99,25 @@ export function buildIssuesFromTopicPositions(bioguideId: string): Issue[] {
 
     const hasContent =
       (data.platformPositions?.length ?? 0) > 0 ||
-      data.statements.length > 0 ||
+      data.statements.some(isPolicyStatement) ||
       (data.saidDidLinks?.length ?? 0) > 0 ||
       Boolean(data.statedPosition?.trim());
 
     if (!hasContent) continue;
 
+    const policyStatements = data.statements.filter(isPolicyStatement);
     const headline =
-      data.statements.find((s) => s.tier === 'media' || s.tier === 'official')?.title ??
+      policyStatements.find((s) => s.tier === 'media' || s.tier === 'official')?.title ??
       data.platformPositions?.[0]?.text ??
       data.statedPosition ??
       policyDef.label;
 
     const evidence = buildEvidence(policyId, data);
     const summarySource =
-      data.statements[0] ?? data.platformPositions?.[0]
+      policyStatements[0] ?? data.platformPositions?.[0]
         ? {
             text:
-              data.statements[0]?.title ??
+              (policyStatements[0] ? statementDisplayText(policyStatements[0]) : undefined) ??
               data.platformPositions?.[0]?.text ??
               '',
           }
@@ -117,7 +125,7 @@ export function buildIssuesFromTopicPositions(bioguideId: string): Issue[] {
 
     issues.push({
       name: policyDef.label,
-      position: firstSentence(headline, 100),
+      position: firstSentence(statementDisplayText({ title: headline }), 100),
       detail: summarySource ? firstSentence(summarySource.text, 220) : firstSentence(headline, 220),
       category: policyDef.label,
       statement: summarySource ? firstSentence(summarySource.text, 240) : undefined,

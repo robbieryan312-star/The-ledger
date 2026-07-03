@@ -1,6 +1,6 @@
 import type { SaidDidDiff } from '../types';
-import { RECORD_TOPIC_BUCKETS } from './profileRecordByTopic';
-import { isVoteRestatementSaid } from './sourceIntegrity';
+import { RECORD_TOPIC_BUCKETS, recordKeywordMatches } from './profileRecordByTopic';
+import { isVoteRestatementSaid, saidDidSubjectsOverlap } from './sourceIntegrity';
 import { getMemberTopicPositions, type TopicPositionData } from './topicPositions';
 import type { SaidDidLinkEntry } from './topicPositions';
 
@@ -18,12 +18,7 @@ function topicKeywords(topicId: string): string[] {
 
 function textMatchesTopic(text: string, topicId: string): boolean {
   const hay = text.toLowerCase();
-  return topicKeywords(topicId).some((k) => {
-    const keyword = k.trim().toLowerCase();
-    if (!keyword) return false;
-    if (/\s/.test(keyword)) return hay.includes(keyword);
-    return new RegExp(`\\b${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`).test(hay);
-  });
+  return topicKeywords(topicId).some((k) => recordKeywordMatches(hay, k));
 }
 
 function voteContext(link: SaidDidLinkEntry): string {
@@ -82,7 +77,10 @@ function pickSaidForLink(
     : topicData.statements;
 
   const officialStatement = statementPool.find(
-    (s) => s.tier === 'official' && textMatchesTopic(s.title, topicId),
+    (s) =>
+      s.tier === 'official' &&
+      textMatchesTopic(s.title, topicId) &&
+      saidDidSubjectsOverlap(s.title, `${link.billNumber}: ${link.billTitle}`),
   );
   if (officialStatement) {
     return {
@@ -95,26 +93,13 @@ function pickSaidForLink(
     };
   }
 
-  const officialStatementLoose = statementPool.find(
-    (s) => s.tier === 'official' && s.topicId === topicId,
-  );
-  if (officialStatementLoose) {
-    return {
-      quote: officialStatementLoose.title,
-      outlet: officialStatementLoose.outlet ?? officialOutletLabel(officialStatementLoose.url),
-      url: officialStatementLoose.url,
-      tier: 'official',
-      date: officialStatementLoose.date,
-      verbatim: officialStatementLoose.verbatim ?? true,
-    };
-  }
-
   const mediaStatement = topicData.statements.find(
     (s) =>
       s.topicId === topicId &&
       s.tier === 'media' &&
       s.verbatim === true &&
-      (statementMatchesVote(s.title, link, topicId) || textMatchesTopic(s.title, topicId)),
+      (statementMatchesVote(s.title, link, topicId) || textMatchesTopic(s.title, topicId)) &&
+      saidDidSubjectsOverlap(s.title, `${link.billNumber}: ${link.billTitle}`),
   );
   if (mediaStatement) {
     return {
@@ -132,7 +117,8 @@ function pickSaidForLink(
       s.topicId === topicId &&
       s.tier === 'alleged' &&
       s.verbatim === true &&
-      (statementMatchesVote(s.title, link, topicId) || textMatchesTopic(s.title, topicId)),
+      (statementMatchesVote(s.title, link, topicId) || textMatchesTopic(s.title, topicId)) &&
+      saidDidSubjectsOverlap(s.title, `${link.billNumber}: ${link.billTitle}`),
   );
   if (allegedStatement) {
     let outlet = allegedStatement.outlet ?? 'Journalism';
@@ -156,7 +142,11 @@ function pickSaidForLink(
   }
 
   const statedPosition = topicData.statedPosition?.trim();
-  if (statedPosition && statementMatchesVote(statedPosition, link, topicId)) {
+  if (
+    statedPosition &&
+    statementMatchesVote(statedPosition, link, topicId) &&
+    saidDidSubjectsOverlap(statedPosition, `${link.billNumber}: ${link.billTitle}`)
+  ) {
     return {
       quote: statedPosition,
       outlet: topicData.statedPositionSource?.source ?? 'VoteSmart',
@@ -169,7 +159,10 @@ function pickSaidForLink(
 
   for (const pos of topicData.platformPositions ?? []) {
     if (isVoteRestatementSaid(pos.text)) continue;
-    if (platformKeyVoteMatchesLink(pos.text, link)) {
+    if (
+      platformKeyVoteMatchesLink(pos.text, link) &&
+      saidDidSubjectsOverlap(pos.text, `${link.billNumber}: ${link.billTitle}`)
+    ) {
       return {
         quote: pos.text,
         outlet: pos.source,

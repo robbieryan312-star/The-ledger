@@ -8,6 +8,7 @@ import {
   plainVoteTitle,
   formatPartyBreakdown,
   hasPartyBreakdown,
+  citizenImpactFromBillSummary,
 } from '@/lib/data/voteDisplay';
 import { inferVoteDonorConnection } from '@/lib/data/voteDonorConnections';
 import SourceBadge from '@/components/ui/SourceBadge';
@@ -36,6 +37,8 @@ export default function VoteRow({ vote, finance, isFeatured = false, compact = f
   const donorNote = inferVoteDonorConnection(vote, finance, isFeatured);
   const title = plainVoteTitle(vote);
   const subtitle = plainVoteSubtitle(vote);
+  const officialSummary = vote.billSummary ?? plainVoteSummary(vote);
+  const citizenImpact = citizenImpactFromBillSummary(officialSummary, vote);
 
   const hasBadge = vote.alignsWithDonors || vote.alignsWithCampaign === false || donorNote;
 
@@ -96,7 +99,21 @@ export default function VoteRow({ vote, finance, isFeatured = false, compact = f
 
       {open && (
         <div className="px-4 pb-4 border-t border-white/[0.06] space-y-2.5" style={{ background: 'rgba(5,9,15,0.4)' }}>
-          <p className="text-white/60 text-sm leading-relaxed mt-3">{plainVoteSummary(vote)}</p>
+          {vote.billSummary ? (
+            <div className="mt-3 space-y-2">
+              <div className="text-[10px] uppercase tracking-wide text-white/40 font-medium">Official bill summary</div>
+              <p className="text-white/60 text-sm leading-relaxed">{vote.billSummary}</p>
+            </div>
+          ) : (
+            <p className="text-white/60 text-sm leading-relaxed mt-3">{plainVoteSummary(vote)}</p>
+          )}
+
+          {citizenImpact && (
+            <div className="text-xs text-white/50 bg-white/[0.02] border border-white/[0.06] rounded-lg px-3 py-2 leading-relaxed">
+              <span className="text-white/55 font-medium">Citizen impact (from official summary): </span>
+              {citizenImpact}
+            </div>
+          )}
 
           {hasPartyBreakdown(vote) && vote.partyBreakdown ? (
             <div className="text-xs text-white/45 bg-white/[0.02] border border-white/[0.06] rounded-lg px-3 py-2">

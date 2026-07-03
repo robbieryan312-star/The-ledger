@@ -45,8 +45,12 @@ export default function VotingRecord({
 
   const yeas = votes.filter(v => v.vote === 'Yea').length;
   const nays = votes.filter(v => v.vote === 'Nay').length;
+  const notVoting = votes.filter(v => v.vote === 'Not Voting').length;
+  const present = votes.filter(v => v.vote === 'Present').length;
   const conflicts = votes.filter(v => v.alignsWithDonors).length;
   const broken = votes.filter(v => v.alignsWithCampaign === false).length;
+  const castTotal = yeas + nays;
+  const showNotVotingTile = notVoting > 0 && (castTotal === 0 || notVoting >= castTotal);
 
   if (votes.length === 0) {
     return (
@@ -62,7 +66,7 @@ export default function VotingRecord({
       {integratedRollCalls && integratedRollCalls.length > 0 && (
         <IntegratedRollCallSummary votes={integratedRollCalls} />
       )}
-      <div className="grid grid-cols-4 gap-2">
+      <div className={`grid gap-2 ${showNotVotingTile ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-5' : 'grid-cols-4'}`}>
         <div className="rounded-xl p-3 border border-green-400/20 text-center" style={{ background: 'rgba(5,9,15,0.5)' }}>
           <div className="text-xl font-bold text-green-400">{yeas}</div>
           <div className="text-xs text-white/35">Yea</div>
@@ -71,6 +75,18 @@ export default function VotingRecord({
           <div className="text-xl font-bold text-red-400">{nays}</div>
           <div className="text-xs text-white/35">Nay</div>
         </div>
+        {showNotVotingTile && (
+          <div className="rounded-xl p-3 border border-gray-400/20 text-center" style={{ background: 'rgba(5,9,15,0.5)' }}>
+            <div className="text-xl font-bold text-gray-300">{notVoting}</div>
+            <div className="text-xs text-white/35">Not Voting</div>
+          </div>
+        )}
+        {present > 0 && (
+          <div className="rounded-xl p-3 border border-gray-400/20 text-center" style={{ background: 'rgba(5,9,15,0.5)' }}>
+            <div className="text-xl font-bold text-gray-300">{present}</div>
+            <div className="text-xs text-white/35">Present</div>
+          </div>
+        )}
         <div className="rounded-xl p-3 border border-yellow-400/20 text-center" style={{ background: 'rgba(5,9,15,0.5)' }}>
           <div className="text-xl font-bold text-yellow-400">{conflicts}</div>
           <div className="text-xs text-white/35">Donor overlap</div>

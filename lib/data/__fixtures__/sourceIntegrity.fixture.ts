@@ -65,3 +65,18 @@ export const SAID_DID_KNOWN_BAD_TAUTOLOGY = {
     url: 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1152/vote_115_2_00266.htm',
   },
 };
+
+/** Subject-mismatched Said→Did — Warren tax-filing statement vs War Powers vote (must reject). */
+export const SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH = {
+  label: 'W000817 tax-filing statement paired with H.Con.Res. 86 War Powers vote',
+  said: {
+    quote:
+      'Ms. WARREN. Mr. President, I want to say thank you to my partner in these efforts, Senator Blumenthal, and to all the others who have come here to speak on tax day about how outrageous it is that a program to actually let people pay their taxes online for free has been destroyed by Donald Trump and the Republicans.',
+    url: 'https://www.govinfo.gov/app/details/CREC-2026-04-15-pt1-PgS1770',
+    verbatim: true,
+  },
+  did: {
+    action: 'Voted Yea — H.Con.Res. 86: H. Con. Res. 86',
+    url: 'https://www.congress.gov/bill/119th-congress/house-concurrent-resolution/86',
+  },
+};

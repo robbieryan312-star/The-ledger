@@ -54,6 +54,10 @@ export const KNOWN_BAD: CrecFilterFixtureCase[] = [
     text: 'Mr. SANDERS. Mr. President, I call up my amendment 5159 and ask that it be reported by number. The ACTING PRESIDENT pro tempore. The clerk will report. The legislative clerk read as follows: The Senator from Vermont [',
   },
   {
+    label: 'O000172 unanimous consent first-sponsor request (H.R. 5658)',
+    text: 'Ms. OCASIO-CORTEZ. Mr. Speaker, I ask unanimous consent that I may hereafter be considered to be the first sponsor of H.R. 5658, the Child Care for Every Community Act, a bill originally introduced by Representative Sherrill of New Jersey, for the purpose of adding cosponsors and requesting reprintings pursuant to clause 7 of rule XII.',
+  },
+  {
     label: 'O000172 bill intro (H.R. 9395)',
     text: 'OCASIO-CORTEZ: H.R. 9395. A bill to amend title XVIII of the Social Security Act to require certain reporting with respect to agents and brokers of Medicare Advantage organizations; to the Committee on Ways and Means, and in addition to the Committee on Energy and Commerce, for a period to be subsequently determined by',
   },

@@ -23,6 +23,8 @@ export interface TopicStatementCorroboratingSource {
 
 export interface TopicStatementEntry {
   title: string;
+  /** UI-only excerpt with CREC floor opener stripped; raw `title` stays verbatim in storage. */
+  displayText?: string;
   date: string;
   url: string;
   tier: SourceTier;

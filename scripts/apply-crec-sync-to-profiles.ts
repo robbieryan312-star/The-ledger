@@ -10,11 +10,12 @@ import { config } from 'dotenv';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { RECORD_TOPIC_BUCKETS, voteCongressGovUrl, voteTopicId } from '../lib/data/profileRecordByTopic';
+import { RECORD_TOPIC_BUCKETS, classifyTextToRecordTopicId, voteCongressGovUrl, voteTopicId } from '../lib/data/profileRecordByTopic';
 import { pruneSaidDidLinksByTopic } from '../lib/data/buildSaidDidDiffs';
 import { getNationalCongressVotesByBioguide } from '../lib/data/nationalCongressVotes';
 import { getPoliticianByBioguide } from '../lib/data/allPoliticians';
 import { isProceduralCrecText } from './lib/crecProceduralFilter';
+import { stripCrecFloorOpener } from '../lib/data/crecDisplayText';
 import { normalizeTopicId } from '../lib/data/topicAliases';
 import { sanitizeProfileNews, type ProfileNewsItem } from '../lib/data/sanitizeProfileUiData';
 import type {
@@ -33,6 +34,12 @@ const legislatorsFile = path.join(projectRoot, 'lib', 'data', 'generated', 'curr
 const CREC_MEMBERS = ['S000033', 'O000172', 'M000355', 'W000817', 'C001098'] as const;
 const NEWS_MEMBERS = ['W000817', 'C001098'] as const;
 const BATCH_ALL = ['S000033', 'O000172', 'M000355', 'M001184', 'W000817', 'C001098'] as const;
+
+function parseMembersArg(argv: string[]): string[] | null {
+  const idx = argv.indexOf('--members');
+  if (idx === -1 || !argv[idx + 1]) return null;
+  return argv[idx + 1].split(',').map((s) => s.trim()).filter(Boolean);
+}
 
 /** Approved tier-'media' domains (subset — GDELT domain match). */
 const APPROVED_NEWS_DOMAINS = [
@@ -64,9 +71,14 @@ function isCollectibleStatement(s: TopicStatementEntry): boolean {
 }
 
 function stampVerbatim(s: TopicStatementEntry): TopicStatementEntry {
-  if (s.verbatim !== undefined) return s;
-  if (s.tier === 'official') return { ...s, verbatim: true };
-  return s;
+  let out = s;
+  if (out.verbatim === undefined && out.tier === 'official') {
+    out = { ...out, verbatim: true };
+  }
+  if (!out.displayText && out.tier === 'official' && /\/CREC-/i.test(out.url)) {
+    out = { ...out, displayText: stripCrecFloorOpener(out.title) };
+  }
+  return out;
 }
 
 function isOfficialCrecFloorRemark(s: TopicStatementEntry): boolean {
@@ -160,6 +172,118 @@ async function fetchGdeltNews(bioguideId: string): Promise<ProfileNewsItem[]> {
   return [];
 }
 
+function rebucketStatementsFromContent(
+  raw: Record<string, { statements: TopicStatementEntry[] }>,
+): Record<string, { statements: TopicStatementEntry[] }> {
+  const flat = Object.values(raw).flatMap((t) => t.statements);
+  const out: Record<string, { statements: TopicStatementEntry[] }> = {};
+  for (const s of flat) {
+    if (!isCollectibleStatement(s)) continue;
+    const topicId =
+      s.tier === 'official' && /\/CREC-/i.test(s.url)
+        ? classifyTextToRecordTopicId(s.title)
+        : (s.topicId ?? classifyTextToRecordTopicId(s.title));
+    const entry = stampVerbatim({ ...s, topicId });
+    const list = out[topicId]?.statements ?? [];
+    if (list.some((m) => m.url === entry.url || m.title.trim() === entry.title.trim())) continue;
+    out[topicId] = { statements: [...list, entry] };
+  }
+  return out;
+}
+
+async function rebuildProfileSaidDid(
+  bioguideId: string,
+  byTopicStatements: Record<string, { statements: TopicStatementEntry[] }>,
+): Promise<number> {
+  const profileDir = path.join(profilesRoot, bioguideId);
+  const positionsFile = JSON.parse(
+    await readFile(path.join(profileDir, 'positions.json'), 'utf8'),
+  ) as { byTopic: Record<string, { platformPositions: PlatformPositionEntry[] }> };
+
+  const byTopicClean: Record<string, { statements: TopicStatementEntry[]; platformPositions: PlatformPositionEntry[] }> = {};
+  for (const [topicId, data] of Object.entries(byTopicStatements)) {
+    const platformPositions = positionsFile.byTopic[topicId]?.platformPositions ?? [];
+    byTopicClean[topicId] = { statements: data.statements, platformPositions };
+  }
+  for (const [topicId, data] of Object.entries(positionsFile.byTopic ?? {})) {
+    if (byTopicClean[topicId]) continue;
+    if ((data.platformPositions?.length ?? 0) > 0) {
+      byTopicClean[topicId] = { statements: [], platformPositions: data.platformPositions };
+    }
+  }
+
+  const politicianId = getPoliticianByBioguide(bioguideId)?.id ?? bioguideId;
+  const votes = getNationalCongressVotesByBioguide(bioguideId, politicianId)?.votes ?? [];
+  let saidDidByTopic = buildPairableLinks(byTopicClean, votes);
+
+  const topicDataForPrune: Record<string, TopicPositionData> = {};
+  for (const topicId of new Set([...Object.keys(byTopicClean), ...Object.keys(saidDidByTopic)])) {
+    topicDataForPrune[topicId] = {
+      statements: byTopicClean[topicId]?.statements ?? [],
+      platformPositions: byTopicClean[topicId]?.platformPositions,
+      saidDidLinks: saidDidByTopic[topicId] ?? [],
+    };
+  }
+
+  try {
+    const priorSaidDid = JSON.parse(
+      await readFile(path.join(profileDir, 'saidDid.json'), 'utf8'),
+    ) as { byTopic: Record<string, SaidDidLinkEntry[]> };
+    for (const [topicId, links] of Object.entries(priorSaidDid.byTopic ?? {})) {
+      for (const link of links) {
+        const key = `${topicId}:${link.billNumber}:${link.voteDate}`;
+        const bucket = topicDataForPrune[topicId] ?? {
+          statements: byTopicClean[topicId]?.statements ?? [],
+          platformPositions: byTopicClean[topicId]?.platformPositions,
+          saidDidLinks: [],
+        };
+        if (!topicDataForPrune[topicId]) topicDataForPrune[topicId] = bucket;
+        const dup = (bucket.saidDidLinks ?? []).some(
+          (l) => `${topicId}:${l.billNumber}:${l.voteDate}` === key,
+        );
+        if (!dup) bucket.saidDidLinks = [...(bucket.saidDidLinks ?? []), link];
+      }
+    }
+  } catch {
+    /* no prior saidDid.json */
+  }
+
+  saidDidByTopic = pruneSaidDidLinksByTopic(topicDataForPrune);
+
+  await writeFile(
+    path.join(profileDir, 'saidDid.json'),
+    JSON.stringify({ bioguideId, byTopic: saidDidByTopic }, null, 2) + '\n',
+  );
+
+  const manifest = JSON.parse(await readFile(path.join(profileDir, 'manifest.json'), 'utf8')) as {
+    categories: Record<string, string>;
+  };
+  const linkCount = Object.values(saidDidByTopic).flat().length;
+  manifest.categories.saidDid = linkCount > 0 ? 'filled' : 'honest-gap';
+  await writeFile(path.join(profileDir, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
+  return linkCount;
+}
+
+async function reclassifyProfileMember(bioguideId: string): Promise<{ stmtCount: number; saidDidCount: number }> {
+  const profileDir = path.join(profilesRoot, bioguideId);
+  const existing = JSON.parse(await readFile(path.join(profileDir, 'statements.json'), 'utf8')) as {
+    bioguideId: string;
+    byTopic: Record<string, { statements: TopicStatementEntry[] }>;
+    status?: 'none-in-range';
+    note?: string;
+  };
+  const rebucketed = rebucketStatementsFromContent(existing.byTopic ?? {});
+  const stmtCount = Object.values(rebucketed).reduce((n, t) => n + t.statements.length, 0);
+  const payload: typeof existing = { bioguideId, byTopic: rebucketed };
+  if (stmtCount === 0 && existing.status === 'none-in-range') {
+    payload.status = existing.status;
+    payload.note = existing.note;
+  }
+  await writeFile(path.join(profileDir, 'statements.json'), JSON.stringify(payload, null, 2) + '\n');
+  const saidDidCount = await rebuildProfileSaidDid(bioguideId, rebucketed);
+  return { stmtCount, saidDidCount };
+}
+
 function buildPairableLinks(
   byTopic: Record<string, { statements: TopicStatementEntry[]; platformPositions: PlatformPositionEntry[] }>,
   votes: VoteRecord[],
@@ -243,14 +367,17 @@ async function applyCrecMember(
 
   const stmtCount = Object.values(byTopicStatements).reduce((n, t) => n + t.statements.length, 0);
 
+  const rebucketed = rebucketStatementsFromContent(byTopicStatements);
+  const rebucketCount = Object.values(rebucketed).reduce((n, t) => n + t.statements.length, 0);
+
   const statementsPayload: {
     bioguideId: string;
     byTopic: Record<string, { statements: TopicStatementEntry[] }>;
     status?: 'none-in-range';
     note?: string;
-  } = { bioguideId, byTopic: byTopicStatements };
+  } = { bioguideId, byTopic: rebucketed };
 
-  if (totalOfficialCrec === 0 && crecSearchOk && stmtCount === 0) {
+  if (rebucketCount === 0 && crecSearchOk && stmtCount === 0) {
     statementsPayload.status = 'none-in-range';
     statementsPayload.note =
       'GovInfo CREC search completed across the 119th and 118th Congress windows; no verbatim floor-remark granules passed procedural filter.';
@@ -258,78 +385,20 @@ async function applyCrecMember(
 
   await writeFile(path.join(profileDir, 'statements.json'), JSON.stringify(statementsPayload, null, 2) + '\n');
 
-  const byTopicClean: Record<string, { statements: TopicStatementEntry[]; platformPositions: PlatformPositionEntry[] }> =
-    {};
-  for (const [topicId, data] of Object.entries(byTopicStatements)) {
-    const platformPositions = positionsFile.byTopic[topicId]?.platformPositions ?? [];
-    byTopicClean[topicId] = { statements: data.statements, platformPositions };
-  }
-  for (const [topicId, data] of Object.entries(positionsFile.byTopic ?? {})) {
-    if (byTopicClean[topicId]) continue;
-    if ((data.platformPositions?.length ?? 0) > 0) {
-      byTopicClean[topicId] = { statements: [], platformPositions: data.platformPositions };
-    }
-  }
-
-  const politicianId = getPoliticianByBioguide(bioguideId)?.id ?? bioguideId;
-  const votes = getNationalCongressVotesByBioguide(bioguideId, politicianId)?.votes ?? [];
-  let saidDidByTopic = buildPairableLinks(byTopicClean, votes);
-
-  const topicDataForPrune: Record<string, TopicPositionData> = {};
-  for (const topicId of new Set([...Object.keys(byTopicClean), ...Object.keys(saidDidByTopic)])) {
-    topicDataForPrune[topicId] = {
-      statements: byTopicClean[topicId]?.statements ?? [],
-      platformPositions: byTopicClean[topicId]?.platformPositions,
-      saidDidLinks: saidDidByTopic[topicId] ?? [],
-    };
-  }
-
-  // Preserve prior profile Said→Did links that still pair — national vote snapshot is only
-  // the most recent roll calls; gold pairs on older votes must not drop on CREC refresh.
-  try {
-    const priorSaidDid = JSON.parse(
-      await readFile(path.join(profileDir, 'saidDid.json'), 'utf8'),
-    ) as { byTopic: Record<string, SaidDidLinkEntry[]> };
-    for (const [topicId, links] of Object.entries(priorSaidDid.byTopic ?? {})) {
-      for (const link of links) {
-        const key = `${topicId}:${link.billNumber}:${link.voteDate}`;
-        const bucket = topicDataForPrune[topicId] ?? {
-          statements: byTopicClean[topicId]?.statements ?? [],
-          platformPositions: byTopicClean[topicId]?.platformPositions,
-          saidDidLinks: [],
-        };
-        if (!topicDataForPrune[topicId]) topicDataForPrune[topicId] = bucket;
-        const dup = (bucket.saidDidLinks ?? []).some(
-          (l) => `${topicId}:${l.billNumber}:${l.voteDate}` === key,
-        );
-        if (!dup) bucket.saidDidLinks = [...(bucket.saidDidLinks ?? []), link];
-      }
-    }
-  } catch {
-    /* no prior saidDid.json */
-  }
-
-  saidDidByTopic = pruneSaidDidLinksByTopic(topicDataForPrune);
-
-  await writeFile(
-    path.join(profileDir, 'saidDid.json'),
-    JSON.stringify({ bioguideId, byTopic: saidDidByTopic }, null, 2) + '\n',
-  );
+  const saidDidCount = await rebuildProfileSaidDid(bioguideId, rebucketed);
 
   const manifest = JSON.parse(await readFile(path.join(profileDir, 'manifest.json'), 'utf8')) as {
     categories: Record<string, string>;
   };
-  const linkCount = Object.values(saidDidByTopic).flat().length;
   manifest.categories.statements =
-    stmtCount > 0
+    rebucketCount > 0
       ? 'filled'
       : statementsPayload.status === 'none-in-range'
         ? 'none-in-range'
         : 'honest-gap';
-  manifest.categories.saidDid = linkCount > 0 ? 'filled' : 'honest-gap';
   await writeFile(path.join(profileDir, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
 
-  return { stmtCount, saidDidCount: linkCount };
+  return { stmtCount: rebucketCount, saidDidCount };
 }
 
 async function applyNewsMember(bioguideId: string): Promise<number> {
@@ -350,12 +419,38 @@ async function applyNewsMember(bioguideId: string): Promise<number> {
 async function main(): Promise<void> {
   config({ path: path.join(projectRoot, '.env.local') });
 
+  if (process.argv.includes('--reclassify-profiles')) {
+    const onlyMembers = parseMembersArg(process.argv);
+    const members = onlyMembers ?? [...CREC_MEMBERS];
+    console.log('Reclassifying profile statements by content…');
+    for (const bioguideId of members) {
+      const result = await reclassifyProfileMember(bioguideId);
+      console.log(`  ${bioguideId}: stmts=${result.stmtCount} saidDid=${result.saidDidCount}`);
+    }
+    console.log('\n── Depth table ──');
+    for (const bioguideId of BATCH_ALL) {
+      const p = path.join(profilesRoot, bioguideId);
+      const st = JSON.parse(await readFile(path.join(p, 'statements.json'), 'utf8')) as {
+        byTopic: Record<string, { statements: TopicStatementEntry[] }>;
+        status?: string;
+      };
+      const sd = JSON.parse(await readFile(path.join(p, 'saidDid.json'), 'utf8')) as { byTopic: Record<string, SaidDidLinkEntry[]> };
+      const stmtN = Object.values(st.byTopic).reduce((n, t) => n + t.statements.length, 0);
+      const sdN = Object.values(sd.byTopic).flat().length;
+      console.log(`${bioguideId} stmts=${stmtN}${st.status ? ` (${st.status})` : ''} saidDid=${sdN}`);
+    }
+    return;
+  }
+
   const topicSnapshot = JSON.parse(await readFile(topicPositionsFile, 'utf8')) as {
     byBioguideId: Record<string, Record<string, TopicPositionData>>;
   };
 
+  const onlyMembers = parseMembersArg(process.argv);
+  const crecTargets = onlyMembers ?? [...CREC_MEMBERS];
+
   console.log('Applying CREC sync to migrated profiles…');
-  for (const bioguideId of CREC_MEMBERS) {
+  for (const bioguideId of crecTargets) {
     const bundle = topicSnapshot.byBioguideId[bioguideId];
     if (!bundle) {
       console.warn(`  WARN ${bioguideId}: not in topicPositions.json — run sync:topic-positions first`);

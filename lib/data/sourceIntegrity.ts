@@ -3,6 +3,12 @@
  * bare homepages on article-type citations, and media sources missing URLs.
  */
 
+import {
+  RECORD_TOPIC_BUCKETS,
+  classifyTextToRecordTopicId,
+  recordKeywordMatches,
+} from './profileRecordByTopic';
+
 export interface SourceIntegrityViolation {
   path: string;
   message: string;
@@ -42,7 +48,44 @@ export function isGenuineSaidDidDiff(diff: SaidDidDiffLike): boolean {
   if (!quote || !diff.did.action?.trim()) return false;
   if (isVoteRestatementSaid(quote)) return false;
   if (diff.said.verbatim === false && isVoteRestatementSaid(quote)) return false;
+  if (!saidDidSubjectsOverlap(quote, diff.did.action)) return false;
   return Boolean(diff.said.url?.trim() && diff.did.url?.trim());
+}
+
+/** Collect matched record-bucket keywords (word-boundary) from text. */
+function matchedSubjectKeywords(text: string): Set<string> {
+  const hay = text.toLowerCase();
+  const hits = new Set<string>();
+  for (const bucket of RECORD_TOPIC_BUCKETS) {
+    if (bucket.id === 'legislation') continue;
+    for (const keyword of bucket.keywords) {
+      if (recordKeywordMatches(hay, keyword)) hits.add(keyword.trim().toLowerCase());
+    }
+  }
+  return hits;
+}
+
+/**
+ * Said and Did must share real subject matter — same classified topic (non-legislation)
+ * or at least one shared substantive keyword. Prevents tax-filing vs war-powers pairs.
+ */
+export function saidDidSubjectsOverlap(saidQuote: string, didAction: string): boolean {
+  const billText = didAction.replace(/^Voted\s+\w+\s+—\s+[^:]+:\s*/i, '').trim();
+  const saidTopic = classifyTextToRecordTopicId(saidQuote);
+  const voteTopic = classifyTextToRecordTopicId(billText);
+  if (
+    saidTopic !== 'legislation' &&
+    voteTopic !== 'legislation' &&
+    saidTopic === voteTopic
+  ) {
+    return true;
+  }
+  const saidHits = matchedSubjectKeywords(saidQuote);
+  const voteHits = matchedSubjectKeywords(billText);
+  for (const k of saidHits) {
+    if (voteHits.has(k)) return true;
+  }
+  return false;
 }
 
 export function validateSaidDidDiffs(diffs: SaidDidDiffLike[], label: string): SourceIntegrityViolation[] {
@@ -64,6 +107,12 @@ export function validateSaidDidDiffs(diffs: SaidDidDiffLike[], label: string): S
       violations.push({
         path: `${label}[${idx}]`,
         message: 'incomplete or non-genuine Said→Did diff',
+      });
+    }
+    if (!saidDidSubjectsOverlap(diff.said.quote ?? '', diff.did.action ?? '')) {
+      violations.push({
+        path: `${label}[${idx}]`,
+        message: 'Said subject and Did bill subject have no meaningful overlap',
       });
     }
   }
