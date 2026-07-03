@@ -1,0 +1,22 @@
+{
+  "bioguideId": "M000355",
+  "byTopic": {
+    "healthcare": {
+      "statements": []
+    },
+    "climate": {
+      "statements": []
+    },
+    "defense-veterans": {
+      "statements": [
+        {
+          "title": "Continuing our support for Ukraine is morally right, but it is not only that. It is also a direct investment in cold, hard, American interests.",
+          "date": "2022-12-21",
+          "url": "https://apnews.com/article/putin-zelenskyy-washington-4d5fc23be5518e689fbbcac334769d59",
+          "tier": "alleged",
+          "topicId": "defense-veterans"
+        }
+      ]
+    }
+  }
+}

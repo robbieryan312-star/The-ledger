@@ -1,0 +1,35 @@
+{
+  "bioguideId": "W000817",
+  "profile": {
+    "bioguideId": "W000817",
+    "officialPhotoUrl": "https://www.congress.gov/img/member/w000817_200.jpg",
+    "officialWebsite": "https://www.warren.senate.gov",
+    "officeAddress": "311 Hart Senate Office Building  Washington, DC 20510",
+    "phone": "(202) 224-4543",
+    "currentMember": true,
+    "source": {
+      "name": "Congress.gov",
+      "url": "https://www.congress.gov",
+      "tier": "official"
+    }
+  },
+  "meta": {
+    "bioguideId": "W000817",
+    "asOf": "2026-06-29",
+    "source": "Congress.gov API v3",
+    "totalSponsored": 481,
+    "totalCosponsored": 3778,
+    "topicCoverage": {
+      "healthcare": 89,
+      "immigration": 80,
+      "defense": 82,
+      "economy": 73,
+      "environment": 60,
+      "education": 75,
+      "crime": 59,
+      "civil": 63,
+      "judiciary": 24,
+      "legislation": 347
+    }
+  }
+}

@@ -1,15 +1,15 @@
 {
-  "bioguideId": "S000033",
+  "bioguideId": "W000817",
   "entry": {
-    "politicianId": "S000033",
-    "bioguideId": "S000033",
-    "fecCandidateId": "S4VT00033",
+    "politicianId": "W000817",
+    "bioguideId": "W000817",
+    "fecCandidateId": "S2MA00170",
     "electionYear": 2030,
-    "receipts": 23468953.69,
-    "disbursements": 11332584.7,
-    "cashOnHand": 22877129.65,
-    "individualContributions": 22470390.5,
-    "pacContributions": 27,
+    "receipts": 3772360.96,
+    "disbursements": 3499344.25,
+    "cashOnHand": 3723063.38,
+    "individualContributions": 3604077.29,
+    "pacContributions": 15000,
     "selfFunding": 0,
     "coverageStart": "2025-01-01",
     "coverageEnd": "2026-03-31",
@@ -21,6 +21,6 @@
       "description": "Official campaign finance disclosures via api.open.fec.gov"
     },
     "asOf": "2026-07-01",
-    "fecProfileUrl": "https://www.fec.gov/data/candidate/S4VT00033/"
+    "fecProfileUrl": "https://www.fec.gov/data/candidate/S2MA00170/"
   }
 }

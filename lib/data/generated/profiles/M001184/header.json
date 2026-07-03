@@ -1,0 +1,35 @@
+{
+  "bioguideId": "M001184",
+  "profile": {
+    "bioguideId": "M001184",
+    "officialPhotoUrl": "https://www.congress.gov/img/member/m001184_200.jpg",
+    "officialWebsite": "https://massie.house.gov",
+    "officeAddress": "2371 Rayburn House Office Building",
+    "phone": "(202) 225-3465",
+    "currentMember": true,
+    "source": {
+      "name": "Congress.gov",
+      "url": "https://www.congress.gov",
+      "tier": "official"
+    }
+  },
+  "meta": {
+    "bioguideId": "M001184",
+    "asOf": "2026-06-29",
+    "source": "Congress.gov API v3",
+    "totalSponsored": 92,
+    "totalCosponsored": 866,
+    "topicCoverage": {
+      "healthcare": 50,
+      "immigration": 52,
+      "defense": 57,
+      "economy": 59,
+      "environment": 12,
+      "education": 21,
+      "crime": 22,
+      "civil": 24,
+      "judiciary": 5,
+      "legislation": 109
+    }
+  }
+}

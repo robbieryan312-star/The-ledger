@@ -4,6 +4,7 @@
  */
 import type { CampaignFinance, Source } from '../types';
 import fecSnapshot from './generated/fecFinance.json';
+import { getMemberProfileFinance, usesMemberProfile } from './memberProfile';
 
 export interface FecFinanceEntry {
   politicianId: string;
@@ -52,6 +53,9 @@ function lookupFecEntry(politicianId: string, bioguideId?: string): FecFinanceEn
 }
 
 export function getFecFinance(politicianId: string, bioguideId?: string): FecFinanceEntry | undefined {
+  if (bioguideId && usesMemberProfile(bioguideId)) {
+    return getMemberProfileFinance(bioguideId) ?? undefined;
+  }
   return lookupFecEntry(politicianId, bioguideId);
 }
 
@@ -69,7 +73,9 @@ export function mergeCampaignFinance(
   mock: CampaignFinance,
   bioguideId?: string,
 ): { finance: CampaignFinance; fecEntry?: FecFinanceEntry } {
-  const fec = lookupFecEntry(politicianId, bioguideId);
+  const fec =
+    (bioguideId && usesMemberProfile(bioguideId) ? getMemberProfileFinance(bioguideId) : undefined) ??
+    lookupFecEntry(politicianId, bioguideId);
   if (!fec) return { finance: mock };
 
   return {

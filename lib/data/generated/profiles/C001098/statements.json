@@ -1,0 +1,32 @@
+{
+  "bioguideId": "C001098",
+  "byTopic": {
+    "healthcare": {
+      "statements": []
+    },
+    "immigration": {
+      "statements": []
+    },
+    "defense": {
+      "statements": []
+    },
+    "economy": {
+      "statements": []
+    },
+    "environment": {
+      "statements": []
+    },
+    "education": {
+      "statements": []
+    },
+    "crime": {
+      "statements": []
+    },
+    "civil": {
+      "statements": []
+    },
+    "judiciary": {
+      "statements": []
+    }
+  }
+}

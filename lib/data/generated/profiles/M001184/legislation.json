@@ -1,0 +1,24 @@
+{
+  "bioguideId": "M001184",
+  "status": "filled",
+  "sourcePath": "lib/data/generated/members/M001184.json",
+  "meta": {
+    "bioguideId": "M001184",
+    "asOf": "2026-06-29",
+    "source": "Congress.gov API v3",
+    "totalSponsored": 92,
+    "totalCosponsored": 866,
+    "topicCoverage": {
+      "healthcare": 50,
+      "immigration": 52,
+      "defense": 57,
+      "economy": 59,
+      "environment": 12,
+      "education": 21,
+      "crime": 22,
+      "civil": 24,
+      "judiciary": 5,
+      "legislation": 109
+    }
+  }
+}

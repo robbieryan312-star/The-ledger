@@ -1,0 +1,34 @@
+{
+  "bioguideId": "O000172",
+  "byTopic": {
+    "abortion": {
+      "statements": []
+    },
+    "public-safety": {
+      "statements": []
+    },
+    "healthcare": {
+      "statements": []
+    },
+    "climate": {
+      "statements": [
+        {
+          "title": "In order for us to combat that threat, we must be as ambitious and innovative as possible.",
+          "date": "2019-02-07",
+          "url": "https://www.theatlantic.com/science/archive/2019/02/aocgreen-new-deal-new-era-millennial-climate-politics/582295/",
+          "tier": "alleged",
+          "topicId": "climate"
+        }
+      ]
+    },
+    "defense-veterans": {
+      "statements": []
+    },
+    "civil-liberties": {
+      "statements": []
+    },
+    "economy-taxes": {
+      "statements": []
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "bioguideId": "M001184",
+  "byTopic": {
+    "healthcare": {
+      "platformPositions": [
+        {
+          "text": "Voted Nay on:  American Health Care Act of 2017 (HR 1628)",
+          "source": "Ballotpedia",
+          "url": "https://ballotpedia.org/Thomas_Massie",
+          "tier": "nonpartisan",
+          "asOf": "2026-06-30"
+        },
+        {
+          "text": "Voted Nay on:  Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (Conference report) (HR 6157)",
+          "source": "Ballotpedia",
+          "url": "https://ballotpedia.org/Thomas_Massie",
+          "tier": "nonpartisan",
+          "asOf": "2026-06-30"
+        },
+        {
+          "text": "Voted Nay on:  Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (HR 6157)",
+          "source": "Ballotpedia",
+          "url": "https://ballotpedia.org/Thomas_Massie",
+          "tier": "nonpartisan",
+          "asOf": "2026-06-30"
+        }
+      ]
+    },
+    "immigration": {
+      "platformPositions": [
+        {
+          "text": "Voted Yea on:  No Sanctuary for Criminals Act (HR 3003)",
+          "source": "Ballotpedia",
+          "url": "https://ballotpedia.org/Thomas_Massie",
+          "tier": "nonpartisan",
+          "asOf": "2026-06-30"
+        }
+      ]
+    },
+    "climate": {
+      "platformPositions": [
+        {
+          "text": "Voted Nay on:  Energy and Water, Legislative Branch, and Military Construction and Veterans Affairs Appropriations Act, 2019 (Conference report) (HR 5895)",
+          "source": "Ballotpedia",
+          "url": "https://ballotpedia.org/Thomas_Massie",
+          "tier": "nonpartisan",
+          "asOf": "2026-06-30"
+        },
+        {
+          "text": "Voted Nay on:  Energy and Water Development and Related Agencies Appropriations Act, 2019 (HR 5895)",
+          "source": "Ballotpedia",
+          "url": "https://ballotpedia.org/Thomas_Massie",
+          "tier": "nonpartisan",
+          "asOf": "2026-06-30"
+        }
+      ]
+    },
+    "defense-veterans": {
+      "platformPositions": [
+        {
+          "text": "Voted Nay on:  Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (Conference report) (HR 6157)",
+          "source": "Ballotpedia",
+          "url": "https://ballotpedia.org/Thomas_Massie",
+          "tier": "nonpartisan",
+          "asOf": "2026-06-30"
+        },
+        {
+          "text": "Voted Nay on:  Energy and Water, Legislative Branch, and Military Construction and Veterans Affairs Appropriations Act, 2019 (Conference report) (HR 5895)",
+          "source": "Ballotpedia",
+          "url": "https://ballotpedia.org/Thomas_Massie",
+          "tier": "nonpartisan",
+          "asOf": "2026-06-30"
+        }
+      ]
+    },
+    "education": {
+      "platformPositions": [
+        {
+          "text": "Voted Nay on:  Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (Conference report) (HR 6157)",
+          "source": "Ballotpedia",
+          "url": "https://ballotpedia.org/Thomas_Massie",
+          "tier": "nonpartisan",
+          "asOf": "2026-06-30"
+        },
+        {
+          "text": "Voted Nay on:  Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (HR 6157)",
+          "source": "Ballotpedia",
+          "url": "https://ballotpedia.org/Thomas_Massie",
+          "tier": "nonpartisan",
+          "asOf": "2026-06-30"
+        }
+      ]
+    },
+    "civil-liberties": {
+      "platformPositions": []
+    },
+    "economy-taxes": {
+      "platformPositions": [
+        {
+          "text": "Voted Nay on:  Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (Conference report) (HR 6157)",
+          "source": "Ballotpedia",
+          "url": "https://ballotpedia.org/Thomas_Massie",
+          "tier": "nonpartisan",
+          "asOf": "2026-06-30"
+        },
+        {
+          "text": "Voted Nay on:  Energy and Water, Legislative Branch, and Military Construction and Veterans Affairs Appropriations Act, 2019 (Conference report) (HR 5895)",
+          "source": "Ballotpedia",
+          "url": "https://ballotpedia.org/Thomas_Massie",
+          "tier": "nonpartisan",
+          "asOf": "2026-06-30"
+        }
+      ]
+    }
+  }
+}

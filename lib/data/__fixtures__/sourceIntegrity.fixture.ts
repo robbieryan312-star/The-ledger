@@ -16,6 +16,14 @@ export const SOURCE_INTEGRITY_KNOWN_BAD_URLS: Array<{ label: string; url: string
     label: 'example.com placeholder host',
     url: 'https://example.com/fake-article',
   },
+  {
+    label: 'bare OpenSecrets homepage (batch #1 endorsement regression)',
+    url: 'https://www.opensecrets.org',
+  },
+  {
+    label: 'bare Ballotpedia homepage (batch #1 endorsement regression)',
+    url: 'https://www.ballotpedia.org',
+  },
 ];
 
 export const SOURCE_INTEGRITY_KNOWN_GOOD_URLS: Array<{ label: string; url: string }> = [

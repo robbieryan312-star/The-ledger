@@ -1,0 +1,35 @@
+{
+  "bioguideId": "O000172",
+  "profile": {
+    "bioguideId": "O000172",
+    "officialPhotoUrl": "https://www.congress.gov/img/member/o000172_200.jpg",
+    "officialWebsite": "https://ocasio-cortez.house.gov/",
+    "officeAddress": "250 Cannon House Office Building",
+    "phone": "(202) 225-3965",
+    "currentMember": true,
+    "source": {
+      "name": "Congress.gov",
+      "url": "https://www.congress.gov",
+      "tier": "official"
+    }
+  },
+  "meta": {
+    "bioguideId": "O000172",
+    "asOf": "2026-06-29",
+    "source": "Congress.gov API v3",
+    "totalSponsored": 61,
+    "totalCosponsored": 1630,
+    "topicCoverage": {
+      "healthcare": 52,
+      "immigration": 56,
+      "defense": 51,
+      "economy": 53,
+      "environment": 45,
+      "education": 51,
+      "crime": 43,
+      "civil": 38,
+      "judiciary": 18,
+      "legislation": 96
+    }
+  }
+}

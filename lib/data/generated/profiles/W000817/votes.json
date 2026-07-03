@@ -1,10 +1,10 @@
 {
-  "bioguideId": "S000033",
-  "politicianId": "bernie-sanders",
+  "bioguideId": "W000817",
+  "politicianId": "W000817",
   "chamber": "senate",
   "votes": [
     {
-      "id": "S000033-s119-2-192",
+      "id": "W000817-s119-2-192",
       "billId": "S.J.Res. 185",
       "billTitle": "Motion to Proceed to S. J. Res. 185",
       "billDescription": "On the Motion to Proceed S.J.Res. 185 — A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.. Official Senate roll-call from senate.gov (119th Congress).",
@@ -40,7 +40,7 @@
       }
     },
     {
-      "id": "S000033-s119-2-191",
+      "id": "W000817-s119-2-191",
       "billId": "PN938-2",
       "billTitle": "Motion to Invoke Cloture: Matthew A. Schwartz, to be U.S. Circuit Judge for the Second Circuit",
       "billDescription": "On the Cloture Motion PN938-2 — Matthew A. Schwartz, of New York, to be United States Circuit Judge for the Second Circuit. Official Senate roll-call from senate.gov (119th Congress).",
@@ -76,7 +76,7 @@
       }
     },
     {
-      "id": "S000033-s119-2-190",
+      "id": "W000817-s119-2-190",
       "billId": "S.J.Res. 196",
       "billTitle": "Motion to Proceed to S.J.Res. 196",
       "billDescription": "On the Motion to Proceed S.J.Res. 196 — A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Department of Education relating to \"Reimagining and Improving Student Education-Federal Student Loan Program Final Regulations\".. Official Senate roll-call from senate.gov (119th Congress).",
@@ -112,7 +112,7 @@
       }
     },
     {
-      "id": "S000033-s119-2-189",
+      "id": "W000817-s119-2-189",
       "billId": "PN930-3",
       "billTitle": "Motion to Invoke Cloture: Arthur Roberts Jones to be U.S. District Judge for the Southern District of Texas",
       "billDescription": "On the Cloture Motion PN930-3 — Arthur Roberts Jones, of Texas, to be United States District Judge for the Southern District of Texas. Official Senate roll-call from senate.gov (119th Congress).",
@@ -148,7 +148,7 @@
       }
     },
     {
-      "id": "S000033-s119-2-188",
+      "id": "W000817-s119-2-188",
       "billId": "PN930-2",
       "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
       "billDescription": "On the Nomination PN930-2 — Michael J. Hendershot, of Ohio, to be United States District Judge for the Northern District of Ohio. Official Senate roll-call from senate.gov (119th Congress).",
@@ -184,7 +184,7 @@
       }
     },
     {
-      "id": "S000033-s119-2-187",
+      "id": "W000817-s119-2-187",
       "billId": "PN930-2",
       "billTitle": "Motion to Invoke Cloture: Michael J. Hendershot to be U.S. District Judge for the Northern District of Ohio",
       "billDescription": "On the Cloture Motion PN930-2 — Michael J. Hendershot, of Ohio, to be United States District Judge for the Northern District of Ohio. Official Senate roll-call from senate.gov (119th Congress).",
@@ -220,7 +220,7 @@
       }
     },
     {
-      "id": "S000033-s119-2-186",
+      "id": "W000817-s119-2-186",
       "billId": "PN930-7",
       "billTitle": "Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for the Southern District of Texas",
       "billDescription": "On the Nomination PN930-7 — John George Edward Marck, of Texas, to be United States District Judge for the Southern District of Texas. Official Senate roll-call from senate.gov (119th Congress).",
@@ -256,7 +256,7 @@
       }
     },
     {
-      "id": "S000033-s119-2-185",
+      "id": "W000817-s119-2-185",
       "billId": "PN930-7",
       "billTitle": "Motion to Invoke Cloture: John George Edward Marck to be U.S. District Judge for the Southern District of Texas",
       "billDescription": "On the Cloture Motion PN930-7 — John George Edward Marck, of Texas, to be United States District Judge for the Southern District of Texas. Official Senate roll-call from senate.gov (119th Congress).",
@@ -292,7 +292,7 @@
       }
     },
     {
-      "id": "S000033-s119-2-184",
+      "id": "W000817-s119-2-184",
       "billId": "H.Con.Res. 86",
       "billTitle": "H. Con. Res. 86",
       "billDescription": "On the Concurrent Resolution H.Con.Res. 86 — A concurrent resolution directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran.. Official Senate roll-call from senate.gov (119th Congress).",
@@ -328,7 +328,7 @@
       }
     },
     {
-      "id": "S000033-s119-2-183",
+      "id": "W000817-s119-2-183",
       "billId": "PN859-3",
       "billTitle": "Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe",
       "billDescription": "On the Nomination PN859-3 — Darrell Owens, of Pennsylvania, to be U.S. Representative to the Organization for Security and Cooperation in Europe, with the rank of Ambassador. Official Senate roll-call from senate.gov (119th Congress).",

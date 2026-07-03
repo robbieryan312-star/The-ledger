@@ -1,0 +1,34 @@
+{
+  "bioguideId": "W000817",
+  "byTopic": {
+    "healthcare": {
+      "statements": []
+    },
+    "immigration": {
+      "statements": [
+        {
+          "title": "Ms. WARREN. Madam President, I rise today in support of the 21st Century ROAD to Housing Act. We are closer than ever to passing the biggest housing bill since 1990, when the average price of a home in America sold for $150,000. Today, 36 years later, the average home is selling for over $500,000. The American dream of home ownership is now out of reach for millions of families. The median age of a first-time home buyer is now at an alltime high, and it is no secret why this has happened. Our Nation has a shortage of millions of homes. And our housing crisis doesn't just affect the opportunity",
+          "date": "2026-06-22",
+          "url": "https://www.govinfo.gov/app/details/CREC-2026-06-22-pt1-PgS2982",
+          "tier": "official",
+          "topicId": "immigration"
+        }
+      ]
+    },
+    "climate": {
+      "statements": []
+    },
+    "defense-veterans": {
+      "statements": []
+    },
+    "education": {
+      "statements": []
+    },
+    "civil-liberties": {
+      "statements": []
+    },
+    "economy-taxes": {
+      "statements": []
+    }
+  }
+}

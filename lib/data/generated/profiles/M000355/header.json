@@ -1,0 +1,35 @@
+{
+  "bioguideId": "M000355",
+  "profile": {
+    "bioguideId": "M000355",
+    "officialPhotoUrl": "https://www.congress.gov/img/member/m000355_200.jpg",
+    "officialWebsite": "https://www.mcconnell.senate.gov/",
+    "officeAddress": "317 Russell Senate Office Building  Washington, DC 20510",
+    "phone": "(202) 224-2541",
+    "currentMember": true,
+    "source": {
+      "name": "Congress.gov",
+      "url": "https://www.congress.gov",
+      "tier": "official"
+    }
+  },
+  "meta": {
+    "bioguideId": "M000355",
+    "asOf": "2026-06-29",
+    "source": "Congress.gov API v3",
+    "totalSponsored": 539,
+    "totalCosponsored": 2289,
+    "topicCoverage": {
+      "healthcare": 68,
+      "immigration": 81,
+      "defense": 91,
+      "economy": 91,
+      "environment": 55,
+      "education": 68,
+      "crime": 63,
+      "civil": 45,
+      "judiciary": 23,
+      "legislation": 404
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "bioguideId": "M001184",
+  "items": [
+    {
+      "id": "mas-n2",
+      "headline": "Massie Votes No on $61B Ukraine Aid — One of 112 House Members to Oppose",
+      "summary": "Rep. Massie voted against the Ukraine Security Supplemental Appropriations Act (H.R.8035) providing $61 billion in military and economic assistance to Ukraine. The bill passed 311-112, with Massie among 101 Republicans and 11 Democrats voting against. Massie argued the money is borrowed, adding to the national debt, and that it is not America's responsibility to fund foreign wars.",
+      "date": "2024-04-20",
+      "source": {
+        "name": "Congress.gov",
+        "tier": "official",
+        "url": "https://www.congress.gov/bill/118th-congress/house-bill/8035",
+        "date": "2024-04-20"
+      },
+      "category": "Foreign Policy",
+      "isOpinion": false,
+      "isVerified": true,
+      "url": "https://www.congress.gov/bill/118th-congress/house-bill/8035"
+    }
+  ]
+}

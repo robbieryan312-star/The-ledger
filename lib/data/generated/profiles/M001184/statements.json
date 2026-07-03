@@ -1,0 +1,58 @@
+{
+  "bioguideId": "M001184",
+  "byTopic": {
+    "healthcare": {
+      "statements": []
+    },
+    "immigration": {
+      "statements": [
+        {
+          "title": "Mr. MASSIE. Mr. Speaker, I rise to raise a question of the privileges of the House and offer a resolution previously noticed.",
+          "date": "2026-06-30",
+          "url": "https://www.govinfo.gov/app/details/CREC-2026-06-30-pt1-PgH4345-4",
+          "tier": "official",
+          "topicId": "immigration"
+        }
+      ]
+    },
+    "climate": {
+      "statements": []
+    },
+    "defense-veterans": {
+      "statements": [
+        {
+          "title": "Congress has voted for ten bills now that will put US citizens at risk, prolong the conflict in Ukraine, waste tax-payer money, increase domestic food and energy prices, and draw us further into this conflict. I have voted against all of them.",
+          "date": "2022-05-11",
+          "url": "https://thehill.com/homenews/house/3485384-here-are-the-two-republicans-who-voted-against-four-bills-related-to-the-russia-ukraine-conflict/",
+          "tier": "alleged",
+          "topicId": "defense-veterans"
+        }
+      ]
+    },
+    "education": {
+      "statements": []
+    },
+    "civil-liberties": {
+      "statements": [
+        {
+          "title": "Mr. MASSIE. Mr. Speaker, I rise in opposition to this clean reauthorization of an unconstitutional program that is being used to spy on Americans without warrants. This would be the third temporary, clean extension of this unconstitutional program, and I find myself on the unfortunate opposition to the chairman of the committee of jurisdiction, the distinguished gentleman from Ohio (",
+          "date": "2026-06-10",
+          "url": "https://www.govinfo.gov/app/details/CREC-2026-06-10-pt1-PgH4079-8",
+          "tier": "official",
+          "topicId": "civil-liberties"
+        }
+      ]
+    },
+    "economy-taxes": {
+      "statements": [
+        {
+          "title": "I knew all along they would trade the cow for magic beans. These beans are like the rest. They don't sprout.",
+          "date": "2025-04-10",
+          "url": "https://www.politico.com/news/2025/04/10/house-gop-adopts-budget-framework-paving-the-way-for-trumps-big-beautiful-bill-00283511",
+          "tier": "alleged",
+          "topicId": "economy-taxes"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "bioguideId": "M000355",
+  "byTopic": {
+    "defense-veterans": [
+      {
+        "topicId": "defense-veterans",
+        "statedPositionDate": null,
+        "voteDate": "2026-06-23",
+        "billTitle": "H. Con. Res. 86",
+        "billNumber": "H.Con.Res. 86",
+        "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-concurrent-resolution/86",
+        "voteChoice": "Not Voting",
+        "tier": "official"
+      }
+    ]
+  }
+}

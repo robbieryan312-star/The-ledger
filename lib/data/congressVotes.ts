@@ -4,6 +4,7 @@
  */
 import type { Source, VoteRecord } from '../types';
 import congressSnapshot from './generated/congressVotes.json';
+import { getMemberProfileVotes, usesMemberProfile } from './memberProfile';
 
 export interface CongressVoteEntry {
   politicianId: string;
@@ -47,6 +48,10 @@ function lookupCongressVotes(politicianId: string, bioguideId?: string): Congres
 }
 
 export function getCongressVotes(politicianId: string, bioguideId?: string): CongressVoteEntry | undefined {
+  if (bioguideId && usesMemberProfile(bioguideId)) {
+    const profile = getMemberProfileVotes(bioguideId);
+    return profile ?? undefined;
+  }
   return lookupCongressVotes(politicianId, bioguideId);
 }
 
@@ -75,6 +80,13 @@ export function mergeVotingRecord(
   recordType?: 'featured' | 'lightweight',
   bioguideId?: string,
 ): { votes: VoteRecord[]; congressEntry?: CongressVoteEntry; usingOfficialVotes: boolean } {
+  if (bioguideId && usesMemberProfile(bioguideId)) {
+    const profileVotes = getMemberProfileVotes(bioguideId);
+    if (profileVotes && profileVotes.votes.length > 0) {
+      return { votes: profileVotes.votes, congressEntry: profileVotes, usingOfficialVotes: true };
+    }
+  }
+
   const congress = lookupCongressVotes(politicianId, bioguideId);
   if (congress && congress.votes.length > 0) {
     return { votes: congress.votes, congressEntry: congress, usingOfficialVotes: true };

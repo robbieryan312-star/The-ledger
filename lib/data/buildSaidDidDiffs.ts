@@ -164,6 +164,24 @@ function pickSaidForLink(
   return null;
 }
 
+/** Drop Said→Did link rows that cannot pair a genuine stated position with a vote. */
+export function pruneSaidDidLinksByTopic(
+  byTopic: Record<string, TopicPositionData>,
+): Record<string, SaidDidLinkEntry[]> {
+  const out: Record<string, SaidDidLinkEntry[]> = {};
+  for (const [topicId, topicData] of Object.entries(byTopic)) {
+    const kept: SaidDidLinkEntry[] = [];
+    for (const link of topicData.saidDidLinks ?? []) {
+      const said = pickSaidForLink(topicId, topicData, link);
+      if (!said?.quote?.trim() || !said.url?.trim()) continue;
+      if (isVoteRestatementSaid(said.quote)) continue;
+      kept.push({ ...link, topicId });
+    }
+    if (kept.length > 0) out[topicId] = kept;
+  }
+  return out;
+}
+
 export function buildSaidDidDiffsFromTopicPositions(
   bioguideId: string,
   politicianName: string,

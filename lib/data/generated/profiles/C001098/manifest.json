@@ -1,0 +1,19 @@
+{
+  "bioguideId": "C001098",
+  "politicianId": "C001098",
+  "asOf": "2026-07-03",
+  "categories": {
+    "header": "filled",
+    "votes": "filled",
+    "finance": "filled",
+    "statements": "honest-gap",
+    "positions": "filled",
+    "saidDid": "honest-gap",
+    "legislation": "filled",
+    "orgVoteLinks": "honest-gap",
+    "news": "honest-gap",
+    "trades": "honest-gap",
+    "controversies": "honest-gap",
+    "endorsements": "honest-gap"
+  }
+}

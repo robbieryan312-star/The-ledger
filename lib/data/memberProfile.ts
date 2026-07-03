@@ -10,7 +10,47 @@ import sandersStatements from './generated/profiles/S000033/statements.json';
 import sandersPositions from './generated/profiles/S000033/positions.json';
 import sandersSaidDid from './generated/profiles/S000033/saidDid.json';
 import sandersOrgVoteLinks from './generated/profiles/S000033/orgVoteLinks.json';
+import sandersVotes from './generated/profiles/S000033/votes.json';
+import sandersFinance from './generated/profiles/S000033/finance.json';
+
+import o000172Statements from './generated/profiles/O000172/statements.json';
+import o000172Positions from './generated/profiles/O000172/positions.json';
+import o000172SaidDid from './generated/profiles/O000172/saidDid.json';
+import o000172OrgVoteLinks from './generated/profiles/O000172/orgVoteLinks.json';
+import o000172Votes from './generated/profiles/O000172/votes.json';
+import o000172Finance from './generated/profiles/O000172/finance.json';
+
+import m000355Statements from './generated/profiles/M000355/statements.json';
+import m000355Positions from './generated/profiles/M000355/positions.json';
+import m000355SaidDid from './generated/profiles/M000355/saidDid.json';
+import m000355OrgVoteLinks from './generated/profiles/M000355/orgVoteLinks.json';
+import m000355Votes from './generated/profiles/M000355/votes.json';
+import m000355Finance from './generated/profiles/M000355/finance.json';
+
+import m001184Statements from './generated/profiles/M001184/statements.json';
+import m001184Positions from './generated/profiles/M001184/positions.json';
+import m001184SaidDid from './generated/profiles/M001184/saidDid.json';
+import m001184OrgVoteLinks from './generated/profiles/M001184/orgVoteLinks.json';
+import m001184Votes from './generated/profiles/M001184/votes.json';
+import m001184Finance from './generated/profiles/M001184/finance.json';
+
+import w000817Statements from './generated/profiles/W000817/statements.json';
+import w000817Positions from './generated/profiles/W000817/positions.json';
+import w000817SaidDid from './generated/profiles/W000817/saidDid.json';
+import w000817OrgVoteLinks from './generated/profiles/W000817/orgVoteLinks.json';
+import w000817Votes from './generated/profiles/W000817/votes.json';
+import w000817Finance from './generated/profiles/W000817/finance.json';
+
+import c001098Statements from './generated/profiles/C001098/statements.json';
+import c001098Positions from './generated/profiles/C001098/positions.json';
+import c001098SaidDid from './generated/profiles/C001098/saidDid.json';
+import c001098OrgVoteLinks from './generated/profiles/C001098/orgVoteLinks.json';
+import c001098Votes from './generated/profiles/C001098/votes.json';
+import c001098Finance from './generated/profiles/C001098/finance.json';
+
 import type { OrgVoteTopicLink } from './buildOrgVoteTopicLinks';
+import type { FecFinanceEntry } from './fecFinance';
+import type { Source, VoteRecord } from '../types';
 import type {
   PlatformPositionEntry,
   SaidDidLinkEntry,
@@ -19,7 +59,14 @@ import type {
 } from './topicPositions';
 
 /** Members migrated off the topicPositions mega-bundle. */
-export const MIGRATED_PROFILE_BIOGUIDES = new Set(['S000033']);
+export const MIGRATED_PROFILE_BIOGUIDES = new Set([
+  'S000033',
+  'O000172',
+  'M000355',
+  'M001184',
+  'W000817',
+  'C001098',
+]);
 
 export function usesMemberProfile(bioguideId: string): boolean {
   return MIGRATED_PROFILE_BIOGUIDES.has(bioguideId);
@@ -37,6 +84,32 @@ interface SaidDidFile {
   byTopic: Record<string, SaidDidLinkEntry[]>;
 }
 
+interface ProfileVotesFile {
+  bioguideId: string;
+  politicianId: string;
+  chamber?: 'house' | 'senate';
+  votes: VoteRecord[];
+  asOf: string;
+  status?: 'unavailable';
+  source?: Source;
+  note?: string;
+}
+
+interface ProfileFinanceFile {
+  bioguideId: string;
+  entry: FecFinanceEntry | null;
+}
+
+/** Roll-call votes materialized from data/votes/national/congress-votes.json. */
+export interface MemberProfileCongressVotes {
+  politicianId: string;
+  bioguideId: string;
+  chamber: 'house' | 'senate';
+  votes: VoteRecord[];
+  source: Source;
+  asOf: string;
+}
+
 const PROFILE_DATA: Record<
   string,
   { statements: StatementsFile; positions: PositionsFile; saidDid: SaidDidFile }
@@ -46,6 +119,58 @@ const PROFILE_DATA: Record<
     positions: sandersPositions as PositionsFile,
     saidDid: sandersSaidDid as SaidDidFile,
   },
+  O000172: {
+    statements: o000172Statements as StatementsFile,
+    positions: o000172Positions as PositionsFile,
+    saidDid: o000172SaidDid as SaidDidFile,
+  },
+  M000355: {
+    statements: m000355Statements as StatementsFile,
+    positions: m000355Positions as PositionsFile,
+    saidDid: m000355SaidDid as SaidDidFile,
+  },
+  M001184: {
+    statements: m001184Statements as StatementsFile,
+    positions: m001184Positions as PositionsFile,
+    saidDid: m001184SaidDid as SaidDidFile,
+  },
+  W000817: {
+    statements: w000817Statements as StatementsFile,
+    positions: w000817Positions as PositionsFile,
+    saidDid: w000817SaidDid as SaidDidFile,
+  },
+  C001098: {
+    statements: c001098Statements as StatementsFile,
+    positions: c001098Positions as PositionsFile,
+    saidDid: c001098SaidDid as SaidDidFile,
+  },
+};
+
+const ORG_VOTE_LINKS: Record<string, OrgVoteTopicLink[]> = {
+  S000033: (sandersOrgVoteLinks as { links: OrgVoteTopicLink[] }).links,
+  O000172: (o000172OrgVoteLinks as { links: OrgVoteTopicLink[] }).links,
+  M000355: (m000355OrgVoteLinks as { links: OrgVoteTopicLink[] }).links,
+  M001184: (m001184OrgVoteLinks as { links: OrgVoteTopicLink[] }).links,
+  W000817: (w000817OrgVoteLinks as { links: OrgVoteTopicLink[] }).links,
+  C001098: (c001098OrgVoteLinks as { links: OrgVoteTopicLink[] }).links,
+};
+
+const PROFILE_VOTES: Record<string, ProfileVotesFile> = {
+  S000033: sandersVotes as ProfileVotesFile,
+  O000172: o000172Votes as ProfileVotesFile,
+  M000355: m000355Votes as ProfileVotesFile,
+  M001184: m001184Votes as ProfileVotesFile,
+  W000817: w000817Votes as ProfileVotesFile,
+  C001098: c001098Votes as ProfileVotesFile,
+};
+
+const PROFILE_FINANCE: Record<string, ProfileFinanceFile> = {
+  S000033: sandersFinance as ProfileFinanceFile,
+  O000172: o000172Finance as ProfileFinanceFile,
+  M000355: m000355Finance as ProfileFinanceFile,
+  M001184: m001184Finance as ProfileFinanceFile,
+  W000817: w000817Finance as ProfileFinanceFile,
+  C001098: c001098Finance as ProfileFinanceFile,
 };
 
 /**
@@ -90,8 +215,38 @@ export function getMemberProfileTopicPositions(
 }
 
 export function getMemberProfileOrgVoteLinks(bioguideId: string): OrgVoteTopicLink[] | null {
-  if (bioguideId === 'S000033') {
-    return (sandersOrgVoteLinks as { links: OrgVoteTopicLink[] }).links;
-  }
-  return null;
+  if (!MIGRATED_PROFILE_BIOGUIDES.has(bioguideId)) return null;
+  return ORG_VOTE_LINKS[bioguideId] ?? [];
+}
+
+/**
+ * Roll-call votes for migrated profiles — materialized from data/votes/national/congress-votes.json.
+ */
+export function getMemberProfileVotes(bioguideId: string): MemberProfileCongressVotes | null {
+  const file = PROFILE_VOTES[bioguideId];
+  if (!file || file.status === 'unavailable' || file.votes.length === 0) return null;
+  return {
+    politicianId: file.politicianId,
+    bioguideId: file.bioguideId,
+    chamber: file.chamber ?? inferChamberFromVotes(file.votes),
+    votes: file.votes,
+    source: file.source ?? {
+      name: 'Congress.gov',
+      url: 'https://www.congress.gov',
+      tier: 'official',
+    },
+    asOf: file.asOf,
+  };
+}
+
+function inferChamberFromVotes(votes: VoteRecord[]): 'house' | 'senate' {
+  const id = votes[0]?.id ?? '';
+  if (/\-h119\-/i.test(id) || /-\d{6}-119-\d+-/i.test(id)) return 'house';
+  return 'senate';
+}
+
+/** FEC totals for migrated profiles — materialized from data/fec/national/congress-finance.json. */
+export function getMemberProfileFinance(bioguideId: string): FecFinanceEntry | null {
+  if (!MIGRATED_PROFILE_BIOGUIDES.has(bioguideId)) return null;
+  return PROFILE_FINANCE[bioguideId]?.entry ?? null;
 }

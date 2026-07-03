@@ -92,6 +92,12 @@ const BARE_HOMEPAGE_HOSTS = new Set([
   'www.senate.gov',
   'house.gov',
   'www.house.gov',
+  'opensecrets.org',
+  'www.opensecrets.org',
+  'ballotpedia.org',
+  'www.ballotpedia.org',
+  'senatestockwatcher.com',
+  'www.senatestockwatcher.com',
 ]);
 
 export function isPlaceholderUrl(url: string): boolean {
@@ -152,8 +158,9 @@ function checkSourceObject(
   pushIf(violations, label, requireUrl && !url, 'source missing url');
   if (!url) return;
   pushIf(violations, label, isPlaceholderUrl(url), `placeholder or fabricated url: ${url}`);
+  pushIf(violations, label, isBareHomepageUrl(url), `bare homepage url: ${url}`);
   if (articleType) {
-    pushIf(violations, label, isBareHomepageUrl(url), `bare homepage url for article-type citation: ${url}`);
+    pushIf(violations, label, !isArticleTypeIntegrityUrl(url), `article-type url failed integrity: ${url}`);
   }
 }
 
@@ -243,7 +250,7 @@ export function validateNewsFile(
   return violations;
 }
 
-export function validateS000033ProfileSources(files: {
+export function validateProfileSources(files: {
   endorsements: unknown;
   controversies: unknown;
   news: unknown;
@@ -254,3 +261,6 @@ export function validateS000033ProfileSources(files: {
     ...validateNewsFile(files.news as Parameters<typeof validateNewsFile>[0], 'news.json'),
   ];
 }
+
+/** @deprecated Use validateProfileSources — kept for fixture labels. */
+export const validateS000033ProfileSources = validateProfileSources;

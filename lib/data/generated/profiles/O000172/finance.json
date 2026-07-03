@@ -1,0 +1,26 @@
+{
+  "bioguideId": "O000172",
+  "entry": {
+    "politicianId": "O000172",
+    "bioguideId": "O000172",
+    "fecCandidateId": "H8NY15148",
+    "electionYear": 2026,
+    "receipts": 31095334.52,
+    "disbursements": 18890836.7,
+    "cashOnHand": 15939144.7,
+    "individualContributions": 30512780.44,
+    "pacContributions": 18550,
+    "selfFunding": 0,
+    "coverageStart": "2025-01-01",
+    "coverageEnd": "2026-06-03",
+    "reportType": "PRE-PRIMARY",
+    "source": {
+      "name": "Federal Election Commission (OpenFEC)",
+      "url": "https://www.fec.gov/data/",
+      "tier": "official",
+      "description": "Official campaign finance disclosures via api.open.fec.gov"
+    },
+    "asOf": "2026-07-01",
+    "fecProfileUrl": "https://www.fec.gov/data/candidate/H8NY15148/"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "bioguideId": "C001098",
+  "profile": {
+    "bioguideId": "C001098",
+    "officialPhotoUrl": "https://www.congress.gov/img/member/c001098_200.jpg",
+    "officialWebsite": "https://www.cruz.senate.gov",
+    "officeAddress": "167 Russell Senate Office Building  Washington, DC 20510",
+    "phone": "(202) 224-5922",
+    "currentMember": true,
+    "source": {
+      "name": "Congress.gov",
+      "url": "https://www.congress.gov",
+      "tier": "official"
+    }
+  },
+  "meta": {
+    "bioguideId": "C001098",
+    "asOf": "2026-06-29",
+    "source": "Congress.gov API v3",
+    "totalSponsored": 585,
+    "totalCosponsored": 1782,
+    "topicCoverage": {
+      "healthcare": 69,
+      "immigration": 85,
+      "defense": 105,
+      "economy": 92,
+      "environment": 60,
+      "education": 80,
+      "crime": 55,
+      "civil": 51,
+      "judiciary": 27,
+      "legislation": 407
+    }
+  }
+}
