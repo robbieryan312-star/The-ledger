@@ -10,6 +10,8 @@
  *   - constitutional-authority statements
  *   - cosponsor lists ("(for herself, Mr. McGovern, ...)")
  *   - roll-call / vote rosters (bare runs of surnames, "NOT VOTING", "yeas N, nays N")
+ *   - procedural floor actions / chamber housekeeping (quorum calls, motions to proceed,
+ *     nomination reports, morning-business/recess requests, intern recognitions)
  *
  * When in doubt, exclude — an honest gap beats boilerplate.
  */
@@ -47,78 +49,101 @@ function hasSurnameRun(text: string, threshold = 5): boolean {
   return false;
 }
 
-/** True when the text is procedural CREC clerk output rather than a floor remark. */
-export function isProceduralCrecText(text: string): boolean {
-  const t = text.trim();
-  const head = t.slice(0, 200);
+/**
+ * Ordered procedural-rule table — the single source of truth. `isProceduralCrecText`
+ * returns true if any rule matches; `matchedProceduralRule` returns the first rule name
+ * (used by diagnostics / the over-rejection audit).
+ */
+interface ProceduralRule {
+  name: string;
+  test: (t: string, head: string) => boolean;
+}
 
-  // 1. Amendment / resolution submissions and cosponsor bookkeeping (existing rules).
-  if (/submitted an amendment/i.test(t)) return true;
-  if (/submitted the following (resolution|amendment|concurrent resolution|joint resolution)/i.test(t)) {
-    return true;
-  }
-  if (/(were|was) (added|removed) as (a )?cosponsors?/i.test(t)) return true;
-  if (/which was ordered to lie on the table/i.test(t)) return true;
-  if (/were referred to the Committee/i.test(head)) return true;
-  if (/At the request of/i.test(head)) return true;
-  if (/names of the Senator/i.test(head)) return true;
-  if (/,?\s*the Senator from [A-Z]/.test(head)) return true;
-  if (/^\s*Mr\.\s+\w+\),/i.test(head)) return true;
+const PROCEDURAL_RULES: ProceduralRule[] = [
+  // 1. Amendment / resolution submissions and cosponsor bookkeeping.
+  { name: 'amendment-submission', test: (t) => /submitted an amendment/i.test(t) },
+  {
+    name: 'resolution-submission',
+    test: (t) => /submitted the following (resolution|amendment|concurrent resolution|joint resolution)/i.test(t),
+  },
+  { name: 'cosponsor-added-removed', test: (t) => /(were|was) (added|removed) as (a )?cosponsors?/i.test(t) },
+  { name: 'ordered-to-lie-on-table', test: (t) => /which was ordered to lie on the table/i.test(t) },
+  { name: 'referred-to-committee', test: (_t, head) => /were referred to the Committee/i.test(head) },
+  { name: 'at-the-request-of', test: (_t, head) => /At the request of/i.test(head) },
+  { name: 'names-of-the-senator', test: (_t, head) => /names of the Senator/i.test(head) },
+  { name: 'the-senator-from', test: (_t, head) => /,?\s*the Senator from [A-Z]/.test(head) },
+  { name: 'mr-name-paren-opener', test: (_t, head) => /^\s*Mr\.\s+\w+\),/i.test(head) },
 
   // 2. Roll-call / vote-roster markers.
-  if (/\bNOT VOTING\b/.test(t)) return true;
-  if (/--\s*yeas\s+\d+/i.test(t)) return true;
-  if (/\bThe (yeas and nays|result was announced)\b/i.test(t)) return true;
+  { name: 'not-voting', test: (t) => /\bNOT VOTING\b/.test(t) },
+  { name: 'yeas-tally', test: (t) => /--\s*yeas\s+\d+/i.test(t) },
+  { name: 'yeas-and-nays-announced', test: (t) => /\bThe (yeas and nays|result was announced)\b/i.test(t) },
 
   // 3. Bill / resolution introductions.
-  if (
-    /\b(H\.?\s?R\.|S\.|H\.\s?Con\.\s?Res\.|S\.\s?Con\.\s?Res\.|H\.\s?J\.\s?Res\.|S\.\s?J\.\s?Res\.|H\.\s?Res\.|S\.\s?Res\.)\s*\d+\.?\s*(A bill|A resolution|A concurrent resolution|A joint resolution|To amend|To designate|To provide|To require|To establish|To authorize|An act)/i.test(
-      t,
-    )
-  ) {
-    return true;
-  }
-  if (/\bA bill to (amend|provide|require|establish|designate|authorize|direct|prohibit)/i.test(head)) {
-    return true;
-  }
+  {
+    name: 'bill-intro-numbered',
+    test: (t) =>
+      /\b(H\.?\s?R\.|S\.|H\.\s?Con\.\s?Res\.|S\.\s?Con\.\s?Res\.|H\.\s?J\.\s?Res\.|S\.\s?J\.\s?Res\.|H\.\s?Res\.|S\.\s?Res\.)\s*\d+\.?\s*(A bill|A resolution|A concurrent resolution|A joint resolution|To amend|To designate|To provide|To require|To establish|To authorize|An act)/i.test(
+        t,
+      ),
+  },
+  {
+    name: 'a-bill-to',
+    test: (_t, head) => /\bA bill to (amend|provide|require|establish|designate|authorize|direct|prohibit)/i.test(head),
+  },
 
   // 4. Constitutional-authority statements.
-  if (/Congress has the power to enact this legislation pursuant to/i.test(t)) return true;
-  if (/constitutional authority (statement|to enact)/i.test(t)) return true;
+  { name: 'const-authority-pursuant', test: (t) => /Congress has the power to enact this legislation pursuant to/i.test(t) },
+  { name: 'const-authority-header', test: (t) => /constitutional authority (statement|to enact)/i.test(t) },
 
-  // 4b. Quoted statutory / bill text — lettered or numbered subsection headers ("(2) Boundary.--",
-  // "(A) In general.--") and drafting boilerplate. This is the text of a bill being read into the
-  // Record, not the member speaking.
-  if (/\((?:\d+|[A-Za-z]{1,3})\)\s+[A-Z][A-Za-z ]{2,}\.--/.test(t)) return true;
-  if (/shall have the same force and effect as if included in this (section|Act)/i.test(t)) {
-    return true;
-  }
-  if (/As soon as practicable after the date of enactment of this Act/i.test(t)) return true;
+  // 4b. Quoted statutory / bill text — lettered/numbered subsection headers and drafting boilerplate.
+  { name: 'statutory-subsection-header', test: (t) => /\((?:\d+|[A-Za-z]{1,3})\)\s+[A-Z][A-Za-z ]{2,}\.--/.test(t) },
+  {
+    name: 'statutory-force-and-effect',
+    test: (t) => /shall have the same force and effect as if included in this (section|Act)/i.test(t),
+  },
+  { name: 'statutory-as-soon-as-practicable', test: (t) => /As soon as practicable after the date of enactment of this Act/i.test(t) },
 
   // 5. Cosponsor / sponsor "(for herself/himself, ...)" openers.
-  if (/\(for (herself|himself|themselves|him|her|them)\b/i.test(head)) return true;
+  { name: 'for-herself-himself', test: (_t, head) => /\(for (herself|himself|themselves|him|her|them)\b/i.test(head) },
 
   // 6. Honorific name list (cosponsor lists) with no address to the chair.
-  const honorifics = t.match(/\b(Mr|Mrs|Ms|Miss)\.\s+[A-Z][a-z]/g) ?? [];
-  const addressesChair = /\b(Mr\.|Madam)\s+(President|Speaker)\b/i.test(t);
-  if (honorifics.length >= 4 && !addressesChair) return true;
+  {
+    name: 'honorific-name-list',
+    test: (t) => {
+      const honorifics = t.match(/\b(Mr|Mrs|Ms|Miss)\.\s+[A-Z][a-z]/g) ?? [];
+      const addressesChair = /\b(Mr\.|Madam)\s+(President|Speaker)\b/i.test(t);
+      return honorifics.length >= 4 && !addressesChair;
+    },
+  },
 
   // 7. Bare surname roster.
-  if (hasSurnameRun(t)) return true;
+  { name: 'surname-roster', test: (t) => hasSurnameRun(t) },
 
-  // 8. Procedural floor actions / chamber housekeeping. The member is recognized and addresses
-  //    the chair, but the excerpt is a motion, a unanimous-consent housekeeping request, a
-  //    quorum-call action, or a committee nomination report — not a substantive remark that
-  //    states a position. (Surfaced by the Phase 17b 50-member speaking-diversity batch.)
-  if (/quorum call be rescinded/i.test(t)) return true;
-  if (/resume legislative session/i.test(t)) return true;
-  if (/\bI move to proceed to\b/i.test(t)) return true;
-  if (/I report favorably the following nomination/i.test(t)) return true;
-  if (/granted floor privileges/i.test(t)) return true;
-  if (/the previously scheduled recess/i.test(t)) return true;
+  // 8. Procedural floor actions / chamber housekeeping — an address to the chair with no position.
+  //    (Surfaced by the Phase 17b 50-member speaking-diversity batch.)
+  { name: 'quorum-call-rescission', test: (t) => /quorum call be rescinded/i.test(t) },
+  { name: 'resume-legislative-session', test: (t) => /resume legislative session/i.test(t) },
+  { name: 'motion-to-proceed', test: (t) => /\bI move to proceed to\b/i.test(t) },
+  { name: 'committee-nomination-report', test: (t) => /I report favorably the following nomination/i.test(t) },
+  { name: 'floor-privileges', test: (t) => /granted floor privileges/i.test(t) },
+  { name: 'scheduled-recess', test: (t) => /the previously scheduled recess/i.test(t) },
 
   // 8b. Ceremonial intern recognition — a thank-you to office staff, not a policy statement.
-  if (/\ban intern in (my|his|her|the|our)\b/i.test(t)) return true;
+  { name: 'intern-recognition', test: (t) => /\ban intern in (my|his|her|the|our)\b/i.test(t) },
+];
 
-  return false;
+/** Returns the first matching procedural-rule name, or null when the text is not procedural. */
+export function matchedProceduralRule(text: string): string | null {
+  const t = text.trim();
+  const head = t.slice(0, 200);
+  for (const rule of PROCEDURAL_RULES) {
+    if (rule.test(t, head)) return rule.name;
+  }
+  return null;
+}
+
+/** True when the text is procedural CREC clerk output rather than a floor remark. */
+export function isProceduralCrecText(text: string): boolean {
+  return matchedProceduralRule(text) !== null;
 }
