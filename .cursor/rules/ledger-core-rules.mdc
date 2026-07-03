@@ -32,6 +32,18 @@ the specific failure this file was created to stop.
   changes what the platform looks like / how it is laid out, or is an irreversible/destructive
   action. Re-routing routine code/data calls back to the owner is the exact time-wasting failure
   this rule bans.
+- **The loop that ends the ping-pong.** Owner gives input + reviews the visual side only.
+  Claude decides every code/data question and writes an EXPLICIT brief. **Cursor executes the
+  brief EXACTLY and makes NO independent assumptions or changes** — if a brief is ambiguous,
+  Cursor stops and asks Claude, it does not guess. Claude then reviews Cursor's output for
+  correctness before it is accepted; anything short of the standard is rejected and re-briefed.
+  Standard for everything that ships: flawless, 100% accurate, pristine, presented exactly to
+  spec.
+- **One file per destination view — never a mega-bundle.** Each data category is written to its
+  own file named/structured for the profile section or search location it feeds, keyed by
+  `bioguideId`, so it is independently wipeable and verifiable. Do not bundle multiple
+  categories for a member into one blob. Grow coverage in small reviewed batches (1 → 5 → 10 →
+  …), never one massive collection.
 - **Finish and LOCK one gold-standard profile before scaling — no more circling.** Never scale a
   pipeline whose single-member output isn't approved and frozen. `S000033` (Sanders) is the
   locked reference: get it complete and clean, freeze it, THEN apply the same pipeline to the
