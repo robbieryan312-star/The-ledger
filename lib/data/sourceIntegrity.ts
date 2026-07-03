@@ -8,6 +8,8 @@ import {
   classifyTextToRecordTopicId,
   recordKeywordMatches,
 } from './profileRecordByTopic';
+import { hasUndecodedHtmlEntity } from './htmlEntities';
+import { normalizeTopicId } from './topicAliases';
 
 export interface SourceIntegrityViolation {
   path: string;
@@ -174,6 +176,94 @@ export function isArticleTypeIntegrityUrl(url: string | undefined): boolean {
   return true;
 }
 
+/** Approved journalism outlets for news.json (AGENTS.md / ledger-data-policy.mdc). */
+const APPROVED_NEWS_OUTLET_HOSTS = new Set([
+  'nytimes.com',
+  'washingtonpost.com',
+  'wsj.com',
+  'politico.com',
+  'thehill.com',
+  'apnews.com',
+  'reuters.com',
+  'npr.org',
+  'pbs.org',
+  'rollcall.com',
+  'cq.com',
+  'theatlantic.com',
+  'bloomberg.com',
+  'propublica.org',
+  'theguardian.com',
+  'miamiherald.com',
+  'tampabay.com',
+  'sun-sentinel.com',
+  'orlandosentinel.com',
+  'floridaphoenix.com',
+  'wusf.org',
+  'wlrn.org',
+]);
+
+/** True when `url`'s hostname is one of the approved journalism outlets for news.json. */
+export function isApprovedNewsOutlet(url: string | undefined): boolean {
+  if (!url?.trim()) return false;
+  try {
+    const host = new URL(url.trim()).hostname.toLowerCase().replace(/^www\./, '');
+    return Array.from(APPROVED_NEWS_OUTLET_HOSTS).some((a) => host === a || host.endsWith(`.${a}`));
+  } catch {
+    return false;
+  }
+}
+
+/** Wire services corroborate independently at 'nonpartisan' tier per the data-credibility policy. */
+export function isWireServiceOutlet(url: string | undefined): boolean {
+  if (!url?.trim()) return false;
+  try {
+    const host = new URL(url.trim()).hostname.toLowerCase().replace(/^www\./, '');
+    return host === 'apnews.com' || host.endsWith('.apnews.com') || host === 'reuters.com' || host.endsWith('.reuters.com');
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Normalize a URL for dedupe comparison: lowercase host, strip `www.`, drop
+ * tracking/query params and fragments, and remove a trailing slash.
+ */
+export function normalizeUrlForDedupe(url: string): string {
+  try {
+    const parsed = new URL(url.trim());
+    const host = parsed.hostname.toLowerCase().replace(/^www\./, '');
+    const pathname = parsed.pathname.replace(/\/+$/, '') || '/';
+    return `${host}${pathname}`;
+  } catch {
+    return url.trim().toLowerCase();
+  }
+}
+
+/** Lowercase, whitespace-collapsed headline text for fuzzy duplicate comparison. */
+function normalizeHeadlineForCompare(headline: string): string {
+  return headline
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/** Token-overlap (Dice coefficient) similarity — treated as a duplicate above 0.9. */
+export function headlineSimilarity(a: string, b: string): number {
+  const tokensA = new Set(normalizeHeadlineForCompare(a).split(' ').filter(Boolean));
+  const tokensB = new Set(normalizeHeadlineForCompare(b).split(' ').filter(Boolean));
+  if (tokensA.size === 0 || tokensB.size === 0) return 0;
+  let shared = 0;
+  for (const t of tokensA) {
+    if (tokensB.has(t)) shared += 1;
+  }
+  return (2 * shared) / (tokensA.size + tokensB.size);
+}
+
+export function isNearDuplicateHeadline(a: string, b: string): boolean {
+  return headlineSimilarity(a, b) > 0.9;
+}
+
 interface LooseSource {
   name?: string;
   url?: string;
@@ -275,10 +365,11 @@ export function validateControversiesFile(
 }
 
 export function validateNewsFile(
-  data: { items?: Array<{ id?: string; source?: LooseSource; url?: string }> },
+  data: { items?: Array<{ id?: string; source?: LooseSource; url?: string; isOpinion?: unknown }> },
   fileLabel: string,
 ): SourceIntegrityViolation[] {
   const violations: SourceIntegrityViolation[] = [];
+  const seenNormalizedUrls = new Map<string, string>();
   for (const item of data.items ?? []) {
     const id = item.id ?? '?';
     const label = `${fileLabel}.items[${id}]`;
@@ -294,7 +385,28 @@ export function validateNewsFile(
     if (articleUrl) {
       pushIf(violations, label, isPlaceholderUrl(articleUrl), `placeholder url: ${articleUrl}`);
       pushIf(violations, label, isBareHomepageUrl(articleUrl), `bare homepage url: ${articleUrl}`);
+      pushIf(
+        violations,
+        label,
+        !isApprovedNewsOutlet(articleUrl),
+        `unapproved news outlet: ${articleUrl}`,
+      );
+      const normalized = normalizeUrlForDedupe(articleUrl);
+      const prior = seenNormalizedUrls.get(normalized);
+      pushIf(
+        violations,
+        label,
+        prior !== undefined,
+        `duplicate normalized url within file (also at ${prior ?? '?'}): ${articleUrl}`,
+      );
+      if (prior === undefined) seenNormalizedUrls.set(normalized, id);
     }
+    pushIf(
+      violations,
+      label,
+      typeof item.isOpinion !== 'boolean',
+      'news item missing explicit boolean isOpinion flag',
+    );
   }
   return violations;
 }
@@ -321,6 +433,45 @@ export function validateStatementsFile(
           label,
           stmt.verbatim !== true,
           `${stmt.tier} tier statement requires verbatim:true`,
+        );
+      }
+    }
+  }
+  return violations;
+}
+
+interface LoosePlatformPosition {
+  text?: string;
+  source?: string;
+  url?: string;
+  tier?: string;
+  asOf?: string;
+}
+
+/**
+ * platformPositions.json (Said side, positions.json byTopic) must reject: vote-restatement
+ * tautologies, undecoded HTML entities, and text whose classified topic doesn't match the
+ * bucket it's filed under (misattributed/off-topic platform text).
+ */
+export function validatePlatformPositionsFile(
+  data: { byTopic?: Record<string, { platformPositions?: LoosePlatformPosition[] }> },
+  fileLabel: string,
+): SourceIntegrityViolation[] {
+  const violations: SourceIntegrityViolation[] = [];
+  for (const [topicId, topic] of Object.entries(data.byTopic ?? {})) {
+    for (const [idx, pos] of (topic.platformPositions ?? []).entries()) {
+      const label = `${fileLabel}.byTopic.${topicId}.platformPositions[${idx}]`;
+      const text = pos.text ?? '';
+      pushIf(violations, label, isVoteRestatementSaid(text), 'vote-restatement text presented as a stated position');
+      pushIf(violations, label, hasUndecodedHtmlEntity(text), 'undecoded HTML entity in platform position text');
+      const canonicalTopicId = normalizeTopicId(topicId);
+      if (text.trim().length > 0 && canonicalTopicId !== 'legislation') {
+        const classified = classifyTextToRecordTopicId(text);
+        pushIf(
+          violations,
+          label,
+          classified !== 'legislation' && classified !== canonicalTopicId,
+          `classified topic "${classified}" does not match filed bucket "${topicId}" (canonical "${canonicalTopicId}")`,
         );
       }
     }

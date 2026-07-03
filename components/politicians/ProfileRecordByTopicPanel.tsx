@@ -7,6 +7,8 @@ import type { ProfileRecordByTopic, TopicRecordGroup } from '@/lib/data/profileR
 import type { MemberDeepBill, MemberDeepProfile } from '@/lib/data/memberDeep';
 import { getTopicPositions } from '@/lib/data/topicPositions';
 import { statementDisplayText } from '@/lib/data/crecDisplayText';
+import { leadSummary } from '@/lib/data/displaySummary';
+import { citizenImpactFromSummary } from '@/lib/data/billCitizenImpact';
 import { isCeremonialCrecRemark } from '@/lib/data/ceremonialCrecFilter';
 import type { OrgVoteTopicLink } from '@/lib/data/buildOrgVoteTopicLinks';
 import { recordTopicLabel } from '@/lib/data/profileRecordByTopic';
@@ -171,7 +173,7 @@ function TopicGroupRow({
                 <div>
                   <div className="text-white font-semibold mb-1">Stated position</div>
                   <ExpandableQuoteBlock
-                    summary={topicPositions.statedPosition!.split(/(?<=[.!?])\s+/)[0] ?? topicPositions.statedPosition!}
+                    summary={leadSummary(topicPositions.statedPosition!, 120)}
                     fullText={topicPositions.statedPosition!}
                   />
                   {topicPositions.statedPositionSource && (
@@ -203,7 +205,7 @@ function TopicGroupRow({
                   {platformPositions.map((pos, idx) => (
                     <div key={idx} className={idx > 0 ? 'mt-3' : ''}>
                       <ExpandableQuoteBlock
-                        summary={pos.text.split(/(?<=[.!?])\s+/)[0] ?? pos.text}
+                        summary={leadSummary(pos.text, 120)}
                         fullText={pos.text}
                       />
                       <div className="mt-2 flex flex-wrap items-center gap-2">
@@ -248,7 +250,7 @@ function TopicGroupRow({
                           />
                         </div>
                         <ExpandableQuoteBlock
-                          summary={(statementDisplayText(statement)).split(/(?<=[.!?])\s+/)[0] ?? statementDisplayText(statement)}
+                          summary={leadSummary(statementDisplayText(statement), 120)}
                           fullText={statementDisplayText(statement)}
                           verbatim
                         />
@@ -285,7 +287,7 @@ function TopicGroupRow({
                           />
                         </div>
                         <ExpandableQuoteBlock
-                          summary={(statementDisplayText(statement)).split(/(?<=[.!?])\s+/)[0] ?? statementDisplayText(statement)}
+                          summary={leadSummary(statementDisplayText(statement), 120)}
                           fullText={statementDisplayText(statement)}
                           verbatim
                         />
@@ -322,7 +324,7 @@ function TopicGroupRow({
                           />
                         </div>
                         <ExpandableQuoteBlock
-                          summary={(statementDisplayText(statement)).split(/(?<=[.!?])\s+/)[0] ?? statementDisplayText(statement)}
+                          summary={leadSummary(statementDisplayText(statement), 120)}
                           fullText={statementDisplayText(statement)}
                           verbatim
                         />
@@ -370,13 +372,22 @@ function TopicGroupRow({
                     </div>
                     <div className="mt-0.5">
                       <ExpandableQuoteBlock
-                        summary={
-                          ex.billSummary?.split(/(?<=[.!?])\s+/)[0] ??
-                          ex.title.split(/(?<=[.!?])\s+/)[0] ??
-                          ex.title
-                        }
+                        summary={leadSummary(ex.billSummary ?? ex.title, 120)}
                         fullText={ex.billSummary ?? ex.title}
                       />
+                      {ex.billSummary ? (
+                        (() => {
+                          const impact = citizenImpactFromSummary(ex.billSummary);
+                          return impact ? (
+                            <p className="mt-1 text-[11px] text-gray-500">
+                              <span className="text-gray-600">What this means: </span>
+                              {impact}
+                            </p>
+                          ) : null;
+                        })()
+                      ) : (
+                        <p className="mt-1 text-[11px] text-gray-600 italic">No official summary available</p>
+                      )}
                     </div>
                     <Link
                       href={ex.congressGovUrl}

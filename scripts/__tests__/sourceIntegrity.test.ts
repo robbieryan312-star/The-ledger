@@ -7,6 +7,8 @@ import path from 'node:path';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  NEWS_KNOWN_BAD_BARE_HOMEPAGE_URL,
+  NEWS_KNOWN_BAD_UNAPPROVED_OUTLET,
   SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH,
   SAID_DID_KNOWN_BAD_TAUTOLOGY,
   SOURCE_INTEGRITY_KNOWN_BAD_URLS,
@@ -14,13 +16,18 @@ import {
   STATEMENT_KNOWN_BAD_NON_VERBATIM_ALLEGED,
 } from '../../lib/data/__fixtures__/sourceIntegrity.fixture';
 import {
+  headlineSimilarity,
+  isApprovedNewsOutlet,
   isArticleTypeIntegrityUrl,
   isBareHomepageUrl,
   isFetchVerifiableUrl,
   isGenuineSaidDidDiff,
   isPlaceholderUrl,
   isVoteRestatementSaid,
+  normalizeUrlForDedupe,
   saidDidSubjectsOverlap,
+  validateNewsFile,
+  validatePlatformPositionsFile,
   validateProfileSources,
   validateSaidDidDiffs,
   validateStatementsFile,
@@ -93,6 +100,70 @@ test('known-bad non-verbatim alleged statement fails statements integrity', () =
   assert.ok(violations.length > 0, 'expected non-verbatim alleged fixture to produce violations');
 });
 
+test('known-bad unapproved-outlet news item fails outlet guard', () => {
+  assert.equal(isApprovedNewsOutlet(NEWS_KNOWN_BAD_UNAPPROVED_OUTLET.item.url), false);
+  const violations = validateNewsFile({ items: [NEWS_KNOWN_BAD_UNAPPROVED_OUTLET.item] }, 'fixture');
+  assert.ok(
+    violations.some((v) => v.message.includes('unapproved news outlet')),
+    'expected unapproved-outlet fixture to fail news outlet guard',
+  );
+});
+
+test('known-bad bare-homepage-url news item fails article url guard', () => {
+  assert.equal(isBareHomepageUrl(NEWS_KNOWN_BAD_BARE_HOMEPAGE_URL.item.url), true);
+  const violations = validateNewsFile({ items: [NEWS_KNOWN_BAD_BARE_HOMEPAGE_URL.item] }, 'fixture');
+  assert.ok(
+    violations.some((v) => v.message.includes('bare homepage url')),
+    'expected bare-homepage fixture to fail news article-url guard',
+  );
+});
+
+test('approved news outlets pass the outlet guard, known-good article URLs pass', () => {
+  for (const url of [
+    'https://apnews.com/article/example-slug-00203974',
+    'https://www.nytimes.com/2025/01/01/us/politics/example.html',
+    'https://www.reuters.com/world/us/example-2025-01-01/',
+    'https://www.wusf.org/politics/2025-01-01/example',
+  ]) {
+    assert.equal(isApprovedNewsOutlet(url), true, `expected ${url} to be an approved outlet`);
+  }
+  assert.equal(isApprovedNewsOutlet('https://www.breitbart.com/example'), false);
+});
+
+test('news url dedupe normalization collapses tracking params and trailing slash', () => {
+  assert.equal(
+    normalizeUrlForDedupe('https://www.apnews.com/article/example?utm_source=twitter'),
+    normalizeUrlForDedupe('https://apnews.com/article/example/'),
+  );
+});
+
+test('news headline fuzzy-match flags near-identical wire vs republish headlines', () => {
+  const a = 'Sanders reintroduces Medicare for All Act with record cosponsors';
+  const b = 'Sanders Reintroduces Medicare For All Act With Record Cosponsors';
+  assert.ok(headlineSimilarity(a, b) > 0.9, 'expected near-identical headlines to score above 0.9');
+  const c = 'Massie votes no on Ukraine aid package';
+  assert.ok(headlineSimilarity(a, c) < 0.9, 'expected unrelated headlines to score below 0.9');
+});
+
+test('duplicate normalized urls within a single news.json file fail the dedupe guard', () => {
+  const dupeItem = {
+    id: 'dupe-1',
+    url: 'https://apnews.com/article/example-2025',
+    source: { name: 'AP News', url: 'https://apnews.com/article/example-2025', tier: 'nonpartisan' as const, date: '2025-01-01' },
+    isOpinion: false,
+  };
+  const dupeItem2 = {
+    ...dupeItem,
+    id: 'dupe-2',
+    url: 'https://www.apnews.com/article/example-2025/',
+  };
+  const violations = validateNewsFile({ items: [dupeItem, dupeItem2] }, 'fixture');
+  assert.ok(
+    violations.some((v) => v.message.includes('duplicate normalized url')),
+    'expected duplicate normalized url to be rejected',
+  );
+});
+
 test('every migrated profile directory is present under profiles/', () => {
   const onDisk = readdirSync(PROFILES_ROOT, { withFileTypes: true })
     .filter((d) => d.isDirectory())
@@ -140,6 +211,18 @@ for (const bioguideId of MIGRATED_PROFILE_BIOGUIDES) {
       violations.length,
       0,
       `${bioguideId} source integrity violations:\n${violations.map((v) => `  ${v.path}: ${v.message}`).join('\n')}`,
+    );
+  });
+
+  test(`${bioguideId} platform positions pass source integrity`, () => {
+    const violations = validatePlatformPositionsFile(
+      loadProfileJson(bioguideId, 'positions.json') as Parameters<typeof validatePlatformPositionsFile>[0],
+      `${bioguideId}.positions.json`,
+    );
+    assert.equal(
+      violations.length,
+      0,
+      `${bioguideId} positions.json integrity violations:\n${violations.map((v) => `  ${v.path}: ${v.message}`).join('\n')}`,
     );
   });
 

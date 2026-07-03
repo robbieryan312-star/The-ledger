@@ -1,21 +1,18 @@
 /**
  * Strip CREC floor-speech openers for UI display only.
  * Raw `title` on stored statements stays verbatim for integrity guards.
+ *
+ * Thin wrappers over the shared displaySummary module — kept for the many existing
+ * `statementDisplayText`/`stripCrecFloorOpener` call sites.
  */
-const FLOOR_OPENER_RE =
-  /^(?:Mr|Mrs|Ms|Miss)\.\s+[A-Z][A-Za-z'.\-]*(?:\([A-Z]{2}\))?\.\s+(?:Mr\.|Madam)\s+(?:President|Speaker),?\s*/i;
+import { clean } from './displaySummary';
 
 export function stripCrecFloorOpener(text: string): string {
-  const trimmed = text.trim();
-  if (!FLOOR_OPENER_RE.test(trimmed)) return trimmed;
-  return trimmed.replace(FLOOR_OPENER_RE, '').trim();
+  return clean(text);
 }
 
 /** Display text for a CREC or media statement — never mutates stored verbatim title. */
-export function statementDisplayText(entry: { title: string; displayText?: string; url?: string }): string {
-  if (entry.displayText?.trim()) return entry.displayText.trim();
-  if (entry.url && /\/CREC-/i.test(entry.url)) {
-    return stripCrecFloorOpener(entry.title);
-  }
-  return entry.title;
+export function statementDisplayText(entry: { title: string; displayText?: string }): string {
+  if (entry.displayText?.trim()) return clean(entry.displayText);
+  return clean(entry.title);
 }

@@ -11,15 +11,11 @@ import { getMemberTopicPositions, type TopicPositionData, type TopicStatementEnt
 import { normalizeTopicId } from './topicAliases';
 import { isCeremonialCrecRemark } from './ceremonialCrecFilter';
 import { statementDisplayText } from './crecDisplayText';
+import { leadSummary } from './displaySummary';
+import { isVoteRestatementSaid } from './sourceIntegrity';
 
 function isPolicyStatement(st: TopicStatementEntry): boolean {
   return !isCeremonialCrecRemark(st.title);
-}
-
-function firstSentence(text: string, max = 90): string {
-  const sentence = text.split(/(?<=[.!?])\s+/)[0]?.trim() ?? text.trim();
-  if (sentence.length <= max) return sentence;
-  return `${sentence.slice(0, max - 1)}…`;
 }
 
 function buildEvidence(topicId: string, data: TopicPositionData): EvidenceItem[] {
@@ -30,7 +26,7 @@ function buildEvidence(topicId: string, data: TopicPositionData): EvidenceItem[]
     const display = statementDisplayText(st);
     items.push({
       type: isVerbatim ? 'quote' : 'statement',
-      description: firstSentence(display, 140),
+      description: leadSummary(display, 140),
       quote: isVerbatim ? display : undefined,
       date: st.date,
       source: {
@@ -48,9 +44,10 @@ function buildEvidence(topicId: string, data: TopicPositionData): EvidenceItem[]
   }
 
   for (const p of data.platformPositions?.slice(0, 2) ?? []) {
+    if (isVoteRestatementSaid(p.text)) continue;
     items.push({
       type: 'statement',
-      description: firstSentence(p.text, 160),
+      description: leadSummary(p.text, 160),
       date: p.asOf,
       source: { name: p.source, url: p.url, tier: p.tier, date: p.asOf },
     });
@@ -59,7 +56,7 @@ function buildEvidence(topicId: string, data: TopicPositionData): EvidenceItem[]
   for (const link of data.saidDidLinks?.slice(0, 3) ?? []) {
     items.push({
       type: 'vote',
-      description: `Voted ${link.voteChoice} on ${link.billNumber}: ${firstSentence(link.billTitle, 100)}`,
+      description: `Voted ${link.voteChoice} on ${link.billNumber}: ${leadSummary(link.billTitle, 100)}`,
       date: link.voteDate,
       source: { name: 'Congress.gov', url: link.congressGovUrl, tier: 'official', date: link.voteDate },
     });
@@ -97,8 +94,11 @@ export function buildIssuesFromTopicPositions(bioguideId: string): Issue[] {
     const policyDef = STANDARD_POLICY_TOPICS.find((t) => t.id === policyId);
     if (!policyDef) continue;
 
+    const cleanPlatformPositions = (data.platformPositions ?? []).filter(
+      (p) => !isVoteRestatementSaid(p.text),
+    );
     const hasContent =
-      (data.platformPositions?.length ?? 0) > 0 ||
+      cleanPlatformPositions.length > 0 ||
       data.statements.some(isPolicyStatement) ||
       (data.saidDidLinks?.length ?? 0) > 0 ||
       Boolean(data.statedPosition?.trim());
@@ -106,29 +106,30 @@ export function buildIssuesFromTopicPositions(bioguideId: string): Issue[] {
     if (!hasContent) continue;
 
     const policyStatements = data.statements.filter(isPolicyStatement);
-    const headline =
-      policyStatements.find((s) => s.tier === 'media' || s.tier === 'official')?.title ??
-      data.platformPositions?.[0]?.text ??
+    const headlineStatement = policyStatements[0];
+    const headlineDisplay =
+      (headlineStatement ? statementDisplayText(headlineStatement) : undefined) ??
+      cleanPlatformPositions[0]?.text ??
       data.statedPosition ??
       policyDef.label;
 
     const evidence = buildEvidence(policyId, data);
     const summarySource =
-      policyStatements[0] ?? data.platformPositions?.[0]
+      policyStatements[0] ?? cleanPlatformPositions[0]
         ? {
             text:
               (policyStatements[0] ? statementDisplayText(policyStatements[0]) : undefined) ??
-              data.platformPositions?.[0]?.text ??
+              cleanPlatformPositions[0]?.text ??
               '',
           }
         : null;
 
     issues.push({
       name: policyDef.label,
-      position: firstSentence(statementDisplayText({ title: headline }), 100),
-      detail: summarySource ? firstSentence(summarySource.text, 220) : firstSentence(headline, 220),
+      position: leadSummary(headlineDisplay, 100),
+      detail: summarySource ? leadSummary(summarySource.text, 220) : leadSummary(headlineDisplay, 220),
       category: policyDef.label,
-      statement: summarySource ? firstSentence(summarySource.text, 240) : undefined,
+      statement: summarySource ? leadSummary(summarySource.text, 240) : undefined,
       evidence,
     });
   }

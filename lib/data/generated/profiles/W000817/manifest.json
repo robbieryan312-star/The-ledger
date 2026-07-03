@@ -7,7 +7,7 @@
     "votes": "filled",
     "finance": "filled",
     "statements": "filled",
-    "positions": "filled",
+    "positions": "honest-gap",
     "saidDid": "honest-gap",
     "legislation": "filled",
     "orgVoteLinks": "honest-gap",

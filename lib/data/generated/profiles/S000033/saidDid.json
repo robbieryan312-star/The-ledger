@@ -12,18 +12,6 @@
         "voteChoice": "Nay",
         "tier": "official"
       }
-    ],
-    "education": [
-      {
-        "topicId": "education",
-        "statedPositionDate": "2026-06-24",
-        "voteDate": "2018-09-18",
-        "billTitle": "Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019 (HR 6157)",
-        "billNumber": "HR 6157",
-        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1152/vote_115_2_00212.htm",
-        "voteChoice": "Nay",
-        "tier": "official"
-      }
     ]
   }
 }

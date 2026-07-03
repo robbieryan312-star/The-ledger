@@ -76,8 +76,9 @@ function finalizeMemberVotes(candidates: VoteRecord[], targetCount: number): Vot
   return out.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
-function isoDate(value?: string): string {
-  if (!value) return new Date().toISOString().slice(0, 10);
+/** Real date only — no fallback to today. Callers must skip the record when this returns null. */
+function isoDate(value?: string): string | null {
+  if (!value) return null;
   return value.slice(0, 10);
 }
 
@@ -87,10 +88,12 @@ function toHouseVoteRecord(
   position: VoteChoice,
   question: string | undefined,
   extras?: { billSummary?: string; partyBreakdown?: ReturnType<typeof computePartyBreakdown> },
-): VoteRecord {
+): VoteRecord | null {
+  const date = isoDate(vote.startDate);
+  if (!date) return null; // no real roll-call date discoverable — skip rather than fabricate
   const billId = formatBillId(vote.legislationType, vote.legislationNumber);
   const url = houseVoteCongressUrl(vote);
-  const source: Source = { ...CONGRESS_GOV_SOURCE, url, date: isoDate(vote.startDate) };
+  const source: Source = { ...CONGRESS_GOV_SOURCE, url, date };
   return {
     id: `${bioguideId}-h${vote.congress}-${vote.sessionNumber}-${vote.rollCallNumber}`,
     billId,
@@ -100,7 +103,7 @@ function toHouseVoteRecord(
       : `House roll call ${vote.rollCallNumber}, ${vote.congress}th Congress.`,
     voteAction: humanHouseVoteAction(question),
     billSummary: extras?.billSummary,
-    date: isoDate(vote.startDate),
+    date,
     vote: position,
     result: voteResultLabel(vote.result),
     category: policyCategoryFromQuestion(question, vote.legislationType),
@@ -152,6 +155,7 @@ async function syncHouseVotes(
   }
 
   const billSummaryCache = new Map<string, string | undefined>();
+  let skippedNoDate = 0;
 
   for (const vote of voteList) {
     const pending = [...allBioguides].filter((id) => (collected.get(id)?.length ?? 0) < VOTES_PER_MEMBER);
@@ -186,15 +190,18 @@ async function syncHouseVotes(
       for (const m of houseMembers) {
         const list = collected.get(m.bioguideId) ?? [];
         if (list.length >= VOTES_PER_MEMBER) continue;
-        list.push(
-          toHouseVoteRecord(
-            m.bioguideId,
-            vote,
-            normalizeVoteChoice(m.voteCast),
-            members.voteQuestion,
-            { billSummary, partyBreakdown: breakdown },
-          ),
+        const record = toHouseVoteRecord(
+          m.bioguideId,
+          vote,
+          normalizeVoteChoice(m.voteCast),
+          members.voteQuestion,
+          { billSummary, partyBreakdown: breakdown },
         );
+        if (!record) {
+          skippedNoDate += 1;
+          continue;
+        }
+        list.push(record);
         collected.set(m.bioguideId, list);
       }
     } catch (err) {
@@ -202,6 +209,10 @@ async function syncHouseVotes(
       console.warn(`  skip House ${vote.rollCallNumber}: ${msg}`);
     }
     await sleep(150);
+  }
+
+  if (skippedNoDate > 0) {
+    console.warn(`  skipped ${skippedNoDate} House vote record(s) with no discoverable roll-call date`);
   }
 
   return collected;

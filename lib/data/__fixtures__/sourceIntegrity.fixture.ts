@@ -70,6 +70,48 @@ export const SAID_DID_KNOWN_BAD_TAUTOLOGY = {
   },
 };
 
+/** Unapproved-outlet news item — must fail news.json outlet guard (Group C news pipeline). */
+export const NEWS_KNOWN_BAD_UNAPPROVED_OUTLET = {
+  label: 'news item from an outlet not on the approved journalism list',
+  item: {
+    id: 'bad-outlet-1',
+    headline: 'Example headline from an unapproved blog',
+    summary: 'Example summary text.',
+    date: '2025-01-01',
+    category: 'Congress',
+    isOpinion: false,
+    isVerified: false,
+    url: 'https://www.breitbart.com/politics/2025/01/01/example-headline/',
+    source: {
+      name: 'Breitbart',
+      url: 'https://www.breitbart.com/politics/2025/01/01/example-headline/',
+      tier: 'media' as const,
+      date: '2025-01-01',
+    },
+  },
+};
+
+/** Bare-homepage-URL news item — must fail news.json article-url guard (Group C news pipeline). */
+export const NEWS_KNOWN_BAD_BARE_HOMEPAGE_URL = {
+  label: 'news item citing a bare outlet homepage instead of a specific article',
+  item: {
+    id: 'bad-bare-homepage-1',
+    headline: 'Example headline citing only the outlet homepage',
+    summary: 'Example summary text.',
+    date: '2025-01-01',
+    category: 'Congress',
+    isOpinion: false,
+    isVerified: false,
+    url: 'https://www.congress.gov',
+    source: {
+      name: 'Congress.gov',
+      url: 'https://www.congress.gov',
+      tier: 'official' as const,
+      date: '2025-01-01',
+    },
+  },
+};
+
 /** Subject-mismatched Said→Did — Warren tax-filing statement vs War Powers vote (must reject). */
 export const SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH = {
   label: 'W000817 tax-filing statement paired with H.Con.Res. 86 War Powers vote',

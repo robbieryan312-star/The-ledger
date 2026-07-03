@@ -6,6 +6,7 @@ import SourceBadge from '@/components/ui/SourceBadge';
 import ExpandableQuoteBlock from '@/components/ui/ExpandableQuoteBlock';
 import type { SaidDidDiff } from '@/lib/types';
 import { stripCrecFloorOpener } from '@/lib/data/crecDisplayText';
+import { leadSummary } from '@/lib/data/displaySummary';
 
 function formatGapDays(gapDays: number): string {
   if (gapDays >= 30) {
@@ -41,9 +42,7 @@ export default function SaidDidPanel({ diffs }: { diffs: SaidDidDiff[] }) {
                 Said
               </div>
               <ExpandableQuoteBlock
-                summary={
-                  saidDisplay.split(/(?<=[.!?])\s+/)[0]?.slice(0, 120) ?? saidDisplay.slice(0, 120)
-                }
+                summary={leadSummary(saidDisplay, 120)}
                 fullText={saidDisplay}
                 verbatim={diff.said.verbatim}
               />
@@ -81,7 +80,7 @@ export default function SaidDidPanel({ diffs }: { diffs: SaidDidDiff[] }) {
                 Did
               </div>
               <ExpandableQuoteBlock
-                summary={diff.did.action.split(/(?<=[.!?])\s+/)[0] ?? diff.did.action}
+                summary={leadSummary(diff.did.action, 120)}
                 fullText={diff.did.action}
               />
               <div className="flex flex-wrap items-center gap-2 mt-2 text-xs text-gray-500">

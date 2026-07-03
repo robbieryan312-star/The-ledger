@@ -11,6 +11,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { SourceTier, VoteChoice, VoteRecord } from '../lib/types';
 import { RECORD_TOPIC_BUCKETS, voteCongressGovUrl, voteTopicId, classifyTextToRecordTopicId } from '../lib/data/profileRecordByTopic';
+import { truncateAtSentenceBoundary } from '../lib/data/displaySummary';
 import { normalizeTopicId } from '../lib/data/topicAliases';
 import { fetchJson, sleep } from './lib/ingest-utils';
 import { fetchApprovedMediaStatementsForMember } from './lib/approvedMediaQuotes';
@@ -711,7 +712,10 @@ async function processCrecGranule(
     const topicId = mapCrecTextToTopic(excerpt) ?? mapCrecTextToTopic(result.title ?? '');
     if (!topicId) return { entry: null, htmlFetched: true, skippedProcedural: false };
 
-    const date = (result.dateIssued ?? new Date().toISOString().slice(0, 10)).slice(0, 10);
+    // A verbatim official CREC statement must have a real granule date — never fall back to
+    // today's date, which would fabricate a publication date for the record.
+    if (!result.dateIssued) return { entry: null, htmlFetched: true, skippedProcedural: false };
+    const date = result.dateIssued.slice(0, 10);
     const url = `https://www.govinfo.gov/app/details/${result.granuleId}`;
 
     return {
@@ -779,7 +783,13 @@ function extractCrecSpeechExcerpt(plainText: string, leg: LegislatorRow): string
   if (!match || match.index === undefined) return null;
 
   let excerpt = plainText.slice(match.index);
-  const nextSpeaker = excerpt.slice(40).search(/\bMr\.|Ms\.|Mrs\.|The PRESID|The SPEAK/i);
+  // Real CREC speaker transitions are honorific + ALL-CAPS surname immediately followed by
+  // "." or "," (e.g. "Mr. SANDERS.") or a chamber-officer interjection. Title-case forms like
+  // "Mr. President" (a member addressing the chair mid-speech) must NOT be treated as a
+  // transition — matching them wrongly truncated members' own speech after their first
+  // "Mr. President".
+  const nextSpeakerRe = /\b(?:Mr|Ms|Mrs)\.\s+[A-Z][A-Z'\-]+(?=[.,])|The PRESIDING OFFICER|The SPEAKER\b/;
+  const nextSpeaker = excerpt.slice(40).search(nextSpeakerRe);
   if (nextSpeaker > 80) {
     excerpt = excerpt.slice(0, 40 + nextSpeaker);
   }
@@ -788,7 +798,7 @@ function extractCrecSpeechExcerpt(plainText: string, leg: LegislatorRow): string
   if (excerpt.length < 80) return null;
   if (isProceduralCrecText(excerpt)) return null;
   if (!opener.test(excerpt)) return null;
-  return excerpt.slice(0, 600);
+  return truncateAtSentenceBoundary(excerpt, 900).slice(0, 900);
 }
 
 function earliestStatementDate(statements: TopicStatementEntry[]): string | null {

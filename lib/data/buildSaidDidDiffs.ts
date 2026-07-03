@@ -152,7 +152,11 @@ function pickSaidForLink(
       outlet: topicData.statedPositionSource?.source ?? 'VoteSmart',
       url: topicData.statedPositionSource?.url ?? '',
       tier: 'nonpartisan',
-      date: link.statedPositionDate ?? topicData.platformPositions?.[0]?.asOf ?? 'Date not recorded',
+      // `pos.asOf`/scrape asOf dates are NOT the true statement date — using them here would
+      // produce a fabricated gap against the vote date. Only a genuine statedPositionDate
+      // counts; otherwise the Said side must show "Date not recorded" (gapDaysBetween
+      // already returns null for a non-parseable date).
+      date: link.statedPositionDate ?? 'Date not recorded',
       verbatim: true,
     };
   }
@@ -168,7 +172,7 @@ function pickSaidForLink(
         outlet: pos.source,
         url: pos.url,
         tier: 'nonpartisan',
-        date: link.statedPositionDate ?? pos.asOf,
+        date: link.statedPositionDate ?? 'Date not recorded',
         verbatim: true,
       };
     }

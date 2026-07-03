@@ -5,105 +5,22 @@
       "platformPositions": []
     },
     "healthcare": {
-      "platformPositions": [
-        {
-          "text": "Voted Nay on:  An amendment to repeal the requirements for individuals to enroll in health insurance and for employers to offer it—\"Skinny bill\" (S Amdt 667 to S Amdt 267 to HR 1628 the American Health Care Act of 2017)",
-          "source": "Ballotpedia",
-          "url": "https://ballotpedia.org/Bernard_Sanders",
-          "tier": "nonpartisan",
-          "asOf": "2026-07-01"
-        },
-        {
-          "text": "Voted Nay on:  An amendment to repeal the ACA, including Paul amendment (No. 271) (S Amdt 271 to S Amdt 267 to HR 1628)",
-          "source": "Ballotpedia",
-          "url": "https://ballotpedia.org/Bernard_Sanders",
-          "tier": "nonpartisan",
-          "asOf": "2026-07-01"
-        },
-        {
-          "text": "Voted Nay on:  Motion to begin debate on the American Health Care Act of 2017 (HR 1628)",
-          "source": "Ballotpedia",
-          "url": "https://ballotpedia.org/Bernard_Sanders",
-          "tier": "nonpartisan",
-          "asOf": "2026-07-01"
-        }
-      ]
+      "platformPositions": []
     },
     "climate": {
-      "platformPositions": [
-        {
-          "text": "Voted Yea on:  \"Energy and Water, Legislative Branch, and Military Construction and Veterans Affairs Appropriations Act, 2019\" (HR 5895)",
-          "source": "Ballotpedia",
-          "url": "https://ballotpedia.org/Bernard_Sanders",
-          "tier": "nonpartisan",
-          "asOf": "2026-07-01"
-        }
-      ]
+      "platformPositions": []
     },
     "defense-veterans": {
-      "platformPositions": [
-        {
-          "text": "Voted Nay on:  \"Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019\" (HR 6157)",
-          "source": "Ballotpedia",
-          "url": "https://ballotpedia.org/Bernard_Sanders",
-          "tier": "nonpartisan",
-          "asOf": "2026-07-01"
-        },
-        {
-          "text": "Voted Yea on:  \"Energy and Water, Legislative Branch, and Military Construction and Veterans Affairs Appropriations Act, 2019\" (HR 5895)",
-          "source": "Ballotpedia",
-          "url": "https://ballotpedia.org/Bernard_Sanders",
-          "tier": "nonpartisan",
-          "asOf": "2026-07-01"
-        },
-        {
-          "text": "Voted Yea on:  \"A joint resolution to direct the removal of United States Armed Forces from hostilities in the Republic of Yemen that have not been authorized by Congress.\" (SJ Res 54)",
-          "source": "Ballotpedia",
-          "url": "https://ballotpedia.org/Bernard_Sanders",
-          "tier": "nonpartisan",
-          "asOf": "2026-07-01"
-        }
-      ]
+      "platformPositions": []
     },
     "education": {
-      "platformPositions": [
-        {
-          "text": "Voted Nay on:  \"Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019\" (HR 6157)",
-          "source": "Ballotpedia",
-          "url": "https://ballotpedia.org/Bernard_Sanders",
-          "tier": "nonpartisan",
-          "asOf": "2026-07-01"
-        }
-      ]
+      "platformPositions": []
     },
     "civil-liberties": {
-      "platformPositions": [
-        {
-          "text": "Voted Nay on:  \"Brett M. Kavanaugh, of Maryland, to be an Associate Justice of the Supreme Court of the United States\" (PN2259)",
-          "source": "Ballotpedia",
-          "url": "https://ballotpedia.org/Bernard_Sanders",
-          "tier": "nonpartisan",
-          "asOf": "2026-07-01"
-        }
-      ]
+      "platformPositions": []
     },
     "economy-taxes": {
-      "platformPositions": [
-        {
-          "text": "Voted Nay on:  \"Department of Defense and Labor, Health and Human Services, and Education Appropriations Act, 2019\" (HR 6157)",
-          "source": "Ballotpedia",
-          "url": "https://ballotpedia.org/Bernard_Sanders",
-          "tier": "nonpartisan",
-          "asOf": "2026-07-01"
-        },
-        {
-          "text": "Voted Yea on:  \"Energy and Water, Legislative Branch, and Military Construction and Veterans Affairs Appropriations Act, 2019\" (HR 5895)",
-          "source": "Ballotpedia",
-          "url": "https://ballotpedia.org/Bernard_Sanders",
-          "tier": "nonpartisan",
-          "asOf": "2026-07-01"
-        }
-      ]
+      "platformPositions": []
     }
   }
 }

@@ -94,14 +94,18 @@ export const RECORD_TOPIC_BUCKETS: TopicBucketDef[] = [
     label: 'Defense & Veterans',
     keywords: [
       'defense', 'military', 'armed forces', 'war powers', 'nato', 'ukraine', 'israel', 'iran', 'china',
-      'taiwan', 'foreign aid', 'pentagon', 'troops', 'hostilities', 'national security', 'veteran',
+      'taiwan', 'foreign aid', 'pentagon', 'troops', 'hostilities', 'veteran',
       'veterans', 'gi bill', 'va benefits', 'tricare', 'military family', 'service member',
     ],
   },
   {
     id: 'education',
     label: 'Education',
-    keywords: ['education', 'school', 'student', 'teacher', 'university', 'college', 'tuition', 'loan', 'curriculum', 'child care', 'head start'],
+    keywords: [
+      'education', 'student loan', 'public school', 'higher education', 'community college',
+      'k-12', 'teacher', 'tuition', 'curriculum', 'child care', 'head start', 'title i',
+      'pell grant', 'school district', 'school choice',
+    ],
   },
   {
     id: 'civil-liberties',
@@ -119,6 +123,9 @@ export const RECORD_TOPIC_BUCKETS: TopicBucketDef[] = [
       'budget', 'appropriat', 'fiscal', 'debt', 'spending', 'inflation', 'jobs', 'wage', 'trade',
       'tariff', 'tax', 'revenue', 'deficit', 'commerce', 'housing', 'rent', 'mortgage', 'homeless',
       'affordable housing', 'zoning', 'eviction', 'hud', 'antitrust', 'monopoly', 'corporate power',
+      'home price', 'home ownership', 'homeownership', 'home buyer', 'first-time home buyer',
+      'file taxes', 'filing taxes', 'tax filing', 'tax day', 'file their taxes', 'pay their taxes',
+      'irs', 'spending bill', 'omnibus',
     ],
   },
   {
@@ -193,17 +200,28 @@ export function recordKeywordMatches(hay: string, keyword: string): boolean {
   return new RegExp(`\\b${escaped}\\b`).test(hay);
 }
 
+/**
+ * A bucket only counts as a real match when it has either one multi-word phrase hit
+ * (precise) or 2+ distinct single-word hits (reduces bare-word false positives, e.g.
+ * "University of Kentucky" alone must not classify unrelated text as `education`).
+ */
 function scoreTopicBuckets(hay: string): Map<string, number> {
   const scores = new Map<string, number>();
   for (const bucket of RECORD_TOPIC_BUCKETS) {
     if (bucket.id === 'legislation') continue;
     let score = 0;
+    let phraseHits = 0;
+    let singleWordHits = 0;
     for (const keyword of bucket.keywords) {
       if (recordKeywordMatches(hay, keyword)) {
         score += keyword.trim().length;
+        if (/\s/.test(keyword.trim())) phraseHits += 1;
+        else singleWordHits += 1;
       }
     }
-    if (score > 0) scores.set(bucket.id, score);
+    if (score > 0 && (phraseHits >= 1 || singleWordHits >= 2)) {
+      scores.set(bucket.id, score);
+    }
   }
   return scores;
 }

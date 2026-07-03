@@ -1,16 +1,25 @@
 {
   "bioguideId": "O000172",
   "byTopic": {
-    "healthcare": {
+    "legislation": {
       "statements": [
         {
-          "title": "Ms. OCASIO-CORTEZ. Mr. Speaker, President Trump issued some statements throughout this process saying, urging, and insisting that this bill does not cut Medicaid. He has also said some things. He says he doesn't think I am too much of a smart person. I will tell you one thing. It doesn't take a smart person to know if you are being lied to. President Trump, you are either being lied to or you are lying to the American people because this bill represents, in the text of this bill, the largest and greatest loss of healthcare in American history. Seventeen million Americans will lose their health",
+          "title": "Ms. OCASIO-CORTEZ. Mr. Speaker, President Trump issued some statements throughout this process saying, urging, and insisting that this bill does not cut Medicaid. He has also said some things. He says he doesn't think I am too much of a smart person. I will tell you one thing. It doesn't take a smart person to know if you are being lied to. President Trump, you are either being lied to or you are lying to the American people because this bill represents, in the text of this bill, the largest and greatest loss of healthcare in American history.",
           "date": "2025-07-02",
           "url": "https://www.govinfo.gov/app/details/CREC-2025-07-02-pt1-PgH3039-8",
           "tier": "official",
-          "topicId": "healthcare",
+          "topicId": "legislation",
           "verbatim": true,
-          "displayText": "President Trump issued some statements throughout this process saying, urging, and insisting that this bill does not cut Medicaid. He has also said some things. He says he doesn't think I am too much of a smart person. I will tell you one thing. It doesn't take a smart person to know if you are being lied to. President Trump, you are either being lied to or you are lying to the American people because this bill represents, in the text of this bill, the largest and greatest loss of healthcare in American history. Seventeen million Americans will lose their health"
+          "displayText": "President Trump issued some statements throughout this process saying, urging, and insisting that this bill does not cut Medicaid. He has also said some things. He says he doesn't think I am too much of a smart person. I will tell you one thing. It doesn't take a smart person to know if you are being lied to. President Trump, you are either being lied to or you are lying to the American people because this bill represents, in the text of this bill, the largest and greatest loss of healthcare in American history."
+        },
+        {
+          "title": "Ms. OCASIO-CORTEZ. Mr. Speaker, it is great. It is great that Democrats have a line of people who are willing to fight for working- class Americans from coast to coast in this country.",
+          "date": "2025-11-12",
+          "url": "https://www.govinfo.gov/app/details/CREC-2025-11-12-pt1-PgH4595-3",
+          "tier": "official",
+          "topicId": "legislation",
+          "verbatim": true,
+          "displayText": "it is great. It is great that Democrats have a line of people who are willing to fight for working- class Americans from coast to coast in this country."
         }
       ]
     },
@@ -23,33 +32,21 @@
           "tier": "media",
           "topicId": "climate",
           "outlet": "NPR",
-          "verbatim": true
+          "verbatim": true,
+          "displayText": "In order for us to combat that threat we must be as ambitious and innovative in our solution as possible."
         }
       ]
     },
     "defense-veterans": {
       "statements": [
         {
-          "title": "Ms. OCASIO-CORTEZ. Mr. Speaker, in February, the Trump administration, in conjunction with the Israeli Government, launched an illegal and disastrous war in Iran. They provided no rationale to the American people. They sought no legal authority from Congress, and they have since descended our world and our global economy into chaos. That was just the beginning. Now, President Trump has threatened to use the United States military to carry out acts of genocide against the Iranian people, who are innocent civilians. Up until today, he has done this on his own as a rogue actor. Yet, today, we vot",
+          "title": "Ms. OCASIO-CORTEZ. Mr. Speaker, in February, the Trump administration, in conjunction with the Israeli Government, launched an illegal and disastrous war in Iran. They provided no rationale to the American people. They sought no legal authority from Congress, and they have since descended our world and our global economy into chaos. That was just the beginning. Now, President Trump has threatened to use the United States military to carry out acts of genocide against the Iranian people, who are innocent civilians. Up until today, he has done this on his own as a rogue actor.",
           "date": "2026-04-16",
           "url": "https://www.govinfo.gov/app/details/CREC-2026-04-16-pt1-PgH2929-2",
           "tier": "official",
           "topicId": "defense-veterans",
           "verbatim": true,
-          "displayText": "in February, the Trump administration, in conjunction with the Israeli Government, launched an illegal and disastrous war in Iran. They provided no rationale to the American people. They sought no legal authority from Congress, and they have since descended our world and our global economy into chaos. That was just the beginning. Now, President Trump has threatened to use the United States military to carry out acts of genocide against the Iranian people, who are innocent civilians. Up until today, he has done this on his own as a rogue actor. Yet, today, we vot"
-        }
-      ]
-    },
-    "legislation": {
-      "statements": [
-        {
-          "title": "Ms. OCASIO-CORTEZ. Mr. Speaker, it is great. It is great that Democrats have a line of people who are willing to fight for working- class Americans from coast to coast in this country.",
-          "date": "2025-11-12",
-          "url": "https://www.govinfo.gov/app/details/CREC-2025-11-12-pt1-PgH4595-3",
-          "tier": "official",
-          "topicId": "legislation",
-          "verbatim": true,
-          "displayText": "it is great. It is great that Democrats have a line of people who are willing to fight for working- class Americans from coast to coast in this country."
+          "displayText": "in February, the Trump administration, in conjunction with the Israeli Government, launched an illegal and disastrous war in Iran. They provided no rationale to the American people. They sought no legal authority from Congress, and they have since descended our world and our global economy into chaos. That was just the beginning. Now, President Trump has threatened to use the United States military to carry out acts of genocide against the Iranian people, who are innocent civilians. Up until today, he has done this on his own as a rogue actor."
         }
       ]
     }
