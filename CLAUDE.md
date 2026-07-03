@@ -41,7 +41,9 @@ Claude — decides ALL code & data questions (no ping-pong to owner),
 Cursor — executes the brief EXACTLY; makes no independent changes or assumptions
       ↓
 Claude — reviews Cursor's output for correctness against the rules; rejects & re-briefs
-         anything short of the standard; commits what passes
+         anything short of the standard; on PASS issues an explicit APPROVAL and tells
+         Cursor to commit + push the completed work (Cursor pushes; Claude commits only
+         its own review/governance artifacts)
       ↓
 Owner — reviews the visual/presentation side to confirm direction
 ```
