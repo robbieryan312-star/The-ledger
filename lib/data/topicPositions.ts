@@ -14,12 +14,23 @@ export interface PlatformPositionEntry {
   asOf: string;
 }
 
+export interface TopicStatementCorroboratingSource {
+  url: string;
+  outlet?: string;
+  date?: string;
+  tier?: SourceTier;
+}
+
 export interface TopicStatementEntry {
   title: string;
   date: string;
   url: string;
   tier: SourceTier;
   topicId: string;
+  /** Required true for tier 'media' or 'alleged' (build-gated). Official CREC floor remarks: true. */
+  verbatim?: boolean;
+  outlet?: string;
+  corroboratingSources?: TopicStatementCorroboratingSource[];
 }
 
 export interface StatedPositionSourceEntry {

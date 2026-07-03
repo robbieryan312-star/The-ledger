@@ -1,34 +1,18 @@
 {
   "bioguideId": "O000172",
   "byTopic": {
-    "abortion": {
-      "statements": []
-    },
-    "public-safety": {
-      "statements": []
-    },
-    "healthcare": {
-      "statements": []
-    },
     "climate": {
       "statements": [
         {
-          "title": "In order for us to combat that threat, we must be as ambitious and innovative as possible.",
+          "title": "In order for us to combat that threat we must be as ambitious and innovative in our solution as possible.",
           "date": "2019-02-07",
-          "url": "https://www.theatlantic.com/science/archive/2019/02/aocgreen-new-deal-new-era-millennial-climate-politics/582295/",
-          "tier": "alleged",
-          "topicId": "climate"
+          "url": "https://www.npr.org/2019/02/07/692259103/ocasio-cortez-to-unveil-ambitious-plan-to-combat-climate-change",
+          "tier": "media",
+          "topicId": "climate",
+          "outlet": "NPR",
+          "verbatim": true
         }
       ]
-    },
-    "defense-veterans": {
-      "statements": []
-    },
-    "civil-liberties": {
-      "statements": []
-    },
-    "economy-taxes": {
-      "statements": []
     }
   }
 }

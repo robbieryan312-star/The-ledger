@@ -1,4 +1,6 @@
 {
   "bioguideId": "W000817",
-  "items": []
+  "items": [],
+  "status": "fetch-blocked",
+  "note": "GDELT DOC API returned rate-limit responses after retries; news absence not verified."
 }

@@ -11,7 +11,8 @@
           "date": "2026-06-30",
           "url": "https://www.govinfo.gov/app/details/CREC-2026-06-30-pt1-PgH4345-4",
           "tier": "official",
-          "topicId": "immigration"
+          "topicId": "immigration",
+          "verbatim": true
         }
       ]
     },
@@ -25,7 +26,8 @@
           "date": "2022-05-11",
           "url": "https://thehill.com/homenews/house/3485384-here-are-the-two-republicans-who-voted-against-four-bills-related-to-the-russia-ukraine-conflict/",
           "tier": "alleged",
-          "topicId": "defense-veterans"
+          "topicId": "defense-veterans",
+          "verbatim": true
         }
       ]
     },
@@ -39,7 +41,8 @@
           "date": "2026-06-10",
           "url": "https://www.govinfo.gov/app/details/CREC-2026-06-10-pt1-PgH4079-8",
           "tier": "official",
-          "topicId": "civil-liberties"
+          "topicId": "civil-liberties",
+          "verbatim": true
         }
       ]
     },
@@ -50,7 +53,8 @@
           "date": "2025-04-10",
           "url": "https://www.politico.com/news/2025/04/10/house-gop-adopts-budget-framework-paving-the-way-for-trumps-big-beautiful-bill-00283511",
           "tier": "alleged",
-          "topicId": "economy-taxes"
+          "topicId": "economy-taxes",
+          "verbatim": true
         }
       ]
     }

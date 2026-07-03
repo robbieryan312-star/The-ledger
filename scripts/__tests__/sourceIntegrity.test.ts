@@ -10,6 +10,7 @@ import {
   SAID_DID_KNOWN_BAD_TAUTOLOGY,
   SOURCE_INTEGRITY_KNOWN_BAD_URLS,
   SOURCE_INTEGRITY_KNOWN_GOOD_URLS,
+  STATEMENT_KNOWN_BAD_NON_VERBATIM_ALLEGED,
 } from '../../lib/data/__fixtures__/sourceIntegrity.fixture';
 import {
   isArticleTypeIntegrityUrl,
@@ -20,6 +21,7 @@ import {
   isVoteRestatementSaid,
   validateProfileSources,
   validateSaidDidDiffs,
+  validateStatementsFile,
 } from '../../lib/data/sourceIntegrity';
 import { buildSaidDidDiffsFromTopicPositions } from '../../lib/data/buildSaidDidDiffs';
 import { MIGRATED_PROFILE_BIOGUIDES } from '../../lib/data/memberProfile';
@@ -65,6 +67,18 @@ test('known-bad vote-as-Said tautology is rejected', () => {
   assert.equal(isGenuineSaidDidDiff(SAID_DID_KNOWN_BAD_TAUTOLOGY), false);
   const violations = validateSaidDidDiffs([SAID_DID_KNOWN_BAD_TAUTOLOGY], 'fixture');
   assert.ok(violations.length > 0, 'expected tautology fixture to produce violations');
+});
+
+test('known-bad non-verbatim alleged statement fails statements integrity', () => {
+  const violations = validateStatementsFile(
+    {
+      byTopic: {
+        climate: { statements: [STATEMENT_KNOWN_BAD_NON_VERBATIM_ALLEGED.statement] },
+      },
+    },
+    'fixture',
+  );
+  assert.ok(violations.length > 0, 'expected non-verbatim alleged fixture to produce violations');
 });
 
 test('every migrated profile directory is present under profiles/', () => {
@@ -114,6 +128,18 @@ for (const bioguideId of MIGRATED_PROFILE_BIOGUIDES) {
       violations.length,
       0,
       `${bioguideId} source integrity violations:\n${violations.map((v) => `  ${v.path}: ${v.message}`).join('\n')}`,
+    );
+  });
+
+  test(`${bioguideId} statements pass verbatim integrity`, () => {
+    const violations = validateStatementsFile(
+      loadProfileJson(bioguideId, 'statements.json') as Parameters<typeof validateStatementsFile>[0],
+      `${bioguideId}.statements.json`,
+    );
+    assert.equal(
+      violations.length,
+      0,
+      `${bioguideId} statement verbatim violations:\n${violations.map((v) => `  ${v.path}: ${v.message}`).join('\n')}`,
     );
   });
 

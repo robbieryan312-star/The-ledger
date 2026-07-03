@@ -37,6 +37,19 @@ export const SOURCE_INTEGRITY_KNOWN_GOOD_URLS: Array<{ label: string; url: strin
   },
 ];
 
+/** Alleged/media journalism quote without verbatim:true — must fail statements integrity guard. */
+export const STATEMENT_KNOWN_BAD_NON_VERBATIM_ALLEGED = {
+  label: 'alleged tier quote with verbatim:false',
+  statement: {
+    title: 'Example alleged journalism quote presented without verbatim confirmation.',
+    date: '2020-01-01',
+    url: 'https://thehill.com/policy/example-non-verbatim-quote',
+    tier: 'alleged' as const,
+    topicId: 'climate',
+    verbatim: false,
+  },
+};
+
 /** Vote-as-Said tautology — SJ Res 54 Ballotpedia row diffed against the same vote (must reject). */
 export const SAID_DID_KNOWN_BAD_TAUTOLOGY = {
   label: 'SJ Res 54 Ballotpedia vote restated as Said',

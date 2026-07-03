@@ -250,6 +250,35 @@ export function validateNewsFile(
   return violations;
 }
 
+interface LooseStatement {
+  title?: string;
+  url?: string;
+  tier?: string;
+  date?: string;
+  verbatim?: boolean;
+}
+
+export function validateStatementsFile(
+  data: { byTopic?: Record<string, { statements?: LooseStatement[] }> },
+  fileLabel: string,
+): SourceIntegrityViolation[] {
+  const violations: SourceIntegrityViolation[] = [];
+  for (const [topicId, topic] of Object.entries(data.byTopic ?? {})) {
+    for (const [idx, stmt] of (topic.statements ?? []).entries()) {
+      const label = `${fileLabel}.byTopic.${topicId}.statements[${idx}]`;
+      if (stmt.tier === 'media' || stmt.tier === 'alleged') {
+        pushIf(
+          violations,
+          label,
+          stmt.verbatim !== true,
+          `${stmt.tier} tier statement requires verbatim:true`,
+        );
+      }
+    }
+  }
+  return violations;
+}
+
 export function validateProfileSources(files: {
   endorsements: unknown;
   controversies: unknown;

@@ -1,32 +1,6 @@
 {
   "bioguideId": "C001098",
-  "byTopic": {
-    "healthcare": {
-      "statements": []
-    },
-    "immigration": {
-      "statements": []
-    },
-    "defense": {
-      "statements": []
-    },
-    "economy": {
-      "statements": []
-    },
-    "environment": {
-      "statements": []
-    },
-    "education": {
-      "statements": []
-    },
-    "crime": {
-      "statements": []
-    },
-    "civil": {
-      "statements": []
-    },
-    "judiciary": {
-      "statements": []
-    }
-  }
+  "byTopic": {},
+  "status": "none-in-range",
+  "note": "GovInfo CREC search completed for the 119th Congress window; no verbatim floor-remark granules passed procedural filter."
 }

@@ -1,20 +1,23 @@
 {
   "bioguideId": "M000355",
   "byTopic": {
-    "healthcare": {
-      "statements": []
-    },
-    "climate": {
-      "statements": []
-    },
     "defense-veterans": {
       "statements": [
         {
-          "title": "Continuing our support for Ukraine is morally right, but it is not only that. It is also a direct investment in cold, hard, American interests.",
-          "date": "2022-12-21",
-          "url": "https://apnews.com/article/putin-zelenskyy-washington-4d5fc23be5518e689fbbcac334769d59",
-          "tier": "alleged",
-          "topicId": "defense-veterans"
+          "title": "It is not an act of charity for the United States and our NATO allies to help supply the Ukrainian people's self-defense. It is a direct investment in our own core national interests.",
+          "date": "2023-02-24",
+          "url": "https://www.republicanleader.senate.gov/newsroom/press-releases/mcconnell-on-one-year-anniversary-of-ukraine-escalation",
+          "tier": "official",
+          "topicId": "defense-veterans",
+          "verbatim": true,
+          "corroboratingSources": [
+            {
+              "url": "https://thehill.com/homenews/senate/3873707-mcconnell-calls-ukraine-aid-a-direct-investment-for-us-against-putins-war-machine/",
+              "outlet": "The Hill",
+              "date": "2023-02-24",
+              "tier": "media"
+            }
+          ]
         }
       ]
     }

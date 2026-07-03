@@ -8,7 +8,8 @@
           "date": "2026-06-22",
           "url": "https://www.govinfo.gov/app/details/CREC-2026-06-22-pt1-PgS3025-4",
           "tier": "official",
-          "topicId": "technology"
+          "topicId": "technology",
+          "verbatim": true
         }
       ]
     },
@@ -19,7 +20,8 @@
           "date": "2019-04-10",
           "url": "https://www.washingtonpost.com/politics/bernie-sanders-set-to-unveil-new-medicare-for-all-legislation-a-key-component-of-his-2020-presidential-bid/2019/04/10/dc625de8-5b7a-11e9-842d-7d3ed7eb3957_story.html",
           "tier": "alleged",
-          "topicId": "healthcare"
+          "topicId": "healthcare",
+          "verbatim": true
         }
       ]
     },
@@ -36,7 +38,8 @@
           "date": "2026-06-24",
           "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3189-3",
           "tier": "official",
-          "topicId": "education"
+          "topicId": "education",
+          "verbatim": true
         }
       ]
     },

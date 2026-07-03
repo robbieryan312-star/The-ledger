@@ -60,6 +60,17 @@ interface SaidSource {
   verbatim: boolean;
 }
 
+function officialOutletLabel(url: string): string {
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, '');
+    if (host.includes('govinfo.gov')) return 'Congressional Record (GovInfo)';
+    if (host.includes('republicanleader.senate.gov')) return 'Senate Republican Leader';
+  } catch {
+    /* fall through */
+  }
+  return 'Official record';
+}
+
 function pickSaidForLink(
   topicId: string,
   topicData: TopicPositionData,
@@ -69,12 +80,13 @@ function pickSaidForLink(
     (s) =>
       s.topicId === topicId &&
       s.tier === 'media' &&
+      s.verbatim === true &&
       (statementMatchesVote(s.title, link, topicId) || textMatchesTopic(s.title, topicId)),
   );
   if (mediaStatement) {
     return {
       quote: mediaStatement.title,
-      outlet: 'Journalism',
+      outlet: mediaStatement.outlet ?? 'Journalism',
       url: mediaStatement.url,
       tier: 'media',
       date: mediaStatement.date,
@@ -86,16 +98,19 @@ function pickSaidForLink(
     (s) =>
       s.topicId === topicId &&
       s.tier === 'alleged' &&
+      s.verbatim === true &&
       (statementMatchesVote(s.title, link, topicId) || textMatchesTopic(s.title, topicId)),
   );
   if (allegedStatement) {
-    let outlet = 'Journalism';
-    try {
-      const host = new URL(allegedStatement.url).hostname.replace(/^www\./, '');
-      if (host.includes('washingtonpost')) outlet = 'Washington Post';
-      else if (host.includes('nytimes')) outlet = 'New York Times';
-    } catch {
-      /* keep generic */
+    let outlet = allegedStatement.outlet ?? 'Journalism';
+    if (!allegedStatement.outlet) {
+      try {
+        const host = new URL(allegedStatement.url).hostname.replace(/^www\./, '');
+        if (host.includes('washingtonpost')) outlet = 'Washington Post';
+        else if (host.includes('nytimes')) outlet = 'New York Times';
+      } catch {
+        /* keep generic */
+      }
     }
     return {
       quote: allegedStatement.title,
@@ -113,11 +128,11 @@ function pickSaidForLink(
   if (officialStatement) {
     return {
       quote: officialStatement.title,
-      outlet: 'Congressional Record (GovInfo)',
+      outlet: officialStatement.outlet ?? officialOutletLabel(officialStatement.url),
       url: officialStatement.url,
       tier: 'official',
       date: officialStatement.date,
-      verbatim: true,
+      verbatim: officialStatement.verbatim ?? true,
     };
   }
 
@@ -127,11 +142,11 @@ function pickSaidForLink(
   if (officialStatementLoose) {
     return {
       quote: officialStatementLoose.title,
-      outlet: 'Congressional Record (GovInfo)',
+      outlet: officialStatementLoose.outlet ?? officialOutletLabel(officialStatementLoose.url),
       url: officialStatementLoose.url,
       tier: 'official',
       date: officialStatementLoose.date,
-      verbatim: true,
+      verbatim: officialStatementLoose.verbatim ?? true,
     };
   }
 

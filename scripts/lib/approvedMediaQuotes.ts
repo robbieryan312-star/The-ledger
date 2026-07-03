@@ -74,30 +74,6 @@ export const VERIFIED_MEDIA_QUOTES_BY_BIOGUIDE: Record<string, CuratedMediaQuote
   M000355: [
     {
       quote:
-        'It is not an act of charity for the United States and our NATO allies to help supply the Ukrainian people’s self-defense. It is a direct investment in our own core national interests.',
-      topicId: 'defense-veterans',
-      sources: [
-        {
-          outlet: 'The Hill',
-          url: 'https://thehill.com/homenews/senate/3873707-mcconnell-calls-ukraine-aid-a-direct-investment-for-us-against-putins-war-machine/',
-          date: '2023-02-24',
-        },
-      ],
-    },
-    {
-      quote:
-        'Continuing our support for Ukraine is morally right, but it is not only that. It is also a direct investment in cold, hard, American interests.',
-      topicId: 'defense-veterans',
-      sources: [
-        {
-          outlet: 'Associated Press',
-          url: 'https://apnews.com/article/putin-zelenskyy-washington-4d5fc23be5518e689fbbcac334769d59',
-          date: '2022-12-21',
-        },
-      ],
-    },
-    {
-      quote:
         'Let me be clear: this assistance means more jobs for American workers and newer weapons for American service members.',
       topicId: 'defense-veterans',
       sources: [
@@ -112,15 +88,12 @@ export const VERIFIED_MEDIA_QUOTES_BY_BIOGUIDE: Record<string, CuratedMediaQuote
   O000172: [
     {
       quote:
-        'In order for us to combat that threat, we must be as ambitious and innovative as possible.',
+        'In order for us to combat that threat we must be as ambitious and innovative in our solution as possible.',
       topicId: 'climate',
-      // Single verifiable source. The previously listed PBS NewsHour URL does not contain
-      // this verbatim quote (checked live + 2019-02-07 wayback), so it is not independent
-      // corroboration; keeping it caused a false 'media' upgrade. Atlantic alone → 'alleged'.
       sources: [
         {
-          outlet: 'The Atlantic',
-          url: 'https://www.theatlantic.com/science/archive/2019/02/aocgreen-new-deal-new-era-millennial-climate-politics/582295/',
+          outlet: 'NPR',
+          url: 'https://www.npr.org/2019/02/07/692259103/ocasio-cortez-to-unveil-ambitious-plan-to-combat-climate-change',
           date: '2019-02-07',
         },
       ],
@@ -317,6 +290,8 @@ export async function fetchApprovedMediaStatementsForMember(
     url: string;
     tier: SourceTier;
     topicId: string;
+    verbatim: boolean;
+    outlet?: string;
   }>
 > {
   const entries = VERIFIED_MEDIA_QUOTES_BY_BIOGUIDE[bioguideId];
@@ -328,6 +303,8 @@ export async function fetchApprovedMediaStatementsForMember(
     url: string;
     tier: SourceTier;
     topicId: string;
+    verbatim: boolean;
+    outlet?: string;
   }> = [];
 
   for (const entry of entries) {
@@ -340,6 +317,8 @@ export async function fetchApprovedMediaStatementsForMember(
       url: primary.url,
       tier: verified.tier,
       topicId: entry.topicId,
+      verbatim: true,
+      outlet: primary.outlet,
     });
   }
 

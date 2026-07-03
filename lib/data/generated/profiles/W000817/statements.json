@@ -1,9 +1,6 @@
 {
   "bioguideId": "W000817",
   "byTopic": {
-    "healthcare": {
-      "statements": []
-    },
     "immigration": {
       "statements": [
         {
@@ -11,24 +8,10 @@
           "date": "2026-06-22",
           "url": "https://www.govinfo.gov/app/details/CREC-2026-06-22-pt1-PgS2982",
           "tier": "official",
-          "topicId": "immigration"
+          "topicId": "immigration",
+          "verbatim": true
         }
       ]
-    },
-    "climate": {
-      "statements": []
-    },
-    "defense-veterans": {
-      "statements": []
-    },
-    "education": {
-      "statements": []
-    },
-    "civil-liberties": {
-      "statements": []
-    },
-    "economy-taxes": {
-      "statements": []
     }
   }
 }
