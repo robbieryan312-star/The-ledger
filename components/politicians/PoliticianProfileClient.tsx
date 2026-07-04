@@ -859,7 +859,7 @@ export default function PoliticianProfileClient({
                   </div>
                   {fecEntry && (
                     <p className="text-[10px] text-gray-600 pt-2 border-t border-white/[0.06]">
-                      Individual &amp; PAC contributions from OpenFEC (Tier 1), {fecEntry.electionYear} cycle
+                      Individual &amp; PAC contributions from OpenFEC (official), {fecEntry.electionYear} cycle
                       {fecEntry.coverageEnd ? `, coverage through ${fecEntry.coverageEnd}` : ''}. Checked {fecEntry.asOf}.
                     </p>
                   )}

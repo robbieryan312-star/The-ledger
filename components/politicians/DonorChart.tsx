@@ -155,7 +155,7 @@ export default function DonorChart({
           </div>
           {hasFecTotals && (
             <p className="text-gray-600 text-[10px] mt-2 pt-2 border-t border-[#1e3a5f]">
-              Category totals from OpenFEC (Tier 1){fecEntry.coverageEnd ? `, coverage through ${fecEntry.coverageEnd}` : ''}. Checked {fecEntry.asOf}.
+              Category totals from OpenFEC (official){fecEntry.coverageEnd ? `, coverage through ${fecEntry.coverageEnd}` : ''}. Checked {fecEntry.asOf}.
             </p>
           )}
         </div>

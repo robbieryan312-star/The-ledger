@@ -418,8 +418,8 @@ function LegislationContent() {
       <div className="mt-6 flex items-start gap-2 text-xs bg-[#0d1f35] rounded-lg p-3 border border-[#1e3a5f]">
         <Info className="h-4 w-4 flex-shrink-0 mt-0.5 text-gray-500" />
         <p className="text-gray-400 leading-relaxed">
-          Bill status and sponsor data via GovTrack.us (Tier 2, nonpartisan); each row links to the official Congress.gov
-          record (Tier 1). Snapshot as of {meta.asOf}. Sorted by most recent legislative action by default.
+          Bill status and sponsor data via GovTrack.us (nonpartisan); each row links to the official Congress.gov
+          record (official). Snapshot as of {meta.asOf}. Sorted by most recent legislative action by default.
         </p>
       </div>
 

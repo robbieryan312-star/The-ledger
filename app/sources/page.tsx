@@ -158,7 +158,7 @@ export default function SourcesPage() {
       ))}
 
       <p className="text-white/30 text-xs mt-8 border-t border-white/[0.06] pt-4">
-        Low-trust (Tier 3) sources are flagged and should be corroborated with official records. Sources marked
+        Lower-trust (Media-tier) sources are flagged and should be corroborated with official records. Sources marked
         “No verified record available” are awaiting an API key or a machine-readable feed.{' '}
         <Link href="/" className="text-[#c8a951]/70 hover:text-[#c8a951]">Back to the map</Link>.
       </p>

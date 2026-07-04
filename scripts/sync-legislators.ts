@@ -73,7 +73,7 @@ function normalizeParty(p?: string): string {
 
 async function main(): Promise<void> {
   console.log(`Fetching ${DATASET_URL} ...`);
-  const res = await fetch(DATASET_URL);
+  const res = await fetch(DATASET_URL, { signal: AbortSignal.timeout(30_000) });
   if (!res.ok) {
     throw new Error(`Fetch failed: HTTP ${res.status} ${res.statusText}`);
   }

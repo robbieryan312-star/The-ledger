@@ -11,7 +11,7 @@ import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Source, SourceTier } from '../lib/types';
-import { RECORD_TOPIC_BUCKETS } from '../lib/data/profileRecordByTopic';
+import { RECORD_TOPIC_BUCKETS, classifyTextToRecordTopicId } from '../lib/data/profileRecordByTopic';
 import { loadEnvLocal, sleep } from './lib/ingest-utils';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -284,22 +284,13 @@ function congressBillPublicUrl(bill: CongressBillRaw, bioguideId: string): strin
   return `https://www.congress.gov/members/${bioguideId}`;
 }
 
-function classifyTopicId(title: string): string {
-  const hay = title.toLowerCase();
-  for (const bucket of RECORD_TOPIC_BUCKETS) {
-    if (bucket.id === 'legislation') continue;
-    if (bucket.keywords.some((k) => hay.includes(k))) return bucket.id;
-  }
-  return 'legislation';
-}
-
 function mapBill(bill: CongressBillRaw, bioguideId: string, role?: 'cosponsor'): MemberDeepBill | null {
   const title = bill.title?.trim();
   if (!title) return null;
 
   const billNumber = (bill.number ?? bill.amendmentNumber ?? '').trim();
   return {
-    topicId: classifyTopicId(title),
+    topicId: classifyTextToRecordTopicId(title),
     title,
     billNumber,
     type: bill.type,

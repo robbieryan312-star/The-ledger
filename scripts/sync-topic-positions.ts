@@ -631,7 +631,7 @@ function buildSaidDidLinks(
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, MAX_SAID_DID_LINKS);
 
-  return filtered.map((vote) => ({
+  return selected.map((vote) => ({
     topicId,
     statedPositionDate,
     voteDate: vote.date,

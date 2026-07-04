@@ -34,7 +34,7 @@ const TIER_CONFIG: Record<SourceTier, {
     border: 'border-gray-400/20',
   },
   alleged: {
-    label: 'Unverified',
+    label: 'Alleged',
     icon: AlertTriangle,
     color: 'text-orange-400',
     bg: 'bg-orange-400/10',
