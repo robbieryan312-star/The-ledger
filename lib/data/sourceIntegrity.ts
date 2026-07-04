@@ -37,7 +37,15 @@ export function isFetchVerifiableUrl(url: string): boolean {
 
 /** Said side must not restate a roll-call vote (Ballotpedia "Voted Yea/Nay on…" rows). */
 export function isVoteRestatementSaid(text: string): boolean {
-  return /^Voted\s+(Yea|Nay)\s+on\b/i.test(text.trim());
+  const t = text.trim();
+  return /^(Voted\s+(Yea|Nay)\s+on|On\s+\w+\s+\d{1,2},\s+\d{4},\s+the\b.{0,40}\b(Senate|House)\b|The\s+Senate\s+voted|The\s+House\s+voted|Did\s+not\s+vote\s+on)/i.test(t);
+}
+
+/** Third-party characterization — a journalist's or organization's assessment about the member, not the member's own stated position. */
+export function isThirdPartyCharacterization(text: string): boolean {
+  const t = text.trim();
+  return /has\s+arguably\s+been|is\s+(widely|often|generally)\s+(considered|regarded|seen)/i.test(t)
+    || /^[\u201c"]\s*[A-Z][^"]*[\u201d"]\s*[\u2013\u2014–—-]\s*(NRA|AFP|Heritage|NARAL|Planned Parenthood|Sierra Club|Chamber)/i.test(t);
 }
 
 export interface SaidDidDiffLike {
@@ -463,6 +471,7 @@ export function validatePlatformPositionsFile(
       const label = `${fileLabel}.byTopic.${topicId}.platformPositions[${idx}]`;
       const text = pos.text ?? '';
       pushIf(violations, label, isVoteRestatementSaid(text), 'vote-restatement text presented as a stated position');
+      pushIf(violations, label, isThirdPartyCharacterization(text), 'third-party characterization presented as member stated position');
       pushIf(violations, label, hasUndecodedHtmlEntity(text), 'undecoded HTML entity in platform position text');
       const canonicalTopicId = normalizeTopicId(topicId);
       if (text.trim().length > 0 && canonicalTopicId !== 'legislation') {

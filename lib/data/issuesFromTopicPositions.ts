@@ -12,7 +12,7 @@ import { normalizeTopicId } from './topicAliases';
 import { isCeremonialCrecRemark } from './ceremonialCrecFilter';
 import { statementDisplayText } from './crecDisplayText';
 import { leadSummary } from './displaySummary';
-import { isVoteRestatementSaid } from './sourceIntegrity';
+import { isThirdPartyCharacterization, isVoteRestatementSaid } from './sourceIntegrity';
 
 function isPolicyStatement(st: TopicStatementEntry): boolean {
   return !isCeremonialCrecRemark(st.title);
@@ -44,7 +44,7 @@ function buildEvidence(topicId: string, data: TopicPositionData): EvidenceItem[]
   }
 
   for (const p of data.platformPositions?.slice(0, 2) ?? []) {
-    if (isVoteRestatementSaid(p.text)) continue;
+    if (isVoteRestatementSaid(p.text) || isThirdPartyCharacterization(p.text)) continue;
     items.push({
       type: 'statement',
       description: leadSummary(p.text, 160),
@@ -95,7 +95,7 @@ export function buildIssuesFromTopicPositions(bioguideId: string): Issue[] {
     if (!policyDef) continue;
 
     const cleanPlatformPositions = (data.platformPositions ?? []).filter(
-      (p) => !isVoteRestatementSaid(p.text),
+      (p) => !isVoteRestatementSaid(p.text) && !isThirdPartyCharacterization(p.text),
     );
     const hasContent =
       cleanPlatformPositions.length > 0 ||

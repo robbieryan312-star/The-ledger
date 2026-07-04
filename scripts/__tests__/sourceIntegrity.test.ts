@@ -23,6 +23,7 @@ import {
   isFetchVerifiableUrl,
   isGenuineSaidDidDiff,
   isPlaceholderUrl,
+  isThirdPartyCharacterization,
   isVoteRestatementSaid,
   normalizeUrlForDedupe,
   saidDidSubjectsOverlap,
@@ -76,6 +77,22 @@ test('known-bad vote-as-Said tautology is rejected', () => {
   assert.equal(isGenuineSaidDidDiff(SAID_DID_KNOWN_BAD_TAUTOLOGY), false);
   const violations = validateSaidDidDiffs([SAID_DID_KNOWN_BAD_TAUTOLOGY], 'fixture');
   assert.ok(violations.length > 0, 'expected tautology fixture to produce violations');
+});
+
+test('broadened vote-narration patterns are caught by isVoteRestatementSaid', () => {
+  assert.equal(isVoteRestatementSaid('Did not vote on:  "Department of Defense..." (HR 6157)'), true);
+  assert.equal(isVoteRestatementSaid('On October 20, 2015, the Senate voted against proceeding to a vote on S 2146'), true);
+  assert.equal(isVoteRestatementSaid('On January 16, 2014, the Democratic-controlled Senate approved H.R. 3547'), true);
+  assert.equal(isVoteRestatementSaid('On November 10, 2015, the Senate passed S 1356 - the National Defense Authorization Act'), true);
+  assert.equal(isVoteRestatementSaid('The Senate voted 72-26 for the 1,582 page bill'), true);
+  assert.equal(isVoteRestatementSaid('Introduced measure to provide necessary funding for Israel'), false);
+});
+
+test('third-party characterizations are detected', () => {
+  assert.equal(isThirdPartyCharacterization('"Cruz has arguably been Israel\u2019s most avid defender in the Senate."'), true);
+  assert.equal(isThirdPartyCharacterization('\u201cTed Cruz is one of our nation\u2019s leading defenders...\u201d \u2013 NRA executive Vice President Wayne LaPierre'), true);
+  assert.equal(isThirdPartyCharacterization('Successfully defended the constitutionality of the Texas Ten Commandments monument'), false);
+  assert.equal(isThirdPartyCharacterization('Introduced measure to provide necessary funding for Israel\u2019s missile defense'), false);
 });
 
 test('known-bad subject-mismatched Said→Did is rejected', () => {
