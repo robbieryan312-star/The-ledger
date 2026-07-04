@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ChevronDown, ChevronRight, ExternalLink, FileText } from 'lucide-react';
+import { trimToWordBoundary } from '@/lib/data/displaySummary';
 import type { ProfileRecordByTopic, TopicRecordGroup } from '@/lib/data/profileRecordByTopic';
 import type { MemberDeepBill, MemberDeepProfile } from '@/lib/data/memberDeep';
 import { getTopicPositions } from '@/lib/data/topicPositions';
@@ -37,7 +38,7 @@ function formatShortDate(iso: string): string {
 
 function truncateTitle(title: string, max = 80): string {
   if (title.length <= max) return title;
-  return `${title.slice(0, max - 1)}…`;
+  return trimToWordBoundary(title, max);
 }
 
 function LegislationBillRow({ bill, label }: { bill: MemberDeepBill; label: string }) {

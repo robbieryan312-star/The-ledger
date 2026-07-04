@@ -67,10 +67,10 @@ the specific failure this file was created to stop.
   commit it, instruct it to; if not, Claude Code commits it directly once no sync/writer is
   active. Losing or re-deriving already-completed, verified work is the single most wasteful
   failure and must not recur.
-- **The demo profiles are the locked spec.** Sanders `S000033` + the 3 other featured profiles
-  are concrete. Phase 17b feeds the other 536 members through the SAME components and SAME
-  checklist — it never redesigns them. Fix the script/extractor that produced bad data; never
-  hand-clean one member and call it done.
+- **The 6 migrated profiles are the locked spec.** S000033, O000172, M000355, M001184, W000817,
+  C001098 are the concrete reference. The pipeline scales the SAME components and SAME
+  checklist to the remaining 531 members — it never redesigns them. Fix the script/extractor
+  that produced bad data; never hand-clean one member and call it done.
 
 ---
 
@@ -90,7 +90,9 @@ the specific failure this file was created to stop.
 
 ---
 
-## 3. Data credibility (non-negotiable — full detail in ledger-data-policy.mdc)
+## 3. Data credibility (non-negotiable)
+
+> Full detail: `.cursor/rules/ledger-data-policy.mdc`
 
 - Tiers are exact code strings: `'official'`, `'nonpartisan'`, `'media'`, `'alleged'`,
   `'unverified'`. Never write "Tier 1/2/3".
@@ -109,6 +111,8 @@ the specific failure this file was created to stop.
 
 ## 4. Locked profile layout (the owner's standing directives)
 
+> Full voice/copy rules: `.cursor/rules/ledger-editorial-voice.mdc`
+
 - **Unified "Where They Stand" box** — Where They Stand + The Record + Key Positions combine
   into ONE box. Key issues at top, each with its summarized piece of evidence directly under it.
   Use the Ballotpedia Key-Positions format as the presentation reference.
@@ -126,12 +130,8 @@ the specific failure this file was created to stop.
   but scales up for high-profile figures (e.g. Trump) where the record is large. Always
   objective and sourced.
 - **News** — collect relevant, impactful items; stick to quotes or fact-based statements.
-  Single-source items shown as `'alleged'`; 2+ sources to present as verified fact. Resolved:
-  kept at the platform-wide 2+ source standard (consistent with the multi-source corroboration
-  rule in `ledger-data-policy.mdc`) rather than a news-specific 1-source exception, since a
-  weaker threshold for one section alone would be an unprincipled carve-out in the credibility
-  standard. Revisit only if the owner directs a visible product change (e.g. a distinct
-  "single-source" news badge/section).
+  Single-source items shown as `'alleged'`; 2+ sources to present as verified fact (uses the
+  platform-wide corroboration standard — no news-specific exception).
 - **Endorsements** — filled out thoroughly but not a giant section; moderate depth.
 - **Exact display numbers (from demo components — do not drift):** evidence quote 117 chars
   (`ExpandableEvidenceRow.tsx`); topic bill title 80 chars, 5 sponsored + 5 cosponsored per

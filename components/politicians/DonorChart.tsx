@@ -5,6 +5,7 @@ import type { FecFinanceEntry } from '@/lib/data/fecFinance';
 import SourceBadge from '@/components/ui/SourceBadge';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, BarChart, Bar, XAxis, YAxis } from 'recharts';
 import { DollarSign, AlertTriangle, Globe, Users, Building2, Info } from 'lucide-react';
+import { trimToWordBoundary } from '@/lib/data/displaySummary';
 
 function formatMoney(n: number): string {
   if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
@@ -43,7 +44,7 @@ export default function DonorChart({
   const donorCycleDiffersFromFec = hasFecTotals && !!finance.donorCompositionCycle && String(fecEntry?.electionYear) !== finance.donorCompositionCycle;
 
   const industryData = finance.topIndustries.map((ind) => ({
-    name: ind.industry.length > 18 ? ind.industry.slice(0, 18) + '…' : ind.industry,
+    name: ind.industry.length > 18 ? trimToWordBoundary(ind.industry, 18) : ind.industry,
     amount: Math.round(ind.amount / 1000),
     percentage: ind.percentage,
   }));

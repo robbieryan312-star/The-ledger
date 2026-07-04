@@ -1,6 +1,7 @@
 ---
 description: The Ledger data credibility and scope policy — highest priority
-alwaysApply: true
+autoAttach:
+  globs: ["lib/data/**", "scripts/**", "lib/types/**"]
 ---
 
 # The Ledger — Data Credibility (Highest Priority)
@@ -78,7 +79,7 @@ Structure and name the output accordingly.
 | Roll-call votes | Profile → Voting Record tab | `congressVotes.json` |
 | FEC campaign finance | Profile → Money & Donors tab | `fecFinance.json` |
 | STOCK Act trades | Profile → Stock Trades tab | `stockTrades.json` |
-| Stated positions + platform | Profile → Track Record tab (Said→Did) | `topicPositions.json` |
+| Stated positions + platform | Profile → Track Record tab (Said→Did) | `profiles/{id}/positions.json` |
 | News articles | Profile → News section | `newsNational.json` |
 | Per-topic vote + position summary | Profile → Topic Record panel | `profileRecordByTopic` (build-time) |
 | Member deep bills | Profile → Topic Record → Proposed legislation (collapsed) | `members/{bioguideId}.json` |
@@ -110,7 +111,7 @@ Do **not** expand hand-written mock data for national coverage.
 
 ## Mock data policy
 
-Mock data exists ONLY for the 16 featured profiles and as UI scaffolding.
+Mock data exists ONLY for featured profiles and as UI scaffolding.
 - Mock data must never appear without a prominent "Demo data — not verified" label
 - `/lobbying`, `/elections`, `/compare` currently show mock data — visible disclaimers required
 - Demo stock trades must be labeled distinctly from STOCK Act official trades
@@ -119,9 +120,9 @@ Mock data exists ONLY for the 16 featured profiles and as UI scaffolding.
 
 ## Scope priority
 
-1. All 537 federal Congress members (votes, FEC, office)
-2. Governors and top statewide via state `.gov` / SoS sources
-3. Rich featured profiles with real office, votes, finance, and verbatim quotes
+1. Rich featured profiles (6 locked migrated + demo) with real office, votes, finance, verbatim quotes, and Said-Did diffs — depth before breadth
+2. All 537 federal Congress members (votes, FEC, office)
+3. Governors and top statewide via state `.gov` / SoS sources
 4. The "platform promise vs. voting record" diff for all members (core product)
 5. Local/small elections — demo templates only until a local data pipeline exists
 

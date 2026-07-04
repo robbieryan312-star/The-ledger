@@ -4,6 +4,7 @@ import { useState } from 'react';
 import type { EvidenceItem } from '@/lib/types';
 import SourceProvenance from '@/components/ui/SourceProvenance';
 import { ChevronDown, ChevronRight } from 'lucide-react';
+import { trimToWordBoundary } from '@/lib/data/displaySummary';
 
 const EVIDENCE_TYPE_STYLE: Record<string, string> = {
   vote: 'bg-blue-500/20 text-blue-300 border-blue-500/20',
@@ -22,7 +23,7 @@ function previewText(item: EvidenceItem): string {
     return text;
   }
   if (text.length <= 120) return text;
-  return `${text.slice(0, 117)}…`;
+  return trimToWordBoundary(text, 117);
 }
 
 export default function ExpandableEvidenceRow({ item }: { item: EvidenceItem }) {

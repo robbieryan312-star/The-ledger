@@ -163,7 +163,7 @@ async function main(): Promise<void> {
       const entry = byPoliticianId[p.id];
       entry.trades = trades;
       if (trades.length > 0) {
-        entry.note = `${trades.length} official PTR transaction(s) from House Clerk filings (Tier 1).`;
+        entry.note = `${trades.length} official PTR transaction(s) from House Clerk filings.`;
       } else {
         entry.note =
           'No House PTR filings matched this member in the synced index window — profile demo trades (if any) remain labeled separately.';
@@ -190,7 +190,7 @@ async function main(): Promise<void> {
       entry.trades = result.trades;
       totalOfficialTrades += result.trades.length;
       if (result.trades.length > 0) {
-        entry.note = `${result.trades.length} official PTR transaction(s) from Senate eFD (Tier 1).`;
+        entry.note = `${result.trades.length} official PTR transaction(s) from Senate eFD.`;
       } else if (result.error) {
         entry.note = `Senate eFD sync unavailable (${result.error}). Demo trades on profile, if any, are labeled separately.`;
       } else {

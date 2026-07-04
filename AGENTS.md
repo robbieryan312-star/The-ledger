@@ -86,8 +86,6 @@ Route pages (`app/**/page.tsx`) must be **server components**. Do not add `'use 
 
 Reason: crawlers index server-rendered HTML. A `'use client'` route page is invisible to Google. Individual politician profiles must be crawler-visible.
 
-Known violation to fix: `app/politicians/[id]/page.tsx` is currently `'use client'`. Convert to server shell + client sub-components in the next architecture phase.
-
 ### Data flow
 
 ```
@@ -128,7 +126,7 @@ After data changes always run: `npm run sync:legislators` → `npm run verify:of
 
 ## Mock data policy
 
-- Mock data (`mockLobbyingGroups`, `mockElections`, `mockStockTrades`) exists only for the 16 featured profiles and as UI scaffolding
+- Mock data (`mockLobbyingGroups`, `mockElections`, `mockStockTrades`) exists only for featured profiles and as UI scaffolding
 - Pages that display mock data to users must carry a visible disclaimer
 - Never present demo or fabricated data as official records
 - Never expand hand-written mock data for national coverage

@@ -106,7 +106,7 @@ export function truncateAtSentenceBoundary(text: string, maxLen: number): string
   return joined.length > 0 ? joined : t;
 }
 
-function trimToWordBoundary(text: string, maxLen: number): string {
+export function trimToWordBoundary(text: string, maxLen: number): string {
   const t = text.trim();
   if (t.length <= maxLen) return t;
   const slice = t.slice(0, maxLen);

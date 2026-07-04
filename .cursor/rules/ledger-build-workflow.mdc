@@ -1,6 +1,7 @@
 ---
 description: The Ledger build workflow, architecture rules, and quality standard
-alwaysApply: true
+autoAttach:
+  globs: ["scripts/**", "package.json", ".github/**"]
 ---
 
 # The Ledger — Build Workflow & Quality Standard
@@ -20,7 +21,7 @@ alwaysApply: true
 
 Why: crawlers index server-rendered HTML. A `'use client'` route page is invisible to Google. The product goal is to be the best political research resource — that requires search visibility.
 
-Current violation: `app/politicians/[id]/page.tsx` is `'use client'`. This must be converted to a server component shell with client sub-components in a future phase.
+Current violation: (RESOLVED — `app/politicians/[id]/page.tsx` is now a server component as of Phase 11, commit `a2d76ee`).
 
 ## Branch workflow
 

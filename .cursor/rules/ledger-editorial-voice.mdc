@@ -1,6 +1,7 @@
 ---
 description: The Ledger editorial voice — factual headlines, neutral framing, promise diffs
-alwaysApply: true
+autoAttach:
+  globs: ["components/**", "app/**"]
 ---
 
 # The Ledger — Editorial Voice

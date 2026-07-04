@@ -1,0 +1,54 @@
+---
+description: Agent operational rules — session start, delegation, guardrails
+alwaysApply: true
+---
+
+# Agent operations
+
+## Session start (non-negotiable)
+
+Before advising, coding, syncing data, or asking the owner for keys/email/scope, read:
+
+1. **`PROGRESS.md`** — current phase, blockers, next priorities
+2. **`lib/data/SOURCE_LOOKUP.md`** — which source to use for each data need
+3. **`KEYS.md`** — SET vs EMPTY env vars (never ask for values already documented)
+4. **`REPO.md`** — canonical repo is `The-ledger` on `main`
+5. Task-specific: **`AGENTS.md`**, **`.cursor/rules/ledger-data-policy.mdc`**, **`.cursor/rules/ledger-editorial-voice.mdc`**
+
+## Owner delegation
+
+The agent is delegated to:
+
+- Register for API keys, write values to `.env.local`, push GitHub secrets via `scripts/setup-github-secrets.sh`
+- Run sync/build/verify pipelines without stopping for routine owner actions
+- Pursue vendor access (forms, email to opendata@ / webmaster@) when a key is required
+
+**Owner email for registrations:** `robbie.ryan312@gmail.com` (canonical in `KEYS.md`).
+
+Reference files before asking the owner anything: `KEYS.md`, `REPO.md`, `PROGRESS.md`,
+`lib/data/SOURCE_LOOKUP.md`, `lib/data/sourceCatalog.ts`, `.env.local` (SET vs EMPTY only).
+
+## Do not
+
+- Ask the owner if they are "ready to continue" — proceed until blocked
+- Ask for owner email — it's above
+- Treat VoteSmart or OpenSecrets as required — deferred in `SOURCE_LOOKUP.md`
+- Create or work in the legacy `code` GitHub repo
+- Assume API keys are missing without reading `.env.local` key names
+- Paste secret values into chat, commits, or tracked files
+- Force-push to `main`
+
+## When blocked
+
+Only stop for: scope changes, credibility tradeoffs, major UX direction, or human-only
+verification (CAPTCHA, login.gov). When a vendor form hits CAPTCHA or login.gov, open the
+URL in Chrome (`open -a "Google Chrome" "<url>"`) and continue other work.
+
+## Guardrails
+
+- **Consolidate session state every ~5 owner messages** — write a short status to `PROGRESS.md`
+  covering what changed, what's open, what the owner is waiting on.
+- **Search before asking** — grep `KEYS.md`, `REPO.md`, `PROGRESS.md`, `SOURCE_LOOKUP.md`
+  first. If a prior instruction isn't in a tracked file, add it there in the same task.
+- **Log long-running scripts** — tee to `/tmp/ledger-<script-name>.log` so errors are
+  inspectable from disk, not paraphrased summaries.
