@@ -476,7 +476,6 @@ export interface USState {
   senators: string[];
   representatives: number;
   governor?: string;
-  upcomingElections: number;
   activePoliticians: number;
 }
 

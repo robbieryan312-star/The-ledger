@@ -3,7 +3,7 @@
 import { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { ComposableMap, Geographies, Geography, ZoomableGroup, Marker } from 'react-simple-maps';
-import { rosterStates as mockStates, getPoliticiansForState, sortOfficialsForDisplay, resolveOffice } from '@/lib/data/allPoliticians';
+import { rosterStates, getPoliticiansForState, sortOfficialsForDisplay, resolveOffice } from '@/lib/data/allPoliticians';
 import { GOVERNOR_MAP_FILLS, getGovernorPartyKey } from '@/lib/data/governorMapColors';
 import { useMapNavigation } from '@/lib/context/MapNavigationContext';
 import OfficialCard from '@/components/counties/OfficialCard';
@@ -106,7 +106,7 @@ const STATE_ABBR: Record<string, string> = {
 };
 
 const STATE_NAME_BY_CODE: Record<string, string> = Object.fromEntries(
-  mockStates.map((s) => [s.code, s.name]),
+  rosterStates.map((s) => [s.code, s.name]),
 );
 
 const NATIONAL: MapPosition = { center: [-97, 38], zoom: 1 };
@@ -453,7 +453,7 @@ export default function USAMap() {
   };
 
   const selectedStateData = useMemo(
-    () => (selectedState ? mockStates.find((s) => s.code === selectedState) ?? null : null),
+    () => (selectedState ? rosterStates.find((s) => s.code === selectedState) ?? null : null),
     [selectedState],
   );
   const statePoliticians = useMemo(

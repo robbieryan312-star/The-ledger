@@ -17,7 +17,7 @@ import { config } from 'dotenv';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { mockPoliticians } from '../lib/data/DNU/mockPoliticians';
+import { allPoliticians } from '../lib/data/allPoliticians';
 import type { Politician, Source, VoteChoice, VoteRecord } from '../lib/types';
 import {
   CONGRESS_GOV_SOURCE,
@@ -323,7 +323,7 @@ async function main(): Promise<void> {
   config({ path: path.join(projectRoot, '.env.local') });
 
   const asOf = new Date().toISOString().slice(0, 10);
-  const featured = mockPoliticians;
+  const featured = allPoliticians;
   const keyConfigured = isCongressConfigured();
 
   const houseTargets = featured.filter(

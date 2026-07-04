@@ -78,7 +78,7 @@ export default function HomeSearchBar() {
       out.push({
         type: 'state', id: `state-${s.code}`,
         label: s.name,
-        sublabel: `${s.activePoliticians} officials · ${s.upcomingElections} upcoming elections`,
+        sublabel: `${s.activePoliticians} officials tracked`,
         stateCode: s.code,
       });
     });

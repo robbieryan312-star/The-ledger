@@ -5,7 +5,7 @@
 import { STANDARD_POLICY_TOPICS } from '../lib/data/topicCoverage';
 import { buildMergedProfileIssues } from '../lib/data/issuesFromTopicPositions';
 import { getMemberTopicPositions } from '../lib/data/topicPositions';
-import { mockPoliticians } from '../lib/data/DNU/mockPoliticians';
+import { allPoliticians } from '../lib/data/allPoliticians';
 import { derivePromiseStatus } from '../lib/data/derivePromiseStatus';
 import { VERIFIED_MEDIA_QUOTES_BY_BIOGUIDE } from './lib/approvedMediaQuotes';
 import { cacheStats } from './lib/articleVerificationCache';
@@ -26,7 +26,7 @@ function topicPipelineStatus(bioguideId: string, topicId: string): string {
 }
 
 for (const id of PILOTS) {
-  const pol = mockPoliticians.find((p) => p.bioguideId === id);
+  const pol = allPoliticians.find((p) => p.bioguideId === id);
   const legacy = pol?.topIssues ?? [];
   const merged = buildMergedProfileIssues(id, legacy, true);
   console.log(`\n=== ${id} ${pol?.name ?? ''} ===`);

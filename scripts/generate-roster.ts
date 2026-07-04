@@ -1,9 +1,10 @@
 /**
- * generate-roster.ts — Extract identity-only fields from quarantined mock files
- * by evaluating them with patched imports, then write lib/data/generated/roster.json.
+ * generate-roster.ts — Build lib/data/generated/roster.json from authoritative
+ * sources only: currentLegislators.json (real Congress data) + the 6+1 migrated
+ * featured profiles whose identity fields are hard-coded here.
  *
- * This script is NOT app code. It reads the DNU quarantine files once to seed the
- * identity roster. After generation, app code imports roster.json (not DNU files).
+ * No mock or DNU data is referenced. The `states` array in the output is derived
+ * entirely from per-state legislator counts in currentLegislators.json.
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -30,33 +31,11 @@ interface RosterEntry {
   termEnd?: string;
 }
 
-interface MockState {
-  code: string;
-  name: string;
-  activePoliticians: number;
-  upcomingElections: number;
-}
-
-// Parse the mock politicians array from the raw TS source by eval'ing just the
-// export statement. This avoids resolving the DNU file's broken relative imports.
-// Since the DNU files are complex TS with type imports, we'll take a different
-// approach: use the currentLegislators.json (already generated, authoritative)
-// plus a simple identity extraction from allPoliticians at build time.
-
-// Actually, the simplest correct approach: just read the allPoliticians module's
-// output. But we can't import that either because it still imports mockPoliticians.
-// So let's parse the mock files manually for their `id` fields.
-
-// Best approach: parse the DNU TS source textually and also read currentLegislators.json.
-// The DNU files define Politician objects; we need their identity fields.
-// Let's extract them by running a modified copy.
-
-// Simplest correct approach: read currentLegislators.json (real data, already generated)
-// and supplement with hand-authored profiles that have bioguideIds already mapped in
-// the generated profiles directory.
-
 const legislatorsPath = path.join(ROOT, 'lib/data/generated/currentLegislators.json');
-const legislatorsRaw = JSON.parse(readFileSync(legislatorsPath, 'utf8')) as Array<{
+const legislatorsFile = JSON.parse(readFileSync(legislatorsPath, 'utf8')) as {
+  legislators: Array<Record<string, unknown>>;
+};
+const legislatorsRaw = legislatorsFile.legislators as Array<{
   bioguideId: string;
   name: string;
   firstName: string;
@@ -94,66 +73,37 @@ const FEATURED_IDENTITIES: RosterEntry[] = [
   { id: 'ted-cruz', bioguideId: 'C001098', name: 'Ted Cruz', firstName: 'Ted', lastName: 'Cruz', party: 'Republican', state: 'Texas', stateCode: 'TX', chamber: 'senate', level: 'federal', recordType: 'featured', inOffice: true, termStart: '2013-01-03', termEnd: '2031-01-03' },
 ];
 
-// mockStates from the quarantined file (this is just static data, safe to inline)
-const mockStates: MockState[] = [
-  { code: 'AL', name: 'Alabama', activePoliticians: 9, upcomingElections: 3 },
-  { code: 'AK', name: 'Alaska', activePoliticians: 5, upcomingElections: 2 },
-  { code: 'AZ', name: 'Arizona', activePoliticians: 11, upcomingElections: 4 },
-  { code: 'AR', name: 'Arkansas', activePoliticians: 8, upcomingElections: 2 },
-  { code: 'CA', name: 'California', activePoliticians: 55, upcomingElections: 12 },
-  { code: 'CO', name: 'Colorado', activePoliticians: 11, upcomingElections: 3 },
-  { code: 'CT', name: 'Connecticut', activePoliticians: 7, upcomingElections: 2 },
-  { code: 'DE', name: 'Delaware', activePoliticians: 4, upcomingElections: 1 },
-  { code: 'FL', name: 'Florida', activePoliticians: 10, upcomingElections: 8 },
-  { code: 'GA', name: 'Georgia', activePoliticians: 16, upcomingElections: 5 },
-  { code: 'HI', name: 'Hawaii', activePoliticians: 5, upcomingElections: 2 },
-  { code: 'ID', name: 'Idaho', activePoliticians: 6, upcomingElections: 2 },
-  { code: 'IL', name: 'Illinois', activePoliticians: 21, upcomingElections: 6 },
-  { code: 'IN', name: 'Indiana', activePoliticians: 13, upcomingElections: 3 },
-  { code: 'IA', name: 'Iowa', activePoliticians: 9, upcomingElections: 2 },
-  { code: 'KS', name: 'Kansas', activePoliticians: 8, upcomingElections: 2 },
-  { code: 'KY', name: 'Kentucky', activePoliticians: 8, upcomingElections: 3 },
-  { code: 'LA', name: 'Louisiana', activePoliticians: 9, upcomingElections: 2 },
-  { code: 'ME', name: 'Maine', activePoliticians: 4, upcomingElections: 2 },
-  { code: 'MD', name: 'Maryland', activePoliticians: 10, upcomingElections: 3 },
-  { code: 'MA', name: 'Massachusetts', activePoliticians: 11, upcomingElections: 3 },
-  { code: 'MI', name: 'Michigan', activePoliticians: 16, upcomingElections: 5 },
-  { code: 'MN', name: 'Minnesota', activePoliticians: 10, upcomingElections: 3 },
-  { code: 'MS', name: 'Mississippi', activePoliticians: 8, upcomingElections: 2 },
-  { code: 'MO', name: 'Missouri', activePoliticians: 10, upcomingElections: 3 },
-  { code: 'MT', name: 'Montana', activePoliticians: 4, upcomingElections: 2 },
-  { code: 'NE', name: 'Nebraska', activePoliticians: 6, upcomingElections: 2 },
-  { code: 'NV', name: 'Nevada', activePoliticians: 7, upcomingElections: 3 },
-  { code: 'NH', name: 'New Hampshire', activePoliticians: 4, upcomingElections: 2 },
-  { code: 'NJ', name: 'New Jersey', activePoliticians: 15, upcomingElections: 4 },
-  { code: 'NM', name: 'New Mexico', activePoliticians: 6, upcomingElections: 2 },
-  { code: 'NY', name: 'New York', activePoliticians: 29, upcomingElections: 8 },
-  { code: 'NC', name: 'North Carolina', activePoliticians: 16, upcomingElections: 5 },
-  { code: 'ND', name: 'North Dakota', activePoliticians: 4, upcomingElections: 1 },
-  { code: 'OH', name: 'Ohio', activePoliticians: 18, upcomingElections: 5 },
-  { code: 'OK', name: 'Oklahoma', activePoliticians: 8, upcomingElections: 2 },
-  { code: 'OR', name: 'Oregon', activePoliticians: 8, upcomingElections: 3 },
-  { code: 'PA', name: 'Pennsylvania', activePoliticians: 20, upcomingElections: 6 },
-  { code: 'RI', name: 'Rhode Island', activePoliticians: 4, upcomingElections: 2 },
-  { code: 'SC', name: 'South Carolina', activePoliticians: 9, upcomingElections: 3 },
-  { code: 'SD', name: 'South Dakota', activePoliticians: 4, upcomingElections: 1 },
-  { code: 'TN', name: 'Tennessee', activePoliticians: 11, upcomingElections: 3 },
-  { code: 'TX', name: 'Texas', activePoliticians: 38, upcomingElections: 10 },
-  { code: 'UT', name: 'Utah', activePoliticians: 7, upcomingElections: 2 },
-  { code: 'VT', name: 'Vermont', activePoliticians: 3, upcomingElections: 1 },
-  { code: 'VA', name: 'Virginia', activePoliticians: 13, upcomingElections: 4 },
-  { code: 'WA', name: 'Washington', activePoliticians: 12, upcomingElections: 4 },
-  { code: 'WV', name: 'West Virginia', activePoliticians: 5, upcomingElections: 2 },
-  { code: 'WI', name: 'Wisconsin', activePoliticians: 10, upcomingElections: 3 },
-  { code: 'WY', name: 'Wyoming', activePoliticians: 3, upcomingElections: 1 },
-  { code: 'DC', name: 'District of Columbia', activePoliticians: 2, upcomingElections: 1 },
-];
+// Derive per-state legislator counts from the real currentLegislators.json
+const stateCounts = new Map<string, number>();
+for (const leg of legislatorsRaw) {
+  stateCounts.set(leg.stateCode, (stateCounts.get(leg.stateCode) ?? 0) + 1);
+}
+
+const STATE_NAMES: Record<string, string> = {
+  AL:'Alabama',AK:'Alaska',AZ:'Arizona',AR:'Arkansas',CA:'California',
+  CO:'Colorado',CT:'Connecticut',DE:'Delaware',FL:'Florida',GA:'Georgia',
+  HI:'Hawaii',ID:'Idaho',IL:'Illinois',IN:'Indiana',IA:'Iowa',
+  KS:'Kansas',KY:'Kentucky',LA:'Louisiana',ME:'Maine',MD:'Maryland',
+  MA:'Massachusetts',MI:'Michigan',MN:'Minnesota',MS:'Mississippi',
+  MO:'Missouri',MT:'Montana',NE:'Nebraska',NV:'Nevada',NH:'New Hampshire',
+  NJ:'New Jersey',NM:'New Mexico',NY:'New York',NC:'North Carolina',
+  ND:'North Dakota',OH:'Ohio',OK:'Oklahoma',OR:'Oregon',PA:'Pennsylvania',
+  RI:'Rhode Island',SC:'South Carolina',SD:'South Dakota',TN:'Tennessee',
+  TX:'Texas',UT:'Utah',VT:'Vermont',VA:'Virginia',WA:'Washington',
+  WV:'West Virginia',WI:'Wisconsin',WY:'Wyoming',DC:'District of Columbia',
+  AS:'American Samoa',GU:'Guam',MP:'Northern Mariana Islands',
+  PR:'Puerto Rico',VI:'U.S. Virgin Islands',
+};
+
+const states = Array.from(stateCounts.entries())
+  .map(([code, count]) => ({ code, name: STATE_NAMES[code] ?? code, activePoliticians: count }))
+  .sort((a, b) => a.code.localeCompare(b.code));
 
 const output = {
   generatedAt: new Date().toISOString(),
   count: FEATURED_IDENTITIES.length,
   entries: FEATURED_IDENTITIES,
-  mockStates,
+  states,
 };
 
 const outPath = path.join(ROOT, 'lib/data/generated/roster.json');

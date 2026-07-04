@@ -10,7 +10,7 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { mockPoliticians } from '../lib/data/DNU/mockPoliticians';
+import { allPoliticians } from '../lib/data/allPoliticians';
 import {
   HOUSE_CLERK_SOURCE,
   syncHousePtrForTarget,
@@ -118,7 +118,7 @@ async function main(): Promise<void> {
       chamber: 'house' as const,
     }));
 
-  const featured = mockPoliticians.filter((p) => p.chamber === 'house' || p.chamber === 'senate');
+  const featured = allPoliticians.filter((p) => p.chamber === 'house' || p.chamber === 'senate');
   const featuredIds = new Set(featured.map((p) => p.id));
   const featuredBioguides = new Set(featured.map((p) => p.bioguideId).filter(Boolean));
 

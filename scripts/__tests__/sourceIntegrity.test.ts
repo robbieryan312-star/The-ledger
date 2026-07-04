@@ -301,6 +301,47 @@ for (const bioguideId of MIGRATED_PROFILE_BIOGUIDES) {
   });
 }
 
+// ── Generated JSON: no mock keys, state-count integrity ──────────────
+const GENERATED_DIR = path.join(process.cwd(), 'lib/data/generated');
+
+test('no key matching /mock/i in any generated JSON file', () => {
+  const violations: string[] = [];
+  function checkObj(obj: unknown, filePath: string, keyPath: string): void {
+    if (obj && typeof obj === 'object' && !Array.isArray(obj)) {
+      for (const [key, val] of Object.entries(obj as Record<string, unknown>)) {
+        if (/mock/i.test(key)) {
+          violations.push(`${filePath} → ${keyPath}.${key}`);
+        }
+        checkObj(val, filePath, `${keyPath}.${key}`);
+      }
+    } else if (Array.isArray(obj)) {
+      obj.forEach((item, i) => checkObj(item, filePath, `${keyPath}[${i}]`));
+    }
+  }
+  const files = readdirSync(GENERATED_DIR).filter((f) => f.endsWith('.json'));
+  for (const file of files) {
+    const data = JSON.parse(readFileSync(path.join(GENERATED_DIR, file), 'utf8'));
+    checkObj(data, file, '$');
+  }
+  assert.equal(violations.length, 0, `Generated JSON files contain mock keys:\n${violations.join('\n')}`);
+});
+
+test('roster.json state counts sum equals currentLegislators.json total', () => {
+  const roster = JSON.parse(readFileSync(path.join(GENERATED_DIR, 'roster.json'), 'utf8')) as {
+    states: Array<{ code: string; activePoliticians: number }>;
+  };
+  const legislators = JSON.parse(readFileSync(path.join(GENERATED_DIR, 'currentLegislators.json'), 'utf8')) as {
+    meta: { count: number };
+    legislators: unknown[];
+  };
+  const stateSum = roster.states.reduce((s, st) => s + st.activePoliticians, 0);
+  assert.equal(
+    stateSum,
+    legislators.legislators.length,
+    `roster state counts sum (${stateSum}) ≠ currentLegislators count (${legislators.legislators.length})`,
+  );
+});
+
 // ── DNU quarantine guard ─────────────────────────────────────────────
 const DNU_PATTERNS = [
   /from\s+['"].*\/DNU\//,

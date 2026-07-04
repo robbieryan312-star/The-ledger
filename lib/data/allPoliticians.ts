@@ -62,9 +62,11 @@ const rosterPoliticians: Politician[] = (rosterData.entries as Array<Record<stri
   news: [],
 }));
 
-export const rosterStates = rosterData.mockStates as Array<{
-  code: string; name: string; activePoliticians: number; upcomingElections: number;
-}>;
+export const rosterStates = (
+  (rosterData as Record<string, unknown>).states as Array<{
+    code: string; name: string; activePoliticians: number;
+  }> ?? []
+);
 
 function withOfficialPhoto(p: Politician): Politician {
   const hasLegacyCongressHost =
@@ -277,7 +279,7 @@ export function getStateCoverage(stateCode: string): {
   const label = inDatabase === 0
     ? 'No federal officials profiled yet'
     : isPartial
-      ? `${inDatabase} of ~${targetFederal} federal seats profiled`
+      ? `${inDatabase} of ${targetFederal} federal seats profiled`
       : `${inDatabase} officials in database`;
   return { inDatabase, targetFederal, isPartial, label };
 }

@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { rosterStates as mockStates } from '@/lib/data/allPoliticians';
-import { allPoliticians, resolveOffice, getCoverageStats, comparePoliticiansByOffice, getPoliticianBranch } from '@/lib/data/allPoliticians';
+import { rosterStates, allPoliticians, resolveOffice, getCoverageStats, comparePoliticiansByOffice, getPoliticianBranch } from '@/lib/data/allPoliticians';
 import type { GovernmentBranch } from '@/lib/data/branches';
 import { EXECUTIVE_CHAMBERS } from '@/lib/data/officeResolution';
 import { fecFinanceCount } from '@/lib/data/fecFinance';
@@ -186,7 +185,7 @@ function PoliticiansContentInner({ initialSearchParams }: { initialSearchParams:
         </div>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
           {[
-            { value: selectedState, set: setSelectedState, opts: [['', 'All States'], ...mockStates.map(s => [s.code, s.name])] },
+            { value: selectedState, set: setSelectedState, opts: [['', 'All States'], ...rosterStates.map(s => [s.code, s.name])] },
             { value: selectedParty, set: setSelectedParty, opts: [['', 'All Parties'], ...['Democrat', 'Republican', 'Independent', 'Green', 'Libertarian'].map(p => [p, p])] },
             { value: selectedChamber, set: setSelectedChamber, opts: [['', 'All Chambers'], ['executive', 'Executive'], ...['president', 'vice_president', 'cabinet', 'scotus', 'senate', 'house', 'governor', 'state_senate', 'state_house', 'mayor', 'city_council'].map(c => [c, c.replaceAll('_', ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())])] },
             { value: selectedLevel, set: setSelectedLevel, opts: [['', 'All Levels'], ['federal', 'Federal'], ['state', 'State'], ['local', 'Local']] },

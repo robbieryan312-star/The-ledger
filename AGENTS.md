@@ -127,13 +127,13 @@ After data changes always run: `npm run sync:legislators` → `npm run verify:of
 ### Mock data policy (DNU quarantine — 2026-07-04)
 
 Mock/hand-authored fact data is permanently banned from the app interface.
-All 6 former mock files live in `lib/data/DNU/` (quarantined, never imported).
-They are retained solely as collection leads for cross-checking pipeline output.
+Historical hand-authored data was removed; retrievable only via git history (quarantine commit 288e2df); it may never re-enter app code. Pipelines with verifiable sources are the only path into generated data.
 
-- **Banned from interface:** No app/, components/, or lib/ code (outside DNU/) may import quarantined files
-- **Guard-enforced:** Build fails on any DNU import (sourceIntegrity test suite)
+- **Banned from interface:** No app/, components/, or lib/ code may import former DNU quarantine files
+- **Guard-enforced:** Build fails on any DNU import (sourceIntegrity test suite) — guards remain permanently even though the directory is deleted
 - **Pipelines are the only path:** Real data enters via sync scripts → lib/data/generated/ with verifiable sources
 - **Identity scaffolding:** Politician roster/identity fields (name, party, state, photo) live in generated/roster.json
+- **No mock keys:** generated/*.json files may never contain keys matching `/mock/i` (build-gated guard)
 - **Honest empty states:** Any category without real pipeline data shows "No verified record available"
 - **Demo surfaces:** /elections, /lobbying, /compare show "No verified data yet" until real pipelines exist
 

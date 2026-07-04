@@ -17,7 +17,6 @@ import {
   LEGISLATORS_AS_OF,
 } from '../lib/data/officeResolution';
 import { allPoliticians, getCoverageStats, getPoliticianById } from '../lib/data/allPoliticians';
-import { mockPoliticians } from '../lib/data/DNU/mockPoliticians';
 import { currentExecutives, EXECUTIVE_AS_OF } from '../lib/data/executiveRoster';
 import { currentJustices, SCOTUS_AS_OF } from '../lib/data/scotusRoster';
 import { currentGovernors } from '../lib/data/governors';
@@ -34,7 +33,7 @@ for (const s of currentSenatorsForState('FL')) {
 
 console.log('\nResolved labels for featured FL senators:');
 for (const id of ['sen-scott', 'sen-moody']) {
-  const p = mockPoliticians.find((x) => x.id === id)!;
+  const p = allPoliticians.find((x) => x.id === id)!;
   const r = resolveCurrentOffice(p);
   console.log(`  • ${p.name.padEnd(14)} → ${r.label}  [${r.reason}, isCurrent=${r.isCurrent}]`);
 }

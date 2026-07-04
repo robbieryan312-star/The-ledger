@@ -5,17 +5,16 @@
 
 This document describes what is **mock/demo data** in the current build versus the **production integration path**.
 
-## Demo (current)
+## Current data (pipeline-generated)
 
 | Area | File(s) | Notes |
 |------|---------|-------|
-| Federal politicians | `mockPoliticians.ts`, `additionalPoliticians.ts` | Curated profiles with evidence-backed `topIssues`, votes, finance, controversies |
-| Stock trades | `mockStockTrades.ts` | 56 STOCK Act–style disclosures across 5 featured officials |
-| Lobbying & advocacy groups | `mockLobbyingGroups.ts` | Demo profiles for advocacy/trade groups with sourced history, issue positions, party distribution bars, top recipient samples, and explicit caveats |
-| Elections & candidates | `mockElections.ts` | Illustrative 2026/2028 races; candidate `topIssues` include `evidence[]` where supported |
-| Counties & local officials | `mockCounties.ts` | Sample FL/TX/CA/NY counties; counties without data show an integration message on the map |
+| Federal legislators | `generated/currentLegislators.json` | All 537 Congress members from `unitedstates/congress-legislators` |
+| Featured profiles | `generated/profiles/<bioguideId>/` | 6 migrated profiles with votes, positions, endorsements, news |
+| Roster & state counts | `generated/roster.json` | Identity scaffold + per-state legislator counts derived from `currentLegislators.json` |
 | ZIP lookup | `zipLookup.ts` | Small demo ZIP crosswalk (e.g. `33426` → Palm Beach, FL) |
-| State metadata | `mockStates` in `mockPoliticians.ts` | `activePoliticians` reflects profiled officials in the demo DB, not full congressional rosters |
+
+Historical hand-authored data (DNU quarantine) was deleted; retrievable only via git history (quarantine commit 288e2df).
 
 All demo records use realistic source tiers (`official`, `nonpartisan`, `media`) and URLs where applicable. Positions are phrased as what available records show, not editorial verdicts.
 
