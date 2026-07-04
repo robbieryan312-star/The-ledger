@@ -50,7 +50,7 @@ function lookupCongressVotes(politicianId: string, bioguideId?: string): Congres
 export function getCongressVotes(politicianId: string, bioguideId?: string): CongressVoteEntry | undefined {
   if (bioguideId && usesMemberProfile(bioguideId)) {
     const profile = getMemberProfileVotes(bioguideId);
-    return profile ?? undefined;
+    return profile ?? lookupCongressVotes(politicianId, bioguideId);
   }
   return lookupCongressVotes(politicianId, bioguideId);
 }

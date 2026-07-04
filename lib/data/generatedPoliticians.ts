@@ -16,6 +16,7 @@ import { CampaignFinance, ConsistencyData, Party, Politician } from '../types';
 import legislatorsSnapshot from './generated/currentLegislators.json';
 import { congressPhotoUrl } from './photos';
 import { currentGovernors, GovernorRecord } from './governors';
+import { usesMemberProfile } from './memberProfile';
 
 interface RawLegislatorRecord {
   bioguideId: string;
@@ -74,6 +75,7 @@ export function buildLightweightFromLegislator(rec: RawLegislatorRecord): Politi
     ? `${rec.state}`
     : `${rec.state}${rec.district ? `'s ${rec.district} congressional district` : ''}`;
   const since = yearOf(rec.termStart);
+  const hasIntegratedProfile = usesMemberProfile(rec.bioguideId);
   return {
     id: rec.bioguideId,
     bioguideId: rec.bioguideId,
@@ -87,9 +89,11 @@ export function buildLightweightFromLegislator(rec: RawLegislatorRecord): Politi
     chamber: isSenate ? 'senate' : 'house',
     level: 'federal',
     imageUrl: congressPhotoUrl(rec.bioguideId),
-    bio: `${rec.name} is a ${rec.office} representing ${seat} in the ${chamberName}${since ? `, serving since ${since}` : ''}. This is a lightweight, real-sourced record generated from the public-domain unitedstates/congress-legislators dataset; the current office, term, party, and state are verified, while detailed votes, finance, and positions are not yet integrated for this profile.`,
+    bio: hasIntegratedProfile
+      ? `${rec.name} is a ${rec.office} representing ${seat} in the ${chamberName}${since ? `, serving since ${since}` : ''}. Current office metadata comes from the public-domain unitedstates/congress-legislators dataset; votes, finance, and profile records are integrated from the generated profile data pipeline.`
+      : `${rec.name} is a ${rec.office} representing ${seat} in the ${chamberName}${since ? `, serving since ${since}` : ''}. This is a lightweight, real-sourced record generated from the public-domain unitedstates/congress-legislators dataset; the current office, term, party, and state are verified, while detailed votes, finance, and positions are not yet integrated for this profile.`,
     website: rec.sourceUrl || undefined,
-    recordType: 'lightweight',
+    recordType: hasIntegratedProfile ? 'featured' : 'lightweight',
     inOffice: true, // legacy field; the resolver is authoritative
     termStart: rec.termStart,
     termEnd: rec.termEnd,

@@ -76,6 +76,15 @@ test('every migrated profile directory is present under profiles/', () => {
   }
 });
 
+test('migrated profiles render as integrated records, not lightweight placeholders', () => {
+  for (const bioguideId of MIGRATED_PROFILE_BIOGUIDES) {
+    const profile = allPoliticians.find((p) => p.bioguideId === bioguideId);
+    assert.ok(profile, `${bioguideId} missing from allPoliticians`);
+    assert.notEqual(profile.recordType, 'lightweight', `${bioguideId} is still gated as lightweight`);
+    assert.doesNotMatch(profile.bio, /not yet integrated/i, `${bioguideId} bio still says profile data is not integrated`);
+  }
+});
+
 test('migrated current members must not have unmarked votes=0 (sufficiency guard)', () => {
   const violations: string[] = [];
   for (const bioguideId of MIGRATED_PROFILE_BIOGUIDES) {
