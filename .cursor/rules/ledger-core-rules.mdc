@@ -126,9 +126,12 @@ the specific failure this file was created to stop.
   but scales up for high-profile figures (e.g. Trump) where the record is large. Always
   objective and sourced.
 - **News** — collect relevant, impactful items; stick to quotes or fact-based statements.
-  Single-source items shown as `'alleged'`; 2+ sources to present as verified fact.
-  [OWNER TO CONFIRM: owner suggested 1 corroborating source for news — kept at credibility-safe
-  default pending explicit confirmation.]
+  Single-source items shown as `'alleged'`; 2+ sources to present as verified fact. Resolved:
+  kept at the platform-wide 2+ source standard (consistent with the multi-source corroboration
+  rule in `ledger-data-policy.mdc`) rather than a news-specific 1-source exception, since a
+  weaker threshold for one section alone would be an unprincipled carve-out in the credibility
+  standard. Revisit only if the owner directs a visible product change (e.g. a distinct
+  "single-source" news badge/section).
 - **Endorsements** — filled out thoroughly but not a giant section; moderate depth.
 - **Exact display numbers (from demo components — do not drift):** evidence quote 117 chars
   (`ExpandableEvidenceRow.tsx`); topic bill title 80 chars, 5 sponsored + 5 cosponsored per

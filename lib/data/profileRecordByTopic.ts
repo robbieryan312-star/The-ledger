@@ -113,7 +113,8 @@ export const RECORD_TOPIC_BUCKETS: TopicBucketDef[] = [
     keywords: [
       'civil rights', 'civil liberties', 'voting rights', 'discrimination', 'fisa', 'surveillance',
       'speech', 'censorship', 'lgbt', 'equality', 'judiciary', 'judicial', 'nomination', 'confirm',
-      'justice', 'court', 'judge', 'attorney general', 'ambassador', 'constitutional',
+      'justice', 'court', 'judge', 'district judge', 'circuit judge', 'attorney general',
+      'ambassador', 'constitutional',
     ],
   },
   {

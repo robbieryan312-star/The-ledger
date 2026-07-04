@@ -1,6 +1,6 @@
 # The Ledger — Progress Log
 
-**Last updated:** 2026-07-01
+**Last updated:** 2026-07-03
 **Branch:** `main`
 **Live demo:** https://the-ledger-gamma.vercel.app
 
@@ -8,12 +8,39 @@
 
 ## Current phase
 
-**Phase 17a complete + verified (S000033 pilot). Phase 17b next: scale Said→Did + org joins to 537.**
+**Phase 17b batch #1 (6 migrated profiles) locked: S000033, O000172, M000355, M001184,
+W000817, C001098. Next: scale the same per-destination pipeline to the remaining 531 members.**
 
-Phase 17a verified 2026-07-01: CREC boilerplate filter live (`sync-topic-positions.ts`);
-S000033 statements = 3, zero procedural boilerplate, zero dupes, per the tightened
-`PILOT_PROFILE_CHECKLIST.md` Said rule; build passes. Single always-read ruleset added:
-`.cursor/rules/ledger-core-rules.mdc` (binds Claude Code + all Cursor agents).
+Batch #1 status (2026-07-03, local commits `fafcc3e`…`f0390ca`, not yet pushed):
+- Gendered-honorific CREC bug fixed (Senate search + opener regex were male-only, silently
+  zeroing ~28% of Congress) — verified on female members, regression fixture added.
+- CREC search decoupled search-pool (150, paginated, congress 119+118) from the 12-statement
+  display cap; topic classifier moved from substring `includes()` to word-boundary + weighted
+  bucket scoring (`scoreTopicBuckets`) to kill false-positive topic hits (e.g. "price of" → ICE).
+- Said→Did pairing now requires `saidDidSubjectsOverlap()` — cross-topic false pairs (e.g.
+  Warren tax statement ↔ War Powers vote) dropped; guard added to `test:source-integrity`
+  to reject subject-mismatched pairs permanently (append-only fixture).
+- Display pipeline centralized in `lib/data/displaySummary.ts` (`leadSummary`, abbreviation-aware
+  sentence segmentation) + `lib/data/htmlEntities.ts` — fixed the "Mr./Ms." truncation bug and
+  undecoded `&#160;`-style entities leaking into Key Issues summaries.
+  `positions.json` purged of vote-restatement tautologies; new `validatePlatformPositionsFile`
+  guard added to `test:source-integrity` (41/41 green as of this update).
+- `scripts/reprocess-profiles.ts` added to backfill parsing/classification fixes into already-
+  collected data without re-fetching from external APIs.
+- News pipeline (`scripts/sync-profile-news.ts`, GDELT) run for all 6 profiles: W000817 has 1
+  verified article; S000033 has 1; the other 4 profiles verified zero relevant results
+  (`news: honest-gap`, not `fetch-blocked` — GDELT rate-limit cleared and was re-queried).
+- 2026-07-03 cleanup: fixed a residual topic misclassification (Cruz's Ganjei judicial-
+  confirmation floor remark was filed under `education` on an incidental "public school
+  teacher" biographical mention outweighing the actual `civil-liberties` keywords — added
+  `district judge`/`circuit judge` to the civil-liberties keyword list and refiled it).
+  Also resolved a long-standing `[OWNER TO CONFIRM]` flag in `ledger-core-rules.mdc` re: news
+  corroboration threshold — kept the platform-wide 2+ source standard rather than a
+  news-specific 1-source carve-out (credibility-tradeoff decision, not a visual/UX one).
+
+Phase 17a (S000033 pilot) verified 2026-06-30: CREC boilerplate filter live; zero procedural
+boilerplate, zero dupes, per `PILOT_PROFILE_CHECKLIST.md` Said rule. Single always-read
+ruleset: `.cursor/rules/ledger-core-rules.mdc` (binds Claude Code + all Cursor agents).
 
 Said→Did live for 442/537 via Ballotpedia + roll-call votes. VoteSmart deferred. Source catalog: `lib/data/sourceCatalog.ts` + `lib/data/SOURCE_LOOKUP.md`.
 

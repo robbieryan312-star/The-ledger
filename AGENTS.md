@@ -108,7 +108,10 @@ Links profiles across all data layers: votes, FEC finance, news, stock trades. P
 - Work on feature branches when useful; owner may direct commits to `main`
 - `npm run build` must pass before any commit
 - Commit after each completed task before starting the next
-- Stop and wait for owner review after each phase — do not chain phases
+- Stop at review gates after each phase: Claude Code reviews every phase's output against the
+  rules before it is accepted/pushed; the owner reviews visual/product checkpoints only. Do not
+  chain unreviewed phases. (Conflict resolution: `.cursor/rules/ledger-core-rules.mdc` is the
+  canonical ruleset — where any doc disagrees with it, core-rules wins.)
 - Report in 3 lines: `Build: pass/fail | Files changed: [list] | Verified: [what you tested]`
 
 After data changes always run: `npm run sync:legislators` → `npm run verify:office` → `npm run build`
