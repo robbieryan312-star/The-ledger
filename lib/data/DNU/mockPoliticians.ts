@@ -1,6 +1,6 @@
-import { Politician, Source, EvidenceItem } from '../types';
+import { Politician, Source, EvidenceItem } from '../../types';
 import { additionalPoliticians } from './additionalPoliticians';
-import { resolveCurrentOffice } from './officeResolution';
+import { resolveCurrentOffice } from '../officeResolution';
 import {
   bernieSandersStockTrades,
   mitchMcconnellStockTrades,
@@ -207,43 +207,8 @@ export const mockPoliticians: Politician[] = [
         ] as EvidenceItem[],
       },
     ],
-    votingRecord: [
-      {
-        id: 'v1', billId: 'S.3600', billTitle: 'Inflation Reduction Act',
-        billDescription: 'Legislation addressing climate investment, healthcare costs, and deficit reduction via corporate minimum tax', date: '2022-08-07',
-        vote: 'Yea', result: 'Passed', category: 'Climate/Economy',
-        alignsWithCampaign: true, alignsWithDonors: false,
-        source: CONGRESS_GOV,
-      },
-      {
-        id: 'v2', billId: 'H.R.2617', billTitle: 'Consolidated Appropriations Act 2023',
-        billDescription: 'Government funding omnibus spending bill, $1.7T', date: '2022-12-22',
-        vote: 'Nay', result: 'Passed', category: 'Budget',
-        alignsWithCampaign: true, alignsWithDonors: false,
-        source: CONGRESS_GOV,
-      },
-      {
-        id: 'v3', billId: 'S.4490', billTitle: 'CHIPS and Science Act',
-        billDescription: '$280B investment in U.S. semiconductor manufacturing and scientific research', date: '2022-07-27',
-        vote: 'Yea', result: 'Passed', category: 'Technology/Economy',
-        alignsWithCampaign: true, alignsWithDonors: false,
-        source: CONGRESS_GOV,
-      },
-      {
-        id: 'v4', billId: 'H.R.3684', billTitle: 'Infrastructure Investment and Jobs Act',
-        billDescription: '$1.2T bipartisan infrastructure bill covering roads, bridges, broadband, and transit', date: '2021-11-05',
-        vote: 'Yea', result: 'Passed', category: 'Infrastructure',
-        alignsWithCampaign: true, alignsWithDonors: true,
-        source: CONGRESS_GOV,
-      },
-      {
-        id: 'v5', billId: 'S.2938', billTitle: 'Bipartisan Safer Communities Act',
-        billDescription: 'Gun safety legislation including enhanced background checks and red flag law funding', date: '2022-06-23',
-        vote: 'Yea', result: 'Passed', category: 'Gun Safety',
-        alignsWithCampaign: true, alignsWithDonors: false,
-        source: CONGRESS_GOV,
-      },
-    ],
+    // Voting record migrated to data/votes/national/congress-votes.json — mock retained empty as fallback
+    votingRecord: [],
     campaignFinance: {
       totalRaised: 41500000,
       totalSpent: 38200000,
@@ -394,25 +359,9 @@ export const mockPoliticians: Politician[] = [
         ],
       },
     ],
-    news: [
-      {
-        id: 'n1',
-        headline: 'Sanders reintroduces Medicare for All Act with record House cosponsors',
-        summary: 'Senator Sanders, Representative Jayapal, and Representative Dingell reintroduced the Medicare for All Act of 2023 with 14 Senate cosponsors and more than 110 House cosponsors. The bill would establish a single-payer program covering all U.S. residents without premiums, deductibles, or copayments.',
-        date: '2023-05-18',
-        category: 'Healthcare',
-        isOpinion: true,
-        isVerified: false,
-        source: {
-          name: 'The Guardian',
-          url: 'https://www.theguardian.com/commentisfree/2023/may/18/healthcare-us-human-right-medicare-for-all-bernie-sanders',
-          tier: 'media',
-          date: '2023-05-18',
-          description: 'Op-ed by Sanders on introducing Medicare for All legislation in the 118th Congress',
-        },
-        url: 'https://www.theguardian.com/commentisfree/2023/may/18/healthcare-us-human-right-medicare-for-all-bernie-sanders',
-      },
-    ],
+    // News migrated to profiles/S000033/news.json — mock retained empty as fallback
+    news: [],
+    // Controversies/endorsements migrated to profiles/S000033/ — mock retained as fallback
     endorsements: {
       endorses: [
         {
@@ -588,36 +537,8 @@ export const mockPoliticians: Politician[] = [
         ] as EvidenceItem[],
       },
     ],
-    votingRecord: [
-      {
-        id: 'v1', billId: 'H.R.1', billTitle: 'Tax Cuts and Jobs Act (2017)',
-        billDescription: 'Reduced corporate tax rate from 35% to 21%; temporarily reduced individual rates; increased standard deduction', date: '2017-12-20',
-        vote: 'Yea', result: 'Passed', category: 'Tax Policy',
-        alignsWithCampaign: true, alignsWithDonors: true,
-        source: CONGRESS_GOV,
-      },
-      {
-        id: 'v2', billId: 'H.R.3684', billTitle: 'Infrastructure Investment and Jobs Act',
-        billDescription: '$1.2T bipartisan infrastructure bill', date: '2021-11-05',
-        vote: 'Yea', result: 'Passed', category: 'Infrastructure',
-        alignsWithCampaign: true, alignsWithDonors: true,
-        source: CONGRESS_GOV,
-      },
-      {
-        id: 'v3', billId: 'S.2938', billTitle: 'Bipartisan Safer Communities Act',
-        billDescription: 'Expanded background checks; red flag law grants; mental health funding', date: '2022-06-23',
-        vote: 'Yea', result: 'Passed', category: 'Gun Safety',
-        alignsWithCampaign: false, alignsWithDonors: false,
-        source: CONGRESS_GOV,
-      },
-      {
-        id: 'v4', billId: 'S.J.Res.47', billTitle: 'Electoral Count Reform Act',
-        billDescription: 'Clarified Vice Presidential role in certifying Electoral College results', date: '2022-12-22',
-        vote: 'Yea', result: 'Passed', category: 'Democracy',
-        alignsWithCampaign: false, alignsWithDonors: false,
-        source: CONGRESS_GOV,
-      },
-    ],
+    // Voting record migrated to data/votes/national/congress-votes.json — mock retained empty as fallback
+    votingRecord: [],
     campaignFinance: {
       totalRaised: 42800000,
       totalSpent: 39600000,
@@ -765,28 +686,9 @@ export const mockPoliticians: Politician[] = [
         },
       ],
     },
-    news: [
-      {
-        id: 'n1',
-        headline: 'McConnell announces he will step down as Senate Republican leader in November 2024',
-        summary: 'Senator McConnell announced he would step down as Senate Republican leader in November 2024 after 17 years in the role, the longest-serving Senate party leader in U.S. history. He stated he plans to serve out his term through January 2027.',
-        date: '2024-02-28',
-        category: 'Senate Leadership',
-        isOpinion: false,
-        isVerified: true,
-        source: AP,
-      },
-      {
-        id: 'n2',
-        headline: 'McConnell Intel stock purchase occurred during CHIPS Act negotiations — STOCK Act filing',
-        summary: 'STOCK Act disclosure filed August 13, 2021 shows McConnell purchased Intel Corporation stock on July 15, 2021, while the Senate was actively negotiating the CHIPS and Science Act. Under the STOCK Act, members must disclose trades within 45 days. The 29-day disclosure window was within legal requirements.',
-        date: '2021-08-13',
-        category: 'Stock Trades',
-        isOpinion: false,
-        isVerified: true,
-        source: SENATE_STOCK,
-      },
-    ],
+    // News migrated to profiles/M000355/news.json — mock retained empty as fallback
+    news: [],
+    // Controversies/endorsements migrated to profiles/M000355/ — mock retained as fallback
   },
 
   {
@@ -914,36 +816,8 @@ export const mockPoliticians: Politician[] = [
         ] as EvidenceItem[],
       },
     ],
-    votingRecord: [
-      {
-        id: 'v1', billId: 'H.R.1', billTitle: 'For the People Act',
-        billDescription: 'Voting rights, campaign finance disclosure, and anti-corruption reform legislation', date: '2021-03-03',
-        vote: 'Yea', result: 'Passed', category: 'Democracy',
-        alignsWithCampaign: true, alignsWithDonors: false,
-        source: CONGRESS_GOV,
-      },
-      {
-        id: 'v2', billId: 'H.R.3684', billTitle: 'Infrastructure Investment and Jobs Act',
-        billDescription: '$1.2T bipartisan infrastructure bill; AOC voted No, arguing it should not be separated from the reconciliation bill', date: '2021-11-05',
-        vote: 'Nay', result: 'Passed', category: 'Infrastructure',
-        alignsWithCampaign: true, alignsWithDonors: false,
-        source: CONGRESS_GOV,
-      },
-      {
-        id: 'v3', billId: 'H.R.5376', billTitle: 'Inflation Reduction Act',
-        billDescription: 'Climate investment ($370B), Medicare drug price negotiation, corporate minimum tax', date: '2022-08-12',
-        vote: 'Yea', result: 'Passed', category: 'Climate/Economy',
-        alignsWithCampaign: true, alignsWithDonors: false,
-        source: CONGRESS_GOV,
-      },
-      {
-        id: 'v4', billId: 'H.R.7900', billTitle: 'National Defense Authorization Act 2023',
-        billDescription: '$857.9B defense authorization bill', date: '2022-07-14',
-        vote: 'Nay', result: 'Passed', category: 'Defense',
-        alignsWithCampaign: true, alignsWithDonors: false,
-        source: CONGRESS_GOV,
-      },
-    ],
+    // Voting record migrated to data/votes/national/congress-votes.json — mock retained empty as fallback
+    votingRecord: [],
     campaignFinance: {
       totalRaised: 9800000,
       totalSpent: 8900000,
@@ -1122,28 +996,9 @@ export const mockPoliticians: Politician[] = [
         },
       ],
     },
-    news: [
-      {
-        id: 'n1',
-        headline: 'AOC outraises every House member in Q1 2024, FEC filing shows',
-        summary: 'Federal Election Commission records show Representative Ocasio-Cortez raised $6.2M in Q1 2024, the most of any House member. Over 99% came from small-dollar individual donors. She has no Republican opponent currently filed.',
-        date: '2024-04-15',
-        category: 'Campaign Finance',
-        isOpinion: false,
-        isVerified: true,
-        source: FEC,
-      },
-      {
-        id: 'n2',
-        headline: 'Ocasio-Cortez reintroduces Green New Deal for Public Housing Act',
-        summary: 'Representative Ocasio-Cortez reintroduced legislation to fund zero-emissions retrofits of public housing units across the country. The Congressional Budget Office estimated the cost at $172B over 10 years.',
-        date: '2023-11-02',
-        category: 'Housing',
-        isOpinion: false,
-        isVerified: true,
-        source: CONGRESS_GOV,
-      },
-    ],
+    // News migrated to profiles/O000172/news.json — mock retained empty as fallback
+    news: [],
+    // Controversies/endorsements migrated to profiles/O000172/ — mock retained as fallback
   },
 
   // ── Ron DeSantis ──────────────────────────────────────────────────────────
@@ -1499,73 +1354,8 @@ export const mockPoliticians: Politician[] = [
         ] as EvidenceItem[],
       },
     ],
-    votingRecord: [
-      {
-        id: 'mas-v1',
-        billId: 'H.R.8035',
-        billTitle: 'Ukraine Security Supplemental Appropriations Act ($61B)',
-        billDescription: 'Supplemental appropriations providing $61 billion in security and economic aid to Ukraine for fiscal year 2024, including military equipment, ammunition, and economic support. Passed House 311-112.',
-        date: '2024-04-20',
-        vote: 'Nay',
-        result: 'Passed',
-        category: 'Foreign Policy',
-        alignsWithCampaign: true,
-        alignsWithDonors: false,
-        source: { name: 'Congress.gov', tier: 'official', url: 'https://www.congress.gov/bill/118th-congress/house-bill/8035', date: '2024-04-20' },
-      },
-      {
-        id: 'mas-v2',
-        billId: 'H.R.815',
-        billTitle: 'Consolidated Appropriations Act / Israel Supplemental ($14.3B Israel aid)',
-        billDescription: 'Emergency supplemental appropriations including $14.3 billion in security assistance to Israel following the October 7, 2023 Hamas attack. Massie voted NO, one of only a handful of Republicans to oppose.',
-        date: '2024-02-13',
-        vote: 'Nay',
-        result: 'Passed',
-        category: 'Foreign Policy',
-        alignsWithCampaign: true,
-        alignsWithDonors: false,
-        source: { name: 'Congress.gov', tier: 'official', url: 'https://www.congress.gov/bill/118th-congress/house-bill/815', date: '2024-02-13' },
-      },
-      {
-        id: 'mas-v3',
-        billId: 'H.R.7521',
-        billTitle: 'Protecting Americans from Foreign Adversary Controlled Applications Act (TikTok Ban)',
-        billDescription: 'Would force ByteDance to divest TikTok or face a ban in the United States. Massie voted NO, citing 1st Amendment concerns. Passed House 352-65.',
-        date: '2024-03-13',
-        vote: 'Nay',
-        result: 'Passed',
-        category: 'Technology/Economy',
-        alignsWithCampaign: true,
-        alignsWithDonors: false,
-        source: { name: 'Congress.gov', tier: 'official', url: 'https://www.congress.gov/bill/118th-congress/house-bill/7521', date: '2024-03-13' },
-      },
-      {
-        id: 'mas-v4',
-        billId: 'H.Res.888',
-        billTitle: 'Motion to Vacate Speaker Mike Johnson',
-        billDescription: 'Rep. Marjorie Taylor Greene\'s motion to remove Speaker Mike Johnson. Massie was one of only 11 Republicans to vote in favor of consideration, angering House Republican leadership.',
-        date: '2024-05-08',
-        vote: 'Yea',
-        result: 'Failed',
-        category: 'Democracy',
-        alignsWithCampaign: false,
-        alignsWithDonors: false,
-        source: { name: 'Congress.gov', tier: 'official', date: '2024-05-08' },
-      },
-      {
-        id: 'mas-v5',
-        billId: 'H.R.2670',
-        billTitle: 'National Defense Authorization Act for FY2024 (NDAA)',
-        billDescription: 'Annual defense policy bill authorizing $886 billion in defense spending for FY2024. Massie voted NO — one of few Republicans to oppose the NDAA. Cited opposition to specific provisions and overall spending level.',
-        date: '2023-12-14',
-        vote: 'Nay',
-        result: 'Passed',
-        category: 'Budget',
-        alignsWithCampaign: true,
-        alignsWithDonors: false,
-        source: { name: 'Congress.gov', tier: 'official', url: 'https://www.congress.gov/bill/118th-congress/house-bill/2670', date: '2023-12-14' },
-      },
-    ],
+    // Voting record migrated to data/votes/national/congress-votes.json — mock retained empty as fallback
+    votingRecord: [],
     campaignFinance: {
       totalRaised: 3200000,
       totalSpent: 1950000,
@@ -1635,39 +1425,9 @@ export const mockPoliticians: Politician[] = [
         isVerified: true,
       },
     ],
-    news: [
-      {
-        id: 'mas-n1',
-        headline: 'AIPAC Spends $1M+ to Defeat Massie in KY Primary — He Wins 75% Anyway',
-        summary: "AIPAC's United Democracy Project poured over $1 million into negative advertising against Rep. Thomas Massie in the 2024 Kentucky Republican primary, backing first-time challenger Jimmy Ausbrooks. Massie, a consistent 'no' vote on foreign aid including Israel assistance, won with approximately 75% of the vote. The primary became a national test case for AIPAC's strategy of targeting members of Congress who vote against Israel aid.",
-        date: '2024-05-22',
-        source: { name: 'AP News', tier: 'nonpartisan', url: 'https://apnews.com', date: '2024-05-22' },
-        category: 'Election',
-        isOpinion: false,
-        isVerified: true,
-      },
-      {
-        id: 'mas-n2',
-        headline: 'Massie Votes No on $61B Ukraine Aid — One of 112 House Members to Oppose',
-        summary: "Rep. Massie voted against the Ukraine Security Supplemental Appropriations Act (H.R.8035) providing $61 billion in military and economic assistance to Ukraine. The bill passed 311-112, with Massie among 101 Republicans and 11 Democrats voting against. Massie argued the money is borrowed, adding to the national debt, and that it is not America's responsibility to fund foreign wars.",
-        date: '2024-04-20',
-        source: { name: 'Congress.gov', tier: 'official', url: 'https://www.congress.gov/bill/118th-congress/house-bill/8035', date: '2024-04-20' },
-        category: 'Foreign Policy',
-        isOpinion: false,
-        isVerified: true,
-        url: 'https://www.congress.gov/bill/118th-congress/house-bill/8035',
-      },
-      {
-        id: 'mas-n3',
-        headline: 'Massie Introduces "Hearing Protection Act" to Deregulate Gun Suppressors',
-        summary: "Massie introduced legislation to remove silencers and suppressors from regulation under the National Firearms Act, which currently requires a $200 tax stamp and months-long wait for legal ownership. Massie argues suppressors are hearing safety devices, not the dangerous assassination tools depicted in films. The bill has been reintroduced in multiple Congresses without advancing to a floor vote.",
-        date: '2023-03-09',
-        source: { name: 'Congress.gov', tier: 'official', url: 'https://www.congress.gov', date: '2023-03-09' },
-        category: 'Legislation',
-        isOpinion: false,
-        isVerified: true,
-      },
-    ],
+    // News migrated to profiles/M001184/news.json — mock retained empty as fallback
+    news: [],
+    // Controversies/endorsements migrated to profiles/M001184/ — mock retained as fallback
     endorsements: {
       endorses: [],
       endorsedBy: [

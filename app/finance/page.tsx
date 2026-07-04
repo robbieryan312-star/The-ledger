@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import FinanceContent from './FinanceContent';
 import Link from 'next/link';
-import { mockPoliticians } from '@/lib/data/mockPoliticians';
+import { allPoliticians } from '@/lib/data/allPoliticians';
 import { fecFinanceCount, mergeCampaignFinance } from '@/lib/data/fecFinance';
 
 export const metadata = {
@@ -22,7 +22,8 @@ export default async function FinancePage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const initialSearchParams = await searchParams;
-  const featuredFinance = mockPoliticians.map((p) => ({
+  const featured = allPoliticians.filter((p) => p.recordType !== 'lightweight');
+  const featuredFinance = featured.map((p) => ({
     politician: p,
     merged: mergeCampaignFinance(p.id, p.campaignFinance, p.bioguideId),
   }));

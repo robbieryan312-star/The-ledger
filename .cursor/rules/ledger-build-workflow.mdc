@@ -68,11 +68,18 @@ Stop and ask the owner only for:
 
 Do not stop and ask for routine implementation decisions.
 
-## Mock data rules
+## Mock data policy (DNU quarantine — 2026-07-04)
 
-- Mock data pages (`/lobbying`, `/elections`) must carry a visible "Demo — not verified" banner until replaced by real data pipelines
-- Never silently present demo data as if it were official
-- `demoTradeCount` in stock trades must be visible to the user — not just tracked in code
+Mock/hand-authored fact data is permanently banned from the app interface.
+All 6 former mock files live in `lib/data/DNU/` (quarantined, never imported).
+They are retained solely as collection leads for cross-checking pipeline output.
+
+- **Banned from interface:** No app/, components/, or lib/ code (outside DNU/) may import quarantined files
+- **Guard-enforced:** Build fails on any DNU import (sourceIntegrity test suite)
+- **Pipelines are the only path:** Real data enters via sync scripts → lib/data/generated/ with verifiable sources
+- **Identity scaffolding:** Politician roster/identity fields (name, party, state, photo) live in generated/roster.json
+- **Honest empty states:** Any category without real pipeline data shows "No verified record available"
+- **Demo surfaces:** /elections, /lobbying, /compare show "No verified data yet" until real pipelines exist
 
 ## Sync script commands
 

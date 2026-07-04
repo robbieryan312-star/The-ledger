@@ -7,7 +7,7 @@ import type { FecFinanceEntry } from '@/lib/data/fecFinance';
 import type { CongressVoteEntry } from '@/lib/data/congressVotes';
 import type { ProfileRecordByTopic } from '@/lib/data/profileRecordByTopic';
 import type { MemberDeepProfile } from '@/lib/data/memberDeep';
-import type { RecordJuxtaposition, CampaignFinance, Politician, StockTrade, VoteRecord, EvidenceItem, Issue, NewsItem } from '@/lib/types';
+import type { RecordJuxtaposition, CampaignFinance, Controversy, Politician, Source, StockTrade, VoteRecord, EvidenceItem, Issue, NewsItem } from '@/lib/types';
 import SourceBadge from '@/components/ui/SourceBadge';
 import SourceProvenance from '@/components/ui/SourceProvenance';
 import { PHOTO_ATTRIBUTION } from '@/lib/data/photos';
@@ -54,6 +54,14 @@ import { getScheduleAForBioguide, hasAggregatedScheduleA } from '@/lib/data/fecS
 import type { NewsBundleSlice } from '@/lib/data/snapshotTypes';
 import type { StockTradeEntry } from '@/lib/data/stockTrades';
 
+interface EndorsementEntry {
+  name: string;
+  office: string;
+  politicianId?: string;
+  date?: string;
+  source?: Source;
+}
+
 export interface PoliticianProfileClientProps {
   politician: Politician;
   initialTab?: string;
@@ -71,6 +79,8 @@ export interface PoliticianProfileClientProps {
   memberDeep: MemberDeepProfile | null;
   voteviewMember: ReturnType<typeof import('@/lib/data/slices/voteview').getVoteviewByBioguide>;
   displayNews: NewsItem[];
+  displayControversies?: Controversy[];
+  displayEndorsements?: { endorses: EndorsementEntry[]; endorsedBy: EndorsementEntry[] };
   floridaNewsBundle: NewsBundleSlice | null;
   recordJuxtapositions: RecordJuxtaposition[];
   isFederalCongress: boolean;
@@ -380,8 +390,8 @@ function IssueAccordion({ issues, politicianName }: { issues: Issue[]; politicia
   );
 }
 
-function EndorsementsTab({ politician }: { politician: Politician }) {
-  const e = politician.endorsements;
+function EndorsementsTab({ politician, displayEndorsements }: { politician: Politician; displayEndorsements?: { endorses: EndorsementEntry[]; endorsedBy: EndorsementEntry[] } }) {
+  const e = displayEndorsements ?? politician.endorsements;
   if (!e || (e.endorses.length === 0 && e.endorsedBy.length === 0)) {
     return (
       <div className="rounded-xl p-8 border border-white/[0.07] text-center" style={{ background: 'rgba(11,25,41,0.6)' }}>
@@ -512,6 +522,8 @@ export default function PoliticianProfileClient({
   memberDeep,
   voteviewMember,
   displayNews,
+  displayControversies,
+  displayEndorsements,
   floridaNewsBundle,
   recordJuxtapositions,
   isFederalCongress,
@@ -1015,7 +1027,7 @@ export default function PoliticianProfileClient({
         {activeTab === 'controversies' && (
           <div className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(11,25,41,0.7)' }}>
             <h2 className="text-white font-bold mb-4">Controversies & Allegations</h2>
-            {isLightweight ? <MissingRecordPanel kind="controversy records" /> : <ControversySection controversies={politician.controversies} name={politician.name} />}
+            {isLightweight ? <MissingRecordPanel kind="controversy records" /> : <ControversySection controversies={displayControversies ?? politician.controversies ?? []} name={politician.name} />}
           </div>
         )}
 
@@ -1032,7 +1044,7 @@ export default function PoliticianProfileClient({
         )}
 
         {activeTab === 'endorsements' && (
-          <EndorsementsTab politician={politician} />
+          <EndorsementsTab politician={politician} displayEndorsements={displayEndorsements} />
         )}
       </div>
     </div>

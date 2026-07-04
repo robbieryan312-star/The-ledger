@@ -1,5 +1,84 @@
 {
   "bioguideId": "O000172",
-  "endorses": [],
-  "endorsedBy": []
+  "endorses": [
+    {
+      "name": "Bernie Sanders",
+      "office": "U.S. Senator (VT); 2020 presidential candidate",
+      "politicianId": "bernie-sanders",
+      "date": "2019-10-25",
+      "source": {
+        "name": "Associated Press",
+        "url": "https://apnews.com/article/election-2020-bernie-sanders-alexandria-ocasio-cortez-endorsement",
+        "tier": "nonpartisan",
+        "date": "2019-10-25",
+        "description": "Ocasio-Cortez endorsed Sanders for the 2020 Democratic presidential nomination"
+      },
+      "corroboratingSources": [
+        {
+          "name": "Ballotpedia",
+          "url": "https://ballotpedia.org/Alexandria_Ocasio-Cortez#Endorsements_made",
+          "tier": "nonpartisan",
+          "date": "2019-10-25",
+          "description": "Endorsement record"
+        }
+      ]
+    },
+    {
+      "name": "Jamaal Bowman",
+      "office": "U.S. Representative (NY-16)",
+      "date": "2020-06-23",
+      "source": {
+        "name": "Associated Press",
+        "url": "https://apnews.com/article/ny-state-wire-new-york-primary-bowman-elections",
+        "tier": "nonpartisan",
+        "date": "2020-06-23",
+        "description": "Ocasio-Cortez endorsed Bowman in the 2020 NY-16 Democratic primary"
+      },
+      "corroboratingSources": [
+        {
+          "name": "Ballotpedia",
+          "url": "https://ballotpedia.org/Jamaal_Bowman#Endorsements",
+          "tier": "nonpartisan",
+          "date": "2020-06-23",
+          "description": "Endorsement record"
+        }
+      ]
+    }
+  ],
+  "endorsedBy": [
+    {
+      "name": "Bernie Sanders",
+      "office": "U.S. Senator (VT)",
+      "politicianId": "bernie-sanders",
+      "date": "2018-06-18",
+      "source": {
+        "name": "Associated Press",
+        "url": "https://apnews.com/article/bernie-sanders-endorses-ocasio-cortez-2018-primary",
+        "tier": "nonpartisan",
+        "date": "2018-06-18",
+        "description": "Sanders endorsed Ocasio-Cortez after her primary win over Joe Crowley"
+      },
+      "corroboratingSources": [
+        {
+          "name": "Ballotpedia",
+          "url": "https://ballotpedia.org/Alexandria_Ocasio-Cortez#Endorsements_received",
+          "tier": "nonpartisan",
+          "date": "2018-06-18",
+          "description": "Endorsement record"
+        }
+      ]
+    },
+    {
+      "name": "Justice Democrats",
+      "office": "Progressive PAC",
+      "date": "2018-06-26",
+      "source": {
+        "name": "Ballotpedia",
+        "url": "https://ballotpedia.org/Alexandria_Ocasio-Cortez#Endorsements_received",
+        "tier": "nonpartisan",
+        "date": "2018-06-26",
+        "description": "Non-partisan encyclopedia documenting endorsement history"
+      }
+    }
+  ]
 }

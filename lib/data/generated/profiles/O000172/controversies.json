@@ -1,4 +1,31 @@
 {
   "bioguideId": "O000172",
-  "items": []
+  "items": [
+    {
+      "id": "c1",
+      "title": "January 6, 2021 — claimed she feared for her life in her office",
+      "summary": "AOC publicly stated she feared for her life during the January 6 Capitol riot. Her office is in a building connected to the Capitol by tunnel; she was not in the Capitol itself during the breach. She clarified in subsequent interviews that she hid in her office bathroom. Critics disputed the framing; she maintains the fear was real regardless of physical distance.",
+      "category": "Conduct",
+      "status": "Resolved",
+      "date": "2021-01-06",
+      "isVerified": true,
+      "sources": [
+        { "name": "AOC Instagram Live statement", "url": "https://www.instagram.com/tv/CKlPqiHAiKT/", "tier": "official", "date": "2021-02-01", "description": "Her own account of events" },
+        { "name": "Reuters Fact Check", "url": "https://www.reuters.com/article/uk-factcheck-aoc-capitol-was-not-in-idUSKBN2A51RK", "tier": "nonpartisan", "date": "2021-02-02", "description": "Fact check of timeline and building geography" }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "Met Gala attendance (2021)",
+      "summary": "AOC attended the 2021 Met Gala wearing a dress with \"Tax the Rich\" written on it. Critics noted the tension between the message and attending a $35,000-per-ticket event. AOC stated she attended as a working-class guest at the invitation of the designer and that her presence advanced political messaging.",
+      "category": "Conduct",
+      "status": "Resolved",
+      "date": "2021-09-13",
+      "isVerified": true,
+      "sources": [
+        { "name": "Associated Press", "url": "https://apnews.com/article/entertainment-lifestyle-fashion-alexandria-ocasio-cortez-met-gala-2021-c3b4e5f6a7b8c9d0", "tier": "nonpartisan", "date": "2021-09-13", "description": "Factual reporting on the event" },
+        { "name": "AOC statement", "url": "https://www.instagram.com/p/CTwzxGXr0rS/", "tier": "official", "date": "2021-09-14", "description": "Her explanation on social media" }
+      ]
+    }
+  ]
 }

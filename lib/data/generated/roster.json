@@ -1,0 +1,428 @@
+{
+  "generatedAt": "2026-07-04T09:06:43.260Z",
+  "count": 7,
+  "entries": [
+    {
+      "id": "bernie-sanders",
+      "bioguideId": "S000033",
+      "name": "Bernie Sanders",
+      "firstName": "Bernie",
+      "lastName": "Sanders",
+      "party": "Independent",
+      "state": "Vermont",
+      "stateCode": "VT",
+      "chamber": "senate",
+      "level": "federal",
+      "recordType": "featured",
+      "inOffice": true,
+      "termStart": "2007-01-04",
+      "termEnd": "2029-01-03"
+    },
+    {
+      "id": "mitch-mcconnell",
+      "bioguideId": "M000355",
+      "name": "Mitch McConnell",
+      "firstName": "Mitch",
+      "lastName": "McConnell",
+      "party": "Republican",
+      "state": "Kentucky",
+      "stateCode": "KY",
+      "chamber": "senate",
+      "level": "federal",
+      "recordType": "featured",
+      "inOffice": true,
+      "termStart": "1985-01-03",
+      "termEnd": "2027-01-03"
+    },
+    {
+      "id": "alexandria-ocasio-cortez",
+      "bioguideId": "O000172",
+      "name": "Alexandria Ocasio-Cortez",
+      "firstName": "Alexandria",
+      "lastName": "Ocasio-Cortez",
+      "party": "Democrat",
+      "state": "New York",
+      "stateCode": "NY",
+      "chamber": "house",
+      "level": "federal",
+      "district": "14",
+      "recordType": "featured",
+      "inOffice": true,
+      "termStart": "2019-01-03",
+      "termEnd": "2027-01-03"
+    },
+    {
+      "id": "ron-desantis",
+      "bioguideId": "D000628",
+      "name": "Ron DeSantis",
+      "firstName": "Ron",
+      "lastName": "DeSantis",
+      "party": "Republican",
+      "state": "Florida",
+      "stateCode": "FL",
+      "chamber": "governor",
+      "level": "state",
+      "recordType": "featured",
+      "inOffice": true,
+      "termStart": "2019-01-08",
+      "termEnd": "2027-01-05"
+    },
+    {
+      "id": "rep-massie",
+      "bioguideId": "M001184",
+      "name": "Thomas Massie",
+      "firstName": "Thomas",
+      "lastName": "Massie",
+      "party": "Republican",
+      "state": "Kentucky",
+      "stateCode": "KY",
+      "chamber": "house",
+      "level": "federal",
+      "district": "4",
+      "recordType": "featured",
+      "inOffice": true,
+      "termStart": "2012-11-13",
+      "termEnd": "2027-01-03"
+    },
+    {
+      "id": "elizabeth-warren",
+      "bioguideId": "W000817",
+      "name": "Elizabeth Warren",
+      "firstName": "Elizabeth",
+      "lastName": "Warren",
+      "party": "Democrat",
+      "state": "Massachusetts",
+      "stateCode": "MA",
+      "chamber": "senate",
+      "level": "federal",
+      "recordType": "featured",
+      "inOffice": true,
+      "termStart": "2013-01-03",
+      "termEnd": "2031-01-03"
+    },
+    {
+      "id": "ted-cruz",
+      "bioguideId": "C001098",
+      "name": "Ted Cruz",
+      "firstName": "Ted",
+      "lastName": "Cruz",
+      "party": "Republican",
+      "state": "Texas",
+      "stateCode": "TX",
+      "chamber": "senate",
+      "level": "federal",
+      "recordType": "featured",
+      "inOffice": true,
+      "termStart": "2013-01-03",
+      "termEnd": "2031-01-03"
+    }
+  ],
+  "mockStates": [
+    {
+      "code": "AL",
+      "name": "Alabama",
+      "activePoliticians": 9,
+      "upcomingElections": 3
+    },
+    {
+      "code": "AK",
+      "name": "Alaska",
+      "activePoliticians": 5,
+      "upcomingElections": 2
+    },
+    {
+      "code": "AZ",
+      "name": "Arizona",
+      "activePoliticians": 11,
+      "upcomingElections": 4
+    },
+    {
+      "code": "AR",
+      "name": "Arkansas",
+      "activePoliticians": 8,
+      "upcomingElections": 2
+    },
+    {
+      "code": "CA",
+      "name": "California",
+      "activePoliticians": 55,
+      "upcomingElections": 12
+    },
+    {
+      "code": "CO",
+      "name": "Colorado",
+      "activePoliticians": 11,
+      "upcomingElections": 3
+    },
+    {
+      "code": "CT",
+      "name": "Connecticut",
+      "activePoliticians": 7,
+      "upcomingElections": 2
+    },
+    {
+      "code": "DE",
+      "name": "Delaware",
+      "activePoliticians": 4,
+      "upcomingElections": 1
+    },
+    {
+      "code": "FL",
+      "name": "Florida",
+      "activePoliticians": 10,
+      "upcomingElections": 8
+    },
+    {
+      "code": "GA",
+      "name": "Georgia",
+      "activePoliticians": 16,
+      "upcomingElections": 5
+    },
+    {
+      "code": "HI",
+      "name": "Hawaii",
+      "activePoliticians": 5,
+      "upcomingElections": 2
+    },
+    {
+      "code": "ID",
+      "name": "Idaho",
+      "activePoliticians": 6,
+      "upcomingElections": 2
+    },
+    {
+      "code": "IL",
+      "name": "Illinois",
+      "activePoliticians": 21,
+      "upcomingElections": 6
+    },
+    {
+      "code": "IN",
+      "name": "Indiana",
+      "activePoliticians": 13,
+      "upcomingElections": 3
+    },
+    {
+      "code": "IA",
+      "name": "Iowa",
+      "activePoliticians": 9,
+      "upcomingElections": 2
+    },
+    {
+      "code": "KS",
+      "name": "Kansas",
+      "activePoliticians": 8,
+      "upcomingElections": 2
+    },
+    {
+      "code": "KY",
+      "name": "Kentucky",
+      "activePoliticians": 8,
+      "upcomingElections": 3
+    },
+    {
+      "code": "LA",
+      "name": "Louisiana",
+      "activePoliticians": 9,
+      "upcomingElections": 2
+    },
+    {
+      "code": "ME",
+      "name": "Maine",
+      "activePoliticians": 4,
+      "upcomingElections": 2
+    },
+    {
+      "code": "MD",
+      "name": "Maryland",
+      "activePoliticians": 10,
+      "upcomingElections": 3
+    },
+    {
+      "code": "MA",
+      "name": "Massachusetts",
+      "activePoliticians": 11,
+      "upcomingElections": 3
+    },
+    {
+      "code": "MI",
+      "name": "Michigan",
+      "activePoliticians": 16,
+      "upcomingElections": 5
+    },
+    {
+      "code": "MN",
+      "name": "Minnesota",
+      "activePoliticians": 10,
+      "upcomingElections": 3
+    },
+    {
+      "code": "MS",
+      "name": "Mississippi",
+      "activePoliticians": 8,
+      "upcomingElections": 2
+    },
+    {
+      "code": "MO",
+      "name": "Missouri",
+      "activePoliticians": 10,
+      "upcomingElections": 3
+    },
+    {
+      "code": "MT",
+      "name": "Montana",
+      "activePoliticians": 4,
+      "upcomingElections": 2
+    },
+    {
+      "code": "NE",
+      "name": "Nebraska",
+      "activePoliticians": 6,
+      "upcomingElections": 2
+    },
+    {
+      "code": "NV",
+      "name": "Nevada",
+      "activePoliticians": 7,
+      "upcomingElections": 3
+    },
+    {
+      "code": "NH",
+      "name": "New Hampshire",
+      "activePoliticians": 4,
+      "upcomingElections": 2
+    },
+    {
+      "code": "NJ",
+      "name": "New Jersey",
+      "activePoliticians": 15,
+      "upcomingElections": 4
+    },
+    {
+      "code": "NM",
+      "name": "New Mexico",
+      "activePoliticians": 6,
+      "upcomingElections": 2
+    },
+    {
+      "code": "NY",
+      "name": "New York",
+      "activePoliticians": 29,
+      "upcomingElections": 8
+    },
+    {
+      "code": "NC",
+      "name": "North Carolina",
+      "activePoliticians": 16,
+      "upcomingElections": 5
+    },
+    {
+      "code": "ND",
+      "name": "North Dakota",
+      "activePoliticians": 4,
+      "upcomingElections": 1
+    },
+    {
+      "code": "OH",
+      "name": "Ohio",
+      "activePoliticians": 18,
+      "upcomingElections": 5
+    },
+    {
+      "code": "OK",
+      "name": "Oklahoma",
+      "activePoliticians": 8,
+      "upcomingElections": 2
+    },
+    {
+      "code": "OR",
+      "name": "Oregon",
+      "activePoliticians": 8,
+      "upcomingElections": 3
+    },
+    {
+      "code": "PA",
+      "name": "Pennsylvania",
+      "activePoliticians": 20,
+      "upcomingElections": 6
+    },
+    {
+      "code": "RI",
+      "name": "Rhode Island",
+      "activePoliticians": 4,
+      "upcomingElections": 2
+    },
+    {
+      "code": "SC",
+      "name": "South Carolina",
+      "activePoliticians": 9,
+      "upcomingElections": 3
+    },
+    {
+      "code": "SD",
+      "name": "South Dakota",
+      "activePoliticians": 4,
+      "upcomingElections": 1
+    },
+    {
+      "code": "TN",
+      "name": "Tennessee",
+      "activePoliticians": 11,
+      "upcomingElections": 3
+    },
+    {
+      "code": "TX",
+      "name": "Texas",
+      "activePoliticians": 38,
+      "upcomingElections": 10
+    },
+    {
+      "code": "UT",
+      "name": "Utah",
+      "activePoliticians": 7,
+      "upcomingElections": 2
+    },
+    {
+      "code": "VT",
+      "name": "Vermont",
+      "activePoliticians": 3,
+      "upcomingElections": 1
+    },
+    {
+      "code": "VA",
+      "name": "Virginia",
+      "activePoliticians": 13,
+      "upcomingElections": 4
+    },
+    {
+      "code": "WA",
+      "name": "Washington",
+      "activePoliticians": 12,
+      "upcomingElections": 4
+    },
+    {
+      "code": "WV",
+      "name": "West Virginia",
+      "activePoliticians": 5,
+      "upcomingElections": 2
+    },
+    {
+      "code": "WI",
+      "name": "Wisconsin",
+      "activePoliticians": 10,
+      "upcomingElections": 3
+    },
+    {
+      "code": "WY",
+      "name": "Wyoming",
+      "activePoliticians": 3,
+      "upcomingElections": 1
+    },
+    {
+      "code": "DC",
+      "name": "District of Columbia",
+      "activePoliticians": 2,
+      "upcomingElections": 1
+    }
+  ]
+}

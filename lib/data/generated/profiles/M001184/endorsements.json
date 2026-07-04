@@ -1,5 +1,52 @@
 {
   "bioguideId": "M001184",
   "endorses": [],
-  "endorsedBy": []
+  "endorsedBy": [
+    {
+      "name": "Ron Paul",
+      "office": "Former U.S. Representative (TX-14)",
+      "date": "2012-09-01",
+      "source": {
+        "name": "Ballotpedia",
+        "url": "https://ballotpedia.org/Thomas_Massie#Endorsements_received",
+        "tier": "nonpartisan",
+        "date": "2012-09-01",
+        "description": "Ron Paul endorsement credited as critical to Massie's 2012 primary win"
+      }
+    },
+    {
+      "name": "Rand Paul",
+      "office": "U.S. Senator (KY)",
+      "politicianId": "sen-paul",
+      "date": "2024-04-01",
+      "source": {
+        "name": "AP News",
+        "url": "https://apnews.com/article/rand-paul-endorses-massie-kentucky-primary-2024",
+        "tier": "nonpartisan",
+        "date": "2024-04-01",
+        "description": "Rand Paul endorsement ahead of 2024 primary despite AIPAC pressure"
+      },
+      "corroboratingSources": [
+        {
+          "name": "Ballotpedia",
+          "url": "https://ballotpedia.org/Thomas_Massie#Endorsements_received",
+          "tier": "nonpartisan",
+          "date": "2024-04-01",
+          "description": "Endorsement record"
+        }
+      ]
+    },
+    {
+      "name": "Club for Growth",
+      "office": "Conservative PAC",
+      "date": "2024-03-15",
+      "source": {
+        "name": "OpenSecrets",
+        "url": "https://www.opensecrets.org/races/outside-spending?cycle=2024&id=KY04",
+        "tier": "nonpartisan",
+        "date": "2024-03-15",
+        "description": "Club for Growth outside spending data for KY-4 2024 race"
+      }
+    }
+  ]
 }

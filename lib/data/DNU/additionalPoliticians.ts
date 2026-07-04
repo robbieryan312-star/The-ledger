@@ -1,4 +1,4 @@
-import { Politician, Source, EvidenceItem } from '../types';
+import { Politician, Source, EvidenceItem } from '../../types';
 
 // Production data would integrate FEC, Congress.gov, GovTrack, Ballotpedia, and state
 // legislatures — see lib/data/README.md and GWU political science database guide.

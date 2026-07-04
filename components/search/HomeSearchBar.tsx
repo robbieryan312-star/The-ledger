@@ -3,10 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Search, MapPin, Vote, X, Building2 } from 'lucide-react';
 import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
-import { mockStates } from '@/lib/data/mockPoliticians';
-import { searchPoliticians, resolveOffice } from '@/lib/data/allPoliticians';
-import { mockElections } from '@/lib/data/mockElections';
-import { mockCounties } from '@/lib/data/mockCounties';
+import { rosterStates, searchPoliticians, resolveOffice } from '@/lib/data/allPoliticians';
 import { lookupZip } from '@/lib/data/zipLookup';
 import { useUserProfile } from '@/lib/hooks/useUserProfile';
 import { useMapNavigationOptional } from '@/lib/context/MapNavigationContext';
@@ -74,40 +71,8 @@ export default function HomeSearchBar() {
       }
     }
 
-    // County name match
-    const countyMatches = mockCounties.filter((c) => {
-      const cn = c.name.toLowerCase();
-      return cn.includes(lower) || `${cn} county`.includes(lower) || lower.includes(cn);
-    }).slice(0, 4);
-    countyMatches.forEach((c) => {
-      out.push({
-        type: 'county', id: `county-${c.fips}`,
-        label: `${c.name} County, ${c.stateCode}`,
-        sublabel: `${c.officials.length} local officials · ${(c.elections ?? []).filter((e) => e.isUpcoming).length} upcoming elections`,
-        stateCode: c.stateCode,
-        countyFips: c.fips,
-      });
-    });
-
-    // Local official match
-    mockCounties.forEach((county) => {
-      county.officials
-        .filter((o) => o.name.toLowerCase().includes(lower) || o.position.toLowerCase().includes(lower))
-        .slice(0, 2)
-        .forEach((o) => {
-          out.push({
-            type: 'official', id: `off-${o.id}`,
-            label: o.name,
-            sublabel: `${o.position} · ${county.name} County, ${county.stateCode}`,
-            href: `/officials/${o.id}`,
-            stateCode: county.stateCode,
-            countyFips: county.fips,
-          });
-        });
-    });
-
     // State name match
-    mockStates.filter((s) =>
+    rosterStates.filter((s) =>
       s.name.toLowerCase().includes(lower) || s.code.toLowerCase() === lower
     ).slice(0, 3).forEach((s) => {
       out.push({
@@ -132,18 +97,6 @@ export default function HomeSearchBar() {
       });
     });
 
-    // Election match
-    mockElections.filter(
-      (e) => e.title.toLowerCase().includes(lower) || e.state.toLowerCase().includes(lower)
-    ).slice(0, 2).forEach((e) => {
-      out.push({
-        type: 'election', id: `el-${e.id}`,
-        label: e.title,
-        sublabel: `${e.state} · ${new Date(e.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}`,
-        href: `/elections?id=${e.id}`,
-        stateCode: e.stateCode,
-      });
-    });
 
     // Dedupe by id
     const seen = new Set<string>();
@@ -163,7 +116,7 @@ export default function HomeSearchBar() {
 
     // Navigate map for geographic results
     if (mapNav && result.stateCode && (result.type === 'zip' || result.type === 'county' || result.type === 'state' || result.type === 'official')) {
-      const state = mockStates.find((s) => s.code === result.stateCode);
+      const state = rosterStates.find((s) => s.code === result.stateCode);
       if (state && (result.type === 'zip' || result.type === 'county')) {
         setLocation(result.stateCode, state.name, result.zipCode ?? '');
       }
@@ -179,7 +132,7 @@ export default function HomeSearchBar() {
     }
 
     if (result.type === 'zip' && result.stateCode) {
-      const state = mockStates.find((s) => s.code === result.stateCode);
+      const state = rosterStates.find((s) => s.code === result.stateCode);
       if (state) setLocation(result.stateCode, state.name, result.zipCode ?? '');
     }
 

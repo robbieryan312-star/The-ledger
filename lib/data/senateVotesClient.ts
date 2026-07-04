@@ -4,6 +4,8 @@
  */
 import type { Source, VoteChoice, VoteRecord } from '../types';
 import { computePartyBreakdown } from './partyVoteBreakdown';
+import { fetchWithRetry } from './resilientFetch';
+import { readCache, writeCache } from './diskCache';
 
 export const SENATE_GOV_SOURCE: Source = {
   name: 'senate.gov',
@@ -82,22 +84,11 @@ function lisMapFromRaw(raw: Array<{ id: RawLegislatorId }>): Map<string, string>
   return map;
 }
 
-async function fetchLisMapFromNetwork(retries = 3): Promise<Map<string, string>> {
-  let lastErr: unknown;
-  for (let attempt = 0; attempt < retries; attempt++) {
-    try {
-      const res = await fetch(LEGISLATORS_URL, { signal: AbortSignal.timeout(30_000) });
-      if (!res.ok) throw new Error(`legislators-current fetch failed: HTTP ${res.status}`);
-      const raw = (await res.json()) as Array<{ id: RawLegislatorId }>;
-      return lisMapFromRaw(raw);
-    } catch (err) {
-      lastErr = err;
-      if (attempt < retries - 1) {
-        await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
-      }
-    }
-  }
-  throw lastErr;
+async function fetchLisMapFromNetwork(): Promise<Map<string, string>> {
+  const { response: res } = await fetchWithRetry(LEGISLATORS_URL, { timeoutMs: 30_000 });
+  if (!res.ok) throw new Error(`legislators-current fetch failed: HTTP ${res.status}`);
+  const raw = (await res.json()) as Array<{ id: RawLegislatorId }>;
+  return lisMapFromRaw(raw);
 }
 
 async function fetchLisMapFromLocalSnapshot(): Promise<Map<string, string> | null> {
@@ -131,8 +122,12 @@ export async function fetchLisToBioguideMap(): Promise<Map<string, string>> {
   }
 }
 
+/** Track network vs cache stats for reporting. */
+export const senateFetchStats = { networkCalls: 0, cacheHits: 0 };
+
 export async function fetchSenateVoteMenu(congress: number, session: number): Promise<SenateVoteMenuItem[]> {
-  const res = await fetch(menuUrl(congress, session), { signal: AbortSignal.timeout(30_000) });
+  senateFetchStats.networkCalls++;
+  const { response: res } = await fetchWithRetry(menuUrl(congress, session), { timeoutMs: 30_000 });
   if (!res.ok) throw new Error(`Senate vote menu HTTP ${res.status}`);
   const xml = await res.text();
   const blocks = xml.match(/<vote>[\s\S]*?<\/vote>/gi) ?? [];
@@ -151,8 +146,16 @@ export async function fetchSenateRollCall(
   session: number,
   voteNumber: number,
 ): Promise<SenateRollCall> {
+  const cacheKey = `${congress}-senate-${session}-${voteNumber}`;
+  const cached = await readCache('rollcalls', cacheKey);
+  if (cached) {
+    senateFetchStats.cacheHits++;
+    return cached as SenateRollCall;
+  }
+
+  senateFetchStats.networkCalls++;
   const url = senateVoteUrl(congress, session, voteNumber);
-  const res = await fetch(url, { signal: AbortSignal.timeout(30_000) });
+  const { response: res } = await fetchWithRetry(url, { timeoutMs: 30_000 });
   if (!res.ok) throw new Error(`Senate roll call HTTP ${res.status}`);
   const xml = await res.text();
   if (xml.includes('Roll Call Vote Unavailable')) {
@@ -167,7 +170,7 @@ export async function fetchSenateRollCall(
   })).filter((m) => m.lisMemberId);
 
   const documentName = tag(xml, 'document_name') || undefined;
-  return {
+  const result: SenateRollCall = {
     congress,
     session,
     voteNumber,
@@ -180,6 +183,9 @@ export async function fetchSenateRollCall(
     sourceUrl: url,
     members,
   };
+
+  await writeCache('rollcalls', cacheKey, result);
+  return result;
 }
 
 function policyCategory(question: string, documentName?: string): string {

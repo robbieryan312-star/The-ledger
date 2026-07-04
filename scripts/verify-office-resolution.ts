@@ -17,7 +17,7 @@ import {
   LEGISLATORS_AS_OF,
 } from '../lib/data/officeResolution';
 import { allPoliticians, getCoverageStats, getPoliticianById } from '../lib/data/allPoliticians';
-import { mockPoliticians } from '../lib/data/mockPoliticians';
+import { mockPoliticians } from '../lib/data/DNU/mockPoliticians';
 import { currentExecutives, EXECUTIVE_AS_OF } from '../lib/data/executiveRoster';
 import { currentJustices, SCOTUS_AS_OF } from '../lib/data/scotusRoster';
 import { currentGovernors } from '../lib/data/governors';

@@ -1,7 +1,7 @@
  'use client';
 
 import { useState, useMemo } from 'react';
-import { mockPoliticians } from '@/lib/data/mockPoliticians';
+import { allPoliticians } from '@/lib/data/allPoliticians';
 import { mergeStockTrades, getStockTradesSnapshot } from '@/lib/data/stockTrades';
 import { TrendingUp, TrendingDown, AlertTriangle, Info, ArrowRight, ArrowUpDown, Filter, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
@@ -144,8 +144,8 @@ export default function CongressStocksPage() {
   const [filterSector, setFilterSector] = useState('All');
 
   const allTrades: TradeWithMeta[] = useMemo(() =>
-    mockPoliticians
-      .filter((p) => p.chamber === 'house' || p.chamber === 'senate')
+    allPoliticians
+      .filter((p) => (p.chamber === 'house' || p.chamber === 'senate') && p.recordType !== 'lightweight')
       .flatMap((p) => {
         const { trades, usingOfficialTrades } = mergeStockTrades(p.id, p.stockTrades, p.recordType);
         return trades.map((t) => {

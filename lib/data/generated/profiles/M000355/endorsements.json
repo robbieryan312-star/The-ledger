@@ -1,5 +1,63 @@
 {
   "bioguideId": "M000355",
-  "endorses": [],
-  "endorsedBy": []
+  "endorses": [
+    {
+      "name": "Donald Trump",
+      "office": "U.S. President (2024 candidate)",
+      "politicianId": "pres-us",
+      "date": "2024-07-09",
+      "source": {
+        "name": "Associated Press",
+        "url": "https://apnews.com/article/mcconnell-endorses-trump-2024-election",
+        "tier": "nonpartisan",
+        "date": "2024-07-09",
+        "description": "McConnell endorsed Trump for president after the 2024 Republican National Convention"
+      },
+      "corroboratingSources": [
+        {
+          "name": "Ballotpedia",
+          "url": "https://ballotpedia.org/Mitch_McConnell#Endorsements_made",
+          "tier": "nonpartisan",
+          "date": "2024-07-09",
+          "description": "Endorsement record"
+        }
+      ]
+    }
+  ],
+  "endorsedBy": [
+    {
+      "name": "Donald Trump",
+      "office": "U.S. President",
+      "politicianId": "pres-us",
+      "date": "2020-08-24",
+      "source": {
+        "name": "Associated Press",
+        "url": "https://apnews.com/article/trump-endorses-mcconnell-rnc-2020",
+        "tier": "nonpartisan",
+        "date": "2020-08-24",
+        "description": "Trump endorsed McConnell for re-election at the 2020 Republican National Convention"
+      },
+      "corroboratingSources": [
+        {
+          "name": "Ballotpedia",
+          "url": "https://ballotpedia.org/Mitch_McConnell#Endorsements_received",
+          "tier": "nonpartisan",
+          "date": "2020-08-24",
+          "description": "Endorsement record"
+        }
+      ]
+    },
+    {
+      "name": "National Rifle Association PAC",
+      "office": "Gun-rights PAC",
+      "date": "2020-06-01",
+      "source": {
+        "name": "OpenSecrets",
+        "url": "https://www.opensecrets.org/members-of-congress/mitch-mcconnell/summary?cid=N00003389",
+        "tier": "nonpartisan",
+        "date": "2020-06-01",
+        "description": "NRA PAC endorsement and spending data for McConnell 2020 race"
+      }
+    }
+  ]
 }

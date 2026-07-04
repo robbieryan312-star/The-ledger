@@ -217,6 +217,20 @@ test('W000817 and C001098 must resolve votes from national snapshot (fixture reg
   }
 });
 
+test('migrated members must NOT appear in demo congressVotes.json (single source of truth)', () => {
+  const demoSnapshot = JSON.parse(
+    readFileSync(path.join(PROFILES_ROOT, '..', 'congressVotes.json'), 'utf8'),
+  ) as { byPoliticianId: Record<string, unknown> };
+  const demoIds = new Set(Object.keys(demoSnapshot.byPoliticianId));
+  const migratedSlugs = ['bernie-sanders', 'mitch-mcconnell', 'alexandria-ocasio-cortez', 'rep-massie'];
+  for (const slug of migratedSlugs) {
+    assert.equal(demoIds.has(slug), false, `migrated member ${slug} still in demo congressVotes.json`);
+  }
+  for (const bioguideId of MIGRATED_PROFILE_BIOGUIDES) {
+    assert.equal(demoIds.has(bioguideId), false, `migrated member ${bioguideId} still in demo congressVotes.json`);
+  }
+});
+
 for (const bioguideId of MIGRATED_PROFILE_BIOGUIDES) {
   test(`${bioguideId} profile endorsements/controversies/news pass source integrity`, () => {
     const violations = validateProfileSources({
@@ -286,3 +300,42 @@ for (const bioguideId of MIGRATED_PROFILE_BIOGUIDES) {
     }
   });
 }
+
+// ── DNU quarantine guard ─────────────────────────────────────────────
+const DNU_PATTERNS = [
+  /from\s+['"].*\/DNU\//,
+  /from\s+['"].*mockPoliticians['"]/,
+  /from\s+['"].*additionalPoliticians['"]/,
+  /from\s+['"].*mockStockTrades['"]/,
+  /from\s+['"].*mockLobbyingGroups['"]/,
+  /from\s+['"].*mockElections['"]/,
+  /from\s+['"].*mockCounties['"]/,
+];
+
+function checkDirForDnuImports(dir: string, violations: string[]): void {
+  const entries = readdirSync(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      if (entry.name === 'node_modules' || entry.name === 'DNU' || entry.name === '.next') continue;
+      checkDirForDnuImports(full, violations);
+    } else if (/\.(ts|tsx)$/.test(entry.name)) {
+      const content = readFileSync(full, 'utf8');
+      for (const pat of DNU_PATTERNS) {
+        const match = content.match(pat);
+        if (match) {
+          violations.push(`${path.relative(process.cwd(), full)}: ${match[0]}`);
+        }
+      }
+    }
+  }
+}
+
+test('no app code imports from DNU quarantine', () => {
+  const appDirs = ['app', 'components', 'lib'].map((d) => path.join(process.cwd(), d));
+  const violations: string[] = [];
+  for (const dir of appDirs) {
+    checkDirForDnuImports(dir, violations);
+  }
+  assert.equal(violations.length, 0, `DNU imports found:\n${violations.join('\n')}`);
+});

@@ -14,6 +14,7 @@
     "test:source-integrity": "tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/ceremonialCrecFilter.test.ts",
     "test:classify": "tsx --test scripts/__tests__/classifyTopic.test.ts",
     "agent:demo": "tsx scripts/agent-demo-check.ts",
+    "report:gaps": "tsx scripts/report-data-gaps.ts",
     "sync:legislators": "tsx scripts/sync-legislators.ts",
     "sync:legislation": "tsx scripts/sync-legislation.ts",
     "sync:fec": "tsx scripts/sync-fec-finance.ts",

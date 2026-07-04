@@ -1,4 +1,31 @@
 {
   "bioguideId": "M001184",
-  "items": []
+  "items": [
+    {
+      "id": "mas-c1",
+      "title": "AIPAC Spends $1M+ Against Massie in 2024 Primary — Massie Wins 75%",
+      "summary": "AIPAC's political arm, the United Democracy Project (UDP), spent over $1.1 million in negative advertising against Massie in the 2024 Republican primary in Kentucky's 4th district. Massie's opponent, Jimmy Ausbrooks (a first-time candidate with no prior political experience), received the bulk of his campaign support from AIPAC-aligned outside spending. Massie won the May 2024 primary with approximately 75% of the vote. The race became nationally prominent as an example of AIPAC's willingness to spend heavily to defeat members of Congress who vote against Israel aid bills — including Republicans. Massie has called AIPAC's involvement 'foreign influence' in American elections, noting that AIPAC advocates for the policy interests of a foreign government.",
+      "category": "Campaign",
+      "status": "Resolved",
+      "date": "2024-05-21",
+      "sources": [
+        { "name": "Reuters", "tier": "nonpartisan", "url": "https://www.reuters.com/world/us/massie-wins-kentucky-primary-despite-aipac-spending-2024-05-22/", "date": "2024-05-22", "description": "Massie wins primary despite AIPAC spending" },
+        { "name": "OpenSecrets", "tier": "nonpartisan", "url": "https://www.opensecrets.org/races/outside-spending?cycle=2024&id=KY04", "date": "2024-06-01", "description": "Outside spending data for KY-4 2024 race" }
+      ],
+      "isVerified": true
+    },
+    {
+      "id": "mas-c2",
+      "title": "COVID Relief: Sole Dissenting Vote on $2.2T CARES Act",
+      "summary": "In March 2020, Massie attempted to force a recorded roll-call vote on the $2.2 trillion CARES Act COVID relief bill, requiring members of Congress who were avoiding Washington due to COVID to return for an in-person quorum. President Trump called for Massie to be expelled from the Republican Party. Massie argued that passing a $2.2 trillion bill by voice vote with minimal debate was unconstitutional. The bill passed by voice vote when Massie's procedural motion failed to gain enough support.",
+      "category": "Policy",
+      "status": "Resolved",
+      "date": "2020-03-27",
+      "sources": [
+        { "name": "Congress.gov", "tier": "official", "url": "https://www.congress.gov/bill/116th-congress/house-bill/748", "date": "2020-03-27", "description": "Official CARES Act vote record" },
+        { "name": "Reuters", "tier": "nonpartisan", "url": "https://www.reuters.com/article/us-health-coronavirus-usa-congress-idUSKBN21E2FB", "date": "2020-03-27", "description": "Massie attempts to force recorded vote on CARES Act" }
+      ],
+      "isVerified": true
+    }
+  ]
 }

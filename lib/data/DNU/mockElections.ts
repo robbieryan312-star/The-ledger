@@ -1,4 +1,4 @@
-import { Election, EvidenceItem } from '../types';
+import { Election, EvidenceItem } from '../../types';
 
 const CONGRESS_GOV = { name: 'Congress.gov', url: 'https://www.congress.gov', tier: 'official' as const };
 const BALLOTPEDIA = { name: 'Ballotpedia', url: 'https://ballotpedia.org', tier: 'nonpartisan' as const };

@@ -13,7 +13,7 @@ import { config } from 'dotenv';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { mockPoliticians } from '../lib/data/mockPoliticians';
+import { mockPoliticians } from '../lib/data/DNU/mockPoliticians';
 import type { Politician, Source } from '../lib/types';
 import {
   FEC_SOURCE,

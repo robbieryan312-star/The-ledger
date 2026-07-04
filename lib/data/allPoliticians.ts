@@ -1,7 +1,7 @@
 /**
  * allPoliticians.ts — the single national roster the app lists/searches over.
  *
- * Merges the richly hand-authored FEATURED profiles (mockPoliticians) with the
+ * Merges identity-only FEATURED profiles (from generated/roster.json) with the
  * lightweight, real-sourced records for every other current member of Congress
  * and every confirmed sitting governor. De-duplication is by bioguide ID
  * (Congress) and by state (governors): a featured politician and their dataset
@@ -11,8 +11,8 @@
  * is derived from `resolveCurrentOffice` (the authoritative datasets), NEVER the
  * hand-typed `inOffice` flag. A former official can no longer appear as current.
  */
-import { Politician, ResolvedOffice, Chamber } from '../types';
-import { mockPoliticians } from './mockPoliticians';
+import { Politician, ResolvedOffice, Chamber, CampaignFinance, ConsistencyData, Party } from '../types';
+import rosterData from './generated/roster.json';
 import { executiveOfficials } from './executiveOfficials';
 import { judicialOfficials } from './judicialOfficials';
 import { getPoliticianBranch, GovernmentBranch } from './branches';
@@ -22,6 +22,49 @@ import {
 } from './generatedPoliticians';
 import { resolveCurrentOffice } from './officeResolution';
 import { congressPhotoUrl, executivePortraitUrl } from './photos';
+
+const EMPTY_FINANCE: CampaignFinance = {
+  totalRaised: 0, totalSpent: 0, cashOnHand: 0, cycle: '2024',
+  donors: [], topIndustries: [], lobbyistMoney: [], foreignPAC: [],
+  individualDonations: 0, pacDonations: 0, selfFunding: 0,
+};
+const EMPTY_CONSISTENCY: ConsistencyData = {
+  overallScore: 0, campaignPromises: [],
+  partyLineVotePercentage: 0, lobbyistAlignmentPercentage: 0,
+  termConsistency: [],
+};
+
+const rosterPoliticians: Politician[] = (rosterData.entries as Array<Record<string, unknown>>).map((entry) => ({
+  id: entry.id as string,
+  bioguideId: (entry.bioguideId as string) || undefined,
+  name: entry.name as string,
+  firstName: entry.firstName as string,
+  lastName: entry.lastName as string,
+  party: entry.party as Party,
+  state: entry.state as string,
+  stateCode: entry.stateCode as string,
+  chamber: entry.chamber as Chamber,
+  level: entry.level as 'federal' | 'state' | 'local',
+  district: (entry.district as string) || undefined,
+  imageUrl: (entry.imageUrl as string) || undefined,
+  website: (entry.website as string) || undefined,
+  recordType: (entry.recordType as 'featured' | 'lightweight') || 'featured',
+  inOffice: entry.inOffice as boolean,
+  termStart: (entry.termStart as string) || undefined,
+  termEnd: (entry.termEnd as string) || undefined,
+  bio: '',
+  topIssues: [],
+  votingRecord: [],
+  campaignFinance: EMPTY_FINANCE,
+  stockTrades: [],
+  consistency: EMPTY_CONSISTENCY,
+  controversies: [],
+  news: [],
+}));
+
+export const rosterStates = rosterData.mockStates as Array<{
+  code: string; name: string; activePoliticians: number; upcomingElections: number;
+}>;
 
 function withOfficialPhoto(p: Politician): Politician {
   const hasLegacyCongressHost =
@@ -48,9 +91,8 @@ const EXECUTIVE_ORDER: Record<string, number> = {
 export { getPoliticianBranch };
 export type { GovernmentBranch };
 
-// Featured profiles ALSO get an official photo: when a hand-authored profile has
-// a bioguide ID but no explicit imageUrl, derive its public-domain portrait.
-const featured: Politician[] = mockPoliticians.map(withOfficialPhoto);
+// Featured roster profiles get an official photo when they have a bioguide ID.
+const featured: Politician[] = rosterPoliticians.map(withOfficialPhoto);
 
 const featuredBioguides = new Set(
   [
@@ -99,7 +141,7 @@ for (const p of allPoliticians) {
 }
 
 export function getPoliticianById(id: string): Politician | undefined {
-  return byId.get(id);
+  return byId.get(id) ?? getPoliticianByBioguide(id);
 }
 
 /** Find a roster profile by bioguide ID (used to link bill sponsors when resolvable). */
@@ -208,6 +250,36 @@ export function searchPoliticians(query: string, limit = 8): Politician[] {
 /** Default office hierarchy for map sidebars and browse lists. */
 export function sortOfficialsForDisplay(politicians: Politician[]): Politician[] {
   return [...politicians].sort(comparePoliticiansByOffice);
+}
+
+/**
+ * Featured profiles currently in office for a state — derived from the
+ * authoritative resolver (resolveCurrentOffice), NEVER the hand-typed `inOffice`
+ * flag. For the full national roster use getPoliticiansForState; this helper is
+ * scoped to featured (non-lightweight) profiles only.
+ */
+export function getFeaturedPoliticiansForState(stateCode: string): Politician[] {
+  return allPoliticians.filter(
+    (p) => p.stateCode === stateCode && p.recordType !== 'lightweight' && resolveCurrentOffice(p).isCurrent,
+  );
+}
+
+export function getStateCoverage(stateCode: string): {
+  inDatabase: number;
+  targetFederal: number;
+  isPartial: boolean;
+  label: string;
+} {
+  const inDatabase = getFeaturedPoliticiansForState(stateCode).length;
+  const stateMeta = rosterStates.find((s) => s.code === stateCode);
+  const targetFederal = stateMeta?.activePoliticians ?? 0;
+  const isPartial = inDatabase > 0 && inDatabase < targetFederal;
+  const label = inDatabase === 0
+    ? 'No federal officials profiled yet'
+    : isPartial
+      ? `${inDatabase} of ~${targetFederal} federal seats profiled`
+      : `${inDatabase} officials in database`;
+  return { inDatabase, targetFederal, isPartial, label };
 }
 
 /** National coverage stats for surfacing in the UI / docs. */

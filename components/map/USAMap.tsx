@@ -3,12 +3,8 @@
 import { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { ComposableMap, Geographies, Geography, ZoomableGroup, Marker } from 'react-simple-maps';
-import { mockStates } from '@/lib/data/mockPoliticians';
-import { getPoliticiansForState, sortOfficialsForDisplay, resolveOffice } from '@/lib/data/allPoliticians';
+import { rosterStates as mockStates, getPoliticiansForState, sortOfficialsForDisplay, resolveOffice } from '@/lib/data/allPoliticians';
 import { GOVERNOR_MAP_FILLS, getGovernorPartyKey } from '@/lib/data/governorMapColors';
-import { mockElections } from '@/lib/data/mockElections';
-import { buildCompareUrl } from '@/lib/data/electionCompare';
-import { countyByFips, countiesByState } from '@/lib/data/mockCounties';
 import { useMapNavigation } from '@/lib/context/MapNavigationContext';
 import OfficialCard from '@/components/counties/OfficialCard';
 import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
@@ -20,8 +16,11 @@ import {
   X, ChevronDown, ChevronRight, Calendar, Users, AlertTriangle, Vote,
   MapPin, Building2, ArrowLeft, ExternalLink, History,
 } from 'lucide-react';
-import { Politician, CountyData, CountyElection } from '@/lib/types';
+import { Politician, CountyData, CountyElection, Election } from '@/lib/types';
 import type { SnapshotSlice } from '@/lib/data/snapshotTypes';
+
+const countyByFips: Record<string, CountyData> = {};
+const countiesByState: Record<string, CountyData[]> = {};
 
 const GEO_STATES   = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json';
 const GEO_COUNTIES = 'https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json';
@@ -462,8 +461,8 @@ export default function USAMap() {
     [selectedState],
   );
   const MAP_SIDEBAR_OFFICIAL_LIMIT = 8;
-  const stateElections = useMemo(
-    () => (selectedState ? mockElections.filter((e) => e.stateCode === selectedState) : []),
+  const stateElections: Election[] = useMemo(
+    () => [],
     [selectedState],
   );
   const upcomingStateElections = useMemo(
@@ -992,7 +991,7 @@ export default function USAMap() {
                               </div>
                             ))}
                           </div>
-                          <Link href={buildCompareUrl(election.id)}
+                          <Link href="/compare"
                                 className="mt-2 flex items-center gap-1 text-xs text-[#c8a951] hover:text-white transition-colors">
                             <Vote className="h-3 w-3" /> Compare candidates
                           </Link>

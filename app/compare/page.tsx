@@ -2,9 +2,7 @@
 
 import { useState, useEffect, Suspense, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { mockPoliticians } from '@/lib/data/mockPoliticians';
-import { mockElections } from '@/lib/data/mockElections';
-import { getPoliticianById } from '@/lib/data/allPoliticians';
+import { getPoliticianById, allPoliticians } from '@/lib/data/allPoliticians';
 import {
   pickComparePair,
   isCandidatePick,
@@ -68,7 +66,7 @@ function resolveSide(pick: string, election?: Election): CompareSide | null {
       isElectionOnly: true,
     };
   }
-  const politician = getPoliticianById(pick) ?? mockPoliticians.find((p) => p.id === pick);
+  const politician = getPoliticianById(pick);
   if (!politician) return null;
   return {
     pick,
@@ -82,7 +80,7 @@ function resolveSide(pick: string, election?: Election): CompareSide | null {
 
 function isValidPick(pick: string, election?: Election): boolean {
   if (isCandidatePick(pick)) return !!findElectionCandidate(election, pick);
-  return !!(getPoliticianById(pick) ?? mockPoliticians.find((p) => p.id === pick));
+  return !!getPoliticianById(pick);
 }
 
 const cardStyle = { background: 'rgba(11,25,41,0.7)', backdropFilter: 'blur(12px)' };
@@ -90,8 +88,9 @@ const headerStyle = { background: 'rgba(5,9,15,0.5)' };
 
 function CompareContent() {
   const searchParams = useSearchParams();
-  const defaultA = mockPoliticians[0]?.id || '';
-  const defaultB = mockPoliticians[1]?.id || '';
+  const featuredPols = allPoliticians.filter((p) => p.recordType !== 'lightweight');
+  const defaultA = featuredPols[0]?.id || '';
+  const defaultB = featuredPols[1]?.id || '';
 
   const [aPick, setAPick] = useState<string>(defaultA);
   const [bPick, setBPick] = useState<string>(defaultB);
@@ -102,22 +101,6 @@ function CompareContent() {
     const paramA = searchParams.get('a');
     const paramB = searchParams.get('b');
     const electionId = searchParams.get('election');
-
-    if (electionId) {
-      const election = mockElections.find((e) => e.id === electionId);
-      if (election) {
-        setElectionContext(election.title);
-        setActiveElection(election);
-
-        const pair = pickComparePair(election);
-        const nextA = paramA && isValidPick(paramA, election) ? paramA : pair?.a;
-        const nextB = paramB && isValidPick(paramB, election) ? paramB : pair?.b;
-
-        if (nextA) setAPick(nextA);
-        if (nextB) setBPick(nextB);
-        return;
-      }
-    }
 
     setElectionContext(null);
     setActiveElection(undefined);
@@ -200,7 +183,7 @@ function CompareContent() {
                   className="w-full rounded-2xl px-5 py-5 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[#c8a951]/50 border border-[#c8a951]/25 hover:border-[#c8a951]/60 transition-colors shadow-lg shadow-[#c8a951]/5"
                   style={selectStyle}
                 >
-                  {mockPoliticians.map((p) => (
+                  {featuredPols.map((p) => (
                     <option key={p.id} value={p.id} disabled={p.id === other}>
                       {p.name} ({p.state}){p.id === other ? ' — already selected' : ''}
                     </option>

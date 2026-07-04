@@ -4,7 +4,7 @@
  *
  * Run with: npm run verify:lobbying-votes
  */
-import { mockLobbyingGroups } from '../lib/data/mockLobbyingGroups';
+import { mockLobbyingGroups } from '../lib/data/DNU/mockLobbyingGroups';
 import { getCongressVotesSnapshot } from '../lib/data/congressVotes';
 
 function normalizeBillId(value: string): string {

@@ -2,7 +2,16 @@
  * National congressional roll-call vote sync for all current members.
  * Output: data/votes/national/congress-votes.json
  *
+ * Features:
+ * - Resilient fetch with retry/backoff/adaptive rate limiting
+ * - Immutable disk cache at data/cache/rollcalls/ and data/cache/billsummaries/
+ * - Incremental mode: fetches only roll calls newer than stored high-water mark
+ * - Full refetch with --full flag
+ * - House + Senate collected concurrently (different API hosts)
+ * - §6 honesty reporting: explicit fetch-failed list
+ *
  * Run: npm run sync:votes-national
+ * Full: npm run sync:votes-national -- --full
  */
 import { config } from 'dotenv';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
@@ -14,6 +23,7 @@ import {
   fetchBillSummary,
   fetchHouseVoteList,
   fetchHouseVoteMembers,
+  fetchStats,
   formatBillId,
   houseVoteCongressUrl,
   humanHouseVoteAction,
@@ -30,6 +40,7 @@ import {
   fetchLisToBioguideMap,
   fetchSenateRollCall,
   fetchSenateVoteMenu,
+  senateFetchStats,
   senateVoteToRecord,
 } from '../lib/data/senateVotesClient';
 
@@ -39,10 +50,12 @@ const OUT_FILE = path.join(OUT_DIR, 'congress-votes.json');
 const LEGISLATORS_FILE = path.join(projectRoot, 'lib', 'data', 'generated', 'currentLegislators.json');
 
 const TARGET_CONGRESS = 119;
-const VOTES_PER_MEMBER = 10;
+const VOTES_PER_MEMBER = 30;
 const MAX_SENATE_VOTES_COLLECT = 45;
 const MAX_VOTE_PAGES = 6;
 const PAGE_SIZE = 50;
+
+const IS_FULL = process.argv.includes('--full');
 
 interface LegislatorRow {
   bioguideId: string;
@@ -53,9 +66,26 @@ interface LegislatorRow {
   stateCode: string;
 }
 
+interface HighWaterMark {
+  houseMaxRoll?: Record<string, number>; // keyed by "{congress}-{session}"
+  senateMaxVote?: Record<string, number>; // keyed by "{congress}-{session}"
+}
+
 interface ExistingNationalVotesSnapshot {
+  meta?: {
+    highWaterMark?: HighWaterMark;
+    [key: string]: unknown;
+  };
   byBioguideId?: Record<string, { chamber?: string; votes?: VoteRecord[] }>;
 }
+
+interface FetchFailure {
+  chamber: string;
+  rollNumber: number;
+  error: string;
+}
+
+const fetchFailures: FetchFailure[] = [];
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -76,7 +106,7 @@ function finalizeMemberVotes(candidates: VoteRecord[], targetCount: number): Vot
   return out.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
-/** Real date only — no fallback to today. Callers must skip the record when this returns null. */
+/** Real date only — no fallback to today. */
 function isoDate(value?: string): string | null {
   if (!value) return null;
   return value.slice(0, 10);
@@ -90,7 +120,7 @@ function toHouseVoteRecord(
   extras?: { billSummary?: string; partyBreakdown?: ReturnType<typeof computePartyBreakdown> },
 ): VoteRecord | null {
   const date = isoDate(vote.startDate);
-  if (!date) return null; // no real roll-call date discoverable — skip rather than fabricate
+  if (!date) return null;
   const billId = formatBillId(vote.legislationType, vote.legislationNumber);
   const url = houseVoteCongressUrl(vote);
   const source: Source = { ...CONGRESS_GOV_SOURCE, url, date };
@@ -112,16 +142,26 @@ function toHouseVoteRecord(
   };
 }
 
-async function collectRecentHouseVotes(): Promise<HouseVoteSummary[]> {
+async function collectRecentHouseVotes(highWaterMark?: HighWaterMark): Promise<HouseVoteSummary[]> {
   const all: HouseVoteSummary[] = [];
   for (const session of [2, 1]) {
+    const hwKey = `${TARGET_CONGRESS}-${session}`;
+    const hwRoll = highWaterMark?.houseMaxRoll?.[hwKey] ?? 0;
+
     let offset = 0;
+    let reachedHighWater = false;
     for (let page = 0; page < MAX_VOTE_PAGES; page += 1) {
       const { votes, nextOffset } = await fetchHouseVoteList(TARGET_CONGRESS, session, PAGE_SIZE, offset);
-      all.push(...votes);
-      if (nextOffset == null || votes.length === 0) break;
+      for (const v of votes) {
+        if (!IS_FULL && hwRoll > 0 && v.rollCallNumber <= hwRoll) {
+          reachedHighWater = true;
+          break;
+        }
+        all.push(v);
+      }
+      if (reachedHighWater || nextOffset == null || votes.length === 0) break;
       offset = nextOffset;
-      await sleep(120);
+      await sleep(80);
     }
   }
   return all.sort((a, b) => {
@@ -134,7 +174,7 @@ async function collectRecentHouseVotes(): Promise<HouseVoteSummary[]> {
 
 async function syncHouseVotes(
   allBioguides: Set<string>,
-  asOf: string,
+  highWaterMark?: HighWaterMark,
 ): Promise<Map<string, VoteRecord[]>> {
   const collected = new Map<string, VoteRecord[]>();
   for (const id of allBioguides) collected.set(id, []);
@@ -144,8 +184,8 @@ async function syncHouseVotes(
     return collected;
   }
 
-  const voteList = await collectRecentHouseVotes();
-  console.log(`  ${voteList.length} House roll calls loaded`);
+  const voteList = await collectRecentHouseVotes(highWaterMark);
+  console.log(`  ${voteList.length} House roll calls to process (incremental: ${!IS_FULL})`);
 
   let partyMap = new Map<string, string>();
   try {
@@ -165,7 +205,7 @@ async function syncHouseVotes(
       const members = await fetchHouseVoteMembers(vote.congress, vote.sessionNumber, vote.rollCallNumber);
       const houseMembers = members.results?.filter((m) => allBioguides.has(m.bioguideId)) ?? [];
       if (houseMembers.length === 0) {
-        await sleep(120);
+        await sleep(80);
         continue;
       }
 
@@ -176,7 +216,7 @@ async function syncHouseVotes(
         if (billSummary === undefined) {
           billSummary = await fetchBillSummary(vote.congress, vote.legislationType, vote.legislationNumber);
           billSummaryCache.set(key, billSummary);
-          await sleep(80);
+          await sleep(50);
         }
       }
 
@@ -206,9 +246,10 @@ async function syncHouseVotes(
       }
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
+      fetchFailures.push({ chamber: 'house', rollNumber: vote.rollCallNumber, error: msg });
       console.warn(`  skip House ${vote.rollCallNumber}: ${msg}`);
     }
-    await sleep(150);
+    await sleep(80);
   }
 
   if (skippedNoDate > 0) {
@@ -220,7 +261,7 @@ async function syncHouseVotes(
 
 async function syncSenateVotes(
   senators: LegislatorRow[],
-  asOf: string,
+  highWaterMark?: HighWaterMark,
 ): Promise<Map<string, VoteRecord[]>> {
   const collected = new Map<string, VoteRecord[]>();
   for (const s of senators) collected.set(s.bioguideId, []);
@@ -233,7 +274,16 @@ async function syncSenateVotes(
 
   const menu = (await fetchSenateVoteMenu(TARGET_CONGRESS, 2)).sort((a, b) => b.voteNumber - a.voteNumber);
 
-  for (const item of menu) {
+  const hwKey = `${TARGET_CONGRESS}-2`;
+  const hwVote = highWaterMark?.senateMaxVote?.[hwKey] ?? 0;
+
+  const filteredMenu = IS_FULL
+    ? menu
+    : menu.filter((item) => hwVote === 0 || item.voteNumber > hwVote);
+
+  console.log(`  ${filteredMenu.length} Senate roll calls to process (of ${menu.length} total, incremental: ${!IS_FULL})`);
+
+  for (const item of filteredMenu) {
     const pending = senators.filter(
       (s) => (collected.get(s.bioguideId)?.length ?? 0) < MAX_SENATE_VOTES_COLLECT,
     );
@@ -253,9 +303,10 @@ async function syncSenateVotes(
       }
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
+      fetchFailures.push({ chamber: 'senate', rollNumber: item.voteNumber, error: msg });
       console.warn(`  skip Senate vote ${item.voteNumber}: ${msg}`);
     }
-    await sleep(120);
+    await sleep(80);
   }
 
   for (const sen of senators) {
@@ -274,26 +325,49 @@ async function readExistingVoteSnapshot(): Promise<ExistingNationalVotesSnapshot
   }
 }
 
-function preserveExistingHouseVotes(
-  houseVotes: Map<string, VoteRecord[]>,
-  houseMembers: LegislatorRow[],
-  existing: ExistingNationalVotesSnapshot | null,
-): number {
-  if (!existing?.byBioguideId) return 0;
-
-  let retained = 0;
-  for (const leg of houseMembers) {
-    const prior = existing.byBioguideId[leg.bioguideId];
-    if (prior?.chamber === 'house' && (prior.votes?.length ?? 0) > 0) {
-      houseVotes.set(leg.bioguideId, prior.votes ?? []);
-      retained += 1;
+function mergeVoteLists(existing: VoteRecord[], fresh: VoteRecord[]): VoteRecord[] {
+  const ids = new Set(fresh.map((v) => v.id));
+  const merged = [...fresh];
+  for (const v of existing) {
+    if (!ids.has(v.id)) {
+      merged.push(v);
+      ids.add(v.id);
     }
   }
-  return retained;
+  return merged
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, VOTES_PER_MEMBER);
+}
+
+function computeHighWaterMark(
+  byBioguideId: Record<string, { chamber?: string; votes?: VoteRecord[] }>,
+): HighWaterMark {
+  const houseMaxRoll: Record<string, number> = {};
+  const senateMaxVote: Record<string, number> = {};
+
+  for (const entry of Object.values(byBioguideId)) {
+    for (const vote of entry.votes ?? []) {
+      const m = vote.id.match(/-h(\d+)-(\d+)-(\d+)$/);
+      if (m) {
+        const key = `${m[1]}-${m[2]}`;
+        const roll = parseInt(m[3], 10);
+        houseMaxRoll[key] = Math.max(houseMaxRoll[key] ?? 0, roll);
+      }
+      const s = vote.id.match(/-s(\d+)-(\d+)-(\d+)$/);
+      if (s) {
+        const key = `${s[1]}-${s[2]}`;
+        const voteNum = parseInt(s[3], 10);
+        senateMaxVote[key] = Math.max(senateMaxVote[key] ?? 0, voteNum);
+      }
+    }
+  }
+
+  return { houseMaxRoll, senateMaxVote };
 }
 
 async function main(): Promise<void> {
   config({ path: path.join(projectRoot, '.env.local') });
+  const startTime = Date.now();
   const asOf = new Date().toISOString().slice(0, 10);
   const fetchedAt = new Date().toISOString();
 
@@ -307,18 +381,34 @@ async function main(): Promise<void> {
   const senators = legislators.filter((l) => l.chamber === 'senate');
   const houseMembers = legislators.filter((l) => l.chamber === 'house');
 
-  console.log(`National vote sync: ${legislators.length} members (${senators.length} Senate)`);
+  console.log(`National vote sync: ${legislators.length} members (${senators.length} Senate, ${houseMembers.length} House)`);
+  console.log(`Mode: ${IS_FULL ? 'FULL refetch' : 'INCREMENTAL'}`);
 
-  const houseVotes = await syncHouseVotes(allBioguides, asOf);
+  const existing = await readExistingVoteSnapshot();
+  const highWaterMark = IS_FULL ? undefined : existing?.meta?.highWaterMark;
+
+  // House + Senate concurrently (different API hosts)
+  const [houseVotes, senateVotes] = await Promise.all([
+    syncHouseVotes(allBioguides, highWaterMark),
+    syncSenateVotes(senators, highWaterMark),
+  ]);
+
+  // In incremental mode without key, preserve existing House data
   if (!isCongressConfigured()) {
-    const retained = preserveExistingHouseVotes(houseVotes, houseMembers, await readExistingVoteSnapshot());
+    let retained = 0;
+    for (const leg of houseMembers) {
+      const prior = existing?.byBioguideId?.[leg.bioguideId];
+      if (prior?.chamber === 'house' && (prior.votes?.length ?? 0) > 0) {
+        houseVotes.set(leg.bioguideId, prior.votes ?? []);
+        retained += 1;
+      }
+    }
     if (retained > 0) {
       console.log(`  retained ${retained} House member vote lists from existing congress-votes.json`);
     }
   }
-  const senateVotes = await syncSenateVotes(senators, asOf);
 
-  const failures: Array<{ bioguideId: string; name: string; reason: string }> = [];
+  const underFilledMembers: Array<{ bioguideId: string; name: string; count: number; reason: string }> = [];
   const byBioguideId: Record<
     string,
     {
@@ -332,14 +422,23 @@ async function main(): Promise<void> {
   > = {};
 
   for (const leg of legislators) {
-    const house = houseVotes.get(leg.bioguideId) ?? [];
-    const senate = senateVotes.get(leg.bioguideId) ?? [];
-    const votes = [...house, ...senate].sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-    );
-    if (votes.length === 0) {
-      failures.push({ bioguideId: leg.bioguideId, name: leg.name, reason: 'no roll-call positions in scan window' });
+    const freshHouse = houseVotes.get(leg.bioguideId) ?? [];
+    const freshSenate = senateVotes.get(leg.bioguideId) ?? [];
+    const freshVotes = [...freshHouse, ...freshSenate];
+
+    // Merge with existing in incremental mode
+    const existingVotes = existing?.byBioguideId?.[leg.bioguideId]?.votes ?? [];
+    const votes = IS_FULL
+      ? freshVotes.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, VOTES_PER_MEMBER)
+      : mergeVoteLists(existingVotes, freshVotes);
+
+    if (votes.length < VOTES_PER_MEMBER) {
+      const reason = fetchFailures.some((f) => f.chamber === leg.chamber)
+        ? 'fetch-failed rolls reduced available data'
+        : 'insufficient roll-call positions in scan window';
+      underFilledMembers.push({ bioguideId: leg.bioguideId, name: leg.name, count: votes.length, reason });
     }
+
     byBioguideId[leg.bioguideId] = {
       bioguideId: leg.bioguideId,
       name: leg.name,
@@ -352,6 +451,7 @@ async function main(): Promise<void> {
 
   const withVotes = legislators.filter((l) => (byBioguideId[l.bioguideId]?.votes.length ?? 0) > 0).length;
   const totalVotes = legislators.reduce((s, l) => s + (byBioguideId[l.bioguideId]?.votes.length ?? 0), 0);
+  const hwm = computeHighWaterMark(byBioguideId);
 
   const snapshot = {
     meta: {
@@ -361,22 +461,46 @@ async function main(): Promise<void> {
       membersQueried: legislators.length,
       withVoteData: withVotes,
       totalVotePositions: totalVotes,
-      failureCount: failures.length,
+      failureCount: fetchFailures.length,
       keyConfigured: isCongressConfigured(),
+      incremental: !IS_FULL,
+      highWaterMark: hwm,
       datasetUrl: 'https://www.congress.gov',
       note: `Up to ${VOTES_PER_MEMBER} recent positions per chamber. House via Congress.gov when keyed; Senate via senate.gov LIS XML.`,
     },
     byBioguideId,
-    failures,
+    failures: fetchFailures,
+    underFilledMembers,
   };
 
   await mkdir(OUT_DIR, { recursive: true });
   await writeFile(OUT_FILE, JSON.stringify(snapshot, null, 2) + '\n', 'utf8');
 
-  console.log(`Wrote ${OUT_FILE}`);
+  const wallTime = ((Date.now() - startTime) / 1000).toFixed(1);
+  const totalNetworkCalls = fetchStats.networkCalls + senateFetchStats.networkCalls;
+  const totalCacheHits = fetchStats.cacheHits + senateFetchStats.cacheHits;
+
+  console.log(`\nWrote ${OUT_FILE}`);
   console.log(`  members with votes: ${withVotes}/${legislators.length}`);
   console.log(`  total vote positions: ${totalVotes}`);
-  console.log(`  failures: ${failures.length}`);
+  console.log(`  network calls: ${totalNetworkCalls}`);
+  console.log(`  cache hits: ${totalCacheHits}`);
+  console.log(`  fetch failures: ${fetchFailures.length}`);
+  console.log(`  under-filled (< ${VOTES_PER_MEMBER}): ${underFilledMembers.length}`);
+  console.log(`  wall time: ${wallTime}s`);
+
+  if (fetchFailures.length > 0) {
+    console.log('\n§6 HONESTY REPORT — fetch-failed roll calls:');
+    for (const f of fetchFailures) {
+      console.log(`  ${f.chamber} roll ${f.rollNumber}: ${f.error}`);
+    }
+  }
+  if (underFilledMembers.length > 0 && underFilledMembers.length <= 20) {
+    console.log('\nUnder-filled members (below VOTES_PER_MEMBER):');
+    for (const m of underFilledMembers.slice(0, 20)) {
+      console.log(`  ${m.bioguideId} (${m.name}): ${m.count} votes — ${m.reason}`);
+    }
+  }
 }
 
 main().catch((err: unknown) => {

@@ -17,7 +17,7 @@ import { config } from 'dotenv';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { mockPoliticians } from '../lib/data/mockPoliticians';
+import { mockPoliticians } from '../lib/data/DNU/mockPoliticians';
 import type { Politician, Source, VoteChoice, VoteRecord } from '../lib/types';
 import {
   CONGRESS_GOV_SOURCE,

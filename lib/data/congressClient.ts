@@ -6,6 +6,8 @@
  * the app reads the generated congressVotes.json snapshot at build time.
  */
 import type { Source, VoteChoice } from '../types';
+import { fetchWithRetry } from './resilientFetch';
+import { readCache, writeCache } from './diskCache';
 
 const API_BASE = 'https://api.congress.gov/v3';
 
@@ -119,7 +121,7 @@ async function congressFetch<T>(path: string, params: Record<string, string> = {
     url.searchParams.set(k, v);
   }
 
-  const res = await fetch(url.toString(), { signal: AbortSignal.timeout(30_000) });
+  const { response: res } = await fetchWithRetry(url.toString(), { timeoutMs: 30_000 });
   if (!res.ok) {
     const body = await res.text().catch(() => '');
     if (res.status === 403 && body.includes('API_KEY_INVALID')) {
@@ -148,12 +150,23 @@ export async function fetchHouseVoteList(
   return { votes, nextOffset };
 }
 
+/** Track network vs cache stats for reporting. */
+export const fetchStats = { networkCalls: 0, cacheHits: 0 };
+
 /** Member positions for a single House roll call. */
 export async function fetchHouseVoteMembers(
   congress: number,
   session: number,
   rollCallNumber: number,
 ): Promise<HouseVoteMembersResponse> {
+  const cacheKey = `${congress}-house-${session}-${rollCallNumber}`;
+  const cached = await readCache('rollcalls', cacheKey);
+  if (cached) {
+    fetchStats.cacheHits++;
+    return cached as HouseVoteMembersResponse;
+  }
+
+  fetchStats.networkCalls++;
   const data = await congressFetch<HouseVoteMembersApiResponse>(
     `/house-vote/${congress}/${session}/${rollCallNumber}/members`,
     { limit: '250' },
@@ -161,7 +174,7 @@ export async function fetchHouseVoteMembers(
 
   const payload = voteMembersPayload(data);
   const members = extractMemberVotes(data);
-  return {
+  const result: HouseVoteMembersResponse = {
     congress: payload.congress ?? data.congress ?? congress,
     sessionNumber: payload.sessionNumber ?? data.sessionNumber ?? session,
     rollCallNumber: payload.rollCallNumber ?? data.rollCallNumber ?? rollCallNumber,
@@ -182,6 +195,9 @@ export async function fetchHouseVoteMembers(
       voteState: m.voteState,
     })).filter((m) => !!m.bioguideId),
   };
+
+  await writeCache('rollcalls', cacheKey, result);
+  return result;
 }
 
 export function normalizeVoteChoice(raw: string): VoteChoice {
@@ -274,9 +290,20 @@ export async function fetchBillSummary(
 ): Promise<string | undefined> {
   const path = billApiPath(legislationType, legislationNumber);
   if (!path) return undefined;
+
+  const cacheKey = `${congress}-${(legislationType ?? '').toLowerCase()}-${legislationNumber}`;
+  const cached = await readCache('billsummaries', cacheKey);
+  if (cached !== null) {
+    fetchStats.cacheHits++;
+    return (cached as { title?: string }).title ?? undefined;
+  }
+
   try {
+    fetchStats.networkCalls++;
     const data = await congressFetch<BillApiResponse>(`/bill/${congress}/${path}`);
-    return data.bill?.title ?? data.bill?.shortTitle ?? undefined;
+    const title = data.bill?.title ?? data.bill?.shortTitle ?? undefined;
+    await writeCache('billsummaries', cacheKey, { title });
+    return title;
   } catch {
     return undefined;
   }
@@ -290,7 +317,7 @@ let bioguidePartyCache: Map<string, string> | null = null;
 /** Party letter (R/D/I) by bioguide ID from unitedstates/congress-legislators. */
 export async function fetchBioguidePartyMap(): Promise<Map<string, string>> {
   if (bioguidePartyCache) return bioguidePartyCache;
-  const res = await fetch(LEGISLATORS_URL, { signal: AbortSignal.timeout(30_000) });
+  const { response: res } = await fetchWithRetry(LEGISLATORS_URL, { timeoutMs: 30_000 });
   if (!res.ok) throw new Error(`legislators-current fetch failed: HTTP ${res.status}`);
   const raw = (await res.json()) as Array<{ id: { bioguide: string }; terms: Array<{ party?: string }> }>;
   const map = new Map<string, string>();

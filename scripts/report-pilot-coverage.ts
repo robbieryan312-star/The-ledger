@@ -5,7 +5,7 @@
 import { STANDARD_POLICY_TOPICS } from '../lib/data/topicCoverage';
 import { buildMergedProfileIssues } from '../lib/data/issuesFromTopicPositions';
 import { getMemberTopicPositions } from '../lib/data/topicPositions';
-import { mockPoliticians } from '../lib/data/mockPoliticians';
+import { mockPoliticians } from '../lib/data/DNU/mockPoliticians';
 import { derivePromiseStatus } from '../lib/data/derivePromiseStatus';
 import { VERIFIED_MEDIA_QUOTES_BY_BIOGUIDE } from './lib/approvedMediaQuotes';
 import { cacheStats } from './lib/articleVerificationCache';

@@ -13,6 +13,8 @@ import sandersOrgVoteLinks from './generated/profiles/S000033/orgVoteLinks.json'
 import sandersVotes from './generated/profiles/S000033/votes.json';
 import sandersFinance from './generated/profiles/S000033/finance.json';
 import sandersNews from './generated/profiles/S000033/news.json';
+import sandersControversies from './generated/profiles/S000033/controversies.json';
+import sandersEndorsements from './generated/profiles/S000033/endorsements.json';
 
 import o000172Statements from './generated/profiles/O000172/statements.json';
 import o000172Positions from './generated/profiles/O000172/positions.json';
@@ -21,6 +23,8 @@ import o000172OrgVoteLinks from './generated/profiles/O000172/orgVoteLinks.json'
 import o000172Votes from './generated/profiles/O000172/votes.json';
 import o000172Finance from './generated/profiles/O000172/finance.json';
 import o000172News from './generated/profiles/O000172/news.json';
+import o000172Controversies from './generated/profiles/O000172/controversies.json';
+import o000172Endorsements from './generated/profiles/O000172/endorsements.json';
 
 import m000355Statements from './generated/profiles/M000355/statements.json';
 import m000355Positions from './generated/profiles/M000355/positions.json';
@@ -29,6 +33,8 @@ import m000355OrgVoteLinks from './generated/profiles/M000355/orgVoteLinks.json'
 import m000355Votes from './generated/profiles/M000355/votes.json';
 import m000355Finance from './generated/profiles/M000355/finance.json';
 import m000355News from './generated/profiles/M000355/news.json';
+import m000355Controversies from './generated/profiles/M000355/controversies.json';
+import m000355Endorsements from './generated/profiles/M000355/endorsements.json';
 
 import m001184Statements from './generated/profiles/M001184/statements.json';
 import m001184Positions from './generated/profiles/M001184/positions.json';
@@ -37,6 +43,8 @@ import m001184OrgVoteLinks from './generated/profiles/M001184/orgVoteLinks.json'
 import m001184Votes from './generated/profiles/M001184/votes.json';
 import m001184Finance from './generated/profiles/M001184/finance.json';
 import m001184News from './generated/profiles/M001184/news.json';
+import m001184Controversies from './generated/profiles/M001184/controversies.json';
+import m001184Endorsements from './generated/profiles/M001184/endorsements.json';
 
 import w000817Statements from './generated/profiles/W000817/statements.json';
 import w000817Positions from './generated/profiles/W000817/positions.json';
@@ -45,6 +53,8 @@ import w000817OrgVoteLinks from './generated/profiles/W000817/orgVoteLinks.json'
 import w000817Votes from './generated/profiles/W000817/votes.json';
 import w000817Finance from './generated/profiles/W000817/finance.json';
 import w000817News from './generated/profiles/W000817/news.json';
+import w000817Controversies from './generated/profiles/W000817/controversies.json';
+import w000817Endorsements from './generated/profiles/W000817/endorsements.json';
 
 import c001098Statements from './generated/profiles/C001098/statements.json';
 import c001098Positions from './generated/profiles/C001098/positions.json';
@@ -53,10 +63,12 @@ import c001098OrgVoteLinks from './generated/profiles/C001098/orgVoteLinks.json'
 import c001098Votes from './generated/profiles/C001098/votes.json';
 import c001098Finance from './generated/profiles/C001098/finance.json';
 import c001098News from './generated/profiles/C001098/news.json';
+import c001098Controversies from './generated/profiles/C001098/controversies.json';
+import c001098Endorsements from './generated/profiles/C001098/endorsements.json';
 
 import type { OrgVoteTopicLink } from './buildOrgVoteTopicLinks';
 import type { FecFinanceEntry } from './fecFinance';
-import type { NewsItem, Source, VoteRecord } from '../types';
+import type { Controversy, NewsItem, Source, VoteRecord } from '../types';
 import type {
   PlatformPositionEntry,
   SaidDidLinkEntry,
@@ -196,6 +208,43 @@ const PROFILE_NEWS: Record<string, ProfileNewsFile> = {
   C001098: c001098News as ProfileNewsFile,
 };
 
+interface ProfileControversiesFile {
+  bioguideId: string;
+  items: Controversy[];
+}
+
+interface EndorsementEntry {
+  name: string;
+  office: string;
+  politicianId?: string;
+  date?: string;
+  source?: Source;
+}
+
+interface ProfileEndorsementsFile {
+  bioguideId: string;
+  endorses: EndorsementEntry[];
+  endorsedBy: EndorsementEntry[];
+}
+
+const PROFILE_CONTROVERSIES: Record<string, ProfileControversiesFile> = {
+  S000033: sandersControversies as ProfileControversiesFile,
+  O000172: o000172Controversies as ProfileControversiesFile,
+  M000355: m000355Controversies as ProfileControversiesFile,
+  M001184: m001184Controversies as ProfileControversiesFile,
+  W000817: w000817Controversies as ProfileControversiesFile,
+  C001098: c001098Controversies as ProfileControversiesFile,
+};
+
+const PROFILE_ENDORSEMENTS: Record<string, ProfileEndorsementsFile> = {
+  S000033: sandersEndorsements as ProfileEndorsementsFile,
+  O000172: o000172Endorsements as ProfileEndorsementsFile,
+  M000355: m000355Endorsements as ProfileEndorsementsFile,
+  M001184: m001184Endorsements as ProfileEndorsementsFile,
+  W000817: w000817Endorsements as ProfileEndorsementsFile,
+  C001098: c001098Endorsements as ProfileEndorsementsFile,
+};
+
 /**
  * Reconstruct TopicPositionData map from per-category profile files.
  * Returns null when the member has not been migrated.
@@ -304,14 +353,63 @@ export function getMemberProfileNews(bioguideId: string): NewsItem[] | null {
 
 /**
  * Display news for a politician page: prefer the migrated profile's news.json
- * (Group C GDELT pipeline, approved outlets only) when it has verified items; otherwise
- * fall back to the existing hand-curated `mockNews` so a GDELT rate-limit never regresses
- * a profile that already has real, previously-vetted coverage on display (core-rules §6:
- * "always preserve prior good data over a failed re-fetch").
+ * (Group C GDELT pipeline, approved outlets only) when it has verified items;
+ * otherwise return empty (honest gap — mock data is quarantined).
  */
-export function mergeProfileNews(mockNews: NewsItem[], bioguideId?: string): NewsItem[] {
-  if (!bioguideId || !MIGRATED_PROFILE_BIOGUIDES.has(bioguideId)) return mockNews;
-  const profileNews = getMemberProfileNews(bioguideId);
-  if (profileNews && profileNews.length > 0) return profileNews;
-  return mockNews;
+export function mergeProfileNews(legacyNews: NewsItem[] | undefined, bioguideId?: string): NewsItem[] {
+  if (bioguideId && MIGRATED_PROFILE_BIOGUIDES.has(bioguideId)) {
+    const profileNews = getMemberProfileNews(bioguideId);
+    if (profileNews && profileNews.length > 0) return profileNews;
+  }
+  return legacyNews ?? [];
+}
+
+/**
+ * Controversies for migrated profiles — prefer profile file over mock.
+ * Returns null when no profile data exists (caller should fall back to mock).
+ */
+export function getMemberProfileControversies(bioguideId: string): Controversy[] | null {
+  if (!MIGRATED_PROFILE_BIOGUIDES.has(bioguideId)) return null;
+  const file = PROFILE_CONTROVERSIES[bioguideId];
+  if (!file || file.items.length === 0) return null;
+  return file.items;
+}
+
+/**
+ * Endorsements for migrated profiles — prefer profile file over mock.
+ * Returns null when no profile data exists (caller should fall back to mock).
+ */
+export function getMemberProfileEndorsements(bioguideId: string): ProfileEndorsementsFile | null {
+  if (!MIGRATED_PROFILE_BIOGUIDES.has(bioguideId)) return null;
+  const file = PROFILE_ENDORSEMENTS[bioguideId];
+  if (!file) return null;
+  if (file.endorses.length === 0 && file.endorsedBy.length === 0) return null;
+  return file;
+}
+
+/**
+ * Merge controversies: for migrated members prefer profile files;
+ * otherwise return empty (honest gap — mock data is quarantined).
+ */
+export function mergeProfileControversies(legacyControversies: Controversy[] | undefined, bioguideId?: string): Controversy[] {
+  if (bioguideId && MIGRATED_PROFILE_BIOGUIDES.has(bioguideId)) {
+    const profileData = getMemberProfileControversies(bioguideId);
+    if (profileData && profileData.length > 0) return profileData;
+  }
+  return legacyControversies ?? [];
+}
+
+/**
+ * Merge endorsements: for migrated members prefer profile files;
+ * otherwise return undefined (honest gap — mock data is quarantined).
+ */
+export function mergeProfileEndorsements(
+  legacyEndorsements: { endorses: EndorsementEntry[]; endorsedBy: EndorsementEntry[] } | undefined,
+  bioguideId?: string,
+): { endorses: EndorsementEntry[]; endorsedBy: EndorsementEntry[] } | undefined {
+  if (bioguideId && MIGRATED_PROFILE_BIOGUIDES.has(bioguideId)) {
+    const profileData = getMemberProfileEndorsements(bioguideId);
+    if (profileData) return { endorses: profileData.endorses, endorsedBy: profileData.endorsedBy };
+  }
+  return legacyEndorsements;
 }

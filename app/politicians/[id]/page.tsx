@@ -10,7 +10,7 @@ import { getMemberDeep } from '@/lib/data/memberDeep';
 import { getVoteviewByBioguide } from '@/lib/data/slices/voteview';
 import { getNewsFloridaBundle } from '@/lib/data/slices/newsFlorida';
 import { findRecordJuxtapositions } from '@/lib/data/recordJuxtapositions';
-import { mergeProfileNews } from '@/lib/data/memberProfile';
+import { mergeProfileNews, mergeProfileControversies, mergeProfileEndorsements } from '@/lib/data/memberProfile';
 
 export default async function Page({
   params,
@@ -55,6 +55,8 @@ export default async function Page({
       : null;
   const voteviewMember = getVoteviewByBioguide(politician.bioguideId);
   const displayNews = mergeProfileNews(politician.news, politician.bioguideId);
+  const displayControversies = mergeProfileControversies(politician.controversies, politician.bioguideId);
+  const displayEndorsements = mergeProfileEndorsements(politician.endorsements, politician.bioguideId);
   const floridaNewsBundle = politician.stateCode === 'FL' ? getNewsFloridaBundle() : null;
   const isFeatured = politician.recordType !== 'lightweight';
   const recordJuxtapositions =
@@ -88,6 +90,8 @@ export default async function Page({
         memberDeep={memberDeep}
         voteviewMember={voteviewMember}
         displayNews={displayNews}
+        displayControversies={displayControversies}
+        displayEndorsements={displayEndorsements}
         floridaNewsBundle={floridaNewsBundle}
         recordJuxtapositions={recordJuxtapositions}
         isFederalCongress={isFederalCongress}

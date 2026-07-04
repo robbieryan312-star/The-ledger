@@ -1,4 +1,4 @@
-import { StockTrade } from '../types';
+import { StockTrade } from '../../types';
 
 const SENATE_STOCK = { name: 'Senate Stock Watcher', url: 'https://senatestockwatcher.com', tier: 'nonpartisan' as const, description: 'STOCK Act disclosures aggregated from senate.gov' };
 const HOUSE_STOCK = { name: 'House Stock Watcher', url: 'https://housestockwatcher.com', tier: 'nonpartisan' as const, description: 'STOCK Act disclosures aggregated from house.gov' };

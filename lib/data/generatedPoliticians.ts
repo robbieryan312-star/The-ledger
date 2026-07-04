@@ -67,6 +67,12 @@ function yearOf(iso?: string): string | undefined {
   return iso ? iso.slice(0, 4) : undefined;
 }
 
+/** Slug overrides for migrated members who lack a mockPoliticians entry. */
+const SLUG_OVERRIDES: Record<string, string> = {
+  W000817: 'elizabeth-warren',
+  C001098: 'ted-cruz',
+};
+
 export function buildLightweightFromLegislator(rec: RawLegislatorRecord): Politician {
   const isSenate = rec.chamber === 'senate';
   const chamberName = isSenate ? 'U.S. Senate' : 'U.S. House of Representatives';
@@ -75,7 +81,7 @@ export function buildLightweightFromLegislator(rec: RawLegislatorRecord): Politi
     : `${rec.state}${rec.district ? `'s ${rec.district} congressional district` : ''}`;
   const since = yearOf(rec.termStart);
   return {
-    id: rec.bioguideId,
+    id: SLUG_OVERRIDES[rec.bioguideId] ?? rec.bioguideId,
     bioguideId: rec.bioguideId,
     name: rec.name,
     firstName: rec.firstName,

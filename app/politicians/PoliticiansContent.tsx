@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { mockStates } from '@/lib/data/mockPoliticians';
+import { rosterStates as mockStates } from '@/lib/data/allPoliticians';
 import { allPoliticians, resolveOffice, getCoverageStats, comparePoliticiansByOffice, getPoliticianBranch } from '@/lib/data/allPoliticians';
 import type { GovernmentBranch } from '@/lib/data/branches';
 import { EXECUTIVE_CHAMBERS } from '@/lib/data/officeResolution';

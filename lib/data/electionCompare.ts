@@ -3,7 +3,6 @@
  */
 import { Candidate, Election } from '../types';
 import { getPoliticianById, allPoliticians } from './allPoliticians';
-import { mockElections } from './mockElections';
 
 export const CANDIDATE_PICK_PREFIX = 'cand:';
 
@@ -64,13 +63,8 @@ export function pickComparePair(election: Election): { a: string; b: string } | 
   };
 }
 
-export function buildCompareUrl(electionId: string): string {
-  const election = mockElections.find((e) => e.id === electionId);
-  if (!election) return '/compare';
-  const pair = pickComparePair(election);
-  if (!pair) return `/compare?election=${electionId}`;
-  const params = new URLSearchParams({ election: electionId, a: pair.a, b: pair.b });
-  return `/compare?${params}`;
+export function buildCompareUrl(_electionId: string): string {
+  return '/compare';
 }
 
 export function findElectionCandidate(

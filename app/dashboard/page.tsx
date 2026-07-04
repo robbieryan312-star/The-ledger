@@ -7,7 +7,7 @@ import { allPoliticians, resolveOffice } from '@/lib/data/allPoliticians';
 import { fecFinanceCount } from '@/lib/data/fecFinance';
 import { congressVotesCount } from '@/lib/data/congressVotes';
 import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
-import { mockElections } from '@/lib/data/mockElections';
+import type { Election } from '@/lib/types';
 import { lookupZip } from '@/lib/data/zipLookup';
 import StateRosterControls from '@/components/dashboard/StateRosterControls';
 import {
@@ -82,9 +82,7 @@ export default function DashboardPage() {
     );
   }
 
-  const stateElections = hasLocation
-    ? mockElections.filter((e) => e.stateCode === profile.stateCode && e.isUpcoming)
-    : [];
+  const stateElections: Election[] = [];
 
   const trackedPoliticians = allPoliticians.filter((p) => isTracked(p.id));
 
