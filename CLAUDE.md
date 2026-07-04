@@ -118,7 +118,10 @@ what steps we take to progress — decisively and without asking.**
 ## Briefs to Cursor — the primary handoff (make assumptions impossible)
 
 Cursor executes; it never guesses. Every brief must be explicit enough that Cursor makes zero
-independent choices. Output one paste-ready **Implementer brief**:
+independent choices. **Every brief MUST open with a "PREVIOUS PHASE CONFIRMATION" block**
+stating what was verified, its commit(s), anything still outstanding from it, and whether it
+is pushed — so Cursor always builds on a known-locked base (owner directive 2026-07-04).
+Output one paste-ready **Implementer brief**:
 
 ```
 ## Objective
