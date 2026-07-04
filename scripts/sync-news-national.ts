@@ -122,7 +122,7 @@ function articlesFromGdeltResponse(data: GdeltResponse): MemberNewsArticle[] {
 async function fetchGdeltMemberNews(
   leg: LegislatorRow,
   maxAttempts = GDELT_RATE_LIMIT_DELAYS_MS.length,
-): Promise<MemberNewsArticle[]> {
+): Promise<{ articles: MemberNewsArticle[]; failed: boolean; lastError?: string }> {
   const query = buildGdeltQuery(leg);
   const params = new URLSearchParams({
     query,
@@ -137,7 +137,7 @@ async function fetchGdeltMemberNews(
   let lastErr: unknown;
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     try {
-      const res = await fetch(datasetUrl, { headers: { Accept: 'application/json' } });
+      const res = await fetch(datasetUrl, { signal: AbortSignal.timeout(30_000), headers: { Accept: 'application/json' } });
       const text = await res.text();
 
       if (res.status === 429 || text.includes('Please limit requests')) {
@@ -157,18 +157,16 @@ async function fetchGdeltMemberNews(
       }
 
       const data = JSON.parse(text) as GdeltResponse;
-      return articlesFromGdeltResponse(data);
+      return { articles: articlesFromGdeltResponse(data), failed: false };
     } catch (err) {
       lastErr = err;
       const waitMs = GDELT_RATE_LIMIT_DELAYS_MS[attempt];
       if (attempt < maxAttempts - 1 && waitMs !== undefined) await sleep(waitMs);
     }
   }
-  if (lastErr !== undefined) {
-    const reason = lastErr instanceof Error ? lastErr.message : String(lastErr);
-    console.warn(`  ${leg.name}: GDELT failed — ${reason}`);
-  }
-  return [];
+  const reason = lastErr instanceof Error ? lastErr.message : String(lastErr);
+  console.warn(`  ${leg.name}: GDELT failed — ${reason}`);
+  return { articles: [], failed: true, lastError: reason };
 }
 
 async function main(): Promise<void> {
@@ -190,6 +188,7 @@ async function main(): Promise<void> {
   let membersWithNews = 0;
   let gdeltCount = 0;
   let totalArticles = 0;
+  let fetchFailures = 0;
 
   let checkpoint: Record<string, boolean> = {};
   try {
@@ -203,10 +202,20 @@ async function main(): Promise<void> {
     if (checkpoint[leg.bioguideId]) continue;
     if (i > 0) await sleep(GDELT_DELAY_MS);
 
-    let articles: MemberNewsArticle[] = [];
+    const result = await fetchGdeltMemberNews(leg);
+
+    if (result.failed) {
+      fetchFailures += 1;
+      console.log(`  ${leg.name}: FETCH FAILED (skipped) — ${result.lastError ?? 'unknown'}`);
+      if ((i + 1) % 50 === 0 || i === members.length - 1) {
+        console.log(`  progress: ${i + 1}/${members.length} — ${membersWithNews} with news, ${fetchFailures} failed`);
+      }
+      continue;
+    }
+
+    const articles = result.articles;
     let feed: 'gdelt' | undefined;
 
-    articles = await fetchGdeltMemberNews(leg);
     if (articles.length > 0) {
       feed = 'gdelt';
       gdeltCount += 1;
@@ -221,7 +230,7 @@ async function main(): Promise<void> {
     };
     if (articles.length > 0) membersWithNews += 1;
     if ((i + 1) % 50 === 0 || i === members.length - 1) {
-      console.log(`  progress: ${i + 1}/${members.length} — ${membersWithNews} with news so far`);
+      console.log(`  progress: ${i + 1}/${members.length} — ${membersWithNews} with news, ${fetchFailures} failed`);
     }
     console.log(`  ${leg.name}: ${articles.length} article(s)${feed ? ` (${feed})` : ''}`);
 
@@ -252,6 +261,7 @@ async function main(): Promise<void> {
   console.log(`Wrote ${OUT_FILE}`);
   console.log(`  members queried: ${members.length}`);
   console.log(`  members with news: ${membersWithNews}`);
+  console.log(`  members failed (skipped): ${fetchFailures}`);
   console.log(`  total articles: ${totalArticles}`);
 }
 

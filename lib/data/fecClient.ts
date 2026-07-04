@@ -95,7 +95,7 @@ async function fecFetch<T>(path: string, params: Record<string, string> = {}): P
   let lastErr: unknown;
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
-      const res = await fetch(url.toString());
+      const res = await fetch(url.toString(), { signal: AbortSignal.timeout(30_000) });
       if (!res.ok) {
         throw new Error(`OpenFEC request failed: HTTP ${res.status} ${res.statusText}`);
       }

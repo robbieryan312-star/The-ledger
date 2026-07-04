@@ -119,7 +119,7 @@ async function congressFetch<T>(path: string, params: Record<string, string> = {
     url.searchParams.set(k, v);
   }
 
-  const res = await fetch(url.toString());
+  const res = await fetch(url.toString(), { signal: AbortSignal.timeout(30_000) });
   if (!res.ok) {
     const body = await res.text().catch(() => '');
     if (res.status === 403 && body.includes('API_KEY_INVALID')) {
@@ -290,7 +290,7 @@ let bioguidePartyCache: Map<string, string> | null = null;
 /** Party letter (R/D/I) by bioguide ID from unitedstates/congress-legislators. */
 export async function fetchBioguidePartyMap(): Promise<Map<string, string>> {
   if (bioguidePartyCache) return bioguidePartyCache;
-  const res = await fetch(LEGISLATORS_URL);
+  const res = await fetch(LEGISLATORS_URL, { signal: AbortSignal.timeout(30_000) });
   if (!res.ok) throw new Error(`legislators-current fetch failed: HTTP ${res.status}`);
   const raw = (await res.json()) as Array<{ id: { bioguide: string }; terms: Array<{ party?: string }> }>;
   const map = new Map<string, string>();

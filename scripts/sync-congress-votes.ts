@@ -156,31 +156,35 @@ async function syncSenateVotes(
     if (politicianId) lisToPolitician.set(lis, politicianId);
   }
 
-  const menu = (await fetchSenateVoteMenu(TARGET_CONGRESS, 2))
-    .sort((a, b) => b.voteNumber - a.voteNumber);
+  const sessions = [2, 1];
   let votesScanned = 0;
 
-  for (const item of menu) {
-    const pending = senateTargets.filter(
-      (p) => (collected.get(p.id)?.length ?? 0) < VOTES_PER_MEMBER,
-    );
-    if (pending.length === 0) break;
+  for (const session of sessions) {
+    const menu = (await fetchSenateVoteMenu(TARGET_CONGRESS, session))
+      .sort((a, b) => b.voteNumber - a.voteNumber);
 
-    try {
-      const roll = await fetchSenateRollCall(TARGET_CONGRESS, 2, item.voteNumber);
-      votesScanned += 1;
-      for (const member of roll.members) {
-        const politicianId = lisToPolitician.get(member.lisMemberId);
-        if (!politicianId) continue;
-        const bucket = collected.get(politicianId);
-        if (!bucket || bucket.length >= VOTES_PER_MEMBER) continue;
-        bucket.push(senateVoteToRecord(politicianId, roll, member.voteCast));
+    for (const item of menu) {
+      const pending = senateTargets.filter(
+        (p) => (collected.get(p.id)?.length ?? 0) < VOTES_PER_MEMBER,
+      );
+      if (pending.length === 0) break;
+
+      try {
+        const roll = await fetchSenateRollCall(TARGET_CONGRESS, session, item.voteNumber);
+        votesScanned += 1;
+        for (const member of roll.members) {
+          const politicianId = lisToPolitician.get(member.lisMemberId);
+          if (!politicianId) continue;
+          const bucket = collected.get(politicianId);
+          if (!bucket || bucket.length >= VOTES_PER_MEMBER) continue;
+          bucket.push(senateVoteToRecord(politicianId, roll, member.voteCast));
+        }
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        console.warn(`  skip Senate vote ${item.voteNumber}: ${msg}`);
       }
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err);
-      console.warn(`  skip Senate vote ${item.voteNumber}: ${msg}`);
+      await sleep(120);
     }
-    await sleep(120);
   }
 
   let withData = 0;
