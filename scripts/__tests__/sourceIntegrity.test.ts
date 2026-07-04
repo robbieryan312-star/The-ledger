@@ -11,6 +11,8 @@ import {
   NEWS_KNOWN_BAD_UNAPPROVED_OUTLET,
   SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH,
   SAID_DID_KNOWN_BAD_TAUTOLOGY,
+  PLATFORM_KNOWN_BAD_EVENT_NARRATION,
+  PLATFORM_KNOWN_GOOD_MEMBER_POSITION,
   SOURCE_INTEGRITY_KNOWN_BAD_URLS,
   SOURCE_INTEGRITY_KNOWN_GOOD_URLS,
   STATEMENT_KNOWN_BAD_NON_VERBATIM_ALLEGED,
@@ -24,6 +26,7 @@ import {
   isGenuineSaidDidDiff,
   isPlaceholderUrl,
   isThirdPartyCharacterization,
+  isEventNarration,
   isVoteRestatementSaid,
   normalizeUrlForDedupe,
   saidDidSubjectsOverlap,
@@ -93,6 +96,12 @@ test('third-party characterizations are detected', () => {
   assert.equal(isThirdPartyCharacterization('\u201cTed Cruz is one of our nation\u2019s leading defenders...\u201d \u2013 NRA executive Vice President Wayne LaPierre'), true);
   assert.equal(isThirdPartyCharacterization('Successfully defended the constitutionality of the Texas Ten Commandments monument'), false);
   assert.equal(isThirdPartyCharacterization('Introduced measure to provide necessary funding for Israel\u2019s missile defense'), false);
+});
+
+test('event narration is rejected as member stated position (C001098 Holder/Paul fixture)', () => {
+  assert.equal(isEventNarration(PLATFORM_KNOWN_BAD_EVENT_NARRATION), true);
+  assert.equal(isEventNarration(PLATFORM_KNOWN_GOOD_MEMBER_POSITION), false);
+  assert.equal(isEventNarration('Successfully defended the constitutionality of the Texas Ten Commandments monument'), false);
 });
 
 test('known-bad subject-mismatched Said→Did is rejected', () => {

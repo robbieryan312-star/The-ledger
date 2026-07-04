@@ -126,3 +126,11 @@ export const SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH = {
     url: 'https://www.congress.gov/bill/119th-congress/house-concurrent-resolution/86',
   },
 };
+
+/** Holder/Paul filibuster narration — MUST reject as a Cruz stated position (C001098 civil regression). */
+export const PLATFORM_KNOWN_BAD_EVENT_NARRATION =
+  'The day after the filibuster, Attorney General Eric Holder sent a letter to Paul , responding to the filibuster. Holder wrote, "Does the president have the authority to use a weaponized drone to kill an American not engaged in combat on U.S. soil? The answer to that is no." [198]';
+
+/** Genuine first-person member action — MUST pass event-narration guard. */
+export const PLATFORM_KNOWN_GOOD_MEMBER_POSITION =
+  'Introduced measure to provide necessary funding for Israel\u2019s missile defense, Arrow System, David\u2019s Sling and Iron Dome.';

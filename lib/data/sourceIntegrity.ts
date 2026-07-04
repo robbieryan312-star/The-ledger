@@ -48,6 +48,34 @@ export function isThirdPartyCharacterization(text: string): boolean {
     || /^[\u201c"]\s*[A-Z][^"]*[\u201d"]\s*[\u2013\u2014–—-]\s*(NRA|AFP|Heritage|NARAL|Planned Parenthood|Sierra Club|Chamber)/i.test(t);
 }
 
+/** Event narration — chronicles another official's actions with no first-person stance from the member. */
+export function isEventNarration(text: string): boolean {
+  const t = text.trim();
+  if (!t) return false;
+  const hasFirstPersonStance = /\b(I|we|my|our)\b/i.test(t);
+  if (hasFirstPersonStance) return false;
+
+  if (/^(The day after|On the day after|The following day|In response to|Following the)\b/i.test(t)) {
+    return true;
+  }
+  if (/\bAttorney General\b.{0,60}\b(sent|wrote|responded|issued|announced)\b/i.test(t)) {
+    return true;
+  }
+  if (/\bsent a letter to\b/i.test(t)) return true;
+  if (/\bresponding to the filibuster\b/i.test(t)) return true;
+  if (/\bto\s+Paul\b/i.test(t) && /\b(sent|wrote|letter|filibuster)\b/i.test(t)) return true;
+  if (/\bHolder wrote\b/i.test(t)) return true;
+
+  return false;
+}
+
+/** Platform position text that is not a member's own stated position. */
+export function isDisqualifiedPlatformPosition(text: string): boolean {
+  return isVoteRestatementSaid(text)
+    || isThirdPartyCharacterization(text)
+    || isEventNarration(text);
+}
+
 export interface SaidDidDiffLike {
   said: { quote: string; url?: string; verbatim?: boolean };
   did: { action: string; url?: string };
@@ -472,6 +500,7 @@ export function validatePlatformPositionsFile(
       const text = pos.text ?? '';
       pushIf(violations, label, isVoteRestatementSaid(text), 'vote-restatement text presented as a stated position');
       pushIf(violations, label, isThirdPartyCharacterization(text), 'third-party characterization presented as member stated position');
+      pushIf(violations, label, isEventNarration(text), 'event narration presented as member stated position');
       pushIf(violations, label, hasUndecodedHtmlEntity(text), 'undecoded HTML entity in platform position text');
       const canonicalTopicId = normalizeTopicId(topicId);
       if (text.trim().length > 0 && canonicalTopicId !== 'legislation') {
