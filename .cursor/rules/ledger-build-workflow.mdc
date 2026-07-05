@@ -12,7 +12,7 @@ autoAttach:
 - Correct data (no fabricated facts presented as real)
 - Correct sourcing (tier values, dates, and links visible in UI)
 - Correct rendering (SSR for all route pages — see below)
-- No regressions (build passes, existing features still work)
+- No regressions (build passes, guard suites green, golden snapshots unchanged)
 - Honest empty states (no fabricated fill-ins when data is missing)
 
 ## Architecture rule — SSR on all route pages
@@ -21,22 +21,22 @@ autoAttach:
 
 Why: crawlers index server-rendered HTML. A `'use client'` route page is invisible to Google. The product goal is to be the best political research resource — that requires search visibility.
 
-Current violation: (RESOLVED — `app/politicians/[id]/page.tsx` is now a server component as of Phase 11, commit `a2d76ee`).
-
 ## Branch workflow
 
 - **Canonical repo:** `robbieryan312-star/The-ledger` — branch **`main`** (see `REPO.md`)
 - Feature branches optional for large reviews; owner may direct work on `main` when consolidating history
-- Commit after each completed task before starting the next
+- **Commit locally** after each completed task when `npm run build` and all guard suites pass
+- **`git push` only on Claude Code's explicit APPROVAL** — never push unreviewed phase work
 - `npm run build` must pass before any commit
 
 ## Phase gates
 
-Stop and wait for owner review after each phase:
-1. Commit completed work to the branch
-2. Run `npm run build` — report pass/fail
+After each phase:
+1. Commit completed work locally (do not push until approved)
+2. Run all guard suites + `npm run build` — report pass/fail
 3. Report: what was changed, what was tested, what was NOT changed
-4. Do not start the next phase until the owner confirms
+4. Claude Code reviews against `.cursor/rules/ledger-core-rules.mdc`; on APPROVAL, push to `origin/main`
+5. Owner reviews visual/product checkpoints only (marked 👁 in `PROGRESS.md`)
 
 Report format (3 lines max):
 ```
@@ -50,7 +50,7 @@ Verified: [what you actually tested]
 - Never launch parallel agents editing the same data files — causes regressions
 - After data changes, run: `npm run sync:legislators` then `npm run verify:office`
 - Build must pass: `npm run build`
-- Owner runs `npm run dev` in their own terminal — do not start dev servers
+- Owner runs `npm run dev` in their own terminal — do not start dev servers on port 3000
 
 ## Scope discipline
 
@@ -61,23 +61,21 @@ Verified: [what you actually tested]
 
 ## When to stop and ask
 
-Stop and ask the owner only for:
+Stop and ask Claude Code (not the owner) for credibility tradeoffs. Stop and ask the owner only for:
 - Scope changes (adding features not in the brief)
-- Credibility tradeoffs (which source to trust when records conflict)
-- Major UX direction changes
+- Major UX / visual / layout / product direction changes
 
 Do not stop and ask for routine implementation decisions.
 
 ## Mock data policy (DNU quarantine — 2026-07-04)
 
 Mock/hand-authored fact data is permanently banned from the app interface.
-All 6 former mock files live in `lib/data/DNU/` (quarantined, never imported).
-They are retained solely as collection leads for cross-checking pipeline output.
+Historical hand-authored data was removed; retrievable only via git history (quarantine commit 288e2df).
 
-- **Banned from interface:** No app/, components/, or lib/ code (outside DNU/) may import quarantined files
+- **Banned from interface:** No app/, components/, or lib/ code may import former DNU quarantine files
 - **Guard-enforced:** Build fails on any DNU import (sourceIntegrity test suite)
 - **Pipelines are the only path:** Real data enters via sync scripts → lib/data/generated/ with verifiable sources
-- **Identity scaffolding:** Politician roster/identity fields (name, party, state, photo) live in generated/roster.json
+- **Identity scaffolding:** Politician roster/identity fields live in generated/roster.json
 - **Honest empty states:** Any category without real pipeline data shows "No verified record available"
 - **Demo surfaces:** /elections, /lobbying, /compare show "No verified data yet" until real pipelines exist
 
@@ -88,7 +86,7 @@ npm run sync:legislators      # refresh congressional roster
 npm run sync:fec-national     # FEC finance for all 537 members
 npm run sync:congress-votes   # roll-call votes
 npm run sync:stock-trades     # STOCK Act PTR trades
-npm run sync:news-national    # GDELT news for all members
+npm run sync:news-rss         # approved-outlet RSS for migrated profiles
 npm run verify:office         # confirm office resolution is clean
 npm run build                 # must pass before any commit
 ```

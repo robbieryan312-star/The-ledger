@@ -27,40 +27,7 @@ The Ledger presents what politicians promised versus what they actually did in o
 
 ## Data credibility
 
-### Source tiers — exact code values (never write "Tier 1/2/3/4")
-
-| Code value | Meaning |
-|------------|---------|
-| `'official'` | `.gov`, FEC, STOCK Act, congress.gov, senate.gov, house.gov |
-| `'nonpartisan'` | GovTrack, OpenSecrets, Ballotpedia, AP, Reuters, unitedstates/congress-legislators |
-| `'media'` | Named mainstream outlet — verbatim quotes ONLY, never paraphrased |
-| `'alleged'` | Credible but unproven — multi-source corroboration required, always flagged |
-| `'unverified'` | No verified sourcing — maximum caveat, rarely shown |
-
-### Multi-source corroboration rule
-
-Any statement attributed to a politician from a `'media'` or lower tier source requires **2+ independent approved sources** before it can be displayed as verified.
-
-- 1 source, tier `'official'` or `'nonpartisan'` → verified, display as-is
-- 1 source, tier `'media'` → label `'alleged'`, show with caveat, never verified
-- 2+ independent `'media'` sources → verified, list all sources
-- Cannot corroborate → do not display; show "No verified statement on record"
-
-AP/Reuters wire + an outlet republishing that wire = 1 source, not 2.
-
-### Banned sources
-
-- **Wikipedia** — never under any tier. User-editable, not authoritative.
-- Social media posts — not verifiable at any tier without corroboration from an approved outlet.
-- Anonymous sources — never, at any tier.
-- Press releases from campaigns or PACs — `'alleged'` only, requires corroboration.
-- Any source without a verifiable URL and publication date.
-
-### Approved journalism sources (tier `'media'`)
-
-NYT, Washington Post, Wall Street Journal, Politico, The Hill, AP, Reuters, NPR, PBS NewsHour, Roll Call, CQ, The Atlantic, Bloomberg, ProPublica, The Guardian, Miami Herald, Tampa Bay Times, Sun Sentinel, Orlando Sentinel, Florida Phoenix, WUSF, WLRN.
-
-Journalism quotes must be **verbatim**, in quotation marks, with named outlet, author, date, and URL. Never paraphrase a quote and present it as the politician's words.
+**Source tiers, corroboration, banned sources:** canonical table in `.cursor/rules/ledger-core-rules.mdc` §3; full policy in `.cursor/rules/ledger-data-policy.mdc`.
 
 ### Data organized by destination view
 
@@ -151,10 +118,11 @@ Historical hand-authored data was removed; retrievable only via git history (qua
 
 ## Decision authority
 
-Routine implementation: proceed without asking. Stop and ask the owner only for:
+Routine implementation: proceed without asking. **Credibility tradeoffs** (conflicting sources, which record to trust) route to **Claude Code** per the written spec — not the owner. Stop and ask the owner only for:
 - Scope changes
-- Credibility tradeoffs (conflicting sources, which record to trust)
-- Major UX direction changes
+- Major UX / visual / layout / product direction changes
+
+(Conflict resolution: `.cursor/rules/ledger-core-rules.mdc` wins over any other doc.)
 
 ---
 

@@ -143,12 +143,15 @@ Elections, OpenCorporates — unchanged from prior log (see `.env.local` and `KE
 | Track | State (2026-07-04) |
 |-------|--------------------|
 | Migrated gold profiles | 6/537 (S000033, O000172, M000355, M001184, W000817, C001098) |
-| Phase C (display/credibility fix stack) | ✅ verified by Claude; push pending Cruz micro-fix |
-| Phase D1–D4 | Briefed, awaiting execution |
+| Phase C (display/credibility fix stack) | ✅ verified by Claude |
+| Phase D1 (mock abolition + slugs) | ✅ commit f0dcaa3 on origin/main |
+| Phase D2 (rules consolidation) | ✅ HARD RULES header; single tier table; approval-before-push |
+| Phase D3 (RSS news) | ✅ registry + sync:news-rss; 2/6 with articles, 4 honest-gap |
+| Phase D4 (CI + snapshots) | ✅ guards.yml + golden snapshots S000033/M000355 |
 | Phase E (Pelosi pipeline test) | Briefed, blocked on D |
-| Guard suites | 45 green locally; CI pending (D4) |
+| Guard suites | 48+ locally; CI via guards.yml (D4) |
 | Font self-host | OPEN (build depends on fonts.gstatic.com) |
-| News | 2/6 filled (Guardian), 4 verified honest-gap; RSS pipeline pending (D3) |
+| News | RSS pipeline (D3); 2 Guardian items pre-sync |
 
 ## Compressed history (pre-roadmap)
 

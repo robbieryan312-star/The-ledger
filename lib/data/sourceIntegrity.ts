@@ -9,6 +9,7 @@ import {
   recordKeywordMatches,
 } from './profileRecordByTopic';
 import { hasUndecodedHtmlEntity } from './htmlEntities';
+import { isAllowedNewsArticleUrl, isRegistryNewsHost } from './newsFeedRegistry';
 import { normalizeTopicId } from './topicAliases';
 
 export interface SourceIntegrityViolation {
@@ -255,41 +256,9 @@ export function isArticleTypeIntegrityUrl(url: string | undefined): boolean {
   return true;
 }
 
-/** Approved journalism outlets for news.json (AGENTS.md / ledger-data-policy.mdc). */
-const APPROVED_NEWS_OUTLET_HOSTS = new Set([
-  'nytimes.com',
-  'washingtonpost.com',
-  'wsj.com',
-  'politico.com',
-  'thehill.com',
-  'apnews.com',
-  'reuters.com',
-  'npr.org',
-  'pbs.org',
-  'rollcall.com',
-  'cq.com',
-  'theatlantic.com',
-  'bloomberg.com',
-  'propublica.org',
-  'theguardian.com',
-  'miamiherald.com',
-  'tampabay.com',
-  'sun-sentinel.com',
-  'orlandosentinel.com',
-  'floridaphoenix.com',
-  'wusf.org',
-  'wlrn.org',
-]);
-
-/** True when `url`'s hostname is one of the approved journalism outlets for news.json. */
+/** True when `url`'s hostname is on the approved RSS news registry. */
 export function isApprovedNewsOutlet(url: string | undefined): boolean {
-  if (!url?.trim()) return false;
-  try {
-    const host = new URL(url.trim()).hostname.toLowerCase().replace(/^www\./, '');
-    return Array.from(APPROVED_NEWS_OUTLET_HOSTS).some((a) => host === a || host.endsWith(`.${a}`));
-  } catch {
-    return false;
-  }
+  return isRegistryNewsHost(url);
 }
 
 /** Wire services corroborate independently at 'nonpartisan' tier per the data-credibility policy. */
@@ -467,7 +436,7 @@ export function validateNewsFile(
       pushIf(
         violations,
         label,
-        !isApprovedNewsOutlet(articleUrl),
+        !isAllowedNewsArticleUrl(articleUrl),
         `unapproved news outlet: ${articleUrl}`,
       );
       const normalized = normalizeUrlForDedupe(articleUrl);

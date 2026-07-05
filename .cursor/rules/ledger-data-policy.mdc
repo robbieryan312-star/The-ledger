@@ -8,17 +8,9 @@ autoAttach:
 
 Data credibility is the product. Every decision defers to it.
 
-## Source tiers — use these exact string values in code
+## Source tiers
 
-| Code value | Meaning | Example sources |
-|------------|---------|-----------------|
-| `'official'` | Authoritative government record | congress.gov, FEC, senate.gov, house.gov, STOCK Act filings |
-| `'nonpartisan'` | Established nonpartisan or official-derived research | GovTrack, OpenSecrets, Ballotpedia, VoteSmart, AP, Reuters, ProPublica, unitedstates/congress-legislators |
-| `'media'` | Named mainstream journalism outlet | NYT, WaPo, WSJ, Politico, The Hill — verbatim quotes with attribution only, never paraphrased |
-| `'alleged'` | Credible but unproven claim | Corroborated by 2+ independent sources, always visibly flagged |
-| `'unverified'` | Circulating claim with no verified sourcing | Maximum caveat, shown only when explicitly relevant |
-
-**Never write "Tier 1", "Tier 2", "Tier 3", or "Tier 4" in code or JSX.** Use the string values above.
+**Canonical tier table:** `.cursor/rules/ledger-core-rules.mdc` §3 — use those exact code values in code and JSX; never write "Tier 1/2/3/4".
 
 ---
 
@@ -109,12 +101,10 @@ Do **not** expand hand-written mock data for national coverage.
 
 ---
 
-## Mock data policy
+## Mock data policy (DNU quarantine — 2026-07-04)
 
-Mock data exists ONLY for featured profiles and as UI scaffolding.
-- Mock data must never appear without a prominent "Demo data — not verified" label
-- `/lobbying`, `/elections`, `/compare` currently show mock data — visible disclaimers required
-- Demo stock trades must be labeled distinctly from STOCK Act official trades
+Mock/hand-authored fact data is permanently banned from the app interface. Pipelines with
+verifiable sources are the only path into `lib/data/generated/`. See `AGENTS.md` for guards.
 
 ---
 

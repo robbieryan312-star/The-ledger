@@ -5,6 +5,18 @@ alwaysApply: true
 
 # The Ledger — Core Rules (read before EVERY response)
 
+## HARD RULES (read first)
+
+- **No fabrication** — show `"No verified record available"` for genuine gaps; never invent facts, quotes, or dates.
+- **Verbatim-only quotes** from journalism — never paraphrase and present as the politician's words.
+- **Honest-gap vs diagnosed-failure** — a failed fetch/sync is UNVERIFIED (`fetch-failed`), never silent empty.
+- **One source of truth per fact** — wire/join to existing generated data; never re-collect into a parallel file.
+- **`bioguideId` join key** — universal across votes, finance, news, statements; never alias.
+- **Approval before push** — commit locally when green; push to `origin/main` only on Claude Code's explicit APPROVAL.
+- **Fixtures append-only** — regression guards grow, never reset; every data-quality bug gets a frozen bad example.
+- **Spec violation = bug to fix, never a question** — read the owning file; do not re-ask the owner.
+- **Stale violation flags are bugs** — when a flagged violation is fixed, delete its flag in the same commit.
+
 **These rules bind EVERY agent equally — Claude Code AND every Cursor agent (Auto, cloud
 agents, background agents). No agent is exempt.** This is the one file all of them reload every
 turn (`alwaysApply: true`). The owner approved these standards once; they are concrete and
@@ -92,10 +104,18 @@ the specific failure this file was created to stop.
 
 ## 3. Data credibility (non-negotiable)
 
-> Full detail: `.cursor/rules/ledger-data-policy.mdc`
+> Corroboration, banned sources, destination-view map: `.cursor/rules/ledger-data-policy.mdc`
 
-- Tiers are exact code strings: `'official'`, `'nonpartisan'`, `'media'`, `'alleged'`,
-  `'unverified'`. Never write "Tier 1/2/3".
+### Source tiers — canonical table (exact code values; never write "Tier 1/2/3/4")
+
+| Code value | Meaning | Example sources |
+|------------|---------|-----------------|
+| `'official'` | Authoritative government record | congress.gov, FEC, senate.gov, house.gov, STOCK Act filings |
+| `'nonpartisan'` | Established nonpartisan or official-derived research | GovTrack, OpenSecrets, Ballotpedia, VoteSmart, AP, Reuters, ProPublica, unitedstates/congress-legislators |
+| `'media'` | Named mainstream journalism outlet | NYT, WaPo, WSJ, Politico, The Hill — verbatim quotes with attribution only, never paraphrased |
+| `'alleged'` | Credible but unproven claim | Corroborated by 2+ independent sources, always visibly flagged |
+| `'unverified'` | Circulating claim with no verified sourcing | Maximum caveat, shown only when explicitly relevant |
+
 - **2+ independent approved sources** to display a `'media'`-tier statement as verified.
   1 media source → `'alleged'`, shown with caveat, never as verified. AP/Reuters wire + a
   republisher = 1 source.

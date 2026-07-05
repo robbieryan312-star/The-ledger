@@ -10,17 +10,7 @@ Use this doc to answer: *“I need X for a profile — where do I look first?”
 
 ## Credibility tiers (transparency)
 
-These are the **exact code values** shown in the UI. Higher rank = more authority for structural facts (office, votes, money).
-
-| Code value | Meaning | May assert current office? |
-|------------|---------|----------------------------|
-| `'official'` | Primary government record (FEC, congress.gov, STOCK Act, GPO, LDA, FARA) | Yes |
-| `'nonpartisan'` | Established research / official-derived (GovTrack, Ballotpedia, unitedstates, Voteview) | Yes |
-| `'media'` | Approved journalism — verbatim quotes only; 2+ independent outlets for verified Said | No |
-| `'alleged'` | Credible but unproven — always flagged | No |
-| `'unverified'` | No verified sourcing — maximum caveat | No |
-
-**Banned everywhere:** Wikipedia, anonymous sources, social media as primary Said.
+**Canonical tier table:** `.cursor/rules/ledger-core-rules.mdc` §3 (exact code values for UI and code).
 
 ---
 
@@ -38,7 +28,8 @@ These are the **exact code values** shown in the UI. Higher rank = more authorit
 | Said→Did pairing | topicPositions + voteTopicId | Track Record | `buildSaidDidDiffsFromTopicPositions` |
 | Bills by topic | Congress.gov deep ingest | Topic Record · legislation | `ingest:member` → `members/{bioguideId}.json` |
 | STOCK trades | House PTR PDFs | Stock Trades | `sync:stock-trades` |
-| News | GDELT DOC API | News section | `sync:news-national` |
+| News | GDELT DOC API (legacy) | News section | `sync:news-national` |
+| News (migrated 6) | Approved-outlet RSS | Profile → News tab | `sync:news-rss` → `profiles/{id}/news.json` |
 | Ideology | Voteview DW-NOMINATE | Voteview panel | voteview ingest |
 | Lobbying | Senate LDA | Lobbying / org pages | `ingest:lobbying-fl` |
 
