@@ -146,10 +146,10 @@ Elections, OpenCorporates — unchanged from prior log (see `.env.local` and `KE
 | Docs cleanup + FL script consolidation | ✅ agent index, SETUP, FLORIDA_DATA, BATCH_SCALING, archive |
 | Phase C (display/credibility fix stack) | ✅ verified by Claude |
 | Phase D1–D4 | ✅ done (mock abolition, rules, RSS, CI guards) |
-| Phase E (Pelosi pipeline test) | Briefed — `profile:build` wired; certification in progress |
-| Recovery audit (P0–P7) | In progress — guards wired, paths canonicalized |
+| Phase E (Pelosi pipeline test) | In review — P000197 profile:build guards PASS; awaits owner visual 👁 |
+| Recovery audit (P0–P7) | ✅ complete — prebuild + full build pass |
 | Guard suites | 11 in prebuild + CI via guards.yml |
-| Font self-host | OPEN (build depends on fonts.gstatic.com) |
+| Font / Turbopack | ✅ system stack (M6 self-host optional for brand parity) |
 | News | RSS pipeline; honest gaps where feeds thin |
 
 ## Compressed history (pre-roadmap)
