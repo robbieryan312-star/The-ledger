@@ -21,17 +21,16 @@ Cursor Cloud and local sessions often spawn **new workspace directories** (e.g. 
 
 ## Session start (agents — mandatory)
 
-Read **in order** before implementing or asking the owner anything:
+Before advising, coding, syncing data, or asking the owner for keys/email/scope, read **in order**:
 
-1. `.cursor/rules/ledger-core-rules.mdc` — binding rules (all agents)
-2. `PROGRESS.md` — milestones M1–M8, status board, blockers
-3. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
-4. `KEYS.md` — which env vars are SET vs EMPTY (values only in `.env.local`)
-5. `PILOT_PROFILE_CHECKLIST.md` — what a complete profile requires
+1. `.cursor/rules/ledger-core-rules.mdc`
+2. `PROGRESS.md`
+3. `lib/data/SOURCE_LOOKUP.md`
+4. `KEYS.md`
 
-Navigation index: `docs/AGENT_INDEX.md`. Task-specific: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`.
+Task-specific: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`, `.cursor/rules/ledger-editorial-voice.mdc`. Do **not** use `docs/archive/` for current policy.
 
-Do **not** use `docs/archive/` for current policy. Do **not** re-derive owner expectations from memory. Do **not** ask for email (`robbie.ryan312@gmail.com` is in `KEYS.md`). Do **not** treat VoteSmart or OpenSecrets as blockers — see deferred sources in `SOURCE_LOOKUP.md`.
+Navigation index: `docs/AGENT_INDEX.md`. Canonical repo: `The-ledger` / `main` (see `REPO.md`).
 
 ---
 

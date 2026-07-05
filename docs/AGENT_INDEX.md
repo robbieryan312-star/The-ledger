@@ -4,11 +4,12 @@ Single map of where to read before acting. **Do not** use `docs/archive/` for cu
 
 ## Session start (mandatory order)
 
-1. `.cursor/rules/ledger-core-rules.mdc` — binding rules for all agents
-2. `PROGRESS.md` — milestones M1–M8, status board, blockers
-3. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
-4. `KEYS.md` — SET vs EMPTY env vars (values in `.env.local` only)
-5. `PILOT_PROFILE_CHECKLIST.md` — what a complete profile requires
+Before advising, coding, syncing data, or asking the owner for keys/email/scope, read **in order**:
+
+1. `.cursor/rules/ledger-core-rules.mdc`
+2. `PROGRESS.md`
+3. `lib/data/SOURCE_LOOKUP.md`
+4. `KEYS.md`
 
 Also read when relevant: `REPO.md`, `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`,
 `.cursor/rules/ledger-editorial-voice.mdc`.
@@ -17,7 +18,7 @@ Also read when relevant: `REPO.md`, `AGENTS.md`, `.cursor/rules/ledger-data-poli
 
 | Topic | File |
 |-------|------|
-| API keys, demo commands, GitHub secrets | `docs/SETUP.md` → `KEYS.md`, `OWNER_SETUP.md` |
+| API keys, demo commands, GitHub secrets | `KEYS.md`, `docs/SETUP.md`, `OWNER_SETUP.md` |
 | Canonical repo / branch workflow | `REPO.md` |
 | Architecture & data flow | `ARCHITECTURE.md` |
 | Integration roadmap | `lib/data/DATA_INTEGRATION_PLAN.md` |

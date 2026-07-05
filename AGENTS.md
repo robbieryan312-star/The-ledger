@@ -13,7 +13,7 @@ Civic-info Next.js app. **Data credibility is the highest priority.** Every deci
 (operating rules, data credibility, locked profile layout, guardrails). It exists because
 approved specs were being ignored and re-requested. Do not re-ask what a file already answers.
 
-**Session start (read first):** `REPO.md` → `PROGRESS.md` → `lib/data/SOURCE_LOOKUP.md` → `KEYS.md`
+**Session start (read first):** read **in order** — `.cursor/rules/ledger-core-rules.mdc` → `PROGRESS.md` → `lib/data/SOURCE_LOOKUP.md` → `KEYS.md`
 
 Product vision and editorial voice: `PRODUCT_VISION.md`, `.cursor/rules/ledger-editorial-voice.mdc`.
 
