@@ -1,9 +1,9 @@
 name: Refresh Florida data
 
 # Keeps /data snapshots current automatically. No-key public sources refresh on
-# every run; keyed sources refresh only when their GitHub Actions secret is set
-# (so a missing secret never overwrites real data with a placeholder). Pushing
-# changed snapshots to main triggers the Vercel production deploy.
+# every run; keyed sources refresh only when their GitHub Actions secret is set.
+# Changed snapshots land on data-refresh branch via PR — never push main directly.
+# Guard suites + build must pass before any commit; fetch-failed artifacts excluded.
 
 on:
   schedule:
@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 concurrency:
   group: refresh-data
@@ -53,14 +54,36 @@ jobs:
       - name: Rebuild Records & Sources index
         run: npm run build:sources-index && npm run build:data-slices
 
-      - name: Commit & push changed snapshots
+      - name: Run guard suites and build (abort on failure — no commit)
+        run: |
+          npm run test:crec
+          npm run test:org-join
+          npm run test:source-integrity
+          npm run test:classify
+          npm run build
+
+      - name: Exclude fetch-failed artifacts from commit
+        run: bash scripts/exclude-fetch-failed-artifacts.sh
+
+      - name: Commit to data-refresh branch and open PR
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config user.name "ledger-data-bot"
           git config user.email "ledger-data-bot@users.noreply.github.com"
+          git checkout -B data-refresh
           git add data/ lib/data/generated/sourcesIndex.json lib/data/generated/slices/
           if git diff --cached --quiet; then
             echo "No data changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(data): scheduled snapshot refresh"
+          git push -u origin data-refresh --force
+          EXISTING=$(gh pr list --head data-refresh --base main --json number --jq '.[0].number' 2>/dev/null || true)
+          if [ -n "$EXISTING" ] && [ "$EXISTING" != "null" ]; then
+            echo "Updated existing PR #$EXISTING"
           else
-            git commit -m "chore(data): scheduled snapshot refresh"
-            git push
+            gh pr create --base main --head data-refresh \
+              --title "chore(data): scheduled snapshot refresh" \
+              --body "Automated data refresh. Guard suites + build passed before commit. Fetch-failed artifacts excluded per §6."
           fi
