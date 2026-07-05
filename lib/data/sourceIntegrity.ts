@@ -49,6 +49,17 @@ export function isVoteRestatementSaid(text: string): boolean {
   if (/On \w+ \d{1,2}, the (Senate|House)\b/i.test(t)) return true;
   if (/\bthe (Senate|House) (voted|held a vote|passed)\b/i.test(t)) return true;
   if (/\bwon re-election to the U\.S\. (Senate|House)/i.test(t)) return true;
+  /** Ballotpedia election-result rows — not a member's stated policy position. */
+  if (/\bwon (re-)?election to the United States (Senate|House)\b/i.test(t)) return true;
+  /** Jan 6 electoral-certification vote narration duplicated across hundreds of profiles. */
+  if (/^Congress convened a joint session on/i.test(t) && /\bvoted against certifying the electoral votes/i.test(t)) {
+    return true;
+  }
+  /** Dated shutdown/cloture narration — recounts Senate roll-call, not member stance. */
+  if (/^During the shutdown in October 2013, the Senate rejected/i.test(t)) return true;
+  if (/^On \w+ \d{1,2}, \d{4}, the (Senate|House)\s+(voted|passed|took a vote|rejected|failed|adopted|defeated|invoked)/i.test(t)) {
+    return true;
+  }
   return false;
 }
 

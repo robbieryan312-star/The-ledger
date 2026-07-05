@@ -481,19 +481,6 @@
           }
         ]
       },
-      "economy": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "On November 5, 1996, Dick Durbin won election to the United States Senate . He defeated Al Salvi (R), Steven H. Perry (Reform), Robin J. Miller (L), Chad Koppie (U.S. Taxpayers) and James E. Davis (Natural Law) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Richard_Durbin",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
-      },
       "judiciary": {
         "statements": [],
         "saidDidLinks": [
@@ -1144,13 +1131,6 @@
         "saidDidLinks": [],
         "platformPositions": [
           {
-            "text": "On November 2, 2010, Kirsten Gillibrand won re-election to the United States Senate . She defeated Joseph J. DioGuardi ( R ), Cecile A. Lawrence ( Green ), John Clifton ( Libertarian ), Joseph Huff (Rent Is 2 Damn High), Vivia Morgan (Anti-Prohibition) and Bruce Blakeman (Tax Revolt) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Kirsten_Gillibrand",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
             "text": "An Economy That Rewards Work Kirsten believes in building an economy that rewards the contributions of its workers and entrepreneurs. To create more good-paying jobs across New York, she is helping our startups and small businesses access opportunity and ensuring more products are stamped \"Made in America.\" To improve the quality of jobs for all Americans, she is fighting for stronger unions, for workers to own a stake in the success of their business, and for a minimum wage that lifts all working families out of poverty.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Kirsten_Gillibrand",
@@ -1267,19 +1247,6 @@
             "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
             "voteChoice": "Nay",
             "tier": "official"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Aderholt voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Robert_Aderholt",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -1973,33 +1940,6 @@
             "tier": "official"
           }
         ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "On November 5, 2002, Ken Calvert won re-election to the United States House . He defeated Louis Vandenberg (D) and Phillip John Courtney (G) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Ken_Calvert",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
-            "text": "On November 3, 1998, Ken Calvert won re-election to the United States House . He defeated Mike Rayburn (D), Phill Courtney (G) and Annie Wallack (Natural Law) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Ken_Calvert",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Calvert voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Ken_Calvert",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
       }
     },
     "C001047": {
@@ -2131,13 +2071,6 @@
           }
         ],
         "platformPositions": [
-          {
-            "text": "Capito won election to the United States Senate on November 4, 2014. Capito won the Republican nomination in the primary on May 13, 2014.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Shelley_Capito",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
           {
             "text": "\"It is troubling that upon the news of Senator Robert Byrd’s passing, the three elected executive officers of our state government who play a significant role in determining the process and timing of a Special Election – Governor, Secretary of State and Attorney General – did not meet and work together on a course of action to address the known problems in the law. It is apparent that many elected officials, and particularly the person ultimately charged with calling a Special Election, have been more focused on political maneuvers to further their own political ambitions before fulfilling the obligations of their office on behalf of the people they were elected to serve.\"",
             "source": "Ballotpedia",
@@ -3237,19 +3170,6 @@
             "asOf": "2026-06-29"
           }
         ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . DesJarlais voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Scott_DesJarlais",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
       }
     },
     "D000600": {
@@ -3335,26 +3255,6 @@
         "platformPositions": [
           {
             "text": "Diaz-Balart was born on September 25, 1961 in Ft. Lauderdale, Florida to Rafael and Hilda Diaz-Balart, and is the youngest of four brothers (Rafael, Lincoln, and Jose). He studied Political Science at the University of South Florida in Tampa.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Mario_Diaz-Balart",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "On November 5, 2002, Mario Diaz-Balart won election to the United States House . He defeated Annie Betancourt (D) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Mario_Diaz-Balart",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Diaz-Balart voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Mario_Diaz-Balart",
             "tier": "nonpartisan",
@@ -3461,13 +3361,6 @@
         "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Gosar voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Paul_Gosar",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
           {
             "text": "COVID-19, also known as coronavirus disease 2019 , is the disease caused by the SARS-CoV-2 virus. The first confirmed case of the disease in the United States was announced on January 21, 2020. For more of Ballotpedia's coverage of the coronavirus impact on political and civic life, click here .",
             "source": "Ballotpedia",
@@ -3633,13 +3526,6 @@
             "url": "https://ballotpedia.org/Sam_Graves",
             "tier": "nonpartisan",
             "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Graves voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Sam_Graves",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -3676,19 +3562,6 @@
             "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
             "voteChoice": "Yea",
             "tier": "official"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Griffith voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/H._Morgan_Griffith",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -4687,15 +4560,6 @@
             "voteChoice": "Yea",
             "tier": "official"
           }
-        ],
-        "platformPositions": [
-          {
-            "text": "On November 2, 2010, William Keating won election to the United States House . He defeated Jeffrey Davis Perry (R), Maryanne Lewis (I), James A. Sheets (I) and Joe van Nes (Bring Home Troops) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/William_Keating",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
         ]
       },
       "economy": {
@@ -4963,13 +4827,6 @@
         "saidDidLinks": [],
         "platformPositions": [
           {
-            "text": "On November 2, 2010, Zoe Lofgren won re-election to the United States House . She defeated Daniel Sahagun (R) and Edward Gonzalez (L) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Zoe_Lofgren",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
             "text": "On August 29, 2013, 53 House Democrats signed a letter written by California Rep. Barbara Lee that called for a congressional resolution on strikes and said that the situation in Syria \"should not draw us into an unwise war—especially without adhering to our constitutional requirements.\" The letter also called on the Obama administration to work with the U.N. Security Council to build international consensus condemning the alleged use of chemical weapons. Lofgren was one of the 53 Democrats in the House to sign the letter.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Zoe_Lofgren",
@@ -5031,19 +4888,6 @@
             "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
             "voteChoice": "Yea",
             "tier": "official"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Lucas voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Frank_Lucas",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -5226,13 +5070,6 @@
         "saidDidLinks": [],
         "platformPositions": [
           {
-            "text": "Markey won election to the United States Senate seat vacated by John Kerry , after his confirmation by the U.S. Senate to Secretary of State.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Edward_Markey",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
             "text": "Excerpt: \"Ed Markey believes that all Americans deserve access to high quality healthcare and is committed to making universal healthcare a reality.\"",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Edward_Markey",
@@ -5372,13 +5209,6 @@
         ],
         "platformPositions": [
           {
-            "text": "Markey won election to the United States Senate seat vacated by John Kerry , after his confirmation by the U.S. Senate to Secretary of State.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Edward_Markey",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
             "text": "Markey won the nomination in the Democratic primary on April 30, 2013, defeating challenger Stephen Lynch . The general election was held on June 25, 2013. He defeated Gabriel Gomez and Richard Heos (I) in the general election to win the seat.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Edward_Markey",
@@ -5492,19 +5322,6 @@
       }
     },
     "M001143": {
-      "immigration": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "2004 On November 2, 2004, Betty McCollum (D) won re-election to the United States House . She defeated Patrice Bataglia (R) and Peter F. Vento (Independence) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Betty_McCollum",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
-      },
       "education": {
         "statements": [],
         "saidDidLinks": [
@@ -6544,19 +6361,6 @@
       }
     },
     "C001088": {
-      "immigration": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "On November 2, 2010, Coons won election to the United States Senate . He defeated Christine O'Donnell (R), Glenn A. Miller (I), James W. Rash, Jr. (L), Maurice F. Bourgeois (I) and Samtra Devard (I) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Christopher_Coons",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
-      },
       "defense": {
         "statements": [],
         "saidDidLinks": [
@@ -6853,13 +6657,6 @@
             "url": "https://ballotpedia.org/Charles_Fleischmann",
             "tier": "nonpartisan",
             "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Fleischmann voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Charles_Fleischmann",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -7006,13 +6803,6 @@
         "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
-          {
-            "text": "On November 7, 2006, Jerrold Nadler won re-election to the United States House . He defeated Eleanor Friedman (R) and Dennis E. Adornato (Conservative) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Jerrold_Nadler",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
           {
             "text": "Fighting to expand civil rights protections has always been a fundamental element of Jerry’s identity, as New York’s vibrant LGBTQIA+ community can attest. The Advocate–a leading LGBTQIA+ publication–wrote that Jerry “is one of the nation’s fiercest protectors of LGBT rights and a powerful ally for trans equality” and for good reason: Jerry has been an original co-sponsor of countless major pieces of LGBT civil rights legislation for decades. Not only did he himself write the Respect for Marriage Act (RMA), the Uniting American Families Act (UAFA), the Father Mychal Judge Act, and the Equal Access to Social Security Act, Jerry led the charge to pass the anti-discriminatory Equality Act through the House as Judiciary Chair, a historic feat he accomplished in 2019.",
             "source": "Ballotpedia",
@@ -7189,19 +6979,6 @@
       }
     },
     "N000015": {
-      "immigration": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "On November 8, 1988, Richard Neal won election to the United States House . He defeated Louis Godena (Peace, Jobs, Justice) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Richard_Neal",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
-      },
       "defense": {
         "statements": [],
         "saidDidLinks": [],
@@ -7219,13 +6996,6 @@
         "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
-          {
-            "text": "On November 8, 1988, Richard Neal won election to the United States House . He defeated Louis Godena (Peace, Jobs, Justice) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Richard_Neal",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
           {
             "text": "Neal signed a letter sent to Rep. Collin Peterson (D-Minn.) in August 2013 asking him to keep Rep. Steve King's (R-Iowa) proposed amendment out of the final Farm Bill. The Protect Interstate Commerce Act amendment would have prevented states from applying state agricultural product laws to products from other states. King introduced the amendment in response to a law in California requiring a larger cage size for egg-producing chickens.",
             "source": "Ballotpedia",
@@ -7270,19 +7040,6 @@
             "asOf": "2026-06-29"
           }
         ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "On November 8, 1988, Richard Neal won election to the United States House . He defeated Louis Godena (Peace, Jobs, Justice) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Richard_Neal",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
       }
     },
     "N000147": {
@@ -7314,32 +7071,6 @@
         "platformPositions": [
           {
             "text": "Pallone announced his bid for U.S. Senate in the special election for the seat left vacant by the death of Frank Lautenberg (D). Mayor of Newark Cory Booker , Rep. Rush D. Holt, Jr. and Assembly Speaker Sheila Oliver also sought the Democratic party nomination. Pallone was defeated by Cory Booker in the Democratic primary on August 13, 2013.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Frank_Pallone",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
-      },
-      "immigration": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "On November 5, 1996, Frank Pallone won re-election to the United States House . He defeated Steven Corodemus (R), Keith Quarles (I), Richard Sorrentino (I), Susan Normandin (I) and Stefanie Trice (I) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Frank_Pallone",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
-      },
-      "economy": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "On November 5, 2002, Frank Pallone won re-election to the United States House . He defeated Anne Sumers (D) and Michael J. Cino (Independent/Lower Tax Independent) in the general election.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Frank_Pallone",
             "tier": "nonpartisan",
@@ -7470,13 +7201,6 @@
         "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
-          {
-            "text": "On November 2, 2010, Paul won election to the United States Senate . The race attracted more than $8.5 million dollars in satellite spending .",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Rand_Paul",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
           {
             "text": "Senators Ted Cruz , Paul and Mike Lee , who led calls in the Senate to defund Obamacare in any spending bills, took part in a September 10, 2013, \"Exempt America from Obamacare\" event, organized by Tea Party Patriots and ForAmerica, along with other conservative groups.",
             "source": "Ballotpedia",
@@ -8091,13 +7815,6 @@
         "platformPositions": [
           {
             "text": "Rogers won re-election in the 2012 election for the U.S. House , representing Kentucky's 5th District . Rogers won the nomination on the Republican ticket. He ran unopposed in the Republican primary. Candidates wishing to run were initially required to file by the signature filing deadline of January 31, 2012. However because the legislature was unable to complete new redistricting maps on time, the deadline was pushed back one week. The new deadline was February 7. The primary elections took place on May 22, 2012. Rogers defeated Kenneth Stepp (D) in the November 6, 2012, general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Harold_Rogers",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Rogers voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Harold_Rogers",
             "tier": "nonpartisan",
@@ -8789,13 +8506,6 @@
             "asOf": "2026-06-29"
           },
           {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Schweikert voted against certifying the electoral votes from Pennsylvania. The House rejected the objection by a vote of 138-282.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/David_Schweikert",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
             "text": "COVID-19, also known as coronavirus disease 2019 , is the disease caused by the SARS-CoV-2 virus. The first confirmed case of the disease in the United States was announced on January 21, 2020. For more of Ballotpedia's coverage of the coronavirus impact on political and civic life, click here .",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/David_Schweikert",
@@ -9381,19 +9091,6 @@
       }
     },
     "V000081": {
-      "immigration": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "On November 2, 2010, Nydia Velazquez won re-election to the United States House . She defeated Alice Gaffney ( Conservative ) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Nydia_Vel%C3%A1zquez",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
-      },
       "defense": {
         "statements": [],
         "saidDidLinks": [],
@@ -9506,13 +9203,6 @@
             "url": "https://ballotpedia.org/Tim_Walberg",
             "tier": "nonpartisan",
             "asOf": "2026-06-29"
-          },
-          {
-            "text": "2010 On November 2, 2010, Tim Walberg won election to the United States House . He defeated incumbent Mark Schauer (D), Scott Eugene Aughney (U.S. Taxpayers), Greg Merle (Libertarian), Richard Wunsch (Green) and Danny Davis (Write-in) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Tim_Walberg",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       },
@@ -9545,13 +9235,6 @@
         "platformPositions": [
           {
             "text": "Walberg ran for re-election to Michigan's 7th District in 2014. Walberg won the Republican nomination in the primary against Douglas Radcliffe North on August 5, 2014. He defeated Pam Byrnes (D), Ken Proctor (Libertarian), Rick Strawcutter (U.S. Taxpayers) and David Swartout (I) in the general election on November 4, 2014.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Tim_Walberg",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Walberg voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Tim_Walberg",
             "tier": "nonpartisan",
@@ -9767,19 +9450,6 @@
       }
     },
     "W000187": {
-      "immigration": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "On November 3, 1992, Maxine Waters won re-election to the United States House . She defeated Nate Truman (R), Alice Mae Miles (P&F) and Carin Rogers (L) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Maxine_Waters",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
-      },
       "education": {
         "statements": [],
         "saidDidLinks": [
@@ -9897,13 +9567,6 @@
         "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
-          {
-            "text": "On November 4, 2008, Peter Welch won re-election to the United States House . He defeated Mike Bethel (I), Cris Ericson (I), Jerry Trudell (Energy Independence), Thomas James Hermann (Progressive) and Jane Newton (Liberty Union) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Peter_Welch",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
           {
             "text": "Peter fights to support Vermont’s farmers. Despite the immense challenges they face, our farmers and food networks have been the backbone of Vermont communities for generations. They must play a role in our future local food system, the fight against climate change, and our state economy.",
             "source": "Ballotpedia",
@@ -10139,19 +9802,6 @@
             "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
             "voteChoice": "Yea",
             "tier": "official"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Wittman voted against certifying the electoral votes from Pennsylvania. The House rejected the objection by a vote of 138-282.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Robert_Wittman",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -11722,13 +11372,6 @@
             "url": "https://ballotpedia.org/Richard_Hudson",
             "tier": "nonpartisan",
             "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Hudson voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Richard_Hudson",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -11924,13 +11567,6 @@
         "platformPositions": [
           {
             "text": "On June 18, 2018, Fischer's campaign announced that the Nebraska Hospital Association had endorsed her re-election bid.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Deb_Fischer",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
-            "text": "During the shutdown in October 2013, the Senate rejected, down party lines, every House-originated bill that stripped the budget of funding for the Affordable Care Act. A deal was reached late on October 16, 2013, just hours before the debt ceiling deadline. The bill to reopen the government, H.R. 2775, lifted the $16.7 trillion debt limit and funded the government through January 15, 2014. Federal employees also received retroactive pay for the shutdown period. The only concession made by Senate Democrats was to require income verification for Obamacare subsidies. The final vote on H.R. 2775 was 81-18, with all 18 votes against the bill from Republican members. Fischer voted with the Democratic Party for the bill.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Deb_Fischer",
             "tier": "nonpartisan",
@@ -12401,19 +12037,6 @@
             "tier": "official"
           }
         ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Perry voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Scott_Perry",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
       }
     },
     "W000814": {
@@ -12428,19 +12051,6 @@
             "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
             "voteChoice": "Yea",
             "tier": "official"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Weber voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Randy_Weber",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -13962,19 +13572,6 @@
             "tier": "official"
           }
         ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Carter voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Earl_Carter",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
       }
     },
     "L000583": {
@@ -14053,19 +13650,6 @@
             "asOf": "2026-06-29"
           }
         ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Loudermilk voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Barry_Loudermilk",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
       }
     },
     "A000372": {
@@ -14096,13 +13680,6 @@
           },
           {
             "text": "Rick Allen won the general election on November 4, 2014. He won the nomination in the Republican primary on May 20, 2014. He defeated incumbent John Barrow (D) in the general election.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Rick_Allen",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Allen voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Rick_Allen",
             "tier": "nonpartisan",
@@ -14255,13 +13832,6 @@
         "platformPositions": [
           {
             "text": "Heading into the election, Ballotpedia rated this race as safely Republican. Incumbent Mike Bost (R) defeated C.J. Baricevic (D) and Paula Bradshaw (G) in the general election on November 8, 2016. Bost and Baricevic both ran unopposed in their respective primaries, while Paula Bradshaw defeated Sadona Folkner to win the Green Party nomination.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Mike_Bost",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Bost voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Mike_Bost",
             "tier": "nonpartisan",
@@ -14538,13 +14108,6 @@
             "url": "https://ballotpedia.org/David_Rouzer",
             "tier": "nonpartisan",
             "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Rouzer voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/David_Rouzer",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -14797,19 +14360,6 @@
             "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
             "voteChoice": "Yea",
             "tier": "official"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Babin voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Brian_Babin",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -15640,19 +15190,6 @@
             "asOf": "2026-06-29"
           }
         ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Kelly voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Trent_Kelly",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
       }
     },
     "L000585": {
@@ -15718,19 +15255,6 @@
             "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
             "voteChoice": "Yea",
             "tier": "official"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Davidson voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Warren_Davidson",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -16246,13 +15770,6 @@
             "asOf": "2026-06-29"
           },
           {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Biggs voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Andy_Biggs",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
             "text": "Andy Biggs was one of the 36 Republican members of the Arizona State Legislature who signed onto a lawsuit brought by the Goldwater Institute in September 2013 against Arizona Governor Jan Brewer (R) over the expansion of Medicaid in Arizona under provisions of the Affordable Care Act. Brewer announced her support for Medicaid expansion in Arizona in 2013, and by June of that year the legislature passed a bill expanding Medicaid in the state . In September 2013, the Goldwater Institute, a conservative think tank, filed a lawsuit seeking to block the law's implementation. They argued that the law contained a tax, and its implementation under the control of the executive branch violated state laws enforcing the separation of powers. In 2015, a Maricopa County Superior Court judge ruled against the 36 Republican lawmakers and the Goldwater Institute, saying that the law contained an assessment, not a tax. The Arizona Court of Appeals upheld the Superior Court's 2015 ruling on March 16, 2017.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Andy_Biggs",
@@ -16672,13 +16189,6 @@
             "asOf": "2026-06-29"
           },
           {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Dunn voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Neal_Dunn",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
             "text": "On April 9, 2020, Dunn announced that he tested positive for coronavirus. COVID-19, also known as coronavirus disease 2019 , is the disease caused by the SARS-CoV-2 virus. The first confirmed case of the disease in the United States was announced on January 21, 2020. For more on responses to the coronavirus outbreak, click here .",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Neal_Dunn",
@@ -17029,13 +16539,6 @@
             "url": "https://ballotpedia.org/Brian_Mast",
             "tier": "nonpartisan",
             "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Mast voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Brian_Mast",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -17326,15 +16829,6 @@
             "voteChoice": "Yea",
             "tier": "official"
           }
-        ],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Marshall voted against certifying the electoral votes from Arizona and Pennsylvania. The Senate rejected both objections by a vote of 6-93 for Arizona and 7-92 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Roger_Marshall",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
         ]
       }
     },
@@ -17381,13 +16875,6 @@
         "platformPositions": [
           {
             "text": "Beginning in the 2026 elections, Louisiana elections for U.S. Congress, the Louisiana Supreme Court, the Public Service Commission, and the Board of Elementary and Secondary Education use a closed partisan primary and primary runoff system . Candidates for those offices no longer run in majority-vote system primaries .",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Clay_Higgins",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Higgins voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Clay_Higgins",
             "tier": "nonpartisan",
@@ -17473,13 +16960,6 @@
           },
           {
             "text": "On October 21, 2023, Bergman announced he was running to replace Kevin McCarthy (R) as speaker of the U.S. House in the 118th Congress . Bergman lost the second round of nomination voting on October 24, 2023.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Jack_Bergman",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Bergman voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Jack_Bergman",
             "tier": "nonpartisan",
@@ -17707,13 +17187,6 @@
           },
           {
             "text": "Ted believes it should be easy to vote, but hard to cheat. He raised his voice in opposition to unelected bureaucrats changing election procedures, which violated the Constitutional requirements for state legislatures to determine election law. He supports a voter ID requirement, which activist judges and liberal Democrats have opposed and delayed in North Carolina despite voters overwhelmingly approving an amendment to the state constitution that requires voter ID.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Ted_Budd",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Budd voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Ted_Budd",
             "tier": "nonpartisan",
@@ -18495,13 +17968,6 @@
             "url": "https://ballotpedia.org/Lloyd_Smucker",
             "tier": "nonpartisan",
             "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Smucker voted against certifying the electoral votes from Pennsylvania. The House rejected the objection by a vote of 138-282.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Lloyd_Smucker",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -18523,19 +17989,6 @@
         "platformPositions": [
           {
             "text": "Kustoff worked in politics beginning in the 1990s and previously chaired the election campaign for George W. Bush in 2000 and 2004. He also worked as chair for Lamar Alexander's campaign in 2002. Kustoff earned his bachelor's from the University of Memphis in 1989 and his law degree from the same university in 1992. He was a U.S. Attorney for the Western District of Tennessee from 2006 to 2008.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/David_Kustoff",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Kustoff voted against certifying the electoral votes from Pennsylvania. The House rejected the objection by a vote of 138-282.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/David_Kustoff",
             "tier": "nonpartisan",
@@ -18603,19 +18056,6 @@
         "platformPositions": [
           {
             "text": "The seat was vacant following Robert Duncan 's (R) resignation on July 3, 2014, to become Chancellor of Texas Tech University.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Jodey_Arrington",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Arrington voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Jodey_Arrington",
             "tier": "nonpartisan",
@@ -18926,13 +18366,6 @@
           },
           {
             "text": "Unofficial results from May 17 showed that Norman defeated Pope by 203 votes, 50.3 percent to 49.7 percent, in the runoff to win the Republican Party's nomination. Following the certification of the election results by all relevant county election boards on May 18, the results automatically triggered a recount by the state of South Carolina. The recount took place on May 19, with official results showing that former Rep. Ralph Norman defeated Rep. Tommy Pope by a margin of 221 votes.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Ralph_Norman",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Norman voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Ralph_Norman",
             "tier": "nonpartisan",
@@ -19797,19 +19230,6 @@
           },
           {
             "text": "Kevin believes in the Second Amendment, that every American has the right to own, carry and use a firearm. The freedom to bear arms and the right for an individual to protect his or herself, family, and property is a fundamental principle upon which our nation was built. Kevin will carry this ideology with him into Washington.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Kevin_Hern",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Hern voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Kevin_Hern",
             "tier": "nonpartisan",
@@ -21687,13 +21107,6 @@
             "url": "https://ballotpedia.org/Russ_Fulcher",
             "tier": "nonpartisan",
             "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Fulcher voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Russ_Fulcher",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -23445,19 +22858,6 @@
             "asOf": "2026-06-29"
           }
         ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Guest voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Michael_Guest",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
       }
     },
     "P000614": {
@@ -24100,19 +23500,6 @@
             "asOf": "2026-06-29"
           }
         ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Reschenthaler voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Guy_Reschenthaler",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
       }
     },
     "T000480": {
@@ -24169,13 +23556,6 @@
             "url": "https://ballotpedia.org/William_Timmons",
             "tier": "nonpartisan",
             "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Timmons voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/William_Timmons",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -24192,19 +23572,6 @@
             "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
             "voteChoice": "Yea",
             "tier": "official"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Burchett voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Tim_Burchett",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -24527,19 +23894,6 @@
         "platformPositions": [
           {
             "text": "Education The best thing the federal government can do to make public education a top priority is get out of the way and stop trying to use one-size-fits-all policies to educate our children.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Lance_Gooden",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Gooden voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Lance_Gooden",
             "tier": "nonpartisan",
@@ -25345,19 +24699,6 @@
             "asOf": "2026-06-29"
           }
         ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Cline voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Ben_Cline",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
       }
     },
     "S001216": {
@@ -25790,13 +25131,6 @@
         "platformPositions": [
           {
             "text": "Scott ran for re-election in 2014. Scott secured the Republican nomination in the primary on August 26, 2014. Scott ran on the GOP ticket with Florida Lt. Gov. Carlos Lopez-Cantera in the general election. They defeated the Democratic ticket of Charlie Crist and Annette Taddeo-Goldstein , the Libertarian ticket of Adrian Wyllie and Greg Roe , and seven other unaffiliated and write-in tickets to win the general election on November 4, 2014.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Rick_Scott",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Scott voted against certifying the electoral votes from Pennsylvania. The Senate rejected the objection by a vote of 7-92.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Rick_Scott",
             "tier": "nonpartisan",
@@ -26270,19 +25604,6 @@
             "asOf": "2026-06-29"
           }
         ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Murphy voted against certifying the electoral votes from Pennsylvania. The House rejected the objection by a vote of 138-282.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Gregory_Murphy",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
       }
     },
     "M000687": {
@@ -26669,19 +25990,6 @@
             "asOf": "2026-06-29"
           }
         ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Tiffany voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Thomas_Tiffany",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
       }
     },
     "K000377": {
@@ -26846,15 +26154,6 @@
             "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00183.xml",
             "voteChoice": "Yea",
             "tier": "official"
-          }
-        ],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Lummis voted against certifying the electoral votes from Pennsylvania. The Senate rejected the objection by a vote of 7-92.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Cynthia_Lummis",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -27158,15 +26457,6 @@
             "voteChoice": "Yea",
             "tier": "official"
           }
-        ],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Tuberville voted against certifying the electoral votes from Arizona and Pennsylvania. The Senate rejected both objections by a vote of 6-93 for Arizona and 7-92 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Tommy_Tuberville",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
         ]
       }
     },
@@ -27360,19 +26650,6 @@
             "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
             "voteChoice": "Yea",
             "tier": "official"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Obernolte voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Jay_Obernolte",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -27757,13 +27034,6 @@
             "url": "https://ballotpedia.org/Lauren_Boebert",
             "tier": "nonpartisan",
             "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Boebert voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Lauren_Boebert",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -27850,19 +27120,6 @@
             "asOf": "2026-06-29"
           }
         ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Cammack voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Kat_Cammack",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
       }
     },
     "F000472": {
@@ -27895,19 +27152,6 @@
         "platformPositions": [
           {
             "text": "Franklin earned a bachelor's degree from the United States Naval Academy in 1986 and a master's degree in business administration from Embry-Riddle Aeronautical University in 1994. Franklin's career experience included owning an insurance agency and working as a naval aviator with the U.S. Navy.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Scott_Franklin",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Franklin voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Scott_Franklin",
             "tier": "nonpartisan",
@@ -27970,13 +27214,6 @@
         "platformPositions": [
           {
             "text": "Donalds ran in the 2012 election for the U.S. House to represent Florida's 19th District . Donalds sought the nomination on the Republican ticket. The primary elections were held on August 14, 2012. Donalds was defeated by Trey Radel in the Republican primary.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Byron_Donalds",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Donalds voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Byron_Donalds",
             "tier": "nonpartisan",
@@ -28094,13 +27331,6 @@
         "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Gimenez voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Carlos_Gimenez",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
           {
             "text": "COVID-19, also known as coronavirus disease 2019 , is the disease caused by the SARS-CoV-2 virus. The first confirmed case of the disease in the United States was announced on January 21, 2020. For more of Ballotpedia's coverage of the coronavirus impact on political and civic life, click here .",
             "source": "Ballotpedia",
@@ -28347,19 +27577,6 @@
         "platformPositions": [
           {
             "text": "Andrew Clyde served in the U.S. Navy for 28 years. Clyde earned a master's degree in corporate finance and entrepreneurship from the University of Georgia. His career experience includes founding and owning Clyde Armory.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Andrew_Clyde",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Clyde voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Andrew_Clyde",
             "tier": "nonpartisan",
@@ -28743,19 +27960,6 @@
             "tier": "official"
           }
         ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Mann voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Tracey_Mann",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
       }
     },
     "A000148": {
@@ -28865,13 +28069,6 @@
         "platformPositions": [
           {
             "text": "Donald Trump (R), the projected winner of the 2024 presidential election, announced on November 11, 2024, that he had selected incumbent Republican Conference Chairwoman Elise Stefanik (R-N.Y.) to serve as U.N. Ambassador, meaning she would vacate her seat in the U.S. House and not run for re-election as conference chair.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Lisa_McClain",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . McClain voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Lisa_McClain",
             "tier": "nonpartisan",
@@ -29005,13 +28202,6 @@
         "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Fischbach voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Michelle_Fischbach",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
           {
             "text": "As state Senate president , Fischbach transitioned to the role of lieutenant governor when former Lieutenant Governor Tina Smith (D) was sworn into the U.S. Senate in January 2018. Minnesota Governor Mark Dayton (D) appointed Smith to the U.S. Senate seat vacated by Al Franken (D), who resigned after sexual misconduct allegations were brought against him. Dayton requested that Minnesota Attorney General Lori Swanson issue an opinion as to whether Fishbach would be required to resign her state Senate seat in order to serve as lieutenant governor. Swanson issued a non-binding advisory opinion on December 21, 2017, which stated that it was unlikely that Fischbach could simultaneously hold her state Senate seat and serve as lieutenant governor.",
             "source": "Ballotpedia",
@@ -29379,13 +28569,6 @@
             "url": "https://ballotpedia.org/Nicole_Malliotakis",
             "tier": "nonpartisan",
             "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Malliotakis voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Nicole_Malliotakis",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -29664,19 +28847,6 @@
             "asOf": "2026-06-29"
           }
         ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Bice voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Stephanie_Bice",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
       }
     },
     "B000668": {
@@ -29691,19 +28861,6 @@
             "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
             "voteChoice": "Yea",
             "tier": "official"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Bentz voted against certifying the electoral votes from Pennsylvania. The House rejected the objection by a vote of 138-282.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Cliff_Bentz",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -29782,19 +28939,6 @@
             "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
             "voteChoice": "Yea",
             "tier": "official"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Harshbarger voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Diana_Harshbarger",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -29907,13 +29051,6 @@
             "url": "https://ballotpedia.org/Patrick_Fallon",
             "tier": "nonpartisan",
             "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Fallon voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Patrick_Fallon",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -29982,19 +29119,6 @@
             "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
             "voteChoice": "Yea",
             "tier": "official"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Pfluger voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/August_Pfluger",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -30141,13 +29265,6 @@
         "saidDidLinks": [],
         "platformPositions": [
           {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Jackson voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Ronny_Jackson",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
             "text": "When asked about the allegations, President Donald Trump said that it was up to Jackson if he wanted to withdraw his nomination. He said, \"It’s totally his decision, he’ll be making a decision.\" Trump said that he told Jackson, \"This is a vicious group of people that malign. What do you need this for? … You’re too fine a person.\"",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Ronny_Jackson",
@@ -30274,13 +29391,6 @@
         "platformPositions": [
           {
             "text": "Criminal Justice Reform As Sheriff, I've seen the human and monetary cost of high recidivism rates and our broken criminal justice system. That's why as Sheriff, I took action and instituted cutting edge recidivism reduction programs. At the Fort Bend County Jail, we offer HVAC and welding courses to non-violent inmates, at no cost to taxpayers, so the inmates have job ready skills when they're released. I am the only candidate in this race who's actually taken steps to reform our criminal justice system and I will take this experience to Congress and be a voice for criminal justice reform.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Troy_Nehls",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Nehls voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Troy_Nehls",
             "tier": "nonpartisan",
@@ -30697,19 +29807,6 @@
             "asOf": "2026-06-29"
           }
         ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Owens voted against certifying the electoral votes from Pennsylvania. The House rejected the objection by a vote of 138-282.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Burgess_Owens",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
       }
     },
     "S001159": {
@@ -30901,13 +29998,6 @@
         "statements": [],
         "saidDidLinks": [],
         "platformPositions": [
-          {
-            "text": "Congress convened a joint session on January 6-7, 2021, to count electoral votes by state and confirm the results of the 2020 presidential election . Fitzgerald voted against certifying the electoral votes from Arizona and Pennsylvania. The House rejected both objections by a vote of 121-303 for Arizona and 138-282 for Pennsylvania.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Scott_Fitzgerald",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
           {
             "text": "Dane County District Judge Maryann Sumi ruled in May 2011 that lawmakers violated Wisconsin's open meetings law by passing the collective bargaining legislation in Spring 2011, and therefore, the bill was null and void. Gov. Scott Walker had signed the bill into law..",
             "source": "Ballotpedia",
