@@ -136,7 +136,7 @@ test('topicPositions.json bundle has no disqualified platform positions', () => 
 
 test('destination file validators reject missing required fields (A4)', () => {
   assert.ok(validateFinanceFile({ entry: { source: { name: 'FEC', tier: 'official' } } }, 'finance.json').length > 0);
-  assert.ok(validateTradesFile({ trades: [{ source: { name: 'PTR', tier: 'official' } } }] }, 'trades.json').length > 0);
+  assert.ok(validateTradesFile({ trades: [{ source: { name: 'PTR', tier: 'official' } }] }, 'trades.json').length > 0);
   assert.ok(validateLegislationFile({ bioguideId: 'X', meta: {} }, 'legislation.json').length > 0);
   assert.ok(validateOrgVoteLinksFile({ links: [{ voteUrl: 'https://congress.gov' }] }, 'orgVoteLinks.json').length > 0);
   assert.ok(validateSaidDidFile({ byTopic: { climate: [{ billNumber: 'HR 1' }] } }, 'saidDid.json').length > 0);
