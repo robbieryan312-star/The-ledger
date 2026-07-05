@@ -9,6 +9,7 @@ import { isCeremonialCrecRemark } from '@/lib/ceremonialCrecFilter';
 import type { OrgVoteTopicLink } from '@/lib/data/buildOrgVoteTopicLinks';
 import { recordTopicLabel } from '@/lib/recordTopicBuckets';
 import { getMergedDeepTopicBlock, normalizeTopicId } from '@/lib/topicAliases';
+import type { TopicRecordGroup } from '@/lib/data/profileRecordByTopic';
 import SourceBadge from '@/components/ui/SourceBadge';
 import ExpandableQuoteBlock from '@/components/ui/ExpandableQuoteBlock';
 
