@@ -1,13 +1,13 @@
 {
   "bioguideId": "P000197",
-  "politicianId": "P000197",
+  "politicianId": "nancy-pelosi",
   "asOf": "2026-07-05",
   "categories": {
     "header": "filled",
     "votes": "filled",
     "finance": "filled",
     "statements": "filled",
-    "positions": "filled",
+    "positions": "honest-gap",
     "saidDid": "filled",
     "legislation": "filled",
     "orgVoteLinks": "honest-gap",

@@ -1,29 +1,29 @@
 {
   "meta": {
-    "asOf": "2026-07-03",
+    "asOf": "2026-07-05",
     "source": "Ballotpedia + GovInfo CREC + Congress roll-call votes (Said→Did)",
     "totalMembers": 1,
-    "membersWithData": 445,
-    "membersWithPlatformPositions": 436,
+    "membersWithData": 443,
+    "membersWithPlatformPositions": 389,
     "membersWithStatedPosition": 0,
-    "membersWithSaidDidLinks": 433,
+    "membersWithSaidDidLinks": 432,
     "perTopicCoverage": {
-      "abortion": 2,
+      "abortion": 0,
       "technology": 0,
-      "public-safety": 2,
-      "healthcare": 369,
-      "immigration": 436,
-      "climate": 3,
-      "defense-veterans": 15,
-      "education": 429,
-      "civil-liberties": 10,
-      "economy-taxes": 3,
-      "defense": 341,
-      "economy": 427,
-      "crime": 318,
-      "environment": 318,
-      "civil": 281,
-      "judiciary": 350
+      "public-safety": 0,
+      "healthcare": 242,
+      "immigration": 286,
+      "climate": 0,
+      "defense-veterans": 14,
+      "education": 380,
+      "civil-liberties": 7,
+      "economy-taxes": 0,
+      "defense": 258,
+      "economy": 253,
+      "crime": 200,
+      "environment": 171,
+      "civil": 149,
+      "judiciary": 258
     },
     "votesmartConfigured": false,
     "note": "VoteSmart skipped (no key). Platform positions from Ballotpedia where available."
@@ -763,15 +763,6 @@
             "voteChoice": "Nay",
             "tier": "official"
           }
-        ],
-        "platformPositions": [
-          {
-            "text": "Merkley won re-election in the 2014 election for the U.S. Senate , representing Oregon . He defeated Monica Wehby (R), Mike Montchalin (L), James Leuenberger (Constitution) and Christina Jean Lugo (Pacific Green). He won the Democratic nomination in the primary on May 20, 2014. He defeated Pavel Goberman and William Bryk . He also ran as an Independent candidate, Working Families Party candidate and a Progressive candidate. The general election took place on November 4, 2014.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Jeff_Merkley",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
         ]
       }
     },
@@ -931,15 +922,6 @@
             "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00183.xml",
             "voteChoice": "Yea",
             "tier": "official"
-          }
-        ],
-        "platformPositions": [
-          {
-            "text": "Shaheen won re-election in the 2014 election for the U.S. Senate , representing New Hampshire . She defeated Republican Scott Brown in a close race. Shaheen ran unopposed for the Democratic nomination in the primary on September 9, 2014. The general election took place on November 4, 2014.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Jeanne_Shaheen",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -3186,19 +3168,6 @@
             "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/217",
             "voteChoice": "Yea",
             "tier": "official"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Foxx won re-election in the 2012 election for the U.S. House , representing North Carolina's 5th District . Foxx won the nomination on the Republican ticket after running unopposed in the primary election. She then defeated Elisabeth Motsinger (D) in the general election on November 6, 2012.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Virginia_Foxx",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
           }
         ]
       }
@@ -7050,98 +7019,6 @@
         ]
       }
     },
-    "P000197": {
-      "public-safety": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "On September 5, 2013, Pelosi sent a third letter to House Democrats highlighting the restrictions of the Senate's use-of-force resolution in an effort to gather support for President Obama's plan to strike Syria. In the letter, Pelosi emphasized that the Senate proposal, passed on September 5, 2013, by the Senate Foreign Relations Committee , addressed concerns expressed by some House members. “Specifically, the resolution prevents boots on the ground, ties the authorization more closely to the use of chemical and other weapons of mass destruction, and has a limited timetable,” Pelosi wrote.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Nancy_Pelosi",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-30"
-          }
-        ]
-      },
-      "immigration": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Pelosi won re-election in the 2012 election for the U.S. House , representing California's 12th District . She was displaced from her former district, the 8th , by redistricting. She and John Dennis (R) advanced past the blanket primary on June 5, 2012, defeating Americo Artura Diaz (D), David Peterson (D), Summer Justice Shields (D) and Barry Hermanson (G). Pelosi then defeated Dennis in the general election on November 6, 2012.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Nancy_Pelosi",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-30"
-          },
-          {
-            "text": "House Speaker Nancy Pelosi (D-Calif.) first announced the House would pursue an inquiry into Trump on September 24, 2019, following allegations that Trump requested the Ukrainian government investigate former Vice President Joe Biden (D) and his son, Hunter Biden, in exchange for aid.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Nancy_Pelosi",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-30"
-          }
-        ]
-      },
-      "defense-veterans": {
-        "statements": [],
-        "saidDidLinks": [
-          {
-            "topicId": "defense-veterans",
-            "statedPositionDate": null,
-            "voteDate": "2026-06-30",
-            "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
-            "billNumber": "HCONRES 108",
-            "congressGovUrl": "https://www.congress.gov/roll-call-vote/119/2/232",
-            "voteChoice": "Yea",
-            "tier": "official"
-          }
-        ],
-        "platformPositions": [
-          {
-            "text": "During an interview on CNN' s State of the Union with Candy Crowley in July 2014, Pelosi said, \"[T]his has to be something where we try to have the two-state solution, that we have to support...(Palestinian Authority chairman Mahmoud) Abbas and his role as a leader there. We have to support Iron Dome to protect the Israelis from the missiles. We have to support the Palestinians and what they need. And we have to confer with the Qataris, who have told me over and over again that Hamas is a humanitarian organization, maybe they could use their influence to--.\" Crowley then interrupted her to ask, \"The U.S. thinks they're a terrorist organization though, correct? Do you?\" Pelosi said, \"Mmm hmm.\"",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Nancy_Pelosi",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-30"
-          }
-        ]
-      },
-      "civil-liberties": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Pelosi won re-election in the 2012 election for the U.S. House , representing California's 12th District . She was displaced from her former district, the 8th , by redistricting. She and John Dennis (R) advanced past the blanket primary on June 5, 2012, defeating Americo Artura Diaz (D), David Peterson (D), Summer Justice Shields (D) and Barry Hermanson (G). Pelosi then defeated Dennis in the general election on November 6, 2012.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Nancy_Pelosi",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-30"
-          }
-        ]
-      },
-      "economy-taxes": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "While talking about potential spending cuts in September 2013, Pelosi said, \"The cupboard is bare. There's no more cuts to make. We all want to reduce the deficit, Put everything on the table, review it, but you cannot have any more cuts just for the sake of cuts. Right now you’re taking trophies.\"",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Nancy_Pelosi",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-30"
-          },
-          {
-            "text": "In Feb. 2013, Pelosi spoke in opposition to cutting congressional salaries as a way to offset cuts to federal programming and personnel. \"I don't think we should do it; I think we should respect the work we do...I think it's necessary for us to have the dignity of the job that we have rewarded,\" she said to reporters in Washington, D.C. Congress was unable to agree on a planned recourse to the sequester by March 1, 2013, resulting in across-the-board federal budget cuts amounting to approximately $85 billion.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Nancy_Pelosi",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-30"
-          }
-        ]
-      }
-    },
     "P000595": {
       "healthcare": {
         "statements": [],
@@ -7539,19 +7416,6 @@
         "platformPositions": [
           {
             "text": "Rogers was born on December 31, 1937, in Barrier, KY , and attended high school in Montecello, KY . After attending Western Kentucky University from 1956-1957, he went on to earn both his A.B. and LL.B. from the University of Kentucky in 1962 and 1964, respectively. Rogers also served in the Kentucky and North Carolina Army National Guard from 1956-1963. Prior to his political career, Rogers worked as an attorney in Kentucky 's Pulaski and Rockcastle counties.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Harold_Rogers",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          }
-        ]
-      },
-      "judiciary": {
-        "statements": [],
-        "saidDidLinks": [],
-        "platformPositions": [
-          {
-            "text": "Rogers won re-election in the 2012 election for the U.S. House , representing Kentucky's 5th District . Rogers won the nomination on the Republican ticket. He ran unopposed in the Republican primary. Candidates wishing to run were initially required to file by the signature filing deadline of January 31, 2012. However because the legislature was unable to complete new redistricting maps on time, the deadline was pushed back one week. The new deadline was February 7. The primary elections took place on May 22, 2012. Rogers defeated Kenneth Stepp (D) in the November 6, 2012, general election.",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Harold_Rogers",
             "tier": "nonpartisan",
@@ -43418,13 +43282,6 @@
         "platformPositions": [
           {
             "text": "As state auditor, Downing took positions in opposition to environmental, social, and corporate governance (ESG) , an approach to investing and corporate decision-making.",
-            "source": "Ballotpedia",
-            "url": "https://ballotpedia.org/Troy_Downing",
-            "tier": "nonpartisan",
-            "asOf": "2026-06-29"
-          },
-          {
-            "text": "In June 2022, Downing sent a comment letter to Gary Gensler, chair of the Securities and Exchange Commission (SEC), opposing recently proposed SEC rules that would require publicly traded companies to monitor and report their greenhouse gas emissions. Downing wrote that the “proposed rules have potentially devastating impacts on natural resource development, energy production, agriculture, and the jobs of thousands of Montana workers who depend on these industries.” Downing also asked “whether the SEC, in its role as securities regulator, has the jurisdiction or authority to mandate climate disclosures or whether the cost-benefit analyses in the proposed rules meet the requirements of the Administrative Procedure Act.”",
             "source": "Ballotpedia",
             "url": "https://ballotpedia.org/Troy_Downing",
             "tier": "nonpartisan",

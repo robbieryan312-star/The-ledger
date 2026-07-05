@@ -1,6 +1,28 @@
 {
   "bioguideId": "P000197",
   "byTopic": {
+    "healthcare": {
+      "statements": [
+        {
+          "title": "Ms. PELOSI. Mr. Speaker, I thank the gentlewoman for yielding and for her leadership on this issue. I commend the chair and ranking member of the Armed Services Committee for the legislation that came out of their committee 58-1, the bipartisanship to protect and defend, which is the oath of office that all of us take to serve in government; and also, though, to acknowledge that, on the floor of the House, these poisonous resolutions came forward and were added to the bill. I rise to move to instruct House conferees to honor our men and women in uniform by protecting their fundamental health freedom. I was listening with interest and prayerfully, frankly, to the previous speaker, who just said that terminating a pregnancy is not a health issue. Well, for some people, it might be. Do you believe in the Hyde amendment? I am not a fan of the Hyde amendment, but that is the law of the land.",
+          "date": "2023-09-20",
+          "url": "https://www.govinfo.gov/app/details/CREC-2023-09-20-pt1-PgH4419-3",
+          "tier": "official",
+          "topicId": "healthcare",
+          "displayText": "I thank the gentlewoman for yielding and for her leadership on this issue. I commend the chair and ranking member of the Armed Services Committee for the legislation that came out of their committee 58-1, the bipartisanship to protect and defend, which is the oath of office that all of us take to serve in government; and also, though, to acknowledge that, on the floor of the House, these poisonous resolutions came forward and were added to the bill. I rise to move to instruct House conferees to honor our men and women in uniform by protecting their fundamental health freedom. I was listening with interest and prayerfully, frankly, to the previous speaker, who just said that terminating a pregnancy is not a health issue. Well, for some people, it might be. Do you believe in the Hyde amendment? I am not a fan of the Hyde amendment, but that is the law of the land.",
+          "verbatim": true
+        },
+        {
+          "title": "Ms. PELOSI. Mr. Speaker, I thank the gentleman for yielding and for his great presentation today. Today, we are on the floor of the House where the other side has turned this Chamber where slavery was abolished, where Medicare and Social Security and everything were instituted, into a puppet show. Do you know what? The puppeteer, Donald Trump, is shining a light on the strings. You look miserable. You look miserable. The only advantage to all of this is that instead of reversing what we did on the IRA to save the planet or reversing what we did to reduce the cost of prescription drugs, we are wasting time.",
+          "date": "2023-06-21",
+          "url": "https://www.govinfo.gov/app/details/CREC-2023-06-21-pt1-PgH3013",
+          "tier": "official",
+          "topicId": "healthcare",
+          "displayText": "I thank the gentleman for yielding and for his great presentation today. Today, we are on the floor of the House where the other side has turned this Chamber where slavery was abolished, where Medicare and Social Security and everything were instituted, into a puppet show. Do you know what? The puppeteer, Donald Trump, is shining a light on the strings. You look miserable. You look miserable. The only advantage to all of this is that instead of reversing what we did on the IRA to save the planet or reversing what we did to reduce the cost of prescription drugs, we are wasting time.",
+          "verbatim": true
+        }
+      ]
+    },
     "legislation": {
       "statements": [
         {
@@ -67,28 +89,6 @@
           "tier": "official",
           "topicId": "economy-taxes",
           "displayText": "I thank the gentleman for yielding and for his exuberant presentation of opposition to this budget. I thank him for all the amendments he proposed to improve upon it. Sadly, the Republicans didn't accept just one. Here we go again. The last time the Republicans had a majority in the House and Senate and President Trump in the White House, they passed a terrible bill that was a tax cut for the rich that gave 83 percent of the benefits to the wealthiest people, the top 1 percent in our country, and added $2 trillion to the national debt. This year, they are doubling down on that, $4 trillion to the national debt, and they call that fiscal sanity. They are doing it by steering taxpayer dollars from Medicaid to give additional tax breaks to billionaires and big corporations.",
-          "verbatim": true
-        }
-      ]
-    },
-    "healthcare": {
-      "statements": [
-        {
-          "title": "Ms. PELOSI. Mr. Speaker, I thank the gentlewoman for yielding and for her leadership on this issue. I commend the chair and ranking member of the Armed Services Committee for the legislation that came out of their committee 58-1, the bipartisanship to protect and defend, which is the oath of office that all of us take to serve in government; and also, though, to acknowledge that, on the floor of the House, these poisonous resolutions came forward and were added to the bill. I rise to move to instruct House conferees to honor our men and women in uniform by protecting their fundamental health freedom. I was listening with interest and prayerfully, frankly, to the previous speaker, who just said that terminating a pregnancy is not a health issue. Well, for some people, it might be. Do you believe in the Hyde amendment? I am not a fan of the Hyde amendment, but that is the law of the land.",
-          "date": "2023-09-20",
-          "url": "https://www.govinfo.gov/app/details/CREC-2023-09-20-pt1-PgH4419-3",
-          "tier": "official",
-          "topicId": "healthcare",
-          "displayText": "I thank the gentlewoman for yielding and for her leadership on this issue. I commend the chair and ranking member of the Armed Services Committee for the legislation that came out of their committee 58-1, the bipartisanship to protect and defend, which is the oath of office that all of us take to serve in government; and also, though, to acknowledge that, on the floor of the House, these poisonous resolutions came forward and were added to the bill. I rise to move to instruct House conferees to honor our men and women in uniform by protecting their fundamental health freedom. I was listening with interest and prayerfully, frankly, to the previous speaker, who just said that terminating a pregnancy is not a health issue. Well, for some people, it might be. Do you believe in the Hyde amendment? I am not a fan of the Hyde amendment, but that is the law of the land.",
-          "verbatim": true
-        },
-        {
-          "title": "Ms. PELOSI. Mr. Speaker, I thank the gentleman for yielding and for his great presentation today. Today, we are on the floor of the House where the other side has turned this Chamber where slavery was abolished, where Medicare and Social Security and everything were instituted, into a puppet show. Do you know what? The puppeteer, Donald Trump, is shining a light on the strings. You look miserable. You look miserable. The only advantage to all of this is that instead of reversing what we did on the IRA to save the planet or reversing what we did to reduce the cost of prescription drugs, we are wasting time.",
-          "date": "2023-06-21",
-          "url": "https://www.govinfo.gov/app/details/CREC-2023-06-21-pt1-PgH3013",
-          "tier": "official",
-          "topicId": "healthcare",
-          "displayText": "I thank the gentleman for yielding and for his great presentation today. Today, we are on the floor of the House where the other side has turned this Chamber where slavery was abolished, where Medicare and Social Security and everything were instituted, into a puppet show. Do you know what? The puppeteer, Donald Trump, is shining a light on the strings. You look miserable. You look miserable. The only advantage to all of this is that instead of reversing what we did on the IRA to save the planet or reversing what we did to reduce the cost of prescription drugs, we are wasting time.",
           "verbatim": true
         }
       ]
