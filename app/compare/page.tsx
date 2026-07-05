@@ -206,8 +206,8 @@ function CompareContent() {
           <div className="rounded-xl border border-white/[0.08] p-4 flex items-start gap-3" style={cardStyle}>
             <Info className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
             <div className="text-xs text-white/50 leading-relaxed">
-              <strong className="text-white/80">Data tiers:</strong> Total raised uses{' '}
-              <span className="text-green-400/90">Tier 1 OpenFEC</span> when a synced profile exists (as of {fecMeta.asOf}).
+              <strong className="text-white/80">Data sources:</strong> Total raised uses{' '}
+              <span className="text-green-400/90">official OpenFEC records</span> when a synced profile exists (as of {fecMeta.asOf}).
               Election-only candidates use illustrative race totals until a profile is integrated.
               Consistency scores, votes, lobbyist money, stock trades, and promise tracker rows are{' '}
               <span className="text-yellow-400/90">demo data</span> for featured profiles only.

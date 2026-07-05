@@ -45,7 +45,7 @@ export default function LobbyingPage() {
       <div className="mt-10">
         <FloridaRecordPanel
           title="Florida lobbying firm directories (official PDF index)"
-          subtitle="Tier 1 Florida Commission on Ethics lobbyist registration directories — PDF links from the public search portal."
+          subtitle="Official Florida Commission on Ethics lobbyist registration directories — PDF links from the public search portal."
           slice={getLobbyingFllobbyistSlice()}
         />
       </div>

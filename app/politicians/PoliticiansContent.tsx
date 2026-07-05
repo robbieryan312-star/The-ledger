@@ -131,14 +131,14 @@ function PoliticiansContentInner({ initialSearchParams }: { initialSearchParams:
         <div className="mt-4 flex flex-wrap gap-2 text-xs">
           {[
             { label: `${coverageStats.total} officials`, sub: 'national roster' },
-            { label: `${coverageStats.executives} executive`, sub: 'Tier 1 · whitehouse.gov' },
-            { label: `${coverageStats.justices} justices`, sub: 'Tier 1 · supremecourt.gov' },
-            { label: `${coverageStats.senators + coverageStats.representatives} Congress`, sub: 'Tier 1 · legislators-current' },
-            { label: `${coverageStats.governors} governors`, sub: 'Tier 2 · NGA roster' },
+            { label: `${coverageStats.executives} executive`, sub: 'official · whitehouse.gov' },
+            { label: `${coverageStats.justices} justices`, sub: 'official · supremecourt.gov' },
+            { label: `${coverageStats.senators + coverageStats.representatives} Congress`, sub: 'official · legislators-current' },
+            { label: `${coverageStats.governors} governors`, sub: 'nonpartisan · NGA roster' },
             { label: `${coverageStats.withPhotos} with photos`, sub: 'bioguide portraits' },
             { label: `${coverageStats.featured} featured`, sub: 'rich demo profiles' },
-            { label: `${fecFinanceCount()} FEC finance`, sub: 'Tier 1 · OpenFEC sync' },
-            { label: `${congressVotesCount()} Congress votes`, sub: 'Tier 1 · Congress.gov sync' },
+            { label: `${fecFinanceCount()} FEC finance`, sub: 'official · OpenFEC sync' },
+            { label: `${congressVotesCount()} Congress votes`, sub: 'official · Congress.gov sync' },
           ].map((chip) => (
             <span
               key={chip.label}

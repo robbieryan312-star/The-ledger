@@ -56,7 +56,7 @@ export default function SourceProvenance({
       {isJournalismTier(source.tier) && (
         <span
           className={`${padding} rounded border border-amber-400/30 text-amber-300/90 bg-amber-400/5 font-semibold uppercase tracking-wide`}
-          title="Tier 3 journalism — corroborate with official records when possible"
+          title="Journalism — corroborate with official records when possible"
         >
           Journalism
         </span>

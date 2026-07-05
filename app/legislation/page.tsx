@@ -311,8 +311,8 @@ function LegislationContent() {
         <div>
           <div className="text-white font-semibold mb-1 text-sm">How to read this tracker</div>
           <p className="text-gray-400 text-xs leading-relaxed">
-            Status labels, dates, and sponsors come straight from GovTrack (a nonpartisan, Tier 2 source) and link to the
-            primary Congress.gov record (Tier 1, official). Cosponsor counts and a passage-probability prognosis are not
+            Status labels, dates, and sponsors come straight from GovTrack (a nonpartisan source) and link to the
+            primary Congress.gov record (official). Cosponsor counts and a passage-probability prognosis are not
             available from the keyless GovTrack feed, so they are omitted rather than estimated — a passage probability will
             only ever appear when a real, sourced value is present and attributed. This page reports the legislative record;
             it does not assign which party benefits from any bill.

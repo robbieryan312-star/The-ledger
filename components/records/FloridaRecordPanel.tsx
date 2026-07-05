@@ -212,7 +212,7 @@ export function FloridaNewsSections({ bundle }: { bundle: NewsBundleSlice }) {
         <FloridaRecordPanel
           key={section.sourceId}
           title={section.label}
-          subtitle="Tier 3 journalism — corroborate with official records when possible."
+          subtitle="Journalism — corroborate with official records when possible."
           slice={{ meta: section.meta, records: section.records }}
         />
       ))}

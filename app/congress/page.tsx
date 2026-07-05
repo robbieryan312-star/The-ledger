@@ -86,7 +86,7 @@ function DataSourceStrip({ officialCount, demoCount }: { officialCount: number; 
       <p className="text-xs text-gray-500 leading-relaxed">
         {officialCount > 0 ? (
           <>
-            <span className="text-green-400/90 font-medium">{officialCount} Tier 1 official PTR transaction(s)</span> from Senate eFD / House Clerk
+            <span className="text-green-400/90 font-medium">{officialCount} official PTR transaction(s)</span> from Senate eFD / House Clerk
             {demoCount > 0 && (
               <span className="text-yellow-400/80"> · {demoCount} demo-labeled trade(s) on profiles without official rows</span>
             )}
@@ -240,7 +240,7 @@ export default function CongressStocksPage() {
         <p className="text-gray-400 text-sm">
           {allTrades.length} STOCK Act disclosures across {new Set(allTrades.map((t) => t.politicianId)).size} featured politicians
           {officialTradeCount > 0 ? (
-            <span className="text-green-400/80"> · {officialTradeCount} official Tier 1</span>
+            <span className="text-green-400/80"> · {officialTradeCount} official SEC filings</span>
           ) : (
             <span className="text-yellow-400/80"> · demo dataset for UI review</span>
           )}

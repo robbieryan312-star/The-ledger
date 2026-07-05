@@ -79,8 +79,8 @@ function SourceCard({ s }: { s: SourceEntry }) {
           </a>
         )}
         {isJournalism && (
-          <span className="text-amber-300/90 border border-amber-400/30 bg-amber-400/5 rounded px-1.5 py-0 font-semibold uppercase tracking-wide" title="Tier 3 — corroborate with official records">
-            Tier 3 · corroborate
+          <span className="text-amber-300/90 border border-amber-400/30 bg-amber-400/5 rounded px-1.5 py-0 font-semibold uppercase tracking-wide" title="Journalism — corroborate with official records">
+            Journalism · corroborate
           </span>
         )}
       </div>

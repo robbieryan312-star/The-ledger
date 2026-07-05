@@ -264,7 +264,7 @@ export default function ProfileNewsExplorer({ news, name }: { news: NewsItem[]; 
               onChange={(e) => setJournalismOnly(e.target.checked)}
               className="accent-[#c8a951]"
             />
-            Tier 3 journalism only
+            Approved journalism only
           </label>
           {hasActiveFilters && (
             <button

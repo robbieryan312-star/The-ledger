@@ -320,7 +320,7 @@ function FinanceContentInner({ initialSearchParams }: { initialSearchParams: Sea
 
           <FloridaRecordPanel
             title="Florida state campaign contributions ($25,000+)"
-            subtitle="Official Tier 1 disclosures from the Florida Division of Elections Campaign Finance Database."
+            subtitle="Official disclosures from the Florida Division of Elections Campaign Finance Database."
             slice={fldoeSlice}
           />
 
@@ -354,7 +354,7 @@ function FinanceContentInner({ initialSearchParams }: { initialSearchParams: Sea
               <div className="text-yellow-400 font-semibold text-sm">Lobbyist Money (demo data)</div>
               <p className="text-gray-300 text-xs mt-1 leading-relaxed">
                 Illustrative lobbyist contribution rows for UI behavior only — not synced from OpenFEC.
-                Production should source from FEC and OpenSecrets with Tier 1/2 attribution.
+                Production should source from FEC and OpenSecrets with official and nonpartisan attribution.
               </p>
               <Link
                 href="/lobbying"
@@ -418,7 +418,7 @@ function FinanceContentInner({ initialSearchParams }: { initialSearchParams: Sea
           </p>
           <FloridaRecordPanel
             title="Florida-linked SEC EDGAR filings"
-            subtitle="Tier 1 official SEC submissions — company name, form type, and filing date from EDGAR full-text search."
+            subtitle="Official SEC submissions — company name, form type, and filing date from EDGAR full-text search."
             slice={filingsSlice}
           />
         </div>

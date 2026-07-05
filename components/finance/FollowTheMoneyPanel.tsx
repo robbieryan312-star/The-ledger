@@ -53,7 +53,7 @@ export default function FollowTheMoneyPanel({
       {scheduleA && scheduleA.contributors.length > 0 && (
         <div className="rounded-xl border border-green-400/20 bg-[#0d1f35] p-4">
           <h3 className="text-white font-semibold text-sm mb-1">Schedule A — committee-scoped itemized receipts</h3>
-          <p className="text-gray-500 text-xs mb-3">Tier 1 · OpenFEC receipts for authorized candidate committees</p>
+          <p className="text-gray-500 text-xs mb-3">Official OpenFEC receipts for authorized candidate committees</p>
           <div className="space-y-2">
             {scheduleA.contributors.slice(0, 10).map((c, i) => (
               <div key={`${c.name}-${i}`} className="flex justify-between gap-2 text-sm">
@@ -94,7 +94,7 @@ export default function FollowTheMoneyPanel({
       {showDomesticForeignNote && (
         <div className="rounded-xl border border-yellow-400/20 bg-yellow-400/5 p-3 text-xs text-gray-400">
           <span className="text-yellow-400/90 font-medium">Lobbying registration labels: </span>
-          Domestic lobbying disclosures (Senate LDA) are Tier 1 official records when integrated.
+          Domestic lobbying disclosures (Senate LDA) are official records when integrated.
           Foreign Agents Registration Act (FARA) registrants are labeled separately as foreign lobbying
           where DOJ eFile data is available — no verified FARA Florida snapshot on file yet.
         </div>
