@@ -6,7 +6,7 @@
  * automated aggregation over journalism and must be corroborated with Tier 1/2
  * sources before being treated as fact. Each item dated + linked + flagged.
  */
-import { writeFloridaSnapshot } from './lib/ingest-utils';
+import { writeFloridaSnapshot } from '../../lib/ingest-utils';
 
 const GDELT_SOURCE = {
   name: 'GDELT Project',

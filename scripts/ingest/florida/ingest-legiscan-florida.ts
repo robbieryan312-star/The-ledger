@@ -2,7 +2,7 @@
  * LegiScan Florida legislation.
  * Output: data/legiscan/florida-legislation.json
  */
-import { fetchJson, loadEnvLocal, writeFloridaSnapshot } from './lib/ingest-utils';
+import { fetchJson, loadEnvLocal, writeFloridaSnapshot } from '../../lib/ingest-utils';
 
 const LEGISCAN_SOURCE = {
   name: 'LegiScan',

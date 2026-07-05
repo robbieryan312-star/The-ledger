@@ -48,39 +48,40 @@ Full entries with **lookFor** field lists: `SOURCE_CATALOG` in `sourceCatalog.ts
 
 ---
 
-## Phase 17 + full profile strategy
+## M2 profile scaling strategy
 
-**Problem:** Phase 17 needs org-level donor data tied to topic votes — not enough from a single vendor key.
+**Goal:** Per-destination profile files for all 537 members — org-level donor data tied to topic votes via FEC Schedule A + org registry (OpenSecrets API discontinued Apr 2025).
 
 **Approach:**
 
-1. **Pilot one member:** `S000033` (Bernie Sanders) — checklist in `PILOT_PROFILE_CHECKLIST` (`sourceCatalog.ts`).
-2. **Complete every row** (done · partial · gap · next) with honest empty states.
-3. **Scale pattern to 537:** same sync commands + checkpointing (`ingest:member-all`, `sync:topic-positions` without `--member`).
+1. **Gold profiles (locked spec):** S000033, O000172, M000355, M001184, W000817, C001098 — same components/checklist for all remaining members.
+2. **Pipeline cert (M1 Phase E):** `npm run profile:build -- --members P000197` — one command, zero hand-fixes.
+3. **Scale in batches:** 15 → 50 → 100 → 150 → remainder via `profile:build`. Protocol: `docs/workflows/BATCH_SCALING.md`.
 
-### S000033 pilot checklist (current)
+### S000033 reference checklist (current)
 
 | Data | Source | Status |
 |------|--------|--------|
 | Office / bioguideId | congress-legislators | done |
 | Votes | Congress.gov + Senate LIS | done |
 | FEC totals | OpenFEC | done |
-| Schedule A / Phase 17 orgs | FEC Schedule A | partial — extend PAC committee filter |
-| Said (platform) | Ballotpedia | done — 4 Said→Did diffs |
-| Said (CREC verbatim) | GovInfo | **next** |
+| Schedule A / org registry | FEC Schedule A | partial — extend PAC committee filter |
+| Said (CREC verbatim) | GovInfo | done — subject-matched Said→Did |
 | Topic legislation | congress-gov-deep | done — `members/S000033.json` |
 | Stock trades | House PTR | partial — Senate eFD gap |
-| News | GDELT | partial |
-| Phase 17 org→vote on topic panel | FEC Schedule A + topic votes | **next** |
+| News | Approved-outlet RSS | partial — honest gaps where thin |
+| Org→vote on topic panel | FEC Schedule A + topic votes | partial |
 
 ---
 
-## Phase order (updated)
+## Phase order (historical → current milestones)
 
-1. **Phase 16** — `ingest:member-all` (537 deep bill files)
-2. **Phase 17a (pilot)** — S000033: GovInfo CREC statements + FEC Schedule A org registry + topic-vote join
-3. **Phase 17b (scale)** — Roll org registry + Schedule A + topic joins to all 537
-4. **Phase 18** — Curated media quotes on featured profiles (2-source rule)
+Legacy phase numbers map to `PROGRESS.md` milestones:
+
+1. **Phase 16 / M1** — `ingest:member-all` (537 deep bill files) ✅
+2. **Phase 17a / M1** — S000033 pilot locked ✅
+3. **Phase 17b / M2** — Batch scale to 537 — `docs/workflows/BATCH_SCALING.md`
+4. **Curated media quotes** — 2-source corroboration rule (ongoing in profile pipeline)
 
 ---
 

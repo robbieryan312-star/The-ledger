@@ -23,34 +23,37 @@ Cursor Cloud and local sessions often spawn **new workspace directories** (e.g. 
 
 Read **in order** before implementing or asking the owner anything:
 
-1. `PROGRESS.md` — current phase, blockers, what’s done  
-2. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command  
-3. `KEYS.md` — which env vars are SET vs EMPTY (values only in `.env.local`)  
-4. `AGENTS.md` + `.cursor/rules/ledger-data-policy.mdc` — credibility and scope  
+1. `.cursor/rules/ledger-core-rules.mdc` — binding rules (all agents)
+2. `PROGRESS.md` — milestones M1–M8, status board, blockers
+3. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
+4. `KEYS.md` — which env vars are SET vs EMPTY (values only in `.env.local`)
+5. `PILOT_PROFILE_CHECKLIST.md` — what a complete profile requires
 
-Do **not** re-derive owner expectations from memory. Do **not** ask for email (`robbie.ryan312@gmail.com` is in `KEYS.md`). Do **not** treat VoteSmart or OpenSecrets as blockers — see deferred sources in `SOURCE_LOOKUP.md`.
+Navigation index: `docs/AGENT_INDEX.md`. Task-specific: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`.
+
+Do **not** use `docs/archive/` for current policy. Do **not** re-derive owner expectations from memory. Do **not** ask for email (`robbie.ryan312@gmail.com` is in `KEYS.md`). Do **not** treat VoteSmart or OpenSecrets as blockers — see deferred sources in `SOURCE_LOOKUP.md`.
 
 ---
 
 ## Where development continues
 
-See `PROGRESS.md` → **Next priorities**. Summary:
+See `PROGRESS.md` → **Status board**. Summary:
 
-| Phase | Focus |
-|-------|--------|
-| 16 | `ingest:member-all` — 537 deep bill files |
-| 17a | S000033 pilot — GovInfo CREC + FEC Schedule A org→topic votes |
-| 17b | Scale pilot pipelines to all 537 members |
+| Milestone | Focus |
+|-----------|--------|
+| **M1** (in flight) | Hardening: DNU quarantine, guards, RSS news, bundle reprocess, client-bundle split |
+| **M2** | Scale to 537 in reviewed batches — `docs/workflows/BATCH_SCALING.md` |
+| **M3–M8** | Follow the Money depth, controversies, SEO, scheduled refresh, launch |
 
 Full source catalog: `lib/data/sourceCatalog.ts`.
 
 ---
 
-## Branch workflow (updated)
+## Branch workflow
 
 - **`main`** — integration branch; owner may direct commits here (consolidated history).  
 - **Feature branches** — optional for large reviews; merge to `main` when complete.  
-- **`npm run build`** must pass before commit.
+- **`npm run build`** must pass before any commit.
 
 ---
 

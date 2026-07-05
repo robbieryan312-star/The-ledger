@@ -1,23 +1,34 @@
-# Mock political data
+# Pipeline-generated data layer
 
-This directory contains **illustrative mock data** for development and demos. It is not a live government database.
+This directory holds **typed accessors** and **build-time generated JSON** for The Ledger.
+All fact data enters via sync/ingest scripts → `lib/data/generated/` — never hand-authored mock rows.
 
-## Production data sources
+## Agent routing
 
-A production deployment would integrate authoritative sources referenced in the [GWU Political Science database guide](https://libguides.gwu.edu/poliscidatabases), including:
+| Need | Read |
+|------|------|
+| Which source feeds which UI section | [`SOURCE_LOOKUP.md`](./SOURCE_LOOKUP.md) |
+| Machine-readable catalog | [`sourceCatalog.ts`](./sourceCatalog.ts) |
+| Integration roadmap | [`DATA_INTEGRATION_PLAN.md`](./DATA_INTEGRATION_PLAN.md) |
+| Florida raw snapshots | [`docs/FLORIDA_DATA.md`](../../docs/FLORIDA_DATA.md) |
 
-| Source | Use |
-|--------|-----|
-| [FEC](https://www.fec.gov) | Campaign finance, donor disclosures |
-| [Congress.gov](https://www.congress.gov) | Bills, roll-call votes, member records |
-| [GovTrack.us](https://www.govtrack.us) | Voting record aggregation, bill tracking |
-| [Ballotpedia](https://ballotpedia.org) | Elections, offices, biographical context |
-| [Senate/House STOCK Act disclosures](https://www.senate.gov) | Financial trades |
-| State legislature & secretary of state APIs | Governors, state lawmakers, county officials |
-| NACo / county government sites | Local elected officials |
+## Generated files (examples)
 
-## Coverage notes
+| File | Updated by |
+|------|------------|
+| `generated/currentLegislators.json` | `npm run sync:legislators` |
+| `generated/roster.json` | Derived from legislators + office resolution |
+| `generated/profiles/<bioguideId>/` | Profile pipeline / reprocess scripts |
+| `generated/congressVotes.json` | `npm run sync:congress-votes` |
+| `generated/fecFinance.json` | `npm run sync:fec-national` |
 
-- **Federal officials**: Featured states (FL, KY, NY, VT) have expanded profiles; other states show partial or no federal roster in mock data.
-- **Counties**: Only a sample of counties nationwide have official profiles. Counties without entries should display an integration-in-progress message in the UI.
-- **Evidence items**: Issue positions use `EvidenceItem` arrays with `official` and `nonpartisan` source tiers; verify all claims against primary sources before production use.
+## DNU quarantine (2026-07-04)
+
+Mock/hand-authored fact data is permanently banned from the app interface. Build-gated guards in
+`lib/data/sourceIntegrity.ts` enforce no DNU imports and no `/mock/i` keys in generated JSON.
+
+## Production sources (reference)
+
+Authoritative integrations include FEC, Congress.gov, GovTrack, unitedstates/congress-legislators,
+GovInfo CREC, approved journalism RSS, STOCK Act PTR, and Florida state pipelines — see
+`SOURCE_LOOKUP.md` for live status per data need.

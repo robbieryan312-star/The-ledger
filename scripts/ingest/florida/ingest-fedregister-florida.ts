@@ -6,7 +6,7 @@
  * recent federal rules, proposed rules, notices, and presidential documents
  * that reference Florida, each dated and linked to the primary record.
  */
-import { fetchJson, writeFloridaSnapshot } from './lib/ingest-utils';
+import { fetchJson, writeFloridaSnapshot } from '../../lib/ingest-utils';
 
 const FEDREG_SOURCE = {
   name: 'Federal Register',

@@ -15,7 +15,7 @@ Every data fact the UI displays must be traceable to a specific source entry in 
 ```
 Authoritative sources (APIs, XML feeds, official datasets)
   ↓
-scripts/ingest-*.ts      — Florida-specific deep ingestion (state data, local data)
+scripts/ingest/florida/*.ts  — Florida-specific deep ingestion (state data)
 scripts/sync-*.ts        — National sync (all 537 Congress members)
   ↓
 data/<source>/*.json     — Raw snapshots, never imported directly by Next.js
@@ -36,7 +36,7 @@ Next.js build-time import → server components → SSR HTML → user
 
 Route pages (`app/**/page.tsx`) must be **server components**. Never add `'use client'` to a route page. Individual politician profiles must be server-rendered so crawlers can index them. Interactive sub-components (tabs, charts, accordions) use `'use client'`.
 
-Known violation pending fix: `app/politicians/[id]/page.tsx` is currently `'use client'`.
+`app/politicians/[id]/page.tsx` is a server component; interactivity lives in `PoliticianProfileClient` and child client shells.
 
 ---
 
@@ -60,7 +60,7 @@ Known violation pending fix: `app/politicians/[id]/page.tsx` is currently `'use 
 
 ---
 
-## Tier 1 — Official sources (live integration)
+## Official sources (`'official'` tier — live integration)
 
 | Source | What we pull | API / URL | Key |
 |--------|-------------|-----------|-----|
@@ -78,7 +78,7 @@ Known violation pending fix: `app/politicians/[id]/page.tsx` is currently `'use 
 
 ---
 
-## Tier 2 — Nonpartisan / official-derived sources (live or planned)
+## Nonpartisan sources (`'nonpartisan'` tier — live or planned)
 
 | Source | What we pull | Status |
 |--------|-------------|--------|
@@ -104,7 +104,7 @@ Known violation pending fix: `app/politicians/[id]/page.tsx` is currently `'use 
 
 ---
 
-## Tier 3 — Approved journalism sources (verbatim quotes only)
+## Approved journalism (`'media'` tier — verbatim quotes only)
 
 Journalism sources are used exclusively for the "Said → Did" quote layer and the news feed. They are **never used to assert office, votes, or financial records** — only for verbatim quotes attributed to the named outlet with date and URL.
 
@@ -185,16 +185,7 @@ Run `./scripts/setup-github-secrets.sh` after `gh auth login` to push all keys t
 
 ## Florida data layers
 
-Florida has the deepest state-level data integration. All Florida-specific data is ingested separately and available as UI panel slices on Florida politician profiles:
-
-- `slices/legislationFlorida.ts` — FL state legislation via LegiScan
-- `slices/lobbyingFllobbyist.ts` — FL lobbying registrations
-- `slices/newsFlorida.ts` — FL news via GDELT (superseded by national news)
-- `slices/financeFldoe.ts` — FL education finance data
-- `slices/judiciaryCourts.ts` — FL federal court records
-- `slices/filingsSecedgar.ts` — SEC EDGAR filings for FL entities
-- `slices/stateEconomic.ts` — FL economic indicators
-- `slices/voteview.ts` — DW-NOMINATE ideology scores (national, not FL-only)
+See **`docs/FLORIDA_DATA.md`** for script paths, raw JSON locations, and slice accessors.
 
 ---
 
@@ -202,9 +193,9 @@ Florida has the deepest state-level data integration. All Florida-specific data 
 
 | Gap | Impact | Priority |
 |-----|--------|----------|
-| `app/politicians/[id]/page.tsx` is `'use client'` | Individual profiles not crawler-visible | High |
-| `/lobbying`, `/elections` show mock data | Credibility risk on live site | High |
-| Nav sub-links ("Lobbyist Tracker", "PACs & Advocacy", "Election Calendar") point to unbuilt views | Silent broken nav | Medium |
-| Senate eFD stock trades (HTTP 503) | Senate trades missing from STOCK Act panel | Medium |
-| OpenSecrets donor sector breakdown | Finance tab lacks sector analysis | Medium |
-| "Said → Did" verbatim quote layer | Core product feature not yet wired for national profiles | High |
+| Font CDN dependency (`fonts.gstatic.com`) | Build fails offline / in restricted networks | High — self-host fonts |
+| `/lobbying`, `/elections` | Show honest empty states until real pipelines | Medium |
+| Senate eFD stock trades (HTTP 503) | Senate trades missing from STOCK Act panel | Medium — honest gap in UI |
+| OpenSecrets donor sector breakdown | Finance tab lacks sector analysis | Medium — FEC Schedule A path |
+| M2 batch scaling | 6/537 profiles migrated to per-destination files | High — see `PROGRESS.md` M2 |
+| `topicPositions.json` mega-bundle | Retire after full migration | High — reprocess guards live |

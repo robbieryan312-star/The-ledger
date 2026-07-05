@@ -2,7 +2,7 @@
  * FARA Florida registrants (no key).
  * Output: data/fara/florida-registrants.json
  */
-import { fetchJson, writeFloridaSnapshot } from './lib/ingest-utils';
+import { fetchJson, writeFloridaSnapshot } from '../../lib/ingest-utils';
 
 const FARA_SOURCE = {
   name: 'DOJ FARA eFile',

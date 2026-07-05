@@ -140,18 +140,17 @@ Elections, OpenCorporates — unchanged from prior log (see `.env.local` and `KE
 
 ## Status board (update in the same commit as the work)
 
-| Track | State (2026-07-04) |
+| Track | State (2026-07-05) |
 |-------|--------------------|
 | Migrated gold profiles | 6/537 (S000033, O000172, M000355, M001184, W000817, C001098) |
+| Docs cleanup + FL script consolidation | ✅ agent index, SETUP, FLORIDA_DATA, BATCH_SCALING, archive |
 | Phase C (display/credibility fix stack) | ✅ verified by Claude |
-| Phase D1 (mock abolition + slugs) | ✅ commit f0dcaa3 on origin/main |
-| Phase D2 (rules consolidation) | ✅ HARD RULES header; single tier table; approval-before-push |
-| Phase D3 (RSS news) | ✅ registry + sync:news-rss; 2/6 with articles, 4 honest-gap |
-| Phase D4 (CI + snapshots) | ✅ guards.yml + golden snapshots S000033/M000355 |
-| Phase E (Pelosi pipeline test) | Briefed, blocked on D |
-| Guard suites | 48+ locally; CI via guards.yml (D4) |
+| Phase D1–D4 | ✅ on origin/main (mock abolition, rules, RSS, CI guards) |
+| Bundle reprocess + client-bundle split | ✅ commit 8f801ba |
+| Phase E (Pelosi pipeline test) | Briefed — awaits Claude approval post-D |
+| Guard suites | 48+ locally; CI via guards.yml |
 | Font self-host | OPEN (build depends on fonts.gstatic.com) |
-| News | RSS pipeline (D3); 2 Guardian items pre-sync |
+| News | RSS pipeline; honest gaps where feeds thin |
 
 ## Compressed history (pre-roadmap)
 

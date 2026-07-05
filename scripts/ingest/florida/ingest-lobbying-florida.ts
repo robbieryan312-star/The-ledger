@@ -2,7 +2,7 @@
  * Senate LDA lobbying disclosures mentioning Florida (no key for read).
  * Output: data/lobbying/florida-disclosures.json
  */
-import { fetchJson, sleep, writeFloridaSnapshot } from './lib/ingest-utils';
+import { fetchJson, sleep, writeFloridaSnapshot } from '../../lib/ingest-utils';
 
 const LDA_SOURCE = {
   name: 'Senate Lobbying Disclosure Act Database',

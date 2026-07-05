@@ -8,8 +8,8 @@ import {
   loadEnvLocal,
   sleep,
   writeFloridaSnapshot,
-} from './lib/ingest-utils';
-import { FEC_SOURCE } from '../lib/data/fecClient';
+} from '../../lib/ingest-utils';
+import { FEC_SOURCE } from '../../../lib/data/fecClient';
 
 interface FecPage<T> {
   results: T[];

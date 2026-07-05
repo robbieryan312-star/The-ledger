@@ -2,7 +2,7 @@
  * USASpending Florida awards (no key).
  * Output: data/spending/florida-contracts.json
  */
-import { fetchJson, writeFloridaSnapshot } from './lib/ingest-utils';
+import { fetchJson, writeFloridaSnapshot } from '../../lib/ingest-utils';
 
 const USASPENDING_SOURCE = {
   name: 'USASpending.gov',

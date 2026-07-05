@@ -155,72 +155,62 @@ recency + corroboration rules above.
 
 ---
 
-## 6. Real vs. mock — current state
+## 6. Pipeline vs. honest gaps — current state (2026-07-05)
 
 | Field | Status |
 |-------|--------|
-| Current office label & "In Office / Former" badge (politicians with `bioguideId`) | **Real** — derived from `legislators-current` via `resolveCurrentOffice` |
-| `bioguideId`, current term start/end, state, chamber, party (in generated snapshot) | **Real** |
-| Current office for **all 537 members of Congress** (national backbone) | **Real** — every member in `legislators-current` is a listed, searchable record |
-| Current office for **50 state governors** | **Real** — Tier 2 curated NGA roster (`governors.ts`), resolved by state + name |
-| Official member **photos** | **Real** — public-domain `unitedstates/images` by bioguide; initials fallback |
-| Votes (House) | **Real** for featured House members when `CONGRESS_API_KEY` set — `npm run sync:votes` → Congress.gov API |
-| Votes (Senate) | **Real** for featured senators — same sync pulls official senate.gov LIS XML (no key) |
-| Stock trades | **Demo** on featured profiles (labeled); `npm run sync:stock-trades` writes empty official snapshot stub |
-| Campaign finance totals (receipts, disbursements, cash on hand) for **featured profiles** | **Real** — from OpenFEC via `npm run sync:fec` → `fecFinance.json`, Tier-1 FEC badge in UI |
-| Campaign finance lobbyist/industry/donor breakdowns | **Mock/demo** on featured profiles, honestly labeled when FEC totals are present |
+| Current office label & "In Office / Former" badge | **Real** — `resolveCurrentOffice` from `legislators-current` |
+| Roster (537 Congress + 50 governors) | **Real** — `generated/roster.json` + `currentLegislators.json` |
+| Official member photos | **Real** — `unitedstates/images` by bioguideId |
+| Votes (national merge) | **Real** — `sync:congress-votes` → `congressVotes.json` for all members with API data |
+| FEC totals (national) | **Real** — `sync:fec-national` → `fecFinance.json` (527/537+ with key) |
+| Stock trades (House PTR) | **Real** for House roster where PTR parsed; Senate eFD = honest documented gap |
+| Migrated profiles (6 gold) | **Real** — `generated/profiles/{bioguideId}/` per-destination files |
+| Remaining 531 profiles | **Honest gaps** — roster/searchable; no fabricated votes/positions |
+| News | **Partial** — approved-outlet RSS (`sync:news-rss`); thin coverage shows honest gaps |
+| Mock/hand-authored facts | **Banned** — DNU quarantine 2026-07-04; build-gated guards |
 
 ---
 
 ## 7. National coverage & record types
 
-The roster (`lib/data/allPoliticians.ts`) merges two kinds of records, de-duplicated
-by bioguide ID (Congress) and by state (governors):
+The roster merges congress-legislators snapshot + governor roster, de-duplicated by bioguideId
+(Congress) and state (governors):
 
-- **Featured** (`recordType` undefined): the ~17 richly hand-authored profiles.
-  They keep their detailed votes/finance/issues **and** now derive their
-  current-office label from the resolver + carry an official photo.
-- **Lightweight** (`recordType: 'lightweight'`): every other current member of
-  Congress and every governor. Real, verified office/term/party/state/photo;
-  votes/finance/issues are intentionally empty and rendered as honest
-  "no verified record available" placeholders. **Nothing is fabricated.**
+- **Migrated profiles** (`generated/profiles/<bioguideId>/`): 6 gold-standard members with full
+  per-destination data layers — the locked spec for M2 scaling.
+- **All other Congress members**: real office/term/party/state/photo from generated snapshot;
+  category files empty until batch migration — UI shows "No verified record available."
+- **Governors**: curated NGA roster (`governors.ts`); re-verify after elections.
 
-Coverage: **587 officials** = 100 senators + 437 representatives + 50 governors,
-538 with official photos. `getCoverageStats()` surfaces these numbers and
-`npm run verify:office` asserts them.
+Coverage: **587 officials** searchable. `npm run verify:office` asserts resolution rules.
 
 ### Governor re-verification TODO
 
-`governors.ts` is a hand-verified snapshot (`GOVERNORS_AS_OF`). All 50 are
-confirmed sitting governors, but unlike Congress there is no zero-key live feed,
-so this list must be **manually re-verified after each gubernatorial election**
-(and on any mid-term resignation/succession). Future automation candidate:
-source #8 (Ballotpedia / state SoS) once a key/feed is chosen.
+`governors.ts` is a hand-verified snapshot (`GOVERNORS_AS_OF`). Re-verify after each
+gubernatorial election. Future automation: Ballotpedia / state SoS once a feed is chosen.
 
 ### API keys — status (see KEYS.md + sourceCatalog.ts)
 
-Most Sprint 1 keys are **SET** in `.env.local`. **Deferred** (alternatives wired):
+Most Sprint 1 keys are **SET** in `.env.local`. **Deferred:**
 
-- ~~**VoteSmart NPAT**~~ → Ballotpedia + GovInfo Congressional Record
-- ~~**OpenSecrets**~~ → FEC Schedule A + org registry (Phase 17)
+- ~~VoteSmart NPAT~~ → Ballotpedia + GovInfo CREC
+- ~~OpenSecrets~~ → FEC Schedule A + org registry
 
-Optional later: FRED, FollowTheMoney, OpenCorporates, SAM (login.gov).
-
-**Phase 17 approach:** pilot full data matrix on `S000033`, then scale to 537 — see `lib/data/SOURCE_LOOKUP.md`.
+**M2 scaling:** batch protocol in `docs/workflows/BATCH_SCALING.md`; pipeline cert via
+`profile:build` (Phase E / M1).
 
 ---
 
-## 8. Stock trades — integration stub
+## 8. Stock trades — integration status
 
-`scripts/sync-stock-trades.ts` (`npm run sync:stock-trades`) probes Senate eFD reachability and writes
-`lib/data/generated/stockTrades.json` with **zero fabricated trades**. Featured profile stock tabs and `/congress`
-continue to show **demo-labeled** mock trades until official PTR parsing lands.
+`scripts/sync-stock-trades.ts` (`npm run sync:stock-trades`) parses House PTR disclosures into
+`lib/data/generated/stockTrades.json`. Senate eFD remains blocked (HTTP 503) — UI shows honest gap.
 
-**Next implementation steps** (encoded in snapshot `meta.nextSteps`):
+**Remaining work:**
 
-1. Senate PTR list via `efdsearch.senate.gov/search/report/data/` (session + CSRF).
-2. House YTD ZIP from `disclosures-clerk.house.gov/FinancialDisclosure`.
-3. Map to `bioguideId`; merge via `lib/data/stockTrades.ts` (future) over hand-authored demo rows.
+1. Senate PTR via `efdsearch.senate.gov` when service restores.
+2. Expand PTR parsing coverage and guard against fabrication on fetch failure.
 
 ---
 

@@ -3,7 +3,7 @@
  * Replaces deprecated Google Civic representatives API.
  * Output: data/civic/florida-districts.json
  */
-import { fetchJson, loadFloridaLegislators, writeFloridaSnapshot } from './lib/ingest-utils';
+import { fetchJson, loadFloridaLegislators, writeFloridaSnapshot } from '../../lib/ingest-utils';
 
 const CENSUS_SOURCE = {
   name: 'U.S. Census Bureau / congress-legislators',

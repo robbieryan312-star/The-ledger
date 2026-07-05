@@ -91,7 +91,7 @@ the specific failure this file was created to stop.
 | If the work touches… | Read this first |
 |----------------------|-----------------|
 | What a complete profile requires; data layers; what "done" means | `PILOT_PROFILE_CHECKLIST.md` |
-| How batches are collected/reviewed/sized (the scaling loop) | `PHASE17B_BATCH_WORKFLOW.md` |
+| How batches are collected/reviewed/sized (the scaling loop) | `docs/workflows/BATCH_SCALING.md` |
 | What counts as a "Said" statement (floor remark vs. submission boilerplate/fragment) | `PILOT_PROFILE_CHECKLIST.md` → Said acceptance rule |
 | How much shows per row/article; truncation; counts per section; layout | the demo components in `components/politicians/` — these ARE the locked layout |
 | UI copy tone, banned words, Said→Did diff format | `.cursor/rules/ledger-editorial-voice.mdc` |

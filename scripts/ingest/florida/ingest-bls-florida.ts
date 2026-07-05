@@ -6,7 +6,7 @@
  * unemployment rate, unemployment level, employment, and labor force, with the
  * latest reading and recent monthly history. Each series dated and linked.
  */
-import { fetchJson, writeFloridaSnapshot } from './lib/ingest-utils';
+import { fetchJson, writeFloridaSnapshot } from '../../lib/ingest-utils';
 
 const BLS_SOURCE = {
   name: 'U.S. Bureau of Labor Statistics',

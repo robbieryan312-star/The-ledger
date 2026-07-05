@@ -6,7 +6,7 @@
  * measure of roll-call voting position (Poole-Rosenthal). Presented neutrally as
  * a sourced metric, not an editorial judgment. Each record dated + linked.
  */
-import { sleep, writeFloridaSnapshot } from './lib/ingest-utils';
+import { sleep, writeFloridaSnapshot } from '../../lib/ingest-utils';
 
 const VOTEVIEW_SOURCE = {
   name: 'Voteview (UCLA)',

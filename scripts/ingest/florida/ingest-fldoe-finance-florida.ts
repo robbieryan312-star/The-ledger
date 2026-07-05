@@ -11,7 +11,7 @@
  */
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { projectRoot, writeFloridaSnapshot } from './lib/ingest-utils';
+import { projectRoot, writeFloridaSnapshot } from '../../lib/ingest-utils';
 
 const FLDOE_SOURCE = {
   name: 'Florida Division of Elections',

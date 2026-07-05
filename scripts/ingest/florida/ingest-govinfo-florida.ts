@@ -6,7 +6,7 @@
  * Committee Reports mentioning Florida — the legislative-branch counterpart to
  * the Federal Register's executive/agency documents. Each item dated and linked.
  */
-import { fetchJson, loadEnvLocal, writeFloridaSnapshot } from './lib/ingest-utils';
+import { fetchJson, loadEnvLocal, writeFloridaSnapshot } from '../../lib/ingest-utils';
 
 const GOVINFO_SOURCE = {
   name: 'GovInfo (U.S. GPO)',

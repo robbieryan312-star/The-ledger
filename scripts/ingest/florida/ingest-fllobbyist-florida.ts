@@ -7,7 +7,7 @@
  * authoritative document index (year + branch + direct PDF link) with an honest
  * note. Server-rendered HTML, so no browser is required.
  */
-import { writeFloridaSnapshot } from './lib/ingest-utils';
+import { writeFloridaSnapshot } from '../../lib/ingest-utils';
 
 const FLLOB_SOURCE = {
   name: 'Florida Lobbyist Registration',

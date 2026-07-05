@@ -146,7 +146,7 @@ Routine implementation: proceed without asking. **Credibility tradeoffs** (confl
 ## Cursor Cloud specific instructions
 
 - Single Next.js 16 (Turbopack) app. Dependencies install via `npm install`; `.npmrc` sets `legacy-peer-deps=true`, so non-npm package managers will mis-resolve peers — use npm.
-- The app runs fully on committed data (mock + `lib/data/generated`), so `npm run dev` and `npm run build` work without any API keys or external services.
+- The app runs fully on committed pipeline data (`lib/data/generated/`), so `npm run dev` and `npm run build` work without API keys for read-only verification.
 - API keys (`FEC_API_KEY`, `CONGRESS_API_KEY` in a gitignored `.env.local`) are only needed for the optional `npm run sync:fec` / `npm run sync:votes` data-refresh scripts; `npm run sync:legislators` and `npm run verify:office` need no key.
 - `npm run lint` currently reports pre-existing errors (e.g. `lib/hooks/useUserProfile.ts` set-state-in-effect) unrelated to environment setup; lint tooling itself works.
 

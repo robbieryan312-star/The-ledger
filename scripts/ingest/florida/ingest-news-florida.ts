@@ -2,7 +2,7 @@
  * NewsAPI Florida political coverage.
  * Output: data/news/florida-coverage.json
  */
-import { loadEnvLocal, writeFloridaSnapshot } from './lib/ingest-utils';
+import { loadEnvLocal, writeFloridaSnapshot } from '../../lib/ingest-utils';
 
 const NEWSAPI_SOURCE = {
   name: 'NewsAPI',

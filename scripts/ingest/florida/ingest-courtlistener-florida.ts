@@ -5,7 +5,7 @@
  * Tier 2 nonpartisan aggregator; the opinions themselves are official primary
  * court records. Each record is dated and linked to the opinion on CourtListener.
  */
-import { fetchJson, sleep, writeFloridaSnapshot } from './lib/ingest-utils';
+import { fetchJson, sleep, writeFloridaSnapshot } from '../../lib/ingest-utils';
 
 const CL_SOURCE = {
   name: 'CourtListener (Free Law Project)',

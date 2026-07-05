@@ -2,7 +2,7 @@
  * Census ACS Florida demographics (no key).
  * Output: data/census/florida-demographics.json
  */
-import { loadEnvLocal, writeFloridaSnapshot } from './lib/ingest-utils';
+import { loadEnvLocal, writeFloridaSnapshot } from '../../lib/ingest-utils';
 
 const CENSUS_SOURCE = {
   name: 'U.S. Census Bureau ACS',

@@ -2,7 +2,7 @@
  * OpenStates Florida legislators.
  * Output: data/openstates/florida-legislators.json
  */
-import { fetchJson, loadEnvLocal, sleep, writeFloridaSnapshot } from './lib/ingest-utils';
+import { fetchJson, loadEnvLocal, sleep, writeFloridaSnapshot } from '../../lib/ingest-utils';
 
 const OPENSTATES_SOURCE = {
   name: 'Open States',

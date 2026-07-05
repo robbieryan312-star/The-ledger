@@ -1,9 +1,10 @@
 # The Ledger — Data Sources
 
-> **Production source routing:** see [`SOURCE_LOOKUP.md`](./SOURCE_LOOKUP.md) and [`sourceCatalog.ts`](./sourceCatalog.ts).  
-> This file describes mock vs live data history; the catalog is authoritative for agents.
+> **ARCHIVED — do not use for agent routing (2026-07-05).**  
+> Production source routing: [`lib/data/SOURCE_LOOKUP.md`](../../lib/data/SOURCE_LOOKUP.md) and
+> [`lib/data/sourceCatalog.ts`](../../lib/data/sourceCatalog.ts).
 
-This document describes what is **mock/demo data** in the current build versus the **production integration path**.
+This document describes what was **mock/demo data** before the 2026-07-04 DNU quarantine versus the production integration path.
 
 ## Current data (pipeline-generated)
 

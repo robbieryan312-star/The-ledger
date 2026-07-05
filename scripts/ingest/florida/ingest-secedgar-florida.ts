@@ -7,7 +7,7 @@
  * record carries the filer's business/incorporation state and a floridaDomiciled
  * flag. SEC fair-access policy requires a descriptive User-Agent on every request.
  */
-import { fetchJson, sleep, writeFloridaSnapshot } from './lib/ingest-utils';
+import { fetchJson, sleep, writeFloridaSnapshot } from '../../lib/ingest-utils';
 
 const SEC_SOURCE = {
   name: 'SEC EDGAR',

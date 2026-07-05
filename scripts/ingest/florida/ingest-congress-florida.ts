@@ -10,7 +10,7 @@ import {
   loadFloridaLegislators,
   sleep,
   writeFloridaSnapshot,
-} from './lib/ingest-utils';
+} from '../../lib/ingest-utils';
 import {
   CONGRESS_GOV_SOURCE,
   fetchBioguidePartyMap,
@@ -25,16 +25,16 @@ import {
   policyCategoryFromQuestion,
   voteResultLabel,
   type HouseVoteSummary,
-} from '../lib/data/congressClient';
-import { computePartyBreakdown } from '../lib/data/partyVoteBreakdown';
-import type { Source, VoteChoice, VoteRecord } from '../lib/types';
+} from '../../../lib/data/congressClient';
+import { computePartyBreakdown } from '../../../lib/data/partyVoteBreakdown';
+import type { Source, VoteChoice, VoteRecord } from '../../../lib/types';
 import {
   SENATE_GOV_SOURCE,
   fetchLisToBioguideMap,
   fetchSenateRollCall,
   fetchSenateVoteMenu,
   senateVoteToRecord,
-} from '../lib/data/senateVotesClient';
+} from '../../../lib/data/senateVotesClient';
 
 const TARGET_CONGRESS = 119;
 const VOTES_PER_MEMBER = 8;
