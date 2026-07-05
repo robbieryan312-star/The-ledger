@@ -12,9 +12,11 @@ import {
   SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH,
   SAID_DID_KNOWN_BAD_TAUTOLOGY,
   PLATFORM_KNOWN_BAD_EVENT_NARRATION,
+  PLATFORM_KNOWN_BAD_CRAPO_ARREST,
   PLATFORM_KNOWN_BAD_BIO_BOILERPLATE,
   PLATFORM_KNOWN_BAD_SITE_FURNITURE,
   PLATFORM_KNOWN_GOOD_MEMBER_POSITION,
+  PLATFORM_KNOWN_GOOD_DATED_FIRST_PERSON_STANCE,
   SOURCE_INTEGRITY_KNOWN_BAD_URLS,
   SOURCE_INTEGRITY_KNOWN_GOOD_URLS,
   STATEMENT_KNOWN_BAD_NON_VERBATIM_ALLEGED,
@@ -111,7 +113,9 @@ test('third-party characterizations are detected', () => {
 
 test('event narration is rejected as member stated position (C001098 Holder/Paul fixture)', () => {
   assert.equal(isEventNarration(PLATFORM_KNOWN_BAD_EVENT_NARRATION), true);
+  assert.equal(isEventNarration(PLATFORM_KNOWN_BAD_CRAPO_ARREST), true);
   assert.equal(isEventNarration(PLATFORM_KNOWN_GOOD_MEMBER_POSITION), false);
+  assert.equal(isEventNarration(PLATFORM_KNOWN_GOOD_DATED_FIRST_PERSON_STANCE), false);
   assert.equal(isEventNarration('Successfully defended the constitutionality of the Texas Ten Commandments monument'), false);
 });
 

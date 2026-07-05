@@ -1,6 +1,6 @@
 /**
  * Federal Register Florida-related documents (no key).
- * Output: data/fedregister/florida-documents.json
+ * Output: data/florida/fedregister/florida-documents.json
  *
  * Tier 1 official: the daily journal of the U.S. government. Captures the most
  * recent federal rules, proposed rules, notices, and presidential documents

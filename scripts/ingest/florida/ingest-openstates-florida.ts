@@ -1,6 +1,6 @@
 /**
  * OpenStates Florida legislators.
- * Output: data/openstates/florida-legislators.json
+ * Output: data/florida/openstates/florida-legislators.json
  */
 import { fetchJson, loadEnvLocal, sleep, writeFloridaSnapshot } from '../../lib/ingest-utils';
 

@@ -1,6 +1,6 @@
 /**
  * GDELT 2.0 DOC API — Florida political coverage (no key).
- * Output: data/gdelt/florida-coverage.json
+ * Output: data/florida/gdelt/florida-coverage.json
  *
  * Tier 3 (media aggregator). GDELT indexes worldwide news; results are an
  * automated aggregation over journalism and must be corroborated with Tier 1/2

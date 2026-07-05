@@ -18,7 +18,7 @@ import { MIGRATED_PROFILE_BIOGUIDES } from '../lib/data/memberProfile';
 import { getPoliticianByBioguide } from '../lib/data/allPoliticians';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const NATIONAL_FILE = path.join(projectRoot, 'data/votes/national/congress-votes.json');
+const NATIONAL_FILE = path.join(projectRoot, 'data/national/votes/congress-votes.json');
 const PROFILES_ROOT = path.join(projectRoot, 'lib/data/generated/profiles');
 const TARGET_CONGRESS = 119;
 const COLLECT_LIMIT = 45;

@@ -1,6 +1,6 @@
 /**
  * Voteview (UCLA) — DW-NOMINATE ideology scores for Florida's Congress (no key).
- * Output: data/voteview/florida-ideology.json
+ * Output: data/florida/voteview/florida-ideology.json
  *
  * Tier 2 nonpartisan academic. DW-NOMINATE is the standard political-science
  * measure of roll-call voting position (Poole-Rosenthal). Presented neutrally as

@@ -66,6 +66,16 @@ import c001098News from './generated/profiles/C001098/news.json';
 import c001098Controversies from './generated/profiles/C001098/controversies.json';
 import c001098Endorsements from './generated/profiles/C001098/endorsements.json';
 
+import p000197Statements from './generated/profiles/P000197/statements.json';
+import p000197Positions from './generated/profiles/P000197/positions.json';
+import p000197SaidDid from './generated/profiles/P000197/saidDid.json';
+import p000197OrgVoteLinks from './generated/profiles/P000197/orgVoteLinks.json';
+import p000197Votes from './generated/profiles/P000197/votes.json';
+import p000197Finance from './generated/profiles/P000197/finance.json';
+import p000197News from './generated/profiles/P000197/news.json';
+import p000197Controversies from './generated/profiles/P000197/controversies.json';
+import p000197Endorsements from './generated/profiles/P000197/endorsements.json';
+
 import type { OrgVoteTopicLink } from './buildOrgVoteTopicLinks';
 import type { FecFinanceEntry } from './fecFinance';
 import type { Controversy, NewsItem, Source, VoteRecord } from '../types';
@@ -92,6 +102,7 @@ export const MIGRATED_PROFILE_BIOGUIDES = new Set([
   'M001184',
   'W000817',
   'C001098',
+  'P000197',
 ]);
 
 export function usesMemberProfile(bioguideId: string): boolean {
@@ -126,7 +137,7 @@ interface ProfileFinanceFile {
   entry: FecFinanceEntry | null;
 }
 
-/** Roll-call votes materialized from data/votes/national/congress-votes.json. */
+/** Roll-call votes materialized from data/national/votes/congress-votes.json. */
 export interface MemberProfileCongressVotes {
   politicianId: string;
   bioguideId: string;
@@ -170,6 +181,11 @@ const PROFILE_DATA: Record<
     positions: c001098Positions as PositionsFile,
     saidDid: c001098SaidDid as SaidDidFile,
   },
+  P000197: {
+    statements: p000197Statements as StatementsFile,
+    positions: p000197Positions as PositionsFile,
+    saidDid: p000197SaidDid as SaidDidFile,
+  },
 };
 
 const ORG_VOTE_LINKS: Record<string, OrgVoteTopicLink[]> = {
@@ -179,6 +195,7 @@ const ORG_VOTE_LINKS: Record<string, OrgVoteTopicLink[]> = {
   M001184: (m001184OrgVoteLinks as { links: OrgVoteTopicLink[] }).links,
   W000817: (w000817OrgVoteLinks as { links: OrgVoteTopicLink[] }).links,
   C001098: (c001098OrgVoteLinks as { links: OrgVoteTopicLink[] }).links,
+  P000197: (p000197OrgVoteLinks as { links: OrgVoteTopicLink[] }).links,
 };
 
 const PROFILE_VOTES: Record<string, ProfileVotesFile> = {
@@ -188,6 +205,7 @@ const PROFILE_VOTES: Record<string, ProfileVotesFile> = {
   M001184: m001184Votes as ProfileVotesFile,
   W000817: w000817Votes as ProfileVotesFile,
   C001098: c001098Votes as ProfileVotesFile,
+  P000197: p000197Votes as ProfileVotesFile,
 };
 
 const PROFILE_FINANCE: Record<string, ProfileFinanceFile> = {
@@ -197,6 +215,7 @@ const PROFILE_FINANCE: Record<string, ProfileFinanceFile> = {
   M001184: m001184Finance as ProfileFinanceFile,
   W000817: w000817Finance as ProfileFinanceFile,
   C001098: c001098Finance as ProfileFinanceFile,
+  P000197: p000197Finance as ProfileFinanceFile,
 };
 
 const PROFILE_NEWS: Record<string, ProfileNewsFile> = {
@@ -206,6 +225,7 @@ const PROFILE_NEWS: Record<string, ProfileNewsFile> = {
   M001184: m001184News as ProfileNewsFile,
   W000817: w000817News as ProfileNewsFile,
   C001098: c001098News as ProfileNewsFile,
+  P000197: p000197News as ProfileNewsFile,
 };
 
 interface ProfileControversiesFile {
@@ -234,6 +254,7 @@ const PROFILE_CONTROVERSIES: Record<string, ProfileControversiesFile> = {
   M001184: m001184Controversies as ProfileControversiesFile,
   W000817: w000817Controversies as ProfileControversiesFile,
   C001098: c001098Controversies as ProfileControversiesFile,
+  P000197: p000197Controversies as ProfileControversiesFile,
 };
 
 const PROFILE_ENDORSEMENTS: Record<string, ProfileEndorsementsFile> = {
@@ -243,6 +264,7 @@ const PROFILE_ENDORSEMENTS: Record<string, ProfileEndorsementsFile> = {
   M001184: m001184Endorsements as ProfileEndorsementsFile,
   W000817: w000817Endorsements as ProfileEndorsementsFile,
   C001098: c001098Endorsements as ProfileEndorsementsFile,
+  P000197: p000197Endorsements as ProfileEndorsementsFile,
 };
 
 /**
@@ -294,7 +316,7 @@ export function getMemberProfileOrgVoteLinks(bioguideId: string): OrgVoteTopicLi
 }
 
 /**
- * Roll-call votes for migrated profiles — materialized from data/votes/national/congress-votes.json.
+ * Roll-call votes for migrated profiles — materialized from data/national/votes/congress-votes.json.
  */
 export function getMemberProfileVotes(bioguideId: string): MemberProfileCongressVotes | null {
   const file = PROFILE_VOTES[bioguideId];
@@ -319,7 +341,7 @@ function inferChamberFromVotes(votes: VoteRecord[]): 'house' | 'senate' {
   return 'senate';
 }
 
-/** FEC totals for migrated profiles — materialized from data/fec/national/congress-finance.json. */
+/** FEC totals for migrated profiles — materialized from data/national/fec/congress-finance.json. */
 export function getMemberProfileFinance(bioguideId: string): FecFinanceEntry | null {
   if (!MIGRATED_PROFILE_BIOGUIDES.has(bioguideId)) return null;
   return PROFILE_FINANCE[bioguideId]?.entry ?? null;

@@ -1,6 +1,6 @@
 /**
  * Senate LDA lobbying disclosures mentioning Florida (no key for read).
- * Output: data/lobbying/florida-disclosures.json
+ * Output: data/florida/lobbying/florida-disclosures.json
  */
 import { fetchJson, sleep, writeFloridaSnapshot } from '../../lib/ingest-utils';
 

@@ -1,5 +1,5 @@
-import scheduleASnapshot from '../../data/fec/national/schedule-a.json';
-import pilotSandersScheduleA from '../../data/fec/pilot/S000033-schedule-a.json';
+import scheduleASnapshot from '../../data/national/fec/schedule-a.json';
+import pilotSandersScheduleA from '../../data/national/fec/pilot/S000033-schedule-a.json';
 import type { FecScheduleAContributor } from './fecClient';
 import type { Source, VoteRecord } from '../types';
 

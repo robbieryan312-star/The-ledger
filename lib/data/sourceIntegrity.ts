@@ -97,20 +97,70 @@ export function isSiteFurniture(text: string): boolean {
   return false;
 }
 
-/** Event narration — chronicles another official's actions with no first-person stance from the member. */
+/** Member speaks a policy stance (first-person or attributed quote) — keep even when date-led. */
+function hasMemberPolicyStance(text: string): boolean {
+  const t = text.trim();
+  if (/\b(I|we|my|our)\b/i.test(t)) return true;
+  if (/\bIn Congress, I\b/i.test(t)) return true;
+  if (/\b(introduced|cosponsored|authored|sponsored)\s+(the\s+)?[A-Z]/i.test(t)) return true;
+  if (/\b(criticized|opposed|supported|called for|defended|advocated for)\b/i.test(t)) return true;
+  if (/\bissued a statement\b/i.test(t) && /\b(said|stated),?\s*[\u201c"]/i.test(t)) return true;
+  if (/\b(said|stated|announced|declared|argued),?\s*[\u201c"]/i.test(t)) {
+    if (/\b(I am deeply sorry|I made a mistake|I apologize|I accept total responsibility)\b/i.test(t)) {
+      return false;
+    }
+    if (/\b(I am pleased|I believe|I support|we must|we need|I want to)\b/i.test(t)) return true;
+  }
+  return false;
+}
+
+/** Incident / biography narration — member is the subject of news, not the stance-holder. */
+function isIncidentOrBiographyNarration(text: string): boolean {
+  const t = text.trim();
+  if (/^On \w+ \d{1,2}, \d{4}, .{0,160}\bwas (arrested|charged|assaulted|indicted|convicted|sentenced|taken into custody)\b/i.test(t)) {
+    return true;
+  }
+  if (/^On \w+ \d{1,2}, \d{4}, while .{0,120}\bwas (mowing|walking|driving)\b/i.test(t) && /\b(assaulted|attacked)\b/i.test(t)) {
+    return true;
+  }
+  if (/^In (January|February|March|April|May|June|July|August|September|October|November|December) \d{4}, .{0,120}\bwas arrested\b/i.test(t)) {
+    return true;
+  }
+  if (/\bCapitol police arrested\b/i.test(t) || /\bpolice arrested\b/i.test(t) && /\bwas charged with\b/i.test(t)) {
+    return true;
+  }
+  if (/^On \w+ \d{1,2}, \d{4}, .{0,80}(eight|several|\d+) .{0,60}\b(members of Congress|lawmakers|demonstrators) were arrested\b/i.test(t)) {
+    return true;
+  }
+  if (/^Heading into the election, Ballotpedia rated\b/i.test(t)) return true;
+  if (/^On \w+ \d{1,2}, \d{4}, Minneapolis police officers arrested\b/i.test(t)) return true;
+  if (/\bwas one of the \d+ who signed the letter\b/i.test(t)) return true;
+  return false;
+}
+
+/** Event narration — chronicles events where the member is not the policy stance-holder. */
 export function isEventNarration(text: string): boolean {
   const t = text.trim();
   if (!t) return false;
+
+  if (isIncidentOrBiographyNarration(t)) return true;
+
+  if (hasMemberPolicyStance(t)) return false;
+
   const hasFirstPersonStance = /\b(I|we|my|our)\b/i.test(t);
   if (hasFirstPersonStance) return false;
 
   if (/^(The day after|On the day after|The following day|In response to|Following the)\b/i.test(t)) {
     return true;
   }
+  if (/^On \w+ \d{1,2}, \d{4}, (Senator|Representative|Speaker)\b/i.test(t)
+    && /\b(wrote a letter|sent a letter)\b/i.test(t)) {
+    return true;
+  }
   if (/\bAttorney General\b.{0,60}\b(sent|wrote|responded|issued|announced)\b/i.test(t)) {
     return true;
   }
-  if (/\b(sent a letter to|wrote to)\b/i.test(t)) {
+  if (/\b(wrote a letter to|sent a letter to|wrote to)\b/i.test(t)) {
     if (/^(I|We)\b/i.test(t)) return false;
     if (/^\s*[\u201c"]\s*(I|We)\b/i.test(t)) return false;
     return true;

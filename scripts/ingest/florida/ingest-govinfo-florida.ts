@@ -1,6 +1,6 @@
 /**
  * GovInfo — Florida-related federal legislative documents (api.data.gov key).
- * Output: data/govinfo/florida-legislative-docs.json
+ * Output: data/florida/govinfo/florida-legislative-docs.json
  *
  * Tier 1 official (GPO). Recent Congressional Bills, Congressional Record, and
  * Committee Reports mentioning Florida — the legislative-branch counterpart to

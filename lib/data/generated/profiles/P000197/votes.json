@@ -1,0 +1,367 @@
+{
+  "bioguideId": "P000197",
+  "politicianId": "P000197",
+  "votes": [
+    {
+      "id": "P000197-h119-2-233",
+      "billId": "H.Res.1399",
+      "billTitle": "Directing the Committee on Ethics to preserve and publicly release records relating to monetary settlements involving acts of sexual harassment.",
+      "billDescription": "On Agreeing to the Resolution — H.Res.1399. Official House roll-call (Congress.gov).",
+      "voteAction": "Vote to agree to the resolution",
+      "billSummary": "Directing the Committee on Ethics to preserve and publicly release records relating to monetary settlements involving acts of sexual harassment.",
+      "date": "2026-06-30",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 209,
+          "nay": 0,
+          "notVoting": 9
+        },
+        "democrat": {
+          "yea": 210,
+          "nay": 0,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/233",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-30"
+      }
+    },
+    {
+      "id": "P000197-h119-2-232",
+      "billId": "HCONRES 108",
+      "billTitle": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+      "billDescription": "On Agreeing to the Resolution — HCONRES 108. Official House roll-call (Congress.gov).",
+      "voteAction": "Vote to agree to the resolution",
+      "billSummary": "Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from hostilities in Lebanon.",
+      "date": "2026-06-30",
+      "vote": "Yea",
+      "result": "Failed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 2,
+          "nay": 212,
+          "notVoting": 4
+        },
+        "democrat": {
+          "yea": 187,
+          "nay": 22,
+          "notVoting": 3
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 1,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/232",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-30"
+      }
+    },
+    {
+      "id": "P000197-h119-2-231",
+      "billId": "H.Res.1398",
+      "billTitle": "Providing for consideration of the bill (H.R. 8800) to authorize appropriations for fiscal year 2027 for military activities of the Department of Defense, for military construction, and for defense activities of the Department of Energy, to prescribe military personnel strengths for such fiscal year, and for other purposes; providing for consideration of the bill (H.R. 8595) making appropriations for national security, Department of State, and related programs for the fiscal year ending September 30, 2027, and for other purposes; providing for consideration of the bill (H.R. 8884) to amend title II of the Social Security Act to reauthorize demonstration authority for the disability insurance program; providing for consideration of the resolution (H. Res. 1383) commemorating the one-year anniversary of the enactment of the Working Families Tax Cuts; and for other purposes.",
+      "billDescription": "On Agreeing to the Resolution — H.Res.1398. Official House roll-call (Congress.gov).",
+      "voteAction": "Vote to agree to the resolution",
+      "billSummary": "Providing for consideration of the bill (H.R. 8800) to authorize appropriations for fiscal year 2027 for military activities of the Department of Defense, for military construction, and for defense activities of the Department of Energy, to prescribe military personnel strengths for such fiscal year, and for other purposes; providing for consideration of the bill (H.R. 8595) making appropriations for national security, Department of State, and related programs for the fiscal year ending September 30, 2027, and for other purposes; providing for consideration of the bill (H.R. 8884) to amend title II of the Social Security Act to reauthorize demonstration authority for the disability insurance program; providing for consideration of the resolution (H. Res. 1383) commemorating the one-year anniversary of the enactment of the Working Families Tax Cuts; and for other purposes.",
+      "date": "2026-06-30",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 197,
+          "nay": 14,
+          "notVoting": 7
+        },
+        "democrat": {
+          "yea": 0,
+          "nay": 210,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/231",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-30"
+      }
+    },
+    {
+      "id": "P000197-h119-2-230",
+      "billId": "H.Res.1398",
+      "billTitle": "Providing for consideration of the bill (H.R. 8800) to authorize appropriations for fiscal year 2027 for military activities of the Department of Defense, for military construction, and for defense activities of the Department of Energy, to prescribe military personnel strengths for such fiscal year, and for other purposes; providing for consideration of the bill (H.R. 8595) making appropriations for national security, Department of State, and related programs for the fiscal year ending September 30, 2027, and for other purposes; providing for consideration of the bill (H.R. 8884) to amend title II of the Social Security Act to reauthorize demonstration authority for the disability insurance program; providing for consideration of the resolution (H. Res. 1383) commemorating the one-year anniversary of the enactment of the Working Families Tax Cuts; and for other purposes.",
+      "billDescription": "On Ordering the Previous Question — H.Res.1398. Official House roll-call (Congress.gov).",
+      "voteAction": "On Ordering the Previous Question",
+      "billSummary": "Providing for consideration of the bill (H.R. 8800) to authorize appropriations for fiscal year 2027 for military activities of the Department of Defense, for military construction, and for defense activities of the Department of Energy, to prescribe military personnel strengths for such fiscal year, and for other purposes; providing for consideration of the bill (H.R. 8595) making appropriations for national security, Department of State, and related programs for the fiscal year ending September 30, 2027, and for other purposes; providing for consideration of the bill (H.R. 8884) to amend title II of the Social Security Act to reauthorize demonstration authority for the disability insurance program; providing for consideration of the resolution (H. Res. 1383) commemorating the one-year anniversary of the enactment of the Working Families Tax Cuts; and for other purposes.",
+      "date": "2026-06-30",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 214,
+          "nay": 0,
+          "notVoting": 4
+        },
+        "democrat": {
+          "yea": 0,
+          "nay": 210,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/230",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-30"
+      }
+    },
+    {
+      "id": "P000197-h119-2-229",
+      "billId": "H.R.7128",
+      "billTitle": "TRIA Program Reauthorization Act of 2026",
+      "billDescription": "On Motion to Suspend the Rules and Pass, as Amended — H.R.7128. Official House roll-call (Congress.gov).",
+      "voteAction": "Vote to suspend rules and pass",
+      "billSummary": "TRIA Program Reauthorization Act of 2026",
+      "date": "2026-06-29",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 181,
+          "nay": 15,
+          "notVoting": 22
+        },
+        "democrat": {
+          "yea": 191,
+          "nay": 0,
+          "notVoting": 21
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/229",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-29"
+      }
+    },
+    {
+      "id": "P000197-h119-2-228",
+      "billId": "H.R.7757",
+      "billTitle": "KIDS Act",
+      "billDescription": "On Motion to Suspend the Rules and Pass, as Amended — H.R.7757. Official House roll-call (Congress.gov).",
+      "voteAction": "Vote to suspend rules and pass",
+      "billSummary": "KIDS Act",
+      "date": "2026-06-29",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 162,
+          "nay": 32,
+          "notVoting": 24
+        },
+        "democrat": {
+          "yea": 104,
+          "nay": 85,
+          "notVoting": 23
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/228",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-29"
+      }
+    },
+    {
+      "id": "P000197-h119-2-227",
+      "billId": "H.R.2478",
+      "billTitle": "Financial Exploitation Prevention Act of 2025",
+      "billDescription": "On Motion to Suspend the Rules and Pass, as Amended — H.R.2478. Official House roll-call (Congress.gov).",
+      "voteAction": "Vote to suspend rules and pass",
+      "billSummary": "Financial Exploitation Prevention Act of 2025",
+      "date": "2026-06-25",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 206,
+          "nay": 2,
+          "notVoting": 9
+        },
+        "democrat": {
+          "yea": 207,
+          "nay": 0,
+          "notVoting": 5
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/227",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-25"
+      }
+    },
+    {
+      "id": "P000197-h119-2-226",
+      "billId": "H.R.915",
+      "billTitle": "Small Business Technological Advancement Act",
+      "billDescription": "On Motion to Suspend the Rules and Pass, as Amended — H.R.915. Official House roll-call (Congress.gov).",
+      "voteAction": "Vote to suspend rules and pass",
+      "billSummary": "Small Business Technological Advancement Act",
+      "date": "2026-06-24",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 205,
+          "nay": 4,
+          "notVoting": 9
+        },
+        "democrat": {
+          "yea": 208,
+          "nay": 0,
+          "notVoting": 4
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/226",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-24"
+      }
+    },
+    {
+      "id": "P000197-h119-2-225",
+      "billId": "H.R.7401",
+      "billTitle": "Small Business Lending Fraud Prevention Act",
+      "billDescription": "On Motion to Suspend the Rules and Pass — H.R.7401. Official House roll-call (Congress.gov).",
+      "voteAction": "Vote to suspend rules and pass",
+      "billSummary": "Small Business Lending Fraud Prevention Act",
+      "date": "2026-06-24",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 209,
+          "nay": 0,
+          "notVoting": 9
+        },
+        "democrat": {
+          "yea": 205,
+          "nay": 0,
+          "notVoting": 7
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/225",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-24"
+      }
+    },
+    {
+      "id": "P000197-h119-2-224",
+      "billId": "H.R.6644",
+      "billTitle": "21st Century ROAD to Housing Act",
+      "billDescription": "On Motion to Suspend the Rules and Concur in Senate Adt to House Adt to Senate Adt — H.R.6644. Official House roll-call (Congress.gov).",
+      "voteAction": "Vote to suspend rules and pass",
+      "billSummary": "21st Century ROAD to Housing Act",
+      "date": "2026-06-23",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 166,
+          "nay": 32,
+          "notVoting": 20
+        },
+        "democrat": {
+          "yea": 191,
+          "nay": 0,
+          "notVoting": 21
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/224",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-23"
+      }
+    }
+  ],
+  "asOf": "2026-07-02"
+}

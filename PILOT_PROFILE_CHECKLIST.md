@@ -14,7 +14,7 @@ Honest gaps are required — never fill with paraphrase or fabrication. Use `"No
 | 1 | Current office, bioguideId | unitedstates/congress-legislators (`nonpartisan`) | Profile header | `npm run sync:legislators` | **done** |
 | 2 | Roll-call votes (**Did**) | Congress.gov + Senate LIS (`official`) | Voting Record | `npm run sync:votes-national` | **done** |
 | 3 | Campaign finance totals | OpenFEC (`official`) | Money & Donors | `npm run sync:fec-national` | **done** |
-| 4 | Itemized Schedule A donors | OpenFEC Schedule A (`official`) | Follow the Money · topic context | `npm run sync:fec-schedule-a` · pilot: `data/fec/pilot/S000033-schedule-a.json` | **done** (pilot file) |
+| 4 | Itemized Schedule A donors | OpenFEC Schedule A (`official`) | Follow the Money · topic context | `npm run sync:fec-schedule-a` · pilot: `data/national/fec/pilot/S000033-schedule-a.json` | **done** (pilot file) |
 | 5 | Org/PAC → topic → vote join | `fecOrgRegistry.ts` + `buildOrgVoteTopicLinks.ts` | Track Record · Topic Record panel | build-time from Schedule A + votes | **done** — 2+ topic buckets with receipt+vote rows |
 | 6 | Platform / survey text | Ballotpedia (`nonpartisan`) | Track Record · Topic Record | `npm run sync:topic-positions` | **done** |
 | 7 | Floor speech verbatim (**Said**) | GovInfo Congressional Record (`official`) | Track Record · `statements[]` | `npm run sync:topic-positions -- --member S000033` (GOVINFO_API_KEY SET) | **done** — verbatim CREC excerpts, dated + GovInfo URL |
@@ -134,4 +134,4 @@ For each `bioguideId` when rolling beyond S000033:
 |------|-------------|
 | `lib/data/generated/topicPositions.json` | `sync:topic-positions` |
 | `lib/data/generated/articleCache.json` | `sync:topic-positions` (approved media fetch path) |
-| `data/fec/pilot/S000033-schedule-a.json` | `sync:fec-schedule-a-pilot` (already committed) |
+| `data/national/fec/pilot/S000033-schedule-a.json` | `sync:fec-schedule-a-pilot` (already committed) |

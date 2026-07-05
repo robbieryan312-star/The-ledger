@@ -1,0 +1,26 @@
+{
+  "bioguideId": "P000197",
+  "entry": {
+    "politicianId": "P000197",
+    "bioguideId": "P000197",
+    "fecCandidateId": "H8CA05035",
+    "electionYear": 2026,
+    "receipts": 2433666.44,
+    "disbursements": 3612598.69,
+    "cashOnHand": 899134.21,
+    "individualContributions": 2220123.4,
+    "pacContributions": 33000,
+    "selfFunding": 0,
+    "coverageStart": "2025-01-01",
+    "coverageEnd": "2026-03-31",
+    "reportType": "APRIL QUARTERLY",
+    "source": {
+      "name": "Federal Election Commission (OpenFEC)",
+      "url": "https://www.fec.gov/data/",
+      "tier": "official",
+      "description": "Official campaign finance disclosures via api.open.fec.gov"
+    },
+    "asOf": "2026-07-02",
+    "fecProfileUrl": "https://www.fec.gov/data/candidate/H8CA05035/"
+  }
+}

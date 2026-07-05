@@ -1,11 +1,11 @@
 /**
  * Florida Division of Elections — campaign contributions (Tier 1 official, public record).
- * Output: data/fldoe/florida-contributions.json
+ * Output: data/florida/fldoe/florida-contributions.json
  *
  * Source data is the official FL Campaign Finance Database. Its export endpoint
  * (cgi-bin/contrib.exe) blocks non-browser requests, so the raw tab-delimited
  * export is captured via the public search form in a real browser session and
- * committed to data/fldoe/_raw-contributions.tsv. This script normalizes that
+ * committed to data/florida/fldoe/_raw-contributions.tsv. This script normalizes that
  * raw export into the standard snapshot shape (reproducible offline). Refreshing
  * the raw file requires a browser session — see the data-refresh notes.
  */
@@ -51,7 +51,7 @@ async function main(): Promise<void> {
   const records: Array<Record<string, unknown>> = [];
 
   try {
-    const raw = await readFile(path.join(projectRoot, 'data/fldoe/_raw-contributions.tsv'), 'utf8');
+    const raw = await readFile(path.join(projectRoot, 'data/florida/fldoe/_raw-contributions.tsv'), 'utf8');
     const lines = raw.split('\n').map((l) => l.replace(/\r$/, '')).filter((l) => l.trim());
     for (const line of lines.slice(1)) {
       const c = line.split('\t');

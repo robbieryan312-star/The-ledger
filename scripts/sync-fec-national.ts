@@ -1,6 +1,6 @@
 /**
  * National FEC sync — campaign finance totals for all current Congress members.
- * Output: data/fec/national/congress-finance.json
+ * Output: data/national/fec/congress-finance.json
  *
  * Run: npm run sync:fec-national
  */

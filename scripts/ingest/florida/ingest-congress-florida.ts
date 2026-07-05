@@ -1,6 +1,6 @@
 /**
  * Ingest Florida congressional roll-call votes for all current FL federal members.
- * Output: data/congress/florida-votes.json
+ * Output: data/florida/congress/florida-votes.json
  *
  * House: Congress.gov API v3 (CONGRESS_API_KEY)
  * Senate: senate.gov LIS XML (no key)

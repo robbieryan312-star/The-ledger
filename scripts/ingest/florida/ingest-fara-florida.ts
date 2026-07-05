@@ -1,6 +1,6 @@
 /**
  * FARA Florida registrants (no key).
- * Output: data/fara/florida-registrants.json
+ * Output: data/florida/fara/florida-registrants.json
  */
 import { fetchJson, writeFloridaSnapshot } from '../../lib/ingest-utils';
 

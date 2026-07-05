@@ -1,6 +1,6 @@
 /**
  * NewsAPI Florida political coverage.
- * Output: data/news/florida-coverage.json
+ * Output: data/florida/news/florida-coverage.json
  */
 import { loadEnvLocal, writeFloridaSnapshot } from '../../lib/ingest-utils';
 

@@ -6,7 +6,7 @@
       "id": "secedgar",
       "label": "Florida SEC Filings",
       "category": "Campaign finance",
-      "file": "data/secedgar/florida-filings.json",
+      "file": "data/florida/secedgar/florida-filings.json",
       "source": {
         "name": "SEC EDGAR",
         "url": "https://www.sec.gov/edgar",
@@ -348,7 +348,7 @@
       "id": "fldoe",
       "label": "Florida Campaign Contributions",
       "category": "Campaign finance",
-      "file": "data/fldoe/florida-contributions.json",
+      "file": "data/florida/fldoe/florida-contributions.json",
       "source": {
         "name": "Florida Division of Elections",
         "url": "https://dos.elections.myflorida.com/campaign-finance/contributions/",
@@ -519,7 +519,7 @@
       "id": "spending",
       "label": "Florida Federal Contracts",
       "category": "Campaign finance",
-      "file": "data/spending/florida-contracts.json",
+      "file": "data/florida/spending/florida-contracts.json",
       "source": {
         "name": "USASpending.gov",
         "url": "https://www.usaspending.gov",
@@ -690,7 +690,7 @@
       "id": "bls",
       "label": "Florida Labor Statistics",
       "category": "Economic",
-      "file": "data/bls/florida-labor.json",
+      "file": "data/florida/bls/florida-labor.json",
       "source": {
         "name": "U.S. Bureau of Labor Statistics",
         "url": "https://www.bls.gov",
@@ -735,7 +735,7 @@
       "id": "census",
       "label": "Florida Demographics (ACS)",
       "category": "Economic",
-      "file": "data/census/florida-demographics.json",
+      "file": "data/florida/census/florida-demographics.json",
       "source": {
         "name": "U.S. Census Bureau ACS",
         "url": "https://api.census.gov",
@@ -762,7 +762,7 @@
       "id": "civic",
       "label": "Florida Congressional Districts",
       "category": "Elections & districts",
-      "file": "data/civic/florida-districts.json",
+      "file": "data/florida/civic/florida-districts.json",
       "source": {
         "name": "U.S. Census Bureau / congress-legislators",
         "url": "https://www.census.gov",
@@ -933,7 +933,7 @@
       "id": "fedregister",
       "label": "Federal Register — Florida",
       "category": "Government actions",
-      "file": "data/fedregister/florida-documents.json",
+      "file": "data/florida/fedregister/florida-documents.json",
       "source": {
         "name": "Federal Register",
         "url": "https://www.federalregister.gov",
@@ -1104,7 +1104,7 @@
       "id": "fara",
       "label": "Foreign Agent Registrations",
       "category": "Government actions",
-      "file": "data/fara/florida-registrants.json",
+      "file": "data/florida/fara/florida-registrants.json",
       "source": {
         "name": "DOJ FARA eFile",
         "url": "https://www.fara.gov",
@@ -1126,7 +1126,7 @@
       "id": "sam",
       "label": "Florida Federal Contractors",
       "category": "Government actions",
-      "file": "data/sam/florida-contractors.json",
+      "file": "data/florida/sam/florida-contractors.json",
       "source": {
         "name": "SAM.gov",
         "url": "https://sam.gov",
@@ -1148,7 +1148,7 @@
       "id": "courts",
       "label": "Florida Supreme Court Opinions",
       "category": "Judiciary",
-      "file": "data/courts/florida-court-opinions.json",
+      "file": "data/florida/courts/florida-court-opinions.json",
       "source": {
         "name": "CourtListener (Free Law Project)",
         "url": "https://www.courtlistener.com",
@@ -1319,7 +1319,7 @@
       "id": "govinfo",
       "label": "Florida Legislative Documents",
       "category": "Legislative",
-      "file": "data/govinfo/florida-legislative-docs.json",
+      "file": "data/florida/govinfo/florida-legislative-docs.json",
       "source": {
         "name": "GovInfo (U.S. GPO)",
         "url": "https://www.govinfo.gov",
@@ -1490,7 +1490,7 @@
       "id": "voteview",
       "label": "Florida Congressional Ideology",
       "category": "Legislative",
-      "file": "data/voteview/florida-ideology.json",
+      "file": "data/florida/voteview/florida-ideology.json",
       "source": {
         "name": "Voteview (UCLA)",
         "url": "https://voteview.com",
@@ -1661,7 +1661,7 @@
       "id": "congress",
       "label": "Florida Congressional Votes",
       "category": "Legislative",
-      "file": "data/congress/florida-votes.json",
+      "file": "data/florida/congress/florida-votes.json",
       "source": {
         "name": "Congress.gov",
         "url": "https://www.congress.gov",
@@ -1832,7 +1832,7 @@
       "id": "govtrack",
       "label": "Florida Members (GovTrack)",
       "category": "Legislative",
-      "file": "data/govtrack/florida-members.json",
+      "file": "data/florida/govtrack/florida-members.json",
       "source": {
         "name": "GovTrack.us",
         "url": "https://www.govtrack.us",
@@ -2003,7 +2003,7 @@
       "id": "legiscan",
       "label": "Florida State Legislation",
       "category": "Legislative",
-      "file": "data/legiscan/florida-legislation.json",
+      "file": "data/florida/legiscan/florida-legislation.json",
       "source": {
         "name": "LegiScan",
         "url": "https://legiscan.com",
@@ -2174,7 +2174,7 @@
       "id": "openstates",
       "label": "Florida State Legislators",
       "category": "Legislative",
-      "file": "data/openstates/florida-legislators.json",
+      "file": "data/florida/openstates/florida-legislators.json",
       "source": {
         "name": "Open States",
         "url": "https://openstates.org",
@@ -2196,7 +2196,7 @@
       "id": "fllobbyist",
       "label": "Florida Lobbying Firm Directories",
       "category": "Lobbying",
-      "file": "data/fllobbyist/florida-lobbying-firm-directories.json",
+      "file": "data/florida/fllobbyist/florida-lobbying-firm-directories.json",
       "source": {
         "name": "Florida Lobbyist Registration",
         "url": "https://floridalobbyist.gov",
@@ -2367,7 +2367,7 @@
       "id": "lobbying",
       "label": "Federal Lobbying Disclosures (LDA)",
       "category": "Lobbying",
-      "file": "data/lobbying/florida-disclosures.json",
+      "file": "data/florida/lobbying/florida-disclosures.json",
       "source": {
         "name": "Senate Lobbying Disclosure Act Database",
         "url": "https://lda.senate.gov",
@@ -2538,7 +2538,7 @@
       "id": "news",
       "label": "Florida News Coverage (NewsAPI)",
       "category": "News",
-      "file": "data/news/florida-coverage.json",
+      "file": "data/florida/news/florida-coverage.json",
       "source": {
         "name": "NewsAPI",
         "url": "https://newsapi.org",
@@ -2709,7 +2709,7 @@
       "id": "gdelt",
       "label": "Florida News Coverage (GDELT)",
       "category": "News",
-      "file": "data/gdelt/florida-coverage.json",
+      "file": "data/florida/gdelt/florida-coverage.json",
       "source": {
         "name": "GDELT Project",
         "url": "https://www.gdeltproject.org",

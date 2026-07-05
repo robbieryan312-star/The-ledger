@@ -1,6 +1,6 @@
 /**
  * Refresh migrated profile votes.json (+ finance, orgVoteLinks, manifest) from national snapshots.
- * No sync — reads committed data/votes/national and data/fec/national only.
+ * No sync — reads committed data/national/votes and data/national/fec only.
  *
  * Run: npx tsx scripts/refresh-migrated-profile-votes.ts
  */
@@ -44,7 +44,7 @@ async function refreshOne(bioguideId: string): Promise<void> {
           votes: [] as never[],
           asOf: new Date().toISOString().slice(0, 10),
           status: 'unavailable' as const,
-          note: 'Member absent from data/votes/national/congress-votes.json — not a verified no-votes record',
+          note: 'Member absent from data/national/votes/congress-votes.json — not a verified no-votes record',
         };
 
   await writeFile(path.join(profileDir, 'votes.json'), JSON.stringify(votesPayload, null, 2) + '\n');

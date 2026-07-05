@@ -1,7 +1,7 @@
 /**
  * Florida congressional districts from unitedstates/congress-legislators + Census geocoder reference.
  * Replaces deprecated Google Civic representatives API.
- * Output: data/civic/florida-districts.json
+ * Output: data/florida/civic/florida-districts.json
  */
 import { fetchJson, loadFloridaLegislators, writeFloridaSnapshot } from '../../lib/ingest-utils';
 

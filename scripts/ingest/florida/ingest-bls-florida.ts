@@ -1,6 +1,6 @@
 /**
  * U.S. Bureau of Labor Statistics — Florida labor statistics (no key, v1 API).
- * Output: data/bls/florida-labor.json
+ * Output: data/florida/bls/florida-labor.json
  *
  * Tier 1 official. Florida statewide Local Area Unemployment Statistics (LAUS):
  * unemployment rate, unemployment level, employment, and labor force, with the

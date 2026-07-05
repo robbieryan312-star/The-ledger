@@ -1,9 +1,9 @@
 /**
  * National Congress roll-call votes — single source of truth keyed by bioguideId.
- * Committed snapshot: data/votes/national/congress-votes.json (537 members).
+ * Committed snapshot: data/national/votes/congress-votes.json (537 members).
  */
 import type { Source, VoteRecord } from '../types';
-import nationalSnapshot from '../../data/votes/national/congress-votes.json';
+import nationalSnapshot from '../../data/national/votes/congress-votes.json';
 import type { CongressVoteEntry } from './congressVotes';
 
 interface NationalVoteMemberRow {

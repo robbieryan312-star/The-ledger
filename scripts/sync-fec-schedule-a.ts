@@ -1,6 +1,6 @@
 /**
  * sync-fec-schedule-a.ts — Schedule A itemized donors for Congress members with FEC IDs.
- * Output: data/fec/national/schedule-a.json
+ * Output: data/national/fec/schedule-a.json
  */
 import { config } from 'dotenv';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';

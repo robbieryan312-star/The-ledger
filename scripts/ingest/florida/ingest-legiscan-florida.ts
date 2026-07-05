@@ -1,6 +1,6 @@
 /**
  * LegiScan Florida legislation.
- * Output: data/legiscan/florida-legislation.json
+ * Output: data/florida/legiscan/florida-legislation.json
  */
 import { fetchJson, loadEnvLocal, writeFloridaSnapshot } from '../../lib/ingest-utils';
 

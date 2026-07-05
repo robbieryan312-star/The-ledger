@@ -1,6 +1,6 @@
 /**
  * CourtListener (Free Law Project) — recent Supreme Court of Florida opinions (no key).
- * Output: data/courts/florida-court-opinions.json
+ * Output: data/florida/courts/florida-court-opinions.json
  *
  * Tier 2 nonpartisan aggregator; the opinions themselves are official primary
  * court records. Each record is dated and linked to the opinion on CourtListener.

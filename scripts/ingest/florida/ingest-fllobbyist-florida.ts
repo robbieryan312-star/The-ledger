@@ -1,6 +1,6 @@
 /**
  * Florida Lobbyist Registration — official lobbying firm directory documents (no key).
- * Output: data/fllobbyist/florida-lobbying-firm-directories.json
+ * Output: data/florida/fllobbyist/florida-lobbying-firm-directories.json
  *
  * Tier 1 official. The detailed firm rosters and quarterly compensation figures
  * are published only as PDFs (not machine-readable here), so this captures the

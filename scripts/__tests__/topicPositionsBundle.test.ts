@@ -9,8 +9,10 @@ import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import {
   PLATFORM_KNOWN_BAD_BIO_BOILERPLATE,
+  PLATFORM_KNOWN_BAD_CRAPO_ARREST,
   PLATFORM_KNOWN_BAD_EVENT_NARRATION,
   PLATFORM_KNOWN_BAD_SITE_FURNITURE,
+  PLATFORM_KNOWN_GOOD_DATED_FIRST_PERSON_STANCE,
   PLATFORM_KNOWN_GOOD_MEMBER_POSITION,
 } from '../../lib/data/__fixtures__/sourceIntegrity.fixture';
 import { validateTopicPositionsBundle } from '../../lib/data/sourceIntegrity';
@@ -25,6 +27,7 @@ const BUNDLE_KNOWN_BAD_PLATFORM = [
   { label: 'site furniture (Ballotpedia finance disclaimer)', text: PLATFORM_KNOWN_BAD_SITE_FURNITURE },
   { label: 'citation cruft [NNN]', text: 'Member supports rural broadband expansion [42] in underserved counties.' },
   { label: 'vote restatement as Said', text: 'Voted Yea on: "A joint resolution to direct the removal of United States Armed Forces from hostilities in the Republic of Yemen that have not been authorized by Congress." (SJ Res 54)' },
+  { label: 'Crapo DUI arrest narration', text: PLATFORM_KNOWN_BAD_CRAPO_ARREST },
   {
     label: 'date-led Senate vote narration',
     text: 'On May 14, 2015, the Senate voted to invoke cloture on a motion to proceed to S. 1234.',
@@ -83,10 +86,12 @@ test('bundle fixture: known-bad platform positions fail validateTopicPositionsBu
 });
 
 test('bundle fixture: known-good member position passes validateTopicPositionsBundle', () => {
-  const violations = validateTopicPositionsBundle(miniBundle([PLATFORM_KNOWN_GOOD_MEMBER_POSITION]));
-  assert.equal(
-    violations.length,
-    0,
-    `expected GOOD bundle fixture to pass; got: ${violations.map((v) => v.message).join('; ')}`,
-  );
+  for (const text of [PLATFORM_KNOWN_GOOD_MEMBER_POSITION, PLATFORM_KNOWN_GOOD_DATED_FIRST_PERSON_STANCE]) {
+    const violations = validateTopicPositionsBundle(miniBundle([text]));
+    assert.equal(
+      violations.length,
+      0,
+      `expected GOOD bundle fixture to pass; got: ${violations.map((v) => v.message).join('; ')}`,
+    );
+  }
 });

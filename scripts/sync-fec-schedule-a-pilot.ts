@@ -1,6 +1,6 @@
 /**
  * Phase 17 pilot — committee-scoped Schedule A for S000033 (Bernie Sanders).
- * Output: data/fec/pilot/S000033-schedule-a.json
+ * Output: data/national/fec/pilot/S000033-schedule-a.json
  *
  * Run: npm run sync:fec-schedule-a-pilot
  */

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-04T11:41:41.503Z",
-  "count": 7,
+  "generatedAt": "2026-07-05T10:24:34.618Z",
+  "count": 8,
   "entries": [
     {
       "id": "bernie-sanders",
@@ -115,6 +115,23 @@
       "inOffice": true,
       "termStart": "2013-01-03",
       "termEnd": "2031-01-03"
+    },
+    {
+      "id": "nancy-pelosi",
+      "bioguideId": "P000197",
+      "name": "Nancy Pelosi",
+      "firstName": "Nancy",
+      "lastName": "Pelosi",
+      "party": "Democrat",
+      "state": "California",
+      "stateCode": "CA",
+      "chamber": "house",
+      "level": "federal",
+      "district": "11",
+      "recordType": "featured",
+      "inOffice": true,
+      "termStart": "2025-01-03",
+      "termEnd": "2027-01-03"
     }
   ],
   "states": [

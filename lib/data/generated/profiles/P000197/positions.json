@@ -1,0 +1,46 @@
+{
+  "bioguideId": "P000197",
+  "byTopic": {
+    "public-safety": {
+      "platformPositions": []
+    },
+    "immigration": {
+      "platformPositions": []
+    },
+    "defense-veterans": {
+      "platformPositions": [
+        {
+          "text": "During an interview on CNN' s State of the Union with Candy Crowley in July 2014, Pelosi said, \"[T]his has to be something where we try to have the two-state solution, that we have to support...(Palestinian Authority chairman Mahmoud) Abbas and his role as a leader there. We have to support Iron Dome to protect the Israelis from the missiles. We have to support the Palestinians and what they need. And we have to confer with the Qataris, who have told me over and over again that Hamas is a humanitarian organization, maybe they could use their influence to--.\" Crowley then interrupted her to ask, \"The U.S. thinks they're a terrorist organization though, correct? Do you?\" Pelosi said, \"Mmm hmm.\"",
+          "source": "Ballotpedia",
+          "url": "https://ballotpedia.org/Nancy_Pelosi",
+          "tier": "nonpartisan",
+          "asOf": "2026-06-30"
+        }
+      ]
+    },
+    "civil-liberties": {
+      "platformPositions": []
+    },
+    "economy-taxes": {
+      "platformPositions": [
+        {
+          "text": "While talking about potential spending cuts in September 2013, Pelosi said, \"The cupboard is bare. There's no more cuts to make. We all want to reduce the deficit, Put everything on the table, review it, but you cannot have any more cuts just for the sake of cuts. Right now you’re taking trophies.\"",
+          "source": "Ballotpedia",
+          "url": "https://ballotpedia.org/Nancy_Pelosi",
+          "tier": "nonpartisan",
+          "asOf": "2026-06-30"
+        },
+        {
+          "text": "In Feb. 2013, Pelosi spoke in opposition to cutting congressional salaries as a way to offset cuts to federal programming and personnel. \"I don't think we should do it; I think we should respect the work we do...I think it's necessary for us to have the dignity of the job that we have rewarded,\" she said to reporters in Washington, D.C. Congress was unable to agree on a planned recourse to the sequester by March 1, 2013, resulting in across-the-board federal budget cuts amounting to approximately $85 billion.",
+          "source": "Ballotpedia",
+          "url": "https://ballotpedia.org/Nancy_Pelosi",
+          "tier": "nonpartisan",
+          "asOf": "2026-06-30"
+        }
+      ]
+    },
+    "healthcare": {
+      "platformPositions": []
+    }
+  }
+}

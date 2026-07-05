@@ -1,9 +1,9 @@
 /**
  * National FEC finance — single source of truth keyed by bioguideId.
- * Committed snapshot: data/fec/national/congress-finance.json (533 members with data).
+ * Committed snapshot: data/national/fec/congress-finance.json (533 members with data).
  */
 import type { Source } from '../types';
-import nationalFecSnapshot from '../../data/fec/national/congress-finance.json';
+import nationalFecSnapshot from '../../data/national/fec/congress-finance.json';
 import type { FecFinanceEntry } from './fecFinance';
 
 interface NationalFecSnapshot {

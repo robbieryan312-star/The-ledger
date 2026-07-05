@@ -1,6 +1,6 @@
 /**
  * SEC EDGAR — recent 8-K material-event filings referencing Florida (no key).
- * Output: data/secedgar/florida-filings.json
+ * Output: data/florida/secedgar/florida-filings.json
  *
  * Tier 1 official (U.S. SEC). Uses EDGAR full-text search q="Florida" (the
  * locationCode filter is silently ignored by EFTS, so it is not used); each

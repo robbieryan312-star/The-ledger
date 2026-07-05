@@ -1,0 +1,35 @@
+{
+  "bioguideId": "P000197",
+  "profile": {
+    "bioguideId": "P000197",
+    "officialPhotoUrl": "https://www.congress.gov/img/member/p000197_200.jpg",
+    "officialWebsite": "https://pelosi.house.gov/",
+    "officeAddress": "1236 Longworth House Office Building",
+    "phone": "(202) 225-4965",
+    "currentMember": true,
+    "source": {
+      "name": "Congress.gov",
+      "url": "https://www.congress.gov",
+      "tier": "official"
+    }
+  },
+  "meta": {
+    "bioguideId": "P000197",
+    "asOf": "2026-06-29",
+    "source": "Congress.gov API v3",
+    "totalSponsored": 173,
+    "totalCosponsored": 5083,
+    "topicCoverage": {
+      "healthcare": 59,
+      "immigration": 60,
+      "defense": 61,
+      "economy": 53,
+      "environment": 56,
+      "education": 50,
+      "crime": 50,
+      "civil": 50,
+      "judiciary": 19,
+      "legislation": 182
+    }
+  }
+}

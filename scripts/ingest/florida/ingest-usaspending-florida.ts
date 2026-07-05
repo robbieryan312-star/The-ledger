@@ -1,6 +1,6 @@
 /**
  * USASpending Florida awards (no key).
- * Output: data/spending/florida-contracts.json
+ * Output: data/florida/spending/florida-contracts.json
  */
 import { fetchJson, writeFloridaSnapshot } from '../../lib/ingest-utils';
 

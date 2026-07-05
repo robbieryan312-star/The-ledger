@@ -1,6 +1,6 @@
 /**
  * National congressional roll-call vote sync for all current members.
- * Output: data/votes/national/congress-votes.json
+ * Output: data/national/votes/congress-votes.json
  *
  * Features:
  * - Resilient fetch with retry/backoff/adaptive rate limiting
