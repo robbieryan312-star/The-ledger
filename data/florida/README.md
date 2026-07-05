@@ -7,7 +7,7 @@ the slice builders (`npm run build:data-slices`) into `lib/data/slices/`. Refres
 the `refresh-data.yml` workflow (no-key sources always; keyed sources when secret set).
 
 Sources: bls, census, civic, congress (FL delegation), courts, fara, fedregister, fldoe,
-fllobbyist, gdelt (deletion candidate — no consumer), govinfo, govtrack, legiscan, lobbying,
+fllobbyist, govinfo, govtrack, legiscan, lobbying,
 news, openstates, sam, secedgar, spending, voteview.
 
 Why this exists alongside `national/`: the pilot proved per-source ingestion end-to-end on

@@ -7,14 +7,16 @@ alwaysApply: true
 
 ## Session start (non-negotiable)
 
-Before advising, coding, syncing data, or asking the owner for keys/email/scope, read **in order**:
+Before advising, coding, syncing data, or asking the owner for keys/email/scope, read:
 
 1. **`.cursor/rules/ledger-core-rules.mdc`** — binding rules (all agents)
 2. **`PROGRESS.md`** — milestones, blockers, next priorities
-3. **`lib/data/SOURCE_LOOKUP.md`** — data need → source → tier → sync command
-4. **`KEYS.md`** — SET vs EMPTY env vars (values only in `.env.local`)
+3. **`lib/data/SOURCE_LOOKUP.md`** — which source to use for each data need
+4. **`KEYS.md`** — SET vs EMPTY env vars (never ask for values already documented)
+5. **`REPO.md`** — canonical repo is `The-ledger` on `main`
+6. **`docs/AGENT_INDEX.md`** — navigation map (optional but recommended)
 
-Task-specific: **`PILOT_PROFILE_CHECKLIST.md`**, **`AGENTS.md`**, **`.cursor/rules/ledger-data-policy.mdc`**, **`.cursor/rules/ledger-editorial-voice.mdc`**. Navigation: **`docs/AGENT_INDEX.md`**. Canonical repo: **`REPO.md`**.
+Task-specific: **`AGENTS.md`**, **`.cursor/rules/ledger-data-policy.mdc`**, **`.cursor/rules/ledger-editorial-voice.mdc`**
 
 Do **not** use **`docs/archive/`** for current policy.
 

@@ -13,14 +13,7 @@ Civic-info Next.js app. **Data credibility is the highest priority.** Every deci
 (operating rules, data credibility, locked profile layout, guardrails). It exists because
 approved specs were being ignored and re-requested. Do not re-ask what a file already answers.
 
-**Session start (read in order):**
-
-1. `.cursor/rules/ledger-core-rules.mdc` — binding rules (all agents)
-2. `PROGRESS.md` — milestones, blockers, next priorities
-3. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
-4. `KEYS.md` — SET vs EMPTY env vars (values only in `.env.local`)
-
-Task-specific: `PILOT_PROFILE_CHECKLIST.md`, `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`, `.cursor/rules/ledger-editorial-voice.mdc`. Navigation: `docs/AGENT_INDEX.md`. Canonical repo: `REPO.md`. Do not use `docs/archive/` for current policy.
+**Session start (read first):** `REPO.md` → `PROGRESS.md` → `lib/data/SOURCE_LOOKUP.md` → `KEYS.md`
 
 Product vision and editorial voice: `PRODUCT_VISION.md`, `.cursor/rules/ledger-editorial-voice.mdc`.
 

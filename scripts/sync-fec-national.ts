@@ -1,6 +1,6 @@
 /**
  * National FEC sync — campaign finance totals for all current Congress members.
- * Output: data/national/fec/congress-finance.json
+ * Output: data/fec/national/congress-finance.json
  *
  * Run: npm run sync:fec-national
  */
@@ -17,7 +17,7 @@ import {
 } from '../lib/data/fecClient';
 import type { FecFinanceEntry } from '../lib/data/fecFinance';
 import type { Source } from '../lib/types';
-import { loadCheckpoint, saveCheckpoint, fetchWithRetry } from './lib/resilientFetch';
+import { loadCheckpoint, saveCheckpoint } from './lib/resilientFetch';
 
 const CHECKPOINT_FILE = '/tmp/ledger-sync-fec-national-checkpoint.json';
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -118,18 +118,6 @@ async function main(): Promise<void> {
   }
 
   console.log(`Syncing FEC totals for ${legislators.length} Congress members…`);
-
-  try {
-    const { response: fecProbe } = await fetchWithRetry('https://api.open.fec.gov/v1/', {
-      timeoutMs: 15_000,
-      maxAttempts: 3,
-    });
-    if (!fecProbe.ok) {
-      console.warn(`OpenFEC probe fetch-failed: HTTP ${fecProbe.status}`);
-    }
-  } catch (err) {
-    console.warn(`OpenFEC probe fetch-failed: ${err instanceof Error ? err.message : String(err)}`);
-  }
 
   let priorRows: Record<string, FecFinanceEntry> = {};
   try {

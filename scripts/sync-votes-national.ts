@@ -1,6 +1,6 @@
 /**
  * National congressional roll-call vote sync for all current members.
- * Output: data/national/votes/congress-votes.json
+ * Output: data/votes/national/congress-votes.json
  *
  * Features:
  * - Resilient fetch with retry/backoff/adaptive rate limiting
@@ -43,7 +43,7 @@ import {
   senateFetchStats,
   senateVoteToRecord,
 } from '../lib/data/senateVotesClient';
-import { loadCheckpoint, saveCheckpoint, fetchWithRetry } from './lib/resilientFetch';
+import { loadCheckpoint, saveCheckpoint } from './lib/resilientFetch';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'data', 'votes', 'national');
@@ -385,27 +385,6 @@ async function main(): Promise<void> {
 
   console.log(`National vote sync: ${legislators.length} members (${senators.length} Senate, ${houseMembers.length} House)`);
   console.log(`Mode: ${IS_FULL ? 'FULL refetch' : 'INCREMENTAL'}`);
-
-  try {
-    const senateProbeUrl = `https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_${TARGET_CONGRESS}_1.xml`;
-    const { response: senateProbe } = await fetchWithRetry(senateProbeUrl, {
-      timeoutMs: 15_000,
-      maxAttempts: 3,
-    });
-    if (!senateProbe.ok) {
-      fetchFailures.push({
-        chamber: 'senate',
-        rollNumber: 0,
-        error: `fetch-failed: Senate LIS probe HTTP ${senateProbe.status}`,
-      });
-    }
-  } catch (err) {
-    fetchFailures.push({
-      chamber: 'senate',
-      rollNumber: 0,
-      error: `fetch-failed: ${err instanceof Error ? err.message : String(err)}`,
-    });
-  }
 
   const existing = await readExistingVoteSnapshot();
   const highWaterMark = IS_FULL ? undefined : existing?.meta?.highWaterMark;

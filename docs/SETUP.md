@@ -28,7 +28,7 @@ Prebuild runs guard suites (source-integrity, client-bundle, topic-positions-bun
 
 ```bash
 npm run sync:fec-national       # FEC campaign finance (537 members)
-npm run sync:votes     # Roll-call votes via Congress.gov + Senate LIS
+npm run sync:congress-votes     # Roll-call votes via Congress.gov + Senate LIS
 npm run sync:stock-trades       # House PTR STOCK Act trades
 npm run sync:news-rss           # Approved-outlet RSS (primary news path)
 npm run sync:news-national      # GDELT bulk (rate-limited; secondary)

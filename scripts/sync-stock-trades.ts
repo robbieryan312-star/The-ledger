@@ -18,12 +18,13 @@ import {
 } from '../lib/data/housePtrClient';
 import {
   SENATE_EFD_SOURCE,
+  createSenateEfdSession,
   syncSenatePtrForTarget,
   type FeaturedSenateTarget,
 } from '../lib/data/senatePtrClient';
 import type { Source, StockTrade } from '../lib/types';
 import type { StockTradeEntry, StockTradesSnapshot } from '../lib/data/stockTrades';
-import { loadCheckpoint, saveCheckpoint, fetchWithRetry } from './lib/resilientFetch';
+import { loadCheckpoint, saveCheckpoint } from './lib/resilientFetch';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
@@ -81,27 +82,27 @@ function senateTarget(p: {
   };
 }
 
-async function probeSenateEfd(): Promise<{ reachable: boolean; error?: string }> {
-  try {
-    const { response } = await fetchWithRetry('https://efdsearch.senate.gov/search/home/', {
-      timeoutMs: 15_000,
-      maxAttempts: 3,
-      headers: { 'User-Agent': 'TheLedger/1.0 (civic research; STOCK Act sync)' },
-    });
-    if (!response.ok) {
-      return { reachable: false, error: `fetch-failed: HTTP ${response.status}` };
+async function probeSenateEfd(retries = 2): Promise<{ reachable: boolean; error?: string }> {
+  let lastError: string | undefined;
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      await createSenateEfdSession();
+      return { reachable: true };
+    } catch (err) {
+      lastError = err instanceof Error ? err.message : String(err);
+      const retryable =
+        lastError.includes('503') ||
+        lastError.includes('maintenance') ||
+        lastError.includes('unreachable') ||
+        lastError.includes('timeout') ||
+        lastError.includes('aborted');
+      if (!retryable || attempt === retries) break;
+      const delayMs = 1500 * (attempt + 1) + Math.random() * 400;
+      console.warn(`Senate eFD probe attempt ${attempt + 1} failed (${lastError}); retrying in ${Math.round(delayMs)}ms…`);
+      await sleep(delayMs);
     }
-    const html = await response.text();
-    if (html.includes('Site Under Maintenance')) {
-      return { reachable: false, error: 'fetch-failed: Senate eFD portal is under maintenance' };
-    }
-    return { reachable: true };
-  } catch (err) {
-    return {
-      reachable: false,
-      error: `fetch-failed: ${err instanceof Error ? err.message : String(err)}`,
-    };
   }
+  return { reachable: false, error: lastError ? `fetch-failed: ${lastError}` : 'fetch-failed: unknown' };
 }
 
 async function main(): Promise<void> {

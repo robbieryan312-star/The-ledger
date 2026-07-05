@@ -225,7 +225,7 @@ Most Sprint 1 keys are **SET** in `.env.local`. **Deferred:**
 - ✅ API keys integrated locally: FEC, Congress, Census, DATA_GOV, LegiScan, OpenStates, NewsAPI.
 - ✅ **Sprint 1 (2026-06-24):** National FEC + votes sync scripts (`npm run sync:fec-national`,
   `npm run sync:votes-national`, `npm run sync:fec-schedule-a`); merge layers read
-  `data/national/fec/` and `data/national/votes/` by `bioguideId` for all 537 Congress members;
+  `data/fec/national/` and `data/votes/national/` by `bioguideId` for all 537 Congress members;
   Follow the Money v1 (`FollowTheMoneyPanel`); House PTR extended to full House roster in
   `sync:stock-trades`. GitHub Actions secrets: run `scripts/setup-github-secrets.sh` after `gh auth login`.
 - ✅ `lib/data/officeResolution.ts` implements recency resolution + corroboration,

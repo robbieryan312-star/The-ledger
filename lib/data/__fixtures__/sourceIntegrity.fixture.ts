@@ -143,14 +143,6 @@ export const PLATFORM_KNOWN_BAD_SITE_FURNITURE =
 export const PLATFORM_KNOWN_GOOD_MEMBER_POSITION =
   'Introduced measure to provide necessary funding for Israel\u2019s missile defense, Arrow System, David\u2019s Sling and Iron Dome.';
 
-/** Crapo DUI arrest narration — MUST reject (bundle event-narration fixture, Task A 2026-07-05). */
-export const PLATFORM_KNOWN_BAD_CRAPO_ARREST =
-  'On December 23, 2012, Crapo was arrested in Alexandria, Virginia, and charged with driving while under the influence of alcohol. Alexandria police pulled Crapo over after he allegedly ran a red light at 12:45 a.m.';
-
-/** Dated first-person policy stance — MUST pass event-narration guard (Task A 2026-07-05). */
-export const PLATFORM_KNOWN_GOOD_DATED_FIRST_PERSON_STANCE =
-  'On September 2, 2013, Neal issued a statement regarding the situation in Syria. In it he said, "I am pleased that President Obama is going to seek Congressional approval for any use of force in Syria."';
-
 /** P000197 Phase E — Ballotpedia election-result row (not a stated position). */
 export const PLATFORM_KNOWN_BAD_ELECTION_RESULT_IN_FOR =
   "Pelosi won re-election in the 2012 election for the U.S. House , representing California's 12th District . She was displaced from her former district, the 8th , by redistricting.";

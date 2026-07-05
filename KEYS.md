@@ -14,19 +14,6 @@
 
 ---
 
-## `.env.local` setup
-
-Copy `.env.example` → `.env.local` in the project root (gitignored). Prefer editing the file yourself over pasting keys in chat — treat chat as semi-public and rotate any key pasted there.
-
-| Key | Signup URL | What it powers |
-|-----|------------|----------------|
-| `FEC_API_KEY` | [api.data.gov/signup](https://api.data.gov/signup/) | `sync:fec`, `sync:fec-national`, `sync:fec-schedule-a` |
-| `CONGRESS_API_KEY` | [api.congress.gov/sign-up](https://api.congress.gov/sign-up/) | `sync:votes`, `sync:votes-national`, `ingest:member` |
-
-> `FEC_API_KEY` and `CONGRESS_API_KEY` are **different services**. A key from api.data.gov does **not** work for Congress.gov.
-
----
-
 ## SET in `.env.local` (working)
 
 | Env var | Powers |
@@ -68,16 +55,7 @@ GovTrack, USASpending, Senate LDA, GDELT, Voteview, MIT Election Lab, House/Sena
 ```bash
 # Write value in .env.local, then:
 ./scripts/setup-github-secrets.sh
-npm run sync:legislators
-npm run verify:office
 npm run build
 ```
 
 Pilot member before 537 scale: `npm run sync:topic-positions -- --member S000033`
-
----
-
-## Security
-
-- **Never commit** `.env.local` or paste keys into tracked files or chat when avoidable.
-- **Rotate** any key pasted in chat.

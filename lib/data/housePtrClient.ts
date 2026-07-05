@@ -3,7 +3,6 @@
  * Tier 1 official source: disclosures-clerk.house.gov (no API key).
  */
 import pdf from 'pdf-parse';
-import { fetchWithRetry } from './resilientFetch';
 import type { Source, StockTrade } from '../types';
 
 export const HOUSE_CLERK_SOURCE: Source = {
@@ -246,9 +245,7 @@ export function matchFilingsToTarget(
 
 export async function fetchHousePtrIndex(year: number): Promise<HousePtrFiling[]> {
   const url = `https://disclosures-clerk.house.gov/public_disc/financial-pdfs/${year}FD.xml`;
-  const { response: res } = await fetchWithRetry(url, {
-    timeoutMs: 15_000,
-    maxAttempts: 3,
+  const res = await fetch(url, {
     headers: { 'User-Agent': 'TheLedger/1.0 (civic research; STOCK Act sync)' },
   });
   if (!res.ok) {
@@ -262,22 +259,29 @@ export async function fetchAndParseHousePtr(
   filing: HousePtrFiling,
   politicianId: string,
 ): Promise<StockTrade[]> {
-  const { response: res } = await fetchWithRetry(filing.pdfUrl, {
-    timeoutMs: 15_000,
-    maxAttempts: 3,
-    headers: { 'User-Agent': 'TheLedger/1.0 (civic research; STOCK Act sync)' },
-  });
-  if (!res.ok) {
-    console.warn(`  skip PTR PDF ${filing.docId}: HTTP ${res.status}`);
-    return [];
+  let lastErr: unknown;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const res = await fetch(filing.pdfUrl, {
+        headers: { 'User-Agent': 'TheLedger/1.0 (civic research; STOCK Act sync)' },
+      });
+      if (!res.ok) {
+        console.warn(`  skip PTR PDF ${filing.docId}: HTTP ${res.status}`);
+        return [];
+      }
+      const buf = Buffer.from(await res.arrayBuffer());
+      const parsed = await pdf(buf);
+      const trades = parseHousePtrPdfText(parsed.text, filing, politicianId);
+      if (trades.length === 0) {
+        console.warn(`  no rows parsed from PTR ${filing.docId} (${filing.lastName})`);
+      }
+      return trades;
+    } catch (err) {
+      lastErr = err;
+      if (attempt < 2) await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
+    }
   }
-  const buf = Buffer.from(await res.arrayBuffer());
-  const parsed = await pdf(buf);
-  const trades = parseHousePtrPdfText(parsed.text, filing, politicianId);
-  if (trades.length === 0) {
-    console.warn(`  no rows parsed from PTR ${filing.docId} (${filing.lastName})`);
-  }
-  return trades;
+  throw lastErr;
 }
 
 export async function syncHousePtrForTarget(

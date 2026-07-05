@@ -2,7 +2,6 @@
  * senatePtrClient.ts — Senate eFD PTR search (Tier 1, no API key).
  * Requires session + CSRF agreement on efdsearch.senate.gov.
  */
-import { fetchWithRetry } from './resilientFetch';
 import type { Source, StockTrade } from '../types';
 
 export const SENATE_EFD_SOURCE: Source = {
@@ -34,16 +33,6 @@ export interface SenateSession {
 }
 
 const USER_AGENT = 'TheLedger/1.0 (civic research; STOCK Act sync)';
-const EFD_FETCH_OPTS = { timeoutMs: 15_000, maxAttempts: 3 } as const;
-
-async function efdFetch(url: string, init?: RequestInit): Promise<Response> {
-  const { response } = await fetchWithRetry(url, {
-    ...EFD_FETCH_OPTS,
-    ...init,
-    headers: { 'User-Agent': USER_AGENT, ...(init?.headers as Record<string, string> | undefined) },
-  });
-  return response;
-}
 
 function parseUsDate(mdy: string): string {
   const [m, d, y] = mdy.split('/');
@@ -70,7 +59,9 @@ function mergeCookies(existing: string, setCookie: string[] | undefined): string
 }
 
 export async function createSenateEfdSession(): Promise<SenateSession> {
-  const home = await efdFetch('https://efdsearch.senate.gov/search/home/');
+  const home = await fetch('https://efdsearch.senate.gov/search/home/', {
+    headers: { 'User-Agent': USER_AGENT },
+  });
   if (!home.ok) {
     throw new Error(`Senate eFD home unreachable: HTTP ${home.status}`);
   }
@@ -84,9 +75,10 @@ export async function createSenateEfdSession(): Promise<SenateSession> {
   if (!csrf) throw new Error('Senate eFD CSRF token not found');
 
   let cookies = mergeCookies('', home.headers.getSetCookie?.());
-  const agree = await efdFetch('https://efdsearch.senate.gov/search/home/', {
+  const agree = await fetch('https://efdsearch.senate.gov/search/home/', {
     method: 'POST',
     headers: {
+      'User-Agent': USER_AGENT,
       'Content-Type': 'application/x-www-form-urlencoded',
       Cookie: cookies,
       Referer: 'https://efdsearch.senate.gov/search/home/',
@@ -96,8 +88,8 @@ export async function createSenateEfdSession(): Promise<SenateSession> {
   });
   cookies = mergeCookies(cookies, agree.headers.getSetCookie?.());
 
-  const searchPage = await efdFetch('https://efdsearch.senate.gov/search/', {
-    headers: { Cookie: cookies },
+  const searchPage = await fetch('https://efdsearch.senate.gov/search/', {
+    headers: { 'User-Agent': USER_AGENT, Cookie: cookies },
   });
   const searchHtml = await searchPage.text();
   cookies = mergeCookies(cookies, searchPage.headers.getSetCookie?.());
@@ -134,9 +126,10 @@ export async function searchSenatePtrReports(
     state: '',
   });
 
-  const res = await efdFetch('https://efdsearch.senate.gov/search/report/data/', {
+  const res = await fetch('https://efdsearch.senate.gov/search/report/data/', {
     method: 'POST',
     headers: {
+      'User-Agent': USER_AGENT,
       'Content-Type': 'application/x-www-form-urlencoded',
       Cookie: session.cookies,
       Referer: 'https://efdsearch.senate.gov/search/',
@@ -251,8 +244,8 @@ export async function fetchSenatePtrReport(
   report: SenatePtrReportRef,
   politicianId: string,
 ): Promise<StockTrade[]> {
-  const res = await efdFetch(report.reportUrl, {
-    headers: { Cookie: session.cookies },
+  const res = await fetch(report.reportUrl, {
+    headers: { 'User-Agent': USER_AGENT, Cookie: session.cookies },
   });
   if (!res.ok) {
     console.warn(`  skip Senate PTR ${report.reportId}: HTTP ${res.status}`);

@@ -1,9 +1,8 @@
 # Source lookup — agents & implementers
 
 **Canonical machine-readable catalog:** `lib/data/sourceCatalog.ts`  
-**Keys & SET/EMPTY status:** `KEYS.md` (replaces `API_KEYS.md`)  
-**Credibility rules:** `.cursor/rules/ledger-data-policy.mdc`  
-**Historical mock/demo source notes:** archived at `docs/archive/DATA_SOURCES.md` — do not use for routing
+**Keys & SET/EMPTY status:** `KEYS.md`  
+**Credibility rules:** `.cursor/rules/ledger-data-policy.mdc`
 
 Use this doc to answer: *“I need X for a profile — where do I look first?”*
 
