@@ -38,7 +38,7 @@ async function main(): Promise<void> {
   try {
     const q = encodeURIComponent('Florida AND (Congress OR Senate OR Governor OR legislation)');
     const url = `https://newsapi.org/v2/everything?q=${q}&language=en&sortBy=publishedAt&pageSize=50&apiKey=${encodeURIComponent(key)}`;
-    const res = await fetch(url);
+    const res = await fetch(url, { signal: AbortSignal.timeout(30_000) });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = (await res.json()) as {
       articles?: Array<{

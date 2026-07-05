@@ -190,6 +190,17 @@ async function main(): Promise<void> {
   let totalArticles = 0;
   let fetchFailures = 0;
 
+  let priorSnapshot: MemberNewsSnapshot | null = null;
+  try {
+    priorSnapshot = JSON.parse(await readFile(OUT_FILE, 'utf8')) as MemberNewsSnapshot;
+    Object.assign(byBioguideId, priorSnapshot.byBioguideId ?? {});
+    membersWithNews = Object.values(byBioguideId).filter((e) => (e.articles?.length ?? 0) > 0).length;
+    totalArticles = Object.values(byBioguideId).reduce((sum, e) => sum + (e.articles?.length ?? 0), 0);
+    gdeltCount = membersWithNews;
+  } catch {
+    /* fresh run */
+  }
+
   let checkpoint: Record<string, boolean> = {};
   try {
     checkpoint = JSON.parse(await readFile(CHECKPOINT_FILE, 'utf8')) as Record<string, boolean>;

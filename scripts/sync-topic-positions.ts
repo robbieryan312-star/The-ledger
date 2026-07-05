@@ -14,6 +14,7 @@ import { RECORD_TOPIC_BUCKETS, voteCongressGovUrl, voteTopicId, classifyTextToRe
 import { truncateAtSentenceBoundary } from '../lib/data/displaySummary';
 import { normalizeTopicId } from '../lib/data/topicAliases';
 import { fetchJson, sleep } from './lib/ingest-utils';
+import { NATIONAL_VOTES_FILE } from './lib/dataPaths';
 import { fetchApprovedMediaStatementsForMember } from './lib/approvedMediaQuotes';
 import { isProceduralCrecText } from './lib/crecProceduralFilter';
 import { crecFloorSpeechOpenerRegex } from './lib/crecOpener';
@@ -22,7 +23,7 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
 const OUT_FILE = path.join(OUT_DIR, 'topicPositions.json');
 const LEGISLATORS_FILE = path.join(OUT_DIR, 'currentLegislators.json');
-const NATIONAL_VOTES_FILE = path.join(projectRoot, 'data', 'votes', 'national', 'congress-votes.json');
+const NATIONAL_VOTES_FILE_PATH = NATIONAL_VOTES_FILE;
 const CHECKPOINT_FILE = '/tmp/sync-topic-positions-checkpoint.json';
 
 const VOTESMART_BASE = 'https://api.votesmart.org';
@@ -600,7 +601,7 @@ async function fetchVoteSmartNpatByTopic(
 
 async function loadNationalVotesAsync(): Promise<Map<string, VoteRecord[]>> {
   try {
-    const raw = JSON.parse(await readFile(NATIONAL_VOTES_FILE, 'utf8')) as {
+    const raw = JSON.parse(await readFile(NATIONAL_VOTES_FILE_PATH, 'utf8')) as {
       byBioguideId?: Record<string, NationalVoteMember>;
     };
     const map = new Map<string, VoteRecord[]>();

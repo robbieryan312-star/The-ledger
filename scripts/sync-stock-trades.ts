@@ -179,10 +179,14 @@ async function runSync(): Promise<void> {
 
   console.log(`Syncing House PTRs for ${houseMembers.length} representatives (national roster + featured)…`);
   console.log(`Loading House Clerk PTR indexes (${HOUSE_INDEX_YEARS.join(', ')}) — once per run…`);
-  const houseIndexByYear = await loadHousePtrIndexes(HOUSE_INDEX_YEARS);
+  const { byYear: houseIndexByYear, failedYears: houseIndexFailedYears } =
+    await loadHousePtrIndexes(HOUSE_INDEX_YEARS);
   for (const year of HOUSE_INDEX_YEARS) {
     const count = houseIndexByYear.get(year)?.length ?? 0;
-    console.log(`  ${year} index: ${count} filing(s)${count === 0 ? ' (fetch-failed or empty)' : ''}`);
+    const fetchFailed = houseIndexFailedYears.includes(year);
+    console.log(
+      `  ${year} index: ${count} filing(s)${fetchFailed ? ' (fetch-failed)' : count === 0 ? ' (empty)' : ''}`,
+    );
   }
 
   for (const p of houseMembers) {
@@ -190,6 +194,7 @@ async function runSync(): Promise<void> {
       console.log(`  ${p.id}: checkpoint skip`);
       continue;
     }
+    const priorTrades = byPoliticianId[p.id]?.trades ?? [];
     try {
       const { trades, filingsParsed } = await syncHousePtrForTarget(houseTarget(p), HOUSE_INDEX_YEARS, {
         maxFilings: MAX_HOUSE_FILINGS_PER_MEMBER,
@@ -203,18 +208,22 @@ async function runSync(): Promise<void> {
       entry.trades = trades;
       if (trades.length > 0) {
         entry.note = `${trades.length} official PTR transaction(s) from House Clerk filings.`;
+      } else if (houseIndexFailedYears.length === HOUSE_INDEX_YEARS.length) {
+        entry.trades = priorTrades;
+        entry.note = `fetch-failed: House PTR index unavailable for all years (${houseIndexFailedYears.join(', ')}). Prior good trades preserved.`;
       } else {
         entry.note =
           'No House PTR filings matched this member in the synced index window — profile demo trades (if any) remain labeled separately.';
       }
-      console.log(`  ${p.id}: ${trades.length} trade(s)`);
+      console.log(`  ${p.id}: ${entry.trades.length} trade(s)`);
+      checkpoint[p.id] = true;
+      await saveCheckpoint(CHECKPOINT_FILE, checkpoint);
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       console.warn(`  ${p.id}: House PTR fetch failed (${msg})`);
+      byPoliticianId[p.id].trades = priorTrades;
       byPoliticianId[p.id].note = `fetch-failed: House PTR sync error (${msg}). Prior good trades preserved if any.`;
     }
-    checkpoint[p.id] = true;
-    await saveCheckpoint(CHECKPOINT_FILE, checkpoint);
     await sleep(200);
   }
 
@@ -225,6 +234,7 @@ async function runSync(): Promise<void> {
         console.log(`  ${p.id}: checkpoint skip`);
         continue;
       }
+      const priorTrades = byPoliticianId[p.id]?.trades ?? [];
       const result = await syncSenatePtrForTarget(senateTarget(p), {
         startDate: '01/01/2023',
         maxReports: MAX_SENATE_REPORTS_PER_MEMBER,
@@ -232,19 +242,26 @@ async function runSync(): Promise<void> {
       if (result.error) senateError = result.error;
 
       const entry = byPoliticianId[p.id];
-      entry.trades = result.trades;
-      totalOfficialTrades += result.trades.length;
-      if (result.trades.length > 0) {
-        entry.note = `${result.trades.length} official PTR transaction(s) from Senate eFD.`;
-      } else if (result.error) {
-        entry.note = `Senate eFD sync unavailable (${result.error}). Demo trades on profile, if any, are labeled separately.`;
+      if (result.error && priorTrades.length > 0) {
+        entry.trades = priorTrades;
+        entry.note = `fetch-failed: Senate eFD sync (${result.error}). Prior good trades preserved.`;
       } else {
-        entry.note =
-          'No Senate PTR reports matched this member in the synced window — demo trades (if any) remain labeled separately.';
+        entry.trades = result.trades;
+        totalOfficialTrades += result.trades.length;
+        if (result.trades.length > 0) {
+          entry.note = `${result.trades.length} official PTR transaction(s) from Senate eFD.`;
+        } else if (result.error) {
+          entry.note = `Senate eFD sync unavailable (${result.error}). Demo trades on profile, if any, are labeled separately.`;
+        } else {
+          entry.note =
+            'No Senate PTR reports matched this member in the synced window — demo trades (if any) remain labeled separately.';
+        }
       }
-      console.log(`  ${p.id}: ${result.trades.length} trade(s)${result.error ? ` (${result.error})` : ''}`);
-      checkpoint[p.id] = true;
-      await saveCheckpoint(CHECKPOINT_FILE, checkpoint);
+      console.log(`  ${p.id}: ${entry.trades.length} trade(s)${result.error ? ` (${result.error})` : ''}`);
+      if (!result.error) {
+        checkpoint[p.id] = true;
+        await saveCheckpoint(CHECKPOINT_FILE, checkpoint);
+      }
       await sleep(200);
     }
   } else {
@@ -286,6 +303,7 @@ async function runSync(): Promise<void> {
       senateReachable: senateProbe.reachable,
       senateError,
       houseFilingsParsed,
+      houseIndexFailedYears,
       totalOfficialTrades,
     },
     byPoliticianId,

@@ -267,18 +267,25 @@ export async function fetchHousePtrIndex(year: number): Promise<HousePtrFiling[]
 }
 
 /** Fetch House Clerk PTR indexes once per sync run (each XML can take ~60s). */
+export interface HousePtrIndexLoadResult {
+  byYear: Map<number, HousePtrFiling[]>;
+  failedYears: number[];
+}
+
 export async function loadHousePtrIndexes(
   years: number[],
-): Promise<Map<number, HousePtrFiling[]>> {
+): Promise<HousePtrIndexLoadResult> {
   const byYear = new Map<number, HousePtrFiling[]>();
+  const failedYears: number[] = [];
   for (const year of years) {
     try {
       byYear.set(year, await fetchHousePtrIndex(year));
     } catch (err) {
+      failedYears.push(year);
       console.warn(`House index ${year} failed:`, err instanceof Error ? err.message : err);
     }
   }
-  return byYear;
+  return { byYear, failedYears };
 }
 
 export async function fetchAndParseHousePtr(

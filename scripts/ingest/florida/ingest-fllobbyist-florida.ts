@@ -19,7 +19,10 @@ const FLLOB_SOURCE = {
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0 Safari/537.36';
 
 async function fetchHtml(url: string): Promise<string> {
-  const res = await fetch(url, { headers: { 'User-Agent': UA, Accept: 'text/html' } });
+  const res = await fetch(url, {
+    headers: { 'User-Agent': UA, Accept: 'text/html' },
+    signal: AbortSignal.timeout(30_000),
+  });
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
   return res.text();
 }

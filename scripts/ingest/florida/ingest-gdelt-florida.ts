@@ -33,7 +33,10 @@ async function main(): Promise<void> {
   const datasetUrl = `https://api.gdeltproject.org/api/v2/doc/doc?query=${encodeURIComponent(query)}&mode=artlist&maxrecords=50&format=json&sort=datedesc&timespan=14d`;
 
   try {
-    const res = await fetch(datasetUrl, { headers: { Accept: 'application/json' } });
+    const res = await fetch(datasetUrl, {
+      headers: { Accept: 'application/json' },
+      signal: AbortSignal.timeout(30_000),
+    });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = (await res.json()) as GdeltResp;
     for (const a of data.articles ?? []) {

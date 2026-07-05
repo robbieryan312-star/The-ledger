@@ -35,7 +35,7 @@ function parseCsvLine(line: string): string[] {
 }
 
 async function fetchCsvText(url: string): Promise<string> {
-  const res = await fetch(url, { headers: { Accept: 'text/csv' } });
+  const res = await fetch(url, { headers: { Accept: 'text/csv' }, signal: AbortSignal.timeout(60_000) });
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
   return res.text();
 }

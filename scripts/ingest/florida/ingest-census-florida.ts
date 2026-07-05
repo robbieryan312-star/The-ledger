@@ -44,7 +44,7 @@ async function main(): Promise<void> {
     for (const year of years) {
       const url = `https://api.census.gov/data/${year}/acs/acs5?get=NAME,B01003_001E,B19013_001E,B25077_001E&for=state:12&key=${encodeURIComponent(key)}`;
       try {
-        const res = await fetch(url);
+        const res = await fetch(url, { signal: AbortSignal.timeout(30_000) });
         const text = await res.text();
         if (!res.ok) {
           errors.push(`${year}: HTTP ${res.status}`);

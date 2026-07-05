@@ -1,6 +1,6 @@
 /**
  * Ingest Florida FEC candidates from api.open.fec.gov
- * Output: data/fec/florida-candidates.json
+ * Output: data/florida/fec/florida-candidates.json
  */
 import {
   DATA_ROOT,

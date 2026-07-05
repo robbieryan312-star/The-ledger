@@ -25,6 +25,7 @@ export interface StockTradesSnapshotMeta {
   senateReachable?: boolean;
   senateError?: string;
   houseFilingsParsed?: number;
+  houseIndexFailedYears?: number[];
   totalOfficialTrades?: number;
 }
 

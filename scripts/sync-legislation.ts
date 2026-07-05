@@ -20,7 +20,7 @@
  * Run with:  npm run sync:legislation
  *   (re-run with network access if the sandbox blocks govtrack.us)
  */
-import { writeFile, mkdir } from 'node:fs/promises';
+import { writeFile, mkdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Bill, BillChamber, BillSponsor, BillStage, Source } from '../lib/types';
@@ -207,6 +207,18 @@ async function main(): Promise<void> {
   let bills: Bill[] = [];
   let fetchedLive = false;
   let note: string;
+  let priorCount = 0;
+
+  try {
+    const priorRaw = JSON.parse(await readFile(OUT_FILE, 'utf8')) as { bills?: Bill[]; meta?: { fetchedLive?: boolean } };
+    if (priorRaw.meta?.fetchedLive && (priorRaw.bills?.length ?? 0) > 0) {
+      bills = priorRaw.bills ?? [];
+      priorCount = bills.length;
+      fetchedLive = true;
+    }
+  } catch {
+    /* no prior snapshot */
+  }
 
   try {
     console.log(`Fetching recent ${ordinal(TARGET_CONGRESS)} Congress bills from GovTrack ...`);
@@ -227,12 +239,16 @@ async function main(): Promise<void> {
     console.log(`Received ${bills.length} bills.`);
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
-    console.warn(`GovTrack fetch failed (${msg}). Writing an honest EMPTY snapshot — no rows fabricated.`);
-    bills = [];
-    fetchedLive = false;
+    console.warn(`GovTrack fetch failed (${msg}). ${priorCount > 0 ? `Preserving ${priorCount} prior bill(s).` : 'Writing an honest EMPTY snapshot — no rows fabricated.'}`);
+    if (priorCount === 0) {
+      bills = [];
+      fetchedLive = false;
+    }
     note =
-      `Live GovTrack fetch unavailable when this snapshot was generated (${msg}). ` +
-      `No bills are fabricated. Re-run \`npm run sync:legislation\` with network access to populate real records.`;
+      priorCount > 0
+        ? `Live GovTrack fetch unavailable (${msg}). Prior good snapshot preserved (${priorCount} bills). Re-run \`npm run sync:legislation\` with network access to refresh.`
+        : `Live GovTrack fetch unavailable when this snapshot was generated (${msg}). ` +
+          `No bills are fabricated. Re-run \`npm run sync:legislation\` with network access to populate real records.`;
   }
 
   const snapshot = {
