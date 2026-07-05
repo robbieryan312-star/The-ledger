@@ -85,7 +85,13 @@ jobs:
           if [ -n "$EXISTING" ] && [ "$EXISTING" != "null" ]; then
             echo "Updated existing PR #$EXISTING"
           else
-            gh pr create --base main --head data-refresh \
+            if gh pr create --base main --head data-refresh \
               --title "chore(data): scheduled snapshot refresh" \
-              --body "Automated data refresh. Guard suites + build passed before commit. Fetch-failed artifacts excluded per §6."
+              --body "Automated data refresh. Guard suites + build passed before commit. Fetch-failed artifacts excluded per §6."; then
+              echo "Opened new data-refresh PR"
+            else
+              echo "::warning::Could not auto-create PR (repo may block GITHUB_TOKEN from creating PRs)."
+              echo "Data was pushed to branch data-refresh — open a PR manually:"
+              echo "https://github.com/${{ github.repository }}/compare/main...data-refresh"
+            fi
           fi

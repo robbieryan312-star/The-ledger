@@ -179,7 +179,10 @@ async function fetchRecentBills(): Promise<RawBill[]> {
   let offset = 0;
   for (let page = 0; page < MAX_PAGES; page += 1) {
     const url = `${API}?congress=${TARGET_CONGRESS}&sort=-current_status_date&limit=${PAGE_SIZE}&offset=${offset}`;
-    const res = await fetch(url, { headers: { Accept: 'application/json' } });
+    const res = await fetch(url, {
+      headers: { Accept: 'application/json' },
+      signal: AbortSignal.timeout(30_000),
+    });
     if (!res.ok) throw new Error(`Fetch failed: HTTP ${res.status} ${res.statusText}`);
     const json = (await res.json()) as { objects?: RawBill[] };
     const objects = json.objects ?? [];

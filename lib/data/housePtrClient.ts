@@ -3,7 +3,20 @@
  * Tier 1 official source: disclosures-clerk.house.gov (no API key).
  */
 import pdf from 'pdf-parse';
+import { fetchWithRetry } from './resilientFetch';
 import type { Source, StockTrade } from '../types';
+
+const HOUSE_FETCH_OPTS = {
+  timeoutMs: 120_000,
+  maxAttempts: 3,
+  headers: { 'User-Agent': 'TheLedger/1.0 (civic research; STOCK Act sync)' },
+} as const;
+
+/** House FD XML indexes can exceed 60s; allow longer per-attempt timeout than PDF fetches. */
+const HOUSE_INDEX_FETCH_OPTS = {
+  ...HOUSE_FETCH_OPTS,
+  timeoutMs: 180_000,
+} as const;
 
 export const HOUSE_CLERK_SOURCE: Source = {
   name: 'House Clerk Financial Disclosure',
@@ -245,9 +258,7 @@ export function matchFilingsToTarget(
 
 export async function fetchHousePtrIndex(year: number): Promise<HousePtrFiling[]> {
   const url = `https://disclosures-clerk.house.gov/public_disc/financial-pdfs/${year}FD.xml`;
-  const res = await fetch(url, {
-    headers: { 'User-Agent': 'TheLedger/1.0 (civic research; STOCK Act sync)' },
-  });
+  const { response: res } = await fetchWithRetry(url, HOUSE_INDEX_FETCH_OPTS);
   if (!res.ok) {
     throw new Error(`House FD index ${year} unreachable: HTTP ${res.status}`);
   }
@@ -255,45 +266,58 @@ export async function fetchHousePtrIndex(year: number): Promise<HousePtrFiling[]
   return parseHousePtrIndexXml(xml, year);
 }
 
+/** Fetch House Clerk PTR indexes once per sync run (each XML can take ~60s). */
+export async function loadHousePtrIndexes(
+  years: number[],
+): Promise<Map<number, HousePtrFiling[]>> {
+  const byYear = new Map<number, HousePtrFiling[]>();
+  for (const year of years) {
+    try {
+      byYear.set(year, await fetchHousePtrIndex(year));
+    } catch (err) {
+      console.warn(`House index ${year} failed:`, err instanceof Error ? err.message : err);
+    }
+  }
+  return byYear;
+}
+
 export async function fetchAndParseHousePtr(
   filing: HousePtrFiling,
   politicianId: string,
 ): Promise<StockTrade[]> {
-  let lastErr: unknown;
-  for (let attempt = 0; attempt < 3; attempt++) {
-    try {
-      const res = await fetch(filing.pdfUrl, {
-        headers: { 'User-Agent': 'TheLedger/1.0 (civic research; STOCK Act sync)' },
-      });
-      if (!res.ok) {
-        console.warn(`  skip PTR PDF ${filing.docId}: HTTP ${res.status}`);
-        return [];
-      }
-      const buf = Buffer.from(await res.arrayBuffer());
-      const parsed = await pdf(buf);
-      const trades = parseHousePtrPdfText(parsed.text, filing, politicianId);
-      if (trades.length === 0) {
-        console.warn(`  no rows parsed from PTR ${filing.docId} (${filing.lastName})`);
-      }
-      return trades;
-    } catch (err) {
-      lastErr = err;
-      if (attempt < 2) await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
-    }
+  const { response: res } = await fetchWithRetry(filing.pdfUrl, HOUSE_FETCH_OPTS);
+  if (!res.ok) {
+    console.warn(`  skip PTR PDF ${filing.docId}: HTTP ${res.status}`);
+    return [];
   }
-  throw lastErr;
+  const buf = Buffer.from(await res.arrayBuffer());
+  const parsed = await pdf(buf);
+  const trades = parseHousePtrPdfText(parsed.text, filing, politicianId);
+  if (trades.length === 0) {
+    console.warn(`  no rows parsed from PTR ${filing.docId} (${filing.lastName})`);
+  }
+  return trades;
 }
 
 export async function syncHousePtrForTarget(
   target: FeaturedHouseTarget,
   years: number[],
-  options?: { maxFilings?: number; sinceDate?: string },
+  options?: {
+    maxFilings?: number;
+    sinceDate?: string;
+    /** Preloaded indexes from loadHousePtrIndexes — avoids re-fetching ~60s XML per member. */
+    indexByYear?: Map<number, HousePtrFiling[]>;
+  },
 ): Promise<{ trades: StockTrade[]; filingsParsed: number }> {
   const allFilings: HousePtrFiling[] = [];
   for (const year of years) {
-    try {
-      const index = await fetchHousePtrIndex(year);
+    const index = options?.indexByYear?.get(year);
+    if (index) {
       allFilings.push(...matchFilingsToTarget(index, target));
+      continue;
+    }
+    try {
+      allFilings.push(...matchFilingsToTarget(await fetchHousePtrIndex(year), target));
     } catch (err) {
       console.warn(`House index ${year} failed:`, err instanceof Error ? err.message : err);
     }

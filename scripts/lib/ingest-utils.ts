@@ -78,12 +78,15 @@ export function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+const DEFAULT_FETCH_TIMEOUT_MS = 30_000;
+
 export async function fetchJson<T>(
   url: string,
   init?: RequestInit,
 ): Promise<T> {
   const res = await fetch(url, {
     ...init,
+    signal: init?.signal ?? AbortSignal.timeout(DEFAULT_FETCH_TIMEOUT_MS),
     headers: {
       Accept: 'application/json',
       ...(init?.headers ?? {}),

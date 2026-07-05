@@ -13,6 +13,7 @@ import { fileURLToPath } from 'node:url';
 import { allPoliticians } from '../lib/data/allPoliticians';
 import {
   HOUSE_CLERK_SOURCE,
+  loadHousePtrIndexes,
   syncHousePtrForTarget,
   type FeaturedHouseTarget,
 } from '../lib/data/housePtrClient';
@@ -25,12 +26,14 @@ import {
 import type { Source, StockTrade } from '../lib/types';
 import type { StockTradeEntry, StockTradesSnapshot } from '../lib/data/stockTrades';
 import { loadCheckpoint, saveCheckpoint } from './lib/resilientFetch';
+import { acquireSyncLock } from './lib/syncLock';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
 const OUT_FILE = path.join(OUT_DIR, 'stockTrades.json');
 const LEGISLATORS_FILE = path.join(projectRoot, 'lib', 'data', 'generated', 'currentLegislators.json');
 const CHECKPOINT_FILE = '/tmp/ledger-sync-stock-trades-checkpoint.json';
+const LOCK_FILE = '/tmp/ledger-sync-stock-trades.lock';
 
 interface LegislatorRow {
   bioguideId: string;
@@ -106,6 +109,15 @@ async function probeSenateEfd(retries = 2): Promise<{ reachable: boolean; error?
 }
 
 async function main(): Promise<void> {
+  const releaseLock = await acquireSyncLock(LOCK_FILE);
+  try {
+    await runSync();
+  } finally {
+    await releaseLock();
+  }
+}
+
+async function runSync(): Promise<void> {
   const asOf = new Date().toISOString().slice(0, 10);
 
   const legislatorsRaw = JSON.parse(await readFile(LEGISLATORS_FILE, 'utf8')) as {
@@ -166,6 +178,13 @@ async function main(): Promise<void> {
   }
 
   console.log(`Syncing House PTRs for ${houseMembers.length} representatives (national roster + featured)…`);
+  console.log(`Loading House Clerk PTR indexes (${HOUSE_INDEX_YEARS.join(', ')}) — once per run…`);
+  const houseIndexByYear = await loadHousePtrIndexes(HOUSE_INDEX_YEARS);
+  for (const year of HOUSE_INDEX_YEARS) {
+    const count = houseIndexByYear.get(year)?.length ?? 0;
+    console.log(`  ${year} index: ${count} filing(s)${count === 0 ? ' (fetch-failed or empty)' : ''}`);
+  }
+
   for (const p of houseMembers) {
     if (checkpoint[p.id]) {
       console.log(`  ${p.id}: checkpoint skip`);
@@ -175,6 +194,7 @@ async function main(): Promise<void> {
       const { trades, filingsParsed } = await syncHousePtrForTarget(houseTarget(p), HOUSE_INDEX_YEARS, {
         maxFilings: MAX_HOUSE_FILINGS_PER_MEMBER,
         sinceDate: PTR_SINCE_DATE,
+        indexByYear: houseIndexByYear,
       });
       houseFilingsParsed += filingsParsed;
       totalOfficialTrades += trades.length;
