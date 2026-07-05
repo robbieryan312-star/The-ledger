@@ -5,6 +5,8 @@
  *   - Senate: efdsearch.senate.gov PTR search + report HTML (when API available)
  *   - House: disclosures-clerk.house.gov YTD XML index + PTR PDF parsing
  *
+ * Output: lib/data/generated/stockTrades.json
+ *
  * Run with: npm run sync:stock-trades
  */
 import { readFile, writeFile, mkdir } from 'node:fs/promises';

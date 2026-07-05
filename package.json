@@ -11,6 +11,7 @@
     "lint": "eslint",
     "agent:verify": "tsx scripts/agent-verify.ts",
     "agent:preflight": "tsx scripts/agent-preflight.ts",
+    "audit:inventory": "tsx scripts/generate-file-inventory.ts",
     "profile:build": "tsx scripts/profile-build.ts",
     "test:docs-integrity": "tsx --test scripts/__tests__/docsIntegrityGuard.test.ts",
     "test:data-layout": "tsx --test scripts/__tests__/dataLayoutGuard.test.ts",
