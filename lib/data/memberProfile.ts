@@ -137,7 +137,7 @@ interface ProfileFinanceFile {
   entry: FecFinanceEntry | null;
 }
 
-/** Roll-call votes materialized from data/votes/national/congress-votes.json. */
+/** Roll-call votes materialized from data/national/votes/congress-votes.json. */
 export interface MemberProfileCongressVotes {
   politicianId: string;
   bioguideId: string;
@@ -316,7 +316,7 @@ export function getMemberProfileOrgVoteLinks(bioguideId: string): OrgVoteTopicLi
 }
 
 /**
- * Roll-call votes for migrated profiles — materialized from data/votes/national/congress-votes.json.
+ * Roll-call votes for migrated profiles — materialized from data/national/votes/congress-votes.json.
  */
 export function getMemberProfileVotes(bioguideId: string): MemberProfileCongressVotes | null {
   const file = PROFILE_VOTES[bioguideId];
@@ -341,7 +341,7 @@ function inferChamberFromVotes(votes: VoteRecord[]): 'house' | 'senate' {
   return 'senate';
 }
 
-/** FEC totals for migrated profiles — materialized from data/fec/national/congress-finance.json. */
+/** FEC totals for migrated profiles — materialized from data/national/fec/congress-finance.json. */
 export function getMemberProfileFinance(bioguideId: string): FecFinanceEntry | null {
   if (!MIGRATED_PROFILE_BIOGUIDES.has(bioguideId)) return null;
   return PROFILE_FINANCE[bioguideId]?.entry ?? null;

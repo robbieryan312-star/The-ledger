@@ -1,6 +1,6 @@
 /**
  * National FEC sync — campaign finance totals for all current Congress members.
- * Output: data/fec/national/congress-finance.json
+ * Output: data/national/fec/congress-finance.json
  *
  * Run: npm run sync:fec-national
  */
@@ -18,11 +18,12 @@ import {
 import type { FecFinanceEntry } from '../lib/data/fecFinance';
 import type { Source } from '../lib/types';
 import { loadCheckpoint, saveCheckpoint } from './lib/resilientFetch';
+import { DATA_NATIONAL_FEC_DIR, NATIONAL_FEC_FILE, PROJECT_ROOT } from './lib/dataPaths';
 
 const CHECKPOINT_FILE = '/tmp/ledger-sync-fec-national-checkpoint.json';
-const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const OUT_DIR = path.join(projectRoot, 'data', 'fec', 'national');
-const OUT_FILE = path.join(OUT_DIR, 'congress-finance.json');
+const projectRoot = PROJECT_ROOT;
+const OUT_DIR = DATA_NATIONAL_FEC_DIR;
+const OUT_FILE = NATIONAL_FEC_FILE;
 const LEGISLATORS_FILE = path.join(projectRoot, 'lib', 'data', 'generated', 'currentLegislators.json');
 
 interface LegislatorRow {
@@ -209,6 +210,13 @@ async function main(): Promise<void> {
 }
 
 main().catch((err: unknown) => {
-  console.error(err);
+  console.error(
+    JSON.stringify({
+      ok: false,
+      script: 'sync-fec-national',
+      error: err instanceof Error ? err.message : String(err),
+      at: new Date().toISOString(),
+    }),
+  );
   process.exit(1);
 });

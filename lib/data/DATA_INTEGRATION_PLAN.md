@@ -162,7 +162,7 @@ recency + corroboration rules above.
 | Current office label & "In Office / Former" badge | **Real** — `resolveCurrentOffice` from `legislators-current` |
 | Roster (537 Congress + 50 governors) | **Real** — `generated/roster.json` + `currentLegislators.json` |
 | Official member photos | **Real** — `unitedstates/images` by bioguideId |
-| Votes (national merge) | **Real** — `sync:congress-votes` → `congressVotes.json` for all members with API data |
+| Votes (national merge) | **Real** — `sync:votes-national` → `data/national/votes/congress-votes.json` for all members with API data |
 | FEC totals (national) | **Real** — `sync:fec-national` → `fecFinance.json` (527/537+ with key) |
 | Stock trades (House PTR) | **Real** for House roster where PTR parsed; Senate eFD = honest documented gap |
 | Migrated profiles (6 gold) | **Real** — `generated/profiles/{bioguideId}/` per-destination files |
@@ -207,10 +207,13 @@ Most Sprint 1 keys are **SET** in `.env.local`. **Deferred:**
 `scripts/sync-stock-trades.ts` (`npm run sync:stock-trades`) parses House PTR disclosures into
 `lib/data/generated/stockTrades.json`. Senate eFD remains blocked (HTTP 503) — UI shows honest gap.
 
+**Checkpoint semantics (2026-07-05):** fetch-failed runs preserve prior good trades; checkpoint
+marks only successful member syncs. House index failures surface `houseIndexFailedYears` in meta.
+
 **Remaining work:**
 
 1. Senate PTR via `efdsearch.senate.gov` when service restores.
-2. Expand PTR parsing coverage and guard against fabrication on fetch failure.
+2. Expand PTR parsing coverage; guards in `scripts/__tests__/stockTradesCheckpoint.test.ts`.
 
 ---
 
@@ -220,12 +223,12 @@ Most Sprint 1 keys are **SET** in `.env.local`. **Deferred:**
   and writes `lib/data/generated/currentLegislators.json` (537 members, as-of date,
   Tier-1 source metadata). No API key.
 - ✅ **Florida data pipeline** — 17+ sources in `/data/<source>/florida-*.json` with
-  ingest scripts (`npm run ingest:*-fl`), daily refresh via `.github/workflows/refresh-data.yml`,
+  ingest scripts (`npm run ingest:florida-all`), daily refresh via `.github/workflows/refresh-data.yml`,
   `/sources` explorer, and per-page data slices (`lib/data/generated/slices/`).
 - ✅ API keys integrated locally: FEC, Congress, Census, DATA_GOV, LegiScan, OpenStates, NewsAPI.
 - ✅ **Sprint 1 (2026-06-24):** National FEC + votes sync scripts (`npm run sync:fec-national`,
   `npm run sync:votes-national`, `npm run sync:fec-schedule-a`); merge layers read
-  `data/fec/national/` and `data/votes/national/` by `bioguideId` for all 537 Congress members;
+  `data/national/fec/` and `data/national/votes/` by `bioguideId` for all 537 Congress members;
   Follow the Money v1 (`FollowTheMoneyPanel`); House PTR extended to full House roster in
   `sync:stock-trades`. GitHub Actions secrets: run `scripts/setup-github-secrets.sh` after `gh auth login`.
 - ✅ `lib/data/officeResolution.ts` implements recency resolution + corroboration,

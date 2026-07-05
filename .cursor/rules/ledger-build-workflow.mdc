@@ -84,7 +84,8 @@ Historical hand-authored data was removed; retrievable only via git history (qua
 ```bash
 npm run sync:legislators      # refresh congressional roster
 npm run sync:fec-national     # FEC finance for all 537 members
-npm run sync:congress-votes   # roll-call votes
+npm run sync:votes-national   # roll-call votes (all 537 → data/national/votes/)
+npm run sync:votes            # legacy per-member overlay
 npm run sync:stock-trades     # STOCK Act PTR trades
 npm run sync:news-rss         # approved-outlet RSS for migrated profiles
 npm run verify:office         # confirm office resolution is clean

@@ -19,7 +19,7 @@ All fact data enters via sync/ingest scripts → `lib/data/generated/` — never
 | `generated/currentLegislators.json` | `npm run sync:legislators` |
 | `generated/roster.json` | Derived from legislators + office resolution |
 | `generated/profiles/<bioguideId>/` | Profile pipeline / reprocess scripts |
-| `generated/congressVotes.json` | `npm run sync:congress-votes` |
+| `generated/congressVotes.json` | `npm run sync:votes` (legacy per-member) · national: `npm run sync:votes-national` |
 | `generated/fecFinance.json` | `npm run sync:fec-national` |
 
 ## DNU quarantine (2026-07-04)

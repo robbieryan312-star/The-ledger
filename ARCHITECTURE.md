@@ -142,7 +142,7 @@ Journalism sources are used exclusively for the "Said → Did" quote layer and t
 | File | Contents | Updated by |
 |------|----------|-----------|
 | `lib/data/generated/currentLegislators.json` | Full 537-member roster with bioguideIds, party, state, district | `sync:legislators` |
-| `lib/data/generated/congressVotes.json` | Roll-call votes keyed by bioguideId | `sync:congress-votes` |
+| `lib/data/generated/congressVotes.json` | Roll-call votes keyed by bioguideId | `sync:votes` (legacy) · `sync:votes-national` → `data/national/votes/` |
 | `lib/data/generated/fecFinance.json` | FEC campaign finance totals for 527/537 members | `sync:fec-national` |
 | `lib/data/generated/stockTrades.json` | STOCK Act PTR trades — House roster | `sync:stock-trades` |
 | `lib/data/generated/newsNational.json` | GDELT news articles keyed by bioguideId | `sync:news-national` |
@@ -155,7 +155,8 @@ Journalism sources are used exclusively for the "Said → Did" quote layer and t
 ```bash
 npm run sync:legislators        # refresh congressional roster from unitedstates/congress-legislators
 npm run sync:fec-national       # FEC campaign finance for all 537 members
-npm run sync:congress-votes     # roll-call votes via Congress.gov API
+npm run sync:votes-national     # roll-call votes via Congress.gov API (all 537)
+npm run sync:votes              # legacy per-member congressVotes.json overlay
 npm run sync:stock-trades       # STOCK Act PTR trades — House roster
 npm run sync:news-national      # GDELT news for all 537 members (keyed by bioguideId)
 npm run verify:office           # confirm office resolution is clean after any data change

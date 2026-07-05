@@ -1,6 +1,6 @@
 /**
  * National congressional roll-call vote sync for all current members.
- * Output: data/votes/national/congress-votes.json
+ * Output: data/national/votes/congress-votes.json
  *
  * Features:
  * - Resilient fetch with retry/backoff/adaptive rate limiting
@@ -44,10 +44,11 @@ import {
   senateVoteToRecord,
 } from '../lib/data/senateVotesClient';
 import { loadCheckpoint, saveCheckpoint } from './lib/resilientFetch';
+import { DATA_NATIONAL_VOTES_DIR, NATIONAL_VOTES_FILE, PROJECT_ROOT } from './lib/dataPaths';
 
-const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const OUT_DIR = path.join(projectRoot, 'data', 'votes', 'national');
-const OUT_FILE = path.join(OUT_DIR, 'congress-votes.json');
+const projectRoot = PROJECT_ROOT;
+const OUT_DIR = DATA_NATIONAL_VOTES_DIR;
+const OUT_FILE = NATIONAL_VOTES_FILE;
 const LEGISLATORS_FILE = path.join(projectRoot, 'lib', 'data', 'generated', 'currentLegislators.json');
 const CHECKPOINT_FILE = '/tmp/ledger-sync-votes-national-checkpoint.json';
 
@@ -454,8 +455,11 @@ async function main(): Promise<void> {
       source: leg.chamber === 'senate' ? SENATE_GOV_SOURCE : CONGRESS_GOV_SOURCE,
       asOf,
     };
-    checkpoint[leg.bioguideId] = true;
-    await saveCheckpoint(CHECKPOINT_FILE, checkpoint);
+    const chamberFetchFailed = fetchFailures.some((f) => f.chamber === leg.chamber);
+    if (!chamberFetchFailed || votes.length >= VOTES_PER_MEMBER) {
+      checkpoint[leg.bioguideId] = true;
+      await saveCheckpoint(CHECKPOINT_FILE, checkpoint);
+    }
   }
 
   const withVotes = legislators.filter((l) => (byBioguideId[l.bioguideId]?.votes.length ?? 0) > 0).length;
@@ -513,6 +517,13 @@ async function main(): Promise<void> {
 }
 
 main().catch((err: unknown) => {
-  console.error(err);
+  console.error(
+    JSON.stringify({
+      ok: false,
+      script: 'sync-votes-national',
+      error: err instanceof Error ? err.message : String(err),
+      at: new Date().toISOString(),
+    }),
+  );
   process.exit(1);
 });
