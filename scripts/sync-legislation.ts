@@ -23,6 +23,7 @@
 import { writeFile, mkdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
 import type { Bill, BillChamber, BillSponsor, BillStage, Source } from '../lib/types';
 import { GOVTRACK, CONGRESS_GOV, toSource } from '../lib/data/trustedSources';
 
@@ -281,6 +282,16 @@ async function main(): Promise<void> {
     console.log(`  by stage: ${JSON.stringify(byStage)}`);
     console.log(`  scheduled for floor: ${bills.filter((b) => b.scheduledConsiderationDate).length}`);
   }
+
+  emitSyncSummary(
+    buildSyncSummary('sync-legislation', {
+      status: fetchedLive ? 'ok' : priorCount > 0 ? 'partial' : 'fetch-failed',
+      failed: fetchedLive ? [] : ['govtrack-fetch'],
+      checkpoint: '',
+      log: '/tmp/ledger-sync-legislation.log',
+      preservePrior: priorCount > 0,
+    }),
+  );
 }
 
 main().catch((err: unknown) => {

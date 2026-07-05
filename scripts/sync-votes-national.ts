@@ -44,6 +44,7 @@ import {
   senateVoteToRecord,
 } from '../lib/data/senateVotesClient';
 import { loadCheckpoint, saveCheckpoint } from './lib/resilientFetch';
+import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
 import { DATA_NATIONAL_VOTES_DIR, NATIONAL_VOTES_FILE, PROJECT_ROOT } from './lib/dataPaths';
 
 const projectRoot = PROJECT_ROOT;
@@ -514,6 +515,16 @@ async function main(): Promise<void> {
       console.log(`  ${m.bioguideId} (${m.name}): ${m.count} votes — ${m.reason}`);
     }
   }
+
+  emitSyncSummary(
+    buildSyncSummary('sync-votes-national', {
+      status: fetchFailures.length > 0 ? 'partial' : 'ok',
+      failed: fetchFailures.map((f) => `${f.chamber}-${f.rollNumber}`),
+      checkpoint: CHECKPOINT_FILE,
+      log: '/tmp/ledger-sync-votes-national.log',
+      preservePrior: true,
+    }),
+  );
 }
 
 main().catch((err: unknown) => {

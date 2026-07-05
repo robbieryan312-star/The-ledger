@@ -28,6 +28,7 @@ import {
 import type { Source, StockTrade } from '../lib/types';
 import type { StockTradeEntry, StockTradesSnapshot } from '../lib/data/stockTrades';
 import { loadCheckpoint, saveCheckpoint } from './lib/resilientFetch';
+import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
 import { acquireSyncLock } from './lib/syncLock';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -320,6 +321,16 @@ async function runSync(): Promise<void> {
   console.log(`  total official trades: ${totalOfficialTrades}`);
   console.log(`  integration status: ${integrationStatus}`);
   console.log(`  Senate eFD reachable: ${senateProbe.reachable}`);
+
+  emitSyncSummary(
+    buildSyncSummary('sync-stock-trades', {
+      status: integrationStatus === 'live' ? 'ok' : integrationStatus === 'partial' ? 'partial' : 'fetch-failed',
+      failed: houseIndexFailedYears.map((y) => `house-index-${y}`),
+      checkpoint: CHECKPOINT_FILE,
+      log: '/tmp/ledger-sync-stock-trades.log',
+      preservePrior: true,
+    }),
+  );
 }
 
 main().catch((err: unknown) => {

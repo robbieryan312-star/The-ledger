@@ -10,6 +10,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Source } from '../lib/types';
+import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
@@ -274,6 +275,16 @@ async function main(): Promise<void> {
   console.log(`  members with news: ${membersWithNews}`);
   console.log(`  members failed (skipped): ${fetchFailures}`);
   console.log(`  total articles: ${totalArticles}`);
+
+  emitSyncSummary(
+    buildSyncSummary('sync-news-national', {
+      status: fetchFailures > 0 ? 'partial' : 'ok',
+      failed: [],
+      checkpoint: CHECKPOINT_FILE,
+      log: '/tmp/ledger-sync-news-national.log',
+      preservePrior: true,
+    }),
+  );
 }
 
 main().catch((err: unknown) => {

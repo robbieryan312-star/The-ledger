@@ -18,6 +18,7 @@ import {
 import type { FecFinanceEntry } from '../lib/data/fecFinance';
 import type { Source } from '../lib/types';
 import { loadCheckpoint, saveCheckpoint } from './lib/resilientFetch';
+import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
 import { DATA_NATIONAL_FEC_DIR, NATIONAL_FEC_FILE, PROJECT_ROOT } from './lib/dataPaths';
 
 const CHECKPOINT_FILE = '/tmp/ledger-sync-fec-national-checkpoint.json';
@@ -207,6 +208,16 @@ async function main(): Promise<void> {
   console.log(`  members queried: ${legislators.length}`);
   console.log(`  with FEC finance data: ${withData}`);
   console.log(`  failures: ${failures.length}`);
+
+  emitSyncSummary(
+    buildSyncSummary('sync-fec-national', {
+      status: failures.length > 0 ? 'partial' : 'ok',
+      failed: failures.map((f) => f.bioguideId),
+      checkpoint: CHECKPOINT_FILE,
+      log: '/tmp/ledger-sync-fec-national.log',
+      preservePrior: true,
+    }),
+  );
 }
 
 main().catch((err: unknown) => {
