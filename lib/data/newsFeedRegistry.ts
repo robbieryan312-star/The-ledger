@@ -112,12 +112,36 @@ for (const entry of NEWS_FEED_REGISTRY) {
   for (const h of entry.articleHosts) REGISTRY_HOSTS.add(h.toLowerCase());
 }
 
-/** True when the article URL hostname is listed on an approved RSS feed entry. */
+/**
+ * Approved journalism article hosts for news.json validation (includes outlets without
+ * an active RSS feed in this registry — e.g. GDELT-sourced Guardian/AP items).
+ * Canonical list: `.cursor/rules/ledger-core-rules.mdc` §3 + ledger-data-policy journalism list.
+ */
+const ADDITIONAL_APPROVED_ARTICLE_HOSTS = [
+  'nytimes.com',
+  'washingtonpost.com',
+  'wsj.com',
+  'apnews.com',
+  'theatlantic.com',
+  'bloomberg.com',
+  'cq.com',
+] as const;
+
+const ALL_APPROVED_NEWS_HOSTS = new Set<string>([
+  ...REGISTRY_HOSTS,
+  ...ADDITIONAL_APPROVED_ARTICLE_HOSTS,
+]);
+
+function hostMatchesAllowlist(host: string, allowlist: Set<string>): boolean {
+  return Array.from(allowlist).some((a) => host === a || host.endsWith(`.${a}`));
+}
+
+/** True when the article URL hostname is on the approved news allowlist (registry + journalism). */
 export function isRegistryNewsHost(url: string | undefined): boolean {
   if (!url?.trim()) return false;
   try {
     const host = new URL(url.trim()).hostname.toLowerCase().replace(/^www\./, '');
-    return Array.from(REGISTRY_HOSTS).some((a) => host === a || host.endsWith(`.${a}`));
+    return hostMatchesAllowlist(host, ALL_APPROVED_NEWS_HOSTS);
   } catch {
     return false;
   }
@@ -146,6 +170,8 @@ export function outletForArticleUrl(url: string): string | undefined {
         return entry.outlet;
       }
     }
+    if (host.includes('apnews.com')) return 'AP News';
+    if (host.includes('nytimes.com')) return 'The New York Times';
     if (isOfficialRecordNewsUrl(url)) return 'Congress.gov';
   } catch {
     /* ignore */
@@ -161,9 +187,10 @@ export function tierForArticleUrl(url: string): SourceTier | undefined {
         return entry.tier;
       }
     }
+    if (host.includes('apnews.com') || host.includes('reuters.com')) return 'nonpartisan';
     if (isOfficialRecordNewsUrl(url)) return 'official';
   } catch {
     /* ignore */
   }
-  return undefined;
+  return 'media';
 }

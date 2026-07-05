@@ -235,7 +235,11 @@ function rawItemsToCandidates(
     if (!isPoliticallyRelevant(title, description)) continue;
 
     const outlet = outletForArticleUrl(link) ?? defaultOutlet;
-    const tier = tierForArticleUrl(link) ?? defaultTier;
+    const tierRaw = tierForArticleUrl(link) ?? defaultTier;
+    const tier: RssItem['tier'] =
+      tierRaw === 'official' || tierRaw === 'nonpartisan' || tierRaw === 'media'
+        ? tierRaw
+        : defaultTier;
 
     out.push({
       title,

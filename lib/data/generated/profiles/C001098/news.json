@@ -1,5 +1,6 @@
 {
   "bioguideId": "C001098",
   "items": [],
-  "note": "0 relevant articles found in approved-outlet GDELT coverage (target 15)."
+  "note": "fetch-failed: 11 feed(s) failed; 0 matches for Ted Cruz.",
+  "status": "fetch-failed"
 }
