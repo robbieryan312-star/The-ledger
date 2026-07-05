@@ -3,13 +3,16 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ChevronDown, ChevronRight, ExternalLink, FileText } from 'lucide-react';
+import { statementDisplayText } from '@/lib/crecDisplayText';
 import { trimToWordBoundary, leadSummary } from '@/lib/displaySummary';
 import { citizenImpactFromSummary } from '@/lib/billCitizenImpact';
 import { isCeremonialCrecRemark } from '@/lib/ceremonialCrecFilter';
 import type { OrgVoteTopicLink } from '@/lib/data/buildOrgVoteTopicLinks';
 import { recordTopicLabel } from '@/lib/recordTopicBuckets';
 import { getMergedDeepTopicBlock, normalizeTopicId } from '@/lib/topicAliases';
-import type { TopicRecordGroup } from '@/lib/data/profileRecordByTopic';
+import type { MemberDeepBill, MemberDeepProfile } from '@/lib/data/memberDeep';
+import type { TopicPositionData } from '@/lib/data/topicPositions';
+import type { ProfileRecordByTopic, TopicRecordGroup } from '@/lib/data/profileRecordByTopic';
 import SourceBadge from '@/components/ui/SourceBadge';
 import ExpandableQuoteBlock from '@/components/ui/ExpandableQuoteBlock';
 
