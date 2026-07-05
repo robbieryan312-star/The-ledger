@@ -9,12 +9,14 @@ alwaysApply: true
 
 Before advising, coding, syncing data, or asking the owner for keys/email/scope, read **in order**:
 
-1. `.cursor/rules/ledger-core-rules.mdc`
-2. `PROGRESS.md`
-3. `lib/data/SOURCE_LOOKUP.md`
-4. `KEYS.md`
+1. **`.cursor/rules/ledger-core-rules.mdc`** — binding rules (all agents)
+2. **`PROGRESS.md`** — milestones, blockers, next priorities
+3. **`lib/data/SOURCE_LOOKUP.md`** — data need → source → tier → sync command
+4. **`KEYS.md`** — SET vs EMPTY env vars (values only in `.env.local`)
 
-Task-specific: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`, `.cursor/rules/ledger-editorial-voice.mdc`. Do **not** use `docs/archive/` for current policy.
+Task-specific: **`PILOT_PROFILE_CHECKLIST.md`**, **`AGENTS.md`**, **`.cursor/rules/ledger-data-policy.mdc`**, **`.cursor/rules/ledger-editorial-voice.mdc`**. Navigation: **`docs/AGENT_INDEX.md`**. Canonical repo: **`REPO.md`**.
+
+Do **not** use **`docs/archive/`** for current policy.
 
 ## Owner delegation
 
