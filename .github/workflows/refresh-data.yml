@@ -50,6 +50,7 @@ jobs:
           { [ -n "$GOVINFO_API_KEY" ] || [ -n "$DATA_GOV_API_KEY" ]; } && npm run ingest:govinfo-fl || echo "skip govinfo (no secret)"
           [ -n "$FEC_API_KEY" ] && npm run ingest:fec-fl && npm run sync:fec-national && npm run sync:fec-schedule-a || echo "skip fec (no secret)"
           [ -n "$CONGRESS_API_KEY" ] && npm run ingest:congress-fl && npm run sync:votes-national || echo "skip congress (no secret)"
+          npm run sync:stock-trades || echo "skip stock-trades (non-fatal)"
 
       - name: Rebuild Records & Sources index
         run: npm run build:sources-index && npm run build:data-slices
@@ -62,6 +63,8 @@ jobs:
           npm run test:copy-compliance
           npm run test:topic-positions-bundle
           npm run test:classify
+          npm run test:docs-integrity
+          npm run test:data-layout
           npm run build
 
       - name: Exclude fetch-failed artifacts from commit
