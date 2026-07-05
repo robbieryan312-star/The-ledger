@@ -1,6 +1,6 @@
 # Owner Setup — The Ledger (~10 minutes)
 
-Quick steps so agents can sync real data and you can demo reliably. See also `API_KEYS.md` and `AGENTS.md`.
+Quick steps so agents can sync real data and you can demo reliably. See also `KEYS.md` and `AGENTS.md`.
 
 ---
 

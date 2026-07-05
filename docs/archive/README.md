@@ -12,4 +12,5 @@ They are kept for historical context only. For live guidance, read in order:
 
 | File | Why archived |
 |------|----------------|
+| `API_KEYS.md` | Redirect stub → `KEYS.md` |
 | `DATA_SOURCES.md` | Pre-DNU mock/demo framing; superseded by `SOURCE_LOOKUP.md` + pipeline-only policy |
