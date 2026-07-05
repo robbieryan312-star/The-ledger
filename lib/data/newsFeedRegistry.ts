@@ -11,6 +11,9 @@ export interface NewsFeedEntry {
   tier: SourceTier;
   /** Hostname(s) this feed's article links may use (without www). */
   articleHosts: string[];
+  /** When true, sync skips this feed — no working RSS endpoint found (do not guess URLs). */
+  feedUnavailable?: boolean;
+  feedUnavailableReason?: string;
 }
 
 /** RSS feeds from approved journalism outlets only (D3 spec). */
@@ -23,7 +26,7 @@ export const NEWS_FEED_REGISTRY: NewsFeedEntry[] = [
   },
   {
     outlet: 'The Hill',
-    feedUrl: 'https://thehill.com/feeds/rss/politics',
+    feedUrl: 'https://thehill.com/homenews/feed/',
     tier: 'media',
     articleHosts: ['thehill.com'],
   },
@@ -44,6 +47,8 @@ export const NEWS_FEED_REGISTRY: NewsFeedEntry[] = [
     feedUrl: 'https://feeds.reuters.com/reuters/politicsNews',
     tier: 'nonpartisan',
     articleHosts: ['reuters.com'],
+    feedUnavailable: true,
+    feedUnavailableReason: 'Reuters RSS returns HTTP 401 without partner credentials (2026-07-05 probe)',
   },
   {
     outlet: 'PBS NewsHour',
@@ -65,13 +70,13 @@ export const NEWS_FEED_REGISTRY: NewsFeedEntry[] = [
   },
   {
     outlet: 'Miami Herald',
-    feedUrl: 'https://www.miamiherald.com/news/politics-government/?widgetName=rssfeed&widgetContentId=791504&getXmlFeed=true',
+    feedUrl: 'https://www.miamiherald.com/news/politics-government/index.rss',
     tier: 'media',
     articleHosts: ['miamiherald.com'],
   },
   {
     outlet: 'Tampa Bay Times',
-    feedUrl: 'https://www.tampabay.com/feed/',
+    feedUrl: 'https://www.tampabay.com/arc/outboundfeeds/rss/?outputType=xml',
     tier: 'media',
     articleHosts: ['tampabay.com'],
   },
@@ -80,12 +85,16 @@ export const NEWS_FEED_REGISTRY: NewsFeedEntry[] = [
     feedUrl: 'https://www.sun-sentinel.com/arcio/rss/category/news/politics/',
     tier: 'media',
     articleHosts: ['sun-sentinel.com'],
+    feedUnavailable: true,
+    feedUnavailableReason: 'Arc RSS endpoint returns HTML not XML (2026-07-05 probe)',
   },
   {
     outlet: 'Orlando Sentinel',
     feedUrl: 'https://www.orlandosentinel.com/arcio/rss/category/news/politics/',
     tier: 'media',
     articleHosts: ['orlandosentinel.com'],
+    feedUnavailable: true,
+    feedUnavailableReason: 'Arc RSS endpoint times out (2026-07-05 probe)',
   },
   {
     outlet: 'Florida Phoenix',
@@ -98,12 +107,16 @@ export const NEWS_FEED_REGISTRY: NewsFeedEntry[] = [
     feedUrl: 'https://www.wusf.org/politics/feed',
     tier: 'media',
     articleHosts: ['wusf.org'],
+    feedUnavailable: true,
+    feedUnavailableReason: 'No working politics RSS at wusf.org (404 on 2026-07-05 probe)',
   },
   {
     outlet: 'WLRN',
     feedUrl: 'https://www.wlrn.org/tags/politics/rss.xml',
     tier: 'media',
     articleHosts: ['wlrn.org'],
+    feedUnavailable: true,
+    feedUnavailableReason: 'Politics RSS times out (2026-07-05 probe)',
   },
 ];
 

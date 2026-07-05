@@ -24,11 +24,13 @@ import {
 } from '../lib/data/senatePtrClient';
 import type { Source, StockTrade } from '../lib/types';
 import type { StockTradeEntry, StockTradesSnapshot } from '../lib/data/stockTrades';
+import { loadCheckpoint, saveCheckpoint } from './lib/resilientFetch';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
 const OUT_FILE = path.join(OUT_DIR, 'stockTrades.json');
 const LEGISLATORS_FILE = path.join(projectRoot, 'lib', 'data', 'generated', 'currentLegislators.json');
+const CHECKPOINT_FILE = '/tmp/ledger-sync-stock-trades-checkpoint.json';
 
 interface LegislatorRow {
   bioguideId: string;
@@ -91,14 +93,16 @@ async function probeSenateEfd(retries = 2): Promise<{ reachable: boolean; error?
       const retryable =
         lastError.includes('503') ||
         lastError.includes('maintenance') ||
-        lastError.includes('unreachable');
+        lastError.includes('unreachable') ||
+        lastError.includes('timeout') ||
+        lastError.includes('aborted');
       if (!retryable || attempt === retries) break;
-      const delayMs = 1500 * (attempt + 1);
-      console.warn(`Senate eFD probe attempt ${attempt + 1} failed (${lastError}); retrying in ${delayMs}ms…`);
+      const delayMs = 1500 * (attempt + 1) + Math.random() * 400;
+      console.warn(`Senate eFD probe attempt ${attempt + 1} failed (${lastError}); retrying in ${Math.round(delayMs)}ms…`);
       await sleep(delayMs);
     }
   }
-  return { reachable: false, error: lastError };
+  return { reachable: false, error: lastError ? `fetch-failed: ${lastError}` : 'fetch-failed: unknown' };
 }
 
 async function main(): Promise<void> {
@@ -137,21 +141,36 @@ async function main(): Promise<void> {
   let totalOfficialTrades = 0;
 
   const byPoliticianId: Record<string, StockTradeEntry> = {};
+  const checkpoint = (await loadCheckpoint<Record<string, true>>(CHECKPOINT_FILE)) ?? {};
+
+  let priorSnapshot: StockTradesSnapshot | null = null;
+  try {
+    priorSnapshot = JSON.parse(await readFile(OUT_FILE, 'utf8')) as StockTradesSnapshot;
+    Object.assign(byPoliticianId, priorSnapshot.byPoliticianId ?? {});
+  } catch {
+    /* fresh run */
+  }
 
   for (const p of allTargets) {
-    byPoliticianId[p.id] = {
-      politicianId: p.id,
-      bioguideId: p.bioguideId,
-      chamber: p.chamber,
-      trades: [],
-      source: p.chamber === 'senate' ? SENATE_EFD_SOURCE : HOUSE_CLERK_SOURCE,
-      asOf,
-      note: undefined,
-    };
+    if (!byPoliticianId[p.id]) {
+      byPoliticianId[p.id] = {
+        politicianId: p.id,
+        bioguideId: p.bioguideId,
+        chamber: p.chamber,
+        trades: [],
+        source: p.chamber === 'senate' ? SENATE_EFD_SOURCE : HOUSE_CLERK_SOURCE,
+        asOf,
+        note: undefined,
+      };
+    }
   }
 
   console.log(`Syncing House PTRs for ${houseMembers.length} representatives (national roster + featured)…`);
   for (const p of houseMembers) {
+    if (checkpoint[p.id]) {
+      console.log(`  ${p.id}: checkpoint skip`);
+      continue;
+    }
     try {
       const { trades, filingsParsed } = await syncHousePtrForTarget(houseTarget(p), HOUSE_INDEX_YEARS, {
         maxFilings: MAX_HOUSE_FILINGS_PER_MEMBER,
@@ -172,14 +191,20 @@ async function main(): Promise<void> {
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       console.warn(`  ${p.id}: House PTR fetch failed (${msg})`);
-      byPoliticianId[p.id].note = `House PTR sync error for this member (${msg}). Demo trades on profile, if any, are labeled separately.`;
+      byPoliticianId[p.id].note = `fetch-failed: House PTR sync error (${msg}). Prior good trades preserved if any.`;
     }
+    checkpoint[p.id] = true;
+    await saveCheckpoint(CHECKPOINT_FILE, checkpoint);
     await sleep(200);
   }
 
   if (senateProbe.reachable) {
     console.log(`Syncing Senate PTRs for ${senateMembers.length} featured senators…`);
     for (const p of senateMembers) {
+      if (checkpoint[p.id]) {
+        console.log(`  ${p.id}: checkpoint skip`);
+        continue;
+      }
       const result = await syncSenatePtrForTarget(senateTarget(p), {
         startDate: '01/01/2023',
         maxReports: MAX_SENATE_REPORTS_PER_MEMBER,
@@ -198,6 +223,8 @@ async function main(): Promise<void> {
           'No Senate PTR reports matched this member in the synced window — demo trades (if any) remain labeled separately.';
       }
       console.log(`  ${p.id}: ${result.trades.length} trade(s)${result.error ? ` (${result.error})` : ''}`);
+      checkpoint[p.id] = true;
+      await saveCheckpoint(CHECKPOINT_FILE, checkpoint);
       await sleep(200);
     }
   } else {

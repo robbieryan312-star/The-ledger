@@ -9,8 +9,8 @@ import {
   CAMPAIGN_ONLY_NOTICE,
   mergeCandidateIssues,
   type MergedCandidateIssue,
-} from '@/lib/data/candidateIssues';
-import { sortEvidenceByDate } from '@/lib/data/topicCoverage';
+} from '@/lib/candidateIssues';
+import { sortEvidenceByDate } from '@/lib/topicCoverage';
 import { ChevronDown, ChevronRight, ArrowRight } from 'lucide-react';
 
 interface Props {

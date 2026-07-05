@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ExternalLink, Info } from 'lucide-react';
 import type { FecFinanceEntry } from '@/lib/data/fecFinance';
 import type { CongressVoteEntry } from '@/lib/data/congressVotes';
-import { getScheduleAForBioguide } from '@/lib/data/fecScheduleA';
+import type { ScheduleAMemberRow } from '@/lib/data/fecScheduleA';
 import SourceProvenance from '@/components/ui/SourceProvenance';
 
 function formatMoney(n: number): string {
@@ -19,6 +19,7 @@ export default function FollowTheMoneyPanel({
   politicianName,
   fecEntry,
   congressEntry,
+  scheduleAEntry,
   showDomesticForeignNote = true,
 }: {
   bioguideId?: string;
@@ -26,9 +27,10 @@ export default function FollowTheMoneyPanel({
   politicianName: string;
   fecEntry?: FecFinanceEntry;
   congressEntry?: CongressVoteEntry;
+  scheduleAEntry?: ScheduleAMemberRow | null;
   showDomesticForeignNote?: boolean;
 }) {
-  const scheduleA = getScheduleAForBioguide(bioguideId);
+  const scheduleA = scheduleAEntry ?? null;
   const votes = congressEntry?.votes ?? [];
 
   if (!fecEntry && !scheduleA && votes.length === 0) {

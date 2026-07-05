@@ -337,6 +337,10 @@ async function main(): Promise<void> {
   const allFeedItems: RssItem[] = [];
 
   for (const feed of NEWS_FEED_REGISTRY) {
+    if (feed.feedUnavailable) {
+      console.log(`Skipping ${feed.outlet} (feed-unavailable: ${feed.feedUnavailableReason ?? 'no working RSS'})`);
+      continue;
+    }
     console.log(`Fetching ${feed.outlet}…`);
     const result = await fetchFeedXml(feed.feedUrl);
     if (!result.ok) {

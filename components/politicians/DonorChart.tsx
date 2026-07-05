@@ -5,7 +5,7 @@ import type { FecFinanceEntry } from '@/lib/data/fecFinance';
 import SourceBadge from '@/components/ui/SourceBadge';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, BarChart, Bar, XAxis, YAxis } from 'recharts';
 import { DollarSign, AlertTriangle, Globe, Users, Building2, Info } from 'lucide-react';
-import { trimToWordBoundary } from '@/lib/data/displaySummary';
+import { trimToWordBoundary } from '@/lib/displaySummary';
 
 function formatMoney(n: number): string {
   if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;

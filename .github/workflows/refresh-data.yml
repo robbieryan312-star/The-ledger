@@ -60,6 +60,7 @@ jobs:
           npm run test:org-join
           npm run test:source-integrity
           npm run test:copy-compliance
+          npm run test:topic-positions-bundle
           npm run test:classify
           npm run build
 

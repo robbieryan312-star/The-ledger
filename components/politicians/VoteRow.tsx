@@ -9,8 +9,8 @@ import {
   formatPartyBreakdown,
   hasPartyBreakdown,
   citizenImpactFromBillSummary,
-} from '@/lib/data/voteDisplay';
-import { inferVoteDonorConnection } from '@/lib/data/voteDonorConnections';
+} from '@/lib/voteDisplay';
+import { inferVoteDonorConnection } from '@/lib/voteDonorConnections';
 import SourceBadge from '@/components/ui/SourceBadge';
 import {
   CheckCircle, XCircle, MinusCircle, AlertTriangle, ExternalLink, ChevronDown, ChevronRight,

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import type { EvidenceItem } from '@/lib/types';
 import SourceProvenance from '@/components/ui/SourceProvenance';
 import { ChevronDown, ChevronRight } from 'lucide-react';
-import { trimToWordBoundary } from '@/lib/data/displaySummary';
+import { trimToWordBoundary } from '@/lib/displaySummary';
 
 const EVIDENCE_TYPE_STYLE: Record<string, string> = {
   vote: 'bg-blue-500/20 text-blue-300 border-blue-500/20',

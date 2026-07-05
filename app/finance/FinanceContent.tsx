@@ -1,15 +1,14 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { allPoliticians } from '@/lib/data/allPoliticians';
-import { mergeCampaignFinance, getFecFinanceSnapshot } from '@/lib/data/fecFinance';
-import { mergeVotingRecord } from '@/lib/data/congressVotes';
+import type { CampaignFinance, Politician, Source } from '@/lib/types';
+import type { FecFinanceEntry } from '@/lib/data/fecFinance';
+import type { CongressVoteEntry } from '@/lib/data/congressVotes';
+import type { SnapshotSlice } from '@/lib/types/snapshotTypes';
 import FollowTheMoneyPanel from '@/components/finance/FollowTheMoneyPanel';
 import SourceBadge from '@/components/ui/SourceBadge';
 import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
 import { FloridaRecordPanel } from '@/components/records/FloridaRecordPanel';
-import { getFinanceFldoeSlice } from '@/lib/data/slices/financeFldoe';
-import { getFilingsSecedgarSlice } from '@/lib/data/slices/filingsSecedgar';
 import { DollarSign, AlertTriangle, TrendingUp, ArrowRight, Info, Building2 } from 'lucide-react';
 import Link from 'next/link';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
@@ -27,22 +26,30 @@ function formatMoney(n: number): string {
   return `$${n}`;
 }
 
-function FinanceContentInner({ initialSearchParams }: { initialSearchParams: SearchParamsInput }) {
+function FinanceContentInner({
+  initialSearchParams,
+  featuredWithFinance,
+  fecMeta,
+  fldoeSlice,
+  filingsSlice,
+  linkageExample,
+}: {
+  initialSearchParams: SearchParamsInput;
+  featuredWithFinance: Array<{
+    politician: Politician;
+    finance: CampaignFinance;
+    fecEntry?: FecFinanceEntry;
+  }>;
+  fecMeta: { asOf?: string; source: Source };
+  fldoeSlice: SnapshotSlice;
+  filingsSlice: SnapshotSlice;
+  linkageExample: {
+    row: { politician: Politician; finance: CampaignFinance; fecEntry?: FecFinanceEntry };
+    congressEntry?: CongressVoteEntry;
+  } | null;
+}) {
   const [view, setView] = useState<'overview' | 'lobbyists' | 'pacs' | 'filings'>('overview');
-  const fldoeSlice = getFinanceFldoeSlice();
-  const filingsSlice = getFilingsSecedgarSlice();
   const [sortBy, setSortBy] = useState<'total' | 'lobbyist' | 'pac'>('total');
-  const fecMeta = getFecFinanceSnapshot().meta;
-
-  const featuredPols = useMemo(() => allPoliticians.filter((p) => p.recordType !== 'lightweight'), []);
-  const featuredWithFinance = useMemo(
-    () =>
-      featuredPols.map((p) => {
-        const { finance, fecEntry } = mergeCampaignFinance(p.id, p.campaignFinance, p.bioguideId);
-        return { politician: p, finance, fecEntry };
-      }),
-    [featuredPols],
-  );
 
   useEffect(() => {
     const viewParam = paramValue(initialSearchParams, 'view');
@@ -68,17 +75,6 @@ function FinanceContentInner({ initialSearchParams }: { initialSearchParams: Sea
   const totalLobbyist = featuredWithFinance.reduce((s, row) => s + row.finance.lobbyistMoney.reduce((sl, l) => sl + l.amount, 0), 0);
   const totalPAC = featuredWithFinance.reduce((s, row) => s + row.finance.pacDonations, 0);
   const fecBackedCount = featuredWithFinance.filter((row) => !!row.fecEntry).length;
-  const linkageExample = useMemo(() => {
-    const row = featuredWithFinance.find((r) => r.fecEntry && r.politician.bioguideId);
-    if (!row) return null;
-    const { congressEntry } = mergeVotingRecord(
-      row.politician.id,
-      row.politician.votingRecord,
-      row.politician.recordType,
-      row.politician.bioguideId,
-    );
-    return { row, congressEntry };
-  }, [featuredWithFinance]);
 
   const chartData = sorted.slice(0, 6).map((row) => ({
     name: row.politician.lastName,
@@ -429,8 +425,34 @@ function FinanceContentInner({ initialSearchParams }: { initialSearchParams: Sea
 
 export default function FinanceContent({
   initialSearchParams = {},
+  featuredWithFinance,
+  fecMeta,
+  fldoeSlice,
+  filingsSlice,
+  linkageExample,
 }: {
   initialSearchParams?: SearchParamsInput;
+  featuredWithFinance: Array<{
+    politician: Politician;
+    finance: CampaignFinance;
+    fecEntry?: FecFinanceEntry;
+  }>;
+  fecMeta: { asOf?: string; source: Source };
+  fldoeSlice: SnapshotSlice;
+  filingsSlice: SnapshotSlice;
+  linkageExample: {
+    row: { politician: Politician; finance: CampaignFinance; fecEntry?: FecFinanceEntry };
+    congressEntry?: CongressVoteEntry;
+  } | null;
 }) {
-  return <FinanceContentInner initialSearchParams={initialSearchParams} />;
+  return (
+    <FinanceContentInner
+      initialSearchParams={initialSearchParams}
+      featuredWithFinance={featuredWithFinance}
+      fecMeta={fecMeta}
+      fldoeSlice={fldoeSlice}
+      filingsSlice={filingsSlice}
+      linkageExample={linkageExample}
+    />
+  );
 }

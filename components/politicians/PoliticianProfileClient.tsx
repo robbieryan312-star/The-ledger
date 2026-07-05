@@ -1,16 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { EXECUTIVE_CHAMBERS, JUDICIAL_CHAMBERS } from '@/lib/data/officeResolution';
+import { EXECUTIVE_CHAMBERS, JUDICIAL_CHAMBERS } from '@/lib/chamberConstants';
 import type { ResolvedOffice } from '@/lib/types';
 import type { FecFinanceEntry } from '@/lib/data/fecFinance';
 import type { CongressVoteEntry } from '@/lib/data/congressVotes';
 import type { ProfileRecordByTopic } from '@/lib/data/profileRecordByTopic';
 import type { MemberDeepProfile } from '@/lib/data/memberDeep';
-import type { RecordJuxtaposition, CampaignFinance, Controversy, Politician, Source, StockTrade, VoteRecord, EvidenceItem, Issue, NewsItem } from '@/lib/types';
+import type { RecordJuxtaposition, CampaignFinance, Controversy, Politician, Source, StockTrade, VoteRecord, EvidenceItem, Issue, NewsItem, SaidDidDiff } from '@/lib/types';
 import SourceBadge from '@/components/ui/SourceBadge';
 import SourceProvenance from '@/components/ui/SourceProvenance';
-import { PHOTO_ATTRIBUTION } from '@/lib/data/photos';
+import { PHOTO_ATTRIBUTION } from '@/lib/photoAttribution';
 import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
 import VotingRecord from '@/components/politicians/VotingRecord';
 import DonorChart from '@/components/politicians/DonorChart';
@@ -45,13 +45,11 @@ import {
   matchTopic,
   PENDING_INTEGRATION_LABEL,
   type PolicyTopicDef,
-} from '@/lib/data/topicCoverage';
+} from '@/lib/topicCoverage';
 import TrackButton from '@/components/ui/TrackButton';
-import { buildSaidDidDiffsFromTopicPositions } from '@/lib/data/buildSaidDidDiffs';
-import { buildMergedProfileIssues } from '@/lib/data/issuesFromTopicPositions';
-import { buildOrgVoteTopicLinks } from '@/lib/data/buildOrgVoteTopicLinks';
-import { getScheduleAForBioguide, hasAggregatedScheduleA } from '@/lib/data/fecScheduleA';
-import type { NewsBundleSlice } from '@/lib/data/snapshotTypes';
+import type { TopicPositionData } from '@/lib/data/topicPositions';
+import type { OrgVoteTopicLink } from '@/lib/data/buildOrgVoteTopicLinks';
+import type { NewsBundleSlice } from '@/lib/types/snapshotTypes';
 import type { StockTradeEntry } from '@/lib/data/stockTrades';
 
 interface EndorsementEntry {
@@ -84,6 +82,13 @@ export interface PoliticianProfileClientProps {
   floridaNewsBundle: NewsBundleSlice | null;
   recordJuxtapositions: RecordJuxtaposition[];
   isFederalCongress: boolean;
+  /** Precomputed on the server — avoids bundling generated JSON in client chunks. */
+  topicSaidDidDiffs: SaidDidDiff[];
+  displayIssues: Issue[];
+  orgVoteLinks: OrgVoteTopicLink[];
+  useOfficialScheduleA: boolean;
+  memberTopicPositions: Record<string, TopicPositionData> | null;
+  scheduleAEntry?: import('@/lib/data/fecScheduleA').ScheduleAMemberRow | null;
 }
 
 const BASE_TABS = [
@@ -527,6 +532,12 @@ export default function PoliticianProfileClient({
   floridaNewsBundle,
   recordJuxtapositions,
   isFederalCongress,
+  topicSaidDidDiffs,
+  displayIssues,
+  orgVoteLinks,
+  useOfficialScheduleA,
+  memberTopicPositions,
+  scheduleAEntry,
 }: PoliticianProfileClientProps) {
   const [activeTab, setActiveTab] = useState('overview');
 
@@ -539,21 +550,7 @@ export default function PoliticianProfileClient({
   const tabs = profileTabs(isExecutive);
   const isLightweight = politician.recordType === 'lightweight';
   const isFeatured = !isLightweight;
-  const topicSaidDidDiffs = politician.bioguideId
-    ? buildSaidDidDiffsFromTopicPositions(politician.bioguideId, politician.name)
-    : [];
   const saidDidDiffs = [...topicSaidDidDiffs, ...(politician.saidDidDiffs ?? [])];
-  const scheduleAEntry = getScheduleAForBioguide(politician.bioguideId);
-  const useOfficialScheduleA = hasAggregatedScheduleA(politician.bioguideId);
-  const orgVoteLinks =
-    scheduleAEntry && congressEntry?.votes?.length
-      ? buildOrgVoteTopicLinks(scheduleAEntry, congressEntry.votes)
-      : [];
-  const displayIssues = buildMergedProfileIssues(
-    politician.bioguideId,
-    politician.topIssues,
-    isFeatured,
-  );
 
   const lobbyOrgTotal = displayFinance.lobbyistMoney.reduce((s, l) => s + l.amount, 0);
   const pacTotal = displayFinance.pacDonations;
@@ -799,6 +796,7 @@ export default function PoliticianProfileClient({
               memberDeep={memberDeep}
               politicianId={politician.id}
               orgVoteLinks={orgVoteLinks}
+              memberTopicPositions={memberTopicPositions}
             />
             <div className="border-t border-white/[0.06] pt-4 mt-4">
               <h3 className="text-white/70 font-medium text-sm mb-3">Key positions by issue</h3>
@@ -986,6 +984,7 @@ export default function PoliticianProfileClient({
                   politicianName={politician.name}
                   fecEntry={fecEntry}
                   congressEntry={congressEntry}
+                  scheduleAEntry={scheduleAEntry}
                 />
               </div>
             )}

@@ -17,7 +17,9 @@ import {
 } from '../lib/data/fecClient';
 import type { FecFinanceEntry } from '../lib/data/fecFinance';
 import type { Source } from '../lib/types';
+import { loadCheckpoint, saveCheckpoint } from './lib/resilientFetch';
 
+const CHECKPOINT_FILE = '/tmp/ledger-sync-fec-national-checkpoint.json';
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'data', 'fec', 'national');
 const OUT_FILE = path.join(OUT_DIR, 'congress-finance.json');
@@ -117,11 +119,23 @@ async function main(): Promise<void> {
 
   console.log(`Syncing FEC totals for ${legislators.length} Congress members…`);
 
-  const byBioguideId: Record<string, FecFinanceEntry> = {};
+  let priorRows: Record<string, FecFinanceEntry> = {};
+  try {
+    const prior = JSON.parse(await readFile(OUT_FILE, 'utf8')) as ExistingNationalFecSnapshot;
+    priorRows = prior.byBioguideId ?? {};
+  } catch {
+    /* no prior snapshot */
+  }
+
+  const checkpoint = (await loadCheckpoint<Record<string, true>>(CHECKPOINT_FILE)) ?? {};
+  const byBioguideId: Record<string, FecFinanceEntry> = { ...priorRows };
   const failures: Array<{ bioguideId: string; name: string; reason: string }> = [];
-  let withData = 0;
+  let withData = Object.keys(byBioguideId).length;
 
   for (const leg of legislators) {
+    if (checkpoint[leg.bioguideId] && byBioguideId[leg.bioguideId]) {
+      continue;
+    }
     try {
       const fecIds = await resolveFecIds(leg);
       if (fecIds.length === 0) {
@@ -157,12 +171,16 @@ async function main(): Promise<void> {
       };
       withData += 1;
       if (withData % 25 === 0) console.log(`  progress: ${withData}/${legislators.length}`);
+      checkpoint[leg.bioguideId] = true;
+      await saveCheckpoint(CHECKPOINT_FILE, checkpoint);
     } catch (err) {
       const reason = err instanceof Error ? err.message : String(err);
-      failures.push({ bioguideId: leg.bioguideId, name: leg.name, reason });
+      failures.push({ bioguideId: leg.bioguideId, name: leg.name, reason: `fetch-failed: ${reason}` });
     }
     await sleep(120);
   }
+
+  withData = Object.keys(byBioguideId).length;
 
   const snapshot = {
     meta: {

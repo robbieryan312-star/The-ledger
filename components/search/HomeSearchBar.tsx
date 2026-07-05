@@ -3,8 +3,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { Search, MapPin, Vote, X, Building2 } from 'lucide-react';
 import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
-import { rosterStates, searchPoliticians, resolveOffice } from '@/lib/data/allPoliticians';
-import { lookupZip } from '@/lib/data/zipLookup';
+import { lookupZip } from '@/lib/zipLookup';
+import { filterPoliticianHits } from '@/lib/politicianSearchIndex';
+import type { PoliticianSearchHit, StateRosterEntry } from '@/lib/types/searchIndex';
 import { useUserProfile } from '@/lib/hooks/useUserProfile';
 import { useMapNavigationOptional } from '@/lib/context/MapNavigationContext';
 import { useRouter } from 'next/navigation';
@@ -23,7 +24,19 @@ interface SearchResult {
   lastName?: string;
 }
 
-export default function HomeSearchBar() {
+interface HomeSearchBarProps {
+  politicianHits: PoliticianSearchHit[];
+  states: StateRosterEntry[];
+  /** Optional roster with activePolitician counts for state sublabels */
+  rosterStates?: Array<{ code: string; name: string; activePoliticians?: number }>;
+}
+
+export default function HomeSearchBar({
+  politicianHits,
+  states,
+  rosterStates,
+}: HomeSearchBarProps) {
+  const stateMeta = rosterStates ?? states.map((s) => ({ ...s, activePoliticians: 0 }));
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchResult[]>([]);
   const [open, setOpen] = useState(false);
@@ -47,7 +60,6 @@ export default function HomeSearchBar() {
     const lower = q.toLowerCase().trim();
     const out: SearchResult[] = [];
 
-    // ZIP code match
     if (/^\d{3,5}$/.test(q)) {
       const fullZip = lookupZip(q);
       if (fullZip) {
@@ -71,25 +83,25 @@ export default function HomeSearchBar() {
       }
     }
 
-    // State name match
-    rosterStates.filter((s) =>
-      s.name.toLowerCase().includes(lower) || s.code.toLowerCase() === lower
+    stateMeta.filter((s) =>
+      s.name.toLowerCase().includes(lower) || s.code.toLowerCase() === lower,
     ).slice(0, 3).forEach((s) => {
       out.push({
         type: 'state', id: `state-${s.code}`,
         label: s.name,
-        sublabel: `${s.activePoliticians} officials tracked`,
+        sublabel: s.activePoliticians
+          ? `${s.activePoliticians} officials tracked`
+          : 'View on map',
         stateCode: s.code,
       });
     });
 
-    // Politician match (national roster — Congress + governors)
-    searchPoliticians(lower, 5).forEach((p) => {
+    filterPoliticianHits(politicianHits, lower, 5).forEach((p) => {
       out.push({
         type: 'politician', id: `pol-${p.id}`,
         label: p.name,
-        sublabel: `${p.party} · ${resolveOffice(p).label}`,
-        href: `/politicians/${p.id}`,
+        sublabel: `${p.party} · ${p.officeLabel}`,
+        href: p.href,
         stateCode: p.stateCode,
         imageUrl: p.imageUrl,
         firstName: p.firstName,
@@ -97,8 +109,6 @@ export default function HomeSearchBar() {
       });
     });
 
-
-    // Dedupe by id
     const seen = new Set<string>();
     const deduped = out.filter((r) => {
       if (seen.has(r.id)) return false;
@@ -114,9 +124,8 @@ export default function HomeSearchBar() {
     setOpen(false);
     setQuery('');
 
-    // Navigate map for geographic results
     if (mapNav && result.stateCode && (result.type === 'zip' || result.type === 'county' || result.type === 'state' || result.type === 'official')) {
-      const state = rosterStates.find((s) => s.code === result.stateCode);
+      const state = stateMeta.find((s) => s.code === result.stateCode);
       if (state && (result.type === 'zip' || result.type === 'county')) {
         setLocation(result.stateCode, state.name, result.zipCode ?? '');
       }
@@ -132,7 +141,7 @@ export default function HomeSearchBar() {
     }
 
     if (result.type === 'zip' && result.stateCode) {
-      const state = rosterStates.find((s) => s.code === result.stateCode);
+      const state = stateMeta.find((s) => s.code === result.stateCode);
       if (state) setLocation(result.stateCode, state.name, result.zipCode ?? '');
     }
 

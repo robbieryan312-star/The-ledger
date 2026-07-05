@@ -1,18 +1,45 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { rosterStates, allPoliticians, resolveOffice, getCoverageStats, comparePoliticiansByOffice, getPoliticianBranch } from '@/lib/data/allPoliticians';
-import type { GovernmentBranch } from '@/lib/data/branches';
-import { EXECUTIVE_CHAMBERS } from '@/lib/data/officeResolution';
-import { fecFinanceCount } from '@/lib/data/fecFinance';
-import { congressVotesCount, mergeVotingRecord } from '@/lib/data/congressVotes';
-import { PHOTO_ATTRIBUTION } from '@/lib/data/photos';
+import type { Politician, ResolvedOffice, GovernmentBranch } from '@/lib/types';
+import { getPoliticianBranch } from '@/lib/branches';
+import { comparePoliticiansByOffice } from '@/lib/politicianSort';
+import { EXECUTIVE_CHAMBERS } from '@/lib/chamberConstants';
+import { PHOTO_ATTRIBUTION } from '@/lib/photoAttribution';
+import type { PoliticianSearchHit, StateRosterEntry } from '@/lib/types/searchIndex';
 import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
 import Link from 'next/link';
 import SearchBar from '@/components/search/SearchBar';
 import { Filter, TrendingUp, DollarSign, AlertTriangle, ArrowRight, Shield, MapPin } from 'lucide-react';
 
+export interface PoliticiansListEntry extends Politician {
+  resolvedOffice: ResolvedOffice;
+  displayVoteCount: number;
+}
+
+export interface PoliticiansCoverageStats {
+  total: number;
+  executives: number;
+  justices: number;
+  senators: number;
+  representatives: number;
+  governors: number;
+  withPhotos: number;
+  featured: number;
+}
+
 type SearchParamsInput = Record<string, string | string[] | undefined>;
+
+interface PoliticiansContentProps {
+  initialSearchParams?: SearchParamsInput;
+  politicians: PoliticiansListEntry[];
+  rosterStates: Array<{ code: string; name: string; activePoliticians: number }>;
+  coverageStats: PoliticiansCoverageStats;
+  fecFinanceCount: number;
+  congressVotesCount: number;
+  politicianHits: PoliticianSearchHit[];
+  states: StateRosterEntry[];
+}
 
 function paramValue(params: SearchParamsInput, key: string): string | undefined {
   const value = params[key];
@@ -42,9 +69,15 @@ const BRANCH_FILTERS: { value: '' | GovernmentBranch; label: string }[] = [
   { value: 'judicial', label: 'Judicial' },
 ];
 
-const coverageStats = getCoverageStats();
-
-function PoliticiansContentInner({ initialSearchParams }: { initialSearchParams: SearchParamsInput }) {
+function PoliticiansContentInner({
+  initialSearchParams,
+  politicians,
+  rosterStates,
+  coverageStats,
+  fecFinanceCount: fecCount,
+  congressVotesCount: votesCount,
+  politicianHits,
+}: PoliticiansContentProps) {
   const [selectedState, setSelectedState] = useState<string>('');
   const [selectedParty, setSelectedParty] = useState<string>('');
   const [selectedChamber, setSelectedChamber] = useState<string>('');
@@ -56,12 +89,13 @@ function PoliticiansContentInner({ initialSearchParams }: { initialSearchParams:
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    const chamber = paramValue(initialSearchParams, 'chamber');
-    const level = paramValue(initialSearchParams, 'level');
-    const branch = paramValue(initialSearchParams, 'branch');
-    const state = paramValue(initialSearchParams, 'state');
-    const party = paramValue(initialSearchParams, 'party');
-    const q = paramValue(initialSearchParams, 'q');
+    const params = initialSearchParams ?? {};
+    const chamber = paramValue(params, 'chamber');
+    const level = paramValue(params, 'level');
+    const branch = paramValue(params, 'branch');
+    const state = paramValue(params, 'state');
+    const party = paramValue(params, 'party');
+    const q = paramValue(params, 'q');
     if (chamber) setSelectedChamber(chamber);
     if (level) setSelectedLevel(level);
     if (branch) setSelectedBranch(branch);
@@ -75,7 +109,7 @@ function PoliticiansContentInner({ initialSearchParams }: { initialSearchParams:
     setPage(1);
   }, [selectedState, selectedParty, selectedChamber, selectedLevel, selectedBranch, searchText, sortBy]);
 
-  const filtered = allPoliticians
+  const filtered = politicians
     .filter((p) => {
       if (searchText) {
         const q = searchText.toLowerCase();
@@ -137,8 +171,8 @@ function PoliticiansContentInner({ initialSearchParams }: { initialSearchParams:
             { label: `${coverageStats.governors} governors`, sub: 'nonpartisan · NGA roster' },
             { label: `${coverageStats.withPhotos} with photos`, sub: 'bioguide portraits' },
             { label: `${coverageStats.featured} featured`, sub: 'rich demo profiles' },
-            { label: `${fecFinanceCount()} FEC finance`, sub: 'official · OpenFEC sync' },
-            { label: `${congressVotesCount()} Congress votes`, sub: 'official · Congress.gov sync' },
+            { label: `${fecCount} FEC finance`, sub: 'official · OpenFEC sync' },
+            { label: `${votesCount} Congress votes`, sub: 'official · Congress.gov sync' },
           ].map((chip) => (
             <span
               key={chip.label}
@@ -153,7 +187,7 @@ function PoliticiansContentInner({ initialSearchParams }: { initialSearchParams:
       </div>
 
       <div className="mb-6">
-        <SearchBar />
+        <SearchBar politicianHits={politicianHits} />
       </div>
 
       {/* Branch filter chips */}
@@ -216,14 +250,9 @@ function PoliticiansContentInner({ initialSearchParams }: { initialSearchParams:
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {pageSlice.map((politician) => {
           const lobbyistTotal = politician.campaignFinance.lobbyistMoney.reduce((s, l) => s + l.amount, 0);
-          const resolved = resolveOffice(politician);
+          const resolved = politician.resolvedOffice;
           const isLightweight = politician.recordType === 'lightweight';
-          const { votes: displayVotes } = mergeVotingRecord(
-            politician.id,
-            politician.votingRecord,
-            politician.recordType,
-            politician.bioguideId,
-          );
+          const displayVotesLength = politician.displayVoteCount;
           return (
             <Link
               key={politician.id}
@@ -267,11 +296,11 @@ function PoliticiansContentInner({ initialSearchParams }: { initialSearchParams:
                 <div className="space-y-2 border-t border-white/[0.06] pt-3">
                   <div className="flex items-center gap-1.5 text-[11px] text-[#c8a951]">
                     <Shield className="h-3 w-3" />
-                    {displayVotes.length > 0
-                      ? `${displayVotes.length} official roll-call position${displayVotes.length === 1 ? '' : 's'} on file`
+                    {displayVotesLength > 0
+                      ? `${displayVotesLength} official roll-call position${displayVotesLength === 1 ? '' : 's'} on file`
                       : 'Real-sourced record · current office verified'}
                   </div>
-                  {displayVotes.length === 0 && (
+                  {displayVotesLength === 0 && (
                     <p className="text-white/30 text-xs leading-snug">
                       Detailed finance and positions are not yet integrated for this profile.
                     </p>
@@ -325,7 +354,7 @@ function PoliticiansContentInner({ initialSearchParams }: { initialSearchParams:
 
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-white/35">Votes Recorded</span>
-                    <span className="text-white">{displayVotes.length}</span>
+                    <span className="text-white">{displayVotesLength}</span>
                   </div>
                 </div>
               )}
@@ -374,10 +403,6 @@ function PoliticiansContentInner({ initialSearchParams }: { initialSearchParams:
   );
 }
 
-export default function PoliticiansContent({
-  initialSearchParams = {},
-}: {
-  initialSearchParams?: SearchParamsInput;
-}) {
-  return <PoliticiansContentInner initialSearchParams={initialSearchParams} />;
+export default function PoliticiansContent(props: PoliticiansContentProps) {
+  return <PoliticiansContentInner {...props} />;
 }

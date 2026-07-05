@@ -43,11 +43,13 @@ import {
   senateFetchStats,
   senateVoteToRecord,
 } from '../lib/data/senateVotesClient';
+import { loadCheckpoint, saveCheckpoint } from './lib/resilientFetch';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'data', 'votes', 'national');
 const OUT_FILE = path.join(OUT_DIR, 'congress-votes.json');
 const LEGISLATORS_FILE = path.join(projectRoot, 'lib', 'data', 'generated', 'currentLegislators.json');
+const CHECKPOINT_FILE = '/tmp/ledger-sync-votes-national-checkpoint.json';
 
 const TARGET_CONGRESS = 119;
 const VOTES_PER_MEMBER = 30;
@@ -409,6 +411,7 @@ async function main(): Promise<void> {
   }
 
   const underFilledMembers: Array<{ bioguideId: string; name: string; count: number; reason: string }> = [];
+  const checkpoint = (await loadCheckpoint<Record<string, true>>(CHECKPOINT_FILE)) ?? {};
   const byBioguideId: Record<
     string,
     {
@@ -422,6 +425,10 @@ async function main(): Promise<void> {
   > = {};
 
   for (const leg of legislators) {
+    if (checkpoint[leg.bioguideId] && existing?.byBioguideId?.[leg.bioguideId]) {
+      byBioguideId[leg.bioguideId] = existing.byBioguideId[leg.bioguideId] as typeof byBioguideId[string];
+      continue;
+    }
     const freshHouse = houseVotes.get(leg.bioguideId) ?? [];
     const freshSenate = senateVotes.get(leg.bioguideId) ?? [];
     const freshVotes = [...freshHouse, ...freshSenate];
@@ -447,6 +454,8 @@ async function main(): Promise<void> {
       source: leg.chamber === 'senate' ? SENATE_GOV_SOURCE : CONGRESS_GOV_SOURCE,
       asOf,
     };
+    checkpoint[leg.bioguideId] = true;
+    await saveCheckpoint(CHECKPOINT_FILE, checkpoint);
   }
 
   const withVotes = legislators.filter((l) => (byBioguideId[l.bioguideId]?.votes.length ?? 0) > 0).length;

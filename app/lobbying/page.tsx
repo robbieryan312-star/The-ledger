@@ -1,11 +1,16 @@
-'use client';
-
 import Link from 'next/link';
 import { Building2, ExternalLink } from 'lucide-react';
 import { FloridaRecordPanel } from '@/components/records/FloridaRecordPanel';
 import { getLobbyingFllobbyistSlice } from '@/lib/data/slices/lobbyingFllobbyist';
 
+export const metadata = {
+  title: 'Lobbying — The Ledger',
+  description: 'Lobbying and advocacy group profiles from official disclosure records where integrated.',
+};
+
 export default function LobbyingPage() {
+  const lobbyingSlice = getLobbyingFllobbyistSlice();
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <div className="mb-8">
@@ -46,7 +51,7 @@ export default function LobbyingPage() {
         <FloridaRecordPanel
           title="Florida lobbying firm directories (official PDF index)"
           subtitle="Official Florida Commission on Ethics lobbyist registration directories — PDF links from the public search portal."
-          slice={getLobbyingFllobbyistSlice()}
+          slice={lobbyingSlice}
         />
       </div>
     </div>

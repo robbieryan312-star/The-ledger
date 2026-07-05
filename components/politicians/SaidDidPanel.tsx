@@ -5,8 +5,8 @@ import { ExternalLink } from 'lucide-react';
 import SourceBadge from '@/components/ui/SourceBadge';
 import ExpandableQuoteBlock from '@/components/ui/ExpandableQuoteBlock';
 import type { SaidDidDiff } from '@/lib/types';
-import { stripCrecFloorOpener } from '@/lib/data/crecDisplayText';
-import { leadSummary } from '@/lib/data/displaySummary';
+import { stripCrecFloorOpener } from '@/lib/crecDisplayText';
+import { leadSummary } from '@/lib/displaySummary';
 
 function formatGapDays(gapDays: number): string {
   if (gapDays >= 30) {

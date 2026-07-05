@@ -3,17 +3,12 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ChevronDown, ChevronRight, ExternalLink, FileText } from 'lucide-react';
-import { trimToWordBoundary } from '@/lib/data/displaySummary';
-import type { ProfileRecordByTopic, TopicRecordGroup } from '@/lib/data/profileRecordByTopic';
-import type { MemberDeepBill, MemberDeepProfile } from '@/lib/data/memberDeep';
-import { getTopicPositions } from '@/lib/data/topicPositions';
-import { statementDisplayText } from '@/lib/data/crecDisplayText';
-import { leadSummary } from '@/lib/data/displaySummary';
-import { citizenImpactFromSummary } from '@/lib/data/billCitizenImpact';
-import { isCeremonialCrecRemark } from '@/lib/data/ceremonialCrecFilter';
+import { trimToWordBoundary, leadSummary } from '@/lib/displaySummary';
+import { citizenImpactFromSummary } from '@/lib/billCitizenImpact';
+import { isCeremonialCrecRemark } from '@/lib/ceremonialCrecFilter';
 import type { OrgVoteTopicLink } from '@/lib/data/buildOrgVoteTopicLinks';
-import { recordTopicLabel } from '@/lib/data/profileRecordByTopic';
-import { getMergedDeepTopicBlock, normalizeTopicId } from '@/lib/data/topicAliases';
+import { recordTopicLabel } from '@/lib/recordTopicBuckets';
+import { getMergedDeepTopicBlock, normalizeTopicId } from '@/lib/topicAliases';
 import SourceBadge from '@/components/ui/SourceBadge';
 import ExpandableQuoteBlock from '@/components/ui/ExpandableQuoteBlock';
 
@@ -84,16 +79,20 @@ function TopicGroupRow({
   memberDeep,
   politicianId,
   orgVoteLinks,
+  memberTopicPositions,
 }: {
   group: TopicRecordGroup;
   bioguideId?: string;
   memberDeep?: MemberDeepProfile | null;
   politicianId?: string;
   orgVoteLinks?: OrgVoteTopicLink[];
+  memberTopicPositions?: Record<string, TopicPositionData> | null;
 }) {
   const [open, setOpen] = useState(false);
   const [showLegislation, setShowLegislation] = useState(false);
-  const topicPositions = bioguideId ? getTopicPositions(bioguideId, group.topicId) : null;
+  const topicKey = normalizeTopicId(group.topicId);
+  const topicPositions =
+    memberTopicPositions?.[topicKey] ?? memberTopicPositions?.[group.topicId] ?? null;
   const deepTopic = memberDeep ? getMergedDeepTopicBlock(memberDeep.byTopic, group.topicId) : null;
   const deepSponsored = deepTopic?.sponsored ?? [];
   const deepCosponsored = deepTopic?.cosponsored ?? [];
@@ -541,6 +540,7 @@ export default function ProfileRecordByTopicPanel({
   memberDeep,
   politicianId,
   orgVoteLinks,
+  memberTopicPositions,
   embedded = false,
 }: {
   record: ProfileRecordByTopic;
@@ -548,6 +548,7 @@ export default function ProfileRecordByTopicPanel({
   memberDeep?: MemberDeepProfile | null;
   politicianId?: string;
   orgVoteLinks?: OrgVoteTopicLink[];
+  memberTopicPositions?: Record<string, TopicPositionData> | null;
   /** When true, render topic rows only — parent supplies section chrome. */
   embedded?: boolean;
 }) {
@@ -565,6 +566,7 @@ export default function ProfileRecordByTopicPanel({
             memberDeep={memberDeep}
             politicianId={politicianId}
             orgVoteLinks={orgVoteLinks}
+            memberTopicPositions={memberTopicPositions}
           />
         ))}
         {memberDeep &&
@@ -589,6 +591,7 @@ export default function ProfileRecordByTopicPanel({
                 memberDeep={memberDeep}
                 politicianId={politicianId}
                 orgVoteLinks={orgVoteLinks}
+                memberTopicPositions={memberTopicPositions}
               />
             );
           })}

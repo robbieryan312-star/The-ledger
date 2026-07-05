@@ -5,7 +5,7 @@ import ConsistencyScore from '@/components/politicians/ConsistencyScore';
 import ExpandableEvidenceRow from '@/components/politicians/ExpandableEvidenceRow';
 import EarlierRecordSection from '@/components/politicians/EarlierRecordSection';
 import SourceProvenance from '@/components/ui/SourceProvenance';
-import { issueEvidenceSections } from '@/lib/data/topicCoverage';
+import { issueEvidenceSections } from '@/lib/topicCoverage';
 import { Info } from 'lucide-react';
 
 /**

@@ -54,12 +54,17 @@ interface BundleSnapshot {
   byBioguideId: Record<string, Record<string, TopicData>>;
 }
 
+function stripCitationCruft(text: string): string {
+  return text.replace(/\s*\[\d+\]/g, '').trim();
+}
+
 function dropClass(text: string): string | null {
   if (isVoteRestatementSaid(text)) return 'vote-restatement';
   if (isThirdPartyCharacterization(text)) return 'third-party';
   if (isEventNarration(text)) return 'event-narration';
   if (isBioBoilerplate(text)) return 'bio-boilerplate';
   if (isSiteFurniture(text)) return 'site-furniture';
+  if (/\[\d+\]/.test(text)) return 'citation-cruft';
   return null;
 }
 
@@ -80,6 +85,7 @@ async function main(): Promise<void> {
     'event-narration': 0,
     'bio-boilerplate': 0,
     'site-furniture': 0,
+    'citation-cruft': 0,
   };
   let membersAffected = new Set<string>();
   let positionsBefore = 0;
@@ -125,10 +131,10 @@ async function main(): Promise<void> {
       const kept: PlatformPositionEntry[] = [];
 
       for (const p of original) {
-        const text = decodeHtmlEntities(p.text);
+        const text = stripCitationCruft(decodeHtmlEntities(p.text));
         const reason = dropClass(text);
         if (reason) {
-          dropCounts[reason] += 1;
+          dropCounts[reason] = (dropCounts[reason] ?? 0) + 1;
           membersAffected.add(bioguideId);
           continue;
         }

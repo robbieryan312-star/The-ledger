@@ -11,6 +11,11 @@ import { getVoteviewByBioguide } from '@/lib/data/slices/voteview';
 import { getNewsFloridaBundle } from '@/lib/data/slices/newsFlorida';
 import { findRecordJuxtapositions } from '@/lib/data/recordJuxtapositions';
 import { mergeProfileNews, mergeProfileControversies, mergeProfileEndorsements } from '@/lib/data/memberProfile';
+import { buildSaidDidDiffsFromTopicPositions } from '@/lib/data/buildSaidDidDiffs';
+import { buildMergedProfileIssues } from '@/lib/data/issuesFromTopicPositions';
+import { buildOrgVoteTopicLinks } from '@/lib/data/buildOrgVoteTopicLinks';
+import { getScheduleAForBioguide, hasAggregatedScheduleA } from '@/lib/data/fecScheduleA';
+import { getMemberTopicPositions } from '@/lib/data/topicPositions';
 
 export default async function Page({
   params,
@@ -59,6 +64,23 @@ export default async function Page({
   const displayEndorsements = mergeProfileEndorsements(politician.endorsements, politician.bioguideId);
   const floridaNewsBundle = politician.stateCode === 'FL' ? getNewsFloridaBundle() : null;
   const isFeatured = politician.recordType !== 'lightweight';
+  const memberTopicPositions = politician.bioguideId
+    ? getMemberTopicPositions(politician.bioguideId)
+    : null;
+  const topicSaidDidDiffs = politician.bioguideId
+    ? buildSaidDidDiffsFromTopicPositions(politician.bioguideId, politician.name)
+    : [];
+  const displayIssues = buildMergedProfileIssues(
+    politician.bioguideId,
+    politician.topIssues,
+    isFeatured,
+  );
+  const scheduleAEntry = getScheduleAForBioguide(politician.bioguideId);
+  const useOfficialScheduleA = hasAggregatedScheduleA(politician.bioguideId);
+  const orgVoteLinks =
+    scheduleAEntry && congressEntry?.votes?.length
+      ? buildOrgVoteTopicLinks(scheduleAEntry, congressEntry.votes)
+      : [];
   const recordJuxtapositions =
     isFeatured && usingOfficialVotes && usingOfficialTrades
       ? findRecordJuxtapositions(displayVotes, displayStockTrades)
@@ -95,6 +117,12 @@ export default async function Page({
         floridaNewsBundle={floridaNewsBundle}
         recordJuxtapositions={recordJuxtapositions}
         isFederalCongress={isFederalCongress}
+        topicSaidDidDiffs={topicSaidDidDiffs}
+        displayIssues={displayIssues}
+        orgVoteLinks={orgVoteLinks}
+        useOfficialScheduleA={useOfficialScheduleA}
+        memberTopicPositions={memberTopicPositions}
+        scheduleAEntry={scheduleAEntry ?? undefined}
       />
     </>
   );

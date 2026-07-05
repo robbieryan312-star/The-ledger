@@ -3,21 +3,15 @@
 import { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { ComposableMap, Geographies, Geography, ZoomableGroup, Marker } from 'react-simple-maps';
-import { rosterStates, getPoliticiansForState, sortOfficialsForDisplay, resolveOffice } from '@/lib/data/allPoliticians';
-import { GOVERNOR_MAP_FILLS, getGovernorPartyKey } from '@/lib/data/governorMapColors';
+import type { MapExplorerDataProps, MapPoliticianRow } from '@/lib/types/mapProps';
 import { useMapNavigation } from '@/lib/context/MapNavigationContext';
-import OfficialCard from '@/components/counties/OfficialCard';
-import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
-import { FloridaRecordPanel, FloridaStateEconomicPanel } from '@/components/records/FloridaRecordPanel';
-import { getStateEconomicSlice } from '@/lib/data/slices/stateEconomic';
-import { getJudiciaryCourtsSlice } from '@/lib/data/slices/judiciaryCourts';
 import Link from 'next/link';
 import {
   X, ChevronDown, ChevronRight, Calendar, Users, AlertTriangle, Vote,
   MapPin, Building2, ArrowLeft, ExternalLink, History,
 } from 'lucide-react';
 import { Politician, CountyData, CountyElection, Election } from '@/lib/types';
-import type { SnapshotSlice } from '@/lib/data/snapshotTypes';
+import type { SnapshotSlice } from '@/lib/types/snapshotTypes';
 
 const countyByFips: Record<string, CountyData> = {};
 const countiesByState: Record<string, CountyData[]> = {};
@@ -105,10 +99,6 @@ const STATE_ABBR: Record<string, string> = {
   'West Virginia':'WV','Wisconsin':'WI','Wyoming':'WY','District of Columbia':'DC',
 };
 
-const STATE_NAME_BY_CODE: Record<string, string> = Object.fromEntries(
-  rosterStates.map((s) => [s.code, s.name]),
-);
-
 const NATIONAL: MapPosition = { center: [-97, 38], zoom: 1 };
 const DC_COORDS: [number, number] = [-77.04, 38.91];
 
@@ -118,6 +108,8 @@ function nationalStateStyle(
   isSel: boolean,
   isHov: boolean,
   isDimmed: boolean,
+  governorMapFills: MapExplorerDataProps['governorMapFills'],
+  governorPartyByState: MapExplorerDataProps['governorPartyByState'],
 ) {
   if (!stateCode) {
     return {
@@ -142,7 +134,7 @@ function nationalStateStyle(
   }
 
   const isDc = stateCode === 'DC';
-  const palette = GOVERNOR_MAP_FILLS[getGovernorPartyKey(stateCode)];
+  const palette = governorMapFills[governorPartyByState[stateCode] ?? 'unknown'];
 
   if (mapLevel === 'state' && isSel) {
     return {
@@ -243,7 +235,7 @@ function officialsSectionLabel(stateCode: string, count: number): string {
   return `Governor, U.S. Senate & House (${count})`;
 }
 
-function PoliticianRow({ politician }: { politician: Politician }) {
+function PoliticianRow({ politician }: { politician: MapPoliticianRow }) {
   const [expanded, setExpanded] = useState(false);
   const finance = politician.campaignFinance;
   const lobbyOrgTotal = finance.lobbyistMoney.reduce((s, l) => s + l.amount, 0);
@@ -271,7 +263,7 @@ function PoliticianRow({ politician }: { politician: Politician }) {
           <div className="text-white text-sm font-semibold truncate">{politician.name}</div>
           <div className="flex items-center gap-1.5">
             <span className={`text-xs px-1.5 py-0 rounded ${partyColor}`}>{politician.party[0]}</span>
-            <span className="text-gray-400 text-xs">{resolveOffice(politician).label}</span>
+            <span className="text-gray-400 text-xs">{politician.resolvedOffice.label}</span>
           </div>
         </div>
         <div className="flex items-center gap-1.5 flex-shrink-0">
@@ -342,9 +334,20 @@ function PoliticianRow({ politician }: { politician: Politician }) {
 }
 
 // ── Main component ────────────────────────────────────────────────────────────
-export default function USAMap() {
+export default function USAMap({
+  rosterStates,
+  politiciansByState,
+  governorMapFills,
+  governorPartyByState,
+  floridaEconomicSlice,
+  floridaCourtSlice,
+}: MapExplorerDataProps) {
   const searchParams = useSearchParams();
   const { registerNavigator } = useMapNavigation();
+  const stateNameByCode = useMemo(
+    () => Object.fromEntries(rosterStates.map((s) => [s.code, s.name])),
+    [rosterStates],
+  );
   const [mapLevel, setMapLevel]           = useState<MapLevel>('national');
   const [position, _setPosition]          = useState<MapPosition>(NATIONAL);
   const [selectedState, setSelectedState] = useState<string | null>(null);
@@ -457,8 +460,8 @@ export default function USAMap() {
     [selectedState],
   );
   const statePoliticians = useMemo(
-    () => (selectedState ? sortOfficialsForDisplay(getPoliticiansForState(selectedState)) : []),
-    [selectedState],
+    () => (selectedState ? politiciansByState[selectedState] ?? [] : []),
+    [selectedState, politiciansByState],
   );
   const MAP_SIDEBAR_OFFICIAL_LIMIT = 8;
   const stateElections: Election[] = useMemo(
@@ -474,31 +477,21 @@ export default function USAMap() {
   const selectedCountyData = selectedCounty ? countyByFips[selectedCounty] : null;
   const selectedCountyPending = selectedCounty && !selectedCountyData;
   const hoveredCountyData = hoveredCounty ? countyByFips[hoveredCounty.fips] : undefined;
-  const floridaCourtSlice = useMemo<SnapshotSlice>(() => {
-    const base = getJudiciaryCourtsSlice();
-    return {
-      ...base,
-      records: base.records.map((row) => ({
-        ...row,
-        detail: `${row.detail}. Pattern-based context: ${plainCourtSummary(row.title)}`,
-      })),
-    };
-  }, []);
   const hoveredStateSummary = useMemo(() => {
     if (!hoveredState || mapLevel !== 'national' || selectedState) return null;
-    const officials = getPoliticiansForState(hoveredState);
+    const officials = politiciansByState[hoveredState] ?? [];
     const governor = officials.find((p) => p.chamber === 'governor');
-    const econSlice = hoveredState === 'FL' ? getStateEconomicSlice() : null;
+    const econSlice = hoveredState === 'FL' ? floridaEconomicSlice : null;
     const medianIncome = econSlice?.indicators.find((i) => i.label === 'Median household income');
     const medianHomeValue = econSlice?.indicators.find((i) => i.label === 'Median home value');
     return {
-      stateLabel: STATE_NAME_BY_CODE[hoveredState] ?? hoveredState,
+      stateLabel: stateNameByCode[hoveredState] ?? hoveredState,
       governorName: governor?.name,
       medianIncome: medianIncome?.value,
       medianHomeValue: medianHomeValue?.value,
       officialCount: officials.length,
     };
-  }, [hoveredState, mapLevel, selectedState]);
+  }, [hoveredState, mapLevel, selectedState, politiciansByState, floridaEconomicSlice, stateNameByCode]);
 
   return (
     <div className="relative w-full h-full overflow-hidden">
@@ -564,8 +557,8 @@ export default function USAMap() {
                 const isSel     = selectedState === stateCode;
                 const isHov     = hoveredState === stateCode;
                 const isDimmed  = mapLevel === 'state' && !isSel;
-                const defaultStyle = nationalStateStyle(stateCode, mapLevel, isSel, isHov, isDimmed);
-                const hoverStyle = nationalStateStyle(stateCode, mapLevel, isSel, true, isDimmed);
+                const defaultStyle = nationalStateStyle(stateCode, mapLevel, isSel, isHov, isDimmed, governorMapFills, governorPartyByState);
+                const hoverStyle = nationalStateStyle(stateCode, mapLevel, isSel, true, isDimmed, governorMapFills, governorPartyByState);
 
                 return (
                   <Geography
@@ -670,10 +663,10 @@ export default function USAMap() {
             <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">Current governor party</div>
             <div className="flex flex-wrap gap-x-3 gap-y-1">
               {([
-                ['democrat', 'Democrat', GOVERNOR_MAP_FILLS.democrat.base],
-                ['republican', 'Republican', GOVERNOR_MAP_FILLS.republican.base],
-                ['independent', 'Independent', GOVERNOR_MAP_FILLS.independent.base],
-                ['unknown', 'No data', GOVERNOR_MAP_FILLS.unknown.base],
+                ['democrat', 'Democrat', governorMapFills.democrat.base],
+                ['republican', 'Republican', governorMapFills.republican.base],
+                ['independent', 'Independent', governorMapFills.independent.base],
+                ['unknown', 'No data', governorMapFills.unknown.base],
               ] as const).map(([, label, color]) => (
                 <div key={label} className="flex items-center gap-1.5">
                   <span className="w-3 h-3 rounded-sm border border-white/10" style={{ background: color }} />
@@ -914,7 +907,7 @@ export default function USAMap() {
                 {selectedState === 'FL' && (
                   <>
                     <FloridaStateEconomicPanel
-                      slice={getStateEconomicSlice()}
+                      slice={floridaEconomicSlice}
                       collapsedLabels={['Population', 'Unemployment level', 'Employment', 'Labor force']}
                     />
                     <FloridaRecordPanel

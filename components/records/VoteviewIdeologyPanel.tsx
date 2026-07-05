@@ -1,7 +1,7 @@
 'use client';
 
 import { ExternalLink } from 'lucide-react';
-import type { VoteviewMemberSlice } from '@/lib/data/snapshotTypes';
+import type { VoteviewMemberSlice } from '@/lib/types/snapshotTypes';
 import SourceProvenance from '@/components/ui/SourceProvenance';
 
 interface Props {

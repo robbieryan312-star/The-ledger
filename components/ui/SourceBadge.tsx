@@ -2,7 +2,7 @@
 
 import { Source, SourceTier } from '@/lib/types';
 import { Shield, CheckCircle, FileText, AlertTriangle, HelpCircle, ExternalLink } from 'lucide-react';
-import { TIER_HELP, tierHelpText } from '@/lib/data/sourceTiers';
+import { TIER_HELP, tierHelpText } from '@/lib/sourceTiers';
 import SourceTierHelp from '@/components/ui/SourceTierHelp';
 
 const TIER_CONFIG: Record<SourceTier, {

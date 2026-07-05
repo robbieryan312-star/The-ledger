@@ -3,7 +3,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { Search, MapPin, Vote, X } from 'lucide-react';
 import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
-import { searchPoliticians, resolveOffice } from '@/lib/data/allPoliticians';
+import { filterPoliticianHits } from '@/lib/politicianSearchIndex';
+import type { PoliticianSearchHit } from '@/lib/types/searchIndex';
 import Link from 'next/link';
 
 interface SearchResult {
@@ -17,7 +18,13 @@ interface SearchResult {
   lastName?: string;
 }
 
-export default function SearchBar({ large = false }: { large?: boolean }) {
+export default function SearchBar({
+  large = false,
+  politicianHits,
+}: {
+  large?: boolean;
+  politicianHits: PoliticianSearchHit[];
+}) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchResult[]>([]);
   const [open, setOpen] = useState(false);
@@ -42,12 +49,12 @@ export default function SearchBar({ large = false }: { large?: boolean }) {
       return;
     }
 
-    const politicianResults: SearchResult[] = searchPoliticians(q, 8).map((p) => ({
+    const politicianResults: SearchResult[] = filterPoliticianHits(politicianHits, q, 8).map((p) => ({
       type: 'politician' as const,
       id: p.id,
       name: p.name,
-      subtitle: `${p.party} · ${resolveOffice(p).label}`,
-      href: `/politicians/${p.id}`,
+      subtitle: `${p.party} · ${p.officeLabel}`,
+      href: p.href,
       imageUrl: p.imageUrl,
       firstName: p.firstName,
       lastName: p.lastName,

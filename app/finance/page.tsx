@@ -2,7 +2,10 @@ import { Suspense } from 'react';
 import FinanceContent from './FinanceContent';
 import Link from 'next/link';
 import { allPoliticians } from '@/lib/data/allPoliticians';
-import { fecFinanceCount, mergeCampaignFinance } from '@/lib/data/fecFinance';
+import { fecFinanceCount, mergeCampaignFinance, getFecFinanceSnapshot } from '@/lib/data/fecFinance';
+import { mergeVotingRecord } from '@/lib/data/congressVotes';
+import { getFinanceFldoeSlice } from '@/lib/data/slices/financeFldoe';
+import { getFilingsSecedgarSlice } from '@/lib/data/slices/filingsSecedgar';
 
 export const metadata = {
   title: 'Follow the Money — The Ledger',
@@ -30,6 +33,22 @@ export default async function FinancePage({
   const totalRaised = featuredFinance.reduce((sum, row) => sum + row.merged.finance.totalRaised, 0);
   const fecBackedFeatured = featuredFinance.filter((row) => !!row.merged.fecEntry).length;
   const nationalFinanceCount = fecFinanceCount();
+  const featuredWithFinance = featured.map((p) => {
+    const { finance, fecEntry } = mergeCampaignFinance(p.id, p.campaignFinance, p.bioguideId);
+    return { politician: p, finance, fecEntry };
+  });
+  const linkageRow = featuredWithFinance.find((r) => r.fecEntry && r.politician.bioguideId);
+  const linkageExample = linkageRow
+    ? {
+        row: linkageRow,
+        congressEntry: mergeVotingRecord(
+          linkageRow.politician.id,
+          linkageRow.politician.votingRecord,
+          linkageRow.politician.recordType,
+          linkageRow.politician.bioguideId,
+        ).congressEntry,
+      }
+    : null;
 
   return (
     <>
@@ -72,7 +91,14 @@ export default async function FinancePage({
       </div>
 
       <Suspense fallback={<div className="max-w-7xl mx-auto px-4 py-8 text-gray-500 text-sm">Loading finance…</div>}>
-        <FinanceContent initialSearchParams={initialSearchParams} />
+        <FinanceContent
+          initialSearchParams={initialSearchParams}
+          featuredWithFinance={featuredWithFinance}
+          fecMeta={getFecFinanceSnapshot().meta}
+          fldoeSlice={getFinanceFldoeSlice()}
+          filingsSlice={getFilingsSecedgarSlice()}
+          linkageExample={linkageExample}
+        />
       </Suspense>
     </>
   );

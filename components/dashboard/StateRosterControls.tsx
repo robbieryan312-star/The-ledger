@@ -21,7 +21,7 @@ import {
   rosterUsesDemoConsistency,
   rosterUsesDemoFinance,
   rosterUsesDemoTrades,
-} from '@/lib/dashboard/stateRoster';
+} from '@/lib/dashboard/stateRosterClient';
 
 interface StateRosterControlsProps {
   filters: StateRosterFilters;

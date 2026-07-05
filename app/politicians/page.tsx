@@ -1,7 +1,17 @@
 import { Suspense } from 'react';
-import { allPoliticians, getCoverageStats, resolveOffice } from '@/lib/data/allPoliticians';
+import {
+  allPoliticians,
+  getCoverageStats,
+  resolveOffice,
+  rosterStates,
+} from '@/lib/data/allPoliticians';
 import { fecFinanceCount } from '@/lib/data/fecFinance';
-import PoliticiansContent from './PoliticiansContent';
+import { congressVotesCount, mergeVotingRecord } from '@/lib/data/congressVotes';
+import {
+  buildPoliticianSearchIndex,
+  buildStateRosterIndex,
+} from '@/lib/data/politicianSearchIndex';
+import PoliticiansContent, { type PoliticiansListEntry } from './PoliticiansContent';
 import Link from 'next/link';
 
 export const metadata = {
@@ -19,6 +29,18 @@ export default async function PoliticiansPage({
   const stats = getCoverageStats();
   const filedCount = fecFinanceCount();
   const allCount = allPoliticians.length;
+  const politicianHits = buildPoliticianSearchIndex();
+  const states = buildStateRosterIndex();
+  const politicians: PoliticiansListEntry[] = allPoliticians.map((p) => ({
+    ...p,
+    resolvedOffice: resolveOffice(p),
+    displayVoteCount: mergeVotingRecord(
+      p.id,
+      p.votingRecord,
+      p.recordType,
+      p.bioguideId,
+    ).votes.length,
+  }));
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -59,7 +81,16 @@ export default async function PoliticiansPage({
 
       {/* CLIENT-SIDE INTERACTIVE CONTENT */}
       <Suspense fallback={<div className="text-gray-500 text-sm">Loading politicians...</div>}>
-        <PoliticiansContent initialSearchParams={initialSearchParams} />
+        <PoliticiansContent
+          initialSearchParams={initialSearchParams}
+          politicians={politicians}
+          rosterStates={rosterStates}
+          coverageStats={stats}
+          fecFinanceCount={filedCount}
+          congressVotesCount={congressVotesCount()}
+          politicianHits={politicianHits}
+          states={states}
+        />
       </Suspense>
     </div>
   );

@@ -3,7 +3,7 @@
 import type { RecordJuxtaposition } from '@/lib/types';
 import SourceProvenance from '@/components/ui/SourceProvenance';
 import { ProfileSectionAccordion } from '@/components/politicians/ProfileSectionAccordion';
-import { plainVoteSubtitle, plainVoteTitle } from '@/lib/data/voteDisplay';
+import { plainVoteSubtitle, plainVoteTitle } from '@/lib/voteDisplay';
 import { ArrowRight, Calendar, TrendingUp, Vote } from 'lucide-react';
 
 interface Props {

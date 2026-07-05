@@ -8,7 +8,7 @@ import {
   formatSourceDate,
   isJournalismTier,
   tierShortLabel,
-} from '@/lib/data/sourceTiers';
+} from '@/lib/sourceTiers';
 import { ExternalLink } from 'lucide-react';
 
 interface Props {

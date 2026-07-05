@@ -2,7 +2,7 @@
 
 import { HelpCircle } from 'lucide-react';
 import type { SourceTier } from '@/lib/types';
-import { TIER_HELP, tierHelpText } from '@/lib/data/sourceTiers';
+import { TIER_HELP, tierHelpText } from '@/lib/sourceTiers';
 
 interface Props {
   tier?: SourceTier;

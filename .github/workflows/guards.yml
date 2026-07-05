@@ -25,8 +25,13 @@ jobs:
           npm run test:org-join
           npm run test:source-integrity
           npm run test:copy-compliance
+          npm run test:topic-positions-bundle
           npm run test:news-registry
           npm run test:profile-snapshots
+          npm run test:client-bundle
 
       - name: Production build
         run: npm run build
+
+      - name: Client chunk budget
+        run: npm run test:client-chunks

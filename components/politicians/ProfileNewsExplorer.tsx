@@ -5,7 +5,7 @@ import type { NewsItem } from '@/lib/types';
 import { SOURCE_TIER_RANK } from '@/lib/types';
 import { TierLegend } from '@/components/ui/SourceBadge';
 import SourceProvenance from '@/components/ui/SourceProvenance';
-import { TIER_NUMBER } from '@/lib/data/sourceTiers';
+import { TIER_NUMBER } from '@/lib/sourceTiers';
 import {
   Newspaper,
   Search,
@@ -23,13 +23,12 @@ const SORT_OPTIONS: { id: SortMode; label: string }[] = [
   { id: 'tier', label: 'Most authoritative' },
 ];
 
-// Tier numbers shown in the filter row (1 = most credible). 4 covers both
-// alleged and unverified sources, which map to Tier 4 in the data policy.
+// Filter row uses tier code values (official/nonpartisan/media/alleged/unverified) via TIER_NUMBER — not "Tier N" labels in UI copy.
 const TIER_FILTERS: { num: number; label: string }[] = [
-  { num: 1, label: 'T1 · Official' },
-  { num: 2, label: 'T2 · Research' },
-  { num: 3, label: 'T3 · Journalism' },
-  { num: 4, label: 'T4 · Unverified' },
+  { num: 1, label: 'official · Official' },
+  { num: 2, label: 'nonpartisan · Research' },
+  { num: 3, label: 'media · Journalism' },
+  { num: 4, label: 'alleged/unverified · Caveat' },
 ];
 
 function toTime(date: string): number {

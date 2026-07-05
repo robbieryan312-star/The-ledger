@@ -6,6 +6,7 @@
  * the app reads the generated fecFinance.json snapshot at build time.
  */
 import type { Source } from '../types';
+import { fetchWithRetry } from './resilientFetch';
 
 const API_BASE = 'https://api.open.fec.gov/v1';
 
@@ -95,7 +96,10 @@ async function fecFetch<T>(path: string, params: Record<string, string> = {}): P
   let lastErr: unknown;
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
-      const res = await fetch(url.toString(), { signal: AbortSignal.timeout(30_000) });
+      const { response: res } = await fetchWithRetry(url.toString(), {
+        timeoutMs: 15_000,
+        maxAttempts: 2,
+      });
       if (!res.ok) {
         throw new Error(`OpenFEC request failed: HTTP ${res.status} ${res.statusText}`);
       }

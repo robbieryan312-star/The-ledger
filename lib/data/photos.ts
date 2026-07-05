@@ -43,11 +43,7 @@ export function congressPhotoUrl(
   return `https://bioguide.congress.gov/bioguide/photo/${firstLetter}/${bioguideId}.jpg`;
 }
 
-/** Human-facing attribution for the portrait collection. */
-export const PHOTO_ATTRIBUTION = {
-  label: 'Photo: public domain · GovTrack congressional portraits',
-  url: 'https://www.govtrack.us/congress/members',
-};
+export { PHOTO_ATTRIBUTION } from '@/lib/photoAttribution';
 
 /**
  * Official executive-branch portraits without a bioguide ID (cabinet principals).

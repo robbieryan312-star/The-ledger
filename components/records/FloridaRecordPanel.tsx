@@ -9,7 +9,7 @@ import type {
   SnapshotSlice,
   SnapshotSliceMeta,
   StateEconomicSlice,
-} from '@/lib/data/snapshotTypes';
+} from '@/lib/types/snapshotTypes';
 import SourceProvenance from '@/components/ui/SourceProvenance';
 
 function formatFetchedAt(iso?: string): string {

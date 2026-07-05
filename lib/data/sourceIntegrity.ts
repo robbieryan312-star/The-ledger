@@ -4,10 +4,10 @@
  */
 
 import {
-  RECORD_TOPIC_BUCKETS,
   classifyTextToRecordTopicId,
   recordKeywordMatches,
-} from './profileRecordByTopic';
+  RECORD_TOPIC_BUCKETS,
+} from '../recordTopicBuckets';
 import { hasUndecodedHtmlEntity } from './htmlEntities';
 import { isAllowedNewsArticleUrl, isRegistryNewsHost } from './newsFeedRegistry';
 import { normalizeTopicId } from './topicAliases';
@@ -46,6 +46,8 @@ export function isVoteRestatementSaid(text: string): boolean {
   if (/\b(voted for|voted against)\s+S\.?\s*\d/i.test(t)) return true;
   if (/\bThe resolution passed the (House|Senate) on\b/i.test(t)) return true;
   if (/On \w+ \d{1,2}, \d{4}, the (Senate|House) (passed|voted|took a vote)/i.test(t)) return true;
+  if (/On \w+ \d{1,2}, the (Senate|House)\b/i.test(t)) return true;
+  if (/\bthe (Senate|House) (voted|held a vote|passed)\b/i.test(t)) return true;
   if (/\bwon re-election to the U\.S\. (Senate|House)/i.test(t)) return true;
   return false;
 }
@@ -97,12 +99,21 @@ export function isEventNarration(text: string): boolean {
   if (/\bAttorney General\b.{0,60}\b(sent|wrote|responded|issued|announced)\b/i.test(t)) {
     return true;
   }
-  if (/\bsent a letter to\b/i.test(t)) return true;
+  if (/\b(sent a letter to|wrote to)\b/i.test(t)) {
+    if (/^(I|We)\b/i.test(t)) return false;
+    if (/^\s*[\u201c"]\s*(I|We)\b/i.test(t)) return false;
+    return true;
+  }
   if (/\bresponding to the filibuster\b/i.test(t)) return true;
   if (/\bto\s+Paul\b/i.test(t) && /\b(sent|wrote|letter|filibuster)\b/i.test(t)) return true;
   if (/\bHolder wrote\b/i.test(t)) return true;
 
   return false;
+}
+
+/** Ballotpedia [NNN] footnote markers — not member-stated position text. */
+export function hasCitationCruft(text: string): boolean {
+  return /\[\d+\]/.test(text);
 }
 
 /** Platform position text that is not a member's own stated position. */
@@ -111,7 +122,8 @@ export function isDisqualifiedPlatformPosition(text: string): boolean {
     || isThirdPartyCharacterization(text)
     || isEventNarration(text)
     || isBioBoilerplate(text)
-    || isSiteFurniture(text);
+    || isSiteFurniture(text)
+    || hasCitationCruft(text);
 }
 
 const VALID_TIERS = new Set(['official', 'nonpartisan', 'media', 'alleged', 'unverified']);
@@ -541,6 +553,7 @@ export function validateTopicPositionsBundle(
         const text = pos.text ?? '';
         pushIf(violations, label, isDisqualifiedPlatformPosition(text), 'disqualified text in topicPositions bundle');
         pushIf(violations, label, hasUndecodedHtmlEntity(text), 'undecoded HTML entity in bundle platform position');
+        pushIf(violations, label, hasCitationCruft(text), 'citation cruft [NNN] in bundle platform position');
       }
     }
   }

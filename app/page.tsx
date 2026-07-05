@@ -1,6 +1,12 @@
 import MapExplorer from '@/components/map/MapExplorer';
 import { MapNavigationProvider } from '@/lib/context/MapNavigationContext';
 import HomeSearchBar from '@/components/search/HomeSearchBar';
+import { buildMapProps } from '@/lib/data/buildMapProps';
+import {
+  buildPoliticianSearchIndex,
+  buildStateRosterIndex,
+} from '@/lib/data/politicianSearchIndex';
+import { rosterStates } from '@/lib/data/allPoliticians';
 import Link from 'next/link';
 import { ArrowRight, Shield, Vote, DollarSign, BarChart2 } from 'lucide-react';
 
@@ -11,6 +17,10 @@ const quickLinks = [
 ];
 
 export default function HomePage() {
+  const politicianHits = buildPoliticianSearchIndex();
+  const states = buildStateRosterIndex();
+  const mapProps = buildMapProps();
+
   return (
     <div className="min-h-screen bg-[#06101e]">
       <MapNavigationProvider>
@@ -34,7 +44,11 @@ export default function HomePage() {
                 Click any state to zoom in · Select a county · Search by ZIP, politician, or county name
               </p>
             </div>
-            <HomeSearchBar />
+            <HomeSearchBar
+              politicianHits={politicianHits}
+              states={states}
+              rosterStates={rosterStates}
+            />
           </div>
         </section>
 
@@ -56,7 +70,7 @@ export default function HomePage() {
 
         {/* ── Interactive map ── */}
         <section className="relative min-h-[620px] sm:min-h-[720px] border-y border-[#1e3a5f]/70">
-          <MapExplorer />
+          <MapExplorer {...mapProps} />
         </section>
       </MapNavigationProvider>
 
