@@ -1,5 +1,8 @@
 # State & County Official Expansion — Proposal
 
+> **DEPRECATED for agent routing.** Local/state expansion is deferred post-v1.0 (see `PROGRESS.md`
+> M2–M8). Do not implement Phase 2 or 3 below without explicit owner visual/product approval.
+
 **Status:** Awaiting owner approval. Do **not** implement Phase 2 or 3 until each checkpoint below is explicitly approved.
 
 **Context:** Phase 1 (federal Congress + governors) is live and verified. This document proposes how to extend coverage without fabricating local records or bulk mock data.

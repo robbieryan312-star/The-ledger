@@ -27,7 +27,8 @@ Read **in order** before implementing or asking the owner anything:
 2. `PROGRESS.md` — milestones M1–M8, status board, blockers
 3. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
 4. `KEYS.md` — which env vars are SET vs EMPTY (values only in `.env.local`)
-5. `PILOT_PROFILE_CHECKLIST.md` — what a complete profile requires
+5. `REPO.md` — canonical repo is `The-ledger` on `main`
+6. `PILOT_PROFILE_CHECKLIST.md` — what a complete profile requires
 
 Navigation index: `docs/AGENT_INDEX.md`. Task-specific: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`.
 

@@ -142,13 +142,13 @@ Elections, OpenCorporates — unchanged from prior log (see `.env.local` and `KE
 
 | Track | State (2026-07-05) |
 |-------|--------------------|
-| Migrated gold profiles | 6/537 (S000033, O000172, M000355, M001184, W000817, C001098) |
+| Migrated gold profiles | 7/537 (S000033, O000172, M000355, M001184, W000817, C001098, P000197) |
 | Docs cleanup + FL script consolidation | ✅ agent index, SETUP, FLORIDA_DATA, BATCH_SCALING, archive |
 | Phase C (display/credibility fix stack) | ✅ verified by Claude |
-| Phase D1–D4 | ✅ on origin/main (mock abolition, rules, RSS, CI guards) |
-| Bundle reprocess + client-bundle split | ✅ commit 8f801ba |
-| Phase E (Pelosi pipeline test) | Briefed — awaits Claude approval post-D |
-| Guard suites | 48+ locally; CI via guards.yml |
+| Phase D1–D4 | ✅ done (mock abolition, rules, RSS, CI guards) |
+| Phase E (Pelosi pipeline test) | Briefed — `profile:build` wired; certification in progress |
+| Recovery audit (P0–P7) | In progress — guards wired, paths canonicalized |
+| Guard suites | 11 in prebuild + CI via guards.yml |
 | Font self-host | OPEN (build depends on fonts.gstatic.com) |
 | News | RSS pipeline; honest gaps where feeds thin |
 

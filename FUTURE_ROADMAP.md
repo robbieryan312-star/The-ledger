@@ -1,5 +1,8 @@
 # The Ledger — Future Roadmap
 
+> **DEPRECATED for agent routing.** Ideas here are not scheduled work. Follow `PROGRESS.md`
+> milestones and `lib/data/SOURCE_LOOKUP.md` for current priorities.
+
 **Purpose:** Capture owner ideas for later consideration. This document does **not** authorize or schedule implementation. Current sprint work continues per `lib/data/DATA_INTEGRATION_PLAN.md` and `AGENTS.md`. For what "desirable" means (editorial voice, beat-Google bar), see `PRODUCT_VISION.md`.
 
 ---

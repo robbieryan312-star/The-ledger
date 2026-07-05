@@ -14,7 +14,8 @@ Before advising, coding, syncing data, or asking the owner for keys/email/scope,
 3. **`lib/data/SOURCE_LOOKUP.md`** — which source to use for each data need
 4. **`KEYS.md`** — SET vs EMPTY env vars (never ask for values already documented)
 5. **`REPO.md`** — canonical repo is `The-ledger` on `main`
-6. **`docs/AGENT_INDEX.md`** — navigation map (optional but recommended)
+6. **`PILOT_PROFILE_CHECKLIST.md`** — what a complete profile requires
+7. **`docs/AGENT_INDEX.md`** — navigation map (optional but recommended)
 
 Task-specific: **`AGENTS.md`**, **`.cursor/rules/ledger-data-policy.mdc`**, **`.cursor/rules/ledger-editorial-voice.mdc`**
 
@@ -45,8 +46,9 @@ Reference files before asking the owner anything: `KEYS.md`, `REPO.md`, `PROGRES
 
 ## When blocked
 
-Only stop for: scope changes, credibility tradeoffs, major UX direction, or human-only
-verification (CAPTCHA, login.gov). When a vendor form hits CAPTCHA or login.gov, open the
+Only stop for: scope changes, major UX direction, or human-only
+verification (CAPTCHA, login.gov). **Credibility tradeoffs** (conflicting sources,
+which record to trust) route to **Claude Code** per the written spec — not the owner. When a vendor form hits CAPTCHA or login.gov, open the
 URL in Chrome (`open -a "Google Chrome" "<url>"`) and continue other work.
 
 ## Guardrails

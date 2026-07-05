@@ -11,50 +11,41 @@ Run all: `npm run ingest:florida-all` (alias: `npm run ingest:all`)
 
 No-key subset: `npm run ingest:no-key`
 
-## Raw snapshot paths (do not move without updating `build-data-slices.ts`)
+## Raw snapshot paths (under `data/florida/` — do not move without updating `build-data-slices.ts`)
 
 | npm script | Script | Output JSON |
 |------------|--------|-------------|
-| `ingest:fec-fl` | `ingest-fec-florida.ts` | `data/fec/florida-candidates.json` |
-| `ingest:congress-fl` | `ingest-congress-florida.ts` | `data/congress/florida-votes.json` |
-| `ingest:govtrack-fl` | `ingest-govtrack-florida.ts` | `data/govtrack/florida-members.json` |
-| `ingest:usaspending-fl` | `ingest-usaspending-florida.ts` | `data/usaspending/florida-awards.json` |
-| `ingest:fara-fl` | `ingest-fara-florida.ts` | `data/fara/florida-registrations.json` |
-| `ingest:civic-fl` | `ingest-civic-florida.ts` | `data/civic/florida-officials.json` |
-| `ingest:census-fl` | `ingest-census-florida.ts` | `data/census/florida-demographics.json` |
-| `ingest:lobbying-fl` | `ingest-lobbying-florida.ts` | `data/lobbying/florida-lda.json` |
-| `ingest:openstates-fl` | `ingest-openstates-florida.ts` | `data/openstates/florida-bills.json` |
-| `ingest:legiscan-fl` | `ingest-legiscan-florida.ts` | `data/legiscan/florida-legislation.json` |
-| `ingest:news-fl` | `ingest-news-florida.ts` | `data/news/florida-articles.json` |
-| `ingest:sam-fl` | `ingest-sam-florida.ts` | `data/sam/florida-contractors.json` |
-| `ingest:fedregister-fl` | `ingest-fedregister-florida.ts` | `data/fedregister/florida-documents.json` |
-| `ingest:courts-fl` | `ingest-courtlistener-florida.ts` | `data/courts/florida-cases.json` |
-| `ingest:bls-fl` | `ingest-bls-florida.ts` | `data/bls/florida-employment.json` |
-| `ingest:fldoe-fl` | `ingest-fldoe-finance-florida.ts` | `data/fldoe/florida-education-finance.json` |
-| `ingest:govinfo-fl` | `ingest-govinfo-florida.ts` | `data/govinfo/florida-records.json` |
-| `ingest:secedgar-fl` | `ingest-secedgar-florida.ts` | `data/secedgar/florida-filings.json` |
-| `ingest:voteview-fl` | `ingest-voteview-florida.ts` | `data/voteview/florida-ideology.json` |
-| `ingest:fllobbyist-fl` | `ingest-fllobbyist-florida.ts` | `data/fllobbyist/florida-registrations.json` |
-| `ingest:gdelt-fl` | `ingest-gdelt-florida.ts` | `data/gdelt/florida-news.json` |
+| `ingest:fec-fl` | `ingest-fec-florida.ts` | `data/florida/fec/florida-candidates.json` |
+| `ingest:congress-fl` | `ingest-congress-florida.ts` | `data/florida/congress/florida-votes.json` |
+| `ingest:govtrack-fl` | `ingest-govtrack-florida.ts` | `data/florida/govtrack/florida-members.json` |
+| `ingest:usaspending-fl` | `ingest-usaspending-florida.ts` | `data/florida/spending/florida-contracts.json` |
+| `ingest:fara-fl` | `ingest-fara-florida.ts` | `data/florida/fara/florida-registrants.json` |
+| `ingest:civic-fl` | `ingest-civic-florida.ts` | `data/florida/civic/florida-districts.json` |
+| `ingest:census-fl` | `ingest-census-florida.ts` | `data/florida/census/florida-demographics.json` |
+| `ingest:lobbying-fl` | `ingest-lobbying-florida.ts` | `data/florida/lobbying/florida-disclosures.json` |
+| `ingest:openstates-fl` | `ingest-openstates-florida.ts` | `data/florida/openstates/florida-legislators.json` |
+| `ingest:legiscan-fl` | `ingest-legiscan-florida.ts` | `data/florida/legiscan/florida-legislation.json` |
+| `ingest:news-fl` | `ingest-news-florida.ts` | `data/florida/news/florida-coverage.json` |
+| `ingest:sam-fl` | `ingest-sam-florida.ts` | `data/florida/sam/florida-contractors.json` |
+| `ingest:fedregister-fl` | `ingest-fedregister-florida.ts` | `data/florida/fedregister/florida-documents.json` |
+| `ingest:courts-fl` | `ingest-courtlistener-florida.ts` | `data/florida/courts/florida-court-opinions.json` |
+| `ingest:bls-fl` | `ingest-bls-florida.ts` | `data/florida/bls/florida-labor.json` |
+| `ingest:fldoe-fl` | `ingest-fldoe-finance-florida.ts` | `data/florida/fldoe/florida-contributions.json` |
+| `ingest:govinfo-fl` | `ingest-govinfo-florida.ts` | `data/florida/govinfo/florida-legislative-docs.json` |
+| `ingest:secedgar-fl` | `ingest-secedgar-florida.ts` | `data/florida/secedgar/florida-filings.json` |
+| `ingest:voteview-fl` | `ingest-voteview-florida.ts` | `data/florida/voteview/florida-ideology.json` |
+| `ingest:fllobbyist-fl` | `ingest-fllobbyist-florida.ts` | `data/florida/fllobbyist/florida-lobbying-firm-directories.json` |
+
+**Retired:** `ingest:gdelt-fl` output — Florida GDELT snapshot removed (no UI consumer; national news uses RSS).
 
 ## UI slice accessors
 
-| Slice module | Panel |
-|--------------|-------|
-| `lib/data/slices/legislationFlorida.ts` | FL state legislation (LegiScan) |
-| `lib/data/slices/lobbyingFllobbyist.ts` | FL lobbying registrations |
-| `lib/data/slices/financeFldoe.ts` | FL education finance |
-| `lib/data/slices/judiciaryCourts.ts` | FL federal court records |
-| `lib/data/slices/filingsSecedgar.ts` | SEC EDGAR filings |
-| `lib/data/slices/stateEconomic.ts` | FL economic indicators (BLS, Census) |
-| `lib/data/slices/voteview.ts` | DW-NOMINATE ideology (national, keyed by bioguideId) |
+See lib/data/generated/slices/ for Florida UI accessors. Florida panels on
+politician profiles read slice JSON at build time — not the raw `data/florida/` files directly.
 
-Rebuild slices after ingest: `npm run build:data-slices`
+## Refresh
 
-## Scheduled refresh
+Daily refresh workflow: `.github/workflows/refresh-data.yml` (no-key subset always; keyed sources
+when GitHub secrets are set).
 
-`.github/workflows/refresh-data.yml` runs Florida ingest on schedule (see workflow for cadence).
-
-## Shared utilities
-
-Florida scripts import from `scripts/lib/ingest-utils.ts` (`writeFloridaSnapshot`, `fetchJson`, etc.).
+See also: `data/florida/README.md`, `docs/AGENT_INDEX.md`.

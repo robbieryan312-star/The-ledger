@@ -30,7 +30,9 @@ Tell the agent: *"keys are in .env.local"* when starting a session.
 
 ## 2. Git snapshot (recommended, optional)
 
-Versioning helps you roll back. The agent **will not commit** unless you run these yourself.
+Versioning helps you roll back. **Cursor agents commit locally when work passes review** (see
+`.cursor/rules/ledger-core-rules.mdc`); **push to `origin/main` requires explicit APPROVAL**.
+The owner may also commit manually:
 
 ```bash
 cd /Users/robertryan/Downloads/code-claude-cool-ride-iomjzf
