@@ -12,6 +12,9 @@ import {
 } from 'lucide-react';
 import { Politician, CountyData, CountyElection, Election } from '@/lib/types';
 import type { SnapshotSlice } from '@/lib/types/snapshotTypes';
+import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
+import OfficialCard from '@/components/counties/OfficialCard';
+import { FloridaRecordPanel, FloridaStateEconomicPanel } from '@/components/records/FloridaRecordPanel';
 
 const countyByFips: Record<string, CountyData> = {};
 const countiesByState: Record<string, CountyData[]> = {};

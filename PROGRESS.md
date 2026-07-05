@@ -1,6 +1,6 @@
 # The Ledger — Roadmap & Progression Expectations
 
-**Last updated:** 2026-07-04 · **Branch:** `main` · **Live demo:** https://the-ledger-gamma.vercel.app
+**Last updated:** 2026-07-05 · **Branch:** `main` · **Live demo:** https://the-ledger-gamma.vercel.app
 **This file replaces the old progress log as the canonical forward guide.** It binds BOTH
 agents (Claude Code + Cursor). Rules live in `.cursor/rules/ledger-core-rules.mdc` — this file
 never restates them, it sequences the work.
@@ -147,6 +147,8 @@ Elections, OpenCorporates — unchanged from prior log (see `.env.local` and `KE
 | Phase C (display/credibility fix stack) | ✅ verified by Claude |
 | Phase D1–D4 | ✅ on origin/main (mock abolition, rules, RSS, CI guards) |
 | Bundle reprocess + client-bundle split | ✅ commit 8f801ba |
+| Stock-trades sync (House PTR preload + lock) | ✅ commit 768051d — 3 index fetches/run, fetchWithRetry, syncLock |
+| CI refresh-data PR fallback | ✅ 768051d — push succeeds when GITHUB_TOKEN cannot open PR |
 | Phase E (Pelosi pipeline test) | Briefed — awaits Claude approval post-D |
 | Guard suites | 48+ locally; CI via guards.yml |
 | Font self-host | OPEN (build depends on fonts.gstatic.com) |

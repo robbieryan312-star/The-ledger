@@ -1,0 +1,11 @@
+import { isEventNarration, isVoteRestatementSaid } from './lib/data/sourceIntegrity';
+const LETTER = "On September 5, 2013, Pelosi sent a third letter to House Democrats highlighting the restrictions of the Senate's use-of-force resolution.";
+const INQUIRY = 'House Speaker Nancy Pelosi (D-Calif.) first announced the House would pursue an inquiry into Trump on September 24, 2019, following allegations that Trump requested the Ukrainian government investigate former Vice President Joe Biden (D).';
+const ELECTION = "Pelosi won re-election in the 2012 election for the U.S. House , representing California's 12th District . She was displaced from her former district, the 8th , by redistricting.";
+const GOOD = "Introduced measure to provide necessary funding for Israel's missile defense, Arrow System, David's Sling and Iron Dome.";
+const EVENT = 'The day after the filibuster, Attorney General Eric Holder sent a letter to Paul , responding to the filibuster.';
+console.log('LETTER  event:', isEventNarration(LETTER), '(want true)');
+console.log('INQUIRY event:', isEventNarration(INQUIRY), '(want true)');
+console.log('ELECTION vote:', isVoteRestatementSaid(ELECTION), '(want true)');
+console.log('GOOD    event:', isEventNarration(GOOD), '(want false)');
+console.log('EVENT   event:', isEventNarration(EVENT), '(want true)');

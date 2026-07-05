@@ -49,6 +49,7 @@ export function isVoteRestatementSaid(text: string): boolean {
   if (/On \w+ \d{1,2}, the (Senate|House)\b/i.test(t)) return true;
   if (/\bthe (Senate|House) (voted|held a vote|passed)\b/i.test(t)) return true;
   if (/\bwon re-election to the U\.S\. (Senate|House)/i.test(t)) return true;
+  if (/\bwon re-election in the \d{4} election for the U\.S\. (Senate|House)/i.test(t)) return true;
   return false;
 }
 
@@ -104,6 +105,10 @@ export function isEventNarration(text: string): boolean {
     if (/^\s*[\u201c"]\s*(I|We)\b/i.test(t)) return false;
     return true;
   }
+  if (/\bsent\b.{0,40}\bletter to\b/i.test(t)) return true;
+  if (/^On \w+ \d{1,2}, \d{4}, \w+ sent\b/i.test(t)) return true;
+  if (/\bfirst announced the (House|Senate) would pursue an inquiry\b/i.test(t)) return true;
+  if (/\bannounced the House would pursue an inquiry\b/i.test(t)) return true;
   if (/\bresponding to the filibuster\b/i.test(t)) return true;
   if (/\bto\s+Paul\b/i.test(t) && /\b(sent|wrote|letter|filibuster)\b/i.test(t)) return true;
   if (/\bHolder wrote\b/i.test(t)) return true;
