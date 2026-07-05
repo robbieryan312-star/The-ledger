@@ -5,6 +5,9 @@
 import type { SourceTier, VoteChoice } from '../types';
 import snapshot from './generated/topicPositions.json';
 import { getMemberProfileTopicPositions } from './memberProfile';
+import { clean } from './displaySummary';
+import { decodeHtmlEntities } from './htmlEntities';
+import { isDisqualifiedPlatformPosition } from './sourceIntegrity';
 
 export interface PlatformPositionEntry {
   text: string;
@@ -80,38 +83,76 @@ export interface TopicPositionsSnapshot {
 
 const data = snapshot as TopicPositionsSnapshot;
 
+function sanitizePlatformPosition(p: PlatformPositionEntry): PlatformPositionEntry | null {
+  const text = decodeHtmlEntities(p.text);
+  if (isDisqualifiedPlatformPosition(text)) return null;
+  return { ...p, text };
+}
+
+function sanitizeTopicData(topic: TopicPositionData): TopicPositionData | null {
+  const platformPositions = (topic.platformPositions ?? [])
+    .map(sanitizePlatformPosition)
+    .filter((p): p is PlatformPositionEntry => p !== null);
+
+  const statedRaw = topic.statedPosition ? decodeHtmlEntities(topic.statedPosition) : undefined;
+  const statedPosition =
+    statedRaw && !isDisqualifiedPlatformPosition(statedRaw) ? statedRaw : undefined;
+
+  const statements = (topic.statements ?? []).map((s) => {
+    const title = decodeHtmlEntities(s.title);
+    return {
+      ...s,
+      title,
+      displayText: s.displayText !== undefined ? clean(title) : s.displayText,
+    };
+  }).filter((s) => !isDisqualifiedPlatformPosition(s.title));
+
+  const saidDidLinks = topic.saidDidLinks ?? [];
+
+  if (
+    platformPositions.length === 0 &&
+    statements.length === 0 &&
+    !statedPosition &&
+    saidDidLinks.length === 0
+  ) {
+    return null;
+  }
+
+  return {
+    ...topic,
+    platformPositions: platformPositions.length > 0 ? platformPositions : undefined,
+    statedPosition,
+    statements,
+    saidDidLinks,
+  };
+}
+
+function sanitizeMemberTopics(
+  member: Record<string, TopicPositionData>,
+): Record<string, TopicPositionData> {
+  const out: Record<string, TopicPositionData> = {};
+  for (const [topicId, topic] of Object.entries(member)) {
+    const sanitized = sanitizeTopicData(topic);
+    if (sanitized) out[topicId] = sanitized;
+  }
+  return out;
+}
+
 export function getTopicPositions(
   bioguideId: string,
   topicId: string,
 ): TopicPositionData | null {
   const member = getMemberTopicPositions(bioguideId);
   if (!member) return null;
-  const topic = member[topicId];
-  if (!topic) return null;
-
-  const platformPositions = topic.platformPositions ?? [];
-  const statements = topic.statements ?? [];
-  const saidDidLinks = topic.saidDidLinks ?? [];
-  const hasPosition = Boolean(topic.statedPosition?.trim());
-  const hasPlatform = platformPositions.length > 0;
-
-  if (!hasPlatform && statements.length === 0 && !hasPosition && saidDidLinks.length === 0) {
-    return null;
-  }
-
-  return {
-    platformPositions: platformPositions.length > 0 ? platformPositions : undefined,
-    statedPosition: topic.statedPosition,
-    statedPositionSource: topic.statedPositionSource,
-    statements,
-    saidDidLinks,
-  };
+  return member[topicId] ?? null;
 }
 
 export function getMemberTopicPositions(bioguideId: string): Record<string, TopicPositionData> | null {
   const profile = getMemberProfileTopicPositions(bioguideId);
-  if (profile) return profile;
-  return data.byBioguideId[bioguideId] ?? null;
+  const raw = profile ?? data.byBioguideId[bioguideId] ?? null;
+  if (!raw) return null;
+  const sanitized = sanitizeMemberTopics(raw);
+  return Object.keys(sanitized).length > 0 ? sanitized : null;
 }
 
 export function countMembersWithTopicPositions(): number {

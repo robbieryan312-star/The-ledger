@@ -12,6 +12,8 @@ import {
   SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH,
   SAID_DID_KNOWN_BAD_TAUTOLOGY,
   PLATFORM_KNOWN_BAD_EVENT_NARRATION,
+  PLATFORM_KNOWN_BAD_BIO_BOILERPLATE,
+  PLATFORM_KNOWN_BAD_SITE_FURNITURE,
   PLATFORM_KNOWN_GOOD_MEMBER_POSITION,
   SOURCE_INTEGRITY_KNOWN_BAD_URLS,
   SOURCE_INTEGRITY_KNOWN_GOOD_URLS,
@@ -26,6 +28,8 @@ import {
   isGenuineSaidDidDiff,
   isPlaceholderUrl,
   isThirdPartyCharacterization,
+  isBioBoilerplate,
+  isSiteFurniture,
   isEventNarration,
   isVoteRestatementSaid,
   normalizeUrlForDedupe,
@@ -35,6 +39,7 @@ import {
   validateProfileSources,
   validateSaidDidDiffs,
   validateStatementsFile,
+  validateTopicPositionsBundle,
 } from '../../lib/data/sourceIntegrity';
 import { buildSaidDidDiffsFromTopicPositions } from '../../lib/data/buildSaidDidDiffs';
 import { MIGRATED_PROFILE_BIOGUIDES } from '../../lib/data/memberProfile';
@@ -44,6 +49,7 @@ import { validateProfileVotesSufficiency } from '../../lib/data/profileVotesSuff
 import { hasNationalCongressVotes } from '../../lib/data/nationalCongressVotes';
 
 const PROFILES_ROOT = path.join(process.cwd(), 'lib/data/generated/profiles');
+const GENERATED_DIR = path.join(process.cwd(), 'lib/data/generated');
 
 function loadProfileJson(bioguideId: string, name: string): unknown {
   return JSON.parse(readFileSync(path.join(PROFILES_ROOT, bioguideId, name), 'utf8'));
@@ -102,6 +108,25 @@ test('event narration is rejected as member stated position (C001098 Holder/Paul
   assert.equal(isEventNarration(PLATFORM_KNOWN_BAD_EVENT_NARRATION), true);
   assert.equal(isEventNarration(PLATFORM_KNOWN_GOOD_MEMBER_POSITION), false);
   assert.equal(isEventNarration('Successfully defended the constitutionality of the Texas Ten Commandments monument'), false);
+});
+
+test('bio boilerplate and site furniture are rejected (A000055 bundle fixtures)', () => {
+  assert.equal(isBioBoilerplate(PLATFORM_KNOWN_BAD_BIO_BOILERPLATE), true);
+  assert.equal(isSiteFurniture(PLATFORM_KNOWN_BAD_SITE_FURNITURE), true);
+  assert.equal(isBioBoilerplate(PLATFORM_KNOWN_GOOD_MEMBER_POSITION), false);
+  assert.equal(isSiteFurniture(PLATFORM_KNOWN_GOOD_MEMBER_POSITION), false);
+});
+
+test('topicPositions.json bundle has no disqualified platform positions', () => {
+  const bundle = JSON.parse(
+    readFileSync(path.join(GENERATED_DIR, 'topicPositions.json'), 'utf8'),
+  ) as Parameters<typeof validateTopicPositionsBundle>[0];
+  const violations = validateTopicPositionsBundle(bundle);
+  assert.equal(
+    violations.length,
+    0,
+    `topicPositions bundle violations (first 10):\n${violations.slice(0, 10).map((v) => `  ${v.path}: ${v.message}`).join('\n')}`,
+  );
 });
 
 test('known-bad subject-mismatched Said→Did is rejected', () => {
@@ -241,11 +266,16 @@ test('migrated members must NOT appear in demo congressVotes.json (single source
 });
 
 for (const bioguideId of MIGRATED_PROFILE_BIOGUIDES) {
-  test(`${bioguideId} profile endorsements/controversies/news pass source integrity`, () => {
+  test(`${bioguideId} profile destination files pass source integrity`, () => {
     const violations = validateProfileSources({
       endorsements: loadProfileJson(bioguideId, 'endorsements.json'),
       controversies: loadProfileJson(bioguideId, 'controversies.json'),
       news: loadProfileJson(bioguideId, 'news.json'),
+      finance: loadProfileJson(bioguideId, 'finance.json'),
+      trades: loadProfileJson(bioguideId, 'trades.json'),
+      legislation: loadProfileJson(bioguideId, 'legislation.json'),
+      orgVoteLinks: loadProfileJson(bioguideId, 'orgVoteLinks.json'),
+      saidDid: loadProfileJson(bioguideId, 'saidDid.json'),
     });
     assert.equal(
       violations.length,
@@ -311,7 +341,6 @@ for (const bioguideId of MIGRATED_PROFILE_BIOGUIDES) {
 }
 
 // ── Generated JSON: no mock keys, state-count integrity ──────────────
-const GENERATED_DIR = path.join(process.cwd(), 'lib/data/generated');
 
 test('no key matching /mock/i in any generated JSON file', () => {
   const violations: string[] = [];

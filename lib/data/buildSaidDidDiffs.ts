@@ -1,6 +1,6 @@
 import type { SaidDidDiff } from '../types';
 import { RECORD_TOPIC_BUCKETS, recordKeywordMatches } from './profileRecordByTopic';
-import { isVoteRestatementSaid, saidDidSubjectsOverlap } from './sourceIntegrity';
+import { isDisqualifiedPlatformPosition, isVoteRestatementSaid, saidDidSubjectsOverlap } from './sourceIntegrity';
 import { getMemberTopicPositions, type TopicPositionData } from './topicPositions';
 import type { SaidDidLinkEntry } from './topicPositions';
 
@@ -162,7 +162,7 @@ function pickSaidForLink(
   }
 
   for (const pos of topicData.platformPositions ?? []) {
-    if (isVoteRestatementSaid(pos.text)) continue;
+    if (isDisqualifiedPlatformPosition(pos.text)) continue;
     if (
       platformKeyVoteMatchesLink(pos.text, link) &&
       saidDidSubjectsOverlap(pos.text, `${link.billNumber}: ${link.billTitle}`)

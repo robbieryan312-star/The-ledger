@@ -94,11 +94,11 @@ export function buildIssuesFromTopicPositions(bioguideId: string): Issue[] {
     const policyDef = STANDARD_POLICY_TOPICS.find((t) => t.id === policyId);
     if (!policyDef) continue;
 
-    const cleanPlatformPositions = (data.platformPositions ?? []).filter(
+    const platformPositions = (data.platformPositions ?? []).filter(
       (p) => !isDisqualifiedPlatformPosition(p.text),
     );
     const hasContent =
-      cleanPlatformPositions.length > 0 ||
+      platformPositions.length > 0 ||
       data.statements.some(isPolicyStatement) ||
       (data.saidDidLinks?.length ?? 0) > 0 ||
       Boolean(data.statedPosition?.trim());
@@ -109,17 +109,20 @@ export function buildIssuesFromTopicPositions(bioguideId: string): Issue[] {
     const headlineStatement = policyStatements[0];
     const headlineDisplay =
       (headlineStatement ? statementDisplayText(headlineStatement) : undefined) ??
-      cleanPlatformPositions[0]?.text ??
-      data.statedPosition ??
-      policyDef.label;
+      platformPositions[0]?.text ??
+      data.statedPosition;
+
+    // Label-echo guard: never render the topic name as if it were a stated position.
+    if (!headlineDisplay?.trim()) continue;
+    if (headlineDisplay.trim().toLowerCase() === policyDef.label.trim().toLowerCase()) continue;
 
     const evidence = buildEvidence(policyId, data);
     const summarySource =
-      policyStatements[0] ?? cleanPlatformPositions[0]
+      policyStatements[0] ?? platformPositions[0]
         ? {
             text:
               (policyStatements[0] ? statementDisplayText(policyStatements[0]) : undefined) ??
-              cleanPlatformPositions[0]?.text ??
+              platformPositions[0]?.text ??
               '',
           }
         : null;

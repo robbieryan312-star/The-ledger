@@ -131,6 +131,14 @@ export const SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH = {
 export const PLATFORM_KNOWN_BAD_EVENT_NARRATION =
   'The day after the filibuster, Attorney General Eric Holder sent a letter to Paul , responding to the filibuster. Holder wrote, "Does the president have the authority to use a weaponized drone to kill an American not engaged in combat on U.S. soil? The answer to that is no." [198]';
 
-/** Genuine first-person member action — MUST pass event-narration guard. */
+/** A000055 bio-boilerplate — MUST reject (bundle triage fixture). */
+export const PLATFORM_KNOWN_BAD_BIO_BOILERPLATE =
+  "Robert Aderholt ( Republican Party ) is a member of the U.S. House , representing Alabama's 4th Congressional District . He assumed office on January 3, 1997. His current term ends on January 3, 2027.";
+
+/** Ballotpedia finance disclaimer — MUST reject as member position (site furniture fixture). */
+export const PLATFORM_KNOWN_BAD_SITE_FURNITURE =
+  'Note: The finance data shown here comes from the disclosures required of candidates and parties. Depending on the election or state, this may represent only a portion of all the funds spent on their behalf.';
+
+/** Genuine first-person member action — MUST pass disqualification guards. */
 export const PLATFORM_KNOWN_GOOD_MEMBER_POSITION =
   'Introduced measure to provide necessary funding for Israel\u2019s missile defense, Arrow System, David\u2019s Sling and Iron Dome.';
