@@ -1,0 +1,111 @@
+{
+  "generatedAt": "2026-07-05T22:33:18.925Z",
+  "count": 7,
+  "members": [
+    {
+      "bioguideId": "C001098",
+      "categories": [
+        "statements",
+        "positions",
+        "saidDid",
+        "orgVoteLinks",
+        "votes",
+        "finance",
+        "news",
+        "controversies",
+        "endorsements"
+      ],
+      "politicianId": "C001098"
+    },
+    {
+      "bioguideId": "M000355",
+      "categories": [
+        "statements",
+        "positions",
+        "saidDid",
+        "orgVoteLinks",
+        "votes",
+        "finance",
+        "news",
+        "controversies",
+        "endorsements"
+      ],
+      "politicianId": "mitch-mcconnell"
+    },
+    {
+      "bioguideId": "M001184",
+      "categories": [
+        "statements",
+        "positions",
+        "saidDid",
+        "orgVoteLinks",
+        "votes",
+        "finance",
+        "news",
+        "controversies",
+        "endorsements"
+      ],
+      "politicianId": "rep-massie"
+    },
+    {
+      "bioguideId": "O000172",
+      "categories": [
+        "statements",
+        "positions",
+        "saidDid",
+        "orgVoteLinks",
+        "votes",
+        "finance",
+        "news",
+        "controversies",
+        "endorsements"
+      ],
+      "politicianId": "alexandria-ocasio-cortez"
+    },
+    {
+      "bioguideId": "P000197",
+      "categories": [
+        "statements",
+        "positions",
+        "saidDid",
+        "orgVoteLinks",
+        "votes",
+        "finance",
+        "news",
+        "controversies",
+        "endorsements"
+      ],
+      "politicianId": "nancy-pelosi"
+    },
+    {
+      "bioguideId": "S000033",
+      "categories": [
+        "statements",
+        "positions",
+        "saidDid",
+        "orgVoteLinks",
+        "votes",
+        "finance",
+        "news",
+        "controversies",
+        "endorsements"
+      ],
+      "politicianId": "bernie-sanders"
+    },
+    {
+      "bioguideId": "W000817",
+      "categories": [
+        "statements",
+        "positions",
+        "saidDid",
+        "orgVoteLinks",
+        "votes",
+        "finance",
+        "news",
+        "controversies",
+        "endorsements"
+      ],
+      "politicianId": "W000817"
+    }
+  ]
+}
