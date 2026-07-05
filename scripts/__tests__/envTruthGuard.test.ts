@@ -9,6 +9,21 @@ import test from 'node:test';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const ENV_EXAMPLE = path.join(projectRoot, '.env.example');
+
+/** Optional override URLs documented in .env.example; code uses hardcoded defaults until wired. */
+const GROUND_TRUTH_ENV_VARS = new Set([
+  'CENSUS_ENDPOINT',
+  'FARA_ENDPOINT',
+  'GDELT_ENDPOINT',
+  'GOVTRACK_ENDPOINT',
+  'HOUSE_DISCLOSURES_URL',
+  'MIT_ELECTIONS_URL',
+  'OPENCORPORATES_ENDPOINT',
+  'SENATE_DISCLOSURES_URL',
+  'SENATE_LDA_ENDPOINT',
+  'USASPENDING_ENDPOINT',
+]);
+
 const CODE_ROOTS = [
   path.join(projectRoot, 'scripts'),
   path.join(projectRoot, 'lib'),

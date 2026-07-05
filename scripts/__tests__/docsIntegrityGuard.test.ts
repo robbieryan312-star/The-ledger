@@ -19,6 +19,12 @@ const SKIP_DOC = new Set([
   path.join(projectRoot, 'docs', 'progress'),
 ]);
 
+/** Sync/ingest outputs documented before first run in a fresh clone. */
+const ALLOW_MISSING_PATHS = new Set([
+  'data/florida/fec/florida-candidates.json',
+  'lib/data/generated/newsNational.json',
+]);
+
 function walkMd(dir: string, acc: string[] = []): string[] {
   if (SKIP_DOC.has(dir)) return acc;
   for (const ent of readdirSync(dir)) {
@@ -54,7 +60,11 @@ function collectDocCitations(): { npmScripts: string[]; paths: string[] } {
     for (const file of files) {
       const text = readFileSync(file, 'utf8');
       let m: RegExpExecArray | null;
-      while ((m = npmRe.exec(text)) !== null) npmScripts.push(m[1]);
+      while ((m = npmRe.exec(text)) !== null) {
+        const name = m[1];
+        if (name.endsWith(':') || name.endsWith('*')) continue;
+        npmScripts.push(name);
+      }
       while ((m = pathRe.exec(text)) !== null) paths.push(m[1]);
     }
   }
@@ -74,7 +84,9 @@ test('every npm run script cited in docs exists in package.json', () => {
 
 test('every backtick repo path cited in docs exists on disk', () => {
   const { paths } = collectDocCitations();
-  const missing = [...new Set(paths)].filter((p) => !existsSync(path.join(projectRoot, p))).sort();
+  const missing = [...new Set(paths)].filter(
+    (p) => !existsSync(path.join(projectRoot, p)) && !ALLOW_MISSING_PATHS.has(p),
+  ).sort();
   assert.equal(
     missing.length,
     0,
@@ -85,4 +97,30 @@ test('every backtick repo path cited in docs exists on disk', () => {
 test('guard demo: fake npm script citation would fail', () => {
   const scripts = new Set(['build', 'sync:legislators']);
   assert.equal(scripts.has('sync:totally-fake'), false);
+});
+
+test('sync script headers cite npm run commands that exist in package.json', () => {
+  const scripts = loadPackageScripts();
+  const scriptsDir = path.join(projectRoot, 'scripts');
+  const missing: string[] = [];
+  const npmRe = /npm run ([a-zA-Z0-9:_-]+)/g;
+
+  for (const ent of readdirSync(scriptsDir)) {
+    if (!ent.endsWith('.ts') || ent.startsWith('__tests__')) continue;
+    const file = path.join(scriptsDir, ent);
+    const text = readFileSync(file, 'utf8');
+    const header = text.slice(0, Math.min(text.length, 1200));
+    let m: RegExpExecArray | null;
+    while ((m = npmRe.exec(header)) !== null) {
+      const name = m[1];
+      if (name.endsWith(':') || name.endsWith('*')) continue;
+      if (!scripts.has(name)) missing.push(`${ent}: npm run ${name}`);
+    }
+  }
+
+  assert.equal(
+    missing.length,
+    0,
+    `sync script headers cite missing npm scripts:\n${missing.slice(0, 10).join('\n')}`,
+  );
 });

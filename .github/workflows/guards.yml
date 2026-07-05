@@ -29,6 +29,9 @@ jobs:
           npm run test:news-registry
           npm run test:profile-snapshots
           npm run test:client-bundle
+          npm run test:docs-integrity
+          npm run test:data-layout
+          npm run test:env-truth
 
       - name: Production build
         run: npm run build
