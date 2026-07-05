@@ -49,9 +49,17 @@ interface TopicData {
   saidDidLinks: unknown[];
 }
 
-interface BundleSnapshot {
+export interface BundleSnapshot {
   meta: Record<string, unknown>;
   byBioguideId: Record<string, Record<string, TopicData>>;
+}
+
+export interface ReprocessReport {
+  dropCounts: Record<string, number>;
+  membersAffected: number;
+  positionsBefore: number;
+  positionsAfter: number;
+  reclassified: number;
 }
 
 function dropClass(text: string): string | null {
@@ -74,6 +82,19 @@ function retrimIncompleteTail(text: string): string {
 
 async function main(): Promise<void> {
   const snapshot = JSON.parse(await readFile(BUNDLE_FILE, 'utf8')) as BundleSnapshot;
+  const report = sanitizeTopicBundleSnapshot(snapshot);
+
+  await writeFile(BUNDLE_FILE, `${JSON.stringify(snapshot, null, 2)}\n`, 'utf8');
+
+  console.log('reprocess-topic-positions-bundle: complete\n');
+  console.log('Positions before:', report.positionsBefore);
+  console.log('Positions after:', report.positionsAfter);
+  console.log('Dropped by class:', report.dropCounts);
+  console.log('Members affected:', report.membersAffected);
+  console.log('Statements reclassified:', report.reclassified);
+}
+
+export function sanitizeTopicBundleSnapshot(snapshot: BundleSnapshot): ReprocessReport {
   const dropCounts: Record<string, number> = {
     'vote-restatement': 0,
     'third-party': 0,
@@ -119,8 +140,14 @@ async function main(): Promise<void> {
       (statementsByTopic[stmt.topicId] ??= []).push(stmt);
     }
 
-    for (const [topicId, topic] of Object.entries(topics)) {
-      const original = topic.platformPositions ?? [];
+    const outputTopicIds = new Set([
+      ...Object.keys(topics),
+      ...Object.keys(statementsByTopic),
+    ]);
+
+    for (const topicId of outputTopicIds) {
+      const topic = topics[topicId];
+      const original = topic?.platformPositions ?? [];
       positionsBefore += original.length;
       const kept: PlatformPositionEntry[] = [];
 
@@ -136,19 +163,19 @@ async function main(): Promise<void> {
       }
       positionsAfter += kept.length;
 
-      const statedRaw = topic.statedPosition ? decodeHtmlEntities(topic.statedPosition) : undefined;
+      const statedRaw = topic?.statedPosition ? decodeHtmlEntities(topic.statedPosition) : undefined;
       const statedPosition =
         statedRaw && !isDisqualifiedPlatformPosition(statedRaw) ? statedRaw : undefined;
 
       const statements = statementsByTopic[topicId] ?? [];
-      const saidDidLinks = topic.saidDidLinks ?? [];
+      const saidDidLinks = topic?.saidDidLinks ?? [];
 
       if (kept.length === 0 && statements.length === 0 && !statedPosition && saidDidLinks.length === 0) {
         continue;
       }
 
       newTopics[topicId] = {
-        ...topic,
+        ...(topic ?? { statements: [], saidDidLinks: [] }),
         platformPositions: kept.length > 0 ? kept : undefined,
         statedPosition,
         statements,
@@ -163,17 +190,18 @@ async function main(): Promise<void> {
     }
   }
 
-  await writeFile(BUNDLE_FILE, `${JSON.stringify(snapshot, null, 2)}\n`, 'utf8');
-
-  console.log('reprocess-topic-positions-bundle: complete\n');
-  console.log('Positions before:', positionsBefore);
-  console.log('Positions after:', positionsAfter);
-  console.log('Dropped by class:', dropCounts);
-  console.log('Members affected:', membersAffected.size);
-  console.log('Statements reclassified:', reclassified);
+  return {
+    dropCounts,
+    membersAffected: membersAffected.size,
+    positionsBefore,
+    positionsAfter,
+    reclassified,
+  };
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

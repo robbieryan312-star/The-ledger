@@ -51,6 +51,9 @@ jobs:
           [ -n "$FEC_API_KEY" ] && npm run ingest:fec-fl && npm run sync:fec-national && npm run sync:fec-schedule-a || echo "skip fec (no secret)"
           [ -n "$CONGRESS_API_KEY" ] && npm run ingest:congress-fl && npm run sync:votes-national || echo "skip congress (no secret)"
 
+      - name: Exclude fetch-failed artifacts before derived rebuilds
+        run: bash scripts/exclude-fetch-failed-artifacts.sh
+
       - name: Rebuild Records & Sources index
         run: npm run build:sources-index && npm run build:data-slices
 

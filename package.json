@@ -11,7 +11,7 @@
     "agent:verify": "tsx scripts/agent-verify.ts",
     "test:crec": "tsx --test scripts/__tests__/crecProceduralFilter.test.ts",
     "test:org-join": "tsx --test scripts/__tests__/fecOrgJoin.test.ts",
-    "test:source-integrity": "tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/ceremonialCrecFilter.test.ts",
+    "test:source-integrity": "tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/ceremonialCrecFilter.test.ts scripts/__tests__/refreshWorkflow.test.ts scripts/__tests__/topicReprocess.test.ts",
     "test:copy-compliance": "tsx --test scripts/__tests__/copyCompliance.test.ts",
     "test:classify": "tsx --test scripts/__tests__/classifyTopic.test.ts",
     "agent:demo": "tsx scripts/agent-demo-check.ts",
