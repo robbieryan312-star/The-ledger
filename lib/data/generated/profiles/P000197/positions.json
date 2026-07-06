@@ -1,17 +1,4 @@
 {
   "bioguideId": "P000197",
-  "byTopic": {
-    "healthcare": {
-      "platformPositions": []
-    },
-    "defense-veterans": {
-      "platformPositions": []
-    },
-    "civil-liberties": {
-      "platformPositions": []
-    },
-    "economy-taxes": {
-      "platformPositions": []
-    }
-  }
+  "byTopic": {}
 }

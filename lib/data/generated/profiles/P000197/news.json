@@ -17,7 +17,23 @@
         "tier": "media",
         "date": "2026-07-05"
       }
+    },
+    {
+      "id": "p000197-rss-2",
+      "headline": "Nancy Pelosi’s husband could face hit-and-run charge after striking parked car",
+      "summary": "<p>Paul Pelosi could face misdemeanor charges over crash in California that left car with ‘major’ damage, authorities say</p><p>The husband of the former House speaker <a…",
+      "date": "2026-07-05",
+      "category": "Congress",
+      "isOpinion": false,
+      "isVerified": false,
+      "url": "https://www.theguardian.com/us-news/2026/jul/05/paul-pelosi-car-crash-california",
+      "source": {
+        "name": "The Guardian",
+        "url": "https://www.theguardian.com/us-news/2026/jul/05/paul-pelosi-car-crash-california",
+        "tier": "media",
+        "date": "2026-07-05"
+      }
     }
   ],
-  "note": "1 relevant article(s) from approved-outlet RSS (target 15)."
+  "note": "2 relevant article(s) from approved-outlet RSS (target 15)."
 }
