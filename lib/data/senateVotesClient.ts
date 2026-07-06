@@ -95,9 +95,12 @@ async function fetchLisMapFromLocalSnapshot(): Promise<Map<string, string> | nul
   try {
     const { readFile } = await import('node:fs/promises');
     const { fileURLToPath } = await import('node:url');
-    const path = await import('node:path');
-    const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-    const file = path.join(root, 'lib', 'data', 'generated', 'currentLegislators.json');
+    const pathMod = await import('node:path');
+    const file = pathMod.join(
+      pathMod.dirname(fileURLToPath(import.meta.url)),
+      'generated',
+      'currentLegislators.json',
+    );
     const data = JSON.parse(await readFile(file, 'utf8')) as {
       legislators?: Array<{ bioguideId: string; lisId?: string }>;
     };
@@ -122,12 +125,23 @@ export async function fetchLisToBioguideMap(): Promise<Map<string, string>> {
   }
 }
 
+const SENATE_GOV_TIMEOUT_MS = 90_000;
+
+/** bioguideId → LIS member id from committed legislators snapshot (no network). */
+export async function bioguideToLisFromLocal(): Promise<Map<string, string>> {
+  const lisToBio = await fetchLisMapFromLocalSnapshot();
+  const out = new Map<string, string>();
+  if (!lisToBio) return out;
+  for (const [lis, bio] of lisToBio) out.set(bio, lis);
+  return out;
+}
+
 /** Track network vs cache stats for reporting. */
 export const senateFetchStats = { networkCalls: 0, cacheHits: 0 };
 
 export async function fetchSenateVoteMenu(congress: number, session: number): Promise<SenateVoteMenuItem[]> {
   senateFetchStats.networkCalls++;
-  const { response: res } = await fetchWithRetry(menuUrl(congress, session), { timeoutMs: 30_000 });
+  const { response: res } = await fetchWithRetry(menuUrl(congress, session), { timeoutMs: SENATE_GOV_TIMEOUT_MS });
   if (!res.ok) throw new Error(`Senate vote menu HTTP ${res.status}`);
   const xml = await res.text();
   const blocks = xml.match(/<vote>[\s\S]*?<\/vote>/gi) ?? [];
@@ -155,7 +169,7 @@ export async function fetchSenateRollCall(
 
   senateFetchStats.networkCalls++;
   const url = senateVoteUrl(congress, session, voteNumber);
-  const { response: res } = await fetchWithRetry(url, { timeoutMs: 30_000 });
+  const { response: res } = await fetchWithRetry(url, { timeoutMs: SENATE_GOV_TIMEOUT_MS });
   if (!res.ok) throw new Error(`Senate roll call HTTP ${res.status}`);
   const xml = await res.text();
   if (xml.includes('Roll Call Vote Unavailable')) {

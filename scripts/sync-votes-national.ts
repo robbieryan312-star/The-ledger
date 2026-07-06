@@ -37,7 +37,7 @@ import { computePartyBreakdown } from '../lib/data/partyVoteBreakdown';
 import type { Source, VoteChoice, VoteRecord } from '../lib/types';
 import {
   SENATE_GOV_SOURCE,
-  fetchLisToBioguideMap,
+  bioguideToLisFromLocal,
   fetchSenateRollCall,
   fetchSenateVoteMenu,
   senateFetchStats,
@@ -288,17 +288,11 @@ async function syncSenateVotes(
 
   if (senators.length === 0) return collected;
 
-  let bioguideToLis = new Map<string, string>();
-  try {
-    const lisMap = await fetchLisToBioguideMap();
-    for (const [lis, bioguide] of lisMap) {
-      if (collected.has(bioguide)) bioguideToLis.set(bioguide, lis);
+  let bioguideToLis = await bioguideToLisFromLocal();
+  for (const sen of senators) {
+    if (!bioguideToLis.has(sen.bioguideId)) {
+      console.warn(`  ${sen.bioguideId}: no LIS id in local legislators snapshot`);
     }
-  } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err);
-    fetchFailures.push({ chamber: 'senate', rollNumber: 0, error: `LIS map: ${msg}` });
-    console.warn(`  Senate LIS map fetch failed: ${msg}`);
-    return collected;
   }
 
   let menu: Awaited<ReturnType<typeof fetchSenateVoteMenu>>;

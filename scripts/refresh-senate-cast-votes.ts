@@ -9,7 +9,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { VoteRecord } from '../lib/types';
 import {
-  fetchLisToBioguideMap,
+  bioguideToLisFromLocal,
   fetchSenateRollCall,
   fetchSenateVoteMenu,
   senateVoteToRecord,
@@ -66,17 +66,15 @@ async function main(): Promise<void> {
     meta: Record<string, unknown>;
   };
 
-  const lisMap = await fetchLisToBioguideMap();
-  const bioguideToLis = new Map<string, string>();
-  for (const [lis, bio] of lisMap) bioguideToLis.set(bio, lis);
+  const bioguideToLis = await bioguideToLisFromLocal();
 
   for (const bioguideId of MIGRATED_PROFILE_BIOGUIDES) {
     const row = snapshot.byBioguideId[bioguideId];
     if (!row || row.chamber !== 'senate') continue;
     const cast = row.votes.filter((v) => v.vote === 'Yea' || v.vote === 'Nay').length;
-    if (cast > 0) {
+    if (row.votes.length >= DISPLAY_LIMIT && cast > 0) {
       row.votes = finalizeMemberVotes(row.votes, DISPLAY_LIMIT);
-      console.log(`${bioguideId}: already has ${cast} cast votes — finalized to ${row.votes.length}`);
+      console.log(`${bioguideId}: already ${row.votes.length} votes (${cast} cast) — finalized`);
       continue;
     }
     const lis = bioguideToLis.get(bioguideId);
