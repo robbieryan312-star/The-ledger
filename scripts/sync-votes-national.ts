@@ -449,7 +449,19 @@ async function main(): Promise<void> {
   }
 
   const existing = await readExistingVoteSnapshot();
-  const highWaterMark = IS_FULL ? undefined : existing?.meta?.highWaterMark;
+  const underFilledTargets =
+    scopedRun &&
+    targetLegislators.some((leg) => {
+      const prior = existing?.byBioguideId?.[leg.bioguideId];
+      return (prior?.votes?.length ?? 0) < VOTES_PER_MEMBER;
+    });
+  const highWaterMark =
+    IS_FULL || underFilledTargets ? undefined : existing?.meta?.highWaterMark;
+  if (underFilledTargets) {
+    console.log(
+      'Scoped depth refresh: bypassing high-water mark for under-filled manifest members',
+    );
+  }
   const checkpoint = (await loadCheckpoint<Record<string, true>>(CHECKPOINT_FILE)) ?? {};
 
   if (memberFilter) {
