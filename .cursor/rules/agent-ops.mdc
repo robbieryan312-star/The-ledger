@@ -34,12 +34,21 @@ The agent is delegated to:
 Reference files before asking the owner anything: `KEYS.md`, `REPO.md`, `PROGRESS.md`,
 `lib/data/SOURCE_LOOKUP.md`, `lib/data/sourceCatalog.ts`, `.env.local` (SET vs EMPTY only).
 
-## When stuck (binding — see ledger-core-rules §1.1)
+## When stuck (binding — CRITICAL — see ledger-core-rules §1.1)
 
-- **Attempt 1 fails:** read the tee'd log; fix root cause; retry once with a different approach if needed.
-- **Attempt 2 fails:** **STOP.** Do not ask the owner to retry. Produce the **Claude handoff report** (§1.1 E).
-- **Task slow, incomplete, or below brief standards:** append **Review for Claude** (§1.1 E) even if exit code is 0.
-- **Never claim "complete"** without commit hash + acceptance artifact pasted fresh from that commit/run.
+**The owner must never remind you to follow this section.** Output the required block
+autonomously at the end of the same turn.
+
+| After… | Do this in the SAME response (last section) | Then |
+|--------|---------------------------------------------|------|
+| Attempt 1 fails or is substandard | **Review for Claude** (§1.1 F) with commands, files, fresh log paste | One different fix attempt if brief allows |
+| Attempt 2+ still not accepted | **Claude handoff report** (§1.1 F) + **STOP** | Wait for Claude brief |
+| Claiming complete | Paste commit hash + `git show` artifact evidence | Nothing else |
+
+**Every report must include:** HEAD hash, `git status`, exact commands run this session, every
+file touched, tee'd log path + pasted tail/rg output. Recycled prior-session text = stale = reject.
+
+**Never claim "complete"** without commit hash + acceptance artifact from that commit.
 
 ## Do not
 

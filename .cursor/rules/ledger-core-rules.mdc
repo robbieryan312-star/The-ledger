@@ -16,9 +16,14 @@ alwaysApply: true
 - **Fixtures append-only** — regression guards grow, never reset; every data-quality bug gets a frozen bad example.
 - **Spec violation = bug to fix, never a question** — read the owning file; do not re-ask the owner.
 - **Stale violation flags are bugs** — when a flagged violation is fixed, delete its flag in the same commit.
-- **2+ failures or substandard output → STOP and hand off to Claude** — never blind-retry or ask the
-  owner to "try again." After 2 failed attempts, or when a task is slow/incomplete/below brief
-  standards, produce the reports in **§1.1** (Claude handoff report or Review for Claude block).
+- **Failure reporting is MANDATORY and AUTONOMOUS** — the owner must NEVER remind you.
+  After **any** failed, timed-out, incomplete, or substandard attempt: **in the SAME response**
+  (or immediately as a follow-up block before ending the turn), output the report in **§1.1**.
+  Attempt 1 substandard → **Review for Claude** (§1.1 B). Attempt 2+ → full **Claude handoff
+  report** (§1.1 A) and **STOP** further retries unless the brief explicitly allows another.
+  Stale reports (recycled session lines, wrong commit, evidence contradicting `git show`) are
+  **task failures** — Claude will reject them.
+- **2+ failures → STOP and hand off** — never blind-retry or ask the owner to "try again."
   Completion claims require commit hash + fresh artifact evidence — see §1.1 C.
 
 **These rules bind EVERY agent equally — Claude Code AND every Cursor agent (Auto, cloud
@@ -88,93 +93,159 @@ the specific failure this file was created to stop.
   checklist to the remaining 531 members — it never redesigns them. Fix the script/extractor
   that produced bad data; never hand-clean one member and call it done.
 
-### 1.1 Agent handoff, review, and completion (binding)
+### 1.1 Agent handoff, review, and completion (binding — CRITICAL)
 
-These rules reinforce §1 ("Verify, never trust 'done'"), the ping-pong loop (Claude
-diagnoses + briefs; Cursor executes), and §6 ("Read the real error before any restart").
+**This section is non-optional.** The owner must never prompt "give me the handoff report" or
+"follow your rules." If a turn ends without the required block when triggers fire, that turn is
+a **failed turn**.
 
-#### A. Two-or-more-failure handoff (binding)
+These rules reinforce §1 ("Verify, never trust 'done'"), the ping-pong loop (Claude diagnoses +
+briefs; Cursor executes), and §6 ("Read the real error before any restart").
 
-When ANY task fails **2 or more attempts** before completion, the agent MUST **NOT**:
+#### Trigger matrix (when to output what — no judgment calls)
+
+| Situation | Required output | Retry? |
+|-----------|-----------------|--------|
+| Attempt 1: error, timeout, wrong counts, missing artifact | **Review for Claude** (§1.1 F) at end of SAME response | One different approach allowed |
+| Attempt 2+: same task still not meeting brief acceptance | **Claude handoff report** (§1.1 F) + **STOP** | No unless brief says so |
+| Exit 0 but brief acceptance not met | **Review for Claude** — exit code is not success | Fix or STOP |
+| Claiming "complete" | Commit hash + `git show`/artifact paste from THAT commit | N/A |
+| Prior session report recycled | **Forbidden** — regenerate from current `git status` + logs | N/A |
+
+#### A. Autonomous delivery (binding)
+
+When any trigger fires, the agent MUST:
+
+1. **Not** ask the owner whether to produce the report
+2. **Append** the required block as the **last section** of the response (visible without scrolling past filler)
+3. Include **fresh evidence** — run `git log -1`, `git status --short`, `rg`/`tail` on the tee'd log **in this session** before writing
+4. List **every file touched** (path + created/modified/deleted) and **every command run** (exact string)
+5. State **HEAD commit hash** and whether working tree diverges
+
+Skipping any of the above = the report is **stale or incomplete** and Claude will reject it.
+
+#### B. Two-or-more-failure handoff (binding)
+
+When ANY task fails **2 or more attempts** before meeting brief acceptance, the agent MUST **NOT**:
 
 - Restart the same approach blindly
 - Ask the owner to "try again" without diagnosis
 - Claim completion without commit hash + artifact evidence
+- End the turn without the **Claude handoff report**
 
-Instead, **STOP** and produce a **Claude handoff report** (≤800 words unless more required)
-containing:
+The handoff report MUST contain (§1.1 F template):
 
-1. **Objective** — what was attempted
-2. **Failure count** — attempt 1 / 2 / 3… what each did and exact error/timeout
-3. **Root cause analysis** — existing problem(s), not symptoms
-4. **Actions taken** — commands run, files touched, commits (hashes), locks/logs paths
-5. **Tree state** — HEAD vs working tree divergence; uncommitted WIP
-6. **What needs fixing** — concrete next steps for Claude (not menus for owner)
-7. **Evidence gaps** — what was NOT verified and why
+1. **Objective** — brief task ID + one sentence
+2. **Failure count** — each attempt: exact command, runtime, exit code, error line from log
+3. **Root cause** — underlying problem(s), not symptoms
+4. **Process log** — ordered steps: what was read, decided, built, run, verified
+5. **Files & code** — table: path | action | what changed (function/script/data)
+6. **Commits** — hashes for work claimed done; note unpushed
+7. **Tree state** — `git status` summary; WIP not in commits
+8. **Needs fixing** — concrete next steps for **Claude** (not owner menus)
+9. **Evidence gaps** — what was NOT verified; why
+10. **STOP** — yes/no per brief
 
-#### B. Slow / incomplete / substandard task review (binding)
+#### C. First-failure / substandard review (binding)
 
-When a task **takes longer than expected**, **fails to collect expected output**, or **does
-not meet explicit brief/acceptance standards**, the agent MUST append under the task output a
-**"Review for Claude"** block with:
+When attempt 1 fails OR output is slow/incomplete/below brief standards, append **Review for
+Claude** (§1.1 F) in the **same response**. Do not wait for attempt 2 if acceptance criteria
+are clearly unmet (e.g. votes still 10 when brief requires 30).
 
-- **Expected vs actual** — counts, paths, commit hashes, runtime
-- **Fresh artifact evidence from THIS run only** — paste from log/file; never recycle prior
-  session lines
-- If pasted evidence contradicts code on disk, **state the discrepancy explicitly**
-- **Blockers** — human-only action (CAPTCHA, keys) vs agent-fixable
-- Whether **STOP** is appropriate per brief
-
-#### C. Completion claims (reinforce)
+#### D. Completion claims (reinforce)
 
 A task is **complete** ONLY when **both** are true:
 
 1. A **commit hash** exists for the verified work (see §1 commit rule; owner may withhold push)
-2. The **acceptance artifact named in the brief** is pasted fresh from that commit/run
+2. The **acceptance artifact named in the brief** is pasted fresh from that commit/run (`git show <hash>:path` or log `rg`)
 
 "Complete" without both = **task failure**. "It builds" or "sync finished" alone is not
-completion (see §1 "Verify, never trust 'done'").
+completion. Re-listing work accepted in a **prior** Claude review as new progress = **verification theater** (reject).
 
-#### D. Tone and format
+#### E. Anti-stale rules (Claude rejects these — binding)
 
-- Plain language, structured headers; tables OK for status matrices
-- **No verification theater** — never re-list previously accepted work as new progress
-- Never paste smoke/summary JSON from memory or prior sessions — always `rg`/`cat` from the
-  current log or artifact on disk
+- Never paste smoke/summary JSON from memory or a prior session
+- Never cite a commit hash without verifying it is current HEAD or the named commit
+- If pasted evidence contradicts code on disk (`git show`, `cat` artifact), **state the discrepancy** — do not paste
+- Reports must include **timestamp of this session** and commands run **this session**
+- "Brief A–C complete" (or any multi-task complete) requires **per-task** commit + evidence — never one blanket claim
 
-#### E. Copy-paste templates (use verbatim structure)
+#### F. Copy-paste templates (use verbatim structure — fill every field)
 
 **After 2+ failures — Claude handoff report:**
 
 ```markdown
 ## Claude handoff report
 
+**Brief / task:** [e.g. Brief B v3 Task 4]
 **Objective:** [one sentence]
-**Attempts:** 1) [command + error] · 2) [command + error] · …
-**Root cause:** [problem(s), not symptoms]
-**Actions taken:** [commands, files, commit hashes, log paths]
-**Tree state:** HEAD [hash]; uncommitted: [files or "clean"]
-**Needs fixing:** [concrete steps for Claude — not owner menus]
-**Evidence gaps:** [what was not verified and why]
+**Session:** [date]; **HEAD:** `[git rev-parse --short HEAD]`
+
+### Attempts
+| # | Command | Runtime | Exit | Error / outcome |
+|---|---------|---------|------|-----------------|
+| 1 | | | | |
+| 2 | | | | |
+| 3 | | | | |
+
+### Root cause
+[problem(s), not symptoms]
+
+### Process log (ordered)
+1. Read: [files]
+2. Decided: [decision]
+3. Built/edited: [files + what]
+4. Ran: [commands + logs]
+5. Verified: [method — independent of producer if data]
+
+### Files & code
+| Path | Action | What changed |
+|------|--------|--------------|
+| | | |
+
+### Commits (this task)
+- `[hash]` — [message]
+- Uncommitted WIP: [list or none]
+
+### Needs fixing (for Claude)
+1. [concrete step]
+2. …
+
+### Evidence gaps
+- [what not verified + why]
+
 **STOP:** [yes/no per brief]
 ```
 
-**After slow / incomplete / substandard work — append under the task:**
+**After attempt 1 failure or substandard output — append under the task:**
 
 ```markdown
 ## Review for Claude
 
-| | Expected | Actual |
-|---|----------|--------|
-| Runtime | | |
-| Output path | | |
-| Count / status | | |
-| Commit | | |
+**Brief / task:** [e.g. Brief B v3 Task 3]
+**HEAD:** `[hash]` · **Tree:** [clean / dirty: files]
 
-**Fresh evidence (this run):** `[paste from rg/cat on current log/file]`
-**Code vs evidence:** [match / discrepancy — state explicitly if mismatch]
-**Blockers:** [human-only vs agent-fixable]
-**STOP appropriate:** [yes/no per brief]
+| Check | Expected (brief) | Actual (this run) |
+|-------|------------------|-------------------|
+| Runtime | | |
+| Artifact path | | |
+| Count / status | | |
+| Commit for this task | | |
+
+**Commands run (this session):**
+- `[exact command]` → [outcome]
+
+**Files touched (this session):**
+- `[path]` — [created/modified]
+
+**Fresh evidence:** 
+```
+[paste from tail/rg/cat on current log or git show — not from memory]
+```
+
+**Code vs evidence:** [match / DISCREPANCY: …]
+**Blockers:** [human-only | agent-fixable]
+**STOP appropriate:** [yes/no]
 ```
 
 ---
