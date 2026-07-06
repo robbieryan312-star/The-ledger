@@ -253,7 +253,7 @@ marks only successful member syncs. House index failures surface `houseIndexFail
 - ✅ Senate roll-call votes for featured senators sync from **official senate.gov LIS XML** (Tier 1, no key),
   mapped through `unitedstates/congress-legislators` LIS IDs in `lib/data/senateVotesClient.ts`.
 - ✅ House roll-call votes require `CONGRESS_API_KEY` (Congress.gov API v3). `npm run sync:votes` merges both chambers into `congressVotes.json`.
-- ✅ `scripts/sync-stock-trades.ts` (`npm run sync:stock-trades`) — STOCK Act integration stub; writes empty `stockTrades.json` with documented next steps.
+- ✅ `scripts/sync-stock-trades.ts` (`npm run sync:stock-trades`) — **partial live** (97+ House members); Senate eFD honest gap when HTTP 503.
 
 ### FEC sync workflow
 

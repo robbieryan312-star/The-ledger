@@ -32,6 +32,7 @@ jobs:
           npm run test:docs-integrity
           npm run test:data-layout
           npm run test:env-truth
+          npm run test:optimization
 
       - name: Production build
         run: npm run build

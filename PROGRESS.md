@@ -151,9 +151,9 @@ Elections, OpenCorporates — unchanged from prior log (see `.env.local` and `KE
 | Guard suites | 11 in prebuild + CI via guards.yml |
 | Font / Turbopack | ✅ system stack (M6 self-host optional for brand parity) |
 | News | RSS pipeline; honest gaps where feeds thin |
-| Optimization program | W0 in progress — audit ledger + inventory |
-| File audit progress | L1–L8 pending (see FILE_AUDIT_LEDGER.md) |
-| M2 scaling | Blocked until W2A manifest + W3 L1–L4 |
+| Optimization program | W0–W2A committed; W2B–W5 landing; W3 = L1 only (11/175 files) |
+| File audit progress | L1 scripts/lib reviewed (11 files); L2–L8 pending |
+| M2 scaling | Blocked pending Claude re-review (Briefs A–C) |
 
 ## Compressed history (pre-roadmap)
 

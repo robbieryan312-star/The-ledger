@@ -7,7 +7,7 @@
  */
 import { config } from 'dotenv';
 import { spawnSync } from 'node:child_process';
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { migrateMembers } from './lib/profileMigrate';
@@ -207,6 +207,16 @@ async function printCertificationReport(bioguideId: string): Promise<void> {
   console.log('═══════════════════════════════════════════════════════════\n');
 
   const depth = await buildDepthReport(bioguideId);
+  const depthArtifact = {
+    bioguideId,
+    generatedAt: new Date().toISOString(),
+    rows: depth,
+  };
+  const reportsDir = path.join(projectRoot, 'data', 'reports');
+  await mkdir(reportsDir, { recursive: true });
+  const depthPath = path.join(reportsDir, `profile-depth-${bioguideId}.json`);
+  await writeFile(depthPath, `${JSON.stringify(depthArtifact, null, 2)}\n`, 'utf8');
+  console.log(`Depth artifact: ${path.relative(projectRoot, depthPath)}`);
   console.log('Depth table:');
   console.log('Category       | Status       | Count | Reason');
   console.log('---------------|--------------|-------|--------');
@@ -266,9 +276,23 @@ async function main(): Promise<void> {
 
   const members = parseMembersArg(process.argv);
   const membersArg = members.join(',');
+  const validateOnly = process.argv.includes('--validate-only');
 
   console.log('profile-build: Phase E pipeline certification');
-  console.log(`Members: ${members.join(', ')}\n`);
+  console.log(`Members: ${members.join(', ')}${validateOnly ? ' (validate-only)' : ''}\n`);
+
+  if (validateOnly) {
+    console.log('Step 5: VALIDATE guard suites (validate-only mode)');
+    let allGuardsPass = true;
+    for (const script of GUARD_SCRIPTS) {
+      if (!runNpmScript(script)) allGuardsPass = false;
+    }
+    for (const bioguideId of members) {
+      await printCertificationReport(bioguideId);
+    }
+    if (!allGuardsPass) process.exit(1);
+    return;
+  }
 
   // 0. Ensure roster identity scaffolding
   console.log('Step 0: roster identity');
@@ -304,6 +328,11 @@ async function main(): Promise<void> {
     );
   }
 
+  // 4b. Regenerate profile index after migration
+  if (!runNpmScript('generate:profile-index')) {
+    process.exit(1);
+  }
+
   // 5. VALIDATE — all guard suites
   console.log('\nStep 5: VALIDATE guard suites');
   let allGuardsPass = true;
@@ -320,7 +349,6 @@ async function main(): Promise<void> {
 
   console.log('\n═══════════════════════════════════════════════════════════');
   console.log(`Guards: ${allGuardsPass ? 'ALL PASS' : 'FAIL — see above'}`);
-  console.log('Next: wire memberProfile.ts imports + MIGRATED_PROFILE_BIOGUIDES, then npm run build');
   console.log('STOP — await Claude review + owner visual review before push.');
   console.log('═══════════════════════════════════════════════════════════\n');
 

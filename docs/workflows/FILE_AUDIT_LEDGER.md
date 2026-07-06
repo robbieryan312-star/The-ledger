@@ -25,17 +25,17 @@ Master checklist for the Sync & Code Optimization Program. Update status in the 
 
 | File | R | W | T | §6 | D | C | Status |
 |------|---|---|---|----|---|---|--------|
-| `scripts/lib/dataPaths.ts` | | | | | | | pending |
-| `scripts/lib/resilientFetch.ts` | | | | | | | pending |
-| `scripts/lib/syncKernel.ts` | | | | | | | pending |
-| `scripts/lib/syncLock.ts` | | | | | | | pending |
-| `scripts/lib/ingest-utils.ts` | | | | | | | pending |
-| `scripts/lib/profileMigrate.ts` | | | | | | | pending |
-| `scripts/lib/profileReprocess.ts` | | | | | | | pending |
-| `scripts/lib/crecProceduralFilter.ts` | | | | | | | pending |
-| `scripts/lib/crecOpener.ts` | | | | | | | pending |
-| `scripts/lib/approvedMediaQuotes.ts` | | | | | | | pending |
-| `scripts/lib/articleVerificationCache.ts` | | | | | | | pending |
+| `scripts/lib/dataPaths.ts` | | | | | | | reviewed |
+| `scripts/lib/resilientFetch.ts` | | | | | | | reviewed |
+| `scripts/lib/syncKernel.ts` | | | | | | | reviewed |
+| `scripts/lib/syncLock.ts` | | | | | | | reviewed |
+| `scripts/lib/ingest-utils.ts` | | | | | | | reviewed |
+| `scripts/lib/profileMigrate.ts` | | | | | | | reviewed |
+| `scripts/lib/profileReprocess.ts` | | | | | | | reviewed |
+| `scripts/lib/crecProceduralFilter.ts` | | | | | | | reviewed |
+| `scripts/lib/crecOpener.ts` | | | | | | | reviewed |
+| `scripts/lib/approvedMediaQuotes.ts` | | | | | | | reviewed |
+| `scripts/lib/articleVerificationCache.ts` | | | | | | | reviewed |
 
 ## L2 — `lib/data/` accessors
 
@@ -81,9 +81,9 @@ Process after L1–L4 complete. See inventory layers L5 (components/politicians)
 
 | Wave | State |
 |------|-------|
-| W0 Audit infra | in progress |
-| W1 Sync kernel | pending |
-| W2 Organization | pending |
-| W3 File review | pending |
-| W4 Guards | pending |
-| W5 Collection tuning | pending |
+| W0 Audit infra | ✅ complete |
+| W1 Sync kernel | ✅ complete |
+| W2 Organization | W2A committed; W2B–D landing in commit 1 |
+| W3 File review | L1 only (11/175 files) |
+| W4 Guards | optimization suite landing; tsc + syncKernelGuard in commit 2 |
+| W5 Collection tuning | profile:build --validate-only landing |

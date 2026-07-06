@@ -36,6 +36,7 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 const profilesRoot = path.join(projectRoot, 'lib', 'data', 'generated', 'profiles');
 const legislatorsFile = path.join(projectRoot, 'lib', 'data', 'generated', 'currentLegislators.json');
 const CHECKPOINT_FILE = '/tmp/ledger-sync-news-rss-checkpoint.json';
+const FEED_HEALTH_FILE = path.join(projectRoot, 'data', 'reports', 'feed-health.json');
 const MAX_ITEMS_PER_MEMBER = 15;
 const FETCH_TIMEOUT_MS = 15_000;
 const MAX_FETCH_ATTEMPTS = 3;
@@ -66,6 +67,36 @@ interface ExistingNewsFile {
   status?: 'fetch-failed' | 'fetch-blocked';
   note?: string;
 }
+
+interface FeedHealthEntry {
+  outlet: string;
+  feedUrl: string;
+  consecutiveFailures: number;
+  lastError?: string;
+  lastOk?: string;
+  disabled?: boolean;
+}
+
+interface FeedHealthReport {
+  updatedAt: string;
+  feeds: Record<string, FeedHealthEntry>;
+}
+
+async function loadFeedHealth(): Promise<FeedHealthReport> {
+  try {
+    return JSON.parse(await readFile(FEED_HEALTH_FILE, 'utf8')) as FeedHealthReport;
+  } catch {
+    return { updatedAt: new Date().toISOString(), feeds: {} };
+  }
+}
+
+async function saveFeedHealth(report: FeedHealthReport): Promise<void> {
+  report.updatedAt = new Date().toISOString();
+  await mkdir(path.dirname(FEED_HEALTH_FILE), { recursive: true });
+  await writeFile(FEED_HEALTH_FILE, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
+}
+
+const FEED_DISABLE_THRESHOLD = 3;
 
 const feedLimiters = new Map<string, HostRateLimiter>();
 
@@ -333,6 +364,7 @@ async function main(): Promise<void> {
     /* fresh run */
   }
 
+  const feedHealth = await loadFeedHealth();
   const feedFailures: string[] = [];
   const allFeedItems: RssItem[] = [];
 
@@ -341,13 +373,35 @@ async function main(): Promise<void> {
       console.log(`Skipping ${feed.outlet} (feed-unavailable: ${feed.feedUnavailableReason ?? 'no working RSS'})`);
       continue;
     }
+    const healthKey = feed.feedUrl;
+    const health = feedHealth.feeds[healthKey];
+    if (health?.disabled) {
+      console.log(`Skipping ${feed.outlet} (auto-disabled after ${health.consecutiveFailures} failures: ${health.lastError ?? 'unknown'})`);
+      feedFailures.push(`${feed.outlet}: auto-disabled (${health.lastError ?? 'unknown'})`);
+      continue;
+    }
     console.log(`Fetching ${feed.outlet}…`);
     const result = await fetchFeedXml(feed.feedUrl);
     if (!result.ok) {
       console.warn(`  fetch-failed: ${feed.outlet} — ${result.error}`);
       feedFailures.push(`${feed.outlet}: ${result.error}`);
+      const prev = feedHealth.feeds[healthKey];
+      const consecutiveFailures = (prev?.consecutiveFailures ?? 0) + 1;
+      feedHealth.feeds[healthKey] = {
+        outlet: feed.outlet,
+        feedUrl: feed.feedUrl,
+        consecutiveFailures,
+        lastError: result.error,
+        disabled: consecutiveFailures >= FEED_DISABLE_THRESHOLD,
+      };
       continue;
     }
+    feedHealth.feeds[healthKey] = {
+      outlet: feed.outlet,
+      feedUrl: feed.feedUrl,
+      consecutiveFailures: 0,
+      lastOk: new Date().toISOString(),
+    };
     const parsed = parseRssItems(result.xml);
     console.log(`  ${parsed.length} raw items`);
     for (const leg of legs.filter((l) => (MEMBERS as readonly string[]).includes(l.bioguideId))) {
@@ -398,6 +452,7 @@ async function main(): Promise<void> {
   if (feedFailures.length) {
     console.warn(`Feed failures (${feedFailures.length}):`, feedFailures.join('; '));
   }
+  await saveFeedHealth(feedHealth);
 }
 
 main().catch((err) => {

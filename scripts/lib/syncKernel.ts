@@ -50,7 +50,7 @@ export async function writeSnapshotIfChanged<T>(
 ): Promise<boolean> {
   const next = serialize(data);
   const prev = prior != null ? serialize(prior) : null;
-  if prev === next) return false;
+  if (prev === next) return false;
   await mkdir(path.dirname(filePath), { recursive: true });
   await writeFile(filePath, next, 'utf8');
   return true;

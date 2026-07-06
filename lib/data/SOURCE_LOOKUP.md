@@ -19,8 +19,8 @@ Use this doc to answer: *“I need X for a profile — where do I look first?”
 | Data need | Primary source | Destination in app | Sync / output |
 |-----------|----------------|-------------------|---------------|
 | Current office, bioguideId | unitedstates/congress-legislators | Profile header | `sync:legislators` → `currentLegislators.json` |
-| Roll-call votes (**Did**) | Congress.gov + Senate LIS XML | Voting Record | `sync:votes-national` → `congressVotes.json` |
-| Campaign totals | OpenFEC | Money & Donors | `sync:fec-national` → `fecFinance.json` |
+| Roll-call votes (**Did**) | Congress.gov + Senate LIS XML | Voting Record | `sync:votes-national` → `data/national/votes/congress-votes.json` |
+| Campaign totals | OpenFEC | Money & Donors | `sync:fec-national` → `data/national/fec/congress-finance.json` |
 | Itemized donors / PACs (**Phase 17**) | OpenFEC Schedule A | Follow the Money · Topic context | `sync:fec-schedule-a` → `schedule-a.json` |
 | Platform / survey text (**Said**) | Ballotpedia scrape | Track Record · Topic Record | `sync:topic-positions` → `topicPositions.json` |
 | Floor speech verbatim (**Said**) | GovInfo Congressional Record | Track Record · `statements[]` | Extend `sync:topic-positions` (key SET) |
