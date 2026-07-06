@@ -1,4 +1,23 @@
 {
   "bioguideId": "P000197",
-  "items": []
+  "status": "filled",
+  "items": [
+    {
+      "id": "p000197-rss-1",
+      "headline": "Paul Pelosi in hit-and-run in California, car left with major damage, authorities say",
+      "summary": "The husband of former House Speaker Nancy Pelosi was involved in a hit-and-run in California that left a parked car with \"major\" damage, authorities said Saturday.",
+      "date": "2026-07-05",
+      "category": "Congress",
+      "isOpinion": false,
+      "isVerified": false,
+      "url": "https://www.npr.org/2026/07/05/g-s1-132046/paul-pelosi-hit-and-run-california-car-damage",
+      "source": {
+        "name": "NPR",
+        "url": "https://www.npr.org/2026/07/05/g-s1-132046/paul-pelosi-hit-and-run-california-car-damage",
+        "tier": "media",
+        "date": "2026-07-05"
+      }
+    }
+  ],
+  "note": "1 relevant article(s) from approved-outlet RSS (target 15)."
 }

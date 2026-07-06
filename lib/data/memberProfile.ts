@@ -225,7 +225,7 @@ export function getMemberProfileFinance(bioguideId: string): FecFinanceEntry | n
 interface ProfileNewsFile {
   bioguideId: string;
   items: NewsItem[];
-  status?: 'fetch-blocked';
+  status?: 'filled' | 'honest-gap' | 'fetch-failed' | 'fetch-blocked';
   note?: string;
 }
 
@@ -241,7 +241,12 @@ interface ProfileNewsFile {
 export function getMemberProfileNews(bioguideId: string): NewsItem[] | null {
   const file = PROFILE_NEWS[bioguideId];
   if (!file) return null;
-  if (file.items.length === 0 && file.status === 'fetch-blocked') return null;
+  if (
+    file.items.length === 0 &&
+    (file.status === 'fetch-failed' || file.status === 'fetch-blocked')
+  ) {
+    return null;
+  }
   return file.items.map((item) => ({
     ...item,
     summary: leadSummary(item.summary || item.headline, 200) || item.headline,

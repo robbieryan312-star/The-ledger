@@ -1,6 +1,6 @@
 {
   "bioguideId": "C001098",
+  "status": "honest-gap",
   "items": [],
-  "note": "fetch-failed: 10 feed(s) failed; 0 matches for Ted Cruz.",
-  "status": "fetch-failed"
+  "note": "No relevant articles matched approved-outlet RSS feeds for Ted Cruz in this run."
 }

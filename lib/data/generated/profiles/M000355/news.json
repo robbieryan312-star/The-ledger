@@ -1,6 +1,6 @@
 {
   "bioguideId": "M000355",
+  "status": "honest-gap",
   "items": [],
-  "note": "fetch-failed: 10 feed(s) failed; 0 matches for Mitch McConnell.",
-  "status": "fetch-failed"
+  "note": "No relevant articles matched approved-outlet RSS feeds for Mitch McConnell in this run."
 }

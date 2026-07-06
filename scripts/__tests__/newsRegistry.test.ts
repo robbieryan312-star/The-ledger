@@ -46,3 +46,9 @@ test('append-only news registry fixture rejects bare homepage URLs', () => {
   assert.match(text, /PLATFORM_KNOWN_BAD_EVENT_NARRATION/);
   assert.ok(existsSync(path.join(projectRoot, 'lib/data/newsFeedRegistry.ts')));
 });
+
+test('sync-news-rss derives members from manifest (no hard-coded MEMBERS)', () => {
+  const src = readFileSync(path.join(projectRoot, 'scripts/sync-news-rss.ts'), 'utf8');
+  assert.doesNotMatch(src, /export const MEMBERS/);
+  assert.match(src, /_manifest\.json/);
+});

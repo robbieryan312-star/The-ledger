@@ -468,10 +468,34 @@ export function validateControversiesFile(
 }
 
 export function validateNewsFile(
-  data: { items?: Array<{ id?: string; source?: LooseSource; url?: string; isOpinion?: unknown }> },
+  data: {
+    status?: string;
+    items?: Array<{ id?: string; source?: LooseSource; url?: string; isOpinion?: unknown }>;
+  },
   fileLabel: string,
 ): SourceIntegrityViolation[] {
   const violations: SourceIntegrityViolation[] = [];
+  const status = data.status;
+  pushIf(violations, fileLabel, !status, 'news.json missing required status');
+  pushIf(
+    violations,
+    fileLabel,
+    status != null && !['filled', 'honest-gap', 'fetch-failed'].includes(status),
+    `invalid news status: ${status ?? '(missing)'}`,
+  );
+  const itemCount = data.items?.length ?? 0;
+  pushIf(
+    violations,
+    fileLabel,
+    status === 'honest-gap' && itemCount > 0,
+    'honest-gap status requires zero items',
+  );
+  pushIf(
+    violations,
+    fileLabel,
+    status === 'filled' && itemCount === 0,
+    'filled status requires at least one news item',
+  );
   const seenNormalizedUrls = new Map<string, string>();
   for (const item of data.items ?? []) {
     const id = item.id ?? '?';

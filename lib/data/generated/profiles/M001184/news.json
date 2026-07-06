@@ -1,6 +1,6 @@
 {
   "bioguideId": "M001184",
+  "status": "honest-gap",
   "items": [],
-  "note": "fetch-failed: 10 feed(s) failed; 0 matches for Thomas Massie.",
-  "status": "fetch-failed"
+  "note": "No relevant articles matched approved-outlet RSS feeds for Thomas Massie in this run."
 }

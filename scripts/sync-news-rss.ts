@@ -1,8 +1,8 @@
 /**
- * sync-news-rss.ts — approved-outlet RSS news for the 6 migrated gold-standard profiles.
+ * sync-news-rss.ts — approved-outlet RSS news for migrated profile members.
  *
  * Output: lib/data/generated/profiles/{bioguideId}/news.json
- * Merges with existing verified items (dedupe by URL; keeps Guardian articles from GDELT).
+ * Members: lib/data/generated/profiles/_manifest.json (never hand-maintained).
  *
  * Rate discipline: ~1 req/s/host token bucket, 15s timeout, retry ×2 with backoff + jitter.
  * Per-member checkpointing — re-run resumes instead of restarting.
@@ -40,8 +40,9 @@ const FEED_HEALTH_FILE = path.join(projectRoot, 'data', 'reports', 'feed-health.
 const MAX_ITEMS_PER_MEMBER = 15;
 const FETCH_TIMEOUT_MS = 15_000;
 const MAX_FETCH_ATTEMPTS = 3;
+const MANIFEST_FILE = path.join(profilesRoot, '_manifest.json');
 
-export const MEMBERS = ['S000033', 'O000172', 'M000355', 'M001184', 'W000817', 'C001098'] as const;
+export type ProfileNewsStatus = 'filled' | 'honest-gap' | 'fetch-failed';
 
 interface LegislatorRow {
   bioguideId: string;
@@ -63,8 +64,8 @@ interface RssItem {
 
 interface ExistingNewsFile {
   bioguideId: string;
+  status: ProfileNewsStatus;
   items: NewsItem[];
-  status?: 'fetch-failed' | 'fetch-blocked';
   note?: string;
 }
 
@@ -97,6 +98,64 @@ async function saveFeedHealth(report: FeedHealthReport): Promise<void> {
 }
 
 const FEED_DISABLE_THRESHOLD = 3;
+
+async function loadManifestMembers(): Promise<string[]> {
+  const manifest = JSON.parse(await readFile(MANIFEST_FILE, 'utf8')) as {
+    members: Array<{ bioguideId: string }>;
+  };
+  return manifest.members.map((m) => m.bioguideId);
+}
+
+function resolveNewsStatus(
+  merged: NewsItem[],
+  existingItems: NewsItem[],
+  opts: {
+    feedsAttempted: number;
+    feedFailures: number;
+    memberSkipped: boolean;
+    legName: string;
+  },
+): { status: ProfileNewsStatus; note: string } {
+  if (merged.length > 0) {
+    return {
+      status: 'filled',
+      note: `${merged.length} relevant article(s) from approved-outlet RSS (target ${MAX_ITEMS_PER_MEMBER}).`,
+    };
+  }
+  if (opts.memberSkipped) {
+    return {
+      status: existingItems.length > 0 ? 'filled' : 'fetch-failed',
+      note:
+        existingItems.length > 0
+          ? `${existingItems.length} prior article(s) preserved — member sync skipped this run.`
+          : `fetch-failed: member sync skipped for ${opts.legName} with no prior items to preserve.`,
+    };
+  }
+  const allFeedsFailed = opts.feedsAttempted > 0 && opts.feedFailures >= opts.feedsAttempted;
+  const someFeedsSucceeded = opts.feedsAttempted > opts.feedFailures;
+  if (allFeedsFailed && existingItems.length === 0) {
+    return {
+      status: 'fetch-failed',
+      note: `fetch-failed: all ${opts.feedsAttempted} feed(s) timed out or errored — no prior items to preserve.`,
+    };
+  }
+  if (merged.length === 0 && someFeedsSucceeded) {
+    return {
+      status: 'honest-gap',
+      note: `No relevant articles matched approved-outlet RSS feeds for ${opts.legName} in this run.`,
+    };
+  }
+  if (merged.length === 0 && opts.feedFailures > 0 && existingItems.length === 0) {
+    return {
+      status: 'fetch-failed',
+      note: `fetch-failed: ${opts.feedFailures} feed(s) failed; 0 matches for ${opts.legName}.`,
+    };
+  }
+  return {
+    status: 'honest-gap',
+    note: `No relevant articles matched approved-outlet RSS feeds for ${opts.legName} in this run.`,
+  };
+}
 
 const feedLimiters = new Map<string, HostRateLimiter>();
 
@@ -354,6 +413,9 @@ async function loadExistingNews(bioguideId: string): Promise<ExistingNewsFile | 
 async function main(): Promise<void> {
   config({ path: path.join(projectRoot, '.env.local') });
 
+  const manifestMembers = await loadManifestMembers();
+  console.log(`RSS sync for ${manifestMembers.length} manifest member(s): ${manifestMembers.join(', ')}`);
+
   const legs = (JSON.parse(await readFile(legislatorsFile, 'utf8')) as { legislators: LegislatorRow[] })
     .legislators;
 
@@ -363,10 +425,14 @@ async function main(): Promise<void> {
   } catch {
     /* fresh run */
   }
+  for (const bioguideId of manifestMembers) {
+    delete checkpoint[bioguideId];
+  }
 
   const feedHealth = await loadFeedHealth();
   const feedFailures: string[] = [];
   const allFeedItems: RssItem[] = [];
+  let feedsAttempted = 0;
 
   for (const feed of NEWS_FEED_REGISTRY) {
     if (feed.feedUnavailable) {
@@ -381,6 +447,7 @@ async function main(): Promise<void> {
       continue;
     }
     console.log(`Fetching ${feed.outlet}…`);
+    feedsAttempted += 1;
     const result = await fetchFeedXml(feed.feedUrl);
     if (!result.ok) {
       console.warn(`  fetch-failed: ${feed.outlet} — ${result.error}`);
@@ -404,20 +471,23 @@ async function main(): Promise<void> {
     };
     const parsed = parseRssItems(result.xml);
     console.log(`  ${parsed.length} raw items`);
-    for (const leg of legs.filter((l) => (MEMBERS as readonly string[]).includes(l.bioguideId))) {
+    for (const leg of legs.filter((l) => manifestMembers.includes(l.bioguideId))) {
       const matched = rawItemsToCandidates(parsed, leg, feed.outlet, feed.tier === 'nonpartisan' ? 'nonpartisan' : 'media');
       allFeedItems.push(...matched);
     }
   }
 
-  for (const bioguideId of MEMBERS) {
+  for (const bioguideId of manifestMembers) {
+    const leg = legs.find((l) => l.bioguideId === bioguideId);
+    if (!leg) {
+      console.warn(`${bioguideId}: no legislator row — skip`);
+      continue;
+    }
+
     if (checkpoint[bioguideId]) {
       console.log(`${bioguideId}: checkpoint skip (${checkpoint[bioguideId].status}, ${checkpoint[bioguideId].count})`);
       continue;
     }
-
-    const leg = legs.find((l) => l.bioguideId === bioguideId);
-    if (!leg) continue;
 
     const memberCandidates = dedupeCandidates(allFeedItems.filter((i) => matchesMember(`${i.title} ${i.description}`, leg)));
     const existingFile = await loadExistingNews(bioguideId);
@@ -426,26 +496,29 @@ async function main(): Promise<void> {
     const freshItems = memberCandidates.map((c, idx) => toNewsItem(c, idx, bioguideId));
     const merged = mergeWithExisting(existingItems, freshItems);
 
+    const resolved = resolveNewsStatus(merged, existingItems, {
+      feedsAttempted,
+      feedFailures: feedFailures.length,
+      memberSkipped: false,
+      legName: leg.name,
+    });
+
     const out: ExistingNewsFile = {
       bioguideId,
+      status: resolved.status,
       items: merged,
-      note: `${merged.length} relevant article(s) from approved-outlet RSS (target ${MAX_ITEMS_PER_MEMBER}).`,
+      note: resolved.note,
     };
-
-    if (feedFailures.length === NEWS_FEED_REGISTRY.length && merged.length === existingItems.length && existingItems.length === 0) {
-      out.status = 'fetch-failed';
-      out.note = `fetch-failed: all ${NEWS_FEED_REGISTRY.length} feeds timed out or errored — no prior items to preserve.`;
-    } else if (feedFailures.length > 0 && merged.length === 0 && existingItems.length === 0) {
-      out.status = 'fetch-failed';
-      out.note = `fetch-failed: ${feedFailures.length} feed(s) failed; 0 matches for ${leg.name}.`;
-    }
 
     const dir = path.join(profilesRoot, bioguideId);
     await mkdir(dir, { recursive: true });
     await writeFile(path.join(dir, 'news.json'), `${JSON.stringify(out, null, 2)}\n`, 'utf8');
-    console.log(`${bioguideId}: wrote ${merged.length} item(s)`);
+    console.log(`${bioguideId}: wrote ${merged.length} item(s) status=${out.status}`);
 
-    checkpoint[bioguideId] = { status: out.status === 'fetch-failed' ? 'fetch-failed' : 'ok', count: merged.length };
+    checkpoint[bioguideId] = {
+      status: out.status === 'fetch-failed' ? 'fetch-failed' : 'ok',
+      count: merged.length,
+    };
     await writeFile(CHECKPOINT_FILE, `${JSON.stringify(checkpoint, null, 2)}\n`, 'utf8');
   }
 

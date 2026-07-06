@@ -1,6 +1,6 @@
 {
   "bioguideId": "O000172",
+  "status": "honest-gap",
   "items": [],
-  "note": "fetch-failed: 10 feed(s) failed; 0 matches for Alexandria Ocasio-Cortez.",
-  "status": "fetch-failed"
+  "note": "No relevant articles matched approved-outlet RSS feeds for Alexandria Ocasio-Cortez in this run."
 }
