@@ -61,6 +61,22 @@ const PAGE_SIZE = 50;
 
 const IS_FULL = process.argv.includes('--full');
 
+function parseMembersArg(argv: string[]): Set<string> | null {
+  const idx = argv.indexOf('--members');
+  if (idx === -1 || !argv[idx + 1]) return null;
+  return new Set(
+    argv[idx + 1]
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean),
+  );
+}
+
+function memberInFilter(bioguideId: string, filter: Set<string> | null): boolean {
+  if (!filter) return true;
+  return filter.has(bioguideId);
+}
+
 interface LegislatorRow {
   bioguideId: string;
   name: string;
@@ -374,6 +390,8 @@ async function main(): Promise<void> {
   const startTime = Date.now();
   const asOf = new Date().toISOString().slice(0, 10);
   const fetchedAt = new Date().toISOString();
+  const memberFilter = parseMembersArg(process.argv);
+  const scopedRun = memberFilter != null;
 
   const legislatorsRaw = JSON.parse(await readFile(LEGISLATORS_FILE, 'utf8')) as {
     legislators: LegislatorRow[];
@@ -381,39 +399,59 @@ async function main(): Promise<void> {
   const legislators = legislatorsRaw.legislators.filter(
     (l) => l.chamber === 'senate' || l.chamber === 'house',
   );
-  const allBioguides = new Set(legislators.map((l) => l.bioguideId));
-  const senators = legislators.filter((l) => l.chamber === 'senate');
-  const houseMembers = legislators.filter((l) => l.chamber === 'house');
+  const targetLegislators = scopedRun
+    ? legislators.filter((l) => memberInFilter(l.bioguideId, memberFilter))
+    : legislators;
 
-  console.log(`National vote sync: ${legislators.length} members (${senators.length} Senate, ${houseMembers.length} House)`);
+  if (scopedRun && targetLegislators.length === 0) {
+    console.error(`No legislators match --members filter: ${[...memberFilter!].join(', ')}`);
+    process.exit(1);
+  }
+
+  const senators = targetLegislators.filter((l) => l.chamber === 'senate');
+  const houseMembers = targetLegislators.filter((l) => l.chamber === 'house');
+  const syncBioguides = new Set(targetLegislators.map((l) => l.bioguideId));
+
+  const scopeField = scopedRun
+    ? `scoped: ${[...memberFilter!].join(',')}`
+    : 'full';
+
+  console.log(
+    scopedRun
+      ? `National vote sync (scoped): ${targetLegislators.length} member(s) — ${scopeField}`
+      : `National vote sync: ${legislators.length} members (${senators.length} Senate, ${houseMembers.length} House)`,
+  );
   console.log(`Mode: ${IS_FULL ? 'FULL refetch' : 'INCREMENTAL'}`);
+
+  if (!isCongressConfigured()) {
+    console.error('CONGRESS_API_KEY not configured — aborting without changes.');
+    emitSyncSummary(
+      buildSyncSummary('sync-votes-national', {
+        status: 'fetch-failed',
+        failed: ['congress-api-key'],
+        checkpoint: CHECKPOINT_FILE,
+        log: '/tmp/ledger-sync-votes-scoped.log',
+        preservePrior: true,
+      }),
+    );
+    process.exit(1);
+  }
 
   const existing = await readExistingVoteSnapshot();
   const highWaterMark = IS_FULL ? undefined : existing?.meta?.highWaterMark;
+  const checkpoint = (await loadCheckpoint<Record<string, true>>(CHECKPOINT_FILE)) ?? {};
 
-  // House + Senate concurrently (different API hosts)
+  if (memberFilter) {
+    for (const id of memberFilter) delete checkpoint[id];
+  }
+
+  // House + Senate concurrently (different API hosts) — only for target members when scoped
   const [houseVotes, senateVotes] = await Promise.all([
-    syncHouseVotes(allBioguides, highWaterMark),
+    syncHouseVotes(syncBioguides, highWaterMark),
     syncSenateVotes(senators, highWaterMark),
   ]);
 
-  // In incremental mode without key, preserve existing House data
-  if (!isCongressConfigured()) {
-    let retained = 0;
-    for (const leg of houseMembers) {
-      const prior = existing?.byBioguideId?.[leg.bioguideId];
-      if (prior?.chamber === 'house' && (prior.votes?.length ?? 0) > 0) {
-        houseVotes.set(leg.bioguideId, prior.votes ?? []);
-        retained += 1;
-      }
-    }
-    if (retained > 0) {
-      console.log(`  retained ${retained} House member vote lists from existing congress-votes.json`);
-    }
-  }
-
   const underFilledMembers: Array<{ bioguideId: string; name: string; count: number; reason: string }> = [];
-  const checkpoint = (await loadCheckpoint<Record<string, true>>(CHECKPOINT_FILE)) ?? {};
   const byBioguideId: Record<
     string,
     {
@@ -426,9 +464,22 @@ async function main(): Promise<void> {
     }
   > = {};
 
-  for (const leg of legislators) {
-    if (checkpoint[leg.bioguideId] && existing?.byBioguideId?.[leg.bioguideId]) {
-      byBioguideId[leg.bioguideId] = existing.byBioguideId[leg.bioguideId] as typeof byBioguideId[string];
+  // §6 scoped merge: start from prior snapshot; only refresh targeted members
+  if (scopedRun && existing?.byBioguideId) {
+    for (const [id, entry] of Object.entries(existing.byBioguideId)) {
+      if (!memberFilter!.has(id)) {
+        byBioguideId[id] = entry as typeof byBioguideId[string];
+      }
+    }
+  }
+
+  const processLegislators = scopedRun ? targetLegislators : legislators;
+
+  for (const leg of processLegislators) {
+    const priorEntry = existing?.byBioguideId?.[leg.bioguideId];
+    const priorCount = priorEntry?.votes?.length ?? 0;
+    if (checkpoint[leg.bioguideId] && priorEntry && priorCount >= VOTES_PER_MEMBER) {
+      byBioguideId[leg.bioguideId] = priorEntry as typeof byBioguideId[string];
       continue;
     }
     const freshHouse = houseVotes.get(leg.bioguideId) ?? [];
@@ -463,8 +514,8 @@ async function main(): Promise<void> {
     }
   }
 
-  const withVotes = legislators.filter((l) => (byBioguideId[l.bioguideId]?.votes.length ?? 0) > 0).length;
-  const totalVotes = legislators.reduce((s, l) => s + (byBioguideId[l.bioguideId]?.votes.length ?? 0), 0);
+  const withVotes = Object.values(byBioguideId).filter((e) => (e.votes?.length ?? 0) > 0).length;
+  const totalVotes = Object.values(byBioguideId).reduce((s, e) => s + (e.votes?.length ?? 0), 0);
   const hwm = computeHighWaterMark(byBioguideId);
 
   const snapshot = {
@@ -473,6 +524,8 @@ async function main(): Promise<void> {
       asOf,
       fetchedAt,
       membersQueried: legislators.length,
+      membersQueriedThisRun: processLegislators.length,
+      scope: scopeField,
       withVoteData: withVotes,
       totalVotePositions: totalVotes,
       failureCount: fetchFailures.length,
@@ -480,7 +533,9 @@ async function main(): Promise<void> {
       incremental: !IS_FULL,
       highWaterMark: hwm,
       datasetUrl: 'https://www.congress.gov',
-      note: `Up to ${VOTES_PER_MEMBER} recent positions per chamber. House via Congress.gov when keyed; Senate via senate.gov LIS XML.`,
+      note: scopedRun
+        ? `Scoped refresh: ${processLegislators.length} member(s); merged into national snapshot (${legislators.length} total). Up to ${VOTES_PER_MEMBER} recent positions per chamber.`
+        : `Up to ${VOTES_PER_MEMBER} recent positions per chamber. House via Congress.gov when keyed; Senate via senate.gov LIS XML.`,
     },
     byBioguideId,
     failures: fetchFailures,
@@ -496,6 +551,8 @@ async function main(): Promise<void> {
 
   console.log(`\nWrote ${OUT_FILE}`);
   console.log(`  members with votes: ${withVotes}/${legislators.length}`);
+  console.log(`  members queried this run: ${processLegislators.length}`);
+  console.log(`  scope: ${scopeField}`);
   console.log(`  total vote positions: ${totalVotes}`);
   console.log(`  network calls: ${totalNetworkCalls}`);
   console.log(`  cache hits: ${totalCacheHits}`);
@@ -521,7 +578,7 @@ async function main(): Promise<void> {
       status: fetchFailures.length > 0 ? 'partial' : 'ok',
       failed: fetchFailures.map((f) => `${f.chamber}-${f.rollNumber}`),
       checkpoint: CHECKPOINT_FILE,
-      log: '/tmp/ledger-sync-votes-national.log',
+      log: scopedRun ? '/tmp/ledger-sync-votes-scoped.log' : '/tmp/ledger-sync-votes-national.log',
       preservePrior: true,
     }),
   );

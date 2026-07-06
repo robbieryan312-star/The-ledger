@@ -61,6 +61,8 @@ For each member in the batch, and for each required data type (see the 12 layers
 ---
 
 ## Guardrails carried into every batch (from core rules)
+- **No full-corpus syncs in agent sessions** — scope every sync with `--members` to the batch
+  under review; full-corpus = scheduled CI only (see `ledger-core-rules.mdc` §5).
 - A "Said" statement is spoken floor prose or a verbatim attributed media quote — never procedural
   boilerplate; enforced by the build-gated fixture (`scripts/__tests__/crecProceduralFilter.test.ts`).
 - 1 media source → `'alleged'`; 2+ independent approved outlets → verified.

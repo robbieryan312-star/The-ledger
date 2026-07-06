@@ -22,7 +22,7 @@ const NATIONAL_FILE = path.join(projectRoot, 'data/national/votes/congress-votes
 const PROFILES_ROOT = path.join(projectRoot, 'lib/data/generated/profiles');
 const TARGET_CONGRESS = 119;
 const COLLECT_LIMIT = 45;
-const DISPLAY_LIMIT = 10;
+const DISPLAY_LIMIT = 30;
 
 function sleep(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));

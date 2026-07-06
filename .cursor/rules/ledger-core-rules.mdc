@@ -84,6 +84,60 @@ the specific failure this file was created to stop.
   checklist to the remaining 531 members — it never redesigns them. Fix the script/extractor
   that produced bad data; never hand-clean one member and call it done.
 
+### 1.1 Agent handoff, review, and completion (binding)
+
+These rules reinforce §1 ("Verify, never trust 'done'"), the ping-pong loop (Claude
+diagnoses + briefs; Cursor executes), and §6 ("Read the real error before any restart").
+
+#### A. Two-or-more-failure handoff (binding)
+
+When ANY task fails **2 or more attempts** before completion, the agent MUST **NOT**:
+
+- Restart the same approach blindly
+- Ask the owner to "try again" without diagnosis
+- Claim completion without commit hash + artifact evidence
+
+Instead, **STOP** and produce a **Claude handoff report** (≤800 words unless more required)
+containing:
+
+1. **Objective** — what was attempted
+2. **Failure count** — attempt 1 / 2 / 3… what each did and exact error/timeout
+3. **Root cause analysis** — existing problem(s), not symptoms
+4. **Actions taken** — commands run, files touched, commits (hashes), locks/logs paths
+5. **Tree state** — HEAD vs working tree divergence; uncommitted WIP
+6. **What needs fixing** — concrete next steps for Claude (not menus for owner)
+7. **Evidence gaps** — what was NOT verified and why
+
+#### B. Slow / incomplete / substandard task review (binding)
+
+When a task **takes longer than expected**, **fails to collect expected output**, or **does
+not meet explicit brief/acceptance standards**, the agent MUST append under the task output a
+**"Review for Claude"** block with:
+
+- **Expected vs actual** — counts, paths, commit hashes, runtime
+- **Fresh artifact evidence from THIS run only** — paste from log/file; never recycle prior
+  session lines
+- If pasted evidence contradicts code on disk, **state the discrepancy explicitly**
+- **Blockers** — human-only action (CAPTCHA, keys) vs agent-fixable
+- Whether **STOP** is appropriate per brief
+
+#### C. Completion claims (reinforce)
+
+A task is **complete** ONLY when **both** are true:
+
+1. A **commit hash** exists for the verified work (see §1 commit rule; owner may withhold push)
+2. The **acceptance artifact named in the brief** is pasted fresh from that commit/run
+
+"Complete" without both = **task failure**. "It builds" or "sync finished" alone is not
+completion (see §1 "Verify, never trust 'done'").
+
+#### D. Tone and format
+
+- Plain language, structured headers; tables OK for status matrices
+- **No verification theater** — never re-list previously accepted work as new progress
+- Never paste smoke/summary JSON from memory or prior sessions — always `rg`/`cat` from the
+  current log or artifact on disk
+
 ---
 
 ## 2. Where the authoritative detail lives — read the file that owns the answer
@@ -165,6 +219,10 @@ the specific failure this file was created to stop.
 - **Port 3000 is the owner's — never start/kill anything on it.** Use 4100+ for any dev server;
   stop any server you start once verification is done.
 - **Log long-running syncs:** tee to `/tmp/ledger-<script>.log` so failures are inspectable.
+- **No full-corpus syncs in agent sessions.** Agent runs MUST scope every sync with
+  `--members <bioguideIds>` (or equivalent) to the members under review. Full-corpus runs are
+  scheduled CI / owner-initiated only. Add `--members` to any sync script that lacks it before
+  running it in a session.
 - **Every external `fetch()` in a sync/ingest script needs a timeout** (`AbortSignal.timeout`).
   An unguarded fetch can hang the whole script with no output.
 - **Stay in scope.** Don't touch files outside the brief, rename things, or add abstractions.
