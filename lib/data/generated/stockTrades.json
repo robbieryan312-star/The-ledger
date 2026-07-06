@@ -1,18 +1,24 @@
 {
   "meta": {
     "asOf": "2026-07-06",
-    "featuredQueried": 3,
+    "featuredQueried": 444,
     "withTradeData": 97,
-    "integrationStatus": "live",
-    "note": "Official STOCK Act PTR sync: 221 transaction(s) for 97 featured member(s). Demo trades remain on profiles without official rows.",
+    "integrationStatus": "partial",
+    "note": "Official STOCK Act PTR sync: 5859 transaction(s) across 444 member entries; 97 member(s) with at least one official trade.",
     "nextSteps": [
+      "Senate: retry efdsearch.senate.gov/search/report/data/ when maintenance ends; parse view/report HTML tables per PTR.",
+      "House: members without PTR filings (annual FD only) correctly show zero official trades — do not fabricate.",
       "Merge official rows via lib/data/stockTrades.ts mergeStockTrades(); demo rows fill only when official snapshot is empty.",
       "Optional: enrich conflict scores by cross-referencing congressVotes.json committee/vote proximity."
     ],
     "senateReachable": true,
-    "houseFilingsParsed": 13,
+    "senateError": "Senate eFD search API under maintenance (HTTP 503)",
+    "houseFilingsParsed": 693,
+    "housePtrFilingsParsedThisRun": 13,
     "houseIndexFailedYears": [],
-    "totalOfficialTrades": 221
+    "totalOfficialTrades": 5859,
+    "membersQueriedThisRun": 3,
+    "scope": "scoped: 3 member(s) filter=W000821,H001072,C001103"
   },
   "byPoliticianId": {
     "alexandria-ocasio-cortez": {

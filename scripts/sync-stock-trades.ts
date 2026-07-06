@@ -29,6 +29,7 @@ import type { Source, StockTrade } from '../lib/types';
 import type { StockTradeEntry, StockTradesSnapshot } from '../lib/data/stockTrades';
 import {
   buildHouseStockTradeEntry,
+  buildMergedStockTradesMeta,
   stockEntryToProfileTradesFile,
 } from '../lib/data/stockTrades';
 import { loadCheckpoint, saveCheckpoint } from './lib/resilientFetch';
@@ -214,11 +215,9 @@ async function runSync(): Promise<void> {
   }
 
   const allTargets = [...houseMembers, ...senateMembers];
-
-  const senateProbe = await probeSenateEfd();
-  let senateError: string | undefined = senateProbe.error;
-  let houseFilingsParsed = 0;
-  let totalOfficialTrades = 0;
+  const scopeField = scopedRun
+    ? `scoped: ${allTargets.length} member(s)${memberFilter ? ` filter=${[...memberFilter].join(',')}` : ''}${memberLimit != null ? ` limit=${memberLimit}` : ''}`
+    : 'full';
 
   const byPoliticianId: Record<string, StockTradeEntry> = {};
   const checkpoint = (await loadCheckpoint<Record<string, true>>(CHECKPOINT_FILE)) ?? {};
@@ -234,6 +233,14 @@ async function runSync(): Promise<void> {
   } catch {
     /* fresh run */
   }
+
+  const priorMeta = priorSnapshot?.meta;
+  let senateError = priorMeta?.senateError;
+  let senateReachable = priorMeta?.senateReachable ?? false;
+  let housePtrFilingsParsedThisRun = 0;
+
+  const senateProbe = await probeSenateEfd();
+  let senateSyncHadError = false;
 
   for (const p of allTargets) {
     if (!byPoliticianId[p.id]) {
@@ -280,7 +287,7 @@ async function runSync(): Promise<void> {
           indexByYear: houseIndexByYear,
         },
       );
-      houseFilingsParsed += filingsMatched;
+      housePtrFilingsParsedThisRun += filingsMatched;
 
       const built = buildHouseStockTradeEntry({
         trades,
@@ -290,7 +297,6 @@ async function runSync(): Promise<void> {
         houseIndexFailedYears,
         houseIndexYears: HOUSE_INDEX_YEARS,
       });
-      totalOfficialTrades += built.trades.length;
 
       const entry = byPoliticianId[p.id];
       entry.trades = built.trades;
@@ -312,7 +318,8 @@ async function runSync(): Promise<void> {
     await sleep(200);
   }
 
-  if (senateProbe.reachable) {
+  if (senateProbe.reachable && senateMembers.length > 0) {
+    senateReachable = true;
     console.log(`Syncing Senate PTRs for ${senateMembers.length} featured senators…`);
     for (const p of senateMembers) {
       if (!scopedRun && checkpoint[p.id]) {
@@ -324,7 +331,10 @@ async function runSync(): Promise<void> {
         startDate: '01/01/2023',
         maxReports: MAX_SENATE_REPORTS_PER_MEMBER,
       });
-      if (result.error) senateError = result.error;
+      if (result.error) {
+        senateSyncHadError = true;
+        senateError = result.error;
+      }
 
       const entry = byPoliticianId[p.id];
       if (result.error && priorTrades.length > 0) {
@@ -332,7 +342,6 @@ async function runSync(): Promise<void> {
         entry.note = `fetch-failed: Senate eFD sync (${result.error}). Prior good trades preserved.`;
       } else {
         entry.trades = result.trades;
-        totalOfficialTrades += result.trades.length;
         if (result.trades.length > 0) {
           entry.note = `${result.trades.length} official PTR transaction(s) from Senate eFD.`;
         } else if (result.error) {
@@ -350,48 +359,41 @@ async function runSync(): Promise<void> {
       await writeProfileTradesIfExists(p.bioguideId, entry);
       await sleep(200);
     }
-  } else {
+    if (!senateSyncHadError) {
+      senateError = undefined;
+    }
+  } else if (!senateProbe.reachable) {
+    if (!scopedRun || senateMembers.length > 0) {
+      senateReachable = false;
+      senateError = senateProbe.error ?? senateError;
+    }
     console.warn(`Senate eFD unavailable: ${senateProbe.error ?? 'unknown'}`);
     for (const p of senateMembers) {
-      byPoliticianId[p.id].note = `Senate eFD unreachable (${senateProbe.error ?? 'maintenance'}). Demo trades on profile, if any, are labeled separately.`;
+      const priorNote = byPoliticianId[p.id]?.note;
+      byPoliticianId[p.id].note =
+        priorNote ??
+        `Senate eFD unreachable (${senateProbe.error ?? 'maintenance'}). Demo trades on profile, if any, are labeled separately.`;
     }
   }
 
-  const withTradeData = Object.values(byPoliticianId).filter((e) => e.trades.length > 0).length;
-  const integrationStatus: StockTradesSnapshot['meta']['integrationStatus'] =
-    withTradeData === 0 ? 'stub' : withTradeData < allTargets.length ? 'partial' : 'live';
-
-  const nextSteps: string[] = [];
-  if (!senateProbe.reachable || senateError?.includes('503') || senateError?.includes('maintenance')) {
-    nextSteps.push(
-      'Senate: retry efdsearch.senate.gov/search/report/data/ when maintenance ends; parse view/report HTML tables per PTR.',
-    );
-  }
-  if (withTradeData < houseMembers.length) {
-    nextSteps.push(
-      'House: members without PTR filings (annual FD only) correctly show zero official trades — do not fabricate.',
-    );
-  }
-  nextSteps.push('Merge official rows via lib/data/stockTrades.ts mergeStockTrades(); demo rows fill only when official snapshot is empty.');
-  nextSteps.push('Optional: enrich conflict scores by cross-referencing congressVotes.json committee/vote proximity.');
+  const totalHouseInCorpus = Object.values(byPoliticianId).filter((e) => e.chamber === 'house').length;
+  const meta = buildMergedStockTradesMeta({
+    asOf,
+    byPoliticianId,
+    priorMeta,
+    run: {
+      membersQueriedThisRun: allTargets.length,
+      scope: scopeField,
+      housePtrFilingsParsedThisRun,
+      houseIndexFailedYears,
+      senateReachable,
+      senateError,
+      houseMemberCount: totalHouseInCorpus,
+    },
+  });
 
   const snapshot: StockTradesSnapshot = {
-    meta: {
-      asOf,
-      featuredQueried: allTargets.length,
-      withTradeData,
-      integrationStatus,
-      note:
-        withTradeData > 0
-          ? `Official STOCK Act PTR sync: ${totalOfficialTrades} transaction(s) for ${withTradeData} featured member(s). Demo trades remain on profiles without official rows.`
-          : 'No official STOCK Act trades synced this run. Featured profiles keep clearly labeled demo data where present.',
-      nextSteps,
-      senateReachable: senateProbe.reachable,
-      senateError,
-      houseFilingsParsed,
-      houseIndexFailedYears,
-      totalOfficialTrades,
-    },
+    meta,
     byPoliticianId,
   };
 
@@ -399,15 +401,16 @@ async function runSync(): Promise<void> {
   await writeFile(OUT_FILE, JSON.stringify(snapshot, null, 2) + '\n', 'utf8');
 
   console.log(`\nWrote ${OUT_FILE}`);
-  console.log(`  Congress members queried: ${allTargets.length}`);
-  console.log(`  politicians with official trades: ${withTradeData}`);
-  console.log(`  total official trades: ${totalOfficialTrades}`);
-  console.log(`  integration status: ${integrationStatus}`);
-  console.log(`  Senate eFD reachable: ${senateProbe.reachable}`);
+  console.log(`  Members queried this run: ${meta.membersQueriedThisRun ?? allTargets.length}`);
+  console.log(`  Snapshot entries (merged): ${meta.featuredQueried}`);
+  console.log(`  politicians with official trades: ${meta.withTradeData}`);
+  console.log(`  total official trades: ${meta.totalOfficialTrades}`);
+  console.log(`  integration status: ${meta.integrationStatus}`);
+  console.log(`  Senate eFD reachable: ${meta.senateReachable}`);
 
   emitSyncSummary(
     buildSyncSummary('sync-stock-trades', {
-      status: integrationStatus === 'live' ? 'ok' : integrationStatus === 'partial' ? 'partial' : 'fetch-failed',
+      status: meta.integrationStatus === 'live' ? 'ok' : meta.integrationStatus === 'partial' ? 'partial' : 'fetch-failed',
       failed: houseIndexFailedYears.map((y) => `house-index-${y}`),
       checkpoint: CHECKPOINT_FILE,
       log: '/tmp/ledger-sync-stock-trades.log',

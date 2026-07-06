@@ -6,7 +6,9 @@ import test from 'node:test';
 import type { StockTrade } from '../../lib/types';
 import {
   buildHouseStockTradeEntry,
+  buildMergedStockTradesMeta,
   stockEntryToProfileTradesFile,
+  type StockTradeEntry,
 } from '../../lib/data/stockTrades';
 
 /** Frozen fixture: member had 2 official trades before a House index fetch-failed run. */
@@ -70,4 +72,58 @@ test('unparsed House PTR filings get honest note not clean empty (Kelly docIds 2
   assert.match(profileFile.note, /unparsed-filings/);
   assert.equal(profileFile.status, 'honest-gap');
   assert.equal(profileFile.trades.length, 0);
+});
+
+test('scoped run meta merges from prior snapshot (§6 meta honesty)', () => {
+  const houseSource = {
+    name: 'House Clerk Financial Disclosure',
+    url: 'https://disclosures-clerk.house.gov/FinancialDisclosure',
+    tier: 'official' as const,
+  };
+  const byPoliticianId: Record<string, StockTradeEntry> = {};
+  for (let i = 0; i < 10; i++) {
+    const politicianId = i === 0 ? 'W000821' : i === 1 ? 'C001103' : `H${i}`;
+    const tradeCount = i === 0 ? 55 : i === 1 ? 0 : 50;
+    byPoliticianId[politicianId] = {
+      politicianId,
+      bioguideId: politicianId.length === 7 ? politicianId : undefined,
+      chamber: 'house',
+      trades: Array.from({ length: tradeCount }, (_, j) => ({
+        ...STOCK_TRADES_KNOWN_GOOD_PRIOR[0],
+        id: `fixture-${politicianId}-${j}`,
+      })),
+      source: houseSource,
+      asOf: '2026-07-06',
+    };
+  }
+
+  const meta = buildMergedStockTradesMeta({
+    asOf: '2026-07-06',
+    byPoliticianId,
+    priorMeta: {
+      featuredQueried: 10,
+      houseFilingsParsed: 693,
+      senateError: 'fetch-failed: maintenance',
+      senateReachable: false,
+    },
+    run: {
+      membersQueriedThisRun: 2,
+      scope: 'scoped: 2 member(s) filter=W000821,C001103',
+      housePtrFilingsParsedThisRun: 13,
+      houseIndexFailedYears: [],
+      senateReachable: false,
+      senateError: 'fetch-failed: maintenance',
+      houseMemberCount: 10,
+    },
+  });
+
+  assert.equal(meta.featuredQueried, 10);
+  assert.equal(meta.totalOfficialTrades, 455);
+  assert.equal(meta.integrationStatus, 'partial');
+  assert.match(meta.senateError ?? '', /maintenance/);
+  assert.equal(meta.houseFilingsParsed, 693);
+  assert.equal(meta.housePtrFilingsParsedThisRun, 13);
+  assert.equal(meta.membersQueriedThisRun, 2);
+  assert.match(meta.scope ?? '', /^scoped:/);
+  assert.match(meta.note, /455 transaction/);
 });

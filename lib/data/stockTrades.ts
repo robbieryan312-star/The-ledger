@@ -24,9 +24,14 @@ export interface StockTradesSnapshotMeta {
   nextSteps: string[];
   senateReachable?: boolean;
   senateError?: string;
+  /** Cumulative corpus field — carried forward from prior snapshot; not overwritten by scoped runs. */
   houseFilingsParsed?: number;
+  /** Filings matched/processed in this run only. */
+  housePtrFilingsParsedThisRun?: number;
   houseIndexFailedYears?: number[];
   totalOfficialTrades?: number;
+  membersQueriedThisRun?: number;
+  scope?: string;
 }
 
 export interface StockTradesSnapshot {
@@ -60,10 +65,6 @@ export function politiciansWithOfficialTrades(): number {
   return Object.values(snapshot.byPoliticianId).filter((e) => e.trades.length > 0).length;
 }
 
-/**
- * Merge official Tier-1 trades over demo rows.
- * Official trades win when present; demo trades fill gaps and are flagged in the UI.
- */
 export interface ProfileTradesFile {
   bioguideId: string;
   status: 'filled' | 'honest-gap' | 'fetch-failed';
@@ -150,6 +151,112 @@ export function stockEntryToProfileTradesFile(
   if (hasTrades) status = 'filled';
   else if (isFetchFailed) status = 'fetch-failed';
   return { bioguideId, status, note, trades: entry.trades };
+}
+
+export function countTotalOfficialTrades(byPoliticianId: Record<string, StockTradeEntry>): number {
+  return Object.values(byPoliticianId).reduce((sum, e) => sum + e.trades.length, 0);
+}
+
+export function deriveStockTradesIntegrationStatus(
+  byPoliticianId: Record<string, StockTradeEntry>,
+  opts: { senateReachable: boolean; senateError?: string },
+): StockTradesSnapshotMeta['integrationStatus'] {
+  const entries = Object.values(byPoliticianId);
+  const withTradeData = entries.filter((e) => e.trades.length > 0).length;
+  const featuredQueried = entries.length;
+  if (withTradeData === 0) return 'stub';
+  if (!opts.senateReachable || opts.senateError) return 'partial';
+  if (withTradeData < featuredQueried) return 'partial';
+  return 'live';
+}
+
+export function buildStockTradesMetaNote(
+  withTradeData: number,
+  featuredQueried: number,
+  totalOfficialTrades: number,
+): string {
+  if (withTradeData === 0) {
+    return 'No official STOCK Act trades in snapshot. Featured profiles keep clearly labeled demo data where present.';
+  }
+  return `Official STOCK Act PTR sync: ${totalOfficialTrades} transaction(s) across ${featuredQueried} member entries; ${withTradeData} member(s) with at least one official trade.`;
+}
+
+export function buildStockTradesNextSteps(
+  byPoliticianId: Record<string, StockTradeEntry>,
+  opts: {
+    senateReachable: boolean;
+    senateError?: string;
+    houseMemberCount: number;
+  },
+): string[] {
+  const withTradeData = Object.values(byPoliticianId).filter((e) => e.trades.length > 0).length;
+  const nextSteps: string[] = [];
+  if (
+    !opts.senateReachable ||
+    opts.senateError?.includes('503') ||
+    opts.senateError?.includes('maintenance')
+  ) {
+    nextSteps.push(
+      'Senate: retry efdsearch.senate.gov/search/report/data/ when maintenance ends; parse view/report HTML tables per PTR.',
+    );
+  }
+  if (withTradeData < opts.houseMemberCount) {
+    nextSteps.push(
+      'House: members without PTR filings (annual FD only) correctly show zero official trades — do not fabricate.',
+    );
+  }
+  nextSteps.push(
+    'Merge official rows via lib/data/stockTrades.ts mergeStockTrades(); demo rows fill only when official snapshot is empty.',
+  );
+  nextSteps.push(
+    'Optional: enrich conflict scores by cross-referencing congressVotes.json committee/vote proximity.',
+  );
+  return nextSteps;
+}
+
+export function buildMergedStockTradesMeta(input: {
+  asOf: string;
+  byPoliticianId: Record<string, StockTradeEntry>;
+  priorMeta?: Partial<StockTradesSnapshotMeta>;
+  run: {
+    membersQueriedThisRun: number;
+    scope: string;
+    housePtrFilingsParsedThisRun: number;
+    houseIndexFailedYears: number[];
+    senateReachable: boolean;
+    senateError?: string;
+    houseMemberCount: number;
+  };
+}): StockTradesSnapshotMeta {
+  const entries = Object.values(input.byPoliticianId);
+  const featuredQueried = entries.length;
+  const withTradeData = entries.filter((e) => e.trades.length > 0).length;
+  const totalOfficialTrades = countTotalOfficialTrades(input.byPoliticianId);
+  const integrationStatus = deriveStockTradesIntegrationStatus(input.byPoliticianId, {
+    senateReachable: input.run.senateReachable,
+    senateError: input.run.senateError,
+  });
+
+  return {
+    asOf: input.asOf,
+    featuredQueried,
+    withTradeData,
+    integrationStatus,
+    note: buildStockTradesMetaNote(withTradeData, featuredQueried, totalOfficialTrades),
+    nextSteps: buildStockTradesNextSteps(input.byPoliticianId, {
+      senateReachable: input.run.senateReachable,
+      senateError: input.run.senateError,
+      houseMemberCount: input.run.houseMemberCount,
+    }),
+    senateReachable: input.run.senateReachable,
+    senateError: input.run.senateError,
+    houseFilingsParsed: input.priorMeta?.houseFilingsParsed ?? 0,
+    housePtrFilingsParsedThisRun: input.run.housePtrFilingsParsedThisRun,
+    houseIndexFailedYears: input.run.houseIndexFailedYears,
+    totalOfficialTrades,
+    membersQueriedThisRun: input.run.membersQueriedThisRun,
+    scope: input.run.scope,
+  };
 }
 
 export function mergeStockTrades(
