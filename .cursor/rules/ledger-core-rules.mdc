@@ -248,6 +248,48 @@ completion. Re-listing work accepted in a **prior** Claude review as new progres
 **STOP appropriate:** [yes/no]
 ```
 
+#### G. Three-strike turn flow (binding — seamless, no owner reminders)
+
+This is how failure reporting integrates into **every conversation turn** without the owner
+asking. A **strike** = one attempt at the brief task that does not meet acceptance.
+
+**Strike 1 (first failure or substandard output):**
+
+1. Read the tee'd log / error — diagnose root cause (§6).
+2. **In the SAME response**, after your work narrative, append **Review for Claude** (§1.1 F).
+3. **In the SAME turn**, if the brief allows retry and the fix is agent-fixable: execute **one**
+   corrective attempt with a **different** approach (e.g. scope with `--members`, clear stale lock,
+   read log before re-run). Do **not** ask the owner to retry.
+4. If the corrective attempt completes acceptance → report commit hash + artifact; no handoff needed.
+
+**Strike 2 (second failure on the same brief task):**
+
+1. **STOP** all further retries on that task.
+2. End the response with the full **Claude handoff report** (§1.1 F) only — no filler, no
+   "I'll try again," no asking the owner anything.
+3. List all three strikes if strike 1 included a same-turn retry (counts as attempt 2).
+
+**Strike 3+:** Forbidden unless the brief explicitly authorizes another attempt. Produce handoff;
+wait for Claude.
+
+**Same-turn structure (copy this shape):**
+
+```
+[Work narrative: what you did, files, commands]
+
+## Review for Claude          ← required after strike 1
+…filled template…
+
+[Optional: strike-1 corrective retry + outcome]
+
+## Claude handoff report      ← required after strike 2+; replaces further work
+…filled template…
+```
+
+**Stale reports:** Claude treats any handoff/review that omits HEAD hash, `git status`, exact
+commands this session, or that pastes evidence contradicting `git show`/logs as **rejected**.
+Regenerate from disk — never recycle a prior session's paragraph.
+
 ---
 
 ## 2. Where the authoritative detail lives — read the file that owns the answer

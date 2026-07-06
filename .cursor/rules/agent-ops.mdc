@@ -43,6 +43,7 @@ autonomously at the end of the same turn.
 |--------|---------------------------------------------|------|
 | Attempt 1 fails or is substandard | **Review for Claude** (§1.1 F) with commands, files, fresh log paste | One different fix attempt if brief allows |
 | Attempt 2+ still not accepted | **Claude handoff report** (§1.1 F) + **STOP** | Wait for Claude brief |
+| Strike 1 same-turn retry fails | Counts as attempt 2 → handoff report + **STOP** | See §1.1 G |
 | Claiming complete | Paste commit hash + `git show` artifact evidence | Nothing else |
 
 **Every report must include:** HEAD hash, `git status`, exact commands run this session, every
