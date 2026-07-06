@@ -16,6 +16,10 @@ alwaysApply: true
 - **Fixtures append-only** — regression guards grow, never reset; every data-quality bug gets a frozen bad example.
 - **Spec violation = bug to fix, never a question** — read the owning file; do not re-ask the owner.
 - **Stale violation flags are bugs** — when a flagged violation is fixed, delete its flag in the same commit.
+- **2+ failures or substandard output → STOP and hand off to Claude** — never blind-retry or ask the
+  owner to "try again." After 2 failed attempts, or when a task is slow/incomplete/below brief
+  standards, produce the reports in **§1.1** (Claude handoff report or Review for Claude block).
+  Completion claims require commit hash + fresh artifact evidence — see §1.1 C.
 
 **These rules bind EVERY agent equally — Claude Code AND every Cursor agent (Auto, cloud
 agents, background agents). No agent is exempt.** This is the one file all of them reload every
@@ -138,6 +142,41 @@ completion (see §1 "Verify, never trust 'done'").
 - Never paste smoke/summary JSON from memory or prior sessions — always `rg`/`cat` from the
   current log or artifact on disk
 
+#### E. Copy-paste templates (use verbatim structure)
+
+**After 2+ failures — Claude handoff report:**
+
+```markdown
+## Claude handoff report
+
+**Objective:** [one sentence]
+**Attempts:** 1) [command + error] · 2) [command + error] · …
+**Root cause:** [problem(s), not symptoms]
+**Actions taken:** [commands, files, commit hashes, log paths]
+**Tree state:** HEAD [hash]; uncommitted: [files or "clean"]
+**Needs fixing:** [concrete steps for Claude — not owner menus]
+**Evidence gaps:** [what was not verified and why]
+**STOP:** [yes/no per brief]
+```
+
+**After slow / incomplete / substandard work — append under the task:**
+
+```markdown
+## Review for Claude
+
+| | Expected | Actual |
+|---|----------|--------|
+| Runtime | | |
+| Output path | | |
+| Count / status | | |
+| Commit | | |
+
+**Fresh evidence (this run):** `[paste from rg/cat on current log/file]`
+**Code vs evidence:** [match / discrepancy — state explicitly if mismatch]
+**Blockers:** [human-only vs agent-fixable]
+**STOP appropriate:** [yes/no per brief]
+```
+
 ---
 
 ## 2. Where the authoritative detail lives — read the file that owns the answer
@@ -249,7 +288,7 @@ completion (see §1 "Verify, never trust 'done'").
   false pass.
 - **Read the real error before any restart or re-brief.** Never blindly restart a failed run or
   re-send a brief — read the tee'd log / actual error first. A blind restart repeats the failure
-  and burns time.
+  and burns time. After **2 failures**, §1.1 A applies: STOP and hand off to Claude.
 - **Profile, then partial-batch, before any full-scale run.** Before a full-corpus run, measure
   per-item cost and run a substantial partial batch (e.g. 20–50). Scale to the full set only after
   the batch passes review — catch data-quality AND throughput problems on 30 items, not 537.

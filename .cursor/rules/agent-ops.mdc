@@ -34,6 +34,13 @@ The agent is delegated to:
 Reference files before asking the owner anything: `KEYS.md`, `REPO.md`, `PROGRESS.md`,
 `lib/data/SOURCE_LOOKUP.md`, `lib/data/sourceCatalog.ts`, `.env.local` (SET vs EMPTY only).
 
+## When stuck (binding — see ledger-core-rules §1.1)
+
+- **Attempt 1 fails:** read the tee'd log; fix root cause; retry once with a different approach if needed.
+- **Attempt 2 fails:** **STOP.** Do not ask the owner to retry. Produce the **Claude handoff report** (§1.1 E).
+- **Task slow, incomplete, or below brief standards:** append **Review for Claude** (§1.1 E) even if exit code is 0.
+- **Never claim "complete"** without commit hash + acceptance artifact pasted fresh from that commit/run.
+
 ## Do not
 
 - Ask the owner if they are "ready to continue" — proceed until blocked
