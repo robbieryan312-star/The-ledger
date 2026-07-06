@@ -131,6 +131,22 @@ export const SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH = {
 export const PLATFORM_KNOWN_BAD_EVENT_NARRATION =
   'The day after the filibuster, Attorney General Eric Holder sent a letter to Paul , responding to the filibuster. Holder wrote, "Does the president have the authority to use a weaponized drone to kill an American not engaged in combat on U.S. soil? The answer to that is no." [198]';
 
+/** Crapo DUI arrest narration — MUST reject as a stated position (incident/biography fixture). */
+export const PLATFORM_KNOWN_BAD_CRAPO_ARREST =
+  'On December 23, 2012, Crapo was arrested in Alexandria, Virginia, and charged with driving while under the influence of alcohol. Alexandria police pulled Crapo over after he allegedly ran a red light at 12:45 a.m.';
+
+/** Jan-6 electoral-certification roll-call narration — MUST reject (not a member stance). */
+export const PLATFORM_KNOWN_BAD_JAN6_CERTIFICATION =
+  'Congress convened a joint session on January 6, 2021, to count the electoral votes. He voted against certifying the electoral votes from Arizona.';
+
+/** Genuine first-person member action — MUST pass disqualification guards. */
+export const PLATFORM_KNOWN_GOOD_MEMBER_POSITION =
+  'Introduced measure to provide necessary funding for Israel\u2019s missile defense, Arrow System, David\u2019s Sling and Iron Dome.';
+
+/** Neal Syria statement — date-led but first-person stance via attributed quote; MUST pass. */
+export const PLATFORM_KNOWN_GOOD_DATED_FIRST_PERSON_STANCE =
+  'On September 2, 2013, Neal issued a statement regarding the situation in Syria. In it he said, "I am pleased that President Obama is going to seek Congressional approval for any use of force in Syria."';
+
 /** A000055 bio-boilerplate — MUST reject (bundle triage fixture). */
 export const PLATFORM_KNOWN_BAD_BIO_BOILERPLATE =
   "Robert Aderholt ( Republican Party ) is a member of the U.S. House , representing Alabama's 4th Congressional District . He assumed office on January 3, 1997. His current term ends on January 3, 2027.";
@@ -138,10 +154,6 @@ export const PLATFORM_KNOWN_BAD_BIO_BOILERPLATE =
 /** Ballotpedia finance disclaimer — MUST reject as member position (site furniture fixture). */
 export const PLATFORM_KNOWN_BAD_SITE_FURNITURE =
   'Note: The finance data shown here comes from the disclosures required of candidates and parties. Depending on the election or state, this may represent only a portion of all the funds spent on their behalf.';
-
-/** Genuine first-person member action — MUST pass disqualification guards. */
-export const PLATFORM_KNOWN_GOOD_MEMBER_POSITION =
-  'Introduced measure to provide necessary funding for Israel\u2019s missile defense, Arrow System, David\u2019s Sling and Iron Dome.';
 
 /** P000197 Phase E — Ballotpedia election-result row (not a stated position). */
 export const PLATFORM_KNOWN_BAD_ELECTION_RESULT_IN_FOR =

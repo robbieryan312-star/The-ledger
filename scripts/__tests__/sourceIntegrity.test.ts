@@ -12,12 +12,15 @@ import {
   SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH,
   SAID_DID_KNOWN_BAD_TAUTOLOGY,
   PLATFORM_KNOWN_BAD_EVENT_NARRATION,
+  PLATFORM_KNOWN_BAD_CRAPO_ARREST,
+  PLATFORM_KNOWN_BAD_JAN6_CERTIFICATION,
   PLATFORM_KNOWN_BAD_ELECTION_RESULT_IN_FOR,
   PLATFORM_KNOWN_BAD_LETTER_EVENT,
   PLATFORM_KNOWN_BAD_INQUIRY_ANNOUNCEMENT,
   PLATFORM_KNOWN_BAD_BIO_BOILERPLATE,
   PLATFORM_KNOWN_BAD_SITE_FURNITURE,
   PLATFORM_KNOWN_GOOD_MEMBER_POSITION,
+  PLATFORM_KNOWN_GOOD_DATED_FIRST_PERSON_STANCE,
   SOURCE_INTEGRITY_KNOWN_BAD_URLS,
   SOURCE_INTEGRITY_KNOWN_GOOD_URLS,
   STATEMENT_KNOWN_BAD_NON_VERBATIM_ALLEGED,
@@ -35,6 +38,7 @@ import {
   isSiteFurniture,
   isEventNarration,
   isVoteRestatementSaid,
+  isDisqualifiedPlatformPosition,
   normalizeUrlForDedupe,
   saidDidSubjectsOverlap,
   validateNewsFile,
@@ -129,6 +133,17 @@ test('bio boilerplate and site furniture are rejected (A000055 bundle fixtures)'
   assert.equal(isSiteFurniture(PLATFORM_KNOWN_BAD_SITE_FURNITURE), true);
   assert.equal(isBioBoilerplate(PLATFORM_KNOWN_GOOD_MEMBER_POSITION), false);
   assert.equal(isSiteFurniture(PLATFORM_KNOWN_GOOD_MEMBER_POSITION), false);
+});
+
+test('isDisqualifiedPlatformPosition rejects narration fixtures and accepts genuine stances', () => {
+  assert.equal(isDisqualifiedPlatformPosition(PLATFORM_KNOWN_BAD_CRAPO_ARREST), true);
+  assert.equal(isDisqualifiedPlatformPosition(PLATFORM_KNOWN_BAD_JAN6_CERTIFICATION), true);
+  assert.equal(
+    isDisqualifiedPlatformPosition('On October 20, 2015, the Senate voted against proceeding to a vote on S 2146'),
+    true,
+  );
+  assert.equal(isDisqualifiedPlatformPosition(PLATFORM_KNOWN_GOOD_DATED_FIRST_PERSON_STANCE), false);
+  assert.equal(isDisqualifiedPlatformPosition(PLATFORM_KNOWN_GOOD_MEMBER_POSITION), false);
 });
 
 test('topicPositions.json bundle has no disqualified platform positions', () => {

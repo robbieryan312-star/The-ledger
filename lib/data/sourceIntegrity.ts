@@ -50,6 +50,14 @@ export function isVoteRestatementSaid(text: string): boolean {
   if (/\bthe (Senate|House) (voted|held a vote|passed)\b/i.test(t)) return true;
   if (/\bwon re-election to the U\.S\. (Senate|House)/i.test(t)) return true;
   if (/\bwon re-election in the \d{4} election for the U\.S\. (Senate|House)/i.test(t)) return true;
+  /** Jan 6 electoral-certification vote narration duplicated across hundreds of profiles. */
+  if (/^Congress convened a joint session on/i.test(t) && /\bvoted against certifying the electoral votes/i.test(t)) {
+    return true;
+  }
+  /** Dated third-person roll-call narration — recounts chamber action, not member stance. */
+  if (/^On \w+ \d{1,2}, \d{4}, the (Senate|House)\s+(voted|passed|rejected|failed|adopted|defeated|invoked)/i.test(t)) {
+    return true;
+  }
   return false;
 }
 
@@ -87,10 +95,41 @@ export function isSiteFurniture(text: string): boolean {
   return false;
 }
 
+/** Member speaks a policy stance (first-person or attributed quote) — keep even when date-led. */
+function hasMemberPolicyStance(text: string): boolean {
+  const t = text.trim();
+  if (/\b(I|we|my|our)\b/i.test(t)) return true;
+  if (/\bIn Congress, I\b/i.test(t)) return true;
+  if (/\b(introduced|cosponsored|authored|sponsored)\s+(the\s+)?[A-Z]/i.test(t)) return true;
+  if (/\b(criticized|opposed|supported|called for|defended|advocated for)\b/i.test(t)) return true;
+  if (/\bissued a statement\b/i.test(t) && /\b(said|stated),?\s*[\u201c"]/i.test(t)) return true;
+  if (/\b(said|stated|announced|declared|argued),?\s*[\u201c"]/i.test(t)) {
+    if (/\b(I am deeply sorry|I made a mistake|I apologize|I accept total responsibility)\b/i.test(t)) {
+      return false;
+    }
+    if (/\b(I am pleased|I believe|I support|we must|we need|I want to)\b/i.test(t)) return true;
+  }
+  return false;
+}
+
+/** Incident / biography narration — member is the subject of news, not the stance-holder. */
+function isIncidentOrBiographyNarration(text: string): boolean {
+  const t = text.trim();
+  if (/^On \w+ \d{1,2}, \d{4}, .{0,160}\bwas (arrested|charged|indicted|convicted|sentenced)\b/i.test(t)) {
+    return true;
+  }
+  return false;
+}
+
 /** Event narration — chronicles another official's actions with no first-person stance from the member. */
 export function isEventNarration(text: string): boolean {
   const t = text.trim();
   if (!t) return false;
+
+  if (isIncidentOrBiographyNarration(t)) return true;
+
+  if (hasMemberPolicyStance(t)) return false;
+
   const hasFirstPersonStance = /\b(I|we|my|our)\b/i.test(t);
   if (hasFirstPersonStance) return false;
 

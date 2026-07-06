@@ -13,7 +13,8 @@ const KERNEL = path.join(projectRoot, 'scripts/lib/syncKernel.ts');
 test('syncKernel exports checkpoint and summary contract', () => {
   assert.ok(existsSync(KERNEL));
   const src = readFileSync(KERNEL, 'utf8');
-  assert.match(src, /export type SyncCheckpoint/);
+  assert.match(src, /export interface SyncCheckpoint\b/);
+  assert.match(src, /export type SyncCheckpointStatus\b/);
   assert.match(src, /export function emitSyncSummary/);
   assert.match(src, /export async function loadPriorSnapshot/);
   assert.match(src, /AbortSignal\.timeout/);
