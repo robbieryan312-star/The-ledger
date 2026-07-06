@@ -9,7 +9,7 @@
  *
  * Run with: npm run sync:stock-trades
  */
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { allPoliticians } from '../lib/data/allPoliticians';
@@ -27,6 +27,10 @@ import {
 } from '../lib/data/senatePtrClient';
 import type { Source, StockTrade } from '../lib/types';
 import type { StockTradeEntry, StockTradesSnapshot } from '../lib/data/stockTrades';
+import {
+  buildHouseStockTradeEntry,
+  stockEntryToProfileTradesFile,
+} from '../lib/data/stockTrades';
 import { loadCheckpoint, saveCheckpoint } from './lib/resilientFetch';
 import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
 import { acquireSyncLock } from './lib/syncLock';
@@ -34,6 +38,7 @@ import { acquireSyncLock } from './lib/syncLock';
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
 const OUT_FILE = path.join(OUT_DIR, 'stockTrades.json');
+const PROFILES_ROOT = path.join(projectRoot, 'lib', 'data', 'generated', 'profiles');
 const LEGISLATORS_FILE = path.join(projectRoot, 'lib', 'data', 'generated', 'currentLegislators.json');
 const CHECKPOINT_FILE = '/tmp/ledger-sync-stock-trades-checkpoint.json';
 const LOCK_FILE = '/tmp/ledger-sync-stock-trades.lock';
@@ -51,6 +56,51 @@ const HOUSE_INDEX_YEARS = [2024, 2025, 2026];
 const MAX_HOUSE_FILINGS_PER_MEMBER = 10;
 const PTR_SINCE_DATE = '2023-01-01';
 const MAX_SENATE_REPORTS_PER_MEMBER = 12;
+
+function parseMembersArg(argv: string[]): Set<string> | null {
+  const idx = argv.indexOf('--members');
+  if (idx === -1 || !argv[idx + 1]) return null;
+  return new Set(
+    argv[idx + 1]
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean),
+  );
+}
+
+function parseLimitArg(argv: string[]): number | null {
+  const idx = argv.indexOf('--limit');
+  if (idx === -1 || !argv[idx + 1]) return null;
+  const n = Number.parseInt(argv[idx + 1], 10);
+  return Number.isFinite(n) && n > 0 ? n : null;
+}
+
+function memberInFilter(
+  p: { id: string; bioguideId?: string },
+  filter: Set<string> | null,
+): boolean {
+  if (!filter) return true;
+  return filter.has(p.id) || (p.bioguideId != null && filter.has(p.bioguideId));
+}
+
+async function writeProfileTradesIfExists(
+  bioguideId: string | undefined,
+  entry: StockTradeEntry,
+): Promise<void> {
+  if (!bioguideId) return;
+  const profileDir = path.join(PROFILES_ROOT, bioguideId);
+  try {
+    await access(profileDir);
+  } catch {
+    return;
+  }
+  const profileTrades = stockEntryToProfileTradesFile(bioguideId, entry);
+  await writeFile(
+    path.join(profileDir, 'trades.json'),
+    `${JSON.stringify(profileTrades, null, 2)}\n`,
+    'utf8',
+  );
+}
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -122,6 +172,9 @@ async function main(): Promise<void> {
 
 async function runSync(): Promise<void> {
   const asOf = new Date().toISOString().slice(0, 10);
+  const memberFilter = parseMembersArg(process.argv);
+  const memberLimit = parseLimitArg(process.argv);
+  const scopedRun = memberFilter != null || memberLimit != null;
 
   const legislatorsRaw = JSON.parse(await readFile(LEGISLATORS_FILE, 'utf8')) as {
     legislators: LegislatorRow[];
@@ -141,13 +194,25 @@ async function runSync(): Promise<void> {
   const featuredIds = new Set(featured.map((p) => p.id));
   const featuredBioguides = new Set(featured.map((p) => p.bioguideId).filter(Boolean));
 
-  const houseMembers = [
+  let houseMembers = [
     ...featured.filter((p) => p.chamber === 'house'),
     ...houseFromRoster.filter(
       (h) => !featuredIds.has(h.id) && !featuredBioguides.has(h.bioguideId),
     ),
   ];
-  const senateMembers = featured.filter((p) => p.chamber === 'senate');
+  let senateMembers = featured.filter((p) => p.chamber === 'senate');
+
+  if (memberFilter) {
+    houseMembers = houseMembers.filter((p) => memberInFilter(p, memberFilter));
+    senateMembers = senateMembers.filter((p) => memberInFilter(p, memberFilter));
+  }
+
+  if (memberLimit != null) {
+    houseMembers = houseMembers.slice(0, memberLimit);
+    const houseCount = houseMembers.length;
+    senateMembers = senateMembers.slice(0, Math.max(0, memberLimit - houseCount));
+  }
+
   const allTargets = [...houseMembers, ...senateMembers];
 
   const senateProbe = await probeSenateEfd();
@@ -157,6 +222,10 @@ async function runSync(): Promise<void> {
 
   const byPoliticianId: Record<string, StockTradeEntry> = {};
   const checkpoint = (await loadCheckpoint<Record<string, true>>(CHECKPOINT_FILE)) ?? {};
+
+  if (memberFilter) {
+    for (const id of memberFilter) delete checkpoint[id];
+  }
 
   let priorSnapshot: StockTradesSnapshot | null = null;
   try {
@@ -180,7 +249,10 @@ async function runSync(): Promise<void> {
     }
   }
 
-  console.log(`Syncing House PTRs for ${houseMembers.length} representatives (national roster + featured)…`);
+  const scopeLabel = scopedRun
+    ? `scoped: ${allTargets.length} member(s)${memberFilter ? ` filter=${[...memberFilter].join(',')}` : ''}${memberLimit != null ? ` limit=${memberLimit}` : ''}`
+    : `${houseMembers.length} representatives (national roster + featured)`;
+  console.log(`Syncing House PTRs for ${scopeLabel}…`);
   console.log(`Loading House Clerk PTR indexes (${HOUSE_INDEX_YEARS.join(', ')}) — once per run…`);
   const { byYear: houseIndexByYear, failedYears: houseIndexFailedYears } =
     await loadHousePtrIndexes(HOUSE_INDEX_YEARS);
@@ -193,39 +265,49 @@ async function runSync(): Promise<void> {
   }
 
   for (const p of houseMembers) {
-    if (checkpoint[p.id]) {
+    if (!scopedRun && checkpoint[p.id]) {
       console.log(`  ${p.id}: checkpoint skip`);
       continue;
     }
     const priorTrades = byPoliticianId[p.id]?.trades ?? [];
     try {
-      const { trades, filingsParsed } = await syncHousePtrForTarget(houseTarget(p), HOUSE_INDEX_YEARS, {
-        maxFilings: MAX_HOUSE_FILINGS_PER_MEMBER,
-        sinceDate: PTR_SINCE_DATE,
-        indexByYear: houseIndexByYear,
+      const { trades, filingsMatched, filingsParsedWithRows } = await syncHousePtrForTarget(
+        houseTarget(p),
+        HOUSE_INDEX_YEARS,
+        {
+          maxFilings: MAX_HOUSE_FILINGS_PER_MEMBER,
+          sinceDate: PTR_SINCE_DATE,
+          indexByYear: houseIndexByYear,
+        },
+      );
+      houseFilingsParsed += filingsMatched;
+
+      const built = buildHouseStockTradeEntry({
+        trades,
+        priorTrades,
+        filingsMatched,
+        filingsParsedWithRows,
+        houseIndexFailedYears,
+        houseIndexYears: HOUSE_INDEX_YEARS,
       });
-      houseFilingsParsed += filingsParsed;
-      totalOfficialTrades += trades.length;
+      totalOfficialTrades += built.trades.length;
 
       const entry = byPoliticianId[p.id];
-      entry.trades = trades;
-      if (trades.length > 0) {
-        entry.note = `${trades.length} official PTR transaction(s) from House Clerk filings.`;
-      } else if (houseIndexFailedYears.length === HOUSE_INDEX_YEARS.length) {
-        entry.trades = priorTrades;
-        entry.note = `fetch-failed: House PTR index unavailable for all years (${houseIndexFailedYears.join(', ')}). Prior good trades preserved.`;
-      } else {
-        entry.note =
-          'No House PTR filings matched this member in the synced index window — profile demo trades (if any) remain labeled separately.';
+      entry.trades = built.trades;
+      entry.note = built.note;
+      entry.asOf = asOf;
+      console.log(`  ${p.id}: ${entry.trades.length} trade(s)${built.note.startsWith('unparsed-filings') ? ' (unparsed filings)' : ''}`);
+      if (!scopedRun) {
+        checkpoint[p.id] = true;
+        await saveCheckpoint(CHECKPOINT_FILE, checkpoint);
       }
-      console.log(`  ${p.id}: ${entry.trades.length} trade(s)`);
-      checkpoint[p.id] = true;
-      await saveCheckpoint(CHECKPOINT_FILE, checkpoint);
+      await writeProfileTradesIfExists(p.bioguideId, entry);
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       console.warn(`  ${p.id}: House PTR fetch failed (${msg})`);
       byPoliticianId[p.id].trades = priorTrades;
       byPoliticianId[p.id].note = `fetch-failed: House PTR sync error (${msg}). Prior good trades preserved if any.`;
+      await writeProfileTradesIfExists(p.bioguideId, byPoliticianId[p.id]);
     }
     await sleep(200);
   }
@@ -233,7 +315,7 @@ async function runSync(): Promise<void> {
   if (senateProbe.reachable) {
     console.log(`Syncing Senate PTRs for ${senateMembers.length} featured senators…`);
     for (const p of senateMembers) {
-      if (checkpoint[p.id]) {
+      if (!scopedRun && checkpoint[p.id]) {
         console.log(`  ${p.id}: checkpoint skip`);
         continue;
       }
@@ -261,10 +343,11 @@ async function runSync(): Promise<void> {
         }
       }
       console.log(`  ${p.id}: ${entry.trades.length} trade(s)${result.error ? ` (${result.error})` : ''}`);
-      if (!result.error) {
+      if (!result.error && !scopedRun) {
         checkpoint[p.id] = true;
         await saveCheckpoint(CHECKPOINT_FILE, checkpoint);
       }
+      await writeProfileTradesIfExists(p.bioguideId, entry);
       await sleep(200);
     }
   } else {

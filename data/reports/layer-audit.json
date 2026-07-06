@@ -1,0 +1,1064 @@
+{
+  "generatedAt": "2026-07-05T23:41:07.185Z",
+  "total": 175,
+  "reviewed": 172,
+  "issues": 3,
+  "results": [
+    {
+      "file": "scripts/lib/approvedMediaQuotes.ts",
+      "layer": "L1",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/lib/articleVerificationCache.ts",
+      "layer": "L1",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/lib/crecOpener.ts",
+      "layer": "L1",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/lib/crecProceduralFilter.ts",
+      "layer": "L1",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/lib/dataPaths.ts",
+      "layer": "L1",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/lib/ingest-utils.ts",
+      "layer": "L1",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/lib/profileMigrate.ts",
+      "layer": "L1",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/lib/profileReprocess.ts",
+      "layer": "L1",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/lib/resilientFetch.ts",
+      "layer": "L1",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/lib/syncLock.ts",
+      "layer": "L1",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/allPoliticians.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/billCitizenImpact.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/branches.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/buildMapProps.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/buildOrgVoteTopicLinks.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/buildSaidDidDiffs.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/buildTopicConsistencyTimeline.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/candidateIssues.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/ceremonialCrecFilter.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/congressClient.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/congressVotes.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/crecDisplayText.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/derivePromiseStatus.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/diskCache.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/displaySummary.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/electionCompare.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/executiveOfficials.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/executiveRoster.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/fecClient.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/fecFinance.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/fecOrgRegistry.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/fecScheduleA.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/generatedPoliticians.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/governorMapColors.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/governors.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/housePtrClient.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/htmlEntities.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/issuesFromTopicPositions.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/judicialOfficials.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/legislation.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/memberDeep.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/memberProfile.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/nationalCongressVotes.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/nationalFecFinance.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/newsFeedRegistry.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/officeResolution.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/partyVoteBreakdown.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/photos.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/politicianSearchIndex.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/profileLatestRecord.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/profileRecordByTopic.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/profileSnapshot.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/profileVotesSufficiency.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/recordJuxtapositions.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/reference-sources.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/resilientFetch.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/sanitizeProfileUiData.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/scotusRoster.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/senatePtrClient.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/senateVotesClient.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/slices/filingsSecedgar.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/slices/financeFldoe.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/slices/judiciaryCourts.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/slices/legislationFlorida.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/slices/lobbyingFllobbyist.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/slices/newsFlorida.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/slices/stateEconomic.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/slices/voteview.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/snapshotTypes.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/sourceCatalog.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/sourceIntegrity.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/sourceTiers.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/stockTrades.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/topicAliases.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/topicCoverage.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/topicPositions.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/trustedSources.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/voteDisplay.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/voteDonorConnections.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "lib/data/zipLookup.ts",
+      "layer": "L2",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/profile-build.ts",
+      "layer": "L3",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/profile-snapshot-update.ts",
+      "layer": "L3",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/reprocess-profiles.ts",
+      "layer": "L3",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/reprocess-topic-positions-bundle.ts",
+      "layer": "L3",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/sync-congress-votes.ts",
+      "layer": "L3",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/sync-fec-finance.ts",
+      "layer": "L3",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/sync-fec-national.ts",
+      "layer": "L3",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/sync-fec-schedule-a-pilot.ts",
+      "layer": "L3",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/sync-fec-schedule-a.ts",
+      "layer": "L3",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/sync-legislation.ts",
+      "layer": "L3",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/sync-legislators.ts",
+      "layer": "L3",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/sync-news-national.ts",
+      "layer": "L3",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/sync-news-rss.ts",
+      "layer": "L3",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/sync-profile-news.ts",
+      "layer": "L3",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/sync-stock-trades.ts",
+      "layer": "L3",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/sync-topic-positions.ts",
+      "layer": "L3",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/sync-votes-national.ts",
+      "layer": "L3",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-bls-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-census-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-civic-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-congress-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-courtlistener-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-fara-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-fec-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-fedregister-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-fldoe-finance-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-fllobbyist-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-gdelt-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-govinfo-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-govtrack-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-legiscan-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-lobbying-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-news-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-openstates-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-sam-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-secedgar-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-usaspending-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "scripts/ingest/florida/ingest-voteview-florida.ts",
+      "layer": "L4",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/politicians/ConsistencyScore.tsx",
+      "layer": "L5",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/politicians/ControversySection.tsx",
+      "layer": "L5",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/politicians/CredibilityConsistency.tsx",
+      "layer": "L5",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/politicians/DonorChart.tsx",
+      "layer": "L5",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/politicians/EarlierRecordSection.tsx",
+      "layer": "L5",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/politicians/ExecutiveActions.tsx",
+      "layer": "L5",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/politicians/ExpandableEvidenceRow.tsx",
+      "layer": "L5",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/politicians/PoliticianProfileClient.tsx",
+      "layer": "L5",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/politicians/ProfileNewsExplorer.tsx",
+      "layer": "L5",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/politicians/ProfileRecordByTopicPanel.tsx",
+      "layer": "L5",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/politicians/ProfileSectionAccordion.tsx",
+      "layer": "L5",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/politicians/PublicActionsAccordion.tsx",
+      "layer": "L5",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/politicians/RelatedOfficialRecords.tsx",
+      "layer": "L5",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/politicians/SaidDidPanel.tsx",
+      "layer": "L5",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/politicians/StockTrades.tsx",
+      "layer": "L5",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/politicians/VoteRow.tsx",
+      "layer": "L5",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/politicians/VotingRecord.tsx",
+      "layer": "L5",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/compare/CompareContent.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/compare/page.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/congress/CongressContent.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/congress/page.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/counties/[fips]/page.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/dashboard/DashboardContent.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/dashboard/page.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/elections/page.tsx",
+      "layer": "L6",
+      "status": "issue",
+      "issues": [
+        "route page must not use client"
+      ]
+    },
+    {
+      "file": "app/finance/FinanceContent.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/finance/page.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/layout.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/legislation/LegislationContent.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/legislation/page.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/lobbying/[id]/page.tsx",
+      "layer": "L6",
+      "status": "issue",
+      "issues": [
+        "route page must not use client"
+      ]
+    },
+    {
+      "file": "app/lobbying/page.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/officials/[id]/page.tsx",
+      "layer": "L6",
+      "status": "issue",
+      "issues": [
+        "route page must not use client"
+      ]
+    },
+    {
+      "file": "app/page.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/politicians/PoliticiansContent.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/politicians/[id]/page.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/politicians/page.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "app/sources/page.tsx",
+      "layer": "L6",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/counties/OfficialCard.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/dashboard/StateRosterControls.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/elections/CandidateTopicAccordion.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/finance/FollowTheMoneyPanel.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/layout/Footer.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/layout/Navigation.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/map/MapExplorer.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/map/USAMap.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/records/FloridaCountyEconomicContext.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/records/FloridaRecordPanel.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/records/VoteviewIdeologyPanel.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/search/HomeSearchBar.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/search/SearchBar.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/ui/ExpandableQuoteBlock.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/ui/PoliticianAvatar.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/ui/SourceBadge.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/ui/SourceProvenance.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/ui/SourceTierHelp.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    },
+    {
+      "file": "components/ui/TrackButton.tsx",
+      "layer": "L7",
+      "status": "reviewed",
+      "issues": []
+    }
+  ]
+}

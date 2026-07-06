@@ -4,6 +4,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { StockTrade } from '../../lib/types';
+import {
+  buildHouseStockTradeEntry,
+  stockEntryToProfileTradesFile,
+} from '../../lib/data/stockTrades';
 
 /** Frozen fixture: member had 2 official trades before a House index fetch-failed run. */
 export const STOCK_TRADES_KNOWN_GOOD_PRIOR: StockTrade[] = [
@@ -43,4 +47,27 @@ test('Senate fetch-failed preserves prior trades when error is set', () => {
   const entryTrades = result.error && priorTrades.length > 0 ? priorTrades : result.trades;
   assert.equal(entryTrades.length, 1);
   assert.equal(entryTrades[0].id, 'house-ptr-fixture-1');
+});
+
+test('unparsed House PTR filings get honest note not clean empty (Kelly docIds 20034607/20034302)', () => {
+  const { trades, note } = buildHouseStockTradeEntry({
+    trades: [],
+    priorTrades: [],
+    filingsMatched: 3,
+    filingsParsedWithRows: 0,
+    houseIndexFailedYears: [],
+    houseIndexYears: [2024, 2025, 2026],
+  });
+  assert.match(note, /unparsed-filings: 3 PTR PDF\(s\) matched but none parsed/);
+  assert.match(note, /Not a verified zero-trade record/);
+  assert.equal(trades.length, 0);
+  assert.notEqual(
+    note,
+    'No House PTR filings matched this member in the synced index window — profile demo trades (if any) remain labeled separately.',
+  );
+
+  const profileFile = stockEntryToProfileTradesFile('K000376', { trades, note });
+  assert.match(profileFile.note, /unparsed-filings/);
+  assert.equal(profileFile.status, 'honest-gap');
+  assert.equal(profileFile.trades.length, 0);
 });

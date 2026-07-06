@@ -315,7 +315,7 @@ export async function syncHousePtrForTarget(
     /** Preloaded indexes from loadHousePtrIndexes — avoids re-fetching ~60s XML per member. */
     indexByYear?: Map<number, HousePtrFiling[]>;
   },
-): Promise<{ trades: StockTrade[]; filingsParsed: number }> {
+): Promise<{ trades: StockTrade[]; filingsMatched: number; filingsParsedWithRows: number }> {
   const allFilings: HousePtrFiling[] = [];
   for (const year of years) {
     const index = options?.indexByYear?.get(year);
@@ -348,9 +348,11 @@ export async function syncHousePtrForTarget(
   }
 
   const trades: StockTrade[] = [];
+  let filingsParsedWithRows = 0;
   for (const filing of filings) {
     try {
       const rows = await fetchAndParseHousePtr(filing, target.politicianId);
+      if (rows.length > 0) filingsParsedWithRows += 1;
       trades.push(...rows);
     } catch (err) {
       console.warn(
@@ -363,5 +365,5 @@ export async function syncHousePtrForTarget(
 
   // Newest transaction first
   trades.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  return { trades, filingsParsed: filings.length };
+  return { trades, filingsMatched: filings.length, filingsParsedWithRows };
 }
