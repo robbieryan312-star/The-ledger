@@ -20,7 +20,7 @@
       "tier": "official",
       "description": "Official campaign finance disclosures via api.open.fec.gov"
     },
-    "asOf": "2026-07-01",
+    "asOf": "2026-07-02",
     "fecProfileUrl": "https://www.fec.gov/data/candidate/S4VT00033/"
   }
 }

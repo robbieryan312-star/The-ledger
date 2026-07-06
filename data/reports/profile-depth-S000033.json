@@ -1,11 +1,11 @@
 {
-  "bioguideId": "P000197",
-  "generatedAt": "2026-07-06T08:43:34.013Z",
+  "bioguideId": "S000033",
+  "generatedAt": "2026-07-06T08:43:33.997Z",
   "rows": [
     {
       "category": "statements",
       "status": "filled",
-      "count": 8,
+      "count": 5,
       "reason": "verified"
     },
     {
@@ -34,15 +34,15 @@
     },
     {
       "category": "controversies",
-      "status": "honest-gap",
-      "count": 0,
-      "reason": "absent"
+      "status": "filled",
+      "count": 2,
+      "reason": "verified"
     },
     {
       "category": "endorsements",
-      "status": "honest-gap",
-      "count": 0,
-      "reason": "absent"
+      "status": "filled",
+      "count": 3,
+      "reason": "verified"
     }
   ]
 }

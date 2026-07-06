@@ -1,11 +1,11 @@
 {
-  "bioguideId": "P000197",
-  "generatedAt": "2026-07-06T08:43:34.013Z",
+  "bioguideId": "W000817",
+  "generatedAt": "2026-07-06T08:43:34.011Z",
   "rows": [
     {
       "category": "statements",
       "status": "filled",
-      "count": 8,
+      "count": 2,
       "reason": "verified"
     },
     {
@@ -22,9 +22,9 @@
     },
     {
       "category": "saidDid",
-      "status": "filled",
-      "count": 1,
-      "reason": "verified"
+      "status": "honest-gap",
+      "count": 0,
+      "reason": "absent"
     },
     {
       "category": "news",

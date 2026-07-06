@@ -1,18 +1,18 @@
 {
-  "bioguideId": "P000197",
-  "generatedAt": "2026-07-06T08:43:34.013Z",
+  "bioguideId": "C001098",
+  "generatedAt": "2026-07-06T08:43:34.012Z",
   "rows": [
     {
       "category": "statements",
-      "status": "filled",
-      "count": 8,
-      "reason": "verified"
+      "status": "none-in-range",
+      "count": 2,
+      "reason": "empty-range"
     },
     {
       "category": "positions",
-      "status": "honest-gap",
-      "count": 0,
-      "reason": "absent"
+      "status": "filled",
+      "count": 2,
+      "reason": "verified"
     },
     {
       "category": "votes",
@@ -22,15 +22,15 @@
     },
     {
       "category": "saidDid",
-      "status": "filled",
-      "count": 1,
-      "reason": "verified"
+      "status": "honest-gap",
+      "count": 0,
+      "reason": "absent"
     },
     {
       "category": "news",
-      "status": "filled",
-      "count": 1,
-      "reason": "verified"
+      "status": "honest-gap",
+      "count": 0,
+      "reason": "absent"
     },
     {
       "category": "controversies",

@@ -10,7 +10,7 @@
       "billDescription": "On the Motion to Proceed S.J.Res. 185 — A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.. Official Senate roll-call from senate.gov (119th Congress).",
       "voteAction": "On the Motion to Proceed S.J.Res. 185",
       "billSummary": "A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.",
-      "date": "2026-06-24",
+      "date": "2026-06-25",
       "vote": "Yea",
       "result": "Failed",
       "category": "Procedural",
@@ -36,7 +36,7 @@
         "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00192.xml",
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-        "date": "2026-06-24"
+        "date": "2026-06-25"
       }
     },
     {
@@ -46,7 +46,7 @@
       "billDescription": "On the Cloture Motion PN938-2 — Matthew A. Schwartz, of New York, to be United States Circuit Judge for the Second Circuit. Official Senate roll-call from senate.gov (119th Congress).",
       "voteAction": "On the Cloture Motion PN938-2",
       "billSummary": "Matthew A. Schwartz, of New York, to be United States Circuit Judge for the Second Circuit",
-      "date": "2026-06-24",
+      "date": "2026-06-25",
       "vote": "Nay",
       "result": "Passed",
       "category": "Procedural",
@@ -72,7 +72,7 @@
         "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00191.xml",
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-        "date": "2026-06-24"
+        "date": "2026-06-25"
       }
     },
     {
@@ -82,7 +82,7 @@
       "billDescription": "On the Motion to Proceed S.J.Res. 196 — A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Department of Education relating to \"Reimagining and Improving Student Education-Federal Student Loan Program Final Regulations\".. Official Senate roll-call from senate.gov (119th Congress).",
       "voteAction": "On the Motion to Proceed S.J.Res. 196",
       "billSummary": "A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Department of Education relating to \"Reimagining and Improving Student Education-Federal Student Loan Program Final Regulations\".",
-      "date": "2026-06-24",
+      "date": "2026-06-25",
       "vote": "Yea",
       "result": "Failed",
       "category": "Procedural",
@@ -108,7 +108,7 @@
         "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00190.xml",
         "tier": "official",
         "description": "Official U.S. Senate roll-call vote records (LIS XML)",
-        "date": "2026-06-24"
+        "date": "2026-06-25"
       }
     },
     {
@@ -362,9 +362,729 @@
         "description": "Official U.S. Senate roll-call vote records (LIS XML)",
         "date": "2026-06-23"
       }
+    },
+    {
+      "id": "S000033-s119-2-182",
+      "billId": "H.R. 6644",
+      "billTitle": "Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+      "billDescription": "On the Motion (Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)) — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion (Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823))",
+      "billSummary": "A bill a bill to increase the supply of housing in America, and for other purposes.",
+      "date": "2026-06-22",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 42,
+          "nay": 5,
+          "notVoting": 6
+        },
+        "democrat": {
+          "yea": 41,
+          "nay": 0,
+          "notVoting": 4
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00182.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-22"
+      }
+    },
+    {
+      "id": "S000033-s119-2-181",
+      "billId": "PN730-33",
+      "billTitle": "Confirmation: George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development",
+      "billDescription": "On the Nomination PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "Confirmation vote",
+      "billSummary": "George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development",
+      "date": "2026-06-18",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Judiciary",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 47,
+          "nay": 0,
+          "notVoting": 6
+        },
+        "democrat": {
+          "yea": 1,
+          "nay": 37,
+          "notVoting": 7
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00181.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-18"
+      }
+    },
+    {
+      "id": "S000033-s119-2-180",
+      "billId": "H.R. 6644",
+      "billTitle": "Motion to Invoke Cloture: Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)",
+      "billDescription": "On the Cloture Motion H.R. 6644 — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Cloture Motion H.R. 6644",
+      "billSummary": "A bill a bill to increase the supply of housing in America, and for other purposes.",
+      "date": "2026-06-18",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 43,
+          "nay": 8,
+          "notVoting": 2
+        },
+        "democrat": {
+          "yea": 39,
+          "nay": 0,
+          "notVoting": 6
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00180.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-18"
+      }
+    },
+    {
+      "id": "S000033-s119-2-179",
+      "billId": "S.Res. 616",
+      "billTitle": "Motion to Discharge: S.Res. 616 from the Committee on Foreign Relations",
+      "billDescription": "On the Motion to Discharge S.Res. 616 — A resolution requesting information on Honduras's human rights practices pursuant to section 502B(c) of the Foreign Assistance Act of 1961.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion to Discharge S.Res. 616",
+      "billSummary": "A resolution requesting information on Honduras's human rights practices pursuant to section 502B(c) of the Foreign Assistance Act of 1961.",
+      "date": "2026-06-17",
+      "vote": "Yea",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 2,
+          "nay": 50,
+          "notVoting": 1
+        },
+        "democrat": {
+          "yea": 40,
+          "nay": 0,
+          "notVoting": 5
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00179.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-17"
+      }
+    },
+    {
+      "id": "S000033-s119-2-178",
+      "billId": "PN730-33",
+      "billTitle": "Motion to Invoke Cloture: George Holding to be United States Director of the European Bank for Reconstruction and Development",
+      "billDescription": "On the Cloture Motion PN730-33 — George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Cloture Motion PN730-33",
+      "billSummary": "George Holding, of North Carolina, to be United States Director of the European Bank for Reconstruction and Development",
+      "date": "2026-06-17",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 52,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "democrat": {
+          "yea": 2,
+          "nay": 39,
+          "notVoting": 4
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00178.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-17"
+      }
+    },
+    {
+      "id": "S000033-s119-2-177",
+      "billId": "PN901-8",
+      "billTitle": "Confirmation: Michelle Steel, of California, to be Ambassador of the United States of America to the Republic of Korea",
+      "billDescription": "On the Nomination PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "Confirmation vote",
+      "billSummary": "Michelle Steel, of California, to be Ambassador to the Republic of Korea",
+      "date": "2026-06-17",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Judiciary",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 52,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "democrat": {
+          "yea": 2,
+          "nay": 38,
+          "notVoting": 5
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 1,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00177.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-17"
+      }
+    },
+    {
+      "id": "S000033-s119-2-176",
+      "billId": "PN901-8",
+      "billTitle": "Motion to Invoke Cloture: Michelle Steel to be Ambassador of the United States of America to the Republic of Korea",
+      "billDescription": "On the Cloture Motion PN901-8 — Michelle Steel, of California, to be Ambassador to the Republic of Korea. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Cloture Motion PN901-8",
+      "billSummary": "Michelle Steel, of California, to be Ambassador to the Republic of Korea",
+      "date": "2026-06-17",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 51,
+          "nay": 0,
+          "notVoting": 2
+        },
+        "democrat": {
+          "yea": 2,
+          "nay": 40,
+          "notVoting": 3
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 1,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00176.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-17"
+      }
+    },
+    {
+      "id": "S000033-s119-2-171",
+      "billId": "PN851-7",
+      "billTitle": "Motion to Invoke Cloture: Justin D. Smith to be U.S. Circuit Judge for the Eighth Circuit",
+      "billDescription": "On the Cloture Motion PN851-7 — Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Cloture Motion PN851-7",
+      "billSummary": "Justin D. Smith, of Missouri, to be United States Circuit Judge for the Eighth Circuit",
+      "date": "2026-06-11",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 47,
+          "nay": 0,
+          "notVoting": 6
+        },
+        "democrat": {
+          "yea": 0,
+          "nay": 41,
+          "notVoting": 4
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00171.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-11"
+      }
+    },
+    {
+      "id": "S000033-s119-2-170",
+      "billId": "PN901-4",
+      "billTitle": "Confirmation: Brock Dahl, of Maryland, to be Legal Adviser of the Department of State",
+      "billDescription": "On the Nomination PN901-4 — Brock Dahl, of Maryland, to be Legal Adviser of the Department of State. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "Confirmation vote",
+      "billSummary": "Brock Dahl, of Maryland, to be Legal Adviser of the Department of State",
+      "date": "2026-06-11",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Judiciary",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 48,
+          "nay": 0,
+          "notVoting": 5
+        },
+        "democrat": {
+          "yea": 1,
+          "nay": 42,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00170.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-11"
+      }
+    },
+    {
+      "id": "S000033-s119-2-169",
+      "billId": "PN901-4",
+      "billTitle": "Motion to Invoke Cloture: Brock Dahl to be Legal Adviser of the Department of State",
+      "billDescription": "On the Cloture Motion PN901-4 — Brock Dahl, of Maryland, to be Legal Adviser of the Department of State. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Cloture Motion PN901-4",
+      "billSummary": "Brock Dahl, of Maryland, to be Legal Adviser of the Department of State",
+      "date": "2026-06-10",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 50,
+          "nay": 0,
+          "notVoting": 3
+        },
+        "democrat": {
+          "yea": 1,
+          "nay": 42,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00169.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-10"
+      }
+    },
+    {
+      "id": "S000033-s119-2-168",
+      "billId": "PN851-5",
+      "billTitle": "Confirmation: Anthony J. Powell, of Kansas, to be U.S. District Judge for the District of Kansas",
+      "billDescription": "On the Nomination PN851-5 — Anthony J. Powell, of Kansas, to be United States District Judge for the District of Kansas. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "Confirmation vote",
+      "billSummary": "Anthony J. Powell, of Kansas, to be United States District Judge for the District of Kansas",
+      "date": "2026-06-10",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Judiciary",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 50,
+          "nay": 0,
+          "notVoting": 3
+        },
+        "democrat": {
+          "yea": 0,
+          "nay": 42,
+          "notVoting": 3
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00168.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-10"
+      }
+    },
+    {
+      "id": "S000033-s119-2-167",
+      "billId": "PN851-5",
+      "billTitle": "Motion to Invoke Cloture: Anthony J. Powell to be U.S. District Judge for the District of Kansas",
+      "billDescription": "On the Cloture Motion PN851-5 — Anthony J. Powell, of Kansas, to be United States District Judge for the District of Kansas. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Cloture Motion PN851-5",
+      "billSummary": "Anthony J. Powell, of Kansas, to be United States District Judge for the District of Kansas",
+      "date": "2026-06-10",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 48,
+          "nay": 0,
+          "notVoting": 5
+        },
+        "democrat": {
+          "yea": 0,
+          "nay": 43,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00167.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-10"
+      }
+    },
+    {
+      "id": "S000033-s119-2-166",
+      "billId": "PN851-4",
+      "billTitle": "Confirmation: Anthony W. Mattivi, of Kansas, to be U.S. District Judge for the District of Kansas",
+      "billDescription": "On the Nomination PN851-4 — Anthony W. Mattivi, of Kansas, to be United States District Judge for the District of Kansas. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "Confirmation vote",
+      "billSummary": "Anthony W. Mattivi, of Kansas, to be United States District Judge for the District of Kansas",
+      "date": "2026-06-09",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Judiciary",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 51,
+          "nay": 0,
+          "notVoting": 2
+        },
+        "democrat": {
+          "yea": 0,
+          "nay": 44,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00166.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-09"
+      }
+    },
+    {
+      "id": "S000033-s119-2-165",
+      "billId": "PN851-4",
+      "billTitle": "Motion to Invoke Cloture: Anthony W. Mattivi to be U.S. District Judge for the District of Kansas",
+      "billDescription": "On the Cloture Motion PN851-4 — Anthony W. Mattivi, of Kansas, to be United States District Judge for the District of Kansas. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Cloture Motion PN851-4",
+      "billSummary": "Anthony W. Mattivi, of Kansas, to be United States District Judge for the District of Kansas",
+      "date": "2026-06-08",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 49,
+          "nay": 0,
+          "notVoting": 4
+        },
+        "democrat": {
+          "yea": 0,
+          "nay": 40,
+          "notVoting": 5
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00165.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-08"
+      }
+    },
+    {
+      "id": "S000033-s119-2-151",
+      "billId": "Motion to Waive All Budgetary Discipline Re: Lee Amdt. No. 5804",
+      "billTitle": "Motion to Waive All Budgetary Discipline Re: Lee Amdt. No. 5804",
+      "billDescription": "On the Motion (Motion to Waive All Budgetary Discipline Re: Lee Amdt. No. 5804) — To ensure only citizens are registered to vote in elections for Federal office, and to require voters to provide photo identification.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion (Motion to Waive All Budgetary Discipline Re: Lee Amdt. No. 5804)",
+      "billSummary": "To ensure only citizens are registered to vote in elections for Federal office, and to require voters to provide photo identification.",
+      "date": "2026-06-06",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 50,
+          "nay": 3,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 0,
+          "nay": 44,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00151.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-06"
+      }
+    },
+    {
+      "id": "S000033-s119-2-164",
+      "billId": "S. 1318",
+      "billTitle": "Motion to Proceed to the House Message to Accompany S. 1318",
+      "billDescription": "On the Motion to Proceed S. 1318 — A bill to direct the American Battle Monuments Commission to establish a program to identify American-Jewish servicemembers buried in United States military cemeteries overseas under markers that incorrectly represent their religion and heritage, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion to Proceed S. 1318",
+      "billSummary": "A bill to direct the American Battle Monuments Commission to establish a program to identify American-Jewish servicemembers buried in United States military cemeteries overseas under markers that incorrectly represent their religion and heritage, and for other purposes.",
+      "date": "2026-06-05",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 46,
+          "nay": 7,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 1,
+          "nay": 43,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00164.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
+    },
+    {
+      "id": "S000033-s119-2-163",
+      "billId": "S. 2",
+      "billTitle": "S. 2, As Amended",
+      "billDescription": "On Passage of the Bill S. 2 — An original bill to provide for reconciliation pursuant to title II of S. Con. Res. 33.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On Passage of the Bill S. 2",
+      "billSummary": "An original bill to provide for reconciliation pursuant to title II of S. Con. Res. 33.",
+      "date": "2026-06-05",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 52,
+          "nay": 1,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 0,
+          "nay": 44,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00163.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
+    },
+    {
+      "id": "S000033-s119-2-162",
+      "billId": "Motion to Waive All Applicable Budgetary Discipline Re: Schiff Amdt. No. 5740",
+      "billTitle": "Motion to Waive All Applicable Budgetary Discipline Re: Schiff Amdt. No. 5740",
+      "billDescription": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Schiff Amdt. No. 5740) — To provide for limitations on judgments, awards, and compromise settlements under section 1304 of title 31, United States Code.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Schiff Amdt. No. 5740)",
+      "billSummary": "To provide for limitations on judgments, awards, and compromise settlements under section 1304 of title 31, United States Code.",
+      "date": "2026-06-05",
+      "vote": "Yea",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 5,
+          "nay": 48,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 44,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00162.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
+    },
+    {
+      "id": "S000033-s119-2-161",
+      "billId": "Motion to Waive All Applicable Budgetary Discipline Re: Van Hollen Amdt. No. 563",
+      "billTitle": "Motion to Waive All Applicable Budgetary Discipline Re: Van Hollen Amdt. No. 5632",
+      "billDescription": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Van Hollen Amdt. No. 5632) — To prohibit the use of funds to provide payments to certain individuals.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Van Hollen Amdt. No. 5632)",
+      "billSummary": "To prohibit the use of funds to provide payments to certain individuals.",
+      "date": "2026-06-05",
+      "vote": "Yea",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 7,
+          "nay": 46,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 44,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00161.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
+    },
+    {
+      "id": "S000033-s119-2-160",
+      "billId": "Cortez Masto Amdt. No. 5463",
+      "billTitle": "Cortez Masto Amdt. No. 5463",
+      "billDescription": "On the Amendment S.Amdt. 5463 to S.Amdt. 5453 to S. 2 (No short title on file) — To appropriate amounts for local law enforcement hiring programs.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Amendment S.Amdt. 5463 to S.Amdt. 5453 to S. 2 (No short title on file)",
+      "billSummary": "To appropriate amounts for local law enforcement hiring programs.",
+      "date": "2026-06-05",
+      "vote": "Yea",
+      "result": "Failed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 0,
+          "nay": 53,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 43,
+          "nay": 0,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00160.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
     }
   ],
-  "asOf": "2026-07-01",
+  "asOf": "2026-07-06",
   "source": {
     "name": "senate.gov",
     "url": "https://www.senate.gov/legislative/votes_new.htm",

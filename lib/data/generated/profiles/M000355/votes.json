@@ -4,6 +4,222 @@
   "chamber": "senate",
   "votes": [
     {
+      "id": "M000355-s119-2-192",
+      "billId": "S.J.Res. 185",
+      "billTitle": "Motion to Proceed to S. J. Res. 185",
+      "billDescription": "On the Motion to Proceed S.J.Res. 185 — A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion to Proceed S.J.Res. 185",
+      "billSummary": "A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.",
+      "date": "2026-06-25",
+      "vote": "Not Voting",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 2,
+          "nay": 49,
+          "notVoting": 2
+        },
+        "democrat": {
+          "yea": 43,
+          "nay": 1,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00192.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-25"
+      }
+    },
+    {
+      "id": "M000355-s119-2-191",
+      "billId": "PN938-2",
+      "billTitle": "Motion to Invoke Cloture: Matthew A. Schwartz, to be U.S. Circuit Judge for the Second Circuit",
+      "billDescription": "On the Cloture Motion PN938-2 — Matthew A. Schwartz, of New York, to be United States Circuit Judge for the Second Circuit. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Cloture Motion PN938-2",
+      "billSummary": "Matthew A. Schwartz, of New York, to be United States Circuit Judge for the Second Circuit",
+      "date": "2026-06-25",
+      "vote": "Not Voting",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 52,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "democrat": {
+          "yea": 0,
+          "nay": 43,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00191.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-25"
+      }
+    },
+    {
+      "id": "M000355-s119-2-190",
+      "billId": "S.J.Res. 196",
+      "billTitle": "Motion to Proceed to S.J.Res. 196",
+      "billDescription": "On the Motion to Proceed S.J.Res. 196 — A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Department of Education relating to \"Reimagining and Improving Student Education-Federal Student Loan Program Final Regulations\".. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion to Proceed S.J.Res. 196",
+      "billSummary": "A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Department of Education relating to \"Reimagining and Improving Student Education-Federal Student Loan Program Final Regulations\".",
+      "date": "2026-06-25",
+      "vote": "Not Voting",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 0,
+          "nay": 52,
+          "notVoting": 1
+        },
+        "democrat": {
+          "yea": 43,
+          "nay": 0,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00190.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-25"
+      }
+    },
+    {
+      "id": "M000355-s119-2-189",
+      "billId": "PN930-3",
+      "billTitle": "Motion to Invoke Cloture: Arthur Roberts Jones to be U.S. District Judge for the Southern District of Texas",
+      "billDescription": "On the Cloture Motion PN930-3 — Arthur Roberts Jones, of Texas, to be United States District Judge for the Southern District of Texas. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Cloture Motion PN930-3",
+      "billSummary": "Arthur Roberts Jones, of Texas, to be United States District Judge for the Southern District of Texas",
+      "date": "2026-06-24",
+      "vote": "Not Voting",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 50,
+          "nay": 0,
+          "notVoting": 3
+        },
+        "democrat": {
+          "yea": 0,
+          "nay": 42,
+          "notVoting": 3
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00189.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-24"
+      }
+    },
+    {
+      "id": "M000355-s119-2-188",
+      "billId": "PN930-2",
+      "billTitle": "Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the Northern District of Ohio",
+      "billDescription": "On the Nomination PN930-2 — Michael J. Hendershot, of Ohio, to be United States District Judge for the Northern District of Ohio. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "Confirmation vote",
+      "billSummary": "Michael J. Hendershot, of Ohio, to be United States District Judge for the Northern District of Ohio",
+      "date": "2026-06-24",
+      "vote": "Not Voting",
+      "result": "Passed",
+      "category": "Judiciary",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 50,
+          "nay": 0,
+          "notVoting": 3
+        },
+        "democrat": {
+          "yea": 0,
+          "nay": 42,
+          "notVoting": 3
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00188.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-24"
+      }
+    },
+    {
+      "id": "M000355-s119-2-187",
+      "billId": "PN930-2",
+      "billTitle": "Motion to Invoke Cloture: Michael J. Hendershot to be U.S. District Judge for the Northern District of Ohio",
+      "billDescription": "On the Cloture Motion PN930-2 — Michael J. Hendershot, of Ohio, to be United States District Judge for the Northern District of Ohio. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Cloture Motion PN930-2",
+      "billSummary": "Michael J. Hendershot, of Ohio, to be United States District Judge for the Northern District of Ohio",
+      "date": "2026-06-24",
+      "vote": "Not Voting",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 52,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "democrat": {
+          "yea": 0,
+          "nay": 43,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 2,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00187.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-24"
+      }
+    },
+    {
       "id": "M000355-s119-2-171",
       "billId": "PN851-7",
       "billTitle": "Motion to Invoke Cloture: Justin D. Smith to be U.S. Circuit Judge for the Eighth Circuit",
@@ -362,9 +578,513 @@
         "description": "Official U.S. Senate roll-call vote records (LIS XML)",
         "date": "2026-06-05"
       }
+    },
+    {
+      "id": "M000355-s119-2-162",
+      "billId": "Motion to Waive All Applicable Budgetary Discipline Re: Schiff Amdt. No. 5740",
+      "billTitle": "Motion to Waive All Applicable Budgetary Discipline Re: Schiff Amdt. No. 5740",
+      "billDescription": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Schiff Amdt. No. 5740) — To provide for limitations on judgments, awards, and compromise settlements under section 1304 of title 31, United States Code.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Schiff Amdt. No. 5740)",
+      "billSummary": "To provide for limitations on judgments, awards, and compromise settlements under section 1304 of title 31, United States Code.",
+      "date": "2026-06-05",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 5,
+          "nay": 48,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 44,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00162.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
+    },
+    {
+      "id": "M000355-s119-2-161",
+      "billId": "Motion to Waive All Applicable Budgetary Discipline Re: Van Hollen Amdt. No. 563",
+      "billTitle": "Motion to Waive All Applicable Budgetary Discipline Re: Van Hollen Amdt. No. 5632",
+      "billDescription": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Van Hollen Amdt. No. 5632) — To prohibit the use of funds to provide payments to certain individuals.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Van Hollen Amdt. No. 5632)",
+      "billSummary": "To prohibit the use of funds to provide payments to certain individuals.",
+      "date": "2026-06-05",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 7,
+          "nay": 46,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 44,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00161.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
+    },
+    {
+      "id": "M000355-s119-2-160",
+      "billId": "Cortez Masto Amdt. No. 5463",
+      "billTitle": "Cortez Masto Amdt. No. 5463",
+      "billDescription": "On the Amendment S.Amdt. 5463 to S.Amdt. 5453 to S. 2 (No short title on file) — To appropriate amounts for local law enforcement hiring programs.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Amendment S.Amdt. 5463 to S.Amdt. 5453 to S. 2 (No short title on file)",
+      "billSummary": "To appropriate amounts for local law enforcement hiring programs.",
+      "date": "2026-06-05",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 0,
+          "nay": 53,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 43,
+          "nay": 0,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00160.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
+    },
+    {
+      "id": "M000355-s119-2-159",
+      "billId": "Motion to Waive All Applicable Budgetary Discipline Re: Cassidy Amdt. No. 5812",
+      "billTitle": "Motion to Waive All Applicable Budgetary Discipline Re: Cassidy Amdt. No. 5812",
+      "billDescription": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Cassidy Amdt. No. 5812) — To provide compensation to law enforcement officers who defended the United States Capitol during the events that occurred at or near the United States Capitol on January 6, 2021, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Cassidy Amdt. No. 5812)",
+      "billSummary": "To provide compensation to law enforcement officers who defended the United States Capitol during the events that occurred at or near the United States Capitol on January 6, 2021, and for other purposes.",
+      "date": "2026-06-05",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 6,
+          "nay": 47,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 44,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00159.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
+    },
+    {
+      "id": "M000355-s119-2-158",
+      "billId": "Motion to Waive All Applicable Budgetary Discipline Re: Coons Amdt. No. 5457",
+      "billTitle": "Motion to Waive All Applicable Budgetary Discipline Re: Coons Amdt. No. 5457",
+      "billDescription": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Coons Amdt. No. 5457) — To prohibit the Department of Justice from using taxpayer funds to make settlement payments to individuals convicted of assaulting law enforcement officers on January 6, 2021.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Coons Amdt. No. 5457)",
+      "billSummary": "To prohibit the Department of Justice from using taxpayer funds to make settlement payments to individuals convicted of assaulting law enforcement officers on January 6, 2021.",
+      "date": "2026-06-05",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 8,
+          "nay": 45,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 44,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00158.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
+    },
+    {
+      "id": "M000355-s119-2-157",
+      "billId": "Padilla Amdt. No. 5808",
+      "billTitle": "Padilla Amdt. No. 5808",
+      "billDescription": "On the Amendment S.Amdt. 5808 to S.Amdt. 5453 to S. 2 (No short title on file) — To make appropriations for transparency and accountability.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Amendment S.Amdt. 5808 to S.Amdt. 5453 to S. 2 (No short title on file)",
+      "billSummary": "To make appropriations for transparency and accountability.",
+      "date": "2026-06-05",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 0,
+          "nay": 53,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 44,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00157.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
+    },
+    {
+      "id": "M000355-s119-2-156",
+      "billId": "Gallego Amdt. No. 5813",
+      "billTitle": "Gallego Amdt. No. 5813",
+      "billDescription": "On the Amendment S.Amdt. 5813 to S.Amdt. 5453 to S. 2 (No short title on file) — To make funds available for the timely adjudication of DACA renewal applications.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Amendment S.Amdt. 5813 to S.Amdt. 5453 to S. 2 (No short title on file)",
+      "billSummary": "To make funds available for the timely adjudication of DACA renewal applications.",
+      "date": "2026-06-05",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 1,
+          "nay": 52,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 44,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00156.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
+    },
+    {
+      "id": "M000355-s119-2-155",
+      "billId": "Peters Amdt. No. 5763",
+      "billTitle": "Peters Amdt. No. 5763",
+      "billDescription": "On the Amendment S.Amdt. 5763 to S.Amdt. 5453 to S. 2 (No short title on file) — To rescind unobligated balances under the One Big Beautiful Bill Act.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Amendment S.Amdt. 5763 to S.Amdt. 5453 to S. 2 (No short title on file)",
+      "billSummary": "To rescind unobligated balances under the One Big Beautiful Bill Act.",
+      "date": "2026-06-05",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 0,
+          "nay": 53,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 44,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00155.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
+    },
+    {
+      "id": "M000355-s119-2-154",
+      "billId": "Hirono Amdt. No. 5506",
+      "billTitle": "Hirono Amdt. No. 5506",
+      "billDescription": "On the Amendment S.Amdt. 5506 to S.Amdt. 5453 to S. 2 (No short title on file) — To transfer amounts for youth mentoring programs of the Department of Justice.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Amendment S.Amdt. 5506 to S.Amdt. 5453 to S. 2 (No short title on file)",
+      "billSummary": "To transfer amounts for youth mentoring programs of the Department of Justice.",
+      "date": "2026-06-05",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 0,
+          "nay": 53,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 44,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00154.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
+    },
+    {
+      "id": "M000355-s119-2-153",
+      "billId": "S. 2",
+      "billTitle": "Wyden Motion to Commit S. 2 to the Committee on the Judiciary with Instructions",
+      "billDescription": "On the Motion (Wyden Motion to Commit S. 2 to the Committee on the Judiciary with Instructions) — An original bill to provide for reconciliation pursuant to title II of S. Con. Res. 33.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion (Wyden Motion to Commit S. 2 to the Committee on the Judiciary with Instructions)",
+      "billSummary": "An original bill to provide for reconciliation pursuant to title II of S. Con. Res. 33.",
+      "date": "2026-06-05",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 2,
+          "nay": 51,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 44,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00153.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
+    },
+    {
+      "id": "M000355-s119-2-152",
+      "billId": "Motion to Waive All Applicable Budgetary Discipline Re: Durbin Amdt. No. 5806",
+      "billTitle": "Motion to Waive All Applicable Budgetary Discipline Re: Durbin Amdt. No. 5806",
+      "billDescription": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Durbin Amdt. No. 5806) — To repurpose funds previously appropriated for U.S. Immigration and Customs Enforcement for the timely processing of DACA applications and related employment authorization documents and to prohibit the use of funds to arrest, detain, deport, or remove DACA recipients.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Durbin Amdt. No. 5806)",
+      "billSummary": "To repurpose funds previously appropriated for U.S. Immigration and Customs Enforcement for the timely processing of DACA applications and related employment authorization documents and to prohibit the use of funds to arrest, detain, deport, or remove DACA recipients.",
+      "date": "2026-06-05",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 2,
+          "nay": 51,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 44,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00152.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
+    },
+    {
+      "id": "M000355-s119-2-150",
+      "billId": "Motion to Waive All Applicable Budgetary Discipline Re: Booker Amdt. No. 5803",
+      "billTitle": "Motion to Waive All Applicable Budgetary Discipline Re: Booker Amdt. No. 5803",
+      "billDescription": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Booker Amdt. No. 5803) — To support the work performed by the Immigration Detention Ombudsman.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Booker Amdt. No. 5803)",
+      "billSummary": "To support the work performed by the Immigration Detention Ombudsman.",
+      "date": "2026-06-05",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 0,
+          "nay": 53,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 44,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00150.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
+    },
+    {
+      "id": "M000355-s119-2-149",
+      "billId": "Motion to Waive All Applicable Budgetary Discipline Re: Baldwin Amdt. No. 5485",
+      "billTitle": "Motion to Waive All Applicable Budgetary Discipline Re: Baldwin Amdt. No. 5485",
+      "billDescription": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Baldwin Amdt. No. 5485) — To redirect funding for U.S. Immigration and Customs Enforcement to the Child Care and Development Block Grant program.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Baldwin Amdt. No. 5485)",
+      "billSummary": "To redirect funding for U.S. Immigration and Customs Enforcement to the Child Care and Development Block Grant program.",
+      "date": "2026-06-05",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 0,
+          "nay": 53,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 44,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00149.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
+    },
+    {
+      "id": "M000355-s119-2-148",
+      "billId": "Motion to Waive All Applicable Budgetary Discipline Re: Sanders Amdt. No. 5451",
+      "billTitle": "Motion to Waive All Applicable Budgetary Discipline Re: Sanders Amdt. No. 5451",
+      "billDescription": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Sanders Amdt. No. 5451) — To place reasonable limits on contributions to Super PACs which make independent expenditures.. Official Senate roll-call from senate.gov (119th Congress).",
+      "voteAction": "On the Motion (Motion to Waive All Applicable Budgetary Discipline Re: Sanders Amdt. No. 5451)",
+      "billSummary": "To place reasonable limits on contributions to Super PACs which make independent expenditures.",
+      "date": "2026-06-05",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 0,
+          "nay": 53,
+          "notVoting": 0
+        },
+        "democrat": {
+          "yea": 43,
+          "nay": 0,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 2,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "senate.gov",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00148.xml",
+        "tier": "official",
+        "description": "Official U.S. Senate roll-call vote records (LIS XML)",
+        "date": "2026-06-05"
+      }
     }
   ],
-  "asOf": "2026-07-03",
+  "asOf": "2026-07-06",
   "source": {
     "name": "senate.gov",
     "url": "https://www.senate.gov/legislative/votes_new.htm",

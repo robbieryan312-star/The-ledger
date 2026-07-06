@@ -1,6 +1,7 @@
 {
   "bioguideId": "P000197",
   "politicianId": "nancy-pelosi",
+  "chamber": "house",
   "votes": [
     {
       "id": "P000197-h119-2-233",
@@ -361,7 +362,732 @@
         "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
         "date": "2026-06-23"
       }
+    },
+    {
+      "id": "P000197-h119-2-223",
+      "billId": "S.629",
+      "billTitle": "Emergency Conservation Program Improvement Act of 2025",
+      "billDescription": "On Motion to Suspend the Rules and Pass — S.629. Official House roll-call (Congress.gov).",
+      "voteAction": "Vote to suspend rules and pass",
+      "billSummary": "Emergency Conservation Program Improvement Act of 2025",
+      "date": "2026-06-23",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 178,
+          "nay": 19,
+          "notVoting": 21
+        },
+        "democrat": {
+          "yea": 189,
+          "nay": 0,
+          "notVoting": 23
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/223",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-23"
+      }
+    },
+    {
+      "id": "P000197-h119-2-222",
+      "billId": "H.Res.1335",
+      "billTitle": "Condemning actors seeking to defraud the United States Government, and expressing the sense of the House of Representatives that governmentwide fraud and improper payment prevention reforms will meaningfully improve the financial prosperity of the United States, and that Federal program eligibility should be verified before payment.",
+      "billDescription": "On Agreeing to the Resolution — H.Res.1335. Official House roll-call (Congress.gov).",
+      "voteAction": "Vote to agree to the resolution",
+      "billSummary": "Condemning actors seeking to defraud the United States Government, and expressing the sense of the House of Representatives that governmentwide fraud and improper payment prevention reforms will meaningfully improve the financial prosperity of the United States, and that Federal program eligibility should be verified before payment.",
+      "date": "2026-06-11",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 211,
+          "nay": 0,
+          "notVoting": 7
+        },
+        "democrat": {
+          "yea": 23,
+          "nay": 177,
+          "notVoting": 12
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/222",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-11"
+      }
+    },
+    {
+      "id": "P000197-h119-2-221",
+      "billId": "Roll Call Vote",
+      "billTitle": "Roll Call Vote",
+      "billDescription": "On Motion to Suspend the Rules and Pass — Roll Call Vote. Official House roll-call (Congress.gov).",
+      "voteAction": "Vote to suspend rules and pass",
+      "date": "2026-06-11",
+      "vote": "Nay",
+      "result": "Failed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 190,
+          "nay": 19,
+          "notVoting": 9
+        },
+        "democrat": {
+          "yea": 7,
+          "nay": 199,
+          "notVoting": 6
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/221",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-11"
+      }
+    },
+    {
+      "id": "P000197-h119-2-220",
+      "billId": "H.R.8464",
+      "billTitle": "Stopping Fraudulent Payments Act",
+      "billDescription": "On Passage — H.R.8464. Official House roll-call (Congress.gov).",
+      "voteAction": "Final passage vote",
+      "billSummary": "Stopping Fraudulent Payments Act",
+      "date": "2026-06-10",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 211,
+          "nay": 0,
+          "notVoting": 7
+        },
+        "democrat": {
+          "yea": 6,
+          "nay": 200,
+          "notVoting": 6
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/220",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-10"
+      }
+    },
+    {
+      "id": "P000197-h119-2-219",
+      "billId": "H.R.8464",
+      "billTitle": "Stopping Fraudulent Payments Act",
+      "billDescription": "On Motion to Recommit — H.R.8464. Official House roll-call (Congress.gov).",
+      "voteAction": "On Motion to Recommit",
+      "billSummary": "Stopping Fraudulent Payments Act",
+      "date": "2026-06-10",
+      "vote": "Yea",
+      "result": "Failed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 0,
+          "nay": 212,
+          "notVoting": 6
+        },
+        "democrat": {
+          "yea": 209,
+          "nay": 0,
+          "notVoting": 3
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 1,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/219",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-10"
+      }
+    },
+    {
+      "id": "P000197-h119-2-218",
+      "billId": "H.R.8312",
+      "billTitle": "Fraud Prevention and Accountability Act",
+      "billDescription": "On Passage — H.R.8312. Official House roll-call (Congress.gov).",
+      "voteAction": "Final passage vote",
+      "billSummary": "Fraud Prevention and Accountability Act",
+      "date": "2026-06-10",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 211,
+          "nay": 0,
+          "notVoting": 7
+        },
+        "democrat": {
+          "yea": 28,
+          "nay": 181,
+          "notVoting": 3
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/218",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-10"
+      }
+    },
+    {
+      "id": "P000197-h119-2-217",
+      "billId": "H.R.7892",
+      "billTitle": "No Aid for Ghost Students Act of 2026",
+      "billDescription": "On Passage — H.R.7892. Official House roll-call (Congress.gov).",
+      "voteAction": "Final passage vote",
+      "billSummary": "No Aid for Ghost Students Act of 2026",
+      "date": "2026-06-10",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 212,
+          "nay": 0,
+          "notVoting": 6
+        },
+        "democrat": {
+          "yea": 36,
+          "nay": 172,
+          "notVoting": 4
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/217",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-10"
+      }
+    },
+    {
+      "id": "P000197-h119-2-216",
+      "billId": "H.R.5408",
+      "billTitle": "Faster Labor Contracts Act",
+      "billDescription": "On Passage — H.R.5408. Official House roll-call (Congress.gov).",
+      "voteAction": "Final passage vote",
+      "billSummary": "Faster Labor Contracts Act",
+      "date": "2026-06-09",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 20,
+          "nay": 192,
+          "notVoting": 5
+        },
+        "democrat": {
+          "yea": 210,
+          "nay": 0,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 1,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/216",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-09"
+      }
+    },
+    {
+      "id": "P000197-h119-2-215",
+      "billId": "H.Res.1140",
+      "billTitle": "Providing for consideration of the bill (H.R. 5408) to accelerate workplace time-to-contract under the National Labor Relations Act.",
+      "billDescription": "On Agreeing to the Resolution — H.Res.1140. Official House roll-call (Congress.gov).",
+      "voteAction": "Vote to agree to the resolution",
+      "billSummary": "Providing for consideration of the bill (H.R. 5408) to accelerate workplace time-to-contract under the National Labor Relations Act.",
+      "date": "2026-06-09",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 11,
+          "nay": 200,
+          "notVoting": 6
+        },
+        "democrat": {
+          "yea": 210,
+          "nay": 0,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 1,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/215",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-09"
+      }
+    },
+    {
+      "id": "P000197-h119-2-214",
+      "billId": "S.2",
+      "billTitle": "Secure America Act",
+      "billDescription": "On Passage — S.2. Official House roll-call (Congress.gov).",
+      "voteAction": "Final passage vote",
+      "billSummary": "Secure America Act",
+      "date": "2026-06-09",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 214,
+          "nay": 0,
+          "notVoting": 3
+        },
+        "democrat": {
+          "yea": 0,
+          "nay": 211,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 1,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/214",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-09"
+      }
+    },
+    {
+      "id": "P000197-h119-2-213",
+      "billId": "S.2",
+      "billTitle": "Secure America Act",
+      "billDescription": "On Motion to Commit — S.2. Official House roll-call (Congress.gov).",
+      "voteAction": "On Motion to Commit",
+      "billSummary": "Secure America Act",
+      "date": "2026-06-09",
+      "vote": "Yea",
+      "result": "Failed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 0,
+          "nay": 214,
+          "notVoting": 3
+        },
+        "democrat": {
+          "yea": 211,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 1,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/213",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-09"
+      }
+    },
+    {
+      "id": "P000197-h119-2-212",
+      "billId": "H.Res.1140",
+      "billTitle": "Providing for consideration of the bill (H.R. 5408) to accelerate workplace time-to-contract under the National Labor Relations Act.",
+      "billDescription": "On Motion to Discharge — H.Res.1140. Official House roll-call (Congress.gov).",
+      "voteAction": "On Motion to Discharge",
+      "billSummary": "Providing for consideration of the bill (H.R. 5408) to accelerate workplace time-to-contract under the National Labor Relations Act.",
+      "date": "2026-06-09",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 9,
+          "nay": 198,
+          "notVoting": 10
+        },
+        "democrat": {
+          "yea": 211,
+          "nay": 0,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 1,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/212",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-09"
+      }
+    },
+    {
+      "id": "P000197-h119-2-211",
+      "billId": "H.Res.1345",
+      "billTitle": "Providing for consideration of the bill (H.R. 8312) to establish fraud prevention and program integrity functions and data sharing authorities within the Department of Treasury and a permanent governmentwide Inspector General for Fraud, Accountability, and Recovery, and for other purposes; providing for consideration of the bill (H.R. 8464) to amend title 31, United States Code, to authorize pausing and segmenting payments, and for other purposes; providing for consideration of the resolution (H. Res. 1335) condemning actors seeking to defraud the United States Government, and expressing the sense of the House of Representatives that governmentwide fraud and improper payment prevention reforms will meaningfully improve the financial prosperity of the United States, and that Federal program eligibility should be verified before payment; and providing for consideration of the bill (S. 2) to provide for reconciliation pursuant to title II of S. Con. Res. 33.",
+      "billDescription": "On Agreeing to the Resolution — H.Res.1345. Official House roll-call (Congress.gov).",
+      "voteAction": "Vote to agree to the resolution",
+      "billSummary": "Providing for consideration of the bill (H.R. 8312) to establish fraud prevention and program integrity functions and data sharing authorities within the Department of Treasury and a permanent governmentwide Inspector General for Fraud, Accountability, and Recovery, and for other purposes; providing for consideration of the bill (H.R. 8464) to amend title 31, United States Code, to authorize pausing and segmenting payments, and for other purposes; providing for consideration of the resolution (H. Res. 1335) condemning actors seeking to defraud the United States Government, and expressing the sense of the House of Representatives that governmentwide fraud and improper payment prevention reforms will meaningfully improve the financial prosperity of the United States, and that Federal program eligibility should be verified before payment; and providing for consideration of the bill (S. 2) to provide for reconciliation pursuant to title II of S. Con. Res. 33.",
+      "date": "2026-06-09",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 212,
+          "nay": 0,
+          "notVoting": 5
+        },
+        "democrat": {
+          "yea": 0,
+          "nay": 211,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/211",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-09"
+      }
+    },
+    {
+      "id": "P000197-h119-2-210",
+      "billId": "H.Res.1345",
+      "billTitle": "Providing for consideration of the bill (H.R. 8312) to establish fraud prevention and program integrity functions and data sharing authorities within the Department of Treasury and a permanent governmentwide Inspector General for Fraud, Accountability, and Recovery, and for other purposes; providing for consideration of the bill (H.R. 8464) to amend title 31, United States Code, to authorize pausing and segmenting payments, and for other purposes; providing for consideration of the resolution (H. Res. 1335) condemning actors seeking to defraud the United States Government, and expressing the sense of the House of Representatives that governmentwide fraud and improper payment prevention reforms will meaningfully improve the financial prosperity of the United States, and that Federal program eligibility should be verified before payment; and providing for consideration of the bill (S. 2) to provide for reconciliation pursuant to title II of S. Con. Res. 33.",
+      "billDescription": "On Ordering the Previous Question — H.Res.1345. Official House roll-call (Congress.gov).",
+      "voteAction": "On Ordering the Previous Question",
+      "billSummary": "Providing for consideration of the bill (H.R. 8312) to establish fraud prevention and program integrity functions and data sharing authorities within the Department of Treasury and a permanent governmentwide Inspector General for Fraud, Accountability, and Recovery, and for other purposes; providing for consideration of the bill (H.R. 8464) to amend title 31, United States Code, to authorize pausing and segmenting payments, and for other purposes; providing for consideration of the resolution (H. Res. 1335) condemning actors seeking to defraud the United States Government, and expressing the sense of the House of Representatives that governmentwide fraud and improper payment prevention reforms will meaningfully improve the financial prosperity of the United States, and that Federal program eligibility should be verified before payment; and providing for consideration of the bill (S. 2) to provide for reconciliation pursuant to title II of S. Con. Res. 33.",
+      "date": "2026-06-09",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 213,
+          "nay": 0,
+          "notVoting": 4
+        },
+        "democrat": {
+          "yea": 0,
+          "nay": 211,
+          "notVoting": 1
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/210",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-09"
+      }
+    },
+    {
+      "id": "P000197-h119-2-209",
+      "billId": "H.R.8428",
+      "billTitle": "Federal Fraud Prevention Workforce Training Act",
+      "billDescription": "On Motion to Suspend the Rules and Pass, as Amended — H.R.8428. Official House roll-call (Congress.gov).",
+      "voteAction": "Vote to suspend rules and pass",
+      "billSummary": "Federal Fraud Prevention Workforce Training Act",
+      "date": "2026-06-08",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 199,
+          "nay": 0,
+          "notVoting": 18
+        },
+        "democrat": {
+          "yea": 193,
+          "nay": 0,
+          "notVoting": 19
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/209",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-08"
+      }
+    },
+    {
+      "id": "P000197-h119-2-208",
+      "billId": "H.R.8466",
+      "billTitle": "TRUE Accountability Act",
+      "billDescription": "On Motion to Suspend the Rules and Pass, as Amended — H.R.8466. Official House roll-call (Congress.gov).",
+      "voteAction": "Vote to suspend rules and pass",
+      "billSummary": "TRUE Accountability Act",
+      "date": "2026-06-08",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 198,
+          "nay": 0,
+          "notVoting": 19
+        },
+        "democrat": {
+          "yea": 185,
+          "nay": 0,
+          "notVoting": 27
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/208",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-08"
+      }
+    },
+    {
+      "id": "P000197-h119-2-207",
+      "billId": "H.R.2913",
+      "billTitle": "Ukraine Support Act",
+      "billDescription": "On Passage — H.R.2913. Official House roll-call (Congress.gov).",
+      "voteAction": "Final passage vote",
+      "billSummary": "Ukraine Support Act",
+      "date": "2026-06-04",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 18,
+          "nay": 194,
+          "notVoting": 5
+        },
+        "democrat": {
+          "yea": 207,
+          "nay": 1,
+          "notVoting": 4
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/207",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-04"
+      }
+    },
+    {
+      "id": "P000197-h119-2-206",
+      "billId": "H.Res.518",
+      "billTitle": "Providing for consideration of the bill (H.R. 2913) to authorize support for Ukraine, and for other purposes.",
+      "billDescription": "On Agreeing to the Resolution — H.Res.518. Official House roll-call (Congress.gov).",
+      "voteAction": "Vote to agree to the resolution",
+      "billSummary": "Providing for consideration of the bill (H.R. 2913) to authorize support for Ukraine, and for other purposes.",
+      "date": "2026-06-04",
+      "vote": "Yea",
+      "result": "Passed",
+      "category": "Procedural",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 6,
+          "nay": 204,
+          "notVoting": 7
+        },
+        "democrat": {
+          "yea": 209,
+          "nay": 0,
+          "notVoting": 3
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/206",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-04"
+      }
+    },
+    {
+      "id": "P000197-h119-2-205",
+      "billId": "H.R.8646",
+      "billTitle": "Agriculture, Rural Development, Food and Drug Administration, and Related Agency Appropriations Act, 2027",
+      "billDescription": "On Passage — H.R.8646. Official House roll-call (Congress.gov).",
+      "voteAction": "Final passage vote",
+      "billSummary": "Agriculture, Rural Development, Food and Drug Administration, and Related Agency Appropriations Act, 2027",
+      "date": "2026-06-04",
+      "vote": "Nay",
+      "result": "Passed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 208,
+          "nay": 5,
+          "notVoting": 4
+        },
+        "democrat": {
+          "yea": 4,
+          "nay": 205,
+          "notVoting": 3
+        },
+        "independent": {
+          "yea": 1,
+          "nay": 0,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/205",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-04"
+      }
+    },
+    {
+      "id": "P000197-h119-2-204",
+      "billId": "H.R.8646",
+      "billTitle": "Agriculture, Rural Development, Food and Drug Administration, and Related Agency Appropriations Act, 2027",
+      "billDescription": "On Motion to Recommit — H.R.8646. Official House roll-call (Congress.gov).",
+      "voteAction": "On Motion to Recommit",
+      "billSummary": "Agriculture, Rural Development, Food and Drug Administration, and Related Agency Appropriations Act, 2027",
+      "date": "2026-06-04",
+      "vote": "Yea",
+      "result": "Failed",
+      "category": "Legislation",
+      "partyBreakdown": {
+        "republican": {
+          "yea": 0,
+          "nay": 211,
+          "notVoting": 6
+        },
+        "democrat": {
+          "yea": 210,
+          "nay": 0,
+          "notVoting": 2
+        },
+        "independent": {
+          "yea": 0,
+          "nay": 1,
+          "notVoting": 0
+        }
+      },
+      "source": {
+        "name": "Congress.gov",
+        "url": "https://www.congress.gov/roll-call-vote/119/2/204",
+        "tier": "official",
+        "description": "Official U.S. legislative records and roll-call votes via api.congress.gov",
+        "date": "2026-06-04"
+      }
     }
   ],
-  "asOf": "2026-07-02"
+  "asOf": "2026-07-06",
+  "source": {
+    "name": "Congress.gov",
+    "url": "https://www.congress.gov",
+    "tier": "official",
+    "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
+  }
 }
