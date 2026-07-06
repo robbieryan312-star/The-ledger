@@ -1,0 +1,34 @@
+{
+  "bioguideId": "P000197",
+  "diagnosedAt": "2026-07-06T08:25:00.000Z",
+  "verdict": "never-scraped",
+  "summary": "P000197 has zero platform positions because the member is absent from lib/data/generated/topicPositions.json (Ballotpedia/GovInfo mega-bundle). CREC statements were collected via profile pipeline (8 in statements.json); platform layer was never written to bundle or profile positions.json.",
+  "evidence": {
+    "topicPositionsBundle": {
+      "path": "lib/data/generated/topicPositions.json",
+      "hasP000197": false,
+      "checkedAt": "2026-07-06"
+    },
+    "profilePositions": {
+      "path": "lib/data/generated/profiles/P000197/positions.json",
+      "platformPositionCount": 0,
+      "hadEmptyTopicScaffolds": true,
+      "scaffoldTopicIds": ["healthcare", "defense-veterans", "civil-liberties", "economy-taxes"]
+    },
+    "profileStatements": {
+      "path": "lib/data/generated/profiles/P000197/statements.json",
+      "statementCount": 8,
+      "source": "GovInfo CREC floor remarks (official tier)"
+    },
+    "ballotpediaSlugCandidates": [
+      "Nancy_Pelosi",
+      "Nancy Pelosi",
+      "Nancy_Pelosi"
+    ],
+    "rejectedTexts": [],
+    "rejectingFilters": []
+  },
+  "notScrapedButFiltered": false,
+  "recommendation": "Claude must rule before refill. If approved: run npm run sync:topic-positions -- --members P000197, then profile:build apply step; do not hand-edit positions. Remove empty topic scaffolds until real positions exist.",
+  "refillBlocked": true
+}
