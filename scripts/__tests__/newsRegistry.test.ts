@@ -52,3 +52,24 @@ test('sync-news-rss derives members from manifest (no hard-coded MEMBERS)', () =
   assert.doesNotMatch(src, /export const MEMBERS/);
   assert.match(src, /_manifest\.json/);
 });
+
+test('news status: honest-gap only when zero feed failures in run', async () => {
+  const { resolveNewsStatus } = await import('../sync-news-rss');
+  const empty: never[] = [];
+  const gap = resolveNewsStatus(empty, empty, {
+    feedsAttempted: 10,
+    feedFailures: 0,
+    memberSkipped: false,
+    legName: 'Test Member',
+  });
+  assert.equal(gap.status, 'honest-gap');
+
+  const failed = resolveNewsStatus(empty, empty, {
+    feedsAttempted: 10,
+    feedFailures: 10,
+    memberSkipped: false,
+    legName: 'Test Member',
+  });
+  assert.equal(failed.status, 'fetch-failed');
+  assert.match(failed.note, /feed\(s\) timed out or errored/);
+});

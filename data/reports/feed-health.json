@@ -1,0 +1,69 @@
+{
+  "updatedAt": "2026-07-06T13:02:35.263Z",
+  "feeds": {
+    "https://feeds.npr.org/1014/rss.xml": {
+      "outlet": "NPR",
+      "feedUrl": "https://feeds.npr.org/1014/rss.xml",
+      "consecutiveFailures": 0,
+      "lastOk": "2026-07-06T13:02:05.479Z"
+    },
+    "https://thehill.com/homenews/feed/": {
+      "outlet": "The Hill",
+      "feedUrl": "https://thehill.com/homenews/feed/",
+      "consecutiveFailures": 0,
+      "lastOk": "2026-07-06T13:02:07.332Z"
+    },
+    "https://rss.politico.com/politics-news.xml": {
+      "outlet": "Politico",
+      "feedUrl": "https://rss.politico.com/politics-news.xml",
+      "consecutiveFailures": 0,
+      "lastOk": "2026-07-06T13:02:16.475Z"
+    },
+    "https://rollcall.com/feed/": {
+      "outlet": "Roll Call",
+      "feedUrl": "https://rollcall.com/feed/",
+      "consecutiveFailures": 3,
+      "lastError": "The operation was aborted due to timeout",
+      "disabled": true
+    },
+    "https://www.pbs.org/newshour/feeds/rss/politics": {
+      "outlet": "PBS NewsHour",
+      "feedUrl": "https://www.pbs.org/newshour/feeds/rss/politics",
+      "consecutiveFailures": 0,
+      "lastOk": "2026-07-06T13:02:17.844Z"
+    },
+    "https://www.propublica.org/feeds/propublica/main": {
+      "outlet": "ProPublica",
+      "feedUrl": "https://www.propublica.org/feeds/propublica/main",
+      "consecutiveFailures": 3,
+      "lastError": "The operation was aborted due to timeout",
+      "disabled": true
+    },
+    "https://www.theguardian.com/us-news/rss": {
+      "outlet": "The Guardian",
+      "feedUrl": "https://www.theguardian.com/us-news/rss",
+      "consecutiveFailures": 0,
+      "lastOk": "2026-07-06T13:02:25.491Z"
+    },
+    "https://www.miamiherald.com/news/politics-government/index.rss": {
+      "outlet": "Miami Herald",
+      "feedUrl": "https://www.miamiherald.com/news/politics-government/index.rss",
+      "consecutiveFailures": 3,
+      "lastError": "not RSS/Atom",
+      "disabled": true
+    },
+    "https://www.tampabay.com/arc/outboundfeeds/rss/?outputType=xml": {
+      "outlet": "Tampa Bay Times",
+      "feedUrl": "https://www.tampabay.com/arc/outboundfeeds/rss/?outputType=xml",
+      "consecutiveFailures": 0,
+      "lastOk": "2026-07-06T13:02:35.225Z"
+    },
+    "https://floridaphoenix.com/feed/": {
+      "outlet": "Florida Phoenix",
+      "feedUrl": "https://floridaphoenix.com/feed/",
+      "consecutiveFailures": 3,
+      "lastError": "The operation was aborted due to timeout",
+      "disabled": true
+    }
+  }
+}

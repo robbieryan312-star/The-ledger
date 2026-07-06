@@ -106,7 +106,7 @@ async function loadManifestMembers(): Promise<string[]> {
   return manifest.members.map((m) => m.bioguideId);
 }
 
-function resolveNewsStatus(
+export function resolveNewsStatus(
   merged: NewsItem[],
   existingItems: NewsItem[],
   opts: {
