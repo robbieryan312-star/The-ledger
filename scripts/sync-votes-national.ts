@@ -286,13 +286,30 @@ async function syncSenateVotes(
   const collected = new Map<string, VoteRecord[]>();
   for (const s of senators) collected.set(s.bioguideId, []);
 
-  const lisMap = await fetchLisToBioguideMap();
-  const bioguideToLis = new Map<string, string>();
-  for (const [lis, bioguide] of lisMap) {
-    if (collected.has(bioguide)) bioguideToLis.set(bioguide, lis);
+  if (senators.length === 0) return collected;
+
+  let bioguideToLis = new Map<string, string>();
+  try {
+    const lisMap = await fetchLisToBioguideMap();
+    for (const [lis, bioguide] of lisMap) {
+      if (collected.has(bioguide)) bioguideToLis.set(bioguide, lis);
+    }
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    fetchFailures.push({ chamber: 'senate', rollNumber: 0, error: `LIS map: ${msg}` });
+    console.warn(`  Senate LIS map fetch failed: ${msg}`);
+    return collected;
   }
 
-  const menu = (await fetchSenateVoteMenu(TARGET_CONGRESS, 2)).sort((a, b) => b.voteNumber - a.voteNumber);
+  let menu: Awaited<ReturnType<typeof fetchSenateVoteMenu>>;
+  try {
+    menu = (await fetchSenateVoteMenu(TARGET_CONGRESS, 2)).sort((a, b) => b.voteNumber - a.voteNumber);
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    fetchFailures.push({ chamber: 'senate', rollNumber: 0, error: `vote menu: ${msg}` });
+    console.warn(`  Senate vote menu fetch failed: ${msg}`);
+    return collected;
+  }
 
   const hwKey = `${TARGET_CONGRESS}-2`;
   const hwVote = highWaterMark?.senateMaxVote?.[hwKey] ?? 0;
