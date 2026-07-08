@@ -5,9 +5,9 @@ Claude Code reads **this file**, not chat. Only the **last 3 session entries** a
 
 **Current state (2026-07-08):**
 - Branch: `cursor/migrated-not-lightweight-guard-4114`
-- HEAD: `6fb6dd2` (branch tip; rules `79b5fe4`, guard `6235468`)
+- HEAD: `3f78a8c`
 - PR: https://github.com/robbieryan312-star/The-ledger/pull/15
-- Tree: dirty (rules + this file) · prebuild + build: green on `6235468`
+- Tree: clean · prebuild + build: green
 - main: `b92c981` (PR #13 merged)
 
 ---
@@ -27,6 +27,7 @@ updated; this file retroactively logs the missed migrated-not-lightweight sessio
 ### Commits (this session)
 
 - `79b5fe4` — rules: bind mandatory same-turn work log to AUDIT_DEBT_BRIEF.md (§1.1 J)
+- `91554f3` — docs: sync AUDIT_DEBT_BRIEF current state to branch tip
 
 ### Commands run (this session)
 
