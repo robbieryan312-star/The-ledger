@@ -5,65 +5,58 @@ Claude Code reads **this file**, not chat. Only the **last 3 session entries** a
 
 **Current state (2026-07-08):**
 - Branch: `main`
-- HEAD: `920fc40`
-- PR #16: merged (Phase 1 hardening)
+- HEAD: `d96126f`
+- Land brief: **COMPLETE** (PR #15, #14, #16 merged)
 - Tree: clean · prebuild + build: **green**
 
 ---
 
-## Latest session — Claude review PASS + merge PR #16 (COMPLETE)
+## Latest session — Land brief completion verification (COMPLETE)
 
 ### Objective
 
-Independent review of Cursor's Phase 1 hardening + `AUDIT_DEBT_BRIEF` land-brief entries; merge if green.
+Re-verify land brief acceptance on `main`; sync `data-refresh`; close stale PR #9/#12.
 
 ### Verdict / outcome
 
-**PASS** — independent prebuild + build green; audit ×2 → clean tree; 0 credibility defects; no `use client` route pages. **PR #16 merged** → `main` @ `920fc40`.
+**COMPLETE** — all merge/hardening tasks shipped. PR #9/#12 close **blocked** (GitHub token).
 
-### Review evidence (independent — this run)
+### Acceptance evidence (fresh run)
 
-| Check | Result |
-|-------|--------|
-| `npm run prebuild` | exit 0 (8/8 optimization guards incl. SSR route test) |
-| `npm run build` | exit 0 |
-| `npx tsx scripts/audit-profile-credibility.ts` ×2 | clean tree; 0 defect rows |
-| `app/**/page.tsx` `use client` | none |
-| PR #13 files (`profileCategoryIntegrity`, `profileManifestSync`) | present on branch |
-| CI PR #16 guards | SUCCESS |
+| Criterion | Result |
+|-----------|--------|
+| PR #15 merged | `b558fa7` merge commit on main |
+| PR #14 merged | `27cf1e9` FF on main |
+| PR #16 merged (Phase 1) | `920fc40` merge commit |
+| §1.1 K single-writer | present in `ledger-core-rules.mdc` |
+| Audit determinism | ×2 run → clean tree; 0 defects |
+| SSR route pages | no `use client` on `app/**/page.tsx` |
+| Mega-bundle freeze | 442 IDs frozen; guard green |
+| `deno.yml` | deleted |
+| `data-refresh` | reset to `d96126f` (= main) |
+| prebuild + build | exit 0 |
 
-### Land brief final status
+### Owner action required
 
-| Item | Status |
-|------|--------|
-| PR #15 merged | `b558fa7` → main |
-| PR #14 merged | `27cf1e9` → main |
-| PR #16 merged | `920fc40` → main (Phase 1 hardening) |
-| PR #9 / #12 close | **Owner action** — agent token lacks close permission |
-
-### Phase 1 shipped (`920fc40`)
-
-- §1.1 K single-writer git authority
-- Deterministic credibility audit + repeat-run guard
-- SSR route pages (elections, lobbying/[id], officials/[id])
-- Mega-bundle bioguideId freeze (442 IDs); `deno.yml` removed
-- `data-refresh` branch reset to main
+Close manually with one-line reason:
+- **PR #9** — superseded by PR #15 (migrated-not-lightweight guard)
+- **PR #12** — redundant; `AUDIT_DEBT_BRIEF.md` on main per §1.1 J
 
 ---
 
 ## Session log (last 3 only)
 
-### 3 — Claude review + merge PR #16 (2026-07-08)
+### 3 — Land brief completion verification (2026-07-08)
 
 See **Latest session** above.
 
-### 2 — Land PR #15 + PR #14 + open Phase 1 (2026-07-08)
+### 2 — Claude review + merge PR #16 (2026-07-08)
 
-`main` @ `27cf1e9` after optimization + migrated-not-lightweight guard merges.
+`920fc40` — Phase 1 hardening merged after independent PASS.
 
-### 1 — Credibility + optimization rebase work (2026-07-08)
+### 1 — Land PR #15 + PR #14 (2026-07-08)
 
-PR #13 hardening preserved through PR #14 rebase; manifest parity 0-defect audit.
+`b558fa7` + `27cf1e9` on main; optimization + guard salvage.
 
 ---
 
