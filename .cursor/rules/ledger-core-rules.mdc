@@ -25,6 +25,17 @@ alwaysApply: true
   **task failures** — Claude will reject them.
 - **2+ failures → STOP and hand off** — never blind-retry or ask the owner to "try again."
   Completion claims require commit hash + fresh artifact evidence — see §1.1 C.
+- **Substandard = surface immediately (owner visibility — binding)** — any file, generated
+  data artifact, sync/process, guard result, doc, config, or UI output you engage with or review
+  that is **not 100% flawless** to the written spec (credibility, layout numbers, office
+  resolution, honest-gap semantics, test/guard failure, stale docs, path drift, regression,
+  partial wipe, silent empty, or any defect class) MUST be **brought to the owner's attention in
+  the same turn** — never silently worked around, deferred without flag, or buried in a passing
+  summary. Do not wait for the owner to discover it. Format: **what** · **where (path/commit)** ·
+  **evidence** · **severity** · **recommended repair** (Claude brief vs agent-fixable). Routine
+  code/data fixes proceed without asking permission; **visibility is mandatory** even when you
+  are also fixing it. Credibility *tradeoffs* still route to Claude per §3; **discovery of
+  substandard output routes to the owner every time.**
 
 **These rules bind EVERY agent equally — Claude Code AND every Cursor agent (Auto, cloud
 agents, background agents). No agent is exempt.** This is the one file all of them reload every
@@ -92,6 +103,14 @@ the specific failure this file was created to stop.
   C001098, P000197 are the concrete reference. The pipeline scales the SAME components and SAME
   checklist to the remaining 531 members — it never redesigns them. Fix the script/extractor
   that produced bad data; never hand-clean one member and call it done.
+- **Substandard = surface immediately (owner visibility — binding).** Any file, generated data
+  artifact, sync/process, guard result, doc, config, or UI output you engage with or review that
+  is **not 100% flawless** to the written spec MUST be **brought to the owner's attention in the
+  same turn** — never silently worked around, deferred without flag, or buried in a passing
+  summary. The owner must never discover defects you already saw. Use the **Owner visibility
+  finding** block (§1.1 H). Routine agent-fixable repairs proceed without permission; **visibility
+  is mandatory even when you are also fixing.** Credibility *tradeoffs* route to Claude; **discovery
+  of substandard output routes to the owner every time.**
 
 ### 1.1 Agent handoff, review, and completion (binding — CRITICAL)
 
@@ -111,6 +130,7 @@ briefs; Cursor executes), and §6 ("Read the real error before any restart").
 | Exit 0 but brief acceptance not met | **Review for Claude** — exit code is not success | Fix or STOP |
 | Claiming "complete" | Commit hash + `git show`/artifact paste from THAT commit | N/A |
 | Prior session report recycled | **Forbidden** — regenerate from current `git status` + logs | N/A |
+| Any substandard file/data/process discovered during read, sync, audit, or review (not 100% flawless to spec) | **Owner visibility finding** (§1.1 H) in SAME response — even if out of scope or you are also fixing | Fix in-scope if brief allows; else flag only |
 
 #### A. Autonomous delivery (binding)
 
@@ -290,6 +310,32 @@ wait for Claude.
 commands this session, or that pastes evidence contradicting `git show`/logs as **rejected**.
 Regenerate from disk — never recycle a prior session's paragraph.
 
+#### H. Owner visibility finding (binding — every substandard discovery)
+
+**Trigger:** You read, sync, audit, test, or review anything that is **not 100% flawless** to
+the written spec — data quality, guard failure, path drift, stale docs, partial wipe, silent
+empty, layout-number drift, office-resolution error, process without `--members`/timeout, or any
+other defect — whether or not it is in the current brief scope.
+
+**Required in the SAME response** (dedicated section; do not bury in prose):
+
+```markdown
+## Owner visibility finding
+
+| Field | Detail |
+|-------|--------|
+| **What** | [one-line defect summary] |
+| **Where** | [path, script, profile bioguideId, or commit] |
+| **Evidence** | [fresh rg/cat/git show/tail — not memory] |
+| **Severity** | [P0 data-loss / P1 wrong-shipped / P2 doc-drift / honest-gap vs bug] |
+| **Repair** | [agent-fixable now | needs Claude brief | needs owner visual decision] |
+| **Action this turn** | [fixing / flagged only / blocked by scope] |
+```
+
+Multiple findings → one table row each. **Honest gaps** (genuine missing verified record) are
+not defects — flag only when the *presentation* mislabels them (silent empty, fetch-failed shown
+as gap, etc.). The owner must never be the first to learn of a defect you already observed.
+
 ---
 
 ## 2. Where the authoritative detail lives — read the file that owns the answer
@@ -305,6 +351,7 @@ Regenerate from disk — never recycle a prior session's paragraph.
 | Which source/API feeds a data need | `lib/data/SOURCE_LOOKUP.md`, `lib/data/sourceCatalog.ts` |
 | What's done / in progress / blocked; phase status | `PROGRESS.md` |
 | API key SET/EMPTY; sync commands | `KEYS.md`, `OWNER_SETUP.md` |
+| Surfacing substandard files/data/processes to the owner | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 H |
 
 ---
 
