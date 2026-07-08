@@ -579,15 +579,18 @@ async function auditMember(bioguideId: string, displayName: string): Promise<Def
   return defects;
 }
 
-function renderMarkdown(
+const REPORT_BASENAME = 'profile-credibility-audit-2026-07-08.md';
+/** Fixed report date — committed artifact must be byte-stable across repeat runs. */
+const AUDIT_REPORT_DATE = '2026-07-08';
+
+export function renderMarkdown(
   defects: DefectRow[],
   identityByBioguide: Map<string, { name: string; initials: string }>,
 ): string {
-  const generatedAt = new Date().toISOString();
   const lines: string[] = [
     '# Profile credibility re-audit — 7 locked profiles',
     '',
-    `**Generated:** ${generatedAt}`,
+    `**Report date:** ${AUDIT_REPORT_DATE}`,
     '**Mode:** read-only (no data mutations)',
     '**Members:** S000033, O000172, M000355, M001184, W000817, C001098, P000197',
     '',
