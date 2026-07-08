@@ -352,6 +352,7 @@ as gap, etc.). The owner must never be the first to learn of a defect you alread
 | What's done / in progress / blocked; phase status | `PROGRESS.md` |
 | API key SET/EMPTY; sync commands | `KEYS.md`, `OWNER_SETUP.md` |
 | Surfacing substandard files/data/processes to the owner | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 H |
+| Cursor work log for Claude review (last 3 sessions) | `docs/workflows/AUDIT_DEBT_BRIEF.md` |
 
 ---
 
