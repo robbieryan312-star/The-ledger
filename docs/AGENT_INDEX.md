@@ -5,11 +5,12 @@ Single map of where to read before acting. **Do not** use `docs/archive/` for cu
 ## Session start (mandatory order)
 
 1. `.cursor/rules/ledger-core-rules.mdc` — binding rules for all agents
-2. `PROGRESS.md` — milestones M1–M8, status board, blockers
-3. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
-4. `KEYS.md` — SET vs EMPTY env vars (values in `.env.local` only)
-5. `REPO.md` — canonical repo is `The-ledger` on `main`
-6. `PILOT_PROFILE_CHECKLIST.md` — what a complete profile requires
+2. `docs/workflows/AUDIT_DEBT_BRIEF.md` — Cursor work log (**Claude reads this, not chat** — §1.1 J)
+3. `PROGRESS.md` — milestones M1–M8, status board, blockers
+4. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
+5. `KEYS.md` — SET vs EMPTY env vars (values in `.env.local` only)
+6. `REPO.md` — canonical repo is `The-ledger` on `main`
+7. `PILOT_PROFILE_CHECKLIST.md` — what a complete profile requires
 
 Also read when relevant: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`,
 `.cursor/rules/ledger-editorial-voice.mdc`.
@@ -68,6 +69,7 @@ Checks session-start files exist, guard scripts registered, and key npm scripts 
 
 | Topic | File |
 |-------|------|
+| **Cursor work log (mandatory end-of-turn — §1.1 J)** | `docs/workflows/AUDIT_DEBT_BRIEF.md` |
 | Batch scaling (M2) | `docs/workflows/BATCH_SCALING.md` |
 | Florida state data ingest | `docs/FLORIDA_DATA.md` |
 | Product vision & voice | `PRODUCT_VISION.md` |

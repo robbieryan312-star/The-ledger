@@ -43,6 +43,12 @@ alwaysApply: true
   unverified. The receiving agent runs an independent review + test in a clean environment and
   returns explicit **PASS/FAIL** + fresh evidence, surfaced in the next turn with a repair brief if
   FAIL. Applies Claude↔Cursor equally.
+- **Work log to disk before turn ends (binding — Claude cannot see chat)** — every session that
+  produces or verifies work MUST update **`docs/workflows/AUDIT_DEBT_BRIEF.md`** in the **same turn**
+  and **commit** that update (alone or with the task commit) before the response ends. Chat-only
+  summaries are invisible to Claude Code — **unlogged work = task failure** even if code shipped.
+  Required fields: branch, HEAD, PR, tree, build status, explicit PASS/FAIL, commits, files touched,
+  commands run, acceptance evidence. Keep last 3 sessions only. See §1.1 J.
 
 **These rules bind EVERY agent equally — Claude Code AND every Cursor agent (Auto, cloud
 agents, background agents). No agent is exempt.** This is the one file all of them reload every
@@ -140,7 +146,8 @@ briefs; Cursor executes), and §6 ("Read the real error before any restart").
 | Attempt 1: error, timeout, wrong counts, missing artifact | **Review for Claude** (§1.1 F) at end of SAME response | One different approach allowed |
 | Attempt 2+: same task still not meeting brief acceptance | **Claude handoff report** (§1.1 F) + **STOP** | No unless brief says so |
 | Exit 0 but brief acceptance not met | **Review for Claude** — exit code is not success | Fix or STOP |
-| Claiming "complete" | Commit hash + `git show`/artifact paste from THAT commit | N/A |
+| Claiming "complete" | Commit hash + `git show`/artifact paste from THAT commit **and** `AUDIT_DEBT_BRIEF.md` updated + committed same turn (§1.1 J) | N/A |
+| End of any work/verify session (audit, remediation, guard, rule change) | **`AUDIT_DEBT_BRIEF.md` updated + committed** before response ends (§1.1 J) | Chat-only report forbidden |
 | Prior session report recycled | **Forbidden** — regenerate from current `git status` + logs | N/A |
 | Any substandard file/data/process discovered during read, sync, audit, or review (not 100% flawless to spec) | **Owner visibility finding** (§1.1 H) in SAME response — even if out of scope or you are also fixing | Fix in-scope if brief allows; else flag only |
 | Suspected flaw but cannot verify (env quirk, blocked access, ambiguous pass) | **Cross-agent second opinion** (§1.1 I) before claiming pass | Other agent reviews independently |
@@ -187,10 +194,12 @@ are clearly unmet (e.g. votes still 10 when brief requires 30).
 
 #### D. Completion claims (reinforce)
 
-A task is **complete** ONLY when **both** are true:
+A task is **complete** ONLY when **all** are true:
 
 1. A **commit hash** exists for the verified work (see §1 commit rule; owner may withhold push)
 2. The **acceptance artifact named in the brief** is pasted fresh from that commit/run (`git show <hash>:path` or log `rg`)
+3. **`docs/workflows/AUDIT_DEBT_BRIEF.md`** is updated with this session's evidence and **committed**
+   in the same turn (§1.1 J) — Claude Code reads the file on disk, not chat history
 
 "Complete" without both = **task failure**. "It builds" or "sync finished" alone is not
 completion. Re-listing work accepted in a **prior** Claude review as new progress = **verification theater** (reject).
@@ -372,6 +381,52 @@ run, cannot reproduce locally).
 Cursor ↔ Claude equally. **Never** close a suspected defect without the second opinion when you
 could not verify. Credibility tradeoffs still route to Claude; **unverified "pass" is banned.**
 
+#### J. Cursor work log for Claude review (binding — CRITICAL)
+
+**Claude Code cannot see Cursor chat.** The only durable handoff for review continuity is
+**`docs/workflows/AUDIT_DEBT_BRIEF.md`** on disk. The owner must never have to ask "did you log
+this?" — if the file is stale or missing the session, the turn **failed** regardless of chat quality.
+
+**When (every time):** end of any turn that audits, remediates, syncs, adds guards, changes rules,
+verifies PASS/FAIL, opens/updates a PR, or claims progress. **One combined commit** with task work
+is fine; a **docs-only follow-up commit** in the same turn is also fine. **Ending without the file
+updated = violation.**
+
+**What to write (mandatory fields):**
+
+```markdown
+**Current state:** branch · HEAD · PR URL · tree clean/dirty · prebuild/build status
+
+## Latest session — [title] ([COMPLETE | BLOCKED | PASS | FAIL])
+
+### Objective
+[one sentence from brief]
+
+### Verdict / outcome
+[explicit PASS/FAIL or completion status — not vague]
+
+### Commits
+- `[hash]` — [message]
+
+### Commands run (this session)
+- `[exact command]` → exit [code] / outcome
+
+### Files touched
+| Path | Action | What changed |
+
+### Acceptance evidence
+- [artifact paths, counts, test names, log tails — fresh from this run]
+
+### Open / next
+- [blockers or none]
+```
+
+**Retention:** keep **Current state** fresh; keep **last 3** numbered entries under **Session log**;
+drop oldest when adding a 4th.
+
+**Anti-patterns (reject):** chat-only report; stale HEAD in file; session described in chat but
+absent from file; "will log next turn"; logging a prior session's work as if new.
+
 ---
 
 ## 2. Where the authoritative detail lives — read the file that owns the answer
@@ -388,7 +443,7 @@ could not verify. Credibility tradeoffs still route to Claude; **unverified "pas
 | What's done / in progress / blocked; phase status | `PROGRESS.md` |
 | API key SET/EMPTY; sync commands | `KEYS.md`, `OWNER_SETUP.md` |
 | Surfacing substandard files/data/processes to the owner | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 H |
-| Cursor work log for Claude review (last 3 sessions) | `docs/workflows/AUDIT_DEBT_BRIEF.md` |
+| Cursor work log for Claude review (last 3 sessions) | `docs/workflows/AUDIT_DEBT_BRIEF.md` — **§1.1 J (mandatory same-turn commit)** |
 | Cross-agent second opinion when unverifiable | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 I |
 
 ---

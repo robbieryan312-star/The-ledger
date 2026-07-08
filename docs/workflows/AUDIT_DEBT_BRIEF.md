@@ -1,72 +1,99 @@
 # Cursor Work Log — Audit & Debt Remediation
 
-**Living file.** Cursor updates this after each major task. Only the **last 3 session entries** are kept below.
+**Living file.** Cursor updates + **commits** this after **every** work/verify session (§1.1 J).
+Claude Code reads **this file**, not chat. Only the **last 3 session entries** are kept below.
 
 **Current state (2026-07-08):**
-- Branch: `cursor/p0-p1-debt-remediation-4114`
-- HEAD: `ca24c8a`
-- PR: https://github.com/robbieryan312-star/The-ledger/pull/13
-- Tree: clean after commit · prebuild + build: green · credibility re-audit: **0 defect rows**
+- Branch: `cursor/migrated-not-lightweight-guard-4114`
+- HEAD: `8d4eba9`
+- PR: https://github.com/robbieryan312-star/The-ledger/pull/15
+- Tree: dirty (rules + this file) · prebuild + build: green on `6235468`
+- main: `b92c981` (PR #13 merged)
 
 ---
 
-## Latest session — Credibility manifest/status remediation (COMPLETE)
+## Latest session — Work-log binding rule + retroactive logging (COMPLETE)
 
-### Task
+### Objective
 
-Follow-up credibility brief: (1) §1.1 I cross-agent second-opinion rule; (2) fix P1 manifest↔file mismatches
-(O000172, M000355, M001184, C001098); (3) fix P2 missing `status` on controversies/endorsements/orgVoteLinks
-(all 7); (4) build-gated guards + fixtures; (5) re-audit → 0 P0/P1.
+Owner directive: ensure Cursor constantly uploads session evidence to this file so Claude can
+review the same data — not chat-only summaries.
 
-### Work done (code)
+### Verdict / outcome
 
-| Area | What |
-|------|------|
-| `lib/data/profileCategoryIntegrity.ts` | Shared empty/content checks, manifest status resolution, validation helpers |
-| `scripts/lib/profileManifestSync.ts` | `syncProfileManifestFromDisk` — writes status fields + recomputes manifest from disk |
-| `scripts/sync-profile-manifest.ts` | CLI: `npm run sync:profile-manifest -- --members …` |
-| `scripts/lib/profileMigrate.ts` | Preserve existing controversies/endorsements/statements; call manifest sync at end |
-| `scripts/lib/profileReprocess.ts` | Use `syncProfileManifestFromDisk` instead of partial manifest patch |
-| `lib/data/__fixtures__/profileCategoryIntegrity.fixture.ts` | Frozen bad/good manifest mismatch + missing-status examples |
-| `scripts/__tests__/profileCategoryIntegrity.test.ts` | Build-gated manifest parity + required status on 7 locked profiles |
-| `.cursor/rules/ledger-core-rules.mdc` | §1.1 I cross-agent second opinion (HARD RULE + template) |
-| `.cursor/rules/agent-ops.mdc` | Cross-ref §1.1 I |
+**COMPLETE** — §1.1 J added to `ledger-core-rules.mdc`; agent-ops + REPO.md + AGENT_INDEX.md
+updated; this file retroactively logs the missed migrated-not-lightweight session.
 
-### Data / reports
+### Commits (this session)
 
-| Path | Change |
-|------|--------|
-| `lib/data/generated/profiles/{7}/manifest.json` | Categories aligned to on-disk content (e.g. controversies/endorsements → `filled` where content exists; C001098 statements → `filled`) |
-| `lib/data/generated/profiles/{7}/controversies.json` | Top-level `status` added |
-| `lib/data/generated/profiles/{7}/endorsements.json` | Top-level `status` added |
-| `lib/data/generated/profiles/{7}/orgVoteLinks.json` | Top-level `status` added |
-| `data/reports/profile-credibility-audit-2026-07-08.md` | **0 defect rows** (was 20) |
+- _(pending)_ — rules + AUDIT_DEBT_BRIEF retroactive log
 
-### Acceptance
+### Commands run (this session)
 
-- `npm run sync:profile-manifest -- --members S000033,O000172,M000355,M001184,W000817,C001098,P000197` exit 0
-- `profileCategoryIntegrity` guards green in `test:source-integrity`
-- Re-audit: 0 rows per member (0 P0, 0 P1, 0 P2)
-- `npm run prebuild` + `npm run build` exit 0
+- `git branch --show-current` → `cursor/migrated-not-lightweight-guard-4114`
+- `git rev-parse --short HEAD` → `6235468`
+
+### Files touched
+
+| Path | Action | What changed |
+|------|--------|--------------|
+| `.cursor/rules/ledger-core-rules.mdc` | modified | HARD RULE + §1.1 J + completion gate + trigger matrix |
+| `.cursor/rules/agent-ops.mdc` | modified | Session-start #2; expanded work-log section; Do not |
+| `REPO.md` | modified | Session start includes AUDIT_DEBT_BRIEF |
+| `docs/AGENT_INDEX.md` | modified | Session start + workflows table |
+| `docs/workflows/AUDIT_DEBT_BRIEF.md` | modified | Retroactive sessions + current state |
+
+### Open / next
+
+- Commit + push this turn; merge PR #15 after Claude review
 
 ---
 
 ## Session log (last 3 only)
 
-### 3 — Credibility manifest/status remediation (2026-07-08)
+### 3 — Work-log binding rule + retroactive logging (2026-07-08)
 
-See **Latest session** above.
+See **Latest session** above. **Gap fixed:** prior turn reported migrated-not-lightweight PASS in chat only — not logged here until now.
 
-### 2 — Manifest identification + credibility re-audit (2026-07-08)
+### 2 — Migrated-not-lightweight verification + guard salvage (2026-07-08) — **PASS**
 
-- Commit `e2529e2` (and prior on branch) — `name` + `initials` on `_manifest.json`; read-only audit report (20 defects)
-- `scripts/lib/profileDisplayIdentity.ts`, `scripts/audit-profile-credibility.ts`, optimizationGuards identity check
-- Owner visibility rule `867e7fb` on same branch
+**Objective:** §1.1 I second opinion — verify 7 migrated profiles render integrated (not lightweight); restore PR #9 guard if PASS.
 
-### 1 — Owner visibility binding rule (2026-07-08)
+**Verdict:** **PASS** — fix present on `main` @ `b92c981`; guard restored on branch.
 
-- Commit `867e7fb` — `.cursor/rules/ledger-core-rules.mdc` HARD RULE + §1.1 H; agent-ops cross-ref
-- Substandard findings must be surfaced to owner same turn
+**Commits:**
+- `6235468` — `test: restore migrated-not-lightweight regression guard (PR #9 salvage)`
+
+**Commands run:**
+- `git checkout main && git pull` → `b92c981`
+- Programmatic check (tsx): all 7 → `recordType: featured`, `usesMemberProfile: true`, 30 votes, `usingOfficialVotes: true`, FEC present; `FAIL_COUNT 0`
+- Lightweight dedup check: 1 roster match each, 0 lightweight dupes in `allPoliticians`
+- `npm run build` → exit 0
+- SSR @ `:4100`: all 7 slugs — `Total raised` present; zero `lightweight` / `not yet integrated` strings
+- `npm run test:source-integrity` → 75 pass (includes new guard)
+- `npm run prebuild` → exit 0
+
+**Files touched:**
+
+| Path | Action | What |
+|------|--------|------|
+| `lib/data/__fixtures__/migratedNotLightweight.fixture.ts` | created | Frozen bad lightweight S000033 + violation collector |
+| `scripts/__tests__/migratedNotLightweight.test.ts` | created | Guard: no MIGRATED_PROFILE_BIOGUIDE_LIST lightweight / MissingRecordPanel gates |
+| `package.json` | modified | Wired into `test:source-integrity` |
+
+**Acceptance evidence:**
+- Data path: all 7 `isLightweight: false`, `usingOfficialVotes: true`, `hasFec: true`
+- SSR: bernie-sanders … nancy-pelosi all PASS (featured markers, no lightweight strings)
+- Root cause of original bug: roster `featured` + `featuredBioguides` dedup + `usesMemberProfile` overrides in `congressVotes.ts` / `fecFinance.ts` before `recordType === 'lightweight'` check
+- PR: https://github.com/robbieryan312-star/The-ledger/pull/15
+
+### 1 — Credibility manifest/status remediation (2026-07-08) — merged PR #13
+
+**Commits:** `ca24c8a`, `86de7dd` on `cursor/p0-p1-debt-remediation-4114` → merged to `main` @ `b92c981`
+
+**Outcome:** P1 manifest↔file mismatches + P2 missing `status` fixed for all 7; re-audit **0 defect rows**; `profileCategoryIntegrity` guards; §1.1 I cross-agent rule.
+
+**Key artifacts:** `lib/data/profileCategoryIntegrity.ts`, `scripts/sync-profile-manifest.ts`, `data/reports/profile-credibility-audit-2026-07-08.md` (0 rows)
 
 ---
 
