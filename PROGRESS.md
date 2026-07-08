@@ -155,8 +155,8 @@ Elections, OpenCorporates — unchanged from prior log (see `.env.local` and `KE
 | P0/P1 audit debt | ✅ prebuild deterministic; sync-news-rss import guard + --members; FEC schedule-A paths canonical (`cursor/p0-p1-debt-remediation-4114`) |
 | Scoped syncs (§5 no-full-corpus law) | `--members` scoping live: votes-national (+ under-filled high-water-mark bypass `71b61c2`), stock-trades (§6 meta honesty), RSS news |
 | Failure-handoff rules | §1.1 hardened: autonomous handoff after 1st failure, anti-stale evidence, three-strike same-turn flow (`fdd025c`, `d443ecb`, `828e650`) |
-| Optimization program | W0–W2A committed; W2B–W5 landing; W3 = L1 only (11/175 files) |
-| File audit progress | L1 scripts/lib reviewed (11 files); L2–L8 pending |
+| Optimization program | ✅ W0–W5 complete (sync kernel, manifest index, read-path docs, archive one-offs, optimization guards, profile:build validate-only + depth JSON) |
+| File audit progress | L1 + L2/L3 high-priority reviewed (22 files); L5–L8 pending M2 scale |
 | M2 scaling | Blocked pending Claude re-review (Briefs A–C); Brief B T1-2, T4-7 committed — T3 has no commit (unconfirmed) |
 
 ## Compressed history (pre-roadmap)

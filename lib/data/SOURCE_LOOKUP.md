@@ -49,6 +49,17 @@ Do **not** cite `sync:congress-votes` — that script name does not exist; use `
 
 ---
 
+## Read-path routing (migrated vs mega-bundle)
+
+| Member set | Votes / FEC | Statements / positions / saidDid |
+|------------|-------------|----------------------------------|
+| **7 migrated** (`profiles/_manifest.json`) | `data/national/*` → per-profile `votes.json` / `finance.json` via `memberProfile.ts` | Per-profile files under `profiles/{bioguideId}/` via generated `profiles/index.ts` |
+| **Non-migrated** (~530) | `lib/data/generated/congressVotes.json` / `fecFinance.json` | `lib/data/generated/topicPositions.json` mega-bundle |
+
+Build-gated: `test:optimization` → `read-path-routing` (memberProfile imports generated index, not hand imports).
+
+---
+
 ## Post-data-change chain (mandatory)
 
 After any sync that writes generated JSON or `data/national/` snapshots:

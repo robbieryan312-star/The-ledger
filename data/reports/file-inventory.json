@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-05T22:24:34.796Z",
-  "totalFiles": 175,
+  "generatedAt": "2026-07-08T04:36:19.648Z",
+  "totalFiles": 178,
   "layers": {
     "L1": [
       "scripts/lib/approvedMediaQuotes.ts",
@@ -9,9 +9,11 @@
       "scripts/lib/crecProceduralFilter.ts",
       "scripts/lib/dataPaths.ts",
       "scripts/lib/ingest-utils.ts",
+      "scripts/lib/profileDisplayIdentity.ts",
       "scripts/lib/profileMigrate.ts",
       "scripts/lib/profileReprocess.ts",
       "scripts/lib/resilientFetch.ts",
+      "scripts/lib/syncKernel.ts",
       "scripts/lib/syncLock.ts"
     ],
     "L2": [
@@ -37,6 +39,7 @@
       "lib/data/fecFinance.ts",
       "lib/data/fecOrgRegistry.ts",
       "lib/data/fecScheduleA.ts",
+      "lib/data/generated/profiles/index.ts",
       "lib/data/generatedPoliticians.ts",
       "lib/data/governorMapColors.ts",
       "lib/data/governors.ts",
@@ -273,6 +276,7 @@
     "lib/data/fecFinance.ts",
     "lib/data/fecOrgRegistry.ts",
     "lib/data/fecScheduleA.ts",
+    "lib/data/generated/profiles/index.ts",
     "lib/data/generatedPoliticians.ts",
     "lib/data/governorMapColors.ts",
     "lib/data/governors.ts",
@@ -348,9 +352,11 @@
     "scripts/lib/crecProceduralFilter.ts",
     "scripts/lib/dataPaths.ts",
     "scripts/lib/ingest-utils.ts",
+    "scripts/lib/profileDisplayIdentity.ts",
     "scripts/lib/profileMigrate.ts",
     "scripts/lib/profileReprocess.ts",
     "scripts/lib/resilientFetch.ts",
+    "scripts/lib/syncKernel.ts",
     "scripts/lib/syncLock.ts",
     "scripts/profile-build.ts",
     "scripts/profile-snapshot-update.ts",
