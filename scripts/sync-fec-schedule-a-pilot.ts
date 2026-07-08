@@ -7,7 +7,6 @@
 import { config } from 'dotenv';
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import {
   FEC_SOURCE,
   fetchCandidateCommittees,
@@ -15,9 +14,10 @@ import {
   isFecConfigured,
 } from '../lib/data/fecClient';
 import { aggregateScheduleAOrgs } from '../lib/data/fecOrgRegistry';
+import { PILOT_S000033_SCHEDULE_A_FILE, PROJECT_ROOT } from './lib/dataPaths';
 
-const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const OUT_FILE = path.join(projectRoot, 'data', 'fec', 'pilot', 'S000033-schedule-a.json');
+const projectRoot = PROJECT_ROOT;
+const OUT_FILE = PILOT_S000033_SCHEDULE_A_FILE;
 const PILOT_BIOGUIDE = 'S000033';
 const PILOT_FEC_CANDIDATE = 'S4VT00033';
 

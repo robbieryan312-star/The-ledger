@@ -1,7 +1,6 @@
 {
   "bioguideId": "P000197",
   "politicianId": "nancy-pelosi",
-  "chamber": "house",
   "votes": [
     {
       "id": "P000197-h119-2-233",
@@ -1083,11 +1082,5 @@
       }
     }
   ],
-  "asOf": "2026-07-06",
-  "source": {
-    "name": "Congress.gov",
-    "url": "https://www.congress.gov",
-    "tier": "official",
-    "description": "Official U.S. legislative records and roll-call votes via api.congress.gov"
-  }
+  "asOf": "2026-07-02"
 }

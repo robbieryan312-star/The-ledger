@@ -21,6 +21,19 @@ Task-specific: **`AGENTS.md`**, **`.cursor/rules/ledger-data-policy.mdc`**, **`.
 
 Do **not** use **`docs/archive/`** for current policy.
 
+## Cursor work log for Claude review (binding)
+
+After **every major task** (audit, remediation, pipeline run, rule change, or multi-commit
+session), update **`docs/workflows/AUDIT_DEBT_BRIEF.md`** in the **same turn** before ending:
+
+- Refresh **Current state** (branch, HEAD, PR, tree, build status).
+- Add a **Latest session** block with task, commits, files touched, acceptance evidence.
+- Keep only the **last 3** numbered session entries under **Session log** — drop the oldest when
+  adding a 4th.
+
+The owner and Claude use this file for review continuity. **Stale HEAD or missing sessions =
+rule violation.** Do not rely on chat history alone.
+
 ## Owner delegation
 
 The agent is delegated to:
@@ -33,6 +46,19 @@ The agent is delegated to:
 
 Reference files before asking the owner anything: `KEYS.md`, `REPO.md`, `PROGRESS.md`,
 `lib/data/SOURCE_LOOKUP.md`, `lib/data/sourceCatalog.ts`, `.env.local` (SET vs EMPTY only).
+
+## Substandard = surface immediately (binding — see ledger-core-rules §1.1 H)
+
+**The owner must never discover a defect you already saw.** Any file, data artifact, sync/process,
+guard, doc, or UI output you engage with that is **not 100% flawless** to spec → **Owner
+visibility finding** in the **same turn** (what · where · evidence · severity · repair). Fix
+in-scope without asking; **flag anyway**. Out-of-scope defects get flagged, not ignored.
+
+## Suspected-but-unverifiable → cross-agent second opinion (binding — see ledger-core-rules §1.1 I)
+
+If you **suspect** a flaw but **cannot verify** (environment quirk, blocked access, ambiguous
+result) → **Cross-agent second opinion** block in the **same turn** before claiming pass. Never
+guess a suspected issue away. Claude ↔ Cursor equally.
 
 ## When stuck (binding — CRITICAL — see ledger-core-rules §1.1)
 

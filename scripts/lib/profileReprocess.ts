@@ -10,6 +10,7 @@ import { classifyTextToRecordTopicId } from '../../lib/data/profileRecordByTopic
 import { isDisqualifiedPlatformPosition } from '../../lib/data/sourceIntegrity';
 import { pruneSaidDidLinksByTopic } from '../../lib/data/buildSaidDidDiffs';
 import type { TopicPositionData } from '../../lib/data/topicPositions';
+import { syncProfileManifestFromDisk } from './profileManifestSync';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const PROFILES_DIR = path.join(projectRoot, 'lib', 'data', 'generated', 'profiles');
@@ -176,14 +177,7 @@ export async function reprocessMember(bioguideId: string): Promise<ReprocessStat
   const afterLinkCount = Object.values(prunedByTopic).reduce((n, arr) => n + arr.length, 0);
   await writeJson(saidDidFile, { ...saidDidData, byTopic: prunedByTopic });
 
-  const manifestFile = path.join(dir, 'manifest.json');
-  const manifest = await readJson<{ categories: Record<string, string> }>(manifestFile);
-  const hasAnyPosition = Object.values(newPositions.byTopic).some(
-    (t) => (t.platformPositions?.length ?? 0) > 0 || Boolean(t.statedPosition?.trim()),
-  );
-  manifest.categories.positions = hasAnyPosition ? 'filled' : 'honest-gap';
-  manifest.categories.saidDid = afterLinkCount > 0 ? 'filled' : 'honest-gap';
-  await writeJson(manifestFile, manifest);
+  await syncProfileManifestFromDisk(bioguideId);
 
   return {
     bioguideId,

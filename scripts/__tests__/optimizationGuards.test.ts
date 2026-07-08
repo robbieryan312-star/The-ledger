@@ -6,6 +6,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
+import { loadProfileDisplayIdentityByBioguide } from '../lib/profileDisplayIdentity';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const scriptsDir = path.join(projectRoot, 'scripts');
@@ -43,7 +44,7 @@ test('profile-manifest: _manifest.json matches profile directories', () => {
   const manifestPath = path.join(projectRoot, 'lib/data/generated/profiles/_manifest.json');
   assert.ok(existsSync(manifestPath));
   const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as {
-    members: Array<{ bioguideId: string }>;
+    members: Array<{ bioguideId: string; name?: string; initials?: string }>;
   };
   const dirs = readdirSync(path.join(projectRoot, 'lib/data/generated/profiles')).filter((d) =>
     /^[A-Z]\d{6}$/.test(d),
@@ -53,6 +54,35 @@ test('profile-manifest: _manifest.json matches profile directories', () => {
   const extraInManifest = [...manifestIds].filter((id) => !dirs.includes(id));
   assert.equal(missingInManifest.length, 0, `dirs missing from manifest: ${missingInManifest.join(', ')}`);
   assert.equal(extraInManifest.length, 0, `manifest entries without dir: ${extraInManifest.join(', ')}`);
+
+  const identityByBioguide = loadProfileDisplayIdentityByBioguide(projectRoot);
+  const identityViolations: string[] = [];
+  for (const member of manifest.members) {
+    const expected = identityByBioguide.get(member.bioguideId);
+    if (!member.name?.trim() || !member.initials?.trim()) {
+      identityViolations.push(`${member.bioguideId}: missing name or initials on manifest entry`);
+      continue;
+    }
+    if (!expected) {
+      identityViolations.push(`${member.bioguideId}: no roster/legislator identity join`);
+      continue;
+    }
+    if (member.name !== expected.name) {
+      identityViolations.push(
+        `${member.bioguideId}: name "${member.name}" !== roster join "${expected.name}"`,
+      );
+    }
+    if (member.initials !== expected.initials) {
+      identityViolations.push(
+        `${member.bioguideId}: initials "${member.initials}" !== expected "${expected.initials}"`,
+      );
+    }
+  }
+  assert.equal(
+    identityViolations.length,
+    0,
+    `manifest identity mismatches:\n${identityViolations.join('\n')}`,
+  );
 });
 
 test('read-path-routing: memberProfile uses generated index not hand imports', () => {

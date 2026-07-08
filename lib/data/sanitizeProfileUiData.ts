@@ -70,7 +70,7 @@ function endorsementItemValid(item: ProfileEndorsementItem): boolean {
 }
 
 function newsItemValid(item: ProfileNewsItem): boolean {
-  const violations = validateNewsFile({ items: [item] }, 'news.json');
+  const violations = validateNewsFile({ status: 'filled', items: [item] }, 'news.json');
   return violations.length === 0;
 }
 

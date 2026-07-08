@@ -10,9 +10,26 @@
       "date": "2016-02-13",
       "isVerified": true,
       "sources": [
-        { "name": "Congress.gov", "url": "https://www.congress.gov/nomination/114th-congress/785", "tier": "official", "description": "Official nomination record for Merrick Garland" },
-        { "name": "C-SPAN", "url": "https://www.c-span.org/video/?404826-2/senate-session&start=1234", "tier": "official", "date": "2016-02-13", "description": "McConnell floor statement refusing Garland hearing" },
-        { "name": "C-SPAN", "url": "https://www.c-span.org/video/?477334-1/senate-confirms-amy-coney-barrett-supreme-court", "tier": "official", "date": "2020-10-26", "description": "Barrett confirmation vote record" }
+        {
+          "name": "Congress.gov",
+          "url": "https://www.congress.gov/nomination/114th-congress/785",
+          "tier": "official",
+          "description": "Official nomination record for Merrick Garland"
+        },
+        {
+          "name": "C-SPAN",
+          "url": "https://www.c-span.org/video/?404826-2/senate-session&start=1234",
+          "tier": "official",
+          "date": "2016-02-13",
+          "description": "McConnell floor statement refusing Garland hearing"
+        },
+        {
+          "name": "C-SPAN",
+          "url": "https://www.c-span.org/video/?477334-1/senate-confirms-amy-coney-barrett-supreme-court",
+          "tier": "official",
+          "date": "2020-10-26",
+          "description": "Barrett confirmation vote record"
+        }
       ]
     },
     {
@@ -24,9 +41,25 @@
       "date": "2021-07-15",
       "isVerified": true,
       "sources": [
-        { "name": "Senate Stock Watcher", "url": "https://senatestockwatcher.com/senator/mitch-mcconnell", "tier": "nonpartisan", "description": "STOCK Act disclosures aggregated from senate.gov" },
-        { "name": "Congress.gov", "url": "https://www.congress.gov/bill/117th-congress/house-bill/4346", "tier": "official", "description": "CHIPS and Science Act official record" },
-        { "name": "Business Insider", "url": "https://www.businessinsider.com/congress-stock-act-trades-mcconnell-intel-chips-2022-8", "tier": "media", "date": "2022-08-11", "description": "Reported on the purchase-to-vote timeline" }
+        {
+          "name": "Senate Stock Watcher",
+          "url": "https://senatestockwatcher.com/senator/mitch-mcconnell",
+          "tier": "nonpartisan",
+          "description": "STOCK Act disclosures aggregated from senate.gov"
+        },
+        {
+          "name": "Congress.gov",
+          "url": "https://www.congress.gov/bill/117th-congress/house-bill/4346",
+          "tier": "official",
+          "description": "CHIPS and Science Act official record"
+        },
+        {
+          "name": "Business Insider",
+          "url": "https://www.businessinsider.com/congress-stock-act-trades-mcconnell-intel-chips-2022-8",
+          "tier": "media",
+          "date": "2022-08-11",
+          "description": "Reported on the purchase-to-vote timeline"
+        }
       ]
     },
     {
@@ -38,10 +71,29 @@
       "date": "2023-07-26",
       "isVerified": false,
       "sources": [
-        { "name": "C-SPAN", "url": "https://www.c-span.org/video/?529614-1/senator-mcconnell-freezes-press-conference", "tier": "official", "date": "2023-07-26", "description": "Unedited video of both incidents" },
-        { "name": "U.S. Capitol Attending Physician", "url": "https://www.republicanleader.senate.gov/newsroom/press-releases/attending-physician-letter", "tier": "official", "date": "2023-08-30", "description": "Official statement clearing McConnell to continue work" },
-        { "name": "Associated Press", "url": "https://apnews.com/article/mcconnell-freezes-press-conference-health-d4e5f6g7h8i9j0k1", "tier": "nonpartisan", "date": "2023-08-30", "description": "Factual reporting on the incidents and physician statement" }
+        {
+          "name": "C-SPAN",
+          "url": "https://www.c-span.org/video/?529614-1/senator-mcconnell-freezes-press-conference",
+          "tier": "official",
+          "date": "2023-07-26",
+          "description": "Unedited video of both incidents"
+        },
+        {
+          "name": "U.S. Capitol Attending Physician",
+          "url": "https://www.republicanleader.senate.gov/newsroom/press-releases/attending-physician-letter",
+          "tier": "official",
+          "date": "2023-08-30",
+          "description": "Official statement clearing McConnell to continue work"
+        },
+        {
+          "name": "Associated Press",
+          "url": "https://apnews.com/article/mcconnell-freezes-press-conference-health-d4e5f6g7h8i9j0k1",
+          "tier": "nonpartisan",
+          "date": "2023-08-30",
+          "description": "Factual reporting on the incidents and physician statement"
+        }
       ]
     }
-  ]
+  ],
+  "status": "filled"
 }

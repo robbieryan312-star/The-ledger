@@ -1,7 +1,7 @@
 {
   "bioguideId": "O000172",
   "politicianId": "alexandria-ocasio-cortez",
-  "asOf": "2026-07-03",
+  "asOf": "2026-07-08",
   "categories": {
     "header": "filled",
     "votes": "filled",
@@ -13,7 +13,7 @@
     "orgVoteLinks": "honest-gap",
     "news": "honest-gap",
     "trades": "honest-gap",
-    "controversies": "honest-gap",
-    "endorsements": "honest-gap"
+    "controversies": "filled",
+    "endorsements": "filled"
   }
 }

@@ -14,7 +14,7 @@
 import { config } from 'dotenv';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { HostRateLimiter } from '../lib/data/resilientFetch';
 import { leadSummary } from '../lib/data/displaySummary';
 import { decodeHtmlEntities } from '../lib/data/htmlEntities';
@@ -104,6 +104,16 @@ async function loadManifestMembers(): Promise<string[]> {
     members: Array<{ bioguideId: string }>;
   };
   return manifest.members.map((m) => m.bioguideId);
+}
+
+/** When set, sync only these bioguideIds (must be in manifest). Default: full manifest. */
+function parseMembersArg(argv: string[]): string[] | null {
+  const idx = argv.indexOf('--members');
+  if (idx === -1 || !argv[idx + 1]) return null;
+  return argv[idx + 1]
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
 }
 
 export function resolveNewsStatus(
@@ -413,7 +423,20 @@ async function loadExistingNews(bioguideId: string): Promise<ExistingNewsFile | 
 async function main(): Promise<void> {
   config({ path: path.join(projectRoot, '.env.local') });
 
-  const manifestMembers = await loadManifestMembers();
+  const allManifestMembers = await loadManifestMembers();
+  const membersArg = parseMembersArg(process.argv);
+  let manifestMembers = allManifestMembers;
+  if (membersArg) {
+    const unknown = membersArg.filter((id) => !allManifestMembers.includes(id));
+    if (unknown.length > 0) {
+      console.warn(`--members not in manifest (skipped): ${unknown.join(', ')}`);
+    }
+    manifestMembers = membersArg.filter((id) => allManifestMembers.includes(id));
+    if (manifestMembers.length === 0) {
+      console.error('No valid --members in manifest.');
+      process.exit(1);
+    }
+  }
   console.log(`RSS sync for ${manifestMembers.length} manifest member(s): ${manifestMembers.join(', ')}`);
 
   const legs = (JSON.parse(await readFile(legislatorsFile, 'utf8')) as { legislators: LegislatorRow[] })
@@ -528,7 +551,13 @@ async function main(): Promise<void> {
   await saveFeedHealth(feedHealth);
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+const isDirectRun =
+  process.argv[1] != null &&
+  import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href;
+
+if (isDirectRun) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

@@ -1,34 +1,36 @@
 {
   "bioguideId": "P000197",
   "diagnosedAt": "2026-07-06T08:25:00.000Z",
-  "verdict": "never-scraped",
-  "summary": "P000197 has zero platform positions because the member is absent from lib/data/generated/topicPositions.json (Ballotpedia/GovInfo mega-bundle). CREC statements were collected via profile pipeline (8 in statements.json); platform layer was never written to bundle or profile positions.json.",
+  "updatedAt": "2026-07-08T03:08:00.000Z",
+  "verdict": "refilled-honest-gap",
+  "summary": "P000197 refill executed via sync:topic-positions --members P000197 and profile:build apply. Ballotpedia rows were scraped into topicPositions.json but migrate cleanPlatformPositions disqualified all platform rows as vote restatements or off-topic fragments. Profile positions.json is honest-gap with zero scaffolds (empty byTopic). CREC statements remain in bundle by topic; profile statements.json empty after migrate filters.",
   "evidence": {
     "topicPositionsBundle": {
       "path": "lib/data/generated/topicPositions.json",
-      "hasP000197": false,
-      "checkedAt": "2026-07-06"
+      "hasP000197": true,
+      "checkedAt": "2026-07-08"
     },
     "profilePositions": {
       "path": "lib/data/generated/profiles/P000197/positions.json",
       "platformPositionCount": 0,
-      "hadEmptyTopicScaffolds": true,
-      "scaffoldTopicIds": ["healthcare", "defense-veterans", "civil-liberties", "economy-taxes"]
+      "hadEmptyTopicScaffolds": false,
+      "scaffoldTopicIds": []
     },
     "profileStatements": {
       "path": "lib/data/generated/profiles/P000197/statements.json",
-      "statementCount": 8,
-      "source": "GovInfo CREC floor remarks (official tier)"
+      "statementCount": 0,
+      "source": "GovInfo CREC floor remarks filtered during migrate"
     },
     "ballotpediaSlugCandidates": [
       "Nancy_Pelosi",
-      "Nancy Pelosi",
-      "Nancy_Pelosi"
+      "Nancy Pelosi"
     ],
     "rejectedTexts": [],
-    "rejectingFilters": []
+    "rejectingFilters": [
+      "cleanPlatformPositions / isDisqualifiedPlatformPosition / isGarbagePosition"
+    ]
   },
-  "notScrapedButFiltered": false,
-  "recommendation": "Claude must rule before refill. If approved: run npm run sync:topic-positions -- --members P000197, then profile:build apply step; do not hand-edit positions. Remove empty topic scaffolds until real positions exist.",
-  "refillBlocked": true
+  "notScrapedButFiltered": true,
+  "recommendation": "Honest gap stands until a non-vote-restatement Ballotpedia or GovInfo position source is verified for this member. Do not hand-edit positions.",
+  "refillBlocked": false
 }

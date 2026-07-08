@@ -12,3 +12,9 @@ export const DATA_NATIONAL_VOTES_DIR = path.join(PROJECT_ROOT, 'data', 'national
 export const DATA_NATIONAL_FEC_DIR = path.join(PROJECT_ROOT, 'data', 'national', 'fec');
 export const NATIONAL_VOTES_FILE = path.join(DATA_NATIONAL_VOTES_DIR, 'congress-votes.json');
 export const NATIONAL_FEC_FILE = path.join(DATA_NATIONAL_FEC_DIR, 'congress-finance.json');
+export const NATIONAL_SCHEDULE_A_FILE = path.join(DATA_NATIONAL_FEC_DIR, 'schedule-a.json');
+export const NATIONAL_FEC_PILOT_DIR = path.join(DATA_NATIONAL_FEC_DIR, 'pilot');
+export const PILOT_S000033_SCHEDULE_A_FILE = path.join(
+  NATIONAL_FEC_PILOT_DIR,
+  'S000033-schedule-a.json',
+);

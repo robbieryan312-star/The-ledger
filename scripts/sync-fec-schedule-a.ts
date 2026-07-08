@@ -5,17 +5,21 @@
 import { config } from 'dotenv';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import {
   FEC_SOURCE,
   fetchCandidateCommittees,
   fetchScheduleAContributorsForCommittees,
   isFecConfigured,
 } from '../lib/data/fecClient';
+import {
+  NATIONAL_FEC_FILE,
+  NATIONAL_SCHEDULE_A_FILE,
+  PROJECT_ROOT,
+} from './lib/dataPaths';
 
-const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const FEC_NATIONAL = path.join(projectRoot, 'data', 'fec', 'national', 'congress-finance.json');
-const OUT_FILE = path.join(projectRoot, 'data', 'fec', 'national', 'schedule-a.json');
+const projectRoot = PROJECT_ROOT;
+const FEC_NATIONAL = NATIONAL_FEC_FILE;
+const OUT_FILE = NATIONAL_SCHEDULE_A_FILE;
 
 interface ExistingScheduleASnapshot {
   meta?: { membersWithScheduleA?: number; queryMode?: string };
