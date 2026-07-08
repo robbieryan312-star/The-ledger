@@ -5,9 +5,9 @@ Claude Code reads **this file**, not chat. Only the **last 3 session entries** a
 
 **Current state (2026-07-08):**
 - Branch: `cursor/phase1-hardening-4114`
-- HEAD: `3a8dc8f`
+- HEAD: `bf526ca`
 - Base: `main` @ `27cf1e9`
-- PR: _(opening — STOP for Claude review before merge)_
+- PR: https://github.com/robbieryan312-star/The-ledger/pull/16 (draft — STOP for Claude review)
 - Tree: clean · prebuild + build: **green**
 
 ---
