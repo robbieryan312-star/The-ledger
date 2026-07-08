@@ -24,11 +24,12 @@ Cursor Cloud and local sessions often spawn **new workspace directories** (e.g. 
 Read **in order** before implementing or asking the owner anything:
 
 1. `.cursor/rules/ledger-core-rules.mdc` — binding rules (all agents)
-2. `PROGRESS.md` — milestones M1–M8, status board, blockers
-3. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
-4. `KEYS.md` — which env vars are SET vs EMPTY (values only in `.env.local`)
-5. `REPO.md` — canonical repo is `The-ledger` on `main`
-6. `PILOT_PROFILE_CHECKLIST.md` — what a complete profile requires
+2. `docs/workflows/AUDIT_DEBT_BRIEF.md` — Cursor work log (Claude reads this, not chat)
+3. `PROGRESS.md` — milestones M1–M8, status board, blockers
+4. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
+5. `KEYS.md` — which env vars are SET vs EMPTY (values only in `.env.local`)
+6. `REPO.md` — canonical repo is `The-ledger` on `main`
+7. `PILOT_PROFILE_CHECKLIST.md` — what a complete profile requires
 
 Navigation index: `docs/AGENT_INDEX.md`. Task-specific: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`.
 
