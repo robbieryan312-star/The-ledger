@@ -13,6 +13,10 @@ import {
   PLATFORM_KNOWN_BAD_SITE_FURNITURE,
   PLATFORM_KNOWN_GOOD_MEMBER_POSITION,
 } from '../../lib/data/__fixtures__/sourceIntegrity.fixture';
+import {
+  TOPIC_POSITIONS_FROZEN_BIOGUIDE_IDS,
+  TOPIC_POSITIONS_KNOWN_BAD_NEW_BIOGUIDE,
+} from '../../lib/data/__fixtures__/topicPositionsBundleFreeze.fixture';
 import { validateTopicPositionsBundle } from '../../lib/data/sourceIntegrity';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -77,4 +81,19 @@ test('bundle fixture: known-good member position passes validateTopicPositionsBu
     0,
     `expected GOOD bundle fixture to pass; got: ${violations.map((v) => v.message).join('; ')}`,
   );
+});
+
+test('topicPositions.json: no new bioguideIds beyond frozen set (mega-bundle freeze)', () => {
+  const bundle = JSON.parse(readFileSync(BUNDLE, 'utf8')) as { byBioguideId: Record<string, unknown> };
+  const frozen = new Set<string>(TOPIC_POSITIONS_FROZEN_BIOGUIDE_IDS);
+  const onDisk = Object.keys(bundle.byBioguideId ?? {}).sort();
+  const newIds = onDisk.filter((id) => !frozen.has(id));
+  const removedIds = [...frozen].filter((id) => !(id in (bundle.byBioguideId ?? {})));
+  assert.equal(newIds.length, 0, `new bioguideIds in mega-bundle: ${newIds.join(', ')}`);
+  assert.equal(removedIds.length, 0, `removed frozen bioguideIds: ${removedIds.slice(0, 10).join(', ')}`);
+});
+
+test('fixture: known-bad new bioguideId would fail mega-bundle freeze guard', () => {
+  const frozen = new Set<string>(TOPIC_POSITIONS_FROZEN_BIOGUIDE_IDS);
+  assert.ok(!frozen.has(TOPIC_POSITIONS_KNOWN_BAD_NEW_BIOGUIDE));
 });

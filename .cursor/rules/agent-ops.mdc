@@ -53,6 +53,12 @@ Keep only the **last 3** numbered entries under **Session log**; drop oldest on 
 **Anti-patterns:** chat-only summary; stale HEAD in file; "I'll log next turn"; owner must never
 ask "did you update the work log?"
 
+## Single-writer git authority (binding — see ledger-core-rules §1.1 K)
+
+**Only Cursor** commits pipeline/data/code, pushes, and opens/closes/merges PRs or branches.
+**Claude Code** reviews read-only and issues APPROVAL/REJECT — never merges, closes, pushes, or
+commits application work (review-note artifacts excepted when no writer is active).
+
 ## Owner delegation
 
 The agent is delegated to:

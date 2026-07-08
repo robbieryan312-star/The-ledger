@@ -122,3 +122,26 @@ test('raw-fetch: scripts use timeout or resilient fetch helpers', () => {
 test('orphan-components: MapClient-style dead wrappers must not exist', () => {
   assert.ok(!existsSync(path.join(projectRoot, 'components/map/MapClient.tsx')), 'MapClient.tsx was removed — do not re-add');
 });
+
+test('route-pages: app/**/page.tsx must be server components (no use client)', () => {
+  const violations: string[] = [];
+  function walk(dir: string): void {
+    for (const ent of readdirSync(dir)) {
+      const full = path.join(dir, ent);
+      const st = statSync(full);
+      if (st.isDirectory()) walk(full);
+      else if (ent === 'page.tsx') {
+        const head = readFileSync(full, 'utf8').slice(0, 200);
+        if (/^['"]use client['"]/.test(head.trim()) || /\n['"]use client['"]/.test(head)) {
+          violations.push(path.relative(projectRoot, full));
+        }
+      }
+    }
+  }
+  walk(path.join(projectRoot, 'app'));
+  assert.equal(
+    violations.length,
+    0,
+    `route pages must not be use client:\n${violations.join('\n')}`,
+  );
+});

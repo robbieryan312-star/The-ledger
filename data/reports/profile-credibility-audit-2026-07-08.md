@@ -1,6 +1,6 @@
 # Profile credibility re-audit — 7 locked profiles
 
-**Generated:** 2026-07-08T05:19:59.735Z
+**Report date:** 2026-07-08
 **Mode:** read-only (no data mutations)
 **Members:** S000033, O000172, M000355, M001184, W000817, C001098, P000197
 

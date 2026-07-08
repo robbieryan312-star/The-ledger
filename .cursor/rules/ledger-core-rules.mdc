@@ -49,6 +49,11 @@ alwaysApply: true
   summaries are invisible to Claude Code — **unlogged work = task failure** even if code shipped.
   Required fields: branch, HEAD, PR, tree, build status, explicit PASS/FAIL, commits, files touched,
   commands run, acceptance evidence. Keep last 3 sessions only. See §1.1 J.
+- **Single-writer git authority (binding)** — **Cursor is the ONLY agent** that commits pipeline/data/code,
+  pushes, opens/closes/merges PRs, or creates branches. **Claude Code** does read-only review, diagnosis,
+  briefs, and issues an **APPROVAL verdict only** — never merges, closes, pushes, or commits repo work
+  (its own review-note artifacts excepted when no writer is active). **One platform writes** — no
+  duplication or races. See §1.1 K.
 
 **These rules bind EVERY agent equally — Claude Code AND every Cursor agent (Auto, cloud
 agents, background agents). No agent is exempt.** This is the one file all of them reload every
@@ -427,6 +432,23 @@ drop oldest when adding a 4th.
 **Anti-patterns (reject):** chat-only report; stale HEAD in file; session described in chat but
 absent from file; "will log next turn"; logging a prior session's work as if new.
 
+#### K. Single-writer git authority (binding)
+
+**Cursor** is the **only** agent that may:
+
+- `git commit`, `git push`, branch create/delete/rebase
+- Open, close, or merge GitHub pull requests
+- Write pipeline output to `lib/data/generated/` (sync/migrate scripts)
+
+**Claude Code** may:
+
+- Read files, inspect artifacts, run read-only verification
+- Diagnose, brief, and issue explicit **APPROVAL** / **REJECT** verdicts
+- Commit **review/governance notes only** when no Cursor writer is active
+
+**Claude Code must never** merge, close, push application code, or race Cursor on the same branch.
+If both agents could write, **stop** — Cursor owns the tree.
+
 ---
 
 ## 2. Where the authoritative detail lives — read the file that owns the answer
@@ -445,6 +467,7 @@ absent from file; "will log next turn"; logging a prior session's work as if new
 | Surfacing substandard files/data/processes to the owner | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 H |
 | Cursor work log for Claude review (last 3 sessions) | `docs/workflows/AUDIT_DEBT_BRIEF.md` — **§1.1 J (mandatory same-turn commit)** |
 | Cross-agent second opinion when unverifiable | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 I |
+| Single-writer git authority (Cursor only commits/pushes/merges) | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 K |
 
 ---
 
