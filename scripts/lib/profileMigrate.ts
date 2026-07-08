@@ -218,18 +218,32 @@ export async function migrateOne(
 
   // Preserve RSS-collected news if sync:news-rss ran before apply.
   let news = sanitizeProfileNews(politician?.news);
+  let newsStatus: 'filled' | 'honest-gap' | 'fetch-failed' | undefined;
+  let newsNote: string | undefined;
   const existingNewsPath = path.join(OUT_DIR, 'news.json');
   try {
     const existingNews = JSON.parse(await readFile(existingNewsPath, 'utf8')) as {
       items?: Parameters<typeof sanitizeProfileNews>[0];
-      status?: string;
+      status?: 'filled' | 'honest-gap' | 'fetch-failed';
       note?: string;
     };
     if (existingNews.items?.length) {
       news = sanitizeProfileNews(existingNews.items);
     }
+    if (existingNews.status) {
+      newsStatus = existingNews.status;
+      newsNote = existingNews.note;
+    }
   } catch {
     /* no prior news.json */
+  }
+  if (news.length > 0) {
+    newsStatus = 'filled';
+  } else if (newsStatus !== 'fetch-failed') {
+    newsStatus = 'honest-gap';
+    if (newsNote && /relevant article/.test(newsNote)) {
+      newsNote = undefined;
+    }
   }
 
   const controversies = sanitizeProfileControversies(politician?.controversies);
@@ -253,7 +267,7 @@ export async function migrateOne(
       saidDid: linkCount > 0 ? 'filled' : 'honest-gap',
       legislation: 'filled',
       orgVoteLinks: orgLinks.length > 0 ? 'filled' : 'honest-gap',
-      news: news.length > 0 ? 'filled' : 'honest-gap',
+      news: newsStatus ?? (news.length > 0 ? 'filled' : 'honest-gap'),
       trades: 'honest-gap',
       controversies: controversies.length > 0 ? 'filled' : 'honest-gap',
       endorsements: hasSanitizedEndorsements(endorsements) ? 'filled' : 'honest-gap',
@@ -328,7 +342,16 @@ export async function migrateOne(
   );
   await writeFile(
     path.join(OUT_DIR, 'news.json'),
-    JSON.stringify({ bioguideId, items: news }, null, 2) + '\n',
+    JSON.stringify(
+      {
+        bioguideId,
+        status: newsStatus,
+        items: news,
+        ...(newsNote ? { note: newsNote } : {}),
+      },
+      null,
+      2,
+    ) + '\n',
   );
   await writeFile(
     path.join(OUT_DIR, 'trades.json'),
