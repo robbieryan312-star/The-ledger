@@ -15,6 +15,7 @@ import { truncateAtSentenceBoundary } from '../lib/data/displaySummary';
 import { normalizeTopicId } from '../lib/data/topicAliases';
 import { fetchJson, sleep } from './lib/ingest-utils';
 import { NATIONAL_VOTES_FILE } from './lib/dataPaths';
+import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
 import { fetchApprovedMediaStatementsForMember } from './lib/approvedMediaQuotes';
 import { isProceduralCrecText } from './lib/crecProceduralFilter';
 import { crecFloorSpeechOpenerRegex } from './lib/crecOpener';
@@ -1210,6 +1211,16 @@ async function main(): Promise<void> {
   console.log(`VoteSmart NPAT positions: ${meta.membersWithStatedPosition}`);
   console.log(`Said→Did links: ${meta.membersWithSaidDidLinks} members`);
   console.log(`Output: ${OUT_FILE}`);
+
+  emitSyncSummary(
+    buildSyncSummary('sync:topic-positions', {
+      status: meta.membersWithData > 0 ? 'ok' : 'partial',
+      failed: meta.membersWithData === 0 ? members.map((m) => m.bioguideId) : [],
+      checkpoint: CHECKPOINT_FILE,
+      log: '/tmp/ledger-sync-topic-positions.log',
+      preservePrior: true,
+    }),
+  );
 }
 
 main().catch((err: unknown) => {

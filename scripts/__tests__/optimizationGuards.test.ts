@@ -29,6 +29,7 @@ test('sync-contract: national sync scripts emit syncKernel summary', () => {
     'sync-stock-trades.ts',
     'sync-legislation.ts',
     'sync-news-national.ts',
+    'sync-topic-positions.ts',
   ];
   const missing: string[] = [];
   for (const name of required) {
