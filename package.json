@@ -21,7 +21,7 @@
     "test:optimization": "tsx --test scripts/__tests__/optimizationGuards.test.ts scripts/__tests__/syncKernelGuard.test.ts",
     "test:crec": "tsx --test scripts/__tests__/crecProceduralFilter.test.ts",
     "test:org-join": "tsx --test scripts/__tests__/fecOrgJoin.test.ts",
-    "test:source-integrity": "tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/ceremonialCrecFilter.test.ts scripts/__tests__/stockTradesCheckpoint.test.ts",
+    "test:source-integrity": "tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/ceremonialCrecFilter.test.ts scripts/__tests__/stockTradesCheckpoint.test.ts scripts/__tests__/profileMigratePreserve.test.ts",
     "test:copy-compliance": "tsx --test scripts/__tests__/copyCompliance.test.ts",
     "test:news-registry": "tsx --test scripts/__tests__/newsRegistry.test.ts",
     "test:profile-snapshots": "tsx --test scripts/__tests__/profileSnapshots.test.ts",

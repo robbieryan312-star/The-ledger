@@ -75,6 +75,67 @@ function cleanStatements(statements: TopicStatementEntry[]): TopicStatementEntry
     });
 }
 
+type StatementsFileShape = {
+  byTopic?: Record<string, { statements?: TopicStatementEntry[] }>;
+};
+
+type SaidDidFileShape = {
+  byTopic?: Record<string, SaidDidLinkEntry[]>;
+};
+
+export function countStatementsInFile(file: StatementsFileShape | null | undefined): number {
+  if (!file?.byTopic) return 0;
+  return Object.values(file.byTopic).reduce((n, t) => n + (t.statements?.length ?? 0), 0);
+}
+
+export function countSaidDidLinksInFile(file: SaidDidFileShape | null | undefined): number {
+  if (!file?.byTopic) return 0;
+  return Object.values(file.byTopic).flat().length;
+}
+
+/** §6: never overwrite committed statements with empty when a positions-only migrate re-runs. */
+export function preserveExistingStatementsIfFreshEmpty(
+  byTopicClean: Record<string, { statements: TopicStatementEntry[]; platformPositions: PlatformPositionEntry[] }>,
+  freshStatementCount: number,
+  existing: StatementsFileShape | null | undefined,
+): number {
+  if (freshStatementCount > 0 || !existing) {
+    return freshStatementCount;
+  }
+  if (countStatementsInFile(existing) === 0) return 0;
+
+  for (const [topicId, topicData] of Object.entries(existing.byTopic ?? {})) {
+    const statements = cleanStatements(structuredClone(topicData.statements ?? []));
+    if (statements.length === 0) continue;
+    byTopicClean[topicId] = {
+      statements,
+      platformPositions: byTopicClean[topicId]?.platformPositions ?? [],
+    };
+  }
+  return Object.values(byTopicClean).reduce((n, t) => n + t.statements.length, 0);
+}
+
+/** §6: never overwrite committed Said→Did with empty when a positions-only migrate re-runs. */
+export function preserveExistingSaidDidIfFreshEmpty(
+  saidDidByTopic: Record<string, SaidDidLinkEntry[]>,
+  freshLinkCount: number,
+  existing: SaidDidFileShape | null | undefined,
+): number {
+  if (freshLinkCount > 0 || !existing) {
+    return freshLinkCount;
+  }
+  if (countSaidDidLinksInFile(existing) === 0) return 0;
+
+  for (const [topicId, links] of Object.entries(existing.byTopic ?? {})) {
+    if (links.length === 0) continue;
+    saidDidByTopic[topicId] = links.map((link) => ({
+      ...structuredClone(link),
+      topicId: link.topicId ?? topicId,
+    }));
+  }
+  return Object.values(saidDidByTopic).flat().length;
+}
+
 function resolvePoliticianId(bioguideId: string): string {
   return getPoliticianByBioguide(bioguideId)?.id ?? bioguideId;
 }
@@ -216,6 +277,24 @@ export async function migrateOne(
   const OUT_DIR = path.join(profilesRoot, bioguideId);
   await mkdir(OUT_DIR, { recursive: true });
 
+  let existingStatements: StatementsFileShape | null = null;
+  let existingSaidDid: SaidDidFileShape | null = null;
+  try {
+    existingStatements = JSON.parse(await readFile(path.join(OUT_DIR, 'statements.json'), 'utf8')) as StatementsFileShape;
+  } catch {
+    /* no prior statements.json */
+  }
+  try {
+    existingSaidDid = JSON.parse(await readFile(path.join(OUT_DIR, 'saidDid.json'), 'utf8')) as SaidDidFileShape;
+  } catch {
+    /* no prior saidDid.json */
+  }
+
+  let stmtCount = Object.values(byTopicClean).reduce((n, t) => n + t.statements.length, 0);
+  let linkCount = Object.values(saidDidByTopic).flat().length;
+  stmtCount = preserveExistingStatementsIfFreshEmpty(byTopicClean, stmtCount, existingStatements);
+  linkCount = preserveExistingSaidDidIfFreshEmpty(saidDidByTopic, linkCount, existingSaidDid);
+
   // Preserve RSS-collected news if sync:news-rss ran before apply.
   let news = sanitizeProfileNews(politician?.news);
   let newsStatus: 'filled' | 'honest-gap' | 'fetch-failed' | undefined;
@@ -250,8 +329,6 @@ export async function migrateOne(
   const endorsements = sanitizeProfileEndorsements(politician?.endorsements);
 
   const asOf = new Date().toISOString().slice(0, 10);
-  const linkCount = Object.values(saidDidByTopic).flat().length;
-  const stmtCount = Object.values(byTopicClean).reduce((n, t) => n + t.statements.length, 0);
   const posCount = Object.values(byTopicClean).reduce((n, t) => n + t.platformPositions.length, 0);
 
   const manifest = {
