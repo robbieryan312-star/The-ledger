@@ -4,7 +4,7 @@
 
 **Current state (2026-07-08):**
 - Branch: `cursor/p0-p1-debt-remediation-4114`
-- HEAD: _(pending commit — credibility manifest/status fixes)_
+- HEAD: `ca24c8a`
 - PR: https://github.com/robbieryan312-star/The-ledger/pull/13
 - Tree: clean after commit · prebuild + build: green · credibility re-audit: **0 defect rows**
 
