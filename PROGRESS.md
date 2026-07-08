@@ -1,6 +1,6 @@
 # The Ledger — Roadmap & Progression Expectations
 
-**Last updated:** 2026-07-04 · **Branch:** `main` · **Live demo:** https://the-ledger-gamma.vercel.app
+**Last updated:** 2026-07-08 · **Branch:** `main` · **Live demo:** https://the-ledger-gamma.vercel.app
 **This file replaces the old progress log as the canonical forward guide.** It binds BOTH
 agents (Claude Code + Cursor). Rules live in `.cursor/rules/ledger-core-rules.mdc` — this file
 never restates them, it sequences the work.
@@ -140,20 +140,23 @@ Elections, OpenCorporates — unchanged from prior log (see `.env.local` and `KE
 
 ## Status board (update in the same commit as the work)
 
-| Track | State (2026-07-05) |
+| Track | State (2026-07-08 — Claude review verified vs artifacts at `71b61c2`) |
 |-------|--------------------|
-| Migrated gold profiles | 7/537 (S000033, O000172, M000355, M001184, W000817, C001098, P000197) |
+| Migrated gold profiles | 7/537 (S000033, O000172, M000355, M001184, W000817, C001098, P000197) — all 7 at 30-vote depth + depth artifacts (Brief B T4-5-7, `9c310d6`; counts re-verified 07-08) |
 | Docs cleanup + FL script consolidation | ✅ agent index, SETUP, FLORIDA_DATA, BATCH_SCALING, archive |
 | Phase C (display/credibility fix stack) | ✅ verified by Claude |
 | Phase D1–D4 | ✅ done (mock abolition, rules, RSS, CI guards) |
 | Phase E (Pelosi pipeline test) | In review — P000197 profile:build guards PASS; awaits owner visual 👁 |
 | Recovery audit (P0–P7) | ✅ complete — prebuild + full build pass |
-| Guard suites | 11 in prebuild + CI via guards.yml |
+| Guard suites | 13 suites (96 tests) in prebuild + CI via guards.yml — re-verified green 07-08 (`next build` also passes) |
 | Font / Turbopack | ✅ system stack (M6 self-host optional for brand parity) |
-| News | RSS pipeline; honest gaps where feeds thin |
+| News | Manifest-driven RSS sync with required `status` field + news-status guard + feed-health report (Brief B T1-2, `3bd9ac4`/`24646f7`); honest gaps where feeds thin; Roll Call feed auto-disabled after 3 timeouts |
+| P000197 positions | Diagnosed **never-scraped** (absent from topicPositions bundle); empty scaffolds removed, news filled (`83b2816`, `d7b376b`); refill blocked pending Claude ruling — see `data/reports/P000197-positions-diagnosis.json` |
+| Scoped syncs (§5 no-full-corpus law) | `--members` scoping live: votes-national (+ under-filled high-water-mark bypass `71b61c2`), stock-trades (§6 meta honesty), RSS news |
+| Failure-handoff rules | §1.1 hardened: autonomous handoff after 1st failure, anti-stale evidence, three-strike same-turn flow (`fdd025c`, `d443ecb`, `828e650`) |
 | Optimization program | W0–W2A committed; W2B–W5 landing; W3 = L1 only (11/175 files) |
 | File audit progress | L1 scripts/lib reviewed (11 files); L2–L8 pending |
-| M2 scaling | Blocked pending Claude re-review (Briefs A–C) |
+| M2 scaling | Blocked pending Claude re-review (Briefs A–C); Brief B T1-2, T4-7 committed — T3 has no commit (unconfirmed) |
 
 ## Compressed history (pre-roadmap)
 
