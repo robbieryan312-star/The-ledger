@@ -24,6 +24,7 @@ import {
   sanitizeProfileNews,
 } from '../../lib/data/sanitizeProfileUiData';
 import { isProceduralCrecText } from './crecProceduralFilter';
+import { syncProfileManifestFromDisk } from './profileManifestSync';
 import type { VoteRecord } from '../../lib/types';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -325,33 +326,38 @@ export async function migrateOne(
     }
   }
 
-  const controversies = sanitizeProfileControversies(politician?.controversies);
-  const endorsements = sanitizeProfileEndorsements(politician?.endorsements);
+  let controversies = sanitizeProfileControversies(politician?.controversies);
+  let endorsements = sanitizeProfileEndorsements(politician?.endorsements);
+
+  try {
+    const existingControversies = JSON.parse(
+      await readFile(path.join(OUT_DIR, 'controversies.json'), 'utf8'),
+    ) as { items?: Parameters<typeof sanitizeProfileControversies>[0] };
+    if ((existingControversies.items?.length ?? 0) > 0 && controversies.length === 0) {
+      controversies = sanitizeProfileControversies(existingControversies.items);
+    }
+  } catch {
+    /* no prior controversies.json */
+  }
+
+  try {
+    const existingEndorsements = JSON.parse(
+      await readFile(path.join(OUT_DIR, 'endorsements.json'), 'utf8'),
+    ) as Parameters<typeof sanitizeProfileEndorsements>[0];
+    if (
+      existingEndorsements &&
+      hasSanitizedEndorsements(existingEndorsements) &&
+      !hasSanitizedEndorsements(endorsements)
+    ) {
+      endorsements = sanitizeProfileEndorsements(existingEndorsements);
+    }
+  } catch {
+    /* no prior endorsements.json */
+  }
 
   const asOf = new Date().toISOString().slice(0, 10);
   const posCount = Object.values(byTopicClean).reduce((n, t) => n + t.platformPositions.length, 0);
 
-  const manifest = {
-    bioguideId,
-    politicianId,
-    asOf,
-    categories: {
-      header: 'filled',
-      votes: votes.length > 0 ? 'filled' : 'honest-gap',
-      finance: fec ? 'filled' : 'honest-gap',
-      statements: stmtCount > 0 ? 'filled' : 'honest-gap',
-      positions: posCount > 0 ? 'filled' : 'honest-gap',
-      saidDid: linkCount > 0 ? 'filled' : 'honest-gap',
-      legislation: 'filled',
-      orgVoteLinks: orgLinks.length > 0 ? 'filled' : 'honest-gap',
-      news: newsStatus ?? (news.length > 0 ? 'filled' : 'honest-gap'),
-      trades: 'honest-gap',
-      controversies: controversies.length > 0 ? 'filled' : 'honest-gap',
-      endorsements: hasSanitizedEndorsements(endorsements) ? 'filled' : 'honest-gap',
-    },
-  };
-
-  await writeFile(path.join(OUT_DIR, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
   await writeFile(
     path.join(OUT_DIR, 'header.json'),
     JSON.stringify({ bioguideId, profile: memberDeep.profile, meta: memberDeep.meta }, null, 2) + '\n',
@@ -370,18 +376,34 @@ export async function migrateOne(
     ) + '\n',
   );
   await writeFile(path.join(OUT_DIR, 'finance.json'), JSON.stringify({ bioguideId, entry: fec ?? null }, null, 2) + '\n');
+
+  let statementsPayload: {
+    bioguideId: string;
+    byTopic: Record<string, { statements: TopicStatementEntry[] }>;
+    status?: string;
+    note?: string;
+  } = {
+    bioguideId,
+    byTopic: Object.fromEntries(
+      Object.entries(byTopicClean).map(([k, v]) => [k, { statements: v.statements }]),
+    ),
+  };
+  try {
+    const existingStatements = JSON.parse(
+      await readFile(path.join(OUT_DIR, 'statements.json'), 'utf8'),
+    ) as { status?: string; note?: string };
+    if (existingStatements.status) statementsPayload.status = existingStatements.status;
+    if (existingStatements.note) statementsPayload.note = existingStatements.note;
+  } catch {
+    /* no prior statements.json */
+  }
+  if (stmtCount > 0) {
+    delete statementsPayload.status;
+    delete statementsPayload.note;
+  }
   await writeFile(
     path.join(OUT_DIR, 'statements.json'),
-    JSON.stringify(
-      {
-        bioguideId,
-        byTopic: Object.fromEntries(
-          Object.entries(byTopicClean).map(([k, v]) => [k, { statements: v.statements }]),
-        ),
-      },
-      null,
-      2,
-    ) + '\n',
+    JSON.stringify(statementsPayload, null, 2) + '\n',
   );
   await writeFile(
     path.join(OUT_DIR, 'positions.json'),
@@ -452,7 +474,13 @@ export async function migrateOne(
     JSON.stringify({ bioguideId, ...endorsements }, null, 2) + '\n',
   );
 
+  await syncProfileManifestFromDisk(bioguideId);
+
   delete topicSnapshot.byBioguideId[bioguideId];
+
+  const manifest = JSON.parse(
+    await readFile(path.join(OUT_DIR, 'manifest.json'), 'utf8'),
+  ) as { categories: Record<string, string> };
 
   const honestGaps = Object.entries(manifest.categories)
     .filter(([, v]) => v === 'honest-gap')

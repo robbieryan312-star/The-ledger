@@ -1,5 +1,6 @@
 {
   "bioguideId": "S000033",
   "links": [],
-  "note": "Pilot Schedule A (committee C00411330, two-year 2026) contains only individual itemized contributors in LAST, FIRST form. After individual-donor exclusion and curated-org-only matching, no org/PAC rows qualify for org→topic→vote joins — an honest gap, not an undiagnosed empty."
+  "note": "Pilot Schedule A (committee C00411330, two-year 2026) contains only individual itemized contributors in LAST, FIRST form. After individual-donor exclusion and curated-org-only matching, no org/PAC rows qualify for org→topic→vote joins — an honest gap, not an undiagnosed empty.",
+  "status": "honest-gap"
 }

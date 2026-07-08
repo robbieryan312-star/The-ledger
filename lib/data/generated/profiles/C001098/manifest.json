@@ -1,12 +1,12 @@
 {
   "bioguideId": "C001098",
   "politicianId": "C001098",
-  "asOf": "2026-07-03",
+  "asOf": "2026-07-08",
   "categories": {
     "header": "filled",
     "votes": "filled",
     "finance": "filled",
-    "statements": "none-in-range",
+    "statements": "filled",
     "positions": "filled",
     "saidDid": "honest-gap",
     "legislation": "filled",

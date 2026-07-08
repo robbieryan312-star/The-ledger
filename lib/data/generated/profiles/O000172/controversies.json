@@ -10,8 +10,20 @@
       "date": "2021-01-06",
       "isVerified": true,
       "sources": [
-        { "name": "AOC Instagram Live statement", "url": "https://www.instagram.com/tv/CKlPqiHAiKT/", "tier": "official", "date": "2021-02-01", "description": "Her own account of events" },
-        { "name": "Reuters Fact Check", "url": "https://www.reuters.com/article/uk-factcheck-aoc-capitol-was-not-in-idUSKBN2A51RK", "tier": "nonpartisan", "date": "2021-02-02", "description": "Fact check of timeline and building geography" }
+        {
+          "name": "AOC Instagram Live statement",
+          "url": "https://www.instagram.com/tv/CKlPqiHAiKT/",
+          "tier": "official",
+          "date": "2021-02-01",
+          "description": "Her own account of events"
+        },
+        {
+          "name": "Reuters Fact Check",
+          "url": "https://www.reuters.com/article/uk-factcheck-aoc-capitol-was-not-in-idUSKBN2A51RK",
+          "tier": "nonpartisan",
+          "date": "2021-02-02",
+          "description": "Fact check of timeline and building geography"
+        }
       ]
     },
     {
@@ -23,9 +35,22 @@
       "date": "2021-09-13",
       "isVerified": true,
       "sources": [
-        { "name": "Associated Press", "url": "https://apnews.com/article/entertainment-lifestyle-fashion-alexandria-ocasio-cortez-met-gala-2021-c3b4e5f6a7b8c9d0", "tier": "nonpartisan", "date": "2021-09-13", "description": "Factual reporting on the event" },
-        { "name": "AOC statement", "url": "https://www.instagram.com/p/CTwzxGXr0rS/", "tier": "official", "date": "2021-09-14", "description": "Her explanation on social media" }
+        {
+          "name": "Associated Press",
+          "url": "https://apnews.com/article/entertainment-lifestyle-fashion-alexandria-ocasio-cortez-met-gala-2021-c3b4e5f6a7b8c9d0",
+          "tier": "nonpartisan",
+          "date": "2021-09-13",
+          "description": "Factual reporting on the event"
+        },
+        {
+          "name": "AOC statement",
+          "url": "https://www.instagram.com/p/CTwzxGXr0rS/",
+          "tier": "official",
+          "date": "2021-09-14",
+          "description": "Her explanation on social media"
+        }
       ]
     }
-  ]
+  ],
+  "status": "filled"
 }

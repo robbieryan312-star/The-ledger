@@ -36,6 +36,13 @@ alwaysApply: true
   code/data fixes proceed without asking permission; **visibility is mandatory** even when you
   are also fixing it. Credibility *tradeoffs* still route to Claude per §3; **discovery of
   substandard output routes to the owner every time.**
+- **Suspected-but-unverifiable → cross-agent second opinion (binding)** — if you suspect a build
+  failure or any file/data/sync/guard/code may not be flawless but **cannot verify it** (environment
+  quirk, tool error, blocked access, ambiguous result), hand it to the **other agent** for an
+  independent second opinion before concluding it is fine — never guess it away or claim "works"
+  unverified. The receiving agent runs an independent review + test in a clean environment and
+  returns explicit **PASS/FAIL** + fresh evidence, surfaced in the next turn with a repair brief if
+  FAIL. Applies Claude↔Cursor equally.
 
 **These rules bind EVERY agent equally — Claude Code AND every Cursor agent (Auto, cloud
 agents, background agents). No agent is exempt.** This is the one file all of them reload every
@@ -111,6 +118,11 @@ the specific failure this file was created to stop.
   finding** block (§1.1 H). Routine agent-fixable repairs proceed without permission; **visibility
   is mandatory even when you are also fixing.** Credibility *tradeoffs* route to Claude; **discovery
   of substandard output routes to the owner every time.**
+- **Suspected-but-unverifiable → cross-agent second opinion (binding).** If you suspect a build
+  failure or any file/data/sync/guard/code may not be flawless but **cannot verify it**, hand it
+  to the other agent for an independent second opinion before claiming pass — never guess it away.
+  Use **Cross-agent second opinion** block (§1.1 I). Receiving agent returns explicit PASS/FAIL +
+  fresh evidence; FAIL gets a repair brief. Applies Claude↔Cursor equally.
 
 ### 1.1 Agent handoff, review, and completion (binding — CRITICAL)
 
@@ -131,6 +143,7 @@ briefs; Cursor executes), and §6 ("Read the real error before any restart").
 | Claiming "complete" | Commit hash + `git show`/artifact paste from THAT commit | N/A |
 | Prior session report recycled | **Forbidden** — regenerate from current `git status` + logs | N/A |
 | Any substandard file/data/process discovered during read, sync, audit, or review (not 100% flawless to spec) | **Owner visibility finding** (§1.1 H) in SAME response — even if out of scope or you are also fixing | Fix in-scope if brief allows; else flag only |
+| Suspected flaw but cannot verify (env quirk, blocked access, ambiguous pass) | **Cross-agent second opinion** (§1.1 I) before claiming pass | Other agent reviews independently |
 
 #### A. Autonomous delivery (binding)
 
@@ -336,6 +349,29 @@ Multiple findings → one table row each. **Honest gaps** (genuine missing verif
 not defects — flag only when the *presentation* mislabels them (silent empty, fetch-failed shown
 as gap, etc.). The owner must never be the first to learn of a defect you already observed.
 
+#### I. Cross-agent second opinion (binding — suspected but unverifiable)
+
+**Trigger:** You **suspect** a build failure, guard flake, data defect, or environment issue but
+**cannot verify** the outcome (tool error, blocked log access, ambiguous exit code, partial test
+run, cannot reproduce locally).
+
+**Required before claiming PASS or "works":**
+
+```markdown
+## Cross-agent second opinion needed
+
+| Field | Detail |
+|-------|--------|
+| **Suspected issue** | [one-line summary] |
+| **Where** | [check, file, command, commit] |
+| **Why unverifiable here** | [blocked access / ambiguous / env quirk] |
+| **Evidence so far** | [fresh command output — not memory] |
+| **Ask receiving agent** | [independent re-run + explicit PASS/FAIL + repair brief if FAIL] |
+```
+
+Cursor ↔ Claude equally. **Never** close a suspected defect without the second opinion when you
+could not verify. Credibility tradeoffs still route to Claude; **unverified "pass" is banned.**
+
 ---
 
 ## 2. Where the authoritative detail lives — read the file that owns the answer
@@ -353,6 +389,7 @@ as gap, etc.). The owner must never be the first to learn of a defect you alread
 | API key SET/EMPTY; sync commands | `KEYS.md`, `OWNER_SETUP.md` |
 | Surfacing substandard files/data/processes to the owner | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 H |
 | Cursor work log for Claude review (last 3 sessions) | `docs/workflows/AUDIT_DEBT_BRIEF.md` |
+| Cross-agent second opinion when unverifiable | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 I |
 
 ---
 

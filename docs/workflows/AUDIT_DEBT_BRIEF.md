@@ -4,77 +4,69 @@
 
 **Current state (2026-07-08):**
 - Branch: `cursor/p0-p1-debt-remediation-4114`
-- HEAD: `e3419b9`
+- HEAD: _(pending commit — credibility manifest/status fixes)_
 - PR: https://github.com/robbieryan312-star/The-ledger/pull/13
-- Tree: dirty (manifest, audit report, rules) · prebuild + build: green
+- Tree: clean after commit · prebuild + build: green · credibility re-audit: **0 defect rows**
 
 ---
 
-## Latest session — Manifest identification + credibility re-audit (COMPLETE)
+## Latest session — Credibility manifest/status remediation (COMPLETE)
 
 ### Task
 
-Brief: (1) add `name` + `initials` to `profiles/_manifest.json` via generator join on roster.json;
-(2) read-only credibility re-audit of 7 locked profiles → `data/reports/profile-credibility-audit-2026-07-08.md`.
-Also: verify work-log compliance; bind `AUDIT_DEBT_BRIEF.md` update rule in agent-ops + core-rules.
+Follow-up credibility brief: (1) §1.1 I cross-agent second-opinion rule; (2) fix P1 manifest↔file mismatches
+(O000172, M000355, M001184, C001098); (3) fix P2 missing `status` on controversies/endorsements/orgVoteLinks
+(all 7); (4) build-gated guards + fixtures; (5) re-audit → 0 P0/P1.
 
 ### Work done (code)
 
 | Area | What |
 |------|------|
-| `scripts/lib/profileDisplayIdentity.ts` | New — roster-preferred name/initials join by bioguideId (`N.P.` format) |
-| `scripts/generate-profile-index.ts` | Emits `name` + `initials` on every manifest member |
-| `scripts/__tests__/optimizationGuards.test.ts` | Guard asserts non-empty name/initials matching roster join |
-| `scripts/audit-profile-credibility.ts` | Read-only audit script → markdown report |
-| `.cursor/rules/agent-ops.mdc` | Binding: update this file after every major task (last 3 sessions) |
-| `.cursor/rules/ledger-core-rules.mdc` | §2 cross-ref to work log |
+| `lib/data/profileCategoryIntegrity.ts` | Shared empty/content checks, manifest status resolution, validation helpers |
+| `scripts/lib/profileManifestSync.ts` | `syncProfileManifestFromDisk` — writes status fields + recomputes manifest from disk |
+| `scripts/sync-profile-manifest.ts` | CLI: `npm run sync:profile-manifest -- --members …` |
+| `scripts/lib/profileMigrate.ts` | Preserve existing controversies/endorsements/statements; call manifest sync at end |
+| `scripts/lib/profileReprocess.ts` | Use `syncProfileManifestFromDisk` instead of partial manifest patch |
+| `lib/data/__fixtures__/profileCategoryIntegrity.fixture.ts` | Frozen bad/good manifest mismatch + missing-status examples |
+| `scripts/__tests__/profileCategoryIntegrity.test.ts` | Build-gated manifest parity + required status on 7 locked profiles |
+| `.cursor/rules/ledger-core-rules.mdc` | §1.1 I cross-agent second opinion (HARD RULE + template) |
+| `.cursor/rules/agent-ops.mdc` | Cross-ref §1.1 I |
 
 ### Data / reports
 
 | Path | Change |
 |------|--------|
-| `lib/data/generated/profiles/_manifest.json` | All 7 members: `name` + `initials` (e.g. P000197 → Nancy Pelosi, N.P.) |
-| `data/reports/profile-credibility-audit-2026-07-08.md` | 20 defect rows across 7 profiles (report only — no fixes) |
-
-### Credibility audit highlights (20 defects — Claude rules fixes)
-
-- **C001098:** manifest `statements=none-in-range` but statements.json has 2 CREC rows (P1)
-- **O000172, M000355, M001184:** manifest controversies/endorsements `honest-gap` but files have content (P1)
-- **All 7:** empty orgVoteLinks/controversies/endorsements lack file-level `status` field (P2)
-- **Statements/saidDid/news:** no procedural fragments, placeholder URLs, or linkage failures flagged
-
-### Work-log compliance note
-
-Sessions **867e7fb** (owner visibility rule) and **e44de36** (P1-2 restore) were **not** logged here when they landed — gap fixed by binding rule in agent-ops this session.
+| `lib/data/generated/profiles/{7}/manifest.json` | Categories aligned to on-disk content (e.g. controversies/endorsements → `filled` where content exists; C001098 statements → `filled`) |
+| `lib/data/generated/profiles/{7}/controversies.json` | Top-level `status` added |
+| `lib/data/generated/profiles/{7}/endorsements.json` | Top-level `status` added |
+| `lib/data/generated/profiles/{7}/orgVoteLinks.json` | Top-level `status` added |
+| `data/reports/profile-credibility-audit-2026-07-08.md` | **0 defect rows** (was 20) |
 
 ### Acceptance
 
-- `npm run generate:profile-index` → manifest has name/initials for all 7
-- `optimizationGuards` profile-manifest identity check green in prebuild
-- Audit report committed with per-member defect counts
-- prebuild + build exit 0
+- `npm run sync:profile-manifest -- --members S000033,O000172,M000355,M001184,W000817,C001098,P000197` exit 0
+- `profileCategoryIntegrity` guards green in `test:source-integrity`
+- Re-audit: 0 rows per member (0 P0, 0 P1, 0 P2)
+- `npm run prebuild` + `npm run build` exit 0
 
 ---
 
 ## Session log (last 3 only)
 
-### 3 — Manifest + credibility re-audit (2026-07-08)
+### 3 — Credibility manifest/status remediation (2026-07-08)
 
 See **Latest session** above.
 
-### 2 — Owner visibility binding rule (2026-07-08)
+### 2 — Manifest identification + credibility re-audit (2026-07-08)
 
-- Commit `867e7fb` on `cursor/p0-p1-debt-remediation-4114`
-- `.cursor/rules/ledger-core-rules.mdc` HARD RULE + §1.1 H template: substandard findings surfaced to owner same turn
-- `.cursor/rules/agent-ops.mdc` cross-ref section
-- _(Not logged at commit time — retroactively recorded here)_
+- Commit `e2529e2` (and prior on branch) — `name` + `initials` on `_manifest.json`; read-only audit report (20 defects)
+- `scripts/lib/profileDisplayIdentity.ts`, `scripts/audit-profile-credibility.ts`, optimizationGuards identity check
+- Owner visibility rule `867e7fb` on same branch
 
-### 1 — P1-2 regression fix: P000197 statements/saidDid restore (2026-07-08)
+### 1 — Owner visibility binding rule (2026-07-08)
 
-- Commit `e44de36` — restored 8 CREC statements + 1 saidDid from main; `profileMigrate` preserve logic
-- `lib/data/__fixtures__/profileMigratePreserve.fixture.ts` + `scripts/__tests__/profileMigratePreserve.test.ts`
-- prebuild 102 green, build green; P000197 positions remain honest-gap
-- _(Not logged at commit time — retroactively recorded here)_
+- Commit `867e7fb` — `.cursor/rules/ledger-core-rules.mdc` HARD RULE + §1.1 H; agent-ops cross-ref
+- Substandard findings must be surfaced to owner same turn
 
 ---
 

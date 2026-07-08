@@ -9,8 +9,20 @@
       "status": "Resolved",
       "date": "2024-05-21",
       "sources": [
-        { "name": "Reuters", "tier": "nonpartisan", "url": "https://www.reuters.com/world/us/massie-wins-kentucky-primary-despite-aipac-spending-2024-05-22/", "date": "2024-05-22", "description": "Massie wins primary despite AIPAC spending" },
-        { "name": "OpenSecrets", "tier": "nonpartisan", "url": "https://www.opensecrets.org/races/outside-spending?cycle=2024&id=KY04", "date": "2024-06-01", "description": "Outside spending data for KY-4 2024 race" }
+        {
+          "name": "Reuters",
+          "tier": "nonpartisan",
+          "url": "https://www.reuters.com/world/us/massie-wins-kentucky-primary-despite-aipac-spending-2024-05-22/",
+          "date": "2024-05-22",
+          "description": "Massie wins primary despite AIPAC spending"
+        },
+        {
+          "name": "OpenSecrets",
+          "tier": "nonpartisan",
+          "url": "https://www.opensecrets.org/races/outside-spending?cycle=2024&id=KY04",
+          "date": "2024-06-01",
+          "description": "Outside spending data for KY-4 2024 race"
+        }
       ],
       "isVerified": true
     },
@@ -22,10 +34,23 @@
       "status": "Resolved",
       "date": "2020-03-27",
       "sources": [
-        { "name": "Congress.gov", "tier": "official", "url": "https://www.congress.gov/bill/116th-congress/house-bill/748", "date": "2020-03-27", "description": "Official CARES Act vote record" },
-        { "name": "Reuters", "tier": "nonpartisan", "url": "https://www.reuters.com/article/us-health-coronavirus-usa-congress-idUSKBN21E2FB", "date": "2020-03-27", "description": "Massie attempts to force recorded vote on CARES Act" }
+        {
+          "name": "Congress.gov",
+          "tier": "official",
+          "url": "https://www.congress.gov/bill/116th-congress/house-bill/748",
+          "date": "2020-03-27",
+          "description": "Official CARES Act vote record"
+        },
+        {
+          "name": "Reuters",
+          "tier": "nonpartisan",
+          "url": "https://www.reuters.com/article/us-health-coronavirus-usa-congress-idUSKBN21E2FB",
+          "date": "2020-03-27",
+          "description": "Massie attempts to force recorded vote on CARES Act"
+        }
       ],
       "isVerified": true
     }
-  ]
+  ],
+  "status": "filled"
 }

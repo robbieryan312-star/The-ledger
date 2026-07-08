@@ -54,6 +54,12 @@ guard, doc, or UI output you engage with that is **not 100% flawless** to spec �
 visibility finding** in the **same turn** (what · where · evidence · severity · repair). Fix
 in-scope without asking; **flag anyway**. Out-of-scope defects get flagged, not ignored.
 
+## Suspected-but-unverifiable → cross-agent second opinion (binding — see ledger-core-rules §1.1 I)
+
+If you **suspect** a flaw but **cannot verify** (environment quirk, blocked access, ambiguous
+result) → **Cross-agent second opinion** block in the **same turn** before claiming pass. Never
+guess a suspected issue away. Claude ↔ Cursor equally.
+
 ## When stuck (binding — CRITICAL — see ledger-core-rules §1.1)
 
 **The owner must never remind you to follow this section.** Output the required block
