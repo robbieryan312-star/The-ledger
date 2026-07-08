@@ -88,8 +88,8 @@ the specific failure this file was created to stop.
   commit it, instruct it to; if not, Claude Code commits it directly once no sync/writer is
   active. Losing or re-deriving already-completed, verified work is the single most wasteful
   failure and must not recur.
-- **The 6 migrated profiles are the locked spec.** S000033, O000172, M000355, M001184, W000817,
-  C001098 are the concrete reference. The pipeline scales the SAME components and SAME
+- **The 7 migrated profiles are the locked spec.** S000033, O000172, M000355, M001184, W000817,
+  C001098, P000197 are the concrete reference. The pipeline scales the SAME components and SAME
   checklist to the remaining 531 members — it never redesigns them. Fix the script/extractor
   that produced bad data; never hand-clean one member and call it done.
 

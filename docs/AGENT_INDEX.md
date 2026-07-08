@@ -24,10 +24,11 @@ npm run sync:legislators && npm run verify:office && npm run build
 
 Vote-sync routing and full sync catalog: `lib/data/SOURCE_LOOKUP.md`.
 
-## Guard suites (11 — all must pass before commit)
+## Guard suites (13 + typecheck — all must pass before commit)
 
 | Script | Guard |
 |--------|-------|
+| `test:typecheck` | TypeScript compile (`tsc --noEmit`) |
 | `test:crec` | CREC procedural filter |
 | `test:org-join` | FEC org/donor join |
 | `test:source-integrity` | Source URL + profile integrity |
@@ -39,8 +40,9 @@ Vote-sync routing and full sync catalog: `lib/data/SOURCE_LOOKUP.md`.
 | `test:docs-integrity` | Doc citations ↔ package.json |
 | `test:data-layout` | `data/` layout orphans |
 | `test:env-truth` | `.env.example` ↔ code |
+| `test:optimization` | syncKernel + manifest + fetch timeout guards |
 
-Prebuild runs all 11; CI: `.github/workflows/guards.yml`.
+Prebuild runs typecheck + all 13 suites; CI: `.github/workflows/guards.yml`.
 
 ## Agent preflight
 
