@@ -1,9 +1,11 @@
 {
-  "generatedAt": "2026-07-08T03:07:53.863Z",
+  "generatedAt": "2026-07-08T04:18:29.536Z",
   "count": 7,
   "members": [
     {
       "bioguideId": "C001098",
+      "name": "Ted Cruz",
+      "initials": "T.C.",
       "categories": [
         "statements",
         "positions",
@@ -19,6 +21,8 @@
     },
     {
       "bioguideId": "M000355",
+      "name": "Mitch McConnell",
+      "initials": "M.M.",
       "categories": [
         "statements",
         "positions",
@@ -34,6 +38,8 @@
     },
     {
       "bioguideId": "M001184",
+      "name": "Thomas Massie",
+      "initials": "T.M.",
       "categories": [
         "statements",
         "positions",
@@ -49,6 +55,8 @@
     },
     {
       "bioguideId": "O000172",
+      "name": "Alexandria Ocasio-Cortez",
+      "initials": "A.O.",
       "categories": [
         "statements",
         "positions",
@@ -64,6 +72,8 @@
     },
     {
       "bioguideId": "P000197",
+      "name": "Nancy Pelosi",
+      "initials": "N.P.",
       "categories": [
         "statements",
         "positions",
@@ -79,6 +89,8 @@
     },
     {
       "bioguideId": "S000033",
+      "name": "Bernie Sanders",
+      "initials": "B.S.",
       "categories": [
         "statements",
         "positions",
@@ -94,6 +106,8 @@
     },
     {
       "bioguideId": "W000817",
+      "name": "Elizabeth Warren",
+      "initials": "E.W.",
       "categories": [
         "statements",
         "positions",

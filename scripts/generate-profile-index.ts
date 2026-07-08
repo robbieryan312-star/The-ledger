@@ -6,6 +6,7 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { loadProfileDisplayIdentityByBioguide } from './lib/profileDisplayIdentity';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const profilesRoot = path.join(projectRoot, 'lib', 'data', 'generated', 'profiles');
@@ -29,7 +30,15 @@ async function main(): Promise<void> {
     .map((e) => e.name)
     .sort();
 
-  const manifestMembers: Array<{ bioguideId: string; categories: string[]; politicianId?: string }> = [];
+  const identityByBioguide = loadProfileDisplayIdentityByBioguide(projectRoot);
+
+  const manifestMembers: Array<{
+    bioguideId: string;
+    name: string;
+    initials: string;
+    categories: string[];
+    politicianId?: string;
+  }> = [];
 
   for (const bioguideId of bioguides) {
     const dir = path.join(profilesRoot, bioguideId);
@@ -46,7 +55,19 @@ async function main(): Promise<void> {
         /* ignore */
       }
     }
-    manifestMembers.push({ bioguideId, categories, politicianId });
+    const identity = identityByBioguide.get(bioguideId);
+    if (!identity?.name || !identity.initials) {
+      throw new Error(
+        `Missing display identity for ${bioguideId} — join roster.json or currentLegislators.json by bioguideId`,
+      );
+    }
+    manifestMembers.push({
+      bioguideId,
+      name: identity.name,
+      initials: identity.initials,
+      categories,
+      politicianId,
+    });
   }
 
   const masterManifest = {
