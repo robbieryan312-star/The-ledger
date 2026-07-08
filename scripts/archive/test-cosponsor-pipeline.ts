@@ -1,6 +1,7 @@
-import { loadEnvLocal } from './lib/ingest-utils';
-import { fetchCosponsoredLegislation } from './ingest-member-deep';
-import { RECORD_TOPIC_BUCKETS } from '../lib/data/profileRecordByTopic';
+/** @deprecated One-off cosponsor pipeline spot-check — archived. See scripts/archive/README.md. */
+import { loadEnvLocal } from '../lib/ingest-utils';
+import { fetchCosponsoredLegislation } from '../ingest-member-deep';
+import { RECORD_TOPIC_BUCKETS } from '../../lib/data/profileRecordByTopic';
 
 const MAX = 50;
 

@@ -1,11 +1,12 @@
-/** Fetch GDELT news for W000817 + C001098 profile news.json. Run: npx tsx scripts/fetch-batch1-news.ts */
+/** @deprecated Superseded by `npm run sync:news-rss -- --members`. Archived — see scripts/archive/README.md. */
+/** Fetch GDELT news for W000817 + C001098 profile news.json. Run: npx tsx scripts/archive/fetch-batch1-news.ts */
 import { config } from 'dotenv';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { sanitizeProfileNews } from '../lib/data/sanitizeProfileUiData';
+import { sanitizeProfileNews } from '../../lib/data/sanitizeProfileUiData';
 
-const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const profilesRoot = path.join(projectRoot, 'lib', 'data', 'generated', 'profiles');
 const legislatorsFile = path.join(projectRoot, 'lib', 'data', 'generated', 'currentLegislators.json');
 const NEWS_MEMBERS = ['W000817', 'C001098'] as const;

@@ -1,11 +1,12 @@
 /**
+ * @deprecated Superseded by `npm run profile:build` and scoped ingest. Archived — see scripts/archive/README.md.
  * Benchmark ingest-member-deep for a fixed member sample.
- * Usage: tsx scripts/benchmark-ingest-sample.ts
+ * Usage: tsx scripts/archive/benchmark-ingest-sample.ts
  */
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import type { MemberDeepProfile } from './ingest-member-deep';
+import type { MemberDeepProfile } from '../ingest-member-deep';
 
 const SAMPLE = [
   'B001236', 'B001298', 'C000537', 'C001055', 'C001072', 'C001080',
@@ -44,7 +45,7 @@ async function compareByTopic(
 }
 
 async function main(): Promise<void> {
-  const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+  const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
   const membersDir = path.join(projectRoot, 'lib', 'data', 'generated', 'members');
 
   const baselines = new Map<string, MemberDeepProfile>();
@@ -57,14 +58,14 @@ async function main(): Promise<void> {
     }
   }
 
-  const { loadEnvLocal } = await import('./lib/ingest-utils');
-  const { resetApiCallCount, getApiCallCount } = await import('./ingest-member-deep');
+  const { loadEnvLocal } = await import('../lib/ingest-utils');
+  const { resetApiCallCount, getApiCallCount } = await import('../ingest-member-deep');
   await loadEnvLocal();
 
   const key = process.env.CONGRESS_API_KEY?.trim();
   if (!key) throw new Error('CONGRESS_API_KEY missing');
 
-  const ingestModule = await import('./ingest-member-deep');
+  const ingestModule = await import('../ingest-member-deep');
   const asOf = new Date().toISOString().slice(0, 10);
 
   resetApiCallCount();
