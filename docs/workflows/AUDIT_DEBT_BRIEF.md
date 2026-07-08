@@ -4,7 +4,7 @@
 
 **Current state (2026-07-08):**
 - Branch: `cursor/p0-p1-debt-remediation-4114`
-- HEAD: `e0d35a7`
+- HEAD: `e3419b9`
 - PR: https://github.com/robbieryan312-star/The-ledger/pull/13
 - Tree: dirty (manifest, audit report, rules) · prebuild + build: green
 
