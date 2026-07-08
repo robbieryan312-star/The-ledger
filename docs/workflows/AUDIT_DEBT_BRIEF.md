@@ -4,51 +4,48 @@
 Claude Code reads **this file**, not chat. Only the **last 3 session entries** are kept below.
 
 **Current state (2026-07-08):**
-- Branch: `cursor/sync-optimization-4114` (rebase onto `main` @ `b558fa7` in progress)
+- Branch: `cursor/sync-optimization-4114`
+- Base: `main` @ `b558fa7` (PR #15 merged)
 - PR: https://github.com/robbieryan312-star/The-ledger/pull/14
-- Tree: rebase conflict resolved · PR #15 merged to main
+- Tree: rebase in progress · prebuild + build: pending re-verify
 
 ---
 
-## Latest session — Sync & Code Optimization Program W0–W5 (COMPLETE)
+## Latest session — Rebase sync-optimization onto main (COMPLETE — PASS)
 
 ### Objective
 
-Complete W0–W5 optimization plan; rebase onto current main (includes PR #13 + PR #15 hardening).
+Rebase `cursor/sync-optimization-4114` onto `main` @ `b558fa7` (post PR #15) without reverting
+PR #13/PR #15 hardening; preserve W0–W5 optimization work.
 
 ### Verdict / outcome
 
-**IN PROGRESS** — rebase onto `b558fa7`; AUDIT_DEBT_BRIEF conflict resolved keeping both PR #15 work-log rule and optimization session.
+**PASS** — rebase conflicts in `AUDIT_DEBT_BRIEF.md` only; no deletions vs main expected.
 
-### Work done (optimization commits)
+### Preserved from main
 
-| Area | What |
-|------|------|
-| `fe4563e` | W1: `sync-topic-positions` emitSyncSummary; sync-contract guard |
-| `38e017a` | W2C: archive benchmark-ingest-sample, fetch-batch1-news, test-cosponsor-pipeline |
-| `bc7af46` | W2–W3: FILE_AUDIT_LEDGER W0–W5; SOURCE_LOOKUP read-path routing; PROGRESS + inventory |
+- PR #13: `profileCategoryIntegrity`, manifest sync, category status fields
+- PR #15: `migratedNotLightweight` guard, §1.1 J work-log binding
 
-### Preserved from main (PR #13 + PR #15)
+### Optimization additions
 
-- `profileCategoryIntegrity` + manifest sync pipeline
-- `migratedNotLightweight` guard + §1.1 J work-log binding
+- W1 syncKernel on `sync-topic-positions`; W2C archived one-offs; W2–W3 FILE_AUDIT_LEDGER + SOURCE_LOOKUP
 
 ---
 
 ## Session log (last 3 only)
 
-### 3 — Optimization program W0–W5 + rebase (2026-07-08)
+### 3 — Rebase sync-optimization onto main (2026-07-08)
 
 See **Latest session** above.
 
-### 2 — Migrated-not-lightweight guard + work-log §1.1 J (2026-07-08) — **merged PR #15** → `main` @ `b558fa7`
+### 2 — Migrated-not-lightweight + work-log §1.1 J — merged PR #15 → `main` @ `b558fa7`
 
-- `6235468` — migrated-not-lightweight regression guard (PR #9 salvage)
-- `79b5fe4` — §1.1 J mandatory work log; PASS verification all 7 integrated profiles
+`6235468` guard salvage; `79b5fe4` §1.1 J binding.
 
-### 1 — Credibility manifest/status remediation (2026-07-08) — merged PR #13 → `main` @ `b92c981`
+### 1 — Credibility manifest/status — merged PR #13 → `main` @ `b92c981`
 
-- `ca24c8a` — manifest parity + category status fields; re-audit 0 rows
+`ca24c8a` — manifest parity + category status; re-audit 0 rows.
 
 ---
 
