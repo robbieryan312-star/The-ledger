@@ -63,7 +63,11 @@ export function deltaVsMonthsAgo(
 export function formatDelta(delta: number, unit: string): string {
   const sign = delta > 0 ? '+' : '';
   if (unit === '%' || unit === 'percent') return `${sign}${delta.toFixed(1)} pp`;
-  if (unit === 'USD') return `${sign}${formatCompactCurrency(Math.abs(delta)).replace('$', '$')}`;
+  if (unit === 'USD') {
+    const formatted = formatCompactCurrency(Math.abs(delta));
+    if (delta === 0) return formatted;
+    return `${delta > 0 ? '+' : '-'}${formatted}`;
+  }
   return `${sign}${formatCompact(delta)}`;
 }
 

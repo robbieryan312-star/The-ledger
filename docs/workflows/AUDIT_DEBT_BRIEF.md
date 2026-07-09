@@ -4,13 +4,65 @@
 
 **Current state (2026-07-09):**
 - Branch: `cursor/platform-phases-1-2-3-70a6`
-- HEAD: `a34d499`
+- HEAD: _(pending commit)_
 - PR: https://github.com/robbieryan312-star/The-ledger/pull/20 (draft)
-- Tree: clean · prebuild + build: **green** · keys: **8/11 SET** (COURTLISTENER EMPTY)
+- Tree: dirty (CodeQL fix) · prebuild + build: **green** · keys: **8/11 SET** (COURTLISTENER EMPTY)
 
 ---
 
-## Latest session — Platform fix brief P0–P4 (COMPLETE — STOP for Claude)
+## Latest session — CodeQL fix on PR #20 (COMPLETE)
+
+### Objective
+
+Fix CodeQL high alert on `formatDelta` no-op `.replace('$', '$')` flagged on PR #20.
+
+### Verdict / outcome
+
+**COMPLETE.** Removed no-op replace; USD delta formatting uses explicit sign prefix.
+
+### Commits
+
+- _(pending)_
+
+### Commands run (this session)
+
+- `npm run test:governor-identity` → 4/4 pass; DeSantis `photoMatchDunn: false`
+- `npm run test:typecheck` → exit 0
+
+### Files touched
+
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/format/stateEconomicDisplay.ts` | modified | Fix USD delta sign formatting (CodeQL) |
+
+### Acceptance evidence
+
+- CodeQL annotation: line 66 no-op replace removed
+- DeSantis guard still passes
+
+### Open / next
+
+- **STOP** — Claude review of P0–P4 unchanged; awaiting APPROVAL before merge
+
+---
+
+## Session log (last 3 only)
+
+### 3 — CodeQL fix (2026-07-09)
+
+`formatDelta` USD branch — remove no-op replace flagged by CodeQL.
+
+### 2 — Platform fix brief P0–P4 (2026-07-09)
+
+DeSantis guard, BLS education fix, nav restructure, politicians/FL UI cleanup.
+
+### 1 — Phases 1–3 code-complete (2026-07-09)
+
+BLS Phase 2 pipelines + FL UI; politicians browse + nav.
+
+---
+
+## Prior session — Platform fix brief P0–P4 (COMPLETE — STOP for Claude)
 
 ### Objective
 
@@ -24,7 +76,7 @@ visual hierarchy (P4). Hold for Claude review; no data scaling; no merge.
 
 ### Commits
 
-- _(this session — single commit pending push)_
+- `a34d499` — fix(platform): P0 DeSantis identity guard, P1 BLS education, P2–P4 nav/FL UI
 
 ### Commands run (this session)
 
