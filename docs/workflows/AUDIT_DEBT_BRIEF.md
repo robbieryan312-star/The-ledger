@@ -4,9 +4,9 @@
 
 **Current state (2026-07-09):**
 - Branch: `cursor/florida-summaries-sample-70a6`
-- HEAD: (pending commit)
+- HEAD: `b47061d`
 - PR: https://github.com/robbieryan312-star/The-ledger/pull/19
-- Tree: dirty · `.env.local` SET locally (gitignored, not committed)
+- Tree: clean · `.env.local` SET locally (gitignored, not committed)
 
 ---
 
