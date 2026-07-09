@@ -62,7 +62,7 @@ review of Part A (#20) and Part B (#21).
 
 - `f8385a1` — docs: rename AUDIT_DEBT_BRIEF → AGENT_HANDOFF_LOG + improvement backlog
 - `04420cf` — docs: fix HEAD hash in agent handoff log
-- `f4cfe6b` — docs: final HEAD sync in agent handoff log
+- `5f4bd6b` — docs: final HEAD sync in agent handoff log
 
 ### Commands run (this session)
 
