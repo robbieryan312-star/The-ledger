@@ -4,9 +4,9 @@
 
 **Current state (2026-07-09):**
 - Branch: `cursor/florida-summaries-sample-70a6`
-- HEAD: (pending commit)
+- HEAD: `dabc101`
 - PR: https://github.com/robbieryan312-star/The-ledger/pull/19
-- Tree: dirty · prebuild + build: **green**
+- Tree: clean · prebuild + build: **green**
 
 ---
 
