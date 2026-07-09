@@ -13,3 +13,6 @@ They are kept for historical context only. For live guidance, read in order:
 | File | Why archived |
 |------|----------------|
 | `DATA_SOURCES.md` | Pre-DNU mock/demo framing; superseded by `SOURCE_LOOKUP.md` + pipeline-only policy |
+| `FUTURE_ROADMAP.md` | Idea backlog only — not scheduled work; follow `PROGRESS.md` |
+| `STATE_COUNTY_EXPANSION.md` | Deferred local expansion proposal (2026-06-24) |
+| `progress-screenshots.md` | Visual milestone gallery (2026-06-23); PNGs remain in `docs/progress/` |
