@@ -21,7 +21,7 @@ import {
   generatedGovernorPoliticians,
 } from './generatedPoliticians';
 import { resolveCurrentOffice } from './officeResolution';
-import { congressPhotoUrl, executivePortraitUrl } from './photos';
+import { bioguideMatchesCurrentLegislator, congressPhotoUrl, executivePortraitUrl } from './photos';
 
 const EMPTY_FINANCE: CampaignFinance = {
   totalRaised: 0, totalSpent: 0, cashOnHand: 0, cycle: '2024',
@@ -74,6 +74,10 @@ function withOfficialPhoto(p: Politician): Politician {
     (p.imageUrl.includes('theunitedstates.io/images/congress') ||
       p.imageUrl.includes('bioguide.congress.gov/bioguide/photo'));
   if (p.bioguideId && (!p.imageUrl || hasLegacyCongressHost)) {
+    if (!bioguideMatchesCurrentLegislator(p.bioguideId, p)) {
+      const execPhoto = executivePortraitUrl(p.id);
+      return execPhoto ? { ...p, imageUrl: execPhoto } : { ...p, imageUrl: undefined };
+    }
     return { ...p, imageUrl: congressPhotoUrl(p.bioguideId) };
   }
   if (p.imageUrl) return p;

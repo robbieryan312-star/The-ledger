@@ -64,9 +64,10 @@ export default function FloridaStatePoliticians({
 
   return (
     <section id="politicians" className="scroll-mt-24">
-      <div className="mb-4">
-        <h2 className="text-white font-bold text-lg">{stateName} officials</h2>
-        <p className="text-xs text-gray-400 mt-1">
+      <div className="mb-5">
+        <p className="text-[10px] uppercase tracking-widest text-[#c8a951]/80 font-semibold">Elected roster</p>
+        <h2 className="text-white font-bold text-xl mt-1">{stateName} officials</h2>
+        <p className="text-sm text-gray-400 mt-1.5 max-w-2xl leading-relaxed">
           Office-ranked roster — filter by chamber, party, or search by name.
         </p>
       </div>

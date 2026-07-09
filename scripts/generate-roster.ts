@@ -51,7 +51,7 @@ const legislatorsRaw = legislatorsFile.legislators as Array<{
   website?: string;
 }>;
 
-// The 6 migrated profiles that have real generated data
+// The 7 migrated profiles that have real generated data
 const MIGRATED: Record<string, { id: string }> = {
   S000033: { id: 'bernie-sanders' },
   O000172: { id: 'alexandria-ocasio-cortez' },
@@ -59,6 +59,7 @@ const MIGRATED: Record<string, { id: string }> = {
   M001184: { id: 'rep-massie' },
   W000817: { id: 'elizabeth-warren' },
   C001098: { id: 'ted-cruz' },
+  P000197: { id: 'nancy-pelosi' },
 };
 
 // Hand-authored featured profiles that were in mockPoliticians — extract their
@@ -67,10 +68,13 @@ const FEATURED_IDENTITIES: RosterEntry[] = [
   { id: 'bernie-sanders', bioguideId: 'S000033', name: 'Bernie Sanders', firstName: 'Bernie', lastName: 'Sanders', party: 'Independent', state: 'Vermont', stateCode: 'VT', chamber: 'senate', level: 'federal', recordType: 'featured', inOffice: true, termStart: '2007-01-04', termEnd: '2029-01-03' },
   { id: 'mitch-mcconnell', bioguideId: 'M000355', name: 'Mitch McConnell', firstName: 'Mitch', lastName: 'McConnell', party: 'Republican', state: 'Kentucky', stateCode: 'KY', chamber: 'senate', level: 'federal', recordType: 'featured', inOffice: true, termStart: '1985-01-03', termEnd: '2027-01-03' },
   { id: 'alexandria-ocasio-cortez', bioguideId: 'O000172', name: 'Alexandria Ocasio-Cortez', firstName: 'Alexandria', lastName: 'Ocasio-Cortez', party: 'Democrat', state: 'New York', stateCode: 'NY', chamber: 'house', level: 'federal', district: '14', recordType: 'featured', inOffice: true, termStart: '2019-01-03', termEnd: '2027-01-03' },
-  { id: 'ron-desantis', bioguideId: 'D000628', name: 'Ron DeSantis', firstName: 'Ron', lastName: 'DeSantis', party: 'Republican', state: 'Florida', stateCode: 'FL', chamber: 'governor', level: 'state', recordType: 'featured', inOffice: true, termStart: '2019-01-08', termEnd: '2027-01-05' },
+  // No bioguideId — D000628 is Neal P. Dunn (current FL-02). Governors are not in Congress;
+  // a stale/wrong bioguideId caused Dunn's portrait and FEC/vote bleed on DeSantis's card.
+  { id: 'ron-desantis', name: 'Ron DeSantis', firstName: 'Ron', lastName: 'DeSantis', party: 'Republican', state: 'Florida', stateCode: 'FL', chamber: 'governor', level: 'state', recordType: 'featured', inOffice: true, termStart: '2019-01-08', termEnd: '2027-01-05' },
   { id: 'rep-massie', bioguideId: 'M001184', name: 'Thomas Massie', firstName: 'Thomas', lastName: 'Massie', party: 'Republican', state: 'Kentucky', stateCode: 'KY', chamber: 'house', level: 'federal', district: '4', recordType: 'featured', inOffice: true, termStart: '2012-11-13', termEnd: '2027-01-03' },
   { id: 'elizabeth-warren', bioguideId: 'W000817', name: 'Elizabeth Warren', firstName: 'Elizabeth', lastName: 'Warren', party: 'Democrat', state: 'Massachusetts', stateCode: 'MA', chamber: 'senate', level: 'federal', recordType: 'featured', inOffice: true, termStart: '2013-01-03', termEnd: '2031-01-03' },
   { id: 'ted-cruz', bioguideId: 'C001098', name: 'Ted Cruz', firstName: 'Ted', lastName: 'Cruz', party: 'Republican', state: 'Texas', stateCode: 'TX', chamber: 'senate', level: 'federal', recordType: 'featured', inOffice: true, termStart: '2013-01-03', termEnd: '2031-01-03' },
+  { id: 'nancy-pelosi', bioguideId: 'P000197', name: 'Nancy Pelosi', firstName: 'Nancy', lastName: 'Pelosi', party: 'Democrat', state: 'California', stateCode: 'CA', chamber: 'house', level: 'federal', district: '11', recordType: 'featured', inOffice: true, termStart: '2025-01-03', termEnd: '2027-01-03' },
 ];
 
 // Derive per-state legislator counts from the real currentLegislators.json

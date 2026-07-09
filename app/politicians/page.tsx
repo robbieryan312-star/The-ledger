@@ -14,7 +14,6 @@ import {
   buildStateRosterIndex,
 } from '@/lib/data/politicianSearchIndex';
 import PoliticiansContent, { type PoliticiansListEntry } from './PoliticiansContent';
-import Link from 'next/link';
 
 export const metadata = {
   title: 'Politicians — The Ledger',
@@ -68,22 +67,6 @@ export default async function PoliticiansPage({
         <div className="text-white/40 text-sm mt-3">
           <p><strong>{allCount}</strong> politicians indexed · <strong>{filedCount}</strong> with campaign finance data</p>
           <p><strong>{stats.total}</strong> current officials in authoritative roster</p>
-        </div>
-      </div>
-
-      <div className="mb-10">
-        <h2 className="text-white text-sm font-bold mb-4 uppercase tracking-wide">Featured Officials</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          {allPoliticians.slice(0, 6).map((p) => (
-            <Link
-              key={p.id}
-              href={`/politicians/${p.id}`}
-              className="p-3 rounded-lg bg-[#0d1f35] hover:bg-[#1e3a5f] transition-colors border border-[#1e3a5f]"
-            >
-              <div className="text-white text-xs font-medium truncate">{p.name}</div>
-              <div className="text-gray-400 text-[10px] truncate">{resolveOffice(p).label}</div>
-            </Link>
-          ))}
         </div>
       </div>
 

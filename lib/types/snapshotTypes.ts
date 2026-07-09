@@ -81,8 +81,10 @@ export interface StateEducationLaborTier {
   unemploymentRate: number | null;
   unemploymentPeriod: string | null;
   medianWeeklyEarnings: number | null;
+  medianAnnualEarnings: number | null;
   earningsPeriod: string | null;
   earningsUnit: string;
+  annualEarningsNote?: string;
   note?: string;
   source: Source;
   link?: string;

@@ -29,7 +29,6 @@ const navItems = [
     href: '/elections',
     sub: [
       { label: 'Upcoming Elections', href: '/elections' },
-      { label: 'Compare Candidates', href: '/compare' },
     ],
   },
   {
@@ -41,8 +40,14 @@ const navItems = [
       { label: 'Congress Stock Trades', href: '/congress' },
     ],
   },
-  { label: 'Compare', href: '/compare' },
-  { label: 'Sources', href: '/sources' },
+  {
+    label: 'Compare',
+    href: '/compare',
+    sub: [
+      { label: 'Compare Officials', href: '/compare' },
+      { label: 'Compare Candidates', href: '/compare' },
+    ],
+  },
   {
     label: 'Legislation',
     href: '/legislation',
@@ -53,6 +58,7 @@ const navItems = [
       { label: 'Passed a Chamber', href: '/legislation?status=passed_one_chamber' },
     ],
   },
+  { label: 'Sources', href: '/sources' },
 ];
 
 export default function Navigation() {
@@ -82,7 +88,7 @@ export default function Navigation() {
           <div className="hidden md:flex items-center gap-0.5">
             {navItems.map((item) => (
               <div
-                key={item.href}
+                key={item.label}
                 className="relative"
                 onMouseEnter={() => item.sub && setOpenDropdown(item.label)}
                 onMouseLeave={() => setOpenDropdown(null)}
@@ -99,17 +105,19 @@ export default function Navigation() {
                   {item.sub && <ChevronDown className="h-3 w-3 opacity-60" />}
                 </Link>
                 {item.sub && openDropdown === item.label && (
-                  <div className="absolute top-full left-0 w-52 rounded-xl shadow-2xl py-1 mt-2 border border-white/[0.08]"
-                       style={{ background: 'rgba(11,25,41,0.95)', backdropFilter: 'blur(20px)' }}>
-                    {item.sub.map((sub) => (
-                      <Link
-                        key={sub.href}
-                        href={sub.href}
-                        className="block px-4 py-2 text-sm text-white/60 hover:bg-white/[0.06] hover:text-white transition-colors"
-                      >
-                        {sub.label}
-                      </Link>
-                    ))}
+                  <div className="absolute top-full left-0 pt-1">
+                    <div className="w-52 rounded-xl shadow-2xl py-1 border border-white/[0.08]"
+                         style={{ background: 'rgba(11,25,41,0.95)', backdropFilter: 'blur(20px)' }}>
+                      {item.sub.map((sub) => (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          className="block px-4 py-2 text-sm text-white/60 hover:bg-white/[0.06] hover:text-white transition-colors"
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
@@ -165,7 +173,7 @@ export default function Navigation() {
             My Ledger
           </Link>
           {navItems.map((item) => (
-            <div key={item.href}>
+            <div key={item.label}>
               <Link
                 href={item.href}
                 className={`block px-3 py-2 rounded-lg text-sm font-medium ${

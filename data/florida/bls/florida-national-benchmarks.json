@@ -48,7 +48,9 @@
       },
       "asOf": "2026-07-09",
       "blsUrl": "https://data.bls.gov/timeseries/LEU0252887700",
-      "note": "National all-education median weekly earnings reference."
+      "note": "National CPS median usual weekly earnings, all education levels, workers 25+.",
+      "medianAnnualEarnings": 67340,
+      "annualEarningsNote": "Annualized (weekly × 52)"
     }
   ]
 }

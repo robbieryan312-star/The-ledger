@@ -4,14 +4,8 @@
 import { writeFloridaSnapshot } from '../../lib/ingest-utils';
 import { BLS_SOURCE, fetchBlsSeries, latestPoint } from '../../lib/bls-api';
 
-const BENCHMARKS: Record<string, { label: string; unit: string; matchesFlorida: string }> = {
-  LNS14000000: {
-    label: 'Unemployment rate',
-    unit: '%',
-    matchesFlorida: 'Unemployment rate',
-  },
-  MEDEHUSWEBS: { label: 'Median weekly earnings', unit: 'USD/week', matchesFlorida: '' },
-};
+/** All workers 25+ median usual weekly earnings (CPS) — not education-tier series. */
+const ALL_WORKERS_WEEKLY_EARNINGS = 'LEU0252887700';
 
 async function main(): Promise<void> {
   const asOf = new Date().toISOString().slice(0, 10);
@@ -19,7 +13,7 @@ async function main(): Promise<void> {
   const errors: string[] = [];
   const records: Array<Record<string, unknown>> = [];
 
-  const seriesIds = ['LNS14000000', 'LEU0252887700'].filter(Boolean);
+  const seriesIds = ['LNS14000000', ALL_WORKERS_WEEKLY_EARNINGS];
 
   try {
     const data = await fetchBlsSeries(seriesIds, year - 2, year);
@@ -40,27 +34,28 @@ async function main(): Promise<void> {
       });
     }
 
-    const earn = latestPoint(data.get('LEU0252887700'));
+    const earn = latestPoint(data.get(ALL_WORKERS_WEEKLY_EARNINGS));
     if (earn) {
+      const weekly = Number.parseFloat(String(earn.value).replace(/,/g, ''));
       records.push({
         indicator: 'Median weekly earnings (all workers)',
         geography: 'US',
         unit: 'USD/week',
-        seriesId: 'LEU0252887700',
+        seriesId: ALL_WORKERS_WEEKLY_EARNINGS,
         latestPeriod: earn.period,
         latestValue: earn.value,
         matchesFloridaIndicator: '',
         source: { ...BLS_SOURCE, date: earn.date },
         asOf,
-        blsUrl: 'https://data.bls.gov/timeseries/LEU0252887700',
-        note: 'National all-education median weekly earnings reference.',
+        blsUrl: `https://data.bls.gov/timeseries/${ALL_WORKERS_WEEKLY_EARNINGS}`,
+        note: 'National CPS median usual weekly earnings, all education levels, workers 25+.',
+        medianAnnualEarnings: Number.isFinite(weekly) ? Math.round(weekly * 52) : null,
+        annualEarningsNote: 'Annualized (weekly × 52)',
       });
     }
   } catch (err) {
     errors.push(err instanceof Error ? err.message : String(err));
   }
-
-  void BENCHMARKS;
 
   const out = await writeFloridaSnapshot('bls', 'florida-national-benchmarks.json', {
     meta: {

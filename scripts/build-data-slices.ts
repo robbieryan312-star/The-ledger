@@ -198,8 +198,10 @@ async function buildStateEconomic() {
     unemploymentRate: number | null;
     unemploymentPeriod: string | null;
     medianWeeklyEarnings: number | null;
+    medianAnnualEarnings: number | null;
     earningsPeriod: string | null;
     earningsUnit: string;
+    annualEarningsNote?: string;
     note?: string;
     source: Source;
     link?: string;
@@ -334,8 +336,17 @@ async function buildStateEconomic() {
       unemploymentPeriod: tier.unemploymentPeriod ? String(tier.unemploymentPeriod) : null,
       medianWeeklyEarnings:
         tier.medianWeeklyEarnings != null ? Number(tier.medianWeeklyEarnings) : null,
+      medianAnnualEarnings:
+        tier.medianAnnualEarnings != null
+          ? Number(tier.medianAnnualEarnings)
+          : tier.medianWeeklyEarnings != null
+            ? Math.round(Number(tier.medianWeeklyEarnings) * 52)
+            : null,
       earningsPeriod: tier.earningsPeriod ? String(tier.earningsPeriod) : null,
       earningsUnit: String(tier.earningsUnit ?? 'USD/week'),
+      annualEarningsNote: tier.annualEarningsNote
+        ? String(tier.annualEarningsNote)
+        : 'Annualized (weekly × 52)',
       note: tier.note ? String(tier.note) : undefined,
       source: tier.source as Source,
       link: tier.blsUrl ? String(tier.blsUrl) : undefined,

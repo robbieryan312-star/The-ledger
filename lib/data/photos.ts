@@ -12,15 +12,36 @@ import currentLegislators from './generated/currentLegislators.json';
 
 export type CongressPhotoSize = '225x275' | '450x550' | 'original';
 
+type LegislatorRow = {
+  bioguideId: string;
+  name: string;
+  lastName: string;
+  govtrackId?: number;
+};
+
+const legislatorRows = (
+  currentLegislators as { legislators: LegislatorRow[] }
+).legislators;
+
 const bioguideToGovtrackId = new Map<string, number>(
-  (
-    currentLegislators as {
-      legislators: Array<{ bioguideId: string; govtrackId?: number }>;
-    }
-  ).legislators
+  legislatorRows
     .filter((row) => typeof row.govtrackId === 'number')
     .map((row) => [row.bioguideId, row.govtrackId as number]),
 );
+
+const bioguideToLegislator = new Map<string, LegislatorRow>(
+  legislatorRows.map((row) => [row.bioguideId, row]),
+);
+
+/** True when bioguideId resolves to a current legislator with the same last name. */
+export function bioguideMatchesCurrentLegislator(
+  bioguideId: string,
+  politician: { lastName: string },
+): boolean {
+  const leg = bioguideToLegislator.get(bioguideId);
+  if (!leg) return true;
+  return leg.lastName.toLowerCase() === politician.lastName.toLowerCase();
+}
 
 /** Canonical public-domain congressional portrait URL for a bioguide ID.
  *
@@ -71,8 +92,13 @@ export function resolvePoliticianPhotoUrl(p: {
   id: string;
   bioguideId?: string;
   imageUrl?: string;
+  lastName?: string;
+  chamber?: string;
 }): string | undefined {
   if (p.imageUrl) return p.imageUrl;
+  if (p.bioguideId && p.lastName && !bioguideMatchesCurrentLegislator(p.bioguideId, { lastName: p.lastName })) {
+    return executivePortraitUrl(p.id);
+  }
   if (p.bioguideId) return congressPhotoUrl(p.bioguideId);
   return executivePortraitUrl(p.id);
 }

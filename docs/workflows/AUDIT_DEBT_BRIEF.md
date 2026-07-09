@@ -4,98 +4,102 @@
 
 **Current state (2026-07-09):**
 - Branch: `cursor/platform-phases-1-2-3-70a6`
-- HEAD: `5299724`
+- HEAD: _(pending commit)_
 - PR: https://github.com/robbieryan312-star/The-ledger/pull/20 (draft)
-- Tree: clean · prebuild + build: **green** · keys: **8/11 SET** (COURTLISTENER EMPTY)
+- Tree: dirty (fix brief P0–P4) · prebuild + build: **green** · keys: **8/11 SET** (COURTLISTENER EMPTY)
 
 ---
 
-## Latest session — Phases 1–3 code-complete STOP for Claude (COMPLETE)
+## Latest session — Platform fix brief P0–P4 (COMPLETE — STOP for Claude)
 
 ### Objective
 
-Build Florida platform completion (Phase 1), BLS economic pipelines small-sample (Phase 2), and
-app-wide navigation/filtering (Phase 3). Small samples only; hold for combined Claude review.
+Fix DeSantis identity/photo bug (P0), correct BLS education earnings + annualized display (P1),
+navigation restructure + dropdown hover (P2), remove Featured Officials grid (P3), Florida page
+visual hierarchy (P4). Hold for Claude review; no data scaling; no merge.
 
 ### Verdict / outcome
 
-**COMPLETE — STOP for Claude combined review.** All three phases code-complete on review branch.
-No merge; no data volume scaled beyond samples.
+**COMPLETE — STOP for Claude review.** All P0–P4 acceptance items implemented; prebuild + build green.
 
 ### Commits
 
-- `801db6a` — feat(fl-bls): Phase 2 keyless BLS sample ingests
-- `ab06304` — feat(politicians-browse): Phase 3 roster + nav; feat(profiles): TierDot/compact currency
-- `5299724` — feat(fl-economic): slice builder + Florida panel Phase 2 UI
+- _(this session — single commit pending push)_
 
 ### Commands run (this session)
 
-- `npm run verify:agent-keys` → 8/11 SET; **COURTLISTENER EMPTY** (court re-run skipped)
-- `npm run ingest:bls-phase2-fl` → exit 0 (CPI US ref, growth 2, education 4, benchmarks 2, occupations gap)
+- `npx tsx --test scripts/__tests__/governorIdentityGuard.test.ts` → exit 0 (4/4)
+- `npx tsx scripts/generate-roster.ts` → 8 entries (Pelosi restored; DeSantis no bioguideId)
+- `npm run ingest:bls-education-fl` → exit 0; monotonic weekly earnings 784→977→1609→1982
+- `npm run ingest:bls-benchmarks-fl` → exit 0
 - `npm run build:data-slices` → exit 0
-- `npm run prebuild` → exit 0 (123 tests green)
+- `npm run prebuild` → exit 0 (governor-identity guard wired)
 - `npm run build` → exit 0
-- `curl -sS http://localhost:4100/states/FL` → **200**; HTML contains By the Numbers, US CPI, education tiers, court section
+- DeSantis verify: `id=ron-desantis`, `bioguideId=(none)`, photo ≠ Dunn `D000628` portrait
 
 ### Files touched
 
 | Path | Action | What changed |
 |------|--------|--------------|
-| `scripts/lib/bls-api.ts` | created | Shared BLS v1 fetch helpers |
-| `scripts/ingest/florida/ingest-bls-*.ts` | created | CPI, growth, education, benchmarks, occupations gap |
-| `data/florida/bls/*.json` | created | Small-sample BLS artifacts |
-| `scripts/build-data-slices.ts` | modified | Phase 2 indicators + educationTiers + honestGaps |
-| `components/records/FloridaRecordPanel.tsx` | modified | Phase 2 cards, national delta chips, education grid |
-| `lib/dashboard/rosterSearchParams.ts` | created | URL ↔ roster filter mapping |
-| `lib/dashboard/stateRosterClient.ts` | modified | branch + stateCode filters |
-| `app/politicians/*` | modified | Condensed StateRosterControls browse |
-| `components/layout/Navigation.tsx` | modified | Menu → filtered roster hrefs + Florida link |
-| `components/politicians/DonorChart.tsx` | modified | formatCompactCurrency + TierDot |
-| `components/politicians/PoliticianProfileClient.tsx` | modified | formatCompactCurrency + TierDot |
-| `components/states/FloridaStatePoliticians.tsx` | modified | inOfficeOnly pre-filter |
+| `scripts/generate-roster.ts` | modified | Remove wrong DeSantis bioguideId; restore Pelosi P000197 |
+| `lib/data/generated/roster.json` | modified | Regenerated 8 featured entries |
+| `lib/data/photos.ts` | modified | `bioguideMatchesCurrentLegislator`; block mismatched portraits |
+| `lib/data/allPoliticians.ts` | modified | `withOfficialPhoto` skips mismatched bioguide portraits |
+| `lib/data/__fixtures__/governorIdentityGuard.fixture.ts` | created | Frozen bad/good DeSantis/Dunn example |
+| `scripts/__tests__/governorIdentityGuard.test.ts` | created | Build-gated regression guard |
+| `package.json` | modified | `test:governor-identity` in prebuild |
+| `scripts/ingest/florida/ingest-bls-education-florida.ts` | modified | Correct LEU/LNS series; monotonic check; annualized |
+| `scripts/ingest/florida/ingest-bls-national-benchmarks-florida.ts` | modified | Documented all-workers earnings series |
+| `data/florida/bls/*.json` | modified | Refreshed education + benchmarks artifacts |
+| `scripts/build-data-slices.ts` | modified | `medianAnnualEarnings` in education tiers |
+| `lib/types/snapshotTypes.ts` | modified | Annual earnings fields on tier type |
+| `lib/data/generated/slices/state-economic.json` | modified | Annual pay 40,768→103,064 by tier |
+| `components/records/FloridaRecordPanel.tsx` | modified | Annual pay label + calculated note |
+| `components/layout/Navigation.tsx` | modified | Compare dropdown; Legislation above Sources; hover bridge |
+| `app/politicians/page.tsx` | modified | Removed Featured Officials grid |
+| `app/states/[code]/page.tsx` | modified | Section hierarchy + on-page jump nav |
+| `components/states/FloridaStatePoliticians.tsx` | modified | Matching section header style |
+| `components/states/FloridaCourtDecisionRow.tsx` | modified | Removed duplicate scroll anchor id |
 
 ### Acceptance evidence
 
-**Phase 1**
-- Court opinions slice: **10** records (`judiciary-courts.json`)
-- LegiScan slice: **10** records (`legislation-florida.json` legiscan section)
-- COURTLISTENER_API_KEY EMPTY — court detail re-run skipped per brief
-- prebuild + build green; `/states/FL` curl 200
+**P0 — DeSantis**
+- Root cause: `ron-desantis` had `bioguideId: D000628` (Neal P. Dunn) → GovTrack portrait bleed
+- Fix: no bioguideId on governor; photo guard blocks last-name mismatch
+- Guard: `test:governor-identity` 4/4 pass in prebuild
 
-**Phase 2 — landed vs honest gaps**
-| Metric | Status |
-|--------|--------|
-| CPI (Florida-specific) | **Honest gap** — no FL series in BLS v1 API |
-| US CPI-U reference | **Landed** — national inflation context |
-| 10-yr nonfarm employment growth | **Landed** — SMU12 series + growth % |
-| Net job openings | **Landed** — national JOLTS sample (labeled US) |
-| Fastest-growing occupations | **Honest gap** — OES/projections not in v1 API |
-| Education unemployment/earnings (4 tiers) | **Landed** — US CPS reference (labeled national) |
-| vs US avg delta chips | **Landed** — unemployment national benchmark |
+**P1 — Education earnings**
+- Correct weekly series: LEU0252916700/7300/9100/9700
+- Annualized display: weekly × 52, labeled "Annualized (weekly × 52)"
+- Monotonic plausibility enforced at ingest
 
-**Phase 3**
-- `/politicians` uses `StateRosterControls` + condensed office-ranked rows
-- Navigation sub-items use `office`/`branch` filtered hrefs
-- TierDot + compact currency on DonorChart + profile finance header
+**P2 — Navigation**
+- Order: Compare (dropdown) → Legislation → Sources
+- Compare Candidates moved from Elections to Compare submenu
+- Dropdown `pt-1` hover bridge (no `mt-2` gap)
+
+**P3** — Featured Officials grid removed from `/politicians`
+
+**P4** — FL page section eyebrows, jump nav, consistent hierarchy
 
 ### Open / next
 
-- **STOP** — Claude combined review of Phases 1–3 before merge or data scaling
-- Owner: add `COURTLISTENER_API_KEY` to Cursor Runtime Secrets for court detail enrichment
+- **STOP** — Claude review of P0–P4 before merge
+- COURTLISTENER_API_KEY still EMPTY (court enrichment deferred)
 - No push to `main` until Claude APPROVAL
 
 ---
 
 ## Session log (last 3 only)
 
-### 3 — Phases 1–3 code-complete (2026-07-09)
+### 3 — Platform fix brief P0–P4 (2026-07-09)
+
+DeSantis guard, BLS education fix, nav restructure, politicians/FL UI cleanup.
+
+### 2 — Phases 1–3 code-complete (2026-07-09)
 
 BLS Phase 2 pipelines + FL UI; politicians browse + nav; profile TierDot propagation.
 
-### 2 — LegiScan 10/10 STOP (2026-07-09)
+### 1 — LegiScan 10/10 STOP (2026-07-09)
 
 Agent keys docs + verify script; sample ready for Claude.
-
-### 1 — Verbatim court metadata only (2026-07-09)
-
-Court work frozen per brief.

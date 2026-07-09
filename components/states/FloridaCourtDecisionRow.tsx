@@ -87,7 +87,7 @@ export function FloridaCourtDecisionsSection({
 }) {
   if (!records.length) return null;
   return (
-    <section id="courts" className="bg-[#0d1f35] rounded-2xl border border-[#1e3a5f] overflow-hidden scroll-mt-24">
+    <section className="bg-[#0d1f35] rounded-2xl border border-[#1e3a5f] overflow-hidden">
       <div className="px-5 py-4 border-b border-[#1e3a5f] bg-[#0a1628]">
         <h2 className="text-white font-bold text-sm">{title}</h2>
         <p className="text-xs text-gray-400 mt-1">

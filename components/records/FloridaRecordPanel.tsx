@@ -394,12 +394,15 @@ function EducationTiersPanel({
                 </span>
               </div>
               <div>
-                <span className="text-gray-600 text-[10px] block">Median weekly pay</span>
+                <span className="text-gray-600 text-[10px] block">Median annual pay</span>
                 <span className="text-white font-semibold">
-                  {tier.medianWeeklyEarnings != null
-                    ? formatCompactCurrency(tier.medianWeeklyEarnings)
+                  {tier.medianAnnualEarnings != null
+                    ? formatCompactCurrency(tier.medianAnnualEarnings)
                     : '—'}
                 </span>
+                {tier.annualEarningsNote && (
+                  <span className="text-gray-600 text-[9px] block mt-0.5">{tier.annualEarningsNote}</span>
+                )}
               </div>
             </div>
             {tier.link && (

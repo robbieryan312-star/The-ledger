@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npm run test:typecheck && npm run test:crec && npm run test:org-join && npm run test:source-integrity && npm run test:copy-compliance && npm run test:topic-positions-bundle && npm run test:news-registry && npm run test:profile-snapshots && npm run test:client-bundle && npm run test:docs-integrity && npm run test:data-layout && npm run test:env-truth && npm run test:optimization && npm run audit:profile-credibility",
+    "prebuild": "npm run test:typecheck && npm run test:crec && npm run test:org-join && npm run test:source-integrity && npm run test:copy-compliance && npm run test:topic-positions-bundle && npm run test:news-registry && npm run test:profile-snapshots && npm run test:client-bundle && npm run test:docs-integrity && npm run test:data-layout && npm run test:env-truth && npm run test:optimization && npm run test:governor-identity && npm run audit:profile-credibility",
     "build": "next build",
     "postbuild": "npm run test:client-chunks",
     "start": "next start",
@@ -20,6 +20,7 @@
     "test:data-layout": "tsx --test scripts/__tests__/dataLayoutGuard.test.ts",
     "test:env-truth": "tsx --test scripts/__tests__/envTruthGuard.test.ts",
     "test:optimization": "tsx --test scripts/__tests__/optimizationGuards.test.ts scripts/__tests__/syncKernelGuard.test.ts",
+    "test:governor-identity": "tsx --test scripts/__tests__/governorIdentityGuard.test.ts",
     "test:crec": "tsx --test scripts/__tests__/crecProceduralFilter.test.ts",
     "test:org-join": "tsx --test scripts/__tests__/fecOrgJoin.test.ts",
     "test:source-integrity": "tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/ceremonialCrecFilter.test.ts scripts/__tests__/stockTradesCheckpoint.test.ts scripts/__tests__/profileMigratePreserve.test.ts scripts/__tests__/profileCategoryIntegrity.test.ts scripts/__tests__/migratedNotLightweight.test.ts scripts/__tests__/profileCredibilityAudit.test.ts scripts/__tests__/courtListenerSummary.test.ts",

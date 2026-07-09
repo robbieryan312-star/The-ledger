@@ -11,7 +11,7 @@
     "stateCode": "FL",
     "fetchedLive": true,
     "datasetUrl": "https://api.bls.gov/publicAPI/v1/timeseries/data/",
-    "note": "Four education tiers from US CPS (national). Florida state-level unemployment/earnings by education not available via BLS public timeseries API — labeled as US reference."
+    "note": "Four education tiers from US CPS (national): less than HS, HS, bachelor's only, and advanced degree. Earnings shown annualized (weekly × 52). Florida state-level breakdown not in BLS v1 API."
   },
   "records": [
     {
@@ -20,10 +20,13 @@
       "unemploymentRate": 5.5,
       "unemploymentPeriod": "June 2026",
       "unemploymentSeriesId": "LNS14027659",
-      "medianWeeklyEarnings": 1295,
+      "medianWeeklyEarnings": 784,
+      "medianAnnualEarnings": 40768,
       "earningsPeriod": "1st Quarter 2026",
-      "earningsSeriesId": "LEU0252887700",
+      "earningsSeriesId": "LEU0252916700",
       "earningsUnit": "USD/week",
+      "annualEarningsUnit": "USD/year (calculated)",
+      "annualEarningsNote": "Annualized (weekly × 52)",
       "source": {
         "name": "U.S. Bureau of Labor Statistics",
         "url": "https://www.bls.gov",
@@ -32,7 +35,7 @@
         "date": "2026-06-01"
       },
       "asOf": "2026-07-09",
-      "blsUrl": "https://data.bls.gov/timeseries/LNS14027659",
+      "blsUrl": "https://data.bls.gov/timeseries/LEU0252916700",
       "note": "US national CPS reference — not Florida state estimate."
     },
     {
@@ -41,10 +44,13 @@
       "unemploymentRate": 4.2,
       "unemploymentPeriod": "June 2026",
       "unemploymentSeriesId": "LNS14027660",
-      "medianWeeklyEarnings": 1287,
+      "medianWeeklyEarnings": 977,
+      "medianAnnualEarnings": 50804,
       "earningsPeriod": "1st Quarter 2026",
-      "earningsSeriesId": "LEU0252887900",
+      "earningsSeriesId": "LEU0252917300",
       "earningsUnit": "USD/week",
+      "annualEarningsUnit": "USD/year (calculated)",
+      "annualEarningsNote": "Annualized (weekly × 52)",
       "source": {
         "name": "U.S. Bureau of Labor Statistics",
         "url": "https://www.bls.gov",
@@ -53,49 +59,53 @@
         "date": "2026-06-01"
       },
       "asOf": "2026-07-09",
-      "blsUrl": "https://data.bls.gov/timeseries/LNS14027660",
+      "blsUrl": "https://data.bls.gov/timeseries/LEU0252917300",
       "note": "US national CPS reference — not Florida state estimate."
     },
     {
-      "educationLevel": "Some college or associate degree",
+      "educationLevel": "Bachelor's degree",
       "geography": "US",
-      "unemploymentRate": 2.7,
-      "unemploymentPeriod": "June 2026",
-      "unemploymentSeriesId": "LNS14027662",
-      "medianWeeklyEarnings": 46349,
+      "unemploymentRate": null,
+      "unemploymentPeriod": null,
+      "unemploymentSeriesId": "LNS14028977",
+      "medianWeeklyEarnings": 1609,
+      "medianAnnualEarnings": 83668,
       "earningsPeriod": "1st Quarter 2026",
-      "earningsSeriesId": "LEU0252888000",
+      "earningsSeriesId": "LEU0252919100",
       "earningsUnit": "USD/week",
+      "annualEarningsUnit": "USD/year (calculated)",
+      "annualEarningsNote": "Annualized (weekly × 52)",
       "source": {
         "name": "U.S. Bureau of Labor Statistics",
         "url": "https://www.bls.gov",
         "tier": "official",
-        "description": "Current Population Survey (CPS) — national reference; Florida state-level education breakdown not in BLS v1 API.",
-        "date": "2026-06-01"
+        "description": "Current Population Survey (CPS) — national reference; Florida state-level education breakdown not in BLS v1 API."
       },
       "asOf": "2026-07-09",
-      "blsUrl": "https://data.bls.gov/timeseries/LNS14027662",
+      "blsUrl": "https://data.bls.gov/timeseries/LEU0252919100",
       "note": "US national CPS reference — not Florida state estimate."
     },
     {
-      "educationLevel": "Bachelor's degree and higher",
+      "educationLevel": "Advanced degree",
       "geography": "US",
-      "unemploymentRate": 3.6,
-      "unemploymentPeriod": "June 2026",
-      "unemploymentSeriesId": "LNS14027689",
-      "medianWeeklyEarnings": 38606,
+      "unemploymentRate": null,
+      "unemploymentPeriod": null,
+      "unemploymentSeriesId": "LNS14028978",
+      "medianWeeklyEarnings": 1982,
+      "medianAnnualEarnings": 103064,
       "earningsPeriod": "1st Quarter 2026",
-      "earningsSeriesId": "LEU0252888200",
+      "earningsSeriesId": "LEU0252919700",
       "earningsUnit": "USD/week",
+      "annualEarningsUnit": "USD/year (calculated)",
+      "annualEarningsNote": "Annualized (weekly × 52)",
       "source": {
         "name": "U.S. Bureau of Labor Statistics",
         "url": "https://www.bls.gov",
         "tier": "official",
-        "description": "Current Population Survey (CPS) — national reference; Florida state-level education breakdown not in BLS v1 API.",
-        "date": "2026-06-01"
+        "description": "Current Population Survey (CPS) — national reference; Florida state-level education breakdown not in BLS v1 API."
       },
       "asOf": "2026-07-09",
-      "blsUrl": "https://data.bls.gov/timeseries/LNS14027689",
+      "blsUrl": "https://data.bls.gov/timeseries/LEU0252919700",
       "note": "US national CPS reference — not Florida state estimate."
     }
   ]
