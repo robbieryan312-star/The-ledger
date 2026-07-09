@@ -4,7 +4,7 @@
 
 **Current state (2026-07-09):**
 - Branch: `cursor/florida-summaries-sample-70a6`
-- HEAD: (pending commit)
+- HEAD: `f0e05d5`
 - PR: https://github.com/robbieryan312-star/The-ledger/pull/19
 - Tree: dirty · prebuild + build: **green** · keys: **8/11 SET** (no values logged)
 
