@@ -24,7 +24,7 @@ Cursor Cloud and local sessions often spawn **new workspace directories** (e.g. 
 Read **in order** before implementing or asking the owner anything:
 
 1. `.cursor/rules/ledger-core-rules.mdc` — binding rules (all agents)
-2. `docs/workflows/AUDIT_DEBT_BRIEF.md` — Cursor work log (Claude reads this, not chat)
+2. `docs/workflows/AGENT_HANDOFF_LOG.md` — agent handoff log + improvement backlog (Claude reads this, not chat)
 3. `PROGRESS.md` — milestones M1–M8, status board, blockers
 4. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
 5. `KEYS.md` — which env vars are SET vs EMPTY (values only in `.env.local`)

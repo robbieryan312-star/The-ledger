@@ -28,7 +28,7 @@ export const TIER_LABEL_KNOWN_BAD = 'Tier 1 official sources only';
 /** §1.1 letter that must resolve to a real heading in core-rules (GOOD). */
 export const SECTION_CITE_KNOWN_GOOD = {
   cite: '§1.1 J',
-  headingPattern: /#### J\. Cursor work log/i,
+  headingPattern: /#### J\. Agent handoff log/i,
 };
 
 /** Wrong §1.1 letter cite (BAD) — was used before B1 fix. */

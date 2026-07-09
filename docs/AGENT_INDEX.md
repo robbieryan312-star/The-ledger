@@ -5,7 +5,7 @@ Single map of where to read before acting. **Do not** use `docs/archive/` for cu
 ## Session start (mandatory order)
 
 1. `.cursor/rules/ledger-core-rules.mdc` — binding rules for all agents
-2. `docs/workflows/AUDIT_DEBT_BRIEF.md` — Cursor work log (**Claude reads this, not chat** — §1.1 J)
+2. `docs/workflows/AGENT_HANDOFF_LOG.md` — agent handoff log + improvement backlog (**Claude reads this, not chat** — §1.1 J)
 3. `PROGRESS.md` — milestones M1–M8, status board, blockers
 4. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
 5. `KEYS.md` — SET vs EMPTY env vars (values in `.env.local` only)
@@ -71,7 +71,7 @@ Checks session-start files exist, guard scripts registered, and key npm scripts 
 
 | Topic | File |
 |-------|------|
-| **Cursor work log (mandatory end-of-turn — §1.1 J)** | `docs/workflows/AUDIT_DEBT_BRIEF.md` |
+| **Agent handoff log (mandatory end-of-turn — §1.1 J)** | `docs/workflows/AGENT_HANDOFF_LOG.md` |
 | Batch scaling (M2) | `docs/workflows/BATCH_SCALING.md` |
 | Florida state data ingest | `docs/FLORIDA_DATA.md` |
 | Product vision & voice | `PRODUCT_VISION.md` |
