@@ -17,6 +17,7 @@ const DOC_ROOTS = [
 const SKIP_DOC = new Set([
   path.join(projectRoot, 'docs', 'archive'),
   path.join(projectRoot, 'docs', 'progress'),
+  path.join(projectRoot, 'docs', 'workflows', 'content-maps'),
 ]);
 
 /** Sync/ingest outputs documented before first run in a fresh clone. */
