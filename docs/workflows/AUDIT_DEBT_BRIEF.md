@@ -5,8 +5,8 @@ Claude Code reads **this file**, not chat. Only the **last 3 session entries** a
 
 **Current state (2026-07-09):**
 - Branch: `cursor/florida-summaries-sample-70a6`
-- HEAD: (pending commit)
-- PR: (pending)
+- HEAD: `4356f2f`
+- PR: (creating)
 - Tree: dirty until commit · prebuild + build: **green**
 - Parent branch: `cursor/florida-state-page-4114` @ `fa9eac8`
 
