@@ -14,7 +14,7 @@ import { Politician, CountyData, CountyElection, Election } from '@/lib/types';
 import type { SnapshotSlice } from '@/lib/types/snapshotTypes';
 import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
 import OfficialCard from '@/components/counties/OfficialCard';
-import { FloridaRecordPanel, FloridaStateEconomicPanel } from '@/components/records/FloridaRecordPanel';
+import { FloridaStateEconomicCompact } from '@/components/records/FloridaRecordPanel';
 
 const countyByFips: Record<string, CountyData> = {};
 const countiesByState: Record<string, CountyData[]> = {};
@@ -174,28 +174,17 @@ function nationalStateStyle(
   };
 }
 
+function stateOfficialsHref(stateCode: string): string {
+  if (stateCode === 'FL') return '/states/FL#politicians';
+  return `/politicians?state=${stateCode}`;
+}
+
 function formatMoney(n: number): string {
   if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
   if (n >= 1_000) return `$${(n / 1_000).toFixed(0)}K`;
   return `$${n}`;
 }
 
-function plainCourtSummary(title: string): string {
-  if (title.startsWith('In Re:')) {
-    const topic = title.replace(/^In Re:\s*/i, '');
-    return `Rulemaking order about ${topic.toLowerCase()}.`;
-  }
-  if (title.includes(' v. State of Florida')) {
-    return 'Criminal appeal where the court reviewed the conviction or sentence.';
-  }
-  if (title.startsWith('The Florida Bar v.')) {
-    return 'Attorney-discipline case brought by The Florida Bar.';
-  }
-  if (title.includes(' v. ')) {
-    return 'Civil dispute where the court resolved a legal question on appeal.';
-  }
-  return 'Florida Supreme Court opinion resolving a statewide legal question.';
-}
 
 function easeInOutCubic(t: number): number {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
@@ -343,7 +332,7 @@ export default function USAMap({
   governorMapFills,
   governorPartyByState,
   floridaEconomicSlice,
-  floridaCourtSlice,
+  floridaCourtSlice: _floridaCourtSlice,
 }: MapExplorerDataProps) {
   const searchParams = useSearchParams();
   const { registerNavigator } = useMapNavigation();
@@ -791,7 +780,7 @@ export default function USAMap({
                     </div>
                     {statePoliticians.length > MAP_SIDEBAR_OFFICIAL_LIMIT && selectedState && (
                       <Link
-                        href={`/politicians?state=${selectedState}`}
+                        href={stateOfficialsHref(selectedState)}
                         className="mt-2 block text-center text-xs text-[#c8a951] hover:text-[#e8c96a] transition-colors"
                       >
                         View all {statePoliticians.length} officials →
@@ -886,7 +875,7 @@ export default function USAMap({
                       </div>
                       {selectedState && statePoliticians.length > MAP_SIDEBAR_OFFICIAL_LIMIT && (
                         <Link
-                          href={`/politicians?state=${selectedState}`}
+                          href={stateOfficialsHref(selectedState)}
                           className="text-[10px] text-[#c8a951] hover:text-[#e8c96a] whitespace-nowrap"
                         >
                           Full list →
@@ -898,7 +887,7 @@ export default function USAMap({
                     </div>
                     {statePoliticians.length > MAP_SIDEBAR_OFFICIAL_LIMIT && selectedState && (
                       <Link
-                        href={`/politicians?state=${selectedState}`}
+                        href={stateOfficialsHref(selectedState)}
                         className="mt-2 block text-center text-xs text-[#c8a951] hover:text-[#e8c96a] transition-colors"
                       >
                         View all {statePoliticians.length} officials →
@@ -909,15 +898,7 @@ export default function USAMap({
 
                 {selectedState === 'FL' && (
                   <>
-                    <FloridaStateEconomicPanel
-                      slice={floridaEconomicSlice}
-                      collapsedLabels={['Population', 'Unemployment level', 'Employment', 'Labor force']}
-                    />
-                    <FloridaRecordPanel
-                      title="Florida Supreme Court Decisions"
-                      subtitle="Recent opinions with plain-language case context — click title for full text."
-                      slice={floridaCourtSlice}
-                    />
+                    <FloridaStateEconomicCompact slice={floridaEconomicSlice} />
                   </>
                 )}
 
@@ -1013,7 +994,7 @@ export default function USAMap({
                   </div>
                 )}
 
-                <Link href={`/politicians?state=${selectedState}`}
+                <Link href={stateOfficialsHref(selectedState)}
                       className="flex items-center justify-center gap-2 w-full bg-[#1e3a5f] hover:bg-[#2d5a8e] text-white py-2.5 rounded-xl text-sm font-medium transition-colors">
                   <Users className="h-4 w-4" /> All {selectedStateData?.name ?? selectedState} Politicians
                 </Link>
