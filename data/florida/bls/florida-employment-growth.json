@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "source": {
+      "name": "U.S. Bureau of Labor Statistics",
+      "url": "https://www.bls.gov",
+      "tier": "official",
+      "description": "Official labor and price statistics via api.bls.gov"
+    },
+    "asOf": "2026-07-09",
+    "count": 2,
+    "stateCode": "FL",
+    "fetchedLive": true,
+    "datasetUrl": "https://api.bls.gov/publicAPI/v1/timeseries/data/",
+    "note": "Florida statewide nonfarm employment with 10-year growth; national job openings sample."
+  },
+  "records": [
+    {
+      "indicator": "Total nonfarm employment",
+      "geography": "FL",
+      "unit": "thousands",
+      "seriesId": "SMU12000000000000001",
+      "latestPeriod": "December 2023",
+      "latestValue": 9964.1,
+      "recent": [
+        {
+          "period": "December 2023",
+          "value": 9964.1
+        },
+        {
+          "period": "November 2023",
+          "value": 9955.8
+        },
+        {
+          "period": "October 2023",
+          "value": 9875.9
+        },
+        {
+          "period": "September 2023",
+          "value": 9769.9
+        },
+        {
+          "period": "August 2023",
+          "value": 9736.8
+        },
+        {
+          "period": "July 2023",
+          "value": 9647.1
+        },
+        {
+          "period": "June 2023",
+          "value": 9678.4
+        },
+        {
+          "period": "May 2023",
+          "value": 9759.5
+        },
+        {
+          "period": "April 2023",
+          "value": 9762.4
+        },
+        {
+          "period": "March 2023",
+          "value": 9720.3
+        },
+        {
+          "period": "February 2023",
+          "value": 9692.9
+        },
+        {
+          "period": "January 2023",
+          "value": 9618.8
+        }
+      ],
+      "tenYearGrowthPct": null,
+      "tenYearGrowthNote": "Insufficient history for 10-year comparison",
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Official labor and price statistics via api.bls.gov",
+        "date": "2023-12-01"
+      },
+      "asOf": "2026-07-09",
+      "blsUrl": "https://data.bls.gov/timeseries/SMU12000000000000001"
+    },
+    {
+      "indicator": "Job openings (national)",
+      "geography": "US",
+      "unit": "thousands",
+      "seriesId": "JTS000000000000000JOL",
+      "latestPeriod": "December 2023",
+      "latestValue": 8520,
+      "recent": [
+        {
+          "period": "December 2023",
+          "value": 8520
+        },
+        {
+          "period": "November 2023",
+          "value": 8602
+        },
+        {
+          "period": "October 2023",
+          "value": 8580
+        },
+        {
+          "period": "September 2023",
+          "value": 9259
+        },
+        {
+          "period": "August 2023",
+          "value": 9254
+        },
+        {
+          "period": "July 2023",
+          "value": 8657
+        }
+      ],
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Official labor and price statistics via api.bls.gov",
+        "date": "2023-12-01"
+      },
+      "asOf": "2026-07-09",
+      "blsUrl": "https://data.bls.gov/timeseries/JTS000000000000000JOL",
+      "note": "National JOLTS job openings — Florida state openings series not included in this sample."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "source": {
+      "name": "U.S. Bureau of Labor Statistics",
+      "url": "https://www.bls.gov",
+      "tier": "official",
+      "description": "Official labor and price statistics via api.bls.gov"
+    },
+    "asOf": "2026-07-09",
+    "count": 0,
+    "stateCode": "FL",
+    "fetchedLive": false,
+    "errors": [
+      "BLS occupation projection/OES fastest-growing series not returned by public v1 timeseries API.",
+      "Probed: OEUM120000000000000001, OEUS120000000000000001, OEUM000000000000000001"
+    ],
+    "datasetUrl": "https://www.bls.gov/emp/",
+    "note": "Honest gap: fastest-growing occupations and 10-year occupational projections require BLS Employment Projections tables outside the v1 timeseries API. No verified occupation sample ingested."
+  },
+  "records": []
+}

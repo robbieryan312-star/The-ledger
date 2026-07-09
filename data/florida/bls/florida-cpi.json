@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "source": {
+      "name": "U.S. Bureau of Labor Statistics",
+      "url": "https://www.bls.gov",
+      "tier": "official",
+      "description": "Official labor and price statistics via api.bls.gov"
+    },
+    "asOf": "2026-07-09",
+    "count": 1,
+    "stateCode": "FL",
+    "fetchedLive": true,
+    "errors": [
+      "No Florida or South Atlantic CPI series returned data from BLS v1 API — Florida-specific CPI unavailable."
+    ],
+    "datasetUrl": "https://api.bls.gov/publicAPI/v1/timeseries/data/",
+    "note": "Honest gap: Florida-specific CPI not in BLS v1 API. US CPI-U included as national inflation reference only."
+  },
+  "records": [
+    {
+      "indicator": "US CPI-U (national reference)",
+      "geography": "US",
+      "unit": "index",
+      "seriesId": "CUSR0000SA0",
+      "latestPeriod": "December 2025",
+      "latestValue": 326.031,
+      "recent": [
+        {
+          "period": "December 2025",
+          "value": 326.031
+        },
+        {
+          "period": "November 2025",
+          "value": 325.063
+        },
+        {
+          "period": "September 2025",
+          "value": 324.245
+        },
+        {
+          "period": "August 2025",
+          "value": 323.291
+        },
+        {
+          "period": "July 2025",
+          "value": 322.169
+        },
+        {
+          "period": "June 2025",
+          "value": 321.435
+        },
+        {
+          "period": "May 2025",
+          "value": 320.62
+        },
+        {
+          "period": "April 2025",
+          "value": 320.302
+        },
+        {
+          "period": "March 2025",
+          "value": 319.785
+        },
+        {
+          "period": "February 2025",
+          "value": 319.679
+        },
+        {
+          "period": "January 2025",
+          "value": 318.961
+        }
+      ],
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Official labor and price statistics via api.bls.gov",
+        "date": "2025-12-01"
+      },
+      "asOf": "2026-07-09",
+      "blsUrl": "https://data.bls.gov/timeseries/CUSR0000SA0",
+      "note": "Florida-specific CPI not available via BLS public timeseries API; US urban CPI shown for inflation context only."
+    }
+  ]
+}
