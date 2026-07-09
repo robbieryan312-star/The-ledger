@@ -22,7 +22,7 @@ Fix CodeQL high alert on `formatDelta` no-op `.replace('$', '$')` flagged on PR 
 
 ### Commits
 
-- _(pending)_
+- `b00f635` — fix(format): CodeQL formatDelta USD branch
 
 ### Commands run (this session)
 
