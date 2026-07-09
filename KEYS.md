@@ -14,7 +14,7 @@
 
 ---
 
-## SET in `.env.local` (working)
+## SET in `.env.local`
 
 | Env var | Powers |
 |---------|--------|
@@ -24,8 +24,21 @@
 | `DATA_GOV_API_KEY` / `GOVINFO_API_KEY` | GovInfo / GPO (Congressional Record pilot) |
 | `LEGISCAN_API_KEY` | FL state bills |
 | `OPENSTATES_API_KEY` | FL state legislators |
-| `NEWSAPI_KEY` | FL news (national uses GDELT) |
+| `NEWSAPI_KEY` | FL news ingest (**deferred** — NewsAPI 426 plan restriction; national uses RSS/GDELT) |
 | `PROPUBLICA_CONGRESS_KEY` | **Retired** — do not use |
+
+### Key onboarding (from former API_KEYS.md)
+
+| Key | Signup URL | What it powers |
+|-----|------------|----------------|
+| `FEC_API_KEY` | [api.data.gov/signup](https://api.data.gov/signup/) | Campaign finance sync |
+| `CONGRESS_API_KEY` | [api.congress.gov/sign-up](https://api.congress.gov/sign-up/) | House roll-call votes |
+
+> **Different services:** `FEC_API_KEY` (api.data.gov) does **not** work for Congress.gov.
+
+**Prefer** editing `.env.local` over pasting keys in chat. **Rotate** any key pasted in chat.
+
+After adding keys: `npm run sync:fec` → `npm run sync:votes` → `npm run sync:legislators` → `npm run verify:office` → `npm run build`.
 
 ---
 
