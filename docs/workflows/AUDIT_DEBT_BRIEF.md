@@ -1,88 +1,71 @@
 # Cursor Work Log — Audit & Debt Remediation
 
 **Living file.** Cursor updates + **commits** this after **every** work/verify session (§1.1 J).
-Claude Code reads **this file**, not chat. Only the **last 3 session entries** are kept below.
 
 **Current state (2026-07-09):**
 - Branch: `cursor/florida-summaries-sample-70a6`
-- HEAD: `061f181`
+- HEAD: (pending commit)
 - PR: https://github.com/robbieryan312-star/The-ledger/pull/19
-- Tree: clean · prebuild + build: **green**
-- Parent branch: `cursor/florida-state-page-4114` @ `fa9eac8`
+- Tree: dirty · prebuild + build: **green**
 
 ---
 
-## Latest session — FL court/LegiScan 10-item samples (BLOCKED partial)
+## Latest session — Remove court summarization; verbatim metadata only (COMPLETE)
 
 ### Objective
 
-Phase 1: investigate CourtListener detail fields; run 10-opinion + 10-bill
-verified samples; STOP for Claude review before scaling.
+Stop extractive court-opinion summarization; present CourtListener metadata exactly as
+provided. Verify `COURTLISTENER_API_KEY` per KEYS.md.
 
 ### Verdict / outcome
 
-**PARTIAL PASS / BLOCKED on LegiScan live sample.** Court 10-opinion sample
-completed (search-only; no `COURTLISTENER_API_KEY` in cloud). LegiScan 10-bill
-sample **not run** — `LEGISCAN_API_KEY` empty; Cloudflare blocks automated
-registration. Detail-endpoint enrichment code shipped; awaits owner keys + CAPTCHA.
-
-### Commits
-
-- (this commit) `4356f2f` — FL summary sample ingest + CourtListener detail wiring
+**COMPLETE** on code/UI change. **Key verify FAIL in cloud:** `.env.local` has comments only
+(no `COURTLISTENER_API_KEY=` value line). Ingest: 0/10 verbatim metadata, 10 title+status
+fallback. Owner machine KEYS.md lists SET — cloud session does not have the value.
 
 ### Commands run (this session)
 
-- `npm run test:source-integrity` → exit 0 (85 tests)
-- `npm run ingest:courts-fl -- --limit 10` → 10 records, holding=0 extractive=5 fallback=5, detail=false
+- `npm run test:source-integrity` → 85 pass
+- `npm run ingest:courts-fl -- --limit 10` → 0 verbatim / 10 fallback, detail=false
 - `npm run build:data-slices` → exit 0
-- `npm run prebuild` → exit 0
-- `npm run build` → exit 0
-- CourtListener detail probe: `curl clusters/10919893/` → 401 without token
-- CourtListener search probe: `curl search/?court=fla&page_size=1` → syllabus/posture empty; snippet truncated
+- `npm run prebuild` + `npm run build` → exit 0
 
 ### Files touched
 
 | Path | Action | What changed |
 |------|--------|--------------|
-| `scripts/lib/courtListenerDetail.ts` | created | cluster/opinion detail fetch with field selection |
-| `scripts/lib/courtListenerSummary.ts` | modified | headnotes/summary/disposition/plain_text priority; caption guards |
-| `scripts/ingest/florida/ingest-courtlistener-florida.ts` | modified | `--limit`, optional detail enrichment, quality counters |
-| `scripts/ingest/florida/ingest-legiscan-florida.ts` | modified | `--limit` / `--list-limit` for samples |
-| `scripts/__tests__/courtListenerSummary.test.ts` | modified | headnotes + plain_text tests |
-| `data/florida/courts/florida-court-opinions.json` | modified | 10-record sample snapshot |
-| `lib/data/generated/slices/judiciary-courts.json` | modified | slice rebuild |
-| `.env.example`, `KEYS.md` | modified | `COURTLISTENER_API_KEY` documented |
+| `scripts/lib/courtListenerSummary.ts` | modified | `pickCourtSourceText` verbatim only; no snippet/plain_text |
+| `scripts/ingest/florida/ingest-courtlistener-florida.ts` | modified | cluster detail only; no opinion extractive |
+| `components/states/FloridaCourtDecisionRow.tsx` | modified | case name headline; verbatim metadata in expand |
+| `scripts/build-data-slices.ts` | modified | court row title = caseName |
+| `scripts/__tests__/courtListenerSummary.test.ts` | modified | snippet ignored tests |
+| `.github/workflows/refresh-data.yml` | modified | `COURTLISTENER_API_KEY` secret |
+| `scripts/setup-github-secrets.sh` | modified | push `COURTLISTENER_API_KEY` |
+| `data/florida/courts/florida-court-opinions.json` | modified | 10-sample, no extractive summaries |
 
 ### Acceptance evidence
 
-**CourtListener investigation (Task 1):**
-- `/search/` (no auth): `syllabus`, `posture`, `procedural_history`, `opinions[].snippet`, `cluster_id`, `opinions[].id`
-- `/clusters/{id}/` (auth required): `syllabus`, `posture`, `procedural_history`, `headnotes`, `summary`, `disposition`, `history`, `correction`, `cross_reference`, `other_dates`, `sub_opinions`
-- `/opinions/{id}/` (auth required): `plain_text`, `html_with_citations`, `type`, `download_url`, `opinions_cited`, `ordering_key`
-- Live FL search sample: all 10 had empty `syllabus`/`posture`/`procedural_history`
-
-**Court 10-sample (Task 2):** holding-level 0 · extractive (snippet) 5 · fallback 5 · inferred outcomes 0
-
-**LegiScan 10-sample (Task 3):** **BLOCKED** — no `LEGISCAN_API_KEY`; ingest preserves existing JSON
+- No `leadSummary` / `trimToWordBoundary` / snippet path in court pipeline
+- 10-sample: all records lack `summary` field; `summaryFallback` only
+- Build green
 
 ### Open / next
 
-- Owner: complete CourtListener CAPTCHA registration → set `COURTLISTENER_API_KEY`; provide `LEGISCAN_API_KEY`
-- Claude review samples; on PASS scale 10→30→full (court) and 10→30→100 (bills)
-- Re-run court sample with detail enrichment once token set (expect `plain_text` tier upgrades)
+- Owner: ensure `COURTLISTENER_API_KEY=<token>` is a real line in cloud `.env.local` (not comment)
+- Re-run `npm run ingest:courts-fl -- --limit 10` with key to populate verbatim cluster fields
 
 ---
 
 ## Session log (last 3 only)
 
-### 3 — FL summary samples (2026-07-09)
+### 3 — Verbatim court metadata only (2026-07-09)
+
+Removed extractive summarization; cloud key still missing.
+
+### 2 — FL summary samples (2026-07-09)
 
 Court 10-sample search-only; LegiScan blocked on keys.
 
-### 2 — Credibility gate landed (2026-07-09)
+### 1 — Credibility gate landed (2026-07-09)
 
 PR #17 merged `d463bc4`.
-
-### 1 — Credibility audit continuous gate (2026-07-09)
-
-Branch `cursor/credibility-audit-gate-4114`.

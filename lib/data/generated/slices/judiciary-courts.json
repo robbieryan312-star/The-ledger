@@ -9,15 +9,13 @@
     "asOf": "2026-07-09",
     "totalCount": 10,
     "datasetUrl": "https://www.courtlistener.com/api/rest/v4/search/?type=o&court=fla",
-    "note": "Supreme Court of Florida sample (10 cap). 5/10 sourced summaries — holding-level: 0, extractive: 5, fallback: 5. search-only (set COURTLISTENER_API_KEY for cluster/opinion detail)."
+    "note": "Supreme Court of Florida (10 cap). 0/10 records include verbatim CourtListener metadata; 10 show case title + status only. COURTLISTENER_API_KEY missing — cluster detail skipped."
   },
   "records": [
     {
       "id": "court-0",
-      "title": "Over forty-four years ago, Dennis Sochor murdered Patricia Gifford.",
+      "title": "Dennis Sochor v. State of Florida",
       "officialTitle": "Dennis Sochor v. State of Florida",
-      "summary": "Over forty-four years ago, Dennis Sochor murdered Patricia Gifford.",
-      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2026-0971 · Published",
       "date": "2026-07-08",
       "link": "https://www.courtlistener.com/opinion/10919893/dennis-sochor-v-state-of-florida/",
@@ -32,7 +30,7 @@
     },
     {
       "id": "court-1",
-      "title": "James Aren Duckett v. State of Florida — Published",
+      "title": "James Aren Duckett v. State of Florida",
       "officialTitle": "James Aren Duckett v. State of Florida",
       "detail": "Supreme Court of Florida · SC2026-0449 & SC2026-0450 · Published",
       "date": "2026-07-08",
@@ -48,7 +46,7 @@
     },
     {
       "id": "court-2",
-      "title": "Miguel Rodriguez Albisu v. State of Florida — Published",
+      "title": "Miguel Rodriguez Albisu v. State of Florida",
       "officialTitle": "Miguel Rodriguez Albisu v. State of Florida",
       "detail": "Supreme Court of Florida · SC2026-0142 · Published",
       "date": "2026-07-02",
@@ -64,10 +62,8 @@
     },
     {
       "id": "court-3",
-      "title": "RICHARD WALLACE RHODES, Richard Wallace Rhodes, convicted of first-degree murder and",
+      "title": "Richard Wallace Rhodes v. State of Florida",
       "officialTitle": "Richard Wallace Rhodes v. State of Florida",
-      "summary": "RICHARD WALLACE RHODES, Richard Wallace Rhodes, convicted of first-degree murder and",
-      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2024-1099 · Published",
       "date": "2026-07-02",
       "link": "https://www.courtlistener.com/opinion/10883905/richard-wallace-rhodes-v-state-of-florida/",
@@ -82,7 +78,7 @@
     },
     {
       "id": "court-4",
-      "title": "The Florida Bar v. Elizabeth Hidalgo — Published",
+      "title": "The Florida Bar v. Elizabeth Hidalgo",
       "officialTitle": "The Florida Bar v. Elizabeth Hidalgo",
       "detail": "Supreme Court of Florida · SC2025-0636 · Published",
       "date": "2026-07-02",
@@ -98,7 +94,7 @@
     },
     {
       "id": "court-5",
-      "title": "Trace Elements, Inc. v. Nadja MacKensen — Published",
+      "title": "Trace Elements, Inc. v. Nadja MacKensen",
       "officialTitle": "Trace Elements, Inc. v. Nadja MacKensen",
       "detail": "Supreme Court of Florida · SC2024-1274 · Published",
       "date": "2026-07-02",
@@ -114,7 +110,7 @@
     },
     {
       "id": "court-6",
-      "title": "James Aren Duckett v. State of Florida — Published",
+      "title": "James Aren Duckett v. State of Florida",
       "officialTitle": "James Aren Duckett v. State of Florida",
       "detail": "Supreme Court of Florida · SC2026-0959 · Published",
       "date": "2026-07-01",
@@ -130,10 +126,8 @@
     },
     {
       "id": "court-7",
-      "title": "IN RE: AMENDMENTS TO FLORIDA PROBATE RULES.",
+      "title": "In Re: Amendments to Florida Probate Rules",
       "officialTitle": "In Re: Amendments to Florida Probate Rules",
-      "summary": "IN RE: AMENDMENTS TO FLORIDA PROBATE RULES.",
-      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2025-1478 · Published",
       "date": "2026-06-25",
       "link": "https://www.courtlistener.com/opinion/10880249/in-re-amendments-to-florida-probate-rules/",
@@ -148,10 +142,8 @@
     },
     {
       "id": "court-8",
-      "title": "IN RE: AMENDMENTS TO FLORIDA RULES OF APPELLATE The Florida Bar’s Appellate Court Rules Committee filed a report proposing amendments to Florida Rules of Appellate Procedure 9.100 (Original Proceedings),",
+      "title": "In Re: Amendments to Florida Rules of Appellate Procedure",
       "officialTitle": "In Re: Amendments to Florida Rules of Appellate Procedure",
-      "summary": "IN RE: AMENDMENTS TO FLORIDA RULES OF APPELLATE The Florida Bar’s Appellate Court Rules Committee filed a report proposing amendments to Florida Rules of Appellate Procedure 9.100 (Original Proceedings),",
-      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2025-0241 · Published",
       "date": "2026-06-25",
       "link": "https://www.courtlistener.com/opinion/10880248/in-re-amendments-to-florida-rules-of-appellate-procedure/",
@@ -166,10 +158,8 @@
     },
     {
       "id": "court-9",
-      "title": "KEITH ALEXANDER TIMES, The State of Florida appeals an order suppressing evidence obtained during a searc",
+      "title": "State of Florida v. Keith Alexander Times",
       "officialTitle": "State of Florida v. Keith Alexander Times",
-      "summary": "KEITH ALEXANDER TIMES, The State of Florida appeals an order suppressing evidence obtained during a searc",
-      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2024-0647 · Published",
       "date": "2026-06-25",
       "link": "https://www.courtlistener.com/opinion/10880247/state-of-florida-v-keith-alexander-times/",

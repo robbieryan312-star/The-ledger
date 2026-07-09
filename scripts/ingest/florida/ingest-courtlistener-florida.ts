@@ -1,20 +1,18 @@
 /**
- * CourtListener (Free Law Project) — recent Supreme Court of Florida opinions (no key).
+ * CourtListener (Free Law Project) — recent Supreme Court of Florida opinions.
  * Output: data/florida/courts/florida-court-opinions.json
  *
- * Tier 2 nonpartisan aggregator; the opinions themselves are official primary
- * court records. Each record is dated and linked to the opinion on CourtListener.
- * Summary field: sourced from cluster/opinion detail + search snippet only.
+ * Presents verbatim CourtListener metadata fields only (syllabus, headnotes, etc.).
+ * Never extractive-summarizes opinion body text or snippets.
  *
  * Usage:
  *   npm run ingest:courts-fl -- --limit 10   # small verified sample (recommended first)
  */
 import { fetchJson, loadEnvLocal, sleep, writeFloridaSnapshot } from '../../lib/ingest-utils';
-import { fetchClusterDetail, fetchOpinionDetail } from '../../lib/courtListenerDetail';
+import { fetchClusterDetail } from '../../lib/courtListenerDetail';
 import {
   courtSummaryFallbackHeadline,
-  extractCourtSummary,
-  isHoldingLevelSummary,
+  pickCourtSourceText,
 } from '../../lib/courtListenerSummary';
 
 const CL_SOURCE = {
@@ -66,8 +64,7 @@ async function main(): Promise<void> {
   const asOf = new Date().toISOString().slice(0, 10);
   const errors: string[] = [];
   const records: Array<Record<string, unknown>> = [];
-  let holdingLevel = 0;
-  let extractive = 0;
+  let withSourceText = 0;
   let fallback = 0;
 
   try {
@@ -84,7 +81,6 @@ async function main(): Promise<void> {
         const clusterId = r.cluster_id;
 
         let clusterDetail;
-        let opinionPlainText: string | undefined;
         if (detailEnrichment && clusterId) {
           try {
             clusterDetail = await fetchClusterDetail(clusterId, clToken!);
@@ -94,30 +90,11 @@ async function main(): Promise<void> {
               `cluster ${clusterId}: ${err instanceof Error ? err.message : String(err)}`,
             );
           }
-          if (opinionId) {
-            try {
-              const opinionDetail = await fetchOpinionDetail(opinionId, clToken!);
-              opinionPlainText = opinionDetail.plain_text;
-              await sleep(250);
-            } catch (err) {
-              errors.push(
-                `opinion ${opinionId}: ${err instanceof Error ? err.message : String(err)}`,
-              );
-            }
-          }
         }
 
-        const { summary, summarySource } = extractCourtSummary(r, {
-          cluster: clusterDetail,
-          opinionPlainText,
-        });
-
-        if (summary && summarySource) {
-          if (isHoldingLevelSummary(summarySource)) holdingLevel += 1;
-          else extractive += 1;
-        } else {
-          fallback += 1;
-        }
+        const { sourceText, sourceField } = pickCourtSourceText(r, { cluster: clusterDetail });
+        if (sourceText && sourceField) withSourceText += 1;
+        else fallback += 1;
 
         records.push({
           caseName,
@@ -126,9 +103,9 @@ async function main(): Promise<void> {
           docketNumber: r.docketNumber ?? 'No record on file',
           citation: Array.isArray(r.citation) ? r.citation : [],
           status,
-          summary: summary ?? undefined,
-          summarySource: summarySource ?? undefined,
-          summaryFallback: summary ? undefined : courtSummaryFallbackHeadline(caseName, status),
+          summary: sourceText ?? undefined,
+          summarySource: sourceField ?? undefined,
+          summaryFallback: sourceText ? undefined : courtSummaryFallbackHeadline(caseName, status),
           clusterId: clusterId ?? undefined,
           opinionId: opinionId ?? undefined,
           source: { ...CL_SOURCE, date: r.dateFiled },
@@ -145,10 +122,9 @@ async function main(): Promise<void> {
     errors.push(err instanceof Error ? err.message : String(err));
   }
 
-  const withSummary = records.filter((r) => typeof r.summary === 'string').length;
   const detailNote = detailEnrichment
-    ? 'cluster/opinion detail enrichment ON'
-    : 'search-only (set COURTLISTENER_API_KEY for cluster/opinion detail)';
+    ? 'cluster detail enrichment ON'
+    : 'COURTLISTENER_API_KEY missing — cluster detail skipped';
   const out = await writeFloridaSnapshot('courts', 'florida-court-opinions.json', {
     meta: {
       source: CL_SOURCE,
@@ -158,13 +134,13 @@ async function main(): Promise<void> {
       fetchedLive: errors.length === 0 && records.length > 0,
       errors: errors.length ? errors : undefined,
       datasetUrl: 'https://www.courtlistener.com/api/rest/v4/search/?type=o&court=fla',
-      note: `Supreme Court of Florida sample (${recordLimit} cap). ${withSummary}/${records.length} sourced summaries — holding-level: ${holdingLevel}, extractive: ${extractive}, fallback: ${fallback}. ${detailNote}.`,
+      note: `Supreme Court of Florida (${recordLimit} cap). ${withSourceText}/${records.length} records include verbatim CourtListener metadata; ${fallback} show case title + status only. ${detailNote}.`,
     },
     records,
   });
 
   console.log(
-    `Wrote ${out} (${records.length} records, ${withSummary} with summary: holding=${holdingLevel} extractive=${extractive} fallback=${fallback}, detail=${detailEnrichment})`,
+    `Wrote ${out} (${records.length} records, ${withSourceText} with verbatim source field, ${fallback} fallback, detail=${detailEnrichment})`,
   );
 }
 

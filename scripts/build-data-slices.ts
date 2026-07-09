@@ -92,17 +92,15 @@ function toCourtRow(rec: Record<string, unknown>, id: string) {
   const source = (rec.source && typeof rec.source === 'object' ? rec.source : {}) as Source;
   const caseName = String(rec.caseName ?? 'No record on file');
   const status = String(rec.status ?? '');
-  const summary = String(rec.summary ?? '').trim();
-  const fallback = String(rec.summaryFallback ?? '').trim();
-  const headline = summary || fallback || caseName;
+  const sourceText = String(rec.summary ?? '').trim();
   const docket = String(rec.docketNumber ?? '');
   const court = String(rec.court ?? '');
   const detailParts = [court, docket, status].filter((p) => p && p !== 'No record on file');
   return {
     id,
-    title: headline,
+    title: caseName,
     officialTitle: caseName,
-    summary: summary || undefined,
+    summary: sourceText || undefined,
     summarySource: rec.summarySource ? String(rec.summarySource) : undefined,
     detail: detailParts.join(' · ') || undefined,
     date: pick(rec, DATE_FIELDS) || undefined,

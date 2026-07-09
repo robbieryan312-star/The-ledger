@@ -1,6 +1,6 @@
 /**
  * CourtListener REST v4 cluster/opinion detail fetches.
- * Requires COURTLISTENER_API_KEY — /search/ is public; detail endpoints are not.
+ * Requires COURTLISTENER_API_KEY for cluster detail — /search/ is public; detail endpoints are not.
  */
 import { fetchJson } from './ingest-utils';
 

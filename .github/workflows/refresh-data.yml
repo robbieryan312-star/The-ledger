@@ -41,11 +41,13 @@ jobs:
           GOVINFO_API_KEY: ${{ secrets.GOVINFO_API_KEY }}
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
           OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
+          COURTLISTENER_API_KEY: ${{ secrets.COURTLISTENER_API_KEY }}
           NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
         run: |
           [ -n "$CENSUS_API_KEY" ] && npm run ingest:census-fl || echo "skip census (no secret)"
           [ -n "$LEGISCAN_API_KEY" ] && npm run ingest:legiscan-fl || echo "skip legiscan (no secret)"
           [ -n "$OPENSTATES_API_KEY" ] && npm run ingest:openstates-fl || echo "skip openstates (no secret)"
+          [ -n "$COURTLISTENER_API_KEY" ] && npm run ingest:courts-fl || echo "skip courts detail refresh (no COURTLISTENER_API_KEY)"
           [ -n "$NEWSAPI_KEY" ] && npm run ingest:news-fl || echo "skip news (no secret)"
           { [ -n "$GOVINFO_API_KEY" ] || [ -n "$DATA_GOV_API_KEY" ]; } && npm run ingest:govinfo-fl || echo "skip govinfo (no secret)"
           [ -n "$FEC_API_KEY" ] && npm run ingest:fec-fl && npm run sync:fec-national && npm run sync:fec-schedule-a || echo "skip fec (no secret)"
