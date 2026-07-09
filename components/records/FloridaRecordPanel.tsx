@@ -1,16 +1,30 @@
 'use client';
 
 import Link from 'next/link';
-import { ExternalLink, Info } from 'lucide-react';
+import { useState } from 'react';
+import { ExternalLink, Info, ChevronDown, ChevronRight } from 'lucide-react';
 import type {
   LegislationBundleSlice,
   NewsBundleSlice,
   SnapshotRecordRow,
   SnapshotSlice,
   SnapshotSliceMeta,
+  StateEconomicIndicator,
   StateEconomicSlice,
 } from '@/lib/types/snapshotTypes';
 import SourceProvenance from '@/components/ui/SourceProvenance';
+import TierDot from '@/components/ui/TierDot';
+import {
+  deltaVsMonthsAgo,
+  displayFullValue,
+  displayValue,
+  employmentRatePercent,
+  findIndicator,
+  formatDelta,
+  formatPercent,
+  indicatorRawValue,
+  populationHeroText,
+} from '@/lib/format/stateEconomicDisplay';
 
 function formatFetchedAt(iso?: string): string {
   if (!iso) return '';
@@ -120,29 +134,100 @@ export function FloridaRecordPanel({ title, subtitle, slice, moreHref = '/source
   );
 }
 
-function EconomicIndicatorCard({ ind }: { ind: StateEconomicSlice['indicators'][0] }) {
-  const display = (() => {
-    if (ind.label !== 'Unemployment rate') return ind;
-    const numeric = Number.parseFloat(ind.value.replace('%', ''));
-    if (!Number.isFinite(numeric)) return ind;
-    return {
-      ...ind,
-      label: 'Employment rate (calculated)',
-      value: `${(100 - numeric).toFixed(1)}%`,
-    };
-  })();
+function MiniSparkline({ values }: { values: number[] }) {
+  if (values.length < 2) return null;
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const range = max - min || 1;
+  const w = 80;
+  const h = 24;
+  const pts = [...values].reverse().map((v, i) => {
+    const x = (i / (values.length - 1)) * w;
+    const y = h - ((v - min) / range) * (h - 4) - 2;
+    return `${x},${y}`;
+  });
+  return (
+    <svg width={w} height={h} className="text-[#c8a951]" aria-hidden>
+      <polyline
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        points={pts.join(' ')}
+      />
+    </svg>
+  );
+}
+
+function TrendDropdown({ ind }: { ind: StateEconomicIndicator }) {
+  const [open, setOpen] = useState(false);
+  const history = ind.history ?? [];
+  if (history.length < 2) return null;
+  const delta = deltaVsMonthsAgo(history, 12);
+  const values = history.map((h) => h.value);
 
   return (
-    <div className="bg-[#0a1628] rounded-lg p-3 border border-[#1e3a5f]/60">
-      <dt className="text-[10px] text-gray-500 uppercase tracking-wide">{display.label}</dt>
-      <dd className="text-white font-bold text-lg mt-0.5">{display.value}</dd>
-      {display.period && <dd className="text-[10px] text-gray-500">{display.period}</dd>}
-      <dd className="mt-1.5">
-        <SourceProvenance source={display.source} recordDate={display.period} asOf={display.asOf} />
-      </dd>
-      {display.link && (
+    <div className="mt-2 border-t border-[#1e3a5f]/60 pt-2">
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between text-[10px] text-gray-500 hover:text-gray-300"
+      >
+        <span>Trend {delta ? `· vs 12mo ago ${formatDelta(delta.delta, ind.unit)}` : ''}</span>
+        {open ? <ChevronDown className="h-3 w-3" /> : <ChevronRight className="h-3 w-3" />}
+      </button>
+      {open && (
+        <div className="mt-2 space-y-2">
+          <div className="flex items-center gap-2">
+            <MiniSparkline values={values} />
+            {delta && (
+              <span className={`text-[10px] ${delta.delta >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                {formatDelta(delta.delta, ind.unit)}
+                {ind.unit === '%' ? '' : ` (${delta.pct >= 0 ? '+' : ''}${delta.pct.toFixed(1)}%)`}
+              </span>
+            )}
+          </div>
+          <table className="w-full text-[10px] text-gray-400">
+            <tbody>
+              {history.slice(0, 6).map((row) => (
+                <tr key={row.period} className="border-b border-[#1e3a5f]/40">
+                  <td className="py-1 pr-2">{row.period}</td>
+                  <td className="py-1 text-right text-white">{displayFullValue({ ...ind, rawValue: row.value })}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function EconomicIndicatorCard({
+  ind,
+  labelOverride,
+  valueOverride,
+  children,
+}: {
+  ind: StateEconomicIndicator;
+  labelOverride?: string;
+  valueOverride?: string;
+  children?: React.ReactNode;
+}) {
+  return (
+    <div className="relative bg-[#0a1628] rounded-lg p-3 border border-[#1e3a5f]/60">
+      <div className="absolute top-2 right-2">
+        <TierDot tier={ind.source.tier} />
+      </div>
+      <dt className="text-[10px] text-gray-500 uppercase tracking-wide pr-6">
+        {labelOverride ?? ind.label}
+      </dt>
+      <dd className="text-white font-bold text-lg mt-0.5">{valueOverride ?? displayValue(ind)}</dd>
+      {ind.period && <dd className="text-[10px] text-gray-500">{ind.period}</dd>}
+      <TrendDropdown ind={ind} />
+      {children}
+      {ind.link && (
         <a
-          href={display.link}
+          href={ind.link}
           target="_blank"
           rel="noopener noreferrer"
           className="text-[10px] text-[#c8a951] hover:text-white inline-flex items-center gap-0.5 mt-1"
@@ -154,40 +239,203 @@ function EconomicIndicatorCard({ ind }: { ind: StateEconomicSlice['indicators'][
   );
 }
 
-export function FloridaStateEconomicPanel({
-  slice,
-  collapsedLabels = [],
+function EmploymentRateCard({
+  unemployment,
+  employment,
+  unemploymentLevel,
+  laborForce,
 }: {
-  slice: StateEconomicSlice;
-  collapsedLabels?: string[];
+  unemployment: StateEconomicIndicator;
+  employment?: StateEconomicIndicator;
+  unemploymentLevel?: StateEconomicIndicator;
+  laborForce?: StateEconomicIndicator;
 }) {
+  const [open, setOpen] = useState(false);
+  const rate = employmentRatePercent(unemployment);
+
+  return (
+    <div className="relative bg-[#0a1628] rounded-lg p-3 border border-[#1e3a5f]/60">
+      <div className="absolute top-2 right-2">
+        <TierDot tier={unemployment.source.tier} />
+      </div>
+      <dt className="text-[10px] text-gray-500 uppercase tracking-wide pr-6">Employment rate</dt>
+      <dd className="text-white font-bold text-lg mt-0.5">{formatPercent(rate)}</dd>
+      <dd className="text-[10px] text-gray-500">{unemployment.period}</dd>
+      <TrendDropdown ind={unemployment} />
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className="mt-2 w-full flex items-center justify-between text-[10px] text-gray-500 hover:text-gray-300 border-t border-[#1e3a5f]/60 pt-2"
+      >
+        <span>Workforce detail</span>
+        {open ? <ChevronDown className="h-3 w-3" /> : <ChevronRight className="h-3 w-3" />}
+      </button>
+      {open && (
+        <dl className="mt-2 grid grid-cols-1 gap-2">
+          {employment && (
+            <div>
+              <dt className="text-[10px] text-gray-500">Employed</dt>
+              <dd className="text-sm text-white font-semibold">{displayValue(employment)}</dd>
+              <dd className="text-[10px] text-gray-600">{displayFullValue(employment)}</dd>
+            </div>
+          )}
+          {unemploymentLevel && (
+            <div>
+              <dt className="text-[10px] text-gray-500">Unemployed</dt>
+              <dd className="text-sm text-white font-semibold">{displayValue(unemploymentLevel)}</dd>
+              <dd className="text-[10px] text-gray-600">{displayFullValue(unemploymentLevel)}</dd>
+            </div>
+          )}
+          {laborForce && (
+            <div>
+              <dt className="text-[10px] text-gray-500">Labor force</dt>
+              <dd className="text-sm text-white font-semibold">{displayValue(laborForce)}</dd>
+              <dd className="text-[10px] text-gray-600">{displayFullValue(laborForce)}</dd>
+            </div>
+          )}
+        </dl>
+      )}
+    </div>
+  );
+}
+
+function PopulationHero({ ind }: { ind: StateEconomicIndicator }) {
+  const [open, setOpen] = useState(false);
+  const { compact, full } = populationHeroText(ind);
+  return (
+    <div className="relative mb-4 rounded-xl border border-[#c8a951]/30 bg-gradient-to-br from-[#0a1628] to-[#0d1f35] p-5">
+      <div className="absolute top-3 right-3">
+        <TierDot tier={ind.source.tier} />
+      </div>
+      <p className="text-[10px] uppercase tracking-widest text-[#c8a951]/80 font-semibold">Population</p>
+      <p className="text-3xl sm:text-4xl font-bold text-white mt-1">{compact}</p>
+      <p className="text-xs text-gray-500 mt-1">{ind.period}</p>
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className="mt-2 text-[10px] text-gray-500 hover:text-gray-300"
+      >
+        {open ? 'Hide full count' : `Full count: ${full}`}
+      </button>
+    </div>
+  );
+}
+
+const PHASE2_PLACEHOLDERS = [
+  'Consumer Price Index (CPI)',
+  '10-year job growth',
+  'Fastest-growing occupations',
+  'Earnings and unemployment by education',
+  'National average comparison',
+] as const;
+
+function Phase2Placeholders() {
+  return (
+    <div className="mt-4 pt-4 border-t border-[#1e3a5f]/60">
+      <h4 className="text-[10px] uppercase tracking-wider text-gray-500 font-medium mb-2">Additional metrics</h4>
+      <ul className="space-y-1.5">
+        {PHASE2_PLACEHOLDERS.map((label) => (
+          <li key={label} className="flex items-center justify-between text-[11px] text-gray-500">
+            <span>{label}</span>
+            <span className="text-gray-600 italic">No verified data yet</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export function FloridaStateEconomicPanel({ slice }: { slice: StateEconomicSlice }) {
   if (!slice.indicators.length) return null;
-  const visible = slice.indicators.filter((ind) => !collapsedLabels.includes(ind.label));
-  const collapsed = slice.indicators.filter((ind) => collapsedLabels.includes(ind.label));
+
+  const population = findIndicator(slice, 'Population');
+  const income = findIndicator(slice, 'Median household income');
+  const homeValue = findIndicator(slice, 'Median home value');
+  const unemployment = findIndicator(slice, 'Unemployment rate');
+  const unemploymentLevel = findIndicator(slice, 'Unemployment level');
+  const employment = findIndicator(slice, 'Employment');
+  const laborForce = findIndicator(slice, 'Labor force');
+
   return (
     <section className="bg-[#0d1f35] rounded-xl border border-[#1e3a5f] p-4 mb-4">
       <h3 className="text-white font-semibold text-sm mb-1">
         {slice.stateName} — By the Numbers
       </h3>
-      <MetaStrip meta={slice.meta} />
-      <dl className="grid grid-cols-3 gap-2 mt-2">
-        {visible.map((ind) => (
-          <EconomicIndicatorCard key={ind.label} ind={ind} />
-        ))}
+      {population && <PopulationHero ind={population} />}
+      <dl className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
+        {income && <EconomicIndicatorCard ind={income} />}
+        {homeValue && <EconomicIndicatorCard ind={homeValue} />}
+        {unemployment && (
+          <EmploymentRateCard
+            unemployment={unemployment}
+            employment={employment}
+            unemploymentLevel={unemploymentLevel}
+            laborForce={laborForce}
+          />
+        )}
       </dl>
-      {collapsed.length > 0 && (
-        <details className="mt-3">
-          <summary className="text-[11px] text-gray-500 cursor-pointer hover:text-gray-300 select-none">
-            Workforce detail ▸
-          </summary>
-          <dl className="grid grid-cols-2 gap-2 mt-2">
-            {collapsed.map((ind) => (
-              <EconomicIndicatorCard key={ind.label} ind={ind} />
-            ))}
-          </dl>
-        </details>
-      )}
+      <Phase2Placeholders />
+      <div className="mt-4 pt-3 border-t border-[#1e3a5f]/60">
+        <SourceProvenance source={slice.meta.source} asOf={slice.meta.asOf} size="sm" />
+        {slice.meta.note && (
+          <p className="text-[10px] text-gray-600 mt-1 leading-relaxed">{slice.meta.note}</p>
+        )}
+      </div>
     </section>
+  );
+}
+
+/** Compact summary for map sidebar — population + 3 key stats. */
+export function FloridaStateEconomicCompact({
+  slice,
+  statePageHref = '/states/FL',
+}: {
+  slice: StateEconomicSlice;
+  statePageHref?: string;
+}) {
+  if (!slice.indicators.length) return null;
+  const population = findIndicator(slice, 'Population');
+  const income = findIndicator(slice, 'Median household income');
+  const homeValue = findIndicator(slice, 'Median home value');
+  const unemployment = findIndicator(slice, 'Unemployment rate');
+
+  return (
+    <div className="bg-[#0d1f35] rounded-xl border border-[#1e3a5f] p-3 mb-3">
+      <div className="flex items-center justify-between gap-2 mb-2">
+        <span className="text-white text-xs font-semibold">{slice.stateName} snapshot</span>
+        <Link href={statePageHref} className="text-[10px] text-[#c8a951] hover:text-[#e8c96a] whitespace-nowrap">
+          Full Florida page →
+        </Link>
+      </div>
+      {population && (
+        <div className="mb-2">
+          <span className="text-[10px] text-gray-500 uppercase">Population</span>
+          <div className="text-lg font-bold text-white">{displayValue(population)}</div>
+        </div>
+      )}
+      <dl className="grid grid-cols-3 gap-2 text-center">
+        {income && (
+          <div>
+            <dt className="text-[9px] text-gray-500 uppercase leading-tight">Median income</dt>
+            <dd className="text-sm font-semibold text-white">{displayValue(income)}</dd>
+          </div>
+        )}
+        {homeValue && (
+          <div>
+            <dt className="text-[9px] text-gray-500 uppercase leading-tight">Home value</dt>
+            <dd className="text-sm font-semibold text-white">{displayValue(homeValue)}</dd>
+          </div>
+        )}
+        {unemployment && (
+          <div>
+            <dt className="text-[9px] text-gray-500 uppercase leading-tight">Employment rate</dt>
+            <dd className="text-sm font-semibold text-white">
+              {formatPercent(employmentRatePercent(unemployment))}
+            </dd>
+          </div>
+        )}
+      </dl>
+    </div>
   );
 }
 
