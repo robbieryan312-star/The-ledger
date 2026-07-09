@@ -100,6 +100,7 @@ function CompareContent({
   fecMeta: { asOf?: string; source: Source };
 }) {
   const searchParams = useSearchParams();
+  const compareMode = searchParams.get('mode') === 'candidates' ? 'candidates' : 'officials';
   const politicianById = useMemo(
     () => new Map(politicians.map((p) => [p.id, p])),
     [politicians],
@@ -156,12 +157,31 @@ function CompareContent({
 
   const canCompare = sideA && sideB && aPick !== bPick;
 
+  const heading =
+    compareMode === 'candidates'
+      ? 'Compare candidates in upcoming races.'
+      : 'Compare officials across the field.';
+  const subheading =
+    compareMode === 'candidates'
+      ? 'Side-by-side candidate positions and funding signals when election data is available.'
+      : 'Side-by-side votes, money, and stated positions — fact for fact, no spin.';
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white mb-2">Compare officials across the field.</h1>
-        <p className="text-white/60 text-base mb-1">Side-by-side votes, money, and stated positions — fact for fact, no spin.</p>
-        <p className="text-white/35 text-sm">No framing, no spin. Select two officials and let the record speak.</p>
+        <h1 className="text-3xl font-bold text-white mb-2">{heading}</h1>
+        <p className="text-white/60 text-base mb-1">{subheading}</p>
+        {compareMode === 'candidates' ? (
+          <p className="text-white/35 text-sm">
+            Election pipelines are not yet populated — browse{' '}
+            <a href="/elections" className="text-[#c8a951] hover:text-white underline">
+              upcoming elections
+            </a>{' '}
+            or add <code className="text-white/50">?election=</code> when races are synced.
+          </p>
+        ) : (
+          <p className="text-white/35 text-sm">No framing, no spin. Select two officials and let the record speak.</p>
+        )}
         {electionContext && (
           <p className="text-[#c8a951] text-sm mt-2">
             Comparing candidates from: {electionContext}
@@ -180,7 +200,7 @@ function CompareContent({
           return (
             <div key={side}>
               <label className="text-[#c8a951] text-xs font-semibold uppercase tracking-widest mb-3 block">
-                Official {side.toUpperCase()}
+                {compareMode === 'candidates' ? `Candidate ${side.toUpperCase()}` : `Official ${side.toUpperCase()}`}
               </label>
               {isCandidatePick(pick) && resolved ? (
                 <div className="w-full rounded-2xl px-5 py-5 text-lg font-semibold border border-[#c8a951]/30 text-white shadow-lg shadow-[#c8a951]/5" style={selectStyle}>

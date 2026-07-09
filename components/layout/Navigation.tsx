@@ -44,8 +44,8 @@ const navItems = [
     label: 'Compare',
     href: '/compare',
     sub: [
-      { label: 'Compare Officials', href: '/compare' },
-      { label: 'Compare Candidates', href: '/compare' },
+      { label: 'Compare Officials', href: '/compare?mode=officials' },
+      { label: 'Compare Candidates', href: '/compare?mode=candidates' },
     ],
   },
   {
