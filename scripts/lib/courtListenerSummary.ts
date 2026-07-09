@@ -1,19 +1,39 @@
 /**
- * Extract sourced plain-language summary from CourtListener v4 search opinion results.
- * Priority: syllabus → posture → procedural_history → opinion snippet (extractive).
+ * Extract sourced plain-language summary from CourtListener v4 search + optional detail.
+ * Priority: syllabus → headnotes → summary → disposition → posture → procedural_history
+ *           → opinion plain_text (extractive) → search snippet (extractive).
  * Never invents text — returns null when no usable sourced summary exists.
  */
 import { leadSummary, trimToWordBoundary } from '../../lib/displaySummary';
+import type { ClusterDetail } from './courtListenerDetail';
 
-export type CourtSummarySource = 'syllabus' | 'posture' | 'procedural_history' | 'snippet';
+export type CourtSummarySource =
+  | 'syllabus'
+  | 'headnotes'
+  | 'summary'
+  | 'disposition'
+  | 'posture'
+  | 'procedural_history'
+  | 'plain_text'
+  | 'snippet';
+
+/** Sources that carry case outcome/holding language from the record (not opening narrative). */
+export const HOLDING_LEVEL_SOURCES: ReadonlySet<CourtSummarySource> = new Set([
+  'syllabus',
+  'headnotes',
+  'summary',
+  'disposition',
+]);
 
 export interface CourtListenerSearchOpinion {
   snippet?: string;
+  id?: number;
 }
 
 export interface CourtListenerSearchResult {
   caseName?: string;
   status?: string;
+  cluster_id?: number;
   syllabus?: string;
   posture?: string;
   procedural_history?: string;
@@ -47,38 +67,86 @@ function looksLikeCaptionOnly(text: string): boolean {
   if (/Appellant,?\s+vs\./i.test(t)) return true;
   if (/Supreme Court of Florida/i.test(t) && /Appellant|Appellee/i.test(t)) return true;
   if (/^No\. SC20\d{2}-\d+/i.test(t)) return true;
+  if (/^(?:MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY|SATURDAY|SUNDAY), [A-Z]+ \d+, \d{4}/i.test(t)) {
+    return true;
+  }
+  if (/^[A-Z][A-Z\s,.'-]{10,},\s+[A-Z][a-z]+ [A-Z][a-z]+,/i.test(t) && t.length < 120) {
+    return true;
+  }
   return false;
 }
 
+function pickSourcedField(
+  value: string | undefined,
+  source: CourtSummarySource,
+  maxLen: number,
+): { summary: string; summarySource: CourtSummarySource } | null {
+  const text = (value ?? '').trim();
+  if (text.length < 20) return null;
+  return { summary: trimToWordBoundary(text, maxLen), summarySource: source };
+}
+
+function pickExtractiveField(
+  value: string | undefined,
+  source: 'plain_text' | 'snippet',
+  maxLen: number,
+): { summary: string; summarySource: CourtSummarySource } | null {
+  const raw = (value ?? '').trim();
+  if (!raw) return null;
+  const body = stripCaptionFromSnippet(raw);
+  const lead = leadSummary(body, maxLen);
+  if (lead.length >= 30 && !looksLikeCaptionOnly(lead)) {
+    return { summary: lead, summarySource: source };
+  }
+  return null;
+}
+
+export function extractCourtSummary(
+  searchResult: CourtListenerSearchResult,
+  extras?: { cluster?: ClusterDetail; opinionPlainText?: string },
+  maxLen = 220,
+): { summary: string | null; summarySource: CourtSummarySource | null } {
+  const cluster = extras?.cluster;
+  const merged = {
+    syllabus: searchResult.syllabus || cluster?.syllabus,
+    headnotes: cluster?.headnotes,
+    summary: cluster?.summary,
+    disposition: cluster?.disposition,
+    posture: searchResult.posture || cluster?.posture,
+    procedural_history: searchResult.procedural_history || cluster?.procedural_history,
+  };
+
+  for (const [value, source] of [
+    [merged.syllabus, 'syllabus'],
+    [merged.headnotes, 'headnotes'],
+    [merged.summary, 'summary'],
+    [merged.disposition, 'disposition'],
+    [merged.posture, 'posture'],
+    [merged.procedural_history, 'procedural_history'],
+  ] as const) {
+    const picked = pickSourcedField(value, source, maxLen);
+    if (picked) return picked;
+  }
+
+  const plainText = extras?.opinionPlainText?.trim();
+  if (plainText) {
+    const fromPlain = pickExtractiveField(plainText, 'plain_text', maxLen);
+    if (fromPlain) return fromPlain;
+  }
+
+  const snippet = searchResult.opinions?.[0]?.snippet ?? '';
+  const fromSnippet = pickExtractiveField(snippet, 'snippet', maxLen);
+  if (fromSnippet) return fromSnippet;
+
+  return { summary: null, summarySource: null };
+}
+
+/** @deprecated Use extractCourtSummary — kept for tests and search-only callers */
 export function extractCourtSummaryFromSearchResult(
   result: CourtListenerSearchResult,
   maxLen = 220,
 ): { summary: string | null; summarySource: CourtSummarySource | null } {
-  const syllabus = (result.syllabus ?? '').trim();
-  if (syllabus.length >= 20) {
-    return { summary: trimToWordBoundary(syllabus, maxLen), summarySource: 'syllabus' };
-  }
-
-  const posture = (result.posture ?? '').trim();
-  if (posture.length >= 20) {
-    return { summary: trimToWordBoundary(posture, maxLen), summarySource: 'posture' };
-  }
-
-  const procedural = (result.procedural_history ?? '').trim();
-  if (procedural.length >= 20) {
-    return { summary: trimToWordBoundary(procedural, maxLen), summarySource: 'procedural_history' };
-  }
-
-  const snippet = result.opinions?.[0]?.snippet ?? '';
-  if (snippet.trim()) {
-    const body = stripCaptionFromSnippet(snippet);
-    const lead = leadSummary(body, maxLen);
-    if (lead.length >= 30 && !looksLikeCaptionOnly(lead)) {
-      return { summary: lead, summarySource: 'snippet' };
-    }
-  }
-
-  return { summary: null, summarySource: null };
+  return extractCourtSummary(result, undefined, maxLen);
 }
 
 export function courtSummaryFallbackHeadline(caseName: string, status: string): string {
@@ -88,4 +156,8 @@ export function courtSummaryFallbackHeadline(caseName: string, status: string): 
     return `${name} — ${stat}`;
   }
   return name;
+}
+
+export function isHoldingLevelSummary(source: CourtSummarySource | null | undefined): boolean {
+  return source != null && HOLDING_LEVEL_SOURCES.has(source);
 }

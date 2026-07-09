@@ -23,6 +23,7 @@
 | `CENSUS_API_KEY` | FL census ingest |
 | `DATA_GOV_API_KEY` / `GOVINFO_API_KEY` | GovInfo / GPO (Congressional Record pilot) |
 | `LEGISCAN_API_KEY` | FL state bills |
+| `COURTLISTENER_API_KEY` | FL court opinion cluster/opinion detail (`/search/` is keyless) |
 | `OPENSTATES_API_KEY` | FL state legislators |
 | `NEWSAPI_KEY` | FL news (national uses GDELT) |
 | `PROPUBLICA_CONGRESS_KEY` | **Retired** — do not use |

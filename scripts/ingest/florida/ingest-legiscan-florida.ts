@@ -4,6 +4,9 @@
  *
  * Fetches master list then getBill detail for each bill to capture the official
  * LegiScan `description` field as summary.
+ *
+ * Usage:
+ *   npm run ingest:legiscan-fl -- --limit 10   # small verified sample (recommended first)
  */
 import { fetchJson, loadEnvLocal, sleep, writeFloridaSnapshot } from '../../lib/ingest-utils';
 
@@ -14,10 +17,25 @@ const LEGISCAN_SOURCE = {
   description: 'State and federal bill tracking via legiscan.com API',
 };
 
-const BILL_DETAIL_LIMIT = 30;
+const DEFAULT_LIST_LIMIT = 100;
+const DEFAULT_DETAIL_LIMIT = 30;
+
+function parseLimitArg(argv: string[], flag: string, fallback: number): number {
+  const idx = argv.indexOf(flag);
+  if (idx === -1) return fallback;
+  const n = Number.parseInt(argv[idx + 1] ?? '', 10);
+  if (!Number.isFinite(n) || n < 1) {
+    throw new Error(`${flag} requires a positive integer`);
+  }
+  return n;
+}
 
 async function main(): Promise<void> {
   await loadEnvLocal();
+  const argv = process.argv.slice(2);
+  const detailLimit = parseLimitArg(argv, '--limit', DEFAULT_DETAIL_LIMIT);
+  const listLimit = parseLimitArg(argv, '--list-limit', DEFAULT_LIST_LIMIT);
+
   const key = process.env.LEGISCAN_API_KEY?.trim();
   const asOf = new Date().toISOString().slice(0, 10);
   const errors: string[] = [];
@@ -38,8 +56,8 @@ async function main(): Promise<void> {
     if (data.status !== 'OK') {
       errors.push(`LegiScan status: ${data.status}`);
     } else {
-      const list = Object.values(data.masterlist ?? {}).slice(0, 100);
-      const detailTargets = list.slice(0, BILL_DETAIL_LIMIT);
+      const list = Object.values(data.masterlist ?? {}).slice(0, listLimit);
+      const detailTargets = list.slice(0, detailLimit);
 
       for (const bill of detailTargets) {
         let description = '';
@@ -81,17 +99,19 @@ async function main(): Promise<void> {
         });
       }
 
-      for (const bill of list.slice(BILL_DETAIL_LIMIT)) {
-        records.push({
-          billId: bill.bill_id,
-          billNumber: bill.number,
-          title: bill.title ?? 'No record on file',
-          statusDate: bill.status_date ?? 'No record on file',
-          state: 'FL',
-          source: LEGISCAN_SOURCE,
-          asOf,
-          legiscanUrl: `https://legiscan.com/FL/bill/${bill.bill_id}`,
-        });
+      if (listLimit > detailLimit) {
+        for (const bill of list.slice(detailLimit)) {
+          records.push({
+            billId: bill.bill_id,
+            billNumber: bill.number,
+            title: bill.title ?? 'No record on file',
+            statusDate: bill.status_date ?? 'No record on file',
+            state: 'FL',
+            source: LEGISCAN_SOURCE,
+            asOf,
+            legiscanUrl: `https://legiscan.com/FL/bill/${bill.bill_id}`,
+          });
+        }
       }
     }
   } catch (err) {
@@ -108,12 +128,14 @@ async function main(): Promise<void> {
       fetchedLive: errors.length === 0 && records.length > 0,
       errors: errors.length ? errors : undefined,
       datasetUrl: 'https://api.legiscan.com/',
-      note: `Florida state legislation (up to 100 bills). First ${BILL_DETAIL_LIMIT} include LegiScan official description as summary (${withSummary} with summary).`,
+      note: `Florida legislation sample (detail --limit ${detailLimit}, list --list-limit ${listLimit}). ${withSummary}/${detailLimit} detail rows include LegiScan official description as summary.`,
     },
     records,
   });
 
-  console.log(`Wrote ${out} (${records.length} records, ${withSummary} with description summary)`);
+  console.log(
+    `Wrote ${out} (${records.length} records, ${withSummary}/${detailLimit} with description summary)`,
+  );
 }
 
 main().catch((err: unknown) => {
