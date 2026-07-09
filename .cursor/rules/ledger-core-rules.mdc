@@ -19,8 +19,8 @@ alwaysApply: true
 - **Failure reporting is MANDATORY and AUTONOMOUS** — the owner must NEVER remind you.
   After **any** failed, timed-out, incomplete, or substandard attempt: **in the SAME response**
   (or immediately as a follow-up block before ending the turn), output the report in **§1.1**.
-  Attempt 1 substandard → **Review for Claude** (§1.1 B). Attempt 2+ → full **Claude handoff
-  report** (§1.1 A) and **STOP** further retries unless the brief explicitly allows another.
+  Attempt 1 substandard → **Review for Claude** (§1.1 F). Attempt 2+ → full **Claude handoff
+  report** (§1.1 B) and **STOP** further retries unless the brief explicitly allows another.
   Stale reports (recycled session lines, wrong commit, evidence contradicting `git show`) are
   **task failures** — Claude will reject them.
 - **2+ failures → STOP and hand off** — never blind-retry or ask the owner to "try again."
@@ -49,6 +49,9 @@ alwaysApply: true
   summaries are invisible to Claude Code — **unlogged work = task failure** even if code shipped.
   Required fields: branch, HEAD, PR, tree, build status, explicit PASS/FAIL, commits, files touched,
   commands run, acceptance evidence. Keep last 3 sessions only. See §1.1 J.
+- **One fact, one file** — before creating a new doc/rule file or restating a number/list/table,
+  update the existing owner instead. Restating a fact in a second file is a duplication bug on
+  creation. Cross-reference, never re-state. Fewer destinations = fewer contradictions.
 - **Single-writer git authority (binding)** — **Cursor is the ONLY agent** that commits pipeline/data/code,
   pushes, opens/closes/merges PRs, or creates branches. **Claude Code** does read-only review, diagnosis,
   briefs, and issues an **APPROVAL verdict only** — never merges, closes, pushes, or commits repo work
@@ -99,13 +102,12 @@ the specific failure this file was created to stop.
   `bioguideId`, so it is independently wipeable and verifiable. Do not bundle multiple
   categories for a member into one blob. Grow coverage in small reviewed batches (1 → 5 → 10 →
   …), never one massive collection.
-- **Finish and LOCK one gold-standard profile before scaling — no more circling.** Never scale a
-  pipeline whose single-member output isn't approved and frozen. `S000033` (Sanders) is the
-  locked reference: get it complete and clean, freeze it, THEN apply the same pipeline to the
-  rest. A written spec is settled until the owner changes a *visual/design* element — do not
+- **Scale from locked migrated profiles — no circling.** The **7 migrated profiles** in
+  `lib/data/generated/profiles/_manifest.json` are the concrete reference (S000033, O000172,
+  M000355, M001184, W000817, C001098, P000197). Never scale a pipeline whose batch output is not
+  approved. A written spec is settled until the owner changes a *visual/design* element — do not
   reopen it or re-tune the same filter for the Nth time. Quality dilution (low-quality data
-  burying good data — e.g. mis-classified scrape dumps in a clean profile) IS regression; clean
-  and prevent it the same as data loss. Progress is shipped/verified/committed output, never
+  burying good data) IS regression. Progress is shipped/verified/committed output, never
   "steps being taken."
 - **Verify, never trust "done."** Independently check every completion claim (especially
   Cursor's) against the actual repo/data/build before accepting it. "It builds" ≠ "it's correct."
@@ -113,10 +115,10 @@ the specific failure this file was created to stop.
   generated data, or file is confirmed complete and passing quality/acceptance criteria, it is
   IMMEDIATELY committed (locally, for the owner to push) — never left dirty in the working tree.
   This applies automatically on every sign of completion or moving on from a task; no one should
-  have to ask each time. Verified work sitting uncommitted is treated as a bug. If Cursor can
-  commit it, instruct it to; if not, Claude Code commits it directly once no sync/writer is
-  active. Losing or re-deriving already-completed, verified work is the single most wasteful
-  failure and must not recur.
+  have to ask each time. Verified work sitting uncommitted is treated as a bug. **Cursor commits
+  immediately when green; Claude Code never commits application work** (§1.1 K). Losing or
+  re-deriving already-completed, verified work is the single most wasteful failure and must not
+  recur.
 - **The 7 migrated profiles are the locked spec.** S000033, O000172, M000355, M001184, W000817,
   C001098, P000197 are the concrete reference. The pipeline scales the SAME components and SAME
   checklist to the remaining 531 members — it never redesigns them. Fix the script/extractor
@@ -564,7 +566,67 @@ If both agents could write, **stop** — Cursor owns the tree.
   false pass.
 - **Read the real error before any restart or re-brief.** Never blindly restart a failed run or
   re-send a brief — read the tee'd log / actual error first. A blind restart repeats the failure
-  and burns time. After **2 failures**, §1.1 A applies: STOP and hand off to Claude.
+  and burns time. After **2 failures**, §1.1 B applies: STOP and hand off to Claude.
 - **Profile, then partial-batch, before any full-scale run.** Before a full-corpus run, measure
   per-item cost and run a substantial partial batch (e.g. 20–50). Scale to the full set only after
   the batch passes review — catch data-quality AND throughput problems on 30 items, not 537.
+
+---
+
+## 7. Agent operations (session start, delegation, guardrails)
+
+### Session start (non-negotiable)
+
+Before advising, coding, syncing data, or asking the owner for keys/email/scope, read:
+
+1. **This file** (`.cursor/rules/ledger-core-rules.mdc`) — binding rules
+2. **`docs/workflows/AUDIT_DEBT_BRIEF.md`** — what Cursor last shipped (Claude reads this, not chat)
+3. **`PROGRESS.md`** — milestones, blockers, next priorities
+4. **`lib/data/SOURCE_LOOKUP.md`** — which source to use for each data need
+5. **`KEYS.md`** — SET vs EMPTY env vars (never ask for values already documented)
+6. **`REPO.md`** — canonical repo is `The-ledger` on `main`
+7. **`PILOT_PROFILE_CHECKLIST.md`** — what a complete profile requires
+8. **`docs/AGENT_INDEX.md`** — navigation map (canonical index; do not maintain rival lists)
+
+Task-specific: **`AGENTS.md`**, **`.cursor/rules/ledger-data-policy.mdc`**, **`.cursor/rules/ledger-editorial-voice.mdc`**
+
+Do **not** use **`docs/archive/`** for current policy.
+
+### Owner delegation
+
+The agent is delegated to:
+
+- Register for API keys, write values to `.env.local`, push GitHub secrets via `scripts/setup-github-secrets.sh`
+- Run sync/build/verify pipelines without stopping for routine owner actions
+- Pursue vendor access (forms, email to opendata@ / webmaster@) when a key is required
+
+**Owner email for registrations:** `robbie.ryan312@gmail.com` (canonical in `KEYS.md`).
+
+Reference files before asking the owner anything: `KEYS.md`, `REPO.md`, `PROGRESS.md`,
+`lib/data/SOURCE_LOOKUP.md`, `lib/data/sourceCatalog.ts`, `.env.local` (SET vs EMPTY only).
+
+### Do not
+
+- **End a work/verify turn without updating + committing `docs/workflows/AUDIT_DEBT_BRIEF.md`** (§1.1 J)
+- Ask the owner if they are "ready to continue" — proceed until blocked
+- Ask for owner email — it is in `KEYS.md`
+- Treat VoteSmart or OpenSecrets as required — deferred in `SOURCE_LOOKUP.md`
+- Create or work in the legacy `code` GitHub repo
+- Assume API keys are missing without reading `.env.local` key names
+- Paste secret values into chat, commits, or tracked files
+- Force-push to `main`
+
+### When blocked
+
+Only stop for: scope changes, major UX direction, or human-only verification (CAPTCHA, login.gov).
+**Credibility tradeoffs** route to **Claude Code** per §3 — not the owner. When a vendor form hits
+CAPTCHA or login.gov, open the URL in Chrome (`open -a "Google Chrome" "<url>"`) and continue
+other work.
+
+### Session state consolidation
+
+**Primary:** every work/verify session logs to **`docs/workflows/AUDIT_DEBT_BRIEF.md`** (§1.1 J) —
+that is the durable handoff for Claude. **Secondary:** when a milestone boundary is crossed,
+update **`PROGRESS.md`** status board — do not duplicate session evidence there. Search before
+asking — grep `KEYS.md`, `REPO.md`, `PROGRESS.md`, `SOURCE_LOOKUP.md` first. Log long-running
+scripts — tee to `/tmp/ledger-<script-name>.log` so errors are inspectable from disk.
