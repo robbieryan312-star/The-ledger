@@ -37,6 +37,9 @@ jobs:
           npm run test:env-truth
           npm run test:optimization
 
+      - name: Profile credibility audit (P0/P1 gate)
+        run: npm run audit:profile-credibility
+
       - name: Production build
         run: npm run build
 

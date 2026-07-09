@@ -2,7 +2,8 @@
  * Read-only credibility re-audit for locked migrated profiles.
  * Writes markdown report — changes no profile data.
  *
- * Run: npx tsx scripts/audit-profile-credibility.ts
+ * Run: npm run audit:profile-credibility
+ *      npx tsx scripts/audit-profile-credibility.ts [--gate]
  */
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -26,7 +27,7 @@ import { loadProfileDisplayIdentityByBioguide } from './lib/profileDisplayIdenti
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const profilesRoot = path.join(projectRoot, 'lib/data/generated/profiles');
-const LOCKED_PROFILES = [
+export const LOCKED_PROFILES = [
   'S000033',
   'O000172',
   'M000355',
@@ -40,7 +41,7 @@ const HONEST_STATUSES = new Set(['honest-gap', 'none-in-range', 'fetch-failed', 
 
 type Severity = 'P0' | 'P1' | 'P2';
 
-interface DefectRow {
+export interface DefectRow {
   bioguideId: string;
   category: string;
   severity: Severity;
@@ -643,26 +644,70 @@ export function renderMarkdown(
   return lines.join('\n');
 }
 
-async function main(): Promise<void> {
+export function summarizeDefectSeverities(defects: DefectRow[]): { p0: number; p1: number; p2: number } {
+  return {
+    p0: defects.filter((d) => d.severity === 'P0').length,
+    p1: defects.filter((d) => d.severity === 'P1').length,
+    p2: defects.filter((d) => d.severity === 'P2').length,
+  };
+}
+
+export async function runProfileCredibilityAudit(): Promise<{
+  defects: DefectRow[];
+  identityByBioguide: Map<string, { name: string; initials: string }>;
+}> {
   const identityByBioguide = loadProfileDisplayIdentityByBioguide(projectRoot);
-  const allDefects: DefectRow[] = [];
+  const defects: DefectRow[] = [];
 
   for (const bioguideId of LOCKED_PROFILES) {
     const identity = identityByBioguide.get(bioguideId);
     const displayName = identity?.name ?? bioguideId;
     const memberDefects = await auditMember(bioguideId, displayName);
-    allDefects.push(...memberDefects);
+    defects.push(...memberDefects);
     console.log(`${bioguideId}: ${memberDefects.length} defect row(s)`);
   }
 
-  const outPath = path.join(projectRoot, 'data/reports/profile-credibility-audit-2026-07-08.md');
-  await mkdir(path.dirname(outPath), { recursive: true });
-  const markdown = renderMarkdown(allDefects, identityByBioguide);
-  await writeFile(outPath, markdown, 'utf8');
-  console.log(`Wrote ${outPath} (${allDefects.length} total defect rows)`);
+  return { defects, identityByBioguide };
 }
 
-main().catch((err: unknown) => {
-  console.error(err);
-  process.exit(1);
-});
+export async function writeProfileCredibilityReport(
+  defects: DefectRow[],
+  identityByBioguide: Map<string, { name: string; initials: string }>,
+): Promise<string> {
+  const outPath = path.join(projectRoot, 'data/reports/profile-credibility-audit-2026-07-08.md');
+  await mkdir(path.dirname(outPath), { recursive: true });
+  const markdown = renderMarkdown(defects, identityByBioguide);
+  await writeFile(outPath, markdown, 'utf8');
+  return outPath;
+}
+
+async function main(): Promise<void> {
+  const gate = process.argv.includes('--gate');
+  const { defects, identityByBioguide } = await runProfileCredibilityAudit();
+  const outPath = await writeProfileCredibilityReport(defects, identityByBioguide);
+  console.log(`Wrote ${outPath} (${defects.length} total defect rows)`);
+
+  const { p0, p1, p2 } = summarizeDefectSeverities(defects);
+  if (p2 > 0) {
+    console.warn(`Profile credibility audit: ${p2} P2 defect(s) reported (non-blocking)`);
+  }
+
+  if (gate && (p0 > 0 || p1 > 0)) {
+    console.error(`Profile credibility gate FAILED: ${p0} P0, ${p1} P1 defect(s)`);
+    for (const d of defects.filter((row) => row.severity === 'P0' || row.severity === 'P1')) {
+      console.error(`  [${d.severity}] ${d.bioguideId} ${d.category}/${d.check}: ${d.detail}`);
+    }
+    process.exit(1);
+  }
+}
+
+const isMain =
+  process.argv[1] != null &&
+  fileURLToPath(import.meta.url) === path.resolve(process.argv[1]);
+
+if (isMain) {
+  main().catch((err: unknown) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
