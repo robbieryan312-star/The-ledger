@@ -5,9 +5,9 @@ Claude Code reads **this file**, not chat. Only the **last 3 session entries** a
 
 **Current state (2026-07-09):**
 - Branch: `cursor/florida-summaries-sample-70a6`
-- HEAD: `4356f2f`
-- PR: (creating)
-- Tree: dirty until commit · prebuild + build: **green**
+- HEAD: `061f181`
+- PR: https://github.com/robbieryan312-star/The-ledger/pull/19
+- Tree: clean · prebuild + build: **green**
 - Parent branch: `cursor/florida-state-page-4114` @ `fa9eac8`
 
 ---
