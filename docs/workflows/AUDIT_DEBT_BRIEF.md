@@ -5,53 +5,50 @@ Claude Code reads **this file**, not chat. Only the **last 3 session entries** a
 
 **Current state (2026-07-09):**
 - Branch: `cursor/florida-state-page-4114`
-- HEAD: `7edfd75` (GROUP C); Florida SSR state page IN REVIEW
+- HEAD: `1ff4bf9` — sourced summaries + presentation; **IN REVIEW** (no merge)
 - Tree: clean · prebuild + build: **green**
 
 ---
 
-## Latest session — Florida state page redesign (IN REVIEW)
+## Latest session — Florida sourced summaries correction (IN REVIEW)
 
 ### Objective
 
-Dedicated SSR `/states/FL` with economic hero, office-ranked politicians, court decisions; map compact summary.
+Court/legislation plain-language sourced summaries; isolate news-florida side-effect.
 
 ### Verdict / outcome
 
-**IN REVIEW** — draft PR pending Claude review before merge.
+**IN REVIEW** — PR #18 updated; STOP for Claude re-review before merge.
 
 ### Acceptance evidence
 
 | Criterion | Result |
 |-----------|--------|
-| `/states/FL` SSR | curl: Population, 21.9M, Employment rate, #politicians in HTML |
-| No `use client` on route page | `app/states/[code]/page.tsx` server-only |
-| rawValue + history in slice | `npm run build:data-slices`; BLS history len 11 |
-| Office-ranked politicians | `comparePoliticiansByOffice` in buildMapProps + roster |
-| Map compact + link | `FloridaStateEconomicCompact`; View all → `/states/FL#politicians` |
-| Court rows no fabrication | case title + docket detail only |
-| Phase 2 placeholders | honest "No verified data yet" |
+| Court sourced summaries | 49/60 opinions with extractive snippet/syllabus; headline in slice |
+| Honest fallback | 11 opinions: title + status only |
+| LegiScan description | ingest extended; existing data until key refresh |
+| Bill presentation | H0011: title fallback when no description |
+| news-florida.json | restored from main (48 NewsAPI + empty GDELT) |
 | prebuild + build | exit 0 |
 
-### Commits (this branch)
+### Commits (this correction)
 
-- `3b6ba94` GROUP A — formatters, raw slice, TierDot, DATA path fix
-- `04acce7` GROUP B — economic panel redesign
-- `d6f2864` GROUP D+E — politicians + court rows + office sort
-- `7edfd75` GROUP C — SSR state page, sitemap, map compact
+- `85f7cf0` — CourtListener summary ingest + extract guard
+- `99a9556` — LegiScan getBill description ingest
+- `1ff4bf9` — summary presentation + news slice restore
 
 ---
 
 ## Session log (last 3 only)
 
-### 3 — Florida state page redesign (2026-07-09)
+### 3 — Florida sourced summaries (2026-07-09)
 
-- `/states/FL` template; Florida locked for other states later.
+- CourtListener v4: syllabus → posture → procedural → snippet priority.
 
-### 2 — Credibility audit gate landed (2026-07-09)
+### 2 — Florida state page Groups A–E (2026-07-09)
 
-- PR #17 merged; P0/P1 prebuild gate live.
+- `/states/FL` SSR template on branch.
 
-### 1 — Land brief completion (2026-07-08)
+### 1 — Credibility audit gate (2026-07-09)
 
-- PR #15/#14/#16 merged; Phase 1 hardening on main.
+- PR #17 merged on main.
