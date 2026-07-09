@@ -3,7 +3,13 @@ import type { Source, SourceTier } from './index';
 /** Compact record row for in-page Florida snapshot panels. */
 export interface SnapshotRecordRow {
   id: string;
+  /** Headline — sourced summary when available, otherwise honest fallback. */
   title: string;
+  /** Official case name or bill title (shown in dropdown). */
+  officialTitle?: string;
+  /** Sourced plain-language summary from upstream field (not invented). */
+  summary?: string;
+  summarySource?: string;
   detail?: string;
   date?: string;
   link?: string;

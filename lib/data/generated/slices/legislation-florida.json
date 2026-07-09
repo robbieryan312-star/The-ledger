@@ -20,8 +20,9 @@
       "records": [
         {
           "id": "legiscan-0",
-          "title": "Designation of the State Birds",
-          "detail": "2044045 · FL",
+          "title": "H0011: Designation of the State Birds",
+          "officialTitle": "Designation of the State Birds",
+          "detail": "H0011 · 2026-03-13",
           "date": "2026-03-13",
           "link": "https://legiscan.com/FL/bill/2044045",
           "source": {
@@ -34,8 +35,9 @@
         },
         {
           "id": "legiscan-1",
-          "title": "Social Work Licensure Interstate Compact",
-          "detail": "2044116 · FL",
+          "title": "H0013: Social Work Licensure Interstate Compact",
+          "officialTitle": "Social Work Licensure Interstate Compact",
+          "detail": "H0013 · 2026-03-13",
           "date": "2026-03-13",
           "link": "https://legiscan.com/FL/bill/2044116",
           "source": {
@@ -48,8 +50,9 @@
         },
         {
           "id": "legiscan-2",
-          "title": "Pub. Rec. and Meetings/Social Work Licensure Interstate Compact",
-          "detail": "2044098 · FL",
+          "title": "H0015: Pub. Rec. and Meetings/Social Work Licensure Interstate Compact",
+          "officialTitle": "Pub. Rec. and Meetings/Social Work Licensure Interstate Compact",
+          "detail": "H0015 · 2026-03-13",
           "date": "2026-03-13",
           "link": "https://legiscan.com/FL/bill/2044098",
           "source": {
@@ -62,8 +65,9 @@
         },
         {
           "id": "legiscan-3",
-          "title": "Criminal Offenses Against Law Enforcement Officers and Other Personnel",
-          "detail": "2044121 · FL",
+          "title": "H0017: Criminal Offenses Against Law Enforcement Officers and Other Personnel",
+          "officialTitle": "Criminal Offenses Against Law Enforcement Officers and Other Personnel",
+          "detail": "H0017 · 2025-09-15",
           "date": "2025-09-15",
           "link": "https://legiscan.com/FL/bill/2044121",
           "source": {
@@ -76,8 +80,9 @@
         },
         {
           "id": "legiscan-4",
-          "title": "Educational Dollars for Duty Program",
-          "detail": "2044120 · FL",
+          "title": "H0019: Educational Dollars for Duty Program",
+          "officialTitle": "Educational Dollars for Duty Program",
+          "detail": "H0019 · 2025-09-15",
           "date": "2025-09-15",
           "link": "https://legiscan.com/FL/bill/2044120",
           "source": {
@@ -90,8 +95,9 @@
         },
         {
           "id": "legiscan-5",
-          "title": "Pub. Rec./Agency Employees",
-          "detail": "2044114 · FL",
+          "title": "H0021: Pub. Rec./Agency Employees",
+          "officialTitle": "Pub. Rec./Agency Employees",
+          "detail": "H0021 · 2026-03-13",
           "date": "2026-03-13",
           "link": "https://legiscan.com/FL/bill/2044114",
           "source": {
@@ -104,8 +110,9 @@
         },
         {
           "id": "legiscan-6",
-          "title": "Educator Certifications and Training",
-          "detail": "2044218 · FL",
+          "title": "H0023: Educator Certifications and Training",
+          "officialTitle": "Educator Certifications and Training",
+          "detail": "H0023 · 2026-03-13",
           "date": "2026-03-13",
           "link": "https://legiscan.com/FL/bill/2044218",
           "source": {
@@ -118,8 +125,9 @@
         },
         {
           "id": "legiscan-7",
-          "title": "Transportation Facility Designations",
-          "detail": "2044230 · FL",
+          "title": "H0025: Transportation Facility Designations",
+          "officialTitle": "Transportation Facility Designations",
+          "detail": "H0025 · 2026-03-13",
           "date": "2026-03-13",
           "link": "https://legiscan.com/FL/bill/2044230",
           "source": {
@@ -132,8 +140,9 @@
         },
         {
           "id": "legiscan-8",
-          "title": "Sale and Purchase of Ivermectin",
-          "detail": "2044901 · FL",
+          "title": "H0029: Sale and Purchase of Ivermectin",
+          "officialTitle": "Sale and Purchase of Ivermectin",
+          "detail": "H0029 · 2025-09-23",
           "date": "2025-09-23",
           "link": "https://legiscan.com/FL/bill/2044901",
           "source": {
@@ -146,8 +155,9 @@
         },
         {
           "id": "legiscan-9",
-          "title": "Recognizing Judea and Samaria",
-          "detail": "2044907 · FL",
+          "title": "H0031: Recognizing Judea and Samaria",
+          "officialTitle": "Recognizing Judea and Samaria",
+          "detail": "H0031 · 2026-03-13",
           "date": "2026-03-13",
           "link": "https://legiscan.com/FL/bill/2044907",
           "source": {
@@ -160,8 +170,9 @@
         },
         {
           "id": "legiscan-10",
-          "title": "Transportation Facility Designations",
-          "detail": "2044913 · FL",
+          "title": "H0033: Transportation Facility Designations",
+          "officialTitle": "Transportation Facility Designations",
+          "detail": "H0033 · 2026-03-04",
           "date": "2026-03-04",
           "link": "https://legiscan.com/FL/bill/2044913",
           "source": {
@@ -174,8 +185,9 @@
         },
         {
           "id": "legiscan-11",
-          "title": "Habitual Traffic Offender Designation",
-          "detail": "2044915 · FL",
+          "title": "H0035: Habitual Traffic Offender Designation",
+          "officialTitle": "Habitual Traffic Offender Designation",
+          "detail": "H0035 · 2026-04-24",
           "date": "2026-04-24",
           "link": "https://legiscan.com/FL/bill/2044915",
           "source": {

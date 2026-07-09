@@ -7,9 +7,9 @@
       "description": "Nonpartisan Free Law Project legal database; opinions are official court records"
     },
     "asOf": "2026-07-09",
-    "totalCount": 20,
+    "totalCount": 60,
     "datasetUrl": "https://www.courtlistener.com/api/rest/v4/search/?type=o&court=fla",
-    "note": "Most recent Supreme Court of Florida opinions (newest-first). 19/20 records include a sourced summary (syllabus, posture, or extractive snippet)."
+    "note": "Most recent Supreme Court of Florida opinions (newest-first). 49/60 records include a sourced summary (syllabus, posture, or extractive snippet)."
   },
   "records": [
     {
@@ -32,10 +32,8 @@
     },
     {
       "id": "court-1",
-      "title": "Supreme Court of Florida ____________ No. SC2026-0449 ____________ JAMES AREN DUCKETT, Appellant, vs. STATE OF FLORIDA, Appellee. ____________ No. SC2026-0450 ____________ JAM",
+      "title": "James Aren Duckett v. State of Florida — Published",
       "officialTitle": "James Aren Duckett v. State of Florida",
-      "summary": "Supreme Court of Florida ____________ No. SC2026-0449 ____________ JAMES AREN DUCKETT, Appellant, vs. STATE OF FLORIDA, Appellee. ____________ No. SC2026-0450 ____________ JAM",
-      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2026-0449 & SC2026-0450 · Published",
       "date": "2026-07-08",
       "link": "https://www.courtlistener.com/opinion/10919890/james-aren-duckett-v-state-of-florida/",

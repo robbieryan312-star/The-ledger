@@ -8,10 +8,12 @@ import { getFecFinance } from '@/lib/data/fecFinance';
 import { mergeStockTrades } from '@/lib/data/stockTrades';
 import { getStateEconomicSlice } from '@/lib/data/slices/stateEconomic';
 import { getJudiciaryCourtsSlice } from '@/lib/data/slices/judiciaryCourts';
+import { getLegislationFloridaBundle } from '@/lib/data/slices/legislationFlorida';
 import { comparePoliticiansByOffice } from '@/lib/politicianSort';
 import type { DashboardPolitician } from '@/lib/dashboard/stateRosterClient';
 import { FloridaStateEconomicPanel } from '@/components/records/FloridaRecordPanel';
 import { FloridaCourtDecisionsSection } from '@/components/states/FloridaCourtDecisionRow';
+import { FloridaLegislationSection } from '@/components/states/FloridaLegislationBillRow';
 import FloridaStatePoliticians from '@/components/states/FloridaStatePoliticians';
 
 const SUPPORTED_STATES: Record<string, { name: string; title: string }> = {
@@ -67,6 +69,8 @@ export default async function StatePage({
 
   const economic = getStateEconomicSlice();
   const courts = getJudiciaryCourtsSlice();
+  const legislationBundle = getLegislationFloridaBundle();
+  const legiscanSection = legislationBundle.sections.find((s) => s.sourceId === 'legiscan');
   const politicians = buildStateRoster(upper);
 
   return (
@@ -83,6 +87,13 @@ export default async function StatePage({
         <FloridaStateEconomicPanel slice={economic} />
 
         <FloridaStatePoliticians politicians={politicians} stateName={meta.name} />
+
+        {legiscanSection && legiscanSection.records.length > 0 && (
+          <FloridaLegislationSection
+            records={legiscanSection.records}
+            metaNote={legiscanSection.meta.note}
+          />
+        )}
 
         <FloridaCourtDecisionsSection
           title="Florida Supreme Court Decisions"

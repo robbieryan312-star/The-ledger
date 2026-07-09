@@ -47,7 +47,7 @@ function pick(rec: Record<string, unknown>, fields: string[]): string {
 
 function detailOf(rec: Record<string, unknown>): string {
   const parts: string[] = [];
-  const skip = new Set([...TITLE_FIELDS, ...DATE_FIELDS, ...LINK_FIELDS, 'source', 'asOf', 'tierFlag', 'stateCode', 'bioguideId']);
+  const skip = new Set([...TITLE_FIELDS, ...DATE_FIELDS, ...LINK_FIELDS, 'source', 'asOf', 'tierFlag', 'stateCode', 'bioguideId', 'summary', 'summarySource', 'summaryFallback', 'officialTitle']);
   for (const [k, v] of Object.entries(rec)) {
     if (skip.has(k) || v == null || v === '' || typeof v === 'object') continue;
     let val = String(v);
@@ -64,6 +64,9 @@ function detailOf(rec: Record<string, unknown>): string {
 function toRow(rec: Record<string, unknown>, id: string): {
   id: string;
   title: string;
+  officialTitle?: string;
+  summary?: string;
+  summarySource?: string;
   detail?: string;
   date?: string;
   link?: string;
@@ -82,6 +85,52 @@ function toRow(rec: Record<string, unknown>, id: string): {
     source,
     asOf: String(rec.asOf ?? source.date ?? ''),
     tierFlag: rec.tierFlag ? String(rec.tierFlag) : undefined,
+  };
+}
+
+function toCourtRow(rec: Record<string, unknown>, id: string) {
+  const source = (rec.source && typeof rec.source === 'object' ? rec.source : {}) as Source;
+  const caseName = String(rec.caseName ?? 'No record on file');
+  const status = String(rec.status ?? '');
+  const summary = String(rec.summary ?? '').trim();
+  const fallback = String(rec.summaryFallback ?? '').trim();
+  const headline = summary || fallback || caseName;
+  const docket = String(rec.docketNumber ?? '');
+  const court = String(rec.court ?? '');
+  const detailParts = [court, docket, status].filter((p) => p && p !== 'No record on file');
+  return {
+    id,
+    title: headline,
+    officialTitle: caseName,
+    summary: summary || undefined,
+    summarySource: rec.summarySource ? String(rec.summarySource) : undefined,
+    detail: detailParts.join(' · ') || undefined,
+    date: pick(rec, DATE_FIELDS) || undefined,
+    link: pick(rec, LINK_FIELDS) || source.url,
+    source,
+    asOf: String(rec.asOf ?? source.date ?? ''),
+  };
+}
+
+function toLegiscanRow(rec: Record<string, unknown>, id: string) {
+  const source = (rec.source && typeof rec.source === 'object' ? rec.source : {}) as Source;
+  const billNumber = String(rec.billNumber ?? '');
+  const officialTitle = String(rec.title ?? 'No record on file');
+  const summary = String(rec.summary ?? '').trim();
+  const headline = summary || (billNumber ? `${billNumber}: ${officialTitle}` : officialTitle);
+  const statusDate = String(rec.statusDate ?? '');
+  const currentBody = rec.currentBody ? String(rec.currentBody) : '';
+  const detailParts = [billNumber, statusDate, currentBody].filter(Boolean);
+  return {
+    id,
+    title: headline,
+    officialTitle,
+    summary: summary || undefined,
+    detail: detailParts.join(' · ') || undefined,
+    date: statusDate || undefined,
+    link: pick(rec, LINK_FIELDS) || source.url,
+    source,
+    asOf: String(rec.asOf ?? source.date ?? ''),
   };
 }
 
@@ -243,7 +292,7 @@ async function buildJudiciaryCourts() {
   if (!snap) return;
   const out = {
     meta: sliceMeta(snap),
-    records: snap.records.slice(0, 15).map((r, i) => toRow(r, `court-${i}`)),
+    records: snap.records.slice(0, 15).map((r, i) => toCourtRow(r, `court-${i}`)),
   };
   await writeFile(path.join(OUT_DIR, 'judiciary-courts.json'), JSON.stringify(out, null, 2));
 }
@@ -267,7 +316,9 @@ async function buildLegislationBundle() {
       sourceId: src.id,
       label: src.label,
       meta: sliceMeta(snap),
-      records: snap.records.slice(0, src.limit).map((r, i) => toRow(r, `${src.id}-${i}`)),
+      records: snap.records.slice(0, src.limit).map((r, i) =>
+        src.id === 'legiscan' ? toLegiscanRow(r, `${src.id}-${i}`) : toRow(r, `${src.id}-${i}`),
+      ),
     });
   }
   if (!sections.length) return;
