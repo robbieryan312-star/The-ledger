@@ -5,7 +5,7 @@ import { Shield, CheckCircle, FileText, AlertTriangle, HelpCircle, ExternalLink 
 import { TIER_HELP, tierHelpText } from '@/lib/sourceTiers';
 import SourceTierHelp from '@/components/ui/SourceTierHelp';
 
-const TIER_CONFIG: Record<SourceTier, {
+export const TIER_CONFIG: Record<SourceTier, {
   label: string;
   icon: typeof Shield;
   color: string;

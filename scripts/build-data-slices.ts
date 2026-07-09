@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 import type { Source } from '../lib/types';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const DATA = path.join(projectRoot, 'data');
+const DATA = path.join(projectRoot, 'data', 'florida');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated', 'slices');
 
 const TITLE_FIELDS = ['title', 'caseName', 'recipient', 'company', 'indicator', 'name', 'billNumber'];
@@ -140,43 +140,86 @@ async function buildStateEconomic() {
   const bls = await loadSnapshot('bls/florida-labor.json');
   if (!census && !bls) return;
 
-  const indicators: Record<string, unknown>[] = [];
+  type HistoryPoint = { period: string; value: number };
+  type Indicator = {
+    label: string;
+    rawValue: number;
+    unit: string;
+    period?: string;
+    link?: string;
+    source: Source;
+    asOf: string;
+    history?: HistoryPoint[];
+    nationalValue?: number;
+  };
+
+  const indicators: Indicator[] = [];
   const primary = census ?? bls!;
   const cRec = census?.records[0];
+
+  function parseHistory(
+    recent: unknown,
+  ): HistoryPoint[] | undefined {
+    if (!Array.isArray(recent)) return undefined;
+    const points: HistoryPoint[] = [];
+    for (const row of recent) {
+      if (!row || typeof row !== 'object') continue;
+      const period = String((row as { period?: string }).period ?? '');
+      const raw = (row as { value?: string | number }).value;
+      if (raw === '-' || raw == null || raw === '') continue;
+      const value = Number.parseFloat(String(raw).replace(/,/g, ''));
+      if (!Number.isFinite(value)) continue;
+      points.push({ period, value });
+    }
+    return points.length > 0 ? points : undefined;
+  }
+
   if (cRec) {
     indicators.push({
       label: 'Population',
-      value: Number(cRec.population).toLocaleString('en-US'),
+      rawValue: Number(cRec.population),
+      unit: 'count',
       period: String(cRec.survey ?? ''),
       link: String(cRec.censusApiUrl ?? census!.meta.datasetUrl ?? ''),
-      source: cRec.source,
+      source: cRec.source as Source,
       asOf: String(cRec.asOf),
     });
     indicators.push({
       label: 'Median household income',
-      value: `$${Number(cRec.medianHouseholdIncome).toLocaleString('en-US')}`,
+      rawValue: Number(cRec.medianHouseholdIncome),
+      unit: 'USD',
       period: String(cRec.survey ?? ''),
       link: String(cRec.censusApiUrl ?? ''),
-      source: cRec.source,
+      source: cRec.source as Source,
       asOf: String(cRec.asOf),
     });
     indicators.push({
       label: 'Median home value',
-      value: `$${Number(cRec.medianHomeValue).toLocaleString('en-US')}`,
+      rawValue: Number(cRec.medianHomeValue),
+      unit: 'USD',
       period: String(cRec.survey ?? ''),
       link: String(cRec.censusApiUrl ?? ''),
-      source: cRec.source,
+      source: cRec.source as Source,
       asOf: String(cRec.asOf),
     });
   }
+
   for (const b of bls?.records ?? []) {
+    const latestRaw = b.latestValue;
+    const value =
+      latestRaw === '-' || latestRaw == null
+        ? NaN
+        : Number.parseFloat(String(latestRaw).replace(/,/g, ''));
+    if (!Number.isFinite(value)) continue;
     indicators.push({
       label: String(b.indicator),
-      value: `${b.latestValue}${b.unit ? ` ${b.unit}` : ''}`,
+      rawValue: value,
+      unit: String(b.unit ?? ''),
       period: String(b.latestPeriod ?? ''),
       link: String(b.blsUrl ?? bls!.meta.datasetUrl ?? ''),
-      source: b.source,
+      source: b.source as Source,
       asOf: String(b.asOf),
+      history: parseHistory(b.recent),
     });
   }
 

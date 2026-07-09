@@ -15,7 +15,8 @@
   "indicators": [
     {
       "label": "Population",
-      "value": "21,928,881",
+      "rawValue": 21928881,
+      "unit": "count",
       "period": "ACS 5-Year 2023",
       "link": "https://api.census.gov/data/2023/acs/acs5",
       "source": {
@@ -28,7 +29,8 @@
     },
     {
       "label": "Median household income",
-      "value": "$71,711",
+      "rawValue": 71711,
+      "unit": "USD",
       "period": "ACS 5-Year 2023",
       "link": "https://api.census.gov/data/2023/acs/acs5",
       "source": {
@@ -41,7 +43,8 @@
     },
     {
       "label": "Median home value",
-      "value": "$325,000",
+      "rawValue": 325000,
+      "unit": "USD",
       "period": "ACS 5-Year 2023",
       "link": "https://api.census.gov/data/2023/acs/acs5",
       "source": {
@@ -54,7 +57,8 @@
     },
     {
       "label": "Unemployment rate",
-      "value": "4.4 %",
+      "rawValue": 4.4,
+      "unit": "%",
       "period": "May 2026",
       "link": "https://data.bls.gov/timeseries/LAUST120000000000003",
       "source": {
@@ -64,11 +68,58 @@
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
         "date": "2026-05-01"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-02",
+      "history": [
+        {
+          "period": "May 2026",
+          "value": 4.4
+        },
+        {
+          "period": "April 2026",
+          "value": 4.6
+        },
+        {
+          "period": "March 2026",
+          "value": 4.4
+        },
+        {
+          "period": "February 2026",
+          "value": 4.8
+        },
+        {
+          "period": "January 2026",
+          "value": 4.9
+        },
+        {
+          "period": "December 2025",
+          "value": 4.4
+        },
+        {
+          "period": "November 2025",
+          "value": 4.8
+        },
+        {
+          "period": "September 2025",
+          "value": 4.2
+        },
+        {
+          "period": "August 2025",
+          "value": 4.3
+        },
+        {
+          "period": "July 2025",
+          "value": 4.1
+        },
+        {
+          "period": "June 2025",
+          "value": 3.9
+        }
+      ]
     },
     {
       "label": "Unemployment level",
-      "value": "492809 persons",
+      "rawValue": 492809,
+      "unit": "persons",
       "period": "May 2026",
       "link": "https://data.bls.gov/timeseries/LAUST120000000000004",
       "source": {
@@ -78,11 +129,58 @@
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
         "date": "2026-05-01"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-02",
+      "history": [
+        {
+          "period": "May 2026",
+          "value": 492809
+        },
+        {
+          "period": "April 2026",
+          "value": 509580
+        },
+        {
+          "period": "March 2026",
+          "value": 493387
+        },
+        {
+          "period": "February 2026",
+          "value": 530008
+        },
+        {
+          "period": "January 2026",
+          "value": 541997
+        },
+        {
+          "period": "December 2025",
+          "value": 489837
+        },
+        {
+          "period": "November 2025",
+          "value": 537702
+        },
+        {
+          "period": "September 2025",
+          "value": 470921
+        },
+        {
+          "period": "August 2025",
+          "value": 475708
+        },
+        {
+          "period": "July 2025",
+          "value": 459908
+        },
+        {
+          "period": "June 2025",
+          "value": 435289
+        }
+      ]
     },
     {
       "label": "Employment",
-      "value": "10606048 persons",
+      "rawValue": 10606048,
+      "unit": "persons",
       "period": "May 2026",
       "link": "https://data.bls.gov/timeseries/LAUST120000000000005",
       "source": {
@@ -92,11 +190,58 @@
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
         "date": "2026-05-01"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-02",
+      "history": [
+        {
+          "period": "May 2026",
+          "value": 10606048
+        },
+        {
+          "period": "April 2026",
+          "value": 10636902
+        },
+        {
+          "period": "March 2026",
+          "value": 10637631
+        },
+        {
+          "period": "February 2026",
+          "value": 10617483
+        },
+        {
+          "period": "January 2026",
+          "value": 10513533
+        },
+        {
+          "period": "December 2025",
+          "value": 10615436
+        },
+        {
+          "period": "November 2025",
+          "value": 10598529
+        },
+        {
+          "period": "September 2025",
+          "value": 10663892
+        },
+        {
+          "period": "August 2025",
+          "value": 10621508
+        },
+        {
+          "period": "July 2025",
+          "value": 10649513
+        },
+        {
+          "period": "June 2025",
+          "value": 10672472
+        }
+      ]
     },
     {
       "label": "Labor force",
-      "value": "11098857 persons",
+      "rawValue": 11098857,
+      "unit": "persons",
       "period": "May 2026",
       "link": "https://data.bls.gov/timeseries/LAUST120000000000006",
       "source": {
@@ -106,7 +251,53 @@
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
         "date": "2026-05-01"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-02",
+      "history": [
+        {
+          "period": "May 2026",
+          "value": 11098857
+        },
+        {
+          "period": "April 2026",
+          "value": 11146482
+        },
+        {
+          "period": "March 2026",
+          "value": 11131018
+        },
+        {
+          "period": "February 2026",
+          "value": 11147491
+        },
+        {
+          "period": "January 2026",
+          "value": 11055530
+        },
+        {
+          "period": "December 2025",
+          "value": 11105273
+        },
+        {
+          "period": "November 2025",
+          "value": 11136231
+        },
+        {
+          "period": "September 2025",
+          "value": 11134813
+        },
+        {
+          "period": "August 2025",
+          "value": 11097216
+        },
+        {
+          "period": "July 2025",
+          "value": 11109421
+        },
+        {
+          "period": "June 2025",
+          "value": 11107761
+        }
+      ]
     }
   ]
 }

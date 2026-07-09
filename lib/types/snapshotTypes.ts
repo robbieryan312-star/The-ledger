@@ -46,13 +46,24 @@ export interface VoteviewSlice {
   byBioguideId: Record<string, VoteviewMemberSlice>;
 }
 
+export interface StateEconomicHistoryPoint {
+  period: string;
+  value: number;
+}
+
 export interface StateEconomicIndicator {
   label: string;
-  value: string;
+  /** @deprecated Prefer rawValue + unit; kept for slice migration reads */
+  value?: string;
+  rawValue: number;
+  unit: string;
   period?: string;
   link?: string;
   source: Source;
   asOf: string;
+  history?: StateEconomicHistoryPoint[];
+  /** Reserved for Phase 2 national comparison */
+  nationalValue?: number;
 }
 
 export interface StateEconomicSlice {
