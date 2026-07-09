@@ -28,7 +28,7 @@ registration. Detail-endpoint enrichment code shipped; awaits owner keys + CAPTC
 
 ### Commits
 
-- (this commit) — FL summary sample ingest + CourtListener detail wiring
+- (this commit) `4356f2f` — FL summary sample ingest + CourtListener detail wiring
 
 ### Commands run (this session)
 
