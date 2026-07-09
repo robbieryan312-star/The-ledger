@@ -1,4 +1,4 @@
-import { sortOfficialsForDisplay } from '@/lib/politicianSearchIndex';
+import { comparePoliticiansByOffice } from '@/lib/politicianSort';
 import type { Politician, ResolvedOffice } from '@/lib/types';
 
 export type OfficeFilter = 'all' | 'senate' | 'house' | 'governor' | 'state' | 'local';
@@ -113,7 +113,7 @@ export function sortStateRoster(
   const list = [...roster];
 
   if (sort === 'office') {
-    return sortOfficialsForDisplay(list);
+    return list.sort(comparePoliticiansByOffice);
   }
 
   if (sort === 'name') {
