@@ -57,7 +57,7 @@
       "note": "US national CPS reference — not Florida state estimate."
     },
     {
-      "educationLevel": "Bachelor's degree",
+      "educationLevel": "Some college or associate degree",
       "geography": "US",
       "unemploymentRate": 2.7,
       "unemploymentPeriod": "June 2026",
@@ -78,7 +78,7 @@
       "note": "US national CPS reference — not Florida state estimate."
     },
     {
-      "educationLevel": "Advanced degree",
+      "educationLevel": "Bachelor's degree and higher",
       "geography": "US",
       "unemploymentRate": 3.6,
       "unemploymentPeriod": "June 2026",

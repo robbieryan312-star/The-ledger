@@ -515,7 +515,7 @@
       "link": "https://data.bls.gov/timeseries/LNS14027660"
     },
     {
-      "educationLevel": "Bachelor's degree",
+      "educationLevel": "Some college or associate degree",
       "unemploymentRate": 2.7,
       "unemploymentPeriod": "June 2026",
       "medianWeeklyEarnings": 46349,
@@ -532,7 +532,7 @@
       "link": "https://data.bls.gov/timeseries/LNS14027662"
     },
     {
-      "educationLevel": "Advanced degree",
+      "educationLevel": "Bachelor's degree and higher",
       "unemploymentRate": 3.6,
       "unemploymentPeriod": "June 2026",
       "medianWeeklyEarnings": 38606,

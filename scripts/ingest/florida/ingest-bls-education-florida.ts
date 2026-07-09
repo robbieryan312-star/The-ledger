@@ -24,13 +24,13 @@ const TIERS: Array<{
     earningsUnit: 'USD/week',
   },
   {
-    educationLevel: "Bachelor's degree",
+    educationLevel: 'Some college or associate degree',
     unemploymentSeries: 'LNS14027662',
     earningsSeries: 'LEU0252888000',
     earningsUnit: 'USD/week',
   },
   {
-    educationLevel: 'Advanced degree',
+    educationLevel: "Bachelor's degree and higher",
     unemploymentSeries: 'LNS14027689',
     earningsSeries: 'LEU0252888200',
     earningsUnit: 'USD/week',
@@ -89,7 +89,7 @@ async function main(): Promise<void> {
       errors: errors.length ? errors : undefined,
       datasetUrl: 'https://api.bls.gov/publicAPI/v1/timeseries/data/',
       note:
-        'Four education tiers from US CPS (national). Florida state-level unemployment/earnings by education not available via BLS public timeseries API — labeled as US reference.',
+        'Four education tiers from US CPS (national). Florida state-level breakdown not in BLS v1 API. Bachelor\'s vs advanced degree cannot be split in this API — tier 4 is "Bachelor\'s degree and higher".',
     },
     records,
   });
