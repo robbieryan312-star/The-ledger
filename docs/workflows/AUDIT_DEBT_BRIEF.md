@@ -4,9 +4,9 @@
 
 **Current state (2026-07-09):**
 - Branch: `cursor/platform-phases-1-2-3-70a6`
-- HEAD: _(pending commit)_
+- HEAD: `b00f635`
 - PR: https://github.com/robbieryan312-star/The-ledger/pull/20 (draft)
-- Tree: dirty (CodeQL fix) · prebuild + build: **green** · keys: **8/11 SET** (COURTLISTENER EMPTY)
+- Tree: clean · prebuild + build: **green** · keys: **8/11 SET** (COURTLISTENER EMPTY)
 
 ---
 
@@ -144,14 +144,14 @@ visual hierarchy (P4). Hold for Claude review; no data scaling; no merge.
 
 ## Session log (last 3 only)
 
-### 3 — Platform fix brief P0–P4 (2026-07-09)
+### 3 — CodeQL fix (2026-07-09)
+
+`formatDelta` USD branch — remove no-op replace flagged by CodeQL.
+
+### 2 — Platform fix brief P0–P4 (2026-07-09)
 
 DeSantis guard, BLS education fix, nav restructure, politicians/FL UI cleanup.
 
-### 2 — Phases 1–3 code-complete (2026-07-09)
+### 1 — Phases 1–3 code-complete (2026-07-09)
 
-BLS Phase 2 pipelines + FL UI; politicians browse + nav; profile TierDot propagation.
-
-### 1 — LegiScan 10/10 STOP (2026-07-09)
-
-Agent keys docs + verify script; sample ready for Claude.
+BLS Phase 2 pipelines + FL UI; politicians browse + nav.
