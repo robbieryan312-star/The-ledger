@@ -6,15 +6,54 @@
       "tier": "nonpartisan",
       "description": "Nonpartisan Free Law Project legal database; opinions are official court records"
     },
-    "asOf": "2026-07-02",
-    "totalCount": 60,
+    "asOf": "2026-07-09",
+    "totalCount": 20,
     "datasetUrl": "https://www.courtlistener.com/api/rest/v4/search/?type=o&court=fla",
-    "note": "Most recent Supreme Court of Florida opinions (newest-first). Tier 2 aggregator of official court records."
+    "note": "Most recent Supreme Court of Florida opinions (newest-first). 19/20 records include a sourced summary (syllabus, posture, or extractive snippet)."
   },
   "records": [
     {
       "id": "court-0",
-      "title": "Miguel Rodriguez Albisu v. State of Florida",
+      "title": "Over forty-four years ago, Dennis Sochor murdered Patricia Gifford.",
+      "officialTitle": "Dennis Sochor v. State of Florida",
+      "summary": "Over forty-four years ago, Dennis Sochor murdered Patricia Gifford.",
+      "summarySource": "snippet",
+      "detail": "Supreme Court of Florida · SC2026-0971 · Published",
+      "date": "2026-07-08",
+      "link": "https://www.courtlistener.com/opinion/10919893/dennis-sochor-v-state-of-florida/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-07-08"
+      },
+      "asOf": "2026-07-09"
+    },
+    {
+      "id": "court-1",
+      "title": "Supreme Court of Florida ____________ No. SC2026-0449 ____________ JAMES AREN DUCKETT, Appellant, vs. STATE OF FLORIDA, Appellee. ____________ No. SC2026-0450 ____________ JAM",
+      "officialTitle": "James Aren Duckett v. State of Florida",
+      "summary": "Supreme Court of Florida ____________ No. SC2026-0449 ____________ JAMES AREN DUCKETT, Appellant, vs. STATE OF FLORIDA, Appellee. ____________ No. SC2026-0450 ____________ JAM",
+      "summarySource": "snippet",
+      "detail": "Supreme Court of Florida · SC2026-0449 & SC2026-0450 · Published",
+      "date": "2026-07-08",
+      "link": "https://www.courtlistener.com/opinion/10919890/james-aren-duckett-v-state-of-florida/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-07-08"
+      },
+      "asOf": "2026-07-09"
+    },
+    {
+      "id": "court-2",
+      "title": "THURSDAY, JULY 2, 2026 Miguel Rodriguez Albisu, et                            SC2026-0142 al.,                                            Lower Tribunal No(s).: v.",
+      "officialTitle": "Miguel Rodriguez Albisu v. State of Florida",
+      "summary": "THURSDAY, JULY 2, 2026 Miguel Rodriguez Albisu, et                            SC2026-0142 al.,                                            Lower Tribunal No(s).: v.",
+      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2026-0142 · Published",
       "date": "2026-07-02",
       "link": "https://www.courtlistener.com/opinion/10883906/miguel-rodriguez-albisu-v-state-of-florida/",
@@ -25,11 +64,14 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-07-02"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-09"
     },
     {
-      "id": "court-1",
-      "title": "Richard Wallace Rhodes v. State of Florida",
+      "id": "court-3",
+      "title": "RICHARD WALLACE RHODES, Richard Wallace Rhodes, convicted of first-degree murder and",
+      "officialTitle": "Richard Wallace Rhodes v. State of Florida",
+      "summary": "RICHARD WALLACE RHODES, Richard Wallace Rhodes, convicted of first-degree murder and",
+      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2024-1099 · Published",
       "date": "2026-07-02",
       "link": "https://www.courtlistener.com/opinion/10883905/richard-wallace-rhodes-v-state-of-florida/",
@@ -40,11 +82,14 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-07-02"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-09"
     },
     {
-      "id": "court-2",
-      "title": "The Florida Bar v. Elizabeth Hidalgo",
+      "id": "court-4",
+      "title": "THURSDAY, JULY 2, 2026 The Florida Bar,                                      SC2025-0636 v.",
+      "officialTitle": "The Florida Bar v. Elizabeth Hidalgo",
+      "summary": "THURSDAY, JULY 2, 2026 The Florida Bar,                                      SC2025-0636 v.",
+      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2025-0636 · Published",
       "date": "2026-07-02",
       "link": "https://www.courtlistener.com/opinion/10883904/the-florida-bar-v-elizabeth-hidalgo/",
@@ -55,11 +100,14 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-07-02"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-09"
     },
     {
-      "id": "court-3",
-      "title": "Trace Elements, Inc. v. Nadja MacKensen",
+      "id": "court-5",
+      "title": "TRACE ELEMENTS, INC., NADJA MACKENSEN, et al., Florida Rule of Civil Procedure 1.442 governs “all proposals for",
+      "officialTitle": "Trace Elements, Inc. v. Nadja MacKensen",
+      "summary": "TRACE ELEMENTS, INC., NADJA MACKENSEN, et al., Florida Rule of Civil Procedure 1.442 governs “all proposals for",
+      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2024-1274 · Published",
       "date": "2026-07-02",
       "link": "https://www.courtlistener.com/opinion/10883903/trace-elements-inc-v-nadja-mackensen/",
@@ -70,11 +118,14 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-07-02"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-09"
     },
     {
-      "id": "court-4",
-      "title": "James Aren Duckett v. State of Florida",
+      "id": "court-6",
+      "title": "WEDNESDAY, JULY 1, 2026 James Aren Duckett,                                  SC2026-0959 v.",
+      "officialTitle": "James Aren Duckett v. State of Florida",
+      "summary": "WEDNESDAY, JULY 1, 2026 James Aren Duckett,                                  SC2026-0959 v.",
+      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2026-0959 · Published",
       "date": "2026-07-01",
       "link": "https://www.courtlistener.com/opinion/10883639/james-aren-duckett-v-state-of-florida/",
@@ -85,11 +136,14 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-07-01"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-09"
     },
     {
-      "id": "court-5",
-      "title": "In Re: Amendments to Florida Probate Rules",
+      "id": "court-7",
+      "title": "IN RE: AMENDMENTS TO FLORIDA PROBATE RULES.",
+      "officialTitle": "In Re: Amendments to Florida Probate Rules",
+      "summary": "IN RE: AMENDMENTS TO FLORIDA PROBATE RULES.",
+      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2025-1478 · Published",
       "date": "2026-06-25",
       "link": "https://www.courtlistener.com/opinion/10880249/in-re-amendments-to-florida-probate-rules/",
@@ -100,11 +154,14 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-25"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-09"
     },
     {
-      "id": "court-6",
-      "title": "In Re: Amendments to Florida Rules of Appellate Procedure",
+      "id": "court-8",
+      "title": "IN RE: AMENDMENTS TO FLORIDA RULES OF APPELLATE The Florida Bar’s Appellate Court Rules Committee filed a report proposing amendments to Florida Rules of Appellate Procedure 9.100 (Original Proceedings),",
+      "officialTitle": "In Re: Amendments to Florida Rules of Appellate Procedure",
+      "summary": "IN RE: AMENDMENTS TO FLORIDA RULES OF APPELLATE The Florida Bar’s Appellate Court Rules Committee filed a report proposing amendments to Florida Rules of Appellate Procedure 9.100 (Original Proceedings),",
+      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2025-0241 · Published",
       "date": "2026-06-25",
       "link": "https://www.courtlistener.com/opinion/10880248/in-re-amendments-to-florida-rules-of-appellate-procedure/",
@@ -115,11 +172,14 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-25"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-09"
     },
     {
-      "id": "court-7",
-      "title": "State of Florida v. Keith Alexander Times",
+      "id": "court-9",
+      "title": "KEITH ALEXANDER TIMES, The State of Florida appeals an order suppressing evidence obtained during a searc",
+      "officialTitle": "State of Florida v. Keith Alexander Times",
+      "summary": "KEITH ALEXANDER TIMES, The State of Florida appeals an order suppressing evidence obtained during a searc",
+      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2024-0647 · Published",
       "date": "2026-06-25",
       "link": "https://www.courtlistener.com/opinion/10880247/state-of-florida-v-keith-alexander-times/",
@@ -130,11 +190,14 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-25"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-09"
     },
     {
-      "id": "court-8",
-      "title": "William F. Roberts v. State of Florida",
+      "id": "court-10",
+      "title": "William Roberts appeals his conviction of first-degree murder",
+      "officialTitle": "William F. Roberts v. State of Florida",
+      "summary": "William Roberts appeals his conviction of first-degree murder",
+      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2022-1176 · Published",
       "date": "2026-06-25",
       "link": "https://www.courtlistener.com/opinion/10880246/william-f-roberts-v-state-of-florida/",
@@ -145,11 +208,14 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-25"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-09"
     },
     {
-      "id": "court-9",
-      "title": "Dusty Ray Spencer v. State of Florida",
+      "id": "court-11",
+      "title": "Dusty Ray Spencer is a prisoner under sentence of death for",
+      "officialTitle": "Dusty Ray Spencer v. State of Florida",
+      "summary": "Dusty Ray Spencer is a prisoner under sentence of death for",
+      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2026-0880 · Published",
       "date": "2026-06-18",
       "link": "https://www.courtlistener.com/opinion/10877287/dusty-ray-spencer-v-state-of-florida/",
@@ -160,11 +226,14 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-18"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-09"
     },
     {
-      "id": "court-10",
-      "title": "Eric Desmond Parrish v. State of Florida",
+      "id": "court-12",
+      "title": "ERIC DESMOND PARRISH, A jury found Eric Desmond Parrish guilty of sexual battery",
+      "officialTitle": "Eric Desmond Parrish v. State of Florida",
+      "summary": "ERIC DESMOND PARRISH, A jury found Eric Desmond Parrish guilty of sexual battery",
+      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2022-1457 · Published",
       "date": "2026-06-18",
       "link": "https://www.courtlistener.com/opinion/10876940/eric-desmond-parrish-v-state-of-florida/",
@@ -175,11 +244,14 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-18"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-09"
     },
     {
-      "id": "court-11",
-      "title": "Gary Richard Whitton v. State of Florida",
+      "id": "court-13",
+      "title": "GARY RICHARD WHITTON, Gary Richard Whitton, a prisoner under sentence of death,",
+      "officialTitle": "Gary Richard Whitton v. State of Florida",
+      "summary": "GARY RICHARD WHITTON, Gary Richard Whitton, a prisoner under sentence of death,",
+      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2025-1357 · Published",
       "date": "2026-06-18",
       "link": "https://www.courtlistener.com/opinion/10876939/gary-richard-whitton-v-state-of-florida/",
@@ -190,11 +262,14 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-18"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-09"
     },
     {
-      "id": "court-12",
-      "title": "Harold Lee Harvey, Jr. v. State of Florida",
+      "id": "court-14",
+      "title": "HAROLD LEE HARVEY, JR., Harold Lee Harvey, Jr. appeals the summary denial of his",
+      "officialTitle": "Harold Lee Harvey, Jr. v. State of Florida",
+      "summary": "HAROLD LEE HARVEY, JR., Harold Lee Harvey, Jr. appeals the summary denial of his",
+      "summarySource": "snippet",
       "detail": "Supreme Court of Florida · SC2024-0648 · Published",
       "date": "2026-06-18",
       "link": "https://www.courtlistener.com/opinion/10876938/harold-lee-harvey-jr-v-state-of-florida/",
@@ -205,37 +280,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-06-18"
       },
-      "asOf": "2026-07-02"
-    },
-    {
-      "id": "court-13",
-      "title": "In Re: Amendments to Florida Probate Rules",
-      "detail": "Supreme Court of Florida · SC2025-1462 · Published",
-      "date": "2026-06-18",
-      "link": "https://www.courtlistener.com/opinion/10876937/in-re-amendments-to-florida-probate-rules/",
-      "source": {
-        "name": "CourtListener (Free Law Project)",
-        "url": "https://www.courtlistener.com",
-        "tier": "nonpartisan",
-        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
-        "date": "2026-06-18"
-      },
-      "asOf": "2026-07-02"
-    },
-    {
-      "id": "court-14",
-      "title": "In Re: Amendments to Florida Rules of Appellate Procedure",
-      "detail": "Supreme Court of Florida · SC2025-0241 · Published",
-      "date": "2026-06-11",
-      "link": "https://www.courtlistener.com/opinion/10873672/in-re-amendments-to-florida-rules-of-appellate-procedure/",
-      "source": {
-        "name": "CourtListener (Free Law Project)",
-        "url": "https://www.courtlistener.com",
-        "tier": "nonpartisan",
-        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
-        "date": "2026-06-11"
-      },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-09"
     }
   ]
 }

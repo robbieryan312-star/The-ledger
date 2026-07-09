@@ -67,7 +67,7 @@ export async function writeFloridaSnapshot<T>(
   filename: string,
   payload: { meta: DataSnapshotMeta; records: T[] },
 ): Promise<string> {
-  const dir = path.join(DATA_ROOT, subdir);
+  const dir = path.join(DATA_ROOT, 'florida', subdir);
   await mkdir(dir, { recursive: true });
   const outFile = path.join(dir, filename);
   await writeFile(outFile, JSON.stringify(payload, null, 2) + '\n', 'utf8');
