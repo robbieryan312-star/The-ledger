@@ -13,7 +13,7 @@
       "Florida-specific Consumer Price Index",
       "Fastest-growing occupations (BLS projections not in v1 API)"
     ],
-    "educationNote": "Four education tiers from US CPS (national): less than HS, HS, bachelor's only, and advanced degree. Earnings shown annualized (weekly × 52). Florida state-level breakdown not in BLS v1 API."
+    "educationNote": "Four education tiers from US CPS (national): less than HS, HS, bachelor's only, and advanced degree. Earnings annualized (weekly × 52). Bachelor's-only and advanced unemployment rates are not in BLS v1 API — honest gaps in UI."
   },
   "stateCode": "FL",
   "stateName": "Florida",
@@ -522,6 +522,7 @@
       "educationLevel": "Bachelor's degree",
       "unemploymentRate": null,
       "unemploymentPeriod": null,
+      "unemploymentGapReason": "Bachelor's-only unemployment rate is not exposed in the BLS v1 timeseries API (probed LNS14028977, CGBD25O — no data).",
       "medianWeeklyEarnings": 1609,
       "medianAnnualEarnings": 83668,
       "earningsPeriod": "1st Quarter 2026",
@@ -540,6 +541,7 @@
       "educationLevel": "Advanced degree",
       "unemploymentRate": null,
       "unemploymentPeriod": null,
+      "unemploymentGapReason": "Advanced-degree unemployment rate is not exposed in the BLS v1 timeseries API (probed LNS14028978, CGAD25O — no data).",
       "medianWeeklyEarnings": 1982,
       "medianAnnualEarnings": 103064,
       "earningsPeriod": "1st Quarter 2026",

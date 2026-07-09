@@ -11,7 +11,7 @@
     "stateCode": "FL",
     "fetchedLive": true,
     "datasetUrl": "https://api.bls.gov/publicAPI/v1/timeseries/data/",
-    "note": "Four education tiers from US CPS (national): less than HS, HS, bachelor's only, and advanced degree. Earnings shown annualized (weekly × 52). Florida state-level breakdown not in BLS v1 API."
+    "note": "Four education tiers from US CPS (national): less than HS, HS, bachelor's only, and advanced degree. Earnings annualized (weekly × 52). Bachelor's-only and advanced unemployment rates are not in BLS v1 API — honest gaps in UI."
   },
   "records": [
     {
@@ -67,7 +67,8 @@
       "geography": "US",
       "unemploymentRate": null,
       "unemploymentPeriod": null,
-      "unemploymentSeriesId": "LNS14028977",
+      "unemploymentSeriesId": null,
+      "unemploymentGapReason": "Bachelor's-only unemployment rate is not exposed in the BLS v1 timeseries API (probed LNS14028977, CGBD25O — no data).",
       "medianWeeklyEarnings": 1609,
       "medianAnnualEarnings": 83668,
       "earningsPeriod": "1st Quarter 2026",
@@ -90,7 +91,8 @@
       "geography": "US",
       "unemploymentRate": null,
       "unemploymentPeriod": null,
-      "unemploymentSeriesId": "LNS14028978",
+      "unemploymentSeriesId": null,
+      "unemploymentGapReason": "Advanced-degree unemployment rate is not exposed in the BLS v1 timeseries API (probed LNS14028978, CGAD25O — no data).",
       "medianWeeklyEarnings": 1982,
       "medianAnnualEarnings": 103064,
       "earningsPeriod": "1st Quarter 2026",

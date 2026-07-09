@@ -390,7 +390,13 @@ function EducationTiersPanel({
               <div>
                 <span className="text-gray-600 text-[10px] block">Unemployment</span>
                 <span className="text-white font-semibold">
-                  {tier.unemploymentRate != null ? formatPercent(tier.unemploymentRate) : '—'}
+                  {tier.unemploymentRate != null ? (
+                    formatPercent(tier.unemploymentRate)
+                  ) : (
+                    <span className="text-gray-500 font-normal" title={tier.unemploymentGapReason}>
+                      not available
+                    </span>
+                  )}
                 </span>
               </div>
               <div>

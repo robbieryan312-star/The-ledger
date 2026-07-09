@@ -7,8 +7,9 @@ import { BLS_SOURCE, fetchBlsSeries, latestPoint } from '../../lib/bls-api';
 
 const TIERS: Array<{
   educationLevel: string;
-  unemploymentSeries: string;
+  unemploymentSeries: string | null;
   earningsSeries: string;
+  unemploymentGapReason?: string;
 }> = [
   {
     educationLevel: 'Less than high school',
@@ -22,13 +23,19 @@ const TIERS: Array<{
   },
   {
     educationLevel: "Bachelor's degree",
-    unemploymentSeries: 'LNS14028977',
+    /** LNS14028977/CGBD25O not in BLS v1 API — bachelor's-only unemployment unavailable. */
+    unemploymentSeries: null,
     earningsSeries: 'LEU0252919100',
+    unemploymentGapReason:
+      "Bachelor's-only unemployment rate is not exposed in the BLS v1 timeseries API (probed LNS14028977, CGBD25O — no data).",
   },
   {
     educationLevel: 'Advanced degree',
-    unemploymentSeries: 'LNS14028978',
+    /** LNS14028978/CGAD25O not in BLS v1 API — advanced-only unemployment unavailable. */
+    unemploymentSeries: null,
     earningsSeries: 'LEU0252919700',
+    unemploymentGapReason:
+      "Advanced-degree unemployment rate is not exposed in the BLS v1 timeseries API (probed LNS14028978, CGAD25O — no data).",
   },
 ];
 
@@ -54,14 +61,18 @@ async function main(): Promise<void> {
   const errors: string[] = [];
   const records: Array<Record<string, unknown>> = [];
 
-  const allSeries = [...new Set(TIERS.flatMap((t) => [t.unemploymentSeries, t.earningsSeries]))];
+  const allSeries = [
+    ...new Set(
+      TIERS.flatMap((t) => [t.unemploymentSeries, t.earningsSeries].filter((s): s is string => !!s)),
+    ),
+  ];
 
   try {
     const data = await fetchBlsSeries(allSeries, year - 2, year);
     const weeklyEarnings: number[] = [];
 
     for (const tier of TIERS) {
-      const unempPts = data.get(tier.unemploymentSeries);
+      const unempPts = tier.unemploymentSeries ? data.get(tier.unemploymentSeries) : undefined;
       const earnPts = data.get(tier.earningsSeries);
       const unemp = latestPoint(unempPts);
       const earn = latestPoint(earnPts);
@@ -78,6 +89,7 @@ async function main(): Promise<void> {
         unemploymentRate: unemp?.value ?? null,
         unemploymentPeriod: unemp?.period ?? null,
         unemploymentSeriesId: tier.unemploymentSeries,
+        unemploymentGapReason: unemp ? undefined : tier.unemploymentGapReason,
         medianWeeklyEarnings: Number.isFinite(weekly) ? weekly : null,
         medianAnnualEarnings: annualEarnings,
         earningsPeriod: earn?.period ?? null,
@@ -116,7 +128,7 @@ async function main(): Promise<void> {
       errors: errors.length ? errors : undefined,
       datasetUrl: 'https://api.bls.gov/publicAPI/v1/timeseries/data/',
       note:
-        'Four education tiers from US CPS (national): less than HS, HS, bachelor\'s only, and advanced degree. Earnings shown annualized (weekly × 52). Florida state-level breakdown not in BLS v1 API.',
+        'Four education tiers from US CPS (national): less than HS, HS, bachelor\'s only, and advanced degree. Earnings annualized (weekly × 52). Bachelor\'s-only and advanced unemployment rates are not in BLS v1 API — honest gaps in UI.',
     },
     records,
   });

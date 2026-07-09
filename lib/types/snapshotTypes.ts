@@ -80,6 +80,7 @@ export interface StateEducationLaborTier {
   educationLevel: string;
   unemploymentRate: number | null;
   unemploymentPeriod: string | null;
+  unemploymentGapReason?: string;
   medianWeeklyEarnings: number | null;
   medianAnnualEarnings: number | null;
   earningsPeriod: string | null;

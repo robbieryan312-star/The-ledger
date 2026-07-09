@@ -197,6 +197,7 @@ async function buildStateEconomic() {
     educationLevel: string;
     unemploymentRate: number | null;
     unemploymentPeriod: string | null;
+    unemploymentGapReason?: string;
     medianWeeklyEarnings: number | null;
     medianAnnualEarnings: number | null;
     earningsPeriod: string | null;
@@ -334,6 +335,9 @@ async function buildStateEconomic() {
       unemploymentRate:
         tier.unemploymentRate != null ? Number(tier.unemploymentRate) : null,
       unemploymentPeriod: tier.unemploymentPeriod ? String(tier.unemploymentPeriod) : null,
+      unemploymentGapReason: tier.unemploymentGapReason
+        ? String(tier.unemploymentGapReason)
+        : undefined,
       medianWeeklyEarnings:
         tier.medianWeeklyEarnings != null ? Number(tier.medianWeeklyEarnings) : null,
       medianAnnualEarnings:
