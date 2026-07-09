@@ -11,6 +11,7 @@ import type {
   SnapshotSliceMeta,
   StateEconomicIndicator,
   StateEconomicSlice,
+  StateEducationLaborTier,
 } from '@/lib/types/snapshotTypes';
 import SourceProvenance from '@/components/ui/SourceProvenance';
 import TierDot from '@/components/ui/TierDot';
@@ -25,6 +26,7 @@ import {
   indicatorRawValue,
   populationHeroText,
 } from '@/lib/format/stateEconomicDisplay';
+import { formatCompactCurrency, formatIndicatorValue } from '@/lib/format/number';
 
 function formatFetchedAt(iso?: string): string {
   if (!iso) return '';
@@ -202,6 +204,24 @@ function TrendDropdown({ ind }: { ind: StateEconomicIndicator }) {
   );
 }
 
+function NationalDeltaChip({ ind }: { ind: StateEconomicIndicator }) {
+  if (ind.nationalValue == null || Number.isNaN(ind.nationalValue)) return null;
+  const fl = indicatorRawValue(ind);
+  if (!Number.isFinite(fl)) return null;
+  const delta = fl - ind.nationalValue;
+  const label = ind.nationalLabel ?? 'vs US';
+  return (
+    <span
+      className={`inline-flex text-[10px] px-1.5 py-0.5 rounded border mt-1 ${
+        delta <= 0 ? 'border-green-400/30 text-green-400' : 'border-amber-400/30 text-amber-300'
+      }`}
+      title={`Florida ${displayValue(ind)} vs US ${formatIndicatorValue(ind.nationalValue, ind.unit)}`}
+    >
+      {label} {formatDelta(delta, ind.unit)}
+    </span>
+  );
+}
+
 function EconomicIndicatorCard({
   ind,
   labelOverride,
@@ -223,6 +243,13 @@ function EconomicIndicatorCard({
       </dt>
       <dd className="text-white font-bold text-lg mt-0.5">{valueOverride ?? displayValue(ind)}</dd>
       {ind.period && <dd className="text-[10px] text-gray-500">{ind.period}</dd>}
+      <NationalDeltaChip ind={ind} />
+      {ind.note && <dd className="text-[10px] text-gray-600 mt-1 leading-snug">{ind.note}</dd>}
+      {ind.tenYearGrowthPct != null && Number.isFinite(ind.tenYearGrowthPct) && (
+        <dd className="text-[10px] text-[#c8a951] mt-1">
+          10-yr growth: {ind.tenYearGrowthPct >= 0 ? '+' : ''}{ind.tenYearGrowthPct.toFixed(1)}%
+        </dd>
+      )}
       <TrendDropdown ind={ind} />
       {children}
       {ind.link && (
@@ -261,6 +288,7 @@ function EmploymentRateCard({
       <dt className="text-[10px] text-gray-500 uppercase tracking-wide pr-6">Employment rate</dt>
       <dd className="text-white font-bold text-lg mt-0.5">{formatPercent(rate)}</dd>
       <dd className="text-[10px] text-gray-500">{unemployment.period}</dd>
+      <NationalDeltaChip ind={unemployment} />
       <TrendDropdown ind={unemployment} />
       <button
         type="button"
@@ -321,26 +349,117 @@ function PopulationHero({ ind }: { ind: StateEconomicIndicator }) {
   );
 }
 
-const PHASE2_PLACEHOLDERS = [
-  'Consumer Price Index (CPI)',
-  '10-year job growth',
+const PHASE2_GAP_LABELS = [
   'Fastest-growing occupations',
-  'Earnings and unemployment by education',
-  'National average comparison',
 ] as const;
 
-function Phase2Placeholders() {
+function HonestGapRow({ label }: { label: string }) {
+  return (
+    <li className="flex items-center justify-between text-[11px] text-gray-500 py-1">
+      <span>{label}</span>
+      <span className="text-gray-600 italic">No verified data yet</span>
+    </li>
+  );
+}
+
+function EducationTiersPanel({
+  tiers,
+  note,
+}: {
+  tiers: StateEducationLaborTier[];
+  note?: string;
+}) {
+  if (!tiers.length) return null;
   return (
     <div className="mt-4 pt-4 border-t border-[#1e3a5f]/60">
-      <h4 className="text-[10px] uppercase tracking-wider text-gray-500 font-medium mb-2">Additional metrics</h4>
-      <ul className="space-y-1.5">
-        {PHASE2_PLACEHOLDERS.map((label) => (
-          <li key={label} className="flex items-center justify-between text-[11px] text-gray-500">
-            <span>{label}</span>
-            <span className="text-gray-600 italic">No verified data yet</span>
-          </li>
+      <h4 className="text-[10px] uppercase tracking-wider text-gray-500 font-medium mb-1">
+        Unemployment &amp; earnings by education
+      </h4>
+      {note && <p className="text-[10px] text-gray-600 mb-2 leading-relaxed">{note}</p>}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        {tiers.map((tier) => (
+          <div
+            key={tier.educationLevel}
+            className="relative bg-[#0a1628] rounded-lg p-3 border border-[#1e3a5f]/60"
+          >
+            <div className="absolute top-2 right-2">
+              <TierDot tier={tier.source.tier} />
+            </div>
+            <p className="text-[10px] text-gray-500 uppercase pr-6">{tier.educationLevel}</p>
+            <div className="mt-1 grid grid-cols-2 gap-2 text-xs">
+              <div>
+                <span className="text-gray-600 text-[10px] block">Unemployment</span>
+                <span className="text-white font-semibold">
+                  {tier.unemploymentRate != null ? formatPercent(tier.unemploymentRate) : '—'}
+                </span>
+              </div>
+              <div>
+                <span className="text-gray-600 text-[10px] block">Median weekly pay</span>
+                <span className="text-white font-semibold">
+                  {tier.medianWeeklyEarnings != null
+                    ? formatCompactCurrency(tier.medianWeeklyEarnings)
+                    : '—'}
+                </span>
+              </div>
+            </div>
+            {tier.link && (
+              <a
+                href={tier.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10px] text-[#c8a951] hover:text-white inline-flex items-center gap-0.5 mt-2"
+              >
+                BLS series <ExternalLink className="h-2.5 w-2.5" />
+              </a>
+            )}
+          </div>
         ))}
-      </ul>
+      </div>
+    </div>
+  );
+}
+
+function Phase2MetricsSection({ slice }: { slice: StateEconomicSlice }) {
+  const cpi = slice.indicators.find(
+    (i) => i.label.includes('CPI') || i.label.includes('Price Index'),
+  );
+  const jobGrowth = slice.indicators.find((i) => i.label === 'Total nonfarm employment');
+  const jobOpenings = slice.indicators.find((i) => i.label === 'Job openings (national)');
+  const gaps = slice.meta.honestGaps ?? [];
+  const extraGaps = PHASE2_GAP_LABELS.filter((g) => gaps.some((x) => x.includes(g.split(' ')[0])));
+
+  const hasPhase2 =
+    cpi || jobGrowth || jobOpenings || (slice.educationTiers?.length ?? 0) > 0 || gaps.length > 0;
+  if (!hasPhase2) return null;
+
+  return (
+    <div className="mt-4 pt-4 border-t border-[#1e3a5f]/60">
+      <h4 className="text-[10px] uppercase tracking-wider text-gray-500 font-medium mb-2">
+        Additional metrics
+      </h4>
+      <dl className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+        {cpi && <EconomicIndicatorCard ind={cpi} />}
+        {jobGrowth && <EconomicIndicatorCard ind={jobGrowth} />}
+        {jobOpenings && <EconomicIndicatorCard ind={jobOpenings} labelOverride="Net job openings (US)" />}
+      </dl>
+      {gaps.includes('Florida-specific Consumer Price Index') && !cpi?.geography?.includes('FL') && (
+        <p className="text-[10px] text-gray-600 mt-2 italic">
+          Florida-specific CPI: No verified data yet (US CPI-U shown as national inflation reference).
+        </p>
+      )}
+      <EducationTiersPanel tiers={slice.educationTiers ?? []} note={slice.meta.educationNote} />
+      {(gaps.length > 0 || extraGaps.length > 0) && (
+        <ul className="mt-3 space-y-1">
+          {gaps
+            .filter((g) => !g.includes('Consumer Price Index'))
+            .map((g) => (
+              <HonestGapRow key={g} label={g} />
+            ))}
+          {extraGaps.map((g) => (
+            <HonestGapRow key={g} label={g} />
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
@@ -374,7 +493,7 @@ export function FloridaStateEconomicPanel({ slice }: { slice: StateEconomicSlice
           />
         )}
       </dl>
-      <Phase2Placeholders />
+      <Phase2MetricsSection slice={slice} />
       <div className="mt-4 pt-3 border-t border-[#1e3a5f]/60">
         <SourceProvenance source={slice.meta.source} asOf={slice.meta.asOf} size="sm" />
         {slice.meta.note && (

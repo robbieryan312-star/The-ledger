@@ -7,8 +7,13 @@
       "description": "American Community Survey 5-year estimates via api.census.gov"
     },
     "asOf": "2026-07-02",
-    "totalCount": 7,
-    "note": "Florida state-level Census ACS demographics and BLS labor statistics."
+    "totalCount": 10,
+    "note": "Florida Census ACS demographics, BLS labor/CPI/growth, US CPS education reference, national benchmarks.",
+    "honestGaps": [
+      "Florida-specific Consumer Price Index",
+      "Fastest-growing occupations (BLS projections not in v1 API)"
+    ],
+    "educationNote": "Four education tiers from US CPS (national). Florida state-level unemployment/earnings by education not available via BLS public timeseries API — labeled as US reference."
   },
   "stateCode": "FL",
   "stateName": "Florida",
@@ -114,7 +119,9 @@
           "period": "June 2025",
           "value": 3.9
         }
-      ]
+      ],
+      "nationalValue": 4.2,
+      "nationalLabel": "US avg"
     },
     {
       "label": "Unemployment level",
@@ -298,6 +305,248 @@
           "value": 11107761
         }
       ]
+    },
+    {
+      "label": "US CPI-U (national reference)",
+      "rawValue": 326.031,
+      "unit": "index",
+      "period": "December 2025",
+      "link": "https://data.bls.gov/timeseries/CUSR0000SA0",
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Official labor and price statistics via api.bls.gov",
+        "date": "2025-12-01"
+      },
+      "asOf": "2026-07-09",
+      "history": [
+        {
+          "period": "December 2025",
+          "value": 326.031
+        },
+        {
+          "period": "November 2025",
+          "value": 325.063
+        },
+        {
+          "period": "September 2025",
+          "value": 324.245
+        },
+        {
+          "period": "August 2025",
+          "value": 323.291
+        },
+        {
+          "period": "July 2025",
+          "value": 322.169
+        },
+        {
+          "period": "June 2025",
+          "value": 321.435
+        },
+        {
+          "period": "May 2025",
+          "value": 320.62
+        },
+        {
+          "period": "April 2025",
+          "value": 320.302
+        },
+        {
+          "period": "March 2025",
+          "value": 319.785
+        },
+        {
+          "period": "February 2025",
+          "value": 319.679
+        },
+        {
+          "period": "January 2025",
+          "value": 318.961
+        }
+      ],
+      "note": "Florida-specific CPI not available via BLS public timeseries API; US urban CPI shown for inflation context only.",
+      "geography": "US"
+    },
+    {
+      "label": "Total nonfarm employment",
+      "rawValue": 9964.1,
+      "unit": "thousands",
+      "period": "December 2023",
+      "link": "https://data.bls.gov/timeseries/SMU12000000000000001",
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Official labor and price statistics via api.bls.gov",
+        "date": "2023-12-01"
+      },
+      "asOf": "2026-07-09",
+      "history": [
+        {
+          "period": "December 2023",
+          "value": 9964.1
+        },
+        {
+          "period": "November 2023",
+          "value": 9955.8
+        },
+        {
+          "period": "October 2023",
+          "value": 9875.9
+        },
+        {
+          "period": "September 2023",
+          "value": 9769.9
+        },
+        {
+          "period": "August 2023",
+          "value": 9736.8
+        },
+        {
+          "period": "July 2023",
+          "value": 9647.1
+        },
+        {
+          "period": "June 2023",
+          "value": 9678.4
+        },
+        {
+          "period": "May 2023",
+          "value": 9759.5
+        },
+        {
+          "period": "April 2023",
+          "value": 9762.4
+        },
+        {
+          "period": "March 2023",
+          "value": 9720.3
+        },
+        {
+          "period": "February 2023",
+          "value": 9692.9
+        },
+        {
+          "period": "January 2023",
+          "value": 9618.8
+        }
+      ],
+      "geography": "FL"
+    },
+    {
+      "label": "Job openings (national)",
+      "rawValue": 8520,
+      "unit": "thousands",
+      "period": "December 2023",
+      "link": "https://data.bls.gov/timeseries/JTS000000000000000JOL",
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Official labor and price statistics via api.bls.gov",
+        "date": "2023-12-01"
+      },
+      "asOf": "2026-07-09",
+      "history": [
+        {
+          "period": "December 2023",
+          "value": 8520
+        },
+        {
+          "period": "November 2023",
+          "value": 8602
+        },
+        {
+          "period": "October 2023",
+          "value": 8580
+        },
+        {
+          "period": "September 2023",
+          "value": 9259
+        },
+        {
+          "period": "August 2023",
+          "value": 9254
+        },
+        {
+          "period": "July 2023",
+          "value": 8657
+        }
+      ],
+      "note": "National JOLTS job openings — Florida state openings series not included in this sample.",
+      "geography": "US"
+    }
+  ],
+  "educationTiers": [
+    {
+      "educationLevel": "Less than high school",
+      "unemploymentRate": 5.5,
+      "unemploymentPeriod": "June 2026",
+      "medianWeeklyEarnings": 1295,
+      "earningsPeriod": "1st Quarter 2026",
+      "earningsUnit": "USD/week",
+      "note": "US national CPS reference — not Florida state estimate.",
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Current Population Survey (CPS) — national reference; Florida state-level education breakdown not in BLS v1 API.",
+        "date": "2026-06-01"
+      },
+      "link": "https://data.bls.gov/timeseries/LNS14027659"
+    },
+    {
+      "educationLevel": "High school diploma",
+      "unemploymentRate": 4.2,
+      "unemploymentPeriod": "June 2026",
+      "medianWeeklyEarnings": 1287,
+      "earningsPeriod": "1st Quarter 2026",
+      "earningsUnit": "USD/week",
+      "note": "US national CPS reference — not Florida state estimate.",
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Current Population Survey (CPS) — national reference; Florida state-level education breakdown not in BLS v1 API.",
+        "date": "2026-06-01"
+      },
+      "link": "https://data.bls.gov/timeseries/LNS14027660"
+    },
+    {
+      "educationLevel": "Bachelor's degree",
+      "unemploymentRate": 2.7,
+      "unemploymentPeriod": "June 2026",
+      "medianWeeklyEarnings": 46349,
+      "earningsPeriod": "1st Quarter 2026",
+      "earningsUnit": "USD/week",
+      "note": "US national CPS reference — not Florida state estimate.",
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Current Population Survey (CPS) — national reference; Florida state-level education breakdown not in BLS v1 API.",
+        "date": "2026-06-01"
+      },
+      "link": "https://data.bls.gov/timeseries/LNS14027662"
+    },
+    {
+      "educationLevel": "Advanced degree",
+      "unemploymentRate": 3.6,
+      "unemploymentPeriod": "June 2026",
+      "medianWeeklyEarnings": 38606,
+      "earningsPeriod": "1st Quarter 2026",
+      "earningsUnit": "USD/week",
+      "note": "US national CPS reference — not Florida state estimate.",
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Current Population Survey (CPS) — national reference; Florida state-level education breakdown not in BLS v1 API.",
+        "date": "2026-06-01"
+      },
+      "link": "https://data.bls.gov/timeseries/LNS14027689"
     }
   ]
 }

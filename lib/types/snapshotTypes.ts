@@ -68,15 +68,35 @@ export interface StateEconomicIndicator {
   source: Source;
   asOf: string;
   history?: StateEconomicHistoryPoint[];
-  /** Reserved for Phase 2 national comparison */
+  /** National benchmark for vs-US delta chip */
   nationalValue?: number;
+  nationalLabel?: string;
+  note?: string;
+  tenYearGrowthPct?: number | null;
+  geography?: string;
+}
+
+export interface StateEducationLaborTier {
+  educationLevel: string;
+  unemploymentRate: number | null;
+  unemploymentPeriod: string | null;
+  medianWeeklyEarnings: number | null;
+  earningsPeriod: string | null;
+  earningsUnit: string;
+  note?: string;
+  source: Source;
+  link?: string;
 }
 
 export interface StateEconomicSlice {
-  meta: SnapshotSliceMeta;
+  meta: SnapshotSliceMeta & {
+    honestGaps?: string[];
+    educationNote?: string;
+  };
   stateCode: string;
   stateName: string;
   indicators: StateEconomicIndicator[];
+  educationTiers?: StateEducationLaborTier[];
 }
 
 export interface LegislationSourceSection {

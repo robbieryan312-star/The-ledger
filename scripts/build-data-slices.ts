@@ -185,9 +185,25 @@ async function buildProfilesVoteview() {
 async function buildStateEconomic() {
   const census = await loadSnapshot('census/florida-demographics.json');
   const bls = await loadSnapshot('bls/florida-labor.json');
+  const cpi = await loadSnapshot('bls/florida-cpi.json');
+  const growth = await loadSnapshot('bls/florida-employment-growth.json');
+  const education = await loadSnapshot('bls/florida-education-labor.json');
+  const benchmarks = await loadSnapshot('bls/florida-national-benchmarks.json');
+  const occupations = await loadSnapshot('bls/florida-occupations.json');
   if (!census && !bls) return;
 
   type HistoryPoint = { period: string; value: number };
+  type EducationTier = {
+    educationLevel: string;
+    unemploymentRate: number | null;
+    unemploymentPeriod: string | null;
+    medianWeeklyEarnings: number | null;
+    earningsPeriod: string | null;
+    earningsUnit: string;
+    note?: string;
+    source: Source;
+    link?: string;
+  };
   type Indicator = {
     label: string;
     rawValue: number;
@@ -198,15 +214,28 @@ async function buildStateEconomic() {
     asOf: string;
     history?: HistoryPoint[];
     nationalValue?: number;
+    nationalLabel?: string;
+    note?: string;
+    tenYearGrowthPct?: number | null;
+    geography?: string;
   };
 
   const indicators: Indicator[] = [];
+  const educationTiers: EducationTier[] = [];
+  const honestGaps: string[] = [];
   const primary = census ?? bls!;
   const cRec = census?.records[0];
 
-  function parseHistory(
-    recent: unknown,
-  ): HistoryPoint[] | undefined {
+  const nationalByFloridaLabel = new Map<string, number>();
+  for (const b of benchmarks?.records ?? []) {
+    const match = String(b.matchesFloridaIndicator ?? '');
+    const val = b.latestValue;
+    if (!match || val == null) continue;
+    const n = Number.parseFloat(String(val).replace(/,/g, ''));
+    if (Number.isFinite(n)) nationalByFloridaLabel.set(match, n);
+  }
+
+  function parseHistory(recent: unknown): HistoryPoint[] | undefined {
     if (!Array.isArray(recent)) return undefined;
     const points: HistoryPoint[] = [];
     for (const row of recent) {
@@ -219,6 +248,33 @@ async function buildStateEconomic() {
       points.push({ period, value });
     }
     return points.length > 0 ? points : undefined;
+  }
+
+  function pushBlsRecord(b: Record<string, unknown>, blsMeta: RawSnapshot) {
+    const latestRaw = b.latestValue;
+    const value =
+      latestRaw === '-' || latestRaw == null
+        ? NaN
+        : Number.parseFloat(String(latestRaw).replace(/,/g, ''));
+    if (!Number.isFinite(value)) return;
+    const label = String(b.indicator);
+    const matchKey = label;
+    indicators.push({
+      label,
+      rawValue: value,
+      unit: String(b.unit ?? ''),
+      period: String(b.latestPeriod ?? ''),
+      link: String(b.blsUrl ?? blsMeta.meta.datasetUrl ?? ''),
+      source: b.source as Source,
+      asOf: String(b.asOf),
+      history: parseHistory(b.recent),
+      nationalValue: nationalByFloridaLabel.get(matchKey),
+      nationalLabel: nationalByFloridaLabel.has(matchKey) ? 'US avg' : undefined,
+      note: b.note ? String(b.note) : undefined,
+      tenYearGrowthPct:
+        b.tenYearGrowthPct != null ? Number(b.tenYearGrowthPct) : undefined,
+      geography: b.geography ? String(b.geography) : undefined,
+    });
   }
 
   if (cRec) {
@@ -251,23 +307,43 @@ async function buildStateEconomic() {
     });
   }
 
-  for (const b of bls?.records ?? []) {
-    const latestRaw = b.latestValue;
-    const value =
-      latestRaw === '-' || latestRaw == null
-        ? NaN
-        : Number.parseFloat(String(latestRaw).replace(/,/g, ''));
-    if (!Number.isFinite(value)) continue;
-    indicators.push({
-      label: String(b.indicator),
-      rawValue: value,
-      unit: String(b.unit ?? ''),
-      period: String(b.latestPeriod ?? ''),
-      link: String(b.blsUrl ?? bls!.meta.datasetUrl ?? ''),
-      source: b.source as Source,
-      asOf: String(b.asOf),
-      history: parseHistory(b.recent),
+  if (bls) {
+    for (const b of bls.records) pushBlsRecord(b, bls);
+  }
+
+  if (cpi) {
+    const flCpi = cpi.records.find((r) => r.geography === 'FL');
+    if (flCpi) {
+      pushBlsRecord(flCpi, cpi);
+    } else {
+      honestGaps.push('Florida-specific Consumer Price Index');
+      const usRef = cpi.records.find((r) => r.geography === 'US');
+      if (usRef) pushBlsRecord(usRef, cpi);
+    }
+  }
+
+  if (growth) {
+    for (const g of growth.records) pushBlsRecord(g, growth);
+  }
+
+  for (const tier of education?.records ?? []) {
+    educationTiers.push({
+      educationLevel: String(tier.educationLevel),
+      unemploymentRate:
+        tier.unemploymentRate != null ? Number(tier.unemploymentRate) : null,
+      unemploymentPeriod: tier.unemploymentPeriod ? String(tier.unemploymentPeriod) : null,
+      medianWeeklyEarnings:
+        tier.medianWeeklyEarnings != null ? Number(tier.medianWeeklyEarnings) : null,
+      earningsPeriod: tier.earningsPeriod ? String(tier.earningsPeriod) : null,
+      earningsUnit: String(tier.earningsUnit ?? 'USD/week'),
+      note: tier.note ? String(tier.note) : undefined,
+      source: tier.source as Source,
+      link: tier.blsUrl ? String(tier.blsUrl) : undefined,
     });
+  }
+
+  if (occupations && occupations.records.length === 0) {
+    honestGaps.push('Fastest-growing occupations (BLS projections not in v1 API)');
   }
 
   const out = {
@@ -276,11 +352,14 @@ async function buildStateEconomic() {
       asOf: primary.meta.asOf,
       fetchedAt: primary.meta.fetchedAt,
       totalCount: indicators.length,
-      note: 'Florida state-level Census ACS demographics and BLS labor statistics.',
+      note: 'Florida Census ACS demographics, BLS labor/CPI/growth, US CPS education reference, national benchmarks.',
+      honestGaps: honestGaps.length ? honestGaps : undefined,
+      educationNote: education?.meta.note,
     },
     stateCode: 'FL',
     stateName: String(cRec?.stateName ?? 'Florida'),
     indicators,
+    educationTiers,
   };
   await writeFile(path.join(OUT_DIR, 'state-economic.json'), JSON.stringify(out, null, 2));
 }
