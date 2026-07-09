@@ -1,8 +1,10 @@
 import { comparePoliticiansByOffice } from '@/lib/politicianSort';
+import { getPoliticianBranch } from '@/lib/branches';
 import type { Politician, ResolvedOffice } from '@/lib/types';
 
 export type OfficeFilter = 'all' | 'senate' | 'house' | 'governor' | 'state' | 'local';
 export type PartyFilter = 'all' | 'Democrat' | 'Republican' | 'Independent';
+export type BranchFilter = 'all' | 'executive' | 'legislative' | 'judicial' | 'state_local';
 export type VoterTopicFilter =
   | 'immigration'
   | 'education'
@@ -19,6 +21,8 @@ export interface StateRosterFilters {
   voterTopics: VoterTopicFilter[];
   inOfficeOnly: boolean;
   sort: RosterSort;
+  branch: BranchFilter;
+  stateCode: string;
 }
 
 export const DEFAULT_ROSTER_FILTERS: StateRosterFilters = {
@@ -28,6 +32,8 @@ export const DEFAULT_ROSTER_FILTERS: StateRosterFilters = {
   voterTopics: [],
   inOfficeOnly: true,
   sort: 'office',
+  branch: 'all',
+  stateCode: '',
 };
 
 export interface DashboardPolitician extends Politician {
@@ -91,6 +97,13 @@ function matchesVoterTopics(p: Politician, topics: VoterTopicFilter[]): boolean 
   return topics.every((topic) => politicianHasTopicEvidence(p, topic));
 }
 
+function matchesBranch(p: Politician, branch: BranchFilter): boolean {
+  if (branch === 'all') return true;
+  const b = getPoliticianBranch(p);
+  if (branch === 'state_local') return b === 'state';
+  return b === branch;
+}
+
 export function filterStateRoster(
   roster: DashboardPolitician[],
   filters: StateRosterFilters,
@@ -101,6 +114,8 @@ export function filterStateRoster(
     if (q && !p.name.toLowerCase().includes(q)) return false;
     if (!matchesOffice(p, filters.office)) return false;
     if (!matchesParty(p, filters.party)) return false;
+    if (!matchesBranch(p, filters.branch)) return false;
+    if (filters.stateCode && p.stateCode !== filters.stateCode) return false;
     if (!matchesVoterTopics(p, filters.voterTopics)) return false;
     return true;
   });

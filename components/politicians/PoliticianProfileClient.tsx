@@ -25,6 +25,8 @@ import SourceTierHelp from '@/components/ui/SourceTierHelp';
 import ControversySection from '@/components/politicians/ControversySection';
 import ProfileNewsExplorer from '@/components/politicians/ProfileNewsExplorer';
 import VoteviewIdeologyPanel from '@/components/records/VoteviewIdeologyPanel';
+import { formatCompactCurrency } from '@/lib/format/number';
+import TierDot from '@/components/ui/TierDot';
 import FollowTheMoneyPanel from '@/components/finance/FollowTheMoneyPanel';
 import ProfileRecordByTopicPanel from '@/components/politicians/ProfileRecordByTopicPanel';
 import { FloridaNewsSections } from '@/components/records/FloridaRecordPanel';
@@ -253,9 +255,7 @@ function HotTopicsPanel({ issues, votes, isFeatured }: { issues: Issue[]; votes:
 }
 
 function formatMoney(n: number): string {
-  if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
-  if (n >= 1_000) return `$${(n / 1_000).toFixed(0)}K`;
-  return `$${n}`;
+  return formatCompactCurrency(n);
 }
 
 // Full calendar date (month + day + year) from an ISO string, parsed from parts to
@@ -693,7 +693,12 @@ export default function PoliticianProfileClient({
             </div>
           ) : (
             <div className="flex md:flex-col gap-2 flex-wrap md:flex-nowrap">
-              <div className="rounded-xl p-3 border border-white/[0.07] text-center min-w-[90px]" style={{ background: 'rgba(5,9,15,0.5)' }}>
+              <div className="rounded-xl p-3 border border-white/[0.07] text-center min-w-[90px] relative" style={{ background: 'rgba(5,9,15,0.5)' }}>
+                {fecEntry && (
+                  <div className="absolute top-2 right-2">
+                    <TierDot tier={fecEntry.source.tier} />
+                  </div>
+                )}
                 <div className="text-2xl font-bold" style={{ color: '#d4ac52' }}>{formatMoney(displayFinance.totalRaised)}</div>
                 <div className="text-xs text-white/40 flex items-center justify-center gap-1 flex-wrap">
                   Total raised

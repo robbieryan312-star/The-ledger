@@ -6,11 +6,11 @@ import SourceBadge from '@/components/ui/SourceBadge';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, BarChart, Bar, XAxis, YAxis } from 'recharts';
 import { DollarSign, AlertTriangle, Globe, Users, Building2, Info } from 'lucide-react';
 import { trimToWordBoundary } from '@/lib/displaySummary';
+import { formatCompactCurrency } from '@/lib/format/number';
+import TierDot from '@/components/ui/TierDot';
 
 function formatMoney(n: number): string {
-  if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
-  if (n >= 1_000) return `$${(n / 1_000).toFixed(0)}K`;
-  return `$${n.toLocaleString()}`;
+  return formatCompactCurrency(n);
 }
 
 const SOURCE_COLORS = ['#c8a951', '#2d5a8e', '#4ade80', '#f87171', '#a78bfa'];
@@ -55,7 +55,12 @@ export default function DonorChart({
   return (
     <div className="space-y-6">
       {hasFecTotals && (
-        <div className="bg-green-400/5 border border-green-400/25 rounded-xl p-4 flex items-start gap-3">
+        <div className="bg-green-400/5 border border-green-400/25 rounded-xl p-4 flex items-start gap-3 relative">
+          {fecEntry && (
+            <div className="absolute top-3 right-3">
+              <TierDot tier={fecEntry.source.tier} />
+            </div>
+          )}
           <Info className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
           <div className="flex-1 min-w-0">
             <div className="flex flex-wrap items-center gap-2 mb-1">
@@ -82,7 +87,12 @@ export default function DonorChart({
 
       {/* Key Metrics */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#1e3a5f]">
+        <div className="bg-[#0d1f35] rounded-xl p-4 border border-[#1e3a5f] relative">
+          {hasFecTotals && fecEntry && (
+            <div className="absolute top-2 right-2">
+              <TierDot tier={fecEntry.source.tier} />
+            </div>
+          )}
           <DollarSign className="h-5 w-5 text-[#c8a951] mb-1" />
           <div className="text-xl font-bold text-white">{formatMoney(total)}</div>
           <div className="text-xs text-gray-400">Total Raised</div>

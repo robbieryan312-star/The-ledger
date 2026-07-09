@@ -50,9 +50,16 @@ export default function FloridaStatePoliticians({
   stateName: string;
 }) {
   const [filters, setFilters] = useState<StateRosterFilters>(DEFAULT_ROSTER_FILTERS);
+  const baseRoster = useMemo(
+    () =>
+      filters.inOfficeOnly
+        ? politicians.filter((p) => p.inOfficeResolved)
+        : politicians,
+    [politicians, filters.inOfficeOnly],
+  );
   const filtered = useMemo(
-    () => applyStateRosterFilters(politicians, filters),
-    [politicians, filters],
+    () => applyStateRosterFilters(baseRoster, filters),
+    [baseRoster, filters],
   );
 
   return (
@@ -66,7 +73,7 @@ export default function FloridaStatePoliticians({
       <StateRosterControls
         filters={filters}
         onChange={setFilters}
-        totalCount={politicians.length}
+        totalCount={baseRoster.length}
         filteredCount={filtered.length}
       />
       <div className="mt-4 space-y-2">

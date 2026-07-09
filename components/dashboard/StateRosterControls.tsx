@@ -71,6 +71,8 @@ export default function StateRosterControls({
     filters.search.trim() !== '' ||
     filters.office !== 'all' ||
     filters.party !== 'all' ||
+    filters.branch !== 'all' ||
+    Boolean(filters.stateCode) ||
     filters.voterTopics.length > 0 ||
     !filters.inOfficeOnly ||
     filters.sort !== 'office';

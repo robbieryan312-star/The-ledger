@@ -2,11 +2,13 @@ import { Suspense } from 'react';
 import {
   allPoliticians,
   getCoverageStats,
+  isCurrentlyInOffice,
   resolveOffice,
   rosterStates,
 } from '@/lib/data/allPoliticians';
-import { fecFinanceCount } from '@/lib/data/fecFinance';
+import { fecFinanceCount, getFecFinance } from '@/lib/data/fecFinance';
 import { congressVotesCount, mergeVotingRecord } from '@/lib/data/congressVotes';
+import { mergeStockTrades } from '@/lib/data/stockTrades';
 import {
   buildPoliticianSearchIndex,
   buildStateRosterIndex,
@@ -20,6 +22,29 @@ export const metadata = {
     'Browse every current federal official — Congress, governors, executive branch, and judiciary — with sourced office labels from authoritative records.',
 };
 
+function buildBrowsePoliticians(): PoliticiansListEntry[] {
+  return allPoliticians.map((p) => {
+    const { trades } = mergeStockTrades(p.id, p.stockTrades, p.recordType);
+    const fec = getFecFinance(p.id);
+    return {
+      ...p,
+      resolvedOffice: resolveOffice(p),
+      inOfficeResolved: isCurrentlyInOffice(p),
+      totalRaisedSort: fec?.receipts ?? p.campaignFinance.totalRaised,
+      newestTradeTs:
+        trades.length > 0
+          ? Math.max(...trades.map((t) => new Date(t.date).getTime()))
+          : 0,
+      displayVoteCount: mergeVotingRecord(
+        p.id,
+        p.votingRecord,
+        p.recordType,
+        p.bioguideId,
+      ).votes.length,
+    };
+  });
+}
+
 export default async function PoliticiansPage({
   searchParams,
 }: {
@@ -31,37 +56,25 @@ export default async function PoliticiansPage({
   const allCount = allPoliticians.length;
   const politicianHits = buildPoliticianSearchIndex();
   const states = buildStateRosterIndex();
-  const politicians: PoliticiansListEntry[] = allPoliticians.map((p) => ({
-    ...p,
-    resolvedOffice: resolveOffice(p),
-    displayVoteCount: mergeVotingRecord(
-      p.id,
-      p.votingRecord,
-      p.recordType,
-      p.bioguideId,
-    ).votes.length,
-  }));
+  const politicians = buildBrowsePoliticians();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      {/* SERVER-SIDE SUMMARY FOR CRAWLERS */}
+    <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-2">The people in power, in plain sight.</h1>
         <p className="text-white/60 text-base mb-1">
-          A complete, sourced record for every official — nothing hidden, nothing spun.
+          Filter by office, party, or issue — office-ranked roster with authoritative labels.
         </p>
-        <div className="text-white/40 text-sm mt-3 space-y-1">
+        <div className="text-white/40 text-sm mt-3">
           <p><strong>{allCount}</strong> politicians indexed · <strong>{filedCount}</strong> with campaign finance data</p>
           <p><strong>{stats.total}</strong> current officials in authoritative roster</p>
-          <p>Federal coverage: Congress members, governors, executive branch, judiciary</p>
         </div>
       </div>
 
-      {/* SAMPLE GRID FOR CRAWLERS (first 12 politicians) */}
-      <div className="mb-12">
+      <div className="mb-10">
         <h2 className="text-white text-sm font-bold mb-4 uppercase tracking-wide">Featured Officials</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-          {allPoliticians.slice(0, 12).map((p) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {allPoliticians.slice(0, 6).map((p) => (
             <Link
               key={p.id}
               href={`/politicians/${p.id}`}
@@ -72,15 +85,9 @@ export default async function PoliticiansPage({
             </Link>
           ))}
         </div>
-        <div className="mt-4">
-          <Link href="/politicians" className="text-[#c8a951] text-sm hover:underline">
-            View all {allCount} politicians →
-          </Link>
-        </div>
       </div>
 
-      {/* CLIENT-SIDE INTERACTIVE CONTENT */}
-      <Suspense fallback={<div className="text-gray-500 text-sm">Loading politicians...</div>}>
+      <Suspense fallback={<div className="text-gray-500 text-sm">Loading roster…</div>}>
         <PoliticiansContent
           initialSearchParams={initialSearchParams}
           politicians={politicians}

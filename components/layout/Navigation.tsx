@@ -5,6 +5,8 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X, Scale, ChevronDown, BookmarkCheck } from 'lucide-react';
 
+import { hrefForRosterFilters } from '@/lib/dashboard/rosterSearchParams';
+
 const navItems = [
   { label: 'Map', href: '/' },
   {
@@ -12,13 +14,14 @@ const navItems = [
     href: '/politicians',
     sub: [
       { label: 'Browse All', href: '/politicians' },
-      { label: 'Executive', href: '/politicians?branch=executive' },
-      { label: 'Legislative', href: '/politicians?branch=legislative' },
-      { label: 'Judicial', href: '/politicians?branch=judicial' },
-      { label: 'Senate', href: '/politicians?branch=legislative&chamber=senate' },
-      { label: 'House', href: '/politicians?branch=legislative&chamber=house' },
-      { label: 'Governors', href: '/politicians?chamber=governor' },
-      { label: 'State & Local', href: '/politicians?level=state' },
+      { label: 'Executive', href: hrefForRosterFilters({ branch: 'executive' }) },
+      { label: 'Legislative', href: hrefForRosterFilters({ branch: 'legislative' }) },
+      { label: 'Judicial', href: hrefForRosterFilters({ branch: 'judicial' }) },
+      { label: 'Senate', href: hrefForRosterFilters({ branch: 'legislative', office: 'senate' }) },
+      { label: 'House', href: hrefForRosterFilters({ branch: 'legislative', office: 'house' }) },
+      { label: 'Governors', href: hrefForRosterFilters({ office: 'governor' }) },
+      { label: 'State & Local', href: hrefForRosterFilters({ branch: 'state_local' }) },
+      { label: 'Florida', href: '/states/FL' },
     ],
   },
   {
