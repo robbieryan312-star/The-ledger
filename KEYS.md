@@ -28,6 +28,9 @@
 | `NEWSAPI_KEY` | FL news (national uses GDELT) |
 | `PROPUBLICA_CONGRESS_KEY` | **Retired** — do not use |
 
+**Cloud agent sessions:** this table reflects the owner machine `.env.local`. Agents only use
+keys present as real `KEY=` lines in the session `.env.local` (comment placeholders do not count).
+
 ---
 
 ## EMPTY — priority
