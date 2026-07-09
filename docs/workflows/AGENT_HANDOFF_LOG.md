@@ -60,7 +60,7 @@ review of Part A (#20) and Part B (#21).
 
 ### Commits
 
-- *(pending this turn)* — `docs: rename AUDIT_DEBT_BRIEF → AGENT_HANDOFF_LOG + improvement backlog`
+- `f8385a1` — docs: rename AUDIT_DEBT_BRIEF → AGENT_HANDOFF_LOG + improvement backlog
 
 ### Commands run (this session)
 
