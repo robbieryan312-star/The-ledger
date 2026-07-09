@@ -4,9 +4,9 @@
 
 **Current state (2026-07-09):**
 - Branch: `cursor/platform-phases-1-2-3-70a6`
-- HEAD: _(pending commit)_
+- HEAD: `a34d499`
 - PR: https://github.com/robbieryan312-star/The-ledger/pull/20 (draft)
-- Tree: dirty (fix brief P0–P4) · prebuild + build: **green** · keys: **8/11 SET** (COURTLISTENER EMPTY)
+- Tree: clean · prebuild + build: **green** · keys: **8/11 SET** (COURTLISTENER EMPTY)
 
 ---
 
