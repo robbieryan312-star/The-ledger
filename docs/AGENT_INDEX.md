@@ -25,7 +25,7 @@ npm run sync:legislators && npm run verify:office && npm run build
 
 Vote-sync routing and full sync catalog: `lib/data/SOURCE_LOOKUP.md`.
 
-## Guard suites (13 + typecheck — all must pass before commit)
+## Guard suites (15 commands in prebuild — all must pass before commit)
 
 | Script | Guard |
 |--------|-------|
@@ -42,8 +42,10 @@ Vote-sync routing and full sync catalog: `lib/data/SOURCE_LOOKUP.md`.
 | `test:data-layout` | `data/` layout orphans |
 | `test:env-truth` | `.env.example` ↔ code |
 | `test:optimization` | syncKernel + manifest + fetch timeout guards |
+| `test:docs-consistency` | Doc contradictions (retired scripts, counts, Tier labels, §1.1 cites) |
+| `audit:profile-credibility` | Profile credibility audit gate |
 
-Prebuild runs typecheck + all 13 suites; CI: `.github/workflows/guards.yml`.
+Prebuild runs all 15; CI: `.github/workflows/guards.yml`. Migrated count: **`lib/data/generated/profiles/_manifest.json`** (`count` field).
 
 ## Agent preflight
 
@@ -57,10 +59,10 @@ Checks session-start files exist, guard scripts registered, and key npm scripts 
 
 | Topic | File |
 |-------|------|
-| API keys, demo commands, GitHub secrets | `docs/SETUP.md` → `KEYS.md`, `OWNER_SETUP.md` |
+| API keys, demo commands, GitHub secrets | `docs/SETUP.md` → `KEYS.md` |
 | Canonical repo / branch workflow | `REPO.md` |
 | Architecture & data flow | `ARCHITECTURE.md` |
-| Integration roadmap | `lib/data/DATA_INTEGRATION_PLAN.md` |
+| Integration roadmap | `ARCHITECTURE.md` (§ Data integration) |
 | Machine-readable source catalog | `lib/data/sourceCatalog.ts` |
 | National data snapshots | `data/national/README.md` |
 | Canonical sync paths | `scripts/lib/dataPaths.ts` |
@@ -91,4 +93,6 @@ Checks session-start files exist, guard scripts registered, and key npm scripts 
 | File | Notes |
 |------|-------|
 | `docs/archive/DATA_SOURCES.md` | Pre-DNU mock framing |
-| `docs/progress/README.md` | 2026-06-23 screenshots (caption tier labels outdated) |
+| `docs/archive/progress-screenshots.md` | 2026-06-23 screenshots (caption tier labels outdated) |
+| `docs/archive/FUTURE_ROADMAP.md` | Idea backlog — not scheduled work |
+| `docs/archive/STATE_COUNTY_EXPANSION.md` | Deferred local expansion proposal |

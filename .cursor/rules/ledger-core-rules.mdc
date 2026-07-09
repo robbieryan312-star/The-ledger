@@ -465,7 +465,7 @@ If both agents could write, **stop** — Cursor owns the tree.
 | Source tiers, corroboration, banned sources, destination-view map | `.cursor/rules/ledger-data-policy.mdc` |
 | Which source/API feeds a data need | `lib/data/SOURCE_LOOKUP.md`, `lib/data/sourceCatalog.ts` |
 | What's done / in progress / blocked; phase status | `PROGRESS.md` |
-| API key SET/EMPTY; sync commands | `KEYS.md`, `OWNER_SETUP.md` |
+| API key SET/EMPTY; sync commands | `KEYS.md`, `docs/SETUP.md` |
 | Surfacing substandard files/data/processes to the owner | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 H |
 | Cursor work log for Claude review (last 3 sessions) | `docs/workflows/AUDIT_DEBT_BRIEF.md` — **§1.1 J (mandatory same-turn commit)** |
 | Cross-agent second opinion when unverifiable | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 I |

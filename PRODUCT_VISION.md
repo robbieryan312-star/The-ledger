@@ -1,6 +1,6 @@
 # The Ledger — Product Vision
 
-**Purpose:** Owner definition of what makes The Ledger *desirable*. Guides editorial voice, UX priorities, and content depth. Does **not** authorize scope changes or pause integration work — see `AGENTS.md` and `lib/data/DATA_INTEGRATION_PLAN.md` for build order.
+**Purpose:** Owner definition of what makes The Ledger *desirable*. Guides editorial voice, UX priorities, and content depth. Does **not** authorize scope changes or pause integration work — see `AGENTS.md` and `ARCHITECTURE.md` for build order.
 
 ---
 
@@ -76,4 +76,4 @@ When records conflict or are incomplete, show honest gaps: *"No verified record 
 | `.cursor/rules/ledger-data-policy.mdc` | Source tiers, office resolution, scope priority |
 | `.cursor/rules/ledger-editorial-voice.mdc` | Headline/summary voice, promise-diff framing |
 | `FUTURE_ROADMAP.md` | Owner feature ideas for later phases (not current sprint) |
-| `lib/data/DATA_INTEGRATION_PLAN.md` | Integration pipeline and sprint order |
+| `ARCHITECTURE.md` | Integration pipeline and sprint order |

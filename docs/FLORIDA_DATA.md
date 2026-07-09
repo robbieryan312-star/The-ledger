@@ -36,7 +36,7 @@ No-key subset: `npm run ingest:no-key`
 | `ingest:voteview-fl` | `ingest-voteview-florida.ts` | `data/florida/voteview/florida-ideology.json` |
 | `ingest:fllobbyist-fl` | `ingest-fllobbyist-florida.ts` | `data/florida/fllobbyist/florida-lobbying-firm-directories.json` |
 
-**Retired:** `ingest:gdelt-fl` output — Florida GDELT snapshot removed (no UI consumer; national news uses RSS).
+**Florida GDELT ingest (`ingest:gdelt-fl`):** script remains in `package.json` for optional raw snapshots; **not** the primary Florida or national news path — use `ingest:news-fl` / `sync:news-rss` instead.
 
 ## UI slice accessors
 

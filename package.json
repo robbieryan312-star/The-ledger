@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npm run test:typecheck && npm run test:crec && npm run test:org-join && npm run test:source-integrity && npm run test:copy-compliance && npm run test:topic-positions-bundle && npm run test:news-registry && npm run test:profile-snapshots && npm run test:client-bundle && npm run test:docs-integrity && npm run test:data-layout && npm run test:env-truth && npm run test:optimization && npm run audit:profile-credibility",
+    "prebuild": "npm run test:typecheck && npm run test:crec && npm run test:org-join && npm run test:source-integrity && npm run test:copy-compliance && npm run test:topic-positions-bundle && npm run test:news-registry && npm run test:profile-snapshots && npm run test:client-bundle && npm run test:docs-integrity && npm run test:docs-consistency && npm run test:data-layout && npm run test:env-truth && npm run test:optimization && npm run audit:profile-credibility",
     "build": "next build",
     "postbuild": "npm run test:client-chunks",
     "start": "next start",
@@ -17,6 +17,7 @@
     "profile:build": "tsx scripts/profile-build.ts",
     "test:typecheck": "tsc --noEmit",
     "test:docs-integrity": "tsx --test scripts/__tests__/docsIntegrityGuard.test.ts",
+    "test:docs-consistency": "tsx --test scripts/__tests__/docsConsistencyGuard.test.ts",
     "test:data-layout": "tsx --test scripts/__tests__/dataLayoutGuard.test.ts",
     "test:env-truth": "tsx --test scripts/__tests__/envTruthGuard.test.ts",
     "test:optimization": "tsx --test scripts/__tests__/optimizationGuards.test.ts scripts/__tests__/syncKernelGuard.test.ts",

@@ -1,12 +1,12 @@
 ---
-description: The Ledger data credibility and scope policy — highest priority
+description: Data credibility and destination-view policy for lib/data, scripts, and types (autoAttach globs)
 autoAttach:
   globs: ["lib/data/**", "scripts/**", "lib/types/**"]
 ---
 
-# The Ledger — Data Credibility (Highest Priority)
+# The Ledger — Data Credibility (lib/data · scripts · types)
 
-Data credibility is the product. Every decision defers to it.
+Data credibility is the product within this policy's scope (`lib/data/**`, `scripts/**`, `lib/types/**`). Platform-wide binding rules: `.cursor/rules/ledger-core-rules.mdc`.
 
 ## Source tiers
 
@@ -110,7 +110,7 @@ verifiable sources are the only path into `lib/data/generated/`. See `AGENTS.md`
 
 ## Scope priority
 
-1. Rich featured profiles (6 locked migrated + demo) with real office, votes, finance, verbatim quotes, and Said-Did diffs — depth before breadth
+1. Rich featured profiles (**7 locked migrated** per `lib/data/generated/profiles/_manifest.json` + demo) with real office, votes, finance, verbatim quotes, and Said-Did diffs — depth before breadth
 2. All 537 federal Congress members (votes, FEC, office)
 3. Governors and top statewide via state `.gov` / SoS sources
 4. The "platform promise vs. voting record" diff for all members (core product)
@@ -124,4 +124,4 @@ verifiable sources are the only path into `lib/data/generated/`. See `AGENTS.md`
 - `lib/types/index.ts` — SourceTier union (use these values)
 - `scripts/sync-legislators.ts` — roster sync
 - `scripts/verify-office-resolution.ts` — post-sync verification
-- `lib/data/DATA_INTEGRATION_PLAN.md` — pipeline roadmap
+- `ARCHITECTURE.md` — pipeline roadmap, office resolution, integration status
