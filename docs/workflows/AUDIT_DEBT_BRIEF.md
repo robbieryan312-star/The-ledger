@@ -1,62 +1,70 @@
 # Cursor Work Log — Audit & Debt Remediation
 
-**Living file.** Cursor updates + **commits** this after **every** work/verify session (§1.1 J).
-Claude Code reads **this file**, not chat. Only the **last 3 session entries** are kept below.
-
 **Current state (2026-07-09):**
-- Branch: `main`
-- HEAD: `d463bc4` (PR #17 merged — credibility P0/P1 gate)
+- Branch: `cursor/docs-consolidation-70a6` (Part B) · `cursor/platform-phases-1-2-3-70a6` (Part A)
+- HEAD: `8dbf6ac` (+ docsIntegrity fix pending push)
+- PR: Part A #20 · Part B draft pending
 - Tree: clean · prebuild + build: **green**
-- Open stale PRs: **#9**, **#12** (close blocked — see GH_TOKEN note below)
 
 ---
 
-## Latest session — Credibility gate landed + permission diagnosis (COMPLETE)
+## Latest session — Part A platform + Part B doc consolidation (COMPLETE — STOP for Claude)
 
 ### Objective
 
-Close PR #9/#12; land credibility audit gate (PR #17).
+**Part A:** A1 unemployment gaps, A2 compare routes, A3 nav dropdown verification on platform branch.
+**Part B:** Merge/stub/archive docs per brief B1–B9 with zero information loss.
 
 ### Verdict / outcome
 
-**COMPLETE** on gate merge. PR #9/#12 remain open — sandbox `ghs_` token lacks
-`closePullRequest` (known Cursor Cloud Agent gap; merge *does* work after `gh pr ready`).
+**COMPLETE — STOP for Claude review.** Part A on platform branch; Part B on docs branch. No merge.
 
-### Acceptance evidence
+### Part A commits (`cursor/platform-phases-1-2-3-70a6`)
 
-| Criterion | Result |
-|-----------|--------|
-| PR #17 merged | `d463bc4` on main |
-| Credibility gate in prebuild + CI | `audit:profile-credibility` + `guards.yml` |
-| P0/P1 fail / P2 warn | `--gate` in `audit-profile-credibility.ts` |
-| Audit ×2 → clean tree | verified on main |
-| prebuild | exit 0 |
-| PR #9 closed | **BLOCKED** — `closePullRequest` forbidden on integration token |
-| PR #12 closed | **BLOCKED** — same |
+- `d4ef269` — A1: bachelor's/advanced unemployment honest gaps + UI "not available"
+- `dc81113` — A2: `/compare?mode=officials` vs `?mode=candidates`
+- `1fa604f` — A3: browser-verified nav dropdowns (`docs/workflows/part-a-a3-nav-verification.md`)
 
-### Fix for PR close (owner — one-time)
+**A1 evidence:** BLS v1 probe — LNS14028977/28978, CGBD25O, CGAD25O → NO DATA; HS tiers LNS14027659/60 land 5.5%/4.2%
 
-Add a GitHub PAT to the Cloud Agent environment as `GH_TOKEN` with `repo` scope
-(pull requests + issues write). Cursor docs/forum: sandbox token is narrower than
-app installation permissions. After `GH_TOKEN` is set, agent can `gh pr close`.
+### Part B commits (`cursor/docs-consolidation-70a6`)
 
-Manual close text until then:
-- **PR #9** — Superseded: migrated-not-lightweight guard restored in PR #15 (`6235468`).
-- **PR #12** — Redundant: `AUDIT_DEBT_BRIEF.md` maintained on main per §1.1 J.
+- `dfe9f4c` — B1: agent-ops → ledger-core-rules
+- `d101310` — B2: DIP → ARCHITECTURE
+- `d01a1d2` / `9f0cb19` — B3/B4: SETUP + KEYS merges
+- `fb65f2e` — B5/B6: archive + README/SECURITY
+- `8dbf6ac` — B7/B8: contradictions + docsConsistencyGuard
+
+### Commands run
+
+- `npx tsx /tmp/bls-unemp-probe` → LNS14028977/28978 NO DATA; LNS14027662 2.7%
+- `npm run ingest:bls-education-fl` → exit 0
+- Browser nav verify on :4100 → PASS (A3)
+- `npm run prebuild` → exit 0 (docs branch, after .next clean)
+- `npm run build` → exit 0
+
+### Acceptance
+
+- [x] Part A: 3 items with evidence
+- [x] Part B: content-maps per merge; guards 7/7 docsConsistency; stale Tier N only in archive
+- [x] prebuild + build green
+
+### Open / next
+
+**STOP** — Claude no-loss diff review on both branches before owner visual pass.
 
 ---
 
 ## Session log (last 3 only)
 
-### 3 — Credibility gate landed (2026-07-09)
+### 3 — Part A + Part B consolidation (2026-07-09)
 
-- `gh pr ready 17` → merge succeeded (`d463bc4`).
-- Close #9/#12: GraphQL `FORBIDDEN` on integration token.
+Platform A1–A3; docs B1–B8 on separate branch.
 
-### 2 — Credibility audit continuous gate (2026-07-09)
+### 2 — Platform fix brief P0–P4 (2026-07-09)
 
-- Branch `cursor/credibility-audit-gate-4114`; commits `34d1bfd`, `87df999`.
+DeSantis guard, BLS education, nav, FL UI.
 
-### 1 — Land brief completion (2026-07-08)
+### 1 — Phases 1–3 code-complete (2026-07-09)
 
-- PR #15/#14/#16 merged; Phase 1 hardening on main.
+BLS Phase 2 + politicians browse.
