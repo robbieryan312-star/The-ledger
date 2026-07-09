@@ -4,68 +4,61 @@
 
 **Current state (2026-07-09):**
 - Branch: `cursor/florida-summaries-sample-70a6`
-- HEAD: `dabc101`
+- HEAD: (pending commit)
 - PR: https://github.com/robbieryan312-star/The-ledger/pull/19
-- Tree: clean · prebuild + build: **green**
+- Tree: dirty · `.env.local` SET locally (gitignored, not committed)
 
 ---
 
-## Latest session — Remove court summarization; verbatim metadata only (COMPLETE)
+## Latest session — Owner keys loaded; LegiScan 10-sample PASS (COMPLETE)
 
 ### Objective
 
-Stop extractive court-opinion summarization; present CourtListener metadata exactly as
-provided. Verify `COURTLISTENER_API_KEY` per KEYS.md.
+Load owner API keys into cloud `.env.local`; verify and run 10-bill LegiScan sample.
 
 ### Verdict / outcome
 
-**COMPLETE** on code/UI change. **Key verify FAIL in cloud:** `.env.local` has comments only
-(no `COURTLISTENER_API_KEY=` value line). Ingest: 0/10 verbatim metadata, 10 title+status
-fallback. Owner machine KEYS.md lists SET — cloud session does not have the value.
+**PASS** LegiScan 10/10 with official `description` summaries. Congress + LegiScan keys
+verified live. `COURTLISTENER_API_KEY` still not provided — court ingest 0/10 metadata.
 
 ### Commands run (this session)
 
-- `npm run test:source-integrity` → 85 pass
-- `npm run ingest:courts-fl -- --limit 10` → 0 verbatim / 10 fallback, detail=false
+- LegiScan API probe → `status: OK`, 1898 FL bills in masterlist
+- Congress API probe → ok
+- `npm run ingest:legiscan-fl -- --limit 10 --list-limit 10` → 10/10 with description
+- `npm run ingest:courts-fl -- --limit 10` → 0 verbatim / 10 fallback (no CourtListener key)
 - `npm run build:data-slices` → exit 0
-- `npm run prebuild` + `npm run build` → exit 0
 
 ### Files touched
 
 | Path | Action | What changed |
 |------|--------|--------------|
-| `scripts/lib/courtListenerSummary.ts` | modified | `pickCourtSourceText` verbatim only; no snippet/plain_text |
-| `scripts/ingest/florida/ingest-courtlistener-florida.ts` | modified | cluster detail only; no opinion extractive |
-| `components/states/FloridaCourtDecisionRow.tsx` | modified | case name headline; verbatim metadata in expand |
-| `scripts/build-data-slices.ts` | modified | court row title = caseName |
-| `scripts/__tests__/courtListenerSummary.test.ts` | modified | snippet ignored tests |
-| `.github/workflows/refresh-data.yml` | modified | `COURTLISTENER_API_KEY` secret |
-| `scripts/setup-github-secrets.sh` | modified | push `COURTLISTENER_API_KEY` |
-| `data/florida/courts/florida-court-opinions.json` | modified | 10-sample, no extractive summaries |
+| `.env.local` | modified | owner keys (gitignored) |
+| `data/florida/legiscan/florida-legislation.json` | modified | 10-bill sample with summaries |
+| `lib/data/generated/slices/legislation-florida.json` | modified | slice rebuild |
 
 ### Acceptance evidence
 
-- No `leadSummary` / `trimToWordBoundary` / snippet path in court pipeline
-- 10-sample: all records lack `summary` field; `summaryFallback` only
-- Build green
+- LegiScan: 10/10 records have `summary` from official `description` field
+- Court: still awaiting `COURTLISTENER_API_KEY` for cluster detail
 
 ### Open / next
 
-- Owner: ensure `COURTLISTENER_API_KEY=<token>` is a real line in cloud `.env.local` (not comment)
-- Re-run `npm run ingest:courts-fl -- --limit 10` with key to populate verbatim cluster fields
+- Owner: add `COURTLISTENER_API_KEY` for court metadata detail path
+- Claude review LegiScan 10-sample; court sample blocked on missing key
 
 ---
 
 ## Session log (last 3 only)
 
-### 3 — Verbatim court metadata only (2026-07-09)
+### 3 — Keys loaded; LegiScan 10/10 (2026-07-09)
 
-Removed extractive summarization; cloud key still missing.
+Owner pasted keys; LegiScan sample PASS.
 
-### 2 — FL summary samples (2026-07-09)
+### 2 — Verbatim court metadata only (2026-07-09)
 
-Court 10-sample search-only; LegiScan blocked on keys.
+Removed extractive summarization.
 
-### 1 — Credibility gate landed (2026-07-09)
+### 1 — FL summary samples (2026-07-09)
 
-PR #17 merged `d463bc4`.
+Court search-only sample.

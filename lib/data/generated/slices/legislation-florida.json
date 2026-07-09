@@ -12,17 +12,18 @@
           "tier": "nonpartisan",
           "description": "State and federal bill tracking via legiscan.com API"
         },
-        "asOf": "2026-07-02",
-        "totalCount": 100,
+        "asOf": "2026-07-09",
+        "totalCount": 10,
         "datasetUrl": "https://api.legiscan.com/",
-        "note": "Florida state legislation master list (up to 100 bills). Tier 2."
+        "note": "Florida legislation sample (detail --limit 10, list --list-limit 10). 10/10 detail rows include LegiScan official description as summary."
       },
       "records": [
         {
           "id": "legiscan-0",
-          "title": "H0011: Designation of the State Birds",
+          "title": "Designates American flamingo as official state bird and the Florida scrub-jay as the official state songbird; provides that such designation supersedes designation of mockingbird as official Florida state bird.",
           "officialTitle": "Designation of the State Birds",
-          "detail": "H0011 · 2026-03-13",
+          "summary": "Designates American flamingo as official state bird and the Florida scrub-jay as the official state songbird; provides that such designation supersedes designation of mockingbird as official Florida state bird.",
+          "detail": "H0011 · 2026-03-13 · S",
           "date": "2026-03-13",
           "link": "https://legiscan.com/FL/bill/2044045",
           "source": {
@@ -31,13 +32,14 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-02"
+          "asOf": "2026-07-09"
         },
         {
           "id": "legiscan-1",
-          "title": "H0013: Social Work Licensure Interstate Compact",
+          "title": "Creates Social Work Licensure Interstate Compact; provides for recognition of access to social work services, including through telehealth, in member states; provides for development of data system, reporting procedures, & exchange of specified information between member states; specifies licensees practicing in remote state under compact must adhere to laws & rules of that state.",
           "officialTitle": "Social Work Licensure Interstate Compact",
-          "detail": "H0013 · 2026-03-13",
+          "summary": "Creates Social Work Licensure Interstate Compact; provides for recognition of access to social work services, including through telehealth, in member states; provides for development of data system, reporting procedures, & exchange of specified information between member states; specifies licensees practicing in remote state under compact must adhere to laws & rules of that state.",
+          "detail": "H0013 · 2026-03-13 · S",
           "date": "2026-03-13",
           "link": "https://legiscan.com/FL/bill/2044116",
           "source": {
@@ -46,13 +48,14 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-02"
+          "asOf": "2026-07-09"
         },
         {
           "id": "legiscan-2",
-          "title": "H0015: Pub. Rec. and Meetings/Social Work Licensure Interstate Compact",
+          "title": "Provides public records & meetings exemptions relating to Social Work Licensure Interstate Compact & its committees; provides for future legislative review & repeal of exemptions; provides statements of public necessity.",
           "officialTitle": "Pub. Rec. and Meetings/Social Work Licensure Interstate Compact",
-          "detail": "H0015 · 2026-03-13",
+          "summary": "Provides public records & meetings exemptions relating to Social Work Licensure Interstate Compact & its committees; provides for future legislative review & repeal of exemptions; provides statements of public necessity.",
+          "detail": "H0015 · 2026-03-13 · S",
           "date": "2026-03-13",
           "link": "https://legiscan.com/FL/bill/2044098",
           "source": {
@@ -61,13 +64,14 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-02"
+          "asOf": "2026-07-09"
         },
         {
           "id": "legiscan-3",
-          "title": "H0017: Criminal Offenses Against Law Enforcement Officers and Other Personnel",
+          "title": "Revises prohibition on use or threatened use of force to resist arrest or detention; provides for enhanced punishment for manslaughter when committed against specified officers; revises provisions concerning assault or battery upon specified officers & other personnel; revises provision concerning resisting, obstructing, or opposing specified officers or legally authorized persons; increases level on offense severity ranking chart for committing battery on law enforcement officers & other specified personnel.",
           "officialTitle": "Criminal Offenses Against Law Enforcement Officers and Other Personnel",
-          "detail": "H0017 · 2025-09-15",
+          "summary": "Revises prohibition on use or threatened use of force to resist arrest or detention; provides for enhanced punishment for manslaughter when committed against specified officers; revises provisions concerning assault or battery upon specified officers & other personnel; revises provision concerning resisting, obstructing, or opposing specified officers or legally authorized persons; increases level on offense severity ranking chart for committing battery on law enforcement officers & other specified personnel.",
+          "detail": "H0017 · 2025-09-15 · H",
           "date": "2025-09-15",
           "link": "https://legiscan.com/FL/bill/2044121",
           "source": {
@@ -76,13 +80,14 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-02"
+          "asOf": "2026-07-09"
         },
         {
           "id": "legiscan-4",
-          "title": "H0019: Educational Dollars for Duty Program",
+          "title": "Requires Educational Dollars for Duty program to set aside certain amount of funds to provide tuition assistance to spouses & children of active members of Florida National Guard; authorizes Legislature to increase amount of such funds; requires DMA to oversee implementation & enforcement of program; requiring DMA to establish certain procedures.",
           "officialTitle": "Educational Dollars for Duty Program",
-          "detail": "H0019 · 2025-09-15",
+          "summary": "Requires Educational Dollars for Duty program to set aside certain amount of funds to provide tuition assistance to spouses & children of active members of Florida National Guard; authorizes Legislature to increase amount of such funds; requires DMA to oversee implementation & enforcement of program; requiring DMA to establish certain procedures.",
+          "detail": "H0019 · 2025-09-15 · H",
           "date": "2025-09-15",
           "link": "https://legiscan.com/FL/bill/2044120",
           "source": {
@@ -91,13 +96,14 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-02"
+          "asOf": "2026-07-09"
         },
         {
           "id": "legiscan-5",
-          "title": "H0021: Pub. Rec./Agency Employees",
+          "title": "Provides exemption from public records requirements for certain identifying & location information of current or former agency employees & spouses & children of such employees; provides for retroactive application; specifies that exemption does not limit certain existing exemptions; provides for future legislative review & repeal of exemption; provides statement of public necessity.",
           "officialTitle": "Pub. Rec./Agency Employees",
-          "detail": "H0021 · 2026-03-13",
+          "summary": "Provides exemption from public records requirements for certain identifying & location information of current or former agency employees & spouses & children of such employees; provides for retroactive application; specifies that exemption does not limit certain existing exemptions; provides for future legislative review & repeal of exemption; provides statement of public necessity.",
+          "detail": "H0021 · 2026-03-13 · S",
           "date": "2026-03-13",
           "link": "https://legiscan.com/FL/bill/2044114",
           "source": {
@@ -106,13 +112,14 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-02"
+          "asOf": "2026-07-09"
         },
         {
           "id": "legiscan-6",
-          "title": "H0023: Educator Certifications and Training",
+          "title": "Revises core curricula for certain teacher preparation programs to include training relating to mass casualty incidents; requires certain postsecondary educator preparation institution programs to include training relating to mass casualty incidents; revises certified educator eligibility criteria to require such persons to receive training in mass casualty incidents; requires persons who hold adjunct teaching certificates to receive training in mass casualty incidents.",
           "officialTitle": "Educator Certifications and Training",
-          "detail": "H0023 · 2026-03-13",
+          "summary": "Revises core curricula for certain teacher preparation programs to include training relating to mass casualty incidents; requires certain postsecondary educator preparation institution programs to include training relating to mass casualty incidents; revises certified educator eligibility criteria to require such persons to receive training in mass casualty incidents; requires persons who hold adjunct teaching certificates to receive training in mass casualty incidents.",
+          "detail": "H0023 · 2026-03-13 · H",
           "date": "2026-03-13",
           "link": "https://legiscan.com/FL/bill/2044218",
           "source": {
@@ -121,13 +128,14 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-02"
+          "asOf": "2026-07-09"
         },
         {
           "id": "legiscan-7",
-          "title": "H0025: Transportation Facility Designations",
+          "title": "Provides honorary designations of certain transportation facilities in specified counties; directs DOT to erect suitable markers.",
           "officialTitle": "Transportation Facility Designations",
-          "detail": "H0025 · 2026-03-13",
+          "summary": "Provides honorary designations of certain transportation facilities in specified counties; directs DOT to erect suitable markers.",
+          "detail": "H0025 · 2026-03-13 · H",
           "date": "2026-03-13",
           "link": "https://legiscan.com/FL/bill/2044230",
           "source": {
@@ -136,13 +144,14 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-02"
+          "asOf": "2026-07-09"
         },
         {
           "id": "legiscan-8",
-          "title": "H0029: Sale and Purchase of Ivermectin",
+          "title": "Authorizes sale & purchase of specified ivermectin as over-the-counter medication without prescription or consultation with health care provider.",
           "officialTitle": "Sale and Purchase of Ivermectin",
-          "detail": "H0029 · 2025-09-23",
+          "summary": "Authorizes sale & purchase of specified ivermectin as over-the-counter medication without prescription or consultation with health care provider.",
+          "detail": "H0029 · 2025-09-23 · H",
           "date": "2025-09-23",
           "link": "https://legiscan.com/FL/bill/2044901",
           "source": {
@@ -151,13 +160,14 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-02"
+          "asOf": "2026-07-09"
         },
         {
           "id": "legiscan-9",
-          "title": "H0031: Recognizing Judea and Samaria",
+          "title": "Prohibits use of term \"West Bank\" in official government materials; prohibits use of moneys to create official government materials using such term; requires instructional materials & library media center collections adopted or acquired by certain entities on or after specified date to refer to certain area as Judea & Samaria; prohibits instructional materials & library media center collections adopted or acquired by certain entities on or after specified date from using term \"West Bank.\"",
           "officialTitle": "Recognizing Judea and Samaria",
-          "detail": "H0031 · 2026-03-13",
+          "summary": "Prohibits use of term \"West Bank\" in official government materials; prohibits use of moneys to create official government materials using such term; requires instructional materials & library media center collections adopted or acquired by certain entities on or after specified date to refer to certain area as Judea & Samaria; prohibits instructional materials & library media center collections adopted or acquired by certain entities on or after specified date from using term \"West Bank.\"",
+          "detail": "H0031 · 2026-03-13 · S",
           "date": "2026-03-13",
           "link": "https://legiscan.com/FL/bill/2044907",
           "source": {
@@ -166,37 +176,7 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-02"
-        },
-        {
-          "id": "legiscan-10",
-          "title": "H0033: Transportation Facility Designations",
-          "officialTitle": "Transportation Facility Designations",
-          "detail": "H0033 · 2026-03-04",
-          "date": "2026-03-04",
-          "link": "https://legiscan.com/FL/bill/2044913",
-          "source": {
-            "name": "LegiScan",
-            "url": "https://legiscan.com",
-            "tier": "nonpartisan",
-            "description": "State and federal bill tracking via legiscan.com API"
-          },
-          "asOf": "2026-07-02"
-        },
-        {
-          "id": "legiscan-11",
-          "title": "H0035: Habitual Traffic Offender Designation",
-          "officialTitle": "Habitual Traffic Offender Designation",
-          "detail": "H0035 · 2026-04-24",
-          "date": "2026-04-24",
-          "link": "https://legiscan.com/FL/bill/2044915",
-          "source": {
-            "name": "LegiScan",
-            "url": "https://legiscan.com",
-            "tier": "nonpartisan",
-            "description": "State and federal bill tracking via legiscan.com API"
-          },
-          "asOf": "2026-07-02"
+          "asOf": "2026-07-09"
         }
       ]
     },
