@@ -11,7 +11,7 @@ noticed during review, even when out of scope for the current brief.
 
 **Current state (2026-07-09):**
 - Branch: `cursor/docs-consolidation-70a6` (Part B docs) · `cursor/platform-phases-1-2-3-70a6` (Part A platform)
-- HEAD (docs): `f34bbfe` · HEAD (platform remote): `f8903ff`
+- HEAD (docs): `04420cf` · HEAD (platform remote): `f8903ff`
 - PR: Part A **#20** (draft) · Part B **#21** (draft)
 - Tree: clean · prebuild + build: **green** (docs branch)
 - **STOP** — both PRs held for Claude review before owner visual pass; **do not merge**
