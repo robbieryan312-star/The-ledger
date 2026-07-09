@@ -6,7 +6,7 @@ Static JSON pre-render pattern. No Postgres, no runtime database, no server.
 
 ## Core design principle
 
-Every data fact the UI displays must be traceable to a specific source entry in `lib/data/trustedSources.ts` with a tier value, a URL, and a checked date. No fact appears in the UI without provenance. This is not optional — it is the product.
+Every data fact the UI displays must be traceable to a specific source entry in `lib/data/sourceCatalog.ts` (see also `lib/data/reference-sources.ts`) with a tier code value, a URL, and a checked date. No fact appears in the UI without provenance. This is not optional — it is the product.
 
 ---
 
@@ -92,9 +92,9 @@ Route pages (`app/**/page.tsx`) must be **server components**. Never add `'use c
 | **CRS** | Congressional Research Service reports | planned |
 | **National Governors Association** | Governor roster and party affiliation | planned |
 | **Pew Research Center** | Policy polling and public opinion context | live (used in evidence layer) |
-| **Census Bureau** | District demographics, economic indicators | **live** — `CENSUS_ENDPOINT` |
+| **Census Bureau** | District demographics, economic indicators | **live** — `CENSUS_API_KEY` |
 | **BLS (Bureau of Labor Statistics)** | State economic data | live — Florida ingested |
-| **GDELT Project** | News coverage aggregated from global media | **live** — national news sync |
+| **GDELT Project** | News coverage aggregated from global media | **deferred** for national — primary news path is RSS (`sync:news-rss`) |
 | **OpenStates** | State legislature data | live — Florida ingested |
 | **LegiScan** | State and federal bill tracking | live — Florida ingested |
 | **FL DOE** | Florida education finance | live — Florida slices |
@@ -158,7 +158,8 @@ npm run sync:fec-national       # FEC campaign finance for all 537 members
 npm run sync:votes-national     # roll-call votes via Congress.gov API (all 537)
 npm run sync:votes              # legacy per-member congressVotes.json overlay
 npm run sync:stock-trades       # STOCK Act PTR trades — House roster
-npm run sync:news-national      # GDELT news for all 537 members (keyed by bioguideId)
+npm run sync:news-rss           # Approved-outlet RSS (primary national news path)
+npm run sync:news-national      # GDELT bulk (rate-limited; secondary)
 npm run verify:office           # confirm office resolution is clean after any data change
 npm run build                   # must pass before any commit
 ```
@@ -174,13 +175,101 @@ All API keys live in `.env.local` (gitignored). Never hardcode in tracked files.
 | `CONGRESS_API_KEY` | Congress.gov API v3 |
 | `FEC_API_KEY` | OpenFEC API |
 | `GDELT_ENDPOINT` | GDELT (no key required) |
-| `CENSUS_ENDPOINT` | Census Bureau API |
+| `CENSUS_API_KEY` | Census Bureau API |
 | `GOVINFO_API_KEY` | GovInfo / GPO |
 | `LEGISCAN_API_KEY` | LegiScan |
 | `OPENSTATES_API_KEY` | OpenStates |
-| `NEWS_API_KEY` | NewsAPI (426 plan restriction — use GDELT instead) |
+| `NEWSAPI_KEY` | NewsAPI (426 plan restriction — **deferred**; national news uses RSS/GDELT) |
 
 Run `./scripts/setup-github-secrets.sh` after `gh auth login` to push all keys to GitHub Actions for scheduled refresh.
+
+---
+
+## Florida data layers
+
+See **`docs/FLORIDA_DATA.md`** for script paths, raw JSON locations, and slice accessors.
+
+---
+
+## Data integration — shapes, office resolution, corroboration
+
+> **Source tier code values:** `.cursor/rules/ledger-core-rules.mdc` §3 — never use "Tier 1/2/3/4" labels.
+
+### TypeScript shapes (canonical definitions)
+
+Implemented in `lib/types/index.ts` and `lib/data/officeResolution.ts`:
+
+- `SOURCE_TIER_RANK` — numeric rank for tie-breaking (`official` highest)
+- `AUTHORITATIVE_TIERS` — only `official` and `nonpartisan` may assert current structural office facts
+- `SourcedFact<T>` — value + `source` + `effectiveDate` + `asOf` + optional `corroboration[]`
+- `OfficeRecord` — dated office held (chamber, state, termStart/termEnd, sourced)
+- `ResolvedOffice` — `real-current` | `real-former` | `unresolved-demo` with audit trail
+
+`Politician.bioguideId` links profiles to authoritative congressional datasets; when present, current office is **derived**, not hand-typed.
+
+### Office resolution algorithm
+
+Implemented in `lib/data/officeResolution.ts`.
+
+**Congress members:** `currentLegislators.json` is source of truth — presence ⇒ current; absence ⇒ former automatically (makes Rubio-as-current-senator structurally impossible when bioguide is absent from `legislators-current`).
+
+**General recency collapse** (`resolveMostRecentOffice`) when multiple dated `OfficeRecord`s exist:
+
+1. Keep only records whose `source.tier ∈ AUTHORITATIVE_TIERS`
+2. Sort by `termStart` DESC
+3. Break ties by higher `SOURCE_TIER_RANK`
+4. Top record = current; rest = historical (never discarded)
+
+### Corroboration rule (`meetsCorroborationRule`)
+
+- `official` / `nonpartisan` → single source sufficient
+- `media` / `alleged` / `unverified` → require **≥ 2 distinct sources** or withhold; when shown, visibly flagged with every corroborator listed
+
+### Source integration roadmap (ranked)
+
+| # | Source | Tier code | Data | Key? | Status |
+|---|--------|-----------|------|------|--------|
+| 1 | unitedstates/congress-legislators | `official`/`nonpartisan` | Current Congress roster | No | **live** |
+| 2 | FEC OpenFEC API | `official` | Campaign finance | `FEC_API_KEY` | **live** |
+| 3 | Senate eFD + House Clerk PTR | `official` | STOCK Act trades | Partial | House live; Senate eFD gap |
+| 4 | Congress.gov / GovTrack / ProPublica | `official`/`nonpartisan` | Votes, bills | `CONGRESS_API_KEY` | **live** |
+| 5 | legislators-historical | `official` | Former member terms | No | planned enrichment |
+| 6 | NGA governor roster | `nonpartisan` | 50 governors | No | **live** (`governors.ts`) |
+| 7 | unitedstates/images | `official` | Portraits by bioguideId | No | **live** |
+| 8 | Ballotpedia / state SoS | `nonpartisan`/`official` | Statewide/local | Varies | future |
+
+### Pipeline status (2026-07-09)
+
+| Field | Status |
+|-------|--------|
+| Current office / In Office badge | **Real** — `resolveCurrentOffice` |
+| Roster (537 Congress + 50 governors) | **Real** — `roster.json` + `currentLegislators.json` |
+| Official photos | **Real** — `photos.ts` |
+| Votes (national) | **Real** — `sync:votes-national` |
+| FEC totals | **Real** — `sync:fec-national` |
+| Stock trades (House PTR) | **Real** partial; Senate eFD = honest gap |
+| Migrated profiles | **7 gold** — `generated/profiles/{bioguideId}/` per `_manifest.json` |
+| Remaining 530 Congress | **Honest gaps** until batch migration |
+| News | **Partial** — RSS primary (`sync:news-rss`) |
+| Mock/hand-authored facts | **Banned** — DNU quarantine; build-gated guards |
+
+**Coverage:** 587 officials searchable. `npm run verify:office` asserts resolution rules.
+
+### Stock trades checkpoint semantics
+
+`sync:stock-trades` preserves prior good trades on fetch-failed runs; checkpoint marks only successful member syncs. House index failures surface `houseIndexFailedYears` in meta. Guards: `scripts/__tests__/stockTradesCheckpoint.test.ts`.
+
+### FEC refresh workflow
+
+```bash
+cp .env.example .env.local   # set FEC_API_KEY
+npm run sync:legislators
+npm run sync:fec
+npm run verify:office
+npm run build
+```
+
+Generated `fecFinance.json` is committed so production builds work without a live key; local refresh uses `.env.local`.
 
 ---
 
@@ -198,5 +287,5 @@ See **`docs/FLORIDA_DATA.md`** for script paths, raw JSON locations, and slice a
 | `/lobbying`, `/elections` | Show honest empty states until real pipelines | Medium |
 | Senate eFD stock trades (HTTP 503) | Senate trades missing from STOCK Act panel | Medium — honest gap in UI |
 | OpenSecrets donor sector breakdown | Finance tab lacks sector analysis | Medium — FEC Schedule A path |
-| M2 batch scaling | 6/537 profiles migrated to per-destination files | High — see `PROGRESS.md` M2 |
+| M2 batch scaling | **7/537** profiles migrated to per-destination files (`lib/data/generated/profiles/_manifest.json`) | High — see `PROGRESS.md` M2 |
 | `topicPositions.json` mega-bundle | Retire after full migration | High — reprocess guards live |
