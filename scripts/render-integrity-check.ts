@@ -29,7 +29,9 @@ function fail(message: string): never {
   process.exit(1);
 }
 
-async function waitForServer(ms = 90000): Promise<void> {
+const READY_POLL_MS = 120_000;
+
+async function waitForServer(ms = READY_POLL_MS): Promise<void> {
   const start = Date.now();
   while (Date.now() - start < ms) {
     try {
@@ -47,7 +49,7 @@ async function waitForServer(ms = 90000): Promise<void> {
 }
 
 function startServer(): { proc: ReturnType<typeof spawn>; kill: () => void } {
-  const proc = spawn('npx', ['next', 'start', '-p', String(PORT)], {
+  const proc = spawn('npx', ['next', 'start', '-H', '127.0.0.1', '-p', String(PORT)], {
     cwd: projectRoot,
     stdio: ['ignore', 'pipe', 'pipe'],
   });
@@ -140,8 +142,12 @@ async function runChecks(browser: Browser): Promise<string[]> {
       const page = await context.newPage();
       const url = `${BASE}${pageDef.path}`;
       const label = `${pageDef.label} @ ${vp.label}`;
-      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
-      await page.waitForTimeout(3000);
+      await page.goto(url, { waitUntil: 'load', timeout: 60000 });
+      const required = REQUIRED_SECTIONS[pageDef.path] ?? [];
+      for (const sel of required) {
+        await page.waitForSelector(sel, { state: 'attached', timeout: 30000 });
+      }
+      await page.waitForTimeout(500);
       await assertNoHorizontalOverflow(page, label);
       await assertImagesLoad(page, label);
       await assertRequiredSections(page, pageDef.path, label);
