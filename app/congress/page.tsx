@@ -33,7 +33,7 @@ function buildCongressTrades(): TradeWithMeta[] {
   return allPoliticians
     .filter((p) => (p.chamber === 'house' || p.chamber === 'senate') && p.recordType !== 'lightweight')
     .flatMap((p) => {
-      const { trades, usingOfficialTrades } = mergeStockTrades(p.id, p.stockTrades, p.recordType);
+      const { trades, usingOfficialTrades } = mergeStockTrades(p.id, p.stockTrades, p.recordType, p.bioguideId);
       return trades.map((t) => ({
         ...t,
         politician: p.name,
