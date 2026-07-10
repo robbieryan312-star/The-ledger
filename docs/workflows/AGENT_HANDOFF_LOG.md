@@ -7,6 +7,59 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
+**Current state:** branch `cursor/critical-bug-management-89d5` · HEAD `0fc6b91` before this log commit · PR pending · tree clean before log edit · build PASS (`npm run build`, 2026-07-10) after one render-integrity timeout corrected by rerun.
+
+## Improvement backlog
+
+| Date | Item | Status |
+|------|------|--------|
+| 2026-07-10 | `npm install` reports 7 audit vulnerabilities (2 moderate, 5 high); run a scoped dependency audit/fix pass outside the critical-bug PR so dependency upgrades are reviewed separately from the minimal correctness fix. | open |
+
+## Latest session — critical bug automation: render guard + aggregate data joins (COMPLETE)
+
+### Objective
+Inspect recent commits for critical correctness bugs, avoid duplicate memory entries, and fix only high-confidence issues with concrete triggers.
+
+### Verdict / outcome
+PASS. Fixed two P1 issues: render-integrity could block every production build by waiting for non-existent Florida anchors, and aggregate browse/dashboard/state/congress paths omitted `bioguideId`, hiding migrated-profile FEC totals and official PTR trades away from individual profiles.
+
+### Commits
+- `0fc6b91` — fix: restore render guard and migrated aggregate joins
+- Log commit: pending in this follow-up commit.
+
+### Commands run (this session)
+- `gh pr view 1 2 4 5 7 8 9 10 --json number,state,mergedAt,closedAt,url,title` via loop → all tracked PRs closed/unmerged.
+- `npx tsx --test scripts/__tests__/stockTradesCheckpoint.test.ts scripts/__tests__/migratedNotLightweight.test.ts` → PASS 9 tests.
+- `npm install` → exit 0; reported 7 audit vulnerabilities.
+- `npx playwright install chromium && npm run build` → exit 1; first render-integrity wrapper timed out at 170s, leaving a test process.
+- `kill ...` / `kill -9 ...` → stopped leaked render-integrity process from the timed-out test.
+- `npx tsx scripts/render-integrity-check.ts` → PASS, emitted 2 screenshots.
+- `npm run test:render-integrity` → PASS 2 tests.
+- `npm run build` → PASS, including prebuild guards, client chunks, and render-integrity.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `.github/workflows/guards.yml` | modified | Installs Playwright Chromium before CI render-integrity. |
+| `scripts/render-integrity-check.ts` | modified | Uses real `/states/FL` anchors `#economy` and `#politicians`; removes dead `#section-04` image exemption. |
+| `app/politicians/page.tsx` | modified | Passes `p.bioguideId` to FEC/trade accessors for aggregate sort data. |
+| `app/dashboard/page.tsx` | modified | Passes `p.bioguideId` to FEC/trade accessors for dashboard sort data. |
+| `app/states/[code]/page.tsx` | modified | Passes `p.bioguideId` to FEC/trade accessors for state roster sort data. |
+| `app/congress/page.tsx` | modified | Passes `p.bioguideId` so bioguide-keyed official PTR rows appear on `/congress`. |
+| `lib/dashboard/stateRoster.ts` | modified | State roster sort helpers resolve migrated-profile FEC/trade data by bioguideId. |
+| `scripts/__tests__/stockTradesCheckpoint.test.ts` | modified | Adds P000197 regression for bioguide-keyed official stock trades on aggregate paths. |
+| `scripts/__tests__/migratedNotLightweight.test.ts` | modified | Adds C001098 regression for migrated-profile FEC totals in aggregate sort helper. |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Logged this session and backlog item. |
+
+### Acceptance evidence
+- Build log: `/home/ubuntu/.cursor/projects/workspace/agent-tools/db105a5a-3b13-4cca-a210-6874906d59f4.txt` lines 959-1037 show production build, client chunks, and render-integrity PASS.
+- Render contact sheet: `data/reports/render-integrity/contact-sheet.json` generated `2026-07-10T04:14:24.450Z` with 2 screenshots (`_states_FL_mobile.png`, `_states_FL_desktop.png`).
+- Targeted tests: 9/9 passing for `stockTradesCheckpoint.test.ts` and `migratedNotLightweight.test.ts`.
+
+### Open / next
+- Persistent automation memory must be updated after PR creation: stale open entries are closed/unmerged and should be `rejected`; add this PR entry for the new fixed bug.
+- Dependency audit vulnerabilities are backlog, not fixed in this minimal critical-bug PR.
+
 ## HANDOFF 2026-07-10 — Florida state page redesign: LOCKED design + build brief
 
 **From:** Claude Code · **To:** Cursor · **Status:** design locked (owner-approved), ready to build.
