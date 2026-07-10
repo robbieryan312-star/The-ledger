@@ -69,11 +69,23 @@ export default function FloridaLegislationBillRow({ row }: { row: SnapshotRecord
 export function FloridaLegislationSection({
   records,
   metaNote,
+  compact = false,
 }: {
   records: SnapshotRecordRow[];
   metaNote?: string;
+  compact?: boolean;
 }) {
   if (!records.length) return null;
+  if (compact) {
+    return (
+      <div className="space-y-0">
+        {records.map((row) => (
+          <FloridaLegislationBillRow key={row.id} row={row} />
+        ))}
+        {metaNote && <p className="text-[10px] text-gray-500 mt-2">{metaNote}</p>}
+      </div>
+    );
+  }
   return (
     <section id="legislation" className="bg-[#0d1f35] rounded-2xl border border-[#1e3a5f] overflow-hidden scroll-mt-24">
       <div className="px-5 py-4 border-b border-[#1e3a5f] bg-[#0a1628]">

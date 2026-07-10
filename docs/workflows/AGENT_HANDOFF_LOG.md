@@ -9,83 +9,74 @@ core-rules, core-rules wins. Newest handoff on top.
 
 **Current state (2026-07-10):**
 - Branch: `cursor/florida-state-page-70a6` (FL review) · `main` at `4cbdd78`
-- HEAD (FL branch): `128878f`
+- HEAD (FL branch): pending commit (Step 2 polish)
 - PR: **#23** FL draft (STOP) · #20/#21 merged to `main`
-- Tree: clean · prebuild + build + render-integrity: **green**
+- Tree: dirty → commit this turn · prebuild + build + render-integrity: **green**
 - **STOP** — Florida page on review branch for combined Claude render review; **do not merge**
 
 ---
 
-## Latest session — Handoff 2026-07-10 execution (STOP for Claude)
+## Latest session — Handoff 2026-07-10 Step 2 polish (STOP for Claude)
 
 ### Objective
 
-Execute binding build order: merge #20+#21 → identity/render guards → Florida flagship page per locked mockup.
+Complete remaining Step 2 gaps from locked handoff: map sidebar slim, officials preview, §05/§06 source lines; fix render-integrity CI flake.
 
 ### Verdict / outcome
 
-**STOP for Claude review** — Steps 0–2 complete on branch; Step 3 (propagation) **not started** per brief.
+**STOP for Claude review** — Step 2 polish complete; Step 3 (propagation) **not started**.
 
 | Step | Status | Evidence |
 |------|--------|----------|
-| 0 Baseline merge | **PASS** | `a1f9652` merge #20+#21; 17 prebuild guards union; main build green |
-| 1 Guards | **PASS** | `df36b3f` on main: `test:identity-integrity` + `test:render-integrity` |
-| 2 Florida page | **PASS (review branch)** | Rail+canvas `/states/FL` §01–§06; sample data; render screenshots |
+| 0 Baseline merge | **PASS** | `a1f9652` on `main` |
+| 1 Guards | **PASS** | `df36b3f` + `4cbdd78` on `main` |
+| 2 Florida page | **PASS (review branch)** | Rail+canvas `/states/FL`; map sidebar slim; officials preview; source lines |
 | 3 Propagation | **NOT STARTED** | Awaits Claude approval of FL page |
 
-### Commits
+### Commits (this session)
 
-**main:**
-- `a1f9652` — merge PR #20 platform + PR #21 docs (16→17 guard union)
-- `4cbdd78` — fix(render): render-integrity port 4112 + SSR wait
-
-**cursor/florida-state-page-70a6:** `128878f`
+- `1431d0f` — feat(fl): step-2 polish — map sidebar, officials preview, source lines, render wait fix
 
 ### Commands run (this session)
 
-- `git merge origin/cursor/platform-phases-1-2-3-70a6` → fast-forward to `f8903ff`
-- `git merge origin/cursor/docs-consolidation-70a6` → conflict resolve → `a1f9652`
-- `npm run prebuild` → exit 0 (main)
-- `npm run build` → exit 0 (main + FL branch)
-- `npm run test:identity-integrity` → 4/4 pass
-- `npm run test:render-integrity` → 2/2 pass; screenshots in `data/reports/render-integrity/`
-- `npx playwright install chromium`
+- `npm run prebuild` → exit 0
+- `npm run build` → exit 0 (postbuild render-integrity pass)
+- `CI=1 npx tsx scripts/render-integrity-check.ts` → 3/3 pass (flake fix verified)
+- `npm run test:render-integrity` → 2/2 pass
 
-### Files touched (FL branch)
+### Files touched
 
 | Path | Action | What changed |
 |------|--------|--------------|
-| `components/states/FloridaStateDashboard.tsx` | created | Rail+canvas §01–§06 SSR layout |
-| `app/states/[code]/page.tsx` | modified | SSR shell loads sample data, renders dashboard |
-| `data/florida/census/florida-counties-sample.json` | created | 10-county ACS sample |
-| `data/florida/bea/florida-rpp-sample.json` | created | BEA RPP cost-of-living sample |
-| `data/florida/taxes/florida-tax-burden-sample.json` | created | Federal+FL tax tables sample |
-| `lib/data/floridaDashboard.ts` | created | Server-side loaders |
-| `scripts/render-integrity-check.ts` | modified | Port 4112, SSR wait, §04 image carve-out |
+| `components/map/USAMap.tsx` | modified | FL sidebar: economic summary first, 3 officials max, link to `/states/FL` |
+| `components/states/FloridaStatePoliticians.tsx` | modified | 4-row preview, +N more expands filters, mockup source line |
+| `components/states/FloridaStateDashboard.tsx` | modified | §05/§06 frame notes + source lines; compact legislation/courts |
+| `components/states/FloridaLegislationBillRow.tsx` | modified | `compact` prop for dashboard embedding |
+| `components/states/FloridaCourtDecisionRow.tsx` | modified | `compact` prop for dashboard embedding |
+| `scripts/render-integrity-check.ts` | modified | `waitForSelector` on required sections (fixes CI=1 flake) |
 
 ### Acceptance evidence
 
-- `/states/FL`: `#section-01`–`#section-06` in SSR HTML
-- Render contact-sheet: `data/reports/render-integrity/_states_FL_mobile.png`, `_desktop.png`
-- Education panel: `data-testid="fl-education-earnings-panel"` fluid grid
-- Occupations: honest gap (empty `florida-occupations.json`)
-- Sitemap: `/states/FL` present
+- `/states/FL`: `#section-01`–`#section-06` present; officials preview 4 + expand
+- Map FL sidebar: `FloridaStateEconomicCompact` + 3 officials + `+N more · full Florida profile →`
+- Render: `data/reports/render-integrity/_states_FL_mobile.png`, `_desktop.png`
+- `CI=1` render-integrity: 3 consecutive passes
 
 ### Open / next
 
 - Claude combined review (render screenshots + code)
 - Owner visual pass after APPROVAL
 - Step 3 propagation after FL locked
-- Add profile pages to render-integrity batch after Sanders mobile overflow fixed
+- Optional: county/BEA/tax small ingest scripts (static sample JSON in place)
 
 ---
 
 ## HANDOFF 2026-07-10 — Florida state page redesign (reference spec)
 
-*(Full locked spec retained below — see `docs/design/fl-state-page-mockup.html`)*
+*(Full locked spec — see `docs/design/fl-state-page-mockup.html` and `origin/claude/ledger-progress-review-jmd6gl` handoff)*
 
 ### Build order (binding)
-0. Baseline merge — **DONE** (`main` `df36b3f`)
+0. Baseline merge — **DONE** (`main` `4cbdd78`)
 1. Verification guards — **DONE**
 2. Florida flagship — **DONE on review branch** — STOP for Claude
 3. Propagation — **NOT STARTED**
@@ -99,21 +90,21 @@ Execute binding build order: merge #20+#21 → identity/render guards → Florid
 | IMP-011 | **done** | Guards reconciled on main (17 prebuild) |
 | IMP-013 | **done** | #20+#21 merged to main |
 | IMP-015 | open | handoff-log guard optional |
-| IMP-NEW | open | Sanders profile mobile overflow — add to render-integrity deferred list after fix |
-| IMP-NEW | open | Govtrack portrait load in headless CI — identity guard covers; render skips §04 external imgs |
+| IMP-NEW | open | Sanders profile mobile overflow — deferred from render batch |
+| IMP-NEW | **done** | Render CI flake — `waitForSelector` fix |
 
 ---
 
 ## Session log (last 3 only)
 
-### 3 — Handoff 2026-07-10 execution (2026-07-10)
+### 3 — Step 2 polish (2026-07-10)
+
+Map sidebar slim, officials preview, §05/§06 sources, render wait fix. STOP for Claude.
+
+### 2 — Handoff 2026-07-10 execution (2026-07-10)
 
 Merge, guards, FL page on review branch. STOP for Claude.
 
-### 2 — Handoff log rename (2026-07-09)
+### 1 — Handoff log rename (2026-07-09)
 
 Agent handoff log + improvement backlog.
-
-### 1 — Part A + Part B (2026-07-09)
-
-Platform + docs branches. STOP for Claude.

@@ -627,8 +627,18 @@ export default function FloridaStateDashboard({
             <div className="mb-4">
               <span className="font-mono text-[10.5px] tracking-widest text-[#d8b45a]">§05</span>
               <h2 className="text-base font-semibold text-[#eef1f6] mt-1">Legislation</h2>
+              <p className="text-[12.5px] text-[#748396] mt-1 max-w-prose">
+                Recent Florida bills, in plain language — expand any for the full official text.
+              </p>
             </div>
-            <FloridaLegislationSection records={legislationRecords} metaNote={legislationNote} />
+            <FloridaLegislationSection records={legislationRecords} metaNote={legislationNote} compact />
+            <p className="text-[10px] text-[#54606f] mt-4 pt-3 border-t border-white/[0.055]">
+              Summaries from{' '}
+              <a href="https://legiscan.com" target="_blank" rel="noopener noreferrer" className="text-[#b4c0cf] border-b border-white/[0.10]">
+                LegiScan
+              </a>{' '}
+              official bill descriptions
+            </p>
           </section>
         )}
 
@@ -636,8 +646,18 @@ export default function FloridaStateDashboard({
           <div className="mb-4">
             <span className="font-mono text-[10.5px] tracking-widest text-[#d8b45a]">§06</span>
             <h2 className="text-base font-semibold text-[#eef1f6] mt-1">Courts</h2>
+            <p className="text-[12.5px] text-[#748396] mt-1 max-w-prose">
+              Florida Supreme Court decisions, summarized from the court&apos;s own record — expand for the syllabus and full opinion.
+            </p>
           </div>
-          <FloridaCourtDecisionsSection title="Florida Supreme Court" records={courtRecords} metaNote={courtNote} />
+          <FloridaCourtDecisionsSection title="Florida Supreme Court" records={courtRecords} metaNote={courtNote} compact />
+          <p className="text-[10px] text-[#54606f] mt-4 pt-3 border-t border-white/[0.055]">
+            Source:{' '}
+            <a href="https://www.courtlistener.com" target="_blank" rel="noopener noreferrer" className="text-[#b4c0cf] border-b border-white/[0.10]">
+              CourtListener
+            </a>{' '}
+            — Supreme Court of Florida
+          </p>
         </section>
       </main>
     </div>

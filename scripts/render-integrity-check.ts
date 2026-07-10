@@ -140,8 +140,12 @@ async function runChecks(browser: Browser): Promise<string[]> {
       const page = await context.newPage();
       const url = `${BASE}${pageDef.path}`;
       const label = `${pageDef.label} @ ${vp.label}`;
-      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
-      await page.waitForTimeout(3000);
+      await page.goto(url, { waitUntil: 'load', timeout: 60000 });
+      const required = REQUIRED_SECTIONS[pageDef.path] ?? [];
+      for (const sel of required) {
+        await page.waitForSelector(sel, { state: 'attached', timeout: 30000 });
+      }
+      await page.waitForTimeout(500);
       await assertNoHorizontalOverflow(page, label);
       await assertImagesLoad(page, label);
       await assertRequiredSections(page, pageDef.path, label);
