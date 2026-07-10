@@ -9,10 +9,9 @@ core-rules, core-rules wins. Newest handoff on top.
 
 **Current state (2026-07-10):**
 - Branch: `cursor/fl-state-locked-spec-70a6` (FL locked-spec review) · merged `main` @ `d8ed82b`
-- HEAD: pending commit this turn
-- PR: **#23** FL draft (STOP) · **do not merge** until Claude render review
-- Tree: resolving merge + locked-spec gaps (BEA COL, taxes, county dropdowns, design tokens)
-- Target: `npm run prebuild` + `npm run build` + `test:render-integrity` green; contact-sheet for review
+- Branch: `cursor/fl-state-locked-spec-70a6` · HEAD `6b78118`
+- PR: **#25** FL locked-spec draft (STOP) · **do not merge** until Claude render review
+- Tree: clean · prebuild + build + render-integrity: **green**
 
 **Main baseline (merged):** guards.yml green @ `d8ed82b`; render-integrity uses `RENDER_INTEGRITY_EXTERNAL_SERVER` in CI; semantic `#economy`/`#courts` on simple main page. FL review branch uses rail+canvas `#section-01`…`#section-06` — render guard aligned to section ids on this branch.
 
@@ -28,7 +27,7 @@ Close four approved gaps on `/states/FL`: BEA cost-of-living (no user-facing CPI
 
 ### Commits
 
-- pending this turn — merge `main` @ `d8ed82b` + locked-spec gaps
+- `6b78118` — feat(fl): locked spec — BEA COL, taxes, county dropdowns, design tokens
 
 ### Commands run (this session)
 
