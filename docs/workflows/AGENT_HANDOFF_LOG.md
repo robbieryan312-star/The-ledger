@@ -31,7 +31,7 @@ Fix `test:render-integrity` on `main`: guard used `#section-01`/`#section-04` bu
 | `scripts/render-integrity-check.ts` | modified | Poll `id="economy"`; require `#economy`+`#courts`; skip `#politicians` images |
 
 ### Acceptance evidence
-- `data/reports/render-integrity/contact-sheet.json` + `_states_FL_{mobile,desktop}.png`
+- render-integrity contact-sheet + FL mobile/desktop screenshots (runtime under data/reports/, gitignored)
 - postbuild `test:render-integrity` 2/2 in full `npm run build`
 
 ---
