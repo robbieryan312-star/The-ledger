@@ -9,7 +9,7 @@ All fact data enters via sync/ingest scripts → `lib/data/generated/` — never
 |------|------|
 | Which source feeds which UI section | [`SOURCE_LOOKUP.md`](./SOURCE_LOOKUP.md) |
 | Machine-readable catalog | [`sourceCatalog.ts`](./sourceCatalog.ts) |
-| Integration roadmap | [`DATA_INTEGRATION_PLAN.md`](./DATA_INTEGRATION_PLAN.md) |
+| Integration roadmap | [`ARCHITECTURE.md`](../ARCHITECTURE.md) (§ Data integration) |
 | Florida raw snapshots | [`docs/FLORIDA_DATA.md`](../../docs/FLORIDA_DATA.md) |
 
 ## Generated files (examples)

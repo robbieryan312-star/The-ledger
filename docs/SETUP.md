@@ -6,13 +6,59 @@ Quick index for keys, sync commands, and local dev. **Never paste secret values 
 
 | File | Purpose |
 |------|---------|
-| `KEYS.md` | Which env vars are SET vs EMPTY |
+| `KEYS.md` | Which env vars are SET vs EMPTY (authoritative) |
 | `.env.local` | Actual key values (gitignored) |
 | `.env.example` | Template variable names |
-| `OWNER_SETUP.md` | Owner walkthrough (~10 min) |
 | `scripts/setup-github-secrets.sh` | Push keys to GitHub Actions after `gh auth login` |
 
-Owner email for registrations: `robbie.ryan312@gmail.com` (canonical in `KEYS.md`).
+**Owner email for registrations:** `robbie.ryan312@gmail.com` (canonical in `KEYS.md`).
+
+### Getting started with keys (~10 min)
+
+1. Copy `.env.example` → `.env.local` in the project root.
+2. Register keys (free):
+
+| Key | Signup URL | Powers |
+|-----|------------|--------|
+| `FEC_API_KEY` | [api.data.gov/signup](https://api.data.gov/signup/) | `npm run sync:fec`, `sync:fec-national` |
+| `CONGRESS_API_KEY` | [api.congress.gov/sign-up](https://api.congress.gov/sign-up/) | House votes in `npm run sync:votes` |
+
+> `FEC_API_KEY` and `CONGRESS_API_KEY` are **different services**. A key from api.data.gov does **not** work for Congress.gov.
+
+**Two ways to provide keys:** (A) paste in agent chat once and say *"write these to .env.local"* — works but chat is semi-public; (B) edit `.env.local` yourself and tell the agent *"keys are in .env.local"* — **preferred**.
+
+**Security:** Never commit `.env.local`. Rotate any key pasted in chat.
+
+Tell the agent: *"keys are in .env.local"* when starting a session.
+
+### Optional: Vercel deploy
+
+1. [vercel.com/signup](https://vercel.com/signup)
+2. From project root: `npm run build && npx vercel`
+3. Add `FEC_API_KEY` and `CONGRESS_API_KEY` in Vercel → Settings → Environment Variables for live syncs on deploy.
+
+### Owner local demo
+
+Run the dev server in **your own terminal** (port **3000 is reserved** for your browser session):
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000). Agents use `npm run dev -- -p 4100` instead.
+
+### Keys to get later (deferred)
+
+| Key | When | URL |
+|-----|------|-----|
+| OpenSecrets | Lobbying/industry imports | [opensecrets.org/open-data/api](https://www.opensecrets.org/open-data/api) |
+
+**Do not pursue:** ProPublica Congress API (retired).
+
+### What NOT to do
+
+- Do not run a separate session to harvest random political APIs — use `npm run sync:*` in `scripts/`.
+- Do not paste API keys into public repos, PRs, or tracked files.
 
 ## Build & verify (always after data changes)
 
@@ -22,7 +68,17 @@ npm run verify:office
 npm run build
 ```
 
-Prebuild runs guard suites (source-integrity, client-bundle, topic-positions-bundle, etc.).
+Prebuild runs guard suites — see `docs/AGENT_INDEX.md` for the full list.
+
+## Refresh all data (optional)
+
+```bash
+npm run sync:legislators && npm run sync:fec && npm run sync:votes && npm run sync:stock-trades
+npm run verify:office
+npm run build
+```
+
+`sync:legislators` needs no key. Senate PTR sync may fail during eFD maintenance — retry later.
 
 ## National sync commands
 
@@ -47,12 +103,12 @@ npm run ingest:member-all                    # 537 deep bill files (Phase 16)
 All Florida scripts live under `scripts/ingest/florida/`. See `docs/FLORIDA_DATA.md`.
 
 ```bash
-npm run ingest:florida-all    # All 21 Florida sources
+npm run ingest:florida-all    # All Florida sources
 npm run ingest:no-key         # Subset requiring no API keys
 npm run build:data-slices     # Merge raw FL snapshots → lib/data/generated/slices/
 ```
 
-## Dev server
+## Dev server (agents)
 
 Port **3000 is reserved** for the owner's browser session. Agents use an alternate port:
 
@@ -65,3 +121,7 @@ Stop any dev server you start when verification is done.
 ## CI
 
 `.github/workflows/guards.yml` — guard test suites + build on push.
+
+## Git workflow
+
+Cursor agents commit locally when work passes review; **push to `origin/main` requires explicit APPROVAL** (see `.cursor/rules/ledger-core-rules.mdc` §1.1 K).

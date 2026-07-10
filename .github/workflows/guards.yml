@@ -33,6 +33,8 @@ jobs:
           npm run test:profile-snapshots
           npm run test:client-bundle
           npm run test:docs-integrity
+          npm run test:docs-consistency
+          npm run test:governor-identity
           npm run test:data-layout
           npm run test:env-truth
           npm run test:optimization

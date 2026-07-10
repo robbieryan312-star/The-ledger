@@ -13,9 +13,9 @@ Civic-info Next.js app. **Data credibility is the highest priority.** Every deci
 (operating rules, data credibility, locked profile layout, guardrails). It exists because
 approved specs were being ignored and re-requested. Do not re-ask what a file already answers.
 
-**Session start (read first):** `REPO.md` → `PROGRESS.md` → `lib/data/SOURCE_LOOKUP.md` → `KEYS.md`
+**Session start:** See **`docs/AGENT_INDEX.md`** for the canonical mandatory read order (do not maintain rival lists in this file).
 
-Product vision and editorial voice: `PRODUCT_VISION.md`, `.cursor/rules/ledger-editorial-voice.mdc`.
+**Also read when relevant:** `PRODUCT_VISION.md`, `.cursor/rules/ledger-editorial-voice.mdc`.
 
 ---
 
@@ -137,7 +137,7 @@ Routine implementation: proceed without asking. **Credibility tradeoffs** (confl
 | `lib/data/SOURCE_LOOKUP.md` | Agent routing — data need → source → destination → tier |
 | `lib/data/sourceCatalog.ts` | Machine-readable catalog with lookFor lists |
 | `KEYS.md` | API key SET/EMPTY status |
-| `lib/data/DATA_INTEGRATION_PLAN.md` | Data pipeline roadmap |
+| `lib/data/DATA_INTEGRATION_PLAN.md` | Redirect stub → **`ARCHITECTURE.md`** (pipeline roadmap) |
 | `lib/data/officeResolution.ts` | Office resolution logic |
 | `lib/types/index.ts` | SourceTier union — the authoritative list of tier values |
 | `.env.local` | API keys (never paste values in chat or commit to any file) |

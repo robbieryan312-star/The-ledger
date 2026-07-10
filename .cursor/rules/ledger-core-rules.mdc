@@ -19,8 +19,8 @@ alwaysApply: true
 - **Failure reporting is MANDATORY and AUTONOMOUS** — the owner must NEVER remind you.
   After **any** failed, timed-out, incomplete, or substandard attempt: **in the SAME response**
   (or immediately as a follow-up block before ending the turn), output the report in **§1.1**.
-  Attempt 1 substandard → **Review for Claude** (§1.1 B). Attempt 2+ → full **Claude handoff
-  report** (§1.1 A) and **STOP** further retries unless the brief explicitly allows another.
+  Attempt 1 substandard → **Review for Claude** (§1.1 F). Attempt 2+ → full **Claude handoff
+  report** (§1.1 B) and **STOP** further retries unless the brief explicitly allows another.
   Stale reports (recycled session lines, wrong commit, evidence contradicting `git show`) are
   **task failures** — Claude will reject them.
 - **2+ failures → STOP and hand off** — never blind-retry or ask the owner to "try again."
@@ -44,11 +44,22 @@ alwaysApply: true
   returns explicit **PASS/FAIL** + fresh evidence, surfaced in the next turn with a repair brief if
   FAIL. Applies Claude↔Cursor equally.
 - **Work log to disk before turn ends (binding — Claude cannot see chat)** — every session that
-  produces or verifies work MUST update **`docs/workflows/AUDIT_DEBT_BRIEF.md`** in the **same turn**
+  produces or verifies work MUST update **`docs/workflows/AGENT_HANDOFF_LOG.md`** in the **same turn**
   and **commit** that update (alone or with the task commit) before the response ends. Chat-only
   summaries are invisible to Claude Code — **unlogged work = task failure** even if code shipped.
   Required fields: branch, HEAD, PR, tree, build status, explicit PASS/FAIL, commits, files touched,
   commands run, acceptance evidence. Keep last 3 sessions only. See §1.1 J.
+- **Improvement backlog to disk (binding — aid Claude and future agents)** — every session that
+  reviews code, data, docs, guards, sync output, or UI MUST append credible improvements to
+  **`docs/workflows/AGENT_HANDOFF_LOG.md` → Improvement backlog** when noticed — even if out of
+  scope for the current brief. Include: guards to add, pipeline hardening, doc drift fixes, UX
+  gaps, merge/reconcile items, and process improvements. **Distinct from Owner visibility findings**
+  (§1.1 H — spec defects); backlog items are proactive enhancements. Never bury suggestions in chat
+  only. When a rule gap is found, add or tighten the owning rule in the **same turn** if agent-fixable.
+  See §1.1 J.
+- **One fact, one file** — before creating a new doc/rule file or restating a number/list/table,
+  update the existing owner instead. Restating a fact in a second file is a duplication bug on
+  creation. Cross-reference, never re-state. Fewer destinations = fewer contradictions.
 - **Single-writer git authority (binding)** — **Cursor is the ONLY agent** that commits pipeline/data/code,
   pushes, opens/closes/merges PRs, or creates branches. **Claude Code** does read-only review, diagnosis,
   briefs, and issues an **APPROVAL verdict only** — never merges, closes, pushes, or commits repo work
@@ -99,13 +110,12 @@ the specific failure this file was created to stop.
   `bioguideId`, so it is independently wipeable and verifiable. Do not bundle multiple
   categories for a member into one blob. Grow coverage in small reviewed batches (1 → 5 → 10 →
   …), never one massive collection.
-- **Finish and LOCK one gold-standard profile before scaling — no more circling.** Never scale a
-  pipeline whose single-member output isn't approved and frozen. `S000033` (Sanders) is the
-  locked reference: get it complete and clean, freeze it, THEN apply the same pipeline to the
-  rest. A written spec is settled until the owner changes a *visual/design* element — do not
+- **Scale from locked migrated profiles — no circling.** The **7 migrated profiles** in
+  `lib/data/generated/profiles/_manifest.json` are the concrete reference (S000033, O000172,
+  M000355, M001184, W000817, C001098, P000197). Never scale a pipeline whose batch output is not
+  approved. A written spec is settled until the owner changes a *visual/design* element — do not
   reopen it or re-tune the same filter for the Nth time. Quality dilution (low-quality data
-  burying good data — e.g. mis-classified scrape dumps in a clean profile) IS regression; clean
-  and prevent it the same as data loss. Progress is shipped/verified/committed output, never
+  burying good data) IS regression. Progress is shipped/verified/committed output, never
   "steps being taken."
 - **Verify, never trust "done."** Independently check every completion claim (especially
   Cursor's) against the actual repo/data/build before accepting it. "It builds" ≠ "it's correct."
@@ -113,10 +123,10 @@ the specific failure this file was created to stop.
   generated data, or file is confirmed complete and passing quality/acceptance criteria, it is
   IMMEDIATELY committed (locally, for the owner to push) — never left dirty in the working tree.
   This applies automatically on every sign of completion or moving on from a task; no one should
-  have to ask each time. Verified work sitting uncommitted is treated as a bug. If Cursor can
-  commit it, instruct it to; if not, Claude Code commits it directly once no sync/writer is
-  active. Losing or re-deriving already-completed, verified work is the single most wasteful
-  failure and must not recur.
+  have to ask each time. Verified work sitting uncommitted is treated as a bug. **Cursor commits
+  immediately when green; Claude Code never commits application work** (§1.1 K). Losing or
+  re-deriving already-completed, verified work is the single most wasteful failure and must not
+  recur.
 - **The 7 migrated profiles are the locked spec.** S000033, O000172, M000355, M001184, W000817,
   C001098, P000197 are the concrete reference. The pipeline scales the SAME components and SAME
   checklist to the remaining 531 members — it never redesigns them. Fix the script/extractor
@@ -151,8 +161,8 @@ briefs; Cursor executes), and §6 ("Read the real error before any restart").
 | Attempt 1: error, timeout, wrong counts, missing artifact | **Review for Claude** (§1.1 F) at end of SAME response | One different approach allowed |
 | Attempt 2+: same task still not meeting brief acceptance | **Claude handoff report** (§1.1 F) + **STOP** | No unless brief says so |
 | Exit 0 but brief acceptance not met | **Review for Claude** — exit code is not success | Fix or STOP |
-| Claiming "complete" | Commit hash + `git show`/artifact paste from THAT commit **and** `AUDIT_DEBT_BRIEF.md` updated + committed same turn (§1.1 J) | N/A |
-| End of any work/verify session (audit, remediation, guard, rule change) | **`AUDIT_DEBT_BRIEF.md` updated + committed** before response ends (§1.1 J) | Chat-only report forbidden |
+| Claiming "complete" | Commit hash + `git show`/artifact paste from THAT commit **and** `AGENT_HANDOFF_LOG.md` updated + committed same turn (§1.1 J) | N/A |
+| End of any work/verify session (audit, remediation, guard, rule change) | **`AGENT_HANDOFF_LOG.md` updated + committed** before response ends (§1.1 J) | Chat-only report forbidden |
 | Prior session report recycled | **Forbidden** — regenerate from current `git status` + logs | N/A |
 | Any substandard file/data/process discovered during read, sync, audit, or review (not 100% flawless to spec) | **Owner visibility finding** (§1.1 H) in SAME response — even if out of scope or you are also fixing | Fix in-scope if brief allows; else flag only |
 | Suspected flaw but cannot verify (env quirk, blocked access, ambiguous pass) | **Cross-agent second opinion** (§1.1 I) before claiming pass | Other agent reviews independently |
@@ -203,7 +213,7 @@ A task is **complete** ONLY when **all** are true:
 
 1. A **commit hash** exists for the verified work (see §1 commit rule; owner may withhold push)
 2. The **acceptance artifact named in the brief** is pasted fresh from that commit/run (`git show <hash>:path` or log `rg`)
-3. **`docs/workflows/AUDIT_DEBT_BRIEF.md`** is updated with this session's evidence and **committed**
+3. **`docs/workflows/AGENT_HANDOFF_LOG.md`** is updated with this session's evidence and **committed**
    in the same turn (§1.1 J) — Claude Code reads the file on disk, not chat history
 
 "Complete" without both = **task failure**. "It builds" or "sync finished" alone is not
@@ -386,21 +396,33 @@ run, cannot reproduce locally).
 Cursor ↔ Claude equally. **Never** close a suspected defect without the second opinion when you
 could not verify. Credibility tradeoffs still route to Claude; **unverified "pass" is banned.**
 
-#### J. Cursor work log for Claude review (binding — CRITICAL)
+#### J. Agent handoff log for Claude review (binding — CRITICAL)
 
 **Claude Code cannot see Cursor chat.** The only durable handoff for review continuity is
-**`docs/workflows/AUDIT_DEBT_BRIEF.md`** on disk. The owner must never have to ask "did you log
-this?" — if the file is stale or missing the session, the turn **failed** regardless of chat quality.
+**`docs/workflows/AGENT_HANDOFF_LOG.md`** on disk (formerly `AUDIT_DEBT_BRIEF.md` — stub redirect
+at old path). The owner must never have to ask "did you log this?" — if the file is stale or
+missing the session, the turn **failed** regardless of chat quality.
 
 **When (every time):** end of any turn that audits, remediates, syncs, adds guards, changes rules,
 verifies PASS/FAIL, opens/updates a PR, or claims progress. **One combined commit** with task work
 is fine; a **docs-only follow-up commit** in the same turn is also fine. **Ending without the file
 updated = violation.**
 
+**Improvement backlog (same file, binding):** whenever you notice a credible fix, guard, pipeline
+improvement, doc correction, UX gap, or process enhancement — **append a row** to the
+**Improvement backlog** table in this file. Do this even when the item is out of scope for the
+current brief. Mark status `open` / `done` / `blocked` / `wontfix`. If the improvement implies a
+missing agent rule, add or tighten the rule in `.cursor/rules/ledger-core-rules.mdc` (or the owning
+file) in the same turn when agent-fixable. **Owner visibility findings** (§1.1 H) are for spec
+defects; the backlog is for proactive enhancements — both must reach disk, neither only in chat.
+
 **What to write (mandatory fields):**
 
 ```markdown
 **Current state:** branch · HEAD · PR URL · tree clean/dirty · prebuild/build status
+
+## Improvement backlog
+[append new rows when noticed — never chat-only]
 
 ## Latest session — [title] ([COMPLETE | BLOCKED | PASS | FAIL])
 
@@ -427,10 +449,11 @@ updated = violation.**
 ```
 
 **Retention:** keep **Current state** fresh; keep **last 3** numbered entries under **Session log**;
-drop oldest when adding a 4th.
+drop oldest when adding a 4th. **Improvement backlog** rows persist until status changes — do not
+truncate the table to "last 3."
 
-**Anti-patterns (reject):** chat-only report; stale HEAD in file; session described in chat but
-absent from file; "will log next turn"; logging a prior session's work as if new.
+**Anti-patterns (reject):** chat-only report; chat-only suggestions; stale HEAD in file; session
+described in chat but absent from file; "will log next turn"; logging a prior session's work as if new.
 
 #### K. Single-writer git authority (binding)
 
@@ -463,9 +486,9 @@ If both agents could write, **stop** — Cursor owns the tree.
 | Source tiers, corroboration, banned sources, destination-view map | `.cursor/rules/ledger-data-policy.mdc` |
 | Which source/API feeds a data need | `lib/data/SOURCE_LOOKUP.md`, `lib/data/sourceCatalog.ts` |
 | What's done / in progress / blocked; phase status | `PROGRESS.md` |
-| API key SET/EMPTY; sync commands | `KEYS.md`, `OWNER_SETUP.md` |
+| API key SET/EMPTY; sync commands | `KEYS.md`, `docs/SETUP.md` |
 | Surfacing substandard files/data/processes to the owner | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 H |
-| Cursor work log for Claude review (last 3 sessions) | `docs/workflows/AUDIT_DEBT_BRIEF.md` — **§1.1 J (mandatory same-turn commit)** |
+| Agent handoff log for Claude review (sessions + improvement backlog) | `docs/workflows/AGENT_HANDOFF_LOG.md` — **§1.1 J (mandatory same-turn commit)** |
 | Cross-agent second opinion when unverifiable | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 I |
 | Single-writer git authority (Cursor only commits/pushes/merges) | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 K |
 
@@ -564,7 +587,68 @@ If both agents could write, **stop** — Cursor owns the tree.
   false pass.
 - **Read the real error before any restart or re-brief.** Never blindly restart a failed run or
   re-send a brief — read the tee'd log / actual error first. A blind restart repeats the failure
-  and burns time. After **2 failures**, §1.1 A applies: STOP and hand off to Claude.
+  and burns time. After **2 failures**, §1.1 B applies: STOP and hand off to Claude.
 - **Profile, then partial-batch, before any full-scale run.** Before a full-corpus run, measure
   per-item cost and run a substantial partial batch (e.g. 20–50). Scale to the full set only after
   the batch passes review — catch data-quality AND throughput problems on 30 items, not 537.
+
+---
+
+## 7. Agent operations (session start, delegation, guardrails)
+
+### Session start (non-negotiable)
+
+Before advising, coding, syncing data, or asking the owner for keys/email/scope, read:
+
+1. **This file** (`.cursor/rules/ledger-core-rules.mdc`) — binding rules
+2. **`docs/workflows/AGENT_HANDOFF_LOG.md`** — what Cursor last shipped + improvement backlog (Claude reads this, not chat)
+3. **`PROGRESS.md`** — milestones, blockers, next priorities
+4. **`lib/data/SOURCE_LOOKUP.md`** — which source to use for each data need
+5. **`KEYS.md`** — SET vs EMPTY env vars (never ask for values already documented)
+6. **`REPO.md`** — canonical repo is `The-ledger` on `main`
+7. **`PILOT_PROFILE_CHECKLIST.md`** — what a complete profile requires
+8. **`docs/AGENT_INDEX.md`** — navigation map (canonical index; do not maintain rival lists)
+
+Task-specific: **`AGENTS.md`**, **`.cursor/rules/ledger-data-policy.mdc`**, **`.cursor/rules/ledger-editorial-voice.mdc`**
+
+Do **not** use **`docs/archive/`** for current policy.
+
+### Owner delegation
+
+The agent is delegated to:
+
+- Register for API keys, write values to `.env.local`, push GitHub secrets via `scripts/setup-github-secrets.sh`
+- Run sync/build/verify pipelines without stopping for routine owner actions
+- Pursue vendor access (forms, email to opendata@ / webmaster@) when a key is required
+
+**Owner email for registrations:** `robbie.ryan312@gmail.com` (canonical in `KEYS.md`).
+
+Reference files before asking the owner anything: `KEYS.md`, `REPO.md`, `PROGRESS.md`,
+`lib/data/SOURCE_LOOKUP.md`, `lib/data/sourceCatalog.ts`, `.env.local` (SET vs EMPTY only).
+
+### Do not
+
+- **End a work/verify turn without updating + committing `docs/workflows/AGENT_HANDOFF_LOG.md`** (§1.1 J)
+- Ask the owner if they are "ready to continue" — proceed until blocked
+- Ask for owner email — it is in `KEYS.md`
+- Treat VoteSmart or OpenSecrets as required — deferred in `SOURCE_LOOKUP.md`
+- Create or work in the legacy `code` GitHub repo
+- Assume API keys are missing without reading `.env.local` key names
+- Paste secret values into chat, commits, or tracked files
+- Force-push to `main`
+
+### When blocked
+
+Only stop for: scope changes, major UX direction, or human-only verification (CAPTCHA, login.gov).
+**Credibility tradeoffs** route to **Claude Code** per §3 — not the owner. When a vendor form hits
+CAPTCHA or login.gov, open the URL in Chrome (`open -a "Google Chrome" "<url>"`) and continue
+other work.
+
+### Session state consolidation
+
+**Primary:** every work/verify session logs to **`docs/workflows/AGENT_HANDOFF_LOG.md`** (§1.1 J) —
+that is the durable handoff for Claude, including the **Improvement backlog**. **Secondary:** when
+a milestone boundary is crossed, update **`PROGRESS.md`** status board — do not duplicate session
+evidence there. Search before asking — grep `KEYS.md`, `REPO.md`, `PROGRESS.md`, `SOURCE_LOOKUP.md`
+first. Log long-running scripts — tee to `/tmp/ledger-<script-name>.log` so errors are inspectable
+from disk.

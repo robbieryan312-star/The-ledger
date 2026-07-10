@@ -5,7 +5,7 @@ Single map of where to read before acting. **Do not** use `docs/archive/` for cu
 ## Session start (mandatory order)
 
 1. `.cursor/rules/ledger-core-rules.mdc` — binding rules for all agents
-2. `docs/workflows/AUDIT_DEBT_BRIEF.md` — Cursor work log (**Claude reads this, not chat** — §1.1 J)
+2. `docs/workflows/AGENT_HANDOFF_LOG.md` — agent handoff log + improvement backlog (**Claude reads this, not chat** — §1.1 J)
 3. `PROGRESS.md` — milestones M1–M8, status board, blockers
 4. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
 5. `KEYS.md` — SET vs EMPTY env vars (values in `.env.local` only)
@@ -25,7 +25,7 @@ npm run sync:legislators && npm run verify:office && npm run build
 
 Vote-sync routing and full sync catalog: `lib/data/SOURCE_LOOKUP.md`.
 
-## Guard suites (13 + typecheck — all must pass before commit)
+## Guard suites (16 commands in prebuild — all must pass before commit)
 
 | Script | Guard |
 |--------|-------|
@@ -42,8 +42,11 @@ Vote-sync routing and full sync catalog: `lib/data/SOURCE_LOOKUP.md`.
 | `test:data-layout` | `data/` layout orphans |
 | `test:env-truth` | `.env.example` ↔ code |
 | `test:optimization` | syncKernel + manifest + fetch timeout guards |
+| `test:docs-consistency` | Doc contradictions (retired scripts, counts, Tier labels, §1.1 cites) |
+| `test:governor-identity` | Governor bioguideId ↔ portrait identity guard |
+| `audit:profile-credibility` | Profile credibility audit gate |
 
-Prebuild runs typecheck + all 13 suites; CI: `.github/workflows/guards.yml`.
+Prebuild runs all 16; CI: `.github/workflows/guards.yml`. Migrated count: **`lib/data/generated/profiles/_manifest.json`** (`count` field).
 
 ## Agent preflight
 
@@ -57,10 +60,10 @@ Checks session-start files exist, guard scripts registered, and key npm scripts 
 
 | Topic | File |
 |-------|------|
-| API keys, demo commands, GitHub secrets | `docs/SETUP.md` → `KEYS.md`, `OWNER_SETUP.md` |
+| API keys, demo commands, GitHub secrets | `docs/SETUP.md` → `KEYS.md` |
 | Canonical repo / branch workflow | `REPO.md` |
 | Architecture & data flow | `ARCHITECTURE.md` |
-| Integration roadmap | `lib/data/DATA_INTEGRATION_PLAN.md` |
+| Integration roadmap | `ARCHITECTURE.md` (§ Data integration) |
 | Machine-readable source catalog | `lib/data/sourceCatalog.ts` |
 | National data snapshots | `data/national/README.md` |
 | Canonical sync paths | `scripts/lib/dataPaths.ts` |
@@ -69,7 +72,7 @@ Checks session-start files exist, guard scripts registered, and key npm scripts 
 
 | Topic | File |
 |-------|------|
-| **Cursor work log (mandatory end-of-turn — §1.1 J)** | `docs/workflows/AUDIT_DEBT_BRIEF.md` |
+| **Agent handoff log (mandatory end-of-turn — §1.1 J)** | `docs/workflows/AGENT_HANDOFF_LOG.md` |
 | Batch scaling (M2) | `docs/workflows/BATCH_SCALING.md` |
 | Florida state data ingest | `docs/FLORIDA_DATA.md` |
 | Product vision & voice | `PRODUCT_VISION.md` |
@@ -91,4 +94,6 @@ Checks session-start files exist, guard scripts registered, and key npm scripts 
 | File | Notes |
 |------|-------|
 | `docs/archive/DATA_SOURCES.md` | Pre-DNU mock framing |
-| `docs/progress/README.md` | 2026-06-23 screenshots (caption tier labels outdated) |
+| `docs/archive/progress-screenshots.md` | 2026-06-23 screenshots (caption tier labels outdated) |
+| `docs/archive/FUTURE_ROADMAP.md` | Idea backlog — not scheduled work |
+| `docs/archive/STATE_COUNTY_EXPANSION.md` | Deferred local expansion proposal |
