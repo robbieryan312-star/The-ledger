@@ -371,7 +371,7 @@ function EducationTiersPanel({
 }) {
   if (!tiers.length) return null;
   return (
-    <div className="mt-4 pt-4 border-t border-[#1e3a5f]/60">
+    <div className="mt-4 pt-4 border-t border-[#1e3a5f]/60" data-testid="fl-education-earnings-panel">
       <h4 className="text-[10px] uppercase tracking-wider text-gray-500 font-medium mb-1">
         Unemployment &amp; earnings by education
       </h4>

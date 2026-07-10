@@ -35,6 +35,7 @@ jobs:
           npm run test:docs-integrity
           npm run test:docs-consistency
           npm run test:governor-identity
+          npm run test:identity-integrity
           npm run test:data-layout
           npm run test:env-truth
           npm run test:optimization
@@ -44,6 +45,9 @@ jobs:
 
       - name: Production build
         run: npm run build
+
+      - name: Render integrity (Playwright)
+        run: npm run test:render-integrity
 
       - name: Client chunk budget
         run: npm run test:client-chunks

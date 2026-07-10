@@ -25,7 +25,7 @@ npm run sync:legislators && npm run verify:office && npm run build
 
 Vote-sync routing and full sync catalog: `lib/data/SOURCE_LOOKUP.md`.
 
-## Guard suites (16 commands in prebuild — all must pass before commit)
+## Guard suites (17 commands in prebuild + render-integrity postbuild — all must pass before commit)
 
 | Script | Guard |
 |--------|-------|
@@ -44,9 +44,11 @@ Vote-sync routing and full sync catalog: `lib/data/SOURCE_LOOKUP.md`.
 | `test:optimization` | syncKernel + manifest + fetch timeout guards |
 | `test:docs-consistency` | Doc contradictions (retired scripts, counts, Tier labels, §1.1 cites) |
 | `test:governor-identity` | Governor bioguideId ↔ portrait identity guard |
+| `test:identity-integrity` | Roster portrait ↔ bioguideId ↔ name/party/state/office |
+| `test:render-integrity` | Headless render: overflow, images, sections (postbuild) |
 | `audit:profile-credibility` | Profile credibility audit gate |
 
-Prebuild runs all 16; CI: `.github/workflows/guards.yml`. Migrated count: **`lib/data/generated/profiles/_manifest.json`** (`count` field).
+Prebuild runs all 17; postbuild runs `test:render-integrity` + client chunks. CI: `.github/workflows/guards.yml`.
 
 ## Agent preflight
 

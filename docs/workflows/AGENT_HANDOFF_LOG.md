@@ -1,110 +1,153 @@
-# Agent Handoff Log — Cursor ↔ Claude
+# Agent handoff & communication log (Claude Code ↔ Cursor)
 
-**Purpose:** Durable cross-agent communication on disk. Claude Code reads **this file**, not chat.
-Every Cursor session that produces or verifies work logs here before the turn ends (§1.1 J).
-Agents also maintain the **Improvement backlog** below — proactive fixes and enhancements
-noticed during review, even when out of scope for the current brief.
-
-**Former name:** `AUDIT_DEBT_BRIEF.md` (stub redirect remains at old path).
+This is the running communication file between **Claude Code** (decides, briefs, reviews — read-only
+on data/code) and **Cursor** (executes all collection, edits, commits, pushes, PRs). It binds to
+`.cursor/rules/ledger-core-rules.mdc` (the always-read ruleset) — where any doc disagrees with
+core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-09):**
-- Branch: `cursor/docs-consolidation-70a6` (Part B docs) · `cursor/platform-phases-1-2-3-70a6` (Part A platform)
-- HEAD (docs): `5f4bd6b` · HEAD (platform remote): `f8903ff`
-- PR: Part A **#20** (draft) · Part B **#21** (draft)
-- Tree: clean · prebuild + build: **green** (docs branch)
-- **STOP** — both PRs held for Claude review before owner visual pass; **do not merge**
+## HANDOFF 2026-07-10 — Florida state page redesign: LOCKED design + build brief
+
+**From:** Claude Code · **To:** Cursor · **Status:** design locked (owner-approved), ready to build.
+**Owner sign-off:** owner reviewed the mockup across multiple rounds and said "good enough for now,
+let's continue" — treat the design below as the reference spec. **Do not merge to `main`;** build on a
+review branch and STOP for one combined Claude review (per the sequencing directive).
+
+### Build order (Claude decision 2026-07-10 — binding, no owner ping-pong)
+Cursor executes in this order; each step gated on the previous:
+0. **Baseline merge FIRST** — merge the Claude-verified **#20 (platform) → then #21 (docs)** into
+   `main`, reconciling the divergent guard lists (governor-identity vs docs-consistency — keep BOTH
+   guard sets, union them). Confirm `npm run prebuild` + `npm run build` green on `main` and the live
+   demo reflects the baseline. This is the visible baseline everything else iterates against.
+1. **Verification guards** (`test:identity-integrity`, `test:render-integrity`) — build + wire into
+   prebuild/CI before generating any page/profile (§3 below). The net exists before we scale.
+2. **Florida flagship page** — build to the locked spec (§1) on a review branch, small-sample data
+   (§2), honest gaps elsewhere. Hold for ONE combined Claude review (rendered-screenshot review, not
+   source). **Nothing merges until that review clears.**
+3. **Propagation comes ONLY AFTER FL is reviewed + locked** — menus/tabs, the politician-profile
+   template on already-migrated members, `/politicians` filtering. Anti-rut law: lock the one
+   gold-standard flagship before scaling to other surfaces. Do NOT start this in the same pass.
+
+### 0. Locked visual reference
+- **Design mockup (owner-approved):** Option 3 "Rail + Canvas", refined — a static HTML wireframe with
+  placeholder ("sample") numbers. It defines **structure, hierarchy, sections, and content**, not the
+  final token-level polish. Claude holds the file (`docs/design/fl-state-page-mockup.html` — open it in a browser to see the target); the
+  section-by-section spec below is the authority Cursor builds to.
+- **Aesthetic:** rich dashboard — data-dense, most stats visible, sparklines + one full chart, inline
+  comparison chips, restrained gold accent, subtle depth over hard borders. Left **sticky rail**
+  (flag + state name + section nav + two quick-stats) and a **main canvas** of numbered sections.
+
+### 1. Page structure (build to this exactly)
+Route: **new SSR page `app/states/[code]/page.tsx`** (Florida first, `/states/FL`). Server component —
+no `'use client'` on the route shell; interactive bits (drop-downs, filters) are child client
+components. Add `/states/FL` to the sitemap.
+
+**Header:** eyebrow "State profile" → `Florida` H1 → one-line lede. **Population hero** (top-right):
+`21.9M`, `▲1.6%/yr · 3rd largest state`, with a drop-down listing the **top-5 counties by population**.
+
+**Rail quick-stats:** Median income `$71.7K` · Employment rate `95.6%`. (Do NOT lead with the income
+tax figure — owner directive.)
+
+**§01 Economy & cost of living** — 3 stat cards, each with a working drop-down:
+- **Median household income** `$71.7K` · "$6.3K below the U.S. average" · sparkline · drop-down =
+  **top-5 & bottom-5 counties** by median household income.
+- **Median home value** `$325K` · "23% below the U.S. average" · sparkline · drop-down =
+  **most-expensive & most-affordable counties**.
+- **Cost of living** index `99.4` (US = 100) · "0.6% below the U.S. average" · drop-down =
+  **component RPPs** (housing / groceries / utilities / transport) + **metro RPPs** (Miami ~110, Tampa
+  ~100, rural ~89). **Replaces the old CPI/inflation card entirely.**
+- One source line at the bottom of the section (not per card).
+
+**§02 Jobs & workforce** — **2 stat cards** (NOT three — the standalone unemployment card was removed
+as redundant with employment):
+- **Employment rate** `95.6%` · "0.2 pts below the U.S. rate" · **small sub-detail line beneath the
+  number: "Unemployment 4.4% ▼0.5 vs a year ago"** · drop-down "workforce, counties & trend" =
+  workforce drawer (labor force 10.7M / employed 10.2M / unemployed 493K / unemp rate 4.4%) +
+  **top-5 & bottom-5 counties by unemployment** + the **full trailing-12-month unemployment chart**.
+- **Adults with a bachelor's+** `31.5%` · "4 pts below the U.S. average" · drop-down = attainment
+  breakdown (HS+ 89.2% / some college 29.8% / bachelor's 20.6% / graduate 10.9%).
+- **Full-width block: "Median earnings & unemployment by education level"** (annual earnings) — its own
+  panel below the cards, all four tiers shown completely, **fluid columns so nothing overflows the
+  card edge** (this was a real bug the owner caught): Less-than-HS $40,768 / 5.5% · HS $50,804 / 4.2% ·
+  Bachelor's $83,668 / 2.5% · Advanced $103,064 / 1.9%.
+- **Fastest-growing occupations** (10-yr projection) rows + an honest "sample / pending real BLS
+  projections" note until the pipeline lands.
+
+**§03 Taxes** (new section) — **do NOT lead with a big "$0" headline** (owner directive). Show a
+**realistic total including FEDERAL income tax**:
+- Table 1 (single filer, $50K / $100K / $250K): **Federal income tax** row (~$4,000 / $13,900 /
+  $48,900, same in every state) → **Florida state income tax** row ($0, highlighted) → **Total paid
+  living in Florida** row (= federal only).
+- Table 2 "for comparison — extra state tax others add on top of the same federal bill": TX·TN +$0;
+  NY +$2,200 / +$5,400 / +$16,100; CA +$1,100 / +$4,500 / +$18,700.
+- Drop-down "the full picture — total tax burden": combined state+local burden (sales ~7% avg,
+  property ~0.8% effective, **total 9.1% of income vs U.S. avg 11.2%**), with a note that federal sits
+  on top of all of it and is the same nationwide.
+
+**§04 Officials** — office-ranked (governor → senators → house), avatar + name + role + party pill +
+"profile →"; "+N more · filter by chamber/party/name". **Real portraits required** (see guard below).
+
+**§05 Legislation** — recent FL bills, plain-language summary headline + "full text ▾" + source.
+
+**§06 Courts** — FL Supreme Court decisions, plain-language summary + "syllabus ▾" + source.
+
+### 2. Data sourcing (each figure → source + tier + path). Small-sample only; do NOT scale to full corpus.
+| Data | Source (tier) | Notes / path |
+|------|---------------|--------------|
+| Population, median income, median home value, educational attainment | **Census ACS** (`official`) | already ingested state-level (`data/florida/census/`); county tables via `for=county:*&in=state:12` (net-new, same key) |
+| County top-5/bottom-5 (income, home value, population) | **Census ACS county tables** (`official`) | new small ingest |
+| Employment / unemployment / labor force + 12-mo history | **BLS LAUS** (`official`) | state history already ingested & currently discarded (`data/florida/bls/florida-labor.json`); county series net-new |
+| Earnings & unemployment by education | **BLS CPS** (`official`) | new small pipeline (`data/florida/bls/florida-education-labor.json` earnings already corrected) |
+| Fastest-growing occupations (10-yr) | **BLS Employment Projections + FL Commerce LMI** (`official`) | new small pipeline; show projection-vs-actual where a prior forecast exists; honest "sample/pending" until then |
+| **Cost of living** (index + components + metros) | **BEA Regional Price Parities** (`official`) | BEA Data API, *Regional* dataset, MARPP tables (state + metro). Owner-surfaced org `github.com/us-bea` (`beaapi`/`bea.R` wrap the same REST API) |
+| Taxes: federal brackets, FL $0 state | **IRS + FL Dept. of Revenue** (`official`) | estimated effective tax by income level |
+| Taxes: other-state comparison + total burden | **Tax Foundation** (`nonpartisan`) | comparison rows + state+local burden |
+| State bills (plain-language summary) | **LegiScan** (`nonpartisan`) | bill `description` as summary; already sampled (`data/florida/legiscan/`) |
+| Court decisions (syllabus) | **CourtListener** (`official`) | already ingested (`data/florida/courts/florida-court-opinions.json`) |
+| Officials roster + portraits | **unitedstates/congress-legislators** + official `.gov` portraits (`official`/`nonpartisan`) | portraits keyed by correct `bioguideId` (see guard) |
+
+### 3. NEW verification guards — build these FIRST; they are the net that scales to every profile
+The owner correctly flagged that obvious rendered mistakes (a column running off-screen; DeSantis
+showing the wrong portrait because `D000628` = Neal Dunn was mis-keyed) passed source-only review.
+Two new build-gated guards close this permanently (now HARD RULES in core-rules):
+- **`test:identity-integrity`** — for every roster/officials entry: the portrait/asset must be keyed to
+  the correct `bioguideId`, and name + party + state + office + photo must all resolve to the SAME
+  identity (no cross-wired ids). Every current officeholder has a real portrait OR an explicit
+  honest-gap — never a silently wrong or placeholder image where one is expected. Freeze the
+  DeSantis/Dunn case as a regression fixture (fixtures append-only).
+- **`test:render-integrity`** — headless render (Playwright is pre-installed; `/states/FL` + sampled
+  profiles) asserting: **zero horizontal overflow** (`documentElement.scrollWidth ≤ innerWidth`; no
+  element's right edge past the viewport at mobile + desktop widths), **every `<img>` loads**
+  (`naturalWidth > 0`), **no empty required section**. Also emit a **screenshot contact-sheet** per
+  page so Claude reviews the render, not the source, at the gate. Freeze the education-table-overflow
+  case as a regression fixture.
+- Wire both into `npm run prebuild` and `.github/workflows/guards.yml` alongside the existing 13 suites.
+
+### 4. Reusable code (don't reinvent — reference the plan for exact paths)
+`lib/format/number.ts` (new compact/full formatter — consolidate the ~12 copied `formatMoney`);
+`components/ui/TierDot.tsx` (new corner tier bubble reusing `TIER_CONFIG` colors from
+`components/ui/SourceBadge.tsx`); office-rank sort `comparePoliticiansByOffice`/`getOfficeSortTier`
+(`lib/politicianSort.ts`); filter/search engine `components/dashboard/StateRosterControls.tsx` +
+`lib/dashboard/stateRosterClient.ts`; expand/collapse `ProfileSectionAccordion`/`ProfileExpandableRow`
+or native `<details>`; bill row `LegislationBillRow`/`ExpandableEvidenceRow`; economic slice carries
+raw value + unit + `recent[]` history (`scripts/build-data-slices.ts`, `lib/types/snapshotTypes.ts`).
+
+### 5. Scope, sequencing & guardrails
+- **Small-sample only** — every pipeline (incl. new BEA/CPS/EP/tax ones) proven on ~10 records max, the
+  same discipline as the FL court/LegiScan samples. **No scaling any sync to full corpus** until owner
+  reviews and approves.
+- **Nothing merges to `main`.** Build on a review branch; commit per completed task; hold for **one
+  combined Claude review** when code-complete. Per §1.1, autonomous failure reporting if anything
+  fails; STOP after 2 failures on a task.
+- **Honest gaps** everywhere real data isn't wired yet ("No verified data yet") — never fabricate, never
+  silent-empty. Objective voice, no moral labels (editorial-voice rules).
+- **Propagation (menus/tabs/politician profile template, `/politicians` filtering) comes AFTER** the FL
+  page is built and passes review — lock the flagship first, then scale (anti-rut law).
 
 ---
 
-## Improvement backlog
-
-*Agents: append rows when you notice a credible improvement. Do not remove rows without
-owner/Claude decision — mark **Status** instead. Distinct from Owner visibility findings
-(defects in spec); these are proactive enhancements.*
-
-| ID | Area | Suggestion | Priority | Status | Surfaced by | Notes |
-|----|------|------------|----------|--------|-------------|-------|
-| IMP-001 | Data / governors | **Governor portrait pipeline** — Tier-1 `.gov` executive portraits for all 50 governors; DeSantis currently falls back to initials | P1 | open | Platform P0 review | After `governor-identity` guard lands |
-| IMP-002 | Guards / roster | **Roster generator hardening** — guard that featured governors never receive `bioguideId` unless `bioguideMatchesCurrentLegislator()` passes | P0 | open | Platform P0 review | Prevents DeSantis-class regression |
-| IMP-003 | Data / BLS | **BLS series catalog** — frozen fixture of verified series IDs + monotonic value ranges; ingest fails on drift | P1 | open | Platform P1 review | Pair with `ingest:bls-education-fl` |
-| IMP-004 | Data / FL | **Florida CPI honest gap** — wire FL-specific CPI when available without breaking national-reference fallback | P2 | open | Platform P4 review | UI already shows national ref |
-| IMP-005 | Keys / courts | **`COURTLISTENER_API_KEY`** — EMPTY blocks court enrichment before national judiciary scale | P2 | open | Session review | See `KEYS.md` |
-| IMP-006 | UX / compare | **Election compare wiring** — `buildCompareUrl()` still returns bare `/compare`; connect Elections → `?election=` when pipeline lands | P2 | open | Platform A2 review | Mode routes done; election param pending |
-| IMP-007 | Guards / map | **Map sidebar identity audit** — extend `governorIdentityGuard` to `USAMap.tsx` state sidebar cards | P1 | open | Platform P0 review | Same class as DeSantis fix |
-| IMP-008 | Docs / profiles | **Profile dedup visibility** — document canonical ID when featured slug (`ron-desantis`) and `gov-fl` coexist | P2 | open | Platform P0 review | Owner-facing clarity |
-| IMP-009 | UX / nav | **Navigation click-to-open** — mobile/tablet dropdown toggle (hover-only is desktop-only today) | P2 | open | Platform A3 review | A3 verified desktop hover |
-| IMP-010 | Pipeline / scale | **Pre-expansion batch gate** — run locked 7-profile checklist on 20-member pilot before full 537 sync | P0 | open | Core rules §6 | BATCH_SCALING alignment |
-| IMP-011 | Guards / merge | **Reconcile prebuild guards** — platform branch has `test:governor-identity` (16 commands); docs branch has 15; merge when PRs reconcile | P1 | open | Part B review | After Claude approval |
-| IMP-012 | Data / BLS | **Bachelor's/advanced unemployment docs** — document that only combined `LNS14027662` exists in v1 if UI ever needs single "college+" benchmark | P3 | open | Part A A1 | A1 shows honest gaps for split series |
-| IMP-013 | Process / PRs | **Reconcile open PRs** — #20 (platform) and #21 (docs) are independent; docs branch lacks platform code changes | P1 | open | Dual-workstream session | Merge order TBD by Claude |
-| IMP-014 | Docs | **`PROGRESS.md` migrated count** — compressed history still says "6 members" in one line; align to 7 | P3 | open | Part B B7 review | Manifest is 7 |
-| IMP-015 | Guards / handoff | **`test:handoff-log` guard** — verify `AGENT_HANDOFF_LOG.md` has non-empty Improvement backlog section and Current state HEAD matches within one session of last commit | P2 | open | Owner request 2026-07-09 | Optional build gate |
-| IMP-016 | Docs / naming | **Rename complete** — `AUDIT_DEBT_BRIEF.md` → `AGENT_HANDOFF_LOG.md` with stub redirect; update all §1.1 J citations | P2 | **done** | Owner request 2026-07-09 | This session |
-| IMP-017 | Rules | **Continuous improvement rule** — agents must surface suggestions to Improvement backlog + rules when noticed (§1.1 J) | P1 | **done** | Owner request 2026-07-09 | `ledger-core-rules.mdc` HARD RULES |
-
----
-
-## Latest session — Handoff log rename + improvement backlog (COMPLETE)
-
-### Objective
-
-Rename agent work log to accurate name; surface all prior improvement recommendations for
-Claude; add binding rule for continuous agent suggestions.
-
-### Verdict / outcome
-
-**COMPLETE** — file renamed, backlog populated, rules updated. **STOP** unchanged for Claude
-review of Part A (#20) and Part B (#21).
-
-### Commits
-
-- `f8385a1` — docs: rename AUDIT_DEBT_BRIEF → AGENT_HANDOFF_LOG + improvement backlog
-- `04420cf` — docs: fix HEAD hash in agent handoff log
-- `5f4bd6b` — docs: final HEAD sync in agent handoff log
-
-### Commands run (this session)
-
-- `git rev-parse --short HEAD` → `c5be82a`
-- `git rev-parse --short origin/cursor/platform-phases-1-2-3-70a6` → `f8903ff`
-
-### Files touched
-
-| Path | Action | What changed |
-|------|--------|--------------|
-| `docs/workflows/AGENT_HANDOFF_LOG.md` | created | Renamed handoff log + improvement backlog |
-| `docs/workflows/AUDIT_DEBT_BRIEF.md` | modified | Stub redirect to new path |
-| `.cursor/rules/ledger-core-rules.mdc` | modified | Path rename + improvement-backlog HARD RULE + §1.1 J |
-| `docs/AGENT_INDEX.md` | modified | Session-start path + workflows table |
-| `REPO.md` | modified | Session-start path |
-| `docs/workflows/content-maps/b1-agent-ops-merge.md` | modified | Path references |
-| `scripts/agent-preflight.ts` | modified | Session-start file list |
-
-### Acceptance evidence
-
-- Improvement backlog: 17 items (IMP-001–017), 15 open + 2 done this session
-- All repo references to `AUDIT_DEBT_BRIEF.md` updated or stubbed
-- Rules bind agents to append backlog items when noticed
-
-### Open / next
-
-- Claude review Part A (#20) + Part B (#21)
-- Owner visual pass after Claude APPROVAL
-- Consider IMP-011 guard reconciliation on merge
-
----
-
-## Session log (last 3 only)
-
-### 3 — Handoff log rename + improvement backlog (2026-07-09)
-
-Renamed file; populated backlog; rules update for continuous suggestions.
-
-### 2 — Part A platform + Part B doc consolidation (2026-07-09)
-
-Platform A1–A3; docs B1–B9 on separate branch. STOP for Claude.
-
-### 1 — Platform fix brief P0–P4 (2026-07-09)
-
-DeSantis guard, BLS education, nav, FL UI; original improvement list surfaced in backlog.
+## Prior backlog (pre-2026-07-10, from the read-only sweeps)
+Governor portraits (now covered by `test:identity-integrity`), roster guard, BLS series catalog,
+map-sidebar identity audit, nav tap-to-open, pre-expansion batch gate, branch reconcile (#20 platform
++ #21 docs → `main` for a visible baseline). Reconcile the divergent guard lists on merge.

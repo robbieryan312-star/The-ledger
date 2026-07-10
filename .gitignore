@@ -43,3 +43,5 @@ next-env.d.ts
 
 # local disk cache (accelerator, not committed data)
 data/cache/
+data/reports/render-integrity/*.png
+data/reports/render-integrity/contact-sheet.json
