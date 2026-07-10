@@ -21,7 +21,7 @@ const PORT = 4112;
 const BASE = `http://127.0.0.1:${PORT}`;
 
 const REQUIRED_SECTIONS: Record<string, string[]> = {
-  '/states/FL': ['#section-01', '#section-04'],
+  '/states/FL': ['#economy', '#courts'],
 };
 
 function fail(message: string): never {
@@ -36,14 +36,14 @@ async function waitForServer(ms = 90000): Promise<void> {
       const res = await fetch(`${BASE}/states/FL`, { signal: AbortSignal.timeout(5000) });
       if (res.ok) {
         const html = await res.text();
-        if (html.includes('section-01')) return;
+        if (html.includes('id="economy"')) return;
       }
     } catch {
       // retry
     }
     await new Promise((r) => setTimeout(r, 500));
   }
-  fail(`server did not become ready on ${BASE}/states/FL with section-01 within ${ms}ms`);
+  fail(`server did not become ready on ${BASE}/states/FL with id="economy" within ${ms}ms`);
 }
 
 function startServer(): { proc: ReturnType<typeof spawn>; kill: () => void } {
@@ -85,7 +85,7 @@ async function assertImagesLoad(page: Page, label: string): Promise<void> {
     const imgs = [...document.querySelectorAll('img')];
     return imgs
       .filter((img) => {
-        if (img.closest('#section-04')) return false;
+        if (img.closest('#politicians')) return false;
         const w = img.naturalWidth;
         const src = img.getAttribute('src') ?? '';
         if (!src || src.startsWith('data:')) return false;
