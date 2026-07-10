@@ -8,55 +8,42 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-10):**
-- Branch: `cursor/fl-state-locked-spec-70a6` (FL locked-spec review) · merged `main` @ `d8ed82b`
-- Branch: `cursor/fl-state-locked-spec-70a6` · HEAD `6b78118`
-- PR: **#25** FL locked-spec draft (STOP) · **do not merge** until Claude render review
-- Tree: clean · prebuild + build + render-integrity: **green**
+- Branch: `cursor/fl-state-locked-spec-70a6` · HEAD `f7ccb4f`
+- Tree: clean · prebuild (18 suites) + build + render-integrity: **green**
 
-**Main baseline (merged):** guards.yml green @ `d8ed82b`; render-integrity uses `RENDER_INTEGRITY_EXTERNAL_SERVER` in CI; semantic `#economy`/`#courts` on simple main page. FL review branch uses rail+canvas `#section-01`…`#section-06` — render guard aligned to section ids on this branch.
-
-## Latest session — FL locked spec four gaps (STOP for Claude)
+## Latest session — FL data credibility fix (STOP for Claude re-review)
 
 ### Objective
 
-Close four approved gaps on `/states/FL`: BEA cost-of-living (no user-facing CPI), taxes §03, county dropdowns, design tokens.
+Replace placeholder official-tier figures with live fetches or honest gaps; add `test:no-unverified-official-data` guard.
 
 ### Verdict / outcome
 
-**STOP for Claude review** — locked-spec gaps closed on review branch; Step 3 propagation **not started**.
+**STOP for Claude re-review** — credibility blocker fixed; BEA cost-of-living remains honest gap until `BEA_API_KEY` set.
 
-### Commits
+### fetchedLive status
 
-- `6b78118` — feat(fl): locked spec — BEA COL, taxes, county dropdowns, design tokens
+| Field | Status |
+|-------|--------|
+| Census counties (income, home, population) | `fetchedLive:true` — ACS 2023 |
+| Census attainment (B15003) | `fetchedLive:true` |
+| County unemployment (BLS LAUS LAUCN) | `fetchedLive:true` |
+| BEA cost of living | **honest gap** — `state:null`, no `BEA_API_KEY` |
+| Federal tax | `fetchedLive:true` — IRS Rev. Proc. 2023-34 |
+| FL state tax $0 | `fetchedLive:true` |
+| NY/CA comparison | `fetchedLive:true` — Tax Foundation 2024 brackets (nonpartisan) |
+| Total burden | `fetchedLive:true` — Tax Foundation cited (nonpartisan) |
 
-### Commands run (this session)
+### Commands run
 
-- `npm run prebuild` → exit 0
-- `npm run build` → exit 0
+- `npm run ingest:fl-counties` / `ingest:fl-tax` / `ingest:bea-rpp-fl` → exit 0
+- `npm run prebuild` → exit 0 · `npm run build` → exit 0
 - `RENDER_INTEGRITY_EXTERNAL_SERVER=1 npm run test:render-integrity` → 2/2 pass
-
-### Files touched
-
-| Path | Action | What changed |
-|------|--------|--------------|
-| `components/states/FloridaStateDashboard.tsx` | modified | BEA COL card, taxes §03, county dropdowns, design tokens, RPP above/below label |
-| `components/states/SampleBadge.tsx` | created | sample-batch label on county/COL dropdowns |
-| `scripts/ingest/florida/ingest-*.ts` | created | small-sample BEA RPP, counties, tax burden ingest |
-| `scripts/render-integrity-check.ts` | modified | `#section-01`/`#section-03`/`#section-04` anchors for FL dashboard |
-| `.github/workflows/guards.yml` | modified | CI warmup polls `id="section-01"` on FL branch |
-| `app/globals.css` | modified | `--positive` / `--negative` tokens |
-
-### Acceptance evidence
-
-- `/states/FL` sections `#section-01`…`#section-06`; Taxes in nav; no CPI in rendered HTML
-- County dropdowns: income, home value, unemployment, population (top + bottom sample)
-- Grep: only flag decorative hex remains in FL components (`#c8433a`, `#f4f4f2`, `#25457a`)
-- Render contact-sheet: `data/reports/render-integrity/_states_FL_mobile.png`, `_desktop.png` (gitignored runtime)
 
 ### Open / next
 
-- Claude combined render review + APPROVAL before merge
-- Step 3 propagation blocked until FL locked
+- Set `BEA_API_KEY` + `ingest:bea-rpp-fl` for live cost-of-living
+- Claude re-review with render contact-sheet
 
 ---
 
