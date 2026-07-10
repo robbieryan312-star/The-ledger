@@ -43,6 +43,9 @@ jobs:
       - name: Profile credibility audit (P0/P1 gate)
         run: npm run audit:profile-credibility
 
+      - name: Install Playwright Chromium (render-integrity)
+        run: npx playwright install chromium
+
       - name: Production build
         run: npm run build
 
