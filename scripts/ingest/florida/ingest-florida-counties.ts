@@ -1,18 +1,21 @@
 /**
- * Census ACS county sample for Florida state profile dropdowns.
+ * Census ACS county sample + state attainment for Florida state profile.
  * Output: data/florida/census/florida-counties-sample.json
  *
  * Usage: npm run ingest:fl-counties -- --limit 10
+ * Requires CENSUS_API_KEY (api.census.gov). County unemployment from BLS LAUS (keyless).
  */
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { B15003_VARS, attainmentFromB15003 } from '../../lib/census-attainment';
+import { fetchBlsSeries, latestPoint } from '../../lib/bls-api';
 import { loadEnvLocal, projectRoot } from '../../lib/ingest-utils';
 
 const CENSUS_SOURCE = {
   name: 'U.S. Census Bureau ACS',
   url: 'https://api.census.gov',
   tier: 'official' as const,
-  description: 'ACS 5-year county estimates — small sample batch',
+  description: 'ACS 5-year county + state attainment estimates',
 };
 
 const COUNTY_FIPS_SAMPLE = [
@@ -20,69 +23,143 @@ const COUNTY_FIPS_SAMPLE = [
   '12021', '12071', '12009', '12103', '12005',
 ];
 
+function countyLausSeriesId(fips: string): string {
+  const state = fips.slice(0, 2);
+  const county = fips.slice(2, 5);
+  return `LAUCN${state}${county}0000000003`;
+}
+
+async function fetchCensusJson(url: string): Promise<string[][]> {
+  const res = await fetch(url, { signal: AbortSignal.timeout(60_000) });
+  const text = await res.text();
+  if (!res.ok) throw new Error(`HTTP ${res.status}: ${text.slice(0, 200)}`);
+  return JSON.parse(text) as string[][];
+}
+
 async function main(): Promise<void> {
   await loadEnvLocal();
   const argv = process.argv.slice(2);
   const limitIdx = argv.indexOf('--limit');
   const limit = limitIdx >= 0 ? Number.parseInt(argv[limitIdx + 1] ?? '10', 10) : 10;
   const fipsList = COUNTY_FIPS_SAMPLE.slice(0, Math.min(limit, COUNTY_FIPS_SAMPLE.length));
-  const key = process.env.CENSUS_API_KEY?.trim() || process.env.FEC_API_KEY?.trim();
+  const key = process.env.CENSUS_API_KEY?.trim() || process.env.DATA_GOV_API_KEY?.trim();
+  if (!key) {
+    console.error('CENSUS_API_KEY or DATA_GOV_API_KEY required for Census ACS fetch');
+    process.exit(1);
+  }
+
   const asOf = new Date().toISOString().slice(0, 10);
+  const years = ['2023', '2022', '2021'];
+  let countyRaw: string[][] | null = null;
+  let usedYear = years[0];
+  let countyUrl = '';
 
-  let records: {
-    fips: string;
-    name: string;
-    population: number;
-    medianHouseholdIncome: number;
-    medianHomeValue: number;
-    unemploymentRate: number;
-  }[] = [];
-  let fetchedLive = false;
-  let note = 'Sample batch only. Full county ingest deferred until owner review.';
-
-  if (key) {
+  for (const year of years) {
+    const url =
+      `https://api.census.gov/data/${year}/acs/acs5?get=NAME,B01003_001E,B19013_001E,B25077_001E&for=county:*&in=state:12&key=${encodeURIComponent(key)}`;
     try {
-      const year = '2022';
-      const url =
-        `https://api.census.gov/data/${year}/acs/acs5?get=NAME,B01003_001E,B19013_001E,B25077_001E&for=county:*&in=state:12&key=${encodeURIComponent(key)}`;
-      const res = await fetch(url, { signal: AbortSignal.timeout(60_000) });
-      const raw = (await res.json()) as string[][];
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const headers = raw[0];
-      const rows = raw.slice(1);
-      const idx = (h: string) => headers.indexOf(h);
-
-      records = rows
-        .filter((row) => fipsList.includes(`12${row[idx('county')]}`))
-        .map((row) => {
-          const county = row[idx('county')];
-          const fips = `12${county}`;
-          const name = (row[idx('NAME')] ?? '').replace(/ County, Florida$/, '');
-          return {
-            fips,
-            name,
-            population: Number(row[idx('B01003_001E')]) || 0,
-            medianHouseholdIncome: Number(row[idx('B19013_001E')]) || 0,
-            medianHomeValue: Number(row[idx('B25077_001E')]) || 0,
-            unemploymentRate: 3.5,
-          };
-        })
-        .sort((a, b) => b.population - a.population);
-
-      if (records.length > 0) {
-        fetchedLive = true;
-        note = `ACS ${year} county sample (n=${records.length}). Unemployment rates pending BLS LAUS county series.`;
-      }
+      countyRaw = await fetchCensusJson(url);
+      usedYear = year;
+      countyUrl = url;
+      break;
     } catch (err) {
-      note = `Census fetch failed — sample retained: ${err instanceof Error ? err.message : String(err)}`;
+      console.warn(`${year} county fetch failed:`, err instanceof Error ? err.message : err);
+    }
+  }
+  if (!countyRaw) {
+    console.error('Census county fetch failed for all ACS years');
+    process.exit(1);
+  }
+
+  const headers = countyRaw[0];
+  const rows = countyRaw.slice(1);
+  const idx = (h: string) => headers.indexOf(h);
+
+  let records = rows
+    .filter((row) => fipsList.includes(`12${row[idx('county')]}`))
+    .map((row) => {
+      const county = row[idx('county')];
+      const fips = `12${county}`;
+      const name = (row[idx('NAME')] ?? '').replace(/ County, Florida$/, '');
+      return {
+        fips,
+        name,
+        population: Number(row[idx('B01003_001E')]) || 0,
+        medianHouseholdIncome: Number(row[idx('B19013_001E')]) || 0,
+        medianHomeValue: Number(row[idx('B25077_001E')]) || 0,
+        unemploymentRate: null as number | null,
+      };
+    })
+    .sort((a, b) => b.population - a.population);
+
+  if (records.length === 0) {
+    console.error('No matching counties in Census response');
+    process.exit(1);
+  }
+
+  const lausIds = records.map((r) => countyLausSeriesId(r.fips));
+  const yearNow = new Date().getFullYear();
+  const blsMap = await fetchBlsSeries(lausIds, yearNow - 2, yearNow);
+  records = records.map((r) => {
+    const pt = latestPoint(blsMap.get(countyLausSeriesId(r.fips)));
+    return { ...r, unemploymentRate: pt?.value ?? null };
+  });
+
+  let attainmentUrl = '';
+  let flAttainment = attainmentFromB15003({});
+  let usAttainment = attainmentFromB15003({});
+  for (const year of years) {
+    const url = `https://api.census.gov/data/${year}/acs/acs5?get=${B15003_VARS}&for=state:12&key=${encodeURIComponent(key)}`;
+    try {
+      const raw = await fetchCensusJson(url);
+      const h = raw[0];
+      const row = raw[1];
+      const obj: Record<string, string> = {};
+      h.forEach((col, i) => {
+        obj[col] = row[i];
+      });
+      flAttainment = attainmentFromB15003(obj);
+      attainmentUrl = url;
+      break;
+    } catch {
+      // try prior year
     }
   }
 
-  if (!records.length) {
-    const existing = JSON.parse(
-      await readFile(path.join(projectRoot, 'data/florida/census/florida-counties-sample.json'), 'utf8'),
-    ) as { records: typeof records };
-    records = existing.records;
+  const usUrl = `https://api.census.gov/data/${usedYear}/acs/acs5?get=${B15003_VARS}&for=us:1&key=${encodeURIComponent(key)}`;
+  try {
+    const raw = await fetchCensusJson(usUrl);
+    const h = raw[0];
+    const row = raw[1];
+    const obj: Record<string, string> = {};
+    h.forEach((col, i) => {
+      obj[col] = row[i];
+    });
+    usAttainment = attainmentFromB15003(obj);
+  } catch (err) {
+    console.warn('US attainment fetch failed:', err instanceof Error ? err.message : err);
+  }
+
+  const popRankUrl = `https://api.census.gov/data/${usedYear}/acs/acs5?get=NAME,B01003_001E&for=state:*&key=${encodeURIComponent(key)}`;
+  const popRankRaw = await fetchCensusJson(popRankUrl);
+  const pops = popRankRaw
+    .slice(1)
+    .map((row) => ({ name: row[0], pop: Number(row[1]) || 0 }))
+    .sort((a, b) => b.pop - a.pop);
+  const flRank = pops.findIndex((p) => p.name.includes('Florida')) + 1;
+
+  const popPrevYear = String(Number(usedYear) - 1);
+  const popPrevUrl = `https://api.census.gov/data/${popPrevYear}/acs/acs5?get=B01003_001E&for=state:12&key=${encodeURIComponent(key)}`;
+  let populationGrowthPct: number | null = null;
+  try {
+    const prevRaw = await fetchCensusJson(popPrevUrl);
+    const prevPop = Number(prevRaw[1][0]) || 0;
+    const flPop = pops.find((p) => p.name.includes('Florida'))?.pop ?? 0;
+    if (prevPop > 0 && flPop > 0) {
+      populationGrowthPct = Math.round(((flPop - prevPop) / prevPop) * 1000) / 10;
+    }
+  } catch {
+    populationGrowthPct = null;
   }
 
   const payload = {
@@ -91,19 +168,23 @@ async function main(): Promise<void> {
       asOf,
       count: records.length,
       stateCode: 'FL',
-      fetchedLive,
-      note,
+      fetchedLive: true,
+      fetchedAt: new Date().toISOString(),
+      datasetUrl: countyUrl.replace(/key=[^&]+/, 'key=***'),
+      attainmentUrl: attainmentUrl.replace(/key=[^&]+/, 'key=***'),
+      note: `ACS ${usedYear} county sample (n=${records.length}) + B15003 state attainment. County unemployment from BLS LAUS.`,
+      blsSource: {
+        name: 'U.S. Bureau of Labor Statistics',
+        url: 'https://www.bls.gov',
+        tier: 'official',
+        description: 'LAUS county unemployment rate (LAUCN series)',
+      },
     },
     stateSummary: {
-      populationRank: 3,
-      populationGrowthPct: 1.6,
-      attainment: {
-        hsPlusPct: 89.2,
-        someCollegePct: 29.8,
-        bachelorsPct: 20.6,
-        graduatePct: 10.9,
-        bachelorsPlusPct: 31.5,
-      },
+      populationRank: flRank || null,
+      populationGrowthPct,
+      attainment: flAttainment,
+      usAttainmentBachelorsPlusPct: usAttainment.bachelorsPlusPct,
     },
     records,
   };
@@ -112,7 +193,7 @@ async function main(): Promise<void> {
   await mkdir(dir, { recursive: true });
   const out = path.join(dir, 'florida-counties-sample.json');
   await writeFile(out, JSON.stringify(payload, null, 2) + '\n', 'utf8');
-  console.log(`Wrote ${out} (${records.length} counties, live=${fetchedLive})`);
+  console.log(`Wrote ${out} (${records.length} counties, live=true)`);
 }
 
 main().catch((err) => {

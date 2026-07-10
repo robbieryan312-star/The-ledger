@@ -4,27 +4,14 @@
       "name": "U.S. Bureau of Economic Analysis",
       "url": "https://apps.bea.gov/api",
       "tier": "official",
-      "description": "Regional Price Parities (MARPP) — small sample, BEA Data API Regional dataset"
+      "description": "Regional Price Parities (MARPP) — BEA Data API Regional dataset"
     },
     "asOf": "2026-07-10",
-    "count": 1,
+    "count": 0,
     "stateCode": "FL",
-    "datasetUrl": "https://apps.bea.gov/api/data/?dataset=Regional&TableName=MARPP",
-    "note": "Sample state + metro RPP indices (US=100). Replaces CPI card on state profile."
+    "fetchedLive": false,
+    "datasetUrl": "https://apps.bea.gov/api/data/?datasetname=Regional&TableName=MARPP",
+    "note": "BEA_API_KEY not set — cost-of-living shows honest gap until key is configured."
   },
-  "state": {
-    "allItemsIndex": 99.4,
-    "period": "2023",
-    "components": [
-      { "label": "Housing", "index": 102.1 },
-      { "label": "Groceries", "index": 98.2 },
-      { "label": "Utilities", "index": 97.5 },
-      { "label": "Transportation", "index": 99.8 }
-    ],
-    "metros": [
-      { "name": "Miami-Fort Lauderdale", "index": 110.2 },
-      { "name": "Tampa-St. Petersburg", "index": 100.4 },
-      { "name": "Rural Florida (sample)", "index": 89.1 }
-    ]
-  }
+  "state": null
 }

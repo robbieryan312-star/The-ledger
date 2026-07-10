@@ -2,8 +2,8 @@
  * BEA Regional Price Parities (MARPP) — Florida state profile cost-of-living.
  * Output: data/florida/bea/florida-rpp-sample.json
  *
- * Usage: npm run ingest:bea-rpp-fl -- --limit 10
- * BEA API key optional (register at https://apps.bea.gov/API/signup/index.cfm).
+ * Usage: npm run ingest:bea-rpp-fl
+ * Requires BEA_API_KEY — without it writes fetchedLive:false + state:null (honest gap).
  */
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -16,72 +16,154 @@ const BEA_SOURCE = {
   description: 'Regional Price Parities (MARPP) — BEA Data API Regional dataset',
 };
 
-const SAMPLE_FALLBACK = {
-  allItemsIndex: 99.4,
-  period: '2023',
-  components: [
-    { label: 'Housing', index: 102.1 },
-    { label: 'Groceries', index: 98.2 },
-    { label: 'Utilities', index: 97.5 },
-    { label: 'Transportation', index: 99.8 },
-  ],
-  metros: [
-    { name: 'Miami-Fort Lauderdale', index: 110.2 },
-    { name: 'Tampa-St. Petersburg', index: 100.4 },
-    { name: 'Rural Florida (sample)', index: 89.1 },
-  ],
-};
+const METRO_GEO = [
+  { name: 'Miami-Fort Lauderdale-West Palm Beach', geoFips: '33100' },
+  { name: 'Tampa-St. Petersburg-Clearwater', geoFips: '45300' },
+] as const;
+
+/** MARPP expenditure category line codes (BEA Regional table MARPP). */
+const COMPONENT_LINES: { label: string; lineCode: number }[] = [
+  { label: 'Housing', lineCode: 4 },
+  { label: 'Groceries', lineCode: 5 },
+  { label: 'Utilities', lineCode: 6 },
+  { label: 'Transportation', lineCode: 7 },
+];
+
+type BeaRow = { DataValue?: string; TimePeriod?: string; GeoName?: string };
+
+async function beaGet(
+  key: string,
+  params: Record<string, string>,
+): Promise<BeaRow[]> {
+  const qs = new URLSearchParams({
+    UserID: key,
+    method: 'GetData',
+    datasetname: 'Regional',
+    ResultFormat: 'JSON',
+    ...params,
+  });
+  const res = await fetch(`https://apps.bea.gov/api/data?${qs}`, {
+    signal: AbortSignal.timeout(60_000),
+  });
+  const json = (await res.json()) as {
+    BEAAPI?: { Results?: { Data?: BeaRow[]; Error?: { APIErrorDescription?: string } } };
+  };
+  const err = json.BEAAPI?.Results?.Error?.APIErrorDescription;
+  if (err) throw new Error(err);
+  return json.BEAAPI?.Results?.Data ?? [];
+}
 
 async function main(): Promise<void> {
   await loadEnvLocal();
   const asOf = new Date().toISOString().slice(0, 10);
   const key = process.env.BEA_API_KEY?.trim();
-  let state = { ...SAMPLE_FALLBACK };
-  let note = 'Verified sample batch (BEA MARPP). Full metro ingest deferred until owner review.';
-  let fetchedLive = false;
+  const year = '2023';
 
-  if (key) {
-    try {
-      const url = `https://apps.bea.gov/api/data?UserID=${encodeURIComponent(key)}&method=GetData&datasetname=Regional&TableName=MARPP&LineCode=1&GeoFips=12000&Year=2023&ResultFormat=JSON`;
-      const res = await fetch(url, { signal: AbortSignal.timeout(60_000) });
-      const json = (await res.json()) as {
-        BEAAPI?: { Results?: { Data?: { DataValue?: string; TimePeriod?: string }[] } };
-      };
-      const row = json.BEAAPI?.Results?.Data?.[0];
-      if (row?.DataValue) {
-        state = {
-          ...SAMPLE_FALLBACK,
-          allItemsIndex: Number.parseFloat(row.DataValue),
-          period: row.TimePeriod ?? '2023',
-        };
-        fetchedLive = true;
-        note = 'State all-items RPP from BEA API; components/metros remain sample until expanded ingest.';
-      }
-    } catch (err) {
-      note = `BEA fetch failed — sample retained: ${err instanceof Error ? err.message : String(err)}`;
-    }
-  } else {
-    note = 'BEA_API_KEY not set — committed sample values (official tier, small batch).';
+  if (!key) {
+    const payload = {
+      meta: {
+        source: BEA_SOURCE,
+        asOf,
+        count: 0,
+        stateCode: 'FL',
+        fetchedLive: false,
+        datasetUrl: 'https://apps.bea.gov/api/data/?datasetname=Regional&TableName=MARPP',
+        note: 'BEA_API_KEY not set — cost-of-living shows honest gap until key is configured.',
+      },
+      state: null,
+    };
+    const dir = path.join(projectRoot, 'data', 'florida', 'bea');
+    await mkdir(dir, { recursive: true });
+    const out = path.join(dir, 'florida-rpp-sample.json');
+    await writeFile(out, JSON.stringify(payload, null, 2) + '\n', 'utf8');
+    console.warn(`Wrote ${out} (live=false, BEA_API_KEY not set)`);
+    return;
   }
+
+  const errors: string[] = [];
+  let allItemsIndex: number | null = null;
+  let period = year;
+  const components: { label: string; index: number }[] = [];
+  const metros: { name: string; index: number }[] = [];
+
+  try {
+    const stateRows = await beaGet(key, {
+      TableName: 'MARPP',
+      LineCode: '1',
+      GeoFips: '12000',
+      Year: year,
+    });
+    const stateRow = stateRows[0];
+    if (stateRow?.DataValue) {
+      allItemsIndex = Number.parseFloat(stateRow.DataValue);
+      period = stateRow.TimePeriod ?? year;
+    } else {
+      errors.push('state all-items MARPP missing');
+    }
+
+    for (const comp of COMPONENT_LINES) {
+      const rows = await beaGet(key, {
+        TableName: 'MARPP',
+        LineCode: String(comp.lineCode),
+        GeoFips: '12000',
+        Year: year,
+      });
+      const val = rows[0]?.DataValue;
+      if (val) components.push({ label: comp.label, index: Number.parseFloat(val) });
+      else errors.push(`component ${comp.label} missing`);
+    }
+
+    for (const metro of METRO_GEO) {
+      const rows = await beaGet(key, {
+        TableName: 'MARPP',
+        LineCode: '1',
+        GeoFips: metro.geoFips,
+        Year: year,
+      });
+      const val = rows[0]?.DataValue;
+      if (val) metros.push({ name: metro.name, index: Number.parseFloat(val) });
+      else errors.push(`metro ${metro.name} missing`);
+    }
+  } catch (err) {
+    errors.push(err instanceof Error ? err.message : String(err));
+  }
+
+  const fetchedLive =
+    errors.length === 0 &&
+    allItemsIndex != null &&
+    components.length === COMPONENT_LINES.length &&
+    metros.length === METRO_GEO.length;
 
   const payload = {
     meta: {
       source: BEA_SOURCE,
       asOf,
-      count: 1,
+      count: fetchedLive ? 1 + components.length + metros.length : 0,
       stateCode: 'FL',
       fetchedLive,
+      fetchedAt: fetchedLive ? new Date().toISOString() : undefined,
       datasetUrl: 'https://apps.bea.gov/api/data/?datasetname=Regional&TableName=MARPP',
-      note,
+      note: fetchedLive
+        ? `BEA MARPP ${period} — state, components, and metro sample from live API.`
+        : `BEA fetch incomplete: ${errors.join('; ') || 'unknown'}`,
+      errors: errors.length ? errors : undefined,
     },
-    state,
+    state: fetchedLive
+      ? {
+          allItemsIndex,
+          period,
+          components,
+          metros,
+        }
+      : null,
   };
 
   const dir = path.join(projectRoot, 'data', 'florida', 'bea');
   await mkdir(dir, { recursive: true });
   const out = path.join(dir, 'florida-rpp-sample.json');
   await writeFile(out, JSON.stringify(payload, null, 2) + '\n', 'utf8');
-  console.log(`Wrote ${out} (live=${fetchedLive}, index=${state.allItemsIndex})`);
+  console.log(`Wrote ${out} (live=${fetchedLive}, index=${allItemsIndex ?? '—'})`);
+  if (!fetchedLive) process.exit(1);
 }
 
 main().catch((err) => {

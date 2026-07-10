@@ -1,37 +1,108 @@
 {
   "meta": {
-    "source": {
-      "name": "IRS + Florida Dept. of Revenue + Tax Foundation",
-      "url": "https://www.irs.gov",
-      "tier": "official",
-      "description": "Estimated effective income tax tables — federal from IRS brackets; FL state $0; comparison from Tax Foundation (nonpartisan)"
-    },
     "asOf": "2026-07-10",
     "count": 3,
     "stateCode": "FL",
-    "note": "Illustrative single-filer estimates for dashboard sample. Not tax advice."
+    "fetchedLive": true,
+    "fetchedAt": "2026-07-10T12:59:55.228Z",
+    "note": "Federal tax from IRS 2024 brackets; FL state $0; state comparison from Tax Foundation 2024 bracket schedules; burden from Tax Foundation Facts & Figures.",
+    "provenance": {
+      "federal": {
+        "name": "Internal Revenue Service",
+        "url": "https://www.irs.gov/newsroom/irs-provides-tax-inflation-adjustments-for-tax-year-2024",
+        "tier": "official",
+        "citation": "IRS Rev. Proc. 2023-34 (tax year 2024, single filer)",
+        "fetchedLive": true
+      },
+      "floridaState": {
+        "name": "Florida Department of Revenue",
+        "url": "https://floridarevenue.com",
+        "tier": "official",
+        "citation": "Florida has no state personal income tax",
+        "fetchedLive": true
+      },
+      "comparison": {
+        "name": "Tax Foundation",
+        "url": "https://taxfoundation.org/data/all/state/state-income-tax-rates-2024/",
+        "tier": "nonpartisan",
+        "citation": "Tax Foundation State Individual Income Tax Rates and Brackets (2024)",
+        "fetchedLive": true
+      },
+      "totalBurden": {
+        "name": "Tax Foundation",
+        "url": "https://taxfoundation.org/data/all/state/state-local-tax-burden/",
+        "tier": "nonpartisan",
+        "citation": "Tax Foundation Facts & Figures — state and local tax burden (% of income)",
+        "fetchedLive": true
+      }
+    }
   },
   "singleFiler": {
-    "incomeLevels": [50000, 100000, 250000],
-    "federalTax": [4000, 13900, 48900],
-    "floridaStateTax": [0, 0, 0],
-    "totalInFlorida": [4000, 13900, 48900]
+    "incomeLevels": [
+      50000,
+      100000,
+      250000
+    ],
+    "federalTax": [
+      4016,
+      13841,
+      53015
+    ],
+    "floridaStateTax": [
+      0,
+      0,
+      0
+    ],
+    "totalInFlorida": [
+      4016,
+      13841,
+      53015
+    ]
   },
   "stateComparison": [
-    { "state": "TX", "extraStateTax": [0, 0, 0] },
-    { "state": "TN", "extraStateTax": [0, 0, 0] },
-    { "state": "NY", "extraStateTax": [2200, 5400, 16100] },
-    { "state": "CA", "extraStateTax": [1100, 4500, 18700] }
+    {
+      "state": "TX",
+      "extraStateTax": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "state": "TN",
+      "extraStateTax": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "state": "NY",
+      "extraStateTax": [
+        2145,
+        4952,
+        14178
+      ]
+    },
+    {
+      "state": "CA",
+      "extraStateTax": [
+        1311,
+        5469,
+        19419
+      ]
+    }
   ],
   "totalBurden": {
-    "salesTaxAvgPct": 7.0,
+    "salesTaxAvgPct": 7,
     "propertyEffectivePct": 0.8,
     "totalStateLocalPct": 9.1,
     "usAveragePct": 11.2,
     "source": {
       "name": "Tax Foundation",
-      "url": "https://taxfoundation.org",
-      "tier": "nonpartisan"
+      "url": "https://taxfoundation.org/data/all/state/state-local-tax-burden/",
+      "tier": "nonpartisan",
+      "citation": "Tax Foundation Facts & Figures — state and local tax burden (% of income)"
     }
   }
 }

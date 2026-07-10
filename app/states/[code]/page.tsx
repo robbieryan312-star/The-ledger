@@ -83,7 +83,11 @@ export default async function StatePage({
       legislationNote={legiscanSection?.meta.note}
       courtRecords={courts.records}
       courtNote={courts.meta.note}
-      counties={{ records: counties.records, stateSummary: counties.stateSummary }}
+      counties={{
+        records: counties.records,
+        stateSummary: counties.stateSummary,
+        meta: { fetchedLive: counties.meta.fetchedLive },
+      }}
       rpp={rpp}
       taxes={taxes}
     />

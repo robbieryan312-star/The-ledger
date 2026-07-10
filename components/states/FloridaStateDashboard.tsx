@@ -23,7 +23,7 @@ export type FloridaCountyRow = {
   population: number;
   medianHouseholdIncome: number;
   medianHomeValue: number;
-  unemploymentRate: number;
+  unemploymentRate: number | null;
 };
 
 export type FloridaDashboardProps = {
@@ -36,8 +36,8 @@ export type FloridaDashboardProps = {
   counties: {
     records: FloridaCountyRow[];
     stateSummary: {
-      populationRank: number;
-      populationGrowthPct: number;
+      populationRank: number | null;
+      populationGrowthPct: number | null;
       attainment: {
         hsPlusPct: number;
         someCollegePct: number;
@@ -45,15 +45,18 @@ export type FloridaDashboardProps = {
         graduatePct: number;
         bachelorsPlusPct: number;
       };
+      usAttainmentBachelorsPlusPct?: number;
     };
+    meta: { fetchedLive: boolean };
   };
   rpp: {
+    meta: { fetchedLive: boolean; asOf: string; note?: string };
     state: {
       allItemsIndex: number;
       period: string;
       components: { label: string; index: number }[];
       metros: { name: string; index: number }[];
-    };
+    } | null;
   };
   taxes: {
     singleFiler: {
@@ -69,7 +72,16 @@ export type FloridaDashboardProps = {
       totalStateLocalPct: number;
       usAveragePct: number;
     };
-    meta: { asOf: string };
+    meta: {
+      asOf: string;
+      fetchedLive: boolean;
+      provenance: {
+        federal: { name: string; url: string; tier: 'official' | 'nonpartisan'; citation?: string };
+        floridaState: { name: string; url: string; tier: 'official' | 'nonpartisan'; citation?: string };
+        comparison: { name: string; url: string; tier: 'official' | 'nonpartisan'; citation?: string };
+        totalBurden: { name: string; url: string; tier: 'official' | 'nonpartisan'; citation?: string };
+      };
+    };
   };
 };
 
@@ -82,7 +94,11 @@ function topBottomCounties(
   key: keyof Pick<FloridaCountyRow, 'population' | 'medianHouseholdIncome' | 'medianHomeValue' | 'unemploymentRate'>,
   n = 5,
 ) {
-  const sorted = [...records].sort((a, b) => (b[key] as number) - (a[key] as number));
+  const eligible =
+    key === 'unemploymentRate'
+      ? records.filter((r) => r.unemploymentRate != null)
+      : records;
+  const sorted = [...eligible].sort((a, b) => (b[key] as number) - (a[key] as number));
   return {
     top: sorted.slice(0, n),
     bottom: [...sorted].reverse().slice(0, n),
@@ -117,19 +133,38 @@ function MiniSparkline({ values }: { values: number[] }) {
   );
 }
 
-function CountyMiniRows({ rows, valueKey, format }: { rows: FloridaCountyRow[]; valueKey: keyof FloridaCountyRow; format: (v: number) => string }) {
+function CountyMiniRows({
+  rows,
+  valueKey,
+  format,
+}: {
+  rows: FloridaCountyRow[];
+  valueKey: keyof FloridaCountyRow;
+  format: (v: number | null) => string;
+}) {
   return (
     <div className="space-y-1">
-      {rows.map((r, i) => (
-        <div key={r.fips} className="grid grid-cols-[auto_1fr_auto] gap-2 text-[11px] text-[var(--foreground)]/85 py-0.5">
-          <span className="text-[var(--muted)]/90 font-mono text-[10px]">{i + 1}</span>
-          <span className="truncate">{r.name}</span>
-          <span className="font-mono text-[var(--foreground)]">{format(r[valueKey] as number)}</span>
-        </div>
-      ))}
+      {rows.map((r, i) => {
+        const raw = r[valueKey];
+        const display =
+          raw === null || raw === undefined
+            ? 'No verified data yet'
+            : format(raw as number);
+        return (
+          <div key={r.fips} className="grid grid-cols-[auto_1fr_auto] gap-2 text-[11px] text-[var(--foreground)]/85 py-0.5">
+            <span className="text-[var(--muted)]/90 font-mono text-[10px]">{i + 1}</span>
+            <span className="truncate">{r.name}</span>
+            <span className="font-mono text-[var(--foreground)]">{display}</span>
+          </div>
+        );
+      })}
     </div>
   );
 }
+
+const HONEST_GAP = (
+  <span className="italic text-[var(--muted)]">No verified data yet</span>
+);
 
 function StatCard({
   label,
@@ -292,13 +327,22 @@ export default function FloridaStateDashboard({
     home?.nationalValue != null && Number.isFinite(home.nationalValue)
       ? ((indicatorRawValue(home)! - home.nationalValue) / home.nationalValue) * 100
       : null;
-  const rppVsUs = rpp.state.allItemsIndex - 100;
+  const rppState = rpp.state;
   const rppVsUsLabel =
-    rppVsUs === 0
-      ? 'at U.S. average'
-      : `${Math.abs(rppVsUs).toFixed(1)}% ${rppVsUs > 0 ? 'above' : 'below'} U.S. average`;
+    rppState == null
+      ? null
+      : (() => {
+          const rppVsUs = rppState.allItemsIndex - 100;
+          return rppVsUs === 0
+            ? 'at U.S. average'
+            : `${Math.abs(rppVsUs).toFixed(1)}% ${rppVsUs > 0 ? 'above' : 'below'} U.S. average`;
+        })();
   const attain = counties.stateSummary.attainment;
-  const bachelorsNatDelta = attain.bachelorsPlusPct - 35.5;
+  const usBachelorsPlus = counties.stateSummary.usAttainmentBachelorsPlusPct;
+  const bachelorsNatDelta =
+    usBachelorsPlus != null ? attain.bachelorsPlusPct - usBachelorsPlus : null;
+  const countiesLive = counties.meta.fetchedLive;
+  const rppLive = rpp.meta.fetchedLive;
 
   return (
     <div className="max-w-[1160px] mx-auto grid grid-cols-1 lg:grid-cols-[248px_1fr] min-h-screen bg-[var(--bg-base)]">
@@ -357,19 +401,25 @@ export default function FloridaStateDashboard({
               </p>
               <details className="mt-2 text-[11px] text-[var(--muted)]">
                 <summary className="cursor-pointer text-[var(--gold)] list-none">
-                  ▲{counties.stateSummary.populationGrowthPct}%/yr · #{counties.stateSummary.populationRank} largest state
+                  {counties.stateSummary.populationGrowthPct != null && counties.stateSummary.populationRank != null ? (
+                    <>
+                      ▲{counties.stateSummary.populationGrowthPct}%/yr · #{counties.stateSummary.populationRank} largest state
+                    </>
+                  ) : (
+                    <>County breakdown ▾</>
+                  )}
                 </summary>
                 <div className="mt-2 text-left sm:text-right border-t border-dashed border-[var(--border-subtle)] pt-2">
                   <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">
                     Top counties by population
-                    <SampleBadge />
+                    {countiesLive && <SampleBadge />}
                   </p>
-                  <CountyMiniRows rows={popByCounty.top} valueKey="population" format={(v) => formatCompact(v)} />
+                  <CountyMiniRows rows={popByCounty.top} valueKey="population" format={(v) => (v != null ? formatCompact(v) : '—')} />
                   <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1 mt-3">
-                    Smallest counties (sample)
-                    <SampleBadge />
+                    Smallest counties
+                    {countiesLive && <SampleBadge />}
                   </p>
-                  <CountyMiniRows rows={popByCounty.bottom} valueKey="population" format={(v) => formatCompact(v)} />
+                  <CountyMiniRows rows={popByCounty.bottom} valueKey="population" format={(v) => (v != null ? formatCompact(v) : '—')} />
                 </div>
               </details>
             </div>
@@ -402,7 +452,7 @@ export default function FloridaStateDashboard({
               >
                 {income.history && <div className="mt-2"><MiniSparkline values={income.history.map((h) => h.value)} /></div>}
                 <details className="mt-2">
-                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">Counties by income ▾<SampleBadge /></summary>
+                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">Counties by income ▾{countiesLive && <SampleBadge />}</summary>
                   <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Highest</p>
@@ -429,7 +479,7 @@ export default function FloridaStateDashboard({
               >
                 {home.history && <div className="mt-2"><MiniSparkline values={home.history.map((h) => h.value)} /></div>}
                 <details className="mt-2">
-                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">Counties by home value ▾<SampleBadge /></summary>
+                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">Counties by home value ▾{countiesLive && <SampleBadge />}</summary>
                   <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Most expensive</p>
@@ -443,36 +493,48 @@ export default function FloridaStateDashboard({
                 </details>
               </StatCard>
             )}
-            <StatCard
-              label="Cost of living index"
-              value={`${rpp.state.allItemsIndex}`}
-              tier="official"
-              sub={<span>U.S. = 100 · {rppVsUsLabel}</span>}
-            >
-              <details className="mt-2">
-                <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">Components & metros ▾<SampleBadge /></summary>
-                <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] space-y-3">
-                  <div>
-                    <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Components (RPP)</p>
-                    {rpp.state.components.map((c) => (
-                      <div key={c.label} className="flex justify-between text-[11px] text-[var(--foreground)]/85 py-0.5">
-                        <span>{c.label}</span>
-                        <span className="font-mono">{c.index}</span>
-                      </div>
-                    ))}
+            {rppState ? (
+              <StatCard
+                label="Cost of living index"
+                value={`${rppState.allItemsIndex}`}
+                tier="official"
+                sub={rppVsUsLabel && <span>U.S. = 100 · {rppVsUsLabel}</span>}
+              >
+                <details className="mt-2">
+                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">
+                    Components & metros ▾{rppLive && <SampleBadge />}
+                  </summary>
+                  <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] space-y-3">
+                    <div>
+                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Components (RPP)</p>
+                      {rppState.components.map((c) => (
+                        <div key={c.label} className="flex justify-between text-[11px] text-[var(--foreground)]/85 py-0.5">
+                          <span>{c.label}</span>
+                          <span className="font-mono">{c.index}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div>
+                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Metro areas</p>
+                      {rppState.metros.map((m) => (
+                        <div key={m.name} className="flex justify-between text-[11px] text-[var(--foreground)]/85 py-0.5">
+                          <span className="truncate pr-2">{m.name}</span>
+                          <span className="font-mono shrink-0">{m.index}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Metro areas</p>
-                    {rpp.state.metros.map((m) => (
-                      <div key={m.name} className="flex justify-between text-[11px] text-[var(--foreground)]/85 py-0.5">
-                        <span className="truncate pr-2">{m.name}</span>
-                        <span className="font-mono shrink-0">{m.index}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </details>
-            </StatCard>
+                </details>
+              </StatCard>
+            ) : (
+              <div className="relative bg-gradient-to-b from-[var(--bg-elevated)] to-[var(--bg-card)] border border-[var(--border-subtle)] rounded-[13px] p-4 min-w-0">
+                <p className="text-[11px] text-[var(--muted)]">Cost of living index</p>
+                <p className="text-[15px] text-[var(--muted)] mt-3">{HONEST_GAP}</p>
+                <p className="text-[10px] text-[var(--muted)]/90 mt-2">
+                  BEA Regional Price Parities — configure BEA_API_KEY to enable live fetch.
+                </p>
+              </div>
+            )}
           </div>
         </SectionShell>
 
@@ -505,7 +567,7 @@ export default function FloridaStateDashboard({
                 }
               >
                 <details className="mt-2">
-                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">Workforce, counties & trend ▾<SampleBadge /></summary>
+                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">Workforce, counties & trend ▾{countiesLive && <SampleBadge />}</summary>
                   <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] space-y-3">
                     <div className="grid grid-cols-2 gap-2 text-[11px]">
                       {laborForce && <div><p className="text-[var(--muted)]/90 uppercase text-[10px]">Labor force</p><p className="font-semibold text-[var(--foreground)]">{displayValue(laborForce)}</p></div>}
@@ -516,11 +578,11 @@ export default function FloridaStateDashboard({
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Lowest unemployment</p>
-                        <CountyMiniRows rows={unempByCounty.bottom} valueKey="unemploymentRate" format={(v) => `${v}%`} />
+                        <CountyMiniRows rows={unempByCounty.bottom} valueKey="unemploymentRate" format={(v) => (v != null ? `${v}%` : '—')} />
                       </div>
                       <div>
                         <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Highest unemployment</p>
-                        <CountyMiniRows rows={unempByCounty.top} valueKey="unemploymentRate" format={(v) => `${v}%`} />
+                        <CountyMiniRows rows={unempByCounty.top} valueKey="unemploymentRate" format={(v) => (v != null ? `${v}%` : '—')} />
                       </div>
                     </div>
                     {unemployment.history && <UnemploymentChart history={unemployment.history} />}
@@ -530,19 +592,29 @@ export default function FloridaStateDashboard({
             )}
             <StatCard
               label="Adults with a bachelor's+"
-              value={`${attain.bachelorsPlusPct}%`}
+              value={countiesLive ? `${attain.bachelorsPlusPct}%` : '—'}
               tier="official"
-              sub={<span>{bachelorsNatDelta.toFixed(0)} pts vs U.S. average (sample)</span>}
+              sub={
+                countiesLive && bachelorsNatDelta != null ? (
+                  <span>{bachelorsNatDelta >= 0 ? '+' : ''}{bachelorsNatDelta.toFixed(1)} pts vs U.S. average</span>
+                ) : (
+                  HONEST_GAP
+                )
+              }
             >
-              <details className="mt-2">
-                <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">Attainment breakdown ▾</summary>
-                <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] space-y-1 text-[11px] text-[var(--foreground)]/85">
-                  <div className="flex justify-between"><span>HS+</span><span className="font-mono">{attain.hsPlusPct}%</span></div>
-                  <div className="flex justify-between"><span>Some college</span><span className="font-mono">{attain.someCollegePct}%</span></div>
-                  <div className="flex justify-between"><span>Bachelor&apos;s</span><span className="font-mono">{attain.bachelorsPct}%</span></div>
-                  <div className="flex justify-between"><span>Graduate</span><span className="font-mono">{attain.graduatePct}%</span></div>
-                </div>
-              </details>
+              {countiesLive && (
+                <details className="mt-2">
+                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">
+                    Attainment breakdown ▾{countiesLive && <SampleBadge />}
+                  </summary>
+                  <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] space-y-1 text-[11px] text-[var(--foreground)]/85">
+                    <div className="flex justify-between"><span>HS+</span><span className="font-mono">{attain.hsPlusPct}%</span></div>
+                    <div className="flex justify-between"><span>Some college</span><span className="font-mono">{attain.someCollegePct}%</span></div>
+                    <div className="flex justify-between"><span>Bachelor&apos;s</span><span className="font-mono">{attain.bachelorsPct}%</span></div>
+                    <div className="flex justify-between"><span>Graduate</span><span className="font-mono">{attain.graduatePct}%</span></div>
+                  </div>
+                </details>
+              )}
             </StatCard>
           </div>
 
@@ -561,7 +633,23 @@ export default function FloridaStateDashboard({
           eyebrow="§03"
           title="Taxes"
           note="Estimated single-filer income tax including federal obligations. Florida has no state income tax."
-          sourceLine={<>Source: IRS brackets · FL Dept. of Revenue ($0 state income tax) · Tax Foundation burden comparison · {taxes.meta.asOf}</>}
+          sourceLine={
+            <>
+              <a href={taxes.meta.provenance.federal.url} className="underline-offset-2 hover:underline" target="_blank" rel="noopener noreferrer">
+                {taxes.meta.provenance.federal.name}
+              </a>
+              {' · '}
+              <a href={taxes.meta.provenance.floridaState.url} className="underline-offset-2 hover:underline" target="_blank" rel="noopener noreferrer">
+                FL DOR ($0 state income tax)
+              </a>
+              {' · '}
+              <a href={taxes.meta.provenance.comparison.url} className="underline-offset-2 hover:underline" target="_blank" rel="noopener noreferrer">
+                Tax Foundation
+              </a>
+              {' · '}
+              {taxes.meta.asOf}
+            </>
+          }
         >
           <div className="overflow-x-auto rounded-[13px] border border-[var(--border-subtle)]">
             <table className="w-full text-[12px] text-left min-w-[320px]">

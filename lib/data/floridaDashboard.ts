@@ -12,42 +12,64 @@ export type FloridaCountyRow = {
   population: number;
   medianHouseholdIncome: number;
   medianHomeValue: number;
-  unemploymentRate: number;
+  unemploymentRate: number | null;
+};
+
+export type FloridaAttainment = {
+  hsPlusPct: number;
+  someCollegePct: number;
+  bachelorsPct: number;
+  graduatePct: number;
+  bachelorsPlusPct: number;
 };
 
 export function getFloridaCountiesSample(): {
   records: FloridaCountyRow[];
   stateSummary: {
-    populationRank: number;
-    populationGrowthPct: number;
-    attainment: {
-      hsPlusPct: number;
-      someCollegePct: number;
-      bachelorsPct: number;
-      graduatePct: number;
-      bachelorsPlusPct: number;
-    };
+    populationRank: number | null;
+    populationGrowthPct: number | null;
+    attainment: FloridaAttainment;
+    usAttainmentBachelorsPlusPct?: number;
   };
-  meta: { source: { name: string; url: string; tier: string }; asOf: string; note?: string };
+  meta: {
+    source: { name: string; url: string; tier: string };
+    asOf: string;
+    fetchedLive: boolean;
+    note?: string;
+  };
 } {
   return countiesSample as ReturnType<typeof getFloridaCountiesSample>;
 }
 
 export function getFloridaRppSample() {
   return rppSample as {
-    meta: { source: { name: string; url: string; tier: string }; asOf: string; note?: string };
+    meta: {
+      source: { name: string; url: string; tier: string };
+      asOf: string;
+      fetchedLive: boolean;
+      note?: string;
+    };
     state: {
       allItemsIndex: number;
       period: string;
       components: { label: string; index: number }[];
       metros: { name: string; index: number }[];
-    };
+    } | null;
   };
 }
 
 export function getFloridaTaxSample() {
   return taxSample as {
-    meta: { source: { name: string; url: string; tier: string }; asOf: string; note?: string };
+    meta: {
+      asOf: string;
+      fetchedLive: boolean;
+      provenance: {
+        federal: { name: string; url: string; tier: 'official' | 'nonpartisan'; citation?: string; fetchedLive: boolean };
+        floridaState: { name: string; url: string; tier: 'official' | 'nonpartisan'; citation?: string; fetchedLive: boolean };
+        comparison: { name: string; url: string; tier: 'official' | 'nonpartisan'; citation?: string; fetchedLive: boolean };
+        totalBurden: { name: string; url: string; tier: 'official' | 'nonpartisan'; citation?: string; fetchedLive: boolean };
+      };
+    };
     singleFiler: {
       incomeLevels: number[];
       federalTax: number[];
@@ -60,7 +82,7 @@ export function getFloridaTaxSample() {
       propertyEffectivePct: number;
       totalStateLocalPct: number;
       usAveragePct: number;
-      source: { name: string; url: string; tier: string };
+      source: { name: string; url: string; tier: 'nonpartisan'; citation?: string };
     };
   };
 }
@@ -70,7 +92,11 @@ export function topBottomCounties(
   key: keyof Pick<FloridaCountyRow, 'population' | 'medianHouseholdIncome' | 'medianHomeValue' | 'unemploymentRate'>,
   n = 5,
 ): { top: FloridaCountyRow[]; bottom: FloridaCountyRow[] } {
-  const sorted = [...records].sort((a, b) => (b[key] as number) - (a[key] as number));
+  const eligible =
+    key === 'unemploymentRate'
+      ? records.filter((r) => r.unemploymentRate != null)
+      : records;
+  const sorted = [...eligible].sort((a, b) => (b[key] as number) - (a[key] as number));
   return {
     top: sorted.slice(0, n),
     bottom: [...sorted].reverse().slice(0, n),
