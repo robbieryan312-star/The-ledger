@@ -37,7 +37,7 @@ Execute binding build order: merge #20+#21 → identity/render guards → Florid
 
 **main:**
 - `a1f9652` — merge PR #20 platform + PR #21 docs (16→17 guard union)
-- `df36b3f` — feat(guards): identity-integrity + render-integrity + mockup + rules HARD RULES
+- `4cbdd78` — fix(render): render-integrity port 4112 + SSR wait
 
 **cursor/florida-state-page-70a6:** `128878f`
 
