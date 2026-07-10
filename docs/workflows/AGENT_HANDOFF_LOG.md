@@ -7,6 +7,35 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
+**Current state (2026-07-10):**
+- Branch: `main` · HEAD: `21e4bde`
+- Tree: clean · prebuild + build + render-integrity: **green**
+- guards.yml postbuild: **fixed** — semantic `#economy` / `#courts` anchors
+
+## Latest session — render-integrity guard align to semantic ids (COMPLETE)
+
+### Objective
+Fix `test:render-integrity` on `main`: guard used `#section-01`/`#section-04` but `/states/FL` renders `#economy`, `#politicians`, `#courts`.
+
+### Verdict
+**PASS** — `npm run prebuild`, `npm run build`, `npm run test:render-integrity` green; pushed `21e4bde`.
+
+### Commands run
+- `npm run prebuild` → exit 0
+- `npm run build` → exit 0 (postbuild render-integrity 2/2)
+- `npm run test:render-integrity` → 2/2 pass
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/render-integrity-check.ts` | modified | Poll `id="economy"`; require `#economy`+`#courts`; skip `#politicians` images |
+
+### Acceptance evidence
+- `data/reports/render-integrity/contact-sheet.json` + `_states_FL_{mobile,desktop}.png`
+- postbuild `test:render-integrity` 2/2 in full `npm run build`
+
+---
+
 ## HANDOFF 2026-07-10 — Florida state page redesign: LOCKED design + build brief
 
 **From:** Claude Code · **To:** Cursor · **Status:** design locked (owner-approved), ready to build.
