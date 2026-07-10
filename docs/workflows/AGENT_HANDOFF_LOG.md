@@ -7,7 +7,7 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state:** branch `cursor/critical-bug-management-89d5` · HEAD `0fc6b91` before this log commit · PR pending · tree clean before log edit · build PASS (`npm run build`, 2026-07-10) after one render-integrity timeout corrected by rerun.
+**Current state:** branch `cursor/critical-bug-management-89d5` · HEAD `9e035aa` before PR-URL log update · PR https://github.com/robbieryan312-star/The-ledger/pull/24 · tree clean before log edit · build PASS (`npm run build`, 2026-07-10) after one render-integrity timeout corrected by rerun.
 
 ## Improvement backlog
 
@@ -25,7 +25,8 @@ PASS. Fixed two P1 issues: render-integrity could block every production build b
 
 ### Commits
 - `0fc6b91` — fix: restore render guard and migrated aggregate joins
-- Log commit: pending in this follow-up commit.
+- `9e035aa` — docs: log critical bug automation fixes
+- PR URL log update: pending in this follow-up commit.
 
 ### Commands run (this session)
 - `gh pr view 1 2 4 5 7 8 9 10 --json number,state,mergedAt,closedAt,url,title` via loop → all tracked PRs closed/unmerged.
@@ -57,7 +58,7 @@ PASS. Fixed two P1 issues: render-integrity could block every production build b
 - Targeted tests: 9/9 passing for `stockTradesCheckpoint.test.ts` and `migratedNotLightweight.test.ts`.
 
 ### Open / next
-- Persistent automation memory must be updated after PR creation: stale open entries are closed/unmerged and should be `rejected`; add this PR entry for the new fixed bug.
+- Persistent automation memory updated: stale open entries are closed/unmerged and now marked `rejected`; PR #24 recorded as `open`.
 - Dependency audit vulnerabilities are backlog, not fixed in this minimal critical-bug PR.
 
 ## HANDOFF 2026-07-10 — Florida state page redesign: LOCKED design + build brief
