@@ -9,7 +9,7 @@ core-rules, core-rules wins. Newest handoff on top.
 
 **Current state (2026-07-10):**
 - Branch: `cursor/florida-state-page-70a6` (FL review) · `main` at `4cbdd78`
-- HEAD (FL branch): pending commit (Step 2 polish)
+- HEAD (FL branch): `9826aff`
 - PR: **#23** FL draft (STOP) · #20/#21 merged to `main`
 - Tree: dirty → commit this turn · prebuild + build + render-integrity: **green**
 - **STOP** — Florida page on review branch for combined Claude render review; **do not merge**
