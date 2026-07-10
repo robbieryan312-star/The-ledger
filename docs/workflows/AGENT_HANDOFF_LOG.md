@@ -8,9 +8,9 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-10):**
-- Branch: `cursor/florida-state-page-70a6` (FL review) · `main` at `df36b3f` (guards merged)
-- HEAD (FL branch): *(pending commit)*
-- PR: FL draft pending · #20/#21 merged to `main`
+- Branch: `cursor/florida-state-page-70a6` (FL review) · `main` at `4cbdd78`
+- HEAD (FL branch): `128878f`
+- PR: **#23** FL draft (STOP) · #20/#21 merged to `main`
 - Tree: clean · prebuild + build + render-integrity: **green**
 - **STOP** — Florida page on review branch for combined Claude render review; **do not merge**
 
@@ -39,7 +39,7 @@ Execute binding build order: merge #20+#21 → identity/render guards → Florid
 - `a1f9652` — merge PR #20 platform + PR #21 docs (16→17 guard union)
 - `df36b3f` — feat(guards): identity-integrity + render-integrity + mockup + rules HARD RULES
 
-**cursor/florida-state-page-70a6:** `88066f8`
+**cursor/florida-state-page-70a6:** `128878f`
 
 ### Commands run (this session)
 
