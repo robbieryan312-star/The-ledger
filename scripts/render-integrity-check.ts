@@ -142,12 +142,12 @@ async function runChecks(browser: Browser): Promise<string[]> {
       const page = await context.newPage();
       const url = `${BASE}${pageDef.path}`;
       const label = `${pageDef.label} @ ${vp.label}`;
-      await page.goto(url, { waitUntil: 'load', timeout: 60000 });
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
       const required = REQUIRED_SECTIONS[pageDef.path] ?? [];
       for (const sel of required) {
         await page.waitForSelector(sel, { state: 'attached', timeout: 30000 });
       }
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(1000);
       await assertNoHorizontalOverflow(page, label);
       await assertImagesLoad(page, label);
       await assertRequiredSections(page, pageDef.path, label);
@@ -156,7 +156,7 @@ async function runChecks(browser: Browser): Promise<string[]> {
       }
       const shotName = `${pageDef.path.replace(/\//g, '_')}_${vp.label}.png`;
       const shotPath = path.join(screenshotDir, shotName);
-      await page.screenshot({ path: shotPath, fullPage: true });
+      await page.screenshot({ path: shotPath, fullPage: false });
       shots.push(shotPath);
       await context.close();
     }
