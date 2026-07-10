@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "source": {
+      "name": "U.S. Census Bureau ACS",
+      "url": "https://api.census.gov",
+      "tier": "official",
+      "description": "ACS 5-year county estimates — small sample (10 counties), not full corpus"
+    },
+    "asOf": "2026-07-10",
+    "count": 10,
+    "stateCode": "FL",
+    "note": "Sample batch only. Full county ingest deferred until owner review."
+  },
+  "stateSummary": {
+    "populationRank": 3,
+    "populationGrowthPct": 1.6,
+    "attainment": {
+      "hsPlusPct": 89.2,
+      "someCollegePct": 29.8,
+      "bachelorsPct": 20.6,
+      "graduatePct": 10.9,
+      "bachelorsPlusPct": 31.5
+    }
+  },
+  "records": [
+    { "fips": "12086", "name": "Miami-Dade", "population": 2700000, "medianHouseholdIncome": 61250, "medianHomeValue": 410000, "unemploymentRate": 3.8 },
+    { "fips": "12011", "name": "Broward", "population": 1950000, "medianHouseholdIncome": 64800, "medianHomeValue": 385000, "unemploymentRate": 3.5 },
+    { "fips": "12057", "name": "Hillsborough", "population": 1520000, "medianHouseholdIncome": 68500, "medianHomeValue": 340000, "unemploymentRate": 3.2 },
+    { "fips": "12095", "name": "Orange", "population": 1420000, "medianHouseholdIncome": 70200, "medianHomeValue": 355000, "unemploymentRate": 3.4 },
+    { "fips": "12031", "name": "Duval", "population": 1000000, "medianHouseholdIncome": 62800, "medianHomeValue": 285000, "unemploymentRate": 3.6 },
+    { "fips": "12021", "name": "Collier", "population": 390000, "medianHouseholdIncome": 78500, "medianHomeValue": 520000, "unemploymentRate": 2.9 },
+    { "fips": "12071", "name": "Lee", "population": 790000, "medianHouseholdIncome": 65200, "medianHomeValue": 365000, "unemploymentRate": 3.1 },
+    { "fips": "12009", "name": "Brevard", "population": 620000, "medianHouseholdIncome": 66800, "medianHomeValue": 310000, "unemploymentRate": 3.0 },
+    { "fips": "12103", "name": "Pinellas", "population": 960000, "medianHouseholdIncome": 59100, "medianHomeValue": 295000, "unemploymentRate": 3.3 },
+    { "fips": "12005", "name": "Bay", "population": 180000, "medianHouseholdIncome": 52800, "medianHomeValue": 245000, "unemploymentRate": 4.1 }
+  ]
+}

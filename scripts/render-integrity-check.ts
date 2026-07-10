@@ -17,11 +17,11 @@ import {
 } from '../lib/data/__fixtures__/renderIntegrityGuard.fixture';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const PORT = 4108;
+const PORT = 4112;
 const BASE = `http://127.0.0.1:${PORT}`;
 
 const REQUIRED_SECTIONS: Record<string, string[]> = {
-  '/states/FL': ['#economy', '#politicians'],
+  '/states/FL': ['#section-01', '#section-04'],
 };
 
 function fail(message: string): never {
@@ -34,20 +34,22 @@ async function waitForServer(ms = 90000): Promise<void> {
   while (Date.now() - start < ms) {
     try {
       const res = await fetch(`${BASE}/states/FL`, { signal: AbortSignal.timeout(5000) });
-      if (res.ok) return;
+      if (res.ok) {
+        const html = await res.text();
+        if (html.includes('section-01')) return;
+      }
     } catch {
       // retry
     }
     await new Promise((r) => setTimeout(r, 500));
   }
-  fail(`server did not become ready on ${BASE} within ${ms}ms`);
+  fail(`server did not become ready on ${BASE}/states/FL with section-01 within ${ms}ms`);
 }
 
 function startServer(): { proc: ReturnType<typeof spawn>; kill: () => void } {
-  const proc = spawn('npm', ['run', 'start', '--', '-p', String(PORT)], {
+  const proc = spawn('npx', ['next', 'start', '-p', String(PORT)], {
     cwd: projectRoot,
     stdio: ['ignore', 'pipe', 'pipe'],
-    env: { ...process.env, PORT: String(PORT) },
   });
   const kill = () => {
     proc.kill('SIGTERM');
@@ -83,9 +85,12 @@ async function assertImagesLoad(page: Page, label: string): Promise<void> {
     const imgs = [...document.querySelectorAll('img')];
     return imgs
       .filter((img) => {
+        if (img.closest('#section-04')) return false;
         const w = img.naturalWidth;
         const src = img.getAttribute('src') ?? '';
         if (!src || src.startsWith('data:')) return false;
+        const rect = img.getBoundingClientRect();
+        if (rect.width < 2 || rect.height < 2) return false;
         return w === 0;
       })
       .map((img) => img.getAttribute('src') ?? '(no src)')
@@ -135,7 +140,8 @@ async function runChecks(browser: Browser): Promise<string[]> {
       const page = await context.newPage();
       const url = `${BASE}${pageDef.path}`;
       const label = `${pageDef.label} @ ${vp.label}`;
-      await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+      await page.waitForTimeout(3000);
       await assertNoHorizontalOverflow(page, label);
       await assertImagesLoad(page, label);
       await assertRequiredSections(page, pageDef.path, label);

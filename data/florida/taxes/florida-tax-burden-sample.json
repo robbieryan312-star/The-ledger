@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "source": {
+      "name": "IRS + Florida Dept. of Revenue + Tax Foundation",
+      "url": "https://www.irs.gov",
+      "tier": "official",
+      "description": "Estimated effective income tax tables — federal from IRS brackets; FL state $0; comparison from Tax Foundation (nonpartisan)"
+    },
+    "asOf": "2026-07-10",
+    "count": 3,
+    "stateCode": "FL",
+    "note": "Illustrative single-filer estimates for dashboard sample. Not tax advice."
+  },
+  "singleFiler": {
+    "incomeLevels": [50000, 100000, 250000],
+    "federalTax": [4000, 13900, 48900],
+    "floridaStateTax": [0, 0, 0],
+    "totalInFlorida": [4000, 13900, 48900]
+  },
+  "stateComparison": [
+    { "state": "TX", "extraStateTax": [0, 0, 0] },
+    { "state": "TN", "extraStateTax": [0, 0, 0] },
+    { "state": "NY", "extraStateTax": [2200, 5400, 16100] },
+    { "state": "CA", "extraStateTax": [1100, 4500, 18700] }
+  ],
+  "totalBurden": {
+    "salesTaxAvgPct": 7.0,
+    "propertyEffectivePct": 0.8,
+    "totalStateLocalPct": 9.1,
+    "usAveragePct": 11.2,
+    "source": {
+      "name": "Tax Foundation",
+      "url": "https://taxfoundation.org",
+      "tier": "nonpartisan"
+    }
+  }
+}
