@@ -16,6 +16,18 @@ alwaysApply: true
 - **Fixtures append-only** — regression guards grow, never reset; every data-quality bug gets a frozen bad example.
 - **Spec violation = bug to fix, never a question** — read the owning file; do not re-ask the owner.
 - **Stale violation flags are bugs** — when a flagged violation is fixed, delete its flag in the same commit.
+- **Render-and-look — never approve UI from source alone** — any user-facing page/profile is verified
+  against its **rendered output**, not by reading JSX/JSON. A headless render must pass the visual guard
+  (`test:render-integrity`): **zero horizontal overflow** (no element past the viewport edge), **every
+  portrait/image loads** (`naturalWidth > 0`), and **no empty required section**. At every batch gate a
+  **screenshot contact-sheet** of the batch is produced and reviewed against the render — approval cites
+  the screenshots, not the code. This rule exists because obvious rendered defects (a column running
+  off-screen, a wrong portrait) passed source-only review and only the owner caught them.
+- **Identity & asset integrity — the face must match the name** — every portrait/asset is keyed by the
+  correct `bioguideId`; a person's photo, party, state, and office must all resolve to the SAME identity
+  (never a cross-wired id — e.g. a governor showing another member's photo). Every current officeholder
+  has a real portrait or an explicit honest-gap — never a silently wrong or placeholder image where one
+  is expected. Guard-enforced (`test:identity-integrity`); scales to all profiles with no manual review.
 - **Failure reporting is MANDATORY and AUTONOMOUS** — the owner must NEVER remind you.
   After **any** failed, timed-out, incomplete, or substandard attempt: **in the SAME response**
   (or immediately as a follow-up block before ending the turn), output the report in **§1.1**.
