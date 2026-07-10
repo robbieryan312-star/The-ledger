@@ -43,11 +43,25 @@ jobs:
       - name: Profile credibility audit (P0/P1 gate)
         run: npm run audit:profile-credibility
 
+      - name: Install Playwright Chromium (render-integrity)
+        run: npx playwright install chromium
+
       - name: Production build
         run: npm run build
 
       - name: Render integrity (Playwright)
-        run: npm run test:render-integrity
+        run: |
+          npx next start -H 127.0.0.1 -p 4112 &
+          SERVER_PID=$!
+          for i in $(seq 1 90); do
+            if curl -sf http://127.0.0.1:4112/states/FL | grep -q 'id="section-01"'; then
+              break
+            fi
+            sleep 2
+          done
+          curl -sf http://127.0.0.1:4112/states/FL | grep -q 'id="section-01"'
+          RENDER_INTEGRITY_EXTERNAL_SERVER=1 npm run test:render-integrity
+          kill $SERVER_PID
 
       - name: Client chunk budget
         run: npm run test:client-chunks

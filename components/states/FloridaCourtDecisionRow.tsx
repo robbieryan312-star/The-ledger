@@ -18,11 +18,11 @@ export default function FloridaCourtDecisionRow({ row }: { row: SnapshotRecordRo
   const hasSourceText = Boolean(sourceText);
 
   return (
-    <div className="rounded-lg border border-[#1e3a5f]/80 overflow-hidden bg-[#0a1628]/60">
+    <div className="rounded-lg border border-[var(--border-subtle)] overflow-hidden bg-[var(--bg-card)]/60">
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="w-full flex items-start gap-2 p-3 hover:bg-[#1e3a5f]/30 transition-colors text-left"
+        className="w-full flex items-start gap-2 p-3 hover:bg-[var(--bg-elevated)]/30 transition-colors text-left"
       >
         <div className="flex-1 min-w-0 pr-6 relative">
           <div className="absolute top-0 right-0">
@@ -43,7 +43,7 @@ export default function FloridaCourtDecisionRow({ row }: { row: SnapshotRecordRo
           : <ChevronRight className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />}
       </button>
       {open && (
-        <div className="px-3 pb-3 border-t border-[#1e3a5f]/60">
+        <div className="px-3 pb-3 border-t border-[var(--border-subtle)]">
           {hasSourceText && (
             <div className="mt-2">
               <p className="text-[10px] text-gray-500 uppercase tracking-wide">
@@ -65,7 +65,7 @@ export default function FloridaCourtDecisionRow({ row }: { row: SnapshotRecordRo
               href={row.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white text-xs mt-2"
+              className="inline-flex items-center gap-1 text-[var(--gold)] hover:text-white text-xs mt-2"
             >
               Full opinion <ExternalLink className="h-3 w-3" />
             </Link>
@@ -99,8 +99,8 @@ export function FloridaCourtDecisionsSection({
     );
   }
   return (
-    <section className="bg-[#0d1f35] rounded-2xl border border-[#1e3a5f] overflow-hidden">
-      <div className="px-5 py-4 border-b border-[#1e3a5f] bg-[#0a1628]">
+    <section className="bg-[var(--bg-card)] rounded-2xl border border-[var(--border-subtle)] overflow-hidden">
+      <div className="px-5 py-4 border-b border-[var(--border-subtle)] bg-[var(--bg-card)]">
         <h2 className="text-white font-bold text-sm">{title}</h2>
         <p className="text-xs text-gray-400 mt-1">
           Official Florida Supreme Court decisions from CourtListener — case title and status shown as provided; expand for verbatim sourced metadata and opinion link.

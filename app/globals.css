@@ -11,6 +11,8 @@
   --gold-dim:       #b8922f;
   --foreground:     #e8eaf0;
   --muted:          #8899aa;
+  --positive:       #54ac8b;
+  --negative:       #d17b6f;
 }
 
 body {

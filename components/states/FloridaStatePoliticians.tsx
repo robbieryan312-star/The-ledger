@@ -22,25 +22,25 @@ function OfficialListRow({ p }: { p: DashboardPolitician }) {
   return (
     <Link
       href={`/politicians/${p.id}`}
-      className="flex items-center gap-3 py-2.5 border-t border-white/[0.055] first:border-t-0 hover:bg-white/[0.02] transition-colors group"
+      className="flex items-center gap-3 py-2.5 border-t border-[var(--border-subtle)] first:border-t-0 hover:bg-[var(--foreground)]/[0.02] transition-colors group"
     >
-      <div className="w-[38px] h-[38px] rounded-lg bg-[#1e3a5f] flex items-center justify-center overflow-hidden flex-shrink-0 border border-white/[0.08]">
+      <div className="w-[38px] h-[38px] rounded-lg bg-[var(--bg-elevated)] flex items-center justify-center overflow-hidden flex-shrink-0 border border-white/[0.08]">
         <PoliticianAvatar
           name={p.name}
           firstName={p.firstName}
           lastName={p.lastName}
           imageUrl={p.imageUrl}
-          textClassName="text-[#d8b45a] text-xs font-bold"
+          textClassName="text-[var(--gold)] text-xs font-bold"
         />
       </div>
       <div className="min-w-0 flex-1">
-        <div className="text-[#eef1f6] text-[13px] font-semibold truncate">{p.name}</div>
-        <div className="text-[11.5px] text-[#748396] truncate">{p.resolvedOffice.label}</div>
+        <div className="text-[var(--foreground)] text-[13px] font-semibold truncate">{p.name}</div>
+        <div className="text-[11.5px] text-[var(--muted)] truncate">{p.resolvedOffice.label}</div>
       </div>
       <span className={`font-mono text-[10px] font-bold px-1.5 py-0.5 rounded-md flex-shrink-0 ${partyColor}`}>
         {p.party[0]}
       </span>
-      <span className="text-[11px] text-[#54606f] group-hover:text-[#d8b45a] flex-shrink-0 ml-1">
+      <span className="text-[11px] text-[var(--muted)]/90 group-hover:text-[var(--gold)] flex-shrink-0 ml-1">
         profile →
       </span>
     </Link>
@@ -71,11 +71,11 @@ export default function FloridaStatePoliticians({
   const remaining = Math.max(0, baseRoster.length - PREVIEW_LIMIT);
 
   return (
-    <section id="politicians" className="scroll-mt-24 py-7 border-b border-white/[0.055]">
+    <section id="politicians" className="scroll-mt-24 py-7 border-b border-[var(--border-subtle)]">
       <div className="mb-4">
-        <span className="font-mono text-[10.5px] tracking-widest text-[#d8b45a]">§04</span>
-        <h2 className="text-base font-semibold text-[#eef1f6] mt-1">Officials</h2>
-        <p className="text-[12.5px] text-[#748396] mt-1 max-w-prose">
+        <span className="font-mono text-[10.5px] tracking-widest text-[var(--gold)]">§04</span>
+        <h2 className="text-base font-semibold text-[var(--foreground)] mt-1">Officials</h2>
+        <p className="text-[12.5px] text-[var(--muted)] mt-1 max-w-prose">
           Ordered by office — statewide and federal first. Each links to a full profile.
         </p>
       </div>
@@ -91,7 +91,7 @@ export default function FloridaStatePoliticians({
             <button
               type="button"
               onClick={() => setShowFullRoster(true)}
-              className="w-full mt-2 py-2.5 text-center text-[12px] text-[#748396] border-t border-white/[0.055] hover:text-[#d8b45a] transition-colors"
+              className="w-full mt-2 py-2.5 text-center text-[12px] text-[var(--muted)] border-t border-[var(--border-subtle)] hover:text-[var(--gold)] transition-colors"
             >
               +{remaining} more · filter by chamber, party, or name →
             </button>
@@ -115,18 +115,18 @@ export default function FloridaStatePoliticians({
         </>
       )}
 
-      <p className="text-[10px] text-[#54606f] mt-4 pt-3 border-t border-white/[0.055]">
+      <p className="text-[10px] text-[var(--muted)]/90 mt-4 pt-3 border-t border-[var(--border-subtle)]">
         Roster:{' '}
         <a
           href="https://github.com/unitedstates/congress-legislators"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#b4c0cf] border-b border-white/[0.10]"
+          className="text-[var(--foreground)]/85 border-b border-[var(--border-default)]"
         >
           unitedstates/congress-legislators
         </a>
         {' · '}portraits from official{' '}
-        <a href="https://www.flsenate.gov" target="_blank" rel="noopener noreferrer" className="text-[#b4c0cf] border-b border-white/[0.10]">
+        <a href="https://www.flsenate.gov" target="_blank" rel="noopener noreferrer" className="text-[var(--foreground)]/85 border-b border-[var(--border-default)]">
           .gov
         </a>{' '}
         sources

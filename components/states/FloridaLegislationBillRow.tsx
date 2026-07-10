@@ -17,11 +17,11 @@ export default function FloridaLegislationBillRow({ row }: { row: SnapshotRecord
   const hasSummary = Boolean(row.summary?.trim());
 
   return (
-    <div className="rounded-lg border border-[#1e3a5f]/80 overflow-hidden bg-[#0a1628]/60">
+    <div className="rounded-lg border border-[var(--border-subtle)] overflow-hidden bg-[var(--bg-card)]/60">
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="w-full flex items-start gap-2 p-3 hover:bg-[#1e3a5f]/30 transition-colors text-left"
+        className="w-full flex items-start gap-2 p-3 hover:bg-[var(--bg-elevated)]/30 transition-colors text-left"
       >
         <FileText className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />
         <div className="flex-1 min-w-0 pr-6 relative">
@@ -38,7 +38,7 @@ export default function FloridaLegislationBillRow({ row }: { row: SnapshotRecord
           : <ChevronRight className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />}
       </button>
       {open && (
-        <div className="px-3 pb-3 border-t border-[#1e3a5f]/60 ml-6">
+        <div className="px-3 pb-3 border-t border-[var(--border-subtle)] ml-6">
           {row.officialTitle && (
             <p className="text-xs text-gray-300 mt-2">
               <span className="text-gray-500">Official title:</span> {row.officialTitle}
@@ -55,7 +55,7 @@ export default function FloridaLegislationBillRow({ row }: { row: SnapshotRecord
               href={row.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white text-xs mt-2"
+              className="inline-flex items-center gap-1 text-[var(--gold)] hover:text-white text-xs mt-2"
             >
               LegiScan record <ExternalLink className="h-3 w-3" />
             </Link>
@@ -87,8 +87,8 @@ export function FloridaLegislationSection({
     );
   }
   return (
-    <section id="legislation" className="bg-[#0d1f35] rounded-2xl border border-[#1e3a5f] overflow-hidden scroll-mt-24">
-      <div className="px-5 py-4 border-b border-[#1e3a5f] bg-[#0a1628]">
+    <section id="legislation" className="bg-[var(--bg-card)] rounded-2xl border border-[var(--border-subtle)] overflow-hidden scroll-mt-24">
+      <div className="px-5 py-4 border-b border-[var(--border-subtle)] bg-[var(--bg-card)]">
         <h2 className="text-white font-bold text-sm">Florida Legislation</h2>
         <p className="text-xs text-gray-400 mt-1">
           Bill summaries from LegiScan official descriptions — expand for full title, status, and source link.

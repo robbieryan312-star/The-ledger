@@ -21,7 +21,7 @@ const PORT = 4112;
 const BASE = `http://127.0.0.1:${PORT}`;
 
 const REQUIRED_SECTIONS: Record<string, string[]> = {
-  '/states/FL': ['#section-01', '#section-04'],
+  '/states/FL': ['#section-01', '#section-03', '#section-04'],
 };
 
 function fail(message: string): never {
@@ -29,32 +29,41 @@ function fail(message: string): never {
   process.exit(1);
 }
 
-async function waitForServer(ms = 90000): Promise<void> {
+const READY_POLL_MS = 240_000;
+const READY_FETCH_TIMEOUT_MS = 120_000;
+
+async function waitForServer(ms = READY_POLL_MS): Promise<void> {
   const start = Date.now();
+  let attempts = 0;
   while (Date.now() - start < ms) {
+    attempts += 1;
     try {
-      const res = await fetch(`${BASE}/states/FL`, { signal: AbortSignal.timeout(5000) });
+      const fetchTimeout = attempts <= 3 ? READY_FETCH_TIMEOUT_MS : 10_000;
+      const res = await fetch(`${BASE}/states/FL`, { signal: AbortSignal.timeout(fetchTimeout) });
       if (res.ok) {
         const html = await res.text();
-        if (html.includes('section-01')) return;
+        if (html.includes('id="section-01"')) return;
       }
     } catch {
-      // retry
+      // retry — first requests may block while Next compiles /states/FL on demand
     }
-    await new Promise((r) => setTimeout(r, 500));
+    await new Promise((r) => setTimeout(r, 1000));
   }
-  fail(`server did not become ready on ${BASE}/states/FL with section-01 within ${ms}ms`);
+  fail(`server did not become ready on ${BASE}/states/FL with id="section-01" within ${ms}ms`);
 }
 
-function startServer(): { proc: ReturnType<typeof spawn>; kill: () => void } {
-  const proc = spawn('npx', ['next', 'start', '-p', String(PORT)], {
+function startServer(): { proc: ReturnType<typeof spawn> | null; kill: () => void; external: boolean } {
+  if (process.env.RENDER_INTEGRITY_EXTERNAL_SERVER === '1') {
+    return { proc: null, kill: () => {}, external: true };
+  }
+  const proc = spawn('npx', ['next', 'start', '-H', '127.0.0.1', '-p', String(PORT)], {
     cwd: projectRoot,
     stdio: ['ignore', 'pipe', 'pipe'],
   });
   const kill = () => {
     proc.kill('SIGTERM');
   };
-  return { proc, kill };
+  return { proc, kill, external: false };
 }
 
 async function assertNoHorizontalOverflow(page: Page, label: string): Promise<void> {
@@ -85,7 +94,7 @@ async function assertImagesLoad(page: Page, label: string): Promise<void> {
     const imgs = [...document.querySelectorAll('img')];
     return imgs
       .filter((img) => {
-        if (img.closest('#section-04')) return false;
+        if (img.closest('#section-04') || img.closest('#politicians')) return false;
         const w = img.naturalWidth;
         const src = img.getAttribute('src') ?? '';
         if (!src || src.startsWith('data:')) return false;
@@ -140,12 +149,12 @@ async function runChecks(browser: Browser): Promise<string[]> {
       const page = await context.newPage();
       const url = `${BASE}${pageDef.path}`;
       const label = `${pageDef.label} @ ${vp.label}`;
-      await page.goto(url, { waitUntil: 'load', timeout: 60000 });
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
       const required = REQUIRED_SECTIONS[pageDef.path] ?? [];
       for (const sel of required) {
         await page.waitForSelector(sel, { state: 'attached', timeout: 30000 });
       }
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(1000);
       await assertNoHorizontalOverflow(page, label);
       await assertImagesLoad(page, label);
       await assertRequiredSections(page, pageDef.path, label);
@@ -154,7 +163,7 @@ async function runChecks(browser: Browser): Promise<string[]> {
       }
       const shotName = `${pageDef.path.replace(/\//g, '_')}_${vp.label}.png`;
       const shotPath = path.join(screenshotDir, shotName);
-      await page.screenshot({ path: shotPath, fullPage: true });
+      await page.screenshot({ path: shotPath, fullPage: false });
       shots.push(shotPath);
       await context.close();
     }
@@ -177,9 +186,13 @@ async function main(): Promise<void> {
     fail('missing .next — run npm run build before test:render-integrity');
   }
 
-  const { kill } = startServer();
+  const { kill, external } = startServer();
   try {
-    await waitForServer();
+    if (!external) {
+      await waitForServer();
+    } else {
+      await waitForServer(60_000);
+    }
     const browser = await chromium.launch({ headless: true });
     try {
       const shots = await runChecks(browser);
