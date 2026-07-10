@@ -18,7 +18,14 @@ core-rules, core-rules wins. Newest handoff on top.
 Fix `test:render-integrity` on `main`: guard used `#section-01`/`#section-04` but `/states/FL` renders `#economy`, `#politicians`, `#courts`.
 
 ### Verdict
-**PASS** — `npm run prebuild`, `npm run build`, `npm run test:render-integrity` green; pushed `21e4bde`.
+**PASS** — semantic ids aligned; guards.yml green (`29071982833`).
+
+### Commits
+- `21e4bde` — semantic `#economy` / `#courts` guard anchors
+- `b2586b0` — Playwright install in guards.yml
+- `f85b7ac` — render-integrity out of postbuild
+- `f92c973` — CI server warmup before Playwright
+- `d022ab7` — env.example + final green CI
 
 ### Commands run
 - `npm run prebuild` → exit 0
