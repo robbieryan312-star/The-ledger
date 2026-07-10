@@ -8,9 +8,9 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-10):**
-- Branch: `main` · HEAD: `a0523c2`
-- Tree: clean · prebuild + build + render-integrity: **green** (local + CI=1)
-- guards.yml: semantic ids + Playwright install + CI timeouts — awaiting run
+- Branch: `main` · HEAD pending
+- Tree: dirty · prebuild + build + render-integrity: **green** locally
+- guards.yml: render-integrity moved out of postbuild; dedicated CI step + Playwright install
 
 ## Latest session — render-integrity guard align to semantic ids (COMPLETE)
 

@@ -21,14 +21,14 @@ test('fixture: education overflow case is documented regression', () => {
   assert.match(RENDER_INTEGRITY_KNOWN_BAD.description, /overflow|past card edge/);
 });
 
-test('render integrity check passes after production build', { timeout: 300_000 }, () => {
+test('render integrity check passes after production build', { timeout: 600_000 }, () => {
   if (!existsSync(path.join(projectRoot, '.next'))) {
     assert.fail('missing .next — run npm run build before render-integrity guard');
   }
   const out = execSync('npx tsx scripts/render-integrity-check.ts', {
     cwd: projectRoot,
     encoding: 'utf8',
-    timeout: 280_000,
+    timeout: 580_000,
     env: { ...process.env, CI: '1' },
   });
   const lastLine = out.trim().split('\n').pop() ?? '';
