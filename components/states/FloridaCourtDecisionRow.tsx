@@ -7,15 +7,15 @@ import type { SnapshotRecordRow } from '@/lib/types/snapshotTypes';
 import SourceProvenance from '@/components/ui/SourceProvenance';
 import TierDot from '@/components/ui/TierDot';
 
-/** Headline: sourced summary when present; otherwise honest title+status fallback already in row.title. */
-function displayHeadline(row: SnapshotRecordRow): string {
-  return row.summary?.trim() || row.title;
+function displayCaseName(row: SnapshotRecordRow): string {
+  return row.officialTitle?.trim() || row.title;
 }
 
 export default function FloridaCourtDecisionRow({ row }: { row: SnapshotRecordRow }) {
   const [open, setOpen] = useState(false);
-  const headline = displayHeadline(row);
-  const hasSourcedSummary = Boolean(row.summary?.trim());
+  const caseName = displayCaseName(row);
+  const sourceText = row.summary?.trim();
+  const hasSourceText = Boolean(sourceText);
 
   return (
     <div className="rounded-lg border border-[#1e3a5f]/80 overflow-hidden bg-[#0a1628]/60">
@@ -28,9 +28,14 @@ export default function FloridaCourtDecisionRow({ row }: { row: SnapshotRecordRo
           <div className="absolute top-0 right-0">
             <TierDot tier={row.source.tier} />
           </div>
-          <p className="text-sm text-white font-medium leading-snug line-clamp-3">{headline}</p>
-          {!hasSourcedSummary && (
-            <p className="text-[10px] text-gray-600 mt-1 italic">No sourced summary on file — showing official case title and status.</p>
+          <p className="text-sm text-white font-medium leading-snug">{caseName}</p>
+          {row.detail && (
+            <p className="text-xs text-gray-400 mt-1 line-clamp-2">{row.detail}</p>
+          )}
+          {!hasSourceText && (
+            <p className="text-[10px] text-gray-600 mt-1 italic">
+              No verbatim CourtListener metadata on file for this decision.
+            </p>
           )}
         </div>
         {open
@@ -39,21 +44,18 @@ export default function FloridaCourtDecisionRow({ row }: { row: SnapshotRecordRo
       </button>
       {open && (
         <div className="px-3 pb-3 border-t border-[#1e3a5f]/60">
-          {row.officialTitle && (
-            <p className="text-xs text-gray-300 mt-2">
-              <span className="text-gray-500">Case:</span> {row.officialTitle}
-            </p>
+          {hasSourceText && (
+            <div className="mt-2">
+              <p className="text-[10px] text-gray-500 uppercase tracking-wide">
+                CourtListener {row.summarySource ?? 'metadata'}
+              </p>
+              <p className="text-xs text-gray-300 mt-1 whitespace-pre-wrap">{sourceText}</p>
+            </div>
           )}
           {row.date && (
-            <p className="text-xs text-gray-400 mt-1">
+            <p className="text-xs text-gray-400 mt-2">
               <span className="text-gray-500">Filed:</span> {row.date}
             </p>
-          )}
-          {row.detail && (
-            <p className="text-xs text-gray-400 mt-1">{row.detail}</p>
-          )}
-          {row.summarySource && (
-            <p className="text-[10px] text-gray-600 mt-1">Summary source: CourtListener {row.summarySource}</p>
           )}
           <div className="mt-2">
             <SourceProvenance source={row.source} recordDate={row.date} asOf={row.asOf} />
@@ -89,7 +91,7 @@ export function FloridaCourtDecisionsSection({
       <div className="px-5 py-4 border-b border-[#1e3a5f] bg-[#0a1628]">
         <h2 className="text-white font-bold text-sm">{title}</h2>
         <p className="text-xs text-gray-400 mt-1">
-          Plain-language summaries from CourtListener syllabus or opinion text — expand for official case title, docket, and link.
+          Official Florida Supreme Court decisions from CourtListener — case title and status shown as provided; expand for verbatim sourced metadata and opinion link.
         </p>
         {metaNote && <p className="text-[10px] text-gray-500 mt-1">{metaNote}</p>}
       </div>

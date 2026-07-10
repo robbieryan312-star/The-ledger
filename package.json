@@ -49,6 +49,7 @@
     "sync:topic-positions": "tsx scripts/sync-topic-positions.ts",
     "sync:profile-manifest": "tsx scripts/sync-profile-manifest.ts",
     "verify:office": "tsx scripts/verify-office-resolution.ts",
+    "verify:agent-keys": "tsx scripts/verify-agent-keys.ts",
     "verify:lobbying-votes": "tsx scripts/verify-lobbying-votes.ts",
     "ingest:fec-fl": "tsx scripts/ingest/florida/ingest-fec-florida.ts",
     "ingest:congress-fl": "tsx scripts/ingest/florida/ingest-congress-florida.ts",

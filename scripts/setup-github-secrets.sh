@@ -40,8 +40,8 @@ push_group "Official government APIs (votes · finance · roster)" \
 push_group "Nonpartisan research (positions · scores · journalism)" \
   VOTESMART_API_KEY PROPUBLICA_CONGRESS_KEY
 
-push_group "State-level data (legislation · state legislators)" \
-  LEGISCAN_API_KEY OPENSTATES_API_KEY
+push_group "State-level data (legislation · state legislators · courts)" \
+  LEGISCAN_API_KEY OPENSTATES_API_KEY COURTLISTENER_API_KEY
 
 push_group "News (restricted — upgrade plan to unlock full coverage)" \
   NEWSAPI_KEY

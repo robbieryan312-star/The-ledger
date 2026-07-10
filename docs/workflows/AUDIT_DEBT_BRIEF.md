@@ -1,54 +1,69 @@
 # Cursor Work Log — Audit & Debt Remediation
 
 **Living file.** Cursor updates + **commits** this after **every** work/verify session (§1.1 J).
-Claude Code reads **this file**, not chat. Only the **last 3 session entries** are kept below.
 
 **Current state (2026-07-09):**
-- Branch: `cursor/florida-state-page-4114`
-- HEAD: `1ff4bf9` — sourced summaries + presentation; **IN REVIEW** (no merge)
-- Tree: clean · prebuild + build: **green**
+- Branch: `cursor/florida-summaries-sample-70a6`
+- HEAD: `f0e05d5`
+- PR: https://github.com/robbieryan312-star/The-ledger/pull/19
+- Tree: dirty · prebuild + build: **green** · keys: **8/11 SET** (no values logged)
 
 ---
 
-## Latest session — Florida sourced summaries correction (IN REVIEW)
+## Latest session — LegiScan 10-sample STOP for Claude (COMPLETE)
 
 ### Objective
 
-Court/legislation plain-language sourced summaries; isolate news-florida side-effect.
+REVISED SCOPE: LegiScan 10-bill sample only; court summary logic frozen. Add agent key
+access path; confirm `LEGISCAN_API_KEY`; STOP before scaling.
 
 ### Verdict / outcome
 
-**IN REVIEW** — PR #18 updated; STOP for Claude re-review before merge.
+**PASS — STOP for Claude review.** LegiScan 10/10 official `description` summaries.
+Court ingest untouched. Agent key verify script + Cursor Secrets docs added.
+GitHub `gh secret set` blocked (integration token 403) — owner adds Cursor Runtime Secrets.
+
+### Commands run (this session)
+
+- `npm run verify:agent-keys` → 8/11 SET (LEGISCAN 32 chars)
+- `npm run ingest:legiscan-fl -- --limit 10 --list-limit 10` → 10/10 description summaries
+- `npm run build:data-slices` → exit 0
+- `npm run prebuild` + `npm run build` → exit 0
+- `./scripts/setup-github-secrets.sh` → 403 (cannot push secrets from cloud token)
+
+### Files touched
+
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/verify-agent-keys.ts` | created | SET/EMPTY audit, no values printed |
+| `.cursor/environment.json` | created | `npm install` bootstrap |
+| `KEYS.md` | modified | Cursor Cloud Runtime Secrets list |
+| `package.json` | modified | `verify:agent-keys` script |
 
 ### Acceptance evidence
 
-| Criterion | Result |
-|-----------|--------|
-| Court sourced summaries | 49/60 opinions with extractive snippet/syllabus; headline in slice |
-| Honest fallback | 11 opinions: title + status only |
-| LegiScan description | ingest extended; existing data until key refresh |
-| Bill presentation | H0011: title fallback when no description |
-| news-florida.json | restored from main (48 NewsAPI + empty GDELT) |
-| prebuild + build | exit 0 |
+- LegiScan sample: **10/10** with `summary` from official `description`; **0** fallback
+- Artifact: `data/florida/legiscan/florida-legislation.json` @ commit `b47061d`
+- No key values in commits (verified `git diff` / logs)
 
-### Commits (this correction)
+### Open / next
 
-- `85f7cf0` — CourtListener summary ingest + extract guard
-- `99a9556` — LegiScan getBill description ingest
-- `1ff4bf9` — summary presentation + news slice restore
+- **STOP** — Claude review 10-item LegiScan sample before 10→30→100 scale
+- Owner: add Runtime Secrets in Cursor Cloud dashboard (names in `KEYS.md`)
+- Court summary: **out of scope** — frozen per brief
 
 ---
 
 ## Session log (last 3 only)
 
-### 3 — Florida sourced summaries (2026-07-09)
+### 3 — LegiScan 10/10 STOP (2026-07-09)
 
-- CourtListener v4: syllabus → posture → procedural → snippet priority.
+Agent keys docs + verify script; sample ready for Claude.
 
-### 2 — Florida state page Groups A–E (2026-07-09)
+### 2 — Keys loaded; LegiScan 10/10 (2026-07-09)
 
-- `/states/FL` SSR template on branch.
+Owner pasted keys to `.env.local`.
 
-### 1 — Credibility audit gate (2026-07-09)
+### 1 — Verbatim court metadata only (2026-07-09)
 
-- PR #17 merged on main.
+Court work later frozen by revised brief.
