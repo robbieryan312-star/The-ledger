@@ -9,7 +9,7 @@ core-rules, core-rules wins. Newest handoff on top.
 
 **Current state (2026-07-10):**
 - Branch: `cursor/florida-state-page-70a6` (FL review) · `main` at `4cbdd78`
-- HEAD (FL branch): `9826aff`
+- HEAD (FL branch): `ee01636` (feature `9826aff`)
 - PR: **#23** FL draft (STOP) · #20/#21 merged to `main`
 - Tree: dirty → commit this turn · prebuild + build + render-integrity: **green**
 - **STOP** — Florida page on review branch for combined Claude render review; **do not merge**
@@ -35,7 +35,7 @@ Complete remaining Step 2 gaps from locked handoff: map sidebar slim, officials 
 
 ### Commits (this session)
 
-- `1431d0f` — feat(fl): step-2 polish — map sidebar, officials preview, source lines, render wait fix
+- `9826aff` — feat(fl): step-2 polish — map sidebar, officials preview, source lines, render wait fix
 
 ### Commands run (this session)
 
