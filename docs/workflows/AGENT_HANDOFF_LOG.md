@@ -14,6 +14,21 @@ core-rules, core-rules wins. Newest handoff on top.
 let's continue" — treat the design below as the reference spec. **Do not merge to `main`;** build on a
 review branch and STOP for one combined Claude review (per the sequencing directive).
 
+### Build order (Claude decision 2026-07-10 — binding, no owner ping-pong)
+Cursor executes in this order; each step gated on the previous:
+0. **Baseline merge FIRST** — merge the Claude-verified **#20 (platform) → then #21 (docs)** into
+   `main`, reconciling the divergent guard lists (governor-identity vs docs-consistency — keep BOTH
+   guard sets, union them). Confirm `npm run prebuild` + `npm run build` green on `main` and the live
+   demo reflects the baseline. This is the visible baseline everything else iterates against.
+1. **Verification guards** (`test:identity-integrity`, `test:render-integrity`) — build + wire into
+   prebuild/CI before generating any page/profile (§3 below). The net exists before we scale.
+2. **Florida flagship page** — build to the locked spec (§1) on a review branch, small-sample data
+   (§2), honest gaps elsewhere. Hold for ONE combined Claude review (rendered-screenshot review, not
+   source). **Nothing merges until that review clears.**
+3. **Propagation comes ONLY AFTER FL is reviewed + locked** — menus/tabs, the politician-profile
+   template on already-migrated members, `/politicians` filtering. Anti-rut law: lock the one
+   gold-standard flagship before scaling to other surfaces. Do NOT start this in the same pass.
+
 ### 0. Locked visual reference
 - **Design mockup (owner-approved):** Option 3 "Rail + Canvas", refined — a static HTML wireframe with
   placeholder ("sample") numbers. It defines **structure, hierarchy, sections, and content**, not the
