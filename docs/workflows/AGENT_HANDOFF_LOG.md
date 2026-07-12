@@ -7,45 +7,62 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-10):**
-- Branch: `cursor/fl-state-locked-spec-70a6` · HEAD `f7ccb4f`
-- Tree: clean · prebuild (18 suites) + build + render-integrity: **green**
+**Current state (2026-07-12):**
+- Branch: `cursor/fl-state-locked-spec-70a6` · HEAD `8f17226`
+- PR: **#25** draft (STOP) · **do not merge** until Claude re-review
+- Tree: clean · prebuild (18 suites) + build + render-integrity: **green** (re-verified this session)
 
-## Latest session — FL data credibility fix (STOP for Claude re-review)
+## Latest session — FL credibility re-verify (PASS — STOP for Claude)
 
 ### Objective
 
-Replace placeholder official-tier figures with live fetches or honest gaps; add `test:no-unverified-official-data` guard.
+Re-verify credibility blocker fix on `cursor/fl-state-locked-spec-70a6` per brief; regenerate render contact-sheet.
 
 ### Verdict / outcome
 
-**STOP for Claude re-review** — credibility blocker fixed; BEA cost-of-living remains honest gap until `BEA_API_KEY` set.
+**PASS** — committed data meets credibility rules; **STOP for Claude re-review** (not merged).
 
-### fetchedLive status
+### fetchedLive status (committed JSON)
 
 | Field | Status |
 |-------|--------|
-| Census counties (income, home, population) | `fetchedLive:true` — ACS 2023 |
-| Census attainment (B15003) | `fetchedLive:true` |
-| County unemployment (BLS LAUS LAUCN) | `fetchedLive:true` |
-| BEA cost of living | **honest gap** — `state:null`, no `BEA_API_KEY` |
-| Federal tax | `fetchedLive:true` — IRS Rev. Proc. 2023-34 |
+| Census counties (B19013, B25077, B01003) | `fetchedLive:true` — ACS 2023, n=10 |
+| Census attainment (B15003) | `fetchedLive:true` — FL 33.2% bachelor's+ |
+| County unemployment (BLS LAUCN) | `fetchedLive:true` — per-county rates; null → honest gap in UI |
+| BEA cost of living | **honest gap** — `state:null`, `fetchedLive:false` (no `BEA_API_KEY`) |
+| Federal tax | `fetchedLive:true` — IRS Rev. Proc. 2023-34 computed |
 | FL state tax $0 | `fetchedLive:true` |
-| NY/CA comparison | `fetchedLive:true` — Tax Foundation 2024 brackets (nonpartisan) |
-| Total burden | `fetchedLive:true` — Tax Foundation cited (nonpartisan) |
+| NY/CA comparison | `fetchedLive:true` — Tax Foundation 2024 brackets (`nonpartisan`) |
+| Total burden | `fetchedLive:true` — Tax Foundation cited (`nonpartisan`) |
 
-### Commands run
+### Commits (this task)
 
-- `npm run ingest:fl-counties` / `ingest:fl-tax` / `ingest:bea-rpp-fl` → exit 0
-- `npm run prebuild` → exit 0 · `npm run build` → exit 0
+- `f7ccb4f` — fix(fl): data credibility — live Census/BLS/tax, honest BEA gap, guard
+- `8f17226` — docs: handoff log
+
+### Commands run (this session)
+
+- `npm run test:no-unverified-official-data` → 4/4 pass
+- `npm run prebuild` → exit 0
+- `npm run build` → exit 0
+- `npx playwright install chromium` → exit 0 (env bootstrap)
 - `RENDER_INTEGRITY_EXTERNAL_SERVER=1 npm run test:render-integrity` → 2/2 pass
+
+### Acceptance evidence
+
+- `data/florida/census/florida-counties-sample.json` — `meta.fetchedLive: true`
+- `data/florida/bea/florida-rpp-sample.json` — `state: null`, `fetchedLive: false`
+- `data/florida/taxes/florida-tax-burden-sample.json` — provenance per-section `fetchedLive: true`
+- Contact-sheet `generatedAt`: 2026-07-12T03:36:27Z
 
 ### Open / next
 
-- Set `BEA_API_KEY` + `ingest:bea-rpp-fl` for live cost-of-living
-- Claude re-review with render contact-sheet
+- Owner: set `BEA_API_KEY` → `npm run ingest:bea-rpp-fl` → commit for live cost-of-living
+- Claude re-review PR #25 with contact-sheet
 
 ---
+
+## Prior session — FL data credibility fix (2026-07-10)
 
 **From:** Claude Code · **To:** Cursor · **Status:** design locked (owner-approved), ready to build.
 
