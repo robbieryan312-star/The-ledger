@@ -27,7 +27,7 @@ Inspect recent commits for high-severity correctness bugs, avoid duplicates alre
 **PASS** — no new critical correctness bug found outside existing open PRs #24 and #26. No fix PR opened.
 
 ### Commits
-- Pending: this handoff-log-only commit for the audit record.
+- `0215dcf` — docs: record critical bug automation scan.
 
 ### Commands run (this session)
 - MCP `automation_memory` read `MEMORIES.md` → open tracked entries #24 and #26 found.
@@ -42,6 +42,7 @@ elif [ -f /tmp/cursor/async-install/install-user.log ]; then pgrep -af 'install-
 - `git status --short --branch` → exit 0; only `docs/workflows/AGENT_HANDOFF_LOG.md` modified before commit.
 - `npm run build` → exit 0; re-run after final log edit passed.
 - `git diff -- docs/workflows/AGENT_HANDOFF_LOG.md && git status --short --branch` → exit 0; reviewed handoff-only diff before commit.
+- `git status --short --branch && git log -1 --oneline --decorate && git show --stat --oneline --decorate HEAD` → exit 0; verified pushed commit `0215dcf`.
 
 ### Files touched
 | Path | Action | What changed |
