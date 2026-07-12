@@ -7,12 +7,59 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-10):**
-- Branch: `main` · HEAD pending
-- Tree: dirty · prebuild + build + render-integrity: **green** locally
-- guards.yml: render-integrity moved out of postbuild; dedicated CI step + Playwright install
+**Current state (2026-07-12):**
+- Branch: `cursor/critical-bug-management-30fa` · scanned HEAD `d8ed82b` (`origin/main`) · PR URL: none opened for this audit
+- Tree before handoff-log update: clean · build status: `npm run build` PASS (prebuild + Next build + postbuild client chunks)
+- Open tracked bug-fix PRs checked: #24 and #26 remain open; no duplicate PR opened
 
-## Latest session — render-integrity guard align to semantic ids (COMPLETE)
+## Improvement backlog
+
+| Date | Status | Item | Evidence | Suggested owner |
+|------|--------|------|----------|-----------------|
+| 2026-07-12 | open | Reconcile render-integrity documentation now that `package.json` postbuild only runs `test:client-chunks` and render-integrity runs as a dedicated CI step. | `package.json` `postbuild`; `docs/AGENT_INDEX.md` lines 28/51; `PROGRESS.md` line 151; `scripts/__tests__/renderIntegrityGuard.test.ts` header. | Cursor |
+
+## Latest session — critical bug automation scan (PASS)
+
+### Objective
+Inspect recent commits for high-severity correctness bugs, avoid duplicates already tracked in persistent memory, and only open a PR for a concrete critical fix.
+
+### Verdict / outcome
+**PASS** — no new critical correctness bug found outside existing open PRs #24 and #26. No fix PR opened.
+
+### Commits
+- Pending: this handoff-log-only commit for the audit record.
+
+### Commands run (this session)
+- MCP `automation_memory` read `MEMORIES.md` → open tracked entries #24 and #26 found.
+- `git rev-parse --show-toplevel && git status --short --branch && git remote -v && git log --oneline --decorate -n 12 && gh pr view 24 --json number,state,mergedAt,closedAt,url,title && gh pr view 26 --json number,state,mergedAt,closedAt,url,title` → exit 0; PRs #24/#26 both open.
+- `git fetch origin main && git log --oneline --decorate origin/main -n 20 && git diff --stat origin/main~12..origin/main && git diff --name-only origin/main~12..origin/main` → exit 0; recent behavioral changes limited to render-integrity, guards workflow, package scripts, and docs.
+- `if [ -f /tmp/cursor/async-install/install-user.status ]; then printf 'status='; python - <<'PY'
+from pathlib import Path
+print(Path('/tmp/cursor/async-install/install-user.status').read_text().strip())
+PY
+elif [ -f /tmp/cursor/async-install/install-user.log ]; then pgrep -af 'install-user|npm install|npm ci' || true; else printf 'no-async-install\n'; fi` → exit 0; no async install in progress.
+- `npm run build` → exit 0; prebuild guards, Next production build, and postbuild client chunk guard passed.
+- `git status --short --branch` → exit 0; only `docs/workflows/AGENT_HANDOFF_LOG.md` modified before commit.
+- `npm run build` → exit 0; re-run after final log edit passed.
+- `git diff -- docs/workflows/AGENT_HANDOFF_LOG.md && git status --short --branch` → exit 0; reviewed handoff-only diff before commit.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added required audit session record and backlog row for non-critical render-integrity doc drift. |
+
+### Acceptance evidence
+- Persistent memory cleanup: no entries deleted; rejected entries are newer than 30 days, and #24/#26 are still open.
+- Duplicate exclusion: #24 covers render guard anchors and aggregate `bioguideId` joins; #26 covers `sync-topic-positions` vote-input failure clearing Said-Did links.
+- Recent-commit scan: `scripts/render-integrity-check.ts`, `scripts/__tests__/renderIntegrityGuard.test.ts`, `.github/workflows/guards.yml`, and `package.json` traced; no new concrete trigger found for data loss, crash, security hole, or significant shipped breakage outside #24/#26.
+- Build log: `/home/ubuntu/.cursor/projects/workspace/agent-tools/671d6b91-0fe4-46b3-9c4b-45caf72cae58.txt` lines 941-1003 show Next 16.2.9 compiled successfully, generated 14/14 static pages, and `test:client-chunks` passed after the final log edit.
+
+### Open / next
+- Owner visibility: render-integrity documentation still says postbuild in some docs even though the guard now runs in CI after build; flagged as non-critical doc/guard drift, not a critical bug PR.
+
+---
+
+## Previous session — render-integrity guard align to semantic ids (COMPLETE)
 
 ### Objective
 Fix `test:render-integrity` on `main`: guard used `#section-01`/`#section-04` but `/states/FL` renders `#economy`, `#politicians`, `#courts`.
