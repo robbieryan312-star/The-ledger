@@ -16,6 +16,11 @@ export const PREBUILD_COUNT_KNOWN_GOOD = {
   expectedPrebuildCommands: 19,
 };
 
+/** Default build must run render-integrity after Next build (GOOD). */
+export const POSTBUILD_RENDER_INTEGRITY_KNOWN_GOOD = {
+  requiredScript: 'test:render-integrity',
+};
+
 /** Migrated profile count from manifest (GOOD). */
 export const MIGRATED_COUNT_KNOWN_GOOD = {
   manifestPath: 'lib/data/generated/profiles/_manifest.json',

@@ -9,6 +9,7 @@ import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import {
   MIGRATED_COUNT_KNOWN_GOOD,
+  POSTBUILD_RENDER_INTEGRITY_KNOWN_GOOD,
   PREBUILD_COUNT_KNOWN_GOOD,
   RETIRED_SCRIPT_KNOWN_BAD,
   SECTION_CITE_KNOWN_GOOD,
@@ -106,6 +107,18 @@ test('(b) AGENT_INDEX prebuild command count matches package.json', () => {
     `AGENT_INDEX says ${match[1]} prebuild commands; package.json has ${actual}`,
   );
   assert.equal(actual, PREBUILD_COUNT_KNOWN_GOOD.expectedPrebuildCommands);
+});
+
+test('(b2) default postbuild includes render-integrity guard', () => {
+  const pkg = JSON.parse(readFileSync(path.join(projectRoot, 'package.json'), 'utf8')) as {
+    scripts?: { postbuild?: string };
+  };
+  const postbuild = pkg.scripts?.postbuild ?? '';
+  assert.match(
+    postbuild,
+    new RegExp(`npm run ${POSTBUILD_RENDER_INTEGRITY_KNOWN_GOOD.requiredScript}`),
+    'npm run build must enforce render-integrity by default',
+  );
 });
 
 test('(c) migrated count in PROGRESS points to manifest count 7', () => {

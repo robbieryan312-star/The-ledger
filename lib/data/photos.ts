@@ -1,9 +1,9 @@
 /**
  * photos.ts — official, key-free portrait URLs.
  *
- * Congressional portraits use GovTrack's public static image host keyed by
- * `govtrackId` (which is carried in our synced current-legislators dataset).
- * The underlying photos are public-domain member portraits from Congress.
+ * Congressional portraits use the official Bioguide image endpoint keyed by
+ * `bioguideId`. The underlying photos are public-domain member portraits from
+ * Congress.
  *
  * Governors, demo entries, and anyone without a resolvable portrait fall back
  * to an initials avatar in the UI (see components/ui/PoliticianAvatar.tsx).
@@ -23,15 +23,13 @@ const legislatorRows = (
   currentLegislators as { legislators: LegislatorRow[] }
 ).legislators;
 
-const bioguideToGovtrackId = new Map<string, number>(
-  legislatorRows
-    .filter((row) => typeof row.govtrackId === 'number')
-    .map((row) => [row.bioguideId, row.govtrackId as number]),
-);
-
 const bioguideToLegislator = new Map<string, LegislatorRow>(
   legislatorRows.map((row) => [row.bioguideId, row]),
 );
+
+const CONGRESSIONAL_PORTRAIT_URL_OVERRIDES: Record<string, string> = {
+  S001200: 'https://www.govtrack.us/static/legislator-photos/412695-200px.jpeg',
+};
 
 /** True when bioguideId resolves to a current legislator with the same last name. */
 export function bioguideMatchesCurrentLegislator(
@@ -53,13 +51,9 @@ export function congressPhotoUrl(
   bioguideId: string,
   size: CongressPhotoSize = '450x550',
 ): string {
-  const govtrackId = bioguideToGovtrackId.get(bioguideId);
-  const px = size === '225x275' ? '100px' : size === '450x550' ? '200px' : '450px';
-  if (govtrackId) {
-    return `https://www.govtrack.us/static/legislator-photos/${govtrackId}-${px}.jpeg`;
-  }
-
-  // Fallback for unexpected IDs not found in the synced legislators dataset.
+  const override = CONGRESSIONAL_PORTRAIT_URL_OVERRIDES[bioguideId];
+  if (override) return override;
+  void size;
   const firstLetter = bioguideId[0].toUpperCase();
   return `https://bioguide.congress.gov/bioguide/photo/${firstLetter}/${bioguideId}.jpg`;
 }
@@ -74,6 +68,7 @@ export { PHOTO_ATTRIBUTION } from '@/lib/photoAttribution';
 const EXECUTIVE_PORTRAIT_URLS: Record<string, string> = {
   'pres-us':
     'https://www.whitehouse.gov/wp-content/uploads/2025/02/President-Donald-J-Trump-Official-Presidential-Portrait.png',
+  'ron-desantis': 'https://www.flgov.com/eog/sites/default/files/img/ron-desantis-inaugeration.png',
   'cab-bondi': 'https://www.justice.gov/d9/2025-12/ag_pamela_bondi.jpg.jpg',
   'cab-bessent': 'https://home.treasury.gov/system/files/136/Secretary_Bessent.jpg',
   'cab-hegseth':

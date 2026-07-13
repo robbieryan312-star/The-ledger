@@ -27,4 +27,11 @@ export const RENDER_INTEGRITY_KNOWN_BAD = {
   viewport: { width: 390, height: 844 },
 };
 
+export const RENDER_INTEGRITY_POLITICIAN_IMAGE_KNOWN_BAD = {
+  defect: 'politician-portrait-fallback-hidden-by-section-skip',
+  description:
+    'A blanket #politicians image exemption let broken official portraits render as initials while the guard passed',
+  selector: '#politicians [data-ledger-avatar="fallback"]',
+};
+
 export const RENDER_INTEGRITY_SCREENSHOT_DIR = 'data/reports/render-integrity';

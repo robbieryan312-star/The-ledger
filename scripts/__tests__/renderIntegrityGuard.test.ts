@@ -4,13 +4,14 @@
  */
 import assert from 'node:assert/strict';
 import { execSync } from 'node:child_process';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 
 import {
   RENDER_INTEGRITY_KNOWN_BAD,
+  RENDER_INTEGRITY_POLITICIAN_IMAGE_KNOWN_BAD,
   RENDER_INTEGRITY_SCREENSHOT_DIR,
 } from '../../lib/data/__fixtures__/renderIntegrityGuard.fixture';
 
@@ -19,6 +20,20 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 test('fixture: education overflow case is documented regression', () => {
   assert.equal(RENDER_INTEGRITY_KNOWN_BAD.defect, 'education-table-column-overflow');
   assert.match(RENDER_INTEGRITY_KNOWN_BAD.description, /overflow|past card edge/);
+});
+
+test('fixture: politician portrait fallback blind spot is documented regression', () => {
+  assert.equal(
+    RENDER_INTEGRITY_POLITICIAN_IMAGE_KNOWN_BAD.defect,
+    'politician-portrait-fallback-hidden-by-section-skip',
+  );
+  assert.match(RENDER_INTEGRITY_POLITICIAN_IMAGE_KNOWN_BAD.selector, /#politicians/);
+});
+
+test('render integrity check must inspect politician portraits', () => {
+  const source = readFileSync(path.join(projectRoot, 'scripts/render-integrity-check.ts'), 'utf8');
+  assert.doesNotMatch(source, /closest\(['"]#politicians['"]\)/);
+  assert.match(source, /\[data-ledger-avatar="fallback"\]/);
 });
 
 test('render integrity check passes after production build', { timeout: 480_000 }, () => {

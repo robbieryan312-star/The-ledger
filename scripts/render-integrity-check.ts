@@ -63,8 +63,8 @@ function startServer(): { proc: ReturnType<typeof spawn> | null; kill: () => voi
   }
   const proc = spawn('npx', ['next', 'start', '-H', '127.0.0.1', '-p', String(PORT)], {
     cwd: projectRoot,
-    stdio: ['ignore', 'pipe', 'pipe'],
     detached: true,
+    stdio: ['ignore', 'pipe', 'pipe'],
   });
   const kill = () => {
     if (proc.pid == null) return;
@@ -112,11 +112,23 @@ async function assertNoHorizontalOverflow(page: Page, label: string): Promise<vo
 }
 
 async function assertImagesLoad(page: Page, label: string): Promise<void> {
+  await page.waitForFunction(
+    () =>
+      [...document.querySelectorAll('img')]
+        .filter((img) => {
+          const src = img.getAttribute('src') ?? '';
+          if (!src || src.startsWith('data:')) return false;
+          const rect = img.getBoundingClientRect();
+          return rect.width >= 2 && rect.height >= 2;
+        })
+        .every((img) => img.complete),
+    undefined,
+    { timeout: 15_000 },
+  );
   const broken = await page.evaluate(() => {
     const imgs = [...document.querySelectorAll('img')];
     return imgs
       .filter((img) => {
-        if (img.closest('#section-04') || img.closest('#politicians')) return false;
         const w = img.naturalWidth;
         const src = img.getAttribute('src') ?? '';
         if (!src || src.startsWith('data:')) return false;
@@ -129,6 +141,14 @@ async function assertImagesLoad(page: Page, label: string): Promise<void> {
   });
   if (broken.length > 0) {
     fail(`${label}: broken images (naturalWidth=0): ${broken.join(', ')}`);
+  }
+  const politicianFallbacks = await page.evaluate(() =>
+    [...document.querySelectorAll('#politicians [data-ledger-avatar="fallback"]')]
+      .map((el) => el.getAttribute('data-ledger-avatar-name') ?? el.textContent?.trim() ?? '(unknown)')
+      .slice(0, 8),
+  );
+  if (politicianFallbacks.length > 0) {
+    fail(`${label}: politician portraits fell back to initials: ${politicianFallbacks.join(', ')}`);
   }
 }
 
