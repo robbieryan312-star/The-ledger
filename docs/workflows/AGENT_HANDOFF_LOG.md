@@ -7,39 +7,56 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-10):**
-- Branch: `main` · HEAD pending
-- Tree: dirty · prebuild + build + render-integrity: **green** locally
-- guards.yml: render-integrity moved out of postbuild; dedicated CI step + Playwright install
+**Current state (2026-07-14):**
+- Branch: `cursor/critical-bug-management-04bb` · task commit `e0300f4`
+- PR: https://github.com/robbieryan312-star/The-ledger/pull/28
+- Tree at log edit: dirty only for this handoff-log update
+- Build status: `npm run test:data-layout` PASS; `npm run build` PASS
 
-## Latest session — render-integrity guard align to semantic ids (COMPLETE)
+## Improvement backlog
+
+| Date | Item | Status | Notes |
+|------|------|--------|-------|
+| 2026-07-14 | Dependency audit follow-up | open | `npm install` reported 7 vulnerabilities (2 moderate, 5 high). Needs a scoped npm audit/remediation brief so dependency upgrades do not mix with data-loss hotfixes. |
+
+## Latest session — partial slice rebuild preservation (COMPLETE)
 
 ### Objective
-Fix `test:render-integrity` on `main`: guard used `#section-01`/`#section-04` but `/states/FL` renders `#economy`, `#politicians`, `#courts`.
+Fix a high-severity data-loss path where `scripts/build-data-slices.ts` could overwrite multi-source Florida generated bundles from only the raw snapshots readable in the current run.
 
-### Verdict
-**PASS** — semantic ids aligned; guards.yml green (`29071982833`).
+### Verdict / outcome
+**PASS** — multi-source `legislation-florida.json` and `news-florida.json` now merge fresh sections over existing generated sections by `sourceId`, preserving prior-good sections when one raw source is missing.
 
 ### Commits
-- `21e4bde` — semantic `#economy` / `#courts` guard anchors
-- `b2586b0` — Playwright install in guards.yml
-- `f85b7ac` — render-integrity out of postbuild
-- `f92c973` — CI server warmup before Playwright
-- `d022ab7` — env.example + final green CI
+- `e0300f4` — fix(data): preserve Florida slices on partial rebuild
 
-### Commands run
-- `npm run prebuild` → exit 0
-- `npm run build` → exit 0 (postbuild render-integrity 2/2)
-- `npm run test:render-integrity` → 2/2 pass
+### Commands run (this session)
+- `git status --short && git branch --show-current && git remote -v && git log --oneline --decorate -n 25` → exit 0
+- `gh pr view 24 --json number,state,mergedAt,url,title,headRefName,baseRefName && gh pr view 26 --json number,state,mergedAt,url,title,headRefName,baseRefName && gh pr view 27 --json number,state,mergedAt,url,title,headRefName,baseRefName` → exit 0; tracked PRs still open
+- `git diff --stat a1f9652..HEAD && git diff --name-only a1f9652..HEAD && git log --format='%h %cI %s' a1f9652..HEAD` → exit 0
+- `npm run test:data-layout` → exit 127 before install (`tsx: not found`)
+- `npm install` → exit 0; installed 492 packages; reported 7 audit vulnerabilities
+- `npm run test:data-layout` → exit 0; 5/5 tests passed
+- `npm run build` → exit 0; prebuild guard chain + Next build + postbuild client-chunks passed
+- `git add package.json scripts/build-data-slices.ts scripts/__tests__/dataSlicesPreserveMissing.test.ts && git commit -m "fix(data): preserve Florida slices on partial rebuild"` → exit 0; `e0300f4`
+- `git push -u origin cursor/critical-bug-management-04bb` → exit 0
 
 ### Files touched
 | Path | Action | What changed |
 |------|--------|--------------|
-| `scripts/render-integrity-check.ts` | modified | Poll `id="economy"`; require `#economy`+`#courts`; skip `#politicians` images |
+| `scripts/build-data-slices.ts` | modified | Added existing-bundle load + `mergeSectionsPreservingMissing`; applied to multi-source legislation/news bundle writers; guarded script main for test imports |
+| `scripts/__tests__/dataSlicesPreserveMissing.test.ts` | created | Regression tests for preserving missing-source sections and unexpected existing sections |
+| `package.json` | modified | Added regression test to `npm run test:data-layout` |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Current session log + improvement backlog |
 
 ### Acceptance evidence
-- render-integrity contact-sheet + FL mobile/desktop screenshots (runtime under data/reports/, gitignored)
-- postbuild `test:render-integrity` 2/2 in full `npm run build`
+- `npm run test:data-layout`: `# pass 5`, including `multi-source slices preserve prior-good sections when a raw source is missing`
+- `npm run build`: `✓ Compiled successfully`, `Generating static pages ... (14/14)`, `test:client-chunks` pass
+- PR opened: https://github.com/robbieryan312-star/The-ledger/pull/28
+
+### Open / next
+- PR #24, #26, and #27 remain open and were not duplicated.
+- Dependency audit vulnerabilities observed during install are logged in the backlog for scoped follow-up.
 
 ---
 
