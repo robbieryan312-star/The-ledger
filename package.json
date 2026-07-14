@@ -18,7 +18,7 @@
     "test:typecheck": "tsc --noEmit",
     "test:docs-integrity": "tsx --test scripts/__tests__/docsIntegrityGuard.test.ts",
     "test:docs-consistency": "tsx --test scripts/__tests__/docsConsistencyGuard.test.ts",
-    "test:data-layout": "tsx --test scripts/__tests__/dataLayoutGuard.test.ts",
+    "test:data-layout": "tsx --test scripts/__tests__/dataLayoutGuard.test.ts scripts/__tests__/dataSlicesPreserveMissing.test.ts",
     "test:env-truth": "tsx --test scripts/__tests__/envTruthGuard.test.ts",
     "test:optimization": "tsx --test scripts/__tests__/optimizationGuards.test.ts scripts/__tests__/syncKernelGuard.test.ts",
     "test:governor-identity": "tsx --test scripts/__tests__/governorIdentityGuard.test.ts",
