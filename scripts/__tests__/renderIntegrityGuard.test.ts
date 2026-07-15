@@ -1,6 +1,6 @@
 /**
  * Build-gated guard: rendered pages pass visual integrity (Playwright).
- * Requires prior `npm run build` — runs via postbuild chain.
+ * Requires prior `npm run build` — invoked by CI or `npm run test:render-integrity`.
  */
 import assert from 'node:assert/strict';
 import { execSync } from 'node:child_process';

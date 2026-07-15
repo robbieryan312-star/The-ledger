@@ -7,10 +7,60 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-10):**
-- Branch: `main` · HEAD pending
-- Tree: dirty · prebuild + build + render-integrity: **green** locally
-- guards.yml: render-integrity moved out of postbuild; dedicated CI step + Playwright install
+**Current state (2026-07-15):**
+- Branch: `cursor/critical-bug-management-39cd` · HEAD before session: `d8ed82b`
+- PR: none opened by this automation run · Tree before commit: dirty with docs-only audit/log edits
+- Build status: **PASS** (`npm run build`, production build + postbuild client chunks)
+- Existing duplicate bug PRs still open and not re-reported: #24, #26, #27, #28
+
+## Improvement backlog
+
+| Date | Item | Status |
+|------|------|--------|
+| 2026-07-15 | Extend docs-consistency coverage so stale render-integrity placement wording (for example, claiming postbuild after the guard moves to a dedicated CI step) is caught directly, not only through the prebuild-count invariant. | open |
+
+## Latest session — critical bug automation sweep (COMPLETE)
+
+### Objective
+Inspect recent commits for new high-severity correctness bugs, avoid duplicate reports from persistent memory, and fix only minimal confirmed issues.
+
+### Verdict / outcome
+**PASS / no new critical bug found.** Recent render-integrity and CI commits were inspected directly and by an independent readonly explore agent. Existing open PRs #24, #26, #27, and #28 remain awaiting review and were not duplicated. A non-critical documentation drift in render-integrity workflow wording was corrected.
+
+### Commits
+- Pending this commit — docs-only workflow wording + required handoff log.
+
+### Commands run (this session)
+- `pwd && git status --short --branch && git remote -v && git branch --show-current && git log --oneline -12` → exit 0
+- `if [ -f /tmp/cursor/async-install/install-user.status ]; then printf 'status='; tr -d '\n' < /tmp/cursor/async-install/install-user.status; printf '\n'; elif [ -f /tmp/cursor/async-install/install-user.log ]; then pgrep -af 'install-user|npm install|pnpm|yarn' || true; else echo 'no async install markers'; fi` → exit 0 (`no async install markers`)
+- `for n in 1 2 4 5 7 8 9 10 24 26 27 28; do gh pr view "$n" --json number,state,mergedAt,closedAt,url,title --jq '[.number,.state,.mergedAt,.closedAt,.url,.title]|@tsv'; done` → exit 0
+- `git fetch origin main && git diff --stat origin/main...HEAD && git diff --name-only origin/main...HEAD` → exit 0
+- `git show --stat --oneline --decorate --no-renames HEAD~12..HEAD` → exit 0
+- `npm run test:docs-consistency` → exit 127 before dependency install (`tsx: not found`)
+- `ls package.json package-lock.json .npmrc && npm install` → exit 0
+- `npm audit --omit=dev --json` → exit 1, 0 critical / 5 high / 2 moderate production dependency audit findings
+- `npm run test:docs-consistency` → exit 1 after first wording edit; guard required the explicit prebuild command count
+- `npm run test:docs-consistency` → exit 0 after preserving the invariant
+- `npm run build` → exit 0
+- `git status --short && git log -1 --oneline` → exit 0
+- `npm run build` → exit 0 on final edited tree
+- `git diff -- docs/AGENT_INDEX.md scripts/__tests__/renderIntegrityGuard.test.ts docs/workflows/AGENT_HANDOFF_LOG.md && git status --short` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/AGENT_INDEX.md` | modified | Corrected render-integrity workflow wording: no longer says render-integrity runs in postbuild; preserves the 17-command prebuild count required by docs-consistency. |
+| `scripts/__tests__/renderIntegrityGuard.test.ts` | modified | Corrected header comment to say the guard is invoked by CI/manual `npm run test:render-integrity`, not postbuild. |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Logged this audit session and added a backlog item for stronger docs-consistency coverage. |
+
+### Acceptance evidence
+- Persistent memory checked first; no memory cleanup required because rejected entries are under 30 days old and PRs #24/#26/#27/#28 are still open.
+- `npm run test:docs-consistency` passed: 7/7 tests.
+- Final `npm run build` passed: production compile succeeded, 14 static pages generated, postbuild `test:client-chunks` passed 1/1.
+- No new critical bug PR opened; no MEMORIES.md entry added.
+
+### Open / next
+- Dependency audit finding surfaced: `npm audit --omit=dev --json` reports 0 critical, 5 high through `react-simple-maps`/nested D3 packages, and 2 moderate through `next`/nested PostCSS. The suggested npm fixes involve semver-major/downgrade paths, so this needs a dependency-focused brief rather than a drive-by change in this high-severity bug sweep.
 
 ## Latest session — render-integrity guard align to semantic ids (COMPLETE)
 
