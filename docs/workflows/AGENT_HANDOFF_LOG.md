@@ -7,12 +7,68 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-10):**
-- Branch: `main` · HEAD pending
-- Tree: dirty · prebuild + build + render-integrity: **green** locally
-- guards.yml: render-integrity moved out of postbuild; dedicated CI step + Playwright install
+**Current state (2026-07-16):**
+- Branch: `cursor/critical-bug-management-5c37` · task commit `f14079a`
+- PR: pending creation for profile data preservation fix
+- Tree: docs handoff log dirty before this log commit
+- Build status: **PASS** (`npm run test:source-integrity && npm run test:typecheck`; `npm run build`)
 
-## Latest session — render-integrity guard align to semantic ids (COMPLETE)
+## Improvement backlog
+
+| Date | Item | Status |
+|------|------|--------|
+| 2026-07-16 | Add a direct unit wrapper around `refresh-migrated-profile-votes.ts` payload generation; current guard covers the shared preserve helpers and full build, but the script entrypoint is still only integration-covered. | open |
+
+## Latest session — profile apply data preservation (COMPLETE)
+
+### Objective
+Fix high-severity profile data loss where shallow national snapshots could overwrite prior-good migrated profile votes, finance, and derived Said-Did/org-vote data.
+
+### Verdict / outcome
+**PASS** — profile apply paths now preserve prior-good votes when fresh vote input is shallower, preserve prior finance when fresh finance is missing, and preserve prior Said-Did links when fresh pairing output regresses. Locked migrated profiles are guarded at 30-vote depth.
+
+### Commits
+- `f14079a` — fix(profile): preserve prior data on shallow refresh
+- Handoff log commit: pending in this docs-only commit
+
+### Commands run (this session)
+- `pwd && git status --short --branch && git remote -v && git log --oneline --decorate -12 && for pr in 24 26 27 28; do gh pr view "$pr" --json number,state,mergedAt,closedAt,url,title; done && if [ -f /tmp/cursor/async-install/install-user.status ]; then printf 'async-install status: '; tr -d '\n' < /tmp/cursor/async-install/install-user.status; printf '\n'; elif [ -f /tmp/cursor/async-install/install-user.log ]; then pgrep -af 'install-user|npm install|pnpm install|yarn install' || true; printf 'async-install log exists without status\n'; else printf 'async-install absent\n'; fi` -> exit 0; branch correct, PRs #24/#26/#27/#28 open, async install absent
+- `git show --stat --summary --find-renames --find-copies d8ed82b d022ab7 f92c973 7d65007 f85b7ac a0523c2 b2586b0 21e4bde 4cbdd78` -> exit 0; recent render/CI changes inspected
+- `gh pr diff 26 --name-only && gh pr diff 26` -> exit 0; PR #26 fixes only `sync-topic-positions`, not profile apply paths
+- `npm run test:source-integrity` -> exit 0; focused guard passed
+- `npm run test:typecheck` -> exit 2; readonly helper return type rejected
+- `npm run test:typecheck` -> exit 0 after helper return fix
+- `npm run build` -> exit 0; full prebuild, Next build, postbuild client chunks passed
+- `npx tsx -e "import { MIGRATED_PROFILE_BIOGUIDES } from './lib/data/memberProfile.ts'; import { readFileSync } from 'node:fs'; for (const id of MIGRATED_PROFILE_BIOGUIDES) { const votes = JSON.parse(readFileSync(`lib/data/generated/profiles/${id}/votes.json`, 'utf8')); console.log(`${id}: ${votes.votes?.length ?? 0}`); }"` -> exit 1; shell interpolation broke template strings
+- `npx tsx -e 'import { MIGRATED_PROFILE_BIOGUIDES } from "./lib/data/memberProfile.ts"; import { readFileSync } from "node:fs"; for (const id of MIGRATED_PROFILE_BIOGUIDES) { const votes = JSON.parse(readFileSync(`lib/data/generated/profiles/${id}/votes.json`, "utf8")); console.log(`${id}: ${votes.votes?.length ?? 0}`); }'` -> exit 0; all seven locked profiles show 30 votes
+- `npm run test:source-integrity && npm run test:typecheck` -> exit 0 after finance preservation addition
+- `npm run build` -> exit 0 after finance preservation addition
+- `git status --short && npx tsx -e 'import { MIGRATED_PROFILE_BIOGUIDES } from "./lib/data/memberProfile.ts"; import { readFileSync } from "node:fs"; for (const id of MIGRATED_PROFILE_BIOGUIDES) { const votes = JSON.parse(readFileSync(`lib/data/generated/profiles/${id}/votes.json`, "utf8")); console.log(`${id}: ${votes.votes?.length ?? 0}`); }'` -> exit 0; scoped dirty tree, all seven locked profiles show 30 votes
+- `git add lib/data/__fixtures__/profileMigratePreserve.fixture.ts lib/data/__fixtures__/profileVotesSufficiency.fixture.ts lib/data/profileVotesSufficiency.ts scripts/__tests__/profileMigratePreserve.test.ts scripts/lib/profileMigrate.ts scripts/refresh-migrated-profile-votes.ts && git commit -m "fix(profile): preserve prior data on shallow refresh"` -> exit 0; commit `f14079a`
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/lib/profileMigrate.ts` | modified | Preserves prior votes on shallower fresh input before derived links are built; preserves prior finance when fresh finance is missing; keeps prior Said-Did when fresh link output regresses. |
+| `scripts/refresh-migrated-profile-votes.ts` | modified | Uses the same preservation helpers for votes/finance and rebuilds org-vote links from preserved votes. |
+| `lib/data/profileVotesSufficiency.ts` | modified | Enforces locked migrated profile vote-depth minimums, not just nonzero votes. |
+| `lib/data/__fixtures__/profileMigratePreserve.fixture.ts` | modified | Adds append-only shallow-vote regression fixture. |
+| `lib/data/__fixtures__/profileVotesSufficiency.fixture.ts` | modified | Adds append-only 30-vote minimums for the seven locked migrated profiles. |
+| `scripts/__tests__/profileMigratePreserve.test.ts` | modified | Adds preservation tests for shallow votes, partial Said-Did, and missing finance. |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session log and improvement backlog item. |
+
+### Acceptance evidence
+- Focused guard: `npm run test:source-integrity && npm run test:typecheck` -> exit 0.
+- Full validation: `npm run build` -> exit 0; Next.js 16.2.9 compiled successfully; postbuild client chunk guard passed.
+- Current data depth: `C001098: 30`, `M000355: 30`, `M001184: 30`, `O000172: 30`, `P000197: 30`, `S000033: 30`, `W000817: 30`.
+- Duplicate handling: memory PRs #24/#26/#27/#28 remain open; PR #26 diff does not touch this profile apply path.
+
+### Open / next
+- Open PR and record the new open PR in automation `MEMORIES.md`.
+
+---
+
+## Previous session — render-integrity guard align to semantic ids (COMPLETE)
 
 ### Objective
 Fix `test:render-integrity` on `main`: guard used `#section-01`/`#section-04` but `/states/FL` renders `#economy`, `#politicians`, `#courts`.
