@@ -1,6 +1,7 @@
 /**
  * Sufficiency guard — sitting current members must not have unmarked votes=0 profiles.
  */
+import { PROFILE_VOTES_DEPTH_MINIMUMS } from './__fixtures__/profileVotesSufficiency.fixture';
 
 export interface ProfileVotesFileLike {
   bioguideId?: string;
@@ -27,6 +28,14 @@ export function validateProfileVotesSufficiency(
 
   const voteCount = votesFile.votes?.length ?? 0;
   const markedUnavailable = votesFile.status === 'unavailable';
+  const depthMinimum = PROFILE_VOTES_DEPTH_MINIMUMS.find((entry) => entry.bioguideId === bioguideId);
+
+  if (depthMinimum && voteCount < depthMinimum.minVotes) {
+    return {
+      bioguideId,
+      message: `locked migrated profile has votes=${voteCount}, expected >=${depthMinimum.minVotes} — likely partial snapshot overwrite`,
+    };
+  }
 
   if (voteCount === 0 && !markedUnavailable) {
     return {

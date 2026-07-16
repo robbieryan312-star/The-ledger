@@ -7,14 +7,18 @@ import path from 'node:path';
 import test from 'node:test';
 import {
   PROFILE_MIGRATE_KNOWN_BAD_EMPTY_OVERWRITE,
+  PROFILE_MIGRATE_KNOWN_BAD_SHALLOW_VOTES,
   PROFILE_MIGRATE_PRESERVE_MINIMUMS,
 } from '../../lib/data/__fixtures__/profileMigratePreserve.fixture';
 import type { PlatformPositionEntry, SaidDidLinkEntry, TopicStatementEntry } from '../../lib/data/topicPositions';
 import {
   countSaidDidLinksInFile,
   countStatementsInFile,
+  countVotesInFile,
+  preserveExistingFinanceIfFreshMissing,
   preserveExistingSaidDidIfFreshEmpty,
   preserveExistingStatementsIfFreshEmpty,
+  preserveExistingVotesIfFreshShallower,
 } from '../lib/profileMigrate';
 
 const PROFILES_ROOT = path.join(process.cwd(), 'lib/data/generated/profiles');
@@ -105,6 +109,70 @@ test('preserveExistingSaidDidIfFreshEmpty keeps prior pair when fresh migrate yi
   const preserved = preserveExistingSaidDidIfFreshEmpty(saidDidByTopic, 0, existing);
   assert.equal(preserved, 1);
   assert.equal(saidDidByTopic.healthcare?.[0].billNumber, 'HR 1628');
+});
+
+test('preserveExistingSaidDidIfFreshEmpty keeps prior pairs when fresh migrate is shallower', () => {
+  const existing = {
+    byTopic: {
+      healthcare: [
+        {
+          topicId: 'healthcare',
+          statedPositionDate: '2019-04-10',
+          voteDate: '2017-07-25',
+          billTitle: 'American Health Care Act of 2017',
+          billNumber: 'HR 1628',
+          congressGovUrl: 'https://www.congress.gov/bill/115th-congress/house-bill/1628',
+          voteChoice: 'Nay' as const,
+          tier: 'official' as const,
+        },
+        {
+          topicId: 'healthcare',
+          statedPositionDate: '2020-03-18',
+          voteDate: '2020-03-27',
+          billTitle: 'Coronavirus Aid, Relief, and Economic Security Act',
+          billNumber: 'HR 748',
+          congressGovUrl: 'https://www.congress.gov/bill/116th-congress/house-bill/748',
+          voteChoice: 'Yea' as const,
+          tier: 'official' as const,
+        },
+      ],
+    },
+  };
+  const saidDidByTopic: Record<string, SaidDidLinkEntry[]> = {
+    healthcare: [existing.byTopic.healthcare[0]],
+  };
+  const preserved = preserveExistingSaidDidIfFreshEmpty(saidDidByTopic, 1, existing);
+  assert.equal(preserved, 2);
+  assert.deepEqual(
+    saidDidByTopic.healthcare.map((link) => link.billNumber),
+    ['HR 1628', 'HR 748'],
+  );
+});
+
+test('preserveExistingVotesIfFreshShallower keeps prior 30 votes when fresh input has only 8', () => {
+  const bad = PROFILE_MIGRATE_KNOWN_BAD_SHALLOW_VOTES;
+  const preserved = preserveExistingVotesIfFreshShallower(bad.freshVotes, { votes: bad.existingVotes });
+  assert.equal(countVotesInFile({ votes: bad.freshVotes }), 8);
+  assert.equal(countVotesInFile({ votes: preserved }), 30);
+  assert.equal(preserved[29].id, 'fixture-roll-030');
+});
+
+test('preserveExistingVotesIfFreshShallower accepts deeper fresh vote input', () => {
+  const bad = PROFILE_MIGRATE_KNOWN_BAD_SHALLOW_VOTES;
+  const preserved = preserveExistingVotesIfFreshShallower(bad.existingVotes, { votes: bad.freshVotes });
+  assert.equal(countVotesInFile({ votes: preserved }), 30);
+  assert.equal(preserved[29].id, 'fixture-roll-030');
+});
+
+test('preserveExistingFinanceIfFreshMissing keeps prior finance when fresh input is null', () => {
+  const existing = { entry: { totalRaised: 125000, cycle: '2026', source: 'OpenFEC' } };
+  assert.deepEqual(preserveExistingFinanceIfFreshMissing(null, existing), existing.entry);
+});
+
+test('preserveExistingFinanceIfFreshMissing accepts fresh finance when available', () => {
+  const existing = { entry: { totalRaised: 125000, cycle: '2026', source: 'OpenFEC' } };
+  const fresh = { totalRaised: 250000, cycle: '2026', source: 'OpenFEC' };
+  assert.deepEqual(preserveExistingFinanceIfFreshMissing(fresh, existing), fresh);
 });
 
 test('known-bad empty overwrite fails P000197 minimum statement/Said→Did counts', () => {
