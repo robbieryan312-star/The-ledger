@@ -62,14 +62,40 @@ export interface DataSnapshotMeta {
   fetchedAt?: string;
 }
 
+export interface FloridaSnapshotPayload<T> {
+  meta: DataSnapshotMeta;
+  records: T[];
+}
+
+export function shouldPreservePriorFloridaSnapshot<T>(
+  incoming: FloridaSnapshotPayload<T>,
+  priorSnapshotExists: boolean,
+): boolean {
+  return priorSnapshotExists && (incoming.meta.errors?.length ?? 0) > 0;
+}
+
 export async function writeFloridaSnapshot<T>(
   subdir: string,
   filename: string,
-  payload: { meta: DataSnapshotMeta; records: T[] },
+  payload: FloridaSnapshotPayload<T>,
 ): Promise<string> {
   const dir = path.join(DATA_ROOT, 'florida', subdir);
   await mkdir(dir, { recursive: true });
   const outFile = path.join(dir, filename);
+  const errorCount = payload.meta.errors?.length ?? 0;
+  if (errorCount > 0) {
+    try {
+      await readFile(outFile, 'utf8');
+      if (shouldPreservePriorFloridaSnapshot(payload, true)) {
+        console.warn(
+          `Preserving prior Florida snapshot at ${outFile}; incoming snapshot has ${errorCount} error(s) and is unverified.`,
+        );
+        return outFile;
+      }
+    } catch {
+      // No prior snapshot exists; write the diagnostic artifact so the failure is visible.
+    }
+  }
   await writeFile(outFile, JSON.stringify(payload, null, 2) + '\n', 'utf8');
   return outFile;
 }

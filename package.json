@@ -20,7 +20,7 @@
     "test:docs-consistency": "tsx --test scripts/__tests__/docsConsistencyGuard.test.ts",
     "test:data-layout": "tsx --test scripts/__tests__/dataLayoutGuard.test.ts",
     "test:env-truth": "tsx --test scripts/__tests__/envTruthGuard.test.ts",
-    "test:optimization": "tsx --test scripts/__tests__/optimizationGuards.test.ts scripts/__tests__/syncKernelGuard.test.ts",
+    "test:optimization": "tsx --test scripts/__tests__/optimizationGuards.test.ts scripts/__tests__/syncKernelGuard.test.ts scripts/__tests__/ingestUtilsSnapshotGuard.test.ts",
     "test:governor-identity": "tsx --test scripts/__tests__/governorIdentityGuard.test.ts",
     "test:identity-integrity": "tsx --test scripts/__tests__/identityIntegrityGuard.test.ts",
     "test:render-integrity": "tsx --test scripts/__tests__/renderIntegrityGuard.test.ts",

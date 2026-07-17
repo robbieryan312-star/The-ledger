@@ -7,12 +7,60 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-10):**
-- Branch: `main` · HEAD pending
-- Tree: dirty · prebuild + build + render-integrity: **green** locally
-- guards.yml: render-integrity moved out of postbuild; dedicated CI step + Playwright install
+**Current state (2026-07-17):**
+- Branch: `cursor/critical-bug-management-f8b2` · HEAD `2fab902` before this handoff-log commit
+- PR: https://github.com/robbieryan312-star/The-ledger/pull/30
+- Tree: clean after code commit; handoff log pending
+- Build status: **PASS** — `npm run test:optimization` and `npm run build`
 
-## Latest session — render-integrity guard align to semantic ids (COMPLETE)
+## Improvement backlog
+
+| Date | Status | Item | Evidence / next action |
+|------|--------|------|------------------------|
+| 2026-07-17 | open | Review npm dependency vulnerabilities reported by fresh install. | `npm install` reported 7 vulnerabilities (2 moderate, 5 high); run dependency audit/remediation in a dedicated dependency-hardening pass. |
+
+## Latest session — Florida ingest failure snapshot preservation (COMPLETE)
+
+### Objective
+Fix a high-severity data-loss path where Florida ingest payloads with `meta.errors` could overwrite prior-good raw snapshots and then publish empty/partial `/states/FL` sections.
+
+### Verdict / outcome
+**PASS** — failed Florida snapshots now preserve an existing prior artifact; regression guard is build-gated through `npm run test:optimization`; PR #30 opened.
+
+### Commits
+- `2fab902` — fix(data): preserve Florida snapshots on ingest errors
+
+### Commands run (this session)
+- `gh pr view 24 --json number,state,mergedAt,closedAt,url,title,headRefName,baseRefName && gh pr view 26 --json number,state,mergedAt,closedAt,url,title,headRefName,baseRefName && gh pr view 27 --json number,state,mergedAt,closedAt,url,title,headRefName,baseRefName && gh pr view 28 --json number,state,mergedAt,closedAt,url,title,headRefName,baseRefName && gh pr view 29 --json number,state,mergedAt,closedAt,url,title,headRefName,baseRefName` → exit 0 / tracked PRs #24, #26, #27, #28, #29 still open
+- `git show --stat --oneline --decorate -n 15 && git diff --stat a1f9652..HEAD && git diff --name-status a1f9652..HEAD` → exit 0 / recent diffs reviewed
+- `git log --oneline --decorate --date=short --pretty=format:'%h %ad %d %s' -n 60` → exit 0 / Jul 9-10 platform commits reviewed
+- `npm run test:optimization` → exit 127 / setup dependency miss: `tsx: not found`
+- `npm install` → exit 0 / installed dependencies; reported 7 audit vulnerabilities
+- `npm run test:optimization` → exit 0 / 11 tests passed
+- `npm run build` → exit 2 / TypeScript optional-narrowing error in new warning string
+- `npm run build` → exit 0 / prebuild, Next build, client chunk guard passed
+- `git push -u origin cursor/critical-bug-management-f8b2` → exit 0 / pushed code commit branch
+- `npm run build` → exit 0 / post-handoff-log prebuild, Next build, client chunk guard passed
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/lib/ingest-utils.ts` | modified | Added shared failure-preservation invariant for Florida snapshots with `meta.errors` when a prior artifact exists. |
+| `scripts/__tests__/ingestUtilsSnapshotGuard.test.ts` | created | Regression tests for failed-with-prior, failed-without-prior, verified, and honest-gap snapshot behavior. |
+| `package.json` | modified | Wires the new regression into `npm run test:optimization`. |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Logged this session and dependency-audit backlog. |
+
+### Acceptance evidence
+- `npm run test:optimization`: 11/11 pass, including `failed incoming Florida snapshot preserves an existing prior artifact`.
+- `npm run build`: compiled successfully; generated 14/14 static pages; client chunk guard pass.
+- PR: https://github.com/robbieryan312-star/The-ledger/pull/30
+
+### Open / next
+- Dependency audit vulnerabilities are logged in the Improvement backlog; no further blocker for PR #30.
+
+---
+
+## Prior session — render-integrity guard align to semantic ids (COMPLETE)
 
 ### Objective
 Fix `test:render-integrity` on `main`: guard used `#section-01`/`#section-04` but `/states/FL` renders `#economy`, `#politicians`, `#courts`.
