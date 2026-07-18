@@ -57,6 +57,19 @@ async function waitForServer(ms = READY_POLL_MS): Promise<void> {
   fail(`server did not become ready on ${BASE}/states/FL with id="section-01" within ${ms}ms`);
 }
 
+async function assertPortFree(): Promise<void> {
+  try {
+    const res = await fetch(`${BASE}/states/FL`, { signal: AbortSignal.timeout(1500) });
+    if (res.ok) {
+      fail(
+        `port ${PORT} already serving /states/FL — refuse to validate against a stale server. Kill the process on ${PORT} and retry.`,
+      );
+    }
+  } catch {
+    // expected when nothing is listening
+  }
+}
+
 function startServer(): { proc: ReturnType<typeof spawn> | null; kill: () => void; external: boolean } {
   if (process.env.RENDER_INTEGRITY_EXTERNAL_SERVER === '1') {
     return { proc: null, kill: () => {}, external: true };
@@ -249,6 +262,9 @@ async function main(): Promise<void> {
     fail('missing .next — run npm run build before test:render-integrity');
   }
 
+  if (process.env.RENDER_INTEGRITY_EXTERNAL_SERVER !== '1') {
+    await assertPortFree();
+  }
   const { kill, external } = startServer();
   try {
     if (!external) {

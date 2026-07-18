@@ -27,9 +27,8 @@ const bioguideToLegislator = new Map<string, LegislatorRow>(
   legislatorRows.map((row) => [row.bioguideId, row]),
 );
 
-const CONGRESSIONAL_PORTRAIT_URL_OVERRIDES: Record<string, string> = {
-  S001200: 'https://www.govtrack.us/static/legislator-photos/412695-200px.jpeg',
-};
+/** Rare host overrides when Bioguide is missing a current member photo. */
+const CONGRESSIONAL_PORTRAIT_URL_OVERRIDES: Record<string, string> = {};
 
 /** True when bioguideId resolves to a current legislator with the same last name. */
 export function bioguideMatchesCurrentLegislator(
