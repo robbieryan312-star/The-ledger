@@ -8,74 +8,49 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-18):**
-- Branch: `cursor/fl-state-locked-spec-70a6` · HEAD pending CONSOLIDATED BRIEF v2
-- PR: **#25** draft · executing Phases -1 → D · **STOP after Phase D** for Claude re-review
-- Tree: dirty during brief · merge of #26/#25/#27/#24 planned in Phase D
+- Branch: `cursor/fl-state-locked-spec-70a6` · HEAD pending (access-fix commit)
+- PR: **#25** draft · Phase -1 access fix in progress · **STOP after Phase D** for Claude re-review
+- Tree: dirty · full audit now on disk for Claude
 
-## Latest session — CONSOLIDATED BRIEF v2 (in progress)
+## Latest session — Why Claude could not see the FL audit + fix (COMPLETE)
 
 ### Objective
-Execute Claude+Cursor consolidated brief: log review, fix Phase-0 falsehoods, credibility hardening, ops/CI, UI polish, PR reconciliation. STOP after Phase D.
+Investigate and fix why Claude Code could not access Cursor's infrastructure
+audit recommendations (the chat-only 3-phase review).
 
-### Decisions (RESOLVED — do not re-ask)
+### Root cause (verified)
+
+| Factor | Detail |
+|--------|--------|
+| **Primary** | §1.1 J violation: the 2026-07-12 exhaustive FL infrastructure audit was delivered **only in Cursor chat**. Claude Code **cannot see Cursor chat** — only committed files. |
+| **Timing** | Between 2026-07-12 (chat audit) and 2026-07-18 (CONSOLIDATED BRIEF), disk had only credibility-session logs (`f7ccb4f` / `fd63ded`) — **no audit findings, grades, or recommended fix list**. |
+| **Partial remediation** | Commit `2429dd2` logged a **summary** of the audit into `AGENT_HANDOFF_LOG.md`, but (1) it was days late, (2) it was not the full report Claude needed for re-review, (3) `AUDIT_DEBT_BRIEF.md` is only a stub redirect — Claude must open `AGENT_HANDOFF_LOG.md` or this new artifact. |
+| **PR #25 body** | PR description covered credibility status only; never linked an on-disk audit artifact. |
+
+Binding rule: *“Claude Code cannot see Cursor chat. Unlogged session = failed turn.”*
+(`.cursor/rules/ledger-core-rules.mdc` §1.1 J)
+
+### Fix this turn
+1. Write full audit verbatim to **`docs/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md`**
+2. Point Current state + Latest session here so Claude’s session-start read finds it
+3. Update PR #25 body with the artifact link
+4. Commit + push on `cursor/fl-state-locked-spec-70a6`
+
+### Verdict
+**COMPLETE** — Claude can now read the full review on disk. CONSOLIDATED BRIEF v2 execution resumes after this commit.
+
+### Full audit location
+→ **[`docs/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md`](./FL_INFRASTRUCTURE_AUDIT_2026-07-12.md)**
+
+### Decisions still binding (RESOLVED — do not re-ask)
 
 | Q | Decision |
 |---|----------|
 | Q1 Census keyless | **CENSUS_API_KEY REQUIRED** — hard-exit; document in KEYS.md; remove "keyless" claims |
 | Q2 Tax fetchedLive | Provenance enum: `'fetched-live'` \| `'computed-from-published-tables'` (citation + computedAt) \| `'honest-gap'`. Tax → computed-from-published-tables |
 | Q3 Dual data paths | **Single read-path**: county ingest also fetches state B01003/B19013/B25077 (same ACS vintage); `build-data-slices` consumes it; slice is the only accessor components read |
-| Q4 CourtListener tier | **`'nonpartisan'`** (committed JSON correct); opinion links to court's own record stay `'official'`. Precedent: official-derived aggregators = nonpartisan |
+| Q4 CourtListener tier | **`'nonpartisan'`** (committed JSON correct); opinion links to court's own record stay `'official'` |
 | Q5 Honest-gap copy | Standardize **"No verified record available"** everywhere; enforce via copy-compliance |
-
----
-
-## Session — FL infrastructure 3-phase audit (2026-07-12, logged 2026-07-18) — COMPLETE
-
-### Objective
-Read-only exhaustive review of FL locked-spec infrastructure before further work. No code changes that session.
-
-### Verdict / outcome
-**COMPLETE (review only)** — structure A-; credibility B; guards/CI B-; UI B; ops C+. Grades and findings below. Open questions now **RESOLVED** per CONSOLIDATED BRIEF v2.
-
-### Grades
-
-| Dimension | Grade | Notes |
-|-----------|-------|-------|
-| Structure / layout | **A-** | Rail+canvas, sections, nav, SSR — approved spec largely met |
-| Data credibility | **B** | Placeholder blocker fixed; guard gaps, dual paths, tax semantics remain |
-| Guards / CI | **B-** | New guard valuable but narrow; render CI good; refresh workflow weak; doc drift |
-| UI fidelity vs mockup | **B** | Tokens mostly done; frame notes, charts, legislation rows, a11y drift |
-| Ops / docs | **C+** | Missing ingest wiring, KEYS gaps, FLORIDA_DATA incomplete |
-
-### Architecture (dual path — to be unified in Phase A)
-
-```
-state-economic.json (slice) ← florida-demographics + bls/*.json  → hero/rail/§01 cards
-counties-sample.json (direct) ← ACS counties + BLS LAUCN         → county dropdowns + attainment
-bea-rpp-sample.json / tax-burden-sample.json (direct)
-```
-
-### P0 findings
-1. BEA honest gap until BEA_API_KEY (expected)
-2. Render-guard anchor conflict main `#economy` vs branch `#section-*` (Phase B/D)
-3. Census not keyless in practice — API returns Missing Key without CENSUS_API_KEY (**Q1 RESOLVED: key required**)
-
-### P1 findings (selected)
-- Dual-source vintage drift on same page (**Q3 RESOLVED: single read-path**)
-- `stateSummary` bypasses credibility guard
-- Attainment partial-failure → false zeros
-- Tax `fetchedLive:true` with zero HTTP (**Q2 RESOLVED: provenance enum**)
-- Slice path unguarded; CPI still in slice (not rendered on FL page)
-- Dashboard ingests missing from refresh CI / `ingest:florida-all`
-- Court tier handoff said official, JSON nonpartisan (**Q4 RESOLVED: nonpartisan**)
-- Honest-gap copy "No verified data yet" vs platform default (**Q5 RESOLVED: standardize**)
-- SampleBadge misuse on attainment; missing on tax
-- render-integrity not in postbuild despite docs
-- `refresh-data.yml` weak guard gate
-- Fuzzy `findEconomicIndicator('employment')` matches "Unemployment rate" first (Phase 0)
-
-### Open questions — RESOLVED in CONSOLIDATED BRIEF v2
-See decisions table above.
 
 ---
 

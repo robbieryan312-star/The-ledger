@@ -8,4 +8,7 @@ This file was renamed for accuracy.
 - **Current name:** Agent Handoff Log (Cursor ↔ Claude work log + improvement backlog)
 - **Binding rule:** `.cursor/rules/ledger-core-rules.mdc` §1.1 J
 
+**FL PR #25 infrastructure audit (full report for Claude):**  
+[`docs/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md`](./FL_INFRASTRUCTURE_AUDIT_2026-07-12.md)
+
 Do not log new sessions here.
