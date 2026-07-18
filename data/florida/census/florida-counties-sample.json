@@ -35,7 +35,16 @@
       "graduatePct": 12.5,
       "bachelorsPlusPct": 33.2
     },
-    "usAttainmentBachelorsPlusPct": 35
+    "usAttainmentBachelorsPlusPct": 35,
+    "acs": {
+      "population": 21928881,
+      "medianHouseholdIncome": 71711,
+      "medianHomeValue": 325000,
+      "nationalMedianHouseholdIncome": 78538,
+      "nationalMedianHomeValue": 303400,
+      "survey": "ACS 5-Year 2023",
+      "censusApiUrl": "https://api.census.gov/data/2023/acs/acs5"
+    }
   },
   "records": [
     {

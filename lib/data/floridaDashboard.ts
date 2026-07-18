@@ -28,6 +28,16 @@ export type FloridaTaxSectionProvenance = ComputedProvenanceMeta & {
   url: string;
 };
 
+export type FloridaStateAcs = {
+  population: number | null;
+  medianHouseholdIncome: number | null;
+  medianHomeValue: number | null;
+  nationalMedianHouseholdIncome: number | null;
+  nationalMedianHomeValue: number | null;
+  survey: string;
+  censusApiUrl: string;
+};
+
 export function getFloridaCountiesSample(): {
   records: FloridaCountyRow[];
   stateSummary: {
@@ -35,6 +45,8 @@ export function getFloridaCountiesSample(): {
     populationGrowthPct: number | null;
     attainment: FloridaAttainment | null;
     usAttainmentBachelorsPlusPct?: number | null;
+    /** Same ACS vintage as county sample — preferred by build-data-slices (Q3 single read-path). */
+    acs?: FloridaStateAcs | null;
   };
   meta: {
     source: { name: string; url: string; tier: string };

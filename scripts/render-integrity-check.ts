@@ -21,7 +21,12 @@ const PORT = 4112;
 const BASE = `http://127.0.0.1:${PORT}`;
 
 const REQUIRED_SECTIONS: Record<string, string[]> = {
-  '/states/FL': ['#section-01', '#section-03', '#section-04'],
+  '/states/FL': ['#section-01', '#section-02', '#section-03', '#section-04'],
+};
+
+/** Present when live legislation/court samples exist — asserted only if in DOM. */
+const CONDITIONAL_SECTIONS: Record<string, string[]> = {
+  '/states/FL': ['#section-05', '#section-06'],
 };
 
 function fail(message: string): never {
@@ -110,6 +115,15 @@ async function assertImagesLoad(page: Page, label: string): Promise<void> {
   }
 }
 
+async function openAllDetails(page: Page): Promise<void> {
+  await page.evaluate(() => {
+    document.querySelectorAll('details').forEach((d) => {
+      d.open = true;
+    });
+  });
+  await page.waitForTimeout(200);
+}
+
 async function assertRequiredSections(page: Page, pagePath: string, label: string): Promise<void> {
   const required = REQUIRED_SECTIONS[pagePath] ?? [];
   for (const sel of required) {
@@ -121,6 +135,17 @@ async function assertRequiredSections(page: Page, pagePath: string, label: strin
     }, sel);
     if (empty) {
       fail(`${label}: required section ${sel} is ${empty}`);
+    }
+  }
+  for (const sel of CONDITIONAL_SECTIONS[pagePath] ?? []) {
+    const status = await page.evaluate((selector: string) => {
+      const el = document.querySelector(selector);
+      if (!el) return 'absent';
+      const text = (el.textContent ?? '').replace(/\s+/g, ' ').trim();
+      return text.length < 20 ? 'empty' : 'ok';
+    }, sel);
+    if (status === 'empty') {
+      fail(`${label}: conditional section ${sel} is present but empty`);
     }
   }
 }
@@ -155,6 +180,7 @@ async function runChecks(browser: Browser): Promise<string[]> {
         await page.waitForSelector(sel, { state: 'attached', timeout: 30000 });
       }
       await page.waitForTimeout(1000);
+      await openAllDetails(page);
       await assertNoHorizontalOverflow(page, label);
       await assertImagesLoad(page, label);
       await assertRequiredSections(page, pageDef.path, label);

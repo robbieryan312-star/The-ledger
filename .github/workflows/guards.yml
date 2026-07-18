@@ -37,6 +37,7 @@ jobs:
           npm run test:governor-identity
           npm run test:identity-integrity
           npm run test:no-unverified-official-data
+          npm run test:state-economic-display
           npm run test:data-layout
           npm run test:env-truth
           npm run test:optimization

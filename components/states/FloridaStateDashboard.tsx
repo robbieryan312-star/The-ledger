@@ -285,22 +285,75 @@ function EducationEarningsBlock({ tiers, note }: { tiers: StateEducationLaborTie
 
 function UnemploymentChart({ history }: { history: { period: string; value: number }[] }) {
   if (history.length < 2) return null;
-  const values = history.map((h) => h.value);
+  const chronological = [...history].reverse();
+  const values = chronological.map((h) => h.value);
   const min = Math.min(...values);
   const max = Math.max(...values);
-  const range = max - min || 1;
-  const w = 320;
-  const h = 80;
-  const pts = [...values].reverse().map((v, i) => {
-    const x = 24 + (i / (values.length - 1)) * (w - 48);
-    const y = 12 + (h - 24) - ((v - min) / range) * (h - 28);
+  const pad = Math.max(0.1, (max - min) * 0.15);
+  const yMin = Math.max(0, min - pad);
+  const yMax = max + pad;
+  const range = yMax - yMin || 1;
+  const w = 360;
+  const h = 140;
+  const left = 36;
+  const right = 12;
+  const top = 12;
+  const bottom = 28;
+  const plotW = w - left - right;
+  const plotH = h - top - bottom;
+  const pts = values.map((v, i) => {
+    const x = left + (i / (values.length - 1)) * plotW;
+    const y = top + plotH - ((v - yMin) / range) * plotH;
     return `${x},${y}`;
   });
+  const yTicks = [yMax, (yMin + yMax) / 2, yMin];
+  const monthLabel = (period: string) => {
+    const m = period.match(/([A-Za-z]{3})/);
+    return m?.[1] ?? period.slice(0, 3);
+  };
+  const xLabelIndexes = [0, Math.floor((values.length - 1) / 2), values.length - 1];
+  const descId = 'fl-unemployment-chart-desc';
   return (
     <div className="mt-3 rounded-[14px] border border-[var(--border-subtle)] bg-gradient-to-b from-[var(--bg-elevated)] to-[var(--bg-card)] p-4">
       <p className="text-[13px] font-semibold text-[var(--foreground)]">Unemployment rate — trailing 12 months</p>
-      <svg viewBox={`0 0 ${w} ${h}`} className="w-full max-w-md mt-2 text-[var(--gold)]">
+      <p id={descId} className="sr-only">
+        Line chart of Florida unemployment rate from {chronological[0]?.period} to{' '}
+        {chronological[chronological.length - 1]?.period}, ranging {yMin.toFixed(1)}% to {yMax.toFixed(1)}%.
+      </p>
+      <svg
+        viewBox={`0 0 ${w} ${h}`}
+        className="w-full max-w-md mt-2 text-[var(--gold)]"
+        role="img"
+        aria-labelledby={descId}
+      >
+        {yTicks.map((tick) => {
+          const y = top + plotH - ((tick - yMin) / range) * plotH;
+          return (
+            <g key={tick}>
+              <line x1={left} x2={w - right} y1={y} y2={y} stroke="currentColor" strokeOpacity={0.12} />
+              <text x={left - 6} y={y + 3} textAnchor="end" className="fill-[var(--muted)]" fontSize="9.5" fontFamily="var(--font-mono, ui-monospace)">
+                {tick.toFixed(1)}
+              </text>
+            </g>
+          );
+        })}
         <polyline fill="none" stroke="currentColor" strokeWidth="2" points={pts.join(' ')} />
+        {xLabelIndexes.map((i) => {
+          const x = left + (i / (values.length - 1)) * plotW;
+          return (
+            <text
+              key={chronological[i].period}
+              x={x}
+              y={h - 8}
+              textAnchor="middle"
+              className="fill-[var(--muted)]"
+              fontSize="9.5"
+              fontFamily="var(--font-mono, ui-monospace)"
+            >
+              {monthLabel(chronological[i].period)}
+            </text>
+          );
+        })}
       </svg>
     </div>
   );
@@ -426,7 +479,8 @@ export default function FloridaStateDashboard({
                 <summary className="cursor-pointer text-[var(--gold)] list-none">
                   {counties.stateSummary.populationGrowthPct != null && counties.stateSummary.populationRank != null ? (
                     <>
-                      ▲{counties.stateSummary.populationGrowthPct}%/yr · #{counties.stateSummary.populationRank} largest state
+                      {counties.stateSummary.populationGrowthPct > 0 ? '▲' : counties.stateSummary.populationGrowthPct < 0 ? '▼' : '●'}
+                      {Math.abs(counties.stateSummary.populationGrowthPct)}%/yr · #{counties.stateSummary.populationRank} largest state
                     </>
                   ) : (
                     <>County breakdown ▾</>
@@ -453,6 +507,7 @@ export default function FloridaStateDashboard({
           id="section-01"
           eyebrow="§01"
           title="Economy & cost of living"
+          note="Income, housing, and prices — and how Florida compares to the rest of the country. Expand any card for a county-by-county breakdown."
           sourceLine={
             <>
               Source: U.S. Census Bureau ACS (county sample n={counties.records.length}) · BEA Regional Price Parities
@@ -567,6 +622,7 @@ export default function FloridaStateDashboard({
           id="section-02"
           eyebrow="§02"
           title="Jobs & workforce"
+          note="Who's working in Florida, how much education they have, and what they earn by level. Earnings are annual."
           sourceLine={<>Source: BLS LAUS + CPS education tiers (national reference where FL series unavailable) · {economic.meta.asOf}</>}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">

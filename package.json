@@ -6,7 +6,7 @@
     "dev": "next dev",
     "prebuild": "npm run test:typecheck && npm run test:crec && npm run test:org-join && npm run test:source-integrity && npm run test:copy-compliance && npm run test:topic-positions-bundle && npm run test:news-registry && npm run test:profile-snapshots && npm run test:client-bundle && npm run test:docs-integrity && npm run test:docs-consistency && npm run test:data-layout && npm run test:env-truth && npm run test:optimization && npm run test:governor-identity && npm run test:identity-integrity && npm run test:no-unverified-official-data && npm run test:state-economic-display && npm run audit:profile-credibility",
     "build": "next build",
-    "postbuild": "npm run test:client-chunks",
+    "postbuild": "npm run test:render-integrity && npm run test:client-chunks",
     "start": "next start",
     "lint": "eslint",
     "agent:verify": "tsx scripts/agent-verify.ts",

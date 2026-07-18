@@ -7,45 +7,61 @@ import type { SnapshotRecordRow } from '@/lib/types/snapshotTypes';
 import SourceProvenance from '@/components/ui/SourceProvenance';
 import TierDot from '@/components/ui/TierDot';
 
+/** Locked mockup: "HB 11 — Short title" when bill number + title available. */
 function displayHeadline(row: SnapshotRecordRow): string {
-  return row.summary?.trim() || row.title;
+  const summary = row.summary?.trim();
+  const title = row.title?.trim() ?? '';
+  const billMatch = title.match(/^(HB|SB|HJR|SJR|HCR|SCR)\s*\d+[A-Z]?/i);
+  if (billMatch) {
+    const billNo = billMatch[0].replace(/\s+/, ' ').toUpperCase();
+    const rest = title.slice(billMatch[0].length).replace(/^[\s:—-]+/, '').trim();
+    if (rest) return `${billNo} — ${rest}`;
+    return billNo;
+  }
+  return summary || title;
 }
 
 export default function FloridaLegislationBillRow({ row }: { row: SnapshotRecordRow }) {
   const [open, setOpen] = useState(false);
   const headline = displayHeadline(row);
   const hasSummary = Boolean(row.summary?.trim());
+  const panelId = `leg-panel-${row.id ?? row.link ?? headline}`.replace(/\W+/g, '-');
 
   return (
-    <div className="rounded-lg border border-[var(--border-subtle)] overflow-hidden bg-[var(--bg-card)]/60">
+    <div className="rounded-[13px] border border-[var(--border-subtle)] overflow-hidden bg-gradient-to-b from-[var(--bg-elevated)] to-[var(--bg-card)]">
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="w-full flex items-start gap-2 p-3 hover:bg-[var(--bg-elevated)]/30 transition-colors text-left"
+        aria-expanded={open}
+        aria-controls={panelId}
+        className="w-full flex items-start gap-2 p-3 hover:bg-[var(--bg-elevated)]/40 transition-colors text-left"
       >
-        <FileText className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />
+        <FileText className="h-4 w-4 text-[var(--muted)] flex-shrink-0 mt-0.5" aria-hidden />
         <div className="flex-1 min-w-0 pr-6 relative">
           <div className="absolute top-0 right-0">
             <TierDot tier={row.source.tier} />
           </div>
-          <p className="text-sm text-white font-medium leading-snug line-clamp-3">{headline}</p>
+          <p className="text-sm text-[var(--foreground)] font-medium leading-snug line-clamp-3">{headline}</p>
+          {hasSummary && (
+            <p className="text-[12px] text-[var(--foreground)]/80 mt-1 line-clamp-2">{row.summary}</p>
+          )}
           {!hasSummary && (
-            <p className="text-[10px] text-gray-600 mt-1 italic">No LegiScan description on file — showing bill number and title.</p>
+            <p className="text-[10px] text-[var(--muted)] mt-1 italic">No LegiScan description on file — showing bill number and title.</p>
           )}
         </div>
         {open
-          ? <ChevronDown className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />
-          : <ChevronRight className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />}
+          ? <ChevronDown className="h-4 w-4 text-[var(--muted)] flex-shrink-0 mt-0.5" aria-hidden />
+          : <ChevronRight className="h-4 w-4 text-[var(--muted)] flex-shrink-0 mt-0.5" aria-hidden />}
       </button>
       {open && (
-        <div className="px-3 pb-3 border-t border-[var(--border-subtle)] ml-6">
+        <div id={panelId} className="px-3 pb-3 border-t border-[var(--border-subtle)] ml-6">
           {row.officialTitle && (
-            <p className="text-xs text-gray-300 mt-2">
-              <span className="text-gray-500">Official title:</span> {row.officialTitle}
+            <p className="text-xs text-[var(--foreground)]/85 mt-2">
+              <span className="text-[var(--muted)]">Official title:</span> {row.officialTitle}
             </p>
           )}
           {row.detail && (
-            <p className="text-xs text-gray-400 mt-1">{row.detail}</p>
+            <p className="text-xs text-[var(--muted)] mt-1">{row.detail}</p>
           )}
           <div className="mt-2">
             <SourceProvenance source={row.source} recordDate={row.date} asOf={row.asOf} />
@@ -55,9 +71,9 @@ export default function FloridaLegislationBillRow({ row }: { row: SnapshotRecord
               href={row.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-[var(--gold)] hover:text-white text-xs mt-2"
+              className="inline-flex items-center gap-1 text-[var(--gold)] hover:text-[var(--foreground)] text-xs mt-2"
             >
-              LegiScan record <ExternalLink className="h-3 w-3" />
+              LegiScan record <ExternalLink className="h-3 w-3" aria-hidden />
             </Link>
           )}
         </div>
@@ -78,28 +94,20 @@ export function FloridaLegislationSection({
   if (!records.length) return null;
   if (compact) {
     return (
-      <div className="space-y-0">
+      <div className="space-y-2">
         {records.map((row) => (
-          <FloridaLegislationBillRow key={row.id} row={row} />
+          <FloridaLegislationBillRow key={row.id ?? row.link ?? row.title} row={row} />
         ))}
-        {metaNote && <p className="text-[10px] text-gray-500 mt-2">{metaNote}</p>}
+        {metaNote && <p className="text-[10px] text-[var(--muted)] mt-2">{metaNote}</p>}
       </div>
     );
   }
   return (
-    <section id="legislation" className="bg-[var(--bg-card)] rounded-2xl border border-[var(--border-subtle)] overflow-hidden scroll-mt-24">
-      <div className="px-5 py-4 border-b border-[var(--border-subtle)] bg-[var(--bg-card)]">
-        <h2 className="text-white font-bold text-sm">Florida Legislation</h2>
-        <p className="text-xs text-gray-400 mt-1">
-          Bill summaries from LegiScan official descriptions — expand for full title, status, and source link.
-        </p>
-        {metaNote && <p className="text-[10px] text-gray-500 mt-1">{metaNote}</p>}
-      </div>
-      <div className="p-4 space-y-2">
-        {records.map((row) => (
-          <FloridaLegislationBillRow key={row.id} row={row} />
-        ))}
-      </div>
-    </section>
+    <div className="space-y-2">
+      {records.map((row) => (
+        <FloridaLegislationBillRow key={row.id ?? row.link ?? row.title} row={row} />
+      ))}
+      {metaNote && <p className="text-[10px] text-[var(--muted)] mt-2">{metaNote}</p>}
+    </div>
   );
 }

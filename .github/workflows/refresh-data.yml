@@ -43,8 +43,12 @@ jobs:
           OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
           COURTLISTENER_API_KEY: ${{ secrets.COURTLISTENER_API_KEY }}
           NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
+          BEA_API_KEY: ${{ secrets.BEA_API_KEY }}
         run: |
           [ -n "$CENSUS_API_KEY" ] && npm run ingest:census-fl || echo "skip census (no secret)"
+          [ -n "$CENSUS_API_KEY" ] && npm run ingest:fl-counties || echo "skip fl-counties (no secret)"
+          [ -n "$BEA_API_KEY" ] && npm run ingest:bea-rpp-fl || echo "skip bea-rpp (no secret)"
+          npm run ingest:fl-tax || echo "skip fl-tax (non-fatal — computed from published tables)"
           [ -n "$LEGISCAN_API_KEY" ] && npm run ingest:legiscan-fl || echo "skip legiscan (no secret)"
           [ -n "$OPENSTATES_API_KEY" ] && npm run ingest:openstates-fl || echo "skip openstates (no secret)"
           [ -n "$COURTLISTENER_API_KEY" ] && npm run ingest:courts-fl || echo "skip courts detail refresh (no COURTLISTENER_API_KEY)"
@@ -57,16 +61,27 @@ jobs:
       - name: Rebuild Records & Sources index
         run: npm run build:sources-index && npm run build:data-slices
 
-      - name: Run guard suites and build (abort on failure — no commit)
+      - name: Guard suites aligned with guards.yml (abort on failure — no commit)
         run: |
+          npm run test:typecheck
           npm run test:crec
           npm run test:org-join
           npm run test:source-integrity
           npm run test:copy-compliance
           npm run test:topic-positions-bundle
-          npm run test:classify
+          npm run test:news-registry
+          npm run test:profile-snapshots
+          npm run test:client-bundle
           npm run test:docs-integrity
+          npm run test:docs-consistency
+          npm run test:governor-identity
+          npm run test:identity-integrity
+          npm run test:no-unverified-official-data
+          npm run test:state-economic-display
           npm run test:data-layout
+          npm run test:env-truth
+          npm run test:optimization
+          npm run audit:profile-credibility
           npm run build
 
       - name: Exclude fetch-failed artifacts from commit

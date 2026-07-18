@@ -4,6 +4,9 @@
  *
  * Usage: npm run ingest:bea-rpp-fl
  * Requires BEA_API_KEY — without it writes provenance:'honest-gap' + state:null.
+ *
+ * LineCodes are resolved by NAME via GetParameterValues (MARPP has no
+ * Groceries/Transportation lines — those labels are skipped when absent).
  */
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -21,23 +24,18 @@ const METRO_GEO = [
   { name: 'Tampa-St. Petersburg-Clearwater', geoFips: '45300' },
 ] as const;
 
-/** MARPP expenditure category line codes (BEA Regional table MARPP). */
-const COMPONENT_LINES: { label: string; lineCode: number }[] = [
-  { label: 'Housing', lineCode: 4 },
-  { label: 'Groceries', lineCode: 5 },
-  { label: 'Utilities', lineCode: 6 },
-  { label: 'Transportation', lineCode: 7 },
-];
+/** Preferred component labels — resolved against live MARPP LineCode catalog by NAME. */
+const PREFERRED_COMPONENT_NAMES = ['Housing', 'Utilities', 'Goods', 'Services'] as const;
 
 type BeaRow = { DataValue?: string; TimePeriod?: string; GeoName?: string };
+type BeaParam = { Key?: string; Desc?: string };
 
-async function beaGet(
+async function beaRequest(
   key: string,
   params: Record<string, string>,
-): Promise<BeaRow[]> {
+): Promise<unknown> {
   const qs = new URLSearchParams({
     UserID: key,
-    method: 'GetData',
     datasetname: 'Regional',
     ResultFormat: 'JSON',
     ...params,
@@ -45,12 +43,73 @@ async function beaGet(
   const res = await fetch(`https://apps.bea.gov/api/data?${qs}`, {
     signal: AbortSignal.timeout(60_000),
   });
-  const json = (await res.json()) as {
+  if (!res.ok) {
+    throw new Error(`BEA HTTP ${res.status}`);
+  }
+  return res.json();
+}
+
+async function beaGet(
+  key: string,
+  params: Record<string, string>,
+): Promise<BeaRow[]> {
+  const json = (await beaRequest(key, { method: 'GetData', ...params })) as {
     BEAAPI?: { Results?: { Data?: BeaRow[]; Error?: { APIErrorDescription?: string } } };
   };
   const err = json.BEAAPI?.Results?.Error?.APIErrorDescription;
   if (err) throw new Error(err);
   return json.BEAAPI?.Results?.Data ?? [];
+}
+
+/** Resolve MARPP LineCodes by Description NAME (not hardcoded numbers). */
+async function resolveMarppLineCodes(
+  key: string,
+): Promise<{ allItems: string; components: { label: string; lineCode: string }[] }> {
+  const json = (await beaRequest(key, {
+    method: 'GetParameterValues',
+    ParameterName: 'LineCode',
+    TableName: 'MARPP',
+  })) as {
+    BEAAPI?: {
+      Results?: {
+        ParamValue?: BeaParam[];
+        Error?: { APIErrorDescription?: string };
+      };
+    };
+  };
+  const err = json.BEAAPI?.Results?.Error?.APIErrorDescription;
+  if (err) throw new Error(err);
+  const params = json.BEAAPI?.Results?.ParamValue ?? [];
+  const byDesc = new Map<string, string>();
+  for (const p of params) {
+    const desc = (p.Desc ?? '').trim();
+    const code = (p.Key ?? '').trim();
+    if (desc && code) byDesc.set(desc.toLowerCase(), code);
+  }
+
+  const allItems =
+    byDesc.get('all items') ??
+    byDesc.get('rpps: all items') ??
+    [...byDesc.entries()].find(([d]) => d.includes('all items'))?.[1] ??
+    '1';
+
+  const components: { label: string; lineCode: string }[] = [];
+  for (const label of PREFERRED_COMPONENT_NAMES) {
+    const code =
+      byDesc.get(label.toLowerCase()) ??
+      [...byDesc.entries()].find(([d]) => d === label.toLowerCase() || d.includes(label.toLowerCase()))?.[1];
+    if (code) components.push({ label, lineCode: code });
+  }
+
+  // Fallback: common published MARPP housing/utilities codes if catalog sparse
+  if (components.length === 0) {
+    const housing = byDesc.get('housing');
+    const utilities = byDesc.get('utilities');
+    if (housing) components.push({ label: 'Housing', lineCode: housing });
+    if (utilities) components.push({ label: 'Utilities', lineCode: utilities });
+  }
+
+  return { allItems, components };
 }
 
 async function main(): Promise<void> {
@@ -86,44 +145,62 @@ async function main(): Promise<void> {
   let period = year;
   const components: { label: string; index: number }[] = [];
   const metros: { name: string; index: number }[] = [];
+  let lineCodes: Awaited<ReturnType<typeof resolveMarppLineCodes>> | null = null;
 
   try {
+    lineCodes = await resolveMarppLineCodes(key);
+    if (lineCodes.components.length === 0) {
+      errors.push('MARPP LineCode catalog resolved no expenditure components by NAME');
+    }
+
     const stateRows = await beaGet(key, {
       TableName: 'MARPP',
-      LineCode: '1',
+      LineCode: lineCodes.allItems,
       GeoFips: '12000',
       Year: year,
     });
     const stateRow = stateRows[0];
     if (stateRow?.DataValue) {
-      allItemsIndex = Number.parseFloat(stateRow.DataValue);
+      const n = Number.parseFloat(stateRow.DataValue);
+      allItemsIndex = Number.isFinite(n) && n > 0 ? n : null;
       period = stateRow.TimePeriod ?? year;
+      if (allItemsIndex == null) errors.push('state all-items MARPP invalid/sentinel');
     } else {
       errors.push('state all-items MARPP missing');
     }
 
-    for (const comp of COMPONENT_LINES) {
+    for (const comp of lineCodes.components) {
       const rows = await beaGet(key, {
         TableName: 'MARPP',
-        LineCode: String(comp.lineCode),
+        LineCode: comp.lineCode,
         GeoFips: '12000',
         Year: year,
       });
       const val = rows[0]?.DataValue;
-      if (val) components.push({ label: comp.label, index: Number.parseFloat(val) });
-      else errors.push(`component ${comp.label} missing`);
+      if (val) {
+        const n = Number.parseFloat(val);
+        if (Number.isFinite(n) && n > 0) components.push({ label: comp.label, index: n });
+        else errors.push(`component ${comp.label} invalid/sentinel`);
+      } else {
+        errors.push(`component ${comp.label} missing`);
+      }
     }
 
     for (const metro of METRO_GEO) {
       const rows = await beaGet(key, {
         TableName: 'MARPP',
-        LineCode: '1',
+        LineCode: lineCodes.allItems,
         GeoFips: metro.geoFips,
         Year: year,
       });
       const val = rows[0]?.DataValue;
-      if (val) metros.push({ name: metro.name, index: Number.parseFloat(val) });
-      else errors.push(`metro ${metro.name} missing`);
+      if (val) {
+        const n = Number.parseFloat(val);
+        if (Number.isFinite(n) && n > 0) metros.push({ name: metro.name, index: n });
+        else errors.push(`metro ${metro.name} invalid/sentinel`);
+      } else {
+        errors.push(`metro ${metro.name} missing`);
+      }
     }
   } catch (err) {
     errors.push(err instanceof Error ? err.message : String(err));
@@ -132,7 +209,7 @@ async function main(): Promise<void> {
   const fetchedLive =
     errors.length === 0 &&
     allItemsIndex != null &&
-    components.length === COMPONENT_LINES.length &&
+    components.length > 0 &&
     metros.length === METRO_GEO.length;
 
   const payload = {
@@ -146,9 +223,12 @@ async function main(): Promise<void> {
       fetchedAt: fetchedLive ? new Date().toISOString() : undefined,
       datasetUrl: 'https://apps.bea.gov/api/data/?datasetname=Regional&TableName=MARPP',
       note: fetchedLive
-        ? `BEA MARPP ${period} — state, components, and metro sample from live API.`
+        ? `BEA MARPP ${period} — LineCodes resolved by NAME; state, components, metro sample.`
         : `BEA fetch incomplete: ${errors.join('; ') || 'unknown'}`,
       errors: errors.length ? errors : undefined,
+      resolvedLineCodes: lineCodes
+        ? { allItems: lineCodes.allItems, components: lineCodes.components }
+        : undefined,
     },
     state: fetchedLive
       ? {
