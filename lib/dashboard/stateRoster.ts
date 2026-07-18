@@ -87,13 +87,13 @@ function matchesVoterTopics(p: Politician, topics: VoterTopicFilter[]): boolean 
 }
 
 export function totalRaisedForSort(p: Politician): number {
-  const fec = getFecFinance(p.id);
+  const fec = getFecFinance(p.id, p.bioguideId);
   if (fec) return fec.receipts;
   return p.campaignFinance.totalRaised;
 }
 
 export function newestTradeTimestamp(p: Politician): number {
-  const { trades } = mergeStockTrades(p.id, p.stockTrades, p.recordType);
+  const { trades } = mergeStockTrades(p.id, p.stockTrades, p.recordType, p.bioguideId);
   if (trades.length === 0) return 0;
   return Math.max(...trades.map((t) => new Date(t.date).getTime()));
 }

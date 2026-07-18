@@ -40,8 +40,8 @@ export async function generateMetadata({
 function buildStateRoster(stateCode: string): DashboardPolitician[] {
   return getPoliticiansForState(stateCode)
     .map((p) => {
-      const { trades } = mergeStockTrades(p.id, p.stockTrades, p.recordType);
-      const fec = getFecFinance(p.id);
+      const { trades } = mergeStockTrades(p.id, p.stockTrades, p.recordType, p.bioguideId);
+      const fec = getFecFinance(p.id, p.bioguideId);
       return {
         ...p,
         resolvedOffice: resolveOffice(p),

@@ -5,8 +5,9 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { allPoliticians } from '../../lib/data/allPoliticians';
-import { mergeCampaignFinance } from '../../lib/data/fecFinance';
+import { getFecFinance, mergeCampaignFinance } from '../../lib/data/fecFinance';
 import { mergeVotingRecord } from '../../lib/data/congressVotes';
+import { totalRaisedForSort } from '../../lib/dashboard/stateRoster';
 import {
   MIGRATED_NOT_LIGHTWEIGHT_KNOWN_BAD,
   MIGRATED_NOT_LIGHTWEIGHT_KNOWN_GOOD,
@@ -90,4 +91,14 @@ test('migrated profiles: memberProfile override active and roster recordType is 
     0,
     `migrated profiles must not be lightweight:\n${violations.join('\n')}`,
   );
+});
+
+test('migrated profile aggregate finance sort resolves memberProfile by bioguideId', () => {
+  const cruz = allPoliticians.find((p) => p.bioguideId === 'C001098');
+  assert.ok(cruz, 'C001098 must be present in the roster');
+  assert.notEqual(cruz.id, cruz.bioguideId, 'fixture needs slug id distinct from bioguideId');
+
+  const profileFinance = getFecFinance(cruz.id, cruz.bioguideId);
+  assert.ok(profileFinance, 'C001098 profile finance must resolve through bioguideId');
+  assert.equal(totalRaisedForSort(cruz), profileFinance.receipts);
 });

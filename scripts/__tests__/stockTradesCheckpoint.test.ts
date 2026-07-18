@@ -4,9 +4,11 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { StockTrade } from '../../lib/types';
+import { allPoliticians } from '../../lib/data/allPoliticians';
 import {
   buildHouseStockTradeEntry,
   buildMergedStockTradesMeta,
+  mergeStockTrades,
   stockEntryToProfileTradesFile,
   type StockTradeEntry,
 } from '../../lib/data/stockTrades';
@@ -72,6 +74,25 @@ test('unparsed House PTR filings get honest note not clean empty (Kelly docIds 2
   assert.match(profileFile.note, /unparsed-filings/);
   assert.equal(profileFile.status, 'honest-gap');
   assert.equal(profileFile.trades.length, 0);
+});
+
+test('migrated profile aggregate paths resolve official trades by bioguideId', () => {
+  const pelosi = allPoliticians.find((p) => p.bioguideId === 'P000197');
+  assert.ok(pelosi, 'P000197 must be present in the roster');
+  assert.notEqual(pelosi.id, pelosi.bioguideId, 'fixture needs slug id distinct from bioguideId');
+
+  const withoutBioguide = mergeStockTrades(pelosi.id, pelosi.stockTrades, pelosi.recordType);
+  const withBioguide = mergeStockTrades(
+    pelosi.id,
+    pelosi.stockTrades,
+    pelosi.recordType,
+    pelosi.bioguideId,
+  );
+
+  assert.equal(withoutBioguide.usingOfficialTrades, false);
+  assert.equal(withBioguide.usingOfficialTrades, true);
+  assert.ok(withBioguide.trades.length > 0, 'bioguideId lookup must expose official PTR rows');
+  assert.equal(withBioguide.officialEntry?.politicianId, 'P000197');
 });
 
 test('scoped run meta merges from prior snapshot (§6 meta honesty)', () => {
