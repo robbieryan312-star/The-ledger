@@ -1,6 +1,8 @@
 /**
  * Derive educational attainment percentages from ACS B15003 table columns.
  * https://api.census.gov/data/2023/acs/acs5/variables/B15003_001E.json
+ *
+ * Returns null when total population is missing/zero — never emit false 0% rows.
  */
 
 export type AttainmentSummary = {
@@ -11,11 +13,11 @@ export type AttainmentSummary = {
   bachelorsPlusPct: number;
 };
 
-export function attainmentFromB15003(row: Record<string, string>): AttainmentSummary {
+export function attainmentFromB15003(row: Record<string, string>): AttainmentSummary | null {
   const n = (k: string) => Number(row[k]) || 0;
   const total = n('B15003_001E');
   if (total <= 0) {
-    return { hsPlusPct: 0, someCollegePct: 0, bachelorsPct: 0, graduatePct: 0, bachelorsPlusPct: 0 };
+    return null;
   }
   const hsDiploma = n('B15003_017E') + n('B15003_018E');
   const someCollege = n('B15003_019E') + n('B15003_020E') + n('B15003_021E');

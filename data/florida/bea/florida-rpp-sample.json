@@ -9,6 +9,7 @@
     "asOf": "2026-07-10",
     "count": 0,
     "stateCode": "FL",
+    "provenance": "honest-gap",
     "fetchedLive": false,
     "datasetUrl": "https://apps.bea.gov/api/data/?datasetname=Regional&TableName=MARPP",
     "note": "BEA_API_KEY not set — cost-of-living shows honest gap until key is configured."

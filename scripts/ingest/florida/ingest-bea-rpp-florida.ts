@@ -3,7 +3,7 @@
  * Output: data/florida/bea/florida-rpp-sample.json
  *
  * Usage: npm run ingest:bea-rpp-fl
- * Requires BEA_API_KEY — without it writes fetchedLive:false + state:null (honest gap).
+ * Requires BEA_API_KEY — without it writes provenance:'honest-gap' + state:null.
  */
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -66,6 +66,7 @@ async function main(): Promise<void> {
         asOf,
         count: 0,
         stateCode: 'FL',
+        provenance: 'honest-gap' as const,
         fetchedLive: false,
         datasetUrl: 'https://apps.bea.gov/api/data/?datasetname=Regional&TableName=MARPP',
         note: 'BEA_API_KEY not set — cost-of-living shows honest gap until key is configured.',
@@ -76,7 +77,7 @@ async function main(): Promise<void> {
     await mkdir(dir, { recursive: true });
     const out = path.join(dir, 'florida-rpp-sample.json');
     await writeFile(out, JSON.stringify(payload, null, 2) + '\n', 'utf8');
-    console.warn(`Wrote ${out} (live=false, BEA_API_KEY not set)`);
+    console.warn(`Wrote ${out} (provenance=honest-gap, BEA_API_KEY not set)`);
     return;
   }
 
@@ -140,6 +141,7 @@ async function main(): Promise<void> {
       asOf,
       count: fetchedLive ? 1 + components.length + metros.length : 0,
       stateCode: 'FL',
+      provenance: fetchedLive ? ('fetched-live' as const) : ('honest-gap' as const),
       fetchedLive,
       fetchedAt: fetchedLive ? new Date().toISOString() : undefined,
       datasetUrl: 'https://apps.bea.gov/api/data/?datasetname=Regional&TableName=MARPP',

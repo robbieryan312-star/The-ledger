@@ -2,6 +2,7 @@
  * Florida tax burden — federal from IRS brackets, FL $0 state, comparison from Tax Foundation.
  * Output: data/florida/taxes/florida-tax-burden-sample.json
  *
+ * Values are computed from published tables (not network-fetched).
  * Usage: npm run ingest:fl-tax
  */
 import { mkdir, writeFile } from 'node:fs/promises';
@@ -14,6 +15,23 @@ import {
   TF_STATE_LOCAL_BURDEN,
 } from '../../lib/tax-foundation-state-tax';
 import { loadEnvLocal, projectRoot } from '../../lib/ingest-utils';
+import type { ComputedProvenanceMeta } from '../../../lib/data/provenance';
+
+const computedAt = () => new Date().toISOString();
+
+function computedSection(
+  base: { name: string; url: string; tier: 'official' | 'nonpartisan'; citation: string },
+  at: string,
+): ComputedProvenanceMeta & { name: string; url: string } {
+  return {
+    name: base.name,
+    url: base.url,
+    tier: base.tier,
+    citation: base.citation,
+    computedAt: at,
+    provenance: 'computed-from-published-tables',
+  };
+}
 
 const FL_DOR_SOURCE = {
   name: 'Florida Department of Revenue',
@@ -34,6 +52,7 @@ const INCOME_LEVELS = [50_000, 100_000, 250_000] as const;
 async function main(): Promise<void> {
   await loadEnvLocal();
   const asOf = new Date().toISOString().slice(0, 10);
+  const at = computedAt();
 
   const federalTax = INCOME_LEVELS.map((inc) => federalTaxOnGrossIncomeSingle(inc));
   const floridaStateTax = INCOME_LEVELS.map(() => 0);
@@ -57,14 +76,28 @@ async function main(): Promise<void> {
       asOf,
       count: INCOME_LEVELS.length,
       stateCode: 'FL',
-      fetchedLive: true,
-      fetchedAt: new Date().toISOString(),
-      note: 'Federal tax from IRS 2024 brackets; FL state $0; state comparison from Tax Foundation 2024 bracket schedules; burden from Tax Foundation Facts & Figures.',
+      note: 'Federal tax from IRS 2024 brackets; FL state $0; state comparison from Tax Foundation 2024 bracket schedules; burden from Tax Foundation Facts & Figures. Computed from published tables — not a live API fetch.',
       provenance: {
-        federal: { ...IRS_SOURCE, fetchedLive: true },
-        floridaState: { ...FL_DOR_SOURCE, fetchedLive: true },
-        comparison: { ...TAX_FOUNDATION_CITATION, fetchedLive: true },
-        totalBurden: { ...TAX_FOUNDATION_BURDEN_CITATION, fetchedLive: true },
+        federal: computedSection(IRS_SOURCE, at),
+        floridaState: computedSection(FL_DOR_SOURCE, at),
+        comparison: computedSection(
+          {
+            name: TAX_FOUNDATION_CITATION.name,
+            url: TAX_FOUNDATION_CITATION.url,
+            tier: TAX_FOUNDATION_CITATION.tier,
+            citation: TAX_FOUNDATION_CITATION.citation,
+          },
+          at,
+        ),
+        totalBurden: computedSection(
+          {
+            name: TAX_FOUNDATION_BURDEN_CITATION.name,
+            url: TAX_FOUNDATION_BURDEN_CITATION.url,
+            tier: TAX_FOUNDATION_BURDEN_CITATION.tier,
+            citation: TAX_FOUNDATION_BURDEN_CITATION.citation,
+          },
+          at,
+        ),
       },
     },
     singleFiler: {
@@ -87,7 +120,7 @@ async function main(): Promise<void> {
   await mkdir(dir, { recursive: true });
   const out = path.join(dir, 'florida-tax-burden-sample.json');
   await writeFile(out, JSON.stringify(outPayload, null, 2) + '\n', 'utf8');
-  console.log(`Wrote ${out} (federal=${federalTax.join(',')})`);
+  console.log(`Wrote ${out} (federal=${federalTax.join(',')}; provenance=computed-from-published-tables)`);
 }
 
 main().catch((err) => {

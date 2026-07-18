@@ -357,7 +357,7 @@ function HonestGapRow({ label }: { label: string }) {
   return (
     <li className="flex items-center justify-between text-[11px] text-gray-500 py-1">
       <span>{label}</span>
-      <span className="text-gray-600 italic">No verified data yet</span>
+      <span className="text-gray-600 italic">No verified record available</span>
     </li>
   );
 }
@@ -453,7 +453,7 @@ function Phase2MetricsSection({ slice }: { slice: StateEconomicSlice }) {
       </dl>
       {gaps.includes('Florida-specific Consumer Price Index') && !cpi?.geography?.includes('FL') && (
         <p className="text-[10px] text-gray-600 mt-2 italic">
-          Florida-specific CPI: No verified data yet (US CPI-U shown as national inflation reference).
+          Florida-specific CPI: No verified record available (US CPI-U shown as national inflation reference).
         </p>
       )}
       <EducationTiersPanel tiers={slice.educationTiers ?? []} note={slice.meta.educationNote} />

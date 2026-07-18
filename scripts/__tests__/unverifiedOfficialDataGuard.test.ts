@@ -1,6 +1,6 @@
 /**
- * Build-gated guard: official/nonpartisan Florida dashboard data must be fetchedLive:true
- * when numeric payload is present — prevents placeholder-as-sourced regressions.
+ * Build-gated guard: official/nonpartisan Florida dashboard data must carry
+ * provenance fetched-live or computed-from-published-tables when numeric payload is present.
  */
 import assert from 'node:assert/strict';
 import { existsSync } from 'node:fs';
@@ -11,8 +11,11 @@ import test from 'node:test';
 import {
   FL_DASHBOARD_CREDIBILITY_FILES,
   UNVERIFIED_OFFICIAL_KNOWN_BAD,
+  UNVERIFIED_OFFICIAL_KNOWN_BAD_MISSING_PROVENANCE,
+  UNVERIFIED_OFFICIAL_KNOWN_BAD_ZERO_ATTAINMENT,
   UNVERIFIED_OFFICIAL_KNOWN_GAP,
   UNVERIFIED_OFFICIAL_KNOWN_GOOD,
+  UNVERIFIED_OFFICIAL_KNOWN_GOOD_COMPUTED,
   floridaDashboardDataPath,
 } from '../../lib/data/__fixtures__/unverifiedOfficialDataGuard.fixture';
 import {
@@ -21,8 +24,9 @@ import {
 } from '../lib/florida-dashboard-credibility';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+void projectRoot;
 
-test('fixture: official numeric payload with fetchedLive:false is a known-bad case', () => {
+test('fixture: honest-gap provenance with numeric payload is a known-bad case', () => {
   const violations = auditFloridaDashboardJson(
     'fixture-bad',
     JSON.stringify(UNVERIFIED_OFFICIAL_KNOWN_BAD),
@@ -30,7 +34,23 @@ test('fixture: official numeric payload with fetchedLive:false is a known-bad ca
   assert.ok(violations.length > 0, 'expected violation for placeholder official data');
 });
 
-test('fixture: fetchedLive:true with numeric payload passes', () => {
+test('fixture: missing provenance on official numeric is a known-bad case', () => {
+  const violations = auditFloridaDashboardJson(
+    'fixture-bad-missing-prov',
+    JSON.stringify(UNVERIFIED_OFFICIAL_KNOWN_BAD_MISSING_PROVENANCE),
+  );
+  assert.ok(violations.length > 0, 'expected violation for missing provenance');
+});
+
+test('fixture: zero attainment with fetched-live is a known-bad case', () => {
+  const violations = auditFloridaDashboardJson(
+    'fixture-bad-zero-att',
+    JSON.stringify(UNVERIFIED_OFFICIAL_KNOWN_BAD_ZERO_ATTAINMENT),
+  );
+  assert.ok(violations.length > 0, 'expected violation for all-zero attainment');
+});
+
+test('fixture: fetched-live with numeric payload passes', () => {
   const violations = auditFloridaDashboardJson(
     'fixture-good',
     JSON.stringify(UNVERIFIED_OFFICIAL_KNOWN_GOOD),
@@ -38,7 +58,15 @@ test('fixture: fetchedLive:true with numeric payload passes', () => {
   assert.equal(violations.length, 0);
 });
 
-test('fixture: unfetched BEA with null state (honest gap) passes', () => {
+test('fixture: computed-from-published-tables with citation+computedAt passes', () => {
+  const violations = auditFloridaDashboardJson(
+    'fixture-good-computed',
+    JSON.stringify(UNVERIFIED_OFFICIAL_KNOWN_GOOD_COMPUTED),
+  );
+  assert.equal(violations.length, 0);
+});
+
+test('fixture: honest-gap with null state passes', () => {
   const violations = auditFloridaDashboardJson(
     'fixture-gap',
     JSON.stringify(UNVERIFIED_OFFICIAL_KNOWN_GAP),

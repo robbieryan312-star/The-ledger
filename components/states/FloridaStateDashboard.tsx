@@ -44,13 +44,24 @@ export type FloridaDashboardProps = {
         bachelorsPct: number;
         graduatePct: number;
         bachelorsPlusPct: number;
-      };
-      usAttainmentBachelorsPlusPct?: number;
+      } | null;
+      usAttainmentBachelorsPlusPct?: number | null;
     };
-    meta: { fetchedLive: boolean };
+    meta: {
+      provenance?: 'fetched-live' | 'computed-from-published-tables' | 'honest-gap';
+      fetchedLive: boolean;
+      censusFetchedLive?: boolean;
+      blsFetchedLive?: boolean;
+      attainmentFetchedLive?: boolean;
+    };
   };
   rpp: {
-    meta: { fetchedLive: boolean; asOf: string; note?: string };
+    meta: {
+      provenance?: 'fetched-live' | 'computed-from-published-tables' | 'honest-gap';
+      fetchedLive: boolean;
+      asOf: string;
+      note?: string;
+    };
     state: {
       allItemsIndex: number;
       period: string;
@@ -74,12 +85,39 @@ export type FloridaDashboardProps = {
     };
     meta: {
       asOf: string;
-      fetchedLive: boolean;
       provenance: {
-        federal: { name: string; url: string; tier: 'official' | 'nonpartisan'; citation?: string };
-        floridaState: { name: string; url: string; tier: 'official' | 'nonpartisan'; citation?: string };
-        comparison: { name: string; url: string; tier: 'official' | 'nonpartisan'; citation?: string };
-        totalBurden: { name: string; url: string; tier: 'official' | 'nonpartisan'; citation?: string };
+        federal: {
+          name: string;
+          url: string;
+          tier: 'official' | 'nonpartisan';
+          citation?: string;
+          provenance: 'computed-from-published-tables';
+          computedAt: string;
+        };
+        floridaState: {
+          name: string;
+          url: string;
+          tier: 'official' | 'nonpartisan';
+          citation?: string;
+          provenance: 'computed-from-published-tables';
+          computedAt: string;
+        };
+        comparison: {
+          name: string;
+          url: string;
+          tier: 'official' | 'nonpartisan';
+          citation?: string;
+          provenance: 'computed-from-published-tables';
+          computedAt: string;
+        };
+        totalBurden: {
+          name: string;
+          url: string;
+          tier: 'official' | 'nonpartisan';
+          citation?: string;
+          provenance: 'computed-from-published-tables';
+          computedAt: string;
+        };
       };
     };
   };
@@ -148,7 +186,7 @@ function CountyMiniRows({
         const raw = r[valueKey];
         const display =
           raw === null || raw === undefined
-            ? 'No verified data yet'
+            ? 'No verified record available'
             : format(raw as number);
         return (
           <div key={r.fips} className="grid grid-cols-[auto_1fr_auto] gap-2 text-[11px] text-[var(--foreground)]/85 py-0.5">
@@ -163,7 +201,7 @@ function CountyMiniRows({
 }
 
 const HONEST_GAP = (
-  <span className="italic text-[var(--muted)]">No verified data yet</span>
+  <span className="italic text-[var(--muted)]">No verified record available</span>
 );
 
 function StatCard({
@@ -340,9 +378,16 @@ export default function FloridaStateDashboard({
   const attain = counties.stateSummary.attainment;
   const usBachelorsPlus = counties.stateSummary.usAttainmentBachelorsPlusPct;
   const bachelorsNatDelta =
-    usBachelorsPlus != null ? attain.bachelorsPlusPct - usBachelorsPlus : null;
-  const countiesLive = counties.meta.fetchedLive;
-  const rppLive = rpp.meta.fetchedLive;
+    attain != null && usBachelorsPlus != null ? attain.bachelorsPlusPct - usBachelorsPlus : null;
+  const countiesLive =
+    counties.meta.provenance === 'fetched-live' ||
+    counties.meta.censusFetchedLive === true ||
+    counties.meta.fetchedLive === true;
+  const attainmentLive =
+    counties.meta.attainmentFetchedLive === true ||
+    (countiesLive && attain != null);
+  const rppLive =
+    rpp.meta.provenance === 'fetched-live' || rpp.meta.fetchedLive === true;
 
   return (
     <div className="max-w-[1160px] mx-auto grid grid-cols-1 lg:grid-cols-[248px_1fr] min-h-screen bg-[var(--bg-base)]">
@@ -592,17 +637,17 @@ export default function FloridaStateDashboard({
             )}
             <StatCard
               label="Adults with a bachelor's+"
-              value={countiesLive ? `${attain.bachelorsPlusPct}%` : '—'}
+              value={attainmentLive && attain != null ? `${attain.bachelorsPlusPct}%` : '—'}
               tier="official"
               sub={
-                countiesLive && bachelorsNatDelta != null ? (
+                attainmentLive && bachelorsNatDelta != null ? (
                   <span>{bachelorsNatDelta >= 0 ? '+' : ''}{bachelorsNatDelta.toFixed(1)} pts vs U.S. average</span>
                 ) : (
                   HONEST_GAP
                 )
               }
             >
-              {countiesLive && (
+              {attainmentLive && attain != null && (
                 <details className="mt-2">
                   <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">
                     Attainment breakdown ▾{countiesLive && <SampleBadge />}
@@ -624,7 +669,7 @@ export default function FloridaStateDashboard({
 
           <div className="mt-4 rounded-lg border border-dashed border-[var(--border-subtle)] bg-[var(--foreground)]/[0.02] p-3 text-[11.5px] text-[var(--muted)]">
             <span className="text-[var(--gold)] font-medium">Fastest-growing occupations:</span>{' '}
-            No verified data yet — BLS Employment Projections sample pending (honest gap).
+            No verified record available — BLS Employment Projections sample pending (honest gap).
           </div>
         </SectionShell>
 

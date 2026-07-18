@@ -1,39 +1,41 @@
 {
   "meta": {
-    "asOf": "2026-07-10",
+    "asOf": "2026-07-18",
     "count": 3,
     "stateCode": "FL",
-    "fetchedLive": true,
-    "fetchedAt": "2026-07-10T12:59:55.228Z",
-    "note": "Federal tax from IRS 2024 brackets; FL state $0; state comparison from Tax Foundation 2024 bracket schedules; burden from Tax Foundation Facts & Figures.",
+    "note": "Federal tax from IRS 2024 brackets; FL state $0; state comparison from Tax Foundation 2024 bracket schedules; burden from Tax Foundation Facts & Figures. Computed from published tables — not a live API fetch.",
     "provenance": {
       "federal": {
         "name": "Internal Revenue Service",
         "url": "https://www.irs.gov/newsroom/irs-provides-tax-inflation-adjustments-for-tax-year-2024",
         "tier": "official",
         "citation": "IRS Rev. Proc. 2023-34 (tax year 2024, single filer)",
-        "fetchedLive": true
+        "computedAt": "2026-07-18T23:00:56.918Z",
+        "provenance": "computed-from-published-tables"
       },
       "floridaState": {
         "name": "Florida Department of Revenue",
         "url": "https://floridarevenue.com",
         "tier": "official",
         "citation": "Florida has no state personal income tax",
-        "fetchedLive": true
+        "computedAt": "2026-07-18T23:00:56.918Z",
+        "provenance": "computed-from-published-tables"
       },
       "comparison": {
         "name": "Tax Foundation",
         "url": "https://taxfoundation.org/data/all/state/state-income-tax-rates-2024/",
         "tier": "nonpartisan",
         "citation": "Tax Foundation State Individual Income Tax Rates and Brackets (2024)",
-        "fetchedLive": true
+        "computedAt": "2026-07-18T23:00:56.918Z",
+        "provenance": "computed-from-published-tables"
       },
       "totalBurden": {
         "name": "Tax Foundation",
         "url": "https://taxfoundation.org/data/all/state/state-local-tax-burden/",
         "tier": "nonpartisan",
         "citation": "Tax Foundation Facts & Figures — state and local tax burden (% of income)",
-        "fetchedLive": true
+        "computedAt": "2026-07-18T23:00:56.918Z",
+        "provenance": "computed-from-published-tables"
       }
     }
   },

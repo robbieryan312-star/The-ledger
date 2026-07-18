@@ -27,7 +27,7 @@ export default function LobbyingPage() {
 
       <div className="text-center py-16">
         <Building2 className="h-12 w-12 mx-auto mb-4 text-gray-600" />
-        <p className="text-lg text-white/60 font-medium">No verified data yet</p>
+        <p className="text-lg text-white/60 font-medium">No verified record available</p>
         <p className="text-gray-500 text-sm mt-2 max-w-md mx-auto leading-relaxed">
           Lobbying group profiles will be populated when real pipelines are integrated from
           LDA, FARA, and FEC disclosure records.

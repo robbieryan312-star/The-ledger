@@ -5,6 +5,7 @@ import countiesSample from '../../data/florida/census/florida-counties-sample.js
 import rppSample from '../../data/florida/bea/florida-rpp-sample.json';
 import taxSample from '../../data/florida/taxes/florida-tax-burden-sample.json';
 import type { StateEconomicSlice } from '../types/snapshotTypes';
+import type { ComputedProvenanceMeta, DataProvenance } from './provenance';
 
 export type FloridaCountyRow = {
   fips: string;
@@ -23,18 +24,27 @@ export type FloridaAttainment = {
   bachelorsPlusPct: number;
 };
 
+export type FloridaTaxSectionProvenance = ComputedProvenanceMeta & {
+  name: string;
+  url: string;
+};
+
 export function getFloridaCountiesSample(): {
   records: FloridaCountyRow[];
   stateSummary: {
     populationRank: number | null;
     populationGrowthPct: number | null;
-    attainment: FloridaAttainment;
-    usAttainmentBachelorsPlusPct?: number;
+    attainment: FloridaAttainment | null;
+    usAttainmentBachelorsPlusPct?: number | null;
   };
   meta: {
     source: { name: string; url: string; tier: string };
     asOf: string;
+    provenance: DataProvenance;
     fetchedLive: boolean;
+    censusFetchedLive: boolean;
+    blsFetchedLive: boolean;
+    attainmentFetchedLive: boolean;
     note?: string;
   };
 } {
@@ -46,6 +56,7 @@ export function getFloridaRppSample() {
     meta: {
       source: { name: string; url: string; tier: string };
       asOf: string;
+      provenance: DataProvenance;
       fetchedLive: boolean;
       note?: string;
     };
@@ -62,12 +73,11 @@ export function getFloridaTaxSample() {
   return taxSample as {
     meta: {
       asOf: string;
-      fetchedLive: boolean;
       provenance: {
-        federal: { name: string; url: string; tier: 'official' | 'nonpartisan'; citation?: string; fetchedLive: boolean };
-        floridaState: { name: string; url: string; tier: 'official' | 'nonpartisan'; citation?: string; fetchedLive: boolean };
-        comparison: { name: string; url: string; tier: 'official' | 'nonpartisan'; citation?: string; fetchedLive: boolean };
-        totalBurden: { name: string; url: string; tier: 'official' | 'nonpartisan'; citation?: string; fetchedLive: boolean };
+        federal: FloridaTaxSectionProvenance;
+        floridaState: FloridaTaxSectionProvenance;
+        comparison: FloridaTaxSectionProvenance;
+        totalBurden: FloridaTaxSectionProvenance;
       };
     };
     singleFiler: {

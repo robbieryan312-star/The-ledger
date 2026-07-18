@@ -113,7 +113,7 @@ async function assertImagesLoad(page: Page, label: string): Promise<void> {
 async function assertRequiredSections(page: Page, pagePath: string, label: string): Promise<void> {
   const required = REQUIRED_SECTIONS[pagePath] ?? [];
   for (const sel of required) {
-    const empty = await page.evaluate((selector) => {
+    const empty = await page.evaluate((selector: string) => {
       const el = document.querySelector(selector);
       if (!el) return 'missing';
       const text = (el.textContent ?? '').replace(/\s+/g, ' ').trim();

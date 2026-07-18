@@ -46,3 +46,26 @@ test('app/ and components/ contain no Tier N copy or Wikipedia references', () =
     `copy compliance violations:\n${violations.join('\n')}`,
   );
 });
+
+const BANNED_GAP_COPY = /No verified data yet/;
+
+test('app/ and components/ use platform honest-gap copy (not "No verified data yet")', () => {
+  const violations: string[] = [];
+  for (const root of ROOTS) {
+    for (const file of collectTsxFiles(root)) {
+      const content = readFileSync(file, 'utf8');
+      const lines = content.split('\n');
+      lines.forEach((line, idx) => {
+        if (line.trim().startsWith('//') || line.trim().startsWith('*')) return;
+        if (BANNED_GAP_COPY.test(line)) {
+          violations.push(`${file}:${idx + 1}: banned honest-gap copy — ${line.trim().slice(0, 100)}`);
+        }
+      });
+    }
+  }
+  assert.equal(
+    violations.length,
+    0,
+    `honest-gap copy must be "No verified record available":\n${violations.join('\n')}`,
+  );
+});

@@ -99,11 +99,18 @@ async function main(): Promise<void> {
 
   const lausIds = records.map((r) => countyLausSeriesId(r.fips));
   const yearNow = new Date().getFullYear();
-  const blsMap = await fetchBlsSeries(lausIds, yearNow - 2, yearNow);
-  records = records.map((r) => {
-    const pt = latestPoint(blsMap.get(countyLausSeriesId(r.fips)));
-    return { ...r, unemploymentRate: pt?.value ?? null };
-  });
+  let blsFetchedLive = false;
+  try {
+    const blsMap = await fetchBlsSeries(lausIds, yearNow - 2, yearNow);
+    records = records.map((r) => {
+      const pt = latestPoint(blsMap.get(countyLausSeriesId(r.fips)));
+      return { ...r, unemploymentRate: pt?.value ?? null };
+    });
+    blsFetchedLive = records.some((r) => r.unemploymentRate != null);
+  } catch (err) {
+    console.warn('BLS LAUS fetch failed:', err instanceof Error ? err.message : err);
+    blsFetchedLive = false;
+  }
 
   let attainmentUrl = '';
   let flAttainment = attainmentFromB15003({});
@@ -119,7 +126,7 @@ async function main(): Promise<void> {
         obj[col] = row[i];
       });
       flAttainment = attainmentFromB15003(obj);
-      attainmentUrl = url;
+      if (flAttainment) attainmentUrl = url;
       break;
     } catch {
       // try prior year
@@ -139,6 +146,9 @@ async function main(): Promise<void> {
   } catch (err) {
     console.warn('US attainment fetch failed:', err instanceof Error ? err.message : err);
   }
+
+  const attainmentFetchedLive = flAttainment != null;
+  const censusFetchedLive = records.length > 0;
 
   const popRankUrl = `https://api.census.gov/data/${usedYear}/acs/acs5?get=NAME,B01003_001E&for=state:*&key=${encodeURIComponent(key)}`;
   const popRankRaw = await fetchCensusJson(popRankUrl);
@@ -162,16 +172,22 @@ async function main(): Promise<void> {
     populationGrowthPct = null;
   }
 
+  const anyLive = censusFetchedLive || blsFetchedLive || attainmentFetchedLive;
+
   const payload = {
     meta: {
       source: CENSUS_SOURCE,
       asOf,
       count: records.length,
       stateCode: 'FL',
-      fetchedLive: true,
+      provenance: anyLive ? ('fetched-live' as const) : ('honest-gap' as const),
+      fetchedLive: anyLive,
+      censusFetchedLive,
+      blsFetchedLive,
+      attainmentFetchedLive,
       fetchedAt: new Date().toISOString(),
       datasetUrl: countyUrl.replace(/key=[^&]+/, 'key=***'),
-      attainmentUrl: attainmentUrl.replace(/key=[^&]+/, 'key=***'),
+      attainmentUrl: attainmentUrl ? attainmentUrl.replace(/key=[^&]+/, 'key=***') : undefined,
       note: `ACS ${usedYear} county sample (n=${records.length}) + B15003 state attainment. County unemployment from BLS LAUS.`,
       blsSource: {
         name: 'U.S. Bureau of Labor Statistics',
@@ -184,7 +200,7 @@ async function main(): Promise<void> {
       populationRank: flRank || null,
       populationGrowthPct,
       attainment: flAttainment,
-      usAttainmentBachelorsPlusPct: usAttainment.bachelorsPlusPct,
+      usAttainmentBachelorsPlusPct: usAttainment?.bachelorsPlusPct ?? null,
     },
     records,
   };
@@ -193,7 +209,9 @@ async function main(): Promise<void> {
   await mkdir(dir, { recursive: true });
   const out = path.join(dir, 'florida-counties-sample.json');
   await writeFile(out, JSON.stringify(payload, null, 2) + '\n', 'utf8');
-  console.log(`Wrote ${out} (${records.length} counties, live=true)`);
+  console.log(
+    `Wrote ${out} (${records.length} counties; census=${censusFetchedLive} bls=${blsFetchedLive} attainment=${attainmentFetchedLive})`,
+  );
 }
 
 main().catch((err) => {

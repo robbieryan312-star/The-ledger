@@ -8,11 +8,64 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-18):**
-- Branch: `cursor/fl-state-locked-spec-70a6` · HEAD pending (access-fix commit)
-- PR: **#25** draft · Phase -1 access fix in progress · **STOP after Phase D** for Claude re-review
-- Tree: dirty · full audit now on disk for Claude
+- Branch: `cursor/fl-state-locked-spec-70a6` · HEAD `c818ba5`
+- PR: **#25** draft · Phase A credibility hardening implemented · **Phases B/C/D not started**
+- Tree: clean after Phase A commit · `test:no-unverified-official-data` 7/7 · `test:typecheck` pass
 
-## Latest session — Why Claude could not see the FL audit + fix (COMPLETE)
+## Latest session — FL Phase A provenance + guard hardening (PASS)
+
+### Objective
+Phase A credibility hardening: provenance enum, tax computed provenance, guard rewrite,
+attainment null-on-zero, counties split live flags, BEA honest-gap provenance, KEYS,
+honest-gap copy, `ingest:florida-all` wiring.
+
+### Verdict / outcome
+**PASS** — Phase A complete. Do not start Phase B/C/D.
+
+### Commits
+- `c818ba5` — feat(fl): phase A provenance enum + guard hardening
+
+### Commands run (this session)
+- `npm run ingest:fl-tax` → exit 0
+- `npm run test:no-unverified-official-data` → 7/7 pass
+- `npm run test:copy-compliance` → 2/2 pass
+- `npm run test:typecheck` → exit 0 (after installing playwright types in env + selector annotation)
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/provenance.ts` | created | `DataProvenance` enum + computed/fetched/gap meta types |
+| `scripts/lib/florida-dashboard-credibility.ts` | rewritten | provenance enum guard; stateSummary∪records; split flags; zero-attainment |
+| `scripts/ingest/florida/ingest-florida-tax-burden.ts` | rewritten | `computed-from-published-tables` + citation + computedAt |
+| `data/florida/taxes/florida-tax-burden-sample.json` | updated | matching provenance shape |
+| `data/florida/census/florida-counties-sample.json` | updated | provenance + census/bls/attainmentFetchedLive |
+| `data/florida/bea/florida-rpp-sample.json` | updated | `provenance: honest-gap` |
+| `scripts/lib/census-attainment.ts` | updated | return `null` when total≤0 |
+| `KEYS.md` | updated | CENSUS required; BEA_API_KEY EMPTY |
+| `package.json` | updated | fl-counties / bea-rpp-fl / fl-tax in `ingest:florida-all` |
+| FL dashboard + app honest-gap surfaces | updated | "No verified record available" + copy-compliance test |
+
+### Acceptance evidence
+- Guard fixtures: bad (honest-gap+numbers), missing provenance, zero attainment; good live + computed + gap
+- Tax sample: no top-level `fetchedLive`; sections use `computed-from-published-tables`
+- Counties sample: three split flags true + `provenance: fetched-live` (numbers unchanged)
+
+### Open / next
+- Phase B/C/D per CONSOLIDATED BRIEF — **not started** (STOP after Phase A per brief)
+
+### Decisions still binding (RESOLVED — do not re-ask)
+
+| Q | Decision |
+|---|----------|
+| Q1 Census keyless | **CENSUS_API_KEY REQUIRED** — hard-exit; document in KEYS.md; remove "keyless" claims |
+| Q2 Tax fetchedLive | Provenance enum: `'fetched-live'` \| `'computed-from-published-tables'` (citation + computedAt) \| `'honest-gap'`. Tax → computed-from-published-tables |
+| Q3 Dual data paths | **Single read-path**: county ingest also fetches state B01003/B19013/B25077 (same ACS vintage); `build-data-slices` consumes it; slice is the only accessor components read |
+| Q4 CourtListener tier | **`'nonpartisan'`** (committed JSON correct); opinion links to court's own record stay `'official'` |
+| Q5 Honest-gap copy | Standardize **"No verified record available"** everywhere; enforce via copy-compliance |
+
+---
+
+## Session log 2 — Why Claude could not see the FL audit + fix (COMPLETE)
 
 ### Objective
 Investigate and fix why Claude Code could not access Cursor's infrastructure
@@ -41,16 +94,6 @@ Binding rule: *“Claude Code cannot see Cursor chat. Unlogged session = failed 
 
 ### Full audit location
 → **[`docs/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md`](./FL_INFRASTRUCTURE_AUDIT_2026-07-12.md)**
-
-### Decisions still binding (RESOLVED — do not re-ask)
-
-| Q | Decision |
-|---|----------|
-| Q1 Census keyless | **CENSUS_API_KEY REQUIRED** — hard-exit; document in KEYS.md; remove "keyless" claims |
-| Q2 Tax fetchedLive | Provenance enum: `'fetched-live'` \| `'computed-from-published-tables'` (citation + computedAt) \| `'honest-gap'`. Tax → computed-from-published-tables |
-| Q3 Dual data paths | **Single read-path**: county ingest also fetches state B01003/B19013/B25077 (same ACS vintage); `build-data-slices` consumes it; slice is the only accessor components read |
-| Q4 CourtListener tier | **`'nonpartisan'`** (committed JSON correct); opinion links to court's own record stay `'official'` |
-| Q5 Honest-gap copy | Standardize **"No verified record available"** everywhere; enforce via copy-compliance |
 
 ---
 
