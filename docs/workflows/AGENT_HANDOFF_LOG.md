@@ -7,100 +7,194 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-11):**
-- Branch: `cursor/critical-bug-management-c8a7` · task commit `259a631`
-- PR: pending creation for topic-sync data-loss fix
-- Tree: docs handoff log dirty before this log commit
-- Build status: **PASS** after retry (`npm run test:topic-positions-bundle && npm run build`)
+**Current state (2026-07-18):**
+- Branch: `cursor/fl-state-locked-spec-70a6` · merging `origin/main` (#26) · tip pending Phase D handoff commit
+- PR: **#25** · CONSOLIDATED BRIEF v2 Phases -1/0/A/B/C landed · Phase D in progress
+- Tree: resolving merge with `main` · Next build green; render-integrity 2/2 (warmed server)
 
 ## Improvement backlog
 
 | Date | Item | Status |
 |------|------|--------|
-| 2026-07-11 | Dependency audit reports 7 vulnerabilities after `npm install` (2 moderate, 5 high); run a scoped dependency audit/remediation pass separately from this critical data-loss fix. | open |
+| 2026-07-18 | `npm audit`: 7 vulns remain after safe `npm audit fix` — need upstream Next/react-simple-maps (see `docs/workflows/NPM_AUDIT_2026-07-18.md`) | open |
 | 2026-07-11 | Add an explicit guard for national news refresh semantics so a successful empty response cannot be confused with fetch failure or stale-window retention. | open |
 
-## Latest session — topic sync Said-Did preservation (COMPLETE)
+## Latest session — CONSOLIDATED BRIEF v2 Phases 0–D (IN PROGRESS)
+
+### Objective
+Execute CONSOLIDATED BRIEF v2 Phases -1→D on PR #25; log Claude-access fix + all phases; STOP for Claude re-review.
+
+### Verdict / outcome
+**IN PROGRESS** — Phases -1/0/A/B/C complete on branch; #26 merged to main; finishing Phase D PR reconciliation.
+
+### Commits (this branch)
+- `2fe20a4` — Phase A provenance + guard hardening
+- `104a442` — FL infrastructure audit on disk (Claude access)
+- `b2145db` — Phase 0 factual falsehoods
+- `dd7ce50` — Phases A remaining + B + C
+- `89a7dd9` — render-integrity postbuild hang fix
+- main: `402818b` — Merge #26 Said-Did preservation
+
+### Open / next
+- Finish Phase D: merge #25 → rebase #27/#24 → close #23 → full gate → STOP
+
+---
+
+## Session log 2 — topic sync Said-Did preservation (#26 MERGED)
 
 ### Objective
 Fix a high-severity data-loss path where `sync-topic-positions` erased committed Said-Did links when the national votes snapshot failed to load or omitted a member row.
 
 ### Verdict / outcome
-**PASS** — `sync-topic-positions` now preserves existing Said-Did links unless the national vote snapshot loaded successfully and contains the target member; the regression is build-gated by `test:topic-positions-bundle`.
+**COMPLETE** — merged to `main` as PR **#26** (`402818b`) on 2026-07-18 per CONSOLIDATED BRIEF Phase D(a).
 
 ### Commits
 - `259a631` — fix(topic-sync): preserve said-did links without vote input
-- Handoff log commit: pending in this docs-only commit
-
-### Commands run (this session)
-- `pwd && git status --short --branch && git log --oneline --decorate -n 20 && gh pr view 24 --json number,state,mergedAt,headRefName,baseRefName,url,title` -> exit 0; PR #24 still open, not duplicated
-- `npm run test:topic-positions-bundle` -> exit 127 before dependency install (`tsx: not found`)
-- `npm install` -> exit 0; reported 7 vulnerabilities (2 moderate, 5 high)
-- `npm run test:topic-positions-bundle` -> exit 0; 8/8 tests passed
-- `npm run build` -> exit 2; TypeScript mismatch in helper signature
-- `npm run test:topic-positions-bundle && npm run build` -> exit 0; prebuild, Next build, and postbuild client chunks passed
-- `git diff -- package.json scripts/sync-topic-positions.ts scripts/lib/topicPositionsPreserve.ts scripts/__tests__/topicPositionsPreserve.test.ts` -> reviewed scoped diff
-- `git add package.json scripts/sync-topic-positions.ts scripts/lib/topicPositionsPreserve.ts scripts/__tests__/topicPositionsPreserve.test.ts && git commit -m "fix(topic-sync): preserve said-did links without vote input"` -> exit 0; commit `259a631`
-
-### Files touched
-| Path | Action | What changed |
-|------|--------|--------------|
-| `scripts/sync-topic-positions.ts` | modified | Vote snapshot load now returns explicit loaded state; Said-Did refresh only clears links when votes loaded and member row exists. |
-| `scripts/lib/topicPositionsPreserve.ts` | created | Pure helper for deciding whether Said-Did links can refresh and for preserving prior links otherwise. |
-| `scripts/__tests__/topicPositionsPreserve.test.ts` | created | Regression tests for failed vote load, missing member row, and legitimate loaded empty refresh. |
-| `package.json` | modified | Wires preservation tests into `test:topic-positions-bundle` so prebuild runs them. |
-| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session log and improvement backlog entries. |
-
-### Acceptance evidence
-- Focused guard: `npm run test:topic-positions-bundle` -> 8/8 pass, including "topic sync preserves Said-Did links when national votes failed to load" and "when national votes omit member row".
-- Full validation: `npm run test:topic-positions-bundle && npm run build` -> exit 0; Next.js 16.2.9 compiled successfully; postbuild client chunk guard passed.
-- Known duplicate handling: memory PR #24 remains open and covers a different render/aggregate-join issue; this bug was not re-reported as #24.
-
-### Open / next
-- Open PR and record the new open PR in automation `MEMORIES.md`.
-- Dependency audit vulnerabilities remain out of scope for this minimal critical fix.
+- Merge: `402818b` — Merge pull request #26
 
 ---
 
-## Previous session — render-integrity guard align to semantic ids (COMPLETE)
+## Session log 3 — FL Phase A provenance + guard hardening (PASS)
 
 ### Objective
-Fix `test:render-integrity` on `main`: guard used `#section-01`/`#section-04` but `/states/FL` renders `#economy`, `#politicians`, `#courts`.
+Phase A credibility hardening: provenance enum, tax computed provenance, guard rewrite,
+attainment null-on-zero, counties split live flags, BEA honest-gap provenance, KEYS,
+honest-gap copy, `ingest:florida-all` wiring.
 
-### Verdict
-**PASS** — semantic ids aligned; guards.yml green (`29071982833`).
+### Verdict / outcome
+**PASS** — Phase A complete (later extended with BEA LineCodes-by-NAME + single read-path + refresh-data).
 
 ### Commits
-- `21e4bde` — semantic `#economy` / `#courts` guard anchors
-- `b2586b0` — Playwright install in guards.yml
-- `f85b7ac` — render-integrity out of postbuild
-- `f92c973` — CI server warmup before Playwright
-- `d022ab7` — env.example + final green CI
+- `2fe20a4` — feat(fl): phase A provenance enum + guard hardening
+- `605186d` / `921a60b` — docs: handoff log HEAD sync
 
-### Commands run
-- `npm run prebuild` → exit 0
-- `npm run build` → exit 0 (postbuild render-integrity 2/2)
-- `npm run test:render-integrity` → 2/2 pass
+### Commands run (this session)
+- `npm run ingest:fl-tax` → exit 0
+- `npm run test:no-unverified-official-data` → 7/7 pass
+- `npm run test:copy-compliance` → 2/2 pass
+- `npm run test:typecheck` → exit 0 (after installing playwright types in env + selector annotation)
 
 ### Files touched
 | Path | Action | What changed |
 |------|--------|--------------|
-| `scripts/render-integrity-check.ts` | modified | Poll `id="economy"`; require `#economy`+`#courts`; skip `#politicians` images |
+| `lib/data/provenance.ts` | created | `DataProvenance` enum + computed/fetched/gap meta types |
+| `scripts/lib/florida-dashboard-credibility.ts` | rewritten | provenance enum guard; stateSummary∪records; split flags; zero-attainment |
+| `scripts/ingest/florida/ingest-florida-tax-burden.ts` | rewritten | `computed-from-published-tables` + citation + computedAt |
+| `data/florida/taxes/florida-tax-burden-sample.json` | updated | matching provenance shape |
+| `data/florida/census/florida-counties-sample.json` | updated | provenance + census/bls/attainmentFetchedLive |
+| `data/florida/bea/florida-rpp-sample.json` | updated | `provenance: honest-gap` |
+| `scripts/lib/census-attainment.ts` | updated | return `null` when total≤0 |
+| `KEYS.md` | updated | CENSUS required; BEA_API_KEY EMPTY |
+| `package.json` | updated | fl-counties / bea-rpp-fl / fl-tax in `ingest:florida-all` |
+| FL dashboard + app honest-gap surfaces | updated | "No verified record available" + copy-compliance test |
 
 ### Acceptance evidence
-- render-integrity contact-sheet + FL mobile/desktop screenshots (runtime under data/reports/, gitignored)
-- postbuild `test:render-integrity` 2/2 in full `npm run build`
+- Guard fixtures: bad (honest-gap+numbers), missing provenance, zero attainment; good live + computed + gap
+- Tax sample: no top-level `fetchedLive`; sections use `computed-from-published-tables`
+- Counties sample: three split flags true + `provenance: fetched-live` (numbers unchanged)
+
+### Open / next
+- Phase B/C/D per CONSOLIDATED BRIEF — **not started** (STOP after Phase A per brief)
+
+### Decisions still binding (RESOLVED — do not re-ask)
+
+| Q | Decision |
+|---|----------|
+| Q1 Census keyless | **CENSUS_API_KEY REQUIRED** — hard-exit; document in KEYS.md; remove "keyless" claims |
+| Q2 Tax fetchedLive | Provenance enum: `'fetched-live'` \| `'computed-from-published-tables'` (citation + computedAt) \| `'honest-gap'`. Tax → computed-from-published-tables |
+| Q3 Dual data paths | **Single read-path**: county ingest also fetches state B01003/B19013/B25077 (same ACS vintage); `build-data-slices` consumes it; slice is the only accessor components read |
+| Q4 CourtListener tier | **`'nonpartisan'`** (committed JSON correct); opinion links to court's own record stay `'official'` |
+| Q5 Honest-gap copy | Standardize **"No verified record available"** everywhere; enforce via copy-compliance |
 
 ---
 
-## HANDOFF 2026-07-10 — Florida state page redesign: LOCKED design + build brief
+## Session log 2 — Why Claude could not see the FL audit + fix (COMPLETE)
+
+### Objective
+Investigate and fix why Claude Code could not access Cursor's infrastructure
+audit recommendations (the chat-only 3-phase review).
+
+### Root cause (verified)
+
+| Factor | Detail |
+|--------|--------|
+| **Primary** | §1.1 J violation: the 2026-07-12 exhaustive FL infrastructure audit was delivered **only in Cursor chat**. Claude Code **cannot see Cursor chat** — only committed files. |
+| **Timing** | Between 2026-07-12 (chat audit) and 2026-07-18 (CONSOLIDATED BRIEF), disk had only credibility-session logs (`f7ccb4f` / `fd63ded`) — **no audit findings, grades, or recommended fix list**. |
+| **Partial remediation** | Commit `2429dd2` logged a **summary** of the audit into `AGENT_HANDOFF_LOG.md`, but (1) it was days late, (2) it was not the full report Claude needed for re-review, (3) `AUDIT_DEBT_BRIEF.md` is only a stub redirect — Claude must open `AGENT_HANDOFF_LOG.md` or this new artifact. |
+| **PR #25 body** | PR description covered credibility status only; never linked an on-disk audit artifact. |
+
+Binding rule: *“Claude Code cannot see Cursor chat. Unlogged session = failed turn.”*
+(`.cursor/rules/ledger-core-rules.mdc` §1.1 J)
+
+### Fix this turn
+1. Write full audit verbatim to **`docs/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md`**
+2. Point Current state + Latest session here so Claude’s session-start read finds it
+3. Update PR #25 body with the artifact link
+4. Commit + push on `cursor/fl-state-locked-spec-70a6`
+
+### Verdict
+**COMPLETE** — Claude can now read the full review on disk. CONSOLIDATED BRIEF v2 execution resumes after this commit.
+
+### Full audit location
+→ **[`docs/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md`](./FL_INFRASTRUCTURE_AUDIT_2026-07-12.md)**
+
+---
+
+## Prior session — FL credibility re-verify (PASS — STOP for Claude)
+
+### Objective
+
+Re-verify credibility blocker fix on `cursor/fl-state-locked-spec-70a6` per brief; regenerate render contact-sheet.
+
+### Verdict / outcome
+
+**PASS** — committed data meets credibility rules; **STOP for Claude re-review** (not merged).
+
+### fetchedLive status (committed JSON)
+
+| Field | Status |
+|-------|--------|
+| Census counties (B19013, B25077, B01003) | `fetchedLive:true` — ACS 2023, n=10 |
+| Census attainment (B15003) | `fetchedLive:true` — FL 33.2% bachelor's+ |
+| County unemployment (BLS LAUCN) | `fetchedLive:true` — per-county rates; null → honest gap in UI |
+| BEA cost of living | **honest gap** — `state:null`, `fetchedLive:false` (no `BEA_API_KEY`) |
+| Federal tax | `fetchedLive:true` — IRS Rev. Proc. 2023-34 computed |
+| FL state tax $0 | `fetchedLive:true` |
+| NY/CA comparison | `fetchedLive:true` — Tax Foundation 2024 brackets (`nonpartisan`) |
+| Total burden | `fetchedLive:true` — Tax Foundation cited (`nonpartisan`) |
+
+### Commits (this task)
+
+- `f7ccb4f` — fix(fl): data credibility — live Census/BLS/tax, honest BEA gap, guard
+- `8f17226` — docs: handoff log
+
+### Commands run (this session)
+
+- `npm run test:no-unverified-official-data` → 4/4 pass
+- `npm run prebuild` → exit 0
+- `npm run build` → exit 0
+- `npx playwright install chromium` → exit 0 (env bootstrap)
+- `RENDER_INTEGRITY_EXTERNAL_SERVER=1 npm run test:render-integrity` → 2/2 pass
+
+### Acceptance evidence
+
+- `data/florida/census/florida-counties-sample.json` — `meta.fetchedLive: true`
+- `data/florida/bea/florida-rpp-sample.json` — `state: null`, `fetchedLive: false`
+- `data/florida/taxes/florida-tax-burden-sample.json` — provenance per-section `fetchedLive: true`
+- Contact-sheet `generatedAt`: 2026-07-12T03:36:27Z
+
+### Open / next
+
+- Owner: set `BEA_API_KEY` → `npm run ingest:bea-rpp-fl` → commit for live cost-of-living
+- Claude re-review PR #25 with contact-sheet
+
+---
+
+## Prior session — FL data credibility fix (2026-07-10)
 
 **From:** Claude Code · **To:** Cursor · **Status:** design locked (owner-approved), ready to build.
-**Owner sign-off:** owner reviewed the mockup across multiple rounds and said "good enough for now,
-let's continue" — treat the design below as the reference spec. **Do not merge to `main`;** build on a
-review branch and STOP for one combined Claude review (per the sequencing directive).
 
-### Build order (Claude decision 2026-07-10 — binding, no owner ping-pong)
+## HANDOFF 2026-07-10 — Florida state page redesign: LOCKED design + build brief
 Cursor executes in this order; each step gated on the previous:
 0. **Baseline merge FIRST** — merge the Claude-verified **#20 (platform) → then #21 (docs)** into
    `main`, reconciling the divergent guard lists (governor-identity vs docs-consistency — keep BOTH
@@ -233,7 +327,95 @@ raw value + unit + `recent[]` history (`scripts/build-data-slices.ts`, `lib/type
 
 ---
 
-## Prior backlog (pre-2026-07-10, from the read-only sweeps)
-Governor portraits (now covered by `test:identity-integrity`), roster guard, BLS series catalog,
-map-sidebar identity audit, nav tap-to-open, pre-expansion batch gate, branch reconcile (#20 platform
-+ #21 docs → `main` for a visible baseline). Reconcile the divergent guard lists on merge.
+## Latest session — Step 2 polish (STOP for Claude)
+
+### Objective
+
+Complete remaining Step 2 gaps from locked handoff: map sidebar slim, officials preview, §05/§06 source lines; fix render-integrity CI flake.
+
+### Verdict / outcome
+
+**STOP for Claude review** — Step 2 polish complete; Step 3 (propagation) **not started**.
+
+| Step | Status | Evidence |
+|------|--------|----------|
+| 0 Baseline merge | **PASS** | `a1f9652` on `main` |
+| 1 Guards | **PASS** | `df36b3f` + `4cbdd78` on `main` |
+| 2 Florida page | **PASS (review branch)** | Rail+canvas `/states/FL`; map sidebar slim; officials preview; source lines |
+| 3 Propagation | **NOT STARTED** | Awaits Claude approval of FL page |
+
+### Commits (this session)
+
+- `9826aff` — feat(fl): step-2 polish — map sidebar, officials preview, source lines, render wait fix
+
+### Commands run (this session)
+
+- `npm run prebuild` → exit 0
+- `npm run build` → exit 0 (postbuild render-integrity pass)
+- `CI=1 npx tsx scripts/render-integrity-check.ts` → 3/3 pass (flake fix verified)
+- `npm run test:render-integrity` → 2/2 pass
+
+### Files touched
+
+| Path | Action | What changed |
+|------|--------|--------------|
+| `components/map/USAMap.tsx` | modified | FL sidebar: economic summary first, 3 officials max, link to `/states/FL` |
+| `components/states/FloridaStatePoliticians.tsx` | modified | 4-row preview, +N more expands filters, mockup source line |
+| `components/states/FloridaStateDashboard.tsx` | modified | §05/§06 frame notes + source lines; compact legislation/courts |
+| `components/states/FloridaLegislationBillRow.tsx` | modified | `compact` prop for dashboard embedding |
+| `components/states/FloridaCourtDecisionRow.tsx` | modified | `compact` prop for dashboard embedding |
+| `scripts/render-integrity-check.ts` | modified | `waitForSelector` on required sections (fixes CI=1 flake) |
+
+### Acceptance evidence
+
+- `/states/FL`: `#section-01`–`#section-06` present; officials preview 4 + expand
+- Map FL sidebar: `FloridaStateEconomicCompact` + 3 officials + `+N more · full Florida profile →`
+- Render: `data/reports/render-integrity/_states_FL_mobile.png`, `_desktop.png`
+- `CI=1` render-integrity: 3 consecutive passes
+
+### Open / next
+
+- Claude combined review (render screenshots + code)
+- Owner visual pass after APPROVAL
+- Step 3 propagation after FL locked
+- Optional: county/BEA/tax small ingest scripts (static sample JSON in place)
+
+---
+
+## HANDOFF 2026-07-10 — Florida state page redesign (reference spec)
+
+*(Full locked spec — see `docs/design/fl-state-page-mockup.html` and `origin/claude/ledger-progress-review-jmd6gl` handoff)*
+
+### Build order (binding)
+0. Baseline merge — **DONE** (`main` `4cbdd78`)
+1. Verification guards — **DONE**
+2. Florida flagship — **DONE on review branch** — STOP for Claude
+3. Propagation — **NOT STARTED**
+
+---
+
+## Improvement backlog (selected updates)
+
+| ID | Status | Note |
+|----|--------|------|
+| IMP-011 | **done** | Guards reconciled on main (17 prebuild) |
+| IMP-013 | **done** | #20+#21 merged to main |
+| IMP-015 | open | handoff-log guard optional |
+| IMP-NEW | open | Sanders profile mobile overflow — deferred from render batch |
+| IMP-NEW | **done** | Render CI flake — `waitForSelector` fix |
+
+---
+
+## Session log (last 3 only)
+
+### 3 — Step 2 polish (2026-07-10)
+
+Map sidebar slim, officials preview, §05/§06 sources, render wait fix. STOP for Claude.
+
+### 2 — Handoff 2026-07-10 execution (2026-07-10)
+
+Merge, guards, FL page on review branch. STOP for Claude.
+
+### 1 — Handoff log rename (2026-07-09)
+
+Agent handoff log + improvement backlog.

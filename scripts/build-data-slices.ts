@@ -184,13 +184,14 @@ async function buildProfilesVoteview() {
 
 async function buildStateEconomic() {
   const census = await loadSnapshot('census/florida-demographics.json');
+  const counties = await loadSnapshot('census/florida-counties-sample.json');
   const bls = await loadSnapshot('bls/florida-labor.json');
   const cpi = await loadSnapshot('bls/florida-cpi.json');
   const growth = await loadSnapshot('bls/florida-employment-growth.json');
   const education = await loadSnapshot('bls/florida-education-labor.json');
   const benchmarks = await loadSnapshot('bls/florida-national-benchmarks.json');
   const occupations = await loadSnapshot('bls/florida-occupations.json');
-  if (!census && !bls) return;
+  if (!census && !bls && !counties) return;
 
   type HistoryPoint = { period: string; value: number };
   type EducationTier = {
@@ -226,8 +227,11 @@ async function buildStateEconomic() {
   const indicators: Indicator[] = [];
   const educationTiers: EducationTier[] = [];
   const honestGaps: string[] = [];
-  const primary = census ?? bls!;
+  const primary = census ?? counties ?? bls!;
   const cRec = census?.records[0];
+  // Q3 single read-path: prefer county-batch state ACS (same vintage as county dropdowns).
+  const countyAcs = (counties as { stateSummary?: { acs?: Record<string, unknown> } } | null)
+    ?.stateSummary?.acs;
 
   const nationalByFloridaLabel = new Map<string, number>();
   for (const b of benchmarks?.records ?? []) {
@@ -280,33 +284,61 @@ async function buildStateEconomic() {
     });
   }
 
-  if (cRec) {
+  const acsSource = (cRec?.source ?? counties?.meta?.source ?? {
+    name: 'U.S. Census Bureau ACS',
+    url: 'https://api.census.gov',
+    tier: 'official' as const,
+  }) as Source;
+  const acsAsOf = String(
+    (countyAcs ? counties?.meta?.asOf : cRec?.asOf) ?? primary.meta.asOf,
+  );
+  const popVal = Number(countyAcs?.population ?? cRec?.population);
+  const incomeVal = Number(countyAcs?.medianHouseholdIncome ?? cRec?.medianHouseholdIncome);
+  const homeVal = Number(countyAcs?.medianHomeValue ?? cRec?.medianHomeValue);
+  const usIncomeRaw = countyAcs?.nationalMedianHouseholdIncome ?? cRec?.nationalMedianHouseholdIncome;
+  const usHomeRaw = countyAcs?.nationalMedianHomeValue ?? cRec?.nationalMedianHomeValue;
+  const usIncome = usIncomeRaw != null ? Number(usIncomeRaw) : undefined;
+  const usHome = usHomeRaw != null ? Number(usHomeRaw) : undefined;
+  const survey = String(countyAcs?.survey ?? cRec?.survey ?? '');
+  const censusLink = String(
+    countyAcs?.censusApiUrl ?? cRec?.censusApiUrl ?? census?.meta.datasetUrl ?? '',
+  );
+
+  if (Number.isFinite(popVal) && popVal > 0) {
     indicators.push({
       label: 'Population',
-      rawValue: Number(cRec.population),
+      rawValue: popVal,
       unit: 'count',
-      period: String(cRec.survey ?? ''),
-      link: String(cRec.censusApiUrl ?? census!.meta.datasetUrl ?? ''),
-      source: cRec.source as Source,
-      asOf: String(cRec.asOf),
+      period: survey,
+      link: censusLink,
+      source: acsSource,
+      asOf: acsAsOf,
     });
+  }
+  if (Number.isFinite(incomeVal) && incomeVal > 0) {
     indicators.push({
       label: 'Median household income',
-      rawValue: Number(cRec.medianHouseholdIncome),
+      rawValue: incomeVal,
       unit: 'USD',
-      period: String(cRec.survey ?? ''),
-      link: String(cRec.censusApiUrl ?? ''),
-      source: cRec.source as Source,
-      asOf: String(cRec.asOf),
+      period: survey,
+      link: censusLink,
+      source: acsSource,
+      asOf: acsAsOf,
+      nationalValue: Number.isFinite(usIncome) ? usIncome : undefined,
+      nationalLabel: Number.isFinite(usIncome) ? 'US avg' : undefined,
     });
+  }
+  if (Number.isFinite(homeVal) && homeVal > 0) {
     indicators.push({
       label: 'Median home value',
-      rawValue: Number(cRec.medianHomeValue),
+      rawValue: homeVal,
       unit: 'USD',
-      period: String(cRec.survey ?? ''),
-      link: String(cRec.censusApiUrl ?? ''),
-      source: cRec.source as Source,
-      asOf: String(cRec.asOf),
+      period: survey,
+      link: censusLink,
+      source: acsSource,
+      asOf: acsAsOf,
+      nationalValue: Number.isFinite(usHome) ? usHome : undefined,
+      nationalLabel: Number.isFinite(usHome) ? 'US avg' : undefined,
     });
   }
 

@@ -25,7 +25,13 @@ npm run sync:legislators && npm run verify:office && npm run build
 
 Vote-sync routing and full sync catalog: `lib/data/SOURCE_LOOKUP.md`.
 
-## Guard suites (17 commands in prebuild + render-integrity postbuild — all must pass before commit)
+## Guard suites (19 commands in prebuild + render-integrity postbuild — all must pass before commit)
+
+**Canonical:** Local `npm run build` runs 19 prebuild guard commands, then `postbuild` runs
+`test:render-integrity` (starts its own server unless `RENDER_INTEGRITY_EXTERNAL_SERVER=1`)
+then `test:client-chunks`. CI (`.github/workflows/guards.yml`) builds first, then runs a
+**warmed** external-server render-integrity step on port 4112 — same assertions, different
+process wiring.
 
 | Script | Guard |
 |--------|-------|
@@ -45,10 +51,13 @@ Vote-sync routing and full sync catalog: `lib/data/SOURCE_LOOKUP.md`.
 | `test:docs-consistency` | Doc contradictions (retired scripts, counts, Tier labels, §1.1 cites) |
 | `test:governor-identity` | Governor bioguideId ↔ portrait identity guard |
 | `test:identity-integrity` | Roster portrait ↔ bioguideId ↔ name/party/state/office |
-| `test:render-integrity` | Headless render: overflow, images, sections (postbuild) |
+| `test:no-unverified-official-data` | FL dashboard: no official/nonpartisan numbers without verified provenance |
+| `test:state-economic-display` | Exact indicator lookup + unemployment delta sign semantics |
+| `test:render-integrity` | Headless render: overflow, images, sections (postbuild locally; warmed step in CI) |
 | `audit:profile-credibility` | Profile credibility audit gate |
 
-Prebuild runs all 17; postbuild runs `test:render-integrity` + client chunks. CI: `.github/workflows/guards.yml`.
+Prebuild runs typecheck + listed guards (including `test:state-economic-display`); postbuild runs
+`test:render-integrity` + `test:client-chunks`. CI: `.github/workflows/guards.yml`.
 
 ## Agent preflight
 

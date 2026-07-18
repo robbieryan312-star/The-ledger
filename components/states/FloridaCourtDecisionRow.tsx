@@ -16,45 +16,48 @@ export default function FloridaCourtDecisionRow({ row }: { row: SnapshotRecordRo
   const caseName = displayCaseName(row);
   const sourceText = row.summary?.trim();
   const hasSourceText = Boolean(sourceText);
+  const panelId = `court-panel-${row.id ?? row.link ?? caseName}`.replace(/\W+/g, '-');
 
   return (
-    <div className="rounded-lg border border-[#1e3a5f]/80 overflow-hidden bg-[#0a1628]/60">
+    <div className="rounded-[13px] border border-[var(--border-subtle)] overflow-hidden bg-gradient-to-b from-[var(--bg-elevated)] to-[var(--bg-card)]">
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="w-full flex items-start gap-2 p-3 hover:bg-[#1e3a5f]/30 transition-colors text-left"
+        aria-expanded={open}
+        aria-controls={panelId}
+        className="w-full flex items-start gap-2 p-3 hover:bg-[var(--bg-elevated)]/40 transition-colors text-left"
       >
         <div className="flex-1 min-w-0 pr-6 relative">
           <div className="absolute top-0 right-0">
             <TierDot tier={row.source.tier} />
           </div>
-          <p className="text-sm text-white font-medium leading-snug">{caseName}</p>
+          <p className="text-sm text-[var(--foreground)] font-medium leading-snug">{caseName}</p>
           {row.detail && (
-            <p className="text-xs text-gray-400 mt-1 line-clamp-2">{row.detail}</p>
+            <p className="text-xs text-[var(--muted)] mt-1 line-clamp-2">{row.detail}</p>
           )}
           {!hasSourceText && (
-            <p className="text-[10px] text-gray-600 mt-1 italic">
+            <p className="text-[10px] text-[var(--muted)] mt-1 italic">
               No verbatim CourtListener metadata on file for this decision.
             </p>
           )}
         </div>
         {open
-          ? <ChevronDown className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />
-          : <ChevronRight className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />}
+          ? <ChevronDown className="h-4 w-4 text-[var(--muted)] flex-shrink-0 mt-0.5" aria-hidden />
+          : <ChevronRight className="h-4 w-4 text-[var(--muted)] flex-shrink-0 mt-0.5" aria-hidden />}
       </button>
       {open && (
-        <div className="px-3 pb-3 border-t border-[#1e3a5f]/60">
+        <div id={panelId} className="px-3 pb-3 border-t border-[var(--border-subtle)]">
           {hasSourceText && (
             <div className="mt-2">
-              <p className="text-[10px] text-gray-500 uppercase tracking-wide">
+              <p className="text-[10px] text-[var(--muted)] uppercase tracking-wide">
                 CourtListener {row.summarySource ?? 'metadata'}
               </p>
-              <p className="text-xs text-gray-300 mt-1 whitespace-pre-wrap">{sourceText}</p>
+              <p className="text-xs text-[var(--foreground)]/85 mt-1 whitespace-pre-wrap">{sourceText}</p>
             </div>
           )}
           {row.date && (
-            <p className="text-xs text-gray-400 mt-2">
-              <span className="text-gray-500">Filed:</span> {row.date}
+            <p className="text-xs text-[var(--muted)] mt-2">
+              <span className="text-[var(--muted)]/90">Filed:</span> {row.date}
             </p>
           )}
           <div className="mt-2">
@@ -65,9 +68,9 @@ export default function FloridaCourtDecisionRow({ row }: { row: SnapshotRecordRo
               href={row.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white text-xs mt-2"
+              className="inline-flex items-center gap-1 text-[var(--gold)] hover:text-[var(--foreground)] text-xs mt-2"
             >
-              Full opinion <ExternalLink className="h-3 w-3" />
+              Full opinion <ExternalLink className="h-3 w-3" aria-hidden />
             </Link>
           )}
         </div>
@@ -80,26 +83,27 @@ export function FloridaCourtDecisionsSection({
   title,
   records,
   metaNote,
+  compact = false,
 }: {
-  title: string;
+  title?: string;
   records: SnapshotRecordRow[];
   metaNote?: string;
+  compact?: boolean;
 }) {
-  if (!records.length) return null;
+  if (!records.length) {
+    return (
+      <p className="text-[13px] text-[var(--muted)] italic">No verified record available</p>
+    );
+  }
   return (
-    <section className="bg-[#0d1f35] rounded-2xl border border-[#1e3a5f] overflow-hidden">
-      <div className="px-5 py-4 border-b border-[#1e3a5f] bg-[#0a1628]">
-        <h2 className="text-white font-bold text-sm">{title}</h2>
-        <p className="text-xs text-gray-400 mt-1">
-          Official Florida Supreme Court decisions from CourtListener — case title and status shown as provided; expand for verbatim sourced metadata and opinion link.
-        </p>
-        {metaNote && <p className="text-[10px] text-gray-500 mt-1">{metaNote}</p>}
-      </div>
-      <div className="p-4 space-y-2">
-        {records.map((row) => (
-          <FloridaCourtDecisionRow key={row.id} row={row} />
-        ))}
-      </div>
-    </section>
+    <div className="space-y-2">
+      {title && !compact && (
+        <p className="text-[12px] font-medium text-[var(--foreground)] mb-2">{title}</p>
+      )}
+      {records.map((row) => (
+        <FloridaCourtDecisionRow key={row.id ?? row.link ?? row.title} row={row} />
+      ))}
+      {metaNote && <p className="text-[10px] text-[var(--muted)] mt-2">{metaNote}</p>}
+    </div>
   );
 }

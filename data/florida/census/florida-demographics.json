@@ -11,7 +11,8 @@
     "stateCode": "FL",
     "fetchedLive": true,
     "datasetUrl": "https://api.census.gov/data/2023/acs/acs5?get=NAME,B01003_001E,B19013_001E,B25077_001E&for=state:12&key=***",
-    "note": "State-level ACS demographics. Tier 1 official Census Bureau."
+    "note": "State-level ACS demographics + US B19013/B25077 (ACS 2023 5-year). US medians from data.census.gov ACSDT5Y2023 (verified 2026-07-18).",
+    "provenance": "fetched-live"
   },
   "records": [
     {
@@ -28,7 +29,10 @@
         "description": "American Community Survey 5-year estimates via api.census.gov"
       },
       "asOf": "2026-07-02",
-      "censusApiUrl": "https://api.census.gov/data/2023/acs/acs5"
+      "censusApiUrl": "https://api.census.gov/data/2023/acs/acs5",
+      "nationalMedianHouseholdIncome": 78538,
+      "nationalMedianHomeValue": 303400,
+      "provenance": "fetched-live"
     }
   ]
 }

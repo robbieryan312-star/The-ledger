@@ -36,6 +36,8 @@ jobs:
           npm run test:docs-consistency
           npm run test:governor-identity
           npm run test:identity-integrity
+          npm run test:no-unverified-official-data
+          npm run test:state-economic-display
           npm run test:data-layout
           npm run test:env-truth
           npm run test:optimization
@@ -54,12 +56,12 @@ jobs:
           npx next start -H 127.0.0.1 -p 4112 &
           SERVER_PID=$!
           for i in $(seq 1 90); do
-            if curl -sf http://127.0.0.1:4112/states/FL | grep -q 'id="economy"'; then
+            if curl -sf http://127.0.0.1:4112/states/FL | grep -q 'id="section-01"'; then
               break
             fi
             sleep 2
           done
-          curl -sf http://127.0.0.1:4112/states/FL | grep -q 'id="economy"'
+          curl -sf http://127.0.0.1:4112/states/FL | grep -q 'id="section-01"'
           RENDER_INTEGRITY_EXTERNAL_SERVER=1 npm run test:render-integrity
           kill $SERVER_PID
 

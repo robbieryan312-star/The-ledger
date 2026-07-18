@@ -6,6 +6,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Source } from '../../lib/types';
+import type { DataProvenance } from '../../lib/data/provenance';
 
 export const projectRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -55,6 +56,8 @@ export interface DataSnapshotMeta {
   count: number;
   stateCode: 'FL';
   fetchedLive: boolean;
+  /** Prefer over boolean fetchedLive alone — see lib/data/provenance.ts */
+  provenance?: DataProvenance;
   errors?: string[];
   note?: string;
   datasetUrl?: string;

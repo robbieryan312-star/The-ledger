@@ -15,7 +15,7 @@ export default async function CountyPage({ params }: { params: Promise<{ fips: s
 
       <div className="text-center py-16">
         <Building2 className="h-12 w-12 mx-auto mb-4 text-gray-600" />
-        <p className="text-lg text-white/60 font-medium">No verified data yet</p>
+        <p className="text-lg text-white/60 font-medium">No verified record available</p>
         <p className="text-gray-500 text-sm mt-2 max-w-md mx-auto leading-relaxed">
           County data (FIPS {fips}) will be populated when real local-government pipelines are integrated.
         </p>

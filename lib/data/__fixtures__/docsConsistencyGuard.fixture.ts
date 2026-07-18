@@ -13,7 +13,7 @@ export const RETIRED_SCRIPT_KNOWN_BAD = {
 /** Doc guard count must match prebuild npm run chain (GOOD). */
 export const PREBUILD_COUNT_KNOWN_GOOD = {
   /** Parsed from package.json prebuild at guard wiring time — updated when prebuild changes. */
-  expectedPrebuildCommands: 17,
+  expectedPrebuildCommands: 19,
 };
 
 /** Migrated profile count from manifest (GOOD). */

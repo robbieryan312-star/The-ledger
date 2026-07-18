@@ -456,6 +456,9 @@ export default function USAMap({
     [selectedState, politiciansByState],
   );
   const MAP_SIDEBAR_OFFICIAL_LIMIT = 8;
+  const FL_MAP_SIDEBAR_OFFICIAL_LIMIT = 3;
+  const sidebarOfficialLimit =
+    selectedState === 'FL' ? FL_MAP_SIDEBAR_OFFICIAL_LIMIT : MAP_SIDEBAR_OFFICIAL_LIMIT;
   const stateElections: Election[] = useMemo(
     () => [],
     [selectedState],
@@ -776,14 +779,16 @@ export default function USAMap({
                       </span>
                     </div>
                     <div className="space-y-2">
-                      {statePoliticians.slice(0, MAP_SIDEBAR_OFFICIAL_LIMIT).map(p => <PoliticianRow key={p.id} politician={p} />)}
+                      {statePoliticians.slice(0, sidebarOfficialLimit).map(p => <PoliticianRow key={p.id} politician={p} />)}
                     </div>
-                    {statePoliticians.length > MAP_SIDEBAR_OFFICIAL_LIMIT && selectedState && (
+                    {statePoliticians.length > sidebarOfficialLimit && selectedState && (
                       <Link
                         href={stateOfficialsHref(selectedState)}
                         className="mt-2 block text-center text-xs text-[#c8a951] hover:text-[#e8c96a] transition-colors"
                       >
-                        View all {statePoliticians.length} officials →
+                        {selectedState === 'FL'
+                          ? `+${statePoliticians.length - sidebarOfficialLimit} more · full Florida profile →`
+                          : `View all ${statePoliticians.length} officials →`}
                       </Link>
                     )}
                   </div>
@@ -864,6 +869,10 @@ export default function USAMap({
                   </div>
                 )}
 
+                {selectedState === 'FL' && (
+                  <FloridaStateEconomicCompact slice={floridaEconomicSlice} statePageHref="/states/FL" />
+                )}
+
                 {statePoliticians.length > 0 && (
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-2">
@@ -873,33 +882,29 @@ export default function USAMap({
                           {selectedState ? officialsSectionLabel(selectedState, statePoliticians.length) : 'Elected Officials'}
                         </span>
                       </div>
-                      {selectedState && statePoliticians.length > MAP_SIDEBAR_OFFICIAL_LIMIT && (
+                      {selectedState && statePoliticians.length > sidebarOfficialLimit && (
                         <Link
                           href={stateOfficialsHref(selectedState)}
                           className="text-[10px] text-[#c8a951] hover:text-[#e8c96a] whitespace-nowrap"
                         >
-                          Full list →
+                          {selectedState === 'FL' ? 'Full profile →' : 'Full list →'}
                         </Link>
                       )}
                     </div>
-                    <div className="space-y-2 max-h-80 overflow-y-auto pr-1">
-                      {statePoliticians.slice(0, MAP_SIDEBAR_OFFICIAL_LIMIT).map(p => <PoliticianRow key={p.id} politician={p} />)}
+                    <div className={`space-y-2 ${selectedState === 'FL' ? '' : 'max-h-80 overflow-y-auto pr-1'}`}>
+                      {statePoliticians.slice(0, sidebarOfficialLimit).map(p => <PoliticianRow key={p.id} politician={p} />)}
                     </div>
-                    {statePoliticians.length > MAP_SIDEBAR_OFFICIAL_LIMIT && selectedState && (
+                    {statePoliticians.length > sidebarOfficialLimit && selectedState && (
                       <Link
                         href={stateOfficialsHref(selectedState)}
                         className="mt-2 block text-center text-xs text-[#c8a951] hover:text-[#e8c96a] transition-colors"
                       >
-                        View all {statePoliticians.length} officials →
+                        {selectedState === 'FL'
+                          ? `+${statePoliticians.length - sidebarOfficialLimit} more · full Florida profile →`
+                          : `View all ${statePoliticians.length} officials →`}
                       </Link>
                     )}
                   </div>
-                )}
-
-                {selectedState === 'FL' && (
-                  <>
-                    <FloridaStateEconomicCompact slice={floridaEconomicSlice} />
-                  </>
                 )}
 
                 {/* County directory (only when zoomed into state) */}

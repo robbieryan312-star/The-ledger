@@ -1,0 +1,852 @@
+import type { ReactNode } from 'react';
+import type { DashboardPolitician } from '@/lib/dashboard/stateRosterClient';
+import type { StateEconomicSlice, StateEducationLaborTier, SnapshotRecordRow } from '@/lib/types/snapshotTypes';
+import {
+  deltaVsMonthsAgo,
+  displayValue,
+  employmentRatePercent,
+  findIndicator,
+  formatDelta,
+  formatPercent,
+  indicatorRawValue,
+  populationHeroText,
+} from '@/lib/format/stateEconomicDisplay';
+import { formatCompactCurrency, formatCompact } from '@/lib/format/number';
+import TierDot from '@/components/ui/TierDot';
+import FloridaStatePoliticians from '@/components/states/FloridaStatePoliticians';
+import { FloridaLegislationSection } from '@/components/states/FloridaLegislationBillRow';
+import { FloridaCourtDecisionsSection } from '@/components/states/FloridaCourtDecisionRow';
+import SampleBadge from '@/components/states/SampleBadge';
+import {
+  topBottomCounties,
+  type FloridaCountyRow,
+} from '@/lib/data/floridaDashboard';
+
+export type { FloridaCountyRow };
+
+export type FloridaDashboardProps = {
+  economic: StateEconomicSlice;
+  politicians: DashboardPolitician[];
+  legislationRecords: SnapshotRecordRow[];
+  legislationNote?: string;
+  courtRecords: SnapshotRecordRow[];
+  courtNote?: string;
+  counties: {
+    records: FloridaCountyRow[];
+    stateSummary: {
+      populationRank: number | null;
+      populationGrowthPct: number | null;
+      attainment: {
+        hsPlusPct: number;
+        someCollegePct: number;
+        bachelorsPct: number;
+        graduatePct: number;
+        bachelorsPlusPct: number;
+      } | null;
+      usAttainmentBachelorsPlusPct?: number | null;
+    };
+    meta: {
+      provenance?: 'fetched-live' | 'computed-from-published-tables' | 'honest-gap';
+      fetchedLive: boolean;
+      censusFetchedLive?: boolean;
+      blsFetchedLive?: boolean;
+      attainmentFetchedLive?: boolean;
+    };
+  };
+  rpp: {
+    meta: {
+      provenance?: 'fetched-live' | 'computed-from-published-tables' | 'honest-gap';
+      fetchedLive: boolean;
+      asOf: string;
+      note?: string;
+    };
+    state: {
+      allItemsIndex: number;
+      period: string;
+      components: { label: string; index: number }[];
+      metros: { name: string; index: number }[];
+    } | null;
+  };
+  taxes: {
+    singleFiler: {
+      incomeLevels: number[];
+      federalTax: number[];
+      floridaStateTax: number[];
+      totalInFlorida: number[];
+    };
+    stateComparison: { state: string; extraStateTax: number[] }[];
+    totalBurden: {
+      salesTaxAvgPct: number;
+      propertyEffectivePct: number;
+      totalStateLocalPct: number;
+      usAveragePct: number;
+    };
+    meta: {
+      asOf: string;
+      provenance: {
+        federal: {
+          name: string;
+          url: string;
+          tier: 'official' | 'nonpartisan';
+          citation?: string;
+          provenance: 'computed-from-published-tables';
+          computedAt: string;
+        };
+        floridaState: {
+          name: string;
+          url: string;
+          tier: 'official' | 'nonpartisan';
+          citation?: string;
+          provenance: 'computed-from-published-tables';
+          computedAt: string;
+        };
+        comparison: {
+          name: string;
+          url: string;
+          tier: 'official' | 'nonpartisan';
+          citation?: string;
+          provenance: 'computed-from-published-tables';
+          computedAt: string;
+        };
+        totalBurden: {
+          name: string;
+          url: string;
+          tier: 'official' | 'nonpartisan';
+          citation?: string;
+          provenance: 'computed-from-published-tables';
+          computedAt: string;
+        };
+      };
+    };
+  };
+};
+
+const NAV = [
+  { href: '#section-01', label: 'Economy & cost of living' },
+  { href: '#section-02', label: 'Jobs & workforce' },
+  { href: '#section-03', label: 'Taxes' },
+  { href: '#section-04', label: 'Officials' },
+  { href: '#section-05', label: 'Legislation' },
+  { href: '#section-06', label: 'Courts' },
+] as const;
+
+function MiniSparkline({ values }: { values: number[] }) {
+  if (values.length < 2) return null;
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const range = max - min || 1;
+  const w = 80;
+  const h = 24;
+  const pts = [...values].reverse().map((v, i) => {
+    const x = (i / (values.length - 1)) * w;
+    const y = h - ((v - min) / range) * (h - 4) - 2;
+    return `${x},${y}`;
+  });
+  return (
+    <svg width={w} height={h} className="text-[var(--gold)]" aria-hidden>
+      <polyline fill="none" stroke="currentColor" strokeWidth="1.5" points={pts.join(' ')} />
+    </svg>
+  );
+}
+
+function CountyMiniRows({
+  rows,
+  valueKey,
+  format,
+}: {
+  rows: FloridaCountyRow[];
+  valueKey: keyof FloridaCountyRow;
+  format: (v: number | null) => string;
+}) {
+  return (
+    <div className="space-y-1">
+      {rows.map((r, i) => {
+        const raw = r[valueKey];
+        const display =
+          raw === null || raw === undefined
+            ? 'No verified record available'
+            : format(raw as number);
+        return (
+          <div key={r.fips} className="grid grid-cols-[auto_1fr_auto] gap-2 text-[11px] text-[var(--foreground)]/85 py-0.5">
+            <span className="text-[var(--muted)]/90 font-mono text-[10px]">{i + 1}</span>
+            <span className="truncate">{r.name}</span>
+            <span className="font-mono text-[var(--foreground)]">{display}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+const HONEST_GAP = (
+  <span className="italic text-[var(--muted)]">No verified record available</span>
+);
+
+function StatCard({
+  label,
+  value,
+  sub,
+  tier,
+  children,
+}: {
+  label: string;
+  value: string;
+  sub?: ReactNode;
+  tier: 'official' | 'nonpartisan' | 'media' | 'alleged' | 'unverified';
+  children?: ReactNode;
+}) {
+  return (
+    <div className="relative bg-gradient-to-b from-[var(--bg-elevated)] to-[var(--bg-card)] border border-[var(--border-subtle)] rounded-[13px] p-4 overflow-hidden min-w-0">
+      <div className="absolute top-3 right-3">
+        <TierDot tier={tier} />
+      </div>
+      <p className="text-[11px] text-[var(--muted)] pr-6">{label}</p>
+      <p className="text-[26px] font-semibold text-[var(--foreground)] tracking-tight mt-1.5 leading-none">{value}</p>
+      {sub && <div className="text-[11.5px] text-[var(--foreground)]/85 mt-2 flex flex-wrap items-center gap-1.5">{sub}</div>}
+      {children}
+    </div>
+  );
+}
+
+function SectionShell({
+  id,
+  eyebrow,
+  title,
+  note,
+  sourceLine,
+  children,
+}: {
+  id: string;
+  eyebrow: string;
+  title: string;
+  note?: string;
+  sourceLine?: ReactNode;
+  children: ReactNode;
+}) {
+  return (
+    <section id={id} className="scroll-mt-24 py-7 border-b border-[var(--border-subtle)] last:border-b-0">
+      <div className="flex items-baseline gap-3 mb-1">
+        <span className="font-mono text-[10.5px] tracking-widest text-[var(--gold)]">{eyebrow}</span>
+        <h2 className="text-base font-semibold text-[var(--foreground)]">{title}</h2>
+      </div>
+      {note && <p className="text-[12.5px] text-[var(--muted)] mb-4 max-w-prose">{note}</p>}
+      {children}
+      {sourceLine && (
+        <p className="text-[10px] text-[var(--muted)]/90 mt-4 pt-3 border-t border-[var(--border-subtle)]">{sourceLine}</p>
+      )}
+    </section>
+  );
+}
+
+function EducationEarningsBlock({ tiers, note }: { tiers: StateEducationLaborTier[]; note?: string }) {
+  if (!tiers.length) return null;
+  return (
+    <div
+      className="mt-4 bg-gradient-to-b from-[var(--bg-elevated)] to-[var(--bg-card)] border border-[var(--border-subtle)] rounded-[14px] p-4 sm:p-5 overflow-x-auto"
+      data-testid="fl-education-earnings-panel"
+    >
+      <div className="min-w-0">
+        <p className="text-[13px] font-semibold text-[var(--foreground)]">Median earnings &amp; unemployment by education level</p>
+        {note && <p className="text-[11px] text-[var(--muted)] mt-1">{note}</p>}
+        <div className="hidden sm:grid grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.6fr)] gap-3 pt-3 pb-1 text-[9.5px] uppercase tracking-wide text-[var(--muted)]/90">
+          <span>Education</span>
+          <span className="text-right">Annual pay</span>
+          <span className="text-right">Unemployment</span>
+          <span />
+        </div>
+        <div className="divide-y divide-white/[0.055]">
+          {tiers.map((tier) => (
+            <div
+              key={tier.educationLevel}
+              className="grid grid-cols-1 sm:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.6fr)] gap-2 sm:gap-3 py-3 items-center min-w-0"
+            >
+              <p className="text-[12.5px] text-[var(--foreground)] break-words">{tier.educationLevel}</p>
+              <p className="text-sm font-mono text-[var(--foreground)] sm:text-right">
+                {tier.medianAnnualEarnings != null ? formatCompactCurrency(tier.medianAnnualEarnings) : '—'}
+              </p>
+              <p className="text-sm font-mono text-[var(--muted)] sm:text-right">
+                {tier.unemploymentRate != null ? formatPercent(tier.unemploymentRate) : (
+                  <span className="italic text-[var(--muted)]/90" title={tier.unemploymentGapReason}>not available</span>
+                )}
+              </p>
+              <div className="hidden sm:block h-2 rounded bg-white/5 overflow-hidden">
+                <div
+                  className="h-full rounded bg-gradient-to-r from-[var(--gold-dim)] to-[var(--gold)]"
+                  style={{ width: `${Math.min(100, ((tier.medianAnnualEarnings ?? 0) / 110000) * 100)}%` }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function UnemploymentChart({ history }: { history: { period: string; value: number }[] }) {
+  if (history.length < 2) return null;
+  const chronological = [...history].reverse();
+  const values = chronological.map((h) => h.value);
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const pad = Math.max(0.1, (max - min) * 0.15);
+  const yMin = Math.max(0, min - pad);
+  const yMax = max + pad;
+  const range = yMax - yMin || 1;
+  const w = 360;
+  const h = 140;
+  const left = 36;
+  const right = 12;
+  const top = 12;
+  const bottom = 28;
+  const plotW = w - left - right;
+  const plotH = h - top - bottom;
+  const pts = values.map((v, i) => {
+    const x = left + (i / (values.length - 1)) * plotW;
+    const y = top + plotH - ((v - yMin) / range) * plotH;
+    return `${x},${y}`;
+  });
+  const yTicks = [yMax, (yMin + yMax) / 2, yMin];
+  const monthLabel = (period: string) => {
+    const m = period.match(/([A-Za-z]{3})/);
+    return m?.[1] ?? period.slice(0, 3);
+  };
+  const xLabelIndexes = [0, Math.floor((values.length - 1) / 2), values.length - 1];
+  const descId = 'fl-unemployment-chart-desc';
+  return (
+    <div className="mt-3 rounded-[14px] border border-[var(--border-subtle)] bg-gradient-to-b from-[var(--bg-elevated)] to-[var(--bg-card)] p-4">
+      <p className="text-[13px] font-semibold text-[var(--foreground)]">Unemployment rate — trailing 12 months</p>
+      <p id={descId} className="sr-only">
+        Line chart of Florida unemployment rate from {chronological[0]?.period} to{' '}
+        {chronological[chronological.length - 1]?.period}, ranging {yMin.toFixed(1)}% to {yMax.toFixed(1)}%.
+      </p>
+      <svg
+        viewBox={`0 0 ${w} ${h}`}
+        className="w-full max-w-md mt-2 text-[var(--gold)]"
+        role="img"
+        aria-labelledby={descId}
+      >
+        {yTicks.map((tick) => {
+          const y = top + plotH - ((tick - yMin) / range) * plotH;
+          return (
+            <g key={tick}>
+              <line x1={left} x2={w - right} y1={y} y2={y} stroke="currentColor" strokeOpacity={0.12} />
+              <text x={left - 6} y={y + 3} textAnchor="end" className="fill-[var(--muted)]" fontSize="9.5" fontFamily="var(--font-mono, ui-monospace)">
+                {tick.toFixed(1)}
+              </text>
+            </g>
+          );
+        })}
+        <polyline fill="none" stroke="currentColor" strokeWidth="2" points={pts.join(' ')} />
+        {xLabelIndexes.map((i) => {
+          const x = left + (i / (values.length - 1)) * plotW;
+          return (
+            <text
+              key={chronological[i].period}
+              x={x}
+              y={h - 8}
+              textAnchor="middle"
+              className="fill-[var(--muted)]"
+              fontSize="9.5"
+              fontFamily="var(--font-mono, ui-monospace)"
+            >
+              {monthLabel(chronological[i].period)}
+            </text>
+          );
+        })}
+      </svg>
+    </div>
+  );
+}
+
+export default function FloridaStateDashboard({
+  economic,
+  politicians,
+  legislationRecords,
+  legislationNote,
+  courtRecords,
+  courtNote,
+  counties,
+  rpp,
+  taxes,
+}: FloridaDashboardProps) {
+
+  const pop = findIndicator(economic, 'Population');
+  const income = findIndicator(economic, 'Median household income');
+  const home = findIndicator(economic, 'Median home value');
+  const unemployment = findIndicator(economic, 'Unemployment rate');
+  const employment = findIndicator(economic, 'Employment');
+  const unemploymentLevel = findIndicator(economic, 'Unemployment level');
+  const laborForce = findIndicator(economic, 'Labor force');
+
+  const popByCounty = topBottomCounties(counties.records, 'population');
+  const incomeByCounty = topBottomCounties(counties.records, 'medianHouseholdIncome');
+  const homeByCounty = topBottomCounties(counties.records, 'medianHomeValue');
+  const unempByCounty = topBottomCounties(counties.records, 'unemploymentRate');
+
+  const empRate = unemployment ? employmentRatePercent(unemployment) : null;
+  const unempDelta = unemployment?.history ? deltaVsMonthsAgo(unemployment.history, 12) : null;
+  const popHero = pop ? populationHeroText(pop) : { compact: '—', full: '—' };
+
+  const incomeNatDelta =
+    income?.nationalValue != null && Number.isFinite(income.nationalValue)
+      ? indicatorRawValue(income)! - income.nationalValue
+      : null;
+  const homeNatDelta =
+    home?.nationalValue != null && Number.isFinite(home.nationalValue)
+      ? ((indicatorRawValue(home)! - home.nationalValue) / home.nationalValue) * 100
+      : null;
+  const rppState = rpp.state;
+  const rppVsUsLabel =
+    rppState == null
+      ? null
+      : (() => {
+          const rppVsUs = rppState.allItemsIndex - 100;
+          return rppVsUs === 0
+            ? 'at U.S. average'
+            : `${Math.abs(rppVsUs).toFixed(1)}% ${rppVsUs > 0 ? 'above' : 'below'} U.S. average`;
+        })();
+  const attain = counties.stateSummary.attainment;
+  const usBachelorsPlus = counties.stateSummary.usAttainmentBachelorsPlusPct;
+  const bachelorsNatDelta =
+    attain != null && usBachelorsPlus != null ? attain.bachelorsPlusPct - usBachelorsPlus : null;
+  const countiesLive =
+    counties.meta.provenance === 'fetched-live' ||
+    counties.meta.censusFetchedLive === true ||
+    counties.meta.fetchedLive === true;
+  const attainmentLive =
+    counties.meta.attainmentFetchedLive === true ||
+    (countiesLive && attain != null);
+  const rppLive =
+    rpp.meta.provenance === 'fetched-live' || rpp.meta.fetchedLive === true;
+
+  return (
+    <div className="max-w-[1160px] mx-auto grid grid-cols-1 lg:grid-cols-[248px_1fr] min-h-screen bg-[var(--bg-base)]">
+      <aside className="lg:sticky lg:top-0 lg:h-screen flex flex-col gap-6 p-5 lg:p-6 border-b lg:border-b-0 lg:border-r border-[var(--border-subtle)] bg-gradient-to-b from-[var(--bg-elevated)] to-[var(--bg-base)]">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-5 rounded relative overflow-hidden shadow shrink-0" aria-hidden>
+            <div className="absolute inset-0 bg-[repeating-linear-gradient(180deg,#c8433a_0_20%,#f4f4f2_20%_40%,#c8433a_40%_60%,#f4f4f2_60%_80%,#c8433a_80%_100%)]" />
+            <div className="absolute top-0 left-0 bottom-0 w-[44%] bg-[#25457a]" />
+          </div>
+          <div>
+            <p className="text-base font-semibold text-[var(--foreground)]">Florida</p>
+            <p className="text-[11px] text-[var(--muted)]">State profile</p>
+          </div>
+        </div>
+        <nav className="flex lg:flex-col flex-wrap gap-1" aria-label="Section navigation">
+          {NAV.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="text-[13px] text-[var(--foreground)]/85 hover:text-[var(--foreground)] hover:bg-[var(--gold)]/10 rounded-lg px-3 py-2 transition-colors"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <div className="lg:mt-auto pt-4 border-t border-[var(--border-subtle)] space-y-4">
+          {income && (
+            <div>
+              <p className="text-[10.5px] uppercase tracking-wide text-[var(--muted)]/90">Median income</p>
+              <p className="text-xl font-semibold text-[var(--foreground)] mt-0.5">{displayValue(income)}</p>
+            </div>
+          )}
+          {empRate != null && (
+            <div>
+              <p className="text-[10.5px] uppercase tracking-wide text-[var(--muted)]/90">Employment rate</p>
+              <p className="text-xl font-semibold text-[var(--foreground)] mt-0.5">{formatPercent(empRate)}</p>
+            </div>
+          )}
+        </div>
+      </aside>
+
+      <main className="min-w-0 px-4 sm:px-8 py-7 pb-16">
+        <header className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 pb-6 border-b border-[var(--border-subtle)]">
+          <div>
+            <p className="font-mono text-[10.5px] tracking-[0.18em] uppercase text-[var(--gold)]">State profile</p>
+            <h1 className="text-3xl font-semibold text-[var(--foreground)] mt-2 tracking-tight">Florida</h1>
+            <p className="text-[13.5px] text-[var(--foreground)]/85 mt-2 max-w-prose leading-relaxed">
+              Verified economic indicators, office-ranked officials, legislation, and court decisions — sourced from federal and state records.
+            </p>
+          </div>
+          {pop && (
+            <div className="text-left sm:text-right shrink-0">
+              <p className="text-[10.5px] uppercase tracking-wide text-[var(--muted)]">Population</p>
+              <p className="text-4xl font-semibold text-[var(--foreground)] tracking-tight mt-1">
+                {popHero.compact}
+              </p>
+              <details className="mt-2 text-[11px] text-[var(--muted)]">
+                <summary className="cursor-pointer text-[var(--gold)] list-none">
+                  {counties.stateSummary.populationGrowthPct != null && counties.stateSummary.populationRank != null ? (
+                    <>
+                      {counties.stateSummary.populationGrowthPct > 0 ? '▲' : counties.stateSummary.populationGrowthPct < 0 ? '▼' : '●'}
+                      {Math.abs(counties.stateSummary.populationGrowthPct)}%/yr · #{counties.stateSummary.populationRank} largest state
+                    </>
+                  ) : (
+                    <>County breakdown ▾</>
+                  )}
+                </summary>
+                <div className="mt-2 text-left sm:text-right border-t border-dashed border-[var(--border-subtle)] pt-2">
+                  <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">
+                    Top counties by population
+                    {countiesLive && <SampleBadge />}
+                  </p>
+                  <CountyMiniRows rows={popByCounty.top} valueKey="population" format={(v) => (v != null ? formatCompact(v) : '—')} />
+                  <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1 mt-3">
+                    Smallest counties
+                    {countiesLive && <SampleBadge />}
+                  </p>
+                  <CountyMiniRows rows={popByCounty.bottom} valueKey="population" format={(v) => (v != null ? formatCompact(v) : '—')} />
+                </div>
+              </details>
+            </div>
+          )}
+        </header>
+
+        <SectionShell
+          id="section-01"
+          eyebrow="§01"
+          title="Economy & cost of living"
+          note="Income, housing, and prices — and how Florida compares to the rest of the country. Expand any card for a county-by-county breakdown."
+          sourceLine={
+            <>
+              Source: U.S. Census Bureau ACS (county sample n={counties.records.length}) · BEA Regional Price Parities
+            </>
+          }
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            {income && (
+              <StatCard
+                label="Median household income"
+                value={displayValue(income)}
+                tier="official"
+                sub={
+                  incomeNatDelta != null && (
+                    <span className={incomeNatDelta <= 0 ? 'text-[var(--positive)]' : 'text-[var(--negative)]'}>
+                      {formatDelta(incomeNatDelta, 'USD')} vs U.S. average
+                    </span>
+                  )
+                }
+              >
+                {income.history && <div className="mt-2"><MiniSparkline values={income.history.map((h) => h.value)} /></div>}
+                <details className="mt-2">
+                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">Counties by income ▾{countiesLive && <SampleBadge />}</summary>
+                  <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Highest</p>
+                      <CountyMiniRows rows={incomeByCounty.top} valueKey="medianHouseholdIncome" format={(v) => formatCompactCurrency(v)} />
+                    </div>
+                    <div>
+                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Lowest</p>
+                      <CountyMiniRows rows={incomeByCounty.bottom} valueKey="medianHouseholdIncome" format={(v) => formatCompactCurrency(v)} />
+                    </div>
+                  </div>
+                </details>
+              </StatCard>
+            )}
+            {home && (
+              <StatCard
+                label="Median home value"
+                value={displayValue(home)}
+                tier="official"
+                sub={
+                  homeNatDelta != null && (
+                    <span className={homeNatDelta <= 0 ? 'text-[var(--positive)]' : 'text-[var(--negative)]'}>
+                      {homeNatDelta > 0 ? '+' : ''}{homeNatDelta.toFixed(0)}% vs U.S. average
+                    </span>
+                  )
+                }
+              >
+                {home.history && <div className="mt-2"><MiniSparkline values={home.history.map((h) => h.value)} /></div>}
+                <details className="mt-2">
+                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">Counties by home value ▾{countiesLive && <SampleBadge />}</summary>
+                  <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Most expensive</p>
+                      <CountyMiniRows rows={homeByCounty.top} valueKey="medianHomeValue" format={(v) => formatCompactCurrency(v)} />
+                    </div>
+                    <div>
+                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Most affordable</p>
+                      <CountyMiniRows rows={homeByCounty.bottom} valueKey="medianHomeValue" format={(v) => formatCompactCurrency(v)} />
+                    </div>
+                  </div>
+                </details>
+              </StatCard>
+            )}
+            {rppState ? (
+              <StatCard
+                label="Cost of living index"
+                value={`${rppState.allItemsIndex}`}
+                tier="official"
+                sub={rppVsUsLabel && <span>U.S. = 100 · {rppVsUsLabel}</span>}
+              >
+                <details className="mt-2">
+                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">
+                    Components & metros ▾{rppLive && <SampleBadge />}
+                  </summary>
+                  <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] space-y-3">
+                    <div>
+                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Components (RPP)</p>
+                      {rppState.components.map((c) => (
+                        <div key={c.label} className="flex justify-between text-[11px] text-[var(--foreground)]/85 py-0.5">
+                          <span>{c.label}</span>
+                          <span className="font-mono">{c.index}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div>
+                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Metro areas</p>
+                      {rppState.metros.map((m) => (
+                        <div key={m.name} className="flex justify-between text-[11px] text-[var(--foreground)]/85 py-0.5">
+                          <span className="truncate pr-2">{m.name}</span>
+                          <span className="font-mono shrink-0">{m.index}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </details>
+              </StatCard>
+            ) : (
+              <div className="relative bg-gradient-to-b from-[var(--bg-elevated)] to-[var(--bg-card)] border border-[var(--border-subtle)] rounded-[13px] p-4 min-w-0">
+                <p className="text-[11px] text-[var(--muted)]">Cost of living index</p>
+                <p className="text-[15px] text-[var(--muted)] mt-3">{HONEST_GAP}</p>
+                <p className="text-[10px] text-[var(--muted)]/90 mt-2">
+                  BEA Regional Price Parities — configure BEA_API_KEY to enable live fetch.
+                </p>
+              </div>
+            )}
+          </div>
+        </SectionShell>
+
+        <SectionShell
+          id="section-02"
+          eyebrow="§02"
+          title="Jobs & workforce"
+          note="Who's working in Florida, how much education they have, and what they earn by level. Earnings are annual."
+          sourceLine={<>Source: BLS LAUS + CPS education tiers (national reference where FL series unavailable) · {economic.meta.asOf}</>}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {unemployment && empRate != null && (
+              <StatCard
+                label="Employment rate"
+                value={formatPercent(empRate)}
+                tier="official"
+                sub={
+                  <>
+                    {unemployment.nationalValue != null && (
+                      <span>{formatDelta(empRate - (100 - unemployment.nationalValue), '%')} vs U.S.</span>
+                    )}
+                    <div className="w-full mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] text-[11.5px]">
+                      Unemployment <b className="text-[var(--foreground)]">{displayValue(unemployment)}</b>
+                      {unempDelta && (
+                        <span
+                          className={`ml-1 ${unempDelta.delta > 0 ? 'text-[var(--negative)]' : unempDelta.delta < 0 ? 'text-[var(--positive)]' : 'text-[var(--muted)]'}`}
+                        >
+                          {formatDelta(unempDelta.delta, '%')} vs a year ago
+                        </span>
+                      )}
+                    </div>
+                  </>
+                }
+              >
+                <details className="mt-2">
+                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">Workforce, counties & trend ▾{countiesLive && <SampleBadge />}</summary>
+                  <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] space-y-3">
+                    <div className="grid grid-cols-2 gap-2 text-[11px]">
+                      {laborForce && <div><p className="text-[var(--muted)]/90 uppercase text-[10px]">Labor force</p><p className="font-semibold text-[var(--foreground)]">{displayValue(laborForce)}</p></div>}
+                      {employment && <div><p className="text-[var(--muted)]/90 uppercase text-[10px]">Employed</p><p className="font-semibold text-[var(--foreground)]">{displayValue(employment)}</p></div>}
+                      {unemploymentLevel && <div><p className="text-[var(--muted)]/90 uppercase text-[10px]">Unemployed</p><p className="font-semibold text-[var(--foreground)]">{displayValue(unemploymentLevel)}</p></div>}
+                      <div><p className="text-[var(--muted)]/90 uppercase text-[10px]">Unemp rate</p><p className="font-semibold text-[var(--foreground)]">{displayValue(unemployment)}</p></div>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Lowest unemployment</p>
+                        <CountyMiniRows rows={unempByCounty.bottom} valueKey="unemploymentRate" format={(v) => (v != null ? `${v}%` : '—')} />
+                      </div>
+                      <div>
+                        <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Highest unemployment</p>
+                        <CountyMiniRows rows={unempByCounty.top} valueKey="unemploymentRate" format={(v) => (v != null ? `${v}%` : '—')} />
+                      </div>
+                    </div>
+                    {unemployment.history && <UnemploymentChart history={unemployment.history} />}
+                  </div>
+                </details>
+              </StatCard>
+            )}
+            <StatCard
+              label="Adults with a bachelor's+"
+              value={attainmentLive && attain != null ? `${attain.bachelorsPlusPct}%` : '—'}
+              tier="official"
+              sub={
+                attainmentLive && bachelorsNatDelta != null ? (
+                  <span>{bachelorsNatDelta >= 0 ? '+' : ''}{bachelorsNatDelta.toFixed(1)} pts vs U.S. average</span>
+                ) : (
+                  HONEST_GAP
+                )
+              }
+            >
+              {attainmentLive && attain != null && (
+                <details className="mt-2">
+                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">
+                    Attainment breakdown ▾
+                  </summary>
+                  <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] space-y-1 text-[11px] text-[var(--foreground)]/85">
+                    <div className="flex justify-between"><span>HS+</span><span className="font-mono">{attain.hsPlusPct}%</span></div>
+                    <div className="flex justify-between"><span>Some college</span><span className="font-mono">{attain.someCollegePct}%</span></div>
+                    <div className="flex justify-between"><span>Bachelor&apos;s</span><span className="font-mono">{attain.bachelorsPct}%</span></div>
+                    <div className="flex justify-between"><span>Graduate</span><span className="font-mono">{attain.graduatePct}%</span></div>
+                  </div>
+                </details>
+              )}
+            </StatCard>
+          </div>
+
+          {economic.educationTiers && (
+            <EducationEarningsBlock tiers={economic.educationTiers} note={economic.meta.educationNote} />
+          )}
+
+          <div className="mt-4 rounded-lg border border-dashed border-[var(--border-subtle)] bg-[var(--foreground)]/[0.02] p-3 text-[11.5px] text-[var(--muted)]">
+            <span className="text-[var(--gold)] font-medium">Fastest-growing occupations:</span>{' '}
+            No verified record available — BLS Employment Projections sample pending (honest gap).
+          </div>
+        </SectionShell>
+
+        <SectionShell
+          id="section-03"
+          eyebrow="§03"
+          title="Taxes"
+          note="Single-filer income tax including federal obligations, computed from published IRS / Tax Foundation tables. Florida has no state income tax."
+          sourceLine={
+            <>
+              <a href={taxes.meta.provenance.federal.url} className="underline-offset-2 hover:underline" target="_blank" rel="noopener noreferrer">
+                {taxes.meta.provenance.federal.name}
+              </a>
+              {' · '}
+              <a href={taxes.meta.provenance.floridaState.url} className="underline-offset-2 hover:underline" target="_blank" rel="noopener noreferrer">
+                FL DOR ($0 state income tax)
+              </a>
+              {' · '}
+              <a href={taxes.meta.provenance.comparison.url} className="underline-offset-2 hover:underline" target="_blank" rel="noopener noreferrer">
+                Tax Foundation
+              </a>
+              {' · '}
+              {taxes.meta.asOf}
+              <span className="ml-1.5 font-mono text-[9px] uppercase tracking-wide text-[var(--muted)] border border-[var(--border-default)] rounded px-1 py-px">
+                computed
+              </span>
+            </>
+          }
+        >
+          <div className="overflow-x-auto rounded-[13px] border border-[var(--border-subtle)]">
+            <table className="w-full text-[12px] text-left min-w-[320px]">
+              <thead>
+                <tr className="border-b border-[var(--border-subtle)] text-[var(--muted)]">
+                  <th className="p-3 font-medium">Single filer income</th>
+                  {taxes.singleFiler.incomeLevels.map((inc) => (
+                    <th key={inc} className="p-3 font-mono text-right">{formatCompactCurrency(inc)}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="text-[var(--foreground)]/85">
+                <tr className="border-b border-[var(--border-subtle)]">
+                  <td className="p-3">Federal income tax</td>
+                  {taxes.singleFiler.federalTax.map((v, i) => (
+                    <td key={i} className="p-3 font-mono text-right text-[var(--foreground)]">{formatCompactCurrency(v)}</td>
+                  ))}
+                </tr>
+                <tr className="border-b border-[var(--border-subtle)] bg-[var(--gold)]/5">
+                  <td className="p-3 text-[var(--gold)]">Florida state income tax</td>
+                  {taxes.singleFiler.floridaStateTax.map((v, i) => (
+                    <td key={i} className="p-3 font-mono text-right text-[var(--gold)]">${v}</td>
+                  ))}
+                </tr>
+                <tr>
+                  <td className="p-3 font-medium text-[var(--foreground)]">Total paid living in Florida</td>
+                  {taxes.singleFiler.totalInFlorida.map((v, i) => (
+                    <td key={i} className="p-3 font-mono text-right font-semibold text-[var(--foreground)]">{formatCompactCurrency(v)}</td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-[11px] text-[var(--muted)] mt-4 mb-2">For comparison — extra state tax others add on top of the same federal bill:</p>
+          <div className="overflow-x-auto rounded-[13px] border border-[var(--border-subtle)]">
+            <table className="w-full text-[12px] min-w-[320px]">
+              <thead>
+                <tr className="border-b border-[var(--border-subtle)] text-[var(--muted)]">
+                  <th className="p-3 text-left">State</th>
+                  {taxes.singleFiler.incomeLevels.map((inc) => (
+                    <th key={inc} className="p-3 font-mono text-right">{formatCompactCurrency(inc)}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {taxes.stateComparison.map((row) => (
+                  <tr key={row.state} className="border-b border-[var(--border-subtle)] text-[var(--foreground)]/85">
+                    <td className="p-3">{row.state}</td>
+                    {row.extraStateTax.map((v, i) => (
+                      <td key={i} className="p-3 font-mono text-right">+{formatCompactCurrency(v)}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <details className="mt-4">
+            <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">The full picture — total tax burden ▾</summary>
+            <div className="mt-2 p-3 rounded-lg border border-[var(--border-subtle)] text-[11.5px] text-[var(--foreground)]/85 space-y-1">
+              <p>Sales tax avg ~{taxes.totalBurden.salesTaxAvgPct}% · Property ~{taxes.totalBurden.propertyEffectivePct}% effective</p>
+              <p>
+                Total state+local burden: <b className="text-[var(--foreground)]">{taxes.totalBurden.totalStateLocalPct}%</b> of income vs U.S. avg{' '}
+                <b className="text-[var(--foreground)]">{taxes.totalBurden.usAveragePct}%</b>
+              </p>
+              <p className="text-[var(--muted)]/90">Federal income tax sits on top nationwide — same brackets in every state.</p>
+            </div>
+          </details>
+        </SectionShell>
+
+        <div id="section-04" className="scroll-mt-24">
+          <FloridaStatePoliticians politicians={politicians} stateName="Florida" />
+        </div>
+
+        {legislationRecords.length > 0 && (
+          <section id="section-05" className="scroll-mt-24 py-7 border-b border-[var(--border-subtle)]">
+            <div className="mb-4">
+              <span className="font-mono text-[10.5px] tracking-widest text-[var(--gold)]">§05</span>
+              <h2 className="text-base font-semibold text-[var(--foreground)] mt-1">Legislation</h2>
+              <p className="text-[12.5px] text-[var(--muted)] mt-1 max-w-prose">
+                Recent Florida bills, in plain language — expand any for the full official text.
+              </p>
+            </div>
+            <FloridaLegislationSection records={legislationRecords} metaNote={legislationNote} compact />
+            <p className="text-[10px] text-[var(--muted)]/90 mt-4 pt-3 border-t border-[var(--border-subtle)]">
+              Summaries from{' '}
+              <a href="https://legiscan.com" target="_blank" rel="noopener noreferrer" className="text-[var(--foreground)]/85 border-b border-[var(--border-default)]">
+                LegiScan
+              </a>{' '}
+              official bill descriptions
+            </p>
+          </section>
+        )}
+
+        <section id="section-06" className="scroll-mt-24 py-7">
+          <div className="mb-4">
+            <span className="font-mono text-[10.5px] tracking-widest text-[var(--gold)]">§06</span>
+            <h2 className="text-base font-semibold text-[var(--foreground)] mt-1">Courts</h2>
+            <p className="text-[12.5px] text-[var(--muted)] mt-1 max-w-prose">
+              Florida Supreme Court decisions, summarized from the court&apos;s own record — expand for the syllabus and full opinion.
+            </p>
+          </div>
+          <FloridaCourtDecisionsSection title="Florida Supreme Court" records={courtRecords} metaNote={courtNote} compact />
+          <p className="text-[10px] text-[var(--muted)]/90 mt-4 pt-3 border-t border-[var(--border-subtle)]">
+            Source:{' '}
+            <a href="https://www.courtlistener.com" target="_blank" rel="noopener noreferrer" className="text-[var(--foreground)]/85 border-b border-[var(--border-default)]">
+              CourtListener
+            </a>{' '}
+            — Supreme Court of Florida
+          </p>
+        </section>
+      </main>
+    </div>
+  );
+}

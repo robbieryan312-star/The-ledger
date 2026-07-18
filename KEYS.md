@@ -20,7 +20,7 @@
 |---------|--------|
 | `FEC_API_KEY` | `sync:fec`, `sync:fec-national`, `sync:fec-schedule-a` |
 | `CONGRESS_API_KEY` | `sync:votes`, `sync:votes-national`, `ingest:member` |
-| `CENSUS_API_KEY` | FL census ingest |
+| `CENSUS_API_KEY` | **REQUIRED** for FL county/census ingest (`ingest:fl-counties`, `ingest:census-fl`) — hard-exit without key |
 | `DATA_GOV_API_KEY` / `GOVINFO_API_KEY` | GovInfo / GPO (Congressional Record pilot) |
 | `LEGISCAN_API_KEY` | FL state bills |
 | `COURTLISTENER_API_KEY` | FL court opinion cluster/opinion detail (`/search/` is keyless) |
@@ -69,6 +69,7 @@ After adding keys: `npm run sync:fec` → `npm run sync:votes` → `npm run sync
 | `FOLLOWTHEMONEY_API_KEY` | Optional later — state finance beyond FEC |
 | `OPENCORPORATES_API_KEY` | Optional later — employer→company crosswalk |
 | `SAM_API_KEY` | Optional — login.gov verification required |
+| `BEA_API_KEY` | **EMPTY until set** — FL cost-of-living / Regional Price Parities (`ingest:bea-rpp-fl`); without it BEA sample stays `provenance: 'honest-gap'` |
 
 ---
 

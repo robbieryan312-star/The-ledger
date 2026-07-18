@@ -21,7 +21,12 @@ const PORT = 4112;
 const BASE = `http://127.0.0.1:${PORT}`;
 
 const REQUIRED_SECTIONS: Record<string, string[]> = {
-  '/states/FL': ['#economy', '#courts'],
+  '/states/FL': ['#section-01', '#section-02', '#section-03', '#section-04'],
+};
+
+/** Present when live legislation/court samples exist — asserted only if in DOM. */
+const CONDITIONAL_SECTIONS: Record<string, string[]> = {
+  '/states/FL': ['#section-05', '#section-06'],
 };
 
 function fail(message: string): never {
@@ -42,14 +47,14 @@ async function waitForServer(ms = READY_POLL_MS): Promise<void> {
       const res = await fetch(`${BASE}/states/FL`, { signal: AbortSignal.timeout(fetchTimeout) });
       if (res.ok) {
         const html = await res.text();
-        if (html.includes('id="economy"')) return;
+        if (html.includes('id="section-01"')) return;
       }
     } catch {
       // retry — first requests may block while Next compiles /states/FL on demand
     }
     await new Promise((r) => setTimeout(r, 1000));
   }
-  fail(`server did not become ready on ${BASE}/states/FL with id="economy" within ${ms}ms`);
+  fail(`server did not become ready on ${BASE}/states/FL with id="section-01" within ${ms}ms`);
 }
 
 function startServer(): { proc: ReturnType<typeof spawn> | null; kill: () => void; external: boolean } {
@@ -59,9 +64,26 @@ function startServer(): { proc: ReturnType<typeof spawn> | null; kill: () => voi
   const proc = spawn('npx', ['next', 'start', '-H', '127.0.0.1', '-p', String(PORT)], {
     cwd: projectRoot,
     stdio: ['ignore', 'pipe', 'pipe'],
+    detached: true,
   });
   const kill = () => {
-    proc.kill('SIGTERM');
+    if (proc.pid == null) return;
+    try {
+      process.kill(-proc.pid, 'SIGTERM');
+    } catch {
+      try {
+        proc.kill('SIGTERM');
+      } catch {
+        /* already gone */
+      }
+    }
+    setTimeout(() => {
+      try {
+        if (proc.pid != null) process.kill(-proc.pid, 'SIGKILL');
+      } catch {
+        /* already gone */
+      }
+    }, 2000).unref?.();
   };
   return { proc, kill, external: false };
 }
@@ -94,7 +116,7 @@ async function assertImagesLoad(page: Page, label: string): Promise<void> {
     const imgs = [...document.querySelectorAll('img')];
     return imgs
       .filter((img) => {
-        if (img.closest('#politicians')) return false;
+        if (img.closest('#section-04') || img.closest('#politicians')) return false;
         const w = img.naturalWidth;
         const src = img.getAttribute('src') ?? '';
         if (!src || src.startsWith('data:')) return false;
@@ -110,10 +132,19 @@ async function assertImagesLoad(page: Page, label: string): Promise<void> {
   }
 }
 
+async function openAllDetails(page: Page): Promise<void> {
+  await page.evaluate(() => {
+    document.querySelectorAll('details').forEach((d) => {
+      d.open = true;
+    });
+  });
+  await page.waitForTimeout(200);
+}
+
 async function assertRequiredSections(page: Page, pagePath: string, label: string): Promise<void> {
   const required = REQUIRED_SECTIONS[pagePath] ?? [];
   for (const sel of required) {
-    const empty = await page.evaluate((selector) => {
+    const empty = await page.evaluate((selector: string) => {
       const el = document.querySelector(selector);
       if (!el) return 'missing';
       const text = (el.textContent ?? '').replace(/\s+/g, ' ').trim();
@@ -121,6 +152,17 @@ async function assertRequiredSections(page: Page, pagePath: string, label: strin
     }, sel);
     if (empty) {
       fail(`${label}: required section ${sel} is ${empty}`);
+    }
+  }
+  for (const sel of CONDITIONAL_SECTIONS[pagePath] ?? []) {
+    const status = await page.evaluate((selector: string) => {
+      const el = document.querySelector(selector);
+      if (!el) return 'absent';
+      const text = (el.textContent ?? '').replace(/\s+/g, ' ').trim();
+      return text.length < 20 ? 'empty' : 'ok';
+    }, sel);
+    if (status === 'empty') {
+      fail(`${label}: conditional section ${sel} is present but empty`);
     }
   }
 }
@@ -155,6 +197,7 @@ async function runChecks(browser: Browser): Promise<string[]> {
         await page.waitForSelector(sel, { state: 'attached', timeout: 30000 });
       }
       await page.waitForTimeout(1000);
+      await openAllDetails(page);
       await assertNoHorizontalOverflow(page, label);
       await assertImagesLoad(page, label);
       await assertRequiredSections(page, pageDef.path, label);

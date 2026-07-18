@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "source": {
+      "name": "U.S. Census Bureau ACS",
+      "url": "https://api.census.gov",
+      "tier": "official",
+      "description": "ACS 5-year county + state attainment estimates"
+    },
+    "asOf": "2026-07-10",
+    "count": 10,
+    "stateCode": "FL",
+    "provenance": "fetched-live",
+    "fetchedLive": true,
+    "censusFetchedLive": true,
+    "blsFetchedLive": true,
+    "attainmentFetchedLive": true,
+    "fetchedAt": "2026-07-10T12:59:54.941Z",
+    "datasetUrl": "https://api.census.gov/data/2023/acs/acs5?get=NAME,B01003_001E,B19013_001E,B25077_001E&for=county:*&in=state:12&key=***",
+    "attainmentUrl": "https://api.census.gov/data/2023/acs/acs5?get=B15003_001E,B15003_017E,B15003_018E,B15003_019E,B15003_020E,B15003_021E,B15003_022E,B15003_023E,B15003_024E,B15003_025E&for=state:12&key=***",
+    "note": "ACS 2023 county sample (n=10) + B15003 state attainment. County unemployment from BLS LAUS.",
+    "blsSource": {
+      "name": "U.S. Bureau of Labor Statistics",
+      "url": "https://www.bls.gov",
+      "tier": "official",
+      "description": "LAUS county unemployment rate (LAUCN series)"
+    }
+  },
+  "stateSummary": {
+    "populationRank": 3,
+    "populationGrowthPct": 1.4,
+    "attainment": {
+      "hsPlusPct": 89.6,
+      "someCollegePct": 29,
+      "bachelorsPct": 20.7,
+      "graduatePct": 12.5,
+      "bachelorsPlusPct": 33.2
+    },
+    "usAttainmentBachelorsPlusPct": 35,
+    "acs": {
+      "population": 21928881,
+      "medianHouseholdIncome": 71711,
+      "medianHomeValue": 325000,
+      "nationalMedianHouseholdIncome": 78538,
+      "nationalMedianHomeValue": 303400,
+      "survey": "ACS 5-Year 2023",
+      "censusApiUrl": "https://api.census.gov/data/2023/acs/acs5"
+    }
+  },
+  "records": [
+    {
+      "fips": "12086",
+      "name": "Miami-Dade",
+      "population": 2685296,
+      "medianHouseholdIncome": 68694,
+      "medianHomeValue": 425400,
+      "unemploymentRate": 2.6
+    },
+    {
+      "fips": "12011",
+      "name": "Broward",
+      "population": 1946127,
+      "medianHouseholdIncome": 74534,
+      "medianHomeValue": 380400,
+      "unemploymentRate": 4.4
+    },
+    {
+      "fips": "12057",
+      "name": "Hillsborough",
+      "population": 1489634,
+      "medianHouseholdIncome": 75011,
+      "medianHomeValue": 333300,
+      "unemploymentRate": 4.5
+    },
+    {
+      "fips": "12095",
+      "name": "Orange",
+      "population": 1440471,
+      "medianHouseholdIncome": 77011,
+      "medianHomeValue": 358300,
+      "unemploymentRate": 4.4
+    },
+    {
+      "fips": "12031",
+      "name": "Duval",
+      "population": 1007189,
+      "medianHouseholdIncome": 68447,
+      "medianHomeValue": 274900,
+      "unemploymentRate": 4.7
+    },
+    {
+      "fips": "12103",
+      "name": "Pinellas",
+      "population": 960565,
+      "medianHouseholdIncome": 70293,
+      "medianHomeValue": 319000,
+      "unemploymentRate": 4.2
+    },
+    {
+      "fips": "12071",
+      "name": "Lee",
+      "population": 792692,
+      "medianHouseholdIncome": 73099,
+      "medianHomeValue": 326300,
+      "unemploymentRate": 4.9
+    },
+    {
+      "fips": "12009",
+      "name": "Brevard",
+      "population": 620533,
+      "medianHouseholdIncome": 75817,
+      "medianHomeValue": 304400,
+      "unemploymentRate": 4.7
+    },
+    {
+      "fips": "12021",
+      "name": "Collier",
+      "population": 387681,
+      "medianHouseholdIncome": 86173,
+      "medianHomeValue": 486800,
+      "unemploymentRate": 4.5
+    },
+    {
+      "fips": "12005",
+      "name": "Bay",
+      "population": 181368,
+      "medianHouseholdIncome": 70188,
+      "medianHomeValue": 276900,
+      "unemploymentRate": 4.4
+    }
+  ]
+}
