@@ -8,9 +8,10 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-18):**
-- Branch: `cursor/fl-state-locked-spec-70a6` · merging `origin/main` (#26) · tip pending Phase D handoff commit
-- PR: **#25** · CONSOLIDATED BRIEF v2 Phases -1/0/A/B/C landed · Phase D in progress
-- Tree: resolving merge with `main` · Next build green; render-integrity 2/2 (warmed server)
+- Branch: `cursor/critical-bug-management-6f01` · rebasing #27 onto main after #25/#26 merge
+- PR: **#27** · portrait guard + Bioguide portraits · anchors stay `#section-*`
+- Tree: rebase conflict resolution in progress
+
 
 ## Improvement backlog
 

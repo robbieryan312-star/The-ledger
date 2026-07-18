@@ -8,8 +8,8 @@ export const GOVERNOR_IDENTITY_KNOWN_BAD = {
   lastName: 'DeSantis',
   chamber: 'governor' as const,
   bioguideId: 'D000628',
-  /** GovTrack portrait for Neal P. Dunn (bioguide D000628 in currentLegislators.json). */
-  wrongPhotoUrl: 'https://www.govtrack.us/static/legislator-photos/412691-200px.jpeg',
+  /** Bioguide portrait for Neal P. Dunn (bioguide D000628 in currentLegislators.json). */
+  wrongPhotoUrl: 'https://bioguide.congress.gov/bioguide/photo/D/D000628.jpg',
 };
 
 export const GOVERNOR_IDENTITY_KNOWN_GOOD = {

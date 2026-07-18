@@ -72,7 +72,8 @@ function withOfficialPhoto(p: Politician): Politician {
   const hasLegacyCongressHost =
     !!p.imageUrl &&
     (p.imageUrl.includes('theunitedstates.io/images/congress') ||
-      p.imageUrl.includes('bioguide.congress.gov/bioguide/photo'));
+      p.imageUrl.includes('bioguide.congress.gov/bioguide/photo') ||
+      p.imageUrl.includes('govtrack.us/static/legislator-photos'));
   if (p.bioguideId && (!p.imageUrl || hasLegacyCongressHost)) {
     if (!bioguideMatchesCurrentLegislator(p.bioguideId, p)) {
       const execPhoto = executivePortraitUrl(p.id);

@@ -34,11 +34,21 @@ export default function PoliticianAvatar({
       <img
         src={imageUrl}
         alt={name}
+        data-ledger-avatar="image"
+        data-ledger-avatar-name={name}
         onError={() => setFailed(true)}
         className="w-full h-full object-cover object-top"
       />
     );
   }
 
-  return <span className={textClassName}>{initials}</span>;
+  return (
+    <span
+      className={textClassName}
+      data-ledger-avatar="fallback"
+      data-ledger-avatar-name={name}
+    >
+      {initials}
+    </span>
+  );
 }
