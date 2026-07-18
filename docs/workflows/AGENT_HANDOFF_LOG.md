@@ -7,12 +7,62 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-10):**
-- Branch: `main` · HEAD pending
-- Tree: dirty · prebuild + build + render-integrity: **green** locally
-- guards.yml: render-integrity moved out of postbuild; dedicated CI step + Playwright install
+**Current state (2026-07-11):**
+- Branch: `cursor/critical-bug-management-c8a7` · task commit `259a631`
+- PR: pending creation for topic-sync data-loss fix
+- Tree: docs handoff log dirty before this log commit
+- Build status: **PASS** after retry (`npm run test:topic-positions-bundle && npm run build`)
 
-## Latest session — render-integrity guard align to semantic ids (COMPLETE)
+## Improvement backlog
+
+| Date | Item | Status |
+|------|------|--------|
+| 2026-07-11 | Dependency audit reports 7 vulnerabilities after `npm install` (2 moderate, 5 high); run a scoped dependency audit/remediation pass separately from this critical data-loss fix. | open |
+| 2026-07-11 | Add an explicit guard for national news refresh semantics so a successful empty response cannot be confused with fetch failure or stale-window retention. | open |
+
+## Latest session — topic sync Said-Did preservation (COMPLETE)
+
+### Objective
+Fix a high-severity data-loss path where `sync-topic-positions` erased committed Said-Did links when the national votes snapshot failed to load or omitted a member row.
+
+### Verdict / outcome
+**PASS** — `sync-topic-positions` now preserves existing Said-Did links unless the national vote snapshot loaded successfully and contains the target member; the regression is build-gated by `test:topic-positions-bundle`.
+
+### Commits
+- `259a631` — fix(topic-sync): preserve said-did links without vote input
+- Handoff log commit: pending in this docs-only commit
+
+### Commands run (this session)
+- `pwd && git status --short --branch && git log --oneline --decorate -n 20 && gh pr view 24 --json number,state,mergedAt,headRefName,baseRefName,url,title` -> exit 0; PR #24 still open, not duplicated
+- `npm run test:topic-positions-bundle` -> exit 127 before dependency install (`tsx: not found`)
+- `npm install` -> exit 0; reported 7 vulnerabilities (2 moderate, 5 high)
+- `npm run test:topic-positions-bundle` -> exit 0; 8/8 tests passed
+- `npm run build` -> exit 2; TypeScript mismatch in helper signature
+- `npm run test:topic-positions-bundle && npm run build` -> exit 0; prebuild, Next build, and postbuild client chunks passed
+- `git diff -- package.json scripts/sync-topic-positions.ts scripts/lib/topicPositionsPreserve.ts scripts/__tests__/topicPositionsPreserve.test.ts` -> reviewed scoped diff
+- `git add package.json scripts/sync-topic-positions.ts scripts/lib/topicPositionsPreserve.ts scripts/__tests__/topicPositionsPreserve.test.ts && git commit -m "fix(topic-sync): preserve said-did links without vote input"` -> exit 0; commit `259a631`
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/sync-topic-positions.ts` | modified | Vote snapshot load now returns explicit loaded state; Said-Did refresh only clears links when votes loaded and member row exists. |
+| `scripts/lib/topicPositionsPreserve.ts` | created | Pure helper for deciding whether Said-Did links can refresh and for preserving prior links otherwise. |
+| `scripts/__tests__/topicPositionsPreserve.test.ts` | created | Regression tests for failed vote load, missing member row, and legitimate loaded empty refresh. |
+| `package.json` | modified | Wires preservation tests into `test:topic-positions-bundle` so prebuild runs them. |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session log and improvement backlog entries. |
+
+### Acceptance evidence
+- Focused guard: `npm run test:topic-positions-bundle` -> 8/8 pass, including "topic sync preserves Said-Did links when national votes failed to load" and "when national votes omit member row".
+- Full validation: `npm run test:topic-positions-bundle && npm run build` -> exit 0; Next.js 16.2.9 compiled successfully; postbuild client chunk guard passed.
+- Known duplicate handling: memory PR #24 remains open and covers a different render/aggregate-join issue; this bug was not re-reported as #24.
+
+### Open / next
+- Open PR and record the new open PR in automation `MEMORIES.md`.
+- Dependency audit vulnerabilities remain out of scope for this minimal critical fix.
+
+---
+
+## Previous session — render-integrity guard align to semantic ids (COMPLETE)
 
 ### Objective
 Fix `test:render-integrity` on `main`: guard used `#section-01`/`#section-04` but `/states/FL` renders `#economy`, `#politicians`, `#courts`.
