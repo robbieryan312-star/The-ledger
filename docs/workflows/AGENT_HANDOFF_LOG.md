@@ -8,7 +8,7 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-18):**
-- Branch: `cursor/fl-state-locked-spec-70a6` · HEAD `4dc467a` (Phase A work `2fe20a4`)
+- Branch: `cursor/fl-state-locked-spec-70a6` · **Phase A work:** `2fe20a4` · tip follows docs sync commits on same branch
 - PR: **#25** draft · Phase A credibility hardening implemented · **Phases B/C/D not started**
 - Tree: clean · `test:no-unverified-official-data` 7/7 · `test:typecheck` pass
 
