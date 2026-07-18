@@ -8,11 +8,53 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-18):**
-- Branch: `cursor/fl-state-locked-spec-70a6` · **Phase A work:** `2fe20a4` · tip follows docs sync commits on same branch
-- PR: **#25** draft · Phase A credibility hardening implemented · **Phases B/C/D not started**
-- Tree: clean · `test:no-unverified-official-data` 7/7 · `test:typecheck` pass
+- Branch: `cursor/fl-state-locked-spec-70a6` · merging `origin/main` (#26) · tip pending Phase D handoff commit
+- PR: **#25** · CONSOLIDATED BRIEF v2 Phases -1/0/A/B/C landed · Phase D in progress
+- Tree: resolving merge with `main` · Next build green; render-integrity 2/2 (warmed server)
 
-## Latest session — FL Phase A provenance + guard hardening (PASS)
+## Improvement backlog
+
+| Date | Item | Status |
+|------|------|--------|
+| 2026-07-18 | `npm audit`: 7 vulns remain after safe `npm audit fix` — need upstream Next/react-simple-maps (see `docs/workflows/NPM_AUDIT_2026-07-18.md`) | open |
+| 2026-07-11 | Add an explicit guard for national news refresh semantics so a successful empty response cannot be confused with fetch failure or stale-window retention. | open |
+
+## Latest session — CONSOLIDATED BRIEF v2 Phases 0–D (IN PROGRESS)
+
+### Objective
+Execute CONSOLIDATED BRIEF v2 Phases -1→D on PR #25; log Claude-access fix + all phases; STOP for Claude re-review.
+
+### Verdict / outcome
+**IN PROGRESS** — Phases -1/0/A/B/C complete on branch; #26 merged to main; finishing Phase D PR reconciliation.
+
+### Commits (this branch)
+- `2fe20a4` — Phase A provenance + guard hardening
+- `104a442` — FL infrastructure audit on disk (Claude access)
+- `b2145db` — Phase 0 factual falsehoods
+- `dd7ce50` — Phases A remaining + B + C
+- `89a7dd9` — render-integrity postbuild hang fix
+- main: `402818b` — Merge #26 Said-Did preservation
+
+### Open / next
+- Finish Phase D: merge #25 → rebase #27/#24 → close #23 → full gate → STOP
+
+---
+
+## Session log 2 — topic sync Said-Did preservation (#26 MERGED)
+
+### Objective
+Fix a high-severity data-loss path where `sync-topic-positions` erased committed Said-Did links when the national votes snapshot failed to load or omitted a member row.
+
+### Verdict / outcome
+**COMPLETE** — merged to `main` as PR **#26** (`402818b`) on 2026-07-18 per CONSOLIDATED BRIEF Phase D(a).
+
+### Commits
+- `259a631` — fix(topic-sync): preserve said-did links without vote input
+- Merge: `402818b` — Merge pull request #26
+
+---
+
+## Session log 3 — FL Phase A provenance + guard hardening (PASS)
 
 ### Objective
 Phase A credibility hardening: provenance enum, tax computed provenance, guard rewrite,
@@ -20,7 +62,7 @@ attainment null-on-zero, counties split live flags, BEA honest-gap provenance, K
 honest-gap copy, `ingest:florida-all` wiring.
 
 ### Verdict / outcome
-**PASS** — Phase A complete. Do not start Phase B/C/D.
+**PASS** — Phase A complete (later extended with BEA LineCodes-by-NAME + single read-path + refresh-data).
 
 ### Commits
 - `2fe20a4` — feat(fl): phase A provenance enum + guard hardening

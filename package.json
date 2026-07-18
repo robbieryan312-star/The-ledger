@@ -32,7 +32,7 @@
     "test:copy-compliance": "tsx --test scripts/__tests__/copyCompliance.test.ts",
     "test:news-registry": "tsx --test scripts/__tests__/newsRegistry.test.ts",
     "test:profile-snapshots": "tsx --test scripts/__tests__/profileSnapshots.test.ts",
-    "test:topic-positions-bundle": "tsx --test scripts/__tests__/topicPositionsBundle.test.ts",
+    "test:topic-positions-bundle": "tsx --test scripts/__tests__/topicPositionsBundle.test.ts scripts/__tests__/topicPositionsPreserve.test.ts",
     "test:client-bundle": "tsx --test --test-name-pattern \"use client files do not runtime-import\" scripts/__tests__/clientBundleGuard.test.ts",
     "test:client-chunks": "tsx --test --test-name-pattern \"client JS chunk total\" scripts/__tests__/clientBundleGuard.test.ts",
     "snapshot:update": "tsx scripts/profile-snapshot-update.ts",

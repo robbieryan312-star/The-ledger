@@ -19,6 +19,7 @@ import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
 import { fetchApprovedMediaStatementsForMember } from './lib/approvedMediaQuotes';
 import { isProceduralCrecText } from './lib/crecProceduralFilter';
 import { crecFloorSpeechOpenerRegex } from './lib/crecOpener';
+import { canRefreshSaidDidLinks, mergeSaidDidLinksForRefresh } from './lib/topicPositionsPreserve';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
@@ -247,6 +248,11 @@ interface NpatSection {
 interface NationalVoteMember {
   bioguideId: string;
   votes: VoteRecord[];
+}
+
+interface NationalVotesLoadResult {
+  loaded: boolean;
+  byBioguideId: Map<string, VoteRecord[]>;
 }
 
 const NPAT_SECTION_TO_TOPIC: Array<{ patterns: string[]; topicId: string }> = [
@@ -600,7 +606,7 @@ async function fetchVoteSmartNpatByTopic(
   }
 }
 
-async function loadNationalVotesAsync(): Promise<Map<string, VoteRecord[]>> {
+async function loadNationalVotesAsync(): Promise<NationalVotesLoadResult> {
   try {
     const raw = JSON.parse(await readFile(NATIONAL_VOTES_FILE_PATH, 'utf8')) as {
       byBioguideId?: Record<string, NationalVoteMember>;
@@ -609,10 +615,10 @@ async function loadNationalVotesAsync(): Promise<Map<string, VoteRecord[]>> {
     for (const [id, entry] of Object.entries(raw.byBioguideId ?? {})) {
       map.set(id, entry.votes ?? []);
     }
-    return map;
+    return { loaded: true, byBioguideId: map };
   } catch {
-    console.warn('WARN: could not load national votes — Said→Did links will be empty.');
-    return new Map();
+    console.warn('WARN: could not load national votes — preserving existing Said→Did links.');
+    return { loaded: false, byBioguideId: new Map() };
   }
 }
 
@@ -1087,7 +1093,12 @@ async function main(): Promise<void> {
         ? `https://votesmart.org/candidate/${voteSmartCandidateId}/political-courage-test`
         : 'https://votesmart.org';
 
-    const memberVotes = nationalVotes.get(leg.bioguideId) ?? [];
+    const memberVotes = nationalVotes.byBioguideId.get(leg.bioguideId) ?? [];
+    const canRefreshMemberSaidDid = canRefreshSaidDidLinks(
+      nationalVotes.loaded,
+      nationalVotes.byBioguideId,
+      leg.bioguideId,
+    );
 
     // Build fresh (this-run) statements + Said→Did per canonical topic.
     interface FreshTopic {
@@ -1135,8 +1146,12 @@ async function main(): Promise<void> {
 
       if (existingKey) {
         const entry = memberTopics[existingKey];
-        // Said→Did is deterministic from roll-call votes — always refresh.
-        entry.saidDidLinks = fresh?.saidDidLinks ?? [];
+        // Said→Did is deterministic from roll-call votes, but failed/missing vote input is not absence.
+        entry.saidDidLinks = mergeSaidDidLinksForRefresh(
+          entry.saidDidLinks,
+          fresh?.saidDidLinks,
+          canRefreshMemberSaidDid,
+        );
         // Only overlay statements when CREC actually refreshed; never wipe on a failed fetch.
         if (crec.searchOk) {
           // FAILURE≠ABSENCE (§6): a re-fetch only sees the current search pool, so a genuine
