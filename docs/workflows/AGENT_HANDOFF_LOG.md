@@ -8,9 +8,9 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-18):**
-- Branch: `cursor/fl-state-locked-spec-70a6` · HEAD `2fe20a4`
+- Branch: `cursor/fl-state-locked-spec-70a6` · HEAD `9b260da` (Phase A `2fe20a4`)
 - PR: **#25** draft · Phase A credibility hardening implemented · **Phases B/C/D not started**
-- Tree: clean after Phase A commit · `test:no-unverified-official-data` 7/7 · `test:typecheck` pass
+- Tree: clean · `test:no-unverified-official-data` 7/7 · `test:typecheck` pass
 
 ## Latest session — FL Phase A provenance + guard hardening (PASS)
 
@@ -24,6 +24,7 @@ honest-gap copy, `ingest:florida-all` wiring.
 
 ### Commits
 - `2fe20a4` — feat(fl): phase A provenance enum + guard hardening
+- `605186d` — docs: correct Phase A HEAD hash in agent handoff log
 
 ### Commands run (this session)
 - `npm run ingest:fl-tax` → exit 0
