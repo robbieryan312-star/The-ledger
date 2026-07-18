@@ -64,9 +64,26 @@ function startServer(): { proc: ReturnType<typeof spawn> | null; kill: () => voi
   const proc = spawn('npx', ['next', 'start', '-H', '127.0.0.1', '-p', String(PORT)], {
     cwd: projectRoot,
     stdio: ['ignore', 'pipe', 'pipe'],
+    detached: true,
   });
   const kill = () => {
-    proc.kill('SIGTERM');
+    if (proc.pid == null) return;
+    try {
+      process.kill(-proc.pid, 'SIGTERM');
+    } catch {
+      try {
+        proc.kill('SIGTERM');
+      } catch {
+        /* already gone */
+      }
+    }
+    setTimeout(() => {
+      try {
+        if (proc.pid != null) process.kill(-proc.pid, 'SIGKILL');
+      } catch {
+        /* already gone */
+      }
+    }, 2000).unref?.();
   };
   return { proc, kill, external: false };
 }
