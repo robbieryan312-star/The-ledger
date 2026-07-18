@@ -72,7 +72,7 @@ export default function Footer() {
                 ['Map', '/'],
                 ['Browse Politicians', '/politicians'],
                 ['Upcoming Elections', '/elections'],
-                ['Compare Candidates', '/compare'],
+                ['Compare Candidates', '/compare?mode=candidates'],
                 ['Campaign Finance', '/finance'],
                 ['Stock Trades', '/congress'],
               ].map(([label, href]) => (
