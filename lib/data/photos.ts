@@ -28,7 +28,10 @@ const bioguideToLegislator = new Map<string, LegislatorRow>(
 );
 
 /** Rare host overrides when Bioguide is missing a current member photo. */
-const CONGRESSIONAL_PORTRAIT_URL_OVERRIDES: Record<string, string> = {};
+const CONGRESSIONAL_PORTRAIT_URL_OVERRIDES: Record<string, string> = {
+  // Bioguide returns 404 for Soto; GovTrack hosts the public-domain portrait.
+  S001200: 'https://www.govtrack.us/static/legislator-photos/412695-200px.jpeg',
+};
 
 /** True when bioguideId resolves to a current legislator with the same last name. */
 export function bioguideMatchesCurrentLegislator(
