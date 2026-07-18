@@ -13,7 +13,7 @@ import { ArrowRight, Shield, Vote, DollarSign, BarChart2 } from 'lucide-react';
 const quickLinks = [
   { icon: Vote, label: 'Voting Records', href: '/politicians', color: 'text-blue-400' },
   { icon: DollarSign, label: 'Campaign Finance', href: '/finance', color: 'text-[#c8a951]' },
-  { icon: BarChart2, label: 'Compare Candidates', href: '/compare', color: 'text-purple-400' },
+  { icon: BarChart2, label: 'Compare Candidates', href: '/compare?mode=candidates', color: 'text-purple-400' },
 ];
 
 export default function HomePage() {
