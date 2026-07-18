@@ -281,6 +281,14 @@ async function buildStateEconomic() {
   }
 
   if (cRec) {
+    const usIncome =
+      cRec.nationalMedianHouseholdIncome != null
+        ? Number(cRec.nationalMedianHouseholdIncome)
+        : undefined;
+    const usHome =
+      cRec.nationalMedianHomeValue != null
+        ? Number(cRec.nationalMedianHomeValue)
+        : undefined;
     indicators.push({
       label: 'Population',
       rawValue: Number(cRec.population),
@@ -298,6 +306,8 @@ async function buildStateEconomic() {
       link: String(cRec.censusApiUrl ?? ''),
       source: cRec.source as Source,
       asOf: String(cRec.asOf),
+      nationalValue: Number.isFinite(usIncome) ? usIncome : undefined,
+      nationalLabel: Number.isFinite(usIncome) ? 'US avg' : undefined,
     });
     indicators.push({
       label: 'Median home value',
@@ -307,6 +317,8 @@ async function buildStateEconomic() {
       link: String(cRec.censusApiUrl ?? ''),
       source: cRec.source as Source,
       asOf: String(cRec.asOf),
+      nationalValue: Number.isFinite(usHome) ? usHome : undefined,
+      nationalLabel: Number.isFinite(usHome) ? 'US avg' : undefined,
     });
   }
 

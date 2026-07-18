@@ -44,7 +44,9 @@
         "tier": "official",
         "description": "American Community Survey 5-year estimates via api.census.gov"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-02",
+      "nationalValue": 78538,
+      "nationalLabel": "US avg"
     },
     {
       "label": "Median home value",
@@ -58,7 +60,9 @@
         "tier": "official",
         "description": "American Community Survey 5-year estimates via api.census.gov"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-02",
+      "nationalValue": 303400,
+      "nationalLabel": "US avg"
     },
     {
       "label": "Unemployment rate",

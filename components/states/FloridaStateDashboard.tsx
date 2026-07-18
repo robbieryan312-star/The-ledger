@@ -5,6 +5,7 @@ import {
   deltaVsMonthsAgo,
   displayValue,
   employmentRatePercent,
+  findIndicator,
   formatDelta,
   formatPercent,
   indicatorRawValue,
@@ -16,15 +17,12 @@ import FloridaStatePoliticians from '@/components/states/FloridaStatePoliticians
 import { FloridaLegislationSection } from '@/components/states/FloridaLegislationBillRow';
 import { FloridaCourtDecisionsSection } from '@/components/states/FloridaCourtDecisionRow';
 import SampleBadge from '@/components/states/SampleBadge';
+import {
+  topBottomCounties,
+  type FloridaCountyRow,
+} from '@/lib/data/floridaDashboard';
 
-export type FloridaCountyRow = {
-  fips: string;
-  name: string;
-  population: number;
-  medianHouseholdIncome: number;
-  medianHomeValue: number;
-  unemploymentRate: number | null;
-};
+export type { FloridaCountyRow };
 
 export type FloridaDashboardProps = {
   economic: StateEconomicSlice;
@@ -122,26 +120,6 @@ export type FloridaDashboardProps = {
     };
   };
 };
-
-function findEconomicIndicator(slice: StateEconomicSlice, labelIncludes: string) {
-  return slice.indicators.find((i) => i.label.toLowerCase().includes(labelIncludes.toLowerCase()));
-}
-
-function topBottomCounties(
-  records: FloridaCountyRow[],
-  key: keyof Pick<FloridaCountyRow, 'population' | 'medianHouseholdIncome' | 'medianHomeValue' | 'unemploymentRate'>,
-  n = 5,
-) {
-  const eligible =
-    key === 'unemploymentRate'
-      ? records.filter((r) => r.unemploymentRate != null)
-      : records;
-  const sorted = [...eligible].sort((a, b) => (b[key] as number) - (a[key] as number));
-  return {
-    top: sorted.slice(0, n),
-    bottom: [...sorted].reverse().slice(0, n),
-  };
-}
 
 const NAV = [
   { href: '#section-01', label: 'Economy & cost of living' },
@@ -340,13 +318,13 @@ export default function FloridaStateDashboard({
   taxes,
 }: FloridaDashboardProps) {
 
-  const pop = findEconomicIndicator(economic, 'population');
-  const income = findEconomicIndicator(economic, 'median household income');
-  const home = findEconomicIndicator(economic, 'median home value');
-  const unemployment = findEconomicIndicator(economic, 'unemployment rate');
-  const employment = findEconomicIndicator(economic, 'employment');
-  const unemploymentLevel = findEconomicIndicator(economic, 'unemployment level');
-  const laborForce = findEconomicIndicator(economic, 'labor force');
+  const pop = findIndicator(economic, 'Population');
+  const income = findIndicator(economic, 'Median household income');
+  const home = findIndicator(economic, 'Median home value');
+  const unemployment = findIndicator(economic, 'Unemployment rate');
+  const employment = findIndicator(economic, 'Employment');
+  const unemploymentLevel = findIndicator(economic, 'Unemployment level');
+  const laborForce = findIndicator(economic, 'Labor force');
 
   const popByCounty = topBottomCounties(counties.records, 'population');
   const incomeByCounty = topBottomCounties(counties.records, 'medianHouseholdIncome');
@@ -490,7 +468,7 @@ export default function FloridaStateDashboard({
                 sub={
                   incomeNatDelta != null && (
                     <span className={incomeNatDelta <= 0 ? 'text-[var(--positive)]' : 'text-[var(--negative)]'}>
-                      {formatDelta(-incomeNatDelta, 'USD')} vs U.S. average
+                      {formatDelta(incomeNatDelta, 'USD')} vs U.S. average
                     </span>
                   )
                 }
@@ -518,7 +496,9 @@ export default function FloridaStateDashboard({
                 tier="official"
                 sub={
                   homeNatDelta != null && (
-                    <span>{homeNatDelta.toFixed(0)}% vs U.S. average</span>
+                    <span className={homeNatDelta <= 0 ? 'text-[var(--positive)]' : 'text-[var(--negative)]'}>
+                      {homeNatDelta > 0 ? '+' : ''}{homeNatDelta.toFixed(0)}% vs U.S. average
+                    </span>
                   )
                 }
               >
@@ -603,8 +583,10 @@ export default function FloridaStateDashboard({
                     <div className="w-full mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] text-[11.5px]">
                       Unemployment <b className="text-[var(--foreground)]">{displayValue(unemployment)}</b>
                       {unempDelta && (
-                        <span className="text-[var(--positive)] ml-1">
-                          {formatDelta(-unempDelta.delta, '%')} vs a year ago
+                        <span
+                          className={`ml-1 ${unempDelta.delta > 0 ? 'text-[var(--negative)]' : unempDelta.delta < 0 ? 'text-[var(--positive)]' : 'text-[var(--muted)]'}`}
+                        >
+                          {formatDelta(unempDelta.delta, '%')} vs a year ago
                         </span>
                       )}
                     </div>
@@ -650,7 +632,7 @@ export default function FloridaStateDashboard({
               {attainmentLive && attain != null && (
                 <details className="mt-2">
                   <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">
-                    Attainment breakdown ▾{countiesLive && <SampleBadge />}
+                    Attainment breakdown ▾
                   </summary>
                   <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] space-y-1 text-[11px] text-[var(--foreground)]/85">
                     <div className="flex justify-between"><span>HS+</span><span className="font-mono">{attain.hsPlusPct}%</span></div>
@@ -677,7 +659,7 @@ export default function FloridaStateDashboard({
           id="section-03"
           eyebrow="§03"
           title="Taxes"
-          note="Estimated single-filer income tax including federal obligations. Florida has no state income tax."
+          note="Single-filer income tax including federal obligations, computed from published IRS / Tax Foundation tables. Florida has no state income tax."
           sourceLine={
             <>
               <a href={taxes.meta.provenance.federal.url} className="underline-offset-2 hover:underline" target="_blank" rel="noopener noreferrer">
@@ -693,6 +675,9 @@ export default function FloridaStateDashboard({
               </a>
               {' · '}
               {taxes.meta.asOf}
+              <span className="ml-1.5 font-mono text-[9px] uppercase tracking-wide text-[var(--muted)] border border-[var(--border-default)] rounded px-1 py-px">
+                computed
+              </span>
             </>
           }
         >

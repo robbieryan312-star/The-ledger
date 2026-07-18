@@ -4,7 +4,6 @@
 import countiesSample from '../../data/florida/census/florida-counties-sample.json';
 import rppSample from '../../data/florida/bea/florida-rpp-sample.json';
 import taxSample from '../../data/florida/taxes/florida-tax-burden-sample.json';
-import type { StateEconomicSlice } from '../types/snapshotTypes';
 import type { ComputedProvenanceMeta, DataProvenance } from './provenance';
 
 export type FloridaCountyRow = {
@@ -113,6 +112,3 @@ export function topBottomCounties(
   };
 }
 
-export function findEconomicIndicator(slice: StateEconomicSlice, labelIncludes: string) {
-  return slice.indicators.find((i) => i.label.toLowerCase().includes(labelIncludes.toLowerCase()));
-}
