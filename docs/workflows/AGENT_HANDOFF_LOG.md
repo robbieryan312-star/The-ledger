@@ -7,39 +7,59 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-10):**
-- Branch: `main` · HEAD pending
-- Tree: dirty · prebuild + build + render-integrity: **green** locally
-- guards.yml: render-integrity moved out of postbuild; dedicated CI step + Playwright install
+**Current state (2026-07-18):**
+- Branch: `cursor/critical-bug-management-9dc2` · HEAD before this log commit: `692af20` · PR: https://github.com/robbieryan312-star/The-ledger/pull/31
+- Tree before this log update: dirty only for `docs/workflows/AGENT_HANDOFF_LOG.md`
+- Build status: `npm run test:source-integrity` **PASS** (86/86 after dependency install); `npm run build` **PASS** (Next build + client chunk guard)
 
-## Latest session — render-integrity guard align to semantic ids (COMPLETE)
+## Improvement backlog
+
+| Date | Item | Status | Notes |
+|------|------|--------|-------|
+| 2026-07-18 | Remediate `npm audit` high vulnerabilities in `react-simple-maps` transitive `d3-color` chain without accepting npm's breaking downgrade suggestion. | open | `npm audit --audit-level=high` reports GHSA-36jr-mh4h-2g58 through `react-simple-maps`/`d3-zoom`; `npm audit fix --force` would install `react-simple-maps@1.0.0`, so needs a deliberate dependency plan. |
+
+## Latest session — compare candidates route fix (COMPLETE)
 
 ### Objective
-Fix `test:render-integrity` on `main`: guard used `#section-01`/`#section-04` but `/states/FL` renders `#economy`, `#politicians`, `#courts`.
+Find and fix a high-confidence recent critical user-facing correctness bug without duplicating open memory PRs.
 
-### Verdict
-**PASS** — semantic ids aligned; guards.yml green (`29071982833`).
+### Verdict / outcome
+**PASS** — candidate compare entry points now route to `?mode=candidates`, matching `CompareContent` mode selection instead of silently opening officials mode.
 
 ### Commits
-- `21e4bde` — semantic `#economy` / `#courts` guard anchors
-- `b2586b0` — Playwright install in guards.yml
-- `f85b7ac` — render-integrity out of postbuild
-- `f92c973` — CI server warmup before Playwright
-- `d022ab7` — env.example + final green CI
+- `692af20` — `fix(compare): route candidate links to candidate mode`
 
-### Commands run
-- `npm run prebuild` → exit 0
-- `npm run build` → exit 0 (postbuild render-integrity 2/2)
-- `npm run test:render-integrity` → 2/2 pass
+### Commands run (this session)
+- `if test -f /tmp/cursor/async-install/install-user.status; then printf 'setup_status='; tr -d '\n' < /tmp/cursor/async-install/install-user.status; printf '\n'; elif test -f /tmp/cursor/async-install/install-user.log; then pgrep -af 'install-user|npm install|pnpm install|yarn install' || true; else printf 'no_async_setup\n'; fi && pwd && git rev-parse --show-toplevel && git status --short --branch && git branch --show-current && git remote -v` → exit 0 / branch confirmed
+- `git log --oneline --decorate --max-count=25` → exit 0 / recent commits inspected
+- `for pr in 24 26 27 28 29 30; do gh pr view "$pr" --json number,state,merged,url,title --jq '"#\(.number) \(.state) merged=\(.merged) \(.url) \(.title)"'; done` → exit 1 / unsupported `merged` field
+- `for pr in 24 26 27 28 29 30; do gh pr view "$pr" --json number,state,mergedAt,url,title --jq '"#\(.number) \(.state) mergedAt=\(.mergedAt // "") \(.url) \(.title)"'; done` → exit 0 / tracked PRs still open
+- `git log --format='%h %cI %s' --max-count=30` → exit 0 / dated history inspected
+- `git diff --stat a1f9652..HEAD && git diff --name-status a1f9652..HEAD` → exit 0 / recent guard stack inspected
+- `git diff --stat 59fd9ec~20..HEAD && git log --format='%h %cI %s' --max-count=60` → exit 0 / broader platform window inspected
+- `npm run test:source-integrity` → exit 127 / dependencies missing (`tsx: not found`)
+- `npm install` → exit 0 / dependencies installed; audit reported 5 high vulnerabilities
+- `npm audit --audit-level=high` → exit 1 / high transitive `d3-color` ReDoS path confirmed
+- `npm run test:source-integrity` → exit 0 / 86 pass, 0 fail
+- `npm run build` → exit 0 / Next build and client-chunks pass
+- `git diff -- app/page.tsx components/layout/Footer.tsx components/map/USAMap.tsx package.json scripts/__tests__/compareRouteLinks.test.ts && git add app/page.tsx components/layout/Footer.tsx components/map/USAMap.tsx package.json scripts/__tests__/compareRouteLinks.test.ts && git commit -m "fix(compare): route candidate links to candidate mode" && git push -u origin cursor/critical-bug-management-9dc2` → exit 0 / commit `692af20` pushed
 
 ### Files touched
 | Path | Action | What changed |
 |------|--------|--------------|
-| `scripts/render-integrity-check.ts` | modified | Poll `id="economy"`; require `#economy`+`#courts`; skip `#politicians` images |
+| `app/page.tsx` | modified | Home “Compare Candidates” quick link now uses `/compare?mode=candidates`. |
+| `components/layout/Footer.tsx` | modified | Footer “Compare Candidates” link now uses `/compare?mode=candidates`. |
+| `components/map/USAMap.tsx` | modified | State election-card “Compare candidates” link now uses `/compare?mode=candidates`. |
+| `scripts/__tests__/compareRouteLinks.test.ts` | created | Regression guard for candidate compare links. |
+| `package.json` | modified | Wires the new guard into `test:source-integrity`. |
 
 ### Acceptance evidence
-- render-integrity contact-sheet + FL mobile/desktop screenshots (runtime under data/reports/, gitignored)
-- postbuild `test:render-integrity` 2/2 in full `npm run build`
+- PR: https://github.com/robbieryan312-star/The-ledger/pull/31
+- `npm run test:source-integrity`: `# pass 86`, `# fail 0`
+- `npm run build`: `✓ Compiled successfully`; `# pass 1`, `# fail 0` for client chunk guard
+
+### Open / next
+- Open security backlog item above for npm audit high vulnerabilities; not fixed in this narrowly scoped compare-route PR because npm's suggested force fix is a breaking downgrade.
 
 ---
 
