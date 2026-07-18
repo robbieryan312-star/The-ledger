@@ -1,5 +1,6 @@
 {
-  "asOf": "2026-07-02",
+  "asOf": "2026-07-18",
+  "fetchedAt": "2026-07-18T10:44:15.588Z",
   "sections": [
     {
       "sourceId": "newsapi",
@@ -11,7 +12,7 @@
           "tier": "media",
           "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
         },
-        "asOf": "2026-07-02",
+        "asOf": "2026-07-18",
         "totalCount": 48,
         "datasetUrl": "https://newsapi.org/v2/everything",
         "note": "Tier 3 journalism — always corroborate with Tier 1/2 sources before presenting as fact.",
@@ -20,185 +21,204 @@
       "records": [
         {
           "id": "newsapi-0",
-          "title": "Trulieve Commemorates Georgia Medical Cannabis Launch with First Sale",
-          "detail": "Expanded medical cannabis program broadens patient access in dispensaries and pharmacies TALLAHASSEE, Fla., July 1, 2026 /PRNewswire/ -- Trulieve Cannabis Corp · Associated Press",
-          "date": "2026-07-01T16:19:37Z",
-          "link": "https://apnews.com/press-release/pr-newswire/press-release-9b5071e146ec69bbcc7d3ffb35e629a4",
+          "title": "Trump’s Formula for Forever Wars",
+          "detail": "Spencer Ackerman on Sen. Lindsey Graham’s warmongering legacy and next U.S. forever war in Iran.\nThe post Trump’s Formula for Forever Wars appeared first on The Intercept. · The Intercept",
+          "date": "2026-07-17T10:00:00Z",
+          "link": "https://theintercept.com/2026/07/17/spencer-ackerman-lindsey-graham-iran-war/",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-07-02",
+          "asOf": "2026-07-18",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-1",
-          "title": "Democratic congressman asks the CFPB to investigate 'rent now, pay later' companies",
-          "detail": "A Democratic member of Congress is calling for a federal investigation into the \"rent now, pay later\" industry · Abcnews.com",
-          "date": "2026-07-01T15:55:35Z",
-          "link": "https://abcnews.com/US/wireStory/democratic-congressman-asks-cfpb-investigate-rent-now-pay-134377231",
+          "title": "Why Clemson coach Dabo Swinney's next college football job will be his best job",
+          "detail": "With Clemson struggling in recent seasons, it turns out that Dabo Swinney's next job may be his best job yet. · USA Today",
+          "date": "2026-07-17T09:31:38Z",
+          "link": "https://www.usatoday.com/story/sports/ncaab/acc/2026/07/17/dabo-swinney-clemson-next-job-best-job/90950301007/",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-07-02",
+          "asOf": "2026-07-18",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-2",
-          "title": "Democratic congressman asks the CFPB to investigate 'rent now, pay later' companies",
-          "detail": "A Democratic member of Congress is calling for a federal investigation into the \"rent now, pay later\" industry. Rep. Maxwell Frost from Florida has sent a letter to the Consumer Financial Protection Bureau, asking the agency to investigate these companies for… · seattlepi.com",
-          "date": "2026-07-01T15:21:23Z",
-          "link": "https://www.seattlepi.com/news/politics/article/democratic-congressman-asks-the-cfpb-to-22328579.php",
+          "title": "In the Wake of Fatal ICE Shootings, Democrats Drag Their Feet",
+          "detail": "“It feels like we're normalizing it,” said Rep. Delia Ramirez, who expressed disappointment with her colleagues’ lack of action on ICE.\nThe post In the Wake of Fatal ICE Shootings, Democrats Drag Their Feet appeared first on The Intercept. · The Intercept",
+          "date": "2026-07-17T09:00:00Z",
+          "link": "https://theintercept.com/2026/07/17/democrats-congress-abolish-ice-killings/",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-07-02",
+          "asOf": "2026-07-18",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-3",
-          "title": "Americans Hate Junk Fees. Are the Democrats Listening?",
-          "detail": "Anyone who’s bought a flight, a concert or sports ticket, or a vacation stay recently knows that the price they thought they were paying is not always the price they end up paying. After settling on the desired option, you encounter the onerous and daunting p… · The New Republic",
-          "date": "2026-07-01T15:09:26Z",
-          "link": "https://newrepublic.com/article/212599/junk-fees-democrats-illinois-bans",
+          "title": "New College of Florida Absorbs a USF Campus. Sort Of.",
+          "detail": "New College of Florida Absorbs a USF Campus. Sort Of.\n\n \n\n\n \nRyan Quinn\n\nFri, 07/17/2026 - 03:00 AM\n\nThe property has changed hands, but the students and employees didn’t go with it. And there’s a reversion clause if New College can’t handle the debt.\n \n Byli… · Inside Higher Ed",
+          "date": "2026-07-17T07:00:00Z",
+          "link": "https://www.insidehighered.com/news/business/physical-campuses/2026/07/17/new-college-florida-absorbs-usf-campus-sort",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-07-02",
+          "asOf": "2026-07-18",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-4",
-          "title": "Astonishing Sharpie trick murder victim's family used to get Florida Governor Ron DeSantis to fast-track killer's death penalty, as Sunshine State becomes execution factory",
-          "detail": "The February death by lethal injection of convicted killer Ronald Heath, 64, came amid a surge in executions pushed forwards by DeSantis as he prepares to leave the Florida Governor's office. · Dailymail.com",
-          "date": "2026-07-01T15:05:35Z",
-          "link": "https://www.dailymail.com/news/article-15944669/Ron-DeSantis-executions-Florida-blue-sharpie-Ronald-Heath.html",
+          "title": "New CDC nominee vows science integrity amid questions on political pressure",
+          "detail": "Dr. Erica Schwartz, President Trump’s third CDC director nominee, pledged to “never betray the science” during July 15 Senate confirmation hearings. Schwartz faces skepticism over whether she will resist pressure from HHS Secretary Robert F. Kennedy Jr., who … · Naturalnews.com",
+          "date": "2026-07-17T06:00:00Z",
+          "link": "https://www.naturalnews.com/2026-07-17-new-cdc-nominee-vows-science-integrity-amid-questions.html",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-07-02",
+          "asOf": "2026-07-18",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-5",
-          "title": "Congressional Witness Alleges Charles Manson, Jack Ruby Were Part Of Illegal CIA Program",
-          "detail": "An investigative journalist testified Tuesday that notorious figures from the 1960's were assets of the Central Intelligence Agency's (CIA) Project MK-Ultra. · The Daily Caller",
-          "date": "2026-07-01T14:55:09Z",
-          "link": "https://dailycaller.com/2026/07/01/witness-testifies-charles-manson-jack-ruby-cia-mk-ultra/",
+          "title": "The Call: Thirty years after TWA Flight 800",
+          "detail": "By Charlton AllenFor the families left behind, the loss remains an open wound. · Americanthinker.com",
+          "date": "2026-07-17T04:00:00Z",
+          "link": "https://www.americanthinker.com/blog/2026/07/the-call-thirty-years-after-twa-flight-800/",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-07-02",
+          "asOf": "2026-07-18",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-6",
-          "title": "Hawley Faces Backlash Over Pro Forma Senate Session Blocking Trump recess appointments",
-          "detail": "Washington, D.C. – U.S. Senator Josh Hawley presided over a brief pro forma Senate session on Tuesday morning. The procedural move prevented President Trump from making recess appointments. The action drew swift backlash from conservative voters. The Senate c… · Freerepublic.com",
-          "date": "2026-07-01T14:49:31Z",
-          "link": "https://freerepublic.com/focus/f-news/4386208/posts",
+          "title": "GOP Lawmakers Respond to Trump's Primetime Address to Nation: 'Never Been More Critical' to Secure Elections",
+          "detail": "Several prominent Republican lawmakers weighed in on President Donald Trump's \"shocking\" primetime speech to the nation Thursday evening with a common call to action: It is time to secure America's elections.\nThe post GOP Lawmakers Respond to Trump’s Primetim… · Breitbart News",
+          "date": "2026-07-17T03:29:13Z",
+          "link": "https://www.breitbart.com/politics/2026/07/16/gop-lawmakers-respond-trumps-shocking-primetime-address-nation/",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-07-02",
+          "asOf": "2026-07-18",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-7",
-          "title": "Transcript: Democrats Need a Reconstruction Agenda",
-          "detail": "This is a lightly edited transcript of the June 30 edition of Right Now With Perry Bacon. You can watch the video here or by following this show on YouTube or Substack. Perry Bacon: I’m Perry Bacon. I’m the host of Right Now on The New Republic. I’m joined by… · The New Republic",
-          "date": "2026-07-01T14:17:56Z",
-          "link": "https://newrepublic.com/article/212513/transcript-democrats-need-reconstruction-agenda",
+          "title": "WATCH: Pres. Trump addresses the nation on election claims",
+          "detail": "Ahead of the midterm elections, Pres. Trump delivered a primetime address about election security after years of making false claims about the 2020 election. · Abcnews.com",
+          "date": "2026-07-17T02:37:24Z",
+          "link": "https://abcnews.com/video/134832887/",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-07-02",
+          "asOf": "2026-07-18",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-8",
-          "title": "To Save The Planet, We Must Save Democracy First",
-          "detail": "When communities most harmed by pollution are the same ones losing voting rights, climate progress stalls.Read more... · The Root",
-          "date": "2026-07-01T14:11:24Z",
-          "link": "https://www.theroot.com/to-save-the-planet-we-must-save-democracy-first-2000113977",
+          "title": "Supreme Court Decision on Roundup Weedkiller Highlights Another Dangerous Pesticide — Paraquat",
+          "detail": "The U.S. Supreme Court’s 7-2 decision on June 25 shielding Bayer, the maker of Roundup, from claims it failed to warn of the weedkiller’s cancer risk could do more than close the courthouse door on tens of thousands of lawsuits. It pushes the national fight o… · Activistpost.com",
+          "date": "2026-07-17T02:17:00Z",
+          "link": "https://www.activistpost.com/supreme-court-decision-on-roundup-weedkiller-highlights-another-dangerous-pesticide-paraquat/",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-07-02",
+          "asOf": "2026-07-18",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-9",
-          "title": "Frontiers | The gut-brain axis and anxiety: investigating associations with diet, vigorous activity, and prior adversity",
-          "detail": "IntroductionThe current study investigated associations between different stressors (e.g., poor diet, vigorous activity, and prior adversity), GI symptoms, a... · Frontiersin.org",
-          "date": "2026-07-01T13:05:45Z",
-          "link": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2026.1815958/full",
+          "title": "Drone Assassination Attempts Directed against President V. Putin. Senator L. Graham in Ankara and Kiev",
+          "detail": "Introduction\nThe late Senator L. Graham in March 2022, “urged the Russian people to assassinate Putin”\n“the only way this ends is for somebody in Russia to take this guy out”\nAccording to Kurt Nimmo‘s incisive analysis:\n“Lindsey’s  …\nThe post Drone Assassinat… · Globalresearch.ca",
+          "date": "2026-07-17T02:02:25Z",
+          "link": "https://www.globalresearch.ca/drone-assassination-attempts-directed-against-president-v-putin-senator-l-graham-in-ankara-and-kiev/5933454",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-07-02",
+          "asOf": "2026-07-18",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-10",
-          "title": "Lawmakers takes another crack at easing privatization of youth sports",
-          "detail": "House bipartisan committee addresses private equity’s \"vertical integration\" that has youth sports costs soaring. What might come out of the hearing? · USA Today",
-          "date": "2026-07-01T13:00:15Z",
-          "link": "https://www.usatoday.com/story/sports/2026/07/01/congress-private-equity-youth-sports-hearing-vertical-integration/90748629007/",
+          "title": "Republican Congressional Candidate Arrested After 'Kill Trump' Video",
+          "detail": "A former Marine now running for Congress as a Republican in Florida was arrested this week and charged with threatening the president, days after he stood in uniform and said that President Donald Trump is the \"Antichrist\" who \"must be killed.\"\nThe post Repub… · Breitbart News",
+          "date": "2026-07-17T00:26:54Z",
+          "link": "https://www.breitbart.com/politics/2026/07/16/florida-republican-congressional-candidate-arrested-kill-trump-video/",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-07-02",
+          "asOf": "2026-07-18",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         },
         {
           "id": "newsapi-11",
-          "title": "Exclusive — Byron Donalds' Gubernatorial Campaign Dominates in Final Stretch of Primary",
-          "detail": "Rep. Byron Donalds' (R-FL) campaign is dominating in the final stretch of Florida's gubernatorial primary race, shattering fundraising records.\nThe post Exclusive — Byron Donalds’ Gubernatorial Campaign Dominates in Final Stretch of Primary appeared first on … · Breitbart News",
-          "date": "2026-07-01T13:00:06Z",
-          "link": "https://www.breitbart.com/politics/2026/07/01/exclusive-byron-donalds-gubernatorial-campaign-dominates-in-final-stretch-of-primary/",
+          "title": "Report: Arizona Sen. Ruben Gallego Had Sexual Relations with 2 Congressional Staffers",
+          "detail": "Sen. Ruben Gallego (D-AZ) reportedly had sexual relationships with two congressional staffers who were not on his own staff.\nThe post Report: Arizona Sen. Ruben Gallego Had Sexual Relations with 2 Congressional Staffers appeared first on Breitbart. · Breitbart News",
+          "date": "2026-07-17T00:14:11Z",
+          "link": "https://www.breitbart.com/politics/2026/07/16/arizona-ruben-gallego-sexual-relations-two-congressional-staffers/",
           "source": {
             "name": "NewsAPI",
             "url": "https://newsapi.org",
             "tier": "media",
             "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
           },
-          "asOf": "2026-07-02",
+          "asOf": "2026-07-18",
           "tierFlag": "Tier 3 journalism — corroborate with official records"
         }
       ]
+    },
+    {
+      "sourceId": "gdelt",
+      "label": "GDELT — Florida coverage",
+      "meta": {
+        "source": {
+          "name": "GDELT Project",
+          "url": "https://www.gdeltproject.org",
+          "tier": "media",
+          "description": "Global news aggregator (GDELT 2.0 DOC API) — Tier 3, corroborate before citing"
+        },
+        "asOf": "2026-07-18",
+        "fetchedAt": "2026-07-18T10:44:15.588Z",
+        "totalCount": 0,
+        "datasetUrl": "https://api.gdeltproject.org/api/v2/doc/doc?query=Florida%20(governor%20OR%20legislature%20OR%20senate%20OR%20election%20OR%20congress)&mode=artlist&maxrecords=50&format=json&sort=datedesc&timespan=14d",
+        "note": "Florida political news coverage (last 14 days) via the GDELT 2.0 DOC API. Tier 3 automated aggregator over global journalism — always corroborate with Tier 1/2 records before treating as fact.",
+        "tierFlag": "Tier 3 — corroborate with official records"
+      },
+      "records": []
     }
   ]
 }

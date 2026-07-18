@@ -6,8 +6,8 @@
       "tier": "official",
       "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)"
     },
-    "asOf": "2026-07-02",
-    "fetchedAt": "2026-07-02T16:20:38.110Z",
+    "asOf": "2026-07-18",
+    "fetchedAt": "2026-07-18T10:44:12.012Z",
     "count": 70,
     "stateCode": "FL",
     "fetchedLive": true,
@@ -35,7 +35,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-01"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1400810/000119312526249754/"
     },
     {
@@ -58,31 +58,31 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-16"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1716166/000149315226028775/"
     },
     {
-      "company": "HANCOCK WHITNEY CORP",
-      "formType": "EX-99.2",
-      "filingDate": "2026-05-15",
-      "cik": "0000750577",
-      "accessionNumber": "0001193125-26-225443",
+      "company": "Tecnoglass Inc.",
+      "formType": "8-K",
+      "filingDate": "2026-07-07",
+      "cik": "0001534675",
+      "accessionNumber": "0001493152-26-032342",
       "bizStates": [
-        "MS"
+        "FL"
       ],
       "incStates": [
-        "MS"
+        "E9"
       ],
-      "floridaDomiciled": false,
+      "floridaDomiciled": true,
       "source": {
         "name": "SEC EDGAR",
         "url": "https://www.sec.gov/edgar",
         "tier": "official",
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-15"
+        "date": "2026-07-07"
       },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/750577/000119312526225443/"
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1534675/000149315226032342/"
     },
     {
       "company": "NATIONAL HEALTHCARE CORP",
@@ -104,7 +104,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-07-01"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1047335/000143774926022306/"
     },
     {
@@ -125,15 +125,15 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-20"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/2007587/000200758726000068/"
     },
     {
       "company": "CHESAPEAKE UTILITIES CORP",
       "formType": "EX-99.1",
-      "filingDate": "2026-05-06",
+      "filingDate": "2026-07-13",
       "cik": "0000019745",
-      "accessionNumber": "0001628280-26-031368",
+      "accessionNumber": "0001628280-26-047964",
       "bizStates": [
         "DE"
       ],
@@ -146,34 +146,10 @@
         "url": "https://www.sec.gov/edgar",
         "tier": "official",
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-06"
+        "date": "2026-07-13"
       },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/19745/000162828026031368/"
-    },
-    {
-      "company": "NEXTERA ENERGY INC",
-      "formType": "8-K",
-      "filingDate": "2026-05-18",
-      "cik": "0000753308",
-      "accessionNumber": "0001104659-26-062992",
-      "bizStates": [
-        "FL"
-      ],
-      "incStates": [
-        "FL",
-        "FL"
-      ],
-      "floridaDomiciled": true,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-18"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/753308/000110465926062992/"
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/19745/000162828026047964/"
     },
     {
       "company": "NEXTERA ENERGY INC",
@@ -196,7 +172,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-26"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000039/"
     },
     {
@@ -220,7 +196,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-01"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000043/"
     },
     {
@@ -243,32 +219,8 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-05"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1840563/000121390026065791/"
-    },
-    {
-      "company": "WORLD OMNI AUTO RECEIVABLES LLC",
-      "formType": "EX-1.1",
-      "filingDate": "2026-05-07",
-      "cik": "0001083199",
-      "accessionNumber": "0001104659-26-057011",
-      "bizStates": [
-        "FL"
-      ],
-      "incStates": [
-        "DE",
-        "DE"
-      ],
-      "floridaDomiciled": true,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-07"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1083199/000110465926057011/"
     },
     {
       "company": "USCB FINANCIAL HOLDINGS, INC.",
@@ -290,7 +242,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-27"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1901637/000092708926000099/"
     },
     {
@@ -313,8 +265,31 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-20"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/730708/000162828026036953/"
+    },
+    {
+      "company": "CAPSTONE COMPANIES, INC.",
+      "formType": "EX-10.1_1",
+      "filingDate": "2026-07-08",
+      "cik": "0000814926",
+      "accessionNumber": "0001493152-26-032552",
+      "bizStates": [
+        "FL"
+      ],
+      "incStates": [
+        "FL"
+      ],
+      "floridaDomiciled": true,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-07-08"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/814926/000149315226032552/"
     },
     {
       "company": "Tecnoglass Inc.",
@@ -336,7 +311,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-16"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1534675/000149315226028897/"
     },
     {
@@ -359,7 +334,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-22"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1651721/000119312526237019/"
     },
     {
@@ -382,8 +357,54 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-22"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000052/"
+    },
+    {
+      "company": "Future FinTech Group Inc.",
+      "formType": "EX-3.1",
+      "filingDate": "2026-07-08",
+      "cik": "0001066923",
+      "accessionNumber": "0001213900-26-076459",
+      "bizStates": [
+        "NY"
+      ],
+      "incStates": [
+        "FL"
+      ],
+      "floridaDomiciled": true,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-07-08"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1066923/000121390026076459/"
+    },
+    {
+      "company": "NextPlat Corp",
+      "formType": "EX-99.1",
+      "filingDate": "2026-07-16",
+      "cik": "0001058307",
+      "accessionNumber": "0001437749-26-023651",
+      "bizStates": [
+        "FL"
+      ],
+      "incStates": [
+        "NV"
+      ],
+      "floridaDomiciled": true,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-07-16"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1058307/000143774926023651/"
     },
     {
       "company": "HALLMARK VENTURE GROUP, INC.",
@@ -405,7 +426,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-03"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1331421/000149315226026929/"
     },
     {
@@ -428,7 +449,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-05"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1494891/000175392626000983/"
     },
     {
@@ -451,7 +472,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-07-01"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1557376/000182912626007111/"
     },
     {
@@ -474,7 +495,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-29"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/730708/000162828026039243/"
     },
     {
@@ -497,7 +518,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-21"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/890926/000119312526234920/"
     },
     {
@@ -520,77 +541,8 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-15"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/72205/000119312526270396/"
-    },
-    {
-      "company": "GENERATION INCOME PROPERTIES, INC.",
-      "formType": "8-K",
-      "filingDate": "2026-05-13",
-      "cik": "0001651721",
-      "accessionNumber": "0001193125-26-221748",
-      "bizStates": [
-        "FL"
-      ],
-      "incStates": [
-        "MD"
-      ],
-      "floridaDomiciled": true,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-13"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1651721/000119312526221748/"
-    },
-    {
-      "company": "SEACOAST BANKING CORP OF FLORIDA",
-      "formType": "8-K",
-      "filingDate": "2026-05-13",
-      "cik": "0000730708",
-      "accessionNumber": "0001628280-26-034576",
-      "bizStates": [
-        "FL"
-      ],
-      "incStates": [
-        "FL"
-      ],
-      "floridaDomiciled": true,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-13"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/730708/000162828026034576/"
-    },
-    {
-      "company": "OFF THE HOOK YS INC.",
-      "formType": "EX-4.2",
-      "filingDate": "2026-05-14",
-      "cik": "0002067767",
-      "accessionNumber": "0001493152-26-022878",
-      "bizStates": [
-        "NC"
-      ],
-      "incStates": [
-        "NV"
-      ],
-      "floridaDomiciled": false,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-14"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/2067767/000149315226022878/"
     },
     {
       "company": "BayFirst Financial Corp.",
@@ -612,38 +564,15 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-21"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1649739/000164973926000032/"
     },
     {
-      "company": "Vireo Growth Inc.",
-      "formType": "EX-99.1",
-      "filingDate": "2026-05-05",
-      "cik": "0001771706",
-      "accessionNumber": "0001104659-26-055624",
-      "bizStates": [
-        "MN"
-      ],
-      "incStates": [
-        "A1"
-      ],
-      "floridaDomiciled": false,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-05"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1771706/000110465926055624/"
-    },
-    {
-      "company": "NEXTERA ENERGY INC",
-      "formType": "EX-99.2",
-      "filingDate": "2026-05-18",
-      "cik": "0000753308",
-      "accessionNumber": "0001104659-26-063001",
+      "company": "Brownie's Marine Group, Inc",
+      "formType": "8-K",
+      "filingDate": "2026-07-08",
+      "cik": "0001166708",
+      "accessionNumber": "0001493152-26-032422",
       "bizStates": [
         "FL"
       ],
@@ -656,19 +585,19 @@
         "url": "https://www.sec.gov/edgar",
         "tier": "official",
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-18"
+        "date": "2026-07-08"
       },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/753308/000110465926063001/"
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1166708/000149315226032422/"
     },
     {
-      "company": "Reliance Global Group, Inc.",
-      "formType": "EX-3.1",
-      "filingDate": "2026-05-14",
-      "cik": "0001812727",
-      "accessionNumber": "0001493152-26-022840",
+      "company": "ORAGENICS INC",
+      "formType": "EX-10.1",
+      "filingDate": "2026-07-06",
+      "cik": "0001174940",
+      "accessionNumber": "0001493152-26-032155",
       "bizStates": [
-        "NJ"
+        "FL"
       ],
       "incStates": [
         "FL"
@@ -679,10 +608,10 @@
         "url": "https://www.sec.gov/edgar",
         "tier": "official",
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-14"
+        "date": "2026-07-06"
       },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1812727/000149315226022840/"
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1174940/000149315226032155/"
     },
     {
       "company": "VISIUM TECHNOLOGIES, INC.",
@@ -704,8 +633,31 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-10"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1082733/000165495426005858/"
+    },
+    {
+      "company": "Dream Finders Homes, Inc.",
+      "formType": "EX-99.2",
+      "filingDate": "2026-07-17",
+      "cik": "0001825088",
+      "accessionNumber": "0001628280-26-048580",
+      "bizStates": [
+        "FL"
+      ],
+      "incStates": [
+        "TX"
+      ],
+      "floridaDomiciled": true,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-07-17"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1825088/000162828026048580/"
     },
     {
       "company": "Zeo ScientifiX, Inc.",
@@ -727,8 +679,31 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-27"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1557376/000182912626005695/"
+    },
+    {
+      "company": "HEICO CORP",
+      "formType": "EX-5.1",
+      "filingDate": "2026-07-16",
+      "cik": "0000046619",
+      "accessionNumber": "0001213900-26-078776",
+      "bizStates": [
+        "FL"
+      ],
+      "incStates": [
+        "FL"
+      ],
+      "floridaDomiciled": true,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-07-16"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/46619/000121390026078776/"
     },
     {
       "company": "BILI Social International, Inc.",
@@ -750,31 +725,8 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-04"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1109262/000168316826004562/"
-    },
-    {
-      "company": "Mobile Global Esports, Inc.",
-      "formType": "EX-10.2",
-      "filingDate": "2026-05-04",
-      "cik": "0001886362",
-      "accessionNumber": "0001213900-26-051633",
-      "bizStates": [
-        "CT"
-      ],
-      "incStates": [
-        "DE"
-      ],
-      "floridaDomiciled": false,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-04"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1886362/000121390026051633/"
     },
     {
       "company": "USCB FINANCIAL HOLDINGS, INC.",
@@ -796,7 +748,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-01"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1901637/000092708926000105/"
     },
     {
@@ -817,31 +769,8 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-18"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1819810/000181981026000081/"
-    },
-    {
-      "company": "ALICO, INC.",
-      "formType": "EX-99.1",
-      "filingDate": "2026-05-11",
-      "cik": "0000003545",
-      "accessionNumber": "0000003545-26-000025",
-      "bizStates": [
-        "FL"
-      ],
-      "incStates": [
-        "FL"
-      ],
-      "floridaDomiciled": true,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-11"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/3545/000000354526000025/"
     },
     {
       "company": "Mag Magna Corp",
@@ -863,7 +792,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-05"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1949864/000168316826004573/"
     },
     {
@@ -886,7 +815,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-22"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1622345/000149315226025091/"
     },
     {
@@ -909,31 +838,8 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-05"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1825088/000162828026041265/"
-    },
-    {
-      "company": "PUBLIX SUPER MARKETS INC",
-      "formType": "EX-99.1",
-      "filingDate": "2026-05-04",
-      "cik": "0000081061",
-      "accessionNumber": "0000081061-26-000063",
-      "bizStates": [
-        "FL"
-      ],
-      "incStates": [
-        "FL"
-      ],
-      "floridaDomiciled": true,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-04"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/81061/000008106126000063/"
     },
     {
       "company": "Bright Mountain Media, Inc.",
@@ -955,31 +861,8 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-16"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1568385/000119312526272407/"
-    },
-    {
-      "company": "DOMINION ENERGY, INC",
-      "formType": "EX-99.2",
-      "filingDate": "2026-05-18",
-      "cik": "0000715957",
-      "accessionNumber": "0001193125-26-227930",
-      "bizStates": [
-        "VA"
-      ],
-      "incStates": [
-        "VA"
-      ],
-      "floridaDomiciled": false,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-18"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/715957/000119312526227930/"
     },
     {
       "company": "Tecnoglass Inc.",
@@ -1001,7 +884,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-25"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1534675/000149315226030133/"
     },
     {
@@ -1022,7 +905,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-18"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1676163/000121390026070101/"
     },
     {
@@ -1045,7 +928,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-28"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/891166/000089116626000053/"
     },
     {
@@ -1068,8 +951,31 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-04"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1630212/000121390026065318/"
+    },
+    {
+      "company": "Ares Real Estate Income Trust Inc.",
+      "formType": "8-K",
+      "filingDate": "2026-07-17",
+      "cik": "0001327978",
+      "accessionNumber": "0001628280-26-048631",
+      "bizStates": [
+        "CO"
+      ],
+      "incStates": [
+        "MD"
+      ],
+      "floridaDomiciled": false,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-07-17"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1327978/000162828026048631/"
     },
     {
       "company": "Amerant Bancorp Inc.",
@@ -1091,7 +997,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-19"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1734342/000173434226000040/"
     },
     {
@@ -1114,31 +1020,8 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-22"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1759186/000168316826004273/"
-    },
-    {
-      "company": "PSQ Holdings, Inc.",
-      "formType": "EX-10.1",
-      "filingDate": "2026-05-04",
-      "cik": "0001847064",
-      "accessionNumber": "0001104659-26-054944",
-      "bizStates": [
-        "MT"
-      ],
-      "incStates": [
-        "DE"
-      ],
-      "floridaDomiciled": false,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-04"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1847064/000110465926054944/"
     },
     {
       "company": "GENERATION INCOME PROPERTIES, INC.",
@@ -1160,31 +1043,8 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-22"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1651721/000119312526237015/"
-    },
-    {
-      "company": "AMERICAN COASTAL INSURANCE Corp",
-      "formType": "8-K",
-      "filingDate": "2026-05-15",
-      "cik": "0001401521",
-      "accessionNumber": "0001401521-26-000031",
-      "bizStates": [
-        "FL"
-      ],
-      "incStates": [
-        "DE"
-      ],
-      "floridaDomiciled": true,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-15"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1401521/000140152126000031/"
     },
     {
       "company": "WATSCO INC",
@@ -1206,7 +1066,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-04"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/105016/000119312526257478/"
     },
     {
@@ -1229,7 +1089,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-17"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/46619/000121390026069674/"
     },
     {
@@ -1252,7 +1112,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-18"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1821175/000149315226029348/"
     },
     {
@@ -1275,31 +1135,8 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-04"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/105016/000119312526257467/"
-    },
-    {
-      "company": "VALLEY NATIONAL BANCORP",
-      "formType": "EX-99.1",
-      "filingDate": "2026-05-07",
-      "cik": "0000714310",
-      "accessionNumber": "0001193125-26-210654",
-      "bizStates": [
-        "NY"
-      ],
-      "incStates": [
-        "NJ"
-      ],
-      "floridaDomiciled": false,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-07"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/714310/000119312526210654/"
     },
     {
       "company": "DARDEN RESTAURANTS INC",
@@ -1321,15 +1158,15 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-25"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/940944/000094094426000016/"
     },
     {
-      "company": "Dolphin Entertainment, Inc.",
+      "company": "Pediatrix Medical Group, Inc.",
       "formType": "8-K",
-      "filingDate": "2026-05-12",
-      "cik": "0001282224",
-      "accessionNumber": "0001079973-26-000641",
+      "filingDate": "2026-07-15",
+      "cik": "0000893949",
+      "accessionNumber": "0001193125-26-304033",
       "bizStates": [
         "FL"
       ],
@@ -1342,33 +1179,10 @@
         "url": "https://www.sec.gov/edgar",
         "tier": "official",
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-12"
+        "date": "2026-07-15"
       },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1282224/000107997326000641/"
-    },
-    {
-      "company": "Allarity Therapeutics, Inc.",
-      "formType": "EX-99.1",
-      "filingDate": "2026-05-06",
-      "cik": "0001860657",
-      "accessionNumber": "0001213900-26-052542",
-      "bizStates": [
-        "MA"
-      ],
-      "incStates": [
-        "DE"
-      ],
-      "floridaDomiciled": false,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-06"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1860657/000121390026052542/"
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/893949/000119312526304033/"
     },
     {
       "company": "ServisFirst Bancshares, Inc.",
@@ -1390,31 +1204,8 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-26"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1430723/000117184326003705/"
-    },
-    {
-      "company": "Pediatrix Medical Group, Inc.",
-      "formType": "8-K",
-      "filingDate": "2026-05-05",
-      "cik": "0000893949",
-      "accessionNumber": "0001193125-26-204982",
-      "bizStates": [
-        "FL"
-      ],
-      "incStates": [
-        "FL"
-      ],
-      "floridaDomiciled": true,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-05"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/893949/000119312526204982/"
     },
     {
       "company": "Transglobal Management Group, Inc.",
@@ -1436,7 +1227,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-05-28"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1434601/000168316826004327/"
     },
     {
@@ -1459,8 +1250,54 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-22"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1860657/000121390026070382/"
+    },
+    {
+      "company": "NEXTERA ENERGY INC",
+      "formType": "8-K",
+      "filingDate": "2026-07-08",
+      "cik": "0000753308",
+      "accessionNumber": "0001104659-26-081863",
+      "bizStates": [
+        "FL"
+      ],
+      "incStates": [
+        "FL"
+      ],
+      "floridaDomiciled": true,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-07-08"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/753308/000110465926081863/"
+    },
+    {
+      "company": "SDR Drone, Inc.",
+      "formType": "8-K",
+      "filingDate": "2026-07-16",
+      "cik": "0001331421",
+      "accessionNumber": "0001493152-26-033465",
+      "bizStates": [
+        "CA"
+      ],
+      "incStates": [
+        "NV"
+      ],
+      "floridaDomiciled": false,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-07-16"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1331421/000149315226033465/"
     },
     {
       "company": "Slide Insurance Holdings, Inc.",
@@ -1482,77 +1319,8 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-04"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/1886428/000119312526256573/"
-    },
-    {
-      "company": "KEMPER Corp",
-      "formType": "EX-99.3",
-      "filingDate": "2026-05-06",
-      "cik": "0000860748",
-      "accessionNumber": "0000860748-26-000043",
-      "bizStates": [
-        "IL"
-      ],
-      "incStates": [
-        "DE"
-      ],
-      "floridaDomiciled": false,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-06"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/860748/000086074826000043/"
-    },
-    {
-      "company": "Helio Corp /FL/",
-      "formType": "8-K",
-      "filingDate": "2026-05-15",
-      "cik": "0001953988",
-      "accessionNumber": "0001213900-26-057683",
-      "bizStates": [
-        "CA"
-      ],
-      "incStates": [
-        "FL"
-      ],
-      "floridaDomiciled": true,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-15"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1953988/000121390026057683/"
-    },
-    {
-      "company": "NON INVASIVE MONITORING SYSTEMS INC /FL/",
-      "formType": "EX-10.1",
-      "filingDate": "2026-05-12",
-      "cik": "0000720762",
-      "accessionNumber": "0001493152-26-022502",
-      "bizStates": [
-        "FL"
-      ],
-      "incStates": [
-        "FL"
-      ],
-      "floridaDomiciled": true,
-      "source": {
-        "name": "SEC EDGAR",
-        "url": "https://www.sec.gov/edgar",
-        "tier": "official",
-        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
-        "date": "2026-05-12"
-      },
-      "asOf": "2026-07-02",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/720762/000149315226022502/"
     },
     {
       "company": "WATSCO INC",
@@ -1574,8 +1342,31 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-03"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/105016/000119312526255386/"
+    },
+    {
+      "company": "SKYX Platforms Corp.",
+      "formType": "8-K",
+      "filingDate": "2026-07-10",
+      "cik": "0001598981",
+      "accessionNumber": "0001493152-26-032869",
+      "bizStates": [
+        "FL"
+      ],
+      "incStates": [
+        "FL"
+      ],
+      "floridaDomiciled": true,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-07-10"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1598981/000149315226032869/"
     },
     {
       "company": "American Integrity Insurance Group, Inc.",
@@ -1595,7 +1386,7 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-06-01"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/2007587/000200758726000071/"
     },
     {
@@ -1618,8 +1409,215 @@
         "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
         "date": "2026-07-01"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "filingUrl": "https://www.sec.gov/Archives/edgar/data/877860/000087786026000169/"
+    },
+    {
+      "company": "Greater Cannabis Company, Inc.",
+      "formType": "EX-10.2",
+      "filingDate": "2026-07-06",
+      "cik": "0001695473",
+      "accessionNumber": "0001493152-26-032191",
+      "bizStates": [
+        "MD"
+      ],
+      "incStates": [
+        "FL"
+      ],
+      "floridaDomiciled": true,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-07-06"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1695473/000149315226032191/"
+    },
+    {
+      "company": "HALLMARK VENTURE GROUP, INC.",
+      "formType": "EX-10.1",
+      "filingDate": "2026-06-16",
+      "cik": "0001331421",
+      "accessionNumber": "0001493152-26-028933",
+      "bizStates": [
+        "CA"
+      ],
+      "incStates": [
+        "NV"
+      ],
+      "floridaDomiciled": false,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-06-16"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1331421/000149315226028933/"
+    },
+    {
+      "company": "Amerant Bancorp Inc.",
+      "formType": "8-K",
+      "filingDate": "2026-05-29",
+      "cik": "0001734342",
+      "accessionNumber": "0001734342-26-000044",
+      "bizStates": [
+        "FL"
+      ],
+      "incStates": [
+        "FL"
+      ],
+      "floridaDomiciled": true,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-05-29"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1734342/000173434226000044/"
+    },
+    {
+      "company": "CAPSTONE COMPANIES, INC.",
+      "formType": "8-K/A",
+      "filingDate": "2026-05-20",
+      "cik": "0000814926",
+      "accessionNumber": "0001493152-26-024552",
+      "bizStates": [
+        "FL"
+      ],
+      "incStates": [
+        "FL"
+      ],
+      "floridaDomiciled": true,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-05-20"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/814926/000149315226024552/"
+    },
+    {
+      "company": "CASELLA WASTE SYSTEMS INC",
+      "formType": "8-K",
+      "filingDate": "2026-07-01",
+      "cik": "0000911177",
+      "accessionNumber": "0000911177-26-000035",
+      "bizStates": [
+        "VT"
+      ],
+      "incStates": [
+        "DE"
+      ],
+      "floridaDomiciled": false,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-07-01"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/911177/000091117726000035/"
+    },
+    {
+      "company": "HCW Biologics Inc.",
+      "formType": "8-K",
+      "filingDate": "2026-07-01",
+      "cik": "0001828673",
+      "accessionNumber": "0001493152-26-031441",
+      "bizStates": [
+        "FL"
+      ],
+      "incStates": [
+        "DE"
+      ],
+      "floridaDomiciled": true,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-07-01"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1828673/000149315226031441/"
+    },
+    {
+      "company": "DUOS TECHNOLOGIES GROUP, INC.",
+      "formType": "EX-5.1",
+      "filingDate": "2026-06-17",
+      "cik": "0001396536",
+      "accessionNumber": "0001079973-26-000851",
+      "bizStates": [
+        "FL"
+      ],
+      "incStates": [
+        "FL"
+      ],
+      "floridaDomiciled": true,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-06-17"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1396536/000107997326000851/"
+    },
+    {
+      "company": "TIPTREE INC.",
+      "formType": "EX-10.2",
+      "filingDate": "2026-05-29",
+      "cik": "0001393726",
+      "accessionNumber": "0001393726-26-000034",
+      "bizStates": [
+        "CT"
+      ],
+      "incStates": [
+        "MD"
+      ],
+      "floridaDomiciled": false,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-05-29"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/1393726/000139372626000034/"
+    },
+    {
+      "company": "Greenland Energy Co",
+      "formType": "EX-99.1",
+      "filingDate": "2026-06-11",
+      "cik": "0002093507",
+      "accessionNumber": "0001829126-26-006392",
+      "bizStates": [
+        "TX"
+      ],
+      "incStates": [
+        "TX"
+      ],
+      "floridaDomiciled": false,
+      "source": {
+        "name": "SEC EDGAR",
+        "url": "https://www.sec.gov/edgar",
+        "tier": "official",
+        "description": "U.S. Securities and Exchange Commission EDGAR full-text filing search (efts.sec.gov)",
+        "date": "2026-06-11"
+      },
+      "asOf": "2026-07-18",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/2093507/000182912626006392/"
     }
   ]
 }

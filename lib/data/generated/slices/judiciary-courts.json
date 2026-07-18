@@ -6,14 +6,174 @@
       "tier": "nonpartisan",
       "description": "Nonpartisan Free Law Project legal database; opinions are official court records"
     },
-    "asOf": "2026-07-09",
-    "totalCount": 10,
+    "asOf": "2026-07-18",
+    "totalCount": 60,
     "datasetUrl": "https://www.courtlistener.com/api/rest/v4/search/?type=o&court=fla",
-    "note": "Supreme Court of Florida (10 cap). 0/10 records include verbatim CourtListener metadata; 10 show case title + status only. COURTLISTENER_API_KEY missing — cluster detail skipped."
+    "note": "Supreme Court of Florida (60 cap). 0/60 records include verbatim CourtListener metadata; 60 show case title + status only. COURTLISTENER_API_KEY missing — cluster detail skipped."
   },
   "records": [
     {
       "id": "court-0",
+      "title": "Corey B. Johnson v. State of Florida",
+      "officialTitle": "Corey B. Johnson v. State of Florida",
+      "detail": "Supreme Court of Florida · SC2024-0380 · Published",
+      "date": "2026-07-16",
+      "link": "https://www.courtlistener.com/opinion/10932039/corey-b-johnson-v-state-of-florida/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-07-16"
+      },
+      "asOf": "2026-07-18"
+    },
+    {
+      "id": "court-1",
+      "title": "In Re: Amendments to Florida Probate Rules - 2026 Legislation",
+      "officialTitle": "In Re: Amendments to Florida Probate Rules - 2026 Legislation",
+      "detail": "Supreme Court of Florida · SC2026-0690 · Published",
+      "date": "2026-07-16",
+      "link": "https://www.courtlistener.com/opinion/10932038/in-re-amendments-to-florida-probate-rules-2026-legislation/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-07-16"
+      },
+      "asOf": "2026-07-18"
+    },
+    {
+      "id": "court-2",
+      "title": "Jermaine Foster v. State of Florida",
+      "officialTitle": "Jermaine Foster v. State of Florida",
+      "detail": "Supreme Court of Florida · SC2024-0944 · Published",
+      "date": "2026-07-16",
+      "link": "https://www.courtlistener.com/opinion/10932037/jermaine-foster-v-state-of-florida/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-07-16"
+      },
+      "asOf": "2026-07-18"
+    },
+    {
+      "id": "court-3",
+      "title": "Patrick R. McDowell v. State of Florida",
+      "officialTitle": "Patrick R. McDowell v. State of Florida",
+      "detail": "Supreme Court of Florida · SC2024-1148 · Published",
+      "date": "2026-07-16",
+      "link": "https://www.courtlistener.com/opinion/10932036/patrick-r-mcdowell-v-state-of-florida/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-07-16"
+      },
+      "asOf": "2026-07-18"
+    },
+    {
+      "id": "court-4",
+      "title": "Tina Lasonya Brown v. State of Florida",
+      "officialTitle": "Tina Lasonya Brown v. State of Florida",
+      "detail": "Supreme Court of Florida · SC2024-0931 · Published",
+      "date": "2026-07-16",
+      "link": "https://www.courtlistener.com/opinion/10932035/tina-lasonya-brown-v-state-of-florida/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-07-16"
+      },
+      "asOf": "2026-07-18"
+    },
+    {
+      "id": "court-5",
+      "title": "Dean K. Matt v. State of Florida",
+      "officialTitle": "Dean K. Matt v. State of Florida",
+      "detail": "Supreme Court of Florida · SC2024-0990 · Published",
+      "date": "2026-07-09",
+      "link": "https://www.courtlistener.com/opinion/10925107/dean-k-matt-v-state-of-florida/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-07-09"
+      },
+      "asOf": "2026-07-18"
+    },
+    {
+      "id": "court-6",
+      "title": "Mohammed Bouayad v. Normandy Insurance Company",
+      "officialTitle": "Mohammed Bouayad v. Normandy Insurance Company",
+      "detail": "Supreme Court of Florida · SC2023-1576 · Published",
+      "date": "2026-07-09",
+      "link": "https://www.courtlistener.com/opinion/10925106/mohammed-bouayad-v-normandy-insurance-company/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-07-09"
+      },
+      "asOf": "2026-07-18"
+    },
+    {
+      "id": "court-7",
+      "title": "Publix Supermarkets, Inc. v. Jonida Goga",
+      "officialTitle": "Publix Supermarkets, Inc. v. Jonida Goga",
+      "detail": "Supreme Court of Florida · SC2024-0669 · Published",
+      "date": "2026-07-09",
+      "link": "https://www.courtlistener.com/opinion/10925105/publix-supermarkets-inc-v-jonida-goga/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-07-09"
+      },
+      "asOf": "2026-07-18"
+    },
+    {
+      "id": "court-8",
+      "title": "Scott Aron Stewart v. Mishelle Addys Perdomo Vindel",
+      "officialTitle": "Scott Aron Stewart v. Mishelle Addys Perdomo Vindel",
+      "detail": "Supreme Court of Florida · SC2024-0428 · Published",
+      "date": "2026-07-09",
+      "link": "https://www.courtlistener.com/opinion/10925104/scott-aron-stewart-v-mishelle-addys-perdomo-vindel/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-07-09"
+      },
+      "asOf": "2026-07-18"
+    },
+    {
+      "id": "court-9",
+      "title": "The Florida Bar v. Christopher W. Crowley",
+      "officialTitle": "The Florida Bar v. Christopher W. Crowley",
+      "detail": "Supreme Court of Florida · SC2020-0529 · Published",
+      "date": "2026-07-09",
+      "link": "https://www.courtlistener.com/opinion/10925103/the-florida-bar-v-christopher-w-crowley/",
+      "source": {
+        "name": "CourtListener (Free Law Project)",
+        "url": "https://www.courtlistener.com",
+        "tier": "nonpartisan",
+        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
+        "date": "2026-07-09"
+      },
+      "asOf": "2026-07-18"
+    },
+    {
+      "id": "court-10",
       "title": "Dennis Sochor v. State of Florida",
       "officialTitle": "Dennis Sochor v. State of Florida",
       "detail": "Supreme Court of Florida · SC2026-0971 · Published",
@@ -26,10 +186,10 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-07-08"
       },
-      "asOf": "2026-07-09"
+      "asOf": "2026-07-18"
     },
     {
-      "id": "court-1",
+      "id": "court-11",
       "title": "James Aren Duckett v. State of Florida",
       "officialTitle": "James Aren Duckett v. State of Florida",
       "detail": "Supreme Court of Florida · SC2026-0449 & SC2026-0450 · Published",
@@ -42,10 +202,10 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-07-08"
       },
-      "asOf": "2026-07-09"
+      "asOf": "2026-07-18"
     },
     {
-      "id": "court-2",
+      "id": "court-12",
       "title": "Miguel Rodriguez Albisu v. State of Florida",
       "officialTitle": "Miguel Rodriguez Albisu v. State of Florida",
       "detail": "Supreme Court of Florida · SC2026-0142 · Published",
@@ -58,10 +218,10 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-07-02"
       },
-      "asOf": "2026-07-09"
+      "asOf": "2026-07-18"
     },
     {
-      "id": "court-3",
+      "id": "court-13",
       "title": "Richard Wallace Rhodes v. State of Florida",
       "officialTitle": "Richard Wallace Rhodes v. State of Florida",
       "detail": "Supreme Court of Florida · SC2024-1099 · Published",
@@ -74,10 +234,10 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-07-02"
       },
-      "asOf": "2026-07-09"
+      "asOf": "2026-07-18"
     },
     {
-      "id": "court-4",
+      "id": "court-14",
       "title": "The Florida Bar v. Elizabeth Hidalgo",
       "officialTitle": "The Florida Bar v. Elizabeth Hidalgo",
       "detail": "Supreme Court of Florida · SC2025-0636 · Published",
@@ -90,87 +250,7 @@
         "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
         "date": "2026-07-02"
       },
-      "asOf": "2026-07-09"
-    },
-    {
-      "id": "court-5",
-      "title": "Trace Elements, Inc. v. Nadja MacKensen",
-      "officialTitle": "Trace Elements, Inc. v. Nadja MacKensen",
-      "detail": "Supreme Court of Florida · SC2024-1274 · Published",
-      "date": "2026-07-02",
-      "link": "https://www.courtlistener.com/opinion/10883903/trace-elements-inc-v-nadja-mackensen/",
-      "source": {
-        "name": "CourtListener (Free Law Project)",
-        "url": "https://www.courtlistener.com",
-        "tier": "nonpartisan",
-        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
-        "date": "2026-07-02"
-      },
-      "asOf": "2026-07-09"
-    },
-    {
-      "id": "court-6",
-      "title": "James Aren Duckett v. State of Florida",
-      "officialTitle": "James Aren Duckett v. State of Florida",
-      "detail": "Supreme Court of Florida · SC2026-0959 · Published",
-      "date": "2026-07-01",
-      "link": "https://www.courtlistener.com/opinion/10883639/james-aren-duckett-v-state-of-florida/",
-      "source": {
-        "name": "CourtListener (Free Law Project)",
-        "url": "https://www.courtlistener.com",
-        "tier": "nonpartisan",
-        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
-        "date": "2026-07-01"
-      },
-      "asOf": "2026-07-09"
-    },
-    {
-      "id": "court-7",
-      "title": "In Re: Amendments to Florida Probate Rules",
-      "officialTitle": "In Re: Amendments to Florida Probate Rules",
-      "detail": "Supreme Court of Florida · SC2025-1478 · Published",
-      "date": "2026-06-25",
-      "link": "https://www.courtlistener.com/opinion/10880249/in-re-amendments-to-florida-probate-rules/",
-      "source": {
-        "name": "CourtListener (Free Law Project)",
-        "url": "https://www.courtlistener.com",
-        "tier": "nonpartisan",
-        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
-        "date": "2026-06-25"
-      },
-      "asOf": "2026-07-09"
-    },
-    {
-      "id": "court-8",
-      "title": "In Re: Amendments to Florida Rules of Appellate Procedure",
-      "officialTitle": "In Re: Amendments to Florida Rules of Appellate Procedure",
-      "detail": "Supreme Court of Florida · SC2025-0241 · Published",
-      "date": "2026-06-25",
-      "link": "https://www.courtlistener.com/opinion/10880248/in-re-amendments-to-florida-rules-of-appellate-procedure/",
-      "source": {
-        "name": "CourtListener (Free Law Project)",
-        "url": "https://www.courtlistener.com",
-        "tier": "nonpartisan",
-        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
-        "date": "2026-06-25"
-      },
-      "asOf": "2026-07-09"
-    },
-    {
-      "id": "court-9",
-      "title": "State of Florida v. Keith Alexander Times",
-      "officialTitle": "State of Florida v. Keith Alexander Times",
-      "detail": "Supreme Court of Florida · SC2024-0647 · Published",
-      "date": "2026-06-25",
-      "link": "https://www.courtlistener.com/opinion/10880247/state-of-florida-v-keith-alexander-times/",
-      "source": {
-        "name": "CourtListener (Free Law Project)",
-        "url": "https://www.courtlistener.com",
-        "tier": "nonpartisan",
-        "description": "Nonpartisan Free Law Project legal database; opinions are official court records",
-        "date": "2026-06-25"
-      },
-      "asOf": "2026-07-09"
+      "asOf": "2026-07-18"
     }
   ]
 }

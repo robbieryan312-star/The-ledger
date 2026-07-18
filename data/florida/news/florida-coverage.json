@@ -6,7 +6,7 @@
       "tier": "media",
       "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
     },
-    "asOf": "2026-07-02",
+    "asOf": "2026-07-18",
     "count": 48,
     "stateCode": "FL",
     "fetchedLive": true,
@@ -15,160 +15,25 @@
   },
   "records": [
     {
-      "title": "Trulieve Commemorates Georgia Medical Cannabis Launch with First Sale",
-      "description": "Expanded medical cannabis program broadens patient access in dispensaries and pharmacies TALLAHASSEE, Fla., July 1, 2026 /PRNewswire/ -- Trulieve Cannabis Corp",
-      "url": "https://apnews.com/press-release/pr-newswire/press-release-9b5071e146ec69bbcc7d3ffb35e629a4",
-      "publishedAt": "2026-07-01T16:19:37Z",
-      "outlet": "Associated Press",
+      "title": "Trump’s Formula for Forever Wars",
+      "description": "Spencer Ackerman on Sen. Lindsey Graham’s warmongering legacy and next U.S. forever war in Iran.\nThe post Trump’s Formula for Forever Wars appeared first on The Intercept.",
+      "url": "https://theintercept.com/2026/07/17/spencer-ackerman-lindsey-graham-iran-war/",
+      "publishedAt": "2026-07-17T10:00:00Z",
+      "outlet": "The Intercept",
       "source": {
         "name": "NewsAPI",
         "url": "https://newsapi.org",
         "tier": "media",
         "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "tierFlag": "Tier 3 journalism — corroborate with official records"
     },
     {
-      "title": "Democratic congressman asks the CFPB to investigate 'rent now, pay later' companies",
-      "description": "A Democratic member of Congress is calling for a federal investigation into the \"rent now, pay later\" industry",
-      "url": "https://abcnews.com/US/wireStory/democratic-congressman-asks-cfpb-investigate-rent-now-pay-134377231",
-      "publishedAt": "2026-07-01T15:55:35Z",
-      "outlet": "Abcnews.com",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Democratic congressman asks the CFPB to investigate 'rent now, pay later' companies",
-      "description": "A Democratic member of Congress is calling for a federal investigation into the \"rent now, pay later\" industry. Rep. Maxwell Frost from Florida has sent a letter to the Consumer Financial Protection Bureau, asking the agency to investigate these companies for…",
-      "url": "https://www.seattlepi.com/news/politics/article/democratic-congressman-asks-the-cfpb-to-22328579.php",
-      "publishedAt": "2026-07-01T15:21:23Z",
-      "outlet": "seattlepi.com",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Americans Hate Junk Fees. Are the Democrats Listening?",
-      "description": "Anyone who’s bought a flight, a concert or sports ticket, or a vacation stay recently knows that the price they thought they were paying is not always the price they end up paying. After settling on the desired option, you encounter the onerous and daunting p…",
-      "url": "https://newrepublic.com/article/212599/junk-fees-democrats-illinois-bans",
-      "publishedAt": "2026-07-01T15:09:26Z",
-      "outlet": "The New Republic",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Astonishing Sharpie trick murder victim's family used to get Florida Governor Ron DeSantis to fast-track killer's death penalty, as Sunshine State becomes execution factory",
-      "description": "The February death by lethal injection of convicted killer Ronald Heath, 64, came amid a surge in executions pushed forwards by DeSantis as he prepares to leave the Florida Governor's office.",
-      "url": "https://www.dailymail.com/news/article-15944669/Ron-DeSantis-executions-Florida-blue-sharpie-Ronald-Heath.html",
-      "publishedAt": "2026-07-01T15:05:35Z",
-      "outlet": "Dailymail.com",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Congressional Witness Alleges Charles Manson, Jack Ruby Were Part Of Illegal CIA Program",
-      "description": "An investigative journalist testified Tuesday that notorious figures from the 1960's were assets of the Central Intelligence Agency's (CIA) Project MK-Ultra.",
-      "url": "https://dailycaller.com/2026/07/01/witness-testifies-charles-manson-jack-ruby-cia-mk-ultra/",
-      "publishedAt": "2026-07-01T14:55:09Z",
-      "outlet": "The Daily Caller",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Hawley Faces Backlash Over Pro Forma Senate Session Blocking Trump recess appointments",
-      "description": "Washington, D.C. – U.S. Senator Josh Hawley presided over a brief pro forma Senate session on Tuesday morning. The procedural move prevented President Trump from making recess appointments. The action drew swift backlash from conservative voters. The Senate c…",
-      "url": "https://freerepublic.com/focus/f-news/4386208/posts",
-      "publishedAt": "2026-07-01T14:49:31Z",
-      "outlet": "Freerepublic.com",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Transcript: Democrats Need a Reconstruction Agenda",
-      "description": "This is a lightly edited transcript of the June 30 edition of Right Now With Perry Bacon. You can watch the video here or by following this show on YouTube or Substack. Perry Bacon: I’m Perry Bacon. I’m the host of Right Now on The New Republic. I’m joined by…",
-      "url": "https://newrepublic.com/article/212513/transcript-democrats-need-reconstruction-agenda",
-      "publishedAt": "2026-07-01T14:17:56Z",
-      "outlet": "The New Republic",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "To Save The Planet, We Must Save Democracy First",
-      "description": "When communities most harmed by pollution are the same ones losing voting rights, climate progress stalls.Read more...",
-      "url": "https://www.theroot.com/to-save-the-planet-we-must-save-democracy-first-2000113977",
-      "publishedAt": "2026-07-01T14:11:24Z",
-      "outlet": "The Root",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Frontiers | The gut-brain axis and anxiety: investigating associations with diet, vigorous activity, and prior adversity",
-      "description": "IntroductionThe current study investigated associations between different stressors (e.g., poor diet, vigorous activity, and prior adversity), GI symptoms, a...",
-      "url": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2026.1815958/full",
-      "publishedAt": "2026-07-01T13:05:45Z",
-      "outlet": "Frontiersin.org",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Lawmakers takes another crack at easing privatization of youth sports",
-      "description": "House bipartisan committee addresses private equity’s \"vertical integration\" that has youth sports costs soaring. What might come out of the hearing?",
-      "url": "https://www.usatoday.com/story/sports/2026/07/01/congress-private-equity-youth-sports-hearing-vertical-integration/90748629007/",
-      "publishedAt": "2026-07-01T13:00:15Z",
+      "title": "Why Clemson coach Dabo Swinney's next college football job will be his best job",
+      "description": "With Clemson struggling in recent seasons, it turns out that Dabo Swinney's next job may be his best job yet.",
+      "url": "https://www.usatoday.com/story/sports/ncaab/acc/2026/07/17/dabo-swinney-clemson-next-job-best-job/90950301007/",
+      "publishedAt": "2026-07-17T09:31:38Z",
       "outlet": "USA Today",
       "source": {
         "name": "NewsAPI",
@@ -176,14 +41,74 @@
         "tier": "media",
         "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "tierFlag": "Tier 3 journalism — corroborate with official records"
     },
     {
-      "title": "Exclusive — Byron Donalds' Gubernatorial Campaign Dominates in Final Stretch of Primary",
-      "description": "Rep. Byron Donalds' (R-FL) campaign is dominating in the final stretch of Florida's gubernatorial primary race, shattering fundraising records.\nThe post Exclusive — Byron Donalds’ Gubernatorial Campaign Dominates in Final Stretch of Primary appeared first on …",
-      "url": "https://www.breitbart.com/politics/2026/07/01/exclusive-byron-donalds-gubernatorial-campaign-dominates-in-final-stretch-of-primary/",
-      "publishedAt": "2026-07-01T13:00:06Z",
+      "title": "In the Wake of Fatal ICE Shootings, Democrats Drag Their Feet",
+      "description": "“It feels like we're normalizing it,” said Rep. Delia Ramirez, who expressed disappointment with her colleagues’ lack of action on ICE.\nThe post In the Wake of Fatal ICE Shootings, Democrats Drag Their Feet appeared first on The Intercept.",
+      "url": "https://theintercept.com/2026/07/17/democrats-congress-abolish-ice-killings/",
+      "publishedAt": "2026-07-17T09:00:00Z",
+      "outlet": "The Intercept",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "New College of Florida Absorbs a USF Campus. Sort Of.",
+      "description": "New College of Florida Absorbs a USF Campus. Sort Of.\n\n \n\n\n \nRyan Quinn\n\nFri, 07/17/2026 - 03:00 AM\n\nThe property has changed hands, but the students and employees didn’t go with it. And there’s a reversion clause if New College can’t handle the debt.\n \n Byli…",
+      "url": "https://www.insidehighered.com/news/business/physical-campuses/2026/07/17/new-college-florida-absorbs-usf-campus-sort",
+      "publishedAt": "2026-07-17T07:00:00Z",
+      "outlet": "Inside Higher Ed",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "New CDC nominee vows science integrity amid questions on political pressure",
+      "description": "Dr. Erica Schwartz, President Trump’s third CDC director nominee, pledged to “never betray the science” during July 15 Senate confirmation hearings. Schwartz faces skepticism over whether she will resist pressure from HHS Secretary Robert F. Kennedy Jr., who …",
+      "url": "https://www.naturalnews.com/2026-07-17-new-cdc-nominee-vows-science-integrity-amid-questions.html",
+      "publishedAt": "2026-07-17T06:00:00Z",
+      "outlet": "Naturalnews.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "The Call: Thirty years after TWA Flight 800",
+      "description": "By Charlton AllenFor the families left behind, the loss remains an open wound.",
+      "url": "https://www.americanthinker.com/blog/2026/07/the-call-thirty-years-after-twa-flight-800/",
+      "publishedAt": "2026-07-17T04:00:00Z",
+      "outlet": "Americanthinker.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "GOP Lawmakers Respond to Trump's Primetime Address to Nation: 'Never Been More Critical' to Secure Elections",
+      "description": "Several prominent Republican lawmakers weighed in on President Donald Trump's \"shocking\" primetime speech to the nation Thursday evening with a common call to action: It is time to secure America's elections.\nThe post GOP Lawmakers Respond to Trump’s Primetim…",
+      "url": "https://www.breitbart.com/politics/2026/07/16/gop-lawmakers-respond-trumps-shocking-primetime-address-nation/",
+      "publishedAt": "2026-07-17T03:29:13Z",
       "outlet": "Breitbart News",
       "source": {
         "name": "NewsAPI",
@@ -191,14 +116,119 @@
         "tier": "media",
         "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "tierFlag": "Tier 3 journalism — corroborate with official records"
     },
     {
-      "title": "Trump's crypto businesses took in about $1.2B US last year, federal filing shows",
-      "description": "U.S. President Donald Trump took in nearly $1.2 billion US from his crypto businesses last year, a federal filing released Tuesday shows, locking in profits as his investors suffered losses.",
-      "url": "https://www.cbc.ca/news/world/trump-crypto-earnings-2025-9.7255105",
-      "publishedAt": "2026-07-01T12:59:19Z",
+      "title": "WATCH: Pres. Trump addresses the nation on election claims",
+      "description": "Ahead of the midterm elections, Pres. Trump delivered a primetime address about election security after years of making false claims about the 2020 election.",
+      "url": "https://abcnews.com/video/134832887/",
+      "publishedAt": "2026-07-17T02:37:24Z",
+      "outlet": "Abcnews.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Supreme Court Decision on Roundup Weedkiller Highlights Another Dangerous Pesticide — Paraquat",
+      "description": "The U.S. Supreme Court’s 7-2 decision on June 25 shielding Bayer, the maker of Roundup, from claims it failed to warn of the weedkiller’s cancer risk could do more than close the courthouse door on tens of thousands of lawsuits. It pushes the national fight o…",
+      "url": "https://www.activistpost.com/supreme-court-decision-on-roundup-weedkiller-highlights-another-dangerous-pesticide-paraquat/",
+      "publishedAt": "2026-07-17T02:17:00Z",
+      "outlet": "Activistpost.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Drone Assassination Attempts Directed against President V. Putin. Senator L. Graham in Ankara and Kiev",
+      "description": "Introduction\nThe late Senator L. Graham in March 2022, “urged the Russian people to assassinate Putin”\n“the only way this ends is for somebody in Russia to take this guy out”\nAccording to Kurt Nimmo‘s incisive analysis:\n“Lindsey’s  …\nThe post Drone Assassinat…",
+      "url": "https://www.globalresearch.ca/drone-assassination-attempts-directed-against-president-v-putin-senator-l-graham-in-ankara-and-kiev/5933454",
+      "publishedAt": "2026-07-17T02:02:25Z",
+      "outlet": "Globalresearch.ca",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Republican Congressional Candidate Arrested After 'Kill Trump' Video",
+      "description": "A former Marine now running for Congress as a Republican in Florida was arrested this week and charged with threatening the president, days after he stood in uniform and said that President Donald Trump is the \"Antichrist\" who \"must be killed.\"\nThe post Repub…",
+      "url": "https://www.breitbart.com/politics/2026/07/16/florida-republican-congressional-candidate-arrested-kill-trump-video/",
+      "publishedAt": "2026-07-17T00:26:54Z",
+      "outlet": "Breitbart News",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Report: Arizona Sen. Ruben Gallego Had Sexual Relations with 2 Congressional Staffers",
+      "description": "Sen. Ruben Gallego (D-AZ) reportedly had sexual relationships with two congressional staffers who were not on his own staff.\nThe post Report: Arizona Sen. Ruben Gallego Had Sexual Relations with 2 Congressional Staffers appeared first on Breitbart.",
+      "url": "https://www.breitbart.com/politics/2026/07/16/arizona-ruben-gallego-sexual-relations-two-congressional-staffers/",
+      "publishedAt": "2026-07-17T00:14:11Z",
+      "outlet": "Breitbart News",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Stop the Presses! Congress Denies Netanyahu Something He Asked For!",
+      "description": "“I want to stop American aid,” Israeli prime minister Benjamin Netanyahu said on June 30. “It’s like welfare; I don’t want it.” Usually, Netanyahu gets anything he demands from Uncle Sugar. But on July 15, the US House of Representatives voted, 314-104 agains…",
+      "url": "https://www.antiwar.com/blog/2026/07/16/stop-the-presses-congress-denies-netanyahu-something-he-asked-for/",
+      "publishedAt": "2026-07-17T00:06:19Z",
+      "outlet": "Antiwar.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Permanent Daylight Saving Time One Step Closer to Becoming Reality in the United States",
+      "description": "Permanent Daylight Saving Time is one step closer to becoming reality, as the majority of members of the House of Representatives of the United States voted in favor of H.R.139, which is also known as the Sunshine Protection Act of 2025 on Tuesday, July 14, 2…",
+      "url": "https://thegatewithbriancohen.com/permanent-daylight-saving-time-one-step-closer-to-becoming-reality-in-the-united-states/",
+      "publishedAt": "2026-07-17T00:03:23Z",
+      "outlet": "Thegatewithbriancohen.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Fact-checking Donald Trump's national address on U.S. election integrity",
+      "description": "Donald Trump revealed newly unclassified documents that he claimed are proof that China interfered in the 2020 election. Trump has made these claims ever since he lost, and in recent months has ramped up efforts to discredit the election. Let's look at the fa…",
+      "url": "https://www.cbc.ca/news/world/donald-trump-speech-election-integrity-fact-check-9.7273535",
+      "publishedAt": "2026-07-17T00:03:20Z",
       "outlet": "CBC News",
       "source": {
         "name": "NewsAPI",
@@ -206,224 +236,29 @@
         "tier": "media",
         "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "tierFlag": "Tier 3 journalism — corroborate with official records"
     },
     {
-      "title": "Trump reports $1.4 billion in income from crypto ventures",
-      "description": "US President Donald Trump reported more than $1.4 billion in income from his family's crypto ventures last year, showing how Trump now derives most of his income from digital assets that have benefited from his policies, according to a ⁠review of his latest f…",
-      "url": "https://www.rte.ie/news/business/2026/0701/1581267-trump-reports-1-4-billion-in-income-from-crypto-ventures/",
-      "publishedAt": "2026-07-01T12:25:21Z",
-      "outlet": "RTE",
+      "title": "‘Antichrist’: Former Marine facing criminal charge after posting video calling for Trump to be killed",
+      "description": "Suspect confirmed to be in jail",
+      "url": "https://www.wnd.com/2026/07/antichrist-former-marine-facing-criminal-charge-after-posting/",
+      "publishedAt": "2026-07-16T22:06:22Z",
+      "outlet": "Wnd.com",
       "source": {
         "name": "NewsAPI",
         "url": "https://newsapi.org",
         "tier": "media",
         "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "tierFlag": "Tier 3 journalism — corroborate with official records"
     },
     {
-      "title": "House cancels votes for remainder of week, sends lawmakers home amid tension over SAVE America Act",
-      "description": "The House was initially expected to have votes on Wednesday and Thursday, but House Republican leaders canceled those votes and have now sent lawmakers home after final votes took place at 5:15 p.m. Eastern. he House on Tuesday evening canceled votes for the …",
-      "url": "https://freerepublic.com/focus/f-bloggers/4386187/posts",
-      "publishedAt": "2026-07-01T12:13:36Z",
-      "outlet": "Freerepublic.com",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Trulieve Commemorates Georgia Medical Cannabis Launch with First Sale",
-      "description": "Expanded medical cannabis program broadens patient access in dispensaries and pharmacies TALLAHASSEE, Fla., July 1, 2026 /PRNewswire/ -- Trulieve Cannabis Corp. (NYSE: TRLV) (\"Trulieve\" or \"the Company\"), a leading and top-performing medical cannabis company …",
-      "url": "https://www.prnewswire.com/news-releases/trulieve-commemorates-georgia-medical-cannabis-launch-with-first-sale-302814823.html",
-      "publishedAt": "2026-07-01T12:10:00Z",
-      "outlet": "PRNewswire",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Trump Made a Billion While in Office. Now Ask Yourself If Barack Obama Could Get Away With It",
-      "description": "Let’s talk about the unwritten rule when it comes to Black America that was drilled into your head before you could legally purchase alcohol: you can’t do everything white people do. You must be twice as good—and God forbid you show a hint of financial ambiti…",
-      "url": "https://www.theroot.com/trump-made-a-billion-while-in-office-now-ask-yourself-2000113878",
-      "publishedAt": "2026-07-01T11:53:29Z",
-      "outlet": "The Root",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "The Young Republicans Who Think Trump Hasn’t Gone Far Enough",
-      "description": "Activists at colleges across the country are turning against the president and pushing for a far more radical GOP.",
-      "url": "https://www.theatlantic.com/ideas/2026/07/young-republicans-trump-iran/687746/",
-      "publishedAt": "2026-07-01T11:30:00Z",
-      "outlet": "The Atlantic",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "America Was Born From Rebellion — But Not The Kind Trump Fomented",
-      "description": "Without course correction, experts warn, it cannot be overstated how much of what the country has achieved could be lost.",
-      "url": "https://www.huffpost.com/entry/america-was-born-from-rebellion-but-not-the-kind-trump-fomented_n_6a3ed4c9e4b0e695b2ef24ba",
-      "publishedAt": "2026-07-01T10:00:17Z",
-      "outlet": "HuffPost",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Democrats gain ground in key states as Senate race tightens",
-      "description": "Democrats' gains in key states could reshape Senate control dynamics, increasing uncertainty and impacting future legislative agendas.\nThe post Democrats gain ground in key states as Senate race tightens appeared first on Crypto Briefing.",
-      "url": "https://cryptobriefing.com/democrats-gain-ground-in-key-states-as-senate-race-tightens/",
-      "publishedAt": "2026-07-01T09:17:02Z",
-      "outlet": "Crypto Briefing",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Trump’s push for national concealed carry reciprocity would protect good guys with guns",
-      "description": "Gun Owners of America details its legal victories in New York, Hawaii, and Illinois to expand concealed carry reciprocity across state lines.",
-      "url": "https://www.foxnews.com/opinion/trumps-push-national-concealed-carry-reciprocity-protect-good-guys-guns",
-      "publishedAt": "2026-07-01T09:00:41Z",
-      "outlet": "Fox News",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Back to the Future",
-      "description": "",
-      "url": "https://www.abajournal.com/magazine/article/back-to-the-future",
-      "publishedAt": "2026-07-01T05:56:09Z",
-      "outlet": "Abajournal.com",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Colombian election loser threatens ‘civil disobedience’ if winner does not ditch US citizenship",
-      "description": "De la Espriella, a conservative lawyer who ran on a tough-on-crime platform and was endorsed by US President Donald Trump, won Colombia’s presidential runoff on June 21, defeating Cepeda by 250,000 votes.",
-      "url": "https://nypost.com/2026/07/01/world-news/colombian-election-loser-threatens-civil-disobedience-if-winner-doesnt-ditch-us-citizenship/",
-      "publishedAt": "2026-07-01T05:46:44Z",
-      "outlet": "New York Post",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Sept. 1, 1951: Kefauver’s TV mob hearings",
-      "description": "In March 1951, a dapper man sat before the Special Committee to Investigate Organized Crime in Interstate Commerce and attempted to explain to a handful of U.S.",
-      "url": "https://www.abajournal.com/magazine/article/kefauvers-tv-mob-hearings-sept-1-1951",
-      "publishedAt": "2026-07-01T05:05:00Z",
-      "outlet": "Abajournal.com",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "How Donald Trump made $2 billion last year",
-      "description": "Donald Trump's financial disclosure included $US370,000 in income from gifts and $US80 million from settlements tied to lawsuits.",
-      "url": "https://www.abc.net.au/news/2026-07-01/trump-financial-disclosure-crypto-gifts-real-estate/106865296",
-      "publishedAt": "2026-07-01T04:07:41Z",
-      "outlet": "ABC News (AU)",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Democratic socialist Melat Kiros poised to become the first Gen Z woman in Congress",
-      "description": "Kiros, a political newcomer, topped 15-term-incumbent Diana DeGette in the Democratic primary in Colorado's 1st Congressional District, a reliably blue House seat.",
-      "url": "https://www.npr.org/2026/07/01/nx-s1-5876122/colorado-primary-election-melat-kiros-democratic-socialist",
-      "publishedAt": "2026-07-01T04:06:32Z",
-      "outlet": "NPR",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Trump earned more from crypto than real estate in 2025, filings show",
-      "description": "Memecoin sales and royalties made the most money for Trump last year, more than all of his golf clubs combined.",
-      "url": "https://cointelegraph.com/news/trump-earned-more-from-crypto-than-real-estate-in-2025-filings-show",
-      "publishedAt": "2026-07-01T04:01:09Z",
-      "outlet": "Cointelegraph",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "New Florida Law Bans Local Net-Zero Emissions Policies",
-      "description": "An anonymous reader quotes a report from Inside Climate News: A new state law limits Florida communities' aims to offset greenhouse gas emissions that are warming the global climate and intensifying disasters such as hurricanes. Specifically, HB 1217 prohibit…",
-      "url": "https://yro.slashdot.org/story/26/06/30/2157253/new-florida-law-bans-local-net-zero-emissions-policies",
-      "publishedAt": "2026-07-01T03:30:00Z",
+      "title": "Why Orthodox Jews are opposing the new daylight saving bill in Congress - NPR",
+      "description": "Why Orthodox Jews are opposing the new daylight saving bill in CongressNPR What permanent daylight saving time would look like in your stateThe Hill Airlines warn adjusting to permanent daylight saving time could take up to 2 yearsCBS News Why standard time i…",
+      "url": "https://slashdot.org/firehose.pl?op=view&amp;id=184484618",
+      "publishedAt": "2026-07-16T21:52:59Z",
       "outlet": "Slashdot.org",
       "source": {
         "name": "NewsAPI",
@@ -431,44 +266,29 @@
         "tier": "media",
         "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "tierFlag": "Tier 3 journalism — corroborate with official records"
     },
     {
-      "title": "Colombian election loser threatens 'civil disobedience' if winner does not ditch US citizenship",
-      "description": "Colombian senator Iván Cepeda refuses to recognize Abelardo de la Espriella as the new president unless he meets certain conditions",
-      "url": "https://abcnews.com/International/wireStory/colombian-election-loser-threatens-civil-disobedience-winner-ditch-134362239",
-      "publishedAt": "2026-07-01T03:16:33Z",
-      "outlet": "Abcnews.com",
+      "title": "3 big Senate fundraising takeaways: From the Politics Desk",
+      "description": "In today’s edition, we break down the toplines from a fresh batch of campaign finance filings. Plus, Jonathan Allen previews President Donald Trump’s speech tonight from the White House.",
+      "url": "https://www.nbcnews.com/politics/politics-news/3-big-senate-fundraising-takeaways-politics-desk-rcna587905",
+      "publishedAt": "2026-07-16T21:10:32Z",
+      "outlet": "NBC News",
       "source": {
         "name": "NewsAPI",
         "url": "https://newsapi.org",
         "tier": "media",
         "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "tierFlag": "Tier 3 journalism — corroborate with official records"
     },
     {
-      "title": "Trump reports over $1.4 billion in income from crypto ventures",
-      "description": "President Trump's latest financial disclosures reveal over $1.4 billion in income from crypto ventures last year, a significant surge from previous filings.  His companies reportedly earned nearly $800 million from World Liberty Financial, a crypto firm he co…",
-      "url": "https://economictimes.indiatimes.com/markets/cryptocurrency/crypto-news/trump-reports-over-1-4-billion-in-income-from-crypto-ventures/articleshow/132105018.cms",
-      "publishedAt": "2026-07-01T03:13:33Z",
-      "outlet": "The Times of India",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Trump financial disclosure reveals more than $1.4 billion haul in crypto and Melania's big movie payday",
-      "description": "President Donald Trump made over $1.4 billion from his family's crypto ventures last year, while First Lady Melania Trump raked in millions from the release of her documentary.",
-      "url": "https://www.dailymail.com/news/article-15943153/Trump-financial-disclosure-crypto-Melania-film.html",
-      "publishedAt": "2026-07-01T02:36:19Z",
+      "title": "Tate brothers stun DC's most elite private club: Shock photo emerges after party with Trump and Melania matchmaker",
+      "description": "Andrew and Tristan Tate, the brothers facing rape and sex-trafficking charges in the UK and Romania, spent the past several days in Washington as guests of Donald Trump's special envoy.",
+      "url": "https://www.dailymail.com/news/article-15982857/tate-brothers-dc-shock-photo-melania-trump.html",
+      "publishedAt": "2026-07-16T21:00:25Z",
       "outlet": "Dailymail.com",
       "source": {
         "name": "NewsAPI",
@@ -476,254 +296,29 @@
         "tier": "media",
         "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "tierFlag": "Tier 3 journalism — corroborate with official records"
     },
     {
-      "title": "DOJ Investigates Gallego For Alleged Campaign Finance Violations",
-      "description": "The Department of Justice launched an investigation into Democratic Arizona Sen. Ruben Gallego on Monday for alleged campaign finance violations, reports show.",
-      "url": "https://dailycaller.com/2026/06/30/department-of-justice-investigates-democratic-senator-ruben-gallego-campaign-finance-violations/",
-      "publishedAt": "2026-07-01T02:31:54Z",
-      "outlet": "The Daily Caller",
+      "title": "I Visited The New Horse Soldier Farms Distillery In Kentucky. It’s A Bourbon Lover’s Dream Vacation",
+      "description": "For the past few years, my wife and I have stopped in Kentucky on our drive down to see my parents in Florida. During this drive, we make a point to try to visit a new distillery each time. As bourbon fans, it’s always a pleasure, but at a certain point, a lo…",
+      "url": "https://brobible.com/gear/article/i-visited-the-new-horse-soldier-farms-distillery-in-kentucky-its-a-bourbon-lovers-dream-vacation/",
+      "publishedAt": "2026-07-16T20:57:15Z",
+      "outlet": "BroBible",
       "source": {
         "name": "NewsAPI",
         "url": "https://newsapi.org",
         "tier": "media",
         "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "tierFlag": "Tier 3 journalism — corroborate with official records"
     },
     {
-      "title": "House cancels votes, GOP revolt stalls defense and voting bills",
-      "description": "Republican revolt stalls defense bill as House leadership cancels votes for recess.",
-      "url": "https://sharingdash.medianewsgroup.com/2026/06/30/house-republicans-stall-defense-bill-voter-legislation/",
-      "publishedAt": "2026-07-01T01:30:49Z",
-      "outlet": "Medianewsgroup.com",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Mogul's surfer-dad facade obliterated as feud gripping ritzy Southern enclave takes a dark turn... after lurid claims about his influencer wife and a MAGA congressman",
-      "description": "The 47-year-old built a fortune flipping houses before expanding into commercial property, eventually amassing a multimillion-dollar portfolio of homes stretching from the Hamptons to Florida.",
-      "url": "https://www.dailymail.com/news/article-15933043/ron-rallis-paula-dhier-william-timmons-greenville-feud.html",
-      "publishedAt": "2026-07-01T00:44:51Z",
-      "outlet": "Dailymail.com",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "WATCH: New dating trends like 'chalance' and 'kittenfishing' reshape modern romance",
-      "description": "Dr. Bruce Y. Lee explains emerging dating terms including \"chalance,\" \"kittenfishing\" and \"hat-fishing,\" and how evolving language reflects shifting norms in modern dating culture.",
-      "url": "https://abcnews.com/video/134357278/",
-      "publishedAt": "2026-06-30T23:23:34Z",
-      "outlet": "Abcnews.com",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Hardliners Force Johnson to Send House Home Early",
-      "description": "House Republicans just watched a small faction of hardliners shut down their work—and send everyone home early. Speaker Mike Johnson on Tuesday abandoned nearly a full week of planned votes before the July 4 recess after about a dozen hard-right members, led …",
-      "url": "https://www.newser.com/story/392012/hardliners-force-johnson-to-send-house-home-early.html",
-      "publishedAt": "2026-06-30T22:34:00Z",
-      "outlet": "Newser",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "The unlikely cause bringing liberals and conservatives together",
-      "description": "“This is demonic stuff.” “It’s downright abusive.”  “That sounds like torture to me.”  “It’s inhumane.” It causes “physical problems and psychological anguish.” These are quotes describing the pork industry’s standard practice of confining pregnant pigs in ti…",
-      "url": "https://www.vox.com/future-perfect/493710/gestation-crates-farm-bill-save-our-bacon-republicans",
-      "publishedAt": "2026-06-30T22:07:49Z",
-      "outlet": "Vox",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "House Votes Down Rashida Tlaib’s Lebanon War Powers Resolution",
-      "description": "Nearly two dozen Democrats voted with Republicans Tuesday to reject Democratic Michigan Rep. Rashida Tlaib's war powers resolution.",
-      "url": "https://dailycaller.com/2026/06/30/22-democrats-rashida-tlaib-resolution/",
-      "publishedAt": "2026-06-30T21:56:49Z",
-      "outlet": "The Daily Caller",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Florida Gov. DeSantis marks nation's 250th birthday with Lincoln statue unveiling in The Villages, with researchers stunned at the sheer speed in which the statue caught herpes from residents [Florida]",
-      "description": "Florida Gov. DeSantis marks nation's 250th birthday with Lincoln statue unveiling in The Villages, with researchers stunned at the sheer speed in which the statue caught herpes from residents",
-      "url": "https://www.fark.com/comments/14115922/Florida-Gov-DeSantis-marks-nations-250th-birthday-with-Lincoln-statue-unveiling-in-The-Villages-with-researchers-stunned-at-sheer-speed-in-which-statue-caught-herpes-from-residents",
-      "publishedAt": "2026-06-30T21:23:58Z",
-      "outlet": "Fark.com",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "House Skipping Town Early As SAVE America ACT Saga Continues To Rock Capitol Hill",
-      "description": "The House will enter an early recess Tuesday after several Republican voted down a procedural rules vote.",
-      "url": "https://dailycaller.com/2026/06/30/speaker-johnson-house-recess-rules-vote/",
-      "publishedAt": "2026-06-30T21:21:39Z",
-      "outlet": "The Daily Caller",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "James Talarico Insults Military Families With ‘California Transplant’ Attack, Ken Paxton Says",
-      "description": "\"Don't California my Texas\" in the Lone Star State — and in its mudslinging Senate race both candidates are using \"Californian\" as a pejorative.",
-      "url": "https://dailycaller.com/2026/06/30/james-talarico-ken-paxton-california-military-families/",
-      "publishedAt": "2026-06-30T20:57:35Z",
-      "outlet": "The Daily Caller",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "NASA makes moves to dodge costly delays on its path to build a $30 billion moon base",
-      "description": "Conceptualized just a few months ago, NASA’s moon base plans are rolling out in earnest as the space agency maps out plans to deliver assets to the lunar...",
-      "url": "https://www.cnn.com/2026/06/30/science/nasa-moon-base-announcement",
-      "publishedAt": "2026-06-30T20:43:23Z",
-      "outlet": "CNN",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "The Best and Worst Places in the U.S. For July 4 Celebrations, Ranked",
-      "description": "Factors like safety, affordability, and entertainment and recreation offerings went into this ranking of the best and worst places in the U.S. to celebrate the Fourth of July.",
-      "url": "https://www.mentalfloss.com/geography/states/best-and-worst-places-july-4-celebrations",
-      "publishedAt": "2026-06-30T20:00:03Z",
-      "outlet": "Mental Floss",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Nearly 100 monkeys escape enclosure, invade neighborhoods as officials scramble to recapture them",
-      "description": "Nearly 100 macaques escaped a government enclosure in Lopburi, Thailand, prompting officials to use tranquilizer darts and baited cages to recapture them.",
-      "url": "https://www.foxnews.com/world/nearly-100-monkeys-escape-enclosure-invade-neighborhoods-officials-scramble-recapture",
-      "publishedAt": "2026-06-30T19:58:37Z",
-      "outlet": "Fox News",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "'Ridiculous and pathetic': MAGA turns on itself over bid to boot controversial candidate",
-      "description": "A firebrand candidate for governor of Florida who has become infamous for white supremacist antics is being targeted by a lawsuit from one of his opponents to throw him off the ballot — but even some MAGA commentators who oppose that candidate are lashing out…",
-      "url": "https://www.rawstory.com/james-fishback-2677136436/",
-      "publishedAt": "2026-06-30T19:52:54Z",
-      "outlet": "Raw Story",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "[Josh Blackman] Mopping Up The Supreme Court's Docket",
-      "description": "The Court GVR's a petition filed in October 2024 by John Sauer and grants an AR-15 Case After 6 Months Of Relists",
-      "url": "https://reason.com/volokh/2026/06/30/mopping-up-the-supreme-courts-docket/",
-      "publishedAt": "2026-06-30T19:50:38Z",
-      "outlet": "Reason",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "Supreme Court Upholds Transgender Athlete Bans, Giving States Green Light For Discrimination",
-      "description": "In a ruling that defenders of LGBTQ+ rights say clears the way for discrimination, the US Supreme Court upheld state laws banning transgender girls and women from participating on school and college athletic teams.In a decision that will likely supercharge at…",
-      "url": "https://www.commondreams.org/news/supreme-court-trans-athletes",
-      "publishedAt": "2026-06-30T19:37:06Z",
-      "outlet": "Common Dreams",
-      "source": {
-        "name": "NewsAPI",
-        "url": "https://newsapi.org",
-        "tier": "media",
-        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
-      },
-      "asOf": "2026-07-02",
-      "tierFlag": "Tier 3 journalism — corroborate with official records"
-    },
-    {
-      "title": "New York’s Democratic primary winners: Letters to the Editor — July 1, 2026",
-      "description": "NY Post readers discuss Claire Valdez, Darializa Avila Chevalier and Brad Lander winning the Democratic primaries.",
-      "url": "https://nypost.com/2026/06/30/opinion/new-yorks-democratic-primary-winners-letters/",
-      "publishedAt": "2026-06-30T19:29:56Z",
+      "title": "Mamdani plan would force landlords to pay for credit checks — as activist rails that eviction is ‘violence’",
+      "description": "Mayor Zohran Mamdani is backing a proposal that would force New York City landlords to pick up the tab for tenant credit checks, part of a broader plan to curb what his administration calls “rental ripoffs.”",
+      "url": "https://nypost.com/2026/07/16/us-news/mamdani-plan-would-force-landlords-to-pay-for-credit-checks-as-activist-rails-that-eviction-is-violence/",
+      "publishedAt": "2026-07-16T20:56:53Z",
       "outlet": "New York Post",
       "source": {
         "name": "NewsAPI",
@@ -731,7 +326,412 @@
         "tier": "media",
         "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Trump ‘Repairs’ White House Lawn With Unauthorized Helipad",
+      "description": "Trump ‘repairs’ White House lawn with unauthorized helipad. The UFC was supposed to fix the South Lawn after the arena came down. Instead, Trump forged ahead with another unsanctioned project.",
+      "url": "http://nymag.com/intelligencer/article/trump-repairs-white-house-lawn-with-unauthorized-helipad.html",
+      "publishedAt": "2026-07-16T20:46:03Z",
+      "outlet": "New York Magazine",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Short Circuit: An inexhaustive weekly compendium of rulings from the federal courts of appeal",
+      "description": "Financial surveillance, impaired contracts, and games of gotcha.",
+      "url": "https://reason.com/volokh/2026/07/17/short-circuit-an-inexhaustive-weekly-compendium-of-rulings-from-the-federal-courts-of-appeal-68/",
+      "publishedAt": "2026-07-16T20:42:38Z",
+      "outlet": "Reason",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Pete Hegseth Is Taking His Macho Shtick to Absurd New Levels",
+      "description": "Defense Secretary Pete Hegseth is taking his macho schtick to new levels, green-lighting annual testosterone tests for servicemembers and defending a low flyover above beachgoers by the Blue Angels.",
+      "url": "http://nymag.com/intelligencer/article/pete-hegseth-testosterone-blue-angels.html",
+      "publishedAt": "2026-07-16T20:09:20Z",
+      "outlet": "New York Magazine",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Billionaires Who Tried to Dodge California Asset Tax May Not Be in the Clear",
+      "description": "Sergey Brin and other absurdly wealthy people who’ve fled the state could be subject to “intrusive” residency audits.",
+      "url": "http://nymag.com/intelligencer/article/billionaires-ditching-california-still-face-tax-threat.html",
+      "publishedAt": "2026-07-16T19:40:02Z",
+      "outlet": "New York Magazine",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Commander-in-thief",
+      "description": "The American people screwed themselves thinking that reelecting a convicted criminal and felon in 2024 was going to end well for anybody but him and his family.",
+      "url": "https://www.ncspin.com/commander-in-thief",
+      "publishedAt": "2026-07-16T19:30:00Z",
+      "outlet": "Ncspin.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "EXCLUSIVE: 'Scheming' Donald Trump Accused of 'Deliberately Unleashing Plot Twists on World' to Dodge Scandals",
+      "description": "Critics have accused Donald Trump of creating distractions to shift focus from controversies.",
+      "url": "https://radaronline.com/p/donald-trump-plot-twists-scandals-claims-second-president-term/",
+      "publishedAt": "2026-07-16T19:19:56Z",
+      "outlet": "Radaronline.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "2 executions scheduled for same day in Florida for the first time in more than 60 years",
+      "description": "The state of Florida is set to execute two death row inmates on the same day for the first time in more than 60 years, now that a stay has been lifted for a former police officer who had been scheduled to die earlier his year",
+      "url": "https://abcnews.com/US/wireStory/2-executions-scheduled-same-day-florida-time-60-134825734",
+      "publishedAt": "2026-07-16T18:33:35Z",
+      "outlet": "Abcnews.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "After Three Senate Roadblocks, Republicans Eye New SAVE America Act Strategy",
+      "description": "For the third time in two years, House Republicans have passed election integrity legislation, only to watch it stall in the Senate. But two officials told the California Courier how they expect the SAVE America Act to be passed. As part of his 2024 campaign,…",
+      "url": "https://www.dailysignal.com/2026/07/16/republicans-eye-new-save-america-act-strategy/",
+      "publishedAt": "2026-07-16T18:10:00Z",
+      "outlet": "Daily Signal",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Rubio Gathers Countries on Left-Wing Political Violence as It Becomes a Trump Focus in Elections",
+      "description": "President Donald Trump and his allies have prioritized talking points against the far left ahead of the congressional elections this November.",
+      "url": "https://military.com/rubio-gathers-countries-on-left-wing-political-violence-as-it-becomes-a-trump-focus-in-elections",
+      "publishedAt": "2026-07-16T18:05:16Z",
+      "outlet": "Military.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "All the Times Trump Has Falsely Claimed Something Is AI",
+      "description": "\"If something happens really bad, just blame AI,” Trump has said.",
+      "url": "https://gizmodo.com/all-the-times-trump-has-falsely-claimed-something-is-ai-2000786134",
+      "publishedAt": "2026-07-16T17:55:48Z",
+      "outlet": "Gizmodo.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Why I Named An International Airport After President Trump",
+      "description": "America has a strange habit of waiting until its leaders are gone before deciding they are worthy of honor. We name buildings after them; place their portraits on our walls; and speak about their courage, accomplishments, and place in history; but by the time…",
+      "url": "https://www.dailysignal.com/2026/07/16/airport-president-trump/",
+      "publishedAt": "2026-07-16T17:50:00Z",
+      "outlet": "Daily Signal",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "WATCH: Savannah Bananas debut first-ever song on the ESPYs stage",
+      "description": "ABC News’ Hanna Battah reports the buzziest stories of the day in “GMA” Pop News.",
+      "url": "https://abcnews.com/video/134820016/",
+      "publishedAt": "2026-07-16T17:19:42Z",
+      "outlet": "Abcnews.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "ICE Killings Are Part of a Pattern of Hundreds of Civil Rights Violations by Agency Under Trump, Says ACLU Report",
+      "description": "US Immigration and Customs Enforcement is facing intense scrutiny once again after agents killed at least two people during arrests in less than two weeks.But the author of a report out Thursday from the American Civil Liberties Union (ACLU) tells Common Drea…",
+      "url": "https://www.commondreams.org/news/aclu-ice-report",
+      "publishedAt": "2026-07-16T17:05:02Z",
+      "outlet": "Common Dreams",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "New York State Bans New Data Centers to Rescue their Underpowered Green Energy Grid",
+      "description": "Hochul: \"... They drive up costs for local ratepayers, and I refuse to let those costs get passed down to New Yorkers ...\"\nThe post New York State Bans New Data Centers to Rescue their Underpowered Green Energy Grid appeared first on Watts Up With That?.",
+      "url": "https://wattsupwiththat.com/2026/07/16/new-york-state-bans-new-data-centers-to-save-their-underpowered-green-energy-grid/",
+      "publishedAt": "2026-07-16T17:00:00Z",
+      "outlet": "Wattsupwiththat.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Palm Beach Rejects Data Center Near Trump’s Mar-a-Lago Club",
+      "description": "Palm Beach County commissioners rejected a proposal late Wednesday to build a digital infrastructure hub to house AI data centers and warehouses, voting in line with the ardent opposition from local residents.",
+      "url": "https://financialpost.com/pmn/business-pmn/palm-beach-rejects-data-center-near-trumps-mar-a-lago-club",
+      "publishedAt": "2026-07-16T16:37:12Z",
+      "outlet": "Financial Post",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Palm Beach Rejects Data Center Near Mar-a-Lago After Backlash",
+      "description": "Palm Beach County commissioners rejected a proposal late Wednesday to build a digital infrastructure hub to house AI data centers and warehouses, voting in line with the ardent opposition from local residents. The facility, known as Project Tango, would have …",
+      "url": "https://www.insurancejournal.com/news/southeast/2026/07/16/877882.htm",
+      "publishedAt": "2026-07-16T14:59:43Z",
+      "outlet": "Insurance Journal",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "A New Bill Would Make Daylight Saving Time Permanent. Why Sleep Experts Find It ‘Very Concerning’",
+      "description": "Is Daylight Saving Time or Standard Time better for your health?",
+      "url": "https://www.today.com/health/sleep/permanent-daylight-saving-time-bill-health-experts-react-rcna587663",
+      "publishedAt": "2026-07-16T14:51:23Z",
+      "outlet": "TODAY",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "The best states for workers in America in 2026",
+      "description": "These 11 U.S. states excel when it comes to the education level of their workforce, migration patterns, and workforce development programs.",
+      "url": "https://www.cnbc.com/2026/07/16/best-states-workers-jobs-2026.html",
+      "publishedAt": "2026-07-16T14:42:35Z",
+      "outlet": "CNBC",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Lieutenant General (ret.) H.R. McMaster Joins Nikki Haley and Brian Krzanich on Neil Jesani Advisors' Strategic Board of Advisors",
+      "description": "Former National Security Advisor and U.S. Army Lieut. Gen. (ret.) strengthens NJA's Strategic Board of Advisors as the firm continues its next phase of growth. FORT LAUDERDALE, Fla., July 16, 2026 /PRNewswire/ -- Neil Jesani Advisors (NJA), a leading strategi…",
+      "url": "https://www.prnewswire.com/news-releases/lieutenant-general-ret-hr-mcmaster-joins-nikki-haley-and-brian-krzanich-on-neil-jesani-advisors-strategic-board-of-advisors-302827653.html",
+      "publishedAt": "2026-07-16T13:38:00Z",
+      "outlet": "PRNewswire",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Defense Business Brief: Farnborough preview, thoughts + trends; Trade groups balk at NDAA buyback provision; Pennsylvania’s DIB",
+      "description": "",
+      "url": "https://www.defenseone.com/business/2026/07/defense-business-brief-farnborough-preview-thoughts-trends-trade-groups-balk-ndaa-buyback-provision-pennsylvanias-dib/414806/",
+      "publishedAt": "2026-07-16T13:00:00Z",
+      "outlet": "Defense One",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Jumbo Package: Questions abound as offseason drags on",
+      "description": "Your latest Crimson Tide news and notes.",
+      "url": "https://www.rollbamaroll.com/alabama-crimson-tide-football/82786/alabama-football-questions-abound-as-offseason-drags-on",
+      "publishedAt": "2026-07-16T12:39:48Z",
+      "outlet": "Roll Bama Roll",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Trump hits back at New York's data center ban, says rule should change 'immediately'",
+      "description": "NY State just banned new hyperscale data centers for a year, but Trump warns this \"terrible decision\" could have economic impacts.",
+      "url": "https://www.techradar.com/pro/trump-hits-back-at-new-yorks-data-center-ban-says-rule-should-change-immediately",
+      "publishedAt": "2026-07-16T12:05:00Z",
+      "outlet": "TechRadar",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Trump’s Deportation Policing Force Is Killing People. It Was “Foreseeable In the Most Tragic Way.”",
+      "description": "In the span of a week, immigration officers shot and killed two people in the streets of American cities. And a third person died on Tuesday in Florida after being struck by a tractor-trailer while running from an encounter with federal agents. Last week, Lor…",
+      "url": "https://www.motherjones.com/politics/2026/07/trumps-deportation-policing-force-is-killing-people-it-was-foreseeable-in-the-most-tragic-way/",
+      "publishedAt": "2026-07-16T12:00:00Z",
+      "outlet": "Mother Jones",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "The US is executing more elderly inmates",
+      "description": "Dennis Sochor has become the oldest-ever prisoner executed in Florida, as US death row populations age",
+      "url": "https://theweek.com/crime/florida-execution-death-row-elderly-inmates-penalty",
+      "publishedAt": "2026-07-16T11:55:00Z",
+      "outlet": "The Week Magazine",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Red state governors blast CNBC's 'worst states to live' list, point to booming population growth",
+      "description": "Republican governors slammed CNBC's quality of life rankings as biased, pointing to Census data showing massive domestic migration into their states.",
+      "url": "https://www.foxnews.com/media/red-state-governors-blast-cnbc-worst-states-live-list-point-booming-population-growth",
+      "publishedAt": "2026-07-16T10:30:15Z",
+      "outlet": "Fox News",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Republican congressman says it’s ‘insane’ that trans men can be pregnant",
+      "description": "Republicans repeatedly challenged medical school leaders over inclusive pregnancy language, after a clip of the exchange spread online on 14 July.\nThe post Republican congressman says it’s ‘insane’ that trans men can be pregnant appeared first on PinkNews | L…",
+      "url": "https://www.thepinknews.com/2026/07/16/trans-men-pregnant-randy-fine-us-house/",
+      "publishedAt": "2026-07-16T09:38:20Z",
+      "outlet": "Thepinknews.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
+      "tierFlag": "Tier 3 journalism — corroborate with official records"
+    },
+    {
+      "title": "Democrats fight to win back Latino voters who are key to flipping the House",
+      "description": "With conflict overseas and high costs, Democrats are eyeing key House races that have significant Latino populations that are essential for a House majority.",
+      "url": "https://abcnews.com/Politics/democrats-fight-win-back-latino-voters-key-flipping/story?id=134797439",
+      "publishedAt": "2026-07-16T09:27:15Z",
+      "outlet": "Abcnews.com",
+      "source": {
+        "name": "NewsAPI",
+        "url": "https://newsapi.org",
+        "tier": "media",
+        "description": "News headlines via newsapi.org — Tier 3 journalism; flagged when used alone"
+      },
+      "asOf": "2026-07-18",
       "tierFlag": "Tier 3 journalism — corroborate with official records"
     }
   ]

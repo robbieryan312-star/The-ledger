@@ -6,7 +6,7 @@
       "tier": "official",
       "description": "Official daily journal of the U.S. government via federalregister.gov API"
     },
-    "asOf": "2026-07-02",
+    "asOf": "2026-07-18",
     "count": 100,
     "stateCode": "FL",
     "fetchedLive": true,
@@ -14,6 +14,675 @@
     "note": "Most recent 100 Federal Register documents matching \"Florida\" (rules, proposed rules, notices, presidential documents). Tier 1 official."
   },
   "records": [
+    {
+      "documentNumber": "2026-14594",
+      "title": "Welded Stainless Steel Line and Pressure Pipe From India, Turkey, and the United Arab Emirates; Institution of Antidumping and Countervailing Duty Investigations and Scheduling of Preliminary Phase Investigations",
+      "type": "Notice",
+      "publicationDate": "2026-07-20",
+      "agencies": [
+        "International Trade Commission"
+      ],
+      "abstract": "The Commission hereby gives notice of the institution of investigations and commencement of preliminary phase antidumping and countervailing duty investigation Nos. 701-TA-800-801 and 731-TA-1796- 1798 (Preliminary) pursuant to the Tariff Act of 1930 to determine whether there is a reasonable indication that an industry in the United States is materially injured or threatened with material injury, or the establishment of an industry in the United States is materially retarded, by reason of imports of welded stainless steel line and pressure pipe from India, Turkey, and the United Arab Emirates, provided for in subheadings 7305.31.60, 7306.11.00, 7306.40.50, and may also enter in under subheading 7306.40.10 of the Harmonized Tariff Schedule of the United States, that are alleged to be sold in the United States at less than fair value and alleged to be subsidized by the Governments of India and Turkey. Unless the Department of Commerce (\"Commerce\") extends the time for initiation, the Commission must reach a preliminary determination in antidumping and countervailing duty investigations in 45 days, or in this case by August 31, 2026. The Commission's views must be transmitted to Commerce within five business days thereafter, or by September 8, 2026.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-20"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/20/2026-14594/welded-stainless-steel-line-and-pressure-pipe-from-india-turkey-and-the-united-arab-emirates"
+    },
+    {
+      "documentNumber": "2026-14573",
+      "title": "Food Standards of Identity Modernization; Pasteurized Orange Juice",
+      "type": "Rule",
+      "publicationDate": "2026-07-20",
+      "agencies": [
+        "Health and Human Services Department",
+        "Food and Drug Administration"
+      ],
+      "abstract": "The Food and Drug Administration (FDA or we) is issuing a final rule to amend the standard of identity for pasteurized orange juice by lowering the minimum orange juice soluble solids content from 10.5[deg] to 10[deg] Brix and permitting up to 15 percent Citrus reticulata juice or Citrus reticulata hybrid juice, by volume. This final rule modernizes the pasteurized orange juice standard. This action responds to two citizen petitions: one submitted by the Florida Citrus Processors Association Inc. and the Florida Citrus Mutual Inc., and another submitted by the Florida Department of Citrus, the Florida Citrus Mutual, and the Juice Products Association.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-20"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/20/2026-14573/food-standards-of-identity-modernization-pasteurized-orange-juice"
+    },
+    {
+      "documentNumber": "2026-14541",
+      "title": "Nancy Prior, Complainant v. AMOOV Group; FreightLead LLC; and Air 7 Seas Transport Logistics, Inc., Respondents; Notice of Filing of Amended Complaint",
+      "type": "Notice",
+      "publicationDate": "2026-07-20",
+      "agencies": [
+        "Federal Maritime Commission"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-20"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/20/2026-14541/nancy-prior-complainant-v-amoov-group-freightlead-llc-and-air-7-seas-transport-logistics-inc"
+    },
+    {
+      "documentNumber": "2026-14523",
+      "title": "Agency Information Collection Activities; Submission to the Office of Management and Budget (OMB) for Review and Approval; Comment Request; Marine Recreational Information Program (MRIP) Fishing Effort Survey",
+      "type": "Notice",
+      "publicationDate": "2026-07-20",
+      "agencies": [
+        "Commerce Department",
+        "National Oceanic and Atmospheric Administration"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-20"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/20/2026-14523/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-omb-for"
+    },
+    {
+      "documentNumber": "2026-14464",
+      "title": "Combined Notice of Filings #2",
+      "type": "Notice",
+      "publicationDate": "2026-07-17",
+      "agencies": [
+        "Energy Department",
+        "Federal Energy Regulatory Commission"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-17"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/17/2026-14464/combined-notice-of-filings-2"
+    },
+    {
+      "documentNumber": "2026-14439",
+      "title": "Establishing a Fixed Time Period of Admission and an Extension of Stay Procedure for Nonimmigrant Academic Students, Exchange Visitors, and Representatives of Foreign Information Media",
+      "type": "Rule",
+      "publicationDate": "2026-07-17",
+      "agencies": [
+        "Homeland Security Department"
+      ],
+      "abstract": "The Department of Homeland Security (DHS) is amending its regulations to change the admission period in the F, J, and I classifications from duration of status to an admission for a fixed time period, and additional changes to admission and extension requirements. This final rule will provide additional protections and oversight of these nonimmigrant categories and will allow DHS to better evaluate whether these nonimmigrants are maintaining status while temporarily in the United States. This final rule provides amendments to the proposed rule covering this topic that was published in the Federal Register on August 28, 2025.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-17"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/17/2026-14439/establishing-a-fixed-time-period-of-admission-and-an-extension-of-stay-procedure-for-nonimmigrant"
+    },
+    {
+      "documentNumber": "2026-14375",
+      "title": "South Atlantic Fishery Management Council (Council)-Public Meetings",
+      "type": "Notice",
+      "publicationDate": "2026-07-16",
+      "agencies": [
+        "Commerce Department",
+        "National Oceanic and Atmospheric Administration"
+      ],
+      "abstract": "The South Atlantic Fishery Management Council (Council) will hold three in-person public hearings and one webinar hearing pertaining to amendment 60 to the Fishery Management Plan (FMP) for the Snapper Grouper Fishery of the South Atlantic Region. This amendment considers removing the 2-for-1 requirement for obtaining a snapper grouper commercial transferable permit; revising stowage requirements and species restrictions for commercial vessels with longline gear on board to allow switching to or from this gear during a commercial trip, increasing trip limits for several snapper grouper species, and requiring sale of all snapper grouper harvested by commercial vessels.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-16"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/16/2026-14375/south-atlantic-fishery-management-council-council-public-meetings"
+    },
+    {
+      "documentNumber": "2026-14372",
+      "title": "Change in Bank Control Notices; Acquisitions of Shares of a Bank or Bank Holding Company",
+      "type": "Notice",
+      "publicationDate": "2026-07-16",
+      "agencies": [
+        "Federal Reserve System"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-16"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/16/2026-14372/change-in-bank-control-notices-acquisitions-of-shares-of-a-bank-or-bank-holding-company"
+    },
+    {
+      "documentNumber": "2026-14276",
+      "title": "Noise Exposure Map Notice; Boca Raton Airport, Boca Raton, Florida",
+      "type": "Notice",
+      "publicationDate": "2026-07-16",
+      "agencies": [
+        "Transportation Department",
+        "Federal Aviation Administration"
+      ],
+      "abstract": "The Federal Aviation Administration (FAA) announces its determination that the Noise Exposure Maps submitted by the Boca Raton Airport Authority for the Boca Raton Airport under the provisions of 49 U.S.C. 47501 et seq. (Aviation Safety and Noise Abatement Act) and 14 CFR part 150 are in compliance with applicable requirements.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-16"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/16/2026-14276/noise-exposure-map-notice-boca-raton-airport-boca-raton-florida"
+    },
+    {
+      "documentNumber": "2026-14230",
+      "title": "Combined Notice of Filings #1",
+      "type": "Notice",
+      "publicationDate": "2026-07-15",
+      "agencies": [
+        "Energy Department",
+        "Federal Energy Regulatory Commission"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-15"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/15/2026-14230/combined-notice-of-filings-1"
+    },
+    {
+      "documentNumber": "2026-14223",
+      "title": "Certain Energy Drinks and Labeling and Packaging Thereof; Notice of a Commission Determination Not To Review an Initial Determination Amending the Complaint and Notice of Investigation",
+      "type": "Notice",
+      "publicationDate": "2026-07-15",
+      "agencies": [
+        "International Trade Commission"
+      ],
+      "abstract": "Notice is hereby given that the U.S. International Trade Commission (\"Commission\") has determined not to review an initial determination (\"ID\") (Order No. 4) of the chief administrative law judge (\"CALJ\"), granting complainant Monster Energy Company's (\"Monster's\") motion for leave to amend the complaint and notice of investigation to correct the address for respondent Creative Trading Corporation.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-15"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/15/2026-14223/certain-energy-drinks-and-labeling-and-packaging-thereof-notice-of-a-commission-determination-not-to"
+    },
+    {
+      "documentNumber": "2026-14174",
+      "title": "Notice of Inventory Completion: Peabody Museum of Archaeology and Ethnology, Harvard University, Cambridge, MA",
+      "type": "Notice",
+      "publicationDate": "2026-07-15",
+      "agencies": [
+        "Interior Department",
+        "National Park Service"
+      ],
+      "abstract": "In accordance with the Native American Graves Protection and Repatriation Act (NAGPRA), the Peabody Museum of Archaeology and Ethnology, Harvard University (PMAE) has completed an inventory of associated funerary objects and has determined that there is a cultural affiliation between the associated funerary objects and Indian Tribes or Native Hawaiian organizations in this notice.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-15"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/15/2026-14174/notice-of-inventory-completion-peabody-museum-of-archaeology-and-ethnology-harvard-university"
+    },
+    {
+      "documentNumber": "2026-14126",
+      "title": "Combined Notice of Filings #1",
+      "type": "Notice",
+      "publicationDate": "2026-07-14",
+      "agencies": [
+        "Energy Department",
+        "Federal Energy Regulatory Commission"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-14"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/14/2026-14126/combined-notice-of-filings-1"
+    },
+    {
+      "documentNumber": "2026-14099",
+      "title": "National Vaccine Injury Compensation Program; List of Petitions Received",
+      "type": "Notice",
+      "publicationDate": "2026-07-14",
+      "agencies": [
+        "Health and Human Services Department",
+        "Health Resources and Services Administration"
+      ],
+      "abstract": "HRSA is publishing this notice of petitions received under the National Vaccine Injury Compensation Program (the Program), as required by the Public Health Service (PHS) Act, as amended. While the Secretary of HHS is named as the respondent in all proceedings brought by the filing of petitions for compensation under the Program, the United States Court of Federal Claims is charged by statute with responsibility for considering and acting upon the petitions.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-14"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/14/2026-14099/national-vaccine-injury-compensation-program-list-of-petitions-received"
+    },
+    {
+      "documentNumber": "2026-14098",
+      "title": "Endangered and Threatened Wildlife and Plants; 90-Day Findings for 10 Species",
+      "type": "Proposed Rule",
+      "publicationDate": "2026-07-14",
+      "agencies": [
+        "Interior Department",
+        "Fish and Wildlife Service"
+      ],
+      "abstract": "We, the U.S. Fish and Wildlife Service (Service), announce 90- day findings on 10 petitions to add species to the Lists of Endangered and Threatened Wildlife and Plants under the Endangered Species Act of 1973, as amended (Act). Based on our review, we find that the petitions to list the Cascade red fox (Vulpes vulpes cascadensis), diamondback terrapin (Malaclemys terrapin), Goose Lake lamprey (Entosphenus tridentatus ssp.), Goose Lake sucker (Catostomus occidentalis lacusanserinus), Goose Lake tui chub (Siphateles thalassinus thalassinus), loopy five firefly (Photuris forresti), and plains spotted skunk (Spilogale interrupta) present substantial scientific or commercial information indicating that the petitioned actions may be warranted. Therefore, with the publication of this document, we announce that we are initiating status reviews of these seven species to determine whether the petitioned actions are warranted. To ensure that the status reviews are comprehensive, we request scientific and commercial data and other information regarding the species and factors that may affect their status. Based on the status reviews, we will issue 12-month petition findings, which will address whether or not the petitioned actions are warranted, in accordance with the Act. We further find that the petitions to list the Ellett Valley millipede (Pseudotremia cavernarum), long-tailed macaque (Macaca fascicularis), and Louisiana black bear (Ursus americanus luteolus) do not present substantial scientific or commercial information indicating the petitioned actions may be warranted. Therefore, we are not initiating status reviews for these three species.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-14"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/14/2026-14098/endangered-and-threatened-wildlife-and-plants-90-day-findings-for-10-species"
+    },
+    {
+      "documentNumber": "2026-14048",
+      "title": "Fisheries of the Caribbean, Gulf of America, and South Atlantic; Snapper-Grouper Fishery of the South Atlantic Region; Abbreviated Framework Amendment 5",
+      "type": "Proposed Rule",
+      "publicationDate": "2026-07-13",
+      "agencies": [
+        "Commerce Department",
+        "National Oceanic and Atmospheric Administration"
+      ],
+      "abstract": "NMFS seeks public comment on proposed regulations to implement Abbreviated Framework Amendment 5 (Abbreviated Framework 5) under the Fishery Management Plan for the Snapper-Grouper Fishery of the South Atlantic Region (FMP). If implemented by NMFS, this proposed rule would revise catch levels for blueline tilefish in the exclusive economic zone (EEZ) of the South Atlantic. The purposes of these proposed regulatory changes are to ensure the catch levels for blueline tilefish are based on the best scientific information available (BSIA), to achieve and maintain optimum yield (OY), and to prevent overfishing while minimizing adverse social and economic effects to the extent practicable in accordance with NMFS' statutory mandates.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-13"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/13/2026-14048/fisheries-of-the-caribbean-gulf-of-america-and-south-atlantic-snapper-grouper-fishery-of-the-south"
+    },
+    {
+      "documentNumber": "2026-13984",
+      "title": "National Register of Historic Places; Notification of Pending Nominations and Related Actions",
+      "type": "Notice",
+      "publicationDate": "2026-07-10",
+      "agencies": [
+        "Interior Department",
+        "National Park Service"
+      ],
+      "abstract": "The National Park Service is soliciting electronic comments on the significance of properties nominated before June 20, 2026, for listing or related actions in the National Register of Historic Places.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-10"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/10/2026-13984/national-register-of-historic-places-notification-of-pending-nominations-and-related-actions"
+    },
+    {
+      "documentNumber": "2026-13900",
+      "title": "Changes in Flood Hazard Determinations",
+      "type": "Notice",
+      "publicationDate": "2026-07-09",
+      "agencies": [
+        "Homeland Security Department",
+        "Federal Emergency Management Agency"
+      ],
+      "abstract": "This notice lists communities where the addition or modification of Base Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, or the regulatory floodway (hereinafter referred to as flood hazard determinations), as shown on the Flood Insurance Rate Maps (FIRMs), and where applicable, in the supporting Flood Insurance Study (FIS) reports, prepared by the Federal Emergency Management Agency (FEMA) for each community, is appropriate because of new scientific or technical data. The FIRM, and where applicable, portions of the FIS report, have been revised to reflect these flood hazard determinations through issuance of a Letter of Map Revision (LOMR), in accordance with Federal Regulations. The current effective community number is shown in the table below and must be used for all new policies and renewals.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-09"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/09/2026-13900/changes-in-flood-hazard-determinations"
+    },
+    {
+      "documentNumber": "2026-13897",
+      "title": "Changes in Flood Hazard Determinations",
+      "type": "Notice",
+      "publicationDate": "2026-07-09",
+      "agencies": [
+        "Homeland Security Department",
+        "Federal Emergency Management Agency"
+      ],
+      "abstract": "New or modified Base (1-percent annual chance) Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, and/or regulatory floodways (hereinafter referred to as flood hazard determinations) as shown on the indicated Letter of Map Revision (LOMR) for each of the communities listed in the table below are finalized. Each LOMR revises the Flood Insurance Rate Maps (FIRMs), and in some cases the Flood Insurance Study (FIS) reports, currently in effect for the listed communities.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-09"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/09/2026-13897/changes-in-flood-hazard-determinations"
+    },
+    {
+      "documentNumber": "2026-13866",
+      "title": "Fiscal Year List of Requests From States or Tribes for a Small Business Administration Disaster Declaration",
+      "type": "Notice",
+      "publicationDate": "2026-07-09",
+      "agencies": [
+        "Small Business Administration"
+      ],
+      "abstract": "This notice provides an updated monthly summary of requests received by the U. S. Small Business Administration to make a disaster declaration for a state, territory, or tribe. The published list complies with a directive in the explanatory statement of the Consolidated Appropriations Act, 2026, Public Law 119-75.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-09"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/09/2026-13866/fiscal-year-list-of-requests-from-states-or-tribes-for-a-small-business-administration-disaster"
+    },
+    {
+      "documentNumber": "2026-13852",
+      "title": "Receipt of Incidental Take Permit Application and Proposed Habitat Conservation Plan for the Sand Skink; Orange County, FL; Categorical Exclusion",
+      "type": "Notice",
+      "publicationDate": "2026-07-09",
+      "agencies": [
+        "Interior Department",
+        "Fish and Wildlife Service"
+      ],
+      "abstract": "We, the Fish and Wildlife Service (Service), announce receipt of an application from Sutton Grande, LLC (Sutton Grande Project) (applicant) for an incidental take permit (ITP) under the Endangered Species Act (ESA). The applicant requests the ITP to take the federally listed threatened sand skink incidental to the construction of a residential development and the associated clearing and infrastructure in Orange County, Florida. We request public comment on the application, which includes the applicant's proposed Habitat Conservation Plan (HCP), and on the Service's preliminary determination that the proposed permitting action may be eligible for a categorical exclusion pursuant to the National Environmental Policy Act (NEPA), the Department of the Interior's (DOI) NEPA regulations, and the DOI Departmental Manual. To make this preliminary determination, we prepared a draft screening form and NEPA statement for HCPs, which are available for public review. We invite comment from the public and local, State, Tribal, and Federal agencies.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-09"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/09/2026-13852/receipt-of-incidental-take-permit-application-and-proposed-habitat-conservation-plan-for-the-sand"
+    },
+    {
+      "documentNumber": "2026-13846",
+      "title": "Privacy Act of 1974; System of Records",
+      "type": "Notice",
+      "publicationDate": "2026-07-09",
+      "agencies": [
+        "Veterans Affairs Department"
+      ],
+      "abstract": "Pursuant to the Privacy Act of 1974, notice is hereby given that VA is modifying a system of records in its inventory titled, Beneficiary Fiduciary Field System (BFFS)-VA (37VA27). This system contains records used for the administration of benefits regarding beneficiaries who VA or a court has deemed unable to manage their financial affairs.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-09"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/09/2026-13846/privacy-act-of-1974-system-of-records"
+    },
+    {
+      "documentNumber": "2026-13821",
+      "title": "Schedules of Controlled Substances: Placement of Tianeptine in Schedule I",
+      "type": "Proposed Rule",
+      "publicationDate": "2026-07-08",
+      "agencies": [
+        "Justice Department",
+        "Drug Enforcement Administration"
+      ],
+      "abstract": "The Drug Enforcement Administration proposes placing the substance tianeptine (7-[(3-chloro-6,11-dihydro-6-methyl-5,5- dioxidodibenzo[c,f][1,2]thiazepin-11-yl)amino]heptanoic acid), including its isomers, esters, ethers, salts, and salts of isomers, esters, and ethers whenever the existence of such isomers, esters, ethers, salts, and salts of isomers, esters, and ethers is possible, in schedule I of the Controlled Substances Act. If finalized, this action would impose the regulatory controls and administrative, civil, and criminal sanctions applicable to schedule I controlled substances on persons who handle (manufacture, distribute, reverse distribute, import, export, engage in research, conduct instructional activities or chemical analysis with, or possess) or propose to handle tianeptine.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-08"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/08/2026-13821/schedules-of-controlled-substances-placement-of-tianeptine-in-schedule-i"
+    },
+    {
+      "documentNumber": "2026-13779",
+      "title": "Gulf of America Outer Continental Shelf Oil and Gas One Big Beautiful Bill Act Lease Sale 3",
+      "type": "Notice",
+      "publicationDate": "2026-07-08",
+      "agencies": [
+        "Interior Department",
+        "Ocean Energy Management Bureau"
+      ],
+      "abstract": "On Wednesday, August 12, 2026, the Bureau of Ocean Energy Management (BOEM) will open and publicly announce bids received for blocks offered in the Gulf of America (GOA) Outer Continental Shelf (OCS) Oil and Gas One Big Beautiful Bill Act Lease Sale 3 (Lease Sale BBG3). BOEM is holding this sale pursuant to the One Big Beautiful Bill Act (OBBBA) and in accordance with the Outer Continental Shelf Lands Act (OCSLA), as amended, and its implementing regulations. The Final Notice of Sale (NOS) package for Lease Sale BBG3 contains information essential to potential bidders and comprises this notice, Information to Lessees, and Lease Stipulations. Section 50102 of the OBBBA mandates that the Secretary of the Interior (Secretary) conduct the sale within a specific time period and directs the Secretary to offer the same lease form, lease terms, economic conditions, and stipulations as contained in the Final Notice of Sale entitled, \"Gulf of Mexico Outer Continental Shelf Region-Wide Oil and Gas Lease Sale 254\".",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-08"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/08/2026-13779/gulf-of-america-outer-continental-shelf-oil-and-gas-one-big-beautiful-bill-act-lease-sale-3"
+    },
+    {
+      "documentNumber": "2026-13771",
+      "title": "Agency Information Collection Activities; Extension; Court-Ordered Refunds Under the International Emergency Economic Powers Act Worksheet",
+      "type": "Notice",
+      "publicationDate": "2026-07-08",
+      "agencies": [
+        "Homeland Security Department",
+        "U.S. Customs and Border Protection"
+      ],
+      "abstract": "The Department of Homeland Security, U.S. Customs and Border Protection (CBP) will be submitting the following information collection request to the Office of Management and Budget (OMB) for review and approval in accordance with the Paperwork Reduction Act of 1995 (PRA). The information collection is published in the Federal Register to obtain comments from the public and affected agencies.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-08"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/08/2026-13771/agency-information-collection-activities-extension-court-ordered-refunds-under-the-international"
+    },
+    {
+      "documentNumber": "2026-13689",
+      "title": "Change in Bank Control Notices; Acquisitions of Shares of a Bank or Bank Holding Company",
+      "type": "Notice",
+      "publicationDate": "2026-07-07",
+      "agencies": [
+        "Federal Reserve System"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-07"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/07/2026-13689/change-in-bank-control-notices-acquisitions-of-shares-of-a-bank-or-bank-holding-company"
+    },
+    {
+      "documentNumber": "2026-13682",
+      "title": "Reef Fish Fishery of the Gulf of America; Amendment 62",
+      "type": "Proposed Rule",
+      "publicationDate": "2026-07-07",
+      "agencies": [
+        "Commerce Department",
+        "National Oceanic and Atmospheric Administration"
+      ],
+      "abstract": "NMFS proposes to implement management measures described in Amendment 62 to the Fishery Management Plan for the Reef Fish Resources of the Gulf (FMP) (Amendment 62), as prepared and submitted by the Gulf Council (Council). This proposed rule and Amendment 62 would revise the catch limits and sector allocations for Gulf of America (Gulf) red grouper, based on the best scientific information available. Additionally, this proposed rule would remove the shallow-water grouper (SWG) recreational seasonal closure, from February 1 through March 31, in Gulf Federal waters seaward of the 20-fathom boundary.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-07"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/07/2026-13682/reef-fish-fishery-of-the-gulf-of-america-amendment-62"
+    },
+    {
+      "documentNumber": "2026-13657",
+      "title": "Certain Vehicle Space Guards; Notice of Institution of Investigation",
+      "type": "Notice",
+      "publicationDate": "2026-07-07",
+      "agencies": [
+        "International Trade Commission"
+      ],
+      "abstract": "Notice is hereby given that a complaint was filed with the U.S. International Trade Commission on June 1, 2026, under section 337 of the Tariff Act of 1930, as amended, on behalf of Johnathan Black Kotyk of Atlantic Beach, Florida. An amended complaint was filed on June 17, 2026, and a supplement was filed on June 22, 2026. The amended complaint, as supplemented, alleges violations of section 337 based upon the importation into the United States, the sale for importation, and the sale within the United States after importation of certain vehicle space guards by reason of the infringement of certain claims of U.S. Patent No. 7,527,314 (\"the '314 patent\"). The amended complaint, as supplemented, further alleges that an industry in the United States exists as required by the applicable Federal Statute. The complainant requests that the Commission institute an investigation and, after the investigation, issue a limited exclusion order and cease and desist orders.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-07"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/07/2026-13657/certain-vehicle-space-guards-notice-of-institution-of-investigation"
+    },
+    {
+      "documentNumber": "2026-13623",
+      "title": "United States et al. v. Live Nation Entertainment, Inc.; Proposed Final Judgment and Competitive Impact Statement",
+      "type": "Notice",
+      "publicationDate": "2026-07-06",
+      "agencies": [
+        "Justice Department",
+        "Antitrust Division"
+      ],
+      "abstract": null,
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-06"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/06/2026-13623/united-states-et-al-v-live-nation-entertainment-inc-proposed-final-judgment-and-competitive-impact"
+    },
+    {
+      "documentNumber": "2026-13602",
+      "title": "Calendar Year 2027 Home Health Prospective Payment System (HH PPS) Rate Update; Requirements for the HH Quality Reporting Program and the Expanded HH Value-Based Purchasing Model; Medicare Provider Enrollment, Durable Medical Equipment (DME), and DME, Prosthetics, Orthotics, and Supplies (DMEPOS) Policies",
+      "type": "Proposed Rule",
+      "publicationDate": "2026-07-06",
+      "agencies": [
+        "Health and Human Services Department",
+        "Centers for Medicare & Medicaid Services"
+      ],
+      "abstract": "This proposed rule would set forth routine updates to the Medicare home health payment rates in accordance with existing statutory and regulatory requirements. In addition, this proposed rule discusses the behavior adjustment and proposes a temporary behavior adjustment and proposes to recalibrate the case-mix weights and update the functional impairment levels; comorbidity subgroups; and low- utilization payment adjustment (LUPA) thresholds for CY 2027. Additionally, this proposed rule discusses the provision of home health palliative care services and includes a request for information (RFI) on a home health specific wage index. This rule would also propose changes to the Home Health Quality Reporting Program (HH QRP) and summarizes potential initiatives to improve alignment between the HH QRP and expanded Home Health Value Based Purchasing (HHVBP) Model. Lastly, the rule would--clarify the application of the DMEPOS face-to- face encounter requirements for the replacement of DMEPOS items; make changes to the provider and supplier enrollment requirements; make changes regarding DME benefit expansion for infusion pumps and drugs; and discuss collection of information requirement changes regarding the DMEPOS Competitive Bidding Program (CBP) country of origin.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-06"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/06/2026-13602/calendar-year-2027-home-health-prospective-payment-system-hh-pps-rate-update-requirements-for-the-hh"
+    },
+    {
+      "documentNumber": "2026-13580",
+      "title": "Schedules of Controlled Substance: Temporary Placement of 7-Hydroxymitragynine Above a Specified Threshold in Schedule I",
+      "type": "Proposed Rule",
+      "publicationDate": "2026-07-06",
+      "agencies": [
+        "Justice Department",
+        "Drug Enforcement Administration"
+      ],
+      "abstract": "The Administrator of the Drug Enforcement Administration is issuing this notice of intent to publish a temporary order to schedule 7-hydroxymitragynine above a specified threshold, including its isomers, esters, ethers, salts, and salts of isomers, esters, and ethers, whenever the existence of such isomers, esters, ethers, and salts is possible, in schedule I of the Controlled Substances Act. When it is issued, the temporary scheduling order will impose the regulatory controls and administrative, civil, and criminal sanctions applicable to schedule I controlled substances on persons who handle (manufacture, distribute, reverse distribute, import, export, engage in research, conduct instructional activities or chemical analysis with, or possess) or propose to handle 7-hydroxymitragynine above a specified threshold.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-06"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/06/2026-13580/schedules-of-controlled-substance-temporary-placement-of-7-hydroxymitragynine-above-a-specified"
+    },
+    {
+      "documentNumber": "2026-13539",
+      "title": "Notice of Regulatory Waiver Requests Granted for the Fourth Quarter of Calendar Year 2025",
+      "type": "Notice",
+      "publicationDate": "2026-07-06",
+      "agencies": [
+        "Housing and Urban Development Department"
+      ],
+      "abstract": "Section 106 of the Department of Housing and Urban Development Reform Act of 1989 (the HUD Reform Act) requires HUD to publish quarterly Federal Register notices of all regulatory waivers that HUD has approved. Each notice covers the quarterly period since the previous Federal Register notice. The purpose of this notice is to comply with the requirements of section 106 of the HUD Reform Act. This notice contains a list of regulatory waivers granted by HUD during the period beginning on October 1, 2025, and ending on December 31, 2025.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-06"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/06/2026-13539/notice-of-regulatory-waiver-requests-granted-for-the-fourth-quarter-of-calendar-year-2025"
+    },
+    {
+      "documentNumber": "2026-13537",
+      "title": "Notice of Regulatory Waiver Requests Granted for the Third Quarter of Calendar Year 2025",
+      "type": "Notice",
+      "publicationDate": "2026-07-06",
+      "agencies": [
+        "Housing and Urban Development Department"
+      ],
+      "abstract": "Section 106 of the Department of Housing and Urban Development Reform Act of 1989 (the HUD Reform Act) requires HUD to publish quarterly Federal Register notices of all regulatory waivers that HUD has approved. Each notice covers the quarterly period since the previous Federal Register notice. The purpose of this notice is to comply with the requirements of section 106 of the HUD Reform Act. This notice contains a list of regulatory waivers granted by HUD during the period beginning on July 1, 2025 and ending on September 30, 2025.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-06"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/06/2026-13537/notice-of-regulatory-waiver-requests-granted-for-the-third-quarter-of-calendar-year-2025"
+    },
+    {
+      "documentNumber": "2026-13516",
+      "title": "Department of Defense Wage Committee (DoDWC); Notice of Federal Advisory Committee Meetings",
+      "type": "Notice",
+      "publicationDate": "2026-07-06",
+      "agencies": [
+        "Defense Department",
+        "Office of the Secretary"
+      ],
+      "abstract": "The DoD (referred to herein as \"the Department\", \"Department of War\" or \"DoW\") is publishing this notice to announce that the following Federal Advisory Committee meetings of the DoDWC will take place.",
+      "source": {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov",
+        "tier": "official",
+        "description": "Official daily journal of the U.S. government via federalregister.gov API",
+        "date": "2026-07-06"
+      },
+      "asOf": "2026-07-18",
+      "documentUrl": "https://www.federalregister.gov/documents/2026/07/06/2026-13516/department-of-defense-wage-committee-dodwc-notice-of-federal-advisory-committee-meetings"
+    },
     {
       "documentNumber": "2026-13392",
       "title": "EB-5 Reform and Integrity Act of 2022; Ensuring the Integrity of the EB-5 Program; Automatic Revocation of Petitions for Immigrant Classification",
@@ -30,7 +699,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-07-02"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/07/02/2026-13392/eb-5-reform-and-integrity-act-of-2022-ensuring-the-integrity-of-the-eb-5-program-automatic"
     },
     {
@@ -50,7 +719,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-07-01"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/07/01/2026-13364/schedules-of-controlled-substances-temporary-placement-of-56--dichloro-brorphine-56-dichloro"
     },
     {
@@ -70,7 +739,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-07-01"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/07/01/2026-13249/national-register-of-historic-places-notification-of-pending-nominations-and-related-actions"
     },
     {
@@ -90,7 +759,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-07-01"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/07/01/2026-13232/endangered-species-file-no-29126"
     },
     {
@@ -109,7 +778,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/30/2026-13197/deregistration-under-section-8f-of-the-investment-company-act-of-1940"
     },
     {
@@ -128,7 +797,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-30"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/30/2026-13181/certain-disposable-and-other-closed-system-electronic-nicotine-delivery-systems-ends-devices-and"
     },
     {
@@ -147,7 +816,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/29/2026-13067/change-in-bank-control-notices-acquisitions-of-shares-of-a-bank-or-bank-holding-company"
     },
     {
@@ -166,7 +835,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/29/2026-13057/alien-registration-form-and-evidence-of-registration"
     },
     {
@@ -185,7 +854,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-29"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/29/2026-13027/air-plan-approval-ohio-redesignation-of-the-cleveland-oh-area-to-attainment-of-the-2015-ozone"
     },
     {
@@ -204,7 +873,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12989/modernizing-security-requirements"
     },
     {
@@ -224,7 +893,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12979/agency-information-collection-activities-request-for-comments-for-a-new-information-collection"
     },
     {
@@ -244,7 +913,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12969/hearth-act-approval-of-caddo-nation-of-oklahoma-leasing-ordinance"
     },
     {
@@ -264,7 +933,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12968/hearth-act-approval-of-cachil-dehe-band-of-wintun-indians-of-the-colusa-indian-community-of-the"
     },
     {
@@ -284,7 +953,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12955/process-for-authorizing-seasonal-migratory-game-bird-hunting"
     },
     {
@@ -304,7 +973,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12951/process-for-authorizing-seasonal-migratory-game-bird-hunting"
     },
     {
@@ -324,7 +993,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12922/transport-airplane-and-propulsion-certification-modernization"
     },
     {
@@ -344,7 +1013,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12893/combined-notice-of-filings-1"
     },
     {
@@ -363,7 +1032,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-26"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/26/2026-12859/tbl-group-inc-acquisition-of-control-escot-bus-lines-llc"
     },
     {
@@ -383,7 +1052,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-25"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/25/2026-12846/united-states-standards-for-grades-of-orange-juice"
     },
     {
@@ -402,7 +1071,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-25"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/25/2026-12831/certain-topcon-solar-cells-modules-panels-components-thereof-and-products-containing-same-notice-of"
     },
     {
@@ -422,7 +1091,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-25"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/25/2026-12788/national-vaccine-injury-compensation-program-list-of-petitions-received"
     },
     {
@@ -441,7 +1110,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-25"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/25/2026-12752/pesticide-registration-maintenance-fee-requested-and-proposed-cancellations-of-certain-pesticide"
     },
     {
@@ -461,7 +1130,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-24"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/24/2026-12659/foreign-trade-zone-ftz-32-authorization-of-production-activity-3nstar-inc-point-of-sale-terminals"
     },
     {
@@ -481,7 +1150,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-22"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/22/2026-12501/foreign-trade-zone-ftz-193-authorization-of-production-activity-lithionics-battery-llc-lithium-ion"
     },
     {
@@ -501,7 +1170,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-22"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/22/2026-12455/qualification-of-drivers-exemption-applications-epilepsy-and-seizure-disorders"
     },
     {
@@ -521,7 +1190,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-22"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/22/2026-12389/notice-of-intended-repatriation-university-of-alabama-museums-tuscaloosa-al"
     },
     {
@@ -541,7 +1210,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-22"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/22/2026-12383/notice-of-inventory-completion-school-of-social-science-and-global-studies-university-of-southern"
     },
     {
@@ -561,7 +1230,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-18"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/18/2026-12317/combined-notice-of-filings-1"
     },
     {
@@ -581,7 +1250,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-17"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/17/2026-12184/combined-notice-of-filings-1"
     },
     {
@@ -601,7 +1270,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-17"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/17/2026-12175/reef-fish-fishery-of-the-gulf-of-america-shallow-water-grouper-management-measures"
     },
     {
@@ -621,7 +1290,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-17"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/17/2026-12168/security-zone-fifa-world-cup-and-fan-fest-2026-bayfront-park-miami-fl"
     },
     {
@@ -641,7 +1310,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-16"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/16/2026-12069/medicare-program-strengthening-oversight-of-accrediting-organizations-aos-and-preventing-ao"
     },
     {
@@ -661,7 +1330,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-16"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/16/2026-12040/national-register-of-historic-places-notification-of-pending-nominations-and-related-actions"
     },
     {
@@ -681,7 +1350,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-15"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/15/2026-11972/national-vaccine-injury-compensation-program-list-of-petitions-received"
     },
     {
@@ -700,7 +1369,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-15"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/15/2026-11907/certain-topcon-solar-cells-modules-panels-components-thereof-and-products-containing-same-notice-of"
     },
     {
@@ -719,7 +1388,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-12"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/12/2026-11884/partial-withdrawals-of-findings-of-failure-to-submit-state-implementation-plan-sip-revisions-to"
     },
     {
@@ -739,7 +1408,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-12"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/12/2026-11883/pecans-grown-in-the-states-of-alabama-arkansas-arizona-california-florida-georgia-kansas-louisiana"
     },
     {
@@ -759,7 +1428,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-12"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/12/2026-11870/receipt-of-incidental-take-permit-application-and-proposed-habitat-conservation-plan-for-sand-skink"
     },
     {
@@ -779,7 +1448,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-12"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/12/2026-11847/pecans-grown-in-the-states-of-alabama-arkansas-arizona-california-florida-georgia-kansas-louisiana"
     },
     {
@@ -799,7 +1468,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-12"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/12/2026-11838/drawbridge-operation-regulation-big-carlos-pass-estero-island-fl"
     },
     {
@@ -819,7 +1488,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11770/uniform-procedures-for-state-highway-safety-grant-programs"
     },
     {
@@ -839,7 +1508,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11726/special-local-regulation-cfk-swim-around-key-west-key-west-fl"
     },
     {
@@ -859,7 +1528,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11677/changes-in-flood-hazard-determinations"
     },
     {
@@ -879,7 +1548,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11676/changes-in-flood-hazard-determinations"
     },
     {
@@ -899,7 +1568,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11675/changes-in-flood-hazard-determinations"
     },
     {
@@ -919,7 +1588,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11674/changes-in-flood-hazard-determinations"
     },
     {
@@ -939,7 +1608,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11670/changes-in-flood-hazard-determinations"
     },
     {
@@ -959,7 +1628,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11669/changes-in-flood-hazard-determinations"
     },
     {
@@ -979,7 +1648,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11668/changes-in-flood-hazard-determinations"
     },
     {
@@ -999,7 +1668,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11667/changes-in-flood-hazard-determinations"
     },
     {
@@ -1019,7 +1688,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-11"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/11/2026-11665/changes-in-flood-hazard-determinations"
     },
     {
@@ -1038,7 +1707,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-10"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/10/2026-11635/ascension-health-alliance-analysis-of-proposed-agreement-containing-consent-orders-to-aid-public"
     },
     {
@@ -1057,7 +1726,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-10"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/10/2026-11617/high-purity-dissolving-pulp-from-brazil-and-norway-scheduling-of-the-final-phase-of-countervailing"
     },
     {
@@ -1077,7 +1746,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-10"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/10/2026-11600/combined-notice-of-filings-1"
     },
     {
@@ -1097,7 +1766,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-09"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/09/2026-11547/foreign-trade-zone-ftz-218-notification-of-proposed-production-activity-oculus-surgical-inc"
     },
     {
@@ -1117,7 +1786,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-09"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/09/2026-11491/qualification-of-drivers-exemption-applications-hearing"
     },
     {
@@ -1136,7 +1805,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-08"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/08/2026-11468/fiscal-year-list-of-requests-from-states-or-tribes-for-a-small-business-administration-disaster"
     },
     {
@@ -1155,7 +1824,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-08"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/08/2026-11459/certain-pickleball-paddles-notice-of-institution-of-investigation"
     },
     {
@@ -1175,7 +1844,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-08"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/08/2026-11438/combined-notice-of-filings-2"
     },
     {
@@ -1195,7 +1864,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-08"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/08/2026-11437/combined-notice-of-filings-1"
     },
     {
@@ -1214,7 +1883,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-05"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/05/2026-11354/formations-of-acquisitions-by-and-mergers-of-bank-holding-companies"
     },
     {
@@ -1234,7 +1903,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-05"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/05/2026-11340/combined-notice-of-filings-1"
     },
     {
@@ -1254,7 +1923,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-05"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/05/2026-11332/foreign-trade-zone-ftz-213-notification-of-proposed-production-activity-project-and-construction"
     },
     {
@@ -1274,7 +1943,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-05"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/05/2026-11310/safety-zone-hurricanes-tropical-storms-and-severe-weather-events-in-the-sector-mobile-captain-of-the"
     },
     {
@@ -1294,7 +1963,7 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-04"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/04/2026-11213/south-atlantic-fishery-management-council-public-meeting"
     },
     {
@@ -1313,682 +1982,8 @@
         "description": "Official daily journal of the U.S. government via federalregister.gov API",
         "date": "2026-06-04"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "documentUrl": "https://www.federalregister.gov/documents/2026/06/04/2026-11182/prevailing-rate-systems-redefinition-of-the-raven-rock-mountain-complex-to-the"
-    },
-    {
-      "documentNumber": "2026-11158",
-      "title": "Notice of Determination and Request for Comments Concerning Action Pursuant to Section 301: Brazil's Acts, Policies, and Practices Related to Digital Trade and Electronic Payment Services; Unfair, Preferential Tariffs; Anti-Corruption Enforcement; Intellectual Property Protection; Ethanol Market Access; and Illegal Deforestation",
-      "type": "Notice",
-      "publicationDate": "2026-06-04",
-      "agencies": [
-        "Trade Representative, Office of United States"
-      ],
-      "abstract": "The United States Trade Representative (Trade Representative) has determined that certain of Brazil's acts, policies, and practices at issue in this investigation are actionable under Section 301(b) and Section 304(a) of the Trade Act of 1974, as amended (Trade Act). The Trade Representative is proposing action, including tariffs on articles of Brazil and certain exemptions, and invites comments from the public.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-06-04"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/06/04/2026-11158/notice-of-determination-and-request-for-comments-concerning-action-pursuant-to-section-301-brazils"
-    },
-    {
-      "documentNumber": "2026-11005",
-      "title": "HEARTH Act Approval of Peoria Tribe of Indians of Oklahoma Business Leasing Ordinance",
-      "type": "Notice",
-      "publicationDate": "2026-06-02",
-      "agencies": [
-        "Interior Department",
-        "Indian Affairs Bureau"
-      ],
-      "abstract": "The Assistant Secretary--Indian Affairs approved the Peoria Tribe of Indians of Oklahoma Business Leasing Ordinance under the Helping Expedite and Advance Responsible Tribal Homeownership Act of 2012 (HEARTH Act). With this approval, the Tribe is authorized to enter into leases without further approval from the Secretary of the Interior.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-06-02"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/06/02/2026-11005/hearth-act-approval-of-peoria-tribe-of-indians-of-oklahoma-business-leasing-ordinance"
-    },
-    {
-      "documentNumber": "2026-10991",
-      "title": "Combined Notice of Filings",
-      "type": "Notice",
-      "publicationDate": "2026-06-02",
-      "agencies": [
-        "Energy Department",
-        "Federal Energy Regulatory Commission"
-      ],
-      "abstract": null,
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-06-02"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/06/02/2026-10991/combined-notice-of-filings"
-    },
-    {
-      "documentNumber": "2026-10885",
-      "title": "Endangered Wildlife and Plants; Receipt of Recovery Permit Applications",
-      "type": "Notice",
-      "publicationDate": "2026-06-01",
-      "agencies": [
-        "Interior Department",
-        "Fish and Wildlife Service"
-      ],
-      "abstract": "We, the U.S. Fish and Wildlife Service, invite the public to comment on the following applications for a permit to conduct scientific research to promote conservation or other activities intended to recover and enhance endangered species survival. With some exceptions, the Endangered Species Act (ESA) prohibits certain activities that may impact endangered species, unless a Federal permit allows such activity. The ESA also requires that we invite public comment before issuing these permits.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-06-01"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/06/01/2026-10885/endangered-wildlife-and-plants-receipt-of-recovery-permit-applications"
-    },
-    {
-      "documentNumber": "2026-10856",
-      "title": "Endangered Species; Receipt of Recovery Permit Applications",
-      "type": "Notice",
-      "publicationDate": "2026-06-01",
-      "agencies": [
-        "Interior Department",
-        "Fish and Wildlife Service"
-      ],
-      "abstract": "We, the U.S. Fish and Wildlife Service, have received applications for permits to conduct scientific research to promote conservation or other activities intended to enhance the propagation or survival of endangered or threatened species under the Endangered Species Act. We invite local, State, and Federal agencies; Tribes; and the public to comment on these applications. Before issuing the requested permits, we will take into consideration any information that we receive during the public comment period.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-06-01"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/06/01/2026-10856/endangered-species-receipt-of-recovery-permit-applications"
-    },
-    {
-      "documentNumber": "2026-10848",
-      "title": "Certain TOPCon Solar Cells, Modules, Panels, Components Thereof, and Products Containing Same; Commission Determination Not To Review an Initial Determination Granting a Motion To Intervene",
-      "type": "Notice",
-      "publicationDate": "2026-06-01",
-      "agencies": [
-        "International Trade Commission"
-      ],
-      "abstract": "Notice is hereby given that the U.S. International Trade Commission has determined not to review an initial determination (\"ID\") (Order No. 7) of the presiding administrative law judge (\"ALJ\") granting a motion to intervene filed by non-party BYD America LLC (\"BYD\").",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-06-01"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/06/01/2026-10848/certain-topcon-solar-cells-modules-panels-components-thereof-and-products-containing-same-commission"
-    },
-    {
-      "documentNumber": "2026-10798",
-      "title": "Notice of Intent To Prepare an Environmental Impact Statement for the Proposed DeLamar Mine Project-Owyhee County, Idaho",
-      "type": "Notice",
-      "publicationDate": "2026-05-29",
-      "agencies": [
-        "Interior Department",
-        "Land Management Bureau"
-      ],
-      "abstract": "In compliance with the National Environmental Policy Act (NEPA) of 1969, as amended, and the Federal Land Policy and Management Act (FLPMA) of 1976, as amended, the Bureau of Land Management (BLM) Owyhee Field Office, Marsing, Idaho intends to prepare an Environmental Impact Statement (EIS) to consider the effects of DeLamar Mining Company's proposed DeLamar Mine Project in Owyhee County, Idaho. This notice announces the beginning of the scoping process to solicit public comments and identify issues.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-29"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10798/notice-of-intent-to-prepare-an-environmental-impact-statement-for-the-proposed-delamar-mine"
-    },
-    {
-      "documentNumber": "2026-10785",
-      "title": "Combined Notice of Filings #1",
-      "type": "Notice",
-      "publicationDate": "2026-05-29",
-      "agencies": [
-        "Energy Department",
-        "Federal Energy Regulatory Commission"
-      ],
-      "abstract": null,
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-29"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10785/combined-notice-of-filings-1"
-    },
-    {
-      "documentNumber": "2026-10780",
-      "title": "Shipping Safety Fairways and Associated Vessel Routing Measures Along the Atlantic Coast",
-      "type": "Notice",
-      "publicationDate": "2026-05-29",
-      "agencies": [
-        "Homeland Security Department",
-        "Coast Guard"
-      ],
-      "abstract": "The Coast Guard will host public meetings regarding the draft Programmatic Environmental Impact Statement/Overseas Environmental Impact Statement (draft PEIS/OEIS) for Establishing Shipping Safety Fairways and Associated Vessel Routing Measures Along the Atlantic Coast. In person meetings will be held in Bangor, Maine, Groton, Connecticut, and Salisbury, Maryland, along with two virtual meetings. We are also accepting written comments on the draft PEIS/OEIS.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-29"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10780/shipping-safety-fairways-and-associated-vessel-routing-measures-along-the-atlantic-coast"
-    },
-    {
-      "documentNumber": "2026-10774",
-      "title": "Endangered Species; Recovery Permit Applications",
-      "type": "Notice",
-      "publicationDate": "2026-05-29",
-      "agencies": [
-        "Interior Department",
-        "Fish and Wildlife Service"
-      ],
-      "abstract": "We, the U.S. Fish and Wildlife Service, have received applications for permits to conduct scientific research to promote conservation or other activities intended to enhance the propagation or survival of endangered and threatened species under the Endangered Species Act (Act). We invite the public and local, State, Tribal, and Federal agencies to provide written data, views, or arguments with respect to any application noticed within 30 days following the publication of this notice. Before issuing any of the requested permits, we will take into consideration all information that we receive during the public comment period.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-29"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10774/endangered-species-recovery-permit-applications"
-    },
-    {
-      "documentNumber": "2026-10714",
-      "title": "Pesticide Experimental Use Permit; Receipt of Application; Comment Request (March 2026)",
-      "type": "Notice",
-      "publicationDate": "2026-05-29",
-      "agencies": [
-        "Environmental Protection Agency"
-      ],
-      "abstract": "This notice announces EPA's receipt of an application 100506- EUP-R from the State University of New York College of Environmental Science and Forestry (SUNY ESF) requesting an experimental use permit (EUP) for OxO American Chestnut (oxalate oxidase OxO) and the genetic material necessary for its expression in American chestnut (Castanea dentata). The Agency has determined that the permit may be of regional and national significance. Therefore, because of the potential significance, EPA is seeking comments on this application.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-29"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10714/pesticide-experimental-use-permit-receipt-of-application-comment-request-march-2026"
-    },
-    {
-      "documentNumber": "2026-10668",
-      "title": "Self-Regulatory Organizations; MIAX Sapphire, LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend the MIAX Sapphire Options Exchange Fee Schedule To Establish a Firm Fee Cap",
-      "type": "Notice",
-      "publicationDate": "2026-05-29",
-      "agencies": [
-        "Securities and Exchange Commission"
-      ],
-      "abstract": null,
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-29"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/29/2026-10668/self-regulatory-organizations-miax-sapphire-llc-notice-of-filing-and-immediate-effectiveness-of-a"
-    },
-    {
-      "documentNumber": "2026-10642",
-      "title": "Approval of Source-Specific Air Quality Implementation Plan; New York; Big Six Towers Inc.",
-      "type": "Proposed Rule",
-      "publicationDate": "2026-05-28",
-      "agencies": [
-        "Environmental Protection Agency"
-      ],
-      "abstract": "The Environmental Protection Agency (EPA) is proposing to determine a revision to the State of New York's State Implementation Plan (SIP) for the ozone National Ambient Air Quality Standard (NAAQS) related to a source-specific SIP (SSSIP) revision, for Big Six Towers Inc. (the Big Six), located at 59-55 47th Ave. Woodside, NY 11377 (the Facility), is approvable. The EPA is proposing to find that the control options in this SSSIP revision implement Reasonably Available Control Technology (RACT) with respect to oxides of nitrogen (NO<INF>X</INF>) emissions from the relevant Facility sources, which are identified as three oil-fired engines. This SSSIP revision is intended to implement NO<INF>X</INF> RACT for the relevant Facility sources in accordance with the requirements for implementation of the 2008 and 2015 ozone NAAQS. The EPA proposes to determine that this rulemaking will not interfere with ozone NAAQS requirements and meets all applicable requirements of the Clean Air Act (CAA).",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-28"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/28/2026-10642/approval-of-source-specific-air-quality-implementation-plan-new-york-big-six-towers-inc"
-    },
-    {
-      "documentNumber": "2026-10584",
-      "title": "Qualification of Drivers; Exemption Applications; Epilepsy and Seizure Disorders",
-      "type": "Notice",
-      "publicationDate": "2026-05-28",
-      "agencies": [
-        "Transportation Department",
-        "Federal Motor Carrier Safety Administration"
-      ],
-      "abstract": "FMCSA announces receipt of applications from 11 individuals for an exemption from the prohibition in the Federal Motor Carrier Safety Regulations (FMCSRs) against persons with a clinical diagnosis of epilepsy or any other condition that is likely to cause a loss of consciousness or any loss of ability to control a commercial motor vehicle (CMV) to drive in interstate commerce. If granted, the exemptions would enable these individuals who have had one or more seizures and are taking anti-seizure medication to operate CMVs in interstate commerce.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-28"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/28/2026-10584/qualification-of-drivers-exemption-applications-epilepsy-and-seizure-disorders"
-    },
-    {
-      "documentNumber": "2026-10583",
-      "title": "Qualification of Drivers; Exemption Applications; Epilepsy and Seizure Disorders",
-      "type": "Notice",
-      "publicationDate": "2026-05-28",
-      "agencies": [
-        "Transportation Department",
-        "Federal Motor Carrier Safety Administration"
-      ],
-      "abstract": "FMCSA announces receipt of applications from 12 individuals for an exemption from the prohibition in the Federal Motor Carrier Safety Regulations (FMCSRs) against persons with a clinical diagnosis of epilepsy or any other condition that is likely to cause a loss of consciousness or any loss of ability to control a commercial motor vehicle (CMV) to drive in interstate commerce. If granted, the exemptions would enable these individuals who have had one or more seizures and are taking anti-seizure medication to operate CMVs in interstate commerce.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-28"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/28/2026-10583/qualification-of-drivers-exemption-applications-epilepsy-and-seizure-disorders"
-    },
-    {
-      "documentNumber": "2026-10387",
-      "title": "Phasedown of Hydrofluorocarbons: Reconsideration of Certain Regulatory Requirements Promulgated Under the Technology Transitions Provisions of the American Innovation and Manufacturing Act of 2020",
-      "type": "Rule",
-      "publicationDate": "2026-05-26",
-      "agencies": [
-        "Environmental Protection Agency"
-      ],
-      "abstract": "The U.S. Environmental Protection Agency (EPA) is finalizing changes to regulations promulgated under the Technology Transitions provision of the American Innovation and Manufacturing Act of 2020 (AIM Act), which authorizes the Administrator to restrict fully, partially, or on a graduated schedule, the use of a \"regulated substance\" in the sector or subsector in which they are used. This final rule addresses administrative petitions and input received from regulated industry and other interested parties relevant to requirements and restrictions across various refrigeration and air conditioning subsectors, including: refrigerated transport--intermodal containers; industrial process refrigeration and chillers for industrial process refrigeration used in semiconductor manufacturing; retail food supermarket systems; retail food remote condensing unit systems; cold storage warehouses; refrigerated laboratory centrifuges and laboratory shakers; and condensing units in residential and light commercial air conditioning and heat pumps. This final rule also allows the inventory of residential and light commercial air conditioning and heat pump equipment that was manufactured in the United States or imported into the United States before January 1, 2025, to continue to be installed.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-26"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/26/2026-10387/phasedown-of-hydrofluorocarbons-reconsideration-of-certain-regulatory-requirements-promulgated-under"
-    },
-    {
-      "documentNumber": "2026-10380",
-      "title": "Schedules of Controlled Substances: Placement of Diphenidine in Schedule I",
-      "type": "Proposed Rule",
-      "publicationDate": "2026-05-26",
-      "agencies": [
-        "Justice Department",
-        "Drug Enforcement Administration"
-      ],
-      "abstract": "The Drug Enforcement Administration proposes placing diphenidine (1-(1,2-diphenylethyl)piperidine), including its salts, isomers, and salts of isomers whenever the existence of such salts, isomers, and salts of isomers is possible, in schedule I of the Controlled Substances Act. This action is being taken, in part, to enable the United States to meet its obligations under the 1971 Convention on Psychotropic Substances. If finalized, this action would impose the regulatory controls and administrative, civil, and criminal sanctions applicable to schedule I controlled substances on persons who handle (manufacture, distribute, reverse distribute, import, export, engage in research, conduct instructional activities or chemical analysis with, or possess) or propose to handle diphenidine.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-26"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/26/2026-10380/schedules-of-controlled-substances-placement-of-diphenidine-in-schedule-i"
-    },
-    {
-      "documentNumber": "2026-10253",
-      "title": "Schedules of Controlled Substances: Temporary Placement of 2-Fluorodeschloroketamine in Schedule I",
-      "type": "Rule",
-      "publicationDate": "2026-05-22",
-      "agencies": [
-        "Justice Department",
-        "Drug Enforcement Administration"
-      ],
-      "abstract": "The Drug Enforcement Administration (DEA) issues this temporary order to schedule 2-(2-fluorophenyl)-2- (methylamino)cyclohexan-1-one (commonly known as 2- fluorodeschloroketamine or 2-FDCK), including its salts, isomers, and salts of isomers whenever the existence of such salts, isomers, and salts of isomers is possible within the specific chemical designation, in schedule I of the Controlled Substances Act. DEA bases this action on a finding that placing 2-fluorodeschloroketamine in schedule I is necessary to avoid an imminent hazard to public safety. This order imposes the regulatory controls and administrative, civil, and criminal sanctions applicable to schedule I controlled substances on persons who handle (manufacture, distribute, reverse distribute, import, export, engage in research, conduct instructional activities or chemical analysis, or possess), or propose to handle this substance.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-22"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/22/2026-10253/schedules-of-controlled-substances-temporary-placement-of-2-fluorodeschloroketamine-in-schedule-i"
-    },
-    {
-      "documentNumber": "2026-10214",
-      "title": "Formations of, Acquisitions by, and Mergers of Bank Holding Companies",
-      "type": "Notice",
-      "publicationDate": "2026-05-21",
-      "agencies": [
-        "Federal Reserve System"
-      ],
-      "abstract": null,
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-21"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/21/2026-10214/formations-of-acquisitions-by-and-mergers-of-bank-holding-companies"
-    },
-    {
-      "documentNumber": "2026-10207",
-      "title": "Air Plan Approval; FL; Emissions Reporting Requirements and Permitting Forms",
-      "type": "Proposed Rule",
-      "publicationDate": "2026-05-21",
-      "agencies": [
-        "Environmental Protection Agency"
-      ],
-      "abstract": "The Environmental Protection Agency (EPA) is proposing to approve a State Implementation Plan (SIP) revision submitted by the Florida Department of Environmental Protection (FDEP) on August 15, 2023. The proposed revision makes minor updates to reporting requirements; adds, updates, and renames forms for several permit applications; renumbers and updates the effective dates of various forms to align with programmatic changes; and improves the process for submitting forms across several rules within the Florida SIP. Additionally, the revision removes a rule concerning administrative permit corrections from the SIP. EPA is proposing to approve these changes pursuant to the Clean Air Act (CAA or Act).",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-21"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/21/2026-10207/air-plan-approval-fl-emissions-reporting-requirements-and-permitting-forms"
-    },
-    {
-      "documentNumber": "2026-10166",
-      "title": "Marine Mammals and Endangered Species",
-      "type": "Notice",
-      "publicationDate": "2026-05-21",
-      "agencies": [
-        "Commerce Department",
-        "National Oceanic and Atmospheric Administration"
-      ],
-      "abstract": "Notice is hereby given that permits have been issued under the Marine Mammal Protection Act (MMPA) and the Endangered Species Act (ESA), as applicable.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-21"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/21/2026-10166/marine-mammals-and-endangered-species"
-    },
-    {
-      "documentNumber": "2026-10096",
-      "title": "Atlantic Highly Migratory Species; Prohibit Retention of Mobulid Rays in Fisheries for Atlantic Highly Migratory Species",
-      "type": "Rule",
-      "publicationDate": "2026-05-20",
-      "agencies": [
-        "Commerce Department",
-        "National Oceanic and Atmospheric Administration"
-      ],
-      "abstract": "In this final rule, NMFS is changing regulations to implement the binding International Commission for the Conservation of Atlantic Tunas (ICCAT) Recommendation 24-12 on mobulid rays of the family Mobulidae. Specifically, this action prohibits retention of mobulid rays in fisheries for Atlantic highly migratory species (HMS), requires mobulid rays to be released unharmed in HMS fisheries, and implements mobulid ray handling practices for vessels fishing with pelagic longline gear.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-20"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/20/2026-10096/atlantic-highly-migratory-species-prohibit-retention-of-mobulid-rays-in-fisheries-for-atlantic"
-    },
-    {
-      "documentNumber": "2026-10050",
-      "title": "Patient Protection and Affordable Care Act, HHS Notice of Benefit and Payment Parameters for 2027; and Basic Health Program",
-      "type": "Rule",
-      "publicationDate": "2026-05-20",
-      "agencies": [
-        "Health and Human Services Department",
-        "Centers for Medicare & Medicaid Services",
-        "Office of the Secretary"
-      ],
-      "abstract": "This final rule contains provisions to improve implementation of the Patient Protection and Affordable Care Act, including payment parameters and provisions related to the HHS-operated risk adjustment and risk adjustment data validation (HHS-RADV) programs, as well as 2027 user fee rates for issuers offering qualified health plans (QHPs) through Federally-facilitated Exchanges (FFEs) and State-based Exchanges on the Federal platform (SBE-FPs). This final rule also includes provisions related to civil money penalties (CMPs) for noncompliant issuers and other responsible entities; standards governing agents, brokers, and web-brokers; the expansion and codification of hardship exemption eligibility; implementation of the State Exchange Improper Payment Measurement (SEIPM); provider access standards and essential community provider standards for QHP certification; QHP certification of non-network plans; a prohibition on issuers from including routine non-pediatric dental services as an Essential Health Benefit (EHB); requirements related to defrayal for the cost of any State-required benefits in addition to the EHB; cost- sharing flexibilities for catastrophic and individual market bronze plans; establishment of catastrophic plans with plan terms of up to 10 consecutive plan years; QHP issuer quality improvement strategies (QISs); and revisions affecting which enrollees are included in Federal Basic Health Program (BHP) payment calculations to States. This final rule also includes amendments to implement certain provisions of the Working Families Tax Cut (WFTC) legislation.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-20"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/20/2026-10050/patient-protection-and-affordable-care-act-hhs-notice-of-benefit-and-payment-parameters-for-2027-and"
-    },
-    {
-      "documentNumber": "2026-10037",
-      "title": "Preemption Determination: State Interest-on-Escrow Laws",
-      "type": "Rule",
-      "publicationDate": "2026-05-19",
-      "agencies": [
-        "Treasury Department",
-        "Comptroller of the Currency"
-      ],
-      "abstract": "The OCC is issuing a preemption determination concluding that Federal law preempts State laws that restrict OCC-regulated banks' flexibility to decide whether and to what extent to pay interest or other compensation on funds placed in real estate escrow accounts; or assess fees in connection with such accounts. This preemption determination will provide much-needed clarity to banks and other stakeholders.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-19"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/19/2026-10037/preemption-determination-state-interest-on-escrow-laws"
-    },
-    {
-      "documentNumber": "2026-09994",
-      "title": "Combined Notice of Filings #1",
-      "type": "Notice",
-      "publicationDate": "2026-05-19",
-      "agencies": [
-        "Energy Department",
-        "Federal Energy Regulatory Commission"
-      ],
-      "abstract": null,
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-19"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/19/2026-09994/combined-notice-of-filings-1"
-    },
-    {
-      "documentNumber": "2026-09969",
-      "title": "Notice of Intent To Prepare a Supplemental Programmatic Environmental Impact Statement for the Coral Reef Conservation Program and To Solicit Public Input",
-      "type": "Notice",
-      "publicationDate": "2026-05-19",
-      "agencies": [
-        "Commerce Department",
-        "National Oceanic and Atmospheric Administration"
-      ],
-      "abstract": "NOAA announces its intent to prepare a supplemental Programmatic Environmental Impact Statement (PEIS) in accordance with the National Environmental Policy Act (NEPA) for its Coral Reef Conservation Program (CRCP). The CRCP conducts and funds activities throughout parts of the United States, including Florida, Hawai'i, Puerto Rico, the U.S. Virgin Islands, Guam, the Commonwealth of the Northern Mariana Islands, and American Samoa. The CRCP funds monitoring activities and occasional research within the Gulf of America and the U.S. Pacific Remote Island Area, and provides technical support and capacity-building in targeted international regions, including the wider Caribbean, Micronesia, and the Coral Triangle. The supplemental PEIS will address the environmental impacts of new coral reef conservation and restoration activities and expanded methods to be conducted by the CRCP.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-19"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/19/2026-09969/notice-of-intent-to-prepare-a-supplemental-programmatic-environmental-impact-statement-for-the-coral"
-    },
-    {
-      "documentNumber": "2026-09955",
-      "title": "Public Combined Board and Board Committees Meeting",
-      "type": "Notice",
-      "publicationDate": "2026-05-19",
-      "agencies": [
-        "Commerce Department",
-        "National Telecommunications and Information Administration",
-        "First Responder Network Authority"
-      ],
-      "abstract": "The FirstNet Authority Board will convene an open public meeting of the Board and Board Committees.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-19"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/19/2026-09955/public-combined-board-and-board-committees-meeting"
-    },
-    {
-      "documentNumber": "2026-09850",
-      "title": "Changes in Flood Hazard Determinations",
-      "type": "Notice",
-      "publicationDate": "2026-05-18",
-      "agencies": [
-        "Homeland Security Department",
-        "Federal Emergency Management Agency"
-      ],
-      "abstract": "This notice lists communities where the addition or modification of Base Flood Elevations (BFEs), base flood depths, Special Flood Hazard Area (SFHA) boundaries or zone designations, or the regulatory floodway (hereinafter referred to as flood hazard determinations), as shown on the Flood Insurance Rate Maps (FIRMs), and where applicable, in the supporting Flood Insurance Study (FIS) reports, prepared by the Federal Emergency Management Agency (FEMA) for each community, is appropriate because of new scientific or technical data. The FIRM, and where applicable, portions of the FIS report, have been revised to reflect these flood hazard determinations through issuance of a Letter of Map Revision (LOMR), in accordance with Federal Regulations. The current effective community number is shown in the table below and must be used for all new policies and renewals.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-18"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/18/2026-09850/changes-in-flood-hazard-determinations"
-    },
-    {
-      "documentNumber": "2026-09805",
-      "title": "Agency Information Collection Activities; Submission to the Office of Management and Budget; Federal Fish and Wildlife Permit Applications and Reports-Management Authority",
-      "type": "Notice",
-      "publicationDate": "2026-05-15",
-      "agencies": [
-        "Interior Department",
-        "Fish and Wildlife Service"
-      ],
-      "abstract": "In accordance with the Paperwork Reduction Act of 1995, we, the U.S. Fish and Wildlife Service (Service), are proposing to renew a currently approved information collection without change.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-15"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09805/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-federal"
-    },
-    {
-      "documentNumber": "2026-09784",
-      "title": "Proposed Rate Adjustment, Jim Woodruff Project",
-      "type": "Notice",
-      "publicationDate": "2026-05-15",
-      "agencies": [
-        "Energy Department",
-        "Southeastern Power Administration"
-      ],
-      "abstract": "Southeastern Power Administration (Southeastern or SEPA) proposes to revise existing schedules of rates and charges applicable to the sale of power from the Jim Woodruff Project, effective October 1, 2026, through September 30, 2031. Opportunities will be available for interested persons to review the present rates, supporting studies, to participate in a public forum and to submit written comments. Southeastern will evaluate all comments received in this process.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-15"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09784/proposed-rate-adjustment-jim-woodruff-project"
-    },
-    {
-      "documentNumber": "2026-09766",
-      "title": "Notice of Final Federal Agency Actions on Proposed Transportation Project in State Florida",
-      "type": "Notice",
-      "publicationDate": "2026-05-15",
-      "agencies": [
-        "Transportation Department",
-        "Federal Highway Administration"
-      ],
-      "abstract": "The FHWA, on behalf of the State Department of Transportation (FDOT), is issuing this notice to announce actions taken by FDOT and other Federal agencies that are final agency actions. These actions relate to the proposed Clearlake Road (State Road (S.R.) 501) Project Development and Environment (PD&E) Study from Michigan Avenue to Industry Road (Financial Project Identification 433605-1). The proposed improvements consist of widening the existing two-lane roadway to a four-lane divided urban roadway; replacing the existing 90-degree roadway curve with a roundabout; and constructing shared-use paths on both sides of S.R. 501.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-15"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09766/notice-of-final-federal-agency-actions-on-proposed-transportation-project-in-state-florida"
-    },
-    {
-      "documentNumber": "2026-09751",
-      "title": "Agency Information Collection Activities; Submission to the Office of Management and Budget; Horseshoe Crab and Cooperative Fish Tagging Programs",
-      "type": "Notice",
-      "publicationDate": "2026-05-15",
-      "agencies": [
-        "Interior Department",
-        "Fish and Wildlife Service"
-      ],
-      "abstract": "In accordance with the Paperwork Reduction Act of 1995 (PRA), we, the U.S. Fish and Wildlife Service (Service), are proposing to renew a currently approved information collection without change.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-15"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09751/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-horseshoe"
-    },
-    {
-      "documentNumber": "2026-09719",
-      "title": "HEARTH Act Approval of Buena Vista Rancheria of Me-Wuk Indians of California, Leasing Ordinance",
-      "type": "Notice",
-      "publicationDate": "2026-05-15",
-      "agencies": [
-        "Interior Department",
-        "Indian Affairs Bureau"
-      ],
-      "abstract": "The Assistant Secretary--Indian Affairs approved the Buena Vista Rancheria of Me-Wuk Indians of California Leasing Ordinance under the Helping Expedite and Advance Responsible Tribal Homeownership Act of 2012 (HEARTH Act). With this approval, the Tribe is authorized to enter into leases without further Secretary of the Interior approval.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-15"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09719/hearth-act-approval-of-buena-vista-rancheria-of-me-wuk-indians-of-california-leasing-ordinance"
-    },
-    {
-      "documentNumber": "2026-09718",
-      "title": "Medicare, Medicaid, and Children's Health Insurance Programs: Announcement of Nationwide Temporary Moratorium on Enrollment of Hospices",
-      "type": "Notice",
-      "publicationDate": "2026-05-15",
-      "agencies": [
-        "Health and Human Services Department",
-        "Centers for Medicare & Medicaid Services"
-      ],
-      "abstract": "This notice announces the imposition of a 6-month nationwide moratorium on the Medicare enrollment of hospices.",
-      "source": {
-        "name": "Federal Register",
-        "url": "https://www.federalregister.gov",
-        "tier": "official",
-        "description": "Official daily journal of the U.S. government via federalregister.gov API",
-        "date": "2026-05-15"
-      },
-      "asOf": "2026-07-02",
-      "documentUrl": "https://www.federalregister.gov/documents/2026/05/15/2026-09718/medicare-medicaid-and-childrens-health-insurance-programs-announcement-of-nationwide-temporary"
     }
   ]
 }

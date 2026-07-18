@@ -6,7 +6,7 @@
       "tier": "official",
       "description": "American Community Survey 5-year estimates via api.census.gov"
     },
-    "asOf": "2026-07-02",
+    "asOf": "2026-07-18",
     "totalCount": 10,
     "note": "Florida Census ACS demographics, BLS labor/CPI/growth, US CPS education reference, national benchmarks.",
     "honestGaps": [
@@ -30,7 +30,7 @@
         "tier": "official",
         "description": "American Community Survey 5-year estimates via api.census.gov"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-18"
     },
     {
       "label": "Median household income",
@@ -44,7 +44,7 @@
         "tier": "official",
         "description": "American Community Survey 5-year estimates via api.census.gov"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-18"
     },
     {
       "label": "Median home value",
@@ -58,7 +58,7 @@
         "tier": "official",
         "description": "American Community Survey 5-year estimates via api.census.gov"
       },
-      "asOf": "2026-07-02"
+      "asOf": "2026-07-18"
     },
     {
       "label": "Unemployment rate",
@@ -73,7 +73,7 @@
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
         "date": "2026-05-01"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "history": [
         {
           "period": "May 2026",
@@ -136,7 +136,7 @@
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
         "date": "2026-05-01"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "history": [
         {
           "period": "May 2026",
@@ -197,7 +197,7 @@
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
         "date": "2026-05-01"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "history": [
         {
           "period": "May 2026",
@@ -258,7 +258,7 @@
         "description": "Local Area Unemployment Statistics (LAUS) for Florida via api.bls.gov",
         "date": "2026-05-01"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "history": [
         {
           "period": "May 2026",

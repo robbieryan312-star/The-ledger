@@ -6,8 +6,8 @@
       "tier": "nonpartisan",
       "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
     },
-    "asOf": "2026-07-02",
-    "fetchedAt": "2026-07-02T16:20:39.917Z",
+    "asOf": "2026-07-18",
+    "fetchedAt": "2026-07-18T10:44:13.081Z",
     "totalCount": 32,
     "datasetUrl": "https://voteview.com/static/data/out/members/H119_members.csv",
     "note": "DW-NOMINATE ideology scores for Florida U.S. House & Senate members, 119th Congress. nominateEconomic is the 1st dimension (economic/redistribution axis), nominateSocial the 2nd; values roughly -1 to +1. A sourced nonpartisan political-science metric, not an editorial label. Tier 2."
@@ -20,7 +20,7 @@
       "party": "Republican",
       "district": "26",
       "nominateEconomic": 0.282,
-      "nominateSocial": 0.163,
+      "nominateSocial": 0.164,
       "congress": 119,
       "source": {
         "name": "Voteview (UCLA)",
@@ -28,7 +28,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/20316"
     },
     "W000797": {
@@ -46,7 +46,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/20504"
     },
     "C001066": {
@@ -64,7 +64,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/20708"
     },
     "B001260": {
@@ -73,8 +73,8 @@
       "chamber": "House",
       "party": "Republican",
       "district": "16",
-      "nominateEconomic": 0.362,
-      "nominateSocial": -0.077,
+      "nominateEconomic": 0.361,
+      "nominateSocial": -0.076,
       "congress": 119,
       "source": {
         "name": "Voteview (UCLA)",
@@ -82,7 +82,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/20709"
     },
     "B001257": {
@@ -100,7 +100,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/20758"
     },
     "W000806": {
@@ -118,7 +118,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/21116"
     },
     "W000808": {
@@ -128,7 +128,7 @@
       "party": "Democrat",
       "district": "24",
       "nominateEconomic": -0.476,
-      "nominateSocial": -0.003,
+      "nominateSocial": -0.001,
       "congress": 119,
       "source": {
         "name": "Voteview (UCLA)",
@@ -136,7 +136,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/21118"
     },
     "F000462": {
@@ -154,7 +154,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/21321"
     },
     "D000628": {
@@ -163,8 +163,8 @@
       "chamber": "House",
       "party": "Republican",
       "district": "2",
-      "nominateEconomic": 0.508,
-      "nominateSocial": 0.337,
+      "nominateEconomic": 0.507,
+      "nominateSocial": 0.34,
       "congress": 119,
       "source": {
         "name": "Voteview (UCLA)",
@@ -172,7 +172,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/21714"
     },
     "M001199": {
@@ -181,7 +181,7 @@
       "chamber": "House",
       "party": "Republican",
       "district": "21",
-      "nominateEconomic": 0.461,
+      "nominateEconomic": 0.462,
       "nominateSocial": -0.325,
       "congress": 119,
       "source": {
@@ -190,7 +190,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/21735"
     },
     "R000609": {
@@ -208,7 +208,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/21744"
     },
     "S001200": {
@@ -218,7 +218,7 @@
       "party": "Democrat",
       "district": "9",
       "nominateEconomic": -0.339,
-      "nominateSocial": 0.226,
+      "nominateSocial": 0.227,
       "congress": 119,
       "source": {
         "name": "Voteview (UCLA)",
@@ -226,7 +226,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/21746"
     },
     "S001214": {
@@ -235,8 +235,8 @@
       "chamber": "House",
       "party": "Republican",
       "district": "17",
-      "nominateEconomic": 0.688,
-      "nominateSocial": -0.359,
+      "nominateEconomic": 0.689,
+      "nominateSocial": -0.358,
       "congress": 119,
       "source": {
         "name": "Voteview (UCLA)",
@@ -244,7 +244,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/21971"
     },
     "W000823": {
@@ -262,7 +262,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/21981"
     },
     "C001039": {
@@ -272,7 +272,7 @@
       "party": "Republican",
       "district": "3",
       "nominateEconomic": 0.59,
-      "nominateSocial": -0.256,
+      "nominateSocial": -0.255,
       "congress": 119,
       "source": {
         "name": "Voteview (UCLA)",
@@ -280,7 +280,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/22107"
     },
     "D000032": {
@@ -298,7 +298,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/22111"
     },
     "F000472": {
@@ -316,7 +316,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/22116"
     },
     "G000593": {
@@ -326,7 +326,7 @@
       "party": "Republican",
       "district": "28",
       "nominateEconomic": 0.328,
-      "nominateSocial": 0.151,
+      "nominateSocial": 0.153,
       "congress": 119,
       "source": {
         "name": "Voteview (UCLA)",
@@ -334,7 +334,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/22118"
     },
     "S000168": {
@@ -344,7 +344,7 @@
       "party": "Republican",
       "district": "27",
       "nominateEconomic": 0.273,
-      "nominateSocial": 0.157,
+      "nominateSocial": 0.158,
       "congress": 119,
       "source": {
         "name": "Voteview (UCLA)",
@@ -352,7 +352,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/22150"
     },
     "C001127": {
@@ -370,7 +370,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/22163"
     },
     "B001314": {
@@ -388,7 +388,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/22302"
     },
     "F000476": {
@@ -398,7 +398,7 @@
       "party": "Democrat",
       "district": "10",
       "nominateEconomic": -0.44,
-      "nominateSocial": -0.705,
+      "nominateSocial": -0.706,
       "congress": 119,
       "source": {
         "name": "Voteview (UCLA)",
@@ -406,7 +406,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/22321"
     },
     "L000597": {
@@ -416,7 +416,7 @@
       "party": "Republican",
       "district": "15",
       "nominateEconomic": 0.419,
-      "nominateSocial": 0.16,
+      "nominateSocial": 0.159,
       "congress": 119,
       "source": {
         "name": "Voteview (UCLA)",
@@ -424,7 +424,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/22341"
     },
     "L000596": {
@@ -433,8 +433,8 @@
       "chamber": "House",
       "party": "Republican",
       "district": "13",
-      "nominateEconomic": 0.566,
-      "nominateSocial": -0.495,
+      "nominateEconomic": 0.563,
+      "nominateSocial": -0.497,
       "congress": 119,
       "source": {
         "name": "Voteview (UCLA)",
@@ -442,7 +442,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/22343"
     },
     "M001216": {
@@ -452,7 +452,7 @@
       "party": "Republican",
       "district": "7",
       "nominateEconomic": 0.602,
-      "nominateSocial": -0.318,
+      "nominateSocial": -0.317,
       "congress": 119,
       "source": {
         "name": "Voteview (UCLA)",
@@ -460,7 +460,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/22350"
     },
     "M001217": {
@@ -470,7 +470,7 @@
       "party": "Democrat",
       "district": "23",
       "nominateEconomic": -0.227,
-      "nominateSocial": 0.301,
+      "nominateSocial": 0.302,
       "congress": 119,
       "source": {
         "name": "Voteview (UCLA)",
@@ -478,7 +478,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/22353"
     },
     "H001099": {
@@ -487,8 +487,8 @@
       "chamber": "House",
       "party": "Republican",
       "district": "8",
-      "nominateEconomic": 0.438,
-      "nominateSocial": 0.072,
+      "nominateEconomic": 0.448,
+      "nominateSocial": 0.05,
       "congress": 119,
       "source": {
         "name": "Voteview (UCLA)",
@@ -496,7 +496,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/22523"
     },
     "F000484": {
@@ -505,8 +505,8 @@
       "chamber": "House",
       "party": "Republican",
       "district": "6",
-      "nominateEconomic": 0.6,
-      "nominateSocial": -0.34,
+      "nominateEconomic": 0.582,
+      "nominateSocial": -0.361,
       "congress": 119,
       "source": {
         "name": "Voteview (UCLA)",
@@ -514,7 +514,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/22562"
     },
     "P000622": {
@@ -523,8 +523,8 @@
       "chamber": "House",
       "party": "Republican",
       "district": "1",
-      "nominateEconomic": 0.55,
-      "nominateSocial": -0.071,
+      "nominateEconomic": 0.555,
+      "nominateSocial": -0.076,
       "congress": 119,
       "source": {
         "name": "Voteview (UCLA)",
@@ -532,7 +532,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/22563"
     },
     "R000595": {
@@ -550,7 +550,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/41102"
     },
     "S001217": {
@@ -568,7 +568,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/41903"
     },
     "M001244": {
@@ -586,7 +586,7 @@
         "tier": "nonpartisan",
         "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-18",
       "voteviewUrl": "https://voteview.com/person/42506"
     }
   }
