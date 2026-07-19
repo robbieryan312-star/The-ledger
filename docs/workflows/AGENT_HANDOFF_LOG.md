@@ -7,8 +7,14 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-19T04:55Z):**
-- Branch: `cursor/fl-by-numbers-ux-70a6` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · product tip `ebdb21e` · HEAD `dfb5a95` (audit docs) · **no merge / no deploy** (await Claude)
+**OWNER VISUAL SIGN-OFF RECEIVED** on live `/states/FL` (the-ledger-s4dn) 2026-07-19 — FL flagship
+**LOCKED/FROZEN** including the new plain-language labels (owner: "looks honestly fantastic… everything
+else looks perfect"). **Phase P UNLOCKED**, sequenced AFTER Wave 0 merge + Wave 1 data-loss prevention.
+Visual changes to the FL page now require new owner direction.
+
+**Current state (2026-07-19T06:05Z):**
+- Branch: `cursor/fl-by-numbers-ux-70a6` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · Wave 0 chip fixes + keyed re-ingest committed (`fea6a43`, `5beb765`) · **merging on CI green per Claude conditional approval**
+- Census key stored in gitignored `.env.local` only (length 40, suffix 685c); GitHub Actions secret still an owner step (`scripts/setup-github-secrets.sh`)
 - **Deep read-only platform audit** (4 parallel passes + real gates) rewritten accurately in `docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` — **no product fixes until Claude briefs**
 - Gates this session: `tsc --noEmit` clean; `eslint` 76 problems (23 err/53 warn, not build-gating); `npm run prebuild` **GREEN** after fixing a self-introduced `docsIntegrityGuard` break in the audit doc
 - **P0 (owner):** Cursor Cloud injected rules still reference deleted `agent-ops.mdc` + `AUDIT_DEBT_BRIEF.md` — re-sync dashboard project rules with on-disk core-rules §7
@@ -30,6 +36,39 @@ core-rules, core-rules wins. Newest handoff on top.
 
 
 
+
+## Latest session — Wave 0 (chip fixes + keyed re-ingest + slice) (IN PROGRESS → merge on CI green)
+
+### Objective
+Claude repair brief Wave 0: fix same-card rank mismatch (0a), COL direction copy (0b), keyed
+Census re-ingest + slice rebuild (0c / DATA-01), then merge PR #39 on CI green (0d). Plus S1
+(log owner sign-off) and S3 groundwork.
+
+### Done this session
+- **S1:** Logged owner visual sign-off; FL flagship FROZEN; Phase P UNLOCKED (sequenced after Wave 0 + Wave 1).
+- **0a:** Joblessness chip → `senseNote="1 = least joblessness"` + explicit `basis="ranks ACS 5-yr rate 4.8%"` (distinct from BLS LAUS headline). No same-card metric mismatch.
+- **0b:** COL chip → `#41 of 50 · 1 = lowest cost` (removed "Lower cost → #1").
+- **0c:** `CENSUS_API_KEY` in gitignored `.env.local`; re-ran `ingest:fl-counties` (67, coverage=full) + `ingest:fl-state-rankings` (all ranks + 5-row age breakdown, via api.census.gov); `build:data-slices` → ACS indicators now share 2026-07-19 vintage with counties. BLS LAUS unemployment keeps 2026-07-02 (separate source; chip labels ACS basis).
+
+### Gates (this session)
+| Gate | Result |
+|---|---|
+| `tsc --noEmit` | exit 0 |
+| `npm run prebuild` | exit 0 (19 guards green) |
+| `RENDER_INTEGRITY_SKIP_POSTBUILD=1 npm run build` | exit 0 |
+
+### Commits
+- `fea6a43` — fix(fl): rank chips declare basis/direction (Wave 0a/0b)
+- `5beb765` — data(fl): keyed Census re-ingest + slice rebuild (Wave 0c / DATA-01)
+
+### Independent verification
+- Ranks: income #34 (71711), home #21 (325000), pop #3, bach+ #26 (33.2), unemp #21 (4.8); age % sum 100.0
+- Counties: coverage=full, count=67, asOf 2026-07-19; slice population/income asOf 2026-07-19
+
+### Open / next (this turn)
+- Push branch → watch GitHub `guards` CI → merge PR #39 on GREEN (0d) → confirm s4dn deploy + curl `section-01`
+- S3: create `beta` branch + document main/beta flow in `docs/SETUP.md`
+- Then STOP for Claude review before S2 (profile-drawer UX) / Wave 1
 
 ## Latest session — DEEP platform audit (4 passes + real gates) (COMPLETE — findings only)
 
