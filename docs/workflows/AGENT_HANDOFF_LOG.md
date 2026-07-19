@@ -8,7 +8,7 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-19T04:20Z):**
-- Branch: `cursor/fl-by-numbers-ux-70a6` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · tip `abe3675` · **no merge / no deploy** (await Claude)
+- Branch: `cursor/fl-by-numbers-ux-70a6` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · tip `21ba472` · **no merge / no deploy** (await Claude)
 - Read-only platform audit filed: `docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` — **no product fixes until Claude briefs**
 - Census KeySignup re-submitted → `create_success.html` (owner activate email → `CENSUS_API_KEY`)
 - Vercel rename: **no `VERCEL_TOKEN`** — owner dashboard singular rename (see audit §Owner actions)
@@ -39,11 +39,12 @@ Owner: prefer agent/GitHub Vercel rename if possible; retry Census key signup; S
 
 ### Commits
 - `abe3675` — docs: platform read-only audit 2026-07-19 for Claude review
+- `21ba472` — docs: sync handoff tip; was 7e0a96a set handoff Current state tip hash
 
 ### Commands run (this session)
 - Census `KeySignup` POST (org=The Ledger, email=robbie.ryan312@gmail.com) → 302 create_success.html
 - Multi-agent explore: rules contradictions; FL stack; federal+guards
-- `git rev-parse HEAD` → `abe3675` after docs commit; product tip still `ebdb21e`
+- `git rev-parse HEAD` → `7e0a96a`; product tip still `ebdb21e`
 
 ### Files touched
 | Path | Action | What changed |
