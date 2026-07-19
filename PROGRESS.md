@@ -1,6 +1,7 @@
 # The Ledger — Roadmap & Progression Expectations
 
-**Last updated:** 2026-07-08 · **Branch:** `main` · **Live demo:** https://the-ledger-gamma.vercel.app
+**Last updated:** 2026-07-19 · **Branch:** `main` @ `6500b2d` · **Live demo (approved FL page):** https://the-ledger-s4dn.vercel.app/states/FL  
+**Note:** `https://the-ledger-gamma.vercel.app` is stale (Vercel Hobby rate-limit on project `the-ledger`). Owner must consolidate the three Vercel projects to one — see `docs/workflows/AGENT_HANDOFF_LOG.md`.
 **This file replaces the old progress log as the canonical forward guide.** It binds BOTH
 agents (Claude Code + Cursor). Rules live in `.cursor/rules/ledger-core-rules.mdc` — this file
 never restates them, it sequences the work.
