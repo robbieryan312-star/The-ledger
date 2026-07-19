@@ -8,7 +8,7 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-19T03:35Z):**
-- Branch: `cursor/fl-by-numbers-ux-70a6` (By-the-numbers UX + keyless ranks/COL)
+- Branch: `cursor/fl-by-numbers-ux-70a6` @ `d3bacd4` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · guards GREEN
 - **Approved production (canonical):** https://the-ledger-s4dn.vercel.app — formerly project `the-ledger-s4dn` (owner: rename/alias to "Approved" in Vercel dashboard)
 - **Beta:** reserve at most one other project if needed; pause/delete the rest (`the-ledger`, `the-ledger-jcjh`)
 - Stale: `the-ledger-gamma.vercel.app` (rate-limited Hobby quota — owner consolidate)
@@ -30,7 +30,7 @@ core-rules, core-rules wins. Newest handoff on top.
 Owner visual refinements: clearer titles, 1-decimal stats, ranks of 50, age drop-down, top/lowest 5 counties, better COL sources, condense §01; name Approved (ex-s4dn) vs single Beta.
 
 ### Verdict / outcome
-**PASS (local)** — ranks + age live via data.census.gov; BEA RPP live via FRED fallback (103.4, rank 41/50); UI labels/decimals/ranks/condense shipped; render-integrity 4/4. **STOP for owner visual** on Approved URL after deploy (Vercel Hobby still rate-limited — owner dashboard). Phase P gated.
+**PASS (local + CI)** — PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) @ `d3bacd4`; guards GREEN run `29671998668`. Ranks/age live; BEA RPP via FRED (103.4, #41/50); UI shipped. **STOP for Claude review + owner visual** on Approved URL after deploy (all 3 Vercel projects still Hobby rate-limited). Phase P gated.
 
 ### Data
 | Artifact | Provenance | Notes |
@@ -55,7 +55,8 @@ Owner visual refinements: clearer titles, 1-decimal stats, ranks of 50, age drop
 3. Visual sign-off on deployed mobile `/states/FL` unlocks Phase P.
 
 ### Open / next
-- Push PR → guards GREEN → Claude review → deploy when Vercel quota allows
+- PR #39 open; guards GREEN — await Claude APPROVAL before merge
+- Deploy blocked until Vercel rate-limit clears / owner consolidates to Approved
 - Do **not** start Phase P until owner sign-off logged
 
 ## Latest session — Deploy pipeline: merge #36/#37 + live production (COMPLETE)
