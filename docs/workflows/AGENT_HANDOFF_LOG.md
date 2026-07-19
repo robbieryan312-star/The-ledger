@@ -91,16 +91,60 @@ criteria on PR #45's comment thread.
 else looks perfect"). **Phase P UNLOCKED**, sequenced AFTER Wave 0 merge + Wave 1 data-loss prevention.
 Visual changes to the FL page now require new owner direction.
 
-**Current state (2026-07-19T12:50Z):**
-- **`main` @ `894c1ec` — PUSHED** this session: PR #43 (W3 + Wave 1) + PR #46 (rules + W3c + W4 audit) merged locally; prebuild 20 guards + build exit 0; sitemap 613 entries.
-- **`beta` mirrored** to `main` after push.
-- **Prior merged:** S2 (PR #41), SOURCE REGISTRY (PR #42), W1 wiring, PR #39.
-- **Superseded:** PR #44 (W4 v1) — use `docs/workflows/FILE_INVENTORY_AUDIT.md` on main (210 rows).
+**Current state (2026-07-19T14:00Z):**
+- **`main` @ `0e5a3e5`** — prior session pushed; PR #43 + #46 merged.
+- **Branch `cursor/dual-reference-roadmap-70a6`** — Dual Reference Lock roadmap docs (this session); PR pending.
+- **`beta` mirrored** to `main` after prior push.
 - **Wave 0d BLOCKED:** `the-ledger-s4dn.vercel.app` does NOT track `main` — owner Vercel wiring.
 - **P0 (owner):** Cursor Cloud injected rules still reference deleted `agent-ops.mdc` — re-sync with on-disk core-rules.
 - **Approved:** https://the-ledger-s4dn.vercel.app
 
-## Latest session — Implementation rules + W1a/b + W3c + W4 expanded audit (COMPLETE — STOP for Claude)
+## Latest session — Dual Reference Lock roadmap (COMPLETE — await owner verification)
+
+### Objective
+Owner directive: update `PROGRESS.md` and roadmap to lock **Florida** + **Sanders (S000033)** before
+scale; per-conduit ladder `1→10→25→80→200→completion`; review after every collect→present→sync.
+
+### Verdict / outcome
+**COMPLETE** — docs committed on `cursor/dual-reference-roadmap-70a6`; `npm run prebuild` exit 0 (20 guards).
+Awaiting owner verification of recommendations before conduit-fix data work.
+
+### Commits (this session)
+- pending — `docs: dual-reference roadmap — FL + S000033 lock before scale`
+
+### Commands run (this session)
+- `npm run test:docs-consistency` → exit 0
+- `RENDER_INTEGRITY_SKIP_POSTBUILD=1 npm run prebuild` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/DUAL_REFERENCE_ROADMAP.md` | created | Strategic dual-reference lock + per-conduit ladder + review gate |
+| `docs/PILOT_STATE_CHECKLIST.md` | created | 12 FL state conduits with status |
+| `PROGRESS.md` | modified | Dual Reference Lock phase; M2 conduit-first; status board |
+| `docs/workflows/BATCH_SCALING.md` | modified | Conduit ladder `1→10→25→80→200→completion` |
+| `PILOT_PROFILE_CHECKLIST.md` | modified | Sanders as THE reference; Said→Did target 15 |
+| `docs/AGENT_INDEX.md` | modified | Roadmap + state checklist in session-start order |
+| `.cursor/rules/ledger-core-rules.mdc` | modified | §2 table entries for dual-reference + state checklist |
+| `scripts/__tests__/docsConsistencyGuard.test.ts` | modified | Prebuild count from fixture (20), not hardcoded 19 |
+
+### Acceptance evidence
+- `npm run test:docs-consistency` → 10/10 pass
+- `npm run prebuild` → exit 0 (20 guard commands)
+- `PROGRESS.md` status board: Dual Reference Lock IN FLIGHT; 7/537 migrated; **20** prebuild commands
+
+### Owner verification requested (before data work)
+**Sanders:** platform positions pipeline; org→vote national path; Said→Did 8→15; trades honest-gap.
+**Florida:** keyed ingests when secrets available; county map wire-or-remove decision.
+**Scaling:** no expansion beyond 7 migrated until S000033 + FL pass conduit stage 1.
+
+### Open / next
+- Owner 👁 on roadmap recommendations
+- Merge PR; then execute approved conduit fixes per brief
+
+---
+
+## Prior session — Implementation rules + W1a/b + W3c + W4 expanded audit (COMPLETE — STOP for Claude)
 
 ### Objective
 Owner directive: add Cursor Implementation Engineer rules (de-duplicated vs core-rules); W1 wire
