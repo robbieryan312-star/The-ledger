@@ -21,12 +21,12 @@ const PORT = 4112;
 const BASE = `http://127.0.0.1:${PORT}`;
 
 const REQUIRED_SECTIONS: Record<string, string[]> = {
-  '/states/FL': ['#section-01', '#section-02', '#section-03', '#section-04'],
+  '/states/FL': ['#section-01', '#section-02', '#section-03'],
 };
 
 /** Present when live legislation/court samples exist — asserted only if in DOM. */
 const CONDITIONAL_SECTIONS: Record<string, string[]> = {
-  '/states/FL': ['#section-05', '#section-06'],
+  '/states/FL': ['#section-04', '#section-05'],
 };
 
 function fail(message: string): never {

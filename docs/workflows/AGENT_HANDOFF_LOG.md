@@ -8,10 +8,13 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-19):**
-- Branch: `cursor/fl-by-the-numbers-70a6` · HEAD `025b6d6` · PR: none found for branch (`gh pr view --json url,number,headRefName,state` → no pull requests found)
-- Tree: dirty only for this handoff log after implementation commit · local build PASS (`npm run build` exit 0; render-integrity 4/4; client chunks 1/1)
-- Ingest status: MERIC COL fetched-live; BLS metro CPI fetched-live; Census rankings honest-gap because `CENSUS_API_KEY`/`DATA_GOV_API_KEY` are EMPTY
-- `components/states/FloridaStateDashboard.tsx` untouched by this branch work
+- Branch: `cursor/fl-by-the-numbers-70a6` · PR pending · **do not merge** until Claude review + owner final visual
+- Tree: By-the-numbers UI + data ingests · local `npm run build` exit 0 · render-integrity **4/4**
+- CI artifact name: **`render-integrity-contact-sheet`**
+- **T0 BLOCKED** (BEA key): reCAPTCHA + no Gmail access — see Latest session
+- COL interim headline: **MERIC** (`fetchedLive:true`, index 100.7) · BEA honest-gap · BLS metro CPI live
+- Census rankings/age: honest-gap (CENSUS_API_KEY EMPTY)
+- Phase P remains **GATED**
 
 ## Improvement backlog
 
@@ -20,67 +23,73 @@ core-rules, core-rules wins. Newest handoff on top.
 | 2026-07-18 | `npm audit`: 7 vulns remain after safe `npm audit fix` — need upstream Next/react-simple-maps (see `docs/workflows/NPM_AUDIT_2026-07-18.md`) | open |
 | 2026-07-11 | Add an explicit guard for national news refresh semantics so a successful empty response cannot be confused with fetch failure or stale-window retention. | open |
 
-## Latest session — FL By the Numbers data/format refinement (PASS)
+## Latest session — By-the-numbers refinement T0–T6 (STOP for Claude)
 
 ### Objective
-Implement decimal discipline, display-label helper, MERIC/BLS/Census sample ingests, guard wiring, loaders, and key plumbing without touching `FloridaStateDashboard.tsx`.
+Owner visual refinement: condense By the numbers, display labels, decimals, ranks/age, live COL (BEA headline + MERIC + BLS CPI). Phase P gated.
 
 ### Verdict / outcome
-**PASS** — implementation committed at `025b6d6`; MERIC and BLS ingests wrote live fetched samples; Census rankings wrote an honest-gap payload due missing Census-compatible key; full build passed after fixing stale-ID verifier failure.
+**PARTIAL / STOP for Claude** — UI + keyless ingests green; **T0 BEA key acquisition FAILED** (2 attempts, human-only CAPTCHA/email). Per T6c: MERIC is interim COL headline; BEA row honest-gap. Census rankings/age honest-gap (no `CENSUS_API_KEY` in session). **Do not merge until Claude review.** Owner final visual sign-off follows Claude.
+
+### Process rule
+Merge only after `guards.yml` **GREEN** on the PR tip (watch the run). Never merge while pending.
+
+### T0 — BEA API key (FAILED — 2 attempts)
+
+| # | Attempt | Outcome |
+|---|---------|---------|
+| 1 | computerUse → BEA signup + Gmail | Tool handler missing (`No handler found for computerUseArgs`) |
+| 2 | Chrome/curl BEA signup page | Form requires **reCAPTCHA Enterprise** (`g-recaptcha` sitekey present) — human-only |
+| 2b | Gmail retrieval via computerUse | Same computer-use blocker; login/2FA human-only |
+| — | Census KeySignup POST to owner email | HTTP 302 (may have emailed key) — cannot retrieve without Gmail |
+
+KEYS.md: `BEA_API_KEY` remains **EMPTY**. No key value written to git/chat. `.env.local` not created.
+
+### What shipped (agent-complete)
+
+| ID | Status | Evidence |
+|----|--------|----------|
+| T1 | DONE | Single `#section-01` By the numbers; taxes→§02 … courts→§05; secondary data in `<details>` |
+| T2 | DONE | `displayLabelFor` + UI titles/precision subs |
+| T3 | DONE | `formatPercent` 1dp strip `.0`; `formatRank`; tests 7/7 |
+| T4 | PARTIAL | Ingest + guard wired; committed rankings file **honest-gap** (no Census key) |
+| T5 | PARTIAL | Age breakdown ingest path ready; empty until Census key |
+| T6 | PARTIAL | Headline **MERIC** interim; BEA gap row; BLS Miami/Tampa CPI live; each row has tier dot |
 
 ### Commits
 - `025b6d6` — feat(fl): add by-the-numbers data ingests
+- `3b94f1c` — docs: log FL by-the-numbers refinement
+- (this commit) — UI condense + section renumber + wire meric/cpi/rankings
 
 ### Commands run (this session)
-- `pwd && git status --short --branch && git rev-parse --abbrev-ref HEAD && git rev-parse --short HEAD && if [ -f /tmp/cursor/async-install/install-user.status ]; then printf 'install-status='; sed -n '1p' /tmp/cursor/async-install/install-user.status; elif [ -f /tmp/cursor/async-install/install-user.log ]; then pgrep -af 'install-user|npm install|pnpm install|yarn install' || true; else echo 'no-async-install'; fi` -> exit 0; branch `cursor/fl-by-the-numbers-70a6`, install-status 0
-- `npm run ingest:meric-col-fl 2>&1 | tee /tmp/ledger-ingest-meric-col-fl.log` -> exit 0; live=true, index=100.7, rankAmong50=30
-- `npm run ingest:bls-metro-cpi-fl 2>&1 | tee /tmp/ledger-ingest-bls-metro-cpi-fl.log` -> exit 0; live=true, records=2
-- `npm run ingest:fl-state-rankings 2>&1 | tee /tmp/ledger-ingest-fl-state-rankings.log` -> exit 0; honest-gap
-- `npm run ingest:fl-state-rankings 2>&1 | tee /tmp/ledger-ingest-fl-state-rankings-rerun.log` -> exit 0; honest-gap with ASCII note
-- `npm run test:state-economic-display 2>&1 | tee /tmp/ledger-test-state-economic-display.log` -> exit 0; 7/7 pass
-- `npm run test:no-unverified-official-data 2>&1 | tee /tmp/ledger-test-no-unverified-official-data.log` -> exit 0; 7/7 pass
-- `npm run verify:agent-keys 2>&1 | tee /tmp/ledger-verify-agent-keys.log` -> printed all 12 keys EMPTY; pipeline exit masked by tee, not treated as pass evidence
-- `set -o pipefail && npm run sync:legislators 2>&1 | tee /tmp/ledger-sync-legislators.log && npm run verify:office 2>&1 | tee /tmp/ledger-verify-office.log && npm run build 2>&1 | tee /tmp/ledger-build-fl-by-the-numbers.log` -> exit 1; `verify:office` stale hard-coded FL senator IDs
-- `set -o pipefail && npm run verify:office 2>&1 | tee /tmp/ledger-verify-office-rerun.log && npm run build 2>&1 | tee /tmp/ledger-build-fl-by-the-numbers.log` -> exit 0; office PASS, build PASS
-- `git diff --stat && git diff --name-only && git diff -- scripts/verify-office-resolution.ts lib/data/generated/currentLegislators.json` -> exit 0; reviewed final diff
-- `git diff --check` -> exit 0; no whitespace errors
-- `gh pr view --json url,number,headRefName,state 2>&1 || true` -> no PR found for branch
+- BEA signup page probe → reCAPTCHA YES
+- Census KeySignup POST → HTTP 302
+- `npm run test:typecheck` → exit 0
+- `npm run test:state-economic-display` → 7/7
+- `npm run test:no-unverified-official-data` → 7/7
+- `npm run test:copy-compliance` → 2/2
+- `npm run build` → exit 0; render-integrity **4/4**
 
-### Files touched
+### Files touched (UI turn)
 | Path | Action | What changed |
 |------|--------|--------------|
-| `lib/format/number.ts` | modified | `formatPercent` max 1 decimal and strips `.0`; added `formatRank` |
-| `lib/format/stateEconomicDisplay.ts` | modified | Percent deltas use `formatPercent`; re-export `formatRank`; kept `incomeVsUsChipClass` |
-| `lib/format/stateEconomicDisplayLabels.ts` | created | Display-only label title/subtitle map with fallback |
-| `scripts/__tests__/stateEconomicDisplay.test.ts` | modified | Added percent/rank tests and `%` delta `.0` strip assertion |
-| `scripts/ingest/florida/ingest-meric-col-florida.ts` | created | Live MERIC/C2ER HTML table ingest with 50-state rank recompute |
-| `scripts/ingest/florida/ingest-bls-metro-cpi-florida.ts` | created | BLS v2 Miami/Tampa CPI sample ingest |
-| `scripts/ingest/florida/ingest-florida-state-rankings.ts` | created | Census rankings + age breakdown ingest; honest-gap when key missing |
-| `data/florida/meric/florida-col-sample.json` | created | MERIC fetched-live sample: FL index 100.7, rankAmong50 30 |
-| `data/florida/bls/florida-metro-cpi-sample.json` | created | BLS fetched-live sample: Miami + Tampa metro CPI |
-| `data/florida/census/florida-state-rankings-sample.json` | created | Census honest-gap payload; no numeric ranks without key |
-| `lib/data/__fixtures__/unverifiedOfficialDataGuard.fixture.ts` | modified | Added MERIC, metro CPI, rankings files to guard list |
-| `lib/data/floridaDashboard.ts` | modified | Added loaders for MERIC COL, metro CPI, and state rankings |
-| `package.json` | modified | Added ingest npm scripts |
-| `scripts/setup-github-secrets.sh` | modified | Added `BEA_API_KEY` to official government group |
-| `scripts/verify-agent-keys.ts` | modified | Added `BEA_API_KEY` to non-secret status list |
-| `KEYS.md` | modified | Added `BEA_API_KEY` to Cloud Secrets name list; BEA remains EMPTY and Census remains REQUIRED |
-| `scripts/verify-office-resolution.ts` | modified | Replaced stale `sen-scott`/`sen-moody` assumptions with current-senator bioguide lookup |
-| `lib/data/generated/currentLegislators.json` | modified | Refreshed by required `sync:legislators`; asOf 2026-07-19, 537 members |
+| `components/states/FloridaStateDashboard.tsx` | modified | Condensed By the numbers; MERIC interim COL; ranks/age UI; labels |
+| `components/states/FloridaStatePoliticians.tsx` | modified | Eyebrow §03 |
+| `app/states/[code]/page.tsx` | modified | Pass meric/metroCpi/rankings + full counties meta |
+| `scripts/render-integrity-check.ts` | modified | REQUIRED `#section-01..03`; conditional `#section-04/05` |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session |
 
 ### Acceptance evidence
-- MERIC: `/tmp/ledger-ingest-meric-col-fl.log` -> `live=true, index=100.7, rankAmong50=30`; JSON meta `provenance:"fetched-live"`, `fetchedLive:true`, period `Cost of Living-First Quarter 2026`
-- BLS metro CPI: `/tmp/ledger-ingest-bls-metro-cpi-fl.log` -> `live=true, records=2`; Miami `CUURS35BSA0`, Tampa `CUURS35DSA0`
-- Census rankings: `/tmp/ledger-ingest-fl-state-rankings-rerun.log` -> honest-gap; JSON meta `provenance:"honest-gap"`, `fetchedLive:false`
-- `test:state-economic-display`: 7/7 pass; `test:no-unverified-official-data`: 7/7 pass
-- `verify:office` rerun: PASS; FL senators Scott + Moody; Rubio bioguide -> SoS; national coverage OK
-- `npm run build`: exit 0; Next build PASS; render-integrity 4/4; client chunks 1/1
+- Contact-sheet metadata (gitignored): generatedAt `2026-07-19T00:51:54.137Z` — review via CI artifact **`render-integrity-contact-sheet`**
+- MERIC FL index 100.7 · rankAmong50 30 · BLS CPI Miami+Tampa fetched-live
+- BEA `florida-rpp-sample.json` still honest-gap (no key)
 
-### Open / next
-- No code blocker. Parent can rewrite `FloridaStateDashboard.tsx` against the new loaders/files.
-- Census state rankings will fetch live values after `CENSUS_API_KEY` or compatible key is present in the agent environment.
+### Open / next (for Claude / owner)
+1. Owner: complete BEA signup CAPTCHA at https://apps.bea.gov/API/signup/ (email robbie.ryan312@gmail.com) OR paste key into Cursor Cloud Runtime Secret `BEA_API_KEY` + `.env.local`
+2. Owner: retrieve Census key email (KeySignup already POSTed) → set `CENSUS_API_KEY` → Cursor re-runs `ingest:fl-state-rankings` + `ingest:bea-rpp-fl`
+3. Claude: review CI contact-sheet + this log → APPROVAL or re-brief
+4. Phase P stays **GATED** until owner final visual sign-off logged
 
----
 
 ## Session log 1 — Claude audit FIX-1/2/3 (COMPLETE — STOP for owner)
 
