@@ -8,15 +8,14 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-19):**
-- Branch: `cursor/fl-by-the-numbers-70a6` · HEAD `8a9318d` · PR [#36](https://github.com/robbieryan312-star/The-ledger/pull/36) draft · **do not merge** until Claude review + owner final visual
-- Tree: clean after docs sync · local + CI `guards` **GREEN** ([`29667666551`](https://github.com/robbieryan312-star/The-ledger/actions/runs/29667666551))
-- CI artifact: **`render-integrity-contact-sheet`** (uploaded ✓ on that run)
+- Branch: `cursor/fl-by-the-numbers-70a6` · HEAD `4584838` · PR [#36](https://github.com/robbieryan312-star/The-ledger/pull/36) draft · **do not merge** until Claude review + owner final visual
+- Tree: clean · CI `guards` **GREEN** on functional tip `397eab5` ([`29667807229`](https://github.com/robbieryan312-star/The-ledger/actions/runs/29667807229)); this docs tip will re-gate
+- CI artifact: **`render-integrity-contact-sheet`**
 - **T0 BLOCKED** (BEA key): reCAPTCHA + no Gmail access — see Latest session
 - COL interim headline: **MERIC** (`fetchedLive:true`, index 100.7) · BEA honest-gap · BLS metro CPI live
 - Census rankings/age: honest-gap (CENSUS_API_KEY EMPTY)
 - Phase P remains **GATED**
 - **STOP for Claude review** (owner final visual sign-off after Claude)
-
 ## Improvement backlog
 
 | Date | Item | Status |
@@ -30,7 +29,7 @@ core-rules, core-rules wins. Newest handoff on top.
 Owner visual refinement: condense By the numbers, display labels, decimals, ranks/age, live COL (BEA headline + MERIC + BLS CPI). Phase P gated.
 
 ### Verdict / outcome
-**PARTIAL / STOP for Claude** — UI + keyless ingests green; CI guards GREEN on PR tip `397eab5` (run `29667807229`, artifact `render-integrity-contact-sheet`). **T0 BEA key acquisition FAILED** (2 attempts, human-only CAPTCHA/email). Per T6c: MERIC is interim COL headline; BEA row honest-gap. Census rankings/age honest-gap (no `CENSUS_API_KEY` in session). **Do not merge until Claude APPROVAL.** Owner final visual sign-off follows Claude.
+**PARTIAL / STOP for Claude** — UI + keyless ingests green; CI guards GREEN (`397eab5` / run `29667807229`, artifact `render-integrity-contact-sheet`). **T0 BEA key acquisition FAILED** (2 attempts, human-only CAPTCHA/email). Per T6c: MERIC is interim COL headline; BEA row honest-gap. Census rankings/age honest-gap (no `CENSUS_API_KEY` in session). **Do not merge until Claude APPROVAL.** Owner final visual sign-off follows Claude.
 
 ### Process rule
 Merge only after `guards.yml` **GREEN** on the PR tip (watch the run). Never merge while pending.
