@@ -231,17 +231,31 @@ const HONEST_GAP = (
   <span className="italic text-[var(--muted)]">No verified record available</span>
 );
 
-function RankChip({ rank, of = 50 }: { rank: number | null | undefined; of?: number }) {
-  if (rank == null || !Number.isFinite(rank)) {
-    return (
+function RankChip({
+  rank,
+  of = 50,
+  hint,
+}: {
+  rank: number | null | undefined;
+  of?: number;
+  /** Short sense label shown before the chip (e.g. "Joblessness", "Lower cost → #1"). */
+  hint?: string;
+}) {
+  const chip =
+    rank == null || !Number.isFinite(rank) ? (
       <span className="font-mono text-[10.5px] italic text-[var(--muted)] border border-[var(--border-subtle)] rounded px-1.5 py-0.5">
         Rank — No verified record available
       </span>
+    ) : (
+      <span className="font-mono text-[10.5px] text-[var(--muted)] border border-[var(--border-subtle)] rounded px-1.5 py-0.5">
+        #{formatRank(rank)} of {of}
+      </span>
     );
-  }
+  if (!hint) return chip;
   return (
-    <span className="font-mono text-[10.5px] text-[var(--muted)] border border-[var(--border-subtle)] rounded px-1.5 py-0.5">
-      #{formatRank(rank)} of {of}
+    <span className="inline-flex flex-wrap items-center gap-1">
+      <span className="text-[10.5px] text-[var(--muted)]">{hint}</span>
+      {chip}
     </span>
   );
 }
@@ -744,7 +758,7 @@ export default function FloridaStateDashboard({
                 sub={
                   <>
                     {colVsUs && <span>U.S. = 100 · {colVsUs}</span>}
-                    <RankChip rank={colRank} />
+                    <RankChip rank={colRank} hint="Lower cost → #1" />
                   </>
                 }
               >
@@ -872,7 +886,7 @@ export default function FloridaStateDashboard({
                     {empRate != null && (
                       <span>Employment rate {formatPercent(empRate)}</span>
                     )}
-                    <RankChip rank={employmentRank} />
+                    <RankChip rank={employmentRank} hint="Joblessness" />
                   </>
                 }
               >

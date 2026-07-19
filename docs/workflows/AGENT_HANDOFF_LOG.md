@@ -7,12 +7,12 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-19T03:35Z):**
-- Branch: `cursor/fl-by-numbers-ux-70a6` @ `d3bacd4` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · guards GREEN
-- **Approved production (canonical):** https://the-ledger-s4dn.vercel.app — formerly project `the-ledger-s4dn` (owner: rename/alias to "Approved" in Vercel dashboard)
-- **Beta:** reserve at most one other project if needed; pause/delete the rest (`the-ledger`, `the-ledger-jcjh`)
-- Stale: `the-ledger-gamma.vercel.app` (rate-limited Hobby quota — owner consolidate)
-- Phase P **GATED** until owner visual sign-off on **deployed mobile** Approved URL
+**Current state (2026-07-19T03:42Z):**
+- Branch: `cursor/fl-by-numbers-ux-70a6` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · **no merge / no deploy** (Claude temporarily down)
+- Tip after self-audit fixes: pending commit
+- **Approved production (canonical):** https://the-ledger-s4dn.vercel.app — formerly `the-ledger-s4dn`
+- **Beta:** at most one other project; pause/delete the rest
+- Phase P **GATED** until owner visual sign-off on **deployed** Approved mobile
 
 
 ## Improvement backlog
@@ -23,6 +23,53 @@ core-rules, core-rules wins. Newest handoff on top.
 | 2026-07-18 | `npm audit`: 7 vulns remain after safe `npm audit fix` — need upstream Next/react-simple-maps (see `docs/workflows/NPM_AUDIT_2026-07-18.md`) | open |
 | 2026-07-11 | Add an explicit guard for national news refresh semantics so a successful empty response cannot be confused with fetch failure or stale-window retention. | open |
 
+
+
+## Latest session — Self-audit PR #39 (no merge/deploy) (PASS)
+
+### Objective
+Claude temporarily unavailable. Continue progress without implementing/merging: thorough self-audit of PR #39, fix verified defects, re-gate locally. Do **not** merge or deploy until Claude APPROVAL.
+
+### Verdict / outcome
+**PASS (audit)** — ranks/age/COL independently re-verified; two UX defects fixed (employment rank mislabel; COL rank direction hint). Local gates green. **No merge. No Vercel deploy.** Awaiting Claude.
+
+### Independent verification (not producer logic)
+| Check | Expected | Actual |
+|---|---|---|
+| Age % sum | ~100 | **100.0** |
+| Income rank | ACS B19013 | **#34** match |
+| Home rank | ACS B25077 | **#21** match |
+| Population rank | ACS B01003 | **#3** match |
+| Bachelor's+ rank | ACS B15003 | **#26** (33.2%) match UI |
+| Unemployment rank | ACS DP03 | **#21** (4.8%) match |
+| BEA/FRED RPP | FL 2024 | **103.4**, cheapest→#1 = **#41** (most-expensive→#1 would be #10) |
+
+### Defects found & fixed this turn
+| # | Defect | Fix |
+|---|---|---|
+| 1 | "People with jobs" card showed bare unemployment-rate rank | `RankChip hint="Joblessness"` |
+| 2 | COL `#41 of 50` unclear (ascending = cheaper) | `RankChip hint="Lower cost → #1"` |
+| 3 | Handoff HEAD stale (`d3bacd4` vs tip) | refreshed Current state |
+| 4 | SampleBadge comment used banned process phrase | reworded comment |
+
+### Intentionally open (not bugs)
+- County top/bottom 5 still SAMPLE n=10 — needs `CENSUS_API_KEY` for full 67
+- BEA components/metros empty without `BEA_API_KEY` (all-items via FRED is live)
+- Vercel Hobby rate-limit — owner consolidation
+- Merge blocked until Claude APPROVAL
+
+### Commands run (this session)
+- Independent Census/FRED recompute → ranks match committed JSON
+- `npm run test:typecheck` → exit 0
+- `npm run test:state-economic-display` → 13/13
+- `npm run test:copy-compliance` → 3/3
+- `npm run test:no-unverified-official-data` → 7/7
+- `npm run test:render-integrity` → 4/4
+
+### Open / next
+- Keep PR #39 open; push audit fixes; **do not merge**
+- When Claude returns: request APPROVAL on tip
+- Then merge → deploy Approved → owner mobile visual sign-off → Phase P
 
 ## Latest session — By-the-numbers UX + keyless ranks/COL (STOP for owner visual)
 
@@ -106,42 +153,6 @@ Consolidate Vercel projects to **one** canonical project. Pause or delete `the-l
 - **STOP for owner:** visual sign-off on **deployed mobile** https://the-ledger-s4dn.vercel.app/states/FL — that unlocks Phase P
 - Owner: Vercel project consolidation + rate-limit recovery for gamma alias
 - Do **not** start Phase P until owner sign-off is logged
-
-
-## Latest session — Claude review defect fixes 1–3 (STOP for final approval)
-
-### Objective
-Fix three rendered defects on PR #36: metro CPI YoY meaning, MERIC user copy, education mid-word wrap. Re-gate; STOP for Claude final approval. Do not merge. Phase P gated.
-
-### Verdict / outcome
-**PASS** — defects fixed; local + CI guards GREEN on `58d1f9f` (run `29668477259`, artifact `render-integrity-contact-sheet`). **STOP for Claude final approval. Do not merge.**
-
-### Fixes
-
-| # | Defect | Fix |
-|---|--------|-----|
-| 1 | Bare CPI index | Ingest computes `yoyPct` (13-mo); UI shows `Miami–Fort Lauderdale · +X.X% vs a year ago`; short series → honest gap; unit tests |
-| 2 | Process vocabulary | Label `Cost of living index (MERIC)`; period `Q1 2026` via `formatMericPeriodDisplay`; copy-compliance bans interim/headline/sample batch in string lits |
-| 3 | Education mid-word wrap | Stacked label-above-values + `break-normal` / `word-break: keep-all`; render-integrity asserts no mid-word splits in `#section-01` |
-
-### Commands run (this session)
-- `npm run ingest:bls-metro-cpi-fl` → exit 0; yoy Miami≈3.4% Tampa≈3.2%
-- `npm run test:state-economic-display` → 12/12 (incl. YoY + MERIC period)
-- `npm run test:copy-compliance` → 3/3
-- `npm run test:no-unverified-official-data` → 7/7
-- `npm run test:typecheck` → exit 0
-- `npm run build` → exit 0; render-integrity **4/4**
-- CI tip `c404f74` failed: postbuild ignored `RENDER_INTEGRITY_SKIP_POSTBUILD` → image waitForFunction 15s timeout; wired skip into `package.json` postbuild + image wait 45s
-- CI tip `e7b6073` failed: DeSantis flgov.com portrait → initials on mobile; switched to same-origin `/portraits/ron-desantis.jpg` + avatar eager/no-referrer + fallback settle wait
-
-### Acceptance evidence
-- Contact-sheet metadata (gitignored — cite fields only): generatedAt `2026-07-19T01:13:51.046Z` — regenerate per gate; CI artifact **`render-integrity-contact-sheet`**
-- No bare CPI index in UI; no "interim"/"headline"/"sample batch" in user-facing string literals
-
-### Open / next
-- Confirm CI GREEN on tip → Claude final APPROVAL
-- Owner: BEA + Census keys still needed for full T0/T4/T5
-- Phase P gated; **do not merge** without Claude APPROVAL
 
 
 ## Session log 1 — Claude audit FIX-1/2/3 (COMPLETE — STOP for owner)
