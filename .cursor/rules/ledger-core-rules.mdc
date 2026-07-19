@@ -13,9 +13,18 @@ alwaysApply: true
 - **One source of truth per fact** — wire/join to existing generated data; never re-collect into a parallel file.
 - **Source constitution is a living registry** — `docs/OBJECTIVE_SOURCES.md` owns approved sources, lean labels, and key routing; consult it FIRST and update it the SAME session you discover a better path or dead feed (§1.1 L).
 - **Keep files accurate** — every session that touches a file/data/doc verifies any claimed done/complete/locked status against the REAL artifact and corrects or flags stale status the same turn; a regression that silently un-does prior verified work is a first-class bug. Status is earned by evidence, never by a label (§1.1 M; Claude manual §11).
-- **Keep files accurate** — every session that touches a file/data/doc verifies any claimed done/complete/locked status against the REAL artifact and corrects or flags stale status the same turn; a regression that silently un-does prior verified work is a first-class bug. Status is earned by evidence, never by a label (§1.1 M; Claude manual §11).
 - **`bioguideId` join key** — universal across votes, finance, news, statements; never alias.
-- **Approval before push** — commit locally when green; push to `origin/main` only on Claude Code's explicit APPROVAL.
+- **Approval before MERGE, not just before push (binding — a PR is not self-approving)** — commit
+  and push a PR when green, but **do not merge it** until an explicit **Claude "APPROVED"** verdict
+  (a PR comment/review or a matching `docs/workflows/AGENT_HANDOFF_LOG.md` entry) exists for that
+  exact commit SHA. Opening a PR — even one whose own description says "STOP for Claude review" —
+  is not a review; merging within minutes of opening, before Claude has had a chance to look, is a
+  gate bypass and a HARD RULE violation regardless of intent. If Claude posts REJECT/REQUEST_CHANGES
+  on a PR, that PR does not merge until a NEW commit addressing the findings is pushed and a fresh
+  APPROVAL is issued for that new SHA — merging the already-rejected SHA is never acceptable, and
+  Cursor must actively check for a Claude review/comment on the PR before merging, not merge on a
+  timer or "no CI failures" alone. (Real incident: PR #46 was merged 2 minutes after opening — 10
+  minutes before Claude's REJECT review even posted. This rule exists because that happened.)
 - **Fixtures append-only** — regression guards grow, never reset; every data-quality bug gets a frozen bad example.
 - **Spec violation = bug to fix, never a question** — read the owning file; do not re-ask the owner.
 - **Stale violation flags are bugs** — when a flagged violation is fixed, delete its flag in the same commit.
@@ -159,6 +168,29 @@ the specific failure this file was created to stop.
   to the other agent for an independent second opinion before claiming pass — never guess it away.
   Use **Cross-agent second opinion** block (§1.1 I). Receiving agent returns explicit PASS/FAIL +
   fresh evidence; FAIL gets a repair brief. Applies Claude↔Cursor equally.
+
+### 1.0 The three-stage build loop (binding on BOTH agents — owner directive)
+Every task runs this loop. It is mirrored verbatim in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` §12A.
+```
+STAGE ONE — Claude: writes the spec (10-part template) · finds edge cases · identifies risks ·
+            creates the testing requirements.
+STAGE TWO — Cursor: implements the spec EXACTLY (no independent choices) · performs the required
+            testing · creates an implementation report · lists every assumption made.
+STAGE THREE — Claude (ASSUME CURSOR IS INCORRECT): review every changed file · review every test ·
+            attempt to discover bugs · attempt to discover regressions · verify the requirements ·
+            challenge the implementation decisions · identify the remaining risks.
+            Claude MUST attempt to REJECT before approving. Problems found → return to STAGE ONE.
+REPEAT UNTIL ACCEPTED — **and "accepted" means an explicit Claude APPROVAL on the exact merged SHA,
+never the mere absence of a REJECT within some window.** A PR sits unmerged until that APPROVAL
+exists, no matter how green CI is or how much time has passed since it opened.
+```
+Acceptance ships with the Final Report + stated remaining risks — never a bare "approved."
+
+Every Claude Code response that touches this loop ends with a concrete, paste-ready directive for
+Cursor — a restated fix brief on REJECT, or an APPROVAL plus the next roadmap task on PASS. Never a
+status update with nothing for Cursor to act on. Full rule: `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md`
+§12B. Cursor should expect every Claude review/check-in to arrive this way and treat one that
+doesn't as itself a defect to flag back.
 
 ### 1.1 Agent handoff, review, and completion (binding — CRITICAL)
 
@@ -487,6 +519,13 @@ described in chat but absent from file; "will log next turn"; logging a prior se
 **Claude Code must never** merge, close, push application code, or race Cursor on the same branch.
 If both agents could write, **stop** — Cursor owns the tree.
 
+**Merging is gated on an explicit Claude APPROVAL for the exact SHA being merged — not on CI alone,
+not on elapsed time, not on the PR's own "STOP for review" text being present.** Before merging any
+PR, Cursor checks for a Claude review comment or a matching `AGENT_HANDOFF_LOG.md` entry on that
+commit. Finding none is not silence-implies-consent — it means the review hasn't happened yet, and
+the PR stays open. Finding a REJECT/REQUEST_CHANGES means the PR does not merge until a new commit
+answers it and a fresh APPROVAL lands on the new SHA. See HARD RULES "Approval before MERGE."
+
 #### L. Living source registry (binding)
 
 `docs/OBJECTIVE_SOURCES.md` is the **source constitution** — the canonical, always-consult-first
@@ -513,7 +552,7 @@ the owning file or surface an **Owner visibility finding** (§1.1 H). A regressi
 un-does prior verified work is a **first-class bug** — hunt it; never trust a label because a doc
 says so. **Status is earned by evidence, never by a label.**
 
-Claude's full standing orders: `docs/CLAUDE_CODE_OPERATING_MANUAL.md` §11. Cursor implementation
+Claude's full standing orders: `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` §11. Cursor implementation
 discipline: `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6. Do not restate §11 here.
 
 ---
@@ -536,7 +575,7 @@ discipline: `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6. Do not restate §11 here
 | Agent handoff log for Claude review (sessions + improvement backlog) | `docs/workflows/AGENT_HANDOFF_LOG.md` — **§1.1 J (mandatory same-turn commit)** |
 | Cross-agent second opinion when unverifiable | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 I |
 | Single-writer git authority (Cursor only commits/pushes/merges) | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 K |
-| Keep files accurate — claimed done/complete vs real artifact | `.cursor/rules/ledger-core-rules.mdc` §1.1 M · `docs/CLAUDE_CODE_OPERATING_MANUAL.md` §11 |
+| Keep files accurate — claimed done/complete vs real artifact | `.cursor/rules/ledger-core-rules.mdc` §1.1 M · `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` §11 |
 | Cursor implementation role, testing, reporting format | `docs/CURSOR_IMPLEMENTATION_MANUAL.md` |
 
 ---

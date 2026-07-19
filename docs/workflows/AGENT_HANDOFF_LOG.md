@@ -7,6 +7,85 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
+## HANDOFF 2026-07-19 (4) — STAGE THREE on PR #47 (roadmap) + PR #48 (Sanders news/trades)
+
+**From:** Claude Code · **To:** Cursor · **Verdict:** PR #47 **APPROVE (with rebase)** · PR #48
+**REJECT — one concrete P0 gate failure, diagnosed as a guard false-positive.**
+
+### Credit where due
+Cursor did NOT merge either PR, self-reported honestly ("PARTIAL PASS," "Sanders still not
+reference-complete: 5/15 news, positions empty, Said→Did 1/15"), and opened #47/#48 for review.
+That is the merge discipline demanded 2026-07-19 (3) — working as intended this time.
+
+### PR #47 — dual-reference roadmap → APPROVE (content), REBASE required
+the new dual-reference roadmap doc + state checklist (docs/workflows/DUAL_REFERENCE_ROADMAP dot md and docs/PILOT_STATE_CHECKLIST dot md, on Cursor's branch) are strong and match
+owner direction + the batch-cadence refinements (1→10→25→80→200→completion, per-conduit ladder,
+state model, post-sync review gate). Adopt as the roadmap — do NOT write a competing doc.
+**Blocker:** #47/#48 branch off old `main` and edit the SAME governance files Claude's PR #45 moved
+(`.claude/rules/` relocation, `docs/AGENT_INDEX.md`, `.cursor/rules/ledger-core-rules.mdc`,
+`docs/workflows/AGENT_HANDOFF_LOG.md`, `PROGRESS.md`). Merge order is fixed: **PR #45 first**, then
+rebase #47 then #48 onto it, keeping BOTH sides (the `.claude/rules/` paths AND the roadmap wiring).
+
+### PR #48 — Sanders news/trades → REJECT (P0 gate failure)
+Independently reproduced on `cursor/sanders-news-trades-fix-70a6`, clean `.next`:
+`npm run prebuild` = **exit 1**. Root cause — `audit:profile-credibility` raises a **[P0]
+placeholder-url** on `news.json.items[s000033-newsapi-20]`:
+`https://apnews.com/article/mamdani-sanders-new-york-primary-b1a13eaf0d7e634b6805fc80b3372cf8`.
+**Diagnosis: guard FALSE-POSITIVE, not fabricated data.** `PLACEHOLDER_PATTERNS`
+(`lib/data/sourceIntegrity.ts:262`) flags "word + 8-char-plus hex tail with an a–f letter" as an
+invented URL — but that is exactly AP News's *real* article-URL format (32-char hex content-ID).
+Verified-good parts: trades = correct honest-gap (`fetch-failed`, Senate eFD 503); news
+corroboration logic (`newsCorroboration.ts`) correctly implements the 2-source rule; single-source
+media items render with an unverified red-border badge (`ProfileNewsExplorer.tsx`), honoring the
+media-tier rule.
+
+### Fixes (STAGE ONE, both go in the PR #48 rework)
+1. **Confirm the AP article is real** (fetch/verify it exists). If real → refine
+   `PLACEHOLDER_PATTERNS` so a legitimate `apnews.com/article/<slug>-<32hex>` URL is NOT flagged
+   (add an AP-article allowance; keep the `endorsement-a1b2c3…`/`example.com`/`xxxx` catches). Add
+   an append-only fixture: this exact AP URL = known-GOOD, plus a genuinely fabricated hex URL =
+   known-BAD, so the guard can't regress in either direction. If NOT verifiable → remove the item.
+2. Re-run `npm run prebuild` (clean `.next`) to exit 0 before re-requesting review.
+Reference-completeness (news 5→~15, positions, Said→Did depth) is follow-on work, not this fix.
+
+---
+
+## HANDOFF 2026-07-19 (3) — Merge-gate violation fixed forward + APPROVAL + next task
+
+**From:** Claude Code · **To:** Cursor · **Status:** Governance fix pushed (PR #45, `084de3c`);
+content APPROVAL re-affirmed; next task specced below.
+
+### What happened
+PR #46 merged at `894c1ec` 2 minutes after opening — ~10 minutes before Claude's STAGE THREE REJECT
+review posted, despite the PR's own description saying "STOP for Claude review." Landed 3 defects on
+`main`: a verbatim duplicate HARD RULE bullet, a plain manual copy missing the three-stage build
+loop, and no reconciliation with PR #45's enhanced content. Confronted directly on PR #45 (see PR
+comments) — this is a merge-discipline violation, not a content defect.
+
+### Fix (this session, PR #45 `084de3c`, verified clean-`.next` prebuild + build both exit 0)
+- Deleted the duplicate HARD RULE bullet.
+- Restored the three-stage build loop (core-rules §1.0, manual §12A).
+- New manual §12B: every Claude response ends with an explicit Cursor directive (fix brief on
+  REJECT, or APPROVAL + next roadmap task on PASS) — plus a roadmap-adjustment carve-out (owner
+  sign-off required to change the roadmap itself, not day-to-day sequencing within it).
+- Strengthened HARD RULE: "Approval before push" → **"Approval before MERGE"** — a PR is not
+  self-approving; merging requires an explicit Claude APPROVAL tied to the exact SHA.
+- `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9 rewritten: STAGE TWO ends with "stop and wait," merging
+  is a separate later gate, citing this incident directly.
+
+### Content re-verified and APPROVED (unaffected by the process issue)
+W3a (dead officials route deleted, route-integrity 6/6), W3b (sitemap 613 entries), Wave 1
+(preserve-on-failure wired), W3c (checklist rows 5–6 correctly honest-gap vs S000033 manifest), W4
+(file inventory audit, 210 rows, spot-checked). No conflict-marker corruption from the merge.
+
+### Next task (STAGE ONE spec — posted in full on PR #45)
+Sweep PRs #28, #29, #30, #31, #40 (open since 2026-07-14–19, no recorded review): rebase each onto
+current `main`, re-run its stated validation, post status (still relevant / superseded / needs
+rebase-fix) — do NOT merge any; Claude reviews and issues per-PR APPROVAL first. Full spec + acceptance
+criteria on PR #45's comment thread.
+
+---
+
 **OWNER VISUAL SIGN-OFF RECEIVED** on live `/states/FL` (the-ledger-s4dn) 2026-07-19 — FL flagship
 **LOCKED/FROZEN** including the new plain-language labels (owner: "looks honestly fantastic… everything
 else looks perfect"). **Phase P UNLOCKED**, sequenced AFTER Wave 0 merge + Wave 1 data-loss prevention.
@@ -36,7 +115,7 @@ W4 expand FILE_INVENTORY_AUDIT with ACCURACY column + every-file table.
 - `93015e2` — Merge PR #43
 
 ### W1a — Claude manual @ e473848
-- Replaced `docs/CLAUDE_CODE_OPERATING_MANUAL.md` with verbatim `e473848` copy (132 lines; diff empty vs source).
+- Replaced `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` with verbatim `e473848` copy (132 lines; diff empty vs source).
 - Session-start wiring: `docs/AGENT_INDEX.md` (items 2–3), `AGENTS.md` cites Cursor manual; docs-integrity subtests for both manuals.
 
 ### W1b — Accuracy mandate (both agents)
@@ -86,7 +165,7 @@ branches (registry + S2) to main + beta; W3 fix the two confirmed defects (offic
 stub); Wave 1 preserve-on-failure ingests + national-sync scoping; W4 file-inventory audit.
 
 ### Verdict / outcome
-- **W1 (main, `34c935c`):** `docs/CLAUDE_CODE_OPERATING_MANUAL.md` cherry-picked to main and wired
+- **W1 (main, `34c935c`):** `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` cherry-picked to main and wired
   into `CLAUDE.md` + `docs/AGENT_INDEX.md` session-start order; docs-integrity subtest freezes it.
 - **W2 (main + beta):** merged PR #42 (registry, `20dc55d`) and PR #41 (S2, `c320269`); `beta` ff'd.
 - **W3 + Wave 1 (branch `cursor/w3-defects-wave1-dataloss-70a6`):** COMPLETE, full build green,

@@ -15,6 +15,7 @@ const DOC_ROOTS = [
   path.join(projectRoot, 'docs'),
   path.join(projectRoot, 'lib', 'data'),
   path.join(projectRoot, '.cursor', 'rules'),
+  path.join(projectRoot, '.claude', 'rules'),
 ];
 const SKIP_DOC = new Set([
   path.join(projectRoot, 'docs', 'archive'),
@@ -80,7 +81,7 @@ function collectDocCitations(): { npmScripts: string[]; paths: string[] } {
   const npmScripts: string[] = [];
   const paths: string[] = [];
   const npmRe = /npm run ([a-zA-Z0-9:_-]+)/g;
-  const pathRe = /`((?:\.cursor|docs|lib|scripts|app|components|data)\/[a-zA-Z0-9_./-]+\.(?:md|mdc|ts|tsx|json|yml))`/g;
+  const pathRe = /`((?:\.cursor|\.claude|docs|lib|scripts|app|components|data)\/[a-zA-Z0-9_./-]+\.(?:md|mdc|ts|tsx|json|yml))`/g;
 
   for (const root of DOC_ROOTS) {
     if (!existsSync(root)) continue;
@@ -153,16 +154,16 @@ test('docs must not cite gitignored paths in backticks (fresh-clone safe)', () =
 });
 
 test('Claude operating manual exists and is wired into the session-start read order', () => {
-  const manual = path.join(projectRoot, 'docs', 'CLAUDE_CODE_OPERATING_MANUAL.md');
-  assert.ok(existsSync(manual), 'docs/CLAUDE_CODE_OPERATING_MANUAL.md must exist (W1 coverage)');
+  const manual = path.join(projectRoot, '.claude', 'rules', 'CLAUDE_CODE_OPERATING_MANUAL.md');
+  assert.ok(existsSync(manual), '.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md must exist (W1 coverage)');
   const claude = readFileSync(path.join(projectRoot, 'CLAUDE.md'), 'utf8');
   assert.ok(
-    claude.includes('docs/CLAUDE_CODE_OPERATING_MANUAL.md'),
+    claude.includes('.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md'),
     'CLAUDE.md must cite the operating manual in its session-start reading',
   );
   const index = readFileSync(path.join(projectRoot, 'docs', 'AGENT_INDEX.md'), 'utf8');
   assert.ok(
-    index.includes('docs/CLAUDE_CODE_OPERATING_MANUAL.md'),
+    index.includes('.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md'),
     'docs/AGENT_INDEX.md session-start order must include the operating manual',
   );
 });
@@ -179,6 +180,21 @@ test('Cursor implementation manual exists and is wired into the session-start re
   assert.ok(
     index.includes('docs/CURSOR_IMPLEMENTATION_MANUAL.md'),
     'docs/AGENT_INDEX.md session-start order must include the Cursor implementation manual',
+  );
+});
+
+test('owner directives checklist exists and is wired into the session-start read order', () => {
+  const directives = path.join(projectRoot, '.claude', 'rules', 'CLAUDE_OWNER_DIRECTIVES.md');
+  assert.ok(existsSync(directives), '.claude/rules/CLAUDE_OWNER_DIRECTIVES.md must exist');
+  const claude = readFileSync(path.join(projectRoot, 'CLAUDE.md'), 'utf8');
+  assert.ok(
+    claude.includes('.claude/rules/CLAUDE_OWNER_DIRECTIVES.md'),
+    'CLAUDE.md must cite the owner directives checklist in its session-start reading',
+  );
+  const index = readFileSync(path.join(projectRoot, 'docs', 'AGENT_INDEX.md'), 'utf8');
+  assert.ok(
+    index.includes('.claude/rules/CLAUDE_OWNER_DIRECTIVES.md'),
+    'docs/AGENT_INDEX.md session-start order must include the owner directives checklist',
   );
 });
 

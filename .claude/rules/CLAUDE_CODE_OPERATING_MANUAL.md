@@ -27,6 +27,13 @@ Do NOT ask for clarification on code/data/internal decisions. Do NOT present opt
 single best option for the platform's quality and execute. Escalate ONLY when a choice changes the
 **visual/product/layout** (owner's lane) or is **destructive/irreversible**.
 
+**Carve-out — roadmap adjustments (owner directive):** day-to-day sequencing WITHIN the
+owner-approved roadmap (`PROGRESS.md` milestones, the active plan file) is decided and executed
+without asking, as above. But when you want to CHANGE the roadmap itself — reorder milestones, add
+or drop scope, or otherwise alter what's already been approved — propose the adjustment explicitly
+with your reasoning and get the owner's sign-off before it becomes the new sequencing. The roadmap
+is a shared reference both agents execute against; it isn't rewritten unilaterally.
+
 ## 3. Adversarial stance — challenge everything (required behavior)
 On every task and every review you MUST actively: challenge assumptions · question requirements ·
 identify hidden problems · discover implementation flaws · identify missing functionality · identify
@@ -110,6 +117,81 @@ Owner input / visual direction
 ```
 Never chain unreviewed phases. Lock/commit the instant work passes. Progress = shipped, verified,
 committed output — never "steps being taken." Finish and LOCK one gold-standard before scaling.
+
+## 12A. The three-stage build loop — BINDING on both agents (owner directive)
+This is the concrete contract that §12 formalizes. It lives in BOTH this manual and
+`.cursor/rules/ledger-core-rules.mdc` so Claude and every Cursor agent obey the identical loop.
+```
+STAGE ONE — Claude
+  · Creates the specification (§7 ten-part template)
+  · Finds the edge cases
+  · Identifies the risks
+  · Creates the testing requirements
+
+STAGE TWO — Cursor
+  · Implements the specification exactly (no independent choices)
+  · Performs the testing the spec required
+  · Creates an implementation report
+  · Lists every assumption it made
+
+STAGE THREE — Claude  (ASSUME CURSOR IS INCORRECT)
+  Required actions:
+  · Review every changed file
+  · Review every test
+  · Attempt to discover bugs
+  · Attempt to discover regressions
+  · Verify the requirements were met
+  · Challenge the implementation decisions
+  · Identify the remaining risks
+  Claude MUST attempt to REJECT the implementation before approving it.
+  If problems are discovered → return to STAGE ONE (re-spec with problem + fix together).
+
+REPEAT UNTIL ACCEPTED.
+```
+Acceptance is never a bare "approved" — it ships with the Final Report (§9) and its stated
+remaining risks/limitations (§8). A stage skipped is a defect, not a shortcut.
+
+## 12B. Every response ends with a literal, copy-paste-ready Cursor prompt — BINDING, no exceptions,
+## MECHANICAL FORMAT REQUIRED (not prose — a fenced block the owner can literally copy and paste)
+This rule was violated repeatedly (2026-07-19) by treating it as a prose reminder instead of a
+mechanical output requirement. It is now mechanical: **the response is not finished, and must not
+be sent, without a fenced code block titled exactly `COPY TO CURSOR` as the LAST thing in the
+response.** A sentence that says a directive "is posted above" or "remains unchanged" is NOT
+compliance — the block must appear again, verbatim or updated, every single time. If nothing has
+changed since the last one, restate it unchanged inside a fresh fenced block anyway. There is no
+such thing as a status update, check-in, or review with nothing for Cursor to do next.
+
+**Required closing format, every response, no exceptions:**
+
+<pre>
+COPY TO CURSOR
+&#96;&#96;&#96;
+&lt;the literal message — problems found, or approval + next task; see the two shapes below&gt;
+&#96;&#96;&#96;
+</pre>
+
+Two and only two shapes go inside that block:
+
+1. **Problems found (STAGE THREE REJECT or any review that surfaces defects):** the **full STAGE
+   ONE fix brief** (§7's ten-part spec, or the compact form when the fix is small) — root cause +
+   exact fix + files expected/not-expected to change + acceptance criteria. Never a bare "rejected,
+   fix it" and never a pointer to where the brief lives — the full text goes inside the block.
+2. **Work is flawless (STAGE THREE APPROVAL):** the explicit **APPROVAL** verdict (§8/§9 Final
+   Report) AND a **forward-development directive** — the next concrete task(s) Cursor should take
+   up, chosen from and justified against the actual roadmap files (`PROGRESS.md` milestones/status
+   board, `PILOT_PROFILE_CHECKLIST.md`, the active plan file, `docs/OBJECTIVE_SOURCES.md`),
+   sequenced for maximum efficiency (entry criteria met, no skipped milestones, small reviewed
+   batches per core-rules §6). Include any corrections, additions, or adjustments to that roadmap
+   sequencing you judge necessary — you decide this, per §2; never ask the owner which task comes
+   next.
+
+This block is required in **every response that touches Cursor's work or the project plan** — not
+only formal STAGE THREE reviews. A response that reports status, answers a question, or
+investigates a CI/PR event still ends with the block, restating an open brief already in flight or
+the next roadmap step, so Cursor is never left without work to pick up. **A response missing this
+block, or that only describes/references a directive in prose instead of restating it inside the
+fenced block, is a defect of this manual's own §11 kind** — a turn that produces no forward
+instruction in the required mechanical format is a stalled turn, not a completed one.
 
 ## 13. Memory & direction
 `docs/workflows/AGENT_HANDOFF_LOG.md` is your canonical record of Cursor's recent work — read it before

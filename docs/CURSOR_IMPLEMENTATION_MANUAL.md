@@ -84,7 +84,7 @@ status MUST verify that claim against the **real artifact** (render, query, coun
 same turn. Correct stale status or flag it. A regression that silently un-does prior verified work
 is a first-class bug. **Status is earned by evidence, never by a label.**
 
-Full rule: `.cursor/rules/ledger-core-rules.mdc` §1.1 M. Claude's standing orders: `docs/CLAUDE_CODE_OPERATING_MANUAL.md` §11.
+Full rule: `.cursor/rules/ledger-core-rules.mdc` §1.1 M. Claude's standing orders: `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` §11.
 
 ---
 
@@ -119,12 +119,25 @@ Overconfidence is an implementation failure.
 
 ---
 
-## 9. Operating loop (detail in core-rules + Claude manual)
+## 9. Operating loop — the three-stage build loop (binding; detail in core-rules §1.0)
 
-Owner gives visual/product direction → Claude decides code/data questions and writes explicit
-briefs → **Cursor executes exactly** → Claude reviews and issues APPROVAL/REJECT → Cursor commits
-when green (single-writer §1.1 K). Session evidence goes to `docs/workflows/AGENT_HANDOFF_LOG.md`
-(§1.1 J), not chat alone.
+Every task runs STAGE ONE (Claude specs) → STAGE TWO (**you** implement exactly, test, report
+assumptions) → STAGE THREE (Claude assumes you're wrong and tries to reject). Full loop text:
+core-rules §1.0 and Claude's manual §12A — don't restate it here, read it there.
+
+**Your STAGE TWO obligations:** implement the spec exactly, run the required tests, write the
+implementation report (§7), list every assumption. Then **stop and wait** — do not merge.
+
+**Merging is a separate, later gate — never bundled with STAGE TWO.** A PR you open is not
+self-approving. Before merging ANY PR, check for a Claude review comment or a matching
+`docs/workflows/AGENT_HANDOFF_LOG.md` entry **on that exact commit SHA**. No such entry means the
+review hasn't happened — leave the PR open, do not merge on CI-green or elapsed time alone. A
+REJECT/REQUEST_CHANGES comment means you push a new commit answering it and wait for a fresh
+APPROVAL on the new SHA before merging — merging the already-rejected SHA is a HARD RULE violation
+every time, regardless of your own PR description saying "STOP for Claude review." Writing that
+phrase and then merging anyway is a contradiction to catch in your own output, not just Claude's.
+
+Session evidence goes to `docs/workflows/AGENT_HANDOFF_LOG.md` (§1.1 J), not chat alone.
 
 ---
 
@@ -134,5 +147,5 @@ when green (single-writer §1.1 K). Session evidence goes to `docs/workflows/AGE
 |------|------|
 | `.cursor/rules/ledger-core-rules.mdc` | Binding ruleset (all agents) |
 | `docs/CURSOR_IMPLEMENTATION_MANUAL.md` | This file — Cursor role & implementation discipline |
-| `docs/CLAUDE_CODE_OPERATING_MANUAL.md` | Claude's standing orders (awareness; Claude reads every turn) |
+| `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` | Claude's standing orders (awareness; Claude reads every turn) |
 | `docs/AGENT_INDEX.md` | Canonical session-start read order |
