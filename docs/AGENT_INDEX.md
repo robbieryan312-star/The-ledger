@@ -10,12 +10,14 @@ Single map of where to read before acting. **Do not** use `docs/archive/` for cu
 3. `docs/CURSOR_IMPLEMENTATION_MANUAL.md` — Cursor implementation engineer role & discipline (**Cursor reads every turn**)
 4. `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` — Claude Code standing orders, full role/procedure (**Claude reads every turn**; Cursor aware)
 5. `docs/workflows/AGENT_HANDOFF_LOG.md` — agent handoff log + improvement backlog (**Claude reads this, not chat** — §1.1 J)
-6. `PROGRESS.md` — milestones M1–M8, status board, blockers
-7. `docs/OBJECTIVE_SOURCES.md` — source constitution: approved sources, lean labels, tiers, key-routing matrix (consult FIRST for any source/key routing)
-8. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
-9. `KEYS.md` — SET vs EMPTY env vars (values in `.env.local` only; routing lives in the source constitution)
-10. `REPO.md` — canonical repo is `The-ledger` on `main`
-11. `PILOT_PROFILE_CHECKLIST.md` — what a complete profile requires
+6. `PROGRESS.md` — milestones M1–M8, **Dual Reference Lock** status board, blockers
+7. `docs/workflows/DUAL_REFERENCE_ROADMAP.md` — lock FL + S000033; per-conduit scaling ladder
+8. `docs/OBJECTIVE_SOURCES.md` — source constitution: approved sources, lean labels, tiers, key-routing matrix (consult FIRST for any source/key routing)
+9. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
+10. `KEYS.md` — SET vs EMPTY env vars (values in `.env.local` only; routing lives in the source constitution)
+11. `REPO.md` — canonical repo is `The-ledger` on `main`
+12. `PILOT_PROFILE_CHECKLIST.md` — federal reference profile contract (S000033)
+13. `docs/PILOT_STATE_CHECKLIST.md` — state reference profile contract (FL)
 
 Also read when relevant: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`,
 `.cursor/rules/ledger-editorial-voice.mdc`.

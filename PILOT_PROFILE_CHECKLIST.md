@@ -1,7 +1,12 @@
 # Pilot profile checklist — Phase 17a / 17b template
 
-**Pilot member:** `S000033` (Bernie Sanders, Senate, Vermont)  
-**Purpose:** Define what a *complete* Ledger profile requires before scaling org→topic joins and Said→Did depth to all 537 members.
+**Pilot member:** `S000033` (Bernie Sanders, Senate, Vermont) — **THE federal reference profile.**  
+**Purpose:** Define what a *complete* Ledger profile requires. **Do not scale beyond S000033** until
+every row below is `filled` or an owner-approved permanent `honest-gap` with verified conduit
+(end-to-end: source → sync → destination file → UI). See `docs/workflows/DUAL_REFERENCE_ROADMAP.md`.
+
+**Said→Did depth target:** **15** records where the verified record supports it (layout spec); current
+on-disk count: verify with manifest / `saidDid.json` before claiming complete.
 
 Honest gaps are required — never fill with paraphrase or fabrication. Use `"No verified record available"` in UI when a row is empty.
 

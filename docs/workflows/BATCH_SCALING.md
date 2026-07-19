@@ -1,9 +1,29 @@
-# Batch scaling workflow (M2)
+# Batch scaling workflow (M2 + Dual Reference Lock)
 
-The canonical loop for scaling profile data to all 537 members. Owner-defined; consistent with
-`PILOT_PROFILE_CHECKLIST.md` (the per-member contract), `.cursor/rules/ledger-core-rules.mdc`
-(binding rules), and the demo components (locked caps). Sequenced under **M2** in `PROGRESS.md`.
-Cursor executes; Claude Code reviews.
+The canonical loop for scaling profile and state data. Owner-defined (2026-07-19); consistent with
+`docs/workflows/DUAL_REFERENCE_ROADMAP.md`, `PILOT_PROFILE_CHECKLIST.md`, `docs/PILOT_STATE_CHECKLIST.md`,
+`.cursor/rules/ledger-core-rules.mdc`, and the demo components (locked caps). Sequenced under **M2**
+in `PROGRESS.md`. Cursor executes; Claude Code reviews.
+
+---
+
+## Conduit-first scaling (owner directive 2026-07-19)
+
+Scale **each data conduit** independently before widening member counts:
+
+**`1 → 10 → 25 → 80 → 200 → completion`**
+
+| Stage | Members (example) | States (example) |
+|-------|-------------------|------------------|
+| 1 | S000033 only | FL only |
+| 10 | +9 bioguideIds | +9 state codes |
+| 25 | +15 | +15 |
+| 80 | +55 | +20 (or pause states at 10 until federal conduits stable) |
+| 200 | +120 | — |
+| completion | 537 | 50 |
+
+A conduit **does not advance** to stage 10 until stage 1 passes on **both** Sanders and Florida
+(where the conduit applies).
 
 ---
 
@@ -43,10 +63,10 @@ For each member in the batch, and for each required data type (see the 12 layers
   reset each batch.
 
 ### 6. Advance to the next batch — progressively larger
-- M2 ladder: **15 → 50 → 100 → 150 → remainder**, each via `npm run profile:build`.
-- Start each new batch **slightly larger** than the last; increase size gradually as accuracy and
-  efficiency are proven.
-- **Exit condition:** 537/537 migrated; bundle deleted; per-batch reports archived in `PROGRESS.md`.
+- **Per-conduit ladder:** `1 → 10 → 25 → 80 → 200 → completion` (see above).
+- Within a conduit stage, use `npm run profile:build -- --members <ids>` for the member batch.
+- **Exit condition:** 537/537 migrated **per conduit**; all conduits at completion; bundle deleted;
+  per-stage reports archived in `PROGRESS.md` and the process log in `DUAL_REFERENCE_ROADMAP.md`.
 
 ---
 
@@ -56,7 +76,7 @@ For each member in the batch, and for each required data type (see the 12 layers
 |-------|------|---------|-----------------|-------------------------|---------------------|
 | Pilot | 1 | S000033 | clean | — | 17a baseline |
 | 1–3 | 20 | (batch1/2/3) | clean quality; reliability + efficiency fixed | ~5.4 → improved | retry/backoff, granule pre-filter, comprehensive boilerplate filter + build-gated fixture |
-| M2 next | 15 → 50 | TBD | pending | pending | `profile:build` one-command pipeline (Phase E cert first) |
+| M2 next | 1 (S000033) → 10 | conduit TBD | pending | pending | Dual Reference Lock before legacy 15-batch |
 
 ---
 

@@ -1,9 +1,7 @@
 # The Ledger — Roadmap & Progression Expectations
 
-**Last updated:** 2026-07-19T13:xx Z (this session — supersedes the earlier same-day entry, which
-was stale by mid-morning: it predated S2/PR41, source registry/PR42, W1-W4, PR #43/#45/#46, and the
-PR #46 merge-gate incident) · **Branch:** `claude/ledger-progress-review-jmd6gl` (governance) ·
-**Approved:** https://the-ledger-s4dn.vercel.app
+**Last updated:** 2026-07-19T17:30Z · **Branch:** `main` @ `86cc7dd` (PR #45 merged) · **Approved:** https://the-ledger-s4dn.vercel.app  
+**Strategic guide:** `docs/workflows/DUAL_REFERENCE_ROADMAP.md` — lock **Florida** + **Sanders (S000033)** before scale.  
 **Deploy naming:** Approved = `the-ledger-s4dn`. Owner has deleted the duplicate `the-ledger-jcjh`
 and `the-ledger` projects this session — confirm only `the-ledger-s4dn` remains in the Vercel
 dashboard if rate-limit noise persists.
@@ -22,6 +20,22 @@ just stalled at the one gate only the owner can clear.
 **This file replaces the old progress log as the canonical forward guide.** It binds BOTH
 agents (Claude Code + Cursor). Rules live in `.cursor/rules/ledger-core-rules.mdc` — this file
 never restates them, it sequences the work.
+
+---
+
+## Current phase — Dual Reference Lock (owner directive 2026-07-19)
+
+**Do not scale to 537 members until both references are conduit-complete.**
+
+| Reference | ID | Presentation | Data conduits | Next |
+|-----------|-----|--------------|---------------|------|
+| **Florida state** | `FL` | 👁 **LOCKED** (owner sign-off 2026-07-19) | 8/12 filled or computed; 4 keyed honest-gaps | Close keyed gaps; county map decision |
+| **Bernie Sanders** | `S000033` | Template for federal profiles | 9/12 filled; 3 honest-gaps + partials | Platform positions pipeline; Said→Did 8→15; org→vote path |
+
+**Scaling model (per conduit, then per member):** `1 → 10 → 25 → 80 → 200 → completion` — see
+`docs/workflows/DUAL_REFERENCE_ROADMAP.md` and `docs/workflows/BATCH_SCALING.md`.
+
+**After every collect → present → sync:** dual-agent review + update process log (accuracy mandate §1.1 M).
 
 ---
 
@@ -82,15 +96,15 @@ Entry: Phase C verified (done 2026-07-04). Cursor executing D1→D4, then E.
   manual intervention; 👁 owner reviews Pelosi + one existing profile visually.
 
 ### M2 — Scale to all 537 in reviewed batches
-Entry: M1 done (pipeline certified by the Pelosi test).
-- Batches: **15 → 50 → 100 → 150 → remainder**, each via `profile:build`. Never one mass run.
-- Batch protocol (every batch): Cursor runs the command → posts depth table + honest-gap/
-  fetch-failed ledger + all guard results → Claude spot-verifies ≥3 members' rendered output
-  (1 chosen for risk: female/Mc-surname/House/low-profile) + fetch-checks ≥5 source URLs →
-  approve → push → next batch. Any new defect class = pipeline fix + guard + reprocess before
-  the next batch (defects fix forward into the pipeline, never hand-patched per member).
-- Batch composition: featured/high-traffic members first, then by state coverage.
-- Acceptance: 537/537 migrated; bundle deleted; per-batch reports archived in this file's log.
+Entry: **Dual Reference Lock complete** — S000033 all layers filled or approved honest-gap; FL
+checklist (`docs/PILOT_STATE_CHECKLIST.md`) same; each conduit passed stage **1** on both references.
+- **Per-conduit ladder first:** `1 → 10 → 25 → 80 → 200 → 537` for each data type (votes, finance,
+  CREC, news, …) — never advance a conduit stage without Claude PASS on the prior stage.
+- **Member batches** (within a conduit stage): via `npm run profile:build -- --members <ids>`.
+  Legacy batch sizes (15 → 50 → 100 → 150) apply only **after** the conduit is verified at that stage.
+- Batch protocol (every batch): Cursor runs → depth table + honest-gap ledger + guards → Claude
+  spot-verifies ≥3 rendered profiles + fetch-checks source URLs → approve → push → next batch.
+- Acceptance: 537/537 migrated; bundle deleted; per-conduit stage log in this file.
 
 ### M3 — Follow the Money depth
 Entry: M2 ≥ 100 members migrated (money pipeline can develop in parallel after M1 on migrated set).
@@ -158,28 +172,22 @@ Elections, OpenCorporates — unchanged from prior log (see `.env.local` and `KE
 
 ## Status board (update in the same commit as the work)
 
-| Track | State (2026-07-19 — deploy pipeline; prior rows still as of `71b61c2` unless noted) |
-|-------|--------------------|
-| **Today's merges** | S2 (PR #41), source registry (PR #42), PR #39, W1 wiring, PR #43 (dead officials route deleted + sitemap 613 entries + Wave 1 data-loss guards), PR #46 (W3c checklist fix + W4 file audit) — all merged to `main`. PR #46 merged with a process defect (see below); content itself verified good post-merge. |
-| **Merge-gate incident** | PR #46 merged 2 min after opening, ~10 min before Claude's review posted, despite its own "STOP for Claude review" text. Fixed forward on `main` this session (PR #45, `cc49e04`): duplicate rule bullet removed, three-stage build loop restored, HARD RULE strengthened to "approval before MERGE" (not just push), Cursor confronted directly on PR #45. **Owner recommendation: add GitHub branch protection (required review) on `main` — text rules alone were bypassed.** |
-| **Aging PR sweep (assigned to Cursor, not yet done)** | PRs #28, #29, #30, #31, #40 open since 2026-07-14–19, no recorded Claude review. Spec posted on PR #45; awaiting Cursor action. |
-| FL `/states/FL` deploy | PR #39 landed this session; live at the approved URL — confirm current render matches the locked spec on next visual pass |
-| Migrated gold profiles | 7/537 (S000033, O000172, M000355, M001184, W000817, C001098, P000197) — all 7 at 30-vote depth + depth artifacts (Brief B T4-5-7, `9c310d6`; counts re-verified 07-08). **The other 530 are intentionally lightweight (name/party/state/office only, no votes/finance/news) — this is what most profile clicks currently show; see the KNOWN GAP note at the top of this file.** |
-| Docs cleanup + FL script consolidation | ✅ agent index, SETUP, FLORIDA_DATA, BATCH_SCALING, archive |
-| Phase C (display/credibility fix stack) | ✅ verified by Claude |
-| Phase D1–D4 | ✅ done (mock abolition, rules, RSS, CI guards) |
+| Track | State (2026-07-19 — `main` @ `86cc7dd` post PR #45) |
+|-------|--------------------------------------------------------|
+| **Dual Reference Lock** | **IN FLIGHT** — FL presentation locked 👁; Sanders conduit gaps remain (positions, orgVoteLinks, trades fetch-failed; Said→Did 1/15; news 5/15) |
+| **Today's merges** | S2 (PR #41), source registry (PR #42), PR #39, W1 wiring, PR #43, PR #46, **PR #45 governance** — merged to `main`. |
+| **Merge-gate incident** | PR #46 merged before Claude review; fixed forward in PR #45 (`86cc7dd`). **Owner recommendation: branch protection on `main`.** |
+| **Aging PR sweep** | PRs #28–#31, #40 — lower priority until #45→#47→#48 clean. |
+| FL `/states/FL` deploy | PR #39 merged; live at approved URL; presentation 👁 locked |
+| FL `/states/FL` data | 67 counties + ranks; Wave 1 preserve-on-failure; keyed gaps (LegiScan, OpenStates, NewsAPI, SAM); news slice **not on state page** |
+| S000033 manifest | votes=30 filled · saidDid=1 partial · positions/orgVoteLinks=honest-gap · trades=fetch-failed · news=5 partial — see `PILOT_PROFILE_CHECKLIST.md` |
+| Migrated gold profiles | 7/537 — **do not expand** until S000033 reference complete per conduit ladder |
+| W3 + Wave 1 + rules | ✅ merged PR #43, #46, #45 |
+| Guard suites | **20** prebuild commands + render-integrity postbuild (`docs/AGENT_INDEX.md`) |
+| M2 scaling | **BLOCKED** until Dual Reference Lock + per-conduit stage 1 PASS on FL + S000033 |
+| County map drilldown | DEAD UI — wire data or remove cluster (`FILE_INVENTORY_AUDIT.md`) |
 | Phase E (Pelosi pipeline test) | In review — P000197 profile:build guards PASS; awaits owner visual 👁 |
-| Recovery audit (P0–P7) | ✅ complete — prebuild + full build pass |
-| Guard suites | **19** prebuild commands + render-integrity postbuild (see `docs/AGENT_INDEX.md`) + CI via guards.yml (warmed render step) |
-| Font / Turbopack | ✅ system stack (M6 self-host optional for brand parity) |
-| News | Manifest-driven RSS sync with required `status` field + news-status guard + feed-health report (Brief B T1-2, `3bd9ac4`/`24646f7`); honest gaps where feeds thin; Roll Call feed auto-disabled after 3 timeouts |
-| P000197 positions | Refill executed 2026-07-08 — scraped to bundle; migrate filters → **honest-gap** (zero scaffolds); see `data/reports/P000197-positions-diagnosis.json` |
-| P0/P1 audit debt | ✅ prebuild deterministic; sync-news-rss import guard + --members; FEC schedule-A paths canonical (`cursor/p0-p1-debt-remediation-4114`) |
-| Scoped syncs (§5 no-full-corpus law) | `--members` scoping live: votes-national (+ under-filled high-water-mark bypass `71b61c2`), stock-trades (§6 meta honesty), RSS news |
-| Failure-handoff rules | §1.1 hardened: autonomous handoff after 1st failure, anti-stale evidence, three-strike same-turn flow (`fdd025c`, `d443ecb`, `828e650`) |
-| Optimization program | ✅ W0–W5 complete (sync kernel, manifest index, read-path docs, archive one-offs, optimization guards, profile:build validate-only + depth JSON) |
-| File audit progress | L1 + L2/L3 high-priority reviewed (22 files); L5–L8 pending M2 scale |
-| M2 scaling | **BLOCKED on M1 entry criteria — Phase E owner visual sign-off on the P000197 (Nancy Pelosi) pipeline test, not yet given.** Guards pass; this is a genuine owner-only gate, not an agent task. Live profile: the approved URL's `/politicians/nancy-pelosi`. This is the actual unblock for the 530-empty-profile gap above — once approved, M2's batch protocol (15→50→100→150→remainder) can start. |
+| Optimization program | ✅ W0–W5 complete |
 
 ## Compressed history (pre-roadmap)
 

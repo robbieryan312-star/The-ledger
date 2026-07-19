@@ -562,6 +562,8 @@ discipline: `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6. Do not restate §11 here
 | If the work touches… | Read this first |
 |----------------------|-----------------|
 | What a complete profile requires; data layers; what "done" means | `PILOT_PROFILE_CHECKLIST.md` |
+| What a complete state profile requires (FL reference) | `docs/PILOT_STATE_CHECKLIST.md` |
+| Dual-reference lock + per-conduit scaling ladder | `docs/workflows/DUAL_REFERENCE_ROADMAP.md` |
 | How batches are collected/reviewed/sized (the scaling loop) | `docs/workflows/BATCH_SCALING.md` |
 | What counts as a "Said" statement (floor remark vs. submission boilerplate/fragment) | `PILOT_PROFILE_CHECKLIST.md` → Said acceptance rule |
 | How much shows per row/article; truncation; counts per section; layout | the demo components in `components/politicians/` — these ARE the locked layout |
