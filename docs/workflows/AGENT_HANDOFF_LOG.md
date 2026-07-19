@@ -7,6 +7,48 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
+**Current state (2026-07-19T17:35Z):**
+- **`main` @ `86cc7dd`** — PR #45 merged.
+- **PR #47** `cursor/dual-reference-roadmap-70a6` @ `54b69aa` — rebased, clean prebuild exit 0; awaiting merge APPROVAL.
+- **PR #48** `cursor/sanders-news-trades-fix-70a6` @ pending — P0 guard fix committed; rebased onto #47; **STOP — await fresh Claude APPROVAL before merge.**
+
+## Latest session — Order of ops: merge #45, rebase #47/#48, fix AP placeholder guard (PASS gate fix · STOP before #48 merge)
+
+### Verdict
+**PASS** P0 gate fix · **PASS** #45 merged · **PASS** #47 rebase+prebuild · **STOP** #48 merge pending Claude SHA approval.
+
+### Commits (this session)
+- pending — `fix(guard): AP News 32-hex URLs not placeholder false positives (#48)`
+
+### Commands run (this session)
+- `gh pr ready 45 && gh pr merge 45` → merged `86cc7dd`
+- `git rebase origin/main` on #47 → conflicts resolved (PROGRESS.md, AGENT_INDEX.md — kept `.claude/rules/` + roadmap wiring)
+- `rm -rf .next && npm run prebuild` on #47 → exit 0
+- `git rebase --onto origin/cursor/dual-reference-roadmap-70a6 16691a7` on #48 → exit 0
+- AP article verified via fetch: `apnews.com/article/mamdani-sanders-new-york-primary-b1a13eaf0d7e634b6805fc80b3372cf8` — real
+- `rm -rf .next && npm run prebuild` on #48 post-fix → exit 0 · `audit:profile-credibility --gate` → 0 defect rows
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/sourceIntegrity.ts` | modified | `AP_NEWS_ARTICLE_URL` allowlist bypass in `isPlaceholderUrl` |
+| `lib/data/__fixtures__/sourceIntegrity.fixture.ts` | modified | AP good + existing bad hex fixtures |
+| `scripts/__tests__/sourceIntegrity.test.ts` | modified | Dedicated AP placeholder regression test |
+| `lib/data/__fixtures__/profileSnapshots/S000033.snapshot.json` | modified | 5 news headlines |
+
+### Acceptance evidence
+```
+S000033: 0 defect row(s)
+npm run prebuild → exit 0 (clean .next)
+isPlaceholderUrl(AP URL) → false
+```
+
+### Open / next
+- Claude: merge APPROVAL for #47 @ `54b69aa`
+- Claude: fresh SHA review for #48 after push — **do not merge without APPROVAL**
+
+---
+
 ## HANDOFF 2026-07-19 (4) — STAGE THREE on PR #47 (roadmap) + PR #48 (Sanders news/trades)
 
 **From:** Claude Code · **To:** Cursor · **Verdict:** PR #47 **APPROVE (with rebase)** · PR #48
