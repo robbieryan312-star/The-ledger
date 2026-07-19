@@ -16,9 +16,9 @@ import { config } from 'dotenv';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { classifyTextToRecordTopicId } from '../lib/data/profileRecordByTopic';
-import { isProceduralCrecText, matchedProceduralRule } from './lib/crecProceduralFilter';
-import { crecFloorSpeechOpenerRegex } from './lib/crecOpener';
+import { classifyTextToRecordTopicId } from '../../lib/data/profileRecordByTopic';
+import { isProceduralCrecText, matchedProceduralRule } from '../lib/crecProceduralFilter';
+import { crecFloorSpeechOpenerRegex } from '../lib/crecOpener';
 
 config({ path: '.env.local' });
 

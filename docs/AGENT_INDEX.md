@@ -162,4 +162,4 @@ ever contradicts its owner, that is a bug to fix in the same turn (core-rules "o
 | `docs/archive/progress-screenshots.md` | archived | — |
 | `docs/archive/FUTURE_ROADMAP.md` | idea backlog, not scheduled | `PROGRESS.md` |
 | `docs/archive/STATE_COUNTY_EXPANSION.md` | deferred proposal | — |
-| `lib/data/reference-sources.ts` | flagged zero-importer in `FILE_INVENTORY_AUDIT.md` | pending owner decision (wire or remove) |
+| `docs/archive/DATA_SOURCES.md` | ARCHIVED (pre-DNU mock framing) | `docs/OBJECTIVE_SOURCES.md` + `lib/data/SOURCE_LOOKUP.md` |

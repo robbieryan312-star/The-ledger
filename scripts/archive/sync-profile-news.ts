@@ -33,8 +33,8 @@ import {
   isNearDuplicateHeadline,
   isWireServiceOutlet,
   normalizeUrlForDedupe,
-} from '../lib/data/sourceIntegrity';
-import type { NewsItem, Source } from '../lib/types';
+} from '../../lib/data/sourceIntegrity';
+import type { NewsItem, Source } from '../../lib/types';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const profilesRoot = path.join(projectRoot, 'lib', 'data', 'generated', 'profiles');

@@ -5,9 +5,9 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { stripCrecFloorOpener } from '../lib/data/crecDisplayText';
-import { MIGRATED_PROFILE_BIOGUIDES } from '../lib/data/memberProfile';
-import type { TopicStatementEntry } from '../lib/data/topicPositions';
+import { stripCrecFloorOpener } from '../../lib/data/crecDisplayText';
+import { MIGRATED_PROFILE_BIOGUIDES } from '../../lib/data/memberProfile';
+import type { TopicStatementEntry } from '../../lib/data/topicPositions';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const profilesRoot = path.join(projectRoot, 'lib/data/generated/profiles');

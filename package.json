@@ -14,6 +14,7 @@
     "audit:profile-credibility": "tsx scripts/audit-profile-credibility.ts --gate",
     "audit:inventory": "tsx scripts/generate-file-inventory.ts",
     "audit:inventory-md": "tsx scripts/generate-file-inventory-audit.ts",
+    "refresh:migrated-votes": "tsx scripts/refresh-migrated-profile-votes.ts",
     "audit:layer": "tsx scripts/audit-file-layer.ts",
     "profile:build": "tsx scripts/profile-build.ts",
     "test:typecheck": "tsc --noEmit",

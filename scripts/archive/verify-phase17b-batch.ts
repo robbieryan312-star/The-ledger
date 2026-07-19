@@ -14,10 +14,10 @@
 import { readFileSync, appendFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildSaidDidDiffsFromTopicPositions } from '../lib/data/buildSaidDidDiffs';
-import { getScheduleAForBioguide } from '../lib/data/fecScheduleA';
-import { buildOrgVoteTopicLinks } from '../lib/data/buildOrgVoteTopicLinks';
-import type { VoteRecord } from '../lib/types';
+import { buildSaidDidDiffsFromTopicPositions } from '../../lib/data/buildSaidDidDiffs';
+import { getScheduleAForBioguide } from '../../lib/data/fecScheduleA';
+import { buildOrgVoteTopicLinks } from '../../lib/data/buildOrgVoteTopicLinks';
+import type { VoteRecord } from '../../lib/types';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TP_FILE = path.join(projectRoot, 'lib', 'data', 'generated', 'topicPositions.json');

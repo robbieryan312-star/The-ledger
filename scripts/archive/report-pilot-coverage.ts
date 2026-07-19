@@ -2,13 +2,13 @@
  * One-off pilot coverage report for M000355, O000172, M001184.
  * Run: npx tsx scripts/report-pilot-coverage.ts
  */
-import { STANDARD_POLICY_TOPICS } from '../lib/data/topicCoverage';
-import { buildMergedProfileIssues } from '../lib/data/issuesFromTopicPositions';
-import { getMemberTopicPositions } from '../lib/data/topicPositions';
-import { allPoliticians } from '../lib/data/allPoliticians';
-import { derivePromiseStatus } from '../lib/data/derivePromiseStatus';
-import { VERIFIED_MEDIA_QUOTES_BY_BIOGUIDE } from './lib/approvedMediaQuotes';
-import { cacheStats } from './lib/articleVerificationCache';
+import { STANDARD_POLICY_TOPICS } from '../../lib/data/topicCoverage';
+import { buildMergedProfileIssues } from '../../lib/data/issuesFromTopicPositions';
+import { getMemberTopicPositions } from '../../lib/data/topicPositions';
+import { allPoliticians } from '../../lib/data/allPoliticians';
+import { derivePromiseStatus } from '../../lib/data/derivePromiseStatus';
+import { VERIFIED_MEDIA_QUOTES_BY_BIOGUIDE } from '../lib/approvedMediaQuotes';
+import { cacheStats } from '../lib/articleVerificationCache';
 
 const PILOTS = ['M000355', 'O000172', 'M001184'] as const;
 

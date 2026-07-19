@@ -55,7 +55,7 @@ Full entries with **lookFor** field lists: `SOURCE_CATALOG` in `sourceCatalog.ts
 |------|---------|--------|
 | National roll-call snapshot for all 537 members (M2 default) | `npm run sync:votes-national` | `data/national/votes/congress-votes.json` |
 | Legacy per-member overlay for demo/non-migrated members | `npm run sync:votes` | `lib/data/generated/congressVotes.json` |
-| Refresh migrated profile vote files from national snapshot (no API) | `scripts/refresh-migrated-profile-votes.ts` | `lib/data/generated/profiles/{id}/votes.json` |
+| Refresh migrated profile vote files from national snapshot (no API) | `npm run refresh:migrated-votes` | `lib/data/generated/profiles/{id}/votes.json` |
 
 Do **not** cite `sync:congress-votes` — that script name does not exist; use `sync:votes` or `sync:votes-national`.
 

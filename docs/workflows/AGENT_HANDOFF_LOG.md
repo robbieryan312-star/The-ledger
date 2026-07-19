@@ -7,7 +7,39 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-## HANDOFF 2026-07-19 — Phase 1: source subsystem (news path + FL sources template)
+## HANDOFF 2026-07-19 — Phase 2: archive cruft (Flawless Agent-Navigation System)
+
+**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS — STOP for STAGE THREE review (Phase 2)**
+
+### Objective
+Archive unwired scripts + finished docs; delete confirmed 0-importer dead shims; do not touch dead routes.
+
+### Branch
+`cursor/phase2-archive-cruft-70a6` (base `main` @ `b89f1cb`)
+
+### Summary
+| Area | Action | Count |
+|------|--------|-------|
+| scripts → archive | 9 one-offs + sync-profile-news | 9 moved |
+| lib/data dead shims | permanent delete | 10 files |
+| components dead | delete | 5 files |
+| docs/workflows → archive | finished audits + content-maps | 5 paths |
+| npm aliases added | `refresh:migrated-votes` (+ existing `audit:inventory-md`) | 1 new |
+
+**Not touched:** `app/lobbying/[id]`, `app/counties/[fips]` (owner decision pending).
+
+### Verification
+- `npm run audit:inventory` + `audit:inventory-md` → regenerated
+- `npm run test:docs-integrity` + `test:docs-consistency` → exit 0
+- `rm -rf .next && npm run prebuild` + `npm run build` → exit 0
+
+### Open / next
+- **STOP** — Claude STAGE THREE on Phase 2 before P3
+- PR #47 / #48 still gated
+
+---
+
+## HANDOFF 2026-07-19 — Phase 1: source subsystem (APPROVED · merged `b89f1cb`)
 
 **From:** Cursor · **To:** Claude Code · **Verdict:** **PASS — STOP for STAGE THREE review (Phase 1)**
 
@@ -205,12 +237,15 @@ W4 expand FILE_INVENTORY_AUDIT with ACCURACY column + every-file table.
 
 | Date | Item | Status |
 |------|------|--------|
-| 2026-07-19 | **Platform audit (read-only)** — P0 DOC-01 work-log path; P1 FL/FED/DOC findings in `PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` | open — Claude brief before any fix |
-| 2026-07-19 | **OWNER DASHBOARD:** rename `the-ledger-s4dn` → Approved; optional one Beta; pause/delete others; optional later `VERCEL_TOKEN` for `vercel project rename` | open — owner only |
-| 2026-07-19 | **OWNER EMAIL:** activate Census API key from re-signup; add Runtime Secret `CENSUS_API_KEY` | open — owner only |
-| 2026-07-19 | Full FL county set via keyless data.census.gov (was SAMPLE n=10) | done on PR #39 |
-| 2026-07-18 | `npm audit`: 7 vulns remain after safe `npm audit fix` — need upstream Next/react-simple-maps (see `docs/workflows/NPM_AUDIT_2026-07-18.md`) | open |
-| 2026-07-11 | Add an explicit guard for national news refresh semantics so a successful empty response cannot be confused with fetch failure or stale-window retention. | open |
+| 2026-07-19 | **DOC-01 (P0):** Cursor Cloud injected rules out of sync — still reference deleted `agent-ops.mdc` | open — owner re-sync dashboard rules |
+| 2026-07-19 | **Platform audit P1 (archived):** DOC-03–DOC-17 contradictions — push gate, session-start order, corroboration, migrated count 7, honest-gap copy, guard counts | open — Claude brief (source: `docs/archive/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md`) |
+| 2026-07-19 | **Platform audit P1 (product):** Consistency Score removal, DonorChart PAC-first, layout-number drift, silent-empty sections | open — owner visual + Claude brief |
+| 2026-07-19 | **Platform audit P1 (data):** FL dual-vintage asOf; ingest preserve-on-failure gaps (rankings, BEA, counties, openstates/sam/govinfo/news) | open |
+| 2026-07-19 | **Platform audit P1 (CI):** `refresh-data.yml` missing Playwright install for render-integrity postbuild | open |
+| 2026-07-19 | **Platform audit P2:** `react-simple-maps` React 19 peer invalid; unify Node 20/22 in CI | open |
+| 2026-07-19 | **OWNER DASHBOARD:** rename `the-ledger-s4dn` → Approved | open — owner only |
+| 2026-07-18 | `npm audit`: 7 vulns — upstream Next/react-simple-maps (archived: `docs/archive/workflows/NPM_AUDIT_2026-07-18.md`) | open |
+| 2026-07-11 | Guard: national news refresh semantics — empty success vs fetch-failed | open |
 
 
 
@@ -390,7 +425,7 @@ Also: Vercel rename (agent if possible), Census key retry, ideal model, owner-on
 ### Verdict / outcome
 **COMPLETE (findings only)** — Four parallel read-only passes (instructions; app+components;
 lib+scripts; config/CI/data) + real gate runs. Findings consolidated and **corrected** in
-`docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md`. **No product/data changes. No merge of PR #39.**
+`docs/archive/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md`. **No product/data changes. No merge of PR #39.**
 Vercel rename not agent-doable (no `VERCEL_TOKEN`). Census KeySignup **302 → create_success.html**.
 Ideal auditor: **Claude Opus 4.8 Thinking High**.
 
@@ -403,7 +438,7 @@ Ideal auditor: **Claude Opus 4.8 Thinking High**.
 
 ### Key findings (full detail in audit doc)
 - **P0 (owner):** Cursor Cloud injected rules still reference deleted `agent-ops.mdc` + mandate `AUDIT_DEBT_BRIEF.md`; on-disk core-rules already resolved this → re-sync dashboard rules.
-- **P1 product:** Consistency Score still ships (`app/compare/CompareContent.tsx`, dead `components/politicians/ConsistencyScore.tsx`/`CredibilityConsistency.tsx`); DonorChart individuals-before-PACs; topic-title 80 / evidence-117 drift; silent-empty sections; non-canonical honest-gap strings; lingering "(demo)" labels with FEC data.
+- **P1 product:** Consistency Score still ships in compare (`app/compare/CompareContent.tsx`); dead ConsistencyScore/CredibilityConsistency components **removed Phase 2**; DonorChart individuals-before-PACs; topic-title 80 / evidence-117 drift; silent-empty sections; non-canonical honest-gap strings; lingering "(demo)" labels with FEC data.
 - **P1 data/CI:** dual-vintage `asOf` on FL page (rebuild `state-economic.json` slice); ingest overwrite-on-failure risks (rankings/BEA/counties/openstates/sam/govinfo/news); missing `--members` on national syncs; `react-simple-maps` peer-invalid with React 19; `refresh-data.yml` missing Playwright install.
 - **P1 docs:** push/merge gate ambiguity; corroboration/`'alleged'` rule disagreement; migrated count 6-vs-7; Census keyless policy; session-start order + handoff retention.
 
@@ -423,7 +458,7 @@ First audit-doc draft cited nonexistent/renamed paths (`agent-ops.mdc`, `BillCar
 ### Files touched (this session)
 | Path | Action | What changed |
 |------|--------|--------------|
-| `docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` | rewritten | Accurate consolidated deep-audit findings + corrected citations |
+| `docs/archive/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` | rewritten | Accurate consolidated deep-audit findings + corrected citations |
 | `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Current state + this session |
 
 ### Open / next
@@ -569,7 +604,7 @@ Clear main RED (docs-integrity gitignored citation), fix inverted income chip, u
 
 ## Session log 2 — CONSOLIDATED BRIEF v2 Phases -1→D (COMPLETE)
 
-Landed on `main` via #26→#25→#27; gate @ `4216712` / tip `7fda2b9`. Claude re-review found FIX-1/2/3 (this Latest session). Audit on disk: `docs/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md`.
+Landed on `main` via #26→#25→#27; gate @ `4216712` / tip `7fda2b9`. Claude re-review found FIX-1/2/3 (this Latest session). Audit archived: `docs/archive/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md`.
 
 ---
 
@@ -592,7 +627,7 @@ Binding rule: *“Claude Code cannot see Cursor chat. Unlogged session = failed 
 (`.cursor/rules/ledger-core-rules.mdc` §1.1 J)
 
 ### Fix this turn
-1. Write full audit verbatim to **`docs/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md`**
+1. Write full audit verbatim to **docs/archive/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md**
 2. Point Current state + Latest session here so Claude’s session-start read finds it
 3. Update PR #25 body with the artifact link
 4. Commit + push on `cursor/fl-state-locked-spec-70a6`
@@ -601,7 +636,7 @@ Binding rule: *“Claude Code cannot see Cursor chat. Unlogged session = failed 
 **COMPLETE** — Claude can now read the full review on disk. CONSOLIDATED BRIEF v2 execution resumes after this commit.
 
 ### Full audit location
-→ **[`docs/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md`](./FL_INFRASTRUCTURE_AUDIT_2026-07-12.md)**
+→ **[FL infrastructure audit (archived)](./archive/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md)**
 
 ---
 

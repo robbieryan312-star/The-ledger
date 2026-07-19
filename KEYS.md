@@ -10,7 +10,6 @@ per-key **SET vs EMPTY status** below; do not duplicate routing here.
 | Source of truth | Purpose |
 |-----------------|---------|
 | `lib/data/sourceCatalog.ts` | What to pull from where, destination view, lookFor lists |
-| `lib/data/reference-sources.ts` | Backward-compatible re-export of catalog |
 | `scripts/setup-github-secrets.sh` | Groups pushed to GitHub Actions |
 | `.env.local` | Actual key values (never commit) |
 

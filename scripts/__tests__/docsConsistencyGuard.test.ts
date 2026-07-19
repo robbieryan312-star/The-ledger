@@ -19,7 +19,7 @@ import {
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const ARCHIVE = path.join(projectRoot, 'docs', 'archive');
-const SKIP_DIRS = new Set([ARCHIVE, path.join(projectRoot, 'docs', 'workflows', 'content-maps')]);
+const SKIP_DIRS = new Set([ARCHIVE]);
 
 function walkDocs(dir: string, acc: string[] = []): string[] {
   if (SKIP_DIRS.has(dir)) return acc;
