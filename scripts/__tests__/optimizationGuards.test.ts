@@ -145,3 +145,32 @@ test('route-pages: app/**/page.tsx must be server components (no use client)', (
     `route pages must not be use client:\n${violations.join('\n')}`,
   );
 });
+
+test('refresh-data workflow fails keyed ingests instead of treating failures as missing secrets', () => {
+  const workflow = readFileSync(path.join(projectRoot, '.github', 'workflows', 'refresh-data.yml'), 'utf8');
+  const unsafeSecretSkipLines = workflow
+    .split('\n')
+    .filter((line) => /\[\s+-n\s+"\$[A-Z0-9_]+"\s+\].*&&\s+npm run .*?\|\|\s+echo "skip /.test(line));
+
+  assert.equal(
+    unsafeSecretSkipLines.length,
+    0,
+    `secret-gated refresh commands must not swallow npm failures as missing secrets:\n${unsafeSecretSkipLines.join('\n')}`,
+  );
+  assert.match(workflow, /set -euo pipefail/);
+});
+
+test('refresh-data workflow runs build without postbuild render and then runs render-integrity explicitly', () => {
+  const workflow = readFileSync(path.join(projectRoot, '.github', 'workflows', 'refresh-data.yml'), 'utf8');
+
+  assert.match(
+    workflow,
+    /RENDER_INTEGRITY_SKIP_POSTBUILD=1 npm run build/,
+    'refresh-data must skip postbuild render-integrity during build, matching guards.yml',
+  );
+  assert.match(
+    workflow,
+    /RENDER_INTEGRITY_EXTERNAL_SERVER=1 npm run test:render-integrity/,
+    'refresh-data must still run render-integrity after starting a warmed server',
+  );
+});
