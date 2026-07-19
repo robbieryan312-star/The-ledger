@@ -3,6 +3,22 @@
   "status": "filled",
   "items": [
     {
+      "id": "s000033-rss-1",
+      "headline": "Fetterman rips Sanders over Platner, El-Sayed endorsements",
+      "summary": "Fetterman rips Sanders over Platner, El-Sayed endorsements",
+      "date": "2026-07-19",
+      "category": "Congress",
+      "isOpinion": false,
+      "isVerified": false,
+      "url": "https://thehill.com/homenews/campaign/5976688-fetterman-criticizes-sanders-endorsements/",
+      "source": {
+        "name": "The Hill",
+        "url": "https://thehill.com/homenews/campaign/5976688-fetterman-criticizes-sanders-endorsements/",
+        "tier": "media",
+        "date": "2026-07-19"
+      }
+    },
+    {
       "id": "n1",
       "headline": "Sanders reintroduces Medicare for All Act with record House cosponsors",
       "summary": "Senator Sanders, Representative Jayapal, and Representative Dingell reintroduced the Medicare for All Act of 2023 with 14 Senate cosponsors and more than 110 House cosponsors. The bill would establish a single-payer program covering all U.S. residents without premiums, deductibles, or copayments.",
@@ -20,5 +36,5 @@
       "url": "https://www.theguardian.com/commentisfree/2023/may/18/healthcare-us-human-right-medicare-for-all-bernie-sanders"
     }
   ],
-  "note": "1 relevant article(s) from approved-outlet RSS (target 15)."
+  "note": "2 relevant article(s) from approved-outlet RSS (target 15)."
 }

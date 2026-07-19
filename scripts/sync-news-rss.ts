@@ -31,8 +31,14 @@ import {
   normalizeUrlForDedupe,
 } from '../lib/data/sourceIntegrity';
 import type { NewsItem, Source } from '../lib/types';
+import {
+  loadMemberNewsDisplayMap,
+  matchesMemberInText,
+} from './lib/memberNewsMatching';
+import type { ProfileDisplayIdentity } from './lib/profileDisplayIdentity';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+let displayByBio: Map<string, ProfileDisplayIdentity> = new Map();
 const profilesRoot = path.join(projectRoot, 'lib', 'data', 'generated', 'profiles');
 const legislatorsFile = path.join(projectRoot, 'lib', 'data', 'generated', 'currentLegislators.json');
 const CHECKPOINT_FILE = '/tmp/ledger-sync-news-rss-checkpoint.json';
@@ -247,32 +253,14 @@ function isOpinionUrl(url: string): boolean {
 }
 
 function matchesMember(text: string, leg: LegislatorRow): string | null {
-  const ln = lastNameOf(leg.name);
-  if (!ln) return null;
-  const honorific = leg.chamber === 'senate' ? `Sen. ${ln}` : `Rep. ${ln}`;
-  const patterns = [
-    new RegExp(`\\b${leg.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i'),
-    new RegExp(`\\bSen\\.\\s+${ln}\\b`, 'i'),
-    new RegExp(`\\bRep\\.\\s+${ln}\\b`, 'i'),
-    new RegExp(`\\bSenator\\s+${ln}\\b`, 'i'),
-    new RegExp(`\\bRepresentative\\s+${ln}\\b`, 'i'),
-  ];
-  for (const re of patterns) {
-    if (re.test(text)) {
-      if (re.source.includes('Sen\\.')) return honorific;
-      if (re.source.includes('Rep\\.')) return honorific;
-      return leg.name;
-    }
-  }
-  if (new RegExp(`\\b${ln}\\b`, 'i').test(text)) return ln;
-  return null;
+  return matchesMemberInText(text, leg, displayByBio);
 }
 
 function isPoliticallyRelevant(title: string, description: string): boolean {
   const blob = `${title} ${description}`;
   if (LIFESTYLE_DROP.test(blob)) return false;
   const political =
-    /\b(congress|senate|house|bill|vote|legislat|president|election|campaign|committee|amendment|filibuster|primary|impeach|spending|budget|tariff|immigration|healthcare|abortion|defense|U\.S\.|Washington)\b/i;
+    /\b(congress|senate|senator|house|bill|vote|legislat|president|election|campaign|committee|amendment|filibuster|primary|impeach|spending|budget|tariff|immigration|healthcare|abortion|defense|endorsements?|caucus|U\.S\.|Washington)\b/i;
   return political.test(blob);
 }
 
@@ -422,6 +410,7 @@ async function loadExistingNews(bioguideId: string): Promise<ExistingNewsFile | 
 
 async function main(): Promise<void> {
   config({ path: path.join(projectRoot, '.env.local') });
+  displayByBio = loadMemberNewsDisplayMap(projectRoot);
 
   const allManifestMembers = await loadManifestMembers();
   const membersArg = parseMembersArg(process.argv);

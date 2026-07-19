@@ -19,6 +19,7 @@ const CATEGORY_FILES = [
   'votes',
   'finance',
   'news',
+  'trades',
   'controversies',
   'endorsements',
 ] as const;
@@ -91,6 +92,7 @@ async function main(): Promise<void> {
     PROFILE_VOTES: [],
     PROFILE_FINANCE: [],
     PROFILE_NEWS: [],
+    PROFILE_TRADES: [],
     PROFILE_CONTROVERSIES: [],
     PROFILE_ENDORSEMENTS: [],
   };
@@ -116,9 +118,11 @@ async function main(): Promise<void> {
                     ? 'PROFILE_FINANCE'
                     : cat === 'news'
                       ? 'PROFILE_NEWS'
-                      : cat === 'controversies'
-                        ? 'PROFILE_CONTROVERSIES'
-                        : 'PROFILE_ENDORSEMENTS';
+                      : cat === 'trades'
+                        ? 'PROFILE_TRADES'
+                        : cat === 'controversies'
+                          ? 'PROFILE_CONTROVERSIES'
+                          : 'PROFILE_ENDORSEMENTS';
       mapBlocks[mapKey].push(`  ${id}: ${varName},`);
     }
   }
@@ -155,6 +159,10 @@ ${mapBlocks.PROFILE_FINANCE.join('\n')}
 
 export const PROFILE_NEWS = {
 ${mapBlocks.PROFILE_NEWS.join('\n')}
+} as const;
+
+export const PROFILE_TRADES = {
+${mapBlocks.PROFILE_TRADES.join('\n')}
 } as const;
 
 export const PROFILE_CONTROVERSIES = {

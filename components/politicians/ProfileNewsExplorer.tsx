@@ -121,6 +121,9 @@ export default function ProfileNewsExplorer({ news, name }: { news: NewsItem[]; 
     );
   }
 
+  const opinionHiddenBlocking =
+    !showOpinion && opinionCount > 0 && filtered.length === 0 && news.length === opinionCount;
+
   return (
     <div className="space-y-4">
       {/* Why this isn't just a feed — mission-aligned, not a disclaimer */}
@@ -287,12 +290,37 @@ export default function ProfileNewsExplorer({ news, name }: { news: NewsItem[]; 
 
       {/* Results */}
       <div className="space-y-3">
+        {opinionHiddenBlocking && (
+          <div className="rounded-xl border border-[#c8a951]/30 bg-[#c8a951]/5 p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div>
+              <p className="text-[#e6cd8a] text-sm font-medium">
+                {opinionCount} article{opinionCount !== 1 ? 's' : ''} on file — hidden by default
+              </p>
+              <p className="text-gray-400 text-xs mt-1">
+                Opinion and editorial pieces are labeled and kept off by default. Enable the toggle below to review them.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowOpinion(true)}
+              className="shrink-0 px-3 py-2 rounded-lg text-xs font-semibold bg-[#c8a951] text-[#0a1628] hover:bg-[#e6cd8a] transition-colors"
+            >
+              Show opinion &amp; editorial
+            </button>
+          </div>
+        )}
         {filtered.length === 0 ? (
           <div className="rounded-xl border border-[#1e3a5f] bg-[#0d1f35] p-8 text-center">
             <Newspaper className="h-9 w-9 text-gray-600 mx-auto mb-3" />
-            <p className="text-white/60 text-sm font-medium">No verified record available for these filters</p>
+            <p className="text-white/60 text-sm font-medium">
+              {opinionHiddenBlocking
+                ? `No non-opinion articles for ${name} in this record`
+                : 'No verified record available for these filters'}
+            </p>
             <p className="text-white/30 text-xs mt-1">
-              Try clearing the search or widening the tier, category, or date filters.
+              {opinionHiddenBlocking
+                ? 'Additional journalism is collected from approved-outlet RSS feeds on each sync.'
+                : 'Try clearing the search or widening the tier, category, or date filters.'}
             </p>
             {hasActiveFilters && (
               <button

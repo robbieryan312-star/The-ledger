@@ -76,6 +76,7 @@ export interface PoliticianProfileClientProps {
   stockEntry?: StockTradeEntry;
   usingOfficialTrades: boolean;
   demoTradeCount: number;
+  tradeGap?: { status: 'honest-gap' | 'fetch-failed'; note: string } | null;
   recordByTopic: ProfileRecordByTopic | null;
   memberDeep: MemberDeepProfile | null;
   voteviewMember: ReturnType<typeof import('@/lib/data/slices/voteview').getVoteviewByBioguide>;
@@ -528,6 +529,7 @@ export default function PoliticianProfileClient({
   stockEntry,
   usingOfficialTrades,
   demoTradeCount,
+  tradeGap,
   recordByTopic,
   memberDeep,
   voteviewMember,
@@ -1013,6 +1015,8 @@ export default function PoliticianProfileClient({
                 usingOfficialTrades={usingOfficialTrades}
                 officialSource={stockEntry?.source}
                 demoTradeCount={demoTradeCount}
+                gapNote={tradeGap?.note}
+                gapStatus={tradeGap?.status}
               />
             )}
           </div>
