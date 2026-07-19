@@ -29,7 +29,7 @@ core-rules, core-rules wins. Newest handoff on top.
 Owner visual refinement: condense By the numbers, display labels, decimals, ranks/age, live COL (BEA headline + MERIC + BLS CPI). Phase P gated.
 
 ### Verdict / outcome
-**PARTIAL / STOP for Claude** — UI + keyless ingests green; **T0 BEA key acquisition FAILED** (2 attempts, human-only CAPTCHA/email). Per T6c: MERIC is interim COL headline; BEA row honest-gap. Census rankings/age honest-gap (no `CENSUS_API_KEY` in session). **Do not merge until Claude review.** Owner final visual sign-off follows Claude.
+**PARTIAL / STOP for Claude** — UI + keyless ingests green; CI guards GREEN on PR tip `8a9318d` (run `29667666551`, artifact `render-integrity-contact-sheet`). **T0 BEA key acquisition FAILED** (2 attempts, human-only CAPTCHA/email). Per T6c: MERIC is interim COL headline; BEA row honest-gap. Census rankings/age honest-gap (no `CENSUS_API_KEY` in session). **Do not merge until Claude APPROVAL.** Owner final visual sign-off follows Claude.
 
 ### Process rule
 Merge only after `guards.yml` **GREEN** on the PR tip (watch the run). Never merge while pending.
