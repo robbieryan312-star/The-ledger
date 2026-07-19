@@ -16,7 +16,7 @@ Archive unwired scripts + finished docs; delete confirmed 0-importer dead shims;
 
 ### Branch / HEAD / PR
 - **Branch:** `cursor/phase2-archive-cruft-70a6`
-- **HEAD:** `1776715` (implementation `ff3c77c` + handoff docs; rebased onto `main`)
+- **HEAD:** `1ffef58` (implementation `ff3c77c` + handoff docs; rebased onto `main`)
 - **Base:** `main` @ `f98a7c6` (PR #50 + #51 merged)
 - **PR:** https://github.com/robbieryan312-star/The-ledger/pull/52
 
@@ -43,7 +43,7 @@ Archive unwired scripts + finished docs; delete confirmed 0-importer dead shims;
 - `rm -rf .next && npm run prebuild` + `npm run build` → exit 0
 
 ### Open / next
-- **STOP** — Claude STAGE THREE on Phase 2 @ `1776715` before merge / P3
+- **STOP** — Claude STAGE THREE on Phase 2 @ `1ffef58` before merge / P3
 - PR #47 / #48 still gated
 
 ---
