@@ -19,10 +19,10 @@ Honest gaps are required — never fill with paraphrase or fabrication. Provenan
 | 2 | Cost of living / RPP | BEA via FRED mirror (`official`) | COL card | `ingest:bea-rpp-fl` | **filled** or honest-gap on fetch fail (preserve prior) |
 | 3 | State tax burden | Tax Foundation tables (`nonpartisan`) | Taxes card | `ingest:fl-tax` | **computed-from-published-tables** |
 | 4 | Federal delegation roster | `allPoliticians` + office resolution | Officials section | `sync:legislators`, `verify:office` | **filled** |
-| 5 | State legislation | LegiScan (`official`) | Legislation panel | `ingest:legiscan-fl` | **honest-gap** without `LEGISCAN_API_KEY` |
+| 5 | State legislation | LegiScan (`official`) | Legislation panel | `ingest:legiscan-fl` | **sample committed** — 10 bills in `legislation-florida.json`; live refresh needs `LEGISCAN_API_KEY` |
 | 6 | State courts | CourtListener (`nonpartisan`) | Courts panel | `ingest:courts-fl` | **filled** / thin with note |
 | 7 | State legislators | OpenStates (`nonpartisan`) | (future panel) | `ingest:openstates-fl` | **honest-gap** without key |
-| 8 | State political news | NewsAPI (`media`) | News bundle | `ingest:news-fl` | **honest-gap** without key; 2+ independent `'media'` sources to verify |
+| 8 | State political news | NewsAPI (`media`) | News bundle | `ingest:news-fl` | **sample committed** — 48 articles in `news-florida.json`; live refresh deferred (`KEYS.md`); corroborate per `'media'` tier rules |
 | 9 | Federal contracts (FL) | SAM.gov (`official`) | (future) | `ingest:sam-fl` | **honest-gap** — login.gov / key |
 | 10 | Federal register (FL-tagged) | GovInfo (`official`) | (future) | `ingest:govinfo-fl` | **honest-gap** without key |
 | 11 | County map drilldown | Census + local `.gov` | Map explorer | *not wired* | **gap** — `USAMap` county literals empty (product decision) |

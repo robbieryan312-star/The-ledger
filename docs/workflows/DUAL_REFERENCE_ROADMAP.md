@@ -70,9 +70,9 @@ Mandatory before claiming a conduit stage complete:
 |------|--------|-------|
 | Economy / rankings / counties | **filled** (keyed Census + BLS where configured) | 67-county set; preserve-on-failure wired (Wave 1) |
 | State politicians roster | **filled** | Federal FL delegation from roster |
-| Legislation (LegiScan) | **keyed** | Honest-gap when `LEGISCAN_API_KEY` empty |
+| Legislation (LegiScan) | **sample committed** (10 bills on disk) | Live refresh needs `LEGISCAN_API_KEY` |
 | Courts | **filled** | Slice + honest-gap note when thin |
-| News / OpenStates / SAM / GovInfo | **keyed gaps** | Need keys; preserve prior on failure |
+| News / OpenStates / SAM / GovInfo | News **sample committed** (48); others keyed gaps | Need keys; preserve prior on failure |
 | County drilldown (map) | **DEAD UI** | `countyByFips` never populated — product decision: wire or remove (see `FILE_INVENTORY_AUDIT.md`) |
 
 **Next conduit work:** Close keyed gaps where owner has secrets; document permanent gaps in checklist.
@@ -96,7 +96,7 @@ Mandatory before claiming a conduit stage complete:
 | 5 | Org→vote links | **honest-gap** | Documented — pilot Schedule A individuals-only; evaluate national Schedule A |
 | 6 | Platform positions | **honest-gap** | **Pipeline gap** — Ballotpedia path not populating `platformPositions` |
 | 7 | CREC / Said | filled | ✅ |
-| 8 | Said→Did | filled (8 links) | ⚠️ target **15** per layout spec — gap to close |
+| 8 | Said→Did | filled (**1** link on disk) | ⚠️ target **15** per layout spec — **not reference-complete** |
 | 9 | Legislation | filled | ✅ |
 | 10 | Journalism | partial | Needs 2-source corroboration path |
 | 11 | News | filled/partial | RSS + national paths |

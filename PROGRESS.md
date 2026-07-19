@@ -29,7 +29,7 @@ never restates them, it sequences the work.
 
 | Reference | ID | Presentation | Data conduits | Next |
 |-----------|-----|--------------|---------------|------|
-| **Florida state** | `FL` | 👁 **LOCKED** (owner sign-off 2026-07-19) | 8/12 filled or computed; 4 keyed honest-gaps | Close keyed gaps; county map decision |
+| **Florida state** | `FL` | 👁 **LOCKED** (owner sign-off 2026-07-19) | 8/12 filled or computed; 2 sample-committed; 2 keyed gaps | County map decision; verify live refresh keys |
 | **Bernie Sanders** | `S000033` | Template for federal profiles | 9/12 filled; 3 honest-gaps + partials | Platform positions pipeline; Said→Did 8→15; org→vote path |
 
 **Scaling model (per conduit, then per member):** `1 → 10 → 25 → 80 → 200 → completion` — see
@@ -180,7 +180,7 @@ Elections, OpenCorporates — unchanged from prior log (see `.env.local` and `KE
 | **Aging PR sweep** | PRs #28–#31, #40 — lower priority until #45→#47→#48 clean. |
 | FL `/states/FL` deploy | PR #39 merged; live at approved URL; presentation 👁 locked |
 | FL `/states/FL` data | 67 counties + ranks; Wave 1 preserve-on-failure; keyed gaps (LegiScan, OpenStates, NewsAPI, SAM); news slice **not on state page** |
-| S000033 manifest | votes=30 filled · saidDid=1 partial · positions/orgVoteLinks=honest-gap · trades=fetch-failed · news=5 partial — see `PILOT_PROFILE_CHECKLIST.md` |
+| S000033 manifest | votes=30 filled · saidDid=1 partial (target 15) · positions/orgVoteLinks=honest-gap · trades=fetch-failed · news=5 partial — see `PILOT_PROFILE_CHECKLIST.md` |
 | Migrated gold profiles | 7/537 — **do not expand** until S000033 reference complete per conduit ladder |
 | W3 + Wave 1 + rules | ✅ merged PR #43, #46, #45 |
 | Guard suites | **20** prebuild commands + render-integrity postbuild (`docs/AGENT_INDEX.md`) |
