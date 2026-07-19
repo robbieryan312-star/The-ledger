@@ -7,6 +7,46 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
+## HANDOFF 2026-07-19 (7) — Phase 0 inventory regeneration (fresh verify on dfbcdd6)
+
+**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS — STOP for STAGE THREE review (Phase 0)**
+
+### Objective
+Regenerate trustworthy FILE_INVENTORY_AUDIT from real tree; fix scripts/lib false MERGE verdicts.
+
+### Current state
+- **Branch:** `cursor/w4-file-inventory-audit-70a6` @ `2383f0f` (base `main` @ `dfbcdd6`)
+- **PR:** https://github.com/robbieryan312-star/The-ledger/pull/44
+- **API keys:** `.env.local` — 8/12 SET (`npm run verify:agent-keys` exit 0)
+
+### Before / after (main baseline → regenerated)
+| Metric | Before (main) | After |
+|--------|---------------|-------|
+| Total inventory rows | 210 | **274** |
+| Top-level `scripts/*.ts` | ~18 (prefix-filtered) | **43** |
+| `scripts/lib/*` false MERGE | 16+ | **0** (all KEEP, ≥1 importer) |
+| `scripts/__tests__/*.test.ts` | partial | **33** |
+| `scripts/archive/*` | 0 | **5** |
+
+Independent Python recount: **274** = JSON total = MD row count.
+
+### Commands run (this session)
+- `npm run verify:agent-keys` → exit 0 (8/12 SET)
+- `npm run audit:inventory` → exit 0 (274 files)
+- `npm run audit:inventory-md` → exit 0 (274 rows; `rg 'scripts/lib/.*MERGE'` → 0)
+- `rm -rf .next && npm run prebuild` → exit 0
+- `npm run build` → exit 0
+
+### Acceptance evidence
+- GENERATED header + `audit:inventory-md` alias in package.json
+- Layer breakdown: L1=22 L2=75 L3=43 L3a=5 L4=32 L5=17 L6=22 L7=25 L8=33
+
+### Open / next
+- **STOP** — Claude STAGE THREE on Phase 0 before P1
+- PR #47 / #48 / #50 gated separately (no action on #50)
+
+---
+
 ## HANDOFF 2026-07-19 (6) — PR #49 merged + Phase 0 inventory (rebased on dfbcdd6)
 
 **From:** Cursor · **To:** Claude Code · **Verdict:** **PASS — STOP for STAGE THREE review (Phase 0)**
