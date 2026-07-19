@@ -1,7 +1,24 @@
 # The Ledger — Roadmap & Progression Expectations
 
-**Last updated:** 2026-07-19 · **Branch:** `cursor/fl-by-numbers-ux-70a6` · **Approved (ex-s4dn):** https://the-ledger-s4dn.vercel.app/states/FL  
-**Deploy naming:** Approved = formerly `the-ledger-s4dn`; at most one Beta; pause other Vercel projects. Gamma alias still stale (Hobby rate-limit).
+**Last updated:** 2026-07-19T13:xx Z (this session — supersedes the earlier same-day entry, which
+was stale by mid-morning: it predated S2/PR41, source registry/PR42, W1-W4, PR #43/#45/#46, and the
+PR #46 merge-gate incident) · **Branch:** `claude/ledger-progress-review-jmd6gl` (governance) ·
+**Approved:** https://the-ledger-s4dn.vercel.app
+**Deploy naming:** Approved = `the-ledger-s4dn`. Owner has deleted the duplicate `the-ledger-jcjh`
+and `the-ledger` projects this session — confirm only `the-ledger-s4dn` remains in the Vercel
+dashboard if rate-limit noise persists.
+
+**⚠️ KNOWN GAP — most politician profiles are near-empty by design, not by bug (confirmed
+2026-07-19):** Only **7 of 537** Congress members (`S000033`, `O000172`, `M000355`, `M001184`,
+`W000817`, `C001098`, `P000197`) have real votes/finance/statements/news. The other **530** render
+via `lib/data/generatedPoliticians.ts` as intentionally **LIGHTWEIGHT** records — verified name,
+party, state, and office only; votes/finance/stockTrades/issues/controversies/news are empty arrays
+by design, so those profiles show honest "no verified record" placeholders. This is the direct,
+correct consequence of the 2026-07-04 DNU mock-data quarantine (fabricated data removed platform-
+wide) landing before M2 (real-data scaling to all 537) has started. **M2 cannot start until M1's
+Phase E gate clears — see Milestones below — which has been sitting on an owner visual review since
+before today.** This is not a new regression to hunt; it is the roadmap's own documented sequencing,
+just stalled at the one gate only the owner can clear.
 **This file replaces the old progress log as the canonical forward guide.** It binds BOTH
 agents (Claude Code + Cursor). Rules live in `.cursor/rules/ledger-core-rules.mdc` — this file
 never restates them, it sequences the work.
@@ -143,8 +160,11 @@ Elections, OpenCorporates — unchanged from prior log (see `.env.local` and `KE
 
 | Track | State (2026-07-19 — deploy pipeline; prior rows still as of `71b61c2` unless noted) |
 |-------|--------------------|
-| FL `/states/FL` deploy | PR #39 ready (67 counties + ranks/COL UX); **no merge** until Claude; Approved URL still prior tip until deploy |
-| Migrated gold profiles | 7/537 (S000033, O000172, M000355, M001184, W000817, C001098, P000197) — all 7 at 30-vote depth + depth artifacts (Brief B T4-5-7, `9c310d6`; counts re-verified 07-08) |
+| **Today's merges** | S2 (PR #41), source registry (PR #42), PR #39, W1 wiring, PR #43 (dead officials route deleted + sitemap 613 entries + Wave 1 data-loss guards), PR #46 (W3c checklist fix + W4 file audit) — all merged to `main`. PR #46 merged with a process defect (see below); content itself verified good post-merge. |
+| **Merge-gate incident** | PR #46 merged 2 min after opening, ~10 min before Claude's review posted, despite its own "STOP for Claude review" text. Fixed forward on `main` this session (PR #45, `cc49e04`): duplicate rule bullet removed, three-stage build loop restored, HARD RULE strengthened to "approval before MERGE" (not just push), Cursor confronted directly on PR #45. **Owner recommendation: add GitHub branch protection (required review) on `main` — text rules alone were bypassed.** |
+| **Aging PR sweep (assigned to Cursor, not yet done)** | PRs #28, #29, #30, #31, #40 open since 2026-07-14–19, no recorded Claude review. Spec posted on PR #45; awaiting Cursor action. |
+| FL `/states/FL` deploy | PR #39 landed this session; live at the approved URL — confirm current render matches the locked spec on next visual pass |
+| Migrated gold profiles | 7/537 (S000033, O000172, M000355, M001184, W000817, C001098, P000197) — all 7 at 30-vote depth + depth artifacts (Brief B T4-5-7, `9c310d6`; counts re-verified 07-08). **The other 530 are intentionally lightweight (name/party/state/office only, no votes/finance/news) — this is what most profile clicks currently show; see the KNOWN GAP note at the top of this file.** |
 | Docs cleanup + FL script consolidation | ✅ agent index, SETUP, FLORIDA_DATA, BATCH_SCALING, archive |
 | Phase C (display/credibility fix stack) | ✅ verified by Claude |
 | Phase D1–D4 | ✅ done (mock abolition, rules, RSS, CI guards) |
@@ -159,7 +179,7 @@ Elections, OpenCorporates — unchanged from prior log (see `.env.local` and `KE
 | Failure-handoff rules | §1.1 hardened: autonomous handoff after 1st failure, anti-stale evidence, three-strike same-turn flow (`fdd025c`, `d443ecb`, `828e650`) |
 | Optimization program | ✅ W0–W5 complete (sync kernel, manifest index, read-path docs, archive one-offs, optimization guards, profile:build validate-only + depth JSON) |
 | File audit progress | L1 + L2/L3 high-priority reviewed (22 files); L5–L8 pending M2 scale |
-| M2 scaling | Blocked pending Claude re-review (Briefs A–C); Brief B T1-2, T4-7 committed — T3 has no commit (unconfirmed) |
+| M2 scaling | **BLOCKED on M1 entry criteria — Phase E owner visual sign-off on the P000197 (Nancy Pelosi) pipeline test, not yet given.** Guards pass; this is a genuine owner-only gate, not an agent task. Live profile: the approved URL's `/politicians/nancy-pelosi`. This is the actual unblock for the 530-empty-profile gap above — once approved, M2's batch protocol (15→50→100→150→remainder) can start. |
 
 ## Compressed history (pre-roadmap)
 

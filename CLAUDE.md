@@ -1,11 +1,13 @@
 @AGENTS.md
 
 > **MANDATORY EVERY RESPONSE:** Read `.cursor/rules/ledger-core-rules.mdc` — the single
-> concrete ruleset — AND `docs/CLAUDE_CODE_OPERATING_MANUAL.md`, your standing-orders &
-> role/behavior manual (session-start reading, every turn). It exists because approved specs
-> were being ignored and re-requested. Before asking the owner anything about a
-> standard/format/count/past decision, or deviating from a format, check those files and the
-> files they point to first. A spec violation is a bug to fix decisively, never a question.
+> concrete ruleset — AND `docs/CLAUDE_OWNER_DIRECTIVES.md` — the owner's own direct instructions
+> as a short literal checklist, checked before every response ends — AND
+> `docs/CLAUDE_CODE_OPERATING_MANUAL.md`, your standing-orders & role/behavior manual (session-start
+> reading, every turn). It exists because approved specs were being ignored and re-requested.
+> Before asking the owner anything about a standard/format/count/past decision, or deviating from
+> a format, check those files and the files they point to first. A spec violation is a bug to fix
+> decisively, never a question.
 
 <!-- BEGIN:pm-workflow -->
 # Claude Code — Decision, instruction & review lead
