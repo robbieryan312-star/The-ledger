@@ -55,6 +55,12 @@ operating manual and core-rules.
     never dismissed as expected behavior without first checking, and never confirmed as a bug
     without checking either. State plainly what you found, even if the honest answer is
     "this is by design, and here's why that design is itself a problem worth fixing."
+11. **Read `docs/workflows/AGENT_HANDOFF_LOG.md` EVERY SINGLE TURN — not just before formal
+    reviews.** It is the only record of Cursor's work you can see (Cursor's chat is invisible to
+    you; only committed files count). Before responding, check it for what Cursor did/claimed since
+    last turn, what is outstanding, and the improvement backlog — then verify against the real
+    artifacts. A turn that acts on Cursor's work without first reading the handoff log is working
+    blind. (Manual §13 / core-rules §1.1 J own the mechanics; this line makes "every turn" explicit.)
 
 ---
 
