@@ -345,10 +345,10 @@ async function runSync(): Promise<void> {
         if (result.trades.length > 0) {
           entry.note = `${result.trades.length} official PTR transaction(s) from Senate eFD.`;
         } else if (result.error) {
-          entry.note = `Senate eFD sync unavailable (${result.error}). Demo trades on profile, if any, are labeled separately.`;
+          entry.note = `fetch-failed: Senate eFD sync unavailable (${result.error}).`;
         } else {
           entry.note =
-            'No Senate PTR reports matched this member in the synced window — demo trades (if any) remain labeled separately.';
+            'No Senate PTR reports matched this member in the synced window — official annual disclosure may confirm zero reportable stock transactions above $1,000.';
         }
       }
       console.log(`  ${p.id}: ${entry.trades.length} trade(s)${result.error ? ` (${result.error})` : ''}`);
@@ -369,10 +369,14 @@ async function runSync(): Promise<void> {
     }
     console.warn(`Senate eFD unavailable: ${senateProbe.error ?? 'unknown'}`);
     for (const p of senateMembers) {
-      const priorNote = byPoliticianId[p.id]?.note;
-      byPoliticianId[p.id].note =
-        priorNote ??
-        `Senate eFD unreachable (${senateProbe.error ?? 'maintenance'}). Demo trades on profile, if any, are labeled separately.`;
+      const entry = byPoliticianId[p.id];
+      const priorTrades = entry.trades ?? [];
+      entry.note =
+        priorTrades.length > 0
+          ? `fetch-failed: Senate eFD unreachable (${senateProbe.error ?? 'maintenance'}). Prior good trades preserved.`
+          : `fetch-failed: Senate eFD unreachable (${senateProbe.error ?? 'maintenance'}).`;
+      entry.asOf = asOf;
+      await writeProfileTradesIfExists(p.bioguideId, entry);
     }
   }
 

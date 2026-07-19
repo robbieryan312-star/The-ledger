@@ -8,7 +8,7 @@
 
 | bioguideId | Name | Defect rows | P0 | P1 | P2 |
 |------------|------|-------------|----|----|-----|
-| S000033 | Bernie Sanders | 0 | 0 | 0 | 0 |
+| S000033 | Bernie Sanders | 1 | 1 | 0 | 0 |
 | O000172 | Alexandria Ocasio-Cortez | 0 | 0 | 0 | 0 |
 | M000355 | Mitch McConnell | 0 | 0 | 0 | 0 |
 | M001184 | Thomas Massie | 0 | 0 | 0 | 0 |
@@ -16,13 +16,15 @@
 | C001098 | Ted Cruz | 0 | 0 | 0 | 0 |
 | P000197 | Nancy Pelosi | 0 | 0 | 0 | 0 |
 
-**Total defect rows:** 0
+**Total defect rows:** 1
 
 ## Per-member detail
 
-### S000033 — Bernie Sanders (0 defects)
+### S000033 — Bernie Sanders (1 defects)
 
-_No defects flagged by automated checks._
+| Category | Severity | Check | Detail | Path |
+|----------|----------|-------|--------|------|
+| news | P0 | placeholder-url | Placeholder news URL: https://apnews.com/article/mamdani-sanders-new-york-primary-b1a13eaf0d7e634b6805fc80b3372cf8 | profiles/S000033/news.json[3] |
 
 ### O000172 — Alexandria Ocasio-Cortez (0 defects)
 

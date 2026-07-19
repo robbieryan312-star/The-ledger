@@ -29,6 +29,7 @@ import type {
 } from './topicPositions';
 import { leadSummary } from './displaySummary';
 import { getNationalNewsArticles, nationalArticlesToNewsItems } from './newsNational';
+import { applyNewsCorroboration } from './newsCorroboration';
 import { normalizeUrlForDedupe } from './sourceIntegrity';
 
 function isDisplayableStatement(statement: TopicStatementEntry): boolean {
@@ -304,7 +305,7 @@ export function mergeProfileNews(legacyNews: NewsItem[] | undefined, bioguideId?
       }
     }
     merged.sort((a, b) => b.date.localeCompare(a.date));
-    if (merged.length > 0) return merged.slice(0, 15);
+    if (merged.length > 0) return applyNewsCorroboration(merged).slice(0, 15);
   }
   return legacyNews ?? [];
 }

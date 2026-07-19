@@ -22,7 +22,15 @@ import {
   NEWS_FEED_REGISTRY,
   outletForArticleUrl,
   tierForArticleUrl,
+  isAllowedNewsArticleUrl,
+  isOpinionArticleUrl,
 } from '../lib/data/newsFeedRegistry';
+import { applyNewsCorroboration } from '../lib/data/newsCorroboration';
+import {
+  fetchGdeltArticlesForMember,
+  gdeltArticleToNewsItem,
+} from './lib/gdeltMemberNews';
+import { fetchNewsApiArticlesForMember } from './lib/newsApiMemberNews';
 import {
   isArticleTypeIntegrityUrl,
   isBareHomepageUrl,
@@ -46,6 +54,7 @@ const FEED_HEALTH_FILE = path.join(projectRoot, 'data', 'reports', 'feed-health.
 const MAX_ITEMS_PER_MEMBER = 15;
 const FETCH_TIMEOUT_MS = 15_000;
 const MAX_FETCH_ATTEMPTS = 3;
+const GDELT_MEMBER_DELAY_MS = 8_000;
 const MANIFEST_FILE = path.join(profilesRoot, '_manifest.json');
 
 export type ProfileNewsStatus = 'filled' | 'honest-gap' | 'fetch-failed';
@@ -135,7 +144,7 @@ export function resolveNewsStatus(
   if (merged.length > 0) {
     return {
       status: 'filled',
-      note: `${merged.length} relevant article(s) from approved-outlet RSS (target ${MAX_ITEMS_PER_MEMBER}).`,
+      note: `${merged.length} relevant article(s) from RSS, GDELT, and NewsAPI (target ${MAX_ITEMS_PER_MEMBER}).`,
     };
   }
   if (opts.memberSkipped) {
@@ -245,11 +254,7 @@ const OPINION_PATH_MARKERS: RegExp[] = [
 ];
 
 function isOpinionUrl(url: string): boolean {
-  try {
-    return OPINION_PATH_MARKERS.some((re) => re.test(new URL(url).pathname));
-  } catch {
-    return false;
-  }
+  return isOpinionArticleUrl(url);
 }
 
 function matchesMember(text: string, leg: LegislatorRow): string | null {
@@ -506,7 +511,38 @@ async function main(): Promise<void> {
     const existingItems = existingFile?.items ?? [];
 
     const freshItems = memberCandidates.map((c, idx) => toNewsItem(c, idx, bioguideId));
-    const merged = mergeWithExisting(existingItems, freshItems);
+
+    const memberIndex = manifestMembers.indexOf(bioguideId);
+    if (memberIndex > 0) await sleep(GDELT_MEMBER_DELAY_MS);
+
+    let gdeltItems: NewsItem[] = [];
+    const gdeltResult = await fetchGdeltArticlesForMember(leg, displayByBio, {
+      maxRecords: 25,
+      timespan: '12months',
+      ...(membersArg ? { maxDomains: 3 } : {}),
+    });
+    if (!gdeltResult.failed) {
+      gdeltItems = gdeltResult.articles
+        .map((article, idx) => gdeltArticleToNewsItem(article, bioguideId, idx))
+        .filter((item): item is NewsItem => item !== null);
+      if (gdeltItems.length > 0) {
+        console.log(`  ${bioguideId}: GDELT supplement ${gdeltItems.length} approved article(s)`);
+      }
+    } else if (gdeltResult.error) {
+      console.warn(`  ${bioguideId}: GDELT supplement skipped — ${gdeltResult.error}`);
+    }
+
+    let newsApiItems: NewsItem[] = [];
+    const newsApiResult = await fetchNewsApiArticlesForMember(leg, projectRoot);
+    if (!newsApiResult.skipped && newsApiResult.items.length > 0) {
+      newsApiItems = newsApiResult.items;
+      console.log(`  ${bioguideId}: NewsAPI supplement ${newsApiItems.length} article(s)`);
+    } else if (newsApiResult.error && !newsApiResult.skipped) {
+      console.warn(`  ${bioguideId}: NewsAPI supplement skipped — ${newsApiResult.error}`);
+    }
+
+    let merged = mergeWithExisting(existingItems, [...freshItems, ...gdeltItems, ...newsApiItems]);
+    merged = applyNewsCorroboration(merged).slice(0, MAX_ITEMS_PER_MEMBER);
 
     const resolved = resolveNewsStatus(merged, existingItems, {
       feedsAttempted,

@@ -20,6 +20,7 @@ import {
 } from '../lib/data/newsFeedRegistry';
 import { NEWS_FEED_REGISTRY } from '../lib/data/newsFeedRegistry';
 import { normalizeUrlForDedupe } from '../lib/data/sourceIntegrity';
+import { applyNewsCorroboration } from '../lib/data/newsCorroboration';
 import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
 import { memberInScope, requireSyncScope } from './lib/sync-scope';
 import {
@@ -35,11 +36,11 @@ const LEGISLATORS_FILE = path.join(projectRoot, 'lib', 'data', 'generated', 'cur
 
 const GDELT_DOC_API = 'https://api.gdeltproject.org/api/v2/doc/doc';
 /** GDELT DOC API inter-member spacing (documented limit: ~1 req / 5s). */
-const GDELT_DELAY_MS = 2000;
+const GDELT_DELAY_MS = 8000;
 const MAX_ARTICLES_PER_MEMBER = 25;
-const TIMESPAN = '90d';
+const TIMESPAN = '12months';
 const CHECKPOINT_FILE = '/tmp/sync-news-national-checkpoint.json';
-const GDELT_RATE_LIMIT_DELAYS_MS = [5000, 10000] as const;
+const GDELT_RATE_LIMIT_DELAYS_MS = [8000, 15000, 25000] as const;
 
 const GDELT_SOURCE: Source = {
   name: 'GDELT',
@@ -106,32 +107,21 @@ function chamberLabel(chamber: string): string {
 }
 
 function buildGdeltQuery(leg: LegislatorRow, displayByBio: Map<string, { name: string }>): string {
-  const chamber = chamberLabel(leg.chamber);
   const primaryName = memberNewsPrimaryName(leg, displayByBio);
-  const nationalHosts = new Set<string>([
-    'npr.org',
+  const domains = [
     'thehill.com',
     'politico.com',
-    'rollcall.com',
-    'pbs.org',
-    'propublica.org',
+    'npr.org',
     'theguardian.com',
     'apnews.com',
+    'pbs.org',
     'nytimes.com',
     'washingtonpost.com',
-    'wsj.com',
-    'reuters.com',
-  ]);
-  for (const feed of NEWS_FEED_REGISTRY) {
-    if (feed.feedUnavailable) continue;
-    for (const h of feed.articleHosts) {
-      if (!h.includes('miami') && !h.includes('tampa') && !h.includes('orlando') && !h.includes('sun-sentinel') && !h.includes('florida') && !h.includes('wusf') && !h.includes('wlrn')) {
-        nationalHosts.add(h);
-      }
-    }
-  }
-  const domainClause = `(${[...nationalHosts].map((h) => `domain:${h}`).join(' OR ')})`;
-  return `"${primaryName}" ${leg.state} ${chamber} ${domainClause} sourcelang:english`;
+    'rollcall.com',
+    'propublica.org',
+  ];
+  const domainClause = `(${domains.map((h) => `domain:${h}`).join(' OR ')})`;
+  return `"${primaryName}" ${domainClause} sourcelang:english`;
 }
 
 function articleFromGdelt(a: GdeltArticle): MemberNewsArticle | null {
@@ -153,6 +143,7 @@ function articlesFromGdeltResponse(data: GdeltResponse): MemberNewsArticle[] {
   for (const raw of data.articles ?? []) {
     const mapped = articleFromGdelt(raw);
     if (!mapped || seenUrls.has(mapped.url)) continue;
+    if (!isAllowedNewsArticleUrl(mapped.url)) continue;
     seenUrls.add(mapped.url);
     articles.push(mapped);
     if (articles.length >= MAX_ARTICLES_PER_MEMBER) break;
@@ -264,7 +255,7 @@ async function mergeGdeltIntoProfileNews(
   }
   if (added === 0) return 0;
   existing.items.sort((a, b) => b.date.localeCompare(a.date));
-  existing.items = existing.items.slice(0, 15);
+  existing.items = applyNewsCorroboration(existing.items).slice(0, 15);
   existing.status = existing.items.length > 0 ? 'filled' : existing.status;
   existing.note = `${existing.items.length} article(s) — RSS + approved GDELT outlets (target 15).`;
   await writeFile(profilePath, `${JSON.stringify(existing, null, 2)}\n`, 'utf8');

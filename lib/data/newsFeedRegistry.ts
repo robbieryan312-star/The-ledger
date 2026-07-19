@@ -19,6 +19,36 @@ export interface NewsFeedEntry {
 /** RSS feeds from approved journalism outlets only (D3 spec). */
 export const NEWS_FEED_REGISTRY: NewsFeedEntry[] = [
   {
+    outlet: 'The Hill News',
+    feedUrl: 'https://thehill.com/news/feed/',
+    tier: 'media',
+    articleHosts: ['thehill.com'],
+  },
+  {
+    outlet: 'NYT Politics',
+    feedUrl: 'https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml',
+    tier: 'media',
+    articleHosts: ['nytimes.com'],
+  },
+  {
+    outlet: 'Washington Post Politics',
+    feedUrl: 'https://feeds.washingtonpost.com/rss/politics',
+    tier: 'media',
+    articleHosts: ['washingtonpost.com'],
+  },
+  {
+    outlet: 'Politico Congress',
+    feedUrl: 'https://rss.politico.com/congress.xml',
+    tier: 'media',
+    articleHosts: ['politico.com'],
+  },
+  {
+    outlet: 'The Hill Senate',
+    feedUrl: 'https://thehill.com/homenews/senate/feed/',
+    tier: 'media',
+    articleHosts: ['thehill.com'],
+  },
+  {
     outlet: 'AP News',
     feedUrl: 'https://feeds.apnews.com/rss/apf/topnews',
     tier: 'nonpartisan',
