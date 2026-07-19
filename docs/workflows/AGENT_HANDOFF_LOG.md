@@ -8,8 +8,8 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-19T03:42Z):**
-- Branch: `cursor/fl-by-numbers-ux-70a6` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · **no merge / no deploy** (Claude temporarily down)
-- Tip after self-audit fixes: 
+- Branch: `cursor/fl-by-numbers-ux-70a6` @ `5b2ba9a` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · **no merge / no deploy** (Claude temporarily down)
+- Tip after self-audit fixes: `5b2ba9a`
 - **Approved production (canonical):** https://the-ledger-s4dn.vercel.app — formerly `the-ledger-s4dn`
 - **Beta:** at most one other project; pause/delete the rest
 - Phase P **GATED** until owner visual sign-off on **deployed** Approved mobile
