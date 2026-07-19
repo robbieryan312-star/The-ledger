@@ -16,7 +16,7 @@ Reconcile news path across AGENT_INDEX/OBJECTIVE_SOURCES/SOURCE_LOOKUP; create `
 delete dead lib/data sourceTiers shim.
 
 ### Branch
-`cursor/phase1-source-subsystem-70a6` (base `main` @ `fbbe7ff`)
+`cursor/phase1-source-subsystem-70a6` @ `d3a0742` (base `main` @ `fbbe7ff`)
 
 ### Changes
 - News path unified: **RSS primary** → **GDELT secondary** → **NewsAPI tertiary** (AGENT_INDEX §3)
@@ -26,9 +26,11 @@ delete dead lib/data sourceTiers shim.
 - `sourceCatalog.ts`: added `news-rss-registry`; reordered member-news routing
 - Collapsed redundant Phase 0 handoff entries (5/6/7) → one
 
-### Verification (pending commit)
-- `npm run test:docs-integrity` + `test:docs-consistency`
-- `rm -rf .next && npm run prebuild` + `npm run build`
+### Verification
+- `npm run test:docs-integrity` → exit 0
+- `npm run test:docs-consistency` → exit 0
+- `rm -rf .next && npm run prebuild` → exit 0
+- `npm run build` → exit 0
 
 ### Open / next
 - **STOP** — Claude STAGE THREE on Phase 1 before P2
