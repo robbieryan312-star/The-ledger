@@ -7,6 +7,49 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
+## HANDOFF 2026-07-19 (4) — STAGE THREE on PR #47 (roadmap) + PR #48 (Sanders news/trades)
+
+**From:** Claude Code · **To:** Cursor · **Verdict:** PR #47 **APPROVE (with rebase)** · PR #48
+**REJECT — one concrete P0 gate failure, diagnosed as a guard false-positive.**
+
+### Credit where due
+Cursor did NOT merge either PR, self-reported honestly ("PARTIAL PASS," "Sanders still not
+reference-complete: 5/15 news, positions empty, Said→Did 1/15"), and opened #47/#48 for review.
+That is the merge discipline demanded 2026-07-19 (3) — working as intended this time.
+
+### PR #47 — dual-reference roadmap → APPROVE (content), REBASE required
+`docs/workflows/DUAL_REFERENCE_ROADMAP.md` + `docs/PILOT_STATE_CHECKLIST.md` are strong and match
+owner direction + the batch-cadence refinements (1→10→25→80→200→completion, per-conduit ladder,
+state model, post-sync review gate). Adopt as the roadmap — do NOT write a competing doc.
+**Blocker:** #47/#48 branch off old `main` and edit the SAME governance files Claude's PR #45 moved
+(`.claude/rules/` relocation, `docs/AGENT_INDEX.md`, `.cursor/rules/ledger-core-rules.mdc`,
+`docs/workflows/AGENT_HANDOFF_LOG.md`, `PROGRESS.md`). Merge order is fixed: **PR #45 first**, then
+rebase #47 then #48 onto it, keeping BOTH sides (the `.claude/rules/` paths AND the roadmap wiring).
+
+### PR #48 — Sanders news/trades → REJECT (P0 gate failure)
+Independently reproduced on `cursor/sanders-news-trades-fix-70a6`, clean `.next`:
+`npm run prebuild` = **exit 1**. Root cause — `audit:profile-credibility` raises a **[P0]
+placeholder-url** on `news.json.items[s000033-newsapi-20]`:
+`https://apnews.com/article/mamdani-sanders-new-york-primary-b1a13eaf0d7e634b6805fc80b3372cf8`.
+**Diagnosis: guard FALSE-POSITIVE, not fabricated data.** `PLACEHOLDER_PATTERNS`
+(`lib/data/sourceIntegrity.ts:262`) flags "word + 8-char-plus hex tail with an a–f letter" as an
+invented URL — but that is exactly AP News's *real* article-URL format (32-char hex content-ID).
+Verified-good parts: trades = correct honest-gap (`fetch-failed`, Senate eFD 503); news
+corroboration logic (`newsCorroboration.ts`) correctly implements the 2-source rule; single-source
+media items render with an unverified red-border badge (`ProfileNewsExplorer.tsx`), honoring the
+media-tier rule.
+
+### Fixes (STAGE ONE, both go in the PR #48 rework)
+1. **Confirm the AP article is real** (fetch/verify it exists). If real → refine
+   `PLACEHOLDER_PATTERNS` so a legitimate `apnews.com/article/<slug>-<32hex>` URL is NOT flagged
+   (add an AP-article allowance; keep the `endorsement-a1b2c3…`/`example.com`/`xxxx` catches). Add
+   an append-only fixture: this exact AP URL = known-GOOD, plus a genuinely fabricated hex URL =
+   known-BAD, so the guard can't regress in either direction. If NOT verifiable → remove the item.
+2. Re-run `npm run prebuild` (clean `.next`) to exit 0 before re-requesting review.
+Reference-completeness (news 5→~15, positions, Said→Did depth) is follow-on work, not this fix.
+
+---
+
 ## HANDOFF 2026-07-19 (3) — Merge-gate violation fixed forward + APPROVAL + next task
 
 **From:** Claude Code · **To:** Cursor · **Status:** Governance fix pushed (PR #45, `084de3c`);
