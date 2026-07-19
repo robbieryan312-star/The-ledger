@@ -12,6 +12,8 @@ import { chromium, type Browser, type Page } from 'playwright';
 import {
   RENDER_INTEGRITY_EDUCATION_PANEL_SELECTOR,
   RENDER_INTEGRITY_PAGES,
+  RENDER_INTEGRITY_PROFILE_DRAWER_KNOWN_BAD,
+  RENDER_INTEGRITY_PROFILE_PAGES,
   RENDER_INTEGRITY_SCREENSHOT_DIR,
   RENDER_INTEGRITY_VIEWPORTS,
 } from '../lib/data/__fixtures__/renderIntegrityGuard.fixture';
@@ -184,6 +186,109 @@ async function openAllDetails(page: Page): Promise<void> {
   await page.waitForTimeout(200);
 }
 
+/**
+ * Open React-state content drawers (buttons, not <details>) — issue tiles, accordions,
+ * "show legislation" toggles — while leaving the tab bar untouched so the current tab's
+ * content stays mounted. Each toggle is clicked at most once; repeated passes reveal
+ * nested drawers.
+ */
+async function openReactDrawers(page: Page): Promise<void> {
+  for (let pass = 0; pass < 5; pass++) {
+    const clicked = await page.evaluate(() => {
+      const btns = [...document.querySelectorAll('button')] as HTMLButtonElement[];
+      let n = 0;
+      for (const b of btns) {
+        if (b.dataset.riClicked) continue;
+        // Never click the horizontal tab-nav buttons (would switch tabs) or the site
+        // header/nav controls (would open the mobile menu overlay).
+        if (b.closest('.overflow-x-auto') || b.closest('header') || b.closest('nav')) {
+          b.dataset.riClicked = '1';
+          continue;
+        }
+        b.dataset.riClicked = '1';
+        b.click();
+        n++;
+      }
+      return n;
+    });
+    await page.waitForTimeout(150);
+    if (!clicked) break;
+  }
+}
+
+/** Number of topic tiles in the "Key Issues" grid, or 0 when the panel is absent. */
+async function keyIssuesTopicCount(page: Page): Promise<number> {
+  return page.evaluate(() => {
+    const heads = [...document.querySelectorAll('h2')];
+    const h = heads.find((e) => /Key Issues/.test(e.textContent || ''));
+    const panel = h ? h.closest('div') : null;
+    if (!panel) return 0;
+    const grid = panel.querySelector('[class*="grid"]');
+    if (!grid) return 0;
+    return [...grid.children].filter((c) => c.querySelector('button')).length;
+  });
+}
+
+/** Open exactly one Key-Issues topic tile by index (closing any other). */
+async function openKeyIssuesTopic(page: Page, index: number): Promise<void> {
+  await page.evaluate((i: number) => {
+    const heads = [...document.querySelectorAll('h2')];
+    const h = heads.find((e) => /Key Issues/.test(e.textContent || ''));
+    const panel = h ? h.closest('div') : null;
+    const grid = panel?.querySelector('[class*="grid"]');
+    if (!grid) return;
+    const cells = [...grid.children].filter((c) => c.querySelector('button'));
+    const btn = cells[i]?.querySelector('button') as HTMLButtonElement | undefined;
+    btn?.click();
+  }, index);
+  await page.waitForTimeout(160);
+}
+
+/**
+ * Fail if any open drawer is squeezed: at mobile width, no cell of a ≥2-column grid may
+ * be both tall (≥300px) and narrower than 90% of the viewport (a half-width drawer), and
+ * no tall sibling cell may be empty. Freezes the owner-reported drawer defect.
+ */
+async function assertNoSqueezedDrawer(page: Page, label: string): Promise<void> {
+  const minRatio = RENDER_INTEGRITY_PROFILE_DRAWER_KNOWN_BAD.minDrawerWidthRatio;
+  const emptyH = RENDER_INTEGRITY_PROFILE_DRAWER_KNOWN_BAD.siblingEmptyHeightPx;
+  const offenders = await page.evaluate(
+    ({ minRatio, emptyH }: { minRatio: number; emptyH: number }) => {
+      const out: string[] = [];
+      for (const grid of document.querySelectorAll('[class*="grid"]')) {
+        const gs = getComputedStyle(grid);
+        if (!gs.display.includes('grid')) continue;
+        const cols = gs.gridTemplateColumns.split(' ').filter(Boolean).length;
+        if (cols < 2) continue;
+        const gridW = grid.getBoundingClientRect().width;
+        if (gridW < 200) continue;
+        for (const cell of grid.children) {
+          const r = cell.getBoundingClientRect();
+          if (r.width <= 0 || r.height <= 0) continue;
+          const txt = (cell.textContent || '').replace(/\s+/g, ' ').trim();
+          // A tall, text-heavy drawer must span (nearly) the full grid width — i.e. it
+          // must be col-span-full when open, not squeezed into one column.
+          if (r.height >= emptyH && txt.length > 40 && r.width < gridW * minRatio) {
+            out.push(
+              `squeezed drawer w=${Math.round(r.width)} gridW=${Math.round(gridW)} h=${Math.round(r.height)} "${txt.slice(0, 40)}"`,
+            );
+          }
+          if (r.height >= emptyH && txt.length < 5) {
+            out.push(`empty sibling cell h=${Math.round(r.height)} w=${Math.round(r.width)}`);
+          }
+          if (out.length >= 6) break;
+        }
+        if (out.length >= 6) break;
+      }
+      return out;
+    },
+    { minRatio, emptyH },
+  );
+  if (offenders.length > 0) {
+    fail(`${label}: ${offenders.join('; ')}`);
+  }
+}
+
 async function assertRequiredSections(page: Page, pagePath: string, label: string): Promise<void> {
   const required = REQUIRED_SECTIONS[pagePath] ?? [];
   for (const sel of required) {
@@ -308,6 +413,36 @@ async function runChecks(browser: Browser): Promise<string[]> {
     }
   }
 
+  // Profile issue-drawer checks — mobile only, where the squeeze defect occurred.
+  const mobile =
+    RENDER_INTEGRITY_VIEWPORTS.find((v) => v.label === 'mobile') ?? RENDER_INTEGRITY_VIEWPORTS[0];
+  for (const prof of RENDER_INTEGRITY_PROFILE_PAGES) {
+    const context = await browser.newContext({ viewport: { width: mobile.width, height: mobile.height } });
+    const page = await context.newPage();
+    const url = `${BASE}${prof.path}`;
+    const label = `${prof.label} @ ${mobile.label}`;
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await page.waitForTimeout(1000);
+    await openAllDetails(page);
+    await openReactDrawers(page);
+    // Note: the profile tab bar is an intentional overflow-x-auto scroll region, so the
+    // page-wide horizontal-overflow check does not apply here; the drawer-squeeze check is
+    // the S2 regression guard for these pages.
+    await assertNoSqueezedDrawer(page, label);
+    // Open each Key-Issues topic in turn — a content-rich open drawer must never squeeze.
+    const topics = await keyIssuesTopicCount(page);
+    for (let i = 0; i < topics; i++) {
+      await openKeyIssuesTopic(page, i);
+      await assertNoSqueezedDrawer(page, `${label} (topic ${i})`);
+    }
+    if (topics > 0) await openKeyIssuesTopic(page, 0);
+    const shotName = `${prof.path.replace(/\//g, '_')}_${mobile.label}.png`;
+    const shotPath = path.join(screenshotDir, shotName);
+    await page.screenshot({ path: shotPath, fullPage: false });
+    shots.push(shotPath);
+    await context.close();
+  }
+
   const indexPath = path.join(screenshotDir, 'contact-sheet.json');
   writeFileSync(
     indexPath,
@@ -329,6 +464,9 @@ async function main(): Promise<void> {
     await assertPortFree();
   }
   const { kill, external } = startServer();
+  // fail() calls process.exit and skips the finally below — ensure the detached server is
+  // still torn down on any exit so a failed run never leaks a listener on the port.
+  if (!external) process.once('exit', () => kill());
   try {
     if (!external) {
       await waitForServer();

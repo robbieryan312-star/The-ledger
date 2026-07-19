@@ -4,7 +4,7 @@ import { useState } from 'react';
 import type { EvidenceItem } from '@/lib/types';
 import SourceProvenance from '@/components/ui/SourceProvenance';
 import { ChevronDown, ChevronRight } from 'lucide-react';
-import { trimToWordBoundary } from '@/lib/displaySummary';
+import { trimToWordBoundary, quotesAreRedundant } from '@/lib/displaySummary';
 
 const EVIDENCE_TYPE_STYLE: Record<string, string> = {
   vote: 'bg-blue-500/20 text-blue-300 border-blue-500/20',
@@ -26,12 +26,46 @@ function previewText(item: EvidenceItem): string {
   return trimToWordBoundary(text, 117);
 }
 
-export default function ExpandableEvidenceRow({ item }: { item: EvidenceItem }) {
+export default function ExpandableEvidenceRow({
+  item,
+  dedupeAgainst,
+}: {
+  item: EvidenceItem;
+  /**
+   * Verbatim text already shown immediately above this row (e.g. the issue's stated
+   * position). When the row's own quote merely repeats it, the quote is suppressed and
+   * only the description + source provenance are shown — no triple-printed quote.
+   */
+  dedupeAgainst?: string;
+}) {
   const [open, setOpen] = useState(false);
+  // The full statement is already rendered above this row when `dedupeAgainst` matches
+  // either the row's quote or its description — collapse to a provenance-only row so the
+  // same verbatim text is never printed twice.
+  const rowIsRedundant =
+    Boolean(dedupeAgainst) &&
+    (quotesAreRedundant(item.quote, dedupeAgainst) || quotesAreRedundant(item.description, dedupeAgainst));
   const hasDetail =
-    Boolean(item.quote) ||
-    (item.source.tier !== 'official' && item.type !== 'vote' && item.type !== 'legislation' && item.description.length > 120);
+    !rowIsRedundant &&
+    (Boolean(item.quote) ||
+      (item.source.tier !== 'official' && item.type !== 'vote' && item.type !== 'legislation' && item.description.length > 120));
   const typeStyle = EVIDENCE_TYPE_STYLE[item.type] || EVIDENCE_TYPE_STYLE.statement;
+
+  if (rowIsRedundant) {
+    return (
+      <div className="rounded-lg p-2.5 border border-white/[0.05]" style={{ background: 'rgba(255,255,255,0.02)' }}>
+        <div className="flex items-start gap-2">
+          <span className={`text-[10px] px-1.5 py-0.5 rounded border font-semibold uppercase tracking-wide flex-shrink-0 mt-0.5 ${typeStyle}`}>
+            {item.type.replace('_', ' ')}
+          </span>
+          <div className="flex-1 min-w-0">
+            <p className="text-white/40 text-[11px] italic mb-1">Full statement shown above — source record:</p>
+            <SourceProvenance source={item.source} recordDate={item.date} />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!hasDetail) {
     return (
