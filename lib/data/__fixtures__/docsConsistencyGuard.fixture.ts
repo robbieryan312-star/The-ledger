@@ -42,3 +42,14 @@ export const SECTION_CITE_KNOWN_BAD = {
   wrongMeaning: 'Claude handoff report template',
   correctSection: '§1.1 B is Two-or-more-failure handoff; template is §1.1 F',
 };
+
+/**
+ * The source constitution owns routing; KEYS.md must point at it (one fact, one owner).
+ * Frozen 2026-07-19 with the SOURCE REGISTRY brief (R2/R5). Append-only.
+ */
+export const KEYS_REGISTRY_CROSSREF_KNOWN_GOOD = {
+  registryFile: 'docs/OBJECTIVE_SOURCES.md',
+  keysFile: 'KEYS.md',
+  /** KEYS.md must cite the registry as the routing owner. */
+  keysMustCite: 'docs/OBJECTIVE_SOURCES.md',
+};

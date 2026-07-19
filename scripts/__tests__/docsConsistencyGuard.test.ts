@@ -3,11 +3,12 @@
  * legacy Tier labels, §1.1 citations). §6 fixture append-only.
  */
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import {
+  KEYS_REGISTRY_CROSSREF_KNOWN_GOOD,
   MIGRATED_COUNT_KNOWN_GOOD,
   POSTBUILD_RENDER_INTEGRITY_KNOWN_GOOD,
   PREBUILD_COUNT_KNOWN_GOOD,
@@ -157,6 +158,25 @@ test('(e) §1.1 letter citations in core-rules resolve to real headings', () => 
   const missing = [...new Set(cites)].filter((letter) => !headings.has(letter));
   assert.equal(missing.length, 0, `Unresolved §1.1 letters: ${missing.join(', ')}`);
   assert.match(core, SECTION_CITE_KNOWN_GOOD.headingPattern);
+});
+
+test('(f) source constitution exists and KEYS.md points routing at it', () => {
+  const registry = path.join(projectRoot, KEYS_REGISTRY_CROSSREF_KNOWN_GOOD.registryFile);
+  assert.ok(existsSync(registry), 'docs/OBJECTIVE_SOURCES.md (source constitution) must exist');
+  const keys = readFileSync(path.join(projectRoot, KEYS_REGISTRY_CROSSREF_KNOWN_GOOD.keysFile), 'utf8');
+  assert.ok(
+    keys.includes(KEYS_REGISTRY_CROSSREF_KNOWN_GOOD.keysMustCite),
+    'KEYS.md must cite docs/OBJECTIVE_SOURCES.md as the routing owner (one fact, one owner)',
+  );
+});
+
+test('(g) source constitution declares the corroboration floor + living-registry rule', () => {
+  const registry = readFileSync(
+    path.join(projectRoot, KEYS_REGISTRY_CROSSREF_KNOWN_GOOD.registryFile),
+    'utf8',
+  );
+  assert.match(registry, /CORROBORATION FLOOR/i);
+  assert.match(registry, /LIVING REGISTRY/i);
 });
 
 test('fixture contract: RETIRED_SCRIPT_KNOWN_BAD script exists when scriptMustExist', () => {
