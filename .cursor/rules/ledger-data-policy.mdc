@@ -32,6 +32,21 @@ are NOT independent — count as one source.
 This rule applies to: quotes, position statements, platform claims, and any other assertion
 attributed to the politician's words or stated beliefs sourced from journalism.
 
+### Corroboration floor for unobtainable data (owner directive 2026-07-19)
+
+When a required fact is **not obtainable from any `'official'`/`'nonpartisan'` source** in the
+source constitution (`docs/OBJECTIVE_SOURCES.md`, rule 4 — the single definition of this floor):
+
+- A **single** below-standard provider is **never shown** — uncorroborated below-standard
+  sourcing is an honest gap (`"No verified record available"`), not a display.
+- Only when **two or more independent** below-standard providers corroborate may the fact be
+  shown, and then **always at the lowest display tier (`'alleged'` at best)**, visibly flagged,
+  with every provider cited alongside its lean label. Volume never promotes a below-standard
+  provider above this floor.
+- Currently-unobtainable items (Senate eFD trades, VoteSmart NPAT, OpenSecrets API, SAM.gov
+  entity details) are tracked in `docs/OBJECTIVE_SOURCES.md` + `PROGRESS.md` — do not re-attempt
+  blindly; render the honest gap.
+
 ---
 
 ## Banned sources

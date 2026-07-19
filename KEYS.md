@@ -1,6 +1,10 @@
 # API key pool — The Ledger
 
-**Agent source routing:** `lib/data/SOURCE_LOOKUP.md` + `lib/data/sourceCatalog.ts`  
+**Key-routing matrix (which key unlocks what) lives in `docs/OBJECTIVE_SOURCES.md`** — the source
+constitution owns the data-need → source → env var → command routing. This file owns only the
+per-key **SET vs EMPTY status** below; do not duplicate routing here.
+
+**Agent source routing:** `docs/OBJECTIVE_SOURCES.md` → `lib/data/SOURCE_LOOKUP.md` + `lib/data/sourceCatalog.ts`  
 **Credibility tiers:** code values `'official'` | `'nonpartisan'` | `'media'` | `'alleged'` | `'unverified'`
 
 | Source of truth | Purpose |

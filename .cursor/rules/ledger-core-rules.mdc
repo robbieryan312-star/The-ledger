@@ -11,6 +11,7 @@ alwaysApply: true
 - **Verbatim-only quotes** from journalism — never paraphrase and present as the politician's words.
 - **Honest-gap vs diagnosed-failure** — a failed fetch/sync is UNVERIFIED (`fetch-failed`), never silent empty.
 - **One source of truth per fact** — wire/join to existing generated data; never re-collect into a parallel file.
+- **Source constitution is a living registry** — `docs/OBJECTIVE_SOURCES.md` owns approved sources, lean labels, and key routing; consult it FIRST and update it the SAME session you discover a better path or dead feed (§1.1 L).
 - **`bioguideId` join key** — universal across votes, finance, news, statements; never alias.
 - **Approval before push** — commit locally when green; push to `origin/main` only on Claude Code's explicit APPROVAL.
 - **Fixtures append-only** — regression guards grow, never reset; every data-quality bug gets a frozen bad example.
@@ -484,6 +485,23 @@ described in chat but absent from file; "will log next turn"; logging a prior se
 **Claude Code must never** merge, close, push application code, or race Cursor on the same branch.
 If both agents could write, **stop** — Cursor owns the tree.
 
+#### L. Living source registry (binding)
+
+`docs/OBJECTIVE_SOURCES.md` is the **source constitution** — the canonical, always-consult-first
+registry of approved sources, lean labels, tiers, and the key-routing matrix (which key/command
+unlocks which data need). It is a **LIVING DOCUMENT**:
+
+- **Consult it FIRST** before researching any new data source or key routing. Do not re-research
+  settled routing that the registry already answers.
+- Any agent that discovers a **better path** — a keyless official mirror, a new endpoint, a dead
+  feed, a changed rate limit, a superior source, a retired API — **MUST update the relevant row in
+  the SAME session** (routing knowledge lives on disk, never in chat). Founding example: BEA
+  Regional Price Parities blocked on a key → FRED's keyless CSV mirror of the same official series.
+- The **corroboration floor** for below-standard/unobtainable data is defined in the registry
+  (rule 4) and cross-referenced by `.cursor/rules/ledger-data-policy.mdc`: a single below-standard
+  provider is never shown; 2+ independent providers may show only at `'alleged'`, visibly flagged.
+- `KEYS.md` owns per-key SET/EMPTY status only; the registry owns routing. One fact, one owner.
+
 ---
 
 ## 2. Where the authoritative detail lives — read the file that owns the answer
@@ -496,6 +514,7 @@ If both agents could write, **stop** — Cursor owns the tree.
 | How much shows per row/article; truncation; counts per section; layout | the demo components in `components/politicians/` — these ARE the locked layout |
 | UI copy tone, banned words, Said→Did diff format | `.cursor/rules/ledger-editorial-voice.mdc` |
 | Source tiers, corroboration, banned sources, destination-view map | `.cursor/rules/ledger-data-policy.mdc` |
+| Approved sources, lean labels, key-routing matrix, corroboration floor (source constitution) | `docs/OBJECTIVE_SOURCES.md` |
 | Which source/API feeds a data need | `lib/data/SOURCE_LOOKUP.md`, `lib/data/sourceCatalog.ts` |
 | What's done / in progress / blocked; phase status | `PROGRESS.md` |
 | API key SET/EMPTY; sync commands | `KEYS.md`, `docs/SETUP.md` |
