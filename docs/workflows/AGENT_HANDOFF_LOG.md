@@ -91,15 +91,35 @@ criteria on PR #45's comment thread.
 else looks perfect"). **Phase P UNLOCKED**, sequenced AFTER Wave 0 merge + Wave 1 data-loss prevention.
 Visual changes to the FL page now require new owner direction.
 
-**Current state (2026-07-19T14:22Z):**
-- **`main` @ `0e5a3e5`** — PR #43 + #46 merged.
-- **Branch `cursor/dual-reference-roadmap-70a6`** — PR #47; self-audit pass 2 (W3d Said→Did count fix).
-- **`beta` mirrored** to `main` after prior push.
-- **Wave 0d BLOCKED:** `the-ledger-s4dn.vercel.app` does NOT track `main` — owner Vercel wiring.
-- **P0 (owner):** Cursor Cloud injected rules still reference deleted `agent-ops.mdc`.
-- **Approved:** https://the-ledger-s4dn.vercel.app
+**Current state (2026-07-19T15:32Z):**
+- **Branch `cursor/sanders-news-trades-fix-70a6`** — PR #48 Sanders news/stock fixes.
+- **PR #47** — dual-reference roadmap (separate branch).
+- **`main` @ `0e5a3e5`**
 
-## Latest session — Self-audit (Dual Reference Lock) — FAIL reference-complete · PASS doc repair
+## Latest session — Sanders news + stock fixes (PASS bugs · FAIL reference-complete)
+
+### Verdict
+Fixed news visibility + collection bugs + stock honest-gap UI. Sanders **not** approval-ready: news 2/15, positions empty, Said→Did 1/15.
+
+### Root causes
+- News looked empty: only Guardian op-ed on disk, hidden by opinion filter
+- RSS matched "Bernard Sanders" not "Bernie Sanders"; missed "endorsements" plural in filter
+- Stock tab ignored `trades.json` honest-gap note
+- GDELT `newsNational.json` never wired to profile display
+
+### Evidence
+- `S000033/news.json`: 2 items (Hill journalism + Guardian op-ed)
+- `npm run prebuild` exit 0 · `npm run build` exit 0
+- Commit `bcf36b3`
+
+### Owner 👁
+- News tab: 1 journalism article visible; enable "Show opinion" for Guardian piece
+- Stock tab: should show Senate eFD maintenance honest-gap
+- Where They Stand: still sparse — **next priority: platform positions pipeline**
+
+---
+
+## Prior session — Self-audit (Dual Reference Lock) — FAIL reference-complete · PASS doc repair
 
 ### Objective
 Claude down — self-review assuming work is wrong until independently verified; determine visual-review readiness for FL + Sanders.
