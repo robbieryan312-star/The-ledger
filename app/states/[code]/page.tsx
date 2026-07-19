@@ -20,10 +20,7 @@ import {
   getFloridaStateRankingsSample,
   getFloridaTaxSample,
 } from '@/lib/data/floridaDashboard';
-
-const SUPPORTED_STATES: Record<string, { name: string }> = {
-  FL: { name: 'Florida' },
-};
+import { SUPPORTED_STATES } from '@/lib/data/supportedStates';
 
 export async function generateMetadata({
   params,
