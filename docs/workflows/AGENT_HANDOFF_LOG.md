@@ -7,38 +7,69 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-19):**
-- Branch: `cursor/vercel-postbuild-skip-70a6` → merge to `main` after guards GREEN
-- PR [#36](https://github.com/robbieryan312-star/The-ledger/pull/36) **MERGED** @ `ea33649` (Claude APPROVAL; guards GREEN before merge)
-- Fixing Vercel: skip `test:render-integrity` when `VERCEL=1` (builders lack Chromium); CI still enforces render-integrity
-- Phase P **GATED** until owner visual sign-off on **deployed** mobile `/states/FL`
+**Current state (2026-07-19T03:16Z):**
+- Branch: `main` @ `6500b2d` (merge #37 postbuild skip; #36 By-the-numbers)
+- **Live production (serving approved page):** https://the-ledger-s4dn.vercel.app/states/FL
+- GitHub deployment id: `5507426105` · Vercel deploy: `J8s7ui7w1LpQa4XeRmoc82SJgD4e` · env `Production – the-ledger-s4dn`
+- Stale alias: `https://the-ledger-gamma.vercel.app` still on old markup (`id="economy"`) — project `the-ledger` **rate-limited 24h**
+- Phase P **GATED** until owner visual sign-off on **deployed mobile** (use s4dn URL below)
 
 
 ## Improvement backlog
 
 | Date | Item | Status |
 |------|------|--------|
+| 2026-07-19 | **OWNER DASHBOARD:** consolidate 3 Vercel projects → ONE (`the-ledger` / `the-ledger-jcjh` / `the-ledger-s4dn`); pause/delete the two non-canonical; re-point `the-ledger-gamma` (or chosen domain) at the survivor. Triple projects burned Hobby build quota. | open — owner only |
 | 2026-07-18 | `npm audit`: 7 vulns remain after safe `npm audit fix` — need upstream Next/react-simple-maps (see `docs/workflows/NPM_AUDIT_2026-07-18.md`) | open |
 | 2026-07-11 | Add an explicit guard for national news refresh semantics so a successful empty response cannot be confused with fetch failure or stale-window retention. | open |
 
-## Latest session — Deploy pipeline: merge #36 + Vercel postbuild skip (IN PROGRESS)
+## Latest session — Deploy pipeline: merge #36/#37 + live production (COMPLETE)
 
 ### Objective
-Merge Claude-approved PR #36; fix stale/failing Vercel production so owner can review deployed `/states/FL`.
+Merge Claude-approved PR #36; fix Vercel production so owner can review deployed `/states/FL` with `#section-01` By the numbers.
 
 ### Verdict / outcome
-**IN PROGRESS** — #36 MERGED `ea33649`. Vercel skip fix on branch; awaiting CI + production deploy success.
+**COMPLETE** — approved page is live on a Vercel **Production** URL. Owner final visual sign-off is on that deployed mobile site (not screenshots). Phase P remains gated until that sign-off.
 
 ### Process rule
-Merged only after `guards` GREEN on tip `9ed7693` (run `29668533928`).
+- Merged #36 only after `guards` GREEN on tip `9ed7693` (run `29668533928`)
+- Merged #37 only after `guards` GREEN on tip `9c8d6c2` (run `29671126969`)
+
+### Root causes (logged — no guessing)
+
+| # | Symptom | Root cause | Fix |
+|---|---------|------------|-----|
+| 1 | Vercel builds failing postbuild | `test:render-integrity` needs Chromium; Vercel builders lack it | `package.json` postbuild skips render-integrity when `VERCEL=1` or `RENDER_INTEGRITY_SKIP_POSTBUILD=1`; still runs `test:client-chunks`. Full RI enforced in GitHub CI + local |
+| 2 | `the-ledger` / `the-ledger-jcjh` Production for `6500b2d` not updating | GitHub status: **Deployment rate limited — retry in 24 hours** (Hobby quota; three projects × every push) | Cannot agent-fix. Owner must consolidate projects (see backlog). Working Production is `the-ledger-s4dn` |
+| 3 | `the-ledger-gamma.vercel.app` stale (`id="economy"`, no `#section-01`) | Bound to rate-limited `the-ledger` project; last successful deploy pre-#36 layout | Owner: wait for rate-limit window **or** re-alias gamma → s4dn / surviving project |
 
 ### Commits
-- `ea33649` — Merge pull request #36
-- (pending) — postbuild skip when `VERCEL=1`
+- `ea33649` — Merge pull request #36 (By-the-numbers)
+- `9c8d6c2` — fix(ci): skip render-integrity postbuild on Vercel builders
+- `6500b2d` — Merge pull request #37
+
+### Commands run (this session)
+- `gh pr checks` / merge #36 → `ea33649`; merge #37 → `6500b2d`
+- `curl` `https://the-ledger-gamma.vercel.app/states/FL` → HTTP 200; **no** `id="section-01"`; has `id="economy"`
+- `curl` `https://the-ledger-s4dn.vercel.app/states/FL` → HTTP 200; **has** `id="section-01"` + `By the numbers` + MERIC/CPI YoY copy
+- `gh api …/commits/6500b2d/status` → `the-ledger`/`jcjh` failure rate-limit; `s4dn` success
+- Ad-hoc Playwright mobile @ 390×844 against live s4dn → `#section-01` present, no horizontal overflow, no broken images
+- CI contact-sheet: Guards run `29671202617` artifact `render-integrity-contact-sheet` (`generatedAt` `2026-07-19T03:07:10.881Z`)
+
+### Acceptance evidence
+- **Live URL:** https://the-ledger-s4dn.vercel.app/states/FL
+- **Deployment id:** GitHub `5507426105` · Vercel `J8s7ui7w1LpQa4XeRmoc82SJgD4e` · SHA `6500b2d`
+- HTML grep: `id="section-01"` True; heading `By the numbers`; no stale `id="economy"`
+- Mobile live check: overflow docW=innerW=390, offenders=[]; CI mobile PNG cited above
+- Artifacts (agent session): `/opt/cursor/artifacts/s4dn-fl-mobile.png`, `ci-states-FL-mobile-6500b2d.png`
+
+### Owner dashboard action (REQUEST — Cursor cannot do this)
+Consolidate Vercel projects to **one** canonical project. Pause or delete `the-ledger-jcjh` and whichever of `the-ledger` / `the-ledger-s4dn` is not chosen as canonical (today only **s4dn** successfully shipped `6500b2d`). Re-point production domain (`the-ledger-gamma.vercel.app` or custom) at that single project. Report which project/domain is canonical once confirmed.
 
 ### Open / next
-- Merge Vercel skip → confirm production HTML has `#section-01`
-- Owner request: consolidate three Vercel projects to one canonical
+- **STOP for owner:** visual sign-off on **deployed mobile** https://the-ledger-s4dn.vercel.app/states/FL — that unlocks Phase P
+- Owner: Vercel project consolidation + rate-limit recovery for gamma alias
+- Do **not** start Phase P until owner sign-off is logged
 
 
 ## Latest session — Claude review defect fixes 1–3 (STOP for final approval)
