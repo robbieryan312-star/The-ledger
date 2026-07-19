@@ -53,6 +53,7 @@ import type { TopicPositionData } from '@/lib/data/topicPositions';
 import type { OrgVoteTopicLink } from '@/lib/data/buildOrgVoteTopicLinks';
 import type { NewsBundleSlice } from '@/lib/types/snapshotTypes';
 import type { StockTradeEntry } from '@/lib/data/stockTrades';
+import { trimToWordBoundary } from '@/lib/displaySummary';
 
 interface EndorsementEntry {
   name: string;
@@ -163,7 +164,7 @@ function HotTopicsPanel({ issues, votes, isFeatured }: { issues: Issue[]; votes:
           const isOpen = openTopic === topic.id;
 
           return (
-            <div key={topic.id} className="col-span-1">
+            <div key={topic.id} className={isOpen ? 'col-span-full' : 'col-span-1'}>
               <button
                 onClick={() => setOpenTopic(isOpen ? null : topic.id)}
                 className={`w-full text-left rounded-xl p-3 border transition-all ${
@@ -199,13 +200,13 @@ function HotTopicsPanel({ issues, votes, isFeatured }: { issues: Issue[]; votes:
                       {PENDING_INTEGRATION_LABEL}
                     </span>
                   )}
-                  <div className="text-[#c8a951] font-semibold text-xs mb-0.5">{matched.position}</div>
+                  <div className="text-[#c8a951] font-semibold text-xs mb-0.5">{trimToWordBoundary(matched.position, 80)}</div>
                   <p className="text-gray-300 leading-relaxed italic">{matched.statement ?? matched.detail}</p>
                   {matched.evidence && matched.evidence.length > 0 ? (
                     <div className="pt-2 border-t border-[#1e3a5f] space-y-1.5">
                       <div className="text-[10px] text-gray-500 uppercase tracking-wide font-medium">Evidence (newest first)</div>
                       {issueEvidenceSections(matched).current.map((ev, j) => (
-                        <ExpandableEvidenceRow key={j} item={ev} />
+                        <ExpandableEvidenceRow key={j} item={ev} dedupeAgainst={matched.statement ?? matched.detail} />
                       ))}
                       <EarlierRecordSection items={issueEvidenceSections(matched).historical} />
                     </div>
@@ -374,7 +375,11 @@ function IssueAccordion({ issues, politicianName }: { issues: Issue[]; politicia
               ) : issue.evidence && issue.evidence.length > 0 ? (
                 <div className="space-y-2">
                   {issueEvidenceSections(issue).current.map((ev, j) => (
-                    <ExpandableEvidenceRow key={j} item={ev} />
+                    <ExpandableEvidenceRow
+                      key={j}
+                      item={ev}
+                      dedupeAgainst={issue.statement ?? `Available evidence suggests ${lastName} ${issue.detail.charAt(0).toLowerCase()}${issue.detail.slice(1)}`}
+                    />
                   ))}
                   <EarlierRecordSection items={issueEvidenceSections(issue).historical} />
                 </div>

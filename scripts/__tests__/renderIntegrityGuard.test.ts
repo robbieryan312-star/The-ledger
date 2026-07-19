@@ -12,6 +12,8 @@ import test from 'node:test';
 import {
   RENDER_INTEGRITY_KNOWN_BAD,
   RENDER_INTEGRITY_POLITICIAN_IMAGE_KNOWN_BAD,
+  RENDER_INTEGRITY_PROFILE_DRAWER_KNOWN_BAD,
+  RENDER_INTEGRITY_PROFILE_PAGES,
   RENDER_INTEGRITY_SCREENSHOT_DIR,
 } from '../../lib/data/__fixtures__/renderIntegrityGuard.fixture';
 
@@ -34,6 +36,23 @@ test('render integrity check must inspect politician portraits', () => {
   const source = readFileSync(path.join(projectRoot, 'scripts/render-integrity-check.ts'), 'utf8');
   assert.doesNotMatch(source, /closest\(['"]#politicians['"]\)/);
   assert.match(source, /\[data-ledger-avatar="fallback"\]/);
+});
+
+test('fixture: profile drawer half-width/triple-quote case is documented regression', () => {
+  assert.equal(
+    RENDER_INTEGRITY_PROFILE_DRAWER_KNOWN_BAD.defect,
+    'profile-issue-drawer-half-width-triple-quote',
+  );
+  assert.match(RENDER_INTEGRITY_PROFILE_DRAWER_KNOWN_BAD.description, /half-width|squeezed/i);
+  assert.equal(RENDER_INTEGRITY_PROFILE_DRAWER_KNOWN_BAD.viewport.width, 390);
+  assert.ok(RENDER_INTEGRITY_PROFILE_DRAWER_KNOWN_BAD.minDrawerWidthRatio >= 0.9);
+});
+
+test('render integrity check asserts profile drawers are not squeezed', () => {
+  const source = readFileSync(path.join(projectRoot, 'scripts/render-integrity-check.ts'), 'utf8');
+  assert.match(source, /assertNoSqueezedDrawer/);
+  assert.match(source, /RENDER_INTEGRITY_PROFILE_PAGES/);
+  assert.ok(RENDER_INTEGRITY_PROFILE_PAGES.length >= 2, 'must cover 2+ migrated profiles');
 });
 
 test('render integrity check passes after production build', { timeout: 480_000 }, () => {

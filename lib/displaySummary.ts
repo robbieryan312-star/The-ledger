@@ -106,6 +106,41 @@ export function truncateAtSentenceBoundary(text: string, maxLen: number): string
   return joined.length > 0 ? joined : t;
 }
 
+/**
+ * True when `quote` is redundant with `context` — i.e. the same verbatim text is
+ * already displayed nearby, so repeating it adds no information. Used to avoid the
+ * "same quote shown three times" defect in profile issue drawers.
+ *
+ * Comparison is punctuation-insensitive and truncation-tolerant: both strings are
+ * reduced to lowercase alphanumeric words (quotes, ellipses, and other punctuation
+ * stripped), then treated as redundant when the shorter one is a leading prefix of the
+ * longer — so a summarized lead ("… cannot afford housing;…") still matches the fuller
+ * stored quote it was drawn from. A minimum shared-prefix length guards against short
+ * generic fragments triggering a false positive.
+ */
+export function quotesAreRedundant(
+  a: string | undefined | null,
+  b: string | undefined | null,
+): boolean {
+  const norm = (s: string) =>
+    clean(s)
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  const x = norm(a ?? '');
+  const y = norm(b ?? '');
+  if (!x || !y) return false;
+  const shorter = x.length <= y.length ? x : y;
+  const longer = x.length <= y.length ? y : x;
+  if (shorter.length < 24) return false;
+  if (longer.startsWith(shorter)) return true;
+  // Fall back to a leading-prefix overlap for cases where each side was truncated
+  // differently (e.g. one at 80 chars, one at 120): compare the first 48 chars.
+  const prefixLen = Math.min(48, shorter.length);
+  return shorter.slice(0, prefixLen) === longer.slice(0, prefixLen);
+}
+
 export function trimToWordBoundary(text: string, maxLen: number): string {
   const t = text.trim();
   if (t.length <= maxLen) return t;

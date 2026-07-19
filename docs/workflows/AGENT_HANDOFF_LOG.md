@@ -12,15 +12,14 @@ core-rules, core-rules wins. Newest handoff on top.
 else looks perfect"). **Phase P UNLOCKED**, sequenced AFTER Wave 0 merge + Wave 1 data-loss prevention.
 Visual changes to the FL page now require new owner direction.
 
-**Current state (2026-07-19T09:20Z):**
-- **TWO branches in Claude review (both off `main`, neither merged):**
-  - **S2 profile-drawer mobile fix** — branch `cursor/s2-profile-drawer-mobile-70a6` (`ea36c39`), PR #41, Phase P task 1. Gate green. Mirrored to `beta` for owner preview.
-  - **SOURCE REGISTRY (R1–R5)** — branch `cursor/source-registry-70a6` (`13d5346`). Gate green. Docs/guard-only; not mirrored to beta (no visual change).
+**Current state (2026-07-19T10:20Z):**
+- **S2 (PR #41) and SOURCE REGISTRY (PR #42) MERGED to `main`** this session (both Claude APPROVED, CI green). `beta` mirrored to `main`.
 - **PR #39 MERGED to `main`** (`93e36fa`); `beta` branch tracks main.
 - **Wave 0d BLOCKED (owner Vercel wiring):** approved URL `the-ledger-s4dn.vercel.app` does NOT track `main` — owner must point its Production branch at `main`.
+- **In flight this session (W1–W4 + Wave 1 combined brief):** W1 operating-manual wiring, W3 officials/sitemap defect fixes, Wave 1 preserve-on-failure, W4 file-inventory audit — see latest session entry.
 - Owner-provided API keys in gitignored `.env.local` this session only; owner transferring to Runtime Secrets + GitHub secrets (`scripts/setup-github-secrets.sh`). BEA pending owner CAPTCHA.
 - **P0 (owner):** Cursor Cloud injected rules still reference deleted `agent-ops.mdc` + `AUDIT_DEBT_BRIEF.md` — re-sync dashboard project rules with on-disk core-rules §7
-- **Approved:** https://the-ledger-s4dn.vercel.app · Phase P task 1 (S2) in review
+- **Approved:** https://the-ledger-s4dn.vercel.app
 
 
 ## Improvement backlog
@@ -37,51 +36,58 @@ Visual changes to the FL page now require new owner direction.
 
 
 
-## Latest session — SOURCE REGISTRY brief (source constitution R1–R5) (COMPLETE — STOP for Claude)
+## Latest session — SOURCE REGISTRY brief (source constitution R1–R5) (MERGED to main — PR #42)
 
 ### Objective
 Owner directive: create `docs/OBJECTIVE_SOURCES.md` — the source constitution (approved sources,
-lean labels, Ledger tiers, key-routing matrix) — and wire it in (R1–R5). Separate task from S2.
+lean labels, Ledger tiers, key-routing matrix) — and wire it in (R1–R5).
 
 ### Verdict / outcome
-**COMPLETE on branch `cursor/source-registry-70a6` (`13d5346`) — NOT merged.** Gate green. STOP for
-Claude review.
+**COMPLETE — merged to `main` (PR #42) this session after Claude APPROVAL + CI green.**
 
 ### Done (R1–R5)
 - **R1:** `docs/OBJECTIVE_SOURCES.md` from owner-supplied content; reconciled to reality — command
   `ingest:courtlistener-fl` → real `ingest:courts-fl`; ProPublica Congress API marked retired;
-  BEA RPP routed to keyless FRED `*RPPALL` mirror; tiers verified against `lib/types/index.ts`
-  (`official`/`nonpartisan`/`media`/`alleged`/`unverified`); all cited repo paths exist.
-- **R2:** `KEYS.md` header now points routing at the registry (one fact/one owner); KEYS.md keeps
-  only per-key SET/EMPTY status.
-- **R3:** corroboration floor for unobtainable data added to `ledger-data-policy.mdc`, cross-referencing
-  the registry rule 4 as the single definition (single below-standard provider never shown; 2+
-  independent → `'alleged'` only, flagged).
+  BEA RPP routed to keyless FRED `*RPPALL` mirror; tiers verified against `lib/types/index.ts`.
+- **R2:** `KEYS.md` header points routing at the registry (one fact/one owner).
+- **R3:** corroboration floor added to `ledger-data-policy.mdc`, cross-referencing registry rule 4.
 - **R4:** living-registry rule added to `core-rules` HARD RULES + new `#### L.` subsection in §1.1.
-- **R5:** `docs/AGENT_INDEX.md` session-start order now includes the registry (item 4); docs-consistency
-  fixture `KEYS_REGISTRY_CROSSREF_KNOWN_GOOD` + guard subtests (f)/(g) freeze the KEYS↔registry
-  cross-reference and the floor/living-registry declarations; `docs-integrity` auto-covers the new file.
+- **R5:** `docs/AGENT_INDEX.md` session-start order includes the registry; docs-consistency subtests
+  (f)/(g) freeze the KEYS↔registry cross-reference and the floor/living-registry declarations.
 
-### Gates (this session)
-| Gate | Result |
-|---|---|
-| `npm run test:docs-integrity` + `test:docs-consistency` | 16/16, 0 fail |
-| `npm run build` (prebuild guards + tsc + build + postbuild render-integrity) | exit 0, 0 failures; render-integrity ok:true |
+## Latest session — S2 profile-drawer mobile fix (Phase P task 1) (MERGED to main — PR #41)
+
+### Objective
+Owner defect (mobile screenshots, migrated profile): expanded issue drawer rendered half-width
+in a 2-col grid cell with a dead-empty sibling, text one-word-per-line, and the same quote printed
+3× (gold headline, italic body, evidence row). Fix per brief S2a–f.
+
+### Verdict / outcome
+**COMPLETE — merged to `main` (PR #41) this session after Claude APPROVAL + CI green.** Root-caused
+at 390×844 render, fixed, guarded, verified on 3 migrated profiles. `beta` mirrors main.
+
+### Root cause (S2a — runtime, 390×844)
+`HotTopicsPanel` (migrated federal profiles) put the open topic's drawer inside a `col-span-1` cell
+of the mobile `grid-cols-2` grid → 154px-wide drawer, dead sibling column, one-word-per-line text.
+Triple quote = gold `matched.position` + italic `matched.statement` + `ExpandableEvidenceRow` quote.
+
+### Fixes
+- **S2b/d:** open topic wrapper is `col-span-full` → full-width drawer at every viewport.
+- **S2c:** gold headline truncated via `trimToWordBoundary(...,80)`; full quote once; redundant
+  evidence rows collapse to provenance-only via new `quotesAreRedundant()`.
+- **S2e:** `render-integrity-check.ts` opens React drawers at mobile + asserts no squeezed/empty cell;
+  owner case frozen as `RENDER_INTEGRITY_PROFILE_DRAWER_KNOWN_BAD`; server teardown on fail.
+- **S2f:** verified on Sanders/Warren/Ocasio-Cortez renders.
 
 ### Files touched
 | Path | Action | What changed |
 |------|--------|--------------|
-| `docs/OBJECTIVE_SOURCES.md` | created | Source constitution (R1) |
-| `KEYS.md` | modified | Routing pointer to registry (R2) |
-| `.cursor/rules/ledger-data-policy.mdc` | modified | Corroboration floor cross-ref (R3) |
-| `.cursor/rules/ledger-core-rules.mdc` | modified | Living-registry HARD RULE + §1.1 L (R4) |
-| `docs/AGENT_INDEX.md` | modified | Registry in session-start order (R5) |
-| `lib/data/__fixtures__/docsConsistencyGuard.fixture.ts` | modified | KEYS↔registry fixture (R5) |
-| `scripts/__tests__/docsConsistencyGuard.test.ts` | modified | Guard subtests (f)/(g) (R5) |
-
-### Open / next
-- STOP for Claude review of the registry PR
-- After review: Wave 1 data-loss prevention (per standing repair brief)
+| `components/politicians/PoliticianProfileClient.tsx` | modified | col-span-full open topic; truncated headline; dedupeAgainst on evidence |
+| `components/politicians/ExpandableEvidenceRow.tsx` | modified | `dedupeAgainst` prop → provenance-only collapse |
+| `lib/displaySummary.ts` | modified | `quotesAreRedundant()` helper |
+| `lib/data/__fixtures__/renderIntegrityGuard.fixture.ts` | modified | profile pages + drawer known-bad fixture |
+| `scripts/render-integrity-check.ts` | modified | React-drawer open + squeeze/empty-sibling assertions |
+| `scripts/__tests__/renderIntegrityGuard.test.ts` | modified | freeze fixture + assert guard inspects drawers |
 
 ## Latest session — Wave 0 (chip fixes + keyed re-ingest + merge) (COMPLETE except owner-blocked 0d deploy)
 
