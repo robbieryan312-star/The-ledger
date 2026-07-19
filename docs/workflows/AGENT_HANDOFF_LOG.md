@@ -7,9 +7,11 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-19T04:20Z):**
-- Branch: `cursor/fl-by-numbers-ux-70a6` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · tip `c4172d6` (+ docs hash-sync if ahead) · **no merge / no deploy** (await Claude)
-- Read-only platform audit filed: `docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` — **no product fixes until Claude briefs**
+**Current state (2026-07-19T04:55Z):**
+- Branch: `cursor/fl-by-numbers-ux-70a6` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · product tip `ebdb21e` + audit-doc commits · **no merge / no deploy** (await Claude)
+- **Deep read-only platform audit** (4 parallel passes + real gates) rewritten accurately in `docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` — **no product fixes until Claude briefs**
+- Gates this session: `tsc --noEmit` clean; `eslint` 76 problems (23 err/53 warn, not build-gating); `npm run prebuild` **GREEN** after fixing a self-introduced `docsIntegrityGuard` break in the audit doc
+- **P0 (owner):** Cursor Cloud injected rules still reference deleted `agent-ops.mdc` + `AUDIT_DEBT_BRIEF.md` — re-sync dashboard project rules with on-disk core-rules §7
 - Census KeySignup re-submitted → `create_success.html` (owner activate email → `CENSUS_API_KEY`)
 - Vercel rename: **no `VERCEL_TOKEN`** — owner dashboard singular rename (see audit §Owner actions)
 - **Approved:** https://the-ledger-s4dn.vercel.app · Phase P **GATED**
@@ -29,37 +31,56 @@ core-rules, core-rules wins. Newest handoff on top.
 
 
 
-## Latest session — Platform read-only audit + Census re-signup (COMPLETE)
+## Latest session — DEEP platform audit (4 passes + real gates) (COMPLETE — findings only)
 
 ### Objective
-Owner: prefer agent/GitHub Vercel rename if possible; retry Census key signup; STOP with owner instructions + ideal model; then deep read-only platform/instruction audit — **no changes until Claude reviews**.
+Owner: intensely thorough, flip-every-stone read-only audit of every file/process/instruction/line
+for errors, contradictions, duplicates, and improvements — **no changes until Claude reviews**.
+Also: Vercel rename (agent if possible), Census key retry, ideal model, owner-only actions.
 
 ### Verdict / outcome
-**COMPLETE (findings only)** — Vercel rename not agent-doable without `VERCEL_TOKEN` (documented singular dashboard action). Census KeySignup **302 → create_success.html**. Ideal auditor: **Claude Opus 4.8 Thinking High**. Full findings in `docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md`. **No product code changes. No merge of PR #39.**
+**COMPLETE (findings only)** — Four parallel read-only passes (instructions; app+components;
+lib+scripts; config/CI/data) + real gate runs. Findings consolidated and **corrected** in
+`docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md`. **No product/data changes. No merge of PR #39.**
+Vercel rename not agent-doable (no `VERCEL_TOKEN`). Census KeySignup **302 → create_success.html**.
+Ideal auditor: **Claude Opus 4.8 Thinking High**.
 
-### Commits
-- `abe3675` — docs: platform read-only audit 2026-07-19 for Claude review
-- `7e0a96a` / `c4172d6` — handoff tip hash sync commits (docs only)
+### Real gates (this session)
+| Gate | Result |
+|---|---|
+| `tsc --noEmit` | PASS (clean) |
+| `eslint .` | 76 problems (23 err / 53 warn) — NOT build-gating |
+| `npm run prebuild` | **GREEN** after fixing self-introduced `docsIntegrityGuard` break in the audit doc |
+
+### Key findings (full detail in audit doc)
+- **P0 (owner):** Cursor Cloud injected rules still reference deleted `agent-ops.mdc` + mandate `AUDIT_DEBT_BRIEF.md`; on-disk core-rules already resolved this → re-sync dashboard rules.
+- **P1 product:** Consistency Score still ships (`app/compare/CompareContent.tsx`, dead `components/politicians/ConsistencyScore.tsx`/`CredibilityConsistency.tsx`); DonorChart individuals-before-PACs; topic-title 80 / evidence-117 drift; silent-empty sections; non-canonical honest-gap strings; lingering "(demo)" labels with FEC data.
+- **P1 data/CI:** dual-vintage `asOf` on FL page (rebuild `state-economic.json` slice); ingest overwrite-on-failure risks (rankings/BEA/counties/openstates/sam/govinfo/news); missing `--members` on national syncs; `react-simple-maps` peer-invalid with React 19; `refresh-data.yml` missing Playwright install.
+- **P1 docs:** push/merge gate ambiguity; corroboration/`'alleged'` rule disagreement; migrated count 6-vs-7; Census keyless policy; session-start order + handoff retention.
+
+### Self-introduced defect (fixed same session — Owner visibility)
+First audit-doc draft cited nonexistent/renamed paths (`agent-ops.mdc`, `BillCard.tsx`,
+`FloridaByTheNumbers.tsx`, wrong county path, `-sample` script name) → broke `docsIntegrityGuard`
+→ `prebuild` failed. Corrected all citations to real paths; re-ran prebuild GREEN. No product/data touched.
 
 ### Commands run (this session)
-- Census `KeySignup` POST (org=The Ledger, email=robbie.ryan312@gmail.com) → 302 create_success.html
-- Multi-agent explore: rules contradictions; FL stack; federal+guards
-- Product tip unchanged: `ebdb21e`; audit report commit: `abe3675`
+- `npx tsc --noEmit` → exit 0
+- `npx eslint .` → 76 problems, exit 1
+- `npm run prebuild` → fail (docsIntegrityGuard, this file) → fixed → exit 0
+- `npx tsx --test scripts/__tests__/docsIntegrityGuard.test.ts` → 6/6
+- 4× read-only explore subagents (instructions / app+components / lib+scripts / config-CI-data)
+- Census `KeySignup` POST → 302 create_success.html
 
-### Files touched
+### Files touched (this session)
 | Path | Action | What changed |
 |------|--------|--------------|
-| `docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` | created | Owner actions + P0/P1/P2 findings for Claude |
+| `docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` | rewritten | Accurate consolidated deep-audit findings + corrected citations |
 | `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Current state + this session |
 
-### Acceptance evidence
-- Audit file on disk with DOC-01 P0 (AUDIT_DEBT_BRIEF vs AGENT_HANDOFF_LOG)
-- Explicit non-actions: no merge #39, no Phase P, no product fixes
-
 ### Open / next
-- Owner: Vercel consolidate rename; Census email activate
-- Claude: review audit + PR #39 → APPROVAL + ordered repair brief
-- Cursor: implement only after Claude brief
+- Owner: re-sync Cursor Cloud rules (P0); Vercel consolidate rename; Census email activate
+- Claude: review audit + PR #39 → APPROVAL + ordered repair brief (order in audit doc)
+- Cursor: implement only after Claude brief; no merge/deploy/Phase P until then
 
 ## Latest session — Full 67-county ingest (while Claude down) (PASS)
 
