@@ -9,10 +9,10 @@ core-rules, core-rules wins. Newest handoff on top.
 
 **Current state (2026-07-19):**
 - Branch: `cursor/fl-by-the-numbers-70a6` · PR [#36](https://github.com/robbieryan312-star/The-ledger/pull/36) draft · **do not merge** until Claude final approval
-- Claude review defects 1–3 fixed; local build + render-integrity **4/4**; awaiting tip CI GREEN
+- Defects 1–3 fixed + CI postbuild skip wired; local gate green; tip CI re-run pending
 - CI artifact: **`render-integrity-contact-sheet`**
-- T0 BEA still EMPTY (human CAPTCHA); COL via MERIC; metro CPI shows YoY %
-- Phase P remains **GATED**
+- Contact-sheet metadata: generatedAt `2026-07-19T01:17:45.685Z` (gitignored — cite fields only)
+- T0 BEA still EMPTY; Phase P **GATED**
 - **STOP for Claude final approval**
 
 
@@ -46,6 +46,7 @@ Fix three rendered defects on PR #36: metro CPI YoY meaning, MERIC user copy, ed
 - `npm run test:no-unverified-official-data` → 7/7
 - `npm run test:typecheck` → exit 0
 - `npm run build` → exit 0; render-integrity **4/4**
+- CI tip `c404f74` failed: postbuild ignored `RENDER_INTEGRITY_SKIP_POSTBUILD` → image waitForFunction 15s timeout; wired skip into `package.json` postbuild + image wait 45s; re-gate
 
 ### Acceptance evidence
 - Contact-sheet metadata (gitignored — cite fields only): generatedAt `2026-07-19T01:13:51.046Z` — regenerate per gate; CI artifact **`render-integrity-contact-sheet`**

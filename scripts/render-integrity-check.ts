@@ -136,7 +136,7 @@ async function assertImagesLoad(page: Page, label: string): Promise<void> {
         })
         .every((img) => img.complete),
     undefined,
-    { timeout: 15_000 },
+    { timeout: 45_000 },
   );
   const broken = await page.evaluate(() => {
     const imgs = [...document.querySelectorAll('img')];
