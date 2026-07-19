@@ -16,9 +16,10 @@ Phase 0 prerequisite: regenerate file inventory to reflect the real current tree
 `0 importers / MERGE` on `scripts/lib/*`; add `audit:inventory-md` npm alias; GENERATED header.
 
 ### Current state
-- **Branch:** `cursor/w4-file-inventory-audit-70a6` @ HEAD (pending commit this session)
+- **Branch:** `cursor/w4-file-inventory-audit-70a6` @ `7a91b07`
+- **PR:** https://github.com/robbieryan312-star/The-ledger/pull/44
 - **Base:** `main` @ `86cc7dd`
-- **Tree:** dirty → will commit generators + regenerated artifacts
+- **Tree:** clean (committed)
 - **Prebuild/build:** clean `.next` → `npm run prebuild` exit 0 · `npm run build` exit 0
 
 ### Before / after counts
@@ -37,6 +38,9 @@ Independent Python recount of nav-relevant tracked files: **274** (matches JSON 
 `countImporters()` only matched `@/` paths; `scripts/lib/*` is imported via `./lib/foo` and
 `../lib/foo`. Rewrote importer index: parse all `import`/`export from` + dynamic `import()` specs,
 resolve relative + `@/` aliases, cross-reference `package.json` npm script entrypoints.
+
+### Commits
+- `7a91b07` — feat(audit): Phase 0 — regenerate file inventory (210→274 rows)
 
 ### Commands run (this session)
 - `npm run audit:inventory` → exit 0 (274 files)
