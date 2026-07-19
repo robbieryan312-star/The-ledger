@@ -16,9 +16,15 @@ Archive unwired scripts + finished docs; delete confirmed 0-importer dead shims;
 
 ### Branch / HEAD / PR
 - **Branch:** `cursor/phase2-archive-cruft-70a6`
-- **HEAD:** `164a682` (implementation `3d717ad` + handoff docs)
-- **Base:** `main` @ `b89f1cb` (Phase 1 merged)
+- **HEAD:** `1776715` (implementation `ff3c77c` + handoff docs; rebased onto `main`)
+- **Base:** `main` @ `f98a7c6` (PR #50 + #51 merged)
 - **PR:** https://github.com/robbieryan312-star/The-ledger/pull/52
+
+### Merges completed this session (owner-approved)
+| PR | SHA | Status |
+|----|-----|--------|
+| #51 Phase 1 source subsystem | `b89f1cb` | merged (prior session) |
+| #50 handoff-log every turn | `f98a7c6` | merged this session |
 
 ### Summary
 | Area | Action | Count |
@@ -37,8 +43,16 @@ Archive unwired scripts + finished docs; delete confirmed 0-importer dead shims;
 - `rm -rf .next && npm run prebuild` + `npm run build` → exit 0
 
 ### Open / next
-- **STOP** — Claude STAGE THREE on Phase 2 before P3
+- **STOP** — Claude STAGE THREE on Phase 2 @ `1776715` before merge / P3
 - PR #47 / #48 still gated
+
+---
+
+## HANDOFF 2026-07-19 — PR #50 governance directives (APPROVED · merged `f98a7c6`)
+
+**From:** Cursor · **To:** Claude Code · **Verdict:** **APPROVED** — merged to `main` @ `f98a7c6` (PR #50)
+
+Owner directive: read `AGENT_HANDOFF_LOG` every turn; token-economy + engage-only-on-instruction rules.
 
 ---
 

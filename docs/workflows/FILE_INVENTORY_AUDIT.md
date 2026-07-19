@@ -3,7 +3,7 @@
 **GENERATED** — do not edit by hand. Regenerate:
 `npm run audit:inventory && npm run audit:inventory-md`
 
-**Generated:** 2026-07-19T22:51:25Z · **Baseline:** data/reports/file-inventory.json (258 files)
+**Generated:** 2026-07-19T22:56:01Z · **Baseline:** data/reports/file-inventory.json (258 files)
 **Type:** FINDINGS ONLY — no deletions until Claude briefs.
 
 ## W3c accuracy finding
