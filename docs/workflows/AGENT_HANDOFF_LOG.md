@@ -7,8 +7,11 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-19T03:16Z):**
-- Branch: `main` @ `6500b2d` (merge #37 postbuild skip; #36 By-the-numbers)
+**Current state (2026-07-19T04:55Z):**
+- Branch: `cursor/critical-bug-management-a905` @ `191df43` (PR #40 open; refresh workflow failure-handling fix)
+- Tree: docs-only handoff update pending at time of this entry; code/test fix committed and pushed
+- Build status: PASS after local `npx playwright install chromium`; first `npm run build` failed only because the local Playwright browser binary was absent
+- PR: https://github.com/robbieryan312-star/The-ledger/pull/40
 - **Live production (serving approved page):** https://the-ledger-s4dn.vercel.app/states/FL
 - GitHub deployment id: `5507426105` · Vercel deploy: `J8s7ui7w1LpQa4XeRmoc82SJgD4e` · env `Production – the-ledger-s4dn`
 - Stale alias: `https://the-ledger-gamma.vercel.app` still on old markup (`id="economy"`) — project `the-ledger` **rate-limited 24h**
@@ -19,9 +22,55 @@ core-rules, core-rules wins. Newest handoff on top.
 
 | Date | Item | Status |
 |------|------|--------|
+| 2026-07-19 | Add/keep workflow guards that ban secret-gated `npm run ... || echo skip` patterns and require warmed render-integrity when refresh workflows skip postbuild render. | done in PR #40 |
 | 2026-07-19 | **OWNER DASHBOARD:** consolidate 3 Vercel projects → ONE (`the-ledger` / `the-ledger-jcjh` / `the-ledger-s4dn`); pause/delete the two non-canonical; re-point `the-ledger-gamma` (or chosen domain) at the survivor. Triple projects burned Hobby build quota. | open — owner only |
 | 2026-07-18 | `npm audit`: 7 vulns remain after safe `npm audit fix` — need upstream Next/react-simple-maps (see `docs/workflows/NPM_AUDIT_2026-07-18.md`) | open |
 | 2026-07-11 | Add an explicit guard for national news refresh semantics so a successful empty response cannot be confused with fetch failure or stale-window retention. | open |
+
+## Latest session — Critical bug automation: refresh workflow failure handling (COMPLETE)
+
+### Objective
+Inspect recent commits for high-severity correctness bugs, avoid duplicate open PRs, and fix any concrete critical issue found.
+
+### Verdict / outcome
+**COMPLETE / PR OPEN** — fixed a scheduled refresh data-loss/stale-refresh path in `.github/workflows/refresh-data.yml`. Missing secrets still skip, but a configured keyed ingest that fails now aborts before slice rebuild/commit. Refresh validation also matches `guards.yml`: Chromium install, build with postbuild render skipped, warmed server render-integrity, then fetch-failed exclusion/commit.
+
+### Bug and impact
+- **Bug:** secret-gated refresh commands used `[ -n "$KEY" ] && npm run ... || echo "skip ..."`, so a real non-zero ingest with the secret set fell through to the skip echo and returned success.
+- **Impact:** a cron run could continue after a failed keyed ingest, rebuild derived slices, and open a data-refresh PR with degraded or partial official data. The same workflow ran plain `npm run build` after render-integrity returned to default postbuild, so Actions runners without Playwright Chromium could fail the scheduled refresh before commit.
+
+### Commits
+- `191df43` — `fix(ci): fail refresh on keyed ingest errors`
+- This handoff-log commit follows with PR #40 evidence.
+
+### Commands run (this session)
+- `git fetch origin main cursor/critical-bug-management-a905` -> exit 128; remote branch did not exist yet
+- `git fetch origin main` -> exit 0
+- `gh pr view 24/26/27/28/29/30/31 --json number,state,mergedAt,closedAt,url,title` -> exit 0
+- `npm run test:optimization` -> exit 0 (10/10)
+- `npm run build` -> exit 1 (local Playwright Chromium binary missing before install)
+- `npx playwright install chromium && npm run build` -> exit 0 (full build + render-integrity + client chunks)
+- `git diff -- .github/workflows/refresh-data.yml scripts/__tests__/optimizationGuards.test.ts && git status --short` -> exit 0
+- `git add .github/workflows/refresh-data.yml scripts/__tests__/optimizationGuards.test.ts && git commit -m "fix(ci): fail refresh on keyed ingest errors" && git rev-parse --short HEAD && git status --short --branch` -> exit 0 (`191df43`)
+- `git push -u origin cursor/critical-bug-management-a905` -> exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `.github/workflows/refresh-data.yml` | modified | Replaced secret-gated `&& ... || echo skip` chains with explicit `if` blocks + `set -euo pipefail`; added Chromium install, skipped postbuild render during build, and ran warmed-server render-integrity explicitly |
+| `scripts/__tests__/optimizationGuards.test.ts` | modified | Added regression guards for refresh workflow failure semantics and render-integrity alignment |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Logged this session, PR, validation, and backlog item |
+
+### Acceptance evidence
+- PR: https://github.com/robbieryan312-star/The-ledger/pull/40
+- Targeted guard: `npm run test:optimization` -> 10 tests, 10 pass, 0 fail
+- Full build after browser install: `npm run build` -> production compile succeeded; render-integrity 4/4; client chunk guard 1/1
+- Persistent automation memory updated: PR #26/#27 merged entries deleted; PR #24 set rejected; PR #40 recorded as open
+
+### Open / next
+- Review/merge PR #40.
+- Existing open bug PRs still awaiting review and not duplicated: #28, #29, #30, #31.
+
 
 ## Latest session — Deploy pipeline: merge #36/#37 + live production (COMPLETE)
 
