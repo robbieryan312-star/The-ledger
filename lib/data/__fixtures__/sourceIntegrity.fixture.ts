@@ -41,6 +41,14 @@ export const SOURCE_INTEGRITY_KNOWN_GOOD_URLS: Array<{ label: string; url: strin
   },
 ];
 
+/** AP News wire URLs use 32-hex ids — not placeholders, but apnews.com is non-fetch-verifiable (paywall/bot). */
+export const SOURCE_INTEGRITY_AP_ARTICLE_GOOD_URLS: Array<{ label: string; url: string }> = [
+  {
+    label: 'real AP News article with 32-hex id suffix (Mamdani/Sanders primary)',
+    url: 'https://apnews.com/article/mamdani-sanders-new-york-primary-b1a13eaf0d7e634b6805fc80b3372cf8',
+  },
+];
+
 /** Alleged/media journalism quote without verbatim:true — must fail statements integrity guard. */
 export const STATEMENT_KNOWN_BAD_NON_VERBATIM_ALLEGED = {
   label: 'alleged tier quote with verbatim:false',
