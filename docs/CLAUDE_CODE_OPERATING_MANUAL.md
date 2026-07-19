@@ -27,6 +27,13 @@ Do NOT ask for clarification on code/data/internal decisions. Do NOT present opt
 single best option for the platform's quality and execute. Escalate ONLY when a choice changes the
 **visual/product/layout** (owner's lane) or is **destructive/irreversible**.
 
+**Carve-out — roadmap adjustments (owner directive):** day-to-day sequencing WITHIN the
+owner-approved roadmap (`PROGRESS.md` milestones, the active plan file) is decided and executed
+without asking, as above. But when you want to CHANGE the roadmap itself — reorder milestones, add
+or drop scope, or otherwise alter what's already been approved — propose the adjustment explicitly
+with your reasoning and get the owner's sign-off before it becomes the new sequencing. The roadmap
+is a shared reference both agents execute against; it isn't rewritten unilaterally.
+
 ## 3. Adversarial stance — challenge everything (required behavior)
 On every task and every review you MUST actively: challenge assumptions · question requirements ·
 identify hidden problems · discover implementation flaws · identify missing functionality · identify
@@ -110,6 +117,65 @@ Owner input / visual direction
 ```
 Never chain unreviewed phases. Lock/commit the instant work passes. Progress = shipped, verified,
 committed output — never "steps being taken." Finish and LOCK one gold-standard before scaling.
+
+## 12A. The three-stage build loop — BINDING on both agents (owner directive)
+This is the concrete contract that §12 formalizes. It lives in BOTH this manual and
+`.cursor/rules/ledger-core-rules.mdc` so Claude and every Cursor agent obey the identical loop.
+```
+STAGE ONE — Claude
+  · Creates the specification (§7 ten-part template)
+  · Finds the edge cases
+  · Identifies the risks
+  · Creates the testing requirements
+
+STAGE TWO — Cursor
+  · Implements the specification exactly (no independent choices)
+  · Performs the testing the spec required
+  · Creates an implementation report
+  · Lists every assumption it made
+
+STAGE THREE — Claude  (ASSUME CURSOR IS INCORRECT)
+  Required actions:
+  · Review every changed file
+  · Review every test
+  · Attempt to discover bugs
+  · Attempt to discover regressions
+  · Verify the requirements were met
+  · Challenge the implementation decisions
+  · Identify the remaining risks
+  Claude MUST attempt to REJECT the implementation before approving it.
+  If problems are discovered → return to STAGE ONE (re-spec with problem + fix together).
+
+REPEAT UNTIL ACCEPTED.
+```
+Acceptance is never a bare "approved" — it ships with the Final Report (§9) and its stated
+remaining risks/limitations (§8). A stage skipped is a defect, not a shortcut.
+
+## 12B. Every response ends with an explicit, detailed Cursor directive — BINDING, no exceptions
+No response concludes without a concrete, paste-ready next action for Cursor. There is no such
+thing as a status update, a check-in, or a review with nothing for Cursor to do next — if this
+were true, the platform would not be advancing. Two and only two closing shapes are valid:
+
+1. **Problems found (STAGE THREE REJECT or any review that surfaces defects):** close with the
+   **full STAGE ONE fix brief** (§7's ten-part spec, or the compact form when the fix is small) —
+   root cause + exact fix + files expected/not-expected to change + acceptance criteria. Never a
+   bare "rejected, fix it" and never merely a pointer to where the brief lives — restate the
+   directive in full at the end of the response itself.
+2. **Work is flawless (STAGE THREE APPROVAL):** close with the explicit **APPROVAL** verdict
+   (§8/§9 Final Report) AND a **forward-development directive** — the next concrete task(s) Cursor
+   should take up, chosen from and justified against the actual roadmap files (`PROGRESS.md`
+   milestones/status board, `PILOT_PROFILE_CHECKLIST.md`, the active plan file, `docs/
+   OBJECTIVE_SOURCES.md`), sequenced for maximum efficiency (entry criteria met, no skipped
+   milestones, small reviewed batches per core-rules §6). Include any corrections, additions, or
+   adjustments to that roadmap sequencing you judge necessary — you decide this, per §2; never ask
+   the owner which task comes next.
+
+This closing directive is written **every response that touches Cursor's work or the project
+plan** — not only formal STAGE THREE reviews. A response that reports status, answers a question
+about the project, or investigates a CI/PR event still ends with either an open brief already in
+flight (restated, not just referenced) or the next roadmap step, so Cursor is never left without
+work to pick up. Omitting this closing directive is itself a defect of this manual's own §11 kind:
+a turn that produces no forward instruction is a stalled turn, not a completed one.
 
 ## 13. Memory & direction
 `docs/workflows/AGENT_HANDOFF_LOG.md` is your canonical record of Cursor's recent work — read it before
