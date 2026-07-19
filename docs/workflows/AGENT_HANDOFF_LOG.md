@@ -12,17 +12,14 @@ core-rules, core-rules wins. Newest handoff on top.
 else looks perfect"). **Phase P UNLOCKED**, sequenced AFTER Wave 0 merge + Wave 1 data-loss prevention.
 Visual changes to the FL page now require new owner direction.
 
-**Current state (2026-07-19T06:15Z):**
+**Current state (2026-07-19T09:05Z):**
+- **S2 profile-drawer mobile fix DONE on branch `cursor/s2-profile-drawer-mobile-70a6`** (`65c1177`) — Phase P task 1. Full gate green (`npm run build` exit 0, 0 test failures, render-integrity ok:true 5 shots). **NOT merged — STOP for Claude review; owner previews on BETA URL.**
 - **PR #39 MERGED to `main`** (`93e36fa`) — guards GREEN on tip `03dc76d`; docs follow-up `a649a31`. `beta` branch created (tracks main).
-- **Wave 0d BLOCKED (owner Vercel wiring):** merge deployed to project **`the-ledger`** Production (sha 93e36fa, build success), but the approved URL **`the-ledger-s4dn.vercel.app` does NOT track `main`** (only got a Preview deploy) and still serves the OLD render (MERIC COL, "Employment (unemployment rate)"). New render is on protected preview/prod-deploy URLs only. Owner must point the approved project's Production branch at `main` (Vercel consolidation).
-- Census key stored in gitignored `.env.local` only (length 40, suffix 685c); GitHub Actions secret still an owner step (`scripts/setup-github-secrets.sh`)
-- **STOP for Claude review** before S2 (profile-drawer UX) / Wave 1
-- **Deep read-only platform audit** (4 parallel passes + real gates) rewritten accurately in `docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` — **no product fixes until Claude briefs**
-- Gates this session: `tsc --noEmit` clean; `eslint` 76 problems (23 err/53 warn, not build-gating); `npm run prebuild` **GREEN** after fixing a self-introduced `docsIntegrityGuard` break in the audit doc
+- **Wave 0d BLOCKED (owner Vercel wiring):** merge deployed to project **`the-ledger`** Production (sha 93e36fa, build success), but the approved URL **`the-ledger-s4dn.vercel.app` does NOT track `main`** (only got a Preview deploy) and still serves the OLD render. Owner must point the approved project's Production branch at `main` (Vercel consolidation).
+- **SOURCE REGISTRY brief** (owner-supplied OBJECTIVE_SOURCES.md content, R1–R5) is the next task — separate branch, after S2.
+- Owner-provided API keys (FEC/CONGRESS/CENSUS/NEWSAPI/LEGISCAN/OPENSTATES/DATA_GOV/GOVINFO) live in gitignored `.env.local` this session only; owner transferring to Runtime Secrets + GitHub secrets (`scripts/setup-github-secrets.sh`). VOTESMART empty; PROPUBLICA retired; BEA pending owner CAPTCHA.
 - **P0 (owner):** Cursor Cloud injected rules still reference deleted `agent-ops.mdc` + `AUDIT_DEBT_BRIEF.md` — re-sync dashboard project rules with on-disk core-rules §7
-- Census KeySignup re-submitted → `create_success.html` (owner activate email → `CENSUS_API_KEY`)
-- Vercel rename: **no `VERCEL_TOKEN`** — owner dashboard singular rename (see audit §Owner actions)
-- **Approved:** https://the-ledger-s4dn.vercel.app · Phase P **GATED**
+- **Approved:** https://the-ledger-s4dn.vercel.app · Phase P task 1 (S2) in review
 
 
 ## Improvement backlog
@@ -38,6 +35,56 @@ Visual changes to the FL page now require new owner direction.
 
 
 
+
+## Latest session — S2 profile-drawer mobile fix (Phase P task 1) (COMPLETE — STOP for Claude)
+
+### Objective
+Owner defect (mobile screenshots, migrated profile): expanded issue drawer rendered half-width
+in a 2-col grid cell with a dead-empty sibling, text one-word-per-line, and the same quote printed
+3× (gold headline, italic body, evidence row). Fix per brief S2a–f.
+
+### Verdict / outcome
+**COMPLETE on branch `cursor/s2-profile-drawer-mobile-70a6` (`65c1177`) — NOT merged.** Root-caused
+at 390×844 render, fixed, guarded, verified on 3 migrated profiles. STOP for Claude review; owner
+previews on the BETA URL.
+
+### Root cause (S2a — runtime, 390×844)
+`HotTopicsPanel` (renders for migrated federal profiles at `PoliticianProfileClient.tsx:780`) put the
+open topic's drawer inside a `col-span-1` cell of the mobile `grid-cols-2` topic grid → drawer 154px
+wide (of 390), sibling tile short → dead column, text one-word-per-line. Triple quote = gold
+`matched.position` + italic `matched.statement` + `ExpandableEvidenceRow` quote (all the same text).
+
+### Fixes
+- **S2b/d:** open topic wrapper is `col-span-full` → drawer spans full grid width at every viewport;
+  no dead sibling; panel height for the sample drawer dropped 2784px → 1120px (condensed).
+- **S2c:** gold headline truncated via `trimToWordBoundary(...,80)`; full quote once as the italic
+  body; redundant evidence rows collapse to provenance-only (source/date/tier chips + link) via new
+  `quotesAreRedundant()` (prefix/punctuation-tolerant). Applied in `HotTopicsPanel` + `IssueAccordion`.
+- **S2e:** `render-integrity-check.ts` now opens React drawers at mobile and asserts no ≥2-col grid
+  cell is tall+narrow (open drawer must be col-span-full) and no empty tall sibling; covers 3 migrated
+  profiles (`RENDER_INTEGRITY_PROFILE_PAGES`); owner case frozen as `RENDER_INTEGRITY_PROFILE_DRAWER_KNOWN_BAD`;
+  guard also tears down its server on failure (no leaked port).
+- **S2f:** verified on Sanders/Warren/Ocasio-Cortez renders (contact-sheet + artifacts).
+
+### Gates (this session)
+| Gate | Result |
+|---|---|
+| `npm run build` (prebuild guards + tsc + build + postbuild render-integrity) | exit 0, 0 failures |
+| render-integrity | `{"ok":true, screenshots:5}` — FL ×2 + 3 profiles; profile-drawer subtests pass |
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `components/politicians/PoliticianProfileClient.tsx` | modified | col-span-full open topic; truncated headline; dedupeAgainst on evidence |
+| `components/politicians/ExpandableEvidenceRow.tsx` | modified | `dedupeAgainst` prop → provenance-only collapse of redundant quote |
+| `lib/displaySummary.ts` | modified | `quotesAreRedundant()` helper |
+| `lib/data/__fixtures__/renderIntegrityGuard.fixture.ts` | modified | profile pages + drawer known-bad fixture |
+| `scripts/render-integrity-check.ts` | modified | React-drawer open + squeeze/empty-sibling assertions + server teardown on fail |
+| `scripts/__tests__/renderIntegrityGuard.test.ts` | modified | freeze fixture + assert guard inspects drawers |
+
+### Open / next
+- STOP for Claude review of S2; mirror branch to `beta` for owner preview
+- Then SOURCE REGISTRY brief (R1–R5) on a separate branch
 
 ## Latest session — Wave 0 (chip fixes + keyed re-ingest + merge) (COMPLETE except owner-blocked 0d deploy)
 
