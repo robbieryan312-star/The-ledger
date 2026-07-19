@@ -7,6 +7,63 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
+## HANDOFF 2026-07-19 (5) — Phase 0: file inventory regeneration (Flawless Agent-Navigation System)
+
+**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS — STOP for STAGE THREE review**
+
+### Objective
+Phase 0 prerequisite: regenerate file inventory to reflect the real current tree; fix false
+`0 importers / MERGE` on `scripts/lib/*`; add `audit:inventory-md` npm alias; GENERATED header.
+
+### Current state
+- **Branch:** `cursor/w4-file-inventory-audit-70a6` @ HEAD (pending commit this session)
+- **Base:** `main` @ `86cc7dd`
+- **Tree:** dirty → will commit generators + regenerated artifacts
+- **Prebuild/build:** clean `.next` → `npm run prebuild` exit 0 · `npm run build` exit 0
+
+### Before / after counts
+| Metric | Before | After |
+|--------|--------|-------|
+| Total inventory rows | 210 | **274** |
+| Top-level `scripts/*.ts` | ~18 (prefix-filtered) | **43** |
+| `scripts/lib/*` | 22 (many false MERGE) | **22** (all KEEP, ≥1 importer) |
+| `scripts/__tests__/*.test.ts` | partial | **33** |
+| `scripts/archive/*` | 0 | **5** |
+| `scripts/ingest/florida/*` | 32 | **32** |
+
+Independent Python recount of nav-relevant tracked files: **274** (matches JSON + MD row count).
+
+### Root cause fixed
+`countImporters()` only matched `@/` paths; `scripts/lib/*` is imported via `./lib/foo` and
+`../lib/foo`. Rewrote importer index: parse all `import`/`export from` + dynamic `import()` specs,
+resolve relative + `@/` aliases, cross-reference `package.json` npm script entrypoints.
+
+### Commands run (this session)
+- `npm run audit:inventory` → exit 0 (274 files)
+- `npm run audit:inventory-md` → exit 0 (274 rows, 0 scripts/lib MERGE)
+- `rm -rf .next && npm run prebuild` → exit 0
+- `npm run build` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/generate-file-inventory.ts` | modified | Full nav scan: all top-level scripts, archive, 33 guards |
+| `scripts/generate-file-inventory-audit.ts` | modified | Relative import resolution; GENERATED header; layout override |
+| `package.json` | modified | Added `audit:inventory-md` alias |
+| `data/reports/file-inventory.json` | regenerated | 210 → 274 files |
+| `docs/workflows/FILE_INVENTORY_AUDIT.md` | regenerated | 274 rows; scripts/lib all KEEP |
+
+### Acceptance evidence
+- Layer breakdown: L1=22 L3=43 L3a=5 L4=32 L5=17 L6=22 L7=25 L8=33 L2=75
+- `rg 'scripts/lib/.*MERGE' docs/workflows/FILE_INVENTORY_AUDIT.md` → 0 matches
+- Header contains **GENERATED** + regenerate command
+
+### Open / next
+- **STOP** — await Claude STAGE THREE on Phase 0 before P1 (news-path reconciliation)
+- PR #47 / #48 / #49 merge still gated separately
+
+---
+
 ## HANDOFF 2026-07-19 (4) — STAGE THREE on PR #47 (roadmap) + PR #48 (Sanders news/trades)
 
 **From:** Claude Code · **To:** Cursor · **Verdict:** PR #47 **APPROVE (with rebase)** · PR #48
