@@ -38,6 +38,7 @@ Add each name below in [Cloud Agents → your environment → Secrets](https://c
 Use **Runtime Secret** for all API keys. Never commit values to the repo.
 
 `FEC_API_KEY` · `CONGRESS_API_KEY` · `CENSUS_API_KEY` · `DATA_GOV_API_KEY` · `GOVINFO_API_KEY` ·
+`BEA_API_KEY` ·
 `LEGISCAN_API_KEY` · `OPENSTATES_API_KEY` · `NEWSAPI_KEY` · `COURTLISTENER_API_KEY` (optional)
 
 After saving secrets, start a new agent run (or snapshot this environment with `.env.local` present).

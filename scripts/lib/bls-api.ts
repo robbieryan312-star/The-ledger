@@ -81,6 +81,28 @@ export function historyFromPoints(
   return rows;
 }
 
+/**
+ * Year-over-year % change from BLS monthly series (newest-first).
+ * Requires the same calendar month one year prior (13 monthly observations).
+ * Returns null when the series is too short or the prior month is missing.
+ */
+export function yoyPctFromMonthlyPoints(points: BLSDataPoint[] | undefined): number | null {
+  if (!points?.length) return null;
+  const monthly = points.filter(
+    (p) => /^M(0[1-9]|1[0-2])$/.test(p.period) && p.value != null && p.value !== '-',
+  );
+  if (monthly.length < 13) return null;
+  const latest = monthly[0];
+  const latestVal = Number.parseFloat(String(latest.value).replace(/,/g, ''));
+  if (!Number.isFinite(latestVal)) return null;
+  const priorYear = String(Number.parseInt(latest.year, 10) - 1);
+  const prior = monthly.find((p) => p.year === priorYear && p.period === latest.period);
+  if (!prior) return null;
+  const priorVal = Number.parseFloat(String(prior.value).replace(/,/g, ''));
+  if (!Number.isFinite(priorVal) || priorVal === 0) return null;
+  return ((latestVal - priorVal) / priorVal) * 100;
+}
+
 export function growthOverYears(
   points: BLSDataPoint[] | undefined,
   years: number,

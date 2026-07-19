@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "source": {
+      "name": "U.S. Bureau of Labor Statistics",
+      "url": "https://www.bls.gov",
+      "tier": "official",
+      "description": "Official labor and price statistics via api.bls.gov"
+    },
+    "asOf": "2026-07-19",
+    "count": 2,
+    "stateCode": "FL",
+    "provenance": "fetched-live",
+    "fetchedLive": true,
+    "fetchedAt": "2026-07-19T01:12:44.069Z",
+    "datasetUrl": "https://api.bls.gov/publicAPI/v2/timeseries/data/",
+    "note": "BLS v2 metro CPI — display uses year-over-year % (13-month window); bare index kept for provenance only."
+  },
+  "records": [
+    {
+      "metro": "Miami-Fort Lauderdale-West Palm Beach, FL",
+      "shortName": "Miami–Fort Lauderdale",
+      "indicator": "Consumer Price Index for All Urban Consumers: All items",
+      "unit": "yoy-pct",
+      "seriesId": "CUURS35BSA0",
+      "latestPeriod": "June 2026",
+      "latestValue": 369.764,
+      "yoyPct": 3.3582110412299118,
+      "recent": [
+        {
+          "period": "June 2026",
+          "value": 369.764
+        },
+        {
+          "period": "April 2026",
+          "value": 369.561
+        },
+        {
+          "period": "February 2026",
+          "value": 362.65
+        },
+        {
+          "period": "December 2025",
+          "value": 359.125
+        },
+        {
+          "period": "August 2025",
+          "value": 357.009
+        },
+        {
+          "period": "June 2025",
+          "value": 357.75
+        },
+        {
+          "period": "April 2025",
+          "value": 356.054
+        },
+        {
+          "period": "February 2025",
+          "value": 355.029
+        },
+        {
+          "period": "December 2024",
+          "value": 350.098
+        },
+        {
+          "period": "October 2024",
+          "value": 350.3
+        },
+        {
+          "period": "August 2024",
+          "value": 348.158
+        },
+        {
+          "period": "June 2024",
+          "value": 346.955
+        }
+      ],
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Official labor and price statistics via api.bls.gov",
+        "date": "2026-06-01"
+      },
+      "asOf": "2026-07-19",
+      "blsUrl": "https://data.bls.gov/timeseries/CUURS35BSA0"
+    },
+    {
+      "metro": "Tampa-St. Petersburg-Clearwater, FL",
+      "shortName": "Tampa–St. Petersburg",
+      "indicator": "Consumer Price Index for All Urban Consumers: All items",
+      "unit": "yoy-pct",
+      "seriesId": "CUURS35DSA0",
+      "latestPeriod": "May 2026",
+      "latestValue": 316.435,
+      "yoyPct": 3.212812107572133,
+      "recent": [
+        {
+          "period": "May 2026",
+          "value": 316.435
+        },
+        {
+          "period": "March 2026",
+          "value": 311.681
+        },
+        {
+          "period": "January 2026",
+          "value": 310.244
+        },
+        {
+          "period": "November 2025",
+          "value": 308.706
+        },
+        {
+          "period": "September 2025",
+          "value": 309.669
+        },
+        {
+          "period": "July 2025",
+          "value": 310.071
+        },
+        {
+          "period": "May 2025",
+          "value": 306.585
+        },
+        {
+          "period": "March 2025",
+          "value": 305.407
+        },
+        {
+          "period": "January 2025",
+          "value": 303.197
+        },
+        {
+          "period": "November 2024",
+          "value": 299.638
+        },
+        {
+          "period": "September 2024",
+          "value": 299.722
+        },
+        {
+          "period": "July 2024",
+          "value": 300.062
+        },
+        {
+          "period": "May 2024",
+          "value": 298.673
+        }
+      ],
+      "source": {
+        "name": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov",
+        "tier": "official",
+        "description": "Official labor and price statistics via api.bls.gov",
+        "date": "2026-05-01"
+      },
+      "asOf": "2026-07-19",
+      "blsUrl": "https://data.bls.gov/timeseries/CUURS35DSA0"
+    }
+  ]
+}

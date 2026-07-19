@@ -70,7 +70,9 @@ export { PHOTO_ATTRIBUTION } from '@/lib/photoAttribution';
 const EXECUTIVE_PORTRAIT_URLS: Record<string, string> = {
   'pres-us':
     'https://www.whitehouse.gov/wp-content/uploads/2025/02/President-Donald-J-Trump-Official-Presidential-Portrait.png',
-  'ron-desantis': 'https://www.flgov.com/eog/sites/default/files/img/ron-desantis-inaugeration.png',
+  // Same-origin optimized copy of the official flgov.com inauguration portrait
+  // (hotlink/timeouts from flgov.com flake CI render-integrity on GH runners).
+  'ron-desantis': '/portraits/ron-desantis.jpg',
   'cab-bondi': 'https://www.justice.gov/d9/2025-12/ag_pamela_bondi.jpg.jpg',
   'cab-bessent': 'https://home.treasury.gov/system/files/136/Secretary_Bessent.jpg',
   'cab-hegseth':

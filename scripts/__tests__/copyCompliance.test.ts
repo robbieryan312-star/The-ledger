@@ -48,6 +48,8 @@ test('app/ and components/ contain no Tier N copy or Wikipedia references', () =
 });
 
 const BANNED_GAP_COPY = /No verified data yet/;
+/** Process vocabulary — never user-visible (Claude review 2026-07-19). */
+const BANNED_PROCESS_COPY = /\b(interim|headline|sample batch)\b/i;
 
 test('app/ and components/ use platform honest-gap copy (not "No verified data yet")', () => {
   const violations: string[] = [];
@@ -67,5 +69,35 @@ test('app/ and components/ use platform honest-gap copy (not "No verified data y
     violations.length,
     0,
     `honest-gap copy must be "No verified record available":\n${violations.join('\n')}`,
+  );
+});
+
+test('app/ and components/ contain no process vocabulary (interim / headline / sample batch)', () => {
+  const violations: string[] = [];
+  const stringLit =
+    /(['"`])(?:\\.|(?!\1)[\s\S])*?\1/g;
+  for (const root of ROOTS) {
+    for (const file of collectTsxFiles(root)) {
+      const content = readFileSync(file, 'utf8');
+      const lines = content.split('\n');
+      lines.forEach((line, idx) => {
+        const trimmed = line.trim();
+        if (trimmed.startsWith('//') || trimmed.startsWith('*') || trimmed.startsWith('/**')) return;
+        if (/^\s*\*/.test(line)) return;
+        // Only string/template literals — strip ${…} so property paths like
+        // `${n.headline}` are not treated as user-facing copy.
+        for (const m of line.matchAll(stringLit)) {
+          const prose = m[0].replace(/\$\{[^}]*\}/g, ' ');
+          if (BANNED_PROCESS_COPY.test(prose)) {
+            violations.push(`${file}:${idx + 1}: process vocabulary — ${trimmed.slice(0, 100)}`);
+          }
+        }
+      });
+    }
+  }
+  assert.equal(
+    violations.length,
+    0,
+    `banned process vocabulary in user-facing surfaces:\n${violations.join('\n')}`,
   );
 });

@@ -8,10 +8,11 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-19):**
-- Branch: `main` · HEAD `2b10253` · PRs [#33](https://github.com/robbieryan312-star/The-ledger/pull/33) (FIX-1/2/3) + [#34](https://github.com/robbieryan312-star/The-ledger/pull/34) (gate log) **MERGED**
-- Tree: clean · local full gate exit 0 · **`guards.yml` GREEN on main** (runs [`29666598584`](https://github.com/robbieryan312-star/The-ledger/actions/runs/29666598584) @ `27fa4dc`, [`29666724890`](https://github.com/robbieryan312-star/The-ledger/actions/runs/29666724890) @ `2b10253`)
-- CI artifact: **`render-integrity-contact-sheet`** (uploaded on PR + main push)
-- **READY FOR OWNER VISUAL SIGN-OFF of /states/FL** — Phase P propagation **GATED** (do not start until sign-off logged here)
+- Branch: `cursor/fl-by-the-numbers-70a6` · HEAD `58d1f9f` · PR [#36](https://github.com/robbieryan312-star/The-ledger/pull/36) draft · **do not merge**
+- CI `guards` **GREEN** ([`29668477259`](https://github.com/robbieryan312-star/The-ledger/actions/runs/29668477259)) · artifact **`render-integrity-contact-sheet`**
+- Claude review defects 1–3 fixed; contact-sheet regenerated
+- Phase P **GATED** · **STOP for Claude final approval**
+
 
 ## Improvement backlog
 
@@ -20,7 +21,111 @@ core-rules, core-rules wins. Newest handoff on top.
 | 2026-07-18 | `npm audit`: 7 vulns remain after safe `npm audit fix` — need upstream Next/react-simple-maps (see `docs/workflows/NPM_AUDIT_2026-07-18.md`) | open |
 | 2026-07-11 | Add an explicit guard for national news refresh semantics so a successful empty response cannot be confused with fetch failure or stale-window retention. | open |
 
-## Latest session — Claude audit FIX-1/2/3 (COMPLETE — STOP for owner)
+## Latest session — Claude review defect fixes 1–3 (STOP for final approval)
+
+### Objective
+Fix three rendered defects on PR #36: metro CPI YoY meaning, MERIC user copy, education mid-word wrap. Re-gate; STOP for Claude final approval. Do not merge. Phase P gated.
+
+### Verdict / outcome
+**PASS** — defects fixed; local + CI guards GREEN on `58d1f9f` (run `29668477259`, artifact `render-integrity-contact-sheet`). **STOP for Claude final approval. Do not merge.**
+
+### Fixes
+
+| # | Defect | Fix |
+|---|--------|-----|
+| 1 | Bare CPI index | Ingest computes `yoyPct` (13-mo); UI shows `Miami–Fort Lauderdale · +X.X% vs a year ago`; short series → honest gap; unit tests |
+| 2 | Process vocabulary | Label `Cost of living index (MERIC)`; period `Q1 2026` via `formatMericPeriodDisplay`; copy-compliance bans interim/headline/sample batch in string lits |
+| 3 | Education mid-word wrap | Stacked label-above-values + `break-normal` / `word-break: keep-all`; render-integrity asserts no mid-word splits in `#section-01` |
+
+### Commands run (this session)
+- `npm run ingest:bls-metro-cpi-fl` → exit 0; yoy Miami≈3.4% Tampa≈3.2%
+- `npm run test:state-economic-display` → 12/12 (incl. YoY + MERIC period)
+- `npm run test:copy-compliance` → 3/3
+- `npm run test:no-unverified-official-data` → 7/7
+- `npm run test:typecheck` → exit 0
+- `npm run build` → exit 0; render-integrity **4/4**
+- CI tip `c404f74` failed: postbuild ignored `RENDER_INTEGRITY_SKIP_POSTBUILD` → image waitForFunction 15s timeout; wired skip into `package.json` postbuild + image wait 45s
+- CI tip `e7b6073` failed: DeSantis flgov.com portrait → initials on mobile; switched to same-origin `/portraits/ron-desantis.jpg` + avatar eager/no-referrer + fallback settle wait
+
+### Acceptance evidence
+- Contact-sheet metadata (gitignored — cite fields only): generatedAt `2026-07-19T01:13:51.046Z` — regenerate per gate; CI artifact **`render-integrity-contact-sheet`**
+- No bare CPI index in UI; no "interim"/"headline"/"sample batch" in user-facing string literals
+
+### Open / next
+- Confirm CI GREEN on tip → Claude final APPROVAL
+- Owner: BEA + Census keys still needed for full T0/T4/T5
+- Phase P gated; **do not merge** without Claude APPROVAL
+
+
+## Latest session — By-the-numbers refinement T0–T6 (STOP for Claude)
+
+### Objective
+Owner visual refinement: condense By the numbers, display labels, decimals, ranks/age, live COL (BEA headline + MERIC + BLS CPI). Phase P gated.
+
+### Verdict / outcome
+**PARTIAL / STOP for Claude** — UI + keyless ingests green; CI guards GREEN (`397eab5` / run `29667807229`, artifact `render-integrity-contact-sheet`). **T0 BEA key acquisition FAILED** (2 attempts, human-only CAPTCHA/email). Per T6c: MERIC is interim COL headline; BEA row honest-gap. Census rankings/age honest-gap (no `CENSUS_API_KEY` in session). **Do not merge until Claude APPROVAL.** Owner final visual sign-off follows Claude.
+
+### Process rule
+Merge only after `guards.yml` **GREEN** on the PR tip (watch the run). Never merge while pending.
+
+### T0 — BEA API key (FAILED — 2 attempts)
+
+| # | Attempt | Outcome |
+|---|---------|---------|
+| 1 | computerUse → BEA signup + Gmail | Tool handler missing (`No handler found for computerUseArgs`) |
+| 2 | Chrome/curl BEA signup page | Form requires **reCAPTCHA Enterprise** (`g-recaptcha` sitekey present) — human-only |
+| 2b | Gmail retrieval via computerUse | Same computer-use blocker; login/2FA human-only |
+| — | Census KeySignup POST to owner email | HTTP 302 (may have emailed key) — cannot retrieve without Gmail |
+
+KEYS.md: `BEA_API_KEY` remains **EMPTY**. No key value written to git/chat. `.env.local` not created.
+
+### What shipped (agent-complete)
+
+| ID | Status | Evidence |
+|----|--------|----------|
+| T1 | DONE | Single `#section-01` By the numbers; taxes→§02 … courts→§05; secondary data in `<details>` |
+| T2 | DONE | `displayLabelFor` + UI titles/precision subs |
+| T3 | DONE | `formatPercent` 1dp strip `.0`; `formatRank`; tests 7/7 |
+| T4 | PARTIAL | Ingest + guard wired; committed rankings file **honest-gap** (no Census key) |
+| T5 | PARTIAL | Age breakdown ingest path ready; empty until Census key |
+| T6 | PARTIAL | Headline **MERIC** interim; BEA gap row; BLS Miami/Tampa CPI live; each row has tier dot |
+
+### Commits
+- `025b6d6` — feat(fl): add by-the-numbers data ingests
+- `3b94f1c` — docs: log FL by-the-numbers refinement
+- (this commit) — UI condense + section renumber + wire meric/cpi/rankings
+
+### Commands run (this session)
+- BEA signup page probe → reCAPTCHA YES
+- Census KeySignup POST → HTTP 302
+- `npm run test:typecheck` → exit 0
+- `npm run test:state-economic-display` → 7/7
+- `npm run test:no-unverified-official-data` → 7/7
+- `npm run test:copy-compliance` → 2/2
+- `npm run build` → exit 0; render-integrity **4/4**
+
+### Files touched (UI turn)
+| Path | Action | What changed |
+|------|--------|--------------|
+| `components/states/FloridaStateDashboard.tsx` | modified | Condensed By the numbers; MERIC interim COL; ranks/age UI; labels |
+| `components/states/FloridaStatePoliticians.tsx` | modified | Eyebrow §03 |
+| `app/states/[code]/page.tsx` | modified | Pass meric/metroCpi/rankings + full counties meta |
+| `scripts/render-integrity-check.ts` | modified | REQUIRED `#section-01..03`; conditional `#section-04/05` |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session |
+
+### Acceptance evidence
+- Contact-sheet metadata (gitignored): generatedAt `2026-07-19T00:51:54.137Z` — review via CI artifact **`render-integrity-contact-sheet`**
+- MERIC FL index 100.7 · rankAmong50 30 · BLS CPI Miami+Tampa fetched-live
+- BEA `florida-rpp-sample.json` still honest-gap (no key)
+
+### Open / next (for Claude / owner)
+1. Owner: complete BEA signup CAPTCHA at https://apps.bea.gov/API/signup/ (email robbie.ryan312@gmail.com) OR paste key into Cursor Cloud Runtime Secret `BEA_API_KEY` + `.env.local`
+2. Owner: retrieve Census key email (KeySignup already POSTed) → set `CENSUS_API_KEY` → Cursor re-runs `ingest:fl-state-rankings` + `ingest:bea-rpp-fl`
+3. Claude: review CI contact-sheet + this log → APPROVAL or re-brief
+4. Phase P stays **GATED** until owner final visual sign-off logged
+
+
+## Session log 1 — Claude audit FIX-1/2/3 (COMPLETE — STOP for owner)
 
 ### Objective
 Clear main RED (docs-integrity gitignored citation), fix inverted income chip, upload render-integrity CI artifact; full gate; STOP for owner visual sign-off. Phase P gated.

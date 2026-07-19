@@ -73,7 +73,7 @@ export default function FloridaStatePoliticians({
   return (
     <section id="politicians" className="scroll-mt-24 py-7 border-b border-[var(--border-subtle)]">
       <div className="mb-4">
-        <span className="font-mono text-[10.5px] tracking-widest text-[var(--gold)]">§04</span>
+        <span className="font-mono text-[10.5px] tracking-widest text-[var(--gold)]">§03</span>
         <h2 className="text-base font-semibold text-[var(--foreground)] mt-1">Officials</h2>
         <p className="text-[12.5px] text-[var(--muted)] mt-1 max-w-prose">
           Ordered by office — statewide and federal first. Each links to a full profile.

@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "source": {
+      "name": "Missouri Economic Research and Information Center / C2ER",
+      "url": "https://meric.mo.gov/data/cost-living-data-series",
+      "tier": "nonpartisan",
+      "description": "MERIC cost-of-living data series derived from C2ER index data"
+    },
+    "asOf": "2026-07-19",
+    "count": 1,
+    "stateCode": "FL",
+    "provenance": "fetched-live",
+    "fetchedLive": true,
+    "fetchedAt": "2026-07-19T00:44:51.817Z",
+    "citation": "https://meric.mo.gov/data/cost-living-data-series",
+    "datasetUrl": "https://meric.mo.gov/data/cost-living-data-series",
+    "period": "Cost of Living-First Quarter 2026",
+    "note": "Rank recomputed among 50 states by ascending all-items index; District of Columbia, Puerto Rico, and United States are excluded from rank-among-50.",
+    "rankExclusions": [
+      "district of columbia",
+      "puerto rico",
+      "united states"
+    ]
+  },
+  "state": {
+    "state": "Florida",
+    "period": "Cost of Living-First Quarter 2026",
+    "allItemsIndex": 100.7,
+    "rankAmong50": 30,
+    "reportedRank": 31,
+    "components": [
+      {
+        "label": "Grocery",
+        "index": 105.7
+      },
+      {
+        "label": "Housing",
+        "index": 101.1
+      },
+      {
+        "label": "Utilities",
+        "index": 94.6
+      },
+      {
+        "label": "Transportation",
+        "index": 99.5
+      },
+      {
+        "label": "Health",
+        "index": 101.4
+      },
+      {
+        "label": "Misc.",
+        "index": 99.8
+      }
+    ]
+  }
+}

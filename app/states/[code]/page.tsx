@@ -14,7 +14,10 @@ import type { DashboardPolitician } from '@/lib/dashboard/stateRosterClient';
 import FloridaStateDashboard from '@/components/states/FloridaStateDashboard';
 import {
   getFloridaCountiesSample,
+  getFloridaMetroCpiSample,
+  getFloridaMericColSample,
   getFloridaRppSample,
+  getFloridaStateRankingsSample,
   getFloridaTaxSample,
 } from '@/lib/data/floridaDashboard';
 
@@ -73,6 +76,9 @@ export default async function StatePage({
   const politicians = buildStateRoster(upper);
   const counties = getFloridaCountiesSample();
   const rpp = getFloridaRppSample();
+  const meric = getFloridaMericColSample();
+  const metroCpi = getFloridaMetroCpiSample();
+  const rankings = getFloridaStateRankingsSample();
   const taxes = getFloridaTaxSample();
 
   return (
@@ -86,9 +92,18 @@ export default async function StatePage({
       counties={{
         records: counties.records,
         stateSummary: counties.stateSummary,
-        meta: { fetchedLive: counties.meta.fetchedLive },
+        meta: {
+          provenance: counties.meta.provenance,
+          fetchedLive: counties.meta.fetchedLive,
+          censusFetchedLive: counties.meta.censusFetchedLive,
+          blsFetchedLive: counties.meta.blsFetchedLive,
+          attainmentFetchedLive: counties.meta.attainmentFetchedLive,
+        },
       }}
       rpp={rpp}
+      meric={meric}
+      metroCpi={metroCpi}
+      rankings={rankings}
       taxes={taxes}
     />
   );

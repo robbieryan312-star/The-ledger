@@ -7,6 +7,8 @@ import {
   deltaVsMonthsAgo,
   findIndicator,
   formatDelta,
+  formatPercent,
+  formatRank,
   incomeVsUsChipClass,
   indicatorRawValue,
 } from '../../lib/format/stateEconomicDisplay';
@@ -85,6 +87,17 @@ test('rising unemployment history ⇒ positive delta and formatDelta shows +', (
 test('formatDelta does not invert rising unemployment (3.9→4.4 ⇒ +0.5 pp)', () => {
   assert.equal(formatDelta(0.5, '%'), '+0.5 pp');
   assert.equal(formatDelta(-0.5, '%'), '-0.5 pp');
+  assert.equal(formatDelta(1, '%'), '+1 pp');
+});
+
+test('formatPercent uses max one decimal and strips trailing .0', () => {
+  assert.equal(formatPercent(33), '33%');
+  assert.equal(formatPercent(33.2), '33.2%');
+  assert.match(formatPercent(33.25), /^33\.[23]%$/);
+});
+
+test('formatRank emits an integer string', () => {
+  assert.equal(formatRank(3), '3');
 });
 
 test('FL income below U.S. ⇒ "-$…" delta and negative chip class (true sentiment)', () => {

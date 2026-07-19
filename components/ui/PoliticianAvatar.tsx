@@ -36,6 +36,9 @@ export default function PoliticianAvatar({
         alt={name}
         data-ledger-avatar="image"
         data-ledger-avatar-name={name}
+        loading="eager"
+        decoding="async"
+        referrerPolicy="no-referrer"
         onError={() => setFailed(true)}
         className="w-full h-full object-cover object-top"
       />

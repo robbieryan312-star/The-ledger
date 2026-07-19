@@ -46,11 +46,23 @@ export function formatFullCurrency(value: number | string | null | undefined): s
   return `$${formatFull(n)}`;
 }
 
+function stripTrailingZero(value: string): string {
+  return value.replace(/\.0$/, '');
+}
+
 /** 4.4% */
 export function formatPercent(value: number | string | null | undefined, digits = 1): string {
   const n = parseNumeric(value);
   if (n == null) return '—';
-  return `${n.toFixed(digits)}%`;
+  const cappedDigits = Math.min(Math.max(Math.trunc(digits), 0), 1);
+  return `${stripTrailingZero(n.toFixed(cappedDigits))}%`;
+}
+
+/** 3 */
+export function formatRank(value: number | string | null | undefined): string {
+  const n = parseNumeric(value);
+  if (n == null) return '—';
+  return Math.round(n).toLocaleString('en-US', { maximumFractionDigits: 0 });
 }
 
 /** Format indicator display value from raw + unit. */
