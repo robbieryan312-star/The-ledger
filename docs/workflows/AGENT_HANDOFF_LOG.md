@@ -14,8 +14,11 @@ core-rules, core-rules wins. Newest handoff on top.
 ### Objective
 Archive unwired scripts + finished docs; delete confirmed 0-importer dead shims; do not touch dead routes.
 
-### Branch
-`cursor/phase2-archive-cruft-70a6` (base `main` @ `b89f1cb`)
+### Branch / HEAD / PR
+- **Branch:** `cursor/phase2-archive-cruft-70a6`
+- **HEAD:** `3d717ad` — `chore(archive): Phase 2 — archive cruft + delete dead shims (258-row inventory)`
+- **Base:** `main` @ `b89f1cb` (Phase 1 merged)
+- **PR:** https://github.com/robbieryan312-star/The-ledger/pull/52
 
 ### Summary
 | Area | Action | Count |
@@ -41,7 +44,7 @@ Archive unwired scripts + finished docs; delete confirmed 0-importer dead shims;
 
 ## HANDOFF 2026-07-19 — Phase 1: source subsystem (APPROVED · merged `b89f1cb`)
 
-**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS — STOP for STAGE THREE review (Phase 1)**
+**From:** Cursor · **To:** Claude Code · **Verdict:** **APPROVED** — merged to `main` @ `b89f1cb` (PR #51)
 
 ### Objective
 Reconcile news path across AGENT_INDEX/OBJECTIVE_SOURCES/SOURCE_LOOKUP; create `docs/sources/florida.md`;
@@ -65,7 +68,7 @@ delete dead lib/data sourceTiers shim.
 - `npm run build` → exit 0
 
 ### Open / next
-- **STOP** — Claude STAGE THREE on Phase 1 before P2
+- Phase 2 executed on `cursor/phase2-archive-cruft-70a6` @ `3d717ad` (PR #52)
 - PR #47 / #48 still gated
 
 ---
