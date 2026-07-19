@@ -4,15 +4,15 @@
       "name": "U.S. Census Bureau ACS",
       "url": "https://api.census.gov",
       "tier": "official",
-      "description": "American Community Survey 5-year estimates via api.census.gov"
+      "description": "ACS 5-year county + state attainment estimates"
     },
-    "asOf": "2026-07-02",
+    "asOf": "2026-07-19",
     "count": 1,
     "stateCode": "FL",
+    "provenance": "fetched-live",
     "fetchedLive": true,
-    "datasetUrl": "https://api.census.gov/data/2023/acs/acs5?get=NAME,B01003_001E,B19013_001E,B25077_001E&for=state:12&key=***",
-    "note": "State-level ACS demographics + US B19013/B25077 (ACS 2023 5-year). US medians from data.census.gov ACSDT5Y2023 (verified 2026-07-18).",
-    "provenance": "fetched-live"
+    "datasetUrl": "https://data.census.gov/api/access/data/table?id=ACSDT5Y2023.B01003&g=040XX00US12",
+    "note": "Written by ingest:fl-counties — same ACS 2023 vintage as county file (single read-path)."
   },
   "records": [
     {
@@ -21,17 +21,17 @@
       "population": 21928881,
       "medianHouseholdIncome": 71711,
       "medianHomeValue": 325000,
+      "nationalMedianHouseholdIncome": 78538,
+      "nationalMedianHomeValue": 303400,
       "survey": "ACS 5-Year 2023",
+      "censusApiUrl": "https://data.census.gov",
       "source": {
         "name": "U.S. Census Bureau ACS",
         "url": "https://api.census.gov",
         "tier": "official",
-        "description": "American Community Survey 5-year estimates via api.census.gov"
+        "description": "ACS 5-year county + state attainment estimates"
       },
-      "asOf": "2026-07-02",
-      "censusApiUrl": "https://api.census.gov/data/2023/acs/acs5",
-      "nationalMedianHouseholdIncome": 78538,
-      "nationalMedianHomeValue": 303400,
+      "asOf": "2026-07-19",
       "provenance": "fetched-live"
     }
   ]

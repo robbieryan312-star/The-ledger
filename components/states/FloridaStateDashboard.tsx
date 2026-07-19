@@ -55,6 +55,8 @@ export type FloridaDashboardProps = {
       censusFetchedLive?: boolean;
       blsFetchedLive?: boolean;
       attainmentFetchedLive?: boolean;
+      coverage?: 'full' | 'sample';
+      isSample?: boolean;
     };
   };
   rpp: {
@@ -541,6 +543,11 @@ export default function FloridaStateDashboard({
     counties.meta.provenance === 'fetched-live' ||
     counties.meta.censusFetchedLive === true ||
     counties.meta.fetchedLive === true;
+  /** SAMPLE badge only when county coverage is a subset (not all 67). */
+  const countiesAreSample =
+    counties.meta.isSample === true ||
+    counties.meta.coverage === 'sample' ||
+    (countiesLive && counties.records.length > 0 && counties.records.length < 67);
   const attainmentLive =
     counties.meta.attainmentFetchedLive === true ||
     (countiesLive && attain != null);
@@ -650,12 +657,12 @@ export default function FloridaStateDashboard({
                   <div>
                     <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">
                       Highest 5 counties by population
-                      {countiesLive && <SampleBadge />}
+                      {countiesAreSample && <SampleBadge />}
                     </p>
                     <CountyMiniRows rows={popByCounty.top} valueKey="population" format={(v) => (v != null ? formatCompact(v) : '—')} />
                     <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1 mt-3">
                       Lowest 5 counties by population
-                      {countiesLive && <SampleBadge />}
+                      {countiesAreSample && <SampleBadge />}
                     </p>
                     <CountyMiniRows rows={popByCounty.bottom} valueKey="population" format={(v) => (v != null ? formatCompact(v) : '—')} />
                   </div>
@@ -674,7 +681,7 @@ export default function FloridaStateDashboard({
             <>
               Source: U.S. Census Bureau ACS · BLS ·{' '}
               {colHeadline === 'bea' ? 'BEA Regional Price Parities' : 'MERIC cost of living'}
-              {countiesLive ? ` · county sample n=${counties.records.length}` : ''}
+              {countiesLive ? ` · counties n=${counties.records.length}${countiesAreSample ? ' (sample)' : ''}` : ''}
             </>
           }
         >
@@ -699,7 +706,7 @@ export default function FloridaStateDashboard({
                 {income.history && <div className="mt-2"><MiniSparkline values={income.history.map((h) => h.value)} /></div>}
                 <details className="mt-2">
                   <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">
-                    Highest &amp; lowest 5 counties ▾{countiesLive && <SampleBadge />}
+                    Highest &amp; lowest 5 counties ▾{countiesAreSample && <SampleBadge />}
                   </summary>
                   <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
@@ -734,7 +741,7 @@ export default function FloridaStateDashboard({
                 {home.history && <div className="mt-2"><MiniSparkline values={home.history.map((h) => h.value)} /></div>}
                 <details className="mt-2">
                   <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">
-                    Highest &amp; lowest 5 counties ▾{countiesLive && <SampleBadge />}
+                    Highest &amp; lowest 5 counties ▾{countiesAreSample && <SampleBadge />}
                   </summary>
                   <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
@@ -891,7 +898,7 @@ export default function FloridaStateDashboard({
                 }
               >
                 <details className="mt-2">
-                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">Workforce, counties & trend ▾{countiesLive && <SampleBadge />}</summary>
+                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">Workforce, counties & trend ▾{countiesAreSample && <SampleBadge />}</summary>
                   <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] space-y-3">
                     <div className="grid grid-cols-2 gap-2 text-[11px]">
                       {laborForce && (

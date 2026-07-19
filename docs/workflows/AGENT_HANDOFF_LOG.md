@@ -7,12 +7,10 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-19T03:42Z):**
-- Branch: `cursor/fl-by-numbers-ux-70a6` @ `5b2ba9a` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · **no merge / no deploy** (Claude temporarily down)
-- Tip after self-audit fixes: `5b2ba9a`
-- **Approved production (canonical):** https://the-ledger-s4dn.vercel.app — formerly `the-ledger-s4dn`
-- **Beta:** at most one other project; pause/delete the rest
-- Phase P **GATED** until owner visual sign-off on **deployed** Approved mobile
+**Current state (2026-07-19T03:57Z):**
+- Branch: `cursor/fl-by-numbers-ux-70a6` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · **no merge / no deploy** (await Claude)
+- Full **67-county** ACS set committed (keyless data.census.gov); SAMPLE badge off when coverage=full
+- **Approved:** https://the-ledger-s4dn.vercel.app · Phase P **GATED**
 
 
 ## Improvement backlog
@@ -20,10 +18,36 @@ core-rules, core-rules wins. Newest handoff on top.
 | Date | Item | Status |
 |------|------|--------|
 | 2026-07-19 | **OWNER DASHBOARD:** name **Approved** = formerly `the-ledger-s4dn`; keep at most one **Beta**; pause/delete the other project(s); re-point gamma/custom domain at Approved. Triple projects burned Hobby quota. | open — owner only |
+| 2026-07-19 | Full FL county set via keyless data.census.gov (was SAMPLE n=10) | done on PR #39 |
 | 2026-07-18 | `npm audit`: 7 vulns remain after safe `npm audit fix` — need upstream Next/react-simple-maps (see `docs/workflows/NPM_AUDIT_2026-07-18.md`) | open |
 | 2026-07-11 | Add an explicit guard for national news refresh semantics so a successful empty response cannot be confused with fetch failure or stale-window retention. | open |
 
 
+
+
+## Latest session — Full 67-county ingest (while Claude down) (PASS)
+
+### Objective
+Productive work without merge/deploy: replace SAMPLE n=10 county lists with full FL ACS county set so top/lowest 5 income & home value are statewide.
+
+### Verdict / outcome
+**PASS (local)** — `ingest:fl-counties` keyless path via data.census.gov wrote **67 counties**, coverage=`full`, BLS LAUS unemployment **67/67**, attainment live. SAMPLE badge gated on `isSample`/`coverage`. Render-integrity 4/4. **No merge. No deploy.**
+
+### Evidence
+- Top income counties: St. Johns, Santa Rosa, Nassau, Collier, Clay (no longer sample-only)
+- Lowest income: Putnam, Calhoun, Gadsden, Taylor, Glades
+- Top home values: Monroe, Collier, St. Johns, Miami-Dade, Palm Beach
+
+### Commands
+- `npm run ingest:fl-counties` → 67 counties full
+- `npm run test:typecheck` / unverified / copy → pass
+- `RENDER_INTEGRITY_SKIP_POSTBUILD=1 npm run build` → pass
+- `npm run test:render-integrity` → 4/4
+
+### Open / next
+- Await Claude APPROVAL on PR #39 tip
+- Owner: Vercel consolidate to Approved
+- Do not start Phase P
 
 ## Latest session — Self-audit PR #39 (no merge/deploy) (PASS)
 
@@ -105,55 +129,6 @@ Owner visual refinements: clearer titles, 1-decimal stats, ranks of 50, age drop
 - PR #39 open; guards GREEN — await Claude APPROVAL before merge
 - Deploy blocked until Vercel rate-limit clears / owner consolidates to Approved
 - Do **not** start Phase P until owner sign-off logged
-
-## Latest session — Deploy pipeline: merge #36/#37 + live production (COMPLETE)
-
-### Objective
-Merge Claude-approved PR #36; fix Vercel production so owner can review deployed `/states/FL` with `#section-01` By the numbers.
-
-### Verdict / outcome
-**COMPLETE** — approved page is live on a Vercel **Production** URL. Owner final visual sign-off is on that deployed mobile site (not screenshots). Phase P remains gated until that sign-off.
-
-### Process rule
-- Merged #36 only after `guards` GREEN on tip `9ed7693` (run `29668533928`)
-- Merged #37 only after `guards` GREEN on tip `9c8d6c2` (run `29671126969`)
-
-### Root causes (logged — no guessing)
-
-| # | Symptom | Root cause | Fix |
-|---|---------|------------|-----|
-| 1 | Vercel builds failing postbuild | `test:render-integrity` needs Chromium; Vercel builders lack it | `package.json` postbuild skips render-integrity when `VERCEL=1` or `RENDER_INTEGRITY_SKIP_POSTBUILD=1`; still runs `test:client-chunks`. Full RI enforced in GitHub CI + local |
-| 2 | `the-ledger` / `the-ledger-jcjh` Production for `6500b2d` not updating | GitHub status: **Deployment rate limited — retry in 24 hours** (Hobby quota; three projects × every push) | Cannot agent-fix. Owner must consolidate projects (see backlog). Working Production is `the-ledger-s4dn` |
-| 3 | `the-ledger-gamma.vercel.app` stale (`id="economy"`, no `#section-01`) | Bound to rate-limited `the-ledger` project; last successful deploy pre-#36 layout | Owner: wait for rate-limit window **or** re-alias gamma → s4dn / surviving project |
-
-### Commits
-- `ea33649` — Merge pull request #36 (By-the-numbers)
-- `9c8d6c2` — fix(ci): skip render-integrity postbuild on Vercel builders
-- `6500b2d` — Merge pull request #37
-
-### Commands run (this session)
-- `gh pr checks` / merge #36 → `ea33649`; merge #37 → `6500b2d`
-- `curl` `https://the-ledger-gamma.vercel.app/states/FL` → HTTP 200; **no** `id="section-01"`; has `id="economy"`
-- `curl` `https://the-ledger-s4dn.vercel.app/states/FL` → HTTP 200; **has** `id="section-01"` + `By the numbers` + MERIC/CPI YoY copy
-- `gh api …/commits/6500b2d/status` → `the-ledger`/`jcjh` failure rate-limit; `s4dn` success
-- Ad-hoc Playwright mobile @ 390×844 against live s4dn → `#section-01` present, no horizontal overflow, no broken images
-- CI contact-sheet: Guards run `29671202617` artifact `render-integrity-contact-sheet` (`generatedAt` `2026-07-19T03:07:10.881Z`)
-
-### Acceptance evidence
-- **Live URL:** https://the-ledger-s4dn.vercel.app/states/FL
-- **Deployment id:** GitHub `5507426105` · Vercel `J8s7ui7w1LpQa4XeRmoc82SJgD4e` · SHA `6500b2d`
-- HTML grep: `id="section-01"` True; heading `By the numbers`; no stale `id="economy"`
-- Mobile live check: overflow docW=innerW=390, offenders=[]; CI mobile PNG cited above
-- Artifacts (agent session): `/opt/cursor/artifacts/s4dn-fl-mobile.png`, `ci-states-FL-mobile-6500b2d.png`
-
-### Owner dashboard action (REQUEST — Cursor cannot do this)
-Consolidate Vercel projects to **one** canonical project. Pause or delete `the-ledger-jcjh` and whichever of `the-ledger` / `the-ledger-s4dn` is not chosen as canonical (today only **s4dn** successfully shipped `6500b2d`). Re-point production domain (`the-ledger-gamma.vercel.app` or custom) at that single project. Report which project/domain is canonical once confirmed.
-
-### Open / next
-- **STOP for owner:** visual sign-off on **deployed mobile** https://the-ledger-s4dn.vercel.app/states/FL — that unlocks Phase P
-- Owner: Vercel project consolidation + rate-limit recovery for gamma alias
-- Do **not** start Phase P until owner sign-off is logged
-
 
 ## Session log 1 — Claude audit FIX-1/2/3 (COMPLETE — STOP for owner)
 

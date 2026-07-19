@@ -20,7 +20,7 @@
 |---------|--------|
 | `FEC_API_KEY` | `sync:fec`, `sync:fec-national`, `sync:fec-schedule-a` |
 | `CONGRESS_API_KEY` | `sync:votes`, `sync:votes-national`, `ingest:member` |
-| `CENSUS_API_KEY` | **REQUIRED** for full FL county ingest (`ingest:fl-counties`, `ingest:census-fl`). State rankings/age (`ingest:fl-state-rankings`) fall back to keyless `data.census.gov` when unset. |
+| `CENSUS_API_KEY` | Optional for FL county/rankings ingest. `ingest:fl-counties` and `ingest:fl-state-rankings` fall back to keyless `data.census.gov` (full 67 counties). Still required for other Census scripts that hard-exit without a key (`ingest:census-fl`). |
 | `DATA_GOV_API_KEY` / `GOVINFO_API_KEY` | GovInfo / GPO (Congressional Record pilot) |
 | `LEGISCAN_API_KEY` | FL state bills |
 | `COURTLISTENER_API_KEY` | FL court opinion cluster/opinion detail (`/search/` is keyless) |

@@ -143,7 +143,7 @@ Elections, OpenCorporates — unchanged from prior log (see `.env.local` and `KE
 
 | Track | State (2026-07-19 — deploy pipeline; prior rows still as of `71b61c2` unless noted) |
 |-------|--------------------|
-| FL `/states/FL` deploy | ✅ Approved URL s4dn live @ `6500b2d`; UX+ranks/COL PR in flight; **owner visual** 👁 on deployed mobile; consolidate Vercel → Approved (+ optional Beta) |
+| FL `/states/FL` deploy | PR #39 ready (67 counties + ranks/COL UX); **no merge** until Claude; Approved URL still prior tip until deploy |
 | Migrated gold profiles | 7/537 (S000033, O000172, M000355, M001184, W000817, C001098, P000197) — all 7 at 30-vote depth + depth artifacts (Brief B T4-5-7, `9c310d6`; counts re-verified 07-08) |
 | Docs cleanup + FL script consolidation | ✅ agent index, SETUP, FLORIDA_DATA, BATCH_SCALING, archive |
 | Phase C (display/credibility fix stack) | ✅ verified by Claude |

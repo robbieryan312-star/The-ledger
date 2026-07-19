@@ -59,6 +59,9 @@ export function getFloridaCountiesSample(): {
     censusFetchedLive: boolean;
     blsFetchedLive: boolean;
     attainmentFetchedLive: boolean;
+    /** full = all FL counties; sample = subset (show SAMPLE badge). */
+    coverage?: 'full' | 'sample';
+    isSample?: boolean;
     note?: string;
   };
 } {
