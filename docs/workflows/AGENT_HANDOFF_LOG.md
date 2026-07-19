@@ -8,7 +8,7 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-19T04:20Z):**
-- Branch: `cursor/fl-by-numbers-ux-70a6` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · tip `21ba472` · **no merge / no deploy** (await Claude)
+- Branch: `cursor/fl-by-numbers-ux-70a6` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · tip `c4172d6` (+ docs hash-sync if ahead) · **no merge / no deploy** (await Claude)
 - Read-only platform audit filed: `docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` — **no product fixes until Claude briefs**
 - Census KeySignup re-submitted → `create_success.html` (owner activate email → `CENSUS_API_KEY`)
 - Vercel rename: **no `VERCEL_TOKEN`** — owner dashboard singular rename (see audit §Owner actions)
