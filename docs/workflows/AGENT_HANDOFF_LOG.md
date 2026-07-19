@@ -7,6 +7,44 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
+## HANDOFF 2026-07-19 (6) — PR #49 merged + Phase 0 inventory (rebased on dfbcdd6)
+
+**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS — STOP for STAGE THREE review (Phase 0)**
+
+### PR #49 merge (explicit SHA APPROVAL)
+- **Merged:** `dfbcdd6` — governance: rebuild AGENT_INDEX as single resource map (#49)
+- **`main`:** `86cc7dd` → `dfbcdd6` (pushed)
+- **Verification on main:** `rm -rf .next && npm run prebuild` exit 0 · `npm run build` exit 0
+
+### Phase 0 (Flawless Agent-Navigation System)
+- **Branch:** `cursor/w4-file-inventory-audit-70a6` @ `0108100` (rebased onto `dfbcdd6`)
+- **PR:** https://github.com/robbieryan312-star/The-ledger/pull/44
+
+### Before / after counts
+| Metric | Before | After |
+|--------|--------|-------|
+| Total inventory rows | 210 | **274** |
+| Top-level `scripts/*.ts` | ~18 (prefix-filtered) | **43** |
+| `scripts/lib/*` | 22 (many false MERGE) | **22** (all KEEP, ≥1 importer) |
+| `scripts/__tests__/*.test.ts` | partial | **33** |
+| `scripts/archive/*` | 0 | **5** |
+
+Independent Python recount: **274** (matches JSON + MD). `scripts/lib` MERGE false-positives: **0**.
+
+### Commands run (this session)
+- `git merge dfbcdd6` on `main` → pushed
+- `git rebase main` on Phase 0 branch
+- `npm run audit:inventory` → exit 0 (274 files)
+- `npm run audit:inventory-md` → exit 0 (274 rows)
+- `rm -rf .next && npm run prebuild` → exit 0
+- `npm run build` → exit 0
+
+### Open / next
+- **STOP** — Claude STAGE THREE on Phase 0 before P1
+- PR #47 (roadmap rebase) and PR #48 (Sanders AP-URL P0) still gated separately
+
+---
+
 ## HANDOFF 2026-07-19 (5) — Phase 0: file inventory regeneration (Flawless Agent-Navigation System)
 
 **From:** Cursor · **To:** Claude Code · **Verdict:** **PASS — STOP for STAGE THREE review**
