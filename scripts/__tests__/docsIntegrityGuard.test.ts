@@ -152,6 +152,21 @@ test('docs must not cite gitignored paths in backticks (fresh-clone safe)', () =
   );
 });
 
+test('Claude operating manual exists and is wired into the session-start read order', () => {
+  const manual = path.join(projectRoot, 'docs', 'CLAUDE_CODE_OPERATING_MANUAL.md');
+  assert.ok(existsSync(manual), 'docs/CLAUDE_CODE_OPERATING_MANUAL.md must exist (W1 coverage)');
+  const claude = readFileSync(path.join(projectRoot, 'CLAUDE.md'), 'utf8');
+  assert.ok(
+    claude.includes('docs/CLAUDE_CODE_OPERATING_MANUAL.md'),
+    'CLAUDE.md must cite the operating manual in its session-start reading',
+  );
+  const index = readFileSync(path.join(projectRoot, 'docs', 'AGENT_INDEX.md'), 'utf8');
+  assert.ok(
+    index.includes('docs/CLAUDE_CODE_OPERATING_MANUAL.md'),
+    'docs/AGENT_INDEX.md session-start order must include the operating manual',
+  );
+});
+
 test('guard demo: fake npm script citation would fail', () => {
   const scripts = new Set(['build', 'sync:legislators']);
   assert.equal(scripts.has('sync:totally-fake'), false);
