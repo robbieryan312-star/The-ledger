@@ -12,9 +12,11 @@ core-rules, core-rules wins. Newest handoff on top.
 else looks perfect"). **Phase P UNLOCKED**, sequenced AFTER Wave 0 merge + Wave 1 data-loss prevention.
 Visual changes to the FL page now require new owner direction.
 
-**Current state (2026-07-19T06:05Z):**
-- Branch: `cursor/fl-by-numbers-ux-70a6` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · Wave 0 chip fixes + keyed re-ingest committed (`fea6a43`, `5beb765`) · **merging on CI green per Claude conditional approval**
+**Current state (2026-07-19T06:15Z):**
+- **PR #39 MERGED to `main`** (`93e36fa`) — guards GREEN on tip `03dc76d`; docs follow-up `a649a31`. `beta` branch created (tracks main).
+- **Wave 0d BLOCKED (owner Vercel wiring):** merge deployed to project **`the-ledger`** Production (sha 93e36fa, build success), but the approved URL **`the-ledger-s4dn.vercel.app` does NOT track `main`** (only got a Preview deploy) and still serves the OLD render (MERIC COL, "Employment (unemployment rate)"). New render is on protected preview/prod-deploy URLs only. Owner must point the approved project's Production branch at `main` (Vercel consolidation).
 - Census key stored in gitignored `.env.local` only (length 40, suffix 685c); GitHub Actions secret still an owner step (`scripts/setup-github-secrets.sh`)
+- **STOP for Claude review** before S2 (profile-drawer UX) / Wave 1
 - **Deep read-only platform audit** (4 parallel passes + real gates) rewritten accurately in `docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` — **no product fixes until Claude briefs**
 - Gates this session: `tsc --noEmit` clean; `eslint` 76 problems (23 err/53 warn, not build-gating); `npm run prebuild` **GREEN** after fixing a self-introduced `docsIntegrityGuard` break in the audit doc
 - **P0 (owner):** Cursor Cloud injected rules still reference deleted `agent-ops.mdc` + `AUDIT_DEBT_BRIEF.md` — re-sync dashboard project rules with on-disk core-rules §7
@@ -37,7 +39,21 @@ Visual changes to the FL page now require new owner direction.
 
 
 
-## Latest session — Wave 0 (chip fixes + keyed re-ingest + slice) (IN PROGRESS → merge on CI green)
+## Latest session — Wave 0 (chip fixes + keyed re-ingest + merge) (COMPLETE except owner-blocked 0d deploy)
+
+### Wave 0d outcome (merge + deploy)
+- **Merged PR #39 → `main` `93e36fa`** (`--no-ff`), guards GREEN on tip `03dc76d` (run 29675611793 success). Docs `a649a31` (SETUP deploy model) also on main; guards green.
+- **Deploy wiring blocker (OWNER):** GitHub deployments show merge `93e36fa` → **Production – the-ledger** (build success, URL protected). The approved **`the-ledger-s4dn`** got only **Preview** (03dc76d); its Production alias still serves the OLD render. So the live approved URL will not show Wave 0 until the owner points the approved project's Production branch at `main` (or promotes the merged deploy). This is the standing Vercel-consolidation owner action (S3c).
+- **S3:** `beta` branch created + pushed (tracks main); two-project deploy model documented in `docs/SETUP.md`.
+
+### Verified on build (not live approved URL yet)
+- `RENDER_INTEGRITY_SKIP_POSTBUILD=1 npm run build` exit 0; new chip copy present in source render (`1 = lowest cost`, `least joblessness`, `ranks ACS 5-yr rate 4.8%`).
+- Live `the-ledger-s4dn.vercel.app` currently OLD (MERIC COL / "Employment (unemployment rate)") — pending owner wiring.
+
+### Commits (this wave)
+- `fea6a43` chip basis/direction · `5beb765` keyed data+slice · `03dc76d` handoff · `93e36fa` merge · `a649a31` SETUP deploy model
+
+## Latest session — Wave 0 (chip fixes + keyed re-ingest + slice) — pre-merge log
 
 ### Objective
 Claude repair brief Wave 0: fix same-card rank mismatch (0a), COL direction copy (0b), keyed
