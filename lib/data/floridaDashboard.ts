@@ -2,7 +2,10 @@
  * Florida dashboard data loaders — small-sample JSON only (not full corpus).
  */
 import countiesSample from '../../data/florida/census/florida-counties-sample.json';
+import stateRankingsSample from '../../data/florida/census/florida-state-rankings-sample.json';
 import rppSample from '../../data/florida/bea/florida-rpp-sample.json';
+import mericColSample from '../../data/florida/meric/florida-col-sample.json';
+import metroCpiSample from '../../data/florida/bls/florida-metro-cpi-sample.json';
 import taxSample from '../../data/florida/taxes/florida-tax-burden-sample.json';
 import type { ComputedProvenanceMeta, DataProvenance } from './provenance';
 
@@ -77,6 +80,74 @@ export function getFloridaRppSample() {
       components: { label: string; index: number }[];
       metros: { name: string; index: number }[];
     } | null;
+  };
+}
+
+export function getFloridaMericColSample() {
+  return mericColSample as {
+    meta: {
+      source: { name: string; url: string; tier: string };
+      asOf: string;
+      provenance: DataProvenance;
+      fetchedLive: boolean;
+      citation: string;
+      period: string;
+      note?: string;
+    };
+    state: {
+      state: string;
+      period: string;
+      allItemsIndex: number;
+      rankAmong50: number;
+      reportedRank: number | null;
+      components: { label: string; index: number }[];
+    };
+  };
+}
+
+export function getFloridaMetroCpiSample() {
+  return metroCpiSample as {
+    meta: {
+      source: { name: string; url: string; tier: string };
+      asOf: string;
+      provenance: DataProvenance;
+      fetchedLive: boolean;
+      note?: string;
+    };
+    records: Array<{
+      metro: string;
+      indicator: string;
+      unit: string;
+      seriesId: string;
+      latestPeriod: string;
+      latestValue: number;
+      recent: { period: string; value: number }[];
+      source: { name: string; url: string; tier: string; date?: string };
+      asOf: string;
+      blsUrl: string;
+    }>;
+  };
+}
+
+export function getFloridaStateRankingsSample() {
+  return stateRankingsSample as {
+    meta: {
+      source: { name: string; url: string; tier: string };
+      asOf: string;
+      provenance: DataProvenance;
+      fetchedLive: boolean;
+      note?: string;
+      period?: string;
+    };
+    ranks: Record<
+      string,
+      {
+        rank: number | null;
+        value: number | null;
+        denominator: number | null;
+      }
+    >;
+    ageBreakdown: { label: string; percent: number }[];
   };
 }
 

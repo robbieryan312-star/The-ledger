@@ -16,7 +16,12 @@ import {
   LEGISLATORS_SOURCE,
   LEGISLATORS_AS_OF,
 } from '../lib/data/officeResolution';
-import { allPoliticians, getCoverageStats, getPoliticianById } from '../lib/data/allPoliticians';
+import {
+  allPoliticians,
+  getCoverageStats,
+  getPoliticianByBioguide,
+  getPoliticianById,
+} from '../lib/data/allPoliticians';
 import { currentExecutives, EXECUTIVE_AS_OF } from '../lib/data/executiveRoster';
 import { currentJustices, SCOTUS_AS_OF } from '../lib/data/scotusRoster';
 import { currentGovernors } from '../lib/data/governors';
@@ -32,8 +37,11 @@ for (const s of currentSenatorsForState('FL')) {
 }
 
 console.log('\nResolved labels for featured FL senators:');
-for (const id of ['sen-scott', 'sen-moody']) {
-  const p = allPoliticians.find((x) => x.id === id)!;
+for (const senator of currentSenatorsForState('FL')) {
+  const p = getPoliticianByBioguide(senator.bioguideId);
+  if (!p) {
+    throw new Error(`Current FL senator missing from allPoliticians: ${senator.bioguideId}`);
+  }
   const r = resolveCurrentOffice(p);
   console.log(`  • ${p.name.padEnd(14)} → ${r.label}  [${r.reason}, isCurrent=${r.isCurrent}]`);
 }

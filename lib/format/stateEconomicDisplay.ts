@@ -7,6 +7,7 @@ import {
   formatIndicatorFull,
   formatIndicatorValue,
   formatPercent,
+  formatRank,
 } from '@/lib/format/number';
 
 export function findIndicator(
@@ -62,7 +63,9 @@ export function deltaVsMonthsAgo(
 
 export function formatDelta(delta: number, unit: string): string {
   const sign = delta > 0 ? '+' : '';
-  if (unit === '%' || unit === 'percent') return `${sign}${delta.toFixed(1)} pp`;
+  if (unit === '%' || unit === 'percent') {
+    return `${sign}${formatPercent(delta).replace(/%$/, '')} pp`;
+  }
   if (unit === 'USD') {
     const formatted = formatCompactCurrency(Math.abs(delta));
     if (delta === 0) return formatted;
@@ -100,4 +103,5 @@ export {
   formatFull,
   formatFullCurrency,
   formatPercent,
+  formatRank,
 };

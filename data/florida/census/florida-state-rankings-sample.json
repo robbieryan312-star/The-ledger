@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "source": {
+      "name": "U.S. Census Bureau ACS",
+      "url": "https://api.census.gov",
+      "tier": "official",
+      "description": "ACS 5-year state rankings and Florida age distribution"
+    },
+    "asOf": "2026-07-19",
+    "count": 0,
+    "stateCode": "FL",
+    "provenance": "honest-gap",
+    "fetchedLive": false,
+    "datasetUrl": "https://api.census.gov/data/",
+    "note": "CENSUS_API_KEY or DATA_GOV_API_KEY not set - Census state rankings remain an honest gap."
+  },
+  "ranks": {
+    "medianHouseholdIncome": {
+      "rank": null,
+      "value": null,
+      "denominator": null
+    },
+    "medianHomeValue": {
+      "rank": null,
+      "value": null,
+      "denominator": null
+    },
+    "population": {
+      "rank": null,
+      "value": null,
+      "denominator": null
+    },
+    "bachelorsPlusPct": {
+      "rank": null,
+      "value": null,
+      "denominator": null
+    },
+    "unemploymentRate": {
+      "rank": null,
+      "value": null,
+      "denominator": null
+    }
+  },
+  "ageBreakdown": []
+}

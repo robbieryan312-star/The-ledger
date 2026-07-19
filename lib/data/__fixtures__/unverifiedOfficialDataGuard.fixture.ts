@@ -9,7 +9,10 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 
 export const FL_DASHBOARD_CREDIBILITY_FILES = [
   'data/florida/census/florida-counties-sample.json',
+  'data/florida/census/florida-state-rankings-sample.json',
   'data/florida/bea/florida-rpp-sample.json',
+  'data/florida/meric/florida-col-sample.json',
+  'data/florida/bls/florida-metro-cpi-sample.json',
   'data/florida/taxes/florida-tax-burden-sample.json',
 ] as const;
 

@@ -7,7 +7,7 @@
       "description": "Public-domain dataset of all current members of Congress, maintained from official House/Senate records, GPO, and the Biographical Directory of Congress."
     },
     "datasetUrl": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
-    "asOf": "2026-06-29",
+    "asOf": "2026-07-19",
     "count": 537,
     "note": "Membership in this snapshot is the source of truth for current office. A featured politician not present here has left Congress and must resolve to a FORMER office."
   },
@@ -186,26 +186,6 @@
         "H2IL20026"
       ],
       "sourceUrl": "https://www.durbin.senate.gov"
-    },
-    {
-      "bioguideId": "G000359",
-      "lisId": "S293",
-      "name": "Lindsey Graham",
-      "firstName": "Lindsey",
-      "lastName": "Graham",
-      "stateCode": "SC",
-      "state": "South Carolina",
-      "chamber": "senate",
-      "office": "U.S. Senator",
-      "party": "Republican",
-      "termStart": "2021-01-03",
-      "termEnd": "2027-01-03",
-      "govtrackId": 300047,
-      "fecIds": [
-        "S0SC00149",
-        "H4SC03087"
-      ],
-      "sourceUrl": "https://www.lgraham.senate.gov/public"
     },
     {
       "bioguideId": "M000355",
@@ -10281,6 +10261,23 @@
         "H6CA01285"
       ],
       "sourceUrl": "https://github.com/unitedstates/congress-legislators"
+    },
+    {
+      "bioguideId": "G000608",
+      "lisId": "S441",
+      "name": "Darline Graham",
+      "firstName": "Darline",
+      "lastName": "Graham Nordone",
+      "stateCode": "SC",
+      "state": "South Carolina",
+      "chamber": "senate",
+      "office": "U.S. Senator",
+      "party": "Republican",
+      "termStart": "2026-07-14",
+      "termEnd": "2027-01-03",
+      "govtrackId": 457044,
+      "fecIds": [],
+      "sourceUrl": "https://www.dgraham.senate.gov"
     }
   ]
 }

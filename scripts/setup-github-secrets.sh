@@ -35,7 +35,7 @@ push_group() {
 }
 
 push_group "Official government APIs (votes · finance · roster)" \
-  CONGRESS_API_KEY FEC_API_KEY GOVINFO_API_KEY CENSUS_API_KEY DATA_GOV_API_KEY
+  CONGRESS_API_KEY FEC_API_KEY GOVINFO_API_KEY CENSUS_API_KEY DATA_GOV_API_KEY BEA_API_KEY
 
 push_group "Nonpartisan research (positions · scores · journalism)" \
   VOTESMART_API_KEY PROPUBLICA_CONGRESS_KEY
