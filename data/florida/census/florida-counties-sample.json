@@ -6,18 +6,22 @@
       "tier": "official",
       "description": "ACS 5-year county + state attainment estimates"
     },
-    "asOf": "2026-07-10",
-    "count": 10,
+    "asOf": "2026-07-19",
+    "count": 67,
     "stateCode": "FL",
     "provenance": "fetched-live",
     "fetchedLive": true,
     "censusFetchedLive": true,
     "blsFetchedLive": true,
     "attainmentFetchedLive": true,
-    "fetchedAt": "2026-07-10T12:59:54.941Z",
+    "coverage": "full",
+    "isSample": false,
+    "fetchedAt": "2026-07-19T05:50:34.325Z",
     "datasetUrl": "https://api.census.gov/data/2023/acs/acs5?get=NAME,B01003_001E,B19013_001E,B25077_001E&for=county:*&in=state:12&key=***",
     "attainmentUrl": "https://api.census.gov/data/2023/acs/acs5?get=B15003_001E,B15003_017E,B15003_018E,B15003_019E,B15003_020E,B15003_021E,B15003_022E,B15003_023E,B15003_024E,B15003_025E&for=state:12&key=***",
-    "note": "ACS 2023 county sample (n=10) + B15003 state attainment. County unemployment from BLS LAUS.",
+    "retrieval": "api.census.gov",
+    "period": "ACS 5-Year 2023",
+    "note": "ACS county set (n=67) + state ACS (single read-path) + B15003. County unemployment from BLS LAUS.",
     "blsSource": {
       "name": "U.S. Bureau of Labor Statistics",
       "url": "https://www.bls.gov",
@@ -64,6 +68,14 @@
       "unemploymentRate": 4.4
     },
     {
+      "fips": "12099",
+      "name": "Palm Beach",
+      "population": 1507453,
+      "medianHouseholdIncome": 81115,
+      "medianHomeValue": 407300,
+      "unemploymentRate": 4.4
+    },
+    {
       "fips": "12057",
       "name": "Hillsborough",
       "population": 1489634,
@@ -104,12 +116,84 @@
       "unemploymentRate": 4.9
     },
     {
+      "fips": "12105",
+      "name": "Polk",
+      "population": 760961,
+      "medianHouseholdIncome": 63644,
+      "medianHomeValue": 240000,
+      "unemploymentRate": 5.5
+    },
+    {
       "fips": "12009",
       "name": "Brevard",
       "population": 620533,
       "medianHouseholdIncome": 75817,
       "medianHomeValue": 304400,
       "unemploymentRate": 4.7
+    },
+    {
+      "fips": "12101",
+      "name": "Pasco",
+      "population": 588758,
+      "medianHouseholdIncome": 67384,
+      "medianHomeValue": 265800,
+      "unemploymentRate": 5
+    },
+    {
+      "fips": "12127",
+      "name": "Volusia",
+      "population": 568229,
+      "medianHouseholdIncome": 66581,
+      "medianHomeValue": 278000,
+      "unemploymentRate": 5.1
+    },
+    {
+      "fips": "12117",
+      "name": "Seminole",
+      "population": 474912,
+      "medianHouseholdIncome": 83030,
+      "medianHomeValue": 357300,
+      "unemploymentRate": 4.1
+    },
+    {
+      "fips": "12115",
+      "name": "Sarasota",
+      "population": 449011,
+      "medianHouseholdIncome": 80633,
+      "medianHomeValue": 373100,
+      "unemploymentRate": 4.8
+    },
+    {
+      "fips": "12081",
+      "name": "Manatee",
+      "population": 416020,
+      "medianHouseholdIncome": 75792,
+      "medianHomeValue": 359800,
+      "unemploymentRate": 4.7
+    },
+    {
+      "fips": "12097",
+      "name": "Osceola",
+      "population": 406943,
+      "medianHouseholdIncome": 68711,
+      "medianHomeValue": 317600,
+      "unemploymentRate": 4.7
+    },
+    {
+      "fips": "12069",
+      "name": "Lake",
+      "population": 398696,
+      "medianHouseholdIncome": 69956,
+      "medianHomeValue": 287900,
+      "unemploymentRate": 4.8
+    },
+    {
+      "fips": "12083",
+      "name": "Marion",
+      "population": 387697,
+      "medianHouseholdIncome": 58535,
+      "medianHomeValue": 220800,
+      "unemploymentRate": 5.5
     },
     {
       "fips": "12021",
@@ -120,12 +204,388 @@
       "unemploymentRate": 4.5
     },
     {
+      "fips": "12111",
+      "name": "St. Lucie",
+      "population": 346237,
+      "medianHouseholdIncome": 69027,
+      "medianHomeValue": 305800,
+      "unemploymentRate": 5.1
+    },
+    {
+      "fips": "12033",
+      "name": "Escambia",
+      "population": 323275,
+      "medianHouseholdIncome": 65715,
+      "medianHomeValue": 234200,
+      "unemploymentRate": 4.9
+    },
+    {
+      "fips": "12073",
+      "name": "Leon",
+      "population": 295335,
+      "medianHouseholdIncome": 65074,
+      "medianHomeValue": 279800,
+      "unemploymentRate": 5
+    },
+    {
+      "fips": "12109",
+      "name": "St. Johns",
+      "population": 292243,
+      "medianHouseholdIncome": 106169,
+      "medianHomeValue": 457600,
+      "unemploymentRate": 4.6
+    },
+    {
+      "fips": "12001",
+      "name": "Alachua",
+      "population": 281751,
+      "medianHouseholdIncome": 59659,
+      "medianHomeValue": 266800,
+      "unemploymentRate": 5.3
+    },
+    {
+      "fips": "12019",
+      "name": "Clay",
+      "population": 223436,
+      "medianHouseholdIncome": 86094,
+      "medianHomeValue": 281500,
+      "unemploymentRate": 4.7
+    },
+    {
+      "fips": "12091",
+      "name": "Okaloosa",
+      "population": 214281,
+      "medianHouseholdIncome": 79097,
+      "medianHomeValue": 324800,
+      "unemploymentRate": 4.3
+    },
+    {
+      "fips": "12053",
+      "name": "Hernando",
+      "population": 201512,
+      "medianHouseholdIncome": 63193,
+      "medianHomeValue": 240700,
+      "unemploymentRate": 5.4
+    },
+    {
+      "fips": "12015",
+      "name": "Charlotte",
+      "population": 195083,
+      "medianHouseholdIncome": 66154,
+      "medianHomeValue": 291000,
+      "unemploymentRate": 5.4
+    },
+    {
+      "fips": "12113",
+      "name": "Santa Rosa",
+      "population": 193719,
+      "medianHouseholdIncome": 88968,
+      "medianHomeValue": 302100,
+      "unemploymentRate": 4.6
+    },
+    {
       "fips": "12005",
       "name": "Bay",
       "population": 181368,
       "medianHouseholdIncome": 70188,
       "medianHomeValue": 276900,
       "unemploymentRate": 4.4
+    },
+    {
+      "fips": "12061",
+      "name": "Indian River",
+      "population": 163856,
+      "medianHouseholdIncome": 71049,
+      "medianHomeValue": 314700,
+      "unemploymentRate": 5.3
+    },
+    {
+      "fips": "12085",
+      "name": "Martin",
+      "population": 160464,
+      "medianHouseholdIncome": 80701,
+      "medianHomeValue": 386500,
+      "unemploymentRate": 4.7
+    },
+    {
+      "fips": "12017",
+      "name": "Citrus",
+      "population": 158693,
+      "medianHouseholdIncome": 55355,
+      "medianHomeValue": 223200,
+      "unemploymentRate": 6.4
+    },
+    {
+      "fips": "12119",
+      "name": "Sumter",
+      "population": 137536,
+      "medianHouseholdIncome": 73297,
+      "medianHomeValue": 356000,
+      "unemploymentRate": 7.6
+    },
+    {
+      "fips": "12035",
+      "name": "Flagler",
+      "population": 121710,
+      "medianHouseholdIncome": 72923,
+      "medianHomeValue": 333400,
+      "unemploymentRate": 5.4
+    },
+    {
+      "fips": "12055",
+      "name": "Highlands",
+      "population": 103808,
+      "medianHouseholdIncome": 55581,
+      "medianHomeValue": 177900,
+      "unemploymentRate": 6.2
+    },
+    {
+      "fips": "12089",
+      "name": "Nassau",
+      "population": 94653,
+      "medianHouseholdIncome": 88900,
+      "medianHomeValue": 351100,
+      "unemploymentRate": 4.5
+    },
+    {
+      "fips": "12087",
+      "name": "Monroe",
+      "population": 81840,
+      "medianHouseholdIncome": 82430,
+      "medianHomeValue": 723800,
+      "unemploymentRate": 3
+    },
+    {
+      "fips": "12131",
+      "name": "Walton",
+      "population": 79846,
+      "medianHouseholdIncome": 79281,
+      "medianHomeValue": 376400,
+      "unemploymentRate": 4.2
+    },
+    {
+      "fips": "12107",
+      "name": "Putnam",
+      "population": 74235,
+      "medianHouseholdIncome": 47256,
+      "medianHomeValue": 147300,
+      "unemploymentRate": 5.6
+    },
+    {
+      "fips": "12023",
+      "name": "Columbia",
+      "population": 70755,
+      "medianHouseholdIncome": 55070,
+      "medianHomeValue": 186400,
+      "unemploymentRate": 5.3
+    },
+    {
+      "fips": "12063",
+      "name": "Jackson",
+      "population": 47652,
+      "medianHouseholdIncome": 47327,
+      "medianHomeValue": 113900,
+      "unemploymentRate": 5
+    },
+    {
+      "fips": "12121",
+      "name": "Suwannee",
+      "population": 44484,
+      "medianHouseholdIncome": 55479,
+      "medianHomeValue": 160900,
+      "unemploymentRate": 5.4
+    },
+    {
+      "fips": "12075",
+      "name": "Levy",
+      "population": 44276,
+      "medianHouseholdIncome": 53805,
+      "medianHomeValue": 171400,
+      "unemploymentRate": 5.3
+    },
+    {
+      "fips": "12039",
+      "name": "Gadsden",
+      "population": 43642,
+      "medianHouseholdIncome": 46047,
+      "medianHomeValue": 154700,
+      "unemploymentRate": 5.7
+    },
+    {
+      "fips": "12051",
+      "name": "Hendry",
+      "population": 40798,
+      "medianHouseholdIncome": 53044,
+      "medianHomeValue": 189700,
+      "unemploymentRate": 5.1
+    },
+    {
+      "fips": "12093",
+      "name": "Okeechobee",
+      "population": 40249,
+      "medianHouseholdIncome": 52288,
+      "medianHomeValue": 179000,
+      "unemploymentRate": 5.1
+    },
+    {
+      "fips": "12027",
+      "name": "DeSoto",
+      "population": 34719,
+      "medianHouseholdIncome": 50868,
+      "medianHomeValue": 151500,
+      "unemploymentRate": 5.5
+    },
+    {
+      "fips": "12129",
+      "name": "Wakulla",
+      "population": 34608,
+      "medianHouseholdIncome": 74183,
+      "medianHomeValue": 216300,
+      "unemploymentRate": 4.1
+    },
+    {
+      "fips": "12003",
+      "name": "Baker",
+      "population": 28186,
+      "medianHouseholdIncome": 70833,
+      "medianHomeValue": 225000,
+      "unemploymentRate": 4.8
+    },
+    {
+      "fips": "12007",
+      "name": "Bradford",
+      "population": 27888,
+      "medianHouseholdIncome": 59740,
+      "medianHomeValue": 180300,
+      "unemploymentRate": 5.1
+    },
+    {
+      "fips": "12049",
+      "name": "Hardee",
+      "population": 25508,
+      "medianHouseholdIncome": 54231,
+      "medianHomeValue": 129400,
+      "unemploymentRate": 5.2
+    },
+    {
+      "fips": "12133",
+      "name": "Washington",
+      "population": 25259,
+      "medianHouseholdIncome": 52723,
+      "medianHomeValue": 156000,
+      "unemploymentRate": 5.4
+    },
+    {
+      "fips": "12123",
+      "name": "Taylor",
+      "population": 21422,
+      "medianHouseholdIncome": 44985,
+      "medianHomeValue": 100200,
+      "unemploymentRate": 8.1
+    },
+    {
+      "fips": "12059",
+      "name": "Holmes",
+      "population": 19626,
+      "medianHouseholdIncome": 48236,
+      "medianHomeValue": 101400,
+      "unemploymentRate": 4.8
+    },
+    {
+      "fips": "12041",
+      "name": "Gilchrist",
+      "population": 18494,
+      "medianHouseholdIncome": 61070,
+      "medianHomeValue": 191000,
+      "unemploymentRate": 4.9
+    },
+    {
+      "fips": "12079",
+      "name": "Madison",
+      "population": 18113,
+      "medianHouseholdIncome": 48176,
+      "medianHomeValue": 105900,
+      "unemploymentRate": 5.4
+    },
+    {
+      "fips": "12029",
+      "name": "Dixie",
+      "population": 16952,
+      "medianHouseholdIncome": 47655,
+      "medianHomeValue": 96900,
+      "unemploymentRate": 5.7
+    },
+    {
+      "fips": "12125",
+      "name": "Union",
+      "population": 15551,
+      "medianHouseholdIncome": 64922,
+      "medianHomeValue": 160400,
+      "unemploymentRate": 6.2
+    },
+    {
+      "fips": "12045",
+      "name": "Gulf",
+      "population": 14772,
+      "medianHouseholdIncome": 67361,
+      "medianHomeValue": 235700,
+      "unemploymentRate": 4.6
+    },
+    {
+      "fips": "12065",
+      "name": "Jefferson",
+      "population": 14713,
+      "medianHouseholdIncome": 56984,
+      "medianHomeValue": 198800,
+      "unemploymentRate": 4.3
+    },
+    {
+      "fips": "12013",
+      "name": "Calhoun",
+      "population": 13593,
+      "medianHouseholdIncome": 46901,
+      "medianHomeValue": 134000,
+      "unemploymentRate": 4.9
+    },
+    {
+      "fips": "12047",
+      "name": "Hamilton",
+      "population": 13445,
+      "medianHouseholdIncome": 47696,
+      "medianHomeValue": 110400,
+      "unemploymentRate": 6.9
+    },
+    {
+      "fips": "12037",
+      "name": "Franklin",
+      "population": 12418,
+      "medianHouseholdIncome": 62734,
+      "medianHomeValue": 254300,
+      "unemploymentRate": 4.9
+    },
+    {
+      "fips": "12043",
+      "name": "Glades",
+      "population": 12324,
+      "medianHouseholdIncome": 38905,
+      "medianHomeValue": 114800,
+      "unemploymentRate": 5.5
+    },
+    {
+      "fips": "12067",
+      "name": "Lafayette",
+      "population": 8035,
+      "medianHouseholdIncome": 60692,
+      "medianHomeValue": 131600,
+      "unemploymentRate": 6
+    },
+    {
+      "fips": "12077",
+      "name": "Liberty",
+      "population": 7650,
+      "medianHouseholdIncome": 53824,
+      "medianHomeValue": 117600,
+      "unemploymentRate": 5.3
     }
   ]
 }

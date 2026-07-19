@@ -4,9 +4,9 @@
       "name": "U.S. Census Bureau ACS",
       "url": "https://api.census.gov",
       "tier": "official",
-      "description": "American Community Survey 5-year estimates via api.census.gov"
+      "description": "ACS 5-year county + state attainment estimates"
     },
-    "asOf": "2026-07-02",
+    "asOf": "2026-07-19",
     "totalCount": 10,
     "note": "Florida Census ACS demographics, BLS labor/CPI/growth, US CPS education reference, national benchmarks.",
     "honestGaps": [
@@ -28,9 +28,9 @@
         "name": "U.S. Census Bureau ACS",
         "url": "https://api.census.gov",
         "tier": "official",
-        "description": "American Community Survey 5-year estimates via api.census.gov"
+        "description": "ACS 5-year county + state attainment estimates"
       },
-      "asOf": "2026-07-10"
+      "asOf": "2026-07-19"
     },
     {
       "label": "Median household income",
@@ -42,9 +42,9 @@
         "name": "U.S. Census Bureau ACS",
         "url": "https://api.census.gov",
         "tier": "official",
-        "description": "American Community Survey 5-year estimates via api.census.gov"
+        "description": "ACS 5-year county + state attainment estimates"
       },
-      "asOf": "2026-07-10",
+      "asOf": "2026-07-19",
       "nationalValue": 78538,
       "nationalLabel": "US avg"
     },
@@ -58,9 +58,9 @@
         "name": "U.S. Census Bureau ACS",
         "url": "https://api.census.gov",
         "tier": "official",
-        "description": "American Community Survey 5-year estimates via api.census.gov"
+        "description": "ACS 5-year county + state attainment estimates"
       },
-      "asOf": "2026-07-10",
+      "asOf": "2026-07-19",
       "nationalValue": 303400,
       "nationalLabel": "US avg"
     },

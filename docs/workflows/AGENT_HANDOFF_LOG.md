@@ -7,174 +7,189 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-19T03:16Z):**
-- Branch: `main` @ `6500b2d` (merge #37 postbuild skip; #36 By-the-numbers)
-- **Live production (serving approved page):** https://the-ledger-s4dn.vercel.app/states/FL
-- GitHub deployment id: `5507426105` · Vercel deploy: `J8s7ui7w1LpQa4XeRmoc82SJgD4e` · env `Production – the-ledger-s4dn`
-- Stale alias: `https://the-ledger-gamma.vercel.app` still on old markup (`id="economy"`) — project `the-ledger` **rate-limited 24h**
-- Phase P **GATED** until owner visual sign-off on **deployed mobile** (use s4dn URL below)
+**OWNER VISUAL SIGN-OFF RECEIVED** on live `/states/FL` (the-ledger-s4dn) 2026-07-19 — FL flagship
+**LOCKED/FROZEN** including the new plain-language labels (owner: "looks honestly fantastic… everything
+else looks perfect"). **Phase P UNLOCKED**, sequenced AFTER Wave 0 merge + Wave 1 data-loss prevention.
+Visual changes to the FL page now require new owner direction.
+
+**Current state (2026-07-19T06:05Z):**
+- Branch: `cursor/fl-by-numbers-ux-70a6` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · Wave 0 chip fixes + keyed re-ingest committed (`fea6a43`, `5beb765`) · **merging on CI green per Claude conditional approval**
+- Census key stored in gitignored `.env.local` only (length 40, suffix 685c); GitHub Actions secret still an owner step (`scripts/setup-github-secrets.sh`)
+- **Deep read-only platform audit** (4 parallel passes + real gates) rewritten accurately in `docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` — **no product fixes until Claude briefs**
+- Gates this session: `tsc --noEmit` clean; `eslint` 76 problems (23 err/53 warn, not build-gating); `npm run prebuild` **GREEN** after fixing a self-introduced `docsIntegrityGuard` break in the audit doc
+- **P0 (owner):** Cursor Cloud injected rules still reference deleted `agent-ops.mdc` + `AUDIT_DEBT_BRIEF.md` — re-sync dashboard project rules with on-disk core-rules §7
+- Census KeySignup re-submitted → `create_success.html` (owner activate email → `CENSUS_API_KEY`)
+- Vercel rename: **no `VERCEL_TOKEN`** — owner dashboard singular rename (see audit §Owner actions)
+- **Approved:** https://the-ledger-s4dn.vercel.app · Phase P **GATED**
 
 
 ## Improvement backlog
 
 | Date | Item | Status |
 |------|------|--------|
-| 2026-07-19 | **OWNER DASHBOARD:** consolidate 3 Vercel projects → ONE (`the-ledger` / `the-ledger-jcjh` / `the-ledger-s4dn`); pause/delete the two non-canonical; re-point `the-ledger-gamma` (or chosen domain) at the survivor. Triple projects burned Hobby build quota. | open — owner only |
+| 2026-07-19 | **Platform audit (read-only)** — P0 DOC-01 work-log path; P1 FL/FED/DOC findings in `PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` | open — Claude brief before any fix |
+| 2026-07-19 | **OWNER DASHBOARD:** rename `the-ledger-s4dn` → Approved; optional one Beta; pause/delete others; optional later `VERCEL_TOKEN` for `vercel project rename` | open — owner only |
+| 2026-07-19 | **OWNER EMAIL:** activate Census API key from re-signup; add Runtime Secret `CENSUS_API_KEY` | open — owner only |
+| 2026-07-19 | Full FL county set via keyless data.census.gov (was SAMPLE n=10) | done on PR #39 |
 | 2026-07-18 | `npm audit`: 7 vulns remain after safe `npm audit fix` — need upstream Next/react-simple-maps (see `docs/workflows/NPM_AUDIT_2026-07-18.md`) | open |
 | 2026-07-11 | Add an explicit guard for national news refresh semantics so a successful empty response cannot be confused with fetch failure or stale-window retention. | open |
 
-## Latest session — Deploy pipeline: merge #36/#37 + live production (COMPLETE)
+
+
+
+## Latest session — Wave 0 (chip fixes + keyed re-ingest + slice) (IN PROGRESS → merge on CI green)
 
 ### Objective
-Merge Claude-approved PR #36; fix Vercel production so owner can review deployed `/states/FL` with `#section-01` By the numbers.
+Claude repair brief Wave 0: fix same-card rank mismatch (0a), COL direction copy (0b), keyed
+Census re-ingest + slice rebuild (0c / DATA-01), then merge PR #39 on CI green (0d). Plus S1
+(log owner sign-off) and S3 groundwork.
 
-### Verdict / outcome
-**COMPLETE** — approved page is live on a Vercel **Production** URL. Owner final visual sign-off is on that deployed mobile site (not screenshots). Phase P remains gated until that sign-off.
+### Done this session
+- **S1:** Logged owner visual sign-off; FL flagship FROZEN; Phase P UNLOCKED (sequenced after Wave 0 + Wave 1).
+- **0a:** Joblessness chip → `senseNote="1 = least joblessness"` + explicit `basis="ranks ACS 5-yr rate 4.8%"` (distinct from BLS LAUS headline). No same-card metric mismatch.
+- **0b:** COL chip → `#41 of 50 · 1 = lowest cost` (removed "Lower cost → #1").
+- **0c:** `CENSUS_API_KEY` in gitignored `.env.local`; re-ran `ingest:fl-counties` (67, coverage=full) + `ingest:fl-state-rankings` (all ranks + 5-row age breakdown, via api.census.gov); `build:data-slices` → ACS indicators now share 2026-07-19 vintage with counties. BLS LAUS unemployment keeps 2026-07-02 (separate source; chip labels ACS basis).
 
-### Process rule
-- Merged #36 only after `guards` GREEN on tip `9ed7693` (run `29668533928`)
-- Merged #37 only after `guards` GREEN on tip `9c8d6c2` (run `29671126969`)
-
-### Root causes (logged — no guessing)
-
-| # | Symptom | Root cause | Fix |
-|---|---------|------------|-----|
-| 1 | Vercel builds failing postbuild | `test:render-integrity` needs Chromium; Vercel builders lack it | `package.json` postbuild skips render-integrity when `VERCEL=1` or `RENDER_INTEGRITY_SKIP_POSTBUILD=1`; still runs `test:client-chunks`. Full RI enforced in GitHub CI + local |
-| 2 | `the-ledger` / `the-ledger-jcjh` Production for `6500b2d` not updating | GitHub status: **Deployment rate limited — retry in 24 hours** (Hobby quota; three projects × every push) | Cannot agent-fix. Owner must consolidate projects (see backlog). Working Production is `the-ledger-s4dn` |
-| 3 | `the-ledger-gamma.vercel.app` stale (`id="economy"`, no `#section-01`) | Bound to rate-limited `the-ledger` project; last successful deploy pre-#36 layout | Owner: wait for rate-limit window **or** re-alias gamma → s4dn / surviving project |
+### Gates (this session)
+| Gate | Result |
+|---|---|
+| `tsc --noEmit` | exit 0 |
+| `npm run prebuild` | exit 0 (19 guards green) |
+| `RENDER_INTEGRITY_SKIP_POSTBUILD=1 npm run build` | exit 0 |
 
 ### Commits
-- `ea33649` — Merge pull request #36 (By-the-numbers)
-- `9c8d6c2` — fix(ci): skip render-integrity postbuild on Vercel builders
-- `6500b2d` — Merge pull request #37
+- `fea6a43` — fix(fl): rank chips declare basis/direction (Wave 0a/0b)
+- `5beb765` — data(fl): keyed Census re-ingest + slice rebuild (Wave 0c / DATA-01)
 
-### Commands run (this session)
-- `gh pr checks` / merge #36 → `ea33649`; merge #37 → `6500b2d`
-- `curl` `https://the-ledger-gamma.vercel.app/states/FL` → HTTP 200; **no** `id="section-01"`; has `id="economy"`
-- `curl` `https://the-ledger-s4dn.vercel.app/states/FL` → HTTP 200; **has** `id="section-01"` + `By the numbers` + MERIC/CPI YoY copy
-- `gh api …/commits/6500b2d/status` → `the-ledger`/`jcjh` failure rate-limit; `s4dn` success
-- Ad-hoc Playwright mobile @ 390×844 against live s4dn → `#section-01` present, no horizontal overflow, no broken images
-- CI contact-sheet: Guards run `29671202617` artifact `render-integrity-contact-sheet` (`generatedAt` `2026-07-19T03:07:10.881Z`)
+### Independent verification
+- Ranks: income #34 (71711), home #21 (325000), pop #3, bach+ #26 (33.2), unemp #21 (4.8); age % sum 100.0
+- Counties: coverage=full, count=67, asOf 2026-07-19; slice population/income asOf 2026-07-19
 
-### Acceptance evidence
-- **Live URL:** https://the-ledger-s4dn.vercel.app/states/FL
-- **Deployment id:** GitHub `5507426105` · Vercel `J8s7ui7w1LpQa4XeRmoc82SJgD4e` · SHA `6500b2d`
-- HTML grep: `id="section-01"` True; heading `By the numbers`; no stale `id="economy"`
-- Mobile live check: overflow docW=innerW=390, offenders=[]; CI mobile PNG cited above
-- Artifacts (agent session): `/opt/cursor/artifacts/s4dn-fl-mobile.png`, `ci-states-FL-mobile-6500b2d.png`
+### Open / next (this turn)
+- Push branch → watch GitHub `guards` CI → merge PR #39 on GREEN (0d) → confirm s4dn deploy + curl `section-01`
+- S3: create `beta` branch + document main/beta flow in `docs/SETUP.md`
+- Then STOP for Claude review before S2 (profile-drawer UX) / Wave 1
 
-### Owner dashboard action (REQUEST — Cursor cannot do this)
-Consolidate Vercel projects to **one** canonical project. Pause or delete `the-ledger-jcjh` and whichever of `the-ledger` / `the-ledger-s4dn` is not chosen as canonical (today only **s4dn** successfully shipped `6500b2d`). Re-point production domain (`the-ledger-gamma.vercel.app` or custom) at that single project. Report which project/domain is canonical once confirmed.
-
-### Open / next
-- **STOP for owner:** visual sign-off on **deployed mobile** https://the-ledger-s4dn.vercel.app/states/FL — that unlocks Phase P
-- Owner: Vercel project consolidation + rate-limit recovery for gamma alias
-- Do **not** start Phase P until owner sign-off is logged
-
-
-## Latest session — Claude review defect fixes 1–3 (STOP for final approval)
+## Latest session — DEEP platform audit (4 passes + real gates) (COMPLETE — findings only)
 
 ### Objective
-Fix three rendered defects on PR #36: metro CPI YoY meaning, MERIC user copy, education mid-word wrap. Re-gate; STOP for Claude final approval. Do not merge. Phase P gated.
+Owner: intensely thorough, flip-every-stone read-only audit of every file/process/instruction/line
+for errors, contradictions, duplicates, and improvements — **no changes until Claude reviews**.
+Also: Vercel rename (agent if possible), Census key retry, ideal model, owner-only actions.
 
 ### Verdict / outcome
-**PASS** — defects fixed; local + CI guards GREEN on `58d1f9f` (run `29668477259`, artifact `render-integrity-contact-sheet`). **STOP for Claude final approval. Do not merge.**
+**COMPLETE (findings only)** — Four parallel read-only passes (instructions; app+components;
+lib+scripts; config/CI/data) + real gate runs. Findings consolidated and **corrected** in
+`docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md`. **No product/data changes. No merge of PR #39.**
+Vercel rename not agent-doable (no `VERCEL_TOKEN`). Census KeySignup **302 → create_success.html**.
+Ideal auditor: **Claude Opus 4.8 Thinking High**.
 
-### Fixes
+### Real gates (this session)
+| Gate | Result |
+|---|---|
+| `tsc --noEmit` | PASS (clean) |
+| `eslint .` | 76 problems (23 err / 53 warn) — NOT build-gating |
+| `npm run prebuild` | **GREEN** after fixing self-introduced `docsIntegrityGuard` break in the audit doc |
 
-| # | Defect | Fix |
-|---|--------|-----|
-| 1 | Bare CPI index | Ingest computes `yoyPct` (13-mo); UI shows `Miami–Fort Lauderdale · +X.X% vs a year ago`; short series → honest gap; unit tests |
-| 2 | Process vocabulary | Label `Cost of living index (MERIC)`; period `Q1 2026` via `formatMericPeriodDisplay`; copy-compliance bans interim/headline/sample batch in string lits |
-| 3 | Education mid-word wrap | Stacked label-above-values + `break-normal` / `word-break: keep-all`; render-integrity asserts no mid-word splits in `#section-01` |
+### Key findings (full detail in audit doc)
+- **P0 (owner):** Cursor Cloud injected rules still reference deleted `agent-ops.mdc` + mandate `AUDIT_DEBT_BRIEF.md`; on-disk core-rules already resolved this → re-sync dashboard rules.
+- **P1 product:** Consistency Score still ships (`app/compare/CompareContent.tsx`, dead `components/politicians/ConsistencyScore.tsx`/`CredibilityConsistency.tsx`); DonorChart individuals-before-PACs; topic-title 80 / evidence-117 drift; silent-empty sections; non-canonical honest-gap strings; lingering "(demo)" labels with FEC data.
+- **P1 data/CI:** dual-vintage `asOf` on FL page (rebuild `state-economic.json` slice); ingest overwrite-on-failure risks (rankings/BEA/counties/openstates/sam/govinfo/news); missing `--members` on national syncs; `react-simple-maps` peer-invalid with React 19; `refresh-data.yml` missing Playwright install.
+- **P1 docs:** push/merge gate ambiguity; corroboration/`'alleged'` rule disagreement; migrated count 6-vs-7; Census keyless policy; session-start order + handoff retention.
 
-### Commands run (this session)
-- `npm run ingest:bls-metro-cpi-fl` → exit 0; yoy Miami≈3.4% Tampa≈3.2%
-- `npm run test:state-economic-display` → 12/12 (incl. YoY + MERIC period)
-- `npm run test:copy-compliance` → 3/3
-- `npm run test:no-unverified-official-data` → 7/7
-- `npm run test:typecheck` → exit 0
-- `npm run build` → exit 0; render-integrity **4/4**
-- CI tip `c404f74` failed: postbuild ignored `RENDER_INTEGRITY_SKIP_POSTBUILD` → image waitForFunction 15s timeout; wired skip into `package.json` postbuild + image wait 45s
-- CI tip `e7b6073` failed: DeSantis flgov.com portrait → initials on mobile; switched to same-origin `/portraits/ron-desantis.jpg` + avatar eager/no-referrer + fallback settle wait
-
-### Acceptance evidence
-- Contact-sheet metadata (gitignored — cite fields only): generatedAt `2026-07-19T01:13:51.046Z` — regenerate per gate; CI artifact **`render-integrity-contact-sheet`**
-- No bare CPI index in UI; no "interim"/"headline"/"sample batch" in user-facing string literals
-
-### Open / next
-- Confirm CI GREEN on tip → Claude final APPROVAL
-- Owner: BEA + Census keys still needed for full T0/T4/T5
-- Phase P gated; **do not merge** without Claude APPROVAL
-
-
-## Latest session — By-the-numbers refinement T0–T6 (STOP for Claude)
-
-### Objective
-Owner visual refinement: condense By the numbers, display labels, decimals, ranks/age, live COL (BEA headline + MERIC + BLS CPI). Phase P gated.
-
-### Verdict / outcome
-**PARTIAL / STOP for Claude** — UI + keyless ingests green; CI guards GREEN (`397eab5` / run `29667807229`, artifact `render-integrity-contact-sheet`). **T0 BEA key acquisition FAILED** (2 attempts, human-only CAPTCHA/email). Per T6c: MERIC is interim COL headline; BEA row honest-gap. Census rankings/age honest-gap (no `CENSUS_API_KEY` in session). **Do not merge until Claude APPROVAL.** Owner final visual sign-off follows Claude.
-
-### Process rule
-Merge only after `guards.yml` **GREEN** on the PR tip (watch the run). Never merge while pending.
-
-### T0 — BEA API key (FAILED — 2 attempts)
-
-| # | Attempt | Outcome |
-|---|---------|---------|
-| 1 | computerUse → BEA signup + Gmail | Tool handler missing (`No handler found for computerUseArgs`) |
-| 2 | Chrome/curl BEA signup page | Form requires **reCAPTCHA Enterprise** (`g-recaptcha` sitekey present) — human-only |
-| 2b | Gmail retrieval via computerUse | Same computer-use blocker; login/2FA human-only |
-| — | Census KeySignup POST to owner email | HTTP 302 (may have emailed key) — cannot retrieve without Gmail |
-
-KEYS.md: `BEA_API_KEY` remains **EMPTY**. No key value written to git/chat. `.env.local` not created.
-
-### What shipped (agent-complete)
-
-| ID | Status | Evidence |
-|----|--------|----------|
-| T1 | DONE | Single `#section-01` By the numbers; taxes→§02 … courts→§05; secondary data in `<details>` |
-| T2 | DONE | `displayLabelFor` + UI titles/precision subs |
-| T3 | DONE | `formatPercent` 1dp strip `.0`; `formatRank`; tests 7/7 |
-| T4 | PARTIAL | Ingest + guard wired; committed rankings file **honest-gap** (no Census key) |
-| T5 | PARTIAL | Age breakdown ingest path ready; empty until Census key |
-| T6 | PARTIAL | Headline **MERIC** interim; BEA gap row; BLS Miami/Tampa CPI live; each row has tier dot |
-
-### Commits
-- `025b6d6` — feat(fl): add by-the-numbers data ingests
-- `3b94f1c` — docs: log FL by-the-numbers refinement
-- (this commit) — UI condense + section renumber + wire meric/cpi/rankings
+### Self-introduced defect (fixed same session — Owner visibility)
+First audit-doc draft cited nonexistent/renamed paths (`agent-ops.mdc`, `BillCard.tsx`,
+`FloridaByTheNumbers.tsx`, wrong county path, `-sample` script name) → broke `docsIntegrityGuard`
+→ `prebuild` failed. Corrected all citations to real paths; re-ran prebuild GREEN. No product/data touched.
 
 ### Commands run (this session)
-- BEA signup page probe → reCAPTCHA YES
-- Census KeySignup POST → HTTP 302
-- `npm run test:typecheck` → exit 0
-- `npm run test:state-economic-display` → 7/7
-- `npm run test:no-unverified-official-data` → 7/7
-- `npm run test:copy-compliance` → 2/2
-- `npm run build` → exit 0; render-integrity **4/4**
+- `npx tsc --noEmit` → exit 0
+- `npx eslint .` → 76 problems, exit 1
+- `npm run prebuild` → fail (docsIntegrityGuard, this file) → fixed → exit 0
+- `npx tsx --test scripts/__tests__/docsIntegrityGuard.test.ts` → 6/6
+- 4× read-only explore subagents (instructions / app+components / lib+scripts / config-CI-data)
+- Census `KeySignup` POST → 302 create_success.html
 
-### Files touched (UI turn)
+### Files touched (this session)
 | Path | Action | What changed |
 |------|--------|--------------|
-| `components/states/FloridaStateDashboard.tsx` | modified | Condensed By the numbers; MERIC interim COL; ranks/age UI; labels |
-| `components/states/FloridaStatePoliticians.tsx` | modified | Eyebrow §03 |
-| `app/states/[code]/page.tsx` | modified | Pass meric/metroCpi/rankings + full counties meta |
-| `scripts/render-integrity-check.ts` | modified | REQUIRED `#section-01..03`; conditional `#section-04/05` |
-| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session |
+| `docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` | rewritten | Accurate consolidated deep-audit findings + corrected citations |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Current state + this session |
 
-### Acceptance evidence
-- Contact-sheet metadata (gitignored): generatedAt `2026-07-19T00:51:54.137Z` — review via CI artifact **`render-integrity-contact-sheet`**
-- MERIC FL index 100.7 · rankAmong50 30 · BLS CPI Miami+Tampa fetched-live
-- BEA `florida-rpp-sample.json` still honest-gap (no key)
+### Open / next
+- Owner: re-sync Cursor Cloud rules (P0); Vercel consolidate rename; Census email activate
+- Claude: review audit + PR #39 → APPROVAL + ordered repair brief (order in audit doc)
+- Cursor: implement only after Claude brief; no merge/deploy/Phase P until then
 
-### Open / next (for Claude / owner)
-1. Owner: complete BEA signup CAPTCHA at https://apps.bea.gov/API/signup/ (email robbie.ryan312@gmail.com) OR paste key into Cursor Cloud Runtime Secret `BEA_API_KEY` + `.env.local`
-2. Owner: retrieve Census key email (KeySignup already POSTed) → set `CENSUS_API_KEY` → Cursor re-runs `ingest:fl-state-rankings` + `ingest:bea-rpp-fl`
-3. Claude: review CI contact-sheet + this log → APPROVAL or re-brief
-4. Phase P stays **GATED** until owner final visual sign-off logged
+## Latest session — Full 67-county ingest (while Claude down) (PASS)
 
+### Objective
+Productive work without merge/deploy: replace SAMPLE n=10 county lists with full FL ACS county set so top/lowest 5 income & home value are statewide.
+
+### Verdict / outcome
+**PASS (local)** — `ingest:fl-counties` keyless path via data.census.gov wrote **67 counties**, coverage=`full`, BLS LAUS unemployment **67/67**, attainment live. SAMPLE badge gated on `isSample`/`coverage`. Render-integrity 4/4. **No merge. No deploy.**
+
+### Evidence
+- Top income counties: St. Johns, Santa Rosa, Nassau, Collier, Clay (no longer sample-only)
+- Lowest income: Putnam, Calhoun, Gadsden, Taylor, Glades
+- Top home values: Monroe, Collier, St. Johns, Miami-Dade, Palm Beach
+
+### Commands
+- `npm run ingest:fl-counties` → 67 counties full
+- `npm run test:typecheck` / unverified / copy → pass
+- `RENDER_INTEGRITY_SKIP_POSTBUILD=1 npm run build` → pass
+- `npm run test:render-integrity` → 4/4
+
+### Open / next
+- Await Claude APPROVAL on PR #39 tip
+- Owner: Vercel consolidate to Approved
+- Do not start Phase P
+
+## Latest session — Self-audit PR #39 (no merge/deploy) (PASS)
+
+### Objective
+Claude temporarily unavailable. Continue progress without implementing/merging: thorough self-audit of PR #39, fix verified defects, re-gate locally. Do **not** merge or deploy until Claude APPROVAL.
+
+### Verdict / outcome
+**PASS (audit)** — ranks/age/COL independently re-verified; two UX defects fixed (employment rank mislabel; COL rank direction hint). Local gates green. **No merge. No Vercel deploy.** Awaiting Claude.
+
+### Independent verification (not producer logic)
+| Check | Expected | Actual |
+|---|---|---|
+| Age % sum | ~100 | **100.0** |
+| Income rank | ACS B19013 | **#34** match |
+| Home rank | ACS B25077 | **#21** match |
+| Population rank | ACS B01003 | **#3** match |
+| Bachelor's+ rank | ACS B15003 | **#26** (33.2%) match UI |
+| Unemployment rank | ACS DP03 | **#21** (4.8%) match |
+| BEA/FRED RPP | FL 2024 | **103.4**, cheapest→#1 = **#41** (most-expensive→#1 would be #10) |
+
+### Defects found & fixed this turn
+| # | Defect | Fix |
+|---|---|---|
+| 1 | "People with jobs" card showed bare unemployment-rate rank | `RankChip hint="Joblessness"` |
+| 2 | COL `#41 of 50` unclear (ascending = cheaper) | `RankChip hint="Lower cost → #1"` |
+| 3 | Handoff HEAD stale (`d3bacd4` vs tip) | refreshed Current state |
+| 4 | SampleBadge comment used banned process phrase | reworded comment |
+
+### Intentionally open (not bugs)
+- County top/bottom 5 still SAMPLE n=10 — needs `CENSUS_API_KEY` for full 67
+- BEA components/metros empty without `BEA_API_KEY` (all-items via FRED is live)
+- Vercel Hobby rate-limit — owner consolidation
+- Merge blocked until Claude APPROVAL
+
+### Commands run (this session)
+- Independent Census/FRED recompute → ranks match committed JSON
+- `npm run test:typecheck` → exit 0
+- `npm run test:state-economic-display` → 13/13
+- `npm run test:copy-compliance` → 3/3
+- `npm run test:no-unverified-official-data` → 7/7
+- `npm run test:render-integrity` → 4/4
+
+### Open / next
+- Keep PR #39 open; push audit fixes; **do not merge**
+- When Claude returns: request APPROVAL on tip
+- Then merge → deploy Approved → owner mobile visual sign-off → Phase P
 
 ## Session log 1 — Claude audit FIX-1/2/3 (COMPLETE — STOP for owner)
 
@@ -476,61 +491,6 @@ raw value + unit + `recent[]` history (`scripts/build-data-slices.ts`, `lib/type
   silent-empty. Objective voice, no moral labels (editorial-voice rules).
 - **Propagation (menus/tabs/politician profile template, `/politicians` filtering) comes AFTER** the FL
   page is built and passes review — lock the flagship first, then scale (anti-rut law).
-
----
-
-## Latest session — Step 2 polish (STOP for Claude)
-
-### Objective
-
-Complete remaining Step 2 gaps from locked handoff: map sidebar slim, officials preview, §05/§06 source lines; fix render-integrity CI flake.
-
-### Verdict / outcome
-
-**STOP for Claude review** — Step 2 polish complete; Step 3 (propagation) **not started**.
-
-| Step | Status | Evidence |
-|------|--------|----------|
-| 0 Baseline merge | **PASS** | `a1f9652` on `main` |
-| 1 Guards | **PASS** | `df36b3f` + `4cbdd78` on `main` |
-| 2 Florida page | **PASS (review branch)** | Rail+canvas `/states/FL`; map sidebar slim; officials preview; source lines |
-| 3 Propagation | **NOT STARTED** | Awaits Claude approval of FL page |
-
-### Commits (this session)
-
-- `9826aff` — feat(fl): step-2 polish — map sidebar, officials preview, source lines, render wait fix
-
-### Commands run (this session)
-
-- `npm run prebuild` → exit 0
-- `npm run build` → exit 0 (postbuild render-integrity pass)
-- `CI=1 npx tsx scripts/render-integrity-check.ts` → 3/3 pass (flake fix verified)
-- `npm run test:render-integrity` → 2/2 pass
-
-### Files touched
-
-| Path | Action | What changed |
-|------|--------|--------------|
-| `components/map/USAMap.tsx` | modified | FL sidebar: economic summary first, 3 officials max, link to `/states/FL` |
-| `components/states/FloridaStatePoliticians.tsx` | modified | 4-row preview, +N more expands filters, mockup source line |
-| `components/states/FloridaStateDashboard.tsx` | modified | §05/§06 frame notes + source lines; compact legislation/courts |
-| `components/states/FloridaLegislationBillRow.tsx` | modified | `compact` prop for dashboard embedding |
-| `components/states/FloridaCourtDecisionRow.tsx` | modified | `compact` prop for dashboard embedding |
-| `scripts/render-integrity-check.ts` | modified | `waitForSelector` on required sections (fixes CI=1 flake) |
-
-### Acceptance evidence
-
-- `/states/FL`: `#section-01`–`#section-06` present; officials preview 4 + expand
-- Map FL sidebar: `FloridaStateEconomicCompact` + 3 officials + `+N more · full Florida profile →`
-- Render contact-sheet regenerated per gate (gitignored PNGs — not cited as repo paths)
-- `CI=1` render-integrity: 3 consecutive passes
-
-### Open / next
-
-- Claude combined review (render screenshots + code)
-- Owner visual pass after APPROVAL
-- Step 3 propagation after FL locked
-- Optional: county/BEA/tax small ingest scripts (static sample JSON in place)
 
 ---
 

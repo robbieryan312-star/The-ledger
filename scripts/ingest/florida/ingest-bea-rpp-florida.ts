@@ -3,7 +3,9 @@
  * Output: data/florida/bea/florida-rpp-sample.json
  *
  * Usage: npm run ingest:bea-rpp-fl
- * Requires BEA_API_KEY — without it writes provenance:'honest-gap' + state:null.
+ * Prefers BEA_API_KEY (full MARPP components + metros).
+ * Without a key, falls back to BEA RPP all-items series republished by FRED
+ * (`*RPPALL` CSV) — official BEA figures, state index + rank-among-50 only.
  *
  * LineCodes are resolved by NAME via GetParameterValues (MARPP has no
  * Groceries/Transportation lines — those labels are skipped when absent).
@@ -18,6 +20,118 @@ const BEA_SOURCE = {
   tier: 'official' as const,
   description: 'Regional Price Parities (MARPP) — BEA Data API Regional dataset',
 };
+
+const FRED_BEA_SOURCE = {
+  name: 'U.S. Bureau of Economic Analysis',
+  url: 'https://fred.stlouisfed.org/series/FLRPPALL',
+  tier: 'official' as const,
+  description:
+    'Regional Price Parities (all items) — BEA series via FRED St. Louis Fed CSV (*RPPALL)',
+};
+
+const USPS_STATES: { code: string; name: string }[] = [
+  { code: 'AL', name: 'Alabama' }, { code: 'AK', name: 'Alaska' }, { code: 'AZ', name: 'Arizona' },
+  { code: 'AR', name: 'Arkansas' }, { code: 'CA', name: 'California' }, { code: 'CO', name: 'Colorado' },
+  { code: 'CT', name: 'Connecticut' }, { code: 'DE', name: 'Delaware' }, { code: 'FL', name: 'Florida' },
+  { code: 'GA', name: 'Georgia' }, { code: 'HI', name: 'Hawaii' }, { code: 'ID', name: 'Idaho' },
+  { code: 'IL', name: 'Illinois' }, { code: 'IN', name: 'Indiana' }, { code: 'IA', name: 'Iowa' },
+  { code: 'KS', name: 'Kansas' }, { code: 'KY', name: 'Kentucky' }, { code: 'LA', name: 'Louisiana' },
+  { code: 'ME', name: 'Maine' }, { code: 'MD', name: 'Maryland' }, { code: 'MA', name: 'Massachusetts' },
+  { code: 'MI', name: 'Michigan' }, { code: 'MN', name: 'Minnesota' }, { code: 'MS', name: 'Mississippi' },
+  { code: 'MO', name: 'Missouri' }, { code: 'MT', name: 'Montana' }, { code: 'NE', name: 'Nebraska' },
+  { code: 'NV', name: 'Nevada' }, { code: 'NH', name: 'New Hampshire' }, { code: 'NJ', name: 'New Jersey' },
+  { code: 'NM', name: 'New Mexico' }, { code: 'NY', name: 'New York' }, { code: 'NC', name: 'North Carolina' },
+  { code: 'ND', name: 'North Dakota' }, { code: 'OH', name: 'Ohio' }, { code: 'OK', name: 'Oklahoma' },
+  { code: 'OR', name: 'Oregon' }, { code: 'PA', name: 'Pennsylvania' }, { code: 'RI', name: 'Rhode Island' },
+  { code: 'SC', name: 'South Carolina' }, { code: 'SD', name: 'South Dakota' }, { code: 'TN', name: 'Tennessee' },
+  { code: 'TX', name: 'Texas' }, { code: 'UT', name: 'Utah' }, { code: 'VT', name: 'Vermont' },
+  { code: 'VA', name: 'Virginia' }, { code: 'WA', name: 'Washington' }, { code: 'WV', name: 'West Virginia' },
+  { code: 'WI', name: 'Wisconsin' }, { code: 'WY', name: 'Wyoming' },
+];
+
+function round1(value: number): number {
+  return Math.round(value * 10) / 10;
+}
+
+async function fetchFredLatest(seriesId: string): Promise<{ date: string; value: number }> {
+  const url = `https://fred.stlouisfed.org/graph/fredgraph.csv?id=${encodeURIComponent(seriesId)}`;
+  const res = await fetch(url, { signal: AbortSignal.timeout(30_000) });
+  const text = await res.text();
+  if (!res.ok || text.includes('<html')) {
+    throw new Error(`FRED ${seriesId} HTTP ${res.status}`);
+  }
+  const lines = text
+    .trim()
+    .split('\n')
+    .filter((line) => line && !line.startsWith('observation'));
+  const last = lines[lines.length - 1];
+  if (!last) throw new Error(`FRED ${seriesId} empty`);
+  const [date, raw] = last.split(',');
+  const value = Number.parseFloat(raw);
+  if (!date || !Number.isFinite(value) || value <= 0) {
+    throw new Error(`FRED ${seriesId} invalid row: ${last}`);
+  }
+  return { date, value };
+}
+
+/** Keyless fallback: BEA RPP all-items for 50 states via FRED CSV. */
+async function buildFromFred(): Promise<{
+  meta: Record<string, unknown>;
+  state: {
+    allItemsIndex: number;
+    period: string;
+    rankAmong50: number;
+    components: { label: string; index: number }[];
+    metros: { name: string; index: number }[];
+  };
+}> {
+  const asOf = new Date().toISOString().slice(0, 10);
+  const rows: { code: string; name: string; value: number; date: string }[] = [];
+  const errors: string[] = [];
+  for (const state of USPS_STATES) {
+    try {
+      const latest = await fetchFredLatest(`${state.code}RPPALL`);
+      rows.push({ code: state.code, name: state.name, value: latest.value, date: latest.date });
+    } catch (err) {
+      errors.push(`${state.code}: ${err instanceof Error ? err.message : String(err)}`);
+    }
+  }
+  if (rows.length < 45) {
+    throw new Error(`FRED RPP incomplete (${rows.length}/50): ${errors.slice(0, 5).join('; ')}`);
+  }
+  const fl = rows.find((row) => row.code === 'FL');
+  if (!fl) throw new Error('FRED RPP missing Florida (FLRPPALL)');
+
+  // Ascending index → rank 1 = lowest cost (matches MERIC rankAmong50 convention).
+  const ascending = [...rows].sort((a, b) => a.value - b.value);
+  const rankAmong50 = ascending.findIndex((row) => row.code === 'FL') + 1;
+  const year = fl.date.slice(0, 4);
+
+  return {
+    meta: {
+      source: FRED_BEA_SOURCE,
+      asOf,
+      count: 1,
+      stateCode: 'FL',
+      provenance: 'fetched-live' as const,
+      fetchedLive: true,
+      fetchedAt: new Date().toISOString(),
+      datasetUrl: 'https://fred.stlouisfed.org/series/FLRPPALL',
+      note:
+        `BEA Regional Price Parities ${year} (all items) via FRED *RPPALL CSV for ${rows.length} states. ` +
+        'Components/metros require BEA_API_KEY. Rank 1 = lowest cost among 50 states.',
+      retrieval: 'fred-csv',
+      errors: errors.length ? errors : undefined,
+    },
+    state: {
+      allItemsIndex: round1(fl.value),
+      period: year,
+      rankAmong50,
+      components: [],
+      metros: [],
+    },
+  };
+}
 
 const METRO_GEO = [
   { name: 'Miami-Fort Lauderdale-West Palm Beach', geoFips: '33100' },
@@ -118,26 +232,39 @@ async function main(): Promise<void> {
   const key = process.env.BEA_API_KEY?.trim();
   const year = '2023';
 
+  const dir = path.join(projectRoot, 'data', 'florida', 'bea');
+  await mkdir(dir, { recursive: true });
+  const out = path.join(dir, 'florida-rpp-sample.json');
+
   if (!key) {
-    const payload = {
-      meta: {
-        source: BEA_SOURCE,
-        asOf,
-        count: 0,
-        stateCode: 'FL',
-        provenance: 'honest-gap' as const,
-        fetchedLive: false,
-        datasetUrl: 'https://apps.bea.gov/api/data/?datasetname=Regional&TableName=MARPP',
-        note: 'BEA_API_KEY not set — cost-of-living shows honest gap until key is configured.',
-      },
-      state: null,
-    };
-    const dir = path.join(projectRoot, 'data', 'florida', 'bea');
-    await mkdir(dir, { recursive: true });
-    const out = path.join(dir, 'florida-rpp-sample.json');
-    await writeFile(out, JSON.stringify(payload, null, 2) + '\n', 'utf8');
-    console.warn(`Wrote ${out} (provenance=honest-gap, BEA_API_KEY not set)`);
-    return;
+    try {
+      const payload = await buildFromFred();
+      await writeFile(out, JSON.stringify(payload, null, 2) + '\n', 'utf8');
+      console.log(
+        `Wrote ${out} (live=true via FRED, index=${payload.state.allItemsIndex}, rank=${payload.state.rankAmong50})`,
+      );
+      return;
+    } catch (err) {
+      const payload = {
+        meta: {
+          source: BEA_SOURCE,
+          asOf,
+          count: 0,
+          stateCode: 'FL',
+          provenance: 'honest-gap' as const,
+          fetchedLive: false,
+          datasetUrl: 'https://apps.bea.gov/api/data/?datasetname=Regional&TableName=MARPP',
+          note: `BEA_API_KEY not set and FRED fallback failed: ${
+            err instanceof Error ? err.message : String(err)
+          }`,
+        },
+        state: null,
+      };
+      await writeFile(out, JSON.stringify(payload, null, 2) + '\n', 'utf8');
+      console.warn(`Wrote ${out} (provenance=honest-gap)`);
+      process.exitCode = 1;
+      return;
+    }
   }
 
   const errors: string[] = [];
@@ -240,9 +367,6 @@ async function main(): Promise<void> {
       : null,
   };
 
-  const dir = path.join(projectRoot, 'data', 'florida', 'bea');
-  await mkdir(dir, { recursive: true });
-  const out = path.join(dir, 'florida-rpp-sample.json');
   await writeFile(out, JSON.stringify(payload, null, 2) + '\n', 'utf8');
   console.log(`Wrote ${out} (live=${fetchedLive}, index=${allItemsIndex ?? '—'})`);
   if (!fetchedLive) process.exit(1);

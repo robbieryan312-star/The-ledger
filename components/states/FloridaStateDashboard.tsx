@@ -7,6 +7,7 @@ import {
   employmentRatePercent,
   findIndicator,
   formatDelta,
+  formatIndex,
   formatPercent,
   incomeVsUsChipClass,
   indicatorRawValue,
@@ -54,6 +55,8 @@ export type FloridaDashboardProps = {
       censusFetchedLive?: boolean;
       blsFetchedLive?: boolean;
       attainmentFetchedLive?: boolean;
+      coverage?: 'full' | 'sample';
+      isSample?: boolean;
     };
   };
   rpp: {
@@ -66,6 +69,7 @@ export type FloridaDashboardProps = {
     state: {
       allItemsIndex: number;
       period: string;
+      rankAmong50?: number | null;
       components: { label: string; index: number }[];
       metros: { name: string; index: number }[];
     } | null;
@@ -229,11 +233,41 @@ const HONEST_GAP = (
   <span className="italic text-[var(--muted)]">No verified record available</span>
 );
 
-function RankChip({ rank, of = 50 }: { rank: number | null | undefined; of?: number }) {
-  if (rank == null || !Number.isFinite(rank)) return null;
-  return (
+function RankChip({
+  rank,
+  of = 50,
+  hint,
+  senseNote,
+  basis,
+}: {
+  rank: number | null | undefined;
+  of?: number;
+  /** Short sense label shown before the chip (e.g. "Joblessness"). */
+  hint?: string;
+  /** Direction note appended inside the chip when rank order is non-obvious (e.g. "1 = lowest cost"). */
+  senseNote?: string;
+  /** Small parenthetical naming the metric/vintage the rank is computed on (e.g. "ranks ACS 5-yr rate 4.8%"). */
+  basis?: string;
+}) {
+  const hasRank = rank != null && Number.isFinite(rank);
+  const chip = !hasRank ? (
+    <span className="font-mono text-[10.5px] italic text-[var(--muted)] border border-[var(--border-subtle)] rounded px-1.5 py-0.5">
+      Rank — No verified record available
+    </span>
+  ) : (
     <span className="font-mono text-[10.5px] text-[var(--muted)] border border-[var(--border-subtle)] rounded px-1.5 py-0.5">
-      #{formatRank(rank)} of {of}
+      #{formatRank(rank!)} of {of}
+      {senseNote ? ` · ${senseNote}` : ''}
+    </span>
+  );
+  if (!hint && !(basis && hasRank)) return chip;
+  return (
+    <span className="inline-flex flex-wrap items-center gap-1">
+      {hint && <span className="text-[10.5px] text-[var(--muted)]">{hint}</span>}
+      {chip}
+      {basis && hasRank && (
+        <span className="text-[9.5px] text-[var(--muted)]/80">({basis})</span>
+      )}
     </span>
   );
 }
@@ -269,10 +303,10 @@ function StatCard({
       <div className="absolute top-3 right-3">
         <TierDot tier={tier} />
       </div>
-      <p className="text-[11px] text-[var(--muted)] pr-6">{label}</p>
-      {precision && <p className="text-[10px] text-[var(--muted)]/90 pr-6 mt-0.5">{precision}</p>}
-      <p className="text-[26px] font-semibold text-[var(--foreground)] tracking-tight mt-1.5 leading-none">{value}</p>
-      {sub && <div className="text-[11.5px] text-[var(--foreground)]/85 mt-2 flex flex-wrap items-center gap-1.5">{sub}</div>}
+      <p className="text-[11px] text-[var(--muted)] pr-6 leading-snug">{label}</p>
+      {precision && <p className="text-[10px] text-[var(--muted)]/90 pr-6 mt-0.5 leading-snug">{precision}</p>}
+      <p className="text-[22px] font-semibold text-[var(--foreground)] tracking-tight mt-1 leading-none">{value}</p>
+      {sub && <div className="text-[11px] text-[var(--foreground)]/85 mt-1.5 flex flex-wrap items-center gap-1.5">{sub}</div>}
       {children}
     </div>
   );
@@ -294,15 +328,15 @@ function SectionShell({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-24 py-7 border-b border-[var(--border-subtle)] last:border-b-0">
+    <section id={id} className="scroll-mt-24 py-5 border-b border-[var(--border-subtle)] last:border-b-0">
       <div className="flex items-baseline gap-3 mb-1">
         <span className="font-mono text-[10.5px] tracking-widest text-[var(--gold)]">{eyebrow}</span>
         <h2 className="text-base font-semibold text-[var(--foreground)]">{title}</h2>
       </div>
-      {note && <p className="text-[12.5px] text-[var(--muted)] mb-4 max-w-prose">{note}</p>}
+      {note && <p className="text-[12px] text-[var(--muted)] mb-3 max-w-prose">{note}</p>}
       {children}
       {sourceLine && (
-        <p className="text-[10px] text-[var(--muted)]/90 mt-4 pt-3 border-t border-[var(--border-subtle)]">{sourceLine}</p>
+        <p className="text-[10px] text-[var(--muted)]/90 mt-3 pt-2 border-t border-[var(--border-subtle)]">{sourceLine}</p>
       )}
     </section>
   );
@@ -507,7 +541,7 @@ export default function FloridaStateDashboard({
         })();
   const colRank =
     colHeadline === 'bea'
-      ? null
+      ? rppState?.rankAmong50 ?? null
       : colHeadline === 'meric'
         ? mericState!.rankAmong50
         : null;
@@ -519,6 +553,11 @@ export default function FloridaStateDashboard({
     counties.meta.provenance === 'fetched-live' ||
     counties.meta.censusFetchedLive === true ||
     counties.meta.fetchedLive === true;
+  /** SAMPLE badge only when county coverage is a subset (not all 67). */
+  const countiesAreSample =
+    counties.meta.isSample === true ||
+    counties.meta.coverage === 'sample' ||
+    (countiesLive && counties.records.length > 0 && counties.records.length < 67);
   const attainmentLive =
     counties.meta.attainmentFetchedLive === true ||
     (countiesLive && attain != null);
@@ -531,6 +570,12 @@ export default function FloridaStateDashboard({
       : counties.stateSummary.populationRank;
   const educationRank = ranksLive ? rankings.ranks.bachelorsPlusPct?.rank : null;
   const employmentRank = ranksLive ? rankings.ranks.unemploymentRate?.rank : null;
+  const unemploymentRankValue = ranksLive ? rankings.ranks.unemploymentRate?.value ?? null : null;
+  /** The joblessness rank is computed on the ACS 5-yr rate, a different basis than the BLS LAUS headline. */
+  const unemploymentRankBasis =
+    unemploymentRankValue != null
+      ? `ranks ACS 5-yr rate ${formatPercent(unemploymentRankValue)}`
+      : undefined;
   const ageRows = rankings.ageBreakdown ?? [];
 
   return (
@@ -596,25 +641,16 @@ export default function FloridaStateDashboard({
                   {counties.stateSummary.populationGrowthPct != null && popRank != null ? (
                     <>
                       {counties.stateSummary.populationGrowthPct > 0 ? '▲' : counties.stateSummary.populationGrowthPct < 0 ? '▼' : '●'}
-                      {formatPercent(Math.abs(counties.stateSummary.populationGrowthPct)).replace(/%$/, '')}%/yr · #{formatRank(popRank)} of 50
+                      {formatPercent(Math.abs(counties.stateSummary.populationGrowthPct)).replace(/%$/, '')}%/yr · #{formatRank(popRank)} of 50 · age &amp; counties ▾
                     </>
                   ) : (
-                    <>Population detail ▾</>
+                    <>Age groups &amp; population detail ▾</>
                   )}
                 </summary>
                 <div className="mt-2 text-left sm:text-right border-t border-dashed border-[var(--border-subtle)] pt-2 space-y-3">
-                  <div>
-                    <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">State ranks</p>
-                    <RankRow label="Population" rank={popRank} />
-                    <RankRow label={incomeLabel.title} rank={incomeRank} />
-                    <RankRow label={homeLabel.title} rank={homeRank} />
-                    <RankRow label="Employment (unemployment rate)" rank={employmentRank} />
-                    <RankRow label={educationLabel.title} rank={educationRank} />
-                    <RankRow label={colLabel.title} rank={colRank} />
-                  </div>
                   {ageRows.length > 0 ? (
                     <div>
-                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Age breakdown</p>
+                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Age groups (% of population)</p>
                       {ageRows.map((row) => (
                         <div key={row.label} className="flex justify-between text-[11px] text-[var(--foreground)]/85 py-0.5 gap-2">
                           <span>{row.label}</span>
@@ -623,17 +659,26 @@ export default function FloridaStateDashboard({
                       ))}
                     </div>
                   ) : (
-                    <p className="text-[11px] italic text-[var(--muted)]">Age breakdown — No verified record available</p>
+                    <p className="text-[11px] italic text-[var(--muted)]">Age groups — No verified record available</p>
                   )}
                   <div>
+                    <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">How Florida ranks (of 50)</p>
+                    <RankRow label="Population" rank={popRank} />
+                    <RankRow label={incomeLabel.title} rank={incomeRank} />
+                    <RankRow label={homeLabel.title} rank={homeRank} />
+                    <RankRow label="Joblessness (unemployment rate)" rank={employmentRank} />
+                    <RankRow label={educationLabel.title} rank={educationRank} />
+                    <RankRow label={colLabel.title} rank={colRank} />
+                  </div>
+                  <div>
                     <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">
-                      Top counties by population
-                      {countiesLive && <SampleBadge />}
+                      Highest 5 counties by population
+                      {countiesAreSample && <SampleBadge />}
                     </p>
                     <CountyMiniRows rows={popByCounty.top} valueKey="population" format={(v) => (v != null ? formatCompact(v) : '—')} />
                     <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1 mt-3">
-                      Smallest counties
-                      {countiesLive && <SampleBadge />}
+                      Lowest 5 counties by population
+                      {countiesAreSample && <SampleBadge />}
                     </p>
                     <CountyMiniRows rows={popByCounty.bottom} valueKey="population" format={(v) => (v != null ? formatCompact(v) : '—')} />
                   </div>
@@ -647,16 +692,16 @@ export default function FloridaStateDashboard({
           id="section-01"
           eyebrow="§01"
           title="By the numbers"
-          note="Income, housing, prices, work, and education — compact figures with county and source detail in each drop-down."
+          note="Key figures at a glance — open any drop-down for ranks, counties, and sources."
           sourceLine={
             <>
-              Source: U.S. Census Bureau ACS · BLS LAUS/CPS ·{' '}
+              Source: U.S. Census Bureau ACS · BLS ·{' '}
               {colHeadline === 'bea' ? 'BEA Regional Price Parities' : 'MERIC cost of living'}
-              {countiesLive ? ` · county n=${counties.records.length}` : ''}
+              {countiesLive ? ` · counties n=${counties.records.length}${countiesAreSample ? ' (sample)' : ''}` : ''}
             </>
           }
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2.5">
             {income && (
               <StatCard
                 label={incomeLabel.title}
@@ -676,14 +721,16 @@ export default function FloridaStateDashboard({
               >
                 {income.history && <div className="mt-2"><MiniSparkline values={income.history.map((h) => h.value)} /></div>}
                 <details className="mt-2">
-                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">Counties by income ▾{countiesLive && <SampleBadge />}</summary>
-                  <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">
+                    Highest &amp; lowest 5 counties ▾{countiesAreSample && <SampleBadge />}
+                  </summary>
+                  <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Highest</p>
+                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Highest 5 incomes</p>
                       <CountyMiniRows rows={incomeByCounty.top} valueKey="medianHouseholdIncome" format={(v) => formatCompactCurrency(v)} />
                     </div>
                     <div>
-                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Lowest</p>
+                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Lowest 5 incomes</p>
                       <CountyMiniRows rows={incomeByCounty.bottom} valueKey="medianHouseholdIncome" format={(v) => formatCompactCurrency(v)} />
                     </div>
                   </div>
@@ -709,14 +756,16 @@ export default function FloridaStateDashboard({
               >
                 {home.history && <div className="mt-2"><MiniSparkline values={home.history.map((h) => h.value)} /></div>}
                 <details className="mt-2">
-                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">Counties by home value ▾{countiesLive && <SampleBadge />}</summary>
-                  <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">
+                    Highest &amp; lowest 5 counties ▾{countiesAreSample && <SampleBadge />}
+                  </summary>
+                  <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Most expensive</p>
+                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Highest 5 home values</p>
                       <CountyMiniRows rows={homeByCounty.top} valueKey="medianHomeValue" format={(v) => formatCompactCurrency(v)} />
                     </div>
                     <div>
-                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Most affordable</p>
+                      <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Lowest 5 home values</p>
                       <CountyMiniRows rows={homeByCounty.bottom} valueKey="medianHomeValue" format={(v) => formatCompactCurrency(v)} />
                     </div>
                   </div>
@@ -727,12 +776,12 @@ export default function FloridaStateDashboard({
               <StatCard
                 label={colLabel.title}
                 precision={colLabel.sub}
-                value={formatPercent(colIndex).replace(/%$/, '')}
+                value={formatIndex(colIndex)}
                 tier={colHeadline === 'bea' ? 'official' : 'nonpartisan'}
                 sub={
                   <>
                     {colVsUs && <span>U.S. = 100 · {colVsUs}</span>}
-                    <RankChip rank={colRank} />
+                    <RankChip rank={colRank} senseNote="1 = lowest cost" />
                   </>
                 }
               >
@@ -747,24 +796,32 @@ export default function FloridaStateDashboard({
                           <p className="text-[9.5px] uppercase text-[var(--muted)]/90">BEA Regional Price Parities</p>
                           <TierDot tier="official" />
                         </div>
+                        <div className="flex justify-between text-[11px] text-[var(--foreground)]/85 py-0.5">
+                          <span>All-items index · {rppState.period}</span>
+                          <span className="font-mono">{formatIndex(rppState.allItemsIndex)}</span>
+                        </div>
+                        {rppState.components.length > 0 && (
                         <div>
                           <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Components (RPP)</p>
                           {rppState.components.map((c) => (
                             <div key={c.label} className="flex justify-between text-[11px] text-[var(--foreground)]/85 py-0.5">
                               <span>{c.label}</span>
-                              <span className="font-mono">{formatPercent(c.index).replace(/%$/, '')}</span>
+                              <span className="font-mono">{formatIndex(c.index)}</span>
                             </div>
                           ))}
                         </div>
+                        )}
+                        {rppState.metros.length > 0 && (
                         <div>
                           <p className="text-[9.5px] uppercase text-[var(--muted)]/90 mb-1">Metro areas</p>
                           {rppState.metros.map((m) => (
                             <div key={m.name} className="flex justify-between text-[11px] text-[var(--foreground)]/85 py-0.5">
                               <span className="truncate pr-2">{m.name}</span>
-                              <span className="font-mono shrink-0">{formatPercent(m.index).replace(/%$/, '')}</span>
+                              <span className="font-mono shrink-0">{formatIndex(m.index)}</span>
                             </div>
                           ))}
                         </div>
+                        )}
                       </>
                     ) : (
                       <div className="flex items-start justify-between gap-2 text-[11px] text-[var(--foreground)]/85">
@@ -785,12 +842,12 @@ export default function FloridaStateDashboard({
                         </div>
                         <div className="flex justify-between text-[11px] text-[var(--foreground)]/85 py-0.5">
                           <span>Index · {formatMericPeriodDisplay(mericState.period)}</span>
-                          <span className="font-mono">{formatPercent(mericState.allItemsIndex).replace(/%$/, '')}</span>
+                          <span className="font-mono">{formatIndex(mericState.allItemsIndex)}</span>
                         </div>
                         {mericState.components.map((c) => (
                           <div key={c.label} className="flex justify-between text-[11px] text-[var(--foreground)]/85 py-0.5">
                             <span className="break-normal">{c.label}</span>
-                            <span className="font-mono">{formatPercent(c.index).replace(/%$/, '')}</span>
+                            <span className="font-mono">{formatIndex(c.index)}</span>
                           </div>
                         ))}
                       </div>
@@ -852,12 +909,17 @@ export default function FloridaStateDashboard({
                     {empRate != null && (
                       <span>Employment rate {formatPercent(empRate)}</span>
                     )}
-                    <RankChip rank={employmentRank} />
+                    <RankChip
+                      rank={employmentRank}
+                      hint="Joblessness"
+                      senseNote="1 = least joblessness"
+                      basis={unemploymentRankBasis}
+                    />
                   </>
                 }
               >
                 <details className="mt-2">
-                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">Workforce, counties & trend ▾{countiesLive && <SampleBadge />}</summary>
+                  <summary className="text-[11px] text-[var(--gold)] cursor-pointer list-none">Workforce, counties & trend ▾{countiesAreSample && <SampleBadge />}</summary>
                   <div className="mt-2 pt-2 border-t border-dashed border-[var(--border-subtle)] space-y-3">
                     <div className="grid grid-cols-2 gap-2 text-[11px]">
                       {laborForce && (

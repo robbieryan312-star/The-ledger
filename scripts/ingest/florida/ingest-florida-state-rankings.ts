@@ -1,6 +1,9 @@
 /**
  * Florida state rankings + age breakdown from Census ACS.
  * Output: data/florida/census/florida-state-rankings-sample.json
+ *
+ * Prefers api.census.gov when CENSUS_API_KEY / DATA_GOV_API_KEY is set.
+ * Falls back to the public data.census.gov access API (no key required).
  */
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -16,6 +19,7 @@ const CENSUS_SOURCE = {
 
 const EXCLUDED_STATE_CODES = new Set(['11', '72']);
 const YEARS = ['2023', '2022', '2021'];
+const DATA_CENSUS_TABLE_YEAR = '2023';
 
 const AGE_VARS = [
   'B01001_001E',
@@ -62,6 +66,9 @@ async function fetchCensusJson(url: string): Promise<string[][]> {
   const res = await fetch(url, { signal: AbortSignal.timeout(60_000) });
   const text = await res.text();
   if (!res.ok) throw new Error(`HTTP ${res.status}: ${text.slice(0, 200)}`);
+  if (text.includes('Missing Key') || text.includes('missing_key')) {
+    throw new Error('Census API key required');
+  }
   return JSON.parse(text) as string[][];
 }
 
@@ -79,6 +86,25 @@ async function fetchFirstAvailable(pathPart: string, query: string, key: string)
   throw new Error(errors.join('; '));
 }
 
+async function fetchDataCensusTable(tableId: string, geography: string): Promise<CensusTable> {
+  const url = `https://data.census.gov/api/access/data/table?id=${encodeURIComponent(tableId)}&g=${encodeURIComponent(geography)}`;
+  const res = await fetch(url, {
+    signal: AbortSignal.timeout(90_000),
+    headers: { 'User-Agent': 'TheLedger/1.0 (civic transparency; rankings ingest)' },
+  });
+  const text = await res.text();
+  if (!res.ok) throw new Error(`data.census.gov HTTP ${res.status}: ${text.slice(0, 200)}`);
+  const json = JSON.parse(text) as { response?: { data?: string[][] } };
+  const data = json.response?.data;
+  if (!data || data.length < 2) throw new Error(`data.census.gov empty for ${tableId}`);
+  return {
+    headers: data[0],
+    rows: data.slice(1),
+    year: DATA_CENSUS_TABLE_YEAR,
+    url,
+  };
+}
+
 function rowObject(headers: string[], row: string[]): Record<string, string> {
   const obj: Record<string, string> = {};
   headers.forEach((header, idx) => {
@@ -87,20 +113,38 @@ function rowObject(headers: string[], row: string[]): Record<string, string> {
   return obj;
 }
 
+function stateCodeFromGeoId(geoId: string | undefined, fallback?: string): string | null {
+  if (fallback && /^\d{2}$/.test(fallback)) return fallback;
+  if (!geoId) return null;
+  const m = geoId.match(/US(\d{2})$/);
+  return m?.[1] ?? null;
+}
+
 function eligibleStateRows(table: CensusTable, valueKey: string): RankRecord[] {
   const stateIdx = table.headers.indexOf('state');
   const nameIdx = table.headers.indexOf('NAME');
+  const geoIdx = table.headers.indexOf('GEO_ID');
   const valueIdx = table.headers.indexOf(valueKey);
+  if (nameIdx < 0 || valueIdx < 0) return [];
   return table.rows
-    .map((row) => ({
-      state: row[nameIdx],
-      stateCode: row[stateIdx],
-      value: parseNum(row[valueIdx]),
-    }))
+    .map((row) => {
+      const stateCode = stateCodeFromGeoId(
+        geoIdx >= 0 ? row[geoIdx] : undefined,
+        stateIdx >= 0 ? row[stateIdx] : undefined,
+      );
+      return {
+        state: row[nameIdx],
+        stateCode: stateCode ?? '',
+        value: parseNum(row[valueIdx]),
+      };
+    })
     .filter((row) => row.state && row.stateCode && !EXCLUDED_STATE_CODES.has(row.stateCode) && row.value != null);
 }
 
-function rankForFlorida(records: RankRecord[], direction: 'high' | 'low'): { rank: number | null; value: number | null; denominator: number } {
+function rankForFlorida(
+  records: RankRecord[],
+  direction: 'high' | 'low',
+): { rank: number | null; value: number | null; denominator: number } {
   const sorted = [...records].sort((a, b) =>
     direction === 'high' ? (b.value ?? 0) - (a.value ?? 0) : (a.value ?? 0) - (b.value ?? 0),
   );
@@ -124,15 +168,15 @@ function ageBreakdown(headers: string[], row: string[]): Array<{ label: string; 
       value: sum(['B01001_003E', 'B01001_004E', 'B01001_005E', 'B01001_006E', 'B01001_027E', 'B01001_028E', 'B01001_029E', 'B01001_030E']),
     },
     {
-      label: '18-24',
+      label: '18–24',
       value: sum(['B01001_007E', 'B01001_008E', 'B01001_009E', 'B01001_010E', 'B01001_031E', 'B01001_032E', 'B01001_033E', 'B01001_034E']),
     },
     {
-      label: '25-44',
+      label: '25–44',
       value: sum(['B01001_011E', 'B01001_012E', 'B01001_013E', 'B01001_014E', 'B01001_035E', 'B01001_036E', 'B01001_037E', 'B01001_038E']),
     },
     {
-      label: '45-64',
+      label: '45–64',
       value: sum(['B01001_015E', 'B01001_016E', 'B01001_017E', 'B01001_018E', 'B01001_019E', 'B01001_039E', 'B01001_040E', 'B01001_041E', 'B01001_042E', 'B01001_043E']),
     },
     {
@@ -161,7 +205,7 @@ async function writeHonestGap(reason: string): Promise<void> {
       stateCode: 'FL',
       provenance: 'honest-gap' as const,
       fetchedLive: false,
-      datasetUrl: 'https://api.census.gov/data/',
+      datasetUrl: 'https://data.census.gov/',
       note: reason,
     },
     ranks: {
@@ -176,14 +220,7 @@ async function writeHonestGap(reason: string): Promise<void> {
   console.warn(`Wrote ${out} (provenance=honest-gap)`);
 }
 
-async function main(): Promise<void> {
-  await loadEnvLocal();
-  const key = process.env.CENSUS_API_KEY?.trim() || process.env.DATA_GOV_API_KEY?.trim();
-  if (!key) {
-    await writeHonestGap('CENSUS_API_KEY or DATA_GOV_API_KEY not set - Census state rankings remain an honest gap.');
-    return;
-  }
-
+async function buildFromApiKey(key: string): Promise<Record<string, unknown>> {
   const asOf = new Date().toISOString().slice(0, 10);
   const notes: string[] = [];
   const core = await fetchFirstAvailable(
@@ -198,7 +235,11 @@ async function main(): Promise<void> {
     key,
   );
 
-  let unemploymentRank = { rank: null as number | null, value: null as number | null, denominator: null as number | null };
+  let unemploymentRank = {
+    rank: null as number | null,
+    value: null as number | null,
+    denominator: null as number | null,
+  };
   try {
     const unemp = await fetchFirstAvailable('acs/acs5/profile', 'get=NAME,DP03_0009PE&for=state:*', key);
     unemploymentRank = rankForFlorida(eligibleStateRows(unemp, 'DP03_0009PE'), 'low');
@@ -224,7 +265,7 @@ async function main(): Promise<void> {
     key,
   );
 
-  const payload = {
+  return {
     meta: {
       source: CENSUS_SOURCE,
       asOf,
@@ -255,9 +296,101 @@ async function main(): Promise<void> {
     },
     ageBreakdown: ageBreakdown(age.headers, age.rows[0] ?? []),
   };
+}
 
-  const out = await writePayload(payload);
-  console.log(`Wrote ${out} (live=true, period=ACS 5-Year ${core.year})`);
+async function buildFromDataCensusGov(): Promise<Record<string, unknown>> {
+  const asOf = new Date().toISOString().slice(0, 10);
+  const notes: string[] = [];
+  const allStatesGeo = '010XX00US$0400000';
+  const flGeo = '040XX00US12';
+  const year = DATA_CENSUS_TABLE_YEAR;
+
+  const income = await fetchDataCensusTable(`ACSDT5Y${year}.B19013`, allStatesGeo);
+  const home = await fetchDataCensusTable(`ACSDT5Y${year}.B25077`, allStatesGeo);
+  const population = await fetchDataCensusTable(`ACSDT5Y${year}.B01003`, allStatesGeo);
+  const attainment = await fetchDataCensusTable(`ACSDT5Y${year}.B15003`, allStatesGeo);
+  const age = await fetchDataCensusTable(`ACSDT5Y${year}.B01001`, flGeo);
+
+  let unemploymentRank = {
+    rank: null as number | null,
+    value: null as number | null,
+    denominator: null as number | null,
+  };
+  try {
+    const unemp = await fetchDataCensusTable(`ACSDP5Y${year}.DP03`, allStatesGeo);
+    unemploymentRank = rankForFlorida(eligibleStateRows(unemp, 'DP03_0009PE'), 'low');
+  } catch (err) {
+    notes.push(`Unemployment rank skipped: ${err instanceof Error ? err.message : String(err)}`);
+  }
+
+  const attainmentRecords: RankRecord[] = attainment.rows
+    .map((row) => {
+      const obj = rowObject(attainment.headers, row);
+      const summary = attainmentFromB15003(obj);
+      const stateCode = stateCodeFromGeoId(obj.GEO_ID, obj.state);
+      return {
+        state: obj.NAME,
+        stateCode: stateCode ?? '',
+        value: summary?.bachelorsPlusPct ?? null,
+      };
+    })
+    .filter((row) => row.state && row.stateCode && !EXCLUDED_STATE_CODES.has(row.stateCode) && row.value != null);
+
+  return {
+    meta: {
+      source: {
+        ...CENSUS_SOURCE,
+        url: 'https://data.census.gov',
+        description: 'ACS 5-year state rankings and Florida age distribution via data.census.gov',
+      },
+      asOf,
+      count: 1,
+      stateCode: 'FL',
+      provenance: 'fetched-live' as const,
+      fetchedLive: true,
+      fetchedAt: new Date().toISOString(),
+      datasetUrl: income.url,
+      citation: `https://data.census.gov/table?q=ACSDT5Y${year}.B19013`,
+      period: `ACS 5-Year ${year}`,
+      note:
+        notes.length > 0
+          ? `${notes.join('; ')} Retrieved via data.census.gov (no API key).`
+          : "Ranks exclude District of Columbia and Puerto Rico. Rank 1 is highest for income, home value, population, and bachelor's+ share; rank 1 is lowest for unemployment. Retrieved via data.census.gov (no API key).",
+      rankExclusions: ['District of Columbia', 'Puerto Rico'],
+      auxiliaryUrls: {
+        home: home.url,
+        population: population.url,
+        attainment: attainment.url,
+        ageBreakdown: age.url,
+      },
+    },
+    ranks: {
+      medianHouseholdIncome: rankForFlorida(eligibleStateRows(income, 'B19013_001E'), 'high'),
+      medianHomeValue: rankForFlorida(eligibleStateRows(home, 'B25077_001E'), 'high'),
+      population: rankForFlorida(eligibleStateRows(population, 'B01003_001E'), 'high'),
+      bachelorsPlusPct: rankForFlorida(attainmentRecords, 'high'),
+      unemploymentRate: unemploymentRank,
+    },
+    ageBreakdown: ageBreakdown(age.headers, age.rows[0] ?? []),
+  };
+}
+
+async function main(): Promise<void> {
+  await loadEnvLocal();
+  const key = process.env.CENSUS_API_KEY?.trim() || process.env.DATA_GOV_API_KEY?.trim();
+
+  try {
+    const payload = key ? await buildFromApiKey(key) : await buildFromDataCensusGov();
+    const out = await writePayload(payload);
+    const period = (payload.meta as { period?: string }).period ?? 'ACS';
+    console.log(`Wrote ${out} (live=true, period=${period}, via=${key ? 'api.census.gov' : 'data.census.gov'})`);
+  } catch (err) {
+    console.error(err);
+    await writeHonestGap(
+      `Census state rankings fetch failed: ${err instanceof Error ? err.message : String(err)}`,
+    );
+    process.exitCode = 1;
+  }
 }
 
 main().catch(async (err: unknown) => {
@@ -266,6 +399,6 @@ main().catch(async (err: unknown) => {
     await writeHonestGap(`Census state rankings fetch failed: ${err instanceof Error ? err.message : String(err)}`);
   } catch (writeErr) {
     console.error(writeErr);
-    process.exit(1);
   }
+  process.exit(1);
 });

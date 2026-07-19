@@ -7,6 +7,7 @@ import {
   deltaVsMonthsAgo,
   findIndicator,
   formatDelta,
+  formatIndex,
   formatPercent,
   formatRank,
   incomeVsUsChipClass,
@@ -94,6 +95,12 @@ test('formatPercent uses max one decimal and strips trailing .0', () => {
   assert.equal(formatPercent(33), '33%');
   assert.equal(formatPercent(33.2), '33.2%');
   assert.match(formatPercent(33.25), /^33\.[23]%$/);
+});
+
+test('formatIndex uses max one decimal without % suffix', () => {
+  assert.equal(formatIndex(103.414), '103.4');
+  assert.equal(formatIndex(100), '100');
+  assert.equal(formatIndex(100.7), '100.7');
 });
 
 test('formatRank emits an integer string', () => {

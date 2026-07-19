@@ -2,17 +2,25 @@
   "meta": {
     "source": {
       "name": "U.S. Bureau of Economic Analysis",
-      "url": "https://apps.bea.gov/api",
+      "url": "https://fred.stlouisfed.org/series/FLRPPALL",
       "tier": "official",
-      "description": "Regional Price Parities (MARPP) — BEA Data API Regional dataset"
+      "description": "Regional Price Parities (all items) — BEA series via FRED St. Louis Fed CSV (*RPPALL)"
     },
-    "asOf": "2026-07-10",
-    "count": 0,
+    "asOf": "2026-07-19",
+    "count": 1,
     "stateCode": "FL",
-    "provenance": "honest-gap",
-    "fetchedLive": false,
-    "datasetUrl": "https://apps.bea.gov/api/data/?datasetname=Regional&TableName=MARPP",
-    "note": "BEA_API_KEY not set — cost-of-living shows honest gap until key is configured."
+    "provenance": "fetched-live",
+    "fetchedLive": true,
+    "fetchedAt": "2026-07-19T03:33:12.809Z",
+    "datasetUrl": "https://fred.stlouisfed.org/series/FLRPPALL",
+    "note": "BEA Regional Price Parities 2024 (all items) via FRED *RPPALL CSV for 50 states. Components/metros require BEA_API_KEY. Rank 1 = lowest cost among 50 states.",
+    "retrieval": "fred-csv"
   },
-  "state": null
+  "state": {
+    "allItemsIndex": 103.4,
+    "period": "2024",
+    "rankAmong50": 41,
+    "components": [],
+    "metros": []
+  }
 }
