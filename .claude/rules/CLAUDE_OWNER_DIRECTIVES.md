@@ -34,6 +34,10 @@ operating manual and core-rules.
    `PILOT_PROFILE_CHECKLIST.md`, the active plan file). See manual §12B. **If the response would
    otherwise end without this block, it is not finished — add it before sending.** (Violated 3× on
    2026-07-19; that is why this is now the mechanical format above, not a soft reminder.)
+   **TOKEN ECONOMY (owner 2026-07-19):** the block contains ONLY the single next action — do NOT
+   restate the full queue, prior phases, or already-approved items each turn. Keep total response
+   short: lead with the verdict/result in 1–3 lines, skip narration and re-verification of things
+   already green. Brevity is the default; expand only when a defect needs a full fix brief.
 5. **Merging requires YOUR explicit APPROVAL on the exact SHA — not CI-green, not elapsed time,
    not a PR description that merely says "STOP for review."** If Cursor merges without it, that is
    a violation to confront directly, diagnose, and close structurally the same session — not just
