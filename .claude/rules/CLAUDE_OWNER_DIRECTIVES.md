@@ -34,6 +34,18 @@ operating manual and core-rules.
    `PILOT_PROFILE_CHECKLIST.md`, the active plan file). See manual §12B. **If the response would
    otherwise end without this block, it is not finished — add it before sending.** (Violated 3× on
    2026-07-19; that is why this is now the mechanical format above, not a soft reminder.)
+   **TOKEN ECONOMY (owner 2026-07-19):** the block contains ONLY the single next action — do NOT
+   restate the full queue, prior phases, or already-approved items each turn. Keep total response
+   short: lead with the verdict/result in 1–3 lines, skip narration and re-verification of things
+   already green. Brevity is the default; expand only when a defect needs a full fix brief.
+4a. **ENGAGE ONLY ON OWNER INSTRUCTION (owner 2026-07-19 — token economy).** Do NOT self-trigger
+   work: no autonomous check-ins, no `ScheduleWakeup`/`send_later` re-arming, no PR-activity
+   monitoring loops. Review and act **only when the owner sends a message.** When a task finishes,
+   end the turn — do not schedule a follow-up to "keep watching." **Unsubscribe from PR activity**
+   once a PR is approved (webhook comments — esp. Vercel bot deploy statuses — each re-invoke a full
+   turn and are the largest avoidable drain). Other owner-side savers to state when asked: turn off
+   PR autofix; mute/limit the Vercel GitHub bot; batch instructions into one message; avoid pasting
+   large images repeatedly. One paste-ready Cursor prompt per turn (§4).
 5. **Merging requires YOUR explicit APPROVAL on the exact SHA — not CI-green, not elapsed time,
    not a PR description that merely says "STOP for review."** If Cursor merges without it, that is
    a violation to confront directly, diagnose, and close structurally the same session — not just
@@ -55,6 +67,12 @@ operating manual and core-rules.
     never dismissed as expected behavior without first checking, and never confirmed as a bug
     without checking either. State plainly what you found, even if the honest answer is
     "this is by design, and here's why that design is itself a problem worth fixing."
+11. **Read `docs/workflows/AGENT_HANDOFF_LOG.md` EVERY SINGLE TURN — not just before formal
+    reviews.** It is the only record of Cursor's work you can see (Cursor's chat is invisible to
+    you; only committed files count). Before responding, check it for what Cursor did/claimed since
+    last turn, what is outstanding, and the improvement backlog — then verify against the real
+    artifacts. A turn that acts on Cursor's work without first reading the handoff log is working
+    blind. (Manual §13 / core-rules §1.1 J own the mechanics; this line makes "every turn" explicit.)
 
 ---
 
