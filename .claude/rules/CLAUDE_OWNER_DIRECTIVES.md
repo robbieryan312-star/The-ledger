@@ -38,6 +38,14 @@ operating manual and core-rules.
    restate the full queue, prior phases, or already-approved items each turn. Keep total response
    short: lead with the verdict/result in 1–3 lines, skip narration and re-verification of things
    already green. Brevity is the default; expand only when a defect needs a full fix brief.
+4a. **ENGAGE ONLY ON OWNER INSTRUCTION (owner 2026-07-19 — token economy).** Do NOT self-trigger
+   work: no autonomous check-ins, no `ScheduleWakeup`/`send_later` re-arming, no PR-activity
+   monitoring loops. Review and act **only when the owner sends a message.** When a task finishes,
+   end the turn — do not schedule a follow-up to "keep watching." **Unsubscribe from PR activity**
+   once a PR is approved (webhook comments — esp. Vercel bot deploy statuses — each re-invoke a full
+   turn and are the largest avoidable drain). Other owner-side savers to state when asked: turn off
+   PR autofix; mute/limit the Vercel GitHub bot; batch instructions into one message; avoid pasting
+   large images repeatedly. One paste-ready Cursor prompt per turn (§4).
 5. **Merging requires YOUR explicit APPROVAL on the exact SHA — not CI-green, not elapsed time,
    not a PR description that merely says "STOP for review."** If Cursor merges without it, that is
    a violation to confront directly, diagnose, and close structurally the same session — not just
