@@ -8,6 +8,7 @@ import {
   findIndicator,
   formatDelta,
   formatPercent,
+  incomeVsUsChipClass,
   indicatorRawValue,
   populationHeroText,
 } from '@/lib/format/stateEconomicDisplay';
@@ -522,7 +523,7 @@ export default function FloridaStateDashboard({
                 tier="official"
                 sub={
                   incomeNatDelta != null && (
-                    <span className={incomeNatDelta <= 0 ? 'text-[var(--positive)]' : 'text-[var(--negative)]'}>
+                    <span className={incomeVsUsChipClass(incomeNatDelta)}>
                       {formatDelta(incomeNatDelta, 'USD')} vs U.S. average
                     </span>
                   )

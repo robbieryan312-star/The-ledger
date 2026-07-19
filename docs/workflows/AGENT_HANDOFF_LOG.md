@@ -7,11 +7,11 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-18):**
-- Branch: `main` · HEAD `4216712` (Merge #27) · handoff docs branch `cursor/consolidated-brief-handoff-70a6`
-- PRs: **#26 MERGED** · **#25 MERGED** · **#27 MERGED** · **#24 CLOSED** (joins via #25) · **#23 already MERGED** (superseded by #25)
-- Tree: clean after gate · `npm run build` exit 0 · render-integrity 4/4 · contact-sheet regenerated
-- **STOP for Claude re-review** — owner visual sign-off next; FL propagation stays **BLOCKED**
+**Current state (2026-07-19):**
+- Branch: `cursor/fl-audit-fixes-70a6` → merge to `main` only after **guards.yml GREEN**
+- Prior main tip: `7fda2b9` · CONSOLIDATED BRIEF v2 landed
+- Tree: audit FIX-1/2/3 · local `npm run build` exit 0 · render-integrity 4/4
+- **READY FOR OWNER VISUAL SIGN-OFF of /states/FL** — Phase P propagation **GATED** (do not start until sign-off logged here)
 
 ## Improvement backlog
 
@@ -20,58 +20,51 @@ core-rules, core-rules wins. Newest handoff on top.
 | 2026-07-18 | `npm audit`: 7 vulns remain after safe `npm audit fix` — need upstream Next/react-simple-maps (see `docs/workflows/NPM_AUDIT_2026-07-18.md`) | open |
 | 2026-07-11 | Add an explicit guard for national news refresh semantics so a successful empty response cannot be confused with fetch failure or stale-window retention. | open |
 
-## Latest session — CONSOLIDATED BRIEF v2 Phases -1→D (COMPLETE — STOP for Claude)
+## Latest session — Claude audit FIX-1/2/3 (COMPLETE — STOP for owner)
 
 ### Objective
-Execute CONSOLIDATED BRIEF v2 (Phases -1, 0, A, B, C, D) including the Claude-access fix for the 2026-07-12 infrastructure audit; land on `main`; STOP for Claude re-review.
+Clear main RED (docs-integrity gitignored citation), fix inverted income chip, upload render-integrity CI artifact; full gate; STOP for owner visual sign-off. Phase P gated.
 
 ### Verdict / outcome
-**COMPLETE / PASS** — all brief phases executed; PR merge order finished; full gate on `main` green with true exit codes. **STOP for Claude.**
+**PASS** — FIX-1/2/3 implemented; local gate green. **Merge only after CI guards GREEN** (process rule below). Then: **READY FOR OWNER VISUAL SIGN-OFF of /states/FL**.
 
-### Phase checklist
+### Process rule (binding)
+**A merge with pending CI is a violation** — even for docs-only PRs. Wait until `guards` concludes **pass** on the PR tip before merge. Never merge on pending/unstable checks.
 
-| Phase | Verdict | Evidence |
-|-------|---------|----------|
-| **-1** Log review to disk | PASS | `docs/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md` + handoff (`104a442`) |
-| **0** Factual falsehoods | PASS | `b2145db` — exact `findIndicator`, true-sign deltas, US ACS `nationalValue` |
-| **A** Credibility | PASS | `2fe20a4` + `dd7ce50` — provenance enum, single read-path, BEA LineCodes by NAME, refresh-data |
-| **B** Ops & CI | PASS | postbuild render-integrity; refresh≈guards.yml; prebuild **19**; npm audit logged |
-| **C** UI polish | PASS | frame notes, chart axes, tokens, a11y, REQUIRED_SECTIONS + open `<details>` |
-| **D** PR reconciliation | PASS | #26→#25→#27 merged; #24 closed; #23 already merged; main gate green |
+### Fixes
 
-### Commits (selected)
-- `104a442` — FL infrastructure audit on disk (Claude access fix)
-- `2fe20a4` — Phase A provenance + guard hardening
-- `b2145db` — Phase 0 factual falsehoods
-- `dd7ce50` — Phase A remaining + B + C
-- `89a7dd9` / `57149db` / `9b5810d` — render-integrity + #27 portrait rebase
-- `2b3781f` — bioguideId FEC/trades joins (absorbed from #24)
-- Merges on `main`: `402818b` (#26) · `a5f76ad` (#25) · `4216712` (#27)
+| ID | What | Evidence |
+|----|------|----------|
+| FIX-1 | Rewrite contact-sheet citation (no gitignored repo path); fixture + guard ban gitignored backtick paths | `docsIntegrityGuard.fixture.ts` + `test:docs-integrity` 6/6 |
+| FIX-2 | Income below U.S. → `var(--negative)`; above → `var(--positive)` via `incomeVsUsChipClass` | `test:state-economic-display` 5/5 |
+| FIX-3 | `guards.yml` uploads the render-integrity report dir (contact-sheet JSON + PNGs) as artifact **`render-integrity-contact-sheet`** (retention 14d) | workflow step after render-integrity |
 
-### Commands run (this session — gate)
+### Commands run (this session)
+- `npm run test:docs-integrity` → 6/6 pass
+- `npm run test:state-economic-display` → 5/5 pass
 - `npm run test:typecheck` → exit 0
-- `npm run test:no-unverified-official-data` → 7/7
-- `npm run test:state-economic-display` → 4/4
-- `npm run test:identity-integrity` → 4/4
-- `npm run test:docs-consistency` → 8/8
-- `npm run test:topic-positions-bundle` → 8/8
-- `npm run build` (on `main` @ `4216712`) → exit 0; postbuild render-integrity **4/4**; client-chunks pass
-- FL 30-URL portrait audit → `checked: 30`, `failures: []` (Soto via GovTrack override; others Bioguide)
+- `npm run test:docs-consistency` → 8/8 pass
+- `npm run build` → exit 0; postbuild render-integrity **4/4**
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Removed gitignored path citations; this session |
+| `lib/data/__fixtures__/docsIntegrityGuard.fixture.ts` | created | Known-bad gitignored path citation |
+| `scripts/__tests__/docsIntegrityGuard.test.ts` | modified | Gitignore citation guard |
+| `lib/format/stateEconomicDisplay.ts` | modified | `incomeVsUsChipClass` |
+| `components/states/FloridaStateDashboard.tsx` | modified | Income chip uses true sentiment |
+| `scripts/__tests__/stateEconomicDisplay.test.ts` | modified | FL < US ⇒ negative class + "-$…" |
+| `.github/workflows/guards.yml` | modified | upload-artifact `render-integrity-contact-sheet` |
 
 ### Acceptance evidence
-- Contact sheet: `data/reports/render-integrity/contact-sheet.json` (`generatedAt: 2026-07-18T23:50:11.901Z`) + `_states_FL_{mobile,desktop}.png`
-- Build log: `/workspace/build-main.log` (exit 0)
-- Audit artifact: `docs/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md`
-- npm audit: `docs/workflows/NPM_AUDIT_2026-07-18.md` (7 remaining need `--force`)
-
-### Architecture note (Q3 single read-path)
-County ingest (`ingest:fl-counties`) fetches state ACS B01003/B19013/B25077 + US nationals into `stateSummary.acs` and syncs `florida-demographics.json`. `build-data-slices` prefers `stateSummary.acs` for Population / Median household income / Median home value. Components read only the economic slice.
+- Contact-sheet regenerated per gate (gitignored — review via CI artifact **`render-integrity-contact-sheet`**)
+- Local build exit 0; CI guards must show **pass** before merge
 
 ### Open / next
-- **STOP for Claude re-review** of CONSOLIDATED BRIEF v2 on `main` @ `4216712`
-- Owner visual sign-off on `/states/FL`
-- Propagation to other states remains **BLOCKED**
-- BEA cost-of-living remains honest-gap until `BEA_API_KEY` is set
+- **READY FOR OWNER VISUAL SIGN-OFF of /states/FL**
+- Phase P (propagation) starts **ONLY** after owner sign-off is recorded in this log
+- Propagation remains **BLOCKED** until then
 
 ### Decisions still binding (RESOLVED — do not re-ask)
 
@@ -85,7 +78,13 @@ County ingest (`ingest:fl-counties`) fetches state ACS B01003/B19013/B25077 + US
 
 ---
 
-## Session log 2 — Why Claude could not see the FL audit + fix (COMPLETE)
+## Session log 2 — CONSOLIDATED BRIEF v2 Phases -1→D (COMPLETE)
+
+Landed on `main` via #26→#25→#27; gate @ `4216712` / tip `7fda2b9`. Claude re-review found FIX-1/2/3 (this Latest session). Audit on disk: `docs/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md`.
+
+---
+
+## Session log 3 — Why Claude could not see the FL audit + fix (COMPLETE)
 
 ### Objective
 Investigate and fix why Claude Code could not access Cursor's infrastructure
@@ -359,7 +358,7 @@ Complete remaining Step 2 gaps from locked handoff: map sidebar slim, officials 
 
 - `/states/FL`: `#section-01`–`#section-06` present; officials preview 4 + expand
 - Map FL sidebar: `FloridaStateEconomicCompact` + 3 officials + `+N more · full Florida profile →`
-- Render: `data/reports/render-integrity/_states_FL_mobile.png`, `_desktop.png`
+- Render contact-sheet regenerated per gate (gitignored PNGs — not cited as repo paths)
 - `CI=1` render-integrity: 3 consecutive passes
 
 ### Open / next

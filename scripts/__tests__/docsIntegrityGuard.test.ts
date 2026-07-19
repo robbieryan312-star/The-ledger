@@ -1,11 +1,13 @@
 /**
  * Build-gated guard: npm scripts and repo paths cited in docs must exist.
+ * Gitignored paths cited in backticks are also banned (fresh-clone failures).
  */
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
+import { GITIGNORED_PATH_CITATION_KNOWN_BAD } from '../../lib/data/__fixtures__/docsIntegrityGuard.fixture';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const DOC_ROOTS = [
@@ -25,6 +27,35 @@ const ALLOW_MISSING_PATHS = new Set([
   'data/florida/fec/florida-candidates.json',
   'lib/data/generated/newsNational.json',
 ]);
+
+/** Load simple .gitignore patterns (exact paths + single-segment globs). */
+function loadGitignorePatterns(): string[] {
+  const giPath = path.join(projectRoot, '.gitignore');
+  if (!existsSync(giPath)) return [];
+  return readFileSync(giPath, 'utf8')
+    .split('\n')
+    .map((l) => l.trim())
+    .filter((l) => l && !l.startsWith('#') && !l.startsWith('!'))
+    .map((l) => l.replace(/^\//, ''));
+}
+
+/** True when a docs-cited path is covered by a simple .gitignore pattern. */
+export function pathMatchesGitignore(cited: string, patterns: string[]): boolean {
+  const normalized = cited.replace(/^\.\//, '');
+  for (const pattern of patterns) {
+    if (!pattern.includes('*')) {
+      if (normalized === pattern) return true;
+      continue;
+    }
+    // Single-star globs only, e.g. data/reports/render-integrity/*.png
+    if ((pattern.match(/\*/g) ?? []).length !== 1) continue;
+    const [prefix, suffix] = pattern.split('*');
+    if (!normalized.startsWith(prefix) || !normalized.endsWith(suffix)) continue;
+    const middle = normalized.slice(prefix.length, normalized.length - suffix.length);
+    if (middle.length > 0 && !middle.includes('/')) return true;
+  }
+  return false;
+}
 
 function walkMd(dir: string, acc: string[] = []): string[] {
   if (SKIP_DOC.has(dir)) return acc;
@@ -92,6 +123,32 @@ test('every backtick repo path cited in docs exists on disk', () => {
     missing.length,
     0,
     `docs cite missing paths (first 15):\n${missing.slice(0, 15).map((p) => `  ${p}`).join('\n')}`,
+  );
+});
+
+test('fixture: gitignored path citation is a documented known-bad case', () => {
+  assert.equal(GITIGNORED_PATH_CITATION_KNOWN_BAD.defect, 'gitignored-path-cited-in-docs');
+  assert.equal(
+    GITIGNORED_PATH_CITATION_KNOWN_BAD.path,
+    'data/reports/render-integrity/contact-sheet.json',
+  );
+  assert.match(GITIGNORED_PATH_CITATION_KNOWN_BAD.description, /fresh clone|gitignored/i);
+});
+
+test('docs must not cite gitignored paths in backticks (fresh-clone safe)', () => {
+  const patterns = loadGitignorePatterns();
+  assert.ok(patterns.length > 0, '.gitignore must be readable');
+  // Freeze the known-bad contact-sheet path as covered by gitignore
+  assert.ok(
+    pathMatchesGitignore(GITIGNORED_PATH_CITATION_KNOWN_BAD.path, patterns),
+    'known-bad contact-sheet path must match .gitignore',
+  );
+  const { paths } = collectDocCitations();
+  const violations = [...new Set(paths)].filter((p) => pathMatchesGitignore(p, patterns)).sort();
+  assert.equal(
+    violations.length,
+    0,
+    `docs cite gitignored paths (fe1be0a9 class):\n${violations.map((p) => `  ${p}`).join('\n')}`,
   );
 });
 

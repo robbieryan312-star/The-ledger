@@ -65,5 +65,14 @@ jobs:
           RENDER_INTEGRITY_EXTERNAL_SERVER=1 npm run test:render-integrity
           kill $SERVER_PID
 
+      - name: Upload render-integrity contact-sheet
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: render-integrity-contact-sheet
+          path: data/reports/render-integrity/
+          retention-days: 14
+          if-no-files-found: warn
+
       - name: Client chunk budget
         run: npm run test:client-chunks
