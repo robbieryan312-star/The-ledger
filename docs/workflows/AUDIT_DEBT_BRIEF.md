@@ -11,7 +11,8 @@ This file was renamed for accuracy.
 **FL PR #25 infrastructure audit (full report for Claude):**  
 [`docs/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md`](./FL_INFRASTRUCTURE_AUDIT_2026-07-12.md)
 
-**CONSOLIDATED BRIEF v2 (2026-07-18):** COMPLETE on `main` @ `4216712` — see
-[`AGENT_HANDOFF_LOG.md`](./AGENT_HANDOFF_LOG.md) Latest session. **STOP for Claude re-review.**
+**Claude audit FIX-1/2/3 (2026-07-19):** on `main` @ `27fa4dc` — see
+[`AGENT_HANDOFF_LOG.md`](./AGENT_HANDOFF_LOG.md). **READY FOR OWNER VISUAL SIGN-OFF of /states/FL.**
+Phase P gated until sign-off is logged there.
 
 Do not log new sessions here.

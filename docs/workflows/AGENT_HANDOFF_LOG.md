@@ -8,9 +8,9 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-19):**
-- Branch: `cursor/fl-audit-fixes-70a6` → merge to `main` only after **guards.yml GREEN**
-- Prior main tip: `7fda2b9` · CONSOLIDATED BRIEF v2 landed
-- Tree: audit FIX-1/2/3 · local `npm run build` exit 0 · render-integrity 4/4
+- Branch: `main` · HEAD `27fa4dc` · PR [#33](https://github.com/robbieryan312-star/The-ledger/pull/33) **MERGED**
+- Tree: clean · local full gate exit 0 · **`guards.yml` GREEN on main** (run [`29666598584`](https://github.com/robbieryan312-star/The-ledger/actions/runs/29666598584))
+- CI artifact: **`render-integrity-contact-sheet`** (uploaded on PR + main push)
 - **READY FOR OWNER VISUAL SIGN-OFF of /states/FL** — Phase P propagation **GATED** (do not start until sign-off logged here)
 
 ## Improvement backlog
@@ -26,30 +26,36 @@ core-rules, core-rules wins. Newest handoff on top.
 Clear main RED (docs-integrity gitignored citation), fix inverted income chip, upload render-integrity CI artifact; full gate; STOP for owner visual sign-off. Phase P gated.
 
 ### Verdict / outcome
-**PASS** — FIX-1/2/3 implemented; local gate green. **Merge only after CI guards GREEN** (process rule below). Then: **READY FOR OWNER VISUAL SIGN-OFF of /states/FL**.
+**COMPLETE** — FIX-1/2/3 on `main` @ `27fa4dc`. Local + CI gates green. **READY FOR OWNER VISUAL SIGN-OFF of /states/FL**. Phase P remains **BLOCKED**.
 
 ### Process rule (binding)
-**A merge with pending CI is a violation** — even for docs-only PRs. Wait until `guards` concludes **pass** on the PR tip before merge. Never merge on pending/unstable checks.
+**A merge with pending CI is a violation** — even for docs-only PRs. Wait until `guards` concludes **pass** on the PR tip before merge. Never merge on pending/unstable checks. Confirmed: PR #33 merged only after guards GREEN; main push guards also GREEN.
+
+### Commits
+- `b418d12` — fix(fl): Claude audit FIX-1/2/3 — docs-integrity, income chip, CI artifact
+- `27fa4dc` — Merge pull request #33 from …/cursor/fl-audit-fixes-70a6
 
 ### Fixes
 
 | ID | What | Evidence |
 |----|------|----------|
-| FIX-1 | Rewrite contact-sheet citation (no gitignored repo path); fixture + guard ban gitignored backtick paths | `docsIntegrityGuard.fixture.ts` + `test:docs-integrity` 6/6 |
+| FIX-1 | Rewrite contact-sheet citation (no gitignored repo path); fixture + guard ban gitignored backtick paths | `docsIntegrityGuard.fixture.ts` + `test:docs-integrity` 6/6; main guards GREEN (was RED on #32) |
 | FIX-2 | Income below U.S. → `var(--negative)`; above → `var(--positive)` via `incomeVsUsChipClass` | `test:state-economic-display` 5/5 |
-| FIX-3 | `guards.yml` uploads the render-integrity report dir (contact-sheet JSON + PNGs) as artifact **`render-integrity-contact-sheet`** (retention 14d) | workflow step after render-integrity |
+| FIX-3 | `guards.yml` uploads render-integrity report dir as artifact **`render-integrity-contact-sheet`** (retention 14d, `if: always()`) | CI step ✓ on PR run + main run `29666598584` |
 
 ### Commands run (this session)
-- `npm run test:docs-integrity` → 6/6 pass
-- `npm run test:state-economic-display` → 5/5 pass
+- `npm run test:docs-integrity` → exit 0, 6/6
+- `npm run test:state-economic-display` → exit 0, 5/5
 - `npm run test:typecheck` → exit 0
-- `npm run test:docs-consistency` → 8/8 pass
+- `npm run test:docs-consistency` → exit 0, 8/8
 - `npm run build` → exit 0; postbuild render-integrity **4/4**
+- `gh run watch` PR guards `29666474950` → exit 0 (GREEN) before merge
+- `gh run watch` main guards `29666598584` → exit 0 (GREEN) after merge
 
 ### Files touched
 | Path | Action | What changed |
 |------|--------|--------------|
-| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Removed gitignored path citations; this session |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Removed gitignored path citations; gate evidence; STOP |
 | `lib/data/__fixtures__/docsIntegrityGuard.fixture.ts` | created | Known-bad gitignored path citation |
 | `scripts/__tests__/docsIntegrityGuard.test.ts` | modified | Gitignore citation guard |
 | `lib/format/stateEconomicDisplay.ts` | modified | `incomeVsUsChipClass` |
@@ -58,13 +64,15 @@ Clear main RED (docs-integrity gitignored citation), fix inverted income chip, u
 | `.github/workflows/guards.yml` | modified | upload-artifact `render-integrity-contact-sheet` |
 
 ### Acceptance evidence
-- Contact-sheet regenerated per gate (gitignored — review via CI artifact **`render-integrity-contact-sheet`**)
-- Local build exit 0; CI guards must show **pass** before merge
+- Contact-sheet metadata (gitignored — cite fields only): generatedAt `2026-07-19T00:14:17.380Z` — regenerate per gate; review via CI artifact **`render-integrity-contact-sheet`**
+- `guards.yml` on `main` @ `27fa4dc`: **GREEN** (run 29666598584) — includes Upload render-integrity contact-sheet ✓
+- Prior main RED on #32 (docs-integrity) cleared by FIX-1
 
 ### Open / next
 - **READY FOR OWNER VISUAL SIGN-OFF of /states/FL**
 - Phase P (propagation) starts **ONLY** after owner sign-off is recorded in this log
 - Propagation remains **BLOCKED** until then
+
 
 ### Decisions still binding (RESOLVED — do not re-ask)
 
