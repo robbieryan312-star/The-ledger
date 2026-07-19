@@ -989,6 +989,15 @@ async function main(): Promise<void> {
   }
 
   const memberFilter = parseMemberFilter();
+  // core-rules §5: agent runs must scope; a full-corpus run must be opted in explicitly.
+  if (!memberFilter && !process.argv.includes('--full-corpus')) {
+    console.error(
+      '[sync-topic-positions] refusing to run unscoped. Pass "--member <id>" / ' +
+        '"--members <id,...>" to scope an agent run, or "--full-corpus" for a scheduled/owner ' +
+        'full run (core-rules §5).',
+    );
+    process.exit(1);
+  }
 
   const legislatorsRaw = JSON.parse(await readFile(LEGISLATORS_FILE, 'utf8')) as {
     legislators: LegislatorRow[];

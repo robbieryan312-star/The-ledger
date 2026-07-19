@@ -1,14 +1,49 @@
 import type { MetadataRoute } from 'next';
+import { allPoliticians } from '@/lib/data/allPoliticians';
+import { SUPPORTED_STATE_CODES } from '@/lib/data/supportedStates';
 
-const BASE_URL = 'https://the-ledger-gamma.vercel.app';
+/**
+ * Canonical production domain (approved Vercel project). Update if the owner
+ * consolidates onto a custom domain.
+ */
+const BASE_URL = 'https://the-ledger-s4dn.vercel.app';
+
+/** Public, crawler-indexable static routes. `/dashboard` is user-specific and excluded. */
+export const STATIC_ROUTES = [
+  '/',
+  '/politicians',
+  '/legislation',
+  '/finance',
+  '/congress',
+  '/compare',
+  '/elections',
+  '/lobbying',
+  '/sources',
+] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: `${BASE_URL}/states/FL`,
-      lastModified: new Date('2026-07-09'),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-  ];
+  const lastModified = new Date();
+
+  const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
+    url: `${BASE_URL}${route}`,
+    lastModified,
+    changeFrequency: 'weekly',
+    priority: route === '/' ? 1 : 0.7,
+  }));
+
+  const stateEntries: MetadataRoute.Sitemap = SUPPORTED_STATE_CODES.map((code) => ({
+    url: `${BASE_URL}/states/${code}`,
+    lastModified,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }));
+
+  const politicianEntries: MetadataRoute.Sitemap = allPoliticians.map((p) => ({
+    url: `${BASE_URL}/politicians/${p.id}`,
+    lastModified,
+    changeFrequency: 'weekly',
+    priority: 0.6,
+  }));
+
+  return [...staticEntries, ...stateEntries, ...politicianEntries];
 }

@@ -26,7 +26,7 @@ export default function OfficialCard({ official, compact = false }: { official: 
         </div>
         <div className="flex-1 min-w-0">
           <Link
-            href={`/officials/${official.id}`}
+            href={`/politicians/${official.id}`}
             onClick={(e) => e.stopPropagation()}
             className="text-white text-sm font-semibold truncate block hover:text-[#c8a951] transition-colors"
           >
@@ -86,7 +86,7 @@ export default function OfficialCard({ official, compact = false }: { official: 
           )}
 
           <Link
-            href={`/officials/${official.id}`}
+            href={`/politicians/${official.id}`}
             className="flex items-center justify-center gap-1.5 w-full bg-[#1e3a5f] hover:bg-[#2d5a8e] text-white text-xs py-2 rounded-lg transition-colors font-medium"
           >
             <User className="h-3.5 w-3.5" /> Full Profile & Elections

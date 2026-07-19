@@ -2,7 +2,7 @@
  * OpenStates Florida legislators.
  * Output: data/florida/openstates/florida-legislators.json
  */
-import { fetchJson, loadEnvLocal, sleep, writeFloridaSnapshot } from '../../lib/ingest-utils';
+import { fetchJson, loadEnvLocal, sleep, writeFloridaSnapshotPreservingLive } from '../../lib/ingest-utils';
 
 const OPENSTATES_SOURCE = {
   name: 'Open States',
@@ -19,7 +19,7 @@ async function main(): Promise<void> {
   const records: Array<Record<string, unknown>> = [];
 
   if (!key) {
-    const out = await writeFloridaSnapshot('openstates', 'florida-legislators.json', {
+    const { action, outFile } = await writeFloridaSnapshotPreservingLive('openstates', 'florida-legislators.json', {
       meta: {
         source: OPENSTATES_SOURCE,
         asOf,
@@ -31,7 +31,11 @@ async function main(): Promise<void> {
       },
       records: [],
     });
-    console.warn(`Wrote empty ${out} — OPENSTATES_API_KEY missing`);
+    console.warn(
+      action === 'preserved-prior'
+        ? `Preserved prior fetched-live ${outFile} — OPENSTATES_API_KEY missing`
+        : `Wrote empty ${outFile} — OPENSTATES_API_KEY missing`,
+    );
     return;
   }
 
@@ -65,7 +69,7 @@ async function main(): Promise<void> {
     errors.push(err instanceof Error ? err.message : String(err));
   }
 
-  const out = await writeFloridaSnapshot('openstates', 'florida-legislators.json', {
+  const { action, outFile } = await writeFloridaSnapshotPreservingLive('openstates', 'florida-legislators.json', {
     meta: {
       source: OPENSTATES_SOURCE,
       asOf,
@@ -79,7 +83,12 @@ async function main(): Promise<void> {
     records,
   });
 
-  console.log(`Wrote ${out} (${records.length} records)`);
+  if (action === 'preserved-prior') {
+    console.warn(`Preserved prior fetched-live ${outFile} — refused to overwrite with ${records.length} records after errors`);
+    process.exitCode = 1;
+  } else {
+    console.log(`Wrote ${outFile} (${records.length} records)`);
+  }
 }
 
 main().catch((err: unknown) => {

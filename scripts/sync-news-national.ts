@@ -11,6 +11,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Source } from '../lib/types';
 import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
+import { memberInScope, requireSyncScope } from './lib/sync-scope';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
@@ -171,6 +172,7 @@ async function fetchGdeltMemberNews(
 }
 
 async function main(): Promise<void> {
+  const memberFilter = requireSyncScope(process.argv, 'sync-news-national');
   config({ path: path.join(projectRoot, '.env.local') });
 
   const asOf = new Date().toISOString().slice(0, 10);
@@ -180,8 +182,14 @@ async function main(): Promise<void> {
     legislators: LegislatorRow[];
   };
   const members = legislatorsRaw.legislators.filter(
-    (l) => l.chamber === 'senate' || l.chamber === 'house',
+    (l) =>
+      (l.chamber === 'senate' || l.chamber === 'house') &&
+      memberInScope(l.bioguideId, memberFilter),
   );
+  if (memberFilter && members.length === 0) {
+    console.error(`No current legislators match --members filter: ${[...memberFilter].join(', ')}`);
+    process.exit(1);
+  }
 
   console.log(`Syncing news for ${members.length} federal Congress members (${TIMESPAN}) — GDELT only…`);
 

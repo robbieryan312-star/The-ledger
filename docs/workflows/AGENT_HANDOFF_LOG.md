@@ -12,11 +12,12 @@ core-rules, core-rules wins. Newest handoff on top.
 else looks perfect"). **Phase P UNLOCKED**, sequenced AFTER Wave 0 merge + Wave 1 data-loss prevention.
 Visual changes to the FL page now require new owner direction.
 
-**Current state (2026-07-19T10:20Z):**
-- **S2 (PR #41) and SOURCE REGISTRY (PR #42) MERGED to `main`** this session (both Claude APPROVED, CI green). `beta` mirrored to `main`.
+**Current state (2026-07-19T11:00Z):**
+- **W1 + S2 (PR #41) + SOURCE REGISTRY (PR #42) MERGED to `main`** this session (Claude APPROVED, CI green). `beta` mirrored to `main`. HEAD `main` = `34c935c`.
+- **W3 + Wave 1 on branch `cursor/w3-defects-wave1-dataloss-70a6`** (PR to open) — officials 404 defect fix, full sitemap, and preserve-on-failure + sync scoping. Full `npm run build` green (prebuild 20 guards + next build). **STOP for Claude review.**
+- **W4 (file-inventory audit)** pending on its own branch (findings only).
 - **PR #39 MERGED to `main`** (`93e36fa`); `beta` branch tracks main.
 - **Wave 0d BLOCKED (owner Vercel wiring):** approved URL `the-ledger-s4dn.vercel.app` does NOT track `main` — owner must point its Production branch at `main`.
-- **In flight this session (W1–W4 + Wave 1 combined brief):** W1 operating-manual wiring, W3 officials/sitemap defect fixes, Wave 1 preserve-on-failure, W4 file-inventory audit — see latest session entry.
 - Owner-provided API keys in gitignored `.env.local` this session only; owner transferring to Runtime Secrets + GitHub secrets (`scripts/setup-github-secrets.sh`). BEA pending owner CAPTCHA.
 - **P0 (owner):** Cursor Cloud injected rules still reference deleted `agent-ops.mdc` + `AUDIT_DEBT_BRIEF.md` — re-sync dashboard project rules with on-disk core-rules §7
 - **Approved:** https://the-ledger-s4dn.vercel.app
@@ -35,6 +36,71 @@ Visual changes to the FL page now require new owner direction.
 
 
 
+
+## Latest session — W1 wiring + W3 defects + Wave 1 data-loss (COMPLETE — W3/Wave1 STOP for Claude)
+
+### Objective
+Combined brief: W1 wire Claude operating manual into session start; W2 merge the two APPROVED
+branches (registry + S2) to main + beta; W3 fix the two confirmed defects (officials 404, sitemap
+stub); Wave 1 preserve-on-failure ingests + national-sync scoping; W4 file-inventory audit.
+
+### Verdict / outcome
+- **W1 (main, `34c935c`):** `docs/CLAUDE_CODE_OPERATING_MANUAL.md` cherry-picked to main and wired
+  into `CLAUDE.md` + `docs/AGENT_INDEX.md` session-start order; docs-integrity subtest freezes it.
+- **W2 (main + beta):** merged PR #42 (registry, `20dc55d`) and PR #41 (S2, `c320269`); `beta` ff'd.
+- **W3 + Wave 1 (branch `cursor/w3-defects-wave1-dataloss-70a6`):** COMPLETE, full build green,
+  **NOT merged — STOP for Claude review.**
+- **W4:** pending on its own branch (findings only).
+
+### W3 — confirmed defects
+- **W3a:** `components/counties/OfficialCard.tsx` linked (2×) to `/officials/[id]`, a notFound()-only
+  route (guaranteed 404). Repointed both links to `/politicians/[id]` (officials ARE politicians in
+  our roster) and **deleted `app/officials/[id]/page.tsx`**. New build-gated `test:route-integrity`
+  guard asserts no internal link targets a notFound()-only route; frozen fixture for the officials case.
+  (Noted for W4: `app/lobbying/[id]/page.tsx` is also a notFound()-only stub but nothing links to it.)
+- **W3b:** rebuilt `app/sitemap.ts` — was a single `/states/FL` stub; now enumerates 9 static routes
+  + every migrated state page (`SUPPORTED_STATE_CODES`) + all 603 politician profiles = **613 entries**.
+  `test:route-integrity` asserts count == static + states + roster and fails on stub shrink.
+
+### Wave 1 — data-loss prevention (DATA-02..05, SYNC-01)
+- Added `writeSnapshotPreservingLive()` / `snapshotIsLive()` to `scripts/lib/ingest-utils.ts`:
+  refuses to overwrite a prior fetched-live snapshot with a non-live (honest-gap/empty) one; writes
+  an honest gap only when there is no prior live snapshot to protect. Exits non-zero on preserve.
+- Wired into rankings, BEA, counties, news, openstates, sam, govinfo FL ingests.
+- `scripts/lib/sync-scope.ts` (`requireSyncScope`): `sync-fec-national`, `sync-news-national`,
+  `sync-topic-positions` now refuse to run unscoped — require `--members <ids>` or `--full-corpus`
+  (core-rules §5). `refresh-data.yml` passes `--full-corpus` for the scheduled FEC run.
+- Frozen guard `floridaIngestPreserve.test.ts` (folded into `test:source-integrity`): helper
+  behavior + static assertions that every ingest is wired and every sync enforces scoping.
+
+### Gates (this session)
+| Gate | Result |
+|---|---|
+| `npm run prebuild` (now **20** commands — added `test:route-integrity`) | exit 0, 0 failures |
+| `npm run build` (next build + client-chunks) | exit 0; `/sitemap.xml` route present; no `/officials/[id]` |
+| sitemap entry count | 613 (9 static + FL + 603 profiles) |
+
+### Files touched (W3 + Wave 1 branch)
+| Path | Action | What changed |
+|------|--------|--------------|
+| `app/officials/[id]/page.tsx` | deleted | removed dead notFound()-only route |
+| `components/counties/OfficialCard.tsx` | modified | links → `/politicians/[id]` |
+| `app/sitemap.ts` | rewritten | full route/profile/state enumeration |
+| `app/states/[code]/page.tsx` | modified | import shared `SUPPORTED_STATES` |
+| `lib/data/supportedStates.ts` | created | single source of migrated state codes |
+| `scripts/lib/ingest-utils.ts` | modified | preserve-on-failure helpers |
+| `scripts/lib/sync-scope.ts` | created | `requireSyncScope` scoping helper |
+| `scripts/ingest/florida/ingest-*.ts` (7) | modified | route non-live writes through preserve helper |
+| `scripts/sync-{fec,news}-national.ts`, `sync-topic-positions.ts` | modified | require scoping |
+| `.github/workflows/refresh-data.yml` | modified | `sync:fec-national -- --full-corpus` |
+| `scripts/__tests__/deadRouteLinkGuard.test.ts`, `sitemapGuard.test.ts`, `floridaIngestPreserve.test.ts` | created | guards |
+| `lib/data/__fixtures__/{deadRouteLinkGuard,ingestPreserve}.fixture.ts` | created | frozen evidence |
+| `lib/data/__fixtures__/docsConsistencyGuard.fixture.ts`, `docs/AGENT_INDEX.md` | modified | prebuild count 19→20 |
+| `package.json` | modified | `test:route-integrity` + preserve guard in source-integrity group |
+
+### Open / next
+- STOP for Claude review of PR (W3 + Wave 1)
+- W4 file-inventory audit on its own branch (findings only)
 
 ## Latest session — SOURCE REGISTRY brief (source constitution R1–R5) (MERGED to main — PR #42)
 

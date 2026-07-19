@@ -14,7 +14,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { B15003_VARS, attainmentFromB15003 } from '../../lib/census-attainment';
 import { fetchBlsSeries, latestPoint, type BLSDataPoint } from '../../lib/bls-api';
-import { loadEnvLocal, projectRoot } from '../../lib/ingest-utils';
+import { loadEnvLocal, projectRoot, writeSnapshotPreservingLive } from '../../lib/ingest-utils';
 
 const CENSUS_SOURCE = {
   name: 'U.S. Census Bureau ACS',
@@ -173,6 +173,7 @@ async function writeDemographicsLockstep(
   datasetUrl: string,
 ): Promise<void> {
   const demoOut = path.join(projectRoot, 'data', 'florida', 'census', 'florida-demographics.json');
+  await mkdir(path.dirname(demoOut), { recursive: true });
   await writeFile(
     demoOut,
     JSON.stringify(
@@ -558,10 +559,15 @@ async function main(): Promise<void> {
     records,
   };
 
-  const dir = path.join(projectRoot, 'data', 'florida', 'census');
-  await mkdir(dir, { recursive: true });
-  const out = path.join(dir, 'florida-counties-sample.json');
-  await writeFile(out, JSON.stringify(payload, null, 2) + '\n', 'utf8');
+  const out = path.join(projectRoot, 'data', 'florida', 'census', 'florida-counties-sample.json');
+  // Data-loss prevention (core-rules §6): never replace a prior full county set with an
+  // empty/honest-gap payload after a partial network failure.
+  const { action } = await writeSnapshotPreservingLive(out, payload);
+  if (action === 'preserved-prior') {
+    console.warn(`Preserved prior fetched-live ${out} — refused to overwrite with ${records.length}-county non-live payload`);
+    process.exitCode = 1;
+    return;
+  }
   console.log(
     `Wrote ${out} (${records.length} counties; coverage=${coverage}; census=${censusFetchedLive} bls=${blsFetchedLive} attainment=${attainmentFetchedLive})`,
   );

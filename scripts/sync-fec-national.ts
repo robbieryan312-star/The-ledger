@@ -20,6 +20,7 @@ import type { Source } from '../lib/types';
 import { loadCheckpoint, saveCheckpoint } from './lib/resilientFetch';
 import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
 import { DATA_NATIONAL_FEC_DIR, NATIONAL_FEC_FILE, PROJECT_ROOT } from './lib/dataPaths';
+import { memberInScope, requireSyncScope } from './lib/sync-scope';
 
 const CHECKPOINT_FILE = '/tmp/ledger-sync-fec-national-checkpoint.json';
 const projectRoot = PROJECT_ROOT;
@@ -72,6 +73,7 @@ async function countExistingFinanceRows(): Promise<number> {
 }
 
 async function main(): Promise<void> {
+  const memberFilter = requireSyncScope(process.argv, 'sync-fec-national');
   config({ path: path.join(projectRoot, '.env.local') });
   const asOf = new Date().toISOString().slice(0, 10);
   const fetchedAt = new Date().toISOString();
@@ -80,8 +82,14 @@ async function main(): Promise<void> {
     legislators: LegislatorRow[];
   };
   const legislators = legislatorsRaw.legislators.filter(
-    (l) => l.chamber === 'senate' || l.chamber === 'house',
+    (l) =>
+      (l.chamber === 'senate' || l.chamber === 'house') &&
+      memberInScope(l.bioguideId, memberFilter),
   );
+  if (memberFilter && legislators.length === 0) {
+    console.error(`No current legislators match --members filter: ${[...memberFilter].join(', ')}`);
+    process.exit(1);
+  }
 
   if (!isFecConfigured()) {
     const existingCount = await countExistingFinanceRows();

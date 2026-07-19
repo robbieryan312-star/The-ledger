@@ -27,9 +27,9 @@ npm run sync:legislators && npm run verify:office && npm run build
 
 Vote-sync routing and full sync catalog: `lib/data/SOURCE_LOOKUP.md`.
 
-## Guard suites (19 commands in prebuild + render-integrity postbuild — all must pass before commit)
+## Guard suites (20 commands in prebuild + render-integrity postbuild — all must pass before commit)
 
-**Canonical:** Local `npm run build` runs 19 prebuild guard commands, then `postbuild` runs
+**Canonical:** Local `npm run build` runs 20 prebuild guard commands, then `postbuild` runs
 `test:render-integrity` (starts its own server unless `RENDER_INTEGRITY_EXTERNAL_SERVER=1`)
 then `test:client-chunks`. CI (`.github/workflows/guards.yml`) builds first, then runs a
 **warmed** external-server render-integrity step on port 4112 — same assertions, different
@@ -40,7 +40,7 @@ process wiring.
 | `test:typecheck` | TypeScript compile (`tsc --noEmit`) |
 | `test:crec` | CREC procedural filter |
 | `test:org-join` | FEC org/donor join |
-| `test:source-integrity` | Source URL + profile integrity |
+| `test:source-integrity` | Source URL + profile integrity + ingest preserve-on-failure (data-loss) |
 | `test:copy-compliance` | Editorial voice |
 | `test:topic-positions-bundle` | Mega-bundle quality |
 | `test:news-registry` | Approved-outlet registry |
@@ -55,6 +55,7 @@ process wiring.
 | `test:identity-integrity` | Roster portrait ↔ bioguideId ↔ name/party/state/office |
 | `test:no-unverified-official-data` | FL dashboard: no official/nonpartisan numbers without verified provenance |
 | `test:state-economic-display` | Exact indicator lookup + unemployment delta sign semantics |
+| `test:route-integrity` | No internal link → notFound()-only route; sitemap enumerates all routes/profiles |
 | `test:render-integrity` | Headless render: overflow, images, sections (postbuild locally; warmed step in CI) |
 | `audit:profile-credibility` | Profile credibility audit gate |
 
