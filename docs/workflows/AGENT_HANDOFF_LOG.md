@@ -8,8 +8,8 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-19):**
-- Branch: `main` · HEAD `27fa4dc` · PR [#33](https://github.com/robbieryan312-star/The-ledger/pull/33) **MERGED**
-- Tree: clean · local full gate exit 0 · **`guards.yml` GREEN on main** (run [`29666598584`](https://github.com/robbieryan312-star/The-ledger/actions/runs/29666598584))
+- Branch: `main` · HEAD `2b10253` · PRs [#33](https://github.com/robbieryan312-star/The-ledger/pull/33) (FIX-1/2/3) + [#34](https://github.com/robbieryan312-star/The-ledger/pull/34) (gate log) **MERGED**
+- Tree: clean · local full gate exit 0 · **`guards.yml` GREEN on main** (runs [`29666598584`](https://github.com/robbieryan312-star/The-ledger/actions/runs/29666598584) @ `27fa4dc`, [`29666724890`](https://github.com/robbieryan312-star/The-ledger/actions/runs/29666724890) @ `2b10253`)
 - CI artifact: **`render-integrity-contact-sheet`** (uploaded on PR + main push)
 - **READY FOR OWNER VISUAL SIGN-OFF of /states/FL** — Phase P propagation **GATED** (do not start until sign-off logged here)
 
