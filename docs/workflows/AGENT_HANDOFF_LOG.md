@@ -18,7 +18,7 @@ reference-complete: 5/15 news, positions empty, Said→Did 1/15"), and opened #4
 That is the merge discipline demanded 2026-07-19 (3) — working as intended this time.
 
 ### PR #47 — dual-reference roadmap → APPROVE (content), REBASE required
-`docs/workflows/DUAL_REFERENCE_ROADMAP.md` + `docs/PILOT_STATE_CHECKLIST.md` are strong and match
+the new dual-reference roadmap doc + state checklist (docs/workflows/DUAL_REFERENCE_ROADMAP dot md and docs/PILOT_STATE_CHECKLIST dot md, on Cursor's branch) are strong and match
 owner direction + the batch-cadence refinements (1→10→25→80→200→completion, per-conduit ladder,
 state model, post-sync review gate). Adopt as the roadmap — do NOT write a competing doc.
 **Blocker:** #47/#48 branch off old `main` and edit the SAME governance files Claude's PR #45 moved
