@@ -12,10 +12,11 @@ core-rules, core-rules wins. Newest handoff on top.
 else looks perfect"). **Phase P UNLOCKED**, sequenced AFTER Wave 0 merge + Wave 1 data-loss prevention.
 Visual changes to the FL page now require new owner direction.
 
-**Current state (2026-07-19T12:15Z):**
-- **`main` merged this session:** PR #43 (W3 defects + Wave 1 data-loss) + PR #46 (implementation rules + W1a/b + W3c + W4 expanded audit). `beta` to mirror after push.
-- **Prior merged:** S2 (PR #41), SOURCE REGISTRY (PR #42), W1 wiring (`34c935c`), PR #39 (`93e36fa`).
-- **Superseded:** PR #44 (W4 v1) — expanded 210-row audit in PR #46 / main.
+**Current state (2026-07-19T12:50Z):**
+- **`main` @ `894c1ec` — PUSHED** this session: PR #43 (W3 + Wave 1) + PR #46 (rules + W3c + W4 audit) merged locally; prebuild 20 guards + build exit 0; sitemap 613 entries.
+- **`beta` mirrored** to `main` after push.
+- **Prior merged:** S2 (PR #41), SOURCE REGISTRY (PR #42), W1 wiring, PR #39.
+- **Superseded:** PR #44 (W4 v1) — use `docs/workflows/FILE_INVENTORY_AUDIT.md` on main (210 rows).
 - **Wave 0d BLOCKED:** `the-ledger-s4dn.vercel.app` does NOT track `main` — owner Vercel wiring.
 - **P0 (owner):** Cursor Cloud injected rules still reference deleted `agent-ops.mdc` — re-sync with on-disk core-rules.
 - **Approved:** https://the-ledger-s4dn.vercel.app
@@ -28,7 +29,11 @@ Claude manual @ e473848 + accuracy mandate §1.1 M; W3c diagnose PILOT rows 5–
 W4 expand FILE_INVENTORY_AUDIT with ACCURACY column + every-file table.
 
 ### Verdict / outcome
-**MERGED to `main` this session** (with PR #43). `npm run prebuild` exit 0 (20 guards).
+**MERGED + PUSHED to `main` (`894c1ec`).** `npm run prebuild` exit 0 (20 guards); `npm run build` exit 0; sitemap 613 entries.
+
+### Commits (merge)
+- `894c1ec` — Merge PR #46
+- `93015e2` — Merge PR #43
 
 ### W1a — Claude manual @ e473848
 - Replaced `docs/CLAUDE_CODE_OPERATING_MANUAL.md` with verbatim `e473848` copy (132 lines; diff empty vs source).
@@ -52,9 +57,9 @@ W4 expand FILE_INVENTORY_AUDIT with ACCURACY column + every-file table.
 ### Gates
 | Gate | Result |
 |---|---|
-| `npm run prebuild` | exit 0 |
-| `npm run test:docs-integrity` | 8/8 pass |
-| `profileCategoryIntegrity` (incl. W3c) | 7/7 pass |
+| `npm run prebuild` | exit 0 (20 guards) |
+| `npm run build` | exit 0 |
+| sitemap entries | 613 |
 
 ### Open / next
 - STOP for Claude review; reconcile with PR #43/#44 before merge sequencing.
