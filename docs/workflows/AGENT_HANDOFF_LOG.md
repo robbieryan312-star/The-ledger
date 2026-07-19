@@ -8,20 +8,54 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-19):**
-- Branch: `cursor/fl-by-the-numbers-70a6` · HEAD `4584838` · PR [#36](https://github.com/robbieryan312-star/The-ledger/pull/36) draft · **do not merge** until Claude review + owner final visual
-- Tree: clean · CI `guards` **GREEN** on functional tip `397eab5` ([`29667807229`](https://github.com/robbieryan312-star/The-ledger/actions/runs/29667807229)); this docs tip will re-gate
+- Branch: `cursor/fl-by-the-numbers-70a6` · PR [#36](https://github.com/robbieryan312-star/The-ledger/pull/36) draft · **do not merge** until Claude final approval
+- Claude review defects 1–3 fixed; local build + render-integrity **4/4**; awaiting tip CI GREEN
 - CI artifact: **`render-integrity-contact-sheet`**
-- **T0 BLOCKED** (BEA key): reCAPTCHA + no Gmail access — see Latest session
-- COL interim headline: **MERIC** (`fetchedLive:true`, index 100.7) · BEA honest-gap · BLS metro CPI live
-- Census rankings/age: honest-gap (CENSUS_API_KEY EMPTY)
+- T0 BEA still EMPTY (human CAPTCHA); COL via MERIC; metro CPI shows YoY %
 - Phase P remains **GATED**
-- **STOP for Claude review** (owner final visual sign-off after Claude)
+- **STOP for Claude final approval**
+
+
 ## Improvement backlog
 
 | Date | Item | Status |
 |------|------|--------|
 | 2026-07-18 | `npm audit`: 7 vulns remain after safe `npm audit fix` — need upstream Next/react-simple-maps (see `docs/workflows/NPM_AUDIT_2026-07-18.md`) | open |
 | 2026-07-11 | Add an explicit guard for national news refresh semantics so a successful empty response cannot be confused with fetch failure or stale-window retention. | open |
+
+## Latest session — Claude review defect fixes 1–3 (STOP for final approval)
+
+### Objective
+Fix three rendered defects on PR #36: metro CPI YoY meaning, MERIC user copy, education mid-word wrap. Re-gate; STOP for Claude final approval. Do not merge. Phase P gated.
+
+### Verdict / outcome
+**PASS (local)** — defects fixed; `npm run build` exit 0; render-integrity 4/4 (incl. mid-word assert). Tip CI pending in this commit. **STOP for Claude final approval.**
+
+### Fixes
+
+| # | Defect | Fix |
+|---|--------|-----|
+| 1 | Bare CPI index | Ingest computes `yoyPct` (13-mo); UI shows `Miami–Fort Lauderdale · +X.X% vs a year ago`; short series → honest gap; unit tests |
+| 2 | Process vocabulary | Label `Cost of living index (MERIC)`; period `Q1 2026` via `formatMericPeriodDisplay`; copy-compliance bans interim/headline/sample batch in string lits |
+| 3 | Education mid-word wrap | Stacked label-above-values + `break-normal` / `word-break: keep-all`; render-integrity asserts no mid-word splits in `#section-01` |
+
+### Commands run (this session)
+- `npm run ingest:bls-metro-cpi-fl` → exit 0; yoy Miami≈3.4% Tampa≈3.2%
+- `npm run test:state-economic-display` → 12/12 (incl. YoY + MERIC period)
+- `npm run test:copy-compliance` → 3/3
+- `npm run test:no-unverified-official-data` → 7/7
+- `npm run test:typecheck` → exit 0
+- `npm run build` → exit 0; render-integrity **4/4**
+
+### Acceptance evidence
+- Contact-sheet metadata (gitignored — cite fields only): generatedAt `2026-07-19T01:13:51.046Z` — regenerate per gate; CI artifact **`render-integrity-contact-sheet`**
+- No bare CPI index in UI; no "interim"/"headline"/"sample batch" in user-facing string literals
+
+### Open / next
+- Confirm CI GREEN on tip → Claude final APPROVAL
+- Owner: BEA + Census keys still needed for full T0/T4/T5
+- Phase P gated; **do not merge** without Claude APPROVAL
+
 
 ## Latest session — By-the-numbers refinement T0–T6 (STOP for Claude)
 

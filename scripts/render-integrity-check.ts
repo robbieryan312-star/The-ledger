@@ -213,6 +213,58 @@ async function assertEducationPanelNoOverflow(page: Page, label: string): Promis
   }
 }
 
+/**
+ * Fail if #section-01 lays out a soft line break between two non-space characters
+ * in the same text node (hyphen-less mid-word split, e.g. "Bachelor' s").
+ */
+async function assertNoMidWordSplitsInByTheNumbers(page: Page, label: string): Promise<void> {
+  const offenders = await page.evaluate(() => {
+    const root = document.querySelector('#section-01');
+    if (!root) return ['#section-01 missing'];
+    const bad: string[] = [];
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let node: Node | null;
+    while ((node = walker.nextNode())) {
+      const text = node.textContent ?? '';
+      if (text.length < 2 || !/\S/.test(text)) continue;
+      const parent = node.parentElement;
+      if (!parent) continue;
+      const style = getComputedStyle(parent);
+      if (style.display === 'none' || style.visibility === 'hidden') continue;
+      const range = document.createRange();
+      for (let i = 0; i < text.length - 1; i++) {
+        const a = text[i];
+        const b = text[i + 1];
+        if (/\s/.test(a) || /\s/.test(b)) continue;
+        // Skip explicit hyphens / soft hyphen already in content
+        if (a === '-' || a === '\u00ad' || b === '-' || b === '\u00ad') continue;
+        try {
+          range.setStart(node, i);
+          range.setEnd(node, i + 1);
+          const r1 = range.getBoundingClientRect();
+          range.setStart(node, i + 1);
+          range.setEnd(node, i + 2);
+          const r2 = range.getBoundingClientRect();
+          if (r1.width === 0 && r1.height === 0) continue;
+          if (r2.width === 0 && r2.height === 0) continue;
+          if (Math.abs(r1.top - r2.top) > 2) {
+            const snippet = text.slice(Math.max(0, i - 8), Math.min(text.length, i + 10)).replace(/\s+/g, ' ');
+            bad.push(`"${snippet}"`);
+            break;
+          }
+        } catch {
+          // ignore invalid ranges
+        }
+      }
+      if (bad.length >= 8) break;
+    }
+    return bad;
+  });
+  if (offenders.length > 0) {
+    fail(`${label}: mid-word split(s) in #section-01: ${offenders.join('; ')}`);
+  }
+}
+
 async function runChecks(browser: Browser): Promise<string[]> {
   const screenshotDir = path.join(projectRoot, RENDER_INTEGRITY_SCREENSHOT_DIR);
   mkdirSync(screenshotDir, { recursive: true });
@@ -236,6 +288,7 @@ async function runChecks(browser: Browser): Promise<string[]> {
       await assertRequiredSections(page, pageDef.path, label);
       if (pageDef.path === '/states/FL') {
         await assertEducationPanelNoOverflow(page, label);
+        await assertNoMidWordSplitsInByTheNumbers(page, label);
       }
       const shotName = `${pageDef.path.replace(/\//g, '_')}_${vp.label}.png`;
       const shotPath = path.join(screenshotDir, shotName);

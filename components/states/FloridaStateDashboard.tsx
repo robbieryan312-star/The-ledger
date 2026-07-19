@@ -13,6 +13,7 @@ import {
   populationHeroText,
 } from '@/lib/format/stateEconomicDisplay';
 import { displayLabelFor } from '@/lib/format/stateEconomicDisplayLabels';
+import { formatMericPeriodDisplay } from '@/lib/format/mericPeriodDisplay';
 import { formatCompactCurrency, formatCompact, formatRank } from '@/lib/format/number';
 import TierDot from '@/components/ui/TierDot';
 import FloridaStatePoliticians from '@/components/states/FloridaStatePoliticians';
@@ -97,8 +98,10 @@ export type FloridaDashboardProps = {
     };
     records: Array<{
       metro: string;
-      latestPeriod: string;
-      latestValue: number;
+      shortName?: string;
+      latestPeriod: string | null;
+      latestValue: number | null;
+      yoyPct: number | null;
       seriesId: string;
     }>;
   };
@@ -309,38 +312,41 @@ function EducationEarningsBlock({ tiers, note }: { tiers: StateEducationLaborTie
   if (!tiers.length) return null;
   return (
     <div
-      className="mt-4 bg-gradient-to-b from-[var(--bg-elevated)] to-[var(--bg-card)] border border-[var(--border-subtle)] rounded-[14px] p-4 sm:p-5 overflow-x-auto"
+      className="mt-4 bg-gradient-to-b from-[var(--bg-elevated)] to-[var(--bg-card)] border border-[var(--border-subtle)] rounded-[14px] p-4 sm:p-5 min-w-0 [overflow-wrap:normal] [word-break:keep-all]"
       data-testid="fl-education-earnings-panel"
     >
       <div className="min-w-0">
-        <p className="text-[13px] font-semibold text-[var(--foreground)]">Median earnings &amp; unemployment by education level</p>
-        {note && <p className="text-[11px] text-[var(--muted)] mt-1">{note}</p>}
-        <div className="hidden sm:grid grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.6fr)] gap-3 pt-3 pb-1 text-[9.5px] uppercase tracking-wide text-[var(--muted)]/90">
-          <span>Education</span>
-          <span className="text-right">Annual pay</span>
-          <span className="text-right">Unemployment</span>
-          <span />
-        </div>
-        <div className="divide-y divide-white/[0.055]">
+        <p className="text-[13px] font-semibold text-[var(--foreground)] break-normal">
+          Median earnings &amp; unemployment by education level
+        </p>
+        {note && <p className="text-[11px] text-[var(--muted)] mt-1 break-normal">{note}</p>}
+        <div className="divide-y divide-white/[0.055] mt-2">
           {tiers.map((tier) => (
-            <div
-              key={tier.educationLevel}
-              className="grid grid-cols-1 sm:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.6fr)] gap-2 sm:gap-3 py-3 items-center min-w-0"
-            >
-              <p className="text-[12.5px] text-[var(--foreground)] break-words">{tier.educationLevel}</p>
-              <p className="text-sm font-mono text-[var(--foreground)] sm:text-right">
-                {tier.medianAnnualEarnings != null ? formatCompactCurrency(tier.medianAnnualEarnings) : '—'}
+            <div key={tier.educationLevel} className="py-3 min-w-0 space-y-1.5">
+              <p className="text-[12.5px] text-[var(--foreground)] break-normal hyphens-none">
+                {tier.educationLevel}
               </p>
-              <p className="text-sm font-mono text-[var(--muted)] sm:text-right">
-                {tier.unemploymentRate != null ? formatPercent(tier.unemploymentRate) : (
-                  <span className="italic text-[var(--muted)]/90" title={tier.unemploymentGapReason}>not available</span>
-                )}
-              </p>
-              <div className="hidden sm:block h-2 rounded bg-white/5 overflow-hidden">
-                <div
-                  className="h-full rounded bg-gradient-to-r from-[var(--gold-dim)] to-[var(--gold)]"
-                  style={{ width: `${Math.min(100, ((tier.medianAnnualEarnings ?? 0) / 110000) * 100)}%` }}
-                />
+              <div className="flex flex-wrap gap-x-4 gap-y-1 text-[12px]">
+                <p className="font-mono text-[var(--foreground)]">
+                  <span className="text-[10px] uppercase tracking-wide text-[var(--muted)]/90 mr-1.5">
+                    Annual pay
+                  </span>
+                  {tier.medianAnnualEarnings != null
+                    ? formatCompactCurrency(tier.medianAnnualEarnings)
+                    : '—'}
+                </p>
+                <p className="font-mono text-[var(--muted)]">
+                  <span className="text-[10px] uppercase tracking-wide text-[var(--muted)]/90 mr-1.5">
+                    Unemployment
+                  </span>
+                  {tier.unemploymentRate != null ? (
+                    formatPercent(tier.unemploymentRate)
+                  ) : (
+                    <span className="italic text-[var(--muted)]/90" title={tier.unemploymentGapReason}>
+                      not available
+                    </span>
+                  )}
+                </p>
               </div>
             </div>
           ))}
@@ -482,7 +488,7 @@ export default function FloridaStateDashboard({
   const mericLive =
     mericState != null &&
     (meric.meta.provenance === 'fetched-live' || meric.meta.fetchedLive === true);
-  /** BEA is the locked headline when live; MERIC is interim headline if BEA is an honest gap. */
+  /** Prefer BEA RPP when live; otherwise MERIC index when live. */
   const colHeadline: 'bea' | 'meric' | 'gap' = beaLive ? 'bea' : mericLive ? 'meric' : 'gap';
   const colIndex =
     colHeadline === 'bea'
@@ -645,8 +651,8 @@ export default function FloridaStateDashboard({
           sourceLine={
             <>
               Source: U.S. Census Bureau ACS · BLS LAUS/CPS ·{' '}
-              {colHeadline === 'bea' ? 'BEA Regional Price Parities' : 'MERIC/C2ER cost of living'}
-              {countiesLive ? ` · county sample n=${counties.records.length}` : ''}
+              {colHeadline === 'bea' ? 'BEA Regional Price Parities' : 'MERIC cost of living'}
+              {countiesLive ? ` · county n=${counties.records.length}` : ''}
             </>
           }
         >
@@ -738,7 +744,7 @@ export default function FloridaStateDashboard({
                     {colHeadline === 'bea' && rppState ? (
                       <>
                         <div className="flex items-center justify-between gap-2">
-                          <p className="text-[9.5px] uppercase text-[var(--muted)]/90">BEA Regional Price Parities (headline)</p>
+                          <p className="text-[9.5px] uppercase text-[var(--muted)]/90">BEA Regional Price Parities</p>
                           <TierDot tier="official" />
                         </div>
                         <div>
@@ -773,17 +779,17 @@ export default function FloridaStateDashboard({
                       <div>
                         <div className="flex items-center justify-between gap-2">
                           <p className="text-[9.5px] uppercase text-[var(--muted)]/90">
-                            {colHeadline === 'meric' ? 'MERIC/C2ER (interim headline)' : 'MERIC/C2ER (corroboration)'}
+                            Cost of living index (MERIC)
                           </p>
                           <TierDot tier="nonpartisan" />
                         </div>
                         <div className="flex justify-between text-[11px] text-[var(--foreground)]/85 py-0.5">
-                          <span>Index · {mericState.period}</span>
+                          <span>Index · {formatMericPeriodDisplay(mericState.period)}</span>
                           <span className="font-mono">{formatPercent(mericState.allItemsIndex).replace(/%$/, '')}</span>
                         </div>
                         {mericState.components.map((c) => (
                           <div key={c.label} className="flex justify-between text-[11px] text-[var(--foreground)]/85 py-0.5">
-                            <span>{c.label}</span>
+                            <span className="break-normal">{c.label}</span>
                             <span className="font-mono">{formatPercent(c.index).replace(/%$/, '')}</span>
                           </div>
                         ))}
@@ -791,16 +797,37 @@ export default function FloridaStateDashboard({
                     )}
                     <div>
                       <div className="flex items-center justify-between gap-2">
-                        <p className="text-[9.5px] uppercase text-[var(--muted)]/90">Local price trends (BLS metro CPI)</p>
+                        <p className="text-[9.5px] uppercase text-[var(--muted)]/90">Local price trends</p>
                         <TierDot tier="official" />
                       </div>
                       {metroCpi.records.length > 0 ? (
-                        metroCpi.records.map((row) => (
-                          <div key={row.seriesId} className="flex justify-between text-[11px] text-[var(--foreground)]/85 py-0.5 gap-2">
-                            <span className="truncate pr-2">{row.metro} · {row.latestPeriod}</span>
-                            <span className="font-mono shrink-0">{formatPercent(row.latestValue).replace(/%$/, '')}</span>
-                          </div>
-                        ))
+                        metroCpi.records.map((row) => {
+                          const name =
+                            row.shortName ??
+                            (row.metro.startsWith('Miami')
+                              ? 'Miami–Fort Lauderdale'
+                              : row.metro.startsWith('Tampa')
+                                ? 'Tampa–St. Petersburg'
+                                : row.metro);
+                          return (
+                            <div
+                              key={row.seriesId}
+                              className="flex justify-between text-[11px] text-[var(--foreground)]/85 py-0.5 gap-2"
+                            >
+                              <span className="pr-2 break-normal">{name}</span>
+                              <span className="font-mono shrink-0">
+                                {row.yoyPct != null ? (
+                                  <>
+                                    {row.yoyPct > 0 ? '+' : ''}
+                                    {formatPercent(row.yoyPct)} vs a year ago
+                                  </>
+                                ) : (
+                                  <span className="italic text-[var(--muted)]">No verified record available</span>
+                                )}
+                              </span>
+                            </div>
+                          );
+                        })
                       ) : (
                         <p className="italic text-[var(--muted)] text-[11px]">No verified record available</p>
                       )}

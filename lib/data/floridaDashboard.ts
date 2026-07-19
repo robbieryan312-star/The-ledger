@@ -116,11 +116,13 @@ export function getFloridaMetroCpiSample() {
     };
     records: Array<{
       metro: string;
+      shortName?: string;
       indicator: string;
       unit: string;
       seriesId: string;
-      latestPeriod: string;
-      latestValue: number;
+      latestPeriod: string | null;
+      latestValue: number | null;
+      yoyPct: number | null;
       recent: { period: string; value: number }[];
       source: { name: string; url: string; tier: string; date?: string };
       asOf: string;
