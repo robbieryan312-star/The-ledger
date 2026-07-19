@@ -1,7 +1,7 @@
 # The Ledger — Roadmap & Progression Expectations
 
-**Last updated:** 2026-07-19 · **Branch:** `main` @ `6500b2d` · **Live demo (approved FL page):** https://the-ledger-s4dn.vercel.app/states/FL  
-**Note:** `https://the-ledger-gamma.vercel.app` is stale (Vercel Hobby rate-limit on project `the-ledger`). Owner must consolidate the three Vercel projects to one — see `docs/workflows/AGENT_HANDOFF_LOG.md`.
+**Last updated:** 2026-07-19 · **Branch:** `cursor/fl-by-numbers-ux-70a6` · **Approved (ex-s4dn):** https://the-ledger-s4dn.vercel.app/states/FL  
+**Deploy naming:** Approved = formerly `the-ledger-s4dn`; at most one Beta; pause other Vercel projects. Gamma alias still stale (Hobby rate-limit).
 **This file replaces the old progress log as the canonical forward guide.** It binds BOTH
 agents (Claude Code + Cursor). Rules live in `.cursor/rules/ledger-core-rules.mdc` — this file
 never restates them, it sequences the work.
@@ -141,8 +141,9 @@ Elections, OpenCorporates — unchanged from prior log (see `.env.local` and `KE
 
 ## Status board (update in the same commit as the work)
 
-| Track | State (2026-07-08 — Claude review verified vs artifacts at `71b61c2`) |
+| Track | State (2026-07-19 — deploy pipeline; prior rows still as of `71b61c2` unless noted) |
 |-------|--------------------|
+| FL `/states/FL` deploy | ✅ Approved URL s4dn live @ `6500b2d`; UX+ranks/COL PR in flight; **owner visual** 👁 on deployed mobile; consolidate Vercel → Approved (+ optional Beta) |
 | Migrated gold profiles | 7/537 (S000033, O000172, M000355, M001184, W000817, C001098, P000197) — all 7 at 30-vote depth + depth artifacts (Brief B T4-5-7, `9c310d6`; counts re-verified 07-08) |
 | Docs cleanup + FL script consolidation | ✅ agent index, SETUP, FLORIDA_DATA, BATCH_SCALING, archive |
 | Phase C (display/credibility fix stack) | ✅ verified by Claude |

@@ -7,21 +7,56 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-19T03:16Z):**
-- Branch: `main` @ `6500b2d` (merge #37 postbuild skip; #36 By-the-numbers)
-- **Live production (serving approved page):** https://the-ledger-s4dn.vercel.app/states/FL
-- GitHub deployment id: `5507426105` · Vercel deploy: `J8s7ui7w1LpQa4XeRmoc82SJgD4e` · env `Production – the-ledger-s4dn`
-- Stale alias: `https://the-ledger-gamma.vercel.app` still on old markup (`id="economy"`) — project `the-ledger` **rate-limited 24h**
-- Phase P **GATED** until owner visual sign-off on **deployed mobile** (use s4dn URL below)
+**Current state (2026-07-19T03:35Z):**
+- Branch: `cursor/fl-by-numbers-ux-70a6` (By-the-numbers UX + keyless ranks/COL)
+- **Approved production (canonical):** https://the-ledger-s4dn.vercel.app — formerly project `the-ledger-s4dn` (owner: rename/alias to "Approved" in Vercel dashboard)
+- **Beta:** reserve at most one other project if needed; pause/delete the rest (`the-ledger`, `the-ledger-jcjh`)
+- Stale: `the-ledger-gamma.vercel.app` (rate-limited Hobby quota — owner consolidate)
+- Phase P **GATED** until owner visual sign-off on **deployed mobile** Approved URL
 
 
 ## Improvement backlog
 
 | Date | Item | Status |
 |------|------|--------|
-| 2026-07-19 | **OWNER DASHBOARD:** consolidate 3 Vercel projects → ONE (`the-ledger` / `the-ledger-jcjh` / `the-ledger-s4dn`); pause/delete the two non-canonical; re-point `the-ledger-gamma` (or chosen domain) at the survivor. Triple projects burned Hobby build quota. | open — owner only |
+| 2026-07-19 | **OWNER DASHBOARD:** name **Approved** = formerly `the-ledger-s4dn`; keep at most one **Beta**; pause/delete the other project(s); re-point gamma/custom domain at Approved. Triple projects burned Hobby quota. | open — owner only |
 | 2026-07-18 | `npm audit`: 7 vulns remain after safe `npm audit fix` — need upstream Next/react-simple-maps (see `docs/workflows/NPM_AUDIT_2026-07-18.md`) | open |
 | 2026-07-11 | Add an explicit guard for national news refresh semantics so a successful empty response cannot be confused with fetch failure or stale-window retention. | open |
+
+
+## Latest session — By-the-numbers UX + keyless ranks/COL (STOP for owner visual)
+
+### Objective
+Owner visual refinements: clearer titles, 1-decimal stats, ranks of 50, age drop-down, top/lowest 5 counties, better COL sources, condense §01; name Approved (ex-s4dn) vs single Beta.
+
+### Verdict / outcome
+**PASS (local)** — ranks + age live via data.census.gov; BEA RPP live via FRED fallback (103.4, rank 41/50); UI labels/decimals/ranks/condense shipped; render-integrity 4/4. **STOP for owner visual** on Approved URL after deploy (Vercel Hobby still rate-limited — owner dashboard). Phase P gated.
+
+### Data
+| Artifact | Provenance | Notes |
+|---|---|---|
+| `florida-state-rankings-sample.json` | fetched-live | income #34, home #21, pop #3, bach+ #26, unemp #21; age groups filled |
+| `florida-rpp-sample.json` | fetched-live (FRED) | BEA all-items 103.4; rankAmong50=41; components/metros need BEA_API_KEY |
+| counties sample | fetched-live | still **n=10** SAMPLE — full 67 counties need `CENSUS_API_KEY` |
+
+### Commands run (this session)
+- Merged PR #38 → `82fe58f` (docs handoff)
+- `npm run ingest:fl-state-rankings` → live via data.census.gov
+- `npm run ingest:bea-rpp-fl` → live via FRED
+- `npm run test:state-economic-display` → 13/13
+- `npm run test:copy-compliance` → 3/3
+- `npm run test:no-unverified-official-data` → 7/7
+- `npm run test:typecheck` → exit 0
+- `npm run test:render-integrity` → 4/4 (after killing stale :4112)
+
+### Owner dashboard action (REQUEST)
+1. Treat **s4dn** as **Approved** production; pause/delete `the-ledger` + `the-ledger-jcjh` (or keep one as **Beta** only).
+2. Re-point `the-ledger-gamma` (or custom domain) at Approved once rate-limit clears.
+3. Visual sign-off on deployed mobile `/states/FL` unlocks Phase P.
+
+### Open / next
+- Push PR → guards GREEN → Claude review → deploy when Vercel quota allows
+- Do **not** start Phase P until owner sign-off logged
 
 ## Latest session — Deploy pipeline: merge #36/#37 + live production (COMPLETE)
 
@@ -106,74 +141,6 @@ Fix three rendered defects on PR #36: metro CPI YoY meaning, MERIC user copy, ed
 - Confirm CI GREEN on tip → Claude final APPROVAL
 - Owner: BEA + Census keys still needed for full T0/T4/T5
 - Phase P gated; **do not merge** without Claude APPROVAL
-
-
-## Latest session — By-the-numbers refinement T0–T6 (STOP for Claude)
-
-### Objective
-Owner visual refinement: condense By the numbers, display labels, decimals, ranks/age, live COL (BEA headline + MERIC + BLS CPI). Phase P gated.
-
-### Verdict / outcome
-**PARTIAL / STOP for Claude** — UI + keyless ingests green; CI guards GREEN (`397eab5` / run `29667807229`, artifact `render-integrity-contact-sheet`). **T0 BEA key acquisition FAILED** (2 attempts, human-only CAPTCHA/email). Per T6c: MERIC is interim COL headline; BEA row honest-gap. Census rankings/age honest-gap (no `CENSUS_API_KEY` in session). **Do not merge until Claude APPROVAL.** Owner final visual sign-off follows Claude.
-
-### Process rule
-Merge only after `guards.yml` **GREEN** on the PR tip (watch the run). Never merge while pending.
-
-### T0 — BEA API key (FAILED — 2 attempts)
-
-| # | Attempt | Outcome |
-|---|---------|---------|
-| 1 | computerUse → BEA signup + Gmail | Tool handler missing (`No handler found for computerUseArgs`) |
-| 2 | Chrome/curl BEA signup page | Form requires **reCAPTCHA Enterprise** (`g-recaptcha` sitekey present) — human-only |
-| 2b | Gmail retrieval via computerUse | Same computer-use blocker; login/2FA human-only |
-| — | Census KeySignup POST to owner email | HTTP 302 (may have emailed key) — cannot retrieve without Gmail |
-
-KEYS.md: `BEA_API_KEY` remains **EMPTY**. No key value written to git/chat. `.env.local` not created.
-
-### What shipped (agent-complete)
-
-| ID | Status | Evidence |
-|----|--------|----------|
-| T1 | DONE | Single `#section-01` By the numbers; taxes→§02 … courts→§05; secondary data in `<details>` |
-| T2 | DONE | `displayLabelFor` + UI titles/precision subs |
-| T3 | DONE | `formatPercent` 1dp strip `.0`; `formatRank`; tests 7/7 |
-| T4 | PARTIAL | Ingest + guard wired; committed rankings file **honest-gap** (no Census key) |
-| T5 | PARTIAL | Age breakdown ingest path ready; empty until Census key |
-| T6 | PARTIAL | Headline **MERIC** interim; BEA gap row; BLS Miami/Tampa CPI live; each row has tier dot |
-
-### Commits
-- `025b6d6` — feat(fl): add by-the-numbers data ingests
-- `3b94f1c` — docs: log FL by-the-numbers refinement
-- (this commit) — UI condense + section renumber + wire meric/cpi/rankings
-
-### Commands run (this session)
-- BEA signup page probe → reCAPTCHA YES
-- Census KeySignup POST → HTTP 302
-- `npm run test:typecheck` → exit 0
-- `npm run test:state-economic-display` → 7/7
-- `npm run test:no-unverified-official-data` → 7/7
-- `npm run test:copy-compliance` → 2/2
-- `npm run build` → exit 0; render-integrity **4/4**
-
-### Files touched (UI turn)
-| Path | Action | What changed |
-|------|--------|--------------|
-| `components/states/FloridaStateDashboard.tsx` | modified | Condensed By the numbers; MERIC interim COL; ranks/age UI; labels |
-| `components/states/FloridaStatePoliticians.tsx` | modified | Eyebrow §03 |
-| `app/states/[code]/page.tsx` | modified | Pass meric/metroCpi/rankings + full counties meta |
-| `scripts/render-integrity-check.ts` | modified | REQUIRED `#section-01..03`; conditional `#section-04/05` |
-| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session |
-
-### Acceptance evidence
-- Contact-sheet metadata (gitignored): generatedAt `2026-07-19T00:51:54.137Z` — review via CI artifact **`render-integrity-contact-sheet`**
-- MERIC FL index 100.7 · rankAmong50 30 · BLS CPI Miami+Tampa fetched-live
-- BEA `florida-rpp-sample.json` still honest-gap (no key)
-
-### Open / next (for Claude / owner)
-1. Owner: complete BEA signup CAPTCHA at https://apps.bea.gov/API/signup/ (email robbie.ryan312@gmail.com) OR paste key into Cursor Cloud Runtime Secret `BEA_API_KEY` + `.env.local`
-2. Owner: retrieve Census key email (KeySignup already POSTed) → set `CENSUS_API_KEY` → Cursor re-runs `ingest:fl-state-rankings` + `ingest:bea-rpp-fl`
-3. Claude: review CI contact-sheet + this log → APPROVAL or re-brief
-4. Phase P stays **GATED** until owner final visual sign-off logged
 
 
 ## Session log 1 — Claude audit FIX-1/2/3 (COMPLETE — STOP for owner)
@@ -476,61 +443,6 @@ raw value + unit + `recent[]` history (`scripts/build-data-slices.ts`, `lib/type
   silent-empty. Objective voice, no moral labels (editorial-voice rules).
 - **Propagation (menus/tabs/politician profile template, `/politicians` filtering) comes AFTER** the FL
   page is built and passes review — lock the flagship first, then scale (anti-rut law).
-
----
-
-## Latest session — Step 2 polish (STOP for Claude)
-
-### Objective
-
-Complete remaining Step 2 gaps from locked handoff: map sidebar slim, officials preview, §05/§06 source lines; fix render-integrity CI flake.
-
-### Verdict / outcome
-
-**STOP for Claude review** — Step 2 polish complete; Step 3 (propagation) **not started**.
-
-| Step | Status | Evidence |
-|------|--------|----------|
-| 0 Baseline merge | **PASS** | `a1f9652` on `main` |
-| 1 Guards | **PASS** | `df36b3f` + `4cbdd78` on `main` |
-| 2 Florida page | **PASS (review branch)** | Rail+canvas `/states/FL`; map sidebar slim; officials preview; source lines |
-| 3 Propagation | **NOT STARTED** | Awaits Claude approval of FL page |
-
-### Commits (this session)
-
-- `9826aff` — feat(fl): step-2 polish — map sidebar, officials preview, source lines, render wait fix
-
-### Commands run (this session)
-
-- `npm run prebuild` → exit 0
-- `npm run build` → exit 0 (postbuild render-integrity pass)
-- `CI=1 npx tsx scripts/render-integrity-check.ts` → 3/3 pass (flake fix verified)
-- `npm run test:render-integrity` → 2/2 pass
-
-### Files touched
-
-| Path | Action | What changed |
-|------|--------|--------------|
-| `components/map/USAMap.tsx` | modified | FL sidebar: economic summary first, 3 officials max, link to `/states/FL` |
-| `components/states/FloridaStatePoliticians.tsx` | modified | 4-row preview, +N more expands filters, mockup source line |
-| `components/states/FloridaStateDashboard.tsx` | modified | §05/§06 frame notes + source lines; compact legislation/courts |
-| `components/states/FloridaLegislationBillRow.tsx` | modified | `compact` prop for dashboard embedding |
-| `components/states/FloridaCourtDecisionRow.tsx` | modified | `compact` prop for dashboard embedding |
-| `scripts/render-integrity-check.ts` | modified | `waitForSelector` on required sections (fixes CI=1 flake) |
-
-### Acceptance evidence
-
-- `/states/FL`: `#section-01`–`#section-06` present; officials preview 4 + expand
-- Map FL sidebar: `FloridaStateEconomicCompact` + 3 officials + `+N more · full Florida profile →`
-- Render contact-sheet regenerated per gate (gitignored PNGs — not cited as repo paths)
-- `CI=1` render-integrity: 3 consecutive passes
-
-### Open / next
-
-- Claude combined review (render screenshots + code)
-- Owner visual pass after APPROVAL
-- Step 3 propagation after FL locked
-- Optional: county/BEA/tax small ingest scripts (static sample JSON in place)
 
 ---
 

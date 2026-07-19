@@ -4,6 +4,7 @@ import {
   formatCompactCurrency,
   formatFull,
   formatFullCurrency,
+  formatIndex,
   formatIndicatorFull,
   formatIndicatorValue,
   formatPercent,
@@ -102,6 +103,7 @@ export {
   formatCompactCurrency,
   formatFull,
   formatFullCurrency,
+  formatIndex,
   formatPercent,
   formatRank,
 };

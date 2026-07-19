@@ -58,6 +58,14 @@ export function formatPercent(value: number | string | null | undefined, digits 
   return `${stripTrailingZero(n.toFixed(cappedDigits))}%`;
 }
 
+/** Cost-of-living / price index — max one decimal, no % suffix (e.g. 103.4). */
+export function formatIndex(value: number | string | null | undefined, digits = 1): string {
+  const n = parseNumeric(value);
+  if (n == null) return '—';
+  const cappedDigits = Math.min(Math.max(Math.trunc(digits), 0), 1);
+  return stripTrailingZero(n.toFixed(cappedDigits));
+}
+
 /** 3 */
 export function formatRank(value: number | string | null | undefined): string {
   const n = parseNumeric(value);

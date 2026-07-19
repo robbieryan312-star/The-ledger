@@ -2,44 +2,78 @@
   "meta": {
     "source": {
       "name": "U.S. Census Bureau ACS",
-      "url": "https://api.census.gov",
+      "url": "https://data.census.gov",
       "tier": "official",
-      "description": "ACS 5-year state rankings and Florida age distribution"
+      "description": "ACS 5-year state rankings and Florida age distribution via data.census.gov"
     },
     "asOf": "2026-07-19",
-    "count": 0,
+    "count": 1,
     "stateCode": "FL",
-    "provenance": "honest-gap",
-    "fetchedLive": false,
-    "datasetUrl": "https://api.census.gov/data/",
-    "note": "CENSUS_API_KEY or DATA_GOV_API_KEY not set - Census state rankings remain an honest gap."
+    "provenance": "fetched-live",
+    "fetchedLive": true,
+    "fetchedAt": "2026-07-19T03:33:10.260Z",
+    "datasetUrl": "https://data.census.gov/api/access/data/table?id=ACSDT5Y2023.B19013&g=010XX00US%240400000",
+    "citation": "https://data.census.gov/table?q=ACSDT5Y2023.B19013",
+    "period": "ACS 5-Year 2023",
+    "note": "Ranks exclude District of Columbia and Puerto Rico. Rank 1 is highest for income, home value, population, and bachelor's+ share; rank 1 is lowest for unemployment. Retrieved via data.census.gov (no API key).",
+    "rankExclusions": [
+      "District of Columbia",
+      "Puerto Rico"
+    ],
+    "auxiliaryUrls": {
+      "home": "https://data.census.gov/api/access/data/table?id=ACSDT5Y2023.B25077&g=010XX00US%240400000",
+      "population": "https://data.census.gov/api/access/data/table?id=ACSDT5Y2023.B01003&g=010XX00US%240400000",
+      "attainment": "https://data.census.gov/api/access/data/table?id=ACSDT5Y2023.B15003&g=010XX00US%240400000",
+      "ageBreakdown": "https://data.census.gov/api/access/data/table?id=ACSDT5Y2023.B01001&g=040XX00US12"
+    }
   },
   "ranks": {
     "medianHouseholdIncome": {
-      "rank": null,
-      "value": null,
-      "denominator": null
+      "rank": 34,
+      "value": 71711,
+      "denominator": 50
     },
     "medianHomeValue": {
-      "rank": null,
-      "value": null,
-      "denominator": null
+      "rank": 21,
+      "value": 325000,
+      "denominator": 50
     },
     "population": {
-      "rank": null,
-      "value": null,
-      "denominator": null
+      "rank": 3,
+      "value": 21928881,
+      "denominator": 50
     },
     "bachelorsPlusPct": {
-      "rank": null,
-      "value": null,
-      "denominator": null
+      "rank": 26,
+      "value": 33.2,
+      "denominator": 50
     },
     "unemploymentRate": {
-      "rank": null,
-      "value": null,
-      "denominator": null
+      "rank": 21,
+      "value": 4.8,
+      "denominator": 50
     }
   },
-  "ageBreakdown": []
+  "ageBreakdown": [
+    {
+      "label": "Under 18",
+      "percent": 19.6
+    },
+    {
+      "label": "18–24",
+      "percent": 8.1
+    },
+    {
+      "label": "25–44",
+      "percent": 25.2
+    },
+    {
+      "label": "45–64",
+      "percent": 26
+    },
+    {
+      "label": "65+",
+      "percent": 21.1
+    }
+  ]
 }
