@@ -9,6 +9,8 @@ import {
   PROFILE_CATEGORY_KNOWN_BAD_MANIFEST_MISMATCH,
   PROFILE_CATEGORY_KNOWN_BAD_MISSING_STATUS,
   PROFILE_CATEGORY_KNOWN_GOOD_EMPTY_WITH_STATUS,
+  LOCKED_PROFILE_ORG_POSITIONS_STATUS_KNOWN_GOOD,
+  PILOT_CHECKLIST_S000033_ROWS_KNOWN_GOOD,
 } from '../../lib/data/__fixtures__/profileCategoryIntegrity.fixture';
 import {
   CATEGORY_FILES_WITH_REQUIRED_STATUS,
@@ -20,6 +22,7 @@ import {
 } from '../../lib/data/profileCategoryIntegrity';
 
 const profilesRoot = path.join(process.cwd(), 'lib/data/generated/profiles');
+const projectRoot = process.cwd();
 
 function loadCategoryData(bioguideId: string): Record<string, Record<string, unknown>> {
   const dir = path.join(profilesRoot, bioguideId);
@@ -118,4 +121,45 @@ test('migrated profiles: controversies/endorsements/orgVoteLinks have top-level 
     0,
     `missing category status fields:\n${violations.join('\n')}`,
   );
+});
+
+test('locked profiles: orgVoteLinks + positions manifest status matches frozen expected (W3c)', () => {
+  const violations: string[] = [];
+  for (const [bioguideId, expected] of Object.entries(LOCKED_PROFILE_ORG_POSITIONS_STATUS_KNOWN_GOOD)) {
+    const manifest = JSON.parse(
+      readFileSync(path.join(profilesRoot, bioguideId, 'manifest.json'), 'utf8'),
+    ) as { categories?: Record<string, string> };
+    const cats = manifest.categories ?? {};
+    for (const key of ['positions', 'orgVoteLinks'] as const) {
+      if (cats[key] !== expected[key]) {
+        violations.push(`${bioguideId} manifest.${key}=${cats[key] ?? 'missing'} expected=${expected[key]}`);
+      }
+    }
+  }
+  assert.equal(violations.length, 0, violations.join('\n'));
+});
+
+test('PILOT_PROFILE_CHECKLIST S000033 rows 5–6 must not claim done when manifest is honest-gap (W3c)', () => {
+  const checklist = readFileSync(path.join(projectRoot, PILOT_CHECKLIST_S000033_ROWS_KNOWN_GOOD.checklistPath), 'utf8');
+  const lines = checklist.split('\n');
+  const tableRows = lines.filter((l) => /^\| [0-9]+ \|/.test(l));
+  for (const row of PILOT_CHECKLIST_S000033_ROWS_KNOWN_GOOD.rows) {
+    const line = tableRows.find((l) => l.startsWith(`| ${row.rowNum} |`));
+    assert.ok(line, `checklist row ${row.rowNum} missing`);
+    assert.ok(
+      !line.includes(row.mustNotContain),
+      `checklist row ${row.rowNum} still claims done but manifest.${row.manifestCategory} is honest-gap`,
+    );
+    const manifest = JSON.parse(
+      readFileSync(
+        path.join(profilesRoot, PILOT_CHECKLIST_S000033_ROWS_KNOWN_GOOD.pilotBioguideId, 'manifest.json'),
+        'utf8',
+      ),
+    ) as { categories?: Record<string, string> };
+    assert.equal(
+      manifest.categories?.[row.manifestCategory],
+      'honest-gap',
+      `manifest ${row.manifestCategory} must be honest-gap for pilot row ${row.rowNum}`,
+    );
+  }
 });

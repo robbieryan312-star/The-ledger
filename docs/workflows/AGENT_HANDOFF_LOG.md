@@ -12,16 +12,52 @@ core-rules, core-rules wins. Newest handoff on top.
 else looks perfect"). **Phase P UNLOCKED**, sequenced AFTER Wave 0 merge + Wave 1 data-loss prevention.
 Visual changes to the FL page now require new owner direction.
 
-**Current state (2026-07-19T11:00Z):**
-- **W1 + S2 (PR #41) + SOURCE REGISTRY (PR #42) MERGED to `main`** this session (Claude APPROVED, CI green). `beta` mirrored to `main`. HEAD `main` = `34c935c`.
-- **W3 + Wave 1 on branch `cursor/w3-defects-wave1-dataloss-70a6`** (PR to open) — officials 404 defect fix, full sitemap, and preserve-on-failure + sync scoping. Full `npm run build` green (prebuild 20 guards + next build). **STOP for Claude review.**
-- **W4 (file-inventory audit)** pending on its own branch (findings only).
-- **PR #39 MERGED to `main`** (`93e36fa`); `beta` branch tracks main.
-- **Wave 0d BLOCKED (owner Vercel wiring):** approved URL `the-ledger-s4dn.vercel.app` does NOT track `main` — owner must point its Production branch at `main`.
-- Owner-provided API keys in gitignored `.env.local` this session only; owner transferring to Runtime Secrets + GitHub secrets (`scripts/setup-github-secrets.sh`). BEA pending owner CAPTCHA.
-- **P0 (owner):** Cursor Cloud injected rules still reference deleted `agent-ops.mdc` + `AUDIT_DEBT_BRIEF.md` — re-sync dashboard project rules with on-disk core-rules §7
+**Current state (2026-07-19T12:15Z):**
+- **`main` merged this session:** PR #43 (W3 defects + Wave 1 data-loss) + PR #46 (implementation rules + W1a/b + W3c + W4 expanded audit). `beta` to mirror after push.
+- **Prior merged:** S2 (PR #41), SOURCE REGISTRY (PR #42), W1 wiring (`34c935c`), PR #39 (`93e36fa`).
+- **Superseded:** PR #44 (W4 v1) — expanded 210-row audit in PR #46 / main.
+- **Wave 0d BLOCKED:** `the-ledger-s4dn.vercel.app` does NOT track `main` — owner Vercel wiring.
+- **P0 (owner):** Cursor Cloud injected rules still reference deleted `agent-ops.mdc` — re-sync with on-disk core-rules.
 - **Approved:** https://the-ledger-s4dn.vercel.app
 
+## Latest session — Implementation rules + W1a/b + W3c + W4 expanded audit (COMPLETE — STOP for Claude)
+
+### Objective
+Owner directive: add Cursor Implementation Engineer rules (de-duplicated vs core-rules); W1 wire
+Claude manual @ e473848 + accuracy mandate §1.1 M; W3c diagnose PILOT rows 5–6 vs S000033 manifest;
+W4 expand FILE_INVENTORY_AUDIT with ACCURACY column + every-file table.
+
+### Verdict / outcome
+**MERGED to `main` this session** (with PR #43). `npm run prebuild` exit 0 (20 guards).
+
+### W1a — Claude manual @ e473848
+- Replaced `docs/CLAUDE_CODE_OPERATING_MANUAL.md` with verbatim `e473848` copy (132 lines; diff empty vs source).
+- Session-start wiring: `docs/AGENT_INDEX.md` (items 2–3), `AGENTS.md` cites Cursor manual; docs-integrity subtests for both manuals.
+
+### W1b — Accuracy mandate (both agents)
+- `.cursor/rules/ledger-core-rules.mdc` HARD RULE + new `#### M. Keep files accurate` cross-referencing Claude manual §11 (not restated).
+- `docs/CURSOR_IMPLEMENTATION_MANUAL.md` created — Cursor role, pre-change reads, testing, implementation report format, confidence vocabulary; defers to core-rules for overlapping rules.
+
+### W3c — PILOT rows 5 & 6 vs S000033 manifest
+**Diagnosis: (i) checklist stale — not data regression.**
+- Row 5 (orgVoteLinks): always `honest-gap` since gold lock `db747a0`; `orgVoteLinks.json` links `[]` with documented Schedule A note.
+- Row 6 (positions): `positions.json` platformPositions empty since first write `6259d62`; manifest wrongly said `filled` at gold lock, corrected to `honest-gap` in `ca24c8a`.
+- **Fixed:** `PILOT_PROFILE_CHECKLIST.md` rows 5–6 → honest-gap with evidence.
+- **Guard:** frozen `LOCKED_PROFILE_ORG_POSITIONS_STATUS_KNOWN_GOOD` + checklist row parity tests in `profileCategoryIntegrity.test.ts`.
+
+### W4 — Expanded audit
+- `scripts/generate-file-inventory-audit.ts` + `docs/workflows/FILE_INVENTORY_AUDIT.md` — 210-row table (path · purpose · used-by · claimed-vs-reality · verdict · evidence).
+- Refreshed `data/reports/file-inventory.json` baseline.
+
+### Gates
+| Gate | Result |
+|---|---|
+| `npm run prebuild` | exit 0 |
+| `npm run test:docs-integrity` | 8/8 pass |
+| `profileCategoryIntegrity` (incl. W3c) | 7/7 pass |
+
+### Open / next
+- STOP for Claude review; reconcile with PR #43/#44 before merge sequencing.
 
 ## Improvement backlog
 

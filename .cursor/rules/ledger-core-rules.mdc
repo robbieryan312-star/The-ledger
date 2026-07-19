@@ -12,6 +12,8 @@ alwaysApply: true
 - **Honest-gap vs diagnosed-failure** — a failed fetch/sync is UNVERIFIED (`fetch-failed`), never silent empty.
 - **One source of truth per fact** — wire/join to existing generated data; never re-collect into a parallel file.
 - **Source constitution is a living registry** — `docs/OBJECTIVE_SOURCES.md` owns approved sources, lean labels, and key routing; consult it FIRST and update it the SAME session you discover a better path or dead feed (§1.1 L).
+- **Keep files accurate** — every session that touches a file/data/doc verifies any claimed done/complete/locked status against the REAL artifact and corrects or flags stale status the same turn; a regression that silently un-does prior verified work is a first-class bug. Status is earned by evidence, never by a label (§1.1 M; Claude manual §11).
+- **Keep files accurate** — every session that touches a file/data/doc verifies any claimed done/complete/locked status against the REAL artifact and corrects or flags stale status the same turn; a regression that silently un-does prior verified work is a first-class bug. Status is earned by evidence, never by a label (§1.1 M; Claude manual §11).
 - **`bioguideId` join key** — universal across votes, finance, news, statements; never alias.
 - **Approval before push** — commit locally when green; push to `origin/main` only on Claude Code's explicit APPROVAL.
 - **Fixtures append-only** — regression guards grow, never reset; every data-quality bug gets a frozen bad example.
@@ -502,6 +504,18 @@ unlocks which data need). It is a **LIVING DOCUMENT**:
   provider is never shown; 2+ independent providers may show only at `'alleged'`, visibly flagged.
 - `KEYS.md` owns per-key SET/EMPTY status only; the registry owns routing. One fact, one owner.
 
+#### M. Keep files accurate (binding — both agents)
+
+Every agent, every session that touches a file, generated data artifact, or doc that claims
+**done / complete / locked / filled** status MUST **verify that claim against the real artifact**
+(render, query, count, manifest field, guard output) the **same turn**. Correct stale status in
+the owning file or surface an **Owner visibility finding** (§1.1 H). A regression that silently
+un-does prior verified work is a **first-class bug** — hunt it; never trust a label because a doc
+says so. **Status is earned by evidence, never by a label.**
+
+Claude's full standing orders: `docs/CLAUDE_CODE_OPERATING_MANUAL.md` §11. Cursor implementation
+discipline: `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6. Do not restate §11 here.
+
 ---
 
 ## 2. Where the authoritative detail lives — read the file that owns the answer
@@ -522,6 +536,8 @@ unlocks which data need). It is a **LIVING DOCUMENT**:
 | Agent handoff log for Claude review (sessions + improvement backlog) | `docs/workflows/AGENT_HANDOFF_LOG.md` — **§1.1 J (mandatory same-turn commit)** |
 | Cross-agent second opinion when unverifiable | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 I |
 | Single-writer git authority (Cursor only commits/pushes/merges) | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 K |
+| Keep files accurate — claimed done/complete vs real artifact | `.cursor/rules/ledger-core-rules.mdc` §1.1 M · `docs/CLAUDE_CODE_OPERATING_MANUAL.md` §11 |
+| Cursor implementation role, testing, reporting format | `docs/CURSOR_IMPLEMENTATION_MANUAL.md` |
 
 ---
 
