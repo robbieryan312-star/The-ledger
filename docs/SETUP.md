@@ -125,3 +125,10 @@ Stop any dev server you start when verification is done.
 ## Git workflow
 
 Cursor agents commit locally when work passes review; **push to `origin/main` requires explicit APPROVAL** (see `.cursor/rules/ledger-core-rules.mdc` §1.1 K).
+
+## Deploy model (two Vercel projects)
+
+- **Production** tracks `main` → the approved public site (`the-ledger-s4dn`, the owner's canonical URL). Merges to `main` happen only on Claude APPROVAL and redeploy production automatically.
+- **Beta** tracks the long-lived `beta` branch → the owner's preview URL for work in progress. After a Claude review passes, Cursor pushes the reviewed branch state to `beta` so the owner previews it at the Beta URL **before** it is merged to `main`.
+- The owner keeps exactly these two projects (Production + Beta) and deletes any third. Disabling per-push PR preview deployments is an owner dashboard step (or a `vercel.json` `git.deploymentEnabled` change) to avoid Hobby quota burn.
+- Final URLs (owner to confirm after consolidation): Production = `<url>`, Beta = `<url>`.
