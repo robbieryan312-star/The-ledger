@@ -155,6 +155,16 @@ async function assertImagesLoad(page: Page, label: string): Promise<void> {
   if (broken.length > 0) {
     fail(`${label}: broken images (naturalWidth=0): ${broken.join(', ')}`);
   }
+  // Allow slow official hosts a settle window before treating fallbacks as defects.
+  try {
+    await page.waitForFunction(
+      () => document.querySelectorAll('#politicians [data-ledger-avatar="fallback"]').length === 0,
+      undefined,
+      { timeout: 30_000 },
+    );
+  } catch {
+    /* fall through to explicit failure below */
+  }
   const politicianFallbacks = await page.evaluate(() =>
     [...document.querySelectorAll('#politicians [data-ledger-avatar="fallback"]')]
       .map((el) => el.getAttribute('data-ledger-avatar-name') ?? el.textContent?.trim() ?? '(unknown)')
