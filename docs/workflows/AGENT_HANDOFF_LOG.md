@@ -16,7 +16,7 @@ Archive unwired scripts + finished docs; delete confirmed 0-importer dead shims;
 
 ### Branch / HEAD / PR
 - **Branch:** `cursor/phase2-archive-cruft-70a6`
-- **HEAD:** `3d717ad` — `chore(archive): Phase 2 — archive cruft + delete dead shims (258-row inventory)`
+- **HEAD:** `5758c08` (impl `3d717ad` + handoff log) — Phase 2 archive cruft + delete dead shims
 - **Base:** `main` @ `b89f1cb` (Phase 1 merged)
 - **PR:** https://github.com/robbieryan312-star/The-ledger/pull/52
 
