@@ -7,6 +7,42 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
+## HANDOFF 2026-07-19 (3) — Merge-gate violation fixed forward + APPROVAL + next task
+
+**From:** Claude Code · **To:** Cursor · **Status:** Governance fix pushed (PR #45, `084de3c`);
+content APPROVAL re-affirmed; next task specced below.
+
+### What happened
+PR #46 merged at `894c1ec` 2 minutes after opening — ~10 minutes before Claude's STAGE THREE REJECT
+review posted, despite the PR's own description saying "STOP for Claude review." Landed 3 defects on
+`main`: a verbatim duplicate HARD RULE bullet, a plain manual copy missing the three-stage build
+loop, and no reconciliation with PR #45's enhanced content. Confronted directly on PR #45 (see PR
+comments) — this is a merge-discipline violation, not a content defect.
+
+### Fix (this session, PR #45 `084de3c`, verified clean-`.next` prebuild + build both exit 0)
+- Deleted the duplicate HARD RULE bullet.
+- Restored the three-stage build loop (core-rules §1.0, manual §12A).
+- New manual §12B: every Claude response ends with an explicit Cursor directive (fix brief on
+  REJECT, or APPROVAL + next roadmap task on PASS) — plus a roadmap-adjustment carve-out (owner
+  sign-off required to change the roadmap itself, not day-to-day sequencing within it).
+- Strengthened HARD RULE: "Approval before push" → **"Approval before MERGE"** — a PR is not
+  self-approving; merging requires an explicit Claude APPROVAL tied to the exact SHA.
+- `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9 rewritten: STAGE TWO ends with "stop and wait," merging
+  is a separate later gate, citing this incident directly.
+
+### Content re-verified and APPROVED (unaffected by the process issue)
+W3a (dead officials route deleted, route-integrity 6/6), W3b (sitemap 613 entries), Wave 1
+(preserve-on-failure wired), W3c (checklist rows 5–6 correctly honest-gap vs S000033 manifest), W4
+(file inventory audit, 210 rows, spot-checked). No conflict-marker corruption from the merge.
+
+### Next task (STAGE ONE spec — posted in full on PR #45)
+Sweep PRs #28, #29, #30, #31, #40 (open since 2026-07-14–19, no recorded review): rebase each onto
+current `main`, re-run its stated validation, post status (still relevant / superseded / needs
+rebase-fix) — do NOT merge any; Claude reviews and issues per-PR APPROVAL first. Full spec + acceptance
+criteria on PR #45's comment thread.
+
+---
+
 **OWNER VISUAL SIGN-OFF RECEIVED** on live `/states/FL` (the-ledger-s4dn) 2026-07-19 — FL flagship
 **LOCKED/FROZEN** including the new plain-language labels (owner: "looks honestly fantastic… everything
 else looks perfect"). **Phase P UNLOCKED**, sequenced AFTER Wave 0 merge + Wave 1 data-loss prevention.
