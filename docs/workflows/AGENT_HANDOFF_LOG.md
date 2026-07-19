@@ -7,9 +7,11 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-**Current state (2026-07-19T03:57Z):**
-- Branch: `cursor/fl-by-numbers-ux-70a6` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · **no merge / no deploy** (await Claude)
-- Full **67-county** ACS set committed (keyless data.census.gov); SAMPLE badge off when coverage=full
+**Current state (2026-07-19T04:20Z):**
+- Branch: `cursor/fl-by-numbers-ux-70a6` · PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) · tip `ebdb21e` + docs audit commit · **no merge / no deploy** (await Claude)
+- Read-only platform audit filed: `docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` — **no product fixes until Claude briefs**
+- Census KeySignup re-submitted → `create_success.html` (owner activate email → `CENSUS_API_KEY`)
+- Vercel rename: **no `VERCEL_TOKEN`** — owner dashboard singular rename (see audit §Owner actions)
 - **Approved:** https://the-ledger-s4dn.vercel.app · Phase P **GATED**
 
 
@@ -17,13 +19,46 @@ core-rules, core-rules wins. Newest handoff on top.
 
 | Date | Item | Status |
 |------|------|--------|
-| 2026-07-19 | **OWNER DASHBOARD:** name **Approved** = formerly `the-ledger-s4dn`; keep at most one **Beta**; pause/delete the other project(s); re-point gamma/custom domain at Approved. Triple projects burned Hobby quota. | open — owner only |
+| 2026-07-19 | **Platform audit (read-only)** — P0 DOC-01 work-log path; P1 FL/FED/DOC findings in `PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` | open — Claude brief before any fix |
+| 2026-07-19 | **OWNER DASHBOARD:** rename `the-ledger-s4dn` → Approved; optional one Beta; pause/delete others; optional later `VERCEL_TOKEN` for `vercel project rename` | open — owner only |
+| 2026-07-19 | **OWNER EMAIL:** activate Census API key from re-signup; add Runtime Secret `CENSUS_API_KEY` | open — owner only |
 | 2026-07-19 | Full FL county set via keyless data.census.gov (was SAMPLE n=10) | done on PR #39 |
 | 2026-07-18 | `npm audit`: 7 vulns remain after safe `npm audit fix` — need upstream Next/react-simple-maps (see `docs/workflows/NPM_AUDIT_2026-07-18.md`) | open |
 | 2026-07-11 | Add an explicit guard for national news refresh semantics so a successful empty response cannot be confused with fetch failure or stale-window retention. | open |
 
 
 
+
+## Latest session — Platform read-only audit + Census re-signup (COMPLETE)
+
+### Objective
+Owner: prefer agent/GitHub Vercel rename if possible; retry Census key signup; STOP with owner instructions + ideal model; then deep read-only platform/instruction audit — **no changes until Claude reviews**.
+
+### Verdict / outcome
+**COMPLETE (findings only)** — Vercel rename not agent-doable without `VERCEL_TOKEN` (documented singular dashboard action). Census KeySignup **302 → create_success.html**. Ideal auditor: **Claude Opus 4.8 Thinking High**. Full findings in `docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md`. **No product code changes. No merge of PR #39.**
+
+### Commits
+- (this session) docs: platform read-only audit 2026-07-19 + handoff
+
+### Commands run (this session)
+- Census `KeySignup` POST (org=The Ledger, email=robbie.ryan312@gmail.com) → 302 create_success.html
+- Multi-agent explore: rules contradictions; FL stack; federal+guards
+- `git rev-parse HEAD` → `ebdb21e` (product tip before audit docs commit)
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` | created | Owner actions + P0/P1/P2 findings for Claude |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Current state + this session |
+
+### Acceptance evidence
+- Audit file on disk with DOC-01 P0 (AUDIT_DEBT_BRIEF vs AGENT_HANDOFF_LOG)
+- Explicit non-actions: no merge #39, no Phase P, no product fixes
+
+### Open / next
+- Owner: Vercel consolidate rename; Census email activate
+- Claude: review audit + PR #39 → APPROVAL + ordered repair brief
+- Cursor: implement only after Claude brief
 
 ## Latest session — Full 67-county ingest (while Claude down) (PASS)
 
@@ -94,41 +129,6 @@ Claude temporarily unavailable. Continue progress without implementing/merging: 
 - Keep PR #39 open; push audit fixes; **do not merge**
 - When Claude returns: request APPROVAL on tip
 - Then merge → deploy Approved → owner mobile visual sign-off → Phase P
-
-## Latest session — By-the-numbers UX + keyless ranks/COL (STOP for owner visual)
-
-### Objective
-Owner visual refinements: clearer titles, 1-decimal stats, ranks of 50, age drop-down, top/lowest 5 counties, better COL sources, condense §01; name Approved (ex-s4dn) vs single Beta.
-
-### Verdict / outcome
-**PASS (local + CI)** — PR [#39](https://github.com/robbieryan312-star/The-ledger/pull/39) @ `d3bacd4`; guards GREEN run `29671998668`. Ranks/age live; BEA RPP via FRED (103.4, #41/50); UI shipped. **STOP for Claude review + owner visual** on Approved URL after deploy (all 3 Vercel projects still Hobby rate-limited). Phase P gated.
-
-### Data
-| Artifact | Provenance | Notes |
-|---|---|---|
-| `florida-state-rankings-sample.json` | fetched-live | income #34, home #21, pop #3, bach+ #26, unemp #21; age groups filled |
-| `florida-rpp-sample.json` | fetched-live (FRED) | BEA all-items 103.4; rankAmong50=41; components/metros need BEA_API_KEY |
-| counties sample | fetched-live | still **n=10** SAMPLE — full 67 counties need `CENSUS_API_KEY` |
-
-### Commands run (this session)
-- Merged PR #38 → `82fe58f` (docs handoff)
-- `npm run ingest:fl-state-rankings` → live via data.census.gov
-- `npm run ingest:bea-rpp-fl` → live via FRED
-- `npm run test:state-economic-display` → 13/13
-- `npm run test:copy-compliance` → 3/3
-- `npm run test:no-unverified-official-data` → 7/7
-- `npm run test:typecheck` → exit 0
-- `npm run test:render-integrity` → 4/4 (after killing stale :4112)
-
-### Owner dashboard action (REQUEST)
-1. Treat **s4dn** as **Approved** production; pause/delete `the-ledger` + `the-ledger-jcjh` (or keep one as **Beta** only).
-2. Re-point `the-ledger-gamma` (or custom domain) at Approved once rate-limit clears.
-3. Visual sign-off on deployed mobile `/states/FL` unlocks Phase P.
-
-### Open / next
-- PR #39 open; guards GREEN — await Claude APPROVAL before merge
-- Deploy blocked until Vercel rate-limit clears / owner consolidates to Approved
-- Do **not** start Phase P until owner sign-off logged
 
 ## Session log 1 — Claude audit FIX-1/2/3 (COMPLETE — STOP for owner)
 
