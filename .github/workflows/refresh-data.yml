@@ -45,17 +45,68 @@ jobs:
           NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
           BEA_API_KEY: ${{ secrets.BEA_API_KEY }}
         run: |
-          [ -n "$CENSUS_API_KEY" ] && npm run ingest:census-fl || echo "skip census (no secret)"
-          [ -n "$CENSUS_API_KEY" ] && npm run ingest:fl-counties || echo "skip fl-counties (no secret)"
-          [ -n "$BEA_API_KEY" ] && npm run ingest:bea-rpp-fl || echo "skip bea-rpp (no secret)"
+          set -euo pipefail
+
+          if [ -n "$CENSUS_API_KEY" ]; then
+            npm run ingest:census-fl
+            npm run ingest:fl-counties
+          else
+            echo "skip census/fl-counties (no CENSUS_API_KEY)"
+          fi
+
+          if [ -n "$BEA_API_KEY" ]; then
+            npm run ingest:bea-rpp-fl
+          else
+            echo "skip bea-rpp (no BEA_API_KEY)"
+          fi
+
           npm run ingest:fl-tax || echo "skip fl-tax (non-fatal — computed from published tables)"
-          [ -n "$LEGISCAN_API_KEY" ] && npm run ingest:legiscan-fl || echo "skip legiscan (no secret)"
-          [ -n "$OPENSTATES_API_KEY" ] && npm run ingest:openstates-fl || echo "skip openstates (no secret)"
-          [ -n "$COURTLISTENER_API_KEY" ] && npm run ingest:courts-fl || echo "skip courts detail refresh (no COURTLISTENER_API_KEY)"
-          [ -n "$NEWSAPI_KEY" ] && npm run ingest:news-fl || echo "skip news (no secret)"
-          { [ -n "$GOVINFO_API_KEY" ] || [ -n "$DATA_GOV_API_KEY" ]; } && npm run ingest:govinfo-fl || echo "skip govinfo (no secret)"
-          [ -n "$FEC_API_KEY" ] && npm run ingest:fec-fl && npm run sync:fec-national && npm run sync:fec-schedule-a || echo "skip fec (no secret)"
-          [ -n "$CONGRESS_API_KEY" ] && npm run ingest:congress-fl && npm run sync:votes-national || echo "skip congress (no secret)"
+
+          if [ -n "$LEGISCAN_API_KEY" ]; then
+            npm run ingest:legiscan-fl
+          else
+            echo "skip legiscan (no LEGISCAN_API_KEY)"
+          fi
+
+          if [ -n "$OPENSTATES_API_KEY" ]; then
+            npm run ingest:openstates-fl
+          else
+            echo "skip openstates (no OPENSTATES_API_KEY)"
+          fi
+
+          if [ -n "$COURTLISTENER_API_KEY" ]; then
+            npm run ingest:courts-fl
+          else
+            echo "skip courts detail refresh (no COURTLISTENER_API_KEY)"
+          fi
+
+          if [ -n "$NEWSAPI_KEY" ]; then
+            npm run ingest:news-fl
+          else
+            echo "skip news (no NEWSAPI_KEY)"
+          fi
+
+          if [ -n "$GOVINFO_API_KEY" ] || [ -n "$DATA_GOV_API_KEY" ]; then
+            npm run ingest:govinfo-fl
+          else
+            echo "skip govinfo (no GOVINFO_API_KEY or DATA_GOV_API_KEY)"
+          fi
+
+          if [ -n "$FEC_API_KEY" ]; then
+            npm run ingest:fec-fl
+            npm run sync:fec-national
+            npm run sync:fec-schedule-a
+          else
+            echo "skip fec (no FEC_API_KEY)"
+          fi
+
+          if [ -n "$CONGRESS_API_KEY" ]; then
+            npm run ingest:congress-fl
+            npm run sync:votes-national
+          else
+            echo "skip congress (no CONGRESS_API_KEY)"
+          fi
+
           npm run sync:stock-trades || echo "skip stock-trades (non-fatal)"
 
       - name: Rebuild Records & Sources index
@@ -82,7 +133,19 @@ jobs:
           npm run test:env-truth
           npm run test:optimization
           npm run audit:profile-credibility
-          npm run build
+          npx playwright install chromium
+          RENDER_INTEGRITY_SKIP_POSTBUILD=1 npm run build
+          npx next start -H 127.0.0.1 -p 4113 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for i in $(seq 1 90); do
+            if curl -sf http://127.0.0.1:4113/states/FL | grep -q 'id="section-01"'; then
+              break
+            fi
+            sleep 2
+          done
+          curl -sf http://127.0.0.1:4113/states/FL | grep -q 'id="section-01"'
+          RENDER_INTEGRITY_EXTERNAL_SERVER=1 npm run test:render-integrity
 
       - name: Exclude fetch-failed artifacts from commit
         run: bash scripts/exclude-fetch-failed-artifacts.sh
