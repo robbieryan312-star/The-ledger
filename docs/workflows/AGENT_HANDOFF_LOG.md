@@ -91,12 +91,60 @@ criteria on PR #45's comment thread.
 else looks perfect"). **Phase P UNLOCKED**, sequenced AFTER Wave 0 merge + Wave 1 data-loss prevention.
 Visual changes to the FL page now require new owner direction.
 
-**Current state (2026-07-19T15:32Z):**
-- **Branch `cursor/sanders-news-trades-fix-70a6`** — PR #48 Sanders news/stock fixes.
+**Current state (2026-07-19T16:05Z):**
+- **Branch `cursor/sanders-news-trades-fix-70a6`** @ pending commit — PR #48 Sanders news/stock fixes.
 - **PR #47** — dual-reference roadmap (separate branch).
 - **`main` @ `0e5a3e5`**
 
-## Latest session — Sanders news + stock fixes (PASS bugs · FAIL reference-complete)
+## Latest session — Sanders news depth + stock fetch-failed + FL news doc correction (PARTIAL PASS)
+
+### Objective
+Owner correction: FL `/states/FL` does **not** display news; Sanders needs far more journalism (not 1–2) with corroboration; stock disclosure must be obtainable/displayable.
+
+### Verdict / outcome
+**PARTIAL PASS** — news 2→**5** approved articles; stock tab now **fetch-failed** (Senate eFD search API HTTP 503); FL docs corrected (news slice is pipeline-only, not on state page). Sanders **still not** reference-complete (5/15 news, positions empty, Said→Did 1/15).
+
+### Commits
+- pending — `fix(sanders): NewsAPI+GDELT supplements, corroboration, stock fetch-failed; FL news doc`
+
+### Commands run (this session)
+- `npm run sync:news-rss -- --members S000033` → exit 0 · **5** items in `news.json` (RSS+NewsAPI; GDELT rate-limited)
+- `npm run sync:stock-trades -- --members S000033` → exit 0 · `trades.json` status **fetch-failed** (eFD search 503)
+- `npm run prebuild` → exit 0
+- `npm run build` → exit 0
+- Senate eFD probe: session OK · search API **503**
+- NewsAPI probe: **3** Sanders-matched articles in plan window (~30 days)
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/sync-news-rss.ts` | modified | GDELT per-domain + NewsAPI supplements; corroboration before write |
+| `scripts/lib/gdeltMemberNews.ts` | created | Per-domain GDELT fetch; approved-host filter |
+| `scripts/lib/newsApiMemberNews.ts` | created | NewsAPI supplement when key set |
+| `lib/data/newsCorroboration.ts` | created | `isVerified` when ≥1 independent outlet corroborates headline |
+| `lib/data/memberProfile.ts` | modified | Apply corroboration in `mergeProfileNews` |
+| `lib/data/newsFeedRegistry.ts` | modified | NYT/WaPo/Hill News RSS feeds |
+| `lib/data/stockTrades.ts` | modified | Map 503/unavailable notes → `fetch-failed` |
+| `scripts/sync-stock-trades.ts` | modified | `fetch-failed` notes; write profile trades when eFD unreachable |
+| `scripts/sync-news-national.ts` | modified | Simpler GDELT query; 12mo timespan; corroboration on merge |
+| `docs/PILOT_STATE_CHECKLIST.md` | modified | Row 8: news not on `/states/FL` |
+| `docs/workflows/DUAL_REFERENCE_ROADMAP.md` | modified | FL news row: pipeline-only |
+| `lib/data/generated/profiles/S000033/news.json` | modified | **5** articles (was 2) |
+| `lib/data/generated/profiles/S000033/trades.json` | modified | status **fetch-failed** |
+
+### Acceptance evidence
+- `S000033/news.json`: 5 items — Hill Fetterman/endorsements, NPR CDC+AI, AP Mamdani, Guardian Medicare op-ed (opinion)
+- `S000033/trades.json`: `status: fetch-failed`, note cites Senate eFD 503
+- `/states/FL` page: no news import (confirmed `app/states/[code]/page.tsx`)
+
+### Open / next
+- Grow Sanders news toward 15: GDELT reliability + NewsAPI paid window or scheduled refresh
+- Sanders positions (`positions.json` all empty) — Ballotpedia pipeline
+- Retry Senate eFD when search API exits maintenance; expect verified-zero PTR for Sanders if annual FD confirms no reportable trades
+
+---
+
+## Prior session — Sanders news + stock fixes (PASS bugs · FAIL reference-complete)
 
 ### Verdict
 Fixed news visibility + collection bugs + stock honest-gap UI. Sanders **not** approval-ready: news 2/15, positions empty, Said→Did 1/15.
@@ -138,7 +186,7 @@ Claude down — self-review assuming work is wrong until independently verified;
 | S000033 votes | 30 filled | 30 in `votes.json` | ✅ |
 | S000033 statements | — | 5 on disk | partial depth |
 | FL legislation | checklist said honest-gap | 10 bills in `legislation-florida.json` | P2 doc drift — **fixed** |
-| FL news | checklist said honest-gap | 48 articles in `news-florida.json` | P2 doc drift — **fixed** |
+| FL news | checklist said honest-gap | 48 articles in slice; **not on `/states/FL`** (FL-politician profiles only) | P2 doc drift — **fixed** |
 | FL counties | 67 filled | 67 records, `coverage: full` | ✅ |
 | FL county map | — | `USAMap` `countyByFips` empty | P1 dead UI — flagged, needs owner decision |
 
