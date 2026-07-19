@@ -1,5 +1,7 @@
 # Florida data pipeline
 
+**State-specific sources (local media + FL agencies):** [`docs/sources/florida.md`](./sources/florida.md)
+
 Florida has the deepest state-level integration. Scripts ingest raw snapshots; `build:data-slices`
 merges them into `lib/data/generated/slices/` for UI panels on Florida politician profiles.
 
@@ -36,7 +38,8 @@ No-key subset: `npm run ingest:no-key`
 | `ingest:voteview-fl` | `ingest-voteview-florida.ts` | `data/florida/voteview/florida-ideology.json` |
 | `ingest:fllobbyist-fl` | `ingest-fllobbyist-florida.ts` | `data/florida/fllobbyist/florida-lobbying-firm-directories.json` |
 
-**Florida GDELT ingest (`ingest:gdelt-fl`):** script remains in `package.json` for optional raw snapshots; **not** the primary Florida or national news path — use `ingest:news-fl` / `sync:news-rss` instead.
+**Florida GDELT ingest (`ingest:gdelt-fl`):** optional raw snapshot only — **not** profile News path.
+Profile news: `sync:news-rss` (RSS → GDELT). FL NewsAPI snapshot: `ingest:news-fl` (see `docs/sources/florida.md`).
 
 ## UI slice accessors
 

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-19T21:43:42.301Z",
-  "totalFiles": 274,
+  "generatedAt": "2026-07-19T21:59:39.980Z",
+  "totalFiles": 273,
   "layers": {
     "L1": [
       "scripts/lib/approvedMediaQuotes.ts",
@@ -92,7 +92,6 @@
       "lib/data/snapshotTypes.ts",
       "lib/data/sourceCatalog.ts",
       "lib/data/sourceIntegrity.ts",
-      "lib/data/sourceTiers.ts",
       "lib/data/stockTrades.ts",
       "lib/data/supportedStates.ts",
       "lib/data/topicAliases.ts",
@@ -425,7 +424,6 @@
     "lib/data/snapshotTypes.ts",
     "lib/data/sourceCatalog.ts",
     "lib/data/sourceIntegrity.ts",
-    "lib/data/sourceTiers.ts",
     "lib/data/stockTrades.ts",
     "lib/data/supportedStates.ts",
     "lib/data/topicAliases.ts",

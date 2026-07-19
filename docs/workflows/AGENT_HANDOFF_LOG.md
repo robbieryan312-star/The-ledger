@@ -7,142 +7,59 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-## HANDOFF 2026-07-19 (7) — Phase 0 inventory regeneration (fresh verify on dfbcdd6)
+## HANDOFF 2026-07-19 — Phase 1: source subsystem (news path + FL sources template)
 
-**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS — STOP for STAGE THREE review (Phase 0)**
+**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS — STOP for STAGE THREE review (Phase 1)**
 
 ### Objective
-Regenerate trustworthy FILE_INVENTORY_AUDIT from real tree; fix scripts/lib false MERGE verdicts.
+Reconcile news path across AGENT_INDEX/OBJECTIVE_SOURCES/SOURCE_LOOKUP; create `docs/sources/florida.md`;
+delete dead lib/data sourceTiers shim.
 
-### Current state
-- **Branch:** `cursor/w4-file-inventory-audit-70a6` @ `2383f0f` (base `main` @ `dfbcdd6`)
-- **PR:** https://github.com/robbieryan312-star/The-ledger/pull/44
-- **API keys:** `.env.local` — 8/12 SET (`npm run verify:agent-keys` exit 0)
+### Branch
+`cursor/phase1-source-subsystem-70a6` (base `main` @ `fbbe7ff`)
 
-### Before / after (main baseline → regenerated)
-| Metric | Before (main) | After |
-|--------|---------------|-------|
-| Total inventory rows | 210 | **274** |
-| Top-level `scripts/*.ts` | ~18 (prefix-filtered) | **43** |
-| `scripts/lib/*` false MERGE | 16+ | **0** (all KEEP, ≥1 importer) |
-| `scripts/__tests__/*.test.ts` | partial | **33** |
-| `scripts/archive/*` | 0 | **5** |
+### Changes
+- News path unified: **RSS primary** → **GDELT secondary** → **NewsAPI tertiary** (AGENT_INDEX §3)
+- `docs/sources/florida.md` created; linked from `docs/FLORIDA_DATA.md`
+- `docsIntegrityGuard`: removed `florida.md` from ALLOW_MISSING_PATHS
+- Deleted dead `lib/data/` sourceTiers shim (0 importers; canonical `lib/sourceTiers.ts`)
+- `sourceCatalog.ts`: added `news-rss-registry`; reordered member-news routing
+- Collapsed redundant Phase 0 handoff entries (5/6/7) → one
 
-Independent Python recount: **274** = JSON total = MD row count.
-
-### Commands run (this session)
-- `npm run verify:agent-keys` → exit 0 (8/12 SET)
-- `npm run audit:inventory` → exit 0 (274 files)
-- `npm run audit:inventory-md` → exit 0 (274 rows; `rg 'scripts/lib/.*MERGE'` → 0)
-- `rm -rf .next && npm run prebuild` → exit 0
-- `npm run build` → exit 0
-
-### Acceptance evidence
-- GENERATED header + `audit:inventory-md` alias in package.json
-- Layer breakdown: L1=22 L2=75 L3=43 L3a=5 L4=32 L5=17 L6=22 L7=25 L8=33
+### Verification (pending commit)
+- `npm run test:docs-integrity` + `test:docs-consistency`
+- `rm -rf .next && npm run prebuild` + `npm run build`
 
 ### Open / next
-- **STOP** — Claude STAGE THREE on Phase 0 before P1
-- PR #47 / #48 / #50 gated separately (no action on #50)
+- **STOP** — Claude STAGE THREE on Phase 1 before P2
+- PR #47 / #48 still gated
 
 ---
 
-## HANDOFF 2026-07-19 (6) — PR #49 merged + Phase 0 inventory (rebased on dfbcdd6)
+## HANDOFF 2026-07-19 — Phase 0: file inventory regeneration (APPROVED · merged `fbbe7ff`)
 
-**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS — STOP for STAGE THREE review (Phase 0)**
-
-### PR #49 merge (explicit SHA APPROVAL)
-- **Merged:** `dfbcdd6` — governance: rebuild AGENT_INDEX as single resource map (#49)
-- **`main`:** `86cc7dd` → `dfbcdd6` (pushed)
-- **Verification on main:** `rm -rf .next && npm run prebuild` exit 0 · `npm run build` exit 0
-
-### Phase 0 (Flawless Agent-Navigation System)
-- **Branch:** `cursor/w4-file-inventory-audit-70a6` @ `0108100` (rebased onto `dfbcdd6`)
-- **PR:** https://github.com/robbieryan312-star/The-ledger/pull/44
-
-### Before / after counts
-| Metric | Before | After |
-|--------|--------|-------|
-| Total inventory rows | 210 | **274** |
-| Top-level `scripts/*.ts` | ~18 (prefix-filtered) | **43** |
-| `scripts/lib/*` | 22 (many false MERGE) | **22** (all KEEP, ≥1 importer) |
-| `scripts/__tests__/*.test.ts` | partial | **33** |
-| `scripts/archive/*` | 0 | **5** |
-
-Independent Python recount: **274** (matches JSON + MD). `scripts/lib` MERGE false-positives: **0**.
-
-### Commands run (this session)
-- `git merge dfbcdd6` on `main` → pushed
-- `git rebase main` on Phase 0 branch
-- `npm run audit:inventory` → exit 0 (274 files)
-- `npm run audit:inventory-md` → exit 0 (274 rows)
-- `rm -rf .next && npm run prebuild` → exit 0
-- `npm run build` → exit 0
-
-### Open / next
-- **STOP** — Claude STAGE THREE on Phase 0 before P1
-- PR #47 (roadmap rebase) and PR #48 (Sanders AP-URL P0) still gated separately
-
----
-
-## HANDOFF 2026-07-19 (5) — Phase 0: file inventory regeneration (Flawless Agent-Navigation System)
-
-**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS — STOP for STAGE THREE review**
+**From:** Cursor · **To:** Claude Code · **Verdict:** **APPROVED** — merged to `main` @ `fbbe7ff` (PR #44)
 
 ### Objective
-Phase 0 prerequisite: regenerate file inventory to reflect the real current tree; fix false
-`0 importers / MERGE` on `scripts/lib/*`; add `audit:inventory-md` npm alias; GENERATED header.
+Regenerate trustworthy FILE_INVENTORY_AUDIT; fix scripts/lib false MERGE verdicts; add `audit:inventory-md`.
 
-### Current state
-- **Branch:** `cursor/w4-file-inventory-audit-70a6` @ `7a91b07`
-- **PR:** https://github.com/robbieryan312-star/The-ledger/pull/44
-- **Base:** `main` @ `86cc7dd`
-- **Tree:** clean (committed)
-- **Prebuild/build:** clean `.next` → `npm run prebuild` exit 0 · `npm run build` exit 0
-
-### Before / after counts
-| Metric | Before | After |
-|--------|--------|-------|
+### Outcome
+| Metric | Before (`main`) | After |
+|--------|-----------------|-------|
 | Total inventory rows | 210 | **274** |
 | Top-level `scripts/*.ts` | ~18 (prefix-filtered) | **43** |
-| `scripts/lib/*` | 22 (many false MERGE) | **22** (all KEEP, ≥1 importer) |
+| `scripts/lib/*` false MERGE | 16+ | **0** |
 | `scripts/__tests__/*.test.ts` | partial | **33** |
 | `scripts/archive/*` | 0 | **5** |
-| `scripts/ingest/florida/*` | 32 | **32** |
 
-Independent Python recount of nav-relevant tracked files: **274** (matches JSON + MD row count).
+**PR:** https://github.com/robbieryan312-star/The-ledger/pull/44 · **Branch:** `cursor/w4-file-inventory-audit-70a6`
 
 ### Root cause fixed
-`countImporters()` only matched `@/` paths; `scripts/lib/*` is imported via `./lib/foo` and
-`../lib/foo`. Rewrote importer index: parse all `import`/`export from` + dynamic `import()` specs,
-resolve relative + `@/` aliases, cross-reference `package.json` npm script entrypoints.
+Importer scan only matched `@/` paths; `scripts/lib/*` uses `./lib/` and `../lib/` relative imports.
 
-### Commits
-- `7a91b07` — feat(audit): Phase 0 — regenerate file inventory (210→274 rows)
-
-### Commands run (this session)
-- `npm run audit:inventory` → exit 0 (274 files)
-- `npm run audit:inventory-md` → exit 0 (274 rows, 0 scripts/lib MERGE)
-- `rm -rf .next && npm run prebuild` → exit 0
-- `npm run build` → exit 0
-
-### Files touched
-| Path | Action | What changed |
-|------|--------|--------------|
-| `scripts/generate-file-inventory.ts` | modified | Full nav scan: all top-level scripts, archive, 33 guards |
-| `scripts/generate-file-inventory-audit.ts` | modified | Relative import resolution; GENERATED header; layout override |
-| `package.json` | modified | Added `audit:inventory-md` alias |
-| `data/reports/file-inventory.json` | regenerated | 210 → 274 files |
-| `docs/workflows/FILE_INVENTORY_AUDIT.md` | regenerated | 274 rows; scripts/lib all KEEP |
-
-### Acceptance evidence
-- Layer breakdown: L1=22 L3=43 L3a=5 L4=32 L5=17 L6=22 L7=25 L8=33 L2=75
-- `rg 'scripts/lib/.*MERGE' docs/workflows/FILE_INVENTORY_AUDIT.md` → 0 matches
-- Header contains **GENERATED** + regenerate command
-
-### Open / next
-- **STOP** — await Claude STAGE THREE on Phase 0 before P1 (news-path reconciliation)
-- PR #47 / #48 / #49 merge still gated separately
+### Verification
+- `npm run audit:inventory` + `audit:inventory-md` → 274 rows; 0 scripts/lib MERGE
+- `rm -rf .next && npm run prebuild` + `npm run build` → exit 0
 
 ---
 

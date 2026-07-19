@@ -31,9 +31,8 @@ const ALLOW_MISSING_PATHS = new Set([
   // Land via PR #47 (dual-reference roadmap), Claude-approved; AGENT_INDEX links them now.
   'docs/PILOT_STATE_CHECKLIST.md',
   'docs/workflows/DUAL_REFERENCE_ROADMAP.md',
-  // Per-state source sub-file (FL reference) created via the source-consolidation brief; AGENT_INDEX
-  // defines the pattern now so agents route state-local media correctly as states scale.
-  'docs/sources/florida.md',
+  // Per-state source sub-file (FL reference) — created Phase 1 source subsystem.
+  // 'docs/sources/florida.md',
 ]);
 
 /** Load simple .gitignore patterns (exact paths + single-segment globs). */

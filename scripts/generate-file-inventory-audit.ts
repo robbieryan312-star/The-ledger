@@ -104,7 +104,6 @@ const SHIM_MODULES = new Set([
   'branches.ts',
   'billCitizenImpact.ts',
   'candidateIssues.ts',
-  'sourceTiers.ts',
   'voteDisplay.ts',
   'voteDonorConnections.ts',
   'zipLookup.ts',

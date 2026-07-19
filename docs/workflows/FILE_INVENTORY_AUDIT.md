@@ -3,7 +3,7 @@
 **GENERATED** — do not edit by hand. Regenerate:
 `npm run audit:inventory && npm run audit:inventory-md`
 
-**Generated:** 2026-07-19T21:43:42Z · **Baseline:** data/reports/file-inventory.json (274 files)
+**Generated:** 2026-07-19T21:59:40Z · **Baseline:** data/reports/file-inventory.json (273 files)
 **Type:** FINDINGS ONLY — no deletions until Claude briefs.
 
 ## W3c accuracy finding
@@ -143,7 +143,6 @@ PILOT_PROFILE_CHECKLIST rows 5–6 claimed **done**; S000033 manifest has honest
 | lib/data/snapshotTypes.ts | Data accessor / transform | lib/data/slices/filingsSecedgar.ts, lib/data/slices/financeFldoe.ts, lib/data/slices/judiciaryCourts.ts, lib/data/slices/legislationFlorida.ts, lib/data/slices/lobbyingFllobbyist.ts | — | KEEP | importer scan |
 | lib/data/sourceCatalog.ts | Data accessor / transform | lib/data/reference-sources.ts | — | KEEP | importer scan |
 | lib/data/sourceIntegrity.ts | Data accessor / transform | lib/data/buildSaidDidDiffs.ts, lib/data/issuesFromTopicPositions.ts, lib/data/profileSnapshot.ts, lib/data/sanitizeProfileUiData.ts, lib/data/topicPositions.ts | — | KEEP | importer scan |
-| lib/data/sourceTiers.ts | Data accessor / transform | DEAD shim — 0 lib/data path consumers | — | DELETE | override |
 | lib/data/stockTrades.ts | Data accessor / transform | app/congress/page.tsx, app/dashboard/page.tsx, app/politicians/[id]/page.tsx, app/politicians/page.tsx, app/states/[code]/page.tsx | — | KEEP | importer scan |
 | lib/data/supportedStates.ts | Data accessor / transform | app/sitemap.ts, app/states/[code]/page.tsx, scripts/__tests__/sitemapGuard.test.ts | — | KEEP | importer scan |
 | lib/data/topicAliases.ts | Data accessor / transform | lib/data/issuesFromTopicPositions.ts, lib/data/memberDeep.ts, lib/data/profileRecordByTopic.ts, lib/data/sourceIntegrity.ts, scripts/apply-crec-sync-to-profiles.ts | — | KEEP | importer scan |
@@ -289,5 +288,5 @@ PILOT_PROFILE_CHECKLIST rows 5–6 claimed **done**; S000033 manifest has honest
 | scripts/verify-office-resolution.ts | Source module | package.json: verify:office | — | KEEP | importer scan |
 | scripts/verify-phase17b-batch.ts | Source module | scan: 0 importers (verify) | — | MERGE | override |
 
-Total rows: 274
+Total rows: 273
 

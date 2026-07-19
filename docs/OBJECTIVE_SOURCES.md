@@ -11,8 +11,9 @@ architecture (static JSON pipelines, no database) and its authoritative tier sys
 - Long-established nonpartisan track record with documented methodology
 - Academic institution with transparent research standards
 
-Sources with a political lean are included but **clearly labeled** — presenting multiple
-labeled perspectives is more honest than pretending lean doesn't exist.
+**State/local sources:** national outlets (AP, Reuters, Politico…) live in this file.
+State-specific local outlets and agencies live in `docs/sources/<state>.md` — Florida is the
+reference template (`docs/sources/florida.md`). See AGENT_INDEX §2–§3.
 
 ---
 
@@ -54,7 +55,9 @@ labeled perspectives is more honest than pretending lean doesn't exist.
 | Congressional Record (CREC) | GovInfo/GPO | `GOVINFO_API_KEY` / `DATA_GOV_API_KEY` | SET | CREC sync | No floor statements |
 | State bills (FL + others) | LegiScan | `LEGISCAN_API_KEY` | SET | `ingest:legiscan-fl` | No state legislation |
 | State legislators | Open States v3 | `OPENSTATES_API_KEY` | SET | `ingest:openstates-fl` | No state-legislator roster |
-| News (API path) | NewsAPI | `NEWSAPI_KEY` | SET (plan 426-limited) | — | Approved-outlet RSS registry is the working path |
+| News (member profiles) | Approved-outlet RSS registry | none | — | `sync:news-rss` | **Primary** — see `lib/data/SOURCE_LOOKUP.md` + AGENT_INDEX §3 |
+| News (member profiles, fallback) | GDELT DOC API | none | — | `sync:news-rss` / `sync:news-national` | **Secondary** when RSS thin |
+| News (API path) | NewsAPI | `NEWSAPI_KEY` | SET (plan 426-limited) | `ingest:news-fl` (FL snapshot only) | **Tertiary** — upgrade plan before relying on it |
 | Cost of living (components/metros) | BEA Data API | `BEA_API_KEY` | EMPTY (owner CAPTCHA pending) | `ingest:bea-rpp-fl` | FRED keyless CSV covers the all-items state index |
 | Labor/employment (state, county, metro CPI) | BLS API | `BLS_API_KEY` (optional) | keyless OK | `ingest:bls-*` | Keyless works at low volume |
 | Court opinions | CourtListener | `COURTLISTENER_API_KEY` (optional) | keyless OK | `ingest:courts-fl` | Keyless works for basic use |
