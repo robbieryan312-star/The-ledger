@@ -2,9 +2,9 @@
   "meta": {
     "source": {
       "name": "U.S. Census Bureau ACS",
-      "url": "https://data.census.gov",
+      "url": "https://api.census.gov",
       "tier": "official",
-      "description": "ACS 5-year county + state attainment via data.census.gov"
+      "description": "ACS 5-year county + state attainment estimates"
     },
     "asOf": "2026-07-19",
     "count": 67,
@@ -16,15 +16,11 @@
     "attainmentFetchedLive": true,
     "coverage": "full",
     "isSample": false,
-    "fetchedAt": "2026-07-19T03:56:20.088Z",
-    "datasetUrl": "https://data.census.gov/api/access/data/table?id=ACSDT5Y2023.B01003&g=040XX00US12%240500000",
-    "attainmentUrl": "https://data.census.gov/api/access/data/table?id=ACSDT5Y2023.B15003&g=040XX00US12",
-    "retrieval": "data.census.gov",
+    "fetchedAt": "2026-07-19T05:50:34.325Z",
+    "datasetUrl": "https://api.census.gov/data/2023/acs/acs5?get=NAME,B01003_001E,B19013_001E,B25077_001E&for=county:*&in=state:12&key=***",
+    "attainmentUrl": "https://api.census.gov/data/2023/acs/acs5?get=B15003_001E,B15003_017E,B15003_018E,B15003_019E,B15003_020E,B15003_021E,B15003_022E,B15003_023E,B15003_024E,B15003_025E&for=state:12&key=***",
+    "retrieval": "api.census.gov",
     "period": "ACS 5-Year 2023",
-    "auxiliaryUrls": {
-      "income": "https://data.census.gov/api/access/data/table?id=ACSDT5Y2023.B19013&g=040XX00US12%240500000",
-      "home": "https://data.census.gov/api/access/data/table?id=ACSDT5Y2023.B25077&g=040XX00US12%240500000"
-    },
     "note": "ACS county set (n=67) + state ACS (single read-path) + B15003. County unemployment from BLS LAUS.",
     "blsSource": {
       "name": "U.S. Bureau of Labor Statistics",
@@ -51,7 +47,7 @@
       "nationalMedianHouseholdIncome": 78538,
       "nationalMedianHomeValue": 303400,
       "survey": "ACS 5-Year 2023",
-      "censusApiUrl": "https://data.census.gov"
+      "censusApiUrl": "https://api.census.gov/data/2023/acs/acs5"
     }
   },
   "records": [

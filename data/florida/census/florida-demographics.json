@@ -11,7 +11,7 @@
     "stateCode": "FL",
     "provenance": "fetched-live",
     "fetchedLive": true,
-    "datasetUrl": "https://data.census.gov/api/access/data/table?id=ACSDT5Y2023.B01003&g=040XX00US12",
+    "datasetUrl": "https://api.census.gov/data/2023/acs/acs5?get=NAME,B01003_001E,B19013_001E,B25077_001E&for=state:12&key=***",
     "note": "Written by ingest:fl-counties — same ACS 2023 vintage as county file (single read-path)."
   },
   "records": [
@@ -24,7 +24,7 @@
       "nationalMedianHouseholdIncome": 78538,
       "nationalMedianHomeValue": 303400,
       "survey": "ACS 5-Year 2023",
-      "censusApiUrl": "https://data.census.gov",
+      "censusApiUrl": "https://api.census.gov/data/2023/acs/acs5",
       "source": {
         "name": "U.S. Census Bureau ACS",
         "url": "https://api.census.gov",
