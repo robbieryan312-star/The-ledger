@@ -8,10 +8,9 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-19):**
-- Branch: `cursor/fl-by-the-numbers-70a6` · PR [#36](https://github.com/robbieryan312-star/The-ledger/pull/36) draft · **do not merge**
-- Defects 1–3 fixed; DeSantis portrait same-origin for CI; local gate green; tip CI re-run
-- CI artifact: **`render-integrity-contact-sheet`**
-- Contact-sheet metadata: generatedAt `2026-07-19T01:22:02.233Z`
+- Branch: `cursor/fl-by-the-numbers-70a6` · HEAD `58d1f9f` · PR [#36](https://github.com/robbieryan312-star/The-ledger/pull/36) draft · **do not merge**
+- CI `guards` **GREEN** ([`29668477259`](https://github.com/robbieryan312-star/The-ledger/actions/runs/29668477259)) · artifact **`render-integrity-contact-sheet`**
+- Claude review defects 1–3 fixed; contact-sheet regenerated
 - Phase P **GATED** · **STOP for Claude final approval**
 
 
@@ -28,7 +27,7 @@ core-rules, core-rules wins. Newest handoff on top.
 Fix three rendered defects on PR #36: metro CPI YoY meaning, MERIC user copy, education mid-word wrap. Re-gate; STOP for Claude final approval. Do not merge. Phase P gated.
 
 ### Verdict / outcome
-**PASS (local)** — defects fixed; `npm run build` exit 0; render-integrity 4/4 (incl. mid-word assert). Tip CI pending in this commit. **STOP for Claude final approval.**
+**PASS** — defects fixed; local + CI guards GREEN on `58d1f9f` (run `29668477259`, artifact `render-integrity-contact-sheet`). **STOP for Claude final approval. Do not merge.**
 
 ### Fixes
 
