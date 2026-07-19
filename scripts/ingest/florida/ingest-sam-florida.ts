@@ -2,7 +2,7 @@
  * SAM.gov entity search for Florida (requires SAM_API_KEY).
  * Output: data/florida/sam/florida-contractors.json
  */
-import { fetchJson, loadEnvLocal, writeFloridaSnapshot } from '../../lib/ingest-utils';
+import { fetchJson, loadEnvLocal, writeFloridaSnapshotPreservingLive } from '../../lib/ingest-utils';
 
 const SAM_SOURCE = {
   name: 'SAM.gov',
@@ -19,7 +19,7 @@ async function main(): Promise<void> {
   const records: Array<Record<string, unknown>> = [];
 
   if (!key) {
-    const out = await writeFloridaSnapshot('sam', 'florida-contractors.json', {
+    const { action, outFile } = await writeFloridaSnapshotPreservingLive('sam', 'florida-contractors.json', {
       meta: {
         source: SAM_SOURCE,
         asOf,
@@ -32,7 +32,11 @@ async function main(): Promise<void> {
       },
       records: [],
     });
-    console.warn(`Wrote empty ${out} — SAM_API_KEY missing (login.gov verification required)`);
+    console.warn(
+      action === 'preserved-prior'
+        ? `Preserved prior fetched-live ${outFile} — SAM_API_KEY missing`
+        : `Wrote empty ${outFile} — SAM_API_KEY missing (login.gov verification required)`,
+    );
     return;
   }
 
@@ -68,7 +72,7 @@ async function main(): Promise<void> {
     errors.push(err instanceof Error ? err.message : String(err));
   }
 
-  const out = await writeFloridaSnapshot('sam', 'florida-contractors.json', {
+  const { action, outFile } = await writeFloridaSnapshotPreservingLive('sam', 'florida-contractors.json', {
     meta: {
       source: SAM_SOURCE,
       asOf,
@@ -82,7 +86,12 @@ async function main(): Promise<void> {
     records,
   });
 
-  console.log(`Wrote ${out} (${records.length} records)`);
+  if (action === 'preserved-prior') {
+    console.warn(`Preserved prior fetched-live ${outFile} — refused to overwrite with ${records.length} records after errors`);
+    process.exitCode = 1;
+  } else {
+    console.log(`Wrote ${outFile} (${records.length} records)`);
+  }
 }
 
 main().catch((err: unknown) => {

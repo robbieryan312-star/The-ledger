@@ -2,7 +2,7 @@
  * NewsAPI Florida political coverage.
  * Output: data/florida/news/florida-coverage.json
  */
-import { loadEnvLocal, writeFloridaSnapshot } from '../../lib/ingest-utils';
+import { loadEnvLocal, writeFloridaSnapshotPreservingLive } from '../../lib/ingest-utils';
 
 const NEWSAPI_SOURCE = {
   name: 'NewsAPI',
@@ -19,7 +19,7 @@ async function main(): Promise<void> {
   const records: Array<Record<string, unknown>> = [];
 
   if (!key) {
-    const out = await writeFloridaSnapshot('news', 'florida-coverage.json', {
+    const { action, outFile } = await writeFloridaSnapshotPreservingLive('news', 'florida-coverage.json', {
       meta: {
         source: NEWSAPI_SOURCE,
         asOf,
@@ -31,7 +31,11 @@ async function main(): Promise<void> {
       },
       records: [],
     });
-    console.warn(`Wrote empty ${out} — NEWSAPI_KEY missing`);
+    console.warn(
+      action === 'preserved-prior'
+        ? `Preserved prior fetched-live ${outFile} — NEWSAPI_KEY missing`
+        : `Wrote empty ${outFile} — NEWSAPI_KEY missing`,
+    );
     return;
   }
 
@@ -66,7 +70,7 @@ async function main(): Promise<void> {
     errors.push(err instanceof Error ? err.message : String(err));
   }
 
-  const out = await writeFloridaSnapshot('news', 'florida-coverage.json', {
+  const { action, outFile } = await writeFloridaSnapshotPreservingLive('news', 'florida-coverage.json', {
     meta: {
       source: NEWSAPI_SOURCE,
       asOf,
@@ -80,7 +84,12 @@ async function main(): Promise<void> {
     records,
   });
 
-  console.log(`Wrote ${out} (${records.length} records)`);
+  if (action === 'preserved-prior') {
+    console.warn(`Preserved prior fetched-live ${outFile} — refused to overwrite with ${records.length} records after errors`);
+    process.exitCode = 1;
+  } else {
+    console.log(`Wrote ${outFile} (${records.length} records)`);
+  }
 }
 
 main().catch((err: unknown) => {

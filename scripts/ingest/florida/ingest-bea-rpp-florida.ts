@@ -12,7 +12,7 @@
  */
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { loadEnvLocal, projectRoot } from '../../lib/ingest-utils';
+import { loadEnvLocal, projectRoot, writeSnapshotPreservingLive } from '../../lib/ingest-utils';
 
 const BEA_SOURCE = {
   name: 'U.S. Bureau of Economic Analysis',
@@ -260,8 +260,12 @@ async function main(): Promise<void> {
         },
         state: null,
       };
-      await writeFile(out, JSON.stringify(payload, null, 2) + '\n', 'utf8');
-      console.warn(`Wrote ${out} (provenance=honest-gap)`);
+      const { action } = await writeSnapshotPreservingLive(out, payload);
+      console.warn(
+        action === 'preserved-prior'
+          ? `Preserved prior fetched-live ${out} — refused to overwrite with honest-gap`
+          : `Wrote ${out} (provenance=honest-gap)`,
+      );
       process.exitCode = 1;
       return;
     }
@@ -367,7 +371,11 @@ async function main(): Promise<void> {
       : null,
   };
 
-  await writeFile(out, JSON.stringify(payload, null, 2) + '\n', 'utf8');
+  const { action } = await writeSnapshotPreservingLive(out, payload);
+  if (action === 'preserved-prior') {
+    console.warn(`Preserved prior fetched-live ${out} — refused to overwrite with incomplete BEA fetch`);
+    process.exit(1);
+  }
   console.log(`Wrote ${out} (live=${fetchedLive}, index=${allItemsIndex ?? '—'})`);
   if (!fetchedLive) process.exit(1);
 }

@@ -6,7 +6,7 @@
  * Committee Reports mentioning Florida — the legislative-branch counterpart to
  * the Federal Register's executive/agency documents. Each item dated and linked.
  */
-import { fetchJson, loadEnvLocal, writeFloridaSnapshot } from '../../lib/ingest-utils';
+import { fetchJson, loadEnvLocal, writeFloridaSnapshotPreservingLive } from '../../lib/ingest-utils';
 
 const GOVINFO_SOURCE = {
   name: 'GovInfo (U.S. GPO)',
@@ -42,11 +42,15 @@ async function main(): Promise<void> {
   const records: Array<Record<string, unknown>> = [];
 
   if (!key) {
-    const out = await writeFloridaSnapshot('govinfo', 'florida-legislative-docs.json', {
+    const { action, outFile } = await writeFloridaSnapshotPreservingLive('govinfo', 'florida-legislative-docs.json', {
       meta: { source: GOVINFO_SOURCE, asOf, fetchedAt, count: 0, stateCode: 'FL', fetchedLive: false, errors: ['No api.data.gov key configured'], note: 'No record on file — set DATA_GOV_API_KEY (api.data.gov key).' },
       records: [],
     });
-    console.warn(`Wrote empty ${out}`);
+    console.warn(
+      action === 'preserved-prior'
+        ? `Preserved prior fetched-live ${outFile} — no api.data.gov key`
+        : `Wrote empty ${outFile}`,
+    );
     return;
   }
 
@@ -79,7 +83,7 @@ async function main(): Promise<void> {
     errors.push(err instanceof Error ? err.message : String(err));
   }
 
-  const out = await writeFloridaSnapshot('govinfo', 'florida-legislative-docs.json', {
+  const { action, outFile } = await writeFloridaSnapshotPreservingLive('govinfo', 'florida-legislative-docs.json', {
     meta: {
       source: GOVINFO_SOURCE,
       asOf,
@@ -94,7 +98,12 @@ async function main(): Promise<void> {
     records,
   });
 
-  console.log(`Wrote ${out} (${records.length} records)`);
+  if (action === 'preserved-prior') {
+    console.warn(`Preserved prior fetched-live ${outFile} — refused to overwrite with ${records.length} records after errors`);
+    process.exitCode = 1;
+  } else {
+    console.log(`Wrote ${outFile} (${records.length} records)`);
+  }
 }
 
 main().catch((err: unknown) => {

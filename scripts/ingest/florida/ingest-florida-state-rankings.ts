@@ -8,7 +8,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { B15003_VARS, attainmentFromB15003 } from '../../lib/census-attainment';
-import { loadEnvLocal, projectRoot } from '../../lib/ingest-utils';
+import { loadEnvLocal, projectRoot, writeSnapshotPreservingLive } from '../../lib/ingest-utils';
 
 const CENSUS_SOURCE = {
   name: 'U.S. Census Bureau ACS',
@@ -197,7 +197,16 @@ async function writePayload(payload: Record<string, unknown>): Promise<string> {
 
 async function writeHonestGap(reason: string): Promise<void> {
   const asOf = new Date().toISOString().slice(0, 10);
-  const out = await writePayload({
+  const out = path.join(
+    projectRoot,
+    'data',
+    'florida',
+    'census',
+    'florida-state-rankings-sample.json',
+  );
+  // Data-loss prevention (core-rules §6): never overwrite a prior fetched-live rankings
+  // snapshot with null ranks on fetch failure. Preserve the last good numbers instead.
+  const { action } = await writeSnapshotPreservingLive(out, {
     meta: {
       source: CENSUS_SOURCE,
       asOf,
@@ -217,7 +226,11 @@ async function writeHonestGap(reason: string): Promise<void> {
     },
     ageBreakdown: [],
   });
-  console.warn(`Wrote ${out} (provenance=honest-gap)`);
+  console.warn(
+    action === 'preserved-prior'
+      ? `Preserved prior fetched-live ${out} — refused to overwrite ranks with honest-gap`
+      : `Wrote ${out} (provenance=honest-gap)`,
+  );
 }
 
 async function buildFromApiKey(key: string): Promise<Record<string, unknown>> {

@@ -77,6 +77,78 @@ export async function writeFloridaSnapshot<T>(
   return outFile;
 }
 
+// ─── Data-loss prevention (core-rules §6): never overwrite a live snapshot with empty ───
+
+/** Read a prior snapshot JSON from disk, or null if absent/unreadable/invalid. */
+export async function readPriorSnapshot(outFile: string): Promise<Record<string, unknown> | null> {
+  try {
+    return JSON.parse(await readFile(outFile, 'utf8')) as Record<string, unknown>;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * True when a snapshot payload represents live/verified data worth preserving.
+ * Checks the explicit provenance enum first, then legacy boolean/split-live flags.
+ */
+export function snapshotIsLive(payload: unknown): boolean {
+  if (!payload || typeof payload !== 'object') return false;
+  const meta = (payload as { meta?: Record<string, unknown> }).meta;
+  if (!meta || typeof meta !== 'object') return false;
+  if (meta.provenance === 'fetched-live' || meta.provenance === 'computed-from-published-tables') {
+    return true;
+  }
+  if (meta.fetchedLive === true) return true;
+  return (
+    meta.censusFetchedLive === true ||
+    meta.blsFetchedLive === true ||
+    meta.attainmentFetchedLive === true
+  );
+}
+
+export type PreserveResult = { action: 'written' | 'preserved-prior'; outFile: string };
+
+/**
+ * Write `nextPayload` to `outFile` UNLESS it is a non-live (honest-gap / empty) snapshot that
+ * would clobber a prior live one — in which case the prior file is preserved untouched and the
+ * fetch failure is surfaced via the caller's non-zero exit. Prevents the DATA-02..05 defect
+ * class where a failed re-fetch overwrites verified data with nulls (core-rules §6).
+ *
+ * Passing `--full-corpus`-style force is intentionally NOT supported: a genuine gap is only
+ * written when there is no prior live snapshot to protect.
+ */
+export async function writeSnapshotPreservingLive(
+  outFile: string,
+  nextPayload: unknown,
+  opts?: { isLive?: (p: unknown) => boolean },
+): Promise<PreserveResult> {
+  const isLive = opts?.isLive ?? snapshotIsLive;
+  if (!isLive(nextPayload)) {
+    const prior = await readPriorSnapshot(outFile);
+    if (prior && isLive(prior)) {
+      console.warn(
+        `[preserve] ${path.basename(outFile)}: fetch produced no live data — keeping prior ` +
+          `fetched-live snapshot (not overwriting). core-rules §6.`,
+      );
+      return { action: 'preserved-prior', outFile };
+    }
+  }
+  await mkdir(path.dirname(outFile), { recursive: true });
+  await writeFile(outFile, JSON.stringify(nextPayload, null, 2) + '\n', 'utf8');
+  return { action: 'written', outFile };
+}
+
+/** Florida-subdir wrapper around {@link writeSnapshotPreservingLive}. */
+export async function writeFloridaSnapshotPreservingLive<T>(
+  subdir: string,
+  filename: string,
+  payload: { meta: DataSnapshotMeta; records: T[] },
+): Promise<PreserveResult> {
+  const outFile = path.join(DATA_ROOT, 'florida', subdir, filename);
+  return writeSnapshotPreservingLive(outFile, payload);
+}
+
 export function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
