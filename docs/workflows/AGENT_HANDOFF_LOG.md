@@ -91,15 +91,71 @@ criteria on PR #45's comment thread.
 else looks perfect"). **Phase P UNLOCKED**, sequenced AFTER Wave 0 merge + Wave 1 data-loss prevention.
 Visual changes to the FL page now require new owner direction.
 
-**Current state (2026-07-19T14:00Z):**
-- **`main` @ `0e5a3e5`** — prior session pushed; PR #43 + #46 merged.
-- **Branch `cursor/dual-reference-roadmap-70a6`** — Dual Reference Lock roadmap docs (this session); PR pending.
+**Current state (2026-07-19T14:22Z):**
+- **`main` @ `0e5a3e5`** — PR #43 + #46 merged.
+- **Branch `cursor/dual-reference-roadmap-70a6`** — PR #47; self-audit pass 2 (W3d Said→Did count fix).
 - **`beta` mirrored** to `main` after prior push.
 - **Wave 0d BLOCKED:** `the-ledger-s4dn.vercel.app` does NOT track `main` — owner Vercel wiring.
-- **P0 (owner):** Cursor Cloud injected rules still reference deleted `agent-ops.mdc` — re-sync with on-disk core-rules.
+- **P0 (owner):** Cursor Cloud injected rules still reference deleted `agent-ops.mdc`.
 - **Approved:** https://the-ledger-s4dn.vercel.app
 
-## Latest session — Dual Reference Lock roadmap (COMPLETE — await owner verification)
+## Latest session — Self-audit (Dual Reference Lock) — FAIL reference-complete · PASS doc repair
+
+### Objective
+Claude down — self-review assuming work is wrong until independently verified; determine visual-review readiness for FL + Sanders.
+
+### Verdict / outcome
+**FAIL** Sanders reference-complete · **PASS** doc/checklist repair · **FL ready for owner visual data pass** (presentation already 👁 locked) · **Sanders ready for gap-review visual only** — NOT approval-ready.
+
+### Self-audit findings (independent disk evidence)
+
+| Reference | Claim audited | Disk truth | Severity |
+|-----------|---------------|------------|----------|
+| S000033 Said→Did | Docs said **8** links | `countSaidDidLinksInFile` = **1** (`saidDid.json`) | P1 wrong-shipped docs — **fixed** |
+| S000033 checklist row 8 | `**done**` | 1/15 target | P1 — **fixed to partial** |
+| S000033 positions | honest-gap | `platformPositions` all `[]` | honest-gap correct |
+| S000033 orgVoteLinks | honest-gap | `links: []` + documented note | honest-gap correct |
+| S000033 votes | 30 filled | 30 in `votes.json` | ✅ |
+| S000033 statements | — | 5 on disk | partial depth |
+| FL legislation | checklist said honest-gap | 10 bills in `legislation-florida.json` | P2 doc drift — **fixed** |
+| FL news | checklist said honest-gap | 48 articles in `news-florida.json` | P2 doc drift — **fixed** |
+| FL counties | 67 filled | 67 records, `coverage: full` | ✅ |
+| FL county map | — | `USAMap` `countyByFips` empty | P1 dead UI — flagged, needs owner decision |
+
+### Commits (this session)
+- pending — `audit: fix Said→Did doc count 8→1; W3d guard; FL checklist sample accuracy`
+
+### Commands run (this session)
+- `countSaidDidLinksInFile` on `S000033/saidDid.json` → **1**
+- `npx tsx --test scripts/__tests__/profileCategoryIntegrity.test.ts` → 8/8 pass
+- `RENDER_INTEGRITY_SKIP_POSTBUILD=1 npm run prebuild` → exit 0
+- `RENDER_INTEGRITY_SKIP_POSTBUILD=1 npm run build` → exit 0
+- `npm run audit:profile-credibility --gate` → 0 defect rows (7 profiles)
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `PILOT_PROFILE_CHECKLIST.md` | modified | Row 8 → partial (1/15) |
+| `PROGRESS.md` | modified | Said→Did 1/15; FL sample-committed counts |
+| `docs/workflows/DUAL_REFERENCE_ROADMAP.md` | modified | Said→Did 1 link; FL legislation/news accurate |
+| `docs/PILOT_STATE_CHECKLIST.md` | modified | Rows 5+8 sample-committed (not honest-gap) |
+| `lib/data/__fixtures__/profileCategoryIntegrity.fixture.ts` | modified | W3d `PILOT_SAID_DID_DEPTH_KNOWN_GOOD` |
+| `scripts/__tests__/profileCategoryIntegrity.test.ts` | modified | W3d guard: no **done** below 15 links; no saidDid=8 in PROGRESS |
+
+### Owner visual-review readiness
+| Surface | Ready? | Notes |
+|---------|--------|-------|
+| `/states/FL` | **YES** — data pass | Presentation 👁 locked; review keyed gaps + dead county map |
+| `/politicians/bernie-sanders` | **Gap-review only** | NOT reference-complete; 1 Said→Did, empty positions, no org links |
+
+### Open / next (blocked on owner 👁 + conduit fixes)
+1. Sanders: grow Said→Did 1→15; fix Ballotpedia positions pipeline; evaluate national Schedule A org links
+2. FL: county map wire-or-remove decision
+3. Merge PR #47 after owner confirms roadmap model
+
+---
+
+## Prior session — Dual Reference Lock roadmap (COMPLETE — await owner verification)
 
 ### Objective
 Owner directive: update `PROGRESS.md` and roadmap to lock **Florida** + **Sanders (S000033)** before
