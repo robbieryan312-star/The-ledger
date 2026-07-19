@@ -8,10 +8,10 @@ core-rules, core-rules wins. Newest handoff on top.
 ---
 
 **Current state (2026-07-19):**
-- Branch: `cursor/fl-by-the-numbers-70a6` · HEAD `58d1f9f` · PR [#36](https://github.com/robbieryan312-star/The-ledger/pull/36) draft · **do not merge**
-- CI `guards` **GREEN** ([`29668477259`](https://github.com/robbieryan312-star/The-ledger/actions/runs/29668477259)) · artifact **`render-integrity-contact-sheet`**
-- Claude review defects 1–3 fixed; contact-sheet regenerated
-- Phase P **GATED** · **STOP for Claude final approval**
+- Branch: `cursor/vercel-postbuild-skip-70a6` → merge to `main` after guards GREEN
+- PR [#36](https://github.com/robbieryan312-star/The-ledger/pull/36) **MERGED** @ `ea33649` (Claude APPROVAL; guards GREEN before merge)
+- Fixing Vercel: skip `test:render-integrity` when `VERCEL=1` (builders lack Chromium); CI still enforces render-integrity
+- Phase P **GATED** until owner visual sign-off on **deployed** mobile `/states/FL`
 
 
 ## Improvement backlog
@@ -20,6 +20,26 @@ core-rules, core-rules wins. Newest handoff on top.
 |------|------|--------|
 | 2026-07-18 | `npm audit`: 7 vulns remain after safe `npm audit fix` — need upstream Next/react-simple-maps (see `docs/workflows/NPM_AUDIT_2026-07-18.md`) | open |
 | 2026-07-11 | Add an explicit guard for national news refresh semantics so a successful empty response cannot be confused with fetch failure or stale-window retention. | open |
+
+## Latest session — Deploy pipeline: merge #36 + Vercel postbuild skip (IN PROGRESS)
+
+### Objective
+Merge Claude-approved PR #36; fix stale/failing Vercel production so owner can review deployed `/states/FL`.
+
+### Verdict / outcome
+**IN PROGRESS** — #36 MERGED `ea33649`. Vercel skip fix on branch; awaiting CI + production deploy success.
+
+### Process rule
+Merged only after `guards` GREEN on tip `9ed7693` (run `29668533928`).
+
+### Commits
+- `ea33649` — Merge pull request #36
+- (pending) — postbuild skip when `VERCEL=1`
+
+### Open / next
+- Merge Vercel skip → confirm production HTML has `#section-01`
+- Owner request: consolidate three Vercel projects to one canonical
+
 
 ## Latest session — Claude review defect fixes 1–3 (STOP for final approval)
 
