@@ -237,27 +237,37 @@ function RankChip({
   rank,
   of = 50,
   hint,
+  senseNote,
+  basis,
 }: {
   rank: number | null | undefined;
   of?: number;
-  /** Short sense label shown before the chip (e.g. "Joblessness", "Lower cost → #1"). */
+  /** Short sense label shown before the chip (e.g. "Joblessness"). */
   hint?: string;
+  /** Direction note appended inside the chip when rank order is non-obvious (e.g. "1 = lowest cost"). */
+  senseNote?: string;
+  /** Small parenthetical naming the metric/vintage the rank is computed on (e.g. "ranks ACS 5-yr rate 4.8%"). */
+  basis?: string;
 }) {
-  const chip =
-    rank == null || !Number.isFinite(rank) ? (
-      <span className="font-mono text-[10.5px] italic text-[var(--muted)] border border-[var(--border-subtle)] rounded px-1.5 py-0.5">
-        Rank — No verified record available
-      </span>
-    ) : (
-      <span className="font-mono text-[10.5px] text-[var(--muted)] border border-[var(--border-subtle)] rounded px-1.5 py-0.5">
-        #{formatRank(rank)} of {of}
-      </span>
-    );
-  if (!hint) return chip;
+  const hasRank = rank != null && Number.isFinite(rank);
+  const chip = !hasRank ? (
+    <span className="font-mono text-[10.5px] italic text-[var(--muted)] border border-[var(--border-subtle)] rounded px-1.5 py-0.5">
+      Rank — No verified record available
+    </span>
+  ) : (
+    <span className="font-mono text-[10.5px] text-[var(--muted)] border border-[var(--border-subtle)] rounded px-1.5 py-0.5">
+      #{formatRank(rank!)} of {of}
+      {senseNote ? ` · ${senseNote}` : ''}
+    </span>
+  );
+  if (!hint && !(basis && hasRank)) return chip;
   return (
     <span className="inline-flex flex-wrap items-center gap-1">
-      <span className="text-[10.5px] text-[var(--muted)]">{hint}</span>
+      {hint && <span className="text-[10.5px] text-[var(--muted)]">{hint}</span>}
       {chip}
+      {basis && hasRank && (
+        <span className="text-[9.5px] text-[var(--muted)]/80">({basis})</span>
+      )}
     </span>
   );
 }
@@ -560,6 +570,12 @@ export default function FloridaStateDashboard({
       : counties.stateSummary.populationRank;
   const educationRank = ranksLive ? rankings.ranks.bachelorsPlusPct?.rank : null;
   const employmentRank = ranksLive ? rankings.ranks.unemploymentRate?.rank : null;
+  const unemploymentRankValue = ranksLive ? rankings.ranks.unemploymentRate?.value ?? null : null;
+  /** The joblessness rank is computed on the ACS 5-yr rate, a different basis than the BLS LAUS headline. */
+  const unemploymentRankBasis =
+    unemploymentRankValue != null
+      ? `ranks ACS 5-yr rate ${formatPercent(unemploymentRankValue)}`
+      : undefined;
   const ageRows = rankings.ageBreakdown ?? [];
 
   return (
@@ -765,7 +781,7 @@ export default function FloridaStateDashboard({
                 sub={
                   <>
                     {colVsUs && <span>U.S. = 100 · {colVsUs}</span>}
-                    <RankChip rank={colRank} hint="Lower cost → #1" />
+                    <RankChip rank={colRank} senseNote="1 = lowest cost" />
                   </>
                 }
               >
@@ -893,7 +909,12 @@ export default function FloridaStateDashboard({
                     {empRate != null && (
                       <span>Employment rate {formatPercent(empRate)}</span>
                     )}
-                    <RankChip rank={employmentRank} hint="Joblessness" />
+                    <RankChip
+                      rank={employmentRank}
+                      hint="Joblessness"
+                      senseNote="1 = least joblessness"
+                      basis={unemploymentRankBasis}
+                    />
                   </>
                 }
               >
