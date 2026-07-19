@@ -72,7 +72,7 @@ W4 expand FILE_INVENTORY_AUDIT with ACCURACY column + every-file table.
 - `93015e2` — Merge PR #43
 
 ### W1a — Claude manual @ e473848
-- Replaced `docs/CLAUDE_CODE_OPERATING_MANUAL.md` with verbatim `e473848` copy (132 lines; diff empty vs source).
+- Replaced `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` with verbatim `e473848` copy (132 lines; diff empty vs source).
 - Session-start wiring: `docs/AGENT_INDEX.md` (items 2–3), `AGENTS.md` cites Cursor manual; docs-integrity subtests for both manuals.
 
 ### W1b — Accuracy mandate (both agents)
@@ -122,7 +122,7 @@ branches (registry + S2) to main + beta; W3 fix the two confirmed defects (offic
 stub); Wave 1 preserve-on-failure ingests + national-sync scoping; W4 file-inventory audit.
 
 ### Verdict / outcome
-- **W1 (main, `34c935c`):** `docs/CLAUDE_CODE_OPERATING_MANUAL.md` cherry-picked to main and wired
+- **W1 (main, `34c935c`):** `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` cherry-picked to main and wired
   into `CLAUDE.md` + `docs/AGENT_INDEX.md` session-start order; docs-integrity subtest freezes it.
 - **W2 (main + beta):** merged PR #42 (registry, `20dc55d`) and PR #41 (S2, `c320269`); `beta` ff'd.
 - **W3 + Wave 1 (branch `cursor/w3-defects-wave1-dataloss-70a6`):** COMPLETE, full build green,

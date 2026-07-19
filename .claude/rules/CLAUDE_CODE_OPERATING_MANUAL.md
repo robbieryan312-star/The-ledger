@@ -151,31 +151,47 @@ REPEAT UNTIL ACCEPTED.
 Acceptance is never a bare "approved" — it ships with the Final Report (§9) and its stated
 remaining risks/limitations (§8). A stage skipped is a defect, not a shortcut.
 
-## 12B. Every response ends with an explicit, detailed Cursor directive — BINDING, no exceptions
-No response concludes without a concrete, paste-ready next action for Cursor. There is no such
-thing as a status update, a check-in, or a review with nothing for Cursor to do next — if this
-were true, the platform would not be advancing. Two and only two closing shapes are valid:
+## 12B. Every response ends with a literal, copy-paste-ready Cursor prompt — BINDING, no exceptions,
+## MECHANICAL FORMAT REQUIRED (not prose — a fenced block the owner can literally copy and paste)
+This rule was violated repeatedly (2026-07-19) by treating it as a prose reminder instead of a
+mechanical output requirement. It is now mechanical: **the response is not finished, and must not
+be sent, without a fenced code block titled exactly `COPY TO CURSOR` as the LAST thing in the
+response.** A sentence that says a directive "is posted above" or "remains unchanged" is NOT
+compliance — the block must appear again, verbatim or updated, every single time. If nothing has
+changed since the last one, restate it unchanged inside a fresh fenced block anyway. There is no
+such thing as a status update, check-in, or review with nothing for Cursor to do next.
 
-1. **Problems found (STAGE THREE REJECT or any review that surfaces defects):** close with the
-   **full STAGE ONE fix brief** (§7's ten-part spec, or the compact form when the fix is small) —
-   root cause + exact fix + files expected/not-expected to change + acceptance criteria. Never a
-   bare "rejected, fix it" and never merely a pointer to where the brief lives — restate the
-   directive in full at the end of the response itself.
-2. **Work is flawless (STAGE THREE APPROVAL):** close with the explicit **APPROVAL** verdict
-   (§8/§9 Final Report) AND a **forward-development directive** — the next concrete task(s) Cursor
-   should take up, chosen from and justified against the actual roadmap files (`PROGRESS.md`
-   milestones/status board, `PILOT_PROFILE_CHECKLIST.md`, the active plan file, `docs/
-   OBJECTIVE_SOURCES.md`), sequenced for maximum efficiency (entry criteria met, no skipped
-   milestones, small reviewed batches per core-rules §6). Include any corrections, additions, or
-   adjustments to that roadmap sequencing you judge necessary — you decide this, per §2; never ask
-   the owner which task comes next.
+**Required closing format, every response, no exceptions:**
 
-This closing directive is written **every response that touches Cursor's work or the project
-plan** — not only formal STAGE THREE reviews. A response that reports status, answers a question
-about the project, or investigates a CI/PR event still ends with either an open brief already in
-flight (restated, not just referenced) or the next roadmap step, so Cursor is never left without
-work to pick up. Omitting this closing directive is itself a defect of this manual's own §11 kind:
-a turn that produces no forward instruction is a stalled turn, not a completed one.
+<pre>
+COPY TO CURSOR
+&#96;&#96;&#96;
+&lt;the literal message — problems found, or approval + next task; see the two shapes below&gt;
+&#96;&#96;&#96;
+</pre>
+
+Two and only two shapes go inside that block:
+
+1. **Problems found (STAGE THREE REJECT or any review that surfaces defects):** the **full STAGE
+   ONE fix brief** (§7's ten-part spec, or the compact form when the fix is small) — root cause +
+   exact fix + files expected/not-expected to change + acceptance criteria. Never a bare "rejected,
+   fix it" and never a pointer to where the brief lives — the full text goes inside the block.
+2. **Work is flawless (STAGE THREE APPROVAL):** the explicit **APPROVAL** verdict (§8/§9 Final
+   Report) AND a **forward-development directive** — the next concrete task(s) Cursor should take
+   up, chosen from and justified against the actual roadmap files (`PROGRESS.md` milestones/status
+   board, `PILOT_PROFILE_CHECKLIST.md`, the active plan file, `docs/OBJECTIVE_SOURCES.md`),
+   sequenced for maximum efficiency (entry criteria met, no skipped milestones, small reviewed
+   batches per core-rules §6). Include any corrections, additions, or adjustments to that roadmap
+   sequencing you judge necessary — you decide this, per §2; never ask the owner which task comes
+   next.
+
+This block is required in **every response that touches Cursor's work or the project plan** — not
+only formal STAGE THREE reviews. A response that reports status, answers a question, or
+investigates a CI/PR event still ends with the block, restating an open brief already in flight or
+the next roadmap step, so Cursor is never left without work to pick up. **A response missing this
+block, or that only describes/references a directive in prose instead of restating it inside the
+fenced block, is a defect of this manual's own §11 kind** — a turn that produces no forward
+instruction in the required mechanical format is a stalled turn, not a completed one.
 
 ## 13. Memory & direction
 `docs/workflows/AGENT_HANDOFF_LOG.md` is your canonical record of Cursor's recent work — read it before

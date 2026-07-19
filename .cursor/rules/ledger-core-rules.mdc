@@ -170,7 +170,7 @@ the specific failure this file was created to stop.
   fresh evidence; FAIL gets a repair brief. Applies Claude↔Cursor equally.
 
 ### 1.0 The three-stage build loop (binding on BOTH agents — owner directive)
-Every task runs this loop. It is mirrored verbatim in `docs/CLAUDE_CODE_OPERATING_MANUAL.md` §12A.
+Every task runs this loop. It is mirrored verbatim in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` §12A.
 ```
 STAGE ONE — Claude: writes the spec (10-part template) · finds edge cases · identifies risks ·
             creates the testing requirements.
@@ -188,7 +188,7 @@ Acceptance ships with the Final Report + stated remaining risks — never a bare
 
 Every Claude Code response that touches this loop ends with a concrete, paste-ready directive for
 Cursor — a restated fix brief on REJECT, or an APPROVAL plus the next roadmap task on PASS. Never a
-status update with nothing for Cursor to act on. Full rule: `docs/CLAUDE_CODE_OPERATING_MANUAL.md`
+status update with nothing for Cursor to act on. Full rule: `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md`
 §12B. Cursor should expect every Claude review/check-in to arrive this way and treat one that
 doesn't as itself a defect to flag back.
 
@@ -552,7 +552,7 @@ the owning file or surface an **Owner visibility finding** (§1.1 H). A regressi
 un-does prior verified work is a **first-class bug** — hunt it; never trust a label because a doc
 says so. **Status is earned by evidence, never by a label.**
 
-Claude's full standing orders: `docs/CLAUDE_CODE_OPERATING_MANUAL.md` §11. Cursor implementation
+Claude's full standing orders: `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` §11. Cursor implementation
 discipline: `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6. Do not restate §11 here.
 
 ---
@@ -575,7 +575,7 @@ discipline: `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6. Do not restate §11 here
 | Agent handoff log for Claude review (sessions + improvement backlog) | `docs/workflows/AGENT_HANDOFF_LOG.md` — **§1.1 J (mandatory same-turn commit)** |
 | Cross-agent second opinion when unverifiable | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 I |
 | Single-writer git authority (Cursor only commits/pushes/merges) | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 K |
-| Keep files accurate — claimed done/complete vs real artifact | `.cursor/rules/ledger-core-rules.mdc` §1.1 M · `docs/CLAUDE_CODE_OPERATING_MANUAL.md` §11 |
+| Keep files accurate — claimed done/complete vs real artifact | `.cursor/rules/ledger-core-rules.mdc` §1.1 M · `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` §11 |
 | Cursor implementation role, testing, reporting format | `docs/CURSOR_IMPLEMENTATION_MANUAL.md` |
 
 ---

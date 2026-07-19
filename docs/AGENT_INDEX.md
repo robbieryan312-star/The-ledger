@@ -5,10 +5,10 @@ Single map of where to read before acting. **Do not** use `docs/archive/` for cu
 ## Session start (mandatory order)
 
 1. `.cursor/rules/ledger-core-rules.mdc` — binding rules for all agents
-2. `docs/CLAUDE_OWNER_DIRECTIVES.md` — **Claude-only, checked every response, no exceptions** — the
+2. `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md` — **Claude-only, checked every response, no exceptions** — the
    owner's own direct instructions as a short literal checklist (distinct from the full manual below)
 3. `docs/CURSOR_IMPLEMENTATION_MANUAL.md` — Cursor implementation engineer role & discipline (**Cursor reads every turn**)
-4. `docs/CLAUDE_CODE_OPERATING_MANUAL.md` — Claude Code standing orders, full role/procedure (**Claude reads every turn**; Cursor aware)
+4. `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` — Claude Code standing orders, full role/procedure (**Claude reads every turn**; Cursor aware)
 5. `docs/workflows/AGENT_HANDOFF_LOG.md` — agent handoff log + improvement backlog (**Claude reads this, not chat** — §1.1 J)
 6. `PROGRESS.md` — milestones M1–M8, status board, blockers
 7. `docs/OBJECTIVE_SOURCES.md` — source constitution: approved sources, lean labels, tiers, key-routing matrix (consult FIRST for any source/key routing)

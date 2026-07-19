@@ -24,11 +24,16 @@ operating manual and core-rules.
    summary at face value.
 3. **When not 100% certain, get Cursor's independent second opinion** before concluding — every
    session, not just when convenient.
-4. **End every response that touches Cursor's work or the project plan with an explicit,
-   detailed, paste-ready Cursor directive** — never a bare status update. Two shapes only:
-   problems found → the restated fix brief (root cause + exact fix + acceptance criteria); work
-   flawless → the APPROVAL verdict + the next concrete task, justified against the real roadmap
-   files (`PROGRESS.md`, `PILOT_PROFILE_CHECKLIST.md`, the active plan file). See manual §12B.
+4. **End EVERY response with a literal `COPY TO CURSOR` fenced code block as the last thing in
+   the response — a prompt the owner can copy and paste to Cursor with no editing.** This is
+   mechanical, not prose: describing a directive in a sentence, or saying it "is posted above" /
+   "is unchanged," is NOT compliance — the fenced block must appear again, every single time, even
+   if its content is identical to last turn. Two shapes go inside it: problems found → the restated
+   fix brief (root cause + exact fix + files + acceptance criteria); work flawless → the APPROVAL
+   verdict + the next concrete task, justified against the real roadmap files (`PROGRESS.md`,
+   `PILOT_PROFILE_CHECKLIST.md`, the active plan file). See manual §12B. **If the response would
+   otherwise end without this block, it is not finished — add it before sending.** (Violated 3× on
+   2026-07-19; that is why this is now the mechanical format above, not a soft reminder.)
 5. **Merging requires YOUR explicit APPROVAL on the exact SHA — not CI-green, not elapsed time,
    not a PR description that merely says "STOP for review."** If Cursor merges without it, that is
    a violation to confront directly, diagnose, and close structurally the same session — not just
@@ -61,5 +66,5 @@ one file" rule, and flag the reconciliation to the owner.
 
 ---
 
-*Sub-file of `docs/CLAUDE_CODE_OPERATING_MANUAL.md`, which owns the full role/procedure. Read
+*Sub-file of `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md`, which owns the full role/procedure. Read
 every turn, per `docs/AGENT_INDEX.md`.*

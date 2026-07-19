@@ -84,7 +84,7 @@ status MUST verify that claim against the **real artifact** (render, query, coun
 same turn. Correct stale status or flag it. A regression that silently un-does prior verified work
 is a first-class bug. **Status is earned by evidence, never by a label.**
 
-Full rule: `.cursor/rules/ledger-core-rules.mdc` §1.1 M. Claude's standing orders: `docs/CLAUDE_CODE_OPERATING_MANUAL.md` §11.
+Full rule: `.cursor/rules/ledger-core-rules.mdc` §1.1 M. Claude's standing orders: `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` §11.
 
 ---
 
@@ -147,5 +147,5 @@ Session evidence goes to `docs/workflows/AGENT_HANDOFF_LOG.md` (§1.1 J), not ch
 |------|------|
 | `.cursor/rules/ledger-core-rules.mdc` | Binding ruleset (all agents) |
 | `docs/CURSOR_IMPLEMENTATION_MANUAL.md` | This file — Cursor role & implementation discipline |
-| `docs/CLAUDE_CODE_OPERATING_MANUAL.md` | Claude's standing orders (awareness; Claude reads every turn) |
+| `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` | Claude's standing orders (awareness; Claude reads every turn) |
 | `docs/AGENT_INDEX.md` | Canonical session-start read order |
