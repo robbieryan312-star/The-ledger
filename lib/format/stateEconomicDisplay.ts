@@ -71,6 +71,16 @@ export function formatDelta(delta: number, unit: string): string {
   return `${sign}${formatCompact(delta)}`;
 }
 
+/**
+ * Income vs U.S. chip color — true sentiment (not affordability framing).
+ * Below U.S. average → negative; above → positive.
+ */
+export function incomeVsUsChipClass(deltaVsUs: number): string {
+  if (deltaVsUs < 0) return 'text-[var(--negative)]';
+  if (deltaVsUs > 0) return 'text-[var(--positive)]';
+  return 'text-[var(--muted)]';
+}
+
 export function populationHeroText(ind: StateEconomicIndicator): { compact: string; full: string } {
   const raw = indicatorRawValue(ind);
   return { compact: formatCompact(raw), full: formatFull(raw) };

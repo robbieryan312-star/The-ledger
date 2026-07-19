@@ -7,6 +7,8 @@ import {
   deltaVsMonthsAgo,
   findIndicator,
   formatDelta,
+  incomeVsUsChipClass,
+  indicatorRawValue,
 } from '../../lib/format/stateEconomicDisplay';
 import type { StateEconomicSlice } from '../../lib/types/snapshotTypes';
 
@@ -83,4 +85,29 @@ test('rising unemployment history ⇒ positive delta and formatDelta shows +', (
 test('formatDelta does not invert rising unemployment (3.9→4.4 ⇒ +0.5 pp)', () => {
   assert.equal(formatDelta(0.5, '%'), '+0.5 pp');
   assert.equal(formatDelta(-0.5, '%'), '-0.5 pp');
+});
+
+test('FL income below U.S. ⇒ "-$…" delta and negative chip class (true sentiment)', () => {
+  const incomeSlice = {
+    ...slice,
+    indicators: [
+      {
+        label: 'Median household income',
+        rawValue: 71_711,
+        unit: 'USD',
+        nationalValue: 78_538,
+        source: { name: 'Census', url: 'https://api.census.gov', tier: 'official' },
+        asOf: '2026-07-18',
+      },
+    ],
+  } as unknown as StateEconomicSlice;
+  const income = findIndicator(incomeSlice, 'Median household income');
+  assert.ok(income);
+  assert.ok(income!.nationalValue != null);
+  const delta = indicatorRawValue(income!) - income!.nationalValue!;
+  assert.ok(delta < 0, `expected FL below US, got delta=${delta}`);
+  const formatted = formatDelta(delta, 'USD');
+  assert.match(formatted, /^-/);
+  assert.equal(incomeVsUsChipClass(delta), 'text-[var(--negative)]');
+  assert.equal(incomeVsUsChipClass(1000), 'text-[var(--positive)]');
 });
