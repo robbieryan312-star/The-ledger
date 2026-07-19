@@ -167,6 +167,21 @@ test('Claude operating manual exists and is wired into the session-start read or
   );
 });
 
+test('Cursor implementation manual exists and is wired into the session-start read order', () => {
+  const manual = path.join(projectRoot, 'docs', 'CURSOR_IMPLEMENTATION_MANUAL.md');
+  assert.ok(existsSync(manual), 'docs/CURSOR_IMPLEMENTATION_MANUAL.md must exist');
+  const agents = readFileSync(path.join(projectRoot, 'AGENTS.md'), 'utf8');
+  assert.ok(
+    agents.includes('docs/CURSOR_IMPLEMENTATION_MANUAL.md'),
+    'AGENTS.md must cite the Cursor implementation manual',
+  );
+  const index = readFileSync(path.join(projectRoot, 'docs', 'AGENT_INDEX.md'), 'utf8');
+  assert.ok(
+    index.includes('docs/CURSOR_IMPLEMENTATION_MANUAL.md'),
+    'docs/AGENT_INDEX.md session-start order must include the Cursor implementation manual',
+  );
+});
+
 test('guard demo: fake npm script citation would fail', () => {
   const scripts = new Set(['build', 'sync:legislators']);
   assert.equal(scripts.has('sync:totally-fake'), false);

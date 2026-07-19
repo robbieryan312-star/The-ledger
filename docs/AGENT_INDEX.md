@@ -5,14 +5,15 @@ Single map of where to read before acting. **Do not** use `docs/archive/` for cu
 ## Session start (mandatory order)
 
 1. `.cursor/rules/ledger-core-rules.mdc` — binding rules for all agents
-2. `docs/CLAUDE_CODE_OPERATING_MANUAL.md` — Claude Code's standing orders & role/behavior manual (**Claude reads every turn**; Cursor is aware of it)
-3. `docs/workflows/AGENT_HANDOFF_LOG.md` — agent handoff log + improvement backlog (**Claude reads this, not chat** — §1.1 J)
-4. `PROGRESS.md` — milestones M1–M8, status board, blockers
-5. `docs/OBJECTIVE_SOURCES.md` — source constitution: approved sources, lean labels, tiers, key-routing matrix (consult FIRST for any source/key routing)
-6. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
-7. `KEYS.md` — SET vs EMPTY env vars (values in `.env.local` only; routing lives in the source constitution)
-8. `REPO.md` — canonical repo is `The-ledger` on `main`
-9. `PILOT_PROFILE_CHECKLIST.md` — what a complete profile requires
+2. `docs/CURSOR_IMPLEMENTATION_MANUAL.md` — Cursor implementation engineer role & discipline (**Cursor reads every turn**)
+3. `docs/CLAUDE_CODE_OPERATING_MANUAL.md` — Claude Code standing orders (**Claude reads every turn**; Cursor aware)
+4. `docs/workflows/AGENT_HANDOFF_LOG.md` — agent handoff log + improvement backlog (**Claude reads this, not chat** — §1.1 J)
+5. `PROGRESS.md` — milestones M1–M8, status board, blockers
+6. `docs/OBJECTIVE_SOURCES.md` — source constitution: approved sources, lean labels, tiers, key-routing matrix (consult FIRST for any source/key routing)
+7. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
+8. `KEYS.md` — SET vs EMPTY env vars (values in `.env.local` only; routing lives in the source constitution)
+9. `REPO.md` — canonical repo is `The-ledger` on `main`
+10. `PILOT_PROFILE_CHECKLIST.md` — what a complete profile requires
 
 Also read when relevant: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`,
 `.cursor/rules/ledger-editorial-voice.mdc`.
