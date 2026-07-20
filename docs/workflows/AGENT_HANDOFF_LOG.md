@@ -14,7 +14,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 **From:** Cursor · **To:** Claude Code · **Verdict:** **COMPLETE** (PR open — do NOT merge)
 
-**Current state:** branch `cursor/m5-sanders-positions-70a6` · tip `PLACEHOLDER` · PR _(after open)_ · base `origin/main` @ `ee0b24d` · tree clean · `npm run prebuild` → exit **0**
+**Current state:** branch `cursor/m5-sanders-positions-70a6` · tip `5108c65` · PR _(after open)_ · base `origin/main` @ `ee0b24d` · tree clean · `npm run prebuild` → exit **0**
 
 ### Objective
 Confirm Sanders checklist rows 5–6: scoped `sync:topic-positions --member S000033`; document honest-gap when empty; no fabricated joins; W3c / profileCategoryIntegrity green; own PR.
@@ -32,7 +32,7 @@ Confirm Sanders checklist rows 5–6: scoped `sync:topic-positions --member S000
 | manifest `orgVoteLinks` | honest-gap | honest-gap |
 
 ### Commits
-- `PLACEHOLDER` — M5: document S000033 positions+orgVoteLinks honest-gap after scoped sync
+- `5108c65` — M5: document S000033 positions+orgVoteLinks honest-gap after scoped sync
 
 ### Commands run (this session)
 - `git fetch origin main` → ok
@@ -65,7 +65,7 @@ Confirm Sanders checklist rows 5–6: scoped `sync:topic-positions --member S000
 
 ## Confront Claude — paste to Claude Code
 
-**M5 READY:** branch `cursor/m5-sanders-positions-70a6` tip `PLACEHOLDER` · positions+orgVoteLinks honest-gap documented · prebuild 0 · do NOT merge
+**M5 READY:** branch `cursor/m5-sanders-positions-70a6` tip `5108c65` · positions+orgVoteLinks honest-gap documented · prebuild 0 · do NOT merge
 **In flight:** M2 #58 · M4 · M6 · M7 · M10
 **Gated:** M3 · Sanders LOCK · M8 · M9 · M11
 
@@ -792,7 +792,7 @@ Independently reproduced on `cursor/sanders-news-trades-fix-70a6`, clean `.next`
 `npm run prebuild` = **exit 1**. Root cause — `audit:profile-credibility` raises a **[P0]
 placeholder-url** on `news.json.items[s000033-newsapi-20]`:
 `https://apnews.com/article/mamdani-sanders-new-york-primary-b1a13eaf0d7e634b6805fc80b3372cf8`.
-**Diagnosis: guard FALSE-POSITIVE, not fabricated data.** `PLACEHOLDER_PATTERNS`
+**Diagnosis: guard FALSE-POSITIVE, not fabricated data.** `5108c65_PATTERNS`
 (`lib/data/sourceIntegrity.ts:262`) flags "word + 8-char-plus hex tail with an a–f letter" as an
 invented URL — but that is exactly AP News's *real* article-URL format (32-char hex content-ID).
 Verified-good parts: trades = correct honest-gap (`fetch-failed`, Senate eFD 503); news
@@ -802,7 +802,7 @@ media-tier rule.
 
 ### Fixes (STAGE ONE, both go in the PR #48 rework)
 1. **Confirm the AP article is real** (fetch/verify it exists). If real → refine
-   `PLACEHOLDER_PATTERNS` so a legitimate `apnews.com/article/<slug>-<32hex>` URL is NOT flagged
+   `5108c65_PATTERNS` so a legitimate `apnews.com/article/<slug>-<32hex>` URL is NOT flagged
    (add an AP-article allowance; keep the `endorsement-a1b2c3…`/`example.com`/`xxxx` catches). Add
    an append-only fixture: this exact AP URL = known-GOOD, plus a genuinely fabricated hex URL =
    known-BAD, so the guard can't regress in either direction. If NOT verifiable → remove the item.
