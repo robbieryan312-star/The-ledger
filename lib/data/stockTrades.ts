@@ -145,7 +145,9 @@ export function stockEntryToProfileTradesFile(
   entry: Pick<StockTradeEntry, 'trades' | 'note'>,
 ): ProfileTradesFile {
   const note = entry.note?.trim() ?? 'No verified STOCK Act trades integrated for this profile';
-  const isFetchFailed = /fetch-failed/i.test(note);
+  const isFetchFailed =
+    /fetch-failed/i.test(note) ||
+    (/unavailable|maintenance|503/i.test(note) && entry.trades.length === 0);
   const hasTrades = entry.trades.length > 0;
   let status: ProfileTradesFile['status'] = 'honest-gap';
   if (hasTrades) status = 'filled';

@@ -53,3 +53,16 @@ export const PILOT_CHECKLIST_S000033_ROWS_KNOWN_GOOD = {
     { rowNum: 6, mustNotContain: '**done**', manifestCategory: 'positions' as const },
   ],
 };
+
+/**
+ * Said→Did depth target for reference profile (layout spec). Checklist must not claim **done**
+ * when on-disk link count is below target (W3d audit 2026-07-19 — docs wrongly claimed 8).
+ */
+export const PILOT_SAID_DID_DEPTH_KNOWN_GOOD = {
+  pilotBioguideId: 'S000033',
+  checklistPath: 'PILOT_PROFILE_CHECKLIST.md',
+  checklistRowNum: 8,
+  targetLinks: 15,
+  /** On-disk count at guard wiring — update only when genuinely restored with verified pairs. */
+  onDiskLinksAtWiring: 1,
+};

@@ -19,6 +19,42 @@ export interface NewsFeedEntry {
 /** RSS feeds from approved journalism outlets only (D3 spec). */
 export const NEWS_FEED_REGISTRY: NewsFeedEntry[] = [
   {
+    outlet: 'The Hill News',
+    feedUrl: 'https://thehill.com/news/feed/',
+    tier: 'media',
+    articleHosts: ['thehill.com'],
+  },
+  {
+    outlet: 'NYT Politics',
+    feedUrl: 'https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml',
+    tier: 'media',
+    articleHosts: ['nytimes.com'],
+  },
+  {
+    outlet: 'Washington Post Politics',
+    feedUrl: 'https://feeds.washingtonpost.com/rss/politics',
+    tier: 'media',
+    articleHosts: ['washingtonpost.com'],
+  },
+  {
+    outlet: 'Politico Congress',
+    feedUrl: 'https://rss.politico.com/congress.xml',
+    tier: 'media',
+    articleHosts: ['politico.com'],
+  },
+  {
+    outlet: 'The Hill Senate',
+    feedUrl: 'https://thehill.com/homenews/senate/feed/',
+    tier: 'media',
+    articleHosts: ['thehill.com'],
+  },
+  {
+    outlet: 'AP News',
+    feedUrl: 'https://feeds.apnews.com/rss/apf/topnews',
+    tier: 'nonpartisan',
+    articleHosts: ['apnews.com'],
+  },
+  {
     outlet: 'NPR',
     feedUrl: 'https://feeds.npr.org/1014/rss.xml',
     tier: 'media',
@@ -160,7 +196,22 @@ export function isRegistryNewsHost(url: string | undefined): boolean {
   }
 }
 
-/** congress.gov official-record notes preserved from prior verified syncs (not RSS-sourced). */
+const OPINION_PATH_MARKERS: RegExp[] = [
+  /\/opinion\//i,
+  /\/opinions\//i,
+  /\/commentisfree\//i,
+  /\/editorials?\//i,
+  /\/commentary\//i,
+];
+
+export function isOpinionArticleUrl(url: string): boolean {
+  try {
+    return OPINION_PATH_MARKERS.some((re) => re.test(new URL(url).pathname));
+  } catch {
+    return false;
+  }
+}
+
 export function isOfficialRecordNewsUrl(url: string | undefined): boolean {
   if (!url?.trim()) return false;
   try {

@@ -11,6 +11,7 @@ import {
   PROFILE_CATEGORY_KNOWN_GOOD_EMPTY_WITH_STATUS,
   LOCKED_PROFILE_ORG_POSITIONS_STATUS_KNOWN_GOOD,
   PILOT_CHECKLIST_S000033_ROWS_KNOWN_GOOD,
+  PILOT_SAID_DID_DEPTH_KNOWN_GOOD,
 } from '../../lib/data/__fixtures__/profileCategoryIntegrity.fixture';
 import {
   CATEGORY_FILES_WITH_REQUIRED_STATUS,
@@ -20,6 +21,7 @@ import {
   validateManifestMatchesCategoryFiles,
   validateRequiredCategoryFileStatuses,
 } from '../../lib/data/profileCategoryIntegrity';
+import { countSaidDidLinksInFile } from '../lib/profileMigrate';
 
 const profilesRoot = path.join(process.cwd(), 'lib/data/generated/profiles');
 const projectRoot = process.cwd();
@@ -162,4 +164,33 @@ test('PILOT_PROFILE_CHECKLIST S000033 rows 5–6 must not claim done when manife
       `manifest ${row.manifestCategory} must be honest-gap for pilot row ${row.rowNum}`,
     );
   }
+});
+
+test('PILOT_PROFILE_CHECKLIST S000033 row 8 must not claim done below Said→Did depth target (W3d)', () => {
+  const cfg = PILOT_SAID_DID_DEPTH_KNOWN_GOOD;
+  const saidDid = JSON.parse(
+    readFileSync(path.join(profilesRoot, cfg.pilotBioguideId, 'saidDid.json'), 'utf8'),
+  );
+  const onDisk = countSaidDidLinksInFile(saidDid);
+  assert.equal(
+    onDisk,
+    cfg.onDiskLinksAtWiring,
+    `on-disk Said→Did count changed (${onDisk}) — update fixture onDiskLinksAtWiring if verified`,
+  );
+  assert.ok(
+    onDisk < cfg.targetLinks,
+    `test assumes below-target count; got ${onDisk} >= ${cfg.targetLinks}`,
+  );
+  const checklist = readFileSync(path.join(projectRoot, cfg.checklistPath), 'utf8');
+  const line = checklist.split('\n').find((l) => l.startsWith(`| ${cfg.checklistRowNum} |`));
+  assert.ok(line, `checklist row ${cfg.checklistRowNum} missing`);
+  assert.ok(
+    !line.includes('**done**'),
+    `checklist row ${cfg.checklistRowNum} claims done but only ${onDisk}/${cfg.targetLinks} Said→Did links on disk`,
+  );
+  const progress = readFileSync(path.join(projectRoot, 'PROGRESS.md'), 'utf8');
+  assert.ok(
+    !/saidDid=8\b|8 links|8\/15/.test(progress),
+    'PROGRESS.md must not claim stale Said→Did count of 8',
+  );
 });

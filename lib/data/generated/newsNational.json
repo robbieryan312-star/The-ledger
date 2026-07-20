@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "source": {
+      "name": "GDELT",
+      "url": "https://api.gdeltproject.org",
+      "tier": "media",
+      "description": "GDELT 2.0 DOC API — Tier 3 media aggregator; corroborate with Tier 1/2 before citing as fact"
+    },
+    "asOf": "2026-07-19",
+    "fetchedAt": "2026-07-19T15:39:58.364Z",
+    "membersQueried": 1,
+    "membersWithNews": 1,
+    "totalArticles": 3,
+    "gdeltCount": 1,
+    "newsApiCount": 0,
+    "apiEndpoint": "https://api.gdeltproject.org/api/v2/doc/doc",
+    "note": "Per-member federal Congress news (last 90 days, English). GDELT 2.0 DOC API only. Tier 3 media — sourced news references, not verified personal quotes."
+  },
+  "byBioguideId": {
+    "S000033": {
+      "bioguideId": "S000033",
+      "name": "Bernard Sanders",
+      "articles": [
+        {
+          "title": "Sanders Pulls Democratic Party Hard Left in Primary Elections",
+          "outlet": "wmal.com",
+          "publishedDate": "20260613T150000Z",
+          "url": "https://www.wmal.com/2026/06/13/sanders-pulls-democratic-party-hard-left/"
+        },
+        {
+          "title": "Left - wing senators press Democratic leaders to forbid super PAC spending in primaries",
+          "outlet": "wmal.com",
+          "publishedDate": "20260428T143000Z",
+          "url": "https://www.wmal.com/2026/04/28/left-wing-senators-press-democratic-leaders-to-forbid-super-pac-spending-in-primaries/"
+        },
+        {
+          "title": "COMMENTARY : Bernie for Burlington",
+          "outlet": "benningtonbanner.com",
+          "publishedDate": "20260424T194500Z",
+          "url": "https://www.benningtonbanner.com/opinion/commentary-bernie-for-burlington/article_748fc6c1-4a8c-42f5-816a-87198fb58212.html"
+        }
+      ],
+      "feed": "gdelt"
+    }
+  }
+}

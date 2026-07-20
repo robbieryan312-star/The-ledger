@@ -6,6 +6,7 @@ import C001098_orgVoteLinks from './C001098/orgVoteLinks.json';
 import C001098_votes from './C001098/votes.json';
 import C001098_finance from './C001098/finance.json';
 import C001098_news from './C001098/news.json';
+import C001098_trades from './C001098/trades.json';
 import C001098_controversies from './C001098/controversies.json';
 import C001098_endorsements from './C001098/endorsements.json';
 import M000355_statements from './M000355/statements.json';
@@ -15,6 +16,7 @@ import M000355_orgVoteLinks from './M000355/orgVoteLinks.json';
 import M000355_votes from './M000355/votes.json';
 import M000355_finance from './M000355/finance.json';
 import M000355_news from './M000355/news.json';
+import M000355_trades from './M000355/trades.json';
 import M000355_controversies from './M000355/controversies.json';
 import M000355_endorsements from './M000355/endorsements.json';
 import M001184_statements from './M001184/statements.json';
@@ -24,6 +26,7 @@ import M001184_orgVoteLinks from './M001184/orgVoteLinks.json';
 import M001184_votes from './M001184/votes.json';
 import M001184_finance from './M001184/finance.json';
 import M001184_news from './M001184/news.json';
+import M001184_trades from './M001184/trades.json';
 import M001184_controversies from './M001184/controversies.json';
 import M001184_endorsements from './M001184/endorsements.json';
 import O000172_statements from './O000172/statements.json';
@@ -33,6 +36,7 @@ import O000172_orgVoteLinks from './O000172/orgVoteLinks.json';
 import O000172_votes from './O000172/votes.json';
 import O000172_finance from './O000172/finance.json';
 import O000172_news from './O000172/news.json';
+import O000172_trades from './O000172/trades.json';
 import O000172_controversies from './O000172/controversies.json';
 import O000172_endorsements from './O000172/endorsements.json';
 import P000197_statements from './P000197/statements.json';
@@ -42,6 +46,7 @@ import P000197_orgVoteLinks from './P000197/orgVoteLinks.json';
 import P000197_votes from './P000197/votes.json';
 import P000197_finance from './P000197/finance.json';
 import P000197_news from './P000197/news.json';
+import P000197_trades from './P000197/trades.json';
 import P000197_controversies from './P000197/controversies.json';
 import P000197_endorsements from './P000197/endorsements.json';
 import S000033_statements from './S000033/statements.json';
@@ -51,6 +56,7 @@ import S000033_orgVoteLinks from './S000033/orgVoteLinks.json';
 import S000033_votes from './S000033/votes.json';
 import S000033_finance from './S000033/finance.json';
 import S000033_news from './S000033/news.json';
+import S000033_trades from './S000033/trades.json';
 import S000033_controversies from './S000033/controversies.json';
 import S000033_endorsements from './S000033/endorsements.json';
 import W000817_statements from './W000817/statements.json';
@@ -60,6 +66,7 @@ import W000817_orgVoteLinks from './W000817/orgVoteLinks.json';
 import W000817_votes from './W000817/votes.json';
 import W000817_finance from './W000817/finance.json';
 import W000817_news from './W000817/news.json';
+import W000817_trades from './W000817/trades.json';
 import W000817_controversies from './W000817/controversies.json';
 import W000817_endorsements from './W000817/endorsements.json';
 
@@ -134,6 +141,16 @@ export const PROFILE_NEWS = {
   P000197: P000197_news,
   S000033: S000033_news,
   W000817: W000817_news,
+} as const;
+
+export const PROFILE_TRADES = {
+  C001098: C001098_trades,
+  M000355: M000355_trades,
+  M001184: M001184_trades,
+  O000172: O000172_trades,
+  P000197: P000197_trades,
+  S000033: S000033_trades,
+  W000817: W000817_trades,
 } as const;
 
 export const PROFILE_CONTROVERSIES = {

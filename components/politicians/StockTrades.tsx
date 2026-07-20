@@ -499,12 +499,16 @@ export default function StockTrades({
   usingOfficialTrades,
   officialSource,
   demoTradeCount,
+  gapNote,
+  gapStatus,
 }: {
   trades: StockTrade[];
   name: string;
   usingOfficialTrades?: boolean;
   officialSource?: Source;
   demoTradeCount?: number;
+  gapNote?: string;
+  gapStatus?: 'honest-gap' | 'fetch-failed';
 }) {
   const [sortBy, setSortBy] = useState<SortKey>('date');
   const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc');
@@ -555,8 +559,19 @@ export default function StockTrades({
     return (
       <div className="text-center py-12">
         <TrendingUp className="h-10 w-10 text-gray-600 mx-auto mb-3" />
-        <p className="text-gray-400 text-sm">No stock trades reported for {name}</p>
-        <p className="text-gray-500 text-xs mt-1">Stock disclosures are required under the STOCK Act (2012)</p>
+        {gapNote ? (
+          <>
+            <p className="text-gray-300 text-sm font-medium">
+              {gapStatus === 'fetch-failed' ? 'Trade disclosure fetch failed' : 'No verified stock trades on record'}
+            </p>
+            <p className="text-gray-400 text-xs mt-2 max-w-lg mx-auto leading-relaxed">{gapNote}</p>
+          </>
+        ) : (
+          <>
+            <p className="text-gray-400 text-sm">No stock trades reported for {name}</p>
+            <p className="text-gray-500 text-xs mt-1">Stock disclosures are required under the STOCK Act (2012)</p>
+          </>
+        )}
         <div className="mt-6 max-w-xl mx-auto">
           <DataSourceStrip usingOfficialTrades={usingOfficialTrades} officialSource={officialSource} demoTradeCount={demoTradeCount} />
         </div>
