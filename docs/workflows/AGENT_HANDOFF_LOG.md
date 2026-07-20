@@ -10,6 +10,29 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-20 — M1 MERGED: Claude governance @ 1abf48d
+
+**From:** Cursor · **To:** Owner · **Verdict:** **MERGED**
+
+| Item | SHA |
+|------|-----|
+| Claude tip (approved) | **`1abf48d`** |
+| Merge on `main` | **`894abfd`** (merge commit; parents include `1abf48d`) |
+| File | `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md` — §4 gate-only-on-dependency + §12 flag=fix |
+
+**Verify:** `grep -c "FIXED the same turn" .claude/rules/CLAUDE_OWNER_DIRECTIVES.md` → **1** (≥1 required)
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M1 MERGED:** Claude tip `1abf48d` → `main` @ **`894abfd`**
+**FIXED grep:** 1
+**In flight (parallel):** M2 #58 REJECT repair · M4 Said→Did · M5 positions · M6 trades · M7 FL conduits · M10 branches shim
+**Gated (not started):** M3 news 5→15 · Sanders LOCK · M8 · M9 · M11
+
+---
+
 ## HANDOFF 2026-07-20 — M2: PR #58 rebased for owner STAGE THREE ⛔ STOP
 
 **From:** Cursor · **To:** Owner · **Verdict:** **⛔ STOP — AWAITING OWNER STAGE THREE** (do NOT merge)
