@@ -21,15 +21,15 @@ export default function ExpandableQuoteBlock({
 
   if (!needsExpand) {
     return (
-      <p className="text-gray-200 text-sm leading-relaxed">
+      <p className="w-full max-w-none break-words text-gray-200 text-sm leading-relaxed">
         {verbatim ? <>&ldquo;{fullText}&rdquo;</> : fullText}
       </p>
     );
   }
 
   return (
-    <div>
-      <p className="text-gray-200 text-sm leading-relaxed">
+    <div className="w-full max-w-none">
+      <p className="w-full max-w-none break-words text-gray-200 text-sm leading-relaxed">
         {verbatim ? <>&ldquo;{open ? fullText : preview}&rdquo;</> : open ? fullText : preview}
       </p>
       <button

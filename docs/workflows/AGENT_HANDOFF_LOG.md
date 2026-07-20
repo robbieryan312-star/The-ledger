@@ -10,6 +10,43 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — M-UI topic drawer full-width (`cursor/m-ui-topic-drawer-fullwidth-70a6`) (COMPLETE)
+
+**Current state:** branch `cursor/m-ui-topic-drawer-fullwidth-70a6` · work `ea5603a` · base `origin/main` @ `714f473` · compare https://github.com/robbieryan312-star/The-ledger/compare/main...cursor/m-ui-topic-drawer-fullwidth-70a6 · `rm -rf .next && npm run prebuild` → 0 · `npm run build` → 0 · **do not merge** (owner 👁)
+
+### Objective
+Re-implement full-width topic/issue drawers so expanded fact+evidence uses full content width (not a 1-word-per-line grid column).
+
+### Verdict / outcome
+**PASS / COMPLETE** — HotTopicsPanel drawer rendered outside topic grid; IssueAccordion + Topic Record drawers `w-full max-w-none`; quote/evidence `break-words`; render-integrity `assertFullWidthTopicDrawer` green.
+
+### Commits
+- `ea5603a` — fix(ui): full-width topic/issue drawers outside Key Issues grid
+
+### Commands run (this session)
+- `git checkout -B cursor/m-ui-topic-drawer-fullwidth-70a6 origin/main` → `714f473`
+- `rm -rf .next && npm run prebuild` → PREBUILD_EXIT=0
+- `npm run build` → BUILD_EXIT=0 (incl. render-integrity)
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `components/politicians/PoliticianProfileClient.tsx` | modified | HotTopicsPanel drawer outside grid + IssueAccordion fullwidth testids |
+| `components/politicians/ProfileRecordByTopicPanel.tsx` | modified | Topic-record drawer fullwidth; block statement/vote rows |
+| `components/ui/ExpandableQuoteBlock.tsx` | modified | `w-full max-w-none break-words` on quotes |
+| `components/politicians/ExpandableEvidenceRow.tsx` | modified | `break-words w-full` on text/quote |
+| `scripts/render-integrity-check.ts` | modified | button-as-grid-child helpers + `assertFullWidthTopicDrawer` |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session |
+
+### Acceptance evidence
+- `data-testid="topic-drawer-fullwidth"` / `issue-accordion-fullwidth` / `topic-record-drawer-fullwidth` present
+- render-integrity: drawer not inside `grid-cols`; width ≥90% of Key Issues content box
+
+### Confront Claude — paste to Claude Code
+**M-UI COMPLETE** on `cursor/m-ui-topic-drawer-fullwidth-70a6`: full-width topic drawers; prebuild 0; build 0. **Do not merge** — owner 👁 visual.
+
+---
+
 ## HANDOFF 2026-07-20 — PR #58 MERGED (M2 APPROVED @ a7737a9)
 
 **From:** Cursor · **To:** Owner · **Verdict:** **MERGED**

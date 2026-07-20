@@ -216,32 +216,73 @@ async function openReactDrawers(page: Page): Promise<void> {
   }
 }
 
-/** Number of topic tiles in the "Key Issues" grid, or 0 when the panel is absent. */
+/** Number of topic tiles in the "Key Issues" grid, or 0 when the panel is absent.
+ *  Tiles are `<button>` elements that are direct children of the grid (drawer is outside). */
 async function keyIssuesTopicCount(page: Page): Promise<number> {
   return page.evaluate(() => {
     const heads = [...document.querySelectorAll('h2')];
     const h = heads.find((e) => /Key Issues/.test(e.textContent || ''));
     const panel = h ? h.closest('div') : null;
     if (!panel) return 0;
-    const grid = panel.querySelector('[class*="grid"]');
+    const grid = panel.querySelector('[class*="grid-cols"]');
     if (!grid) return 0;
-    return [...grid.children].filter((c) => c.querySelector('button')).length;
+    return [...grid.children].filter((c) => c.tagName === 'BUTTON').length;
   });
 }
 
-/** Open exactly one Key-Issues topic tile by index (closing any other). */
+/** Open exactly one Key-Issues topic tile by index (closing any other).
+ *  Buttons are grid children; the full-width drawer renders outside the grid. */
 async function openKeyIssuesTopic(page: Page, index: number): Promise<void> {
   await page.evaluate((i: number) => {
     const heads = [...document.querySelectorAll('h2')];
     const h = heads.find((e) => /Key Issues/.test(e.textContent || ''));
     const panel = h ? h.closest('div') : null;
-    const grid = panel?.querySelector('[class*="grid"]');
+    const grid = panel?.querySelector('[class*="grid-cols"]');
     if (!grid) return;
-    const cells = [...grid.children].filter((c) => c.querySelector('button'));
-    const btn = cells[i]?.querySelector('button') as HTMLButtonElement | undefined;
-    btn?.click();
+    const buttons = [...grid.children].filter((c) => c.tagName === 'BUTTON') as HTMLButtonElement[];
+    buttons[i]?.click();
   }, index);
   await page.waitForTimeout(160);
+}
+
+/**
+ * Open Key-Issues drawer must sit OUTSIDE the topic grid and span ≥90% of the
+ * Key Issues panel width (freezes the 1-word-per-line column squeeze).
+ */
+async function assertFullWidthTopicDrawer(page: Page, label: string): Promise<void> {
+  const result = await page.evaluate(() => {
+    const heads = [...document.querySelectorAll('h2')];
+    const h = heads.find((e) => /Key Issues/.test(e.textContent || ''));
+    const panel = h ? (h.closest('div') as HTMLElement | null) : null;
+    if (!panel) return { ok: false as const, reason: 'Key Issues panel missing' };
+    const drawer = panel.querySelector('[data-testid="topic-drawer-fullwidth"]') as HTMLElement | null;
+    if (!drawer) return { ok: false as const, reason: 'topic-drawer-fullwidth missing' };
+    const grid = panel.querySelector('[class*="grid-cols"]');
+    if (grid && grid.contains(drawer)) {
+      return { ok: false as const, reason: 'topic-drawer-fullwidth is inside grid-cols' };
+    }
+    // Compare against the panel CONTENT box (exclude p-5 padding) — that is the
+    // usable Key Issues width the drawer must fill (≥90%).
+    const cs = getComputedStyle(panel);
+    const padX = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
+    const panelOuterW = panel.getBoundingClientRect().width;
+    const panelContentW = panelOuterW - padX;
+    const drawerW = drawer.getBoundingClientRect().width;
+    if (panelContentW < 100) {
+      return { ok: false as const, reason: `panel content too narrow (${Math.round(panelContentW)}px)` };
+    }
+    const ratio = drawerW / panelContentW;
+    if (ratio < 0.9) {
+      return {
+        ok: false as const,
+        reason: `drawer width ${Math.round(drawerW)}px < 90% of Key Issues content ${Math.round(panelContentW)}px (ratio=${ratio.toFixed(2)})`,
+      };
+    }
+    return { ok: true as const, reason: `ratio=${ratio.toFixed(2)}` };
+  });
+  if (!result.ok) {
+    fail(`${label}: assertFullWidthTopicDrawer — ${result.reason}`);
+  }
 }
 
 /**
@@ -429,13 +470,17 @@ async function runChecks(browser: Browser): Promise<string[]> {
     // page-wide horizontal-overflow check does not apply here; the drawer-squeeze check is
     // the S2 regression guard for these pages.
     await assertNoSqueezedDrawer(page, label);
-    // Open each Key-Issues topic in turn — a content-rich open drawer must never squeeze.
+    // Open each Key-Issues topic in turn — drawer must be outside the grid and full width.
     const topics = await keyIssuesTopicCount(page);
     for (let i = 0; i < topics; i++) {
       await openKeyIssuesTopic(page, i);
       await assertNoSqueezedDrawer(page, `${label} (topic ${i})`);
+      await assertFullWidthTopicDrawer(page, `${label} (topic ${i})`);
     }
-    if (topics > 0) await openKeyIssuesTopic(page, 0);
+    if (topics > 0) {
+      await openKeyIssuesTopic(page, 0);
+      await assertFullWidthTopicDrawer(page, `${label} (topic 0 re-open)`);
+    }
     const shotName = `${prof.path.replace(/\//g, '_')}_${mobile.label}.png`;
     const shotPath = path.join(screenshotDir, shotName);
     await page.screenshot({ path: shotPath, fullPage: false });
