@@ -28,13 +28,13 @@ never restates them, it sequences the work.
 | Phase | Deliverable | PR | Merge SHA | Status |
 |-------|-------------|-----|-----------|--------|
 | 0 | Inventory + GENERATED header + audit:inventory-md alias | #44 | `fbbe7ff` | merged |
-| 1 | News path + florida/{media,agencies}.md | #51 | `b89f1cb` | merged |
+| 1 | News path reconcile + docs/sources/florida.md (single template) + delete lib/data/sourceTiers.ts shim | #51 | `b89f1cb` | merged |
 | 2 | 8 dead files removed + 15 archived | #52 | `4110812` | merged |
 | 3 | AGENT_INDEX reachability | #53 | `a730f81` | merged |
-| 4 | navigationIntegrity guard | #54 | `4625976` | merged |
+| 4 | navigationIntegrity guard | #54 | `4625976` | merged — florida.md split into media.md + agencies.md landed in PR #54 (`56ac08d`) |
 | 5 | Continuous-improvement rule | #54+#55 | `4625976` / `61e6d5c` | merged |
 
-Navigation plan **COMPLETE** + guard-enforced; `navigationIntegrity` fails the build on any new orphan.
+Navigation plan **COMPLETE** + guard-enforced; `navigationIntegrity` fails the build on any new orphan. *(Phase 1 delivered single `docs/sources/florida.md`; the media.md + agencies.md split shipped in PR #54 @ `56ac08d`.)*
 
 ---
 

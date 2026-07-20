@@ -10,6 +10,55 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-20 (2) — REJECT repair: docsIntegrity + Phase 1 accuracy
+
+**From:** Cursor · **To:** Owner + Claude · **Verdict:** **REPAIR COMPLETE** · **STOP for owner STAGE THREE**
+
+**Branch:** `cursor/nav-plan-lock-progress-70a6` · **Tip:** `9908fb3` · **PR:** #59
+
+### Reject findings fixed
+
+| ID | Issue | Fix |
+|----|-------|-----|
+| **D1** | `AGENT_HANDOFF_LOG.md` line 23 backtick-cited deleted `lib/_NAV_PROOF.ts` → docsIntegrity fail | De-backticked all `_NAV_PROOF` mentions on that line (plain text) |
+| **D2** | PROGRESS Phase 1 over-attributed `media.md`/`agencies.md` to PR #51 | Phase 1 row → news path + single `florida.md` + sourceTiers shim delete; split noted on Phase 4 row + footnote (PR #54 `56ac08d`) |
+
+### Verification (this repair)
+
+```
+rm -rf .next && npm run prebuild                              → PREBUILD_EXIT=0
+npx tsx --test scripts/__tests__/docsIntegrityGuard.test.ts \
+  scripts/__tests__/docsConsistencyGuard.test.ts              → 19/19 pass, DOCS_EXIT=0
+```
+
+No "missing paths" in docsIntegrity output.
+
+### Files touched (one line each)
+
+| Path | Change |
+|------|--------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | De-backtick lib/_NAV_PROOF.ts on orphan-catch evidence line |
+| `PROGRESS.md` | Correct Phase 1 deliverable; Phase 4 note + footnote for florida split @ PR #54 |
+
+**STOP:** Await owner STAGE THREE on new tip SHA. Do not merge.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Reject repair:** PR #59 @ tip SHA **`9908fb3`**
+
+**D1 fixed:** lib/_NAV_PROOF.ts de-backticked in handoff log (throwaway deleted file).
+**D2 fixed:** PROGRESS Phase 1 = florida.md single template (#51); media/agencies split → PR #54 (`56ac08d`).
+
+**Verify:**
+- `rm -rf .next && npm run prebuild` → exit **0**
+- `npx tsx --test scripts/__tests__/docsIntegrityGuard.test.ts scripts/__tests__/docsConsistencyGuard.test.ts` → **19/19 pass**, no missing paths
+
+**STOP:** Owner STAGE THREE on new tip — do not merge.
+
+---
+
 ## HANDOFF 2026-07-20 — Navigation plan final lock + PROGRESS status board (Batch A)
 
 **From:** Cursor · **To:** Owner + Claude · **Verdict:** **Task A PASS** · **Task B COMPLETE** · **STOP for owner STAGE THREE**
@@ -20,7 +69,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 | Check | Result | Evidence |
 |-------|--------|----------|
-| **1 ORPHAN-CATCH** | **PASS** | Created `lib/_NAV_PROOF.ts` → `npx tsx --test scripts/__tests__/navigationIntegrity.test.ts` fail 1/4 naming `lib/_NAV_PROOF.ts`; deleted → pass 4/4 |
+| **1 ORPHAN-CATCH** | **PASS** | Created lib/_NAV_PROOF.ts → `npx tsx --test scripts/__tests__/navigationIntegrity.test.ts` fail 1/4 naming lib/_NAV_PROOF.ts; deleted → pass 4/4 |
 | **2 ONE-HOP FIND** (AGENT_INDEX only, ≤2 hops) | **PASS** | See table below |
 | **3 CONDUIT NON-CONTRADICTION** | **PASS** | RSS→GDELT→NewsAPI order identical across three owners (quotes below) |
 | **4 FULL GATE** | **PASS** (after doc fix) | `main` initially fail: docsIntegrity 5 missing PR #58 paths in handoff backticks; fixed → `rm -rf .next && npm run prebuild` exit **0** |
