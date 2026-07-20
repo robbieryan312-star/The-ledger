@@ -7,24 +7,47 @@ core-rules, core-rules wins. Newest handoff on top.
 
 ---
 
-## HANDOFF 2026-07-19 — Phase 2: archive cruft (Flawless Agent-Navigation System)
+## HANDOFF 2026-07-20 — Phase 3: AGENT_INDEX reachability (Flawless Agent-Navigation System)
 
-**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS — STOP for STAGE THREE review (Phase 2)**
+**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS — STOP for STAGE THREE review (Phase 3)**
 
 ### Objective
-Archive unwired scripts + finished docs; delete confirmed 0-importer dead shims; do not touch dead routes.
+AGENT_INDEX reachability: FILE_AUDIT_LEDGER in session start; BATCH_SCALING owns M2 ladder;
+§7 redirect stubs; land DUAL_REFERENCE_ROADMAP + PILOT_STATE_CHECKLIST; delete dead routes.
 
 ### Branch / HEAD / PR
-- **Branch:** `cursor/phase2-archive-cruft-70a6`
-- **HEAD:** `1ffef58` (implementation `ff3c77c` + handoff docs; rebased onto `main`)
-- **Base:** `main` @ `f98a7c6` (PR #50 + #51 merged)
-- **PR:** https://github.com/robbieryan312-star/The-ledger/pull/52
+- **Branch:** `cursor/phase3-agent-index-reachability-70a6`
+- **Base:** `main` @ `4110812` (PR #52 Phase 2 merged @ `9bb899e`)
 
-### Merges completed this session (owner-approved)
-| PR | SHA | Status |
-|----|-----|--------|
-| #51 Phase 1 source subsystem | `b89f1cb` | merged (prior session) |
-| #50 handoff-log every turn | `f98a7c6` | merged this session |
+### Changes
+| Area | Action |
+|------|--------|
+| Dead routes deleted | `app/lobbying/[id]/page.tsx`, `app/counties/[fips]/page.tsx` (Claude decision) |
+| USAMap | Removed `/counties/[fips]` links (route deleted) |
+| AGENT_INDEX §1 | `FILE_AUDIT_LEDGER.md` added (living tracker; agent-preflight) |
+| AGENT_INDEX §2 | BATCH_SCALING = M2 ladder owner; PROGRESS = milestones only |
+| AGENT_INDEX §7 | API_KEYS, OWNER_SETUP, FUTURE_ROADMAP, PHASE17B, STATE_COUNTY_EXPANSION, AUDIT_DEBT_BRIEF, DATA_SOURCES |
+| Roadmap files landed | `docs/workflows/DUAL_REFERENCE_ROADMAP.md`, `docs/PILOT_STATE_CHECKLIST.md` |
+| docsIntegrityGuard | Removed ALLOW_MISSING for landed roadmap files |
+
+### Verification
+- `npm run audit:inventory` + `audit:inventory-md` → regenerated
+- `npm run test:docs-integrity` + `test:docs-consistency` → exit 0
+- `npm run test:route-integrity` → exit 0
+- `rm -rf .next && npm run prebuild` + `npm run build` → exit 0
+
+### Open / next
+- **STOP** — Claude STAGE THREE on Phase 3 before merge
+- PR #48 Sanders AP-URL still gated
+
+---
+
+## HANDOFF 2026-07-19 — Phase 2: archive cruft (APPROVED · merged `4110812`)
+
+**From:** Cursor · **To:** Claude Code · **Verdict:** **APPROVED** — merged to `main` @ `4110812` (PR #52 @ `9bb899e`)
+
+### Objective
+Archive unwired scripts + finished docs; delete confirmed 0-importer dead shims.
 
 ### Summary
 | Area | Action | Count |
@@ -33,18 +56,9 @@ Archive unwired scripts + finished docs; delete confirmed 0-importer dead shims;
 | lib/data dead shims | permanent delete | 10 files |
 | components dead | delete | 5 files |
 | docs/workflows → archive | finished audits + content-maps | 5 paths |
-| npm aliases added | `refresh:migrated-votes` (+ existing `audit:inventory-md`) | 1 new |
-
-**Not touched:** `app/lobbying/[id]`, `app/counties/[fips]` (owner decision pending).
-
-### Verification
-- `npm run audit:inventory` + `audit:inventory-md` → regenerated
-- `npm run test:docs-integrity` + `test:docs-consistency` → exit 0
-- `rm -rf .next && npm run prebuild` + `npm run build` → exit 0
 
 ### Open / next
-- **STOP** — Claude STAGE THREE on Phase 2 @ `1ffef58` before merge / P3
-- PR #47 / #48 still gated
+- Phase 3 executed on `cursor/phase3-agent-index-reachability-70a6`
 
 ---
 

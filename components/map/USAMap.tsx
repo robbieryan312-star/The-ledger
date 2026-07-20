@@ -826,12 +826,6 @@ export default function USAMap({
                       <Users className="h-4 w-4 text-blue-400" />
                       <span className="text-blue-400 text-xs font-semibold uppercase tracking-wider">County Officials</span>
                     </div>
-                    <Link
-                      href={`/counties/${selectedCountyData.fips}`}
-                      className="flex items-center gap-1 text-xs text-[#c8a951] hover:text-white transition-colors"
-                    >
-                      Full page <ExternalLink className="h-3 w-3" />
-                    </Link>
                   </div>
                   <div className="space-y-2">
                     {selectedCountyData.officials.map(o => (
@@ -918,26 +912,18 @@ export default function USAMap({
                     </div>
                     <div className="space-y-1">
                       {stateCounties.map(county => (
-                        <div key={county.fips} className="flex items-center gap-1">
-                          <button
-                            type="button"
-                            onClick={() => handleCountyClick(county.fips, county.name)}
-                            className="flex-1 flex items-center justify-between text-left px-3 py-2 rounded-lg bg-[#0d1f35] hover:bg-[#1e3a5f] transition-colors"
-                          >
-                            <span className="text-white text-xs font-medium">{county.name}</span>
-                            <div className="flex items-center gap-1.5">
-                              <span className="text-gray-500 text-xs">{county.officials.length} official{county.officials.length !== 1 ? 's' : ''}</span>
-                              <ChevronRight className="h-3 w-3 text-gray-500" />
-                            </div>
-                          </button>
-                          <Link
-                            href={`/counties/${county.fips}`}
-                            className="p-2 text-gray-500 hover:text-[#c8a951] transition-colors rounded-lg bg-[#0d1f35]"
-                            title="Open county page"
-                          >
-                            <ExternalLink className="h-3.5 w-3.5" />
-                          </Link>
-                        </div>
+                        <button
+                          key={county.fips}
+                          type="button"
+                          onClick={() => handleCountyClick(county.fips, county.name)}
+                          className="w-full flex items-center justify-between text-left px-3 py-2 rounded-lg bg-[#0d1f35] hover:bg-[#1e3a5f] transition-colors"
+                        >
+                          <span className="text-white text-xs font-medium">{county.name}</span>
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-gray-500 text-xs">{county.officials.length} official{county.officials.length !== 1 ? 's' : ''}</span>
+                            <ChevronRight className="h-3 w-3 text-gray-500" />
+                          </div>
+                        </button>
                       ))}
                     </div>
                     <p className="text-xs text-gray-600 mt-2 text-center">Or click a county on the map</p>
