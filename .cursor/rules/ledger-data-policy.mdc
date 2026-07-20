@@ -77,6 +77,13 @@ Miami Herald, Tampa Bay Times, Sun Sentinel, Orlando Sentinel, Florida Phoenix, 
 
 ## Data organization — by destination view, not by source
 
+**State source files (binding):** `docs/sources/<state>/media.md` lists local journalists only;
+`docs/sources/<state>/agencies.md` lists state-native information providers (agencies, state portals,
+state-published tables). **API keys and multi-state vendors never belong in state source sub-files**
+— they live in `docs/OBJECTIVE_SOURCES.md`, `KEYS.md`, and the state's pipeline doc
+(e.g. `docs/FLORIDA_DATA.md`). Pipeline scripts read keys from env; agents read **who** from state
+sub-files and **how** from pipeline docs.
+
 Every generated data file must be named and structured for the UI view it feeds.
 When a sync script produces output, ask: "which menu section or profile tab does this go into?"
 Structure and name the output accordingly.

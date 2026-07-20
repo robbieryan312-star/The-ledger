@@ -296,7 +296,7 @@ export const SOURCE_CATALOG: SourceCatalogEntry[] = [
     outputPath: 'lib/data/generated/profiles/{bioguideId}/news.json',
     syncCommand: 'npm run sync:news-rss',
     agentPriority: 1,
-    notes: 'PRIMARY news path (AGENT_INDEX §3). National outlets in OBJECTIVE_SOURCES; FL-local outlets in docs/sources/florida.md. Shared articleCache.json.',
+    notes: 'PRIMARY news path (AGENT_INDEX §3). National outlets in OBJECTIVE_SOURCES; FL-local outlets in docs/sources/florida/media.md. Shared articleCache.json.',
   },
   {
     id: 'gdelt-national',

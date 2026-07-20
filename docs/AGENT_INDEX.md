@@ -38,7 +38,8 @@ Also read when relevant: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`,
 | I need… | Go to the ONE file that owns it |
 |---------|--------------------------------|
 | **Which NATIONAL/federal source/outlet is approved + its tier** | `docs/OBJECTIVE_SOURCES.md` (the constitution — national + cross-state only) |
-| **Which STATE-specific / local media outlet to use for a given state** | that state's own source sub-file: `docs/sources/<state>.md` (FL is the reference — `docs/sources/florida.md`). Travel straight to the state's file; do NOT hunt local outlets in the national constitution. |
+| **Which STATE-specific / local media outlet to use for a given state** | that state's source tree: `docs/sources/<state>.md` → `docs/sources/<state>/media.md` (FL reference: `docs/sources/florida/media.md`). Local journalists only — not API keys. |
+| **Which STATE-native agency / official provider to use for a given state** | `docs/sources/<state>/agencies.md` (FL: `docs/sources/florida/agencies.md`). State-hosted providers only — not multi-state vendors. |
 | **Which API key unlocks a data type + SET/EMPTY status** | `docs/OBJECTIVE_SOURCES.md` (key-routing matrix) · `KEYS.md` (SET/EMPTY only) |
 | **How to retrieve a data type (command + destination)** | `lib/data/SOURCE_LOOKUP.md` → and the RUNBOOK in §3 below |
 | **Machine-readable source list (for code)** | `lib/data/sourceCatalog.ts` |
@@ -87,11 +88,12 @@ the opinion filter and the RSS registry match first — don't assume the source 
 `articleCache.json` avoids re-fetching the same article across profiles.
 
 **State/local news & sources:** national outlets (AP, Reuters, Politico…) live in the national
-constitution; **state-specific local outlets** (e.g. a Florida paper or state agency) live in that
-state's own source sub-file under `docs/sources/` — FL is the reference (`docs/sources/florida.md`).
-When collecting for a state profile, open that state's source file FIRST for its approved local
-media, then apply the same tier/corroboration rules as national. This keeps each state's local
-sourcing self-contained and directly navigable as coverage scales beyond Florida.
+constitution. **State-specific local outlets** live in `docs/sources/<state>/media.md`; **state-native
+official providers** in `docs/sources/<state>/agencies.md` — FL is the reference
+(`docs/sources/florida/`). API keys and ingest commands never belong in those sub-files; they live
+in `OBJECTIVE_SOURCES.md`, `KEYS.md`, and the state's pipeline doc (`docs/FLORIDA_DATA.md` for FL).
+When collecting for a state profile, open the correct sub-file FIRST, then apply tier/corroboration
+rules. This keeps each state's local sourcing self-contained as coverage scales beyond Florida.
 
 ---
 
