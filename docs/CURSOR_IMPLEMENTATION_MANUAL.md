@@ -84,6 +84,11 @@ status MUST verify that claim against the **real artifact** (render, query, coun
 same turn. Correct stale status or flag it. A regression that silently un-does prior verified work
 is a first-class bug. **Status is earned by evidence, never by a label.**
 
+Improve the process as it scales (core-rules §6): at each expansion step, measure efficiency +
+effectiveness, apply one improvement, and record it in the owning process doc
+(`docs/workflows/BATCH_SCALING.md` § Improvement log). A scale step without a recorded pass is
+incomplete.
+
 Full rule: `.cursor/rules/ledger-core-rules.mdc` §1.1 M. Claude's standing orders: `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` §11.
 
 ---
