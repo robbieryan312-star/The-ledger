@@ -154,11 +154,16 @@ function MissingRecordPanel({ kind }: { kind: string }) {
 
 function HotTopicsPanel({ issues, votes, isFeatured }: { issues: Issue[]; votes: VoteRecord[]; isFeatured: boolean }) {
   const [openTopic, setOpenTopic] = useState<string | null>(null);
+  const openDef = openTopic ? HOT_TOPICS.find((t) => t.id === openTopic) : undefined;
+  const openMatched = openDef ? matchTopic(issues, openDef) : undefined;
+  const openIsGap = openMatched?.position === TOPIC_GAP_LABEL;
+  const openIsPending = openMatched?.pendingIntegration === true;
 
   return (
     <div className="rounded-xl border border-white/[0.08] p-5 mb-6" style={{ background: 'rgba(11,25,41,0.7)' }}>
       <h2 className="text-white font-bold mb-1">Where They Stand — Key Issues</h2>
       <p className="text-white/35 text-xs mb-4">Click any topic to see positions based on recorded votes, statements, and actions — not editorial opinion</p>
+      {/* Tiles stay in the grid; expanded drawer renders BELOW as full content width. */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
         {HOT_TOPICS.map(topic => {
           const matched = matchTopic(issues, topic);
@@ -168,93 +173,104 @@ function HotTopicsPanel({ issues, votes, isFeatured }: { issues: Issue[]; votes:
           const isOpen = openTopic === topic.id;
 
           return (
-            <div key={topic.id} className={isOpen ? 'col-span-full' : 'col-span-1'}>
-              <button
-                onClick={() => setOpenTopic(isOpen ? null : topic.id)}
-                className={`w-full text-left rounded-xl p-3 border transition-all ${
-                  matched && !isGap
-                    ? isOpen
-                      ? isPending
-                        ? 'border-amber-400/35'
-                        : 'border-[#d4ac52]/50'
-                      : isPending
-                        ? 'border-amber-400/20 hover:border-amber-400/35'
-                        : 'border-white/[0.07] hover:border-[#d4ac52]/40'
-                    : 'border-white/[0.04] opacity-50'
-                }`}
-                style={
-                  matched && !isGap && isOpen
-                    ? { background: isPending ? 'rgba(251,191,36,0.06)' : 'rgba(212,172,82,0.08)' }
-                    : { background: 'rgba(5,9,15,0.5)' }
-                }
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  <Icon className={`h-4 w-4 flex-shrink-0 ${matched && !isGap ? 'text-[#c8a951]' : 'text-gray-600'}`} />
-                  <span className={`text-xs font-semibold ${matched && !isGap ? 'text-white' : 'text-gray-600'}`}>{topic.label}</span>
-                </div>
-                <div className="text-xs text-gray-400 leading-tight line-clamp-2">
-                  {matched && !isGap ? matched.position : TOPIC_GAP_LABEL}
-                </div>
-              </button>
-
-              {isOpen && matched && !isGap && (
-                <div className="mt-1 rounded-xl border border-[#d4ac52]/25 p-3 text-xs space-y-2" style={{ background: 'rgba(5,9,15,0.85)' }}>
-                  {isPending && (
-                    <span className="inline-block text-[10px] text-amber-300/90 border border-amber-400/30 bg-amber-400/10 px-2 py-0.5 rounded-full mb-1">
-                      {PENDING_INTEGRATION_LABEL}
-                    </span>
-                  )}
-                  <div className="text-[#c8a951] font-semibold text-xs mb-0.5">{trimToWordBoundary(matched.position, 80)}</div>
-                  <p className="text-gray-300 leading-relaxed italic">{matched.statement ?? matched.detail}</p>
-                  {matched.evidence && matched.evidence.length > 0 ? (
-                    <div className="pt-2 border-t border-[#1e3a5f] space-y-1.5">
-                      <div className="text-[10px] text-gray-500 uppercase tracking-wide font-medium">Evidence (newest first)</div>
-                      {issueEvidenceSections(matched).current.map((ev, j) => (
-                        <ExpandableEvidenceRow key={j} item={ev} dedupeAgainst={matched.statement ?? matched.detail} />
-                      ))}
-                      <EarlierRecordSection items={issueEvidenceSections(matched).historical} />
-                    </div>
-                  ) : matched.source ? (
-                    <div className="pt-1 border-t border-[#1e3a5f]">
-                      <SourceProvenance source={matched.source} />
-                    </div>
-                  ) : null}
-                  {/* Related votes */}
-                  {votes.length > 0 && (() => {
-                    const kw = topic.keywords;
-                    const related = votes.filter(v =>
-                      kw.some(k => v.billTitle.toLowerCase().includes(k) || v.billDescription.toLowerCase().includes(k) || v.category.toLowerCase().includes(k))
-                    ).slice(0, 2);
-                    if (!related.length) return null;
-                    return (
-                      <div className="pt-1 border-t border-[#1e3a5f]">
-                        <div className="text-gray-500 mb-1">Related votes:</div>
-                        {related.map(v => (
-                          <div key={v.id} className="flex items-center gap-1.5 text-xs">
-                            <span className={`font-bold ${v.vote === 'Yea' ? 'text-green-400' : v.vote === 'Nay' ? 'text-red-400' : 'text-gray-400'}`}>{v.vote}</span>
-                            <span className="text-gray-400">{v.billTitle}</span>
-                          </div>
-                        ))}
-                      </div>
-                    );
-                  })()}
-                </div>
-              )}
-
-              {isOpen && (!matched || isGap) && (
-                <div className="mt-1 rounded-xl border border-white/[0.06] p-3 text-xs space-y-1" style={{ background: 'rgba(5,9,15,0.85)' }}>
-                  <div className="text-gray-300 font-semibold">{TOPIC_GAP_LABEL}</div>
-                  <p className="text-gray-500 leading-relaxed">
-                    {isFeatured
-                      ? TOPIC_GAP_DETAIL
-                      : `${MISSING_RECORD_LABEL}. Lightweight profiles only show verified office metadata until issue feeds are integrated.`}
-                  </p>
-                </div>
-              )}
-            </div>
+            <button
+              key={topic.id}
+              type="button"
+              onClick={() => setOpenTopic(isOpen ? null : topic.id)}
+              className={`w-full text-left rounded-xl p-3 border transition-all ${
+                matched && !isGap
+                  ? isOpen
+                    ? isPending
+                      ? 'border-amber-400/35'
+                      : 'border-[#d4ac52]/50'
+                    : isPending
+                      ? 'border-amber-400/20 hover:border-amber-400/35'
+                      : 'border-white/[0.07] hover:border-[#d4ac52]/40'
+                  : 'border-white/[0.04] opacity-50'
+              }`}
+              style={
+                matched && !isGap && isOpen
+                  ? { background: isPending ? 'rgba(251,191,36,0.06)' : 'rgba(212,172,82,0.08)' }
+                  : { background: 'rgba(5,9,15,0.5)' }
+              }
+            >
+              <div className="flex items-center gap-2 mb-1">
+                <Icon className={`h-4 w-4 flex-shrink-0 ${matched && !isGap ? 'text-[#c8a951]' : 'text-gray-600'}`} />
+                <span className={`text-xs font-semibold ${matched && !isGap ? 'text-white' : 'text-gray-600'}`}>{topic.label}</span>
+              </div>
+              <div className="text-xs text-gray-400 leading-tight line-clamp-2">
+                {matched && !isGap ? matched.position : TOPIC_GAP_LABEL}
+              </div>
+            </button>
           );
         })}
       </div>
+
+      {openDef && openMatched && !openIsGap && (
+        <div
+          data-testid="topic-drawer-fullwidth"
+          className="mt-3 w-full max-w-none rounded-xl border border-[#d4ac52]/25 p-3 text-xs space-y-2"
+          style={{ background: 'rgba(5,9,15,0.85)' }}
+        >
+          {openIsPending && (
+            <span className="inline-block text-[10px] text-amber-300/90 border border-amber-400/30 bg-amber-400/10 px-2 py-0.5 rounded-full mb-1">
+              {PENDING_INTEGRATION_LABEL}
+            </span>
+          )}
+          <div className="text-[#c8a951] font-semibold text-xs mb-0.5 break-words">
+            {trimToWordBoundary(openMatched.position, 80)}
+          </div>
+          <p className="text-gray-300 leading-relaxed italic break-words w-full max-w-none">
+            {openMatched.statement ?? openMatched.detail}
+          </p>
+          {openMatched.evidence && openMatched.evidence.length > 0 ? (
+            <div className="pt-2 border-t border-[#1e3a5f] space-y-1.5 w-full max-w-none">
+              <div className="text-[10px] text-gray-500 uppercase tracking-wide font-medium">Evidence (newest first)</div>
+              {issueEvidenceSections(openMatched).current.map((ev, j) => (
+                <ExpandableEvidenceRow key={j} item={ev} dedupeAgainst={openMatched.statement ?? openMatched.detail} />
+              ))}
+              <EarlierRecordSection items={issueEvidenceSections(openMatched).historical} />
+            </div>
+          ) : openMatched.source ? (
+            <div className="pt-1 border-t border-[#1e3a5f]">
+              <SourceProvenance source={openMatched.source} />
+            </div>
+          ) : null}
+          {votes.length > 0 && (() => {
+            const kw = openDef.keywords;
+            const related = votes.filter(v =>
+              kw.some(k => v.billTitle.toLowerCase().includes(k) || v.billDescription.toLowerCase().includes(k) || v.category.toLowerCase().includes(k))
+            ).slice(0, 2);
+            if (!related.length) return null;
+            return (
+              <div className="pt-1 border-t border-[#1e3a5f]">
+                <div className="text-gray-500 mb-1">Related votes:</div>
+                {related.map(v => (
+                  <div key={v.id} className="flex items-center gap-1.5 text-xs">
+                    <span className={`font-bold ${v.vote === 'Yea' ? 'text-green-400' : v.vote === 'Nay' ? 'text-red-400' : 'text-gray-400'}`}>{v.vote}</span>
+                    <span className="text-gray-400 break-words">{v.billTitle}</span>
+                  </div>
+                ))}
+              </div>
+            );
+          })()}
+        </div>
+      )}
+
+      {openDef && (!openMatched || openIsGap) && (
+        <div
+          data-testid="topic-drawer-fullwidth"
+          className="mt-3 w-full max-w-none rounded-xl border border-white/[0.06] p-3 text-xs space-y-1"
+          style={{ background: 'rgba(5,9,15,0.85)' }}
+        >
+          <div className="text-gray-300 font-semibold">{TOPIC_GAP_LABEL}</div>
+          <p className="text-gray-500 leading-relaxed break-words">
+            {isFeatured
+              ? TOPIC_GAP_DETAIL
+              : `${MISSING_RECORD_LABEL}. Lightweight profiles only show verified office metadata until issue feeds are integrated.`}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
@@ -358,7 +374,11 @@ function IssueAccordion({ issues, politicianName }: { issues: Issue[]; politicia
           </button>
 
           {openIdx === i && (
-            <div className="px-4 pb-4 border-t border-white/[0.06]" style={{ background: 'rgba(5,9,15,0.4)' }}>
+            <div
+              data-testid="issue-accordion-fullwidth"
+              className="w-full max-w-none px-4 pb-4 border-t border-white/[0.06]"
+              style={{ background: 'rgba(5,9,15,0.4)' }}
+            >
 
               {/* Convergence indicator */}
               {issue.evidence && issue.evidence.length > 0 && (
@@ -367,17 +387,17 @@ function IssueAccordion({ issues, politicianName }: { issues: Issue[]; politicia
 
               {/* Qualified statement */}
               {!isGapIssue(issue) && (
-              <p className="text-white/60 text-xs leading-relaxed pt-2 mb-3 italic border-l-2 border-[#c8a951]/30 pl-3">
+              <p className="text-white/60 text-xs leading-relaxed pt-2 mb-3 italic border-l-2 border-[#c8a951]/30 pl-3 break-words w-full max-w-none">
                 {issue.statement ?? `Available evidence suggests ${lastName} ${issue.detail.charAt(0).toLowerCase()}${issue.detail.slice(1)}`}
               </p>
               )}
 
               {isGapIssue(issue) ? (
-                <div className="rounded-lg border border-white/[0.08] bg-white/[0.02] p-3 text-xs text-gray-400 leading-relaxed pt-2">
+                <div className="rounded-lg border border-white/[0.08] bg-white/[0.02] p-3 text-xs text-gray-400 leading-relaxed pt-2 break-words">
                   {TOPIC_GAP_DETAIL}
                 </div>
               ) : issue.evidence && issue.evidence.length > 0 ? (
-                <div className="space-y-2">
+                <div className="space-y-2 w-full max-w-none">
                   {issueEvidenceSections(issue).current.map((ev, j) => (
                     <ExpandableEvidenceRow
                       key={j}
@@ -392,7 +412,7 @@ function IssueAccordion({ issues, politicianName }: { issues: Issue[]; politicia
                   <SourceProvenance source={issue.source} />
                 </div>
               ) : (
-                <div className="rounded-lg border border-yellow-400/20 bg-yellow-400/5 p-3 text-xs text-yellow-100/75">
+                <div className="rounded-lg border border-yellow-400/20 bg-yellow-400/5 p-3 text-xs text-yellow-100/75 break-words">
                   {TOPIC_GAP_LABEL}. Issue positions are only shown when backed by sourced votes, actions, filings, or statements.
                 </div>
               )}
