@@ -32,12 +32,12 @@ No-key subset: `npm run ingest:no-key`
 | `ingest:openstates-fl` | `ingest-openstates-florida.ts` | `data/florida/openstates/florida-legislators.json` |
 | `ingest:legiscan-fl` | `ingest-legiscan-florida.ts` | `data/florida/legiscan/florida-legislation.json` |
 | `ingest:news-fl` | `ingest-news-florida.ts` | `data/florida/news/florida-coverage.json` |
-| `ingest:sam-fl` | `ingest-sam-florida.ts` | `data/florida/sam/florida-contractors.json` |
+| `ingest:sam-fl` | `ingest-sam-florida.ts` | `data/florida/sam/florida-contractors.json` (Wave-1 preserve; honest-gap while `SAM_API_KEY` EMPTY / login.gov) |
 | `ingest:fedregister-fl` | `ingest-fedregister-florida.ts` | `data/florida/fedregister/florida-documents.json` |
 | `ingest:courts-fl` | `ingest-courtlistener-florida.ts` | `data/florida/courts/florida-court-opinions.json` |
 | `ingest:bls-fl` | `ingest-bls-florida.ts` | `data/florida/bls/florida-labor.json` |
 | `ingest:fldoe-fl` | `ingest-fldoe-finance-florida.ts` | `data/florida/fldoe/florida-contributions.json` |
-| `ingest:govinfo-fl` | `ingest-govinfo-florida.ts` | `data/florida/govinfo/florida-legislative-docs.json` |
+| `ingest:govinfo-fl` | `ingest-govinfo-florida.ts` | `data/florida/govinfo/florida-legislative-docs.json` (Wave-1 preserve; fill when GovInfo/api.data.gov key SET) |
 | `ingest:secedgar-fl` | `ingest-secedgar-florida.ts` | `data/florida/secedgar/florida-filings.json` |
 | `ingest:voteview-fl` | `ingest-voteview-florida.ts` | `data/florida/voteview/florida-ideology.json` |
 | `ingest:fllobbyist-fl` | `ingest-fllobbyist-florida.ts` | `data/florida/fllobbyist/florida-lobbying-firm-directories.json` |

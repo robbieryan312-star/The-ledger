@@ -27,8 +27,8 @@ Honest gaps are required — never fill with paraphrase or fabrication. Provenan
 | 6 | State courts | CourtListener (`nonpartisan`) | Courts panel | `ingest:courts-fl` | **filled** / thin with note |
 | 7 | State legislators | OpenStates (`nonpartisan`) | (future panel) | `ingest:openstates-fl` | **honest-gap** without key |
 | 8 | State political news | NewsAPI (`media`) | News bundle | `ingest:news-fl` | **sample committed** — 48 articles in `news-florida.json`; live refresh deferred (`KEYS.md`); corroborate per `'media'` tier rules |
-| 9 | Federal contracts (FL) | SAM.gov (`official`) | (future) | `ingest:sam-fl` | **honest-gap** — login.gov / key |
-| 10 | Federal register (FL-tagged) | GovInfo (`official`) | (future) | `ingest:govinfo-fl` | **honest-gap** without key |
+| 9 | Federal contracts (FL) | SAM.gov (`official`) | (future) | `ingest:sam-fl` | **honest-gap** — `SAM_API_KEY` EMPTY (login.gov); Wave-1 preserve-on-failure; fill when key obtained |
+| 10 | Federal register (FL-tagged) | GovInfo (`official`) | (future) | `ingest:govinfo-fl` | **live when `GOVINFO_API_KEY`/`DATA_GOV_API_KEY` SET** — Wave-1 preserve-on-failure; honest-gap if key EMPTY / fetch fail |
 | 11 | County map drilldown | Census + local `.gov` | Map explorer | *not wired* | **gap** — `USAMap` county literals empty (product decision) |
 | 12 | Metro CPI / MERIC COL | BLS + state source | Supplementary cards | `ingest:bls-metro-cpi-fl`, `ingest:meric-col-fl` | **partial** — verify vintage alignment |
 

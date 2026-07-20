@@ -2,9 +2,12 @@
  * GovInfo — Florida-related federal legislative documents (api.data.gov key).
  * Output: data/florida/govinfo/florida-legislative-docs.json
  *
- * Tier 1 official (GPO). Recent Congressional Bills, Congressional Record, and
+ * Tier official (GPO). Recent Congressional Bills, Congressional Record, and
  * Committee Reports mentioning Florida — the legislative-branch counterpart to
  * the Federal Register's executive/agency documents. Each item dated and linked.
+ *
+ * Wave-1 / core-rules §6: never overwrite a fetched-live snapshot with an empty /
+ * honest-gap payload on key miss or fetch failure.
  */
 import { fetchJson, loadEnvLocal, writeFloridaSnapshotPreservingLive } from '../../lib/ingest-utils';
 
@@ -43,13 +46,24 @@ async function main(): Promise<void> {
 
   if (!key) {
     const { action, outFile } = await writeFloridaSnapshotPreservingLive('govinfo', 'florida-legislative-docs.json', {
-      meta: { source: GOVINFO_SOURCE, asOf, fetchedAt, count: 0, stateCode: 'FL', fetchedLive: false, errors: ['No api.data.gov key configured'], note: 'No record on file — set DATA_GOV_API_KEY (api.data.gov key).' },
+      meta: {
+        source: GOVINFO_SOURCE,
+        asOf,
+        fetchedAt,
+        count: 0,
+        stateCode: 'FL',
+        fetchedLive: false,
+        provenance: 'honest-gap',
+        errors: ['No api.data.gov key configured'],
+        note:
+          'Honest-gap: set GOVINFO_API_KEY or DATA_GOV_API_KEY (api.data.gov). Prior fetched-live snapshot preserved when present.',
+      },
       records: [],
     });
     console.warn(
       action === 'preserved-prior'
         ? `Preserved prior fetched-live ${outFile} — no api.data.gov key`
-        : `Wrote empty ${outFile}`,
+        : `Wrote honest-gap ${outFile} — no api.data.gov key`,
     );
     return;
   }
@@ -83,26 +97,48 @@ async function main(): Promise<void> {
     errors.push(err instanceof Error ? err.message : String(err));
   }
 
-  const { action, outFile } = await writeFloridaSnapshotPreservingLive('govinfo', 'florida-legislative-docs.json', {
-    meta: {
-      source: GOVINFO_SOURCE,
-      asOf,
-      fetchedAt,
-      count: records.length,
-      stateCode: 'FL',
-      fetchedLive: errors.length === 0 && records.length > 0,
-      errors: errors.length ? errors : undefined,
-      datasetUrl: 'https://api.govinfo.gov/search',
-      note: 'Recent Florida-related federal legislative documents (bills, Congressional Record, committee reports) via GovInfo. Tier 1 official GPO.',
-    },
-    records,
-  });
+  const fetchedLive = errors.length === 0 && records.length > 0;
+  const payload = fetchedLive
+    ? {
+        meta: {
+          source: GOVINFO_SOURCE,
+          asOf,
+          fetchedAt,
+          count: records.length,
+          stateCode: 'FL' as const,
+          fetchedLive: true,
+          provenance: 'fetched-live' as const,
+          datasetUrl: 'https://api.govinfo.gov/search',
+          note:
+            'Recent Florida-related federal legislative documents (bills, Congressional Record, committee reports) via GovInfo. Tier official GPO.',
+        },
+        records,
+      }
+    : {
+        meta: {
+          source: GOVINFO_SOURCE,
+          asOf,
+          fetchedAt,
+          count: 0,
+          stateCode: 'FL' as const,
+          fetchedLive: false,
+          provenance: 'honest-gap' as const,
+          errors: errors.length ? errors : ['GovInfo returned no documents'],
+          datasetUrl: 'https://api.govinfo.gov/search',
+          note: 'Fetch failed or empty — prior fetched-live snapshot preserved when present (Wave-1 / core-rules §6).',
+        },
+        records: [] as Array<Record<string, unknown>>,
+      };
+
+  const { action, outFile } = await writeFloridaSnapshotPreservingLive('govinfo', 'florida-legislative-docs.json', payload);
 
   if (action === 'preserved-prior') {
-    console.warn(`Preserved prior fetched-live ${outFile} — refused to overwrite with ${records.length} records after errors`);
+    console.warn(
+      `Preserved prior fetched-live ${outFile} — refused to overwrite after errors: ${errors.join('; ') || 'empty'}`,
+    );
     process.exitCode = 1;
   } else {
-    console.log(`Wrote ${outFile} (${records.length} records)`);
+    console.log(`Wrote ${outFile} (${fetchedLive ? records.length : 0} records, fetchedLive=${fetchedLive})`);
   }
 }
 
