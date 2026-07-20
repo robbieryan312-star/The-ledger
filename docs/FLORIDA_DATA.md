@@ -29,7 +29,7 @@ No-key subset: `npm run ingest:no-key`
 | `ingest:civic-fl` | `ingest-civic-florida.ts` | `data/florida/civic/florida-districts.json` |
 | `ingest:census-fl` | `ingest-census-florida.ts` | `data/florida/census/florida-demographics.json` |
 | `ingest:lobbying-fl` | `ingest-lobbying-florida.ts` | `data/florida/lobbying/florida-disclosures.json` |
-| `ingest:openstates-fl` | `ingest-openstates-florida.ts` | `data/florida/openstates/florida-legislators.json` |
+| `ingest:openstates-fl` | `ingest-openstates-florida.ts` | `data/florida/openstates/florida-legislators.json` (Wave-1 preserve-on-failure; honest-gap if key EMPTY) |
 | `ingest:legiscan-fl` | `ingest-legiscan-florida.ts` | `data/florida/legiscan/florida-legislation.json` |
 | `ingest:news-fl` | `ingest-news-florida.ts` | `data/florida/news/florida-coverage.json` |
 | `ingest:sam-fl` | `ingest-sam-florida.ts` | `data/florida/sam/florida-contractors.json` |

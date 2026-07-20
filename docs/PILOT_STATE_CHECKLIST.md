@@ -25,7 +25,7 @@ Honest gaps are required — never fill with paraphrase or fabrication. Provenan
 | 4 | Federal delegation roster | `allPoliticians` + office resolution | Officials section | `sync:legislators`, `verify:office` | **filled** |
 | 5 | State legislation | LegiScan (`official`) | Legislation panel | `ingest:legiscan-fl` | **sample committed** — 10 bills in `legislation-florida.json`; live refresh needs `LEGISCAN_API_KEY` |
 | 6 | State courts | CourtListener (`nonpartisan`) | Courts panel | `ingest:courts-fl` | **filled** / thin with note |
-| 7 | State legislators | OpenStates (`nonpartisan`) | (future panel) | `ingest:openstates-fl` | **honest-gap** without key |
+| 7 | State legislators | OpenStates (`nonpartisan`) | (future panel) | `ingest:openstates-fl` | **keyed** — `OPENSTATES_API_KEY` SET; live fill when API reachable; Wave-1 preserve-on-failure; **honest-gap on disk** when fetch fails (never wipe prior live) |
 | 8 | State political news | NewsAPI (`media`) | News bundle | `ingest:news-fl` | **sample committed** — 48 articles in `news-florida.json`; live refresh deferred (`KEYS.md`); corroborate per `'media'` tier rules |
 | 9 | Federal contracts (FL) | SAM.gov (`official`) | (future) | `ingest:sam-fl` | **honest-gap** — login.gov / key |
 | 10 | Federal register (FL-tagged) | GovInfo (`official`) | (future) | `ingest:govinfo-fl` | **honest-gap** without key |
