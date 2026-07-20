@@ -14,7 +14,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 **From:** Owner (independent verify) + Cursor · **Verdict:** **COMPLETE · MERGED**
 
-**PR #59** @ tip **`a9f0b45`** → merged to **`main`** *(merge SHA recorded below)*
+**PR #59** @ tip **`a9f0b45`** → **`main`** @ **`ae58e6c`** (fast-forward merge)
 
 ### Owner verification (independent of agent report)
 
@@ -35,7 +35,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Confront Claude — paste to Claude Code
 
-**Merged:** PR #59 navigation-plan lock → **`main`** @ merge SHA *(below)* · tip was **`a9f0b45`**
+**Merged:** PR #59 navigation-plan lock → **`main`** @ **`ae58e6c`** (fast-forward; owner-verified tip **`a9f0b45`**)
 
 **Owner STAGE THREE:** COMPLETE (owner verified independently on tip)
 
