@@ -12,7 +12,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Latest session — M3 Sanders news 5→15 (`cursor/m3-sanders-news-depth-70a6`) (COMPLETE)
 
-**Current state:** branch `cursor/m3-sanders-news-depth-70a6` · HEAD **`f085d42`** · base `origin/main` @ `714f473` (includes PR #58 / `memberNewsMatching` + `newsCorroboration`) · compare https://github.com/robbieryan312-star/The-ledger/compare/main...cursor/m3-sanders-news-depth-70a6 · tree clean · `rm -rf .next && npm run prebuild` → 0 · `npm run build` → 0
+**Current state:** branch `cursor/m3-sanders-news-depth-70a6` · HEAD **`3e8476e`** · base `origin/main` @ `714f473` (includes PR #58 / `memberNewsMatching` + `newsCorroboration`) · compare https://github.com/robbieryan312-star/The-ledger/compare/main...cursor/m3-sanders-news-depth-70a6 · tree clean · `rm -rf .next && npm run prebuild` → 0 · `npm run build` → 0
 
 ### Objective
 Sanders news depth 5→15 with D1 matcher + D2 corroboration; own PR branch; do not merge.
@@ -22,7 +22,9 @@ Sanders news depth 5→15 with D1 matcher + D2 corroboration; own PR branch; do 
 
 ### Commits
 - `ec4d851` — feat(news): M3 Sanders news depth 3→15 via topic RSS + alleged demotion
-- `f085d42` — docs(handoff): M3 tip SHA (superseded by this tip sync)
+- `f085d42` — docs(handoff): M3 tip SHA after push
+- `4d0a3b5` — docs(handoff): sync M3 HEAD to branch tip
+- `3e8476e` — docs(handoff): M3 branch tip 3e8476e
 
 ### Commands run (this session)
 - `git fetch origin main` → tip `714f473`
