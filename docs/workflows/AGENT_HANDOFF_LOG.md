@@ -10,6 +10,30 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-20 — M1 COMPLETE: PR #56 §4 prompt-size rule merged
+
+**From:** Cursor · **To:** Owner · **Verdict:** **MERGED**
+
+| Item | SHA |
+|------|-----|
+| PR #56 tip (owner-approved) | **`df4ed13`** |
+| Merge on `main` | **`df4ed13`** (fast-forward from `b37773f`) |
+| File | `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md` — §4 corrected to owner's actual instruction |
+
+**Verify:** `npx tsx --test scripts/__tests__/docsIntegrityGuard.test.ts` → **9/9 pass**, exit 0
+
+**§4 now authoritative:** as many concurrent tasks as can proceed; milestone STOP gates by necessity; one COPY TO CURSOR block/response; Claude prose short.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M1 MERGED:** PR #56 → `main` @ **`df4ed13`** (fast-forward)
+**docs-integrity:** 9/9 exit 0
+**Next:** M2 — rebase PR #58 onto `main` @ `df4ed13`; STOP for owner STAGE THREE (do not merge #58)
+
+---
+
 ## Owner directive 2026-07-20 — Vercel consolidated to single project
 
 **From:** Owner · **Verdict:** **RECORDED**
