@@ -134,5 +134,7 @@ Cursor agents commit locally when work passes review; **push to `origin/main` re
 - **Deleted (do not reference):** `the-ledger-jcjh`, `the-ledger`, and any other former Vercel
   projects. Agents must not attempt deploys, cite preview URLs, or treat bot comments for those
   names as live or approved.
-- Optional: disable per-push PR preview deployments in the Vercel dashboard (or `vercel.json`
-  `git.deploymentEnabled`) to avoid Hobby quota burn — owner dashboard step only.
+- **Repo `vercel.json`:** `git.deploymentEnabled` enables deploys on `main` only (`"*": false`)
+  so PR/feature branches do not create Preview deployments (Hobby daily limit). Production on
+  `the-ledger-s4dn` still advances when PRs **merge to main**. Owner should keep Production
+  Branch = `main` and a single project connected.
