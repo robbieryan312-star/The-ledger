@@ -28,4 +28,12 @@ test('fixture: distinct reporting of same event IS independent corroboration', (
   assert.equal(isIndependentSameEventReporting(a, b), expectIndependent);
   const verified = applyNewsCorroboration([a, b]);
   assert.equal(verified.every((i) => i.isVerified === true), true);
+  assert.equal(verified.every((i) => i.source.tier === 'media'), true);
+});
+
+test('unverified media-tier item is demoted to alleged', () => {
+  const { a } = NEWS_CORROBORATION_KNOWN_GOOD_DISTINCT;
+  const [alone] = applyNewsCorroboration([a]);
+  assert.equal(alone.isVerified, false);
+  assert.equal(alone.source.tier, 'alleged');
 });

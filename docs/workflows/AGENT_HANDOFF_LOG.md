@@ -10,6 +10,56 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — M3 Sanders news 5→15 (`cursor/m3-sanders-news-depth-70a6`) (COMPLETE)
+
+**Current state:** branch `cursor/m3-sanders-news-depth-70a6` · base `origin/main` @ `714f473` (includes PR #58 / `memberNewsMatching` + `newsCorroboration`) · PR not opened by this session · tree clean after commit · `rm -rf .next && npm run prebuild` → 0 · `npm run build` → 0
+
+### Objective
+Sanders news depth 5→15 with D1 matcher + D2 corroboration; own PR branch; do not merge.
+
+### Verdict / outcome
+**PASS / COMPLETE** — before **3** → after **15**/15; all single-outlet media demoted to `'alleged'` (0 verified pairs in pool); GDELT rate-limited this environment — depth via approved-outlet topic/tag RSS (Guardian + Hill).
+
+### Commits
+- (this session tip — see git log after push)
+
+### Commands run (this session)
+- `git fetch origin main` → tip `714f473`
+- `git checkout -B cursor/m3-sanders-news-depth-70a6 origin/main`
+- `npm run sync:news-rss -- --members S000033` → exit 0 (first run 3 items; after topic RSS → 15)
+- `npm run snapshot:update -- --member S000033` → exit 0
+- `rm -rf .next && npm run prebuild` → PREBUILD_EXIT=0
+- `npm run build` → BUILD_EXIT=0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/lib/memberTopicNewsRss.ts` | created | Approved-outlet topic/tag RSS discovery (Guardian + Hill) |
+| `scripts/__tests__/memberTopicNewsRss.test.ts` | created | Slug unit test |
+| `scripts/sync-news-rss.ts` | modified | Wire topic RSS; refresh merge; note text |
+| `lib/data/newsCorroboration.ts` | modified | Unverified media → `'alleged'` |
+| `scripts/__tests__/newsCorroboration.test.ts` | modified | Alleged demotion test |
+| `package.json` | modified | Wire topic test into source-integrity |
+| `lib/data/generated/profiles/S000033/news.json` | modified | 3 → 15 items |
+| `lib/data/__fixtures__/profileSnapshots/S000033.snapshot.json` | modified | Regenerated |
+| `PILOT_PROFILE_CHECKLIST.md` | modified | News row → done 15/15 |
+| `data/reports/feed-health.json` | modified | Sync feed health refresh |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session log |
+
+### Acceptance evidence
+- `news.json` items.length = **15**, status=`filled`, source.tier=`alleged` for all (D2: no independent same-event pairs in pool)
+- Matcher D1: full name / honorific+ln only (topic + NewsAPI paths)
+- Never fabricated; GDELT skipped (rate-limited); honest remainder N/A at 15/15
+
+### Open / next
+- Own PR branch pushed — **do not merge** until Claude APPROVAL
+- Optional later: resolve multi-outlet URLs for Platner/AI stories so some items can flip `isVerified`
+
+### Confront Claude — paste to Claude Code
+**M3 COMPLETE** on `cursor/m3-sanders-news-depth-70a6`: news **3→15**; prebuild 0; build 0; alleged demotion on; topic RSS supplement. **Do not merge** without tip APPROVAL.
+
+---
+
 ## HANDOFF 2026-07-20 — PR #58 MERGED (M2 APPROVED @ a7737a9)
 
 **From:** Cursor · **To:** Owner · **Verdict:** **MERGED**

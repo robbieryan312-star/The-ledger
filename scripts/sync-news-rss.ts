@@ -31,6 +31,7 @@ import {
   gdeltArticleToNewsItem,
 } from './lib/gdeltMemberNews';
 import { fetchNewsApiArticlesForMember } from './lib/newsApiMemberNews';
+import { fetchMemberTopicRssArticles } from './lib/memberTopicNewsRss';
 import {
   isArticleTypeIntegrityUrl,
   isBareHomepageUrl,
@@ -144,7 +145,7 @@ export function resolveNewsStatus(
   if (merged.length > 0) {
     return {
       status: 'filled',
-      note: `${merged.length} relevant article(s) from RSS, GDELT, and NewsAPI (target ${MAX_ITEMS_PER_MEMBER}).`,
+      note: `${merged.length} relevant article(s) from RSS, topic/tag feeds, GDELT, and NewsAPI (target ${MAX_ITEMS_PER_MEMBER}).`,
     };
   }
   if (opts.memberSkipped) {
@@ -392,11 +393,18 @@ function toNewsItem(candidate: RssItem, idx: number, bioguideId: string): NewsIt
 
 function mergeWithExisting(existing: NewsItem[], fresh: NewsItem[]): NewsItem[] {
   const merged = [...existing];
-  const seen = new Set(existing.map((i) => normalizeUrlForDedupe(i.url ?? i.source.url ?? '')));
+  const seen = new Map(
+    existing.map((i, idx) => [normalizeUrlForDedupe(i.url ?? i.source.url ?? ''), idx] as const),
+  );
   for (const item of fresh) {
     const key = normalizeUrlForDedupe(item.url ?? item.source.url ?? '');
-    if (seen.has(key)) continue;
-    seen.add(key);
+    const priorIdx = seen.get(key);
+    if (priorIdx !== undefined) {
+      // Prefer fresh copy (e.g. re-stripped summaries) over stale existing.
+      merged[priorIdx] = item;
+      continue;
+    }
+    seen.set(key, merged.length);
     merged.push(item);
   }
   return merged
@@ -516,10 +524,10 @@ async function main(): Promise<void> {
     if (memberIndex > 0) await sleep(GDELT_MEMBER_DELAY_MS);
 
     let gdeltItems: NewsItem[] = [];
+    // Scoped member depth runs query all approved domains; full-corpus keeps default.
     const gdeltResult = await fetchGdeltArticlesForMember(leg, displayByBio, {
       maxRecords: 25,
       timespan: '12months',
-      ...(membersArg ? { maxDomains: 3 } : {}),
     });
     if (!gdeltResult.failed) {
       gdeltItems = gdeltResult.articles
@@ -541,7 +549,22 @@ async function main(): Promise<void> {
       console.warn(`  ${bioguideId}: NewsAPI supplement skipped — ${newsApiResult.error}`);
     }
 
-    let merged = mergeWithExisting(existingItems, [...freshItems, ...gdeltItems, ...newsApiItems]);
+    const topicResult = await fetchMemberTopicRssArticles(leg, displayByBio);
+    const topicItems = topicResult.items;
+    if (topicItems.length > 0) {
+      console.log(`  ${bioguideId}: topic/tag RSS supplement ${topicItems.length} article(s)`);
+    } else if (topicResult.feedFailures.length > 0) {
+      console.warn(
+        `  ${bioguideId}: topic/tag RSS — 0 matches (${topicResult.feedFailures.join('; ')})`,
+      );
+    }
+
+    let merged = mergeWithExisting(existingItems, [
+      ...freshItems,
+      ...gdeltItems,
+      ...newsApiItems,
+      ...topicItems,
+    ]);
     merged = applyNewsCorroboration(merged).slice(0, MAX_ITEMS_PER_MEMBER);
 
     const resolved = resolveNewsStatus(merged, existingItems, {
