@@ -10,6 +10,45 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-20 — M7b OpenStates FL + Wave-1 preserve (PASS — do not merge)
+
+**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS** (await APPROVAL before merge)
+
+| Item | Value |
+|------|-------|
+| Branch | `cursor/m7b-openstates-fl-70a6` |
+| Base | `origin/main` @ `ee0b24d` |
+| Tip | `fc38b6f` |
+| Compare | https://github.com/robbieryan312-star/The-ledger/compare/main...cursor/m7b-openstates-fl-70a6 |
+| Key | `OPENSTATES_API_KEY` **SET** — live fill attempted; upstream timeout/502 from agent egress → **honest-gap** on disk (Wave-1 preserve wired; no prior live to wipe) |
+| Prebuild | exit **0** |
+
+### Objective
+FL conduit 7b: OpenStates FL ingest with Wave-1 preserve-on-failure + honest-gap when keyed fetch fails.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/ingest/florida/ingest-openstates-florida.ts` | modified | fix duplicate `page=` URL; provenance; fail→empty honest-gap preserve path; 60s timeout |
+| `data/florida/openstates/florida-legislators.json` | modified | honest-gap snapshot (timeout errors documented) |
+| `lib/data/generated/slices/legislation-florida.json` | modified | openstates section asOf/note from honest-gap |
+| `docs/PILOT_STATE_CHECKLIST.md` | modified | row 7 keyed + preserve / honest-gap semantics |
+| `docs/FLORIDA_DATA.md` | modified | openstates preserve note |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this handoff |
+
+### Acceptance evidence
+- `npm run ingest:openstates-fl` → honest-gap written (key SET; API unreachable from agent)
+- Preserve tests 6/6; code routes through `writeFloridaSnapshotPreservingLive`
+- `npm run prebuild` → exit 0
+
+## Confront Claude — paste to Claude Code
+
+**M7b PASS** on `cursor/m7b-openstates-fl-70a6` — OpenStates preserve+honest-gap; key SET but live fill blocked by upstream timeout (agent egress).
+**Do not merge** until Claude APPROVAL for tip SHA.
+**Sibling:** M7a LegiScan · M7c news RSS · M7d SAM/GovInfo.
+
+---
+
 ## HANDOFF 2026-07-20 — M1 MERGED: Claude governance @ 1abf48d
 
 **From:** Cursor · **To:** Owner · **Verdict:** **MERGED**
