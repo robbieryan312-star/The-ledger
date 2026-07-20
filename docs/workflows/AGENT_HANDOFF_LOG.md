@@ -14,7 +14,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 **From:** Owner (independent verify) + Cursor · **Verdict:** **COMPLETE · MERGED**
 
-**PR #59** @ tip **`a9f0b45`** → **`main`** @ **`ae58e6c`** (fast-forward merge)
+**PR #59** — owner **APPROVED** @ **`a9f0b45`** · merged to **`main`** @ **`ae58e6c`** (fast-forward) · handoff sync @ **`c03cbcd`**
 
 ### Owner verification (independent of agent report)
 
@@ -28,20 +28,20 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 | Item | Status |
 |------|--------|
 | PROGRESS table SHA style | Rows 0–1 use PR-head SHAs; rows 2–5 use merge-commit SHAs — both valid on main; PR# is authoritative anchor. Optional polish, non-blocking. |
-| **PR #58** | **Claude review APPROVED only** — **NOT owner STAGE THREE**; do not merge until owner confirms @ `539162a` |
-| `lib/data/branches.ts` dead-shim sweep | Pending (separate task) |
+| **PR #58** | **AWAITING Claude STAGE THREE — not approved; do not merge** @ `539162a` |
+| `lib/data/branches.ts` dead-shim sweep | **NOT dead** — live importer: lib/data/allPoliticians.ts:18 (`from './branches'`) |
 
 ---
 
 ## Confront Claude — paste to Claude Code
 
-**Merged:** PR #59 navigation-plan lock → **`main`** @ **`ae58e6c`** (fast-forward; owner-verified tip **`a9f0b45`**)
+**Merged:** PR #59 navigation-plan lock → **`main`** @ **`ae58e6c`** (owner APPROVED tip **`a9f0b45`**)
 
-**Owner STAGE THREE:** COMPLETE (owner verified independently on tip)
+**Owner STAGE THREE:** COMPLETE @ **`a9f0b45`**
 
-**Still gated:** PR **#58** @ **`539162a`** — Claude review pass only; **owner STAGE THREE not given**
+**Still gated:** PR **#58** @ **`539162a`** — **AWAITING Claude STAGE THREE — not approved; do not merge**
 
-**Next:** `lib/data/branches.ts` dead-shim verify-and-remove sweep (separate PR)
+**branches.ts shim:** NOT deleted — live import at lib/data/allPoliticians.ts:18
 
 ---
 
@@ -195,7 +195,7 @@ Also: BATCH_SCALING § Improvement log row for nav guard (1→21 prebuild cmds);
 |----|-----|---------|--------|
 | #55 Cursor manual cross-ref | `7844db6` → merge `61e6d5c` | **APPROVED** (prior) | merged ✓ |
 | #57 P0 AP-URL guard | `24296bd` → merge `1aae27f` | **APPROVED** | **merged ✓** |
-| #58 news pipeline batch | `539162a` (rebased) | **Claude review APPROVED — owner STAGE THREE pending** | STOP — do not merge until owner STAGE THREE on `539162a` |
+| #58 news pipeline batch | `539162a` (rebased) | **AWAITING Claude STAGE THREE — not approved; do not merge.** | STOP — do not merge |
 
 ### PR #57 — five-pass review @ `24296bd` (merged `1aae27f`)
 1. **Implementation** — `AP_NEWS_ARTICLE_URL` + early return in `isPlaceholderUrl`; fixture + test; one AP item in `S000033/news.json`. ✓
@@ -276,7 +276,7 @@ Pipeline code, `sourceIntegrity.ts`, generated profile JSON (except inventory md
 ## Confront Claude — paste to Claude Code
 
 **Merged:** PR #57 → `main` @ **`1aae27f`** · PR #55 @ **`61e6d5c`**  
-**Claude review APPROVED (not owner STAGE THREE):** PR #57 ✓ merged · PR #58 @ **`539162a`** — **owner STAGE THREE pending; do not merge**  
+**PR #58 @ `539162a`:** **AWAITING Claude STAGE THREE — not approved; do not merge** (prior handoff lines that said Claude APPROVED were inaccurate)  
 **Closed:** PR #48 · split complete
 
 **PR #58 @ `539162a` evidence:** `npm run prebuild` exit 0 (post-rebase, incl. W3d + credibility)  
