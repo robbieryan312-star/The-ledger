@@ -10,9 +10,53 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
-## HANDOFF 2026-07-20 — Phases 4–5 + merges (combined STAGE THREE)
+## HANDOFF 2026-07-20 — PR #54 merged + Phase 5 manual gap PR (#55)
 
-**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS — STOP for combined STAGE THREE review**
+**From:** Cursor · **To:** Claude Code / Owner · **Verdict:** **PR #54 MERGED** · **PR #55 STOP for STAGE THREE**
+
+### Merge confirmed
+| Item | SHA / status |
+|------|----------------|
+| PR #54 Phases 4–5 + Florida restructure | **merged** → `main` @ `4625976` (approved task commit `56ac08d`) |
+| PR #53 Phase 3 | merged @ `a730f81` (base before #54) |
+| PR #47 | closed superseded |
+
+### PR #55 — Cursor manual cross-ref (pending STAGE THREE)
+- **Branch:** `cursor/phase5-cursor-manual-xref-70a6` · **HEAD:** `7844db6`
+- **PR:** https://github.com/robbieryan312-star/The-ledger/pull/55
+- **Change:** one paragraph under `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6 only
+- **Do not merge** until APPROVAL on `7844db6`
+
+### PR #48 — Sanders AP-URL (separate gate — NOT merged)
+- **Branch:** `cursor/sanders-news-trades-fix-70a6` · **HEAD:** `e404c0a`
+- **PR:** https://github.com/robbieryan312-star/The-ledger/pull/48
+- **Awaiting owner STAGE THREE** on `e404c0a` (verification below)
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Merged:** PR #54 → `main` @ `4625976` (approved `56ac08d`)  
+**Pending STAGE THREE:** PR #55 @ `7844db6` — Cursor manual §6 cross-ref only  
+**Pending STAGE THREE (owner):** PR #48 @ `e404c0a` — Sanders AP-URL / news/trades — **do not merge**
+
+**PR #48 verification @ `e404c0a` (executed this session):**
+- `npx tsx -e "import { isPlaceholderUrl } from './lib/data/sourceIntegrity.ts'; console.log(isPlaceholderUrl('https://apnews.com/article/mamdani-sanders-new-york-primary-b1a13eaf0d7e634b6805fc80b3372cf8'));"` → `false` (exit 0)
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts` → 56/56 pass (exit 0)
+- `rm -rf .next && npm run prebuild` → exit 0 (20 guards on this branch — pre-#54)
+- `npm run build` → exit 0
+- `npm run audit:profile-credibility --gate` → S000033 0 defects (via prebuild)
+- `rg 'apnews.com/article/mamdani' lib/data/generated/profiles/S000033/news.json` → URL present
+
+**PR #55 verification @ `7844db6`:**
+- `grep -n "Improve the process as it scales" docs/CURSOR_IMPLEMENTATION_MANUAL.md` → line 87
+- docsIntegrity 9/9 · docsConsistency 10/10 · navigationIntegrity 4/4 · prebuild exit 0
+
+---
+
+## HANDOFF 2026-07-20 — Phases 4–5 + merges (APPROVED · merged `4625976`)
+
+**From:** Cursor · **To:** Claude Code · **Verdict:** **APPROVED · MERGED** @ `4625976` (task `56ac08d`)
 
 ### Merges / housekeeping
 | Item | SHA / status |
