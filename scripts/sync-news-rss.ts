@@ -44,6 +44,7 @@ import {
   loadMemberNewsDisplayMap,
   matchesMemberInText,
 } from './lib/memberNewsMatching';
+import { qualifiesMemberNewsItem } from './lib/memberNewsQualification';
 import type { ProfileDisplayIdentity } from './lib/profileDisplayIdentity';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -326,6 +327,7 @@ function rawItemsToCandidates(
     const blob = `${title} ${description}`;
     const matchedName = matchesMember(blob, leg);
     if (!matchedName) continue;
+    if (!qualifiesMemberNewsItem(title, description, leg, displayByBio).ok) continue;
     if (!isPoliticallyRelevant(title, description)) continue;
 
     const outlet = outletForArticleUrl(link) ?? defaultOutlet;

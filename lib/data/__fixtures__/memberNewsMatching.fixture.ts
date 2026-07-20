@@ -29,3 +29,37 @@ export const MEMBER_NEWS_MATCH_KNOWN_GOOD_FULL_NAME = {
   text: 'Bernie Sanders spoke at a rally in Burlington about Medicare for All.',
   expectedMatchContains: 'Sanders',
 } as const;
+
+/** Owner 2026-07-20: comparison-only mention does NOT qualify for profile News. */
+export const MEMBER_NEWS_QUALIFY_KNOWN_BAD_COMPARISON_ONLY = {
+  defect: 'comparison-only-news-mention',
+  description:
+    'Comparison foil ("Is he Bernie Sanders or Donald Trump?") is not subject and not a quote',
+  headline:
+    'Is he Bernie Sanders or Donald Trump? Protest vote complicates Graham Platner’s victory',
+  body: 'He is an echo of both Trump and Senator Bernie Sanders, who ran insurgent campaigns in 2016 based on economic populism of one kind or another.',
+  expectedOk: false,
+  expectedReason: 'comparison-only-mention',
+} as const;
+
+/** Owner 2026-07-20: direct member quote DOES qualify (multi-politician reaction OK). */
+export const MEMBER_NEWS_QUALIFY_KNOWN_GOOD_DIRECT_QUOTE = {
+  defect: 'direct-member-quote-ok',
+  description: 'Direct Sanders quote in a multi-politician reaction piece qualifies',
+  headline:
+    '‘Unhinged madman’: US politicians react to Trump’s expletive-laden threat to Iran',
+  body: 'Bernie Sanders, an independent US senator, called it "dangerous and mentally unbalanced". He said on X: "One month after starting the war in Iran, this is the statement of the President of the United States on Easter Sunday."',
+  expectedOk: true,
+  expectedReason: 'direct-quote',
+} as const;
+
+/** Mention as email releaser without a direct quote does NOT qualify. */
+export const MEMBER_NEWS_QUALIFY_KNOWN_BAD_RELEASER_NO_QUOTE = {
+  defect: 'releaser-mention-no-quote',
+  description:
+    'CDC emails released by Sen. Bernie Sanders — subject is CDC, no direct Sanders quote',
+  headline: 'CDC emails reveal challenges facing its next director',
+  body: 'They were recently released by Senator Bernie Sanders, an independent from Vermont, and ranking member of the Senate Health Committee. He asked Houry for documents related to Secretary Kennedy\'s politicization of the CDC.',
+  expectedOk: false,
+  expectedReason: 'mention-without-subject-or-quote',
+} as const;

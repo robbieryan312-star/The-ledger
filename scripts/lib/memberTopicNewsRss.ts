@@ -16,6 +16,7 @@ import {
   memberNewsPrimaryName,
   type LegislatorNewsRow,
 } from './memberNewsMatching';
+import { qualifiesMemberNewsItem } from './memberNewsQualification';
 
 const FETCH_TIMEOUT_MS = 15_000;
 
@@ -163,6 +164,8 @@ export async function fetchMemberTopicRssArticles(
       const date = formatPubDate(raw.pubDate);
       if (!date || !isAllowedNewsArticleUrl(link)) continue;
       if (!matchesMemberInText(`${title} ${description}`, leg, displayByBio)) continue;
+      const qualify = qualifiesMemberNewsItem(title, description, leg, displayByBio);
+      if (!qualify.ok) continue;
       if (!isTopicRelevant(title, description)) continue;
       if (seen.has(link)) continue;
       seen.add(link);

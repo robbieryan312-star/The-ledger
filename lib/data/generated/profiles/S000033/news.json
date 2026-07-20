@@ -20,23 +20,6 @@
       }
     },
     {
-      "id": "s000033-newsapi-11",
-      "headline": "CDC emails reveal challenges facing its next director",
-      "summary": "Emails from CDC officials released by Sen. Bernie Sanders reveal agency leaders dealing with political pressures during the Trump era and highlight challenges for the next director.",
-      "date": "2026-07-04",
-      "category": "Congress",
-      "isOpinion": false,
-      "isVerified": false,
-      "url": "https://www.npr.org/2026/07/04/nx-s1-5876507/cdc-emails-reveal-challenges-facing-its-next-director",
-      "source": {
-        "name": "NPR",
-        "url": "https://www.npr.org/2026/07/04/nx-s1-5876507/cdc-emails-reveal-challenges-facing-its-next-director",
-        "tier": "alleged",
-        "date": "2026-07-04",
-        "description": "NewsAPI — corroborate with a second independent outlet before citing as verified fact"
-      }
-    },
-    {
       "id": "s000033-newsapi-19",
       "headline": "Sen. Sanders wants Americans to have a say — and stake — in the future of AI",
       "summary": "Sen. Bernie Sanders talks with NPR's Juana Summers about his new legislation, which would create a sovereign wealth fund, and give the American people a say in regulating AI.",
@@ -51,23 +34,6 @@
         "tier": "alleged",
         "date": "2026-06-18",
         "description": "NewsAPI — corroborate with a second independent outlet before citing as verified fact"
-      }
-    },
-    {
-      "id": "s000033-topic-2",
-      "headline": "Is he Bernie Sanders or Donald Trump? Protest vote complicates Graham Platner’s victory",
-      "summary": "Democrats have rolled the dice in Maine as they pursue a post-Trump future.",
-      "date": "2026-06-10",
-      "category": "Congress",
-      "isOpinion": false,
-      "isVerified": false,
-      "url": "https://www.theguardian.com/us-news/2026/jun/10/graham-platner-maine-senate-primary-victory",
-      "source": {
-        "name": "The Guardian",
-        "url": "https://www.theguardian.com/us-news/2026/jun/10/graham-platner-maine-senate-primary-victory",
-        "tier": "alleged",
-        "date": "2026-06-10",
-        "description": "Approved-outlet member topic/tag RSS"
       }
     },
     {
@@ -258,5 +224,5 @@
       }
     }
   ],
-  "note": "15 relevant article(s) from RSS, topic/tag feeds, GDELT, and NewsAPI (target 15)."
+  "note": "13 subject/quoted article(s) after owner 2026-07-20 qualification (Sanders subject or direct quote; comparison-only excluded). Honest-gap for remaining 2 of target 15. Dropped: s000033-newsapi-11(mention-without-subject-or-quote), s000033-topic-2(comparison-only-mention). Source checks: topic-2 comparison-only DROP; newsapi-11 CDC no direct quote DROP; topic-9 Iran direct quote KEEP."
 }
