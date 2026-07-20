@@ -33,8 +33,10 @@ const BALLOTPEDIA_BASE = 'https://ballotpedia.org';
 const VOTESMART_DELAY_MS = 300;
 const REQUEST_TIMEOUT_MS = 20_000;
 const MAX_PLATFORM_PER_TOPIC = 3;
-const MAX_SAID_DID_LINKS = 3;
-const MAX_CREC_STATEMENTS_PER_MEMBER = 12;
+/** Per-topic vote-link candidates in sync; profile migrate caps member total at 15. */
+const MAX_SAID_DID_LINKS = 15;
+/** CREC floor-speech pool per member — headroom for Said→Did target of 15. */
+const MAX_CREC_STATEMENTS_PER_MEMBER = 20;
 /** Max GovInfo search granules to examine per member (pre-filter pool; not a display cap). */
 const CREC_SEARCH_POOL = 150;
 /** GovInfo /search page size — paginate via offsetMark until pool exhausted. */

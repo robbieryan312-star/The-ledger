@@ -79,7 +79,8 @@ function pickSaidForLink(
   const officialStatement = statementPool.find(
     (s) =>
       s.tier === 'official' &&
-      textMatchesTopic(s.title, topicId) &&
+      /\/CREC-/i.test(s.url ?? '') &&
+      (textMatchesTopic(s.title, topicId) || s.topicId === topicId) &&
       saidDidSubjectsOverlap(s.title, `${link.billNumber}: ${link.billTitle}`),
   );
   if (officialStatement) {

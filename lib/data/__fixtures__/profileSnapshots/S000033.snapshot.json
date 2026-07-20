@@ -1,22 +1,38 @@
 {
   "bioguideId": "S000033",
   "keyIssuePositions": [
-    "we are at the beginning of the most profound technological revolution in world history, a…",
     "Together we are going to end the international embarrassment of the United States of America, our…",
+    "in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42…",
     "it is no secret to the American people that our country today faces a series of enormous crises:…",
-    "in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42…"
+    "we are at the beginning of the most profound technological revolution in world history, a…"
   ],
   "statementDisplayTexts": [
-    "we are at the beginning of the most profound technological revolution in world history, a revolution which will bring…",
-    "I want to say a few words about what I consider to be one of the most important issues not only facing our country but…",
     "Together we are going to end the international embarrassment of the United States of America, our great country, being…",
+    "in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42 million Americans,…",
     "it is no secret to the American people that our country today faces a series of enormous crises: our healthcare system…",
-    "in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42 million Americans,…"
+    "we are at the beginning of the most profound technological revolution in world history, a revolution which will bring…",
+    "I want to say a few words about what I consider to be one of the most important issues not only facing our country but…"
   ],
   "saidDidLines": [
     {
-      "said": "Together we are going to end the international embarrassment of the United States of America, our great country, being…",
-      "did": "Voted Nay — HR 1628: Motion to begin debate on the American Health Care Act of 2017 (HR 1628)"
+      "said": "in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42 million Americans,…",
+      "did": "Voted Yea — S.J.Res."
+    },
+    {
+      "said": "in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42 million Americans,…",
+      "did": "Voted Yea — S.J.Res."
+    },
+    {
+      "said": "it is no secret to the American people that our country today faces a series of enormous crises: our healthcare system…",
+      "did": "Voted Yea — H.R. 6644: Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment…"
+    },
+    {
+      "said": "it is no secret to the American people that our country today faces a series of enormous crises: our healthcare system…",
+      "did": "Voted Yea — H.R. 6644: Motion to Invoke Cloture: Motion to Concur in the House Amendment to the Senate Amendment to…"
+    },
+    {
+      "said": "in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42 million Americans,…",
+      "did": "Voted Nay — S. 2: S. 2, As Amended — An original bill to provide for reconciliation pursuant to title II of S. Con."
     }
   ],
   "voteRows": [

@@ -139,6 +139,11 @@ export const KNOWN_BAD: CrecFilterFixtureCase[] = [
     label: 'T000250 ceremonial intern recognition',
     text: 'Mr. THUNE. Mr. President, today I recognize Elena Rossi, an intern in my Washington, DC, office, for all of the hard work she has done for me, my staff, and the State of South Dakota over the past several weeks. Elena is a graduate of Georgetown Visitation Preparatory School in Washington, DC.',
   },
+  // --- M4 S000033: parliamentary discharge motion opens with honorific but is not a policy Said ---
+  {
+    label: 'S000033 motion to discharge committee (Arms Export Control)',
+    text: 'Mr. SANDERS. Mr. President, pursuant to section 36(b)(1), I move to discharge the Committee on Foreign Relations from further consideration of S.J. Res. 37, a joint resolution providing for congressional disapproval of the proposed foreign military sale to the Government of Israel of certain defense articles and services.',
+  },
 ];
 
 /** Genuine spoken floor prose / verified media quotes — MUST all pass the filter. */

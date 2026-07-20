@@ -5,7 +5,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { RECORD_TOPIC_BUCKETS, classifyTextToRecordTopicId, voteCongressGovUrl, voteTopicId } from '../../lib/data/profileRecordByTopic';
+import { RECORD_TOPIC_BUCKETS, classifyTextToRecordTopicId } from '../../lib/data/profileRecordByTopic';
 import type { PlatformPositionEntry, SaidDidLinkEntry, TopicPositionData, TopicStatementEntry } from '../../lib/data/topicPositions';
 import congressSnapshot from '../../lib/data/generated/congressVotes.json';
 import fecSnapshot from '../../lib/data/generated/fecFinance.json';
@@ -17,6 +17,7 @@ import { getPoliticianByBioguide } from '../../lib/data/allPoliticians';
 import { pruneSaidDidLinksByTopic } from '../../lib/data/buildSaidDidDiffs';
 import { stripCrecFloorOpener } from '../../lib/data/crecDisplayText';
 import { isDisqualifiedPlatformPosition } from '../../lib/data/sourceIntegrity';
+import { buildCrecSaidDidLinks } from '../../lib/data/saidDidVoteContext';
 import {
   hasSanitizedEndorsements,
   sanitizeProfileControversies,
@@ -157,46 +158,12 @@ function fecEntry(politicianId: string, bioguideId: string): unknown {
   return byPolitician[politicianId] ?? byPolitician[bioguideId] ?? null;
 }
 
-function linkFromVote(vote: VoteRecord, topicId: string): SaidDidLinkEntry {
-  return {
-    topicId,
-    statedPositionDate: null,
-    voteDate: vote.date,
-    billTitle: vote.billTitle,
-    billNumber: vote.billId,
-    congressGovUrl: voteCongressGovUrl(vote),
-    voteChoice: vote.vote,
-    tier: 'official',
-  };
-}
-
 function buildPairableLinks(
   byTopic: Record<string, { statements: TopicStatementEntry[]; platformPositions: PlatformPositionEntry[] }>,
   votes: VoteRecord[],
 ): Record<string, SaidDidLinkEntry[]> {
-  const out: Record<string, SaidDidLinkEntry[]> = {};
-  const seen = new Set<string>();
-
-  for (const vote of votes) {
-    const topicId = voteTopicId(vote);
-    const bucket = byTopic[topicId];
-    if (!bucket) continue;
-    const hasSaid =
-      bucket.statements.some((s) => s.tier === 'official' || s.tier === 'media' || s.tier === 'alleged') ||
-      bucket.platformPositions.some((p) => {
-        const text = p.text.toLowerCase();
-        const bill = vote.billId.replace(/\s+/g, '').toLowerCase();
-        return text.includes(bill.replace(/\./g, '')) || text.includes(vote.billTitle.toLowerCase().slice(0, 30));
-      });
-    if (!hasSaid) continue;
-    const key = `${topicId}:${vote.billId}:${vote.date}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
-    out[topicId] = out[topicId] ?? [];
-    out[topicId].push(linkFromVote(vote, topicId));
-  }
-
-  return out;
+  // M4 contract: Said→Did from verified CREC floor speech only (not media/alleged/platform).
+  return buildCrecSaidDidLinks(byTopic, votes);
 }
 
 export interface MigrationResult {
@@ -251,16 +218,41 @@ export async function migrateOne(
     byTopicClean[topicId] = { statements, platformPositions };
   }
 
-  let saidDidByTopic = buildPairableLinks(byTopicClean, votes);
-  for (const [topicId, data] of Object.entries(member)) {
-    for (const link of data.saidDidLinks ?? []) {
-      saidDidByTopic[topicId] = saidDidByTopic[topicId] ?? [];
-      const dup = saidDidByTopic[topicId].some(
-        (l) => l.billNumber === link.billNumber && l.voteDate === link.voteDate,
-      );
-      if (!dup) saidDidByTopic[topicId].push({ ...structuredClone(link), topicId });
+  // §6: union committed profile CREC so a re-sync search pool cannot drop older floor speeches.
+  let existingStatements: StatementsFileShape | null = null;
+  let existingSaidDid: SaidDidFileShape | null = null;
+  try {
+    existingStatements = JSON.parse(
+      await readFile(path.join(profilesRoot, bioguideId, 'statements.json'), 'utf8'),
+    ) as StatementsFileShape;
+  } catch {
+    /* no prior */
+  }
+  try {
+    existingSaidDid = JSON.parse(
+      await readFile(path.join(profilesRoot, bioguideId, 'saidDid.json'), 'utf8'),
+    ) as SaidDidFileShape;
+  } catch {
+    /* no prior */
+  }
+  if (existingStatements?.byTopic) {
+    for (const [topicId, data] of Object.entries(existingStatements.byTopic)) {
+      const priors = cleanStatements(structuredClone(data.statements ?? []));
+      if (priors.length === 0) continue;
+      const bucket = byTopicClean[topicId] ?? { statements: [], platformPositions: [] };
+      for (const prior of priors) {
+        if (prior.tier === 'official' && !/\/CREC-/i.test(prior.url ?? '')) continue;
+        if (bucket.statements.some((s) => s.url === prior.url || s.title.trim() === prior.title.trim())) {
+          continue;
+        }
+        bucket.statements.push(prior);
+      }
+      byTopicClean[topicId] = bucket;
     }
   }
+
+  // CREC-only Said→Did (M4). Skip merging sync mega-bundle saidDidLinks (thin titles / wrong topics).
+  let saidDidByTopic = buildPairableLinks(byTopicClean, votes);
 
   const topicDataForPrune: Record<string, TopicPositionData> = {};
   for (const topicId of new Set([...Object.keys(byTopicClean), ...Object.keys(saidDidByTopic)])) {
@@ -277,19 +269,6 @@ export async function migrateOne(
 
   const OUT_DIR = path.join(profilesRoot, bioguideId);
   await mkdir(OUT_DIR, { recursive: true });
-
-  let existingStatements: StatementsFileShape | null = null;
-  let existingSaidDid: SaidDidFileShape | null = null;
-  try {
-    existingStatements = JSON.parse(await readFile(path.join(OUT_DIR, 'statements.json'), 'utf8')) as StatementsFileShape;
-  } catch {
-    /* no prior statements.json */
-  }
-  try {
-    existingSaidDid = JSON.parse(await readFile(path.join(OUT_DIR, 'saidDid.json'), 'utf8')) as SaidDidFileShape;
-  } catch {
-    /* no prior saidDid.json */
-  }
 
   let stmtCount = Object.values(byTopicClean).reduce((n, t) => n + t.statements.length, 0);
   let linkCount = Object.values(saidDidByTopic).flat().length;
