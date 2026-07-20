@@ -231,7 +231,9 @@ interface ProfileNewsFile {
 
 /**
  * News items for migrated profiles — materialized from
- * generated/profiles/{bioguideId}/news.json (Group C: approved-outlet journalism only).
+ * generated/profiles/{bioguideId}/news.json via `npm run sync:news-rss`
+ * (approved-outlet RSS registry → GDELT fallback). NewsAPI is NOT this path —
+ * FL NewsAPI output is the state snapshot only (`ingest:news-fl` → news-florida slice).
  * Rendered headline/summary text is display-only here; the underlying `headline` and
  * `summary` fields on disk are never mutated (source-integrity guards check the raw fields).
  * Returns null (never `[]` as a false "verified empty") when the fetch is blocked and no
@@ -255,8 +257,9 @@ export function getMemberProfileNews(bioguideId: string): NewsItem[] | null {
 
 /**
  * Display news for a politician page: prefer the migrated profile's news.json
- * (Group C GDELT pipeline, approved outlets only) when it has verified items;
+ * from `sync:news-rss` (RSS → GDELT) when it has verified items;
  * otherwise return empty (honest gap — mock data is quarantined).
+ * Does not read the FL NewsAPI state snapshot slice.
  */
 export function mergeProfileNews(legacyNews: NewsItem[] | undefined, bioguideId?: string): NewsItem[] {
   if (bioguideId && MIGRATED_PROFILE_BIOGUIDES.has(bioguideId)) {

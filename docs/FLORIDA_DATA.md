@@ -43,8 +43,12 @@ No-key subset: `npm run ingest:no-key`
 | `ingest:fllobbyist-fl` | `ingest-fllobbyist-florida.ts` | `data/florida/fllobbyist/florida-lobbying-firm-directories.json` |
 
 **Florida GDELT ingest (`ingest:gdelt-fl`):** optional raw snapshot only — **not** profile News path.
-Profile news: `sync:news-rss` (RSS → GDELT). FL NewsAPI snapshot: `ingest:news-fl` (pipeline only;
-local outlets in `docs/sources/florida/media.md`).
+**Profile News (every member, including FL):** `npm run sync:news-rss -- --members <bioguideId>` →
+`lib/data/generated/profiles/{bioguideId}/news.json` (approved-outlet RSS → GDELT). Wired via
+`mergeProfileNews` / `ProfileNewsExplorer` — **never** via NewsAPI.
+**FL NewsAPI snapshot:** `ingest:news-fl` → `data/florida/news/florida-coverage.json` →
+`news-florida` slice → `FloridaNewsSections` on FL profiles only as a **labeled state snapshot**,
+not the member News primary (local outlets in `docs/sources/florida/media.md`).
 
 ## UI slice accessors
 

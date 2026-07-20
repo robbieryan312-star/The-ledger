@@ -26,7 +26,7 @@ Honest gaps are required — never fill with paraphrase or fabrication. Provenan
 | 5 | State legislation | LegiScan (`official`) | Legislation panel | `ingest:legiscan-fl` | **sample committed** — 10 bills in `legislation-florida.json`; live refresh needs `LEGISCAN_API_KEY` |
 | 6 | State courts | CourtListener (`nonpartisan`) | Courts panel | `ingest:courts-fl` | **filled** / thin with note |
 | 7 | State legislators | OpenStates (`nonpartisan`) | (future panel) | `ingest:openstates-fl` | **honest-gap** without key |
-| 8 | State political news | NewsAPI (`media`) | News bundle | `ingest:news-fl` | **sample committed** — 48 articles in `news-florida.json`; live refresh deferred (`KEYS.md`); corroborate per `'media'` tier rules |
+| 8 | State political news (snapshot) | NewsAPI (`media`) — **snapshot only** | FL News bundle (`FloridaNewsSections`) | `ingest:news-fl` | **sample committed** — 48 articles; **not** profile News primary. Member News = `sync:news-rss` (RSS → GDELT). Live NewsAPI refresh deferred (`KEYS.md` 426) |
 | 9 | Federal contracts (FL) | SAM.gov (`official`) | (future) | `ingest:sam-fl` | **honest-gap** — login.gov / key |
 | 10 | Federal register (FL-tagged) | GovInfo (`official`) | (future) | `ingest:govinfo-fl` | **honest-gap** without key |
 | 11 | County map drilldown | Census + local `.gov` | Map explorer | *not wired* | **gap** — `USAMap` county literals empty (product decision) |

@@ -73,3 +73,33 @@ test('news status: honest-gap only when zero feed failures in run', async () => 
   assert.equal(failed.status, 'fetch-failed');
   assert.match(failed.note, /feed\(s\) timed out or errored/);
 });
+
+/**
+ * M7c: FL member profile News must use RSS (`sync:news-rss` → mergeProfileNews).
+ * NewsAPI is snapshot-only (`ingest:news-fl` → FloridaNewsSections), never the profile primary.
+ */
+test('FL profile News path is RSS (mergeProfileNews); NewsAPI is snapshot-only', () => {
+  const page = readFileSync(path.join(projectRoot, 'app/politicians/[id]/page.tsx'), 'utf8');
+  const memberProfile = readFileSync(path.join(projectRoot, 'lib/data/memberProfile.ts'), 'utf8');
+  const newsFlorida = readFileSync(path.join(projectRoot, 'lib/data/slices/newsFlorida.ts'), 'utf8');
+  const floridaPanel = readFileSync(
+    path.join(projectRoot, 'components/records/FloridaRecordPanel.tsx'),
+    'utf8',
+  );
+  const floridaDataDoc = readFileSync(path.join(projectRoot, 'docs/FLORIDA_DATA.md'), 'utf8');
+
+  assert.match(page, /mergeProfileNews/);
+  assert.match(page, /displayNews=\{displayNews\}/);
+  assert.match(page, /getNewsFloridaBundle/);
+  assert.match(page, /floridaNewsBundle=\{floridaNewsBundle\}/);
+
+  assert.match(memberProfile, /sync:news-rss/);
+  // Profile news accessor must not import the FL NewsAPI slice module.
+  assert.doesNotMatch(memberProfile, /from ['\"].*newsFlorida['\"]|getNewsFloridaBundle/);
+  assert.doesNotMatch(memberProfile, /news-florida\.json/);
+
+  assert.match(newsFlorida, /news-florida\.json/);
+  assert.match(floridaPanel, /not the member profile News path/);
+  assert.match(floridaDataDoc, /Profile News \(every member, including FL\)/);
+  assert.match(floridaDataDoc, /never\*\* via NewsAPI|never.*via NewsAPI/i);
+});
