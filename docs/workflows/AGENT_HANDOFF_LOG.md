@@ -12,7 +12,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Latest session — M3 Sanders news 5→15 (`cursor/m3-sanders-news-depth-70a6`) (COMPLETE)
 
-**Current state:** branch `cursor/m3-sanders-news-depth-70a6` · base `origin/main` @ `714f473` (includes PR #58 / `memberNewsMatching` + `newsCorroboration`) · PR not opened by this session · tree clean after commit · `rm -rf .next && npm run prebuild` → 0 · `npm run build` → 0
+**Current state:** branch `cursor/m3-sanders-news-depth-70a6` · HEAD **`6e97ab5`** · base `origin/main` @ `714f473` (includes PR #58 / `memberNewsMatching` + `newsCorroboration`) · PR not opened by this session · tree clean · `rm -rf .next && npm run prebuild` → 0 · `npm run build` → 0
 
 ### Objective
 Sanders news depth 5→15 with D1 matcher + D2 corroboration; own PR branch; do not merge.
@@ -21,7 +21,7 @@ Sanders news depth 5→15 with D1 matcher + D2 corroboration; own PR branch; do 
 **PASS / COMPLETE** — before **3** → after **15**/15; all single-outlet media demoted to `'alleged'` (0 verified pairs in pool); GDELT rate-limited this environment — depth via approved-outlet topic/tag RSS (Guardian + Hill).
 
 ### Commits
-- (this session tip — see git log after push)
+- `6e97ab5` — feat(news): M3 Sanders news depth 3→15 via topic RSS + alleged demotion
 
 ### Commands run (this session)
 - `git fetch origin main` → tip `714f473`
