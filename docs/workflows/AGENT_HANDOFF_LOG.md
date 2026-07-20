@@ -33,12 +33,16 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ### Branch / HEAD / PR
 - **Branch:** `cursor/phase4-5-nav-guard-ci-rule-70a6`
+- **HEAD:** `d8bb229`
 - **Base:** `main` @ `a730f81`
 
 ### Verification
-- `npm run test:navigation-integrity` + docs guards → exit 0
-- `rm -rf .next && npm run prebuild` + `npm run build` → exit 0
-- Inventory regenerated
+- `npm run test:navigation-integrity` → 4/4 pass
+- `npm run test:docs-integrity` → 9/9 pass
+- `npm run test:docs-consistency` → 10/10 pass
+- `npm run audit:inventory` + `audit:inventory-md` → 257 rows
+- `rm -rf .next && npm run prebuild` → exit 0 (21 commands incl. navigation-integrity)
+- `npm run build` → exit 0
 
 ### Open / next
 - **STOP** — combined STAGE THREE on branch tip before merge
@@ -48,12 +52,12 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Confront Claude — paste to Claude Code
 
-**Branch:** `cursor/phase4-5-nav-guard-ci-rule-70a6` · **Base:** `main` @ `a730f81`  
+**Branch:** `cursor/phase4-5-nav-guard-ci-rule-70a6` · **HEAD:** `d8bb229` · **Base:** `main` @ `a730f81`  
 **Merged this session:** PR #53 @ `6dc5bc9` → `main` @ `a730f81`  
 **Verdict:** PASS — STOP for combined STAGE THREE (Phases 4–5)
 
-**Review:** navigationIntegrity guard + continuous-improvement binding rule + prebuild 21 commands.  
-**Do not merge** until APPROVAL on branch tip SHA.  
+**Review:** navigationIntegrity guard (4/4 tests) + continuous-improvement binding rule + prebuild 21 commands.  
+**Do not merge** until APPROVAL on branch tip SHA `d8bb229`.  
 **Housekeeping:** close PR #47 as superseded (Cursor lacked close permission).  
 **Not in scope:** PR #48 — separate SHA review.
 
