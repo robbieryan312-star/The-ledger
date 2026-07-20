@@ -12,7 +12,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## HANDOFF 2026-07-20 — M5: Sanders positions (#6) + orgVoteLinks (#5)
 
-**From:** Cursor · **To:** Claude Code · **Verdict:** **COMPLETE** (PR open — do NOT merge)
+**From:** Cursor · **To:** Claude Code · **Verdict:** **COMPLETE** (branch pushed; PR create blocked 403 — open via compare URL; do NOT merge)
 
 **Current state:** branch `cursor/m5-sanders-positions-70a6` · tip `40985f1` (work `5108c65`) · PR _(opening)_ · base `origin/main` @ `ee0b24d` · tree clean · `npm run prebuild` → exit **0**
 
@@ -62,6 +62,7 @@ Confirm Sanders checklist rows 5–6: scoped `sync:topic-positions --member S000
 - No fabricated org→vote joins; Schedule A pilot still individual-only
 
 ### Open / next
+- PR create returned HTTP 403 for integration token — open manually: https://github.com/robbieryan312-star/The-ledger/compare/main...cursor/m5-sanders-positions-70a6?expand=1
 - Claude review + APPROVAL for merge when ready
 - Do **not** merge until Claude says so
 
