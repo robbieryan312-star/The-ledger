@@ -6,7 +6,7 @@ Static JSON pre-render pattern. No Postgres, no runtime database, no server.
 
 ## Core design principle
 
-Every data fact the UI displays must be traceable to a specific source entry in `lib/data/sourceCatalog.ts` (see also `lib/data/reference-sources.ts`) with a tier code value, a URL, and a checked date. No fact appears in the UI without provenance. This is not optional — it is the product.
+Every data fact the UI displays must be traceable to a specific source entry in `lib/data/sourceCatalog.ts` with a tier code value, a URL, and a checked date. No fact appears in the UI without provenance. This is not optional — it is the product.
 
 ---
 

@@ -5,16 +5,16 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { RECORD_TOPIC_BUCKETS, classifyTextToRecordTopicId, voteCongressGovUrl, voteTopicId } from '../lib/data/profileRecordByTopic';
-import type { PlatformPositionEntry, SaidDidLinkEntry, TopicStatementEntry } from '../lib/data/topicPositions';
-import congressSnapshot from '../lib/data/generated/congressVotes.json';
-import fecSnapshot from '../lib/data/generated/fecFinance.json';
-import topicSnapshot from '../lib/data/generated/topicPositions.json';
-import memberDeep from '../lib/data/generated/members/S000033.json';
-import { getScheduleAForBioguide } from '../lib/data/fecScheduleA';
-import { buildOrgVoteTopicLinks } from '../lib/data/buildOrgVoteTopicLinks';
-import { getPoliticianById } from '../lib/data/allPoliticians';
-import type { VoteRecord } from '../lib/types';
+import { RECORD_TOPIC_BUCKETS, classifyTextToRecordTopicId, voteCongressGovUrl, voteTopicId } from '../../lib/data/profileRecordByTopic';
+import type { PlatformPositionEntry, SaidDidLinkEntry, TopicStatementEntry } from '../../lib/data/topicPositions';
+import congressSnapshot from '../../lib/data/generated/congressVotes.json';
+import fecSnapshot from '../../lib/data/generated/fecFinance.json';
+import topicSnapshot from '../../lib/data/generated/topicPositions.json';
+import memberDeep from '../../lib/data/generated/members/S000033.json';
+import { getScheduleAForBioguide } from '../../lib/data/fecScheduleA';
+import { buildOrgVoteTopicLinks } from '../../lib/data/buildOrgVoteTopicLinks';
+import { getPoliticianById } from '../../lib/data/allPoliticians';
+import type { VoteRecord } from '../../lib/types';
 
 const BIOGUIDE = 'S000033';
 const POLITICIAN_ID = 'bernie-sanders';

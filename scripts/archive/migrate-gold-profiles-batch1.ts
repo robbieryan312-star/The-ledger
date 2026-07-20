@@ -5,24 +5,24 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { RECORD_TOPIC_BUCKETS, classifyTextToRecordTopicId, voteCongressGovUrl, voteTopicId } from '../lib/data/profileRecordByTopic';
-import type { PlatformPositionEntry, SaidDidLinkEntry, TopicPositionData, TopicStatementEntry } from '../lib/data/topicPositions';
-import congressSnapshot from '../lib/data/generated/congressVotes.json';
-import fecSnapshot from '../lib/data/generated/fecFinance.json';
-import { getNationalCongressVotesByBioguide } from '../lib/data/nationalCongressVotes';
-import { getNationalFecFinanceByBioguide } from '../lib/data/nationalFecFinance';
-import topicSnapshot from '../lib/data/generated/topicPositions.json';
-import { getScheduleAForBioguide } from '../lib/data/fecScheduleA';
-import { buildOrgVoteTopicLinks } from '../lib/data/buildOrgVoteTopicLinks';
-import { getPoliticianByBioguide } from '../lib/data/allPoliticians';
-import { pruneSaidDidLinksByTopic } from '../lib/data/buildSaidDidDiffs';
+import { RECORD_TOPIC_BUCKETS, classifyTextToRecordTopicId, voteCongressGovUrl, voteTopicId } from '../../lib/data/profileRecordByTopic';
+import type { PlatformPositionEntry, SaidDidLinkEntry, TopicPositionData, TopicStatementEntry } from '../../lib/data/topicPositions';
+import congressSnapshot from '../../lib/data/generated/congressVotes.json';
+import fecSnapshot from '../../lib/data/generated/fecFinance.json';
+import { getNationalCongressVotesByBioguide } from '../../lib/data/nationalCongressVotes';
+import { getNationalFecFinanceByBioguide } from '../../lib/data/nationalFecFinance';
+import topicSnapshot from '../../lib/data/generated/topicPositions.json';
+import { getScheduleAForBioguide } from '../../lib/data/fecScheduleA';
+import { buildOrgVoteTopicLinks } from '../../lib/data/buildOrgVoteTopicLinks';
+import { getPoliticianByBioguide } from '../../lib/data/allPoliticians';
+import { pruneSaidDidLinksByTopic } from '../../lib/data/buildSaidDidDiffs';
 import {
   hasSanitizedEndorsements,
   sanitizeProfileControversies,
   sanitizeProfileEndorsements,
   sanitizeProfileNews,
-} from '../lib/data/sanitizeProfileUiData';
-import type { VoteRecord } from '../lib/types';
+} from '../../lib/data/sanitizeProfileUiData';
+import type { VoteRecord } from '../../lib/types';
 
 const BATCH = [
   { bioguideId: 'O000172', name: 'Alexandria Ocasio-Cortez' },

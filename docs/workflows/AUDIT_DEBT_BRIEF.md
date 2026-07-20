@@ -9,7 +9,7 @@ This file was renamed for accuracy.
 - **Binding rule:** `.cursor/rules/ledger-core-rules.mdc` §1.1 J
 
 **FL PR #25 infrastructure audit (full report for Claude):**  
-[`docs/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md`](./FL_INFRASTRUCTURE_AUDIT_2026-07-12.md)
+[`docs/archive/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md`](./archive/workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md)
 
 **Claude audit FIX-1/2/3 (2026-07-19):** on `main` @ `2b10253` (fixes @ `27fa4dc`) — see
 [`AGENT_HANDOFF_LOG.md`](./AGENT_HANDOFF_LOG.md). **READY FOR OWNER VISUAL SIGN-OFF of /states/FL.**

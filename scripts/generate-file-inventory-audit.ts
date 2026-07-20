@@ -20,31 +20,6 @@ const OVERRIDES: Record<
     evidence: string;
   }>
 > = {
-  'components/search/SearchBar.tsx': {
-    usedBy: 'DEAD — no importers; home uses HomeSearchBar',
-    verdict: 'DELETE',
-    evidence: 'rg import SearchBar → 0',
-  },
-  'components/politicians/CredibilityConsistency.tsx': {
-    usedBy: 'DEAD — no importers',
-    verdict: 'DELETE',
-    evidence: 'Wave 2 schedules Consistency Score removal',
-  },
-  'components/politicians/ConsistencyScore.tsx': {
-    usedBy: 'DEAD — only CredibilityConsistency',
-    verdict: 'DELETE',
-    evidence: 'core-rules §4 removes Consistency Score',
-  },
-  'components/elections/CandidateTopicAccordion.tsx': {
-    usedBy: 'DEAD — no importers',
-    verdict: 'DELETE',
-    evidence: 'elections page is static empty-state',
-  },
-  'components/records/FloridaCountyEconomicContext.tsx': {
-    usedBy: 'DEAD — no importers',
-    verdict: 'DELETE',
-    evidence: 'rg → definition only',
-  },
   'components/counties/OfficialCard.tsx': {
     usedBy: 'USAMap.tsx (import only — runtime DEAD)',
     claimedVsReality: 'Linked to /officials/[id] 404 on main; fixed in PR #43',
@@ -78,35 +53,10 @@ const OVERRIDES: Record<
     verdict: 'KEEP',
     evidence: 'Next.js app shell — no code importers',
   },
-  'lib/data/electionCompare.ts': {
-    usedBy: 'DEAD — CompareContent uses @/lib/electionCompare',
-    verdict: 'DELETE',
-    evidence: 'duplicate of root module',
-  },
-  'lib/data/reference-sources.ts': {
-    usedBy: 'DEAD — docs only',
-    verdict: 'DELETE',
-    evidence: '0 code importers',
-  },
-  'lib/data/buildTopicConsistencyTimeline.ts': {
-    usedBy: 'DEAD',
-    verdict: 'DELETE',
-    evidence: '0 external importers',
-  },
-  'lib/data/profileLatestRecord.ts': {
-    usedBy: 'DEAD',
-    verdict: 'DELETE',
-    evidence: '0 importers',
-  },
 };
 
 const SHIM_MODULES = new Set([
   'branches.ts',
-  'billCitizenImpact.ts',
-  'candidateIssues.ts',
-  'voteDisplay.ts',
-  'voteDonorConnections.ts',
-  'zipLookup.ts',
 ]);
 
 const IMPORT_SPEC_RE =

@@ -7,15 +7,15 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import type { VoteRecord } from '../lib/types';
+import type { VoteRecord } from '../../lib/types';
 import {
   bioguideToLisFromLocal,
   fetchSenateRollCall,
   fetchSenateVoteMenu,
   senateVoteToRecord,
-} from '../lib/data/senateVotesClient';
-import { MIGRATED_PROFILE_BIOGUIDES } from '../lib/data/memberProfile';
-import { getPoliticianByBioguide } from '../lib/data/allPoliticians';
+} from '../../lib/data/senateVotesClient';
+import { MIGRATED_PROFILE_BIOGUIDES } from '../../lib/data/memberProfile';
+import { getPoliticianByBioguide } from '../../lib/data/allPoliticians';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const NATIONAL_FILE = path.join(projectRoot, 'data/national/votes/congress-votes.json');

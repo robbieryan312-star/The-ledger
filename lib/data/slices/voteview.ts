@@ -1,4 +1,4 @@
-import type { VoteviewSlice } from '../snapshotTypes';
+import type { VoteviewSlice } from '../../types/snapshotTypes';
 import slice from '../generated/slices/profiles-voteview.json';
 
 export function getVoteviewSlice(): VoteviewSlice {

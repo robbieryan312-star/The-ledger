@@ -10,21 +10,21 @@ import { config } from 'dotenv';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { RECORD_TOPIC_BUCKETS, classifyTextToRecordTopicId, voteCongressGovUrl, voteTopicId } from '../lib/data/profileRecordByTopic';
-import { pruneSaidDidLinksByTopic } from '../lib/data/buildSaidDidDiffs';
-import { getNationalCongressVotesByBioguide } from '../lib/data/nationalCongressVotes';
-import { getPoliticianByBioguide } from '../lib/data/allPoliticians';
-import { isProceduralCrecText } from './lib/crecProceduralFilter';
-import { stripCrecFloorOpener } from '../lib/data/crecDisplayText';
-import { normalizeTopicId } from '../lib/data/topicAliases';
-import { sanitizeProfileNews, type ProfileNewsItem } from '../lib/data/sanitizeProfileUiData';
+import { RECORD_TOPIC_BUCKETS, classifyTextToRecordTopicId, voteCongressGovUrl, voteTopicId } from '../../lib/data/profileRecordByTopic';
+import { pruneSaidDidLinksByTopic } from '../../lib/data/buildSaidDidDiffs';
+import { getNationalCongressVotesByBioguide } from '../../lib/data/nationalCongressVotes';
+import { getPoliticianByBioguide } from '../../lib/data/allPoliticians';
+import { isProceduralCrecText } from '../lib/crecProceduralFilter';
+import { stripCrecFloorOpener } from '../../lib/data/crecDisplayText';
+import { normalizeTopicId } from '../../lib/data/topicAliases';
+import { sanitizeProfileNews, type ProfileNewsItem } from '../../lib/data/sanitizeProfileUiData';
 import type {
   PlatformPositionEntry,
   SaidDidLinkEntry,
   TopicPositionData,
   TopicStatementEntry,
-} from '../lib/data/topicPositions';
-import type { VoteRecord } from '../lib/types';
+} from '../../lib/data/topicPositions';
+import type { VoteRecord } from '../../lib/types';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const profilesRoot = path.join(projectRoot, 'lib', 'data', 'generated', 'profiles');
