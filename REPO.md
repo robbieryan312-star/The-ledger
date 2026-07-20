@@ -6,6 +6,7 @@
 |------|--------|
 | **Canonical GitHub repo** | [github.com/robbieryan312-star/The-ledger](https://github.com/robbieryan312-star/The-ledger) |
 | **Default branch** | `main` |
+| **Production URL (sole Vercel project)** | https://the-ledger-s4dn.vercel.app — project name `the-ledger-s4dn` only; owner deleted all other Vercel projects (2026-07-20) |
 | **Local clone** | Any folder name is fine — remote must be `The-ledger` |
 | **Legacy repo (do not use)** | `robbieryan312-star/code` — stale snapshot; superseded by `The-ledger` |
 

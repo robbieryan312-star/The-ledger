@@ -10,6 +10,20 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Owner directive 2026-07-20 — Vercel consolidated to single project
+
+**From:** Owner · **Verdict:** **RECORDED**
+
+Owner deleted all other Vercel environments/projects; **only `the-ledger-s4dn` remains** as production.
+
+**Agent rule (binding):** Do not reference, deploy to, upload to, or report deploy acceptance on
+former project names (`the-ledger-jcjh`, `the-ledger`, etc.). GitHub/Vercel bot rows for deleted
+projects are stale — ignore them. Canonical live URL: https://the-ledger-s4dn.vercel.app
+
+**Docs updated:** `PROGRESS.md`, `docs/SETUP.md`, `REPO.md`
+
+---
+
 ## HANDOFF 2026-07-20 (3) — Owner STAGE THREE COMPLETE: PR #59 merged
 
 **From:** Owner (independent verify) + Cursor · **Verdict:** **COMPLETE · MERGED**
