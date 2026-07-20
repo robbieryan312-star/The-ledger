@@ -6,14 +6,17 @@
       "tier": "official",
       "description": "System for Award Management entity registrations via api.sam.gov"
     },
-    "asOf": "2026-06-24",
+    "asOf": "2026-07-20",
+    "fetchedAt": "2026-07-20T09:53:14.542Z",
     "count": 0,
     "stateCode": "FL",
     "fetchedLive": false,
+    "provenance": "honest-gap",
     "errors": [
       "SAM_API_KEY not configured"
     ],
-    "note": "Blocked: SAM.gov API requires login.gov identity-verified account. No record on file until SAM_API_KEY obtained."
+    "datasetUrl": "https://api.sam.gov/entity-information/v3/entities",
+    "note": "Honest-gap: SAM.gov API requires login.gov identity-verified account. SAM_API_KEY EMPTY — prior fetched-live snapshot (if any) preserved. See KEYS.md."
   },
   "records": []
 }

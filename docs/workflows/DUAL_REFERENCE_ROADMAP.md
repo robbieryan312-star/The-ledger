@@ -72,7 +72,7 @@ Mandatory before claiming a conduit stage complete:
 | State politicians roster | **filled** | Federal FL delegation from roster |
 | Legislation (LegiScan) | **sample committed** (10 bills on disk) | Live refresh needs `LEGISCAN_API_KEY` |
 | Courts | **filled** | Slice + honest-gap note when thin |
-| News / OpenStates / SAM / GovInfo | News **sample committed** (48); others keyed gaps | Need keys; preserve prior on failure |
+| News / OpenStates / SAM / GovInfo | News **sample** (48); OpenStates keyed/honest-gap; SAM **honest-gap** (login.gov); GovInfo **fetched-live** when key SET | Wave-1 preserve on all; SAM fill blocked until key |
 | County drilldown (map) | **DEAD UI** | `countyByFips` never populated — product decision: wire or remove (see `FILE_INVENTORY_AUDIT.md`) |
 
 **Next conduit work:** Close keyed gaps where owner has secrets; document permanent gaps in checklist.

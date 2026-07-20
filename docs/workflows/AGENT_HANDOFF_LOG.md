@@ -10,6 +10,47 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-20 — M7d SAM honest-gap + GovInfo live (PASS — do not merge)
+
+**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS** (await APPROVAL before merge)
+
+| Item | Value |
+|------|-------|
+| Branch | `cursor/m7d-sam-govinfo-fl-70a6` |
+| Base | `origin/main` @ `ee0b24d` |
+| Tip | `0d0593b` |
+| Compare | https://github.com/robbieryan312-star/The-ledger/compare/main...cursor/m7d-sam-govinfo-fl-70a6 |
+| Keys | `SAM_API_KEY` **EMPTY** → honest-gap; `GOVINFO_API_KEY`/`DATA_GOV_API_KEY` **SET** → 40 docs fetched-live |
+| Prebuild | exit **0** |
+
+### Objective
+FL conduit 7d: SAM fill-if-keyed else documented honest-gap; GovInfo fill when keyed; Wave-1 preserve.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/ingest/florida/ingest-sam-florida.ts` | modified | provenance + fail→empty honest-gap preserve |
+| `scripts/ingest/florida/ingest-govinfo-florida.ts` | modified | provenance + fail→empty honest-gap preserve |
+| `data/florida/sam/florida-contractors.json` | modified | honest-gap (key EMPTY / login.gov) |
+| `data/florida/govinfo/florida-legislative-docs.json` | modified | live 40 docs 2026-07-20 |
+| `lib/data/generated/slices/legislation-florida.json` | modified | rebuilt govinfo section |
+| `docs/PILOT_STATE_CHECKLIST.md` | modified | rows 9–10 |
+| `docs/FLORIDA_DATA.md` | modified | sam/govinfo preserve notes |
+| `docs/workflows/DUAL_REFERENCE_ROADMAP.md` | modified | SAM/GovInfo status |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this handoff |
+
+### Acceptance evidence
+- `npm run ingest:sam-fl` → honest-gap (SAM_API_KEY EMPTY)
+- `npm run ingest:govinfo-fl` → 40 records fetchedLive=true
+- preserve tests 6/6; `npm run prebuild` → exit 0
+
+## Confront Claude — paste to Claude Code
+
+**M7d PASS** — SAM honest-gap (EMPTY/login.gov); GovInfo live 40 docs. Do not merge until APPROVAL.
+**M7 siblings:** M7a LegiScan · M7b OpenStates · M7c news RSS path (separate branches).
+
+---
+
 ## HANDOFF 2026-07-20 — M1 MERGED: Claude governance @ 1abf48d
 
 **From:** Cursor · **To:** Owner · **Verdict:** **MERGED**
