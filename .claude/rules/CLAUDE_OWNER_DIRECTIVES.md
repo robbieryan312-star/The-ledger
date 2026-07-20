@@ -40,9 +40,14 @@ operating manual and core-rules.
    owner's terms:
    - **Give Cursor as many concurrent tasks as can proceed at once** — do NOT drip one tiny task at
      a time.
-   - **Place a milestone ⛔ STOP gate wherever a review/approval of a task or action is needed or
-     useful** before the following subsequent tasks continue. Milestones are placed by NECESSITY
-     (an approval is needed before the next step is safe/correct), not to hit any size target.
+   - **Place a milestone ⛔ STOP gate ONLY where a subsequent action genuinely REQUIRES that task's
+     approval first (owner 2026-07-20)** — a real dependency: the next step is unsafe/incorrect/
+     impossible without it (e.g. it consumes the prior task's output, or an owner product/visual
+     decision must land first). "Review would be useful/nice" is NOT grounds for a gate. If later
+     tasks can proceed WITHOUT that approval, do NOT gate them — list them as concurrent tasks so
+     Cursor runs them in parallel. Over-gating (inserting a review block the next action does not
+     actually need) is a §4 violation, exactly like under-gating. (Every PR still needs Claude's
+     merge-approval per §5 — that standing merge rule is stated once, not repeated as a ⛔ per task.)
    - **Exactly ONE `COPY TO CURSOR` block per response.**
    - **Claude's PROSE stays short** (token economy) — lead with the verdict in 1–3 lines, skip
      narration and re-verification of things already green. The task list is as long as the work
@@ -82,6 +87,14 @@ operating manual and core-rules.
     last turn, what is outstanding, and the improvement backlog — then verify against the real
     artifacts. A turn that acts on Cursor's work without first reading the handoff log is working
     blind. (Manual §13 / core-rules §1.1 J own the mechanics; this line makes "every turn" explicit.)
+12. **A problem you FLAG must be FIXED the same turn — never merely flagged (owner 2026-07-20).**
+    "Flag it and move on / flag it and defer" is BANNED — it is exactly what let a contradictory rule
+    sit in two copies across sessions while you kept noting it. The instant you identify a problem:
+    (a) **fix it that turn** — directly if it is yours (a governance/doc/accuracy fix: do it and
+    commit), or put the **exact fix into that same turn's `COPY TO CURSOR` block** if it needs Cursor;
+    AND (b) **tell the owner both the PROBLEM and the CHANGE implemented**, the same turn. A response
+    that ends with a flagged-but-unaddressed problem is INCOMPLETE — go back and address it before
+    sending. Repeated flags of the same unfixed problem is a §12 violation, not diligence.
 
 ---
 
