@@ -10,6 +10,76 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-20 — Parallel roadmap wave (M1 merged; M2 repair; M4–M7; M10)
+
+**From:** Cursor · **To:** Owner + Claude · **Verdict:** **PARTIAL — all open PRs STOP for Claude merge-approval on exact tip**
+
+### M1 MERGED
+| Item | SHA |
+|------|-----|
+| Claude tip | `1abf48d` |
+| Merge on main | **`894abfd`** |
+| Handoff sync | `ee0b24d` |
+| FIXED grep | **1** |
+
+### Parallel PRs (do NOT merge without Claude tip approval)
+
+| ID | PR | Tip | Notes |
+|----|-----|-----|-------|
+| **M2** | #58 | **`a7737a9`** | REJECT repair D1+D2; prebuild 0; build 0; matching+corroboration 6/6; news 3/15 |
+| **M4** | #62 | `023b3b2` | Said→Did 1→5 (target 15; honest-gap remainder) |
+| **M5** | #63 | `cc69512` | positions+orgVoteLinks documented honest-gap |
+| **M6** | #60 | `aa64627` | trades fetch-failed honest-gap UI |
+| **M7a** | #67 | `4727c94` | LegiScan FL live + preserve |
+| **M7b** | #66 | `815a331` | OpenStates FL honest-gap (egress timeout) |
+| **M7c** | #64 | `f339f01` | FL News = RSS path confirmed |
+| **M7d** | #65 | `478ba83` | SAM honest-gap + GovInfo live |
+| **M10** | #61 | `b385615` | branches.ts shim removed |
+
+### M2 REJECT repair evidence @ `a7737a9`
+
+```
+rm -rf .next && npm run prebuild → PREBUILD_EXIT=0
+npm run build                    → BUILD_EXIT=0
+memberNewsMatching + newsCorroboration → 6/6
+sourceIntegrity (+ new tests in suite) → pass
+```
+
+| File | Change |
+|------|--------|
+| scripts/lib/memberNewsMatching.ts | Delete bare-surname regex; full name / honorific+ln only |
+| lib/data/newsCorroboration.ts | Independent same-event ≠ syndicated near-dup |
+| lib/data/__fixtures__/memberNewsMatching.fixture.ts | Bare-surname KNOWN_BAD + honorific/full KNOWN_GOOD |
+| lib/data/__fixtures__/newsCorroboration.fixture.ts | Syndicated KNOWN_BAD + distinct KNOWN_GOOD |
+| scripts/__tests__/memberNewsMatching.test.ts | D1 tests |
+| scripts/__tests__/newsCorroboration.test.ts | D2 tests |
+| package.json | Wire both into test:source-integrity |
+| lib/data/generated/profiles/S000033/news.json | 3 items; dropped Hill+Mamdani bare-surname-only |
+| lib/data/__fixtures__/profileSnapshots/S000033.snapshot.json | Regenerated |
+| data/reports/feed-health.json | Sync refresh |
+| PILOT_PROFILE_CHECKLIST.md | News row → partial 3/15 |
+
+**Hill item:** dropped — headline/summary only bare "Sanders" (fails D1); not kept.
+
+### Gated (not started)
+⛔ M3 news 5→15 (needs M2 approved) · ⛔ Sanders LOCK · ⛔ M8 · ⛔ M9 · ⛔ M11
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M1 MERGED:** `1abf48d` → main **`894abfd`** (FIXED grep=1)
+
+**Approve tips independently (parallel):**
+- #58 M2 repair **`a7737a9`** (D1+D2)
+- #62 M4 **`023b3b2`** · #63 M5 **`cc69512`** · #60 M6 **`aa64627`**
+- #67 M7a **`4727c94`** · #66 M7b **`815a331`** · #64 M7c **`f339f01`** · #65 M7d **`478ba83`**
+- #61 M10 **`b385615`**
+
+**⛔ M3** blocked until #58 tip approved.
+
+---
+
 ## HANDOFF 2026-07-20 — M1 MERGED: Claude governance @ 1abf48d
 
 **From:** Cursor · **To:** Owner · **Verdict:** **MERGED**
