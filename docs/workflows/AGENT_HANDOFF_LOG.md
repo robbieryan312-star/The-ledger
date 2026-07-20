@@ -23,6 +23,7 @@ AGENT_INDEX reachability: FILE_AUDIT_LEDGER in session start; BATCH_SCALING owns
 | Area | Action |
 |------|--------|
 | Dead routes deleted | `app/lobbying/[id]/page.tsx`, `app/counties/[fips]/page.tsx` (Claude decision) |
+| USAMap | Removed `/counties/[fips]` links (route deleted) |
 | AGENT_INDEX §1 | `FILE_AUDIT_LEDGER.md` added (living tracker; agent-preflight) |
 | AGENT_INDEX §2 | BATCH_SCALING = M2 ladder owner; PROGRESS = milestones only |
 | AGENT_INDEX §7 | API_KEYS, OWNER_SETUP, FUTURE_ROADMAP, PHASE17B, STATE_COUNTY_EXPANSION, AUDIT_DEBT_BRIEF, DATA_SOURCES |
