@@ -10,6 +10,41 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-20 (3) — Owner STAGE THREE COMPLETE: PR #59 merged
+
+**From:** Owner (independent verify) + Cursor · **Verdict:** **COMPLETE · MERGED**
+
+**PR #59** @ tip **`a9f0b45`** → merged to **`main`** *(merge SHA recorded below)*
+
+### Owner verification (independent of agent report)
+
+- **D1:** all lib/_NAV_PROOF.ts mentions de-backticked → test:docs-integrity passes
+- **D2:** PROGRESS Phase 1 row corrected (single florida.md + sourceTiers.ts deletion); media/agencies split → PR #54 (`56ac08d`) in row note + footnote
+- **Full gate:** `rm -rf .next && npm run prebuild` exit 0; docs-integrity + docs-consistency + navigationIntegrity → **23/23**
+- **Scope:** docs/json only; all 6 table SHAs confirmed on main; table owner-verifiable (phase → PR# + SHA)
+
+### Remaining risks / open work (not waved away)
+
+| Item | Status |
+|------|--------|
+| PROGRESS table SHA style | Rows 0–1 use PR-head SHAs; rows 2–5 use merge-commit SHAs — both valid on main; PR# is authoritative anchor. Optional polish, non-blocking. |
+| **PR #58** | **Claude review APPROVED only** — **NOT owner STAGE THREE**; do not merge until owner confirms @ `539162a` |
+| `lib/data/branches.ts` dead-shim sweep | Pending (separate task) |
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Merged:** PR #59 navigation-plan lock → **`main`** @ merge SHA *(below)* · tip was **`a9f0b45`**
+
+**Owner STAGE THREE:** COMPLETE (owner verified independently on tip)
+
+**Still gated:** PR **#58** @ **`539162a`** — Claude review pass only; **owner STAGE THREE not given**
+
+**Next:** `lib/data/branches.ts` dead-shim verify-and-remove sweep (separate PR)
+
+---
+
 ## HANDOFF 2026-07-20 (2) — REJECT repair: docsIntegrity + Phase 1 accuracy
 
 **From:** Cursor · **To:** Owner + Claude · **Verdict:** **REPAIR COMPLETE** · **STOP for owner STAGE THREE**
@@ -160,7 +195,7 @@ Also: BATCH_SCALING § Improvement log row for nav guard (1→21 prebuild cmds);
 |----|-----|---------|--------|
 | #55 Cursor manual cross-ref | `7844db6` → merge `61e6d5c` | **APPROVED** (prior) | merged ✓ |
 | #57 P0 AP-URL guard | `24296bd` → merge `1aae27f` | **APPROVED** | **merged ✓** |
-| #58 news pipeline batch | `539162a` (rebased) | **APPROVED pending owner STAGE THREE** | STOP — do not merge until owner confirms |
+| #58 news pipeline batch | `539162a` (rebased) | **Claude review APPROVED — owner STAGE THREE pending** | STOP — do not merge until owner STAGE THREE on `539162a` |
 
 ### PR #57 — five-pass review @ `24296bd` (merged `1aae27f`)
 1. **Implementation** — `AP_NEWS_ARTICLE_URL` + early return in `isPlaceholderUrl`; fixture + test; one AP item in `S000033/news.json`. ✓
@@ -241,7 +276,7 @@ Pipeline code, `sourceIntegrity.ts`, generated profile JSON (except inventory md
 ## Confront Claude — paste to Claude Code
 
 **Merged:** PR #57 → `main` @ **`1aae27f`** · PR #55 @ **`61e6d5c`**  
-**STAGE THREE APPROVED (Claude):** PR #57 ✓ · PR #58 @ **`539162a`** — **owner confirm before merge**  
+**Claude review APPROVED (not owner STAGE THREE):** PR #57 ✓ merged · PR #58 @ **`539162a`** — **owner STAGE THREE pending; do not merge**  
 **Closed:** PR #48 · split complete
 
 **PR #58 @ `539162a` evidence:** `npm run prebuild` exit 0 (post-rebase, incl. W3d + credibility)  
