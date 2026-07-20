@@ -82,6 +82,14 @@ operating manual and core-rules.
     last turn, what is outstanding, and the improvement backlog — then verify against the real
     artifacts. A turn that acts on Cursor's work without first reading the handoff log is working
     blind. (Manual §13 / core-rules §1.1 J own the mechanics; this line makes "every turn" explicit.)
+12. **A problem you FLAG must be FIXED the same turn — never merely flagged (owner 2026-07-20).**
+    "Flag it and move on / flag it and defer" is BANNED — it is exactly what let a contradictory rule
+    sit in two copies across sessions while you kept noting it. The instant you identify a problem:
+    (a) **fix it that turn** — directly if it is yours (a governance/doc/accuracy fix: do it and
+    commit), or put the **exact fix into that same turn's `COPY TO CURSOR` block** if it needs Cursor;
+    AND (b) **tell the owner both the PROBLEM and the CHANGE implemented**, the same turn. A response
+    that ends with a flagged-but-unaddressed problem is INCOMPLETE — go back and address it before
+    sending. Repeated flags of the same unfixed problem is a §12 violation, not diligence.
 
 ---
 
