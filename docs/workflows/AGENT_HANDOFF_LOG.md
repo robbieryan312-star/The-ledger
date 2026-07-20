@@ -12,7 +12,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Latest session — M-UI topic drawer full-width (`cursor/m-ui-topic-drawer-fullwidth-70a6`) (COMPLETE)
 
-**Current state:** branch `cursor/m-ui-topic-drawer-fullwidth-70a6` · work `ea5603a` · base `origin/main` @ `714f473` · compare https://github.com/robbieryan312-star/The-ledger/compare/main...cursor/m-ui-topic-drawer-fullwidth-70a6 · `rm -rf .next && npm run prebuild` → 0 · `npm run build` → 0 · **do not merge** (owner 👁)
+**Current state:** branch `cursor/m-ui-topic-drawer-fullwidth-70a6` · tip `889bc70` · base `origin/main` @ `714f473` · compare https://github.com/robbieryan312-star/The-ledger/compare/main...cursor/m-ui-topic-drawer-fullwidth-70a6 · `rm -rf .next && npm run prebuild` → 0 · `npm run build` → 0 · **do not merge** (owner 👁)
 
 ### Objective
 Re-implement full-width topic/issue drawers so expanded fact+evidence uses full content width (not a 1-word-per-line grid column).
@@ -21,7 +21,7 @@ Re-implement full-width topic/issue drawers so expanded fact+evidence uses full 
 **PASS / COMPLETE** — HotTopicsPanel drawer rendered outside topic grid; IssueAccordion + Topic Record drawers `w-full max-w-none`; quote/evidence `break-words`; render-integrity `assertFullWidthTopicDrawer` green.
 
 ### Commits
-- `ea5603a` — fix(ui): full-width topic/issue drawers outside Key Issues grid
+- `889bc70` — fix(ui): full-width topic/issue drawers outside Key Issues grid
 
 ### Commands run (this session)
 - `git checkout -B cursor/m-ui-topic-drawer-fullwidth-70a6 origin/main` → `714f473`
@@ -43,7 +43,7 @@ Re-implement full-width topic/issue drawers so expanded fact+evidence uses full 
 - render-integrity: drawer not inside `grid-cols`; width ≥90% of Key Issues content box
 
 ### Confront Claude — paste to Claude Code
-**M-UI COMPLETE** on `cursor/m-ui-topic-drawer-fullwidth-70a6`: full-width topic drawers; prebuild 0; build 0. **Do not merge** — owner 👁 visual.
+**M-UI COMPLETE** tip `889bc70` on `cursor/m-ui-topic-drawer-fullwidth-70a6`: full-width topic drawers; prebuild 0; build 0. **Do not merge** — owner 👁 visual.
 
 ---
 
