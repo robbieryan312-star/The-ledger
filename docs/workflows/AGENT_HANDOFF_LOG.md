@@ -10,6 +10,65 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-20 — #58 merged; M-UI + M3 open; STAGE THREE review index
+
+**From:** Cursor · **To:** Owner · **Verdict:** **#58 MERGED** · **M-UI/#68 + M3/#69 STOP** · other PRs untouched
+
+### Merged this turn
+| Item | Approved tip | Merge SHA |
+|------|--------------|-----------|
+| PR #58 M2 news pipeline + REJECT repair | `a7737a9` | **`3f4c6d1`** |
+| Handoff record on main | — | `714f473` |
+
+Vercel rate-limit deploy noise = cosmetic; ignore.
+
+### New PRs (STOP — do not merge without approval)
+| ID | PR | Tip | prebuild | build | Notes |
+|----|-----|-----|----------|-------|-------|
+| **M-UI** | #68 | **`bef4ddc`** | 0 | 0 | Full-width topic drawers; ⛔ owner 👁 before lock |
+| **M3** | #69 | **`a57647c`** | 0 | 0 | News 3→15; all alleged (no 2+ independent pairs) |
+
+### AWAITING OWNER STAGE THREE — tips frozen (not touched this turn)
+| ID | PR | Tip | Notes |
+|----|-----|-----|-------|
+| m4 Said→Did | #62 | `023b3b2` | 1→5 CREC pairs; honest-gap to 15 |
+| m5 positions | #63 | `cc69512` | honest-gap both; no fabrications |
+| m6 trades | #60 | `aa64627` | fetch-failed UI; never silent empty |
+| m7a LegiScan | #67 | `4727c94` | live 10-bill + Wave-1 preserve |
+| m7b OpenStates | #66 | `815a331` | key SET; egress timeout → honest-gap |
+| m7c FL news RSS | #64 | `f339f01` | profile News = RSS; NewsAPI snapshot-only |
+| m7d SAM/GovInfo | #65 | `478ba83` | SAM EMPTY gap; GovInfo live |
+| m10 branches shim | #61 | `b385615` | allPoliticians → `@/lib/branches`; shim deleted |
+| M-DEPLOY vercel-postbuild | #37 | — | **already MERGED** (not open) |
+
+### M-UI files @ `bef4ddc` (one line each)
+| File | Change |
+|------|--------|
+| `components/politicians/PoliticianProfileClient.tsx` | HotTopics drawer below grid; IssueAccordion fullwidth |
+| `components/politicians/ProfileRecordByTopicPanel.tsx` | topic-record drawer fullwidth; block quote rows |
+| `components/ui/ExpandableQuoteBlock.tsx` | w-full break-words |
+| `components/politicians/ExpandableEvidenceRow.tsx` | break-words w-full |
+| `scripts/render-integrity-check.ts` | assertFullWidthTopicDrawer |
+
+### Gated remaining
+⛔ SANDERS LOCK (needs m4+m5+m6 APPROVED + M3 done) · ⛔ M8 · ⛔ M9 · ⛔ M11
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Merged:** #58 `a7737a9` → main **`3f4c6d1`**
+
+**New — approve tips:**
+- #68 M-UI **`bef4ddc`** (prebuild 0, build 0) — ⛔ also needs owner 👁
+- #69 M3 **`a57647c`** (prebuild 0, build 0; news 15/15 all alleged)
+
+**STAGE THREE queue (tips frozen):**
+#62 `023b3b2` · #63 `cc69512` · #60 `aa64627` · #67 `4727c94` · #66 `815a331` · #64 `f339f01` · #65 `478ba83` · #61 `b385615`
+(M-DEPLOY #37 already merged)
+
+---
+
 ## HANDOFF 2026-07-20 — PR #58 MERGED (M2 APPROVED @ a7737a9)
 
 **From:** Cursor · **To:** Owner · **Verdict:** **MERGED**
