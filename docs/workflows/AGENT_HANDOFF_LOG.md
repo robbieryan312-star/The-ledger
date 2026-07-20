@@ -10,7 +10,107 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
-## HANDOFF 2026-07-20 — PR #55 merged; PR #48 split → #57 + #58
+## STAGE THREE REVIEW 2026-07-20 — Independent verification (Claude procedure §4–§9)
+
+**Reviewer:** Claude Code (independent worktree verification) · **main** @ `1aae27f`
+
+### Verdict summary
+| PR | SHA | Verdict | Action |
+|----|-----|---------|--------|
+| #55 Cursor manual cross-ref | `7844db6` → merge `61e6d5c` | **APPROVED** (prior) | merged ✓ |
+| #57 P0 AP-URL guard | `24296bd` → merge `1aae27f` | **APPROVED** | **merged ✓** |
+| #58 news pipeline batch | `539162a` (rebased) | **APPROVED pending owner STAGE THREE** | STOP — do not merge until owner confirms |
+
+### PR #57 — five-pass review @ `24296bd` (merged `1aae27f`)
+1. **Implementation** — `AP_NEWS_ARTICLE_URL` + early return in `isPlaceholderUrl`; fixture + test; one AP item in `S000033/news.json`. ✓
+2. **Regression** — fabricated AP URLs still fail; homepage bare URLs still fail; 55 other sourceIntegrity tests pass. ✓
+3. **Security** — no secrets; regex-only allowlist. ✓
+4. **Performance** — O(1) regex per URL. ✓
+5. **Edge case** — guard checks **FORMAT only, not existence**; AP non-fetch-verifiable; human verification at ingest required. ✓
+
+**Independent evidence (worktree `/tmp/pr57-review`):**
+- `isPlaceholderUrl(real AP)` → `false` · `isPlaceholderUrl(fabricated)` → `true`
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts` → 56/56 exit 0
+- `npm run prebuild` → exit 0 · `npm run build` → exit 0
+
+**Scope note:** 5 files (not 4) — `S000033.snapshot.json` build-gated; acceptable.
+
+### PR #58 — five-pass review @ `539162a` (rebased onto `1aae27f`)
+1. **Implementation** — RSS→GDELT→NewsAPI pipeline + UI + trades honest-gap; 26 pipeline files. ✓
+2. **Regression** — doc regressions from old #48 removed; `PILOT_PROFILE_CHECKLIST` row 8 fixed to **partial** (1/15). ✓
+3. **Security** — NewsAPI key from env only; no committed secrets. ✓
+4. **Performance** — scoped sync scripts; no full-corpus run in PR. ✓
+5. **Edge case** — media tier unverified until 2-source corroboration; AP format guard from #57 now on base. ✓
+
+**Independent evidence (rebased branch):**
+- `npm run prebuild` → exit 0 (all guards incl. W3d, profile-credibility, source integrity)
+- Prior `e5f940a` failed 4 prebuild tests — fixed by rebase + PILOT row 8 partial
+
+**Remaining limitations:** News pipeline not re-run live in this review session; generated JSON is committed artifact from prior #48 work. Render review not executed (owner 👁).
+
+### On "Repeated brief — no spec delta"
+Use **only** when the owner re-sends the **same** brief and git/PR state is unchanged. **Do not** use when: merge SHAs moved, split PRs opened, or independent re-verification was requested. This session had spec delta (#57 merged, #58 rebased to `539162a`).
+
+---
+
+## CURSOR BATCH PROMPT — next work (copy as one prompt)
+
+**Mode:** token economy — batch independent guard-verifiable tasks; keep pipeline/credibility in small PRs.
+
+**PREVIOUS PHASE CONFIRMATION:** `main` @ `1aae27f` (#57 P0 AP guard merged). PR #58 @ `539162a` rebased green — **STOP for owner STAGE THREE before merge.**
+
+### Batch A — mechanical / docs (one PR, low risk)
+1. `PROGRESS.md` — fix stale header (branch `claude/ledger-progress-review-jmd6gl`, timestamp); add Dual Reference Lock status board row if missing vs `DUAL_REFERENCE_ROADMAP.md`
+2. `docs/workflows/BATCH_SCALING.md` § Improvement log — append row for nav-guard scale step (Phase 4: 1→21 prebuild commands, orphan injection proven)
+3. Regenerate `npm run audit:inventory-md` if any file touched
+4. **Acceptance:** docsIntegrity + docsConsistency + navigationIntegrity pass; prebuild exit 0; one line per file in handoff
+
+### Batch B — PR #58 merge gate (after owner STAGE THREE APPROVAL on `539162a`)
+1. Merge PR #58 only on explicit owner approval SHA
+2. Update handoff with merge SHA
+
+### Batch C — S000033 conduit (separate small PRs — do NOT bundle)
+**C1 — Said→Did depth (target 15, currently 1):** scoped `sync:topic-positions -- --member S000033` only; verify `saidDid.json` count; update PILOT row 8 when genuinely ≥15 or stay partial; append fixture if new defect class found.
+
+**C2 — Platform positions honest-gap:** fix Ballotpedia/platform pipeline for S000033 only; manifest parity; W3c guard green.
+
+**C3 — News live refresh (optional):** `sync:news-rss -- --members S000033` scoped; verify feed-health; do not full-corpus.
+
+Each C* PR: ≤10 files, own STAGE THREE STOP, prebuild exit 0.
+
+### Files that MUST NOT change in Batch A
+Pipeline code, `sourceIntegrity.ts`, generated profile JSON (except inventory md regeneration).
+
+---
+
+## HANDOFF 2026-07-20 — PR #57 merged; PR #58 rebased for STAGE THREE
+
+**From:** Cursor · **To:** Owner · **Verdict:** **#57 MERGED** · **#58 STOP @ `539162a`**
+
+| Item | SHA |
+|------|-----|
+| PR #57 P0 AP guard | merged → `main` @ **`1aae27f`** (task `24296bd`) |
+| PR #58 news pipeline | rebased → **`539162a`** (was `e5f940a`) · prebuild exit 0 |
+| PR #55 | merged @ `61e6d5c` |
+
+**PR #58 repair this session:** rebase onto `1aae27f`; resolve news.json conflict; PILOT row 8 → **partial**; regenerate snapshot; prebuild green.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Merged:** PR #57 → `main` @ **`1aae27f`** · PR #55 @ **`61e6d5c`**  
+**STAGE THREE APPROVED (Claude):** PR #57 ✓ · PR #58 @ **`539162a`** — **owner confirm before merge**  
+**Closed:** PR #48 · split complete
+
+**PR #58 @ `539162a` evidence:** `npm run prebuild` exit 0 (post-rebase, incl. W3d + credibility)  
+**AP guard:** format-only; human-verify AP URLs at ingest
+
+**Next:** Run **CURSOR BATCH PROMPT** above (Batch A docs first; Batch C conduits as separate PRs).
+
+---
+
+## HANDOFF 2026-07-20 — PR #55 merged; PR #48 split → #57 + #58 — SUPERSEDED
 
 **From:** Cursor · **To:** Owner · **Verdict:** **PR #55 MERGED** · **PR #57/#58 STOP for STAGE THREE**
 
