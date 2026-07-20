@@ -9,6 +9,7 @@ import {
 import { GOVERNOR_MAP_FILLS, governorPartyByState } from './governorMapColors';
 import { getStateEconomicSlice } from './slices/stateEconomic';
 import { getJudiciaryCourtsSlice } from './slices/judiciaryCourts';
+import { countyByFips, countiesByState } from './countyMap';
 import { comparePoliticiansByOffice } from '@/lib/politicianSort';
 import type { MapExplorerDataProps, MapPoliticianRow } from '@/lib/types/mapProps';
 import type { SnapshotSlice } from '@/lib/types/snapshotTypes';
@@ -35,5 +36,7 @@ export function buildMapProps(): MapExplorerDataProps {
     governorPartyByState,
     floridaEconomicSlice: getStateEconomicSlice(),
     floridaCourtSlice,
+    countyByFips,
+    countiesByState,
   };
 }

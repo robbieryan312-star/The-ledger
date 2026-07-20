@@ -1,0 +1,219 @@
+{
+  "asOf": "2026-07-20",
+  "scope": "reference-2",
+  "note": "M8 Option A — Miami-Dade (12086) + Liberty (12077) only. STOP for Claude review before scaling to 67 counties. Primary Ballotpedia (nonpartisan); corroborate via county/.gov (official) where available; honest-gap offices omitted rather than fabricated.",
+  "byFips": {
+    "12086": {
+      "fips": "12086",
+      "name": "Miami-Dade",
+      "stateName": "Florida",
+      "stateCode": "FL",
+      "seat": "Miami",
+      "population": 2685296,
+      "website": "https://www.miamidade.gov/",
+      "status": "filled",
+      "asOf": "2026-07-20",
+      "sources": [
+        {
+          "name": "Ballotpedia — Government of Miami-Dade County, Florida",
+          "url": "https://ballotpedia.org/Government_of_Miami-Dade_County,_Florida",
+          "tier": "nonpartisan",
+          "date": "2026-07-20",
+          "description": "Primary roster of county elected offices"
+        },
+        {
+          "name": "Ballotpedia — Daniella Levine Cava",
+          "url": "https://ballotpedia.org/Daniella_Levine_Cava",
+          "tier": "nonpartisan",
+          "date": "2026-07-20",
+          "description": "Mayor term ends November 21, 2028"
+        },
+        {
+          "name": "Miami-Dade County Office of the Mayor",
+          "url": "https://www.miamidade.gov/global/government/mayor/home.page",
+          "tier": "official",
+          "date": "2026-07-20",
+          "description": "County .gov corroboration — Mayor Daniella Levine Cava"
+        }
+      ],
+      "officials": [
+        {
+          "id": "fl-co-12086-mayor",
+          "name": "Daniella Levine Cava",
+          "position": "Mayor of Miami-Dade County",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Mayor of Miami-Dade County. Assumed office November 17, 2020; current term ends November 21, 2028 (Ballotpedia). County elections are nonpartisan.",
+          "termEnd": "2028-11-21",
+          "website": "https://www.miamidade.gov/global/government/mayor/home.page"
+        },
+        {
+          "id": "fl-co-12086-sheriff",
+          "name": "Rosie Cordero-Stutz",
+          "position": "Miami-Dade County Sheriff",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Miami-Dade County Sheriff. Listed as current officeholder on Ballotpedia county government page (as of January 7, 2025 assumption date).",
+          "website": "https://www.miamisheriff.gov/"
+        },
+        {
+          "id": "fl-co-12086-clerk",
+          "name": "Juan Fernandez-Barquin",
+          "position": "Clerk of the Circuit Court and Comptroller",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Miami-Dade County Circuit Court Clerk and Comptroller. Listed on Ballotpedia county government page (assumed office June 12, 2023).",
+          "website": "https://www.miamidadeclerk.gov/"
+        },
+        {
+          "id": "fl-co-12086-property-appraiser",
+          "name": "Tomás Regalado",
+          "position": "Property Appraiser",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Miami-Dade County Property Appraiser. Listed on Ballotpedia county government page (assumed office January 7, 2025).",
+          "website": "https://www.miamidade.gov/pa/"
+        },
+        {
+          "id": "fl-co-12086-supervisor-elections",
+          "name": "Alina Garcia",
+          "position": "Supervisor of Elections",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Miami-Dade County Supervisor of Elections. Listed on Ballotpedia county government page (assumed office January 7, 2025).",
+          "website": "https://www.miamidade.gov/elections/"
+        },
+        {
+          "id": "fl-co-12086-tax-collector",
+          "name": "Dariel Fernandez",
+          "position": "Tax Collector",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Miami-Dade County Tax Collector. Listed on Ballotpedia county government page (assumed office January 7, 2025).",
+          "website": "https://www.miamidade.gov/taxcollector/"
+        }
+      ],
+      "elections": []
+    },
+    "12077": {
+      "fips": "12077",
+      "name": "Liberty",
+      "stateName": "Florida",
+      "stateCode": "FL",
+      "seat": "Bristol",
+      "population": 7650,
+      "website": "https://libertycountyfl.org/",
+      "status": "filled",
+      "asOf": "2026-07-20",
+      "sources": [
+        {
+          "name": "Liberty County (FL) Supervisor of Elections — County Elected Officials",
+          "url": "https://libertycountyflsoe.gov/elected-officials/county-elected-officials/",
+          "tier": "official",
+          "date": "2026-07-20",
+          "description": "Official county SOE roster (Ballotpedia lacks a full Liberty constitutional-officer table; SOE used as primary verified source)"
+        },
+        {
+          "name": "Liberty County Board of County Commissioners",
+          "url": "https://libertycountyfl.org/county-commissioners/",
+          "tier": "official",
+          "date": "2026-07-20",
+          "description": "County .gov commissioner list corroboration"
+        }
+      ],
+      "officials": [
+        {
+          "id": "fl-co-12077-clerk",
+          "name": "Jace Ford",
+          "position": "Clerk of Court",
+          "party": "Republican",
+          "inOffice": true,
+          "bio": "Liberty County Clerk of Court (Republican). Listed on the Liberty County Supervisor of Elections county elected officials page.",
+          "website": "https://libertycountyflsoe.gov/elected-officials/county-elected-officials/"
+        },
+        {
+          "id": "fl-co-12077-sheriff",
+          "name": "Dusty Arnold",
+          "position": "Sheriff",
+          "party": "Republican",
+          "inOffice": true,
+          "bio": "Liberty County Sheriff (Republican). Listed on the Liberty County Supervisor of Elections county elected officials page.",
+          "website": "https://libertycountyflsoe.gov/elected-officials/county-elected-officials/"
+        },
+        {
+          "id": "fl-co-12077-property-appraiser",
+          "name": "Chris Rudd",
+          "position": "Property Appraiser",
+          "party": "Republican",
+          "inOffice": true,
+          "bio": "Liberty County Property Appraiser (Republican). Listed on the Liberty County Supervisor of Elections county elected officials page.",
+          "website": "https://libertycountyflsoe.gov/elected-officials/county-elected-officials/"
+        },
+        {
+          "id": "fl-co-12077-tax-collector",
+          "name": "Marie G. Goodman",
+          "position": "Tax Collector",
+          "party": "Republican",
+          "inOffice": true,
+          "bio": "Liberty County Tax Collector (Republican). Listed on the Liberty County Supervisor of Elections county elected officials page.",
+          "website": "https://libertycountyflsoe.gov/elected-officials/county-elected-officials/"
+        },
+        {
+          "id": "fl-co-12077-supervisor-elections",
+          "name": "Grant Conyers",
+          "position": "Supervisor of Elections",
+          "party": "Republican",
+          "inOffice": true,
+          "bio": "Liberty County Supervisor of Elections (Republican). Listed on the Liberty County SOE site.",
+          "website": "https://libertycountyflsoe.gov/"
+        },
+        {
+          "id": "fl-co-12077-bcc-d1",
+          "name": "Dewayne Branch",
+          "position": "County Commissioner, District 1",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Liberty County Board of County Commissioners, District 1 (Chairman per county site). Listed on libertycountyfl.org/county-commissioners/.",
+          "website": "https://libertycountyfl.org/county-commissioners/"
+        },
+        {
+          "id": "fl-co-12077-bcc-d2",
+          "name": "Hannah Causseaux",
+          "position": "County Commissioner, District 2",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Liberty County Board of County Commissioners, District 2. Listed on libertycountyfl.org/county-commissioners/.",
+          "website": "https://libertycountyfl.org/county-commissioners/"
+        },
+        {
+          "id": "fl-co-12077-bcc-d3",
+          "name": "Jim Johnson",
+          "position": "County Commissioner, District 3",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Liberty County Board of County Commissioners, District 3. Listed on libertycountyfl.org/county-commissioners/.",
+          "website": "https://libertycountyfl.org/county-commissioners/"
+        },
+        {
+          "id": "fl-co-12077-bcc-d4",
+          "name": "Doyle Brown",
+          "position": "County Commissioner, District 4",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Liberty County Board of County Commissioners, District 4 (Vice-Chairman per county site). Listed on libertycountyfl.org/county-commissioners/.",
+          "website": "https://libertycountyfl.org/county-commissioners/"
+        },
+        {
+          "id": "fl-co-12077-bcc-d5",
+          "name": "Derrick Arnold",
+          "position": "County Commissioner, District 5",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Liberty County Board of County Commissioners, District 5. Listed on libertycountyfl.org/county-commissioners/.",
+          "website": "https://libertycountyfl.org/county-commissioners/"
+        }
+      ],
+      "elections": []
+    }
+  }
+}

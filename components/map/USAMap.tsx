@@ -16,9 +16,6 @@ import PoliticianAvatar from '@/components/ui/PoliticianAvatar';
 import OfficialCard from '@/components/counties/OfficialCard';
 import { FloridaStateEconomicCompact } from '@/components/records/FloridaRecordPanel';
 
-const countyByFips: Record<string, CountyData> = {};
-const countiesByState: Record<string, CountyData[]> = {};
-
 const GEO_STATES   = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json';
 const GEO_COUNTIES = 'https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json';
 
@@ -333,6 +330,8 @@ export default function USAMap({
   governorPartyByState,
   floridaEconomicSlice,
   floridaCourtSlice: _floridaCourtSlice,
+  countyByFips,
+  countiesByState,
 }: MapExplorerDataProps) {
   const searchParams = useSearchParams();
   const { registerNavigator } = useMapNavigation();
@@ -735,7 +734,7 @@ export default function USAMap({
                     : selectedCountyData
                     ? `${selectedCountyData.officials.length} official(s) tracked`
                     : selectedCountyPending
-                      ? 'Official records integration in progress'
+                      ? 'No verified county record available'
                     : `${selectedStateData?.activePoliticians ?? 0} officials tracked`}
                 </div>
               </div>
@@ -764,10 +763,10 @@ export default function USAMap({
                 <div className="bg-[#0d1f35] rounded-xl p-6 border border-[#1e3a5f] text-center">
                   <MapPin className="h-10 w-10 text-[#c8a951]/40 mx-auto mb-3" />
                   <p className="text-white font-medium text-sm mb-2">
-                    Official records integration in progress for {selectedCountyName ?? 'this county'}
+                    No verified county record available for {selectedCountyName ?? 'this county'}
                   </p>
                   <p className="text-gray-500 text-xs leading-relaxed">
-                    County-level official directories are being connected. The governor, U.S. senators, and U.S. representatives for {selectedStateData?.name ?? selectedState} are listed below.
+                    County elected-official data is reference-scoped (Miami-Dade and Liberty only for now). Other Florida counties show this honest gap until verified sources are wired. The governor, U.S. senators, and U.S. representatives for {selectedStateData?.name ?? selectedState} are listed below.
                   </p>
                 </div>
                 {statePoliticians.length > 0 && (

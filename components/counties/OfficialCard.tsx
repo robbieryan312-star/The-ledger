@@ -2,8 +2,12 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ChevronDown, ChevronRight, Star, Quote, Building2, User } from 'lucide-react';
+import { ChevronDown, ChevronRight, Star, Quote, User, ExternalLink } from 'lucide-react';
 import { CountyOfficial } from '@/lib/types';
+
+function isCountyLocalOfficialId(id: string): boolean {
+  return id.startsWith('fl-co-');
+}
 
 export default function OfficialCard({ official, compact = false }: { official: CountyOfficial; compact?: boolean }) {
   const [expanded, setExpanded] = useState(false);
@@ -11,6 +15,31 @@ export default function OfficialCard({ official, compact = false }: { official: 
     official.party === 'Democrat'   ? 'bg-blue-500/20 text-blue-400' :
     official.party === 'Republican' ? 'bg-red-500/20 text-red-400' :
     'bg-gray-500/20 text-gray-300';
+  const localOnly = isCountyLocalOfficialId(official.id);
+  const profileHref = localOnly ? null : `/politicians/${official.id}`;
+  const externalHref = official.website?.trim() || null;
+
+  const nameBlock = profileHref ? (
+    <Link
+      href={profileHref}
+      onClick={(e) => e.stopPropagation()}
+      className="text-white text-sm font-semibold truncate block hover:text-[#c8a951] transition-colors"
+    >
+      {official.name}
+    </Link>
+  ) : externalHref ? (
+    <a
+      href={externalHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={(e) => e.stopPropagation()}
+      className="text-white text-sm font-semibold truncate block hover:text-[#c8a951] transition-colors"
+    >
+      {official.name}
+    </a>
+  ) : (
+    <span className="text-white text-sm font-semibold truncate block">{official.name}</span>
+  );
 
   return (
     <div className={`border rounded-xl overflow-hidden transition-all ${expanded ? 'border-[#c8a951]/40' : 'border-[#1e3a5f]'}`}>
@@ -25,13 +54,7 @@ export default function OfficialCard({ official, compact = false }: { official: 
           </span>
         </div>
         <div className="flex-1 min-w-0">
-          <Link
-            href={`/politicians/${official.id}`}
-            onClick={(e) => e.stopPropagation()}
-            className="text-white text-sm font-semibold truncate block hover:text-[#c8a951] transition-colors"
-          >
-            {official.name}
-          </Link>
+          {nameBlock}
           <div className="flex items-center gap-1.5">
             <span className={`text-xs px-1.5 rounded ${partyColor}`}>{official.party[0]}</span>
             <span className="text-gray-400 text-xs">{official.position}</span>
@@ -85,12 +108,23 @@ export default function OfficialCard({ official, compact = false }: { official: 
             </div>
           )}
 
-          <Link
-            href={`/politicians/${official.id}`}
-            className="flex items-center justify-center gap-1.5 w-full bg-[#1e3a5f] hover:bg-[#2d5a8e] text-white text-xs py-2 rounded-lg transition-colors font-medium"
-          >
-            <User className="h-3.5 w-3.5" /> Full Profile & Elections
-          </Link>
+          {profileHref ? (
+            <Link
+              href={profileHref}
+              className="flex items-center justify-center gap-1.5 w-full bg-[#1e3a5f] hover:bg-[#2d5a8e] text-white text-xs py-2 rounded-lg transition-colors font-medium"
+            >
+              <User className="h-3.5 w-3.5" /> Full Profile & Elections
+            </Link>
+          ) : externalHref ? (
+            <a
+              href={externalHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-1.5 w-full bg-[#1e3a5f] hover:bg-[#2d5a8e] text-white text-xs py-2 rounded-lg transition-colors font-medium"
+            >
+              <ExternalLink className="h-3.5 w-3.5" /> Official source
+            </a>
+          ) : null}
         </div>
       )}
     </div>
