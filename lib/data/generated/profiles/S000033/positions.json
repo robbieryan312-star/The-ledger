@@ -1,5 +1,7 @@
 {
   "bioguideId": "S000033",
+  "status": "honest-gap",
+  "note": "2026-07-20 scoped sync:topic-positions --member S000033: Ballotpedia returned only disqualified scrape text (vote restatements, bio boilerplate, citation cruft). VoteSmart NPAT skipped (VOTESMART_API_KEY EMPTY). No qualified platformPositions — honest gap, not an undiagnosed empty. Mega-bundle intentionally omits migrated S000033; do not re-insert disqualified text.",
   "byTopic": {
     "technology": {
       "platformPositions": []

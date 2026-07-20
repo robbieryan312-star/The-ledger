@@ -10,6 +10,68 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-20 — M5: Sanders positions (#6) + orgVoteLinks (#5)
+
+**From:** Cursor · **To:** Claude Code · **Verdict:** **COMPLETE** (PR open — do NOT merge)
+
+**Current state:** branch `cursor/m5-sanders-positions-70a6` · tip `PLACEHOLDER` · PR _(after open)_ · base `origin/main` @ `ee0b24d` · tree clean · `npm run prebuild` → exit **0**
+
+### Objective
+Confirm Sanders checklist rows 5–6: scoped `sync:topic-positions --member S000033`; document honest-gap when empty; no fabricated joins; W3c / profileCategoryIntegrity green; own PR.
+
+### Verdict / outcome
+**PASS / COMPLETE** — both categories remain **honest-gap** after sync. Ballotpedia scrape produced only disqualified text (not shipped). orgVoteLinks rebuild = 0 links.
+
+### Before → after (S000033)
+
+| Category | Before | After |
+|----------|--------|-------|
+| `positions.json` platformPositions | 0 · no `status`/`note` | 0 · `status: honest-gap` + documented `note` |
+| manifest `positions` | honest-gap | honest-gap |
+| `orgVoteLinks.json` links | 0 · honest-gap + note | 0 · honest-gap + note (unchanged) |
+| manifest `orgVoteLinks` | honest-gap | honest-gap |
+
+### Commits
+- `PLACEHOLDER` — M5: document S000033 positions+orgVoteLinks honest-gap after scoped sync
+
+### Commands run (this session)
+- `git fetch origin main` → ok
+- `git checkout -B cursor/m5-sanders-positions-70a6 origin/main` → @ `ee0b24d`
+- `npm run verify:agent-keys` → exit 0 (8/12 SET; VOTESMART EMPTY)
+- `npm run sync:topic-positions -- --member S000033` → exit 0 (Ballotpedia junk into mega-bundle → **reverted**; 31 bundle violations if kept)
+- `git checkout HEAD -- topicPositions.json articleCache.json` → restored clean mega-bundle (S000033 correctly absent — migrated)
+- orgVoteLinks rebuild via `buildOrgVoteTopicLinks` → **0** links
+- `npm run prebuild` → **PREBUILD_EXIT=0** (W3c row 5–6 + profileCategoryIntegrity green)
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/generated/profiles/S000033/positions.json` | modified | `status` + sync-confirmation `note`; still empty platforms |
+| `lib/data/generated/profiles/S000033/manifest.json` | modified | `asOf` → 2026-07-20; categories unchanged honest-gap |
+| `PILOT_PROFILE_CHECKLIST.md` | modified | Row 6 note: 2026-07-20 sync confirmation |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This M5 handoff |
+
+### Acceptance evidence
+- Checklist rows 5–6: `**honest-gap**` (mustNotContain `**done**`) — W3c test ok
+- `LOCKED_PROFILE_ORG_POSITIONS_STATUS_KNOWN_GOOD.S000033` = positions/orgVoteLinks honest-gap
+- prebuild exit 0; audit-profile-credibility 0 defect rows for S000033
+- No fabricated org→vote joins; Schedule A pilot still individual-only
+
+### Open / next
+- Claude review + APPROVAL for merge when ready
+- Do **not** merge until Claude says so
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M5 READY:** branch `cursor/m5-sanders-positions-70a6` tip `PLACEHOLDER` · positions+orgVoteLinks honest-gap documented · prebuild 0 · do NOT merge
+**In flight:** M2 #58 · M4 · M6 · M7 · M10
+**Gated:** M3 · Sanders LOCK · M8 · M9 · M11
+
+---
+
+
 ## HANDOFF 2026-07-20 — M1 MERGED: Claude governance @ 1abf48d
 
 **From:** Cursor · **To:** Owner · **Verdict:** **MERGED**
