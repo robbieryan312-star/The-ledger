@@ -18,7 +18,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 | Item | SHA / status |
 |------|----------------|
 | PR #53 Phase 3 | **merged** → `main` @ `a730f81` (approved `6dc5bc9`) |
-| PR #47 roadmap | **superseded** — close manually (API token could not close); content landed via #53 |
+| PR #47 roadmap | **closed** as superseded (content landed via #53) |
 
 ### Phase 4 — navigation guard
 - Added `scripts/__tests__/navigationIntegrity.test.ts` + fixture
@@ -33,7 +33,8 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ### Branch / HEAD / PR
 - **Branch:** `cursor/phase4-5-nav-guard-ci-rule-70a6`
-- **HEAD:** `d8bb229`
+- **HEAD:** `30ce656` (tip; review `d8bb229` task commit)
+- **PR:** https://github.com/robbieryan312-star/The-ledger/pull/54
 - **Base:** `main` @ `a730f81`
 
 ### Verification
@@ -52,13 +53,13 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Confront Claude — paste to Claude Code
 
-**Branch:** `cursor/phase4-5-nav-guard-ci-rule-70a6` · **HEAD:** `d8bb229` · **Base:** `main` @ `a730f81`  
+**Branch:** `cursor/phase4-5-nav-guard-ci-rule-70a6` · **HEAD:** `30ce656` · **PR:** #54 · **Base:** `main` @ `a730f81`  
 **Merged this session:** PR #53 @ `6dc5bc9` → `main` @ `a730f81`  
 **Verdict:** PASS — STOP for combined STAGE THREE (Phases 4–5)
 
 **Review:** navigationIntegrity guard (4/4 tests) + continuous-improvement binding rule + prebuild 21 commands.  
-**Do not merge** until APPROVAL on branch tip SHA `d8bb229`.  
-**Housekeeping:** close PR #47 as superseded (Cursor lacked close permission).  
+**Do not merge** until APPROVAL on branch tip SHA `30ce656`.  
+**Housekeeping:** PR #47 closed as superseded.  
 **Not in scope:** PR #48 — separate SHA review.
 
 ---
