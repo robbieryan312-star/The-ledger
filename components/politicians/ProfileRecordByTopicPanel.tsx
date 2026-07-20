@@ -170,11 +170,14 @@ function TopicGroupRow({
       </button>
 
       {open && hasExpandable && (
-        <div className="border-t border-white/[0.06] px-4 py-3 space-y-3">
+        <div
+          data-testid="topic-record-drawer-fullwidth"
+          className="w-full max-w-none border-t border-white/[0.06] px-4 py-3 space-y-3"
+        >
           {hasStatedBlock && topicPositions && (
-            <div className="text-xs space-y-3">
+            <div className="text-xs space-y-3 w-full max-w-none">
               {hasStatedPosition && (
-                <div>
+                <div className="w-full max-w-none">
                   <div className="text-white font-semibold mb-1">Stated position</div>
                   <ExpandableQuoteBlock
                     summary={leadSummary(topicPositions.statedPosition!, 120)}
@@ -204,10 +207,10 @@ function TopicGroupRow({
               )}
 
               {!hasStatedPosition && hasPlatformPositions && (
-                <div>
+                <div className="w-full max-w-none">
                   <div className="text-white font-semibold mb-1">Platform position</div>
                   {platformPositions.map((pos, idx) => (
-                    <div key={idx} className={idx > 0 ? 'mt-3' : ''}>
+                    <div key={idx} className={`w-full max-w-none ${idx > 0 ? 'mt-3' : ''}`}>
                       <ExpandableQuoteBlock
                         summary={leadSummary(pos.text, 120)}
                         fullText={pos.text}
@@ -236,111 +239,105 @@ function TopicGroupRow({
               )}
 
               {!hasStatedPosition && !hasPlatformPositions && hasMediaStatements && (
-                <div>
+                <div className="w-full max-w-none">
                   <div className="text-white font-semibold mb-1">Stated position</div>
                   {mediaStatements.map((statement, idx) => (
-                    <div key={idx} className="flex items-start gap-2 mt-2">
-                      <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0 mt-0.5" />
-                      <div className="flex-1 min-w-0">
-                        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                          <span className="text-gray-500">{formatShortDate(statement.date)}</span>
-                          <SourceBadge
-                            source={{
-                              name: statement.outlet ?? 'Journalism',
-                              url: statement.url,
-                              tier: statement.tier,
-                              date: statement.date,
-                            }}
-                          />
-                        </div>
-                        <ExpandableQuoteBlock
-                          summary={leadSummary(statementDisplayText(statement), 120)}
-                          fullText={statementDisplayText(statement)}
-                          verbatim
+                    <div key={idx} className="block w-full max-w-none mt-2">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                        <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0" />
+                        <span className="text-gray-500">{formatShortDate(statement.date)}</span>
+                        <SourceBadge
+                          source={{
+                            name: statement.outlet ?? 'Journalism',
+                            url: statement.url,
+                            tier: statement.tier,
+                            date: statement.date,
+                          }}
                         />
-                        <Link
-                          href={statement.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white transition-colors mt-1 text-[11px]"
-                        >
-                          Source <ExternalLink className="h-3 w-3" />
-                        </Link>
                       </div>
+                      <ExpandableQuoteBlock
+                        summary={leadSummary(statementDisplayText(statement), 120)}
+                        fullText={statementDisplayText(statement)}
+                        verbatim
+                      />
+                      <Link
+                        href={statement.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white transition-colors mt-1 text-[11px]"
+                      >
+                        Source <ExternalLink className="h-3 w-3" />
+                      </Link>
                     </div>
                   ))}
                 </div>
               )}
 
               {!hasStatedPosition && !hasPlatformPositions && hasAllegedStatements && (
-                <div>
+                <div className="w-full max-w-none">
                   <div className="text-white font-semibold mb-1">Stated position</div>
                   {allegedStatements.map((statement, idx) => (
-                    <div key={idx} className="flex items-start gap-2 mt-2">
-                      <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0 mt-0.5" />
-                      <div className="flex-1 min-w-0">
-                        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                          <span className="text-gray-500">{formatShortDate(statement.date)}</span>
-                          <SourceBadge
-                            source={{
-                              name: statement.outlet ?? 'Journalism',
-                              url: statement.url,
-                              tier: statement.tier,
-                              date: statement.date,
-                            }}
-                          />
-                        </div>
-                        <ExpandableQuoteBlock
-                          summary={leadSummary(statementDisplayText(statement), 120)}
-                          fullText={statementDisplayText(statement)}
-                          verbatim
+                    <div key={idx} className="block w-full max-w-none mt-2">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                        <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0" />
+                        <span className="text-gray-500">{formatShortDate(statement.date)}</span>
+                        <SourceBadge
+                          source={{
+                            name: statement.outlet ?? 'Journalism',
+                            url: statement.url,
+                            tier: statement.tier,
+                            date: statement.date,
+                          }}
                         />
-                        <Link
-                          href={statement.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white transition-colors mt-1 text-[11px]"
-                        >
-                          Source <ExternalLink className="h-3 w-3" />
-                        </Link>
                       </div>
+                      <ExpandableQuoteBlock
+                        summary={leadSummary(statementDisplayText(statement), 120)}
+                        fullText={statementDisplayText(statement)}
+                        verbatim
+                      />
+                      <Link
+                        href={statement.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white transition-colors mt-1 text-[11px]"
+                      >
+                        Source <ExternalLink className="h-3 w-3" />
+                      </Link>
                     </div>
                   ))}
                 </div>
               )}
 
               {hasOfficialStatements && (
-                <div>
+                <div className="w-full max-w-none">
                   <div className="text-white font-semibold mb-1">Floor statement — Congressional Record</div>
                   {officialStatements.map((statement, idx) => (
-                    <div key={idx} className="flex items-start gap-2 mt-2">
-                      <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0 mt-0.5" />
-                      <div className="flex-1 min-w-0">
-                        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                          <span className="text-gray-500">{formatShortDate(statement.date)}</span>
-                          <SourceBadge
-                            source={{
-                              name: 'Congressional Record (GovInfo)',
-                              url: statement.url,
-                              tier: 'official',
-                              date: statement.date,
-                            }}
-                          />
-                        </div>
-                        <ExpandableQuoteBlock
-                          summary={leadSummary(statementDisplayText(statement), 120)}
-                          fullText={statementDisplayText(statement)}
-                          verbatim
+                    <div key={idx} className="block w-full max-w-none mt-2">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                        <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0" />
+                        <span className="text-gray-500">{formatShortDate(statement.date)}</span>
+                        <SourceBadge
+                          source={{
+                            name: 'Congressional Record (GovInfo)',
+                            url: statement.url,
+                            tier: 'official',
+                            date: statement.date,
+                          }}
                         />
-                        <Link
-                          href={statement.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white transition-colors mt-1 text-[11px]"
-                        >
-                          GovInfo <ExternalLink className="h-3 w-3" />
-                        </Link>
                       </div>
+                      <ExpandableQuoteBlock
+                        summary={leadSummary(statementDisplayText(statement), 120)}
+                        fullText={statementDisplayText(statement)}
+                        verbatim
+                      />
+                      <Link
+                        href={statement.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white transition-colors mt-1 text-[11px]"
+                      >
+                        GovInfo <ExternalLink className="h-3 w-3" />
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -349,59 +346,57 @@ function TopicGroupRow({
           )}
 
           {voteExamples.length > 0 && (
-            <div className="text-xs space-y-3">
+            <div className="text-xs space-y-3 w-full max-w-none">
               <div className="text-gray-500 text-[11px] font-medium">How they voted</div>
               {voteExamples.map((ex, i) => (
-                <div key={i} className="flex items-start gap-2">
-                  <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0 mt-0.5" />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                      {ex.vote && (
-                        <span
-                          className={`font-bold ${
-                            ex.vote === 'Yea'
-                              ? 'text-green-400'
-                              : ex.vote === 'Nay'
-                                ? 'text-red-400'
-                                : 'text-gray-400'
-                          }`}
-                        >
-                          {ex.vote}
-                        </span>
-                      )}
-                      {ex.billNumber && (
-                        <span className="text-gray-500">{ex.billNumber}</span>
-                      )}
-                      <span className="text-gray-500">{formatShortDate(ex.date)}</span>
-                    </div>
-                    <div className="mt-0.5">
-                      <ExpandableQuoteBlock
-                        summary={leadSummary(ex.billSummary ?? ex.title, 120)}
-                        fullText={ex.billSummary ?? ex.title}
-                      />
-                      {ex.billSummary ? (
-                        (() => {
-                          const impact = citizenImpactFromSummary(ex.billSummary);
-                          return impact ? (
-                            <p className="mt-1 text-[11px] text-gray-500">
-                              <span className="text-gray-600">What this means: </span>
-                              {impact}
-                            </p>
-                          ) : null;
-                        })()
-                      ) : (
-                        <p className="mt-1 text-[11px] text-gray-600 italic">No official summary available</p>
-                      )}
-                    </div>
-                    <Link
-                      href={ex.congressGovUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white mt-1 transition-colors"
-                    >
-                      Congress.gov <ExternalLink className="h-3 w-3" />
-                    </Link>
+                <div key={i} className="block w-full max-w-none">
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                    <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0" />
+                    {ex.vote && (
+                      <span
+                        className={`font-bold ${
+                          ex.vote === 'Yea'
+                            ? 'text-green-400'
+                            : ex.vote === 'Nay'
+                              ? 'text-red-400'
+                              : 'text-gray-400'
+                        }`}
+                      >
+                        {ex.vote}
+                      </span>
+                    )}
+                    {ex.billNumber && (
+                      <span className="text-gray-500">{ex.billNumber}</span>
+                    )}
+                    <span className="text-gray-500">{formatShortDate(ex.date)}</span>
                   </div>
+                  <div className="mt-0.5 w-full max-w-none">
+                    <ExpandableQuoteBlock
+                      summary={leadSummary(ex.billSummary ?? ex.title, 120)}
+                      fullText={ex.billSummary ?? ex.title}
+                    />
+                    {ex.billSummary ? (
+                      (() => {
+                        const impact = citizenImpactFromSummary(ex.billSummary);
+                        return impact ? (
+                          <p className="mt-1 text-[11px] text-gray-500 break-words">
+                            <span className="text-gray-600">What this means: </span>
+                            {impact}
+                          </p>
+                        ) : null;
+                      })()
+                    ) : (
+                      <p className="mt-1 text-[11px] text-gray-600 italic">No official summary available</p>
+                    )}
+                  </div>
+                  <Link
+                    href={ex.congressGovUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white mt-1 transition-colors"
+                  >
+                    Congress.gov <ExternalLink className="h-3 w-3" />
+                  </Link>
                 </div>
               ))}
             </div>

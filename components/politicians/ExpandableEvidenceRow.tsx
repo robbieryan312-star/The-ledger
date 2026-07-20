@@ -53,13 +53,13 @@ export default function ExpandableEvidenceRow({
 
   if (rowIsRedundant) {
     return (
-      <div className="rounded-lg p-2.5 border border-white/[0.05]" style={{ background: 'rgba(255,255,255,0.02)' }}>
-        <div className="flex items-start gap-2">
+      <div className="w-full max-w-none rounded-lg p-2.5 border border-white/[0.05]" style={{ background: 'rgba(255,255,255,0.02)' }}>
+        <div className="flex items-start gap-2 w-full max-w-none">
           <span className={`text-[10px] px-1.5 py-0.5 rounded border font-semibold uppercase tracking-wide flex-shrink-0 mt-0.5 ${typeStyle}`}>
             {item.type.replace('_', ' ')}
           </span>
-          <div className="flex-1 min-w-0">
-            <p className="text-white/40 text-[11px] italic mb-1">Full statement shown above — source record:</p>
+          <div className="min-w-0 flex-1 w-full">
+            <p className="text-white/40 text-[11px] italic mb-1 break-words">Full statement shown above — source record:</p>
             <SourceProvenance source={item.source} recordDate={item.date} />
           </div>
         </div>
@@ -69,13 +69,13 @@ export default function ExpandableEvidenceRow({
 
   if (!hasDetail) {
     return (
-      <div className="rounded-lg p-2.5 border border-white/[0.05]" style={{ background: 'rgba(255,255,255,0.02)' }}>
-        <div className="flex items-start gap-2">
+      <div className="w-full max-w-none rounded-lg p-2.5 border border-white/[0.05]" style={{ background: 'rgba(255,255,255,0.02)' }}>
+        <div className="flex items-start gap-2 w-full max-w-none">
           <span className={`text-[10px] px-1.5 py-0.5 rounded border font-semibold uppercase tracking-wide flex-shrink-0 mt-0.5 ${typeStyle}`}>
             {item.type.replace('_', ' ')}
           </span>
-          <div className="flex-1 min-w-0">
-            <p className="text-white/65 text-xs leading-relaxed">{item.description}</p>
+          <div className="min-w-0 flex-1 w-full">
+            <p className="text-white/65 text-xs leading-relaxed break-words w-full">{item.description}</p>
             <div className="mt-1.5">
               <SourceProvenance source={item.source} recordDate={item.date} />
             </div>
@@ -86,19 +86,19 @@ export default function ExpandableEvidenceRow({
   }
 
   return (
-    <div className="rounded-lg border border-white/[0.05] overflow-hidden" style={{ background: 'rgba(255,255,255,0.02)' }}>
+    <div className="w-full max-w-none rounded-lg border border-white/[0.05] overflow-hidden" style={{ background: 'rgba(255,255,255,0.02)' }}>
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="w-full flex items-start gap-2 p-2.5 hover:bg-white/[0.02] transition-colors text-left"
+        className="w-full max-w-none flex items-start gap-2 p-2.5 hover:bg-white/[0.02] transition-colors text-left"
       >
         <span className={`text-[10px] px-1.5 py-0.5 rounded border font-semibold uppercase tracking-wide flex-shrink-0 mt-0.5 ${typeStyle}`}>
           {item.type.replace('_', ' ')}
         </span>
-        <div className="flex-1 min-w-0">
-          <p className="text-white/65 text-xs leading-relaxed">{open ? item.description : previewText(item)}</p>
+        <div className="min-w-0 flex-1 w-full">
+          <p className="text-white/65 text-xs leading-relaxed break-words w-full">{open ? item.description : previewText(item)}</p>
           {!open && item.quote && (
-            <p className="text-[#c8a951]/60 text-[11px] italic mt-0.5 line-clamp-1">&ldquo;{item.quote}&rdquo;</p>
+            <p className="text-[#c8a951]/60 text-[11px] italic mt-0.5 line-clamp-1 break-words w-full">&ldquo;{item.quote}&rdquo;</p>
           )}
         </div>
         {open
@@ -107,9 +107,9 @@ export default function ExpandableEvidenceRow({
       </button>
 
       {open && (
-        <div className="px-2.5 pb-2.5 border-t border-white/[0.05]">
+        <div className="px-2.5 pb-2.5 border-t border-white/[0.05] w-full max-w-none">
           {item.quote && (
-            <blockquote className="mt-2 pl-2.5 border-l-2 border-[#c8a951]/40 text-[#c8a951]/70 text-xs italic leading-relaxed">
+            <blockquote className="mt-2 pl-2.5 border-l-2 border-[#c8a951]/40 text-[#c8a951]/70 text-xs italic leading-relaxed break-words w-full max-w-none">
               &ldquo;{item.quote}&rdquo;
             </blockquote>
           )}
