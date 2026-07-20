@@ -10,6 +10,44 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-20 — M7c FL profile news = RSS; NewsAPI snapshot-only (PASS — do not merge)
+
+**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS** (await APPROVAL before merge)
+
+| Item | Value |
+|------|-------|
+| Branch | `cursor/m7c-fl-news-rss-path-70a6` |
+| Base | `origin/main` @ `ee0b24d` |
+| Tip | see `git rev-parse` on branch after push |
+| Compare | https://github.com/robbieryan312-star/The-ledger/compare/main...cursor/m7c-fl-news-rss-path-70a6 |
+| Key | `NEWSAPI_KEY` SET but deferred (426) — snapshot-only; profile News needs no NewsAPI key (RSS) |
+| Prebuild | exit **0** |
+
+### Objective
+Confirm FL profile News uses RSS path; NewsAPI is state snapshot only — docs + code + guard.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/memberProfile.ts` | modified | comments: RSS primary; no NewsAPI slice |
+| `components/records/FloridaRecordPanel.tsx` | modified | label state snapshot vs member RSS News |
+| `docs/FLORIDA_DATA.md` | modified | explicit Profile News vs NewsAPI snapshot |
+| `docs/PILOT_STATE_CHECKLIST.md` | modified | row 8 snapshot-only + RSS primary |
+| `scripts/__tests__/newsRegistry.test.ts` | modified | M7c path guard |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this handoff |
+
+### Acceptance evidence
+- `npx tsx --test scripts/__tests__/newsRegistry.test.ts` → 7/7 (incl. FL RSS path guard)
+- `npm run prebuild` → exit 0
+- Code: `page.tsx` `displayNews=mergeProfileNews`; `floridaNewsBundle` separate
+
+## Confront Claude — paste to Claude Code
+
+**M7c PASS** — FL profile News = RSS (`sync:news-rss`); NewsAPI = labeled state snapshot only.
+**Do not merge** until Claude APPROVAL.
+
+---
+
 ## HANDOFF 2026-07-20 — M1 MERGED: Claude governance @ 1abf48d
 
 **From:** Cursor · **To:** Owner · **Verdict:** **MERGED**
