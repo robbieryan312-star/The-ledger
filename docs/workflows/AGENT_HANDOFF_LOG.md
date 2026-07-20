@@ -10,6 +10,72 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-20 — Todo closeout: #58 confirmed; M3 re-verify; M8 PR #70
+
+**From:** Cursor · **To:** Owner + Claude · **Verdict:** **COMPLETE** (agent-possible work) · all open tips **STOP**
+
+**Current state:** `main` @ `b1187f3` (pre-this-commit) · tree dirty only this handoff · M3 clean-tree prebuild **0** · M8 nav **4/4**
+
+### Confirmed already merged
+| Item | Approved tip | Merge SHA |
+|------|--------------|-----------|
+| PR #58 M2 news + REJECT repair | `a7737a9` | **`3f4c6d1`** (ancestor of `main`) |
+
+### Re-verified this session (clean worktrees)
+| ID | PR | Tip | Evidence |
+|----|-----|-----|----------|
+| **M-UI** | #68 | **`bef4ddc`** | prior verify prebuild 0 / build 0; tip unchanged |
+| **M3** | #69 | **`a57647c`** | clean worktree `npm run prebuild` → exit **0**; navIntegrity 4/4; `profiles/S000033/news.json` **15/15** `isVerified:false` / `source.tier:'alleged'` |
+| **M8** | **#70** | **`e06bebf`** | decision brief only; `test:navigation-integrity` 4/4; **⛔ owner picks A/B before any build** |
+
+### New PR this session
+| ID | PR | Tip | Notes |
+|----|-----|-----|-------|
+| **M8** | https://github.com/robbieryan312-star/The-ledger/pull/70 | **`e06bebf`** | `M8_COUNTY_MAP_DECISION.md` Option A wire vs B remove — **build neither** |
+
+### STAGE THREE tip index (frozen — do not amend tips)
+| ID | PR | Tip | Notes |
+|----|-----|-----|-------|
+| M-UI | #68 | `bef4ddc` | ⛔ owner 👁 + Claude tip approval |
+| M3 | #69 | `a57647c` | news 15 alleged; Claude tip approval |
+| M8 | #70 | `e06bebf` | ⛔ owner A/B + Claude tip approval |
+| m4 Said→Did | #62 | `023b3b2` | 1→5 CREC; honest-gap to 15 |
+| m5 positions | #63 | `cc69512` | honest-gap; no fabrications |
+| m6 trades | #60 | `aa64627` | fetch-failed UI |
+| m7a LegiScan | #67 | `4727c94` | live + Wave-1 preserve |
+| m7b OpenStates | #66 | `815a331` | egress timeout → honest-gap |
+| m7c FL news RSS | #64 | `f339f01` | profile News = RSS |
+| m7d SAM/GovInfo | #65 | `478ba83` | SAM EMPTY gap; GovInfo live |
+| m10 branches | #61 | `b385615` | `@/lib/branches`; shim deleted |
+
+### Commands (this session)
+- `git merge-base --is-ancestor 3f4c6d1 origin/main` → yes
+- `git worktree` M3 @ `a57647c` → `npm run prebuild` exit 0 (`/tmp/ledger-m3-prebuild.log`)
+- node count `profiles/S000033/news.json` → 15 items, all alleged
+- M8 @ `e06bebf` → `npm run test:navigation-integrity` 4/4
+- `ManagePullRequest create_pr` → **#70**
+
+### Gated (do not start)
+⛔ SANDERS LOCK (m4+m5+m6 APPROVED + M3 merged) · ⛔ M8 **build** (owner A/B) · ⛔ M9 · ⛔ M11
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**#58 still MERGED:** tip `a7737a9` → main **`3f4c6d1`**
+
+**Re-verify PASS:**
+- #68 M-UI **`bef4ddc`**
+- #69 M3 **`a57647c`** — clean prebuild 0; news **15/15** alleged
+
+**New — approve tip (docs only; ⛔ owner A/B first):**
+- #70 M8 **`e06bebf`** — decision brief Option A wire vs B remove; **build neither**
+
+**STAGE THREE queue (tips frozen):**
+#68 `bef4ddc` · #69 `a57647c` · #70 `e06bebf` · #62 `023b3b2` · #63 `cc69512` · #60 `aa64627` · #67 `4727c94` · #66 `815a331` · #64 `f339f01` · #65 `478ba83` · #61 `b385615`
+
+---
+
 ## HANDOFF 2026-07-20 — #58 merged; M-UI + M3 open; STAGE THREE review index
 
 **From:** Cursor · **To:** Owner · **Verdict:** **#58 MERGED** · **M-UI/#68 + M3/#69 STOP** · other PRs untouched
