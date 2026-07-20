@@ -1,5 +1,8 @@
 /**
  * Member name variants for RSS/GDELT news matching — roster display name vs legislators legal name.
+ *
+ * Matching rule (binding): NEVER match on surname alone. Require full name OR
+ * honorific + last name (Sen./Rep./Senator/Representative + ln).
  */
 import { loadProfileDisplayIdentityByBioguide } from './profileDisplayIdentity';
 
@@ -16,7 +19,11 @@ function lastNameOf(fullName: string): string {
   return parts[parts.length - 1].replace(/[^A-Za-z'-]/g, '');
 }
 
-/** Public + legal name strings to match in article text (deduped). */
+function escapeRe(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/** Public + legal FULL name strings to match in article text (deduped). Never surname-only. */
 export function memberNewsMatchNames(
   leg: LegislatorNewsRow,
   displayByBio: Map<string, { name: string; firstName: string; lastName: string }>,
@@ -30,7 +37,7 @@ export function memberNewsMatchNames(
   if (display?.firstName?.trim() && display?.lastName?.trim()) {
     names.add(`${display.firstName.trim()} ${display.lastName.trim()}`);
   }
-  return [...names];
+  return [...names].filter((n) => n.split(/\s+/).length >= 2);
 }
 
 /** Primary query name — prefer roster display name for GDELT/RSS. */
@@ -41,6 +48,10 @@ export function memberNewsPrimaryName(
   return displayByBio.get(leg.bioguideId)?.name?.trim() || leg.name.trim();
 }
 
+/**
+ * True when text mentions the member by full name or honorific+lastname.
+ * Bare last name alone NEVER matches.
+ */
 export function matchesMemberInText(
   text: string,
   leg: LegislatorNewsRow,
@@ -51,26 +62,20 @@ export function matchesMemberInText(
   const honorific = leg.chamber === 'senate' ? `Sen. ${ln}` : `Rep. ${ln}`;
 
   for (const name of memberNewsMatchNames(leg, displayByBio)) {
-    const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const escaped = escapeRe(name);
     if (new RegExp(`\\b${escaped}\\b`, 'i').test(text)) {
-      if (name.includes('Sen.') || /Sen\./i.test(text)) return honorific;
       return name;
     }
   }
 
-  const patterns = [
-    new RegExp(`\\bSen\\.\\s+${ln}\\b`, 'i'),
-    new RegExp(`\\bRep\\.\\s+${ln}\\b`, 'i'),
-    new RegExp(`\\bSenator\\s+${ln}\\b`, 'i'),
-    new RegExp(`\\bRepresentative\\s+${ln}\\b`, 'i'),
-    new RegExp(`\\b${ln}\\b`, 'i'),
+  const honorificPatterns = [
+    new RegExp(`\\bSen\\.\\s+${escapeRe(ln)}\\b`, 'i'),
+    new RegExp(`\\bRep\\.\\s+${escapeRe(ln)}\\b`, 'i'),
+    new RegExp(`\\bSenator\\s+${escapeRe(ln)}\\b`, 'i'),
+    new RegExp(`\\bRepresentative\\s+${escapeRe(ln)}\\b`, 'i'),
   ];
-  for (const re of patterns) {
-    if (re.test(text)) {
-      if (re.source.includes('Sen\\.')) return honorific;
-      if (re.source.includes('Rep\\.')) return honorific;
-      return ln;
-    }
+  for (const re of honorificPatterns) {
+    if (re.test(text)) return honorific;
   }
   return null;
 }

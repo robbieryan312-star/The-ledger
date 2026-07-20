@@ -3,22 +3,6 @@
   "status": "filled",
   "items": [
     {
-      "id": "s000033-rss-1",
-      "headline": "Fetterman rips Sanders over Platner, El-Sayed endorsements",
-      "summary": "Fetterman rips Sanders over Platner, El-Sayed endorsements",
-      "date": "2026-07-19",
-      "category": "Congress",
-      "isOpinion": false,
-      "isVerified": false,
-      "url": "https://thehill.com/homenews/campaign/5976688-fetterman-criticizes-sanders-endorsements/",
-      "source": {
-        "name": "The Hill",
-        "url": "https://thehill.com/homenews/campaign/5976688-fetterman-criticizes-sanders-endorsements/",
-        "tier": "media",
-        "date": "2026-07-19"
-      }
-    },
-    {
       "id": "s000033-newsapi-11",
       "headline": "CDC emails reveal challenges facing its next director",
       "summary": "Emails from CDC officials released by Sen. Bernie Sanders reveal agency leaders dealing with political pressures during the Trump era and highlight challenges for the next director.",
@@ -32,12 +16,12 @@
         "url": "https://www.npr.org/2026/07/04/nx-s1-5876507/cdc-emails-reveal-challenges-facing-its-next-director",
         "tier": "media",
         "date": "2026-07-04",
-        "description": "NewsAPI \u2014 corroborate with a second independent outlet before citing as verified fact"
+        "description": "NewsAPI — corroborate with a second independent outlet before citing as verified fact"
       }
     },
     {
       "id": "s000033-newsapi-19",
-      "headline": "Sen. Sanders wants Americans to have a say \u2014 and stake \u2014 in the future of AI",
+      "headline": "Sen. Sanders wants Americans to have a say — and stake — in the future of AI",
       "summary": "Sen. Bernie Sanders talks with NPR's Juana Summers about his new legislation, which would create a sovereign wealth fund, and give the American people a say in regulating AI.",
       "date": "2026-06-18",
       "category": "Congress",
@@ -49,24 +33,7 @@
         "url": "https://www.npr.org/2026/06/18/nx-s1-5861862/sen-sanders-wants-americans-to-have-a-say-and-stake-in-the-future-of-ai",
         "tier": "media",
         "date": "2026-06-18",
-        "description": "NewsAPI \u2014 corroborate with a second independent outlet before citing as verified fact"
-      }
-    },
-    {
-      "id": "s000033-newsapi-20",
-      "headline": "Mamdani tests political clout as he looks to reshape Dem party...",
-      "summary": "New York City Mayor Zohran Mamdani is testing the limits of his newfound political muscle in a bid to reshape the Democratic Party, even if it means challenging his own party\u2019s leadership.",
-      "date": "2026-06-18",
-      "category": "Congress",
-      "isOpinion": false,
-      "isVerified": false,
-      "url": "https://apnews.com/article/mamdani-sanders-new-york-primary-b1a13eaf0d7e634b6805fc80b3372cf8",
-      "source": {
-        "name": "AP News",
-        "url": "https://apnews.com/article/mamdani-sanders-new-york-primary-b1a13eaf0d7e634b6805fc80b3372cf8",
-        "tier": "nonpartisan",
-        "date": "2026-06-18",
-        "description": "Human-verified at ingest \u2014 AP URLs are format-guarded only (non-fetch-verifiable paywall/bot)"
+        "description": "NewsAPI — corroborate with a second independent outlet before citing as verified fact"
       }
     },
     {
@@ -87,5 +54,5 @@
       "url": "https://www.theguardian.com/commentisfree/2023/may/18/healthcare-us-human-right-medicare-for-all-bernie-sanders"
     }
   ],
-  "note": "5 relevant article(s) from RSS, GDELT, and NewsAPI (target 15)."
+  "note": "3 relevant article(s) after bare-surname matcher fix (target 15). Dropped 2 non-matching item(s)."
 }
