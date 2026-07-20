@@ -14,7 +14,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 **From:** Cursor · **To:** Owner + Claude · **Verdict:** **REPAIR COMPLETE** · **STOP for owner STAGE THREE**
 
-**Branch:** `cursor/nav-plan-lock-progress-70a6` · **Tip:** `c2b4013` · **PR:** #59
+**Branch:** `cursor/nav-plan-lock-progress-70a6` · **Tip:** `c06a9a4` · **PR:** #59
 
 ### Reject findings fixed
 
@@ -46,7 +46,7 @@ No "missing paths" in docsIntegrity output.
 
 ## Confront Claude — paste to Claude Code
 
-**Reject repair:** PR #59 @ tip SHA **`c2b4013`**
+**Reject repair:** PR #59 @ tip SHA **`c06a9a4`**
 
 **D1 fixed:** lib/_NAV_PROOF.ts de-backticked in handoff log (throwaway deleted file).
 **D2 fixed:** PROGRESS Phase 1 = florida.md single template (#51); media/agencies split → PR #54 (`56ac08d`).
