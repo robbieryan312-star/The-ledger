@@ -10,21 +10,37 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Source } from '../lib/types';
+import type { NewsItem } from '../lib/types';
+import { leadSummary } from '../lib/data/displaySummary';
+import {
+  isAllowedNewsArticleUrl,
+  isOpinionArticleUrl,
+  outletForArticleUrl,
+  tierForArticleUrl,
+} from '../lib/data/newsFeedRegistry';
+import { NEWS_FEED_REGISTRY } from '../lib/data/newsFeedRegistry';
+import { normalizeUrlForDedupe } from '../lib/data/sourceIntegrity';
+import { applyNewsCorroboration } from '../lib/data/newsCorroboration';
 import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
 import { memberInScope, requireSyncScope } from './lib/sync-scope';
+import {
+  loadMemberNewsDisplayMap,
+  memberNewsPrimaryName,
+} from './lib/memberNewsMatching';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
+const profilesRoot = path.join(OUT_DIR, 'profiles');
 const OUT_FILE = path.join(OUT_DIR, 'newsNational.json');
 const LEGISLATORS_FILE = path.join(projectRoot, 'lib', 'data', 'generated', 'currentLegislators.json');
 
 const GDELT_DOC_API = 'https://api.gdeltproject.org/api/v2/doc/doc';
 /** GDELT DOC API inter-member spacing (documented limit: ~1 req / 5s). */
-const GDELT_DELAY_MS = 2000;
-const MAX_ARTICLES_PER_MEMBER = 5;
-const TIMESPAN = '90d';
+const GDELT_DELAY_MS = 8000;
+const MAX_ARTICLES_PER_MEMBER = 25;
+const TIMESPAN = '12months';
 const CHECKPOINT_FILE = '/tmp/sync-news-national-checkpoint.json';
-const GDELT_RATE_LIMIT_DELAYS_MS = [5000, 10000] as const;
+const GDELT_RATE_LIMIT_DELAYS_MS = [8000, 15000, 25000] as const;
 
 const GDELT_SOURCE: Source = {
   name: 'GDELT',
@@ -90,9 +106,22 @@ function chamberLabel(chamber: string): string {
   return chamber === 'senate' ? 'senate' : 'house';
 }
 
-function buildGdeltQuery(leg: LegislatorRow): string {
-  const chamber = chamberLabel(leg.chamber);
-  return `"${leg.name}" ${leg.state} ${chamber} sourcelang:english`;
+function buildGdeltQuery(leg: LegislatorRow, displayByBio: Map<string, { name: string }>): string {
+  const primaryName = memberNewsPrimaryName(leg, displayByBio);
+  const domains = [
+    'thehill.com',
+    'politico.com',
+    'npr.org',
+    'theguardian.com',
+    'apnews.com',
+    'pbs.org',
+    'nytimes.com',
+    'washingtonpost.com',
+    'rollcall.com',
+    'propublica.org',
+  ];
+  const domainClause = `(${domains.map((h) => `domain:${h}`).join(' OR ')})`;
+  return `"${primaryName}" ${domainClause} sourcelang:english`;
 }
 
 function articleFromGdelt(a: GdeltArticle): MemberNewsArticle | null {
@@ -114,6 +143,7 @@ function articlesFromGdeltResponse(data: GdeltResponse): MemberNewsArticle[] {
   for (const raw of data.articles ?? []) {
     const mapped = articleFromGdelt(raw);
     if (!mapped || seenUrls.has(mapped.url)) continue;
+    if (!isAllowedNewsArticleUrl(mapped.url)) continue;
     seenUrls.add(mapped.url);
     articles.push(mapped);
     if (articles.length >= MAX_ARTICLES_PER_MEMBER) break;
@@ -123,9 +153,10 @@ function articlesFromGdeltResponse(data: GdeltResponse): MemberNewsArticle[] {
 
 async function fetchGdeltMemberNews(
   leg: LegislatorRow,
+  displayByBio: Map<string, { name: string }>,
   maxAttempts = GDELT_RATE_LIMIT_DELAYS_MS.length,
 ): Promise<{ articles: MemberNewsArticle[]; failed: boolean; lastError?: string }> {
-  const query = buildGdeltQuery(leg);
+  const query = buildGdeltQuery(leg, displayByBio);
   const params = new URLSearchParams({
     query,
     mode: 'artlist',
@@ -171,9 +202,70 @@ async function fetchGdeltMemberNews(
   return { articles: [], failed: true, lastError: reason };
 }
 
+function gdeltArticleToNewsItem(
+  article: MemberNewsArticle,
+  bioguideId: string,
+  idx: number,
+): NewsItem | null {
+  if (!isAllowedNewsArticleUrl(article.url)) return null;
+  const outlet = outletForArticleUrl(article.url) ?? article.outlet;
+  const tier = tierForArticleUrl(article.url) ?? 'media';
+  const date = article.publishedDate.slice(0, 10);
+  const isoDate = /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : article.publishedDate.slice(0, 10);
+  return {
+    id: `${bioguideId.toLowerCase()}-gdelt-${idx + 1}`,
+    headline: article.title,
+    summary: leadSummary(article.title, 200),
+    date: isoDate,
+    category: 'Congress',
+    isOpinion: isOpinionArticleUrl(article.url),
+    isVerified: false,
+    url: article.url,
+    source: {
+      name: outlet,
+      url: article.url,
+      tier,
+      date: isoDate,
+      description: 'GDELT DOC API — corroborate with official record before citing as verified fact',
+    },
+  };
+}
+
+async function mergeGdeltIntoProfileNews(
+  bioguideId: string,
+  articles: MemberNewsArticle[],
+): Promise<number> {
+  const profilePath = path.join(profilesRoot, bioguideId, 'news.json');
+  let existing: { bioguideId: string; status: string; items: NewsItem[]; note?: string };
+  try {
+    existing = JSON.parse(await readFile(profilePath, 'utf8')) as typeof existing;
+  } catch {
+    return 0;
+  }
+  const seen = new Set(existing.items.map((i) => normalizeUrlForDedupe(i.url ?? i.source.url ?? '')));
+  let added = 0;
+  for (const [idx, article] of articles.entries()) {
+    const item = gdeltArticleToNewsItem(article, bioguideId, idx);
+    if (!item) continue;
+    const key = normalizeUrlForDedupe(item.url ?? '');
+    if (seen.has(key)) continue;
+    seen.add(key);
+    existing.items.push(item);
+    added += 1;
+  }
+  if (added === 0) return 0;
+  existing.items.sort((a, b) => b.date.localeCompare(a.date));
+  existing.items = applyNewsCorroboration(existing.items).slice(0, 15);
+  existing.status = existing.items.length > 0 ? 'filled' : existing.status;
+  existing.note = `${existing.items.length} article(s) — RSS + approved GDELT outlets (target 15).`;
+  await writeFile(profilePath, `${JSON.stringify(existing, null, 2)}\n`, 'utf8');
+  return added;
+}
+
 async function main(): Promise<void> {
   const memberFilter = requireSyncScope(process.argv, 'sync-news-national');
   config({ path: path.join(projectRoot, '.env.local') });
+  const displayByBio = loadMemberNewsDisplayMap(projectRoot);
 
   const asOf = new Date().toISOString().slice(0, 10);
   const fetchedAt = new Date().toISOString();
@@ -222,7 +314,7 @@ async function main(): Promise<void> {
     if (checkpoint[leg.bioguideId]) continue;
     if (i > 0) await sleep(GDELT_DELAY_MS);
 
-    const result = await fetchGdeltMemberNews(leg);
+    const result = await fetchGdeltMemberNews(leg, displayByBio);
 
     if (result.failed) {
       fetchFailures += 1;
@@ -253,6 +345,14 @@ async function main(): Promise<void> {
       console.log(`  progress: ${i + 1}/${members.length} — ${membersWithNews} with news, ${fetchFailures} failed`);
     }
     console.log(`  ${leg.name}: ${articles.length} article(s)${feed ? ` (${feed})` : ''}`);
+    const profileDir = path.join(profilesRoot, leg.bioguideId);
+    try {
+      await readFile(path.join(profileDir, 'news.json'), 'utf8');
+      const added = await mergeGdeltIntoProfileNews(leg.bioguideId, articles);
+      if (added > 0) console.log(`    → merged ${added} approved article(s) into profiles/${leg.bioguideId}/news.json`);
+    } catch {
+      /* not a migrated profile */
+    }
 
     checkpoint[leg.bioguideId] = true;
     await writeFile(CHECKPOINT_FILE, JSON.stringify(checkpoint));

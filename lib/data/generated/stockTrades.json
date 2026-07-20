@@ -1,6 +1,6 @@
 {
   "meta": {
-    "asOf": "2026-07-06",
+    "asOf": "2026-07-19",
     "featuredQueried": 444,
     "withTradeData": 97,
     "integrationStatus": "partial",
@@ -14,11 +14,11 @@
     "senateReachable": true,
     "senateError": "Senate eFD search API under maintenance (HTTP 503)",
     "houseFilingsParsed": 693,
-    "housePtrFilingsParsedThisRun": 13,
+    "housePtrFilingsParsedThisRun": 0,
     "houseIndexFailedYears": [],
     "totalOfficialTrades": 5859,
-    "membersQueriedThisRun": 3,
-    "scope": "scoped: 3 member(s) filter=W000821,H001072,C001103"
+    "membersQueriedThisRun": 1,
+    "scope": "scoped: 1 member(s) filter=S000033"
   },
   "byPoliticianId": {
     "alexandria-ocasio-cortez": {
@@ -129287,7 +129287,7 @@
         "description": "STOCK Act periodic transaction reports filed with the U.S. Senate"
       },
       "asOf": "2026-06-25",
-      "note": "Senate eFD sync unavailable (Senate eFD search API under maintenance (HTTP 503)). Demo trades on profile, if any, are labeled separately."
+      "note": "fetch-failed: Senate eFD sync unavailable (Senate eFD search API under maintenance (HTTP 503))."
     },
     "mitch-mcconnell": {
       "politicianId": "mitch-mcconnell",

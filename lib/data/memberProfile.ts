@@ -11,6 +11,7 @@ import {
   PROFILE_ENDORSEMENTS as PROFILE_ENDORSEMENTS_RAW,
   PROFILE_FINANCE as PROFILE_FINANCE_RAW,
   PROFILE_NEWS as PROFILE_NEWS_RAW,
+  PROFILE_TRADES as PROFILE_TRADES_RAW,
   PROFILE_ORG_VOTE_LINKS_RAW,
   PROFILE_POSITIONS,
   PROFILE_SAID_DID,
@@ -19,7 +20,7 @@ import {
 } from './generated/profiles/index';
 import type { OrgVoteTopicLink } from './buildOrgVoteTopicLinks';
 import type { FecFinanceEntry } from './fecFinance';
-import type { Controversy, NewsItem, Source, VoteRecord } from '../types';
+import type { Controversy, NewsItem, Source, StockTrade, VoteRecord } from '../types';
 import type {
   PlatformPositionEntry,
   SaidDidLinkEntry,
@@ -27,6 +28,9 @@ import type {
   TopicStatementEntry,
 } from './topicPositions';
 import { leadSummary } from './displaySummary';
+import { getNationalNewsArticles, nationalArticlesToNewsItems } from './newsNational';
+import { applyNewsCorroboration } from './newsCorroboration';
+import { normalizeUrlForDedupe } from './sourceIntegrity';
 
 function isDisplayableStatement(statement: TopicStatementEntry): boolean {
   if (statement.tier === 'media' || statement.tier === 'alleged') {
@@ -115,6 +119,18 @@ const PROFILE_FINANCE: Record<string, ProfileFinanceFile> = PROFILE_FINANCE_RAW 
 const PROFILE_NEWS: Record<string, ProfileNewsFile> = PROFILE_NEWS_RAW as Record<
   string,
   ProfileNewsFile
+>;
+
+interface ProfileTradesFile {
+  bioguideId: string;
+  status: 'filled' | 'honest-gap' | 'fetch-failed';
+  note?: string;
+  trades: StockTrade[];
+}
+
+const PROFILE_TRADES: Record<string, ProfileTradesFile> = PROFILE_TRADES_RAW as Record<
+  string,
+  ProfileTradesFile
 >;
 
 interface ProfileControversiesFile {
@@ -254,14 +270,42 @@ export function getMemberProfileNews(bioguideId: string): NewsItem[] | null {
 }
 
 /**
+ * STOCK Act gap metadata for migrated profiles — from profiles/{bioguideId}/trades.json.
+ * Returns null when no profile file or trades are present on disk.
+ */
+export function getMemberProfileTradeGap(
+  bioguideId: string,
+): { status: 'honest-gap' | 'fetch-failed'; note: string } | null {
+  if (!MIGRATED_PROFILE_BIOGUIDES.has(bioguideId)) return null;
+  const file = PROFILE_TRADES[bioguideId];
+  if (!file || file.trades.length > 0) return null;
+  if (file.status !== 'honest-gap' && file.status !== 'fetch-failed') return null;
+  const note = file.note?.trim();
+  if (!note) return null;
+  return { status: file.status, note };
+}
+
+/**
  * Display news for a politician page: prefer the migrated profile's news.json
- * (Group C GDELT pipeline, approved outlets only) when it has verified items;
- * otherwise return empty (honest gap — mock data is quarantined).
+ * (Group C RSS pipeline, approved outlets only); supplement from newsNational.json
+ * (GDELT) when the profile file has fewer than the display target.
  */
 export function mergeProfileNews(legacyNews: NewsItem[] | undefined, bioguideId?: string): NewsItem[] {
   if (bioguideId && MIGRATED_PROFILE_BIOGUIDES.has(bioguideId)) {
-    const profileNews = getMemberProfileNews(bioguideId);
-    if (profileNews && profileNews.length > 0) return profileNews;
+    const profileNews = getMemberProfileNews(bioguideId) ?? [];
+    const seen = new Set(profileNews.map((i) => normalizeUrlForDedupe(i.url ?? i.source.url ?? '')));
+    const merged = [...profileNews];
+    if (merged.length < 15) {
+      const national = nationalArticlesToNewsItems(bioguideId, getNationalNewsArticles(bioguideId));
+      for (const item of national) {
+        const key = normalizeUrlForDedupe(item.url ?? item.source.url ?? '');
+        if (seen.has(key)) continue;
+        seen.add(key);
+        merged.push(item);
+      }
+    }
+    merged.sort((a, b) => b.date.localeCompare(a.date));
+    if (merged.length > 0) return applyNewsCorroboration(merged).slice(0, 15);
   }
   return legacyNews ?? [];
 }
