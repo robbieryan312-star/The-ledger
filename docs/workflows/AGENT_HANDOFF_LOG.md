@@ -10,6 +10,29 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-20 — PR #58 MERGED (M2 APPROVED @ a7737a9)
+
+**From:** Cursor · **To:** Owner · **Verdict:** **MERGED**
+
+| Item | SHA |
+|------|-----|
+| Approved tip | **`a7737a9`** |
+| Merge on `main` | **`3f4c6d1`** |
+
+**Note:** Vercel "rate limited" deploy noise is cosmetic — ignore; merge is what matters.
+
+**Unblocked:** M3 Sanders news 5→15 (fixed matcher now on main).
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**#58 MERGED:** tip `a7737a9` → main **`3f4c6d1`**
+**Next:** M-UI full-width topic drawers (own PR, ⛔ owner 👁) · M3 news depth after merge
+**Do not merge (awaiting STAGE THREE):** #62 m4 · #63 m5 · #60 m6 · #67/#66/#64/#65 m7 · #61 m10 · M-DEPLOY
+
+---
+
 ## HANDOFF 2026-07-20 — Parallel roadmap wave (M1 merged; M2 repair; M4–M7; M10)
 
 **From:** Cursor · **To:** Owner + Claude · **Verdict:** **PARTIAL — all open PRs STOP for Claude merge-approval on exact tip**
