@@ -34,10 +34,21 @@ operating manual and core-rules.
    `PILOT_PROFILE_CHECKLIST.md`, the active plan file). See manual §12B. **If the response would
    otherwise end without this block, it is not finished — add it before sending.** (Violated 3× on
    2026-07-19; that is why this is now the mechanical format above, not a soft reminder.)
-   **TOKEN ECONOMY (owner 2026-07-19):** the block contains ONLY the single next action — do NOT
-   restate the full queue, prior phases, or already-approved items each turn. Keep total response
-   short: lead with the verdict/result in 1–3 lines, skip narration and re-verification of things
-   already green. Brevity is the default; expand only when a defect needs a full fix brief.
+   **PROMPT SIZE & TOKEN ECONOMY (owner — reaffirmed 2026-07-20; SUPERSEDES any earlier "single
+   next action / brevity is the default" wording, which was contradictory and is now void).** Two
+   SEPARATE levers — never conflate them:
+   - **(a) PROSE stays short.** Lead with the verdict/result in 1–3 lines; skip narration and
+     re-verification of things already green. Brevity applies to the PROSE only.
+   - **(b) The Cursor block is COMPREHENSIVE, not a single next action.** Exactly ONE `COPY TO
+     CURSOR` block per response (never two), but it carries the FULL available forward workload —
+     every remaining roadmap milestone Cursor can act on now — written as explicit ordered
+     milestones, each ending in a ⛔ STOP-for-approval gate so risky steps stay individually
+     reviewed. Fewer, larger, milestone-gated prompts = less back-and-forth = the whole point.
+   - **(c) Batch by risk WITHIN that one block.** Load it heavy with independent, guard-verifiable
+     work (docs, mechanical fixes, ingest, tests). Risky core logic (pipeline, source/credibility)
+     is still its OWN bounded ⛔-gated milestone — never bundled into one unreviewable commit.
+   - Shorten the block to a single action ONLY when a hard dependency or an open STOP gate genuinely
+     blocks everything else. A small block otherwise is a §4 compliance FAILURE.
 4a. **ENGAGE ONLY ON OWNER INSTRUCTION (owner 2026-07-19 — token economy).** Do NOT self-trigger
    work: no autonomous check-ins, no `ScheduleWakeup`/`send_later` re-arming, no PR-activity
    monitoring loops. Review and act **only when the owner sends a message.** When a task finishes,
