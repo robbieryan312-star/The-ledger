@@ -4,6 +4,13 @@
  */
 import type { Source, StockTrade } from '../types';
 import stockSnapshot from './generated/stockTrades.json';
+import {
+  TRADES_HONEST_GAP_LABEL,
+  isTradesFetchFailedGap,
+  tradesEmptyStateCopy,
+} from '../tradesHonestGap';
+
+export { TRADES_HONEST_GAP_LABEL, isTradesFetchFailedGap, tradesEmptyStateCopy };
 
 export interface StockTradeEntry {
   politicianId: string;
@@ -145,13 +152,10 @@ export function stockEntryToProfileTradesFile(
   entry: Pick<StockTradeEntry, 'trades' | 'note'>,
 ): ProfileTradesFile {
   const note = entry.note?.trim() ?? 'No verified STOCK Act trades integrated for this profile';
-  const isFetchFailed =
-    /fetch-failed/i.test(note) ||
-    (/unavailable|maintenance|503/i.test(note) && entry.trades.length === 0);
   const hasTrades = entry.trades.length > 0;
   let status: ProfileTradesFile['status'] = 'honest-gap';
   if (hasTrades) status = 'filled';
-  else if (isFetchFailed) status = 'fetch-failed';
+  else if (isTradesFetchFailedGap({ note })) status = 'fetch-failed';
   return { bioguideId, status, note, trades: entry.trades };
 }
 

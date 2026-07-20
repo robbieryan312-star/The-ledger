@@ -1,6 +1,6 @@
 {
   "bioguideId": "S000033",
   "status": "fetch-failed",
-  "note": "fetch-failed: Senate eFD sync unavailable (Senate eFD search API under maintenance (HTTP 503)).",
+  "note": "Senate eFD maintenance (HTTP 503) — no verified STOCK Act trades on record",
   "trades": []
 }

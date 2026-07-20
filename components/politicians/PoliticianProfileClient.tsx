@@ -53,6 +53,7 @@ import type { TopicPositionData } from '@/lib/data/topicPositions';
 import type { OrgVoteTopicLink } from '@/lib/data/buildOrgVoteTopicLinks';
 import type { NewsBundleSlice } from '@/lib/types/snapshotTypes';
 import type { StockTradeEntry } from '@/lib/data/stockTrades';
+import { isTradesFetchFailedGap, TRADES_HONEST_GAP_LABEL } from '@/lib/tradesHonestGap';
 import { trimToWordBoundary } from '@/lib/displaySummary';
 
 interface EndorsementEntry {
@@ -76,7 +77,9 @@ export interface PoliticianProfileClientProps {
   stockEntry?: StockTradeEntry;
   usingOfficialTrades: boolean;
   demoTradeCount: number;
-  tradeGap?: { status: 'honest-gap' | 'fetch-failed'; note: string } | null;
+  /** Derived on server from stockEntry / profile trades.json (client-bundle safe). */
+  tradesStatus?: 'filled' | 'honest-gap' | 'fetch-failed';
+  tradesNote?: string;
   recordByTopic: ProfileRecordByTopic | null;
   memberDeep: MemberDeepProfile | null;
   voteviewMember: ReturnType<typeof import('@/lib/data/slices/voteview').getVoteviewByBioguide>;
@@ -529,7 +532,8 @@ export default function PoliticianProfileClient({
   stockEntry,
   usingOfficialTrades,
   demoTradeCount,
-  tradeGap,
+  tradesStatus,
+  tradesNote,
   recordByTopic,
   memberDeep,
   voteviewMember,
@@ -563,6 +567,12 @@ export default function PoliticianProfileClient({
   const pacTotal = displayFinance.pacDonations;
   const individualTotal = displayFinance.individualDonations;
   const highConflictTrades = displayStockTrades.filter((t) => t.conflictScore >= 70);
+  const tradesShowHonestGap =
+    displayStockTrades.length === 0 &&
+    isTradesFetchFailedGap({
+      status: tradesStatus,
+      note: tradesNote ?? stockEntry?.note,
+    });
 
   const partyColor =
     politician.party === 'Democrat' ? 'text-blue-400' :
@@ -869,8 +879,12 @@ export default function PoliticianProfileClient({
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400">Stock Trades</span>
-                    <span className={`font-medium ${displayStockTrades.length > 0 ? 'text-yellow-400' : 'text-green-400'}`}>
-                      {displayStockTrades.length > 0 ? `${displayStockTrades.length} trades` : 'None'}
+                    <span className={`font-medium ${displayStockTrades.length > 0 ? 'text-yellow-400' : tradesShowHonestGap ? 'text-gray-400' : 'text-green-400'}`}>
+                      {displayStockTrades.length > 0
+                        ? `${displayStockTrades.length} trades`
+                        : tradesShowHonestGap
+                          ? TRADES_HONEST_GAP_LABEL
+                          : 'None'}
                     </span>
                   </div>
                   <div className="flex justify-between">
@@ -1015,8 +1029,8 @@ export default function PoliticianProfileClient({
                 usingOfficialTrades={usingOfficialTrades}
                 officialSource={stockEntry?.source}
                 demoTradeCount={demoTradeCount}
-                gapNote={tradeGap?.note}
-                gapStatus={tradeGap?.status}
+                tradesStatus={tradesStatus}
+                tradesNote={tradesNote ?? stockEntry?.note}
               />
             )}
           </div>

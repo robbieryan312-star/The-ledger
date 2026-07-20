@@ -1,17 +1,27 @@
 /**
  * Build-gated guard: stock-trade sync preserves prior rows on fetch-failed paths.
+ * Also: empty trades with Senate eFD 503 / fetch-failed must never render silent empty.
  */
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
 import type { StockTrade } from '../../lib/types';
 import { allPoliticians } from '../../lib/data/allPoliticians';
 import {
   buildHouseStockTradeEntry,
   buildMergedStockTradesMeta,
+  isTradesFetchFailedGap,
   mergeStockTrades,
   stockEntryToProfileTradesFile,
+  tradesEmptyStateCopy,
+  TRADES_HONEST_GAP_LABEL,
   type StockTradeEntry,
 } from '../../lib/data/stockTrades';
+import {
+  S000033_TRADES_FETCH_FAILED_KNOWN_GOOD,
+  TRADES_SILENT_EMPTY_KNOWN_BAD,
+} from '../../lib/data/__fixtures__/stockTradesHonestGap.fixture';
 
 /** Frozen fixture: member had 2 official trades before a House index fetch-failed run. */
 export const STOCK_TRADES_KNOWN_GOOD_PRIOR: StockTrade[] = [
@@ -147,4 +157,81 @@ test('scoped run meta merges from prior snapshot (§6 meta honesty)', () => {
   assert.equal(meta.membersQueriedThisRun, 2);
   assert.match(meta.scope ?? '', /^scoped:/);
   assert.match(meta.note, /455 transaction/);
+});
+
+test('S000033 Senate eFD 503 empty trades must use honest-gap label (never silent empty)', () => {
+  const disk = JSON.parse(
+    readFileSync(
+      path.join(process.cwd(), 'lib/data/generated/profiles/S000033/trades.json'),
+      'utf8',
+    ),
+  ) as { bioguideId: string; status: string; note: string; trades: unknown[] };
+
+  assert.equal(disk.bioguideId, S000033_TRADES_FETCH_FAILED_KNOWN_GOOD.bioguideId);
+  assert.equal(disk.trades.length, 0);
+  assert.equal(disk.status, 'fetch-failed');
+  assert.match(disk.note, /Senate eFD/);
+  assert.match(disk.note, /503/);
+
+  const copy = tradesEmptyStateCopy({
+    status: disk.status,
+    note: disk.note,
+    name: 'Bernie Sanders',
+  });
+  assert.equal(copy.headline, TRADES_HONEST_GAP_LABEL);
+  assert.equal(copy.isHonestGap, true);
+  assert.match(copy.detail, /Senate eFD/);
+
+  // Frozen bad: silent empty must be rejected by the same detector.
+  assert.equal(
+    isTradesFetchFailedGap({
+      status: TRADES_SILENT_EMPTY_KNOWN_BAD.status,
+      note: TRADES_SILENT_EMPTY_KNOWN_BAD.note,
+    }),
+    false,
+  );
+  const silent = tradesEmptyStateCopy({
+    status: TRADES_SILENT_EMPTY_KNOWN_BAD.status,
+    note: TRADES_SILENT_EMPTY_KNOWN_BAD.note,
+    name: 'Bernie Sanders',
+  });
+  assert.notEqual(silent.headline, TRADES_HONEST_GAP_LABEL);
+
+  // Snapshot entry note (mega-bundle) also maps to fetch-failed + honest-gap UI.
+  const fromSnapshot = stockEntryToProfileTradesFile('S000033', {
+    trades: [],
+    note: 'Senate eFD sync unavailable (Senate eFD search API under maintenance (HTTP 503)). Demo trades on profile, if any, are labeled separately.',
+  });
+  assert.equal(fromSnapshot.status, 'fetch-failed');
+  assert.equal(
+    tradesEmptyStateCopy({
+      status: fromSnapshot.status,
+      note: fromSnapshot.note,
+      name: 'Bernie Sanders',
+    }).headline,
+    TRADES_HONEST_GAP_LABEL,
+  );
+
+  // UI must wire the helper + canonical label (regression: "No stock trades reported" alone).
+  const uiSrc = readFileSync(
+    path.join(process.cwd(), 'components/politicians/StockTrades.tsx'),
+    'utf8',
+  );
+  assert.match(uiSrc, /tradesEmptyStateCopy/);
+  assert.match(uiSrc, /@\/lib\/tradesHonestGap/);
+  assert.match(uiSrc, /tradesStatus/);
+  assert.match(uiSrc, /tradesNote/);
+  const clientSrc = readFileSync(
+    path.join(process.cwd(), 'components/politicians/PoliticianProfileClient.tsx'),
+    'utf8',
+  );
+  assert.match(clientSrc, /TRADES_HONEST_GAP_LABEL/);
+  assert.match(clientSrc, /tradesShowHonestGap/);
+  assert.match(clientSrc, /@\/lib\/tradesHonestGap/);
+  const pageSrc = readFileSync(
+    path.join(process.cwd(), 'app/politicians/[id]/page.tsx'),
+    'utf8',
+  );
+  assert.match(pageSrc, /stockEntryToProfileTradesFile/);
+  assert.match(pageSrc, /tradesStatus=/);
 });
