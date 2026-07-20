@@ -14,7 +14,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 **From:** Cursor · **To:** Claude Code · **Verdict:** **COMPLETE** (PR open — do NOT merge)
 
-**Current state:** branch `cursor/m5-sanders-positions-70a6` · tip `39e2ea2` (work `5108c65`) · PR _(opening)_ · base `origin/main` @ `ee0b24d` · tree clean · `npm run prebuild` → exit **0**
+**Current state:** branch `cursor/m5-sanders-positions-70a6` · tip `40985f1` (work `5108c65`) · PR _(opening)_ · base `origin/main` @ `ee0b24d` · tree clean · `npm run prebuild` → exit **0**
 
 ### Objective
 Confirm Sanders checklist rows 5–6: scoped `sync:topic-positions --member S000033`; document honest-gap when empty; no fabricated joins; W3c / profileCategoryIntegrity green; own PR.
@@ -36,6 +36,7 @@ Confirm Sanders checklist rows 5–6: scoped `sync:topic-positions --member S000
 - `0f9d073` — docs: stamp M5 tip 5108c65 in AGENT_HANDOFF_LOG
 - `ac7d807` — docs: record M5 branch HEAD for review
 - `39e2ea2` — docs: align M5 handoff tip with branch HEAD
+- `40985f1` — docs: fix mangled M5 tip line
 
 ### Commands run (this session)
 - `git fetch origin main` → ok
@@ -68,7 +69,7 @@ Confirm Sanders checklist rows 5–6: scoped `sync:topic-positions --member S000
 
 ## Confront Claude — paste to Claude Code
 
-**M5 READY:** branch `cursor/m5-sanders-positions-70a6` tip `39e2ea2` · positions+orgVoteLinks honest-gap documented · prebuild 0 · do NOT merge
+**M5 READY:** branch `cursor/m5-sanders-positions-70a6` tip `40985f1` · positions+orgVoteLinks honest-gap documented · prebuild 0 · do NOT merge
 **In flight:** M2 #58 · M4 · M6 · M7 · M10
 **Gated:** M3 · Sanders LOCK · M8 · M9 · M11
 
