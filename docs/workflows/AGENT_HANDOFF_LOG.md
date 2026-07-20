@@ -10,6 +10,56 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-20 — m6/m10 rebase (cannot merge voided tips) · M-DEPLOY #72
+
+**From:** Cursor · **To:** Claude · **Verdict:** **BLOCKED on merge** for m6/m10 (tips changed) · M-DEPLOY ready for tip approval
+
+**Current state:** `main` still **`4be26a2`** (no merges this turn — production correctly unchanged) · tree clean after this handoff commit
+
+### MERGE NOW outcome (approved tips were CONFLICTING)
+| PR | Old APPROVED tip | Status | New tip after rebase | Action |
+|----|------------------|--------|----------------------|--------|
+| #61 m10 | `b385615` | CONFLICTING vs main | **`0ab1196`** | ⛔ **Re-approve** then merge — do **not** merge voided `b385615` |
+| #60 m6 | `aa64627` | CONFLICTING (code) | **`c25272f`** | ⛔ **Re-approve** then merge — do **not** merge voided `aa64627` |
+
+**main advanced?** **No** — neither merged. Production stays at whatever last main deploy was until Claude re-approves + Cursor merges.
+
+### M-DEPLOY (new)
+| PR | Tip | Notes |
+|----|-----|-------|
+| **#72** | **`7072dae`** | root `vercel.json` `git.deploymentEnabled`: `main:true`, `"*":false`; prebuild 0; does not change Next production build |
+
+### IN FLIGHT (unchanged tips — still ⛔ Claude)
+| ID | PR | Tip |
+|----|-----|-----|
+| M3 REVISE | #69 | **`3abd244`** |
+| M8 Option A ref-2 | #71 | **`3c5be42`** |
+
+### VISUAL PREP → Claude
+**RENDER-READY @ `bef4ddc` (M-UI) + local verify on `:4110`** — Bernie `/politicians/bernie-sanders` + `/states/FL` HTTP 200; Healthcare drawer width **1206px** (full-width). Screenshots: `/opt/cursor/artifacts/screenshots/bernie-*.png`, `florida-state.png`. Port 3000 reserved for owner; agent used 4110. **Not locked.**
+
+### STAGE THREE — left open, not modified
+#62 m4 · #63 m5 · #67 m7a · #66 m7b · #64 m7c · #65 m7d · #68 M-UI
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Cannot merge prior approvals** — tips conflicted with main; rebases created new SHAs:
+- #61 m10 **re-approve `0ab1196`** (was `b385615`) then Cursor merges
+- #60 m6 **re-approve `c25272f`** (was `aa64627`) then Cursor merges
+- `main` still `4be26a2` — production not advanced
+
+**New tip for approval:**
+- #72 M-DEPLOY **`7072dae`** — vercel.json main-only deploys; prebuild 0
+
+**Still awaiting tip approval (in flight):**
+- #69 M3 **`3abd244`** · #71 M8-A **`3c5be42`**
+
+**RENDER-READY @ `bef4ddc`** (M-UI full-width) — Bernie + FL render verified locally (agent `:4110`). Owner 👁 separate; not locked.
+
+---
+
 ## HANDOFF 2026-07-20 — M3 subject/quote revise · M8-A reference-2 · visual prep
 
 **From:** Cursor · **To:** Owner + Claude · **Verdict:** **COMPLETE** (agent-possible) · all tips **STOP** for Claude · no locks
