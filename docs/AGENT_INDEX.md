@@ -26,6 +26,7 @@ Every agent reads these every turn, in this order:
 9. `KEYS.md` — SET vs EMPTY env vars (values live only in `.env.local`)
 10. `REPO.md` — canonical repo is `The-ledger` on `main`
 11. `PILOT_PROFILE_CHECKLIST.md` — what a complete federal profile requires (S000033 reference)
+12. `docs/workflows/FILE_AUDIT_LEDGER.md` — **living tracker** for sync/code optimization (L1–L8); required by `npm run agent:preflight`
 
 Also read when relevant: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`,
 `.cursor/rules/ledger-editorial-voice.mdc`.
@@ -43,10 +44,14 @@ Also read when relevant: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`,
 | **Machine-readable source list (for code)** | `lib/data/sourceCatalog.ts` |
 | **What a complete member profile requires** | `PILOT_PROFILE_CHECKLIST.md` |
 | **What a complete state profile requires** | `docs/PILOT_STATE_CHECKLIST.md` |
+| **M2 batch scaling ladder (canonical owner)** | `docs/workflows/BATCH_SCALING.md` — batch protocol + ladder table |
+| **Strategic dual-reference roadmap (FL + S000033)** | `docs/workflows/DUAL_REFERENCE_ROADMAP.md` |
 | **Tier code values (official/nonpartisan/media/alleged/unverified)** | `lib/types/index.ts` (the `SourceTier` union) |
 | **Editorial voice / banned words / Said→Did format** | `.cursor/rules/ledger-editorial-voice.mdc` |
 | **Corroboration & banned-source policy** | `.cursor/rules/ledger-data-policy.mdc` |
-| **The roadmap / what's next / scaling ladder** | `PROGRESS.md` + `docs/workflows/DUAL_REFERENCE_ROADMAP.md` |
+| **Milestones / status board (not batch mechanics)** | `PROGRESS.md` |
+| **File inventory audit (nav-relevant scan)** | `docs/workflows/FILE_INVENTORY_AUDIT.md` (source: `data/reports/file-inventory.json`; regenerate via `npm run audit:inventory-md`) |
+| **Sync/code optimization checklist (L1–L8 living tracker)** | `docs/workflows/FILE_AUDIT_LEDGER.md` |
 | **Where generated data physically lives** | see §4 Data layer below |
 | **Canonical file paths for sync outputs (in code)** | `scripts/lib/dataPaths.ts` |
 | **Architecture & data flow (sync → JSON → build → UI)** | `ARCHITECTURE.md` |
@@ -157,9 +162,14 @@ ever contradicts its owner, that is a bug to fix in the same turn (core-rules "o
 
 | File | Status | Real owner |
 |------|--------|-----------|
+| `API_KEYS.md` | redirect stub | `KEYS.md` + `docs/SETUP.md` |
+| `OWNER_SETUP.md` | redirect stub | `docs/SETUP.md` |
+| `FUTURE_ROADMAP.md` | redirect stub | `docs/archive/FUTURE_ROADMAP.md` |
+| `PHASE17B_BATCH_WORKFLOW.md` | redirect stub | `docs/workflows/BATCH_SCALING.md` |
+| `docs/STATE_COUNTY_EXPANSION.md` | redirect stub | `docs/archive/STATE_COUNTY_EXPANSION.md` |
+| `docs/workflows/AUDIT_DEBT_BRIEF.md` | redirect stub | `docs/workflows/AGENT_HANDOFF_LOG.md` |
 | `lib/data/DATA_SOURCES.md` | redirect stub | `lib/data/SOURCE_LOOKUP.md` + `lib/data/sourceCatalog.ts` |
 | `docs/archive/DATA_SOURCES.md` | ARCHIVED (pre-DNU mock framing) | `docs/OBJECTIVE_SOURCES.md` + `lib/data/SOURCE_LOOKUP.md` |
 | `docs/archive/progress-screenshots.md` | archived | — |
 | `docs/archive/FUTURE_ROADMAP.md` | idea backlog, not scheduled | `PROGRESS.md` |
-| `docs/archive/STATE_COUNTY_EXPANSION.md` | deferred proposal | — |
-| `docs/archive/DATA_SOURCES.md` | ARCHIVED (pre-DNU mock framing) | `docs/OBJECTIVE_SOURCES.md` + `lib/data/SOURCE_LOOKUP.md` |
+| `docs/archive/STATE_COUNTY_EXPANSION.md` | deferred proposal | `PROGRESS.md` (deferred; do not implement from archive) |

@@ -83,7 +83,11 @@ Entry: Phase C verified (done 2026-07-04). Cursor executing D1→D4, then E.
 
 ### M2 — Scale to all 537 in reviewed batches
 Entry: M1 done (pipeline certified by the Pelosi test).
-- Batches: **15 → 50 → 100 → 150 → remainder**, each via `profile:build`. Never one mass run.
+- **Batch ladder owner:** `docs/workflows/BATCH_SCALING.md` — canonical protocol, ladder table,
+  and per-batch review loop. This file (`PROGRESS.md`) tracks milestone status only; do not
+  duplicate batch mechanics here.
+- Batches: **15 → 50 → 100 → 150 → remainder** (see BATCH_SCALING ladder table), each via
+  `profile:build`. Never one mass run.
 - Batch protocol (every batch): Cursor runs the command → posts depth table + honest-gap/
   fetch-failed ledger + all guard results → Claude spot-verifies ≥3 members' rendered output
   (1 chosen for risk: female/Mc-surname/House/low-profile) + fetch-checks ≥5 source URLs →

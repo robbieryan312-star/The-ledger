@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-19T22:56:01.311Z",
-  "totalFiles": 258,
+  "generatedAt": "2026-07-20T00:55:43.654Z",
+  "totalFiles": 256,
   "layers": {
     "L1": [
       "scripts/lib/approvedMediaQuotes.ts",
@@ -200,7 +200,6 @@
       "app/compare/page.tsx",
       "app/congress/CongressContent.tsx",
       "app/congress/page.tsx",
-      "app/counties/[fips]/page.tsx",
       "app/dashboard/DashboardContent.tsx",
       "app/dashboard/page.tsx",
       "app/elections/page.tsx",
@@ -209,7 +208,6 @@
       "app/layout.tsx",
       "app/legislation/LegislationContent.tsx",
       "app/legislation/page.tsx",
-      "app/lobbying/[id]/page.tsx",
       "app/lobbying/page.tsx",
       "app/page.tsx",
       "app/politicians/PoliticiansContent.tsx",
@@ -284,7 +282,6 @@
     "app/compare/page.tsx",
     "app/congress/CongressContent.tsx",
     "app/congress/page.tsx",
-    "app/counties/[fips]/page.tsx",
     "app/dashboard/DashboardContent.tsx",
     "app/dashboard/page.tsx",
     "app/elections/page.tsx",
@@ -293,7 +290,6 @@
     "app/layout.tsx",
     "app/legislation/LegislationContent.tsx",
     "app/legislation/page.tsx",
-    "app/lobbying/[id]/page.tsx",
     "app/lobbying/page.tsx",
     "app/page.tsx",
     "app/politicians/PoliticiansContent.tsx",

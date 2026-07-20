@@ -3,7 +3,7 @@
 **GENERATED** — do not edit by hand. Regenerate:
 `npm run audit:inventory && npm run audit:inventory-md`
 
-**Generated:** 2026-07-19T22:56:01Z · **Baseline:** data/reports/file-inventory.json (258 files)
+**Generated:** 2026-07-20T00:55:44Z · **Baseline:** data/reports/file-inventory.json (256 files)
 **Type:** FINDINGS ONLY — no deletions until Claude briefs.
 
 ## W3c accuracy finding
@@ -18,7 +18,6 @@ PILOT_PROFILE_CHECKLIST rows 5–6 claimed **done**; S000033 manifest has honest
 | app/compare/page.tsx | App route or layout | Next.js route entry | — | KEEP | importer scan |
 | app/congress/CongressContent.tsx | App route or layout | scan: 0 importers (verify) | — | MERGE | override |
 | app/congress/page.tsx | App route or layout | Next.js route entry | — | KEEP | importer scan |
-| app/counties/[fips]/page.tsx | App route or layout | DEAD-PATH — no in-app links reach it | Honest-gap shell only; county data never wired | FIX | USAMap county literals empty |
 | app/dashboard/DashboardContent.tsx | App route or layout | scan: 0 importers (verify) | — | MERGE | override |
 | app/dashboard/page.tsx | App route or layout | Next.js route entry | — | KEEP | importer scan |
 | app/elections/page.tsx | App route or layout | Next.js route entry | — | KEEP | importer scan |
@@ -27,7 +26,6 @@ PILOT_PROFILE_CHECKLIST rows 5–6 claimed **done**; S000033 manifest has honest
 | app/layout.tsx | App route or layout | Next.js root layout (framework entry) | — | KEEP | Next.js app shell — no code importers |
 | app/legislation/LegislationContent.tsx | App route or layout | scan: 0 importers (verify) | — | MERGE | override |
 | app/legislation/page.tsx | App route or layout | Next.js route entry | — | KEEP | importer scan |
-| app/lobbying/[id]/page.tsx | App route or layout | DEAD — notFound()-only; no inbound links | — | DELETE | rg /lobbying/ dynamic links → 0 |
 | app/lobbying/page.tsx | App route or layout | Next.js route entry | — | KEEP | importer scan |
 | app/page.tsx | App route or layout | Next.js route entry | — | KEEP | importer scan |
 | app/politicians/PoliticiansContent.tsx | App route or layout | scan: 0 importers (verify) | — | MERGE | override |
@@ -273,5 +271,5 @@ PILOT_PROFILE_CHECKLIST rows 5–6 claimed **done**; S000033 manifest has honest
 | scripts/verify-lobbying-votes.ts | Source module | package.json: verify:lobbying-votes | — | KEEP | importer scan |
 | scripts/verify-office-resolution.ts | Source module | package.json: verify:office | — | KEEP | importer scan |
 
-Total rows: 258
+Total rows: 256
 

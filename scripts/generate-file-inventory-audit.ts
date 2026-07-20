@@ -31,17 +31,6 @@ const OVERRIDES: Record<
     verdict: 'DELETE',
     evidence: 'PR #43 deletes route',
   },
-  'app/lobbying/[id]/page.tsx': {
-    usedBy: 'DEAD — notFound()-only; no inbound links',
-    verdict: 'DELETE',
-    evidence: 'rg /lobbying/ dynamic links → 0',
-  },
-  'app/counties/[fips]/page.tsx': {
-    usedBy: 'DEAD-PATH — no in-app links reach it',
-    claimedVsReality: 'Honest-gap shell only; county data never wired',
-    verdict: 'FIX',
-    evidence: 'USAMap county literals empty',
-  },
   'app/sitemap.ts': {
     usedBy: 'Next.js /sitemap.xml',
     claimedVsReality: 'Was 1-URL stub on main; full rebuild in PR #43',

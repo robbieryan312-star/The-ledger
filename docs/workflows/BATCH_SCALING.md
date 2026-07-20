@@ -1,5 +1,9 @@
 # Batch scaling workflow (M2)
 
+**Canonical owner** for the M2 batch ladder, per-batch protocol, and ladder table. `PROGRESS.md`
+tracks milestone status only — batch mechanics live here. Strategic dual-reference sequencing
+(FL + S000033) is in `docs/workflows/DUAL_REFERENCE_ROADMAP.md`.
+
 The canonical loop for scaling profile data to all 537 members. Owner-defined; consistent with
 `PILOT_PROFILE_CHECKLIST.md` (the per-member contract), `.cursor/rules/ledger-core-rules.mdc`
 (binding rules), and the demo components (locked caps). Sequenced under **M2** in `PROGRESS.md`.
