@@ -10,6 +10,60 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-20 — M3 subject/quote revise · M8-A reference-2 · visual prep
+
+**From:** Cursor · **To:** Owner + Claude · **Verdict:** **COMPLETE** (agent-possible) · all tips **STOP** for Claude · no locks
+
+**Current state:** `main` @ handoff closeout below · M3 tip **`3abd244`** · M8-A tip **`3c5be42`** · STAGE THREE tips untouched
+
+### Done this session
+
+| ID | PR | Tip | Verdict |
+|----|-----|-----|---------|
+| **M3 REVISE** | #69 | **`3abd244`** | Subject/quote rule; DROP Platner comparison + CDC (no direct quote); KEEP Iran (direct quote); **13** filled / honest-gap **2** of target 15; fixtures+sync filters; **prebuild 0 · build 0** |
+| **M8 Option A** | **#71** (new) | **`3c5be42`** | Reference-2 only: Miami-Dade `12086` (6 officials) + Liberty `12077` (10); Ballotpedia/SOE sourced; USAMap via `buildMapProps`; honest-gap copy; guard; **prebuild 0 · build 0** · ⛔ STOP before 67 |
+| **VISUAL PREP** | — | local `:4110` (port 3000 reserved for owner) | Bernie + FL **render**; Healthcare drawer width **1206px** on 1280 viewport (full-width M-UI fix). Screenshots under `/opt/cursor/artifacts/screenshots/`. **Not locked.** |
+
+### Source checks (M3)
+| Item | Result | Evidence |
+|------|--------|----------|
+| Platner “Is he Bernie Sanders or Donald Trump?” | **DROP** | Comparison-only; no Sanders quote |
+| CDC emails (NPR) | **DROP** | Releaser mention; **no direct Sanders quote** in body |
+| Trump/Iran politicians react | **KEEP** | Direct quote: “dangerous and mentally unbalanced” + He said on X: “…” |
+
+### M8 reference FIPS
+| FIPS | County | Officials | Primary source |
+|------|--------|-----------|----------------|
+| 12086 | Miami-Dade | 6 | Ballotpedia + miamidade.gov mayor corroboration |
+| 12077 | Liberty | 10 | Liberty SOE + libertycountyfl.org (Ballotpedia lacked full table) |
+
+### STAGE THREE — left open, **not modified**
+#68 M-UI `bef4ddc` · #62 m4 `023b3b2` · #63 m5 `cc69512` · #60 m6 `aa64627` · #61 m10 `b385615` · #67 m7a `4727c94` · #66 m7b `815a331` · #64 m7c `f339f01` · #65 m7d `478ba83` · (M-DEPLOY already merged) · #70 decision brief superseded by #71 for Option A build
+
+### Commands (this session)
+- M3: qualify filter + `npm run prebuild` / `npm run build` → 0 (`/tmp/ledger-m3-revise-prebuild2.log`, `/tmp/ledger-m3-revise-build2.log`)
+- M8: `npm run prebuild` / `npm run build` → 0 (`/tmp/ledger-m8-prebuild2.log`, `/tmp/ledger-m8-build.log`)
+- Visual: Playwright → Bernie 200, FL 200, drawerWidth=1206 (`/tmp/ledger-visual-playwright.log`)
+
+### Gated (do not start)
+⛔ SANDERS LOCK (needs M3 revised+m4+m5+m6 APPROVED + owner 👁) · ⛔ FLORIDA LOCK (m7a–d + M8-A **67** + owner 👁) · ⛔ M8 scale past 2 · ⛔ M9 · ⛔ M11
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Approve tips (exact SHA):**
+- #69 M3 REVISE **`3abd244`** — subject/quote; 13 news; prebuild/build 0
+- #71 M8-A reference-2 **`3c5be42`** — Miami-Dade+Liberty only; ⛔ STOP before 67
+
+**Owner visual (not locked):** Bernie + FL render cleanly locally (agent used `:4110`; drawer full-width 1206px). Owner 👁 on their `:3000`.
+
+**STAGE THREE untouched:** #68 `bef4ddc` · #62 `023b3b2` · #63 `cc69512` · #60 `aa64627` · #61 `b385615` · #67 `4727c94` · #66 `815a331` · #64 `f339f01` · #65 `478ba83`
+
+**Do not merge** without Claude tip APPROVAL on exact SHA.
+
+---
+
 ## HANDOFF 2026-07-20 — Todo closeout: #58 confirmed; M3 re-verify; M8 PR #70
 
 **From:** Cursor · **To:** Owner + Claude · **Verdict:** **COMPLETE** (agent-possible work) · all open tips **STOP**
