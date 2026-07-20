@@ -10,6 +10,76 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-20 — M2: PR #58 rebased for owner STAGE THREE ⛔ STOP
+
+**From:** Cursor · **To:** Owner · **Verdict:** **⛔ STOP — AWAITING OWNER STAGE THREE** (do NOT merge)
+
+| Item | Value |
+|------|-------|
+| Branch | `cursor/sanders-news-pipeline-batch-70a6` |
+| Prior tip | `539162a` |
+| **Rebased tip (review this SHA)** | **`3284b06`** |
+| Base | `main` @ `9d4db07` (includes M1 `df4ed13`) |
+| Rebase | clean (1/1, no conflicts) |
+
+### Verify (exact)
+
+```
+rm -rf .next && npm run prebuild  → PREBUILD_EXIT=0
+npm run build                     → BUILD_EXIT=0
+npx tsx --test scripts/__tests__/sourceIntegrity.test.ts  → 56/56 (standalone); prebuild test:source-integrity 97/97
+npx tsx --test scripts/__tests__/newsRegistry.test.ts     → 6/6 (incl. news-status honest-gap rule)
+newsCorroboration.ts              → module present on branch; applyNewsCorroboration exported; no dedicated test file (covered via sourceIntegrity news URL/outlet guards)
+S000033 news.json                 → status=filled, 5 items (target 15 — M3 after merge), all isVerified=false
+```
+
+### One line per changed file (27)
+
+| File | Rationale |
+|------|-----------|
+| `PILOT_PROFILE_CHECKLIST.md` | Row 8 Said→Did marked partial (1/15) to match artifact |
+| `app/politicians/[id]/page.tsx` | Pass news/trades into profile shell |
+| `components/politicians/PoliticianProfileClient.tsx` | Wire ProfileNewsExplorer + StockTrades props |
+| `components/politicians/ProfileNewsExplorer.tsx` | Render merged RSS/GDELT/NewsAPI news + opinion filter |
+| `components/politicians/StockTrades.tsx` | Senate eFD maintenance honest-gap UI |
+| `data/reports/feed-health.json` | RSS registry feed-health snapshot |
+| `lib/data/__fixtures__/profileCategoryIntegrity.fixture.ts` | W3d manifest/checklist parity fixtures |
+| `lib/data/__fixtures__/profileSnapshots/S000033.snapshot.json` | Golden snapshot for expanded Sanders news headlines |
+| lib/data/generated/newsNational.json (PR #58) | National news corpus from sync-news-national |
+| `lib/data/generated/profiles/S000033/news.json` | Sanders news (5 items; RSS+GDELT+NewsAPI) |
+| `lib/data/generated/profiles/S000033/trades.json` | Trades with Senate eFD preserve-on-failure |
+| `lib/data/generated/profiles/_manifest.json` | Manifest news/trades status parity |
+| `lib/data/generated/profiles/index.ts` | Profile index includes news paths |
+| `lib/data/generated/stockTrades.json` | Mega-bundle stock trades sync output |
+| `lib/data/memberProfile.ts` | Read-path for per-profile news + trades |
+| lib/data/newsCorroboration.ts (PR #58) | Two-source corroboration helper for media tier |
+| `lib/data/newsFeedRegistry.ts` | Approved-outlet RSS registry updates |
+| lib/data/newsNational.ts (PR #58) | Accessor for national news JSON |
+| `lib/data/stockTrades.ts` | Stock trades accessor + honest-gap semantics |
+| `scripts/__tests__/profileCategoryIntegrity.test.ts` | W3d guards: checklist vs on-disk manifest |
+| `scripts/generate-profile-index.ts` | Index gen includes news national refs |
+| scripts/lib/gdeltMemberNews.ts (PR #58) | GDELT DOC API per-member news fetcher |
+| scripts/lib/memberNewsMatching.ts (PR #58) | Match articles to members by name/state |
+| scripts/lib/newsApiMemberNews.ts (PR #58) | NewsAPI tertiary path for member news |
+| `scripts/sync-news-national.ts` | National GDELT/NewsAPI bulk sync rework |
+| `scripts/sync-news-rss.ts` | Primary RSS sync with GDELT fallback chain |
+| `scripts/sync-stock-trades.ts` | Stock trades sync with Senate eFD preserve-on-failure |
+
+**⛔ STOP:** Owner STAGE THREE on exact tip **`3284b06`**. Do not merge. M3–M6 blocked until #58 merges.
+
+**Roadmap note:** M3–M11 remain queued; no further work until this ⛔ clears.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M1 MERGED:** PR #56 → `main` @ **`df4ed13`** (handoff `9d4db07`)
+**M2 READY:** PR #58 rebased tip **`3284b06`** · prebuild 0 · build 0 · sourceIntegrity 56/56 (prebuild suite 97/97) · news-registry/news-status 6/6
+**⛔ STOP:** Owner STAGE THREE on **`3284b06`** — do not merge #58
+**Not started:** M3–M11 (gated)
+
+---
+
 ## HANDOFF 2026-07-20 — M1 COMPLETE: PR #56 §4 prompt-size rule merged
 
 **From:** Cursor · **To:** Owner · **Verdict:** **MERGED**
