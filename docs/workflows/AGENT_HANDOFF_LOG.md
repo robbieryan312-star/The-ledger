@@ -18,7 +18,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 |------|-------|
 | Branch | `cursor/m7c-fl-news-rss-path-70a6` |
 | Base | `origin/main` @ `ee0b24d` |
-| Tip | see `git rev-parse` on branch after push |
+| Tip | `879e7e4` |
 | Compare | https://github.com/robbieryan312-star/The-ledger/compare/main...cursor/m7c-fl-news-rss-path-70a6 |
 | Key | `NEWSAPI_KEY` SET but deferred (426) — snapshot-only; profile News needs no NewsAPI key (RSS) |
 | Prebuild | exit **0** |
