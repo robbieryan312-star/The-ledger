@@ -9,6 +9,10 @@ Honest gaps are required — never fill with paraphrase or fabrication. Provenan
 
 **Presentation:** Owner visual sign-off **LOCKED** 2026-07-19 — UI changes need new owner direction.
 
+**Source routing:** FL-local journalists → `docs/sources/florida/media.md`. FL-native agencies →
+`docs/sources/florida/agencies.md`. Keys + multi-state vendors → `OBJECTIVE_SOURCES.md` +
+`docs/FLORIDA_DATA.md` (never in state source sub-files).
+
 ---
 
 ## Required data conduits

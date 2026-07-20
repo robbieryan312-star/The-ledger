@@ -4,7 +4,8 @@
 **Canonical source approval (WHO):** `docs/OBJECTIVE_SOURCES.md`  
 **Keys & SET/EMPTY status:** `KEYS.md`  
 **Credibility rules:** `.cursor/rules/ledger-data-policy.mdc`  
-**State-local sources:** `docs/sources/<state>.md` (FL: `docs/sources/florida.md`)
+**State-local sources:** `docs/sources/<state>.md` → `docs/sources/<state>/media.md` + `agencies.md`
+(FL: `docs/sources/florida/`). **Local journalists and state-native providers only** — never API keys.
 
 Use this doc to answer: *“I need X for a profile — where do I look first?”*
 
@@ -16,7 +17,9 @@ Use this doc to answer: *“I need X for a profile — where do I look first?”
 2. **SECONDARY —** GDELT DOC API (no key; also called from `sync:news-rss`; legacy-only bulk: `sync:news-national`)
 3. **TERTIARY —** NewsAPI (`NEWSAPI_KEY`) only when plan is upgraded (426-limited today)
 
-Florida-local outlets: `docs/sources/florida.md`. National outlets: `docs/OBJECTIVE_SOURCES.md`.
+Florida-local outlets: `docs/sources/florida/media.md`. FL state-native providers:
+`docs/sources/florida/agencies.md`. National outlets + keys: `docs/OBJECTIVE_SOURCES.md`.
+Pipeline commands: `docs/FLORIDA_DATA.md`.
 
 ---
 
@@ -41,7 +44,7 @@ Florida-local outlets: `docs/sources/florida.md`. National outlets: `docs/OBJECT
 | Bills by topic | Congress.gov deep ingest | Topic Record · legislation | `ingest:member` → `members/{bioguideId}.json` |
 | STOCK trades | House PTR PDFs | Stock Trades | `sync:stock-trades` |
 | News | **primary:** `npm run sync:news-rss -- --members <id>` → `profiles/{id}/news.json`; **secondary:** GDELT via same script or `sync:news-national` | `generated/profiles/{id}/news.json` (+ shared `articleCache.json`) | **Approved-outlet RSS registry FIRST** (no key) → GDELT DOC API (no key) → NewsAPI only if `NEWSAPI_KEY` plan is upgraded (currently 426-limited). Media-tier needs 2+ independent outlets or it shows unverified. Full routing: AGENT_INDEX §3 (this table mirrors it). |
-| News (FL state snapshot only) | NewsAPI | `data/florida/news/` | `ingest:news-fl` — **not** profile News tab primary; see `docs/sources/florida.md` |
+| News (FL state snapshot only) | NewsAPI | `data/florida/news/` | `ingest:news-fl` — **not** profile News tab primary; pipeline in `docs/FLORIDA_DATA.md` |
 | Ideology | Voteview DW-NOMINATE | Voteview panel | voteview ingest |
 | Lobbying | Senate LDA | Lobbying / org pages | `ingest:lobbying-fl` |
 

@@ -26,6 +26,9 @@ alwaysApply: true
   timer or "no CI failures" alone. (Real incident: PR #46 was merged 2 minutes after opening — 10
   minutes before Claude's REJECT review even posted. This rule exists because that happened.)
 - **Fixtures append-only** — regression guards grow, never reset; every data-quality bug gets a frozen bad example.
+- **Improve the process as it scales (binding)** — at each expansion step (1→10→25→80→200→completion),
+  measure efficiency + effectiveness, improve one step, record it in the owning process doc; a scale
+  step without a recorded improvement pass is incomplete (§6).
 - **Spec violation = bug to fix, never a question** — read the owning file; do not re-ask the owner.
 - **Stale violation flags are bugs** — when a flagged violation is fixed, delete its flag in the same commit.
 - **Render-and-look — never approve UI from source alone** — any user-facing page/profile is verified
@@ -677,6 +680,12 @@ discipline: `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6. Do not restate §11 here
 - **Profile, then partial-batch, before any full-scale run.** Before a full-corpus run, measure
   per-item cost and run a substantial partial batch (e.g. 20–50). Scale to the full set only after
   the batch passes review — catch data-quality AND throughput problems on 30 items, not 537.
+- **Improve the process as it scales (binding).** At each expansion step
+  (1→10→25→80→200→completion), measure **efficiency** (time/cost per unit) and **effectiveness**
+  (quality/coverage/honest-gap correctness), identify the step to improve, apply it, and record the
+  change in the owning process doc (`docs/workflows/BATCH_SCALING.md` § Improvement log for profile
+  batches; `docs/workflows/DUAL_REFERENCE_ROADMAP.md` § Process improvement log for dual-reference
+  conduits). A scale step without a recorded improvement pass is **incomplete**.
 
 ---
 

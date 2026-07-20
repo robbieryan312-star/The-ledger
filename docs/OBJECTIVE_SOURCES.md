@@ -12,8 +12,11 @@ architecture (static JSON pipelines, no database) and its authoritative tier sys
 - Academic institution with transparent research standards
 
 **State/local sources:** national outlets (AP, Reuters, Politico…) live in this file.
-State-specific local outlets and agencies live in `docs/sources/<state>.md` — Florida is the
-reference template (`docs/sources/florida.md`). See AGENT_INDEX §2–§3.
+State-specific **local media** and **state-native information providers** live under
+`docs/sources/<state>/` — Florida is the reference template (`docs/sources/florida/` with
+`media.md` + `agencies.md`). **API keys and multi-state vendors never belong in state source
+sub-files** — they live in this file's key matrix and in per-state pipeline docs
+(`docs/FLORIDA_DATA.md` for FL). See AGENT_INDEX §2–§3.
 
 ---
 
@@ -21,6 +24,9 @@ reference template (`docs/sources/florida.md`). See AGENT_INDEX §2–§3.
 
 1. **Consult this registry FIRST** before hunting for any new data source. If a need is
    listed, use the routed source and key. Do not re-research settled routing.
+   **State-local journalists** → `docs/sources/<state>/media.md`. **State-native official
+   providers** → `docs/sources/<state>/agencies.md`. **Never** put API keys or multi-state
+   vendors in state source sub-files.
 2. **Ledger tiers are authoritative** (`lib/types/index.ts`):
    `'official'` · `'nonpartisan'` · `'media'` · `'alleged'` · `'unverified'`.
    The lean label is metadata carried alongside the tier, never a substitute for it.
@@ -51,16 +57,16 @@ reference template (`docs/sources/florida.md`). See AGENT_INDEX §2–§3.
 |---|---|---|---|---|---|
 | Campaign finance, donors, Schedule A | OpenFEC | `FEC_API_KEY` | SET | `sync:fec*` | No finance data |
 | Votes, bills, member data | Congress.gov API | `CONGRESS_API_KEY` | SET | `sync:votes*`, `ingest:member` | No vote records |
-| Demographics, income, home value, county + state rankings, age | Census ACS | `CENSUS_API_KEY` | SET | `ingest:fl-counties`, `ingest:fl-state-rankings` | Keyless data.census.gov fallback (documented, lower limits) |
-| Congressional Record (CREC) | GovInfo/GPO | `GOVINFO_API_KEY` / `DATA_GOV_API_KEY` | SET | CREC sync | No floor statements |
-| State bills (FL + others) | LegiScan | `LEGISCAN_API_KEY` | SET | `ingest:legiscan-fl` | No state legislation |
-| State legislators | Open States v3 | `OPENSTATES_API_KEY` | SET | `ingest:openstates-fl` | No state-legislator roster |
+| Demographics, income, home value, county + state rankings, age | Census ACS | `CENSUS_API_KEY` | SET | `ingest:fl-counties`, `ingest:fl-state-rankings` (FL wired; same key any state FIPS) | Keyless data.census.gov fallback (documented, lower limits) |
+| Congressional Record (CREC) | GovInfo/GPO | `GOVINFO_API_KEY` / `DATA_GOV_API_KEY` | SET | CREC sync (`sync:topic-positions`) | No floor statements |
+| State bills (all states — FL pilot wired) | LegiScan | `LEGISCAN_API_KEY` | SET | `ingest:legiscan-fl` → see `docs/FLORIDA_DATA.md` | No state legislation |
+| State legislators (all states — FL pilot wired) | Open States v3 | `OPENSTATES_API_KEY` | SET | `ingest:openstates-fl` → see `docs/FLORIDA_DATA.md` | No state-legislator roster |
 | News (member profiles) | Approved-outlet RSS registry | none | — | `sync:news-rss` | **Primary** — see `lib/data/SOURCE_LOOKUP.md` + AGENT_INDEX §3 |
 | News (member profiles, fallback) | GDELT DOC API | none | — | `sync:news-rss` / `sync:news-national` | **Secondary** when RSS thin |
-| News (API path) | NewsAPI | `NEWSAPI_KEY` | SET (plan 426-limited) | `ingest:news-fl` (FL snapshot only) | **Tertiary** — upgrade plan before relying on it |
-| Cost of living (components/metros) | BEA Data API | `BEA_API_KEY` | EMPTY (owner CAPTCHA pending) | `ingest:bea-rpp-fl` | FRED keyless CSV covers the all-items state index |
-| Labor/employment (state, county, metro CPI) | BLS API | `BLS_API_KEY` (optional) | keyless OK | `ingest:bls-*` | Keyless works at low volume |
-| Court opinions | CourtListener | `COURTLISTENER_API_KEY` (optional) | keyless OK | `ingest:courts-fl` | Keyless works for basic use |
+| News (API path) | NewsAPI | `NEWSAPI_KEY` | SET (plan 426-limited) | `ingest:news-fl` (FL snapshot pipeline — see `FLORIDA_DATA.md`) | **Tertiary** — upgrade plan before relying on it |
+| Cost of living (components/metros) | BEA Data API | `BEA_API_KEY` | EMPTY (owner CAPTCHA pending) | `ingest:bea-rpp-fl` → `FLORIDA_DATA.md` | FRED keyless CSV covers the all-items state index |
+| Labor/employment (state, county, metro CPI) | BLS API | `BLS_API_KEY` (optional) | keyless OK | `ingest:bls-*` → `FLORIDA_DATA.md` | Keyless works at low volume |
+| Court opinions | CourtListener | `COURTLISTENER_API_KEY` (optional) | keyless OK | `ingest:courts-fl` → `FLORIDA_DATA.md` | Keyless works for basic use |
 | Position surveys | Vote Smart | `VOTESMART_API_KEY` | EMPTY | — | Deferred — Ballotpedia + CREC substitute |
 | — RETIRED — | ProPublica Congress API | `PROPUBLICA_CONGRESS_KEY` | do not use | — | API retired upstream |
 

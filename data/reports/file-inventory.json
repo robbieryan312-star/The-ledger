@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-20T00:55:43.654Z",
-  "totalFiles": 256,
+  "generatedAt": "2026-07-20T02:16:36.567Z",
+  "totalFiles": 257,
   "layers": {
     "L1": [
       "scripts/lib/approvedMediaQuotes.ts",
@@ -260,6 +260,7 @@
       "scripts/__tests__/identityIntegrityGuard.test.ts",
       "scripts/__tests__/mericPeriodDisplay.test.ts",
       "scripts/__tests__/migratedNotLightweight.test.ts",
+      "scripts/__tests__/navigationIntegrity.test.ts",
       "scripts/__tests__/newsRegistry.test.ts",
       "scripts/__tests__/optimizationGuards.test.ts",
       "scripts/__tests__/profileCategoryIntegrity.test.ts",
@@ -417,6 +418,7 @@
     "scripts/__tests__/identityIntegrityGuard.test.ts",
     "scripts/__tests__/mericPeriodDisplay.test.ts",
     "scripts/__tests__/migratedNotLightweight.test.ts",
+    "scripts/__tests__/navigationIntegrity.test.ts",
     "scripts/__tests__/newsRegistry.test.ts",
     "scripts/__tests__/optimizationGuards.test.ts",
     "scripts/__tests__/profileCategoryIntegrity.test.ts",

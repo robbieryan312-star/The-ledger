@@ -38,13 +38,15 @@ Also read when relevant: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`,
 | I need… | Go to the ONE file that owns it |
 |---------|--------------------------------|
 | **Which NATIONAL/federal source/outlet is approved + its tier** | `docs/OBJECTIVE_SOURCES.md` (the constitution — national + cross-state only) |
-| **Which STATE-specific / local media outlet to use for a given state** | that state's own source sub-file: `docs/sources/<state>.md` (FL is the reference — `docs/sources/florida.md`). Travel straight to the state's file; do NOT hunt local outlets in the national constitution. |
+| **Which STATE-specific / local media outlet to use for a given state** | that state's source tree: `docs/sources/<state>.md` → `docs/sources/<state>/media.md` (FL reference: `docs/sources/florida/media.md`). Local journalists only — not API keys. |
+| **Which STATE-native agency / official provider to use for a given state** | `docs/sources/<state>/agencies.md` (FL: `docs/sources/florida/agencies.md`). State-hosted providers only — not multi-state vendors. |
 | **Which API key unlocks a data type + SET/EMPTY status** | `docs/OBJECTIVE_SOURCES.md` (key-routing matrix) · `KEYS.md` (SET/EMPTY only) |
 | **How to retrieve a data type (command + destination)** | `lib/data/SOURCE_LOOKUP.md` → and the RUNBOOK in §3 below |
 | **Machine-readable source list (for code)** | `lib/data/sourceCatalog.ts` |
 | **What a complete member profile requires** | `PILOT_PROFILE_CHECKLIST.md` |
 | **What a complete state profile requires** | `docs/PILOT_STATE_CHECKLIST.md` |
 | **M2 batch scaling ladder (canonical owner)** | `docs/workflows/BATCH_SCALING.md` — batch protocol + ladder table |
+| **Process improvement at scale (where to log)** | `docs/workflows/BATCH_SCALING.md` § Improvement log (+ `DUAL_REFERENCE_ROADMAP.md` for dual-reference conduits) |
 | **Strategic dual-reference roadmap (FL + S000033)** | `docs/workflows/DUAL_REFERENCE_ROADMAP.md` |
 | **Tier code values (official/nonpartisan/media/alleged/unverified)** | `lib/types/index.ts` (the `SourceTier` union) |
 | **Editorial voice / banned words / Said→Did format** | `.cursor/rules/ledger-editorial-voice.mdc` |
@@ -86,11 +88,12 @@ the opinion filter and the RSS registry match first — don't assume the source 
 `articleCache.json` avoids re-fetching the same article across profiles.
 
 **State/local news & sources:** national outlets (AP, Reuters, Politico…) live in the national
-constitution; **state-specific local outlets** (e.g. a Florida paper or state agency) live in that
-state's own source sub-file under `docs/sources/` — FL is the reference (`docs/sources/florida.md`).
-When collecting for a state profile, open that state's source file FIRST for its approved local
-media, then apply the same tier/corroboration rules as national. This keeps each state's local
-sourcing self-contained and directly navigable as coverage scales beyond Florida.
+constitution. **State-specific local outlets** live in `docs/sources/<state>/media.md`; **state-native
+official providers** in `docs/sources/<state>/agencies.md` — FL is the reference
+(`docs/sources/florida/`). API keys and ingest commands never belong in those sub-files; they live
+in `OBJECTIVE_SOURCES.md`, `KEYS.md`, and the state's pipeline doc (`docs/FLORIDA_DATA.md` for FL).
+When collecting for a state profile, open the correct sub-file FIRST, then apply tier/corroboration
+rules. This keeps each state's local sourcing self-contained as coverage scales beyond Florida.
 
 ---
 
@@ -107,9 +110,9 @@ sourcing self-contained and directly navigable as coverage scales beyond Florida
 
 ---
 
-## 5. Guard suites (20 commands in prebuild + render-integrity postbuild — all must pass before commit)
+## 5. Guard suites (21 commands in prebuild + render-integrity postbuild — all must pass before commit)
 
-Local `npm run build` runs the 20 prebuild guard commands, then `postbuild` runs `test:render-integrity`
+Local `npm run build` runs the 21 prebuild guard commands, then `postbuild` runs `test:render-integrity`
 + `test:client-chunks`. CI (`.github/workflows/guards.yml`) builds first, then a warmed external-server
 render-integrity step on port 4112.
 
@@ -129,6 +132,7 @@ render-integrity step on port 4112.
 | `test:env-truth` | `.env.example` ↔ code |
 | `test:optimization` | syncKernel + manifest + fetch timeout guards |
 | `test:docs-consistency` | Doc contradictions (retired scripts, counts, Tier labels, §1.1 cites) |
+| `test:navigation-integrity` | Nav-relevant files reachable from AGENT_INDEX, npm/CI, or archive inventory |
 | `test:governor-identity` | Governor bioguideId ↔ portrait identity guard |
 | `test:identity-integrity` | Roster portrait ↔ bioguideId ↔ name/party/state/office |
 | `test:no-unverified-official-data` | FL dashboard: no official/nonpartisan numbers without verified provenance |
@@ -149,8 +153,14 @@ Preflight (checks session-start files + guard scripts resolve): `npm run agent:p
 | Canonical repo / branch workflow | `REPO.md` |
 | National data snapshots | `data/national/README.md` |
 | Batch scaling (M2) | `docs/workflows/BATCH_SCALING.md` |
+| Process improvement log (any scaled workflow) | `docs/workflows/BATCH_SCALING.md` § Improvement log |
 | Florida state data ingest | `docs/FLORIDA_DATA.md` |
 | Product vision & voice | `PRODUCT_VISION.md` |
+| Repository README (human onboarding) | `README.md` |
+| Security policy | `SECURITY.md` |
+| Scripts directory notes | `scripts/README.md` |
+| Elections issue merge helper (deferred demo) | `lib/candidateIssues.ts` |
+| Campaign promise status derivation (archive coverage script) | `lib/data/derivePromiseStatus.ts` |
 | Profile build pipeline (Phase E) | `scripts/profile-build.ts` |
 
 ---
