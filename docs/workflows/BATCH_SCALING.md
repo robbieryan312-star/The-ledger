@@ -15,6 +15,7 @@ into the owning doc when a new workflow scales; do not start rival logs elsewher
 
 | Date | Process / conduit | Scale step | Efficiency (time or cost per unit) | Effectiveness (quality/coverage/honest-gap) | Step improved | Change applied (file/command) | Next watch |
 |------|-------------------|------------|-------------------------------------|---------------------------------------------|---------------|------------------------------|------------|
+| 2026-07-20 | agent navigation / nav guard | 1→21 prebuild cmds | orphan injection proven (~300ms) | 0 orphan nav-relevant files on main | reachability guard | `scripts/__tests__/navigationIntegrity.test.ts` + prebuild wiring | re-run orphan test after any new lib/scripts file |
 | *(example)* | profile:build / votes | 1→10 | 5.4 min/member → 4.1 | 0 new defect class | retry/backoff | `scripts/lib/resilientFetch.ts` | spot-check ≥3 members |
 
 **Rule (binding):** core-rules §6 — a scale step without a row here (or in

@@ -10,6 +10,98 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-20 — Navigation plan final lock + PROGRESS status board (Batch A)
+
+**From:** Cursor · **To:** Owner + Claude · **Verdict:** **Task A PASS** · **Task B COMPLETE** · **STOP for owner STAGE THREE**
+
+**Branch:** `cursor/nav-plan-lock-progress-70a6` · **Base:** `main` @ `7fcf462`
+
+### Task A — NAVIGATION-PLAN FINAL LOCK (verification only)
+
+| Check | Result | Evidence |
+|-------|--------|----------|
+| **1 ORPHAN-CATCH** | **PASS** | Created `lib/_NAV_PROOF.ts` → `npx tsx --test scripts/__tests__/navigationIntegrity.test.ts` fail 1/4 naming `lib/_NAV_PROOF.ts`; deleted → pass 4/4 |
+| **2 ONE-HOP FIND** (AGENT_INDEX only, ≤2 hops) | **PASS** | See table below |
+| **3 CONDUIT NON-CONTRADICTION** | **PASS** | RSS→GDELT→NewsAPI order identical across three owners (quotes below) |
+| **4 FULL GATE** | **PASS** (after doc fix) | `main` initially fail: docsIntegrity 5 missing PR #58 paths in handoff backticks; fixed → `rm -rf .next && npm run prebuild` exit **0** |
+
+#### One-hop find test (from `docs/AGENT_INDEX.md` only)
+
+| Need | Route | Hops |
+|------|-------|------|
+| (a) Sync member news | §3 runbook → `npm run sync:news-rss -- --members <id>` | **0** |
+| (b) Florida-local outlets | §2 → `docs/sources/florida/media.md` | **1** |
+| (c) Source-tier definitions | §2 → `lib/types/index.ts` (`SourceTier` union) | **1** |
+| (d) Said vs procedural CREC | §2 → `PILOT_PROFILE_CHECKLIST.md` § Said (statements) — procedural exclusion | **1** |
+| (e) Process-improvement log | §2 → `docs/workflows/BATCH_SCALING.md` § Improvement log | **1** |
+
+#### Conduit quotes (RSS → GDELT → NewsAPI)
+
+**AGENT_INDEX §3** (runbook News row): `Approved-outlet RSS registry FIRST (no key) → GDELT DOC API (no key) → NewsAPI only if NEWSAPI_KEY plan is upgraded (currently 426-limited)`
+
+**SOURCE_LOOKUP.md** (table row + numbered list): same arrow chain; list lines 16–18 PRIMARY/SECONDARY/TERTIARY.
+
+**OBJECTIVE_SOURCES.md** (rows 64–66): Primary = Approved-outlet RSS registry · Secondary = GDELT DOC API when RSS thin · Tertiary = NewsAPI (426-limited).
+
+### Task B — PROGRESS.md status board
+
+Added `## Navigation Plan (Flawless Agent-Navigation System) — status` with Phases 0–5 PR/merge SHAs traced from git + handoff log. Fixed stale header branch (`claude/ledger-progress-review-jmd6gl` → `main`).
+
+| Phase | PR | Merge SHA |
+|-------|-----|-----------|
+| 0 | #44 | `fbbe7ff` |
+| 1 | #51 | `b89f1cb` |
+| 2 | #52 | `4110812` |
+| 3 | #53 | `a730f81` |
+| 4 | #54 | `4625976` |
+| 5 | #54+#55 | `4625976` / `61e6d5c` |
+
+Also: BATCH_SCALING § Improvement log row for nav guard (1→21 prebuild cmds); handoff PR #58 table de-backticked 5 pending paths so docsIntegrity passes on main pre-#58.
+
+### Commands run (this session)
+
+- `npx tsx --test scripts/__tests__/navigationIntegrity.test.ts` → orphan fail then pass
+- `rm -rf .next && npm run prebuild` → exit 1 on main (docsIntegrity); exit **0** after fix
+- `npm run audit:inventory-md` → 257 rows
+
+### Files touched
+
+| Path | Action | What changed |
+|------|--------|--------------|
+| `PROGRESS.md` | modified | Navigation Plan status table + header refresh |
+| `docs/workflows/BATCH_SCALING.md` | modified | Improvement log row (nav guard scale step) |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Task A/B handoff; PR #58 pending paths de-backticked |
+| `docs/workflows/FILE_INVENTORY_AUDIT.md` | regenerated | `audit:inventory-md` timestamp |
+
+**STOP:** Await owner STAGE THREE before merge. PR #58 still gated @ `539162a`.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Task:** Navigation plan final lock (Task A verify) + PROGRESS status board (Task B docs)
+
+**Branch:** `cursor/nav-plan-lock-progress-70a6` · **Base:** `main` @ `7fcf462`
+
+**Verdict:** **PASS** — navigation plan locked on main; all four adversarial checks green after docIntegrity repair.
+
+| Check | Result |
+|-------|--------|
+| Orphan injection | PASS — guard names orphan, clean tree passes |
+| One-hop find (5 needs) | PASS — all ≤2 hops from AGENT_INDEX |
+| Conduit RSS→GDELT→NewsAPI | PASS — non-contradictory across OBJECTIVE_SOURCES / SOURCE_LOOKUP / AGENT_INDEX §3 |
+| Full prebuild gate | PASS — exit 0 post handoff backtick fix |
+
+**Repair this session:** Handoff log cited 5 PR #58-only paths in backticks on main (`newsCorroboration.ts`, `newsNational.ts`, `gdeltMemberNews.ts`, `memberNewsMatching.ts`, `newsApiMemberNews.ts`) → docsIntegrity fail. De-backticked pending paths; prebuild green.
+
+**PROGRESS.md:** Navigation Plan Phases 0–5 table added (#44 `fbbe7ff`, #51 `b89f1cb`, #52 `4110812`, #53 `a730f81`, #54 `4625976`, #55 `61e6d5c`).
+
+**NOT merged:** PR #58 @ `539162a` — still STOP for owner STAGE THREE.
+
+**Next:** Owner STAGE THREE on this PR → merge Batch A docs → then owner STAGE THREE on #58 if approved.
+
+---
+
 ## STAGE THREE REVIEW 2026-07-20 — Independent verification (Claude procedure §4–§9)
 
 **Reviewer:** Claude Code (independent worktree verification) · **main** @ `1aae27f`
@@ -151,15 +243,15 @@ Pipeline code, `sourceIntegrity.ts`, generated profile JSON (except inventory md
 | `lib/data/generated/profiles/index.ts` | Generated profile index includes news paths |
 | `lib/data/generated/stockTrades.json` | Mega-bundle stock trades sync output |
 | `lib/data/memberProfile.ts` | Read-path routing for per-profile news + trades |
-| `lib/data/newsCorroboration.ts` | Two-source corroboration helper for media tier |
+| lib/data/newsCorroboration.ts (PR #58) | Two-source corroboration helper for media tier |
 | `lib/data/newsFeedRegistry.ts` | Approved-outlet RSS registry updates |
-| `lib/data/newsNational.ts` | Accessor module for national news JSON |
+| lib/data/newsNational.ts (PR #58) | Accessor module for national news JSON |
 | `lib/data/stockTrades.ts` | Stock trades accessor + honest-gap semantics |
 | `scripts/__tests__/profileCategoryIntegrity.test.ts` | W3d guards: checklist vs on-disk manifest |
 | `scripts/generate-profile-index.ts` | Profile index gen includes news national refs |
-| `scripts/lib/gdeltMemberNews.ts` | GDELT DOC API per-member news fetcher |
-| `scripts/lib/memberNewsMatching.ts` | Match articles to members by name/state |
-| `scripts/lib/newsApiMemberNews.ts` | NewsAPI tertiary path for member news |
+| scripts/lib/gdeltMemberNews.ts (PR #58) | GDELT DOC API per-member news fetcher |
+| scripts/lib/memberNewsMatching.ts (PR #58) | Match articles to members by name/state |
+| scripts/lib/newsApiMemberNews.ts (PR #58) | NewsAPI tertiary path for member news |
 | `scripts/sync-news-national.ts` | National GDELT/NewsAPI bulk sync rework |
 | `scripts/sync-news-rss.ts` | Primary RSS sync with GDELT fallback chain |
 | `scripts/sync-stock-trades.ts` | Stock trades sync with Senate eFD preserve-on-failure |

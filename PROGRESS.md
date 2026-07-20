@@ -1,8 +1,6 @@
 # The Ledger — Roadmap & Progression Expectations
 
-**Last updated:** 2026-07-19T13:xx Z (this session — supersedes the earlier same-day entry, which
-was stale by mid-morning: it predated S2/PR41, source registry/PR42, W1-W4, PR #43/#45/#46, and the
-PR #46 merge-gate incident) · **Branch:** `claude/ledger-progress-review-jmd6gl` (governance) ·
+**Last updated:** 2026-07-20T06:30 Z · **Branch:** `main` @ navigation-plan lock ·
 **Approved:** https://the-ledger-s4dn.vercel.app
 **Deploy naming:** Approved = `the-ledger-s4dn`. Owner has deleted the duplicate `the-ledger-jcjh`
 and `the-ledger` projects this session — confirm only `the-ledger-s4dn` remains in the Vercel
@@ -22,6 +20,21 @@ just stalled at the one gate only the owner can clear.
 **This file replaces the old progress log as the canonical forward guide.** It binds BOTH
 agents (Claude Code + Cursor). Rules live in `.cursor/rules/ledger-core-rules.mdc` — this file
 never restates them, it sequences the work.
+
+---
+
+## Navigation Plan (Flawless Agent-Navigation System) — status
+
+| Phase | Deliverable | PR | Merge SHA | Status |
+|-------|-------------|-----|-----------|--------|
+| 0 | Inventory + GENERATED header + audit:inventory-md alias | #44 | `fbbe7ff` | merged |
+| 1 | News path + florida/{media,agencies}.md | #51 | `b89f1cb` | merged |
+| 2 | 8 dead files removed + 15 archived | #52 | `4110812` | merged |
+| 3 | AGENT_INDEX reachability | #53 | `a730f81` | merged |
+| 4 | navigationIntegrity guard | #54 | `4625976` | merged |
+| 5 | Continuous-improvement rule | #54+#55 | `4625976` / `61e6d5c` | merged |
+
+Navigation plan **COMPLETE** + guard-enforced; `navigationIntegrity` fails the build on any new orphan.
 
 ---
 
