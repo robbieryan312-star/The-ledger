@@ -72,7 +72,6 @@ PILOT_PROFILE_CHECKLIST rows 5–6 claimed **done**; S000033 manifest has honest
 | components/ui/TierDot.tsx | UI component | scan: 0 importers (verify) | — | MERGE | override |
 | components/ui/TrackButton.tsx | UI component | scan: 0 importers (verify) | — | MERGE | override |
 | lib/data/allPoliticians.ts | Data accessor / transform | app/compare/page.tsx, app/congress/page.tsx, app/dashboard/page.tsx, app/finance/page.tsx, app/legislation/page.tsx | — | KEEP | importer scan |
-| lib/data/branches.ts | Data accessor / transform | lib/data/allPoliticians.ts | — | KEEP | importer scan |
 | lib/data/buildMapProps.ts | Data accessor / transform | app/page.tsx | — | KEEP | importer scan |
 | lib/data/buildOrgVoteTopicLinks.ts | Data accessor / transform | app/politicians/[id]/page.tsx, components/politicians/PoliticianProfileClient.tsx, components/politicians/ProfileRecordByTopicPanel.tsx, lib/data/memberProfile.ts, scripts/archive/migrate-gold-profiles-batch1.ts | — | KEEP | importer scan |
 | lib/data/buildSaidDidDiffs.ts | Data accessor / transform | app/politicians/[id]/page.tsx, lib/data/profileSnapshot.ts, scripts/__tests__/sourceIntegrity.test.ts, scripts/archive/apply-crec-sync-to-profiles.ts, scripts/archive/migrate-gold-profiles-batch1.ts | — | KEEP | importer scan |

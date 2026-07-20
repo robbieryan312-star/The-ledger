@@ -15,7 +15,7 @@ import { Politician, ResolvedOffice, Chamber, CampaignFinance, ConsistencyData, 
 import rosterData from './generated/roster.json';
 import { executiveOfficials } from './executiveOfficials';
 import { judicialOfficials } from './judicialOfficials';
-import { getPoliticianBranch, GovernmentBranch } from './branches';
+import { getPoliticianBranch, GovernmentBranch } from '@/lib/branches';
 import {
   generatedCongressPoliticians,
   generatedGovernorPoliticians,
