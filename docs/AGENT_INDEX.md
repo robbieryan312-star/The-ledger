@@ -45,6 +45,7 @@ Also read when relevant: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`,
 | **Machine-readable source list (for code)** | `lib/data/sourceCatalog.ts` |
 | **What a complete member profile requires** | `PILOT_PROFILE_CHECKLIST.md` |
 | **What a complete state profile requires** | `docs/PILOT_STATE_CHECKLIST.md` |
+| **FL county-map drilldown product decision (M8 — wire vs remove)** | `docs/workflows/M8_COUNTY_MAP_DECISION.md` — ⛔ owner picks A/B; build neither until then |
 | **M2 batch scaling ladder (canonical owner)** | `docs/workflows/BATCH_SCALING.md` — batch protocol + ladder table |
 | **Process improvement at scale (where to log)** | `docs/workflows/BATCH_SCALING.md` § Improvement log (+ `DUAL_REFERENCE_ROADMAP.md` for dual-reference conduits) |
 | **Strategic dual-reference roadmap (FL + S000033)** | `docs/workflows/DUAL_REFERENCE_ROADMAP.md` |

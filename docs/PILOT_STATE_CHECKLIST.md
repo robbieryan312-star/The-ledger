@@ -29,7 +29,7 @@ Honest gaps are required — never fill with paraphrase or fabrication. Provenan
 | 8 | State political news | NewsAPI (`media`) | News bundle | `ingest:news-fl` | **sample committed** — 48 articles in `news-florida.json`; live refresh deferred (`KEYS.md`); corroborate per `'media'` tier rules |
 | 9 | Federal contracts (FL) | SAM.gov (`official`) | (future) | `ingest:sam-fl` | **honest-gap** — login.gov / key |
 | 10 | Federal register (FL-tagged) | GovInfo (`official`) | (future) | `ingest:govinfo-fl` | **honest-gap** without key |
-| 11 | County map drilldown | Census + local `.gov` | Map explorer | *not wired* | **gap** — `USAMap` county literals empty (product decision) |
+| 11 | County map drilldown | Census + local `.gov` | Map explorer | *not wired* | **gap** — `USAMap` `countyByFips` empty; **product decision brief:** `docs/workflows/M8_COUNTY_MAP_DECISION.md` (Option A wire / Option B remove — build neither until owner picks) |
 | 12 | Metro CPI / MERIC COL | BLS + state source | Supplementary cards | `ingest:bls-metro-cpi-fl`, `ingest:meric-col-fl` | **partial** — verify vintage alignment |
 
 ---
