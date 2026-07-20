@@ -23,7 +23,7 @@ Honest gaps are required — never fill with paraphrase or fabrication. Provenan
 | 2 | Cost of living / RPP | BEA via FRED mirror (`official`) | COL card | `ingest:bea-rpp-fl` | **filled** or honest-gap on fetch fail (preserve prior) |
 | 3 | State tax burden | Tax Foundation tables (`nonpartisan`) | Taxes card | `ingest:fl-tax` | **computed-from-published-tables** |
 | 4 | Federal delegation roster | `allPoliticians` + office resolution | Officials section | `sync:legislators`, `verify:office` | **filled** |
-| 5 | State legislation | LegiScan (`official`) | Legislation panel | `ingest:legiscan-fl` | **sample committed** — 10 bills in `legislation-florida.json`; live refresh needs `LEGISCAN_API_KEY` |
+| 5 | State legislation | LegiScan (`nonpartisan`) | Legislation panel | `ingest:legiscan-fl` | **live when `LEGISCAN_API_KEY` SET** — Wave-1 preserve-on-failure keeps prior 10-bill sample on key miss / fetch fail; never wipe |
 | 6 | State courts | CourtListener (`nonpartisan`) | Courts panel | `ingest:courts-fl` | **filled** / thin with note |
 | 7 | State legislators | OpenStates (`nonpartisan`) | (future panel) | `ingest:openstates-fl` | **honest-gap** without key |
 | 8 | State political news | NewsAPI (`media`) | News bundle | `ingest:news-fl` | **sample committed** — 48 articles in `news-florida.json`; live refresh deferred (`KEYS.md`); corroborate per `'media'` tier rules |
