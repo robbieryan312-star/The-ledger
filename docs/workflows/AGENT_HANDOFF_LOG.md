@@ -14,7 +14,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 **From:** Cursor · **To:** Owner + Claude · **Verdict:** **COMPLETE** (agent-possible work) · all open tips **STOP**
 
-**Current state:** `main` @ `b1187f3` (pre-this-commit) · tree dirty only this handoff · M3 clean-tree prebuild **0** · M8 nav **4/4**
+**Current state:** `main` @ **`bf2fc9b`** · tree clean · M3 clean-tree prebuild **0** · M8 nav **4/4** · PR #70 open
 
 ### Confirmed already merged
 | Item | Approved tip | Merge SHA |
