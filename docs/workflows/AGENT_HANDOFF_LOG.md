@@ -17,9 +17,9 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 | Item | Value |
 |------|-------|
 | Branch | `cursor/sanders-news-pipeline-batch-70a6` |
-| Prior tip | `539162a` |
-| **Rebased tip (review this SHA)** | **`3284b06`** |
-| Base | `main` @ `9d4db07` (includes M1 `df4ed13`) |
+| Prior tip | `539162a` → briefly `3284b06` |
+| **Rebased tip (review this SHA)** | **`b1099f8`** |
+| Base | `main` @ `51ac608` (includes M1 `df4ed13` + M2 handoff) |
 | Rebase | clean (1/1, no conflicts) |
 
 ### Verify (exact)
@@ -65,7 +65,7 @@ S000033 news.json                 → status=filled, 5 items (target 15 — M3 a
 | `scripts/sync-news-rss.ts` | Primary RSS sync with GDELT fallback chain |
 | `scripts/sync-stock-trades.ts` | Stock trades sync with Senate eFD preserve-on-failure |
 
-**⛔ STOP:** Owner STAGE THREE on exact tip **`3284b06`**. Do not merge. M3–M6 blocked until #58 merges.
+**⛔ STOP:** Owner STAGE THREE on exact tip **`b1099f8`**. Do not merge. M3–M6 blocked until #58 merges.
 
 **Roadmap note:** M3–M11 remain queued; no further work until this ⛔ clears.
 
@@ -74,8 +74,8 @@ S000033 news.json                 → status=filled, 5 items (target 15 — M3 a
 ## Confront Claude — paste to Claude Code
 
 **M1 MERGED:** PR #56 → `main` @ **`df4ed13`** (handoff `9d4db07`)
-**M2 READY:** PR #58 rebased tip **`3284b06`** · prebuild 0 · build 0 · sourceIntegrity 56/56 (prebuild suite 97/97) · news-registry/news-status 6/6
-**⛔ STOP:** Owner STAGE THREE on **`3284b06`** — do not merge #58
+**M2 READY:** PR #58 rebased tip **`b1099f8`** · prebuild 0 · build 0 · sourceIntegrity 56/56 (prebuild suite 97/97) · news-registry/news-status 6/6
+**⛔ STOP:** Owner STAGE THREE on **`b1099f8`** — do not merge #58
 **Not started:** M3–M11 (gated)
 
 ---
