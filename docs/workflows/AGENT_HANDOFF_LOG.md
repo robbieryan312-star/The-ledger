@@ -12,7 +12,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Latest session — M3 Sanders news 5→15 (`cursor/m3-sanders-news-depth-70a6`) (COMPLETE)
 
-**Current state:** branch `cursor/m3-sanders-news-depth-70a6` · HEAD **`1cbe355`** · base `origin/main` @ `714f473` (includes PR #58 / `memberNewsMatching` + `newsCorroboration`) · compare https://github.com/robbieryan312-star/The-ledger/compare/main...cursor/m3-sanders-news-depth-70a6 · tree clean · `rm -rf .next && npm run prebuild` → 0 · `npm run build` → 0
+**Current state:** branch `cursor/m3-sanders-news-depth-70a6` · work commit **`ec4d851`** · base `origin/main` @ `714f473` (PR #58 matcher+corroboration) · compare https://github.com/robbieryan312-star/The-ledger/compare/main...cursor/m3-sanders-news-depth-70a6 · `prebuild` 0 · `build` 0 · **do not merge**
 
 ### Objective
 Sanders news depth 5→15 with D1 matcher + D2 corroboration; own PR branch; do not merge.
@@ -59,7 +59,7 @@ Sanders news depth 5→15 with D1 matcher + D2 corroboration; own PR branch; do 
 - Optional later: resolve multi-outlet URLs for Platner/AI stories so some items can flip `isVerified`
 
 ### Confront Claude — paste to Claude Code
-**M3 COMPLETE** on `cursor/m3-sanders-news-depth-70a6`: news **3→15**; prebuild 0; build 0; alleged demotion on; topic RSS supplement. **Do not merge** without tip APPROVAL.
+**M3 COMPLETE** work `ec4d851` on `cursor/m3-sanders-news-depth-70a6`: news **3→15**; prebuild 0; build 0; alleged demotion on; topic RSS supplement. **Do not merge** without APPROVAL.
 
 ---
 
