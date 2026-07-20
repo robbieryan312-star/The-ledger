@@ -10,7 +10,79 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
-## HANDOFF 2026-07-20 — PR #54 merged + Phase 5 manual gap PR (#55)
+## HANDOFF 2026-07-20 — PR #55 merged; PR #48 split → #57 + #58
+
+**From:** Cursor · **To:** Owner · **Verdict:** **PR #55 MERGED** · **PR #57/#58 STOP for STAGE THREE**
+
+### Merges
+| Item | SHA / status |
+|------|----------------|
+| PR #55 Phase 5 Cursor manual cross-ref | **merged** → `main` @ `61e6d5c` (approved `7844db6`) |
+| PR #54 Phases 4–5 | merged @ `4625976` |
+| PR #48 (monolith) | **closed** — split into PR-A #57 + PR-B #58 |
+
+### PR-A #57 — P0 AP-URL guard only (`cursor/sanders-ap-url-p0-70a6` @ `24296bd`)
+- **PR:** https://github.com/robbieryan312-star/The-ledger/pull/57
+- **Scope:** `sourceIntegrity.ts` + fixture + test + one AP URL in `S000033/news.json` (+ build-gated snapshot)
+- **Guard limitation:** validates AP URL **FORMAT** (slug + 32-hex), **not existence** — AP is non-fetch-verifiable; each AP URL must be **human/fetch-verified real at ingest**
+- **Verification:** sourceIntegrity 56/56 · prebuild exit 0
+- **Do not merge** until owner STAGE THREE on `24296bd`
+
+### PR-B #58 — news pipeline batch (`cursor/sanders-news-pipeline-batch-70a6` @ `e5f940a`)
+- **PR:** https://github.com/robbieryan312-star/The-ledger/pull/58
+- **Depends on:** PR-A merged first (prebuild fails AP credibility until then)
+- **26 files** — one-line rationale per file below
+- **Do not merge** until owner STAGE THREE on `e5f940a` (after PR-A)
+
+#### PR-B file rationale (one line each)
+| File | Rationale |
+|------|-----------|
+| `app/politicians/[id]/page.tsx` | Pass updated news/trades data into profile shell |
+| `components/politicians/PoliticianProfileClient.tsx` | Wire ProfileNewsExplorer + StockTrades props |
+| `components/politicians/ProfileNewsExplorer.tsx` | Render RSS/GDELT/NewsAPI merged news + opinion filter |
+| `components/politicians/StockTrades.tsx` | Senate eFD maintenance honest-gap UI |
+| `data/reports/feed-health.json` | RSS registry feed health snapshot |
+| `lib/data/__fixtures__/profileCategoryIntegrity.fixture.ts` | W3d manifest/checklist parity fixtures |
+| `lib/data/__fixtures__/profileSnapshots/S000033.snapshot.json` | Golden snapshot for expanded Sanders news headlines |
+| `lib/data/generated/newsNational.json` | National news corpus from sync-news-national |
+| `lib/data/generated/profiles/S000033/news.json` | Sanders news items (RSS + GDELT + NewsAPI pipeline output) |
+| `lib/data/generated/profiles/S000033/trades.json` | Sanders trades with Senate eFD preserve-on-failure |
+| `lib/data/generated/profiles/_manifest.json` | Manifest news/trades status parity |
+| `lib/data/generated/profiles/index.ts` | Generated profile index includes news paths |
+| `lib/data/generated/stockTrades.json` | Mega-bundle stock trades sync output |
+| `lib/data/memberProfile.ts` | Read-path routing for per-profile news + trades |
+| `lib/data/newsCorroboration.ts` | Two-source corroboration helper for media tier |
+| `lib/data/newsFeedRegistry.ts` | Approved-outlet RSS registry updates |
+| `lib/data/newsNational.ts` | Accessor module for national news JSON |
+| `lib/data/stockTrades.ts` | Stock trades accessor + honest-gap semantics |
+| `scripts/__tests__/profileCategoryIntegrity.test.ts` | W3d guards: checklist vs on-disk manifest |
+| `scripts/generate-profile-index.ts` | Profile index gen includes news national refs |
+| `scripts/lib/gdeltMemberNews.ts` | GDELT DOC API per-member news fetcher |
+| `scripts/lib/memberNewsMatching.ts` | Match articles to members by name/state |
+| `scripts/lib/newsApiMemberNews.ts` | NewsAPI tertiary path for member news |
+| `scripts/sync-news-national.ts` | National GDELT/NewsAPI bulk sync rework |
+| `scripts/sync-news-rss.ts` | Primary RSS sync with GDELT fallback chain |
+| `scripts/sync-stock-trades.ts` | Stock trades sync with Senate eFD preserve-on-failure |
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Merged:** PR #55 → `main` @ **`61e6d5c`** (approved **`7844db6`**)  
+**Pending STAGE THREE:** PR **#57** @ **`24296bd`** (P0 AP-URL guard — merge first)  
+**Pending STAGE THREE:** PR **#58** @ **`e5f940a`** (news pipeline batch — after #57)  
+**Closed:** PR #48 @ `e404c0a` — superseded by split
+
+**PR-A #57 @ `24296bd` verification:**
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts` → 56/56 · exit 0
+- `rm -rf .next && npm run prebuild` → exit 0
+- **Guard checks URL FORMAT only, not article existence** — AP URLs human-verified at ingest
+
+**PR-B #58 @ `e5f940a`:** 26 files (rationales in handoff table above). Prebuild **fails until #57 merges** (AP placeholder on S000033 news). Rebase onto main after #57 before final STAGE THREE.
+
+---
+
+## HANDOFF 2026-07-20 — PR #54 merged + Phase 5 manual gap PR (#55) — SUPERSEDED
 
 **From:** Cursor · **To:** Claude Code / Owner · **Verdict:** **PR #54 MERGED** · **PR #55 STOP for STAGE THREE**
 
