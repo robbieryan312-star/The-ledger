@@ -30,7 +30,7 @@ No-key subset: `npm run ingest:no-key`
 | `ingest:census-fl` | `ingest-census-florida.ts` | `data/florida/census/florida-demographics.json` |
 | `ingest:lobbying-fl` | `ingest-lobbying-florida.ts` | `data/florida/lobbying/florida-disclosures.json` |
 | `ingest:openstates-fl` | `ingest-openstates-florida.ts` | `data/florida/openstates/florida-legislators.json` |
-| `ingest:legiscan-fl` | `ingest-legiscan-florida.ts` | `data/florida/legiscan/florida-legislation.json` |
+| `ingest:legiscan-fl` | `ingest-legiscan-florida.ts` | `data/florida/legiscan/florida-legislation.json` (Wave-1 preserve-on-failure; keeps prior live sample on key miss / fetch fail) |
 | `ingest:news-fl` | `ingest-news-florida.ts` | `data/florida/news/florida-coverage.json` |
 | `ingest:sam-fl` | `ingest-sam-florida.ts` | `data/florida/sam/florida-contractors.json` |
 | `ingest:fedregister-fl` | `ingest-fedregister-florida.ts` | `data/florida/fedregister/florida-documents.json` |

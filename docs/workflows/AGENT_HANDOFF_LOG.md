@@ -10,6 +10,47 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-20 — M7a LegiScan FL live + Wave-1 preserve (PASS — do not merge)
+
+**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS** (await APPROVAL before merge)
+
+| Item | Value |
+|------|-------|
+| Branch | `cursor/m7a-legiscan-fl-70a6` |
+| Base | `origin/main` @ `ee0b24d` |
+| Tip | `9cfb347` |
+| Compare | https://github.com/robbieryan312-star/The-ledger/compare/main...cursor/m7a-legiscan-fl-70a6 |
+| Key | `LEGISCAN_API_KEY` **SET** → live ingest wrote 10 bills `provenance=fetched-live` |
+| Prebuild | exit **0** |
+
+### Objective
+FL conduit 7a: LegiScan live refresh + Wave-1 preserve-on-failure (never wipe 10-bill sample).
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/ingest/florida/ingest-legiscan-florida.ts` | modified | `writeFloridaSnapshotPreservingLive`; honest-gap on key miss / fail |
+| `lib/data/__fixtures__/ingestPreserve.fixture.ts` | modified | added legiscan to `PRESERVE_WIRED_INGESTS` |
+| `data/florida/legiscan/florida-legislation.json` | modified | live 10-bill refresh 2026-07-20 |
+| `lib/data/generated/slices/legislation-florida.json` | modified | rebuilt from live snapshot |
+| `docs/PILOT_STATE_CHECKLIST.md` | modified | row 5 live + preserve status |
+| `docs/FLORIDA_DATA.md` | modified | legiscan preserve note |
+| `docs/workflows/DUAL_REFERENCE_ROADMAP.md` | modified | LegiScan status → fetched-live |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this handoff |
+
+### Acceptance evidence
+- `npm run ingest:legiscan-fl -- --limit 10 --list-limit 10` → Wrote 10 records, fetchedLive=true
+- `npx tsx --test scripts/__tests__/floridaIngestPreserve.test.ts` → 6/6 pass
+- `npm run prebuild` → exit 0
+
+## Confront Claude — paste to Claude Code
+
+**M7a PASS** on `cursor/m7a-legiscan-fl-70a6` — LegiScan live 10 bills + Wave-1 preserve wired.
+**Do not merge** until Claude APPROVAL for tip SHA.
+**Sibling branches:** M7b OpenStates · M7c news RSS path · M7d SAM/GovInfo (separate PRs).
+
+---
+
 ## HANDOFF 2026-07-20 — M1 MERGED: Claude governance @ 1abf48d
 
 **From:** Cursor · **To:** Owner · **Verdict:** **MERGED**

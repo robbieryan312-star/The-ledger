@@ -43,6 +43,7 @@ export const PRESERVE_WIRED_INGESTS = [
   'scripts/ingest/florida/ingest-florida-counties.ts',
   'scripts/ingest/florida/ingest-news-florida.ts',
   'scripts/ingest/florida/ingest-openstates-florida.ts',
+  'scripts/ingest/florida/ingest-legiscan-florida.ts',
   'scripts/ingest/florida/ingest-sam-florida.ts',
   'scripts/ingest/florida/ingest-govinfo-florida.ts',
 ];

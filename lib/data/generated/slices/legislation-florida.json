@@ -12,10 +12,11 @@
           "tier": "nonpartisan",
           "description": "State and federal bill tracking via legiscan.com API"
         },
-        "asOf": "2026-07-09",
+        "asOf": "2026-07-20",
+        "fetchedAt": "2026-07-20T09:42:18.632Z",
         "totalCount": 10,
         "datasetUrl": "https://api.legiscan.com/",
-        "note": "Florida legislation sample (detail --limit 10, list --list-limit 10). 10/10 detail rows include LegiScan official description as summary."
+        "note": "Florida legislation (detail --limit 10, list --list-limit 10). 10/10 detail rows include LegiScan official description as summary."
       },
       "records": [
         {
@@ -32,7 +33,7 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-09"
+          "asOf": "2026-07-20"
         },
         {
           "id": "legiscan-1",
@@ -48,7 +49,7 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-09"
+          "asOf": "2026-07-20"
         },
         {
           "id": "legiscan-2",
@@ -64,7 +65,7 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-09"
+          "asOf": "2026-07-20"
         },
         {
           "id": "legiscan-3",
@@ -80,7 +81,7 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-09"
+          "asOf": "2026-07-20"
         },
         {
           "id": "legiscan-4",
@@ -96,7 +97,7 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-09"
+          "asOf": "2026-07-20"
         },
         {
           "id": "legiscan-5",
@@ -112,7 +113,7 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-09"
+          "asOf": "2026-07-20"
         },
         {
           "id": "legiscan-6",
@@ -128,7 +129,7 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-09"
+          "asOf": "2026-07-20"
         },
         {
           "id": "legiscan-7",
@@ -144,7 +145,7 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-09"
+          "asOf": "2026-07-20"
         },
         {
           "id": "legiscan-8",
@@ -160,7 +161,7 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-09"
+          "asOf": "2026-07-20"
         },
         {
           "id": "legiscan-9",
@@ -176,7 +177,7 @@
             "tier": "nonpartisan",
             "description": "State and federal bill tracking via legiscan.com API"
           },
-          "asOf": "2026-07-09"
+          "asOf": "2026-07-20"
         }
       ]
     },

@@ -5,10 +5,13 @@
  * Fetches master list then getBill detail for each bill to capture the official
  * LegiScan `description` field as summary.
  *
+ * Wave-1 / core-rules §6: never overwrite a fetched-live 10-bill (or larger) sample
+ * with an empty/honest-gap payload on key miss or fetch failure.
+ *
  * Usage:
  *   npm run ingest:legiscan-fl -- --limit 10   # small verified sample (recommended first)
  */
-import { fetchJson, loadEnvLocal, sleep, writeFloridaSnapshot } from '../../lib/ingest-utils';
+import { fetchJson, loadEnvLocal, sleep, writeFloridaSnapshotPreservingLive } from '../../lib/ingest-utils';
 
 const LEGISCAN_SOURCE = {
   name: 'LegiScan',
@@ -38,11 +41,32 @@ async function main(): Promise<void> {
 
   const key = process.env.LEGISCAN_API_KEY?.trim();
   const asOf = new Date().toISOString().slice(0, 10);
+  const fetchedAt = new Date().toISOString();
   const errors: string[] = [];
   const records: Array<Record<string, unknown>> = [];
 
   if (!key) {
-    console.warn('LEGISCAN_API_KEY missing — skipping ingest; existing florida-legislation.json preserved');
+    const { action, outFile } = await writeFloridaSnapshotPreservingLive('legiscan', 'florida-legislation.json', {
+      meta: {
+        source: LEGISCAN_SOURCE,
+        asOf,
+        fetchedAt,
+        count: 0,
+        stateCode: 'FL',
+        fetchedLive: false,
+        provenance: 'honest-gap',
+        errors: ['LEGISCAN_API_KEY not configured'],
+        datasetUrl: 'https://api.legiscan.com/',
+        note:
+          'Honest-gap: LEGISCAN_API_KEY missing. Prior fetched-live sample (if any) is preserved — never wiped. Set key in .env.local / Cloud Secrets.',
+      },
+      records: [],
+    });
+    console.warn(
+      action === 'preserved-prior'
+        ? `Preserved prior fetched-live ${outFile} — LEGISCAN_API_KEY missing (10-bill sample intact)`
+        : `Wrote honest-gap ${outFile} — LEGISCAN_API_KEY missing (no prior live sample)`,
+    );
     return;
   }
 
@@ -119,23 +143,52 @@ async function main(): Promise<void> {
   }
 
   const withSummary = records.filter((r) => typeof r.summary === 'string' && r.summary).length;
-  const out = await writeFloridaSnapshot('legiscan', 'florida-legislation.json', {
-    meta: {
-      source: LEGISCAN_SOURCE,
-      asOf,
-      count: records.length,
-      stateCode: 'FL',
-      fetchedLive: errors.length === 0 && records.length > 0,
-      errors: errors.length ? errors : undefined,
-      datasetUrl: 'https://api.legiscan.com/',
-      note: `Florida legislation sample (detail --limit ${detailLimit}, list --list-limit ${listLimit}). ${withSummary}/${detailLimit} detail rows include LegiScan official description as summary.`,
-    },
-    records,
-  });
+  const fetchedLive = errors.length === 0 && records.length > 0;
 
-  console.log(
-    `Wrote ${out} (${records.length} records, ${withSummary}/${detailLimit} with description summary)`,
-  );
+  // On failure (or empty result), write a non-live payload so preserve-on-failure keeps the sample.
+  const payload = fetchedLive
+    ? {
+        meta: {
+          source: LEGISCAN_SOURCE,
+          asOf,
+          fetchedAt,
+          count: records.length,
+          stateCode: 'FL' as const,
+          fetchedLive: true,
+          provenance: 'fetched-live' as const,
+          datasetUrl: 'https://api.legiscan.com/',
+          note: `Florida legislation (detail --limit ${detailLimit}, list --list-limit ${listLimit}). ${withSummary}/${Math.min(detailLimit, records.length)} detail rows include LegiScan official description as summary.`,
+        },
+        records,
+      }
+    : {
+        meta: {
+          source: LEGISCAN_SOURCE,
+          asOf,
+          fetchedAt,
+          count: 0,
+          stateCode: 'FL' as const,
+          fetchedLive: false,
+          provenance: 'honest-gap' as const,
+          errors: errors.length ? errors : ['LegiScan returned no bills'],
+          datasetUrl: 'https://api.legiscan.com/',
+          note: 'Fetch failed or empty — prior fetched-live sample preserved when present (Wave-1 / core-rules §6).',
+        },
+        records: [] as Array<Record<string, unknown>>,
+      };
+
+  const { action, outFile } = await writeFloridaSnapshotPreservingLive('legiscan', 'florida-legislation.json', payload);
+
+  if (action === 'preserved-prior') {
+    console.warn(
+      `Preserved prior fetched-live ${outFile} — refused to overwrite 10-bill (or larger) sample after errors: ${errors.join('; ') || 'empty'}`,
+    );
+    process.exitCode = 1;
+  } else {
+    console.log(
+      `Wrote ${outFile} (${records.length} records, ${withSummary}/${detailLimit} with description summary, fetchedLive=${fetchedLive})`,
+    );
+  }
 }
 
 main().catch((err: unknown) => {

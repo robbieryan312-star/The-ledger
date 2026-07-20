@@ -64,13 +64,13 @@ Mandatory before claiming a conduit stage complete:
 
 **Data contract:** `docs/PILOT_STATE_CHECKLIST.md` (12 conduits).
 
-**Current summary (2026-07-19, `main`):**
+**Current summary (2026-07-20):**
 
 | Area | Status | Notes |
 |------|--------|-------|
 | Economy / rankings / counties | **filled** (keyed Census + BLS where configured) | 67-county set; preserve-on-failure wired (Wave 1) |
 | State politicians roster | **filled** | Federal FL delegation from roster |
-| Legislation (LegiScan) | **sample committed** (10 bills on disk) | Live refresh needs `LEGISCAN_API_KEY` |
+| Legislation (LegiScan) | **fetched-live** (10 bills) when `LEGISCAN_API_KEY` SET | Wave-1 preserve-on-failure; sample never wiped on fail |
 | Courts | **filled** | Slice + honest-gap note when thin |
 | News / OpenStates / SAM / GovInfo | News **sample committed** (48); others keyed gaps | Need keys; preserve prior on failure |
 | County drilldown (map) | **DEAD UI** | `countyByFips` never populated — product decision: wire or remove (see `FILE_INVENTORY_AUDIT.md`) |
