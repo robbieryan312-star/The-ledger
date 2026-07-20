@@ -40,9 +40,14 @@ operating manual and core-rules.
    owner's terms:
    - **Give Cursor as many concurrent tasks as can proceed at once** — do NOT drip one tiny task at
      a time.
-   - **Place a milestone ⛔ STOP gate wherever a review/approval of a task or action is needed or
-     useful** before the following subsequent tasks continue. Milestones are placed by NECESSITY
-     (an approval is needed before the next step is safe/correct), not to hit any size target.
+   - **Place a milestone ⛔ STOP gate ONLY where a subsequent action genuinely REQUIRES that task's
+     approval first (owner 2026-07-20)** — a real dependency: the next step is unsafe/incorrect/
+     impossible without it (e.g. it consumes the prior task's output, or an owner product/visual
+     decision must land first). "Review would be useful/nice" is NOT grounds for a gate. If later
+     tasks can proceed WITHOUT that approval, do NOT gate them — list them as concurrent tasks so
+     Cursor runs them in parallel. Over-gating (inserting a review block the next action does not
+     actually need) is a §4 violation, exactly like under-gating. (Every PR still needs Claude's
+     merge-approval per §5 — that standing merge rule is stated once, not repeated as a ⛔ per task.)
    - **Exactly ONE `COPY TO CURSOR` block per response.**
    - **Claude's PROSE stays short** (token economy) — lead with the verdict in 1–3 lines, skip
      narration and re-verification of things already green. The task list is as long as the work
