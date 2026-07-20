@@ -34,6 +34,7 @@ jobs:
           npm run test:client-bundle
           npm run test:docs-integrity
           npm run test:docs-consistency
+          npm run test:navigation-integrity
           npm run test:governor-identity
           npm run test:identity-integrity
           npm run test:no-unverified-official-data

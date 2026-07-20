@@ -139,6 +139,22 @@ phrase and then merging anyway is a contradiction to catch in your own output, n
 
 Session evidence goes to `docs/workflows/AGENT_HANDOFF_LOG.md` (§1.1 J), not chat alone.
 
+**Confront Claude every work/verify turn (owner directive — binding):** End every implementation
+response with a **`## Confront Claude — paste to Claude Code`** block the owner can forward
+unchanged. Include it in the same turn's `AGENT_HANDOFF_LOG.md` entry. Required contents:
+
+1. **Branch · HEAD · PR** — exact SHA awaiting review (or merged SHA if reporting merge)
+2. **Verdict** — PASS / FAIL / STOP for STAGE THREE (never vague)
+3. **What changed** — one line per phase or task
+4. **Evidence** — commands run + exit codes; do not paraphrase
+5. **Open gates** — what Claude must APPROVE/REJECT before merge or next phase
+6. **Repeat-work flag** — if the owner re-sent the same brief with no improved changes, state
+   **"Repeated brief — no spec delta"** and list what is still awaiting Claude review/approval from
+   prior SHAs (do not re-implement unchanged work)
+
+If Claude has not reviewed or approved prior work you reference, say so explicitly — never imply
+approval that is not in `AGENT_HANDOFF_LOG.md` on that exact SHA.
+
 ---
 
 ## 10. Session-start companions

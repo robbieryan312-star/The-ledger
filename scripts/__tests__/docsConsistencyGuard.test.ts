@@ -126,7 +126,7 @@ test('(c) migrated count in PROGRESS points to manifest count 7', () => {
   const manifestCount = loadManifestCount();
   assert.equal(manifestCount, MIGRATED_COUNT_KNOWN_GOOD.expectedCount);
   const progress = readFileSync(path.join(projectRoot, 'PROGRESS.md'), 'utf8');
-  assert.match(progress, /\*\*19\*\* prebuild commands/);
+  assert.match(progress, /\*\*21\*\* prebuild commands/);
   assert.match(progress, /7\/537/);
 });
 

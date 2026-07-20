@@ -45,6 +45,7 @@ Also read when relevant: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`,
 | **What a complete member profile requires** | `PILOT_PROFILE_CHECKLIST.md` |
 | **What a complete state profile requires** | `docs/PILOT_STATE_CHECKLIST.md` |
 | **M2 batch scaling ladder (canonical owner)** | `docs/workflows/BATCH_SCALING.md` — batch protocol + ladder table |
+| **Process improvement at scale (where to log)** | `docs/workflows/BATCH_SCALING.md` § Improvement log (+ `DUAL_REFERENCE_ROADMAP.md` for dual-reference conduits) |
 | **Strategic dual-reference roadmap (FL + S000033)** | `docs/workflows/DUAL_REFERENCE_ROADMAP.md` |
 | **Tier code values (official/nonpartisan/media/alleged/unverified)** | `lib/types/index.ts` (the `SourceTier` union) |
 | **Editorial voice / banned words / Said→Did format** | `.cursor/rules/ledger-editorial-voice.mdc` |
@@ -107,9 +108,9 @@ sourcing self-contained and directly navigable as coverage scales beyond Florida
 
 ---
 
-## 5. Guard suites (20 commands in prebuild + render-integrity postbuild — all must pass before commit)
+## 5. Guard suites (21 commands in prebuild + render-integrity postbuild — all must pass before commit)
 
-Local `npm run build` runs the 20 prebuild guard commands, then `postbuild` runs `test:render-integrity`
+Local `npm run build` runs the 21 prebuild guard commands, then `postbuild` runs `test:render-integrity`
 + `test:client-chunks`. CI (`.github/workflows/guards.yml`) builds first, then a warmed external-server
 render-integrity step on port 4112.
 
@@ -129,6 +130,7 @@ render-integrity step on port 4112.
 | `test:env-truth` | `.env.example` ↔ code |
 | `test:optimization` | syncKernel + manifest + fetch timeout guards |
 | `test:docs-consistency` | Doc contradictions (retired scripts, counts, Tier labels, §1.1 cites) |
+| `test:navigation-integrity` | Nav-relevant files reachable from AGENT_INDEX, npm/CI, or archive inventory |
 | `test:governor-identity` | Governor bioguideId ↔ portrait identity guard |
 | `test:identity-integrity` | Roster portrait ↔ bioguideId ↔ name/party/state/office |
 | `test:no-unverified-official-data` | FL dashboard: no official/nonpartisan numbers without verified provenance |
@@ -149,8 +151,14 @@ Preflight (checks session-start files + guard scripts resolve): `npm run agent:p
 | Canonical repo / branch workflow | `REPO.md` |
 | National data snapshots | `data/national/README.md` |
 | Batch scaling (M2) | `docs/workflows/BATCH_SCALING.md` |
+| Process improvement log (any scaled workflow) | `docs/workflows/BATCH_SCALING.md` § Improvement log |
 | Florida state data ingest | `docs/FLORIDA_DATA.md` |
 | Product vision & voice | `PRODUCT_VISION.md` |
+| Repository README (human onboarding) | `README.md` |
+| Security policy | `SECURITY.md` |
+| Scripts directory notes | `scripts/README.md` |
+| Elections issue merge helper (deferred demo) | `lib/candidateIssues.ts` |
+| Campaign promise status derivation (archive coverage script) | `lib/data/derivePromiseStatus.ts` |
 | Profile build pipeline (Phase E) | `scripts/profile-build.ts` |
 
 ---

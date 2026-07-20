@@ -1,8 +1,26 @@
 # Batch scaling workflow (M2)
 
-**Canonical owner** for the M2 batch ladder, per-batch protocol, and ladder table. `PROGRESS.md`
-tracks milestone status only — batch mechanics live here. Strategic dual-reference sequencing
-(FL + S000033) is in `docs/workflows/DUAL_REFERENCE_ROADMAP.md`.
+**Canonical owner** for the M2 batch ladder, per-batch protocol, ladder table, and **process
+improvement log template** (reusable for ANY scaled workflow — profiles, state conduits, ingest
+pipelines). `PROGRESS.md` tracks milestone status only — batch mechanics and improvement records
+live here. Strategic dual-reference sequencing (FL + S000033) is in
+`docs/workflows/DUAL_REFERENCE_ROADMAP.md`.
+
+---
+
+## Improvement log (template — append after every scale step)
+
+Use this table for **any** process that scales in steps (not only M2 profiles). Copy the section
+into the owning doc when a new workflow scales; do not start rival logs elsewhere.
+
+| Date | Process / conduit | Scale step | Efficiency (time or cost per unit) | Effectiveness (quality/coverage/honest-gap) | Step improved | Change applied (file/command) | Next watch |
+|------|-------------------|------------|-------------------------------------|---------------------------------------------|---------------|------------------------------|------------|
+| *(example)* | profile:build / votes | 1→10 | 5.4 min/member → 4.1 | 0 new defect class | retry/backoff | `scripts/lib/resilientFetch.ts` | spot-check ≥3 members |
+
+**Rule (binding):** core-rules §6 — a scale step without a row here (or in
+`DUAL_REFERENCE_ROADMAP.md` § Process improvement log for dual-reference conduits) is **incomplete**.
+
+---
 
 The canonical loop for scaling profile data to all 537 members. Owner-defined; consistent with
 `PILOT_PROFILE_CHECKLIST.md` (the per-member contract), `.cursor/rules/ledger-core-rules.mdc`

@@ -72,6 +72,12 @@ Change** · 5. **Architectural Requirements** · 6. **Testing Requirements** · 
 Cursor executes exactly and makes no independent choices; on review, reject anything short of flawless
 and re-brief with the specific fix.
 
+**Continuous improvement at scale (binding — core-rules §6):** At each expansion step
+(1→10→25→80→200→completion), require measured efficiency + effectiveness, one applied improvement,
+and a recorded row in the owning process doc (`docs/workflows/BATCH_SCALING.md` § Improvement log, or
+`docs/workflows/DUAL_REFERENCE_ROADMAP.md` § Process improvement log). Reject a "scale step complete"
+claim without that record.
+
 ## 8. PROHIBITED PHRASES — never state as a conclusion
 Never say: *looks good · should work · thoroughly reviewed · production ready · fully secure ·
 completely tested · everything appears correct · no issues found.* Instead always provide: remaining

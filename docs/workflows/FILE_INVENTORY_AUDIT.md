@@ -3,7 +3,7 @@
 **GENERATED** — do not edit by hand. Regenerate:
 `npm run audit:inventory && npm run audit:inventory-md`
 
-**Generated:** 2026-07-20T00:55:44Z · **Baseline:** data/reports/file-inventory.json (256 files)
+**Generated:** 2026-07-20T02:02:23Z · **Baseline:** data/reports/file-inventory.json (257 files)
 **Type:** FINDINGS ONLY — no deletions until Claude briefs.
 
 ## W3c accuracy finding
@@ -153,6 +153,7 @@ PILOT_PROFILE_CHECKLIST rows 5–6 claimed **done**; S000033 manifest has honest
 | scripts/__tests__/identityIntegrityGuard.test.ts | Build-gated guard test | prebuild test: guard wired in package.json | — | KEEP | importer scan |
 | scripts/__tests__/mericPeriodDisplay.test.ts | Build-gated guard test | prebuild test: guard wired in package.json | — | KEEP | importer scan |
 | scripts/__tests__/migratedNotLightweight.test.ts | Build-gated guard test | prebuild test: guard wired in package.json | — | KEEP | importer scan |
+| scripts/__tests__/navigationIntegrity.test.ts | Build-gated guard test | prebuild test: guard wired in package.json | — | KEEP | importer scan |
 | scripts/__tests__/newsRegistry.test.ts | Build-gated guard test | prebuild test: guard wired in package.json | — | KEEP | importer scan |
 | scripts/__tests__/optimizationGuards.test.ts | Build-gated guard test | prebuild test: guard wired in package.json | — | KEEP | importer scan |
 | scripts/__tests__/profileCategoryIntegrity.test.ts | Build-gated guard test | prebuild test: guard wired in package.json | — | KEEP | importer scan |
@@ -271,5 +272,5 @@ PILOT_PROFILE_CHECKLIST rows 5–6 claimed **done**; S000033 manifest has honest
 | scripts/verify-lobbying-votes.ts | Source module | package.json: verify:lobbying-votes | — | KEEP | importer scan |
 | scripts/verify-office-resolution.ts | Source module | package.json: verify:office | — | KEEP | importer scan |
 
-Total rows: 256
+Total rows: 257
 

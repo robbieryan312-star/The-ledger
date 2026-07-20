@@ -14,10 +14,9 @@ export const RETIRED_SCRIPT_KNOWN_BAD = {
 export const PREBUILD_COUNT_KNOWN_GOOD = {
   /**
    * Parsed from package.json prebuild at guard wiring time — updated when prebuild changes.
-   * 2026-07-19: 19 → 20 with `test:route-integrity` (W3 dead-route + sitemap guards). The Wave 1
-   * data-loss guard (floridaIngestPreserve) folds into the existing `test:source-integrity` group.
+   * 2026-07-20: 20 → 21 with `test:navigation-integrity` (P4 nav-relevant reachability guard).
    */
-  expectedPrebuildCommands: 20,
+  expectedPrebuildCommands: 21,
 };
 
 /** Default build must run render-integrity after Next build (GOOD). */

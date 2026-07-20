@@ -5,13 +5,63 @@ on data/code) and **Cursor** (executes all collection, edits, commits, pushes, P
 `.cursor/rules/ledger-core-rules.mdc` (the always-read ruleset) — where any doc disagrees with
 core-rules, core-rules wins. Newest handoff on top.
 
+**Cursor rule:** every work/verify turn ends with a **`## Confront Claude — paste to Claude Code`**
+block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner forwards it unchanged.
+
 ---
 
-## HANDOFF 2026-07-20 — Phase 3: AGENT_INDEX reachability (Flawless Agent-Navigation System)
+## HANDOFF 2026-07-20 — Phases 4–5 + merges (combined STAGE THREE)
 
-**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS — STOP for STAGE THREE review (Phase 3)**
+**From:** Cursor · **To:** Claude Code · **Verdict:** **PASS — STOP for combined STAGE THREE review**
 
-### Objective
+### Merges / housekeeping
+| Item | SHA / status |
+|------|----------------|
+| PR #53 Phase 3 | **merged** → `main` @ `a730f81` (approved `6dc5bc9`) |
+| PR #47 roadmap | **superseded** — close manually (API token could not close); content landed via #53 |
+
+### Phase 4 — navigation guard
+- Added `scripts/__tests__/navigationIntegrity.test.ts` + fixture
+- Wired `test:navigation-integrity` into prebuild (21 commands) + `guards.yml`
+- Shell scripts included; bootstrap `.ts` exempt documented in guard header
+
+### Phase 5 — continuous improvement binding
+- core-rules HARD RULE + §6 bullet (scale-step improvement pass required)
+- `BATCH_SCALING.md` § Improvement log template generalized
+- Cross-refs in `CLAUDE_CODE_OPERATING_MANUAL.md` + `CURSOR_IMPLEMENTATION_MANUAL.md`
+- AGENT_INDEX pointer for improvement tracking
+
+### Branch / HEAD / PR
+- **Branch:** `cursor/phase4-5-nav-guard-ci-rule-70a6`
+- **Base:** `main` @ `a730f81`
+
+### Verification
+- `npm run test:navigation-integrity` + docs guards → exit 0
+- `rm -rf .next && npm run prebuild` + `npm run build` → exit 0
+- Inventory regenerated
+
+### Open / next
+- **STOP** — combined STAGE THREE on branch tip before merge
+- PR #48 Sanders AP-URL — separate review (not bundled)
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Branch:** `cursor/phase4-5-nav-guard-ci-rule-70a6` · **Base:** `main` @ `a730f81`  
+**Merged this session:** PR #53 @ `6dc5bc9` → `main` @ `a730f81`  
+**Verdict:** PASS — STOP for combined STAGE THREE (Phases 4–5)
+
+**Review:** navigationIntegrity guard + continuous-improvement binding rule + prebuild 21 commands.  
+**Do not merge** until APPROVAL on branch tip SHA.  
+**Housekeeping:** close PR #47 as superseded (Cursor lacked close permission).  
+**Not in scope:** PR #48 — separate SHA review.
+
+---
+
+## HANDOFF 2026-07-20 — Phase 3: AGENT_INDEX reachability (APPROVED · merged `a730f81`)
+
+**From:** Cursor · **To:** Claude Code · **Verdict:** **APPROVED** — merged to `main` @ `a730f81` (PR #53 @ `6dc5bc9`)
 AGENT_INDEX reachability: FILE_AUDIT_LEDGER in session start; BATCH_SCALING owns M2 ladder;
 §7 redirect stubs; land DUAL_REFERENCE_ROADMAP + PILOT_STATE_CHECKLIST; delete dead routes.
 
