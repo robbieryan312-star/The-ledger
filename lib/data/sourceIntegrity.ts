@@ -265,6 +265,10 @@ const PLACEHOLDER_PATTERNS: RegExp[] = [
   /\bxxxx\b/i,
 ];
 
+/** AP News canonical article URLs: slug + 32-char lowercase hex id (real wire format, not fabricated tails). */
+const AP_NEWS_ARTICLE_URL =
+  /^https?:\/\/(?:www\.)?apnews\.com\/article\/[a-z0-9][a-z0-9-]*-[a-f0-9]{32}\/?$/i;
+
 const BARE_HOMEPAGE_HOSTS = new Set([
   'apnews.com',
   'www.apnews.com',
@@ -289,6 +293,7 @@ const BARE_HOMEPAGE_HOSTS = new Set([
 export function isPlaceholderUrl(url: string): boolean {
   const trimmed = url.trim();
   if (!trimmed) return true;
+  if (AP_NEWS_ARTICLE_URL.test(trimmed)) return false;
   return PLACEHOLDER_PATTERNS.some((re) => re.test(trimmed));
 }
 

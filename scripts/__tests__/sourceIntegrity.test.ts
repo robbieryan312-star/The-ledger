@@ -22,6 +22,7 @@ import {
   PLATFORM_KNOWN_GOOD_MEMBER_POSITION,
   PLATFORM_KNOWN_GOOD_DATED_FIRST_PERSON_STANCE,
   SOURCE_INTEGRITY_KNOWN_BAD_URLS,
+  SOURCE_INTEGRITY_AP_ARTICLE_GOOD_URLS,
   SOURCE_INTEGRITY_KNOWN_GOOD_URLS,
   STATEMENT_KNOWN_BAD_NON_VERBATIM_ALLEGED,
 } from '../../lib/data/__fixtures__/sourceIntegrity.fixture';
@@ -83,6 +84,13 @@ test('known-good article URLs pass integrity checks', () => {
     assert.equal(isBareHomepageUrl(url), false, `expected GOOD "${label}" not to be a bare homepage`);
     assert.equal(isArticleTypeIntegrityUrl(url), true, `expected GOOD "${label}" to pass article integrity`);
     assert.equal(isFetchVerifiableUrl(url), true, `expected GOOD "${label}" to be fetch-verifiable`);
+  }
+});
+
+test('real AP News 32-hex article URLs are not placeholder false positives', () => {
+  for (const { label, url } of SOURCE_INTEGRITY_AP_ARTICLE_GOOD_URLS) {
+    assert.equal(isPlaceholderUrl(url), false, `expected AP GOOD "${label}" not to match placeholder pattern`);
+    assert.equal(isArticleTypeIntegrityUrl(url), true, `expected AP GOOD "${label}" to pass article integrity`);
   }
 });
 
