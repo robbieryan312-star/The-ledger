@@ -584,11 +584,15 @@ export function FloridaLegislationSections({ bundle }: { bundle: LegislationBund
 export function FloridaNewsSections({ bundle }: { bundle: NewsBundleSlice }) {
   return (
     <div className="space-y-6">
+      <p className="text-gray-500 text-xs">
+        Florida state news snapshot (NewsAPI / GDELT ingest) — not the member profile News path.
+        Profile headlines come from approved-outlet RSS → GDELT (`sync:news-rss`).
+      </p>
       {bundle.sections.map((section) => (
         <FloridaRecordPanel
           key={section.sourceId}
           title={section.label}
-          subtitle="Journalism — corroborate with official records when possible."
+          subtitle="State snapshot journalism — corroborate with official records when possible. Not a substitute for member RSS news."
           slice={{ meta: section.meta, records: section.records }}
         />
       ))}
