@@ -29,28 +29,43 @@ function isOfficialCrecFloorStatement(s: TopicStatementEntry): boolean {
   return s.tier === 'official' && /\/CREC-/i.test(s.url ?? '');
 }
 
+/** Strip query/hash so the same CREC granule is not paired twice. */
+export function crecUrlStem(url: string | undefined | null): string {
+  if (!url?.trim()) return '';
+  return url.trim().replace(/[?#].*$/, '');
+}
+
 /**
- * Pair each verified CREC floor statement with subject-overlapping roll-call votes.
- * Links are filed under the Said statement's topic (not the vote's often-generic topic)
- * so prune/pickSaid can match. Dedupes by topic:bill:date. Caps at 15 total.
+ * Pair each verified CREC floor Said with one subject-overlapping roll-call Did.
+ * - Official CREC only (member floor speech URLs)
+ * - Dedup Saids by URL stem
+ * - One Did per Said (newest matching vote); one use of each bill:date Did globally
+ * - Cap 15; remainder is honest-gap (do not force)
  */
 export function buildCrecSaidDidLinks(
   byTopic: Record<string, { statements: TopicStatementEntry[] }>,
   votes: VoteRecord[],
 ): Record<string, SaidDidLinkEntry[]> {
+  const seenStems = new Set<string>();
   const crecStatements: TopicStatementEntry[] = [];
   for (const [topicId, bucket] of Object.entries(byTopic)) {
     for (const s of bucket.statements ?? []) {
       if (!isOfficialCrecFloorStatement(s)) continue;
+      const stem = crecUrlStem(s.url);
+      if (!stem || seenStems.has(stem)) continue;
+      seenStems.add(stem);
       crecStatements.push({ ...s, topicId: s.topicId || topicId });
     }
   }
 
+  crecStatements.sort(
+    (a, b) => new Date(b.date ?? 0).getTime() - new Date(a.date ?? 0).getTime(),
+  );
+
   const out: Record<string, SaidDidLinkEntry[]> = {};
-  const seen = new Set<string>();
+  const usedDidKeys = new Set<string>();
   let total = 0;
 
-  // Prefer newer votes first so the 15-cap keeps recent Dids.
   const orderedVotes = [...votes].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
@@ -58,25 +73,27 @@ export function buildCrecSaidDidLinks(
   for (const statement of crecStatements) {
     if (total >= MAX_SAID_DID_LINKS_PER_MEMBER) break;
     const topicId = statement.topicId;
-    for (const vote of orderedVotes) {
-      if (total >= MAX_SAID_DID_LINKS_PER_MEMBER) break;
-      if (!saidDidSubjectsOverlap(statement.title, voteSaidDidContext(vote))) continue;
-      const key = `${topicId}:${vote.billId}:${vote.date}`;
-      if (seen.has(key)) continue;
-      seen.add(key);
-      out[topicId] = out[topicId] ?? [];
-      out[topicId].push({
-        topicId,
-        statedPositionDate: statement.date ?? null,
-        voteDate: vote.date,
-        billTitle: enrichVoteBillTitle(vote),
-        billNumber: vote.billId,
-        congressGovUrl: voteCongressGovUrl(vote),
-        voteChoice: vote.vote,
-        tier: 'official',
-      });
-      total += 1;
-    }
+    const match = orderedVotes.find((vote) => {
+      const didKey = `${vote.billId}:${vote.date}`;
+      if (usedDidKeys.has(didKey)) return false;
+      return saidDidSubjectsOverlap(statement.title, voteSaidDidContext(vote));
+    });
+    if (!match) continue;
+
+    const didKey = `${match.billId}:${match.date}`;
+    usedDidKeys.add(didKey);
+    out[topicId] = out[topicId] ?? [];
+    out[topicId].push({
+      topicId,
+      statedPositionDate: statement.date ?? null,
+      voteDate: match.date,
+      billTitle: enrichVoteBillTitle(match),
+      billNumber: match.billId,
+      congressGovUrl: voteCongressGovUrl(match),
+      voteChoice: match.vote,
+      tier: 'official',
+    });
+    total += 1;
   }
 
   return out;

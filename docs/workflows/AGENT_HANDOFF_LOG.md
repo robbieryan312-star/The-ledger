@@ -10,6 +10,55 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-21 — m4 JUSTIFY/TRIM Said→Did (⛔ Claude)
+
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval
+
+**Current state:** `cursor/m4-sanders-said-did-70a6` · rebased on `main` (incl. m5 merge)
+
+### (a) Said→Did pair count
+| Metric | Value |
+|--------|-------|
+| Verified CREC Said→Did pairs | **2** |
+| Layout target | 15 |
+| Remainder | **honest-gap** (do not force) |
+| Pairing rule | 1 Said → 1 Did; URL-stem dedup; CREC floor speech only |
+
+Pairs:
+1. education CREC 2026-06-24 → S.J.Res. 196 Yea 2026-06-25
+2. economy-taxes CREC 2026-01-30 → H.R. 6644 Yea 2026-06-22
+
+Unpaired CREC (honest-gap): 2 technology floor speeches — no subject-overlapping roll-call in 30-vote corpus.
+
+### (b) Non-data files — JUSTIFY (trimmed sync noise)
+| Path | Keep? | Why |
+|------|-------|-----|
+| `lib/data/saidDidVoteContext.ts` | **yes** | Said→Did **builder** (CREC-only, stem dedup, 1:1) |
+| `scripts/lib/profileMigrate.ts` | **yes** | Sole write path into `saidDid.json`; wires builder; preserves CREC; skips thin sync links |
+| `lib/data/buildSaidDidDiffs.ts` | **yes** | Official Said requires CREC URL (Said rule) |
+| `scripts/lib/crecProceduralFilter.ts` + fixture | **yes** | Said-vs-procedural: `motion-to-discharge` banned |
+| `scripts/sync-topic-positions.ts` | **yes** | 2-line caps only (CREC pool 20 / links 15) — headroom for target |
+| `topicPositions.json` / `articleCache.json` | **REMOVED** | Sync timestamp noise — out of PR |
+
+Data kept: `saidDid.json`, `statements.json`, snapshot, manifest, PILOT row 8, handoff.
+
+### Gates
+- prebuild / build: run this turn
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**m4 #62 tip:** approve **PR head** after push (rebased + trimmed)
+**(a) pairs:** **2**/15 CREC Said→Did (1:1 + URL-stem dedup); remainder honest-gap
+**(b) non-data justified** — builder + migrate wire + CREC Said rule + discharge filter + 2-line sync caps; sync meta JSON **trimmed**
+**Said rule:** floor speech only; motion-to-discharge filtered + fixture
+**prebuild/build:** see tip stamp
+**STOP:** do not merge without APPROVAL on exact tip SHA
+**PARK:** #76 · m8a · m7a–d · M-UI #68 STAGE THREE after m4
+
+---
+
 ## HANDOFF 2026-07-21 — m5 MERGED @ cc69512 (#63)
 
 **From:** Cursor · **To:** Claude / Owner · **Verdict:** **MERGED**
