@@ -10,6 +10,38 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-21 — M3 REVISE: drop Trump-Iran (among those responding)
+
+**From:** Cursor · **To:** Claude · **Verdict:** tip ready ⛔ · prebuild 0 · build 0
+
+**Current state:** branch `cursor/m3-sanders-news-depth-70a6` · PR **#69** · tip after push (see Confront) · `main` @ `5ac58cf` (merges recorded on M-BACKLOG #74)
+
+### Done
+- DROP `s000033-topic-9` Unhinged madman / Trump-Iran — Sanders not direct quote; “among those responding” ≠ qualifies
+- News count **12** / honest-gap **3** of target 15
+- Fixture `MEMBER_NEWS_QUALIFY_KNOWN_BAD_AMONG_THOSE_RESPONDING` + `isAmongThoseRespondingMention`; removed `among those` from subject-action cues
+- Good direct-quote fixture retargeted to California greed piece (clear Sanders attribution)
+- Snapshot headlines updated; qualification tests 8/8
+
+### Commands
+- `npx tsx --test scripts/__tests__/memberNewsMatching.test.ts` → 0 fail
+- `npm run prebuild` → 0
+- `npm run build` → 0
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M3 REVISE #69** — DROP Trump-Iran / among-those-responding · **12** news · honest-gap 3 · tip **`3a0e9fa`** · prebuild 0 · build 0 · ⛔ exact-SHA approval before merge
+
+**Also awaiting tip approval:** M-BACKLOG **#74** @ `f4ac1be` (single IMPROVEMENT_BACKLOG)
+
+**Merged earlier (main @ `5ac58cf`):** governance→`1ae3967` · m10→`1d393d0` · m6→`9a74dd8` · M-DEPLOY→`c1a08d8` · M8-A→`5ac58cf`
+
+**Leave open STAGE THREE:** #62 m4 · #63 m5 · #67 m7a · #66 m7b · #64 m7c · #65 m7d · #68 M-UI
+
+---
+
 ## Latest session — M3 Sanders news 5→15 (`cursor/m3-sanders-news-depth-70a6`) (COMPLETE)
 
 **Current state:** branch `cursor/m3-sanders-news-depth-70a6` · work commit **`ec4d851`** · base `origin/main` @ `714f473` (PR #58 matcher+corroboration) · compare https://github.com/robbieryan312-star/The-ledger/compare/main...cursor/m3-sanders-news-depth-70a6 · `prebuild` 0 · `build` 0 · **do not merge**
