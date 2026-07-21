@@ -1,7 +1,7 @@
 {
-  "asOf": "2026-07-20",
-  "scope": "reference-2",
-  "note": "M8 Option A — Miami-Dade (12086) + Liberty (12077) only. STOP for Claude review before scaling to 67 counties. Primary Ballotpedia (nonpartisan); corroborate via county/.gov (official) where available; honest-gap offices omitted rather than fabricated.",
+  "asOf": "2026-07-21",
+  "scope": "scale-batch-1-plus-reference-2",
+  "note": "M8-A scale batch 1 (2026-07-21): reference-2 (Miami-Dade 12086, Liberty 12077) plus 9 counties (Alachua, Baker, Bay, Bradford, Brevard, Broward, Calhoun, Citrus, Clay). Charlotte 12015 deferred \u2014 SOE site did not expose officeholder name in static HTML (honest gap). Primary official .gov/SOE; Ballotpedia Government_of_* pages missing/blocked for these counties. Offices not curl-verified omitted (honest gap). STOP for Claude review before next batch (\u219225).",
   "byFips": {
     "12086": {
       "fips": "12086",
@@ -15,14 +15,14 @@
       "asOf": "2026-07-20",
       "sources": [
         {
-          "name": "Ballotpedia — Government of Miami-Dade County, Florida",
+          "name": "Ballotpedia \u2014 Government of Miami-Dade County, Florida",
           "url": "https://ballotpedia.org/Government_of_Miami-Dade_County,_Florida",
           "tier": "nonpartisan",
           "date": "2026-07-20",
           "description": "Primary roster of county elected offices"
         },
         {
-          "name": "Ballotpedia — Daniella Levine Cava",
+          "name": "Ballotpedia \u2014 Daniella Levine Cava",
           "url": "https://ballotpedia.org/Daniella_Levine_Cava",
           "tier": "nonpartisan",
           "date": "2026-07-20",
@@ -33,7 +33,7 @@
           "url": "https://www.miamidade.gov/global/government/mayor/home.page",
           "tier": "official",
           "date": "2026-07-20",
-          "description": "County .gov corroboration — Mayor Daniella Levine Cava"
+          "description": "County .gov corroboration \u2014 Mayor Daniella Levine Cava"
         }
       ],
       "officials": [
@@ -67,7 +67,7 @@
         },
         {
           "id": "fl-co-12086-property-appraiser",
-          "name": "Tomás Regalado",
+          "name": "Tom\u00e1s Regalado",
           "position": "Property Appraiser",
           "party": "Other",
           "inOffice": true,
@@ -107,7 +107,7 @@
       "asOf": "2026-07-20",
       "sources": [
         {
-          "name": "Liberty County (FL) Supervisor of Elections — County Elected Officials",
+          "name": "Liberty County (FL) Supervisor of Elections \u2014 County Elected Officials",
           "url": "https://libertycountyflsoe.gov/elected-officials/county-elected-officials/",
           "tier": "official",
           "date": "2026-07-20",
@@ -211,6 +211,514 @@
           "inOffice": true,
           "bio": "Liberty County Board of County Commissioners, District 5. Listed on libertycountyfl.org/county-commissioners/.",
           "website": "https://libertycountyfl.org/county-commissioners/"
+        }
+      ],
+      "elections": []
+    },
+    "12001": {
+      "fips": "12001",
+      "name": "Alachua",
+      "stateName": "Florida",
+      "stateCode": "FL",
+      "seat": "Gainesville",
+      "population": 281751,
+      "website": "https://www.alachuacounty.us/",
+      "status": "filled",
+      "asOf": "2026-07-21",
+      "sources": [
+        {
+          "name": "Alachua County Elections \u2014 County-Wide elected officials",
+          "url": "https://www.votealachua.gov/216/County-Wide",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "Official SOE roster of countywide constitutional officers"
+        },
+        {
+          "name": "Alachua County \u2014 Your Government",
+          "url": "https://alachuacounty.us/Govt/pages/govt.aspx",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "County .gov corroboration of constitutional officers"
+        }
+      ],
+      "officials": [
+        {
+          "id": "fl-co-12001-clerk",
+          "name": "J.K. \"Jess\" Irby",
+          "position": "Clerk of the Court",
+          "party": "Democrat",
+          "inOffice": true,
+          "bio": "Alachua County Clerk of the Court (Democrat). Listed on the Alachua County Supervisor of Elections county-wide elected officials page; next election 2028.",
+          "website": "https://www.alachuaclerk.org/"
+        },
+        {
+          "id": "fl-co-12001-property-appraiser",
+          "name": "Ayesha Solomon",
+          "position": "Property Appraiser",
+          "party": "Democrat",
+          "inOffice": true,
+          "bio": "Alachua County Property Appraiser (Democrat). Listed on the Alachua County Supervisor of Elections county-wide elected officials page; next election 2028.",
+          "website": "http://www.acpafl.org/"
+        },
+        {
+          "id": "fl-co-12001-sheriff",
+          "name": "Chad D. Scott",
+          "position": "Sheriff",
+          "party": "Democrat",
+          "inOffice": true,
+          "bio": "Alachua County Sheriff (Democrat). Listed on the Alachua County Supervisor of Elections county-wide elected officials page; next election 2028.",
+          "website": "https://acso.us/"
+        },
+        {
+          "id": "fl-co-12001-supervisor-elections",
+          "name": "Kim A. Barton",
+          "position": "Supervisor of Elections",
+          "party": "Democrat",
+          "inOffice": true,
+          "bio": "Alachua County Supervisor of Elections (Democrat). Named on votealachua.gov; next election 2028.",
+          "website": "https://www.votealachua.gov/"
+        },
+        {
+          "id": "fl-co-12001-tax-collector",
+          "name": "John Power",
+          "position": "Tax Collector",
+          "party": "Democrat",
+          "inOffice": true,
+          "bio": "Alachua County Tax Collector (Democrat). Listed on the Alachua County Supervisor of Elections county-wide elected officials page; next election 2028.",
+          "website": "https://www.alachuacollector.com/"
+        }
+      ],
+      "elections": []
+    },
+    "12003": {
+      "fips": "12003",
+      "name": "Baker",
+      "stateName": "Florida",
+      "stateCode": "FL",
+      "seat": "Macclenny",
+      "population": 28186,
+      "website": "https://bakercountyfl.org/",
+      "status": "filled",
+      "asOf": "2026-07-21",
+      "sources": [
+        {
+          "name": "Baker County Supervisor of Elections",
+          "url": "https://bakerelections.com/",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "Official SOE site naming Chris Milton as Supervisor of Elections"
+        }
+      ],
+      "officials": [
+        {
+          "id": "fl-co-12003-supervisor-elections",
+          "name": "Chris Milton",
+          "position": "Supervisor of Elections",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Baker County Supervisor of Elections. Named on bakerelections.com (verified 2026-07-21). Other constitutional offices omitted pending verified .gov roster (honest gap).",
+          "website": "https://bakerelections.com/"
+        }
+      ],
+      "elections": []
+    },
+    "12005": {
+      "fips": "12005",
+      "name": "Bay",
+      "stateName": "Florida",
+      "stateCode": "FL",
+      "seat": "Panama City",
+      "population": 181368,
+      "website": "https://www.baycountyfl.gov/",
+      "status": "filled",
+      "asOf": "2026-07-21",
+      "sources": [
+        {
+          "name": "Bay County Supervisor of Elections \u2014 Meet the Supervisor",
+          "url": "https://www.bayvotesfl.gov/about/meet-the-supervisor/",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "Official SOE biography for Nina Ward"
+        },
+        {
+          "name": "Bay County Clerk of Court & Comptroller \u2014 About Us",
+          "url": "https://www.baycoclerk.com/about/",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "Official clerk site biography for Bill Kinsaul"
+        }
+      ],
+      "officials": [
+        {
+          "id": "fl-co-12005-supervisor-elections",
+          "name": "Nina Ward",
+          "position": "Supervisor of Elections",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Bay County Supervisor of Elections. Named on bayvotesfl.gov meet-the-supervisor page (verified 2026-07-21).",
+          "website": "https://www.bayvotesfl.gov/"
+        },
+        {
+          "id": "fl-co-12005-clerk",
+          "name": "Bill Kinsaul",
+          "position": "Clerk of Court and Comptroller",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Bay County Clerk of Court and Comptroller. About page states he was elected in November 2008 (verified 2026-07-21).",
+          "website": "https://www.baycoclerk.com/"
+        }
+      ],
+      "elections": []
+    },
+    "12007": {
+      "fips": "12007",
+      "name": "Bradford",
+      "stateName": "Florida",
+      "stateCode": "FL",
+      "seat": "Starke",
+      "population": 27888,
+      "website": "https://bradfordcountyfl.gov/",
+      "status": "filled",
+      "asOf": "2026-07-21",
+      "sources": [
+        {
+          "name": "Bradford County Supervisor of Elections",
+          "url": "https://www.votebradfordfl.gov/",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "Official SOE site naming Amanda Seyfang"
+        }
+      ],
+      "officials": [
+        {
+          "id": "fl-co-12007-supervisor-elections",
+          "name": "Amanda Seyfang",
+          "position": "Supervisor of Elections",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Bradford County Supervisor of Elections. Named on votebradfordfl.gov (verified 2026-07-21). Other constitutional offices omitted pending verified .gov roster (honest gap).",
+          "website": "https://www.votebradfordfl.gov/"
+        }
+      ],
+      "elections": []
+    },
+    "12009": {
+      "fips": "12009",
+      "name": "Brevard",
+      "stateName": "Florida",
+      "stateCode": "FL",
+      "seat": "Titusville",
+      "population": 620533,
+      "website": "https://www.brevardfl.gov/",
+      "status": "filled",
+      "asOf": "2026-07-21",
+      "sources": [
+        {
+          "name": "Brevard County Supervisor of Elections \u2014 County Government Officials",
+          "url": "https://www.votebrevard.gov/Voter-Information/Contact-Your-Elected-Officials/County-Government-Officials",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "Official SOE directory of constitutional officers"
+        }
+      ],
+      "officials": [
+        {
+          "id": "fl-co-12009-clerk",
+          "name": "Rachel M. Sadoff",
+          "position": "Clerk of the Circuit Court and Comptroller",
+          "party": "Republican",
+          "inOffice": true,
+          "bio": "Brevard County Clerk of the Circuit Court and Comptroller (Republican). Listed on VoteBrevard County Government Officials; current term ends January 2, 2029.",
+          "website": "https://www.brevardclerk.us/",
+          "termEnd": "2029-01-02"
+        },
+        {
+          "id": "fl-co-12009-sheriff",
+          "name": "Wayne Ivey",
+          "position": "Sheriff",
+          "party": "Republican",
+          "inOffice": true,
+          "bio": "Brevard County Sheriff (Republican). Listed on VoteBrevard County Government Officials; current term ends January 2, 2029.",
+          "website": "https://www.brevardsheriff.com/",
+          "termEnd": "2029-01-02"
+        },
+        {
+          "id": "fl-co-12009-property-appraiser",
+          "name": "Dana Blickley",
+          "position": "Property Appraiser",
+          "party": "Republican",
+          "inOffice": true,
+          "bio": "Brevard County Property Appraiser (Republican). Listed on VoteBrevard County Government Officials; current term ends January 2, 2029.",
+          "website": "https://bcpao.us/",
+          "termEnd": "2029-01-02"
+        },
+        {
+          "id": "fl-co-12009-tax-collector",
+          "name": "Lisa Cullen",
+          "position": "Tax Collector",
+          "party": "Republican",
+          "inOffice": true,
+          "bio": "Brevard County Tax Collector (Republican). Listed on VoteBrevard County Government Officials; current term ends January 2, 2029.",
+          "termEnd": "2029-01-02"
+        },
+        {
+          "id": "fl-co-12009-supervisor-elections",
+          "name": "Tim Bobanic",
+          "position": "Supervisor of Elections",
+          "party": "Republican",
+          "inOffice": true,
+          "bio": "Brevard County Supervisor of Elections (Republican). Listed on VoteBrevard County Government Officials; current term ends January 2, 2029.",
+          "website": "https://www.votebrevard.gov/",
+          "termEnd": "2029-01-02"
+        }
+      ],
+      "elections": []
+    },
+    "12011": {
+      "fips": "12011",
+      "name": "Broward",
+      "stateName": "Florida",
+      "stateCode": "FL",
+      "seat": "Fort Lauderdale",
+      "population": 1946127,
+      "website": "https://www.broward.org/",
+      "status": "filled",
+      "asOf": "2026-07-21",
+      "sources": [
+        {
+          "name": "Broward County \u2014 Constitutional Officers",
+          "url": "https://www.broward.org/Residents/Pages/ConstitutionalOfficers.aspx",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "Official county directory of constitutional officers"
+        },
+        {
+          "name": "Broward County Tax Collector",
+          "url": "https://browardtax.org/",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "County tax collector site corroboration \u2014 Abbey Ajayi"
+        },
+        {
+          "name": "Broward County Property Appraiser",
+          "url": "https://www.bcpa.net/",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "County property appraiser site corroboration \u2014 Marty Kiar"
+        },
+        {
+          "name": "Broward County Clerk of Courts",
+          "url": "https://www.browardclerk.org/",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "Clerk site corroboration \u2014 Brenda D. Forman"
+        }
+      ],
+      "officials": [
+        {
+          "id": "fl-co-12011-sheriff",
+          "name": "Gregory Tony",
+          "position": "Sheriff",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Broward County Sheriff. Listed on broward.org Constitutional Officers page (verified 2026-07-21).",
+          "website": "https://www.sheriff.org/"
+        },
+        {
+          "id": "fl-co-12011-clerk",
+          "name": "Brenda D. Forman",
+          "position": "Clerk of the Courts",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Broward County Clerk of the Courts. Listed on broward.org Constitutional Officers and browardclerk.org (verified 2026-07-21).",
+          "website": "https://www.browardclerk.org/"
+        },
+        {
+          "id": "fl-co-12011-property-appraiser",
+          "name": "Marty Kiar",
+          "position": "Property Appraiser",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Broward County Property Appraiser. Listed on broward.org Constitutional Officers and bcpa.net (verified 2026-07-21).",
+          "website": "https://www.bcpa.net/"
+        },
+        {
+          "id": "fl-co-12011-tax-collector",
+          "name": "Abbey Ajayi",
+          "position": "Tax Collector",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Broward County Tax Collector. Listed on broward.org Constitutional Officers and browardtax.org (verified 2026-07-21).",
+          "website": "https://browardtax.org/"
+        },
+        {
+          "id": "fl-co-12011-supervisor-elections",
+          "name": "Joe Scott",
+          "position": "Supervisor of Elections",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Broward County Supervisor of Elections. Listed on broward.org Constitutional Officers page (verified 2026-07-21).",
+          "website": "https://www.browardvotes.gov/"
+        }
+      ],
+      "elections": []
+    },
+    "12013": {
+      "fips": "12013",
+      "name": "Calhoun",
+      "stateName": "Florida",
+      "stateCode": "FL",
+      "seat": "Blountstown",
+      "population": 13593,
+      "website": "https://www.calhouncountyfl.gov/",
+      "status": "filled",
+      "asOf": "2026-07-21",
+      "sources": [
+        {
+          "name": "Calhoun County Supervisor of Elections",
+          "url": "https://votecalhounfl.gov/",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "Official SOE site naming Sharon Chason"
+        }
+      ],
+      "officials": [
+        {
+          "id": "fl-co-12013-supervisor-elections",
+          "name": "Sharon Chason",
+          "position": "Supervisor of Elections",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Calhoun County Supervisor of Elections. Named on votecalhounfl.gov (verified 2026-07-21). Other constitutional offices omitted pending verified .gov roster (honest gap).",
+          "website": "https://votecalhounfl.gov/"
+        }
+      ],
+      "elections": []
+    },
+    "12017": {
+      "fips": "12017",
+      "name": "Citrus",
+      "stateName": "Florida",
+      "stateCode": "FL",
+      "seat": "Inverness",
+      "population": 158693,
+      "website": "https://www.citrusbocc.com/",
+      "status": "filled",
+      "asOf": "2026-07-21",
+      "sources": [
+        {
+          "name": "Citrus County Elections",
+          "url": "https://www.votecitrus.gov/",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "Official SOE site naming Maureen Mo Baird"
+        },
+        {
+          "name": "Citrus County Sheriff's Office",
+          "url": "https://www.sheriffcitrus.org/",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "Official sheriff site naming Sheriff David E. Vincent"
+        }
+      ],
+      "officials": [
+        {
+          "id": "fl-co-12017-supervisor-elections",
+          "name": "Maureen 'Mo' Baird",
+          "position": "Supervisor of Elections",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Citrus County Supervisor of Elections. Named on votecitrus.gov (verified 2026-07-21).",
+          "website": "https://www.votecitrus.gov/"
+        },
+        {
+          "id": "fl-co-12017-sheriff",
+          "name": "David E. Vincent",
+          "position": "Sheriff",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Citrus County Sheriff. Named on sheriffcitrus.org Meet the Sheriff / Command Staff (verified 2026-07-21).",
+          "website": "https://www.sheriffcitrus.org/"
+        }
+      ],
+      "elections": []
+    },
+    "12019": {
+      "fips": "12019",
+      "name": "Clay",
+      "stateName": "Florida",
+      "stateCode": "FL",
+      "seat": "Green Cove Springs",
+      "population": 223436,
+      "website": "https://www.claycountygov.com/",
+      "status": "filled",
+      "asOf": "2026-07-21",
+      "sources": [
+        {
+          "name": "Clay County Supervisor of Elections",
+          "url": "https://clayelections.gov/",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "Official SOE site naming Chris H. Chambless"
+        },
+        {
+          "name": "Clay County Sheriff's Office",
+          "url": "https://www.claysheriff.com/",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "Official sheriff site naming Michelle Cook"
+        },
+        {
+          "name": "Clay County Clerk of Court",
+          "url": "https://www.clayclerk.com/",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "Official clerk site naming Tara S. Green"
+        },
+        {
+          "name": "Clay County Tax Collector",
+          "url": "https://www.claycountytax.com/",
+          "tier": "official",
+          "date": "2026-07-21",
+          "description": "Official tax collector site naming Diane Hutchings"
+        }
+      ],
+      "officials": [
+        {
+          "id": "fl-co-12019-supervisor-elections",
+          "name": "Chris H. Chambless",
+          "position": "Supervisor of Elections",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Clay County Supervisor of Elections. Named on clayelections.gov (verified 2026-07-21).",
+          "website": "https://clayelections.gov/"
+        },
+        {
+          "id": "fl-co-12019-sheriff",
+          "name": "Michelle Cook",
+          "position": "Sheriff",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Clay County Sheriff. Named on claysheriff.com (verified 2026-07-21).",
+          "website": "https://www.claysheriff.com/"
+        },
+        {
+          "id": "fl-co-12019-clerk",
+          "name": "Tara S. Green",
+          "position": "Clerk of Court and Comptroller",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Clay County Clerk of Court and Comptroller. Named on clayclerk.com (verified 2026-07-21).",
+          "website": "https://www.clayclerk.com/"
+        },
+        {
+          "id": "fl-co-12019-tax-collector",
+          "name": "Diane Hutchings",
+          "position": "Tax Collector",
+          "party": "Other",
+          "inOffice": true,
+          "bio": "Clay County Tax Collector. Named on claycountytax.com (verified 2026-07-21).",
+          "website": "https://www.claycountytax.com/"
         }
       ],
       "elections": []

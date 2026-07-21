@@ -15,6 +15,7 @@ into the owning doc when a new workflow scales; do not start rival logs elsewher
 
 | Date | Process / conduit | Scale step | Efficiency (time or cost per unit) | Effectiveness (quality/coverage/honest-gap) | Step improved | Change applied (file/command) | Next watch |
 |------|-------------------|------------|-------------------------------------|---------------------------------------------|---------------|------------------------------|------------|
+| 2026-07-21 | M8-A FL county officials | ref-2 → +9 (11 filled) | Ballotpedia `Government_of_*` missing/403; SOE/.gov curl primary | 9/10 alphabetical batch filled; Charlotte deferred (JS-only SOE); offices not curl-verified omitted | Prefer SOE county-wide tables; never invent | `fl-reference-counties.json` + `countyMapGuard` batch1 fixture | Next batch →25; unstick Charlotte; CF-blocked PA/tax sites |
 | 2026-07-20 | agent navigation / nav guard | 1→21 prebuild cmds | orphan injection proven (~300ms) | 0 orphan nav-relevant files on main | reachability guard | `scripts/__tests__/navigationIntegrity.test.ts` + prebuild wiring | re-run orphan test after any new lib/scripts file |
 | *(example)* | profile:build / votes | 1→10 | 5.4 min/member → 4.1 | 0 new defect class | retry/backoff | `scripts/lib/resilientFetch.ts` | spot-check ≥3 members |
 

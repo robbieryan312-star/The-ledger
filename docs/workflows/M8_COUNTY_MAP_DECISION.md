@@ -1,11 +1,11 @@
 # M8 — Florida county-map drilldown: Option A (owner 2026-07-20)
 
-**Status:** Owner chose **Option A** (wire). **Reference-2 only** — Miami-Dade `12086` + Liberty `12077`.  
-⛔ STOP for Claude review of the 2-county reference **before scaling to 67**.
+**Status:** Owner chose **Option A** (wire). Reference-2 merged; **scale batch 1** adds 9 counties (11 filled total).  
+⛔ STOP for Claude review of batch 1 **before** next ladder step (→25 →67).
 
 **Implementation:** `lib/data/generated/countyMap/fl-reference-counties.json` → `lib/data/countyMap.ts` → `USAMap` / `OfficialCard`.
 
-**Sources:** Ballotpedia (nonpartisan) primary for Miami-Dade; Liberty SOE + county.gov (official) where Ballotpedia lacked a full table; honest-gap for offices not verified.
+**Sources:** Miami-Dade Ballotpedia + .gov; Liberty SOE + county.gov; scale batch 1 = official SOE/.gov only (Ballotpedia `Government_of_*` missing/blocked). Charlotte `12015` deferred. Honest-gap for offices not curl-verified.
 
 **Canonical live URL:** https://the-ledger-s4dn.vercel.app (sole Vercel project).
 

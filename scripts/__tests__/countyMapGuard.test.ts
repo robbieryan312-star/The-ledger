@@ -7,9 +7,12 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import {
+  COUNTY_MAP_FILLED_COUNT_AFTER_BATCH1,
+  COUNTY_MAP_KNOWN_ABSENT_FIPS,
   COUNTY_MAP_KNOWN_BAD_EMPTY_AS_LIVE,
   COUNTY_MAP_KNOWN_GOOD_REFERENCE,
   COUNTY_MAP_REFERENCE_FIPS,
+  COUNTY_MAP_SCALE_BATCH1_FIPS,
 } from '../../lib/data/__fixtures__/countyMap.fixture';
 import { countyByFips, countiesByState, countyMapMeta } from '../../lib/data/countyMap';
 
@@ -33,11 +36,9 @@ test('USAMap does not hardcode empty countyByFips = {}', () => {
   assert.match(src, /No verified county record available/);
 });
 
-test('fixture: reference FIPS Miami-Dade + Liberty are filled with officials', () => {
-  assert.deepEqual(countyMapMeta.referenceFips, [
-    COUNTY_MAP_REFERENCE_FIPS.liberty,
-    COUNTY_MAP_REFERENCE_FIPS.miamiDade,
-  ]);
+test('fixture: reference FIPS Miami-Dade + Liberty remain filled with officials', () => {
+  assert.ok(countyMapMeta.referenceFips.includes(COUNTY_MAP_REFERENCE_FIPS.liberty));
+  assert.ok(countyMapMeta.referenceFips.includes(COUNTY_MAP_REFERENCE_FIPS.miamiDade));
   for (const fips of COUNTY_MAP_KNOWN_GOOD_REFERENCE.fips) {
     const county = countyByFips[fips];
     assert.ok(county, `missing county ${fips}`);
@@ -54,10 +55,17 @@ test('fixture: reference FIPS Miami-Dade + Liberty are filled with officials', (
       assert.ok(o.bio.trim().length > 10);
     }
   }
-  assert.ok((countiesByState.FL ?? []).length === 2);
 });
 
-test('non-reference Florida FIPS are absent (honest-gap, not empty live object)', () => {
-  assert.equal(countyByFips['12001'], undefined); // Alachua — not in reference scope
-  assert.equal(Object.keys(countyByFips).length, 2);
+test('scale batch 1 FIPS are filled; Charlotte remains honest-gap absent', () => {
+  for (const fips of COUNTY_MAP_SCALE_BATCH1_FIPS) {
+    const county = countyByFips[fips];
+    assert.ok(county, `missing batch-1 county ${fips}`);
+    assert.equal(county.status, 'filled');
+    assert.ok(county.officials.length >= 1, `${fips} needs ≥1 official`);
+    assert.ok(county.sources && county.sources.length >= 1, `${fips} needs sources`);
+  }
+  assert.equal(countyByFips[COUNTY_MAP_KNOWN_ABSENT_FIPS], undefined);
+  assert.equal(Object.keys(countyByFips).length, COUNTY_MAP_FILLED_COUNT_AFTER_BATCH1);
+  assert.equal((countiesByState.FL ?? []).length, COUNTY_MAP_FILLED_COUNT_AFTER_BATCH1);
 });
