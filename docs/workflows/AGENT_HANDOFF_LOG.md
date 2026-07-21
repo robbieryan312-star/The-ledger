@@ -40,7 +40,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Confront Claude — paste to Claude Code
 
-**M8-A scale batch 1** — +9 counties (11 filled) · Charlotte deferred · tip **`e3fa271`** (PR head may advance on docs-only follow-up) · prebuild 0 · ⛔ exact-SHA approval · STOP before →25
+**M8-A scale batch 1 #75** — +9 counties (11 filled) · Charlotte deferred · tip **`df2ee90`** · prebuild 0 · ⛔ exact-SHA approval · STOP before →25
 
 **Also tips:** #74 M-BACKLOG · #69 M3 Iran-drop
 
