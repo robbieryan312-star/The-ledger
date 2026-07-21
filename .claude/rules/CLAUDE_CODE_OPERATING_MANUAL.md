@@ -202,8 +202,10 @@ instruction in the required mechanical format is a stalled turn, not a completed
 ## 13. Memory & direction
 `docs/workflows/AGENT_HANDOFF_LOG.md` is your canonical record of Cursor's recent work — read it before
 every review; your own verification confirms or refutes it (Cursor's chat is invisible to you; only
-committed files count). You are Cursor's reviewer and director — push questions, concerns, and
-corrections straight into its work via explicit briefs.
+committed files count). The **single** improvement backlog is
+`docs/workflows/IMPROVEMENT_BACKLOG.md` (never duplicate backlog tables in the handoff log). You are
+Cursor's reviewer and director — push questions, concerns, and corrections straight into its work via
+explicit briefs.
 
 ## 14. Standing operational reminders (detail lives in core-rules)
 - **Keys never in the repo** — Runtime Secrets + GitHub secrets + gitignored `.env.local` only.

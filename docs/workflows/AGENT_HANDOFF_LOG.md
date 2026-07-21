@@ -10,6 +10,26 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-21 — M-BACKLOG #74 micro-fix (⛔ Claude)
+
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · STOP
+
+- Zero `## Improvement backlog` headings in handoff (one-line pointers only)
+- Canonical `docs/workflows/IMPROVEMENT_BACKLOG.md` + Owner/dashboard (project=`the-ledger-main`)
+- Guard fails on second `## Improvement backlog`, duplicated `## Backlog`, or second backlog file
+- Rebased onto `main` @ m5 merge
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-BACKLOG #74:** approve **PR head** after push · prebuild 0 · zero handoff backlog headings · `## Backlog` uniqueness guard
+**Also merged:** m5 `cc69512` → `main` @ `134ef60` (docs `b437857`)
+**m4 #62 tip:** `8f02c9e` ⛔ · **M-UI #68** `bef4ddc` STAGE THREE after m4
+**PARK:** #76 · m8a · m7a–d
+
+---
+
 ## HANDOFF 2026-07-21 — m5 MERGED @ cc69512 (#63)
 
 **From:** Cursor · **To:** Claude / Owner · **Verdict:** **MERGED**
@@ -1188,22 +1208,7 @@ W4 expand FILE_INVENTORY_AUDIT with ACCURACY column + every-file table.
 ### Open / next
 - STOP for Claude review; reconcile with PR #43/#44 before merge sequencing.
 
-## Improvement backlog
-
-| Date | Item | Status |
-|------|------|--------|
-| 2026-07-19 | **DOC-01 (P0):** Cursor Cloud injected rules out of sync — still reference deleted `agent-ops.mdc` | open — owner re-sync dashboard rules |
-| 2026-07-19 | **Platform audit P1 (archived):** DOC-03–DOC-17 contradictions — push gate, session-start order, corroboration, migrated count 7, honest-gap copy, guard counts | open — Claude brief (source: `docs/archive/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md`) |
-| 2026-07-19 | **Platform audit P1 (product):** Consistency Score removal, DonorChart PAC-first, layout-number drift, silent-empty sections | open — owner visual + Claude brief |
-| 2026-07-19 | **Platform audit P1 (data):** FL dual-vintage asOf; ingest preserve-on-failure gaps (rankings, BEA, counties, openstates/sam/govinfo/news) | open |
-| 2026-07-19 | **Platform audit P1 (CI):** `refresh-data.yml` missing Playwright install for render-integrity postbuild | open |
-| 2026-07-19 | **Platform audit P2:** `react-simple-maps` React 19 peer invalid; unify Node 20/22 in CI | open |
-| 2026-07-19 | **OWNER DASHBOARD:** rename `the-ledger-s4dn` → Approved | open — owner only |
-| 2026-07-18 | `npm audit`: 7 vulns — upstream Next/react-simple-maps (archived: `docs/archive/workflows/NPM_AUDIT_2026-07-18.md`) | open |
-| 2026-07-11 | Guard: national news refresh semantics — empty success vs fetch-failed | open |
-
-
-
+Improvement backlog → [`docs/workflows/IMPROVEMENT_BACKLOG.md`](./IMPROVEMENT_BACKLOG.md) (single canonical source).
 
 ## Latest session — W1 wiring + W3 defects + Wave 1 data-loss (COMPLETE — W3/Wave1 STOP for Claude)
 
@@ -1806,17 +1811,7 @@ raw value + unit + `recent[]` history (`scripts/build-data-slices.ts`, `lib/type
 
 ---
 
-## Improvement backlog (selected updates)
-
-| ID | Status | Note |
-|----|--------|------|
-| IMP-011 | **done** | Guards reconciled on main (17 prebuild) |
-| IMP-013 | **done** | #20+#21 merged to main |
-| IMP-015 | open | handoff-log guard optional |
-| IMP-NEW | open | Sanders profile mobile overflow — deferred from render batch |
-| IMP-NEW | **done** | Render CI flake — `waitForSelector` fix |
-
----
+Improvement backlog → [`docs/workflows/IMPROVEMENT_BACKLOG.md`](./IMPROVEMENT_BACKLOG.md) (single canonical source).
 
 ## Session log (last 3 only)
 
