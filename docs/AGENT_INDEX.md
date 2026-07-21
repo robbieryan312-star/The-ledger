@@ -45,6 +45,7 @@ Also read when relevant: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`,
 | **Machine-readable source list (for code)** | `lib/data/sourceCatalog.ts` |
 | **What a complete member profile requires** | `PILOT_PROFILE_CHECKLIST.md` |
 | **What a complete state profile requires** | `docs/PILOT_STATE_CHECKLIST.md` |
+| **FL county-map elected officials (M8 Option A — reference-2)** | `docs/workflows/M8_COUNTY_MAP_DECISION.md` + `lib/data/countyMap.ts` / `lib/data/generated/countyMap/fl-reference-counties.json` — ⛔ STOP before scaling past Miami-Dade+Liberty |
 | **M2 batch scaling ladder (canonical owner)** | `docs/workflows/BATCH_SCALING.md` — batch protocol + ladder table |
 | **Process improvement at scale (where to log)** | `docs/workflows/BATCH_SCALING.md` § Improvement log (+ `DUAL_REFERENCE_ROADMAP.md` for dual-reference conduits) |
 | **Strategic dual-reference roadmap (FL + S000033)** | `docs/workflows/DUAL_REFERENCE_ROADMAP.md` |
