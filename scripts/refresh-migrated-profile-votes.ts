@@ -13,12 +13,25 @@ import { getNationalCongressVotesByBioguide } from '../lib/data/nationalCongress
 import { getNationalFecFinanceByBioguide } from '../lib/data/nationalFecFinance';
 import { getScheduleAForBioguide } from '../lib/data/fecScheduleA';
 import { buildOrgVoteTopicLinks } from '../lib/data/buildOrgVoteTopicLinks';
+import type { VoteRecord } from '../lib/types';
+import { preserveExistingFinanceIfFreshMissing, preserveExistingVotesIfFreshShallower } from './lib/profileMigrate';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const profilesRoot = path.join(projectRoot, 'lib', 'data', 'generated', 'profiles');
 
 const S000033_ORG_VOTE_LINKS_NOTE =
   'Pilot Schedule A (committee C00411330, two-year 2026) contains only individual itemized contributors in LAST, FIRST form. After individual-donor exclusion and curated-org-only matching, no org/PAC rows qualify for org→topic→vote joins — an honest gap, not an undiagnosed empty.';
+
+type ExistingVotesPayload = {
+  votes?: VoteRecord[];
+  chamber?: string;
+  asOf?: string;
+  source?: string;
+};
+
+type ExistingFinancePayload = {
+  entry?: unknown;
+};
 
 async function refreshOne(bioguideId: string): Promise<void> {
   const politician = getPoliticianByBioguide(bioguideId);
@@ -27,16 +40,33 @@ async function refreshOne(bioguideId: string): Promise<void> {
 
   const nationalVotes = getNationalCongressVotesByBioguide(bioguideId, politicianId);
   const nationalFec = getNationalFecFinanceByBioguide(bioguideId);
+  let existingVotesPayload: ExistingVotesPayload | null = null;
+  let existingFinancePayload: ExistingFinancePayload | null = null;
+  try {
+    existingVotesPayload = JSON.parse(await readFile(path.join(profileDir, 'votes.json'), 'utf8')) as ExistingVotesPayload;
+  } catch {
+    /* no prior votes.json */
+  }
+  try {
+    existingFinancePayload = JSON.parse(await readFile(path.join(profileDir, 'finance.json'), 'utf8')) as ExistingFinancePayload;
+  } catch {
+    /* no prior finance.json */
+  }
+
+  const freshVotes = nationalVotes?.votes ?? [];
+  const votes = preserveExistingVotesIfFreshShallower(freshVotes, existingVotesPayload);
+  const preservedExistingVotes = (existingVotesPayload?.votes?.length ?? 0) > freshVotes.length;
+  const financeEntry = preserveExistingFinanceIfFreshMissing(nationalFec ?? null, existingFinancePayload);
 
   const votesPayload =
-    nationalVotes && nationalVotes.votes.length > 0
+    votes.length > 0
       ? {
           bioguideId,
           politicianId,
-          chamber: nationalVotes.chamber,
-          votes: nationalVotes.votes,
-          asOf: nationalVotes.asOf,
-          source: nationalVotes.source,
+          chamber: preservedExistingVotes ? existingVotesPayload?.chamber : nationalVotes?.chamber,
+          votes,
+          asOf: preservedExistingVotes ? existingVotesPayload?.asOf : nationalVotes?.asOf,
+          source: preservedExistingVotes ? existingVotesPayload?.source : nationalVotes?.source,
         }
       : {
           bioguideId,
@@ -51,10 +81,9 @@ async function refreshOne(bioguideId: string): Promise<void> {
 
   await writeFile(
     path.join(profileDir, 'finance.json'),
-    JSON.stringify({ bioguideId, entry: nationalFec ?? null }, null, 2) + '\n',
+    JSON.stringify({ bioguideId, entry: financeEntry }, null, 2) + '\n',
   );
 
-  const votes = nationalVotes?.votes ?? [];
   const scheduleRow = getScheduleAForBioguide(bioguideId);
   const orgLinks = scheduleRow && votes.length > 0 ? buildOrgVoteTopicLinks(scheduleRow, votes) : [];
   const orgVotePayload: { bioguideId: string; links: typeof orgLinks; note?: string } = {
@@ -76,7 +105,7 @@ async function refreshOne(bioguideId: string): Promise<void> {
 
   manifest.categories.votes =
     votes.length > 0 ? 'filled' : votesPayload.status === 'unavailable' ? 'honest-gap' : 'honest-gap';
-  manifest.categories.finance = nationalFec ? 'filled' : 'honest-gap';
+  manifest.categories.finance = financeEntry ? 'filled' : 'honest-gap';
   manifest.categories.orgVoteLinks = orgLinks.length > 0 ? 'filled' : 'honest-gap';
 
   await writeFile(manifestPath, JSON.stringify(manifest, null, 2) + '\n');

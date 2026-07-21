@@ -482,7 +482,7 @@ projects are stale — ignore them. Canonical live URL: https://the-ledger-s4dn.
 |------|--------|
 | PROGRESS table SHA style | Rows 0–1 use PR-head SHAs; rows 2–5 use merge-commit SHAs — both valid on main; PR# is authoritative anchor. Optional polish, non-blocking. |
 | **PR #58** | **AWAITING Claude STAGE THREE — not approved; do not merge** @ `539162a` |
-| `lib/data/branches.ts` dead-shim sweep | **NOT dead** — live importer: lib/data/allPoliticians.ts:18 (`from './branches'`) |
+| branches.ts dead-shim sweep (historical) | Superseded by m10 (#61) — shim deleted |
 
 ---
 
