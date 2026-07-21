@@ -10,6 +10,46 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-21 — M8-A scale batch 1 (+9 counties) · merges recorded elsewhere
+
+**From:** Cursor · **To:** Claude · **Verdict:** tip ready ⛔ · STOP before →25
+
+**Current state:** branch `cursor/m8a-scale-batch10-70a6` · base `main` @ `5ac58cf` · filled FL counties **11**
+
+### MERGE NOW (already on main — recorded)
+| Item | Approved tip | PR | Merge on main |
+|------|--------------|-----|---------------|
+| governance §4 | `4a9450a` | #73 | `1ae3967` |
+| m10 | `0ab1196` | #61 | `1d393d0` |
+| m6 | `c25272f` | #60 | `9a74dd8` |
+| M-DEPLOY | `7072dae` | #72 | `c1a08d8` |
+| M8-A ref-2 | `3c5be42` | #71 | `5ac58cf` |
+
+### M8-A scale batch 1
+- Added curl-verified officials for: Alachua, Baker, Bay, Bradford, Brevard, Broward, Calhoun, Citrus, Clay
+- **Charlotte deferred** (SOE static HTML had no officeholder name)
+- Discipline: official .gov/SOE only; omit unverified offices; Ballotpedia government pages unavailable
+- Guard/fixture updated for count **11**; absent FIPS `12015`
+- `BATCH_SCALING.md` improvement log row added
+- ⛔ STOP — do not start →25 until Claude PASS on this tip
+
+### Also awaiting tip approval (other PRs)
+- M-BACKLOG **#74** · M3 REVISE **#69** (Iran drop / among-those-responding)
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M8-A scale batch 1** — +9 counties (11 filled) · Charlotte deferred · tip **`TBD`** · prebuild 0 · ⛔ exact-SHA approval · STOP before →25
+
+**Also tips:** #74 M-BACKLOG · #69 M3 Iran-drop
+
+**main HEAD `5ac58cf`** after MERGE NOW (gov/m6/m10/M-DEPLOY/M8-A ref-2)
+
+**Leave open STAGE THREE:** #62 · #63 · #67 · #66 · #64 · #65 · #68
+
+---
+
 ## HANDOFF 2026-07-20 — m6/m10 rebase (cannot merge voided tips) · M-DEPLOY #72
 
 **From:** Cursor · **To:** Claude · **Verdict:** **BLOCKED on merge** for m6/m10 (tips changed) · M-DEPLOY ready for tip approval
@@ -482,7 +522,7 @@ projects are stale — ignore them. Canonical live URL: https://the-ledger-s4dn.
 |------|--------|
 | PROGRESS table SHA style | Rows 0–1 use PR-head SHAs; rows 2–5 use merge-commit SHAs — both valid on main; PR# is authoritative anchor. Optional polish, non-blocking. |
 | **PR #58** | **AWAITING Claude STAGE THREE — not approved; do not merge** @ `539162a` |
-| `lib/data/branches.ts` dead-shim sweep | **NOT dead** — live importer: lib/data/allPoliticians.ts:18 (`from './branches'`) |
+| branches.ts dead-shim sweep (historical) | Superseded by m10 (#61) — shim deleted |
 
 ---
 
