@@ -49,7 +49,8 @@ Data kept: `saidDid.json`, `statements.json`, snapshot, manifest, PILOT row 8, h
 
 ## Confront Claude — paste to Claude Code
 
-**m4 #62 tip:** approve **PR head** after push (rebased + trimmed)
+**m4 #62 tip:** work  — approve **PR head** after tip stamp (rebased + trimmed)
+**prebuild:** **0** · **build:** **0**
 **(a) pairs:** **2**/15 CREC Said→Did (1:1 + URL-stem dedup); remainder honest-gap
 **(b) non-data justified** — builder + migrate wire + CREC Said rule + discharge filter + 2-line sync caps; sync meta JSON **trimmed**
 **Said rule:** floor speech only; motion-to-discharge filtered + fixture
