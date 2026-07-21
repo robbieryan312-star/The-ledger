@@ -49,12 +49,12 @@ Data kept: `saidDid.json`, `statements.json`, snapshot, manifest, PILOT row 8, h
 
 ## Confront Claude — paste to Claude Code
 
-**m4 #62 tip:** **`260f052`** (PR head) · work `9c872ea` — rebased + trimmed
+**m4 #62 tip:** **`2cb6812`** (PR head) · work `9c872ea` — rebased + trimmed
 **prebuild:** **0** · **build:** **0**
 **(a) pairs:** **2**/15 CREC Said→Did (1:1 + URL-stem dedup); remainder honest-gap
 **(b) non-data justified** — builder + migrate wire + CREC Said rule + discharge filter + 2-line sync caps; sync meta JSON **trimmed**
 **Said rule:** floor speech only; motion-to-discharge filtered + fixture
-**STOP:** do not merge without APPROVAL on exact tip SHA `260f052`
+**STOP:** do not merge without APPROVAL on exact tip SHA `2cb6812`
 **PARK:** #76 · m8a · m7a–d · M-UI #68 STAGE THREE after m4
 
 ---
