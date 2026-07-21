@@ -10,6 +10,40 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-21 — Stale failed-PR recovery (no Claude-awaiting tips merged)
+
+**From:** Cursor · **To:** Claude · **Verdict:** recovery tip ready ⛔ · **no merges** (nothing had exact-SHA Claude APPROVAL)
+
+**Current state:** branch `cursor/stale-pr-recovery-70a6` · PR **#76** @ **`a8fd066`** · base `main` @ `5ac58cf` · prebuild **0**
+
+### Review of open PRs
+| Bucket | PRs | Action |
+|--------|-----|--------|
+| Awaiting Claude tip / STAGE THREE | #62–#69, #74, #75 | **Left alone** per owner |
+| Superseded conflicting docs | #70 M8 decision | Superseded by merged #71 — left open |
+| Failed/conflicting stale critical-bug PRs | #28 #29 #30 #31 #40 | **Recovered** onto #76 (need Claude tip APPROVAL) |
+
+### Recovered into #76
+- #31 Compare → `/compare?mode=candidates` + guard (USAMap M8 wiring preserved)
+- #28 data-slices preserve-missing + guard
+- #30 `writeFloridaSnapshot` preserve-on-errors + guard
+- #29 profile migrate preserve shallower votes/finance
+- #40 refresh-data fail keyed ingests (kept `--full-corpus`) + render-integrity + guards
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**No production merges this turn** — zero open tips with Claude exact-SHA APPROVAL.
+
+**New recovery tip (⛔):** **#76** @ **`a8fd066`** — recovers still-needed #28/#29/#30/#31/#40 · prebuild 0
+
+**Left alone:** #62–#69 · #74 · #75
+
+**Info:** #70 CONFLICTING — superseded by #71 (M8-A)
+
+---
+
 ## HANDOFF 2026-07-20 — m6/m10 rebase (cannot merge voided tips) · M-DEPLOY #72
 
 **From:** Cursor · **To:** Claude · **Verdict:** **BLOCKED on merge** for m6/m10 (tips changed) · M-DEPLOY ready for tip approval
