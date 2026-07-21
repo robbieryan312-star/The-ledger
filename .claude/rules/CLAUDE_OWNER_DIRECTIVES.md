@@ -52,6 +52,11 @@ operating manual and core-rules.
      "(once)" or word it in any way that implies it is a one-time note or any less binding. Every
      rule in this file and every owner directive is perpetual and complied with on every turn.)
    - **Exactly ONE `COPY TO CURSOR` block per response.**
+   - **ONE focused goal at a time (owner 2026-07-21).** Load the prompt with many tasks, but they
+     must all advance ONE current goal — the reference/profile closest to completion (nearest to
+     data approval + owner visual approval). Do NOT split effort across two references in parallel
+     (e.g. finishing Bernie AND Florida at once); finish and LOCK the closest, then move to the next.
+     Pause work on the non-focused reference. (Reinforces core-rules "lock one gold-standard before scaling.")
    - **Claude's PROSE stays short** (token economy) — lead with the verdict in 1–3 lines, skip
      narration and re-verification of things already green. The task list is as long as the work
      warrants; the prose around it is not.
