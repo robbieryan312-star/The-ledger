@@ -8,6 +8,7 @@ import {
   MEMBER_NEWS_MATCH_KNOWN_GOOD_FULL_NAME,
   MEMBER_NEWS_MATCH_KNOWN_GOOD_HONORIFIC,
   MEMBER_NEWS_MATCH_SANDERS_LEG,
+  MEMBER_NEWS_QUALIFY_KNOWN_BAD_AMONG_THOSE_RESPONDING,
   MEMBER_NEWS_QUALIFY_KNOWN_BAD_COMPARISON_ONLY,
   MEMBER_NEWS_QUALIFY_KNOWN_BAD_RELEASER_NO_QUOTE,
   MEMBER_NEWS_QUALIFY_KNOWN_GOOD_DIRECT_QUOTE,
@@ -71,6 +72,20 @@ test('fixture: comparison-only mention does NOT qualify', () => {
   );
   assert.equal(q.ok, MEMBER_NEWS_QUALIFY_KNOWN_BAD_COMPARISON_ONLY.expectedOk);
   assert.equal(q.reason, MEMBER_NEWS_QUALIFY_KNOWN_BAD_COMPARISON_ONLY.expectedReason);
+});
+
+test('fixture: "among those responding" does NOT qualify', () => {
+  const q = qualifiesMemberNewsItem(
+    MEMBER_NEWS_QUALIFY_KNOWN_BAD_AMONG_THOSE_RESPONDING.headline,
+    MEMBER_NEWS_QUALIFY_KNOWN_BAD_AMONG_THOSE_RESPONDING.body,
+    leg,
+    displayWithBernie,
+  );
+  assert.equal(q.ok, MEMBER_NEWS_QUALIFY_KNOWN_BAD_AMONG_THOSE_RESPONDING.expectedOk);
+  assert.equal(
+    q.reason,
+    MEMBER_NEWS_QUALIFY_KNOWN_BAD_AMONG_THOSE_RESPONDING.expectedReason,
+  );
 });
 
 test('fixture: direct member quote DOES qualify', () => {

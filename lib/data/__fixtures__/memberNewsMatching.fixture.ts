@@ -42,13 +42,28 @@ export const MEMBER_NEWS_QUALIFY_KNOWN_BAD_COMPARISON_ONLY = {
   expectedReason: 'comparison-only-mention',
 } as const;
 
-/** Owner 2026-07-20: direct member quote DOES qualify (multi-politician reaction OK). */
-export const MEMBER_NEWS_QUALIFY_KNOWN_GOOD_DIRECT_QUOTE = {
-  defect: 'direct-member-quote-ok',
-  description: 'Direct Sanders quote in a multi-politician reaction piece qualifies',
+/**
+ * Owner 2026-07-21: "among those responding" ≠ subject and ≠ quote — does NOT qualify.
+ * Frozen bad (was incorrectly kept as Iran reaction piece).
+ */
+export const MEMBER_NEWS_QUALIFY_KNOWN_BAD_AMONG_THOSE_RESPONDING = {
+  defect: 'among-those-responding-mention',
+  description:
+    '"Bernie Sanders among those responding" is list-membership, not subject or direct quote',
   headline:
     '‘Unhinged madman’: US politicians react to Trump’s expletive-laden threat to Iran',
-  body: 'Bernie Sanders, an independent US senator, called it "dangerous and mentally unbalanced". He said on X: "One month after starting the war in Iran, this is the statement of the President of the United States on Easter Sunday."',
+  body: 'Marjorie Taylor Greene and Bernie Sanders among those responding with alarm to Trump writing ‘open the fuckin’ strait, you crazy bastards’ Some US politicians have reacted with alarm and questioned…',
+  expectedOk: false,
+  expectedReason: 'among-those-responding-mention',
+} as const;
+
+/** Direct member quote DOES qualify when the member is clearly the quote source. */
+export const MEMBER_NEWS_QUALIFY_KNOWN_GOOD_DIRECT_QUOTE = {
+  defect: 'direct-member-quote-ok',
+  description: 'Verbatim Sanders quote attributed to him qualifies',
+  headline:
+    'Bernie Sanders rails against billionaire ‘greed’ amid California tax battle',
+  body: 'Billionaires are “treading on very, very thin ice,” Bernie Sanders warned on Wednesday as he criticized grotesque levels of economic inequality.',
   expectedOk: true,
   expectedReason: 'direct-quote',
 } as const;

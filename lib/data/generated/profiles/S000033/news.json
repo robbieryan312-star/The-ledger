@@ -139,23 +139,6 @@
       }
     },
     {
-      "id": "s000033-topic-9",
-      "headline": "‘Unhinged madman’: US politicians react to Trump’s expletive-laden threat to Iran",
-      "summary": "Marjorie Taylor Greene and Bernie Sanders among those responding with alarm to Trump writing ‘open the fuckin’ strait, you crazy bastards’ Some US politicians have reacted with alarm and questioned…",
-      "date": "2026-04-05",
-      "category": "Congress",
-      "isOpinion": false,
-      "isVerified": false,
-      "url": "https://www.theguardian.com/us-news/2026/apr/05/trump-iran-threats-politician-reactions",
-      "source": {
-        "name": "The Guardian",
-        "url": "https://www.theguardian.com/us-news/2026/apr/05/trump-iran-threats-politician-reactions",
-        "tier": "alleged",
-        "date": "2026-04-05",
-        "description": "Approved-outlet member topic/tag RSS"
-      }
-    },
-    {
       "id": "s000033-topic-10",
       "headline": "Bernie Sanders and AOC introduce bill to pause building of new datacenters",
       "summary": "Lawmakers say moratorium on construction would buy time to create strong, federal guardrails for AI Amid an unprecedented energy crisis and the rapid buildout of artificial intelligence…",
@@ -224,5 +207,5 @@
       }
     }
   ],
-  "note": "13 subject/quoted article(s) after owner 2026-07-20 qualification (Sanders subject or direct quote; comparison-only excluded). Honest-gap for remaining 2 of target 15. Dropped: s000033-newsapi-11(mention-without-subject-or-quote), s000033-topic-2(comparison-only-mention). Source checks: topic-2 comparison-only DROP; newsapi-11 CDC no direct quote DROP; topic-9 Iran direct quote KEEP."
+  "note": "12 subject/quoted article(s) after owner 2026-07-21 qualification (Sanders subject or direct quote; comparison-only and \"among those responding\" excluded). Honest-gap for remaining 3 of target 15. Dropped: s000033-newsapi-11(mention-without-subject-or-quote), s000033-topic-2(comparison-only-mention), s000033-topic-9(among-those-responding — Trump-Iran; Sanders not direct quote). Source checks: topic-2 comparison-only DROP; newsapi-11 CDC no direct quote DROP; topic-9 among-those-responding DROP."
 }

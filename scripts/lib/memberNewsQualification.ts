@@ -1,8 +1,9 @@
 /**
- * Member-news qualification (owner 2026-07-20):
+ * Member-news qualification (owner 2026-07-20 / revised 2026-07-21):
  * An item qualifies only if the member is the SUBJECT or is directly QUOTED.
  * Comparison-only mentions (e.g. "Is he Bernie Sanders or Donald Trump?") do NOT qualify.
- * A direct member quote DOES qualify even in a multi-politician reaction piece.
+ * List-membership framing ("X among those responding") does NOT qualify — not subject, not a quote.
+ * Multi-politician reaction pieces qualify only with a true direct member quote (not Trump-only quotes).
  */
 import {
   matchesMemberInText,
@@ -88,9 +89,9 @@ export function hasDirectMemberQuote(
       `\\b${e}\\b[^".]{0,80}\\b(?:said|says|called|wrote|warned|urged|told)\\b[^".]{0,60}["“]`,
       'i',
     );
-    // "quote," Name said
+    // "quote," Name said/warned/…
     const quoteThenSaid = new RegExp(
-      `["“][^"”]{8,280}["”][,.]?\\s*(?:${e}|he|she)\\s+\\b(?:said|says|wrote|added)\\b`,
+      `["“][^"”]{8,280}["”][,.]?\\s*(?:${e}|he|she)\\s+\\b(?:said|says|wrote|added|warned|urged|called)\\b`,
       'i',
     );
     // He/She said on X: "… after naming member in prior clause (same paragraph window)
@@ -121,8 +122,9 @@ export function isMemberHeadlineSubject(
     ...names,
     ...(ln ? [`Sen. ${ln}`, `Senator ${ln}`] : []),
   ];
+  // Never treat "among those (responding)" as a subject-action cue (owner 2026-07-21).
   const action =
-    '(?:calls?|called|backs?|backed|urges?|urged|warns?|warned|rails?|wants?|introduces?|introduced|proposes?|proposed|fails?|failed|effort|plan|says?|said|reacts?|among those)';
+    '(?:calls?|called|backs?|backed|urges?|urged|warns?|warned|rails?|wants?|introduces?|introduced|proposes?|proposed|fails?|failed|effort|plan|says?|said|reacts?)';
 
   // Bare last-name after a lead quote: "'…': Sanders warns …" (before full-name gate)
   if (ln) {
@@ -163,7 +165,26 @@ export function isMemberHeadlineSubject(
 }
 
 /**
- * Qualifies for profile News: subject OR direct quote; never comparison-only.
+ * List-membership / reaction-crowd framing — not subject, not a quote.
+ * Frozen bad: "Bernie Sanders among those responding with alarm…"
+ */
+export function isAmongThoseRespondingMention(
+  text: string,
+  leg: LegislatorNewsRow,
+  displayByBio: NewsDisplayMap,
+): boolean {
+  const names = nameVariants(leg, displayByBio);
+  if (names.length === 0) return false;
+  const nameAlt = names.map(escapeRe).join('|');
+  return new RegExp(
+    `\\b(?:${nameAlt})\\b[^.]{0,100}\\bamong those\\b[^.]{0,40}\\brespond`,
+    'i',
+  ).test(text);
+}
+
+/**
+ * Qualifies for profile News: subject OR direct quote; never comparison-only
+ * or "among those responding" list-membership.
  */
 export function qualifiesMemberNewsItem(
   headline: string,
@@ -174,6 +195,9 @@ export function qualifiesMemberNewsItem(
   const combined = `${headline}\n${bodyOrSummary}`;
   if (isComparisonOnlyMention(combined, leg, displayByBio)) {
     return { ok: false, reason: 'comparison-only-mention' };
+  }
+  if (isAmongThoseRespondingMention(combined, leg, displayByBio)) {
+    return { ok: false, reason: 'among-those-responding-mention' };
   }
   if (hasDirectMemberQuote(combined, leg, displayByBio)) {
     return { ok: true, reason: 'direct-quote' };
