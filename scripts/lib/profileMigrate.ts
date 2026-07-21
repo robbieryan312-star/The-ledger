@@ -84,6 +84,14 @@ type SaidDidFileShape = {
   byTopic?: Record<string, SaidDidLinkEntry[]>;
 };
 
+type VotesFileShape = {
+  votes?: readonly VoteRecord[];
+};
+
+type FinanceFileShape = {
+  entry?: unknown;
+};
+
 export function countStatementsInFile(file: StatementsFileShape | null | undefined): number {
   if (!file?.byTopic) return 0;
   return Object.values(file.byTopic).reduce((n, t) => n + (t.statements?.length ?? 0), 0);
@@ -92,6 +100,10 @@ export function countStatementsInFile(file: StatementsFileShape | null | undefin
 export function countSaidDidLinksInFile(file: SaidDidFileShape | null | undefined): number {
   if (!file?.byTopic) return 0;
   return Object.values(file.byTopic).flat().length;
+}
+
+export function countVotesInFile(file: VotesFileShape | null | undefined): number {
+  return file?.votes?.length ?? 0;
 }
 
 /** §6: never overwrite committed statements with empty when a positions-only migrate re-runs. */
@@ -116,17 +128,44 @@ export function preserveExistingStatementsIfFreshEmpty(
   return Object.values(byTopicClean).reduce((n, t) => n + t.statements.length, 0);
 }
 
-/** §6: never overwrite committed Said→Did with empty when a positions-only migrate re-runs. */
+/** §6: never overwrite committed votes with shallower fresh input from a partial/failed snapshot. */
+export function preserveExistingVotesIfFreshShallower(
+  freshVotes: readonly VoteRecord[],
+  existing: VotesFileShape | null | undefined,
+): VoteRecord[] {
+  const existingVotes = existing?.votes ?? [];
+  if (existingVotes.length > freshVotes.length) {
+    return structuredClone([...existingVotes]);
+  }
+  return [...freshVotes];
+}
+
+/** §6: never overwrite committed finance with null when a fresh snapshot is unavailable. */
+export function preserveExistingFinanceIfFreshMissing(
+  freshFinance: unknown,
+  existing: FinanceFileShape | null | undefined,
+): unknown {
+  if (freshFinance == null && existing?.entry != null) {
+    return structuredClone(existing.entry);
+  }
+  return freshFinance ?? null;
+}
+
+/** §6: never overwrite committed Said→Did with empty or shallower output from partial vote input. */
 export function preserveExistingSaidDidIfFreshEmpty(
   saidDidByTopic: Record<string, SaidDidLinkEntry[]>,
   freshLinkCount: number,
   existing: SaidDidFileShape | null | undefined,
 ): number {
-  if (freshLinkCount > 0 || !existing) {
+  if (!existing) {
     return freshLinkCount;
   }
-  if (countSaidDidLinksInFile(existing) === 0) return 0;
+  const existingCount = countSaidDidLinksInFile(existing);
+  if (existingCount === 0 || freshLinkCount >= existingCount) return freshLinkCount;
 
+  for (const topicId of Object.keys(saidDidByTopic)) {
+    delete saidDidByTopic[topicId];
+  }
   for (const [topicId, links] of Object.entries(existing.byTopic ?? {})) {
     if (links.length === 0) continue;
     saidDidByTopic[topicId] = links.map((link) => ({
@@ -134,7 +173,7 @@ export function preserveExistingSaidDidIfFreshEmpty(
       topicId: link.topicId ?? topicId,
     }));
   }
-  return Object.values(saidDidByTopic).flat().length;
+  return existingCount;
 }
 
 function resolvePoliticianId(bioguideId: string): string {
@@ -234,8 +273,21 @@ export async function migrateOne(
 
   const politicianId = resolvePoliticianId(bioguideId);
   const politician = getPoliticianByBioguide(bioguideId);
-  const votes = congressVotes(politicianId, bioguideId);
-  const fec = fecEntry(politicianId, bioguideId);
+  const OUT_DIR = path.join(profilesRoot, bioguideId);
+  let existingVotes: VotesFileShape | null = null;
+  let existingFinance: FinanceFileShape | null = null;
+  try {
+    existingVotes = JSON.parse(await readFile(path.join(OUT_DIR, 'votes.json'), 'utf8')) as VotesFileShape;
+  } catch {
+    /* no prior votes.json */
+  }
+  try {
+    existingFinance = JSON.parse(await readFile(path.join(OUT_DIR, 'finance.json'), 'utf8')) as FinanceFileShape;
+  } catch {
+    /* no prior finance.json */
+  }
+  const votes = preserveExistingVotesIfFreshShallower(congressVotes(politicianId, bioguideId), existingVotes);
+  const fec = preserveExistingFinanceIfFreshMissing(fecEntry(politicianId, bioguideId), existingFinance);
 
   const memberDeep = JSON.parse(
     await readFile(path.join(projectRoot, 'lib', 'data', 'generated', 'members', `${bioguideId}.json`), 'utf8'),
@@ -275,7 +327,6 @@ export async function migrateOne(
   const scheduleRow = getScheduleAForBioguide(bioguideId);
   const orgLinks = scheduleRow && votes.length > 0 ? buildOrgVoteTopicLinks(scheduleRow, votes) : [];
 
-  const OUT_DIR = path.join(profilesRoot, bioguideId);
   await mkdir(OUT_DIR, { recursive: true });
 
   let existingStatements: StatementsFileShape | null = null;

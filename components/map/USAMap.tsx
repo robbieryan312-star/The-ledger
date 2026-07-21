@@ -958,7 +958,7 @@ export default function USAMap({
                               </div>
                             ))}
                           </div>
-                          <Link href="/compare"
+                          <Link href="/compare?mode=candidates"
                                 className="mt-2 flex items-center gap-1 text-xs text-[#c8a951] hover:text-white transition-colors">
                             <Vote className="h-3 w-3" /> Compare candidates
                           </Link>

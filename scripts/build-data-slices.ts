@@ -4,7 +4,7 @@
  */
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import type { Source } from '../lib/types';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -28,6 +28,19 @@ interface RawSnapshot {
   records: Record<string, unknown>[];
 }
 
+export interface BundleSection {
+  sourceId: string;
+  label: string;
+  meta: Record<string, unknown>;
+  records: Record<string, unknown>[];
+}
+
+interface ExistingBundle {
+  asOf?: string;
+  fetchedAt?: string;
+  sections?: BundleSection[];
+}
+
 async function loadSnapshot(rel: string): Promise<RawSnapshot | null> {
   try {
     const raw = await readFile(path.join(DATA, rel), 'utf8');
@@ -35,6 +48,52 @@ async function loadSnapshot(rel: string): Promise<RawSnapshot | null> {
   } catch {
     return null;
   }
+}
+
+async function loadExistingBundle(fileName: string): Promise<ExistingBundle | null> {
+  try {
+    const raw = await readFile(path.join(OUT_DIR, fileName), 'utf8');
+    const parsed = JSON.parse(raw) as ExistingBundle;
+    return Array.isArray(parsed.sections) ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Keep prior-good sections when a raw source file is missing on rebuild (core-rules §6). */
+export function mergeSectionsPreservingMissing(
+  freshSections: BundleSection[],
+  existingSections: BundleSection[],
+  orderedSourceIds: string[],
+): BundleSection[] {
+  const freshById = new Map(freshSections.map((section) => [section.sourceId, section]));
+  const existingById = new Map(existingSections.map((section) => [section.sourceId, section]));
+  const emitted = new Set<string>();
+  const merged: BundleSection[] = [];
+
+  for (const sourceId of orderedSourceIds) {
+    const section = freshById.get(sourceId) ?? existingById.get(sourceId);
+    if (section) {
+      merged.push(section);
+      emitted.add(sourceId);
+    }
+  }
+
+  for (const section of existingSections) {
+    if (!emitted.has(section.sourceId)) {
+      merged.push(section);
+      emitted.add(section.sourceId);
+    }
+  }
+
+  for (const section of freshSections) {
+    if (!emitted.has(section.sourceId)) {
+      merged.push(section);
+      emitted.add(section.sourceId);
+    }
+  }
+
+  return merged;
 }
 
 function pick(rec: Record<string, unknown>, fields: string[]): string {
@@ -428,7 +487,9 @@ async function buildLegislationBundle() {
     { id: 'govinfo', label: 'GovInfo — Florida documents', path: 'govinfo/florida-legislative-docs.json', limit: 10 },
     { id: 'fedregister', label: 'Federal Register — Florida', path: 'fedregister/florida-documents.json', limit: 10 },
   ];
-  const sections = [];
+  const outFile = 'legislation-florida.json';
+  const existing = await loadExistingBundle(outFile);
+  const sections: BundleSection[] = [];
   let asOf = '';
   let fetchedAt: string | undefined;
   for (const src of sources) {
@@ -445,10 +506,23 @@ async function buildLegislationBundle() {
       ),
     });
   }
-  if (!sections.length) return;
+  if (!sections.length && !(existing?.sections?.length)) return;
+  const mergedSections = mergeSectionsPreservingMissing(
+    sections,
+    existing?.sections ?? [],
+    sources.map((s) => s.id),
+  );
   await writeFile(
-    path.join(OUT_DIR, 'legislation-florida.json'),
-    JSON.stringify({ asOf, fetchedAt, sections }, null, 2),
+    path.join(OUT_DIR, outFile),
+    JSON.stringify(
+      {
+        asOf: asOf || existing?.asOf || '',
+        fetchedAt: fetchedAt ?? existing?.fetchedAt,
+        sections: mergedSections,
+      },
+      null,
+      2,
+    ),
   );
 }
 
@@ -477,7 +551,9 @@ async function buildNewsBundle() {
     { id: 'newsapi', label: 'NewsAPI — Florida coverage', path: 'news/florida-coverage.json', limit: 12 },
     { id: 'gdelt', label: 'GDELT — Florida coverage', path: 'gdelt/florida-coverage.json', limit: 12 },
   ];
-  const sections = [];
+  const outFile = 'news-florida.json';
+  const existing = await loadExistingBundle(outFile);
+  const sections: BundleSection[] = [];
   let asOf = '';
   let fetchedAt: string | undefined;
   for (const src of sources) {
@@ -492,8 +568,24 @@ async function buildNewsBundle() {
       records: snap.records.slice(0, src.limit).map((r, i) => toRow(r, `${src.id}-${i}`)),
     });
   }
-  if (!sections.length) return;
-  await writeFile(path.join(OUT_DIR, 'news-florida.json'), JSON.stringify({ asOf, fetchedAt, sections }, null, 2));
+  if (!sections.length && !(existing?.sections?.length)) return;
+  const mergedSections = mergeSectionsPreservingMissing(
+    sections,
+    existing?.sections ?? [],
+    sources.map((s) => s.id),
+  );
+  await writeFile(
+    path.join(OUT_DIR, outFile),
+    JSON.stringify(
+      {
+        asOf: asOf || existing?.asOf || '',
+        fetchedAt: fetchedAt ?? existing?.fetchedAt,
+        sections: mergedSections,
+      },
+      null,
+      2,
+    ),
+  );
 }
 
 async function main() {
@@ -511,7 +603,13 @@ async function main() {
   console.log('Wrote data slices to lib/data/generated/slices/');
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+const isDirectRun =
+  process.argv[1] != null &&
+  import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href;
+
+if (isDirectRun) {
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+}
