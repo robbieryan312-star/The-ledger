@@ -23,7 +23,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Confront Claude — paste to Claude Code
 
-**M-BACKLOG #74:** approve **PR head** after push · prebuild 0 · zero handoff backlog headings · `## Backlog` uniqueness guard
+**M-BACKLOG #74:** approve **`46e1ebe`** · prebuild 0 · zero handoff backlog headings · `## Backlog` uniqueness guard
 **Also merged:** m5 `cc69512` → `main` @ `134ef60` (docs `b437857`)
 **m4 #62 tip:** `8f02c9e` ⛔ · **M-UI #68** `bef4ddc` STAGE THREE after m4
 **PARK:** #76 · m8a · m7a–d
