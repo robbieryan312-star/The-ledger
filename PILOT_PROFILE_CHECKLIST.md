@@ -21,7 +21,7 @@ Honest gaps are required — never fill with paraphrase or fabrication. Use `"No
 | 8 | Said→Did pairing | topicPositions + `buildSaidDidDiffsFromTopicPositions` | Track Record · Said→Did panel | build-time | **partial** — **1** official pair on disk; layout target **15** where record supports |
 | 9 | Topic legislation (sponsored/cosponsored) | Congress.gov API v3 (`official`) | Topic Record · legislation | `npm run ingest:member -- --bioguide S000033` | **done** — `lib/data/generated/members/S000033.json` |
 | 10 | Journalism quotes (**Said**, optional) | Approved outlets (`media`) | Track Record | curated + `articleCache.json` | **partial** — 2-source corroboration rule applies |
-| 11 | News mentions | Approved-outlet RSS → GDELT → NewsAPI (`media`/`nonpartisan`) | News section | `npm run sync:news-rss -- --members S000033` | **partial** — **3**/15 after bare-surname matcher fix (M2) |
+| 11 | News mentions | Approved-outlet RSS → topic/tag RSS → GDELT → NewsAPI (`media`/`alleged`/`nonpartisan`) | News section | `npm run sync:news-rss -- --members S000033` | **partial** — **12**/15 after subject/quote rule (drop comparison, CDC no-quote, Trump-Iran “among those responding”); honest-gap remainder 3; single-outlet media demoted to `'alleged'` |
 | 12 | STOCK Act trades | House PTR / Senate eFD (`official`) | Stock Trades | `npm run sync:stock-trades` | **gap** for Senate eFD (503 maintenance) |
 
 ---

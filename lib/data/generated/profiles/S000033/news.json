@@ -3,20 +3,20 @@
   "status": "filled",
   "items": [
     {
-      "id": "s000033-newsapi-11",
-      "headline": "CDC emails reveal challenges facing its next director",
-      "summary": "Emails from CDC officials released by Sen. Bernie Sanders reveal agency leaders dealing with political pressures during the Trump era and highlight challenges for the next director.",
-      "date": "2026-07-04",
+      "id": "s000033-topic-1",
+      "headline": "Bernie Sanders calls on Graham Platner to withdraw from Senate race amid sexual assault claims",
+      "summary": "Sanders, one of Platner’s earliest and most influential backers, is latest to call on him to withdraw from Maine race The progressive senator Bernie Sanders called on Graham Platner to withdraw from…",
+      "date": "2026-07-07",
       "category": "Congress",
       "isOpinion": false,
       "isVerified": false,
-      "url": "https://www.npr.org/2026/07/04/nx-s1-5876507/cdc-emails-reveal-challenges-facing-its-next-director",
+      "url": "https://www.theguardian.com/us-news/2026/jul/07/bernie-sanders-graham-platner-maine-senate-race",
       "source": {
-        "name": "NPR",
-        "url": "https://www.npr.org/2026/07/04/nx-s1-5876507/cdc-emails-reveal-challenges-facing-its-next-director",
-        "tier": "media",
-        "date": "2026-07-04",
-        "description": "NewsAPI — corroborate with a second independent outlet before citing as verified fact"
+        "name": "The Guardian",
+        "url": "https://www.theguardian.com/us-news/2026/jul/07/bernie-sanders-graham-platner-maine-senate-race",
+        "tier": "alleged",
+        "date": "2026-07-07",
+        "description": "Approved-outlet member topic/tag RSS"
       }
     },
     {
@@ -31,28 +31,181 @@
       "source": {
         "name": "NPR",
         "url": "https://www.npr.org/2026/06/18/nx-s1-5861862/sen-sanders-wants-americans-to-have-a-say-and-stake-in-the-future-of-ai",
-        "tier": "media",
+        "tier": "alleged",
         "date": "2026-06-18",
         "description": "NewsAPI — corroborate with a second independent outlet before citing as verified fact"
       }
     },
     {
-      "id": "n1",
-      "headline": "Sanders reintroduces Medicare for All Act with record House cosponsors",
-      "summary": "Senator Sanders, Representative Jayapal, and Representative Dingell reintroduced the Medicare for All Act of 2023 with 14 Senate cosponsors and more than 110 House cosponsors. The bill would establish a single-payer program covering all U.S. residents without premiums, deductibles, or copayments.",
-      "date": "2023-05-18",
-      "category": "Healthcare",
+      "id": "s000033-topic-3",
+      "headline": "Bernie Sanders’ AI sovereign wealth fund plan is good. But we think this is better | Nathan E Sanders and Bruce Schneier",
+      "summary": "While we do not outright oppose the taking of AI company stock, or of a US a sovereign wealth fund, there are better ways to achieve the senator’s goals Let no one accuse Bernie Sanders of ducking…",
+      "date": "2026-06-08",
+      "category": "Congress",
       "isOpinion": true,
       "isVerified": false,
+      "url": "https://www.theguardian.com/commentisfree/2026/jun/08/bernie-sanders-ai-sovereign-wealth-fund-plan",
       "source": {
         "name": "The Guardian",
-        "url": "https://www.theguardian.com/commentisfree/2023/may/18/healthcare-us-human-right-medicare-for-all-bernie-sanders",
-        "tier": "media",
-        "date": "2023-05-18",
-        "description": "Op-ed by Sanders on introducing Medicare for All legislation in the 118th Congress"
-      },
-      "url": "https://www.theguardian.com/commentisfree/2023/may/18/healthcare-us-human-right-medicare-for-all-bernie-sanders"
+        "url": "https://www.theguardian.com/commentisfree/2026/jun/08/bernie-sanders-ai-sovereign-wealth-fund-plan",
+        "tier": "alleged",
+        "date": "2026-06-08",
+        "description": "Approved-outlet member topic/tag RSS"
+      }
+    },
+    {
+      "id": "s000033-topic-4",
+      "headline": "Bernie Sanders backs climate activist in close Michigan congressional primary",
+      "summary": "Will Lawrence, an outspoken opponent of AI datacenters, is running in swing district where three mega complexes loom A prominent environmental organizer calling for a nationwide moratorium on…",
+      "date": "2026-05-21",
+      "category": "Congress",
+      "isOpinion": false,
+      "isVerified": false,
+      "url": "https://www.theguardian.com/us-news/2026/may/21/bernie-sanders-backs-climate-activist-michigan-race",
+      "source": {
+        "name": "The Guardian",
+        "url": "https://www.theguardian.com/us-news/2026/may/21/bernie-sanders-backs-climate-activist-michigan-race",
+        "tier": "alleged",
+        "date": "2026-05-21",
+        "description": "Approved-outlet member topic/tag RSS"
+      }
+    },
+    {
+      "id": "s000033-topic-5",
+      "headline": "Bernie Sanders urges international cooperation to halt AI’s ‘runaway train’",
+      "summary": "US senator holds panel with leading Chinese scientists and warns of risks to society unless new technology is regulated Bernie Sanders espoused the importance of international cooperation in…",
+      "date": "2026-04-30",
+      "category": "Congress",
+      "isOpinion": false,
+      "isVerified": false,
+      "url": "https://www.theguardian.com/us-news/2026/apr/29/bernie-sanders-ai-panel",
+      "source": {
+        "name": "The Guardian",
+        "url": "https://www.theguardian.com/us-news/2026/apr/29/bernie-sanders-ai-panel",
+        "tier": "alleged",
+        "date": "2026-04-30",
+        "description": "Approved-outlet member topic/tag RSS"
+      }
+    },
+    {
+      "id": "s000033-topic-6",
+      "headline": "Bernie Sanders’ effort to block US weapons sales to Israel fails in Senate",
+      "summary": "Senator’s fourth attempt for resolutions fails, but votes show growing appetite among Democrats to impose limits Bernie Sanders on Wednesday led a failed effort to block the sale of bombs and…",
+      "date": "2026-04-16",
+      "category": "Congress",
+      "isOpinion": false,
+      "isVerified": false,
+      "url": "https://www.theguardian.com/us-news/2026/apr/15/bernie-sanders-pushes-military-block-israel",
+      "source": {
+        "name": "The Guardian",
+        "url": "https://www.theguardian.com/us-news/2026/apr/15/bernie-sanders-pushes-military-block-israel",
+        "tier": "alleged",
+        "date": "2026-04-16",
+        "description": "Approved-outlet member topic/tag RSS"
+      }
+    },
+    {
+      "id": "s000033-topic-7",
+      "headline": "No more US military aid to Israel | Bernie Sanders",
+      "summary": "The time is long overdue for members of Congress to listen to the American people and end US military aid to the extremist Netanyahu government I am a proud Jewish American.",
+      "date": "2026-04-15",
+      "category": "Congress",
+      "isOpinion": true,
+      "isVerified": false,
+      "url": "https://www.theguardian.com/commentisfree/2026/apr/15/no-more-us-military-aid-to-israel",
+      "source": {
+        "name": "The Guardian",
+        "url": "https://www.theguardian.com/commentisfree/2026/apr/15/no-more-us-military-aid-to-israel",
+        "tier": "alleged",
+        "date": "2026-04-15",
+        "description": "Approved-outlet member topic/tag RSS"
+      }
+    },
+    {
+      "id": "s000033-topic-8",
+      "headline": "Bernie Sanders warns ‘worst is yet to come’ in rallying cry against billionaires",
+      "summary": "US senator appears at Manhattan rally alongside New York City mayor Zohran Mamdani, who cautioned that AI is ‘coming for human jobs’ Bernie Sanders has sounded an alarm over the US economy, warning…",
+      "date": "2026-04-13",
+      "category": "Congress",
+      "isOpinion": false,
+      "isVerified": false,
+      "url": "https://www.theguardian.com/us-news/2026/apr/13/bernie-sanders-warns-worst-is-yet-to-come-in-rallying-cry-against-billionaires",
+      "source": {
+        "name": "The Guardian",
+        "url": "https://www.theguardian.com/us-news/2026/apr/13/bernie-sanders-warns-worst-is-yet-to-come-in-rallying-cry-against-billionaires",
+        "tier": "alleged",
+        "date": "2026-04-13",
+        "description": "Approved-outlet member topic/tag RSS"
+      }
+    },
+    {
+      "id": "s000033-topic-10",
+      "headline": "Bernie Sanders and AOC introduce bill to pause building of new datacenters",
+      "summary": "Lawmakers say moratorium on construction would buy time to create strong, federal guardrails for AI Amid an unprecedented energy crisis and the rapid buildout of artificial intelligence…",
+      "date": "2026-03-25",
+      "category": "Congress",
+      "isOpinion": false,
+      "isVerified": false,
+      "url": "https://www.theguardian.com/us-news/2026/mar/25/datacenters-bernie-sanders-aoc",
+      "source": {
+        "name": "The Guardian",
+        "url": "https://www.theguardian.com/us-news/2026/mar/25/datacenters-bernie-sanders-aoc",
+        "tier": "alleged",
+        "date": "2026-03-25",
+        "description": "Approved-outlet member topic/tag RSS"
+      }
+    },
+    {
+      "id": "s000033-topic-11",
+      "headline": "Bernie Sanders and Ro Khanna propose bill to impose wealth tax on billionaires",
+      "summary": "Make billionaires pay their fair share act would apply to those with a net worth of $1bn or more Sign up for the Breaking News US email to get newsletter alerts in your inbox Senator Bernie Sanders…",
+      "date": "2026-03-02",
+      "category": "Congress",
+      "isOpinion": false,
+      "isVerified": false,
+      "url": "https://www.theguardian.com/us-news/2026/mar/02/bernie-sanders-ro-khanna-billionaires-wealth-tax-bill",
+      "source": {
+        "name": "The Guardian",
+        "url": "https://www.theguardian.com/us-news/2026/mar/02/bernie-sanders-ro-khanna-billionaires-wealth-tax-bill",
+        "tier": "alleged",
+        "date": "2026-03-02",
+        "description": "Approved-outlet member topic/tag RSS"
+      }
+    },
+    {
+      "id": "s000033-topic-12",
+      "headline": "‘Slow this thing down’: Sanders warns US has no clue about speed and scale of coming AI revolution",
+      "summary": "After meeting with unspecified tech leaders, senator calls for urgent policy action as companies race to build ever more powerful systems Bernie Sanders has warned that Congress and the American…",
+      "date": "2026-02-21",
+      "category": "Congress",
+      "isOpinion": false,
+      "isVerified": false,
+      "url": "https://www.theguardian.com/us-news/2026/feb/21/ai-revolution-bernie-sanders-warning",
+      "source": {
+        "name": "The Guardian",
+        "url": "https://www.theguardian.com/us-news/2026/feb/21/ai-revolution-bernie-sanders-warning",
+        "tier": "alleged",
+        "date": "2026-02-21",
+        "description": "Approved-outlet member topic/tag RSS"
+      }
+    },
+    {
+      "id": "s000033-topic-13",
+      "headline": "Bernie Sanders rails against billionaire ‘greed’ amid California tax battle",
+      "summary": "In a fiery speech in Los Angeles, the Vermont senator criticizes ‘grotesque’ levels of economic inequality Billionaires are “treading on very, very thin ice,” Bernie Sanders warned on Wednesday…",
+      "date": "2026-02-19",
+      "category": "Congress",
+      "isOpinion": false,
+      "isVerified": false,
+      "url": "https://www.theguardian.com/us-news/2026/feb/19/bernie-sanders-rails-against-billionaire-greed-amid-california-tax-battle",
+      "source": {
+        "name": "The Guardian",
+        "url": "https://www.theguardian.com/us-news/2026/feb/19/bernie-sanders-rails-against-billionaire-greed-amid-california-tax-battle",
+        "tier": "alleged",
+        "date": "2026-02-19",
+        "description": "Approved-outlet member topic/tag RSS"
+      }
     }
   ],
-  "note": "3 relevant article(s) after bare-surname matcher fix (target 15). Dropped 2 non-matching item(s)."
+  "note": "12 subject/quoted article(s) after owner 2026-07-21 qualification (Sanders subject or direct quote; comparison-only and \"among those responding\" excluded). Honest-gap for remaining 3 of target 15. Dropped: s000033-newsapi-11(mention-without-subject-or-quote), s000033-topic-2(comparison-only-mention), s000033-topic-9(among-those-responding — Trump-Iran; Sanders not direct quote). Source checks: topic-2 comparison-only DROP; newsapi-11 CDC no direct quote DROP; topic-9 among-those-responding DROP."
 }

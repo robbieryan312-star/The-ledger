@@ -70,13 +70,26 @@ function countIndependentCorroborators(item: NewsItem, pool: NewsItem[]): number
   return keys.size;
 }
 
-/** Set isVerified when ≥1 other independent outlet corroborates the same event. */
+/**
+ * Set isVerified when ≥1 other independent outlet corroborates the same event.
+ * Unverified `'media'` items are demoted to `'alleged'` (data-policy: 1 media source → alleged).
+ */
 export function applyNewsCorroboration(items: NewsItem[]): NewsItem[] {
   return items.map((item) => {
     const corroborators = countIndependentCorroborators(item, items);
+    const isVerified = corroborators >= 1;
+    const tier = item.source.tier;
+    const nextTier =
+      !isVerified && tier === 'media'
+        ? ('alleged' as const)
+        : tier;
     return {
       ...item,
-      isVerified: corroborators >= 1,
+      isVerified,
+      source: {
+        ...item.source,
+        tier: nextTier,
+      },
     };
   });
 }
