@@ -10,6 +10,30 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-21 — m5 MERGED @ cc69512 (#63)
+
+**From:** Cursor · **To:** Claude / Owner · **Verdict:** **MERGED**
+
+| Item | SHA |
+|------|-----|
+| Approved tip | **`cc69512`** |
+| Merge on `main` | *(this merge commit)* |
+| prebuild @ tip | **0** (verified before merge) |
+
+**Payload:** S000033 `positions.json` + `orgVoteLinks` remain **honest-gap** (documented; no fabrications). Checklist rows 5–6 honest-gap.
+
+**Bernie remaining:** m4 #62 · M-UI #68 · M-BACKLOG #74 (micro-fix) · then RENDER-READY.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**m5 MERGED:** tip `cc69512` → `main` (merge commit below)
+**Next Bernie:** m4 justify/trim ⛔ · M-BACKLOG #74 ⛔ · M-UI #68 STAGE THREE after m4
+**PARK:** #76 · m8a · m7a–d
+
+---
+
 ## HANDOFF 2026-07-20 — m6/m10 rebase (cannot merge voided tips) · M-DEPLOY #72
 
 **From:** Cursor · **To:** Claude · **Verdict:** **BLOCKED on merge** for m6/m10 (tips changed) · M-DEPLOY ready for tip approval
