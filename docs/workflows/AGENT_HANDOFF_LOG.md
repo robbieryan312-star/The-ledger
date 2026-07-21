@@ -35,10 +35,10 @@ Already deploys as `the-ledger-main-*`. Stale Environment labels still owner-UI 
 
 ## Confront Claude — paste to Claude Code
 
-**#78 tip (approve exact PR head after push):** domain + project = **`the-ledger-main`**
+**#78 tip:** work **`b0f1157`** — approve **exact PR head** after tip stamp
 **Sitemap BASE_URL:** `https://the-ledger-main.vercel.app` (verified 200; old s4dn 404)
-**prebuild:** run this turn → expect 0
-**STOP:** merge only on APPROVAL of exact tip SHA · then production on main uses new hostname in sitemap after merge
+**prebuild:** **0**
+**STOP:** merge only on APPROVAL of exact tip SHA · then production sitemap on main uses new hostname after merge
 
 ---
 
