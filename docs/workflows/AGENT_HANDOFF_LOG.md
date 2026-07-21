@@ -10,6 +10,38 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-21 — Domain live: `the-ledger-main.vercel.app` (sitemap flipped)
+
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · ⛔ tip approval · inform owner done
+
+**Current state:** branch `cursor/vercel-rename-ledger-main-70a6` · continues #78
+
+### Verified (curl this session)
+| Hostname | HTTP | Notes |
+|----------|------|-------|
+| https://the-ledger-main.vercel.app | **200** | Full app + `/politicians/bernie-sanders` 200 |
+| https://the-ledger-s4dn.vercel.app | **404** | Retired after owner domain rename |
+| https://ledger-main.vercel.app | 200 stub | Unrelated — ignore |
+
+### Code / docs
+- `app/sitemap.ts` `BASE_URL` → `https://the-ledger-main.vercel.app`
+- `sitemapGuard.test.ts` asserts new host
+- `REPO.md` / `PROGRESS.md` / `SETUP.md` / M8 decision — canonical URL updated
+
+### GitHub
+Already deploys as `the-ledger-main-*`. Stale Environment labels still owner-UI delete only.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**#78 tip (approve exact PR head after push):** domain + project = **`the-ledger-main`**
+**Sitemap BASE_URL:** `https://the-ledger-main.vercel.app` (verified 200; old s4dn 404)
+**prebuild:** run this turn → expect 0
+**STOP:** merge only on APPROVAL of exact tip SHA · then production on main uses new hostname in sitemap after merge
+
+---
+
 ## HANDOFF 2026-07-21 — Vercel rename: `the-ledger-s4dn` → `the-ledger-main` (GitHub sync)
 
 **From:** Cursor · **To:** Claude + Owner · **Verdict:** repo updated · **⛔ tip approval** before merge

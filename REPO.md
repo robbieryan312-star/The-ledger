@@ -6,7 +6,7 @@
 |------|--------|
 | **Canonical GitHub repo** | [github.com/robbieryan312-star/The-ledger](https://github.com/robbieryan312-star/The-ledger) |
 | **Default branch** | `main` |
-| **Production URL (sole Vercel project)** | **Project name:** `the-ledger-main` (renamed from `the-ledger-s4dn` 2026-07-21). **Live public hostname:** https://the-ledger-s4dn.vercel.app (legacy `.vercel.app` alias still serving; `https://the-ledger-main.vercel.app` → DEPLOYMENT_NOT_FOUND until Domains updated). GitHub Production deploys already report under `the-ledger-main-*`. |
+| **Production URL (sole Vercel project)** | **Project + hostname:** `the-ledger-main` → https://the-ledger-main.vercel.app (renamed from `the-ledger-s4dn` 2026-07-21). Former `the-ledger-s4dn.vercel.app` is retired (404). GitHub Production deploys report under `the-ledger-main-*`. Do not use `ledger-main.vercel.app` (unrelated stub). |
 | **Local clone** | Any folder name is fine — remote must be `The-ledger` |
 | **Legacy repo (do not use)** | `robbieryan312-star/code` — stale snapshot; superseded by `The-ledger` |
 

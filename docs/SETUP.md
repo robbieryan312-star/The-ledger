@@ -128,12 +128,9 @@ Cursor agents commit locally when work passes review; **push to `origin/main` re
 
 ## Deploy model (single Vercel project — owner renamed 2026-07-21)
 
-- **Only project:** `the-ledger-main` (was `the-ledger-s4dn`)
-- **Live public hostname (today):** https://the-ledger-s4dn.vercel.app — still the working
-  production alias. `https://the-ledger-main.vercel.app` is not serving yet
-  (`DEPLOYMENT_NOT_FOUND`). Owner can add/confirm Domains in the Vercel project if the public
-  URL should match the new name.
-- **GitHub:** Production deploy statuses already use `the-ledger-main-*` deployment URLs.
+- **Only project + public hostname:** `the-ledger-main` → https://the-ledger-main.vercel.app
+- **Retired:** `the-ledger-s4dn` / https://the-ledger-s4dn.vercel.app (404 after domain rename)
+- **GitHub:** Production deploy statuses use `the-ledger-main-*` deployment URLs.
   Stale GitHub Environments (`Production – the-ledger-s4dn`, `Preview – the-ledger`, etc.) are
   leftover labels — delete in GitHub → Settings → Environments (integration token cannot).
 - **Production** tracks `main`. Merges to `main` happen only on Claude APPROVAL; Vercel redeploys

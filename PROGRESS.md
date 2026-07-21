@@ -1,13 +1,15 @@
 # The Ledger — Roadmap & Progression Expectations
 
 **Last updated:** 2026-07-21 · **Branch:** `main` ·
-**Production (sole Vercel project):** **`the-ledger-main`** · live URL https://the-ledger-s4dn.vercel.app
+**Production (sole Vercel project):** **`the-ledger-main`** → https://the-ledger-main.vercel.app
 
-**Deploy rule (binding):** Sole Vercel project is **`the-ledger-main`** (owner renamed from
-`the-ledger-s4dn` on 2026-07-21). Former projects (`the-ledger-jcjh`, `the-ledger`, etc.) stay
-deleted. Agents must not treat stale GitHub environment rows (`Production – the-ledger-s4dn`, etc.)
-as a second live project — those are leftover deployment-environment labels; newest Production
-deployments already use project slug `the-ledger-main`. Do not cite `ledger-main.vercel.app` (unrelated stub).
+**Deploy rule (binding):** Sole Vercel project + public hostname is **`the-ledger-main`**
+(https://the-ledger-main.vercel.app). Owner renamed from `the-ledger-s4dn` on 2026-07-21;
+`the-ledger-s4dn.vercel.app` is retired (404). Former projects (`the-ledger-jcjh`, `the-ledger`,
+etc.) stay deleted. Agents must not treat stale GitHub environment rows
+(`Production – the-ledger-s4dn`, etc.) as a second live project — those are leftover labels;
+newest Production deployments already use project slug `the-ledger-main`. Do not cite
+`ledger-main.vercel.app` (unrelated stub).
 
 **⚠️ KNOWN GAP — most politician profiles are near-empty by design, not by bug (confirmed
 2026-07-19):** Only **7 of 537** Congress members (`S000033`, `O000172`, `M000355`, `M001184`,

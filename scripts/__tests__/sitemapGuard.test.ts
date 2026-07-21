@@ -24,15 +24,14 @@ test('sitemap is not a stub — roster is substantial and every profile is prese
   assert.ok(allPoliticians.length >= 50, `roster too small (${allPoliticians.length}) — check accessor`);
   const urls = new Set(entries.map((e) => e.url));
   for (const p of allPoliticians) {
-    // BASE_URL = legacy live alias while project name is `the-ledger-main` (see app/sitemap.ts).
     assert.ok(
-      urls.has(`https://the-ledger-s4dn.vercel.app/politicians/${p.id}`),
+      urls.has(`https://the-ledger-main.vercel.app/politicians/${p.id}`),
       `missing sitemap entry for politician ${p.id}`,
     );
   }
   for (const code of SUPPORTED_STATE_CODES) {
     assert.ok(
-      urls.has(`https://the-ledger-s4dn.vercel.app/states/${code}`),
+      urls.has(`https://the-ledger-main.vercel.app/states/${code}`),
       `missing sitemap entry for state ${code}`,
     );
   }

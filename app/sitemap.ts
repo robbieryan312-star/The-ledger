@@ -3,12 +3,10 @@ import { allPoliticians } from '@/lib/data/allPoliticians';
 import { SUPPORTED_STATE_CODES } from '@/lib/data/supportedStates';
 
 /**
- * Canonical production domain (approved Vercel project).
- * Project name (Vercel / GitHub): `the-ledger-main` (renamed from `the-ledger-s4dn` 2026-07-21).
- * Public hostname still on the legacy alias until Domains catch up — do not switch to
- * `the-ledger-main.vercel.app` while it returns DEPLOYMENT_NOT_FOUND.
+ * Canonical production domain (approved Vercel project `the-ledger-main`).
+ * Owner renamed project + production hostname from `the-ledger-s4dn` (2026-07-21).
  */
-const BASE_URL = 'https://the-ledger-s4dn.vercel.app';
+const BASE_URL = 'https://the-ledger-main.vercel.app';
 
 /** Public, crawler-indexable static routes. `/dashboard` is user-specific and excluded. */
 export const STATIC_ROUTES = [
