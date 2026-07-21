@@ -53,7 +53,8 @@ Project renamed to **`the-ledger-main`** (not a second project). Prior Favorites
 
 ## Confront Claude — paste to Claude Code
 
-**VERCEL RENAME tip:** approve PR head on `cursor/vercel-rename-ledger-main-70a6`
+**VERCEL RENAME tip:** **`b3e110f`** on `cursor/vercel-rename-ledger-main-70a6` — approve this exact SHA
+**prebuild:** **0**
 **Project:** `the-ledger-main` (renamed from `the-ledger-s4dn`) — sole project
 **GitHub:** already deploys as `the-ledger-main-*`; stale env labels need owner UI delete (API 403)
 **Sitemap BASE_URL:** still `https://the-ledger-s4dn.vercel.app` (only live full-app hostname)
