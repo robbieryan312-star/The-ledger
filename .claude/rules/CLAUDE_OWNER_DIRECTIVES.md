@@ -47,7 +47,10 @@ operating manual and core-rules.
      tasks can proceed WITHOUT that approval, do NOT gate them — list them as concurrent tasks so
      Cursor runs them in parallel. Over-gating (inserting a review block the next action does not
      actually need) is a §4 violation, exactly like under-gating. (Every PR still needs Claude's
-     merge-approval per §5 — that standing merge rule is stated once, not repeated as a ⛔ per task.)
+     merge-approval per §5 — that standing merge rule binds every PR PERPETUALLY. Write it once at
+     the top of a prompt instead of repeating a ⛔ on each task purely for brevity — NEVER label it
+     "(once)" or word it in any way that implies it is a one-time note or any less binding. Every
+     rule in this file and every owner directive is perpetual and complied with on every turn.)
    - **Exactly ONE `COPY TO CURSOR` block per response.**
    - **Claude's PROSE stays short** (token economy) — lead with the verdict in 1–3 lines, skip
      narration and re-verification of things already green. The task list is as long as the work
