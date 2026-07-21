@@ -6,6 +6,7 @@ import { TrendingUp, TrendingDown, AlertTriangle, Info, ArrowUpDown, ChevronDown
 import SourceBadge from '@/components/ui/SourceBadge';
 import SourceTierHelp from '@/components/ui/SourceTierHelp';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
+import { tradesEmptyStateCopy } from '@/lib/tradesHonestGap';
 
 type SortKey = 'date' | 'amount' | 'gain_pct' | 'conflict';
 type ConflictFilter = 'All' | 'High' | 'Medium' | 'Low';
@@ -499,16 +500,18 @@ export default function StockTrades({
   usingOfficialTrades,
   officialSource,
   demoTradeCount,
-  gapNote,
-  gapStatus,
+  tradesStatus,
+  tradesNote,
 }: {
   trades: StockTrade[];
   name: string;
   usingOfficialTrades?: boolean;
   officialSource?: Source;
   demoTradeCount?: number;
-  gapNote?: string;
-  gapStatus?: 'honest-gap' | 'fetch-failed';
+  /** Per-profile trades.json status or derived snapshot status. */
+  tradesStatus?: 'filled' | 'honest-gap' | 'fetch-failed';
+  /** Per-profile / snapshot note (Senate eFD 503, fetch-failed, etc.). */
+  tradesNote?: string;
 }) {
   const [sortBy, setSortBy] = useState<SortKey>('date');
   const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc');
@@ -556,21 +559,21 @@ export default function StockTrades({
   }, [filtered, sortBy, sortDir]);
 
   if (trades.length === 0) {
+    const emptyCopy = tradesEmptyStateCopy({
+      status: tradesStatus,
+      note: tradesNote,
+      name,
+    });
     return (
       <div className="text-center py-12">
         <TrendingUp className="h-10 w-10 text-gray-600 mx-auto mb-3" />
-        {gapNote ? (
-          <>
-            <p className="text-gray-300 text-sm font-medium">
-              {gapStatus === 'fetch-failed' ? 'Trade disclosure fetch failed' : 'No verified stock trades on record'}
-            </p>
-            <p className="text-gray-400 text-xs mt-2 max-w-lg mx-auto leading-relaxed">{gapNote}</p>
-          </>
-        ) : (
-          <>
-            <p className="text-gray-400 text-sm">No stock trades reported for {name}</p>
-            <p className="text-gray-500 text-xs mt-1">Stock disclosures are required under the STOCK Act (2012)</p>
-          </>
+        <p className="text-gray-400 text-sm">{emptyCopy.headline}</p>
+        <p className="text-gray-500 text-xs mt-1 max-w-lg mx-auto leading-relaxed">{emptyCopy.detail}</p>
+        {emptyCopy.isHonestGap && (
+          <p className="text-gray-600 text-[11px] mt-2 max-w-lg mx-auto leading-relaxed">
+            This is an unverified gap — not a confirmed zero-trade record. STOCK Act disclosures
+            will appear here when Senate eFD / House Clerk PTR data can be verified.
+          </p>
         )}
         <div className="mt-6 max-w-xl mx-auto">
           <DataSourceStrip usingOfficialTrades={usingOfficialTrades} officialSource={officialSource} demoTradeCount={demoTradeCount} />

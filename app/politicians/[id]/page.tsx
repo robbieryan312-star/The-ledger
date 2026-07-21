@@ -4,13 +4,13 @@ import { getPoliticianById } from '@/lib/data/allPoliticians';
 import { resolveCurrentOffice } from '@/lib/data/officeResolution';
 import { mergeCampaignFinance } from '@/lib/data/fecFinance';
 import { mergeVotingRecord } from '@/lib/data/congressVotes';
-import { mergeStockTrades } from '@/lib/data/stockTrades';
+import { mergeStockTrades, stockEntryToProfileTradesFile } from '@/lib/data/stockTrades';
 import { getProfileRecordByTopic } from '@/lib/data/profileRecordByTopic';
 import { getMemberDeep } from '@/lib/data/memberDeep';
 import { getVoteviewByBioguide } from '@/lib/data/slices/voteview';
 import { getNewsFloridaBundle } from '@/lib/data/slices/newsFlorida';
 import { findRecordJuxtapositions } from '@/lib/data/recordJuxtapositions';
-import { mergeProfileNews, mergeProfileControversies, mergeProfileEndorsements, getMemberProfileTradeGap } from '@/lib/data/memberProfile';
+import { mergeProfileNews, mergeProfileControversies, mergeProfileEndorsements } from '@/lib/data/memberProfile';
 import { buildSaidDidDiffsFromTopicPositions } from '@/lib/data/buildSaidDidDiffs';
 import { buildMergedProfileIssues } from '@/lib/data/issuesFromTopicPositions';
 import { buildOrgVoteTopicLinks } from '@/lib/data/buildOrgVoteTopicLinks';
@@ -47,6 +47,9 @@ export default async function Page({
     usingOfficialTrades,
     demoTradeCount,
   } = mergeStockTrades(politician.id, politician.stockTrades, politician.recordType, politician.bioguideId);
+  const tradesGapMeta = stockEntry
+    ? stockEntryToProfileTradesFile(politician.bioguideId ?? politician.id, stockEntry)
+    : null;
 
   const isFederalCongress =
     politician.level === 'federal' &&
@@ -60,7 +63,6 @@ export default async function Page({
       : null;
   const voteviewMember = getVoteviewByBioguide(politician.bioguideId);
   const displayNews = mergeProfileNews(politician.news, politician.bioguideId);
-  const tradeGap = politician.bioguideId ? getMemberProfileTradeGap(politician.bioguideId) : null;
   const displayControversies = mergeProfileControversies(politician.controversies, politician.bioguideId);
   const displayEndorsements = mergeProfileEndorsements(politician.endorsements, politician.bioguideId);
   const floridaNewsBundle = politician.stateCode === 'FL' ? getNewsFloridaBundle() : null;
@@ -109,7 +111,8 @@ export default async function Page({
         stockEntry={stockEntry}
         usingOfficialTrades={usingOfficialTrades}
         demoTradeCount={demoTradeCount}
-        tradeGap={tradeGap}
+        tradesStatus={tradesGapMeta?.status}
+        tradesNote={tradesGapMeta?.note ?? stockEntry?.note}
         recordByTopic={recordByTopic}
         memberDeep={memberDeep}
         voteviewMember={voteviewMember}
