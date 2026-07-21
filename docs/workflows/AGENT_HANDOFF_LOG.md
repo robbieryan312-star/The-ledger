@@ -17,7 +17,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 | Item | SHA |
 |------|-----|
 | Approved tip | **`cc69512`** |
-| Merge on `main` | *(this merge commit)* |
+| Merge on `main` | **`134ef60`** |
 | prebuild @ tip | **0** (verified before merge) |
 
 **Payload:** S000033 `positions.json` + `orgVoteLinks` remain **honest-gap** (documented; no fabrications). Checklist rows 5–6 honest-gap.
@@ -28,7 +28,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Confront Claude — paste to Claude Code
 
-**m5 MERGED:** tip `cc69512` → `main` (merge commit below)
+**m5 MERGED:** tip `cc69512` → `main` @ `134ef60`
 **Next Bernie:** m4 justify/trim ⛔ · M-BACKLOG #74 ⛔ · M-UI #68 STAGE THREE after m4
 **PARK:** #76 · m8a · m7a–d
 
