@@ -7,7 +7,7 @@
 
 **Sources:** Ballotpedia (nonpartisan) primary for Miami-Dade; Liberty SOE + county.gov (official) where Ballotpedia lacked a full table; honest-gap for offices not verified.
 
-**Canonical live URL:** https://the-ledger-s4dn.vercel.app (sole Vercel project).
+**Canonical live URL:** https://the-ledger-s4dn.vercel.app (sole Vercel project **`the-ledger-main`**, renamed from `the-ledger-s4dn`; legacy hostname still live).
 
 ---
 

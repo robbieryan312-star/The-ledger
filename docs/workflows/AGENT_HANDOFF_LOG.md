@@ -10,6 +10,58 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-21 — Vercel rename: `the-ledger-s4dn` → `the-ledger-main` (GitHub sync)
+
+**From:** Cursor · **To:** Claude + Owner · **Verdict:** repo updated · **⛔ tip approval** before merge
+
+**Current state:** branch `cursor/vercel-rename-ledger-main-70a6` · base `origin/main` @ `d9eae7c`
+
+### Owner confirmation
+Project renamed to **`the-ledger-main`** (not a second project). Prior Favorites drift was the rename.
+
+### What GitHub already knows
+- Latest Production deploy (`d9eae7c`) `environment_url` uses slug **`the-ledger-main-*`**
+  (`…the-ledger-main-iq9yozikz-robbieryan312-stars-projects.vercel.app`) — Vercel↔GitHub integration
+  already tracks the new project name.
+- Stale Environments remain: `Production – the-ledger-s4dn`, `Preview – the-ledger`, etc.
+  **API delete = 403** for the integration token — owner must delete leftovers in
+  GitHub → Settings → Environments.
+
+### Live URL reality (do not break sitemap)
+| Hostname | HTTP | Notes |
+|----------|------|-------|
+| https://the-ledger-s4dn.vercel.app | **200** | Full app — keep as sitemap `BASE_URL` |
+| https://the-ledger-main.vercel.app | **404** DEPLOYMENT_NOT_FOUND | New name hostname not serving yet |
+| https://ledger-main.vercel.app | **200** stub | **Different** tiny "Ledger" site — not this app |
+
+### Files touched
+| Path | What |
+|------|------|
+| `REPO.md` | project = `the-ledger-main`; live URL + hostname caveat |
+| `PROGRESS.md` | deploy rule updated |
+| `docs/SETUP.md` | deploy model + GitHub env cleanup note |
+| `docs/workflows/M8_COUNTY_MAP_DECISION.md` | canonical project name |
+| `app/sitemap.ts` | comment; BASE_URL stays legacy live alias |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | this handoff |
+
+### Owner follow-ups (dashboard only)
+1. GitHub → Settings → Environments → delete stale `* – the-ledger*` / `* – the-ledger-s4dn*` / `* – the-ledger-jcjh*` rows
+2. Optional: Vercel → Domains — attach/confirm `the-ledger-main.vercel.app` for production if public URL should match the new name (then Cursor updates sitemap `BASE_URL` + guard)
+3. Confirm `ledger-main.vercel.app` is unrelated; delete that project if accidental
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**VERCEL RENAME tip:** approve PR head on `cursor/vercel-rename-ledger-main-70a6`
+**Project:** `the-ledger-main` (renamed from `the-ledger-s4dn`) — sole project
+**GitHub:** already deploys as `the-ledger-main-*`; stale env labels need owner UI delete (API 403)
+**Sitemap BASE_URL:** still `https://the-ledger-s4dn.vercel.app` (only live full-app hostname)
+**Do not** treat `ledger-main.vercel.app` as production
+**STOP:** merge only on APPROVAL of exact tip SHA
+
+---
+
 ## HANDOFF 2026-07-20 — m6/m10 rebase (cannot merge voided tips) · M-DEPLOY #72
 
 **From:** Cursor · **To:** Claude · **Verdict:** **BLOCKED on merge** for m6/m10 (tips changed) · M-DEPLOY ready for tip approval

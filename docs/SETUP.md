@@ -126,15 +126,22 @@ Stop any dev server you start when verification is done.
 
 Cursor agents commit locally when work passes review; **push to `origin/main` requires explicit APPROVAL** (see `.cursor/rules/ledger-core-rules.mdc` §1.1 K).
 
-## Deploy model (single Vercel project — owner consolidated 2026-07-20)
+## Deploy model (single Vercel project — owner renamed 2026-07-21)
 
-- **Only project:** `the-ledger-s4dn` → https://the-ledger-s4dn.vercel.app
+- **Only project:** `the-ledger-main` (was `the-ledger-s4dn`)
+- **Live public hostname (today):** https://the-ledger-s4dn.vercel.app — still the working
+  production alias. `https://the-ledger-main.vercel.app` is not serving yet
+  (`DEPLOYMENT_NOT_FOUND`). Owner can add/confirm Domains in the Vercel project if the public
+  URL should match the new name.
+- **GitHub:** Production deploy statuses already use `the-ledger-main-*` deployment URLs.
+  Stale GitHub Environments (`Production – the-ledger-s4dn`, `Preview – the-ledger`, etc.) are
+  leftover labels — delete in GitHub → Settings → Environments (integration token cannot).
 - **Production** tracks `main`. Merges to `main` happen only on Claude APPROVAL; Vercel redeploys
   production from that project automatically.
 - **Deleted (do not reference):** `the-ledger-jcjh`, `the-ledger`, and any other former Vercel
   projects. Agents must not attempt deploys, cite preview URLs, or treat bot comments for those
-  names as live or approved.
+  names as live or approved. **Do not** treat `ledger-main.vercel.app` as this app (different stub).
 - **Repo `vercel.json`:** `git.deploymentEnabled` enables deploys on `main` only (`"*": false`)
-  so PR/feature branches do not create Preview deployments (Hobby daily limit). Production on
-  `the-ledger-s4dn` still advances when PRs **merge to main**. Owner should keep Production
-  Branch = `main` and a single project connected.
+  so PR/feature branches do not create Preview deployments. Production on `the-ledger-main`
+  still advances when PRs **merge to main**. Owner should keep Production Branch = `main` and a
+  single project connected.
