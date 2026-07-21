@@ -110,9 +110,9 @@ rules. This keeps each state's local sourcing self-contained as coverage scales 
 
 ---
 
-## 5. Guard suites (21 commands in prebuild + render-integrity postbuild — all must pass before commit)
+## 5. Guard suites (22 commands in prebuild + render-integrity postbuild — all must pass before commit)
 
-Local `npm run build` runs the 21 prebuild guard commands, then `postbuild` runs `test:render-integrity`
+Local `npm run build` runs the 22 prebuild guard commands, then `postbuild` runs `test:render-integrity`
 + `test:client-chunks`. CI (`.github/workflows/guards.yml`) builds first, then a warmed external-server
 render-integrity step on port 4112.
 
@@ -138,6 +138,7 @@ render-integrity step on port 4112.
 | `test:no-unverified-official-data` | FL dashboard: no official/nonpartisan numbers without verified provenance |
 | `test:state-economic-display` | Exact indicator lookup + unemployment delta sign semantics |
 | `test:route-integrity` | No internal link → notFound()-only route; sitemap enumerates all routes/profiles |
+| `test:vercel-json` | `vercel.json` enables deploys on `main` only (`"*": false` — no preview flood) |
 | `test:render-integrity` | Headless render: overflow, images, sections (postbuild locally; warmed in CI) |
 | `audit:profile-credibility` | Profile credibility audit gate |
 
