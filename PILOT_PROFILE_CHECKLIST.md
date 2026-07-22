@@ -22,7 +22,7 @@ Honest gaps are required — never fill with paraphrase or fabrication. Use `"No
 | 9 | Topic legislation (sponsored/cosponsored) | Congress.gov API v3 (`official`) | Topic Record · legislation | `npm run ingest:member -- --bioguide S000033` | **done** — `lib/data/generated/members/S000033.json` |
 | 10 | Journalism quotes (**Said**, optional) | Approved outlets (`media`) | Track Record | curated + `articleCache.json` | **partial** — 2-source corroboration rule applies |
 | 11 | News mentions | Approved-outlet RSS → topic/tag RSS → GDELT → NewsAPI (`media`/`alleged`/`nonpartisan`) | News section | `npm run sync:news-rss -- --members S000033` | **partial** — **12**/15 after subject/quote rule (drop comparison, CDC no-quote, Trump-Iran “among those responding”); honest-gap remainder 3; single-outlet media demoted to `'alleged'` |
-| 12 | STOCK Act trades | House PTR / Senate eFD (`official`) | Stock Trades | `npm run sync:stock-trades` | **gap** for Senate eFD (503 maintenance) |
+| 12 | STOCK Act trades | House PTR / Senate eFD (`official`) | Stock Trades | `npm run sync:stock-trades` | **fetch-failed DIAGNOSED** — eFD search API HTTP 503 maintenance (home 200); profile `trades.json` note; UI honest-gap empty-state; not verified zero |
 
 ---
 

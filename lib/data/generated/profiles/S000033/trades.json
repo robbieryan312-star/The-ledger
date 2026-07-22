@@ -1,6 +1,6 @@
 {
   "bioguideId": "S000033",
   "status": "fetch-failed",
-  "note": "Senate eFD maintenance (HTTP 503) — no verified STOCK Act trades on record",
+  "note": "DIAGNOSED fetch-failed / UI honest-gap (Batch D 2026-07-22): Senate eFD search API efdsearch.senate.gov/search/report/data/ returns HTTP 503 maintenance (home page 200). No prior verified STOCK Act trades to preserve. Re-run npm run sync:stock-trades -- --members S000033 when maintenance ends. Not a verified zero-trade record.",
   "trades": []
 }
