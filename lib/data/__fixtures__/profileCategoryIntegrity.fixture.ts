@@ -64,5 +64,5 @@ export const PILOT_SAID_DID_DEPTH_KNOWN_GOOD = {
   checklistRowNum: 8,
   targetLinks: 15,
   /** On-disk count at guard wiring — update only when genuinely restored with verified pairs. */
-  onDiskLinksAtWiring: 1,
+  onDiskLinksAtWiring: 2,
 };
