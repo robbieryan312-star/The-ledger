@@ -52,7 +52,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## Confront Claude — paste to Claude Code
 
 **Merged to main:** Batch A **`a2fbd7a`** · gov `c878311` already present  
-**M-ACQUIRE BATCH B tip:** **** · prebuild 0 · build 0  
+**M-ACQUIRE BATCH B tip:** **** · data  · prebuild 0 · build 0  
 **S000033:** FEC refreshed · SchedA 15→**5000** · orgVoteLinks **0 diagnosed** (conduit/small-donor) · Voteview **−0.545/−0.427** · lobbying **0 diagnosed**  
 **STOP:** do not start BATCH C without APPROVAL  
 **Propose:** prior-Congress vote window for Said→Did depth (§14)
