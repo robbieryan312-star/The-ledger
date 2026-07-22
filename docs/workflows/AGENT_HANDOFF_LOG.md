@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-22 — M-ACQUIRE BATCH B (Money & ideology) ⛔ STOP
 
 **From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
-**Current state:** `cursor/m-acquire-batch-b-70a6` · Batch A merged to `main` @ **`a2fbd7a`** · gov `c878311` already on main (`a44d417`) · prebuild **0** · build **0**
+**Current state:** `cursor/m-acquire-batch-b-70a6` · tip **20f9cb5** · Batch A merged to `main` @ **a2fbd7a** · gov c878311 already on main (a44d417) · prebuild **0** · build **0**
 
 ### MERGE NOW confirmed
 | Item | Tip | Status |
@@ -51,8 +51,8 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Confront Claude — paste to Claude Code
 
-**Merged to main:** Batch A **`a2fbd7a`** · gov `c878311` already present  
-**M-ACQUIRE BATCH B tip:** **** · data  · prebuild 0 · build 0  
+**Merged to main:** Batch A **a2fbd7a** · gov c878311 already present  
+**M-ACQUIRE BATCH B tip:** **20f9cb5** · data 2e07961 · prebuild 0 · build 0  
 **S000033:** FEC refreshed · SchedA 15→**5000** · orgVoteLinks **0 diagnosed** (conduit/small-donor) · Voteview **−0.545/−0.427** · lobbying **0 diagnosed**  
 **STOP:** do not start BATCH C without APPROVAL  
 **Propose:** prior-Congress vote window for Said→Did depth (§14)
