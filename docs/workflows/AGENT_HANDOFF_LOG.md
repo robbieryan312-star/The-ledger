@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-22 — M-ACQUIRE BATCH A (Bernie Record) ⛔ STOP
 
 **From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
-**Current state:** `cursor/m-acquire-batch-a-70a6` · tip **`8a1157e`** + docs stamps · branch HEAD after this commit · prebuild **0** · build **0**
+**Current state:** `cursor/m-acquire-batch-a-70a6` · tip **`909d47a`** · data `8a1157e` · prebuild **0** · build **0**
 
 ### BEFORE → AFTER (S000033 only)
 
@@ -46,7 +46,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Confront Claude — paste to Claude Code
 
-**M-ACQUIRE BATCH A tip:** **`8a1157e`** (data) · approve **branch HEAD** · prebuild 0 · build 0  
+**M-ACQUIRE BATCH A tip:** **`909d47a`** · data `8a1157e` · prebuild 0 · build 0  
 **S000033:** votes 30→**201** · CREC 4→**10** · Said→Did 2→**8**/15 · legis 566/7906  
 **STOP:** do not start BATCH B without APPROVAL on this tip SHA  
 **§13 proposals:** (1) migrated-member CREC must write profile destination files — `sync:topic-positions` re-adding S000033 to mega-bundle fails freeze + scraped Ballotpedia junk (stripped); (2) CREC yield thin (343 HTML→~12 before AECA filter) — diagnose `mapCrecTextToTopic` / pool; (3) wire `buildCrecSaidDidLinks` into `profileMigrate` (old builder lacks saidQuote/URL); (4) `ingest:member` cosponsor early-stop (6276/7906 fetched); (5) VoteSmart key EMPTY — NPAT skipped (BATCH C); (6) topicPositions `meta.totalMembers` was stale `1` pre-existing — corrected to 537 this turn
