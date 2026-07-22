@@ -19,7 +19,8 @@ Every agent reads these every turn, in this order:
    direct instructions as a short literal checklist
 3. `docs/CURSOR_IMPLEMENTATION_MANUAL.md` — **Cursor-only** implementation engineer role & discipline
 4. `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` — **Claude-only** full role/procedure (Cursor aware)
-5. `docs/workflows/AGENT_HANDOFF_LOG.md` — agent↔agent handoff log + improvement backlog (§1.1 J)
+5. `docs/workflows/AGENT_HANDOFF_LOG.md` — agent↔agent handoff / work log (§1.1 J)
+5b. `docs/workflows/IMPROVEMENT_BACKLOG.md` — **SINGLE** improvement backlog (never a second table)
 6. `PROGRESS.md` — milestones, status board, blockers
 7. `docs/OBJECTIVE_SOURCES.md` — the **source constitution** (WHO: approved sources, tiers, keys)
 8. `lib/data/SOURCE_LOOKUP.md` — the **routing table** (HOW: data need → command → destination)
@@ -52,6 +53,7 @@ Also read when relevant: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`,
 | **Tier code values (official/nonpartisan/media/alleged/unverified)** | `lib/types/index.ts` (the `SourceTier` union) |
 | **Editorial voice / banned words / Said→Did format** | `.cursor/rules/ledger-editorial-voice.mdc` |
 | **Corroboration & banned-source policy** | `.cursor/rules/ledger-data-policy.mdc` |
+| **Improvement backlog (SINGLE canonical — never a second table)** | `docs/workflows/IMPROVEMENT_BACKLOG.md` |
 | **Milestones / status board (not batch mechanics)** | `PROGRESS.md` |
 | **File inventory audit (nav-relevant scan)** | `docs/workflows/FILE_INVENTORY_AUDIT.md` (source: `data/reports/file-inventory.json`; regenerate via `npm run audit:inventory-md`) |
 | **Sync/code optimization checklist (L1–L8 living tracker)** | `docs/workflows/FILE_AUDIT_LEDGER.md` |

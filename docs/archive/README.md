@@ -18,8 +18,8 @@ They are kept for historical context only. For live guidance, read in order:
 | `progress-screenshots.md` | Visual milestone gallery (2026-06-23); PNGs remain in `docs/progress/` |
 | `workflows/content-maps/` | One-time doc-merge maps (b1–b4); merged into live docs |
 | `workflows/part-a-a3-nav-verification.md` | One-time nav verification artifact |
-| `workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md` | FL infrastructure audit snapshot; open items migrated to `AGENT_HANDOFF_LOG.md` |
-| `workflows/NPM_AUDIT_2026-07-18.md` | npm audit snapshot; open items in handoff backlog |
-| `workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` | Platform read-only audit; open P0/P1 items migrated to handoff backlog |
+| `workflows/FL_INFRASTRUCTURE_AUDIT_2026-07-12.md` | FL infrastructure audit snapshot; open items migrated to `IMPROVEMENT_BACKLOG.md` |
+| `workflows/NPM_AUDIT_2026-07-18.md` | npm audit snapshot; open items in `IMPROVEMENT_BACKLOG.md` |
+| `workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` | Platform read-only audit; open P0/P1 items in `IMPROVEMENT_BACKLOG.md` |
 
-**Open items from archived audits** live in `docs/workflows/AGENT_HANDOFF_LOG.md` → Improvement backlog.
+**Open items from archived audits** live in `docs/workflows/IMPROVEMENT_BACKLOG.md` (single canonical backlog).

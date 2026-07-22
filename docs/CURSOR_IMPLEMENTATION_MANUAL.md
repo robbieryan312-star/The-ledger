@@ -143,6 +143,8 @@ every time, regardless of your own PR description saying "STOP for Claude review
 phrase and then merging anyway is a contradiction to catch in your own output, not just Claude's.
 
 Session evidence goes to `docs/workflows/AGENT_HANDOFF_LOG.md` (§1.1 J), not chat alone.
+Open improvement items live only in `docs/workflows/IMPROVEMENT_BACKLOG.md` — never a second
+backlog table in the handoff log.
 
 **Confront Claude every work/verify turn (owner directive — binding):** End every implementation
 response with a **`## Confront Claude — paste to Claude Code`** block the owner can forward
