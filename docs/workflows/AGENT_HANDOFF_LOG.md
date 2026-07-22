@@ -24,7 +24,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Confront Claude — paste to Claude Code
 
-**M-BACKLOG #74 tip `80647a8`** — prebuild 0 · zero handoff backlog headings · uniqueness guard
+**M-BACKLOG #74 tip `e792c3c`** — prebuild 0 · zero handoff backlog headings · uniqueness guard
 **m4 #62 tip `d539847`** — REJECT fix (Said quote+URL · honest-gap · trim) ⛔
 **M-UI #68 `bef4ddc`** — leave as-is
 **#78 closed + branch deleted** (Vercel rename = dashboard)
