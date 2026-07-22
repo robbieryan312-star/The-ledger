@@ -72,6 +72,18 @@ function pickSaidForLink(
   link: SaidDidLinkEntry,
   allTopics?: Record<string, TopicPositionData>,
 ): SaidSource | null {
+  // Prefer verbatim Said embedded on the link (CREC quote + GovInfo URL).
+  if (link.saidQuote?.trim() && link.saidUrl?.trim()) {
+    return {
+      quote: link.saidQuote.trim(),
+      outlet: link.saidOutlet?.trim() || officialOutletLabel(link.saidUrl),
+      url: link.saidUrl.trim(),
+      tier: 'official',
+      date: link.statedPositionDate ?? 'Date not recorded',
+      verbatim: true,
+    };
+  }
+
   const statementPool = allTopics
     ? Object.values(allTopics).flatMap((t) => t.statements ?? [])
     : topicData.statements;
@@ -79,8 +91,7 @@ function pickSaidForLink(
   const officialStatement = statementPool.find(
     (s) =>
       s.tier === 'official' &&
-      /\/CREC-/i.test(s.url ?? '') &&
-      (textMatchesTopic(s.title, topicId) || s.topicId === topicId) &&
+      textMatchesTopic(s.title, topicId) &&
       saidDidSubjectsOverlap(s.title, `${link.billNumber}: ${link.billTitle}`),
   );
   if (officialStatement) {

@@ -8,7 +8,7 @@ export const MAX_SAID_DID_LINKS_PER_MEMBER = 15;
 
 /**
  * Prefer substantive Senate/House vote context when billTitle is procedural
- * ("Motion to Proceed to S.J.Res. 185") so subject-overlap pairing can work.
+ * so subject-overlap pairing can work.
  */
 export function enrichVoteBillTitle(vote: VoteRecord): string {
   const title = (vote.billTitle ?? '').trim();
@@ -37,10 +37,8 @@ export function crecUrlStem(url: string | undefined | null): string {
 
 /**
  * Pair each verified CREC floor Said with one subject-overlapping roll-call Did.
- * - Official CREC only (member floor speech URLs)
- * - Dedup Saids by URL stem
- * - One Did per Said (newest matching vote); one use of each bill:date Did globally
- * - Cap 15; remainder is honest-gap (do not force)
+ * Each link embeds the verbatim Said quote + GovInfo/CREC URL (tier official).
+ * Dedup Saids by URL stem; one Did per Said; one use of each bill:date Did; cap 15.
  */
 export function buildCrecSaidDidLinks(
   byTopic: Record<string, { statements: TopicStatementEntry[] }>,
@@ -53,6 +51,10 @@ export function buildCrecSaidDidLinks(
       if (!isOfficialCrecFloorStatement(s)) continue;
       const stem = crecUrlStem(s.url);
       if (!stem || seenStems.has(stem)) continue;
+      // Said-vs-procedural: require spoken floor opener (Mr./Madam President), not bare lists.
+      const title = (s.title ?? '').trim();
+      if (!/^(Mr\.|Madam)\s+[A-Z][A-Za-z.'-]+/i.test(title)) continue;
+      if (/\bI move to discharge\b/i.test(title) || /\bI move to proceed to\b/i.test(title)) continue;
       seenStems.add(stem);
       crecStatements.push({ ...s, topicId: s.topicId || topicId });
     }
@@ -73,10 +75,14 @@ export function buildCrecSaidDidLinks(
   for (const statement of crecStatements) {
     if (total >= MAX_SAID_DID_LINKS_PER_MEMBER) break;
     const topicId = statement.topicId;
+    const saidUrl = (statement.url ?? '').trim();
+    const saidQuote = (statement.title ?? '').trim();
+    if (!saidUrl || !saidQuote) continue;
+
     const match = orderedVotes.find((vote) => {
       const didKey = `${vote.billId}:${vote.date}`;
       if (usedDidKeys.has(didKey)) return false;
-      return saidDidSubjectsOverlap(statement.title, voteSaidDidContext(vote));
+      return saidDidSubjectsOverlap(saidQuote, voteSaidDidContext(vote));
     });
     if (!match) continue;
 
@@ -86,6 +92,9 @@ export function buildCrecSaidDidLinks(
     out[topicId].push({
       topicId,
       statedPositionDate: statement.date ?? null,
+      saidQuote,
+      saidUrl,
+      saidOutlet: statement.outlet ?? 'Congressional Record',
       voteDate: match.date,
       billTitle: enrichVoteBillTitle(match),
       billNumber: match.billId,

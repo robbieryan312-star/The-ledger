@@ -127,7 +127,6 @@ const PROCEDURAL_RULES: ProceduralRule[] = [
   { name: 'quorum-call-rescission', test: (t) => /quorum call be rescinded/i.test(t) },
   { name: 'resume-legislative-session', test: (t) => /resume legislative session/i.test(t) },
   { name: 'motion-to-proceed', test: (t) => /\bI move to proceed to\b/i.test(t) },
-  { name: 'motion-to-discharge', test: (t) => /\bI move to discharge\b/i.test(t) },
   { name: 'committee-nomination-report', test: (t) => /I report favorably the following nomination/i.test(t) },
   { name: 'floor-privileges', test: (t) => /granted floor privileges/i.test(t) },
   { name: 'scheduled-recess', test: (t) => /the previously scheduled recess/i.test(t) },

@@ -708,6 +708,19 @@ export function validateSaidDidFile(
       if (link.congressGovUrl?.trim()) {
         pushIf(violations, label, isPlaceholderUrl(link.congressGovUrl), `placeholder congressGovUrl`);
       }
+      // Embedded Said (quote + CREC URL): required when present; mandatory for S000033 official pairs.
+      const row = link as { saidQuote?: string; saidUrl?: string; tier?: string };
+      const hasEmbedded = Boolean(row.saidQuote?.trim() || row.saidUrl?.trim());
+      const requireEmbedded =
+        data.bioguideId === 'S000033' && row.tier === 'official';
+      if (requireEmbedded || hasEmbedded) {
+        pushIf(violations, label, !row.saidQuote?.trim(), 'saidDid link missing saidQuote');
+        pushIf(violations, label, !row.saidUrl?.trim(), 'saidDid link missing saidUrl');
+        if (row.saidUrl?.trim()) {
+          pushIf(violations, label, !/\/CREC-/i.test(row.saidUrl), 'saidUrl must be a CREC/GovInfo URL');
+          pushIf(violations, label, isPlaceholderUrl(row.saidUrl), 'placeholder saidUrl');
+        }
+      }
     }
   }
   return violations;

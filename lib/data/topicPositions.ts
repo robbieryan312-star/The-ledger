@@ -47,6 +47,11 @@ export interface StatedPositionSourceEntry {
 export interface SaidDidLinkEntry {
   topicId?: string;
   statedPositionDate: string | null;
+  /** Verbatim CREC / sourced Said quote (required for official CREC pairs). */
+  saidQuote?: string;
+  /** GovInfo/CREC (or sourced) URL for the Said side. */
+  saidUrl?: string;
+  saidOutlet?: string;
   voteDate: string;
   billTitle: string;
   billNumber: string;

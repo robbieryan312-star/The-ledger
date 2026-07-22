@@ -1,10 +1,17 @@
 {
   "bioguideId": "S000033",
+  "pairCount": 2,
+  "pairTarget": 15,
+  "status": "partial",
+  "honestGapNote": "2 of 15 verified CREC floor-speech↔roll-call pairs; remainder honest-gap — current 30-vote corpus lacks subject-overlapping Did for remaining CREC Saids (no fabrication).",
   "byTopic": {
     "education": [
       {
         "topicId": "education",
         "statedPositionDate": "2026-06-24",
+        "saidQuote": "Mr. SANDERS. Mr. President, in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42 million Americans, $1.7 trillion in student debt. Further, a recordbreaking 9 million Americans are now in default on their student loans. Instead of providing financial relief to these Americans, the Trump administration is about to make a bad situation even worse.",
+        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3189-3",
+        "saidOutlet": "Congressional Record",
         "voteDate": "2026-06-25",
         "billTitle": "Motion to Proceed to S.J.Res. 196 — A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Department of Education relating to \"Reimagining and Improving Student Education-Federal Student Loan Program Final Regulations\".. Official Senat...",
         "billNumber": "S.J.Res. 196",
@@ -17,6 +24,9 @@
       {
         "topicId": "economy-taxes",
         "statedPositionDate": "2026-01-30",
+        "saidQuote": "Mr. SANDERS. Madam President, it is no secret to the American people that our country today faces a series of enormous crises: our healthcare system basically collapsing, despite the huge amount of money we spend on it; millions of Americans cannot afford housing; 800,000 people are homeless. We have massive levels of income and wealth inequality. People on top have never ever done as well as they are doing right now while at the same time 60 percent of our people are living paycheck to paycheck.",
+        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2026-01-30-pt1-PgS401-7",
+        "saidOutlet": "Congressional Record",
         "voteDate": "2026-06-22",
         "billTitle": "Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823) — A bill a bill to increase the supply of housing in America, and for other purposes.. Official Senate roll-call from senate.gov (119th Congress).",
         "billNumber": "H.R. 6644",

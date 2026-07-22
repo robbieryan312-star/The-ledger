@@ -10,6 +10,45 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-22 — m4 REJECT fix (Said quote+URL · honest-gap note · TRIM) ⛔
+
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · STOP for tip approval
+
+### Reject repairs
+| # | Requirement | Fix |
+|---|-------------|-----|
+| (a) | Verbatim CREC Said + GovInfo URL | Inline `saidQuote` + `saidUrl` on each link; UI `pickSaidForLink` prefers embedded Said (demo: 2 diffs with CREC URLs) |
+| (b) | Target 15; honest-gap rest | `pairCount: 2`, `pairTarget: 15`, `status: partial`, **explicit `honestGapNote`** — no fabrication |
+| (c) | TRIM to data + builder | **Reverted** `profileMigrate.ts`, `sync-topic-positions.ts`, `crecProceduralFilter.ts`, crec fixture, statements churn |
+
+### Files in this tip (vs main)
+| Path | Role |
+|------|------|
+| `lib/data/saidDidVoteContext.ts` | **Builder** (CREC 1:1 + embed quote/URL) |
+| `lib/data/generated/profiles/S000033/saidDid.json` | **Data** + honest-gap note |
+| `lib/data/topicPositions.ts` | SaidDidLinkEntry fields `saidQuote`/`saidUrl` |
+| `lib/data/buildSaidDidDiffs.ts` | Prefer embedded Said (join) |
+| `lib/data/sourceIntegrity.ts` | S000033 official links must embed Said |
+| snapshot + W3d fixture + PILOT + manifest + handoff | Guards / checklist |
+
+### Pairs (2/15)
+1. education CREC-2026-06-24 → S.J.Res. 196 Yea 2026-06-25
+2. economy-taxes CREC-2026-01-30 → H.R. 6644 Yea 2026-06-22
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**m4 #62 REJECT fix tip:** approve **PR head** after push
+**(a)** saidQuote+saidUrl inline on both pairs · UI diffs use CREC URLs
+**(b)** 2/15 · honestGapNote explicit · no fabrication
+**(c)** profileMigrate + sync caps + crec filter **reverted** — data + builder (+ minimal type/join/guard)
+**prebuild/build:** run this turn → expect 0
+**STOP:** do not merge without APPROVAL
+**M-UI #68** `bef4ddc` leave as-is · **PARK** #76 m8a m7a–d · **#78 closed** (Vercel rename = dashboard)
+
+---
+
 ## HANDOFF 2026-07-21 — m4 JUSTIFY/TRIM Said→Did (⛔ Claude)
 
 **From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval
