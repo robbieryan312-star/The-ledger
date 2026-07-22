@@ -103,6 +103,14 @@ operating manual and core-rules.
     AND (b) **tell the owner both the PROBLEM and the CHANGE implemented**, the same turn. A response
     that ends with a flagged-but-unaddressed problem is INCOMPLETE — go back and address it before
     sending. Repeated flags of the same unfixed problem is a §12 violation, not diligence.
+13. **Invite Cursor's recommendations — do NOT blanket-ban its input (owner 2026-07-21).** The rule is
+    "execute the brief exactly and never ACT off-brief without approval" — NOT "stay silent." Cursor is
+    on the ground and sees things; it is EXPECTED to SURFACE recommendations, concerns, risks, and
+    improvements it discovers (in its `## Confront Claude` block), as PROPOSALS, never as unilateral
+    actions. Claude evaluates each surfaced item: adopt it (into a brief) if it is effectively optimal
+    and improves the platform, or decline it with a stated reason. Phrase prompts as "execute exactly;
+    surface any recommendations/concerns for my evaluation" — never a bare "no off-brief work" that
+    suppresses useful input. The ban is on ACTING off-brief, not on RECOMMENDING.
 
 ---
 
