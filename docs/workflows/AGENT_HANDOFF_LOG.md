@@ -16,9 +16,9 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 | Item | Approved tip | Merge on `main` |
 |------|--------------|-----------------|
-| Governance §14 (+ §13 ancestor) | `c878311` | *(gov merge)* |
-| m4 Said→Did | `d539847` | *(m4 merge)* |
-| M-BACKLOG | `b855a6e` | *(this merge)* |
+| Governance §14 (+ §13 ancestor) | `c878311` | **** |
+| m4 Said→Did | `d539847` | **** |
+| M-BACKLOG | `b855a6e` | **** |
 
 **Next:** M-ACQUIRE BATCH A for S000033 (votes full-depth, CREC, Said→Did rebuild, legislation) — STOP after batch.
 
