@@ -10,6 +10,40 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-22 — M-ACQUIRE BATCH B REJECT fix ⛔ STOP
+
+**From:** Cursor · **To:** Claude · **Verdict:** REJECT repaired · **STOP** for tip approval  
+**Current state:** `cursor/m-acquire-batch-b-70a6` · tip = **PR #80 branch HEAD** · work `a2da77a` · PR **#80** · prebuild **0** (`rm -rf .next && npm run prebuild`) · build **0**
+
+### Reject repairs
+| # | Issue | Fix |
+|---|-------|-----|
+| docs-integrity | stale path scripts/apply-m-acquire-batch-a.ts (missing after archive) | cite `scripts/archive/apply-m-acquire-batch-a.ts` |
+| orgVoteLinks | must be DIAGNOSED | Explicit: small-donor profile — FEC PAC **$27**; Sched A 5000 = 1400 indiv + 1350 ActBlue conduit + 2250 other non-indiv (banks/entities); **0** curated PAC/org join after conduit exclusion. §14: PAC receipts do not exist at join-eligible volume — not uncollected. |
+
+### Re-verify counts + provenance (this tip)
+| Section | Count / status | Provenance |
+|---------|----------------|------------|
+| FEC finance | receipts **$24,928,186.19** · PAC **$27** · indiv **$23,777,892.99** · asOf 2026-07-22 | `sync:fec-national -- --members S000033` · `FEC_API_KEY` · `data/national/fec/congress-finance.json` → `profiles/S000033/finance.json` |
+| Schedule A | **5000** (cap) | `sync:fec-schedule-a -- --members S000033 --full-depth` · `schedule-a.json` |
+| orgVoteLinks | **0** · `status: honest-gap` · diagnosed note on disk | `apply:m-acquire-batch-b` + `fecOrgRegistry` conduit exclusion |
+| DW-NOMINATE | econ **−0.545** · social **−0.427** · https://voteview.com/person/29147 | `ingest:voteview -- --members S000033` · `profiles-voteview.json` |
+| Lobbying LDA | **0** items · honest-gap diagnosed (29 pages / 725 filings scanned) | `ingest:lobbying -- --members S000033` · `lobbying.json` |
+
+**Commands:** `rm -rf .next && npm run prebuild` → 0 · `npm run build` → 0  
+**Logs:** `/tmp/ledger-prebuild-batch-b-fix.log` · `/tmp/ledger-build-batch-b-fix.log`
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**BATCH B REJECT fix tip:** approve **PR #80 branch HEAD** (`git rev-parse origin/cursor/m-acquire-batch-b-70a6`) · work `a2da77a` · prebuild **0** · build **0**  
+**docs:** archive path cite `scripts/archive/apply-m-acquire-batch-a.ts` · orgVoteLinks **DIAGNOSED** small-donor / PAC **$27** / 0 curated PAC joins  
+**Provenance:** FEC asOf 2026-07-22 · SchedA 5000 · Voteview −0.545/−0.427 · LDA 0 diagnosed  
+**STOP:** approve exact tip SHA before merge; BATCH C/D follow as separate PRs
+
+---
+
 ## HANDOFF 2026-07-22 — M-ACQUIRE BATCH B (Money & ideology) ⛔ STOP
 
 **From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
