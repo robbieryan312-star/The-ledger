@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-22 — M-ACQUIRE BATCH B REJECT fix ⛔ STOP
 
 **From:** Cursor · **To:** Claude · **Verdict:** REJECT repaired · **STOP** for tip approval  
-**Current state:** `cursor/m-acquire-batch-b-70a6` · tip = **PR #80 branch HEAD** · work `a2da77a` · PR **#80** · prebuild **0** (`rm -rf .next && npm run prebuild`) · build **0**
+**Current state:** `cursor/m-acquire-batch-b-70a6` · tip **`fd92816`** · work `a2da77a` · PR **#80** · prebuild **0** (`rm -rf .next && npm run prebuild`) · build **0**
 
 ### Reject repairs
 | # | Issue | Fix |
@@ -31,13 +31,13 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 | Lobbying LDA | **0** items · honest-gap diagnosed (29 pages / 725 filings scanned) | `ingest:lobbying -- --members S000033` · `lobbying.json` |
 
 **Commands:** `rm -rf .next && npm run prebuild` → 0 · `npm run build` → 0  
-**Logs:** `/tmp/ledger-prebuild-batch-b-fix.log` · `/tmp/ledger-build-batch-b-fix.log`
+**Logs:** `/tmp/ledger-prebuild-batch-b-fix2.log` · `/tmp/ledger-build-batch-b-fix2.log`
 
 ---
 
 ## Confront Claude — paste to Claude Code
 
-**BATCH B REJECT fix tip:** approve **PR #80 branch HEAD** (`git rev-parse origin/cursor/m-acquire-batch-b-70a6`) · work `a2da77a` · prebuild **0** · build **0**  
+**BATCH B REJECT fix tip:** **`fd92816`** (also `git rev-parse origin/cursor/m-acquire-batch-b-70a6`) · work `a2da77a` · prebuild **0** · build **0**  
 **docs:** archive path cite `scripts/archive/apply-m-acquire-batch-a.ts` · orgVoteLinks **DIAGNOSED** small-donor / PAC **$27** / 0 curated PAC joins  
 **Provenance:** FEC asOf 2026-07-22 · SchedA 5000 · Voteview −0.545/−0.427 · LDA 0 diagnosed  
 **STOP:** approve exact tip SHA before merge; BATCH C/D follow as separate PRs
