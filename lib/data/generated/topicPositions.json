@@ -1,9 +1,9 @@
 {
   "meta": {
-    "asOf": "2026-07-08",
-    "source": "Ballotpedia + Congress roll-call votes (Said→Did)",
-    "totalMembers": 1,
-    "membersWithData": 443,
+    "asOf": "2026-07-22",
+    "source": "Ballotpedia + GovInfo CREC + Congress roll-call votes (Said→Did)",
+    "totalMembers": 537,
+    "membersWithData": 442,
     "membersWithPlatformPositions": 390,
     "membersWithStatedPosition": 0,
     "membersWithSaidDidLinks": 432,
@@ -26,7 +26,7 @@
       "judiciary": 258
     },
     "votesmartConfigured": false,
-    "note": "VoteSmart skipped (no key). Platform positions from Ballotpedia where available."
+    "note": "S000033 migrated to profiles/S000033 (destination files); not in mega-bundle (freeze). M-ACQUIRE BATCH A CREC applied to profile only."
   },
   "byBioguideId": {
     "W000437": {

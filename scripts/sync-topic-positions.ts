@@ -34,13 +34,15 @@ const VOTESMART_DELAY_MS = 300;
 const REQUEST_TIMEOUT_MS = 20_000;
 const MAX_PLATFORM_PER_TOPIC = 3;
 const MAX_SAID_DID_LINKS = 3;
-const MAX_CREC_STATEMENTS_PER_MEMBER = 12;
+/** Default CREC keep cap; raised under `--full-depth` (scoped M-ACQUIRE). */
+let MAX_CREC_STATEMENTS_PER_MEMBER = 12;
 /** Max GovInfo search granules to examine per member (pre-filter pool; not a display cap). */
-const CREC_SEARCH_POOL = 150;
+let CREC_SEARCH_POOL = 150;
 /** GovInfo /search page size — paginate via offsetMark until pool exhausted. */
 const CREC_SEARCH_PAGE_SIZE = 100;
 /** Congress numbers to search, most-recent first; dedupe by granule stem across sessions. */
-const CREC_CONGRESSES = [119, 118] as const;
+let CREC_CONGRESSES: readonly number[] = [119, 118];
+const IS_FULL_DEPTH = process.argv.includes('--full-depth');
 
 // --- 17b throughput controls ---
 // GovInfo signed-key limit is 36,000 req/hr (10 req/s). Cap global GovInfo request rate
@@ -997,6 +999,19 @@ async function main(): Promise<void> {
         'full run (core-rules §5).',
     );
     process.exit(1);
+  }
+
+  if (IS_FULL_DEPTH) {
+    if (!memberFilter || memberFilter.size === 0) {
+      console.error('--full-depth requires --member / --members (scoped agent runs only).');
+      process.exit(1);
+    }
+    MAX_CREC_STATEMENTS_PER_MEMBER = 100;
+    CREC_SEARCH_POOL = 800;
+    CREC_CONGRESSES = [119, 118, 117, 116];
+    console.log(
+      `Full-depth CREC: statements cap ${MAX_CREC_STATEMENTS_PER_MEMBER}, search pool ${CREC_SEARCH_POOL}, congresses ${CREC_CONGRESSES.join(',')}`,
+    );
   }
 
   const legislatorsRaw = JSON.parse(await readFile(LEGISLATORS_FILE, 'utf8')) as {

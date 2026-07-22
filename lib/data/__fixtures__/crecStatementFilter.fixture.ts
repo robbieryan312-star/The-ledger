@@ -194,3 +194,19 @@ export const KNOWN_GOOD: CrecFilterFixtureCase[] = [
     text: "Ms. BALDWIN. Mr. President, today, I rise in opposition to Donald Trump's illegal war in Iran. I come to ask a simple question: What has this war gotten us?",
   },
 ];
+
+// Append-only M-ACQUIRE BATCH A (2026-07-22): AECA discharge motions mislabeled as Said.
+KNOWN_BAD.push(
+  {
+    label: 'S000033 AECA discharge — section 36(b)(1) S.J.Res. 138',
+    text: 'Mr. SANDERS. Mr. President, pursuant to section 36(b)(1), I move to discharge the Committee on Foreign Relations from further consideration of S.J. Res. 138.',
+  },
+  {
+    label: 'S000033 AECA discharge — 22 USC 2776 / Section 601(b)(3)',
+    text: 'Mr. SANDERS. Mr. President, pursuant to 22 United States Code 2776 and in accordance with the provisions of Section 601(b)(3) of the International Security Assistance and Arms Export Control Act of 1976, I move to discharge the Committee on Foreign Relations of further consideration',
+  },
+  {
+    label: 'S000033 AECA discharge — section 36(c) S.J.Res. 115',
+    text: 'Mr. SANDERS. Madam President, pursuant to section 36(c) of the Arms Export Control Act, I move to discharge the Committee on Foreign Relations from further consideration of S.J. Res. 115, relating to the disapproval of the proposed license amendment for the export of certain defe',
+  },
+);

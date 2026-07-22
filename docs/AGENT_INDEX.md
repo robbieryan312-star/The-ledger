@@ -166,6 +166,7 @@ Preflight (checks session-start files + guard scripts resolve): `npm run agent:p
 | Elections issue merge helper (deferred demo) | `lib/candidateIssues.ts` |
 | Campaign promise status derivation (archive coverage script) | `lib/data/derivePromiseStatus.ts` |
 | Profile build pipeline (Phase E) | `scripts/profile-build.ts` |
+| M-ACQUIRE BATCH A apply (S000033 Record) | `scripts/apply-m-acquire-batch-a.ts` (`npm run apply:m-acquire-batch-a`) |
 
 ---
 

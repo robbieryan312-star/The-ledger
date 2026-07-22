@@ -10,6 +10,49 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-22 — M-ACQUIRE BATCH A (Bernie Record) ⛔ STOP
+
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
+**Current state:** `cursor/m-acquire-batch-a-70a6` · prebuild **0** · build **0**
+
+### BEFORE → AFTER (S000033 only)
+
+| Section | BEFORE | AFTER | Provenance |
+|---------|--------|-------|------------|
+| Votes (Did) | **30** (capped) | **201** (119th Cong. sess. 2 full LIS) | `sync:votes-national -- --members S000033 --full --full-depth` · `CONGRESS_API_KEY` + Senate LIS · dest `data/national/votes/congress-votes.json` → `profiles/S000033/votes.json` |
+| CREC Said | **4** floor speeches | **10** CREC (+1 media WaPo = **11** stmts) | `sync:topic-positions -- --member S000033 --full-depth` · `GOVINFO_API_KEY` · applied via `apply:m-acquire-batch-a` (union prior CREC; AECA discharge filtered) · dest `profiles/S000033/statements.json` · **not** mega-bundle |
+| Said→Did | **2**/15 | **8**/15 (`status: partial`, honestGapNote) | `buildCrecSaidDidLinks` on full CREC+votes · dest `profiles/S000033/saidDid.json` |
+| Legislation | 565 / 7424 | **566** sponsored / **7906** cosponsored | `ingest:member -- --bioguide S000033` · `CONGRESS_API_KEY` · dest `members/S000033.json` + `legislation.json` meta |
+
+### Honest gaps (this batch)
+- Said→Did remainder **7**/15 — unmatched CREC Saids lack subject-overlapping Did in 201-vote corpus (no fabrication). Technology CREC (2) preserved but unpaired.
+- Positions / orgVoteLinks — **unchanged** honest-gap (BATCH B/C).
+- Trades — **unchanged** `fetch-failed` eFD 503 (BATCH D).
+
+### Process fixes shipped
+- `--full-depth` on votes + CREC sync (scoped `--members`/`--member` only)
+- Senate-only scoped runs skip House walk (was burning ~634 House fetches)
+- AECA `pursuant to section 36` / `I move to discharge` → procedural filter + fixtures
+- `apply:m-acquire-batch-a` — profile apply without wiping trades/news; mega-bundle freeze respected
+
+### Acceptance
+- `npm run prebuild` → **0** · `npm run build` → **0**
+- Logs: `/tmp/ledger-sync-votes-national-s000033.log`, `/tmp/ledger-sync-topic-positions-s000033.log`, `/tmp/ledger-ingest-member-s000033.log`, `/tmp/ledger-prebuild-batch-a.log`, `/tmp/ledger-build-batch-a.log`
+
+**PARK:** #76 · m8a · m7a–d · M-UI #68 STAGE THREE after M-ACQUIRE  
+**Next after APPROVAL:** BATCH B (Money & ideology)
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-ACQUIRE BATCH A tip:** _(fill after commit)_ · prebuild 0 · build 0  
+**S000033:** votes 30→**201** · CREC 4→**10** · Said→Did 2→**8**/15 · legis 566/7906  
+**STOP:** do not start BATCH B without APPROVAL on this tip SHA  
+**§13 proposals:** (1) migrated-member CREC must write profile destination files — `sync:topic-positions` re-adding S000033 to mega-bundle fails freeze + scraped Ballotpedia junk (stripped); (2) CREC yield thin (343 HTML→~12 before AECA filter) — diagnose `mapCrecTextToTopic` / pool; (3) wire `buildCrecSaidDidLinks` into `profileMigrate` (old builder lacks saidQuote/URL); (4) `ingest:member` cosponsor early-stop (6276/7906 fetched); (5) VoteSmart key EMPTY — NPAT skipped (BATCH C); (6) topicPositions `meta.totalMembers` was stale `1` pre-existing — corrected to 537 this turn
+
+---
+
 ## HANDOFF 2026-07-22 — MERGE NOW recorded · M-ACQUIRE BATCH A next
 
 **From:** Cursor · **To:** Claude · **Verdict:** merges COMPLETE on main · BATCH A starting

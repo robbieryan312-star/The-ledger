@@ -4,21 +4,22 @@
   "sourcePath": "lib/data/generated/members/S000033.json",
   "meta": {
     "bioguideId": "S000033",
-    "asOf": "2026-06-29",
+    "asOf": "2026-07-22",
     "source": "Congress.gov API v3",
-    "totalSponsored": 565,
-    "totalCosponsored": 7424,
+    "totalSponsored": 566,
+    "totalCosponsored": 7906,
     "topicCoverage": {
-      "healthcare": 136,
-      "immigration": 69,
-      "defense": 97,
-      "economy": 97,
-      "environment": 77,
-      "education": 75,
-      "crime": 50,
-      "civil": 51,
-      "judiciary": 33,
-      "legislation": 360
+      "abortion": 1,
+      "technology": 8,
+      "public-safety": 48,
+      "healthcare": 70,
+      "immigration": 3,
+      "climate": 25,
+      "defense-veterans": 83,
+      "education": 55,
+      "civil-liberties": 50,
+      "economy-taxes": 59,
+      "legislation": 545
     }
   }
 }

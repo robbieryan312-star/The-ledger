@@ -1,19 +1,43 @@
 {
   "bioguideId": "S000033",
   "keyIssuePositions": [
-    "we are at the beginning of the most profound technological revolution in world history, a…",
     "Together we are going to end the international embarrassment of the United States of America, our…",
+    "some of my Republican colleagues held a press conference today, criticizing President Biden for his…",
+    "in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42…",
+    "I support the nomination of Moshe Marvit to be a Member of the Federal Mine Safety and Health…",
     "it is no secret to the American people that our country today faces a series of enormous crises:…",
-    "in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42…"
+    "we are at the beginning of the most profound technological revolution in world history, a…"
   ],
   "statementDisplayTexts": [
-    "we are at the beginning of the most profound technological revolution in world history, a revolution which will bring…",
-    "I want to say a few words about what I consider to be one of the most important issues not only facing our country but…",
     "Together we are going to end the international embarrassment of the United States of America, our great country, being…",
+    "let me thank Senator Wyden for his outstanding work as the former chairman of the Finance Committee and now as the…",
+    "let me be as clear as I can be.",
+    "some of my Republican colleagues held a press conference today, criticizing President Biden for his decision to stop…",
+    "in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42 million Americans,…",
+    "I support the nomination of Moshe Marvit to be a Member of the Federal Mine Safety and Health Review Commission.",
     "it is no secret to the American people that our country today faces a series of enormous crises: our healthcare system…",
-    "in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42 million Americans,…"
+    "as people all over this country understand, we are a nation today that faces enormous crises.",
+    "the time is long overdue for Congress to get its priorities right.",
+    "we are at the beginning of the most profound technological revolution in world history, a revolution which will bring…",
+    "I want to say a few words about what I consider to be one of the most important issues not only facing our country but…"
   ],
   "saidDidLines": [
+    {
+      "said": "I support the nomination of Moshe Marvit to be a Member of the Federal Mine Safety and Health Review Commission.",
+      "did": "Voted Nay — PN851-8: Confirmation: Kara Marie Westercamp, of Virginia, to be a Judge of the U.S. Court of International…"
+    },
+    {
+      "said": "let me thank Senator Wyden for his outstanding work as the former chairman of the Finance Committee and now as the…",
+      "did": "Voted Yea — S.J.Res."
+    },
+    {
+      "said": "the time is long overdue for Congress to get its priorities right.",
+      "did": "Voted Nay — S. 4784: Motion to Invoke Cloture: Motion to Proceed to S. 4784 — An original bill to authorize…"
+    },
+    {
+      "said": "some of my Republican colleagues held a press conference today, criticizing President Biden for his decision to stop…",
+      "did": "Voted Yea — S.J.Res."
+    },
     {
       "said": "in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42 million Americans,…",
       "did": "Voted Yea — S.J.Res."
@@ -21,16 +45,33 @@
     {
       "said": "it is no secret to the American people that our country today faces a series of enormous crises: our healthcare system…",
       "did": "Voted Yea — H.R. 6644: Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment…"
+    },
+    {
+      "said": "as people all over this country understand, we are a nation today that faces enormous crises.",
+      "did": "Voted Yea — H.R. 6644: Motion to Invoke Cloture: Motion to Concur in the House Amendment to the Senate Amendment to…"
+    },
+    {
+      "said": "let me be as clear as I can be.",
+      "did": "Voted Yea — Motion to Waive All Applicable Budgetary Discipline Re: Sanders Amdt."
     }
   ],
   "voteRows": [
+    "Nay — Confirmation: Kara Marie Westercamp, of Virginia, to be a Judge of the U.S.…",
+    "Not Voting — Motion to Invoke Cloture: Benjamin M. Flowers to be U.S. Circuit Judge for the…",
+    "Yea — Motion to Proceed to S.J. Res.",
+    "Nay — Motion to Invoke Cloture: Kara Marie Westercamp to be a Judge of the U.S. Court…",
+    "Nay — Confirmation: Jeffrey T. Kuntz, of Florida, to be U.S. District Judge for the…",
+    "Nay — Motion to Invoke Cloture: Jeffrey T. Kuntz to be U.S. District Judge for the…",
+    "Nay — Motion to Invoke Cloture: Motion to Proceed to S. 4784",
+    "Nay — Confirmation: Matthew A. Schwartz, of New York, to be U.S. Circuit Judge for…",
+    "Nay — Confirmation: Arthur Roberts Jones, of T.X., to be U.S. District Judge for the…",
     "Yea — Motion to Proceed to S.",
     "Nay — Motion to Invoke Cloture: Matthew A. Schwartz, to be U.S. Circuit Judge for the…",
     "Yea — Motion to Proceed to S.J.Res.",
     "Nay — Motion to Invoke Cloture: Arthur Roberts Jones to be U.S. District Judge for…",
-    "Nay — Confirmation: Michael J. Hendershot, of O.H., to be U.S. District Judge for the…",
+    "Nay — Confirmation: Michael J. Hendershot, of Ohio, to be U.S. District Judge for the…",
     "Nay — Motion to Invoke Cloture: Michael J. Hendershot to be U.S. District Judge for…",
-    "Nay — Confirmation: John George Edward Marck, of T.X., to be U.S. District Judge for…",
+    "Nay — Confirmation: John George Edward Marck, of Texas, to be U.S. District Judge for…",
     "Nay — Motion to Invoke Cloture: John George Edward Marck to be U.S. District Judge…",
     "Yea — H. Con.",
     "Nay — Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the…",
@@ -41,19 +82,10 @@
     "Nay — Motion to Invoke Cloture: George Holding to be United States Director of the…",
     "Nay — Confirmation: Michelle Steel, of California, to be Ambassador of the United…",
     "Nay — Motion to Invoke Cloture: Michelle Steel to be Ambassador of the United States…",
-    "Nay — Motion to Invoke Cloture: Justin D. Smith to be U.S. Circuit Judge for the…",
-    "Nay — Confirmation: Brock Dahl, of Maryland, to be Legal Adviser of the Department of…",
-    "Nay — Motion to Invoke Cloture: Brock Dahl to be Legal Adviser of the Department of…",
-    "Nay — Confirmation: Anthony J. Powell, of Kansas, to be U.S. District Judge for the…",
-    "Nay — Motion to Invoke Cloture: Anthony J. Powell to be U.S. District Judge for the…",
-    "Nay — Confirmation: Anthony W. Mattivi, of Kansas, to be U.S. District Judge for the…",
-    "Nay — Motion to Invoke Cloture: Anthony W. Mattivi to be U.S. District Judge for the…",
-    "Nay — Motion to Waive All Budgetary Discipline Re: Lee Amdt.",
-    "Nay — Motion to Proceed to the House Message to Accompany S. 1318",
-    "Nay — S. 2, As Amended",
-    "Yea — Motion to Waive All Applicable Budgetary Discipline Re: Schiff Amdt.",
-    "Yea — Motion to Waive All Applicable Budgetary Discipline Re: Van Hollen Amdt.",
-    "Yea — Cortez Masto Amdt."
+    "Not Voting — Motion to Proceed to House Message to Accompany H.R. 6644",
+    "Not Voting — Motion to Discharge S.J.Res.",
+    "Not Voting — Motion to Proceed to S.J.Res.",
+    "Not Voting — Confirmation: Justin D. Smith, of Missouri, to be U.S. Circuit Judge for the…"
   ],
   "newsHeadlines": [
     "Bernie Sanders calls on Graham Platner to withdraw from Senate race amid sexual assault claims",

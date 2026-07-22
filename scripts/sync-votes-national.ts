@@ -12,6 +12,9 @@
  *
  * Run: npm run sync:votes-national
  * Full: npm run sync:votes-national -- --full
+ * Full-depth (scoped only): npm run sync:votes-national -- --members S000033 --full --full-depth
+ *   Removes the 30-vote display/collection cap for the scoped member(s) so the full
+ *   congress-session roll-call window can be retained (M-ACQUIRE gold-standard path).
  */
 import { config } from 'dotenv';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
@@ -54,12 +57,17 @@ const LEGISLATORS_FILE = path.join(projectRoot, 'lib', 'data', 'generated', 'cur
 const CHECKPOINT_FILE = '/tmp/ledger-sync-votes-national-checkpoint.json';
 
 const TARGET_CONGRESS = 119;
-const VOTES_PER_MEMBER = 30;
-const MAX_SENATE_VOTES_COLLECT = 45;
-const MAX_VOTE_PAGES = 6;
+/** Default profile depth; raised under `--full-depth` (requires `--members`). */
+let VOTES_PER_MEMBER = 30;
+/** Collect window before finalize; raised under `--full-depth`. */
+let MAX_SENATE_VOTES_COLLECT = 45;
+let MAX_VOTE_PAGES = 6;
 const PAGE_SIZE = 50;
 
 const IS_FULL = process.argv.includes('--full');
+const IS_FULL_DEPTH = process.argv.includes('--full-depth');
+/** Effectively uncapped for one congress session under `--full-depth`. */
+const FULL_DEPTH_VOTE_CAP = 10_000;
 
 function parseMembersArg(argv: string[]): Set<string> | null {
   const idx = argv.indexOf('--members');
@@ -404,6 +412,19 @@ async function main(): Promise<void> {
   const memberFilter = parseMembersArg(process.argv);
   const scopedRun = memberFilter != null;
 
+  if (IS_FULL_DEPTH) {
+    if (!scopedRun || !memberFilter || memberFilter.size === 0) {
+      console.error('--full-depth requires --members <bioguideId[,...]> (scoped agent runs only).');
+      process.exit(1);
+    }
+    VOTES_PER_MEMBER = FULL_DEPTH_VOTE_CAP;
+    MAX_SENATE_VOTES_COLLECT = FULL_DEPTH_VOTE_CAP;
+    MAX_VOTE_PAGES = 40;
+    console.log(
+      `Full-depth mode: vote cap ${FULL_DEPTH_VOTE_CAP}, senate collect ${FULL_DEPTH_VOTE_CAP}, pages ${MAX_VOTE_PAGES}`,
+    );
+  }
+
   const legislatorsRaw = JSON.parse(await readFile(LEGISLATORS_FILE, 'utf8')) as {
     legislators: LegislatorRow[];
   };
@@ -421,7 +442,6 @@ async function main(): Promise<void> {
 
   const senators = targetLegislators.filter((l) => l.chamber === 'senate');
   const houseMembers = targetLegislators.filter((l) => l.chamber === 'house');
-  const syncBioguides = new Set(targetLegislators.map((l) => l.bioguideId));
 
   const scopeField = scopedRun
     ? `scoped: ${[...memberFilter!].join(',')}`
@@ -432,7 +452,9 @@ async function main(): Promise<void> {
       ? `National vote sync (scoped): ${targetLegislators.length} member(s) — ${scopeField}`
       : `National vote sync: ${legislators.length} members (${senators.length} Senate, ${houseMembers.length} House)`,
   );
-  console.log(`Mode: ${IS_FULL ? 'FULL refetch' : 'INCREMENTAL'}`);
+  console.log(
+    `Mode: ${IS_FULL || IS_FULL_DEPTH ? 'FULL refetch' : 'INCREMENTAL'}${IS_FULL_DEPTH ? ' + FULL-DEPTH (uncapped)' : ''}`,
+  );
 
   if (!isCongressConfigured()) {
     console.error('CONGRESS_API_KEY not configured — aborting without changes.');
@@ -456,10 +478,12 @@ async function main(): Promise<void> {
       return (prior?.votes?.length ?? 0) < VOTES_PER_MEMBER;
     });
   const highWaterMark =
-    IS_FULL || underFilledTargets ? undefined : existing?.meta?.highWaterMark;
-  if (underFilledTargets) {
+    IS_FULL || IS_FULL_DEPTH || underFilledTargets ? undefined : existing?.meta?.highWaterMark;
+  if (underFilledTargets || IS_FULL_DEPTH) {
     console.log(
-      'Scoped depth refresh: bypassing high-water mark for under-filled manifest members',
+      IS_FULL_DEPTH
+        ? 'Full-depth scoped refresh: bypassing high-water mark'
+        : 'Scoped depth refresh: bypassing high-water mark for under-filled manifest members',
     );
   }
   const checkpoint = (await loadCheckpoint<Record<string, true>>(CHECKPOINT_FILE)) ?? {};
@@ -468,11 +492,21 @@ async function main(): Promise<void> {
     for (const id of memberFilter) delete checkpoint[id];
   }
 
-  // House + Senate concurrently (different API hosts) — only for target members when scoped
+  // House + Senate concurrently (different API hosts) — only for target members when scoped.
+  // Skip the empty chamber: a Senate-only scoped run must not walk every House roll call.
+  const houseBioguides = new Set(houseMembers.map((l) => l.bioguideId));
   const [houseVotes, senateVotes] = await Promise.all([
-    syncHouseVotes(syncBioguides, highWaterMark),
+    houseBioguides.size > 0
+      ? syncHouseVotes(houseBioguides, highWaterMark)
+      : Promise.resolve(new Map<string, VoteRecord[]>()),
     syncSenateVotes(senators, highWaterMark),
   ]);
+  if (houseBioguides.size === 0 && senators.length > 0) {
+    console.log('  Skipping House scan (no House members in scope)');
+  }
+  if (senators.length === 0 && houseBioguides.size > 0) {
+    console.log('  Skipping Senate scan (no Senate members in scope)');
+  }
 
   const underFilledMembers: Array<{ bioguideId: string; name: string; count: number; reason: string }> = [];
   const byBioguideId: Record<
@@ -501,7 +535,12 @@ async function main(): Promise<void> {
   for (const leg of processLegislators) {
     const priorEntry = existing?.byBioguideId?.[leg.bioguideId];
     const priorCount = priorEntry?.votes?.length ?? 0;
-    if (checkpoint[leg.bioguideId] && priorEntry && priorCount >= VOTES_PER_MEMBER) {
+    if (
+      !IS_FULL_DEPTH &&
+      checkpoint[leg.bioguideId] &&
+      priorEntry &&
+      priorCount >= VOTES_PER_MEMBER
+    ) {
       byBioguideId[leg.bioguideId] = priorEntry as typeof byBioguideId[string];
       continue;
     }
@@ -511,11 +550,13 @@ async function main(): Promise<void> {
 
     // Merge with existing in incremental mode
     const existingVotes = existing?.byBioguideId?.[leg.bioguideId]?.votes ?? [];
-    const votes = IS_FULL
+    const forceReplace = IS_FULL || IS_FULL_DEPTH;
+    const votes = forceReplace
       ? freshVotes.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, VOTES_PER_MEMBER)
       : mergeVoteLists(existingVotes, freshVotes);
 
-    if (votes.length < VOTES_PER_MEMBER) {
+    // Under-filled only meaningful against the default 30-vote profile depth.
+    if (!IS_FULL_DEPTH && votes.length < VOTES_PER_MEMBER) {
       const reason = fetchFailures.some((f) => f.chamber === leg.chamber)
         ? 'fetch-failed rolls reduced available data'
         : 'insufficient roll-call positions in scan window';
@@ -531,7 +572,7 @@ async function main(): Promise<void> {
       asOf,
     };
     const chamberFetchFailed = fetchFailures.some((f) => f.chamber === leg.chamber);
-    if (!chamberFetchFailed || votes.length >= VOTES_PER_MEMBER) {
+    if (!chamberFetchFailed || votes.length >= (IS_FULL_DEPTH ? 1 : VOTES_PER_MEMBER)) {
       checkpoint[leg.bioguideId] = true;
       await saveCheckpoint(CHECKPOINT_FILE, checkpoint);
     }
@@ -553,11 +594,15 @@ async function main(): Promise<void> {
       totalVotePositions: totalVotes,
       failureCount: fetchFailures.length,
       keyConfigured: isCongressConfigured(),
-      incremental: !IS_FULL,
+      incremental: !(IS_FULL || IS_FULL_DEPTH),
       highWaterMark: hwm,
       datasetUrl: 'https://www.congress.gov',
       note: scopedRun
-        ? `Scoped refresh: ${processLegislators.length} member(s); merged into national snapshot (${legislators.length} total). Up to ${VOTES_PER_MEMBER} recent positions per chamber.`
+        ? `Scoped refresh: ${processLegislators.length} member(s); merged into national snapshot (${legislators.length} total). ${
+            IS_FULL_DEPTH
+              ? `Full-depth (uncapped up to ${FULL_DEPTH_VOTE_CAP}) roll-call positions for scoped member(s).`
+              : `Up to ${VOTES_PER_MEMBER} recent positions per chamber.`
+          }`
         : `Up to ${VOTES_PER_MEMBER} recent positions per chamber. House via Congress.gov when keyed; Senate via senate.gov LIS XML.`,
     },
     byBioguideId,

@@ -1,6 +1,107 @@
 {
   "bioguideId": "S000033",
   "byTopic": {
+    "healthcare": {
+      "statements": [
+        {
+          "title": "Together we are going to end the international embarrassment of the United States of America, our great country, being the only major nation on earth not to guarantee health care to all as a right.",
+          "date": "2019-04-10",
+          "url": "https://www.washingtonpost.com/politics/bernie-sanders-set-to-unveil-new-medicare-for-all-legislation-a-key-component-of-his-2020-presidential-bid/2019/04/10/dc625de8-5b7a-11e9-842d-7d3ed7eb3957_story.html",
+          "tier": "media",
+          "topicId": "healthcare",
+          "verbatim": true,
+          "outlet": "Washington Post"
+        },
+        {
+          "title": "Mr. SANDERS. Mr. President, let me thank Senator Wyden for his outstanding work as the former chairman of the Finance Committee and now as the ranking member. I get around Vermont a bit. I get around the country a bit. And, generally speaking, when I talk to a group of people, I ask them a simple question. I say: What do you think about the healthcare system? Is it working well or is it broken? Is it dysfunctional? And, overwhelmingly, the hands go up that the American healthcare system today is broken, it is dysfunctional, and it is cruel. And what people understand is the function of the American healthcare system, today, is not to provide quality healthcare to all of our people, which, in fact, goes on in every other major country on Earth. It is to make huge profits for the drug companies and the insurance companies.",
+          "date": "2025-03-14",
+          "url": "https://www.govinfo.gov/app/details/CREC-2025-03-14-pt1-PgS1762-3",
+          "tier": "official",
+          "topicId": "healthcare",
+          "displayText": "let me thank Senator Wyden for his outstanding work as the former chairman of the Finance Committee and now as the ranking member. I get around Vermont a bit. I get around the country a bit. And, generally speaking, when I talk to a group of people, I ask them a simple question. I say: What do you think about the healthcare system? Is it working well or is it broken? Is it dysfunctional? And, overwhelmingly, the hands go up that the American healthcare system today is broken, it is dysfunctional, and it is cruel. And what people understand is the function of the American healthcare system, today, is not to provide quality healthcare to all of our people, which, in fact, goes on in every other major country on Earth. It is to make huge profits for the drug companies and the insurance companies.",
+          "verbatim": true
+        },
+        {
+          "title": "Mr. SANDERS. Mr. President, let me be as clear as I can be. That is, the American people--whether they are Democrats, Republicans, or Independents--are sick and tired of paying, by far, the highest prices in the world for prescription drugs. The American people are sick and tired of being ripped off by giant pharmaceutical companies who make huge profits every year while charging us outrageous prices that the American people cannot afford. A few months ago, the Senate Health, Education, Labor, and Pensions Committee--the HELP Committee--that I chair held a hearing on the extraordinarily high prices of prescription drugs in the United States, and this is what we learned.",
+          "date": "2024-06-11",
+          "url": "https://www.govinfo.gov/app/details/CREC-2024-06-11-pt1-PgS4008",
+          "tier": "official",
+          "topicId": "healthcare",
+          "displayText": "let me be as clear as I can be. That is, the American people--whether they are Democrats, Republicans, or Independents--are sick and tired of paying, by far, the highest prices in the world for prescription drugs. The American people are sick and tired of being ripped off by giant pharmaceutical companies who make huge profits every year while charging us outrageous prices that the American people cannot afford. A few months ago, the Senate Health, Education, Labor, and Pensions Committee--the HELP Committee--that I chair held a hearing on the extraordinarily high prices of prescription drugs in the United States, and this is what we learned.",
+          "verbatim": true
+        }
+      ]
+    },
+    "defense-veterans": {
+      "statements": [
+        {
+          "title": "Mr. SANDERS. Mr. President, some of my Republican colleagues held a press conference today, criticizing President Biden for his decision to stop sending additional bombs to Israel due to the Netanyahu government's apparent decision to launch a major military assault on Rafah. One of my Republican colleagues even said: Joe Biden objectively favors a Hamas victory over Israel. It's just that simple. Which sounds rather amusing given the fact that, for the last 40 years, there has probably been nobody here in Washington, DC, more strongly supportive of Israel than Joe Biden, as a Senator and a President. We all know that President Biden has been very clear about his opposition to an attack on Rafah for many, many months and for good reason: An offensive--a major military offensive--in Rafah would worsen an already horrendous humanitarian catastrophe in Gaza.",
+          "date": "2024-05-09",
+          "url": "https://www.govinfo.gov/app/details/CREC-2024-05-09-pt1-PgS3629-9",
+          "tier": "official",
+          "topicId": "defense-veterans",
+          "displayText": "some of my Republican colleagues held a press conference today, criticizing President Biden for his decision to stop sending additional bombs to Israel due to the Netanyahu government's apparent decision to launch a major military assault on Rafah. One of my Republican colleagues even said: Joe Biden objectively favors a Hamas victory over Israel. It's just that simple. Which sounds rather amusing given the fact that, for the last 40 years, there has probably been nobody here in Washington, DC, more strongly supportive of Israel than Joe Biden, as a Senator and a President. We all know that President Biden has been very clear about his opposition to an attack on Rafah for many, many months and for good reason: An offensive--a major military offensive--in Rafah would worsen an already horrendous humanitarian catastrophe in Gaza.",
+          "verbatim": true
+        }
+      ]
+    },
+    "education": {
+      "statements": [
+        {
+          "title": "Mr. SANDERS. Mr. President, in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42 million Americans, $1.7 trillion in student debt. Further, a recordbreaking 9 million Americans are now in default on their student loans. Instead of providing financial relief to these Americans, the Trump administration is about to make a bad situation even worse. As we all know, President Trump's so-called Big Beautiful Bill--to my mind the worst piece of legislation passed in modern history--made the largest cut to education in the history of the United States in order to pay for the largest tax breaks for billionaires in American history. Not only did we throw 15 million people off the healthcare they had; we devastated Federal funding for education.",
+          "date": "2026-06-24",
+          "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3189-3",
+          "tier": "official",
+          "topicId": "education",
+          "displayText": "in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42 million Americans, $1.7 trillion in student debt. Further, a recordbreaking 9 million Americans are now in default on their student loans. Instead of providing financial relief to these Americans, the Trump administration is about to make a bad situation even worse. As we all know, President Trump's so-called Big Beautiful Bill--to my mind the worst piece of legislation passed in modern history--made the largest cut to education in the history of the United States in order to pay for the largest tax breaks for billionaires in American history. Not only did we throw 15 million people off the healthcare they had; we devastated Federal funding for education.",
+          "verbatim": true
+        }
+      ]
+    },
+    "civil-liberties": {
+      "statements": [
+        {
+          "title": "Mr. SANDERS. Madam President, I support the nomination of Moshe Marvit to be a Member of the Federal Mine Safety and Health Review Commission. Mr. Marvit is currently a supervisory attorney-advisor in the Commission's Pittsburgh field office, where he has served since 2012. In this role, he writes decisions for administrative law judges and mediates cases between mine operators and the Mine Safety and Health Administration. Prior to working at the Commission, Mr. Marvit was in private practice where he represented the United Steelworkers and employees in pension and discrimination matters.",
+          "date": "2024-03-06",
+          "url": "https://www.govinfo.gov/app/details/CREC-2024-03-06-pt1-PgS2224",
+          "tier": "official",
+          "topicId": "civil-liberties",
+          "displayText": "I support the nomination of Moshe Marvit to be a Member of the Federal Mine Safety and Health Review Commission. Mr. Marvit is currently a supervisory attorney-advisor in the Commission's Pittsburgh field office, where he has served since 2012. In this role, he writes decisions for administrative law judges and mediates cases between mine operators and the Mine Safety and Health Administration. Prior to working at the Commission, Mr. Marvit was in private practice where he represented the United Steelworkers and employees in pension and discrimination matters.",
+          "verbatim": true
+        }
+      ]
+    },
+    "economy-taxes": {
+      "statements": [
+        {
+          "title": "Mr. SANDERS. Madam President, it is no secret to the American people that our country today faces a series of enormous crises: our healthcare system basically collapsing, despite the huge amount of money we spend on it; millions of Americans cannot afford housing; 800,000 people are homeless. We have massive levels of income and wealth inequality. People on top have never ever done as well as they are doing right now while at the same time 60 percent of our people are living paycheck to paycheck. Working people are struggling to put food on the table, pay for housing, pay for healthcare, pay for education. And maybe most frighteningly from an economic point of view, for the first time in the modern history of our country, our younger people may actually have a lower standard of living than their parents, despite all of the advances we are seeing in technology and worker productivity.",
+          "date": "2026-01-30",
+          "url": "https://www.govinfo.gov/app/details/CREC-2026-01-30-pt1-PgS401-7",
+          "tier": "official",
+          "topicId": "economy-taxes",
+          "displayText": "it is no secret to the American people that our country today faces a series of enormous crises: our healthcare system basically collapsing, despite the huge amount of money we spend on it; millions of Americans cannot afford housing; 800,000 people are homeless. We have massive levels of income and wealth inequality. People on top have never ever done as well as they are doing right now while at the same time 60 percent of our people are living paycheck to paycheck. Working people are struggling to put food on the table, pay for housing, pay for healthcare, pay for education. And maybe most frighteningly from an economic point of view, for the first time in the modern history of our country, our younger people may actually have a lower standard of living than their parents, despite all of the advances we are seeing in technology and worker productivity.",
+          "verbatim": true
+        },
+        {
+          "title": "Mr. SANDERS. Mr. President, as people all over this country understand, we are a nation today that faces enormous crises. Sadly, the continuing resolution passed Tuesday in the U.S. House and which will come to this body very shortly not only does nothing to address these crises but, in fact, it makes a bad situation much worse. Today, at a time when we have more income and wealth inequality than we have ever had in the history of this country, 60 percent of our people are living paycheck to paycheck. What that means--I grew up in a family living paycheck to paycheck. It means that people are worried about how they are going to afford housing. What happens if their landlord raises the rent? People go to the grocery store, and they see the high prices of food and wonder how they are going to feed their kids.",
+          "date": "2025-03-13",
+          "url": "https://www.govinfo.gov/app/details/CREC-2025-03-13-pt1-PgS1732",
+          "tier": "official",
+          "topicId": "economy-taxes",
+          "displayText": "as people all over this country understand, we are a nation today that faces enormous crises. Sadly, the continuing resolution passed Tuesday in the U.S. House and which will come to this body very shortly not only does nothing to address these crises but, in fact, it makes a bad situation much worse. Today, at a time when we have more income and wealth inequality than we have ever had in the history of this country, 60 percent of our people are living paycheck to paycheck. What that means--I grew up in a family living paycheck to paycheck. It means that people are worried about how they are going to afford housing. What happens if their landlord raises the rent? People go to the grocery store, and they see the high prices of food and wonder how they are going to feed their kids.",
+          "verbatim": true
+        },
+        {
+          "title": "Mr. SANDERS. Madam President, the time is long overdue for Congress to get its priorities right. And we can begin moving in that direction by rejecting and voting no on a $900 billion defense bill which is full of waste and fraud and cost overruns. I find it amusing that anytime we come to the floor and Members point out that we have a housing crisis, that we have some 600 million Americans who are homeless, that we have millions and millions of people in this country spending 40, 50, 60 percent of their limited incomes on housing, and that we need to invest in low-income and affordable housing, what I hear is we don't have the money. We don't have the money to build affordable housing. When we have 85 million Americans who are uninsured or underinsured-- 60,000 die each year because they don't get to a doctor on time--well, we don't have the money to invest in primary healthcare.",
+          "date": "2024-12-16",
+          "url": "https://www.govinfo.gov/app/details/CREC-2024-12-16-pt1-PgS7053-2",
+          "tier": "official",
+          "topicId": "economy-taxes",
+          "displayText": "the time is long overdue for Congress to get its priorities right. And we can begin moving in that direction by rejecting and voting no on a $900 billion defense bill which is full of waste and fraud and cost overruns. I find it amusing that anytime we come to the floor and Members point out that we have a housing crisis, that we have some 600 million Americans who are homeless, that we have millions and millions of people in this country spending 40, 50, 60 percent of their limited incomes on housing, and that we need to invest in low-income and affordable housing, what I hear is we don't have the money. We don't have the money to build affordable housing. When we have 85 million Americans who are uninsured or underinsured-- 60,000 die each year because they don't get to a doctor on time--well, we don't have the money to invest in primary healthcare.",
+          "verbatim": true
+        }
+      ]
+    },
     "technology": {
       "statements": [
         {
@@ -20,46 +121,6 @@
           "topicId": "technology",
           "verbatim": true,
           "displayText": "I want to say a few words about what I consider to be one of the most important issues not only facing our country but facing the world, and that is the advent of artificial intelligence, which most experts agree will almost certainly be the most transformational technology in the history of humanity. It will profoundly impact the lives of every man, woman, and child in our country."
-        }
-      ]
-    },
-    "healthcare": {
-      "statements": [
-        {
-          "title": "Together we are going to end the international embarrassment of the United States of America, our great country, being the only major nation on earth not to guarantee health care to all as a right.",
-          "date": "2019-04-10",
-          "url": "https://www.washingtonpost.com/politics/bernie-sanders-set-to-unveil-new-medicare-for-all-legislation-a-key-component-of-his-2020-presidential-bid/2019/04/10/dc625de8-5b7a-11e9-842d-7d3ed7eb3957_story.html",
-          "tier": "alleged",
-          "topicId": "healthcare",
-          "verbatim": true,
-          "outlet": "Washington Post",
-          "displayText": "Together we are going to end the international embarrassment of the United States of America, our great country, being the only major nation on earth not to guarantee health care to all as a right."
-        }
-      ]
-    },
-    "economy-taxes": {
-      "statements": [
-        {
-          "title": "Mr. SANDERS. Madam President, it is no secret to the American people that our country today faces a series of enormous crises: our healthcare system basically collapsing, despite the huge amount of money we spend on it; millions of Americans cannot afford housing; 800,000 people are homeless. We have massive levels of income and wealth inequality. People on top have never ever done as well as they are doing right now while at the same time 60 percent of our people are living paycheck to paycheck.",
-          "date": "2026-01-30",
-          "url": "https://www.govinfo.gov/app/details/CREC-2026-01-30-pt1-PgS401-7",
-          "tier": "official",
-          "topicId": "economy-taxes",
-          "verbatim": true,
-          "displayText": "it is no secret to the American people that our country today faces a series of enormous crises: our healthcare system basically collapsing, despite the huge amount of money we spend on it; millions of Americans cannot afford housing; 800,000 people are homeless. We have massive levels of income and wealth inequality. People on top have never ever done as well as they are doing right now while at the same time 60 percent of our people are living paycheck to paycheck."
-        }
-      ]
-    },
-    "education": {
-      "statements": [
-        {
-          "title": "Mr. SANDERS. Mr. President, in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42 million Americans, $1.7 trillion in student debt. Further, a recordbreaking 9 million Americans are now in default on their student loans. Instead of providing financial relief to these Americans, the Trump administration is about to make a bad situation even worse.",
-          "date": "2026-06-24",
-          "url": "https://www.govinfo.gov/app/details/CREC-2026-06-24-pt1-PgS3189-3",
-          "tier": "official",
-          "topicId": "education",
-          "verbatim": true,
-          "displayText": "in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42 million Americans, $1.7 trillion in student debt. Further, a recordbreaking 9 million Americans are now in default on their student loans. Instead of providing financial relief to these Americans, the Trump administration is about to make a bad situation even worse."
         }
       ]
     }

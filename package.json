@@ -15,6 +15,7 @@
     "audit:inventory": "tsx scripts/generate-file-inventory.ts",
     "audit:inventory-md": "tsx scripts/generate-file-inventory-audit.ts",
     "refresh:migrated-votes": "tsx scripts/refresh-migrated-profile-votes.ts",
+    "apply:m-acquire-batch-a": "tsx scripts/apply-m-acquire-batch-a.ts",
     "audit:layer": "tsx scripts/audit-file-layer.ts",
     "profile:build": "tsx scripts/profile-build.ts",
     "test:typecheck": "tsc --noEmit",

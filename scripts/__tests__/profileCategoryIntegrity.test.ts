@@ -189,8 +189,15 @@ test('PILOT_PROFILE_CHECKLIST S000033 row 8 must not claim done below Said→Did
     `checklist row ${cfg.checklistRowNum} claims done but only ${onDisk}/${cfg.targetLinks} Said→Did links on disk`,
   );
   const progress = readFileSync(path.join(projectRoot, 'PROGRESS.md'), 'utf8');
-  assert.ok(
-    !/saidDid=8\b|8 links|8\/15/.test(progress),
-    'PROGRESS.md must not claim stale Said→Did count of 8',
+  // Forbid claiming a concrete Said→Did count in PROGRESS that disagrees with disk.
+  const progressCounts = [...progress.matchAll(/saidDid=(\d+)\b|(\d+)\s*\/\s*15/g)].map((m) =>
+    Number(m[1] ?? m[2]),
   );
+  for (const claimed of progressCounts) {
+    assert.equal(
+      claimed,
+      onDisk,
+      `PROGRESS.md claims Said→Did count ${claimed} but disk has ${onDisk}`,
+    );
+  }
 });
