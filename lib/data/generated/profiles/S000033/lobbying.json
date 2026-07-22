@@ -1,0 +1,42 @@
+{
+  "bioguideId": "S000033",
+  "status": "honest-gap",
+  "asOf": "2026-07-22",
+  "fetchedAt": "2026-07-22T08:24:35.413Z",
+  "source": {
+    "name": "Senate Lobbying Disclosure Act Database",
+    "url": "https://lda.senate.gov",
+    "tier": "official",
+    "description": "Federal lobbying registrations and lobbyist contribution reports via lda.senate.gov/api"
+  },
+  "scan": {
+    "years": [
+      2026,
+      2025,
+      2024,
+      2023
+    ],
+    "pagesScanned": 29,
+    "filingsSeen": 725,
+    "maxPagesPerYear": 25
+  },
+  "items": [],
+  "note": "Senate LDA open API does not key lobbying-contact filings to individual members (government_entities=SENATE only). Scanned 29 contribution-report pages (725 filings, years 2026,2025,2024,2023, name-search + chronological) for lobbyist FECA items with honoree matching Bernard Sanders; 0 matches.",
+  "errors": [
+    "search Bernard 2025 p1: HTTP 429 for https://lda.senate.gov/api/v1/contributions/?filing_year=2025&page_size=50&page=1&ordering=-dt_posted&search=Bernard",
+    "search Bernard 2024 p2: HTTP 429 for https://lda.senate.gov/api/v1/contributions/?filing_year=2024&page_size=50&page=2&ordering=-dt_posted&search=Bernard",
+    "search Bernard 2023 p2: HTTP 429 for https://lda.senate.gov/api/v1/contributions/?filing_year=2023&page_size=50&page=2&ordering=-dt_posted&search=Bernard",
+    "search Sanders 2026 p2: HTTP 429 for https://lda.senate.gov/api/v1/contributions/?filing_year=2026&page_size=50&page=2&ordering=-dt_posted&search=Sanders",
+    "search Sanders 2025 p2: HTTP 429 for https://lda.senate.gov/api/v1/contributions/?filing_year=2025&page_size=50&page=2&ordering=-dt_posted&search=Sanders",
+    "search Sanders 2024 p2: HTTP 429 for https://lda.senate.gov/api/v1/contributions/?filing_year=2024&page_size=50&page=2&ordering=-dt_posted&search=Sanders",
+    "search Sanders 2023 p2: HTTP 429 for https://lda.senate.gov/api/v1/contributions/?filing_year=2023&page_size=50&page=2&ordering=-dt_posted&search=Sanders",
+    "search Bernard Sanders 2026 p2: HTTP 429 for https://lda.senate.gov/api/v1/contributions/?filing_year=2026&page_size=50&page=2&ordering=-dt_posted&search=Bernard%20Sanders",
+    "search Bernard Sanders 2025 p2: HTTP 429 for https://lda.senate.gov/api/v1/contributions/?filing_year=2025&page_size=50&page=2&ordering=-dt_posted&search=Bernard%20Sanders",
+    "search Bernard Sanders 2024 p2: HTTP 429 for https://lda.senate.gov/api/v1/contributions/?filing_year=2024&page_size=50&page=2&ordering=-dt_posted&search=Bernard%20Sanders",
+    "search Bernard Sanders 2023 p2: HTTP 429 for https://lda.senate.gov/api/v1/contributions/?filing_year=2023&page_size=50&page=2&ordering=-dt_posted&search=Bernard%20Sanders",
+    "2026 p2: HTTP 429 for https://lda.senate.gov/api/v1/contributions/?filing_year=2026&page_size=50&page=2&ordering=-dt_posted",
+    "2025 p2: HTTP 429 for https://lda.senate.gov/api/v1/contributions/?filing_year=2025&page_size=50&page=2&ordering=-dt_posted",
+    "2024 p2: HTTP 429 for https://lda.senate.gov/api/v1/contributions/?filing_year=2024&page_size=50&page=2&ordering=-dt_posted",
+    "2023 p2: HTTP 429 for https://lda.senate.gov/api/v1/contributions/?filing_year=2023&page_size=50&page=2&ordering=-dt_posted"
+  ]
+}

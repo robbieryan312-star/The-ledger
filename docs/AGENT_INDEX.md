@@ -166,7 +166,9 @@ Preflight (checks session-start files + guard scripts resolve): `npm run agent:p
 | Elections issue merge helper (deferred demo) | `lib/candidateIssues.ts` |
 | Campaign promise status derivation (archive coverage script) | `lib/data/derivePromiseStatus.ts` |
 | Profile build pipeline (Phase E) | `scripts/profile-build.ts` |
-| M-ACQUIRE BATCH A apply (S000033 Record) | `scripts/apply-m-acquire-batch-a.ts` (`npm run apply:m-acquire-batch-a`) |
+| M-ACQUIRE BATCH B apply (S000033 Money) | `scripts/apply-m-acquire-batch-b.ts` (`npm run apply:m-acquire-batch-b`) |
+| Voteview DW-NOMINATE (scoped) | `scripts/ingest-voteview-member.ts` (`npm run ingest:voteview`) |
+| Senate LDA lobbying (scoped) | `scripts/ingest-lobbying-member.ts` (`npm run ingest:lobbying`) |
 
 ---
 

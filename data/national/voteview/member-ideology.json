@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "source": {
+      "name": "Voteview (UCLA)",
+      "url": "https://voteview.com",
+      "tier": "nonpartisan",
+      "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+    },
+    "asOf": "2026-07-22",
+    "fetchedAt": "2026-07-22T08:22:35.274Z",
+    "scope": "scoped: S000033",
+    "congress": 119
+  },
+  "byBioguideId": {
+    "S000033": {
+      "name": "SANDERS, Bernard",
+      "chamber": "Senate",
+      "party": "Independent",
+      "district": null,
+      "bioguideId": "S000033",
+      "nominateEconomic": -0.545,
+      "nominateSocial": -0.427,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-07-22",
+      "voteviewUrl": "https://voteview.com/person/29147"
+    }
+  },
+  "missing": []
+}

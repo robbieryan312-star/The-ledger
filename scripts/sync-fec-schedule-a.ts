@@ -1,6 +1,10 @@
 /**
  * sync-fec-schedule-a.ts — Schedule A itemized donors for Congress members with FEC IDs.
  * Output: data/national/fec/schedule-a.json
+ *
+ * Scoped: npm run sync:fec-schedule-a -- --members S000033
+ * Full-depth (org/PAC + individuals, paginated): add --full-depth
+ * Full corpus: --full-corpus
  */
 import { config } from 'dotenv';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
@@ -16,14 +20,36 @@ import {
   NATIONAL_SCHEDULE_A_FILE,
   PROJECT_ROOT,
 } from './lib/dataPaths';
+import { memberInScope, requireSyncScope } from './lib/sync-scope';
 
 const projectRoot = PROJECT_ROOT;
 const FEC_NATIONAL = NATIONAL_FEC_FILE;
 const OUT_FILE = NATIONAL_SCHEDULE_A_FILE;
 
+/** Default display sample size (legacy). */
+const DEFAULT_LIMIT = 15;
+/** Full-depth gold-standard cap per member (paginated; includes org/PAC rows). */
+const FULL_DEPTH_LIMIT = 5_000;
+
 interface ExistingScheduleASnapshot {
-  meta?: { membersWithScheduleA?: number; queryMode?: string };
-  byBioguideId?: Record<string, { contributors?: unknown[] }>;
+  meta?: {
+    membersWithScheduleA?: number;
+    queryMode?: string;
+    [key: string]: unknown;
+  };
+  byBioguideId?: Record<string, ScheduleARow>;
+  failures?: Array<{ bioguideId: string; reason: string }>;
+}
+
+interface ScheduleARow {
+  bioguideId: string;
+  fecCandidateId: string;
+  committeeIds: string[];
+  contributors: unknown[];
+  source: unknown;
+  asOf: string;
+  fecUrl: string;
+  queryNote?: string;
 }
 
 function sleep(ms: number): Promise<void> {
@@ -76,9 +102,20 @@ async function writeEmptySnapshot(asOf: string, fetchedAt: string, note: string)
 }
 
 async function main(): Promise<void> {
+  const memberFilter = requireSyncScope(process.argv, 'sync-fec-schedule-a');
+  const isFullDepth = process.argv.includes('--full-depth');
+  if (isFullDepth && (!memberFilter || memberFilter.size === 0)) {
+    console.error('--full-depth requires --members <bioguideId[,...]> (scoped agent runs only).');
+    process.exit(1);
+  }
+
   config({ path: path.join(projectRoot, '.env.local') });
   const asOf = new Date().toISOString().slice(0, 10);
   const fetchedAt = new Date().toISOString();
+  const limit = isFullDepth ? FULL_DEPTH_LIMIT : DEFAULT_LIMIT;
+  const fetchOpts = isFullDepth
+    ? { includeOrganizations: true, paginate: true }
+    : { includeOrganizations: false, paginate: false };
 
   if (!isFecConfigured()) {
     const existingCount = await countExistingCommitteeScopedRows();
@@ -103,12 +140,42 @@ async function main(): Promise<void> {
     byBioguideId: Record<string, { fecCandidateId: string; name?: string }>;
   };
 
-  const entries = Object.entries(fecNational.byBioguideId);
-  const twoYearPeriod = currentTwoYearTransactionPeriod(asOf);
-  console.log(`Fetching committee-scoped Schedule A for ${entries.length} members (${twoYearPeriod} period)…`);
+  let existing: ExistingScheduleASnapshot | null = null;
+  try {
+    existing = JSON.parse(await readFile(OUT_FILE, 'utf8')) as ExistingScheduleASnapshot;
+  } catch {
+    existing = null;
+  }
 
-  const byBioguideId: Record<string, unknown> = {};
+  const entries = Object.entries(fecNational.byBioguideId).filter(([bioguideId]) =>
+    memberInScope(bioguideId, memberFilter),
+  );
+  if (memberFilter && entries.length === 0) {
+    console.error(
+      `No national FEC rows match --members filter: ${[...memberFilter].join(', ')}. Run sync:fec-national first.`,
+    );
+    process.exit(1);
+  }
+
+  const twoYearPeriod = currentTwoYearTransactionPeriod(asOf);
+  console.log(
+    `Fetching committee-scoped Schedule A for ${entries.length} member(s) (${twoYearPeriod} period; limit=${limit}; orgs=${fetchOpts.includeOrganizations}; paginate=${fetchOpts.paginate})…`,
+  );
+
+  const byBioguideId: Record<string, ScheduleARow> = {};
+  // §6 scoped merge: preserve other members
+  if (memberFilter && existing?.byBioguideId) {
+    for (const [id, row] of Object.entries(existing.byBioguideId)) {
+      if (!memberFilter.has(id)) byBioguideId[id] = row;
+    }
+  }
+
   const failures: Array<{ bioguideId: string; reason: string }> = [];
+  if (memberFilter && existing?.failures) {
+    for (const f of existing.failures) {
+      if (!memberFilter.has(f.bioguideId)) failures.push(f);
+    }
+  }
 
   for (const [bioguideId, row] of entries) {
     try {
@@ -120,7 +187,12 @@ async function main(): Promise<void> {
       }
 
       const committeeIds = committees.map((c) => c.committeeId);
-      const contributors = await fetchScheduleAContributorsForCommittees(committeeIds, twoYearPeriod, 15);
+      const contributors = await fetchScheduleAContributorsForCommittees(
+        committeeIds,
+        twoYearPeriod,
+        limit,
+        fetchOpts,
+      );
       if (contributors.length === 0) {
         failures.push({ bioguideId, reason: 'no itemized receipts found for authorized committees' });
         await sleep(150);
@@ -135,7 +207,11 @@ async function main(): Promise<void> {
         source: FEC_SOURCE,
         asOf,
         fecUrl: `https://www.fec.gov/data/candidate/${row.fecCandidateId}/`,
+        queryNote: isFullDepth
+          ? 'full-depth: individuals + organizations/PACs; paginated committee Schedule A'
+          : 'legacy sample: individuals only; top receipts by amount',
       };
+      console.log(`  ${bioguideId}: ${contributors.length} contributors (${committeeIds.join(',')})`);
     } catch (err) {
       failures.push({
         bioguideId,
@@ -159,9 +235,14 @@ async function main(): Promise<void> {
           keyConfigured: true,
           queryMode: 'committee_id',
           twoYearTransactionPeriod: twoYearPeriod,
+          scope: memberFilter ? `scoped: ${[...memberFilter].join(',')}` : 'full-corpus',
+          fullDepth: isFullDepth,
+          contributorLimit: limit,
+          includeOrganizations: fetchOpts.includeOrganizations,
           datasetUrl: 'https://api.open.fec.gov/v1/schedules/schedule_a/',
-          note:
-            'Committee-scoped itemized receipts (Schedule A) from authorized candidate committees. Tier 1 official FEC records.',
+          note: isFullDepth
+            ? 'Full-depth committee-scoped Schedule A (individuals + org/PAC receipts, paginated). Tier 1 official FEC.'
+            : 'Committee-scoped itemized receipts (Schedule A) from authorized candidate committees. Default sample is individuals-only top receipts. Tier 1 official FEC records.',
         },
         byBioguideId,
         failures,
