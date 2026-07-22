@@ -39,7 +39,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Confront Claude — paste to Claude Code
 
-**m4 #62 REJECT fix tip:** **** · prebuild 0 · build 0
+**m4 #62 REJECT fix tip:** **`61757fe`** · prebuild 0 · build 0
 **(a)** saidQuote+saidUrl inline on both pairs · UI diffs use CREC URLs
 **(b)** 2/15 · honestGapNote explicit · no fabrication
 **(c)** profileMigrate + sync caps + crec filter **reverted** — data + builder (+ minimal type/join/guard)
