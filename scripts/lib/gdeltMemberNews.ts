@@ -139,8 +139,13 @@ async function fetchGdeltDomainBatch(
   }
   return {
     articles: [],
-    rateLimited: false,
-    error: lastErr instanceof Error ? lastErr.message : String(lastErr),
+    rateLimited: true,
+    error:
+      lastErr instanceof Error
+        ? lastErr.message
+        : lastErr != null
+          ? String(lastErr)
+          : 'GDELT exhausted retries (rate limit or empty)',
   };
 }
 

@@ -18,6 +18,7 @@ import {
   memberNewsPrimaryName,
   type LegislatorNewsRow,
 } from './memberNewsMatching';
+import { qualifiesMemberNewsItem } from './memberNewsQualification';
 
 const NEWSAPI_APPROVED_DOMAINS = [
   'thehill.com',
@@ -120,8 +121,12 @@ export async function fetchNewsApiArticlesForMember(
     const items: NewsItem[] = [];
     const seen = new Set<string>();
     for (const [idx, raw] of (data.articles ?? []).entries()) {
-      const blob = `${raw.title ?? ''} ${raw.description ?? ''}`;
+      const title = raw.title?.trim() ?? '';
+      const description = raw.description?.trim() ?? '';
+      const blob = `${title} ${description}`;
       if (!matchesMemberInText(blob, leg, displayByBio)) continue;
+      // Same subject/quote gate as RSS + topic feeds (CDC releaser-only = reject).
+      if (!qualifiesMemberNewsItem(title, description, leg, displayByBio).ok) continue;
       const item = newsApiArticleToNewsItem(raw, leg.bioguideId, idx);
       if (!item || seen.has(item.url ?? '')) continue;
       seen.add(item.url ?? '');

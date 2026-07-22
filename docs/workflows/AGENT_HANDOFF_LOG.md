@@ -10,6 +10,41 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-22 — M-ACQUIRE BATCH C (Voice) ⛔ STOP
+
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
+**Current state:** `cursor/m-acquire-batch-c-70a6` · tip = **PR branch HEAD** · Batch A on main `a2fbd7a` · Batch B PR #80 awaiting tip · prebuild **0** · build **0**
+
+### BEFORE → AFTER (S000033)
+
+| Section | BEFORE | AFTER | Provenance |
+|---------|--------|-------|------------|
+| News | 12 items · CDC releaser slipped via NewsAPI · all alleged | **12**/15 subject/quote-qualified · **CDC dropped** · NPR+Guardian mix · all `'alleged'` (no 2-outlet corroboration this window) | `sync:news-rss -- --members S000033` · RSS→topic→GDELT→NewsAPI · dest `profiles/S000033/news.json` |
+| Journalism quotes | 1 media Said (WaPo primary; NYT corroboration in catalog) | **1** media Said (unchanged) — no additional 2+ outlet verbatim found without fabrication | `approvedMediaQuotes.ts` → `statements.json` healthcare |
+| Platform positions | honest-gap (scrape junk note) | **honest-gap DIAGNOSED** — Ballotpedia source poverty (no Political_positions/Issues/survey); VoteSmart **Deferred**/EMPTY by design | live Ballotpedia diag + `positions.json` note |
+
+### Process fixes
+- NewsAPI now applies `qualifiesMemberNewsItem` (same subject/quote gate as RSS/topic) — freezes CDC releaser regression
+- Sync re-filters existing+GDELT through qualify gate; GDELT exhausted-retries error string fixed (was `"undefined"`)
+
+### §13 / §14
+1. GDELT returned empty `{}` for Sanders approved domains this run — keep diagnosing; not silent skip.
+2. Single-outlet Guardian dominance → all alleged; need independent second outlets for media-tier news (AP/Reuters feeds currently disabled).
+3. Additional media Saids require curated 2+ approved-outlet verify — do not invent quote text.
+4. VoteSmart remains Deferred — not an owner secret gap unless product reopens NPAT.
+
+**PARK:** #76 · m8a · m7a–d · M-UI #68 · Batch B #80 tip · Florida until Bernie lock
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-ACQUIRE BATCH C tip:** approve **PR branch HEAD** (`git rev-parse origin/cursor/m-acquire-batch-c-70a6`) · prebuild 0 · build 0  
+**S000033 Voice:** news **12**/15 qualify-gated (CDC fixed) · quotes **1** media · positions **DIAGNOSED** honest-gap (Ballotpedia poverty; VoteSmart Deferred)  
+**STOP:** tip APPROVAL before merge; BATCH D separate PR
+
+---
+
 ## HANDOFF 2026-07-22 — Batch C journalism-quotes inventory (S000033) · PASS (inspect-only)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS inspect · no data write this turn  
