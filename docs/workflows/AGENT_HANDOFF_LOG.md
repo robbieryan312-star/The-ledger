@@ -10,6 +10,28 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-22 — M-BACKLOG #74 re-verify (⛔ Claude)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS on tip · STOP
+
+- `^## Improvement backlog` headings in handoff: **0** (one-line pointers only)
+- Canonical `docs/workflows/IMPROVEMENT_BACKLOG.md` present
+- Guard `improvementBacklogGuard` present (fails on second heading/file / duplicated `## Backlog`)
+- `npm run prebuild` → **0** @ tip `80647a8`
+- Based on `main` (m5 merged)
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-BACKLOG #74 tip `80647a8`** — prebuild 0 · zero handoff backlog headings · uniqueness guard
+**m4 #62 tip `d539847`** — REJECT fix (Said quote+URL · honest-gap · trim) ⛔
+**M-UI #68 `bef4ddc`** — leave as-is
+**#78 closed + branch deleted** (Vercel rename = dashboard)
+**PARK:** #76 · m8a · m7a–d
+
+---
+
 ## HANDOFF 2026-07-21 — M-BACKLOG #74 micro-fix (⛔ Claude)
 
 **From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · STOP
