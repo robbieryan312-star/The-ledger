@@ -20,7 +20,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 |------|-----|--------|
 | M-ACQUIRE Batch A | `a2fbd7a` | **merged** → `main` (ff) · PR #79 |
 | Governance §14 | `c878311` | **already on main** (`a44d417`) |
-| Archive | `scripts/apply-m-acquire-batch-a.ts` | → `scripts/archive/` (one-off) |
+| Archive | `scripts/archive/apply-m-acquire-batch-a.ts` | one-off Batch A apply (archived after merge `a2fbd7a`) |
 
 ### BEFORE → AFTER (S000033)
 
@@ -28,7 +28,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 |---------|--------|-------|------------|
 | FEC totals | receipts **$23,468,953.69** (asOf 2026-07-02); PAC **$27**; indiv **$22,470,390.50** | receipts **$24,928,186.19** (asOf 2026-07-22); PAC **$27**; indiv **$23,777,892.99** | `sync:fec-national -- --members S000033` · `FEC_API_KEY` · `congress-finance.json` → `finance.json` |
 | Schedule A | **15** indiv-only sample | **5000** (cap hit; full-depth individuals+orgs+conduits) | `sync:fec-schedule-a -- --members S000033 --full-depth` · dest `schedule-a.json` |
-| Org/PAC→vote links | **0** honest-gap (pilot note) | **0** honest-gap **diagnosed** | `buildOrgVoteTopicLinks` + conduit exclusion; note: 1400 indiv / 1350 ActBlue conduit / 2250 other non-indiv; **0** curated PAC joins |
+| Org/PAC→vote links | **0** honest-gap (pilot note) | **0** honest-gap **DIAGNOSED** | Reason: Sanders is a **small-donor profile** — full-depth Sched A (5000 rows) is almost entirely individuals + ActBlue conduit totals; **PAC committee receipts $27** on FEC totals; after excluding individuals/conduits, **0 curated PAC/org** rows match `fecOrgRegistry` on topics overlapping his votes. Not undiagnosed empty. |
 | Ideology DW-NOMINATE | absent from voteview slice | **econ −0.545 · social −0.427** (119th) | `ingest:voteview -- --members S000033` · Voteview S119 CSV · `profiles-voteview.json` |
 | Lobbying (Senate LDA) | none | **0** items · honest-gap **diagnosed** | `ingest:lobbying -- --members S000033` · LDA contributions scan (API does not key contacts to members) · `lobbying.json` |
 
