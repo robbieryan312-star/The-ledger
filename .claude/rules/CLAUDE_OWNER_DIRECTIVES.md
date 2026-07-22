@@ -111,6 +111,14 @@ operating manual and core-rules.
     and improves the platform, or decline it with a stated reason. Phrase prompts as "execute exactly;
     surface any recommendations/concerns for my evaluation" — never a bare "no off-brief work" that
     suppresses useful input. The ban is on ACTING off-brief, not on RECOMMENDING.
+14. **Honest-gap ≠ un-collected (owner 2026-07-21).** Honest-gap ("No verified record available") is
+    ONLY for a record that genuinely does not exist. If the verified record EXISTS but simply has not
+    been ingested — e.g. a 30-vote sample when the member's full roll-call record exists, or 5 CREC
+    statements when decades of floor speeches exist — that is UNDER-COLLECTION, not an honest gap.
+    ACQUIRE the real data; never accept or approve a thin profile as "complete" while collectable
+    verified data remains. For a reference profile being locked to gold-standard, FULL acquisition of
+    that member's own data (votes, statements, finance, news) comes BEFORE the lock — full depth for
+    the ONE reference is exactly "complete the gold-standard before scaling," not mass 537-collection.
 
 ---
 
