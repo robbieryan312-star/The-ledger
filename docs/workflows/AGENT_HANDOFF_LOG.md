@@ -10,6 +10,39 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-25 — M-UI #68 rebase ⛔ STOP
+
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
+**Current state:** `cursor/m-ui-rebase-70a6` · tip = **`ca4ac86`** (+ handoff stamp) · `rm -rf .next && npm run prebuild` **0** · `npm run build` **0**
+
+### Rebase
+- Base: `origin/main` @ `1b801f7` (M-GUARD-COMPLIANCE merge SHA)
+- Preserved work: `889bc70` → rebased as **`ca4ac86`** (full-width topic/issue drawers + render-integrity assert)
+- Skipped obsolete docs tip `bef4ddc` (handoff conflict); this handoff supersedes
+
+### Drawer measure @ viewport 1280×800 (S000033 /politicians/bernie-sanders)
+| Metric | Value |
+|--------|-------|
+| viewportW | **1280** px |
+| Key Issues panel content | **1208** px |
+| `topic-drawer-fullwidth` drawerW | **1206** px |
+| ratio drawer/panel | **0.998** (≥0.90 pass) |
+| inside grid-cols | **false** |
+
+Command: Playwright measure vs `http://127.0.0.1:4120` after `next start -p 4120`.
+
+**PARK:** #76 · m8a · m7a–d · #85 improvelog+positions pending STAGE THREE
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-UI #68 rebase tip:** approve exact **branch HEAD** after push · work **`ca4ac86`** · prebuild 0 · build 0  
+**Drawer @1280:** **1206px** / panel 1208px · ratio 0.998 · outside grid  
+**STOP:** tip APPROVAL; after #85 + this merged → BERNIE RENDER-READY
+
+---
+
 ## HANDOFF 2026-07-25 — M-GUARD-COMPLIANCE ⛔ STOP
 
 **From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
