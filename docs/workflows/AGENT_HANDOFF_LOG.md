@@ -10,6 +10,89 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-22 — M-ACQUIRE BATCH B REJECT fix ⛔ STOP
+
+**From:** Cursor · **To:** Claude · **Verdict:** REJECT repaired · **STOP** for tip approval  
+**Current state:** `cursor/m-acquire-batch-b-70a6` · tip = **PR #80 branch HEAD** · work `a2da77a` · PR **#80** · prebuild **0** (`rm -rf .next && npm run prebuild`) · build **0**
+
+### Reject repairs
+| # | Issue | Fix |
+|---|-------|-----|
+| docs-integrity | stale path scripts/apply-m-acquire-batch-a.ts (missing after archive) | cite `scripts/archive/apply-m-acquire-batch-a.ts` |
+| orgVoteLinks | must be DIAGNOSED | Explicit: small-donor profile — FEC PAC **$27**; Sched A 5000 = 1400 indiv + 1350 ActBlue conduit + 2250 other non-indiv (banks/entities); **0** curated PAC/org join after conduit exclusion. §14: PAC receipts do not exist at join-eligible volume — not uncollected. |
+
+### Re-verify counts + provenance (this tip)
+| Section | Count / status | Provenance |
+|---------|----------------|------------|
+| FEC finance | receipts **$24,928,186.19** · PAC **$27** · indiv **$23,777,892.99** · asOf 2026-07-22 | `sync:fec-national -- --members S000033` · `FEC_API_KEY` · `data/national/fec/congress-finance.json` → `profiles/S000033/finance.json` |
+| Schedule A | **5000** (cap) | `sync:fec-schedule-a -- --members S000033 --full-depth` · `schedule-a.json` |
+| orgVoteLinks | **0** · `status: honest-gap` · diagnosed note on disk | `apply:m-acquire-batch-b` + `fecOrgRegistry` conduit exclusion |
+| DW-NOMINATE | econ **−0.545** · social **−0.427** · https://voteview.com/person/29147 | `ingest:voteview -- --members S000033` · `profiles-voteview.json` |
+| Lobbying LDA | **0** items · honest-gap diagnosed (29 pages / 725 filings scanned) | `ingest:lobbying -- --members S000033` · `lobbying.json` |
+
+**Commands:** `rm -rf .next && npm run prebuild` → 0 · `npm run build` → 0  
+**Logs:** `/tmp/ledger-prebuild-batch-b-fix2.log` · `/tmp/ledger-build-batch-b-fix2.log`
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**BATCH B REJECT fix tip:** approve **PR #80 branch HEAD** (`git rev-parse origin/cursor/m-acquire-batch-b-70a6`) · work `a2da77a` · prebuild **0** · build **0**  
+**docs:** archive path cite `scripts/archive/apply-m-acquire-batch-a.ts` · orgVoteLinks **DIAGNOSED** small-donor / PAC **$27** / 0 curated PAC joins  
+**Provenance:** FEC asOf 2026-07-22 · SchedA 5000 · Voteview −0.545/−0.427 · LDA 0 diagnosed  
+**STOP:** approve exact tip SHA before merge; BATCH C/D follow as separate PRs
+
+---
+
+## HANDOFF 2026-07-22 — M-ACQUIRE BATCH B (Money & ideology) ⛔ STOP
+
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
+**Current state:** `cursor/m-acquire-batch-b-70a6` · tip **20f9cb5** · Batch A merged to `main` @ **a2fbd7a** · gov c878311 already on main (a44d417) · prebuild **0** · build **0**
+
+### MERGE NOW confirmed
+| Item | Tip | Status |
+|------|-----|--------|
+| M-ACQUIRE Batch A | `a2fbd7a` | **merged** → `main` (ff) · PR #79 |
+| Governance §14 | `c878311` | **already on main** (`a44d417`) |
+| Archive | `scripts/archive/apply-m-acquire-batch-a.ts` | one-off Batch A apply (archived after merge `a2fbd7a`) |
+
+### BEFORE → AFTER (S000033)
+
+| Section | BEFORE | AFTER | Provenance |
+|---------|--------|-------|------------|
+| FEC totals | receipts **$23,468,953.69** (asOf 2026-07-02); PAC **$27**; indiv **$22,470,390.50** | receipts **$24,928,186.19** (asOf 2026-07-22); PAC **$27**; indiv **$23,777,892.99** | `sync:fec-national -- --members S000033` · `FEC_API_KEY` · `congress-finance.json` → `finance.json` |
+| Schedule A | **15** indiv-only sample | **5000** (cap hit; full-depth individuals+orgs+conduits) | `sync:fec-schedule-a -- --members S000033 --full-depth` · dest `schedule-a.json` |
+| Org/PAC→vote links | **0** honest-gap (pilot note) | **0** honest-gap **DIAGNOSED** | Reason: Sanders is a **small-donor profile** — full-depth Sched A (5000 rows) is almost entirely individuals + ActBlue conduit totals; **PAC committee receipts $27** on FEC totals; after excluding individuals/conduits, **0 curated PAC/org** rows match `fecOrgRegistry` on topics overlapping his votes. Not undiagnosed empty. |
+| Ideology DW-NOMINATE | absent from voteview slice | **econ −0.545 · social −0.427** (119th) | `ingest:voteview -- --members S000033` · Voteview S119 CSV · `profiles-voteview.json` |
+| Lobbying (Senate LDA) | none | **0** items · honest-gap **diagnosed** | `ingest:lobbying -- --members S000033` · LDA contributions scan (API does not key contacts to members) · `lobbying.json` |
+
+### Process fixes
+- Schedule A: `--members` merge + `--full-depth` (paginate; include org receipts; was hard-capped 15 + `is_individual=true`)
+- Prefer national Schedule A over stale pilot overlay for S000033
+- Exclude ActBlue/WinRed **conduits** from org→vote joins (append-only fixture)
+- National Voteview + Lobbying scoped ingest scripts
+
+### §13 / §14 recommendations
+1. **Prior-Congress Did corpus** (owner ask): extend `sync:votes-national --full-depth` beyond TARGET_CONGRESS=119 (e.g. 118→116) so older CREC Saids can pair — likely raises Said→Did toward 15 without fabrication.
+2. Schedule A **5000 cap hit** — raise or stream-to-disk if gold-standard needs complete itemization.
+3. LDA `search=` appears ignored by API; member-keyed lobbying contacts unavailable — keep diagnosed gap or find alternate.
+4. Registry short tokens (e.g. `SEIU` len&lt;5) miss `SEIU COPE` — consider alias table.
+
+**PARK:** #76 · m8a · m7a–d · M-UI #68 STAGE THREE after acquisition  
+**Next after APPROVAL:** BATCH C (news + quotes + positions)
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Merged to main:** Batch A **a2fbd7a** · gov c878311 already present  
+**M-ACQUIRE BATCH B tip:** **20f9cb5** · data 2e07961 · prebuild 0 · build 0  
+**S000033:** FEC refreshed · SchedA 15→**5000** · orgVoteLinks **0 diagnosed** (conduit/small-donor) · Voteview **−0.545/−0.427** · lobbying **0 diagnosed**  
+**STOP:** do not start BATCH C without APPROVAL  
+**Propose:** prior-Congress vote window for Said→Did depth (§14)
+
+---
+
 ## HANDOFF 2026-07-22 — M-ACQUIRE BATCH A (Bernie Record) ⛔ STOP
 
 **From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  

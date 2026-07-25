@@ -295,26 +295,51 @@ async function fetchScheduleAContributorsForCommittee(
   committeeId: string,
   twoYearPeriod: string,
   limit = 20,
+  options?: { includeOrganizations?: boolean; paginate?: boolean },
 ): Promise<FecScheduleAContributor[]> {
-  const data = await fecFetch<{ results: RawScheduleARow[] }>('/schedules/schedule_a/', {
-    committee_id: committeeId,
-    two_year_transaction_period: twoYearPeriod,
-    sort: '-contribution_receipt_amount',
-    per_page: String(Math.min(limit, 100)),
-    is_individual: 'true',
-  });
+  const includeOrganizations = options?.includeOrganizations === true;
+  const paginate = options?.paginate === true || limit > 100;
+  const out: FecScheduleAContributor[] = [];
+  const pageSize = Math.min(Math.max(limit, 1), 100);
+  let page = 1;
 
-  return (data.results ?? [])
-    .filter((r) => r.committee_id === committeeId && r.contributor_name && r.contribution_receipt_amount != null)
-    .slice(0, limit)
-    .map((r) => ({
-      name: r.contributor_name!,
-      amount: r.contribution_receipt_amount!,
-      date: isoDate(r.contribution_receipt_date) ?? new Date().toISOString().slice(0, 10),
-      employer: r.contributor_employer,
-      occupation: r.contributor_occupation,
-      committeeId: r.committee_id,
-    }));
+  for (;;) {
+    const params: Record<string, string> = {
+      committee_id: committeeId,
+      two_year_transaction_period: twoYearPeriod,
+      sort: '-contribution_receipt_amount',
+      per_page: String(pageSize),
+      page: String(page),
+    };
+    // Default (legacy): individuals only. Full-depth org/PAC acquisition omits the filter
+    // so committee/PAC receipts are included alongside itemized individuals.
+    if (!includeOrganizations) {
+      params.is_individual = 'true';
+    }
+
+    const data = await fecFetch<{ results: RawScheduleARow[]; pagination?: { pages?: number } }>(
+      '/schedules/schedule_a/',
+      params,
+    );
+    const rows = (data.results ?? [])
+      .filter((r) => r.committee_id === committeeId && r.contributor_name && r.contribution_receipt_amount != null)
+      .map((r) => ({
+        name: r.contributor_name!,
+        amount: r.contribution_receipt_amount!,
+        date: isoDate(r.contribution_receipt_date) ?? new Date().toISOString().slice(0, 10),
+        employer: r.contributor_employer,
+        occupation: r.contributor_occupation,
+        committeeId: r.committee_id,
+      }));
+    out.push(...rows);
+
+    if (!paginate || rows.length === 0 || out.length >= limit) break;
+    const pages = data.pagination?.pages ?? page;
+    if (page >= pages) break;
+    page += 1;
+  }
+
+  return out.slice(0, limit);
 }
 
 /** Itemized Schedule A receipts for authorized candidate committees (Tier 1). */
@@ -322,12 +347,16 @@ export async function fetchScheduleAContributorsForCommittees(
   committeeIds: string[],
   twoYearPeriod: string,
   limit = 20,
+  options?: { includeOrganizations?: boolean; paginate?: boolean },
 ): Promise<FecScheduleAContributor[]> {
   const uniqueCommitteeIds = [...new Set(committeeIds)].slice(0, 5);
+  const perCommitteeLimit = options?.paginate
+    ? Math.ceil(limit / Math.max(uniqueCommitteeIds.length, 1))
+    : limit;
   const contributors = (
     await Promise.all(
       uniqueCommitteeIds.map((committeeId) =>
-        fetchScheduleAContributorsForCommittee(committeeId, twoYearPeriod, limit),
+        fetchScheduleAContributorsForCommittee(committeeId, twoYearPeriod, perCommitteeLimit, options),
       ),
     )
   ).flat();

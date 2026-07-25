@@ -6,11 +6,13 @@
       "tier": "nonpartisan",
       "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
     },
-    "asOf": "2026-07-02",
-    "fetchedAt": "2026-07-02T16:20:39.917Z",
+    "asOf": "2026-07-22",
+    "fetchedAt": "2026-07-22T08:22:35.274Z",
     "totalCount": 32,
-    "datasetUrl": "https://voteview.com/static/data/out/members/H119_members.csv",
-    "note": "DW-NOMINATE ideology scores for Florida U.S. House & Senate members, 119th Congress. nominateEconomic is the 1st dimension (economic/redistribution axis), nominateSocial the 2nd; values roughly -1 to +1. A sourced nonpartisan political-science metric, not an editorial label. Tier 2."
+    "datasetUrl": "https://voteview.com/static/data/out/members/S119_members.csv",
+    "note": "DW-NOMINATE ideology scores (nonpartisan). nominateEconomic = 1st dimension; nominateSocial = 2nd. Tier nonpartisan.",
+    "count": 33,
+    "lastScopedRefresh": "S000033"
   },
   "byBioguideId": {
     "D000600": {
@@ -588,6 +590,24 @@
       },
       "asOf": "2026-07-02",
       "voteviewUrl": "https://voteview.com/person/42506"
+    },
+    "S000033": {
+      "name": "SANDERS, Bernard",
+      "chamber": "Senate",
+      "party": "Independent",
+      "district": null,
+      "bioguideId": "S000033",
+      "nominateEconomic": -0.545,
+      "nominateSocial": -0.427,
+      "congress": 119,
+      "source": {
+        "name": "Voteview (UCLA)",
+        "url": "https://voteview.com",
+        "tier": "nonpartisan",
+        "description": "DW-NOMINATE congressional roll-call ideology scores (Lewis et al., UCLA)"
+      },
+      "asOf": "2026-07-22",
+      "voteviewUrl": "https://voteview.com/person/29147"
     }
   }
 }

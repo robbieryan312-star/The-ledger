@@ -6,11 +6,11 @@
       "tier": "official",
       "description": "Official campaign finance disclosures via api.open.fec.gov"
     },
-    "asOf": "2026-07-02",
-    "fetchedAt": "2026-07-02T16:25:46.622Z",
-    "membersQueried": 537,
+    "asOf": "2026-07-22",
+    "fetchedAt": "2026-07-22T08:21:19.863Z",
+    "membersQueried": 1,
     "withFinanceData": 514,
-    "failureCount": 23,
+    "failureCount": 0,
     "keyConfigured": true,
     "datasetUrl": "https://api.open.fec.gov/v1/",
     "note": "Receipts, disbursements, and cash-on-hand from OpenFEC candidate totals for all current Congress members."
@@ -67,22 +67,22 @@
       "bioguideId": "S000033",
       "fecCandidateId": "S4VT00033",
       "electionYear": 2030,
-      "receipts": 23468953.69,
-      "disbursements": 11332584.7,
-      "cashOnHand": 22877129.65,
-      "individualContributions": 22470390.5,
+      "receipts": 24928186.19,
+      "disbursements": 12833935.63,
+      "cashOnHand": 22835011.22,
+      "individualContributions": 23777892.99,
       "pacContributions": 27,
       "selfFunding": 0,
       "coverageStart": "2025-01-01",
-      "coverageEnd": "2026-03-31",
-      "reportType": "APRIL QUARTERLY",
+      "coverageEnd": "2026-06-30",
+      "reportType": "JULY QUARTERLY",
       "source": {
         "name": "Federal Election Commission (OpenFEC)",
         "url": "https://www.fec.gov/data/",
         "tier": "official",
         "description": "Official campaign finance disclosures via api.open.fec.gov"
       },
-      "asOf": "2026-07-02",
+      "asOf": "2026-07-22",
       "fecProfileUrl": "https://www.fec.gov/data/candidate/S4VT00033/"
     },
     "W000802": {
@@ -11839,121 +11839,5 @@
       "fecProfileUrl": "https://www.fec.gov/data/candidate/H6CA01285/"
     }
   },
-  "failures": [
-    {
-      "bioguideId": "W000804",
-      "name": "Robert J. Wittman",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "W000809",
-      "name": "Steve Womack",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "W000779",
-      "name": "Ron Wyden",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "S001194",
-      "name": "Brian Schatz",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "B001287",
-      "name": "Ami Bera",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "T000472",
-      "name": "Mark Takano",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "F000462",
-      "name": "Lois Frankel",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "D000622",
-      "name": "Tammy Duckworth",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "W000816",
-      "name": "Roger Williams",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "R000600",
-      "name": "Aumua Amata Coleman Radewagen",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "S001198",
-      "name": "Dan Sullivan",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "S001208",
-      "name": "Elissa Slotkin",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "M001215",
-      "name": "Mariannette Miller-Meeks",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "F000446",
-      "name": "Randy Feenstra",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "M001211",
-      "name": "Mary E. Miller",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "M001214",
-      "name": "Frank J. Mrvan",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "C001125",
-      "name": "Troy A. Carter",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "S001218",
-      "name": "Melanie A. Stansbury",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "F000475",
-      "name": "Brad Finstad",
-      "reason": "OpenFEC request failed: HTTP 429 Too Many Requests"
-    },
-    {
-      "bioguideId": "I000058",
-      "name": "Glenn Ivey",
-      "reason": "no OpenFEC totals"
-    },
-    {
-      "bioguideId": "S001224",
-      "name": "Keith Self",
-      "reason": "no OpenFEC totals"
-    },
-    {
-      "bioguideId": "G000602",
-      "name": "Laura Gillen",
-      "reason": "no OpenFEC totals"
-    },
-    {
-      "bioguideId": "A000383",
-      "name": "Alan Armstrong",
-      "reason": "no FEC candidate ID"
-    }
-  ]
+  "failures": []
 }
