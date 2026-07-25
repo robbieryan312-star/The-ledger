@@ -60,10 +60,13 @@ function pilotScheduleRow(bioguideId: string): ScheduleAMemberRow | undefined {
 
 export function getScheduleAForBioguide(bioguideId?: string): ScheduleAMemberRow | undefined {
   if (!bioguideId) return undefined;
-  const pilot = pilotScheduleRow(bioguideId);
-  if (pilot) return pilot;
-  if (snapshot.meta?.queryMode !== 'committee_id') return undefined;
-  return snapshot.byBioguideId[bioguideId];
+  // Prefer national committee-scoped snapshot when present (M-ACQUIRE full-depth path).
+  // Pilot overlay is fallback only when national has no row for the member.
+  if (snapshot.meta?.queryMode === 'committee_id') {
+    const national = snapshot.byBioguideId[bioguideId];
+    if (national?.contributors?.length) return national;
+  }
+  return pilotScheduleRow(bioguideId);
 }
 
 /** True when Schedule A itemized contributors exist for this member in the national snapshot. */

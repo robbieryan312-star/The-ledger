@@ -15,6 +15,7 @@ Superseded one-off migration, benchmark, diagnostic, and ad-hoc collection tools
 | `verify-phase17b-batch.ts` | `npm run profile:build` + `audit:profile-credibility --gate` |
 | `stamp-profile-display-text.ts` | `scripts/lib/profileMigrate.ts` / `profile:build` |
 | `apply-crec-sync-to-profiles.ts` | `npm run sync:topic-positions` + `npm run profile:build` |
+| `apply-m-acquire-batch-a.ts` | one-off M-ACQUIRE Batch A apply — archived after merge `a2fbd7a`; Batch B+ use category-specific apply scripts |
 | `report-pilot-coverage.ts` | `npm run audit:profile-credibility --gate` |
 | `refresh-senate-cast-votes.ts` | `npm run sync:votes-national` + `npm run refresh:migrated-votes` |
 | `generate-roster.ts` | `npm run sync:legislators` (writes `generated/roster.json`) |

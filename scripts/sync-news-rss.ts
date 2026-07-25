@@ -393,6 +393,16 @@ function toNewsItem(candidate: RssItem, idx: number, bioguideId: string): NewsIt
   };
 }
 
+/** Drop items that fail subject/quote qualification (incl. stale NewsAPI CDC releaser). */
+function filterQualifiedNewsItems(
+  items: NewsItem[],
+  leg: LegislatorRow,
+): NewsItem[] {
+  return items.filter((item) =>
+    qualifiesMemberNewsItem(item.headline, item.summary ?? '', leg, displayByBio).ok,
+  );
+}
+
 function mergeWithExisting(existing: NewsItem[], fresh: NewsItem[]): NewsItem[] {
   const merged = [...existing];
   const seen = new Map(
@@ -534,12 +544,17 @@ async function main(): Promise<void> {
     if (!gdeltResult.failed) {
       gdeltItems = gdeltResult.articles
         .map((article, idx) => gdeltArticleToNewsItem(article, bioguideId, idx))
-        .filter((item): item is NewsItem => item !== null);
+        .filter((item): item is NewsItem => item !== null)
+        .filter((item) =>
+          qualifiesMemberNewsItem(item.headline, item.summary ?? '', leg, displayByBio).ok,
+        );
       if (gdeltItems.length > 0) {
         console.log(`  ${bioguideId}: GDELT supplement ${gdeltItems.length} approved article(s)`);
       }
-    } else if (gdeltResult.error) {
-      console.warn(`  ${bioguideId}: GDELT supplement skipped — ${gdeltResult.error}`);
+    } else {
+      console.warn(
+        `  ${bioguideId}: GDELT supplement skipped — ${gdeltResult.error ?? 'no approved articles'}`,
+      );
     }
 
     let newsApiItems: NewsItem[] = [];
@@ -561,12 +576,16 @@ async function main(): Promise<void> {
       );
     }
 
-    let merged = mergeWithExisting(existingItems, [
-      ...freshItems,
-      ...gdeltItems,
-      ...newsApiItems,
-      ...topicItems,
-    ]);
+    let merged = mergeWithExisting(
+      filterQualifiedNewsItems(existingItems, leg),
+      [
+        ...freshItems,
+        ...gdeltItems,
+        ...newsApiItems,
+        ...topicItems,
+      ],
+    );
+    merged = filterQualifiedNewsItems(merged, leg);
     merged = applyNewsCorroboration(merged).slice(0, MAX_ITEMS_PER_MEMBER);
 
     const resolved = resolveNewsStatus(merged, existingItems, {

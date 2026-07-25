@@ -10,6 +10,19 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-25 — MERGE B→C→D resolve
+
+**From:** Cursor · **To:** Claude · **Verdict:** B **MERGED** `0af3ac7` · C **MERGED** tip `4a0e368` → main `eeacc58` · D merge-resolve next · prebuild/build pending
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**BATCH D merge tip:** approve **PR #82 branch HEAD** after resolve (work `a28facc`) · prebuild 0 · build 0  
+**B/C:** on main · **STOP:** merge D then M-RETIRE-VOTESMART + M-CHANNEL-PROOF
+
+---
+
 ## HANDOFF 2026-07-22 — M-ACQUIRE BATCH D (Verified gaps) ⛔ STOP
 
 **From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
@@ -35,6 +48,190 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 **M-ACQUIRE BATCH D tip:** approve **PR branch HEAD** (`git rev-parse origin/cursor/m-acquire-batch-d-70a6`) · prebuild 0 · build 0  
 **S000033:** trades **fetch-failed DIAGNOSED** eFD 503 · controversies **2** (1 verified / 1 alleged) · low count OK  
 **STOP:** tip APPROVAL before merge; after B+C+D+M-UI → Bernie render check → OWNER visual
+
+---
+
+## HANDOFF 2026-07-25 — MERGE B→C conflict resolve · tip stamp
+
+**From:** Cursor · **To:** Claude · **Verdict:** Batch B **MERGED** @ `0af3ac7` → `main` (`50fb14b`); Batch C merge-resolve tip below · prebuild **0** · build **0**
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**BATCH C merge tip:** approve **PR #81 branch HEAD** after push (was `ef27925` + merge-resolve) · prebuild 0 · build 0  
+**BATCH B:** MERGED exact tip `0af3ac7`  
+**STOP:** merge C then D on approved tips
+
+---
+
+## HANDOFF 2026-07-22 — M-ACQUIRE BATCH C (Voice) ⛔ STOP
+
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
+**Current state:** `cursor/m-acquire-batch-c-70a6` · tip = **PR branch HEAD** · Batch B **MERGED** @ `0af3ac7` → `main` `50fb14b` · prebuild **0** · build **0**
+
+### BEFORE → AFTER (S000033)
+
+| Section | BEFORE | AFTER | Provenance |
+|---------|--------|-------|------------|
+| News | 12 items · CDC releaser slipped via NewsAPI · all alleged | **12**/15 subject/quote-qualified · **CDC dropped** · NPR+Guardian mix · all `'alleged'` (no 2-outlet corroboration this window) | `sync:news-rss -- --members S000033` · RSS→topic→GDELT→NewsAPI · dest `profiles/S000033/news.json` |
+| Journalism quotes | 1 media Said (WaPo primary; NYT corroboration in catalog) | **1** media Said (unchanged) — no additional 2+ outlet verbatim found without fabrication | `approvedMediaQuotes.ts` → `statements.json` healthcare |
+| Platform positions | honest-gap (scrape junk note) | **honest-gap DIAGNOSED** — Ballotpedia source poverty (no Political_positions/Issues/survey); VoteSmart **Deferred**/EMPTY by design | live Ballotpedia diag + `positions.json` note |
+
+### Process fixes
+- NewsAPI now applies `qualifiesMemberNewsItem` (same subject/quote gate as RSS/topic) — freezes CDC releaser regression
+- Sync re-filters existing+GDELT through qualify gate; GDELT exhausted-retries error string fixed (was `"undefined"`)
+
+### §13 / §14
+1. GDELT returned empty `{}` for Sanders approved domains this run — keep diagnosing; not silent skip.
+2. Single-outlet Guardian dominance → all alleged; need independent second outlets for media-tier news (AP/Reuters feeds currently disabled).
+3. Additional media Saids require curated 2+ approved-outlet verify — do not invent quote text.
+4. VoteSmart remains Deferred — not an owner secret gap unless product reopens NPAT.
+
+**PARK:** #76 · m8a · m7a–d · M-UI #68 · Batch B #80 tip · Florida until Bernie lock
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-ACQUIRE BATCH C tip:** approve **PR branch HEAD** (`git rev-parse origin/cursor/m-acquire-batch-c-70a6`) · prebuild 0 · build 0  
+**S000033 Voice:** news **12**/15 qualify-gated (CDC fixed) · quotes **1** media · positions **DIAGNOSED** honest-gap (Ballotpedia poverty; VoteSmart Deferred)  
+**STOP:** tip APPROVAL before merge; BATCH D separate PR
+
+---
+
+## HANDOFF 2026-07-22 — Batch C journalism-quotes inventory (S000033) · PASS (inspect-only)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS inspect · no data write this turn  
+**Current state:** `cursor/m-acquire-batch-c-70a6` · HEAD `a2fbd7a` · tree dirty only this log · build not re-run (read-only)
+
+### Objective
+Inventory verified media quotes for S000033 + refresh path for M-ACQUIRE Batch C (news + quotes + positions).
+
+### Verdict / outcome
+**PASS** — counts and wiring verified from disk. **No additional ready-to-ship 2+ outlet curated quotes** exist elsewhere in repo beyond the single WaPo+NYT healthcare entry.
+
+### Counts (fresh)
+| Location | Media quotes (2+ outlet / tier `media`) | Notes |
+|----------|----------------------------------------|-------|
+| `scripts/lib/approvedMediaQuotes.ts` → `VERIFIED_MEDIA_QUOTES_BY_BIOGUIDE.S000033` | **1** curated | WaPo + NYT URLs; `topicId: healthcare` |
+| `profiles/S000033/statements.json` | **1** of **11** stmts | tier `media`, outlet Washington Post (primary); **10** CREC `official` |
+| `profiles/S000033/positions.json` | **0** | `status: honest-gap` — platform only; media does **not** land here |
+| `profiles/S000033/saidDid.json` | **0** media Saids | 8/15 CREC pairs only |
+| `articleCache.json` S000033 | **1** article (WaPo) | `corroboratedQuotes: 1`; NYT URL **absent**; WaPo `plainText` **does not** contain quote body (Wayback path required to re-verify) |
+| mega-bundle `topicPositions.json` | **0** media anywhere; S000033 **omitted** (freeze) | |
+| Fixtures / snapshots | same 1 quote string | `crecStatementFilter.fixture.ts` KNOWN_GOOD; `S000033.snapshot.json` |
+
+### Wiring
+`sync:topic-positions` → `fetchApprovedMediaStatementsForMember` (`approvedMediaQuotes.ts`) → verify live/Wayback → prepend into topic `statements[]` (cap 2/topic) before CREC. Profile apply historically via `apply:m-acquire-batch-a` union into `statements.json`.
+
+### §14 acquire path (cache)
+Shared article cache is **fetch reuse only** — no auto-extract of new quotes. Cache currently yields **no** extra S000033 candidates. New quotes require curated append to `VERIFIED_MEDIA_QUOTES_BY_BIOGUIDE` with 2+ approved outlets, then scoped sync + profile apply (keep mega-bundle freeze).
+
+### Owner visibility
+| What | Where | Evidence | Severity | Repair |
+|------|-------|----------|----------|--------|
+| WaPo cache plainText missing verified quote | `articleCache.json` WaPo entry | `plainText` lacks "guarantee health care" / "international embarrassment" | P2 | Re-fetch/Wayback on next verify; do not treat cache alone as proof |
+| Only 1 media Said for gold profile | PILOT row 10 partial | catalog length 1; statements media=1 | P1 under-collection if more exist in world | Batch C: curate+verify more; never fabricate |
+
+### Commands run (this session)
+- `node` counts on statements / positions / articleCache / saidDid / topicPositions
+- `rg` / reads of `approvedMediaQuotes.ts`, `articleVerificationCache.ts`, `sync-topic-positions.ts`, handoff Batch B tip (`BATCH C (news + quotes + positions)`)
+
+### Open / next
+- Batch C quotes: append **only** verbatim 2+ outlet entries to catalog → scoped `sync:topic-positions -- --member S000033` → apply to `profiles/S000033/statements.json` without mega-bundle re-insert / without wiping news·trades
+- Do **not** promote `news.json` alleged headlines to Said without extracted verbatim + second outlet
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Inspect PASS:** S000033 media Said = **1** (healthcare WaPo+NYT curated → statements only). No spare curated quotes in cache/fixtures/archive.  
+**Batch C quotes path:** edit `approvedMediaQuotes.ts` → scoped sync → profile statements apply; §14 ≠ fabricate; cache ≠ quote miner.  
+**STOP for quote text:** Claude/owner must not ask Cursor to invent quote strings.
+
+---
+
+## HANDOFF 2026-07-22 — M-ACQUIRE BATCH B REJECT fix ⛔ STOP
+
+**From:** Cursor · **To:** Claude · **Verdict:** REJECT repaired · **STOP** for tip approval  
+**Current state:** `cursor/m-acquire-batch-b-70a6` · tip = **PR #80 branch HEAD** · work `a2da77a` · PR **#80** · prebuild **0** (`rm -rf .next && npm run prebuild`) · build **0**
+
+### Reject repairs
+| # | Issue | Fix |
+|---|-------|-----|
+| docs-integrity | stale path scripts/apply-m-acquire-batch-a.ts (missing after archive) | cite `scripts/archive/apply-m-acquire-batch-a.ts` |
+| orgVoteLinks | must be DIAGNOSED | Explicit: small-donor profile — FEC PAC **$27**; Sched A 5000 = 1400 indiv + 1350 ActBlue conduit + 2250 other non-indiv (banks/entities); **0** curated PAC/org join after conduit exclusion. §14: PAC receipts do not exist at join-eligible volume — not uncollected. |
+
+### Re-verify counts + provenance (this tip)
+| Section | Count / status | Provenance |
+|---------|----------------|------------|
+| FEC finance | receipts **$24,928,186.19** · PAC **$27** · indiv **$23,777,892.99** · asOf 2026-07-22 | `sync:fec-national -- --members S000033` · `FEC_API_KEY` · `data/national/fec/congress-finance.json` → `profiles/S000033/finance.json` |
+| Schedule A | **5000** (cap) | `sync:fec-schedule-a -- --members S000033 --full-depth` · `schedule-a.json` |
+| orgVoteLinks | **0** · `status: honest-gap` · diagnosed note on disk | `apply:m-acquire-batch-b` + `fecOrgRegistry` conduit exclusion |
+| DW-NOMINATE | econ **−0.545** · social **−0.427** · https://voteview.com/person/29147 | `ingest:voteview -- --members S000033` · `profiles-voteview.json` |
+| Lobbying LDA | **0** items · honest-gap diagnosed (29 pages / 725 filings scanned) | `ingest:lobbying -- --members S000033` · `lobbying.json` |
+
+**Commands:** `rm -rf .next && npm run prebuild` → 0 · `npm run build` → 0  
+**Logs:** `/tmp/ledger-prebuild-batch-b-fix2.log` · `/tmp/ledger-build-batch-b-fix2.log`
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**BATCH B REJECT fix tip:** approve **PR #80 branch HEAD** (`git rev-parse origin/cursor/m-acquire-batch-b-70a6`) · work `a2da77a` · prebuild **0** · build **0**  
+**docs:** archive path cite `scripts/archive/apply-m-acquire-batch-a.ts` · orgVoteLinks **DIAGNOSED** small-donor / PAC **$27** / 0 curated PAC joins  
+**Provenance:** FEC asOf 2026-07-22 · SchedA 5000 · Voteview −0.545/−0.427 · LDA 0 diagnosed  
+**STOP:** approve exact tip SHA before merge; BATCH C/D follow as separate PRs
+
+---
+
+## HANDOFF 2026-07-22 — M-ACQUIRE BATCH B (Money & ideology) ⛔ STOP
+
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
+**Current state:** `cursor/m-acquire-batch-b-70a6` · tip **20f9cb5** · Batch A merged to `main` @ **a2fbd7a** · gov c878311 already on main (a44d417) · prebuild **0** · build **0**
+
+### MERGE NOW confirmed
+| Item | Tip | Status |
+|------|-----|--------|
+| M-ACQUIRE Batch A | `a2fbd7a` | **merged** → `main` (ff) · PR #79 |
+| Governance §14 | `c878311` | **already on main** (`a44d417`) |
+| Archive | `scripts/archive/apply-m-acquire-batch-a.ts` | one-off Batch A apply (archived after merge `a2fbd7a`) |
+
+### BEFORE → AFTER (S000033)
+
+| Section | BEFORE | AFTER | Provenance |
+|---------|--------|-------|------------|
+| FEC totals | receipts **$23,468,953.69** (asOf 2026-07-02); PAC **$27**; indiv **$22,470,390.50** | receipts **$24,928,186.19** (asOf 2026-07-22); PAC **$27**; indiv **$23,777,892.99** | `sync:fec-national -- --members S000033` · `FEC_API_KEY` · `congress-finance.json` → `finance.json` |
+| Schedule A | **15** indiv-only sample | **5000** (cap hit; full-depth individuals+orgs+conduits) | `sync:fec-schedule-a -- --members S000033 --full-depth` · dest `schedule-a.json` |
+| Org/PAC→vote links | **0** honest-gap (pilot note) | **0** honest-gap **DIAGNOSED** | Reason: Sanders is a **small-donor profile** — full-depth Sched A (5000 rows) is almost entirely individuals + ActBlue conduit totals; **PAC committee receipts $27** on FEC totals; after excluding individuals/conduits, **0 curated PAC/org** rows match `fecOrgRegistry` on topics overlapping his votes. Not undiagnosed empty. |
+| Ideology DW-NOMINATE | absent from voteview slice | **econ −0.545 · social −0.427** (119th) | `ingest:voteview -- --members S000033` · Voteview S119 CSV · `profiles-voteview.json` |
+| Lobbying (Senate LDA) | none | **0** items · honest-gap **diagnosed** | `ingest:lobbying -- --members S000033` · LDA contributions scan (API does not key contacts to members) · `lobbying.json` |
+
+### Process fixes
+- Schedule A: `--members` merge + `--full-depth` (paginate; include org receipts; was hard-capped 15 + `is_individual=true`)
+- Prefer national Schedule A over stale pilot overlay for S000033
+- Exclude ActBlue/WinRed **conduits** from org→vote joins (append-only fixture)
+- National Voteview + Lobbying scoped ingest scripts
+
+### §13 / §14 recommendations
+1. **Prior-Congress Did corpus** (owner ask): extend `sync:votes-national --full-depth` beyond TARGET_CONGRESS=119 (e.g. 118→116) so older CREC Saids can pair — likely raises Said→Did toward 15 without fabrication.
+2. Schedule A **5000 cap hit** — raise or stream-to-disk if gold-standard needs complete itemization.
+3. LDA `search=` appears ignored by API; member-keyed lobbying contacts unavailable — keep diagnosed gap or find alternate.
+4. Registry short tokens (e.g. `SEIU` len&lt;5) miss `SEIU COPE` — consider alias table.
+
+**PARK:** #76 · m8a · m7a–d · M-UI #68 STAGE THREE after acquisition  
+**Next after APPROVAL:** BATCH C (news + quotes + positions)
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Merged to main:** Batch A **a2fbd7a** · gov c878311 already present  
+**M-ACQUIRE BATCH B tip:** **20f9cb5** · data 2e07961 · prebuild 0 · build 0  
+**S000033:** FEC refreshed · SchedA 15→**5000** · orgVoteLinks **0 diagnosed** (conduit/small-donor) · Voteview **−0.545/−0.427** · lobbying **0 diagnosed**  
+**STOP:** do not start BATCH C without APPROVAL  
+**Propose:** prior-Congress vote window for Said→Did depth (§14)
 
 ---
 

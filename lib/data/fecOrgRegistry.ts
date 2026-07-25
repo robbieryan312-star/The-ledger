@@ -69,6 +69,12 @@ const INDIVIDUAL_NAME_RE = /^[A-Z][A-Za-z\-']+,\s+[A-Z][A-Za-z\s.\-']+$/;
 const ORG_NAME_SIGNAL_RE =
   /\b(PAC|COMMITTEE|LLC|INC|CORP|UNION|ASSOCIATION|FEDERATION|PARTY|FUND|ACTION|COALITION|COUNCIL|LEAGUE|FOUNDATION)\b/i;
 
+/**
+ * Conduit / earmark processors — not PAC policy donors. They aggregate individual gifts.
+ * Must never create org→topic→vote joins (M-ACQUIRE Batch B / Sanders small-donor diagnosis).
+ */
+const CONDUIT_ORG_RE = /^(ACTBLUE|ACT BLUE|WINRED|WIN RED)(\s|$|LLC|INC|,)/i;
+
 function normalizeOrgKey(name: string): string {
   return name.trim().toUpperCase().replace(/\s+/g, ' ');
 }
@@ -87,6 +93,17 @@ export function isIndividualScheduleAContributor(
   if (!INDIVIDUAL_NAME_RE.test(name)) return false;
   if (ORG_NAME_SIGNAL_RE.test(name)) return false;
   return true;
+}
+
+/** True for conduit processors (ActBlue/WinRed) — not PAC donors for org→vote joins. */
+export function isConduitScheduleAContributor(
+  contributor: Pick<FecScheduleAContributor, 'name' | 'occupation'> & { entityType?: string | null },
+): boolean {
+  const name = contributor.name?.trim() ?? '';
+  if (CONDUIT_ORG_RE.test(name)) return true;
+  const occ = (contributor.occupation ?? '').toUpperCase();
+  if (occ.includes('CONDUIT TOTAL')) return true;
+  return false;
 }
 
 /** Match contributor org name against a curated registry entry (exact or org-name substring). */
@@ -148,6 +165,7 @@ export function aggregateScheduleAOrgs(contributors: FecScheduleAContributor[]):
 
   for (const c of contributors) {
     if (isIndividualScheduleAContributor(c)) continue;
+    if (isConduitScheduleAContributor(c)) continue;
 
     const orgName = c.name.trim();
     if (!orgName) continue;

@@ -37,7 +37,7 @@
       }
     },
     {
-      "id": "s000033-topic-3",
+      "id": "s000033-topic-2",
       "headline": "Bernie Sanders’ AI sovereign wealth fund plan is good. But we think this is better | Nathan E Sanders and Bruce Schneier",
       "summary": "While we do not outright oppose the taking of AI company stock, or of a US a sovereign wealth fund, there are better ways to achieve the senator’s goals Let no one accuse Bernie Sanders of ducking…",
       "date": "2026-06-08",
@@ -54,7 +54,7 @@
       }
     },
     {
-      "id": "s000033-topic-4",
+      "id": "s000033-topic-3",
       "headline": "Bernie Sanders backs climate activist in close Michigan congressional primary",
       "summary": "Will Lawrence, an outspoken opponent of AI datacenters, is running in swing district where three mega complexes loom A prominent environmental organizer calling for a nationwide moratorium on…",
       "date": "2026-05-21",
@@ -71,7 +71,7 @@
       }
     },
     {
-      "id": "s000033-topic-5",
+      "id": "s000033-topic-4",
       "headline": "Bernie Sanders urges international cooperation to halt AI’s ‘runaway train’",
       "summary": "US senator holds panel with leading Chinese scientists and warns of risks to society unless new technology is regulated Bernie Sanders espoused the importance of international cooperation in…",
       "date": "2026-04-30",
@@ -88,7 +88,7 @@
       }
     },
     {
-      "id": "s000033-topic-6",
+      "id": "s000033-topic-5",
       "headline": "Bernie Sanders’ effort to block US weapons sales to Israel fails in Senate",
       "summary": "Senator’s fourth attempt for resolutions fails, but votes show growing appetite among Democrats to impose limits Bernie Sanders on Wednesday led a failed effort to block the sale of bombs and…",
       "date": "2026-04-16",
@@ -105,7 +105,7 @@
       }
     },
     {
-      "id": "s000033-topic-7",
+      "id": "s000033-topic-6",
       "headline": "No more US military aid to Israel | Bernie Sanders",
       "summary": "The time is long overdue for members of Congress to listen to the American people and end US military aid to the extremist Netanyahu government I am a proud Jewish American.",
       "date": "2026-04-15",
@@ -122,7 +122,7 @@
       }
     },
     {
-      "id": "s000033-topic-8",
+      "id": "s000033-topic-7",
       "headline": "Bernie Sanders warns ‘worst is yet to come’ in rallying cry against billionaires",
       "summary": "US senator appears at Manhattan rally alongside New York City mayor Zohran Mamdani, who cautioned that AI is ‘coming for human jobs’ Bernie Sanders has sounded an alarm over the US economy, warning…",
       "date": "2026-04-13",
@@ -139,7 +139,7 @@
       }
     },
     {
-      "id": "s000033-topic-10",
+      "id": "s000033-topic-8",
       "headline": "Bernie Sanders and AOC introduce bill to pause building of new datacenters",
       "summary": "Lawmakers say moratorium on construction would buy time to create strong, federal guardrails for AI Amid an unprecedented energy crisis and the rapid buildout of artificial intelligence…",
       "date": "2026-03-25",
@@ -156,7 +156,7 @@
       }
     },
     {
-      "id": "s000033-topic-11",
+      "id": "s000033-topic-9",
       "headline": "Bernie Sanders and Ro Khanna propose bill to impose wealth tax on billionaires",
       "summary": "Make billionaires pay their fair share act would apply to those with a net worth of $1bn or more Sign up for the Breaking News US email to get newsletter alerts in your inbox Senator Bernie Sanders…",
       "date": "2026-03-02",
@@ -173,7 +173,7 @@
       }
     },
     {
-      "id": "s000033-topic-12",
+      "id": "s000033-topic-10",
       "headline": "‘Slow this thing down’: Sanders warns US has no clue about speed and scale of coming AI revolution",
       "summary": "After meeting with unspecified tech leaders, senator calls for urgent policy action as companies race to build ever more powerful systems Bernie Sanders has warned that Congress and the American…",
       "date": "2026-02-21",
@@ -207,5 +207,5 @@
       }
     }
   ],
-  "note": "12 subject/quoted article(s) after owner 2026-07-21 qualification (Sanders subject or direct quote; comparison-only and \"among those responding\" excluded). Honest-gap for remaining 3 of target 15. Dropped: s000033-newsapi-11(mention-without-subject-or-quote), s000033-topic-2(comparison-only-mention), s000033-topic-9(among-those-responding — Trump-Iran; Sanders not direct quote). Source checks: topic-2 comparison-only DROP; newsapi-11 CDC no direct quote DROP; topic-9 among-those-responding DROP."
+  "note": "12 relevant article(s) from RSS, topic/tag feeds, GDELT, and NewsAPI (target 15)."
 }

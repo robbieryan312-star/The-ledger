@@ -1,23 +1,23 @@
 {
-  "updatedAt": "2026-07-20T11:33:40.447Z",
+  "updatedAt": "2026-07-22T09:04:16.926Z",
   "feeds": {
     "https://feeds.npr.org/1014/rss.xml": {
       "outlet": "NPR",
       "feedUrl": "https://feeds.npr.org/1014/rss.xml",
       "consecutiveFailures": 0,
-      "lastOk": "2026-07-20T11:27:25.088Z"
+      "lastOk": "2026-07-22T08:59:03.243Z"
     },
     "https://thehill.com/homenews/feed/": {
       "outlet": "The Hill",
       "feedUrl": "https://thehill.com/homenews/feed/",
       "consecutiveFailures": 0,
-      "lastOk": "2026-07-20T11:27:25.170Z"
+      "lastOk": "2026-07-22T08:59:03.330Z"
     },
     "https://rss.politico.com/politics-news.xml": {
       "outlet": "Politico",
       "feedUrl": "https://rss.politico.com/politics-news.xml",
       "consecutiveFailures": 0,
-      "lastOk": "2026-07-20T11:27:25.186Z"
+      "lastOk": "2026-07-22T08:59:03.346Z"
     },
     "https://rollcall.com/feed/": {
       "outlet": "Roll Call",
@@ -30,7 +30,7 @@
       "outlet": "PBS NewsHour",
       "feedUrl": "https://www.pbs.org/newshour/feeds/rss/politics",
       "consecutiveFailures": 0,
-      "lastOk": "2026-07-20T11:27:25.321Z"
+      "lastOk": "2026-07-22T08:59:03.501Z"
     },
     "https://www.propublica.org/feeds/propublica/main": {
       "outlet": "ProPublica",
@@ -43,7 +43,7 @@
       "outlet": "The Guardian",
       "feedUrl": "https://www.theguardian.com/us-news/rss",
       "consecutiveFailures": 0,
-      "lastOk": "2026-07-20T11:27:25.390Z"
+      "lastOk": "2026-07-22T08:59:03.572Z"
     },
     "https://www.miamiherald.com/news/politics-government/index.rss": {
       "outlet": "Miami Herald",
@@ -56,7 +56,7 @@
       "outlet": "Tampa Bay Times",
       "feedUrl": "https://www.tampabay.com/arc/outboundfeeds/rss/?outputType=xml",
       "consecutiveFailures": 0,
-      "lastOk": "2026-07-20T11:27:26.039Z"
+      "lastOk": "2026-07-22T08:59:04.379Z"
     },
     "https://floridaphoenix.com/feed/": {
       "outlet": "Florida Phoenix",
@@ -76,31 +76,31 @@
       "outlet": "Politico Congress",
       "feedUrl": "https://rss.politico.com/congress.xml",
       "consecutiveFailures": 0,
-      "lastOk": "2026-07-20T11:27:24.944Z"
+      "lastOk": "2026-07-22T08:59:03.072Z"
     },
     "https://thehill.com/homenews/senate/feed/": {
       "outlet": "The Hill Senate",
       "feedUrl": "https://thehill.com/homenews/senate/feed/",
       "consecutiveFailures": 0,
-      "lastOk": "2026-07-20T11:27:25.031Z"
+      "lastOk": "2026-07-22T08:59:03.157Z"
     },
     "https://thehill.com/news/feed/": {
       "outlet": "The Hill News",
       "feedUrl": "https://thehill.com/news/feed/",
       "consecutiveFailures": 0,
-      "lastOk": "2026-07-20T11:27:24.714Z"
+      "lastOk": "2026-07-22T08:59:02.849Z"
     },
     "https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml": {
       "outlet": "NYT Politics",
       "feedUrl": "https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml",
       "consecutiveFailures": 0,
-      "lastOk": "2026-07-20T11:27:24.754Z"
+      "lastOk": "2026-07-22T08:59:02.912Z"
     },
     "https://feeds.washingtonpost.com/rss/politics": {
       "outlet": "Washington Post Politics",
       "feedUrl": "https://feeds.washingtonpost.com/rss/politics",
       "consecutiveFailures": 0,
-      "lastOk": "2026-07-20T11:27:24.904Z"
+      "lastOk": "2026-07-22T08:59:03.021Z"
     }
   }
 }
