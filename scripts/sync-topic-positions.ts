@@ -1,6 +1,8 @@
 /**
- * sync-topic-positions.ts — Ballotpedia platform positions, VoteSmart NPAT stated
- * positions, and Said→Did vote correlation per topic bucket.
+ * sync-topic-positions.ts — Ballotpedia platform positions, GovInfo CREC Said,
+ * and Said→Did vote correlation per topic bucket.
+ *
+ * VoteSmart / NPAT is RETIRED/DEFUNCT — never call api.votesmart.org.
  *
  * Output: lib/data/generated/topicPositions.json
  * Run: npm run sync:topic-positions
@@ -13,7 +15,8 @@ import type { SourceTier, VoteChoice, VoteRecord } from '../lib/types';
 import { RECORD_TOPIC_BUCKETS, voteCongressGovUrl, voteTopicId, classifyTextToRecordTopicId } from '../lib/data/profileRecordByTopic';
 import { truncateAtSentenceBoundary } from '../lib/data/displaySummary';
 import { normalizeTopicId } from '../lib/data/topicAliases';
-import { fetchJson, sleep } from './lib/ingest-utils';
+import { isDisqualifiedPlatformPosition } from '../lib/data/sourceIntegrity';
+import { sleep } from './lib/ingest-utils';
 import { NATIONAL_VOTES_FILE } from './lib/dataPaths';
 import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
 import { fetchApprovedMediaStatementsForMember } from './lib/approvedMediaQuotes';
@@ -28,9 +31,7 @@ const LEGISLATORS_FILE = path.join(OUT_DIR, 'currentLegislators.json');
 const NATIONAL_VOTES_FILE_PATH = NATIONAL_VOTES_FILE;
 const CHECKPOINT_FILE = '/tmp/sync-topic-positions-checkpoint.json';
 
-const VOTESMART_BASE = 'https://api.votesmart.org';
 const BALLOTPEDIA_BASE = 'https://ballotpedia.org';
-const VOTESMART_DELAY_MS = 300;
 const REQUEST_TIMEOUT_MS = 20_000;
 const MAX_PLATFORM_PER_TOPIC = 3;
 const MAX_SAID_DID_LINKS = 3;
@@ -228,25 +229,6 @@ interface TopicPositionsSnapshot {
   byBioguideId: Record<string, Record<string, TopicPositionData>>;
 }
 
-interface VoteSmartCandidate {
-  candidateId?: number | string;
-  firstName?: string;
-  lastName?: string;
-  office?: string;
-  officeStateId?: string;
-}
-
-interface NpatRow {
-  rowText?: string;
-  answerText?: string;
-  optionText?: string;
-}
-
-interface NpatSection {
-  name?: string;
-  row?: NpatRow | NpatRow[];
-}
-
 interface NationalVoteMember {
   bioguideId: string;
   votes: VoteRecord[];
@@ -255,44 +237,6 @@ interface NationalVoteMember {
 interface NationalVotesLoadResult {
   loaded: boolean;
   byBioguideId: Map<string, VoteRecord[]>;
-}
-
-const NPAT_SECTION_TO_TOPIC: Array<{ patterns: string[]; topicId: string }> = [
-  { patterns: ['abortion', 'reproductive', 'pro-life', 'pro-choice'], topicId: 'abortion' },
-  { patterns: ['artificial intelligence', 'section 230', 'data privacy', 'technology', 'big tech'], topicId: 'technology' },
-  { patterns: ['gun', 'firearm', 'second amendment', 'background check'], topicId: 'public-safety' },
-  { patterns: ['health care', 'healthcare', 'medicare', 'medicaid'], topicId: 'healthcare' },
-  { patterns: ['immigration', 'border'], topicId: 'immigration' },
-  { patterns: ['veteran', 'veterans', 'gi bill', 'va benefits'], topicId: 'defense-veterans' },
-  { patterns: ['national security', 'defense', 'military', 'foreign'], topicId: 'defense-veterans' },
-  { patterns: ['economy', 'budget', 'taxes', 'fiscal', 'trade', 'housing'], topicId: 'economy-taxes' },
-  { patterns: ['environment', 'energy', 'climate'], topicId: 'climate' },
-  { patterns: ['education'], topicId: 'education' },
-  { patterns: ['criminal justice', 'crime', 'police'], topicId: 'public-safety' },
-  { patterns: ['civil rights', 'civil liberties', 'social'], topicId: 'civil-liberties' },
-  { patterns: ['judiciary', 'constitutional', 'court'], topicId: 'civil-liberties' },
-];
-
-function normalizeArray<T>(value: T | T[] | undefined | null): T[] {
-  if (value == null) return [];
-  return Array.isArray(value) ? value : [value];
-}
-
-function textMatchesKeyword(text: string, keywords: string[]): boolean {
-  const hay = text.toLowerCase();
-  return keywords.some((k) => hay.includes(k.trim().toLowerCase()));
-}
-
-function mapNpatSectionToTopic(sectionName: string): string | null {
-  const hay = sectionName.toLowerCase();
-  for (const row of NPAT_SECTION_TO_TOPIC) {
-    if (row.patterns.some((p) => hay.includes(p))) return row.topicId;
-  }
-  for (const bucket of RECORD_TOPIC_BUCKETS) {
-    if (bucket.id === 'legislation') continue;
-    if (bucket.keywords.some((k) => hay.includes(k.trim()))) return bucket.id;
-  }
-  return null;
 }
 
 function decodeHtmlEntities(text: string): string {
@@ -470,7 +414,7 @@ interface BallotpediaResult {
   connected: boolean;
 }
 
-async function fetchBallotpediaPositions(
+export async function fetchBallotpediaPositions(
   leg: LegislatorRow,
   asOf: string,
 ): Promise<BallotpediaResult> {
@@ -497,115 +441,24 @@ async function fetchBallotpediaPositions(
   if (positionTexts.length === 0) return { byTopic: new Map(), reached: true, connected: true };
 
   const byTopic = new Map<string, PlatformPositionEntry[]>();
-  const topicBuckets = RECORD_TOPIC_BUCKETS.filter((b) => b.id !== 'legislation');
 
-  for (const bucket of topicBuckets) {
-    const matched = positionTexts
-      .filter((t) => textMatchesKeyword(t, bucket.keywords))
-      .filter((t) => !isMisattributedPlatformText(t, leg));
-    if (matched.length === 0) continue;
-    byTopic.set(
-      bucket.id,
-      matched.slice(0, MAX_PLATFORM_PER_TOPIC).map((text) => ({
-        text,
-        source: 'Ballotpedia',
-        url: pageUrl,
-        tier: 'nonpartisan' as const,
-        asOf,
-      })),
-    );
+  for (const text of positionTexts) {
+    if (isDisqualifiedPlatformPosition(text)) continue;
+    if (isMisattributedPlatformText(text, leg)) continue;
+    const topicId = classifyTextToRecordTopicId(text);
+    if (!topicId || topicId === 'legislation') continue;
+    const list = byTopic.get(topicId) ?? [];
+    if (list.length >= MAX_PLATFORM_PER_TOPIC) continue;
+    list.push({
+      text,
+      source: 'Ballotpedia',
+      url: pageUrl,
+      tier: 'nonpartisan' as const,
+      asOf,
+    });
+    byTopic.set(topicId, list);
   }
   return { byTopic, reached: true, connected: true };
-}
-
-async function votesmartFetch(
-  method: string,
-  params: Record<string, string | number>,
-  key: string,
-): Promise<Record<string, unknown>> {
-  const qs = new URLSearchParams({ key, o: 'JSON' });
-  for (const [k, v] of Object.entries(params)) {
-    qs.set(k, String(v));
-  }
-  await sleep(VOTESMART_DELAY_MS);
-  return fetchJson<Record<string, unknown>>(`${VOTESMART_BASE}/${method}?${qs.toString()}`);
-}
-
-async function findVoteSmartCandidateId(leg: LegislatorRow, key: string): Promise<number | null> {
-  const officeId = leg.chamber === 'senate' ? 6 : 5;
-  try {
-    const data = await votesmartFetch('Candidates.getByOfficeState', {
-      officeId,
-      stateId: leg.stateCode,
-    }, key);
-    const candidates = normalizeArray(
-      (data.candidateList as { candidate?: VoteSmartCandidate | VoteSmartCandidate[] } | undefined)?.candidate,
-    );
-
-    const firstLower = leg.firstName.toLowerCase();
-    const lastLower = leg.lastName.toLowerCase();
-
-    const exact = candidates.find(
-      (c) =>
-        (c.firstName ?? '').toLowerCase() === firstLower &&
-        (c.lastName ?? '').toLowerCase() === lastLower,
-    );
-    if (exact?.candidateId != null) return Number(exact.candidateId);
-
-    const partial = candidates.find(
-      (c) =>
-        (c.lastName ?? '').toLowerCase() === lastLower &&
-        (c.firstName ?? '').toLowerCase().startsWith(firstLower.slice(0, 3)),
-    );
-    if (partial?.candidateId != null) return Number(partial.candidateId);
-  } catch (err) {
-    console.warn(
-      `  WARN VoteSmart candidate lookup failed for ${leg.name}: ${err instanceof Error ? err.message : err}`,
-    );
-  }
-  return null;
-}
-
-function extractNpatByTopic(
-  npatRoot: Record<string, unknown>,
-  candidateId: number,
-): Map<string, { position: string; date: string | null }> {
-  const out = new Map<string, { position: string; date: string | null }>();
-  const npat = (npatRoot.npat ?? npatRoot) as {
-    section?: NpatSection | NpatSection[];
-    electionDate?: string;
-  };
-  const positionDate = (npat.electionDate ?? '').slice(0, 10) || null;
-  const profileUrl = `https://votesmart.org/candidate/${candidateId}/political-courage-test`;
-
-  for (const section of normalizeArray(npat.section)) {
-    const topicId = mapNpatSectionToTopic(section.name ?? '');
-    if (!topicId) continue;
-
-    const lines: string[] = [];
-    for (const row of normalizeArray(section.row)) {
-      const answer = (row.answerText ?? row.optionText ?? '').trim();
-      if (!answer || /^n\/?a$/i.test(answer) || /^no opinion$/i.test(answer)) continue;
-      lines.push(answer);
-    }
-    if (lines.length === 0) continue;
-    out.set(topicId, { position: lines.join('; '), date: positionDate });
-  }
-
-  void profileUrl;
-  return out;
-}
-
-async function fetchVoteSmartNpatByTopic(
-  candidateId: number,
-  key: string,
-): Promise<Map<string, { position: string; date: string | null }>> {
-  try {
-    const npatData = await votesmartFetch('Npat.getNpat', { candidateId }, key);
-    return extractNpatByTopic(npatData, candidateId);
-  } catch {
-    return new Map();
-  }
 }
 
 async function loadNationalVotesAsync(): Promise<NationalVotesLoadResult> {
@@ -944,23 +797,21 @@ function buildSnapshotMeta(
 
   const membersWithData = Object.values(byBioguideId).filter((m) => Object.keys(m).length > 0).length;
 
+  void votesmartConfigured; // always false — VoteSmart RETIRED/DEFUNCT
   return {
     asOf,
-    source: votesmartConfigured
-      ? 'Ballotpedia + VoteSmart NPAT + GovInfo CREC + Congress roll-call votes (Said→Did)'
-      : govinfoConfigured
-        ? 'Ballotpedia + GovInfo CREC + Congress roll-call votes (Said→Did)'
-        : 'Ballotpedia + Congress roll-call votes (Said→Did)',
+    source: govinfoConfigured
+      ? 'Ballotpedia + official issues + GovInfo CREC + Congress roll-call votes (Said→Did)'
+      : 'Ballotpedia + official issues + Congress roll-call votes (Said→Did)',
     totalMembers: members.length,
     membersWithData,
     membersWithPlatformPositions,
     membersWithStatedPosition,
     membersWithSaidDidLinks,
     perTopicCoverage,
-    votesmartConfigured,
-    note: votesmartConfigured
-      ? 'Platform positions from Ballotpedia; NPAT from VoteSmart; vote links from national roll-call snapshot.'
-      : 'VoteSmart skipped (no key). Platform positions from Ballotpedia where available.',
+    votesmartConfigured: false,
+    note:
+      'VoteSmart RETIRED/DEFUNCT. Platform from Ballotpedia/official issues; CREC Said + roll-call votes for Said→Did.',
   };
 }
 
@@ -982,13 +833,10 @@ async function writeSnapshot(
 async function main(): Promise<void> {
   config({ path: path.join(projectRoot, '.env.local') });
 
-  const votesmartKey = (process.env.VOTESMART_API_KEY ?? '').trim();
+  const votesmartConfigured = false;
   const govinfoKey = (process.env.GOVINFO_API_KEY ?? process.env.DATA_GOV_API_KEY ?? '').trim();
-  console.log('VoteSmart key length:', votesmartKey.length);
+  console.log('VoteSmart: RETIRED (ignored)');
   console.log('GovInfo key length:', govinfoKey.length);
-  if (!votesmartKey) {
-    console.warn('WARN: VOTESMART_API_KEY missing — NPAT stated positions will be skipped.');
-  }
 
   const memberFilter = parseMemberFilter();
   // core-rules §5: agent runs must scope; a full-corpus run must be opted in explicitly.
@@ -1054,7 +902,7 @@ async function main(): Promise<void> {
   const pending = members.filter((leg) => memberFilter || !checkpoint[leg.bioguideId]);
 
   console.log(
-    `Syncing topic positions for ${pending.length}/${members.length} member${members.length === 1 ? '' : 's'} (${Object.keys(checkpoint).length} checkpointed). Concurrency: ${MEMBER_CONCURRENCY}, GovInfo cap: ${GOVINFO_MAX_RPS}/s, procedural-skip: ${CREC_SKIP_PROCEDURAL ? 'on' : 'off'}. VoteSmart: ${votesmartKey ? 'yes' : 'SKIP'}`,
+    `Syncing topic positions for ${pending.length}/${members.length} member${members.length === 1 ? '' : 's'} (${Object.keys(checkpoint).length} checkpointed). Concurrency: ${MEMBER_CONCURRENCY}, GovInfo cap: ${GOVINFO_MAX_RPS}/s, procedural-skip: ${CREC_SKIP_PROCEDURAL ? 'on' : 'off'}. VoteSmart: RETIRED`,
   );
 
   async function processMember(leg: LegislatorRow): Promise<Record<string, TopicPositionData>> {
@@ -1099,24 +947,6 @@ async function main(): Promise<void> {
       mediaByTopic.set(st.topicId, list);
     }
 
-    let npatByTopic = new Map<string, { position: string; date: string | null }>();
-    let voteSmartCandidateId: number | null = null;
-    if (votesmartKey) {
-      voteSmartCandidateId = await findVoteSmartCandidateId(leg, votesmartKey);
-      if (voteSmartCandidateId != null) {
-        try {
-          await votesmartFetch('CandidateBio.getBio', { candidateId: voteSmartCandidateId }, votesmartKey);
-        } catch {
-          /* optional validation call */
-        }
-        npatByTopic = await fetchVoteSmartNpatByTopic(voteSmartCandidateId, votesmartKey);
-      }
-    }
-    const npatUrl =
-      voteSmartCandidateId != null
-        ? `https://votesmart.org/candidate/${voteSmartCandidateId}/political-courage-test`
-        : 'https://votesmart.org';
-
     const memberVotes = nationalVotes.byBioguideId.get(leg.bioguideId) ?? [];
     const canRefreshMemberSaidDid = canRefreshSaidDidLinks(
       nationalVotes.loaded,
@@ -1125,6 +955,7 @@ async function main(): Promise<void> {
     );
 
     // Build fresh (this-run) statements + Said→Did per canonical topic.
+    // VoteSmart NPAT is RETIRED — stated positions come from CREC/media/Ballotpedia only.
     interface FreshTopic {
       statements: TopicStatementEntry[];
       saidDidLinks: SaidDidLinkEntry[];
@@ -1135,26 +966,11 @@ async function main(): Promise<void> {
     for (const bucket of topicBuckets) {
       const crecStatements = crecByTopic.get(bucket.id) ?? [];
       const mediaForTopic = mediaByTopic.get(bucket.id) ?? [];
-      const npat = npatByTopic.get(bucket.id);
       const statements = [...mediaForTopic, ...crecStatements];
-      if (npat?.position) {
-        statements.push({
-          title: npat.position,
-          date: npat.date ?? asOf,
-          url: npatUrl,
-          tier: 'nonpartisan',
-          topicId: bucket.id,
-        });
-      }
-      const statedPositionDate = npat?.date ?? earliestStatementDate(statements) ?? null;
+      const statedPositionDate = earliestStatementDate(statements) ?? null;
       const saidDidLinks = buildSaidDidLinks(bucket.id, statedPositionDate, memberVotes);
       if (statements.length > 0 || saidDidLinks.length > 0) {
-        const fresh: FreshTopic = { statements, saidDidLinks };
-        if (npat?.position) {
-          fresh.statedPosition = npat.position;
-          fresh.statedPositionSource = { tier: 'nonpartisan', source: 'VoteSmart', url: npatUrl };
-        }
-        freshByTopic.set(bucket.id, fresh);
+        freshByTopic.set(bucket.id, { statements, saidDidLinks });
       }
     }
 
@@ -1232,7 +1048,7 @@ async function main(): Promise<void> {
       await writeFile(CHECKPOINT_FILE, JSON.stringify(checkpoint) + '\n', 'utf8');
       completed += 1;
       if (completed % 10 === 0 || completed === pending.length) {
-        await writeSnapshot(members, byBioguideId, asOf, !!votesmartKey, !!govinfoKey);
+        await writeSnapshot(members, byBioguideId, asOf, votesmartConfigured, !!govinfoKey);
         console.log(
           `  progress: ${completed}/${pending.length} — ${Object.keys(byBioguideId).length} members with topic position data`,
         );
@@ -1240,14 +1056,14 @@ async function main(): Promise<void> {
     });
   });
 
-  await writeSnapshot(members, byBioguideId, asOf, !!votesmartKey, !!govinfoKey);
+  await writeSnapshot(members, byBioguideId, asOf, votesmartConfigured, !!govinfoKey);
 
-  const meta = buildSnapshotMeta(members, byBioguideId, asOf, !!votesmartKey, !!govinfoKey);
+  const meta = buildSnapshotMeta(members, byBioguideId, asOf, votesmartConfigured, !!govinfoKey);
   console.log('');
   console.log('── sync:topic-positions complete ──');
   console.log(`Members with data: ${meta.membersWithData}/${members.length}`);
   console.log(`Platform positions: ${meta.membersWithPlatformPositions}`);
-  console.log(`VoteSmart NPAT positions: ${meta.membersWithStatedPosition}`);
+  console.log(`Stated positions (non-VoteSmart): ${meta.membersWithStatedPosition}`);
   console.log(`Said→Did links: ${meta.membersWithSaidDidLinks} members`);
   console.log(`Output: ${OUT_FILE}`);
 

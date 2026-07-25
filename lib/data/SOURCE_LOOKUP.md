@@ -89,11 +89,16 @@ Log long syncs: `npm run sync:<name> 2>&1 | tee /tmp/ledger-<name>.log`
 
 ---
 
+## Retired / DEFUNCT sources (never request key)
+
+| Source | Status | Use instead |
+|--------|--------|-------------|
+| VoteSmart NPAT | **RETIRED / DEFUNCT** — never call `api.votesmart.org`; no key will be provided | official issues FIRST → Ballotpedia → CREC Said |
+
 ## Deferred sources (do not block work)
 
 | Source | Why deferred | Use instead |
 |--------|--------------|-------------|
-| VoteSmart NPAT | Application / bot 403 | Ballotpedia + GovInfo CREC |
 | OpenSecrets API | Public API discontinued Apr 2025 | FEC Schedule A + org registry |
 | Google Civic | Representatives endpoint deprecated | MIT Election Lab bulk / demo until pipeline |
 | mediastack | Redundant | GDELT (no key) |

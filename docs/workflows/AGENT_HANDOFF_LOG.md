@@ -10,6 +10,59 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-25 — M-RETIRE-VOTESMART (COMPLETE)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS / COMPLETE on branch · awaiting tip APPROVAL  
+**Current state:** `cursor/m-retire-votesmart-70a6` · tree clean after commit · `npm run build` **0** · voteSmartRetiredGuard **pass**
+
+### Objective
+Surgically remove all VoteSmart NPAT API usage from `scripts/sync-topic-positions.ts` while preserving CREC/Ballotpedia/SaidDid/full-depth; mark VoteSmart RETIRED/DEFUNCT across docs/config.
+
+### Verdict / outcome
+**PASS** — zero `https://api.votesmart.org` / `votesmartFetch` in sync-topic-positions; CREC/Ballotpedia/SaidDid/`--full-depth` retained; `fetchBallotpediaPositions` exported + disqualify/topic-class filters; docs/catalog/KEYS/package.json updated.
+
+### Commits
+- tip after this handoff commit (see git log)
+
+### Commands run (this session)
+- `rg` VoteSmart / api.votesmart across repo
+- surgical edits to `scripts/sync-topic-positions.ts` + docs/config
+- `npm run test:source-integrity` (incl. voteSmartRetiredGuard) → pass
+- `npx tsc --noEmit` → 0
+- `npm run test:docs-consistency` → 0 (after BATCH_SCALING wording fix)
+- `npm run build` → 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/sync-topic-positions.ts` | modified | VoteSmart NPAT removed; Ballotpedia exported + filters; meta RETIRED |
+| `KEYS.md` | modified | VOTESMART → Retired/DEFUNCT |
+| `lib/data/SOURCE_LOOKUP.md` | modified | VoteSmart RETIRED route |
+| `docs/OBJECTIVE_SOURCES.md` | modified | Position surveys RETIRED |
+| `lib/data/sourceCatalog.ts` | modified | status `retired`, keyRequired false, retiredReason |
+| `PILOT_PROFILE_CHECKLIST.md` / `PROGRESS.md` / `REPO.md` | modified | RETIRED not deferred |
+| `.cursor/rules/ledger-core-rules.mdc` | modified | nonpartisan examples + never request key |
+| `package.json` | modified | voteSmartRetiredGuard in test:source-integrity; prove:ballotpedia-platform |
+| `docs/workflows/BATCH_SCALING.md` | modified | M-RETIRE-VOTESMART improvement row |
+
+### Acceptance evidence
+- Guard: `sync-topic-positions must not call api.votesmart.org` **ok**
+- `rg 'https://api\.votesmart\.org|async function votesmartFetch' scripts/sync-topic-positions.ts` → no matches
+- Header comment contains `RETIRED/DEFUNCT`
+- Build green including postbuild render-integrity
+
+### Open / next
+- Claude tip APPROVAL then merge; do not push to `main` without APPROVAL
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-RETIRE-VOTESMART tip:** approve branch HEAD after Cursor commit · VoteSmart DEFUNCT · sync-topic-positions zero api.votesmart.org · prebuild/build 0  
+**STOP:** tip APPROVAL before merge to main
+
+---
+
 ## HANDOFF 2026-07-25 — MERGE #85 + #86 recorded
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGED to main · tip unchanged (handoff-only conflict resolve)

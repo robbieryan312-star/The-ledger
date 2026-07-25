@@ -592,7 +592,7 @@ discipline: `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6. Do not restate §11 here
 | Code value | Meaning | Example sources |
 |------------|---------|-----------------|
 | `'official'` | Authoritative government record | congress.gov, FEC, senate.gov, house.gov, STOCK Act filings |
-| `'nonpartisan'` | Established nonpartisan or official-derived research | GovTrack, OpenSecrets, Ballotpedia, VoteSmart, AP, Reuters, ProPublica, unitedstates/congress-legislators |
+| `'nonpartisan'` | Established nonpartisan or official-derived research | GovTrack, OpenSecrets, Ballotpedia, AP, Reuters, ProPublica, unitedstates/congress-legislators (VoteSmart NPAT RETIRED/DEFUNCT — never request key) |
 | `'media'` | Named mainstream journalism outlet | NYT, WaPo, WSJ, Politico, The Hill — verbatim quotes with attribution only, never paraphrased |
 | `'alleged'` | Credible but unproven claim | Corroborated by 2+ independent sources, always visibly flagged |
 | `'unverified'` | Circulating claim with no verified sourcing | Maximum caveat, shown only when explicitly relevant |
@@ -729,7 +729,7 @@ Reference files before asking the owner anything: `KEYS.md`, `REPO.md`, `PROGRES
 - **End a work/verify turn without updating + committing `docs/workflows/AGENT_HANDOFF_LOG.md`** (§1.1 J)
 - Ask the owner if they are "ready to continue" — proceed until blocked
 - Ask for owner email — it is in `KEYS.md`
-- Treat VoteSmart or OpenSecrets as required — deferred in `SOURCE_LOOKUP.md`
+- VoteSmart RETIRED — never request key; OpenSecrets deferred in `SOURCE_LOOKUP.md`
 - Create or work in the legacy `code` GitHub repo
 - Assume API keys are missing without reading `.env.local` key names
 - Paste secret values into chat, commits, or tracked files

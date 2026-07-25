@@ -118,11 +118,16 @@ For each `bioguideId` when rolling beyond S000033:
 
 ---
 
+## Retired / DEFUNCT (never request key)
+
+| Item | Substitute |
+|------|------------|
+| VoteSmart NPAT | **RETIRED** — official issues FIRST → Ballotpedia → CREC Said |
+
 ## Deferred (do not block pilot)
 
 | Item | Substitute |
 |------|------------|
-| VoteSmart NPAT | Ballotpedia + GovInfo CREC |
 | OpenSecrets API | FEC Schedule A + org registry |
 | Senate eFD stock trades | Show gap; House PTR only where available |
 

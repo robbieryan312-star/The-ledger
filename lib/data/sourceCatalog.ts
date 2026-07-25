@@ -12,7 +12,8 @@ export type CatalogStatus =
   | 'pilot' // proven on one member (S000033); scale pending
   | 'candidate' // worth wiring; key or login may be required
   | 'reference' // bulk/scrape/no-key; not national-profile wired yet
-  | 'deferred'; // explicitly skipped — alternative documented
+  | 'deferred' // explicitly skipped — alternative documented
+  | 'retired'; // permanently unwired / defunct — never request key
 
 export interface SourceCatalogEntry {
   id: string;
@@ -46,6 +47,8 @@ export interface SourceCatalogEntry {
   notes: string;
   /** When status is deferred — why and what replaces it. */
   deferredReason?: string;
+  /** When status is retired — why permanently unwired; no key will be provided. */
+  retiredReason?: string;
   replaces?: string;
 }
 
@@ -482,23 +485,26 @@ export const SOURCE_CATALOG: SourceCatalogEntry[] = [
     notes: 'TERTIARY — FL raw snapshot (`ingest:news-fl`) only; profile News tabs use RSS → GDELT first (AGENT_INDEX §3). Plan 426-limited for broad national use.',
   },
 
-  // ── Deferred (documented alternatives) ───────────────────────────────────
+  // ── Retired / DEFUNCT (never request key) ────────────────────────────────
   {
     id: 'votesmart',
     name: 'Vote Smart / NPAT',
     url: 'https://justfacts.votesmart.org',
     sourceTier: 'nonpartisan',
     category: 'positions',
-    status: 'deferred',
-    keyRequired: true,
+    status: 'retired',
+    keyRequired: false,
     keyVar: 'VOTESMART_API_KEY',
     lookFor: ['NPAT survey answers by topic', 'candidateId'],
     destinationView: 'Was: Track Record stated position',
     agentPriority: 99,
-    notes: 'Application/membership required; bot 403 on web.',
-    deferredReason: 'Gated access — not worth blocking pipeline.',
-    replaces: 'ballotpedia + govinfo-crec',
+    notes: 'RETIRED/DEFUNCT — never call api.votesmart.org; no key will be provided.',
+    retiredReason:
+      'Gated NPAT + bot 403; permanently unwired. No VOTESMART_API_KEY will be provided. Use official-issues → Ballotpedia → GovInfo CREC.',
+    replaces: 'official-issues-pages + ballotpedia + govinfo-crec',
   },
+
+  // ── Deferred (documented alternatives) ───────────────────────────────────
   {
     id: 'opensecrets',
     name: 'OpenSecrets API',

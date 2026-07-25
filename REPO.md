@@ -34,7 +34,7 @@ Read **in order** before implementing or asking the owner anything:
 
 Navigation index: `docs/AGENT_INDEX.md`. Task-specific: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`.
 
-Do **not** use `docs/archive/` for current policy. Do **not** re-derive owner expectations from memory. Do **not** ask for email (`robbie.ryan312@gmail.com` is in `KEYS.md`). Do **not** treat VoteSmart or OpenSecrets as blockers — see deferred sources in `SOURCE_LOOKUP.md`.
+Do **not** use `docs/archive/` for current policy. Do **not** re-derive owner expectations from memory. Do **not** ask for email (`robbie.ryan312@gmail.com` is in `KEYS.md`). VoteSmart is **RETIRED/DEFUNCT** — never request a key. Do **not** treat OpenSecrets as a blocker — see deferred sources in `SOURCE_LOOKUP.md`.
 
 ---
 

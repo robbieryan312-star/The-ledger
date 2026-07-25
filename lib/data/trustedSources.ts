@@ -418,6 +418,24 @@ export const PROPUBLICA_CONGRESS_RETIRED: TrustedSourceEntry = {
   notes: 'Retired by ProPublica; replaced in The Ledger by Congress.gov (Tier 1) and GovTrack (Tier 2).',
 };
 
+/**
+ * VoteSmart / NPAT — RETIRED/DEFUNCT. Gated NPAT + bot 403; permanently unwired.
+ * Platform stances: Ballotpedia member-page scrape (proven 2026-07-25 on M000355).
+ */
+export const VOTESMART_NPAT_RETIRED: TrustedSourceEntry = {
+  id: 'votesmart-npat',
+  name: 'Vote Smart / NPAT',
+  url: 'https://justfacts.votesmart.org',
+  tier: 'nonpartisan',
+  orgType: 'research',
+  urlPatterns: ['api.votesmart.org', 'votesmart.org'],
+  asOf: CATALOG_AS_OF,
+  description: 'Historically: NPAT candidate survey answers by topic',
+  dataCoverage: 'Stated survey positions (replaced by Ballotpedia platform scrape + CREC)',
+  integrationStatus: 'unavailable',
+  notes: 'RETIRED/DEFUNCT 2026-07-25 — do not re-key. Same status as ProPublica Congress API.',
+};
+
 // ── Catalog registry ─────────────────────────────────────────────────────────
 // Live + planned conduits approved for citation. ProPublica (retired) is
 // intentionally excluded; it remains exported above for the record.
