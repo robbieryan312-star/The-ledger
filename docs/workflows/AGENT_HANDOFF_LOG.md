@@ -56,7 +56,7 @@ D) npm run build → exit 0
 
 ## Confront Claude — paste to Claude Code
 
-**M-VOTESMART-PURGE v2:** approve exact **`b711241`** · PR (this branch) · A exit1 · B 4/4 · prebuild/build 0 · tombstone DELETED · generic `approvedSourceMatrixGuard` · ⛔ your STAGE THREE · do not merge without APPROVAL
+**M-VOTESMART-PURGE v2:** approve exact **`6a91602`** · PR (this branch) · A exit1 · B 4/4 · prebuild/build 0 · tombstone DELETED · generic `approvedSourceMatrixGuard` · ⛔ your STAGE THREE · do not merge without APPROVAL
 
 ---
 
