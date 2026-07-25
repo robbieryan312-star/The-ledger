@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -42,6 +44,7 @@ jobs:
           npm run test:data-layout
           npm run test:env-truth
           npm run test:optimization
+          npm run test:collection-improvement
 
       - name: Profile credibility audit (P0/P1 gate)
         run: npm run audit:profile-credibility

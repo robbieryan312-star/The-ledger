@@ -15,8 +15,9 @@ export const PREBUILD_COUNT_KNOWN_GOOD = {
   /**
    * Parsed from package.json prebuild at guard wiring time — updated when prebuild changes.
    * 2026-07-20: 20 → 21 with `test:navigation-integrity`; 21 → 22 with `test:vercel-json`.
+   * 2026-07-25: 22 → 23 with `test:collection-improvement`.
    */
-  expectedPrebuildCommands: 22,
+  expectedPrebuildCommands: 23,
 };
 
 /** Default build must run render-integrity after Next build (GOOD). */

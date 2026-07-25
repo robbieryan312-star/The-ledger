@@ -189,7 +189,7 @@ Elections, OpenCorporates — unchanged from prior log (see `.env.local` and `KE
 | Phase D1–D4 | ✅ done (mock abolition, rules, RSS, CI guards) |
 | Phase E (Pelosi pipeline test) | In review — P000197 profile:build guards PASS; awaits owner visual 👁 |
 | Recovery audit (P0–P7) | ✅ complete — prebuild + full build pass |
-| Guard suites | **22** prebuild commands + render-integrity postbuild (see `docs/AGENT_INDEX.md`) + CI via guards.yml (warmed render step) |
+| Guard suites | **23** prebuild commands + render-integrity postbuild (see `docs/AGENT_INDEX.md`) + CI via guards.yml (warmed render step) |
 | Font / Turbopack | ✅ system stack (M6 self-host optional for brand parity) |
 | News | Manifest-driven RSS sync with required `status` field + news-status guard + feed-health report (Brief B T1-2, `3bd9ac4`/`24646f7`); honest gaps where feeds thin; Roll Call feed auto-disabled after 3 timeouts |
 | P000197 positions | Refill executed 2026-07-08 — scraped to bundle; migrate filters → **honest-gap** (zero scaffolds); see `data/reports/P000197-positions-diagnosis.json` |

@@ -97,6 +97,21 @@ REGRESSION RISKS  — affected systems
 RECOMMENDATIONS   — suggested improvements
 ```
 
+### STAGE THREE verdict checklist (BINDING — invalid without it)
+
+Every STAGE THREE verdict (APPROVAL or REJECT) **ends** with this literal checklist. Mark each
+`[x]` or `[n/a]`. A verdict missing the block is **invalid**.
+
+```
+STAGE THREE checklist:
+- [ ] exact-SHA verified
+- [ ] gates reproduced myself
+- [ ] improvement row present
+- [ ] docs/status accuracy
+- [ ] honest-gap validity
+- [ ] scope match
+```
+
 ## 10. Cross-agent second opinion — BINDING, continuous, never lapse
 Whenever you are not fully certain about a problem, diagnosis, fix, or improvement — or cannot verify
 something in your own environment (blocked network, tool error, ambiguous result) — hand it to

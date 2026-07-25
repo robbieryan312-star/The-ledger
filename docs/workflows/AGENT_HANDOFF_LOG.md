@@ -10,6 +10,34 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-25 — M-GUARD-COMPLIANCE ⛔ STOP
+
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
+**Current state:** `cursor/m-guard-compliance-70a6` · tip = **branch HEAD** · prebuild/build stamped below
+
+### Delivered
+1. **Build-gated guard** `scripts/__tests__/collectionImprovementGuard.test.ts` (+ pure evaluator `lib/data/collectionImprovementCompliance.ts`)
+   - Diff vs `merge-base(HEAD, origin/main|main)` + working tree
+   - Collection data = `lib/data/generated/{profiles,countyMap,slices}/**` data files + `newsNational.json` (not `.ts` accessors)
+   - Same diff MUST touch `docs/workflows/BATCH_SCALING.md`; skip when no collection-data change
+   - Append-only fixture: known-good pair / known-bad data-without-row / known-skip
+2. Wired into `prebuild` (`test:collection-improvement`) + `guards.yml` (fetch-depth: 0)
+3. **STAGE THREE checklist** added under `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` §9 (literal `[x]`/`[n/a]` block)
+4. Prebuild count 22 → **23** (AGENT_INDEX, PROGRESS, docsConsistency fixture)
+
+**IN FLIGHT (untouched):** M-IMPROVELOG · M-POSITIONS-SANDERS · M-UI rebase  
+**PARK:** #76 · m8a · m7a–d · #83 retire/channel-proof pending Claude tip
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-GUARD-COMPLIANCE tip:** approve exact **branch HEAD** · prebuild 0 · build 0  
+**Guard:** collection data → BATCH_SCALING.md mechanical · STAGE THREE checklist in §9  
+**STOP:** tip APPROVAL; IN FLIGHT unchanged (each STAGE THREE)
+
+---
+
 ## HANDOFF 2026-07-25 — MERGE B→C→D resolve
 
 **From:** Cursor · **To:** Claude · **Verdict:** B **MERGED** `0af3ac7` · C **MERGED** tip `4a0e368` → main `eeacc58` · D merge-resolve next · prebuild/build pending
