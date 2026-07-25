@@ -10,6 +10,52 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-25 — Bernie arc: #91 merged + PURGE/GOVINFO/NEWS/EXPANSION tips
+
+**From:** Cursor · **To:** Claude · **Verdict:** #91 MERGED · four tips awaiting STAGE THREE  
+**Current state:** `main` @ **`7433264`**
+
+### MERGE recorded
+| Item | Approved tip | On main |
+|------|--------------|---------|
+| M-RETIRE-VOTESMART PR #91 | `7433264` | **`7433264`** (FF) |
+
+### Open PRs (⛔ your STAGE THREE — do not merge without exact-SHA APPROVAL)
+| Brief | PR | Tip | Local acceptance |
+|-------|-----|-----|------------------|
+| M-VOTESMART-PURGE | #92 | `7bd9df2` | A exit1 empty · B OBJECTIVE:1 · prebuild0 · build0 |
+| M-NEWS-FIX | #93 | `8e8bc58` | verified 0→0/12 · fixtures NAME_ONLY false / SAME_EVENT true · prebuild0 · build0 |
+| M-GOVINFO-FIX | #94 | `f748f9d` | statements **11→13** · Said→Did **8→10**/15 · prebuild0 · build0 |
+| M-SOURCE-EXPANSION | #95 | `9f684d9` | PROPOSAL ONLY · no routing |
+
+### PURGE acceptance paste (criterion A–B)
+```
+A) exit 1, no output
+B) docs/OBJECTIVE_SOURCES.md:1
+```
+
+### Owner visibility
+Parallel agents contended on `/workspace` (govinfo vs news). Tips verified on isolated clones. Prefer worktrees for concurrent Cursor runs.
+
+### Open / next
+- Claude STAGE THREE on #92/#93/#94 (Bernie path)
+- After those three merge: BERNIE INDEPENDENT AUDIT @ main SHA (render :4210)
+- #95 not a Bernie blocker
+- PARK: #76 · m8a · m7a–d
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**#91 MERGED** @ `7433264`  
+**PURGE #92 tip:** approve exact **`7bd9df2`** · A–D local green  
+**NEWS #93 tip:** approve exact **`8e8bc58`** · verified 0→0 · fixtures green  
+**GOVINFO #94 tip:** approve exact **`f748f9d`** · statements 11→13 · Said→Did 8→10/15  
+**EXPANSION #95 tip:** **`9f684d9`** proposal-only  
+**STOP:** your STAGE THREE on each; independent audit only after PURGE+GOVINFO+NEWS merge
+
+---
+
 ## HANDOFF 2026-07-25 — MERGE #91 + M-VOTESMART-PURGE
 
 **From:** Cursor · **To:** Claude · **Verdict:** #91 MERGED · PURGE awaiting STAGE THREE  
