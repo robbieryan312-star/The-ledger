@@ -10,71 +10,49 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-25 — M-NEWS-DIVERSIFY ⛔ STOP
+
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
+**Current state:** `cursor/m-news-diversify-70a6` · tip = *(stamp after commit)* · prebuild/build pending stamp
+
+### Delivered
+- AP hub/search discovery + outlet ≤50% shrink-cap in `sync:news-rss`
+- Subject-action verbs + bare-last-name quote tags (same gate class; no comparison loosen)
+- S000033 news: **Guardian 5 / AP 3 / Hill 1 / NPR 1** (max 50%); kept qualified Guardian
+- Exhaustion: AP found=63 qualified=6; NPR search=0; Reuters 401; Politico no Sanders in RSS; GDELT 429
+- BATCH_SCALING improvement row; diversity unit tests in `test:source-integrity`
+
+**Sibling:** M-CORPUS-DEPTH on `cursor/m-corpus-depth-70a6` (separate PR)  
+**PARK:** #76 · m8a · m7a–d · BERNIE RENDER-READY blocked on both merges
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-NEWS-DIVERSIFY tip:** approve exact tip on `origin/cursor/m-news-diversify-70a6` · prebuild 0 · build 0  
+**M-CORPUS-DEPTH tip:** approve exact tip on `origin/cursor/m-corpus-depth-70a6` (sibling)  
+**STOP:** tip APPROVAL both · then Cursor runs BERNIE RENDER-READY @ merged main SHA
+
+---
+
 ## HANDOFF 2026-07-25 — MERGE #85 + #86 recorded
 
-**From:** Cursor · **To:** Claude · **Verdict:** MERGED to main · tip unchanged (handoff-only conflict resolve)
+**From:** Cursor · **To:** Claude · **Verdict:** MERGED to main
 
 ### MERGE recorded
 | Item | Approved tip | Merge SHA on main |
 |------|--------------|-------------------|
 | M-GUARD-COMPLIANCE PR #84 | `1b801f7` | **`1b801f7`** |
 | M-IMPROVELOG + M-POSITIONS PR #85 | `1d5dadc` | **`1d5dadc`** (FF) |
-| M-UI rebase PR #86 | `8e14b2c` | **pending this merge commit** |
+| M-UI rebase PR #86 | `8e14b2c` | **`2f09ec9`** (handoff conflict resolve) |
 
-Conflict resolve: `AGENT_HANDOFF_LOG.md` only — UI work `ca4ac86` + positions data from `1d5dadc` both retained.
-
----
-
-## Confront Claude — paste to Claude Code
-
-**#85 merge tip:** `1d5dadc` · **#86 merge tip:** `8e14b2c` (resolve commit follows if tip shifts)  
-**Next:** M-NEWS-DIVERSIFY + M-CORPUS-DEPTH concurrent · then BERNIE RENDER-READY after both approved+merged
+**Tip shift surfaced:** #86 merge resolve → main HEAD **`2f09ec9`** (not tip `8e14b2c` alone).
 
 ---
 
 ## HANDOFF 2026-07-25 — M-UI #68 rebase (merged)
 
 **Tip:** `8e14b2c` · work `ca4ac86` · drawer @1280 **1206px** / panel 1208 · ratio 0.998
-
----
-
-## HANDOFF 2026-07-25 — M-IMPROVELOG + M-POSITIONS-SANDERS (merged)
-
-**Tip:** `1d5dadc` · S000033 positions **filled** · 11 official stances · sanders.senate.gov/issues/
-
----
-
-## HANDOFF 2026-07-25 — M-GUARD-COMPLIANCE ⛔ STOP
-
-**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
-**Current state:** `cursor/m-guard-compliance-70a6` · tip = **`2ef3220`** · `rm -rf .next && npm run prebuild` **0** · `npm run build` **0**
-
-### Delivered
-1. **Build-gated guard** `scripts/__tests__/collectionImprovementGuard.test.ts` (+ pure evaluator `lib/data/collectionImprovementCompliance.ts`)
-   - Diff vs `merge-base(HEAD, origin/main|main)` + working tree
-   - Collection data = `lib/data/generated/{profiles,countyMap,slices}/**` data files + `newsNational.json` (not `.ts` accessors)
-   - Same diff MUST touch `docs/workflows/BATCH_SCALING.md`; skip when no collection-data change
-   - Append-only fixture: known-good pair / known-bad data-without-row / known-skip
-2. Wired into `prebuild` (`test:collection-improvement`) + `guards.yml` (fetch-depth: 0)
-3. **STAGE THREE checklist** added under `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` §9 (literal `[x]`/`[n/a]` block)
-4. Prebuild count 22 → **23** (AGENT_INDEX, PROGRESS, docsConsistency fixture)
-
-**IN FLIGHT (untouched):** M-IMPROVELOG · M-POSITIONS-SANDERS · M-UI rebase  
-**PARK:** #76 · m8a · m7a–d · #83 retire/channel-proof pending Claude tip
-
----
-
-## Confront Claude — paste to Claude Code
-
-**M-GUARD-COMPLIANCE tip:** approve exact **`2ef3220`** (work) · final tip = `git rev-parse origin/cursor/m-guard-compliance-70a6` · prebuild 0 · build 0  
-**Guard:** collection data → BATCH_SCALING.md mechanical · STAGE THREE checklist in §9  
-**STOP:** tip APPROVAL; IN FLIGHT unchanged (each STAGE THREE)
-
----
-
-## HANDOFF 2026-07-25 — MERGE B→C→D resolve
-
-**From:** Cursor · **To:** Claude · **Verdict:** B **MERGED** `0af3ac7` · C **MERGED** tip `4a0e368` → main `eeacc58` · D merge-resolve next · prebuild/build pending
 
 ---
 
