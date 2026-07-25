@@ -239,7 +239,7 @@ export const SOURCE_CATALOG: SourceCatalogEntry[] = [
     outputPath: 'lib/data/generated/topicPositions.json',
     syncCommand: 'npm run sync:topic-positions -- --member S000033',
     agentPriority: 1,
-    notes: 'Merges Ballotpedia + national votes. VoteSmart NPAT removed from critical path.',
+    notes: 'Merges Ballotpedia + national votes.',
   },
   {
     id: 'govinfo-crec',
@@ -485,24 +485,8 @@ export const SOURCE_CATALOG: SourceCatalogEntry[] = [
     notes: 'TERTIARY — FL raw snapshot (`ingest:news-fl`) only; profile News tabs use RSS → GDELT first (AGENT_INDEX §3). Plan 426-limited for broad national use.',
   },
 
-  // ── Retired / DEFUNCT (never request key) ────────────────────────────────
-  {
-    id: 'votesmart',
-    name: 'Vote Smart / NPAT',
-    url: 'https://justfacts.votesmart.org',
-    sourceTier: 'nonpartisan',
-    category: 'positions',
-    status: 'retired',
-    keyRequired: false,
-    keyVar: 'VOTESMART_API_KEY',
-    lookFor: ['NPAT survey answers by topic', 'candidateId'],
-    destinationView: 'Was: Track Record stated position',
-    agentPriority: 99,
-    notes: 'RETIRED/DEFUNCT — never call api.votesmart.org; no key will be provided.',
-    retiredReason:
-      'Gated NPAT + bot 403; permanently unwired. No VOTESMART_API_KEY will be provided. Use official-issues → Ballotpedia → GovInfo CREC.',
-    replaces: 'official-issues-pages + ballotpedia + govinfo-crec',
-  },
+  // Retired / DEFUNCT sources: see docs/OBJECTIVE_SOURCES.md (Retired sources line).
+  // Do not re-add catalog entries that request those keys.
 
   // ── Deferred (documented alternatives) ───────────────────────────────────
   {

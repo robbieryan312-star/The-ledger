@@ -5,7 +5,7 @@
 import { loadEnvLocal } from './lib/ingest-utils';
 
 /** Retired — never required; listed only for SET/EMPTY visibility if present. */
-const RETIRED_KEYS = ['PROPUBLICA_CONGRESS_KEY', 'VOTESMART_API_KEY'] as const;
+const RETIRED_KEYS = ['PROPUBLICA_CONGRESS_KEY'] as const;
 
 const AGENT_KEYS = [
   'FEC_API_KEY',

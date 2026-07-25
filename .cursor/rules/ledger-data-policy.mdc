@@ -43,7 +43,7 @@ source constitution (`docs/OBJECTIVE_SOURCES.md`, rule 4 — the single definiti
   shown, and then **always at the lowest display tier (`'alleged'` at best)**, visibly flagged,
   with every provider cited alongside its lean label. Volume never promotes a below-standard
   provider above this floor.
-- Currently-unobtainable items (Senate eFD trades, VoteSmart NPAT, OpenSecrets API, SAM.gov
+- Currently-unobtainable items (Senate eFD trades, OpenSecrets API, SAM.gov
   entity details) are tracked in `docs/OBJECTIVE_SOURCES.md` + `PROGRESS.md` — do not re-attempt
   blindly; render the honest gap.
 

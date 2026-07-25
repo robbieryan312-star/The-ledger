@@ -16,8 +16,8 @@ the brief is urgent.” If a Cursor-directed rule conflicts with a convenience s
 wins**; then follow the owner file named in the corpus table (never invent a third).
 
 This file also exists because agents confused **internal checklists** with **owner-provided
-secrets** (real incident: VoteSmart listed `EMPTY` made the owner think a key was expected or
-pulled from somewhere other than their provision). That class of confusion must never recur.
+secrets** (real incident: a RETIRED key listed `EMPTY` made the owner think a key was expected
+or pulled from somewhere other than their provision). That class of confusion must never recur.
 
 ---
 
@@ -81,7 +81,7 @@ awareness of the loop; do **not** usurp Claude’s review/APPROVAL role.
 
 **Binding behaviors:**
 
-1. **Never ask the owner for a RETIRED/DEFUNCT key** (e.g. `VOTESMART_API_KEY`, `PROPUBLICA_CONGRESS_KEY`).
+1. **Never ask the owner for a RETIRED/DEFUNCT key** (any source in the Retired sources record in `docs/OBJECTIVE_SOURCES.md`).
 2. **Never imply** we accessed a secret list, GitHub vault value, or Cloud secret beyond SET/EMPTY
    status. GitHub/Cloud secret *values* are write-only to agents — we only see presence.
 3. **`EMPTY` on a checklist is our inventory, not an owner debt.** When reporting keys, label
@@ -104,7 +104,7 @@ Before interpreting the latest owner/Claude text or starting work:
 - [ ] Confirm task against corpus files that own the domain (data / voice / build as applicable)
 - [ ] Check `KEYS.md` semantics: EMPTY ≠ owner gap for retired/deferred
 - [ ] Check RETIRED routes in OBJECTIVE_SOURCES / SOURCE_LOOKUP before mentioning a key
-- [ ] If the instruction mentions a retired source (e.g. VoteSmart), treat as **already decided**
+- [ ] If the instruction mentions a retired source (any source in the Retired sources record in `docs/OBJECTIVE_SOURCES.md`), treat as **already decided**
 - [ ] Do not re-ask for email, keys, or standards already recorded
 - [ ] Plan: handoff log + Confront Claude + no merge without exact-SHA APPROVAL
 
@@ -115,7 +115,7 @@ Before interpreting the latest owner/Claude text or starting work:
 When discussing keys or sources with the owner:
 
 - Say **SET / EMPTY / RETIRED / Deferred** with the correct meaning from §1
-- Never say “we got VoteSmart (or any retired key) from your list” unless that exact name was in
+- Never say we got any retired key from the owner’s list unless that exact name was in
   **their** paste or Cloud Secrets provision for this session
 - Prefer: “Our checklist still enumerates X as RETIRED/EMPTY for session visibility — you do not
   need to provide it.”
@@ -137,5 +137,5 @@ When finishing work/verify:
 | Key SET/EMPTY status | `KEYS.md` |
 | Key → source routing | `docs/OBJECTIVE_SOURCES.md` |
 | Data need → command | `lib/data/SOURCE_LOOKUP.md` |
-| VoteSmart replacement stack | `SOURCE_LOOKUP.md` → Position aggregation (post-VoteSmart) |
+| Position aggregation (retired survey channel) | `SOURCE_LOOKUP.md` → Position aggregation |
 | Cloud port / npm runtime | `AGENTS.md` → Cursor Cloud specific instructions |

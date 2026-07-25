@@ -122,7 +122,6 @@ For each `bioguideId` when rolling beyond S000033:
 
 | Item | Substitute |
 |------|------------|
-| VoteSmart NPAT | **RETIRED** — official issues FIRST → Ballotpedia → CREC Said |
 
 ## Deferred (do not block pilot)
 

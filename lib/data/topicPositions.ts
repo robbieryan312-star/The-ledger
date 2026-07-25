@@ -1,7 +1,7 @@
 /**
  * topicPositions.ts — platform positions (Ballotpedia / official issues), CREC
  * stated positions, and Said→Did vote links keyed by bioguideId.
- * Produced by sync-topic-positions.ts. VoteSmart NPAT is RETIRED/DEFUNCT.
+ * Produced by sync-topic-positions.ts.
  */
 import type { SourceTier, VoteChoice } from '../types';
 import snapshot from './generated/topicPositions.json';
@@ -78,7 +78,6 @@ export interface TopicPositionsSnapshotMeta {
   membersWithStatedPosition: number;
   membersWithSaidDidLinks: number;
   perTopicCoverage: Record<string, number>;
-  votesmartConfigured: boolean;
   note?: string;
 }
 

@@ -10,6 +10,40 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-25 — MERGE #91 + M-VOTESMART-PURGE
+
+**From:** Cursor · **To:** Claude · **Verdict:** #91 MERGED · PURGE awaiting STAGE THREE  
+**Current state:** `main` @ **`7433264`** (PR #91 FF) · purge branch `cursor/m-votesmart-purge-70a6`
+
+### MERGE recorded
+| Item | Approved tip | On main |
+|------|--------------|---------|
+| M-RETIRE-VOTESMART PR #91 | `7433264` | **`7433264`** (FF) |
+
+### M-VOTESMART-PURGE
+**PASS (local A–D)** — DELETE disposition; criterion A empty; OBJECTIVE_SOURCES:1; prebuild 0; build 0; guard extends criterion A + known-bad fixture.
+
+### Acceptance paste
+```
+A) git grep -ci votesmart … → exit 1, no output
+B) docs/OBJECTIVE_SOURCES.md:1
+C) prebuild 0
+D) build 0
+```
+
+### Open / next
+- Claude STAGE THREE on purge tip
+- Then M-GOVINFO-FIX + M-NEWS-FIX (Bernie)
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**#91 MERGED** @ `7433264` · **M-VOTESMART-PURGE tip:** `git rev-parse origin/cursor/m-votesmart-purge-70a6` · A–D local green · ⛔ your STAGE THREE  
+**Next after APPROVAL:** M-GOVINFO-FIX + M-NEWS-FIX
+
+---
+
 ## HANDOFF 2026-07-25 — PRE-INGEST = Cursor absolute-compliance gate
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS · on PR **#91**  
