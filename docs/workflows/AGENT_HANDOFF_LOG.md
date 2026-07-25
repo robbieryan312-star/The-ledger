@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-25 — M-RETIRE-VOTESMART (COMPLETE · tip refresh)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS / COMPLETE on branch · awaiting tip APPROVAL  
-**Current state:** `cursor/m-retire-votesmart-70a6` · tip **TIP_PLACEHOLDER** · tree clean · `npm run prebuild` **0** · `npm run build` **0** · voteSmartRetiredGuard **5/5** · supersedes stale PR #83 branch
+**Current state:** `cursor/m-retire-votesmart-70a6` · tip **b86b775** · tree clean · `npm run prebuild` **0** · `npm run build` **0** · voteSmartRetiredGuard **5/5** · supersedes stale PR #83 branch
 
 ### Objective
 Owner clarified VoteSmart was never in key provision — remove all NPAT dependency permanently and document replacement aggregation (official issues → Ballotpedia → CREC Said + roll-call Did).
@@ -27,7 +27,7 @@ Owner clarified VoteSmart was never in key provision — remove all NPAT depende
 ### Commits
 - `6a2cfba` — retire(VoteSmart): unwire NPAT from topic-positions; mark DEFUNCT
 - `af23fd2` — docs(handoff): record M-RETIRE-VOTESMART tip 6a2cfba
-- TIP_PLACEHOLDER — residual outlet fix + aggregation docs + backlog
+- b86b775 — residual outlet fix + aggregation docs + backlog
 
 ### Commands run (this session)
 - `npm run prebuild` → 0 (`/tmp/ledger-retire-vs-prebuild.log`)
@@ -52,7 +52,7 @@ Owner clarified VoteSmart was never in key provision — remove all NPAT depende
 - Replacement stack: `sync:official-issues-positions` · Ballotpedia via topic-positions · CREC `--full-depth` · `sync:votes-national`
 
 ### Open / next
-- Claude tip APPROVAL on exact TIP_PLACEHOLDER then merge
+- Claude tip APPROVAL on exact b86b775 then merge
 - Stale PR #83 (`cursor/m-retire-votesmart-channel-proof-70a6`) superseded by this branch — close after tip APPROVAL if desired
 - Deepen aggregation under IMP-POS-AGG-ALT (no new NPAT-like API)
 
@@ -60,7 +60,7 @@ Owner clarified VoteSmart was never in key provision — remove all NPAT depende
 
 ## Confront Claude — paste to Claude Code
 
-**M-RETIRE-VOTESMART tip:** approve exact **TIP_PLACEHOLDER** · VoteSmart DEFUNCT · no key ever · aggregation = official issues → Ballotpedia → CREC + votes · prebuild/build 0 · supersedes #83  
+**M-RETIRE-VOTESMART tip:** approve exact **b86b775** · VoteSmart DEFUNCT · no key ever · aggregation = official issues → Ballotpedia → CREC + votes · prebuild/build 0 · supersedes #83  
 **STOP:** tip APPROVAL before merge to main
 
 ---
