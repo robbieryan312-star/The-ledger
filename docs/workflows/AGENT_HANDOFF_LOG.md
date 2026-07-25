@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-25 — M-RETIRE-VOTESMART (COMPLETE · tip refresh)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS / COMPLETE on branch · awaiting tip APPROVAL  
-**Current state:** `cursor/m-retire-votesmart-70a6` · work tip **`b86b775`** · final tip = `git rev-parse --short origin/cursor/m-retire-votesmart-70a6` · tree clean · `npm run prebuild` **0** · `npm run build` **0** · voteSmartRetiredGuard **5/5** · supersedes stale PR #83 branch
+**Current state:** `cursor/m-retire-votesmart-70a6` · PR **#91** · work tip **`b86b775`** · final tip **`fc6fd4d`** · tree clean · `npm run prebuild` **0** · `npm run build` **0** · voteSmartRetiredGuard **5/5** · supersedes stale PR #83 branch
 
 ### Objective
 Owner clarified VoteSmart was never in key provision — remove all NPAT dependency permanently and document replacement aggregation (official issues → Ballotpedia → CREC Said + roll-call Did).
@@ -60,7 +60,7 @@ Owner clarified VoteSmart was never in key provision — remove all NPAT depende
 
 ## Confront Claude — paste to Claude Code
 
-**M-RETIRE-VOTESMART tip:** approve work **`b86b775`** · final tip = `git rev-parse origin/cursor/m-retire-votesmart-70a6` · VoteSmart DEFUNCT · no key ever · aggregation = official issues → Ballotpedia → CREC + votes · prebuild/build 0 · supersedes #83  
+**M-RETIRE-VOTESMART tip:** approve exact **`fc6fd4d`** (work `b86b775`) · PR #91 · VoteSmart DEFUNCT · no key ever · aggregation = official issues → Ballotpedia → CREC + votes · prebuild/build 0 · supersedes #83  
 **STOP:** tip APPROVAL before merge to main
 
 ---
