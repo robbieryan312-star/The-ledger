@@ -53,7 +53,7 @@ Diagnose ~96% CREC reject (not key-blocked); fix genuine over-reject (silent no_
 
 ## Confront Claude — paste to Claude Code
 
-**M-CREC-YIELD:** approve exact tip of `cursor/m-crec-yield-70a6` · statements 13→33 · saidDid 10→15/15 · no_topic drop eliminated · procedural rule unchanged · prebuild/build pending stamp · ⛔ your STAGE THREE
+**M-CREC-YIELD:** approve exact **`d137a12`** · PR (this branch) · statements 13→33 · saidDid 10→15/15 · no_topic drop eliminated · procedural rule unchanged · prebuild/build pending stamp · ⛔ your STAGE THREE
 
 ---
 
