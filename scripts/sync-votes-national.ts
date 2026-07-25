@@ -13,8 +13,9 @@
  * Run: npm run sync:votes-national
  * Full: npm run sync:votes-national -- --full
  * Full-depth (scoped only): npm run sync:votes-national -- --members S000033 --full --full-depth
- *   Removes the 30-vote display/collection cap for the scoped member(s) so the full
- *   congress-session roll-call window can be retained (M-ACQUIRE gold-standard path).
+ *   Removes the 30-vote display/collection cap and expands Senate LIS collection across
+ *   congresses 117–119 (sessions 1 and 2 each). Default (non-full-depth) stays congress 119.
+ *   Senate-only scoped runs proceed without CONGRESS_API_KEY (House skipped with warning).
  */
 import { config } from 'dotenv';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
@@ -57,6 +58,8 @@ const LEGISLATORS_FILE = path.join(projectRoot, 'lib', 'data', 'generated', 'cur
 const CHECKPOINT_FILE = '/tmp/ledger-sync-votes-national-checkpoint.json';
 
 const TARGET_CONGRESS = 119;
+/** Multi-congress window under `--full-depth` (sessions 1+2 each). Default stays 119 only. */
+const FULL_DEPTH_CONGRESSES = [119, 118, 117] as const;
 /** Default profile depth; raised under `--full-depth` (requires `--members`). */
 let VOTES_PER_MEMBER = 30;
 /** Collect window before finalize; raised under `--full-depth`. */
@@ -66,8 +69,12 @@ const PAGE_SIZE = 50;
 
 const IS_FULL = process.argv.includes('--full');
 const IS_FULL_DEPTH = process.argv.includes('--full-depth');
-/** Effectively uncapped for one congress session under `--full-depth`. */
+/** Effectively uncapped across the full-depth congress window. */
 const FULL_DEPTH_VOTE_CAP = 10_000;
+
+function congressesToScan(): number[] {
+  return IS_FULL_DEPTH ? [...FULL_DEPTH_CONGRESSES] : [TARGET_CONGRESS];
+}
 
 function parseMembersArg(argv: string[]): Set<string> | null {
   const idx = argv.indexOf('--members');
@@ -172,24 +179,26 @@ function toHouseVoteRecord(
 
 async function collectRecentHouseVotes(highWaterMark?: HighWaterMark): Promise<HouseVoteSummary[]> {
   const all: HouseVoteSummary[] = [];
-  for (const session of [2, 1]) {
-    const hwKey = `${TARGET_CONGRESS}-${session}`;
-    const hwRoll = highWaterMark?.houseMaxRoll?.[hwKey] ?? 0;
+  for (const congress of congressesToScan()) {
+    for (const session of [2, 1]) {
+      const hwKey = `${congress}-${session}`;
+      const hwRoll = highWaterMark?.houseMaxRoll?.[hwKey] ?? 0;
 
-    let offset = 0;
-    let reachedHighWater = false;
-    for (let page = 0; page < MAX_VOTE_PAGES; page += 1) {
-      const { votes, nextOffset } = await fetchHouseVoteList(TARGET_CONGRESS, session, PAGE_SIZE, offset);
-      for (const v of votes) {
-        if (!IS_FULL && hwRoll > 0 && v.rollCallNumber <= hwRoll) {
-          reachedHighWater = true;
-          break;
+      let offset = 0;
+      let reachedHighWater = false;
+      for (let page = 0; page < MAX_VOTE_PAGES; page += 1) {
+        const { votes, nextOffset } = await fetchHouseVoteList(congress, session, PAGE_SIZE, offset);
+        for (const v of votes) {
+          if (!IS_FULL && !IS_FULL_DEPTH && hwRoll > 0 && v.rollCallNumber <= hwRoll) {
+            reachedHighWater = true;
+            break;
+          }
+          all.push(v);
         }
-        all.push(v);
+        if (reachedHighWater || nextOffset == null || votes.length === 0) break;
+        offset = nextOffset;
+        await sleep(80);
       }
-      if (reachedHighWater || nextOffset == null || votes.length === 0) break;
-      offset = nextOffset;
-      await sleep(80);
     }
   }
   return all.sort((a, b) => {
@@ -296,56 +305,81 @@ async function syncSenateVotes(
 
   if (senators.length === 0) return collected;
 
-  let bioguideToLis = await bioguideToLisFromLocal();
+  const bioguideToLis = await bioguideToLisFromLocal();
   for (const sen of senators) {
     if (!bioguideToLis.has(sen.bioguideId)) {
       console.warn(`  ${sen.bioguideId}: no LIS id in local legislators snapshot`);
     }
   }
 
-  let menu: Awaited<ReturnType<typeof fetchSenateVoteMenu>>;
-  try {
-    menu = (await fetchSenateVoteMenu(TARGET_CONGRESS, 2)).sort((a, b) => b.voteNumber - a.voteNumber);
-  } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err);
-    fetchFailures.push({ chamber: 'senate', rollNumber: 0, error: `vote menu: ${msg}` });
-    console.warn(`  Senate vote menu fetch failed: ${msg}`);
-    return collected;
-  }
+  // Default: congress 119 session 2 only (recent window). Full-depth: 117–119 × sessions 1+2.
+  const congressSessions: Array<{ congress: number; session: number }> = IS_FULL_DEPTH
+    ? congressesToScan().flatMap((congress) =>
+        [2, 1].map((session) => ({ congress, session })),
+      )
+    : [{ congress: TARGET_CONGRESS, session: 2 }];
 
-  const hwKey = `${TARGET_CONGRESS}-2`;
-  const hwVote = highWaterMark?.senateMaxVote?.[hwKey] ?? 0;
+  console.log(
+    `  Senate LIS scan windows: ${congressSessions.map((w) => `${w.congress}-${w.session}`).join(', ')}`,
+  );
 
-  const filteredMenu = IS_FULL
-    ? menu
-    : menu.filter((item) => hwVote === 0 || item.voteNumber > hwVote);
-
-  console.log(`  ${filteredMenu.length} Senate roll calls to process (of ${menu.length} total, incremental: ${!IS_FULL})`);
-
-  for (const item of filteredMenu) {
-    const pending = senators.filter(
+  for (const { congress, session } of congressSessions) {
+    const pendingAtStart = senators.filter(
       (s) => (collected.get(s.bioguideId)?.length ?? 0) < MAX_SENATE_VOTES_COLLECT,
     );
-    if (pending.length === 0) break;
+    if (pendingAtStart.length === 0) break;
 
+    let menu: Awaited<ReturnType<typeof fetchSenateVoteMenu>>;
     try {
-      const roll = await fetchSenateRollCall(TARGET_CONGRESS, 2, item.voteNumber);
-      for (const sen of senators) {
-        const lis = bioguideToLis.get(sen.bioguideId);
-        if (!lis) continue;
-        const memberVote = roll.members.find((m) => m.lisMemberId === lis);
-        if (!memberVote) continue;
-        const list = collected.get(sen.bioguideId) ?? [];
-        if (list.length >= MAX_SENATE_VOTES_COLLECT) continue;
-        list.push(senateVoteToRecord(sen.bioguideId, roll, memberVote.voteCast));
-        collected.set(sen.bioguideId, list);
-      }
+      menu = (await fetchSenateVoteMenu(congress, session)).sort((a, b) => b.voteNumber - a.voteNumber);
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
-      fetchFailures.push({ chamber: 'senate', rollNumber: item.voteNumber, error: msg });
-      console.warn(`  skip Senate vote ${item.voteNumber}: ${msg}`);
+      fetchFailures.push({
+        chamber: 'senate',
+        rollNumber: 0,
+        error: `vote menu ${congress}-${session}: ${msg}`,
+      });
+      console.warn(`  Senate vote menu ${congress}-${session} fetch failed: ${msg}`);
+      continue;
     }
-    await sleep(80);
+
+    const hwKey = `${congress}-${session}`;
+    const hwVote = highWaterMark?.senateMaxVote?.[hwKey] ?? 0;
+
+    const filteredMenu =
+      IS_FULL || IS_FULL_DEPTH
+        ? menu
+        : menu.filter((item) => hwVote === 0 || item.voteNumber > hwVote);
+
+    console.log(
+      `  ${filteredMenu.length} Senate roll calls ${congress}-${session} to process (of ${menu.length} total, incremental: ${!(IS_FULL || IS_FULL_DEPTH)})`,
+    );
+
+    for (const item of filteredMenu) {
+      const pending = senators.filter(
+        (s) => (collected.get(s.bioguideId)?.length ?? 0) < MAX_SENATE_VOTES_COLLECT,
+      );
+      if (pending.length === 0) break;
+
+      try {
+        const roll = await fetchSenateRollCall(congress, session, item.voteNumber);
+        for (const sen of senators) {
+          const lis = bioguideToLis.get(sen.bioguideId);
+          if (!lis) continue;
+          const memberVote = roll.members.find((m) => m.lisMemberId === lis);
+          if (!memberVote) continue;
+          const list = collected.get(sen.bioguideId) ?? [];
+          if (list.length >= MAX_SENATE_VOTES_COLLECT) continue;
+          list.push(senateVoteToRecord(sen.bioguideId, roll, memberVote.voteCast));
+          collected.set(sen.bioguideId, list);
+        }
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        fetchFailures.push({ chamber: 'senate', rollNumber: item.voteNumber, error: msg });
+        console.warn(`  skip Senate ${congress}-${session} vote ${item.voteNumber}: ${msg}`);
+      }
+      await sleep(80);
+    }
   }
 
   for (const sen of senators) {
@@ -456,18 +490,28 @@ async function main(): Promise<void> {
     `Mode: ${IS_FULL || IS_FULL_DEPTH ? 'FULL refetch' : 'INCREMENTAL'}${IS_FULL_DEPTH ? ' + FULL-DEPTH (uncapped)' : ''}`,
   );
 
+  // House needs CONGRESS_API_KEY. Senate LIS is keyless — allow Senate-only scoped runs without abort.
+  const senateOnlyScoped = scopedRun && senators.length > 0 && houseMembers.length === 0;
   if (!isCongressConfigured()) {
-    console.error('CONGRESS_API_KEY not configured — aborting without changes.');
-    emitSyncSummary(
-      buildSyncSummary('sync-votes-national', {
-        status: 'fetch-failed',
-        failed: ['congress-api-key'],
-        checkpoint: CHECKPOINT_FILE,
-        log: '/tmp/ledger-sync-votes-scoped.log',
-        preservePrior: true,
-      }),
-    );
-    process.exit(1);
+    if (senateOnlyScoped) {
+      console.warn(
+        'CONGRESS_API_KEY not configured — skipping House; proceeding with Senate LIS (keyless).',
+      );
+    } else {
+      console.error(
+        'CONGRESS_API_KEY not configured — aborting without changes (full-corpus or House members in scope require the key).',
+      );
+      emitSyncSummary(
+        buildSyncSummary('sync-votes-national', {
+          status: 'fetch-failed',
+          failed: ['congress-api-key'],
+          checkpoint: CHECKPOINT_FILE,
+          log: '/tmp/ledger-sync-votes-scoped.log',
+          preservePrior: true,
+        }),
+      );
+      process.exit(1);
+    }
   }
 
   const existing = await readExistingVoteSnapshot();
@@ -600,8 +644,8 @@ async function main(): Promise<void> {
       note: scopedRun
         ? `Scoped refresh: ${processLegislators.length} member(s); merged into national snapshot (${legislators.length} total). ${
             IS_FULL_DEPTH
-              ? `Full-depth (uncapped up to ${FULL_DEPTH_VOTE_CAP}) roll-call positions for scoped member(s).`
-              : `Up to ${VOTES_PER_MEMBER} recent positions per chamber.`
+              ? `Full-depth (uncapped up to ${FULL_DEPTH_VOTE_CAP}) across congresses ${FULL_DEPTH_CONGRESSES.join(',')} sessions 1–2 for scoped member(s).`
+              : `Up to ${VOTES_PER_MEMBER} recent positions per chamber (congress ${TARGET_CONGRESS}).`
           }`
         : `Up to ${VOTES_PER_MEMBER} recent positions per chamber. House via Congress.gov when keyed; Senate via senate.gov LIS XML.`,
     },

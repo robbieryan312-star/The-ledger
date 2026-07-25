@@ -10,6 +10,63 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+---
+
+## HANDOFF 2026-07-25 — API KEYS WIRED (owner paste → .env.local)
+
+**From:** Cursor · **To:** Claude · **Verdict:** KEYS LIVE this session (gitignored `.env.local` only)
+
+### verify:agent-keys
+8/12 SET — FEC, CONGRESS, CENSUS, DATA_GOV, GOVINFO, LEGISCAN, OPENSTATES, NEWSAPI  
+EMPTY: BEA, COURTLISTENER, VOTESMART, SAM
+
+### Live probes (no values logged)
+- GovInfo CREC collections → **HTTP 200** (count 5994)
+- FEC → **HTTP 200**
+- Congress.gov → **HTTP 200** after User-Agent on `congressClient` (bare fetch was CF 1010, not invalid key)
+- `CONGRESS_API_KEY` paste had accidental space — stored contiguous
+
+### CREC re-run (key now present)
+`sync:topic-positions -- --member S000033 --full-depth` → search=825 html=341 procedural-skip=459 statements=8  
+Union into profile: **no new URL stems** vs prior 11 (still saidDid **10**/15). Mega-bundle S000033 insert **reverted** (freeze: 442 ids).
+
+### Security
+Keys were pasted in chat — owner should rotate when convenient. Values only in gitignored `.env.local` (never committed).
+
+---
+
+## HANDOFF 2026-07-25 — M-CORPUS-DEPTH (S000033)
+
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · awaiting tip APPROVAL  
+**Current state:** `cursor/m-corpus-depth-70a6` · work tip = **`719f99b`** · branch HEAD = `git rev-parse origin/cursor/m-corpus-depth-70a6` · base `2f09ec9` · prebuild **0** · build **0**
+
+### Objective
+Widen S000033 vote corpus across Senate 117–119; rebuild saidDid; expand endorsements; measure before→after.
+
+### Verdict / outcome
+**PASS** (with honest-gap notes): votes **201→2508** spanning s117/s118/s119; saidDid **8→10**/15; statements **11** preserved (`GOVINFO_API_KEY` empty — CREC sync skipped, no wipe); endorsements **3→7**; profile dir **375099→3721954** bytes; votes sync wall **1256.5s**; prebuild **12.803s** · build AFTER **47.674s** (exit 0); BEFORE build wall **not measured** (`/usr/bin/time` missing).
+
+### Delivered
+1. `scripts/sync-votes-national.ts` — `--full-depth` scans congresses 117–119 × sessions 1–2; Senate-only scoped runs proceed without `CONGRESS_API_KEY`
+2. `npm run sync:votes-national -- --members S000033 --full --full-depth` → `/tmp/ledger-sync-votes-corpus.log` (2514 network calls, 0 failures)
+3. `npm run refresh:migrated-votes` → S000033 votes.json **2508**
+4. CREC: `sync:topic-positions -- --member S000033 --full-depth` → GovInfo key length 0; prior statements.json kept
+5. `scripts/apply-sanders-corpus-depth.ts` — refresh votes, union statements, rebuild saidDid, sync manifest (no controversies)
+6. Endorsements: kept Biden + NNU + DSA; added Bowman, Cori Bush, Summer Lee, Mamdani (verified URLs). **AOC 2018 not added** — Sanders did not endorse her pre-primary (Politico)
+7. Docs: `BATCH_SCALING.md` improvement row · `IMPROVEMENT_BACKLOG.md` IMP-POS-SHAPE · this handoff
+
+### Blockers
+- `GOVINFO_API_KEY` / `CONGRESS_API_KEY` EMPTY — CREC depth + House path unavailable; Senate LIS keyless path used
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-CORPUS-DEPTH tip:** approve work **`719f99b`** · final tip = `git rev-parse --short origin/cursor/m-corpus-depth-70a6` · votes 2508 (117–119) · saidDid 10/15 honest-gap · CREC key empty · prebuild 0 · build 0  
+**STOP:** tip APPROVAL before merge
+
+---
+
 ## HANDOFF 2026-07-25 — MERGE #85 + #86 recorded
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGED to main · tip unchanged (handoff-only conflict resolve)
@@ -25,56 +82,9 @@ Conflict resolve: `AGENT_HANDOFF_LOG.md` only — UI work `ca4ac86` + positions 
 
 ---
 
-## Confront Claude — paste to Claude Code
-
-**#85 merge tip:** `1d5dadc` · **#86 merge tip:** `8e14b2c` (resolve commit follows if tip shifts)  
-**Next:** M-NEWS-DIVERSIFY + M-CORPUS-DEPTH concurrent · then BERNIE RENDER-READY after both approved+merged
-
----
-
 ## HANDOFF 2026-07-25 — M-UI #68 rebase (merged)
 
 **Tip:** `8e14b2c` · work `ca4ac86` · drawer @1280 **1206px** / panel 1208 · ratio 0.998
-
----
-
-## HANDOFF 2026-07-25 — M-IMPROVELOG + M-POSITIONS-SANDERS (merged)
-
-**Tip:** `1d5dadc` · S000033 positions **filled** · 11 official stances · sanders.senate.gov/issues/
-
----
-
-## HANDOFF 2026-07-25 — M-GUARD-COMPLIANCE ⛔ STOP
-
-**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
-**Current state:** `cursor/m-guard-compliance-70a6` · tip = **`2ef3220`** · `rm -rf .next && npm run prebuild` **0** · `npm run build` **0**
-
-### Delivered
-1. **Build-gated guard** `scripts/__tests__/collectionImprovementGuard.test.ts` (+ pure evaluator `lib/data/collectionImprovementCompliance.ts`)
-   - Diff vs `merge-base(HEAD, origin/main|main)` + working tree
-   - Collection data = `lib/data/generated/{profiles,countyMap,slices}/**` data files + `newsNational.json` (not `.ts` accessors)
-   - Same diff MUST touch `docs/workflows/BATCH_SCALING.md`; skip when no collection-data change
-   - Append-only fixture: known-good pair / known-bad data-without-row / known-skip
-2. Wired into `prebuild` (`test:collection-improvement`) + `guards.yml` (fetch-depth: 0)
-3. **STAGE THREE checklist** added under `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` §9 (literal `[x]`/`[n/a]` block)
-4. Prebuild count 22 → **23** (AGENT_INDEX, PROGRESS, docsConsistency fixture)
-
-**IN FLIGHT (untouched):** M-IMPROVELOG · M-POSITIONS-SANDERS · M-UI rebase  
-**PARK:** #76 · m8a · m7a–d · #83 retire/channel-proof pending Claude tip
-
----
-
-## Confront Claude — paste to Claude Code
-
-**M-GUARD-COMPLIANCE tip:** approve exact **`2ef3220`** (work) · final tip = `git rev-parse origin/cursor/m-guard-compliance-70a6` · prebuild 0 · build 0  
-**Guard:** collection data → BATCH_SCALING.md mechanical · STAGE THREE checklist in §9  
-**STOP:** tip APPROVAL; IN FLIGHT unchanged (each STAGE THREE)
-
----
-
-## HANDOFF 2026-07-25 — MERGE B→C→D resolve
-
-**From:** Cursor · **To:** Claude · **Verdict:** B **MERGED** `0af3ac7` · C **MERGED** tip `4a0e368` → main `eeacc58` · D merge-resolve next · prebuild/build pending
 
 ---
 

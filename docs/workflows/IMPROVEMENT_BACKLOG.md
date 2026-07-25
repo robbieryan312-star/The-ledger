@@ -44,6 +44,7 @@ External truths both agents must share (dashboard drift is **owner-only** to fix
 | IMP-011 | Guards reconciled on main (prebuild count) | P2 | cursor | **done** | historical |
 | IMP-013 | #20+#21 merged to main | P2 | cursor | **done** | historical |
 | IMP-RENDER-CI | Render CI flake — `waitForSelector` fix | P2 | cursor | **done** | historical |
+| IMP-POS-SHAPE | Platform-positions channel: sanders.senate.gov parser is Elementor-shape-specific; scaling to other senators needs per-shape adapters or a generic extractor | P2 | cursor | open | M-CORPUS-DEPTH / M-POSITIONS-SANDERS |
 
 ---
 

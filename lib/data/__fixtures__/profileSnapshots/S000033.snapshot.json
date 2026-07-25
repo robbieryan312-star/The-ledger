@@ -35,8 +35,12 @@
   ],
   "saidDidLines": [
     {
+      "said": "some of my Republican colleagues held a press conference today, criticizing President Biden for his decision to stop…",
+      "did": "Voted Yea — S.J.Res."
+    },
+    {
       "said": "I support the nomination of Moshe Marvit to be a Member of the Federal Mine Safety and Health Review Commission.",
-      "did": "Voted Nay — PN851-8: Confirmation: Kara Marie Westercamp, of Virginia, to be a Judge of the U.S. Court of International…"
+      "did": "Voted Nay — PN999-5: Confirmation: Antonio M. Pozos, of Pennsylvania, to be U.S. District Judge for the Eastern…"
     },
     {
       "said": "let me thank Senator Wyden for his outstanding work as the former chairman of the Finance Committee and now as the…",
@@ -45,10 +49,6 @@
     {
       "said": "the time is long overdue for Congress to get its priorities right.",
       "did": "Voted Nay — S. 4784: Motion to Invoke Cloture: Motion to Proceed to S. 4784 — An original bill to authorize…"
-    },
-    {
-      "said": "some of my Republican colleagues held a press conference today, criticizing President Biden for his decision to stop…",
-      "did": "Voted Yea — S.J.Res."
     },
     {
       "said": "in the United States today, 42 million Americans are drowning in $1.7 trillion in student debt--42 million Americans,…",
@@ -65,9 +65,25 @@
     {
       "said": "let me be as clear as I can be.",
       "did": "Voted Yea — Motion to Waive All Applicable Budgetary Discipline Re: Sanders Amdt."
+    },
+    {
+      "said": "I want to say a few words about what I consider to be one of the most important issues not only facing our country but…",
+      "did": "Voted Yea — Blackburn Amdt."
+    },
+    {
+      "said": "we are at the beginning of the most profound technological revolution in world history, a revolution which will bring…",
+      "did": "Voted Yea — PN1555: Motion to Discharge: David M. Uhlmann to be an Assistant Administrator of the Environmental…"
     }
   ],
   "voteRows": [
+    "Nay — Confirmation: Antonio M. Pozos, of Pennsylvania, to be U.S. District Judge for…",
+    "Nay — Confirmation: Daniel Mack Traynor, of North Dakota, to United States Circuit…",
+    "Yea — Motion to Discharge S.J.Res.",
+    "Nay — Motion to Invoke Cloture: Daniel Mack Traynor to be U.S. Circuit Judge for the…",
+    "Nay — Motion to Invoke Cloture: Antonio M. Pozos to be U.S. District Judge for the…",
+    "Nay — Confirmation: Michael C. Martin, of Michigan, to be U.S. District Judge for the…",
+    "Nay — Motion to Invoke Cloture: Michael C. Martin to be U.S. District Judge for the…",
+    "Nay — Confirmation: Benjamin M. Flowers, of Ohio, to be U.S. Circuit Judge for the…",
     "Nay — Confirmation: Kara Marie Westercamp, of Virginia, to be a Judge of the U.S.…",
     "Not Voting — Motion to Invoke Cloture: Benjamin M. Flowers to be U.S. Circuit Judge for the…",
     "Yea — Motion to Proceed to S.J. Res.",
@@ -89,15 +105,7 @@
     "Nay — Confirmation: Darrell Owens, of Pennsylvania, to be U.S. Representative to the…",
     "Yea — Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644…",
     "Nay — Confirmation: George Holding, of North Carolina, to be United States Director…",
-    "Yea — Motion to Invoke Cloture: Motion to Concur in the House Amendment to the Senate…",
-    "Yea — Motion to Discharge: S.Res.",
-    "Nay — Motion to Invoke Cloture: George Holding to be United States Director of the…",
-    "Nay — Confirmation: Michelle Steel, of California, to be Ambassador of the United…",
-    "Nay — Motion to Invoke Cloture: Michelle Steel to be Ambassador of the United States…",
-    "Not Voting — Motion to Proceed to House Message to Accompany H.R. 6644",
-    "Not Voting — Motion to Discharge S.J.Res.",
-    "Not Voting — Motion to Proceed to S.J.Res.",
-    "Not Voting — Confirmation: Justin D. Smith, of Missouri, to be U.S. Circuit Judge for the…"
+    "Yea — Motion to Invoke Cloture: Motion to Concur in the House Amendment to the Senate…"
   ],
   "newsHeadlines": [
     "Bernie Sanders calls on Graham Platner to withdraw from Senate race amid sexual assault claims",
