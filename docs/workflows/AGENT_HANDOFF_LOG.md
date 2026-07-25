@@ -13,13 +13,13 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-25 — M-CORPUS-DEPTH (S000033)
 
 **From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · awaiting tip APPROVAL  
-**Current state:** `cursor/m-corpus-depth-70a6` · base `2f09ec9` · tree dirty→commit this session · prebuild/build pending in tip commit
+**Current state:** `cursor/m-corpus-depth-70a6` · tip = **`7bde75d`** · base `2f09ec9` · prebuild **0** · build **0**
 
 ### Objective
 Widen S000033 vote corpus across Senate 117–119; rebuild saidDid; expand endorsements; measure before→after.
 
 ### Verdict / outcome
-**PASS** (with honest-gap notes): votes **201→2508** spanning s117/s118/s119; saidDid **8→10**/15; statements **11** preserved (`GOVINFO_API_KEY` empty — CREC sync skipped, no wipe); endorsements **3→7**; profile dir **375099→3721428** bytes; votes sync wall **1256.5s**; prebuild **12.803s** · build AFTER **47.674s** (exit 0); BEFORE build wall **not measured** (`/usr/bin/time` missing).
+**PASS** (with honest-gap notes): votes **201→2508** spanning s117/s118/s119; saidDid **8→10**/15; statements **11** preserved (`GOVINFO_API_KEY` empty — CREC sync skipped, no wipe); endorsements **3→7**; profile dir **375099→3721954** bytes; votes sync wall **1256.5s**; prebuild **12.803s** · build AFTER **47.674s** (exit 0); BEFORE build wall **not measured** (`/usr/bin/time` missing).
 
 ### Delivered
 1. `scripts/sync-votes-national.ts` — `--full-depth` scans congresses 117–119 × sessions 1–2; Senate-only scoped runs proceed without `CONGRESS_API_KEY`
@@ -37,7 +37,7 @@ Widen S000033 vote corpus across Senate 117–119; rebuild saidDid; expand endor
 
 ## Confront Claude — paste to Claude Code
 
-**M-CORPUS-DEPTH tip:** approve `cursor/m-corpus-depth-70a6` HEAD after push · votes 2508 (117–119) · saidDid 10/15 honest-gap · CREC key empty  
+**M-CORPUS-DEPTH tip:** approve exact **`7bde75d`** · votes 2508 (117–119) · saidDid 10/15 honest-gap · CREC key empty · prebuild 0 · build 0  
 **STOP:** tip APPROVAL before merge
 
 ---
