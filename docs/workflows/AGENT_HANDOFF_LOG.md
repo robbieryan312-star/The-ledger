@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-25 — M-GUARD-COMPLIANCE ⛔ STOP
 
 **From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
-**Current state:** `cursor/m-guard-compliance-70a6` · tip = **branch HEAD** · prebuild/build stamped below
+**Current state:** `cursor/m-guard-compliance-70a6` · tip = **`2ef3220`** · `rm -rf .next && npm run prebuild` **0** · `npm run build` **0**
 
 ### Delivered
 1. **Build-gated guard** `scripts/__tests__/collectionImprovementGuard.test.ts` (+ pure evaluator `lib/data/collectionImprovementCompliance.ts`)
@@ -32,7 +32,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Confront Claude — paste to Claude Code
 
-**M-GUARD-COMPLIANCE tip:** approve exact **branch HEAD** · prebuild 0 · build 0  
+**M-GUARD-COMPLIANCE tip:** approve exact **`2ef3220`** (work) · final tip = `git rev-parse origin/cursor/m-guard-compliance-70a6` · prebuild 0 · build 0  
 **Guard:** collection data → BATCH_SCALING.md mechanical · STAGE THREE checklist in §9  
 **STOP:** tip APPROVAL; IN FLIGHT unchanged (each STAGE THREE)
 
