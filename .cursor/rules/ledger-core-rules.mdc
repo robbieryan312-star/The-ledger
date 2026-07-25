@@ -604,6 +604,9 @@ discipline: `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6. Do not restate §11 here
   campaign/PAC press releases (→ `'alleged'` only), anything without a URL + date.
 - Journalism quotes are **verbatim, in quotes, attributed, dated, linked** — never paraphrased.
 - **Honest gaps:** show `"No verified record available"`. Never fabricate or paraphrase to fill.
+- **Source exhaustion (binding):** before an honest-gap for any category, exhaust the ordered
+  source route in `SOURCE_LOOKUP.md` / `OBJECTIVE_SOURCES.md`. Do not honest-gap while a higher
+  route is untried; a failed higher route is UNVERIFIED/`fetch-failed`, not a silent skip.
 - **A "Said" record is a spoken floor remark (e.g. opens "Mr. SANDERS. Mr. President, ...") or
   a verbatim sourced media quote — NEVER amendment/resolution submission boilerplate, clerk
   procedural text, or senator-list fragments**, even if verbatim and attributed.

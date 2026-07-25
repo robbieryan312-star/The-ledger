@@ -48,6 +48,15 @@ sub-files** — they live in this file's key matrix and in per-state pipeline do
 6. **Key security:** this file records env-var NAMES and SET/EMPTY status only.
    Key VALUES live exclusively in gitignored `.env.local`, Cursor Runtime Secrets, and
    GitHub Actions secrets. A key value in any committed file or log is a critical defect.
+7. **SOURCE EXHAUSTION (binding — 2026-07-25):** before recording an honest-gap for a data
+   category, exhaust the ordered route in SOURCE_LOOKUP / this file (higher-priority sources
+   first). Do **not** mark honest-gap while a higher route remains untried or unproven-failed.
+   A failed fetch on a higher route is `fetch-failed` / UNVERIFIED — never silent empty and
+   never a skip straight to a lower route's absence.
+8. **CHANNEL PROOF BEFORE ROUTING (binding — owner 2026-07-22):** any NEW source/channel must
+   have one proven end-to-end acquisition on a known-good control (usable qualified rows in the
+   correct destination file + guards green) **before** it is written into routing docs. Unproven
+   channels stay out of SOURCE_LOOKUP / this matrix (same status as VoteSmart deferred/unobtainable).
 
 ---
 
@@ -67,7 +76,8 @@ sub-files** — they live in this file's key matrix and in per-state pipeline do
 | Cost of living (components/metros) | BEA Data API | `BEA_API_KEY` | EMPTY (owner CAPTCHA pending) | `ingest:bea-rpp-fl` → `FLORIDA_DATA.md` | FRED keyless CSV covers the all-items state index |
 | Labor/employment (state, county, metro CPI) | BLS API | `BLS_API_KEY` (optional) | keyless OK | `ingest:bls-*` → `FLORIDA_DATA.md` | Keyless works at low volume |
 | Court opinions | CourtListener | `COURTLISTENER_API_KEY` (optional) | keyless OK | `ingest:courts-fl` → `FLORIDA_DATA.md` | Keyless works for basic use |
-| Position surveys | Vote Smart | `VOTESMART_API_KEY` | EMPTY | — | Deferred — Ballotpedia + CREC substitute |
+| Platform stances (official issues pages) | Member `officialWebsite` `/issues/` | none | — | `sync:official-issues-positions` | Exhaust → Ballotpedia → campaign if qualifies |
+| Position surveys | Vote Smart | `VOTESMART_API_KEY` | EMPTY | — | Deferred — official issues + Ballotpedia + CREC substitute |
 | — RETIRED — | ProPublica Congress API | `PROPUBLICA_CONGRESS_KEY` | do not use | — | API retired upstream |
 
 **Currently unobtainable (stop re-attempting; honest gap in UI):** Senate eFD stock trades
@@ -88,7 +98,7 @@ substitute), SAM.gov entity details (identity verification wall). See `PROGRESS.
 | FRED (St. Louis Fed) | Official-series mirror (BEA RPP, economic series), keyless CSV | none |
 | IRS (published brackets) | Federal income-tax schedules (computed-from-published-tables) | none |
 | GovInfo / GPO | Congressional Record (CREC) | `GOVINFO_API_KEY` |
-| senate.gov / house.gov / state .gov | Office resolution, portraits (Bioguide), governor portraits (flgov.com) | none |
+| senate.gov / house.gov / state .gov | Office resolution, portraits (Bioguide), governor portraits (flgov.com); **member `/issues/` platform stances** (`sync:official-issues-positions` — proven 2026-07-25 on S000033) | none |
 | C-SPAN | Gavel-to-gavel video — the unedited floor record; primary citation for spoken quotes | YouTube Data API, channel `UCb-oTHQsEPvS4FCTLG3IFkA` |
 | Federal/state courts (opinion documents) | The rulings themselves (linked via CourtListener) | none |
 
@@ -101,7 +111,7 @@ substitute), SAM.gov entity details (identity verification wall). See `PROGRESS.
 | ProPublica (journalism + datastores) | none | Investigative + machine-readable data; Nonprofit Explorer API (1.8M nonprofits incl. 501(c)(4)s) | propublica.org/datastore · projects.propublica.org/nonprofits/api |
 | GovTrack | none | Legislative data, member stats | govtrack.us |
 | Voteview | none (academic) | DW-NOMINATE ideology scores | voteview.com |
-| Ballotpedia | none | Encyclopedia of officials/elections | ballotpedia.org |
+| Ballotpedia | none | Encyclopedia of officials/elections; **secondary** platform stances after official `/issues/` (control filled on M000355; Sanders page poverty) | ballotpedia.org |
 | OpenSecrets | none | Donor/lobbying context; revolving-door + dark-money databases | opensecrets.org/revolving · /outsidespending |
 | CourtListener (Free Law Project) | none | All federal opinions, PACER dockets, judge profiles — tier per Ledger precedent: aggregator = nonpartisan; linked opinion doc = official | api: courtlistener.com/api/rest/v3/ (search `?q={name}&type=r`) |
 | PolitiFact | none (methodology) | Fact-checks, 3-editor review; per-politician feeds | politifact.com/rss/people/{slug}/ |

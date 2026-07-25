@@ -10,6 +10,43 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-25 — M-IMPROVELOG + M-POSITIONS-SANDERS ⛔ STOP
+
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
+**Current state:** `cursor/m-improvelog-positions-sanders-70a6` · tip = **branch HEAD** · prebuild/build pending stamp
+
+### MERGE recorded
+| Item | Approved tip | Merge SHA on main |
+|------|--------------|-------------------|
+| M-GUARD-COMPLIANCE PR #84 | `1b801f7` | **`1b801f7`** (FF onto main) |
+
+### M-IMPROVELOG
+- Backfilled BATCH_SCALING improvement rows (process steps 1–11 + M-POSITIONS own row)
+- Header note: backfilled 2026-07-25; `collectionImprovementGuard` enforces contemporaneous rows from PR #84 onward
+
+### M-POSITIONS-SANDERS — PASS
+- Code path: `npm run sync:official-issues-positions -- --member S000033` → `fetchSenateOfficialIssuesPositions`
+- Destination: `lib/data/generated/profiles/S000033/positions.json` · **11** qualified · status **`filled`** · tier **`official`**
+- URL: `https://www.sanders.senate.gov/issues/` · `asOf` acquisition date
+- Topics: healthcare 2 · climate 1 · defense-veterans 2 · education 1 · civil-liberties 1 · economy-taxes 3 · technology 1
+- Secondary: Ballotpedia page poverty (unchanged); `berniesanders.com/issues` → homepage redirect — **does not qualify**
+- Routing: official issues FIRST → Ballotpedia → campaign if qualifies (SOURCE_LOOKUP, OBJECTIVE_SOURCES, sourceCatalog, PILOT row 6)
+- Source-exhaustion rule added to OBJECTIVE_SOURCES § HOW AGENTS USE + core-rules §3
+- Manifest `positions: filled`; golden snapshot updated; own BATCH_SCALING improvement row
+
+**Next:** M-UI #68 rebase (separate STAGE THREE) · then BERNIE RENDER-READY after 2+3 merged  
+**PARK:** #76 · m8a · m7a–d · #83 retire/channel-proof still open if not merged
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-IMPROVELOG + M-POSITIONS-SANDERS tip:** approve exact **branch HEAD** · prebuild 0 · build 0  
+**S000033 positions:** **filled** · 11 official stances · sanders.senate.gov/issues/  
+**#84 merge SHA:** `1b801f7` · **STOP:** tip APPROVAL; then M-UI rebase STAGE THREE
+
+---
+
 ## HANDOFF 2026-07-25 — M-GUARD-COMPLIANCE ⛔ STOP
 
 **From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  

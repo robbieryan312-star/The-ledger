@@ -35,7 +35,7 @@ export const LOCKED_PROFILE_ORG_POSITIONS_STATUS_KNOWN_GOOD: Record<
   string,
   { positions: string; orgVoteLinks: string }
 > = {
-  S000033: { positions: 'honest-gap', orgVoteLinks: 'honest-gap' },
+  S000033: { positions: 'filled', orgVoteLinks: 'honest-gap' },
   O000172: { positions: 'filled', orgVoteLinks: 'honest-gap' },
   M000355: { positions: 'filled', orgVoteLinks: 'honest-gap' },
   M001184: { positions: 'honest-gap', orgVoteLinks: 'honest-gap' },
@@ -44,13 +44,16 @@ export const LOCKED_PROFILE_ORG_POSITIONS_STATUS_KNOWN_GOOD: Record<
   P000197: { positions: 'honest-gap', orgVoteLinks: 'honest-gap' },
 };
 
-/** PILOT_PROFILE_CHECKLIST.md row 5 & 6 for S000033 must not claim "done" when manifest is honest-gap. */
+/**
+ * PILOT_PROFILE_CHECKLIST.md rows that must not claim "**done**" while manifest is honest-gap.
+ * Row 6 (positions) removed 2026-07-25 after M-POSITIONS-SANDERS restored filled via official issues.
+ * Append-only — do not re-add row 6 unless positions regresses to honest-gap.
+ */
 export const PILOT_CHECKLIST_S000033_ROWS_KNOWN_GOOD = {
   pilotBioguideId: 'S000033',
   checklistPath: 'PILOT_PROFILE_CHECKLIST.md',
   rows: [
     { rowNum: 5, mustNotContain: '**done**', manifestCategory: 'orgVoteLinks' as const },
-    { rowNum: 6, mustNotContain: '**done**', manifestCategory: 'positions' as const },
   ],
 };
 

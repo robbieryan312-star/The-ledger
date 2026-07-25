@@ -37,7 +37,7 @@ Pipeline commands: `docs/FLORIDA_DATA.md`.
 | Roll-call votes (**Did**) | Congress.gov + Senate LIS XML | Voting Record | `sync:votes-national` → `data/national/votes/congress-votes.json` |
 | Campaign totals | OpenFEC | Money & Donors | `sync:fec-national` → `data/national/fec/congress-finance.json` |
 | Itemized donors / PACs (**Phase 17**) | OpenFEC Schedule A | Follow the Money · Topic context | `sync:fec-schedule-a` → `schedule-a.json` |
-| Platform / survey text (**Said**) | Ballotpedia scrape | Track Record · Topic Record | `sync:topic-positions` → `topicPositions.json` |
+| Platform / survey text (**Said**) | **1.** Official member `/issues/` pages (`official`) · **2.** Ballotpedia (`nonpartisan`) · **3.** Campaign site only if it qualifies | Track Record · Topic Record | `sync:official-issues-positions` → `profiles/{id}/positions.json` (migrated); Ballotpedia via `sync:topic-positions` → mega-bundle / profile apply |
 | Floor speech verbatim (**Said**) | GovInfo Congressional Record | Track Record · `statements[]` | Extend `sync:topic-positions` (key SET) |
 | Journalism quote (**Said**) | Approved outlets (curated) | Track Record promise diff | Featured / future curated JSON |
 | Said→Did pairing | topicPositions + voteTopicId | Track Record | `buildSaidDidDiffsFromTopicPositions` |

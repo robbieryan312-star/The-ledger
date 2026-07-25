@@ -1,28 +1,121 @@
 {
   "bioguideId": "S000033",
-  "status": "honest-gap",
-  "note": "DIAGNOSED honest-gap (Batch C 2026-07-22): Ballotpedia Bernie_Sanders has no Political_positions/Issues/survey-response sections \u2014 Campaign_themes empty; scrape yields only disqualified text (vote restatements, bio boilerplate, citation cruft, election fluff). Not a filter false-negative of usable platform stances (contrast McConnell filled Ballotpedia stances). VoteSmart NPAT skipped \u2014 VOTESMART_API_KEY EMPTY by design (KEYS.md Deferred; not an undeclared missing secret). No alternate primary platform/survey source wired (CREC = Said statements, not platform). Mega-bundle intentionally omits migrated S000033; do not re-insert disqualified text.",
+  "status": "filled",
+  "note": "M-POSITIONS 2026-07-25: Official issues page via sync:official-issues-positions (https://www.sanders.senate.gov/issues/) — 11 qualified stance(s), tier official. Ballotpedia secondary (page poverty for this member). Campaign site berniesanders.com/issues redirects to homepage — does not qualify.",
   "byTopic": {
+    "abortion": {
+      "platformPositions": []
+    },
     "technology": {
+      "platformPositions": [
+        {
+          "text": "More than 70 years ago, the Supreme Court declared that a free press is not only “essential to the condition of a free society,” but also that “the widest possible dissemination of information from diverse and antagonistic sources is essential to the welfare of the public.” Unfortunately, the diversity of information sources has greatly dwindled in traditional media, as a few enormous multinational media conglomerates have consolidated ownership of more and more television networks, cable channels, publishing, radio and Internet services and sites. Senator Sanders has been a leader in the fight to stop media consolidation and to strengthen the public interest obligations of broadcasters. In the Senate, he is working hard to make sure that we hold all media companies responsible for providing content that serves the public and offers a diverse range of opinions.",
+          "source": "sanders.senate.gov",
+          "url": "https://www.sanders.senate.gov/issues/",
+          "tier": "official",
+          "asOf": "2026-07-25"
+        }
+      ]
+    },
+    "public-safety": {
       "platformPositions": []
     },
     "healthcare": {
+      "platformPositions": [
+        {
+          "text": "Medicare is the most popular health care program in America. Fifty-five years ago, the United States took an important step towards universal health care by passing the Medicare program into law. Guaranteeing comprehensive health benefits for Americans over 65 has proven to be enormously successful and popular. Now is the time to improve and expand Medicare for all. Right now, the United States is the only major nation in the world that does not provide health care for every man, woman and child as a right. We spend almost twice as much per capita on health care as any other major country, yet our health outcomes in terms of life expectancy, infant mortality and disease prevention are not nearly as good. Last year, one out of four Americans skipped needed medical care because they could not afford it.",
+          "source": "sanders.senate.gov",
+          "url": "https://www.sanders.senate.gov/issues/",
+          "tier": "official",
+          "asOf": "2026-07-25"
+        },
+        {
+          "text": "Senator Sanders believes every American should have access to safe, effective, and affordable prescription medications. Senator Sanders is fighting to lower costs for consumers by bringing greater transparency and competition to the health care system. In 2014, he and the late Representative Elijah Cummings launched an investigation into 14 pharmaceutical companies after reports of skyrocketing prices for some generic drugs. As a result of that investigation, the lawmakers introduced S. 1364, the Medicaid Generic Drug Price Fairness Act, which became law at the end of 2015. This law requires generic drug companies to provide rebates to the Medicaid program if drug prices rise faster than the rate of inflation. The provision is estimated to save taxpayers $1 billion over ten years.",
+          "source": "sanders.senate.gov",
+          "url": "https://www.sanders.senate.gov/issues/",
+          "tier": "official",
+          "asOf": "2026-07-25"
+        }
+      ]
+    },
+    "immigration": {
       "platformPositions": []
     },
     "climate": {
-      "platformPositions": []
+      "platformPositions": [
+        {
+          "text": "As a member of both the Senate Environment and Public Works Committee and the Energy and Natural Resources Committee , Senator Sanders has long fought for progressive energy policies, strong environmental protection, and aggressively reducing carbon emissions to address global climate change. Climate Change Virtually the entire scientific community agrees that human activity is a significant driver of global warming. The United Nations’ Intergovernmental Panel on Climate Change warns that if we do not drastically reduce greenhouse gas emissions, the already-disastrous effects of global warming will get much worse – including crop failures, increasing hunger and illness, more extreme weather, and extinction of species. As the wealthiest country on the planet and the second largest emitter of greenhouse gases, the United States needs to lead the fight against global climate change.",
+          "source": "sanders.senate.gov",
+          "url": "https://www.sanders.senate.gov/issues/",
+          "tier": "official",
+          "asOf": "2026-07-25"
+        }
+      ]
     },
     "defense-veterans": {
-      "platformPositions": []
+      "platformPositions": [
+        {
+          "text": "Ending Endless War In the nearly two decades since the 9/11 terrorist attacks, the United States has made a series of costly blunders that have not only weakened our democracy but also undermined our leadership. Senator Sanders believes we need a foreign policy that focuses on core U.S. interests, clarifies our commitment to democratic values both at home and abroad, and prioritizes diplomacy and working collectively with allies to address shared security concerns instead of military force. Afghanistan Afghanistan is the longest war in American history After nearly two decades, thousands of American service members killed, tens of thousands more wounded, and hundreds of billions of dollars spent, it is past time to bring home the American servicemen and women still serving in Afghanistan.",
+          "source": "sanders.senate.gov",
+          "url": "https://www.sanders.senate.gov/issues/",
+          "tier": "official",
+          "asOf": "2026-07-25"
+        },
+        {
+          "text": "As a longtime member and former Chairman of the Senate Committee on Veterans’ Affairs, Senator Sanders believes that we, as a nation, have a moral obligation to provide the best quality care and benefits to the veterans who have put their lives on the line in service to this country. Vermont Veterans Vermont veterans and service members seeking assistance with their benefits or interested in information about local events and resources, please visit our Vermont Veterans page . Health Care Senator Sanders worked closely with the late Senator John McCain to enact the Veterans’ Access, Choice and Accountability Act of 2014, the most comprehensive veterans’ legislation in decades. Senator Sanders understood that in order for the VA to meet its promise to our veterans, Congress needed to act to provide the VA with the resources it needed.",
+          "source": "sanders.senate.gov",
+          "url": "https://www.sanders.senate.gov/issues/",
+          "tier": "official",
+          "asOf": "2026-07-25"
+        }
+      ]
     },
     "education": {
-      "platformPositions": []
+      "platformPositions": [
+        {
+          "text": "In an increasingly competitive global economy, we must ensure every student has the opportunity to pursue a quality education. Senator Sanders has worked hard to lessen the burden of tuition and student loans, implement the Every Student Succeeds Act (ESSA), and to create an innovative loan forgiveness program by which loans are forgiven for college graduates who work in public service – including nurses, teachers, and law enforcement officers. Higher Education For the first time in American history, the total amount of student loan debt now exceeds the amount of credit card debt, totaling more than a trillion dollars. More than two-thirds of college students who graduated in 2019 had outstanding loans, each owed an average of $28,950 in debt. In Vermont, 60 percent of college graduates have student debt, averaging $30,651 .",
+          "source": "sanders.senate.gov",
+          "url": "https://www.sanders.senate.gov/issues/",
+          "tier": "official",
+          "asOf": "2026-07-25"
+        }
+      ]
     },
     "civil-liberties": {
-      "platformPositions": []
+      "platformPositions": [
+        {
+          "text": "It is no secret that our country has a long history of deeply entrenched, horrendous racism. Today, systemic racism still spans every part of the country. People in our nation who experience the pain of systemic racism in the form of social, economic, and environmental injustice have known what it is like to face multiple ongoing crises at the same time for far too long. Women, differently abled, and LGBTQ+ people of color—whose contributions to historic social rights movements have often been pivotal but under-recognized—encounter racism in unique ways that deserve particular attention in our shared effort for change. It is past time for the United States to truly be an anti-racist, anti-discriminatory country that urgently addresses the inequalities Black, Indigenous, Latino, Asian-American, and other non-majority ethnic groups endure daily.",
+          "source": "sanders.senate.gov",
+          "url": "https://www.sanders.senate.gov/issues/",
+          "tier": "official",
+          "asOf": "2026-07-25"
+        }
+      ]
     },
     "economy-taxes": {
-      "platformPositions": []
+      "platformPositions": [
+        {
+          "text": "Sen. Sanders believes that small, family farms are fundamentally important for Vermont and America as a whole. In his years representing the Green Mountain State, Sen. Sanders has worked to help Vermont’s struggling dairy industry, support sustainable and organic farming, and ensure good nutrition for every American. Moreover, Sen Sanders believes that, in the richest country in the history of the world, hunger is a political choice. We need to increase nutrition assistance and ensure all kids have healthy school meals. Dairy Sen. Sanders believes that dairy is a vital part of the fabric of Vermont’s communities and a central part of the state’s rural economy. In fact, dairy accounts for $2.2 billion of economic activity and 80% of agricultural land in Vermont.",
+          "source": "sanders.senate.gov",
+          "url": "https://www.sanders.senate.gov/issues/",
+          "tier": "official",
+          "asOf": "2026-07-25"
+        },
+        {
+          "text": "Senator Sanders is proud to be the lead sponsor introducing the Raise the Wage Act to raise the minimum wage to $15 an hour by 2024. Someone working full time should not live in poverty, but that is too often the case. In fact, one in nine workers are paid wages that can leave them in poverty even though they work full time. It is unacceptable that millions of families do not know how they would get by if their car broke down, a relative became sick, or they experienced some other financial emergency. The current federal minimum wage of $7.25 is a starvation wage, it needs to be raised to $15 an hour and indexed to inflation. Senator Sanders is also fighting to implement policies that protect and expand worker’s rights throughout the country, including the right to form unions and collectively bargain for better wages and policies in the workplace.",
+          "source": "sanders.senate.gov",
+          "url": "https://www.sanders.senate.gov/issues/",
+          "tier": "official",
+          "asOf": "2026-07-25"
+        },
+        {
+          "text": "Social Security is one of the most successful government programs in the history of this great country. For more than 85 years, Social Security has succeeded in keeping millions of seniors, widows and people with disabilities out of poverty. Before Social Security, about half of America’s seniors lived in poverty. Today, fewer than 10 percent live below the poverty line, and more than 69 million Americans receive Social Security benefits. In order to protect and expand these essential benefits, Sen. Bernie Sanders has introduced the Expand Social Security Act. The legislation would expand Social Security benefits by $2,400 a year and ensure Social Security is fully funded for the next 75 years by applying the Social Security payroll tax on all income above $250,000.",
+          "source": "sanders.senate.gov",
+          "url": "https://www.sanders.senate.gov/issues/",
+          "tier": "official",
+          "asOf": "2026-07-25"
+        }
+      ]
     }
   }
 }

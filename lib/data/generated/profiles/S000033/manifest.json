@@ -1,13 +1,13 @@
 {
   "bioguideId": "S000033",
   "politicianId": "bernie-sanders",
-  "asOf": "2026-07-22",
+  "asOf": "2026-07-25",
   "categories": {
     "header": "filled",
     "votes": "filled",
     "finance": "filled",
     "statements": "filled",
-    "positions": "honest-gap",
+    "positions": "filled",
     "saidDid": "filled",
     "legislation": "filled",
     "orgVoteLinks": "honest-gap",
