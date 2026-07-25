@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-25 — PRE-INGEST = Cursor absolute-compliance gate
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS · on PR **#91**  
-**Current state:** `cursor/m-retire-votesmart-70a6` · PR **#91** · tip = `git rev-parse --short origin/cursor/m-retire-votesmart-70a6`
+**Current state:** `cursor/m-retire-votesmart-70a6` · PR **#91** · tip **`6d2a89d`**
 
 ### Objective
 Owner: ensure pre-ingest **and every Cursor-directed rule/guideline/instruction** are included in the gate and followed to absolute undeniable compliance.
@@ -42,7 +42,7 @@ Owner: ensure pre-ingest **and every Cursor-directed rule/guideline/instruction*
 
 ## Confront Claude — paste to Claude Code
 
-**PRE-INGEST absolute compliance + M-RETIRE-VOTESMART:** approve PR **#91** tip = `git rev-parse origin/cursor/m-retire-votesmart-70a6` · gate lists full Cursor corpus · EMPTY≠debt · VoteSmart DEFUNCT  
+**PRE-INGEST absolute compliance + M-RETIRE-VOTESMART:** approve exact **`6d2a89d`** · PR **#91** · gate lists full Cursor corpus · EMPTY≠debt · VoteSmart DEFUNCT · prebuild/build 0  
 **STOP:** tip APPROVAL before merge
 
 ---
