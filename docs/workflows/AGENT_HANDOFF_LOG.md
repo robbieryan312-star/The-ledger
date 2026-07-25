@@ -10,56 +10,40 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
-## HANDOFF 2026-07-25 — M-NEWS-FIX (name-token corroboration)
+## HANDOFF 2026-07-25 — MERGE #93 NEWS + #94 GOVINFO
 
-**From:** Cursor · **To:** Claude · **Verdict:** PASS (local) · ⛔ tip APPROVAL · do NOT merge  
-**Current state:** `cursor/m-news-fix-70a6` · tip **`d088f33`** (`d088f33901c146e0d633644583b2d18e1a18583f`) · code fix `337bfd5` · pushed
+**From:** Cursor · **To:** Claude · **Verdict:** MERGED to main · tips unchanged (handoff-only conflict)
 
-### Objective
-Exclude member-name tokens from news corroboration `significantTokens`; require ≥2 shared NON-NAME tokens for verification. Append-only fixtures. Re-run S000033 corroboration.
+### MERGE recorded
+| Item | Approved tip | On main |
+|------|--------------|---------|
+| M-NEWS-FIX PR #93 | `8e8bc58` | **`8e8bc58`** (FF) then merge commit below |
+| M-GOVINFO-FIX PR #94 | `f748f9d` | merge includes **`f748f9d`** |
 
-### Verdict / outcome
-**PASS** — fixtures assert unrelated name-only pair `isVerified=false`, same-event non-name pair `true`; S000033 verified **0 → 0** (12 items; mostly single-outlet Guardian — name-only false-positive path guarded by fixture; do NOT tune to preserve 9). prebuild 0; `next build` 0.
-
-### Acceptance evidence
-```
-S000033 verified before→after: 0 → 0 (total 12)
-name tokens excluded: bernard, bernie, sanders
-npm run sync:news-rss -- --members S000033 → EXIT 0 (wrote 12, status=filled)
-npx tsx --test scripts/__tests__/newsCorroboration.test.ts → 5/5 pass
-npm run prebuild → EXIT 0
-npx next build → EXIT 0
-```
-
-### Files touched
-| Path | Action | What changed |
-|------|--------|--------------|
-| `lib/data/newsCorroboration.ts` | modified | `tokensFromMemberNames`; exclude name tokens; ≥2 non-name shared |
-| `scripts/lib/memberNewsMatching.ts` | modified | `memberNewsNameTokens` via `memberNewsMatchNames` |
-| `scripts/sync-news-rss.ts` | modified | pass name tokens into `applyNewsCorroboration` |
-| `scripts/sync-news-national.ts` | modified | pass name tokens on profile merge |
-| `lib/data/memberProfile.ts` | modified | roster name tokens at read-time corroboration |
-| `lib/data/__fixtures__/newsCorroboration.fixture.ts` | modified | append NAME_ONLY_UNRELATED + SAME_EVENT_NON_NAME; strengthen DISTINCT |
-| `scripts/__tests__/newsCorroboration.test.ts` | modified | assert false/true for new fixtures |
-| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this handoff |
-
-### Commands run (this session)
-- `git fetch origin main && git checkout -B cursor/m-news-fix-70a6 origin/main`
-- `npm run sync:news-rss -- --members S000033` → EXIT 0
-- `npx tsx --test scripts/__tests__/newsCorroboration.test.ts` → EXIT 0
-- `npm run prebuild` → EXIT 0
-- `npx next build` → EXIT 0
-- `git push -u origin cursor/m-news-fix-70a6` → EXIT 0 (tip corrected after branch-drift)
+Conflict resolve: `AGENT_HANDOFF_LOG.md` only — NEWS + GOVINFO work both retained.
 
 ### Open / next
-- Claude tip APPROVAL on exact SHA `04c7bff` / `04c7bffe5121f66b8b087fcd69e0597f80e74ecf` (fix commit `337bfd5`)
-- Do NOT merge without APPROVAL
+- M-VOTESMART-PURGE owner-overrule v2 (zero tombstone + generic matrix guard)
+- M-CREC-YIELD (highest-value Bernie)
+- Independent audit after PURGE + CREC-YIELD merge
 
 ---
 
 ## Confront Claude — paste to Claude Code
 
-**M-NEWS-FIX tip:** approve exact **`d088f33`** (`d088f33901c146e0d633644583b2d18e1a18583f`) · code fix `337bfd5` · branch `cursor/m-news-fix-70a6` · S000033 verified **0→0**/12 · fixtures NAME_ONLY false + SAME_EVENT true · prebuild/build 0 · ⛔ do NOT merge  
+**#93 + #94 MERGED** · NEWS `8e8bc58` · GOVINFO `f748f9d` · next: PURGE v2 + CREC-YIELD
+
+---
+
+## HANDOFF 2026-07-25 — M-GOVINFO-FIX (merged)
+
+Statements **11→13** · Said→Did **8→10**/15 · tip `f748f9d` · key chain GOVINFO→DATA_GOV→FEC→CONGRESS
+
+---
+
+## HANDOFF 2026-07-25 — M-NEWS-FIX (merged)
+
+Verified **0→0**/12 · name-token exclusion · tip `8e8bc58` · fixtures NAME_ONLY false / SAME_EVENT true
 
 ---
 

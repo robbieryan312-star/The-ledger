@@ -23,6 +23,8 @@ import { fetchApprovedMediaStatementsForMember } from './lib/approvedMediaQuotes
 import { isProceduralCrecText } from './lib/crecProceduralFilter';
 import { crecFloorSpeechOpenerRegex } from './lib/crecOpener';
 import { canRefreshSaidDidLinks, mergeSaidDidLinksForRefresh } from './lib/topicPositionsPreserve';
+import { resolveGovInfoApiKey } from './lib/govinfoApiKey';
+import { isCeremonialCrecRemark } from '../lib/ceremonialCrecFilter';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
@@ -571,6 +573,10 @@ async function processCrecGranule(
 
     const excerpt = extractCrecSpeechExcerpt(plain, leg);
     if (!excerpt) return { entry: null, htmlFetched: true, skippedProcedural: false };
+    // Recognition / tribute floor remarks are not policy Said (quality dilution).
+    if (isCeremonialCrecRemark(excerpt)) {
+      return { entry: null, htmlFetched: true, skippedProcedural: false };
+    }
 
     const topicId = mapCrecTextToTopic(excerpt) ?? mapCrecTextToTopic(result.title ?? '');
     if (!topicId) return { entry: null, htmlFetched: true, skippedProcedural: false };
@@ -834,9 +840,14 @@ async function main(): Promise<void> {
   config({ path: path.join(projectRoot, '.env.local') });
 
   const votesmartConfigured = false;
-  const govinfoKey = (process.env.GOVINFO_API_KEY ?? process.env.DATA_GOV_API_KEY ?? '').trim();
+  // api.data.gov family: GOVINFO → DATA_GOV → FEC → CONGRESS (log NAME only, never value)
+  const { key: govinfoKey, sourceEnvVar: govinfoKeySource } = resolveGovInfoApiKey();
   console.log('VoteSmart: RETIRED (ignored)');
-  console.log('GovInfo key length:', govinfoKey.length);
+  console.log(
+    govinfoKeySource
+      ? `GovInfo key: supplied by ${govinfoKeySource} (length ${govinfoKey.length})`
+      : 'GovInfo key: unresolved (GOVINFO_API_KEY → DATA_GOV_API_KEY → FEC_API_KEY → CONGRESS_API_KEY all empty)',
+  );
 
   const memberFilter = parseMemberFilter();
   // core-rules §5: agent runs must scope; a full-corpus run must be opted in explicitly.

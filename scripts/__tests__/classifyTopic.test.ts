@@ -43,6 +43,20 @@ describe('classifyTextToRecordTopicId', () => {
     assert.strictEqual(classifyTextToRecordTopicId(text), 'healthcare');
   });
 
+  it('classifies "healthcare system" + cancer CREC excerpt as healthcare (not health≠healthcare)', () => {
+    const text =
+      'Mr. SANDERS. Mr. President, in the midst of a broken and dysfunctional healthcare system, ' +
+      'we must do everything that we can to find new cures and treatments for pediatric cancer.';
+    assert.strictEqual(classifyTextToRecordTopicId(text), 'healthcare');
+  });
+
+  it('classifies government shutdown / paycheck CREC excerpt as economy-taxes', () => {
+    const text =
+      'Mr. SANDERS. Mr. President, we are now in the 38th day of a government shutdown. ' +
+      'That means that Federal employees all over this country who have to feed their families are not getting paychecks.';
+    assert.strictEqual(classifyTextToRecordTopicId(text), 'economy-taxes');
+  });
+
   it('classifies short ambiguous text as legislation (fallback)', () => {
     const text = 'Proceeded to consider';
     assert.strictEqual(classifyTextToRecordTopicId(text), 'legislation');

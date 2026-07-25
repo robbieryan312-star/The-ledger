@@ -9,20 +9,21 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { getPoliticianByBioguide } from '../lib/data/allPoliticians';
-import { getNationalCongressVotesByBioguide } from '../lib/data/nationalCongressVotes';
+import { getPoliticianByBioguide } from '../../lib/data/allPoliticians';
+import { getNationalCongressVotesByBioguide } from '../../lib/data/nationalCongressVotes';
 import {
   buildCrecSaidDidLinks,
   crecUrlStem,
   MAX_SAID_DID_LINKS_PER_MEMBER,
-} from '../lib/data/saidDidVoteContext';
-import { stripCrecFloorOpener } from '../lib/data/crecDisplayText';
-import type { TopicStatementEntry } from '../lib/data/topicPositions';
-import { syncProfileManifestFromDisk } from './lib/profileManifestSync';
-import { isProceduralCrecText } from './lib/crecProceduralFilter';
+} from '../../lib/data/saidDidVoteContext';
+import { stripCrecFloorOpener } from '../../lib/data/crecDisplayText';
+import type { TopicStatementEntry } from '../../lib/data/topicPositions';
+import { syncProfileManifestFromDisk } from '../lib/profileManifestSync';
+import { isProceduralCrecText } from '../lib/crecProceduralFilter';
+import { isCeremonialCrecRemark } from '../../lib/ceremonialCrecFilter';
 
 const BIOGUIDE = 'S000033';
-const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const profileDir = path.join(projectRoot, 'lib', 'data', 'generated', 'profiles', BIOGUIDE);
 const topicPositionsPath = path.join(projectRoot, 'lib', 'data', 'generated', 'topicPositions.json');
 const memberDeepPath = path.join(projectRoot, 'lib', 'data', 'generated', 'members', `${BIOGUIDE}.json`);
@@ -30,6 +31,7 @@ const memberDeepPath = path.join(projectRoot, 'lib', 'data', 'generated', 'membe
 function cleanStatement(s: TopicStatementEntry): TopicStatementEntry | null {
   if (s.tier === 'official' && /\/CREC-/i.test(s.url ?? '')) {
     if (isProceduralCrecText(s.title ?? '')) return null;
+    if (isCeremonialCrecRemark(s.title ?? '')) return null;
   }
   if (s.tier === 'official' && /\/CREC-/i.test(s.url ?? '') && !s.displayText) {
     return { ...s, displayText: stripCrecFloorOpener(s.title), verbatim: s.verbatim ?? true };

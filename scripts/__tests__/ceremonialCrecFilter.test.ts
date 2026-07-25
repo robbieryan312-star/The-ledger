@@ -17,6 +17,12 @@ describe('ceremonial CREC remark filter', () => {
     assert.equal(isCeremonialCrecRemark('I rise to honor our Person of the Year award winner.'), true);
     assert.equal(isCeremonialCrecRemark('We pay tribute to the men and women who served.'), true);
     assert.equal(isCeremonialCrecRemark('I congratulate the championship team from Kentucky.'), true);
+    assert.equal(
+      isCeremonialCrecRemark(
+        'Mr. SANDERS. Mr. President, I rise today to thank Tess Kuenning, president and chief executive officer of the Bi-State Primary Care Association for her contributions.',
+      ),
+      true,
+    );
   });
 
   test('passes substantive floor policy remarks', () => {
