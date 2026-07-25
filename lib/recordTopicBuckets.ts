@@ -39,7 +39,10 @@ export const RECORD_TOPIC_BUCKETS: TopicBucketDef[] = [
   {
     id: 'healthcare',
     label: 'Healthcare',
-    keywords: ['health', 'medicaid', 'medicare', 'hospital', 'prescription', 'drug', 'insurance', 'aca', 'obamacare', 'mental health', 'opioid', 'nursing'],
+    keywords: [
+      'health', 'healthcare', 'medicaid', 'medicare', 'hospital', 'prescription', 'drug',
+      'insurance', 'aca', 'obamacare', 'mental health', 'opioid', 'nursing', 'cancer', 'patient',
+    ],
   },
   {
     id: 'immigration',
@@ -73,7 +76,8 @@ export const RECORD_TOPIC_BUCKETS: TopicBucketDef[] = [
     id: 'civil-liberties',
     label: 'Civil Liberties & Regulation',
     keywords: [
-      'civil rights', 'civil liberties', 'voting rights', 'discrimination', 'fisa', 'surveillance',
+      'civil rights', 'civil liberties', 'voting rights', 'voter', 'election', 'discrimination',
+      'fisa', 'surveillance',
       'speech', 'censorship', 'lgbt', 'equality', 'judiciary', 'judicial', 'nomination', 'confirm',
       'justice', 'court', 'judge', 'district judge', 'circuit judge', 'attorney general',
       'ambassador', 'constitutional',
@@ -88,7 +92,7 @@ export const RECORD_TOPIC_BUCKETS: TopicBucketDef[] = [
       'affordable housing', 'zoning', 'eviction', 'hud', 'antitrust', 'monopoly', 'corporate power',
       'home price', 'home ownership', 'homeownership', 'home buyer', 'first-time home buyer',
       'file taxes', 'filing taxes', 'tax filing', 'tax day', 'file their taxes', 'pay their taxes',
-      'irs', 'spending bill', 'omnibus',
+      'irs', 'spending bill', 'omnibus', 'shutdown', 'government shutdown', 'paycheck',
     ],
   },
   {

@@ -7,6 +7,7 @@
  * the Federal Register's executive/agency documents. Each item dated and linked.
  */
 import { fetchJson, loadEnvLocal, writeFloridaSnapshotPreservingLive } from '../../lib/ingest-utils';
+import { resolveGovInfoApiKey } from '../../lib/govinfoApiKey';
 
 const GOVINFO_SOURCE = {
   name: 'GovInfo (U.S. GPO)',
@@ -35,7 +36,8 @@ interface GovInfoSearch {
 
 async function main(): Promise<void> {
   await loadEnvLocal();
-  const key = (process.env.GOVINFO_API_KEY || process.env.DATA_GOV_API_KEY || process.env.FEC_API_KEY || '').trim();
+  // api.data.gov family: GOVINFO → DATA_GOV → FEC → CONGRESS (log NAME only, never value)
+  const { key, sourceEnvVar } = resolveGovInfoApiKey();
   const asOf = new Date().toISOString().slice(0, 10);
   const fetchedAt = new Date().toISOString();
   const errors: string[] = [];
@@ -43,7 +45,17 @@ async function main(): Promise<void> {
 
   if (!key) {
     const { action, outFile } = await writeFloridaSnapshotPreservingLive('govinfo', 'florida-legislative-docs.json', {
-      meta: { source: GOVINFO_SOURCE, asOf, fetchedAt, count: 0, stateCode: 'FL', fetchedLive: false, errors: ['No api.data.gov key configured'], note: 'No record on file — set DATA_GOV_API_KEY (api.data.gov key).' },
+      meta: {
+        source: GOVINFO_SOURCE,
+        asOf,
+        fetchedAt,
+        count: 0,
+        stateCode: 'FL',
+        fetchedLive: false,
+        errors: ['No api.data.gov key configured'],
+        note:
+          'No record on file — set GOVINFO_API_KEY or DATA_GOV_API_KEY (api.data.gov family; FEC_API_KEY / CONGRESS_API_KEY also accepted as fallback).',
+      },
       records: [],
     });
     console.warn(
@@ -53,6 +65,7 @@ async function main(): Promise<void> {
     );
     return;
   }
+  console.log(`GovInfo key: supplied by ${sourceEnvVar} (length ${key.length})`);
 
   try {
     const data = await fetchJson<GovInfoSearch>(`https://api.govinfo.gov/search?api_key=${encodeURIComponent(key)}`, {

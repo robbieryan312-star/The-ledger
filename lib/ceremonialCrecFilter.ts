@@ -13,6 +13,8 @@ const CEREMONIAL_PATTERNS: RegExp[] = [
   /\bin recognition of\b/i,
   /\brecognize(?:s|d)? (?:an intern|a constituent|the service of)\b/i,
   /\ban intern in (?:my|his|her|the|our)\b/i,
+  /** Floor thank-you / recognition of a named individual — not a policy Said. */
+  /\brise(?:s)? today to thank\b/i,
 ];
 
 export function isCeremonialCrecRemark(text: string): boolean {
