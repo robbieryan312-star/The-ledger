@@ -1,0 +1,46 @@
+{
+  "channel": "ballotpedia-platform-stances",
+  "bioguideId": "M000355",
+  "asOf": "2026-07-25",
+  "codePath": "scripts/sync-topic-positions.ts#fetchBallotpediaPositions",
+  "destination": "lib/data/generated/profiles/M000355/positions.json",
+  "verdict": "PASS",
+  "count": 5,
+  "items": [
+    {
+      "topicId": "defense-veterans",
+      "text": "McConnell also shepherded the biggest year-over-year increase in defense funding in 15 years, ending President Obama’s dangerous military cuts and providing a pay raise for troops. As Majority Leader, McConnell’s support has led to hundreds of millions of dollars for projects at Fort Knox, Fort Campbell and the Bluegrass Army Depot.",
+      "url": "https://ballotpedia.org/Mitch_McConnell",
+      "tier": "nonpartisan",
+      "asOf": "2026-07-25"
+    },
+    {
+      "topicId": "education",
+      "text": "And while the pro-hemp provision will open new doors, McConnell made sure Southeast Kentucky Community and Technical College wasn’t forced to close theirs. When SKCTC nearly lost eligibility for federal student loan and financial aid programs, McConnell secured a provision allowing the school to file an appeal to the Department of Education – which was ultimately granted – so it can stay open. McConnell also secured a provision to protect Berea College from an excise tax imposed on large private college endowments that threatened to reduce the number of scholarships it could offer low-income students in Appalachia.",
+      "url": "https://ballotpedia.org/Mitch_McConnell",
+      "tier": "nonpartisan",
+      "asOf": "2026-07-25"
+    },
+    {
+      "topicId": "civil-liberties",
+      "text": "After Justice Antonin Scalia died during a presidential election, McConnell made the consequential decision to let the American people decide who they wanted to appoint the next Supreme Court justice. Accordingly, the Senate confirmed Justice Neil Gorsuch’s nomination following President Trump’s election. Last fall, McConnell also led Senate Republicans through the shameful intimidation tactics of the far-left and their mainstream media allies to confirm Justice Brett Kavanaugh.",
+      "url": "https://ballotpedia.org/Mitch_McConnell",
+      "tier": "nonpartisan",
+      "asOf": "2026-07-25"
+    },
+    {
+      "topicId": "civil-liberties",
+      "text": "Under McConnell’s leadership, the United States Senate has fundamentally transformed the federal judiciary by confirming pro-Constitution judges at a clip typically reserved for the first Saturday in May. Additionally, McConnell prioritized the confirmation of a record 30 circuit courts judges, including three Kentuckians in President Trump’s first two years. He also led the confirmations of 53 district court judges, three of whom are Kentuckians.",
+      "url": "https://ballotpedia.org/Mitch_McConnell",
+      "tier": "nonpartisan",
+      "asOf": "2026-07-25"
+    },
+    {
+      "topicId": "economy-taxes",
+      "text": "McConnell steered a tax package which helped create an estimated 1.5 million new jobs across the country, along with higher wages, bigger bonuses, and “the hottest job market in half a century.” McConnell’s work on the successful Republican push to rewrite the tax code for the first time in more than 30 years continues to yield tremendous benefits for Kentucky families.",
+      "url": "https://ballotpedia.org/Mitch_McConnell",
+      "tier": "nonpartisan",
+      "asOf": "2026-07-25"
+    }
+  ]
+}

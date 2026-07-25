@@ -12,7 +12,8 @@ export type CatalogStatus =
   | 'pilot' // proven on one member (S000033); scale pending
   | 'candidate' // worth wiring; key or login may be required
   | 'reference' // bulk/scrape/no-key; not national-profile wired yet
-  | 'deferred'; // explicitly skipped — alternative documented
+  | 'deferred' // explicitly skipped — alternative documented
+  | 'retired'; // permanently unwired / defunct — must not re-key
 
 export interface SourceCatalogEntry {
   id: string;
@@ -201,10 +202,11 @@ export const SOURCE_CATALOG: SourceCatalogEntry[] = [
     keyRequired: false,
     lookFor: ['Political positions section', 'key votes on profile', 'platform/survey text by topic keyword', 'Candidate Connection blocks'],
     destinationView: 'Track Record (Said) · Topic Record platform positions',
-    outputPath: 'lib/data/generated/topicPositions.json',
+    outputPath: 'lib/data/generated/profiles/{bioguideId}/positions.json',
     syncCommand: 'npm run sync:topic-positions',
     agentPriority: 1,
-    notes: '442/537 with platform text. Not verbatim quotes unless in quotation marks on page — label accordingly.',
+    notes:
+      'Platform-stance route: member-page Political positions scrape via fetchBallotpediaPositions + isDisqualifiedPlatformPosition. **proven 2026-07-25 on M000355** → profiles/M000355/positions.json. Migrated members write profile dest (not mega-bundle). S000033 remains honest-gap (page has no usable stances).',
   },
   {
     id: 'topic-positions-sync',
@@ -219,7 +221,7 @@ export const SOURCE_CATALOG: SourceCatalogEntry[] = [
     outputPath: 'lib/data/generated/topicPositions.json',
     syncCommand: 'npm run sync:topic-positions -- --member S000033',
     agentPriority: 1,
-    notes: 'Merges Ballotpedia + national votes. VoteSmart NPAT removed from critical path.',
+    notes: 'Merges Ballotpedia + national votes. VoteSmart NPAT RETIRED/DEFUNCT — never call.',
   },
   {
     id: 'govinfo-crec',
@@ -465,21 +467,22 @@ export const SOURCE_CATALOG: SourceCatalogEntry[] = [
     notes: 'TERTIARY — FL raw snapshot (`ingest:news-fl`) only; profile News tabs use RSS → GDELT first (AGENT_INDEX §3). Plan 426-limited for broad national use.',
   },
 
-  // ── Deferred (documented alternatives) ───────────────────────────────────
+  // ── Retired / deferred (documented alternatives) ─────────────────────────
   {
     id: 'votesmart',
     name: 'Vote Smart / NPAT',
     url: 'https://justfacts.votesmart.org',
     sourceTier: 'nonpartisan',
     category: 'positions',
-    status: 'deferred',
-    keyRequired: true,
+    status: 'retired',
+    keyRequired: false,
     keyVar: 'VOTESMART_API_KEY',
     lookFor: ['NPAT survey answers by topic', 'candidateId'],
-    destinationView: 'Was: Track Record stated position',
+    destinationView: 'Was: Track Record stated position — DO NOT USE',
     agentPriority: 99,
-    notes: 'Application/membership required; bot 403 on web.',
-    deferredReason: 'Gated access — not worth blocking pipeline.',
+    notes:
+      'RETIRED/DEFUNCT 2026-07-25 — permanently unwired (gated NPAT / bot 403). Do not re-add key or sync path. Platform stances: Ballotpedia (channel-proof required) + GovInfo CREC Said.',
+    deferredReason: 'Retired — same status as ProPublica Congress API.',
     replaces: 'ballotpedia + govinfo-crec',
   },
   {

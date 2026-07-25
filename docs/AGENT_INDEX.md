@@ -79,7 +79,7 @@ in `docs/OBJECTIVE_SOURCES.md`. This runbook is the quick index into both.
 | **Floor speech (Said)** | `npm run sync:topic-positions -- --member <id>` | `generated/profiles/{id}/statements.json` | GovInfo CREC (`official`), `GOVINFO_API_KEY` |
 | **News** | **primary:** `npm run sync:news-rss -- --members <id>` → `profiles/{id}/news.json`; **national/secondary:** `npm run sync:news-national` | `generated/profiles/{id}/news.json` (+ shared `articleCache.json`) | **Approved-outlet RSS registry FIRST** (no key) → GDELT DOC API (no key) → NewsAPI only if `NEWSAPI_KEY` plan is upgraded (currently 426-limited). Media-tier needs 2+ independent outlets or it shows unverified. |
 | **Stock trades** | `npm run sync:stock-trades -- --members <id>` | `generated/profiles/{id}/trades.json` | House PTR (`official`); Senate eFD blocked (HTTP 503) → honest `fetch-failed` |
-| **Platform / positions** | `npm run sync:topic-positions` | `generated/profiles/{id}/positions.json` | Ballotpedia (`nonpartisan`); honest-gap when absent |
+| **Platform / positions** | `npm run sync:topic-positions` / `npm run prove:ballotpedia-platform -- --member <id>` | `generated/profiles/{id}/positions.json` | Ballotpedia (`nonpartisan`) — **proven 2026-07-25 on M000355**; honest-gap when absent |
 | **Topic legislation** | `npm run ingest:member -- --bioguide <id>` | `generated/members/{id}.json` | Congress.gov API v3 (`official`) |
 | **State economic (FL)** | see `docs/FLORIDA_DATA.md` | `generated/slices/*.json`, `data/florida/…` | Census ACS + BLS + BEA (`official`) |
 

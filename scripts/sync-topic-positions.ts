@@ -1,6 +1,6 @@
 /**
- * sync-topic-positions.ts — Ballotpedia platform positions, VoteSmart NPAT stated
- * positions, and Said→Did vote correlation per topic bucket.
+ * sync-topic-positions.ts — Ballotpedia platform positions and Said→Did vote correlation per topic bucket.
+ * VoteSmart NPAT is RETIRED/DEFUNCT — never call api.votesmart.org.
  *
  * Output: lib/data/generated/topicPositions.json
  * Run: npm run sync:topic-positions
@@ -8,7 +8,7 @@
 import { config } from 'dotenv';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import type { SourceTier, VoteChoice, VoteRecord } from '../lib/types';
 import { RECORD_TOPIC_BUCKETS, voteCongressGovUrl, voteTopicId, classifyTextToRecordTopicId } from '../lib/data/profileRecordByTopic';
 import { truncateAtSentenceBoundary } from '../lib/data/displaySummary';
@@ -20,6 +20,7 @@ import { fetchApprovedMediaStatementsForMember } from './lib/approvedMediaQuotes
 import { isProceduralCrecText } from './lib/crecProceduralFilter';
 import { crecFloorSpeechOpenerRegex } from './lib/crecOpener';
 import { canRefreshSaidDidLinks, mergeSaidDidLinksForRefresh } from './lib/topicPositionsPreserve';
+import { isDisqualifiedPlatformPosition } from '../lib/data/sourceIntegrity';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
@@ -28,9 +29,10 @@ const LEGISLATORS_FILE = path.join(OUT_DIR, 'currentLegislators.json');
 const NATIONAL_VOTES_FILE_PATH = NATIONAL_VOTES_FILE;
 const CHECKPOINT_FILE = '/tmp/sync-topic-positions-checkpoint.json';
 
-const VOTESMART_BASE = 'https://api.votesmart.org';
 const BALLOTPEDIA_BASE = 'https://ballotpedia.org';
-const VOTESMART_DELAY_MS = 300;
+/** @deprecated VoteSmart RETIRED/DEFUNCT — do not re-add api.votesmart.org. */
+const VOTESMART_RETIRED = true as const;
+void VOTESMART_RETIRED;
 const REQUEST_TIMEOUT_MS = 20_000;
 const MAX_PLATFORM_PER_TOPIC = 3;
 const MAX_SAID_DID_LINKS = 3;
@@ -470,7 +472,8 @@ interface BallotpediaResult {
   connected: boolean;
 }
 
-async function fetchBallotpediaPositions(
+/** Exported for M-CHANNEL-PROOF / profile-dest apply — same scrape path as batch sync. */
+export async function fetchBallotpediaPositions(
   leg: LegislatorRow,
   asOf: string,
 ): Promise<BallotpediaResult> {
@@ -502,7 +505,9 @@ async function fetchBallotpediaPositions(
   for (const bucket of topicBuckets) {
     const matched = positionTexts
       .filter((t) => textMatchesKeyword(t, bucket.keywords))
-      .filter((t) => !isMisattributedPlatformText(t, leg));
+      .filter((t) => !isMisattributedPlatformText(t, leg))
+      .filter((t) => !isDisqualifiedPlatformPosition(t))
+      .filter((t) => classifyTextToRecordTopicId(t) === bucket.id);
     if (matched.length === 0) continue;
     byTopic.set(
       bucket.id,
@@ -518,95 +523,7 @@ async function fetchBallotpediaPositions(
   return { byTopic, reached: true, connected: true };
 }
 
-async function votesmartFetch(
-  method: string,
-  params: Record<string, string | number>,
-  key: string,
-): Promise<Record<string, unknown>> {
-  const qs = new URLSearchParams({ key, o: 'JSON' });
-  for (const [k, v] of Object.entries(params)) {
-    qs.set(k, String(v));
-  }
-  await sleep(VOTESMART_DELAY_MS);
-  return fetchJson<Record<string, unknown>>(`${VOTESMART_BASE}/${method}?${qs.toString()}`);
-}
-
-async function findVoteSmartCandidateId(leg: LegislatorRow, key: string): Promise<number | null> {
-  const officeId = leg.chamber === 'senate' ? 6 : 5;
-  try {
-    const data = await votesmartFetch('Candidates.getByOfficeState', {
-      officeId,
-      stateId: leg.stateCode,
-    }, key);
-    const candidates = normalizeArray(
-      (data.candidateList as { candidate?: VoteSmartCandidate | VoteSmartCandidate[] } | undefined)?.candidate,
-    );
-
-    const firstLower = leg.firstName.toLowerCase();
-    const lastLower = leg.lastName.toLowerCase();
-
-    const exact = candidates.find(
-      (c) =>
-        (c.firstName ?? '').toLowerCase() === firstLower &&
-        (c.lastName ?? '').toLowerCase() === lastLower,
-    );
-    if (exact?.candidateId != null) return Number(exact.candidateId);
-
-    const partial = candidates.find(
-      (c) =>
-        (c.lastName ?? '').toLowerCase() === lastLower &&
-        (c.firstName ?? '').toLowerCase().startsWith(firstLower.slice(0, 3)),
-    );
-    if (partial?.candidateId != null) return Number(partial.candidateId);
-  } catch (err) {
-    console.warn(
-      `  WARN VoteSmart candidate lookup failed for ${leg.name}: ${err instanceof Error ? err.message : err}`,
-    );
-  }
-  return null;
-}
-
-function extractNpatByTopic(
-  npatRoot: Record<string, unknown>,
-  candidateId: number,
-): Map<string, { position: string; date: string | null }> {
-  const out = new Map<string, { position: string; date: string | null }>();
-  const npat = (npatRoot.npat ?? npatRoot) as {
-    section?: NpatSection | NpatSection[];
-    electionDate?: string;
-  };
-  const positionDate = (npat.electionDate ?? '').slice(0, 10) || null;
-  const profileUrl = `https://votesmart.org/candidate/${candidateId}/political-courage-test`;
-
-  for (const section of normalizeArray(npat.section)) {
-    const topicId = mapNpatSectionToTopic(section.name ?? '');
-    if (!topicId) continue;
-
-    const lines: string[] = [];
-    for (const row of normalizeArray(section.row)) {
-      const answer = (row.answerText ?? row.optionText ?? '').trim();
-      if (!answer || /^n\/?a$/i.test(answer) || /^no opinion$/i.test(answer)) continue;
-      lines.push(answer);
-    }
-    if (lines.length === 0) continue;
-    out.set(topicId, { position: lines.join('; '), date: positionDate });
-  }
-
-  void profileUrl;
-  return out;
-}
-
-async function fetchVoteSmartNpatByTopic(
-  candidateId: number,
-  key: string,
-): Promise<Map<string, { position: string; date: string | null }>> {
-  try {
-    const npatData = await votesmartFetch('Npat.getNpat', { candidateId }, key);
-    return extractNpatByTopic(npatData, candidateId);
-  } catch {
-    return new Map();
-  }
-}
+/* VoteSmart NPAT RETIRED/DEFUNCT 2026-07-25 — API path removed. Do not re-introduce api.votesmart.org. */
 
 async function loadNationalVotesAsync(): Promise<NationalVotesLoadResult> {
   try {
@@ -958,9 +875,7 @@ function buildSnapshotMeta(
     membersWithSaidDidLinks,
     perTopicCoverage,
     votesmartConfigured,
-    note: votesmartConfigured
-      ? 'Platform positions from Ballotpedia; NPAT from VoteSmart; vote links from national roll-call snapshot.'
-      : 'VoteSmart skipped (no key). Platform positions from Ballotpedia where available.',
+    note: 'VoteSmart RETIRED. Platform positions from Ballotpedia where available; CREC Said + roll-call votes.',
   };
 }
 
@@ -982,13 +897,11 @@ async function writeSnapshot(
 async function main(): Promise<void> {
   config({ path: path.join(projectRoot, '.env.local') });
 
-  const votesmartKey = (process.env.VOTESMART_API_KEY ?? '').trim();
+  // VOTESMART_API_KEY RETIRED/DEFUNCT — never read or wire.
+  const votesmartKey = '';
   const govinfoKey = (process.env.GOVINFO_API_KEY ?? process.env.DATA_GOV_API_KEY ?? '').trim();
-  console.log('VoteSmart key length:', votesmartKey.length);
+  console.log('VoteSmart: RETIRED (ignored)');
   console.log('GovInfo key length:', govinfoKey.length);
-  if (!votesmartKey) {
-    console.warn('WARN: VOTESMART_API_KEY missing — NPAT stated positions will be skipped.');
-  }
 
   const memberFilter = parseMemberFilter();
   // core-rules §5: agent runs must scope; a full-corpus run must be opted in explicitly.
@@ -1054,7 +967,7 @@ async function main(): Promise<void> {
   const pending = members.filter((leg) => memberFilter || !checkpoint[leg.bioguideId]);
 
   console.log(
-    `Syncing topic positions for ${pending.length}/${members.length} member${members.length === 1 ? '' : 's'} (${Object.keys(checkpoint).length} checkpointed). Concurrency: ${MEMBER_CONCURRENCY}, GovInfo cap: ${GOVINFO_MAX_RPS}/s, procedural-skip: ${CREC_SKIP_PROCEDURAL ? 'on' : 'off'}. VoteSmart: ${votesmartKey ? 'yes' : 'SKIP'}`,
+    `Syncing topic positions for ${pending.length}/${members.length} member${members.length === 1 ? '' : 's'} (${Object.keys(checkpoint).length} checkpointed). Concurrency: ${MEMBER_CONCURRENCY}, GovInfo cap: ${GOVINFO_MAX_RPS}/s, procedural-skip: ${CREC_SKIP_PROCEDURAL ? 'on' : 'off'}. VoteSmart: RETIRED`,
   );
 
   async function processMember(leg: LegislatorRow): Promise<Record<string, TopicPositionData>> {
@@ -1099,23 +1012,9 @@ async function main(): Promise<void> {
       mediaByTopic.set(st.topicId, list);
     }
 
-    let npatByTopic = new Map<string, { position: string; date: string | null }>();
-    let voteSmartCandidateId: number | null = null;
-    if (votesmartKey) {
-      voteSmartCandidateId = await findVoteSmartCandidateId(leg, votesmartKey);
-      if (voteSmartCandidateId != null) {
-        try {
-          await votesmartFetch('CandidateBio.getBio', { candidateId: voteSmartCandidateId }, votesmartKey);
-        } catch {
-          /* optional validation call */
-        }
-        npatByTopic = await fetchVoteSmartNpatByTopic(voteSmartCandidateId, votesmartKey);
-      }
-    }
-    const npatUrl =
-      voteSmartCandidateId != null
-        ? `https://votesmart.org/candidate/${voteSmartCandidateId}/political-courage-test`
-        : 'https://votesmart.org';
+    // VoteSmart RETIRED — NPAT stated positions never acquired.
+    const npatByTopic = new Map<string, { position: string; date: string | null }>();
+    const npatUrl = 'https://ballotpedia.org';
 
     const memberVotes = nationalVotes.byBioguideId.get(leg.bioguideId) ?? [];
     const canRefreshMemberSaidDid = canRefreshSaidDidLinks(
@@ -1247,7 +1146,7 @@ async function main(): Promise<void> {
   console.log('── sync:topic-positions complete ──');
   console.log(`Members with data: ${meta.membersWithData}/${members.length}`);
   console.log(`Platform positions: ${meta.membersWithPlatformPositions}`);
-  console.log(`VoteSmart NPAT positions: ${meta.membersWithStatedPosition}`);
+  console.log(`VoteSmart NPAT positions: RETIRED (stated count legacy=${meta.membersWithStatedPosition})`);
   console.log(`Said→Did links: ${meta.membersWithSaidDidLinks} members`);
   console.log(`Output: ${OUT_FILE}`);
 
@@ -1262,7 +1161,12 @@ async function main(): Promise<void> {
   );
 }
 
-main().catch((err: unknown) => {
-  console.error(err);
-  process.exit(1);
-});
+const isMain =
+  process.argv[1] != null &&
+  import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href;
+if (isMain) {
+  main().catch((err: unknown) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
