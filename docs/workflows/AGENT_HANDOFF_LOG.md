@@ -61,7 +61,7 @@ prebuild 0 · build 0
 
 ## Confront Claude — paste to Claude Code
 
-**M-GOVINFO-FIX PASS (local):** tip **** · statements **11→13** · saidDid **8→10**/15 · prebuild/build **0** · key chain NAME-only · ⛔ your STAGE THREE · **do not merge**
+**M-GOVINFO-FIX PASS (local):** approve exact tip **`be6f0a9`** (data+code; statements 11→13, saidDid 8→10/15, prebuild/build 0) · docs stamp follows on branch · ⛔ your STAGE THREE · **do not merge**
 
 ---
 
