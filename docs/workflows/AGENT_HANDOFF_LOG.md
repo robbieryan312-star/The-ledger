@@ -10,6 +10,61 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-25 — M-GOVINFO-FIX (S000033 CREC)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (local A–D) · awaiting STAGE THREE  
+**Current state:** branch  · base  @  · tip 
+
+### Objective
+Wire api.data.gov GovInfo key chain `GOVINFO → DATA_GOV → FEC → CONGRESS` (log env-var NAME only);
+rerun scoped full-depth CREC for S000033; grow statements beyond 11 and Said→Did toward 15.
+
+### Verdict / outcome
+**PASS** — key chain shared helper + three call sites; statements **11→13**; CREC **10→12**; Said→Did **8→10**/15 (honest-gap remainder); prebuild **0**; build **0**. Mega-bundle freeze preserved (S000033 not re-inserted).
+
+### Acceptance paste
+```
+BEFORE: statements=11 crec=10 saidDid=8
+AFTER:  statements=13 crec=12 saidDid=10/15 (partial; honest-gap note)
+verify:agent-keys → GovInfo chain would resolve via GOVINFO_API_KEY
+sync log: GovInfo key: supplied by GOVINFO_API_KEY (length 40)
+CREC: search=825 htmlFetches=341 skippedProcedural=459 statements=10 (fresh; union→13)
+prebuild 0 · build 0
+```
+
+### Commands run (this session)
+- `npm run verify:agent-keys` → exit 0
+- `npm run sync:topic-positions -- --member S000033 --full-depth` → exit 0 · tee `/tmp/ledger-sync-topic-positions-s000033-govinfo.log`
+- `npx tsx scripts/archive/apply-m-acquire-batch-a.ts` → exit 0
+- `npm run snapshot:update -- --member S000033` → exit 0
+- `npm run prebuild` → exit 0
+- `npm run build` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/lib/govinfoApiKey.ts` | created | shared GOVINFO→DATA_GOV→FEC→CONGRESS resolver |
+| `scripts/sync-topic-positions.ts` | modified | key chain + ceremonial skip |
+| `scripts/ingest/florida/ingest-govinfo-florida.ts` | modified | same key chain |
+| `scripts/verify-agent-keys.ts` | modified | document chain + which NAME would resolve |
+| `lib/recordTopicBuckets.ts` | modified | healthcare/shutdown/voter keywords (no_topic fix) |
+| `lib/ceremonialCrecFilter.ts` | modified | `rise today to thank` recognition ban |
+| `scripts/archive/apply-m-acquire-batch-a.ts` | modified | archive import paths + ceremonial clean |
+| `profiles/S000033/statements.json` + `saidDid.json` | modified | unioned CREC; rebuilt pairs |
+| fixtures / checklist / BATCH_SCALING / snapshot | modified | counts + improvement row |
+
+### Open / next
+- Claude STAGE THREE on tip (do **not** merge)
+- Said→Did still 10/15 — further pairs need subject-overlapping Did or more Said (honest-gap OK)
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-GOVINFO-FIX PASS (local):** tip **** · statements **11→13** · saidDid **8→10**/15 · prebuild/build **0** · key chain NAME-only · ⛔ your STAGE THREE · **do not merge**
+
+---
+
 ## HANDOFF 2026-07-25 — PRE-INGEST = Cursor absolute-compliance gate
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS · on PR **#91**  

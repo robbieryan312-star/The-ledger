@@ -1,6 +1,6 @@
 {
   "bioguideId": "S000033",
-  "pairCount": 8,
+  "pairCount": 10,
   "pairTarget": 15,
   "status": "partial",
   "byTopic": {
@@ -35,6 +35,19 @@
       },
       {
         "topicId": "economy-taxes",
+        "statedPositionDate": "2025-11-07",
+        "saidQuote": "Mr. SANDERS. Mr. President, we are now in the 38th day of a government shutdown. That means that Federal employees all over this country who ] have to feed their families are not getting paychecks. It means that air traffic controllers are forced to work crazy hours. We worry about the safety of our flights right now. We worry about Capitol Police officers right here in DC having a hard time feeding their families. These are hard-working people who are doing important work. They deserve respect. They deserve to be paid. This shutdown must end as quickly as possible.",
+        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2025-11-07-pt1-PgS7977",
+        "saidOutlet": "Congressional Record",
+        "voteDate": "2026-05-13",
+        "billTitle": "Motion to Invoke Cloture on the Motion to Proceed to S. Res. 526 — A resolution withholding the pay of Senators if a Government shutdown occurs.. Official Senate roll-call from senate.gov (119th Congress).",
+        "billNumber": "S.Res. 526",
+        "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-resolution/526",
+        "voteChoice": "Yea",
+        "tier": "official"
+      },
+      {
+        "topicId": "economy-taxes",
         "statedPositionDate": "2025-03-13",
         "saidQuote": "Mr. SANDERS. Mr. President, as people all over this country understand, we are a nation today that faces enormous crises. Sadly, the continuing resolution passed Tuesday in the U.S. House and which will come to this body very shortly not only does nothing to address these crises but, in fact, it makes a bad situation much worse. Today, at a time when we have more income and wealth inequality than we have ever had in the history of this country, 60 percent of our people are living paycheck to paycheck. What that means--I grew up in a family living paycheck to paycheck. It means that people are worried about how they are going to afford housing. What happens if their landlord raises the rent? People go to the grocery store, and they see the high prices of food and wonder how they are going to feed their kids.",
         "saidUrl": "https://www.govinfo.gov/app/details/CREC-2025-03-13-pt1-PgS1732",
@@ -63,14 +76,27 @@
     "healthcare": [
       {
         "topicId": "healthcare",
-        "statedPositionDate": "2025-03-14",
-        "saidQuote": "Mr. SANDERS. Mr. President, let me thank Senator Wyden for his outstanding work as the former chairman of the Finance Committee and now as the ranking member. I get around Vermont a bit. I get around the country a bit. And, generally speaking, when I talk to a group of people, I ask them a simple question. I say: What do you think about the healthcare system? Is it working well or is it broken? Is it dysfunctional? And, overwhelmingly, the hands go up that the American healthcare system today is broken, it is dysfunctional, and it is cruel. And what people understand is the function of the American healthcare system, today, is not to provide quality healthcare to all of our people, which, in fact, goes on in every other major country on Earth. It is to make huge profits for the drug companies and the insurance companies.",
-        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2025-03-14-pt1-PgS1762-3",
+        "statedPositionDate": "2025-12-17",
+        "saidQuote": "Mr. SANDERS. Mr. President, let me be very clear: In the midst of a broken and dysfunctional healthcare system, we must do everything that we can to find new cures and treatments for pediatric cancer, and I strongly support that effort, period. I think we can all imagine the kind of heartbreak that parents go through ] when they learn that their babies or their young children have been diagnosed with cancer. And I should say that as the former chair of the HELP Committee, I was actively involved in the bipartisan agreement that we reached over a year ago, which included the Give Kids a Chance Act, bipartisan support, ready to go. Sadly, that enormously important legislation was torpedoed, as some of you will recall, by a series of tweets by Elon Musk. And Republicans became frightened, and they gave up on that bipartisan legislation.",
+        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2025-12-17-pt1-PgS8820",
         "saidOutlet": "Congressional Record",
         "voteDate": "2026-07-16",
         "billTitle": "Motion to Proceed to S.J. Res. 198 — A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Centers for Medicare &amp;#38; Medicaid Services of the Department of Health and Human Services relating to \"Medicare Program; Implementation of...",
         "billNumber": "S.J.Res. 198",
         "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-joint-resolution/198",
+        "voteChoice": "Yea",
+        "tier": "official"
+      },
+      {
+        "topicId": "healthcare",
+        "statedPositionDate": "2025-03-14",
+        "saidQuote": "Mr. SANDERS. Mr. President, let me thank Senator Wyden for his outstanding work as the former chairman of the Finance Committee and now as the ranking member. I get around Vermont a bit. I get around the country a bit. And, generally speaking, when I talk to a group of people, I ask them a simple question. I say: What do you think about the healthcare system? Is it working well or is it broken? Is it dysfunctional? And, overwhelmingly, the hands go up that the American healthcare system today is broken, it is dysfunctional, and it is cruel. And what people understand is the function of the American healthcare system, today, is not to provide quality healthcare to all of our people, which, in fact, goes on in every other major country on Earth. It is to make huge profits for the drug companies and the insurance companies.",
+        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2025-03-14-pt1-PgS1762-3",
+        "saidOutlet": "Congressional Record",
+        "voteDate": "2026-04-23",
+        "billTitle": "Wyden Amdt. No. 5336 — To establish a deficit-neutral reserve fund relating to requiring the Comptroller General of the United States to conduct a study related to economic consequences of private or confidential drug pricing agreements struck by any Federal department, agency, or office with any pharmaceutical manu...",
+        "billNumber": "Wyden Amdt. No. 5336",
+        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00103.xml",
         "voteChoice": "Yea",
         "tier": "official"
       },
@@ -119,5 +145,5 @@
       }
     ]
   },
-  "honestGapNote": "8 of 15 verified CREC floor-speech↔roll-call pairs; remainder honest-gap — 10 CREC Said(s) after Said-vs-procedural + URL-stem dedup; unmatched topics lack subject-overlapping Did in the current roll-call corpus (no fabrication)."
+  "honestGapNote": "10 of 15 verified CREC floor-speech↔roll-call pairs; remainder honest-gap — 12 CREC Said(s) after Said-vs-procedural + URL-stem dedup; unmatched topics lack subject-overlapping Did in the current roll-call corpus (no fabrication)."
 }
