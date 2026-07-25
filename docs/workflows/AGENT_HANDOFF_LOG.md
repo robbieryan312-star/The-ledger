@@ -10,6 +10,59 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-25 — M-NEWS-FIX (name-token corroboration)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (local) · ⛔ tip APPROVAL · do NOT merge  
+**Current state:** `cursor/m-news-fix-70a6` · tip **`337bfd5`** (`337bfd54ad3155a2cb2069f2e58777d395d39be0`) · pushed
+
+### Objective
+Exclude member-name tokens from news corroboration `significantTokens`; require ≥2 shared NON-NAME tokens for verification. Append-only fixtures. Re-run S000033 corroboration.
+
+### Verdict / outcome
+**PASS** — fixtures assert unrelated name-only pair `isVerified=false`, same-event non-name pair `true`; S000033 verified **0 → 0** (12 items; mostly single-outlet Guardian — name-only false-positive path guarded by fixture; do NOT tune to preserve 9). prebuild 0; `next build` 0.
+
+### Acceptance evidence
+```
+S000033 verified before→after: 0 → 0 (total 12)
+name tokens excluded: bernard, bernie, sanders
+npm run sync:news-rss -- --members S000033 → EXIT 0 (wrote 12, status=filled)
+npx tsx --test scripts/__tests__/newsCorroboration.test.ts → 5/5 pass
+npm run prebuild → EXIT 0
+npx next build → EXIT 0
+```
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/newsCorroboration.ts` | modified | `tokensFromMemberNames`; exclude name tokens; ≥2 non-name shared |
+| `scripts/lib/memberNewsMatching.ts` | modified | `memberNewsNameTokens` via `memberNewsMatchNames` |
+| `scripts/sync-news-rss.ts` | modified | pass name tokens into `applyNewsCorroboration` |
+| `scripts/sync-news-national.ts` | modified | pass name tokens on profile merge |
+| `lib/data/memberProfile.ts` | modified | roster name tokens at read-time corroboration |
+| `lib/data/__fixtures__/newsCorroboration.fixture.ts` | modified | append NAME_ONLY_UNRELATED + SAME_EVENT_NON_NAME; strengthen DISTINCT |
+| `scripts/__tests__/newsCorroboration.test.ts` | modified | assert false/true for new fixtures |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this handoff |
+
+### Commands run (this session)
+- `git fetch origin main && git checkout -B cursor/m-news-fix-70a6 origin/main`
+- `npm run sync:news-rss -- --members S000033` → EXIT 0
+- `npx tsx --test scripts/__tests__/newsCorroboration.test.ts` → EXIT 0
+- `npm run prebuild` → EXIT 0
+- `npx next build` → EXIT 0
+- `git push -u origin cursor/m-news-fix-70a6` → EXIT 0 (tip corrected after branch-drift)
+
+### Open / next
+- Claude tip APPROVAL on exact SHA `337bfd5` / `337bfd54ad3155a2cb2069f2e58777d395d39be0`
+- Do NOT merge without APPROVAL
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-NEWS-FIX tip:** approve exact **`337bfd5`** (`337bfd54ad3155a2cb2069f2e58777d395d39be0`) · branch `cursor/m-news-fix-70a6` · S000033 verified **0→0**/12 · fixtures NAME_ONLY false + SAME_EVENT true · prebuild/build 0 · ⛔ do NOT merge  
+
+---
+
 ## HANDOFF 2026-07-25 — PRE-INGEST = Cursor absolute-compliance gate
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS · on PR **#91**  
