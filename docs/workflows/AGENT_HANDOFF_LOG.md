@@ -10,6 +10,29 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-25 — M-SOURCE-EXPANSION (PROPOSAL ONLY)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (docs-only) · no routing/ingest  
+**Current state:** `cursor/m-source-expansion-70a6` · tip **`7904131`** · base `main` @ `7433264`
+
+### Objective
+List bulk-efficient candidate channels under OBJECTIVE_SOURCES § Candidate channels — unproven. No routing changes.
+
+### Verdict / outcome
+**PASS** — six candidates with yield/tier/bulk-cost/key/channel-proof columns. Wikidata pointer-only.
+
+### Open / next
+- Claude review of candidates; no ingest until channel-proof + APPROVAL
+- Does not block Bernie GOVINFO/NEWS/PURGE
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-SOURCE-EXPANSION tip:** approve exact **`7904131`** · PROPOSAL ONLY · no routing · ⛔ not a Bernie blocker
+
+---
+
 ## HANDOFF 2026-07-25 — PRE-INGEST = Cursor absolute-compliance gate
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS · on PR **#91**  
