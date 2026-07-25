@@ -29,6 +29,17 @@ alwaysApply: true
 - **Improve the process as it scales (binding)** — at each expansion step (1→10→25→80→200→completion),
   measure efficiency + effectiveness, improve one step, record it in the owning process doc; a scale
   step without a recorded improvement pass is incomplete (§6).
+- **Conduit advocacy & progress reporting (binding — perpetual)** — agents NEVER silently “just
+  sync.” Before, during, and after collection/aggregation/display work they must (1) stay inside
+  the written credibility + source standards, (2) **expand the search within those standards** when
+  a better approved or prove-able channel exists, (3) **report conduit state on a continuum**
+  (blocked → inefficient → workable → strong → flawless) for every active process, and
+  (4) **immediately flag to the owner** any beneficial/optimal fix, new source, adapter, cache,
+  rate-limit, diversity, or replication improvement that would raise quality/efficiency as
+  profile count grows (1 → 10 → 537). More good resources under the same standards = better
+  conduits. Chat-only suggestions are a failure — write them to `BATCH_SCALING.md` /
+  `IMPROVEMENT_BACKLOG.md` / `AGENT_HANDOFF_LOG.md` and surface an **Owner conduit advocacy**
+  block in the same turn (§1.1 N; §6).
 - **Spec violation = bug to fix, never a question** — read the owning file; do not re-ask the owner.
 - **Stale violation flags are bugs** — when a flagged violation is fixed, delete its flag in the same commit.
 - **Render-and-look — never approve UI from source alone** — any user-facing page/profile is verified
@@ -216,6 +227,7 @@ briefs; Cursor executes), and §6 ("Read the real error before any restart").
 | Prior session report recycled | **Forbidden** — regenerate from current `git status` + logs | N/A |
 | Any substandard file/data/process discovered during read, sync, audit, or review (not 100% flawless to spec) | **Owner visibility finding** (§1.1 H) in SAME response — even if out of scope or you are also fixing | Fix in-scope if brief allows; else flag only |
 | Suspected flaw but cannot verify (env quirk, blocked access, ambiguous pass) | **Cross-agent second opinion** (§1.1 I) before claiming pass | Other agent reviews independently |
+| Sync/collect/aggregate/display work, or discovery of a better source/channel/adapter under standards | **Owner conduit advocacy** (§1.1 N) in SAME response + row/backlog on disk | Agent-fixable fixes proceed; owner/Claude for credibility or layout tradeoffs |
 
 #### A. Autonomous delivery (binding)
 
@@ -558,6 +570,41 @@ says so. **Status is earned by evidence, never by a label.**
 Claude's full standing orders: `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` §11. Cursor implementation
 discipline: `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6. Do not restate §11 here.
 
+#### N. Conduit advocacy & continuous progress (binding — perpetual)
+
+**Trigger:** Any turn that syncs, collects, aggregates, discovers a source/channel, measures a
+scale step, or reviews a pipeline that will run at larger N (many profiles at once).
+
+**Non-waivable:** Agents must not treat written rules as optional under time pressure, “almost
+done,” or a green build. Compliance is checked **before, during, and after** every action.
+
+**Required in the SAME response** when the trigger fires (dedicated section; do not bury):
+
+```markdown
+## Owner conduit advocacy
+
+| Field | Detail |
+|-------|--------|
+| **Conduit** | [pipeline / data need / destination view] |
+| **State now** | blocked / inefficient / workable / strong / flawless — one word + one-line why |
+| **Progress this turn** | [what improved or stalled; counts/times if measured] |
+| **New / better resource** | [source, feed, hub, API, adapter — or none] (must still meet §3 + OBJECTIVE_SOURCES) |
+| **Optimal fix advocated** | [concrete change to the conduit — code, cache, diversity, keyless mirror, prove-script, etc.] |
+| **Scale impact** | [why this matters at 10 / 50 / 537 members] |
+| **Where recorded** | `BATCH_SCALING.md` row and/or `IMPROVEMENT_BACKLOG.md` ID — required |
+| **Action this turn** | fixing now / flagged for Claude brief / needs owner product decision |
+```
+
+**Search expansion (allowed and expected):** within the strict tier/banned-source/Said/office
+rules, agents **should** hunt additional approved or prove-able channels when the current path is
+thin, single-outlet, key-blocked, or slow. Discoveries update `docs/OBJECTIVE_SOURCES.md` /
+`SOURCE_LOOKUP.md` the same session (§1.1 L). **More good resources under the same standards =
+better conduits** — especially when one sync affects many profiles.
+
+**Distinct from:** §1.1 H (spec defects / substandard artifacts) and the improvement backlog
+(proactive list). Conduit advocacy is the **owner-facing progress + recommendation** for the
+aggregation/collection/display process itself.
+
 ---
 
 ## 2. Where the authoritative detail lives — read the file that owns the answer
@@ -579,6 +626,7 @@ discipline: `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6. Do not restate §11 here
 | Cross-agent second opinion when unverifiable | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 I |
 | Single-writer git authority (Cursor only commits/pushes/merges) | `.cursor/rules/ledger-core-rules.mdc` § HARD RULES + §1.1 K |
 | Keep files accurate — claimed done/complete vs real artifact | `.cursor/rules/ledger-core-rules.mdc` §1.1 M · `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` §11 |
+| Conduit advocacy — progress continuum + optimal fixes for collection/display | `.cursor/rules/ledger-core-rules.mdc` §1.1 N · `docs/workflows/BATCH_SCALING.md` |
 | Cursor implementation role, testing, reporting format | `docs/CURSOR_IMPLEMENTATION_MANUAL.md` |
 
 ---
@@ -689,6 +737,12 @@ discipline: `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6. Do not restate §11 here
   change in the owning process doc (`docs/workflows/BATCH_SCALING.md` § Improvement log for profile
   batches; `docs/workflows/DUAL_REFERENCE_ROADMAP.md` § Process improvement log for dual-reference
   conduits). A scale step without a recorded improvement pass is **incomplete**.
+- **Advocate conduit upgrades continuously (binding — §1.1 N).** Do not wait for the owner to ask
+  “how is the pipeline?” Report state on the continuum (blocked → inefficient → workable → strong →
+  flawless), propose optimal fixes that improve quality/efficiency/replication at larger batch sizes,
+  and expand source search **within** §3 / OBJECTIVE_SOURCES standards. Prefer durable channels
+  (keyless official mirrors, hub discovery, diversity caps, prove-before-routing) over brittle
+  single-outlet or single-key paths. Surface advocacy to the owner the same turn; never chat-only.
 
 ---
 

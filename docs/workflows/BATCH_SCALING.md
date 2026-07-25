@@ -37,6 +37,25 @@ PR #84 onward.** One row per process step; measured values where known, else
 **Rule (binding):** core-rules §6 — a scale step without a row here (or in
 `DUAL_REFERENCE_ROADMAP.md` § Process improvement log for dual-reference conduits) is **incomplete**.
 
+### Conduit advocacy (binding — core-rules §1.1 N)
+
+Every sync/collect/aggregate session must **also** tell the owner how the conduit is doing and what
+would make it better at larger N. This is not optional polish.
+
+| Continuum state | Meaning (use one word in the owner block) |
+|-----------------|-------------------------------------------|
+| **blocked** | key/egress/ban prevents acquisition; prior data preserved |
+| **inefficient** | works but cost, single-outlet, or yield will not scale |
+| **workable** | meets caps with honest gaps; fragile under load |
+| **strong** | diverse sources, measured, guards hold; ready to widen batch |
+| **flawless** | gold-standard member approved; process frozen for replication |
+
+**Always allowed within standards:** expand search for additional approved / prove-able resources
+(feeds, hubs, official mirrors, adapters). **More good resources under the same credibility rules
+= better conduits** when one command updates many profiles. Record discoveries in
+`OBJECTIVE_SOURCES.md` / `SOURCE_LOOKUP.md` the same session; append an improvement-log row here;
+open an `IMPROVEMENT_BACKLOG.md` ID when the fix is deferred.
+
 ---
 
 The canonical loop for scaling profile data to all 537 members. Owner-defined; consistent with
