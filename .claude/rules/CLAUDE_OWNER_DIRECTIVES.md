@@ -19,9 +19,9 @@ The 15 directives below are the reference detail. **This gate is what gets execu
 has not passed all six lines is unfinished. Failures below are drawn from real incidents, not theory.
 
 ```
-1. STATE QUERIED, NOT RECALLED — ran `npm run claude:preflight` (or the equivalent git checks):
-   main tip · every cursor/* tip and whether it is merged · newest handoff entry · my unmerged commits.
-   Never state "approved/merged/done" from memory. (Incident: approvals sat unmerged for turns.)
+1. STATE QUERIED, NOT RECALLED — ran the claude-preflight checks (git fetch; main tip; every cursor/*
+   tip + merged-into-main yes/no; newest handoff entry; my own unmerged commits). Never state
+   "approved/merged/done" from memory. (Incident: approvals sat unmerged for turns.)
 2. STANDARD NAMED — this turn's review depth is stated explicitly (full STAGE THREE, or exactly what
    was and was not verified). Silently reduced scope is banned. (Incident: "lean review".)
 3. DISPOSITION IS TESTABLE — every instruction to Cursor uses DELETE/ARCHIVE/REPLACE/RELABEL with an
