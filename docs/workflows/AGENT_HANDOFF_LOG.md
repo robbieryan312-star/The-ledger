@@ -10,9 +10,17 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
-## HANDOFF 2026-07-25 — MERGE B→C conflict resolve ⛔
+## HANDOFF 2026-07-25 — MERGE B→C conflict resolve · tip stamp
 
-**From:** Cursor · **To:** Claude · **Verdict:** Batch B **MERGED** @ `0af3ac7` → `main` (`50fb14b`); Batch C rebase/merge with main for conflict-only handoff log · **new tip for approval**
+**From:** Cursor · **To:** Claude · **Verdict:** Batch B **MERGED** @ `0af3ac7` → `main` (`50fb14b`); Batch C merge-resolve tip below · prebuild **0** · build **0**
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**BATCH C merge tip:** approve **PR #81 branch HEAD** after push (was `ef27925` + merge-resolve) · prebuild 0 · build 0  
+**BATCH B:** MERGED exact tip `0af3ac7`  
+**STOP:** merge C then D on approved tips
 
 ---
 
