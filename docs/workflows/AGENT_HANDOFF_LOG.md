@@ -10,6 +10,107 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-25 — MERGE B→C conflict resolve · tip stamp
+
+**From:** Cursor · **To:** Claude · **Verdict:** Batch B **MERGED** @ `0af3ac7` → `main` (`50fb14b`); Batch C merge-resolve tip below · prebuild **0** · build **0**
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**BATCH C merge tip:** approve **PR #81 branch HEAD** after push (was `ef27925` + merge-resolve) · prebuild 0 · build 0  
+**BATCH B:** MERGED exact tip `0af3ac7`  
+**STOP:** merge C then D on approved tips
+
+---
+
+## HANDOFF 2026-07-22 — M-ACQUIRE BATCH C (Voice) ⛔ STOP
+
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
+**Current state:** `cursor/m-acquire-batch-c-70a6` · tip = **PR branch HEAD** · Batch B **MERGED** @ `0af3ac7` → `main` `50fb14b` · prebuild **0** · build **0**
+
+### BEFORE → AFTER (S000033)
+
+| Section | BEFORE | AFTER | Provenance |
+|---------|--------|-------|------------|
+| News | 12 items · CDC releaser slipped via NewsAPI · all alleged | **12**/15 subject/quote-qualified · **CDC dropped** · NPR+Guardian mix · all `'alleged'` (no 2-outlet corroboration this window) | `sync:news-rss -- --members S000033` · RSS→topic→GDELT→NewsAPI · dest `profiles/S000033/news.json` |
+| Journalism quotes | 1 media Said (WaPo primary; NYT corroboration in catalog) | **1** media Said (unchanged) — no additional 2+ outlet verbatim found without fabrication | `approvedMediaQuotes.ts` → `statements.json` healthcare |
+| Platform positions | honest-gap (scrape junk note) | **honest-gap DIAGNOSED** — Ballotpedia source poverty (no Political_positions/Issues/survey); VoteSmart **Deferred**/EMPTY by design | live Ballotpedia diag + `positions.json` note |
+
+### Process fixes
+- NewsAPI now applies `qualifiesMemberNewsItem` (same subject/quote gate as RSS/topic) — freezes CDC releaser regression
+- Sync re-filters existing+GDELT through qualify gate; GDELT exhausted-retries error string fixed (was `"undefined"`)
+
+### §13 / §14
+1. GDELT returned empty `{}` for Sanders approved domains this run — keep diagnosing; not silent skip.
+2. Single-outlet Guardian dominance → all alleged; need independent second outlets for media-tier news (AP/Reuters feeds currently disabled).
+3. Additional media Saids require curated 2+ approved-outlet verify — do not invent quote text.
+4. VoteSmart remains Deferred — not an owner secret gap unless product reopens NPAT.
+
+**PARK:** #76 · m8a · m7a–d · M-UI #68 · Batch B #80 tip · Florida until Bernie lock
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-ACQUIRE BATCH C tip:** approve **PR branch HEAD** (`git rev-parse origin/cursor/m-acquire-batch-c-70a6`) · prebuild 0 · build 0  
+**S000033 Voice:** news **12**/15 qualify-gated (CDC fixed) · quotes **1** media · positions **DIAGNOSED** honest-gap (Ballotpedia poverty; VoteSmart Deferred)  
+**STOP:** tip APPROVAL before merge; BATCH D separate PR
+
+---
+
+## HANDOFF 2026-07-22 — Batch C journalism-quotes inventory (S000033) · PASS (inspect-only)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS inspect · no data write this turn  
+**Current state:** `cursor/m-acquire-batch-c-70a6` · HEAD `a2fbd7a` · tree dirty only this log · build not re-run (read-only)
+
+### Objective
+Inventory verified media quotes for S000033 + refresh path for M-ACQUIRE Batch C (news + quotes + positions).
+
+### Verdict / outcome
+**PASS** — counts and wiring verified from disk. **No additional ready-to-ship 2+ outlet curated quotes** exist elsewhere in repo beyond the single WaPo+NYT healthcare entry.
+
+### Counts (fresh)
+| Location | Media quotes (2+ outlet / tier `media`) | Notes |
+|----------|----------------------------------------|-------|
+| `scripts/lib/approvedMediaQuotes.ts` → `VERIFIED_MEDIA_QUOTES_BY_BIOGUIDE.S000033` | **1** curated | WaPo + NYT URLs; `topicId: healthcare` |
+| `profiles/S000033/statements.json` | **1** of **11** stmts | tier `media`, outlet Washington Post (primary); **10** CREC `official` |
+| `profiles/S000033/positions.json` | **0** | `status: honest-gap` — platform only; media does **not** land here |
+| `profiles/S000033/saidDid.json` | **0** media Saids | 8/15 CREC pairs only |
+| `articleCache.json` S000033 | **1** article (WaPo) | `corroboratedQuotes: 1`; NYT URL **absent**; WaPo `plainText` **does not** contain quote body (Wayback path required to re-verify) |
+| mega-bundle `topicPositions.json` | **0** media anywhere; S000033 **omitted** (freeze) | |
+| Fixtures / snapshots | same 1 quote string | `crecStatementFilter.fixture.ts` KNOWN_GOOD; `S000033.snapshot.json` |
+
+### Wiring
+`sync:topic-positions` → `fetchApprovedMediaStatementsForMember` (`approvedMediaQuotes.ts`) → verify live/Wayback → prepend into topic `statements[]` (cap 2/topic) before CREC. Profile apply historically via `apply:m-acquire-batch-a` union into `statements.json`.
+
+### §14 acquire path (cache)
+Shared article cache is **fetch reuse only** — no auto-extract of new quotes. Cache currently yields **no** extra S000033 candidates. New quotes require curated append to `VERIFIED_MEDIA_QUOTES_BY_BIOGUIDE` with 2+ approved outlets, then scoped sync + profile apply (keep mega-bundle freeze).
+
+### Owner visibility
+| What | Where | Evidence | Severity | Repair |
+|------|-------|----------|----------|--------|
+| WaPo cache plainText missing verified quote | `articleCache.json` WaPo entry | `plainText` lacks "guarantee health care" / "international embarrassment" | P2 | Re-fetch/Wayback on next verify; do not treat cache alone as proof |
+| Only 1 media Said for gold profile | PILOT row 10 partial | catalog length 1; statements media=1 | P1 under-collection if more exist in world | Batch C: curate+verify more; never fabricate |
+
+### Commands run (this session)
+- `node` counts on statements / positions / articleCache / saidDid / topicPositions
+- `rg` / reads of `approvedMediaQuotes.ts`, `articleVerificationCache.ts`, `sync-topic-positions.ts`, handoff Batch B tip (`BATCH C (news + quotes + positions)`)
+
+### Open / next
+- Batch C quotes: append **only** verbatim 2+ outlet entries to catalog → scoped `sync:topic-positions -- --member S000033` → apply to `profiles/S000033/statements.json` without mega-bundle re-insert / without wiping news·trades
+- Do **not** promote `news.json` alleged headlines to Said without extracted verbatim + second outlet
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Inspect PASS:** S000033 media Said = **1** (healthcare WaPo+NYT curated → statements only). No spare curated quotes in cache/fixtures/archive.  
+**Batch C quotes path:** edit `approvedMediaQuotes.ts` → scoped sync → profile statements apply; §14 ≠ fabricate; cache ≠ quote miner.  
+**STOP for quote text:** Claude/owner must not ask Cursor to invent quote strings.
+
+---
+
 ## HANDOFF 2026-07-22 — M-ACQUIRE BATCH B REJECT fix ⛔ STOP
 
 **From:** Cursor · **To:** Claude · **Verdict:** REJECT repaired · **STOP** for tip approval  
