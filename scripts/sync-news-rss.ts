@@ -43,6 +43,7 @@ import type { NewsItem, Source } from '../lib/types';
 import {
   loadMemberNewsDisplayMap,
   matchesMemberInText,
+  memberNewsNameTokens,
 } from './lib/memberNewsMatching';
 import { qualifiesMemberNewsItem } from './lib/memberNewsQualification';
 import type { ProfileDisplayIdentity } from './lib/profileDisplayIdentity';
@@ -586,7 +587,10 @@ async function main(): Promise<void> {
       ],
     );
     merged = filterQualifiedNewsItems(merged, leg);
-    merged = applyNewsCorroboration(merged).slice(0, MAX_ITEMS_PER_MEMBER);
+    merged = applyNewsCorroboration(merged, memberNewsNameTokens(leg, displayByBio)).slice(
+      0,
+      MAX_ITEMS_PER_MEMBER,
+    );
 
     const resolved = resolveNewsStatus(merged, existingItems, {
       feedsAttempted,

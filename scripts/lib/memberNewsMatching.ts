@@ -4,6 +4,7 @@
  * Matching rule (binding): NEVER match on surname alone. Require full name OR
  * honorific + last name (Sen./Rep./Senator/Representative + ln).
  */
+import { tokensFromMemberNames } from '../../lib/data/newsCorroboration';
 import { loadProfileDisplayIdentityByBioguide } from './profileDisplayIdentity';
 
 export interface LegislatorNewsRow {
@@ -38,6 +39,25 @@ export function memberNewsMatchNames(
     names.add(`${display.firstName.trim()} ${display.lastName.trim()}`);
   }
   return [...names].filter((n) => n.split(/\s+/).length >= 2);
+}
+
+/**
+ * Significant name tokens to EXCLUDE from news corroboration overlap
+ * (first/last/legal/display parts from memberNewsMatchNames + bare first/last).
+ */
+export function memberNewsNameTokens(
+  leg: LegislatorNewsRow,
+  displayByBio: Map<string, { name: string; firstName: string; lastName: string }>,
+): Set<string> {
+  const parts: string[] = [...memberNewsMatchNames(leg, displayByBio)];
+  const display = displayByBio.get(leg.bioguideId);
+  const ln = leg.lastName?.trim() || lastNameOf(leg.name);
+  const fn = leg.firstName?.trim() || '';
+  if (fn) parts.push(fn);
+  if (ln) parts.push(ln);
+  if (display?.firstName?.trim()) parts.push(display.firstName.trim());
+  if (display?.lastName?.trim()) parts.push(display.lastName.trim());
+  return tokensFromMemberNames(parts);
 }
 
 /** Primary query name — prefer roster display name for GDELT/RSS. */

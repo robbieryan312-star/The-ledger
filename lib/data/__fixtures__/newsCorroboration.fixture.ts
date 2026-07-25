@@ -1,5 +1,6 @@
 /**
  * Append-only fixtures for independent news corroboration (not wire republish).
+ * Name-only overlap across unrelated same-member stories is NOT corroboration.
  */
 import type { NewsItem } from '../../types';
 
@@ -33,7 +34,10 @@ export const NEWS_CORROBORATION_KNOWN_BAD_SYNDICATED = {
   expectIndependent: false,
 } as const;
 
-/** Known-good: distinct reporting of the same event across two outlets. */
+/**
+ * Known-good: distinct reporting of the same event across two outlets.
+ * Headlines share ≥2 NON-NAME tokens (medicare, house, bill) after excluding Sanders name parts.
+ */
 export const NEWS_CORROBORATION_KNOWN_GOOD_DISTINCT = {
   defect: 'distinct-reporting-independent',
   description: 'Distinct headlines about the same event from two outlets count as independent',
@@ -45,9 +49,81 @@ export const NEWS_CORROBORATION_KNOWN_GOOD_DISTINCT = {
   }),
   b: item({
     id: 'dist-b',
-    headline: 'Bernie Sanders and House allies relaunch single-payer health push',
+    headline: 'House Democrats join Bernie Sanders to relaunch Medicare for All health bill',
     url: 'https://www.npr.org/2023/05/18/nx-s1-medicare-for-all-sanders-relaunch',
     source: { name: 'NPR', url: 'https://www.npr.org/2023/05/18/nx-s1-medicare-for-all-sanders-relaunch', tier: 'media', date: '2023-05-18' },
   }),
   expectIndependent: true,
+  /** Roster / match-name tokens that must not count toward the shared-token threshold. */
+  memberNameTokens: ['Bernie Sanders', 'Bernard Sanders', 'Bernie', 'Bernard', 'Sanders'],
+} as const;
+
+/**
+ * Known-bad (append): two unrelated same-member articles from different outlets.
+ * Only shared significant tokens are member-name parts → must NOT verify.
+ */
+export const NEWS_CORROBORATION_KNOWN_BAD_NAME_ONLY_UNRELATED = {
+  defect: 'name-only-overlap-not-same-event',
+  description:
+    'Unrelated same-member stories that share only name tokens must not corroborate',
+  a: item({
+    id: 'name-only-a',
+    headline: 'Bernie Sanders calls for wealth tax on California billionaires',
+    url: 'https://thehill.com/homenews/senate/sanders-wealth-tax-california/',
+    source: {
+      name: 'The Hill',
+      url: 'https://thehill.com/homenews/senate/sanders-wealth-tax-california/',
+      tier: 'media',
+      date: '2026-04-01',
+    },
+  }),
+  b: item({
+    id: 'name-only-b',
+    headline: 'Bernie Sanders warns Senate about runaway AI risks',
+    url: 'https://www.npr.org/2026/04/02/sanders-ai-risks-hearing',
+    source: {
+      name: 'NPR',
+      url: 'https://www.npr.org/2026/04/02/sanders-ai-risks-hearing',
+      tier: 'media',
+      date: '2026-04-02',
+    },
+  }),
+  expectIndependent: false,
+  expectVerified: false,
+  memberNameTokens: ['Bernie Sanders', 'Bernard Sanders', 'Bernie', 'Bernard', 'Sanders'],
+} as const;
+
+/**
+ * Known-good (append): genuine same-event pair with ≥2 shared NON-NAME tokens
+ * (pause, datacenter, construction) after excluding member-name tokens.
+ */
+export const NEWS_CORROBORATION_KNOWN_GOOD_SAME_EVENT_NON_NAME = {
+  defect: 'same-event-non-name-tokens',
+  description:
+    'Same-event reporting with ≥2 shared non-name tokens is independent corroboration',
+  a: item({
+    id: 'same-evt-a',
+    headline: 'Bernie Sanders introduces bill to pause new AI datacenter construction',
+    url: 'https://thehill.com/policy/technology/sanders-datacenter-pause-bill/',
+    source: {
+      name: 'The Hill',
+      url: 'https://thehill.com/policy/technology/sanders-datacenter-pause-bill/',
+      tier: 'media',
+      date: '2026-03-15',
+    },
+  }),
+  b: item({
+    id: 'same-evt-b',
+    headline: 'House progressive allies join Sanders on AI datacenter construction pause',
+    url: 'https://www.politico.com/news/2026/03/15/sanders-ai-datacenter-pause',
+    source: {
+      name: 'Politico',
+      url: 'https://www.politico.com/news/2026/03/15/sanders-ai-datacenter-pause',
+      tier: 'media',
+      date: '2026-03-15',
+    },
+  }),
+  expectIndependent: true,
+  expectVerified: true,
+  memberNameTokens: ['Bernie Sanders', 'Bernard Sanders', 'Bernie', 'Bernard', 'Sanders'],
 } as const;

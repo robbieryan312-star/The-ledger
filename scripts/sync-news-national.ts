@@ -25,7 +25,9 @@ import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
 import { memberInScope, requireSyncScope } from './lib/sync-scope';
 import {
   loadMemberNewsDisplayMap,
+  memberNewsNameTokens,
   memberNewsPrimaryName,
+  type LegislatorNewsRow,
 } from './lib/memberNewsMatching';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -234,6 +236,8 @@ function gdeltArticleToNewsItem(
 async function mergeGdeltIntoProfileNews(
   bioguideId: string,
   articles: MemberNewsArticle[],
+  leg: LegislatorNewsRow,
+  displayByBio: Map<string, { name: string; firstName: string; lastName: string }>,
 ): Promise<number> {
   const profilePath = path.join(profilesRoot, bioguideId, 'news.json');
   let existing: { bioguideId: string; status: string; items: NewsItem[]; note?: string };
@@ -255,7 +259,10 @@ async function mergeGdeltIntoProfileNews(
   }
   if (added === 0) return 0;
   existing.items.sort((a, b) => b.date.localeCompare(a.date));
-  existing.items = applyNewsCorroboration(existing.items).slice(0, 15);
+  existing.items = applyNewsCorroboration(
+    existing.items,
+    memberNewsNameTokens(leg, displayByBio),
+  ).slice(0, 15);
   existing.status = existing.items.length > 0 ? 'filled' : existing.status;
   existing.note = `${existing.items.length} article(s) — RSS + approved GDELT outlets (target 15).`;
   await writeFile(profilePath, `${JSON.stringify(existing, null, 2)}\n`, 'utf8');
@@ -348,7 +355,7 @@ async function main(): Promise<void> {
     const profileDir = path.join(profilesRoot, leg.bioguideId);
     try {
       await readFile(path.join(profileDir, 'news.json'), 'utf8');
-      const added = await mergeGdeltIntoProfileNews(leg.bioguideId, articles);
+      const added = await mergeGdeltIntoProfileNews(leg.bioguideId, articles, leg, displayByBio);
       if (added > 0) console.log(`    → merged ${added} approved article(s) into profiles/${leg.bioguideId}/news.json`);
     } catch {
       /* not a migrated profile */

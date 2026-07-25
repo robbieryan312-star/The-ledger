@@ -29,8 +29,21 @@ import type {
 } from './topicPositions';
 import { leadSummary } from './displaySummary';
 import { getNationalNewsArticles, nationalArticlesToNewsItems } from './newsNational';
-import { applyNewsCorroboration } from './newsCorroboration';
+import { getPoliticianByBioguide } from './allPoliticians';
+import { applyNewsCorroboration, tokensFromMemberNames } from './newsCorroboration';
 import { normalizeUrlForDedupe } from './sourceIntegrity';
+
+/** Name tokens to exclude from corroboration overlap for a bioguide (roster identity). */
+function memberNameTokensForBioguide(bioguideId: string): Set<string> {
+  const p = getPoliticianByBioguide(bioguideId);
+  if (!p) return new Set();
+  return tokensFromMemberNames([
+    p.name,
+    p.firstName,
+    p.lastName,
+    `${p.firstName} ${p.lastName}`,
+  ]);
+}
 
 function isDisplayableStatement(statement: TopicStatementEntry): boolean {
   if (statement.tier === 'media' || statement.tier === 'alleged') {
@@ -305,7 +318,9 @@ export function mergeProfileNews(legacyNews: NewsItem[] | undefined, bioguideId?
       }
     }
     merged.sort((a, b) => b.date.localeCompare(a.date));
-    if (merged.length > 0) return applyNewsCorroboration(merged).slice(0, 15);
+    if (merged.length > 0) {
+      return applyNewsCorroboration(merged, memberNameTokensForBioguide(bioguideId)).slice(0, 15);
+    }
   }
   return legacyNews ?? [];
 }
