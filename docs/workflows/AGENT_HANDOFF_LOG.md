@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-25 — M-CREC-YIELD (S000033 Said→Did blocker)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS (local) · awaiting STAGE THREE  
-**Current state:** `cursor/m-crec-yield-70a6` · tip pending · base `main` @ `6422613`
+**Current state:** `cursor/m-crec-yield-70a6` · tip **`d137a12`** (work) · base `main` @ `6422613` · prebuild **0** · build **0**
 
 ### Objective
 Diagnose ~96% CREC reject (not key-blocked); fix genuine over-reject (silent no_topic drop); do not weaken Said-vs-procedural.
@@ -53,7 +53,7 @@ Diagnose ~96% CREC reject (not key-blocked); fix genuine over-reject (silent no_
 
 ## Confront Claude — paste to Claude Code
 
-**M-CREC-YIELD:** approve exact **`d137a12`** · PR (this branch) · statements 13→33 · saidDid 10→15/15 · no_topic drop eliminated · procedural rule unchanged · prebuild/build pending stamp · ⛔ your STAGE THREE
+**M-CREC-YIELD:** approve exact **`d137a12`** (work; docs stamp on branch tip) · statements 13→33 · CREC 12→32 · saidDid 10→15/15 filled · no_topic drop 14→0 · procedural rule unchanged · mega-bundle freeze preserved · prebuild/build **0** · ⛔ your STAGE THREE
 
 ---
 
