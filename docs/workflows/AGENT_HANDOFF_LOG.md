@@ -9,12 +9,11 @@ core-rules, core-rules wins. Newest handoff on top.
 block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner forwards it unchanged.
 
 ---
----
 
 ## HANDOFF 2026-07-25 — M-SOURCE-EXPANSION (PROPOSAL ONLY)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS (docs-only) · no routing/ingest  
-**Current state:** `cursor/m-source-expansion-70a6` · tip pending commit · base `main` @ `7433264`
+**Current state:** `cursor/m-source-expansion-70a6` · tip **`7904131`** · base `main` @ `7433264`
 
 ### Objective
 List bulk-efficient candidate channels under OBJECTIVE_SOURCES § Candidate channels — unproven. No routing changes.
@@ -30,10 +29,39 @@ List bulk-efficient candidate channels under OBJECTIVE_SOURCES § Candidate chan
 
 ## Confront Claude — paste to Claude Code
 
-**M-SOURCE-EXPANSION tip:** `git rev-parse origin/cursor/m-source-expansion-70a6` · PROPOSAL ONLY · no routing · ⛔ not a Bernie blocker
+**M-SOURCE-EXPANSION tip:** approve exact **`7904131`** · PROPOSAL ONLY · no routing · ⛔ not a Bernie blocker
 
 ---
 
+## HANDOFF 2026-07-25 — PRE-INGEST = Cursor absolute-compliance gate
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS · on PR **#91**  
+**Current state:** `cursor/m-retire-votesmart-70a6` · PR **#91** · tip **`6d2a89d`**
+
+### Objective
+Owner: ensure pre-ingest **and every Cursor-directed rule/guideline/instruction** are included in the gate and followed to absolute undeniable compliance.
+
+### Verdict / outcome
+**PASS** — `ledger-pre-ingest.mdc` rewritten as **Cursor agent compliance gate** with full corpus table (16 binding paths); absolute-compliance language; HARD RULE updated; `preIngestRuleGuard` asserts every corpus path exists + is listed; agent-preflight includes Cursor manual + AGENTS.md; AGENTS.md / Cursor manual point at the gate.
+
+### Commands run (this session)
+- `npx tsx --test scripts/__tests__/preIngestRuleGuard.test.ts`
+- `npm run test:docs-consistency`
+- `npm run agent:preflight`
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `.cursor/rules/ledger-pre-ingest.mdc` | modified | compliance gate + corpus |
+| `.cursor/rules/ledger-core-rules.mdc` | modified | HARD RULE absolute compliance |
+| `scripts/__tests__/preIngestRuleGuard.test.ts` | modified | corpus existence + listing |
+| `scripts/agent-preflight.ts` / `AGENTS.md` / Cursor manual | modified | wire absolute compliance |
+
+### Open / next
+- Claude tip APPROVAL on PR #91 HEAD
+- Owner DOC-01: Cloud injected rules must include `ledger-pre-ingest.mdc`
+
+---
 
 ## Confront Claude — paste to Claude Code
 
