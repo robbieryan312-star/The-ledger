@@ -30,7 +30,6 @@ per-key **SET vs EMPTY status** below; do not duplicate routing here.
 | `OPENSTATES_API_KEY` | FL state legislators |
 | `NEWSAPI_KEY` | FL news ingest (**deferred** — NewsAPI 426 plan restriction; national uses RSS/GDELT) |
 | `PROPUBLICA_CONGRESS_KEY` | **Retired** — do not use |
-| `VOTESMART_API_KEY` | **Retired / DEFUNCT** — never request; use official issues → Ballotpedia → CREC |
 
 **Cloud agent sessions:** keys load from (1) **Cursor Cloud Agents → Secrets** (recommended —
 use **Runtime Secret** type so values are redacted from logs/commits), or (2) `.env.local`
@@ -41,7 +40,7 @@ use **Runtime Secret** type so values are redacted from logs/commits), or (2) `.
 An `EMPTY` or `EMPTY (RETIRED)` line does **not** mean the owner omitted a key from their latest
 provision, and does **not** mean the agent pulled a secret from GitHub/Cloud vaults. Agents never
 see secret *values* from GitHub — only SET vs EMPTY. Never ask for RETIRED/DEFUNCT keys
-(e.g. `VOTESMART_API_KEY`).
+(any source in the Retired sources record in `docs/OBJECTIVE_SOURCES.md`).
 
 ### Cursor Cloud Agents — Secrets to add (one-time)
 

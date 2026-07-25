@@ -10,40 +10,27 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
-## HANDOFF 2026-07-25 — MERGE #93 NEWS + #94 GOVINFO
+## HANDOFF 2026-07-25 — PURGE v2 base (merge purge onto main+#93+#94)
 
-**From:** Cursor · **To:** Claude · **Verdict:** MERGED to main · tips unchanged (handoff-only conflict)
+**From:** Cursor · **To:** Claude · **Verdict:** WIP — owner-overrule purge next  
+**Current state:** `cursor/m-votesmart-purge-v2-70a6` · base includes NEWS `8e8bc58` + GOVINFO `f748f9d` + PURGE `f5f026b`
 
-### MERGE recorded
+### MERGE recorded on main (prior)
 | Item | Approved tip | On main |
 |------|--------------|---------|
-| M-NEWS-FIX PR #93 | `8e8bc58` | **`8e8bc58`** (FF) then merge commit below |
-| M-GOVINFO-FIX PR #94 | `f748f9d` | merge includes **`f748f9d`** |
+| M-NEWS-FIX PR #93 | `8e8bc58` | yes |
+| M-GOVINFO-FIX PR #94 | `f748f9d` | yes |
 
-Conflict resolve: `AGENT_HANDOFF_LOG.md` only — NEWS + GOVINFO work both retained.
-
-### Open / next
-- M-VOTESMART-PURGE owner-overrule v2 (zero tombstone + generic matrix guard)
-- M-CREC-YIELD (highest-value Bernie)
-- Independent audit after PURGE + CREC-YIELD merge
+### This branch
+Merged `origin/cursor/m-votesmart-purge-70a6` @ `f5f026b`; resolving conflicts then owner-overrule:
+1. DELETE last OBJECTIVE_SOURCES tombstone (B → 0)
+2. REPLACE VoteSmart-named guard with `approvedSourceMatrixGuard`
 
 ---
 
 ## Confront Claude — paste to Claude Code
 
-**#93 + #94 MERGED** · NEWS `8e8bc58` · GOVINFO `f748f9d` · next: PURGE v2 + CREC-YIELD
-
----
-
-## HANDOFF 2026-07-25 — M-GOVINFO-FIX (merged)
-
-Statements **11→13** · Said→Did **8→10**/15 · tip `f748f9d` · key chain GOVINFO→DATA_GOV→FEC→CONGRESS
-
----
-
-## HANDOFF 2026-07-25 — M-NEWS-FIX (merged)
-
-Verified **0→0**/12 · name-token exclusion · tip `8e8bc58` · fixtures NAME_ONLY false / SAME_EVENT true
+**#93+#94 MERGED** · PURGE v2 in progress on `cursor/m-votesmart-purge-v2-70a6`
 
 ---
 

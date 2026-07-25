@@ -162,7 +162,6 @@ Entry: M1–M7 done.
 | Item | Status |
 |------|--------|
 | Senate eFD stock trades | HTTP 503 maintenance — House PTR proceeds; honest gap in UI |
-| VoteSmart NPAT | **RETIRED / DEFUNCT** — never request key; official issues → Ballotpedia → CREC Said |
 | OpenSecrets API | Deferred — FEC Schedule A + org registry substitute |
 | NewsAPI | 426 plan restriction — approved-outlet RSS (D3) is the path |
 | SAM.gov / FARA eFile | Identity verification / fetch-blocked — documented in UI |
