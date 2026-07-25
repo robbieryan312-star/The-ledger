@@ -9,10 +9,14 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 Civic-info Next.js app. **Data credibility is the highest priority.** Every decision defers to it.
 
-**READ EVERY RESPONSE:** `.cursor/rules/ledger-core-rules.mdc` — the single concrete ruleset
-(operating rules, data credibility, locked profile layout, guardrails). **Cursor also reads**
-`docs/CURSOR_IMPLEMENTATION_MANUAL.md` every turn. It exists because approved specs were being
-ignored and re-requested. Do not re-ask what a file already answers.
+**READ EVERY RESPONSE (Cursor — absolute compliance):**  
+1. `.cursor/rules/ledger-pre-ingest.mdc` — **compliance gate** (before every owner/Claude instruction
+   and every act/response; incorporates the full Cursor-directed corpus)  
+2. `.cursor/rules/ledger-core-rules.mdc` — platform HARD RULES  
+3. `docs/CURSOR_IMPLEMENTATION_MANUAL.md` — Cursor role / STAGE TWO / Confront Claude  
+
+It exists because approved specs were being ignored and re-requested. Do not re-ask what a file
+already answers. Partial compliance with the pre-ingest corpus = task failure.
 
 **Session start:** See **`docs/AGENT_INDEX.md`** for the canonical mandatory read order (do not maintain rival lists in this file).
 

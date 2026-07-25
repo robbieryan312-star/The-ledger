@@ -45,7 +45,7 @@ External truths both agents must share (dashboard drift is **owner-only** to fix
 | IMP-013 | #20+#21 merged to main | P2 | cursor | **done** | historical |
 | IMP-RENDER-CI | Render CI flake — `waitForSelector` fix | P2 | cursor | **done** | historical |
 | IMP-VOTESMART-RETIRE | VoteSmart NPAT permanently unwired — no key will be provided; route official issues → Ballotpedia → CREC Said (+ roll-call Did). Guard: `voteSmartRetiredGuard` | P1 | cursor | **done** (PR **#91**, work tip `b86b775`) | KEYS.md · SOURCE_LOOKUP · `sync-topic-positions.ts` |
-| IMP-PRE-INGEST | Pre-ingest rule file — `ledger-pre-ingest.mdc` alwaysApply; EMPTY≠owner debt; RETIRED never requested; guard + session-start #1 | P0 | cursor | **done** (PR **#91**) | `.cursor/rules/ledger-pre-ingest.mdc` · core-rules HARD RULE · `preIngestRuleGuard` |
+| IMP-PRE-INGEST | Pre-ingest = Cursor compliance gate — `ledger-pre-ingest.mdc` alwaysApply; full Cursor corpus absolute compliance; EMPTY≠owner debt; RETIRED never requested; `preIngestRuleGuard` | P0 | cursor | **done** (PR **#91**) | `.cursor/rules/ledger-pre-ingest.mdc` · core-rules HARD RULE · `preIngestRuleGuard` |
 | IMP-POS-AGG-ALT | Position aggregation without VoteSmart — deepen official-issues + Ballotpedia channel + CREC Said pairing; no parallel NPAT substitute API | P2 | cursor | open | `sync:official-issues-positions` · `prove:ballotpedia-platform` · `sync:topic-positions --full-depth` |
 
 ---

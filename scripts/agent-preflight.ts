@@ -13,6 +13,8 @@ const INVENTORY_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
 const SESSION_START_FILES = [
   '.cursor/rules/ledger-pre-ingest.mdc',
   '.cursor/rules/ledger-core-rules.mdc',
+  'docs/CURSOR_IMPLEMENTATION_MANUAL.md',
+  'AGENTS.md',
   'docs/workflows/AGENT_HANDOFF_LOG.md',
   'PROGRESS.md',
   'lib/data/SOURCE_LOOKUP.md',

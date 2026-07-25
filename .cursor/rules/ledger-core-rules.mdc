@@ -7,11 +7,13 @@ alwaysApply: true
 
 ## HARD RULES (read first)
 
-- **Pre-ingest hygiene (binding — before every owner/Claude instruction and before every act/response)** —
-  read **`.cursor/rules/ledger-pre-ingest.mdc`** first. Checklist `EMPTY` is session inventory, **not**
-  an owner debt and **not** proof we pulled a key from a vault. **RETIRED/DEFUNCT** keys (e.g.
-  VoteSmart) are never requested. Never imply secret access beyond SET/EMPTY. Full rule lives only
-  in `ledger-pre-ingest.mdc` — do not restate its tables elsewhere.
+- **Pre-ingest + Cursor compliance gate (binding — before every owner/Claude instruction and before
+  every act/response)** — Cursor agents **MUST** read **`.cursor/rules/ledger-pre-ingest.mdc` first**
+  and obey **every** Cursor-directed path in its corpus to **absolute compliance** (including
+  `docs/CURSOR_IMPLEMENTATION_MANUAL.md`, core-rules, `AGENTS.md` Cloud constraints, handoff +
+  Confront Claude). Checklist `EMPTY` is session inventory, **not** an owner debt. **RETIRED/DEFUNCT**
+  keys are never requested. Partial compliance or skipping the corpus = task failure. Full text lives
+  only in `ledger-pre-ingest.mdc` — do not restate its tables elsewhere.
 - **No fabrication** — show `"No verified record available"` for genuine gaps; never invent facts, quotes, or dates.
 - **Verbatim-only quotes** from journalism — never paraphrase and present as the politician's words.
 - **Honest-gap vs diagnosed-failure** — a failed fetch/sync is UNVERIFIED (`fetch-failed`), never silent empty.
@@ -99,13 +101,14 @@ alwaysApply: true
   duplication or races. See §1.1 K.
 
 **These rules bind EVERY agent equally — Claude Code AND every Cursor agent (Auto, cloud
-agents, background agents). No agent is exempt.** Reload **this file** and
-**`.cursor/rules/ledger-pre-ingest.mdc`** every turn (`alwaysApply: true` on both) **before**
-ingesting owner or Claude instructions and **before** acting or responding. The owner approved
-these standards once; they are concrete and persist until the owner explicitly changes them. If
-you are about to ask the owner something, or deviate from a format — STOP and check this file
-and the file it points to first. The detailed specs already exist; use them. Re-requesting
-approved information — by any agent — is the specific failure this file was created to stop.
+agents, background agents). No agent is exempt.** Cursor agents additionally reload
+**`.cursor/rules/ledger-pre-ingest.mdc`** every turn **before** ingesting owner/Claude instructions
+and **before** acting or responding, and must follow that file’s Cursor corpus to absolute
+compliance. The owner approved these standards once; they are concrete and persist until the
+owner explicitly changes them. If you are about to ask the owner something, or deviate from a
+format — STOP and check this file and the file it points to first. The detailed specs already
+exist; use them. Re-requesting approved information — by any agent — is the specific failure
+this file was created to stop.
 
 ---
 

@@ -1,13 +1,15 @@
 # Cursor — Implementation Engineer Manual (MANDATORY — read EVERY turn)
 
 **Purpose:** Cursor's role, change discipline, testing obligations, and reporting format on The
-Ledger. Read this EVERY turn alongside **`.cursor/rules/ledger-pre-ingest.mdc`** (first — before
-ingesting owner/Claude instructions) and `.cursor/rules/ledger-core-rules.mdc`. **This file owns
-Cursor's ROLE and IMPLEMENTATION BEHAVIOR.** Data credibility, handoff logging, single-writer
-authority, owner-visibility findings, and completion claims are defined in core-rules — defer
-there; do not restate them here.
+Ledger. Read this EVERY turn as part of the **Cursor compliance gate** in
+**`.cursor/rules/ledger-pre-ingest.mdc`** (first — before ingesting owner/Claude instructions),
+then `.cursor/rules/ledger-core-rules.mdc`. **This file owns Cursor's ROLE and IMPLEMENTATION
+BEHAVIOR** and is listed in the pre-ingest corpus — absolute compliance required. Data credibility,
+handoff logging, single-writer authority, owner-visibility findings, and completion claims are
+defined in core-rules — defer there; do not restate them here.
 
 **Approval:** Claude Code performs all approvals. Cursor implements; Claude reviews.
+**Non-compliance with this manual or the pre-ingest corpus = task failure.**
 
 ---
 

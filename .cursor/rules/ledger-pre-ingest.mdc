@@ -1,17 +1,72 @@
 ---
-description: PRE-INGEST — read before every owner/Claude instruction and before any act or response. Prevents key/source confusion.
+description: PRE-INGEST + Cursor compliance gate — read before every owner/Claude instruction and before any act or response. Absolute compliance with all Cursor-directed rules.
 alwaysApply: true
 ---
 
-# Pre-ingest hygiene (binding — before EVERY instruction and EVERY response)
+# Cursor agent compliance gate (binding — before EVERY instruction and EVERY response)
 
 **When (no exceptions):** Before you ingest, interpret, or act on (1) an **owner** message,
 (2) a **Claude** brief/prompt/verdict, or (3) your own planned tool calls / reply — read this
-file. Skipping it is a HARD RULE violation.
+file **and obey every Cursor-directed rule it incorporates**. Skipping this file, or any file in
+the Cursor binding corpus below, is a **HARD RULE violation**. Partial compliance is failure.
 
-This file exists because agents confused **internal checklists** with **owner-provided secrets**
-(real incident: VoteSmart listed `EMPTY` made the owner think a key was expected or pulled from
-somewhere other than their provision). That class of confusion must never recur.
+**Standard:** Absolute, undeniable compliance — not “best effort,” not “mostly,” not “unless
+the brief is urgent.” If a Cursor-directed rule conflicts with a convenience shortcut, the
+**rule wins**. If two Cursor files seem to disagree, **`.cursor/rules/ledger-core-rules.mdc`
+wins**; then follow the owner file named in the corpus table (never invent a third).
+
+This file also exists because agents confused **internal checklists** with **owner-provided
+secrets** (real incident: VoteSmart listed `EMPTY` made the owner think a key was expected or
+pulled from somewhere other than their provision). That class of confusion must never recur.
+
+---
+
+## 0. Absolute compliance (Cursor agents — unwavering)
+
+You are a **Cursor** agent (Auto, Cloud, background, or IDE). You **MUST**:
+
+1. **Load this file first** every turn (`alwaysApply: true`).
+2. **Treat every path in § Corpus as binding on you** — read and follow; do not cherry-pick.
+3. **Execute Claude briefs exactly** — no independent scope, no silent architecture changes
+   (`docs/CURSOR_IMPLEMENTATION_MANUAL.md`).
+4. **Never approve or merge your own work** — Claude APPROVAL on the **exact tip SHA** only
+   (core-rules HARD RULE + Cursor manual §9).
+5. **Log every work/verify turn** to `docs/workflows/AGENT_HANDOFF_LOG.md` and end with
+   **`## Confront Claude — paste to Claude Code`** (Cursor manual §9 · core-rules §1.1 J).
+6. **Obey Cloud/runtime constraints** in `AGENTS.md` (port **3000** owner-only; use 4100+;
+   stop servers you start; never paste secrets).
+
+**Non-compliance = task failure** even if code “works.” Chat-only adherence without the disk
+handoff/guards is still failure.
+
+---
+
+## Corpus — all Cursor-directed rules / guidelines / instructions (binding)
+
+These paths **are included in this gate by reference**. You must follow them to absolute
+compliance. Do not restate their tables here (one fact, one file) — **open and obey**.
+
+| # | Path | What it binds (Cursor) |
+|---|------|-------------------------|
+| 1 | **This file** `.cursor/rules/ledger-pre-ingest.mdc` | Pre-ingest + compliance gate (keys/EMPTY + corpus) |
+| 2 | `.cursor/rules/ledger-core-rules.mdc` | Platform HARD RULES, §1.1, credibility, layout, ops — **all agents** |
+| 3 | `docs/CURSOR_IMPLEMENTATION_MANUAL.md` | **Cursor-only** role, STAGE TWO, validation, Confront Claude, report format |
+| 4 | `docs/AGENT_INDEX.md` | Canonical session-start order + “WHERE DO I FIND X?” |
+| 5 | `AGENTS.md` | Project rules + **Cursor Cloud** runtime (ports, npm, keys, SSR) |
+| 6 | `.cursor/rules/ledger-data-policy.mdc` | Credibility / destination-view when touching `lib/data/**` or `scripts/**` |
+| 7 | `.cursor/rules/ledger-editorial-voice.mdc` | UI copy / Said→Did voice when touching components or profile copy |
+| 8 | `.cursor/rules/ledger-build-workflow.mdc` | Build/quality when touching scripts, `package.json`, CI |
+| 9 | `docs/workflows/AGENT_HANDOFF_LOG.md` | Work log Claude can see (update + commit same turn) |
+| 10 | `docs/workflows/IMPROVEMENT_BACKLOG.md` | **Sole** improvement backlog (never a second table) |
+| 11 | `KEYS.md` | SET / EMPTY / RETIRED / Deferred status only |
+| 12 | `docs/OBJECTIVE_SOURCES.md` | Source constitution + key routing |
+| 13 | `lib/data/SOURCE_LOOKUP.md` | Data need → command → destination |
+| 14 | `REPO.md` | Canonical repo + session-start mirror |
+| 15 | `PILOT_PROFILE_CHECKLIST.md` | Profile “done” contract |
+| 16 | `PROGRESS.md` | Milestones / blockers (status board) |
+
+**Claude-only files** (`.claude/rules/*`) are **not** Cursor’s to execute as writer — read for
+awareness of the loop; do **not** usurp Claude’s review/APPROVAL role.
 
 ---
 
@@ -43,12 +98,15 @@ somewhere other than their provision). That class of confusion must never recur.
 
 Before interpreting the latest owner/Claude text or starting work:
 
-- [ ] Read **this file** + `.cursor/rules/ledger-core-rules.mdc` HARD RULES
-- [ ] Check `KEYS.md` + `npm run verify:agent-keys` semantics: EMPTY ≠ owner gap for retired/deferred
-- [ ] Check `docs/OBJECTIVE_SOURCES.md` / `SOURCE_LOOKUP.md` for RETIRED routes before mentioning a key
-- [ ] If the instruction mentions a retired source (e.g. VoteSmart), treat it as **already decided**:
-      use the replacement stack; do not re-litigate key acquisition
-- [ ] Do not re-ask for email, keys, or standards already recorded in `KEYS.md` / core-rules / handoff
+- [ ] Read **this file** (absolute compliance + corpus)
+- [ ] Read **`.cursor/rules/ledger-core-rules.mdc` HARD RULES**
+- [ ] Read **`docs/CURSOR_IMPLEMENTATION_MANUAL.md`** (Cursor-only — every turn)
+- [ ] Confirm task against corpus files that own the domain (data / voice / build as applicable)
+- [ ] Check `KEYS.md` semantics: EMPTY ≠ owner gap for retired/deferred
+- [ ] Check RETIRED routes in OBJECTIVE_SOURCES / SOURCE_LOOKUP before mentioning a key
+- [ ] If the instruction mentions a retired source (e.g. VoteSmart), treat as **already decided**
+- [ ] Do not re-ask for email, keys, or standards already recorded
+- [ ] Plan: handoff log + Confront Claude + no merge without exact-SHA APPROVAL
 
 ---
 
@@ -62,6 +120,12 @@ When discussing keys or sources with the owner:
 - Prefer: “Our checklist still enumerates X as RETIRED/EMPTY for session visibility — you do not
   need to provide it.”
 
+When finishing work/verify:
+
+- Update + commit `docs/workflows/AGENT_HANDOFF_LOG.md`
+- End with **`## Confront Claude — paste to Claude Code`**
+- Do **not** claim complete without commit hash + artifact evidence (core-rules §1.1 D)
+
 ---
 
 ## Owning cross-refs (do not duplicate tables)
@@ -69,7 +133,9 @@ When discussing keys or sources with the owner:
 | Detail | Owner file |
 |--------|------------|
 | Full operating rules | `.cursor/rules/ledger-core-rules.mdc` |
+| Cursor role / STAGE TWO / Confront format | `docs/CURSOR_IMPLEMENTATION_MANUAL.md` |
 | Key SET/EMPTY status | `KEYS.md` |
 | Key → source routing | `docs/OBJECTIVE_SOURCES.md` |
 | Data need → command | `lib/data/SOURCE_LOOKUP.md` |
 | VoteSmart replacement stack | `SOURCE_LOOKUP.md` → Position aggregation (post-VoteSmart) |
+| Cloud port / npm runtime | `AGENTS.md` → Cursor Cloud specific instructions |

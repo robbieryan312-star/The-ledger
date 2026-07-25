@@ -10,6 +10,43 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-25 — PRE-INGEST = Cursor absolute-compliance gate
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS · on PR **#91**  
+**Current state:** `cursor/m-retire-votesmart-70a6` · PR **#91** · tip = `git rev-parse --short origin/cursor/m-retire-votesmart-70a6`
+
+### Objective
+Owner: ensure pre-ingest **and every Cursor-directed rule/guideline/instruction** are included in the gate and followed to absolute undeniable compliance.
+
+### Verdict / outcome
+**PASS** — `ledger-pre-ingest.mdc` rewritten as **Cursor agent compliance gate** with full corpus table (16 binding paths); absolute-compliance language; HARD RULE updated; `preIngestRuleGuard` asserts every corpus path exists + is listed; agent-preflight includes Cursor manual + AGENTS.md; AGENTS.md / Cursor manual point at the gate.
+
+### Commands run (this session)
+- `npx tsx --test scripts/__tests__/preIngestRuleGuard.test.ts`
+- `npm run test:docs-consistency`
+- `npm run agent:preflight`
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `.cursor/rules/ledger-pre-ingest.mdc` | modified | compliance gate + corpus |
+| `.cursor/rules/ledger-core-rules.mdc` | modified | HARD RULE absolute compliance |
+| `scripts/__tests__/preIngestRuleGuard.test.ts` | modified | corpus existence + listing |
+| `scripts/agent-preflight.ts` / `AGENTS.md` / Cursor manual | modified | wire absolute compliance |
+
+### Open / next
+- Claude tip APPROVAL on PR #91 HEAD
+- Owner DOC-01: Cloud injected rules must include `ledger-pre-ingest.mdc`
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**PRE-INGEST absolute compliance + M-RETIRE-VOTESMART:** approve PR **#91** tip = `git rev-parse origin/cursor/m-retire-votesmart-70a6` · gate lists full Cursor corpus · EMPTY≠debt · VoteSmart DEFUNCT  
+**STOP:** tip APPROVAL before merge
+
+---
+
 ## HANDOFF 2026-07-25 — PRE-INGEST RULE (VoteSmart-class confusion ban)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS · on PR **#91** branch  
