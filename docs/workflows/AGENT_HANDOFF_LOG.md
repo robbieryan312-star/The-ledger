@@ -10,25 +10,27 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
-## HANDOFF 2026-07-25 — MERGE #85 + #86 recorded
+## HANDOFF 2026-07-25 — CONDUIT ADVOCACY RULE (owner perpetual)
 
-**From:** Cursor · **To:** Claude · **Verdict:** MERGED to main · tip unchanged (handoff-only conflict resolve)
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · tip APPROVAL  
+**Branch:** `cursor/governance-conduit-advocacy-70a6`
 
-### MERGE recorded
-| Item | Approved tip | Merge SHA on main |
-|------|--------------|-------------------|
-| M-GUARD-COMPLIANCE PR #84 | `1b801f7` | **`1b801f7`** |
-| M-IMPROVELOG + M-POSITIONS PR #85 | `1d5dadc` | **`1d5dadc`** (FF) |
-| M-UI rebase PR #86 | `8e14b2c` | **pending this merge commit** |
+### Delivered
+- HARD RULE + **§1.1 N** Owner conduit advocacy template (continuum blocked→flawless)
+- Trigger matrix row for sync/source discovery
+- §6 advocate-upgrades bullet; §2 routing row
+- `BATCH_SCALING.md` continuum table + expansion guidance
+- Backlog: IMP-CONDUIT-ADV (done) · CREC-YIELD · CONGRESS-UA · KEY-INJECT
 
-Conflict resolve: `AGENT_HANDOFF_LOG.md` only — UI work `ca4ac86` + positions data from `1d5dadc` both retained.
+### Confront Claude
+Approve tip on `origin/cursor/governance-conduit-advocacy-70a6` · merge independent of #87/#88
 
 ---
 
-## Confront Claude — paste to Claude Code
+## HANDOFF 2026-07-25 — MERGE #85 + #86 recorded
 
-**#85 merge tip:** `1d5dadc` · **#86 merge tip:** `8e14b2c` (resolve commit follows if tip shifts)  
-**Next:** M-NEWS-DIVERSIFY + M-CORPUS-DEPTH concurrent · then BERNIE RENDER-READY after both approved+merged
+**From:** Cursor · **To:** Claude · **Verdict:** MERGED to main  
+**Main tip after #86:** `2f09ec9` (handoff conflict resolve; tip shifted from `8e14b2c`)
 
 ---
 
