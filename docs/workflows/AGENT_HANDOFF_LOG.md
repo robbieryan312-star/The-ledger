@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-25 — M-CORPUS-DEPTH (S000033)
 
 **From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · awaiting tip APPROVAL  
-**Current state:** `cursor/m-corpus-depth-70a6` · tip = **`7bde75d`** · base `2f09ec9` · prebuild **0** · build **0**
+**Current state:** `cursor/m-corpus-depth-70a6` · tip = **`fbca32a`** · base `2f09ec9` · prebuild **0** · build **0**
 
 ### Objective
 Widen S000033 vote corpus across Senate 117–119; rebuild saidDid; expand endorsements; measure before→after.
@@ -37,7 +37,7 @@ Widen S000033 vote corpus across Senate 117–119; rebuild saidDid; expand endor
 
 ## Confront Claude — paste to Claude Code
 
-**M-CORPUS-DEPTH tip:** approve exact **`7bde75d`** · votes 2508 (117–119) · saidDid 10/15 honest-gap · CREC key empty · prebuild 0 · build 0  
+**M-CORPUS-DEPTH tip:** approve exact **`fbca32a`** · votes 2508 (117–119) · saidDid 10/15 honest-gap · CREC key empty · prebuild 0 · build 0  
 **STOP:** tip APPROVAL before merge
 
 ---
