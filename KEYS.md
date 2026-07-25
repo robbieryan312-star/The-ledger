@@ -39,8 +39,8 @@ use **Runtime Secret** type so values are redacted from logs/commits), or (2) `.
 `verify:agent-keys` enumerates our **session checklist** (active keys + RETIRED visibility rows).
 An `EMPTY` or `EMPTY (RETIRED)` line does **not** mean the owner omitted a key from their latest
 provision, and does **not** mean the agent pulled a secret from GitHub/Cloud vaults. Agents never
-see secret *values* from GitHub — only SET vs EMPTY. Never ask for RETIRED/DEFUNCT keys
-(any source in the Retired sources record in `docs/OBJECTIVE_SOURCES.md`).
+see secret *values* from GitHub — only SET vs EMPTY. Never ask for keys to sources absent from
+the approved matrix in `docs/OBJECTIVE_SOURCES.md`.
 
 ### Cursor Cloud Agents — Secrets to add (one-time)
 

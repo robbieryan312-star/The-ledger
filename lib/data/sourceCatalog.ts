@@ -485,8 +485,7 @@ export const SOURCE_CATALOG: SourceCatalogEntry[] = [
     notes: 'TERTIARY — FL raw snapshot (`ingest:news-fl`) only; profile News tabs use RSS → GDELT first (AGENT_INDEX §3). Plan 426-limited for broad national use.',
   },
 
-  // Retired / DEFUNCT sources: see docs/OBJECTIVE_SOURCES.md (Retired sources line).
-  // Do not re-add catalog entries that request those keys.
+  // Do not wire sources absent from docs/OBJECTIVE_SOURCES.md (approved matrix).
 
   // ── Deferred (documented alternatives) ───────────────────────────────────
   {

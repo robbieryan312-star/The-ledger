@@ -10,6 +10,56 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-25 — M-VOTESMART-PURGE v2 (owner overrule)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS · awaiting STAGE THREE  
+**Current state:** `cursor/m-votesmart-purge-v2-70a6` · tip **`PENDING_TIP`** · base `main` @ `6422613` (+ NEWS `8e8bc58` + GOVINFO `f748f9d`)
+
+### Objective
+Owner overruled survivors: DELETE OBJECTIVE tombstone (B 1→0); REPLACE VoteSmart-named guard with generic `approvedSourceMatrixGuard` (wired catalog ⊆ matrix).
+
+### Verdict / outcome
+**PASS** — A exit 1 (zero live mentions); B matrix guard 4/4 fail 0; C prebuild 0; D build 0. Tombstone deleted. VoteSmart-named guard + fixture deleted. History docs skipped in path-exists check (append-only).
+
+### Acceptance evidence (this session)
+```
+A) git grep -ci votesmart -- . ':!docs/archive' ':!docs/workflows/AGENT_HANDOFF_LOG.md' \
+     ':!docs/workflows/BATCH_SCALING.md' ':!docs/workflows/IMPROVEMENT_BACKLOG.md'
+   → exit 1, no stdout
+B) npx tsx --test scripts/__tests__/approvedSourceMatrixGuard.test.ts
+   → tests 4 / pass 4 / fail 0
+C) rm -rf .next && npm run prebuild → exit 0
+D) npm run build → exit 0
+```
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/OBJECTIVE_SOURCES.md` | modified | DELETE tombstone; ADD matrix rows PTR/images/USASpending |
+| `scripts/__tests__/approvedSourceMatrixGuard.test.ts` | created | generic matrix + criterion-A guard |
+| `lib/data/approvedSourceMatrix.ts` | created | matrix membership helpers |
+| `lib/data/__fixtures__/approvedSourceMatrixGuard.fixture.ts` | created | known-good fec / known-bad zzzx |
+| `scripts/__tests__/voteSmartRetiredGuard.test.ts` | deleted | replaced by generic |
+| `lib/data/__fixtures__/retiredNpatPurgeGuard.fixture.ts` | deleted | replaced by generic |
+| `scripts/__tests__/docsIntegrityGuard.test.ts` | modified | skip history docs for path-exists |
+| `package.json` | modified | `test:source-integrity` → matrix guard |
+| KEYS/REPO/SOURCE_LOOKUP/core-rules/pre-ingest | modified | no tombstone wording |
+| `docs/workflows/BATCH_SCALING.md` | modified | improvement row PURGE v2 |
+| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | IMP-VOTESMART-PURGE status |
+
+### Open / next
+- Claude STAGE THREE on this tip (exact SHA)
+- Then M-CREC-YIELD (Bernie Said→Did yield)
+- #95 leave open; PARK #76 · m8a · m7a–d
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-VOTESMART-PURGE v2:** approve exact **`PENDING_TIP`** · PR (this branch) · A exit1 · B 4/4 · prebuild/build 0 · tombstone DELETED · generic `approvedSourceMatrixGuard` · ⛔ your STAGE THREE · do not merge without APPROVAL
+
+---
+
 ## HANDOFF 2026-07-25 — PURGE v2 base (merge purge onto main+#93+#94)
 
 **From:** Cursor · **To:** Claude · **Verdict:** WIP — owner-overrule purge next  

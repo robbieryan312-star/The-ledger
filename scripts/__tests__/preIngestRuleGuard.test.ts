@@ -42,7 +42,7 @@ test('ledger-pre-ingest.mdc exists with alwaysApply and binding triggers', () =>
   assert.match(text, /Cursor agent compliance gate|Cursor compliance gate/);
   assert.match(text, /EMPTY ≠ owner debt|EMPTY is session inventory|not an owner debt/i);
   assert.match(text, /RETIRED\s*\/\s*DEFUNCT|RETIRED \/ DEFUNCT/i);
-  assert.match(text, /Retired sources record|OBJECTIVE_SOURCES\.md/i);
+  assert.match(text, /OBJECTIVE_SOURCES\.md/);
   assert.match(text, /Never imply|never imply/i);
   assert.match(text, /Confront Claude/);
   assert.match(text, /CURSOR_IMPLEMENTATION_MANUAL/);

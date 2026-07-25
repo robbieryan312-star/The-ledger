@@ -81,7 +81,7 @@ awareness of the loop; do **not** usurp Claude’s review/APPROVAL role.
 
 **Binding behaviors:**
 
-1. **Never ask the owner for a RETIRED/DEFUNCT key** (any source in the Retired sources record in `docs/OBJECTIVE_SOURCES.md`).
+1. **Never ask the owner for a key to a source absent from the approved matrix** in `docs/OBJECTIVE_SOURCES.md`.
 2. **Never imply** we accessed a secret list, GitHub vault value, or Cloud secret beyond SET/EMPTY
    status. GitHub/Cloud secret *values* are write-only to agents — we only see presence.
 3. **`EMPTY` on a checklist is our inventory, not an owner debt.** When reporting keys, label
@@ -104,7 +104,7 @@ Before interpreting the latest owner/Claude text or starting work:
 - [ ] Confirm task against corpus files that own the domain (data / voice / build as applicable)
 - [ ] Check `KEYS.md` semantics: EMPTY ≠ owner gap for retired/deferred
 - [ ] Check RETIRED routes in OBJECTIVE_SOURCES / SOURCE_LOOKUP before mentioning a key
-- [ ] If the instruction mentions a retired source (any source in the Retired sources record in `docs/OBJECTIVE_SOURCES.md`), treat as **already decided**
+- [ ] If the instruction mentions a dead/absent source (not in the `docs/OBJECTIVE_SOURCES.md` matrix), treat as **already decided**: do not re-key
 - [ ] Do not re-ask for email, keys, or standards already recorded
 - [ ] Plan: handoff log + Confront Claude + no merge without exact-SHA APPROVAL
 

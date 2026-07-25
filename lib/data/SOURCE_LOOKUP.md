@@ -91,7 +91,8 @@ Log long syncs: `npm run sync:<name> 2>&1 | tee /tmp/ledger-<name>.log`
 
 ## Retired / DEFUNCT sources (never request key)
 
-Canonical record: `docs/OBJECTIVE_SOURCES.md` (Retired sources line). Do not re-request those keys.
+Canonical approval matrix: `docs/OBJECTIVE_SOURCES.md`. Absence from that matrix means do not wire
+or re-request a key for the source.
 
 ### Position aggregation
 

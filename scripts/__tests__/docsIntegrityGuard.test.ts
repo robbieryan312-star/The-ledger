@@ -29,6 +29,13 @@ const ALLOW_MISSING_PATHS = new Set([
   'lib/data/generated/newsNational.json',
 ]);
 
+/** Append-only history docs may cite retired paths; skip path-exists for those files only. */
+const HISTORY_DOC_BASENAMES = new Set([
+  'AGENT_HANDOFF_LOG.md',
+  'BATCH_SCALING.md',
+  'IMPROVEMENT_BACKLOG.md',
+]);
+
 /** Load simple .gitignore patterns (exact paths + single-segment globs). */
 function loadGitignorePatterns(): string[] {
   const giPath = path.join(projectRoot, '.gitignore');
@@ -77,7 +84,10 @@ function loadPackageScripts(): Set<string> {
   return new Set(Object.keys(pkg.scripts ?? {}));
 }
 
-function collectDocCitations(): { npmScripts: string[]; paths: string[] } {
+function collectDocCitations(opts?: {
+  includeHistoryDocs?: boolean;
+}): { npmScripts: string[]; paths: string[] } {
+  const includeHistoryDocs = opts?.includeHistoryDocs ?? true;
   const npmScripts: string[] = [];
   const paths: string[] = [];
   const npmRe = /npm run ([a-zA-Z0-9:_-]+)/g;
@@ -91,6 +101,7 @@ function collectDocCitations(): { npmScripts: string[]; paths: string[] } {
           .map((f) => path.join(root, f))
       : walkMd(root);
     for (const file of files) {
+      if (!includeHistoryDocs && HISTORY_DOC_BASENAMES.has(path.basename(file))) continue;
       const text = readFileSync(file, 'utf8');
       let m: RegExpExecArray | null;
       while ((m = npmRe.exec(text)) !== null) {
@@ -116,7 +127,8 @@ test('every npm run script cited in docs exists in package.json', () => {
 });
 
 test('every backtick repo path cited in docs exists on disk', () => {
-  const { paths } = collectDocCitations();
+  // History docs are append-only and may cite retired paths — exclude from existence check.
+  const { paths } = collectDocCitations({ includeHistoryDocs: false });
   const missing = [...new Set(paths)].filter(
     (p) => !existsSync(path.join(projectRoot, p)) && !ALLOW_MISSING_PATHS.has(p),
   ).sort();

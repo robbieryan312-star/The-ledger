@@ -739,7 +739,7 @@ Reference files before asking the owner anything: `KEYS.md`, `REPO.md`, `PROGRES
 - **End a work/verify turn without updating + committing `docs/workflows/AGENT_HANDOFF_LOG.md`** (§1.1 J)
 - Ask the owner if they are "ready to continue" — proceed until blocked
 - Ask for owner email — it is in `KEYS.md`
-- Never request a key for any source in the Retired sources record in `docs/OBJECTIVE_SOURCES.md`; OpenSecrets deferred in `SOURCE_LOOKUP.md` (see `ledger-pre-ingest.mdc`)
+- Never request a key for a source absent from the approved matrix in `docs/OBJECTIVE_SOURCES.md`; OpenSecrets deferred in `SOURCE_LOOKUP.md` (see `ledger-pre-ingest.mdc`)
 - Treat checklist `EMPTY` as owner debt, or imply vault access beyond SET/EMPTY (pre-ingest ban)
 - Create or work in the legacy `code` GitHub repo
 - Assume API keys are missing without reading `.env.local` key names
