@@ -67,12 +67,28 @@ sub-files** — they live in this file's key matrix and in per-state pipeline do
 | Cost of living (components/metros) | BEA Data API | `BEA_API_KEY` | EMPTY (owner CAPTCHA pending) | `ingest:bea-rpp-fl` → `FLORIDA_DATA.md` | FRED keyless CSV covers the all-items state index |
 | Labor/employment (state, county, metro CPI) | BLS API | `BLS_API_KEY` (optional) | keyless OK | `ingest:bls-*` → `FLORIDA_DATA.md` | Keyless works at low volume |
 | Court opinions | CourtListener | `COURTLISTENER_API_KEY` (optional) | keyless OK | `ingest:courts-fl` → `FLORIDA_DATA.md` | Keyless works for basic use |
-| Position surveys | Vote Smart | `VOTESMART_API_KEY` | EMPTY | — | Deferred — Ballotpedia + CREC substitute |
+| — RETIRED — | Vote Smart / NPAT | `VOTESMART_API_KEY` | do not use | — | RETIRED/DEFUNCT 2026-07-25 — gated/dead; do not re-key |
 | — RETIRED — | ProPublica Congress API | `PROPUBLICA_CONGRESS_KEY` | do not use | — | API retired upstream |
 
 **Currently unobtainable (stop re-attempting; honest gap in UI):** Senate eFD stock trades
-(upstream 503), VoteSmart NPAT (deferred), OpenSecrets API (deferred — FEC Schedule A
+(upstream 503), VoteSmart NPAT (**retired**), OpenSecrets API (deferred — FEC Schedule A
 substitute), SAM.gov entity details (identity verification wall). See `PROGRESS.md` blockers.
+
+---
+
+## COLLECTION RULES — channel proof before routing (owner 2026-07-22 · perpetual)
+
+1. **Prove a channel BEFORE it becomes routed guidance.** Before any new source/channel is
+   written into this file, `SOURCE_LOOKUP.md`, or `sourceCatalog.ts` as the route for a data
+   need, agents MUST complete one end-to-end acquisition on a **known-good control member**
+   through the same code path a real batch would use (not hand-pasted):
+   - extract usable qualified records into the correct destination file
+   - guards / prebuild green
+   - report items + provenance in Confront-Claude
+2. **PASS** → update routing docs with `proven YYYY-MM-DD on <bioguideId>`.
+3. **FAIL** → mark the channel unobtainable (same class as VoteSmart retired / eFD 503);
+   do **not** write an unproven channel into routing docs; honest-gap stands.
+4. Applies to every NEW source/channel going forward — no exceptions.
 
 ---
 
@@ -101,7 +117,7 @@ substitute), SAM.gov entity details (identity verification wall). See `PROGRESS.
 | ProPublica (journalism + datastores) | none | Investigative + machine-readable data; Nonprofit Explorer API (1.8M nonprofits incl. 501(c)(4)s) | propublica.org/datastore · projects.propublica.org/nonprofits/api |
 | GovTrack | none | Legislative data, member stats | govtrack.us |
 | Voteview | none (academic) | DW-NOMINATE ideology scores | voteview.com |
-| Ballotpedia | none | Encyclopedia of officials/elections | ballotpedia.org |
+| Ballotpedia | none | Encyclopedia of officials/elections; **platform stances** via member-page Political positions scrape (`fetchBallotpediaPositions`) — **proven 2026-07-25 on M000355** (qualified stances → `profiles/{id}/positions.json`) | ballotpedia.org |
 | OpenSecrets | none | Donor/lobbying context; revolving-door + dark-money databases | opensecrets.org/revolving · /outsidespending |
 | CourtListener (Free Law Project) | none | All federal opinions, PACER dockets, judge profiles — tier per Ledger precedent: aggregator = nonpartisan; linked opinion doc = official | api: courtlistener.com/api/rest/v3/ (search `?q={name}&type=r`) |
 | PolitiFact | none (methodology) | Fact-checks, 3-editor review; per-politician feeds | politifact.com/rss/people/{slug}/ |

@@ -29,7 +29,6 @@ per-key **SET vs EMPTY status** below; do not duplicate routing here.
 | `COURTLISTENER_API_KEY` | FL court opinion cluster/opinion detail (`/search/` is keyless) |
 | `OPENSTATES_API_KEY` | FL state legislators |
 | `NEWSAPI_KEY` | FL news ingest (**deferred** — NewsAPI 426 plan restriction; national uses RSS/GDELT) |
-| `PROPUBLICA_CONGRESS_KEY` | **Retired** — do not use |
 
 **Cloud agent sessions:** keys load from (1) **Cursor Cloud Agents → Secrets** (recommended —
 use **Runtime Secret** type so values are redacted from logs/commits), or (2) `.env.local`
@@ -61,11 +60,19 @@ After adding keys: `npm run sync:fec` → `npm run sync:votes` → `npm run sync
 
 ---
 
+## RETIRED / DEFUNCT — do not use
+
+| Env var | Status |
+|---------|--------|
+| `PROPUBLICA_CONGRESS_KEY` | **Retired** — do not use |
+| `VOTESMART_API_KEY` | **Retired / DEFUNCT** — do not use (NPAT gated/dead; Ballotpedia + CREC only) |
+
+---
+
 ## EMPTY — priority
 
 | Env var | Action |
 |---------|--------|
-| `VOTESMART_API_KEY` | **Deferred** — use Ballotpedia + GovInfo CREC |
 | `OPENSECRETS_API_KEY` | **Deferred** — use FEC Schedule A (Phase 17) |
 | `GOOGLE_CIVIC_API_KEY` | **Deferred** — elections demo until MIT bulk pipeline |
 | `MEDIASTACK_API_KEY` | **Deferred** — GDELT covers news |

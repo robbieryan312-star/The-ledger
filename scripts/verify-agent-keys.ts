@@ -4,6 +4,9 @@
  */
 import { loadEnvLocal } from './lib/ingest-utils';
 
+/** Retired — never required; listed only for SET/EMPTY visibility if present. */
+const RETIRED_KEYS = ['PROPUBLICA_CONGRESS_KEY', 'VOTESMART_API_KEY'] as const;
+
 const AGENT_KEYS = [
   'FEC_API_KEY',
   'CONGRESS_API_KEY',
@@ -15,7 +18,6 @@ const AGENT_KEYS = [
   'OPENSTATES_API_KEY',
   'NEWSAPI_KEY',
   'COURTLISTENER_API_KEY',
-  'VOTESMART_API_KEY',
   'SAM_API_KEY',
 ] as const;
 
@@ -27,6 +29,10 @@ async function main(): Promise<void> {
     const status = val ? `SET (${val.length} chars)` : 'EMPTY';
     if (val) set += 1;
     console.log(`${key}: ${status}`);
+  }
+  for (const key of RETIRED_KEYS) {
+    const val = process.env[key]?.trim() ?? '';
+    console.log(`${key}: ${val ? 'SET (RETIRED — ignore)' : 'EMPTY (RETIRED)'}`);
   }
   console.log(`\n${set}/${AGENT_KEYS.length} keys available in this session`);
   if (set === 0) {

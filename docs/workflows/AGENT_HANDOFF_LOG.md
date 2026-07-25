@@ -10,6 +10,52 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+---
+
+## HANDOFF 2026-07-25 — M-RETIRE-VOTESMART + M-CHANNEL-PROOF ⛔ STOP
+
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
+**Current state:** `cursor/m-retire-votesmart-channel-proof-70a6` · tip = **`336be06`** (verify `git rev-parse origin/cursor/m-retire-votesmart-channel-proof-70a6`) · B/C/D on `main` · prebuild **0** · build **0**
+
+### MERGE B→C→D (done on main)
+| Batch | Approved tip | Merge on main |
+|-------|--------------|---------------|
+| B | `0af3ac7` | `50fb14b` (PR #80) |
+| C | `ef27925` work + resolve `4a0e368` | `eeacc58` |
+| D | `a28facc` work + resolve `959c42f` | `d7711f5` |
+
+### M-RETIRE-VOTESMART
+- `VOTESMART_API_KEY` → **RETIRED/DEFUNCT** (KEYS, catalog `retired`, OBJECTIVE_SOURCES, SOURCE_LOOKUP)
+- sync path removed (`api.votesmart.org` gone); guard `voteSmartRetiredGuard.test.ts` 4/4 wired into `test:source-integrity` / prebuild
+- verify-agent-keys: active list excludes VoteSmart; RETIRED_KEYS notice only
+
+### M-CHANNEL-PROOF (Ballotpedia platform) — **PASS** on M000355
+- Code path: `fetchBallotpediaPositions` + `isDisqualifiedPlatformPosition` + topic-class match (`classifyTextToRecordTopicId === bucket`)
+- Destination: `lib/data/generated/profiles/M000355/positions.json` · **5** qualified · status `filled`
+- Extracted (verbatim · `asOf` 2026-07-25 · URL ballotpedia.org/Mitch_McConnell · tier `nonpartisan`):
+  1. **defense-veterans** — defense funding YOY / troop pay / Fort Knox–Campbell–Bluegrass Depot
+  2. **education** — SE KY Community & Technical College aid appeal + Berea endowment
+  3. **civil-liberties** — Scalia hold → Gorsuch; Kavanaugh confirmation
+  4. **civil-liberties** — judiciary confirmations (circuit/district; Kentuckians)
+  5. **economy-taxes** — tax package / jobs / wages
+- Report: `data/reports/channel-proof-ballotpedia-platform-M000355-2026-07-25.json`
+- Routing docs stamped **proven 2026-07-25 on M000355**; OBJECTIVE_SOURCES perpetual channel-proof collection rule
+- Note for Claude: opioid/coal-miner Ballotpedia paragraphs now classify as `legislation` under `classifyTextToRecordTopicId` and are dropped by topic-class filter (channel still ≥3 PASS)
+
+**PARK:** #76 · m8a · m7a–d · M-UI #68 STAGE THREE · Florida until Bernie lock + OWNER visual
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-RETIRE-VOTESMART + M-CHANNEL-PROOF tip:** approve exact **`336be06`** · prebuild 0 · build 0  
+**VoteSmart:** RETIRED/DEFUNCT · guard in prebuild green  
+**Ballotpedia platform channel:** **PASS** M000355 · **5** qualified → `profiles/M000355/positions.json` · proven stamp in SOURCE_LOOKUP + OBJECTIVE_SOURCES  
+**B/C/D:** on main · **STOP:** tip APPROVAL; then M-UI #68 STAGE THREE; Bernie render → OWNER visual
+
+---
+
+
 ## HANDOFF 2026-07-25 — MERGE B→C→D resolve
 
 **From:** Cursor · **To:** Claude · **Verdict:** B **MERGED** `0af3ac7` · C **MERGED** tip `4a0e368` → main `eeacc58` · D merge-resolve next · prebuild/build pending

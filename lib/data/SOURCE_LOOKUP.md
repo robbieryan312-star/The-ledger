@@ -37,7 +37,7 @@ Pipeline commands: `docs/FLORIDA_DATA.md`.
 | Roll-call votes (**Did**) | Congress.gov + Senate LIS XML | Voting Record | `sync:votes-national` → `data/national/votes/congress-votes.json` |
 | Campaign totals | OpenFEC | Money & Donors | `sync:fec-national` → `data/national/fec/congress-finance.json` |
 | Itemized donors / PACs (**Phase 17**) | OpenFEC Schedule A | Follow the Money · Topic context | `sync:fec-schedule-a` → `schedule-a.json` |
-| Platform / survey text (**Said**) | Ballotpedia scrape | Track Record · Topic Record | `sync:topic-positions` → `topicPositions.json` |
+| Platform / survey text (**Said**) | Ballotpedia member-page Political positions scrape (**proven 2026-07-25 on M000355**) | Track Record · Topic Record | `fetchBallotpediaPositions` via `sync:topic-positions` / `prove-ballotpedia-platform-channel` → `profiles/{id}/positions.json` (migrated; not mega-bundle) |
 | Floor speech verbatim (**Said**) | GovInfo Congressional Record | Track Record · `statements[]` | Extend `sync:topic-positions` (key SET) |
 | Journalism quote (**Said**) | Approved outlets (curated) | Track Record promise diff | Featured / future curated JSON |
 | Said→Did pairing | topicPositions + voteTopicId | Track Record | `buildSaidDidDiffsFromTopicPositions` |
@@ -89,11 +89,11 @@ Log long syncs: `npm run sync:<name> 2>&1 | tee /tmp/ledger-<name>.log`
 
 ---
 
-## Deferred sources (do not block work)
+## Retired / deferred sources (do not block work)
 
-| Source | Why deferred | Use instead |
-|--------|--------------|-------------|
-| VoteSmart NPAT | Application / bot 403 | Ballotpedia + GovInfo CREC |
+| Source | Why | Use instead |
+|--------|-----|-------------|
+| VoteSmart NPAT | **RETIRED/DEFUNCT** (2026-07-25) — do not re-key | Ballotpedia member-page platform scrape (**proven 2026-07-25 on M000355**) + GovInfo CREC |
 | OpenSecrets API | Public API discontinued Apr 2025 | FEC Schedule A + org registry |
 | Google Civic | Representatives endpoint deprecated | MIT Election Lab bulk / demo until pipeline |
 | mediastack | Redundant | GDELT (no key) |
