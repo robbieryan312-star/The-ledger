@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-25 — M-VOTESMART-PURGE v2 (owner overrule)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS · awaiting STAGE THREE  
-**Current state:** `cursor/m-votesmart-purge-v2-70a6` · tip **`a219445`** · base `main` @ `6422613` (+ NEWS `8e8bc58` + GOVINFO `f748f9d`)
+**Current state:** `cursor/m-votesmart-purge-v2-70a6` · tip **`088f0f9`** · base `main` @ `6422613` (+ NEWS `8e8bc58` + GOVINFO `f748f9d`)
 
 ### Objective
 Owner overruled survivors: DELETE OBJECTIVE tombstone (B 1→0); REPLACE VoteSmart-named guard with generic `approvedSourceMatrixGuard` (wired catalog ⊆ matrix).
@@ -56,7 +56,7 @@ D) npm run build → exit 0
 
 ## Confront Claude — paste to Claude Code
 
-**M-VOTESMART-PURGE v2:** approve exact **`a219445`** · PR (this branch) · A exit1 · B 4/4 · prebuild/build 0 · tombstone DELETED · generic `approvedSourceMatrixGuard` · ⛔ your STAGE THREE · do not merge without APPROVAL
+**M-VOTESMART-PURGE v2:** approve exact **`088f0f9`** · PR (this branch) · A exit1 · B 4/4 · prebuild/build 0 · tombstone DELETED · generic `approvedSourceMatrixGuard` · ⛔ your STAGE THREE · do not merge without APPROVAL
 
 ---
 
