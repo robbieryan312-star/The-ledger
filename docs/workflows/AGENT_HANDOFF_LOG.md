@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-25 — PRE-INGEST RULE (VoteSmart-class confusion ban)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS · on PR **#91** branch  
-**Current state:** `cursor/m-retire-votesmart-70a6` · PR **#91** · pre-ingest rule shipped · `preIngestRuleGuard` **3/3** · `test:docs-consistency` **17/17** · tree noted at commit
+**Current state:** `cursor/m-retire-votesmart-70a6` · PR **#91** · tip **`7656755`** · pre-ingest rule shipped · `preIngestRuleGuard` **3/3** · `test:docs-consistency` **17/17** · prebuild/build **0**
 
 ### Objective
 Owner asked for an explicit, intuitively necessary rule under `.cursor/rules/` that agents must review **before every owner/Claude instruction and before every act/response** — so checklist `EMPTY` is never confused with owner-provided keys (VoteSmart incident).
@@ -22,7 +22,7 @@ Owner asked for an explicit, intuitively necessary rule under `.cursor/rules/` t
 **PASS** — added alwaysApply `.cursor/rules/ledger-pre-ingest.mdc`; HARD RULE + session-start #1 in core-rules; wired REPO / AGENT_INDEX / KEYS / CURSOR manual / agent-preflight; build guard `preIngestRuleGuard`.
 
 ### Commits
-- (this tip) — pre-ingest rule + guard + session-start wiring
+- `7656755` — rules(pre-ingest): alwaysApply hygiene before every owner/Claude turn
 
 ### Commands run (this session)
 - `npx tsx --test scripts/__tests__/preIngestRuleGuard.test.ts` → 3/3
@@ -47,7 +47,7 @@ Owner asked for an explicit, intuitively necessary rule under `.cursor/rules/` t
 
 ## Confront Claude — paste to Claude Code
 
-**PRE-INGEST + M-RETIRE-VOTESMART:** approve PR **#91** tip = `git rev-parse origin/cursor/m-retire-votesmart-70a6` · work `b86b775` + pre-ingest `ledger-pre-ingest.mdc` · EMPTY≠owner debt · VoteSmart DEFUNCT  
+**PRE-INGEST + M-RETIRE-VOTESMART:** approve exact **`7656755`** · PR **#91** · work VoteSmart `b86b775` + pre-ingest `ledger-pre-ingest.mdc` · EMPTY≠owner debt · VoteSmart DEFUNCT · prebuild/build 0  
 **STOP:** tip APPROVAL before merge to main
 
 ---
