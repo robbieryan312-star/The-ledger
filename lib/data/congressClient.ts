@@ -121,7 +121,13 @@ async function congressFetch<T>(path: string, params: Record<string, string> = {
     url.searchParams.set(k, v);
   }
 
-  const { response: res } = await fetchWithRetry(url.toString(), { timeoutMs: 30_000 });
+  const { response: res } = await fetchWithRetry(url.toString(), {
+    timeoutMs: 30_000,
+    headers: {
+      Accept: 'application/json',
+      'User-Agent': 'TheLedger/1.0 (civic research; +https://github.com/robbieryan312-star/The-ledger)',
+    },
+  });
   if (!res.ok) {
     const body = await res.text().catch(() => '');
     if (res.status === 403 && body.includes('API_KEY_INVALID')) {

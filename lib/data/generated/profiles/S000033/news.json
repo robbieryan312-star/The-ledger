@@ -3,18 +3,35 @@
   "status": "filled",
   "items": [
     {
+      "id": "s000033-topic-11",
+      "headline": "If only Bernie Sanders had won the nomination in 2016",
+      "summary": "Author Bill Press argues that the Democratic Party's efforts to suppress Bernie Sanders during the 2016 primary prevented a strong candidate from defeating Donald Trump, a mistake he believes current…",
+      "date": "2026-07-21",
+      "category": "Congress",
+      "isOpinion": true,
+      "isVerified": true,
+      "url": "https://thehill.com/opinion/campaign/5979607-sanders-vs-trump-populism/",
+      "source": {
+        "name": "The Hill News",
+        "url": "https://thehill.com/opinion/campaign/5979607-sanders-vs-trump-populism/",
+        "tier": "media",
+        "date": "2026-07-21",
+        "description": "Approved-outlet member topic/tag RSS"
+      }
+    },
+    {
       "id": "s000033-topic-1",
       "headline": "Bernie Sanders calls on Graham Platner to withdraw from Senate race amid sexual assault claims",
       "summary": "Sanders, one of Platner’s earliest and most influential backers, is latest to call on him to withdraw from Maine race The progressive senator Bernie Sanders called on Graham Platner to withdraw from…",
       "date": "2026-07-07",
       "category": "Congress",
       "isOpinion": false,
-      "isVerified": false,
+      "isVerified": true,
       "url": "https://www.theguardian.com/us-news/2026/jul/07/bernie-sanders-graham-platner-maine-senate-race",
       "source": {
         "name": "The Guardian",
         "url": "https://www.theguardian.com/us-news/2026/jul/07/bernie-sanders-graham-platner-maine-senate-race",
-        "tier": "alleged",
+        "tier": "media",
         "date": "2026-07-07",
         "description": "Approved-outlet member topic/tag RSS"
       }
@@ -37,20 +54,71 @@
       }
     },
     {
+      "id": "s000033-hub-1",
+      "headline": "AP Exclusive: Bernie Sanders unveils plan to give the public direct ownership of AI companies",
+      "summary": "Sen. Bernie Sanders is proposing a plan to give Americans ownership stakes in the country’s largest artificial intelligence companies.",
+      "date": "2026-06-17",
+      "category": "Congress",
+      "isOpinion": false,
+      "isVerified": true,
+      "url": "https://apnews.com/article/bernie-sanders-ai-public-ownership-57b9f20d96490083e2749adba0f13977",
+      "source": {
+        "name": "AP News",
+        "url": "https://apnews.com/article/bernie-sanders-ai-public-ownership-57b9f20d96490083e2749adba0f13977",
+        "tier": "nonpartisan",
+        "date": "2026-06-17",
+        "description": "Approved-outlet member hub/search discovery"
+      }
+    },
+    {
       "id": "s000033-topic-2",
       "headline": "Bernie Sanders’ AI sovereign wealth fund plan is good. But we think this is better | Nathan E Sanders and Bruce Schneier",
       "summary": "While we do not outright oppose the taking of AI company stock, or of a US a sovereign wealth fund, there are better ways to achieve the senator’s goals Let no one accuse Bernie Sanders of ducking…",
       "date": "2026-06-08",
       "category": "Congress",
       "isOpinion": true,
-      "isVerified": false,
+      "isVerified": true,
       "url": "https://www.theguardian.com/commentisfree/2026/jun/08/bernie-sanders-ai-sovereign-wealth-fund-plan",
       "source": {
         "name": "The Guardian",
         "url": "https://www.theguardian.com/commentisfree/2026/jun/08/bernie-sanders-ai-sovereign-wealth-fund-plan",
-        "tier": "alleged",
+        "tier": "media",
         "date": "2026-06-08",
         "description": "Approved-outlet member topic/tag RSS"
+      }
+    },
+    {
+      "id": "s000033-hub-2",
+      "headline": "Donald Trump, Bernie Sanders and Sam Altman are all talking about public ownership in AI",
+      "summary": "OpenAI CEO Sam Altman has met with Sen. Bernie Sanders to discuss public ownership in AI companies — a meeting that highlighted the tension between AI powerhouses and policymakers.",
+      "date": "2026-06-06",
+      "category": "Congress",
+      "isOpinion": false,
+      "isVerified": true,
+      "url": "https://apnews.com/article/sam-altman-ai-bernie-sanders-trump-public-ownership-772224f9cd138eb79d3ef3336858a5d5",
+      "source": {
+        "name": "AP News",
+        "url": "https://apnews.com/article/sam-altman-ai-bernie-sanders-trump-public-ownership-772224f9cd138eb79d3ef3336858a5d5",
+        "tier": "nonpartisan",
+        "date": "2026-06-06",
+        "description": "Approved-outlet member hub/search discovery"
+      }
+    },
+    {
+      "id": "s000033-hub-3",
+      "headline": "Sen. Bernie Sanders stands by Graham Platner after controversy over sexually explicit texts",
+      "summary": "Vermont Sen. Bernie Sanders says he is standing by Graham Platner in the wake of media reports that the Maine Senate candidate previously exchanged sexually explicit text messages with several women.",
+      "date": "2026-06-01",
+      "category": "Congress",
+      "isOpinion": false,
+      "isVerified": true,
+      "url": "https://apnews.com/article/graham-platner-texting-senate-bernie-sanders-79a0d66fb25f711a9b04d6f655f5ee00",
+      "source": {
+        "name": "AP News",
+        "url": "https://apnews.com/article/graham-platner-texting-senate-bernie-sanders-79a0d66fb25f711a9b04d6f655f5ee00",
+        "tier": "nonpartisan",
+        "date": "2026-06-01",
+        "description": "Approved-outlet member hub/search discovery"
       }
     },
     {
@@ -60,12 +128,12 @@
       "date": "2026-05-21",
       "category": "Congress",
       "isOpinion": false,
-      "isVerified": false,
+      "isVerified": true,
       "url": "https://www.theguardian.com/us-news/2026/may/21/bernie-sanders-backs-climate-activist-michigan-race",
       "source": {
         "name": "The Guardian",
         "url": "https://www.theguardian.com/us-news/2026/may/21/bernie-sanders-backs-climate-activist-michigan-race",
-        "tier": "alleged",
+        "tier": "media",
         "date": "2026-05-21",
         "description": "Approved-outlet member topic/tag RSS"
       }
@@ -77,12 +145,12 @@
       "date": "2026-04-30",
       "category": "Congress",
       "isOpinion": false,
-      "isVerified": false,
+      "isVerified": true,
       "url": "https://www.theguardian.com/us-news/2026/apr/29/bernie-sanders-ai-panel",
       "source": {
         "name": "The Guardian",
         "url": "https://www.theguardian.com/us-news/2026/apr/29/bernie-sanders-ai-panel",
-        "tier": "alleged",
+        "tier": "media",
         "date": "2026-04-30",
         "description": "Approved-outlet member topic/tag RSS"
       }
@@ -94,118 +162,16 @@
       "date": "2026-04-16",
       "category": "Congress",
       "isOpinion": false,
-      "isVerified": false,
+      "isVerified": true,
       "url": "https://www.theguardian.com/us-news/2026/apr/15/bernie-sanders-pushes-military-block-israel",
       "source": {
         "name": "The Guardian",
         "url": "https://www.theguardian.com/us-news/2026/apr/15/bernie-sanders-pushes-military-block-israel",
-        "tier": "alleged",
+        "tier": "media",
         "date": "2026-04-16",
-        "description": "Approved-outlet member topic/tag RSS"
-      }
-    },
-    {
-      "id": "s000033-topic-6",
-      "headline": "No more US military aid to Israel | Bernie Sanders",
-      "summary": "The time is long overdue for members of Congress to listen to the American people and end US military aid to the extremist Netanyahu government I am a proud Jewish American.",
-      "date": "2026-04-15",
-      "category": "Congress",
-      "isOpinion": true,
-      "isVerified": false,
-      "url": "https://www.theguardian.com/commentisfree/2026/apr/15/no-more-us-military-aid-to-israel",
-      "source": {
-        "name": "The Guardian",
-        "url": "https://www.theguardian.com/commentisfree/2026/apr/15/no-more-us-military-aid-to-israel",
-        "tier": "alleged",
-        "date": "2026-04-15",
-        "description": "Approved-outlet member topic/tag RSS"
-      }
-    },
-    {
-      "id": "s000033-topic-7",
-      "headline": "Bernie Sanders warns ‘worst is yet to come’ in rallying cry against billionaires",
-      "summary": "US senator appears at Manhattan rally alongside New York City mayor Zohran Mamdani, who cautioned that AI is ‘coming for human jobs’ Bernie Sanders has sounded an alarm over the US economy, warning…",
-      "date": "2026-04-13",
-      "category": "Congress",
-      "isOpinion": false,
-      "isVerified": false,
-      "url": "https://www.theguardian.com/us-news/2026/apr/13/bernie-sanders-warns-worst-is-yet-to-come-in-rallying-cry-against-billionaires",
-      "source": {
-        "name": "The Guardian",
-        "url": "https://www.theguardian.com/us-news/2026/apr/13/bernie-sanders-warns-worst-is-yet-to-come-in-rallying-cry-against-billionaires",
-        "tier": "alleged",
-        "date": "2026-04-13",
-        "description": "Approved-outlet member topic/tag RSS"
-      }
-    },
-    {
-      "id": "s000033-topic-8",
-      "headline": "Bernie Sanders and AOC introduce bill to pause building of new datacenters",
-      "summary": "Lawmakers say moratorium on construction would buy time to create strong, federal guardrails for AI Amid an unprecedented energy crisis and the rapid buildout of artificial intelligence…",
-      "date": "2026-03-25",
-      "category": "Congress",
-      "isOpinion": false,
-      "isVerified": false,
-      "url": "https://www.theguardian.com/us-news/2026/mar/25/datacenters-bernie-sanders-aoc",
-      "source": {
-        "name": "The Guardian",
-        "url": "https://www.theguardian.com/us-news/2026/mar/25/datacenters-bernie-sanders-aoc",
-        "tier": "alleged",
-        "date": "2026-03-25",
-        "description": "Approved-outlet member topic/tag RSS"
-      }
-    },
-    {
-      "id": "s000033-topic-9",
-      "headline": "Bernie Sanders and Ro Khanna propose bill to impose wealth tax on billionaires",
-      "summary": "Make billionaires pay their fair share act would apply to those with a net worth of $1bn or more Sign up for the Breaking News US email to get newsletter alerts in your inbox Senator Bernie Sanders…",
-      "date": "2026-03-02",
-      "category": "Congress",
-      "isOpinion": false,
-      "isVerified": false,
-      "url": "https://www.theguardian.com/us-news/2026/mar/02/bernie-sanders-ro-khanna-billionaires-wealth-tax-bill",
-      "source": {
-        "name": "The Guardian",
-        "url": "https://www.theguardian.com/us-news/2026/mar/02/bernie-sanders-ro-khanna-billionaires-wealth-tax-bill",
-        "tier": "alleged",
-        "date": "2026-03-02",
-        "description": "Approved-outlet member topic/tag RSS"
-      }
-    },
-    {
-      "id": "s000033-topic-10",
-      "headline": "‘Slow this thing down’: Sanders warns US has no clue about speed and scale of coming AI revolution",
-      "summary": "After meeting with unspecified tech leaders, senator calls for urgent policy action as companies race to build ever more powerful systems Bernie Sanders has warned that Congress and the American…",
-      "date": "2026-02-21",
-      "category": "Congress",
-      "isOpinion": false,
-      "isVerified": false,
-      "url": "https://www.theguardian.com/us-news/2026/feb/21/ai-revolution-bernie-sanders-warning",
-      "source": {
-        "name": "The Guardian",
-        "url": "https://www.theguardian.com/us-news/2026/feb/21/ai-revolution-bernie-sanders-warning",
-        "tier": "alleged",
-        "date": "2026-02-21",
-        "description": "Approved-outlet member topic/tag RSS"
-      }
-    },
-    {
-      "id": "s000033-topic-13",
-      "headline": "Bernie Sanders rails against billionaire ‘greed’ amid California tax battle",
-      "summary": "In a fiery speech in Los Angeles, the Vermont senator criticizes ‘grotesque’ levels of economic inequality Billionaires are “treading on very, very thin ice,” Bernie Sanders warned on Wednesday…",
-      "date": "2026-02-19",
-      "category": "Congress",
-      "isOpinion": false,
-      "isVerified": false,
-      "url": "https://www.theguardian.com/us-news/2026/feb/19/bernie-sanders-rails-against-billionaire-greed-amid-california-tax-battle",
-      "source": {
-        "name": "The Guardian",
-        "url": "https://www.theguardian.com/us-news/2026/feb/19/bernie-sanders-rails-against-billionaire-greed-amid-california-tax-battle",
-        "tier": "alleged",
-        "date": "2026-02-19",
         "description": "Approved-outlet member topic/tag RSS"
       }
     }
   ],
-  "note": "12 relevant article(s) from RSS, topic/tag feeds, GDELT, and NewsAPI (target 15)."
+  "note": "10 relevant article(s) from RSS, topic/tag feeds, GDELT, and NewsAPI (target 15). Outlet cap ≤50% applied (max The Guardian 50%). Hub exhaustion: AP News:found=63/qualified=6; NPR:found=0/qualified=0."
 }

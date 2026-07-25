@@ -78,20 +78,21 @@ export function hasDirectMemberQuote(
   const ln = leg.lastName?.trim() || '';
   const labels = [
     ...names,
-    ...(ln
-      ? [`Sen. ${ln}`, `Senator ${ln}`, `Rep. ${ln}`, `Representative ${ln}`]
-      : []),
+    // Journalism quote tags often use bare last name ("Sanders charged").
+    ...(ln ? [ln, `Sen. ${ln}`, `Senator ${ln}`, `Rep. ${ln}`, `Representative ${ln}`] : []),
   ];
   for (const label of labels) {
     const e = escapeRe(label);
+    const speechVerb =
+      '(?:said|says|called|wrote|warned|urged|told|charged|argued|declared|insisted|added|announced|acknowledged)';
     // Name said/says/called/wrote … "quote"
     const saidThenQuote = new RegExp(
-      `\\b${e}\\b[^".]{0,80}\\b(?:said|says|called|wrote|warned|urged|told)\\b[^".]{0,60}["“]`,
+      `\\b${e}\\b[^".]{0,80}\\b${speechVerb}\\b[^".]{0,60}["“]`,
       'i',
     );
     // "quote," Name said/warned/…
     const quoteThenSaid = new RegExp(
-      `["“][^"”]{8,280}["”][,.]?\\s*(?:${e}|he|she)\\s+\\b(?:said|says|wrote|added|warned|urged|called)\\b`,
+      `["“][^"”]{8,280}["”][,.]?\\s*(?:${e}|he|she)\\s+\\b${speechVerb}\\b`,
       'i',
     );
     // He/She said on X: "… after naming member in prior clause (same paragraph window)
@@ -123,8 +124,9 @@ export function isMemberHeadlineSubject(
     ...(ln ? [`Sen. ${ln}`, `Senator ${ln}`] : []),
   ];
   // Never treat "among those (responding)" as a subject-action cue (owner 2026-07-21).
+  // Subject-actor verbs only — keep comparison/list framing rejected elsewhere.
   const action =
-    '(?:calls?|called|backs?|backed|urges?|urged|warns?|warned|rails?|wants?|introduces?|introduced|proposes?|proposed|fails?|failed|effort|plan|says?|said|reacts?)';
+    '(?:calls?|called|backs?|backed|urges?|urged|warns?|warned|rails?|wants?|introduces?|introduced|proposes?|proposed|fails?|failed|effort|plan|says?|said|reacts?|stands?|stood|standing|becomes?|became|rallies?|rallied|rally|unveils?|unveiled|endorses?|endorsed|supports?|supported|joins?|joined|travels?|traveled|kicks?|kicked|wins?|won|had\\s+won|talks?|talking|challenges?|challenged|rejects?|rejected|pushes?|pushed)';
 
   // Bare last-name after a lead quote: "'…': Sanders warns …" (before full-name gate)
   if (ln) {

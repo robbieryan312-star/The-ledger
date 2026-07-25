@@ -32,6 +32,12 @@ import {
 } from './lib/gdeltMemberNews';
 import { fetchNewsApiArticlesForMember } from './lib/newsApiMemberNews';
 import { fetchMemberTopicRssArticles } from './lib/memberTopicNewsRss';
+import { fetchMemberOutletHubArticles } from './lib/memberOutletArticleDiscovery';
+import {
+  maxOutletShare,
+  outletCounts,
+  selectNewsItemsWithOutletCap,
+} from './lib/newsOutletDiversity';
 import {
   isArticleTypeIntegrityUrl,
   isBareHomepageUrl,
@@ -46,6 +52,9 @@ import {
 } from './lib/memberNewsMatching';
 import { qualifiesMemberNewsItem } from './lib/memberNewsQualification';
 import type { ProfileDisplayIdentity } from './lib/profileDisplayIdentity';
+
+/** No single outlet may exceed this share of a member's News tab. */
+const MAX_OUTLET_SHARE = 0.5;
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 let displayByBio: Map<string, ProfileDisplayIdentity> = new Map();
@@ -576,6 +585,21 @@ async function main(): Promise<void> {
       );
     }
 
+    const hubResult = await fetchMemberOutletHubArticles(leg, displayByBio);
+    const hubItems = hubResult.items;
+    if (hubItems.length > 0) {
+      console.log(`  ${bioguideId}: outlet hub/search discovery ${hubItems.length} article(s)`);
+    }
+    for (const [outlet, stats] of Object.entries(hubResult.perOutlet)) {
+      console.log(
+        `  ${bioguideId}: hub exhaustion ${outlet}: urlsFound=${stats.urlsFound} qualified=${stats.qualified}` +
+          (stats.hubErrors.length ? ` errors=${stats.hubErrors.join('|')}` : ''),
+      );
+    }
+    if (hubResult.hubFailures.length > 0) {
+      console.warn(`  ${bioguideId}: hub failures — ${hubResult.hubFailures.join('; ')}`);
+    }
+
     let merged = mergeWithExisting(
       filterQualifiedNewsItems(existingItems, leg),
       [
@@ -583,23 +607,41 @@ async function main(): Promise<void> {
         ...gdeltItems,
         ...newsApiItems,
         ...topicItems,
+        ...hubItems,
       ],
     );
     merged = filterQualifiedNewsItems(merged, leg);
-    merged = applyNewsCorroboration(merged).slice(0, MAX_ITEMS_PER_MEMBER);
+    merged = applyNewsCorroboration(merged);
+    // Diversify before the hard item cap so a single prolific outlet cannot dominate.
+    const beforeCapShare = maxOutletShare(merged);
+    merged = selectNewsItemsWithOutletCap(merged, MAX_ITEMS_PER_MEMBER, MAX_OUTLET_SHARE);
+    const afterCapShare = maxOutletShare(merged);
+    console.log(
+      `  ${bioguideId}: outlet mix ${JSON.stringify(outletCounts(merged))} ` +
+        `(max share ${beforeCapShare.outlet}=${(beforeCapShare.share * 100).toFixed(0)}% → ` +
+        `${afterCapShare.outlet}=${(afterCapShare.share * 100).toFixed(0)}%; cap ${(MAX_OUTLET_SHARE * 100).toFixed(0)}%)`,
+    );
 
     const resolved = resolveNewsStatus(merged, existingItems, {
-      feedsAttempted,
-      feedFailures: feedFailures.length,
+      feedsAttempted: feedsAttempted + topicResult.feedsAttempted + hubResult.hubsAttempted,
+      feedFailures: feedFailures.length + topicResult.feedFailures.length + hubResult.hubFailures.length,
       memberSkipped: false,
       legName: leg.name,
     });
+
+    const exhaustionNote = Object.entries(hubResult.perOutlet)
+      .map(([o, s]) => `${o}:found=${s.urlsFound}/qualified=${s.qualified}`)
+      .join('; ');
+    const diversityNote =
+      afterCapShare.share > MAX_OUTLET_SHARE
+        ? ` Outlet cap could not reach ≤${(MAX_OUTLET_SHARE * 100).toFixed(0)}% (${afterCapShare.outlet} still ${(afterCapShare.share * 100).toFixed(0)}%) — other approved outlets exhausted.`
+        : ` Outlet cap ≤${(MAX_OUTLET_SHARE * 100).toFixed(0)}% applied (max ${afterCapShare.outlet} ${(afterCapShare.share * 100).toFixed(0)}%).`;
 
     const out: ExistingNewsFile = {
       bioguideId,
       status: resolved.status,
       items: merged,
-      note: resolved.note,
+      note: `${resolved.note}${diversityNote} Hub exhaustion: ${exhaustionNote || 'n/a'}.`,
     };
 
     const dir = path.join(profilesRoot, bioguideId);
