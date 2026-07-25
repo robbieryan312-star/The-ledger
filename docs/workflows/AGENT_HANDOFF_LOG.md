@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-25 — M-NEWS-FIX (name-token corroboration)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS (local) · ⛔ tip APPROVAL · do NOT merge  
-**Current state:** `cursor/m-news-fix-70a6` · tip **`8b997ac` (`8b997ac09c1eda7027985f1e51e5ab5220b8a5a3`)** · code fix `337bfd5` · pushed
+**Current state:** `cursor/m-news-fix-70a6` · tip **`04c7bff` (`04c7bffe5121f66b8b087fcd69e0597f80e74ecf`)** · code fix `337bfd5` · pushed
 
 ### Objective
 Exclude member-name tokens from news corroboration `significantTokens`; require ≥2 shared NON-NAME tokens for verification. Append-only fixtures. Re-run S000033 corroboration.
@@ -52,14 +52,14 @@ npx next build → EXIT 0
 - `git push -u origin cursor/m-news-fix-70a6` → EXIT 0 (tip corrected after branch-drift)
 
 ### Open / next
-- Claude tip APPROVAL on exact SHA `8b997ac` / `8b997ac09c1eda7027985f1e51e5ab5220b8a5a3` (fix commit `337bfd5`)
+- Claude tip APPROVAL on exact SHA `04c7bff` / `04c7bffe5121f66b8b087fcd69e0597f80e74ecf` (fix commit `337bfd5`)
 - Do NOT merge without APPROVAL
 
 ---
 
 ## Confront Claude — paste to Claude Code
 
-**M-NEWS-FIX tip:** approve exact **`8b997ac` (`8b997ac09c1eda7027985f1e51e5ab5220b8a5a3`)** · code fix `337bfd5` · branch `cursor/m-news-fix-70a6` · S000033 verified **0→0**/12 · fixtures NAME_ONLY false + SAME_EVENT true · prebuild/build 0 · ⛔ do NOT merge  
+**M-NEWS-FIX tip:** approve exact **`04c7bff` (`04c7bffe5121f66b8b087fcd69e0597f80e74ecf`)** · code fix `337bfd5` · branch `cursor/m-news-fix-70a6` · S000033 verified **0→0**/12 · fixtures NAME_ONLY false + SAME_EVENT true · prebuild/build 0 · ⛔ do NOT merge  
 
 ---
 
