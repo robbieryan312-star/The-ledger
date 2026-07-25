@@ -4,9 +4,15 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { aggregateScheduleAOrgs, isIndividualScheduleAContributor, resolveCuratedOrgTopicIds } from '../../lib/data/fecOrgRegistry';
+import {
+  aggregateScheduleAOrgs,
+  isConduitScheduleAContributor,
+  isIndividualScheduleAContributor,
+  resolveCuratedOrgTopicIds,
+} from '../../lib/data/fecOrgRegistry';
 import {
   ORG_JOIN_KNOWN_BAD,
+  ORG_JOIN_KNOWN_BAD_CONDUIT,
   ORG_JOIN_KNOWN_GOOD,
 } from '../../lib/data/__fixtures__/fecOrgJoin.fixture';
 
@@ -32,12 +38,33 @@ test('known-bad individual donors are excluded from org aggregation', () => {
   );
 });
 
+test('known-bad conduit processors are excluded from org aggregation', () => {
+  for (const { label, contributor } of ORG_JOIN_KNOWN_BAD_CONDUIT) {
+    assert.equal(
+      isConduitScheduleAContributor(contributor),
+      true,
+      `expected "${label}" to be classified as conduit`,
+    );
+  }
+  const aggregated = aggregateScheduleAOrgs(ORG_JOIN_KNOWN_BAD_CONDUIT.map((c) => c.contributor));
+  assert.equal(
+    aggregated.length,
+    0,
+    `expected no org aggregates from conduit fixtures, got: ${aggregated.map((o) => o.orgName).join(', ')}`,
+  );
+});
+
 test('known-good curated org match still resolves', () => {
   for (const { label, contributor } of ORG_JOIN_KNOWN_GOOD) {
     assert.equal(
       isIndividualScheduleAContributor(contributor),
       false,
       `expected "${label}" NOT to be classified as individual`,
+    );
+    assert.equal(
+      isConduitScheduleAContributor(contributor),
+      false,
+      `expected "${label}" NOT to be classified as conduit`,
     );
     assert.ok(
       resolveCuratedOrgTopicIds(contributor.name).length > 0,
@@ -47,7 +74,6 @@ test('known-good curated org match still resolves', () => {
 
   const aggregated = aggregateScheduleAOrgs(ORG_JOIN_KNOWN_GOOD.map((c) => c.contributor));
   assert.equal(aggregated.length, 1);
-  assert.equal(aggregated[0].orgName, 'ACTBLUE LLC');
-  assert.ok(aggregated[0].topicIds.includes('economy-taxes'));
-  assert.equal(aggregated[0].sector, 'Conduit');
+  assert.equal(aggregated[0].orgName, 'SERVICE EMPLOYEES INTERNATIONAL UNION');
+  assert.ok(aggregated[0].topicIds.includes('healthcare') || aggregated[0].topicIds.includes('economy-taxes'));
 });

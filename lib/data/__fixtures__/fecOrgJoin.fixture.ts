@@ -35,15 +35,32 @@ export const ORG_JOIN_KNOWN_BAD: FecOrgJoinFixtureCase[] = [
   },
 ];
 
-/** Curated real-org/PAC contributor that MUST still resolve via the registry. */
-export const ORG_JOIN_KNOWN_GOOD: FecOrgJoinFixtureCase[] = [
+/**
+ * Conduit processors — APPEND-ONLY (M-ACQUIRE Batch B 2026-07-22).
+ * Formerly listed as KNOWN_GOOD; conduits must never create org→vote joins.
+ */
+export const ORG_JOIN_KNOWN_BAD_CONDUIT: FecOrgJoinFixtureCase[] = [
   {
-    label: 'ACTBLUE LLC (curated conduit PAC)',
+    label: 'ACTBLUE LLC (conduit — not a PAC policy donor)',
     contributor: {
       name: 'ACTBLUE LLC',
       amount: 5000,
       date: '2025-03-01',
+      occupation: 'CONDUIT TOTAL LISTED IN AGG. FIELD',
       committeeId: 'C00411330',
+    },
+  },
+];
+
+/** Curated real-org/PAC contributor that MUST still resolve via the registry. */
+export const ORG_JOIN_KNOWN_GOOD: FecOrgJoinFixtureCase[] = [
+  {
+    label: 'SERVICE EMPLOYEES INTERNATIONAL UNION (curated labor)',
+    contributor: {
+      name: 'SERVICE EMPLOYEES INTERNATIONAL UNION',
+      amount: 5000,
+      date: '2025-03-01',
+      committeeId: 'C00004036',
     },
   },
 ];
