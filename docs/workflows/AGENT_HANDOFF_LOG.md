@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-25 — M-IMPROVELOG + M-POSITIONS-SANDERS ⛔ STOP
 
 **From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
-**Current state:** `cursor/m-improvelog-positions-sanders-70a6` · tip = **branch HEAD** · prebuild/build pending stamp
+**Current state:** `cursor/m-improvelog-positions-sanders-70a6` · tip = **`c939dab`** · `rm -rf .next && npm run prebuild` **0** · `npm run build` **0**
 
 ### MERGE recorded
 | Item | Approved tip | Merge SHA on main |
@@ -41,7 +41,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Confront Claude — paste to Claude Code
 
-**M-IMPROVELOG + M-POSITIONS-SANDERS tip:** approve exact **branch HEAD** · prebuild 0 · build 0  
+**M-IMPROVELOG + M-POSITIONS-SANDERS tip:** approve exact **`c939dab`** · prebuild 0 · build 0  
 **S000033 positions:** **filled** · 11 official stances · sanders.senate.gov/issues/  
 **#84 merge SHA:** `1b801f7` · **STOP:** tip APPROVAL; then M-UI rebase STAGE THREE
 
