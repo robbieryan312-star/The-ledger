@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-25 — M-NEWS-DIVERSIFY ⛔ STOP
 
 **From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
-**Current state:** `cursor/m-news-diversify-70a6` · tip = **`6534da7`** · prebuild/build pending stamp
+**Current state:** `cursor/m-news-diversify-70a6` · tip = **`ac2d553`** (work `6534da7`) · prebuild/build pending stamp
 
 ### Delivered
 - AP hub/search discovery + outlet ≤50% shrink-cap in `sync:news-rss`
@@ -29,7 +29,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Confront Claude — paste to Claude Code
 
-**M-NEWS-DIVERSIFY tip:** approve exact **`6534da7`** on `origin/cursor/m-news-diversify-70a6` · prebuild 0 · build 0  
+**M-NEWS-DIVERSIFY tip:** approve exact **`ac2d553`** on `origin/cursor/m-news-diversify-70a6` · prebuild 0 · build 0  
 **M-CORPUS-DEPTH tip:** approve exact tip on `origin/cursor/m-corpus-depth-70a6` (sibling)  
 **STOP:** tip APPROVAL both · then Cursor runs BERNIE RENDER-READY @ merged main SHA
 
