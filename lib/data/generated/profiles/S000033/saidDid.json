@@ -1,6 +1,6 @@
 {
   "bioguideId": "S000033",
-  "pairCount": 8,
+  "pairCount": 10,
   "pairTarget": 15,
   "status": "partial",
   "byTopic": {
@@ -15,6 +15,34 @@
         "billTitle": "Motion to Proceed to S.J.Res. 196 — A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Department of Education relating to \"Reimagining and Improving Student Education-Federal Student Loan Program Final Regulations\".. Official Senat...",
         "billNumber": "S.J.Res. 196",
         "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-joint-resolution/196",
+        "voteChoice": "Yea",
+        "tier": "official"
+      }
+    ],
+    "technology": [
+      {
+        "topicId": "technology",
+        "statedPositionDate": "2026-06-22",
+        "saidQuote": "Mr. SANDERS. Mr. President, I want to say a few words about what I consider to be one of the most important issues not only facing our country but facing the world, and that is the advent of artificial intelligence, which most experts agree will almost certainly be the most transformational technology in the history of humanity. It will profoundly impact the lives of every man, woman, and child in our country.",
+        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2026-06-22-pt1-PgS3025-4",
+        "saidOutlet": "Congressional Record",
+        "voteDate": "2025-07-01",
+        "billTitle": "Blackburn Amdt. No. 2814 — To strike the section relating to support for artificial intelligence.. Official Senate roll-call from senate.gov (119th Congress).",
+        "billNumber": "Blackburn Amdt. No. 2814",
+        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00363.xml",
+        "voteChoice": "Yea",
+        "tier": "official"
+      },
+      {
+        "topicId": "technology",
+        "statedPositionDate": "2026-03-24",
+        "saidQuote": "Mr. SANDERS. Mr. President, we are at the beginning of the most profound technological revolution in world history, a revolution which will bring unimaginable changes to every aspect of our society. Artificial intelligence and robotics will impact our economy, our political lives, our privacy, our emotional well-being, our environment, and even our survival--the survival of humanity on this planet. The scale, scope, and speed of this change will be unprecedented. That is not the view of Bernie Sanders.",
+        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2026-03-24-pt1-PgS1584-6",
+        "saidOutlet": "Congressional Record",
+        "voteDate": "2022-08-06",
+        "billTitle": "Motion to Discharge: David M. Uhlmann to be an Assistant Administrator of the Environmental Protection Agency from the Committee on Environment and Public Works",
+        "billNumber": "PN1555",
+        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1172/vote_117_2_00285.xml",
         "voteChoice": "Yea",
         "tier": "official"
       }
@@ -95,10 +123,10 @@
         "saidQuote": "Mr. SANDERS. Mr. President, some of my Republican colleagues held a press conference today, criticizing President Biden for his decision to stop sending additional bombs to Israel due to the Netanyahu government's apparent decision to launch a major military assault on Rafah. One of my Republican colleagues even said: Joe Biden objectively favors a Hamas victory over Israel. It's just that simple. Which sounds rather amusing given the fact that, for the last 40 years, there has probably been nobody here in Washington, DC, more strongly supportive of Israel than Joe Biden, as a Senator and a President. We all know that President Biden has been very clear about his opposition to an attack on Rafah for many, many months and for good reason: An offensive--a major military offensive--in Rafah would worsen an already horrendous humanitarian catastrophe in Gaza.",
         "saidUrl": "https://www.govinfo.gov/app/details/CREC-2024-05-09-pt1-PgS3629-9",
         "saidOutlet": "Congressional Record",
-        "voteDate": "2026-06-24",
-        "billTitle": "Motion to Proceed to S. J. Res. 185 — A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.. Official Senate roll-call from senate.gov (119th Congress).",
-        "billNumber": "S.J.Res. 185",
-        "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-joint-resolution/185",
+        "voteDate": "2026-07-23",
+        "billTitle": "Motion to Discharge S.J.Res. 180 from the Committee on Foreign Relations — A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.. Official Senate roll-call from senate.gov (119th Congress).",
+        "billNumber": "S.J.Res. 180",
+        "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-joint-resolution/180",
         "voteChoice": "Yea",
         "tier": "official"
       }
@@ -110,14 +138,14 @@
         "saidQuote": "Mr. SANDERS. Madam President, I support the nomination of Moshe Marvit to be a Member of the Federal Mine Safety and Health Review Commission. Mr. Marvit is currently a supervisory attorney-advisor in the Commission's Pittsburgh field office, where he has served since 2012. In this role, he writes decisions for administrative law judges and mediates cases between mine operators and the Mine Safety and Health Administration. Prior to working at the Commission, Mr. Marvit was in private practice where he represented the United Steelworkers and employees in pension and discrimination matters.",
         "saidUrl": "https://www.govinfo.gov/app/details/CREC-2024-03-06-pt1-PgS2224",
         "saidOutlet": "Congressional Record",
-        "voteDate": "2026-07-21",
-        "billTitle": "Confirmation: Kara Marie Westercamp, of Virginia, to be a Judge of the U.S. Court of International Trade — Kara Marie Westercamp, of Virginia, to be a Judge of the United States Court of International Trade. Official Senate roll-call from senate.gov (119th Congress).",
-        "billNumber": "PN851-8",
-        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00201.xml",
+        "voteDate": "2026-07-23",
+        "billTitle": "Confirmation: Antonio M. Pozos, of Pennsylvania, to be U.S. District Judge for the Eastern District of Pennsylvania — Antonio M. Pozos, of Pennsylvania, to be United States District Judge for the Eastern District of Pennsylvania. Official Senate roll-call from senate.gov (119th Congress).",
+        "billNumber": "PN999-5",
+        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00209.xml",
         "voteChoice": "Nay",
         "tier": "official"
       }
     ]
   },
-  "honestGapNote": "8 of 15 verified CREC floor-speech↔roll-call pairs; remainder honest-gap — 10 CREC Said(s) after Said-vs-procedural + URL-stem dedup; unmatched topics lack subject-overlapping Did in the current roll-call corpus (no fabrication)."
+  "honestGapNote": "10 of 15 verified CREC floor-speech↔roll-call pairs; remainder honest-gap — 10 CREC Said(s) after Said-vs-procedural + URL-stem dedup; unmatched topics lack subject-overlapping Did in the current roll-call corpus (no fabrication)."
 }

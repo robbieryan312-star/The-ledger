@@ -12,6 +12,90 @@
         "date": "2020-04-13",
         "description": "Sanders endorsed Biden during a virtual campaign event; PBS NewsHour reported the endorsement with AP wire copy"
       }
+    },
+    {
+      "name": "Jamaal Bowman",
+      "office": "U.S. House (NY-16 Democratic primary, 2020)",
+      "date": "2020-06-09",
+      "source": {
+        "name": "HuffPost",
+        "url": "https://www.huffpost.com/entry/bernie-sanders-endorses-jamaal-bowman-new-york-house-primary-eliot-engel_n_5edfa67fc5b6972f8b21ac03",
+        "tier": "media",
+        "date": "2020-06-09",
+        "description": "Sanders endorsed Bowman and five other progressive congressional candidates; article quotes Sanders statement supporting Bowman against Rep. Eliot Engel"
+      },
+      "corroboratingSources": [
+        {
+          "name": "Associated Press",
+          "url": "https://apnews.com/general-news-86d4f9b9fde9579a1305cd8eb4101457",
+          "tier": "nonpartisan",
+          "date": "2020-06-09",
+          "description": "AP reports Sanders announced support for Bowman against Engel in NY-16"
+        }
+      ]
+    },
+    {
+      "name": "Cori Bush",
+      "office": "U.S. House (MO-1 Democratic primary, 2020)",
+      "date": "2020-06-09",
+      "source": {
+        "name": "HuffPost",
+        "url": "https://www.huffpost.com/entry/bernie-sanders-endorses-jamaal-bowman-new-york-house-primary-eliot-engel_n_5edfa67fc5b6972f8b21ac03",
+        "tier": "media",
+        "date": "2020-06-09",
+        "description": "Sanders slate endorsement names Cori Bush challenging Rep. Lacy Clay in St. Louis"
+      },
+      "corroboratingSources": [
+        {
+          "name": "Politico",
+          "url": "https://www.politico.com/news/2020/06/09/bernie-sanders-ensorses-insurgent-candidates-309068",
+          "tier": "media",
+          "date": "2020-06-09",
+          "description": "Politico reports Sanders endorsed Cori Bush among a half-dozen insurgent primary candidates"
+        }
+      ]
+    },
+    {
+      "name": "Summer Lee",
+      "office": "U.S. House (PA-12 Democratic primary, 2022)",
+      "date": "2022-03-17",
+      "source": {
+        "name": "90.5 WESA",
+        "url": "https://www.wesa.fm/politics-government/2022-03-17/bernie-sanders-backs-summer-lee-in-12th-congressional-district-race",
+        "tier": "media",
+        "date": "2022-03-17",
+        "description": "WESA reports Sanders endorsement statement for Summer Lee's PA-12 congressional bid (dated March 17, 2022)"
+      },
+      "corroboratingSources": [
+        {
+          "name": "Associated Press",
+          "url": "https://apnews.com/article/2022-midterm-elections-congress-mike-doyle-bernie-sanders-pennsylvania-eb6de58be839f2c69f186f4ac71f1ae6",
+          "tier": "nonpartisan",
+          "date": "2022-05-20",
+          "description": "AP notes Lee was endorsed by Sen. Bernie Sanders, who campaigned for her in the PA-12 primary"
+        }
+      ]
+    },
+    {
+      "name": "Zohran Mamdani",
+      "office": "New York City Mayor (Democratic primary, 2025)",
+      "date": "2025-06-17",
+      "source": {
+        "name": "NY1",
+        "url": "https://ny1.com/nyc/all-boroughs/news/2025/06/17/sanders-endorses-mamdani-in-nyc-mayoral-race",
+        "tier": "media",
+        "date": "2025-06-17",
+        "description": "NY1 reports Sanders endorsed Assemblyman Zohran Mamdani for NYC mayor on June 17, 2025"
+      },
+      "corroboratingSources": [
+        {
+          "name": "ABC7 New York",
+          "url": "https://abc7ny.com/post/new-york-city-mayoral-race-zohran-mamdani-gets-endorsement-bernie-sanders/16772157/",
+          "tier": "media",
+          "date": "2025-06-17",
+          "description": "ABC7 New York reports Sanders endorsement statement for Mamdani one week before the Democratic primary"
+        }
+      ]
     }
   ],
   "endorsedBy": [

@@ -7,11 +7,11 @@
     "conduitContributors": 1350,
     "nonIndividualContributors": 3600,
     "curatedOrgAggregates": 0,
-    "votesAvailable": 201,
+    "votesAvailable": 2508,
     "scheduleAAsOf": "2026-07-22",
     "queryNote": "full-depth: individuals + organizations/PACs; paginated committee Schedule A",
     "scheduleACapHit": true
   },
   "status": "honest-gap",
-  "note": "Full-depth Schedule A for committee(s) C00411330 (5000 itemized receipts; 1400 individual LAST, FIRST; 1350 conduit/earmark processor rows e.g. ActBlue; 2250 other non-individual rows). After excluding individuals + conduits and curated-org-only matching (fecOrgRegistry), 0 PAC/org rows qualify for org→topic→vote joins — diagnosed small-donor / conduit-heavy profile, not an undiagnosed empty."
+  "note": "Full-depth Schedule A for committee(s) C00411330 (5000 itemized receipts; 1400 individual LAST, FIRST; 1350 conduit/earmark processor rows e.g. ActBlue; 2250 other non-individual rows). After excluding individuals + conduits and curated-org-only matching (fecOrgRegistry), 0 PAC/org rows qualify for org\u2192topic\u2192vote joins \u2014 diagnosed small-donor / conduit-heavy profile, not an undiagnosed empty."
 }
