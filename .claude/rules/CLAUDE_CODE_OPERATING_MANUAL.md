@@ -72,6 +72,31 @@ Change** · 5. **Architectural Requirements** · 6. **Testing Requirements** · 
 Cursor executes exactly and makes no independent choices; on review, reject anything short of flawless
 and re-brief with the specific fix.
 
+### 7A. ZERO-DEVIATION BRIEF STANDARD (BINDING — owner 2026-07-26)
+Cursor complies with what a brief LITERALLY SAYS. Any ambiguity is Claude's defect, never Cursor's.
+Real incident: "mark VoteSmart RETIRED/DEFUNCT" produced 11 relabelled mentions across 5 files with 3
+contradictory statuses, when the intent was DELETION — the spec had no test, so it could not fail.
+
+1. **Closed disposition vocabulary — use one of these exact words, never a synonym:**
+   - **DELETE** — the line/file is removed from disk (state the exact survivors, if any).
+   - **ARCHIVE** — moved to `docs/archive/` or `scripts/archive/`, unchanged, with a README mapping.
+   - **REPLACE** — old text removed AND new text specified verbatim.
+   - **RELABEL** — text edited, file and location stay (use ONLY when relabelling is truly the intent).
+   Never write "retire", "deprecate", "handle", "clean up", "address", "sunset", "deal with", "treat as" —
+   these are interpretable and therefore banned in briefs.
+2. **Every acceptance criterion MUST be an executable command with its expected output** — a grep, test,
+   count, or exit code Cursor and Claude can both run and compare. A prose criterion ("no longer
+   referenced", "properly removed") is not a criterion. If a requirement cannot be expressed as a command,
+   state explicitly how it will be verified instead.
+3. **Enumerate exact targets** — file paths with line numbers where known, and the complete list of
+   allowed survivors. "Everywhere it appears" is insufficient; provide the enumeration or the command that
+   generates it.
+4. **Guard the invariant, don't just assert it** — when the rule must hold permanently, the brief requires
+   a build-gated guard that FAILS on violation (see the `voteSmartRetiredGuard` pattern). Attention-based
+   compliance is not compliance.
+5. **On review, test the criterion, not the report** — run the command from the brief; a passing narrative
+   with a failing command is a REJECT.
+
 **Continuous improvement at scale (binding — core-rules §6):** At each expansion step
 (1→10→25→80→200→completion), require measured efficiency + effectiveness, one applied improvement,
 and a recorded row in the owning process doc (`docs/workflows/BATCH_SCALING.md` § Improvement log, or
