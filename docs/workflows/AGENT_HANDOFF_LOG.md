@@ -10,6 +10,32 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+---
+
+## HANDOFF 2026-07-25 — API KEY PROBE (GovInfo batch)
+
+**From:** Cursor · **To:** Owner + Claude · **Verdict:** KEYS NOT INJECTED this session
+
+### Probe (SET/EMPTY only — no values)
+- `npm run verify:agent-keys` → **0/12** available
+- `GOVINFO_API_KEY` / `DATA_GOV_API_KEY` / `CONGRESS_API_KEY` / others → **UNSET**
+- `CLOUD_AGENT_ALL_SECRET_NAMES=.env.local` · `CLOUD_AGENT_INJECTED_SECRET_NAMES=` **(empty)**
+- GovInfo probe without key → HTTP **401** `API_KEY_MISSING` (expected)
+
+### Diagnosis
+Secrets were registered under the name **`.env.local`** but **nothing was injected** into the running agent. Individual Runtime Secret names (`GOVINFO_API_KEY`, etc.) are absent. Not evidence of expiry — keys never reached process env.
+
+### Owner action
+1. Cursor Cloud Agents → environment Secrets → add **Runtime Secrets** with exact names: `GOVINFO_API_KEY`, `DATA_GOV_API_KEY`, `CONGRESS_API_KEY`, `FEC_API_KEY`, …
+2. Prefer one secret **per env var name** (not a single secret named `.env.local`)
+3. **Start a new agent run** after saving — this session cannot see late-added secrets
+4. Only regenerate at https://www.govinfo.gov/api-signup / https://api.data.gov/signup/ if dashboard values were lost
+
+### Next (after keys inject)
+Re-run `npm run verify:agent-keys` → scoped `sync:topic-positions -- --member S000033 --full-depth` on corpus branch
+
+---
+
 ## HANDOFF 2026-07-25 — M-NEWS-DIVERSIFY ⛔ STOP
 
 **From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
