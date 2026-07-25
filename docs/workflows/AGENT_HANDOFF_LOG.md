@@ -15,7 +15,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-25 — M-RETIRE-VOTESMART + M-CHANNEL-PROOF ⛔ STOP
 
 **From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
-**Current state:** `cursor/m-retire-votesmart-channel-proof-70a6` · tip = **branch HEAD** (work `4337ee3`) · B/C/D on `main` · `rm -rf .next && npm run prebuild` **0** · `npm run build` **0**
+**Current state:** `cursor/m-retire-votesmart-channel-proof-70a6` · tip = **`39de5fc`** · B/C/D on `main` · `rm -rf .next && npm run prebuild` **0** · `npm run build` **0**
 
 ### MERGE B→C→D (done on main)
 | Batch | Approved tip | Merge on main |
@@ -48,7 +48,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## Confront Claude — paste to Claude Code
 
-**M-RETIRE-VOTESMART + M-CHANNEL-PROOF tip:** approve exact **branch HEAD** (`git rev-parse origin/cursor/m-retire-votesmart-channel-proof-70a6`) · work `4337ee3` · prebuild 0 · build 0  
+**M-RETIRE-VOTESMART + M-CHANNEL-PROOF tip:** approve exact **`39de5fc`** · prebuild 0 · build 0  
 **VoteSmart:** RETIRED/DEFUNCT · guard in prebuild green  
 **Ballotpedia platform channel:** **PASS** M000355 · **5** qualified → `profiles/M000355/positions.json` · proven stamp in SOURCE_LOOKUP + OBJECTIVE_SOURCES  
 **B/C/D:** on main · **STOP:** tip APPROVAL; then M-UI #68 STAGE THREE; Bernie render → OWNER visual
