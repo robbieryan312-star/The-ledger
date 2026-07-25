@@ -10,6 +10,31 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+---
+
+## HANDOFF 2026-07-25 — API KEYS WIRED (owner paste → .env.local)
+
+**From:** Cursor · **To:** Claude · **Verdict:** KEYS LIVE this session (gitignored `.env.local` only)
+
+### verify:agent-keys
+8/12 SET — FEC, CONGRESS, CENSUS, DATA_GOV, GOVINFO, LEGISCAN, OPENSTATES, NEWSAPI  
+EMPTY: BEA, COURTLISTENER, VOTESMART, SAM
+
+### Live probes (no values logged)
+- GovInfo CREC collections → **HTTP 200** (count 5994)
+- FEC → **HTTP 200**
+- Congress.gov → **HTTP 200** after User-Agent on `congressClient` (bare fetch was CF 1010, not invalid key)
+- `CONGRESS_API_KEY` paste had accidental space — stored contiguous
+
+### CREC re-run (key now present)
+`sync:topic-positions -- --member S000033 --full-depth` → search=825 html=341 procedural-skip=459 statements=8  
+Union into profile: **no new URL stems** vs prior 11 (still saidDid **10**/15). Mega-bundle S000033 insert **reverted** (freeze: 442 ids).
+
+### Security
+Keys were pasted in chat — owner should rotate when convenient. Values only in gitignored `.env.local` (never committed).
+
+---
+
 ## HANDOFF 2026-07-25 — M-CORPUS-DEPTH (S000033)
 
 **From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · awaiting tip APPROVAL  
