@@ -41,3 +41,9 @@ test('sync-topic-positions must not call api.votesmart.org', () => {
   assert.doesNotMatch(src, /async function votesmartFetch/);
   assert.match(src, /RETIRED\/DEFUNCT/);
 });
+
+test('buildSaidDidDiffs must not default outlet to VoteSmart', () => {
+  const src = readFileSync(path.join(projectRoot, 'lib/data/buildSaidDidDiffs.ts'), 'utf8');
+  assert.doesNotMatch(src, /\?\?\s*'VoteSmart'/);
+  assert.doesNotMatch(src, /\?\?\s*"VoteSmart"/);
+});

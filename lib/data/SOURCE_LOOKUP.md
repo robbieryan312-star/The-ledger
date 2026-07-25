@@ -93,7 +93,23 @@ Log long syncs: `npm run sync:<name> 2>&1 | tee /tmp/ledger-<name>.log`
 
 | Source | Status | Use instead |
 |--------|--------|-------------|
-| VoteSmart NPAT | **RETIRED / DEFUNCT** — never call `api.votesmart.org`; no key will be provided | official issues FIRST → Ballotpedia → CREC Said |
+| VoteSmart NPAT | **RETIRED / DEFUNCT** — never call `api.votesmart.org`; no key will be provided | see **Position aggregation (post-VoteSmart)** below |
+
+### Position aggregation (post-VoteSmart)
+
+VoteSmart NPAT formerly supplied survey-style “stated positions.” That channel is permanently
+unwired — no key will be acquired. Aggregate the same *destination* (Track Record / Where They
+Stand evidence) via these ordered methods instead:
+
+| Priority | Method | Command / path | Destination |
+|----------|--------|----------------|-------------|
+| 1 | Official campaign/office issues pages | `npm run sync:official-issues-positions -- --member <id>` → `profiles/{id}/positions.json` | Platform / Key Positions |
+| 2 | Ballotpedia Political positions / Issues | `sync:topic-positions` (Ballotpedia scrape) · `npm run prove:ballotpedia-platform` (channel proof) | Platform positions |
+| 3 | Verbatim floor Said (CREC) | `npm run sync:topic-positions -- --member <id> --full-depth` (GovInfo) | Said statements |
+| 4 | Roll-call Did | `npm run sync:votes-national -- --members <id> --full --full-depth` | Said→Did links |
+
+Never invent a VoteSmart substitute API or re-request `VOTESMART_API_KEY`. Honest gap when none
+of the above yield a verified record.
 
 ## Deferred sources (do not block work)
 

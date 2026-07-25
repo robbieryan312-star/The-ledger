@@ -161,7 +161,7 @@ function pickSaidForLink(
   ) {
     return {
       quote: statedPosition,
-      outlet: topicData.statedPositionSource?.source ?? 'VoteSmart',
+      outlet: topicData.statedPositionSource?.source ?? 'Recorded position',
       url: topicData.statedPositionSource?.url ?? '',
       tier: 'nonpartisan',
       // `pos.asOf`/scrape asOf dates are NOT the true statement date — using them here would

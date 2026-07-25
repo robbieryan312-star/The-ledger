@@ -10,55 +10,57 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
-## HANDOFF 2026-07-25 — M-RETIRE-VOTESMART (COMPLETE)
+## HANDOFF 2026-07-25 — M-RETIRE-VOTESMART (COMPLETE · tip refresh)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS / COMPLETE on branch · awaiting tip APPROVAL  
-**Current state:** `cursor/m-retire-votesmart-70a6` · tip **`6a2cfba`** · tree clean · `npm run build` **0** · voteSmartRetiredGuard **pass** · pushed feature branch
+**Current state:** `cursor/m-retire-votesmart-70a6` · tip **TIP_PLACEHOLDER** · tree clean · `npm run prebuild` **0** · `npm run build` **0** · voteSmartRetiredGuard **5/5** · supersedes stale PR #83 branch
 
 ### Objective
-Surgically remove all VoteSmart NPAT API usage from `scripts/sync-topic-positions.ts` while preserving CREC/Ballotpedia/SaidDid/full-depth; mark VoteSmart RETIRED/DEFUNCT across docs/config.
+Owner clarified VoteSmart was never in key provision — remove all NPAT dependency permanently and document replacement aggregation (official issues → Ballotpedia → CREC Said + roll-call Did).
 
 ### Verdict / outcome
-**PASS** — zero `https://api.votesmart.org` / `votesmartFetch` in sync-topic-positions; CREC/Ballotpedia/SaidDid/`--full-depth` retained; `fetchBallotpediaPositions` exported + disqualify/topic-class filters; docs/catalog/KEYS/package.json updated.
+**PASS** — VoteSmart RETIRED/DEFUNCT; zero `api.votesmart.org` / `votesmartFetch` in sync; KEYS/SOURCE_LOOKUP/catalog/guards updated; residual Said→Did outlet fallback no longer attributes VoteSmart; position aggregation table documented in SOURCE_LOOKUP; backlog IMP-VOTESMART-RETIRE done + IMP-POS-AGG-ALT open.
+
+### Clarification (owner)
+`VOTESMART_API_KEY: EMPTY` appeared because it was on the agent checklist / retired-keys visibility list — **not** because a key was pulled from the owner paste or GitHub vault. No VoteSmart key exists or will be requested.
 
 ### Commits
 - `6a2cfba` — retire(VoteSmart): unwire NPAT from topic-positions; mark DEFUNCT
+- `af23fd2` — docs(handoff): record M-RETIRE-VOTESMART tip 6a2cfba
+- TIP_PLACEHOLDER — residual outlet fix + aggregation docs + backlog
 
 ### Commands run (this session)
-- `rg` VoteSmart / api.votesmart across repo
-- surgical edits to `scripts/sync-topic-positions.ts` + docs/config
-- `npm run test:source-integrity` (incl. voteSmartRetiredGuard) → pass
-- `npx tsc --noEmit` → 0
-- `npm run test:docs-consistency` → 0 (after BATCH_SCALING wording fix)
-- `npm run build` → 0
+- `npm run prebuild` → 0 (`/tmp/ledger-retire-vs-prebuild.log`)
+- `npm run build` → 0 (`/tmp/ledger-retire-vs-build.log`)
+- `npx tsx --test scripts/__tests__/voteSmartRetiredGuard.test.ts` → 5/5
+- `npm run verify:agent-keys` → `VOTESMART_API_KEY: EMPTY (RETIRED)`
 
-### Files touched
+### Files touched (tip refresh)
 | Path | Action | What changed |
 |------|--------|--------------|
-| `scripts/sync-topic-positions.ts` | modified | VoteSmart NPAT removed; Ballotpedia exported + filters; meta RETIRED |
-| `KEYS.md` | modified | VOTESMART → Retired/DEFUNCT |
-| `lib/data/SOURCE_LOOKUP.md` | modified | VoteSmart RETIRED route |
-| `docs/OBJECTIVE_SOURCES.md` | modified | Position surveys RETIRED |
-| `lib/data/sourceCatalog.ts` | modified | status `retired`, keyRequired false, retiredReason |
-| `PILOT_PROFILE_CHECKLIST.md` / `PROGRESS.md` / `REPO.md` | modified | RETIRED not deferred |
-| `.cursor/rules/ledger-core-rules.mdc` | modified | nonpartisan examples + never request key |
-| `package.json` | modified | voteSmartRetiredGuard in test:source-integrity; prove:ballotpedia-platform |
-| `docs/workflows/BATCH_SCALING.md` | modified | M-RETIRE-VOTESMART improvement row |
+| `lib/data/buildSaidDidDiffs.ts` | modified | outlet fallback `VoteSmart` → `Recorded position` |
+| `lib/data/topicPositions.ts` | modified | header comment post-VoteSmart |
+| `lib/data/SOURCE_LOOKUP.md` | modified | Position aggregation (post-VoteSmart) table |
+| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | IMP-VOTESMART-RETIRE done; IMP-POS-AGG-ALT open |
+| `scripts/__tests__/voteSmartRetiredGuard.test.ts` | modified | guard against VoteSmart outlet default |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this handoff |
 
 ### Acceptance evidence
-- Guard: `sync-topic-positions must not call api.votesmart.org` **ok**
-- `rg 'https://api\.votesmart\.org|async function votesmartFetch' scripts/sync-topic-positions.ts` → no matches
-- Header comment contains `RETIRED/DEFUNCT`
-- Build green including postbuild render-integrity
+- voteSmartRetiredGuard 5/5 pass
+- `verify:agent-keys` prints `VOTESMART_API_KEY: EMPTY (RETIRED)` (not active AGENT_KEYS)
+- prebuild/build exit 0 this session
+- Replacement stack: `sync:official-issues-positions` · Ballotpedia via topic-positions · CREC `--full-depth` · `sync:votes-national`
 
 ### Open / next
-- Claude tip APPROVAL then merge; do not push to `main` without APPROVAL
+- Claude tip APPROVAL on exact TIP_PLACEHOLDER then merge
+- Stale PR #83 (`cursor/m-retire-votesmart-channel-proof-70a6`) superseded by this branch — close after tip APPROVAL if desired
+- Deepen aggregation under IMP-POS-AGG-ALT (no new NPAT-like API)
 
 ---
 
 ## Confront Claude — paste to Claude Code
 
-**M-RETIRE-VOTESMART tip:** approve exact **`6a2cfba`** · VoteSmart DEFUNCT · sync-topic-positions zero api.votesmart.org · prebuild/build 0  
+**M-RETIRE-VOTESMART tip:** approve exact **TIP_PLACEHOLDER** · VoteSmart DEFUNCT · no key ever · aggregation = official issues → Ballotpedia → CREC + votes · prebuild/build 0 · supersedes #83  
 **STOP:** tip APPROVAL before merge to main
 
 ---

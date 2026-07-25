@@ -44,6 +44,8 @@ External truths both agents must share (dashboard drift is **owner-only** to fix
 | IMP-011 | Guards reconciled on main (prebuild count) | P2 | cursor | **done** | historical |
 | IMP-013 | #20+#21 merged to main | P2 | cursor | **done** | historical |
 | IMP-RENDER-CI | Render CI flake — `waitForSelector` fix | P2 | cursor | **done** | historical |
+| IMP-VOTESMART-RETIRE | VoteSmart NPAT permanently unwired — no key will be provided; route official issues → Ballotpedia → CREC Said (+ roll-call Did). Guard: `voteSmartRetiredGuard` | P1 | cursor | **done** (PR branch `cursor/m-retire-votesmart-70a6`) | KEYS.md · SOURCE_LOOKUP · `sync-topic-positions.ts` |
+| IMP-POS-AGG-ALT | Position aggregation without VoteSmart — deepen official-issues + Ballotpedia channel + CREC Said pairing; no parallel NPAT substitute API | P2 | cursor | open | `sync:official-issues-positions` · `prove:ballotpedia-platform` · `sync:topic-positions --full-depth` |
 
 ---
 
