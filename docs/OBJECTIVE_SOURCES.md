@@ -180,6 +180,28 @@ regardless of volume.
 
 ---
 
+## Candidate channels — unproven
+
+**PROPOSAL ONLY (2026-07-25).** No routing changes and no ingest until each channel is
+**PROVEN** on a control member (usable qualified rows in the correct destination + guards
+green) and Claude approves. These candidates are listed because they make **100+ profile**
+collection efficient — **bulk beats per-member** where noted.
+
+| Candidate | Data yielded | Tier | Bulk vs per-member cost | Key | Exact channel-proof to run |
+|-----------|--------------|------|-------------------------|-----|----------------------------|
+| unitedstates/congress-legislators (GitHub YAML/JSON) | bioguideId, names, parties, terms, social, officialWebsite | `'nonpartisan'` | **Bulk** — one clone/fetch covers full Congress | none | `npm run sync:legislators` on control S000033 + `npm run verify:office`; assert roster row + office fields match senate.gov/LIS |
+| GovTrack bulk (API/bulk data) | votes, bill sponsorship, ideology scores (Voteview-adjacent) | `'nonpartisan'` | **Bulk** congress/session dumps; cheaper than per-member page scrape | none (rate limits) | Prove on S000033: pull 119th votes → `profiles/S000033/votes.json` join by bioguideId; compare ≥30 roll-calls to Senate LIS URLs |
+| Congress.gov bulk XML / data dumps | bills, amendments, member sponsorship | `'official'` | **Bulk** preferred over paginated API for corpus backfill | `CONGRESS_API_KEY` for API; bulk XML often keyless | Prove on S000033: one congress package → sponsored/cosponsored bills land in topic legislation slots without fabricating summaries |
+| Official member press / issues RSS pages | platform stances, press releases (filter boilerplate) | `'official'` | Per-member URL discovery, then **bulk RSS poll** | none | Already partially proven: `sync:official-issues-positions --member S000033` + `prove:ballotpedia-platform` pattern; extend proof to a House control (e.g. M000355) press RSS → `positions.json` only after qualify gate |
+| State SoS bulk exports (voter file / candidate lists — state-scoped) | statewide candidates, races, certification status | `'official'` | **Bulk** statewide files; not federal profiles | varies by state | FL control first: document SoS bulk URL → county/candidate rows in `data/florida/` without PII beyond public ballot fields; no federal profile write |
+| Wikidata (as **pointer only**, never cited in UI) | QIDs, bioguide crosswalks, Wikipedia sitelinks | n/a (pointer) | **Bulk** SPARQL for bioguide↔QID map | none | Prove map-only: bioguideId → QID table for S000033 + M000355; **zero** Wikidata text in generated profile JSON; citation ban enforced by guard |
+
+**Hard rules for this section:** Wikipedia/social remain banned as sources (core-rules §3). Wikidata
+may only supply join keys. Campaign/PAC press → `'alleged'` only. Channel-proof artifacts must
+land under `data/reports/channel-proof-*` before any SOURCE_LOOKUP route is added.
+
+---
+
 ## JOURNALIST-STANDARD CRITERIA (what earns a tier)
 
 - **Wire standard (AP/Reuters):** two independent sources per claim; no opinion;
