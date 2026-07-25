@@ -44,6 +44,10 @@ External truths both agents must share (dashboard drift is **owner-only** to fix
 | IMP-011 | Guards reconciled on main (prebuild count) | P2 | cursor | **done** | historical |
 | IMP-013 | #20+#21 merged to main | P2 | cursor | **done** | historical |
 | IMP-RENDER-CI | Render CI flake — `waitForSelector` fix | P2 | cursor | **done** | historical |
+| IMP-CONDUIT-ADV | Conduit advocacy HARD RULE + §1.1 N continuum (owner perpetual reminder 2026-07-25) | P1 | cursor | **done** | `.cursor/rules/ledger-core-rules.mdc` §1.1 N · `BATCH_SCALING.md` |
+| CREC-YIELD | Full-depth CREC for S000033 still ~10 Said after key live (825 search → 8 kept); need yield diagnostics / opener recall without relaxing Said rule | P1 | cursor | open | M-CORPUS-DEPTH · GovInfo key now SET |
+| CONGRESS-UA | api.congress.gov CF 1010 without User-Agent — fix on #87/#88 (`congressClient` UA); merge then verify House path | P2 | cursor | open (PR) | #87 / #88 · `lib/data/congressClient.ts` |
+| KEY-INJECT | Cursor Cloud Runtime Secrets: `.env.local` name did not inject; need per-var Runtime Secrets for next runs | P0 | owner | open | KEYS.md · cloud env secrets |
 
 ---
 
