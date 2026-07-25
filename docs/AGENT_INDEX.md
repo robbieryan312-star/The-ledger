@@ -78,6 +78,7 @@ in `docs/OBJECTIVE_SOURCES.md`. This runbook is the quick index into both.
 | **Campaign finance** | `npm run sync:fec-national -- --members <id>` | `generated/profiles/{id}/finance.json` | OpenFEC (`official`), `FEC_API_KEY` |
 | **Itemized donors (Sched A)** | `npm run sync:fec-schedule-a` | `data/national/fec/…` | OpenFEC Schedule A (`official`) |
 | **Floor speech (Said)** | `npm run sync:topic-positions -- --member <id>` | `generated/profiles/{id}/statements.json` | GovInfo CREC (`official`), `GOVINFO_API_KEY` |
+| **CREC yield diagnose** | `npm run diagnose:crec-yield -- --member <id> --full-depth` | log only (no write) | GovInfo CREC per-stage reject counts |
 | **News** | **primary:** `npm run sync:news-rss -- --members <id>` → `profiles/{id}/news.json`; **national/secondary:** `npm run sync:news-national` | `generated/profiles/{id}/news.json` (+ shared `articleCache.json`) | **Approved-outlet RSS registry FIRST** (no key) → GDELT DOC API (no key) → NewsAPI only if `NEWSAPI_KEY` plan is upgraded (currently 426-limited). Media-tier needs 2+ independent outlets or it shows unverified. |
 | **Stock trades** | `npm run sync:stock-trades -- --members <id>` | `generated/profiles/{id}/trades.json` | House PTR (`official`); Senate eFD blocked (HTTP 503) → honest `fetch-failed` |
 | **Platform / positions** | `npm run sync:official-issues-positions -- --member <id>` (primary); `sync:topic-positions` Ballotpedia secondary | `generated/profiles/{id}/positions.json` | Official `/issues/` (`official`) FIRST → Ballotpedia → campaign if qualifies |

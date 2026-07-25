@@ -61,4 +61,36 @@ describe('classifyTextToRecordTopicId', () => {
     const text = 'Proceeded to consider';
     assert.strictEqual(classifyTextToRecordTopicId(text), 'legislation');
   });
+
+  // M-CREC-YIELD: unmapped/weak-keyword floor speech must land in legislation catch-all
+  // (sync must NEVER silent-drop by treating legislation as null).
+  it('classifies substantive but weakly keyed floor speech as legislation catch-all', () => {
+    const text =
+      'Mr. SANDERS. Mr. President, at a time when our country faces unprecedented crises, ' +
+      'the U.S. Senate has spent an entire week debating a problem that essentially does not exist.';
+    assert.strictEqual(classifyTextToRecordTopicId(text), 'legislation');
+  });
+
+  it('classifies Big Beautiful Bill / tax-break speech as economy-taxes', () => {
+    const text =
+      "Mr. SANDERS. Mr. President, President Trump's so-called Big Beautiful Bill, now on the floor " +
+      'of the Senate, is the most dangerous piece of legislation in the modern history of our country, ' +
+      'with the largest tax breaks for billionaires in American history.';
+    assert.strictEqual(classifyTextToRecordTopicId(text), 'economy-taxes');
+  });
+
+  it('prefers education when student-debt speech also mentions tax breaks', () => {
+    const text =
+      'Mr. SANDERS. Mr. President, in the United States today, 42 million Americans are drowning in ' +
+      '$1.7 trillion in student debt. The Big Beautiful Bill made the largest cut to education ' +
+      'in order to pay for the largest tax breaks for billionaires in American history.';
+    assert.strictEqual(classifyTextToRecordTopicId(text), 'education');
+  });
+
+  it('classifies voter-eligibility debate speech as civil-liberties', () => {
+    const text =
+      'Mr. SANDERS. Mr. President, the Safeguard American Voter Eligibility Act would impose ' +
+      'new voter eligibility restrictions that undermine voting rights across the country.';
+    assert.strictEqual(classifyTextToRecordTopicId(text), 'civil-liberties');
+  });
 });

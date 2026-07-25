@@ -86,9 +86,22 @@ async function main(): Promise<void> {
   const topicSnapshot = JSON.parse(await readFile(topicPositionsPath, 'utf8')) as {
     byBioguideId?: Record<string, Record<string, { statements?: TopicStatementEntry[] }>>;
   };
-  const memberTopics = topicSnapshot.byBioguideId?.[BIOGUIDE];
+  // Mega-bundle freeze: S000033 CREC is written to /tmp/topic-positions-S000033.json by sync.
+  let memberTopics = topicSnapshot.byBioguideId?.[BIOGUIDE];
   if (!memberTopics) {
-    throw new Error(`${BIOGUIDE}: missing from topicPositions.json — run sync:topic-positions first`);
+    try {
+      const side = JSON.parse(
+        await readFile(`/tmp/topic-positions-${BIOGUIDE}.json`, 'utf8'),
+      ) as { byTopic?: Record<string, { statements?: TopicStatementEntry[] }> };
+      memberTopics = side.byTopic;
+    } catch {
+      /* fall through */
+    }
+  }
+  if (!memberTopics) {
+    throw new Error(
+      `${BIOGUIDE}: missing from topicPositions.json and /tmp/topic-positions-${BIOGUIDE}.json — run sync:topic-positions first`,
+    );
   }
 
   let priorByTopic: Record<string, { statements?: TopicStatementEntry[] }> = {};

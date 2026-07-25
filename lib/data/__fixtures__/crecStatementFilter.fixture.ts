@@ -210,3 +210,21 @@ KNOWN_BAD.push(
     text: 'Mr. SANDERS. Madam President, pursuant to section 36(c) of the Arms Export Control Act, I move to discharge the Committee on Foreign Relations from further consideration of S.J. Res. 115, relating to the disapproval of the proposed license amendment for the export of certain defe',
   },
 );
+
+// Append-only M-CREC-YIELD (2026-07-25): genuine floor speeches that were silent-dropped when
+// mapCrecTextToTopic treated the legislation catch-all as null. MUST survive procedural filter.
+KNOWN_GOOD.push(
+  {
+    label: 'S000033 floor speech — SAVE Act week (was no_topic drop)',
+    text: 'Mr. SANDERS. Mr. President, at a time when our country faces unprecedented crises, the U.S. Senate has spent an entire week debating a problem that essentially does not exist.',
+  },
+  {
+    label: 'S000033 floor speech — Big Beautiful Bill (was no_topic drop)',
+    text: "Mr. SANDERS. Mr. President, President Trump's so-called Big Beautiful Bill, now on the floor of the Senate, is the most dangerous piece of legislation in the modern history of our country.",
+  },
+  {
+    label: 'S000033 floor speech — continuing appropriations process (was no_topic drop)',
+    // Verbatim prefix from GovInfo CREC yield diagnostic (2026-07-25); do not invent beyond corpus.
+    text: 'Mr. SANDERS. Mr. President, I understand that, the way the process has been developed, it is impossible to delay the votes that are going to take place. If that',
+  },
+);

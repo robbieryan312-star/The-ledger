@@ -548,14 +548,28 @@ async function fetchGovInfoCrecSearchPage(
   return { results, nextOffset: hasMore ? nextOffset! : null, ok: true };
 }
 
+type CrecRejectReason =
+  | 'procedural_title'
+  | 'html_fail'
+  | 'speaker_miss'
+  | 'no_excerpt'
+  | 'ceremonial'
+  | 'no_date'
+  | 'fetch_error';
+
 async function processCrecGranule(
   result: GovInfoSearchResult,
   leg: LegislatorRow,
   apiKey: string,
   speakerHayNeedle: string,
-): Promise<{ entry: TopicStatementEntry | null; htmlFetched: boolean; skippedProcedural: boolean }> {
+): Promise<{
+  entry: TopicStatementEntry | null;
+  htmlFetched: boolean;
+  skippedProcedural: boolean;
+  rejectReason: CrecRejectReason | null;
+}> {
   if (CREC_SKIP_PROCEDURAL && isProceduralCrecTitle(result.title ?? '')) {
-    return { entry: null, htmlFetched: false, skippedProcedural: true };
+    return { entry: null, htmlFetched: false, skippedProcedural: true, rejectReason: 'procedural_title' };
   }
   try {
     await govinfoLimiter.acquire();
@@ -563,27 +577,33 @@ async function processCrecGranule(
       `https://api.govinfo.gov/packages/${result.packageId}/granules/${result.granuleId}/htm?api_key=${encodeURIComponent(apiKey)}`,
       { signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) },
     );
-    if (!textRes.ok) return { entry: null, htmlFetched: true, skippedProcedural: false };
+    if (!textRes.ok) {
+      return { entry: null, htmlFetched: true, skippedProcedural: false, rejectReason: 'html_fail' };
+    }
     const html = await textRes.text();
     const plain = stripHtml(html);
     const speakerHay = plain.toLowerCase().replace(/\./g, '');
     if (!speakerHay.includes(speakerHayNeedle)) {
-      return { entry: null, htmlFetched: true, skippedProcedural: false };
+      return { entry: null, htmlFetched: true, skippedProcedural: false, rejectReason: 'speaker_miss' };
     }
 
     const excerpt = extractCrecSpeechExcerpt(plain, leg);
-    if (!excerpt) return { entry: null, htmlFetched: true, skippedProcedural: false };
+    if (!excerpt) {
+      return { entry: null, htmlFetched: true, skippedProcedural: false, rejectReason: 'no_excerpt' };
+    }
     // Recognition / tribute floor remarks are not policy Said (quality dilution).
     if (isCeremonialCrecRemark(excerpt)) {
-      return { entry: null, htmlFetched: true, skippedProcedural: false };
+      return { entry: null, htmlFetched: true, skippedProcedural: false, rejectReason: 'ceremonial' };
     }
 
-    const topicId = mapCrecTextToTopic(excerpt) ?? mapCrecTextToTopic(result.title ?? '');
-    if (!topicId) return { entry: null, htmlFetched: true, skippedProcedural: false };
+    // Unmapped / weak keyword hits land in the legislation catch-all — never silent-drop a valid Said.
+    const topicId = mapCrecTextToTopic(excerpt) || mapCrecTextToTopic(result.title ?? '') || 'legislation';
 
     // A verbatim official CREC statement must have a real granule date — never fall back to
     // today's date, which would fabricate a publication date for the record.
-    if (!result.dateIssued) return { entry: null, htmlFetched: true, skippedProcedural: false };
+    if (!result.dateIssued) {
+      return { entry: null, htmlFetched: true, skippedProcedural: false, rejectReason: 'no_date' };
+    }
     const date = result.dateIssued.slice(0, 10);
     const url = `https://www.govinfo.gov/app/details/${result.granuleId}`;
 
@@ -591,9 +611,10 @@ async function processCrecGranule(
       entry: { title: excerpt, date, url, tier: 'official', topicId },
       htmlFetched: true,
       skippedProcedural: false,
+      rejectReason: null,
     };
   } catch {
-    return { entry: null, htmlFetched: true, skippedProcedural: false };
+    return { entry: null, htmlFetched: true, skippedProcedural: false, rejectReason: 'fetch_error' };
   }
 }
 
@@ -617,9 +638,13 @@ function crecSpeakerHay(leg: LegislatorRow): string {
   return leg.lastName.toUpperCase();
 }
 
-function mapCrecTextToTopic(text: string): string | null {
-  const topicId = classifyTextToRecordTopicId(text);
-  return topicId === 'legislation' ? null : topicId;
+/**
+ * Map CREC text to a record topic. The `legislation` bucket is the catch-all for valid
+ * floor speech that does not match a specialized keyword set — never return null (silent
+ * drop of genuine Said was the M-CREC-YIELD defect).
+ */
+function mapCrecTextToTopic(text: string): string {
+  return classifyTextToRecordTopicId(text);
 }
 
 function crecMemberLastName(leg: LegislatorRow): string {
@@ -686,6 +711,10 @@ interface CrecFetchResult {
   searchResults: number;
   htmlFetches: number;
   skippedProcedural: number;
+  /** Per-stage reject counters (granule-level; for yield diagnosis). */
+  rejectCounts: Record<string, number>;
+  dedupDropped: number;
+  cappedDropped: number;
 }
 
 async function fetchGovInfoCrecByTopic(
@@ -700,6 +729,9 @@ async function fetchGovInfoCrecByTopic(
   let htmlFetches = 0;
   let skippedProcedural = 0;
   let granulesExamined = 0;
+  let dedupDropped = 0;
+  let cappedDropped = 0;
+  const rejectCounts: Record<string, number> = {};
 
   const collected: TopicStatementEntry[] = [];
   const seenStems = new Set<string>();
@@ -714,7 +746,19 @@ async function fetchGovInfoCrecByTopic(
 
         const page = await fetchGovInfoCrecSearchPage(apiKey, congress, searchQuery, offsetMark);
         if (!page.ok) {
-          if (!searchOk) return { byTopic, searchOk, searchResults, htmlFetches, skippedProcedural };
+          if (!searchOk) {
+            rejectCounts.search_fail = (rejectCounts.search_fail ?? 0) + 1;
+            return {
+              byTopic,
+              searchOk,
+              searchResults,
+              htmlFetches,
+              skippedProcedural,
+              rejectCounts,
+              dedupDropped,
+              cappedDropped,
+            };
+          }
           break;
         }
         searchOk = true;
@@ -729,15 +773,23 @@ async function fetchGovInfoCrecByTopic(
           const processed = await processCrecGranule(result, leg, apiKey, speakerHayNeedle);
           if (processed.skippedProcedural) {
             skippedProcedural += 1;
+            rejectCounts.procedural_title = (rejectCounts.procedural_title ?? 0) + 1;
             continue;
           }
           if (processed.htmlFetched) htmlFetches += 1;
           const entry = processed.entry;
-          if (!entry) continue;
+          if (!entry) {
+            if (processed.rejectReason) {
+              rejectCounts[processed.rejectReason] = (rejectCounts[processed.rejectReason] ?? 0) + 1;
+            }
+            continue;
+          }
 
           const stem = crecGovInfoUrlStem(entry.url);
-          if (seenStems.has(stem)) continue;
-          if (!shouldAddCrecStatement(collected, entry)) continue;
+          if (seenStems.has(stem) || !shouldAddCrecStatement(collected, entry)) {
+            dedupDropped += 1;
+            continue;
+          }
           seenStems.add(stem);
           collected.push(entry);
         }
@@ -750,6 +802,7 @@ async function fetchGovInfoCrecByTopic(
     const capped = collected
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
       .slice(0, MAX_CREC_STATEMENTS_PER_MEMBER);
+    cappedDropped = Math.max(0, collected.length - capped.length);
 
     for (const entry of capped) {
       const existing = byTopic.get(entry.topicId) ?? [];
@@ -762,11 +815,20 @@ async function fetchGovInfoCrecByTopic(
     );
   }
 
-  return { byTopic, searchOk, searchResults, htmlFetches, skippedProcedural };
+  return {
+    byTopic,
+    searchOk,
+    searchResults,
+    htmlFetches,
+    skippedProcedural,
+    rejectCounts,
+    dedupDropped,
+    cappedDropped,
+  };
 }
 
 function buildSnapshotMeta(
-  members: LegislatorRow[],
+  rosterSize: number,
   byBioguideId: Record<string, Record<string, TopicPositionData>>,
   asOf: string,
   votesmartConfigured: boolean,
@@ -809,7 +871,8 @@ function buildSnapshotMeta(
     source: govinfoConfigured
       ? 'Ballotpedia + official issues + GovInfo CREC + Congress roll-call votes (Said→Did)'
       : 'Ballotpedia + official issues + Congress roll-call votes (Said→Did)',
-    totalMembers: members.length,
+    // Always the full legislator roster — never the scoped --member filter size.
+    totalMembers: rosterSize,
     membersWithData,
     membersWithPlatformPositions,
     membersWithStatedPosition,
@@ -817,19 +880,19 @@ function buildSnapshotMeta(
     perTopicCoverage,
     votesmartConfigured: false,
     note:
-      'VoteSmart RETIRED/DEFUNCT. Platform from Ballotpedia/official issues; CREC Said + roll-call votes for Said→Did.',
+      'VoteSmart RETIRED/DEFUNCT. Platform from Ballotpedia/official issues; CREC Said + roll-call votes for Said→Did. S000033 migrated to profiles/S000033 (destination files); not in mega-bundle (freeze).',
   };
 }
 
 async function writeSnapshot(
-  members: LegislatorRow[],
+  rosterSize: number,
   byBioguideId: Record<string, Record<string, TopicPositionData>>,
   asOf: string,
   votesmartConfigured: boolean,
   govinfoConfigured: boolean,
 ): Promise<void> {
   const snapshot: TopicPositionsSnapshot = {
-    meta: buildSnapshotMeta(members, byBioguideId, asOf, votesmartConfigured, govinfoConfigured),
+    meta: buildSnapshotMeta(rosterSize, byBioguideId, asOf, votesmartConfigured, govinfoConfigured),
     byBioguideId,
   };
   await mkdir(OUT_DIR, { recursive: true });
@@ -876,9 +939,13 @@ async function main(): Promise<void> {
   const legislatorsRaw = JSON.parse(await readFile(LEGISLATORS_FILE, 'utf8')) as {
     legislators: LegislatorRow[];
   };
-  let members = legislatorsRaw.legislators.filter(
+  const roster = legislatorsRaw.legislators.filter(
     (l) => l.chamber === 'senate' || l.chamber === 'house',
   );
+  const rosterSize = roster.length;
+  /** Migrated gold profiles: CREC lands in profiles/{id}/ only — never re-enter mega-bundle. */
+  const MEGA_BUNDLE_EXCLUDED = new Set(['S000033']);
+  let members = roster;
   if (memberFilter) {
     members = members.filter((l) => memberFilter.has(l.bioguideId));
     if (members.length === 0) {
@@ -936,11 +1003,21 @@ async function main(): Promise<void> {
 
     const crec = govinfoKey
       ? await fetchGovInfoCrecByTopic(leg, govinfoKey)
-      : { byTopic: new Map<string, TopicStatementEntry[]>(), searchOk: true, searchResults: 0, htmlFetches: 0, skippedProcedural: 0 };
+      : {
+          byTopic: new Map<string, TopicStatementEntry[]>(),
+          searchOk: true,
+          searchResults: 0,
+          htmlFetches: 0,
+          skippedProcedural: 0,
+          rejectCounts: {},
+          dedupDropped: 0,
+          cappedDropped: 0,
+        };
     const crecByTopic = crec.byTopic;
     if (govinfoKey) {
+      const stmtN = [...crecByTopic.values()].reduce((n, a) => n + a.length, 0);
       console.log(
-        `  CREC ${leg.bioguideId} (${leg.name}): search=${crec.searchResults} htmlFetches=${crec.htmlFetches} skippedProcedural=${crec.skippedProcedural} statements=${[...crecByTopic.values()].reduce((n, a) => n + a.length, 0)}`,
+        `  CREC ${leg.bioguideId} (${leg.name}): search=${crec.searchResults} htmlFetches=${crec.htmlFetches} skippedProcedural=${crec.skippedProcedural} statements=${stmtN} dedupDropped=${crec.dedupDropped} cappedDropped=${crec.cappedDropped} rejects=${JSON.stringify(crec.rejectCounts)}`,
       );
     }
 
@@ -967,6 +1044,8 @@ async function main(): Promise<void> {
 
     // Build fresh (this-run) statements + Said→Did per canonical topic.
     // VoteSmart NPAT is RETIRED — stated positions come from CREC/media/Ballotpedia only.
+    // Statement buckets INCLUDE `legislation` (catch-all for valid unmapped Said).
+    // Platform/Said→Did loops below still use topicBuckets (excludes legislation).
     interface FreshTopic {
       statements: TopicStatementEntry[];
       saidDidLinks: SaidDidLinkEntry[];
@@ -974,12 +1053,16 @@ async function main(): Promise<void> {
       statedPositionSource?: StatedPositionSourceEntry;
     }
     const freshByTopic = new Map<string, FreshTopic>();
-    for (const bucket of topicBuckets) {
+    const statementBuckets = RECORD_TOPIC_BUCKETS;
+    for (const bucket of statementBuckets) {
       const crecStatements = crecByTopic.get(bucket.id) ?? [];
       const mediaForTopic = mediaByTopic.get(bucket.id) ?? [];
       const statements = [...mediaForTopic, ...crecStatements];
       const statedPositionDate = earliestStatementDate(statements) ?? null;
-      const saidDidLinks = buildSaidDidLinks(bucket.id, statedPositionDate, memberVotes);
+      const saidDidLinks =
+        bucket.id === 'legislation'
+          ? []
+          : buildSaidDidLinks(bucket.id, statedPositionDate, memberVotes);
       if (statements.length > 0 || saidDidLinks.length > 0) {
         freshByTopic.set(bucket.id, { statements, saidDidLinks });
       }
@@ -990,19 +1073,22 @@ async function main(): Promise<void> {
     const keyByNorm = new Map<string, string>();
     for (const key of Object.keys(memberTopics)) keyByNorm.set(normalizeTopicId(key), key);
 
-    for (const bucket of topicBuckets) {
+    for (const bucket of statementBuckets) {
       const fresh = freshByTopic.get(bucket.id);
-      const freshPlatform = ballotByTopic.get(bucket.id);
+      const freshPlatform =
+        bucket.id === 'legislation' ? undefined : ballotByTopic.get(bucket.id);
       const existingKey = keyByNorm.get(bucket.id);
 
       if (existingKey) {
         const entry = memberTopics[existingKey];
         // Said→Did is deterministic from roll-call votes, but failed/missing vote input is not absence.
-        entry.saidDidLinks = mergeSaidDidLinksForRefresh(
-          entry.saidDidLinks,
-          fresh?.saidDidLinks,
-          canRefreshMemberSaidDid,
-        );
+        if (bucket.id !== 'legislation') {
+          entry.saidDidLinks = mergeSaidDidLinksForRefresh(
+            entry.saidDidLinks,
+            fresh?.saidDidLinks,
+            canRefreshMemberSaidDid,
+          );
+        }
         // Only overlay statements when CREC actually refreshed; never wipe on a failed fetch.
         if (crec.searchOk) {
           // FAILURE≠ABSENCE (§6): a re-fetch only sees the current search pool, so a genuine
@@ -1052,14 +1138,22 @@ async function main(): Promise<void> {
   await runPool(pending, MEMBER_CONCURRENCY, async (leg) => {
     const memberTopics = await processMember(leg);
     await runExclusive(async () => {
-      if (Object.keys(memberTopics).length > 0) {
+      if (MEGA_BUNDLE_EXCLUDED.has(leg.bioguideId)) {
+        // Profile-only path: write a temp sidecar for apply scripts; keep mega-bundle frozen.
+        const sidePath = `/tmp/topic-positions-${leg.bioguideId}.json`;
+        await writeFile(sidePath, JSON.stringify({ byTopic: memberTopics }, null, 2) + '\n', 'utf8');
+        delete byBioguideId[leg.bioguideId];
+        console.log(
+          `  PROFILE-ONLY ${leg.bioguideId}: CREC written to ${sidePath} (mega-bundle freeze)`,
+        );
+      } else if (Object.keys(memberTopics).length > 0) {
         byBioguideId[leg.bioguideId] = memberTopics;
       }
       checkpoint[leg.bioguideId] = true;
       await writeFile(CHECKPOINT_FILE, JSON.stringify(checkpoint) + '\n', 'utf8');
       completed += 1;
       if (completed % 10 === 0 || completed === pending.length) {
-        await writeSnapshot(members, byBioguideId, asOf, votesmartConfigured, !!govinfoKey);
+        await writeSnapshot(rosterSize, byBioguideId, asOf, votesmartConfigured, !!govinfoKey);
         console.log(
           `  progress: ${completed}/${pending.length} — ${Object.keys(byBioguideId).length} members with topic position data`,
         );
@@ -1067,12 +1161,15 @@ async function main(): Promise<void> {
     });
   });
 
-  await writeSnapshot(members, byBioguideId, asOf, votesmartConfigured, !!govinfoKey);
+  // Enforce freeze even if a prior run re-inserted an excluded id.
+  for (const id of MEGA_BUNDLE_EXCLUDED) delete byBioguideId[id];
 
-  const meta = buildSnapshotMeta(members, byBioguideId, asOf, votesmartConfigured, !!govinfoKey);
+  await writeSnapshot(rosterSize, byBioguideId, asOf, votesmartConfigured, !!govinfoKey);
+
+  const meta = buildSnapshotMeta(rosterSize, byBioguideId, asOf, votesmartConfigured, !!govinfoKey);
   console.log('');
   console.log('── sync:topic-positions complete ──');
-  console.log(`Members with data: ${meta.membersWithData}/${members.length}`);
+  console.log(`Members with data: ${meta.membersWithData}/${rosterSize}`);
   console.log(`Platform positions: ${meta.membersWithPlatformPositions}`);
   console.log(`Stated positions (non-VoteSmart): ${meta.membersWithStatedPosition}`);
   console.log(`Said→Did links: ${meta.membersWithSaidDidLinks} members`);

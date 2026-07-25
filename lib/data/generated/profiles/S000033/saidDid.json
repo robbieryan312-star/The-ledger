@@ -1,8 +1,8 @@
 {
   "bioguideId": "S000033",
-  "pairCount": 10,
+  "pairCount": 15,
   "pairTarget": 15,
-  "status": "partial",
+  "status": "filled",
   "byTopic": {
     "education": [
       {
@@ -112,6 +112,60 @@
         "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00101.xml",
         "voteChoice": "Yea",
         "tier": "official"
+      },
+      {
+        "topicId": "healthcare",
+        "statedPositionDate": "2023-11-07",
+        "saidQuote": "Mr. SANDERS. Mr. President, the American people understand--whether they are Democrats, Republicans, or Independents--that our healthcare system is broken; it is dysfunctional; it is failing. We spend almost twice as much per person on healthcare--an unsustainable $13,000 for every man, woman, and child--than any other country on Earth, and yet the results of all of that spending are abysmal. While the insurance companies and the drug companies make hundreds of billions of dollars in profit, we have 85 million Americans who are uninsured or underinsured and over 60,000 people who die every single year because they can't get to a doctor when they need to.",
+        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2023-11-07-pt1-PgS5382",
+        "saidOutlet": "Congressional Record",
+        "voteDate": "2026-04-23",
+        "billTitle": "Paul Amdt. No. 5378 — To reduce new budget authority for functions 150, 250, 500, and 600 in order to offset $70,000,000,000 of new spending by cutting $45,000,000,000 of foreign aid, eliminating $5,000,000,000 in refugee spending, cutting $16,000,000,000 from the Department of Education, and cutting $4,000,000,000 ...",
+        "billNumber": "Paul Amdt. No. 5378",
+        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00099.xml",
+        "voteChoice": "Nay",
+        "tier": "official"
+      }
+    ],
+    "legislation": [
+      {
+        "topicId": "legislation",
+        "statedPositionDate": "2025-05-08",
+        "saidQuote": "Mr. SANDERS. Mr. President, I want to say a few words about an issue that people all over the world are thinking about, are appalled by but, for some strange reason, gets very little discussion here in the Nation's Capital or in the halls of Congress, and that is the horrific humanitarian disaster that is unfolding in Gaza. Today marks 68 days and counting since any humanitarian aid was allowed into Gaza. For more than 9 weeks, Israel has blocked all supplies: no food, no water, no medicine, and no fuel. Hundreds of truckloads of lifesaving supplies are waiting to enter Gaza, sitting just across the border, but are denied entry by Israeli authorities. There is no ambiguity here. Netanyahu's extremist government talks openly about using humanitarian aid as a weapon.",
+        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2025-05-08-pt1-PgS2825",
+        "saidOutlet": "Congressional Record",
+        "voteDate": "2026-04-15",
+        "billTitle": "Motion to Discharge S. J. Res. 138 from the Committee on Foreign Relations — A joint resolution providing for congressional disapproval of the proposed foreign military sale to the Government of Israel of certain defense articles and services.. Official Senate roll-call from senate.gov (119th Congress).",
+        "billNumber": "S.J.Res. 138",
+        "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-joint-resolution/138",
+        "voteChoice": "Yea",
+        "tier": "official"
+      },
+      {
+        "topicId": "legislation",
+        "statedPositionDate": "2025-04-04",
+        "saidQuote": "Mr. SANDERS. Madam President, let me say a few words about where we are as a nation, what this budget resolution does, and why I am strongly opposed to it. As you may know, we have more income and wealth inequality in our country today than we have ever had in the history of America. Three people on top own more wealth than the bottom half of American society. The top 1 percent owns more wealth than the bottom 90 percent. CEOs now make about 300 times more than their workers. In other words, the very rich are becoming much richer, and working families are struggling. So what does this budget resolution do to address this very serious crisis? Does it help working people? Does it help low-income people? No, not really.",
+        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2025-04-04-pt1-PgS2275-7",
+        "saidOutlet": "Congressional Record",
+        "voteDate": "2026-04-23",
+        "billTitle": "S.Con.Res. 33, As Amended — A concurrent resolution setting forth the congressional budget for the United States Government for fiscal year 2026 and setting forth the appropriate budgetary levels for fiscal years 2027 through 2035.. Official Senate roll-call from senate.gov (119th Congress).",
+        "billNumber": "S.Con.Res. 33",
+        "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-concurrent-resolution/33",
+        "voteChoice": "Nay",
+        "tier": "official"
+      },
+      {
+        "topicId": "legislation",
+        "statedPositionDate": "2024-02-27",
+        "saidQuote": "Mr. SANDERS. Mr. President, for some reason that I do not fully understand, it always appears to me that the more important the issue, the less it gets discussed here in the Congress and in the media--more important, less discussion. And today I want to say a few words about one of those issues, and that is the ongoing and unprecedented humanitarian disaster which is taking place in Gaza and which is getting worse every single day. On October 7, as I think we all know, Hamas established and went forward with a brutal terrorist attack against Israel killing 1,200 innocent people and took 230 hostages, some 100 of them are still in captivity. And in my view as I said many times, Israel had a right to respond to that attack and go after Hamas.",
+        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2024-02-27-pt1-PgS1015-5",
+        "saidOutlet": "Congressional Record",
+        "voteDate": "2026-04-15",
+        "billTitle": "Motion to Discharge S. J. Res. 32 from the Committee on Foreign Relations — A joint resolution providing for congressional disapproval of the proposed foreign military sale to the Government of Israel of certain defense articles and services.. Official Senate roll-call from senate.gov (119th Congress).",
+        "billNumber": "S.J.Res. 32",
+        "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-joint-resolution/32",
+        "voteChoice": "Yea",
+        "tier": "official"
       }
     ],
     "defense-veterans": [
@@ -125,6 +179,19 @@
         "billTitle": "Motion to Proceed to S. J. Res. 185 — A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.. Official Senate roll-call from senate.gov (119th Congress).",
         "billNumber": "S.J.Res. 185",
         "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-joint-resolution/185",
+        "voteChoice": "Yea",
+        "tier": "official"
+      },
+      {
+        "topicId": "defense-veterans",
+        "statedPositionDate": "2023-12-04",
+        "saidQuote": "Mr. SANDERS. Madam President, I wanted to say a few words about the $106 billion emergency foreign aid supplemental bill that may soon be coming before us. And I should be clear that there are a number of pieces of that bill that I strongly support, but in its present form, I do not think it serves the interests of the American people. Let me say a few words as to why. First, while I strongly support Ukraine's valiant efforts to defend itself against Putin's invasion and Israel's need to defend itself against incoming rocket and missile attacks, I am deeply concerned that this legislation has no investments to address the needs of working families in the United States, 60 percent of whom are living paycheck to paycheck.",
+        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2023-12-04-pt1-PgS5707",
+        "saidOutlet": "Congressional Record",
+        "voteDate": "2026-06-23",
+        "billTitle": "H. Con. Res. 86 — A concurrent resolution directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran.. Official Senate roll-call from senate.gov (119th Congress).",
+        "billNumber": "H.Con.Res. 86",
+        "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-concurrent-resolution/86",
         "voteChoice": "Yea",
         "tier": "official"
       }
@@ -144,6 +211,5 @@
         "tier": "official"
       }
     ]
-  },
-  "honestGapNote": "10 of 15 verified CREC floor-speech↔roll-call pairs; remainder honest-gap — 12 CREC Said(s) after Said-vs-procedural + URL-stem dedup; unmatched topics lack subject-overlapping Did in the current roll-call corpus (no fabrication)."
+  }
 }

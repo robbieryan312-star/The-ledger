@@ -76,7 +76,8 @@ export const RECORD_TOPIC_BUCKETS: TopicBucketDef[] = [
     id: 'civil-liberties',
     label: 'Civil Liberties & Regulation',
     keywords: [
-      'civil rights', 'civil liberties', 'voting rights', 'voter', 'election', 'discrimination',
+      'civil rights', 'civil liberties', 'voting rights', 'voter eligibility', 'voter', 'election',
+      'discrimination',
       'fisa', 'surveillance',
       'speech', 'censorship', 'lgbt', 'equality', 'judiciary', 'judicial', 'nomination', 'confirm',
       'justice', 'court', 'judge', 'district judge', 'circuit judge', 'attorney general',
@@ -93,6 +94,7 @@ export const RECORD_TOPIC_BUCKETS: TopicBucketDef[] = [
       'home price', 'home ownership', 'homeownership', 'home buyer', 'first-time home buyer',
       'file taxes', 'filing taxes', 'tax filing', 'tax day', 'file their taxes', 'pay their taxes',
       'irs', 'spending bill', 'omnibus', 'shutdown', 'government shutdown', 'paycheck',
+      'continuing appropriations', 'tax breaks for billionaires',
     ],
   },
   {
@@ -138,6 +140,14 @@ export function classifyTextToRecordTopicId(text: string, category?: string): st
   if (cat === 'procedural') return 'legislation';
   if (cat === 'budget') return 'economy-taxes';
   if (cat === 'judiciary') return 'civil-liberties';
+
+  // Student-debt / education-cut floor remarks often also mention tax bills; prefer education.
+  if (
+    /\b(student debt|student loan|student loans)\b/.test(hay) &&
+    /\b(education|tuition|pell grant|public school|higher education)\b/.test(hay)
+  ) {
+    return 'education';
+  }
 
   if (/\b(data privacy|artificial intelligence|\bai\b|algorithm|deepfake|content moderation|section 230|big tech)\b/.test(hay)) {
     return 'technology';

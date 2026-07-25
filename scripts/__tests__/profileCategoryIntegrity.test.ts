@@ -166,7 +166,7 @@ test('PILOT_PROFILE_CHECKLIST S000033 rows 5–6 must not claim done when manife
   }
 });
 
-test('PILOT_PROFILE_CHECKLIST S000033 row 8 must not claim done below Said→Did depth target (W3d)', () => {
+test('PILOT_PROFILE_CHECKLIST S000033 row 8 Said→Did depth matches disk (W3d)', () => {
   const cfg = PILOT_SAID_DID_DEPTH_KNOWN_GOOD;
   const saidDid = JSON.parse(
     readFileSync(path.join(profilesRoot, cfg.pilotBioguideId, 'saidDid.json'), 'utf8'),
@@ -177,17 +177,21 @@ test('PILOT_PROFILE_CHECKLIST S000033 row 8 must not claim done below Said→Did
     cfg.onDiskLinksAtWiring,
     `on-disk Said→Did count changed (${onDisk}) — update fixture onDiskLinksAtWiring if verified`,
   );
-  assert.ok(
-    onDisk < cfg.targetLinks,
-    `test assumes below-target count; got ${onDisk} >= ${cfg.targetLinks}`,
-  );
   const checklist = readFileSync(path.join(projectRoot, cfg.checklistPath), 'utf8');
   const line = checklist.split('\n').find((l) => l.startsWith(`| ${cfg.checklistRowNum} |`));
   assert.ok(line, `checklist row ${cfg.checklistRowNum} missing`);
-  assert.ok(
-    !line.includes('**done**'),
-    `checklist row ${cfg.checklistRowNum} claims done but only ${onDisk}/${cfg.targetLinks} Said→Did links on disk`,
-  );
+  if (onDisk < cfg.targetLinks) {
+    assert.ok(
+      !line.includes('**done**') && !line.includes('**filled**'),
+      `checklist row ${cfg.checklistRowNum} claims done/filled but only ${onDisk}/${cfg.targetLinks} Said→Did links on disk`,
+    );
+  } else {
+    assert.ok(
+      line.includes('**filled**') || line.includes('**done**'),
+      `checklist row ${cfg.checklistRowNum} must claim filled/done at ${onDisk}/${cfg.targetLinks}`,
+    );
+    assert.match(line, new RegExp(`\\*\\*${onDisk}\\*\\*/${cfg.targetLinks}`));
+  }
   const progress = readFileSync(path.join(projectRoot, 'PROGRESS.md'), 'utf8');
   // Forbid claiming a concrete Said→Did count in PROGRESS that disagrees with disk.
   const progressCounts = [...progress.matchAll(/saidDid=(\d+)\b|(\d+)\s*\/\s*15/g)].map((m) =>

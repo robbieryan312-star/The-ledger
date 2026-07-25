@@ -60,6 +60,7 @@ export const PILOT_CHECKLIST_S000033_ROWS_KNOWN_GOOD = {
 /**
  * Said→Did depth target for reference profile (layout spec). Checklist must not claim **done**
  * when on-disk link count is below target (W3d audit 2026-07-19 — docs wrongly claimed 8).
+ * M-CREC-YIELD (2026-07-25): restored to target 15 — update onDiskLinksAtWiring with verified fill.
  */
 export const PILOT_SAID_DID_DEPTH_KNOWN_GOOD = {
   pilotBioguideId: 'S000033',
@@ -67,5 +68,5 @@ export const PILOT_SAID_DID_DEPTH_KNOWN_GOOD = {
   checklistRowNum: 8,
   targetLinks: 15,
   /** On-disk count at guard wiring — update only when genuinely restored with verified pairs. */
-  onDiskLinksAtWiring: 10,
+  onDiskLinksAtWiring: 15,
 };

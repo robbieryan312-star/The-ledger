@@ -10,6 +10,54 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-25 — M-CREC-YIELD (S000033 Said→Did blocker)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (local) · awaiting STAGE THREE  
+**Current state:** `cursor/m-crec-yield-70a6` · tip pending · base `main` @ `6422613`
+
+### Objective
+Diagnose ~96% CREC reject (not key-blocked); fix genuine over-reject (silent no_topic drop); do not weaken Said-vs-procedural.
+
+### Per-stage rejection (BEFORE → AFTER)
+
+| Stage | Before | After | Notes |
+|-------|--------|-------|-------|
+| (a) fetch search/html fail | 0 / 0 | 0 / 0 | key length 40 |
+| (b) speaker_miss | 7 | 7 | correct skips |
+| (b) no_opener / no_excerpt | 255 | ~308 | pool noise — not weakened |
+| (c) procedural_title | 459 | 459 | clerk headers — correct |
+| (c) procedural_body | 53 | (in no_excerpt) | Said-vs-procedural unchanged |
+| (c) ceremonial | 2 | 2 | correct |
+| (d) no_topic silent drop | **14** | **0** | **FIX: legislation catch-all kept** |
+| (e) dedup | 0 | 0 | |
+| (f) accepted CREC (fresh) | ~10 | **24** | |
+| Profile statements | **13** | **33** | crec 12→32 + 1 media |
+| Said→Did pairs | **10**/15 | **15**/15 filled | |
+
+### Root cause
+`mapCrecTextToTopic` returned `null` for `legislation` catch-all → silent drop of valid floor Said. Statement merge also excluded the legislation bucket.
+
+### Commands run
+- `npx tsx scripts/diagnose-crec-yield.ts --member S000033 --full-depth` → `/tmp/ledger-crec-yield-diag.log`
+- `npm run sync:topic-positions -- --member S000033 --full-depth` → `/tmp/ledger-sync-topic-positions-crec-yield-2.log`
+- `npx tsx scripts/archive/apply-m-acquire-batch-a.ts`
+- `npm run snapshot:update -- --member S000033`
+
+### Open / next
+- Claude STAGE THREE on this tip
+- PURGE v2 PR #96 still awaiting STAGE THREE (separate)
+- Then BERNIE INDEPENDENT AUDIT after both merge
+- #95 leave open; PARK #76 · m8a · m7a–d
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-CREC-YIELD:** approve exact tip of `cursor/m-crec-yield-70a6` · statements 13→33 · saidDid 10→15/15 · no_topic drop eliminated · procedural rule unchanged · prebuild/build pending stamp · ⛔ your STAGE THREE
+
+---
+
+
 ## HANDOFF 2026-07-25 — MERGE #93 NEWS + #94 GOVINFO
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGED to main · tips unchanged (handoff-only conflict)

@@ -63,6 +63,7 @@
     "sync:news-national": "tsx scripts/sync-news-national.ts",
     "sync:news-rss": "tsx scripts/sync-news-rss.ts",
     "sync:topic-positions": "tsx scripts/sync-topic-positions.ts",
+    "diagnose:crec-yield": "tsx scripts/diagnose-crec-yield.ts",
     "sync:official-issues-positions": "tsx scripts/sync-official-issues-positions.ts",
     "sync:profile-manifest": "tsx scripts/sync-profile-manifest.ts",
     "verify:office": "tsx scripts/verify-office-resolution.ts",
