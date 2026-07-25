@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-25 — M-RETIRE-VOTESMART (COMPLETE)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS / COMPLETE on branch · awaiting tip APPROVAL  
-**Current state:** `cursor/m-retire-votesmart-70a6` · tree clean after commit · `npm run build` **0** · voteSmartRetiredGuard **pass**
+**Current state:** `cursor/m-retire-votesmart-70a6` · tip **`6a2cfba`** · tree clean · `npm run build` **0** · voteSmartRetiredGuard **pass** · pushed feature branch
 
 ### Objective
 Surgically remove all VoteSmart NPAT API usage from `scripts/sync-topic-positions.ts` while preserving CREC/Ballotpedia/SaidDid/full-depth; mark VoteSmart RETIRED/DEFUNCT across docs/config.
@@ -22,7 +22,7 @@ Surgically remove all VoteSmart NPAT API usage from `scripts/sync-topic-position
 **PASS** — zero `https://api.votesmart.org` / `votesmartFetch` in sync-topic-positions; CREC/Ballotpedia/SaidDid/`--full-depth` retained; `fetchBallotpediaPositions` exported + disqualify/topic-class filters; docs/catalog/KEYS/package.json updated.
 
 ### Commits
-- tip after this handoff commit (see git log)
+- `6a2cfba` — retire(VoteSmart): unwire NPAT from topic-positions; mark DEFUNCT
 
 ### Commands run (this session)
 - `rg` VoteSmart / api.votesmart across repo
@@ -58,7 +58,7 @@ Surgically remove all VoteSmart NPAT API usage from `scripts/sync-topic-position
 
 ## Confront Claude — paste to Claude Code
 
-**M-RETIRE-VOTESMART tip:** approve branch HEAD after Cursor commit · VoteSmart DEFUNCT · sync-topic-positions zero api.votesmart.org · prebuild/build 0  
+**M-RETIRE-VOTESMART tip:** approve exact **`6a2cfba`** · VoteSmart DEFUNCT · sync-topic-positions zero api.votesmart.org · prebuild/build 0  
 **STOP:** tip APPROVAL before merge to main
 
 ---
