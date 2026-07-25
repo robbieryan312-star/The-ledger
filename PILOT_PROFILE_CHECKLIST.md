@@ -22,7 +22,7 @@ Honest gaps are required — never fill with paraphrase or fabrication. Use `"No
 | 9 | Topic legislation (sponsored/cosponsored) | Congress.gov API v3 (`official`) | Topic Record · legislation | `npm run ingest:member -- --bioguide S000033` | **done** — `lib/data/generated/members/S000033.json` |
 | 10 | Journalism quotes (**Said**, optional) | Approved outlets (`media`) | Track Record | curated + `articleCache.json` | **partial** — **1** media-tier Said (healthcare WaPo+NYT 2019-04-10) in `statements.json`; 2-source rule met for that entry. No additional ready-to-ship 2+ outlet curated quotes without fabrication (§14: acquire only verified). |
 | 11 | News mentions | Approved-outlet RSS → topic/tag RSS → GDELT → NewsAPI (`media`/`alleged`/`nonpartisan`) | News section | `npm run sync:news-rss -- --members S000033` | **partial** — **12**/15 subject/quote-qualified (CDC releaser-only dropped; NewsAPI now uses same qualify gate); remainder honest under-collection this window; all `'alleged'` (single-outlet / no independent corroborator); GDELT empty this run |
-| 12 | STOCK Act trades | House PTR / Senate eFD (`official`) | Stock Trades | `npm run sync:stock-trades` | **gap** for Senate eFD (503 maintenance) |
+| 12 | STOCK Act trades | House PTR / Senate eFD (`official`) | Stock Trades | `npm run sync:stock-trades` | **fetch-failed DIAGNOSED** — eFD search API HTTP 503 maintenance (home 200); profile `trades.json` note; UI honest-gap empty-state; not verified zero |
 
 ---
 

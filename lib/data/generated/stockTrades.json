@@ -129286,8 +129286,8 @@
         "tier": "official",
         "description": "STOCK Act periodic transaction reports filed with the U.S. Senate"
       },
-      "asOf": "2026-06-25",
-      "note": "fetch-failed: Senate eFD sync unavailable (Senate eFD search API under maintenance (HTTP 503))."
+      "asOf": "2026-07-22",
+      "note": "DIAGNOSED fetch-failed / UI honest-gap (Batch D 2026-07-22): Senate eFD search API under maintenance (HTTP 503). No prior verified STOCK Act trades. Re-run sync:stock-trades --members S000033 when maintenance ends."
     },
     "mitch-mcconnell": {
       "politicianId": "mitch-mcconnell",

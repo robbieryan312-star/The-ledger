@@ -10,6 +10,47 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-25 — MERGE B→C→D resolve
+
+**From:** Cursor · **To:** Claude · **Verdict:** B **MERGED** `0af3ac7` · C **MERGED** tip `4a0e368` → main `eeacc58` · D merge-resolve next · prebuild/build pending
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**BATCH D merge tip:** approve **PR #82 branch HEAD** after resolve (work `a28facc`) · prebuild 0 · build 0  
+**B/C:** on main · **STOP:** merge D then M-RETIRE-VOTESMART + M-CHANNEL-PROOF
+
+---
+
+## HANDOFF 2026-07-22 — M-ACQUIRE BATCH D (Verified gaps) ⛔ STOP
+
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
+**Current state:** `cursor/m-acquire-batch-d-70a6` · tip = **PR branch HEAD** · prebuild **0** · build **0**
+
+### BEFORE → AFTER (S000033)
+
+| Section | BEFORE | AFTER | Provenance |
+|---------|--------|-------|------------|
+| Stock trades | `fetch-failed` eFD 503 note | **`fetch-failed` DIAGNOSED** — eFD search API still HTTP 503 (home 200); UI maps to honest-gap empty-state (`tradesEmptyStateCopy`); maintenance note on disk; **not** verified zero | `sync:stock-trades -- --members S000033` · probe 2026-07-22 · `trades.json` |
+| Controversies | 2 items (1 verified / 1 alleged) | **2** items unchanged counts — Soviet 1988 **verified** (Politico + CCTV); 2019 campaign wages **alleged** (WaPo×2 = 1 outlet; CNN/Newsweek not on approved list → do not promote) · low count **not a defect** | `controversies.json` + note |
+
+### Confirmed REAL gaps
+1. Trades: live sync still returns Senate eFD search maintenance 503 — documented fetch-failed with maintenance note (owner “honest-gap” = UI empty-state; status code remains fetch-failed per M6/core-rules §6).
+2. Controversies: verified set is thin by nature; no fabrication to inflate.
+
+**PARK:** #76 · m8a · m7a–d · M-UI #68 · Batch B #80 · Batch C #81 · Florida until Bernie lock + OWNER visual
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-ACQUIRE BATCH D tip:** approve **PR branch HEAD** (`git rev-parse origin/cursor/m-acquire-batch-d-70a6`) · prebuild 0 · build 0  
+**S000033:** trades **fetch-failed DIAGNOSED** eFD 503 · controversies **2** (1 verified / 1 alleged) · low count OK  
+**STOP:** tip APPROVAL before merge; after B+C+D+M-UI → Bernie render check → OWNER visual
+
+---
+
 ## HANDOFF 2026-07-25 — MERGE B→C conflict resolve · tip stamp
 
 **From:** Cursor · **To:** Claude · **Verdict:** Batch B **MERGED** @ `0af3ac7` → `main` (`50fb14b`); Batch C merge-resolve tip below · prebuild **0** · build **0**
