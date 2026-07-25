@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-25 — M-RETIRE-VOTESMART (COMPLETE · tip refresh)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS / COMPLETE on branch · awaiting tip APPROVAL  
-**Current state:** `cursor/m-retire-votesmart-70a6` · tip **`2a77891`** (work `b86b775`) · tree clean · `npm run prebuild` **0** · `npm run build` **0** · voteSmartRetiredGuard **5/5** · supersedes stale PR #83 branch
+**Current state:** `cursor/m-retire-votesmart-70a6` · work tip **`b86b775`** · final tip = `git rev-parse --short origin/cursor/m-retire-votesmart-70a6` · tree clean · `npm run prebuild` **0** · `npm run build` **0** · voteSmartRetiredGuard **5/5** · supersedes stale PR #83 branch
 
 ### Objective
 Owner clarified VoteSmart was never in key provision — remove all NPAT dependency permanently and document replacement aggregation (official issues → Ballotpedia → CREC Said + roll-call Did).
@@ -27,9 +27,7 @@ Owner clarified VoteSmart was never in key provision — remove all NPAT depende
 ### Commits
 - `6a2cfba` — retire(VoteSmart): unwire NPAT from topic-positions; mark DEFUNCT
 - `af23fd2` — docs(handoff): record M-RETIRE-VOTESMART tip 6a2cfba
-- `b86b775` — residual outlet fix + aggregation docs + backlog
-- `ce600c9` — docs(handoff): stamp tip
-- `2a77891` — docs(handoff): approve tip = branch HEAD
+- `b86b775` — residual outlet fix + aggregation docs + backlog (+ subsequent docs-only tip stamps on branch)
 
 ### Commands run (this session)
 - `npm run prebuild` → 0 (`/tmp/ledger-retire-vs-prebuild.log`)
@@ -54,7 +52,7 @@ Owner clarified VoteSmart was never in key provision — remove all NPAT depende
 - Replacement stack: `sync:official-issues-positions` · Ballotpedia via topic-positions · CREC `--full-depth` · `sync:votes-national`
 
 ### Open / next
-- Claude tip APPROVAL on exact `2a77891` then merge
+- Claude tip APPROVAL on work `b86b775` + final branch HEAD from `git rev-parse origin/cursor/m-retire-votesmart-70a6`
 - Stale PR #83 (`cursor/m-retire-votesmart-channel-proof-70a6`) superseded by this branch — close after tip APPROVAL if desired
 - Deepen aggregation under IMP-POS-AGG-ALT (no new NPAT-like API)
 
@@ -62,7 +60,7 @@ Owner clarified VoteSmart was never in key provision — remove all NPAT depende
 
 ## Confront Claude — paste to Claude Code
 
-**M-RETIRE-VOTESMART tip:** approve exact **`9cd181f`** (work `b86b775`) · VoteSmart DEFUNCT · no key ever · aggregation = official issues → Ballotpedia → CREC + votes · prebuild/build 0 · supersedes #83  
+**M-RETIRE-VOTESMART tip:** approve work **`b86b775`** · final tip = `git rev-parse origin/cursor/m-retire-votesmart-70a6` · VoteSmart DEFUNCT · no key ever · aggregation = official issues → Ballotpedia → CREC + votes · prebuild/build 0 · supersedes #83  
 **STOP:** tip APPROVAL before merge to main
 
 ---
