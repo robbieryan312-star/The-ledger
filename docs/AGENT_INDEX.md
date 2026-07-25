@@ -14,20 +14,21 @@ a redirect or is stale (see "Redirect & duplicate files" at the bottom, and fix 
 
 Every agent reads these every turn, in this order:
 
-1. `.cursor/rules/ledger-core-rules.mdc` — binding rules for ALL agents
-2. `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md` — **Claude-only**, checked every response — the owner's
+1. `.cursor/rules/ledger-pre-ingest.mdc` — **PRE-INGEST** — before every owner/Claude instruction and before every act/response (keys/EMPTY/RETIRED confusion ban)
+2. `.cursor/rules/ledger-core-rules.mdc` — binding rules for ALL agents
+3. `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md` — **Claude-only**, checked every response — the owner's
    direct instructions as a short literal checklist
-3. `docs/CURSOR_IMPLEMENTATION_MANUAL.md` — **Cursor-only** implementation engineer role & discipline
-4. `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` — **Claude-only** full role/procedure (Cursor aware)
-5. `docs/workflows/AGENT_HANDOFF_LOG.md` — agent↔agent handoff / work log (§1.1 J)
-5b. `docs/workflows/IMPROVEMENT_BACKLOG.md` — **SINGLE** improvement backlog (never a second table)
-6. `PROGRESS.md` — milestones, status board, blockers
-7. `docs/OBJECTIVE_SOURCES.md` — the **source constitution** (WHO: approved sources, tiers, keys)
-8. `lib/data/SOURCE_LOOKUP.md` — the **routing table** (HOW: data need → command → destination)
-9. `KEYS.md` — SET vs EMPTY env vars (values live only in `.env.local`)
-10. `REPO.md` — canonical repo is `The-ledger` on `main`
-11. `PILOT_PROFILE_CHECKLIST.md` — what a complete federal profile requires (S000033 reference)
-12. `docs/workflows/FILE_AUDIT_LEDGER.md` — **living tracker** for sync/code optimization (L1–L8); required by `npm run agent:preflight`
+4. `docs/CURSOR_IMPLEMENTATION_MANUAL.md` — **Cursor-only** implementation engineer role & discipline
+5. `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` — **Claude-only** full role/procedure (Cursor aware)
+6. `docs/workflows/AGENT_HANDOFF_LOG.md` — agent↔agent handoff / work log (§1.1 J)
+6b. `docs/workflows/IMPROVEMENT_BACKLOG.md` — **SINGLE** improvement backlog (never a second table)
+7. `PROGRESS.md` — milestones, status board, blockers
+8. `docs/OBJECTIVE_SOURCES.md` — the **source constitution** (WHO: approved sources, tiers, keys)
+9. `lib/data/SOURCE_LOOKUP.md` — the **routing table** (HOW: data need → command → destination)
+10. `KEYS.md` — SET vs EMPTY env vars (values live only in `.env.local`)
+11. `REPO.md` — canonical repo is `The-ledger` on `main`
+12. `PILOT_PROFILE_CHECKLIST.md` — what a complete federal profile requires (S000033 reference)
+13. `docs/workflows/FILE_AUDIT_LEDGER.md` — **living tracker** for sync/code optimization (L1–L8); required by `npm run agent:preflight`
 
 Also read when relevant: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`,
 `.cursor/rules/ledger-editorial-voice.mdc`.

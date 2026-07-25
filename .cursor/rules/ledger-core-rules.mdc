@@ -7,6 +7,11 @@ alwaysApply: true
 
 ## HARD RULES (read first)
 
+- **Pre-ingest hygiene (binding — before every owner/Claude instruction and before every act/response)** —
+  read **`.cursor/rules/ledger-pre-ingest.mdc`** first. Checklist `EMPTY` is session inventory, **not**
+  an owner debt and **not** proof we pulled a key from a vault. **RETIRED/DEFUNCT** keys (e.g.
+  VoteSmart) are never requested. Never imply secret access beyond SET/EMPTY. Full rule lives only
+  in `ledger-pre-ingest.mdc` — do not restate its tables elsewhere.
 - **No fabrication** — show `"No verified record available"` for genuine gaps; never invent facts, quotes, or dates.
 - **Verbatim-only quotes** from journalism — never paraphrase and present as the politician's words.
 - **Honest-gap vs diagnosed-failure** — a failed fetch/sync is UNVERIFIED (`fetch-failed`), never silent empty.
@@ -94,12 +99,13 @@ alwaysApply: true
   duplication or races. See §1.1 K.
 
 **These rules bind EVERY agent equally — Claude Code AND every Cursor agent (Auto, cloud
-agents, background agents). No agent is exempt.** This is the one file all of them reload every
-turn (`alwaysApply: true`). The owner approved these standards once; they are concrete and
-persist until the owner explicitly changes them. If you are about to ask the owner something,
-or deviate from a format — STOP and check this file and the file it points to first. The
-detailed specs already exist; use them. Re-requesting approved information — by any agent — is
-the specific failure this file was created to stop.
+agents, background agents). No agent is exempt.** Reload **this file** and
+**`.cursor/rules/ledger-pre-ingest.mdc`** every turn (`alwaysApply: true` on both) **before**
+ingesting owner or Claude instructions and **before** acting or responding. The owner approved
+these standards once; they are concrete and persist until the owner explicitly changes them. If
+you are about to ask the owner something, or deviate from a format — STOP and check this file
+and the file it points to first. The detailed specs already exist; use them. Re-requesting
+approved information — by any agent — is the specific failure this file was created to stop.
 
 ---
 
@@ -698,14 +704,15 @@ discipline: `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6. Do not restate §11 here
 
 Before advising, coding, syncing data, or asking the owner for keys/email/scope, read:
 
-1. **This file** (`.cursor/rules/ledger-core-rules.mdc`) — binding rules
-2. **`docs/workflows/AGENT_HANDOFF_LOG.md`** — what Cursor last shipped + improvement backlog (Claude reads this, not chat)
-3. **`PROGRESS.md`** — milestones, blockers, next priorities
-4. **`lib/data/SOURCE_LOOKUP.md`** — which source to use for each data need
-5. **`KEYS.md`** — SET vs EMPTY env vars (never ask for values already documented)
-6. **`REPO.md`** — canonical repo is `The-ledger` on `main`
-7. **`PILOT_PROFILE_CHECKLIST.md`** — what a complete profile requires
-8. **`docs/AGENT_INDEX.md`** — navigation map (canonical index; do not maintain rival lists)
+1. **`.cursor/rules/ledger-pre-ingest.mdc`** — pre-ingest hygiene (keys/EMPTY/RETIRED confusion ban)
+2. **This file** (`.cursor/rules/ledger-core-rules.mdc`) — binding rules
+3. **`docs/workflows/AGENT_HANDOFF_LOG.md`** — what Cursor last shipped + improvement backlog (Claude reads this, not chat)
+4. **`PROGRESS.md`** — milestones, blockers, next priorities
+5. **`lib/data/SOURCE_LOOKUP.md`** — which source to use for each data need
+6. **`KEYS.md`** — SET vs EMPTY env vars (never ask for values already documented)
+7. **`REPO.md`** — canonical repo is `The-ledger` on `main`
+8. **`PILOT_PROFILE_CHECKLIST.md`** — what a complete profile requires
+9. **`docs/AGENT_INDEX.md`** — navigation map (canonical index; do not maintain rival lists)
 
 Task-specific: **`AGENTS.md`**, **`.cursor/rules/ledger-data-policy.mdc`**, **`.cursor/rules/ledger-editorial-voice.mdc`**
 
@@ -729,7 +736,8 @@ Reference files before asking the owner anything: `KEYS.md`, `REPO.md`, `PROGRES
 - **End a work/verify turn without updating + committing `docs/workflows/AGENT_HANDOFF_LOG.md`** (§1.1 J)
 - Ask the owner if they are "ready to continue" — proceed until blocked
 - Ask for owner email — it is in `KEYS.md`
-- VoteSmart RETIRED — never request key; OpenSecrets deferred in `SOURCE_LOOKUP.md`
+- VoteSmart RETIRED — never request key; OpenSecrets deferred in `SOURCE_LOOKUP.md` (see `ledger-pre-ingest.mdc`)
+- Treat checklist `EMPTY` as owner debt, or imply vault access beyond SET/EMPTY (pre-ingest ban)
 - Create or work in the legacy `code` GitHub repo
 - Assume API keys are missing without reading `.env.local` key names
 - Paste secret values into chat, commits, or tracked files

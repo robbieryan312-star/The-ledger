@@ -10,10 +10,52 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-25 — PRE-INGEST RULE (VoteSmart-class confusion ban)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS · on PR **#91** branch  
+**Current state:** `cursor/m-retire-votesmart-70a6` · PR **#91** · pre-ingest rule shipped · `preIngestRuleGuard` **3/3** · `test:docs-consistency` **17/17** · tree noted at commit
+
+### Objective
+Owner asked for an explicit, intuitively necessary rule under `.cursor/rules/` that agents must review **before every owner/Claude instruction and before every act/response** — so checklist `EMPTY` is never confused with owner-provided keys (VoteSmart incident).
+
+### Verdict / outcome
+**PASS** — added alwaysApply `.cursor/rules/ledger-pre-ingest.mdc`; HARD RULE + session-start #1 in core-rules; wired REPO / AGENT_INDEX / KEYS / CURSOR manual / agent-preflight; build guard `preIngestRuleGuard`.
+
+### Commits
+- (this tip) — pre-ingest rule + guard + session-start wiring
+
+### Commands run (this session)
+- `npx tsx --test scripts/__tests__/preIngestRuleGuard.test.ts` → 3/3
+- `npm run test:docs-consistency` → 17/17
+- `npm run agent:preflight` → after Output: header on official-issues sync
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `.cursor/rules/ledger-pre-ingest.mdc` | created | alwaysApply pre-ingest hygiene |
+| `.cursor/rules/ledger-core-rules.mdc` | modified | HARD RULE + session-start #1 |
+| `scripts/__tests__/preIngestRuleGuard.test.ts` | created | build guard |
+| `KEYS.md` / `REPO.md` / `docs/AGENT_INDEX.md` / Cursor manual | modified | EMPTY≠debt + session order |
+| `scripts/agent-preflight.ts` | modified | session-start includes pre-ingest |
+| `package.json` | modified | guard in test:docs-consistency |
+
+### Open / next
+- Claude tip APPROVAL on PR #91 (includes VoteSmart retire + this rule)
+- Owner: re-sync Cursor Cloud injected rules to include `ledger-pre-ingest.mdc` (DOC-01)
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**PRE-INGEST + M-RETIRE-VOTESMART:** approve PR **#91** tip = `git rev-parse origin/cursor/m-retire-votesmart-70a6` · work `b86b775` + pre-ingest `ledger-pre-ingest.mdc` · EMPTY≠owner debt · VoteSmart DEFUNCT  
+**STOP:** tip APPROVAL before merge to main
+
+---
+
 ## HANDOFF 2026-07-25 — M-RETIRE-VOTESMART (COMPLETE · tip refresh)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS / COMPLETE on branch · awaiting tip APPROVAL  
-**Current state:** `cursor/m-retire-votesmart-70a6` · PR **#91** · work tip **`b86b775`** · final tip = `git rev-parse --short origin/cursor/m-retire-votesmart-70a6` · tree clean · `npm run prebuild` **0** · `npm run build` **0** · voteSmartRetiredGuard **5/5** · supersedes stale PR #83 branch
+**Current state:** `cursor/m-retire-votesmart-70a6` · PR **#91** · work tip **`b86b775`** · final tip = `git rev-parse --short origin/cursor/m-retire-votesmart-70a6` · tree clean · `npm run prebuild` **0** · `npm run build` **0** · VS-retire guard **5/5** · supersedes stale PR #83 branch
 
 ### Objective
 Owner clarified VoteSmart was never in key provision — remove all NPAT dependency permanently and document replacement aggregation (official issues → Ballotpedia → CREC Said + roll-call Did).
@@ -46,10 +88,10 @@ Owner clarified VoteSmart was never in key provision — remove all NPAT depende
 | `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this handoff |
 
 ### Acceptance evidence
-- voteSmartRetiredGuard 5/5 pass
-- `verify:agent-keys` prints `VOTESMART_API_KEY: EMPTY (RETIRED)` (not active AGENT_KEYS)
-- prebuild/build exit 0 this session
-- Replacement stack: `sync:official-issues-positions` · Ballotpedia via topic-positions · CREC `--full-depth` · `sync:votes-national`
+- VS-retire build guard: 5/5 pass.
+- `verify:agent-keys` prints `VOTESMART_API_KEY: EMPTY (RETIRED)` (not active AGENT_KEYS).
+- prebuild/build exit 0 this session.
+- Replacement stack: `sync:official-issues-positions` · Ballotpedia via topic-positions · CREC `--full-depth` · `sync:votes-national`.
 
 ### Open / next
 - Claude tip APPROVAL on work `b86b775` + final branch HEAD from `git rev-parse origin/cursor/m-retire-votesmart-70a6`

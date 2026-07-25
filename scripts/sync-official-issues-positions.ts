@@ -3,6 +3,7 @@
  *
  * Run: npm run sync:official-issues-positions -- --member S000033
  * Log: tee /tmp/ledger-sync-official-issues.log
+ * Output: lib/data/generated/profiles/{bioguideId}/positions.json
  *
  * Route order (platform stances): official issues pages FIRST → Ballotpedia → campaign site
  * (only if it qualifies). Source-exhaustion: do not honest-gap while a higher route is untried.

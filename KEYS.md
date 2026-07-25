@@ -36,6 +36,13 @@ per-key **SET vs EMPTY status** below; do not duplicate routing here.
 use **Runtime Secret** type so values are redacted from logs/commits), or (2) `.env.local`
 (gitignored). Verify any session with `npm run verify:agent-keys` (prints SET/EMPTY only).
 
+**EMPTY ≠ owner debt (binding — see `.cursor/rules/ledger-pre-ingest.mdc`):**
+`verify:agent-keys` enumerates our **session checklist** (active keys + RETIRED visibility rows).
+An `EMPTY` or `EMPTY (RETIRED)` line does **not** mean the owner omitted a key from their latest
+provision, and does **not** mean the agent pulled a secret from GitHub/Cloud vaults. Agents never
+see secret *values* from GitHub — only SET vs EMPTY. Never ask for RETIRED/DEFUNCT keys
+(e.g. `VOTESMART_API_KEY`).
+
 ### Cursor Cloud Agents — Secrets to add (one-time)
 
 Add each name below in [Cloud Agents → your environment → Secrets](https://cursor.com/dashboard/cloud-agents).

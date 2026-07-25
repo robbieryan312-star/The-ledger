@@ -11,6 +11,7 @@ const INVENTORY_FILE = path.join(projectRoot, 'data', 'reports', 'file-inventory
 const INVENTORY_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
 
 const SESSION_START_FILES = [
+  '.cursor/rules/ledger-pre-ingest.mdc',
   '.cursor/rules/ledger-core-rules.mdc',
   'docs/workflows/AGENT_HANDOFF_LOG.md',
   'PROGRESS.md',

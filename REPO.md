@@ -24,17 +24,18 @@ Cursor Cloud and local sessions often spawn **new workspace directories** (e.g. 
 
 Read **in order** before implementing or asking the owner anything:
 
-1. `.cursor/rules/ledger-core-rules.mdc` — binding rules (all agents)
-2. `docs/workflows/AGENT_HANDOFF_LOG.md` — agent handoff log + improvement backlog (Claude reads this, not chat)
-3. `PROGRESS.md` — milestones M1–M8, status board, blockers
-4. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
-5. `KEYS.md` — which env vars are SET vs EMPTY (values only in `.env.local`)
-6. `REPO.md` — canonical repo is `The-ledger` on `main`
-7. `PILOT_PROFILE_CHECKLIST.md` — what a complete profile requires
+1. `.cursor/rules/ledger-pre-ingest.mdc` — **before every owner/Claude instruction and every response** (keys/EMPTY/RETIRED confusion ban)
+2. `.cursor/rules/ledger-core-rules.mdc` — binding rules (all agents)
+3. `docs/workflows/AGENT_HANDOFF_LOG.md` — agent handoff log + improvement backlog (Claude reads this, not chat)
+4. `PROGRESS.md` — milestones M1–M8, status board, blockers
+5. `lib/data/SOURCE_LOOKUP.md` — data need → source → tier → sync command
+6. `KEYS.md` — which env vars are SET vs EMPTY (values only in `.env.local`)
+7. `REPO.md` — canonical repo is `The-ledger` on `main`
+8. `PILOT_PROFILE_CHECKLIST.md` — what a complete profile requires
 
 Navigation index: `docs/AGENT_INDEX.md`. Task-specific: `AGENTS.md`, `.cursor/rules/ledger-data-policy.mdc`.
 
-Do **not** use `docs/archive/` for current policy. Do **not** re-derive owner expectations from memory. Do **not** ask for email (`robbie.ryan312@gmail.com` is in `KEYS.md`). VoteSmart is **RETIRED/DEFUNCT** — never request a key. Do **not** treat OpenSecrets as a blocker — see deferred sources in `SOURCE_LOOKUP.md`.
+Do **not** use `docs/archive/` for current policy. Do **not** re-derive owner expectations from memory. Do **not** ask for email (`robbie.ryan312@gmail.com` is in `KEYS.md`). VoteSmart is **RETIRED/DEFUNCT** — never request a key. Checklist `EMPTY` is not an owner debt — see `ledger-pre-ingest.mdc`. Do **not** treat OpenSecrets as a blocker — see deferred sources in `SOURCE_LOOKUP.md`.
 
 ---
 

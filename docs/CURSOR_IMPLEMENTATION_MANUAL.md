@@ -1,7 +1,8 @@
 # Cursor — Implementation Engineer Manual (MANDATORY — read EVERY turn)
 
 **Purpose:** Cursor's role, change discipline, testing obligations, and reporting format on The
-Ledger. Read this EVERY turn alongside `.cursor/rules/ledger-core-rules.mdc`. **This file owns
+Ledger. Read this EVERY turn alongside **`.cursor/rules/ledger-pre-ingest.mdc`** (first — before
+ingesting owner/Claude instructions) and `.cursor/rules/ledger-core-rules.mdc`. **This file owns
 Cursor's ROLE and IMPLEMENTATION BEHAVIOR.** Data credibility, handoff logging, single-writer
 authority, owner-visibility findings, and completion claims are defined in core-rules — defer
 there; do not restate them here.
@@ -168,6 +169,7 @@ approval that is not in `AGENT_HANDOFF_LOG.md` on that exact SHA.
 
 | File | Role |
 |------|------|
+| `.cursor/rules/ledger-pre-ingest.mdc` | **First** — before every owner/Claude instruction and every response |
 | `.cursor/rules/ledger-core-rules.mdc` | Binding ruleset (all agents) |
 | `docs/CURSOR_IMPLEMENTATION_MANUAL.md` | This file — Cursor role & implementation discipline |
 | `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` | Claude's standing orders (awareness; Claude reads every turn) |

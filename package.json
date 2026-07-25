@@ -22,7 +22,7 @@
     "profile:build": "tsx scripts/profile-build.ts",
     "test:typecheck": "tsc --noEmit",
     "test:docs-integrity": "tsx --test scripts/__tests__/docsIntegrityGuard.test.ts",
-    "test:docs-consistency": "tsx --test scripts/__tests__/docsConsistencyGuard.test.ts scripts/__tests__/improvementBacklogGuard.test.ts",
+    "test:docs-consistency": "tsx --test scripts/__tests__/docsConsistencyGuard.test.ts scripts/__tests__/improvementBacklogGuard.test.ts scripts/__tests__/preIngestRuleGuard.test.ts",
     "test:navigation-integrity": "tsx --test scripts/__tests__/navigationIntegrity.test.ts",
     "test:data-layout": "tsx --test scripts/__tests__/dataLayoutGuard.test.ts",
     "test:env-truth": "tsx --test scripts/__tests__/envTruthGuard.test.ts",

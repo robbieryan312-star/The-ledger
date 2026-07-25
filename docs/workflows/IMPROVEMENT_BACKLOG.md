@@ -20,7 +20,7 @@ External truths both agents must share (dashboard drift is **owner-only** to fix
 | Vercel project | **Only** `the-ledger-main` → https://the-ledger-main.vercel.app (renamed from `the-ledger-s4dn` 2026-07-21; old hostname retired) | Keep one project; Production Branch=`main`; delete stale GitHub Environments (`* – the-ledger-s4dn` etc.) |
 | Vercel Production Branch | **`main`** | Set Production Branch = `main` |
 | Deploy model | Production advances **only** on merges to `main`; non-main deploys disabled via repo `vercel.json` (`git.deploymentEnabled`) | Confirm dashboard matches |
-| Cursor Cloud injected rules | Must **mirror** on-disk `.cursor/rules/` (`ledger-core-rules.mdc`, `ledger-data-policy.mdc`, `ledger-editorial-voice.mdc`, `ledger-build-workflow.mdc`) — **no** `agent-ops.mdc` (deleted/merged into core-rules) | Re-sync Cloud project rules (DOC-01) |
+| Cursor Cloud injected rules | Must **mirror** on-disk `.cursor/rules/` (`ledger-pre-ingest.mdc`, `ledger-core-rules.mdc`, `ledger-data-policy.mdc`, `ledger-editorial-voice.mdc`, `ledger-build-workflow.mdc`) — **no** `agent-ops.mdc` (deleted/merged into core-rules) | Re-sync Cloud project rules (DOC-01) |
 | Work log path | `docs/workflows/AGENT_HANDOFF_LOG.md` (not `AUDIT_DEBT_BRIEF.md` except as redirect stub) | Cloud rules must not mandate the old path |
 
 ---
@@ -45,6 +45,7 @@ External truths both agents must share (dashboard drift is **owner-only** to fix
 | IMP-013 | #20+#21 merged to main | P2 | cursor | **done** | historical |
 | IMP-RENDER-CI | Render CI flake — `waitForSelector` fix | P2 | cursor | **done** | historical |
 | IMP-VOTESMART-RETIRE | VoteSmart NPAT permanently unwired — no key will be provided; route official issues → Ballotpedia → CREC Said (+ roll-call Did). Guard: `voteSmartRetiredGuard` | P1 | cursor | **done** (PR **#91**, work tip `b86b775`) | KEYS.md · SOURCE_LOOKUP · `sync-topic-positions.ts` |
+| IMP-PRE-INGEST | Pre-ingest rule file — `ledger-pre-ingest.mdc` alwaysApply; EMPTY≠owner debt; RETIRED never requested; guard + session-start #1 | P0 | cursor | **done** (PR **#91**) | `.cursor/rules/ledger-pre-ingest.mdc` · core-rules HARD RULE · `preIngestRuleGuard` |
 | IMP-POS-AGG-ALT | Position aggregation without VoteSmart — deepen official-issues + Ballotpedia channel + CREC Said pairing; no parallel NPAT substitute API | P2 | cursor | open | `sync:official-issues-positions` · `prove:ballotpedia-platform` · `sync:topic-positions --full-depth` |
 
 ---
