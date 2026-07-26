@@ -10,6 +10,84 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
+
+**From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
+**Current state:** `main` · HEAD `a42e0cb` · tree dirty until this commit · #95 left open · PARK #76 · m8a · m7a–d
+
+### Merges (APPROVED tips)
+| Item | Approved tip | Merge result on main |
+|------|--------------|----------------------|
+| M-ALLEGED-POLICY PR #98 | `9ae85ea` | FF `c08be19`→`9ae85ea` |
+| M-GOVERNANCE-MERGE | `09f14b4` | merge commit **`a42e0cb`** (ort; contains §8A + CLAUDE_REVIEW_TURN_RUNBOOK) |
+
+`git merge-base --is-ancestor 9ae85ea HEAD` → true · `09f14b4` → true · `origin/main` = `a42e0cb`
+
+### BERNIE INDEPENDENT AUDIT @ a42e0cb
+
+#### Disk counts (S000033)
+| Section | Count / status | Evidence |
+|---------|----------------|----------|
+| statements | **33** (32 official + 1 media); floor openers ~32; missing_prov **0** | `statements.json` |
+| saidDid | **14**/15 `partial`; incomplete_pairs **0**; nominee_mismatches **[]** | `saidDid.json` |
+| votes | **201** asOf 2026-07-22 | `votes.json` |
+| news | **12** all `media`; dup url/id **0**; incomplete **[]**; dates 2026-02-19..2026-07-07 | `news.json` |
+| controversies | **2** (c1 verified; c2 alleged with verbatim+outcome+url) | `controversies.json` |
+| endorsements | **3** (endorses 1 + endorsedBy 2); all `media` | `endorsements.json` |
+| positions | 10 topics; platformPositions on 7 | `positions.json` |
+| finance | entry present; receipts 24928186.19; tier official | `finance.json` |
+| trades | `fetch-failed`; n=0 | `trades.json` |
+| orgVoteLinks | `honest-gap`; links 0 | `orgVoteLinks.json` |
+| legislation | filled; sponsored 566 / cosponsored 7906 | `legislation.json` |
+| lobbying | on disk `honest-gap` (not a manifest category) | `lobbying.json` |
+
+#### Provenance / policy
+- Said: every statement has title+url+date+tier (**0** missing) — paste check: `missing_prov=0`
+- Alleged c2: verbatimQuote present · outcome present · URL present · title does not restate allegation as fact
+- Banned-section alleged: **A violations: 0**
+- News alleged listings: **B 0 / 12**
+- `??` outlet defaults in lib/scripts: **empty**
+- saidDid said-after-vote: **[]** · dup keys: **[]**
+
+#### Manifest parity
+- `saidDid`: manifest=`filled` vs file.status=`partial` (pairCount 14/15) — **PARITY_NOTE**
+- Other categories: manifest status matches content/honest-gap/fetch-failed as listed above
+
+#### Render :4210 @ 1280
+- HTTP **200**; zero silent empties (content or honest-gap on every tab)
+- Controversies **2** with alleged wage dispute showing verbatim + Outcome
+- Endorsements **3** across Endorsed By + Who Bernie Endorses (Joe Biden + NNU + DSA)
+- Evidence drawer: `data-testid="topic-record-drawer-fullwidth"` **present**
+- Track Record pair1 expanded: healthcare Said ↔ S.J.Res.198 Medicare CMS rule — subject-aligned
+- Screenshots: `/opt/cursor/artifacts/screenshots/bernie-*-1280.png`
+
+### DEFECTS
+| Sev | What | Where | Evidence |
+|-----|------|-------|----------|
+| P2 | saidDid manifest=`filled` while file.status=`partial` (14/15) | `manifest.json` · `saidDid.json` | paste: `saidDid: manifest=filled pairCount=14 file.status=partial PARITY_NOTE` |
+
+### RISKS
+- saidDid short of 15 (honest-gap; Marvit unpaired) — not fabrication
+- News listings `isVerified:false` / UI UNVERIFIED while tier stays `media` — corroboration semantics; watch UX
+- lobbying.json exists outside manifest categories — discoverability gap
+
+### RECOMMENDATIONS
+1. Claude reconcile this audit with Claude's pass → then OWNER visual (do not lock Bernie in this turn)
+2. Optionally align manifest saidDid to `partial` when pairCount < pairTarget (or document filled=has pairs)
+3. Keep #95 open; PARK unchanged
+
+### Open / next
+- OWNER visual after Claude reconcile
+- #95 leave open; PARK #76 · m8a · m7a–d
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**MERGES done:** M-ALLEGED @ `9ae85ea` FF + M-GOVERNANCE @ `09f14b4` → main HEAD **`a42e0cb`**. **BERNIE INDEPENDENT AUDIT @ a42e0cb** posted (P2 manifest saidDid filled vs partial). Reconcile audits → OWNER visual. Do not lock Bernie. #95 open. PARK unchanged.
+
+---
+
 ## HANDOFF 2026-07-26 — M-ALLEGED REJECT#2: matrix guard + synthetic provenance token
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS (local A–H) · awaiting STAGE THREE  
