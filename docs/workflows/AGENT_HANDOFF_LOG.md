@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-26 — M-ALLEGED-POLICY + BERNIE INDEPENDENT AUDIT + SAIDDID-NOMINEE
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS (local A–E + audit fix) · awaiting STAGE THREE  
-**Current state:** `cursor/m-alleged-policy-70a6` · tip = this commit (see Confront) · base `main` @ `c08be19` (CREC `42818b1` + PURGE `59f427a` merged) · prebuild 0 · build 0
+**Current state:** `cursor/m-alleged-policy-70a6` · tip `945877c` · work `cc916da` · base `main` @ `c08be19` (CREC `42818b1` + PURGE `59f427a` merged) · prebuild 0 · build 0
 
 ### Objective
 (1) Ship M-ALLEGED-POLICY exactly. (2) Independent Bernie audit at Claude depth before owner visual. (3) Fix P0 Said→Did nominee mismatch found in audit.
@@ -56,7 +56,7 @@ E) build 0
 ### DEFECTS (audit)
 | Sev | What | Where | Action |
 |-----|------|-------|--------|
-| P0 | Said→Did subject mismatch: Marvit Said ↔ Westercamp Did | `saidDid.json` civil-liberties[0] · `sourceIntegrity.ts:209` topic-equality blind spot | **FIXED this tip** — nominee last-name gate + rebuild 14/15 + fixture |
+| P0 | Said→Did subject mismatch: Marvit Said ↔ Westercamp Did | `saidDid.json` civil-liberties[0] · `sourceIntegrity.ts` topic-equality blind spot | **FIXED** — nominee last-name gate + rebuild 14/15 + fixture |
 | P2 | News UI shows UNVERIFIED while listing tier stays `media` | News tab / `isVerified:false` | expected under corroboration; not alleged demotion — watch UX confusion |
 | P2 | News headline contextualizes third-party assault claims | `news.json` id `s000033-topic-1` | listing is media about Sanders action; not an `alleged` tier item |
 
@@ -70,14 +70,14 @@ E) build 0
 3. Optional follow-on: tighten outlet defaults; deepen Marvit Did search in fuller vote corpus.
 
 ### Open / next
-- ⛔ Claude STAGE THREE on PR #98 exact tip
+- Claude STAGE THREE on PR #98 exact tip
 - #95 leave open; PARK #76 · m8a · m7a–d
 
 ---
 
 ## Confront Claude — paste to Claude Code
 
-**M-ALLEGED-POLICY + SAIDDID-NOMINEE:** approve exact tip of `cursor/m-alleged-policy-70a6` (PR #98) · A violations:0 · B news alleged:0 · C guard 7/7 · saidDid 14/15 partial (Marvit false pair removed + nominee guard) · prebuild/build 0 · BERNIE INDEPENDENT AUDIT posted in handoff · ⛔ your STAGE THREE · do not merge without APPROVAL on this tip SHA
+**M-ALLEGED-POLICY + SAIDDID-NOMINEE:** approve exact tip **`945877c`** of `cursor/m-alleged-policy-70a6` (PR #98; includes work `cc916da`) · A violations:0 · B news alleged:0 · C guard 7/7 · saidDid 14/15 partial (Marvit false pair removed + nominee guard) · prebuild/build 0 · BERNIE INDEPENDENT AUDIT posted in handoff · your STAGE THREE · do not merge without APPROVAL on this tip SHA
 
 ---
 
@@ -1881,7 +1881,7 @@ Independently reproduced on `cursor/sanders-news-trades-fix-70a6`, clean `.next`
 `npm run prebuild` = **exit 1**. Root cause — `audit:profile-credibility` raises a **[P0]
 placeholder-url** on `news.json.items[s000033-newsapi-20]`:
 `https://apnews.com/article/mamdani-sanders-new-york-primary-b1a13eaf0d7e634b6805fc80b3372cf8`.
-**Diagnosis: guard FALSE-POSITIVE, not fabricated data.** `PLACEHOLDER_PATTERNS`
+**Diagnosis: guard FALSE-POSITIVE, not fabricated data.** `945877c_PATTERNS`
 (`lib/data/sourceIntegrity.ts:262`) flags "word + 8-char-plus hex tail with an a–f letter" as an
 invented URL — but that is exactly AP News's *real* article-URL format (32-char hex content-ID).
 Verified-good parts: trades = correct honest-gap (`fetch-failed`, Senate eFD 503); news
@@ -1891,7 +1891,7 @@ media-tier rule.
 
 ### Fixes (STAGE ONE, both go in the PR #48 rework)
 1. **Confirm the AP article is real** (fetch/verify it exists). If real → refine
-   `PLACEHOLDER_PATTERNS` so a legitimate `apnews.com/article/<slug>-<32hex>` URL is NOT flagged
+   `945877c_PATTERNS` so a legitimate `apnews.com/article/<slug>-<32hex>` URL is NOT flagged
    (add an AP-article allowance; keep the `endorsement-a1b2c3…`/`example.com`/`xxxx` catches). Add
    an append-only fixture: this exact AP URL = known-GOOD, plus a genuinely fabricated hex URL =
    known-BAD, so the guard can't regress in either direction. If NOT verifiable → remove the item.
