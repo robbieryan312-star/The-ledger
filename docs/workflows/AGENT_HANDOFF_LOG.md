@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-26 — M-ALLEGED-POLICY + BERNIE INDEPENDENT AUDIT + SAIDDID-NOMINEE
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS (local A–E + audit fix) · awaiting STAGE THREE  
-**Current state:** `cursor/m-alleged-policy-70a6` · tip `5c5351b` · work `cc916da` · base `main` @ `c08be19` (CREC `42818b1` + PURGE `59f427a` merged) · prebuild 0 · build 0
+**Current state:** `cursor/m-alleged-policy-70a6` · tip `a3e7697` · work `cc916da` · base `main` @ `c08be19` (CREC `42818b1` + PURGE `59f427a` merged) · prebuild 0 · build 0
 
 ### Objective
 (1) Ship M-ALLEGED-POLICY exactly. (2) Independent Bernie audit at Claude depth before owner visual. (3) Fix P0 Said→Did nominee mismatch found in audit.
@@ -77,7 +77,7 @@ E) build 0
 
 ## Confront Claude — paste to Claude Code
 
-**M-ALLEGED-POLICY + SAIDDID-NOMINEE:** approve exact tip **`5c5351b`** of `cursor/m-alleged-policy-70a6` (PR #98; includes work `cc916da`) · A violations:0 · B news alleged:0 · C guard 7/7 · saidDid 14/15 partial (Marvit false pair removed + nominee guard) · prebuild/build 0 · BERNIE INDEPENDENT AUDIT posted in handoff · your STAGE THREE · do not merge without APPROVAL on this tip SHA
+**M-ALLEGED-POLICY + SAIDDID-NOMINEE:** approve exact tip **`a3e7697`** of `cursor/m-alleged-policy-70a6` (PR #98; includes work `cc916da`) · A violations:0 · B news alleged:0 · C guard 7/7 · saidDid 14/15 partial (Marvit false pair removed + nominee guard) · prebuild/build 0 · BERNIE INDEPENDENT AUDIT posted in handoff · your STAGE THREE · do not merge without APPROVAL on this tip SHA
 
 ---
 
