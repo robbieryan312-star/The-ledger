@@ -58,9 +58,9 @@ test('fixture: genuine same-event pair with ≥2 non-name tokens IS verified', (
   assert.equal(verified.every((i) => i.source.tier === 'media'), true);
 });
 
-test('unverified media-tier item is demoted to alleged', () => {
+test('unverified media-tier listing keeps media tier (not demoted to alleged)', () => {
   const { a, memberNameTokens } = NEWS_CORROBORATION_KNOWN_GOOD_DISTINCT;
   const [alone] = applyNewsCorroboration([a], tokensFromMemberNames(memberNameTokens));
   assert.equal(alone.isVerified, false);
-  assert.equal(alone.source.tier, 'alleged');
+  assert.equal(alone.source.tier, 'media');
 });

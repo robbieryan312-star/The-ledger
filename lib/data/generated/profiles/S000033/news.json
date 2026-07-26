@@ -14,7 +14,7 @@
       "source": {
         "name": "The Guardian",
         "url": "https://www.theguardian.com/us-news/2026/jul/07/bernie-sanders-graham-platner-maine-senate-race",
-        "tier": "alleged",
+        "tier": "media",
         "date": "2026-07-07",
         "description": "Approved-outlet member topic/tag RSS"
       }
@@ -31,9 +31,9 @@
       "source": {
         "name": "NPR",
         "url": "https://www.npr.org/2026/06/18/nx-s1-5861862/sen-sanders-wants-americans-to-have-a-say-and-stake-in-the-future-of-ai",
-        "tier": "alleged",
+        "tier": "media",
         "date": "2026-06-18",
-        "description": "NewsAPI — corroborate with a second independent outlet before citing as verified fact"
+        "description": "Approved-outlet news listing (corroboration via isVerified)"
       }
     },
     {
@@ -48,7 +48,7 @@
       "source": {
         "name": "The Guardian",
         "url": "https://www.theguardian.com/commentisfree/2026/jun/08/bernie-sanders-ai-sovereign-wealth-fund-plan",
-        "tier": "alleged",
+        "tier": "media",
         "date": "2026-06-08",
         "description": "Approved-outlet member topic/tag RSS"
       }
@@ -65,7 +65,7 @@
       "source": {
         "name": "The Guardian",
         "url": "https://www.theguardian.com/us-news/2026/may/21/bernie-sanders-backs-climate-activist-michigan-race",
-        "tier": "alleged",
+        "tier": "media",
         "date": "2026-05-21",
         "description": "Approved-outlet member topic/tag RSS"
       }
@@ -82,7 +82,7 @@
       "source": {
         "name": "The Guardian",
         "url": "https://www.theguardian.com/us-news/2026/apr/29/bernie-sanders-ai-panel",
-        "tier": "alleged",
+        "tier": "media",
         "date": "2026-04-30",
         "description": "Approved-outlet member topic/tag RSS"
       }
@@ -99,7 +99,7 @@
       "source": {
         "name": "The Guardian",
         "url": "https://www.theguardian.com/us-news/2026/apr/15/bernie-sanders-pushes-military-block-israel",
-        "tier": "alleged",
+        "tier": "media",
         "date": "2026-04-16",
         "description": "Approved-outlet member topic/tag RSS"
       }
@@ -116,7 +116,7 @@
       "source": {
         "name": "The Guardian",
         "url": "https://www.theguardian.com/commentisfree/2026/apr/15/no-more-us-military-aid-to-israel",
-        "tier": "alleged",
+        "tier": "media",
         "date": "2026-04-15",
         "description": "Approved-outlet member topic/tag RSS"
       }
@@ -133,7 +133,7 @@
       "source": {
         "name": "The Guardian",
         "url": "https://www.theguardian.com/us-news/2026/apr/13/bernie-sanders-warns-worst-is-yet-to-come-in-rallying-cry-against-billionaires",
-        "tier": "alleged",
+        "tier": "media",
         "date": "2026-04-13",
         "description": "Approved-outlet member topic/tag RSS"
       }
@@ -150,7 +150,7 @@
       "source": {
         "name": "The Guardian",
         "url": "https://www.theguardian.com/us-news/2026/mar/25/datacenters-bernie-sanders-aoc",
-        "tier": "alleged",
+        "tier": "media",
         "date": "2026-03-25",
         "description": "Approved-outlet member topic/tag RSS"
       }
@@ -167,7 +167,7 @@
       "source": {
         "name": "The Guardian",
         "url": "https://www.theguardian.com/us-news/2026/mar/02/bernie-sanders-ro-khanna-billionaires-wealth-tax-bill",
-        "tier": "alleged",
+        "tier": "media",
         "date": "2026-03-02",
         "description": "Approved-outlet member topic/tag RSS"
       }
@@ -184,7 +184,7 @@
       "source": {
         "name": "The Guardian",
         "url": "https://www.theguardian.com/us-news/2026/feb/21/ai-revolution-bernie-sanders-warning",
-        "tier": "alleged",
+        "tier": "media",
         "date": "2026-02-21",
         "description": "Approved-outlet member topic/tag RSS"
       }
@@ -201,7 +201,7 @@
       "source": {
         "name": "The Guardian",
         "url": "https://www.theguardian.com/us-news/2026/feb/19/bernie-sanders-rails-against-billionaire-greed-amid-california-tax-battle",
-        "tier": "alleged",
+        "tier": "media",
         "date": "2026-02-19",
         "description": "Approved-outlet member topic/tag RSS"
       }

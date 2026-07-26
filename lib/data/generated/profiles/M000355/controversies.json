@@ -61,39 +61,8 @@
           "description": "Reported on the purchase-to-vote timeline"
         }
       ]
-    },
-    {
-      "id": "c3",
-      "title": "Neurological health episodes (2023)",
-      "summary": "McConnell visibly froze mid-sentence at two separate press conferences in 2023 (July 26 and August 30). The Capitol physician stated he was cleared to continue working. Multiple neurologists interviewed by media outlets without examining McConnell speculated on possible causes. No definitive public medical diagnosis has been disclosed.",
-      "category": "Conduct",
-      "status": "Alleged",
-      "date": "2023-07-26",
-      "isVerified": false,
-      "sources": [
-        {
-          "name": "C-SPAN",
-          "url": "https://www.c-span.org/video/?529614-1/senator-mcconnell-freezes-press-conference",
-          "tier": "official",
-          "date": "2023-07-26",
-          "description": "Unedited video of both incidents"
-        },
-        {
-          "name": "U.S. Capitol Attending Physician",
-          "url": "https://www.republicanleader.senate.gov/newsroom/press-releases/attending-physician-letter",
-          "tier": "official",
-          "date": "2023-08-30",
-          "description": "Official statement clearing McConnell to continue work"
-        },
-        {
-          "name": "Associated Press",
-          "url": "https://apnews.com/article/mcconnell-freezes-press-conference-health-d4e5f6g7h8i9j0k1",
-          "tier": "nonpartisan",
-          "date": "2023-08-30",
-          "description": "Factual reporting on the incidents and physician statement"
-        }
-      ]
     }
   ],
-  "status": "filled"
+  "status": "filled",
+  "note": "M-ALLEGED-POLICY: omitted unverified items lacking verified verbatim quote + outcome (no fabrication)."
 }

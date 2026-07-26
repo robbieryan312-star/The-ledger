@@ -24,30 +24,10 @@
       ]
     },
     "defense-veterans": {
-      "statements": [
-        {
-          "title": "Congress has voted for ten bills now that will put US citizens at risk, prolong the conflict in Ukraine, waste tax-payer money, increase domestic food and energy prices, and draw us further into this conflict. I have voted against all of them.",
-          "date": "2022-05-11",
-          "url": "https://thehill.com/homenews/house/3485384-here-are-the-two-republicans-who-voted-against-four-bills-related-to-the-russia-ukraine-conflict/",
-          "tier": "alleged",
-          "topicId": "defense-veterans",
-          "verbatim": true,
-          "displayText": "Congress has voted for ten bills now that will put US citizens at risk, prolong the conflict in Ukraine, waste tax-payer money, increase domestic food and energy prices, and draw us further into this conflict. I have voted against all of them."
-        }
-      ]
+      "statements": []
     },
     "economy-taxes": {
-      "statements": [
-        {
-          "title": "I knew all along they would trade the cow for magic beans. These beans are like the rest. They don't sprout.",
-          "date": "2025-04-10",
-          "url": "https://www.politico.com/news/2025/04/10/house-gop-adopts-budget-framework-paving-the-way-for-trumps-big-beautiful-bill-00283511",
-          "tier": "alleged",
-          "topicId": "economy-taxes",
-          "verbatim": true,
-          "displayText": "I knew all along they would trade the cow for magic beans. These beans are like the rest. They don't sprout."
-        }
-      ]
+      "statements": []
     }
   }
 }

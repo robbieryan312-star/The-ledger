@@ -45,10 +45,11 @@ External truths both agents must share (dashboard drift is **owner-only** to fix
 | IMP-013 | #20+#21 merged to main | P2 | cursor | **done** | historical |
 | IMP-RENDER-CI | Render CI flake — `waitForSelector` fix | P2 | cursor | **done** | historical |
 | IMP-VOTESMART-RETIRE | VoteSmart NPAT permanently unwired — no key will be provided; route official issues → Ballotpedia → CREC Said (+ roll-call Did). Guard: `voteSmartRetiredGuard` | P1 | cursor | **done** (PR **#91** merged @ `7433264`) | KEYS.md · SOURCE_LOOKUP · `sync-topic-positions.ts` |
-| IMP-VOTESMART-PURGE | Owner-overrule: zero live `votesmart` (history exempt only); no tombstone; generic `approvedSourceMatrixGuard` | P0 | cursor | **done** (tip `088f0f9` — STAGE THREE) | `approvedSourceMatrixGuard.test.ts` · `lib/data/approvedSourceMatrix.ts` |
+| IMP-VOTESMART-PURGE | Owner-overrule: zero live `votesmart` (history exempt only); no tombstone; generic `approvedSourceMatrixGuard` | P0 | cursor | **done** (merged `59f427a`) | `approvedSourceMatrixGuard.test.ts` · `lib/data/approvedSourceMatrix.ts` |
 | IMP-PRE-INGEST | Pre-ingest = Cursor compliance gate — `ledger-pre-ingest.mdc` alwaysApply; full Cursor corpus absolute compliance; EMPTY≠owner debt; RETIRED never requested; `preIngestRuleGuard` | P0 | cursor | **done** (PR **#91**) | `.cursor/rules/ledger-pre-ingest.mdc` · core-rules HARD RULE · `preIngestRuleGuard` |
 | IMP-POS-AGG-ALT | Position aggregation without VoteSmart — deepen official-issues + Ballotpedia channel + CREC Said pairing; no parallel NPAT substitute API | P2 | cursor | open | `sync:official-issues-positions` · `prove:ballotpedia-platform` · `sync:topic-positions --full-depth` |
-| IMP-CREC-YIELD | CREC yield: stop silent-drop of valid Said when topic maps to legislation catch-all; per-stage reject counters; student-debt→education preference | P0 | cursor | **done** (tip `d137a12` — STAGE THREE) | `sync-topic-positions.ts` · `diagnose-crec-yield.ts` · `recordTopicBuckets.ts` · crec fixtures |
+| IMP-CREC-YIELD | CREC yield: stop silent-drop of valid Said when topic maps to legislation catch-all; per-stage reject counters; student-debt→education preference | P0 | cursor | **done** (merged `42818b1`) | `sync-topic-positions.ts` · `diagnose-crec-yield.ts` · `recordTopicBuckets.ts` · crec fixtures |
+| IMP-ALLEGED-POLICY | alleged = contested person-claim only; banned surfaces omit; news listings keep media; verbatim+outcome on Controversies | P0 | cursor | **done** (tip pending STAGE THREE) | `ledger-data-policy.mdc` · `allegedPolicyGuard.test.ts` · `newsCorroboration.ts` |
 
 ---
 

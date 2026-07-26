@@ -78,12 +78,29 @@ function ControversyCard({ item }: { item: Controversy }) {
         <div className="px-4 pb-4 border-t border-[#1e3a5f] bg-[#06101e]/40">
           <p className="text-gray-300 text-sm leading-relaxed mt-3 mb-3">{item.summary}</p>
 
+          {!item.isVerified && item.verbatimQuote && (
+            <blockquote className="border-l-2 border-orange-400/40 pl-3 mb-3 text-sm text-gray-200 italic">
+              {item.verbatimQuote}
+            </blockquote>
+          )}
+
           {!item.isVerified && (
             <div className="bg-orange-400/10 border border-orange-400/20 rounded-lg p-3 mb-3 text-xs text-orange-300">
-              <strong>Disclosure:</strong> This claim has not been officially confirmed, adjudicated, or documented by a
-              government or established nonpartisan source. It is included for informational purposes only with its alleged
-              status clearly labeled. Treat as unconfirmed until further corroboration.
+              <strong>Disclosure:</strong> Contested claim about a person — labeled alleged. Reporter agreement does not
+              convert an accusation into fact.
+              {typeof item.reportedByOutletCount === 'number' && item.reportedByOutletCount >= 2 && (
+                <span className="block mt-1 text-orange-200/90">
+                  Reported by {item.reportedByOutletCount} outlets (still alleged).
+                </span>
+              )}
             </div>
+          )}
+
+          {!item.isVerified && item.outcome && (
+            <p className="text-xs text-gray-300 mb-3">
+              <span className="text-gray-500">Outcome: </span>
+              {item.outcome}
+            </p>
           )}
 
           <div className="space-y-1">

@@ -127,3 +127,13 @@ export const NEWS_CORROBORATION_KNOWN_GOOD_SAME_EVENT_NON_NAME = {
   expectVerified: true,
   memberNameTokens: ['Bernie Sanders', 'Bernard Sanders', 'Bernie', 'Bernard', 'Sanders'],
 } as const;
+
+/** M-ALLEGED-POLICY (2026-07-26): unverified approved-outlet listing keeps tier `media`
+ *  (isVerified=false). Append-only regression note — demotion to alleged is banned. */
+export const NEWS_CORROBORATION_KNOWN_GOOD_LISTING_TIER_PRESERVED = {
+  defect: 'listing-tier-not-demoted-to-alleged',
+  description:
+    'Failed corroboration sets isVerified=false but must preserve approved-outlet listing tier media',
+  expectListingTier: 'media' as const,
+  expectVerified: false,
+} as const;

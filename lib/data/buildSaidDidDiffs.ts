@@ -124,34 +124,8 @@ function pickSaidForLink(
     };
   }
 
-  const allegedStatement = topicData.statements.find(
-    (s) =>
-      s.topicId === topicId &&
-      s.tier === 'alleged' &&
-      s.verbatim === true &&
-      (statementMatchesVote(s.title, link, topicId) || textMatchesTopic(s.title, topicId)) &&
-      saidDidSubjectsOverlap(s.title, `${link.billNumber}: ${link.billTitle}`),
-  );
-  if (allegedStatement) {
-    let outlet = allegedStatement.outlet ?? 'Journalism';
-    if (!allegedStatement.outlet) {
-      try {
-        const host = new URL(allegedStatement.url).hostname.replace(/^www\./, '');
-        if (host.includes('washingtonpost')) outlet = 'Washington Post';
-        else if (host.includes('nytimes')) outlet = 'New York Times';
-      } catch {
-        /* keep generic */
-      }
-    }
-    return {
-      quote: allegedStatement.title,
-      outlet,
-      url: allegedStatement.url,
-      tier: 'alleged',
-      date: allegedStatement.date,
-      verbatim: true,
-    };
-  }
+  // Said→Did is a banned surface for `'alleged'` (data-policy 2026-07-26) — never pair
+  // contested person-claims here; omit and leave an honest gap on the Said side.
 
   const statedPosition = topicData.statedPosition?.trim();
   if (

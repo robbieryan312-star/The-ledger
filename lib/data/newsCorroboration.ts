@@ -107,8 +107,9 @@ function countIndependentCorroborators(
 
 /**
  * Set isVerified when ≥1 other independent outlet corroborates the same event
- * (≥2 shared non-name tokens). Unverified `'media'` items are demoted to
- * `'alleged'` (data-policy: 1 media source → alleged).
+ * (≥2 shared non-name tokens). Listing tier is preserved — approved-outlet news
+ * listings stay `'media'`/`'nonpartisan'`/`'official'`; failed corroboration is
+ * NOT a demotion to `'alleged'` (data-policy 2026-07-26).
  */
 export function applyNewsCorroboration(
   items: NewsItem[],
@@ -117,17 +118,13 @@ export function applyNewsCorroboration(
   return items.map((item) => {
     const corroborators = countIndependentCorroborators(item, items, memberNameTokens);
     const isVerified = corroborators >= 1;
-    const tier = item.source.tier;
-    const nextTier =
-      !isVerified && tier === 'media'
-        ? ('alleged' as const)
-        : tier;
     return {
       ...item,
       isVerified,
       source: {
         ...item.source,
-        tier: nextTier,
+        // Preserve builder/registry listing tier — never rewrite to alleged.
+        tier: item.source.tier,
       },
     };
   });

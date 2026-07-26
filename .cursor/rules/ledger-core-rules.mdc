@@ -603,14 +603,17 @@ discipline: `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6. Do not restate §11 here
 | `'official'` | Authoritative government record | congress.gov, FEC, senate.gov, house.gov, STOCK Act filings |
 | `'nonpartisan'` | Established nonpartisan or official-derived research | GovTrack, OpenSecrets, Ballotpedia, AP, Reuters, ProPublica, unitedstates/congress-legislators |
 | `'media'` | Named mainstream journalism outlet | NYT, WaPo, WSJ, Politico, The Hill — verbatim quotes with attribution only, never paraphrased |
-| `'alleged'` | Credible but unproven claim | Corroborated by 2+ independent sources, always visibly flagged |
+| `'alleged'` | Contested claim about a person (not a confidence score) | Controversies + nested news claims only — see `ledger-data-policy.mdc` |
 | `'unverified'` | Circulating claim with no verified sourcing | Maximum caveat, shown only when explicitly relevant |
 
-- **2+ independent approved sources** to display a `'media'`-tier statement as verified.
-  1 media source → `'alleged'`, shown with caveat, never as verified. AP/Reuters wire + a
-  republisher = 1 source.
+- **Canonical `'alleged'` definition:** `.cursor/rules/ledger-data-policy.mdc` (permitted/banned
+  surfaces, verbatim-only, multi-source transparency, outcome required, endorsements omit rule).
+- **2+ independent approved sources** to display a `'media'`-tier **Said/statement** as verified.
+  1 media source → **OMIT** (honest gap) — never demote a banned-surface record to `'alleged'`.
+  AP/Reuters wire + a republisher = 1 source. News **listings** keep approved-outlet listing tier;
+  corroboration is `isVerified`, not a tier rewrite.
 - **Banned always:** Wikipedia, social-media posts (uncorroborated), anonymous sources,
-  campaign/PAC press releases (→ `'alleged'` only), anything without a URL + date.
+  campaign/PAC press releases as sole source on banned surfaces, anything without a URL + date.
 - Journalism quotes are **verbatim, in quotes, attributed, dated, linked** — never paraphrased.
 - **Honest gaps:** show `"No verified record available"`. Never fabricate or paraphrase to fill.
 - **Source exhaustion (binding):** before an honest-gap for any category, exhaust the ordered
@@ -643,9 +646,10 @@ discipline: `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6. Do not restate §11 here
   but scales up for high-profile figures (e.g. Trump) where the record is large. Always
   objective and sourced.
 - **News** — collect relevant, impactful items; stick to quotes or fact-based statements.
-  Single-source items shown as `'alleged'`; 2+ sources to present as verified fact (uses the
-  platform-wide corroboration standard — no news-specific exception).
-- **Endorsements** — filled out thoroughly but not a giant section; moderate depth.
+  Approved-outlet **listings** stay `'media'`/`'nonpartisan'`; use `isVerified` for corroboration.
+  Contested person-claims nested in an article may be `'alleged'` per data-policy.
+- **Endorsements** — member's own statement or 2+ approved outlets; otherwise omit (never `'alleged'`).
+  Moderate depth — not a giant section.
 - **Exact display numbers (from demo components — do not drift):** evidence quote 117 chars
   (`ExpandableEvidenceRow.tsx`); topic bill title 80 chars, 5 sponsored + 5 cosponsored per
   topic (`ProfileRecordByTopicPanel.tsx`); 8 donors per category (`DonorChart.tsx`);

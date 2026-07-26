@@ -14,23 +14,61 @@ Data credibility is the product within this policy's scope (`lib/data/**`, `scri
 
 ---
 
+## Canonical definition of `'alleged'` (owner + Claude — 2026-07-26)
+
+**`alleged` = a contested claim about a person** (accusation, unproven assertion, or individually
+constructed opinion presented as fact). It is **not** a data-quality confidence score and must
+never be used to paper over missing corroboration on official/primary records.
+
+### Permitted surfaces (only two)
+
+1. **Controversies**
+2. **Claims inside a news item** — the article *listing* itself stays tier `'media'` for approved
+   outlets (`isOpinion` when commentary). Contested claims nested in the article may be labeled
+   `'alleged'`; failed corroboration of a news listing does **not** demote the listing to `'alleged'`.
+
+### Banned surfaces (never assign `'alleged'`)
+
+votes · Said/statements · Said→Did · positions/beliefs · finance · stock trades · lobbying/PAC ·
+legislation · orgVoteLinks · endorsements.
+
+These are official/primary (or endorsement) records. If content fails the evidentiary floor,
+**OMIT** with an honest gap — never downgrade to `'alleged'`.
+
+### Rules when `'alleged'` is used
+
+1. **Verbatim-only** — direct quote + attribution + date + URL. No summarizing or paraphrase.
+   The headline/title must **not** restate an allegation as fact. Cannot quote exactly → do not carry.
+2. **Multi-source transparency** — 2+ reliable outlets on the same unproven claim → display
+   "reported by N outlets" and **keep** the `'alleged'` label. Reporter agreement never converts an
+   accusation into fact — only a primary/official record does.
+3. **Outcome required** — where the record shows a resolution (charges dropped, settled, convicted,
+   retracted, investigation closed, campaign remedied, etc.), display it **with** the allegation.
+   An allegation without its outcome is misleading.
+
+### Endorsements
+
+Require the member's own statement **or** 2+ approved outlets; otherwise **OMIT** — never `'alleged'`.
+
+---
+
 ## Multi-source corroboration rule (non-negotiable)
 
 Any statement attributed to a politician that comes from a `'media'` or lower tier source
 **must be corroborated by at least 2 independent approved sources** before it can be
-displayed as a verified statement.
+displayed as a **verified** Said/statement.
 
 - **1 source, tier `'official'` or `'nonpartisan'`** → display as verified with that single source
-- **1 source, tier `'media'`** → label as `'alleged'`, show with caveat, never as verified
+- **1 source, tier `'media'` (Said/statement/quote)** → **OMIT** (honest gap) — never demote to `'alleged'`
 - **2+ independent sources, tier `'media'`** → display as verified, list all sources
 - **Cannot corroborate** → do not display the statement at all; show "No verified statement on record"
+
+News **listings** from approved outlets keep listing tier `'media'`/`'nonpartisan'`/`'official'`;
+use `isVerified` for corroboration status — do not rewrite listing tier to `'alleged'`.
 
 A source corroborates another ONLY if it is independent (different outlet, different author,
 different publication date). A wire service (AP/Reuters) and an outlet republishing that wire
 are NOT independent — count as one source.
-
-This rule applies to: quotes, position statements, platform claims, and any other assertion
-attributed to the politician's words or stated beliefs sourced from journalism.
 
 ### Corroboration floor for unobtainable data (owner directive 2026-07-19)
 
@@ -39,10 +77,10 @@ source constitution (`docs/OBJECTIVE_SOURCES.md`, rule 4 — the single definiti
 
 - A **single** below-standard provider is **never shown** — uncorroborated below-standard
   sourcing is an honest gap (`"No verified record available"`), not a display.
-- Only when **two or more independent** below-standard providers corroborate may the fact be
-  shown, and then **always at the lowest display tier (`'alleged'` at best)**, visibly flagged,
-  with every provider cited alongside its lean label. Volume never promotes a below-standard
-  provider above this floor.
+- Only when **two or more independent** below-standard providers corroborate may a
+  *non-person-accusation* fact be shown, visibly flagged, with every provider cited alongside its
+  lean label. Contested claims **about a person** follow the `'alleged'` definition above (Controversies
+  / nested news claims only) — never park them on banned surfaces.
 - Currently-unobtainable items (Senate eFD trades, OpenSecrets API, SAM.gov
   entity details) are tracked in `docs/OBJECTIVE_SOURCES.md` + `PROGRESS.md` — do not re-attempt
   blindly; render the honest gap.
@@ -54,7 +92,9 @@ source constitution (`docs/OBJECTIVE_SOURCES.md`, rule 4 — the single definiti
 - **Wikipedia** — never under any tier. User-editable, not authoritative.
 - Social media posts (Twitter/X, Facebook, Instagram) — not verifiable as tier 'official' even from a politician's own account unless corroborated by an approved outlet.
 - Anonymous sources — never, at any tier.
-- Press releases from campaigns or PACs — tier 'alleged' only, requires corroboration.
+- Press releases from campaigns or PACs — never sole sourcing for banned surfaces; contested
+  person-claims may appear only under Controversies / nested news claims per the `'alleged'`
+  definition above (verbatim + outcome).
 - Any source without a verifiable URL and publication date.
 
 ---

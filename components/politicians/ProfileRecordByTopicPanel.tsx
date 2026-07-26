@@ -119,18 +119,15 @@ function TopicGroupRow({
     topicPositions?.statements.filter((s) => s.tier === 'official' && !isCeremonialCrecRemark(s.title)) ?? [];
   const mediaStatements =
     topicPositions?.statements.filter((s) => s.tier === 'media' && s.verbatim === true) ?? [];
-  const allegedStatements =
-    topicPositions?.statements.filter((s) => s.tier === 'alleged' && s.verbatim === true) ?? [];
   const hasOfficialStatements = officialStatements.length > 0;
   const hasMediaStatements = mediaStatements.length > 0;
-  const hasAllegedStatements = allegedStatements.length > 0;
   const platformPositions = topicPositions?.platformPositions ?? [];
   const hasPlatformPositions = platformPositions.length > 0;
+  // Said/statements are a banned surface for `'alleged'` — omit contested claims here.
   const hasStatedBlock =
     hasStatedPosition ||
     hasOfficialStatements ||
     hasMediaStatements ||
-    hasAllegedStatements ||
     hasPlatformPositions;
 
   const legislationBillCount = deepSponsoredCount + deepCosponsoredCount;
@@ -242,41 +239,6 @@ function TopicGroupRow({
                 <div className="w-full max-w-none">
                   <div className="text-white font-semibold mb-1">Stated position</div>
                   {mediaStatements.map((statement, idx) => (
-                    <div key={idx} className="block w-full max-w-none mt-2">
-                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                        <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0" />
-                        <span className="text-gray-500">{formatShortDate(statement.date)}</span>
-                        <SourceBadge
-                          source={{
-                            name: statement.outlet ?? 'Journalism',
-                            url: statement.url,
-                            tier: statement.tier,
-                            date: statement.date,
-                          }}
-                        />
-                      </div>
-                      <ExpandableQuoteBlock
-                        summary={leadSummary(statementDisplayText(statement), 120)}
-                        fullText={statementDisplayText(statement)}
-                        verbatim
-                      />
-                      <Link
-                        href={statement.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-[#c8a951] hover:text-white transition-colors mt-1 text-[11px]"
-                      >
-                        Source <ExternalLink className="h-3 w-3" />
-                      </Link>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {!hasStatedPosition && !hasPlatformPositions && hasAllegedStatements && (
-                <div className="w-full max-w-none">
-                  <div className="text-white font-semibold mb-1">Stated position</div>
-                  {allegedStatements.map((statement, idx) => (
                     <div key={idx} className="block w-full max-w-none mt-2">
                       <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                         <FileText className="h-3.5 w-3.5 text-gray-500 flex-shrink-0" />

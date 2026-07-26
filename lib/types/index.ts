@@ -98,6 +98,15 @@ export interface Controversy {
   date: string;
   sources: Source[];
   isVerified: boolean;
+  /**
+   * Contested person-claim (`alleged` surface): required verbatim quote from a source URL.
+   * Never paraphrase — if no exact quote, omit the controversy.
+   */
+  verbatimQuote?: string;
+  /** Resolution outcome shown with the allegation (required when isVerified is false). */
+  outcome?: string;
+  /** Independent outlets reporting the same unproven claim — keep alleged label. */
+  reportedByOutletCount?: number;
 }
 
 export interface NewsItem {

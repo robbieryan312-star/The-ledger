@@ -246,8 +246,12 @@ export async function articleContainsQuote(
   return false;
 }
 
-export function mediaQuoteTier(sourceCount: number): SourceTier {
-  return sourceCount >= 2 ? 'media' : 'alleged';
+/**
+ * Said/statements never use `'alleged'` (banned surface). Single-outlet media quotes
+ * are omitted by the caller — only 2+ independent verified outlets yield `'media'`.
+ */
+export function mediaQuoteTier(sourceCount: number): SourceTier | null {
+  return sourceCount >= 2 ? 'media' : null;
 }
 
 export async function verifyCuratedQuote(
@@ -267,6 +271,9 @@ export async function verifyCuratedQuote(
     verifiedSources.push(src);
   }
   if (verifiedSources.length === 0) return null;
+  const tier = mediaQuoteTier(verifiedSources.length);
+  // 1 media source → omit (honest gap); never assign alleged on Said/statements.
+  if (!tier) return null;
   if (bioguideId) {
     for (const src of verifiedSources) {
       recordCorroboratedQuote(src.url, {
@@ -278,7 +285,7 @@ export async function verifyCuratedQuote(
   }
   return {
     verifiedSources,
-    tier: mediaQuoteTier(verifiedSources.length),
+    tier,
   };
 }
 

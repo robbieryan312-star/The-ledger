@@ -25,33 +25,8 @@
           "description": "Burlington government access recording of Sanders press conference upon return from Yaroslavl"
         }
       ]
-    },
-    {
-      "id": "c2",
-      "title": "Campaign staff wage dispute (2019)",
-      "summary": "Field organizers on the 2020 Sanders presidential campaign publicly stated their effective hourly wage fell below $15/hr due to hours worked vs. salary paid — which conflicted with his $15 minimum wage position. The campaign subsequently raised pay.",
-      "category": "Campaign",
-      "status": "Resolved",
-      "date": "2019-07-18",
-      "isVerified": false,
-      "sources": [
-        {
-          "name": "Washington Post",
-          "url": "https://www.washingtonpost.com/politics/labor-fight-roils-bernie-sanders-campaign-as-workers-demand-the-15-hourly-pay-the-candidate-has-proposed-for-employees-nationwide/2019/07/18/3a6df9f4-a966-11e9-9214-246e594de5d5_story.html",
-          "tier": "media",
-          "date": "2019-07-18",
-          "description": "Reporting on unionized field organizers' pay dispute"
-        },
-        {
-          "name": "Washington Post",
-          "url": "https://www.washingtonpost.com/politics/bernie-sanders-defends-campaign-salaries-after-post-report-of-labor-dispute-with-unionized-organizers/2019/07/19/c60558ec-aa68-11e9-86dd-d7f0e60391e9_story.html",
-          "tier": "media",
-          "date": "2019-07-19",
-          "description": "Sanders response; campaign limited hours so pay met $15/hr equivalent"
-        }
-      ]
     }
   ],
   "status": "filled",
-  "note": "Batch D 2026-07-22: 2 items on disk — 1 verified (Soviet 1988, Politico+CCTV), 1 alleged (2019 campaign wages, WaPo×2 = single outlet → not media-verified). Low count expected for this section (owner: least count-sensitive); no fabrication."
+  "note": "Batch D / M-ALLEGED-POLICY: kept verified Soviet 1988 item; 2019 campaign-wage dispute omitted — paraphrased summary without a verified verbatim quote (alleged requires verbatim+URL+outcome; cannot invent quote)."
 }
