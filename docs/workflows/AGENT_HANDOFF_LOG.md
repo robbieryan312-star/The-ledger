@@ -10,88 +10,100 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
-## HANDOFF 2026-07-25 — M-CREC-YIELD (S000033 Said→Did blocker)
+## HANDOFF 2026-07-25 — MERGE CREC-YIELD + PURGE-V2 to main
 
-**From:** Cursor · **To:** Claude · **Verdict:** PASS (local) · awaiting STAGE THREE  
-**Current state:** `cursor/m-crec-yield-70a6` · tip **`d137a12`** (work) · base `main` @ `6422613` · prebuild **0** · build **0**
+**From:** Cursor · **To:** Claude · **Verdict:** MERGED (Claude APPROVED exact tips)  
+**Current state:** `main` · CREC `42818b1` + PURGE `59f427a` merge in progress
+
+### Merged
+| Item | Approved tip |
+|------|--------------|
+| M-CREC-YIELD PR #97 | `42818b1` |
+| M-VOTESMART-PURGE-V2 PR #96 | `59f427a` |
+
+---
+
+## HANDOFF 2026-07-25 — M-CREC-YIELD (S000033 Said→Did blocker) — MERGED
+
+**From:** Cursor · **To:** Claude · **Verdict:** MERGED @ `42818b1`  
+**Current state:** merged to main
+
+### Outcome
+statements 13→33; saidDid 10→15/15; no_topic drop eliminated; procedural filter unchanged.
+
+---
+
+## HANDOFF 2026-07-25 — M-VOTESMART-PURGE v2 (owner overrule) — MERGING
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS · awaiting STAGE THREE  
+**Current state:** `cursor/m-votesmart-purge-v2-70a6` · PR **#96** · tip **`d29b589`** · base `main` @ `6422613` (+ NEWS `8e8bc58` + GOVINFO `f748f9d`)
 
 ### Objective
-Diagnose ~96% CREC reject (not key-blocked); fix genuine over-reject (silent no_topic drop); do not weaken Said-vs-procedural.
+Owner overruled survivors: DELETE OBJECTIVE tombstone (B 1→0); REPLACE VoteSmart-named guard with generic `approvedSourceMatrixGuard` (wired catalog ⊆ matrix).
 
-### Per-stage rejection (BEFORE → AFTER)
+### Verdict / outcome
+**PASS** — A exit 1 (zero live mentions); B matrix guard 4/4 fail 0; C prebuild 0; D build 0. Tombstone deleted. VoteSmart-named guard + fixture deleted. History docs skipped in path-exists check (append-only).
 
-| Stage | Before | After | Notes |
-|-------|--------|-------|-------|
-| (a) fetch search/html fail | 0 / 0 | 0 / 0 | key length 40 |
-| (b) speaker_miss | 7 | 7 | correct skips |
-| (b) no_opener / no_excerpt | 255 | ~308 | pool noise — not weakened |
-| (c) procedural_title | 459 | 459 | clerk headers — correct |
-| (c) procedural_body | 53 | (in no_excerpt) | Said-vs-procedural unchanged |
-| (c) ceremonial | 2 | 2 | correct |
-| (d) no_topic silent drop | **14** | **0** | **FIX: legislation catch-all kept** |
-| (e) dedup | 0 | 0 | |
-| (f) accepted CREC (fresh) | ~10 | **24** | |
-| Profile statements | **13** | **33** | crec 12→32 + 1 media |
-| Said→Did pairs | **10**/15 | **15**/15 filled | |
+### Acceptance evidence (this session)
+```
+A) git grep -ci votesmart -- . ':!docs/archive' ':!docs/workflows/AGENT_HANDOFF_LOG.md' \
+     ':!docs/workflows/BATCH_SCALING.md' ':!docs/workflows/IMPROVEMENT_BACKLOG.md'
+   → exit 1, no stdout
+B) npx tsx --test scripts/__tests__/approvedSourceMatrixGuard.test.ts
+   → tests 4 / pass 4 / fail 0
+C) rm -rf .next && npm run prebuild → exit 0
+D) npm run build → exit 0
+```
 
-### Root cause
-`mapCrecTextToTopic` returned `null` for `legislation` catch-all → silent drop of valid floor Said. Statement merge also excluded the legislation bucket.
-
-### Commands run
-- `npx tsx scripts/diagnose-crec-yield.ts --member S000033 --full-depth` → `/tmp/ledger-crec-yield-diag.log`
-- `npm run sync:topic-positions -- --member S000033 --full-depth` → `/tmp/ledger-sync-topic-positions-crec-yield-2.log`
-- `npx tsx scripts/archive/apply-m-acquire-batch-a.ts`
-- `npm run snapshot:update -- --member S000033`
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/OBJECTIVE_SOURCES.md` | modified | DELETE tombstone; ADD matrix rows PTR/images/USASpending |
+| `scripts/__tests__/approvedSourceMatrixGuard.test.ts` | created | generic matrix + criterion-A guard |
+| `lib/data/approvedSourceMatrix.ts` | created | matrix membership helpers |
+| `lib/data/__fixtures__/approvedSourceMatrixGuard.fixture.ts` | created | known-good fec / known-bad zzzx |
+| `scripts/__tests__/voteSmartRetiredGuard.test.ts` | deleted | replaced by generic |
+| `lib/data/__fixtures__/retiredNpatPurgeGuard.fixture.ts` | deleted | replaced by generic |
+| `scripts/__tests__/docsIntegrityGuard.test.ts` | modified | skip history docs for path-exists |
+| `package.json` | modified | `test:source-integrity` → matrix guard |
+| KEYS/REPO/SOURCE_LOOKUP/core-rules/pre-ingest | modified | no tombstone wording |
+| `docs/workflows/BATCH_SCALING.md` | modified | improvement row PURGE v2 |
+| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | IMP-VOTESMART-PURGE status |
 
 ### Open / next
-- Claude STAGE THREE on this tip
-- PURGE v2 PR #96 still awaiting STAGE THREE (separate)
-- Then BERNIE INDEPENDENT AUDIT after both merge
+- Claude STAGE THREE on this tip (exact SHA)
+- Then M-CREC-YIELD (Bernie Said→Did yield)
 - #95 leave open; PARK #76 · m8a · m7a–d
 
 ---
 
 ## Confront Claude — paste to Claude Code
 
-**M-CREC-YIELD:** approve exact **`d137a12`** (work; docs stamp on branch tip) · statements 13→33 · CREC 12→32 · saidDid 10→15/15 filled · no_topic drop 14→0 · procedural rule unchanged · mega-bundle freeze preserved · prebuild/build **0** · ⛔ your STAGE THREE
+**M-VOTESMART-PURGE v2:** approve exact **`d29b589`** · PR **#96** · A exit1 · B 4/4 · prebuild/build 0 · tombstone DELETED · generic `approvedSourceMatrixGuard` · supersedes #92 · ⛔ your STAGE THREE · do not merge without APPROVAL
 
 ---
 
+## HANDOFF 2026-07-25 — PURGE v2 base (merge purge onto main+#93+#94)
 
-## HANDOFF 2026-07-25 — MERGE #93 NEWS + #94 GOVINFO
+**From:** Cursor · **To:** Claude · **Verdict:** WIP — owner-overrule purge next  
+**Current state:** `cursor/m-votesmart-purge-v2-70a6` · base includes NEWS `8e8bc58` + GOVINFO `f748f9d` + PURGE `f5f026b`
 
-**From:** Cursor · **To:** Claude · **Verdict:** MERGED to main · tips unchanged (handoff-only conflict)
-
-### MERGE recorded
+### MERGE recorded on main (prior)
 | Item | Approved tip | On main |
 |------|--------------|---------|
-| M-NEWS-FIX PR #93 | `8e8bc58` | **`8e8bc58`** (FF) then merge commit below |
-| M-GOVINFO-FIX PR #94 | `f748f9d` | merge includes **`f748f9d`** |
+| M-NEWS-FIX PR #93 | `8e8bc58` | yes |
+| M-GOVINFO-FIX PR #94 | `f748f9d` | yes |
 
-Conflict resolve: `AGENT_HANDOFF_LOG.md` only — NEWS + GOVINFO work both retained.
-
-### Open / next
-- M-VOTESMART-PURGE owner-overrule v2 (zero tombstone + generic matrix guard)
-- M-CREC-YIELD (highest-value Bernie)
-- Independent audit after PURGE + CREC-YIELD merge
+### This branch
+Merged `origin/cursor/m-votesmart-purge-70a6` @ `f5f026b`; resolving conflicts then owner-overrule:
+1. DELETE last OBJECTIVE_SOURCES tombstone (B → 0)
+2. REPLACE VoteSmart-named guard with `approvedSourceMatrixGuard`
 
 ---
 
 ## Confront Claude — paste to Claude Code
 
-**#93 + #94 MERGED** · NEWS `8e8bc58` · GOVINFO `f748f9d` · next: PURGE v2 + CREC-YIELD
-
----
-
-## HANDOFF 2026-07-25 — M-GOVINFO-FIX (merged)
-
-Statements **11→13** · Said→Did **8→10**/15 · tip `f748f9d` · key chain GOVINFO→DATA_GOV→FEC→CONGRESS
-
----
-
-## HANDOFF 2026-07-25 — M-NEWS-FIX (merged)
-
-Verified **0→0**/12 · name-token exclusion · tip `8e8bc58` · fixtures NAME_ONLY false / SAME_EVENT true
+**#93+#94 MERGED** · PURGE v2 in progress on `cursor/m-votesmart-purge-v2-70a6`
 
 ---
 

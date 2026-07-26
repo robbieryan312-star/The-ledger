@@ -56,7 +56,7 @@ sub-files** — they live in this file's key matrix and in per-state pipeline do
 8. **CHANNEL PROOF BEFORE ROUTING (binding — owner 2026-07-22):** any NEW source/channel must
    have one proven end-to-end acquisition on a known-good control (usable qualified rows in the
    correct destination file + guards green) **before** it is written into routing docs. Unproven
-   channels stay out of SOURCE_LOOKUP / this matrix (same status as VoteSmart RETIRED/DEFUNCT).
+   channels stay out of SOURCE_LOOKUP / this matrix until proven.
 
 ---
 
@@ -77,13 +77,13 @@ sub-files** — they live in this file's key matrix and in per-state pipeline do
 | Labor/employment (state, county, metro CPI) | BLS API | `BLS_API_KEY` (optional) | keyless OK | `ingest:bls-*` → `FLORIDA_DATA.md` | Keyless works at low volume |
 | Court opinions | CourtListener | `COURTLISTENER_API_KEY` (optional) | keyless OK | `ingest:courts-fl` → `FLORIDA_DATA.md` | Keyless works for basic use |
 | Platform stances (official issues pages) | Member `officialWebsite` `/issues/` | none | — | `sync:official-issues-positions` | Exhaust → Ballotpedia → campaign if qualifies |
-| — RETIRED — | Vote Smart / NPAT | `VOTESMART_API_KEY` | do not use | — | RETIRED/DEFUNCT — route official issues → Ballotpedia → CREC Said |
-| — RETIRED — | ProPublica Congress API | `PROPUBLICA_CONGRESS_KEY` | do not use | — | API retired upstream |
+| House STOCK Act PTR disclosures | House disclosures PTR PDFs | none | — | `sync:stock-trades` | No House trade rows |
+| Congress portraits | unitedstates/images | none | — | photo URL by bioguideId | Initials fallback |
+| Federal spending (FL pilot) | USASpending.gov | none | — | `ingest:usaspending-fl` | No FL spending slice |
 
 **Currently unobtainable (stop re-attempting; honest gap in UI):** Senate eFD stock trades
-(upstream 503), VoteSmart NPAT (**RETIRED/DEFUNCT** — never request key), OpenSecrets API
-(deferred — FEC Schedule A substitute), SAM.gov entity details (identity verification wall).
-See `PROGRESS.md` blockers.
+(upstream 503), OpenSecrets API (deferred — FEC Schedule A substitute), SAM.gov entity details
+(identity verification wall). See `PROGRESS.md` blockers.
 
 ---
 

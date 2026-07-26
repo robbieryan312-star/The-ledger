@@ -6,7 +6,7 @@ import { loadEnvLocal } from './lib/ingest-utils';
 import { GOVINFO_API_KEY_CHAIN, resolveGovInfoApiKey } from './lib/govinfoApiKey';
 
 /** Retired — never required; listed only for SET/EMPTY visibility if present. */
-const RETIRED_KEYS = ['PROPUBLICA_CONGRESS_KEY', 'VOTESMART_API_KEY'] as const;
+const RETIRED_KEYS = ['PROPUBLICA_CONGRESS_KEY'] as const;
 
 const AGENT_KEYS = [
   'FEC_API_KEY',

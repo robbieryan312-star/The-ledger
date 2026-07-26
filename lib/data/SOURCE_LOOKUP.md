@@ -91,15 +91,14 @@ Log long syncs: `npm run sync:<name> 2>&1 | tee /tmp/ledger-<name>.log`
 
 ## Retired / DEFUNCT sources (never request key)
 
-| Source | Status | Use instead |
-|--------|--------|-------------|
-| VoteSmart NPAT | **RETIRED / DEFUNCT** — never call `api.votesmart.org`; no key will be provided | see **Position aggregation (post-VoteSmart)** below |
+Canonical approval matrix: `docs/OBJECTIVE_SOURCES.md`. Absence from that matrix means do not wire
+or re-request a key for the source.
 
-### Position aggregation (post-VoteSmart)
+### Position aggregation
 
-VoteSmart NPAT formerly supplied survey-style “stated positions.” That channel is permanently
-unwired — no key will be acquired. Aggregate the same *destination* (Track Record / Where They
-Stand evidence) via these ordered methods instead:
+Survey-style “stated positions” from a retired NPAT channel are permanently unwired — no key will
+be acquired. Aggregate the same *destination* (Track Record / Where They Stand evidence) via these
+ordered methods instead:
 
 | Priority | Method | Command / path | Destination |
 |----------|--------|----------------|-------------|
@@ -108,8 +107,8 @@ Stand evidence) via these ordered methods instead:
 | 3 | Verbatim floor Said (CREC) | `npm run sync:topic-positions -- --member <id> --full-depth` (GovInfo) | Said statements |
 | 4 | Roll-call Did | `npm run sync:votes-national -- --members <id> --full --full-depth` | Said→Did links |
 
-Never invent a VoteSmart substitute API or re-request `VOTESMART_API_KEY`. Honest gap when none
-of the above yield a verified record.
+Never invent a substitute API for a retired survey channel. Honest gap when none of the above yield
+a verified record.
 
 ## Deferred sources (do not block work)
 

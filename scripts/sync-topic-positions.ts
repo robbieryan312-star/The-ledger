@@ -2,7 +2,6 @@
  * sync-topic-positions.ts — Ballotpedia platform positions, GovInfo CREC Said,
  * and Said→Did vote correlation per topic bucket.
  *
- * VoteSmart / NPAT is RETIRED/DEFUNCT — never call api.votesmart.org.
  *
  * Output: lib/data/generated/topicPositions.json
  * Run: npm run sync:topic-positions
@@ -225,7 +224,6 @@ interface TopicPositionsSnapshot {
     membersWithStatedPosition: number;
     membersWithSaidDidLinks: number;
     perTopicCoverage: Record<string, number>;
-    votesmartConfigured: boolean;
     note?: string;
   };
   byBioguideId: Record<string, Record<string, TopicPositionData>>;
@@ -831,7 +829,6 @@ function buildSnapshotMeta(
   rosterSize: number,
   byBioguideId: Record<string, Record<string, TopicPositionData>>,
   asOf: string,
-  votesmartConfigured: boolean,
   govinfoConfigured: boolean,
 ): TopicPositionsSnapshot['meta'] {
   const topicBuckets = RECORD_TOPIC_BUCKETS.filter((b) => b.id !== 'legislation');
@@ -865,7 +862,6 @@ function buildSnapshotMeta(
 
   const membersWithData = Object.values(byBioguideId).filter((m) => Object.keys(m).length > 0).length;
 
-  void votesmartConfigured; // always false — VoteSmart RETIRED/DEFUNCT
   return {
     asOf,
     source: govinfoConfigured
@@ -878,9 +874,8 @@ function buildSnapshotMeta(
     membersWithStatedPosition,
     membersWithSaidDidLinks,
     perTopicCoverage,
-    votesmartConfigured: false,
     note:
-      'VoteSmart RETIRED/DEFUNCT. Platform from Ballotpedia/official issues; CREC Said + roll-call votes for Said→Did. S000033 migrated to profiles/S000033 (destination files); not in mega-bundle (freeze).',
+      'Platform from Ballotpedia/official issues; CREC Said + roll-call votes for Said→Did. S000033 migrated to profiles/S000033 (destination files); not in mega-bundle (freeze).',
   };
 }
 
@@ -888,11 +883,10 @@ async function writeSnapshot(
   rosterSize: number,
   byBioguideId: Record<string, Record<string, TopicPositionData>>,
   asOf: string,
-  votesmartConfigured: boolean,
   govinfoConfigured: boolean,
 ): Promise<void> {
   const snapshot: TopicPositionsSnapshot = {
-    meta: buildSnapshotMeta(rosterSize, byBioguideId, asOf, votesmartConfigured, govinfoConfigured),
+    meta: buildSnapshotMeta(rosterSize, byBioguideId, asOf, govinfoConfigured),
     byBioguideId,
   };
   await mkdir(OUT_DIR, { recursive: true });
@@ -902,10 +896,8 @@ async function writeSnapshot(
 async function main(): Promise<void> {
   config({ path: path.join(projectRoot, '.env.local') });
 
-  const votesmartConfigured = false;
   // api.data.gov family: GOVINFO → DATA_GOV → FEC → CONGRESS (log NAME only, never value)
   const { key: govinfoKey, sourceEnvVar: govinfoKeySource } = resolveGovInfoApiKey();
-  console.log('VoteSmart: RETIRED (ignored)');
   console.log(
     govinfoKeySource
       ? `GovInfo key: supplied by ${govinfoKeySource} (length ${govinfoKey.length})`
@@ -980,7 +972,7 @@ async function main(): Promise<void> {
   const pending = members.filter((leg) => memberFilter || !checkpoint[leg.bioguideId]);
 
   console.log(
-    `Syncing topic positions for ${pending.length}/${members.length} member${members.length === 1 ? '' : 's'} (${Object.keys(checkpoint).length} checkpointed). Concurrency: ${MEMBER_CONCURRENCY}, GovInfo cap: ${GOVINFO_MAX_RPS}/s, procedural-skip: ${CREC_SKIP_PROCEDURAL ? 'on' : 'off'}. VoteSmart: RETIRED`,
+    `Syncing topic positions for ${pending.length}/${members.length} member${members.length === 1 ? '' : 's'} (${Object.keys(checkpoint).length} checkpointed). Concurrency: ${MEMBER_CONCURRENCY}, GovInfo cap: ${GOVINFO_MAX_RPS}/s, procedural-skip: ${CREC_SKIP_PROCEDURAL ? 'on' : 'off'}`,
   );
 
   async function processMember(leg: LegislatorRow): Promise<Record<string, TopicPositionData>> {
@@ -1043,7 +1035,7 @@ async function main(): Promise<void> {
     );
 
     // Build fresh (this-run) statements + Said→Did per canonical topic.
-    // VoteSmart NPAT is RETIRED — stated positions come from CREC/media/Ballotpedia only.
+    // Stated positions come from CREC/media/Ballotpedia only.
     // Statement buckets INCLUDE `legislation` (catch-all for valid unmapped Said).
     // Platform/Said→Did loops below still use topicBuckets (excludes legislation).
     interface FreshTopic {
@@ -1153,7 +1145,7 @@ async function main(): Promise<void> {
       await writeFile(CHECKPOINT_FILE, JSON.stringify(checkpoint) + '\n', 'utf8');
       completed += 1;
       if (completed % 10 === 0 || completed === pending.length) {
-        await writeSnapshot(rosterSize, byBioguideId, asOf, votesmartConfigured, !!govinfoKey);
+        await writeSnapshot(rosterSize, byBioguideId, asOf, !!govinfoKey);
         console.log(
           `  progress: ${completed}/${pending.length} — ${Object.keys(byBioguideId).length} members with topic position data`,
         );
@@ -1164,14 +1156,14 @@ async function main(): Promise<void> {
   // Enforce freeze even if a prior run re-inserted an excluded id.
   for (const id of MEGA_BUNDLE_EXCLUDED) delete byBioguideId[id];
 
-  await writeSnapshot(rosterSize, byBioguideId, asOf, votesmartConfigured, !!govinfoKey);
+  await writeSnapshot(rosterSize, byBioguideId, asOf, !!govinfoKey);
 
-  const meta = buildSnapshotMeta(rosterSize, byBioguideId, asOf, votesmartConfigured, !!govinfoKey);
+  const meta = buildSnapshotMeta(rosterSize, byBioguideId, asOf, !!govinfoKey);
   console.log('');
   console.log('── sync:topic-positions complete ──');
   console.log(`Members with data: ${meta.membersWithData}/${rosterSize}`);
   console.log(`Platform positions: ${meta.membersWithPlatformPositions}`);
-  console.log(`Stated positions (non-VoteSmart): ${meta.membersWithStatedPosition}`);
+  console.log(`Stated positions: ${meta.membersWithStatedPosition}`);
   console.log(`Said→Did links: ${meta.membersWithSaidDidLinks} members`);
   console.log(`Output: ${OUT_FILE}`);
 
