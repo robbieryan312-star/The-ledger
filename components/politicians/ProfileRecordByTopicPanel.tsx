@@ -118,7 +118,9 @@ function TopicGroupRow({
   const officialStatements =
     topicPositions?.statements.filter((s) => s.tier === 'official' && !isCeremonialCrecRemark(s.title)) ?? [];
   const mediaStatements =
-    topicPositions?.statements.filter((s) => s.tier === 'media' && s.verbatim === true) ?? [];
+    topicPositions?.statements.filter(
+      (s) => s.tier === 'media' && s.verbatim === true && Boolean(s.outlet?.trim()),
+    ) ?? [];
   const hasOfficialStatements = officialStatements.length > 0;
   const hasMediaStatements = mediaStatements.length > 0;
   const platformPositions = topicPositions?.platformPositions ?? [];
@@ -245,7 +247,7 @@ function TopicGroupRow({
                         <span className="text-gray-500">{formatShortDate(statement.date)}</span>
                         <SourceBadge
                           source={{
-                            name: statement.outlet ?? 'Journalism',
+                            name: statement.outlet!.trim(),
                             url: statement.url,
                             tier: statement.tier,
                             date: statement.date,

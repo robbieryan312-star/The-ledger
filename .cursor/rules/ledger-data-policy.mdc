@@ -38,7 +38,8 @@ These are official/primary (or endorsement) records. If content fails the eviden
 ### Rules when `'alleged'` is used
 
 1. **Verbatim-only** — direct quote + attribution + date + URL. No summarizing or paraphrase.
-   The headline/title must **not** restate an allegation as fact. Cannot quote exactly → do not carry.
+   The headline/title must **not** restate an allegation as fact. Cannot quote exactly → do not carry
+   until a verifiable quote is obtained (**repair before removal** — see below).
 2. **Multi-source transparency** — 2+ reliable outlets on the same unproven claim → display
    "reported by N outlets" and **keep** the `'alleged'` label. Reporter agreement never converts an
    accusation into fact — only a primary/official record does.
@@ -46,9 +47,18 @@ These are official/primary (or endorsement) records. If content fails the eviden
    retracted, investigation closed, campaign remedied, etc.), display it **with** the allegation.
    An allegation without its outcome is misleading.
 
+### Repair before removal (binding — 2026-07-26 REJECT remedy)
+
+An item that fails the verbatim or tier requirement is **RE-SOURCED or RE-QUOTED**, not deleted.
+Deletion is only for items with **no verifiable source at all**. Thinning a profile by deleting
+sourced facts is a defect. Verbatim-only exists to stop paraphrase drift — not to erase documented
+public records that still have URLs and dates.
+
 ### Endorsements
 
 Require the member's own statement **or** 2+ approved outlets; otherwise **OMIT** — never `'alleged'`.
+When a documented public endorsement has a single approved-outlet citation, **re-tier to `'media'`**
+(and note the single-outlet status) rather than deleting — repair before removal.
 
 ---
 

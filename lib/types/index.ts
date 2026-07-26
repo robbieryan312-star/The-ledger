@@ -100,7 +100,8 @@ export interface Controversy {
   isVerified: boolean;
   /**
    * Contested person-claim (`alleged` surface): required verbatim quote from a source URL.
-   * Never paraphrase — if no exact quote, omit the controversy.
+   * Never paraphrase — re-quote from the source (repair before removal); omit only if no
+   * verifiable source URL exists at all.
    */
   verbatimQuote?: string;
   /** Resolution outcome shown with the allegation (required when isVerified is false). */

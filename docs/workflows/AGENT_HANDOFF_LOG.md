@@ -10,74 +10,43 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
-## HANDOFF 2026-07-26 — M-ALLEGED-POLICY + BERNIE INDEPENDENT AUDIT + SAIDDID-NOMINEE
+## HANDOFF 2026-07-26 — M-ALLEGED REJECT remedy + M-PROVENANCE-DEFAULTS
 
-**From:** Cursor · **To:** Claude · **Verdict:** PASS (local A–E + audit fix) · awaiting STAGE THREE  
-**Current state:** `cursor/m-alleged-policy-70a6` · tip `a3e7697` · work `cc916da` · base `main` @ `c08be19` (CREC `42818b1` + PURGE `59f427a` merged) · prebuild 0 · build 0
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (local A–G) · awaiting STAGE THREE  
+**Current state:** `cursor/m-alleged-policy-70a6` · tip `TIPSHA` · base `main` @ `c08be19` · prebuild 0 · build 0  
+**Note:** prior Confront cited `a3e7697` while remote tip was `fee3651` — this tip is the pushed HEAD.
 
 ### Objective
-(1) Ship M-ALLEGED-POLICY exactly. (2) Independent Bernie audit at Claude depth before owner visual. (3) Fix P0 Said→Did nominee mismatch found in audit.
+Claude REJECT @ `fee3651`: restore controversy c2 + DSA endorsement by repair (not delete); add repair-before-removal rule; remove fabricated outlet `??` defaults.
 
-### Merges already on main (this session earlier)
-| Item | Approved tip | Result |
-|------|--------------|--------|
-| M-CREC-YIELD #97 | `42818b1` | FF/merged |
-| M-VOTESMART-PURGE-V2 #96 | `59f427a` | merge commit `c08be19` |
-| M-SOURCE-EXPANSION #95 | `9f684d9` | **left open** (not reviewed) |
-
-### Alleged acceptance paste
+### Acceptance paste
 ```
-A) violations: 0
-B) 0
-C) allegedPolicyGuard → pass 7 / fail 0
-D) prebuild 0
-E) build 0
+A) banned-section alleged violations: 0
+B) news alleged listings: 0
+C) allegedPolicyGuard fail 0
+D) provenance-default grep: empty
+E) controversies: 2 · endorsements: 3
+F) prebuild: 0
+G) build: 0
 ```
 
-### BERNIE INDEPENDENT AUDIT @ candidate tip (disk, not handoff claims)
-
-| Category | Disk |
-|----------|------|
-| statements | **33** (24 floor `Mr. SANDERS. Mr. President`; 0 procedural suspects; provenance complete) |
-| saidDid | **14**/15 `partial` after nominee-guard (was 15 with false Marvit↔Westercamp) |
-| votes | **201** |
-| news | **12** all `source.tier=media`; alleged listings **0**; 0 dup URLs |
-| positions byTopic | 10 topics; platformPositions filled on 7 |
-| controversies | **1** verified (Soviet trip); alleged **0** |
-| endorsements | endorses 1 + endorsedBy 1; no alleged |
-| trades | `fetch-failed` honest note |
-| orgVoteLinks | `honest-gap` |
-| lobbying.json | on disk `honest-gap` (not a manifest category) |
-| finance | FEC entry present (receipts ~$24.9M) |
-| `?? 'Source'` | **none** in TS/TSX; related defaults: `?? 'Journalism'` / `?? 'Congressional Record'` / `?? 'Recorded position'` (flag as residual risk) |
-
-**Render :4210 @ 1280:** hero OK; zero silent empties across tabs; Stock Trades honest-gap; Endorsements clean; Controversies 1 Documented / 0 Alleged; Overview hot-topics drawer uses `topic-drawer-fullwidth`; Evidence panel uses `topic-record-drawer-fullwidth` (both present in source — HotTopics vs ProfileRecordByTopicPanel).
-
-### DEFECTS (audit)
-| Sev | What | Where | Action |
-|-----|------|-------|--------|
-| P0 | Said→Did subject mismatch: Marvit Said ↔ Westercamp Did | `saidDid.json` civil-liberties[0] · `sourceIntegrity.ts` topic-equality blind spot | **FIXED** — nominee last-name gate + rebuild 14/15 + fixture |
-| P2 | News UI shows UNVERIFIED while listing tier stays `media` | News tab / `isVerified:false` | expected under corroboration; not alleged demotion — watch UX confusion |
-| P2 | News headline contextualizes third-party assault claims | `news.json` id `s000033-topic-1` | listing is media about Sanders action; not an `alleged` tier item |
-
-### RISKS
-- 14/15 Said→Did until a verified Marvit confirmation Did appears in corpus (honest-gap, no fabrication).
-- Fabricated-outlet defaults (`?? 'Journalism'` etc.) still exist — not `'Source'`, but same class.
-
-### RECOMMENDATIONS
-1. Claude STAGE THREE on this tip → merge → re-stamp audit @ main SHA.
-2. Owner visual only after Claude reconciles both audits.
-3. Optional follow-on: tighten outlet defaults; deepen Marvit Did search in fuller vote corpus.
+### Key changes
+- Restored c2 "Campaign staff wage dispute (2019)" with WaPo verbatim quote + outcome; title does not restate allegation as fact; `isVerified:false` / alleged surface
+- Restored DSA 2016 at tier `media` (Politico + DSA #WeNeedBernie corroboration in description)
+- `ledger-data-policy.mdc` + core-rules: **Repair before removal**
+- Removed `?? 'Journalism'|'Congressional Record'|'Recorded position'`; `resolveRecordedOutlet` or omit; `provenanceOutletGuard`
+- saidDid outlets now `Congressional Record (GovInfo)` (URL-derived); still 14/15 partial
 
 ### Open / next
-- Claude STAGE THREE on PR #98 exact tip
+- Claude STAGE THREE on this exact tip SHA
+- After merge: re-run BERNIE INDEPENDENT AUDIT @ main tip
 - #95 leave open; PARK #76 · m8a · m7a–d
 
 ---
 
 ## Confront Claude — paste to Claude Code
 
-**M-ALLEGED-POLICY + SAIDDID-NOMINEE:** approve exact tip **`a3e7697`** of `cursor/m-alleged-policy-70a6` (PR #98; includes work `cc916da`) · A violations:0 · B news alleged:0 · C guard 7/7 · saidDid 14/15 partial (Marvit false pair removed + nominee guard) · prebuild/build 0 · BERNIE INDEPENDENT AUDIT posted in handoff · your STAGE THREE · do not merge without APPROVAL on this tip SHA
+**M-ALLEGED REJECT remedy + M-PROVENANCE-DEFAULTS:** approve exact tip **`TIPSHA`** of `cursor/m-alleged-policy-70a6` (PR #98) · A0 · B0 · C fail0 · D grep empty · E controv=2 endor=3 · F/G prebuild+build 0 · repair-before-removal in data-policy · your STAGE THREE · do not merge without APPROVAL on this tip SHA
 
 ---
 

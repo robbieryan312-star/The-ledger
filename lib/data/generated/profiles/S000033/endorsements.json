@@ -26,8 +26,20 @@
         "date": "2019-11-14",
         "description": "National Nurses United endorsed Sanders 2020 presidential bid"
       }
+    },
+    {
+      "name": "Democratic Socialists of America",
+      "office": "Political organization",
+      "date": "2016-02-04",
+      "source": {
+        "name": "Politico",
+        "url": "https://www.politico.com/story/2016/02/bernie-sanders-democratic-socialists-219042",
+        "tier": "media",
+        "date": "2016-02-04",
+        "description": "Approved-outlet report on DSA mobilization for Sanders 2016; corroborating DSA #WeNeedBernie page states DSA \"strongly supports Senator Sanders as the strongest candidate for President of the United States\" (https://web.archive.org/web/20180709154400/https://www.dsausa.org/weneedbernie)"
+      }
     }
   ],
   "status": "filled",
-  "note": "DSA 2016 single-outlet Politico row omitted (endorsements require member statement or 2+ approved outlets — never alleged)."
+  "note": "M-ALLEGED-POLICY REJECT remedy 2026-07-26: restored DSA 2016 at tier media (Politico + DSA own #WeNeedBernie statement). Alleged was a mis-tier — repair before removal."
 }

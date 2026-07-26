@@ -1,6 +1,7 @@
 import type { VoteRecord } from '../types';
 import { saidDidSubjectsOverlap } from './sourceIntegrity';
 import { voteCongressGovUrl } from './profileRecordByTopic';
+import { resolveRecordedOutlet } from './resolveRecordedOutlet';
 import type { SaidDidLinkEntry, TopicStatementEntry } from './topicPositions';
 
 /** Max Said→Did links kept per profile after CREC↔vote pairing. */
@@ -78,6 +79,9 @@ export function buildCrecSaidDidLinks(
     const saidUrl = (statement.url ?? '').trim();
     const saidQuote = (statement.title ?? '').trim();
     if (!saidUrl || !saidQuote) continue;
+    const saidOutlet = resolveRecordedOutlet(statement.outlet, saidUrl);
+    // No recorded outlet and no URL-derived host → omit (never invent a label).
+    if (!saidOutlet) continue;
 
     const match = orderedVotes.find((vote) => {
       const didKey = `${vote.billId}:${vote.date}`;
@@ -94,7 +98,7 @@ export function buildCrecSaidDidLinks(
       statedPositionDate: statement.date ?? null,
       saidQuote,
       saidUrl,
-      saidOutlet: statement.outlet ?? 'Congressional Record',
+      saidOutlet,
       voteDate: match.date,
       billTitle: enrichVoteBillTitle(match),
       billNumber: match.billId,

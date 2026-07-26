@@ -1,5 +1,6 @@
 import type { SaidDidDiff } from '../types';
 import { RECORD_TOPIC_BUCKETS, recordKeywordMatches } from './profileRecordByTopic';
+import { resolveRecordedOutlet } from './resolveRecordedOutlet';
 import { isDisqualifiedPlatformPosition, isVoteRestatementSaid, saidDidSubjectsOverlap } from './sourceIntegrity';
 import { getMemberTopicPositions, type TopicPositionData } from './topicPositions';
 import type { SaidDidLinkEntry } from './topicPositions';
@@ -55,17 +56,6 @@ interface SaidSource {
   verbatim: boolean;
 }
 
-function officialOutletLabel(url: string): string {
-  try {
-    const host = new URL(url).hostname.replace(/^www\./, '');
-    if (host.includes('govinfo.gov')) return 'Congressional Record (GovInfo)';
-    if (host.includes('republicanleader.senate.gov')) return 'Senate Republican Leader';
-  } catch {
-    /* fall through */
-  }
-  return 'Official record';
-}
-
 function pickSaidForLink(
   topicId: string,
   topicData: TopicPositionData,
@@ -74,9 +64,11 @@ function pickSaidForLink(
 ): SaidSource | null {
   // Prefer verbatim Said embedded on the link (CREC quote + GovInfo URL).
   if (link.saidQuote?.trim() && link.saidUrl?.trim()) {
+    const outlet = resolveRecordedOutlet(link.saidOutlet, link.saidUrl);
+    if (!outlet) return null;
     return {
       quote: link.saidQuote.trim(),
-      outlet: link.saidOutlet?.trim() || officialOutletLabel(link.saidUrl),
+      outlet,
       url: link.saidUrl.trim(),
       tier: 'official',
       date: link.statedPositionDate ?? 'Date not recorded',
@@ -95,9 +87,11 @@ function pickSaidForLink(
       saidDidSubjectsOverlap(s.title, `${link.billNumber}: ${link.billTitle}`),
   );
   if (officialStatement) {
+    const outlet = resolveRecordedOutlet(officialStatement.outlet, officialStatement.url);
+    if (!outlet) return null;
     return {
       quote: officialStatement.title,
-      outlet: officialStatement.outlet ?? officialOutletLabel(officialStatement.url),
+      outlet,
       url: officialStatement.url,
       tier: 'official',
       date: officialStatement.date,
@@ -114,9 +108,12 @@ function pickSaidForLink(
       saidDidSubjectsOverlap(s.title, `${link.billNumber}: ${link.billTitle}`),
   );
   if (mediaStatement) {
+    const outlet = resolveRecordedOutlet(mediaStatement.outlet, mediaStatement.url);
+    // No recorded outlet → omit (never invent "Journalism").
+    if (!outlet) return null;
     return {
       quote: mediaStatement.title,
-      outlet: mediaStatement.outlet ?? 'Journalism',
+      outlet,
       url: mediaStatement.url,
       tier: 'media',
       date: mediaStatement.date,
@@ -128,15 +125,19 @@ function pickSaidForLink(
   // contested person-claims here; omit and leave an honest gap on the Said side.
 
   const statedPosition = topicData.statedPosition?.trim();
+  const statedSource = topicData.statedPositionSource?.source?.trim();
+  const statedUrl = topicData.statedPositionSource?.url?.trim() ?? '';
   if (
     statedPosition &&
+    statedSource &&
+    statedUrl &&
     statementMatchesVote(statedPosition, link, topicId) &&
     saidDidSubjectsOverlap(statedPosition, `${link.billNumber}: ${link.billTitle}`)
   ) {
     return {
       quote: statedPosition,
-      outlet: topicData.statedPositionSource?.source ?? 'Recorded position',
-      url: topicData.statedPositionSource?.url ?? '',
+      outlet: statedSource,
+      url: statedUrl,
       tier: 'nonpartisan',
       // `pos.asOf`/scrape asOf dates are NOT the true statement date — using them here would
       // produce a fabricated gap against the vote date. Only a genuine statedPositionDate

@@ -63,7 +63,7 @@ export const ALLEGED_KNOWN_GOOD_WITH_OUTCOME = {
   date: '2019-07-18',
   isVerified: false,
   verbatimQuote:
-    '"We are making $13 or less an hour after the hours we work," said a field organizer quoted by the Washington Post.',
+    '"Given our campaign\'s commitment to fighting for a living wage of at least $15.00 an hour, we believe it is only fair that the campaign would carry through this commitment to its own field team."',
   outcome: 'Campaign subsequently raised pay / limited hours so pay met $15/hr equivalent.',
   reportedByOutletCount: 1,
   sources: [

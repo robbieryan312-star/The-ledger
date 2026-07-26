@@ -607,7 +607,8 @@ discipline: `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6. Do not restate §11 here
 | `'unverified'` | Circulating claim with no verified sourcing | Maximum caveat, shown only when explicitly relevant |
 
 - **Canonical `'alleged'` definition:** `.cursor/rules/ledger-data-policy.mdc` (permitted/banned
-  surfaces, verbatim-only, multi-source transparency, outcome required, endorsements omit rule).
+  surfaces, verbatim-only, multi-source transparency, outcome required, **repair before removal**,
+  endorsements omit/`media` re-tier rule).
 - **2+ independent approved sources** to display a `'media'`-tier **Said/statement** as verified.
   1 media source → **OMIT** (honest gap) — never demote a banned-surface record to `'alleged'`.
   AP/Reuters wire + a republisher = 1 source. News **listings** keep approved-outlet listing tier;
@@ -649,6 +650,8 @@ discipline: `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §6. Do not restate §11 here
   Approved-outlet **listings** stay `'media'`/`'nonpartisan'`; use `isVerified` for corroboration.
   Contested person-claims nested in an article may be `'alleged'` per data-policy.
 - **Endorsements** — member's own statement or 2+ approved outlets; otherwise omit (never `'alleged'`).
+  Documented public endorsements with a single approved outlet: re-tier to `'media'` + note — do not
+  delete (repair before removal).
   Moderate depth — not a giant section.
 - **Exact display numbers (from demo components — do not drift):** evidence quote 117 chars
   (`ExpandableEvidenceRow.tsx`); topic bill title 80 chars, 5 sponsored + 5 cosponsored per
