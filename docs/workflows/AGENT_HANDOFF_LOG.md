@@ -10,6 +10,77 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-07-26 — M-ALLEGED-POLICY + BERNIE INDEPENDENT AUDIT + SAIDDID-NOMINEE
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (local A–E + audit fix) · awaiting STAGE THREE  
+**Current state:** `cursor/m-alleged-policy-70a6` · tip = this commit (see Confront) · base `main` @ `c08be19` (CREC `42818b1` + PURGE `59f427a` merged) · prebuild 0 · build 0
+
+### Objective
+(1) Ship M-ALLEGED-POLICY exactly. (2) Independent Bernie audit at Claude depth before owner visual. (3) Fix P0 Said→Did nominee mismatch found in audit.
+
+### Merges already on main (this session earlier)
+| Item | Approved tip | Result |
+|------|--------------|--------|
+| M-CREC-YIELD #97 | `42818b1` | FF/merged |
+| M-VOTESMART-PURGE-V2 #96 | `59f427a` | merge commit `c08be19` |
+| M-SOURCE-EXPANSION #95 | `9f684d9` | **left open** (not reviewed) |
+
+### Alleged acceptance paste
+```
+A) violations: 0
+B) 0
+C) allegedPolicyGuard → pass 7 / fail 0
+D) prebuild 0
+E) build 0
+```
+
+### BERNIE INDEPENDENT AUDIT @ candidate tip (disk, not handoff claims)
+
+| Category | Disk |
+|----------|------|
+| statements | **33** (24 floor `Mr. SANDERS. Mr. President`; 0 procedural suspects; provenance complete) |
+| saidDid | **14**/15 `partial` after nominee-guard (was 15 with false Marvit↔Westercamp) |
+| votes | **201** |
+| news | **12** all `source.tier=media`; alleged listings **0**; 0 dup URLs |
+| positions byTopic | 10 topics; platformPositions filled on 7 |
+| controversies | **1** verified (Soviet trip); alleged **0** |
+| endorsements | endorses 1 + endorsedBy 1; no alleged |
+| trades | `fetch-failed` honest note |
+| orgVoteLinks | `honest-gap` |
+| lobbying.json | on disk `honest-gap` (not a manifest category) |
+| finance | FEC entry present (receipts ~$24.9M) |
+| `?? 'Source'` | **none** in TS/TSX; related defaults: `?? 'Journalism'` / `?? 'Congressional Record'` / `?? 'Recorded position'` (flag as residual risk) |
+
+**Render :4210 @ 1280:** hero OK; zero silent empties across tabs; Stock Trades honest-gap; Endorsements clean; Controversies 1 Documented / 0 Alleged; Overview hot-topics drawer uses `topic-drawer-fullwidth`; Evidence panel uses `topic-record-drawer-fullwidth` (both present in source — HotTopics vs ProfileRecordByTopicPanel).
+
+### DEFECTS (audit)
+| Sev | What | Where | Action |
+|-----|------|-------|--------|
+| P0 | Said→Did subject mismatch: Marvit Said ↔ Westercamp Did | `saidDid.json` civil-liberties[0] · `sourceIntegrity.ts:209` topic-equality blind spot | **FIXED this tip** — nominee last-name gate + rebuild 14/15 + fixture |
+| P2 | News UI shows UNVERIFIED while listing tier stays `media` | News tab / `isVerified:false` | expected under corroboration; not alleged demotion — watch UX confusion |
+| P2 | News headline contextualizes third-party assault claims | `news.json` id `s000033-topic-1` | listing is media about Sanders action; not an `alleged` tier item |
+
+### RISKS
+- 14/15 Said→Did until a verified Marvit confirmation Did appears in corpus (honest-gap, no fabrication).
+- Fabricated-outlet defaults (`?? 'Journalism'` etc.) still exist — not `'Source'`, but same class.
+
+### RECOMMENDATIONS
+1. Claude STAGE THREE on this tip → merge → re-stamp audit @ main SHA.
+2. Owner visual only after Claude reconciles both audits.
+3. Optional follow-on: tighten outlet defaults; deepen Marvit Did search in fuller vote corpus.
+
+### Open / next
+- ⛔ Claude STAGE THREE on PR #98 exact tip
+- #95 leave open; PARK #76 · m8a · m7a–d
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**M-ALLEGED-POLICY + SAIDDID-NOMINEE:** approve exact tip of `cursor/m-alleged-policy-70a6` (PR #98) · A violations:0 · B news alleged:0 · C guard 7/7 · saidDid 14/15 partial (Marvit false pair removed + nominee guard) · prebuild/build 0 · BERNIE INDEPENDENT AUDIT posted in handoff · ⛔ your STAGE THREE · do not merge without APPROVAL on this tip SHA
+
+---
+
 ## Latest session — alleged-tier code-path audit (PASS)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS (read-only map)

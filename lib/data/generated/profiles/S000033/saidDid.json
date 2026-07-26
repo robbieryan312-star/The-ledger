@@ -1,8 +1,8 @@
 {
   "bioguideId": "S000033",
-  "pairCount": 15,
+  "pairCount": 14,
   "pairTarget": 15,
-  "status": "filled",
+  "status": "partial",
   "byTopic": {
     "education": [
       {
@@ -195,21 +195,7 @@
         "voteChoice": "Yea",
         "tier": "official"
       }
-    ],
-    "civil-liberties": [
-      {
-        "topicId": "civil-liberties",
-        "statedPositionDate": "2024-03-06",
-        "saidQuote": "Mr. SANDERS. Madam President, I support the nomination of Moshe Marvit to be a Member of the Federal Mine Safety and Health Review Commission. Mr. Marvit is currently a supervisory attorney-advisor in the Commission's Pittsburgh field office, where he has served since 2012. In this role, he writes decisions for administrative law judges and mediates cases between mine operators and the Mine Safety and Health Administration. Prior to working at the Commission, Mr. Marvit was in private practice where he represented the United Steelworkers and employees in pension and discrimination matters.",
-        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2024-03-06-pt1-PgS2224",
-        "saidOutlet": "Congressional Record",
-        "voteDate": "2026-07-21",
-        "billTitle": "Confirmation: Kara Marie Westercamp, of Virginia, to be a Judge of the U.S. Court of International Trade — Kara Marie Westercamp, of Virginia, to be a Judge of the United States Court of International Trade. Official Senate roll-call from senate.gov (119th Congress).",
-        "billNumber": "PN851-8",
-        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00201.xml",
-        "voteChoice": "Nay",
-        "tier": "official"
-      }
     ]
-  }
+  },
+  "honestGapNote": "14 of 15 verified CREC floor-speech↔roll-call pairs after nominee-subject overlap guard (2026-07-26); Marvit↔Westercamp false pair removed — no Marvit confirmation Did in current roll-call corpus."
 }

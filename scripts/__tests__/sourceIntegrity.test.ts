@@ -10,6 +10,7 @@ import {
   NEWS_KNOWN_BAD_BARE_HOMEPAGE_URL,
   NEWS_KNOWN_BAD_UNAPPROVED_OUTLET,
   SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH,
+  SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH,
   SAID_DID_KNOWN_BAD_TAUTOLOGY,
   PLATFORM_KNOWN_BAD_EVENT_NARRATION,
   PLATFORM_KNOWN_BAD_CRAPO_ARREST,
@@ -181,6 +182,22 @@ test('known-bad subject-mismatched Said→Did is rejected', () => {
   assert.ok(
     violations.some((v) => v.message.includes('no meaningful overlap')),
     'expected subject-mismatch fixture to fail overlap guard',
+  );
+});
+
+test('known-bad nominee-mismatched Said→Did is rejected (Marvit≠Westercamp)', () => {
+  assert.equal(
+    saidDidSubjectsOverlap(
+      SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH.said.quote,
+      SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH.did.action,
+    ),
+    false,
+  );
+  assert.equal(isGenuineSaidDidDiff(SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH), false);
+  const violations = validateSaidDidDiffs([SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH], 'fixture');
+  assert.ok(
+    violations.some((v) => v.message.includes('no meaningful overlap')),
+    'expected nominee-mismatch fixture to fail overlap guard',
   );
 });
 

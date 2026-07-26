@@ -135,6 +135,25 @@ export const SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH = {
   },
 };
 
+/**
+ * Nominee mismatch — same civil-liberties topic bucket, different people (S000033 audit 2026-07-26).
+ * Topic equality must NOT treat this as overlap.
+ */
+export const SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH = {
+  label: 'S000033 Marvit CREC Said paired with Westercamp confirmation Did',
+  said: {
+    quote:
+      'Mr. SANDERS. Madam President, I support the nomination of Moshe Marvit to be a Member of the Federal Mine Safety and Health Review Commission.',
+    url: 'https://www.govinfo.gov/app/details/CREC-2024-03-06-pt1-PgS2224',
+    verbatim: true,
+  },
+  did: {
+    action:
+      'Voted Nay — PN851-8: Confirmation: Kara Marie Westercamp, of Virginia, to be a Judge of the U.S. Court of International Trade',
+    url: 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00201.xml',
+  },
+};
+
 /** Holder/Paul filibuster narration — MUST reject as a Cruz stated position (C001098 civil regression). */
 export const PLATFORM_KNOWN_BAD_EVENT_NARRATION =
   'The day after the filibuster, Attorney General Eric Holder sent a letter to Paul , responding to the filibuster. Holder wrote, "Does the president have the authority to use a weaponized drone to kill an American not engaged in combat on U.S. soil? The answer to that is no." [198]';

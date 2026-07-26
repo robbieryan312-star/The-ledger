@@ -203,11 +203,61 @@ function matchedSubjectKeywords(text: string): Set<string> {
 }
 
 /**
+ * Nominee / confirmation subjects (person names) from Said or Did text.
+ * Used so topic-bucket equality alone cannot pair Moshe Marvit ↔ Kara Westercamp.
+ */
+export function extractNominationSubjects(text: string): string[] {
+  const subjects: string[] = [];
+  const patterns = [
+    /\bnomination of ([A-Z][A-Za-z.'-]+(?:\s+[A-Z][A-Za-z.'-]+){0,4})\s+to be\b/gi,
+    /\bConfirmation:\s*([A-Z][A-Za-z.'-]+(?:\s+[A-Z][A-Za-z.'-]+){0,4})\s*(?:,|\s+to be\b)/gi,
+    /\bConfirm(?:ation of|ing)?\s+([A-Z][A-Za-z.'-]+(?:\s+[A-Z][A-Za-z.'-]+){0,4})\s+to be\b/gi,
+    /\bInvoke Cloture:\s*([A-Z][A-Za-z.'-]+(?:\s+[A-Z][A-Za-z.'-]+){0,4})\s+to be\b/gi,
+  ];
+  for (const re of patterns) {
+    re.lastIndex = 0;
+    let m: RegExpExecArray | null;
+    while ((m = re.exec(text)) !== null) {
+      const name = (m[1] ?? '').replace(/\s+/g, ' ').trim();
+      if (name.length >= 3) subjects.push(name);
+    }
+  }
+  return subjects;
+}
+
+function nominationLastNames(names: string[]): Set<string> {
+  const out = new Set<string>();
+  for (const name of names) {
+    const parts = name.split(/\s+/).filter(Boolean);
+    const last = parts[parts.length - 1]?.toLowerCase().replace(/[^a-z'-]/g, '');
+    if (last && last.length >= 2) out.add(last);
+  }
+  return out;
+}
+
+/**
  * Said and Did must share real subject matter — same classified topic (non-legislation)
  * or at least one shared substantive keyword. Prevents tax-filing vs war-powers pairs.
+ * Nomination/confirmation rows additionally require matching nominee last names so two
+ * civil-liberties confirmations about different people never pair.
  */
 export function saidDidSubjectsOverlap(saidQuote: string, didAction: string): boolean {
   const billText = didAction.replace(/^Voted\s+\w+\s+—\s+[^:]+:\s*/i, '').trim();
+  const saidNominees = extractNominationSubjects(saidQuote);
+  const didNominees = extractNominationSubjects(billText);
+  if (saidNominees.length > 0 || didNominees.length > 0) {
+    const saidLast = nominationLastNames(saidNominees);
+    const didLast = nominationLastNames(didNominees);
+    if (saidLast.size === 0 || didLast.size === 0) return false;
+    let shared = false;
+    for (const n of saidLast) {
+      if (didLast.has(n)) {
+        shared = true;
+        break;
+      }
+    }
+    if (!shared) return false;
+  }
   const saidTopic = classifyTextToRecordTopicId(saidQuote);
   const voteTopic = classifyTextToRecordTopicId(billText);
   if (
@@ -694,7 +744,21 @@ export function validateOrgVoteLinksFile(
 }
 
 export function validateSaidDidFile(
-  data: { bioguideId?: string; byTopic?: Record<string, Array<{ voteDate?: string; congressGovUrl?: string; billNumber?: string; tier?: string }>> },
+  data: {
+    bioguideId?: string;
+    byTopic?: Record<
+      string,
+      Array<{
+        voteDate?: string;
+        congressGovUrl?: string;
+        billNumber?: string;
+        billTitle?: string;
+        tier?: string;
+        saidQuote?: string;
+        saidUrl?: string;
+      }>
+    >;
+  },
   fileLabel: string,
 ): SourceIntegrityViolation[] {
   const violations: SourceIntegrityViolation[] = [];
@@ -709,7 +773,7 @@ export function validateSaidDidFile(
         pushIf(violations, label, isPlaceholderUrl(link.congressGovUrl), `placeholder congressGovUrl`);
       }
       // Embedded Said (quote + CREC URL): required when present; mandatory for S000033 official pairs.
-      const row = link as { saidQuote?: string; saidUrl?: string; tier?: string };
+      const row = link;
       const hasEmbedded = Boolean(row.saidQuote?.trim() || row.saidUrl?.trim());
       const requireEmbedded =
         data.bioguideId === 'S000033' && row.tier === 'official';
@@ -720,6 +784,16 @@ export function validateSaidDidFile(
           pushIf(violations, label, !/\/CREC-/i.test(row.saidUrl), 'saidUrl must be a CREC/GovInfo URL');
           pushIf(violations, label, isPlaceholderUrl(row.saidUrl), 'placeholder saidUrl');
         }
+      }
+      const saidQuote = row.saidQuote?.trim() ?? '';
+      const didAction = `${row.billNumber ?? ''}: ${row.billTitle ?? ''}`.trim();
+      if (saidQuote && didAction.length > 2) {
+        pushIf(
+          violations,
+          label,
+          !saidDidSubjectsOverlap(saidQuote, didAction),
+          'Said subject and Did bill subject have no meaningful overlap',
+        );
       }
     }
   }
