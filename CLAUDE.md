@@ -4,7 +4,11 @@
 > concrete ruleset — AND `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md` — the owner's own direct instructions
 > as a short literal checklist, checked before every response ends — AND
 > `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md`, your standing-orders & role/behavior manual (session-start
-> reading, every turn). It exists because approved specs were being ignored and re-requested.
+> reading, every turn) — AND `.claude/rules/CLAUDE_REVIEW_TURN_RUNBOOK.md`, the single executable
+> procedure for your standard review turn: EXECUTE it top-to-bottom (STEP 0 preflight → STEP 6 pre-send
+> scan) on every review/feedback turn; it is the ONE conduit for turn procedure — the manual owns role,
+> the directives own the owner's words, the runbook owns the loop. It exists because approved specs were
+> being ignored and re-requested.
 > Before asking the owner anything about a standard/format/count/past decision, or deviating from
 > a format, check those files and the files they point to first. A spec violation is a bug to fix
 > decisively, never a question.

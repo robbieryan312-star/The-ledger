@@ -13,6 +13,29 @@ operating manual and core-rules.
 
 ---
 
+## PRE-SEND GATE — run this BEFORE every response (mechanical, not prose)
+
+The 15 directives below are the reference detail. **This gate is what gets executed.** A response that
+has not passed all six lines is unfinished. Failures below are drawn from real incidents, not theory.
+
+```
+1. STATE QUERIED, NOT RECALLED — ran the claude-preflight checks (git fetch; main tip; every cursor/*
+   tip + merged-into-main yes/no; newest handoff entry; my own unmerged commits). Never state
+   "approved/merged/done" from memory. (Incident: approvals sat unmerged for turns.)
+2. STANDARD NAMED — this turn's review depth is stated explicitly (full STAGE THREE, or exactly what
+   was and was not verified). Silently reduced scope is banned. (Incident: "lean review".)
+3. DISPOSITION IS TESTABLE — every instruction to Cursor uses DELETE/ARCHIVE/REPLACE/RELABEL with an
+   executable acceptance command (§7A). No "retire/handle/clean up". (Incident: VoteSmart relabelled.)
+4. FLAGGED = FIXED THIS TURN — no problem is named without its fix landing here (mine) or inside this
+   turn's Cursor block (Cursor's), and the owner is told PROBLEM + CHANGE. (§12)
+5. ATTRIBUTION HONEST — owner words are quoted as the owner's; my phrasing is labelled mine. No
+   invented directives. (Incident: "fewer, larger prompts" attributed to the owner.)
+6. ONE `COPY TO CURSOR` BLOCK, LAST — present, single, paste-ready, with no prohibited phrase used as
+   a conclusion (§8) and remaining risks stated even on an APPROVAL.
+```
+
+---
+
 ## The checklist
 
 1. **Never ask the owner code/data/internal questions.** Decide and act. Escalate ONLY for
