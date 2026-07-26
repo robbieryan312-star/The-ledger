@@ -65,7 +65,8 @@ test('buildCrecSaidDidLinks omits pairs when outlet cannot be resolved', () => {
 });
 
 test('lib/ and scripts/ contain no fabricated provenance ?? defaults', () => {
-  const pattern = String.raw`\?\?\s*'(Journalism|Congressional Record|Recorded position|VoteSmart)'`;
+  // Synthetic DefunctSurveySource stands in for retired survey APIs — pattern only.
+  const pattern = String.raw`\?\?\s*'(Journalism|Congressional Record|Recorded position|DefunctSurveySource)'`;
   let out = '';
   try {
     out = execSync(`rg -n --regexp ${JSON.stringify(pattern)} lib/ scripts/ || true`, {
@@ -88,7 +89,7 @@ test('S000033 saidDid outlets are recorded or URL-derived — never bare invent 
       assert.ok(outlet, `${topic}[${i}] missing saidOutlet`);
       assert.notEqual(outlet, 'Journalism');
       assert.notEqual(outlet, 'Recorded position');
-      assert.notEqual(outlet, 'VoteSmart');
+      assert.notEqual(outlet, 'DefunctSurveySource');
       // Bare "Congressional Record" without GovInfo qualifier is the deleted invent string.
       assert.notEqual(outlet, 'Congressional Record');
     }

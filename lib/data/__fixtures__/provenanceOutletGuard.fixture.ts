@@ -31,10 +31,14 @@ export const PROVENANCE_KNOWN_GOOD_CREC_URL_DERIVED = {
   expectedOutlet: 'Congressional Record (GovInfo)',
 };
 
-/** Known-BAD: bare invented defaults that must not appear in lib/ or scripts/. */
+/**
+ * Known-BAD: bare invented defaults that must not appear in lib/ or scripts/.
+ * Uses synthetic `DefunctSurveySource` (not a live dead-source token) so the purge
+ * matrix guard stays maximally strict without exemption creep.
+ */
 export const PROVENANCE_FORBIDDEN_DEFAULT_LABELS = [
   'Journalism',
   'Congressional Record',
   'Recorded position',
-  'VoteSmart',
+  'DefunctSurveySource',
 ] as const;

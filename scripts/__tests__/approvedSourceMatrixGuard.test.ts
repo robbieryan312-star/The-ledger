@@ -75,12 +75,22 @@ test('criterion (A): no contiguous dead-source token outside history exempts', (
     ':!docs/workflows/BATCH_SCALING.md',
     ':!docs/workflows/IMPROVEMENT_BACKLOG.md',
   ];
+  let grepStatus: number | undefined;
+  let grepStdout = '';
   try {
-    const stdout = execFileSync('git', args, { cwd: projectRoot, encoding: 'utf8' }).trim();
-    assert.fail(`expected no matches (git grep exit 1); got:\n${stdout}`);
+    grepStdout = execFileSync('git', args, { cwd: projectRoot, encoding: 'utf8' }).trim();
+    grepStatus = 0;
   } catch (err) {
     const e = err as { status?: number; stdout?: string };
-    assert.equal(e.status, 1, `expected exit 1; got ${e.status}`);
-    assert.equal((e.stdout ?? '').trim(), '');
+    grepStatus = e.status;
+    grepStdout = (e.stdout ?? '').trim();
   }
+  // Assert AFTER try/catch so AssertionError is never swallowed as "got undefined".
+  if (grepStatus === 0 || grepStdout.length > 0) {
+    assert.fail(
+      `dead-source token "${DEAD_SOURCE_TOKEN}" found outside history exempts:\n${grepStdout || '(git grep exited 0 with empty stdout)'}`,
+    );
+  }
+  assert.equal(grepStatus, 1, `expected git grep exit 1 (no matches); got ${grepStatus}`);
+  assert.equal(grepStdout, '');
 });

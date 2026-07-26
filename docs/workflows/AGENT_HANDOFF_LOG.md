@@ -10,32 +10,36 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
-## HANDOFF 2026-07-26 — M-ALLEGED REJECT remedy + M-PROVENANCE-DEFAULTS
+## HANDOFF 2026-07-26 — M-ALLEGED REJECT#2: matrix guard + synthetic provenance token
 
-**From:** Cursor · **To:** Claude · **Verdict:** PASS (local A–G) · awaiting STAGE THREE  
-**Current state:** `cursor/m-alleged-policy-70a6` · tip `eaf08de` · base `main` @ `c08be19` · prebuild 0 · build 0  
-**Note:** tip SHA = pushed `origin/cursor/m-alleged-policy-70a6` HEAD (not an ancestor).
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (local A–H) · awaiting STAGE THREE  
+**Current state:** `cursor/m-alleged-policy-70a6` · tip `TIPSHA` · base `main` @ `c08be19` · prebuild 0 · build 0  
+**Note:** tip SHA = `git rev-parse --short origin/cursor/m-alleged-policy-70a6` after push.
 
 ### Objective
-Claude REJECT @ `fee3651`: restore controversy c2 + DSA endorsement by repair (not delete); add repair-before-removal rule; remove fabricated outlet `??` defaults.
+Claude REJECT @ `598a24f`: (1) replace dead-source token in provenance fixtures with synthetic `DefunctSurveySource`; (2) fix criterion (A) so `assert.fail` is not swallowed by catch.
+
+### Defect 2 evidence (paste)
+**Scratch FAIL** (token staged in `_scratch_dead_source_token.tmp.ts`):
+```
+not ok 4 - criterion (A): no contiguous dead-source token outside history exempts
+error: dead-source token "votesmart" found outside history exempts:
+scripts/__tests__/_scratch_dead_source_token.tmp.ts:1
+```
+**Clean PASS** after scratch removed: `# tests 4` / `# fail 0`
 
 ### Acceptance paste
 ```
-A) banned-section alleged violations: 0
-B) news alleged listings: 0
+A) violations: 0
+B) 0
 C) allegedPolicyGuard fail 0
 D) provenance-default grep: empty
-E) controversies: 2 · endorsements: 3
-F) prebuild: 0
-G) build: 0
+E) controversies 2 / endorsements 3
+F) approvedSourceMatrixGuard fail 0
+G) prebuild: 0
+H) build: 0
+votesmart git grep (non-exempt): exit 1 (no output)
 ```
-
-### Key changes
-- Restored c2 "Campaign staff wage dispute (2019)" with WaPo verbatim quote + outcome; title does not restate allegation as fact; `isVerified:false` / alleged surface
-- Restored DSA 2016 at tier `media` (Politico + DSA #WeNeedBernie corroboration in description)
-- `ledger-data-policy.mdc` + core-rules: **Repair before removal**
-- Removed `?? 'Journalism'|'Congressional Record'|'Recorded position'`; `resolveRecordedOutlet` or omit; `provenanceOutletGuard`
-- saidDid outlets now `Congressional Record (GovInfo)` (URL-derived); still 14/15 partial
 
 ### Open / next
 - Claude STAGE THREE on this exact tip SHA
@@ -46,7 +50,7 @@ G) build: 0
 
 ## Confront Claude — paste to Claude Code
 
-**M-ALLEGED REJECT remedy + M-PROVENANCE-DEFAULTS:** approve exact tip **`eaf08de`** of `cursor/m-alleged-policy-70a6` (PR #98) · A0 · B0 · C fail0 · D grep empty · E controv=2 endor=3 · F/G prebuild+build 0 · repair-before-removal in data-policy · your STAGE THREE · do not merge without APPROVAL on this tip SHA
+**M-ALLEGED REJECT#2:** approve exact tip **`TIPSHA`** of `cursor/m-alleged-policy-70a6` (PR #98) · A0 B0 C0 D empty E 2/3 F matrix 0 G prebuild 0 H build 0 · synthetic DefunctSurveySource · criterion A names files · your STAGE THREE · do not merge without APPROVAL on this tip SHA
 
 ---
 
