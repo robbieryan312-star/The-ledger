@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
-**Current state:** `main` · HEAD `a42e0cb` · tree dirty until this commit · #95 left open · PARK #76 · m8a · m7a–d
+**Current state:** `main` · HEAD `6d6057b` (docs stamp) · audit data tip `a42e0cb` · #95 left open · PARK #76 · m8a · m7a–d
 
 ### Merges (APPROVED tips)
 | Item | Approved tip | Merge result on main |
@@ -21,7 +21,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 | M-ALLEGED-POLICY PR #98 | `9ae85ea` | FF `c08be19`→`9ae85ea` |
 | M-GOVERNANCE-MERGE | `09f14b4` | merge commit **`a42e0cb`** (ort; contains §8A + CLAUDE_REVIEW_TURN_RUNBOOK) |
 
-`git merge-base --is-ancestor 9ae85ea HEAD` → true · `09f14b4` → true · `origin/main` = `a42e0cb`
+`git merge-base --is-ancestor 9ae85ea HEAD` → true · `09f14b4` → true · profile data audited at merge tip `a42e0cb`
 
 ### BERNIE INDEPENDENT AUDIT @ a42e0cb
 
