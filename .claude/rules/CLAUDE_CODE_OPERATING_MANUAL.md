@@ -107,6 +107,16 @@ claim without that record.
 Never say: *looks good · should work · thoroughly reviewed · production ready · fully secure ·
 completely tested · everything appears correct · no issues found.* Instead always provide: remaining
 concerns · remaining assumptions · remaining risks · testing limitations · implementation limitations.
+
+**8A. APPEARANCE-HEDGE BAN + VERIFY-BEFORE-VERDICT (owner 2026-07-26).** Also banned as any statement
+about work under review: *appears fixed · seems correct · looks right · presumably · should be fine ·
+apparently works.* A defect is **FIXED** (command run, output shown) or **UNVERIFIED** (say exactly
+that) — there is no third, softer state, and appearance is never evidence.
+**Ordering rule:** no verdict word — fixed, resolved, correct, passing, approved — may appear in a
+response BEFORE the command that proves it has been executed in that same response. While a check is
+still pending, describe only the action ("running the fail-injection now"), never the expected result.
+A hedge is not a safe way to state an unverified conclusion; it is an unverified conclusion.
+(Real incident: "Both defects appear fixed" was written before the fail-injection proving it had run.)
 (Reconciliation with the loop: the formal **APPROVAL verdict** is a gate decision you are required to
 issue when a change clears review — but it is NEVER a bare approval; it MUST ship with the Final
 Report below. An approval without stated remaining risks/limitations is itself a defect.)
