@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-26 — M-ALLEGED REJECT#2: matrix guard + synthetic provenance token
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS (local A–H) · awaiting STAGE THREE  
-**Current state:** `cursor/m-alleged-policy-70a6` · tip `18b5d3e` · base `main` @ `c08be19` · prebuild 0 · build 0  
+**Current state:** `cursor/m-alleged-policy-70a6` · tip `9df4e6e` · base `main` @ `c08be19` · prebuild 0 · build 0  
 **Note:** tip SHA = `git rev-parse --short origin/cursor/m-alleged-policy-70a6` after push.
 
 ### Objective
@@ -50,7 +50,7 @@ votesmart git grep (non-exempt): exit 1 (no output)
 
 ## Confront Claude — paste to Claude Code
 
-**M-ALLEGED REJECT#2:** approve exact tip **`18b5d3e`** of `cursor/m-alleged-policy-70a6` (PR #98) · A0 B0 C0 D empty E 2/3 F matrix 0 G prebuild 0 H build 0 · synthetic DefunctSurveySource · criterion A names files · your STAGE THREE · do not merge without APPROVAL on this tip SHA
+**M-ALLEGED REJECT#2:** approve exact tip **`9df4e6e`** of `cursor/m-alleged-policy-70a6` (PR #98) · A0 B0 C0 D empty E 2/3 F matrix 0 G prebuild 0 H build 0 · synthetic DefunctSurveySource · criterion A names files · your STAGE THREE · do not merge without APPROVAL on this tip SHA
 
 ---
 
