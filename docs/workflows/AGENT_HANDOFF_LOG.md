@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-07-26 — M-ALLEGED REJECT remedy + M-PROVENANCE-DEFAULTS
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS (local A–G) · awaiting STAGE THREE  
-**Current state:** `cursor/m-alleged-policy-70a6` · tip `a2327f4` · base `main` @ `c08be19` · prebuild 0 · build 0  
+**Current state:** `cursor/m-alleged-policy-70a6` · tip `eaf08de` · base `main` @ `c08be19` · prebuild 0 · build 0  
 **Note:** tip SHA = pushed `origin/cursor/m-alleged-policy-70a6` HEAD (not an ancestor).
 
 ### Objective
@@ -46,7 +46,7 @@ G) build: 0
 
 ## Confront Claude — paste to Claude Code
 
-**M-ALLEGED REJECT remedy + M-PROVENANCE-DEFAULTS:** approve exact tip **`a2327f4`** of `cursor/m-alleged-policy-70a6` (PR #98) · A0 · B0 · C fail0 · D grep empty · E controv=2 endor=3 · F/G prebuild+build 0 · repair-before-removal in data-policy · your STAGE THREE · do not merge without APPROVAL on this tip SHA
+**M-ALLEGED REJECT remedy + M-PROVENANCE-DEFAULTS:** approve exact tip **`eaf08de`** of `cursor/m-alleged-policy-70a6` (PR #98) · A0 · B0 · C fail0 · D grep empty · E controv=2 endor=3 · F/G prebuild+build 0 · repair-before-removal in data-policy · your STAGE THREE · do not merge without APPROVAL on this tip SHA
 
 ---
 
