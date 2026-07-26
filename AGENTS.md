@@ -154,6 +154,7 @@ Routine implementation: proceed without asking. **Credibility tradeoffs** (confl
 - The app runs fully on committed pipeline data (`lib/data/generated/`), so `npm run dev` and `npm run build` work without API keys for read-only verification.
 - API keys (`FEC_API_KEY`, `CONGRESS_API_KEY` in a gitignored `.env.local`) are only needed for the optional `npm run sync:fec` / `npm run sync:votes` data-refresh scripts; `npm run sync:legislators` and `npm run verify:office` need no key.
 - `npm run lint` currently reports pre-existing errors (e.g. `lib/hooks/useUserProfile.ts` set-state-in-effect) unrelated to environment setup; lint tooling itself works.
+- `npm run build` runs the full `prebuild` guard suite → `next build` → `postbuild`. The `postbuild` step runs `test:render-integrity`, which launches Playwright's chromium-headless-shell, so the Playwright browser must be installed (`npx playwright install chromium`) or the build fails at postbuild with "Executable doesn't exist". The startup update script installs it. To skip that guard for a quick build, set `RENDER_INTEGRITY_SKIP_POSTBUILD=1` (or `VERCEL=1`).
 
 ### Port 3000 is reserved — never start or kill anything on it
 
