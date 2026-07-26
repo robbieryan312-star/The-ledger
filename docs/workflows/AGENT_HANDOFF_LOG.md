@@ -10,6 +10,39 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — alleged-tier code-path audit (PASS)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (read-only map)
+**Current state:** `cursor/m-alleged-policy-70a6` · HEAD `c08be19` · tree clean after this docs commit · prebuild not re-run (read-only)
+
+### Objective
+Map every code path that assigns/defaults `source.tier === 'alleged'`; explain S000033 news all-alleged; endorsements/controversies/UI/guards; recommend surgical fixes.
+
+### Verdict / outcome
+**PASS** — assignment sites located; S000033 news 12/12 alleged via `applyNewsCorroboration` demotion (not initial RSS tier); 1 endorsement alleged (DSA); controversies use `isVerified` filter label not source.tier.
+
+### Commits
+- (this docs commit) — handoff log for alleged-tier audit
+
+### Commands run (this session)
+- `rg` / python inspect of S000033 news/endorsements/controversies
+- `git rev-parse --short HEAD` → `c08be19`
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this session entry |
+
+### Acceptance evidence
+- Runtime assigners: `lib/data/newsCorroboration.ts:123`, `scripts/lib/approvedMediaQuotes.ts:250`, `lib/data/buildSaidDidDiffs.ts:150`
+- S000033 news: 12 items, all `tier:alleged`, `isVerified:false`, outlets Guardian×11 + NPR×1
+- S000033 endorsements: `endorsedBy[1]` DSA → Politico `alleged`
+
+### Open / next
+- Surgical: stop demoting news listing tier; omit single-outlet endorsements; append fixtures/guards
+
+---
+
 ## HANDOFF 2026-07-25 — MERGE CREC-YIELD + PURGE-V2 to main
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGED (Claude APPROVED exact tips)  
