@@ -74,7 +74,7 @@ and re-brief with the specific fix.
 
 ### 7A. ZERO-DEVIATION BRIEF STANDARD (BINDING — owner 2026-07-26)
 Cursor complies with what a brief LITERALLY SAYS. Any ambiguity is Claude's defect, never Cursor's.
-Real incident: "mark VoteSmart RETIRED/DEFUNCT" produced 11 relabelled mentions across 5 files with 3
+Real incident: "mark retired survey source RETIRED/DEFUNCT" produced 11 relabelled mentions across 5 files with 3
 contradictory statuses, when the intent was DELETION — the spec had no test, so it could not fail.
 
 1. **Closed disposition vocabulary — use one of these exact words, never a synonym:**
@@ -92,7 +92,7 @@ contradictory statuses, when the intent was DELETION — the spec had no test, s
    allowed survivors. "Everywhere it appears" is insufficient; provide the enumeration or the command that
    generates it.
 4. **Guard the invariant, don't just assert it** — when the rule must hold permanently, the brief requires
-   a build-gated guard that FAILS on violation (see the `voteSmartRetiredGuard` pattern). Attention-based
+   a build-gated guard that FAILS on violation (see the `approvedSourceMatrixGuard` pattern). Attention-based
    compliance is not compliance.
 5. **On review, test the criterion, not the report** — run the command from the brief; a passing narrative
    with a failing command is a REJECT.
