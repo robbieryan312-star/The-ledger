@@ -10,6 +10,56 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation: active-rule dead-source token (PASS)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (fix committed; awaiting STAGE THREE)  
+**Current state:** `cursor/critical-bug-management-2a22` · fix HEAD `52350a2` · PR pending · tree clean before this handoff entry · build PASS after Playwright Chromium install
+
+### Objective
+Inspect recent commits for high-severity correctness bugs; avoid duplicates from MEMORIES.md; minimally fix any concrete critical issue found.
+
+### Verdict / outcome
+Found a build-gated regression on `main`: active Claude rule files reintroduced the contiguous retired-source token, causing `approvedSourceMatrixGuard` / `npm run test:source-integrity` to fail. Replaced the active-rule examples with generic wording and the current generic guard name; no duplicate PR was opened for the five existing open memory entries.
+
+### Commits
+- `52350a2` — `fix(guards): remove dead-source token from active rules`
+
+### Commands run (this session)
+- `gh pr view 1,2,4,5,7,8,9,10,24,28,29,30,31,40 --json ...` via `python3` loop → exit 0; #28/#29/#30/#31/#40 still OPEN
+- `git log --oneline --name-status --max-count=30 origin/main` → exit 0; recent risk window identified
+- `npm install` → exit 217 (`ENOTEMPTY` in partial `node_modules`)
+- `rm -rf node_modules && npm install` → exit 0
+- `npm run test:typecheck && npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/newsCorroboration.test.ts` → exit 0; 17/17 subtests pass
+- `npm run test:source-integrity` → exit 1 before fix; failure was dead-source token in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`
+- `git grep -n -i votesmart -- . ':!docs/archive' ':!docs/workflows/AGENT_HANDOFF_LOG.md' ':!docs/workflows/BATCH_SCALING.md' ':!docs/workflows/IMPROVEMENT_BACKLOG.md' || true && npx tsx --test scripts/__tests__/approvedSourceMatrixGuard.test.ts && npm run test:source-integrity` → exit 0 after fix; source-integrity 133/133 pass
+- `npm run build` → exit 1 before Playwright install; postbuild render-integrity missing Chromium binary
+- `npx playwright install chromium` → exit 0
+- `npm run build` → exit 0; Next build, render-integrity 6/6, client chunk guard 1/1 pass
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` | modified | Replaced live retired-source token examples with generic wording and `approvedSourceMatrixGuard` |
+| `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md` | modified | Replaced live retired-source token example with generic wording |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this session entry |
+
+### Acceptance evidence
+- Failing evidence before fix: `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`
+- Passing evidence after fix: `npm run test:source-integrity` → `# pass 133`, `# fail 0`
+- Full build evidence: `npm run build` → render-integrity `# pass 6`, client chunks `# pass 1`, exit 0
+
+### Open / next
+- Open PR for `cursor/critical-bug-management-2a22`; do not merge without Claude APPROVAL on the exact tip SHA.
+- Existing memory entries #28, #29, #30, #31, #40 remain open and were not duplicated.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG PR pending:** review `cursor/critical-bug-management-2a22` exact tip after handoff commit. Root cause: active Claude rule docs reintroduced the contiguous retired-source token, breaking `approvedSourceMatrixGuard` / source-integrity on main. Fix: `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` + `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md` now use generic wording / `approvedSourceMatrixGuard`. Evidence: targeted typecheck+17 guards PASS; `npm run test:source-integrity` PASS 133/133; `npm run build` PASS after installing Playwright Chromium in this workspace. Open gates: STAGE THREE review; no merge without APPROVAL on exact tip.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  

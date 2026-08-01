@@ -25,7 +25,7 @@ has not passed all six lines is unfinished. Failures below are drawn from real i
 2. STANDARD NAMED — this turn's review depth is stated explicitly (full STAGE THREE, or exactly what
    was and was not verified). Silently reduced scope is banned. (Incident: "lean review".)
 3. DISPOSITION IS TESTABLE — every instruction to Cursor uses DELETE/ARCHIVE/REPLACE/RELABEL with an
-   executable acceptance command (§7A). No "retire/handle/clean up". (Incident: VoteSmart relabelled.)
+   executable acceptance command (§7A). No "retire/handle/clean up". (Incident: retired survey source relabelled.)
 4. FLAGGED = FIXED THIS TURN — no problem is named without its fix landing here (mine) or inside this
    turn's Cursor block (Cursor's), and the owner is told PROBLEM + CHANGE. (§12)
 5. ATTRIBUTION HONEST — owner words are quoted as the owner's; my phrasing is labelled mine. No
