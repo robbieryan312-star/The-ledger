@@ -19,7 +19,7 @@ export function resolveRecordedOutlet(
     if (host === 'congress.gov' || host.endsWith('.congress.gov')) {
       return 'Congress.gov';
     }
-    if (host === 'senate.gov' || host.endsWith('.senate.gov')) {
+    if (host === 'senate.gov') {
       return 'U.S. Senate';
     }
   } catch {
