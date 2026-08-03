@@ -10,7 +10,9 @@ import test from 'node:test';
 import {
   PROVENANCE_FORBIDDEN_DEFAULT_LABELS,
   PROVENANCE_KNOWN_BAD_MEDIA_NO_OUTLET,
+  PROVENANCE_KNOWN_BAD_SENATE_SUBDOMAIN,
   PROVENANCE_KNOWN_GOOD_CREC_URL_DERIVED,
+  PROVENANCE_KNOWN_GOOD_SENATE_EXACT_HOST,
 } from '../../lib/data/__fixtures__/provenanceOutletGuard.fixture';
 import { resolveRecordedOutlet } from '../../lib/data/resolveRecordedOutlet';
 import { buildCrecSaidDidLinks } from '../../lib/data/saidDidVoteContext';
@@ -30,6 +32,14 @@ test('fixture: CREC govinfo URL derives recorded outlet (not invent when host un
   const s = PROVENANCE_KNOWN_GOOD_CREC_URL_DERIVED.statement;
   assert.equal(resolveRecordedOutlet(undefined, s.url), PROVENANCE_KNOWN_GOOD_CREC_URL_DERIVED.expectedOutlet);
   assert.equal(resolveRecordedOutlet(undefined, 'https://example.com/x'), null);
+});
+
+test('fixture: exact senate.gov host derives chamber label but office subdomains do not', () => {
+  assert.equal(
+    resolveRecordedOutlet(undefined, PROVENANCE_KNOWN_GOOD_SENATE_EXACT_HOST.url),
+    PROVENANCE_KNOWN_GOOD_SENATE_EXACT_HOST.expectedOutlet,
+  );
+  assert.equal(resolveRecordedOutlet(undefined, PROVENANCE_KNOWN_BAD_SENATE_SUBDOMAIN.url), null);
 });
 
 test('buildCrecSaidDidLinks omits pairs when outlet cannot be resolved', () => {

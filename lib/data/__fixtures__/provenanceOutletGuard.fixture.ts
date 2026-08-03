@@ -31,6 +31,19 @@ export const PROVENANCE_KNOWN_GOOD_CREC_URL_DERIVED = {
   expectedOutlet: 'Congressional Record (GovInfo)',
 };
 
+/** Known-GOOD: exact Senate host can derive the chamber record label. */
+export const PROVENANCE_KNOWN_GOOD_SENATE_EXACT_HOST = {
+  label: 'exact senate.gov URL derives U.S. Senate',
+  url: 'https://www.senate.gov/legislative/votes_new.htm',
+  expectedOutlet: 'U.S. Senate',
+};
+
+/** Known-BAD: senate.gov subdomains are member/party/office pages, not generic Senate records. */
+export const PROVENANCE_KNOWN_BAD_SENATE_SUBDOMAIN = {
+  label: 'senate.gov office subdomain must not derive generic U.S. Senate',
+  url: 'https://www.republicanleader.senate.gov/newsroom/press-releases/mcconnell-on-one-year-anniversary-of-ukraine-escalation',
+};
+
 /**
  * Known-BAD: bare invented defaults that must not appear in lib/ or scripts/.
  * Uses synthetic `DefunctSurveySource` (not a live dead-source token) so the purge
