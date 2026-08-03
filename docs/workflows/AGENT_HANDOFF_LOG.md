@@ -10,6 +10,55 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-03 — PROVENANCE SUBDOMAIN BUG FIX @ fb3661f
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS for scoped provenance fix · full source-integrity blocked by existing #99  
+**Current state:** `cursor/bc-ce808b1a-1b66-4ffa-bf55-da189a2e1132-be93` · HEAD `fb3661f` · PR pending · tree clean before this log edit · build not run because `npm run test:source-integrity` still fails on remembered open PR #99 (`votesmart` token in Claude rule files)
+
+### Objective
+Inspect recent commits for high-severity bugs, avoid duplicates from automation memory, and fix any newly proven critical correctness issue.
+
+### Verdict / outcome
+**PASS (scoped)** — fixed a provenance regression where `resolveRecordedOutlet(undefined, <office>.senate.gov)` silently labeled party/office Senate subdomains as generic `U.S. Senate`. Exact `senate.gov` / `www.senate.gov` chamber URLs still derive `U.S. Senate`; subdomains now require an explicit recorded outlet.
+
+### Commits
+- `fb3661f` — `fix(provenance): avoid deriving senate subdomain outlets`
+
+### Commands run (this session)
+- `gh pr view 9/10/24/28/29/30/31/40/99 --json number,state,mergedAt,closedAt,url,title` → reconciled memory; #28/#29/#30/#31/#40/#99 still open; #9/#10/#24 closed unmerged
+- `git diff --stat c08be19..HEAD && git diff --name-status c08be19..HEAD` → scoped recent runtime changes
+- `npx tsx -e "import { resolveRecordedOutlet } ... republicanleader.senate.gov ... senate.gov"` → before fix: `U.S. Senate` / `U.S. Senate`; after fix: `null` / `U.S. Senate`
+- `npm install` → exit 0; npm audit still reports 7 high vulnerabilities already tracked as `NPM-01`
+- `npm run test:typecheck && npx tsx --test scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/sourceIntegrity.test.ts` → exit 0; 74 tests passed
+- `npm run test:typecheck && npx tsx --test scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/sourceIntegrity.test.ts` → exit 0; direct trigger `null` / `U.S. Senate`; 63 tests passed
+- `npm run test:source-integrity` → exit 1; sole failure is existing #99 class: `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/resolveRecordedOutlet.ts` | modified | Derives `U.S. Senate` only from exact `senate.gov` host after `www.` stripping; no longer derives from arbitrary subdomains. |
+| `lib/data/__fixtures__/provenanceOutletGuard.fixture.ts` | modified | Added append-only exact Senate good fixture and Senate office-subdomain bad fixture. |
+| `scripts/__tests__/provenanceOutletGuard.test.ts` | modified | Added regression test for exact host vs subdomain provenance boundary. |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session handoff. |
+
+### Acceptance evidence
+- Repro before fix: `resolveRecordedOutlet(undefined, 'https://www.republicanleader.senate.gov/...')` returned `U.S. Senate`.
+- Verification after fix: same URL returns `null`; `https://www.senate.gov/legislative/votes_new.htm` returns `U.S. Senate`.
+- Focused guards: `npm run test:typecheck` + provenance/source-integrity focused tests exit 0.
+- Full source-integrity not green because remembered open PR #99 is still awaiting review; no duplicate fix attempted.
+
+### Open / next
+- Open PR for `fb3661f` plus this log commit.
+- Existing #99 remains the full build/source-integrity blocker; do not duplicate unless that PR closes unmerged and code materially changes.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**PROVENANCE FIX:** Review branch `cursor/bc-ce808b1a-1b66-4ffa-bf55-da189a2e1132-be93` at tip after this handoff commit. Fix commit `fb3661f` stops `*.senate.gov` office/party subdomains from being labeled generic `U.S. Senate`; exact `senate.gov` still resolves. Evidence: direct trigger after fix `null` / `U.S. Senate`; `npm run test:typecheck` 0; focused provenance/source-integrity tests 63 pass. Open gate: full `npm run test:source-integrity` still FAILS only on existing PR #99 dead-source-token regression in Claude rule files — do not treat that as this PR’s bug.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
