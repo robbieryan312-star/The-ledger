@@ -10,6 +10,50 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-04 — critical bug automation scan (no new PR)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (audit only; no new high-confidence critical bug)  
+**Current state:** `cursor/critical-bug-management-e348` · HEAD `763dc67` before this handoff commit · PR none · tree clean before handoff edit · focused guards PASS
+
+### Objective
+Inspect recent commits for high-severity correctness bugs, skip duplicates already tracked in automation memory, and clean stale memory entries.
+
+### Verdict / outcome
+No new high-confidence critical bug was found outside the remembered open PRs. Existing open fixes still awaiting review: #28, #29, #30, #31, #40, #99, #100. Automation memory cleanup removed PR #9 because it was rejected and older than 30 days.
+
+### Commands run (this session)
+- `git rev-parse --is-inside-work-tree && git status --short && git branch --show-current && git remote -v && git log --oneline -n 12` → exit 0
+- `gh pr view 9/10/24/28/29/30/31/40/99/100 --json number,state,mergedAt,url,headRefName,title` → exit 0; #28/#29/#30/#31/#40/#99/#100 open, #9/#10/#24 closed unmerged
+- `git fetch origin main && git fetch origin cursor/critical-bug-management-e348 ...` → exit 128 because the designated branch did not yet exist on origin
+- `git log --oneline --decorate --graph --max-count=30 origin/main..HEAD && git log --oneline --decorate --graph --max-count=30 HEAD..origin/main && git log --oneline --decorate --graph --max-count=40 --all --date-order` → exit 0
+- `git show --stat --oneline 763dc67 6d6057b a42e0cb 09f14b4 377787d 9ae85ea db23b39 cc916da d36f4a9 18b5d3e && git diff --name-only c08be19..HEAD` → exit 0
+- `npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/provenanceOutletGuard.test.ts` → exit 0; 74 pass / 0 fail
+- `rg` checks for remembered duplicate signatures → known #99/#100 signatures present on main; not re-reported
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this audit handoff entry |
+| Automation memory `MEMORIES.md` | updated | Deleted stale rejected PR #9 entry; kept open/rejected entries |
+
+### Acceptance evidence
+- Focused recent-change guards: `# tests 74`, `# pass 74`, `# fail 0`.
+- Persistent memory version after cleanup: `1ab82d087280db57`.
+- Duplicate avoidance: #99 and #100 remain open and match the only concrete current-tree defects found.
+
+### Open / next
+- No new PR opened.
+- Existing open bug-fix PRs remain awaiting review: #28, #29, #30, #31, #40, #99, #100.
+- Full build not rerun in parent because known #99 currently breaks the source/matrix guard on main; focused recent-change guards were run instead.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+Critical-bug automation on `cursor/critical-bug-management-e348`: no new high-confidence critical bug outside remembered open PRs. Focused guards passed (`npx tsx --test ...allegedPolicyGuard/newsCorroboration/sourceIntegrity/provenanceOutletGuard` → 74/74). Memory pruned PR #9 (rejected >30 days). Known open defects #99 and #100 still reproduce in current tree and are not re-reported. No PR opened.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
