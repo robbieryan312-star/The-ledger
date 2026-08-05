@@ -107,3 +107,22 @@ test('S000033 news listings are not alleged-by-failed-corroboration', () => {
   );
   assert.equal(allegedListings.length, 0, `news listings still alleged: ${allegedListings.length}`);
 });
+
+test('M000355 documented health episode is retained as verified, not deleted as alleged', () => {
+  const file = path.join(profilesRoot, 'M000355', 'controversies.json');
+  assert.ok(existsSync(file), 'M000355 controversies.json must exist');
+  const data = JSON.parse(readFileSync(file, 'utf8')) as {
+    items?: Array<{
+      id?: string;
+      isVerified?: boolean;
+      sources?: Array<{ tier?: string; url?: string }>;
+    }>;
+  };
+  const item = (data.items ?? []).find((entry) => entry.id === 'c3');
+  assert.ok(item, 'M000355 c3 documented health episode was deleted');
+  assert.equal(item.isVerified, true, 'M000355 c3 must be a documented item, not alleged');
+  assert.ok(
+    (item.sources ?? []).some((source) => source.tier === 'official' && source.url?.trim()),
+    'M000355 c3 must retain an official source URL',
+  );
+});

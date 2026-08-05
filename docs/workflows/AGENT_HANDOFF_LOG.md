@@ -10,6 +10,70 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-05 — CRITICAL BUG AUTOMATION: M000355 CONTROVERSY DATA-LOSS FIX
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS on targeted fix · BUILD BLOCKED by existing open PR #99 issue
+**Current state:** `cursor/critical-bug-management-234d` · task commit `a6170bf` · base `origin/main` @ `763dc67` · PR pending · tree includes this handoff entry until docs commit
+
+### Objective
+Daily high-severity bug scan: avoid duplicate open MEMORY PRs, inspect recent commits, fix only a concrete critical correctness bug.
+
+### Bug / impact
+Recent alleged-policy cleanup deleted `M000355` controversy `c3` (McConnell 2023 public health episode / physician clearance) instead of repairing its classification. The row had official source URLs; deleting it caused user-facing data loss on a locked migrated profile.
+
+### Root cause
+The cleanup treated an incorrectly `isVerified:false` documented fact as an alleged contested person-claim. Alleged rows require verbatim quote + outcome, but the correct repair was to retain the sourced row as `isVerified:true` and remove the fabricated-looking AP URL.
+
+### Fix
+- Restored `lib/data/generated/profiles/M000355/controversies.json` item `c3` as a documented/verified controversy with C-SPAN and U.S. Capitol Attending Physician official sources.
+- Added `scripts/__tests__/allegedPolicyGuard.test.ts` regression coverage asserting `M000355/c3` is retained, verified, and still has an official source URL.
+- Persistent memory cleanup planned this turn: delete rejected 2026-07-05 entries older than 30 days; record this PR after opening.
+
+### Commands run (this session)
+- `git fetch origin main` / branch setup → exit 0
+- `gh pr view 10 24 28 29 30 31 40 99 100 --json ...` → exit 0; #28/#29/#30/#31/#40/#99/#100 open; #10/#24 closed unmerged
+- `git diff c08be19..HEAD ...` → reviewed recent behavioral changes
+- `npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts` → exit 0; 8/8 pass
+- `npm run test:source-integrity` → exit 1; known #99 blocker: dead-source token in `.claude/rules/*`; M000355 source-integrity subtest passed
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/allegedPolicyGuard.test.ts && npx tsx --test scripts/__tests__/profileCredibilityAudit.test.ts` → exit 0; 65/65 + 4/4 pass
+- `npm run build` → exit 1; blocked at `approvedSourceMatrixGuard` by open PR #99 issue before Next build
+- `git diff --check` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/generated/profiles/M000355/controversies.json` | modified | Restored documented health-episode row as verified with official sources |
+| `scripts/__tests__/allegedPolicyGuard.test.ts` | modified | Added regression guard for retained M000355 documented controversy |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This handoff entry |
+
+### Acceptance evidence
+```
+ok 8 - M000355 documented health episode is retained as verified, not deleted as alleged
+1..8
+# pass 8
+
+ok 39 - M000355 profile destination files pass source integrity
+1..65
+# pass 65
+
+profile-credibility audit:
+# M000355: 0 defect row(s)
+1..4
+# pass 4
+```
+
+### Open / next
+- Build remains blocked on already-tracked open PR #99 (`.claude/rules/*` dead-source token), not this fix.
+- Claude should review `a6170bf` plus this handoff docs commit; do not merge without explicit APPROVAL on the pushed tip.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG FIX READY FOR STAGE THREE:** branch `cursor/critical-bug-management-234d`, task commit `a6170bf` restores deleted `M000355` documented controversy `c3` as verified and adds guard coverage. Evidence: allegedPolicyGuard 8/8 pass; targeted sourceIntegrity+allegedPolicy 65/65 pass; profileCredibilityAudit 4/4 pass. Full `npm run build` is BLOCKED by already-open PR #99 dead-source-token failure in `.claude/rules/*`, not by this fix. Review exact pushed tip after the handoff docs commit; APPROVE/REJECT before merge.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
