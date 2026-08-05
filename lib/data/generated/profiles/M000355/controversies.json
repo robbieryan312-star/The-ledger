@@ -61,8 +61,33 @@
           "description": "Reported on the purchase-to-vote timeline"
         }
       ]
+    },
+    {
+      "id": "c3",
+      "title": "Public freezing episode and physician clearance (2023)",
+      "summary": "McConnell froze mid-answer during a 2023 press conference recorded by C-SPAN. After subsequent public concern, the Capitol attending physician's letter released by McConnell's Senate office said he was medically clear to continue his schedule. No public medical diagnosis is asserted here.",
+      "category": "Conduct",
+      "status": "Resolved",
+      "date": "2023-07-26",
+      "isVerified": true,
+      "sources": [
+        {
+          "name": "C-SPAN",
+          "url": "https://www.c-span.org/video/?529614-1/senator-mcconnell-freezes-press-conference",
+          "tier": "official",
+          "date": "2023-07-26",
+          "description": "Unedited video of the public press-conference episode"
+        },
+        {
+          "name": "U.S. Capitol Attending Physician",
+          "url": "https://www.republicanleader.senate.gov/newsroom/press-releases/attending-physician-letter",
+          "tier": "official",
+          "date": "2023-08-30",
+          "description": "Official physician letter released by McConnell's Senate office"
+        }
+      ]
     }
   ],
   "status": "filled",
-  "note": "M-ALLEGED-POLICY: omitted unverified items lacking verified verbatim quote + outcome (no fabrication)."
+  "note": "M-ALLEGED-POLICY follow-up 2026-08-05: retained c3 as a documented/verified sourced fact; alleged verbatim+outcome requirements apply only to unverified contested person-claims."
 }
