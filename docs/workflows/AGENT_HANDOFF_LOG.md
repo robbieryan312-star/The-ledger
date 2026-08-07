@@ -10,13 +10,13 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
-## HANDOFF 2026-08-07 — profileMigrate trades preserve fix (PR #102)
+## HANDOFF 2026-08-07 — profile trades + Key Issues provenance fixes (PR #102)
 
 **From:** Cursor automation · **To:** Claude · **Verdict:** PASS (targeted) / FAIL (full source-integrity blocked by existing #99)
-**Current state:** `cursor/critical-bug-management-5018` · code-fix commit `3d3c4dc` · PR https://github.com/robbieryan312-star/The-ledger/pull/102 · docs stamp follows code fix
+**Current state:** `cursor/critical-bug-management-5018` · code fixes include profile trades commit `3d3c4dc` plus Key Issues provenance follow-up · PR https://github.com/robbieryan312-star/The-ledger/pull/102
 
 ### Objective
-Fix the confirmed data-loss path where `migrateOne()` rewrote per-profile `trades.json` to a generic honest-gap stub, wiping existing verified trades or fetch-failed diagnostics.
+Fix two confirmed high-severity paths from the completed review agents: (1) `migrateOne()` rewrote per-profile `trades.json` to a generic honest-gap stub, wiping existing verified trades or fetch-failed diagnostics; (2) Key Issues evidence emitted generic `Journalism` instead of recorded media outlets.
 
 ### What changed
 | Path | Action | What changed |
@@ -24,20 +24,26 @@ Fix the confirmed data-loss path where `migrateOne()` rewrote per-profile `trade
 | `scripts/lib/profileMigrate.ts` | modified | Added `preserveExistingTradesFile()` and wired `migrateOne()` to carry forward existing `trades.json` status/note/trades |
 | `scripts/__tests__/profileMigratePreserve.test.ts` | modified | Added regression tests for generic trades overwrite and fetch-failed preservation |
 | `lib/data/__fixtures__/profileMigratePreserve.fixture.ts` | modified | Added append-only known-bad generic trades overwrite fixture |
-| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | Logged this fix as done and non-duplicative remaining data-pipeline follow-ups |
+| `lib/data/issuesFromTopicPositions.ts` | modified | Key Issues evidence now uses `resolveRecordedOutlet()` / recorded outlet names and omits outlet-less media evidence rather than inventing `Journalism` |
+| `scripts/__tests__/provenanceOutletGuard.test.ts` | modified | Added S000033 Key Issues evidence regression guard for recorded media outlet names |
+| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | Logged both fixes as done and non-duplicative remaining data-pipeline follow-ups |
 
 ### Commands run (this session)
 - `npx tsx --test scripts/__tests__/profileMigratePreserve.test.ts` → exit 0 (8 pass / 0 fail)
 - `npm run test:typecheck && npx tsx --test scripts/__tests__/profileMigratePreserve.test.ts scripts/__tests__/stockTradesCheckpoint.test.ts` → exit 0 (typecheck pass; 14 pass / 0 fail)
-- `npm run test:source-integrity` → exit 1 only on existing PR #99 dead-source-token blocker; profile-migrate/stock-trades tests passed in that run
+- `npx tsx -e "import { buildIssuesFromTopicPositions } from './lib/data/issuesFromTopicPositions.ts'; ..."` → exit 0; S000033 Healthcare media evidence now reports `Washington Post`
+- `npx tsx --test scripts/__tests__/provenanceOutletGuard.test.ts` → exit 0 (6 pass / 0 fail)
+- `npm run test:typecheck && npx tsx --test scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/profileMigratePreserve.test.ts scripts/__tests__/stockTradesCheckpoint.test.ts` → exit 0 (typecheck pass; 20 pass / 0 fail)
+- `npm run test:source-integrity` → exit 1 only on existing PR #99 dead-source-token blocker; profile-migrate/stock-trades/provenance tests passed in that run
 
 ### Acceptance evidence
 - Regression guard now freezes `PROFILE_MIGRATE_KNOWN_BAD_TRADES_OVERWRITE` and proves the generic honest-gap stub lacks `fetch-failed` / `Senate eFD` / `503` diagnostics.
 - `preserveExistingTradesFile('S000033', existingFetchFailed)` returns `status: 'fetch-failed'`, preserves the diagnostic note, and keeps the trades array.
-- Broader source-integrity output: `# pass 134`, `# fail 1`, with the sole failure at `approvedSourceMatrixGuard.test.ts` for open PR #99.
+- Key Issues provenance before/after: S000033 Healthcare media evidence now emits `Washington Post` instead of generic `Journalism`.
+- Broader source-integrity output after both fixes: `# pass 135`, `# fail 1`, with the sole failure at `approvedSourceMatrixGuard.test.ts` for open PR #99.
 
 ### Open / next
-- PR #102 is open and recorded in automation memory.
+- PR #102 is open and both bug entries are recorded in automation memory.
 - Remaining non-duplicative data-pipeline follow-ups are in `docs/workflows/IMPROVEMENT_BACKLOG.md`; NEWS-01 already covers the news-national empty-success class.
 - Existing PR #99 must still merge before full `npm run test:source-integrity` / build can pass on this branch.
 
@@ -45,7 +51,7 @@ Fix the confirmed data-loss path where `migrateOne()` rewrote per-profile `trade
 
 ## Confront Claude — paste to Claude Code
 
-**profileMigrate trades preserve:** review PR #102; code fix is commit `3d3c4dc` and the branch tip includes the PR-stamp docs update. Fix prevents `migrateOne()` from overwriting existing `trades.json` status/note/trades with a generic honest-gap stub. Evidence: profileMigrate preserve 8/8 pass; typecheck pass; profileMigrate+stockTrades 14/14 pass; full source-integrity still blocked only by existing #99. Open gate: Claude STAGE THREE on the exact pushed tip and #99 merge before full build green.
+**PR #102:** review the branch tip after push. Fixes: (1) `migrateOne()` no longer overwrites existing `trades.json` status/note/trades with a generic honest-gap stub; (2) Key Issues evidence preserves recorded media outlet names (`Washington Post`) instead of generic `Journalism`. Evidence: profileMigrate preserve 8/8 pass; provenance guard 6/6 pass; typecheck pass; combined targeted guards 20/20 pass; full source-integrity still blocked only by existing #99. Open gate: Claude STAGE THREE on the exact pushed tip and #99 merge before full build green.
 
 ---
 
