@@ -7,12 +7,15 @@ import path from 'node:path';
 import test from 'node:test';
 import {
   PROFILE_MIGRATE_KNOWN_BAD_EMPTY_OVERWRITE,
+  PROFILE_MIGRATE_KNOWN_BAD_TRADES_OVERWRITE,
   PROFILE_MIGRATE_PRESERVE_MINIMUMS,
 } from '../../lib/data/__fixtures__/profileMigratePreserve.fixture';
+import { S000033_TRADES_FETCH_FAILED_KNOWN_GOOD } from '../../lib/data/__fixtures__/stockTradesHonestGap.fixture';
 import type { PlatformPositionEntry, SaidDidLinkEntry, TopicStatementEntry } from '../../lib/data/topicPositions';
 import {
   countSaidDidLinksInFile,
   countStatementsInFile,
+  preserveExistingTradesFile,
   preserveExistingSaidDidIfFreshEmpty,
   preserveExistingStatementsIfFreshEmpty,
 } from '../lib/profileMigrate';
@@ -114,6 +117,25 @@ test('known-bad empty overwrite fails P000197 minimum statement/Said→Did count
   const rule = PROFILE_MIGRATE_PRESERVE_MINIMUMS.find((r) => r.bioguideId === bad.bioguideId)!;
   assert.ok(countStatementsInFile(bad.statements) < rule.minStatements);
   assert.ok(countSaidDidLinksInFile(bad.saidDid) < rule.minSaidDidLinks);
+});
+
+test('known-bad generic trades overwrite loses fetch-failed diagnostics', () => {
+  const bad = PROFILE_MIGRATE_KNOWN_BAD_TRADES_OVERWRITE;
+  assert.equal(bad.status, 'honest-gap');
+  assert.doesNotMatch(bad.note, /fetch-failed|Senate eFD|503/i);
+});
+
+test('preserveExistingTradesFile keeps prior fetch-failed trades diagnosis', () => {
+  const preserved = preserveExistingTradesFile('S000033', {
+    bioguideId: S000033_TRADES_FETCH_FAILED_KNOWN_GOOD.bioguideId,
+    status: S000033_TRADES_FETCH_FAILED_KNOWN_GOOD.status,
+    note: S000033_TRADES_FETCH_FAILED_KNOWN_GOOD.note,
+    trades: [],
+  });
+  assert.equal(preserved.bioguideId, 'S000033');
+  assert.equal(preserved.status, 'fetch-failed');
+  assert.match(preserved.note ?? '', /Senate eFD/);
+  assert.equal(preserved.trades?.length, 0);
 });
 
 test('P000197 on disk meets frozen minimum statements=8 and saidDid=1', () => {

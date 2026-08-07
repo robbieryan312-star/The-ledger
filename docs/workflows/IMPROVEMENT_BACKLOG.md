@@ -39,6 +39,10 @@ External truths both agents must share (dashboard drift is **owner-only** to fix
 | NPM-01 | `npm audit`: remaining vulns upstream Next / react-simple-maps (no force-downgrade) | P2 | cursor | open | `docs/archive/workflows/NPM_AUDIT_2026-07-18.md` |
 | VERCEL-NAME | ~~Rename display `the-ledger-s4dn`~~ → **done as `the-ledger-main`** (owner 2026-07-21); optional later rename to “Approved” | P2 | owner | **done** (name sync) | #78 + this file |
 | NEWS-01 | Guard: national news refresh semantics — empty success vs fetch-failed | P1 | cursor | open | handoff backlog 2026-07-11 |
+| BUG-PROFILE-MIGRATE-TRADES | `profileMigrate` must preserve existing per-profile `trades.json` rows/status/note instead of overwriting with a generic honest-gap stub | P0 | cursor | **done** | `scripts/lib/profileMigrate.ts` · `profileMigratePreserve.test.ts` |
+| BUG-OFFICIAL-ISSUES-PRESERVE | `sync:official-issues-positions` needs preserve-on-fetch-failure so transient official-site outages cannot wipe prior positions | P0 | cursor | open | `scripts/sync-official-issues-positions.ts` |
+| BUG-PROFILE-BUILD-SIDECAR | `profile:build -- --members S000033` must consume the S000033 CREC sidecar or otherwise avoid crashing after bundle freeze | P1 | cursor | open | `scripts/lib/profileMigrate.ts` · `scripts/sync-topic-positions.ts` |
+| BUG-TOPIC-BUNDLE-REPROCESS | `reprocess-topic-positions-bundle` must emit newly reclassified topic buckets instead of iterating only original topic keys | P1 | cursor | open | `scripts/reprocess-topic-positions-bundle.ts` |
 | IMP-015 | Handoff-log guard optional | P2 | cursor | open | prior IMP-015 |
 | IMP-MOBILE | Sanders profile mobile overflow — deferred from render batch | P2 | cursor | open | prior IMP-NEW |
 | IMP-011 | Guards reconciled on main (prebuild count) | P2 | cursor | **done** | historical |

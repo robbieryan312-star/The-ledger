@@ -25,7 +25,7 @@ import {
 } from '../../lib/data/sanitizeProfileUiData';
 import { isProceduralCrecText } from './crecProceduralFilter';
 import { syncProfileManifestFromDisk } from './profileManifestSync';
-import type { VoteRecord } from '../../lib/types';
+import type { StockTrade, VoteRecord } from '../../lib/types';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const profilesRoot = path.join(projectRoot, 'lib', 'data', 'generated', 'profiles');
@@ -84,6 +84,22 @@ type SaidDidFileShape = {
   byTopic?: Record<string, SaidDidLinkEntry[]>;
 };
 
+type TradesFileShape = {
+  bioguideId?: string;
+  status?: 'filled' | 'honest-gap' | 'fetch-failed';
+  note?: string;
+  trades?: StockTrade[];
+};
+
+function defaultTradesFile(bioguideId: string): TradesFileShape {
+  return {
+    bioguideId,
+    status: 'honest-gap',
+    note: 'No verified STOCK Act trades integrated for this profile',
+    trades: [],
+  };
+}
+
 export function countStatementsInFile(file: StatementsFileShape | null | undefined): number {
   if (!file?.byTopic) return 0;
   return Object.values(file.byTopic).reduce((n, t) => n + (t.statements?.length ?? 0), 0);
@@ -135,6 +151,31 @@ export function preserveExistingSaidDidIfFreshEmpty(
     }));
   }
   return Object.values(saidDidByTopic).flat().length;
+}
+
+/** §6: migrate re-runs must not wipe verified trades or fetch-failed diagnostics. */
+export function preserveExistingTradesFile(
+  bioguideId: string,
+  existing: TradesFileShape | null | undefined,
+): TradesFileShape {
+  if (!existing) return defaultTradesFile(bioguideId);
+
+  const trades = Array.isArray(existing.trades) ? structuredClone(existing.trades) : [];
+  const note = existing.note?.trim();
+  const hasUsefulPriorState = trades.length > 0 || Boolean(existing.status) || Boolean(note);
+  if (!hasUsefulPriorState) return defaultTradesFile(bioguideId);
+  const noteIsFetchFailed = Boolean(note && /fetch-failed|Senate eFD|HTTP 503|\b503\b/i.test(note));
+
+  const status =
+    existing.status ??
+    (trades.length > 0 ? 'filled' : noteIsFetchFailed ? 'fetch-failed' : 'honest-gap');
+
+  return {
+    bioguideId,
+    status,
+    note: note || defaultTradesFile(bioguideId).note!,
+    trades,
+  };
 }
 
 function resolvePoliticianId(bioguideId: string): string {
@@ -289,6 +330,16 @@ export async function migrateOne(
     existingSaidDid = JSON.parse(await readFile(path.join(OUT_DIR, 'saidDid.json'), 'utf8')) as SaidDidFileShape;
   } catch {
     /* no prior saidDid.json */
+  }
+
+  let tradesPayload = defaultTradesFile(bioguideId);
+  try {
+    const existingTrades = JSON.parse(
+      await readFile(path.join(OUT_DIR, 'trades.json'), 'utf8'),
+    ) as TradesFileShape;
+    tradesPayload = preserveExistingTradesFile(bioguideId, existingTrades);
+  } catch {
+    /* no prior trades.json */
   }
 
   let stmtCount = Object.values(byTopicClean).reduce((n, t) => n + t.statements.length, 0);
@@ -454,16 +505,7 @@ export async function migrateOne(
   );
   await writeFile(
     path.join(OUT_DIR, 'trades.json'),
-    JSON.stringify(
-      {
-        bioguideId,
-        status: 'honest-gap',
-        note: 'No verified STOCK Act trades integrated for this profile',
-        trades: [],
-      },
-      null,
-      2,
-    ) + '\n',
+    JSON.stringify(tradesPayload, null, 2) + '\n',
   );
   await writeFile(
     path.join(OUT_DIR, 'controversies.json'),

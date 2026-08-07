@@ -10,6 +10,45 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-07 — profileMigrate trades preserve fix (PR pending)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (targeted) / FAIL (full source-integrity blocked by existing #99)
+**Current state:** `cursor/critical-bug-management-5018` · pre-fix HEAD `e3b0be8` · PR pending open after push
+
+### Objective
+Fix the confirmed data-loss path where `migrateOne()` rewrote per-profile `trades.json` to a generic honest-gap stub, wiping existing verified trades or fetch-failed diagnostics.
+
+### What changed
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/lib/profileMigrate.ts` | modified | Added `preserveExistingTradesFile()` and wired `migrateOne()` to carry forward existing `trades.json` status/note/trades |
+| `scripts/__tests__/profileMigratePreserve.test.ts` | modified | Added regression tests for generic trades overwrite and fetch-failed preservation |
+| `lib/data/__fixtures__/profileMigratePreserve.fixture.ts` | modified | Added append-only known-bad generic trades overwrite fixture |
+| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | Logged this fix as done and non-duplicative remaining data-pipeline follow-ups |
+
+### Commands run (this session)
+- `npx tsx --test scripts/__tests__/profileMigratePreserve.test.ts` → exit 0 (8 pass / 0 fail)
+- `npm run test:typecheck && npx tsx --test scripts/__tests__/profileMigratePreserve.test.ts scripts/__tests__/stockTradesCheckpoint.test.ts` → exit 0 (typecheck pass; 14 pass / 0 fail)
+- `npm run test:source-integrity` → exit 1 only on existing PR #99 dead-source-token blocker; profile-migrate/stock-trades tests passed in that run
+
+### Acceptance evidence
+- Regression guard now freezes `PROFILE_MIGRATE_KNOWN_BAD_TRADES_OVERWRITE` and proves the generic honest-gap stub lacks `fetch-failed` / `Senate eFD` / `503` diagnostics.
+- `preserveExistingTradesFile('S000033', existingFetchFailed)` returns `status: 'fetch-failed'`, preserves the diagnostic note, and keeps the trades array.
+- Broader source-integrity output: `# pass 134`, `# fail 1`, with the sole failure at `approvedSourceMatrixGuard.test.ts` for open PR #99.
+
+### Open / next
+- Open PR after push and record it in automation memory.
+- Remaining non-duplicative data-pipeline follow-ups are in `docs/workflows/IMPROVEMENT_BACKLOG.md`; NEWS-01 already covers the news-national empty-success class.
+- Existing PR #99 must still merge before full `npm run test:source-integrity` / build can pass on this branch.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**profileMigrate trades preserve:** review branch `cursor/critical-bug-management-5018` after push. Fix prevents `migrateOne()` from overwriting existing `trades.json` status/note/trades with a generic honest-gap stub. Evidence: profileMigrate preserve 8/8 pass; typecheck pass; profileMigrate+stockTrades 14/14 pass; full source-integrity still blocked only by existing #99. Open gate: Claude STAGE THREE on the exact pushed tip and #99 merge before full build green.
+
+---
+
 ## HANDOFF 2026-08-07 — critical bug automation scan (NO NEW PR)
 
 **From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new high-confidence critical bug)
