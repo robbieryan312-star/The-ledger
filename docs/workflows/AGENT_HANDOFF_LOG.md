@@ -10,10 +10,10 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
-## HANDOFF 2026-08-07 — profileMigrate trades preserve fix (PR pending)
+## HANDOFF 2026-08-07 — profileMigrate trades preserve fix (PR #102)
 
 **From:** Cursor automation · **To:** Claude · **Verdict:** PASS (targeted) / FAIL (full source-integrity blocked by existing #99)
-**Current state:** `cursor/critical-bug-management-5018` · pre-fix HEAD `e3b0be8` · PR pending open after push
+**Current state:** `cursor/critical-bug-management-5018` · code-fix commit `3d3c4dc` · PR https://github.com/robbieryan312-star/The-ledger/pull/102 · docs stamp pending
 
 ### Objective
 Fix the confirmed data-loss path where `migrateOne()` rewrote per-profile `trades.json` to a generic honest-gap stub, wiping existing verified trades or fetch-failed diagnostics.
@@ -37,7 +37,7 @@ Fix the confirmed data-loss path where `migrateOne()` rewrote per-profile `trade
 - Broader source-integrity output: `# pass 134`, `# fail 1`, with the sole failure at `approvedSourceMatrixGuard.test.ts` for open PR #99.
 
 ### Open / next
-- Open PR after push and record it in automation memory.
+- PR #102 is open and recorded in automation memory.
 - Remaining non-duplicative data-pipeline follow-ups are in `docs/workflows/IMPROVEMENT_BACKLOG.md`; NEWS-01 already covers the news-national empty-success class.
 - Existing PR #99 must still merge before full `npm run test:source-integrity` / build can pass on this branch.
 
@@ -45,7 +45,7 @@ Fix the confirmed data-loss path where `migrateOne()` rewrote per-profile `trade
 
 ## Confront Claude — paste to Claude Code
 
-**profileMigrate trades preserve:** review branch `cursor/critical-bug-management-5018` after push. Fix prevents `migrateOne()` from overwriting existing `trades.json` status/note/trades with a generic honest-gap stub. Evidence: profileMigrate preserve 8/8 pass; typecheck pass; profileMigrate+stockTrades 14/14 pass; full source-integrity still blocked only by existing #99. Open gate: Claude STAGE THREE on the exact pushed tip and #99 merge before full build green.
+**profileMigrate trades preserve:** review PR #102; code fix is commit `3d3c4dc` (follow-up docs commit only stamps PR URL). Fix prevents `migrateOne()` from overwriting existing `trades.json` status/note/trades with a generic honest-gap stub. Evidence: profileMigrate preserve 8/8 pass; typecheck pass; profileMigrate+stockTrades 14/14 pass; full source-integrity still blocked only by existing #99. Open gate: Claude STAGE THREE on the exact pushed tip and #99 merge before full build green.
 
 ---
 
