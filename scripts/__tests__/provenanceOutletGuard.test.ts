@@ -12,6 +12,7 @@ import {
   PROVENANCE_KNOWN_BAD_MEDIA_NO_OUTLET,
   PROVENANCE_KNOWN_GOOD_CREC_URL_DERIVED,
 } from '../../lib/data/__fixtures__/provenanceOutletGuard.fixture';
+import { buildIssuesFromTopicPositions } from '../../lib/data/issuesFromTopicPositions';
 import { resolveRecordedOutlet } from '../../lib/data/resolveRecordedOutlet';
 import { buildCrecSaidDidLinks } from '../../lib/data/saidDidVoteContext';
 
@@ -94,4 +95,15 @@ test('S000033 saidDid outlets are recorded or URL-derived — never bare invent 
       assert.notEqual(outlet, 'Congressional Record');
     }
   }
+});
+
+test('S000033 Key Issues evidence preserves recorded media outlet names', () => {
+  const issues = buildIssuesFromTopicPositions('S000033');
+  const evidence = issues.flatMap((issue) => issue.evidence ?? []);
+  const mediaSources = evidence
+    .filter((item) => item.source?.tier === 'media')
+    .map((item) => item.source.name);
+
+  assert.ok(mediaSources.includes('Washington Post'), `media sources: ${mediaSources.join(', ')}`);
+  assert.equal(mediaSources.includes('Journalism'), false);
 });

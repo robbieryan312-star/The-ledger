@@ -10,6 +10,113 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-07 — profile trades + Key Issues provenance fixes (PR #102)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (targeted) / FAIL (full source-integrity blocked by existing #99)
+**Current state:** `cursor/critical-bug-management-5018` · code fixes include profile trades commit `3d3c4dc` plus Key Issues provenance follow-up · PR https://github.com/robbieryan312-star/The-ledger/pull/102
+
+### Objective
+Fix two confirmed high-severity paths from the completed review agents: (1) `migrateOne()` rewrote per-profile `trades.json` to a generic honest-gap stub, wiping existing verified trades or fetch-failed diagnostics; (2) Key Issues evidence emitted generic `Journalism` instead of recorded media outlets.
+
+### What changed
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/lib/profileMigrate.ts` | modified | Added `preserveExistingTradesFile()` and wired `migrateOne()` to carry forward existing `trades.json` status/note/trades |
+| `scripts/__tests__/profileMigratePreserve.test.ts` | modified | Added regression tests for generic trades overwrite and fetch-failed preservation |
+| `lib/data/__fixtures__/profileMigratePreserve.fixture.ts` | modified | Added append-only known-bad generic trades overwrite fixture |
+| `lib/data/issuesFromTopicPositions.ts` | modified | Key Issues evidence now uses `resolveRecordedOutlet()` / recorded outlet names and omits outlet-less media evidence rather than inventing `Journalism` |
+| `scripts/__tests__/provenanceOutletGuard.test.ts` | modified | Added S000033 Key Issues evidence regression guard for recorded media outlet names |
+| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | Logged both fixes as done and non-duplicative remaining data-pipeline follow-ups |
+
+### Commands run (this session)
+- `npx tsx --test scripts/__tests__/profileMigratePreserve.test.ts` → exit 0 (8 pass / 0 fail)
+- `npm run test:typecheck && npx tsx --test scripts/__tests__/profileMigratePreserve.test.ts scripts/__tests__/stockTradesCheckpoint.test.ts` → exit 0 (typecheck pass; 14 pass / 0 fail)
+- `npx tsx -e "import { buildIssuesFromTopicPositions } from './lib/data/issuesFromTopicPositions.ts'; ..."` → exit 0; S000033 Healthcare media evidence now reports `Washington Post`
+- `npx tsx --test scripts/__tests__/provenanceOutletGuard.test.ts` → exit 0 (6 pass / 0 fail)
+- `npm run test:typecheck && npx tsx --test scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/profileMigratePreserve.test.ts scripts/__tests__/stockTradesCheckpoint.test.ts` → exit 0 (typecheck pass; 20 pass / 0 fail)
+- `npm run test:source-integrity` → exit 1 only on existing PR #99 dead-source-token blocker; profile-migrate/stock-trades/provenance tests passed in that run
+
+### Acceptance evidence
+- Regression guard now freezes `PROFILE_MIGRATE_KNOWN_BAD_TRADES_OVERWRITE` and proves the generic honest-gap stub lacks `fetch-failed` / `Senate eFD` / `503` diagnostics.
+- `preserveExistingTradesFile('S000033', existingFetchFailed)` returns `status: 'fetch-failed'`, preserves the diagnostic note, and keeps the trades array.
+- Key Issues provenance before/after: S000033 Healthcare media evidence now emits `Washington Post` instead of generic `Journalism`.
+- Broader source-integrity output after both fixes: `# pass 135`, `# fail 1`, with the sole failure at `approvedSourceMatrixGuard.test.ts` for open PR #99.
+
+### Open / next
+- PR #102 is open and both bug entries are recorded in automation memory.
+- Remaining non-duplicative data-pipeline follow-ups are in `docs/workflows/IMPROVEMENT_BACKLOG.md`; NEWS-01 already covers the news-national empty-success class.
+- Existing PR #99 must still merge before full `npm run test:source-integrity` / build can pass on this branch.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**PR #102:** review the branch tip after push. Fixes: (1) `migrateOne()` no longer overwrites existing `trades.json` status/note/trades with a generic honest-gap stub; (2) Key Issues evidence preserves recorded media outlet names (`Washington Post`) instead of generic `Journalism`. Evidence: profileMigrate preserve 8/8 pass; provenance guard 6/6 pass; typecheck pass; combined targeted guards 20/20 pass; full source-integrity still blocked only by existing #99. Open gate: Claude STAGE THREE on the exact pushed tip and #99 merge before full build green.
+
+---
+
+## HANDOFF 2026-08-07 — critical bug automation scan (NO NEW PR)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new high-confidence critical bug)
+**Current state:** `cursor/critical-bug-management-5018` · pre-log HEAD `763dc67` (`origin/main`) · tree dirty only for this handoff entry before docs commit · PR: none opened
+
+### Objective
+Inspect recent commits for critical correctness bugs (data loss, crashes, security holes, significant user-facing breakage), avoiding duplicates already tracked in automation memory.
+
+### Duplicate-memory sweep
+| PR | State | Action |
+|----|-------|--------|
+| #24 | CLOSED, unmerged | Memory already says `rejected`; retained (<30 days old) |
+| #28 | OPEN | Duplicate avoided |
+| #29 | OPEN | Duplicate avoided |
+| #30 | OPEN | Duplicate avoided |
+| #31 | OPEN | Duplicate avoided |
+| #40 | OPEN | Duplicate avoided |
+| #99 | OPEN | Duplicate avoided; still blocks full `test:source-integrity` |
+| #100 | OPEN | Duplicate avoided |
+| #101 | OPEN | Duplicate avoided |
+
+### Files / paths reviewed
+| Path | Purpose |
+|------|---------|
+| `lib/data/allegedPolicy.ts` | alleged controversy validation |
+| `lib/data/newsCorroboration.ts` | news listing corroboration and tier preservation |
+| `lib/data/buildSaidDidDiffs.ts` | Said→Did source selection and subject-match path |
+| `lib/data/saidDidVoteContext.ts` | CREC→vote link generation with embedded Said quotes |
+| `lib/data/sourceIntegrity.ts` | subject-overlap, provenance, profile-source validators |
+| `lib/data/resolveRecordedOutlet.ts` | recorded outlet derivation (known duplicate PR #100) |
+| `components/politicians/ProfileRecordByTopicPanel.tsx` | banned alleged surface omission from topic drawer |
+| `components/politicians/ControversySection.tsx` | alleged controversy display rules |
+| `scripts/__tests__/allegedPolicyGuard.test.ts` | alleged-policy guard coverage |
+| `scripts/__tests__/provenanceOutletGuard.test.ts` | provenance default guard coverage |
+
+### Commands run (this session)
+- `pwd && git status --short --branch && git remote -v && git branch --show-current` → exit 0
+- `for pr in 24 28 29 30 31 40 99 100 101; do gh pr view "$pr" --json number,state,mergedAt,closedAt,url,headRefOid,title; done` → exit 0
+- `git fetch origin main && git log --oneline --decorate --max-count=25 origin/main && git log --since='2026-08-05T00:00:00Z' --date=iso --pretty=format:'%h %ad %s' --name-status origin/main` → exit 0 (no commits since 2026-08-05)
+- `git diff --stat c08be19..origin/main && git diff --name-status c08be19..origin/main && git show --stat --oneline --decorate db23b39 && git show --stat --oneline --decorate d36f4a9 && git show --stat --oneline --decorate cc916da && git show --stat --oneline --decorate 18b5d3e` → exit 0
+- `npm run test:source-integrity` → exit 1, known duplicate PR #99 (`votesmart` token in active Claude rule files)
+- `npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/sourceIntegrity.test.ts` → exit 0 (74 pass / 0 fail)
+
+### Acceptance evidence
+- Full remembered PR sweep found #28/#29/#30/#31/#40/#99/#100/#101 still open; #24 closed unmerged and already marked rejected.
+- Recent `origin/main` has no commits since `2026-08-05T00:00:00Z`; scan focused on the latest merged alleged-policy / provenance / Said→Did stack.
+- `npm run test:source-integrity` failed only at `approvedSourceMatrixGuard.test.ts` with `dead-source token "votesmart"` in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`, matching open PR #99.
+- Changed-area subset passed: `# tests 74`, `# pass 74`, `# fail 0`.
+- No new high-confidence concrete trigger was found outside the already tracked open PRs.
+
+### Open / next
+- Existing PR #99 still awaits review/merge to clear the full source-integrity suite on `main`.
+- No automation PR opened for this scan because no new critical bug was confirmed.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Critical-bug automation scan:** no new high-confidence critical bug found on `cursor/critical-bug-management-5018` from pre-log HEAD `763dc67`. Full remembered PR sweep avoided duplicates; #99 remains OPEN and is the only `test:source-integrity` blocker (`votesmart` token in active Claude rule files). Changed-area subset passed 74/74. No new PR opened; review existing #99/#100/#101 as pending blockers.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  

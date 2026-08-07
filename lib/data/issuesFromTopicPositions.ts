@@ -12,16 +12,26 @@ import { normalizeTopicId } from './topicAliases';
 import { isCeremonialCrecRemark } from './ceremonialCrecFilter';
 import { statementDisplayText } from './crecDisplayText';
 import { leadSummary } from './displaySummary';
+import { resolveRecordedOutlet } from './resolveRecordedOutlet';
 import { isDisqualifiedPlatformPosition } from './sourceIntegrity';
 
 function isPolicyStatement(st: TopicStatementEntry): boolean {
   return !isCeremonialCrecRemark(st.title);
 }
 
+function statementSourceName(st: TopicStatementEntry): string | null {
+  const resolved = resolveRecordedOutlet(st.outlet, st.url);
+  if (resolved) return resolved;
+  if (st.tier === 'official' || st.tier === 'media') return null;
+  return st.outlet?.trim() || 'Ballotpedia';
+}
+
 function buildEvidence(topicId: string, data: TopicPositionData): EvidenceItem[] {
   const items: EvidenceItem[] = [];
 
   for (const st of data.statements.filter(isPolicyStatement)) {
+    const sourceName = statementSourceName(st);
+    if (!sourceName) continue;
     const isVerbatim = st.tier === 'official' || st.tier === 'media';
     const display = statementDisplayText(st);
     items.push({
@@ -30,12 +40,7 @@ function buildEvidence(topicId: string, data: TopicPositionData): EvidenceItem[]
       quote: isVerbatim ? display : undefined,
       date: st.date,
       source: {
-        name:
-          st.tier === 'official'
-            ? 'Congressional Record (GovInfo)'
-            : st.tier === 'media'
-              ? 'Journalism'
-              : 'Ballotpedia',
+        name: sourceName,
         url: st.url,
         tier: st.tier,
         date: st.date,

@@ -14,6 +14,14 @@ export const PROFILE_MIGRATE_KNOWN_BAD_EMPTY_OVERWRITE = {
   saidDid: { bioguideId: 'P000197', byTopic: {} },
 } as const;
 
+/** Frozen bad example: migrate re-run overwrote a diagnosed trades fetch-failed gap. */
+export const PROFILE_MIGRATE_KNOWN_BAD_TRADES_OVERWRITE = {
+  bioguideId: 'S000033',
+  status: 'honest-gap',
+  note: 'No verified STOCK Act trades integrated for this profile',
+  trades: [],
+} as const;
+
 /** Frozen good counter-example: minimum verified counts after restore. */
 export const PROFILE_MIGRATE_KNOWN_GOOD_P000197 = {
   bioguideId: 'P000197',
