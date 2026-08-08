@@ -30,8 +30,16 @@ test('topic sync preserves Said-Did links when national votes omit member row', 
   assert.deepEqual(merged, [PRIOR_LINK]);
 });
 
-test('topic sync can refresh Said-Did links to empty when member vote row is available', () => {
+test('topic sync preserves Said-Did links when member vote row is empty', () => {
   const canRefresh = canRefreshSaidDidLinks(true, new Map([['P000197', []]]), 'P000197');
+  const merged = mergeSaidDidLinksForRefresh([PRIOR_LINK], [], canRefresh);
+
+  assert.equal(canRefresh, false);
+  assert.deepEqual(merged, [PRIOR_LINK]);
+});
+
+test('topic sync can refresh Said-Did links to empty when member has vote input', () => {
+  const canRefresh = canRefreshSaidDidLinks(true, new Map([['P000197', [{}]]]), 'P000197');
   const merged = mergeSaidDidLinksForRefresh([PRIOR_LINK], [], canRefresh);
 
   assert.equal(canRefresh, true);
