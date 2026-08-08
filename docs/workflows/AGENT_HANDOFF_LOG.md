@@ -10,6 +10,61 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-08 — CRITICAL BUG AUTOMATION SCAN @ 763dc67
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (no fresh high-confidence critical bug opened)  
+**Current state:** `cursor/critical-bug-management-5339` · HEAD before this log commit `763dc67` · PR none (no code/data fix opened) · tree clean before log edit · build not run (scan-only; targeted guards below)
+
+### Objective
+Inspect recent main commits for critical correctness bugs (data loss, crashes, security holes, or significant user-facing breakage), avoid duplicate reports from automation memory, and fix only high-confidence fresh defects.
+
+### Duplicate / memory check
+- Automation memory read first via `automation_memory` (`version b270bdd4b117532c`).
+- PR state check:
+  - #28, #29, #30, #31, #40, #99, #100, #101, #102 are still OPEN — not duplicated.
+  - #24 is CLOSED unmerged and already recorded as `rejected`; recorded 2026-07-10, not more than 30 days old on 2026-08-08 — kept.
+- Known live failures intentionally not re-reported:
+  - #99: `approvedSourceMatrixGuard` dead-source token in Claude rules.
+  - #102: migrated profile trade preservation + Key Issues generic `Journalism` provenance.
+
+### Commands run (this session)
+- `git status --short && git branch --show-current && git remote -v && git rev-parse --short HEAD && git fetch origin main && git fetch origin cursor/critical-bug-management-5339 || true` → exit 0; remote feature ref absent.
+- `for pr in 24 28 29 30 31 40 99 100 101 102; do gh pr view "$pr" --json number,state,mergedAt,url,headRefName,title; done` → exit 0.
+- `git log --oneline --decorate --max-count=30 origin/main && git log --oneline --decorate --max-count=10 HEAD` → exit 0.
+- `git show --stat --oneline --decorate 09f14b4 && git show --stat --oneline --decorate 377787d && git show --stat --oneline --decorate 18b5d3e && git show --stat --oneline --decorate d36f4a9 && git show --stat --oneline --decorate cc916da && git show --stat --oneline --decorate db23b39 && git show --stat --oneline --decorate d137a12` → exit 0.
+- `node - <<'NODE' ... inspect topicPositions.json ... NODE` → exit 0; `byBioguideId` has 442 members.
+- `node - <<'NODE' ... count topicPositions statement tiers ... NODE` → exit 0; media statements 0, official statements 4.
+- `npm install` → exit 0; reported existing `npm audit` vulnerabilities (see `NPM-01` backlog).
+- `npm run test:source-integrity && npm run test:topic-positions-bundle` → exit 1; stopped on known #99 dead-source-token guard.
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/topicPositionsPreserve.test.ts` → exit 0; 70/70 pass.
+- `npm run test:topic-positions-bundle` → exit 0; 8/8 pass.
+- `git status --short && git rev-parse --short HEAD && git log -1 --oneline` → exit 0; clean tree before log edit; HEAD `763dc67`.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this critical-bug automation scan entry |
+
+### Acceptance evidence
+- No new high-confidence critical bug found outside already-open memory PRs.
+- Focused non-duplicate guards: 70/70 pass.
+- Topic-position bundle guard: 8/8 pass, including mega-bundle freeze and preserve-on-failure cases.
+- Broad source-integrity failure is duplicate of open PR #99:
+  `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`.
+
+### Open / next
+- No code/data PR opened from this scan.
+- Existing critical-bug PRs remain awaiting review: #28, #29, #30, #31, #40, #99, #100, #101, #102.
+- Memory unchanged; no merged entries to delete and no rejected entry older than 30 days.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+Critical-bug automation scan on `cursor/critical-bug-management-5339`: no fresh high-confidence critical bug outside already-open memory PRs. HEAD before log commit `763dc67`; focused guards 70/70 pass; `test:topic-positions-bundle` 8/8 pass; broad `test:source-integrity` fails only on duplicate open PR #99 (`votesmart` token in Claude rules). Review existing open critical PRs (#28/#29/#30/#31/#40/#99/#100/#101/#102); no new PR opened from this scan.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
