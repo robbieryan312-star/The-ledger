@@ -10,6 +10,113 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-08 — CRITICAL BUG FIX: EMPTY VOTE ROW PRESERVES SAID-DID @ 9772783
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (implementation checkpoint; awaiting STAGE THREE)  
+**Current state:** `cursor/critical-bug-management-5339` · code tip `9772783` · PR **#103** https://github.com/robbieryan312-star/The-ledger/pull/103 · tree dirty only this handoff entry before docs commit · full build not run because broad `test:source-integrity` is blocked by already-open PR #99
+
+### Objective
+Fix the latent data-loss path where `sync-topic-positions` treated an empty national vote row as authoritative refresh input and replaced prior self-contained Said-Did links with `[]`.
+
+### Verdict / outcome
+PASS — `canRefreshSaidDidLinks` now requires a loaded, non-empty vote array for the member before Said-Did links may be refreshed. Empty member vote rows preserve prior links the same way failed/missing vote loads do. A regression test freezes the empty-row preserve case, and a separate test keeps intentional refresh-to-empty behavior when actual vote input exists.
+
+### Commits
+- `f4bbf4a` — docs(handoff): record critical bug automation scan
+- `9772783` — fix(topic-positions): preserve Said-Did on empty vote rows
+
+### Commands run (this fix)
+- `git add scripts/lib/topicPositionsPreserve.ts scripts/__tests__/topicPositionsPreserve.test.ts && git commit -m "fix(topic-positions): preserve Said-Did on empty vote rows" && git push -u origin cursor/critical-bug-management-5339` → exit 0.
+- `npm run test:topic-positions-bundle && npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/topicPositionsPreserve.test.ts` → exit 0; topic bundle 9/9, focused source/preserve 61/61.
+- `npm run test:typecheck` → exit 0.
+- `open_git_pr` → PR #103.
+- `automation_memory` write → new entry recorded for PR #103.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/lib/topicPositionsPreserve.ts` | modified | Requires non-empty vote arrays before refreshing Said-Did links |
+| `scripts/__tests__/topicPositionsPreserve.test.ts` | modified | Added empty vote-row preserve regression and retained non-empty refresh-to-empty case |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this implementation handoff |
+
+### Acceptance evidence
+```
+# topic sync preserves Said-Did links when member vote row is empty
+ok 60 - topic sync preserves Said-Did links when member vote row is empty
+# topic sync can refresh Said-Did links to empty when member has vote input
+ok 61 - topic sync can refresh Said-Did links to empty when member has vote input
+1..61
+# pass 61
+```
+
+### Open / next
+- Claude STAGE THREE review on PR #103 / code tip `9772783` plus final handoff docs commit.
+- Existing broad guard blocker remains PR #99; do not treat that as caused by PR #103.
+- Related amplifier noted but not changed in this PR: `sync-votes-national --full` should preserve prior votes on zero fresh rows during partial source failure.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+PR #103 fixes the empty-national-vote-row Said-Did data-loss path. Code tip `9772783`: `canRefreshSaidDidLinks` now returns true only for loaded non-empty vote arrays; empty rows preserve prior self-contained links. Evidence: `npm run test:topic-positions-bundle` + focused source/preserve tests exit 0 (61/61 focused; empty-row regression ok 60, non-empty refresh-to-empty ok 61); `npm run test:typecheck` exit 0. Full source-integrity remains blocked by existing open PR #99, not by this fix. Please run STAGE THREE on PR #103 and specifically inspect the remaining `sync-votes-national --full` amplifier as a possible follow-up brief.
+
+---
+
+## HANDOFF 2026-08-08 — CRITICAL BUG AUTOMATION SCAN @ 763dc67
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (no fresh high-confidence critical bug opened)  
+**Current state:** `cursor/critical-bug-management-5339` · HEAD before this log commit `763dc67` · PR none (no code/data fix opened) · tree clean before log edit · build not run (scan-only; targeted guards below)
+
+### Objective
+Inspect recent main commits for critical correctness bugs (data loss, crashes, security holes, or significant user-facing breakage), avoid duplicate reports from automation memory, and fix only high-confidence fresh defects.
+
+### Duplicate / memory check
+- Automation memory read first via `automation_memory` (`version b270bdd4b117532c`).
+- PR state check:
+  - #28, #29, #30, #31, #40, #99, #100, #101, #102 are still OPEN — not duplicated.
+  - #24 is CLOSED unmerged and already recorded as `rejected`; recorded 2026-07-10, not more than 30 days old on 2026-08-08 — kept.
+- Known live failures intentionally not re-reported:
+  - #99: `approvedSourceMatrixGuard` dead-source token in Claude rules.
+  - #102: migrated profile trade preservation + Key Issues generic `Journalism` provenance.
+
+### Commands run (this session)
+- `git status --short && git branch --show-current && git remote -v && git rev-parse --short HEAD && git fetch origin main && git fetch origin cursor/critical-bug-management-5339 || true` → exit 0; remote feature ref absent.
+- `for pr in 24 28 29 30 31 40 99 100 101 102; do gh pr view "$pr" --json number,state,mergedAt,url,headRefName,title; done` → exit 0.
+- `git log --oneline --decorate --max-count=30 origin/main && git log --oneline --decorate --max-count=10 HEAD` → exit 0.
+- `git show --stat --oneline --decorate 09f14b4 && git show --stat --oneline --decorate 377787d && git show --stat --oneline --decorate 18b5d3e && git show --stat --oneline --decorate d36f4a9 && git show --stat --oneline --decorate cc916da && git show --stat --oneline --decorate db23b39 && git show --stat --oneline --decorate d137a12` → exit 0.
+- `node - <<'NODE' ... inspect topicPositions.json ... NODE` → exit 0; `byBioguideId` has 442 members.
+- `node - <<'NODE' ... count topicPositions statement tiers ... NODE` → exit 0; media statements 0, official statements 4.
+- `npm install` → exit 0; reported existing `npm audit` vulnerabilities (see `NPM-01` backlog).
+- `npm run test:source-integrity && npm run test:topic-positions-bundle` → exit 1; stopped on known #99 dead-source-token guard.
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/topicPositionsPreserve.test.ts` → exit 0; 70/70 pass.
+- `npm run test:topic-positions-bundle` → exit 0; 8/8 pass.
+- `git status --short && git rev-parse --short HEAD && git log -1 --oneline` → exit 0; clean tree before log edit; HEAD `763dc67`.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this critical-bug automation scan entry |
+
+### Acceptance evidence
+- No new high-confidence critical bug found outside already-open memory PRs.
+- Focused non-duplicate guards: 70/70 pass.
+- Topic-position bundle guard: 8/8 pass, including mega-bundle freeze and preserve-on-failure cases.
+- Broad source-integrity failure is duplicate of open PR #99:
+  `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`.
+
+### Open / next
+- No code/data PR opened from this scan.
+- Existing critical-bug PRs remain awaiting review: #28, #29, #30, #31, #40, #99, #100, #101, #102.
+- Memory unchanged; no merged entries to delete and no rejected entry older than 30 days.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+Critical-bug automation scan on `cursor/critical-bug-management-5339`: no fresh high-confidence critical bug outside already-open memory PRs. HEAD before log commit `763dc67`; focused guards 70/70 pass; `test:topic-positions-bundle` 8/8 pass; broad `test:source-integrity` fails only on duplicate open PR #99 (`votesmart` token in Claude rules). Review existing open critical PRs (#28/#29/#30/#31/#40/#99/#100/#101/#102); no new PR opened from this scan.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
