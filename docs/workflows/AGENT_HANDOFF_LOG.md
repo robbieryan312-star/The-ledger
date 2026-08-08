@@ -10,6 +10,58 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-08 — CRITICAL BUG FIX: EMPTY VOTE ROW PRESERVES SAID-DID @ 9772783
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (implementation checkpoint; awaiting STAGE THREE)  
+**Current state:** `cursor/critical-bug-management-5339` · code tip `9772783` · PR **#103** https://github.com/robbieryan312-star/The-ledger/pull/103 · tree dirty only this handoff entry before docs commit · full build not run because broad `test:source-integrity` is blocked by already-open PR #99
+
+### Objective
+Fix the latent data-loss path where `sync-topic-positions` treated an empty national vote row as authoritative refresh input and replaced prior self-contained Said-Did links with `[]`.
+
+### Verdict / outcome
+PASS — `canRefreshSaidDidLinks` now requires a loaded, non-empty vote array for the member before Said-Did links may be refreshed. Empty member vote rows preserve prior links the same way failed/missing vote loads do. A regression test freezes the empty-row preserve case, and a separate test keeps intentional refresh-to-empty behavior when actual vote input exists.
+
+### Commits
+- `f4bbf4a` — docs(handoff): record critical bug automation scan
+- `9772783` — fix(topic-positions): preserve Said-Did on empty vote rows
+
+### Commands run (this fix)
+- `git add scripts/lib/topicPositionsPreserve.ts scripts/__tests__/topicPositionsPreserve.test.ts && git commit -m "fix(topic-positions): preserve Said-Did on empty vote rows" && git push -u origin cursor/critical-bug-management-5339` → exit 0.
+- `npm run test:topic-positions-bundle && npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/topicPositionsPreserve.test.ts` → exit 0; topic bundle 9/9, focused source/preserve 61/61.
+- `npm run test:typecheck` → exit 0.
+- `open_git_pr` → PR #103.
+- `automation_memory` write → new entry recorded for PR #103.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/lib/topicPositionsPreserve.ts` | modified | Requires non-empty vote arrays before refreshing Said-Did links |
+| `scripts/__tests__/topicPositionsPreserve.test.ts` | modified | Added empty vote-row preserve regression and retained non-empty refresh-to-empty case |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this implementation handoff |
+
+### Acceptance evidence
+```
+# topic sync preserves Said-Did links when member vote row is empty
+ok 60 - topic sync preserves Said-Did links when member vote row is empty
+# topic sync can refresh Said-Did links to empty when member has vote input
+ok 61 - topic sync can refresh Said-Did links to empty when member has vote input
+1..61
+# pass 61
+```
+
+### Open / next
+- Claude STAGE THREE review on PR #103 / code tip `9772783` plus final handoff docs commit.
+- Existing broad guard blocker remains PR #99; do not treat that as caused by PR #103.
+- Related amplifier noted but not changed in this PR: `sync-votes-national --full` should preserve prior votes on zero fresh rows during partial source failure.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+PR #103 fixes the empty-national-vote-row Said-Did data-loss path. Code tip `9772783`: `canRefreshSaidDidLinks` now returns true only for loaded non-empty vote arrays; empty rows preserve prior self-contained links. Evidence: `npm run test:topic-positions-bundle` + focused source/preserve tests exit 0 (61/61 focused; empty-row regression ok 60, non-empty refresh-to-empty ok 61); `npm run test:typecheck` exit 0. Full source-integrity remains blocked by existing open PR #99, not by this fix. Please run STAGE THREE on PR #103 and specifically inspect the remaining `sync-votes-national --full` amplifier as a possible follow-up brief.
+
+---
+
 ## HANDOFF 2026-08-08 — CRITICAL BUG AUTOMATION SCAN @ 763dc67
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS (no fresh high-confidence critical bug opened)  
