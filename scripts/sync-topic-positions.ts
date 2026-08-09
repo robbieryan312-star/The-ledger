@@ -28,6 +28,7 @@ import { isCeremonialCrecRemark } from '../lib/ceremonialCrecFilter';
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
 const OUT_FILE = path.join(OUT_DIR, 'topicPositions.json');
+const PROFILES_MANIFEST_FILE = path.join(OUT_DIR, 'profiles', '_manifest.json');
 const LEGISLATORS_FILE = path.join(OUT_DIR, 'currentLegislators.json');
 const NATIONAL_VOTES_FILE_PATH = NATIONAL_VOTES_FILE;
 const CHECKPOINT_FILE = '/tmp/sync-topic-positions-checkpoint.json';
@@ -227,6 +228,10 @@ interface TopicPositionsSnapshot {
     note?: string;
   };
   byBioguideId: Record<string, Record<string, TopicPositionData>>;
+}
+
+interface MigratedProfileManifest {
+  members?: Array<{ bioguideId?: string }>;
 }
 
 interface NationalVoteMember {
@@ -875,7 +880,7 @@ function buildSnapshotMeta(
     membersWithSaidDidLinks,
     perTopicCoverage,
     note:
-      'Platform from Ballotpedia/official issues; CREC Said + roll-call votes for Said→Did. S000033 migrated to profiles/S000033 (destination files); not in mega-bundle (freeze).',
+      'Platform from Ballotpedia/official issues; CREC Said + roll-call votes for Said→Did. Migrated profiles listed in profiles/_manifest.json write profile sidecars only; not the mega-bundle (freeze).',
   };
 }
 
@@ -891,6 +896,22 @@ async function writeSnapshot(
   };
   await mkdir(OUT_DIR, { recursive: true });
   await writeFile(OUT_FILE, JSON.stringify(snapshot, null, 2) + '\n', 'utf8');
+}
+
+async function loadMegaBundleExcludedBioguides(): Promise<Set<string>> {
+  try {
+    const manifest = JSON.parse(await readFile(PROFILES_MANIFEST_FILE, 'utf8')) as MigratedProfileManifest;
+    return new Set(
+      (manifest.members ?? [])
+        .map((member) => member.bioguideId?.trim())
+        .filter((id): id is string => Boolean(id)),
+    );
+  } catch (err) {
+    console.warn(
+      `WARN: could not load migrated profile manifest — falling back to S000033 freeze only: ${err instanceof Error ? err.message : err}`,
+    );
+    return new Set(['S000033']);
+  }
 }
 
 async function main(): Promise<void> {
@@ -936,7 +957,7 @@ async function main(): Promise<void> {
   );
   const rosterSize = roster.length;
   /** Migrated gold profiles: CREC lands in profiles/{id}/ only — never re-enter mega-bundle. */
-  const MEGA_BUNDLE_EXCLUDED = new Set(['S000033']);
+  const megaBundleExcluded = await loadMegaBundleExcludedBioguides();
   let members = roster;
   if (memberFilter) {
     members = members.filter((l) => memberFilter.has(l.bioguideId));
@@ -1130,7 +1151,7 @@ async function main(): Promise<void> {
   await runPool(pending, MEMBER_CONCURRENCY, async (leg) => {
     const memberTopics = await processMember(leg);
     await runExclusive(async () => {
-      if (MEGA_BUNDLE_EXCLUDED.has(leg.bioguideId)) {
+      if (megaBundleExcluded.has(leg.bioguideId)) {
         // Profile-only path: write a temp sidecar for apply scripts; keep mega-bundle frozen.
         const sidePath = `/tmp/topic-positions-${leg.bioguideId}.json`;
         await writeFile(sidePath, JSON.stringify({ byTopic: memberTopics }, null, 2) + '\n', 'utf8');
@@ -1154,7 +1175,7 @@ async function main(): Promise<void> {
   });
 
   // Enforce freeze even if a prior run re-inserted an excluded id.
-  for (const id of MEGA_BUNDLE_EXCLUDED) delete byBioguideId[id];
+  for (const id of megaBundleExcluded) delete byBioguideId[id];
 
   await writeSnapshot(rosterSize, byBioguideId, asOf, !!govinfoKey);
 

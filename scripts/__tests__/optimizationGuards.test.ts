@@ -92,6 +92,17 @@ test('read-path-routing: memberProfile uses generated index not hand imports', (
   assert.doesNotMatch(src, /import sandersStatements from/);
 });
 
+test('topic-positions sync excludes every migrated profile from mega-bundle via manifest', () => {
+  const src = readFileSync(path.join(scriptsDir, 'sync-topic-positions.ts'), 'utf8');
+  assert.match(src, /PROFILES_MANIFEST_FILE/);
+  assert.match(src, /loadMegaBundleExcludedBioguides/);
+  assert.doesNotMatch(
+    src,
+    /MEGA_BUNDLE_EXCLUDED\s*=\s*new Set\(\[['"]S000033['"]\]\)/,
+    'sync-topic-positions must not hard-code only S000033 as migrated/frozen',
+  );
+});
+
 test('raw-fetch: scripts use timeout or resilient fetch helpers', () => {
   const violations: string[] = [];
   const allowlist = new Set([

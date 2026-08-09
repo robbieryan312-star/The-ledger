@@ -327,6 +327,20 @@ test('migrated members must NOT appear in demo congressVotes.json (single source
   }
 });
 
+test('migrated members must NOT appear in topicPositions.json mega-bundle (single source of truth)', () => {
+  const topicPositions = JSON.parse(
+    readFileSync(path.join(GENERATED_DIR, 'topicPositions.json'), 'utf8'),
+  ) as { byBioguideId?: Record<string, unknown> };
+  const megaBundleIds = new Set(Object.keys(topicPositions.byBioguideId ?? {}));
+  for (const bioguideId of MIGRATED_PROFILE_BIOGUIDES) {
+    assert.equal(
+      megaBundleIds.has(bioguideId),
+      false,
+      `migrated member ${bioguideId} still in topicPositions.json mega-bundle`,
+    );
+  }
+});
+
 for (const bioguideId of MIGRATED_PROFILE_BIOGUIDES) {
   test(`${bioguideId} profile destination files pass source integrity`, () => {
     const violations = validateProfileSources({
