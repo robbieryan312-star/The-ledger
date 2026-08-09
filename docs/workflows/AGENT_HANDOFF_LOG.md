@@ -10,6 +10,72 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-09 — CRITICAL BUG PR #104 migrated topicPositions freeze
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS for scoped fix; BUILD BLOCKED by tracked PR #99  
+**Current state:** `cursor/bc-a6263837-9c80-4356-a423-d2f5b77960c8-26dd` · code HEAD `ec47745` · PR https://github.com/robbieryan312-star/The-ledger/pull/104 · tree clean before this handoff-log update
+
+### Objective
+Deep bug-finding cron: inspect recent behavioral commits, avoid duplicate open-memory bugs, and fix only high-confidence critical correctness defects.
+
+### Verdict / outcome
+**PASS (scoped)** — fixed `sync-topic-positions` so every migrated profile listed in `profiles/_manifest.json` is excluded from the legacy mega-bundle and routed to the profile-only sidecar path. This prevents scoped refreshes for migrated profiles such as `M000355` from silently writing a parallel `topicPositions.json` row that the rendered profile does not read.
+
+### Commits
+- `ec47745` — `fix(topic-positions): exclude all migrated profiles from bundle`
+
+### Commands run (this session)
+- `git fetch --all --prune && git status --short && git branch --show-current && git log --oneline --decorate -n 40 origin/main` → exit 0
+- `gh pr view ...` for tracked memory PRs #24/#28/#29/#30/#31/#40/#99/#100/#101/#102/#103 → exit 0; #28/#29/#30/#31/#40/#99/#100/#101/#102/#103 still open; #24 rejected/closed
+- `git show --stat --oneline --find-renames db23b39 d36f4a9 18b5d3e cc916da d137a12 a739765 be6f0a9 && gh pr list --state open --json number,url,title,headRefName,headRefOid,createdAt,updatedAt --limit 30` → exit 0
+- `node - <<'NODE' ... scan media statements for missing outlets ... NODE` → exit 0 (`missingCount: 0`)
+- `node - <<'NODE' ... inspect topicPositions coverage ... NODE` → exit 0 (`ids: 442`, migrated IDs absent)
+- `npm run test:optimization && npm run test:source-integrity && npm run test:typecheck` → exit 1, blocked by known open PR #99 dead-source-token guard failure
+- `npm run test:optimization && npx tsx --test --test-name-pattern "migrated members must NOT appear in topicPositions.json mega-bundle" scripts/__tests__/sourceIntegrity.test.ts && npm run test:typecheck` → exit 0
+- `npm run build` → exit 1, same known PR #99 blocker in `approvedSourceMatrixGuard`
+- `git add scripts/sync-topic-positions.ts scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/optimizationGuards.test.ts && git commit -m "fix(topic-positions): exclude all migrated profiles from bundle"` → exit 0
+- `git push -u origin "$(git branch --show-current)"` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/sync-topic-positions.ts` | modified | Load migrated profile exclusions from `profiles/_manifest.json`; write all migrated members to sidecar path only; final write deletes every migrated ID from mega-bundle |
+| `scripts/__tests__/sourceIntegrity.test.ts` | modified | Guard that migrated profile IDs are absent from `topicPositions.json` |
+| `scripts/__tests__/optimizationGuards.test.ts` | modified | Guard that sync script uses the manifest-driven exclusion path |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session handoff |
+
+### Acceptance evidence
+- Targeted guard PASS: `topic-positions sync excludes every migrated profile from mega-bundle via manifest`
+- Targeted source-integrity PASS: `migrated members must NOT appear in topicPositions.json mega-bundle`
+- Typecheck PASS: `tsc --noEmit`
+- PR opened: https://github.com/robbieryan312-star/The-ledger/pull/104
+- Persistent memory updated with PR #104 entry.
+
+### Open / next
+- Full `npm run build` remains blocked on known open PR #99 (`approvedSourceMatrixGuard`: `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2`, `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`). Do not duplicate PR #99; merge/review that existing fix separately.
+- Claude STAGE THREE must review PR #104 exact tip after this handoff-log push.
+
+---
+
+## Owner visibility finding
+
+| Field | Detail |
+|-------|--------|
+| **What** | Full build is currently blocked by an already tracked dead-source-token regression, not by PR #104. |
+| **Where** | `npm run build` → `approvedSourceMatrixGuard`; `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2`, `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`; tracked in memory as PR #99. |
+| **Evidence** | Build output: `dead-source token "votesmart" found outside history exempts` at those two `.claude` paths. |
+| **Severity** | P1 guard/build blocker; existing open PR #99. |
+| **Repair** | Review/merge existing PR #99; do not open a duplicate. |
+| **Action this turn** | Flagged only; scoped PR #104 validation used targeted guards and typecheck. |
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**PR #104:** review exact tip after handoff-log push for `cursor/bc-a6263837-9c80-4356-a423-d2f5b77960c8-26dd`. **Verdict requested:** STAGE THREE APPROVE/REJECT. **What changed:** `sync-topic-positions` now reads `profiles/_manifest.json` and excludes all migrated profiles from `topicPositions.json`; guards added in `test:optimization` and source-integrity. **Evidence:** targeted guards + typecheck pass; full build blocked by already-open PR #99 dead-source-token guard failure. **Open gate:** do not merge without Claude APPROVAL on exact SHA; do not duplicate PR #99.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
