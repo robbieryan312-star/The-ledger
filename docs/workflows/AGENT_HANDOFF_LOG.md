@@ -10,6 +10,54 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-10 — CRITICAL BUG AUTOMATION AUDIT (NO NEW PR)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new high-confidence critical bug found)  
+**Current state:** `cursor/bc-87d4a28d-ee3f-4c40-b962-7f2a9f700945-1813` · start HEAD `763dc67` (`origin/main`) · PR none opened · tree clean before handoff-log edit · full build not rerun because `test:source-integrity` is already known-red on PR #99 duplicate.
+
+### Objective
+Inspect recent commits and active PR branches for critical correctness bugs that escaped review; avoid duplicate reports already tracked in automation memory.
+
+### Verdict / outcome
+PASS — no new concrete trigger was found for data loss, crash, security hole, or significant user-facing breakage outside open tracked PRs #28, #29, #30, #31, #40, #99, #100, #101, #102, #103, and #104.
+
+### Memory cleanup
+- Removed expired rejected memory entry for PR #24 (`closed`, unmerged, recorded 2026-07-10 > 30 days old).
+- Kept all open tracked entries (#28, #29, #30, #31, #40, #99-#104).
+
+### Commands run (this session)
+- `pwd && git status --short && git branch --show-current && git log --oneline --decorate -n 20 && gh pr view ...` -> exit 1 (invalid `gh pr view --json merged` field; rerun with valid fields)
+- `for pr in 24 28 29 30 31 40 99 100 101 102 103 104; do gh pr view "$pr" --json number,state,closed,closedAt,mergedAt,url,headRefName,headRefOid,title; done` -> exit 0
+- `git fetch --all --prune && git status --short && git log --oneline --decorate -n 12 && gh pr list --state open --limit 30 --json number,title,url,headRefName,headRefOid,updatedAt && git diff --stat 6d6057b..HEAD && git show --stat --oneline --decorate --no-renames HEAD` -> exit 0
+- `npm run test:typecheck` -> exit 0
+- `npm run test:profile-snapshots && npm run test:topic-positions-bundle` -> exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this audit handoff |
+
+### Acceptance evidence
+- Tracked PR states: #24 `CLOSED` / `mergedAt:null`; #28, #29, #30, #31, #40, #99, #100, #101, #102, #103, #104 all `OPEN`.
+- Open PR list newest entries: #104 `dc16d0a`, #103 `9a6378a`, #102 `406e966`, #101 `971fba7`, #100 `4e5bfe8`, #99 `8d1ce79`.
+- `npm run test:typecheck` -> `tsc --noEmit` exit 0.
+- `npm run test:profile-snapshots` -> 2 tests, 2 pass, 0 fail.
+- `npm run test:topic-positions-bundle` -> 8 tests, 8 pass, 0 fail.
+- Read-only subagent audit of `origin/main` reviewed CREC yield, GovInfo key chain, news corroboration, approved-source matrix, alleged-policy, nominee-overlap, and provenance hardening commits; result: no new high-confidence critical bug outside tracked #99-#104.
+- Read-only subagent audit of active non-excluded PR branches #95, #90, #89, #88, #87, #83, #76, #75, #70, #68, #67, #66, #65, #64; result: no new non-duplicate high-confidence critical bug.
+
+### Open / next
+- Existing critical bug PRs remain awaiting review: #28, #29, #30, #31, #40, #99, #100, #101, #102, #103, #104.
+- Full `npm run build` remains unverified in this session because the known duplicate #99 source-integrity failure is already open.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG AUTOMATION 2026-08-10:** no new high-confidence critical bug found beyond open tracked PRs #28/#29/#30/#31/#40/#99/#100/#101/#102/#103/#104. Memory cleanup removed expired rejected #24. Evidence: `test:typecheck` 0; `test:profile-snapshots` 2/2; `test:topic-positions-bundle` 8/8; main + non-excluded PR audits found no new concrete crash/data-loss/security/broad-breakage trigger. Full build intentionally not rerun because #99 already tracks the known source-integrity red gate.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
