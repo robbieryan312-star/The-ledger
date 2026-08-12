@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-08-12 — Said→Did nomination false-positive fix
 
 **From:** Cursor automation · **To:** Claude · **Verdict:** PASS (focused) · full build blocked by known PR #99  
-**Current state:** `cursor/critical-bug-management-43e9` · base before fix `f863342` · PR pending · tree dirty before commit · focused source-integrity PASS
+**Current state:** `cursor/critical-bug-management-43e9` · fix tip `9d478b4` · PR #105 · focused source-integrity PASS · full build blocked by known PR #99
 
 ### Objective
 Fix the new latent Said→Did data-loss bug found by the background audit: colloquial text like "confirm that we need to be..." was parsed as a nominee and could silently drop valid CREC↔legislative vote pairs.
@@ -22,7 +22,7 @@ Fix the new latent Said→Did data-loss bug found by the background audit: collo
 Implemented a parser-boundary fix: nomination extraction now keeps case-insensitive trigger words but requires captured nominee tokens to retain title-case person-name shape. Added an append-only regression fixture and test proving the colloquial "confirm" example overlaps a prescription-drug bill while the existing Marvit/Westercamp nominee mismatch guard still rejects.
 
 ### Commits
-- Pending: fix commit + this handoff entry.
+- `9d478b4` — fix(saiddid): avoid nominee false positives
 
 ### Commands run (this session)
 - `npx tsx -e "import { extractNominationSubjects, saidDidSubjectsOverlap } from './lib/data/sourceIntegrity.ts'; const said='Mr. SANDERS. Mr. President, I want to confirm that we need to be bold on prescription drug pricing.'; const did='S.123: A bill to reduce prescription drug prices'; console.log(JSON.stringify({subjects: extractNominationSubjects(said), overlap: saidDidSubjectsOverlap(said, did)}));"` → before fix: `{"subjects":["that we need"],"overlap":false}`; after fix: `{"subjects":[],"overlap":true}`
@@ -45,14 +45,14 @@ Implemented a parser-boundary fix: nomination extraction now keeps case-insensit
 - Full build blocker is unrelated and already tracked by open PR #99.
 
 ### Open / next
-- Open PR for Claude review on this exact branch tip.
+- PR #105: https://github.com/robbieryan312-star/The-ledger/pull/105
 - Full build remains blocked on main/this branch until PR #99 or equivalent fix lands.
 
 ---
 
 ## Confront Claude — paste to Claude Code
 
-**Said→Did nomination false-positive fix:** review exact pushed tip after Cursor opens PR. Root cause: `/i` made `[A-Z]` capture lowercase prose after "confirm", so `that we need` became a fake nominee and blocked topic overlap before keyword matching. Fix: `extractNominationSubjects` now uses explicit trigger casing with title-case capture; fixture/test added. Evidence: direct repro now `{"subjects":[],"overlap":true}`; `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts` → 58/58 pass. Full build still fails only on known open PR #99 (`approvedSourceMatrixGuard` dead-source token in `.claude/rules/*`).
+**Said→Did nomination false-positive fix:** review PR #105 at `9d478b4`. Root cause: `/i` made `[A-Z]` capture lowercase prose after "confirm", so `that we need` became a fake nominee and blocked topic overlap before keyword matching. Fix: `extractNominationSubjects` now uses explicit trigger casing with title-case capture; fixture/test added. Evidence: direct repro now `{"subjects":[],"overlap":true}`; `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts` → 58/58 pass. Full build still fails only on known open PR #99 (`approvedSourceMatrixGuard` dead-source token in `.claude/rules/*`).
 
 ---
 
