@@ -9,6 +9,7 @@ import assert from 'node:assert/strict';
 import {
   NEWS_KNOWN_BAD_BARE_HOMEPAGE_URL,
   NEWS_KNOWN_BAD_UNAPPROVED_OUTLET,
+  SAID_DID_KNOWN_GOOD_CONFIRM_COLLOQUIAL,
   SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH,
   SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH,
   SAID_DID_KNOWN_BAD_TAUTOLOGY,
@@ -41,6 +42,7 @@ import {
   isEventNarration,
   isVoteRestatementSaid,
   isDisqualifiedPlatformPosition,
+  extractNominationSubjects,
   normalizeUrlForDedupe,
   saidDidSubjectsOverlap,
   validateNewsFile,
@@ -199,6 +201,18 @@ test('known-bad nominee-mismatched Said→Did is rejected (Marvit≠Westercamp)'
     violations.some((v) => v.message.includes('no meaningful overlap')),
     'expected nominee-mismatch fixture to fail overlap guard',
   );
+});
+
+test('colloquial confirm phrase does not trigger nominee gate for legislation', () => {
+  assert.deepEqual(extractNominationSubjects(SAID_DID_KNOWN_GOOD_CONFIRM_COLLOQUIAL.said.quote), []);
+  assert.equal(
+    saidDidSubjectsOverlap(
+      SAID_DID_KNOWN_GOOD_CONFIRM_COLLOQUIAL.said.quote,
+      SAID_DID_KNOWN_GOOD_CONFIRM_COLLOQUIAL.did.action,
+    ),
+    true,
+  );
+  assert.equal(isGenuineSaidDidDiff(SAID_DID_KNOWN_GOOD_CONFIRM_COLLOQUIAL), true);
 });
 
 test('known-bad non-verbatim alleged statement fails statements integrity', () => {

@@ -209,10 +209,10 @@ function matchedSubjectKeywords(text: string): Set<string> {
 export function extractNominationSubjects(text: string): string[] {
   const subjects: string[] = [];
   const patterns = [
-    /\bnomination of ([A-Z][A-Za-z.'-]+(?:\s+[A-Z][A-Za-z.'-]+){0,4})\s+to be\b/gi,
-    /\bConfirmation:\s*([A-Z][A-Za-z.'-]+(?:\s+[A-Z][A-Za-z.'-]+){0,4})\s*(?:,|\s+to be\b)/gi,
-    /\bConfirm(?:ation of|ing)?\s+([A-Z][A-Za-z.'-]+(?:\s+[A-Z][A-Za-z.'-]+){0,4})\s+to be\b/gi,
-    /\bInvoke Cloture:\s*([A-Z][A-Za-z.'-]+(?:\s+[A-Z][A-Za-z.'-]+){0,4})\s+to be\b/gi,
+    /\b[Nn]omination of ([A-Z][A-Za-z.'-]+(?:\s+[A-Z][A-Za-z.'-]+){0,4})\s+to be\b/g,
+    /\b[Cc]onfirmation:\s*([A-Z][A-Za-z.'-]+(?:\s+[A-Z][A-Za-z.'-]+){0,4})\s*(?:,|\s+to be\b)/g,
+    /\b[Cc]onfirm(?:ation of|ing)?\s+([A-Z][A-Za-z.'-]+(?:\s+[A-Z][A-Za-z.'-]+){0,4})\s+to be\b/g,
+    /\b[Ii]nvoke [Cc]loture:\s*([A-Z][A-Za-z.'-]+(?:\s+[A-Z][A-Za-z.'-]+){0,4})\s+to be\b/g,
   ];
   for (const re of patterns) {
     re.lastIndex = 0;

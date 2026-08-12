@@ -10,6 +10,52 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-12 — Said→Did nomination false-positive fix
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (focused) · full build blocked by known PR #99  
+**Current state:** `cursor/critical-bug-management-43e9` · base before fix `f863342` · PR pending · tree dirty before commit · focused source-integrity PASS
+
+### Objective
+Fix the new latent Said→Did data-loss bug found by the background audit: colloquial text like "confirm that we need to be..." was parsed as a nominee and could silently drop valid CREC↔legislative vote pairs.
+
+### Verdict / outcome
+Implemented a parser-boundary fix: nomination extraction now keeps case-insensitive trigger words but requires captured nominee tokens to retain title-case person-name shape. Added an append-only regression fixture and test proving the colloquial "confirm" example overlaps a prescription-drug bill while the existing Marvit/Westercamp nominee mismatch guard still rejects.
+
+### Commits
+- Pending: fix commit + this handoff entry.
+
+### Commands run (this session)
+- `npx tsx -e "import { extractNominationSubjects, saidDidSubjectsOverlap } from './lib/data/sourceIntegrity.ts'; const said='Mr. SANDERS. Mr. President, I want to confirm that we need to be bold on prescription drug pricing.'; const did='S.123: A bill to reduce prescription drug prices'; console.log(JSON.stringify({subjects: extractNominationSubjects(said), overlap: saidDidSubjectsOverlap(said, did)}));"` → before fix: `{"subjects":["that we need"],"overlap":false}`; after fix: `{"subjects":[],"overlap":true}`
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts` → exit 0; 58 pass / 0 fail
+- `npm run test:typecheck && npm run build` → exit 1; typecheck passed, build failed on known duplicate PR #99 (`approvedSourceMatrixGuard` dead-source token in `.claude/rules/*`)
+- `git diff -- lib/data/sourceIntegrity.ts lib/data/__fixtures__/sourceIntegrity.fixture.ts scripts/__tests__/sourceIntegrity.test.ts && git status --short` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/sourceIntegrity.ts` | modified | Removed `/i` ranges from nominee extraction and used explicit trigger casing so captured names must be title-case |
+| `lib/data/__fixtures__/sourceIntegrity.fixture.ts` | modified | Added append-only colloquial-confirm regression fixture |
+| `scripts/__tests__/sourceIntegrity.test.ts` | modified | Added regression test for colloquial confirm + retained nominee mismatch coverage |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this fix handoff |
+
+### Acceptance evidence
+- Reproduction fixed: `subjects: []`, `overlap: true` for the colloquial confirm prescription-drug example.
+- Guard retained: `known-bad nominee-mismatched Said→Did is rejected (Marvit≠Westercamp)` passed in the same test run.
+- Focused suite: `# tests 58`, `# pass 58`, `# fail 0`.
+- Full build blocker is unrelated and already tracked by open PR #99.
+
+### Open / next
+- Open PR for Claude review on this exact branch tip.
+- Full build remains blocked on main/this branch until PR #99 or equivalent fix lands.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Said→Did nomination false-positive fix:** review exact pushed tip after Cursor opens PR. Root cause: `/i` made `[A-Z]` capture lowercase prose after "confirm", so `that we need` became a fake nominee and blocked topic overlap before keyword matching. Fix: `extractNominationSubjects` now uses explicit trigger casing with title-case capture; fixture/test added. Evidence: direct repro now `{"subjects":[],"overlap":true}`; `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts` → 58/58 pass. Full build still fails only on known open PR #99 (`approvedSourceMatrixGuard` dead-source token in `.claude/rules/*`).
+
+---
+
 ## HANDOFF 2026-08-12 — critical-bug automation scan @ 763dc67
 
 **From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new non-duplicate critical bug found)  

@@ -154,6 +154,21 @@ export const SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH = {
   },
 };
 
+/** Colloquial "confirm ... to be" must not trigger nominee gating for ordinary legislation. */
+export const SAID_DID_KNOWN_GOOD_CONFIRM_COLLOQUIAL = {
+  label: 'colloquial confirm phrase in CREC prescription-drug Said',
+  said: {
+    quote:
+      'Mr. SANDERS. Mr. President, I want to confirm that we need to be bold on prescription drug pricing.',
+    url: 'https://www.govinfo.gov/app/details/CREC-2026-01-01-pt1-PgS1',
+    verbatim: true,
+  },
+  did: {
+    action: 'Voted Yea — S.123: A bill to reduce prescription drug prices',
+    url: 'https://www.congress.gov/bill/119th-congress/senate-bill/123',
+  },
+};
+
 /** Holder/Paul filibuster narration — MUST reject as a Cruz stated position (C001098 civil regression). */
 export const PLATFORM_KNOWN_BAD_EVENT_NARRATION =
   'The day after the filibuster, Attorney General Eric Holder sent a letter to Paul , responding to the filibuster. Holder wrote, "Does the president have the authority to use a weaponized drone to kill an American not engaged in combat on U.S. soil? The answer to that is no." [198]';
