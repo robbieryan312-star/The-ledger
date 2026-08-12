@@ -10,6 +10,54 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-12 — critical-bug automation scan @ 763dc67
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new non-duplicate critical bug found)  
+**Current state:** `cursor/critical-bug-management-43e9` · HEAD `763dc67` before this log commit · PR none opened · tree clean before log edit · focused guards PASS · full build FAILS on known open PR #99 duplicate
+
+### Objective
+Inspect recent `origin/main` commits for high-severity correctness bugs that escaped review, avoiding duplicate reports for open memory-tracked PRs.
+
+### Verdict / outcome
+No new critical bug met the automation PR bar. All persistent-memory entries (#28, #29, #30, #31, #40, #99, #100, #101, #102, #103, #104) still point to OPEN PRs, so no duplicate fix branch/PR was opened and `MEMORIES.md` was not changed. Full `npm run build` still fails on the already tracked PR #99 guard-token regression (`approvedSourceMatrixGuard` against `.claude/rules/*`).
+
+### Commits
+- Pending: this docs-only handoff log commit after build gate.
+
+### Commands run (this session)
+- `git status --short --branch && git remote -v && git rev-parse --show-toplevel && git branch --show-current` → exit 0; confirmed branch `cursor/critical-bug-management-43e9`
+- `for pr in 28 29 30 31 40 99 100 101 102 103 104; do gh pr view "$pr" --json number,state,mergedAt,closedAt,url,headRefName,title; done` → exit 0; all tracked PRs OPEN
+- `git fetch origin main` → exit 0
+- `git log --oneline --decorate --max-count=30 origin/main && git log --stat --max-count=15 --pretty=format:'%h %ad %s' --date=short origin/main` → exit 0
+- `git show --name-only --pretty=format:'COMMIT %h %s' db23b39 cc916da cf4bcfd d36f4a9 18b5d3e` → exit 0
+- `npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/sourceIntegrity.test.ts` → exit 0; 74 pass / 0 fail
+- `git diff --stat c08be19..origin/main -- ':!.cursor/rules/**' ':!docs/**' ':!PILOT_PROFILE_CHECKLIST.md' && git diff --name-only c08be19..origin/main -- ':!.cursor/rules/**' ':!docs/**' ':!PILOT_PROFILE_CHECKLIST.md'` → exit 0
+- `git status --short && git rev-parse --short HEAD && git rev-parse --short origin/main` → exit 0; clean tree, both `763dc67`
+- `npm run build` → exit 1; known duplicate PR #99: `approvedSourceMatrixGuard` reports dead-source token in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this report-only critical-bug scan entry |
+
+### Acceptance evidence
+- Focused integrity guard output: `# tests 74`, `# pass 74`, `# fail 0`.
+- Full build output: `not ok 11 - criterion (A): no contiguous dead-source token outside history exempts`; duplicate of memory-tracked PR #99, still OPEN.
+- Duplicate avoidance evidence: PRs #28, #29, #30, #31, #40, #99, #100, #101, #102, #103, #104 all returned `"state":"OPEN"`.
+- Recent high-risk diffs reviewed: alleged-policy, Said→Did nominee overlap/provenance, news corroboration, profile controversy/endorsement data, and related guards.
+
+### Open / next
+- Existing open critical-bug PRs remain awaiting review; this automation did not modify persistent memory or open a new PR.
+- Full build remains blocked by known open PR #99 until that PR merges or an approved equivalent lands.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Critical-bug automation 2026-08-12:** no new non-duplicate critical bug found at `763dc67` after recent-commit scan and focused integrity guards (`74 pass / 0 fail`). Existing memory-tracked PRs #28/#29/#30/#31/#40/#99/#100/#101/#102/#103/#104 are all still OPEN; no duplicate PR opened. Full build still fails on known duplicate PR #99 (`approvedSourceMatrixGuard` dead-source token in `.claude/rules/*`). Review this docs-only handoff commit for recordkeeping only; no merge approval requested for an application fix.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
