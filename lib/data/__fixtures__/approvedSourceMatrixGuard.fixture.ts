@@ -20,5 +20,16 @@ export const APPROVED_MATRIX_KNOWN_BAD = {
   status: 'integrated' as const,
 };
 
+/**
+ * Known-BAD: a wired source that shares an approved host but has no approved source identity.
+ * Guards against URL/host substring collisions passing as matrix membership.
+ */
+export const APPROVED_MATRIX_HOST_COLLISION_BAD = {
+  catalogId: 'shadow-feed-x',
+  name: 'Unapproved Shadow Feed',
+  status: 'integrated' as const,
+  url: 'https://api.congress.gov/shadow-feed',
+};
+
 /** Catalog statuses that count as "wired" for matrix membership. */
 export const APPROVED_MATRIX_WIRED_STATUSES = ['integrated', 'pilot'] as const;
