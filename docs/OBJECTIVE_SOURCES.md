@@ -64,6 +64,7 @@ sub-files** — they live in this file's key matrix and in per-state pipeline do
 
 | Data need | Source | Env var | Status | Command | Without it |
 |---|---|---|---|---|---|
+| Office / identity | unitedstates/congress-legislators | none | — | `sync:legislators` | No verified office roster |
 | Campaign finance, donors, Schedule A | OpenFEC | `FEC_API_KEY` | SET | `sync:fec*` | No finance data |
 | Votes, bills, member data | Congress.gov API | `CONGRESS_API_KEY` | SET | `sync:votes*`, `ingest:member` | No vote records |
 | Demographics, income, home value, county + state rankings, age | Census ACS | `CENSUS_API_KEY` | SET | `ingest:fl-counties`, `ingest:fl-state-rankings` (FL wired; same key any state FIPS) | Keyless data.census.gov fallback (documented, lower limits) |
@@ -99,6 +100,7 @@ sub-files** — they live in this file's key matrix and in per-state pipeline do
 | FRED (St. Louis Fed) | Official-series mirror (BEA RPP, economic series), keyless CSV | none |
 | IRS (published brackets) | Federal income-tax schedules (computed-from-published-tables) | none |
 | GovInfo / GPO | Congressional Record (CREC) | `GOVINFO_API_KEY` |
+| Senate.gov LIS roll-call XML | Senate roll-call votes and member positions | none |
 | senate.gov / house.gov / state .gov | Office resolution, portraits (Bioguide), governor portraits (flgov.com); **member `/issues/` platform stances** (`sync:official-issues-positions` — proven 2026-07-25 on S000033) | none |
 | C-SPAN | Gavel-to-gavel video — the unedited floor record; primary citation for spoken quotes | YouTube Data API, channel `UCb-oTHQsEPvS4FCTLG3IFkA` |
 | Federal/state courts (opinion documents) | The rulings themselves (linked via CourtListener) | none |
@@ -109,6 +111,8 @@ sub-files** — they live in this file's key matrix and in per-state pipeline do
 |---|---|---|---|
 | Associated Press (AP) | none (wire) | Verified fact reporting; two-source standard; 52 Pulitzers | RSS: rsshub.app/apnews/politics · apnews.com/APFactCheck |
 | Reuters | none (wire) | Wire standard; Trust Principles since 1941 | RSS: feeds.reuters.com/Reuters/PoliticsNews |
+| unitedstates/congress-legislators | none | Official-derived congressional roster; bioguideId, term, chamber, state, and party identity | github.com/unitedstates/congress-legislators |
+| National Governors Association roster | none | Governor roster reference for statewide office identity | nga.org/governors |
 | ProPublica (journalism + datastores) | none | Investigative + machine-readable data; Nonprofit Explorer API (1.8M nonprofits incl. 501(c)(4)s) | propublica.org/datastore · projects.propublica.org/nonprofits/api |
 | GovTrack | none | Legislative data, member stats | govtrack.us |
 | Voteview | none (academic) | DW-NOMINATE ideology scores | voteview.com |

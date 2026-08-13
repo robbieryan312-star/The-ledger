@@ -10,6 +10,62 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-13 — approved matrix host-collision guard fix
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (scoped guard fix) · awaiting STAGE THREE  
+**Current state:** `cursor/critical-bug-management-c3d9` · code tip `5b52564` · PR https://github.com/robbieryan312-star/The-ledger/pull/106 · full guard/build blocked by existing open #99
+
+### Objective
+Fix a critical `approvedSourceMatrix` guard bypass where one shared substring/host token could make an unapproved wired source look present in `docs/OBJECTIVE_SOURCES.md`.
+
+### Verdict / outcome
+Scoped validation PASS: a synthetic `integrated` source using `https://api.congress.gov/...` is now rejected unless its source identity appears in the source constitution. Full `approvedSourceMatrixGuard.test.ts` still fails only on the already-recorded open #99 dead-source-token issue in `.claude/rules/*`; this PR does not duplicate #99.
+
+### Commits
+- `5b52564` — `fix(source): require source identity in matrix guard`
+
+### Commands run (this session)
+- `pwd && git status --short --branch && git remote -v && git log --oneline -n 30` → exit 0
+- `git fetch origin main cursor/critical-bug-management-c3d9 && for n in 28 29 30 31 40 99 100 101 102 103 104 105; do gh pr view "$n" --json number,url,state,mergedAt,closedAt,headRefName,headRefOid,title; done` → exit 128 (`couldn't find remote ref cursor/critical-bug-management-c3d9`)
+- `git fetch origin main && for n in 28 29 30 31 40 99 100 101 102 103 104 105; do gh pr view "$n" --json number,url,state,mergedAt,closedAt,headRefName,headRefOid,title; done` → exit 0; all tracked PRs still open
+- `git status --short --branch && git rev-parse --short HEAD && git rev-parse --short origin/main && git log --oneline --decorate -n 40 origin/main && git log --oneline --name-only --since='2026-08-12T00:00:00Z' origin/main` → exit 0
+- `git show --stat --name-status --format='commit %h %ci %s' 18b5d3 d36f4a9 cf4bcfd cc916da db23b39 d137a12 a739765 be6f0a9` → exit 0
+- `npx tsx -e "...host-collision reproduction..."` → exit 0; pre-fix `bad present true`
+- `npm run test:source-integrity -- --test-name-pattern "approved matrix"` → exit 127 before `npm install` (`tsx: not found`)
+- `npm install` → exit 0; reported known npm audit debt
+- `npm run test:source-integrity -- --test-name-pattern "approved matrix"` → exit 1; host-collision tests pass after fix, full suite also hit existing #99 and initial source-constitution gaps
+- `npx tsx --test --test-name-pattern "fixture: known|shared host|all wired" scripts/__tests__/approvedSourceMatrixGuard.test.ts` → exit 0 after fix
+- `npm run test:typecheck && npx tsx -e "...host-collision regression snippet..."` → exit 0
+- `npx tsx --test scripts/__tests__/approvedSourceMatrixGuard.test.ts` → exit 1 only on existing #99 dead-source-token failure
+- `git status --short && git diff -- docs/OBJECTIVE_SOURCES.md lib/data/approvedSourceMatrix.ts lib/data/__fixtures__/approvedSourceMatrixGuard.fixture.ts scripts/__tests__/approvedSourceMatrixGuard.test.ts package-lock.json package.json` → exit 0
+- `git add docs/OBJECTIVE_SOURCES.md lib/data/approvedSourceMatrix.ts lib/data/__fixtures__/approvedSourceMatrixGuard.fixture.ts scripts/__tests__/approvedSourceMatrixGuard.test.ts && git commit -m "fix(source): require source identity in matrix guard" && git push -u origin cursor/critical-bug-management-c3d9` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/approvedSourceMatrix.ts` | modified | match normalized source identity phrases instead of any shared substring/host token |
+| `lib/data/__fixtures__/approvedSourceMatrixGuard.fixture.ts` | modified | append host-collision known-bad fixture |
+| `scripts/__tests__/approvedSourceMatrixGuard.test.ts` | modified | assert a shared approved host alone still reports the source missing |
+| `docs/OBJECTIVE_SOURCES.md` | modified | name integrated office/identity sources required by stricter source-identity matching |
+
+### Acceptance evidence
+- Focused guard: `# tests 4` / `# pass 4` / `# fail 0`
+- Typecheck: `npm run test:typecheck` → exit 0
+- Direct regression snippet: `{"hostCollisionPresent":false,"hostCollisionMissing":true}`
+- Existing blocker evidence: full guard fails on `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`, matching memory PR #99.
+
+### Open / next
+- Claude STAGE THREE review PR #106 at code tip `5b52564`.
+- Existing PR #99 must still land before full `test:source-integrity` / `build` can be green on `main`.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**PR #106** on `cursor/critical-bug-management-c3d9`, code tip **`5b52564`**. **Verdict:** PASS scoped; STOP for STAGE THREE. **What changed:** `approvedSourceMatrix` now requires source identity in `OBJECTIVE_SOURCES`; added host-collision fixture/test; added missing source-constitution rows for `unitedstates/congress-legislators`, Senate LIS, and NGA. **Evidence:** focused matrix tests pass 4/4; `npm run test:typecheck` exit 0; regression snippet returns `hostCollisionPresent:false` and `hostCollisionMissing:true`. **Open gates:** review/approve or reject #106; full guard/build still blocked by existing open #99 (do not treat that as new in this PR). **Repeat-work flag:** no duplicate of tracked PRs #28–#31, #40, #99–#105; all were checked and remain open.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  

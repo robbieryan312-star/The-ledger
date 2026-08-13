@@ -14,6 +14,7 @@ import {
   wiredEntriesMissingFromMatrix,
 } from '../../lib/data/approvedSourceMatrix';
 import {
+  APPROVED_MATRIX_HOST_COLLISION_BAD,
   APPROVED_MATRIX_KNOWN_BAD,
   APPROVED_MATRIX_KNOWN_GOOD,
 } from '../../lib/data/__fixtures__/approvedSourceMatrixGuard.fixture';
@@ -48,6 +49,22 @@ test('fixture: known-BAD wired source is detected as absent from matrix', () => 
   assert.ok(
     missing.some((e) => e.id === APPROVED_MATRIX_KNOWN_BAD.catalogId),
     'known-bad synthetic wired source must be reported missing',
+  );
+});
+
+test('fixture: shared host alone cannot satisfy approved matrix membership', () => {
+  const obj = readObjectiveSources();
+  const bad = {
+    id: APPROVED_MATRIX_HOST_COLLISION_BAD.catalogId,
+    name: APPROVED_MATRIX_HOST_COLLISION_BAD.name,
+    status: APPROVED_MATRIX_HOST_COLLISION_BAD.status,
+    url: APPROVED_MATRIX_HOST_COLLISION_BAD.url,
+  };
+  assert.equal(entryPresentInApprovedMatrix(bad, obj), false);
+  const missing = wiredEntriesMissingFromMatrix([...SOURCE_CATALOG, bad], obj);
+  assert.ok(
+    missing.some((e) => e.id === APPROVED_MATRIX_HOST_COLLISION_BAD.catalogId),
+    'synthetic wired source sharing an approved host must still be reported missing',
   );
 });
 
