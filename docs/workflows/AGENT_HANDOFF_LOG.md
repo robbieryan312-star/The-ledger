@@ -10,6 +10,59 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation: one-sided nomination Said→Did (PASS)
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS (fix PR opened)  
+**Current state:** `cursor/critical-bug-management-9f38` · fix commit `22b7261` · PR **#107** https://github.com/robbieryan312-star/The-ledger/pull/107 · full `test:source-integrity` blocked by known PR #99 failure
+
+### Objective
+Inspect recent commits for high-severity escaped correctness bugs, avoid duplicates in persistent memory, and fix only a concrete P0/P1 issue.
+
+### Verdict / outcome
+**PASS** — Found and fixed a non-duplicate P1 data-loss bug in Said→Did nomination matching. `saidDidSubjectsOverlap()` now keeps different-nominee pairs rejected while allowing one-sided formal extraction when the other side explicitly mentions the same nominee last name.
+
+### Commits
+- `22b7261` — Fix one-sided nomination Said-Did matching
+
+### Commands run (this session)
+- `git status --short --branch && git remote -v && git fetch origin main && git fetch origin cursor/critical-bug-management-9f38 || true && (git show-ref --verify --quiet refs/heads/cursor/critical-bug-management-9f38 && git checkout cursor/critical-bug-management-9f38 || git checkout -b cursor/critical-bug-management-9f38 origin/main) && git status --short --branch` → exit 0
+- `for pr in 28 29 30 31 40 99 100 101 102 103 104 105 106; do gh pr view "$pr" --json number,state,mergedAt,closedAt,url,headRefName,title; done` → all tracked PRs still OPEN
+- `git log --oneline --decorate --max-count=25 origin/main && git log --oneline --decorate --max-count=10` → exit 0
+- `git diff --stat c08be19..origin/main && git diff --name-status c08be19..origin/main` → exit 0
+- `git diff c08be19..origin/main -- lib/data/buildSaidDidDiffs.ts lib/data/sourceIntegrity.ts lib/data/newsCorroboration.ts components/politicians/ProfileRecordByTopicPanel.tsx components/politicians/ControversySection.tsx scripts/lib/approvedMediaQuotes.ts` → exit 0
+- `npx tsx -e "...buildCrecSaidDidLinks informal/formal reproduction..."` before fix → informal `{}`, formal one link
+- `npx tsx -e "...buildCrecSaidDidLinks informal/formal reproduction..." && npm run test:source-integrity` after fix → reproduction emitted both links; suite exit 1 from known PR #99 dead-source token failure
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/provenanceOutletGuard.test.ts && npm run test:typecheck` → exit 0
+- `git add lib/data/sourceIntegrity.ts lib/data/__fixtures__/sourceIntegrity.fixture.ts scripts/__tests__/sourceIntegrity.test.ts docs/workflows/IMPROVEMENT_BACKLOG.md && git commit -m "Fix one-sided nomination Said-Did matching" && git push -u origin cursor/critical-bug-management-9f38` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/sourceIntegrity.ts` | modified | One-sided nomination extraction now checks last-name mention instead of returning false immediately |
+| `lib/data/__fixtures__/sourceIntegrity.fixture.ts` | modified | Added append-only same-nominee informal CREC confirmation fixture |
+| `scripts/__tests__/sourceIntegrity.test.ts` | modified | Added regression test that same-nominee informal confirmation pairs are retained |
+| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | Added `IMP-SAIDDID-ONESIDED-NOMINEE` row for PR #107 |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session handoff |
+
+### Acceptance evidence
+- Before fix: informal CREC statement naming `Michael J. Hendershot` + `Confirmation: Michael J. Hendershot...` vote produced `{}`.
+- After fix: same reproduction emitted a `judiciary` Said→Did link for the informal and formal statements.
+- Targeted guard: `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/provenanceOutletGuard.test.ts` → `# tests 63`, `# pass 63`, `# fail 0`.
+- Typecheck: `npm run test:typecheck` → `tsc --noEmit`, exit 0.
+- Full source-integrity limitation: `npm run test:source-integrity` still fails at `approvedSourceMatrixGuard.test.ts` with dead-source token in `.claude/rules/*`; already tracked by open PR #99.
+
+### Open / next
+- Claude STAGE THREE review of PR #107 exact tip after this docs commit lands.
+- Existing open PRs #28, #29, #30, #31, #40, #99–#106 remain open and were not duplicated.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**PR #107 / one-sided nomination Said→Did:** review exact branch `cursor/critical-bug-management-9f38`; fix commit `22b7261` plus this handoff docs commit. P1 root cause: `saidDidSubjectsOverlap()` returned false when Did extracted a confirmation nominee but informal CREC Said only mentioned the same nominee by name. Fix: require matching extracted last names when both sides extract; when only one side extracts, require the other text to mention that last name, then continue topic/keyword overlap. Evidence: reproduction informal `{}` before → emitted link after; `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/provenanceOutletGuard.test.ts` pass 63/63; `npm run test:typecheck` pass. Full `test:source-integrity` remains blocked by known open PR #99 dead-source token failure.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  

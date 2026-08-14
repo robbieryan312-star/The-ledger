@@ -154,6 +154,22 @@ export const SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH = {
   },
 };
 
+/** Informal CREC nominee mention — same nominee as confirmation vote, but no strict "nomination of X to be" phrasing. */
+export const SAID_DID_KNOWN_GOOD_ONE_SIDED_NOMINEE = {
+  label: 'Informal Hendershot CREC Said paired with Hendershot confirmation Did',
+  said: {
+    quote:
+      'Mr. SANDERS. Mr. President, Michael J. Hendershot is unqualified for a lifetime judgeship because his record on civil rights is unacceptable.',
+    url: 'https://www.govinfo.gov/app/details/CREC-2024-01-15-pt1-PgS1',
+    verbatim: true,
+  },
+  did: {
+    action:
+      'Voted Yea — PN123: Confirmation: Michael J. Hendershot, of Ohio, to be United States District Judge for the Southern District of Ohio',
+    url: 'https://www.congress.gov/nomination/118th-congress/123',
+  },
+};
+
 /** Holder/Paul filibuster narration — MUST reject as a Cruz stated position (C001098 civil regression). */
 export const PLATFORM_KNOWN_BAD_EVENT_NARRATION =
   'The day after the filibuster, Attorney General Eric Holder sent a letter to Paul , responding to the filibuster. Holder wrote, "Does the president have the authority to use a weaponized drone to kill an American not engaged in combat on U.S. soil? The answer to that is no." [198]';
