@@ -235,6 +235,15 @@ function nominationLastNames(names: string[]): Set<string> {
   return out;
 }
 
+function textMentionsAnyNominationLastName(text: string, names: Set<string>): boolean {
+  const normalized = text.toLowerCase();
+  for (const name of names) {
+    const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    if (new RegExp(`\\b${escaped}\\b`, 'i').test(normalized)) return true;
+  }
+  return false;
+}
+
 /**
  * Said and Did must share real subject matter — same classified topic (non-legislation)
  * or at least one shared substantive keyword. Prevents tax-filing vs war-powers pairs.
@@ -248,15 +257,20 @@ export function saidDidSubjectsOverlap(saidQuote: string, didAction: string): bo
   if (saidNominees.length > 0 || didNominees.length > 0) {
     const saidLast = nominationLastNames(saidNominees);
     const didLast = nominationLastNames(didNominees);
-    if (saidLast.size === 0 || didLast.size === 0) return false;
-    let shared = false;
-    for (const n of saidLast) {
-      if (didLast.has(n)) {
-        shared = true;
-        break;
+    if (saidLast.size > 0 && didLast.size > 0) {
+      let shared = false;
+      for (const n of saidLast) {
+        if (didLast.has(n)) {
+          shared = true;
+          break;
+        }
       }
+      if (!shared) return false;
+    } else if (saidLast.size > 0) {
+      if (!textMentionsAnyNominationLastName(billText, saidLast)) return false;
+    } else if (didLast.size > 0) {
+      if (!textMentionsAnyNominationLastName(saidQuote, didLast)) return false;
     }
-    if (!shared) return false;
   }
   const saidTopic = classifyTextToRecordTopicId(saidQuote);
   const voteTopic = classifyTextToRecordTopicId(billText);
