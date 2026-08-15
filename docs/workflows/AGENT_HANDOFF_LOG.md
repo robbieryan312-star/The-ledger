@@ -10,6 +10,59 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-15 — CRITICAL BUG AUTOMATION: NATIONAL VOTE FULL-REFRESH PRESERVE
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (fix committed; one known unrelated guard blocker)
+**Current state:** `cursor/critical-bug-management-39ed` · code commit `dbcb5a6` · PR **#108** https://github.com/robbieryan312-star/The-ledger/pull/108 · tree clean before this handoff entry · build not run because `test:source-integrity` is blocked by open PR #99 dead-source-token failure.
+
+### Objective
+Inspect recent commits for high-severity escaped bugs; fix only a concrete critical issue and avoid duplicates already tracked in automation memory.
+
+### Verdict / outcome
+**PASS for the new vote-preservation fix.** Found and fixed a critical data-loss path in `scripts/sync-votes-national.ts`: `--full` / `--full-depth` force-replaced a member's prior national vote rows with zero fresh rows when an upstream/key failure returned no fresh votes. The fix preserves prior votes and prior source/asOf metadata, marks the run partial, and emits a preserve report instead of silently writing emptiness.
+
+### Commits
+- `dbcb5a6` — `fix(votes): preserve prior rows on empty full refresh`
+- Handoff-log commit follows this entry.
+
+### Commands run (this session)
+- `gh pr view 28 29 30 31 40 99 100 101 102 103 104 105 106 107 --json ...` → all tracked memory PRs still `OPEN`; no cleanup.
+- `git fetch origin main && git log --oneline --decorate --max-count=30 origin/main` → audited recent alleged-policy / CREC-yield / governance stack.
+- `npx tsx --test scripts/__tests__/syncVotesNationalPreserve.test.ts` → exit 0; 2/2 pass.
+- `npm run test:typecheck` → exit 0.
+- `npm run test:source-integrity` → exit 1; 134/135 pass; only failure is known open PR #99 (`approvedSourceMatrixGuard` dead-source token in `.claude/rules/*`). New vote-preservation subtests 133-134 pass.
+- `git diff --check` → exit 0.
+- `git commit -m "fix(votes): preserve prior rows on empty full refresh"` → `dbcb5a6`.
+- `git push -u origin cursor/critical-bug-management-39ed` → exit 0.
+- `open_git_pr` → PR #108 created.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/sync-votes-national.ts` | modified | Added full/deep refresh zero-fresh preservation helper, preserve reporting, partial sync summary, prior metadata retention, and import-safe direct-run guard. |
+| `scripts/__tests__/syncVotesNationalPreserve.test.ts` | created | Regression fixture proving full refresh preserves prior votes when fresh rows are zero and still replaces when fresh rows exist. |
+| `package.json` | modified | Wires the new preservation guard into `test:source-integrity`. |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session handoff. |
+
+### Acceptance evidence
+- Focused guard: `# pass 2`, `# fail 0`.
+- Typecheck: `npm run test:typecheck` exit 0.
+- Wired suite evidence: `syncVotesNationalPreserve` subtests 133-134 pass; suite blocked only by tracked #99 (`.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2`, `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`).
+- Automation memory updated with: `2026-08-15 | scripts/sync-votes-national.ts ... | PR #108 | Status: open`.
+
+### Open / next
+- Claude STAGE THREE review PR #108 at the exact pushed tip.
+- Existing open PR #99 still blocks full `test:source-integrity` / build on main; this run did not duplicate that bug.
+- Do not merge PR #108 without explicit Claude APPROVAL on the exact SHA.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG FIX READY FOR STAGE THREE:** PR **#108** on `cursor/critical-bug-management-39ed`; code commit **`dbcb5a6`** fixes `scripts/sync-votes-national.ts` full/deep refresh data loss by preserving prior votes when fresh rows are zero, retaining prior source/asOf, marking partial, and adding `syncVotesNationalPreserve` to `test:source-integrity`. Evidence: focused guard 2/2 pass; typecheck pass; full source-integrity 134/135 with only known open #99 dead-source-token failure; new subtests 133-134 pass. **Open gate:** APPROVE/REJECT #108 exact tip; do not merge without Claude APPROVAL.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
