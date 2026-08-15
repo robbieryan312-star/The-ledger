@@ -104,7 +104,7 @@ interface ExistingNationalVotesSnapshot {
     highWaterMark?: HighWaterMark;
     [key: string]: unknown;
   };
-  byBioguideId?: Record<string, { chamber?: string; votes?: VoteRecord[] }>;
+  byBioguideId?: Record<string, { chamber?: string; source?: Source; asOf?: string; votes?: VoteRecord[] }>;
 }
 
 interface FetchFailure {
@@ -378,6 +378,26 @@ function mergeVoteLists(existing: VoteRecord[], fresh: VoteRecord[]): VoteRecord
     .slice(0, VOTES_PER_MEMBER);
 }
 
+export function selectNationalVoteRefreshVotes(
+  existingVotes: VoteRecord[],
+  freshVotes: VoteRecord[],
+  forceReplace: boolean,
+): { votes: VoteRecord[]; preservedExistingAfterEmptyFullRefresh: boolean } {
+  if (forceReplace && freshVotes.length === 0 && existingVotes.length > 0) {
+    return {
+      votes: [...existingVotes].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
+      preservedExistingAfterEmptyFullRefresh: true,
+    };
+  }
+
+  return {
+    votes: forceReplace
+      ? freshVotes.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, VOTES_PER_MEMBER)
+      : mergeVoteLists(existingVotes, freshVotes),
+    preservedExistingAfterEmptyFullRefresh: false,
+  };
+}
+
 function computeHighWaterMark(
   byBioguideId: Record<string, { chamber?: string; votes?: VoteRecord[] }>,
 ): HighWaterMark {
@@ -509,6 +529,7 @@ async function main(): Promise<void> {
   }
 
   const underFilledMembers: Array<{ bioguideId: string; name: string; count: number; reason: string }> = [];
+  const preservedFullRefreshMembers: Array<{ bioguideId: string; name: string; preservedCount: number }> = [];
   const byBioguideId: Record<
     string,
     {
@@ -548,12 +569,26 @@ async function main(): Promise<void> {
     const freshSenate = senateVotes.get(leg.bioguideId) ?? [];
     const freshVotes = [...freshHouse, ...freshSenate];
 
-    // Merge with existing in incremental mode
+    // Full/deep refreshes must not turn an upstream empty response into a destructive wipe.
     const existingVotes = existing?.byBioguideId?.[leg.bioguideId]?.votes ?? [];
     const forceReplace = IS_FULL || IS_FULL_DEPTH;
-    const votes = forceReplace
-      ? freshVotes.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, VOTES_PER_MEMBER)
-      : mergeVoteLists(existingVotes, freshVotes);
+    const voteSelection = selectNationalVoteRefreshVotes(existingVotes, freshVotes, forceReplace);
+    const votes = voteSelection.votes;
+    const defaultSource = leg.chamber === 'senate' ? SENATE_GOV_SOURCE : CONGRESS_GOV_SOURCE;
+    const source = voteSelection.preservedExistingAfterEmptyFullRefresh
+      ? priorEntry?.source ?? defaultSource
+      : defaultSource;
+    const entryAsOf = voteSelection.preservedExistingAfterEmptyFullRefresh ? priorEntry?.asOf ?? asOf : asOf;
+    if (voteSelection.preservedExistingAfterEmptyFullRefresh) {
+      preservedFullRefreshMembers.push({
+        bioguideId: leg.bioguideId,
+        name: leg.name,
+        preservedCount: votes.length,
+      });
+      console.warn(
+        `  ${leg.bioguideId}: preserving ${votes.length} prior vote(s); full refresh returned zero fresh votes`,
+      );
+    }
 
     // Under-filled only meaningful against the default 30-vote profile depth.
     if (!IS_FULL_DEPTH && votes.length < VOTES_PER_MEMBER) {
@@ -568,11 +603,15 @@ async function main(): Promise<void> {
       name: leg.name,
       chamber: leg.chamber,
       votes,
-      source: leg.chamber === 'senate' ? SENATE_GOV_SOURCE : CONGRESS_GOV_SOURCE,
-      asOf,
+      source,
+      asOf: entryAsOf,
     };
     const chamberFetchFailed = fetchFailures.some((f) => f.chamber === leg.chamber);
-    if (!chamberFetchFailed || votes.length >= (IS_FULL_DEPTH ? 1 : VOTES_PER_MEMBER)) {
+    const enoughFreshVotes = freshVotes.length >= (IS_FULL_DEPTH ? 1 : VOTES_PER_MEMBER);
+    if (
+      !voteSelection.preservedExistingAfterEmptyFullRefresh &&
+      (!chamberFetchFailed || enoughFreshVotes)
+    ) {
       checkpoint[leg.bioguideId] = true;
       await saveCheckpoint(CHECKPOINT_FILE, checkpoint);
     }
@@ -593,6 +632,7 @@ async function main(): Promise<void> {
       withVoteData: withVotes,
       totalVotePositions: totalVotes,
       failureCount: fetchFailures.length,
+      preservedFullRefreshCount: preservedFullRefreshMembers.length,
       keyConfigured: isCongressConfigured(),
       incremental: !(IS_FULL || IS_FULL_DEPTH),
       highWaterMark: hwm,
@@ -634,6 +674,12 @@ async function main(): Promise<void> {
       console.log(`  ${f.chamber} roll ${f.rollNumber}: ${f.error}`);
     }
   }
+  if (preservedFullRefreshMembers.length > 0) {
+    console.log('\n§6 PRESERVE REPORT — full refresh returned zero fresh votes:');
+    for (const m of preservedFullRefreshMembers.slice(0, 20)) {
+      console.log(`  ${m.bioguideId} (${m.name}): preserved ${m.preservedCount} prior vote(s)`);
+    }
+  }
   if (underFilledMembers.length > 0 && underFilledMembers.length <= 20) {
     console.log('\nUnder-filled members (below VOTES_PER_MEMBER):');
     for (const m of underFilledMembers.slice(0, 20)) {
@@ -643,8 +689,11 @@ async function main(): Promise<void> {
 
   emitSyncSummary(
     buildSyncSummary('sync-votes-national', {
-      status: fetchFailures.length > 0 ? 'partial' : 'ok',
-      failed: fetchFailures.map((f) => `${f.chamber}-${f.rollNumber}`),
+      status: fetchFailures.length > 0 || preservedFullRefreshMembers.length > 0 ? 'partial' : 'ok',
+      failed: [
+        ...fetchFailures.map((f) => `${f.chamber}-${f.rollNumber}`),
+        ...preservedFullRefreshMembers.map((m) => `preserved-full-refresh-${m.bioguideId}`),
+      ],
       checkpoint: CHECKPOINT_FILE,
       log: scopedRun ? '/tmp/ledger-sync-votes-scoped.log' : '/tmp/ledger-sync-votes-national.log',
       preservePrior: true,
@@ -652,14 +701,18 @@ async function main(): Promise<void> {
   );
 }
 
-main().catch((err: unknown) => {
-  console.error(
-    JSON.stringify({
-      ok: false,
-      script: 'sync-votes-national',
-      error: err instanceof Error ? err.message : String(err),
-      at: new Date().toISOString(),
-    }),
-  );
-  process.exit(1);
-});
+const isDirectRun = process.argv[1] != null && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (isDirectRun) {
+  main().catch((err: unknown) => {
+    console.error(
+      JSON.stringify({
+        ok: false,
+        script: 'sync-votes-national',
+        error: err instanceof Error ? err.message : String(err),
+        at: new Date().toISOString(),
+      }),
+    );
+    process.exit(1);
+  });
+}
