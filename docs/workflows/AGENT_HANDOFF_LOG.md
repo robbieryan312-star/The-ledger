@@ -10,6 +10,53 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical-bug automation scan (PASS)
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS (no new critical bug fix opened)  
+**Current state:** `cursor/critical-bug-management-a53c` · HEAD `763dc67` before this docs commit · PR none · tree clean before handoff update · targeted guards PASS · full build FAILS on tracked open PR #99 defect
+
+### Objective
+Inspect recent commits for high-severity correctness bugs (data loss, crashes, security holes, significant user-facing breakage), avoid duplicate reports against open memory PRs, and only open a PR for a highly confident critical fix.
+
+### Verdict / outcome
+PASS for new-bug scan — all tracked memory PRs (#28, #29, #30, #31, #40, #99-#108) are still open, so none were duplicated. Recent main behavioral commits reviewed around alleged/news policy, CREC/Said-Did matching, provenance, source-matrix guards, and topic-position sync; no new critical bug with a concrete trigger was found outside the existing open PRs. Full build is not green on current main because the already-tracked PR #99 defect is still present (`approvedSourceMatrixGuard` detects the retired-source token in Claude rule files).
+
+### Commits
+- Pending: docs-only handoff commit for this scan.
+
+### Commands run (this session)
+- `pwd && git status --short --branch && git log --oneline --decorate -n 25 && for pr in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108; do gh pr view "$pr" --json number,state,mergedAt,closedAt,headRefName,title,url; done` → exit 0
+- `git fetch --prune origin && git status --short --branch && git log --oneline --decorate -n 40 origin/main` → exit 0
+- `git show --stat --oneline --decorate --name-only db23b39 cc916da d36f4a9 18b5d3e d137a12 a739765 be6f0a9 f748f9d 377787d` → exit 0
+- `npx tsx -e "import { MIGRATED_PROFILE_BIOGUIDES, getMemberProfileTopicPositions, mergeProfileNews, mergeProfileControversies, mergeProfileEndorsements } from './lib/data/memberProfile.ts'; import { buildSaidDidDiffsFromTopicPositions } from './lib/data/buildSaidDidDiffs.ts'; import { allPoliticians } from './lib/data/allPoliticians.ts'; for (const id of MIGRATED_PROFILE_BIOGUIDES) { const p = allPoliticians.find(x=>x.bioguideId===id); const topics = getMemberProfileTopicPositions(id); const diffs = p ? buildSaidDidDiffsFromTopicPositions(id, p.name) : []; const news = mergeProfileNews([], id); const controversies = mergeProfileControversies([], id); const endorsements = mergeProfileEndorsements(undefined, id); console.log(id, {topics: topics ? Object.keys(topics).length : 0, diffs: diffs.length, news: news.length, controversies: controversies.length, endorsements: endorsements ? endorsements.endorses.length + endorsements.endorsedBy.length : 0}); }" && npx tsx --test scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/classifyTopic.test.ts` → exit 0
+- `git status --short --branch && git rev-parse --short HEAD` → exit 0
+- `npm run build` → exit 127 before dependencies were installed (`tsc: not found`)
+- `npm install` → exit 0
+- `npm run build` → exit 1; `approvedSourceMatrixGuard` known PR #99 failure (`dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`)
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Recorded critical-bug automation scan evidence and Confront Claude block |
+
+### Acceptance evidence
+- Memory PR state check: #28, #29, #30, #31, #40, #99, #100, #101, #102, #103, #104, #105, #106, #107, #108 all returned `state:"OPEN"`.
+- Profile accessor smoke output included all 7 migrated profiles with no thrown render/data accessor exceptions; S000033 retained 14 Said→Did diffs, 12 news, 2 controversies, 3 endorsements.
+- Targeted guard run: `# tests 30`, `# pass 30`, `# fail 0`.
+- Full build after `npm install`: FAIL only on the already-memory-tracked PR #99 defect; no duplicate PR opened.
+
+### Open / next
+- Existing open critical-bug PRs remain awaiting review; no new PR opened from this scan.
+- PR #99 remains the current full-build blocker on main.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL-BUG AUTOMATION SCAN:** branch `cursor/critical-bug-management-a53c` · pre-log HEAD `763dc67` · PR none. **Verdict: PASS / no new critical bug found outside tracked open PRs.** Memory PRs #28/#29/#30/#31/#40/#99-#108 are still OPEN and were not duplicated. Evidence: recent main behavioral commits inspected; profile accessor smoke passed for all 7 migrated profiles; targeted guards `newsCorroboration`, `allegedPolicyGuard`, `provenanceOutletGuard`, `classifyTopic` passed (`# tests 30`, `# pass 30`, `# fail 0`). Full `npm run build` is blocked by already-open PR #99 (`approvedSourceMatrixGuard` retired-source token in Claude rule files). Open gate: review/merge PR #99 before expecting main build green; no new fix PR requested from this scan.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
