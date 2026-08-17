@@ -10,6 +10,77 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-17 — CRITICAL BUG AUTOMATION: OFFICIAL ISSUES PRESERVE-ON-FAILURE
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (focused) · STOP for STAGE THREE  
+**Current state:** `cursor/critical-bug-management-f32c` · code commit `27480a5` · PR pending · tree dirty only for this handoff entry before docs commit
+
+### Objective
+Cron critical-bug scan: inspect recent commits/open bug memory, avoid duplicate PRs, and fix only high-confidence critical correctness bugs.
+
+### Bug / impact
+`scripts/sync-official-issues-positions.ts` treated official `/issues/` fetch failure (`connected=false` or `reached=false`) as a verified empty page and wrote `honest-gap` with empty `byTopic`, which could erase prior filled official platform positions such as S000033's 11 official issue stances during a transient website/network failure.
+
+### What changed
+- `scripts/sync-official-issues-positions.ts` now builds output through `buildOfficialIssuesPositionsOutput`.
+- Fetch failures preserve prior filled positions with a `fetch-failed` note; no-prior failures write `status: "fetch-failed"`; only reachable pages with zero qualified sections become `honest-gap`.
+- `scripts/__tests__/senateOfficialIssues.test.ts` adds regression coverage for preserve-prior, no-prior fetch-failed, and real honest-gap paths.
+- Script direct execution now uses an `isDirectRun` guard so tests can import the decision logic without running the sync.
+
+### Commands run (this session)
+- `git status --short --branch && git remote -v && git log --oneline -n 12 && gh pr list --state all --limit 120 --json number,state,mergedAt,url,title,headRefName,baseRefName` → exit 0
+- `git fetch origin main cursor/critical-bug-management-f32c && git status --short --branch && git log --oneline --decorate --max-count=30 origin/main && git log --oneline --decorate --max-count=20 origin/main --not HEAD` → exit 128 (remote feature branch did not exist yet)
+- `git fetch origin main && git status --short --branch && git log --oneline --decorate --max-count=30 origin/main && git log --oneline --decorate --max-count=20 origin/main --not HEAD` → exit 0
+- `git show --stat --oneline --decorate --find-renames 18b5d3e && git show --stat --oneline --decorate --find-renames d36f4a9 && git show --stat --oneline --decorate --find-renames cc916da && git show --stat --oneline --decorate --find-renames db23b39 && git show --stat --oneline --decorate --find-renames 377787d` → exit 0
+- `git show --no-ext-diff --unified=80 db23b39 -- lib/data/allegedPolicy.ts lib/data/newsCorroboration.ts scripts/lib/approvedMediaQuotes.ts components/politicians/ControversySection.tsx && git show --no-ext-diff --unified=80 d36f4a9 -- lib/data/resolveRecordedOutlet.ts lib/data/buildSaidDidDiffs.ts lib/data/saidDidVoteContext.ts && git show --no-ext-diff --unified=80 cc916da -- lib/data/sourceIntegrity.ts scripts/__tests__/sourceIntegrity.test.ts` → exit 0
+- `npx tsx --test scripts/__tests__/senateOfficialIssues.test.ts` → exit 1 before install (`Cannot find module 'dotenv'`)
+- `npm install` → exit 0 (installed dependencies; npm audit still reports 8 known vulnerabilities)
+- `npx tsx --test scripts/__tests__/senateOfficialIssues.test.ts && npm run test:typecheck && npm run test:source-integrity` → exit 1; focused test and typecheck passed; source-integrity blocked by existing open PR #99 defect (`votesmart` token in `.claude/rules/*`)
+- `npx tsx --test scripts/__tests__/senateOfficialIssues.test.ts && npm run test:typecheck && git diff -- scripts/sync-official-issues-positions.ts scripts/__tests__/senateOfficialIssues.test.ts && git status --short` → exit 0
+- `git add scripts/sync-official-issues-positions.ts scripts/__tests__/senateOfficialIssues.test.ts && git commit -m "fix(data): preserve official issues positions on fetch failure" && git rev-parse --short HEAD` → exit 0 (`27480a5`)
+
+### Acceptance evidence
+```
+# official issues focused test
+1..4
+# tests 4
+# pass 4
+# fail 0
+
+# typecheck
+> code@0.1.0 test:typecheck
+> tsc --noEmit
+```
+
+Known blocked broader guard evidence:
+```
+not ok 11 - criterion (A): no contiguous dead-source token outside history exempts
+dead-source token "votesmart" found outside history exempts:
+.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2
+.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1
+```
+This matches tracked persistent-memory PR #99, still open, so Cursor did not duplicate that fix.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/sync-official-issues-positions.ts` | modified | Preserve prior official positions on fetch failure; emit `fetch-failed` with no prior; import-safe direct-run guard |
+| `scripts/__tests__/senateOfficialIssues.test.ts` | modified | Added preserve-on-failure regression tests |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This handoff entry |
+
+### Open / next
+- Open PR after docs commit and push.
+- Claude STAGE THREE should review `27480a5` plus the docs commit, with special attention to whether `connected=true/reached=false` should preserve prior positions for all migrated members.
+- Broader source-integrity/build remains blocked by PR #99 until that existing open fix is merged.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-management-f32c` · code commit `27480a5` (docs handoff commit follows) · PR pending. **Verdict:** PASS focused; STOP for STAGE THREE. **What changed:** fixed `sync-official-issues-positions` so official `/issues/` fetch failures preserve prior filled positions instead of overwriting with empty `honest-gap`; added regression tests. **Evidence:** `npx tsx --test scripts/__tests__/senateOfficialIssues.test.ts` → 4/4 pass; `npm run test:typecheck` → pass; `npm run test:source-integrity` → blocked by existing open PR #99 retired-source token defect in `.claude/rules/*`. **Open gates:** Claude must APPROVE/REJECT this PR before merge; #99 remains separate/open. **Repeat-work flag:** none.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
