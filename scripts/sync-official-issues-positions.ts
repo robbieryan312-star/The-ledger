@@ -11,8 +11,12 @@
 import { config } from 'dotenv';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { fetchSenateOfficialIssuesPositions } from './lib/fetchSenateOfficialIssues';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import {
+  fetchSenateOfficialIssuesPositions,
+  type OfficialIssuesResult,
+  type OfficialPlatformPosition,
+} from './lib/fetchSenateOfficialIssues';
 import { RECORD_TOPIC_BUCKETS } from '../lib/recordTopicBuckets';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -66,6 +70,91 @@ function sourceNameFromWebsite(website: string): string {
   }
 }
 
+type OfficialIssuesPositionsStatus = 'filled' | 'honest-gap' | 'fetch-failed';
+
+interface OfficialIssuesPositionsFile {
+  bioguideId: string;
+  status: OfficialIssuesPositionsStatus;
+  note: string;
+  byTopic: Record<string, { platformPositions: OfficialPlatformPosition[] }>;
+}
+
+function emptyByTopic(
+  topicIds: string[],
+): Record<string, { platformPositions: OfficialPlatformPosition[] }> {
+  const byTopic: Record<string, { platformPositions: OfficialPlatformPosition[] }> = {};
+  for (const id of topicIds) byTopic[id] = { platformPositions: [] };
+  return byTopic;
+}
+
+export function countOfficialPlatformPositions(
+  file: Pick<OfficialIssuesPositionsFile, 'byTopic'> | null | undefined,
+): number {
+  if (!file) return 0;
+  return Object.values(file.byTopic ?? {}).reduce(
+    (sum, topic) => sum + (topic.platformPositions?.length ?? 0),
+    0,
+  );
+}
+
+function fetchFailureNote(result: OfficialIssuesResult): string {
+  return `fetch-failed: official /issues/ connected=${result.connected} reached=${result.reached} ` +
+    `sections=${result.rawSectionCount} qualified=${result.qualifiedCount} at ${result.pageUrl}.`;
+}
+
+export function buildOfficialIssuesPositionsOutput(
+  bioguideId: string,
+  result: OfficialIssuesResult,
+  topicIds: string[],
+  existing: OfficialIssuesPositionsFile | null = null,
+): OfficialIssuesPositionsFile {
+  if (!result.connected || !result.reached) {
+    const priorCount = countOfficialPlatformPositions(existing);
+    if (existing && priorCount > 0) {
+      return {
+        ...existing,
+        bioguideId,
+        status: 'filled',
+        note: `${priorCount} prior official issue stance(s) preserved — ${fetchFailureNote(result)}`,
+      };
+    }
+    return {
+      bioguideId,
+      status: 'fetch-failed',
+      note: fetchFailureNote(result),
+      byTopic: emptyByTopic(topicIds),
+    };
+  }
+
+  const byTopic = emptyByTopic(topicIds);
+  for (const id of topicIds) {
+    const positions = result.byTopic.get(id) ?? [];
+    byTopic[id] = { platformPositions: positions };
+  }
+
+  const filled = result.qualifiedCount > 0;
+  return {
+    bioguideId,
+    status: filled ? 'filled' : 'honest-gap',
+    note: filled
+      ? `M-POSITIONS 2026-07-25: Official issues page via sync:official-issues-positions ` +
+        `(${result.pageUrl}) — ${result.qualifiedCount} qualified stance(s), tier official. ` +
+        `Ballotpedia secondary (page poverty for this member). Campaign site berniesanders.com/issues ` +
+        `redirects to homepage — does not qualify.`
+      : `DIAGNOSED honest-gap: official /issues/ connected=${result.connected} reached=${result.reached} ` +
+        `sections=${result.rawSectionCount} qualified=0 at ${result.pageUrl}. Exhausted official issues route.`,
+    byTopic,
+  };
+}
+
+async function loadExistingPositions(file: string): Promise<OfficialIssuesPositionsFile | null> {
+  try {
+    return JSON.parse(await readFile(file, 'utf8')) as OfficialIssuesPositionsFile;
+  } catch {
+    return null;
+  }
+}
+
 async function main(): Promise<void> {
   config({ path: path.join(projectRoot, '.env.local') });
   const members = parseMembers();
@@ -95,36 +184,21 @@ async function main(): Promise<void> {
       `  connected=${result.connected} reached=${result.reached} sections=${result.rawSectionCount} qualified=${result.qualifiedCount} url=${result.pageUrl}`,
     );
 
-    const byTopic: Record<
-      string,
-      { platformPositions: Array<{ text: string; source: string; url: string; tier: string; asOf: string }> }
-    > = {};
+    const destDir = path.join(projectRoot, 'lib/data/generated/profiles', bioguideId);
+    await mkdir(destDir, { recursive: true });
+    const dest = path.join(destDir, 'positions.json');
+    const existing = await loadExistingPositions(dest);
+
     for (const id of topicIds) {
       const positions = result.byTopic.get(id) ?? [];
-      byTopic[id] = { platformPositions: positions };
       if (positions.length) {
         console.log(`  ${id}: ${positions.length}`);
         for (const p of positions) console.log(`    - ${p.text.slice(0, 100)}…`);
       }
     }
 
-    const filled = result.qualifiedCount > 0;
-    const out = {
-      bioguideId,
-      status: filled ? 'filled' : 'honest-gap',
-      note: filled
-        ? `M-POSITIONS 2026-07-25: Official issues page via sync:official-issues-positions ` +
-          `(${result.pageUrl}) — ${result.qualifiedCount} qualified stance(s), tier official. ` +
-          `Ballotpedia secondary (page poverty for this member). Campaign site berniesanders.com/issues ` +
-          `redirects to homepage — does not qualify.`
-        : `DIAGNOSED honest-gap: official /issues/ connected=${result.connected} reached=${result.reached} ` +
-          `sections=${result.rawSectionCount} qualified=0 at ${result.pageUrl}. Exhausted official issues route.`,
-      byTopic,
-    };
+    const out = buildOfficialIssuesPositionsOutput(bioguideId, result, topicIds, existing);
 
-    const destDir = path.join(projectRoot, 'lib/data/generated/profiles', bioguideId);
-    await mkdir(destDir, { recursive: true });
-    const dest = path.join(destDir, 'positions.json');
     await writeFile(dest, JSON.stringify(out, null, 2) + '\n', 'utf8');
     console.log(`  wrote ${dest} status=${out.status}`);
 
@@ -144,7 +218,13 @@ async function main(): Promise<void> {
   }
 }
 
-main().catch((err: unknown) => {
-  console.error(err);
-  process.exit(1);
-});
+const isDirectRun =
+  process.argv[1] != null &&
+  import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href;
+
+if (isDirectRun) {
+  main().catch((err: unknown) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
