@@ -11,6 +11,7 @@ import {
   NEWS_KNOWN_BAD_UNAPPROVED_OUTLET,
   SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH,
   SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH,
+  SAID_DID_KNOWN_GOOD_NOMINEE_MATCH,
   SAID_DID_KNOWN_BAD_TAUTOLOGY,
   PLATFORM_KNOWN_BAD_EVENT_NARRATION,
   PLATFORM_KNOWN_BAD_CRAPO_ARREST,
@@ -199,6 +200,17 @@ test('known-bad nominee-mismatched Said→Did is rejected (Marvit≠Westercamp)'
     violations.some((v) => v.message.includes('no meaningful overlap')),
     'expected nominee-mismatch fixture to fail overlap guard',
   );
+});
+
+test('known-good same-nominee Said→Did is retained', () => {
+  assert.equal(
+    saidDidSubjectsOverlap(
+      SAID_DID_KNOWN_GOOD_NOMINEE_MATCH.said.quote,
+      SAID_DID_KNOWN_GOOD_NOMINEE_MATCH.did.action,
+    ),
+    true,
+  );
+  assert.equal(isGenuineSaidDidDiff(SAID_DID_KNOWN_GOOD_NOMINEE_MATCH), true);
 });
 
 test('known-bad non-verbatim alleged statement fails statements integrity', () => {

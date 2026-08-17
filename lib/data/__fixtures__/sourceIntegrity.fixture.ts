@@ -154,6 +154,22 @@ export const SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH = {
   },
 };
 
+/** Same nominee on both sides — must not fall through to generic legislation-topic checks. */
+export const SAID_DID_KNOWN_GOOD_NOMINEE_MATCH = {
+  label: 'Same-nominee CREC Said paired with same confirmation Did',
+  said: {
+    quote:
+      'Mr. SANDERS. Mr. President, I support the nomination of John Doe to be Secretary of Labor.',
+    url: 'https://www.govinfo.gov/app/details/CREC-2024-01-15-pt1-PgS1',
+    verbatim: true,
+  },
+  did: {
+    action:
+      'Voted Yea — PN123: Confirmation: John Doe, of Virginia, to be Secretary of Labor',
+    url: 'https://www.congress.gov/nomination/118th-congress/123',
+  },
+};
+
 /** Holder/Paul filibuster narration — MUST reject as a Cruz stated position (C001098 civil regression). */
 export const PLATFORM_KNOWN_BAD_EVENT_NARRATION =
   'The day after the filibuster, Attorney General Eric Holder sent a letter to Paul , responding to the filibuster. Holder wrote, "Does the president have the authority to use a weaponized drone to kill an American not engaged in combat on U.S. soil? The answer to that is no." [198]';
