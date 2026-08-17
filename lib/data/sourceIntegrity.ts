@@ -257,6 +257,7 @@ export function saidDidSubjectsOverlap(saidQuote: string, didAction: string): bo
       }
     }
     if (!shared) return false;
+    return true;
   }
   const saidTopic = classifyTextToRecordTopicId(saidQuote);
   const voteTopic = classifyTextToRecordTopicId(billText);

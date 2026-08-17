@@ -10,6 +10,132 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-17 — FOLLOW-UP: SAME-NOMINEE SAID→DID RETENTION
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (focused) · STOP for STAGE THREE  
+**Current state:** `cursor/critical-bug-management-f32c` · code commits `27480a5`, `46ef9b0` · PR **#109** https://github.com/robbieryan312-star/The-ledger/pull/109 · tree dirty only for this handoff entry before docs commit
+
+### Objective
+Follow up on the completed scan subagent finding: same-nominee confirmation Said→Did pairs were still dropped when both sides used formal nomination phrasing.
+
+### Bug / impact
+`lib/data/sourceIntegrity.ts` required matching nominee last names when either Said or Did contained nomination subjects, but after a successful same-name match it fell through to generic topic/keyword overlap. Formal confirmation text often classifies as `legislation` on both sides and has no shared non-legislation keywords, so valid same-nominee CREC statements could still be dropped from `buildCrecSaidDidLinks`, `pruneSaidDidLinksByTopic`, and rendered Said→Did output.
+
+### What changed
+- `saidDidSubjectsOverlap()` now returns `true` immediately when both sides extract nomination subjects and share a nominee last name.
+- Added append-only `SAID_DID_KNOWN_GOOD_NOMINEE_MATCH` fixture.
+- Added a regression test proving same-nominee formal confirmation pairs are retained while the existing Marvit≠Westercamp mismatch stays rejected.
+
+### Commands run (follow-up)
+- `gh pr diff 107 --name-only && gh pr diff 107` → exit 0; confirmed PR #107 covers one-sided informal/formal matching but not this both-sides formal fallthrough
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/senateOfficialIssues.test.ts && npm run test:typecheck` → exit 0
+- `git add lib/data/sourceIntegrity.ts lib/data/__fixtures__/sourceIntegrity.fixture.ts scripts/__tests__/sourceIntegrity.test.ts && git commit -m "fix(data): retain same-nominee Said-Did pairs" && git rev-parse --short HEAD` → exit 0 (`46ef9b0`)
+
+### Acceptance evidence
+```
+# targeted sourceIntegrity + official issues tests
+1..62
+# tests 62
+# pass 62
+# fail 0
+
+# typecheck
+> code@0.1.0 test:typecheck
+> tsc --noEmit
+```
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/sourceIntegrity.ts` | modified | Same-nominee formal nomination pairs now return overlap immediately |
+| `lib/data/__fixtures__/sourceIntegrity.fixture.ts` | modified | Added append-only same-nominee good fixture |
+| `scripts/__tests__/sourceIntegrity.test.ts` | modified | Added regression test for same-nominee retained pair |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This follow-up handoff entry |
+
+### Open / next
+- Push follow-up commits to PR #109 and update PR description/memory.
+- Broader `test:source-integrity`/build remains blocked by existing PR #99 until merged.
+- PR #107 remains open for the separate one-sided nomination case; this follow-up intentionally did not modify that branch.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-management-f32c` · follow-up code commit `46ef9b0` (docs handoff commit follows) · PR #109. **Verdict:** PASS focused; STOP for STAGE THREE. **What changed:** same-nominee formal nomination Said→Did pairs now return `true` once nominee last names match; append-only fixture/test added. **Evidence:** `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/senateOfficialIssues.test.ts` → 62/62 pass; `npm run test:typecheck` → pass. **Open gates:** Claude must APPROVE/REJECT PR #109 before merge; PR #99 still blocks full source-integrity/build; PR #107 remains separate for one-sided matching. **Repeat-work flag:** subagent follow-up; no duplicate PR opened.
+
+---
+
+## HANDOFF 2026-08-17 — CRITICAL BUG AUTOMATION: OFFICIAL ISSUES PRESERVE-ON-FAILURE
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (focused) · STOP for STAGE THREE  
+**Current state:** `cursor/critical-bug-management-f32c` · code commit `27480a5` · PR pending · tree dirty only for this handoff entry before docs commit
+
+### Objective
+Cron critical-bug scan: inspect recent commits/open bug memory, avoid duplicate PRs, and fix only high-confidence critical correctness bugs.
+
+### Bug / impact
+`scripts/sync-official-issues-positions.ts` treated official `/issues/` fetch failure (`connected=false` or `reached=false`) as a verified empty page and wrote `honest-gap` with empty `byTopic`, which could erase prior filled official platform positions such as S000033's 11 official issue stances during a transient website/network failure.
+
+### What changed
+- `scripts/sync-official-issues-positions.ts` now builds output through `buildOfficialIssuesPositionsOutput`.
+- Fetch failures preserve prior filled positions with a `fetch-failed` note; no-prior failures write `status: "fetch-failed"`; only reachable pages with zero qualified sections become `honest-gap`.
+- `scripts/__tests__/senateOfficialIssues.test.ts` adds regression coverage for preserve-prior, no-prior fetch-failed, and real honest-gap paths.
+- Script direct execution now uses an `isDirectRun` guard so tests can import the decision logic without running the sync.
+
+### Commands run (this session)
+- `git status --short --branch && git remote -v && git log --oneline -n 12 && gh pr list --state all --limit 120 --json number,state,mergedAt,url,title,headRefName,baseRefName` → exit 0
+- `git fetch origin main cursor/critical-bug-management-f32c && git status --short --branch && git log --oneline --decorate --max-count=30 origin/main && git log --oneline --decorate --max-count=20 origin/main --not HEAD` → exit 128 (remote feature branch did not exist yet)
+- `git fetch origin main && git status --short --branch && git log --oneline --decorate --max-count=30 origin/main && git log --oneline --decorate --max-count=20 origin/main --not HEAD` → exit 0
+- `git show --stat --oneline --decorate --find-renames 18b5d3e && git show --stat --oneline --decorate --find-renames d36f4a9 && git show --stat --oneline --decorate --find-renames cc916da && git show --stat --oneline --decorate --find-renames db23b39 && git show --stat --oneline --decorate --find-renames 377787d` → exit 0
+- `git show --no-ext-diff --unified=80 db23b39 -- lib/data/allegedPolicy.ts lib/data/newsCorroboration.ts scripts/lib/approvedMediaQuotes.ts components/politicians/ControversySection.tsx && git show --no-ext-diff --unified=80 d36f4a9 -- lib/data/resolveRecordedOutlet.ts lib/data/buildSaidDidDiffs.ts lib/data/saidDidVoteContext.ts && git show --no-ext-diff --unified=80 cc916da -- lib/data/sourceIntegrity.ts scripts/__tests__/sourceIntegrity.test.ts` → exit 0
+- `npx tsx --test scripts/__tests__/senateOfficialIssues.test.ts` → exit 1 before install (`Cannot find module 'dotenv'`)
+- `npm install` → exit 0 (installed dependencies; npm audit still reports 8 known vulnerabilities)
+- `npx tsx --test scripts/__tests__/senateOfficialIssues.test.ts && npm run test:typecheck && npm run test:source-integrity` → exit 1; focused test and typecheck passed; source-integrity blocked by existing open PR #99 defect (`votesmart` token in `.claude/rules/*`)
+- `npx tsx --test scripts/__tests__/senateOfficialIssues.test.ts && npm run test:typecheck && git diff -- scripts/sync-official-issues-positions.ts scripts/__tests__/senateOfficialIssues.test.ts && git status --short` → exit 0
+- `git add scripts/sync-official-issues-positions.ts scripts/__tests__/senateOfficialIssues.test.ts && git commit -m "fix(data): preserve official issues positions on fetch failure" && git rev-parse --short HEAD` → exit 0 (`27480a5`)
+
+### Acceptance evidence
+```
+# official issues focused test
+1..4
+# tests 4
+# pass 4
+# fail 0
+
+# typecheck
+> code@0.1.0 test:typecheck
+> tsc --noEmit
+```
+
+Known blocked broader guard evidence:
+```
+not ok 11 - criterion (A): no contiguous dead-source token outside history exempts
+dead-source token "votesmart" found outside history exempts:
+.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2
+.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1
+```
+This matches tracked persistent-memory PR #99, still open, so Cursor did not duplicate that fix.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/sync-official-issues-positions.ts` | modified | Preserve prior official positions on fetch failure; emit `fetch-failed` with no prior; import-safe direct-run guard |
+| `scripts/__tests__/senateOfficialIssues.test.ts` | modified | Added preserve-on-failure regression tests |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This handoff entry |
+
+### Open / next
+- Open PR after docs commit and push.
+- Claude STAGE THREE should review `27480a5` plus the docs commit, with special attention to whether `connected=true/reached=false` should preserve prior positions for all migrated members.
+- Broader source-integrity/build remains blocked by PR #99 until that existing open fix is merged.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-management-f32c` · code commit `27480a5` (docs handoff commit follows) · PR pending. **Verdict:** PASS focused; STOP for STAGE THREE. **What changed:** fixed `sync-official-issues-positions` so official `/issues/` fetch failures preserve prior filled positions instead of overwriting with empty `honest-gap`; added regression tests. **Evidence:** `npx tsx --test scripts/__tests__/senateOfficialIssues.test.ts` → 4/4 pass; `npm run test:typecheck` → pass; `npm run test:source-integrity` → blocked by existing open PR #99 retired-source token defect in `.claude/rules/*`. **Open gates:** Claude must APPROVE/REJECT this PR before merge; #99 remains separate/open. **Repeat-work flag:** none.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
