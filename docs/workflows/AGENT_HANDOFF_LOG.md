@@ -10,6 +10,61 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-17 — FOLLOW-UP: SAME-NOMINEE SAID→DID RETENTION
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (focused) · STOP for STAGE THREE  
+**Current state:** `cursor/critical-bug-management-f32c` · code commits `27480a5`, `46ef9b0` · PR **#109** https://github.com/robbieryan312-star/The-ledger/pull/109 · tree dirty only for this handoff entry before docs commit
+
+### Objective
+Follow up on the completed scan subagent finding: same-nominee confirmation Said→Did pairs were still dropped when both sides used formal nomination phrasing.
+
+### Bug / impact
+`lib/data/sourceIntegrity.ts` required matching nominee last names when either Said or Did contained nomination subjects, but after a successful same-name match it fell through to generic topic/keyword overlap. Formal confirmation text often classifies as `legislation` on both sides and has no shared non-legislation keywords, so valid same-nominee CREC statements could still be dropped from `buildCrecSaidDidLinks`, `pruneSaidDidLinksByTopic`, and rendered Said→Did output.
+
+### What changed
+- `saidDidSubjectsOverlap()` now returns `true` immediately when both sides extract nomination subjects and share a nominee last name.
+- Added append-only `SAID_DID_KNOWN_GOOD_NOMINEE_MATCH` fixture.
+- Added a regression test proving same-nominee formal confirmation pairs are retained while the existing Marvit≠Westercamp mismatch stays rejected.
+
+### Commands run (follow-up)
+- `gh pr diff 107 --name-only && gh pr diff 107` → exit 0; confirmed PR #107 covers one-sided informal/formal matching but not this both-sides formal fallthrough
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/senateOfficialIssues.test.ts && npm run test:typecheck` → exit 0
+- `git add lib/data/sourceIntegrity.ts lib/data/__fixtures__/sourceIntegrity.fixture.ts scripts/__tests__/sourceIntegrity.test.ts && git commit -m "fix(data): retain same-nominee Said-Did pairs" && git rev-parse --short HEAD` → exit 0 (`46ef9b0`)
+
+### Acceptance evidence
+```
+# targeted sourceIntegrity + official issues tests
+1..62
+# tests 62
+# pass 62
+# fail 0
+
+# typecheck
+> code@0.1.0 test:typecheck
+> tsc --noEmit
+```
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/sourceIntegrity.ts` | modified | Same-nominee formal nomination pairs now return overlap immediately |
+| `lib/data/__fixtures__/sourceIntegrity.fixture.ts` | modified | Added append-only same-nominee good fixture |
+| `scripts/__tests__/sourceIntegrity.test.ts` | modified | Added regression test for same-nominee retained pair |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This follow-up handoff entry |
+
+### Open / next
+- Push follow-up commits to PR #109 and update PR description/memory.
+- Broader `test:source-integrity`/build remains blocked by existing PR #99 until merged.
+- PR #107 remains open for the separate one-sided nomination case; this follow-up intentionally did not modify that branch.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-management-f32c` · follow-up code commit `46ef9b0` (docs handoff commit follows) · PR #109. **Verdict:** PASS focused; STOP for STAGE THREE. **What changed:** same-nominee formal nomination Said→Did pairs now return `true` once nominee last names match; append-only fixture/test added. **Evidence:** `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/senateOfficialIssues.test.ts` → 62/62 pass; `npm run test:typecheck` → pass. **Open gates:** Claude must APPROVE/REJECT PR #109 before merge; PR #99 still blocks full source-integrity/build; PR #107 remains separate for one-sided matching. **Repeat-work flag:** subagent follow-up; no duplicate PR opened.
+
+---
+
 ## HANDOFF 2026-08-17 — CRITICAL BUG AUTOMATION: OFFICIAL ISSUES PRESERVE-ON-FAILURE
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS (focused) · STOP for STAGE THREE  
