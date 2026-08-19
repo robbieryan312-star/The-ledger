@@ -11,6 +11,8 @@ import {
   NEWS_KNOWN_BAD_UNAPPROVED_OUTLET,
   SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH,
   SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH,
+  SAID_DID_KNOWN_BAD_NOMINEE_HOMONYM,
+  SAID_DID_KNOWN_GOOD_NOMINEE_SUFFIX,
   SAID_DID_KNOWN_BAD_TAUTOLOGY,
   PLATFORM_KNOWN_BAD_EVENT_NARRATION,
   PLATFORM_KNOWN_BAD_CRAPO_ARREST,
@@ -198,6 +200,39 @@ test('known-bad nominee-mismatched Said→Did is rejected (Marvit≠Westercamp)'
   assert.ok(
     violations.some((v) => v.message.includes('no meaningful overlap')),
     'expected nominee-mismatch fixture to fail overlap guard',
+  );
+});
+
+test('known-bad nominee homonym Said→Did is rejected (John Smith≠Jane Smith)', () => {
+  assert.equal(
+    saidDidSubjectsOverlap(
+      SAID_DID_KNOWN_BAD_NOMINEE_HOMONYM.said.quote,
+      SAID_DID_KNOWN_BAD_NOMINEE_HOMONYM.did.action,
+    ),
+    false,
+  );
+  assert.equal(isGenuineSaidDidDiff(SAID_DID_KNOWN_BAD_NOMINEE_HOMONYM), false);
+  const violations = validateSaidDidDiffs([SAID_DID_KNOWN_BAD_NOMINEE_HOMONYM], 'fixture');
+  assert.ok(
+    violations.some((v) => v.message.includes('no meaningful overlap')),
+    'expected same-last-name nominee homonym fixture to fail overlap guard',
+  );
+});
+
+test('known-good nominee suffix Said→Did is accepted (John Smith Jr.=John Smith)', () => {
+  assert.equal(
+    saidDidSubjectsOverlap(
+      SAID_DID_KNOWN_GOOD_NOMINEE_SUFFIX.said.quote,
+      SAID_DID_KNOWN_GOOD_NOMINEE_SUFFIX.did.action,
+    ),
+    true,
+  );
+  assert.equal(isGenuineSaidDidDiff(SAID_DID_KNOWN_GOOD_NOMINEE_SUFFIX), true);
+  const violations = validateSaidDidDiffs([SAID_DID_KNOWN_GOOD_NOMINEE_SUFFIX], 'fixture');
+  assert.equal(
+    violations.length,
+    0,
+    `expected suffix variant nominee fixture to pass overlap guard: ${violations.map((v) => v.message).join('; ')}`,
   );
 });
 
