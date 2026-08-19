@@ -10,6 +10,60 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug scan: nomination subject matching (PASS / PR #110)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (scoped fix; full build blocked by tracked #99 baseline)  
+**Current state:** `cursor/critical-bug-management-99fd` · code HEAD `fb277d5` · PR https://github.com/robbieryan312-star/The-ledger/pull/110 · handoff doc commit pending this same turn
+
+### Objective
+Inspect recent commits for high-severity correctness bugs; avoid duplicates from automation memory; fix only a concrete critical bug.
+
+### Verdict / outcome
+**PASS for scoped fix:** nomination/confirmation Said→Did subject overlap now compares normalized nominee identity (first+last, suffixes ignored) instead of last name only. This prevents same-surname homonym cross-wiring while preserving suffix/middle-name variants.
+
+### Commits
+- `fb277d5` — `fix(saiddid): match nomination subjects by identity`
+- Handoff-log commit — pending immediately after this entry
+
+### Commands run (this session)
+- `git status --short && git branch --show-current && git log --oneline --decorate -n 30 && gh pr list --state all --limit 120 --json number,state,mergedAt,closedAt,url,title,headRefName` → exit 0
+- `git diff --stat c08be19..HEAD && git diff --name-status c08be19..HEAD` → exit 0
+- `npx tsx -e "import { saidDidSubjectsOverlap, extractNominationSubjects } from './lib/data/sourceIntegrity.ts'; ..."` → exit 0; reproduced homonym bad / suffix bad before fix
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts` → exit 0; 59 pass / 0 fail
+- `npm run test:typecheck` → exit 0
+- `npm run test:source-integrity` → exit 1; blocked by tracked PR #99 baseline (`dead-source token "votesmart"` in `.claude/rules/*`)
+- `npm run build` → exit 1; same tracked #99 prebuild blocker
+- `git diff --check && git status --short` → exit 0
+- `git add lib/data/sourceIntegrity.ts lib/data/__fixtures__/sourceIntegrity.fixture.ts scripts/__tests__/sourceIntegrity.test.ts && git commit -m "fix(saiddid): match nomination subjects by identity"` → exit 0 (`fb277d5`)
+- `git status --short && git branch --show-current && git push -u origin "$(git branch --show-current)"` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/sourceIntegrity.ts` | modified | Replaced nomination last-name-only overlap with normalized first+last identity matching; ignores suffixes and tolerates initials. |
+| `lib/data/__fixtures__/sourceIntegrity.fixture.ts` | modified | Added append-only bad homonym and good suffix nomination Said→Did fixtures. |
+| `scripts/__tests__/sourceIntegrity.test.ts` | modified | Added regression tests for same-surname homonym rejection and suffix variant acceptance. |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this session handoff entry. |
+
+### Acceptance evidence
+- Before fix reproduction: `homonym expected=false actual=true`; `suffix expected=true actual=false`.
+- After fix reproduction: `homonym expected=false actual=false`; `suffix expected=true actual=true`; `middle expected=true actual=true`.
+- `scripts/__tests__/sourceIntegrity.test.ts`: `# tests 59`, `# pass 59`, `# fail 0`.
+- Typecheck: `npm run test:typecheck` exit 0.
+- Full build limitation: `npm run build` exits 1 on existing tracked PR #99 baseline, not on this patch (`dead-source token "votesmart"` in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`).
+
+### Open / next
+- Claude STAGE THREE review for PR #110.
+- Existing PR #99 remains the baseline blocker for full `npm run build`.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**PR #110 / code HEAD `fb277d5`:** review the nomination subject matcher fix. Root cause: `saidDidSubjectsOverlap` compared nominee last names only, so different nominees sharing a surname could pair and suffix variants could drop. Fix: normalized first+last identity matching with suffix removal + regression fixtures. Evidence: targeted nominee reproduction exit 0; `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts` 59 pass / 0 fail; `npm run test:typecheck` exit 0. Full `npm run build` is blocked by existing tracked PR #99 dead-source token in `.claude/rules/*`, not this patch. APPROVE or REJECT exact PR #110 tip after STAGE THREE; do not merge without explicit approval.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  

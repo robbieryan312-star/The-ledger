@@ -225,20 +225,43 @@ export function extractNominationSubjects(text: string): string[] {
   return subjects;
 }
 
-function nominationLastNames(names: string[]): Set<string> {
-  const out = new Set<string>();
+const NOMINATION_SUFFIXES = new Set(['jr', 'sr', 'ii', 'iii', 'iv', 'v', 'vi', 'vii']);
+
+function normalizeNominationNameToken(token: string): string {
+  return token.toLowerCase().replace(/[^a-z]/g, '');
+}
+
+function nominationIdentities(names: string[]): Array<{ first: string; last: string }> {
+  const out: Array<{ first: string; last: string }> = [];
   for (const name of names) {
-    const parts = name.split(/\s+/).filter(Boolean);
-    const last = parts[parts.length - 1]?.toLowerCase().replace(/[^a-z'-]/g, '');
-    if (last && last.length >= 2) out.add(last);
+    const parts = name
+      .split(/\s+/)
+      .map(normalizeNominationNameToken)
+      .filter(Boolean);
+    while (parts.length > 1 && NOMINATION_SUFFIXES.has(parts[parts.length - 1])) {
+      parts.pop();
+    }
+    const first = parts[0];
+    const last = parts[parts.length - 1];
+    if (parts.length >= 2 && first && last && last.length >= 2) {
+      out.push({ first, last });
+    }
   }
   return out;
+}
+
+function nominationFirstNamesMatch(left: string, right: string): boolean {
+  return (
+    left === right ||
+    (left.length === 1 && right.startsWith(left)) ||
+    (right.length === 1 && left.startsWith(right))
+  );
 }
 
 /**
  * Said and Did must share real subject matter — same classified topic (non-legislation)
  * or at least one shared substantive keyword. Prevents tax-filing vs war-powers pairs.
- * Nomination/confirmation rows additionally require matching nominee last names so two
+ * Nomination/confirmation rows additionally require matching nominee identity so two
  * civil-liberties confirmations about different people never pair.
  */
 export function saidDidSubjectsOverlap(saidQuote: string, didAction: string): boolean {
@@ -246,12 +269,18 @@ export function saidDidSubjectsOverlap(saidQuote: string, didAction: string): bo
   const saidNominees = extractNominationSubjects(saidQuote);
   const didNominees = extractNominationSubjects(billText);
   if (saidNominees.length > 0 || didNominees.length > 0) {
-    const saidLast = nominationLastNames(saidNominees);
-    const didLast = nominationLastNames(didNominees);
-    if (saidLast.size === 0 || didLast.size === 0) return false;
+    const saidIds = nominationIdentities(saidNominees);
+    const didIds = nominationIdentities(didNominees);
+    if (saidIds.length === 0 || didIds.length === 0) return false;
     let shared = false;
-    for (const n of saidLast) {
-      if (didLast.has(n)) {
+    for (const saidId of saidIds) {
+      if (
+        didIds.some(
+          (didId) =>
+            saidId.last === didId.last &&
+            nominationFirstNamesMatch(saidId.first, didId.first),
+        )
+      ) {
         shared = true;
         break;
       }

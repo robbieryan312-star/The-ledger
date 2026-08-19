@@ -154,6 +154,42 @@ export const SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH = {
   },
 };
 
+/**
+ * Nominee homonym mismatch — same last name, different nominees. Last-name-only
+ * matching would pair these; first+last nominee identity must reject it.
+ */
+export const SAID_DID_KNOWN_BAD_NOMINEE_HOMONYM = {
+  label: 'synthetic John Smith CREC Said paired with Jane Smith confirmation Did',
+  said: {
+    quote:
+      'Mr. EXAMPLE. Madam President, I support the nomination of John Smith to be United States District Judge.',
+    url: 'https://www.govinfo.gov/app/details/CREC-2026-01-01-pt1-PgS1000',
+    verbatim: true,
+  },
+  did: {
+    action: 'Voted Yea — PN999: Confirmation: Jane Smith, of Ohio, to be United States District Judge',
+    url: 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00999.xml',
+  },
+};
+
+/**
+ * Nominee suffix variant — same nominee with a suffix on only one side. Suffixes
+ * must not make a valid confirmation pair disappear.
+ */
+export const SAID_DID_KNOWN_GOOD_NOMINEE_SUFFIX = {
+  label: 'synthetic John Smith Jr. CREC Said paired with John Smith confirmation Did',
+  said: {
+    quote:
+      'Mr. EXAMPLE. Madam President, I support the nomination of John Smith Jr. to be United States District Judge.',
+    url: 'https://www.govinfo.gov/app/details/CREC-2026-01-02-pt1-PgS1001',
+    verbatim: true,
+  },
+  did: {
+    action: 'Voted Yea — PN998: Confirmation: John Smith, of Ohio, to be United States District Judge',
+    url: 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00998.xml',
+  },
+};
+
 /** Holder/Paul filibuster narration — MUST reject as a Cruz stated position (C001098 civil regression). */
 export const PLATFORM_KNOWN_BAD_EVENT_NARRATION =
   'The day after the filibuster, Attorney General Eric Holder sent a letter to Paul , responding to the filibuster. Holder wrote, "Does the president have the authority to use a weaponized drone to kill an American not engaged in combat on U.S. soil? The answer to that is no." [198]';
