@@ -10,6 +10,44 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-20 — CRITICAL BUG SWEEP (NO NEW CRITICAL BUG)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (audit only; no new PR opened)
+**Current state:** `cursor/critical-bug-management-a8bd` · pre-audit HEAD `763dc67` · tree clean before log update · build not run (no code/data changes; known duplicate source-integrity failure covered by open PR #99)
+
+### Objective
+Inspect recent commits and open critical-bug memory entries for new high-severity correctness bugs, while avoiding duplicate reports for bugs already awaiting review.
+
+### Verdict / outcome
+No new critical bug was found outside the tracked open-PR bug classes. All MEMORIES.md entries checked this turn still point at open PRs, so no memory cleanup was applied.
+
+### Commands run (this session)
+- `pwd && git status --short && git branch --show-current && git log --oneline --decorate -n 30 && for pr in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110; do gh pr view "$pr" --json number,state,mergedAt,url,title,headRefName --jq '[.number,.state,.mergedAt,.url,.title,.headRefName] | @tsv'; done` → exit 0; all tracked PRs open.
+- `if [ -f /tmp/cursor/async-install/install-user.status ]; then printf 'install_status='; tr -d '\n' < /tmp/cursor/async-install/install-user.status; printf '\n'; elif [ -f /tmp/cursor/async-install/install-user.log ]; then pgrep -af 'install-user|npm install|npm ci' || true; else printf 'install_status=none\n'; fi && git show --stat --oneline -n 12 && git diff --stat origin/main...HEAD && git status --short` → exit 0; install status none; no pre-log diff.
+- `git log --all --since='2026-08-19 00:00:00 +0000' --oneline --decorate && gh pr list --state open --limit 30 --json number,title,url,headRefName,updatedAt --jq '.[] | [.number,.updatedAt,.url,.title,.headRefName] | @tsv'` → exit 0; only new since Aug 19 was PR #110 branch, already in MEMORIES.md and open.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this audit session entry and Confront Claude block. |
+
+### Acceptance evidence
+- Persistent memory read at version `c30706524147a076`; tracked PRs #28, #29, #30, #31, #40, #99, #100, #101, #102, #103, #104, #105, #106, #107, #108, #109, #110 all returned `OPEN`.
+- `git log --all --since='2026-08-19 00:00:00 +0000'` showed only `fb277d5` / `19f27b2` on `origin/cursor/critical-bug-management-99fd` (PR #110), already tracked as an open memory entry.
+- Read-only explore review of the last ~20 main commits reported **No critical bugs found** outside excluded open-PR classes; duplicate known failing source-integrity token remains covered by PR #99.
+
+### Open / next
+- No new fix PR from this run.
+- Existing open critical-bug PRs remain awaiting review/merge.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG SWEEP 2026-08-20:** No new critical bug outside open tracked PRs. Branch `cursor/critical-bug-management-a8bd`, pre-log HEAD `763dc67`. Evidence: all MEMORIES.md PRs #28/#29/#30/#31/#40/#99–#110 checked OPEN; `git log --all --since=2026-08-19` only showed PR #110 commits already tracked; read-only recent-commit review found no new qualifying bug. No code/data changes; no new PR opened. Existing blocker: PR #99 still covers source-integrity dead-source token failure on main.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
