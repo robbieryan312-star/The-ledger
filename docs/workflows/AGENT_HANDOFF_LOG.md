@@ -10,6 +10,53 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation scan (PASS)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new critical bug found)  
+**Current state:** `cursor/critical-bug-management-0a4d` · HEAD `763dc67` · PR none · tree clean before log update · build not run (known #99 build blocker already tracked open)
+
+### Objective
+Inspect recent main-line commits for high-severity correctness bugs, avoid duplicate open bug PRs, and fix only if a concrete critical trigger is confirmed.
+
+### Verdict / outcome
+**PASS** — no new non-duplicate critical candidate was confirmed. All tracked memory PRs (#28, #29, #30, #31, #40, #99–#110) are still open, so `MEMORIES.md` required no cleanup.
+
+### Commits
+- (this docs commit) — handoff log for critical bug automation scan
+
+### Commands run (this session)
+- `git status --short && git branch --show-current && git log --oneline --decorate -n 25` → exit 0; clean tree, branch `cursor/critical-bug-management-0a4d`, HEAD `763dc67`
+- `for pr in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110; do gh pr view "$pr" --json number,state,mergedAt,closedAt,url,headRefName,title; done` → exit 0; every tracked PR state `OPEN`
+- `git log --date=short --pretty=format:'%h %ad %s' -n 40 && git show --stat --oneline --decorate --find-renames --find-copies c08be19..HEAD` → exit 0; recent substantive changes reviewed around alleged-policy / Said-Did / provenance guards
+- `npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/newsCorroboration.test.ts` → exit 0; 17/17 pass
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts` → exit 0; 57/57 pass
+- `git rev-parse --short HEAD && git status --short` → exit 0; HEAD `763dc67`, clean tree before log update
+- `npm run test:docs-integrity && npm run test:docs-consistency` → exit 0; docs-integrity 9/9 pass, docs-consistency 19/19 pass
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this critical bug automation scan evidence and Confront Claude block |
+
+### Acceptance evidence
+- Memory duplicate check: PRs #28, #29, #30, #31, #40, #99, #100, #101, #102, #103, #104, #105, #106, #107, #108, #109, and #110 all returned `"state":"OPEN"`.
+- Scoped tests passed: alleged/provenance/news guard suite `# pass 17`, `# fail 0`; source-integrity guard `# pass 57`, `# fail 0`.
+- Docs guards passed: docs-integrity `# pass 9`, docs-consistency `# pass 19`.
+- Independent exploration of `c08be19..HEAD` found no new high-severity candidate beyond the open tracked PR set; the current full-build blocker maps to tracked PR #99.
+
+### Open / next
+- No new critical bug PR opened.
+- Existing open critical bug PRs remain awaiting review.
+- Full `npm run build` remains unrun in this scan because the known source-matrix failure is already tracked by open PR #99.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG AUTOMATION SCAN:** review branch `cursor/critical-bug-management-0a4d` at HEAD **`763dc67`** plus this docs-only handoff commit. Verdict: **PASS / no new non-duplicate critical bug confirmed**. Evidence: tracked memory PRs #28/#29/#30/#31/#40/#99–#110 all still OPEN; `allegedPolicyGuard + provenanceOutletGuard + newsCorroboration` 17/17 pass; `sourceIntegrity` 57/57 pass. Open gate: existing PR #99 remains the known full-build blocker; no new PR should be opened from this scan.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
