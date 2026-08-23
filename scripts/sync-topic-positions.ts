@@ -21,7 +21,13 @@ import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
 import { fetchApprovedMediaStatementsForMember } from './lib/approvedMediaQuotes';
 import { isProceduralCrecText } from './lib/crecProceduralFilter';
 import { crecFloorSpeechOpenerRegex } from './lib/crecOpener';
-import { canRefreshSaidDidLinks, mergeSaidDidLinksForRefresh } from './lib/topicPositionsPreserve';
+import {
+  canRefreshSaidDidLinks,
+  mergeSaidDidLinksForRefresh,
+  mergeStatementsForRefresh,
+  shouldAddStatementForRefresh,
+  statementUrlStem,
+} from './lib/topicPositionsPreserve';
 import { resolveGovInfoApiKey } from './lib/govinfoApiKey';
 import { isCeremonialCrecRemark } from '../lib/ceremonialCrecFilter';
 
@@ -649,25 +655,6 @@ function crecMemberLastName(leg: LegislatorRow): string {
   return leg.lastName.toUpperCase();
 }
 
-function crecGovInfoUrlStem(url: string): string {
-  const granule = url.match(/CREC-[^/?#]+/i)?.[0] ?? url;
-  // Same physical page can appear as ...-PgS3474-2 vs ...-PgS3474-3
-  return granule.replace(/-\d+$/, '');
-}
-
-/** A committed CREC floor statement: tier 'official' with a GovInfo CREC granule URL. */
-function isCommittedCrecStatement(s: TopicStatementEntry): boolean {
-  return s.tier === 'official' && /\/CREC-/i.test(s.url);
-}
-
-function shouldAddCrecStatement(existing: TopicStatementEntry[], entry: TopicStatementEntry): boolean {
-  const titleKey = entry.title.trim().toLowerCase();
-  const stem = crecGovInfoUrlStem(entry.url);
-  if (existing.some((e) => e.title.trim().toLowerCase() === titleKey)) return false;
-  if (existing.some((e) => crecGovInfoUrlStem(e.url) === stem)) return false;
-  return true;
-}
-
 function extractCrecSpeechExcerpt(plainText: string, leg: LegislatorRow): string | null {
   const lastName = crecMemberLastName(leg);
   const opener = crecFloorSpeechOpenerRegex(lastName);
@@ -783,8 +770,8 @@ async function fetchGovInfoCrecByTopic(
             continue;
           }
 
-          const stem = crecGovInfoUrlStem(entry.url);
-          if (seenStems.has(stem) || !shouldAddCrecStatement(collected, entry)) {
+          const stem = statementUrlStem(entry.url);
+          if (seenStems.has(stem) || !shouldAddStatementForRefresh(collected, entry)) {
             dedupDropped += 1;
             continue;
           }
@@ -1084,16 +1071,11 @@ async function main(): Promise<void> {
         // Only overlay statements when CREC actually refreshed; never wipe on a failed fetch.
         if (crec.searchOk) {
           // FAILURE≠ABSENCE (§6): a re-fetch only sees the current search pool, so a genuine
-          // older committed floor speech can age out on a later run. Union fresh with prior
-          // committed official CREC (dedup by URL stem) so re-sync only ADDs — never drops.
-          const merged: TopicStatementEntry[] = [...(fresh?.statements ?? [])];
-          for (const prior of entry.statements ?? []) {
-            if (!isCommittedCrecStatement(prior)) continue;
-            if (isProceduralCrecText(prior.title)) continue;
-            if (!shouldAddCrecStatement(merged, prior)) continue;
-            merged.push(prior);
-          }
-          entry.statements = merged;
+          // older committed statement can age out on a later run. Union fresh with prior
+          // committed statements (dedup by URL stem) so re-sync only ADDs — never drops.
+          entry.statements = mergeStatementsForRefresh(entry.statements, fresh?.statements, {
+            isProceduralCrecText,
+          });
           if (fresh?.statedPosition) {
             entry.statedPosition = fresh.statedPosition;
             entry.statedPositionSource = fresh.statedPositionSource;
