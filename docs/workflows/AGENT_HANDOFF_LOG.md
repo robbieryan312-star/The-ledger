@@ -10,6 +10,56 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation: topic-position statement preservation (PASS with known build blocker)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS for scoped fix; full build blocked by existing open PR #99  
+**Current state:** `cursor/critical-bug-inspection-b1bd` · code commit `8c4e602` · PR pending · tree dirty only for this handoff-log entry · prebuild/build status: focused guards PASS, `npm run build` FAILS at known `approvedSourceMatrixGuard` dead-source token already tracked in MEMORIES.md / PR #99
+
+### Objective
+Scheduled high-severity bug scan: inspect recent behavioral changes, avoid duplicate open PR bugs, and fix only concrete critical issues.
+
+### Verdict / outcome
+Found and fixed a new P0 data-loss bug in `scripts/sync-topic-positions.ts`: successful or keyless topic-position refreshes replaced prior statements with fresh rows plus prior official CREC only, silently dropping committed verified media/non-CREC statements when current media retrieval returned fewer/zero rows.
+
+### Commits
+- `8c4e602` — `fix(topic-positions): preserve prior statements on refresh`
+- Handoff-log commit pending immediately after this entry.
+
+### Commands run (this session)
+- `pwd && git status --short && git branch --show-current && git log --oneline -30 && gh pr list --state all --limit 200 --json number,state,mergedAt,closedAt,url,title,headRefOid,headRefName --jq 'map(select(.number as $n | [28,29,30,31,40,99,100,101,102,103,104,105,106,107,108,109,110] | index($n)))'` → exit 0; all tracked PRs still open
+- `npx tsx --test scripts/__tests__/topicPositionsPreserve.test.ts` → exit 0; 7/7 pass
+- `npm run test:topic-positions-bundle && npm run test:typecheck` → first attempt exit 2; stale old helper references after refactor (`crecGovInfoUrlStem`, `shouldAddCrecStatement`)
+- `npm run test:topic-positions-bundle && npm run test:typecheck` → retry exit 0; 12/12 pass + typecheck green
+- `npm run build` → exit 1; blocked before Next build by known open PR #99 dead-source-token guard in `.claude/rules/*`
+- `git diff -- scripts/lib/topicPositionsPreserve.ts scripts/sync-topic-positions.ts scripts/__tests__/topicPositionsPreserve.test.ts && git status --short` → exit 0; reviewed scoped diff
+- `git add scripts/lib/topicPositionsPreserve.ts scripts/sync-topic-positions.ts scripts/__tests__/topicPositionsPreserve.test.ts && git commit -m "fix(topic-positions): preserve prior statements on refresh"` → exit 0; commit `8c4e602`
+- `git rev-parse --short HEAD && git status --short` → exit 0; HEAD `8c4e602`
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/lib/topicPositionsPreserve.ts` | modified | Added statement refresh merge helper preserving committed official/nonpartisan/media statements with URL-stem/title de-dupe and procedural CREC filtering. |
+| `scripts/sync-topic-positions.ts` | modified | Replaced CREC-only prior-statement union with the shared all-verified-statement preservation helper; reused shared de-dupe helpers in fresh CREC collection. |
+| `scripts/__tests__/topicPositionsPreserve.test.ts` | modified | Added regression coverage for prior media statement preservation, aged-out CREC preservation, CREC variant de-dupe, and procedural CREC rejection. |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session entry. |
+
+### Acceptance evidence
+- Focused regression: `npx tsx --test scripts/__tests__/topicPositionsPreserve.test.ts` → `# pass 7` / `# fail 0`.
+- Bundle guard + typecheck: `npm run test:topic-positions-bundle && npm run test:typecheck` → `# pass 12` / `# fail 0`, `tsc --noEmit` exit 0.
+- Full build blocker is duplicate/open, not re-fixed here: build log shows `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`, which matches MEMORIES.md PR #99 still OPEN.
+
+### Open / next
+- Open PR for `8c4e602` + this handoff commit.
+- Claude review: verify the new helper does not preserve banned `alleged`/`unverified` statement tiers and that build failure remains solely the already-open #99 blocker.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG FIX:** branch `cursor/critical-bug-inspection-b1bd`; code commit `8c4e602`; PR pending. New bug: `sync-topic-positions` refresh dropped prior verified media/non-CREC statements because it only unioned prior official CREC rows. Fix: shared `mergeStatementsForRefresh` preserves committed `official`/`nonpartisan`/`media` statements, de-dupes by title/URL stem, and still rejects procedural CREC. Evidence: focused test 7/7 pass; `test:topic-positions-bundle` 12/12 pass; `test:typecheck` pass. `npm run build` remains blocked by existing open PR #99 dead-source-token guard in `.claude/rules/*`; not duplicated in this PR.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
