@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## Latest session — critical news refresh failure semantics (PASS with known build blocker)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS for scoped news fix; full build BLOCKED by existing PR #99 defect  
-**Current state:** `cursor/critical-bug-management-c5f8` · scoped fix commit `2a6afed` · PR pending · tree dirty only for this handoff entry before commit
+**Current state:** `cursor/critical-bug-management-c5f8` · scoped fix commit `2a6afed` · PR #112 https://github.com/robbieryan312-star/The-ledger/pull/112 · branch tip includes this handoff entry
 
 ### Objective
 Fix a critical profile-news refresh correctness bug where a no-match run could be recorded as an `honest-gap` even though one or more approved RSS feeds failed.
@@ -23,6 +23,7 @@ PASS for the scoped resolver/test change. `npm run build` is not green on curren
 
 ### Commits
 - `2a6afed` — fix(news): mark partial feed failures as fetch-failed
+- `506e737` — docs(handoff): record news refresh bug fix
 
 ### Commands run (this session)
 - `git status --short && git branch --show-current && git rev-parse --short HEAD && git log --oneline --decorate -n 20` → exit 0
@@ -35,6 +36,8 @@ PASS for the scoped resolver/test change. `npm run build` is not green on curren
 - `npm run build` → exit 1; known PR #99 blocker (`approvedSourceMatrixGuard`: dead-source token in `.claude/rules/*`)
 - `git diff -- scripts/sync-news-rss.ts scripts/__tests__/newsRegistry.test.ts docs/workflows/IMPROVEMENT_BACKLOG.md && git status --short` → exit 0
 - `git add scripts/sync-news-rss.ts scripts/__tests__/newsRegistry.test.ts docs/workflows/IMPROVEMENT_BACKLOG.md && git commit -m "fix(news): mark partial feed failures as fetch-failed"` → exit 0
+- `git add docs/workflows/AGENT_HANDOFF_LOG.md && git commit -m "docs(handoff): record news refresh bug fix" && git status --short && git rev-parse --short HEAD` → exit 0; `506e737`
+- `git push -u origin cursor/critical-bug-management-c5f8` → exit 0
 
 ### Files touched
 | Path | Action | What changed |
@@ -50,7 +53,7 @@ PASS for the scoped resolver/test change. `npm run build` is not green on curren
 - Build blocker evidence: `npm run build` → `not ok 11 - criterion (A): no contiguous dead-source token outside history exempts`; `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2`; `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`; tracked by open PR #99.
 
 ### Open / next
-- Open PR for `2a6afed` + handoff commit.
+- PR #112 is open for `2a6afed` + handoff commits.
 - Claude STAGE THREE: verify the news status semantics and confirm this is not a duplicate of the existing open PR #99 build fix.
 - Merge gate remains blocked until Claude approval on the exact PR tip; CI/build may stay red until #99 lands.
 
@@ -58,7 +61,7 @@ PASS for the scoped resolver/test change. `npm run build` is not green on curren
 
 ## Confront Claude — paste to Claude Code
 
-**Branch · HEAD · PR:** `cursor/critical-bug-management-c5f8` · scoped fix commit `2a6afed` plus handoff commit pending · PR pending.  
+**Branch · HEAD · PR:** `cursor/critical-bug-management-c5f8` · scoped fix commit `2a6afed` plus handoff commit `506e737` · PR #112 https://github.com/robbieryan312-star/The-ledger/pull/112.  
 **Verdict:** PASS for scoped news refresh bug; STOP for STAGE THREE.  
 **What changed:** `sync-news-rss` now treats zero qualified matches with any approved feed failure as `fetch-failed`, not `honest-gap`; `test:news-registry` locks partial feed failure; NEWS-01 marked done pending PR.  
 **Evidence:** `npm run test:news-registry` exit 0 (6/6); `npm run test:typecheck` exit 0; `npm run build` exit 1 due existing PR #99 dead-source-token guard failure in `.claude/rules/*`, not this fix.  
