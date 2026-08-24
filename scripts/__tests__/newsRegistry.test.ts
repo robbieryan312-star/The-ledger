@@ -72,4 +72,13 @@ test('news status: honest-gap only when zero feed failures in run', async () => 
   });
   assert.equal(failed.status, 'fetch-failed');
   assert.match(failed.note, /feed\(s\) timed out or errored/);
+
+  const partialFailure = resolveNewsStatus(empty, empty, {
+    feedsAttempted: 10,
+    feedFailures: 1,
+    memberSkipped: false,
+    legName: 'Test Member',
+  });
+  assert.equal(partialFailure.status, 'fetch-failed');
+  assert.match(partialFailure.note, /0 qualified matches/);
 });

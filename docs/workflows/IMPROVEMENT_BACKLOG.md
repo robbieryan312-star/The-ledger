@@ -38,7 +38,7 @@ External truths both agents must share (dashboard drift is **owner-only** to fix
 | DEP-01 | `react-simple-maps` React 19 peer invalid (legacy-peer-deps masks); unify Node 20/22 in CI | P2 | cursor | open | platform audit P2 / `npm ls react-simple-maps` |
 | NPM-01 | `npm audit`: remaining vulns upstream Next / react-simple-maps (no force-downgrade) | P2 | cursor | open | `docs/archive/workflows/NPM_AUDIT_2026-07-18.md` |
 | VERCEL-NAME | ~~Rename display `the-ledger-s4dn`~~ → **done as `the-ledger-main`** (owner 2026-07-21); optional later rename to “Approved” | P2 | owner | **done** (name sync) | #78 + this file |
-| NEWS-01 | Guard: national news refresh semantics — empty success vs fetch-failed | P1 | cursor | open | handoff backlog 2026-07-11 |
+| NEWS-01 | Guard: national news refresh semantics — empty success vs fetch-failed | P1 | cursor | done (PR pending) | `scripts/__tests__/newsRegistry.test.ts` |
 | IMP-015 | Handoff-log guard optional | P2 | cursor | open | prior IMP-015 |
 | IMP-MOBILE | Sanders profile mobile overflow — deferred from render batch | P2 | cursor | open | prior IMP-NEW |
 | IMP-011 | Guards reconciled on main (prebuild count) | P2 | cursor | **done** | historical |

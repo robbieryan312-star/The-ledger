@@ -167,6 +167,12 @@ export function resolveNewsStatus(
       note: `fetch-failed: all ${opts.feedsAttempted} feed(s) timed out or errored — no prior items to preserve.`,
     };
   }
+  if (opts.feedFailures > 0) {
+    return {
+      status: 'fetch-failed',
+      note: `fetch-failed: ${opts.feedFailures} feed(s) failed; 0 qualified matches for ${opts.legName}.`,
+    };
+  }
   if (merged.length === 0 && someFeedsSucceeded) {
     return {
       status: 'honest-gap',
