@@ -9,6 +9,7 @@ import {
   isRegistryNewsHost,
   NEWS_FEED_REGISTRY,
 } from '../../lib/data/newsFeedRegistry';
+import type { NewsItem } from '../../lib/types';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 
@@ -72,4 +73,56 @@ test('news status: honest-gap only when zero feed failures in run', async () => 
   });
   assert.equal(failed.status, 'fetch-failed');
   assert.match(failed.note, /feed\(s\) timed out or errored/);
+
+  const partialFailure = resolveNewsStatus(empty, empty, {
+    feedsAttempted: 10,
+    feedFailures: 1,
+    memberSkipped: false,
+    legName: 'Test Member',
+  });
+  assert.equal(partialFailure.status, 'fetch-failed');
+  assert.match(partialFailure.note, /0 qualified matches/);
+});
+
+test('sync-news-rss preserves committed items that current matcher would reject', async () => {
+  const { mergeProfileNewsItems } = await import('../sync-news-rss');
+  const leg = {
+    bioguideId: 'S000033',
+    name: 'Bernie Sanders',
+    lastName: 'Sanders',
+    state: 'VT',
+    chamber: 'senate',
+  };
+  const existing: NewsItem = {
+    id: 'committed-prior',
+    headline: 'Budget deal advances after committee markup',
+    summary: 'Previously committed approved-outlet item from an earlier verified refresh.',
+    date: '2026-01-02',
+    category: 'Congress',
+    isOpinion: false,
+    isVerified: false,
+    url: 'https://www.theguardian.com/us-news/2026/jan/02/budget-deal',
+    source: {
+      name: 'The Guardian',
+      url: 'https://www.theguardian.com/us-news/2026/jan/02/budget-deal',
+      tier: 'media',
+      date: '2026-01-02',
+    },
+  };
+  const freshRejected: NewsItem = {
+    ...existing,
+    id: 'fresh-rejected',
+    headline: 'Unrelated budget story',
+    summary: 'No qualifying member subject or quote.',
+    date: '2026-01-03',
+    url: 'https://www.theguardian.com/us-news/2026/jan/03/unrelated-budget-story',
+    source: {
+      ...existing.source,
+      url: 'https://www.theguardian.com/us-news/2026/jan/03/unrelated-budget-story',
+      date: '2026-01-03',
+    },
+  };
+
+  const merged = mergeProfileNewsItems([existing], [freshRejected], leg);
+  assert.deepEqual(merged.map((item) => item.id), ['committed-prior']);
 });

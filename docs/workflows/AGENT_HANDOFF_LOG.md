@@ -10,6 +10,71 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical news refresh failure semantics (PASS with known build blocker)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS for scoped news fixes; full build BLOCKED by existing PR #99 defect  
+**Current state:** `cursor/critical-bug-management-c5f8` · scoped fix commits `2a6afed` + `abc0ddc` · PR #112 https://github.com/robbieryan312-star/The-ledger/pull/112 · branch tip includes this handoff entry
+
+### Objective
+Fix critical profile-news refresh correctness bugs where failed/partial refreshes could be recorded as absence and committed news rows could be re-filtered out during a later RSS refresh.
+
+### Verdict / outcome
+PASS for the scoped resolver/preservation/test changes. `npm run build` is not green on current `main` because `test:source-integrity` fails on the already tracked open PR #99 dead-source-token regression in active Claude rule docs; this session did not duplicate that fix.
+
+### Commits
+- `2a6afed` — fix(news): mark partial feed failures as fetch-failed
+- `506e737` — docs(handoff): record news refresh bug fix
+- `bcb136a` — docs(handoff): add news refresh PR URL
+- `abc0ddc` — fix(news): preserve committed RSS items on refresh
+
+### Commands run (this session)
+- `git status --short && git branch --show-current && git rev-parse --short HEAD && git log --oneline --decorate -n 20` → exit 0
+- `gh pr list --state all --limit 120 --json number,state,mergedAt,closedAt,url,title,headRefName,baseRefName` → exit 0
+- `git fetch --prune && git status --short && git log --oneline --decorate --all --date=short --since='2026-08-15' --pretty=format:'%h %ad %d %s'` → exit 0
+- `git log --name-status --oneline -n 30` → exit 0
+- `gh pr view 99 --json number,state,url,title,headRefName,baseRefName,commits` → exit 0; PR #99 open
+- `npm run test:news-registry` → exit 0; 6/6 pass
+- `npm run test:typecheck` → exit 0
+- `npm run build` → exit 1; known PR #99 blocker (`approvedSourceMatrixGuard`: dead-source token in `.claude/rules/*`)
+- `git diff -- scripts/sync-news-rss.ts scripts/__tests__/newsRegistry.test.ts docs/workflows/IMPROVEMENT_BACKLOG.md && git status --short` → exit 0
+- `git add scripts/sync-news-rss.ts scripts/__tests__/newsRegistry.test.ts docs/workflows/IMPROVEMENT_BACKLOG.md && git commit -m "fix(news): mark partial feed failures as fetch-failed"` → exit 0
+- `git add docs/workflows/AGENT_HANDOFF_LOG.md && git commit -m "docs(handoff): record news refresh bug fix" && git status --short && git rev-parse --short HEAD` → exit 0; `506e737`
+- `git push -u origin cursor/critical-bug-management-c5f8` → exit 0
+- `npm run test:news-registry && npm run test:typecheck` → exit 0; news guard 7/7 pass
+- `git diff -- scripts/sync-news-rss.ts scripts/__tests__/newsRegistry.test.ts && git status --short` → exit 0
+- `git add scripts/sync-news-rss.ts scripts/__tests__/newsRegistry.test.ts && git commit -m "fix(news): preserve committed RSS items on refresh"` → exit 0; `abc0ddc`
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/sync-news-rss.ts` | modified | `resolveNewsStatus` now returns `fetch-failed` whenever zero qualified news remains and any approved feed failed; refresh merge preserves committed rows while filtering fresh additions. |
+| `scripts/__tests__/newsRegistry.test.ts` | modified | Added partial-feed-failure and committed-row preservation regression assertions. |
+| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | Marked NEWS-01 done pending this PR. |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Recorded this session for Claude review. |
+
+### Acceptance evidence
+- Focused guard: `npm run test:news-registry` → `# pass 7`, `# fail 0`
+- Typecheck: `npm run test:typecheck` → exit 0
+- Build blocker evidence: `npm run build` → `not ok 11 - criterion (A): no contiguous dead-source token outside history exempts`; `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2`; `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`; tracked by open PR #99.
+
+### Open / next
+- PR #112 is open for `2a6afed` + `abc0ddc` + handoff commits.
+- Claude STAGE THREE: verify the news status/preservation semantics and confirm this is not a duplicate of the existing open PR #99 build fix.
+- Merge gate remains blocked until Claude approval on the exact PR tip; CI/build may stay red until #99 lands.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-management-c5f8` · scoped fix commits `2a6afed` + `abc0ddc` plus handoff commits · PR #112 https://github.com/robbieryan312-star/The-ledger/pull/112.  
+**Verdict:** PASS for scoped news refresh bug; STOP for STAGE THREE.  
+**What changed:** `sync-news-rss` now treats zero qualified matches with any approved feed failure as `fetch-failed`, and preserves committed profile news rows on refresh while filtering fresh additions; `test:news-registry` locks both regressions; NEWS-01 marked done pending PR.  
+**Evidence:** `npm run test:news-registry` exit 0 (7/7); `npm run test:typecheck` exit 0; `npm run build` exit 1 due existing PR #99 dead-source-token guard failure in `.claude/rules/*`, not this fix.  
+**Open gates:** Claude must APPROVE/REJECT this exact PR tip; #99 remains a separate open blocker.  
+**Repeat-work flag:** Not a repeated brief; new bug class outside MEMORIES.md open PR entries.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  

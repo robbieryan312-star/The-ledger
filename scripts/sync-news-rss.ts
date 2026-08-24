@@ -167,6 +167,12 @@ export function resolveNewsStatus(
       note: `fetch-failed: all ${opts.feedsAttempted} feed(s) timed out or errored — no prior items to preserve.`,
     };
   }
+  if (opts.feedFailures > 0) {
+    return {
+      status: 'fetch-failed',
+      note: `fetch-failed: ${opts.feedFailures} feed(s) failed; 0 qualified matches for ${opts.legName}.`,
+    };
+  }
   if (merged.length === 0 && someFeedsSucceeded) {
     return {
       status: 'honest-gap',
@@ -425,6 +431,19 @@ function mergeWithExisting(existing: NewsItem[], fresh: NewsItem[]): NewsItem[] 
     .slice(0, MAX_ITEMS_PER_MEMBER);
 }
 
+export function mergeProfileNewsItems(
+  existingItems: NewsItem[],
+  freshItems: NewsItem[],
+  leg: LegislatorRow,
+): NewsItem[] {
+  const qualifiedFreshItems = filterQualifiedNewsItems(freshItems, leg);
+  const merged = mergeWithExisting(existingItems, qualifiedFreshItems);
+  return applyNewsCorroboration(merged, memberNewsNameTokens(leg, displayByBio)).slice(
+    0,
+    MAX_ITEMS_PER_MEMBER,
+  );
+}
+
 async function loadExistingNews(bioguideId: string): Promise<ExistingNewsFile | null> {
   const file = path.join(profilesRoot, bioguideId, 'news.json');
   try {
@@ -577,19 +596,15 @@ async function main(): Promise<void> {
       );
     }
 
-    let merged = mergeWithExisting(
-      filterQualifiedNewsItems(existingItems, leg),
+    const merged = mergeProfileNewsItems(
+      existingItems,
       [
         ...freshItems,
         ...gdeltItems,
         ...newsApiItems,
         ...topicItems,
       ],
-    );
-    merged = filterQualifiedNewsItems(merged, leg);
-    merged = applyNewsCorroboration(merged, memberNewsNameTokens(leg, displayByBio)).slice(
-      0,
-      MAX_ITEMS_PER_MEMBER,
+      leg,
     );
 
     const resolved = resolveNewsStatus(merged, existingItems, {
