@@ -10,6 +10,46 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-25 — CRITICAL BUG AUTOMATION SCAN (NO NEW PR)
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS (no new critical bug found)  
+**Current state:** `cursor/critical-bug-management-a9e7` · HEAD `763dc67` before this docs commit · tree dirty only for this handoff entry · PR not opened · build not run (no code/data changes; known open PR #99 covers prebuild dead-source-token failure)
+
+### Objective
+Inspect recent commits for high-severity correctness bugs that escaped review; avoid duplicates already tracked in automation memory.
+
+### Verdict / outcome
+No additional critical correctness bug met the confidence bar. All concrete severe issues found in the recent-change window map to existing open memory PRs (#28, #29, #30, #31, #40, #99, #100, #101, #102, #103, #104, #105, #106, #107, #108, #109, #110, #111, #112).
+
+### Commands run (this session)
+- `automation_memory read MEMORIES.md` → read current open/rejected bug memory.
+- `git status --short && git branch --show-current && git rev-parse --short HEAD && git log --oneline --decorate -n 30 && for n in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112; do gh pr view "$n" --json number,state,mergedAt,closedAt,url,headRefName,title 2>/dev/null || true; done` → all memory PRs still open.
+- `git fetch --all --prune && git status --short && git rev-parse --short HEAD && git rev-parse --short origin/main && git log --oneline --decorate --since='2026-08-01' --all -n 80` → `origin/main` remains `763dc67`; August commits are open PR branches.
+- `git log --oneline --decorate origin/main -n 25 --name-only` → recent behavioral `main` changes centered on alleged policy, nominee matching, provenance, and guard hardening.
+- Read recent-change files: `lib/data/buildSaidDidDiffs.ts`, `lib/data/newsCorroboration.ts`, `scripts/lib/approvedMediaQuotes.ts`, `lib/data/allegedPolicy.ts`, `components/politicians/ControversySection.tsx`, `components/politicians/ProfileRecordByTopicPanel.tsx`, `lib/data/resolveRecordedOutlet.ts`, `lib/data/saidDidVoteContext.ts`.
+- Subagent audit `bc-22b7a4f9-8023-5823-bdd3-c612cdc2ccc0` → no new critical bug beyond open PRs.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this automation scan record. |
+
+### Acceptance evidence
+- PR state evidence: `gh pr view` returned `state:"OPEN"` for every memory PR #28/#29/#30/#31/#40/#99-#112, so no duplicate PR was opened and no memory cleanup was due.
+- Recent-main evidence: `git rev-parse --short origin/main` → `763dc67`; `git log --since='2026-08-01' --all` showed August work only on open PR branches.
+- Independent audit evidence: subagent traced `db23b39`, `cc916da`/`cf4bcfd`, `d36f4a9`, and `18b5d3e` downstream and reported no new concrete critical bug outside existing open PRs.
+
+### Open / next
+- Existing critical-bug PRs remain awaiting review/merge; especially #99 because it covers the known active-rule dead-source-token guard failure.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG AUTOMATION 2026-08-25:** no new critical bug found on `origin/main` (`763dc67`) beyond existing open memory PRs #28/#29/#30/#31/#40/#99-#112. Memory cleanup checked: all tracked PRs still `OPEN`, so no entry deleted or reclassified. No bug-fix PR opened. Review existing open PR queue; #99 remains the known guard-failure blocker.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
