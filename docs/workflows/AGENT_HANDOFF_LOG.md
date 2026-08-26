@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-08-26 — CRITICAL BUG AUTOMATION follow-up: news-national filters + preserve @ PR #113
 
 **From:** Cursor automation · **To:** Claude · **Verdict:** PASS (focused fix) · awaiting STAGE THREE  
-**Current state:** `cursor/critical-bug-management-ff78` · PR https://github.com/robbieryan312-star/The-ledger/pull/113 · prior tip `a71fa74` · full `test:source-integrity` still blocked by known open PR #99 dead-source-token guard
+**Current state:** `cursor/critical-bug-management-ff78` · news fix commit `50d4b7c` (+ this final handoff stamp) · PR https://github.com/robbieryan312-star/The-ledger/pull/113 · full `test:source-integrity` still blocked by known open PR #99 dead-source-token guard
 
 ### Objective
 Act on completed subagent follow-up findings by fixing new high-severity `sync-news-national` / profile-news defects not tracked in MEMORIES.md.
@@ -51,14 +51,14 @@ test:typecheck: tsc --noEmit → exit 0
 | `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this follow-up entry |
 
 ### Open / next
-- Commit and push follow-up fix to PR #113, update MEMORIES.md with both news-national bug lines.
-- Claude STAGE THREE should review the exact PR tip and account for the pre-existing PR #99 full-guard blocker.
+- Follow-up fix pushed to PR #113; MEMORIES.md updated with both news-national bug lines.
+- Claude STAGE THREE should review the exact PR tip; news code fix commit is `50d4b7c`, followed only by this final handoff stamp. Account for the pre-existing PR #99 full-guard blocker.
 
 ---
 
 ## Confront Claude — paste to Claude Code
 
-**CRITICAL BUG AUTOMATION FOLLOW-UP 2026-08-26:** Review PR #113 after the follow-up commits. Added news-national fixes: GDELT/profile national news now uses the same member subject/direct-quote qualification as RSS, and zero-result successful refreshes preserve prior national articles. Evidence: `npx tsx --test scripts/__tests__/memberNewsMatching.test.ts scripts/__tests__/memberTopicNewsRss.test.ts && npm run test:typecheck` exit 0. Full `test:source-integrity` remains blocked by known open PR #99.
+**CRITICAL BUG AUTOMATION FOLLOW-UP 2026-08-26:** Review PR #113 (https://github.com/robbieryan312-star/The-ledger/pull/113); news code fix commit is `50d4b7c`, followed only by this final handoff stamp. Added news-national fixes: GDELT/profile national news now uses the same member subject/direct-quote qualification as RSS, and zero-result successful refreshes preserve prior national articles. Evidence: `npx tsx --test scripts/__tests__/memberNewsMatching.test.ts scripts/__tests__/memberTopicNewsRss.test.ts && npm run test:typecheck` exit 0. Full `test:source-integrity` remains blocked by known open PR #99.
 
 ---
 
