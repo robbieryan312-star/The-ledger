@@ -10,6 +10,106 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-26 — CRITICAL BUG AUTOMATION follow-up: news-national filters + preserve @ PR #113
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (focused fix) · awaiting STAGE THREE  
+**Current state:** `cursor/critical-bug-management-ff78` · news fix commit `50d4b7c` (+ this final handoff stamp) · PR https://github.com/robbieryan312-star/The-ledger/pull/113 · full `test:source-integrity` still blocked by known open PR #99 dead-source-token guard
+
+### Objective
+Act on completed subagent follow-up findings by fixing new high-severity `sync-news-national` / profile-news defects not tracked in MEMORIES.md.
+
+### Bugs / impact
+1. `sync-news-national` and `mergeProfileNews` accepted GDELT national news by approved host only, bypassing the member subject/direct-quote qualification used by RSS. Name-only, comparison-only, or list-membership articles could enter profile News.
+2. A scoped `sync-news-national` success with zero fresh articles overwrote prior `newsNational.json` rows for that member, silently losing national news supplements.
+
+### What changed
+- Moved pure member-news matching/qualification helpers into `lib/data` and made script helpers re-export them, so sync and read paths share the same rules.
+- `sync-news-national` filters GDELT candidates with `qualifiesMemberNewsItem` before writing or profile merge.
+- `nationalArticlesToNewsItems` accepts member qualification context and `mergeProfileNews` passes roster identity before supplementing from `newsNational.json`.
+- Added a pure `memberNewsEntryAfterRefresh` helper that preserves prior articles on zero-result success and recalculates output metadata from the final map.
+- Added focused tests for bad GDELT-style fixtures and zero-result preservation.
+
+### Acceptance evidence
+```
+npx tsx --test scripts/__tests__/memberNewsMatching.test.ts scripts/__tests__/memberTopicNewsRss.test.ts && npm run test:typecheck
+→ exit 0
+memberNewsMatching/memberTopicNewsRss: tests 11 / pass 11 / fail 0
+test:typecheck: tsc --noEmit → exit 0
+```
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/memberNewsMatching.ts` | created | shared pure member-news name matching |
+| `lib/data/memberNewsQualification.ts` | created | shared profile-news subject/direct-quote qualification |
+| `scripts/lib/memberNewsMatching.ts` | modified | wrapper re-exporting shared matching plus display-map loader |
+| `scripts/lib/memberNewsQualification.ts` | modified | wrapper re-exporting shared qualification |
+| `lib/data/newsNational.ts` | modified | qualification-aware conversion + zero-result preserve helper |
+| `lib/data/memberProfile.ts` | modified | filters national supplements through qualification context |
+| `scripts/sync-news-national.ts` | modified | filters GDELT rows, preserves prior rows, recalculates metadata |
+| `scripts/__tests__/memberNewsMatching.test.ts` | modified | regression tests for national GDELT filtering + preserve helper |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this follow-up entry |
+
+### Open / next
+- Follow-up fix pushed to PR #113; MEMORIES.md updated with both news-national bug lines.
+- Claude STAGE THREE should review the exact PR tip; news code fix commit is `50d4b7c`, followed only by this final handoff stamp. Account for the pre-existing PR #99 full-guard blocker.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG AUTOMATION FOLLOW-UP 2026-08-26:** Review PR #113 (https://github.com/robbieryan312-star/The-ledger/pull/113); news code fix commit is `50d4b7c`, followed only by this final handoff stamp. Added news-national fixes: GDELT/profile national news now uses the same member subject/direct-quote qualification as RSS, and zero-result successful refreshes preserve prior national articles. Evidence: `npx tsx --test scripts/__tests__/memberNewsMatching.test.ts scripts/__tests__/memberTopicNewsRss.test.ts && npm run test:typecheck` exit 0. Full `test:source-integrity` remains blocked by known open PR #99.
+
+---
+
+## HANDOFF 2026-08-26 — CRITICAL BUG AUTOMATION: Said→Did candidate skip @ PR #113
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (focused fix) · awaiting STAGE THREE  
+**Current state:** `cursor/critical-bug-management-ff78` · code commit `85b0d9c` (+ this PR-URL docs stamp) · PR https://github.com/robbieryan312-star/The-ledger/pull/113 · full `test:source-integrity` blocked by known open PR #99 dead-source-token guard
+
+### Objective
+Inspect recent commits for new high-severity correctness bugs; avoid duplicates already tracked in MEMORIES.md; fix only a concrete critical issue.
+
+### Bug / impact
+`lib/data/buildSaidDidDiffs.ts` selected the first topic-matching official/media statement even when its outlet could not be resolved, then returned `null`. A malformed or unknown-host first candidate could silently drop a later valid GovInfo/media statement and remove a legitimate Said→Did row from both profile rebuild pruning and rendered profile diffs.
+
+### What changed
+- `pickSaidForLink` now treats resolvable provenance as part of official/media candidate eligibility, so unresolved candidates are skipped and later valid candidates can be used.
+- Added a regression test where the first climate statement has an unknown host and the second has a valid GovInfo URL; pruning must keep the Said→Did link.
+
+### Acceptance evidence
+```
+npx tsx --test scripts/__tests__/sourceIntegrity.test.ts && npm run test:typecheck
+→ exit 0
+sourceIntegrity.test.ts: tests 58 / pass 58 / fail 0
+test:typecheck: tsc --noEmit → exit 0
+
+npm run test:source-integrity
+→ exit 1 (known duplicate blocker: PR #99)
+dead-source token "votesmart" found outside history exempts:
+.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2
+.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1
+new regression subtest in that run: ok — "Said→Did pruning skips unresolved-provenance candidates and keeps later valid statements"
+```
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/buildSaidDidDiffs.ts` | modified | skip unresolved official/media Said candidates instead of aborting selection |
+| `scripts/__tests__/sourceIntegrity.test.ts` | modified | added regression coverage for unresolved-first / valid-second statement ordering |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this handoff entry |
+
+### Open / next
+- Claude STAGE THREE should review the exact PR tip; code fix commit is `85b0d9c`, followed only by this PR-URL handoff stamp. Note the full guard limitation is the already-open PR #99 blocker, not this fix.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG AUTOMATION 2026-08-26:** Review PR #113 (https://github.com/robbieryan312-star/The-ledger/pull/113); code fix commit is `85b0d9c`, followed only by this PR-URL handoff stamp. Bug fixed: `buildSaidDidDiffs` aborted on first matching statement with unresolved provenance, silently dropping later valid Said→Did rows. Evidence: `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts && npm run test:typecheck` exit 0; full `npm run test:source-integrity` exit 1 only because known open PR #99 dead-source-token guard remains on main. Please perform STAGE THREE on the exact PR tip.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  

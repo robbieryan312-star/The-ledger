@@ -6,18 +6,26 @@ import type { NewsItem } from '../types';
 import { isRegistryNewsHost, tierForArticleUrl } from './newsFeedRegistry';
 import { leadSummary } from './displaySummary';
 import newsNationalSnapshot from './generated/newsNational.json';
+import {
+  qualifiesMemberNewsItem,
+} from './memberNewsQualification';
+import type {
+  LegislatorNewsRow,
+  NewsDisplayMap,
+} from './memberNewsMatching';
 
-interface MemberNewsArticle {
+export interface MemberNewsArticle {
   title: string;
   outlet: string;
   publishedDate: string;
   url: string;
 }
 
-interface MemberNewsEntry {
+export interface MemberNewsEntry {
   bioguideId: string;
   name: string;
   articles: MemberNewsArticle[];
+  feed?: 'gdelt' | 'newsapi';
 }
 
 interface NewsNationalSnapshot {
@@ -32,14 +40,45 @@ export function getNationalNewsArticles(bioguideId: string): MemberNewsArticle[]
   return entry?.articles ?? [];
 }
 
+export function memberNewsEntryAfterRefresh(
+  member: { bioguideId: string; name: string },
+  freshArticles: MemberNewsArticle[],
+  priorEntry?: MemberNewsEntry,
+): { entry: MemberNewsEntry; preservedPrior: boolean } {
+  if (freshArticles.length === 0 && (priorEntry?.articles?.length ?? 0) > 0) {
+    return { entry: priorEntry!, preservedPrior: true };
+  }
+  return {
+    entry: {
+      bioguideId: member.bioguideId,
+      name: member.name,
+      articles: freshArticles,
+      ...(freshArticles.length > 0 ? { feed: 'gdelt' as const } : {}),
+    },
+    preservedPrior: false,
+  };
+}
+
 /** Map GDELT national articles to profile NewsItem shape (approved hosts only). */
 export function nationalArticlesToNewsItems(
   bioguideId: string,
   articles: MemberNewsArticle[],
+  qualification?: { leg: LegislatorNewsRow; displayByBio: NewsDisplayMap },
 ): NewsItem[] {
   const items: NewsItem[] = [];
   for (const [idx, article] of articles.entries()) {
     if (!isRegistryNewsHost(article.url)) continue;
+    if (
+      qualification &&
+      !qualifiesMemberNewsItem(
+        article.title,
+        article.title,
+        qualification.leg,
+        qualification.displayByBio,
+      ).ok
+    ) {
+      continue;
+    }
     const tier = tierForArticleUrl(article.url) ?? 'media';
     const date = article.publishedDate.slice(0, 10);
     items.push({

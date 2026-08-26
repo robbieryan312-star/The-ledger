@@ -80,12 +80,16 @@ function pickSaidForLink(
     ? Object.values(allTopics).flatMap((t) => t.statements ?? [])
     : topicData.statements;
 
-  const officialStatement = statementPool.find(
-    (s) =>
-      s.tier === 'official' &&
-      textMatchesTopic(s.title, topicId) &&
-      saidDidSubjectsOverlap(s.title, `${link.billNumber}: ${link.billTitle}`),
-  );
+  const officialStatement = statementPool.find((s) => {
+    if (
+      s.tier !== 'official' ||
+      !textMatchesTopic(s.title, topicId) ||
+      !saidDidSubjectsOverlap(s.title, `${link.billNumber}: ${link.billTitle}`)
+    ) {
+      return false;
+    }
+    return resolveRecordedOutlet(s.outlet, s.url) !== null;
+  });
   if (officialStatement) {
     const outlet = resolveRecordedOutlet(officialStatement.outlet, officialStatement.url);
     if (!outlet) return null;
@@ -99,14 +103,18 @@ function pickSaidForLink(
     };
   }
 
-  const mediaStatement = topicData.statements.find(
-    (s) =>
-      s.topicId === topicId &&
-      s.tier === 'media' &&
-      s.verbatim === true &&
-      (statementMatchesVote(s.title, link, topicId) || textMatchesTopic(s.title, topicId)) &&
-      saidDidSubjectsOverlap(s.title, `${link.billNumber}: ${link.billTitle}`),
-  );
+  const mediaStatement = topicData.statements.find((s) => {
+    if (
+      s.topicId !== topicId ||
+      s.tier !== 'media' ||
+      s.verbatim !== true ||
+      !(statementMatchesVote(s.title, link, topicId) || textMatchesTopic(s.title, topicId)) ||
+      !saidDidSubjectsOverlap(s.title, `${link.billNumber}: ${link.billTitle}`)
+    ) {
+      return false;
+    }
+    return resolveRecordedOutlet(s.outlet, s.url) !== null;
+  });
   if (mediaStatement) {
     const outlet = resolveRecordedOutlet(mediaStatement.outlet, mediaStatement.url);
     // No recorded outlet → omit (never invent "Journalism").
