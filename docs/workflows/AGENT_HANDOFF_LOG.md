@@ -10,6 +10,58 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-26 — CRITICAL BUG AUTOMATION follow-up: news-national filters + preserve @ PR #113
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (focused fix) · awaiting STAGE THREE  
+**Current state:** `cursor/critical-bug-management-ff78` · PR https://github.com/robbieryan312-star/The-ledger/pull/113 · prior tip `a71fa74` · full `test:source-integrity` still blocked by known open PR #99 dead-source-token guard
+
+### Objective
+Act on completed subagent follow-up findings by fixing new high-severity `sync-news-national` / profile-news defects not tracked in MEMORIES.md.
+
+### Bugs / impact
+1. `sync-news-national` and `mergeProfileNews` accepted GDELT national news by approved host only, bypassing the member subject/direct-quote qualification used by RSS. Name-only, comparison-only, or list-membership articles could enter profile News.
+2. A scoped `sync-news-national` success with zero fresh articles overwrote prior `newsNational.json` rows for that member, silently losing national news supplements.
+
+### What changed
+- Moved pure member-news matching/qualification helpers into `lib/data` and made script helpers re-export them, so sync and read paths share the same rules.
+- `sync-news-national` filters GDELT candidates with `qualifiesMemberNewsItem` before writing or profile merge.
+- `nationalArticlesToNewsItems` accepts member qualification context and `mergeProfileNews` passes roster identity before supplementing from `newsNational.json`.
+- Added a pure `memberNewsEntryAfterRefresh` helper that preserves prior articles on zero-result success and recalculates output metadata from the final map.
+- Added focused tests for bad GDELT-style fixtures and zero-result preservation.
+
+### Acceptance evidence
+```
+npx tsx --test scripts/__tests__/memberNewsMatching.test.ts scripts/__tests__/memberTopicNewsRss.test.ts && npm run test:typecheck
+→ exit 0
+memberNewsMatching/memberTopicNewsRss: tests 11 / pass 11 / fail 0
+test:typecheck: tsc --noEmit → exit 0
+```
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/memberNewsMatching.ts` | created | shared pure member-news name matching |
+| `lib/data/memberNewsQualification.ts` | created | shared profile-news subject/direct-quote qualification |
+| `scripts/lib/memberNewsMatching.ts` | modified | wrapper re-exporting shared matching plus display-map loader |
+| `scripts/lib/memberNewsQualification.ts` | modified | wrapper re-exporting shared qualification |
+| `lib/data/newsNational.ts` | modified | qualification-aware conversion + zero-result preserve helper |
+| `lib/data/memberProfile.ts` | modified | filters national supplements through qualification context |
+| `scripts/sync-news-national.ts` | modified | filters GDELT rows, preserves prior rows, recalculates metadata |
+| `scripts/__tests__/memberNewsMatching.test.ts` | modified | regression tests for national GDELT filtering + preserve helper |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this follow-up entry |
+
+### Open / next
+- Commit and push follow-up fix to PR #113, update MEMORIES.md with both news-national bug lines.
+- Claude STAGE THREE should review the exact PR tip and account for the pre-existing PR #99 full-guard blocker.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG AUTOMATION FOLLOW-UP 2026-08-26:** Review PR #113 after the follow-up commits. Added news-national fixes: GDELT/profile national news now uses the same member subject/direct-quote qualification as RSS, and zero-result successful refreshes preserve prior national articles. Evidence: `npx tsx --test scripts/__tests__/memberNewsMatching.test.ts scripts/__tests__/memberTopicNewsRss.test.ts && npm run test:typecheck` exit 0. Full `test:source-integrity` remains blocked by known open PR #99.
+
+---
+
 ## HANDOFF 2026-08-26 — CRITICAL BUG AUTOMATION: Said→Did candidate skip @ PR #113
 
 **From:** Cursor automation · **To:** Claude · **Verdict:** PASS (focused fix) · awaiting STAGE THREE  

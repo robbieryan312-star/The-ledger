@@ -21,6 +21,10 @@ import {
 import { NEWS_FEED_REGISTRY } from '../lib/data/newsFeedRegistry';
 import { normalizeUrlForDedupe } from '../lib/data/sourceIntegrity';
 import { applyNewsCorroboration } from '../lib/data/newsCorroboration';
+import {
+  memberNewsEntryAfterRefresh,
+  type MemberNewsEntry,
+} from '../lib/data/newsNational';
 import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
 import { memberInScope, requireSyncScope } from './lib/sync-scope';
 import {
@@ -28,7 +32,9 @@ import {
   memberNewsNameTokens,
   memberNewsPrimaryName,
   type LegislatorNewsRow,
+  type NewsDisplayMap,
 } from './lib/memberNewsMatching';
+import { qualifiesMemberNewsItem } from './lib/memberNewsQualification';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
@@ -77,13 +83,6 @@ export interface MemberNewsArticle {
   url: string;
 }
 
-export interface MemberNewsEntry {
-  bioguideId: string;
-  name: string;
-  articles: MemberNewsArticle[];
-  feed?: 'gdelt' | 'newsapi';
-}
-
 export interface MemberNewsSnapshot {
   meta: {
     source: Source;
@@ -108,7 +107,7 @@ function chamberLabel(chamber: string): string {
   return chamber === 'senate' ? 'senate' : 'house';
 }
 
-function buildGdeltQuery(leg: LegislatorRow, displayByBio: Map<string, { name: string }>): string {
+function buildGdeltQuery(leg: LegislatorRow, displayByBio: NewsDisplayMap): string {
   const primaryName = memberNewsPrimaryName(leg, displayByBio);
   const domains = [
     'thehill.com',
@@ -138,7 +137,11 @@ function articleFromGdelt(a: GdeltArticle): MemberNewsArticle | null {
   return { title, outlet, publishedDate, url };
 }
 
-function articlesFromGdeltResponse(data: GdeltResponse): MemberNewsArticle[] {
+function articlesFromGdeltResponse(
+  data: GdeltResponse,
+  leg: LegislatorNewsRow,
+  displayByBio: Map<string, { name: string; firstName: string; lastName: string }>,
+): MemberNewsArticle[] {
   const articles: MemberNewsArticle[] = [];
   const seenUrls = new Set<string>();
 
@@ -146,6 +149,7 @@ function articlesFromGdeltResponse(data: GdeltResponse): MemberNewsArticle[] {
     const mapped = articleFromGdelt(raw);
     if (!mapped || seenUrls.has(mapped.url)) continue;
     if (!isAllowedNewsArticleUrl(mapped.url)) continue;
+    if (!qualifiesMemberNewsItem(mapped.title, mapped.title, leg, displayByBio).ok) continue;
     seenUrls.add(mapped.url);
     articles.push(mapped);
     if (articles.length >= MAX_ARTICLES_PER_MEMBER) break;
@@ -155,7 +159,7 @@ function articlesFromGdeltResponse(data: GdeltResponse): MemberNewsArticle[] {
 
 async function fetchGdeltMemberNews(
   leg: LegislatorRow,
-  displayByBio: Map<string, { name: string }>,
+  displayByBio: NewsDisplayMap,
   maxAttempts = GDELT_RATE_LIMIT_DELAYS_MS.length,
 ): Promise<{ articles: MemberNewsArticle[]; failed: boolean; lastError?: string }> {
   const query = buildGdeltQuery(leg, displayByBio);
@@ -192,7 +196,7 @@ async function fetchGdeltMemberNews(
       }
 
       const data = JSON.parse(text) as GdeltResponse;
-      return { articles: articlesFromGdeltResponse(data), failed: false };
+      return { articles: articlesFromGdeltResponse(data, leg, displayByBio), failed: false };
     } catch (err) {
       lastErr = err;
       const waitMs = GDELT_RATE_LIMIT_DELAYS_MS[attempt];
@@ -333,25 +337,26 @@ async function main(): Promise<void> {
     }
 
     const articles = result.articles;
-    let feed: 'gdelt' | undefined;
+    const priorEntry = byBioguideId[leg.bioguideId];
+    const priorArticles = priorEntry?.articles ?? [];
+    const { entry, preservedPrior } = memberNewsEntryAfterRefresh(leg, articles, priorEntry);
 
     if (articles.length > 0) {
-      feed = 'gdelt';
       gdeltCount += 1;
       totalArticles += articles.length;
+    } else if (preservedPrior) {
+      console.log(`  ${leg.name}: 0 fresh article(s), preserved ${priorArticles.length} prior article(s)`);
+      checkpoint[leg.bioguideId] = true;
+      await writeFile(CHECKPOINT_FILE, JSON.stringify(checkpoint));
+      continue;
     }
 
-    byBioguideId[leg.bioguideId] = {
-      bioguideId: leg.bioguideId,
-      name: leg.name,
-      articles,
-      ...(feed ? { feed } : {}),
-    };
+    byBioguideId[leg.bioguideId] = entry;
     if (articles.length > 0) membersWithNews += 1;
     if ((i + 1) % 50 === 0 || i === members.length - 1) {
       console.log(`  progress: ${i + 1}/${members.length} — ${membersWithNews} with news, ${fetchFailures} failed`);
     }
-    console.log(`  ${leg.name}: ${articles.length} article(s)${feed ? ` (${feed})` : ''}`);
+    console.log(`  ${leg.name}: ${articles.length} article(s)${entry.feed ? ` (${entry.feed})` : ''}`);
     const profileDir = path.join(profilesRoot, leg.bioguideId);
     try {
       await readFile(path.join(profileDir, 'news.json'), 'utf8');
@@ -365,15 +370,22 @@ async function main(): Promise<void> {
     await writeFile(CHECKPOINT_FILE, JSON.stringify(checkpoint));
   }
 
+  const entries = Object.values(byBioguideId);
+  const outputMembersWithNews = entries.filter((e) => (e.articles?.length ?? 0) > 0).length;
+  const outputTotalArticles = entries.reduce((sum, e) => sum + (e.articles?.length ?? 0), 0);
+  const outputGdeltCount = entries.filter(
+    (e) => e.feed === 'gdelt' && (e.articles?.length ?? 0) > 0,
+  ).length;
+
   const snapshot: MemberNewsSnapshot = {
     meta: {
       source: GDELT_SOURCE,
       asOf,
       fetchedAt,
       membersQueried: members.length,
-      membersWithNews,
-      totalArticles,
-      gdeltCount,
+      membersWithNews: outputMembersWithNews,
+      totalArticles: outputTotalArticles,
+      gdeltCount: outputGdeltCount,
       newsApiCount: 0,
       apiEndpoint: GDELT_DOC_API,
       note:
@@ -387,9 +399,9 @@ async function main(): Promise<void> {
 
   console.log(`Wrote ${OUT_FILE}`);
   console.log(`  members queried: ${members.length}`);
-  console.log(`  members with news: ${membersWithNews}`);
+  console.log(`  members with news: ${outputMembersWithNews}`);
   console.log(`  members failed (skipped): ${fetchFailures}`);
-  console.log(`  total articles: ${totalArticles}`);
+  console.log(`  total articles: ${outputTotalArticles}`);
 
   emitSyncSummary(
     buildSyncSummary('sync-news-national', {

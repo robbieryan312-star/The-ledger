@@ -32,6 +32,7 @@ import { getNationalNewsArticles, nationalArticlesToNewsItems } from './newsNati
 import { getPoliticianByBioguide } from './allPoliticians';
 import { applyNewsCorroboration, tokensFromMemberNames } from './newsCorroboration';
 import { normalizeUrlForDedupe } from './sourceIntegrity';
+import type { LegislatorNewsRow, NewsDisplayMap } from './memberNewsMatching';
 
 /** Name tokens to exclude from corroboration overlap for a bioguide (roster identity). */
 function memberNameTokensForBioguide(bioguideId: string): Set<string> {
@@ -309,7 +310,34 @@ export function mergeProfileNews(legacyNews: NewsItem[] | undefined, bioguideId?
     const seen = new Set(profileNews.map((i) => normalizeUrlForDedupe(i.url ?? i.source.url ?? '')));
     const merged = [...profileNews];
     if (merged.length < 15) {
-      const national = nationalArticlesToNewsItems(bioguideId, getNationalNewsArticles(bioguideId));
+      const politician = getPoliticianByBioguide(bioguideId);
+      const qualification =
+        politician
+          ? {
+              leg: {
+                bioguideId,
+                name: politician.name,
+                firstName: politician.firstName,
+                lastName: politician.lastName,
+                chamber: politician.chamber,
+              } satisfies LegislatorNewsRow,
+              displayByBio: new Map([
+                [
+                  bioguideId,
+                  {
+                    name: politician.name,
+                    firstName: politician.firstName,
+                    lastName: politician.lastName,
+                  },
+                ],
+              ]) satisfies NewsDisplayMap,
+            }
+          : undefined;
+      const national = nationalArticlesToNewsItems(
+        bioguideId,
+        getNationalNewsArticles(bioguideId),
+        qualification,
+      );
       for (const item of national) {
         const key = normalizeUrlForDedupe(item.url ?? item.source.url ?? '');
         if (seen.has(key)) continue;
