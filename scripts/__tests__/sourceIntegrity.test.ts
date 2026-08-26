@@ -55,7 +55,10 @@ import {
   validateStatementsFile,
   validateTopicPositionsBundle,
 } from '../../lib/data/sourceIntegrity';
-import { buildSaidDidDiffsFromTopicPositions } from '../../lib/data/buildSaidDidDiffs';
+import {
+  buildSaidDidDiffsFromTopicPositions,
+  pruneSaidDidLinksByTopic,
+} from '../../lib/data/buildSaidDidDiffs';
 import { MIGRATED_PROFILE_BIOGUIDES } from '../../lib/data/memberProfile';
 import { allPoliticians } from '../../lib/data/allPoliticians';
 import { PROFILE_VOTES_SUFFICIENCY_MUST_HAVE } from '../../lib/data/__fixtures__/profileVotesSufficiency.fixture';
@@ -199,6 +202,45 @@ test('known-bad nominee-mismatched Said→Did is rejected (Marvit≠Westercamp)'
     violations.some((v) => v.message.includes('no meaningful overlap')),
     'expected nominee-mismatch fixture to fail overlap guard',
   );
+});
+
+test('Said→Did pruning skips unresolved-provenance candidates and keeps later valid statements', () => {
+  const pruned = pruneSaidDidLinksByTopic({
+    climate: {
+      platformPositions: [],
+      statements: [
+        {
+          title: 'Mr. TEST. Mr. President, climate change requires clean energy action.',
+          date: '2024-01-01',
+          url: 'https://unknown.example.test/record',
+          tier: 'official',
+          topicId: 'climate',
+          verbatim: true,
+        },
+        {
+          title: 'Mr. TEST. Mr. President, climate change requires clean energy action.',
+          date: '2024-01-02',
+          url: 'https://www.govinfo.gov/content/pkg/CREC-2024-01-02/html/CREC-2024-01-02.htm',
+          tier: 'official',
+          topicId: 'climate',
+          verbatim: true,
+        },
+      ],
+      saidDidLinks: [
+        {
+          statedPositionDate: '2024-01-02',
+          voteDate: '2024-02-01',
+          billTitle: 'Climate Change and Clean Energy Act',
+          billNumber: 'S. 1',
+          congressGovUrl: 'https://www.congress.gov/bill/118th-congress/senate-bill/1',
+          voteChoice: 'Yea',
+          tier: 'official',
+        },
+      ],
+    },
+  });
+
+  assert.equal(pruned.climate?.length, 1);
 });
 
 test('known-bad non-verbatim alleged statement fails statements integrity', () => {

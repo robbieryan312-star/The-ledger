@@ -10,6 +10,55 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-26 — CRITICAL BUG AUTOMATION: Said→Did candidate skip @ pending
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (focused fix) · awaiting STAGE THREE  
+**Current state:** `cursor/critical-bug-management-ff78` · pre-fix HEAD `763dc67` · PR pending · tree dirty before commit · full `test:source-integrity` blocked by known open PR #99 dead-source-token guard
+
+### Objective
+Inspect recent commits for new high-severity correctness bugs; avoid duplicates already tracked in MEMORIES.md; fix only a concrete critical issue.
+
+### Bug / impact
+`lib/data/buildSaidDidDiffs.ts` selected the first topic-matching official/media statement even when its outlet could not be resolved, then returned `null`. A malformed or unknown-host first candidate could silently drop a later valid GovInfo/media statement and remove a legitimate Said→Did row from both profile rebuild pruning and rendered profile diffs.
+
+### What changed
+- `pickSaidForLink` now treats resolvable provenance as part of official/media candidate eligibility, so unresolved candidates are skipped and later valid candidates can be used.
+- Added a regression test where the first climate statement has an unknown host and the second has a valid GovInfo URL; pruning must keep the Said→Did link.
+
+### Acceptance evidence
+```
+npx tsx --test scripts/__tests__/sourceIntegrity.test.ts && npm run test:typecheck
+→ exit 0
+sourceIntegrity.test.ts: tests 58 / pass 58 / fail 0
+test:typecheck: tsc --noEmit → exit 0
+
+npm run test:source-integrity
+→ exit 1 (known duplicate blocker: PR #99)
+dead-source token "votesmart" found outside history exempts:
+.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2
+.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1
+new regression subtest in that run: ok — "Said→Did pruning skips unresolved-provenance candidates and keeps later valid statements"
+```
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/buildSaidDidDiffs.ts` | modified | skip unresolved official/media Said candidates instead of aborting selection |
+| `scripts/__tests__/sourceIntegrity.test.ts` | modified | added regression coverage for unresolved-first / valid-second statement ordering |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this handoff entry |
+
+### Open / next
+- Open PR from this branch; record URL in MEMORIES.md.
+- Claude STAGE THREE should review exact PR tip and note the full guard limitation is the already-open PR #99 blocker, not this fix.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG AUTOMATION 2026-08-26:** Review branch `cursor/critical-bug-management-ff78` after PR opens. Bug fixed: `buildSaidDidDiffs` aborted on first matching statement with unresolved provenance, silently dropping later valid Said→Did rows. Evidence: `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts && npm run test:typecheck` exit 0; full `npm run test:source-integrity` exit 1 only because known open PR #99 dead-source-token guard remains on main. Please perform STAGE THREE on the exact PR tip.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
