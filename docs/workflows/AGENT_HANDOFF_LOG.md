@@ -10,6 +10,64 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation: legal-name news corroboration parity (PASS with known build blocker)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS for scoped fix / BUILD BLOCKED by existing PR #99 issue  
+**Current state:** `cursor/critical-bug-management-ad7b` · work commit `da74849` · PR pending · tree dirty only this handoff entry before docs commit · build status: `npm run build` exit 1 at pre-existing `approvedSourceMatrixGuard` dead-source-token failure in `.claude/rules/*`
+
+### Objective
+Inspect recent commits for critical correctness bugs; fix only high-confidence issues causing data loss, crashes, security holes, or significant user-facing breakage.
+
+### Verdict / outcome
+**PASS (scoped):** fixed display-time News corroboration so migrated profile SSR excludes both roster display-name tokens and authoritative current-legislator legal-name tokens. This prevents unrelated legal-name-only headlines from being upgraded to verified because they share a legal first name plus one generic token.
+
+### Commits
+- `da74849` — fix(news): include legal names in profile corroboration
+- (pending docs commit) — record this handoff evidence
+
+### Commands run (this session)
+- `git fetch origin main && git fetch origin cursor/critical-bug-management-ad7b || true && ...` → exit 0; branch already `cursor/critical-bug-management-ad7b`
+- `for pr in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113; do gh pr view "$pr" --json number,url,state,mergedAt,closed,headRefName,baseRefName,title; done` → exit 0; all tracked PRs still open
+- `gh pr list --state all --limit 40 --json number,url,state,mergedAt,closed,updatedAt,createdAt,title,headRefName,baseRefName,isDraft && git branch -r --sort=-committerdate && git log --all --date=iso --pretty=format:'%h %ad %d %s' -40` → exit 0
+- `npx tsx -e "... rosterOnly/fullIdentity reproduction ..."` → exit 1 due shell quoting in first attempt; no product behavior
+- `npx tsx -e "... Sanders legal-name token reproduction ..."` → exit 0; roster-only tokens verified `[true,true]`, full identity tokens verified `[false,false]`
+- `npx tsx --test scripts/__tests__/newsCorroboration.test.ts` → exit 0; 6/6 pass
+- `npm run test:typecheck` → exit 0
+- `npm run test:source-integrity` → exit 1; known open PR #99 blocker (`dead-source token "votesmart"` in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`); new news corroboration test passed inside suite
+- `npm run build` → exit 1; same prebuild/source-integrity blocker before Next build
+- `npm run test:client-bundle` → exit 0
+- `npm run test:news-registry` → exit 0
+- `git add lib/data/memberProfile.ts lib/data/__fixtures__/newsCorroboration.fixture.ts scripts/__tests__/newsCorroboration.test.ts && git commit -m "fix(news): include legal names in profile corroboration"` → exit 0; `da74849`
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/memberProfile.ts` | modified | profile News corroboration token helper now unions roster display identity with `currentLegislators.json` legal identity |
+| `lib/data/__fixtures__/newsCorroboration.fixture.ts` | modified | appended known-bad legal-name-only unrelated headline fixture |
+| `scripts/__tests__/newsCorroboration.test.ts` | modified | asserts roster-only tokens reproduce the false positive and fixed profile tokens keep both items unverified |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this session entry |
+
+### Acceptance evidence
+- Reproduction before fix model: `rosterTokens: [ 'bernie', 'sanders' ]` → `rosterOnly: [ true, true ]`; `fullTokens: [ 'bernard', 'bernie', 'sanders' ]` → `fullIdentity: [ false, false ]`
+- Focused regression: `npx tsx --test scripts/__tests__/newsCorroboration.test.ts` → `# tests 6`, `# pass 6`, `# fail 0`
+- Typecheck: `npm run test:typecheck` → exit 0
+- Client boundary: `npm run test:client-bundle` → exit 0
+- News registry: `npm run test:news-registry` → exit 0
+- Build blocker (not introduced here): `npm run build` → `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1` (tracked by open PR #99)
+- Artifact: `/opt/cursor/artifacts/news_corroboration_validation_20260828.svg`
+
+### Open / next
+- Open PR for `cursor/critical-bug-management-ad7b`, record URL in persistent `MEMORIES.md`, and wait for Claude STAGE THREE review.
+- Full build remains blocked until PR #99 lands or the same blocker is otherwise resolved; do not treat this branch as build-green.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Critical bug automation 2026-08-28:** review exact work commit **`da74849`** on `cursor/critical-bug-management-ad7b` (PR pending at handoff-log write). Bug: `mergeProfileNews()` used roster-only name tokens while sync uses display+legal identity, so legal-name-only unrelated News headlines could be falsely corroborated as verified. Fix: `memberProfileNewsNameTokensForBioguide()` unions roster + `currentLegislators.json`; regression fixture proves roster-only `[true,true]` vs fixed `[false,false]`. Evidence: newsCorroboration 6/6, typecheck 0, client-bundle 0, news-registry 0. Open gate: `npm run build` exits 1 on pre-existing PR #99 dead-source-token blocker in `.claude/rules/*`; new test passes inside `test:source-integrity`. APPROVE/REJECT this scoped fix; do not merge without explicit approval on exact tip SHA.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
