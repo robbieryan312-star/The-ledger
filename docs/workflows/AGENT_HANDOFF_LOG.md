@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## Latest session — critical bug automation: legal-name news corroboration parity (PASS with known build blocker)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS for scoped fix / BUILD BLOCKED by existing PR #99 issue  
-**Current state:** `cursor/critical-bug-management-ad7b` · work commit `da74849` · PR pending · tree dirty only this handoff entry before docs commit · build status: `npm run build` exit 1 at pre-existing `approvedSourceMatrixGuard` dead-source-token failure in `.claude/rules/*`
+**Current state:** `cursor/critical-bug-management-ad7b` · work commit `da74849` · PR #114 https://github.com/robbieryan312-star/The-ledger/pull/114 · tree dirty only PR URL handoff update before final docs commit · build status: `npm run build` exit 1 at pre-existing `approvedSourceMatrixGuard` dead-source-token failure in `.claude/rules/*`
 
 ### Objective
 Inspect recent commits for critical correctness bugs; fix only high-confidence issues causing data loss, crashes, security holes, or significant user-facing breakage.
@@ -23,7 +23,8 @@ Inspect recent commits for critical correctness bugs; fix only high-confidence i
 
 ### Commits
 - `da74849` — fix(news): include legal names in profile corroboration
-- (pending docs commit) — record this handoff evidence
+- `1723ee1` — docs(handoff): record legal-name news corroboration fix
+- (pending docs commit) — record PR #114 URL in this handoff evidence
 
 ### Commands run (this session)
 - `git fetch origin main && git fetch origin cursor/critical-bug-management-ad7b || true && ...` → exit 0; branch already `cursor/critical-bug-management-ad7b`
@@ -38,6 +39,8 @@ Inspect recent commits for critical correctness bugs; fix only high-confidence i
 - `npm run test:client-bundle` → exit 0
 - `npm run test:news-registry` → exit 0
 - `git add lib/data/memberProfile.ts lib/data/__fixtures__/newsCorroboration.fixture.ts scripts/__tests__/newsCorroboration.test.ts && git commit -m "fix(news): include legal names in profile corroboration"` → exit 0; `da74849`
+- `git push -u origin cursor/critical-bug-management-ad7b` → exit 0
+- `open_git_pr` automation tool → PR #114
 
 ### Files touched
 | Path | Action | What changed |
@@ -57,14 +60,14 @@ Inspect recent commits for critical correctness bugs; fix only high-confidence i
 - Artifact: `/opt/cursor/artifacts/news_corroboration_validation_20260828.svg`
 
 ### Open / next
-- Open PR for `cursor/critical-bug-management-ad7b`, record URL in persistent `MEMORIES.md`, and wait for Claude STAGE THREE review.
+- PR #114 opened; persistent `MEMORIES.md` records this bug as open; wait for Claude STAGE THREE review.
 - Full build remains blocked until PR #99 lands or the same blocker is otherwise resolved; do not treat this branch as build-green.
 
 ---
 
 ## Confront Claude — paste to Claude Code
 
-**Critical bug automation 2026-08-28:** review exact work commit **`da74849`** on `cursor/critical-bug-management-ad7b` (PR pending at handoff-log write). Bug: `mergeProfileNews()` used roster-only name tokens while sync uses display+legal identity, so legal-name-only unrelated News headlines could be falsely corroborated as verified. Fix: `memberProfileNewsNameTokensForBioguide()` unions roster + `currentLegislators.json`; regression fixture proves roster-only `[true,true]` vs fixed `[false,false]`. Evidence: newsCorroboration 6/6, typecheck 0, client-bundle 0, news-registry 0. Open gate: `npm run build` exits 1 on pre-existing PR #99 dead-source-token blocker in `.claude/rules/*`; new test passes inside `test:source-integrity`. APPROVE/REJECT this scoped fix; do not merge without explicit approval on exact tip SHA.
+**Critical bug automation 2026-08-28:** review PR **#114** (work commit **`da74849`**, final branch tip after PR URL docs commit pending) on `cursor/critical-bug-management-ad7b`. Bug: `mergeProfileNews()` used roster-only name tokens while sync uses display+legal identity, so legal-name-only unrelated News headlines could be falsely corroborated as verified. Fix: `memberProfileNewsNameTokensForBioguide()` unions roster + `currentLegislators.json`; regression fixture proves roster-only `[true,true]` vs fixed `[false,false]`. Evidence: newsCorroboration 6/6, typecheck 0, client-bundle 0, news-registry 0. Open gate: `npm run build` exits 1 on pre-existing PR #99 dead-source-token blocker in `.claude/rules/*`; new test passes inside `test:source-integrity`. APPROVE/REJECT this scoped fix; do not merge without explicit approval on exact tip SHA.
 
 ---
 
