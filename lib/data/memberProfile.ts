@@ -32,17 +32,54 @@ import { getNationalNewsArticles, nationalArticlesToNewsItems } from './newsNati
 import { getPoliticianByBioguide } from './allPoliticians';
 import { applyNewsCorroboration, tokensFromMemberNames } from './newsCorroboration';
 import { normalizeUrlForDedupe } from './sourceIntegrity';
+import currentLegislators from './generated/currentLegislators.json';
 
-/** Name tokens to exclude from corroboration overlap for a bioguide (roster identity). */
-function memberNameTokensForBioguide(bioguideId: string): Set<string> {
+interface NewsLegislatorNameRecord {
+  bioguideId: string;
+  name?: string;
+  firstName?: string;
+  lastName?: string;
+}
+
+const currentLegislatorNamesByBioguide = new Map<string, NewsLegislatorNameRecord>(
+  ((currentLegislators as { legislators?: NewsLegislatorNameRecord[] }).legislators ?? [])
+    .filter((leg) => !!leg.bioguideId)
+    .map((leg) => [leg.bioguideId, leg]),
+);
+
+function pushName(parts: string[], value?: string): void {
+  const trimmed = value?.trim();
+  if (trimmed) parts.push(trimmed);
+}
+
+function pushFullName(parts: string[], firstName?: string, lastName?: string): void {
+  const first = firstName?.trim();
+  const last = lastName?.trim();
+  if (first && last) parts.push(`${first} ${last}`);
+}
+
+/**
+ * Name tokens to exclude from news corroboration overlap for a bioguide.
+ * Include both display roster names and legal legislator names so SSR does not
+ * re-verify profile news with a narrower token set than the sync pipeline used.
+ */
+export function memberProfileNewsNameTokensForBioguide(bioguideId: string): Set<string> {
+  const parts: string[] = [];
   const p = getPoliticianByBioguide(bioguideId);
-  if (!p) return new Set();
-  return tokensFromMemberNames([
-    p.name,
-    p.firstName,
-    p.lastName,
-    `${p.firstName} ${p.lastName}`,
-  ]);
+  if (p) {
+    pushName(parts, p.name);
+    pushName(parts, p.firstName);
+    pushName(parts, p.lastName);
+    pushFullName(parts, p.firstName, p.lastName);
+  }
+  const leg = currentLegislatorNamesByBioguide.get(bioguideId);
+  if (leg) {
+    pushName(parts, leg.name);
+    pushName(parts, leg.firstName);
+    pushName(parts, leg.lastName);
+    pushFullName(parts, leg.firstName, leg.lastName);
+  }
+  return tokensFromMemberNames(parts);
 }
 
 function isDisplayableStatement(statement: TopicStatementEntry): boolean {
@@ -319,7 +356,10 @@ export function mergeProfileNews(legacyNews: NewsItem[] | undefined, bioguideId?
     }
     merged.sort((a, b) => b.date.localeCompare(a.date));
     if (merged.length > 0) {
-      return applyNewsCorroboration(merged, memberNameTokensForBioguide(bioguideId)).slice(0, 15);
+      return applyNewsCorroboration(
+        merged,
+        memberProfileNewsNameTokensForBioguide(bioguideId),
+      ).slice(0, 15);
     }
   }
   return legacyNews ?? [];

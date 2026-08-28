@@ -5,11 +5,13 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
+  NEWS_CORROBORATION_KNOWN_BAD_LEGAL_NAME_ONLY_UNRELATED,
   NEWS_CORROBORATION_KNOWN_BAD_NAME_ONLY_UNRELATED,
   NEWS_CORROBORATION_KNOWN_BAD_SYNDICATED,
   NEWS_CORROBORATION_KNOWN_GOOD_DISTINCT,
   NEWS_CORROBORATION_KNOWN_GOOD_SAME_EVENT_NON_NAME,
 } from '../../lib/data/__fixtures__/newsCorroboration.fixture';
+import { memberProfileNewsNameTokensForBioguide } from '../../lib/data/memberProfile';
 import {
   applyNewsCorroboration,
   isIndependentSameEventReporting,
@@ -45,6 +47,21 @@ test('fixture: unrelated same-member articles sharing only name tokens are NOT v
   assert.equal(isIndependentSameEventReporting(a, b), true);
   const verified = applyNewsCorroboration([a, b], nameTokens);
   assert.equal(verified.every((i) => i.isVerified === expectVerified), true);
+});
+
+test('fixture: display corroboration excludes legal-name tokens from current legislators', () => {
+  const { a, b, expectVerified, memberBioguideId, rosterOnlyTokens } =
+    NEWS_CORROBORATION_KNOWN_BAD_LEGAL_NAME_ONLY_UNRELATED;
+  const rosterOnly = tokensFromMemberNames(rosterOnlyTokens);
+  assert.equal(isIndependentSameEventReporting(a, b, rosterOnly), true);
+
+  const fullIdentityTokens = memberProfileNewsNameTokensForBioguide(memberBioguideId);
+  assert.equal(fullIdentityTokens.has('bernard'), true);
+  assert.equal(isIndependentSameEventReporting(a, b, fullIdentityTokens), false);
+
+  const verified = applyNewsCorroboration([a, b], fullIdentityTokens);
+  assert.equal(verified.every((i) => i.isVerified === expectVerified), true);
+  assert.equal(verified.every((i) => i.source.tier === 'media'), true);
 });
 
 test('fixture: genuine same-event pair with ≥2 non-name tokens IS verified', () => {
