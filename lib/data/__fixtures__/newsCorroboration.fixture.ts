@@ -94,6 +94,42 @@ export const NEWS_CORROBORATION_KNOWN_BAD_NAME_ONLY_UNRELATED = {
 } as const;
 
 /**
+ * Known-bad (append): display/read path must exclude legal-name tokens too.
+ * Without "Bernard" in the member-name exclusion set, these unrelated headlines
+ * falsely share bernard+senate and become verified.
+ */
+export const NEWS_CORROBORATION_KNOWN_BAD_LEGAL_NAME_ONLY_UNRELATED = {
+  defect: 'legal-name-token-overlap-not-same-event',
+  description:
+    'Unrelated legal-name headlines must not corroborate when display and legal first names differ',
+  memberBioguideId: 'S000033',
+  a: item({
+    id: 'legal-name-only-a',
+    headline: 'Bernard Sanders criticizes Senate rules',
+    url: 'https://thehill.com/homenews/senate/bernard-sanders-senate-rules/',
+    source: {
+      name: 'The Hill',
+      url: 'https://thehill.com/homenews/senate/bernard-sanders-senate-rules/',
+      tier: 'media',
+      date: '2026-07-01',
+    },
+  }),
+  b: item({
+    id: 'legal-name-only-b',
+    headline: 'Bernard Sanders unveils Senate inquiry',
+    url: 'https://www.npr.org/2026/07/02/bernard-sanders-senate-inquiry',
+    source: {
+      name: 'NPR',
+      url: 'https://www.npr.org/2026/07/02/bernard-sanders-senate-inquiry',
+      tier: 'media',
+      date: '2026-07-02',
+    },
+  }),
+  rosterOnlyTokens: ['Bernie Sanders', 'Bernie', 'Sanders'],
+  expectVerified: false,
+} as const;
+
+/**
  * Known-good (append): genuine same-event pair with ≥2 shared NON-NAME tokens
  * (pause, datacenter, construction) after excluding member-name tokens.
  */
