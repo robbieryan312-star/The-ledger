@@ -24,6 +24,7 @@ import { crecFloorSpeechOpenerRegex } from './lib/crecOpener';
 import { canRefreshSaidDidLinks, mergeSaidDidLinksForRefresh } from './lib/topicPositionsPreserve';
 import { resolveGovInfoApiKey } from './lib/govinfoApiKey';
 import { isCeremonialCrecRemark } from '../lib/ceremonialCrecFilter';
+import { writeProfileTopicPositionsSidecar } from './lib/profileTopicPositionsSidecar';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
@@ -1131,9 +1132,8 @@ async function main(): Promise<void> {
     const memberTopics = await processMember(leg);
     await runExclusive(async () => {
       if (MEGA_BUNDLE_EXCLUDED.has(leg.bioguideId)) {
-        // Profile-only path: write a temp sidecar for apply scripts; keep mega-bundle frozen.
-        const sidePath = `/tmp/topic-positions-${leg.bioguideId}.json`;
-        await writeFile(sidePath, JSON.stringify({ byTopic: memberTopics }, null, 2) + '\n', 'utf8');
+        // Profile-only path: write a durable cache sidecar for migration; keep mega-bundle frozen.
+        const sidePath = await writeProfileTopicPositionsSidecar(leg.bioguideId, memberTopics);
         delete byBioguideId[leg.bioguideId];
         console.log(
           `  PROFILE-ONLY ${leg.bioguideId}: CREC written to ${sidePath} (mega-bundle freeze)`,

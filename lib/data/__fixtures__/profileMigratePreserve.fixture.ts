@@ -20,3 +20,23 @@ export const PROFILE_MIGRATE_KNOWN_GOOD_P000197 = {
   minStatements: 8,
   minSaidDidLinks: 1,
 } as const;
+
+/** Frozen good counter-example: profile-only topic sync does not re-enter the mega-bundle. */
+export const PROFILE_MIGRATE_PROFILE_ONLY_SIDECAR = {
+  bioguideId: 'T000000',
+  byTopic: {
+    healthcare: {
+      statements: [
+        {
+          title: 'Mr. TEST. Mr. Speaker, this is a profile-only floor remark about healthcare.',
+          displayText: 'This is a profile-only floor remark about healthcare.',
+          date: '2026-01-10',
+          url: 'https://www.govinfo.gov/app/details/CREC-2026-01-10-pt1-PgH100-1',
+          tier: 'official',
+          topicId: 'healthcare',
+          verbatim: true,
+        },
+      ],
+    },
+  },
+} as const;

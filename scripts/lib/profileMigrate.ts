@@ -25,6 +25,10 @@ import {
 } from '../../lib/data/sanitizeProfileUiData';
 import { isProceduralCrecText } from './crecProceduralFilter';
 import { syncProfileManifestFromDisk } from './profileManifestSync';
+import {
+  readProfileTopicPositionsSidecar,
+  type ProfileTopicPositionsByTopic,
+} from './profileTopicPositionsSidecar';
 import type { VoteRecord } from '../../lib/types';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -212,25 +216,30 @@ export interface MigrationResult {
   manifest: Record<string, string>;
 }
 
+export type TopicSnapshot = {
+  byBioguideId: Record<string, ProfileTopicPositionsByTopic>;
+};
+
+export async function loadMemberTopicSnapshot(
+  bioguideId: string,
+  topicSnapshot: TopicSnapshot,
+): Promise<ProfileTopicPositionsByTopic> {
+  const member =
+    topicSnapshot.byBioguideId[bioguideId] ?? (await readProfileTopicPositionsSidecar(bioguideId));
+  if (!member) {
+    throw new Error(
+      `${bioguideId} missing from topicPositions.json and profile topic-positions sidecar — run sync:topic-positions first`,
+    );
+  }
+  return member;
+}
+
 export async function migrateOne(
   bioguideId: string,
   displayName: string,
-  topicSnapshot: {
-    byBioguideId: Record<
-      string,
-      Record<
-        string,
-        {
-          platformPositions?: PlatformPositionEntry[];
-          statements?: TopicStatementEntry[];
-          saidDidLinks?: SaidDidLinkEntry[];
-        }
-      >
-    >;
-  },
+  topicSnapshot: TopicSnapshot,
 ): Promise<MigrationResult> {
-  const member = topicSnapshot.byBioguideId[bioguideId];
-  if (!member) throw new Error(`${bioguideId} missing from topicPositions.json`);
+  const member = await loadMemberTopicSnapshot(bioguideId, topicSnapshot);
 
   const politicianId = resolvePoliticianId(bioguideId);
   const politician = getPoliticianByBioguide(bioguideId);
@@ -501,19 +510,6 @@ export async function migrateOne(
 }
 
 export async function migrateMembers(bioguides: string[]): Promise<MigrationResult[]> {
-  type TopicSnapshot = {
-    byBioguideId: Record<
-      string,
-      Record<
-        string,
-        {
-          platformPositions?: PlatformPositionEntry[];
-          statements?: TopicStatementEntry[];
-          saidDidLinks?: SaidDidLinkEntry[];
-        }
-      >
-    >;
-  };
   const topicSnapshot = JSON.parse(await readFile(topicPositionsPath, 'utf8')) as TopicSnapshot;
 
   const legislatorsRaw = JSON.parse(

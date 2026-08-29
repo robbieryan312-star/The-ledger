@@ -10,6 +10,59 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation: profile-only topic sidecar (PASS)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (focused validation) · PR [#115](https://github.com/robbieryan312-star/The-ledger/pull/115)  
+**Current state:** `cursor/critical-bug-management-6857` · implementation commit `0fcf84d` · base HEAD `763dc67` · build status: `npm run build` FAIL due pre-existing open PR #99 dead-source-token guard in `.claude/rules/*`
+
+### Objective
+Find and fix one critical correctness bug from recent commits without duplicating open memory PRs.
+
+### Verdict / outcome
+PASS for the scoped fix: `sync:topic-positions` now writes profile-only topic output to an ignored durable cache sidecar and legacy `/tmp`; `profileMigrate` reads that sidecar when `topicPositions.json` intentionally excludes the member.
+
+### Commits
+- `0fcf84d` — `fix(profile): preserve profile-only topic sidecar`
+
+### Commands run (this session)
+- `git status --short && git branch --show-current && git rev-parse --short HEAD && git log --oneline --decorate -n 30` → exit 0
+- `gh pr list --repo robbieryan312-star/The-ledger --state all --limit 200 --json number,state,mergedAt,closedAt,url,headRefName,title` → exit 0; memory PRs #28-31, #40, #99-114 still open
+- `npx tsx -e "import { migrateMembers } from './scripts/lib/profileMigrate.ts'; await migrateMembers(['S000033']);"` → exit 1; `tsx -e` top-level await limitation
+- `npx tsx -e "import { migrateMembers } from './scripts/lib/profileMigrate.ts'; (async () => { await migrateMembers(['S000033']); })();"` → exit 1; reproduced `S000033 missing from topicPositions.json`
+- `npm run test:source-integrity -- --test-name-pattern "profile-only|legacy tmp|preserveExisting"` → exit 1; new profile sidecar tests passed, suite blocked by known PR #99 `votesmart` guard failure
+- `npx tsx --test scripts/__tests__/profileMigratePreserve.test.ts` → exit 0; 8/8 pass
+- `npm run test:typecheck` → exit 2 before readonly fixture fix, then exit 0 after fix
+- `npm run build` → exit 1; blocked by known PR #99 `approvedSourceMatrixGuard` failure in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`
+- `git status --short && git diff --stat && git rev-parse --short HEAD` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/lib/profileTopicPositionsSidecar.ts` | created | shared writer/reader for durable `data/cache/profile-topic-positions/{id}.json` plus legacy `/tmp/topic-positions-{id}.json` |
+| `scripts/sync-topic-positions.ts` | modified | profile-only excluded members write through sidecar helper instead of `/tmp` only |
+| `scripts/lib/profileMigrate.ts` | modified | exported `loadMemberTopicSnapshot`; migration falls back to profile-only sidecar when mega-bundle lacks member |
+| `scripts/__tests__/profileMigratePreserve.test.ts` | modified | regression tests for durable cache sidecar and legacy `/tmp` sidecar fallback |
+| `lib/data/__fixtures__/profileMigratePreserve.fixture.ts` | modified | frozen good profile-only sidecar fixture |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this session handoff |
+
+### Acceptance evidence
+- Reproduction before fix: `Error: S000033 missing from topicPositions.json` at `scripts/lib/profileMigrate.ts:233`.
+- Focused tests after fix: `npx tsx --test scripts/__tests__/profileMigratePreserve.test.ts` → `# tests 8`, `# pass 8`, `# fail 0`.
+- Typecheck after fix: `npm run test:typecheck` → exit 0.
+- Full build limitation: `npm run build` → fails at `approvedSourceMatrixGuard` with dead-source token in `.claude/rules/*`, matching existing open PR #99 in MEMORIES.md; not introduced by this branch.
+
+### Open / next
+- Open PR after commit/push and record it in automation memory.
+- Claude STAGE THREE should verify the sidecar path and account for the known PR #99 build blocker separately.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG FIX READY:** PR [#115](https://github.com/robbieryan312-star/The-ledger/pull/115), branch `cursor/critical-bug-management-6857`, implementation commit `0fcf84d`; bug: `sync:topic-positions` froze S000033 out of `topicPositions.json` but `profileMigrate` only read the bundle, so `profile:build -- --members S000033` crashed with `S000033 missing from topicPositions.json` and `/tmp`-only sidecar risked lost CREC handoff. Fix: durable ignored `data/cache/profile-topic-positions/{id}.json` + legacy `/tmp` sidecar writer, and migration fallback via `loadMemberTopicSnapshot`. Evidence: `npx tsx --test scripts/__tests__/profileMigratePreserve.test.ts` 8/8 pass; `npm run test:typecheck` exit 0; `npm run build` still blocked by known open PR #99 dead-source-token guard in `.claude/rules/*`. Review exact PR tip after final handoff-log commit; do not merge without explicit APPROVAL.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
