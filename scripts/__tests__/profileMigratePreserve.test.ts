@@ -2,20 +2,29 @@
  * §6 guards — migrateOne must preserve committed statements/Said→Did on empty re-run.
  */
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
+import { mkdir, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import test from 'node:test';
 import {
   PROFILE_MIGRATE_KNOWN_BAD_EMPTY_OVERWRITE,
   PROFILE_MIGRATE_PRESERVE_MINIMUMS,
+  PROFILE_MIGRATE_PROFILE_ONLY_SIDECAR,
 } from '../../lib/data/__fixtures__/profileMigratePreserve.fixture';
 import type { PlatformPositionEntry, SaidDidLinkEntry, TopicStatementEntry } from '../../lib/data/topicPositions';
 import {
   countSaidDidLinksInFile,
   countStatementsInFile,
+  loadMemberTopicSnapshot,
   preserveExistingSaidDidIfFreshEmpty,
   preserveExistingStatementsIfFreshEmpty,
 } from '../lib/profileMigrate';
+import {
+  type ProfileTopicPositionsByTopic,
+  profileTopicPositionsCachePath,
+  profileTopicPositionsTmpPath,
+  writeProfileTopicPositionsSidecar,
+} from '../lib/profileTopicPositionsSidecar';
 
 const PROFILES_ROOT = path.join(process.cwd(), 'lib/data/generated/profiles');
 
@@ -33,6 +42,10 @@ function countProfileSaidDid(bioguideId: string): number {
   return countSaidDidLinksInFile(loadProfileJson(bioguideId, 'saidDid.json') as Parameters<
     typeof countSaidDidLinksInFile
   >[0]);
+}
+
+function mutableProfileOnlyFixture(): ProfileTopicPositionsByTopic {
+  return JSON.parse(JSON.stringify(PROFILE_MIGRATE_PROFILE_ONLY_SIDECAR.byTopic)) as ProfileTopicPositionsByTopic;
 }
 
 test('preserveExistingStatementsIfFreshEmpty keeps prior CREC when fresh migrate yields zero', () => {
@@ -133,4 +146,43 @@ test('P000197 on disk meets frozen minimum statements=8 and saidDid=1', () => {
 test('P000197 positions remain honest-gap (empty byTopic)', () => {
   const positions = loadProfileJson('P000197', 'positions.json') as { byTopic?: Record<string, unknown> };
   assert.equal(Object.keys(positions.byTopic ?? {}).length, 0);
+});
+
+test('loadMemberTopicSnapshot reads profile-only cache sidecar when member is frozen out of mega-bundle', async () => {
+  const fixture = PROFILE_MIGRATE_PROFILE_ONLY_SIDECAR;
+  const byTopic = mutableProfileOnlyFixture();
+  const cachePath = profileTopicPositionsCachePath(fixture.bioguideId);
+  const tmpPath = profileTopicPositionsTmpPath(fixture.bioguideId);
+  await rm(cachePath, { force: true });
+  await rm(tmpPath, { force: true });
+
+  try {
+    const written = await writeProfileTopicPositionsSidecar(fixture.bioguideId, byTopic);
+    const loaded = await loadMemberTopicSnapshot(fixture.bioguideId, { byBioguideId: {} });
+
+    assert.equal(written, cachePath);
+    assert.equal(existsSync(cachePath), true);
+    assert.equal(existsSync(tmpPath), true);
+    assert.equal(loaded.healthcare?.statements?.[0]?.title, fixture.byTopic.healthcare.statements[0].title);
+  } finally {
+    await rm(cachePath, { force: true });
+    await rm(tmpPath, { force: true });
+  }
+});
+
+test('loadMemberTopicSnapshot still reads legacy tmp sidecar for old same-run sync output', async () => {
+  const fixture = PROFILE_MIGRATE_PROFILE_ONLY_SIDECAR;
+  const byTopic = mutableProfileOnlyFixture();
+  const cachePath = profileTopicPositionsCachePath(fixture.bioguideId);
+  const tmpPath = profileTopicPositionsTmpPath(fixture.bioguideId);
+  await rm(cachePath, { force: true });
+  await mkdir(path.dirname(tmpPath), { recursive: true });
+  await writeFile(tmpPath, `${JSON.stringify({ byTopic }, null, 2)}\n`, 'utf8');
+
+  try {
+    const loaded = await loadMemberTopicSnapshot(fixture.bioguideId, { byBioguideId: {} });
+    assert.equal(loaded.healthcare?.statements?.length, 1);
+  } finally {
+    await rm(tmpPath, { force: true });
+  }
 });
