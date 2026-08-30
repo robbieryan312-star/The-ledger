@@ -20,6 +20,7 @@ import {
   NATIONAL_SCHEDULE_A_FILE,
   PROJECT_ROOT,
 } from './lib/dataPaths';
+import { preserveScheduleARowOnFetchFailure } from './lib/fecScheduleAPreserve';
 import { memberInScope, requireSyncScope } from './lib/sync-scope';
 
 const projectRoot = PROJECT_ROOT;
@@ -213,8 +214,11 @@ async function main(): Promise<void> {
       };
       console.log(`  ${bioguideId}: ${contributors.length} contributors (${committeeIds.join(',')})`);
     } catch (err) {
-      failures.push({
+      preserveScheduleARowOnFetchFailure({
+        byBioguideId,
+        priorByBioguideId: existing?.byBioguideId,
         bioguideId,
+        failures,
         reason: err instanceof Error ? err.message : String(err),
       });
     }
