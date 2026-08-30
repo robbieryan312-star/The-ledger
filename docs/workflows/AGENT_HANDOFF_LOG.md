@@ -10,38 +10,39 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
-## HANDOFF 2026-08-30 — CRITICAL BUG SCAN: Schedule A scoped fetch-failure preservation
+## HANDOFF 2026-08-30 — CRITICAL BUG SCAN: Schedule A scoped/full-corpus preservation
 
 **From:** Cursor automation · **To:** Claude · **Verdict:** PASS for scoped fix · build BLOCKED by known PR #99 defect  
-**Current state:** `cursor/critical-bug-management-6883` · code commit `7d39fa9` · PR **#116** · tree clean after handoff commit/push · build exit 1 (known source-integrity dead-source-token blocker)
+**Current state:** `cursor/critical-bug-management-6883` · code commits `7d39fa9`, `d04e209` · PR **#116** · tree clean after handoff commit/push · build exit 1 (known source-integrity dead-source-token blocker)
 
 ### Objective
 Inspect recent commits for high-severity correctness bugs, skip memory-tracked open PRs, and fix only concrete critical defects.
 
 ### Bug / impact
-`scripts/sync-fec-schedule-a.ts` preserved only non-target members before a scoped refresh. If the targeted member's OpenFEC committee/contributor fetch threw after prior donor data existed, the rewritten `data/national/fec/schedule-a.json` omitted that targeted member, silently losing committed Schedule A donor rows.
+`scripts/sync-fec-schedule-a.ts` preserved only non-target members before a scoped refresh and started full-corpus output from an empty object. If the targeted member hit a per-member failure (OpenFEC exception, no committees, or no contributors) after prior donor data existed, the rewritten `data/national/fec/schedule-a.json` omitted that member; a partial full-corpus run could also omit prior rows.
 
 ### Root cause
-The scoped merge copied `existing.byBioguideId` rows only when `!memberFilter.has(id)`. The per-member `catch` path recorded a failure but never restored `existing.byBioguideId[bioguideId]` for the failed target.
+The scoped merge copied `existing.byBioguideId` rows only when `!memberFilter.has(id)`, and full-corpus mode did not seed from the prior snapshot. Member-level failure branches recorded a failure but did not carry forward `existing.byBioguideId[bioguideId]`.
 
 ### Fix
-- Added `preserveScheduleARowOnFetchFailure()` and wired the `sync:fec-schedule-a` exception path through it.
+- Added `preserveScheduleARowOnFailure()` / `seedScheduleARows()` and wired all member-level failure branches through preservation.
 - Added append-only bad/good fixtures for the scoped-overwrite scenario.
 - Added `fecScheduleAPreserve.test.ts` and wired it into `test:source-integrity`.
 
 ### Validation
 - `npm run test:typecheck` → exit 0
-- `npx tsx --test scripts/__tests__/fecScheduleAPreserve.test.ts` → exit 0 (2/2)
-- `npm run test:source-integrity` → exit 1; new Schedule A tests passed, then known PR #99 blocker failed: dead-source token in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`
+- `npx tsx --test scripts/__tests__/fecScheduleAPreserve.test.ts` → exit 0 (4/4)
+- `npm run test:source-integrity` → exit 1; new Schedule A tests passed (ok 22–25), then known PR #99 blocker failed: dead-source token in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`
 - `npm run build` → exit 1 on the same known PR #99 `approvedSourceMatrixGuard` / source-integrity failure after typecheck, CREC, org-join, and new Schedule A tests passed
 - Walkthrough artifact: `/opt/cursor/artifacts/schedule_a_preserve_validation.svg`
+- Follow-up artifact: `/opt/cursor/artifacts/schedule_a_preserve_followup_validation.svg`
 
 ### Files touched
 | Path | Action | What changed |
 |------|--------|--------------|
-| `scripts/sync-fec-schedule-a.ts` | modified | Preserve prior targeted row on caught FEC fetch exception |
-| `scripts/lib/fecScheduleAPreserve.ts` | created | Shared Schedule A failure-preserve helper |
-| `scripts/__tests__/fecScheduleAPreserve.test.ts` | created | Regression guard for scoped fetch-failure preservation |
+| `scripts/sync-fec-schedule-a.ts` | modified | Preserve prior rows on caught exception, no committees, no contributors, and full-corpus partial runs |
+| `scripts/lib/fecScheduleAPreserve.ts` | created/modified | Shared Schedule A failure-preserve and seed helpers |
+| `scripts/__tests__/fecScheduleAPreserve.test.ts` | created/modified | Regression guard for scoped and full-corpus preservation |
 | `lib/data/__fixtures__/fecScheduleAPreserve.fixture.ts` | created | Frozen bad/good Schedule A overwrite examples |
 | `package.json` | modified | Added new guard to `test:source-integrity` |
 | `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This handoff entry |
@@ -53,7 +54,7 @@ The scoped merge copied `existing.byBioguideId` rows only when `!memberFilter.ha
 
 ## Confront Claude — paste to Claude Code
 
-**CRITICAL BUG SCAN 2026-08-30:** review PR **#116** on `cursor/critical-bug-management-6883`; code commit **`7d39fa9`** preserves targeted Schedule A rows on scoped OpenFEC fetch exceptions and adds build-gated fixture/test. Evidence: `npm run test:typecheck` 0; `npx tsx --test scripts/__tests__/fecScheduleAPreserve.test.ts` 0 (2/2); `npm run test:source-integrity` and `npm run build` blocked only by known open PR #99 dead-source-token defect after new Schedule A tests passed. **STOP:** approve/reject PR #116; merge still gated on Claude approval and PR #99 build blocker resolution.
+**CRITICAL BUG SCAN 2026-08-30:** review PR **#116** on `cursor/critical-bug-management-6883`; code commits **`7d39fa9` + `d04e209`** preserve Schedule A rows on scoped/full-corpus member failures and add build-gated fixture/test. Evidence: `npm run test:typecheck` 0; `npx tsx --test scripts/__tests__/fecScheduleAPreserve.test.ts` 0 (4/4); `npm run test:source-integrity` and prior `npm run build` blocked only by known open PR #99 dead-source-token defect after new Schedule A tests passed. **STOP:** approve/reject PR #116; merge still gated on Claude approval and PR #99 build blocker resolution.
 
 ---
 
