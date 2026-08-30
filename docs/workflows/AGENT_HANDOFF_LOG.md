@@ -34,6 +34,7 @@ The scoped merge copied `existing.byBioguideId` rows only when `!memberFilter.ha
 - `npx tsx --test scripts/__tests__/fecScheduleAPreserve.test.ts` → exit 0 (2/2)
 - `npm run test:source-integrity` → exit 1; new Schedule A tests passed, then known PR #99 blocker failed: dead-source token in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`
 - `npm run build` → exit 1 on the same known PR #99 `approvedSourceMatrixGuard` / source-integrity failure after typecheck, CREC, org-join, and new Schedule A tests passed
+- Walkthrough artifact: `/opt/cursor/artifacts/schedule_a_preserve_validation.svg`
 
 ### Files touched
 | Path | Action | What changed |
