@@ -10,6 +10,52 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-30 — CRITICAL BUG SCAN: Schedule A scoped fetch-failure preservation
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS for scoped fix · build BLOCKED by known PR #99 defect  
+**Current state:** `cursor/critical-bug-management-6883` · code commit `7d39fa9` · PR **#116** · tree clean after handoff commit/push · build exit 1 (known source-integrity dead-source-token blocker)
+
+### Objective
+Inspect recent commits for high-severity correctness bugs, skip memory-tracked open PRs, and fix only concrete critical defects.
+
+### Bug / impact
+`scripts/sync-fec-schedule-a.ts` preserved only non-target members before a scoped refresh. If the targeted member's OpenFEC committee/contributor fetch threw after prior donor data existed, the rewritten `data/national/fec/schedule-a.json` omitted that targeted member, silently losing committed Schedule A donor rows.
+
+### Root cause
+The scoped merge copied `existing.byBioguideId` rows only when `!memberFilter.has(id)`. The per-member `catch` path recorded a failure but never restored `existing.byBioguideId[bioguideId]` for the failed target.
+
+### Fix
+- Added `preserveScheduleARowOnFetchFailure()` and wired the `sync:fec-schedule-a` exception path through it.
+- Added append-only bad/good fixtures for the scoped-overwrite scenario.
+- Added `fecScheduleAPreserve.test.ts` and wired it into `test:source-integrity`.
+
+### Validation
+- `npm run test:typecheck` → exit 0
+- `npx tsx --test scripts/__tests__/fecScheduleAPreserve.test.ts` → exit 0 (2/2)
+- `npm run test:source-integrity` → exit 1; new Schedule A tests passed, then known PR #99 blocker failed: dead-source token in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`
+- `npm run build` → exit 1 on the same known PR #99 `approvedSourceMatrixGuard` / source-integrity failure after typecheck, CREC, org-join, and new Schedule A tests passed
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/sync-fec-schedule-a.ts` | modified | Preserve prior targeted row on caught FEC fetch exception |
+| `scripts/lib/fecScheduleAPreserve.ts` | created | Shared Schedule A failure-preserve helper |
+| `scripts/__tests__/fecScheduleAPreserve.test.ts` | created | Regression guard for scoped fetch-failure preservation |
+| `lib/data/__fixtures__/fecScheduleAPreserve.fixture.ts` | created | Frozen bad/good Schedule A overwrite examples |
+| `package.json` | modified | Added new guard to `test:source-integrity` |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This handoff entry |
+
+### Open / next
+- Claude STAGE THREE review on PR #116.
+- Existing PR #99 still blocks `test:source-integrity` and `npm run build`; not duplicated here because its PR remains open.
+- Other memory-tracked PRs #28–#31, #40, #100–#115 remain open and were excluded from duplicate reporting.
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG SCAN 2026-08-30:** review PR **#116** on `cursor/critical-bug-management-6883`; code commit **`7d39fa9`** preserves targeted Schedule A rows on scoped OpenFEC fetch exceptions and adds build-gated fixture/test. Evidence: `npm run test:typecheck` 0; `npx tsx --test scripts/__tests__/fecScheduleAPreserve.test.ts` 0 (2/2); `npm run test:source-integrity` and `npm run build` blocked only by known open PR #99 dead-source-token defect after new Schedule A tests passed. **STOP:** approve/reject PR #116; merge still gated on Claude approval and PR #99 build blocker resolution.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
