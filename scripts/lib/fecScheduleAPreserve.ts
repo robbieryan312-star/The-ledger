@@ -3,12 +3,17 @@ interface ScheduleAFailure {
   reason: string;
 }
 
-export function preserveScheduleARowOnFetchFailure<T>(args: {
+export function seedScheduleARows<T>(priorByBioguideId?: Record<string, T>): Record<string, T> {
+  return { ...(priorByBioguideId ?? {}) };
+}
+
+export function preserveScheduleARowOnFailure<T>(args: {
   byBioguideId: Record<string, T>;
   priorByBioguideId?: Record<string, T>;
   bioguideId: string;
   failures: ScheduleAFailure[];
   reason: string;
+  fetchFailed?: boolean;
 }): boolean {
   const prior = args.priorByBioguideId?.[args.bioguideId];
   const preserved = prior != null;
@@ -17,7 +22,9 @@ export function preserveScheduleARowOnFetchFailure<T>(args: {
   }
   args.failures.push({
     bioguideId: args.bioguideId,
-    reason: `fetch-failed: ${args.reason}${preserved ? ' (prior Schedule A row preserved)' : ''}`,
+    reason: `${args.fetchFailed ? 'fetch-failed: ' : ''}${args.reason}${
+      preserved ? ' (prior Schedule A row preserved)' : ''
+    }`,
   });
   return preserved;
 }

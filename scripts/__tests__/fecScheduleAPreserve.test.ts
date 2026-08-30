@@ -8,21 +8,22 @@ import {
   FEC_SCHEDULE_A_KNOWN_BAD_SCOPED_FAILURE_OVERWRITE,
   FEC_SCHEDULE_A_KNOWN_GOOD_SCOPED_FAILURE_PRESERVE,
 } from '../../lib/data/__fixtures__/fecScheduleAPreserve.fixture';
-import { preserveScheduleARowOnFetchFailure } from '../lib/fecScheduleAPreserve';
+import { preserveScheduleARowOnFailure, seedScheduleARows } from '../lib/fecScheduleAPreserve';
 
-test('preserveScheduleARowOnFetchFailure keeps prior targeted row on scoped fetch failure', () => {
+test('preserveScheduleARowOnFailure keeps prior targeted row on scoped fetch exception', () => {
   const bad = FEC_SCHEDULE_A_KNOWN_BAD_SCOPED_FAILURE_OVERWRITE;
   const byBioguideId: Record<string, (typeof bad.priorByBioguideId)['S000033']> = {
     ...bad.outgoingByBioguideId,
   };
   const failures: Array<{ bioguideId: string; reason: string }> = [];
 
-  const preserved = preserveScheduleARowOnFetchFailure({
+  const preserved = preserveScheduleARowOnFailure({
     byBioguideId,
     priorByBioguideId: bad.priorByBioguideId,
     bioguideId: bad.targetBioguideId,
     failures,
     reason: bad.thrownReason,
+    fetchFailed: true,
   });
 
   assert.equal(preserved, true);
@@ -40,19 +41,49 @@ test('preserveScheduleARowOnFetchFailure keeps prior targeted row on scoped fetc
   assert.match(failures[0].reason, /prior Schedule A row preserved/);
 });
 
-test('preserveScheduleARowOnFetchFailure records fetch-failed when no prior row exists', () => {
+test('preserveScheduleARowOnFailure keeps prior row on non-throw member failure', () => {
+  const bad = FEC_SCHEDULE_A_KNOWN_BAD_SCOPED_FAILURE_OVERWRITE;
+  const byBioguideId: Record<string, (typeof bad.priorByBioguideId)['S000033']> = {};
+  const failures: Array<{ bioguideId: string; reason: string }> = [];
+
+  const preserved = preserveScheduleARowOnFailure({
+    byBioguideId,
+    priorByBioguideId: bad.priorByBioguideId,
+    bioguideId: bad.targetBioguideId,
+    failures,
+    reason: 'no itemized receipts found for authorized committees',
+  });
+
+  assert.equal(preserved, true);
+  assert.equal(byBioguideId.S000033.contributors[0].name, 'NATIONAL NURSES UNITED PAC');
+  assert.equal(
+    failures[0].reason,
+    'no itemized receipts found for authorized committees (prior Schedule A row preserved)',
+  );
+});
+
+test('preserveScheduleARowOnFailure records fetch-failed when no prior row exists', () => {
   const byBioguideId: Record<string, unknown> = {};
   const failures: Array<{ bioguideId: string; reason: string }> = [];
 
-  const preserved = preserveScheduleARowOnFetchFailure({
+  const preserved = preserveScheduleARowOnFailure({
     byBioguideId,
     priorByBioguideId: {},
     bioguideId: 'X000001',
     failures,
     reason: 'OpenFEC request failed: HTTP 503 Service Unavailable',
+    fetchFailed: true,
   });
 
   assert.equal(preserved, false);
   assert.deepEqual(byBioguideId, {});
   assert.equal(failures[0].reason, 'fetch-failed: OpenFEC request failed: HTTP 503 Service Unavailable');
+});
+
+test('seedScheduleARows starts full-corpus output from prior rows', () => {
+  const bad = FEC_SCHEDULE_A_KNOWN_BAD_SCOPED_FAILURE_OVERWRITE;
+  const seeded = seedScheduleARows(bad.priorByBioguideId);
+
+  assert.notEqual(seeded, bad.priorByBioguideId);
+  assert.equal(seeded.S000033.contributors[0].name, 'NATIONAL NURSES UNITED PAC');
 });

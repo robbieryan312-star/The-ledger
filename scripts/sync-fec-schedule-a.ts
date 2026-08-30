@@ -20,7 +20,7 @@ import {
   NATIONAL_SCHEDULE_A_FILE,
   PROJECT_ROOT,
 } from './lib/dataPaths';
-import { preserveScheduleARowOnFetchFailure } from './lib/fecScheduleAPreserve';
+import { preserveScheduleARowOnFailure, seedScheduleARows } from './lib/fecScheduleAPreserve';
 import { memberInScope, requireSyncScope } from './lib/sync-scope';
 
 const projectRoot = PROJECT_ROOT;
@@ -163,13 +163,8 @@ async function main(): Promise<void> {
     `Fetching committee-scoped Schedule A for ${entries.length} member(s) (${twoYearPeriod} period; limit=${limit}; orgs=${fetchOpts.includeOrganizations}; paginate=${fetchOpts.paginate})…`,
   );
 
-  const byBioguideId: Record<string, ScheduleARow> = {};
-  // §6 scoped merge: preserve other members
-  if (memberFilter && existing?.byBioguideId) {
-    for (const [id, row] of Object.entries(existing.byBioguideId)) {
-      if (!memberFilter.has(id)) byBioguideId[id] = row;
-    }
-  }
+  // Start from the prior snapshot; successful member refreshes replace rows below.
+  const byBioguideId: Record<string, ScheduleARow> = seedScheduleARows(existing?.byBioguideId);
 
   const failures: Array<{ bioguideId: string; reason: string }> = [];
   if (memberFilter && existing?.failures) {
@@ -182,7 +177,13 @@ async function main(): Promise<void> {
     try {
       const committees = await fetchCandidateCommittees(row.fecCandidateId, twoYearPeriod);
       if (committees.length === 0) {
-        failures.push({ bioguideId, reason: 'no authorized candidate committees found' });
+        preserveScheduleARowOnFailure({
+          byBioguideId,
+          priorByBioguideId: existing?.byBioguideId,
+          bioguideId,
+          failures,
+          reason: 'no authorized candidate committees found',
+        });
         await sleep(150);
         continue;
       }
@@ -195,7 +196,13 @@ async function main(): Promise<void> {
         fetchOpts,
       );
       if (contributors.length === 0) {
-        failures.push({ bioguideId, reason: 'no itemized receipts found for authorized committees' });
+        preserveScheduleARowOnFailure({
+          byBioguideId,
+          priorByBioguideId: existing?.byBioguideId,
+          bioguideId,
+          failures,
+          reason: 'no itemized receipts found for authorized committees',
+        });
         await sleep(150);
         continue;
       }
@@ -214,12 +221,13 @@ async function main(): Promise<void> {
       };
       console.log(`  ${bioguideId}: ${contributors.length} contributors (${committeeIds.join(',')})`);
     } catch (err) {
-      preserveScheduleARowOnFetchFailure({
+      preserveScheduleARowOnFailure({
         byBioguideId,
         priorByBioguideId: existing?.byBioguideId,
         bioguideId,
         failures,
         reason: err instanceof Error ? err.message : String(err),
+        fetchFailed: true,
       });
     }
     await sleep(150);
