@@ -63,6 +63,7 @@ function cleanPlatformPositions(
 function cleanStatements(statements: TopicStatementEntry[]): TopicStatementEntry[] {
   return statements
     .filter((s) => {
+      if (s.tier === 'alleged') return false;
       if (s.tier === 'official' && /\/CREC-/i.test(s.url)) {
         return !isProceduralCrecText(s.title);
       }
@@ -182,7 +183,7 @@ function buildPairableLinks(
     const bucket = byTopic[topicId];
     if (!bucket) continue;
     const hasSaid =
-      bucket.statements.some((s) => s.tier === 'official' || s.tier === 'media' || s.tier === 'alleged') ||
+      bucket.statements.some((s) => s.tier === 'official' || s.tier === 'media') ||
       bucket.platformPositions.some((p) => {
         const text = p.text.toLowerCase();
         const bill = vote.billId.replace(/\s+/g, '').toLowerCase();

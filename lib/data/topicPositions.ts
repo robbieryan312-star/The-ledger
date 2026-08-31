@@ -110,7 +110,7 @@ function sanitizeTopicData(topic: TopicPositionData): TopicPositionData | null {
       title,
       displayText: s.displayText !== undefined ? clean(title) : s.displayText,
     };
-  }).filter((s) => !isDisqualifiedPlatformPosition(s.title));
+  }).filter((s) => s.tier !== 'alleged' && !isDisqualifiedPlatformPosition(s.title));
 
   const saidDidLinks = topic.saidDidLinks ?? [];
 

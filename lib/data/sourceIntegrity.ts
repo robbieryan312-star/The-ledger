@@ -609,6 +609,7 @@ export function validateStatementsFile(
   for (const [topicId, topic] of Object.entries(data.byTopic ?? {})) {
     for (const [idx, stmt] of (topic.statements ?? []).entries()) {
       const label = `${fileLabel}.byTopic.${topicId}.statements[${idx}]`;
+      pushIf(violations, label, stmt.tier === 'alleged', 'alleged tier is banned on statements');
       if (stmt.tier === 'media' || stmt.tier === 'alleged') {
         pushIf(
           violations,
@@ -665,11 +666,20 @@ export function validatePlatformPositionsFile(
 
 /** Scan topicPositions.json mega-bundle for disqualified platform position text. */
 export function validateTopicPositionsBundle(
-  data: { byBioguideId?: Record<string, Record<string, { platformPositions?: LoosePlatformPosition[] }>> },
+  data: {
+    byBioguideId?: Record<
+      string,
+      Record<string, { platformPositions?: LoosePlatformPosition[]; statements?: LooseStatement[] }>
+    >;
+  },
 ): SourceIntegrityViolation[] {
   const violations: SourceIntegrityViolation[] = [];
   for (const [bioguideId, topics] of Object.entries(data.byBioguideId ?? {})) {
     for (const [topicId, topic] of Object.entries(topics)) {
+      for (const [idx, stmt] of (topic.statements ?? []).entries()) {
+        const label = `topicPositions.json.${bioguideId}.${topicId}.statements[${idx}]`;
+        pushIf(violations, label, stmt.tier === 'alleged', 'alleged tier is banned on bundle statements');
+      }
       for (const [idx, pos] of (topic.platformPositions ?? []).entries()) {
         const label = `topicPositions.json.${bioguideId}.${topicId}.platformPositions[${idx}]`;
         const text = pos.text ?? '';

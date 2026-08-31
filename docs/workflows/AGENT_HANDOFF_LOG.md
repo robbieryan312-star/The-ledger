@@ -10,6 +10,70 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-08-31 — CRITICAL BUG AUTOMATION: TOPIC BUNDLE ALLEGED STATEMENT GUARD @ f499701
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS for scoped fix; BUILD BLOCKED by pre-existing PR #99 base guard failure  
+**Current state:** `cursor/critical-bug-management-af0c` · code HEAD `f499701` · PR https://github.com/robbieryan312-star/The-ledger/pull/117 · tree dirty only for this handoff before docs commit · build status `npm run build` exit 1 on existing dead-source-token guard (#99)
+
+### Objective
+Inspect recent commits for high-severity correctness bugs, avoid duplicates in persistent memory, and fix only a concrete severe issue.
+
+### Bug and impact
+`allegedPolicyGuard` scanned migrated profile statement files but did not scan legacy `lib/data/generated/topicPositions.json` statement buckets. If a malformed `tier: "alleged"` statement entered that mega-bundle, non-migrated profile Key Issues could render it as Said/evidence despite the policy that alleged records are banned from statements/Said surfaces.
+
+### Root cause
+The bundle validator only checked `platformPositions`, while runtime accessors and issue construction still treated alleged statements as displayable. Migration pairing also allowed alleged statements to satisfy the Said side when deriving profile Said-Did links.
+
+### Fix
+- `lib/data/sourceIntegrity.ts` now rejects alleged statements in both profile statement files and `topicPositions.json` bundle validation.
+- `lib/data/topicPositions.ts`, `lib/data/memberProfile.ts`, and `lib/data/issuesFromTopicPositions.ts` filter alleged statements before display evidence construction.
+- `scripts/lib/profileMigrate.ts` strips alleged statements and no longer treats them as pairable Said.
+- `scripts/__tests__/topicPositionsBundle.test.ts` adds a regression fixture where a verbatim alleged bundle statement fails validation.
+
+### Commands run (this session)
+- `git status --short && git log --oneline --decorate -n 35 && gh pr view 28 --json number,state,mergedAt,url,title && gh pr view 29 --json number,state,mergedAt,url,title && gh pr view 30 --json number,state,mergedAt,url,title && gh pr view 31 --json number,state,mergedAt,url,title && gh pr view 40 --json number,state,mergedAt,url,title && gh pr view 99 --json number,state,mergedAt,url,title && gh pr view 100 --json number,state,mergedAt,url,title && gh pr view 101 --json number,state,mergedAt,url,title && gh pr view 102 --json number,state,mergedAt,url,title && gh pr view 103 --json number,state,mergedAt,url,title && gh pr view 104 --json number,state,mergedAt,url,title && gh pr view 105 --json number,state,mergedAt,url,title && gh pr view 106 --json number,state,mergedAt,url,title && gh pr view 107 --json number,state,mergedAt,url,title && gh pr view 108 --json number,state,mergedAt,url,title && gh pr view 109 --json number,state,mergedAt,url,title && gh pr view 110 --json number,state,mergedAt,url,title && gh pr view 111 --json number,state,mergedAt,url,title && gh pr view 112 --json number,state,mergedAt,url,title && gh pr view 113 --json number,state,mergedAt,url,title && gh pr view 114 --json number,state,mergedAt,url,title && gh pr view 115 --json number,state,mergedAt,url,title && gh pr view 116 --json number,state,mergedAt,url,title` -> exit 0; all memory PRs still OPEN.
+- `git fetch --all --prune && git for-each-ref --sort=-committerdate --format='%(committerdate:iso8601) %(refname:short) %(objectname:short) %(subject)' refs/remotes/origin refs/heads` -> exit 0.
+- `git log --name-status --oneline --decorate -n 25 origin/main && git diff --stat origin/main~20..origin/main && git diff --name-only origin/main~20..origin/main` -> exit 0.
+- `if [ -f /tmp/cursor/async-install/install-user.status ]; then printf 'install status: '; tr -d '\n' < /tmp/cursor/async-install/install-user.status; printf '\n'; elif [ -f /tmp/cursor/async-install/install-user.log ]; then printf 'install status: log-present\n'; ps -eo pid,args | rg '/tmp/cursor/async-install|install-user' || true; else printf 'install status: none\n'; fi && npm run test:topic-positions-bundle && npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/sourceIntegrity.test.ts` -> exit 0.
+- `npm run test:source-integrity` -> exit 1; only failure is existing PR #99 dead-source token in `.claude/rules/*`.
+- `npm run test:typecheck` -> exit 0.
+- `npm run build` -> exit 1; prebuild stops at existing PR #99 dead-source token before Next.js build.
+- `git diff -- lib/data/sourceIntegrity.ts lib/data/topicPositions.ts lib/data/memberProfile.ts lib/data/issuesFromTopicPositions.ts scripts/lib/profileMigrate.ts scripts/__tests__/topicPositionsBundle.test.ts && git status --short && git rev-parse --short HEAD` -> exit 0.
+- `git diff --check && git add lib/data/sourceIntegrity.ts lib/data/topicPositions.ts lib/data/memberProfile.ts lib/data/issuesFromTopicPositions.ts scripts/lib/profileMigrate.ts scripts/__tests__/topicPositionsBundle.test.ts && git commit -m "fix(data): block alleged statements in topic bundle"` -> exit 0; commit `f499701`.
+- `git push -u origin cursor/critical-bug-management-af0c` -> exit 0.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/sourceIntegrity.ts` | modified | Statement validators reject alleged tier; topicPositions bundle validator scans `statements[]`. |
+| `lib/data/topicPositions.ts` | modified | Bundle accessor drops alleged statements during sanitization. |
+| `lib/data/memberProfile.ts` | modified | Migrated profile reconstruction no longer treats alleged statements as displayable. |
+| `lib/data/issuesFromTopicPositions.ts` | modified | Key Issues evidence builder excludes alleged statements. |
+| `scripts/lib/profileMigrate.ts` | modified | Migration strips alleged statements and removes alleged from pairable Said eligibility. |
+| `scripts/__tests__/topicPositionsBundle.test.ts` | modified | Added alleged bundle statement regression fixture. |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This handoff entry. |
+
+### Acceptance evidence
+- `npm run test:topic-positions-bundle` -> `# tests 9`, `# pass 9`, including `bundle fixture: alleged statements fail validateTopicPositionsBundle`.
+- `npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/sourceIntegrity.test.ts` -> `# tests 64`, `# pass 64`.
+- `npm run test:typecheck` -> exit 0.
+- `npm run test:source-integrity` and `npm run build` remain blocked by the already-recorded open PR #99 issue: `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`.
+
+### Open / next
+- Claude STAGE THREE review PR #117. Do not merge without explicit APPROVAL on the exact tip SHA.
+- Existing PR #99 remains the base build blocker; this PR intentionally does not duplicate that fix.
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-management-af0c` · code commit `f499701` plus handoff commit pending · https://github.com/robbieryan312-star/The-ledger/pull/117  
+**Verdict:** PASS for scoped alleged-statement bundle fix; STOP for STAGE THREE.  
+**What changed:** Guard and runtime paths now ban/filter `tier: "alleged"` statements from profile statement files, legacy `topicPositions.json`, Key Issues evidence, and migration pairing.  
+**Evidence:** `npm run test:topic-positions-bundle` exit 0 (9/9); `npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/sourceIntegrity.test.ts` exit 0 (64/64); `npm run test:typecheck` exit 0. `npm run test:source-integrity` and `npm run build` exit 1 only on existing PR #99 dead-source-token base blocker.  
+**Open gates:** APPROVE/REJECT PR #117; keep PR #99 separate and resolve it before expecting full prebuild/build green.  
+**Repeat-work flag:** Not repeated; new bug recorded in automation MEMORIES.md on 2026-08-31.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
