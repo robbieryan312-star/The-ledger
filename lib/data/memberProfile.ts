@@ -46,7 +46,8 @@ function memberNameTokensForBioguide(bioguideId: string): Set<string> {
 }
 
 function isDisplayableStatement(statement: TopicStatementEntry): boolean {
-  if (statement.tier === 'media' || statement.tier === 'alleged') {
+  if (statement.tier === 'alleged') return false;
+  if (statement.tier === 'media') {
     return statement.verbatim === true;
   }
   return true;

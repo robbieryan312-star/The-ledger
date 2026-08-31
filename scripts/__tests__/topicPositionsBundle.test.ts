@@ -11,6 +11,7 @@ import {
   PLATFORM_KNOWN_BAD_BIO_BOILERPLATE,
   PLATFORM_KNOWN_BAD_EVENT_NARRATION,
   PLATFORM_KNOWN_BAD_SITE_FURNITURE,
+  STATEMENT_KNOWN_BAD_NON_VERBATIM_ALLEGED,
   PLATFORM_KNOWN_GOOD_MEMBER_POSITION,
 } from '../../lib/data/__fixtures__/sourceIntegrity.fixture';
 import {
@@ -49,6 +50,23 @@ function miniBundle(platformTexts: string[]) {
   };
 }
 
+function miniBundleWithAllegedStatement() {
+  return {
+    byBioguideId: {
+      FIXTURE: {
+        healthcare: {
+          statements: [
+            {
+              ...STATEMENT_KNOWN_BAD_NON_VERBATIM_ALLEGED.statement,
+              verbatim: true,
+            },
+          ],
+        },
+      },
+    },
+  };
+}
+
 test('topicPositions.json bundle passes validateTopicPositionsBundle', () => {
   const bundle = JSON.parse(readFileSync(BUNDLE, 'utf8')) as Parameters<
     typeof validateTopicPositionsBundle
@@ -80,6 +98,14 @@ test('bundle fixture: known-good member position passes validateTopicPositionsBu
     violations.length,
     0,
     `expected GOOD bundle fixture to pass; got: ${violations.map((v) => v.message).join('; ')}`,
+  );
+});
+
+test('bundle fixture: alleged statements fail validateTopicPositionsBundle', () => {
+  const violations = validateTopicPositionsBundle(miniBundleWithAllegedStatement());
+  assert.ok(
+    violations.some((v) => v.message.includes('alleged tier is banned')),
+    `expected alleged bundle statement to fail validation; got: ${violations.map((v) => v.message).join('; ')}`,
   );
 });
 

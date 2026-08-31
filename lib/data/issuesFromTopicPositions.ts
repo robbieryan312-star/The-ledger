@@ -15,6 +15,7 @@ import { leadSummary } from './displaySummary';
 import { isDisqualifiedPlatformPosition } from './sourceIntegrity';
 
 function isPolicyStatement(st: TopicStatementEntry): boolean {
+  if (st.tier === 'alleged') return false;
   return !isCeremonialCrecRemark(st.title);
 }
 
