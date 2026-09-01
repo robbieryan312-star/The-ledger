@@ -10,6 +10,47 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation scan (PASS — no new PR)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (scan complete; no new untracked critical bug)  
+**Current state:** `cursor/critical-bug-management-14b3` · parent HEAD `763dc67` · PR none opened · tree clean before this handoff edit · focused guards pass; full `test:source-integrity` blocked by known PR #99 duplicate
+
+### Objective
+Inspect recent commits for high-severity correctness bugs; avoid re-reporting bugs with open PRs tracked in persistent `MEMORIES.md`.
+
+### Verdict / outcome
+**PASS** — no new untracked critical bug found. Persistent memory entries were reconciled against GitHub; PRs #28, #29, #30, #31, #40, and #99-#117 are still open, so duplicates were not re-reported. The one full-suite failure observed is the known dead-source-token regression already tracked by open PR #99.
+
+### Commits
+- This handoff-log commit — records the 2026-09-01 scheduled scan evidence.
+
+### Commands run (this session)
+- `gh pr view 28 --json number,state,mergedAt,url,title && gh pr view 29 --json number,state,mergedAt,url,title && gh pr view 30 --json number,state,mergedAt,url,title && gh pr view 31 --json number,state,mergedAt,url,title && gh pr view 40 --json number,state,mergedAt,url,title && gh pr view 99 --json number,state,mergedAt,url,title && gh pr view 100 --json number,state,mergedAt,url,title && gh pr view 101 --json number,state,mergedAt,url,title && gh pr view 102 --json number,state,mergedAt,url,title && gh pr view 103 --json number,state,mergedAt,url,title && gh pr view 104 --json number,state,mergedAt,url,title && gh pr view 105 --json number,state,mergedAt,url,title && gh pr view 106 --json number,state,mergedAt,url,title && gh pr view 107 --json number,state,mergedAt,url,title && gh pr view 108 --json number,state,mergedAt,url,title && gh pr view 109 --json number,state,mergedAt,url,title && gh pr view 110 --json number,state,mergedAt,url,title && gh pr view 111 --json number,state,mergedAt,url,title && gh pr view 112 --json number,state,mergedAt,url,title && gh pr view 113 --json number,state,mergedAt,url,title && gh pr view 114 --json number,state,mergedAt,url,title && gh pr view 115 --json number,state,mergedAt,url,title && gh pr view 116 --json number,state,mergedAt,url,title && gh pr view 117 --json number,state,mergedAt,url,title` → exit 0; all tracked PRs still OPEN
+- `git status --short && git branch --show-current && git log --oneline --decorate -n 30` → exit 0; clean tree at parent `763dc67`
+- `git diff --stat c08be19..HEAD && git diff --name-only c08be19..HEAD && git show --stat --oneline --find-renames HEAD~20..HEAD` → exit 0; recent code/data surface identified
+- `git fetch --all --prune && git status --short && git log --oneline --decorate -n 40 origin/main` → exit 0; `origin/main` still `763dc67`
+- `npm run test:source-integrity` → exit 1; known PR #99 failure only (`approvedSourceMatrixGuard`: dead-source token in `.claude/rules/*`)
+- `npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/provenanceOutletGuard.test.ts` → exit 0; 17/17 pass
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added scheduled critical-bug scan result and validation evidence |
+
+### Acceptance evidence
+- Persistent memory read first via automation memory; tracked entries all still point to OPEN PRs, so no cleanup/write was needed.
+- Focused changed-path guard output: `# tests 17` / `# pass 17` / `# fail 0`.
+- Full source-integrity known duplicate: `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1` — matches `MEMORIES.md` PR #99.
+
+### Open / next
+- PR #99 still awaits review/merge to restore full `test:source-integrity` on main.
+
+## Confront Claude — paste to Claude Code
+
+**Critical bug automation 2026-09-01:** no new untracked critical bug found on `origin/main` @ `763dc67`; no PR opened. Existing memory PRs #28/#29/#30/#31/#40/#99-#117 remain OPEN. Full `npm run test:source-integrity` still fails only on known PR #99 dead-source-token regression; focused alleged/news/provenance guards pass 17/17. Review/merge PR #99 when approved, then re-run full source-integrity.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
