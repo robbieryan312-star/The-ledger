@@ -36,18 +36,20 @@ Inspect recent commits for high-severity correctness bugs; avoid re-reporting bu
 | Path | Action | What changed |
 |------|--------|--------------|
 | `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added scheduled critical-bug scan result and validation evidence |
+| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | Added CREC procedural privilege guard-review follow-up below the critical threshold |
 
 ### Acceptance evidence
 - Persistent memory read first via automation memory; tracked entries all still point to OPEN PRs, so no cleanup/write was needed.
 - Focused changed-path guard output: `# tests 17` / `# pass 17` / `# fail 0`.
 - Full source-integrity known duplicate: `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1` — matches `MEMORIES.md` PR #99.
+- Non-critical backlog item added: `CREC-PROCEDURAL-PRIVILEGE` for Claude evaluation of M001184 procedural floor-remark guard coverage.
 
 ### Open / next
 - PR #99 still awaits review/merge to restore full `test:source-integrity` on main.
 
 ## Confront Claude — paste to Claude Code
 
-**Critical bug automation 2026-09-01:** no new untracked critical bug found on `origin/main` @ `763dc67`; no PR opened. Existing memory PRs #28/#29/#30/#31/#40/#99-#117 remain OPEN. Full `npm run test:source-integrity` still fails only on known PR #99 dead-source-token regression; focused alleged/news/provenance guards pass 17/17. Review/merge PR #99 when approved, then re-run full source-integrity.
+**Critical bug automation 2026-09-01:** no new untracked critical bug found on `origin/main` @ `763dc67`; no PR opened. Existing memory PRs #28/#29/#30/#31/#40/#99-#117 remain OPEN. Full `npm run test:source-integrity` still fails only on known PR #99 dead-source-token regression; focused alleged/news/provenance guards pass 17/17. Also evaluate backlog `CREC-PROCEDURAL-PRIVILEGE` (M001184 "question of privileges" statement) and, if confirmed procedural, brief Cursor to DELETE that row and add an append-only source-integrity fixture. Review/merge PR #99 when approved, then re-run full source-integrity.
 
 ---
 
