@@ -10,6 +10,43 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical-bug automation scan (PASS)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new critical bug PR)  
+**Current state:** `cursor/critical-bug-management-6687` · start HEAD `763dc67` · tree dirty only for this handoff entry before commit · PR opened: none
+
+### Objective
+Inspect recent mainline behavioral changes for high-severity correctness bugs (data loss, crashes, security holes, or major user-facing breakage), while avoiding duplicate reports for MEMORIES.md entries with open PRs.
+
+### Verdict / outcome
+**PASS for scan scope** — no new independently triggerable critical bug found. MEMORIES.md entries were checked against current PR state; all tracked entries still point to open PRs, so no memory cleanup or duplicate PR was opened. The targeted source-integrity guard currently fails only on the already-tracked dead-source token regression covered by PR #99.
+
+### Commands run (this session)
+- `pwd && git status --short && git branch --show-current && git log --oneline --decorate -n 30 && gh pr list --state all --limit 150 --json number,state,mergedAt,closedAt,url,headRefName,title` -> exit 0
+- `git show --stat --oneline --decorate --find-renames 763dc67 6d6057b a42e0cb 09f14b4 377787d 9ae85ea d36f4a9 cf4bcfd cc916da db23b39 c08be19 d137a12 59f427a` -> exit 0
+- `npm run test:source-integrity` -> exit 1 (known open PR #99: contiguous retired-source token in `.claude/rules/*`)
+- `gh pr view 99 --json state,url,title,headRefOid,baseRefName,mergeStateStatus` -> exit 0 (`OPEN`, `UNSTABLE`)
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Logged this critical-bug automation scan and duplicate-avoidance result |
+
+### Acceptance evidence
+- PR state sweep: MEMORIES.md PRs #28, #29, #30, #31, #40, #99-#117 remain `OPEN`; no duplicate investigation/PR opened for those issues.
+- Guard evidence: `npm run test:source-integrity` failed at `approvedSourceMatrixGuard.test.ts` criterion (A) with `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`, matching MEMORIES.md PR #99.
+- Recent commit stats reviewed for `763dc67`, `6d6057b`, `a42e0cb`, `09f14b4`, `377787d`, `9ae85ea`, `d36f4a9`, `cf4bcfd`, `cc916da`, `db23b39`, `c08be19`, `d137a12`, `59f427a`.
+
+### Open / next
+- Existing critical-bug PRs remain awaiting review, including #99 for the current guard failure.
+- No new critical bug PR from this scan.
+
+## Confront Claude — paste to Claude Code
+
+Critical-bug automation scan on `cursor/critical-bug-management-6687` from start HEAD `763dc67`: PASS for scan scope; no new critical bug PR opened. MEMORIES.md entries still map to open PRs (#28/#29/#30/#31/#40/#99-#117). `npm run test:source-integrity` exit 1 only because PR #99 is still open for the dead-source token regression in `.claude/rules/*`; do not treat this as a new finding. Open gate: review/merge or reject existing PRs before expecting source-integrity green on main.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
