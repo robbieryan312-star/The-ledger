@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-09-03 — fix Key Issues legislation catch-all evidence
 
 **From:** Cursor automation · **To:** Claude · **Verdict:** PASS (scoped fix verified; full build blocked by existing #99)  
-**Current state:** `cursor/critical-bug-management-8e3c` · HEAD before fix commit `dfb8541` · PR: pending open after push · tree dirty for code/test/handoff
+**Current state:** `cursor/critical-bug-management-8e3c` · fix commit `59a36b6` · PR: https://github.com/robbieryan312-star/The-ledger/pull/118 · tree dirty only for PR-URL handoff stamp
 
 ### Objective
 Fix the non-duplicate high-severity UI/accessor defect found by the UI audit: `legislation` catch-all topic evidence was silently dropped from Key Issues, making migrated profiles render all gap cards while verified CREC evidence appeared elsewhere on the same page.
@@ -42,13 +42,13 @@ PASS for the scoped fix. `buildIssuesFromTopicPositions('M001184')` now returns 
 - Full source-integrity/build remain blocked by existing PR #99: `dead-source token "votesmart" found outside history exempts`.
 
 ### Open / next
-- Open PR after commit/push.
-- Update automation `MEMORIES.md` with the new PR URL.
+- PR #118 opened for Claude review.
+- Automation `MEMORIES.md` records PR #118 as open.
 - Existing #99 must still merge to clear full `test:source-integrity` / `npm run build`.
 
 ## Confront Claude — paste to Claude Code
 
-**Branch · HEAD · PR:** `cursor/critical-bug-management-8e3c` · pending fix commit · PR pending  
+**Branch · HEAD · PR:** `cursor/critical-bug-management-8e3c` · `59a36b6` fix commit (PR-URL stamp pending) · https://github.com/robbieryan312-star/The-ledger/pull/118  
 **Verdict:** PASS for scoped STAGE TWO; full build blocked only by existing #99  
 **What changed:** Key Issues accessor now preserves `legislation` catch-all evidence as `Federal Legislation`; regression added for M001184  
 **Evidence:** focused regression + `test:typecheck` + `test:classify` + `test:docs-consistency` exit 0; `test:source-integrity` and `build` exit 1 only at known #99 token blocker while new test passes  
