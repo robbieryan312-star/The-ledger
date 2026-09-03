@@ -27,6 +27,8 @@ PASS for the scoped fix. `buildIssuesFromTopicPositions('M001184')` now returns 
 - `npx tsx --test --test-name-pattern "M001184 legislation catch-all statements feed Key Issues evidence" scripts/__tests__/sourceIntegrity.test.ts && npm run test:typecheck && npm run test:classify && npm run test:docs-consistency` → exit 0
 - `npm run test:source-integrity` → exit 1; new regression test passed (`ok 96`), only failure is existing #99 dead-source token blocker
 - `npm run build` → exit 1; prebuild stops at existing #99 dead-source token blocker after typecheck/crec/org-join pass
+- `npm run dev -- -p 4101` in tmux → dev server ready; `/politicians/rep-massie?tab=overview` returned 200 for rendered verification; server stopped with Ctrl-C after test
+- Computer-use walkthrough + video review → PASS; artifact `/opt/cursor/artifacts/massie_federal_legislation_key_issues.mp4`
 
 ### Files touched
 | Path | Action | What changed |
@@ -40,6 +42,7 @@ PASS for the scoped fix. `buildIssuesFromTopicPositions('M001184')` now returns 
 - After fix: `{"directCount":1,"direct":[{"name":"Federal Legislation","evidence":2,...}],"mergedCount":11,"gapCount":10}`.
 - Focused regression + typecheck + classify + docs-consistency command exited 0.
 - Full source-integrity/build remain blocked by existing PR #99: `dead-source token "votesmart" found outside history exempts`.
+- Rendered walkthrough artifact: `/opt/cursor/artifacts/massie_federal_legislation_key_issues.mp4`; video review confirmed Federal Legislation expanded with GovInfo/CREC and Congress.gov evidence.
 
 ### Open / next
 - PR #118 opened for Claude review.
@@ -51,7 +54,7 @@ PASS for the scoped fix. `buildIssuesFromTopicPositions('M001184')` now returns 
 **Branch · HEAD · PR:** `cursor/critical-bug-management-8e3c` · `59a36b6` fix commit (PR-URL stamp pending) · https://github.com/robbieryan312-star/The-ledger/pull/118  
 **Verdict:** PASS for scoped STAGE TWO; full build blocked only by existing #99  
 **What changed:** Key Issues accessor now preserves `legislation` catch-all evidence as `Federal Legislation`; regression added for M001184  
-**Evidence:** focused regression + `test:typecheck` + `test:classify` + `test:docs-consistency` exit 0; `test:source-integrity` and `build` exit 1 only at known #99 token blocker while new test passes  
+**Evidence:** focused regression + `test:typecheck` + `test:classify` + `test:docs-consistency` exit 0; rendered video artifact `/opt/cursor/artifacts/massie_federal_legislation_key_issues.mp4` PASS; `test:source-integrity` and `build` exit 1 only at known #99 token blocker while new test passes  
 **Open gates:** Claude review/APPROVAL required for this PR; #99 still required for full green build  
 **Repeat-work flag:** new subagent-discovered defect, not duplicate of open PRs #28-#117
 
