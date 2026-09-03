@@ -10,6 +10,48 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-09-03 — critical bug automation audit
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new critical bug PR opened) · known open blocker #99 unchanged  
+**Current state:** `cursor/critical-bug-management-8e3c` · HEAD `763dc67` before audit-log commit · PR: none opened · tree dirty only for this handoff entry
+
+### Objective
+Inspect recent `origin/main` commits for high-severity correctness bugs (data loss, crashes, security holes, or significant user-facing breakage), avoid duplicates from automation `MEMORIES.md`, and only open a PR for a concrete new critical bug.
+
+### Verdict / outcome
+No distinct new critical bug met the automation confidence bar. All tracked memory PRs #28, #29, #30, #31, #40, and #99-#117 remain open, so no duplicate PR was opened and no memory cleanup was required.
+
+### Commands run (this session)
+- `git status --short && git branch --show-current && git log --oneline -12 && for pr in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117; do gh pr view "$pr" --json number,state,mergedAt,closedAt,url,title --jq '[.number,.state,(.mergedAt // ""),(.closedAt // ""),.url,.title] | @tsv'; done` → exit 0; every tracked PR reported `OPEN`
+- `git fetch --all --prune && git status --short && git branch --show-current && git log --oneline --decorate --max-count=20 origin/main && git log --oneline --decorate --max-count=12 HEAD` → exit 0; branch aligned with `origin/main` at `763dc67`
+- `git log --name-status --oneline --max-count=30 origin/main` → exit 0; recent behavioral diffs concentrated in alleged-policy, provenance, CREC/Said-Did, and guards
+- `git show --stat --patch --find-renames --find-copies --format=fuller db23b39 -- . ':!docs/workflows/AGENT_HANDOFF_LOG.md' ':!docs/workflows/IMPROVEMENT_BACKLOG.md' ':!docs/workflows/BATCH_SCALING.md' ':!.cursor/rules/*' ':!package.json' && git show --stat --patch --find-renames --find-copies --format=fuller d36f4a9 -- . ':!docs/workflows/AGENT_HANDOFF_LOG.md' ':!docs/workflows/IMPROVEMENT_BACKLOG.md' ':!docs/workflows/BATCH_SCALING.md' ':!.cursor/rules/*' ':!package.json' && git show --stat --patch --find-renames --find-copies --format=fuller 18b5d3e -- . ':!docs/workflows/AGENT_HANDOFF_LOG.md' ':!docs/workflows/IMPROVEMENT_BACKLOG.md' ':!docs/workflows/BATCH_SCALING.md' ':!.cursor/rules/*' ':!package.json'` → exit 0; inspected recent alleged/provenance guard stack
+- `git show --stat --patch --find-renames --find-copies --format=fuller d137a12 -- . ':!docs/workflows/AGENT_HANDOFF_LOG.md' ':!docs/workflows/IMPROVEMENT_BACKLOG.md' ':!docs/workflows/BATCH_SCALING.md' ':!PILOT_PROFILE_CHECKLIST.md' ':!docs/AGENT_INDEX.md' ':!package.json'` → exit 0; inspected CREC-yield logic changes
+- `git blame -L 100,115 -- lib/data/topicPositions.ts && git log --oneline -- lib/data/topicPositions.ts` → exit 0; suspicious display-text sanitation was pre-existing (`947571e`), not a recent critical escaped bug
+- `npm run test:source-integrity && npm run test:classify` → exit 1; stopped at known open PR #99 dead-source-token guard failure
+- `npm run test:classify` → exit 0; 13 tests passed
+- `git rev-parse --short HEAD && git status --short` → exit 0; HEAD `763dc67`, clean before this handoff edit
+
+### Acceptance evidence
+- Tracked-memory PR status sweep: #28, #29, #30, #31, #40, #99, #100, #101, #102, #103, #104, #105, #106, #107, #108, #109, #110, #111, #112, #113, #114, #115, #116, #117 all returned `OPEN`.
+- Guard evidence: `npm run test:source-integrity` failed only on the already-tracked #99 defect: `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`.
+- Independent recent-logic guard: `npm run test:classify` passed (`# tests 13`, `# pass 13`, `# fail 0`).
+
+### Open / next
+- Existing PR #99 still awaits review/merge to clear the current `test:source-integrity` failure.
+- No new critical bug PR from this audit.
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-management-8e3c` · `763dc67` before audit-log commit · PR none opened  
+**Verdict:** PASS for the cron audit — no distinct new critical bug found; STOP for any merge decision on existing open PRs  
+**What changed:** audit only; `docs/workflows/AGENT_HANDOFF_LOG.md` records duplicate-PR status, recent-commit scope, and validation results  
+**Evidence:** tracked PR sweep all `OPEN`; `npm run test:source-integrity && npm run test:classify` → exit 1 due known PR #99 token failure; `npm run test:classify` → exit 0 (`13/13`)  
+**Open gates:** PR #99 must be reviewed/merged to clear the known source-integrity blocker; no new PR requires review  
+**Repeat-work flag:** no repeated implementation brief — audit found only already-tracked open defects
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
