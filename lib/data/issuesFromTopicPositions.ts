@@ -10,6 +10,7 @@ import {
 import { getMemberTopicPositions, type TopicPositionData, type TopicStatementEntry } from './topicPositions';
 import { normalizeTopicId } from './topicAliases';
 import { isCeremonialCrecRemark } from './ceremonialCrecFilter';
+import { recordTopicLabel } from '../recordTopicBuckets';
 import { statementDisplayText } from './crecDisplayText';
 import { leadSummary } from './displaySummary';
 import { isDisqualifiedPlatformPosition } from './sourceIntegrity';
@@ -92,7 +93,7 @@ export function buildIssuesFromTopicPositions(bioguideId: string): Issue[] {
 
   for (const [policyId, data] of mergedByPolicy) {
     const policyDef = STANDARD_POLICY_TOPICS.find((t) => t.id === policyId);
-    if (!policyDef) continue;
+    const issueLabel = policyDef?.label ?? recordTopicLabel(policyId);
 
     const platformPositions = (data.platformPositions ?? []).filter(
       (p) => !isDisqualifiedPlatformPosition(p.text),
@@ -114,7 +115,7 @@ export function buildIssuesFromTopicPositions(bioguideId: string): Issue[] {
 
     // Label-echo guard: never render the topic name as if it were a stated position.
     if (!headlineDisplay?.trim()) continue;
-    if (headlineDisplay.trim().toLowerCase() === policyDef.label.trim().toLowerCase()) continue;
+    if (headlineDisplay.trim().toLowerCase() === issueLabel.trim().toLowerCase()) continue;
 
     const evidence = buildEvidence(policyId, data);
     const summarySource =
@@ -128,10 +129,10 @@ export function buildIssuesFromTopicPositions(bioguideId: string): Issue[] {
         : null;
 
     issues.push({
-      name: policyDef.label,
+      name: issueLabel,
       position: leadSummary(headlineDisplay, 100),
       detail: summarySource ? leadSummary(summarySource.text, 220) : leadSummary(headlineDisplay, 220),
-      category: policyDef.label,
+      category: issueLabel,
       statement: summarySource ? leadSummary(summarySource.text, 240) : undefined,
       evidence,
     });

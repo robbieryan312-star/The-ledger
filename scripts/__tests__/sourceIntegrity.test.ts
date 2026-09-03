@@ -56,8 +56,10 @@ import {
   validateTopicPositionsBundle,
 } from '../../lib/data/sourceIntegrity';
 import { buildSaidDidDiffsFromTopicPositions } from '../../lib/data/buildSaidDidDiffs';
+import { buildIssuesFromTopicPositions, buildMergedProfileIssues } from '../../lib/data/issuesFromTopicPositions';
 import { MIGRATED_PROFILE_BIOGUIDES } from '../../lib/data/memberProfile';
 import { allPoliticians } from '../../lib/data/allPoliticians';
+import { TOPIC_GAP_LABEL } from '../../lib/topicCoverage';
 import { PROFILE_VOTES_SUFFICIENCY_MUST_HAVE } from '../../lib/data/__fixtures__/profileVotesSufficiency.fixture';
 import { validateProfileVotesSufficiency } from '../../lib/data/profileVotesSufficiency';
 import { hasNationalCongressVotes } from '../../lib/data/nationalCongressVotes';
@@ -325,6 +327,28 @@ test('migrated members must NOT appear in demo congressVotes.json (single source
   for (const bioguideId of MIGRATED_PROFILE_BIOGUIDES) {
     assert.equal(demoIds.has(bioguideId), false, `migrated member ${bioguideId} still in demo congressVotes.json`);
   }
+});
+
+test('M001184 legislation catch-all statements feed Key Issues evidence', () => {
+  const issues = buildIssuesFromTopicPositions('M001184');
+  const legislation = issues.find((issue) => issue.name === 'Federal Legislation');
+  assert.ok(legislation, 'legislation catch-all evidence was dropped from Key Issues');
+  assert.ok(
+    (legislation.evidence ?? []).some((e) =>
+      e.source.url === 'https://www.govinfo.gov/app/details/CREC-2026-06-10-pt1-PgH4079-8',
+    ),
+    'expected Massie FISA/warrant CREC row to remain visible as Key Issues evidence',
+  );
+
+  const merged = buildMergedProfileIssues('M001184', [], true);
+  assert.ok(
+    merged.some((issue) => issue.name === 'Federal Legislation' && issue.position !== TOPIC_GAP_LABEL),
+    'merged featured profile issues must include the non-gap Federal Legislation card',
+  );
+  assert.ok(
+    merged.filter((issue) => issue.position === TOPIC_GAP_LABEL).length < merged.length,
+    'verified catch-all evidence must not render as all gap cards',
+  );
 });
 
 for (const bioguideId of MIGRATED_PROFILE_BIOGUIDES) {

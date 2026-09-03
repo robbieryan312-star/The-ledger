@@ -10,6 +10,53 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-09-03 — fix Key Issues legislation catch-all evidence
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (scoped fix verified; full build blocked by existing #99)  
+**Current state:** `cursor/critical-bug-management-8e3c` · HEAD before fix commit `dfb8541` · PR: pending open after push · tree dirty for code/test/handoff
+
+### Objective
+Fix the non-duplicate high-severity UI/accessor defect found by the UI audit: `legislation` catch-all topic evidence was silently dropped from Key Issues, making migrated profiles render all gap cards while verified CREC evidence appeared elsewhere on the same page.
+
+### Verdict / outcome
+PASS for the scoped fix. `buildIssuesFromTopicPositions('M001184')` now returns a non-gap `Federal Legislation` issue with CREC evidence instead of `[]`; `buildMergedProfileIssues('M001184', [], true)` now includes that non-gap card alongside standard topic gaps.
+
+### Commands run (this session)
+- `npx tsx -e "import { buildIssuesFromTopicPositions, buildMergedProfileIssues } from './lib/data/issuesFromTopicPositions.ts'; const direct=buildIssuesFromTopicPositions('M001184'); const merged=buildMergedProfileIssues('M001184', [], true); console.log(JSON.stringify({directCount:direct.length, direct:direct.map(i=>({name:i.name, evidence:(i.evidence??[]).length, position:i.position})), mergedCount:merged.length, gapCount:merged.filter(i=>i.position==='No verified record in integrated data').length}, null, 2));"` → exit 0; reproduced directCount 0 / gapCount 10 before fix
+- Same accessor probe after fix → exit 0; directCount 1, `Federal Legislation`, evidence 2, mergedCount 11, gapCount 10
+- `npx tsx --test --test-name-pattern "M001184 legislation catch-all statements feed Key Issues evidence" scripts/__tests__/sourceIntegrity.test.ts && npm run test:typecheck && npm run test:classify && npm run test:docs-consistency` → exit 0
+- `npm run test:source-integrity` → exit 1; new regression test passed (`ok 96`), only failure is existing #99 dead-source token blocker
+- `npm run build` → exit 1; prebuild stops at existing #99 dead-source token blocker after typecheck/crec/org-join pass
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/issuesFromTopicPositions.ts` | modified | Preserves non-standard record buckets (notably `legislation`) by using `recordTopicLabel(policyId)` instead of dropping them when absent from `STANDARD_POLICY_TOPICS`. |
+| `scripts/__tests__/sourceIntegrity.test.ts` | modified | Adds M001184 regression proving `legislation` catch-all CREC evidence appears in Key Issues and merged featured issues are not all gap cards. |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Records this fix, validation, and known blocker. |
+
+### Acceptance evidence
+- Before fix: `{"directCount":0,"mergedCount":10,"gapCount":10}` for M001184.
+- After fix: `{"directCount":1,"direct":[{"name":"Federal Legislation","evidence":2,...}],"mergedCount":11,"gapCount":10}`.
+- Focused regression + typecheck + classify + docs-consistency command exited 0.
+- Full source-integrity/build remain blocked by existing PR #99: `dead-source token "votesmart" found outside history exempts`.
+
+### Open / next
+- Open PR after commit/push.
+- Update automation `MEMORIES.md` with the new PR URL.
+- Existing #99 must still merge to clear full `test:source-integrity` / `npm run build`.
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-management-8e3c` · pending fix commit · PR pending  
+**Verdict:** PASS for scoped STAGE TWO; full build blocked only by existing #99  
+**What changed:** Key Issues accessor now preserves `legislation` catch-all evidence as `Federal Legislation`; regression added for M001184  
+**Evidence:** focused regression + `test:typecheck` + `test:classify` + `test:docs-consistency` exit 0; `test:source-integrity` and `build` exit 1 only at known #99 token blocker while new test passes  
+**Open gates:** Claude review/APPROVAL required for this PR; #99 still required for full green build  
+**Repeat-work flag:** new subagent-discovered defect, not duplicate of open PRs #28-#117
+
+---
+
 ## HANDOFF 2026-09-03 — critical bug automation audit
 
 **From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new critical bug PR opened) · known open blocker #99 unchanged  
