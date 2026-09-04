@@ -10,6 +10,65 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation scan (PASS / no new critical bug)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new untracked critical bug found)  
+**Current state:** `cursor/critical-bug-management-0afb` · start HEAD `763dc67` · tree clean before handoff-log update · PR opened: none (no code fix)
+
+### Objective
+Inspect recent commits for high-severity correctness bugs; avoid duplicating bugs already tracked in automation memory.
+
+### Verdict / outcome
+No new high-confidence critical bug was confirmed. The full source-integrity guard still fails on the already-tracked retired-source-token issue in `.claude/rules/*`; automation memory shows PR #99 is open for that exact bug, so no duplicate PR was opened.
+
+### Commits
+- `763dc67` — scanned baseline before this handoff-log update
+
+### Commands run (this session)
+- `git status --short && git branch --show-current && git log --oneline --decorate -n 25 && gh pr list --state all --json number,state,mergedAt,closedAt,url --limit 120` → exit 0; tracked memory PRs #28, #29, #30, #31, #40, #99-#118 all still open
+- `git log --name-status --oneline -n 35 -- app components lib scripts .github package.json package-lock.json next.config.* tsconfig.json` → exit 0; recent behavioral files reviewed
+- `node - <<'NODE' ... topicPositions/profile shape sanity ... NODE` → exit 0; `badCount=0`, `missingCount=0`
+- `if [ -f /tmp/cursor/async-install/install-user.status ]; then ... fi ... git diff --stat c08be19..HEAD ...` → exit 0; no async install/start script running; recent code diff identified
+- `npm run test:source-integrity` → exit 1; known open PR #99 failure: dead-source token in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`; 132 passing subtests, 1 failing subtest
+- `npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/profileMigratePreserve.test.ts scripts/__tests__/profileCategoryIntegrity.test.ts && npm run test:typecheck` → exit 0; 31 focused guard tests passed and TypeScript passed
+- `git rev-parse --short HEAD && git status --short` → exit 0; `763dc67`, clean before this edit
+- `npm run test:docs-consistency && git diff -- docs/workflows/AGENT_HANDOFF_LOG.md` → exit 0; 19 docs/pre-ingest/backlog guard tests passed
+- `npm run test:docs-consistency && git status --short` → exit 0; 19 docs/pre-ingest/backlog guard tests passed; only handoff log modified
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Recorded critical-bug automation scan, known-open duplicate guard failure, and validation evidence |
+
+### Acceptance evidence
+- Automation memory cleanup: all tracked PRs checked; every tracked entry points to an open PR, so no memory deletion/status change was required.
+- Full guard evidence: `npm run test:source-integrity` ended `# pass 132`, `# fail 1`; failing test matched memory entry for PR #99.
+- Targeted guard/type evidence: focused guard command ended `# pass 31`, `# fail 0`; `npm run test:typecheck` exited 0.
+- Handoff-log validation: `npm run test:docs-consistency` ended `# pass 19`, `# fail 0`.
+- Data-shape sanity evidence: generated `topicPositions.json` arrays valid (`badCount=0`); all 7 migrated profile category files present (`missingCount=0`).
+
+### Owner visibility finding
+| Field | Detail |
+|---|---|
+| **What** | Full `test:source-integrity` remains red on the retired-source-token guard |
+| **Where** | `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2`; `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`; existing PR #99 |
+| **Evidence** | `npm run test:source-integrity` → `dead-source token "votesmart" found outside history exempts` |
+| **Severity** | P1 guard/build failure; already tracked |
+| **Repair** | Existing PR #99 awaiting review; do not duplicate |
+| **Action this turn** | Flagged only; duplicate PR skipped per automation memory |
+
+### Open / next
+- PR #99 remains the blocker for full `test:source-integrity`.
+- No new PR from this run because no new critical bug met the confidence bar.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Critical bug automation scan:** baseline `763dc67` on `cursor/critical-bug-management-0afb`; no new untracked critical bug confirmed. `test:source-integrity` fails only on known-open PR #99 (`.claude/rules/*` retired-source token); focused guards pass 31/31 and `test:typecheck` exits 0. Open gate: review/merge PR #99 before expecting full source-integrity green.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
