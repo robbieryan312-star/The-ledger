@@ -1,10 +1,10 @@
 # The Ledger — Roadmap & Progression Expectations
 
-**Last updated:** 2026-07-20T07:40 Z · **Branch:** `main` ·
-**Production (sole Vercel project):** https://the-ledger-s4dn.vercel.app
+**Last updated:** 2026-09-04T04:05 Z · **Branch:** `main` ·
+**Production (sole Vercel project):** https://the-ledger-main.vercel.app
 
 **Deploy rule (binding):** The owner deleted all other Vercel projects (`the-ledger-jcjh`,
-`the-ledger`, etc.) — **`the-ledger-s4dn` is the only project.** Agents must not reference, deploy
+`the-ledger`, `the-ledger-s4dn`, etc.) — **`the-ledger-main` is the only project.** Agents must not reference, deploy
 to, push preview URLs for, or report deploy status on any former project name. Do not treat GitHub
 deployment rows or Vercel bot comments for deleted projects as authoritative.
 

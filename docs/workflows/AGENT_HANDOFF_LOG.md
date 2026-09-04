@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## Latest session — critical bug automation scan (PASS / no new critical bug)
 
 **From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new untracked critical bug found)  
-**Current state:** `cursor/critical-bug-management-0afb` · start HEAD `763dc67` · tree clean before handoff-log update · PR opened: none (no code fix)
+**Current state:** `cursor/critical-bug-management-0afb` · start HEAD `763dc67` · docs commits `9175d32` + follow-up stale-doc repair · PR opened: none (no code fix)
 
 ### Objective
 Inspect recent commits for high-severity correctness bugs; avoid duplicating bugs already tracked in automation memory.
@@ -34,11 +34,14 @@ No new high-confidence critical bug was confirmed. The full source-integrity gua
 - `git rev-parse --short HEAD && git status --short` → exit 0; `763dc67`, clean before this edit
 - `npm run test:docs-consistency && git diff -- docs/workflows/AGENT_HANDOFF_LOG.md` → exit 0; 19 docs/pre-ingest/backlog guard tests passed
 - `npm run test:docs-consistency && git status --short` → exit 0; 19 docs/pre-ingest/backlog guard tests passed; only handoff log modified
+- `git log -1 --oneline && git status --short && git rev-parse --short HEAD` → exit 0; docs-only handoff commit `9175d32`, clean tree after first push
+- `npm run test:docs-consistency && git diff --stat && git status --short` → exit 0; 19 docs/pre-ingest/backlog guard tests passed after `PROGRESS.md` stale-project repair
 
 ### Files touched
 | Path | Action | What changed |
 |------|--------|--------------|
 | `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Recorded critical-bug automation scan, known-open duplicate guard failure, and validation evidence |
+| `PROGRESS.md` | modified | Corrected stale sole Vercel project name from retired `the-ledger-s4dn` to canonical `the-ledger-main` |
 
 ### Acceptance evidence
 - Automation memory cleanup: all tracked PRs checked; every tracked entry points to an open PR, so no memory deletion/status change was required.
@@ -57,6 +60,15 @@ No new high-confidence critical bug was confirmed. The full source-integrity gua
 | **Repair** | Existing PR #99 awaiting review; do not duplicate |
 | **Action this turn** | Flagged only; duplicate PR skipped per automation memory |
 
+| Field | Detail |
+|---|---|
+| **What** | `PROGRESS.md` production-project name was stale |
+| **Where** | `PROGRESS.md` header/deploy rule |
+| **Evidence** | `docs/workflows/IMPROVEMENT_BACKLOG.md` owner/dashboard mirror records `the-ledger-main` as the sole project and `the-ledger-s4dn` retired |
+| **Severity** | P2 doc drift |
+| **Repair** | Agent-fixable docs correction |
+| **Action this turn** | Fixed in follow-up docs-only commit |
+
 ### Open / next
 - PR #99 remains the blocker for full `test:source-integrity`.
 - No new PR from this run because no new critical bug met the confidence bar.
@@ -65,7 +77,7 @@ No new high-confidence critical bug was confirmed. The full source-integrity gua
 
 ## Confront Claude — paste to Claude Code
 
-**Critical bug automation scan:** baseline `763dc67` on `cursor/critical-bug-management-0afb`; no new untracked critical bug confirmed. `test:source-integrity` fails only on known-open PR #99 (`.claude/rules/*` retired-source token); focused guards pass 31/31 and `test:typecheck` exits 0. Open gate: review/merge PR #99 before expecting full source-integrity green.
+**Critical bug automation scan:** baseline `763dc67` on `cursor/critical-bug-management-0afb`; no new untracked critical bug confirmed. `test:source-integrity` fails only on known-open PR #99 (`.claude/rules/*` retired-source token); focused guards pass 31/31 and `test:typecheck` exits 0. Docs drift in `PROGRESS.md` production URL corrected to `the-ledger-main`. Open gate: review/merge PR #99 before expecting full source-integrity green.
 
 ---
 
