@@ -25,36 +25,8 @@
           "description": "Burlington government access recording of Sanders press conference upon return from Yaroslavl"
         }
       ]
-    },
-    {
-      "id": "c2",
-      "title": "Campaign staff wage dispute (2019)",
-      "summary": "\"Given our campaign's commitment to fighting for a living wage of at least $15.00 an hour, we believe it is only fair that the campaign would carry through this commitment to its own field team.\" — draft letter from unionized field organizers, as quoted by The Washington Post (Sean Sullivan), 2019-07-18.",
-      "category": "Campaign",
-      "status": "Resolved",
-      "date": "2019-07-18",
-      "isVerified": false,
-      "verbatimQuote": "\"Given our campaign's commitment to fighting for a living wage of at least $15.00 an hour, we believe it is only fair that the campaign would carry through this commitment to its own field team.\"",
-      "outcome": "Campaign subsequently raised pay / limited hours so staff make the equivalent of $15 an hour (Washington Post, 2019-07-19).",
-      "reportedByOutletCount": 1,
-      "sources": [
-        {
-          "name": "Washington Post",
-          "url": "https://www.washingtonpost.com/politics/labor-fight-roils-bernie-sanders-campaign-as-workers-demand-the-15-hourly-pay-the-candidate-has-proposed-for-employees-nationwide/2019/07/18/3a6df9f4-a966-11e9-9214-246e594de5d5_story.html",
-          "tier": "alleged",
-          "date": "2019-07-18",
-          "description": "Verbatim quote from organizers' draft letter; contested claim about campaign pay (alleged surface)"
-        },
-        {
-          "name": "Washington Post",
-          "url": "https://www.washingtonpost.com/politics/bernie-sanders-defends-campaign-salaries-after-post-report-of-labor-dispute-with-unionized-organizers/2019/07/19/c60558ec-aa68-11e9-86dd-d7f0e60391e9_story.html",
-          "tier": "media",
-          "date": "2019-07-19",
-          "description": "Outcome reporting: campaign limited hours so pay met $15/hr equivalent"
-        }
-      ]
     }
   ],
   "status": "filled",
-  "note": "M-ALLEGED-POLICY REJECT remedy 2026-07-26: restored c2 with verbatim WaPo quote + outcome (repair before removal — paraphrase was the defect, not the sourced fact)."
+  "note": "One-outlet campaign-wage allegation omitted pending a second independent approved source; alleged controversies require verbatim quote, outcome, and 2+ independent named sources."
 }
