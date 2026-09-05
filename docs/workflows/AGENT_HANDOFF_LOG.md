@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## Latest session — critical bug automation: alleged controversy corroboration floor (PASS scoped / BUILD BLOCKED by known PR #99)
 
 **From:** Cursor Automation · **To:** Claude · **Verdict:** PASS scoped fix · full build blocked by remembered open PR #99  
-**Current state:** `cursor/critical-bug-management-7686` · base HEAD `763dc67` · working tree dirty before commit · PR pending
+**Current state:** `cursor/critical-bug-management-7686` · task commit `15c6b74` · log-stamp commit pending · PR pending
 
 ### Objective
 Inspect recent commits for high-severity correctness bugs, avoid duplicate open memory PRs, and fix any confirmed critical bug minimally.
@@ -25,7 +25,7 @@ S000033 rendered a campaign-wage alleged controversy with `reportedByOutletCount
 **PASS scoped** — validator now requires `reportedByOutletCount >= 2` plus at least two independent named URL-bearing sources for unverified controversies; the one-outlet shape is an append-only known-bad fixture; S000033 omits the campaign-wage item pending qualifying corroboration.
 
 ### Commits
-- Pending in this turn before commit.
+- `15c6b74` — `fix(alleged): enforce controversy corroboration floor`
 
 ### Commands run (this session)
 - `git status --short && git branch --show-current && git remote -v && git log --oneline --decorate -15` → exit 0
@@ -40,6 +40,7 @@ S000033 rendered a campaign-wage alleged controversy with `reportedByOutletCount
 - `npm run build` → exit 1, same known open PR #99 `approvedSourceMatrixGuard` dead-source-token failure
 - `npm run dev -- -p 4100` (tmux) → ready; browser GET `/politicians/bernie-sanders?tab=controversies` 200; stopped with Ctrl-C
 - `npm run test:docs-consistency` → exit 0
+- `git add lib/data/allegedPolicy.ts lib/data/__fixtures__/allegedPolicyGuard.fixture.ts scripts/__tests__/allegedPolicyGuard.test.ts lib/data/generated/profiles/S000033/controversies.json docs/workflows/AGENT_HANDOFF_LOG.md docs/workflows/IMPROVEMENT_BACKLOG.md && git commit -m "fix(alleged): enforce controversy corroboration floor"` → exit 0, `15c6b74`
 
 ### Files touched
 | Path | Action | What changed |
@@ -66,14 +67,14 @@ S000033 rendered a campaign-wage alleged controversy with `reportedByOutletCount
 ## Review for Claude
 
 **Brief / task:** critical bug automation — alleged controversy corroboration floor  
-**HEAD:** `763dc67` before commit · **Tree:** dirty: `lib/data/allegedPolicy.ts`, `lib/data/__fixtures__/allegedPolicyGuard.fixture.ts`, `scripts/__tests__/allegedPolicyGuard.test.ts`, `lib/data/generated/profiles/S000033/controversies.json`, handoff/backlog docs
+**HEAD:** `15c6b74` · **Tree:** clean after task commit
 
 | Check | Expected (brief) | Actual (this run) |
 |-------|------------------|-------------------|
 | Runtime | Targeted tests pass; build attempted | Targeted tests pass; full build fails on remembered open PR #99 |
 | Artifact path | Render evidence | `/opt/cursor/artifacts/sanders_controversies_no_single_outlet_allegation.mp4` |
 | Count / status | S000033 no one-outlet alleged controversy | `ids:["c1"]`, `unverified:0`; browser shows Total 1 / Documented 1 / Alleged 0 |
-| Commit for this task | Pending this turn | Pending before commit |
+| Commit for this task | Committed scoped fix | `15c6b74` |
 
 **Commands run (this session):**
 - `npm run test:source-integrity` → exit 1, known PR #99 failure
