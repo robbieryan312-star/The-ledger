@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## Latest session — critical bug automation: alleged controversy corroboration floor (PASS scoped / BUILD BLOCKED by known PR #99)
 
 **From:** Cursor Automation · **To:** Claude · **Verdict:** PASS scoped fix · full build blocked by remembered open PR #99  
-**Current state:** `cursor/critical-bug-management-7686` · task commit `15c6b74` · log-stamp commit pending · PR pending
+**Current state:** `cursor/critical-bug-management-7686` · task commit `15c6b74` · PR https://github.com/robbieryan312-star/The-ledger/pull/119 · final handoff stamp pending
 
 ### Objective
 Inspect recent commits for high-severity correctness bugs, avoid duplicate open memory PRs, and fix any confirmed critical bug minimally.
@@ -41,6 +41,7 @@ S000033 rendered a campaign-wage alleged controversy with `reportedByOutletCount
 - `npm run dev -- -p 4100` (tmux) → ready; browser GET `/politicians/bernie-sanders?tab=controversies` 200; stopped with Ctrl-C
 - `npm run test:docs-consistency` → exit 0
 - `git add lib/data/allegedPolicy.ts lib/data/__fixtures__/allegedPolicyGuard.fixture.ts scripts/__tests__/allegedPolicyGuard.test.ts lib/data/generated/profiles/S000033/controversies.json docs/workflows/AGENT_HANDOFF_LOG.md docs/workflows/IMPROVEMENT_BACKLOG.md && git commit -m "fix(alleged): enforce controversy corroboration floor"` → exit 0, `15c6b74`
+- `open_git_pr` → PR https://github.com/robbieryan312-star/The-ledger/pull/119
 
 ### Files touched
 | Path | Action | What changed |
