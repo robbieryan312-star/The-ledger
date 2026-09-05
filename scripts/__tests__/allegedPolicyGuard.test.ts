@@ -13,6 +13,7 @@ import {
   ALLEGED_KNOWN_BAD_BANNED_SECTION,
   ALLEGED_KNOWN_BAD_MISSING_VERBATIM,
   ALLEGED_KNOWN_BAD_PARAPHRASE,
+  ALLEGED_KNOWN_BAD_SINGLE_OUTLET,
   ALLEGED_KNOWN_GOOD_WITH_OUTCOME,
 } from '../../lib/data/__fixtures__/allegedPolicyGuard.fixture';
 import {
@@ -36,12 +37,19 @@ test('fixture (ii): alleged item with paraphrased text → FAILS', () => {
   assert.ok(r.reasons.some((x) => /paraphrase/i.test(x)));
 });
 
-test('fixture (iii): alleged item with outcome + verbatim + url → PASSES', () => {
+test('fixture (iii): alleged item with one independent outlet → FAILS', () => {
+  const r = validateAllegedControversy(ALLEGED_KNOWN_BAD_SINGLE_OUTLET);
+  assert.equal(r.ok, false);
+  assert.ok(r.reasons.some((x) => /reportedByOutletCount/i.test(x)));
+  assert.ok(r.reasons.some((x) => /independent source/i.test(x)));
+});
+
+test('fixture (iv): alleged item with outcome + verbatim + two outlets → PASSES', () => {
   const r = validateAllegedControversy(ALLEGED_KNOWN_GOOD_WITH_OUTCOME);
   assert.equal(r.ok, true, r.reasons.join('; '));
 });
 
-test('fixture (iv): alleged tier in a banned section → FAILS', () => {
+test('fixture (v): alleged tier in a banned section → FAILS', () => {
   const text = JSON.stringify(ALLEGED_KNOWN_BAD_BANNED_SECTION.payload);
   assert.equal(bannedSectionHasAllegedTier(text), true);
   assert.ok(ALLEGED_BANNED_SECTIONS.includes(ALLEGED_KNOWN_BAD_BANNED_SECTION.section));
@@ -67,7 +75,7 @@ test('live migrated profiles: no banned section carries tier alleged', () => {
   );
 });
 
-test('live controversies: unverified items satisfy verbatim+url+outcome', () => {
+test('live controversies: unverified items satisfy verbatim+url+outcome+two-source floor', () => {
   const ids = readdirSync(profilesRoot).filter((d) =>
     existsSync(path.join(profilesRoot, d, 'controversies.json')),
   );

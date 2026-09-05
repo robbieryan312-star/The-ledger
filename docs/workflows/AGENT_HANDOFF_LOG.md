@@ -10,6 +10,101 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation: alleged controversy corroboration floor (PASS scoped / BUILD BLOCKED by known PR #99)
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS scoped fix · full build blocked by remembered open PR #99  
+**Current state:** `cursor/critical-bug-management-7686` · base HEAD `763dc67` · working tree dirty before commit · PR pending
+
+### Objective
+Inspect recent commits for high-severity correctness bugs, avoid duplicate open memory PRs, and fix any confirmed critical bug minimally.
+
+### Bug and impact
+S000033 rendered a campaign-wage alleged controversy with `reportedByOutletCount: 1` and two Washington Post URLs. `validateAllegedControversy` only required verbatim quote + URL + outcome, so the guard blessed a one-outlet allegation despite the alleged-policy source floor requiring 2+ independent named sources. User impact: the Sanders profile displayed a below-floor contested claim as an alleged controversy.
+
+### Verdict / outcome
+**PASS scoped** — validator now requires `reportedByOutletCount >= 2` plus at least two independent named URL-bearing sources for unverified controversies; the one-outlet shape is an append-only known-bad fixture; S000033 omits the campaign-wage item pending qualifying corroboration.
+
+### Commits
+- Pending in this turn before commit.
+
+### Commands run (this session)
+- `git status --short && git branch --show-current && git remote -v && git log --oneline --decorate -15` → exit 0
+- `for pr in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118; do gh pr view "$pr" --json number,state,mergedAt,url,headRefName,headRefOid,title; done` → exit 0 (all remembered PRs still open)
+- `git fetch origin --prune && git log --oneline --decorate --max-count=25 origin/main` → exit 0
+- `git diff --stat c08be19..origin/main && git diff --name-status c08be19..origin/main` → exit 0
+- `git show --stat --oneline --find-renames db23b39 cc916da cf4bcfd d36f4a9 18b5d3e 377787d 09f14b4 | cat` → exit 0
+- `npm run test:source-integrity` → exit 1, known open PR #99 `approvedSourceMatrixGuard` dead-source-token failure; alleged-policy subtests passed
+- `npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts && npm run test:typecheck` → exit 0
+- `npx tsx -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('lib/data/generated/profiles/S000033/controversies.json','utf8')); console.log(JSON.stringify({ids:d.items.map((i:any)=>i.id), unverified:d.items.filter((i:any)=>!i.isVerified).length, note:d.note}, null, 2));"` → exit 0 (`ids:["c1"]`, `unverified:0`)
+- `npm run test:profile-snapshots` → exit 0
+- `npm run build` → exit 1, same known open PR #99 `approvedSourceMatrixGuard` dead-source-token failure
+- `npm run dev -- -p 4100` (tmux) → ready; browser GET `/politicians/bernie-sanders?tab=controversies` 200; stopped with Ctrl-C
+- `npm run test:docs-consistency` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/allegedPolicy.ts` | modified | unverified controversy validation now enforces 2+ independent named sources and reported outlet count |
+| `lib/data/__fixtures__/allegedPolicyGuard.fixture.ts` | modified | appended one-outlet known-bad fixture; updated positive fixture count/source shape |
+| `scripts/__tests__/allegedPolicyGuard.test.ts` | modified | added regression assertion for one-outlet alleged controversy; renamed live-data guard |
+| `lib/data/generated/profiles/S000033/controversies.json` | modified | omitted one-outlet campaign-wage allegation pending qualifying corroboration; note updated |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this session entry |
+| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | mark new alleged-corroboration guard item done |
+
+### Acceptance evidence
+- Targeted guard: `# tests 8` / `# pass 8` / `# fail 0`
+- Typecheck: `npm run test:typecheck` exit 0
+- Snapshot guard: `npm run test:profile-snapshots` exit 0
+- Docs consistency: `npm run test:docs-consistency` exit 0
+- Direct JSON: S000033 controversies ids `["c1"]`; unverified count `0`
+- Walkthrough artifact: `/opt/cursor/artifacts/sanders_controversies_no_single_outlet_allegation.mp4` verified by videoReview; rendered counts Total 1 / Documented 1 / Alleged 0.
+
+### Open / next
+- Full `npm run build` remains blocked by remembered open PR #99: `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1` still contain the contiguous dead-source token caught by `approvedSourceMatrixGuard`.
+- Claude STAGE THREE should review this exact PR tip for the alleged-controversy corroboration fix and separately keep PR #99 as the build-unblocker.
+
+## Review for Claude
+
+**Brief / task:** critical bug automation — alleged controversy corroboration floor  
+**HEAD:** `763dc67` before commit · **Tree:** dirty: `lib/data/allegedPolicy.ts`, `lib/data/__fixtures__/allegedPolicyGuard.fixture.ts`, `scripts/__tests__/allegedPolicyGuard.test.ts`, `lib/data/generated/profiles/S000033/controversies.json`, handoff/backlog docs
+
+| Check | Expected (brief) | Actual (this run) |
+|-------|------------------|-------------------|
+| Runtime | Targeted tests pass; build attempted | Targeted tests pass; full build fails on remembered open PR #99 |
+| Artifact path | Render evidence | `/opt/cursor/artifacts/sanders_controversies_no_single_outlet_allegation.mp4` |
+| Count / status | S000033 no one-outlet alleged controversy | `ids:["c1"]`, `unverified:0`; browser shows Total 1 / Documented 1 / Alleged 0 |
+| Commit for this task | Pending this turn | Pending before commit |
+
+**Commands run (this session):**
+- `npm run test:source-integrity` → exit 1, known PR #99 failure
+- `npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts && npm run test:typecheck` → exit 0
+- `npx tsx -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('lib/data/generated/profiles/S000033/controversies.json','utf8')); console.log(JSON.stringify({ids:d.items.map((i:any)=>i.id), unverified:d.items.filter((i:any)=>!i.isVerified).length, note:d.note}, null, 2));"` → exit 0
+- `npm run test:profile-snapshots` → exit 0
+- `npm run build` → exit 1, known PR #99 failure
+
+**Fresh evidence:**
+```
+ok 3 - fixture (iii): alleged item with one independent outlet → FAILS
+ok 7 - live controversies: unverified items satisfy verbatim+url+outcome+two-source floor
+# tests 8
+# pass 8
+# fail 0
+
+dead-source token "votesmart" found outside history exempts:
+.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2
+.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1
+```
+
+**Code vs evidence:** match for scoped fix; full-build DISCREPANCY is unrelated remembered PR #99 blocker.  
+**Blockers:** PR #99 must merge or be otherwise applied before `npm run build` can pass on main.  
+**STOP appropriate:** no — scoped fix is ready for Claude review; do not merge without exact-SHA APPROVAL.
+
+## Confront Claude — paste to Claude Code
+
+Review the PR tip for critical bug automation on `cursor/critical-bug-management-7686`: S000033 rendered a one-outlet alleged campaign-wage controversy; fix requires `reportedByOutletCount >= 2` and two independent named URL-bearing sources for unverified controversies, adds a failing fixture for the one-outlet shape, and omits S000033 c2 until qualifying corroboration exists. Evidence: allegedPolicyGuard 8/8 pass; typecheck pass; profile snapshots pass; direct JSON `ids:["c1"]`, `unverified:0`; video artifact shows `/politicians/bernie-sanders?tab=controversies` Total 1 / Documented 1 / Alleged 0. Full build is blocked by already-tracked open PR #99 (`approvedSourceMatrixGuard` dead-source token in Claude rule files), not by this scoped change. APPROVE/REJECT this exact tip; keep PR #99 as the build-unblocker; no merge without exact-SHA APPROVAL.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  

@@ -29,6 +29,7 @@ External truths both agents must share (dashboard drift is **owner-only** to fix
 
 | ID | Item | Priority | Owner | Status | Source-of-truth link |
 |----|------|----------|-------|--------|----------------------|
+| IMP-ALLEGED-CORROBORATION | Alleged controversies require 2+ independent named sources in addition to verbatim quote, URL, and outcome; guard one-outlet regressions | P0 | cursor | **done** | `allegedPolicyGuard.test.ts` · `lib/data/allegedPolicy.ts` · S000033 controversies |
 | DOC-01 | Cursor Cloud injected rules out of sync — still reference deleted `agent-ops.mdc`; must mirror repo `.cursor/rules` | P0 | owner | open | `docs/archive/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` §DOC-01 |
 | DOC-07 | ~~Two `## Improvement backlog` tables in handoff~~ → closed by this file | P1 | cursor | **done** | this file + `improvementBacklogGuard` |
 | AUDIT-DOC | Platform audit DOC-03–DOC-17 contradictions (push gate, session-start order, corroboration, migrated count 7, honest-gap copy, guard counts) | P1 | claude | open | `docs/archive/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` |
