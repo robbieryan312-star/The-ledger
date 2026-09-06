@@ -10,6 +10,52 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation scan (PASS)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (audit-only; no new critical bug PR)
+**Current state:** `cursor/critical-bug-management-d345` · HEAD `763dc67` before this handoff commit · tree clean before edit · `npm run build` failed on pre-existing tracked PR #99 source-token guard
+
+### Objective
+Inspect recent behavioral commits for new high-severity correctness bugs; skip anything already tracked by an open automation memory PR.
+
+### Verdict / outcome
+**PASS** — no new non-duplicate critical bug cleared the confidence bar. Two concrete candidates were verified as already tracked by open PRs and were not re-reported:
+- `lib/data/issuesFromTopicPositions.ts` emits generic `Journalism` for media Key Issues evidence — already tracked by PR #102.
+- `scripts/sync-official-issues-positions.ts` can overwrite committed `positions.json` with honest-gap output after failed/empty official issues fetch — already tracked by PR #109.
+
+### Commits
+- Pending this docs-only handoff commit.
+
+### Commands run (this session)
+- `git status --short && git branch --show-current && git log --oneline -20` → exit 0
+- `for n in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119; do gh pr view "$n" --json number,state,mergedAt,closedAt,headRefOid,title,url --jq '[.number,.state,(.mergedAt // ""),(.closedAt // ""),.headRefOid,.url,.title] | @tsv'; done` → exit 0; all tracked PRs open
+- `git fetch --prune origin && git status --short && git branch --show-current && git log --oneline --decorate --date=short --max-count=40 origin/main` → exit 0
+- `git log --no-merges --name-status --pretty=format:'--- %h %s' --max-count=35 origin/main -- ':(exclude)docs/**' ':(exclude)README.md' ':(exclude)CLAUDE.md'` → exit 0
+- `rg` / file reads for `lib/data/issuesFromTopicPositions.ts`, `scripts/sync-official-issues-positions.ts`, `scripts/lib/fetchSenateOfficialIssues.ts` → duplicate candidates confirmed
+- `git rev-parse --short HEAD && git status --short && git log -1 --oneline && gh pr view 102 --json number,state,url,title --jq '[.number,.state,.url,.title] | @tsv' && gh pr view 109 --json number,state,url,title --jq '[.number,.state,.url,.title] | @tsv'` → exit 0
+- `npm run build` → exit 1; known tracked PR #99 `votesmart` token guard failure in `.claude/rules/*`
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added audit-only automation handoff and duplicate-PR evidence |
+
+### Acceptance evidence
+- Persistent memory was read first via `automation_memory` (`MEMORIES.md` version `03a0508a54609f7d`).
+- PR state sweep verified every tracked memory PR (#28, #29, #30, #31, #40, #99-#119) is still `OPEN`.
+- Direct evidence: PR #102 `OPEN` at https://github.com/robbieryan312-star/The-ledger/pull/102; PR #109 `OPEN` at https://github.com/robbieryan312-star/The-ledger/pull/109.
+- Build evidence: `approvedSourceMatrixGuard` failed criterion A with `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`; this matches existing open PR #99, so no duplicate PR was opened.
+- Recent non-doc commits reviewed from `origin/main` through `763dc67`; no new non-duplicate critical trigger identified.
+
+### Open / next
+- Existing open fixes in `MEMORIES.md` still await review; no new PR opened by this audit.
+
+## Confront Claude — paste to Claude Code
+
+**Critical bug automation scan:** branch `cursor/critical-bug-management-d345` · pre-commit HEAD `763dc67` · PR none. **Verdict:** PASS audit-only / no new non-duplicate critical bug. Memory PR sweep found #28, #29, #30, #31, #40, #99-#119 all still OPEN; duplicate candidates matched #102 and #109 and were not re-reported. `npm run build` currently fails on known open PR #99 (`votesmart` token in `.claude/rules/*`). Open gate: Claude can independently audit the no-new-critical conclusion; no merge/approval requested for application code.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
