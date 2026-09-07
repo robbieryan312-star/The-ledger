@@ -10,19 +10,22 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
-## Latest session — critical bug automation: LDA lobbying preserve-on-failure (PASS focused / BUILD BLOCKED by #99)
+## Latest session — critical bug automation: LDA + legacy FEC preserve-on-failure (PASS focused / BUILD BLOCKED by #99)
 
 **From:** Cursor Automation · **To:** Claude · **Verdict:** PASS focused; full repository gate BLOCKED by existing open PR #99  
-**Current state:** `cursor/critical-bug-management-6e1e` · code tip `8ccb90c` · PR https://github.com/robbieryan312-star/The-ledger/pull/120 · tree dirty only for this handoff/backlog docs update before commit · build exit 1 on known #99 guard blocker
+**Current state:** `cursor/critical-bug-management-6e1e` · code tips `8ccb90c` + `2d6f647` · PR https://github.com/robbieryan312-star/The-ledger/pull/120 · tree dirty only for this handoff/backlog docs update before commit · build exit 1 on known #99 guard blocker
 
 ### Objective
 Inspect recent commits for high-severity correctness bugs, avoid duplicates from automation memory, and fix only a confirmed critical issue.
 
 ### Verdict / outcome
-Found one untracked P1 data-loss/honesty bug: `scripts/ingest-lobbying-member.ts` accumulated LDA API/page errors but still wrote an empty `honest-gap` payload over `data/national/lobbying/by-bioguide/{id}.json` and `profiles/{id}/lobbying.json`. Implemented preserve-on-failure semantics and opened PR #120.
+Found two untracked P1 data-loss/honesty bugs and updated PR #120:
+1. `scripts/ingest-lobbying-member.ts` accumulated LDA API/page errors but still wrote an empty `honest-gap` payload over `data/national/lobbying/by-bioguide/{id}.json` and `profiles/{id}/lobbying.json`.
+2. `scripts/sync-fec-finance.ts` built `lib/data/generated/fecFinance.json` from fresh rows only; skipped or errored profiles were omitted and prior campaign-finance rows were lost.
 
 ### Commits
 - `8ccb90c` — `fix(lobbying): preserve LDA rows on fetch errors`
+- `2d6f647` — `fix(fec): preserve legacy finance rows on partial refresh`
 - Handoff/backlog docs commit follows this entry in the same turn.
 
 ### Commands run (this session)
@@ -37,21 +40,29 @@ Found one untracked P1 data-loss/honesty bug: `scripts/ingest-lobbying-member.ts
 - `git add package.json scripts/ingest-lobbying-member.ts scripts/__tests__/lobbyingMemberPreserve.test.ts && git commit -m "fix(lobbying): preserve LDA rows on fetch errors"` → exit 0; commit `8ccb90c`
 - `git push -u origin cursor/critical-bug-management-6e1e` → exit 0
 - `open_git_pr` → PR #120 created
+- `npx tsx --test scripts/__tests__/fecFinancePreserve.test.ts scripts/__tests__/lobbyingMemberPreserve.test.ts` → exit 0; 5/5 pass
+- `npm run test:typecheck` → exit 0
+- `npm run test:source-integrity 2>&1 | tee /tmp/ledger-test-source-integrity-fec-lobbying.log` → exit 1; new FEC/LDA tests pass, existing #99 `votesmart` guard fails
+- `npm run build 2>&1 | tee /tmp/ledger-build-fec-lobbying-preserve.log` → exit 1; blocked by same existing #99 `votesmart` guard
+- `git add package.json scripts/sync-fec-finance.ts scripts/__tests__/fecFinancePreserve.test.ts && git commit -m "fix(fec): preserve legacy finance rows on partial refresh"` → exit 0; commit `2d6f647`
 
 ### Files touched
 | Path | Action | What changed |
 |------|--------|--------------|
 | `scripts/ingest-lobbying-member.ts` | modified | Added import-safe direct-run guard, prior lobbying payload read, and payload builder that preserves prior rows on errored empty refreshes or emits `fetch-failed` when no verified empty scan occurred. |
 | `scripts/__tests__/lobbyingMemberPreserve.test.ts` | created | Regression tests for prior-row preservation, fetch-failed empty output, and error-free honest-gap output. |
-| `package.json` | modified | Wires `lobbyingMemberPreserve.test.ts` into `test:source-integrity`. |
-| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | Records `IMP-LDA-PRESERVE` as done with PR #120. |
+| `scripts/sync-fec-finance.ts` | modified | Seeds from prior `fecFinance.json`, overwrites only refreshed rows, preserves skipped/errored rows, and records refreshed/preserved/failure counts. |
+| `scripts/__tests__/fecFinancePreserve.test.ts` | created | Regression tests for partial-refresh row preservation and stale-metadata prior-row counting. |
+| `package.json` | modified | Wires `lobbyingMemberPreserve.test.ts` and `fecFinancePreserve.test.ts` into `test:source-integrity`. |
+| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | Records `IMP-LDA-PRESERVE` and `IMP-FEC-LEGACY-PRESERVE` as done with PR #120. |
 | `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session entry. |
 
 ### Acceptance evidence
 - Focused guard: `# pass 3` / `# fail 0` for `lobbyingMemberPreserve.test.ts`.
+- Focused FEC+LDA guard: `# pass 5` / `# fail 0` for `fecFinancePreserve.test.ts` + `lobbyingMemberPreserve.test.ts`.
 - Typecheck: `npm run test:typecheck` exit 0.
-- Source-integrity rerun: LDA subtests `ok 28`, `ok 29`, `ok 30`; suite exit 1 only on existing #99 blocker: `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`.
-- Build rerun: prebuild reaches `test:source-integrity` and exits 1 on same #99 blocker; `test:typecheck`, `test:crec`, and `test:org-join` passed before that.
+- Source-integrity rerun: FEC subtests `ok 22`, `ok 23`; LDA subtests `ok 30`, `ok 31`, `ok 32`; suite exit 1 only on existing #99 blocker: `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`.
+- Build rerun: prebuild reaches `test:source-integrity` and exits 1 on same #99 blocker; `test:typecheck`, `test:crec`, and `test:org-join` passed before that; FEC/LDA preserve subtests passed inside source-integrity.
 - Artifact: `/opt/cursor/artifacts/lobbying_preserve_validation.svg`.
 
 ### Open / next
@@ -61,7 +72,7 @@ Found one untracked P1 data-loss/honesty bug: `scripts/ingest-lobbying-member.ts
 
 ## Confront Claude — paste to Claude Code
 
-PR #120 fixes an untracked LDA lobbying data-loss bug. Root cause: `scripts/ingest-lobbying-member.ts` caught LDA page/API failures into `errors[]` but still wrote `status: honest-gap` with `items: []`, overwriting prior `data/national/lobbying/by-bioguide/{id}.json` and `profiles/{id}/lobbying.json`. Fix: preserve prior rows when errored refresh has no fresh matches; emit `fetch-failed` when there is no prior data and the scan was not error-free; only write `honest-gap` after an error-free empty scan. Evidence: `npx tsx --test scripts/__tests__/lobbyingMemberPreserve.test.ts` exit 0 (3/3); `npm run test:typecheck` exit 0; `npm run test:source-integrity` and `npm run build` exit 1 only on existing open #99 dead-source-token blocker while new LDA subtests pass inside source-integrity. Review exact PR #120 tip after docs push; do not merge without APPROVAL on that exact SHA.
+PR #120 now fixes two untracked preserve-on-failure data-loss bugs. LDA root cause: `scripts/ingest-lobbying-member.ts` caught page/API failures into `errors[]` but still wrote `status: honest-gap` with `items: []`, overwriting prior lobbying rows; fix preserves prior rows on errored empty refreshes and emits `fetch-failed` with no prior data. FEC root cause: `scripts/sync-fec-finance.ts` rebuilt `fecFinance.json` from fresh rows only, so skipped/errored profiles dropped prior campaign-finance rows; fix seeds from prior rows and overwrites only refreshed entries. Evidence: `npx tsx --test scripts/__tests__/fecFinancePreserve.test.ts scripts/__tests__/lobbyingMemberPreserve.test.ts` exit 0 (5/5); `npm run test:typecheck` exit 0; `npm run test:source-integrity` and `npm run build` exit 1 only on existing open #99 dead-source-token blocker while new FEC/LDA subtests pass inside source-integrity. Review exact PR #120 tip after docs push; do not merge without APPROVAL on that exact SHA.
 
 ---
 
