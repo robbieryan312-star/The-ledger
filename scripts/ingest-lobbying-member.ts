@@ -8,7 +8,7 @@
  */
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { requireSyncScope } from './lib/sync-scope';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -46,6 +46,35 @@ interface ContributionFiling {
   contribution_items?: ContributionItem[];
 }
 
+export type LobbyingMemberStatus = 'filled' | 'honest-gap' | 'fetch-failed';
+
+export interface LobbyingMemberItem {
+  honoreeName: string;
+  amount: number | null;
+  date: string | null;
+  payeeName: string | null;
+  registrantName: string | null;
+  filingYear: number | null;
+  filingUrl: string | null;
+}
+
+export interface LobbyingMemberPayload {
+  bioguideId: string;
+  status: LobbyingMemberStatus;
+  asOf: string;
+  fetchedAt: string;
+  source: typeof LDA_SOURCE;
+  scan: {
+    years: number[];
+    pagesScanned: number;
+    filingsSeen: number;
+    maxPagesPerYear: number;
+  };
+  items: LobbyingMemberItem[];
+  note?: string;
+  errors?: string[];
+}
+
 function sleep(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
@@ -57,6 +86,68 @@ async function fetchJson<T>(url: string): Promise<T> {
   });
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
   return (await res.json()) as T;
+}
+
+async function loadPriorLobbyingPayload(bioguideId: string): Promise<LobbyingMemberPayload | null> {
+  const candidates = [
+    path.join(NATIONAL_DIR, `${bioguideId}.json`),
+    path.join(PROFILES_DIR, bioguideId, 'lobbying.json'),
+  ];
+  for (const file of candidates) {
+    try {
+      return JSON.parse(await readFile(file, 'utf8')) as LobbyingMemberPayload;
+    } catch {
+      /* try next destination */
+    }
+  }
+  return null;
+}
+
+export function buildLobbyingMemberPayload(input: {
+  bioguideId: string;
+  memberName: string;
+  asOf: string;
+  fetchedAt: string;
+  unique: LobbyingMemberItem[];
+  pagesScanned: number;
+  filingsSeen: number;
+  errors: string[];
+  prior?: Pick<LobbyingMemberPayload, 'items'> | null;
+}): LobbyingMemberPayload {
+  const priorItems = input.prior?.items ?? [];
+  const hasFreshItems = input.unique.length > 0;
+  const hasErrors = input.errors.length > 0;
+  const preservePrior = !hasFreshItems && hasErrors && priorItems.length > 0;
+  const status: LobbyingMemberStatus = hasFreshItems || preservePrior
+    ? 'filled'
+    : hasErrors
+      ? 'fetch-failed'
+      : 'honest-gap';
+
+  const items = hasFreshItems ? input.unique : preservePrior ? priorItems : [];
+  const fetchFailedNote = `fetch-failed: Senate LDA contribution scan hit ${input.errors.length} error(s); ${preservePrior ? `${priorItems.length} prior item(s) preserved.` : 'no verified empty record written.'}`;
+  const diagnosedEmpty =
+    status === 'honest-gap'
+      ? `Senate LDA open API does not key lobbying-contact filings to individual members (government_entities=SENATE only). Scanned ${input.pagesScanned} contribution-report pages (${input.filingsSeen} filings, years ${YEARS.join(',')}, name-search + chronological) for lobbyist FECA items with honoree matching ${input.memberName}; 0 matches. Consistent with limited lobbyist-PAC profile — diagnosed empty after scan, not undiagnosed.`
+      : undefined;
+  const note = status === 'fetch-failed' || preservePrior ? fetchFailedNote : diagnosedEmpty;
+
+  return {
+    bioguideId: input.bioguideId,
+    status,
+    asOf: input.asOf,
+    fetchedAt: input.fetchedAt,
+    source: LDA_SOURCE,
+    scan: {
+      years: YEARS,
+      pagesScanned: input.pagesScanned,
+      filingsSeen: input.filingsSeen,
+      maxPagesPerYear: MAX_PAGES_PER_YEAR,
+    },
+    items,
+    ...(note ? { note } : {}),
+    ...(hasErrors ? { errors: input.errors } : {}),
+  };
 }
 
 function honoreeMatches(honoree: string, lastName: string, firstName: string): boolean {
@@ -94,15 +185,8 @@ async function main(): Promise<void> {
     const memberFirst = leg.firstName;
     const memberName = leg.name;
 
-    const matches: Array<{
-      honoreeName: string;
-      amount: number | null;
-      date: string | null;
-      payeeName: string | null;
-      registrantName: string | null;
-      filingYear: number | null;
-      filingUrl: string | null;
-    }> = [];
+    const priorPayload = await loadPriorLobbyingPayload(bioguideId);
+    const matches: LobbyingMemberItem[] = [];
     let pagesScanned = 0;
     let filingsSeen = 0;
     const errors: string[] = [];
@@ -189,27 +273,17 @@ async function main(): Promise<void> {
       return true;
     });
 
-    const diagnosedEmpty =
-      unique.length === 0
-        ? `Senate LDA open API does not key lobbying-contact filings to individual members (government_entities=SENATE only). Scanned ${pagesScanned} contribution-report pages (${filingsSeen} filings, years ${YEARS.join(',')}, name-search + chronological) for lobbyist FECA items with honoree matching ${memberName}; 0 matches. Consistent with limited lobbyist-PAC profile — diagnosed empty after scan, not undiagnosed.`
-        : undefined;
-
-    const payload = {
+    const payload = buildLobbyingMemberPayload({
       bioguideId,
-      status: unique.length > 0 ? ('filled' as const) : ('honest-gap' as const),
       asOf,
       fetchedAt,
-      source: LDA_SOURCE,
-      scan: {
-        years: YEARS,
-        pagesScanned,
-        filingsSeen,
-        maxPagesPerYear: MAX_PAGES_PER_YEAR,
-      },
-      items: unique,
-      ...(diagnosedEmpty ? { note: diagnosedEmpty } : {}),
-      ...(errors.length ? { errors } : {}),
-    };
+      memberName,
+      unique,
+      pagesScanned,
+      filingsSeen,
+      errors,
+      prior: priorPayload,
+    });
 
     await mkdir(NATIONAL_DIR, { recursive: true });
     await writeFile(path.join(NATIONAL_DIR, `${bioguideId}.json`), `${JSON.stringify(payload, null, 2)}\n`);
@@ -224,7 +298,13 @@ async function main(): Promise<void> {
   }
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+const isDirectRun =
+  process.argv[1] != null &&
+  import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href;
+
+if (isDirectRun) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
