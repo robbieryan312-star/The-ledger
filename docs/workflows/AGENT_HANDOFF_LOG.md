@@ -10,6 +10,61 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation: LDA lobbying preserve-on-failure (PASS focused / BUILD BLOCKED by #99)
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS focused; full repository gate BLOCKED by existing open PR #99  
+**Current state:** `cursor/critical-bug-management-6e1e` · code tip `8ccb90c` · PR https://github.com/robbieryan312-star/The-ledger/pull/120 · tree dirty only for this handoff/backlog docs update before commit · build exit 1 on known #99 guard blocker
+
+### Objective
+Inspect recent commits for high-severity correctness bugs, avoid duplicates from automation memory, and fix only a confirmed critical issue.
+
+### Verdict / outcome
+Found one untracked P1 data-loss/honesty bug: `scripts/ingest-lobbying-member.ts` accumulated LDA API/page errors but still wrote an empty `honest-gap` payload over `data/national/lobbying/by-bioguide/{id}.json` and `profiles/{id}/lobbying.json`. Implemented preserve-on-failure semantics and opened PR #120.
+
+### Commits
+- `8ccb90c` — `fix(lobbying): preserve LDA rows on fetch errors`
+- Handoff/backlog docs commit follows this entry in the same turn.
+
+### Commands run (this session)
+- `git fetch origin --quiet && git log --oneline --decorate -12 origin/main` → exit 0; origin/main `763dc67`
+- `for n in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119; do gh pr view "$n" --json number,state,mergedAt,closedAt,headRefName,title,url --jq '[.number,.state,(.mergedAt // ""),(.closedAt // ""),.headRefName,.url,.title] | @tsv'; done` → exit 0; all remembered PRs still OPEN
+- `git log --since='2026-07-20' --name-status --pretty=format:'--- %h %ad %s' --date=short origin/main -- ':!docs/workflows/AGENT_HANDOFF_LOG.md' ':!docs/workflows/IMPROVEMENT_BACKLOG.md'` → exit 0
+- `npx tsx --test scripts/__tests__/lobbyingMemberPreserve.test.ts` → exit 0; 3/3 pass
+- `npm run test:typecheck` → exit 0
+- `npm run test:source-integrity 2>&1 | tee /tmp/ledger-test-source-integrity-lobbying.log` → exit 1; new LDA tests pass, existing #99 `votesmart` guard fails
+- `npm run build 2>&1 | tee /tmp/ledger-build-lobbying-preserve.log` → exit 1; blocked by same existing #99 `votesmart` guard
+- `git diff -- scripts/ingest-lobbying-member.ts package.json` and untracked test diff review → exit 0
+- `git add package.json scripts/ingest-lobbying-member.ts scripts/__tests__/lobbyingMemberPreserve.test.ts && git commit -m "fix(lobbying): preserve LDA rows on fetch errors"` → exit 0; commit `8ccb90c`
+- `git push -u origin cursor/critical-bug-management-6e1e` → exit 0
+- `open_git_pr` → PR #120 created
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/ingest-lobbying-member.ts` | modified | Added import-safe direct-run guard, prior lobbying payload read, and payload builder that preserves prior rows on errored empty refreshes or emits `fetch-failed` when no verified empty scan occurred. |
+| `scripts/__tests__/lobbyingMemberPreserve.test.ts` | created | Regression tests for prior-row preservation, fetch-failed empty output, and error-free honest-gap output. |
+| `package.json` | modified | Wires `lobbyingMemberPreserve.test.ts` into `test:source-integrity`. |
+| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | Records `IMP-LDA-PRESERVE` as done with PR #120. |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session entry. |
+
+### Acceptance evidence
+- Focused guard: `# pass 3` / `# fail 0` for `lobbyingMemberPreserve.test.ts`.
+- Typecheck: `npm run test:typecheck` exit 0.
+- Source-integrity rerun: LDA subtests `ok 28`, `ok 29`, `ok 30`; suite exit 1 only on existing #99 blocker: `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`.
+- Build rerun: prebuild reaches `test:source-integrity` and exits 1 on same #99 blocker; `test:typecheck`, `test:crec`, and `test:org-join` passed before that.
+- Artifact: `/opt/cursor/artifacts/lobbying_preserve_validation.svg`.
+
+### Open / next
+- Claude STAGE THREE review PR #120 at exact tip after the handoff/backlog commit is pushed.
+- Existing PR #99 must merge before broad `test:source-integrity` / `npm run build` can pass on this branch.
+- Other remembered critical-bug PRs #28, #29, #30, #31, #40, #99-#119 remain open; no duplicate PR opened for those.
+
+## Confront Claude — paste to Claude Code
+
+PR #120 fixes an untracked LDA lobbying data-loss bug. Root cause: `scripts/ingest-lobbying-member.ts` caught LDA page/API failures into `errors[]` but still wrote `status: honest-gap` with `items: []`, overwriting prior `data/national/lobbying/by-bioguide/{id}.json` and `profiles/{id}/lobbying.json`. Fix: preserve prior rows when errored refresh has no fresh matches; emit `fetch-failed` when there is no prior data and the scan was not error-free; only write `honest-gap` after an error-free empty scan. Evidence: `npx tsx --test scripts/__tests__/lobbyingMemberPreserve.test.ts` exit 0 (3/3); `npm run test:typecheck` exit 0; `npm run test:source-integrity` and `npm run build` exit 1 only on existing open #99 dead-source-token blocker while new LDA subtests pass inside source-integrity. Review exact PR #120 tip after docs push; do not merge without APPROVAL on that exact SHA.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
