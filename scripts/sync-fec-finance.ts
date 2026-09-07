@@ -12,7 +12,7 @@
 import { config } from 'dotenv';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { allPoliticians } from '../lib/data/allPoliticians';
 import type { Politician, Source } from '../lib/types';
 import {
@@ -28,6 +28,14 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
 const OUT_FILE = path.join(OUT_DIR, 'fecFinance.json');
 const LEGISLATORS_FILE = path.join(OUT_DIR, 'currentLegislators.json');
+
+interface FecFinanceSnapshot {
+  meta?: {
+    withFinanceData?: number;
+    [key: string]: unknown;
+  };
+  byPoliticianId?: Record<string, FecFinanceEntry>;
+}
 
 interface LegislatorRow {
   bioguideId: string;
@@ -71,6 +79,19 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+export function mergeFecFinanceEntries(
+  priorRows: Record<string, FecFinanceEntry>,
+  freshRows: Record<string, FecFinanceEntry>,
+): Record<string, FecFinanceEntry> {
+  return { ...priorRows, ...freshRows };
+}
+
+export function countFecFinanceRows(snapshot: FecFinanceSnapshot | null | undefined): number {
+  const rows = Object.values(snapshot?.byPoliticianId ?? {});
+  const rowCount = rows.filter((row) => row?.receipts != null || row?.disbursements != null).length;
+  return Math.max(snapshot?.meta?.withFinanceData ?? 0, rowCount);
+}
+
 async function main(): Promise<void> {
   config({ path: path.join(projectRoot, '.env.local') });
 
@@ -80,13 +101,12 @@ async function main(): Promise<void> {
 
   if (!keyConfigured) {
     try {
-      const existing = JSON.parse(await readFile(OUT_FILE, 'utf8')) as {
-        meta?: { withFinanceData?: number };
-      };
-      if ((existing.meta?.withFinanceData ?? 0) > 0) {
+      const existing = JSON.parse(await readFile(OUT_FILE, 'utf8')) as FecFinanceSnapshot;
+      const existingCount = countFecFinanceRows(existing);
+      if (existingCount > 0) {
         console.warn(
           'FEC_API_KEY not configured — keeping existing fecFinance.json snapshot ' +
-            `(${existing.meta?.withFinanceData} profiles). Set FEC_API_KEY in .env.local to refresh.`,
+            `(${existingCount} profiles). Set FEC_API_KEY in .env.local to refresh.`,
         );
         return;
       }
@@ -121,14 +141,23 @@ async function main(): Promise<void> {
 
   console.log(`Syncing FEC finance for ${featured.length} featured profiles...`);
 
-  const byPoliticianId: Record<string, FecFinanceEntry> = {};
-  let withData = 0;
+  let priorRows: Record<string, FecFinanceEntry> = {};
+  try {
+    const prior = JSON.parse(await readFile(OUT_FILE, 'utf8')) as FecFinanceSnapshot;
+    priorRows = prior.byPoliticianId ?? {};
+  } catch {
+    /* no prior snapshot */
+  }
+
+  const freshRows: Record<string, FecFinanceEntry> = {};
+  const failures: Array<{ politicianId: string; reason: string }> = [];
 
   for (const politician of featured) {
     try {
       const fecIds = await resolveFecIds(politician, byBioguide);
       if (fecIds.length === 0) {
         console.log(`  skip ${politician.id}: no FEC candidate ID`);
+        failures.push({ politicianId: politician.id, reason: 'no FEC candidate ID' });
         await sleep(120);
         continue;
       }
@@ -136,11 +165,12 @@ async function main(): Promise<void> {
       const totals = await resolveBestCandidateTotals(fecIds, politician.chamber);
       if (!totals) {
         console.log(`  skip ${politician.id}: no totals in OpenFEC`);
+        failures.push({ politicianId: politician.id, reason: 'no OpenFEC totals' });
         await sleep(120);
         continue;
       }
 
-      byPoliticianId[politician.id] = {
+      freshRows[politician.id] = {
         politicianId: politician.id,
         bioguideId: politician.bioguideId,
         fecCandidateId: totals.candidateId,
@@ -158,14 +188,17 @@ async function main(): Promise<void> {
         asOf,
         fecProfileUrl: fecProfileUrl(totals.candidateId),
       };
-      withData += 1;
       console.log(`  ok ${politician.id}: cycle ${totals.electionYear}`);
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       console.warn(`  error ${politician.id}: ${msg}`);
+      failures.push({ politicianId: politician.id, reason: `fetch-failed: ${msg}` });
     }
     await sleep(150);
   }
+
+  const byPoliticianId = mergeFecFinanceEntries(priorRows, freshRows);
+  const withData = Object.keys(byPoliticianId).length;
 
   const snapshot = {
     meta: {
@@ -173,11 +206,17 @@ async function main(): Promise<void> {
       asOf,
       featuredQueried: featured.length,
       withFinanceData: withData,
+      refreshedThisRun: Object.keys(freshRows).length,
+      preservedFromPrior: Object.keys(priorRows).filter((id) => !freshRows[id]).length,
+      failureCount: failures.length,
       keyConfigured: true,
       note:
-        'Receipts, disbursements, and cash-on-hand from OpenFEC candidate totals. Lobbyist/industry breakdowns on profile pages remain demo until a separate integration.',
+        failures.length > 0
+          ? 'Receipts, disbursements, and cash-on-hand from OpenFEC candidate totals. Prior rows are preserved for profiles skipped or errored during this refresh.'
+          : 'Receipts, disbursements, and cash-on-hand from OpenFEC candidate totals. Lobbyist/industry breakdowns on profile pages remain demo until a separate integration.',
     },
     byPoliticianId,
+    failures,
   };
 
   await mkdir(OUT_DIR, { recursive: true });
@@ -189,7 +228,13 @@ async function main(): Promise<void> {
   console.log(`  with FEC finance data: ${withData}`);
 }
 
-main().catch((err: unknown) => {
-  console.error(err);
-  process.exit(1);
-});
+const isDirectRun =
+  process.argv[1] != null &&
+  import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href;
+
+if (isDirectRun) {
+  main().catch((err: unknown) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
