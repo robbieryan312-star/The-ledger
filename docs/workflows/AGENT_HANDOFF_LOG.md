@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## Latest session — critical roster sync guard (PASS WITH KNOWN BUILD BLOCKER)
 
 **From:** Cursor automation · **To:** Claude · **Verdict:** PASS for scoped guard; full `test:source-integrity` / `build` blocked by known PR #99  
-**Current state:** `cursor/critical-bug-management-ae13` · HEAD `e35494c` · PR https://github.com/robbieryan312-star/The-ledger/pull/121 · tree clean after push · build status: blocked by already-tracked dead-source-token guard failure in `.claude/rules/*`
+**Current state:** `cursor/critical-bug-management-ae13` · PR tip before this final handoff stamp `e378d71` · PR https://github.com/robbieryan312-star/The-ledger/pull/121 · tree clean after push · build status: blocked by already-tracked dead-source-token guard failure in `.claude/rules/*`
 
 ### Objective
 Daily high-severity bug scan; fix only concrete critical issues not already tracked by open PRs.
@@ -33,6 +33,8 @@ Found and patched a P0 data-corruption path in `scripts/sync-legislators.ts`: a 
 - `git add docs/workflows/AGENT_HANDOFF_LOG.md && git commit -m "docs(handoff): log roster sync guard fix"` → exit 0; commit `e35494c`
 - `git push -u origin cursor/critical-bug-management-ae13` → exit 0
 - `open_git_pr` → PR https://github.com/robbieryan312-star/The-ledger/pull/121
+- `automation_memory write MEMORIES.md` → recorded PR #121 as open
+- `git add docs/workflows/AGENT_HANDOFF_LOG.md && git commit -m "docs(handoff): add roster guard PR URL" && git push` → exit 0; PR tip `e378d71`
 
 ### Files touched
 | Path | Action | What changed |
@@ -52,7 +54,7 @@ Found and patched a P0 data-corruption path in `scripts/sync-legislators.ts`: a 
 
 ## Confront Claude — paste to Claude Code
 
-**Critical bug fix awaiting STAGE THREE:** PR #121, branch `cursor/critical-bug-management-ae13`, HEAD `e35494c` (code commit `082c367`). Bug: `sync-legislators` wrote any 200 OK upstream array, so a truncated `legislators-current.json` payload could replace the canonical 537-member current-office snapshot. Fix: pre-write roster safety guard rejects non-array, below 500 records, or >10% count drop vs prior snapshot; new `syncLegislatorsGuard` is wired into `test:source-integrity`. Evidence: targeted guard 4/4 pass; `npm run test:typecheck` pass. Open gate: full `test:source-integrity` / `build` blocked by known open PR #99 (`votesmart` token in `.claude/rules/*`), not changed here.
+**Critical bug fix awaiting STAGE THREE:** PR #121, branch `cursor/critical-bug-management-ae13`, PR tip before this final handoff stamp `e378d71` (code commit `082c367`). Bug: `sync-legislators` wrote any 200 OK upstream array, so a truncated `legislators-current.json` payload could replace the canonical 537-member current-office snapshot. Fix: pre-write roster safety guard rejects non-array, below 500 records, or >10% count drop vs prior snapshot; new `syncLegislatorsGuard` is wired into `test:source-integrity`. Evidence: targeted guard 4/4 pass; `npm run test:typecheck` pass. Open gate: full `test:source-integrity` / `build` blocked by known open PR #99 (`votesmart` token in `.claude/rules/*`), not changed here.
 
 ---
 
