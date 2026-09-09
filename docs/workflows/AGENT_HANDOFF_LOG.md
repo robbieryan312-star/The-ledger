@@ -10,6 +10,49 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical roster sync guard (PASS WITH KNOWN BUILD BLOCKER)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS for scoped guard; full `test:source-integrity` / `build` blocked by known PR #99  
+**Current state:** `cursor/critical-bug-management-ae13` · HEAD `082c367` · PR pending open · tree clean after commit · build status: blocked by already-tracked dead-source-token guard failure in `.claude/rules/*`
+
+### Objective
+Daily high-severity bug scan; fix only concrete critical issues not already tracked by open PRs.
+
+### Verdict / outcome
+Found and patched a P0 data-corruption path in `scripts/sync-legislators.ts`: a syntactically valid but truncated `legislators-current.json` response could overwrite `lib/data/generated/currentLegislators.json`, corrupting current-office resolution and downstream roster-driven syncs.
+
+### Commits
+- `082c367` — Guard current legislator sync against truncated payloads
+
+### Commands run (this session)
+- `gh pr view 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 --json ...` loop → all remembered PRs still `OPEN`
+- `npx tsx --test scripts/__tests__/syncLegislatorsGuard.test.ts` → exit 0; 4 pass / 0 fail
+- `npm run test:source-integrity` → exit 1; known PR #99 blocker: dead-source token `votesmart` in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`
+- `npm run test:typecheck` → exit 0
+- `git add package.json scripts/sync-legislators.ts scripts/__tests__/syncLegislatorsGuard.test.ts && git commit -m "Guard current legislator sync against truncated payloads"` → exit 0; commit `082c367`
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/sync-legislators.ts` | modified | Added pre-write safety checks for non-array, below-floor, and >10% prior-count-drop upstream roster payloads; switched CLI execution to direct-run guard so tests can import helper without network sync |
+| `scripts/__tests__/syncLegislatorsGuard.test.ts` | created | Build-gated regression tests for malformed/truncated/large-drop roster payloads and plausible roster acceptance |
+| `package.json` | modified | Added `syncLegislatorsGuard.test.ts` to `test:source-integrity` |
+
+### Acceptance evidence
+- Targeted guard: `# tests 4`, `# pass 4`, `# fail 0`
+- Typecheck: `npm run test:typecheck` exit 0
+- Full source-integrity/build gate not green on current main because PR #99 remains open for the existing dead-source-token docs regression.
+
+### Open / next
+- Open PR for `082c367`, update this entry with PR URL, and await Claude STAGE THREE review.
+- Existing PR #99 still needs review/merge before full `npm run build` can pass on `main`.
+
+## Confront Claude — paste to Claude Code
+
+**Critical bug fix awaiting STAGE THREE:** `cursor/critical-bug-management-ae13` HEAD `082c367` (PR pending). Bug: `sync-legislators` wrote any 200 OK upstream array, so a truncated `legislators-current.json` payload could replace the canonical 537-member current-office snapshot. Fix: pre-write roster safety guard rejects non-array, below 500 records, or >10% count drop vs prior snapshot; new `syncLegislatorsGuard` is wired into `test:source-integrity`. Evidence: targeted guard 4/4 pass; `npm run test:typecheck` pass. Open gate: full `test:source-integrity` / `build` blocked by known open PR #99 (`votesmart` token in `.claude/rules/*`), not changed here.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
