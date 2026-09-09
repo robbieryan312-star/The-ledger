@@ -12,7 +12,7 @@
  *
  * Run with:  npx tsx scripts/sync-legislators.ts
  */
-import { writeFile, mkdir } from 'node:fs/promises';
+import { writeFile, mkdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -29,6 +29,8 @@ const projectRoot = path.resolve(
 );
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
 const OUT_FILE = path.join(OUT_DIR, 'currentLegislators.json');
+const MIN_SAFE_CURRENT_LEGISLATOR_COUNT = 500;
+const MAX_SAFE_COUNT_DROP_RATIO = 0.1;
 
 const STATE_NAMES: Record<string, string> = {
   AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California',
@@ -62,6 +64,11 @@ interface RawLegislator {
   terms: RawTerm[];
 }
 
+interface PriorLegislatorsSnapshot {
+  meta?: { count?: number };
+  legislators?: unknown[];
+}
+
 function normalizeParty(p?: string): string {
   if (!p) return 'Other';
   if (p === 'Democrat') return 'Democrat';
@@ -71,13 +78,53 @@ function normalizeParty(p?: string): string {
   return 'Other';
 }
 
+async function readPriorLegislatorCount(filePath = OUT_FILE): Promise<number | null> {
+  try {
+    const snapshot = JSON.parse(await readFile(filePath, 'utf8')) as PriorLegislatorsSnapshot;
+    if (typeof snapshot.meta?.count === 'number') return snapshot.meta.count;
+    if (Array.isArray(snapshot.legislators)) return snapshot.legislators.length;
+    return null;
+  } catch (err) {
+    if (err instanceof Error && 'code' in err && err.code === 'ENOENT') {
+      return null;
+    }
+    throw err;
+  }
+}
+
+export function assertSafeCurrentLegislatorsPayload(
+  raw: unknown,
+  priorCount: number | null,
+): asserts raw is RawLegislator[] {
+  if (!Array.isArray(raw)) {
+    throw new Error('Refusing to write currentLegislators.json: upstream payload is not an array.');
+  }
+
+  if (raw.length < MIN_SAFE_CURRENT_LEGISLATOR_COUNT) {
+    throw new Error(
+      `Refusing to write currentLegislators.json: upstream returned ${raw.length} records, below safety floor ${MIN_SAFE_CURRENT_LEGISLATOR_COUNT}.`,
+    );
+  }
+
+  if (
+    priorCount != null &&
+    raw.length < Math.floor(priorCount * (1 - MAX_SAFE_COUNT_DROP_RATIO))
+  ) {
+    throw new Error(
+      `Refusing to write currentLegislators.json: upstream returned ${raw.length} records, more than ${Math.round(MAX_SAFE_COUNT_DROP_RATIO * 100)}% below prior count ${priorCount}.`,
+    );
+  }
+}
+
 async function main(): Promise<void> {
+  const priorCount = await readPriorLegislatorCount();
   console.log(`Fetching ${DATASET_URL} ...`);
   const res = await fetch(DATASET_URL, { signal: AbortSignal.timeout(30_000) });
   if (!res.ok) {
     throw new Error(`Fetch failed: HTTP ${res.status} ${res.statusText}`);
   }
-  const raw = (await res.json()) as RawLegislator[];
+  const raw = await res.json();
+  assertSafeCurrentLegislatorsPayload(raw, priorCount);
   console.log(`Received ${raw.length} current legislators.`);
 
   const asOf = new Date().toISOString().slice(0, 10);
@@ -142,7 +189,9 @@ async function main(): Promise<void> {
   );
 }
 
-main().catch((err: unknown) => {
-  console.error(err);
-  process.exit(1);
-});
+if (process.argv[1] != null && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((err: unknown) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
