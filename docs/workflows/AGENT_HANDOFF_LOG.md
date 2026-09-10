@@ -10,6 +10,57 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-09-10 — LEGACY VOTE PRESERVE BUG
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (targeted) · BUILD BLOCKED by known open PR #99  
+**Current state:** `cursor/critical-bug-management-226c` · PR #122 https://github.com/robbieryan312-star/The-ledger/pull/122 · implementation commit `362b300` plus docs-only PR handoff commits · build status: `npm run build` exit 1 on known `approvedSourceMatrixGuard` token failure already tracked in memory PR #99
+
+### Objective
+Critical-bug automation: inspect recent commits for non-duplicate high-severity bugs; fix any confirmed crash/data-loss/security/user-facing breakage.
+
+### Verdict / outcome
+Found non-duplicate data-loss bug in legacy `sync:votes`: fresh-only snapshot construction could replace prior verified `congressVotes.json` vote rows with empty member entries when per-roll fetches failed or the scanned window returned no replacement rows. Implemented prior-row preservation for current vote targets.
+
+### Commits
+- `362b300` — fix(votes): preserve legacy rows on empty refresh
+
+### Commands run (this session)
+- `git fetch --prune origin && python3 - <<'PY' ... gh pr view ... PY` → exit 0; memory PRs #28/#29/#30/#31/#40/#99-#121 still OPEN
+- `git log --all --since='14 days ago' --no-merges --pretty=format:'%h %ad %D %s' --date=short --name-only | awk 'NF{print}'` → exit 0; recent code commits mapped to existing open memory PRs
+- `npx tsx --test scripts/__tests__/legacyVotePreserve.test.ts` → exit 0; 2/2 pass
+- `npm run test:source-integrity` → exit 1; known PR #99 blocker in `approvedSourceMatrixGuard.test.ts`
+- `npx tsc --noEmit` → exit 2; fixture used non-canonical `vote: "yes"`; corrected to `Yea`
+- `npm run test:typecheck && npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/ceremonialCrecFilter.test.ts scripts/__tests__/stockTradesCheckpoint.test.ts scripts/__tests__/profileMigratePreserve.test.ts scripts/__tests__/profileCategoryIntegrity.test.ts scripts/__tests__/migratedNotLightweight.test.ts scripts/__tests__/profileCredibilityAudit.test.ts scripts/__tests__/courtListenerSummary.test.ts scripts/__tests__/floridaIngestPreserve.test.ts scripts/__tests__/legacyVotePreserve.test.ts scripts/__tests__/memberNewsMatching.test.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/countyMapGuard.test.ts scripts/__tests__/memberTopicNewsRss.test.ts scripts/__tests__/senateOfficialIssues.test.ts scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts` → exit 0
+- `npm run build` → exit 1; same known PR #99 `approvedSourceMatrixGuard` failure
+- `date -u +%Y-%m-%dT%H:%M:%SZ && git rev-parse --short HEAD && git status --short && git log -1 --oneline` → exit 0; `763dc67`, dirty fix tree
+- `git status --short && git log -2 --oneline && gh pr view 122 --json number,state,url,headRefName,headRefOid,title` → exit 0; PR #122 OPEN, headRefName `cursor/critical-bug-management-226c`, headRefOid `bd620ba27fb3721618b0ee4421ed1c4573f31ef9`
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/sync-congress-votes.ts` | modified | Loads prior `congressVotes.json`, merges fresh verified rows over prior rows, and preserves prior entries when refresh output is empty |
+| `scripts/lib/legacyVotePreserve.ts` | created | Shared helper for legacy vote snapshot preservation |
+| `lib/data/__fixtures__/legacyVotePreserve.fixture.ts` | created | Append-only frozen good prior row + bad empty refresh row |
+| `scripts/__tests__/legacyVotePreserve.test.ts` | created | Regression tests for preserving prior rows and accepting fresh replacements |
+| `package.json` | modified | Wires `legacyVotePreserve.test.ts` into `test:source-integrity` |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session entry |
+
+### Acceptance evidence
+- Targeted guard: `legacy sync:votes preserves prior rows when a refresh returns an empty member entry` → pass; `uses fresh rows when the refresh has verified replacements` → pass.
+- Typecheck + isolated source-integrity (excluding known PR #99 blocker): exit 0.
+- Full build limitation: `npm run build` reaches `test:source-integrity` and fails only at `approvedSourceMatrixGuard.test.ts` criterion A with `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`, already tracked as open PR #99.
+
+### Open / next
+- Claude should review PR #122 after or alongside PR #99 because the current base build is already blocked by #99.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**LEGACY VOTE PRESERVE:** review PR #122; implementation commit `362b300` is on the PR branch, with docs-only handoff commits after it. Bug: `scripts/sync-congress-votes.ts` built `congressVotes.json` from fresh rows only; empty per-member refresh rows from transient roll-call misses could wipe prior verified legacy vote rows. Fix: `mergeLegacyVoteEntriesWithPrior` preserves prior nonempty entries unless fresh verified votes exist; fixture + test wired into `test:source-integrity`. Evidence: targeted test 2/2 pass; `npm run test:typecheck` + isolated source-integrity suite exit 0. Full `npm run build` is BLOCKED by known open PR #99 `approvedSourceMatrixGuard` retired-source token failure in `.claude/rules/*`, not by this change. Approve/reject this fix; do not merge without exact-SHA APPROVAL.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
