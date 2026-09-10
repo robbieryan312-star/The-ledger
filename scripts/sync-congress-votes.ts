@@ -43,6 +43,7 @@ import {
   fetchSenateVoteMenu,
   senateVoteToRecord,
 } from '../lib/data/senateVotesClient';
+import { mergeLegacyVoteEntriesWithPrior } from './lib/legacyVotePreserve';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
@@ -325,6 +326,15 @@ async function main(): Promise<void> {
   const asOf = new Date().toISOString().slice(0, 10);
   const featured = allPoliticians;
   const keyConfigured = isCongressConfigured();
+  let priorByPoliticianId: Record<string, CongressVoteEntry> = {};
+  try {
+    const existing = JSON.parse(await readFile(OUT_FILE, 'utf8')) as {
+      byPoliticianId?: Record<string, CongressVoteEntry>;
+    };
+    priorByPoliticianId = existing.byPoliticianId ?? {};
+  } catch {
+    /* no prior snapshot */
+  }
 
   const houseTargets = featured.filter(
     (p) => p.bioguideId && p.chamber === 'house',
@@ -342,22 +352,15 @@ async function main(): Promise<void> {
   let houseResult = { byPoliticianId: {} as Record<string, CongressVoteEntry>, withData: 0, votesScanned: 0 };
   if (!keyConfigured) {
     console.warn('CONGRESS_API_KEY not configured — skipping House Congress.gov sync (Senate still synced).');
-    try {
-      const existing = JSON.parse(await readFile(OUT_FILE, 'utf8')) as {
-        byPoliticianId?: Record<string, CongressVoteEntry>;
-      };
-      for (const politician of houseTargets) {
-        const prior = existing.byPoliticianId?.[politician.id];
-        if (prior?.chamber === 'house' && (prior.votes?.length ?? 0) > 0) {
-          houseResult.byPoliticianId[politician.id] = prior;
-          houseResult.withData += 1;
-        }
+    for (const politician of houseTargets) {
+      const prior = priorByPoliticianId[politician.id];
+      if (prior?.chamber === 'house' && (prior.votes?.length ?? 0) > 0) {
+        houseResult.byPoliticianId[politician.id] = prior;
+        houseResult.withData += 1;
       }
-      if (houseResult.withData > 0) {
-        console.log(`  retained ${houseResult.withData} House profile(s) from existing congressVotes.json`);
-      }
-    } catch {
-      // No prior snapshot — House entries stay empty until key is set.
+    }
+    if (houseResult.withData > 0) {
+      console.log(`  retained ${houseResult.withData} House profile(s) from existing congressVotes.json`);
     }
   } else {
     try {
@@ -372,8 +375,14 @@ async function main(): Promise<void> {
     }
   }
 
-  const byPoliticianId = { ...senateResult.byPoliticianId, ...houseResult.byPoliticianId };
-  const withVoteData = senateResult.withData + houseResult.withData;
+  const freshByPoliticianId = { ...senateResult.byPoliticianId, ...houseResult.byPoliticianId };
+  const currentVoteTargetIds = [...senateTargets, ...houseTargets].map((p) => p.id);
+  const byPoliticianId = mergeLegacyVoteEntriesWithPrior(
+    freshByPoliticianId,
+    priorByPoliticianId,
+    currentVoteTargetIds,
+  );
+  const withVoteData = Object.values(byPoliticianId).filter((entry) => entry.votes.length > 0).length;
 
   const snapshot = {
     meta: {
