@@ -7,6 +7,7 @@ import test from 'node:test';
 import {
   NEWS_CORROBORATION_KNOWN_BAD_NAME_ONLY_UNRELATED,
   NEWS_CORROBORATION_KNOWN_BAD_SYNDICATED,
+  NEWS_CORROBORATION_KNOWN_BAD_TEMPLATE_HEADLINE,
   NEWS_CORROBORATION_KNOWN_GOOD_DISTINCT,
   NEWS_CORROBORATION_KNOWN_GOOD_SAME_EVENT_NON_NAME,
 } from '../../lib/data/__fixtures__/newsCorroboration.fixture';
@@ -43,6 +44,16 @@ test('fixture: unrelated same-member articles sharing only name tokens are NOT v
   assert.equal(isIndependentSameEventReporting(a, b, nameTokens), expectIndependent);
   // Without name exclusion this pair would falsely corroborate (bernie+sanders).
   assert.equal(isIndependentSameEventReporting(a, b), true);
+  const verified = applyNewsCorroboration([a, b], nameTokens);
+  assert.equal(verified.every((i) => i.isVerified === expectVerified), true);
+});
+
+test('fixture: unrelated template-style headlines are NOT verified', () => {
+  const { a, b, expectIndependent, expectVerified, memberNameTokens } =
+    NEWS_CORROBORATION_KNOWN_BAD_TEMPLATE_HEADLINE;
+  const nameTokens = tokensFromMemberNames(memberNameTokens);
+  assert.equal(isSyndicatedRepublish(a, b), false);
+  assert.equal(isIndependentSameEventReporting(a, b, nameTokens), expectIndependent);
   const verified = applyNewsCorroboration([a, b], nameTokens);
   assert.equal(verified.every((i) => i.isVerified === expectVerified), true);
 });

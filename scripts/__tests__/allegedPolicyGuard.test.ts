@@ -13,6 +13,7 @@ import {
   ALLEGED_KNOWN_BAD_BANNED_SECTION,
   ALLEGED_KNOWN_BAD_MISSING_VERBATIM,
   ALLEGED_KNOWN_BAD_PARAPHRASE,
+  ALLEGED_KNOWN_BAD_VERIFIED_SIGNAL,
   ALLEGED_KNOWN_GOOD_WITH_OUTCOME,
 } from '../../lib/data/__fixtures__/allegedPolicyGuard.fixture';
 import {
@@ -39,6 +40,12 @@ test('fixture (ii): alleged item with paraphrased text → FAILS', () => {
 test('fixture (iii): alleged item with outcome + verbatim + url → PASSES', () => {
   const r = validateAllegedControversy(ALLEGED_KNOWN_GOOD_WITH_OUTCOME);
   assert.equal(r.ok, true, r.reasons.join('; '));
+});
+
+test('fixture (iii-b): alleged-signaled item marked verified → FAILS', () => {
+  const r = validateAllegedControversy(ALLEGED_KNOWN_BAD_VERIFIED_SIGNAL);
+  assert.equal(r.ok, false);
+  assert.ok(r.reasons.some((x) => /cannot be verified/i.test(x)));
 });
 
 test('fixture (iv): alleged tier in a banned section → FAILS', () => {
@@ -84,7 +91,6 @@ test('live controversies: unverified items satisfy verbatim+url+outcome', () => 
       }>;
     };
     for (const item of data.items ?? []) {
-      if (item.isVerified) continue;
       const r = validateAllegedControversy(item);
       if (!r.ok) violations.push(`${id}/${item.id}: ${r.reasons.join('; ')}`);
     }

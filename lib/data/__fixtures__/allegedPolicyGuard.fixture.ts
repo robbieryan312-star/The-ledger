@@ -53,6 +53,25 @@ export const ALLEGED_KNOWN_BAD_PARAPHRASE = {
   ],
 };
 
+/** Known-BAD: alleged-signaled controversy mislabeled as verified bypassed disclosure checks. */
+export const ALLEGED_KNOWN_BAD_VERIFIED_SIGNAL = {
+  id: 'fixture-bad-verified-signal',
+  title: 'Verified-labeled allegation',
+  summary: 'A contested person-claim incorrectly marked verified.',
+  category: 'Conduct' as const,
+  status: 'Alleged' as const,
+  date: '2020-01-01',
+  isVerified: true,
+  sources: [
+    {
+      name: 'Example Outlet',
+      url: 'https://example.com/allegation',
+      tier: 'alleged' as const,
+      date: '2020-01-01',
+    },
+  ],
+};
+
 /** Known-GOOD: alleged controversy with verbatim quote, URL, and outcome. */
 export const ALLEGED_KNOWN_GOOD_WITH_OUTCOME = {
   id: 'fixture-good-outcome',

@@ -10,6 +10,58 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation: news corroboration + alleged controversy guard (PASS with known upstream blocker)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS for scoped fixes; full source-integrity blocked by existing open PR #99
+**Current state:** `cursor/critical-bug-management-0f3d` · base HEAD `763dc67` · PR pending · tree dirty with scoped fix · prebuild/build status not green because `test:source-integrity` still fails on the known dead-source token tracked by PR #99
+
+### Objective
+Inspect recent behavioral commits for high-severity correctness bugs, avoid duplicate open PRs from automation memory, and minimally fix any new concrete data-loss/crash/security/significant-breakage issue.
+
+### Verdict / outcome
+PASS for two new non-duplicate source-policy defects: template-style unrelated news headlines no longer self-corroborate, and explicit alleged controversy records can no longer be marked verified.
+
+### Commits
+- Pending before commit at log-write time.
+
+### Commands run (this session)
+- `pwd && git status --short && git branch --show-current && git rev-parse --short HEAD && gh pr list --state all --limit 200 --json number,state,mergedAt,closedAt,url,title --repo robbieryan312-star/The-ledger` → exit 0
+- `git fetch --prune origin && git log --oneline --decorate --max-count=30 --all --date=short --pretty=format:'%h %ad %d %s' && printf '\n--- current branch diff vs origin/main ---\n' && git diff --stat origin/main...HEAD` → exit 0
+- `git log origin/main --oneline --decorate --date=short --pretty=format:'%h %ad %d %s' -n 25 && printf '\n--- origin/main stat last 10 ---\n' && git log origin/main --stat --oneline -n 10` → exit 0
+- `git diff --name-status 42818b1..origin/main && printf '\n--- code/test diffs summary ---\n' && git diff --stat 42818b1..origin/main -- 'app/**' 'components/**' 'lib/**' 'scripts/**' 'package.json' '.github/**'` → exit 0
+- `if [ -f /tmp/cursor/async-install/install-user.status ]; then printf 'install status: '; cat /tmp/cursor/async-install/install-user.status; elif [ -f /tmp/cursor/async-install/install-user.log ]; then echo 'install log exists without status'; ps -ef | rg '/tmp/cursor/async-install|install-user' || true; else echo 'no async install markers'; fi; if [ -f /tmp/cursor/start-user/start-user.status ]; then printf 'start status: '; cat /tmp/cursor/start-user/start-user.status; elif [ -f /tmp/cursor/start-user/start-user.log ]; then echo 'start log exists without status'; else echo 'no start markers'; fi` → exit 0
+- `npm exec -- tsx --test scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/allegedPolicyGuard.test.ts` → exit 0
+- `npm run test:typecheck && npm run test:source-integrity` → exit 1 (known PR #99 blocker only: dead-source token in Claude docs; new tests passed)
+- `npm run test:typecheck` → exit 0
+- `git diff -- lib/data/newsCorroboration.ts lib/data/allegedPolicy.ts lib/data/__fixtures__/newsCorroboration.fixture.ts lib/data/__fixtures__/allegedPolicyGuard.fixture.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/allegedPolicyGuard.test.ts && printf '\n--- status ---\n' && git status --short` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|---|---|---|
+| `lib/data/newsCorroboration.ts` | modified | Requires shared specific event token in addition to the existing independent-outlet/shared-token checks. |
+| `lib/data/__fixtures__/newsCorroboration.fixture.ts` | modified | Appended template-headline false-corroboration fixture. |
+| `scripts/__tests__/newsCorroboration.test.ts` | modified | Added regression test for unrelated template-style headlines. |
+| `lib/data/allegedPolicy.ts` | modified | Treats `status: "Alleged"` or source tier `alleged` as enforceable even when `isVerified` is true. |
+| `lib/data/__fixtures__/allegedPolicyGuard.fixture.ts` | modified | Appended verified-alleged-signal bad fixture. |
+| `scripts/__tests__/allegedPolicyGuard.test.ts` | modified | Tests the verified alleged-signal failure and validates all live controversies through the validator. |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Logged this session for Claude review. |
+
+### Acceptance evidence
+- Focused tests: `# tests 14`, `# pass 14`, `# fail 0`.
+- Typecheck: `npm run test:typecheck` exited 0.
+- Broader source-integrity: `# pass 134`, `# fail 1`; failing line is existing open PR #99 blocker: `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`.
+- Memory PR cleanup: checked PRs #28-#31, #40, and #99-#122; all remain OPEN, so no duplicate finding was re-reported and no memory deletion was due.
+
+### Open / next
+- Open PR for this branch after commit/push and update automation memory with the two new bug lines.
+- Existing open PR #99 must still land to clear full `test:source-integrity` / build on main.
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-management-0f3d` · base `763dc67`, new commit pending · PR pending. **Verdict:** PASS for scoped STAGE TWO; full source-integrity/build blocked by existing open PR #99. **What changed:** fixed false verified News corroboration from generic template headline overlap; fixed alleged-signaled controversy records bypassing alleged validation when `isVerified: true`; added append-only fixtures/tests. **Evidence:** focused `tsx --test newsCorroboration + allegedPolicyGuard` exit 0 (`14/14` pass); `npm run test:typecheck` exit 0; `npm run test:source-integrity` exit 1 only on known dead-source token tracked by #99. **Open gates:** Claude review/APPROVE or REJECT this branch once PR is open; #99 remains required for full green main.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  

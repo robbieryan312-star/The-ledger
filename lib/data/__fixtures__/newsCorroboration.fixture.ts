@@ -94,6 +94,41 @@ export const NEWS_CORROBORATION_KNOWN_BAD_NAME_ONLY_UNRELATED = {
 } as const;
 
 /**
+ * Known-bad (append): unrelated stories can share boilerplate congressional wording.
+ * A corroborated event needs a shared specific subject token, not only generic phrasing.
+ */
+export const NEWS_CORROBORATION_KNOWN_BAD_TEMPLATE_HEADLINE = {
+  defect: 'template-headline-overlap-not-same-event',
+  description:
+    'Different events with shared generic headline phrasing must not be marked verified',
+  a: item({
+    id: 'template-a',
+    headline: 'Warren pushes banking regulators to tighten oversight rules',
+    url: 'https://thehill.com/business/warren-banking-regulators-oversight-rules/',
+    source: {
+      name: 'The Hill',
+      url: 'https://thehill.com/business/warren-banking-regulators-oversight-rules/',
+      tier: 'media',
+      date: '2026-04-03',
+    },
+  }),
+  b: item({
+    id: 'template-b',
+    headline: 'Warren pushes healthcare regulators to tighten oversight rules',
+    url: 'https://www.politico.com/news/2026/04/03/warren-healthcare-regulators-oversight-rules',
+    source: {
+      name: 'Politico',
+      url: 'https://www.politico.com/news/2026/04/03/warren-healthcare-regulators-oversight-rules',
+      tier: 'media',
+      date: '2026-04-03',
+    },
+  }),
+  expectIndependent: false,
+  expectVerified: false,
+  memberNameTokens: ['Elizabeth Warren', 'Warren'],
+} as const;
+
+/**
  * Known-good (append): genuine same-event pair with ≥2 shared NON-NAME tokens
  * (pause, datacenter, construction) after excluding member-name tokens.
  */

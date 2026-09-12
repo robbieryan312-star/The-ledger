@@ -24,13 +24,19 @@ export interface AllegedControversyCheck {
  */
 export function validateAllegedControversy(item: {
   isVerified: boolean;
+  status?: string;
   verbatimQuote?: string;
   outcome?: string;
-  sources?: Array<{ url?: string }>;
+  sources?: Array<{ url?: string; tier?: string }>;
   paraphrase?: boolean;
 }): AllegedControversyCheck {
-  if (item.isVerified) return { ok: true, reasons: [] };
   const reasons: string[] = [];
+  const hasAllegedSignal =
+    item.status === 'Alleged' || (item.sources ?? []).some((s) => s.tier === 'alleged');
+  if (item.isVerified && !hasAllegedSignal) return { ok: true, reasons: [] };
+  if (item.isVerified && hasAllegedSignal) {
+    reasons.push('alleged-signaled controversy cannot be verified');
+  }
   const quote = (item.verbatimQuote ?? '').trim();
   if (!quote) reasons.push('missing verbatimQuote');
   if (item.paraphrase === true) reasons.push('paraphrased claim text');

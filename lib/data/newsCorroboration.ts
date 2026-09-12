@@ -17,6 +17,21 @@ const STOP = new Set([
   'their', 'new', 'says', 'said',
 ]);
 
+const GENERIC_EVENT_TOKENS = new Set([
+  'backs',
+  'calls',
+  'hearing',
+  'joins',
+  'lawmakers',
+  'oversight',
+  'pushes',
+  'regulators',
+  'rules',
+  'senate',
+  'tighten',
+  'urges',
+]);
+
 function independentOutletKey(item: NewsItem): string {
   return item.source.name.trim().toLowerCase();
 }
@@ -57,6 +72,19 @@ function sharedSignificantTokenCount(
   return n;
 }
 
+function hasSharedSpecificEventToken(
+  a: string,
+  b: string,
+  excludeNameTokens?: Set<string>,
+): boolean {
+  const A = significantTokens(a, excludeNameTokens);
+  const B = significantTokens(b, excludeNameTokens);
+  for (const t of A) {
+    if (B.has(t) && !GENERIC_EVENT_TOKENS.has(t)) return true;
+  }
+  return false;
+}
+
 /** Syndicated / wire republish — near-identical headline (or same URL). */
 export function isSyndicatedRepublish(a: NewsItem, b: NewsItem): boolean {
   if (normalizeUrlForDedupe(a.url ?? '') === normalizeUrlForDedupe(b.url ?? '')) return true;
@@ -89,7 +117,10 @@ export function isIndependentSameEventReporting(
       : memberNameTokens instanceof Set
         ? memberNameTokens
         : new Set(memberNameTokens);
-  return sharedSignificantTokenCount(a.headline, b.headline, exclude) >= 2;
+  return (
+    sharedSignificantTokenCount(a.headline, b.headline, exclude) >= 2 &&
+    hasSharedSpecificEventToken(a.headline, b.headline, exclude)
+  );
 }
 
 function countIndependentCorroborators(
