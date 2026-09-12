@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## Latest session — critical bug automation: news corroboration + alleged controversy guard (PASS with known upstream blocker)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS for scoped fixes; full source-integrity blocked by existing open PR #99
-**Current state:** `cursor/critical-bug-management-0f3d` · base HEAD `763dc67` · PR pending · tree dirty with scoped fix · prebuild/build status not green because `test:source-integrity` still fails on the known dead-source token tracked by PR #99
+**Current state:** `cursor/critical-bug-management-0f3d` · implementation commit `7859366` · PR https://github.com/robbieryan312-star/The-ledger/pull/123 · tree clean after push except this docs stamp · prebuild/build status not green because `test:source-integrity` still fails on the known dead-source token tracked by PR #99
 
 ### Objective
 Inspect recent behavioral commits for high-severity correctness bugs, avoid duplicate open PRs from automation memory, and minimally fix any new concrete data-loss/crash/security/significant-breakage issue.
@@ -22,7 +22,8 @@ Inspect recent behavioral commits for high-severity correctness bugs, avoid dupl
 PASS for two new non-duplicate source-policy defects: template-style unrelated news headlines no longer self-corroborate, and explicit alleged controversy records can no longer be marked verified.
 
 ### Commits
-- Pending before commit at log-write time.
+- `7859366` — fix(data): tighten news and controversy verification guards
+- Follow-up docs stamp pending at log-update time.
 
 ### Commands run (this session)
 - `pwd && git status --short && git branch --show-current && git rev-parse --short HEAD && gh pr list --state all --limit 200 --json number,state,mergedAt,closedAt,url,title --repo robbieryan312-star/The-ledger` → exit 0
@@ -34,6 +35,13 @@ PASS for two new non-duplicate source-policy defects: template-style unrelated n
 - `npm run test:typecheck && npm run test:source-integrity` → exit 1 (known PR #99 blocker only: dead-source token in Claude docs; new tests passed)
 - `npm run test:typecheck` → exit 0
 - `git diff -- lib/data/newsCorroboration.ts lib/data/allegedPolicy.ts lib/data/__fixtures__/newsCorroboration.fixture.ts lib/data/__fixtures__/allegedPolicyGuard.fixture.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/allegedPolicyGuard.test.ts && printf '\n--- status ---\n' && git status --short` → exit 0
+- `npm run test:docs-consistency` → exit 0
+- `git diff --check && git status --short` → exit 2 (trailing whitespace in new handoff entry)
+- `git diff --check && git status --short` → exit 0
+- `git add docs/workflows/AGENT_HANDOFF_LOG.md lib/data/newsCorroboration.ts lib/data/allegedPolicy.ts lib/data/__fixtures__/newsCorroboration.fixture.ts lib/data/__fixtures__/allegedPolicyGuard.fixture.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/allegedPolicyGuard.test.ts && git commit -m "fix(data): tighten news and controversy verification guards"` → exit 0 (`7859366`)
+- `git status --short && git rev-parse --short HEAD && git push -u origin cursor/critical-bug-management-0f3d` → exit 0
+- `open_git_pr` automation tool → PR https://github.com/robbieryan312-star/The-ledger/pull/123
+- `automation_memory` write → recorded PR #123 bug entries
 
 ### Files touched
 | Path | Action | What changed |
@@ -49,16 +57,18 @@ PASS for two new non-duplicate source-policy defects: template-style unrelated n
 ### Acceptance evidence
 - Focused tests: `# tests 14`, `# pass 14`, `# fail 0`.
 - Typecheck: `npm run test:typecheck` exited 0.
+- Docs consistency: `# tests 19`, `# pass 19`, `# fail 0`.
 - Broader source-integrity: `# pass 134`, `# fail 1`; failing line is existing open PR #99 blocker: `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`.
 - Memory PR cleanup: checked PRs #28-#31, #40, and #99-#122; all remain OPEN, so no duplicate finding was re-reported and no memory deletion was due.
+- New memory entries: PR #123 recorded for `newsCorroboration.ts` template-headline false verification and `allegedPolicy.ts` verified alleged-signal bypass.
 
 ### Open / next
-- Open PR for this branch after commit/push and update automation memory with the two new bug lines.
+- Claude review/APPROVE or REJECT PR #123.
 - Existing open PR #99 must still land to clear full `test:source-integrity` / build on main.
 
 ## Confront Claude — paste to Claude Code
 
-**Branch · HEAD · PR:** `cursor/critical-bug-management-0f3d` · base `763dc67`, new commit pending · PR pending. **Verdict:** PASS for scoped STAGE TWO; full source-integrity/build blocked by existing open PR #99. **What changed:** fixed false verified News corroboration from generic template headline overlap; fixed alleged-signaled controversy records bypassing alleged validation when `isVerified: true`; added append-only fixtures/tests. **Evidence:** focused `tsx --test newsCorroboration + allegedPolicyGuard` exit 0 (`14/14` pass); `npm run test:typecheck` exit 0; `npm run test:source-integrity` exit 1 only on known dead-source token tracked by #99. **Open gates:** Claude review/APPROVE or REJECT this branch once PR is open; #99 remains required for full green main.
+**Branch · HEAD · PR:** `cursor/critical-bug-management-0f3d` · implementation commit `7859366` (docs stamp pending) · PR https://github.com/robbieryan312-star/The-ledger/pull/123. **Verdict:** PASS for scoped STAGE TWO; full source-integrity/build blocked by existing open PR #99. **What changed:** fixed false verified News corroboration from generic template headline overlap; fixed alleged-signaled controversy records bypassing alleged validation when `isVerified: true`; added append-only fixtures/tests. **Evidence:** focused `tsx --test newsCorroboration + allegedPolicyGuard` exit 0 (`14/14` pass); `npm run test:typecheck` exit 0; `npm run test:docs-consistency` exit 0 (`19/19` pass); `npm run test:source-integrity` exit 1 only on known dead-source token tracked by #99. **Open gates:** Claude review/APPROVE or REJECT PR #123; #99 remains required for full green main.
 
 ---
 
