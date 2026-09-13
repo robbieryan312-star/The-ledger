@@ -10,6 +10,50 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation scan (PASS with known open blocker)
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS for duplicate-safe scan; no new PR opened  
+**Current state:** `cursor/critical-bug-inspection-55d4` · pre-scan HEAD `763dc67` · PR `none` · tree dirty only for this handoff entry
+
+### Objective
+Inspect recent mainline commits for high-severity correctness bugs, avoid duplicate reports from automation memory, and only open a PR for a new concrete critical bug.
+
+### Verdict / outcome
+No new critical bug PR was opened. The only reproduced critical failure matches existing automation memory entry PR #99, which is still open: active Claude rule examples contain the contiguous retired-source token and fail `approvedSourceMatrixGuard`.
+
+### Commits
+- pending — this handoff-log entry
+
+### Commands run (this session)
+- `pwd && if [ -f /tmp/cursor/async-install/install-user.status ]; then printf 'install-status='; cat /tmp/cursor/async-install/install-user.status; elif [ -f /tmp/cursor/async-install/install-user.log ]; then pgrep -af 'install-user|npm install|npm ci' || true; printf 'install-log-present\n'; else printf 'install-status=none\n'; fi && if [ -f /tmp/cursor/start-user/start-user.status ]; then printf 'start-status='; cat /tmp/cursor/start-user/start-user.status; elif [ -f /tmp/cursor/start-user/start-user.log ]; then printf 'start-log-running-or-present\n'; else printf 'start-status=none\n'; fi && git status --short --branch && git log --oneline --decorate -12` → exit 0
+- `git fetch origin --prune && git status --short --branch && git log --oneline --decorate -20 origin/main && gh pr list --state all --limit 120 --json number,state,mergedAt,closedAt,headRefName,url,title --jq '.[] | [.number,.state,.mergedAt,.closedAt,.headRefName,.url,.title] | @tsv'` → exit 0
+- `printf 'Commits since 2026-09-12:\n'; git log --since='2026-09-12T00:00:00Z' --oneline origin/main; printf '\nRecent main diff stat (last 8 commits):\n'; git diff --stat origin/main~8..origin/main; printf '\nRecent main changed files (last 8 commits):\n'; git diff --name-status origin/main~8..origin/main; printf '\nPer-commit stats:\n'; git log --format='--- %h %s' --stat -8 origin/main` → exit 0
+- `npm run agent:preflight && npx tsx --test scripts/__tests__/approvedSourceMatrixGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts` → exit 1 (`file inventory stale (52d)`)
+- `npx tsx --test scripts/__tests__/approvedSourceMatrixGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts` → exit 1 (known PR #99 dead-source token failure)
+- `gh pr view 99 --json number,state,mergedAt,closedAt,url,headRefName,title --jq '{number,state,mergedAt,closedAt,url,headRefName,title}' && git diff --stat origin/main...origin/cursor/critical-bug-management-2a22` → exit 0
+- `rg -n "[Vv]oteSmart|votesmart"` via workspace search → active matches in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Recorded duplicate-safe critical-bug automation scan and evidence |
+
+### Acceptance evidence
+- Automation memory was read before repo investigation; tracked PRs #28-#31, #40, and #99-#123 remain open, so no duplicate PRs were opened.
+- `git log --since='2026-09-12T00:00:00Z' --oneline origin/main` returned no commits.
+- Targeted guard failure is already tracked by PR #99 (`https://github.com/robbieryan312-star/The-ledger/pull/99`), verified open with `mergedAt:null` and `closedAt:null`.
+- `npm run agent:preflight` is blocked by stale `data/reports/file-inventory.json` metadata (`file inventory stale (52d)`).
+
+### Open / next
+- PR #99 remains the existing fix path for the reproduced source-integrity failure; do not open a duplicate.
+- Refresh file inventory in a scoped maintenance pass so `npm run agent:preflight` can run cleanly again.
+
+## Confront Claude — paste to Claude Code
+
+**Critical-bug automation 2026-09-13:** duplicate-safe scan on `cursor/critical-bug-inspection-55d4`; no new PR opened. `origin/main` has no commits since 2026-09-12. Existing PR #99 is still open and covers the reproduced `approvedSourceMatrixGuard` failure from active Claude rule docs containing the retired-source token. Separate process defect: `npm run agent:preflight` exits 1 because `data/reports/file-inventory.json` is stale 52d; schedule a scoped maintenance fix, not a duplicate critical-bug PR.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
