@@ -88,6 +88,12 @@ export interface BuildHouseStockTradeEntryInput {
   houseIndexYears: number[];
 }
 
+export interface BuildSenateStockTradeEntryInput {
+  trades: StockTrade[];
+  priorTrades: StockTrade[];
+  error?: string;
+}
+
 /** Build snapshot entry trades + note for a House PTR sync result (§6 unparsed-filing honesty). */
 export function buildHouseStockTradeEntry(input: BuildHouseStockTradeEntryInput): {
   trades: StockTrade[];
@@ -144,6 +150,47 @@ export function buildHouseStockTradeEntry(input: BuildHouseStockTradeEntryInput)
   }
 
   return { trades: priorTrades.length > 0 ? priorTrades : [], note: 'No official PTR rows parsed this run.' };
+}
+
+/** Build snapshot entry trades + note for a Senate eFD PTR sync result. */
+export function buildSenateStockTradeEntry(input: BuildSenateStockTradeEntryInput): {
+  trades: StockTrade[];
+  note: string;
+} {
+  const { trades, priorTrades, error } = input;
+
+  if (error) {
+    if (priorTrades.length > 0) {
+      return {
+        trades: priorTrades,
+        note: `fetch-failed: Senate eFD sync (${error}). Prior good trades preserved.`,
+      };
+    }
+    return {
+      trades: [],
+      note: `fetch-failed: Senate eFD sync unavailable (${error}).`,
+    };
+  }
+
+  if (trades.length > 0) {
+    return {
+      trades,
+      note: `${trades.length} official PTR transaction(s) from Senate eFD.`,
+    };
+  }
+
+  if (priorTrades.length > 0) {
+    return {
+      trades: priorTrades,
+      note: `${priorTrades.length} official PTR transaction(s) preserved from prior sync. No fresh Senate PTR reports matched this member in the synced window.`,
+    };
+  }
+
+  return {
+    trades: [],
+    note:
+      'No Senate PTR reports matched this member in the synced window — official annual disclosure may confirm zero reportable stock transactions above $1,000.',
+  };
 }
 
 /** Map a snapshot entry to per-profile trades.json (destination view for migrated members). */

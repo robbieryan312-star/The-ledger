@@ -11,6 +11,7 @@ import { allPoliticians } from '../../lib/data/allPoliticians';
 import {
   buildHouseStockTradeEntry,
   buildMergedStockTradesMeta,
+  buildSenateStockTradeEntry,
   isTradesFetchFailedGap,
   mergeStockTrades,
   stockEntryToProfileTradesFile,
@@ -19,6 +20,7 @@ import {
   type StockTradeEntry,
 } from '../../lib/data/stockTrades';
 import {
+  SENATE_SUCCESS_EMPTY_OVERWRITE_KNOWN_BAD,
   S000033_TRADES_FETCH_FAILED_KNOWN_GOOD,
   TRADES_SILENT_EMPTY_KNOWN_BAD,
 } from '../../lib/data/__fixtures__/stockTradesHonestGap.fixture';
@@ -57,10 +59,35 @@ test('fetch-failed note must not wipe prior official trades (fixture contract)',
 
 test('Senate fetch-failed preserves prior trades when error is set', () => {
   const priorTrades = [...STOCK_TRADES_KNOWN_GOOD_PRIOR];
-  const result = { trades: [] as StockTrade[], error: 'fetch-failed: HTTP 503' };
-  const entryTrades = result.error && priorTrades.length > 0 ? priorTrades : result.trades;
-  assert.equal(entryTrades.length, 1);
-  assert.equal(entryTrades[0].id, 'house-ptr-fixture-1');
+  const result = buildSenateStockTradeEntry({
+    trades: [],
+    priorTrades,
+    error: 'fetch-failed: HTTP 503',
+  });
+  assert.equal(result.trades.length, 1);
+  assert.equal(result.trades[0].id, 'house-ptr-fixture-1');
+  assert.match(result.note, /fetch-failed: Senate eFD sync/);
+  assert.match(result.note, /Prior good trades preserved/);
+});
+
+test('Senate successful zero-match does not wipe prior official trades', () => {
+  const priorTrades = [...STOCK_TRADES_KNOWN_GOOD_PRIOR];
+  assert.equal(SENATE_SUCCESS_EMPTY_OVERWRITE_KNOWN_BAD.result.trades.length, 0);
+  assert.equal(SENATE_SUCCESS_EMPTY_OVERWRITE_KNOWN_BAD.result.error, undefined);
+
+  const result = buildSenateStockTradeEntry({
+    trades: [...SENATE_SUCCESS_EMPTY_OVERWRITE_KNOWN_BAD.result.trades],
+    priorTrades,
+    error: SENATE_SUCCESS_EMPTY_OVERWRITE_KNOWN_BAD.result.error,
+  });
+  assert.equal(result.trades.length, 1);
+  assert.equal(result.trades[0].id, 'house-ptr-fixture-1');
+  assert.match(result.note, /preserved from prior sync/);
+  assert.match(result.note, /No fresh Senate PTR reports matched/);
+
+  const profileFile = stockEntryToProfileTradesFile('S000033', result);
+  assert.equal(profileFile.status, 'filled');
+  assert.equal(profileFile.trades.length, 1);
 });
 
 test('unparsed House PTR filings get honest note not clean empty (Kelly docIds 20034607/20034302)', () => {

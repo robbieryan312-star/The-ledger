@@ -30,6 +30,7 @@ import type { StockTradeEntry, StockTradesSnapshot } from '../lib/data/stockTrad
 import {
   buildHouseStockTradeEntry,
   buildMergedStockTradesMeta,
+  buildSenateStockTradeEntry,
   stockEntryToProfileTradesFile,
 } from '../lib/data/stockTrades';
 import { loadCheckpoint, saveCheckpoint } from './lib/resilientFetch';
@@ -336,21 +337,15 @@ async function runSync(): Promise<void> {
         senateError = result.error;
       }
 
+      const built = buildSenateStockTradeEntry({
+        trades: result.trades,
+        priorTrades,
+        error: result.error,
+      });
+
       const entry = byPoliticianId[p.id];
-      if (result.error && priorTrades.length > 0) {
-        entry.trades = priorTrades;
-        entry.note = `fetch-failed: Senate eFD sync (${result.error}). Prior good trades preserved.`;
-      } else {
-        entry.trades = result.trades;
-        if (result.trades.length > 0) {
-          entry.note = `${result.trades.length} official PTR transaction(s) from Senate eFD.`;
-        } else if (result.error) {
-          entry.note = `fetch-failed: Senate eFD sync unavailable (${result.error}).`;
-        } else {
-          entry.note =
-            'No Senate PTR reports matched this member in the synced window — official annual disclosure may confirm zero reportable stock transactions above $1,000.';
-        }
-      }
+      entry.trades = built.trades;
+      entry.note = built.note;
       console.log(`  ${p.id}: ${entry.trades.length} trade(s)${result.error ? ` (${result.error})` : ''}`);
       if (!result.error && !scopedRun) {
         checkpoint[p.id] = true;
