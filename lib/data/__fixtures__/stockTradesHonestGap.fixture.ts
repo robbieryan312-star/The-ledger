@@ -22,3 +22,16 @@ export const TRADES_SILENT_EMPTY_KNOWN_BAD = {
   note: undefined,
   trades: [] as const,
 };
+
+/**
+ * Frozen bad: a successful Senate eFD zero-match response must not replace
+ * prior official PTR rows with this empty payload.
+ */
+export const SENATE_SUCCESS_EMPTY_OVERWRITE_KNOWN_BAD = {
+  bioguideId: 'S000033',
+  chamber: 'senate',
+  result: {
+    trades: [] as const,
+    error: undefined,
+  },
+};
