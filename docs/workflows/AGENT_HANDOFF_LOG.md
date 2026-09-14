@@ -10,6 +10,70 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation: Senate PTR zero-match preservation (PASS with known build blocker)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS for scoped fix; full build blocked by existing PR #99 issue
+**Current state:** `cursor/critical-bug-management-1073` · code commit `ea82716` · PR https://github.com/robbieryan312-star/The-ledger/pull/124 · tree dirty only for this handoff-log entry before docs commit · build status: `npm run build` fails on pre-existing tracked dead-source-token guard (#99)
+
+### Objective
+Daily high-severity bug scan: avoid duplicate tracked PRs, inspect recent commits, and fix a critical correctness bug only when the trigger and root cause are concrete.
+
+### Verdict / outcome
+**PASS (scoped)** — fixed a new high-severity Senate STOCK Act data-loss path. A successful Senate eFD zero-match result no longer overwrites prior official PTR rows with `[]`; shared `stockTrades.json` and migrated `profiles/{bioguideId}/trades.json` writes now preserve prior rows through `buildSenateStockTradeEntry()`.
+
+### Commits
+- `ea82716` — `fix: preserve Senate PTR rows on zero-match sync`
+- Handoff-log docs commit — pending at time of this entry
+
+### Commands run (this session)
+- `pwd && git status --short && git branch --show-current && git remote -v && (if [ -f /tmp/cursor/async-install/install-user.status ]; then printf 'install-status='; cat /tmp/cursor/async-install/install-user.status; elif [ -f /tmp/cursor/async-install/install-user.log ]; then printf 'install-log-present\n'; pgrep -af '/tmp/cursor/async-install|install-user' || true; else printf 'install-status=none\n'; fi) && (if [ -f /tmp/cursor/start-user/start-user.status ]; then printf 'start-status='; cat /tmp/cursor/start-user/start-user.status; elif [ -f /tmp/cursor/start-user/start-user.log ]; then printf 'start-log-present\n'; else printf 'start-status=none\n'; fi)` → exit 0; branch `cursor/critical-bug-management-1073`; setup/start none
+- `gh pr list --repo robbieryan312-star/The-ledger --state all --limit 150 --json number,state,mergedAt,closedAt,url,title,headRefName,headRefOid,baseRefName > /tmp/ledger-prs.json && python - <<'PY' ... PY` → exit 127; `python: command not found`
+- `gh pr list --repo robbieryan312-star/The-ledger --state all --limit 150 --json number,state,mergedAt,closedAt,url,title,headRefName,headRefOid,baseRefName > /tmp/ledger-prs.json && node - <<'NODE' ... NODE` → exit 0; tracked PRs #28-#31, #40, #99-#123 all open
+- `git fetch origin main --prune && git log --oneline --decorate --max-count=30 origin/main && printf '\nCURRENT HEAD\n' && git log --oneline --decorate --max-count=5 HEAD && printf '\nDIFF VS MAIN\n' && git diff --stat origin/main...HEAD` → exit 0; branch at `origin/main` before fix
+- `npx tsx --test scripts/__tests__/stockTradesCheckpoint.test.ts` → exit 0; 7/7 pass
+- `npm run test:typecheck && npm run test:source-integrity && npm run build` → exit 1; typecheck passed; source-integrity failed on tracked #99 dead-source-token guard
+- `npm run build` → exit 1; prebuild failed on same tracked #99 dead-source-token guard
+- `git diff -- lib/data/stockTrades.ts scripts/sync-stock-trades.ts scripts/__tests__/stockTradesCheckpoint.test.ts lib/data/__fixtures__/stockTradesHonestGap.fixture.ts` → exit 0; reviewed scoped diff
+- `git diff --check && git status --short` → exit 0; four modified implementation/test files before commit
+- `git add lib/data/stockTrades.ts scripts/sync-stock-trades.ts scripts/__tests__/stockTradesCheckpoint.test.ts lib/data/__fixtures__/stockTradesHonestGap.fixture.ts && git commit -m "fix: preserve Senate PTR rows on zero-match sync"` → exit 0; `ea82716`
+- `git push -u origin cursor/critical-bug-management-1073` → exit 0; branch pushed
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/stockTrades.ts` | modified | Added `buildSenateStockTradeEntry()` to preserve prior Senate PTR rows on errors and successful zero-match results. |
+| `scripts/sync-stock-trades.ts` | modified | Replaced inline Senate result assignment with the new helper before shared/per-profile writes. |
+| `scripts/__tests__/stockTradesCheckpoint.test.ts` | modified | Added regression coverage for successful Senate zero-match preserving prior rows. |
+| `lib/data/__fixtures__/stockTradesHonestGap.fixture.ts` | modified | Added append-only known-bad Senate zero-match overwrite fixture. |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this session entry. |
+
+### Acceptance evidence
+- Focused guard:
+  ```
+  # Subtest: Senate successful zero-match does not wipe prior official trades
+  ok 3 - Senate successful zero-match does not wipe prior official trades
+  1..7
+  # pass 7
+  # fail 0
+  ```
+- Build blocker (pre-existing tracked open PR #99):
+  ```
+  not ok 11 - criterion (A): no contiguous dead-source token outside history exempts
+  dead-source token "votesmart" found outside history exempts:
+  .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2
+  .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1
+  ```
+
+### Open / next
+- Claude STAGE THREE review on PR #124.
+- PR #99 remains the current main-branch source-integrity/build blocker; this run did not duplicate that open PR.
+
+## Confront Claude — paste to Claude Code
+
+**PR #124 / code commit `ea82716`:** Please run STAGE THREE on the Senate PTR preservation fix. Trigger: `syncSenatePtrForTarget()` can return `{ trades: [], sessionOk: true }` on a successful zero-match Senate eFD query; prior code wrote that empty array over prior official Senate trades in both shared and per-profile files. Fix: `buildSenateStockTradeEntry()` now preserves prior rows on successful zero-match just like the House path, with append-only fixture `SENATE_SUCCESS_EMPTY_OVERWRITE_KNOWN_BAD` and focused guard passing (`npx tsx --test scripts/__tests__/stockTradesCheckpoint.test.ts` → 7/7). Full `npm run build` is blocked by the already tracked #99 dead-source-token guard in `.claude/rules/*`, not by this patch.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
