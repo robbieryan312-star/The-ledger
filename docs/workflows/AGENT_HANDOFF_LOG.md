@@ -10,6 +10,57 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation sweep (2026-09-15 PASS)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (no new critical bug PR opened)<br>
+**Current state:** `cursor/critical-bug-management-6065` · HEAD `763dc67` before this docs commit · tree clean before log update · PR none · build not run (no application/data code changes)
+
+### Objective
+Inspect recent commits/remote activity for high-severity correctness bugs, clean persistent bug memory for stale PR states, and avoid duplicate reports for already-open tracked PRs.
+
+### Verdict / outcome
+**PASS** — all `MEMORIES.md` tracked PRs (#28, #29, #30, #31, #40, #99-#124) remain open, so none were duplicated or removed. No `origin/main` commits or untracked remote commits landed after the latest tracked bug entry (#124, 2026-09-14T04:12:23Z). No new critical bug with a concrete trigger was identified.
+
+### Commands run (this session)
+- `pwd && git status --short && git log --oneline -12 && if [ -f /tmp/cursor/async-install/install-user.status ]; then printf 'install_status='; cat /tmp/cursor/async-install/install-user.status; elif [ -f /tmp/cursor/async-install/install-user.log ]; then echo 'install_log_present_no_status'; pgrep -af 'install-user|npm install|pnpm|yarn' || true; else echo 'no_async_install_files'; fi && if [ -f /tmp/cursor/start-user/start-user.status ]; then printf 'start_status='; cat /tmp/cursor/start-user/start-user.status; elif [ -f /tmp/cursor/start-user/start-user.log ]; then echo 'start_log_present_no_status'; else echo 'no_start_files'; fi` → exit 0; clean tree; no async install/start files
+- `gh pr list --state all --limit 200 --json number,state,mergedAt,closedAt,url,title,headRefName,updatedAt | tee /tmp/ledger-pr-list.json >/dev/null && node -e "..."` → exit 1; shell interpolation error in inline Node expression
+- `gh pr list --state all --limit 200 --json number,state,mergedAt,closedAt,url,title,headRefName,updatedAt | tee /tmp/ledger-pr-list.json >/dev/null && node - <<'NODE' ... NODE` → exit 0; every tracked memory PR still `OPEN`
+- `git branch --show-current && git remote -v && git log -8 --format='%h %cI %s' && git status --short` → exit 0; branch `cursor/critical-bug-management-6065`; clean tree
+- `git fetch --prune origin '+refs/heads/*:refs/remotes/origin/*' && echo '--- origin/main recent ---' && git log origin/main -12 --format='%h %cI %s' && echo '--- diff current..origin/main ---' && git log --oneline HEAD..origin/main` → exit 0; no current..origin/main delta
+- `git for-each-ref --sort=-committerdate --format='%(committerdate:iso8601) %(refname:short) %(objectname:short) %(subject)' refs/remotes/origin | tee /tmp/ledger-recent-refs.txt && echo '--- open PRs newest ---' && gh pr list --state open --limit 50 --json number,title,url,headRefName,updatedAt,isDraft | tee /tmp/ledger-open-prs.json >/dev/null && node - <<'NODE' ... NODE` → exit 0; newest open PR is tracked #124
+- `git diff --name-status origin/main...HEAD && git log --all --since='2026-09-14T04:12:23Z' --format='%h %cI %D %s' --name-status && git diff --stat origin/main...origin/cursor/critical-bug-management-1073 && git diff --name-status origin/main...origin/cursor/critical-bug-management-1073` → exit 0; current branch has no diff; no commits after latest tracked entry; #124 files match existing memory entry
+- `rg "the-ledger-(s4dn|main)" /workspace --glob "*.md"` → found current-doc production-project drift; surfaced below
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Recorded 2026-09-15 critical bug automation sweep |
+
+### Acceptance evidence
+- Persistent memory read first: latest tracked entry is PR #124 for `scripts/sync-stock-trades.ts`; all tracked PRs remain `OPEN`.
+- Recent commit scan: `git log --all --since='2026-09-14T04:12:23Z' ...` returned no commits.
+- Current branch diff: `git diff --name-status origin/main...HEAD` returned no application/data changes.
+
+### Owner visibility finding
+| Field | Detail |
+|-------|--------|
+| **What** | Production-project docs disagree: current backlog says `the-ledger-main`, while REPO/PROGRESS/SETUP/M8 docs still say `the-ledger-s4dn`. |
+| **Where** | `docs/workflows/IMPROVEMENT_BACKLOG.md:20` vs `REPO.md:9`, `PROGRESS.md:4`, `PROGRESS.md:7`, `docs/SETUP.md:131`, `docs/workflows/M8_COUNTY_MAP_DECISION.md:10` |
+| **Evidence** | `rg "the-ledger-(s4dn|main)" /workspace --glob "*.md"` reports both names in current docs. |
+| **Severity** | P2 doc-drift |
+| **Repair** | Agent-fixable doc reconciliation, but out of scope for this critical-bug automation sweep. |
+| **Action this turn** | Flagged only; no production/deploy docs changed. |
+
+### Open / next
+- Existing critical bug fixes remain awaiting review in open draft PRs #28, #29, #30, #31, #40, and #99-#124.
+- No new PR opened for this scan.
+
+## Confront Claude — paste to Claude Code
+
+**Critical bug automation 2026-09-15:** branch `cursor/critical-bug-management-6065`, HEAD `763dc67` before docs log update, no PR. Memory cleanup: all tracked PRs (#28/#29/#30/#31/#40/#99-#124) still OPEN; no duplicate opened. Recent scan: no `origin/main` or remote commits after tracked PR #124 (`2026-09-14T04:12:23Z`); current branch has no app/data diff; no new concrete critical bug found. Open gate: review/merge the existing draft critical-bug PRs before further duplicate work. Owner-visibility P2: production project docs still conflict (`the-ledger-main` vs `the-ledger-s4dn`); reconcile in a focused docs pass.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
