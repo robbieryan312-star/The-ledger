@@ -10,6 +10,48 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation scan (PASS with known-open guard block)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS — no new non-duplicate critical bug found
+**Current state:** `cursor/critical-bug-management-72d4` · HEAD `763dc67` before this log commit · PR none opened · tree dirty only for this handoff-log update · build not run because `test:source-integrity` is already blocked by open PR #99
+
+### Objective
+Inspect recent commits for high-severity correctness bugs that escaped review; do not duplicate persistent-memory entries with open PRs.
+
+### Verdict / outcome
+No new critical bug was confirmed. Persistent-memory entries #28, #29, #30, #31, #40, and #99-#124 were checked against GitHub and remain open, so duplicate bug classes were excluded from this run.
+
+### Commits
+- `763dc67` — baseline audited before this handoff-log commit
+- this docs commit — records the automation scan and known-open guard block
+
+### Commands run (this session)
+- `gh pr list --state all --limit 120 --json number,state,mergedAt,closedAt,url,title | node ...` -> exit 0; all tracked PRs still `OPEN`
+- `git log --date=short --format='%h %ad %s' -30` -> exit 0; recent non-doc changes centered on alleged-policy / CREC-yield / provenance guards
+- `git show --stat --oneline ...` / `git show --format= ...` -> exit 0; reviewed recent behavioral diffs
+- `npm run test:source-integrity && npm run test:crec && npm run test:topic-positions-bundle && npm run test:profile-snapshots` -> exit 1; known-open PR #99 dead-source-token guard failure stopped the chain
+- `npm run test:crec && npm run test:topic-positions-bundle && npm run test:profile-snapshots` -> exit 0; 3 CREC tests, 8 topic-position tests, 2 profile snapshot tests passed
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this critical-bug automation scan entry |
+
+### Acceptance evidence
+- Memory cleanup: PRs #28, #29, #30, #31, #40, #99, #100, #101, #102, #103, #104, #105, #106, #107, #108, #109, #110, #111, #112, #113, #114, #115, #116, #117, #118, #119, #120, #121, #122, #123, #124 all returned `OPEN`; no MEMORIES.md deletion/status change needed.
+- Known-open duplicate blocker evidence: `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1` — matches persistent memory PR #99.
+- Targeted guards after excluding the known blocker: `test:crec`, `test:topic-positions-bundle`, and `test:profile-snapshots` exited 0.
+
+### Open / next
+- Existing PR #99 still needs review/merge before full `test:source-integrity`, `prebuild`, or `build` can pass on this branch.
+- Existing open PRs #28-#31, #40, #99-#124 remain the active critical-bug queue; no duplicate PR opened today.
+
+## Confront Claude — paste to Claude Code
+
+**Critical-bug automation scan:** branch `cursor/critical-bug-management-72d4` · baseline HEAD `763dc67` · PR none opened · no new non-duplicate critical bug found. Existing memory PRs #28/#29/#30/#31/#40/#99-#124 are still `OPEN`; source-integrity remains blocked by known PR #99 (`votesmart` token in `.claude/rules/...`). Review this log commit; open gate remains PR #99 before full guard/build green.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
