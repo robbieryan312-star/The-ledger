@@ -10,6 +10,73 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-09-17 — CRITICAL BUG PR #125: same-topic Said→Did false pairs
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS for scoped fix; full build BLOCKED by existing PR #99 issue  
+**Current state:** `cursor/critical-bug-management-2a44` · code tip `6c4d91f` · PR https://github.com/robbieryan312-star/The-ledger/pull/125 · tree clean before this handoff-log commit · build status: scoped PASS, full build FAIL on known open PR #99 dead-source-token guard
+
+### Objective
+Find and fix a high-severity correctness bug in recent behavioral changes without duplicating open memory-tracked PRs.
+
+### Verdict / outcome
+**PASS (scoped)** — `saidDidSubjectsOverlap` no longer accepts broad non-legislation topic equality as sufficient subject overlap. Embedded CREC Said→Did links are pruned by the same invariant, and affected generated profile files now remove unrelated broad-topic pairs:
+- `S000033` pairCount **14 → 11**
+- `O000172` saidDid **1 → 0**, manifest `saidDid: honest-gap`
+- `P000197` saidDid **1 → 0**, manifest `saidDid: honest-gap`
+
+### Commits
+- `6c4d91f` — Fix Said-Did same-topic subject matching
+- This handoff-log commit follows on the same PR branch.
+
+### Commands run (this session)
+- `gh pr view ...` for PRs #28, #29, #30, #31, #40, #99–#124 → all memory-tracked PRs still `OPEN`
+- `git fetch --prune origin && git log --oneline --decorate --name-status --max-count=25 origin/main -- ':(exclude)docs/workflows/AGENT_HANDOFF_LOG.md'` → recent code scope inspected
+- `npx tsx -e "..."` same-topic overlap/profile-count probe → fixture overlap `false`; `O000172=0`, `P000197=0`, `S000033=11`
+- `npm run reprocess:profiles -- --members S000033` → S000033 `14 -> 11` (initial scoped data repair)
+- `npm run reprocess:profiles` → inspected then reverted unrelated generated churn; final committed data is targeted
+- `set -o pipefail; npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/profileCategoryIntegrity.test.ts scripts/__tests__/profileMigratePreserve.test.ts` → PASS, 72 tests / 0 fail
+- `set -o pipefail; npm run test:typecheck` → PASS
+- `set -o pipefail; npm run build` → FAIL, one known pre-existing blocker: `approvedSourceMatrixGuard` dead-source token in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md` (already tracked/open PR #99)
+- `npm run snapshot:update -- --member S000033` → refreshed S000033 golden snapshot after removing false pairs
+- `set -o pipefail; npm run test:profile-snapshots` → PASS, 2 tests / 0 fail
+- `git add ... && git commit -m "Fix Said-Did same-topic subject matching"` → `6c4d91f`
+- `git push -u origin cursor/critical-bug-management-2a44` → pushed
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/sourceIntegrity.ts` | modified | Removed broad same-topic auto-pass; nominations return true only after nominee overlap |
+| `lib/data/buildSaidDidDiffs.ts` | modified | Prunes embedded links that fail `saidDidSubjectsOverlap` |
+| `scripts/lib/profileReprocess.ts` | modified | Preserves/updates `pairCount`, `status`, and note metadata after pruning |
+| `lib/data/__fixtures__/sourceIntegrity.fixture.ts` | modified | Added same-topic/no-shared-subject bad fixture |
+| `scripts/__tests__/sourceIntegrity.test.ts` | modified | Added regression test for the new fixture |
+| `lib/data/generated/profiles/S000033/saidDid.json` | modified | Removed three zero-keyword broad-topic false pairs; pairCount 11 |
+| `lib/data/generated/profiles/O000172/saidDid.json` | modified | Removed unsupported Lebanon/Iran broad-topic pair |
+| `lib/data/generated/profiles/P000197/saidDid.json` | modified | Removed unsupported Lebanon/Iran broad-topic pair |
+| `lib/data/generated/profiles/*/manifest.json` | modified | Updated affected saidDid statuses/asOf fields |
+| `lib/data/__fixtures__/profileSnapshots/S000033.snapshot.json` | modified | Updated golden snapshot after removing false pairs |
+| `lib/data/__fixtures__/profileCategoryIntegrity.fixture.ts` | modified | Updated S000033 verified count to 11/15 |
+| `lib/data/__fixtures__/profileMigratePreserve.fixture.ts` | modified | Updated P000197 on-disk Said→Did floor to zero after false pair removal |
+| `scripts/__tests__/profileMigratePreserve.test.ts` | modified | Kept statement-preserve guard while allowing zero verified P000197 pairs |
+| `PILOT_PROFILE_CHECKLIST.md` | modified | Updated S000033 row 8 to 11/15 partial |
+
+### Acceptance evidence
+- Targeted guard: `/tmp/ledger-targeted-saiddid-profile-guards.log` → `# tests 72`, `# pass 72`, `# fail 0`
+- Snapshot guard: `/tmp/ledger-profile-snapshots-same-topic-saiddid.log` → `# tests 2`, `# pass 2`, `# fail 0`
+- Typecheck: `/tmp/ledger-typecheck-same-topic-saiddid.log` → `tsc --noEmit` exit 0
+- Build blocker: `/tmp/ledger-build-same-topic-saiddid.log` → only `not ok ... criterion (A): no contiguous dead-source token outside history exempts`, matching open PR #99
+- Walkthrough artifact: `/opt/cursor/artifacts/saiddid_same_topic_validation.svg`
+
+### Open / next
+- Claude STAGE THREE review on PR #125.
+- Full build cannot turn green on this branch until the existing PR #99 dead-source-token issue lands or is otherwise resolved; do not duplicate PR #99.
+
+## Confront Claude — paste to Claude Code
+
+**PR #125 · code tip `6c4d91f` · branch `cursor/critical-bug-management-2a44`:** Please review the same-topic Said→Did fix. Scoped guards pass (`sourceIntegrity`/`profileCategory`/`profileMigratePreserve`: 72/72; snapshots: 2/2; typecheck pass). Full `npm run build` still fails only on the known open PR #99 dead-source-token guard in `.claude/rules/*`; this PR intentionally does not duplicate that fix. Review whether the stricter `saidDidSubjectsOverlap` invariant and generated profile removals are correct before merge.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  

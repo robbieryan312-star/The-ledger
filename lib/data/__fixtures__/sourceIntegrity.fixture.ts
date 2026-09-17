@@ -154,6 +154,22 @@ export const SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH = {
   },
 };
 
+/** Same broad topic but no shared subject — pediatric cancer statement must not pair to CMS rule CRA vote. */
+export const SAID_DID_KNOWN_BAD_SAME_TOPIC_SUBJECT_MISMATCH = {
+  label: 'S000033 pediatric cancer CREC Said paired with S.J.Res.198 Medicare/CMS rule Did',
+  said: {
+    quote:
+      'Mr. SANDERS. Mr. President, let me be very clear: In the midst of a broken and dysfunctional healthcare system, we must do everything that we can to find new cures and treatments for pediatric cancer, and I strongly support that effort, period.',
+    url: 'https://www.govinfo.gov/app/details/CREC-2025-12-17-pt1-PgS8820',
+    verbatim: true,
+  },
+  did: {
+    action:
+      'Voted Yea — S.J.Res. 198: A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Centers for Medicare & Medicaid Services of the Department of Health and Human Services relating to "Medicare Program; Implementation of Hospital Price Transparency Enforcement Updates and Improving Access to Care"',
+    url: 'https://www.congress.gov/bill/119th-congress/senate-joint-resolution/198',
+  },
+};
+
 /** Holder/Paul filibuster narration — MUST reject as a Cruz stated position (C001098 civil regression). */
 export const PLATFORM_KNOWN_BAD_EVENT_NARRATION =
   'The day after the filibuster, Attorney General Eric Holder sent a letter to Paul , responding to the filibuster. Holder wrote, "Does the president have the authority to use a weaponized drone to kill an American not engaged in combat on U.S. soil? The answer to that is no." [198]';

@@ -48,6 +48,9 @@ interface PositionsFile {
 interface SaidDidLinkEntry {
   topicId?: string;
   statedPositionDate: string | null;
+  saidQuote?: string;
+  saidUrl?: string;
+  saidOutlet?: string;
   voteDate: string;
   billTitle: string;
   billNumber: string;
@@ -58,6 +61,10 @@ interface SaidDidLinkEntry {
 
 interface SaidDidFile {
   bioguideId: string;
+  pairCount?: number;
+  pairTarget?: number;
+  status?: string;
+  honestGapNote?: string;
   byTopic: Record<string, SaidDidLinkEntry[]>;
 }
 
@@ -175,7 +182,20 @@ export async function reprocessMember(bioguideId: string): Promise<ReprocessStat
   const beforeLinkCount = Object.values(saidDidData.byTopic).reduce((n, arr) => n + arr.length, 0);
   const prunedByTopic = pruneSaidDidLinksByTopic(byTopic);
   const afterLinkCount = Object.values(prunedByTopic).reduce((n, arr) => n + arr.length, 0);
-  await writeJson(saidDidFile, { ...saidDidData, byTopic: prunedByTopic });
+  const pairTarget = saidDidData.pairTarget;
+  const honestGapNote =
+    typeof saidDidData.honestGapNote === 'string' && pairTarget !== undefined
+      ? saidDidData.honestGapNote.replace(/^\d+\s+of\s+\d+\b/, `${afterLinkCount} of ${pairTarget}`)
+      : saidDidData.honestGapNote;
+  await writeJson(saidDidFile, {
+    ...saidDidData,
+    pairCount: afterLinkCount,
+    ...(pairTarget !== undefined
+      ? { status: afterLinkCount >= pairTarget ? 'filled' : afterLinkCount > 0 ? 'partial' : 'honest-gap' }
+      : {}),
+    honestGapNote,
+    byTopic: prunedByTopic,
+  });
 
   await syncProfileManifestFromDisk(bioguideId);
 

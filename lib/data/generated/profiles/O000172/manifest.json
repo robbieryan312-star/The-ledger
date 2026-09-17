@@ -1,14 +1,14 @@
 {
   "bioguideId": "O000172",
   "politicianId": "alexandria-ocasio-cortez",
-  "asOf": "2026-07-08",
+  "asOf": "2026-09-17",
   "categories": {
     "header": "filled",
     "votes": "filled",
     "finance": "filled",
     "statements": "filled",
     "positions": "filled",
-    "saidDid": "filled",
+    "saidDid": "honest-gap",
     "legislation": "filled",
     "orgVoteLinks": "honest-gap",
     "news": "honest-gap",
