@@ -113,10 +113,12 @@ test('known-bad empty overwrite fails P000197 minimum statement/Said→Did count
   assert.equal(countSaidDidLinksInFile(bad.saidDid), 0);
   const rule = PROFILE_MIGRATE_PRESERVE_MINIMUMS.find((r) => r.bioguideId === bad.bioguideId)!;
   assert.ok(countStatementsInFile(bad.statements) < rule.minStatements);
-  assert.ok(countSaidDidLinksInFile(bad.saidDid) < rule.minSaidDidLinks);
+  if (rule.minSaidDidLinks > 0) {
+    assert.ok(countSaidDidLinksInFile(bad.saidDid) < rule.minSaidDidLinks);
+  }
 });
 
-test('P000197 on disk meets frozen minimum statements=8 and saidDid=1', () => {
+test('P000197 on disk meets frozen minimum statements=8 and verified saidDid floor', () => {
   const rule = PROFILE_MIGRATE_PRESERVE_MINIMUMS.find((r) => r.bioguideId === 'P000197')!;
   const stmtCount = countProfileStatements('P000197');
   const saidDidCount = countProfileSaidDid('P000197');

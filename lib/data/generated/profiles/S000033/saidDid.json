@@ -1,9 +1,50 @@
 {
   "bioguideId": "S000033",
-  "pairCount": 14,
+  "pairCount": 11,
   "pairTarget": 15,
   "status": "partial",
   "byTopic": {
+    "healthcare": [
+      {
+        "topicId": "healthcare",
+        "statedPositionDate": "2025-03-14",
+        "saidQuote": "Mr. SANDERS. Mr. President, let me thank Senator Wyden for his outstanding work as the former chairman of the Finance Committee and now as the ranking member. I get around Vermont a bit. I get around the country a bit. And, generally speaking, when I talk to a group of people, I ask them a simple question. I say: What do you think about the healthcare system? Is it working well or is it broken? Is it dysfunctional? And, overwhelmingly, the hands go up that the American healthcare system today is broken, it is dysfunctional, and it is cruel. And what people understand is the function of the American healthcare system, today, is not to provide quality healthcare to all of our people, which, in fact, goes on in every other major country on Earth. It is to make huge profits for the drug companies and the insurance companies.",
+        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2025-03-14-pt1-PgS1762-3",
+        "saidOutlet": "Congressional Record (GovInfo)",
+        "voteDate": "2026-04-23",
+        "billTitle": "Wyden Amdt. No. 5336 — To establish a deficit-neutral reserve fund relating to requiring the Comptroller General of the United States to conduct a study related to economic consequences of private or confidential drug pricing agreements struck by any Federal department, agency, or office with any pharmaceutical manu...",
+        "billNumber": "Wyden Amdt. No. 5336",
+        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00103.xml",
+        "voteChoice": "Yea",
+        "tier": "official"
+      },
+      {
+        "topicId": "healthcare",
+        "statedPositionDate": "2024-06-11",
+        "saidQuote": "Mr. SANDERS. Mr. President, let me be as clear as I can be. That is, the American people--whether they are Democrats, Republicans, or Independents--are sick and tired of paying, by far, the highest prices in the world for prescription drugs. The American people are sick and tired of being ripped off by giant pharmaceutical companies who make huge profits every year while charging us outrageous prices that the American people cannot afford. A few months ago, the Senate Health, Education, Labor, and Pensions Committee--the HELP Committee--that I chair held a hearing on the extraordinarily high prices of prescription drugs in the United States, and this is what we learned.",
+        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2024-06-11-pt1-PgS4008",
+        "saidOutlet": "Congressional Record (GovInfo)",
+        "voteDate": "2026-04-23",
+        "billTitle": "Motion to Waive All Applicable Budgetary Discipline Re: Sanders Amdt. No. 5159 — To reduce the price of prescription drugs in the United States by more than 50 percent by adopting Most Favored Nation drug pricing so that the American people pay no more for prescription drugs than Europeans or Canadians.. Official Se...",
+        "billNumber": "Motion to Waive All Applicable Budgetary Discipline Re: Sanders Amdt. No. 5159",
+        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00101.xml",
+        "voteChoice": "Yea",
+        "tier": "official"
+      },
+      {
+        "topicId": "healthcare",
+        "statedPositionDate": "2023-11-07",
+        "saidQuote": "Mr. SANDERS. Mr. President, the American people understand--whether they are Democrats, Republicans, or Independents--that our healthcare system is broken; it is dysfunctional; it is failing. We spend almost twice as much per person on healthcare--an unsustainable $13,000 for every man, woman, and child--than any other country on Earth, and yet the results of all of that spending are abysmal. While the insurance companies and the drug companies make hundreds of billions of dollars in profit, we have 85 million Americans who are uninsured or underinsured and over 60,000 people who die every single year because they can't get to a doctor when they need to.",
+        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2023-11-07-pt1-PgS5382",
+        "saidOutlet": "Congressional Record (GovInfo)",
+        "voteDate": "2026-04-23",
+        "billTitle": "Paul Amdt. No. 5378 — To reduce new budget authority for functions 150, 250, 500, and 600 in order to offset $70,000,000,000 of new spending by cutting $45,000,000,000 of foreign aid, eliminating $5,000,000,000 in refugee spending, cutting $16,000,000,000 from the Department of Education, and cutting $4,000,000,000 ...",
+        "billNumber": "Paul Amdt. No. 5378",
+        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00099.xml",
+        "voteChoice": "Nay",
+        "tier": "official"
+      }
+    ],
     "education": [
       {
         "topicId": "education",
@@ -73,60 +114,6 @@
         "tier": "official"
       }
     ],
-    "healthcare": [
-      {
-        "topicId": "healthcare",
-        "statedPositionDate": "2025-12-17",
-        "saidQuote": "Mr. SANDERS. Mr. President, let me be very clear: In the midst of a broken and dysfunctional healthcare system, we must do everything that we can to find new cures and treatments for pediatric cancer, and I strongly support that effort, period. I think we can all imagine the kind of heartbreak that parents go through ] when they learn that their babies or their young children have been diagnosed with cancer. And I should say that as the former chair of the HELP Committee, I was actively involved in the bipartisan agreement that we reached over a year ago, which included the Give Kids a Chance Act, bipartisan support, ready to go. Sadly, that enormously important legislation was torpedoed, as some of you will recall, by a series of tweets by Elon Musk. And Republicans became frightened, and they gave up on that bipartisan legislation.",
-        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2025-12-17-pt1-PgS8820",
-        "saidOutlet": "Congressional Record (GovInfo)",
-        "voteDate": "2026-07-16",
-        "billTitle": "Motion to Proceed to S.J. Res. 198 — A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Centers for Medicare &amp;#38; Medicaid Services of the Department of Health and Human Services relating to \"Medicare Program; Implementation of...",
-        "billNumber": "S.J.Res. 198",
-        "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-joint-resolution/198",
-        "voteChoice": "Yea",
-        "tier": "official"
-      },
-      {
-        "topicId": "healthcare",
-        "statedPositionDate": "2025-03-14",
-        "saidQuote": "Mr. SANDERS. Mr. President, let me thank Senator Wyden for his outstanding work as the former chairman of the Finance Committee and now as the ranking member. I get around Vermont a bit. I get around the country a bit. And, generally speaking, when I talk to a group of people, I ask them a simple question. I say: What do you think about the healthcare system? Is it working well or is it broken? Is it dysfunctional? And, overwhelmingly, the hands go up that the American healthcare system today is broken, it is dysfunctional, and it is cruel. And what people understand is the function of the American healthcare system, today, is not to provide quality healthcare to all of our people, which, in fact, goes on in every other major country on Earth. It is to make huge profits for the drug companies and the insurance companies.",
-        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2025-03-14-pt1-PgS1762-3",
-        "saidOutlet": "Congressional Record (GovInfo)",
-        "voteDate": "2026-04-23",
-        "billTitle": "Wyden Amdt. No. 5336 — To establish a deficit-neutral reserve fund relating to requiring the Comptroller General of the United States to conduct a study related to economic consequences of private or confidential drug pricing agreements struck by any Federal department, agency, or office with any pharmaceutical manu...",
-        "billNumber": "Wyden Amdt. No. 5336",
-        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00103.xml",
-        "voteChoice": "Yea",
-        "tier": "official"
-      },
-      {
-        "topicId": "healthcare",
-        "statedPositionDate": "2024-06-11",
-        "saidQuote": "Mr. SANDERS. Mr. President, let me be as clear as I can be. That is, the American people--whether they are Democrats, Republicans, or Independents--are sick and tired of paying, by far, the highest prices in the world for prescription drugs. The American people are sick and tired of being ripped off by giant pharmaceutical companies who make huge profits every year while charging us outrageous prices that the American people cannot afford. A few months ago, the Senate Health, Education, Labor, and Pensions Committee--the HELP Committee--that I chair held a hearing on the extraordinarily high prices of prescription drugs in the United States, and this is what we learned.",
-        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2024-06-11-pt1-PgS4008",
-        "saidOutlet": "Congressional Record (GovInfo)",
-        "voteDate": "2026-04-23",
-        "billTitle": "Motion to Waive All Applicable Budgetary Discipline Re: Sanders Amdt. No. 5159 — To reduce the price of prescription drugs in the United States by more than 50 percent by adopting Most Favored Nation drug pricing so that the American people pay no more for prescription drugs than Europeans or Canadians.. Official Se...",
-        "billNumber": "Motion to Waive All Applicable Budgetary Discipline Re: Sanders Amdt. No. 5159",
-        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00101.xml",
-        "voteChoice": "Yea",
-        "tier": "official"
-      },
-      {
-        "topicId": "healthcare",
-        "statedPositionDate": "2023-11-07",
-        "saidQuote": "Mr. SANDERS. Mr. President, the American people understand--whether they are Democrats, Republicans, or Independents--that our healthcare system is broken; it is dysfunctional; it is failing. We spend almost twice as much per person on healthcare--an unsustainable $13,000 for every man, woman, and child--than any other country on Earth, and yet the results of all of that spending are abysmal. While the insurance companies and the drug companies make hundreds of billions of dollars in profit, we have 85 million Americans who are uninsured or underinsured and over 60,000 people who die every single year because they can't get to a doctor when they need to.",
-        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2023-11-07-pt1-PgS5382",
-        "saidOutlet": "Congressional Record (GovInfo)",
-        "voteDate": "2026-04-23",
-        "billTitle": "Paul Amdt. No. 5378 — To reduce new budget authority for functions 150, 250, 500, and 600 in order to offset $70,000,000,000 of new spending by cutting $45,000,000,000 of foreign aid, eliminating $5,000,000,000 in refugee spending, cutting $16,000,000,000 from the Department of Education, and cutting $4,000,000,000 ...",
-        "billNumber": "Paul Amdt. No. 5378",
-        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00099.xml",
-        "voteChoice": "Nay",
-        "tier": "official"
-      }
-    ],
     "legislation": [
       {
         "topicId": "legislation",
@@ -167,35 +154,7 @@
         "voteChoice": "Yea",
         "tier": "official"
       }
-    ],
-    "defense-veterans": [
-      {
-        "topicId": "defense-veterans",
-        "statedPositionDate": "2024-05-09",
-        "saidQuote": "Mr. SANDERS. Mr. President, some of my Republican colleagues held a press conference today, criticizing President Biden for his decision to stop sending additional bombs to Israel due to the Netanyahu government's apparent decision to launch a major military assault on Rafah. One of my Republican colleagues even said: Joe Biden objectively favors a Hamas victory over Israel. It's just that simple. Which sounds rather amusing given the fact that, for the last 40 years, there has probably been nobody here in Washington, DC, more strongly supportive of Israel than Joe Biden, as a Senator and a President. We all know that President Biden has been very clear about his opposition to an attack on Rafah for many, many months and for good reason: An offensive--a major military offensive--in Rafah would worsen an already horrendous humanitarian catastrophe in Gaza.",
-        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2024-05-09-pt1-PgS3629-9",
-        "saidOutlet": "Congressional Record (GovInfo)",
-        "voteDate": "2026-06-24",
-        "billTitle": "Motion to Proceed to S. J. Res. 185 — A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress.. Official Senate roll-call from senate.gov (119th Congress).",
-        "billNumber": "S.J.Res. 185",
-        "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-joint-resolution/185",
-        "voteChoice": "Yea",
-        "tier": "official"
-      },
-      {
-        "topicId": "defense-veterans",
-        "statedPositionDate": "2023-12-04",
-        "saidQuote": "Mr. SANDERS. Madam President, I wanted to say a few words about the $106 billion emergency foreign aid supplemental bill that may soon be coming before us. And I should be clear that there are a number of pieces of that bill that I strongly support, but in its present form, I do not think it serves the interests of the American people. Let me say a few words as to why. First, while I strongly support Ukraine's valiant efforts to defend itself against Putin's invasion and Israel's need to defend itself against incoming rocket and missile attacks, I am deeply concerned that this legislation has no investments to address the needs of working families in the United States, 60 percent of whom are living paycheck to paycheck.",
-        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2023-12-04-pt1-PgS5707",
-        "saidOutlet": "Congressional Record (GovInfo)",
-        "voteDate": "2026-06-23",
-        "billTitle": "H. Con. Res. 86 — A concurrent resolution directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran.. Official Senate roll-call from senate.gov (119th Congress).",
-        "billNumber": "H.Con.Res. 86",
-        "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-concurrent-resolution/86",
-        "voteChoice": "Yea",
-        "tier": "official"
-      }
     ]
   },
-  "honestGapNote": "14 of 15 verified CREC floor-speech↔roll-call pairs after nominee-subject overlap + recorded-outlet resolution (2026-07-26)."
+  "honestGapNote": "undefined verified CREC floor-speech↔roll-call pairs after nominee-subject overlap + recorded-outlet resolution (2026-07-26)."
 }

@@ -236,10 +236,9 @@ function nominationLastNames(names: string[]): Set<string> {
 }
 
 /**
- * Said and Did must share real subject matter — same classified topic (non-legislation)
- * or at least one shared substantive keyword. Prevents tax-filing vs war-powers pairs.
- * Nomination/confirmation rows additionally require matching nominee last names so two
- * civil-liberties confirmations about different people never pair.
+ * Said and Did must share real subject matter via at least one substantive keyword.
+ * Nomination/confirmation rows can also match on nominee last name; a broad topic bucket
+ * alone is too weak and can pair unrelated floor remarks with newer roll calls.
  */
 export function saidDidSubjectsOverlap(saidQuote: string, didAction: string): boolean {
   const billText = didAction.replace(/^Voted\s+\w+\s+—\s+[^:]+:\s*/i, '').trim();
@@ -257,14 +256,6 @@ export function saidDidSubjectsOverlap(saidQuote: string, didAction: string): bo
       }
     }
     if (!shared) return false;
-  }
-  const saidTopic = classifyTextToRecordTopicId(saidQuote);
-  const voteTopic = classifyTextToRecordTopicId(billText);
-  if (
-    saidTopic !== 'legislation' &&
-    voteTopic !== 'legislation' &&
-    saidTopic === voteTopic
-  ) {
     return true;
   }
   const saidHits = matchedSubjectKeywords(saidQuote);

@@ -176,6 +176,12 @@ export function pruneSaidDidLinksByTopic(
   for (const [topicId, topicData] of Object.entries(byTopic)) {
     const kept: SaidDidLinkEntry[] = [];
     for (const link of topicData.saidDidLinks ?? []) {
+      if (
+        link.saidQuote?.trim() &&
+        !saidDidSubjectsOverlap(link.saidQuote, `${link.billNumber}: ${link.billTitle}`)
+      ) {
+        continue;
+      }
       const said = pickSaidForLink(topicId, topicData, link, byTopic);
       if (!said?.quote?.trim() || !said.url?.trim()) continue;
       if (isVoteRestatementSaid(said.quote)) continue;
