@@ -10,6 +10,66 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation: CREC privilege notice filter (PASS with known build blocker)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (scoped fix) / build blocked by existing PR #99 issue  
+**Current state:** `cursor/critical-bug-management-8cc5` · pushed docs tip `ac1b2c0` · PR https://github.com/robbieryan312-star/The-ledger/pull/126 · targeted guards pass · full `npm run build` fails on tracked open PR #99 dead-source-token regression
+
+### Objective
+Inspect recent commits for high-severity bugs, avoid duplicates from automation memory, and fix only a concrete critical correctness issue.
+
+### Verdict / outcome
+**PASS (scoped)** — M001184 had a procedural House question-of-privilege notice stored as an official Said statement and whitelisted in the CREC known-good fixture. The filter now rejects that phrase, the fixture is known-bad, and the shipped profile statements file no longer renders the procedural notice.
+
+### Commits
+- `ef743b9` — fix(crec): reject question-of-privilege notices
+- pending docs commit — handoff/backlog update
+
+### Commands run (this session)
+- `pwd && git status --short && git rev-parse --abbrev-ref HEAD && git log --oneline -n 20 && if [ -f /tmp/cursor/async-install/install-user.status ]; then printf 'install-status='; cat /tmp/cursor/async-install/install-user.status; elif [ -f /tmp/cursor/async-install/install-user.log ]; then pgrep -af '/tmp/cursor/async-install|npm|install' || true; else echo 'install-status=none'; fi` → exit 0
+- `gh pr list --repo robbieryan312-star/The-ledger --state all --limit 150 --json number,state,mergedAt,closedAt,url,title,headRefName,headRefOid` → exit 0; memory PRs #28-31/#40/#99-#125 still open
+- `git remote -v && git fetch origin --prune && git status --short && git log --oneline --decorate --date=short --all -n 30` → exit 0
+- `git log --oneline --decorate --date=short origin/main -n 30 && git rev-list --left-right --count HEAD...origin/main && git merge-base --short HEAD origin/main` → exit 129 (`git merge-base --short` unsupported; corrected by later commands)
+- `git diff --name-status c08be19..origin/main && git show --stat --oneline --find-renames db23b39 d137a12 18b5d3e d36f4a9 cc916da cf4bcfd | cat` → exit 0
+- `npm run test:crec && npm run audit:profile-credibility && npm run test:profile-snapshots && npm run build` → exit 1; targeted guards passed before build failed on existing PR #99 dead-source-token guard
+- `npm run test:crec && npm run audit:profile-credibility && rg 'question of the privileges of the House|previously noticed' lib/data/generated/profiles/M001184/statements.json || true && npx tsx -e "import { isProceduralCrecText, matchedProceduralRule } from './scripts/lib/crecProceduralFilter.ts'; const text='Mr. MASSIE. Mr. Speaker, I rise to raise a question of the privileges of the House and offer a resolution previously noticed.'; console.log(JSON.stringify({ procedural: isProceduralCrecText(text), rule: matchedProceduralRule(text) }));"` → exit 0
+- `git add scripts/lib/crecProceduralFilter.ts lib/data/__fixtures__/crecStatementFilter.fixture.ts lib/data/generated/profiles/M001184/statements.json && git commit -m "fix(crec): reject question-of-privilege notices"` → exit 0; commit `ef743b9`
+- `git push -u origin cursor/critical-bug-management-8cc5` → exit 0
+- `open_git_pr` → PR https://github.com/robbieryan312-star/The-ledger/pull/126
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/lib/crecProceduralFilter.ts` | modified | Added `question-of-privilege-resolution` procedural rule |
+| `lib/data/__fixtures__/crecStatementFilter.fixture.ts` | modified | Reclassified the verbatim M001184 privilege-resolution notice from known-good to known-bad |
+| `lib/data/generated/profiles/M001184/statements.json` | modified | Removed the procedural notice from shipped Massie statements |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Logged this session evidence |
+| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | Added migrated-profile snapshot hardening backlog item |
+
+### Acceptance evidence
+- `npm run test:crec` → tests 3 / pass 3 / fail 0
+- `npm run audit:profile-credibility` → S000033/O000172/M000355/M001184/W000817/C001098/P000197 all `0 defect row(s)`
+- `rg 'question of the privileges of the House|previously noticed' lib/data/generated/profiles/M001184/statements.json || true` → no matches
+- `npx tsx -e ...matchedProceduralRule(...)` → `{"procedural":true,"rule":"question-of-privilege-resolution"}`
+- `npm run build` did **not** pass because `approvedSourceMatrixGuard` found dead-source token `"votesmart"` in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`; automation memory already tracks this as PR #99, still open, so this branch did not duplicate it.
+
+### Open / next
+- Claude STAGE THREE on the pushed PR tip after docs commit.
+- Existing open PR #99 still blocks full build until merged or otherwise resolved.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-management-8cc5` · pushed docs tip `ac1b2c0` · https://github.com/robbieryan312-star/The-ledger/pull/126  
+**Verdict:** PASS for scoped CREC procedural fix; STOP for STAGE THREE; full build blocked by existing PR #99 dead-source-token issue, not by this patch  
+**What changed:** M001184 privilege-resolution floor notice is now known-bad procedural CREC text and removed from migrated profile statements  
+**Evidence:** `npm run test:crec` 3/3 pass; `npm run audit:profile-credibility` 0 defect rows for all 7 locked profiles; exact Massie text now returns `question-of-privilege-resolution`; M001184 statements file has no privilege-notice match; `npm run build` fails on tracked PR #99 token guard  
+**Open gates:** Review exact PR tip; decide separately on open PR #99 build blocker before requiring full build green  
+**Repeat-work flag:** Not repeated; memory PR sweep confirmed existing tracked PRs remain open and were not duplicated
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  

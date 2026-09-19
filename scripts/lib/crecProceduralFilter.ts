@@ -128,6 +128,7 @@ const PROCEDURAL_RULES: ProceduralRule[] = [
   { name: 'resume-legislative-session', test: (t) => /resume legislative session/i.test(t) },
   { name: 'motion-to-proceed', test: (t) => /\bI move to proceed to\b/i.test(t) },
   { name: 'motion-to-discharge', test: (t) => /\bI move to discharge\b/i.test(t) },
+  { name: 'question-of-privilege-resolution', test: (t) => /\bI rise to raise a question of the privileges of the House\b/i.test(t) },
   {
     name: 'arms-export-control-notice',
     test: (t) =>
