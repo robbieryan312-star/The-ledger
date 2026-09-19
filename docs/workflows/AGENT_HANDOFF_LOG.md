@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## Latest session — critical bug automation: CREC privilege notice filter (PASS with known build blocker)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS (scoped fix) / build blocked by existing PR #99 issue  
-**Current state:** `cursor/critical-bug-management-8cc5` · HEAD `ef743b9` · PR pending · tree dirty only for this handoff/backlog update · targeted guards pass · full `npm run build` fails on tracked open PR #99 dead-source-token regression
+**Current state:** `cursor/critical-bug-management-8cc5` · pushed docs tip `ac1b2c0` · PR https://github.com/robbieryan312-star/The-ledger/pull/126 · targeted guards pass · full `npm run build` fails on tracked open PR #99 dead-source-token regression
 
 ### Objective
 Inspect recent commits for high-severity bugs, avoid duplicates from automation memory, and fix only a concrete critical correctness issue.
@@ -34,6 +34,8 @@ Inspect recent commits for high-severity bugs, avoid duplicates from automation 
 - `npm run test:crec && npm run audit:profile-credibility && npm run test:profile-snapshots && npm run build` → exit 1; targeted guards passed before build failed on existing PR #99 dead-source-token guard
 - `npm run test:crec && npm run audit:profile-credibility && rg 'question of the privileges of the House|previously noticed' lib/data/generated/profiles/M001184/statements.json || true && npx tsx -e "import { isProceduralCrecText, matchedProceduralRule } from './scripts/lib/crecProceduralFilter.ts'; const text='Mr. MASSIE. Mr. Speaker, I rise to raise a question of the privileges of the House and offer a resolution previously noticed.'; console.log(JSON.stringify({ procedural: isProceduralCrecText(text), rule: matchedProceduralRule(text) }));"` → exit 0
 - `git add scripts/lib/crecProceduralFilter.ts lib/data/__fixtures__/crecStatementFilter.fixture.ts lib/data/generated/profiles/M001184/statements.json && git commit -m "fix(crec): reject question-of-privilege notices"` → exit 0; commit `ef743b9`
+- `git push -u origin cursor/critical-bug-management-8cc5` → exit 0
+- `open_git_pr` → PR https://github.com/robbieryan312-star/The-ledger/pull/126
 
 ### Files touched
 | Path | Action | What changed |
@@ -59,7 +61,7 @@ Inspect recent commits for high-severity bugs, avoid duplicates from automation 
 
 ## Confront Claude — paste to Claude Code
 
-**Branch · HEAD · PR:** `cursor/critical-bug-management-8cc5` · `ef743b9` plus pending handoff/backlog docs commit · PR pending  
+**Branch · HEAD · PR:** `cursor/critical-bug-management-8cc5` · pushed docs tip `ac1b2c0` · https://github.com/robbieryan312-star/The-ledger/pull/126  
 **Verdict:** PASS for scoped CREC procedural fix; STOP for STAGE THREE; full build blocked by existing PR #99 dead-source-token issue, not by this patch  
 **What changed:** M001184 privilege-resolution floor notice is now known-bad procedural CREC text and removed from migrated profile statements  
 **Evidence:** `npm run test:crec` 3/3 pass; `npm run audit:profile-credibility` 0 defect rows for all 7 locked profiles; exact Massie text now returns `question-of-privilege-resolution`; M001184 statements file has no privilege-notice match; `npm run build` fails on tracked PR #99 token guard  
