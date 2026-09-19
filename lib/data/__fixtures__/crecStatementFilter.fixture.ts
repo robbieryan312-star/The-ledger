@@ -120,6 +120,10 @@ export const KNOWN_BAD: CrecFilterFixtureCase[] = [
     text: 'Mr. THUNE. Mr. President, I move to proceed to executive session to consider Calendar No. 776. The PRESIDING OFFICER. The question is on agreeing to the motion. The motion was agreed to. The PRESIDING OFFICER. The clerk will report the nomination.',
   },
   {
+    label: 'M001184 question-of-privilege resolution notice',
+    text: 'Mr. MASSIE. Mr. Speaker, I rise to raise a question of the privileges of the House and offer a resolution previously noticed.',
+  },
+  {
     label: 'T000250 resume legislative session / morning business',
     text: 'Mr. THUNE. Mr. President, I ask unanimous consent that the Senate resume legislative session and be in a period of morning business, with Senators permitted to speak therein for up to 10 minutes each.',
   },
@@ -154,10 +158,6 @@ export const KNOWN_GOOD: CrecFilterFixtureCase[] = [
   {
     label: 'S000033 verified media quote — health care',
     text: 'Together we are going to end the international embarrassment of the United States of America, our great country, being the only major nation on earth not to guarantee health care to all as a right.',
-  },
-  {
-    label: 'M001184 floor speech — question of privilege',
-    text: 'Mr. MASSIE. Mr. Speaker, I rise to raise a question of the privileges of the House and offer a resolution previously noticed.',
   },
   // --- Phase 17b batch: substantive floor speeches that MUST survive the expanded procedural
   //     rules (guard against over-rejection of genuine remarks that mention procedural nouns). ---
