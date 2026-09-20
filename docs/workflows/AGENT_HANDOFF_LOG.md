@@ -10,6 +10,46 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-09-20 — CRITICAL BUG AUTOMATION AUDIT (NO NEW PR)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (no untracked critical bug found)
+**Current state:** `cursor/critical-bug-management-485b` · pre-log HEAD `763dc67` · PR **none opened** · tree dirty only this log/backlog update before commit
+
+### Objective
+Run the daily high-severity bug sweep: read persistent automation memory, avoid duplicate open PRs, inspect recent commits, and fix only a concrete untracked critical bug.
+
+### Verdict / outcome
+**PASS** — no new high-confidence critical issue was found beyond bugs already tracked in automation memory with open PRs. No application fix PR was opened.
+
+### Commits
+- This docs-only audit log commit (see `git log -1` after commit)
+
+### Commands run (this session)
+- `gh pr view` loop for tracked PRs #28, #29, #30, #31, #40, #99-#126 → all `OPEN`
+- `git status --short --branch && git log --oneline --decorate -20` → branch `cursor/critical-bug-management-485b`, HEAD `763dc67` before log update
+- `git diff --name-status HEAD~20..HEAD && git log --oneline --name-only --no-renames HEAD~20..HEAD` → recent code/data/doc change inventory
+- Subagent `bc-74e945d4-db21-5cb7-87ee-85cb8f016d38` (`explore`) → no additional untracked critical bugs; duplicate classes excluded
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Recorded the 2026-09-20 critical-bug automation audit |
+| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | Added follow-up hardening note for news corroboration token filtering |
+
+### Acceptance evidence
+- Persistent memory loaded first; tracked PR states checked fresh with `gh pr view`; every tracked PR remains `OPEN`, so no memory cleanup was required.
+- Recent diff reviewed across alleged-policy, news corroboration, Said→Did matching, provenance, controversy UI, tests, and generated profile JSON.
+- Excluded as duplicates with open PRs: `resolveRecordedOutlet` Senate wildcard provenance (#100), alleged validation bypass (#123), news corroboration generic-token overlap (#123), Said→Did same-topic shortcut (#125), CREC privilege-resolution statement (#126), and approved-source matrix dead-token build gate (#99).
+
+### Open / next
+- No new PR for this audit. Existing open bug PRs remain awaiting review.
+
+## Confront Claude — paste to Claude Code
+
+**Daily critical-bug audit:** branch `cursor/critical-bug-management-485b` · pre-log HEAD `763dc67` · PR none · verdict **PASS / no untracked critical bug found**. Memory PR cleanup checked: #28/#29/#30/#31/#40/#99-#126 all still OPEN. Recent diff + focused explore subagent found only duplicate classes already tracked (#99/#100/#123/#125/#126). Review this docs-only audit log commit; no merge/action needed for application code.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
