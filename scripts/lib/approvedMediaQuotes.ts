@@ -300,6 +300,12 @@ export async function fetchApprovedMediaStatementsForMember(
     topicId: string;
     verbatim: boolean;
     outlet?: string;
+    corroboratingSources?: Array<{
+      url: string;
+      outlet?: string;
+      date?: string;
+      tier?: SourceTier;
+    }>;
   }>
 > {
   const entries = VERIFIED_MEDIA_QUOTES_BY_BIOGUIDE[bioguideId];
@@ -313,6 +319,12 @@ export async function fetchApprovedMediaStatementsForMember(
     topicId: string;
     verbatim: boolean;
     outlet?: string;
+    corroboratingSources?: Array<{
+      url: string;
+      outlet?: string;
+      date?: string;
+      tier?: SourceTier;
+    }>;
   }> = [];
 
   for (const entry of entries) {
@@ -327,6 +339,12 @@ export async function fetchApprovedMediaStatementsForMember(
       topicId: entry.topicId,
       verbatim: true,
       outlet: primary.outlet,
+      corroboratingSources: verified.verifiedSources.slice(1).map((src) => ({
+        url: src.url,
+        outlet: src.outlet,
+        date: src.date,
+        tier: verified.tier,
+      })),
     });
   }
 

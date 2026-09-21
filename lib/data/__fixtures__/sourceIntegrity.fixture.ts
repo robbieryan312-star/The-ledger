@@ -62,6 +62,20 @@ export const STATEMENT_KNOWN_BAD_NON_VERBATIM_ALLEGED = {
   },
 };
 
+/** Media-tier Said with one outlet only — must be omitted, not displayed as verified. */
+export const STATEMENT_KNOWN_BAD_SINGLE_SOURCE_MEDIA = {
+  label: 'media tier quote with no independent corroborating source',
+  statement: {
+    title: 'Example media quote with only one approved outlet.',
+    date: '2020-01-01',
+    url: 'https://www.npr.org/2020/01/01/example-single-source-quote',
+    tier: 'media' as const,
+    topicId: 'climate',
+    verbatim: true,
+    outlet: 'NPR',
+  },
+};
+
 /** Vote-as-Said tautology — SJ Res 54 Ballotpedia row diffed against the same vote (must reject). */
 export const SAID_DID_KNOWN_BAD_TAUTOLOGY = {
   label: 'SJ Res 54 Ballotpedia vote restated as Said',

@@ -10,6 +10,68 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug scan: media Said corroboration guard (PASS; build blocked by known #99)
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS for PR #127 scope · STAGE THREE needed  
+**Current state:** `cursor/critical-bug-management-8ec0` · implementation commit `17ef502` · PR https://github.com/robbieryan312-star/The-ledger/pull/127 · tree clean before this handoff-log commit · full build blocked by known open PR #99
+
+### Objective
+Inspect recent commits for critical correctness bugs, avoid duplicates from MEMORIES, and fix only high-confidence severe issues.
+
+### Verdict / outcome
+Found and fixed an untracked data-credibility regression: media-tier Said/statements could persist/render with only one source record, allowing single-outlet journalism quotes to appear as verified statements despite the two-independent-source rule. MEMORIES updated with PR #127.
+
+### Commits
+- `17ef502` — fix(statements): require corroborated media Said sources
+- Handoff-log commit follows this entry.
+
+### Commands run (this session)
+- `gh pr view <tracked PRs> --json number,state,mergedAt,closedAt,headRefName,title,url` → all MEMORIES PRs #28-#126 still OPEN; no cleanup/deletion
+- `git fetch origin main --prune` → exit 0
+- `git diff --unified=80 c08be19..763dc67 -- <recent files>` → inspected recent alleged-policy / Said-Did diffs
+- `npm run test:source-integrity` → exit 1; known duplicate blocker PR #99 (dead-source token in .claude rule files)
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/provenanceOutletGuard.test.ts && npm run test:typecheck` → exit 0; 75 source-integrity tests pass + typecheck pass
+- `npm run build` → exit 1; known duplicate blocker PR #99 in `approvedSourceMatrixGuard`
+- `node <spot-check media statements>` → exit 0; S000033 media statement has 2 sources, O000172 has 0 media statements
+- `npm run dev -- -p 4100` → dev server ready for manual verification
+- computerUse rendered AOC profile Climate & Energy drawer → PASS; stale NPR-only quote absent
+- videoReview `/opt/cursor/artifacts/aoc_single_source_media_quote_removed.mp4` → PASS
+- `git push -u origin cursor/critical-bug-management-8ec0` → exit 0
+- `open_git_pr` → PR #127 created
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/lib/approvedMediaQuotes.ts` | modified | Persists corroborating media sources for verified media Said rows |
+| `lib/data/sourceIntegrity.ts` | modified | Rejects media-tier statements with fewer than two independent source records |
+| `lib/data/__fixtures__/sourceIntegrity.fixture.ts` | modified | Adds frozen single-source media Said regression fixture |
+| `scripts/__tests__/sourceIntegrity.test.ts` | modified | Build-gates the single-source media statement fixture and live profile statements |
+| `components/politicians/ProfileRecordByTopicPanel.tsx` | modified | Renders corroborating source badges alongside primary media statement source |
+| `lib/data/generated/profiles/S000033/statements.json` | modified | Adds NYT corroborator to verified WaPo Sanders media quote |
+| `lib/data/generated/profiles/O000172/statements.json` | modified | Removes stale NPR-only media statement from climate topic |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Adds this durable session handoff |
+
+### Acceptance evidence
+- Targeted validation passed: source-integrity subset reports `# tests 75`, `# pass 75`, `# fail 0`; `npm run test:typecheck` exit 0.
+- Data spot-check: `S000033 [{sources:2}]`; `O000172 []`; no `In order for us to combat that threat` match in O000172 statements.
+- Walkthrough artifact: `/opt/cursor/artifacts/aoc_single_source_media_quote_removed.mp4` (videoReview PASS).
+- PR: https://github.com/robbieryan312-star/The-ledger/pull/127
+
+### Open / next
+- Claude STAGE THREE review PR #127.
+- Known unrelated blocker remains open in PR #99: `npm run build` fails on dead-source token in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`. This run did not duplicate that fix.
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-management-8ec0` · implementation `17ef502` · PR https://github.com/robbieryan312-star/The-ledger/pull/127  
+**Verdict:** PASS for STAGE THREE; full build blocked by known unrelated PR #99.  
+**What changed:** media Said rows now require/preserve two independent source records; stale O000172 NPR-only statement removed; Sanders verified media quote carries NYT corroborator; UI renders corroborator badges.  
+**Evidence:** targeted guards + typecheck exit 0; data spot-check S000033 sources=2/O000172 media=[]; videoReview PASS for AOC rendered drawer. `npm run build` exits 1 only on known #99 dead-source-token guard.  
+**Open gates:** Claude APPROVE/REJECT PR #127; do not merge without exact-SHA approval.  
+**Repeat-work flag:** New bug, not in MEMORIES before this run; MEMORIES now records PR #127 as open.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  

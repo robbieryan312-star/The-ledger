@@ -599,6 +599,31 @@ interface LooseStatement {
   tier?: string;
   date?: string;
   verbatim?: boolean;
+  outlet?: string;
+  corroboratingSources?: LooseSource[];
+}
+
+function statementSourceKey(source: { outlet?: string; name?: string; url?: string }): string | null {
+  const label = (source.outlet ?? source.name ?? '').trim().toLowerCase();
+  if (label) return `name:${label}`;
+  const url = source.url?.trim();
+  if (!url) return null;
+  try {
+    return `host:${new URL(url).hostname.replace(/^www\./, '').toLowerCase()}`;
+  } catch {
+    return `url:${url.toLowerCase()}`;
+  }
+}
+
+function independentMediaStatementSourceCount(stmt: LooseStatement): number {
+  const keys = new Set<string>();
+  const primary = statementSourceKey({ outlet: stmt.outlet, url: stmt.url });
+  if (primary) keys.add(primary);
+  for (const source of stmt.corroboratingSources ?? []) {
+    const key = statementSourceKey(source);
+    if (key) keys.add(key);
+  }
+  return keys.size;
 }
 
 export function validateStatementsFile(
@@ -615,6 +640,14 @@ export function validateStatementsFile(
           label,
           stmt.verbatim !== true,
           `${stmt.tier} tier statement requires verbatim:true`,
+        );
+      }
+      if (stmt.tier === 'media') {
+        pushIf(
+          violations,
+          label,
+          independentMediaStatementSourceCount(stmt) < 2,
+          'media tier statement requires two independent source records',
         );
       }
     }

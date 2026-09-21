@@ -10,7 +10,15 @@
           "tier": "media",
           "topicId": "healthcare",
           "verbatim": true,
-          "outlet": "Washington Post"
+          "outlet": "Washington Post",
+          "corroboratingSources": [
+            {
+              "url": "https://www.nytimes.com/2019/04/10/us/politics/bernie-sanders-medicare-for-all.html",
+              "outlet": "New York Times",
+              "date": "2019-04-10",
+              "tier": "media"
+            }
+          ]
         },
         {
           "title": "Mr. SANDERS. Mr. President, let me be very clear: In the midst of a broken and dysfunctional healthcare system, we must do everything that we can to find new cures and treatments for pediatric cancer, and I strongly support that effort, period. I think we can all imagine the kind of heartbreak that parents go through ] when they learn that their babies or their young children have been diagnosed with cancer. And I should say that as the former chair of the HELP Committee, I was actively involved in the bipartisan agreement that we reached over a year ago, which included the Give Kids a Chance Act, bipartisan support, ready to go. Sadly, that enormously important legislation was torpedoed, as some of you will recall, by a series of tweets by Elon Musk. And Republicans became frightened, and they gave up on that bipartisan legislation.",
