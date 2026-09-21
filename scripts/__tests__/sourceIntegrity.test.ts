@@ -26,6 +26,7 @@ import {
   SOURCE_INTEGRITY_AP_ARTICLE_GOOD_URLS,
   SOURCE_INTEGRITY_KNOWN_GOOD_URLS,
   STATEMENT_KNOWN_BAD_NON_VERBATIM_ALLEGED,
+  STATEMENT_KNOWN_BAD_SINGLE_SOURCE_MEDIA,
 } from '../../lib/data/__fixtures__/sourceIntegrity.fixture';
 import {
   headlineSimilarity,
@@ -211,6 +212,21 @@ test('known-bad non-verbatim alleged statement fails statements integrity', () =
     'fixture',
   );
   assert.ok(violations.length > 0, 'expected non-verbatim alleged fixture to produce violations');
+});
+
+test('known-bad single-source media statement fails statements integrity', () => {
+  const violations = validateStatementsFile(
+    {
+      byTopic: {
+        climate: { statements: [STATEMENT_KNOWN_BAD_SINGLE_SOURCE_MEDIA.statement] },
+      },
+    },
+    'fixture',
+  );
+  assert.ok(
+    violations.some((v) => v.message.includes('two independent source records')),
+    'expected single-source media fixture to fail media corroboration guard',
+  );
 });
 
 test('known-bad unapproved-outlet news item fails outlet guard', () => {

@@ -253,6 +253,19 @@ function TopicGroupRow({
                             date: statement.date,
                           }}
                         />
+                        {(statement.corroboratingSources ?? [])
+                          .filter((source) => source.outlet?.trim() && source.url?.trim())
+                          .map((source, sourceIdx) => (
+                            <SourceBadge
+                              key={sourceIdx}
+                              source={{
+                                name: source.outlet!.trim(),
+                                url: source.url,
+                                tier: source.tier ?? 'media',
+                                date: source.date ?? statement.date,
+                              }}
+                            />
+                          ))}
                       </div>
                       <ExpandableQuoteBlock
                         summary={leadSummary(statementDisplayText(statement), 120)}
