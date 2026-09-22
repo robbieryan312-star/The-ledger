@@ -10,9 +10,59 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation scan (PASS)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (no new critical bug PR opened)
+**Current state:** `cursor/critical-bug-management-7ebd` · HEAD `763dc67` before this docs commit · tree clean before edit · build failed on known open PR #99 blocker; docs-integrity pass
+
+### Objective
+Inspect recent commits for high-severity correctness bugs, avoid duplicating tracked open PRs, and fix only if a concrete critical trigger is found.
+
+### Verdict / outcome
+**PASS** — all MEMORIES.md tracked PRs (#28, #29, #30, #31, #40, #99-#127) remain open; the only commits since 2026-09-21 are the already tracked PR #127 media-Said corroboration fix branch (`17ef502`, `c8c5ce3`). No new untracked critical bug found in the recent-commit window, so no new fix PR was opened.
+
+### Commits
+- (this docs commit) — record critical bug automation scan
+
+### Commands run (this session)
+- `ReadFile /cursor/stores/self/MEMORIES.md` -> file not found; switched to configured automation memory
+- `automation_memory read MEMORIES.md` -> version `0f38bf8caaeecd2e`; tracked PRs loaded
+- `git status --short` / `git log --oneline --decorate -n 20` / malformed `gh pr list --jq` -> exit 1 (jq filter expected object; rerun below)
+- `gh pr list --state all --limit 200 --json number,state,mergedAt,url,title,headRefName` + `python` parser -> exit 127 (`python` missing; rerun below)
+- `gh pr list --state all --limit 200 --json number,state,mergedAt,url,title,headRefName` + `python3` parser -> exit 0; all tracked PRs open
+- `git fetch --all --prune` + `git log --all --since='2026-09-21 00:00 UTC' --pretty=format:'%h %ad %D %s' --date=short --max-count=80` -> exit 0; only PR #127 branch commits found
+- `git diff --name-status origin/main..origin/cursor/critical-bug-management-8ec0` + `git show --stat 17ef502` -> exit 0; inspected tracked PR #127 diff
+- `npm run build` -> exit 1; `test:source-integrity` fails on tracked PR #99 dead-source-token blocker in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`
+- `npm run test:docs-integrity` -> exit 0; 9/9 pass
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added current critical bug automation scan evidence |
+
+### Acceptance evidence
+- Tracked PR state check: `#28`-`#31`, `#40`, and `#99`-`#127` all reported `OPEN` by `gh pr list`.
+- Recent commit scan: `git log --all --since='2026-09-21 00:00 UTC'` returned only `17ef502 fix(statements): require corroborated media Said sources` and `c8c5ce3 docs(handoff): record media Said corroboration PR`, already tracked in MEMORIES.md as PR #127.
+- No MEMORIES.md cleanup was required because no tracked PR was merged, closed, rejected, stale, or independently fixed.
+- Validation: `npm run test:docs-integrity` passed; full `npm run build` is blocked by the already tracked PR #99 source-integrity failure, not by this handoff-log edit.
+
+### Open / next
+- Existing open critical-bug PRs remain awaiting review; do not duplicate them in future scans.
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-management-7ebd` · `763dc67` before docs commit · no new PR opened
+**Verdict:** PASS for recent critical-bug scan; STOP for STAGE THREE only if Claude wants to audit the no-new-bug conclusion.
+**What changed:** Handoff log only; MEMORIES.md unchanged because all tracked PRs remain open.
+**Evidence:** `gh pr list --state all --limit 200 --json number,state,mergedAt,url,title,headRefName` + `python3` -> all tracked PRs open; `git log --all --since='2026-09-21 00:00 UTC'` -> only already tracked PR #127 commits; `npm run test:docs-integrity` -> 9/9 pass; `npm run build` -> fails on tracked PR #99 blocker.
+**Open gates:** Existing PRs #28, #29, #30, #31, #40, #99-#127 still require review/merge decisions.
+**Repeat-work flag:** Repeated daily scan — no spec delta; PR #127 remains the newest open tracked bug fix.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
-**From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
+**From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)
 **Current state:** `main` · HEAD `6d6057b` (docs stamp) · audit data tip `a42e0cb` · #95 left open · PARK #76 · m8a · m7a–d
 
 ### Merges (APPROVED tips)
@@ -90,8 +140,8 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ## HANDOFF 2026-07-26 — M-ALLEGED REJECT#2: matrix guard + synthetic provenance token
 
-**From:** Cursor · **To:** Claude · **Verdict:** PASS (local A–H) · awaiting STAGE THREE  
-**Current state:** `cursor/m-alleged-policy-70a6` · tip `1fc70e8` · base `main` @ `c08be19` · prebuild 0 · build 0  
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (local A–H) · awaiting STAGE THREE
+**Current state:** `cursor/m-alleged-policy-70a6` · tip `1fc70e8` · base `main` @ `c08be19` · prebuild 0 · build 0
 **Note:** tip SHA = `git rev-parse --short origin/cursor/m-alleged-policy-70a6` after push.
 
 ### Objective
@@ -167,7 +217,7 @@ Map every code path that assigns/defaults `source.tier === 'alleged'`; explain S
 
 ## HANDOFF 2026-07-25 — MERGE CREC-YIELD + PURGE-V2 to main
 
-**From:** Cursor · **To:** Claude · **Verdict:** MERGED (Claude APPROVED exact tips)  
+**From:** Cursor · **To:** Claude · **Verdict:** MERGED (Claude APPROVED exact tips)
 **Current state:** `main` · CREC `42818b1` + PURGE `59f427a` merge in progress
 
 ### Merged
@@ -180,7 +230,7 @@ Map every code path that assigns/defaults `source.tier === 'alleged'`; explain S
 
 ## HANDOFF 2026-07-25 — M-CREC-YIELD (S000033 Said→Did blocker) — MERGED
 
-**From:** Cursor · **To:** Claude · **Verdict:** MERGED @ `42818b1`  
+**From:** Cursor · **To:** Claude · **Verdict:** MERGED @ `42818b1`
 **Current state:** merged to main
 
 ### Outcome
@@ -190,7 +240,7 @@ statements 13→33; saidDid 10→15/15; no_topic drop eliminated; procedural fil
 
 ## HANDOFF 2026-07-25 — M-VOTESMART-PURGE v2 (owner overrule) — MERGING
 
-**From:** Cursor · **To:** Claude · **Verdict:** PASS · awaiting STAGE THREE  
+**From:** Cursor · **To:** Claude · **Verdict:** PASS · awaiting STAGE THREE
 **Current state:** `cursor/m-votesmart-purge-v2-70a6` · PR **#96** · tip **`d29b589`** · base `main` @ `6422613` (+ NEWS `8e8bc58` + GOVINFO `f748f9d`)
 
 ### Objective
@@ -240,7 +290,7 @@ D) npm run build → exit 0
 
 ## HANDOFF 2026-07-25 — PURGE v2 base (merge purge onto main+#93+#94)
 
-**From:** Cursor · **To:** Claude · **Verdict:** WIP — owner-overrule purge next  
+**From:** Cursor · **To:** Claude · **Verdict:** WIP — owner-overrule purge next
 **Current state:** `cursor/m-votesmart-purge-v2-70a6` · base includes NEWS `8e8bc58` + GOVINFO `f748f9d` + PURGE `f5f026b`
 
 ### MERGE recorded on main (prior)
@@ -264,7 +314,7 @@ Merged `origin/cursor/m-votesmart-purge-70a6` @ `f5f026b`; resolving conflicts t
 
 ## HANDOFF 2026-07-25 — PRE-INGEST = Cursor absolute-compliance gate
 
-**From:** Cursor · **To:** Claude · **Verdict:** PASS · on PR **#91**  
+**From:** Cursor · **To:** Claude · **Verdict:** PASS · on PR **#91**
 **Current state:** `cursor/m-retire-votesmart-70a6` · PR **#91** · tip **`6d2a89d`**
 
 ### Objective
@@ -294,14 +344,14 @@ Owner: ensure pre-ingest **and every Cursor-directed rule/guideline/instruction*
 
 ## Confront Claude — paste to Claude Code
 
-**PRE-INGEST absolute compliance + M-RETIRE-VOTESMART:** approve exact **`6d2a89d`** · PR **#91** · gate lists full Cursor corpus · EMPTY≠debt · VoteSmart DEFUNCT · prebuild/build 0  
+**PRE-INGEST absolute compliance + M-RETIRE-VOTESMART:** approve exact **`6d2a89d`** · PR **#91** · gate lists full Cursor corpus · EMPTY≠debt · VoteSmart DEFUNCT · prebuild/build 0
 **STOP:** tip APPROVAL before merge
 
 ---
 
 ## HANDOFF 2026-07-25 — PRE-INGEST RULE (VoteSmart-class confusion ban)
 
-**From:** Cursor · **To:** Claude · **Verdict:** PASS · on PR **#91** branch  
+**From:** Cursor · **To:** Claude · **Verdict:** PASS · on PR **#91** branch
 **Current state:** `cursor/m-retire-votesmart-70a6` · PR **#91** · tip **`7656755`** · pre-ingest rule shipped · `preIngestRuleGuard` **3/3** · `test:docs-consistency` **17/17** · prebuild/build **0**
 
 ### Objective
@@ -336,14 +386,14 @@ Owner asked for an explicit, intuitively necessary rule under `.cursor/rules/` t
 
 ## Confront Claude — paste to Claude Code
 
-**PRE-INGEST + M-RETIRE-VOTESMART:** approve exact **`7656755`** · PR **#91** · work VoteSmart `b86b775` + pre-ingest `ledger-pre-ingest.mdc` · EMPTY≠owner debt · VoteSmart DEFUNCT · prebuild/build 0  
+**PRE-INGEST + M-RETIRE-VOTESMART:** approve exact **`7656755`** · PR **#91** · work VoteSmart `b86b775` + pre-ingest `ledger-pre-ingest.mdc` · EMPTY≠owner debt · VoteSmart DEFUNCT · prebuild/build 0
 **STOP:** tip APPROVAL before merge to main
 
 ---
 
 ## HANDOFF 2026-07-25 — M-RETIRE-VOTESMART (COMPLETE · tip refresh)
 
-**From:** Cursor · **To:** Claude · **Verdict:** PASS / COMPLETE on branch · awaiting tip APPROVAL  
+**From:** Cursor · **To:** Claude · **Verdict:** PASS / COMPLETE on branch · awaiting tip APPROVAL
 **Current state:** `cursor/m-retire-votesmart-70a6` · PR **#91** · work tip **`b86b775`** · final tip = `git rev-parse --short origin/cursor/m-retire-votesmart-70a6` · tree clean · `npm run prebuild` **0** · `npm run build` **0** · VS-retire guard **5/5** · supersedes stale PR #83 branch
 
 ### Objective
@@ -391,7 +441,7 @@ Owner clarified VoteSmart was never in key provision — remove all NPAT depende
 
 ## Confront Claude — paste to Claude Code
 
-**M-RETIRE-VOTESMART tip:** approve work **`b86b775`** · final tip = `git rev-parse origin/cursor/m-retire-votesmart-70a6` · PR #91 · VoteSmart DEFUNCT · no key ever · aggregation = official issues → Ballotpedia → CREC + votes · prebuild/build 0 · supersedes #83  
+**M-RETIRE-VOTESMART tip:** approve work **`b86b775`** · final tip = `git rev-parse origin/cursor/m-retire-votesmart-70a6` · PR #91 · VoteSmart DEFUNCT · no key ever · aggregation = official issues → Ballotpedia → CREC + votes · prebuild/build 0 · supersedes #83
 **STOP:** tip APPROVAL before merge to main
 
 ---
@@ -413,7 +463,7 @@ Conflict resolve: `AGENT_HANDOFF_LOG.md` only — UI work `ca4ac86` + positions 
 
 ## Confront Claude — paste to Claude Code
 
-**#85 merge tip:** `1d5dadc` · **#86 merge tip:** `8e14b2c` (resolve commit follows if tip shifts)  
+**#85 merge tip:** `1d5dadc` · **#86 merge tip:** `8e14b2c` (resolve commit follows if tip shifts)
 **Next:** M-NEWS-DIVERSIFY + M-CORPUS-DEPTH concurrent · then BERNIE RENDER-READY after both approved+merged
 
 ---
@@ -432,7 +482,7 @@ Conflict resolve: `AGENT_HANDOFF_LOG.md` only — UI work `ca4ac86` + positions 
 
 ## HANDOFF 2026-07-25 — M-GUARD-COMPLIANCE ⛔ STOP
 
-**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval
 **Current state:** `cursor/m-guard-compliance-70a6` · tip = **`2ef3220`** · `rm -rf .next && npm run prebuild` **0** · `npm run build` **0**
 
 ### Delivered
@@ -445,15 +495,15 @@ Conflict resolve: `AGENT_HANDOFF_LOG.md` only — UI work `ca4ac86` + positions 
 3. **STAGE THREE checklist** added under `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` §9 (literal `[x]`/`[n/a]` block)
 4. Prebuild count 22 → **23** (AGENT_INDEX, PROGRESS, docsConsistency fixture)
 
-**IN FLIGHT (untouched):** M-IMPROVELOG · M-POSITIONS-SANDERS · M-UI rebase  
+**IN FLIGHT (untouched):** M-IMPROVELOG · M-POSITIONS-SANDERS · M-UI rebase
 **PARK:** #76 · m8a · m7a–d · #83 retire/channel-proof pending Claude tip
 
 ---
 
 ## Confront Claude — paste to Claude Code
 
-**M-GUARD-COMPLIANCE tip:** approve exact **`2ef3220`** (work) · final tip = `git rev-parse origin/cursor/m-guard-compliance-70a6` · prebuild 0 · build 0  
-**Guard:** collection data → BATCH_SCALING.md mechanical · STAGE THREE checklist in §9  
+**M-GUARD-COMPLIANCE tip:** approve exact **`2ef3220`** (work) · final tip = `git rev-parse origin/cursor/m-guard-compliance-70a6` · prebuild 0 · build 0
+**Guard:** collection data → BATCH_SCALING.md mechanical · STAGE THREE checklist in §9
 **STOP:** tip APPROVAL; IN FLIGHT unchanged (each STAGE THREE)
 
 ---
@@ -466,14 +516,14 @@ Conflict resolve: `AGENT_HANDOFF_LOG.md` only — UI work `ca4ac86` + positions 
 
 ## Confront Claude — paste to Claude Code
 
-**BATCH D merge tip:** approve **PR #82 branch HEAD** after resolve (work `a28facc`) · prebuild 0 · build 0  
+**BATCH D merge tip:** approve **PR #82 branch HEAD** after resolve (work `a28facc`) · prebuild 0 · build 0
 **B/C:** on main · **STOP:** merge D then M-RETIRE-VOTESMART + M-CHANNEL-PROOF
 
 ---
 
 ## HANDOFF 2026-07-22 — M-ACQUIRE BATCH D (Verified gaps) ⛔ STOP
 
-**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval
 **Current state:** `cursor/m-acquire-batch-d-70a6` · tip = **PR branch HEAD** · prebuild **0** · build **0**
 
 ### BEFORE → AFTER (S000033)
@@ -493,8 +543,8 @@ Conflict resolve: `AGENT_HANDOFF_LOG.md` only — UI work `ca4ac86` + positions 
 
 ## Confront Claude — paste to Claude Code
 
-**M-ACQUIRE BATCH D tip:** approve **PR branch HEAD** (`git rev-parse origin/cursor/m-acquire-batch-d-70a6`) · prebuild 0 · build 0  
-**S000033:** trades **fetch-failed DIAGNOSED** eFD 503 · controversies **2** (1 verified / 1 alleged) · low count OK  
+**M-ACQUIRE BATCH D tip:** approve **PR branch HEAD** (`git rev-parse origin/cursor/m-acquire-batch-d-70a6`) · prebuild 0 · build 0
+**S000033:** trades **fetch-failed DIAGNOSED** eFD 503 · controversies **2** (1 verified / 1 alleged) · low count OK
 **STOP:** tip APPROVAL before merge; after B+C+D+M-UI → Bernie render check → OWNER visual
 
 ---
@@ -507,15 +557,15 @@ Conflict resolve: `AGENT_HANDOFF_LOG.md` only — UI work `ca4ac86` + positions 
 
 ## Confront Claude — paste to Claude Code
 
-**BATCH C merge tip:** approve **PR #81 branch HEAD** after push (was `ef27925` + merge-resolve) · prebuild 0 · build 0  
-**BATCH B:** MERGED exact tip `0af3ac7`  
+**BATCH C merge tip:** approve **PR #81 branch HEAD** after push (was `ef27925` + merge-resolve) · prebuild 0 · build 0
+**BATCH B:** MERGED exact tip `0af3ac7`
 **STOP:** merge C then D on approved tips
 
 ---
 
 ## HANDOFF 2026-07-22 — M-ACQUIRE BATCH C (Voice) ⛔ STOP
 
-**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval
 **Current state:** `cursor/m-acquire-batch-c-70a6` · tip = **PR branch HEAD** · Batch B **MERGED** @ `0af3ac7` → `main` `50fb14b` · prebuild **0** · build **0**
 
 ### BEFORE → AFTER (S000033)
@@ -542,15 +592,15 @@ Conflict resolve: `AGENT_HANDOFF_LOG.md` only — UI work `ca4ac86` + positions 
 
 ## Confront Claude — paste to Claude Code
 
-**M-ACQUIRE BATCH C tip:** approve **PR branch HEAD** (`git rev-parse origin/cursor/m-acquire-batch-c-70a6`) · prebuild 0 · build 0  
-**S000033 Voice:** news **12**/15 qualify-gated (CDC fixed) · quotes **1** media · positions **DIAGNOSED** honest-gap (Ballotpedia poverty; VoteSmart Deferred)  
+**M-ACQUIRE BATCH C tip:** approve **PR branch HEAD** (`git rev-parse origin/cursor/m-acquire-batch-c-70a6`) · prebuild 0 · build 0
+**S000033 Voice:** news **12**/15 qualify-gated (CDC fixed) · quotes **1** media · positions **DIAGNOSED** honest-gap (Ballotpedia poverty; VoteSmart Deferred)
 **STOP:** tip APPROVAL before merge; BATCH D separate PR
 
 ---
 
 ## HANDOFF 2026-07-22 — Batch C journalism-quotes inventory (S000033) · PASS (inspect-only)
 
-**From:** Cursor · **To:** Claude · **Verdict:** PASS inspect · no data write this turn  
+**From:** Cursor · **To:** Claude · **Verdict:** PASS inspect · no data write this turn
 **Current state:** `cursor/m-acquire-batch-c-70a6` · HEAD `a2fbd7a` · tree dirty only this log · build not re-run (read-only)
 
 ### Objective
@@ -594,15 +644,15 @@ Shared article cache is **fetch reuse only** — no auto-extract of new quotes. 
 
 ## Confront Claude — paste to Claude Code
 
-**Inspect PASS:** S000033 media Said = **1** (healthcare WaPo+NYT curated → statements only). No spare curated quotes in cache/fixtures/archive.  
-**Batch C quotes path:** edit `approvedMediaQuotes.ts` → scoped sync → profile statements apply; §14 ≠ fabricate; cache ≠ quote miner.  
+**Inspect PASS:** S000033 media Said = **1** (healthcare WaPo+NYT curated → statements only). No spare curated quotes in cache/fixtures/archive.
+**Batch C quotes path:** edit `approvedMediaQuotes.ts` → scoped sync → profile statements apply; §14 ≠ fabricate; cache ≠ quote miner.
 **STOP for quote text:** Claude/owner must not ask Cursor to invent quote strings.
 
 ---
 
 ## HANDOFF 2026-07-22 — M-ACQUIRE BATCH B REJECT fix ⛔ STOP
 
-**From:** Cursor · **To:** Claude · **Verdict:** REJECT repaired · **STOP** for tip approval  
+**From:** Cursor · **To:** Claude · **Verdict:** REJECT repaired · **STOP** for tip approval
 **Current state:** `cursor/m-acquire-batch-b-70a6` · tip = **PR #80 branch HEAD** · work `a2da77a` · PR **#80** · prebuild **0** (`rm -rf .next && npm run prebuild`) · build **0**
 
 ### Reject repairs
@@ -620,23 +670,23 @@ Shared article cache is **fetch reuse only** — no auto-extract of new quotes. 
 | DW-NOMINATE | econ **−0.545** · social **−0.427** · https://voteview.com/person/29147 | `ingest:voteview -- --members S000033` · `profiles-voteview.json` |
 | Lobbying LDA | **0** items · honest-gap diagnosed (29 pages / 725 filings scanned) | `ingest:lobbying -- --members S000033` · `lobbying.json` |
 
-**Commands:** `rm -rf .next && npm run prebuild` → 0 · `npm run build` → 0  
+**Commands:** `rm -rf .next && npm run prebuild` → 0 · `npm run build` → 0
 **Logs:** `/tmp/ledger-prebuild-batch-b-fix2.log` · `/tmp/ledger-build-batch-b-fix2.log`
 
 ---
 
 ## Confront Claude — paste to Claude Code
 
-**BATCH B REJECT fix tip:** approve **PR #80 branch HEAD** (`git rev-parse origin/cursor/m-acquire-batch-b-70a6`) · work `a2da77a` · prebuild **0** · build **0**  
-**docs:** archive path cite `scripts/archive/apply-m-acquire-batch-a.ts` · orgVoteLinks **DIAGNOSED** small-donor / PAC **$27** / 0 curated PAC joins  
-**Provenance:** FEC asOf 2026-07-22 · SchedA 5000 · Voteview −0.545/−0.427 · LDA 0 diagnosed  
+**BATCH B REJECT fix tip:** approve **PR #80 branch HEAD** (`git rev-parse origin/cursor/m-acquire-batch-b-70a6`) · work `a2da77a` · prebuild **0** · build **0**
+**docs:** archive path cite `scripts/archive/apply-m-acquire-batch-a.ts` · orgVoteLinks **DIAGNOSED** small-donor / PAC **$27** / 0 curated PAC joins
+**Provenance:** FEC asOf 2026-07-22 · SchedA 5000 · Voteview −0.545/−0.427 · LDA 0 diagnosed
 **STOP:** approve exact tip SHA before merge; BATCH C/D follow as separate PRs
 
 ---
 
 ## HANDOFF 2026-07-22 — M-ACQUIRE BATCH B (Money & ideology) ⛔ STOP
 
-**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval
 **Current state:** `cursor/m-acquire-batch-b-70a6` · tip **20f9cb5** · Batch A merged to `main` @ **a2fbd7a** · gov c878311 already on main (a44d417) · prebuild **0** · build **0**
 
 ### MERGE NOW confirmed
@@ -668,24 +718,24 @@ Shared article cache is **fetch reuse only** — no auto-extract of new quotes. 
 3. LDA `search=` appears ignored by API; member-keyed lobbying contacts unavailable — keep diagnosed gap or find alternate.
 4. Registry short tokens (e.g. `SEIU` len&lt;5) miss `SEIU COPE` — consider alias table.
 
-**PARK:** #76 · m8a · m7a–d · M-UI #68 STAGE THREE after acquisition  
+**PARK:** #76 · m8a · m7a–d · M-UI #68 STAGE THREE after acquisition
 **Next after APPROVAL:** BATCH C (news + quotes + positions)
 
 ---
 
 ## Confront Claude — paste to Claude Code
 
-**Merged to main:** Batch A **a2fbd7a** · gov c878311 already present  
-**M-ACQUIRE BATCH B tip:** **20f9cb5** · data 2e07961 · prebuild 0 · build 0  
-**S000033:** FEC refreshed · SchedA 15→**5000** · orgVoteLinks **0 diagnosed** (conduit/small-donor) · Voteview **−0.545/−0.427** · lobbying **0 diagnosed**  
-**STOP:** do not start BATCH C without APPROVAL  
+**Merged to main:** Batch A **a2fbd7a** · gov c878311 already present
+**M-ACQUIRE BATCH B tip:** **20f9cb5** · data 2e07961 · prebuild 0 · build 0
+**S000033:** FEC refreshed · SchedA 15→**5000** · orgVoteLinks **0 diagnosed** (conduit/small-donor) · Voteview **−0.545/−0.427** · lobbying **0 diagnosed**
+**STOP:** do not start BATCH C without APPROVAL
 **Propose:** prior-Congress vote window for Said→Did depth (§14)
 
 ---
 
 ## HANDOFF 2026-07-22 — M-ACQUIRE BATCH A (Bernie Record) ⛔ STOP
 
-**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval  
+**From:** Cursor · **To:** Claude · **Verdict:** COMPLETE on branch · **STOP** for tip approval
 **Current state:** `cursor/m-acquire-batch-a-70a6` · PR **#79** · data tip `8a1157e` · prebuild **0** · build **0**
 
 ### BEFORE → AFTER (S000033 only)
@@ -712,16 +762,16 @@ Shared article cache is **fetch reuse only** — no auto-extract of new quotes. 
 - `npm run prebuild` → **0** · `npm run build` → **0**
 - Logs: `/tmp/ledger-sync-votes-national-s000033.log`, `/tmp/ledger-sync-topic-positions-s000033.log`, `/tmp/ledger-ingest-member-s000033.log`, `/tmp/ledger-prebuild-batch-a.log`, `/tmp/ledger-build-batch-a.log`
 
-**PARK:** #76 · m8a · m7a–d · M-UI #68 STAGE THREE after M-ACQUIRE  
+**PARK:** #76 · m8a · m7a–d · M-UI #68 STAGE THREE after M-ACQUIRE
 **Next after APPROVAL:** BATCH B (Money & ideology)
 
 ---
 
 ## Confront Claude — paste to Claude Code
 
-**M-ACQUIRE BATCH A tip:** approve **PR #79 branch HEAD** (`git rev-parse origin/cursor/m-acquire-batch-a-70a6`) · data `8a1157e` · prebuild 0 · build 0  
-**S000033:** votes 30→**201** · CREC 4→**10** · Said→Did 2→**8**/15 · legis 566/7906  
-**STOP:** do not start BATCH B without APPROVAL on this tip SHA  
+**M-ACQUIRE BATCH A tip:** approve **PR #79 branch HEAD** (`git rev-parse origin/cursor/m-acquire-batch-a-70a6`) · data `8a1157e` · prebuild 0 · build 0
+**S000033:** votes 30→**201** · CREC 4→**10** · Said→Did 2→**8**/15 · legis 566/7906
+**STOP:** do not start BATCH B without APPROVAL on this tip SHA
 **§13 proposals:** (1) migrated-member CREC must write profile destination files — `sync:topic-positions` re-adding S000033 to mega-bundle fails freeze + scraped Ballotpedia junk (stripped); (2) CREC yield thin (343 HTML→~12 before AECA filter) — diagnose `mapCrecTextToTopic` / pool; (3) wire `buildCrecSaidDidLinks` into `profileMigrate` (old builder lacks saidQuote/URL); (4) `ingest:member` cosponsor early-stop (6276/7906 fetched); (5) VoteSmart key EMPTY — NPAT skipped (BATCH C); (6) topicPositions `meta.totalMembers` was stale `1` pre-existing — corrected to 537 this turn
 
 ---
@@ -1608,11 +1658,11 @@ Pipeline code, `sourceIntegrity.ts`, generated profile JSON (except inventory md
 
 ## Confront Claude — paste to Claude Code
 
-**Merged:** PR #57 → `main` @ **`1aae27f`** · PR #55 @ **`61e6d5c`**  
-**PR #58 @ `539162a`:** **AWAITING Claude STAGE THREE — not approved; do not merge** (prior handoff lines that said Claude APPROVED were inaccurate)  
+**Merged:** PR #57 → `main` @ **`1aae27f`** · PR #55 @ **`61e6d5c`**
+**PR #58 @ `539162a`:** **AWAITING Claude STAGE THREE — not approved; do not merge** (prior handoff lines that said Claude APPROVED were inaccurate)
 **Closed:** PR #48 · split complete
 
-**PR #58 @ `539162a` evidence:** `npm run prebuild` exit 0 (post-rebase, incl. W3d + credibility)  
+**PR #58 @ `539162a` evidence:** `npm run prebuild` exit 0 (post-rebase, incl. W3d + credibility)
 **AP guard:** format-only; human-verify AP URLs at ingest
 
 **Next:** Run **CURSOR BATCH PROMPT** above (Batch A docs first; Batch C conduits as separate PRs).
@@ -1677,9 +1727,9 @@ Pipeline code, `sourceIntegrity.ts`, generated profile JSON (except inventory md
 
 ## Confront Claude — paste to Claude Code
 
-**Merged:** PR #55 → `main` @ **`61e6d5c`** (approved **`7844db6`**)  
-**Pending STAGE THREE:** PR **#57** @ **`24296bd`** (P0 AP-URL guard — merge first)  
-**Pending STAGE THREE:** PR **#58** @ **`e5f940a`** (news pipeline batch — after #57)  
+**Merged:** PR #55 → `main` @ **`61e6d5c`** (approved **`7844db6`**)
+**Pending STAGE THREE:** PR **#57** @ **`24296bd`** (P0 AP-URL guard — merge first)
+**Pending STAGE THREE:** PR **#58** @ **`e5f940a`** (news pipeline batch — after #57)
 **Closed:** PR #48 @ `e404c0a` — superseded by split
 
 **PR-A #57 @ `24296bd` verification:**
@@ -1717,8 +1767,8 @@ Pipeline code, `sourceIntegrity.ts`, generated profile JSON (except inventory md
 
 ## Confront Claude — paste to Claude Code
 
-**Merged:** PR #54 → `main` @ `4625976` (approved `56ac08d`)  
-**Pending STAGE THREE:** PR #55 @ `7844db6` — Cursor manual §6 cross-ref only  
+**Merged:** PR #54 → `main` @ `4625976` (approved `56ac08d`)
+**Pending STAGE THREE:** PR #55 @ `7844db6` — Cursor manual §6 cross-ref only
 **Pending STAGE THREE (owner):** PR #48 @ `e404c0a` — Sanders AP-URL / news/trades — **do not merge**
 
 **PR #48 verification @ `e404c0a` (executed this session):**
@@ -1778,13 +1828,13 @@ Pipeline code, `sourceIntegrity.ts`, generated profile JSON (except inventory md
 
 ## Confront Claude — paste to Claude Code
 
-**Branch:** `cursor/phase4-5-nav-guard-ci-rule-70a6` · **HEAD:** `021604f` · **PR:** #54 · **Base:** `main` @ `a730f81`  
-**Merged this session:** PR #53 @ `6dc5bc9` → `main` @ `a730f81`  
+**Branch:** `cursor/phase4-5-nav-guard-ci-rule-70a6` · **HEAD:** `021604f` · **PR:** #54 · **Base:** `main` @ `a730f81`
+**Merged this session:** PR #53 @ `6dc5bc9` → `main` @ `a730f81`
 **Verdict:** PASS — STOP for combined STAGE THREE (Phases 4–5)
 
-**Review:** navigationIntegrity guard (4/4 tests) + continuous-improvement binding rule + prebuild 21 commands.  
-**Do not merge** until APPROVAL on branch tip SHA `021604f` (task commit `d8bb229`).  
-**Housekeeping:** PR #47 closed as superseded.  
+**Review:** navigationIntegrity guard (4/4 tests) + continuous-improvement binding rule + prebuild 21 commands.
+**Do not merge** until APPROVAL on branch tip SHA `021604f` (task commit `d8bb229`).
+**Housekeeping:** PR #47 closed as superseded.
 **Not in scope:** PR #48 — separate SHA review.
 
 ---
