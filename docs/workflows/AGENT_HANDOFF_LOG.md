@@ -10,6 +10,52 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — scheduled critical-bug scan (PASS — no new PR)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new high-confidence critical bug found)  
+**Current state:** `cursor/critical-bug-management-effe` · HEAD before log commit `763dc67` · PR none opened · tree clean before log edit
+
+### Objective
+Inspect recent main commits for critical correctness bugs, avoid duplicate reports from automation memory, and open a minimal PR only for a new high-confidence data-loss/crash/security/user-breakage defect.
+
+### Verdict / outcome
+No new distinct critical bug was found. All tracked automation-memory PRs (#28-#31, #40, #99-#127) are still open, so none were re-reported and MEMORIES.md required no cleanup. The full source-integrity guard still fails on the already tracked PR #99 issue (`votesmart` token in Claude rule files); the focused source/Said-Did/provenance subset passed.
+
+### Commits
+- This docs commit — records the scheduled scan outcome.
+
+### Commands run (this session)
+- `git status --short && git branch --show-current && git rev-parse --short HEAD && git log --oneline --decorate -20` → exit 0
+- `if [ -f /tmp/cursor/async-install/install-user.status ]; then printf 'install status: '; cat /tmp/cursor/async-install/install-user.status; elif [ -f /tmp/cursor/async-install/install-user.log ]; then echo 'install log exists'; pgrep -af 'install-user|npm install|npm ci' || true; else echo 'no async install files'; fi; if [ -f /tmp/cursor/start-user/start-user.status ]; then printf 'start status: '; cat /tmp/cursor/start-user/start-user.status; elif [ -f /tmp/cursor/start-user/start-user.log ]; then echo 'start log exists'; else echo 'no start files'; fi` → exit 0
+- `gh pr list --state all --limit 120 --json number,state,mergedAt,closedAt,url,title,headRefName,baseRefName` → exit 0
+- `git show --stat --oneline --find-renames 18b5d3 && printf '\n--- d36f4a9 ---\n' && git show --stat --oneline --find-renames d36f4a9 && printf '\n--- cc916da ---\n' && git show --stat --oneline --find-renames cc916da && printf '\n--- a42e0cb ---\n' && git show --stat --oneline --find-renames a42e0cb` → exit 0
+- `git diff cc916da^..cc916da -- lib/data/sourceIntegrity.ts scripts/__tests__/sourceIntegrity.test.ts lib/data/__fixtures__/sourceIntegrity.fixture.ts && printf '\n--- d36 buildSaidDid/resolve/context diff ---\n' && git diff d36f4a9^..d36f4a9 -- lib/data/buildSaidDidDiffs.ts lib/data/resolveRecordedOutlet.ts lib/data/saidDidVoteContext.ts components/politicians/ProfileRecordByTopicPanel.tsx scripts/__tests__/provenanceOutletGuard.test.ts` → exit 0
+- `git log --pretty=format:'%h %cI %s' -15 && printf '\n--- since Sep 21 ---\n' && git log --since='2026-09-21T00:00:00Z' --pretty=format:'%h %cI %s'` → exit 0; no commits since Sep 21
+- `npm run test:source-integrity` → exit 1; known open PR #99 guard failure
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/newsCorroboration.test.ts` → exit 0; 74/74 pass
+- `git status --short && git rev-parse --short HEAD` → exit 0; clean before log edit
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added scheduled critical-bug scan result and validation evidence |
+
+### Acceptance evidence
+- Memory check: tracked PRs #28-#31, #40, #99-#127 are still `OPEN`; no merged/closed cleanup required.
+- Recent main check: `git log --since='2026-09-21T00:00:00Z'` returned no commits.
+- Focused guard evidence: `# tests 74` / `# pass 74` / `# fail 0`.
+- Known duplicate evidence: full `npm run test:source-integrity` failed only at `approvedSourceMatrixGuard.test.ts` with `dead-source token "votesmart"` in `.claude/rules/...`, matching open PR #99.
+
+### Open / next
+- No new bug PR from this scan.
+- Existing PR #99 remains the fix for the known source-integrity guard failure.
+
+## Confront Claude — paste to Claude Code
+
+**Scheduled critical-bug scan @ `763dc67`:** no new high-confidence critical bug found; no PR opened. Memory entries #28-#31/#40/#99-#127 remain open and were not duplicated. Full `test:source-integrity` still fails on known PR #99 (`votesmart` token in Claude rules); focused source/Said-Did/provenance guards passed 74/74. Claude should review/merge existing PR #99 rather than ask Cursor to open a duplicate.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
