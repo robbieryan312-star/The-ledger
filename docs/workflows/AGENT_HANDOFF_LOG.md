@@ -10,6 +10,62 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-09-25 — scheduled critical-bug scan
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new high-severity bug opened)  
+**Current state:** `cursor/critical-bug-management-04bd` · HEAD `763dc67` before this log commit · PR none · tree clean before handoff edit · build not run (docs-only scan log)
+
+### Objective
+Inspect recent commits for critical correctness bugs, avoid duplicates already tracked in automation memory, and open a minimal fix PR only if a new high-confidence critical issue is found.
+
+### Process / findings
+- Read automation `MEMORIES.md` first. All tracked bug PRs (#28, #29, #30, #31, #40, #99-#127) are still `OPEN`; no merged/rejected/stale memory cleanup was needed.
+- Fetched remotes and confirmed this branch equals `origin/main` at `763dc67`; there are no newer main commits since the last tracked critical-bug PRs.
+- Reviewed the latest main code-affecting diffs (`db23b39`, `d36f4a9`, `18b5d3e`, plus the governance merge) and traced the touched high-risk paths:
+  - `lib/data/buildSaidDidDiffs.ts`
+  - `lib/data/resolveRecordedOutlet.ts`
+  - `lib/data/allegedPolicy.ts`
+  - `lib/data/newsCorroboration.ts`
+  - `lib/data/sourceIntegrity.ts`
+- Potential critical issues observed in those paths are already tracked by open PRs in memory: #100 (Senate subdomain provenance), #125 (same-topic Said-Did subject shortcut), and #127 (single-source media Said).
+
+### Commands run (this session)
+- `git status --short && git rev-parse --abbrev-ref HEAD && git log --oneline -n 20 && gh pr list --repo robbieryan312-star/The-ledger --state all --limit 200 --json number,state,mergedAt,closedAt,url,title` → exit 0
+- `git fetch --all --prune && git status --short && git branch --show-current && git log --oneline --decorate --max-count=30 --all --date-order && git rev-list --count HEAD ^origin/main || true && git diff --stat origin/main...HEAD` → exit 0
+- `git rev-parse --short HEAD && git rev-parse --short origin/main && git status --short && git log --oneline -n 15 --decorate && git diff --stat HEAD~20..HEAD` → exit 0
+- `git log --format='%h %cI %s' -n 30 origin/main && git show --stat --oneline --find-renames 763dc67 6d6057b a42e0cb 09f14b4 18b5d3e d36f4a9 --` → exit 0
+- `git show --find-renames --format=fuller --stat d36f4a9 -- lib/data/buildSaidDidDiffs.ts lib/data/resolveRecordedOutlet.ts components/politicians/ProfileRecordByTopicPanel.tsx lib/types/index.ts scripts/__tests__/provenanceOutletGuard.test.ts && git show --find-renames --format=fuller --stat db23b39 -- lib/data/allegedPolicy.ts scripts/__tests__/allegedPolicyGuard.test.ts components/politicians/ControversySection.tsx lib/data/newsCorroboration.ts lib/data/generated/profiles/S000033/news.json` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Logged scheduled critical-bug scan result and duplicate-PR evidence. |
+
+### Acceptance evidence
+- `gh pr list --state all` showed every memory-tracked PR entry still `OPEN`.
+- `git rev-parse --short HEAD` and `git rev-parse --short origin/main` both returned `763dc67`.
+- No untracked new critical bug met the automation confidence bar, so no fix branch or PR was opened.
+
+### Owner visibility finding
+| What | Where | Evidence | Severity | Repair | Action this turn |
+|------|-------|----------|----------|--------|------------------|
+| Production URL/project docs disagree: `IMPROVEMENT_BACKLOG.md` says `the-ledger-main`, while REPO/PROGRESS/SETUP still cite `the-ledger-s4dn`. | `REPO.md`, `PROGRESS.md`, `docs/SETUP.md`, `docs/workflows/IMPROVEMENT_BACKLOG.md` | `rg "the-ledger-s4dn|the-ledger-main" /workspace --glob "*.md"` shows both names in active docs. | P2 doc drift | Agent-fixable doc reconciliation after Claude/owner confirms the current live project name. | Flagged only; out of scope for critical-bug PR scan and not independently verified against Vercel. |
+
+### Open / next
+- Existing memory-tracked fixes remain awaiting review/merge; this run did not open a duplicate PR.
+- If Claude/owner confirms `the-ledger-main` is the current canonical production project, reconcile active docs in one scoped docs PR.
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-management-04bd` · `763dc67` before scan-log commit · PR none  
+**Verdict:** PASS for scheduled critical-bug scan; STOP for STAGE THREE only if Claude wants an independent review of the no-new-bug conclusion.  
+**What changed:** Handoff log only; no product/code changes; no new PR opened because no untracked critical bug met the confidence bar.  
+**Evidence:** Memory PR sweep via `gh pr list --state all` showed all tracked entries still `OPEN`; branch equals `origin/main` at `763dc67`; latest high-risk touched code paths overlapped existing open PRs #100/#125/#127.  
+**Open gates:** Existing open critical-bug PRs still need review/merge; doc drift on production URL/project name needs confirmation before cleanup.  
+**Repeat-work flag:** Repeated scheduled scan — no spec delta.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
