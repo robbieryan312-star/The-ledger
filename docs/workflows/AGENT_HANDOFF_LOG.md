@@ -10,6 +10,62 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — scheduled critical bug scan (NO NEW CRITICAL BUG PR)
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS (no distinct new critical bug found)
+**Current state:** `cursor/critical-bug-management-e3b0` · HEAD before docs commit `763dc67` · PR none · tree clean before docs edit · full source-integrity blocked by known open PR #99
+
+### Objective
+Inspect recent commits for high-severity correctness regressions; avoid duplicates already tracked in automation memory; open a PR only for a high-confidence new critical bug.
+
+### Verdict / outcome
+**PASS (scan only)** — all tracked memory PRs #28, #29, #30, #31, #40, and #99–#127 are still OPEN, so no memory cleanup was needed. Recent `main` code-bearing changes reviewed were governance/source-integrity/provenance/Said-Did commits around `a42e0cb`, `18b5d3e`, `d36f4a9`, and `cc916da`. Suspicious severe paths found during review matched already-open memory PRs (#99 dead-source token guard failure, #100 Senate subdomain provenance, #106 approved-matrix substring weakness, #125 same-topic Said-Did shortcut, #127 media Said corroboration), so no duplicate PR was opened.
+
+### Commits
+- (this docs commit) — log scheduled critical bug scan outcome
+
+### Commands run (this session)
+- `gh pr view 28 --json number,state,mergedAt,closedAt,url,headRefName,title` → exit 0 (PR #28 OPEN)
+- `python - <<'PY' ... gh pr view ... PY` → exit 127 (`python: command not found`; retried with `python3`)
+- `python3 - <<'PY' ... gh pr view ... PY` → exit 0 (all tracked PRs #28/#29/#30/#31/#40/#99–#127 OPEN)
+- `git fetch --prune origin && git status --short --branch && git log --oneline --decorate -n 20 origin/main && git log --oneline --decorate --all --since='14 days ago' --no-merges -n 60` → exit 0
+- `git show --stat --oneline --decorate 763dc67 6d6057b a42e0cb 09f14b4 377787d 18b5d3e d36f4a9 cf4bcfd cc916da --` → exit 0
+- `npm run test:source-integrity` → exit 1 (known open PR #99 blocker: dead-source token in Claude rule docs)
+- `npx tsx --test scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/allegedPolicyGuard.test.ts` → exit 0 (12/12 pass)
+- `date -u +%Y-%m-%dT%H:%M:%SZ && git rev-parse --short HEAD && git status --short --branch && git diff --stat` → exit 0 (`2026-09-26T04:20:44Z`, HEAD `763dc67`)
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this scheduled bug-scan handoff entry. |
+
+### Acceptance evidence
+- Memory cleanup evidence: tracked PRs #28, #29, #30, #31, #40, and #99–#127 all returned `"state":"OPEN"`; memory left unchanged to avoid duplicate reports.
+- Full guard known blocker:
+  ```
+  not ok 11 - criterion (A): no contiguous dead-source token outside history exempts
+  dead-source token "votesmart" found outside history exempts:
+  .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2
+  .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1
+  ```
+- Focused reviewed guards:
+  ```
+  # tests 12
+  # pass 12
+  # fail 0
+  ```
+
+### Open / next
+- No new critical-bug PR opened.
+- Existing PR #99 still blocks `npm run test:source-integrity` on `main`; do not duplicate it while that PR remains open.
+- Existing open PRs #100/#106/#125/#127 cover the other suspicious severe paths seen in the reviewed code.
+
+## Confront Claude — paste to Claude Code
+
+Scheduled critical bug scan on `cursor/critical-bug-management-e3b0` found no distinct new critical bug outside open memory PRs. All tracked memory PRs #28/#29/#30/#31/#40/#99–#127 are still OPEN. Full `npm run test:source-integrity` fails on known #99 (`votesmart` token in Claude rule docs); focused provenance/alleged guards pass 12/12. No code fix PR opened; review this scan log and keep #99 as the active fix for the guard blocker.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
