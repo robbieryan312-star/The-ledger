@@ -10,6 +10,48 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — scheduled critical bug scan 2026-09-28 (PASS; build blocked by known PR #99)
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS (no new critical bug PR opened; build failure matches open PR #99)
+**Current state:** `cursor/critical-bug-management-82d6` · HEAD `763dc67` before this docs commit · PR none · tree clean before edit · build attempted and failed on known tracked dead-source-token defect fixed by open PR #99
+
+### Objective
+Inspect recent commits for high-severity correctness bugs, avoid duplicates already tracked in automation memory, and only open a PR for a concrete critical issue.
+
+### Verdict / outcome
+**PASS** — no new non-handoff changes existed after the last tracked critical bug entry (`2026-09-21T04:26:11Z`), and all remembered bug PRs checked this session remain open, so no duplicate PR was opened.
+
+### Commands run (this session)
+- `git status --short && git rev-parse --abbrev-ref HEAD && git rev-parse --short HEAD && git log --oneline -20` → exit 0
+- `for pr in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127; do gh pr view "$pr" --json number,state,mergedAt,closedAt,url,title --jq '[.number,.state,(.mergedAt//""),(.closedAt//""),.url,.title] | @tsv'; done` → exit 0; every tracked PR reported `OPEN`
+- `git remote -v && git fetch --all --prune && git status --short && git branch --show-current && git log --date=iso --pretty=format:'%h%x09%ad%x09%s' -15 --all` → exit 0
+- `git branch -vv && git log --date=iso --pretty=format:'%h%x09%ad%x09%s' -20 origin/main && git log --date=iso --pretty=format:'%h%x09%ad%x09%s' -20 origin/cursor/critical-bug-management-82d6 2>/dev/null || true` → exit 0
+- `git for-each-ref --sort=-committerdate --format='%(committerdate:iso8601)%09%(refname:short)%09%(objectname:short)%09%(subject)' refs/remotes/origin | awk 'NR<=80 {print}'` → exit 0
+- `git log --all --since='2026-09-21T04:26:11Z' --name-status --pretty=format:'COMMIT %h %ad %s' --date=iso -- . ':!docs/workflows/AGENT_HANDOFF_LOG.md' ':!MEMORIES.md'` → exit 0; no output
+- `git diff --check && git status --short && git diff -- docs/workflows/AGENT_HANDOFF_LOG.md` → exit 2; trailing whitespace in this new entry, corrected before commit
+- `git diff --check && git status --short && git diff -- docs/workflows/AGENT_HANDOFF_LOG.md` → exit 0 after correction; only `docs/workflows/AGENT_HANDOFF_LOG.md` modified
+- `npm run build` → exit 1; `approvedSourceMatrixGuard` found dead-source token `"votesmart"` in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1` (known memory entry; open PR #99)
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this scheduled scan evidence and Confront Claude block |
+
+### Acceptance evidence
+- Automation memory read first; remembered entries remain open PRs (#28, #29, #30, #31, #40, #99-#127).
+- Recent remote branch scan after `2026-09-21T04:26:11Z` produced no non-handoff file changes.
+- No code/data files changed; no new critical trigger scenario identified.
+- Build failure matches existing tracked open PR #99, so no duplicate PR opened.
+
+### Open / next
+- Existing open critical-bug PRs remain awaiting review/merge; PR #99 blocks `npm run build` on current branch.
+
+## Confront Claude — paste to Claude Code
+
+**Scheduled critical bug scan 2026-09-28:** branch `cursor/critical-bug-management-82d6` · pre-doc HEAD `763dc67` · PR none · Verdict PASS/no new critical bug. Evidence: all remembered bug PRs #28/#29/#30/#31/#40/#99-#127 remain `OPEN`; `git log --all --since='2026-09-21T04:26:11Z' ... ':!docs/workflows/AGENT_HANDOFF_LOG.md' ':!MEMORIES.md'` returned no non-handoff changes. Build gate: `npm run build` fails on known open PR #99 dead-source-token defect in `.claude/rules/*`; no duplicate PR opened. Open gate: no merge action; existing PRs still need review.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
