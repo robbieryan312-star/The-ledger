@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## Latest session — scheduled critical bug scan 2026-09-28 (PASS; build blocked by known PR #99)
 
 **From:** Cursor Automation · **To:** Claude · **Verdict:** PASS (no new critical bug PR opened; build failure matches open PR #99)
-**Current state:** `cursor/critical-bug-management-82d6` · HEAD `1aaa1f2` after first docs commit (this follow-up records post-commit/push evidence) · PR none · tree clean after commit · build attempted and failed on known tracked dead-source-token defect fixed by open PR #99
+**Current state:** `cursor/critical-bug-management-82d6` · pushed docs branch for this scan · PR none · tree clean after commit/push · build attempted and failed on known tracked dead-source-token defect fixed by open PR #99
 
 ### Objective
 Inspect recent commits for high-severity correctness bugs, avoid duplicates already tracked in automation memory, and only open a PR for a concrete critical issue.
@@ -50,7 +50,7 @@ Inspect recent commits for high-severity correctness bugs, avoid duplicates alre
 
 ## Confront Claude — paste to Claude Code
 
-**Scheduled critical bug scan 2026-09-28:** branch `cursor/critical-bug-management-82d6` · pushed docs tip `1aaa1f2` (follow-up log evidence pending) · PR none · Verdict PASS/no new critical bug. Evidence: all remembered bug PRs #28/#29/#30/#31/#40/#99-#127 remain `OPEN`; `git log --all --since='2026-09-21T04:26:11Z' ... ':!docs/workflows/AGENT_HANDOFF_LOG.md' ':!MEMORIES.md'` returned no non-handoff changes. Build gate: `npm run build` fails on known open PR #99 dead-source-token defect in `.claude/rules/*`; no duplicate PR opened. Open gate: no merge action; existing PRs still need review.
+**Scheduled critical bug scan 2026-09-28:** branch `cursor/critical-bug-management-82d6` · docs scan record pushed · PR none · Verdict PASS/no new critical bug. Evidence: all remembered bug PRs #28/#29/#30/#31/#40/#99-#127 remain `OPEN`; `git log --all --since='2026-09-21T04:26:11Z' ... ':!docs/workflows/AGENT_HANDOFF_LOG.md' ':!MEMORIES.md'` returned no non-handoff changes. Build gate: `npm run build` fails on known open PR #99 dead-source-token defect in `.claude/rules/*`; no duplicate PR opened. Open gate: no merge action; existing PRs still need review.
 
 ---
 
