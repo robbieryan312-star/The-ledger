@@ -10,6 +10,51 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-09-29 — CRON CRITICAL-BUG SCAN (NO NEW CRITICAL BUG)
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS (no non-duplicate critical bug found)
+**Current state:** `cursor/critical-bug-management-e7b9` · HEAD before this log `763dc67` · PR n/a (investigation only) · tree clean before log edit · build **FAIL** on known open PR #99 guard issue (dead-source token in Claude rule files)
+
+### Objective
+Inspect recent `origin/main` behavioral commits for critical correctness bugs that escaped review, while avoiding duplicates already tracked in automation memory.
+
+### Verdict / outcome
+**PASS** — no new concrete high-severity bug found. All MEMORIES.md-tracked PRs (#28, #29, #30, #31, #40, #99-#127) were checked and remain **OPEN**, so MEMORIES.md required no cleanup and no duplicate PR was opened.
+
+### Commits
+- Documentation evidence commit to follow in this session.
+
+### Commands run (this session)
+- `automation_memory read MEMORIES.md` → all tracked entries loaded before scan
+- `cd /workspace && git status --short && git branch --show-current && git log --oneline -20` → clean tree; branch `cursor/critical-bug-management-e7b9`; HEAD `763dc67`
+- `cd /workspace && for n in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127; do gh pr view "$n" --json number,state,mergedAt,closedAt,url,headRefOid,title 2>/tmp/gh-pr-$n.err || { printf '%s\tERROR\t' "$n"; cat /tmp/gh-pr-$n.err; continue; }; done` → every tracked PR returned `state:"OPEN"`
+- `cd /workspace && git remote -v && git fetch --all --prune && echo '--- origin/main ---' && git log --oneline origin/main -30 && echo '--- current branch divergence ---' && git log --oneline --left-right --cherry-pick origin/main...HEAD | sed -n '1,80p'` → `origin/main` at `763dc67`; no branch divergence
+- `cd /workspace && git show --stat --oneline --decorate --find-renames db23b39 d137a12 cc916da cf4bcfd d36f4a9 18b5d3e` → reviewed recent behavioral commit surfaces
+- `cd /workspace && git show --find-renames --unified=80 db23b39 -- components/politicians/ProfileRecordByTopicPanel.tsx lib/data/buildSaidDidDiffs.ts lib/data/newsCorroboration.ts scripts/lib/approvedMediaQuotes.ts components/politicians/ControversySection.tsx lib/data/allegedPolicy.ts` → traced alleged-policy display/data paths
+- `cursor Subagent "Secondary recent-bug scan"` → independent focused review of commits `db23b39`, `d137a12`, `cc916da`, `d36f4a9`, `18b5d3e`; result: no non-duplicate critical bug found
+- `cd /workspace && git status --short && git diff -- docs/workflows/AGENT_HANDOFF_LOG.md && npm run build` → exit 1 at `approvedSourceMatrixGuard` criterion A; known open PR #99 (`votesmart` token in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`)
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this cron scan evidence and Confront Claude block |
+
+### Acceptance evidence
+- PR cleanup evidence: `gh pr view` returned `state:"OPEN"` for every PR URL listed in MEMORIES.md, so no memory entries were merged/fixed/rejected/stale.
+- Recent-history evidence: `git fetch --all --prune` then `git log --oneline origin/main -30` showed the branch is aligned with `origin/main` at `763dc67`.
+- Review evidence: direct trace plus secondary scan found only duplicate already-tracked issue classes (#100/#102/#104/#105/#107/#109/#110/#115/#118/#123/#127), and no distinct crash/data-loss/security/major-breakage trigger.
+- Build evidence: build attempted and failed on already-tracked open PR #99, not on this handoff-log edit.
+
+### Open / next
+- Existing automation-memory PRs remain awaiting review; PR #99 still blocks a green build on `main`.
+- No new PR opened for this investigation-only run.
+
+## Confront Claude — paste to Claude Code
+
+**CRON CRITICAL-BUG SCAN:** branch `cursor/critical-bug-management-e7b9` · base HEAD `763dc67` · verdict **PASS / no new non-duplicate critical bug** · MEMORIES.md unchanged because every tracked PR #28/#29/#30/#31/#40/#99-#127 remains OPEN · no code/data changes · `npm run build` attempted and failed on known open PR #99 (`approvedSourceMatrixGuard` dead-source token in Claude rule files) · no PR opened. Claude can review this log entry and the scan evidence; existing open PRs remain the only tracked fixes.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
