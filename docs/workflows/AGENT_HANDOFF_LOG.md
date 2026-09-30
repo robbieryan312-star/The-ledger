@@ -10,6 +10,61 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-09-30 — critical bug automation sweep (NO NEW PR)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS for duplicate-aware audit; known validation blocker remains open  
+**Current state:** `cursor/critical-bug-management-5cf7` · HEAD `763dc67` before this docs commit · tree dirty only handoff/backlog after this entry · PR not opened
+
+### Objective
+Inspect recent executable commits for distinct high-severity correctness bugs; avoid re-reporting bugs already tracked in automation memory.
+
+### Verdict / outcome
+No distinct critical bug found outside the open memory PR set (#28, #29, #30, #31, #40, #99-#127). Overlapping risky paths reviewed: alleged-policy validation, approved-source matrix, CREC yield, Said→Did subject matching, provenance outlet resolution, and S000033 mega-bundle freeze. Known guard blocker remains the open PR #99 class.
+
+### Commits
+- Pending docs commit — this session handoff + backlog evidence only
+
+### Commands run (this session)
+- `gh pr view <memory PRs> --json number,state,mergedAt,closedAt,title,url --jq ...` → all tracked PRs still `OPEN`
+- `git log --since='14 days ago' --date=short --pretty=format:'%h %ad %s' --name-status` → no author-dated commits in that window
+- `git log --date=short --pretty=format:'COMMIT %h %ad %s' -n 35 --name-only` → executable commits audited: `a739765`, `d137a12`, `db23b39`, `d36f4a9`, `18b5d3e`, descendants
+- `npm run test:source-integrity 2>&1 | tee /tmp/ledger-critical-bug-source-integrity.log` → output contained `# fail 1`; shell exit masked by missing `pipefail`
+- `set -o pipefail; npm run test:source-integrity 2>&1 | tee /tmp/ledger-critical-bug-source-integrity.log` → exit `1`
+- `cp /tmp/ledger-critical-bug-source-integrity.log /opt/cursor/artifacts/critical-bug-source-integrity.log` → artifact saved
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | logged duplicate-aware critical bug sweep |
+| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | added `IMP-TEE-PIPEFAIL` process hardening item |
+
+### Acceptance evidence
+- Automation memory read first; all remembered PRs checked with `gh`; every tracked PR remains `OPEN`, so no duplicate PR opened.
+- Independent explore audit returned: "no distinct critical bug found" outside open PR catalog.
+- Guard artifact: `/opt/cursor/artifacts/critical-bug-source-integrity.log`
+- Guard failure evidence (known open PR #99 class):
+```text
+not ok 11 - criterion (A): no contiguous dead-source token outside history exempts
+dead-source token "votesmart" found outside history exempts:
+.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2
+.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1
+# pass 132
+# fail 1
+```
+
+### Open / next
+- No new critical bug PR from this sweep.
+- Existing PR #99 remains the validation blocker for `test:source-integrity`.
+- `IMP-TEE-PIPEFAIL` should be addressed in future process/docs or helper command guidance.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Critical bug automation sweep:** HEAD before docs commit `763dc67`, branch `cursor/critical-bug-management-5cf7`. Verdict: **PASS / no new distinct critical bug**; all memory PRs #28/#29/#30/#31/#40/#99-#127 still open, so no duplicate PR opened. Evidence: source-integrity guard rerun with pipefail exits 1 on known PR #99 class (`.claude` dead-source token), artifact `/opt/cursor/artifacts/critical-bug-source-integrity.log`. Open gate: Claude should treat this as no-new-PR sweep plus known validation blocker, not approval of #99.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
