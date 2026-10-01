@@ -30,6 +30,21 @@ export const MEMBER_NEWS_MATCH_KNOWN_GOOD_FULL_NAME = {
   expectedMatchContains: 'Sanders',
 } as const;
 
+export const MEMBER_NEWS_MATCH_KNOWN_BAD_AMBIGUOUS_HONORIFIC = {
+  defect: 'ambiguous-honorific-lastname-news-match',
+  description:
+    'Honorific + surname alone must not match when multiple same-chamber members share the surname',
+  text: 'Sen. Scott blocks Senate Democrats on spending bill.',
+  expectedMatch: null,
+} as const;
+
+export const MEMBER_NEWS_MATCH_KNOWN_GOOD_AMBIGUOUS_FULL_NAME = {
+  defect: 'ambiguous-lastname-full-name-ok',
+  description: 'Full name still matches when same-chamber members share the surname',
+  text: 'Sen. Rick Scott blocks Senate Democrats on spending bill.',
+  expectedMatchContains: 'Rick Scott',
+} as const;
+
 /** Owner 2026-07-20: comparison-only mention does NOT qualify for profile News. */
 export const MEMBER_NEWS_QUALIFY_KNOWN_BAD_COMPARISON_ONLY = {
   defect: 'comparison-only-news-mention',

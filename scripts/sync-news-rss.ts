@@ -41,15 +41,18 @@ import {
 } from '../lib/data/sourceIntegrity';
 import type { NewsItem, Source } from '../lib/types';
 import {
+  buildSameChamberLastNameCounts,
   loadMemberNewsDisplayMap,
   matchesMemberInText,
   memberNewsNameTokens,
+  type MemberNewsMatchOptions,
 } from './lib/memberNewsMatching';
 import { qualifiesMemberNewsItem } from './lib/memberNewsQualification';
 import type { ProfileDisplayIdentity } from './lib/profileDisplayIdentity';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 let displayByBio: Map<string, ProfileDisplayIdentity> = new Map();
+let memberNewsMatchOptions: MemberNewsMatchOptions = {};
 const profilesRoot = path.join(projectRoot, 'lib', 'data', 'generated', 'profiles');
 const legislatorsFile = path.join(projectRoot, 'lib', 'data', 'generated', 'currentLegislators.json');
 const CHECKPOINT_FILE = '/tmp/ledger-sync-news-rss-checkpoint.json';
@@ -261,7 +264,7 @@ function isOpinionUrl(url: string): boolean {
 }
 
 function matchesMember(text: string, leg: LegislatorRow): string | null {
-  return matchesMemberInText(text, leg, displayByBio);
+  return matchesMemberInText(text, leg, displayByBio, memberNewsMatchOptions);
 }
 
 function isPoliticallyRelevant(title: string, description: string): boolean {
@@ -328,7 +331,7 @@ function rawItemsToCandidates(
     const blob = `${title} ${description}`;
     const matchedName = matchesMember(blob, leg);
     if (!matchedName) continue;
-    if (!qualifiesMemberNewsItem(title, description, leg, displayByBio).ok) continue;
+    if (!qualifiesMemberNewsItem(title, description, leg, displayByBio, memberNewsMatchOptions).ok) continue;
     if (!isPoliticallyRelevant(title, description)) continue;
 
     const outlet = outletForArticleUrl(link) ?? defaultOutlet;
@@ -400,7 +403,7 @@ function filterQualifiedNewsItems(
   leg: LegislatorRow,
 ): NewsItem[] {
   return items.filter((item) =>
-    qualifiesMemberNewsItem(item.headline, item.summary ?? '', leg, displayByBio).ok,
+    qualifiesMemberNewsItem(item.headline, item.summary ?? '', leg, displayByBio, memberNewsMatchOptions).ok,
   );
 }
 
@@ -456,6 +459,9 @@ async function main(): Promise<void> {
 
   const legs = (JSON.parse(await readFile(legislatorsFile, 'utf8')) as { legislators: LegislatorRow[] })
     .legislators;
+  memberNewsMatchOptions = {
+    sameChamberLastNameCounts: buildSameChamberLastNameCounts(legs),
+  };
 
   let checkpoint: Record<string, { status: 'ok' | 'fetch-failed'; count: number }> = {};
   try {
@@ -547,7 +553,7 @@ async function main(): Promise<void> {
         .map((article, idx) => gdeltArticleToNewsItem(article, bioguideId, idx))
         .filter((item): item is NewsItem => item !== null)
         .filter((item) =>
-          qualifiesMemberNewsItem(item.headline, item.summary ?? '', leg, displayByBio).ok,
+          qualifiesMemberNewsItem(item.headline, item.summary ?? '', leg, displayByBio, memberNewsMatchOptions).ok,
         );
       if (gdeltItems.length > 0) {
         console.log(`  ${bioguideId}: GDELT supplement ${gdeltItems.length} approved article(s)`);
@@ -559,7 +565,9 @@ async function main(): Promise<void> {
     }
 
     let newsApiItems: NewsItem[] = [];
-    const newsApiResult = await fetchNewsApiArticlesForMember(leg, projectRoot);
+    const newsApiResult = await fetchNewsApiArticlesForMember(leg, projectRoot, {
+      matchOptions: memberNewsMatchOptions,
+    });
     if (!newsApiResult.skipped && newsApiResult.items.length > 0) {
       newsApiItems = newsApiResult.items;
       console.log(`  ${bioguideId}: NewsAPI supplement ${newsApiItems.length} article(s)`);
@@ -567,7 +575,9 @@ async function main(): Promise<void> {
       console.warn(`  ${bioguideId}: NewsAPI supplement skipped — ${newsApiResult.error}`);
     }
 
-    const topicResult = await fetchMemberTopicRssArticles(leg, displayByBio);
+    const topicResult = await fetchMemberTopicRssArticles(leg, displayByBio, {
+      matchOptions: memberNewsMatchOptions,
+    });
     const topicItems = topicResult.items;
     if (topicItems.length > 0) {
       console.log(`  ${bioguideId}: topic/tag RSS supplement ${topicItems.length} article(s)`);

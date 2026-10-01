@@ -14,6 +14,7 @@ import type { NewsItem } from '../../lib/types';
 import {
   matchesMemberInText,
   memberNewsPrimaryName,
+  type MemberNewsMatchOptions,
   type LegislatorNewsRow,
 } from './memberNewsMatching';
 import { qualifiesMemberNewsItem } from './memberNewsQualification';
@@ -134,6 +135,7 @@ function toNewsItem(
 export async function fetchMemberTopicRssArticles(
   leg: LegislatorNewsRow & { state: string },
   displayByBio: Map<string, { name: string; firstName: string; lastName: string }>,
+  opts?: { matchOptions?: MemberNewsMatchOptions },
 ): Promise<{ items: NewsItem[]; feedsAttempted: number; feedFailures: string[] }> {
   const primaryName = memberNewsPrimaryName(leg, displayByBio);
   const slug = memberNewsTopicSlug(primaryName);
@@ -163,8 +165,8 @@ export async function fetchMemberTopicRssArticles(
         .trim();
       const date = formatPubDate(raw.pubDate);
       if (!date || !isAllowedNewsArticleUrl(link)) continue;
-      if (!matchesMemberInText(`${title} ${description}`, leg, displayByBio)) continue;
-      const qualify = qualifiesMemberNewsItem(title, description, leg, displayByBio);
+      if (!matchesMemberInText(`${title} ${description}`, leg, displayByBio, opts?.matchOptions)) continue;
+      const qualify = qualifiesMemberNewsItem(title, description, leg, displayByBio, opts?.matchOptions);
       if (!qualify.ok) continue;
       if (!isTopicRelevant(title, description)) continue;
       if (seen.has(link)) continue;

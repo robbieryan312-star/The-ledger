@@ -4,7 +4,9 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
+  MEMBER_NEWS_MATCH_KNOWN_BAD_AMBIGUOUS_HONORIFIC,
   MEMBER_NEWS_MATCH_KNOWN_BAD_BARE_SURNAME,
+  MEMBER_NEWS_MATCH_KNOWN_GOOD_AMBIGUOUS_FULL_NAME,
   MEMBER_NEWS_MATCH_KNOWN_GOOD_FULL_NAME,
   MEMBER_NEWS_MATCH_KNOWN_GOOD_HONORIFIC,
   MEMBER_NEWS_MATCH_SANDERS_LEG,
@@ -13,7 +15,11 @@ import {
   MEMBER_NEWS_QUALIFY_KNOWN_BAD_RELEASER_NO_QUOTE,
   MEMBER_NEWS_QUALIFY_KNOWN_GOOD_DIRECT_QUOTE,
 } from '../../lib/data/__fixtures__/memberNewsMatching.fixture';
-import { matchesMemberInText, type LegislatorNewsRow } from '../lib/memberNewsMatching';
+import {
+  buildSameChamberLastNameCounts,
+  matchesMemberInText,
+  type LegislatorNewsRow,
+} from '../lib/memberNewsMatching';
 import { qualifiesMemberNewsItem } from '../lib/memberNewsQualification';
 
 const emptyDisplay = new Map<string, { name: string; firstName: string; lastName: string }>();
@@ -25,6 +31,33 @@ const displayWithBernie = new Map([
 ]);
 
 const leg = MEMBER_NEWS_MATCH_SANDERS_LEG as LegislatorNewsRow;
+const rickScottLeg: LegislatorNewsRow = {
+  bioguideId: 'S001217',
+  name: 'Rick Scott',
+  firstName: 'Rick',
+  lastName: 'Scott',
+  chamber: 'senate',
+};
+const timScottLeg: LegislatorNewsRow = {
+  bioguideId: 'S001184',
+  name: 'Tim Scott',
+  firstName: 'Tim',
+  lastName: 'Scott',
+  chamber: 'senate',
+};
+const homonymDisplay = new Map([
+  [
+    'S001217',
+    { name: 'Rick Scott', firstName: 'Rick', lastName: 'Scott' },
+  ],
+  [
+    'S001184',
+    { name: 'Tim Scott', firstName: 'Tim', lastName: 'Scott' },
+  ],
+]);
+const homonymMatchOptions = {
+  sameChamberLastNameCounts: buildSameChamberLastNameCounts([rickScottLeg, timScottLeg]),
+};
 
 test('fixture: bare surname "Sanders" alone does NOT match', () => {
   const hit = matchesMemberInText(
@@ -52,6 +85,55 @@ test('fixture: "Bernie Sanders" full name matches', () => {
   );
   assert.ok(hit, 'expected full-name match');
   assert.match(hit, /Sanders/i);
+});
+
+test('fixture: ambiguous honorific+lastname does NOT match same-chamber homonyms', () => {
+  const rickHit = matchesMemberInText(
+    MEMBER_NEWS_MATCH_KNOWN_BAD_AMBIGUOUS_HONORIFIC.text,
+    rickScottLeg,
+    homonymDisplay,
+    homonymMatchOptions,
+  );
+  const timHit = matchesMemberInText(
+    MEMBER_NEWS_MATCH_KNOWN_BAD_AMBIGUOUS_HONORIFIC.text,
+    timScottLeg,
+    homonymDisplay,
+    homonymMatchOptions,
+  );
+
+  assert.equal(rickHit, MEMBER_NEWS_MATCH_KNOWN_BAD_AMBIGUOUS_HONORIFIC.expectedMatch);
+  assert.equal(timHit, MEMBER_NEWS_MATCH_KNOWN_BAD_AMBIGUOUS_HONORIFIC.expectedMatch);
+});
+
+test('fixture: full name still matches a same-chamber homonym', () => {
+  const rickHit = matchesMemberInText(
+    MEMBER_NEWS_MATCH_KNOWN_GOOD_AMBIGUOUS_FULL_NAME.text,
+    rickScottLeg,
+    homonymDisplay,
+    homonymMatchOptions,
+  );
+  const timHit = matchesMemberInText(
+    MEMBER_NEWS_MATCH_KNOWN_GOOD_AMBIGUOUS_FULL_NAME.text,
+    timScottLeg,
+    homonymDisplay,
+    homonymMatchOptions,
+  );
+
+  assert.match(rickHit ?? '', /Rick Scott/i);
+  assert.equal(timHit, null);
+});
+
+test('fixture: ambiguous honorific headline does NOT qualify as profile news for homonyms', () => {
+  const q = qualifiesMemberNewsItem(
+    MEMBER_NEWS_MATCH_KNOWN_BAD_AMBIGUOUS_HONORIFIC.text,
+    '',
+    rickScottLeg,
+    homonymDisplay,
+    homonymMatchOptions,
+  );
+
+  assert.equal(q.ok, false);
+  assert.equal(q.reason, 'no-member-match');
 });
 
 test('Senator Sanders honorific form matches', () => {

@@ -13,9 +13,12 @@ import {
 import { leadSummary } from '../../lib/data/displaySummary';
 import type { NewsItem } from '../../lib/types';
 import {
+  canUseHonorificLastName,
   loadMemberNewsDisplayMap,
   matchesMemberInText,
+  memberNewsHonorificLabel,
   memberNewsPrimaryName,
+  type MemberNewsMatchOptions,
   type LegislatorNewsRow,
 } from './memberNewsMatching';
 import { qualifiesMemberNewsItem } from './memberNewsQualification';
@@ -87,7 +90,7 @@ export function newsApiArticleToNewsItem(
 export async function fetchNewsApiArticlesForMember(
   leg: LegislatorNewsRow & { state: string },
   projectRoot: string,
-  opts?: { pageSize?: number },
+  opts?: { pageSize?: number; matchOptions?: MemberNewsMatchOptions },
 ): Promise<{ items: NewsItem[]; skipped: boolean; error?: string }> {
   config({ path: path.join(projectRoot, '.env.local') });
   const key = process.env.NEWSAPI_KEY?.trim();
@@ -99,7 +102,12 @@ export async function fetchNewsApiArticlesForMember(
   const primaryName = memberNewsPrimaryName(leg, displayByBio);
   const pageSize = opts?.pageSize ?? 50;
   const domains = NEWSAPI_APPROVED_DOMAINS.join(',');
-  const q = encodeURIComponent(`${primaryName} OR "Sen. ${leg.lastName ?? 'Sanders'}"`);
+  const queryParts = [`"${primaryName}"`];
+  const honorific = memberNewsHonorificLabel(leg);
+  if (honorific && canUseHonorificLastName(leg, opts?.matchOptions)) {
+    queryParts.push(`"${honorific}"`);
+  }
+  const q = encodeURIComponent(queryParts.join(' OR '));
   const url =
     `https://newsapi.org/v2/everything?q=${q}&domains=${domains}` +
     `&language=en&sortBy=publishedAt&pageSize=${pageSize}&apiKey=${encodeURIComponent(key)}`;
@@ -124,9 +132,9 @@ export async function fetchNewsApiArticlesForMember(
       const title = raw.title?.trim() ?? '';
       const description = raw.description?.trim() ?? '';
       const blob = `${title} ${description}`;
-      if (!matchesMemberInText(blob, leg, displayByBio)) continue;
+      if (!matchesMemberInText(blob, leg, displayByBio, opts?.matchOptions)) continue;
       // Same subject/quote gate as RSS + topic feeds (CDC releaser-only = reject).
-      if (!qualifiesMemberNewsItem(title, description, leg, displayByBio).ok) continue;
+      if (!qualifiesMemberNewsItem(title, description, leg, displayByBio, opts?.matchOptions).ok) continue;
       const item = newsApiArticleToNewsItem(raw, leg.bioguideId, idx);
       if (!item || seen.has(item.url ?? '')) continue;
       seen.add(item.url ?? '');
