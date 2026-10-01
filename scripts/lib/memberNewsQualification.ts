@@ -6,8 +6,11 @@
  * Multi-politician reaction pieces qualify only with a true direct member quote (not Trump-only quotes).
  */
 import {
+  canUseHonorificLastName,
   matchesMemberInText,
+  memberNewsHonorificLabel,
   memberNewsMatchNames,
+  type MemberNewsMatchOptions,
   type LegislatorNewsRow,
 } from './memberNewsMatching';
 
@@ -27,6 +30,22 @@ function nameVariants(
   return memberNewsMatchNames(leg, displayByBio);
 }
 
+function honorificVariants(
+  leg: LegislatorNewsRow,
+  opts?: MemberNewsMatchOptions,
+): string[] {
+  if (!canUseHonorificLastName(leg, opts)) return [];
+  const label = memberNewsHonorificLabel(leg);
+  if (!label) return [];
+  const ln = leg.lastName?.trim() || label.replace(/^(Sen\.|Rep\.)\s+/i, '');
+  const fullHonorific = label.startsWith('Sen.') ? `Senator ${ln}` : `Representative ${ln}`;
+  return [
+    label,
+    label.replace(/^Sen\./, 'Senator').replace(/^Rep\./, 'Representative'),
+    fullHonorific,
+  ].filter((value, index, all) => all.indexOf(value) === index);
+}
+
 /**
  * Comparison-only framing: member used as analogy/foil, not as subject or quote source.
  * Frozen bad example: Platner "Is he Bernie Sanders or Donald Trump?"
@@ -35,6 +54,7 @@ export function isComparisonOnlyMention(
   text: string,
   leg: LegislatorNewsRow,
   displayByBio: NewsDisplayMap,
+  opts?: MemberNewsMatchOptions,
 ): boolean {
   const names = nameVariants(leg, displayByBio);
   if (names.length === 0) return false;
@@ -58,9 +78,9 @@ export function isComparisonOnlyMention(
   const hasComparison = comparisonRes.some((re) => re.test(text));
   if (!hasComparison) return false;
   // If they are also directly quoted, not comparison-only.
-  if (hasDirectMemberQuote(text, leg, displayByBio)) return false;
+  if (hasDirectMemberQuote(text, leg, displayByBio, opts)) return false;
   // If headline treats them as grammatical subject of an action, not comparison-only.
-  if (isMemberHeadlineSubject(text.split('\n')[0] ?? text, leg, displayByBio)) {
+  if (isMemberHeadlineSubject(text.split('\n')[0] ?? text, leg, displayByBio, opts)) {
     return false;
   }
   return true;
@@ -73,15 +93,10 @@ export function hasDirectMemberQuote(
   text: string,
   leg: LegislatorNewsRow,
   displayByBio: NewsDisplayMap,
+  opts?: MemberNewsMatchOptions,
 ): boolean {
   const names = nameVariants(leg, displayByBio);
-  const ln = leg.lastName?.trim() || '';
-  const labels = [
-    ...names,
-    ...(ln
-      ? [`Sen. ${ln}`, `Senator ${ln}`, `Rep. ${ln}`, `Representative ${ln}`]
-      : []),
-  ];
+  const labels = [...names, ...honorificVariants(leg, opts)];
   for (const label of labels) {
     const e = escapeRe(label);
     // Name said/says/called/wrote … "quote"
@@ -114,20 +129,18 @@ export function isMemberHeadlineSubject(
   headline: string,
   leg: LegislatorNewsRow,
   displayByBio: NewsDisplayMap,
+  opts?: MemberNewsMatchOptions,
 ): boolean {
   if (/^\s*Is he\b/i.test(headline.trim())) return false;
   const names = nameVariants(leg, displayByBio);
   const ln = leg.lastName?.trim() || '';
-  const labels = [
-    ...names,
-    ...(ln ? [`Sen. ${ln}`, `Senator ${ln}`] : []),
-  ];
+  const labels = [...names, ...honorificVariants(leg, opts)];
   // Never treat "among those (responding)" as a subject-action cue (owner 2026-07-21).
   const action =
     '(?:calls?|called|backs?|backed|urges?|urged|warns?|warned|rails?|wants?|introduces?|introduced|proposes?|proposed|fails?|failed|effort|plan|says?|said|reacts?)';
 
   // Bare last-name after a lead quote: "'…': Sanders warns …" (before full-name gate)
-  if (ln) {
+  if (ln && canUseHonorificLastName(leg, opts)) {
     const e = escapeRe(ln);
     const leadQuoteThenLn = new RegExp(
       `^[\\s]*["'\u201c\u2018][^"'\u201d\u2019]{3,}["'\u201d\u2019]\\s*:\\s*${e}\\b`,
@@ -141,7 +154,7 @@ export function isMemberHeadlineSubject(
     }
   }
 
-  if (!matchesMemberInText(headline, leg, displayByBio)) return false;
+  if (!matchesMemberInText(headline, leg, displayByBio, opts)) return false;
   for (const label of labels) {
     const e = escapeRe(label);
     if (new RegExp(`\\b${e}\\b[^.]{0,40}\\b${action}\\b`, 'i').test(headline)) {
@@ -191,22 +204,23 @@ export function qualifiesMemberNewsItem(
   bodyOrSummary: string,
   leg: LegislatorNewsRow,
   displayByBio: NewsDisplayMap,
+  opts?: MemberNewsMatchOptions,
 ): { ok: boolean; reason: string } {
   const combined = `${headline}\n${bodyOrSummary}`;
-  if (isComparisonOnlyMention(combined, leg, displayByBio)) {
+  if (isComparisonOnlyMention(combined, leg, displayByBio, opts)) {
     return { ok: false, reason: 'comparison-only-mention' };
   }
   if (isAmongThoseRespondingMention(combined, leg, displayByBio)) {
     return { ok: false, reason: 'among-those-responding-mention' };
   }
-  if (hasDirectMemberQuote(combined, leg, displayByBio)) {
+  if (hasDirectMemberQuote(combined, leg, displayByBio, opts)) {
     return { ok: true, reason: 'direct-quote' };
   }
-  if (isMemberHeadlineSubject(headline, leg, displayByBio)) {
+  if (isMemberHeadlineSubject(headline, leg, displayByBio, opts)) {
     return { ok: true, reason: 'headline-subject' };
   }
   // Body names them only as releaser/passerby without quote or subject headline
-  if (matchesMemberInText(combined, leg, displayByBio)) {
+  if (matchesMemberInText(combined, leg, displayByBio, opts)) {
     return { ok: false, reason: 'mention-without-subject-or-quote' };
   }
   return { ok: false, reason: 'no-member-match' };

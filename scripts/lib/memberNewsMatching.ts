@@ -15,6 +15,10 @@ export interface LegislatorNewsRow {
   chamber: string;
 }
 
+export interface MemberNewsMatchOptions {
+  sameChamberLastNameCounts?: Map<string, number>;
+}
+
 function lastNameOf(fullName: string): string {
   const parts = fullName.trim().split(/\s+/);
   return parts[parts.length - 1].replace(/[^A-Za-z'-]/g, '');
@@ -22,6 +26,42 @@ function lastNameOf(fullName: string): string {
 
 function escapeRe(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function normalizedLastName(leg: LegislatorNewsRow): string {
+  return (leg.lastName?.trim() || lastNameOf(leg.name)).toLowerCase();
+}
+
+function normalizedChamber(leg: LegislatorNewsRow): string {
+  return leg.chamber.trim().toLowerCase();
+}
+
+export function sameChamberLastNameKey(leg: LegislatorNewsRow): string {
+  return `${normalizedChamber(leg)}|${normalizedLastName(leg)}`;
+}
+
+export function buildSameChamberLastNameCounts(legs: LegislatorNewsRow[]): Map<string, number> {
+  const counts = new Map<string, number>();
+  for (const leg of legs) {
+    const key = sameChamberLastNameKey(leg);
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+  }
+  return counts;
+}
+
+export function canUseHonorificLastName(
+  leg: LegislatorNewsRow,
+  opts?: MemberNewsMatchOptions,
+): boolean {
+  const counts = opts?.sameChamberLastNameCounts;
+  if (!counts) return true;
+  return (counts.get(sameChamberLastNameKey(leg)) ?? 1) <= 1;
+}
+
+export function memberNewsHonorificLabel(leg: LegislatorNewsRow): string | null {
+  const ln = leg.lastName?.trim() || lastNameOf(leg.name);
+  if (!ln) return null;
+  return normalizedChamber(leg) === 'senate' ? `Sen. ${ln}` : `Rep. ${ln}`;
 }
 
 /** Public + legal FULL name strings to match in article text (deduped). Never surname-only. */
@@ -76,10 +116,11 @@ export function matchesMemberInText(
   text: string,
   leg: LegislatorNewsRow,
   displayByBio: Map<string, { name: string; firstName: string; lastName: string }>,
+  opts?: MemberNewsMatchOptions,
 ): string | null {
   const ln = leg.lastName?.trim() || lastNameOf(leg.name);
   if (!ln) return null;
-  const honorific = leg.chamber === 'senate' ? `Sen. ${ln}` : `Rep. ${ln}`;
+  const honorific = memberNewsHonorificLabel(leg);
 
   for (const name of memberNewsMatchNames(leg, displayByBio)) {
     const escaped = escapeRe(name);
@@ -87,6 +128,8 @@ export function matchesMemberInText(
       return name;
     }
   }
+
+  if (!honorific || !canUseHonorificLastName(leg, opts)) return null;
 
   const honorificPatterns = [
     new RegExp(`\\bSen\\.\\s+${escapeRe(ln)}\\b`, 'i'),

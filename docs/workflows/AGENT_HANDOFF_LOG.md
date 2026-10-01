@@ -10,6 +10,69 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation PR #128 (PASS with known external build blocker)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS for scoped fixes · STAGE THREE required  
+**Current state:** `cursor/critical-bug-management-7376` · code tip `932415a` · PR https://github.com/robbieryan312-star/The-ledger/pull/128 · tree dirty only for this handoff-log entry before docs commit · build status: targeted guards PASS; full `npm run build` FAILS on pre-existing tracked PR #99 guard defect.
+
+### Objective
+Inspect recent commits for high-severity correctness bugs, avoid duplicate open-memory PRs, and fix only proven critical issues.
+
+### Verdict / outcome
+**PASS (scoped)** — PR #128 fixes two untracked critical paths: ambiguous honorific+surname news matching across same-chamber homonyms, and per-topic Said→Did link loss when fresh topic input is absent. Full build remains blocked by the already-memory-tracked PR #99 dead-source-token guard failure in `.claude/rules/*`, unrelated to PR #128.
+
+### Commits
+- `4321692` — fix(news): disambiguate honorific surname matches
+- `932415a` — fix(topic-positions): preserve links without fresh topic input
+- Handoff-log docs commit follows this entry.
+
+### Commands run (this session)
+- `gh pr list --repo robbieryan312-star/The-ledger --state all --limit 150 --json number,state,mergedAt,closedAt,url,title --jq '.[] | [.number,.state,(.mergedAt // ""),(.closedAt // ""),.url,.title] | @tsv'` → exit 0; all memory-tracked PRs still open, no cleanup.
+- `git log origin/main --since='2026-07-25' --name-status --pretty=format:'%h %ad %s' --date=short -- . ':!docs/workflows/AGENT_HANDOFF_LOG.md' ':!docs/**' ':!.claude/**' ':!.cursor/rules/**' | awk 'NF{print}'` → exit 0; recent changed surfaces inspected.
+- `npx tsx --test scripts/__tests__/memberNewsMatching.test.ts scripts/__tests__/topicPositionsPreserve.test.ts 2>&1 | tee /tmp/ledger-critical-bug-targeted-tests.log` → exit 0; 15/15 pass.
+- `set -o pipefail; npm run test:news-registry 2>&1 | tee /tmp/ledger-test-news-registry-pipefail.log` → exit 0; 17/17 pass.
+- `set -o pipefail; npm run test:topic-positions-bundle 2>&1 | tee /tmp/ledger-test-topic-positions-bundle-pipefail.log` → exit 0; 9/9 pass.
+- `set -o pipefail; npm run test:typecheck 2>&1 | tee /tmp/ledger-test-typecheck-pipefail.log` → exit 0.
+- `set -o pipefail; npm run build 2>&1 | tee /tmp/ledger-critical-bug-build-pipefail.log` → exit 1; known unrelated PR #99 failure: `approvedSourceMatrixGuard` reports dead-source token in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`.
+- `git push -u origin cursor/critical-bug-management-7376` → exit 0.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/lib/memberNewsMatching.ts` | modified | Added same-chamber last-name count support and disabled honorific-only matching for homonym surnames. |
+| `scripts/lib/memberNewsQualification.ts` | modified | Threaded homonym disambiguation through direct-quote and headline-subject qualification. |
+| `scripts/sync-news-rss.ts` | modified | Builds roster-wide homonym counts and applies them to RSS, GDELT requalification, NewsAPI, and topic RSS. |
+| `scripts/lib/newsApiMemberNews.ts` | modified | Uses disambiguation options and only queries honorific+surname when unique. |
+| `scripts/lib/memberTopicNewsRss.ts` | modified | Applies disambiguation options to topic RSS matching/qualification. |
+| `lib/data/__fixtures__/memberNewsMatching.fixture.ts` | modified | Added append-only ambiguous Scott bad/good fixtures. |
+| `scripts/__tests__/memberNewsMatching.test.ts` | modified | Added homonym matcher/qualification regression tests. |
+| `package.json` | modified | Build-gates member news matching under `test:news-registry`. |
+| `scripts/lib/topicPositionsPreserve.ts` | modified | Preserves existing links when fresh per-topic input is `undefined`; explicit `[]` still clears. |
+| `scripts/__tests__/topicPositionsPreserve.test.ts` | modified | Added missing-fresh-topic preservation regression test. |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | This session handoff entry. |
+
+### Acceptance evidence
+- PR: https://github.com/robbieryan312-star/The-ledger/pull/128
+- Targeted logs: `/tmp/ledger-critical-bug-targeted-tests.log`, `/tmp/ledger-test-news-registry-pipefail.log`, `/tmp/ledger-test-topic-positions-bundle-pipefail.log`, `/tmp/ledger-test-typecheck-pipefail.log`
+- Build blocker log: `/tmp/ledger-critical-bug-build-pipefail.log` (`not ok 11 - criterion (A): no contiguous dead-source token outside history exempts`) — existing memory entry PR #99 remains open.
+- Automation memory updated with PR #128 entries dated 2026-10-01.
+
+### Open / next
+- Claude STAGE THREE review PR #128.
+- Do not merge PR #128 without explicit Claude APPROVAL on the exact tip SHA.
+- PR #99 remains the known build blocker for full `npm run build`.
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-management-7376` · code tip `932415a` (+ this handoff commit) · https://github.com/robbieryan312-star/The-ledger/pull/128  
+**Verdict:** PASS for scoped fixes; STOP for Claude STAGE THREE before merge.  
+**What changed:** (1) news matching rejects ambiguous same-chamber honorific+surname matches while preserving full-name homonym matches; (2) topic-position refresh preserves prior Said→Did links when no fresh topic entry was produced.  
+**Evidence:** `test:news-registry` exit 0 (17/17); `test:topic-positions-bundle` exit 0 (9/9); `test:typecheck` exit 0; focused `npx tsx --test ...` exit 0 (15/15). `npm run build` with pipefail exits 1 only on existing PR #99 dead-source-token guard failure in `.claude/rules/*`.  
+**Open gates:** APPROVE/REJECT PR #128 exact tip after reviewing the code and tests; PR #99 still required to restore full build green.  
+**Repeat-work flag:** New critical bugs, not duplicate memory entries before this run.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
