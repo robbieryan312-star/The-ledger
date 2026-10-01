@@ -37,3 +37,11 @@ test('topic sync can refresh Said-Did links to empty when member vote row is ava
   assert.equal(canRefresh, true);
   assert.deepEqual(merged, []);
 });
+
+test('topic sync preserves Said-Did links when a refreshed topic has no fresh entry', () => {
+  const canRefresh = canRefreshSaidDidLinks(true, new Map([['P000197', []]]), 'P000197');
+  const merged = mergeSaidDidLinksForRefresh([PRIOR_LINK], undefined, canRefresh);
+
+  assert.equal(canRefresh, true);
+  assert.deepEqual(merged, [PRIOR_LINK]);
+});

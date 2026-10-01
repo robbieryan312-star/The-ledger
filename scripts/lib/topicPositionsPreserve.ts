@@ -12,7 +12,7 @@ export function mergeSaidDidLinksForRefresh<T>(
   canRefresh: boolean,
 ): T[] {
   if (canRefresh) {
-    return freshLinks ?? [];
+    return freshLinks ?? existingLinks ?? [];
   }
   return existingLinks ?? [];
 }
