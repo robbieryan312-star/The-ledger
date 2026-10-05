@@ -10,6 +10,51 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-10-05 — CRITICAL BUG AUTOMATION SCAN
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new critical bug PR opened; known open PR #99 still failing guard)  
+**Current state:** `cursor/critical-bug-management-437b` · HEAD `763dc67` before this docs commit · tree clean before handoff edit · build not run (read-only audit; targeted guards below)
+
+### Objective
+Inspect recent commits for high-severity correctness bugs, avoid duplicate reports using automation `MEMORIES.md`, and clean stale memory entries when applicable.
+
+### Verdict / outcome
+No new distinct critical bug found. All memory-tracked PRs checked in GitHub remain **OPEN**, so no memory cleanup was required and no duplicate PR was opened. The only failing guard observed is the already tracked PR #99 defect: retired-source token `votesmart` appears in active Claude rule files and trips `approvedSourceMatrixGuard`.
+
+### Commits
+- Pending: this handoff-log docs commit
+
+### Commands run (this session)
+- `pwd && git status --short && git branch --show-current && git log --oneline --decorate -n 25 && (test -f /tmp/cursor/async-install/install-user.status && printf 'install-status=' && cat /tmp/cursor/async-install/install-user.status || (test -f /tmp/cursor/async-install/install-user.log && echo 'install-log-present-no-status' || echo 'no-async-install-files'))` → exit 0
+- `gh pr list --repo robbieryan312-star/The-ledger --state all --limit 150 --json number,url,state,mergedAt,closedAt,headRefName,title | tee /tmp/ledger-pr-states.json` → exit 0
+- `node - <<'NODE' ... tracked PR state summary ... NODE` → exit 0; PRs #28, #29, #30, #31, #40, #99-#128 all OPEN
+- `git show --stat --oneline --find-renames db23b39 cc916da cf4bcfd d36f4a9 18b5d3e 09f14b4 377787d a42e0cb 6d6057b 763dc67` → exit 0
+- `npm run test:source-integrity && npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/approvedSourceMatrixGuard.test.ts` → exit 1; known PR #99 guard failure
+- `npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/sourceIntegrity.test.ts` → exit 0
+- `git log --since='14 days ago' --oneline --decorate --stat && git diff --name-only HEAD~25..HEAD | sort | tee /tmp/ledger-recent-files.txt` → exit 0
+- `mkdir -p /opt/cursor/artifacts && cp ...` → exit 0; saved audit artifacts
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added critical bug automation scan evidence and Claude confrontation block |
+
+### Acceptance evidence
+- Duplicate avoidance: `/opt/cursor/artifacts/critical-bug-scan-pr-states.json` shows tracked memory PRs remain open.
+- Known defect evidence: `/opt/cursor/artifacts/critical-bug-scan-source-integrity-known-pr99-failure.log` shows `approvedSourceMatrixGuard` failing on `votesmart` in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`.
+- Targeted pass evidence: `/opt/cursor/artifacts/critical-bug-scan-targeted-guards-pass.log` shows alleged-policy, news-corroboration, provenance-outlet, and source-integrity targeted guards passed when excluding the known PR #99 failure.
+- Recent file list: `/opt/cursor/artifacts/critical-bug-scan-recent-files.txt`.
+
+### Open / next
+- Existing PR #99 remains the active fix for the known guard failure; do not duplicate.
+- No new PR opened from this scan.
+
+## Confront Claude — paste to Claude Code
+
+**Critical bug automation scan:** branch `cursor/critical-bug-management-437b` · HEAD `763dc67` before docs handoff commit · PR none opened. **Verdict:** PASS for “no new distinct critical bug”; known PR #99 still fails `test:source-integrity` because active Claude rule files contain `votesmart`. Evidence: targeted guards excluding that known failure passed (`/opt/cursor/artifacts/critical-bug-scan-targeted-guards-pass.log`); PR states show all memory-tracked PRs remain OPEN (`/opt/cursor/artifacts/critical-bug-scan-pr-states.json`). **Open gate:** Claude should not treat this as an approval of PR #99; it remains awaiting review/fix.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
