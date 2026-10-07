@@ -10,6 +10,55 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation scan (PASS)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (no new critical bug found; no PR opened)  
+**Current state:** `cursor/critical-bug-management-7396` · HEAD `763dc67` at scan start · tree clean before handoff-log update · build not run (full `test:source-integrity` blocked by known open PR #99)
+
+### Objective
+Inspect recent commits for high-severity correctness bugs and avoid duplicate reports for bugs already tracked in automation memory.
+
+### Verdict / outcome
+PASS — reconciled automation memory (#28, #29, #30, #31, #40, #99–#128 all still open), inspected `c08be19..763dc67`, and found no distinct new critical data-loss/crash/security/significant-breakage bug.
+
+### Commits
+- (this docs commit) — handoff log for scheduled critical-bug scan
+
+### Commands run (this session)
+- `pwd && git status --short --branch && git remote -v && git log --oneline -n 20` → exit 0
+- `if [ -f /tmp/cursor/async-install/install-user.status ]; then printf 'install status: '; cat /tmp/cursor/async-install/install-user.status; elif [ -f /tmp/cursor/async-install/install-user.log ]; then pgrep -af '/tmp/cursor/async-install|install-user' || true; echo 'install log exists'; else echo 'no async install files'; fi; if [ -f /tmp/cursor/start-user/start-user.status ]; then printf 'start status: '; cat /tmp/cursor/start-user/start-user.status; elif [ -f /tmp/cursor/start-user/start-user.log ]; then echo 'start log exists/running-or-detached'; else echo 'no start-user files'; fi` → exit 0 (`no async install files`; `no start-user files`)
+- `for n in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128; do gh pr view "$n" --json number,state,mergedAt,closedAt,headRefName,title,url --template '{{.number}}|{{.state}}|{{.mergedAt}}|{{.closedAt}}|{{.headRefName}}|{{.url}}|{{.title}}{{"\n"}}'; done` → exit 0 (all tracked PRs still `OPEN`)
+- `git fetch origin main --prune && echo 'HEAD:' $(git rev-parse --short HEAD) && echo 'origin/main:' $(git rev-parse --short origin/main) && git log --oneline --decorate -n 30 origin/main` → exit 0 (`HEAD`/`origin/main` `763dc67`)
+- `git show --stat --oneline --find-renames c08be19..763dc67 && printf '\nCODE DIFF NAMES\n' && git diff --name-only c08be19..763dc67 -- ':!docs/**' ':!.claude/**' ':!.cursor/**'` → exit 0
+- `git show --stat --oneline --find-renames c08be19..9ae85ea && printf '\nCOMMITS\n' && git log --oneline c08be19..9ae85ea` → exit 0
+- `git show --stat --oneline --find-renames c08be19..a42e0cb` → exit 0
+- `git diff c08be19..763dc67 -- lib/data/allegedPolicy.ts lib/data/newsCorroboration.ts lib/data/buildSaidDidDiffs.ts components/politicians/ProfileRecordByTopicPanel.tsx components/politicians/ControversySection.tsx scripts/lib/approvedMediaQuotes.ts` → exit 0
+- `npm run test:source-integrity` → exit 1 (known duplicate: PR #99 dead-source token in `.claude/rules/*`)
+- `npm run test:docs-consistency` → exit 0 (19 pass)
+- `npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/sourceIntegrity.test.ts` → exit 0 (74 pass)
+- `git status --short && git rev-parse --short HEAD && git log -1 --oneline` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Logged scheduled critical-bug scan, validation evidence, and known duplicate guard failure |
+
+### Acceptance evidence
+- Automation memory read version `39e4cc9635a16e29`; all tracked bug PRs checked via `gh pr view` and still `OPEN`, so no memory cleanup was due.
+- Recent main span: `c08be19..763dc67`; secondary explore audit returned “no new critical bug found” and classified concrete candidates as duplicates of open PRs #99–#128.
+- Focused changed-area guards passed: `npx tsx --test ...` → 74 tests, 74 pass, 0 fail.
+- Full source-integrity failure is already tracked by memory PR #99: `approvedSourceMatrixGuard` criterion A finds retired-source token in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`.
+
+### Open / next
+- Existing open PR #99 still awaits review for the full `test:source-integrity` failure; do not duplicate.
+- No new critical bug PR opened from this scan.
+
+## Confront Claude — paste to Claude Code
+
+**Critical bug scan:** branch `cursor/critical-bug-management-7396` · scan HEAD `763dc67` · no new critical bug found · no PR opened. Evidence: all memory PRs #28/#29/#30/#31/#40/#99–#128 still OPEN; `c08be19..763dc67` inspected; focused changed-area guards `npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/sourceIntegrity.test.ts` pass 74/74. Known open gate: `npm run test:source-integrity` fails only on PR #99 duplicate (`approvedSourceMatrixGuard` dead-source token in `.claude/rules/*`). No merge/approval action needed for this scan.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
