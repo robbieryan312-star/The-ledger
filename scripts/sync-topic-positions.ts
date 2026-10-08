@@ -21,9 +21,10 @@ import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
 import { fetchApprovedMediaStatementsForMember } from './lib/approvedMediaQuotes';
 import { isProceduralCrecText } from './lib/crecProceduralFilter';
 import { crecFloorSpeechOpenerRegex } from './lib/crecOpener';
-import { canRefreshSaidDidLinks, mergeSaidDidLinksForRefresh } from './lib/topicPositionsPreserve';
+import { canRefreshSaidDidLinks, mergeTopicSyncSaidDidLinks } from './lib/topicPositionsPreserve';
 import { resolveGovInfoApiKey } from './lib/govinfoApiKey';
 import { isCeremonialCrecRemark } from '../lib/ceremonialCrecFilter';
+import { buildCrecSaidDidLinks } from '../lib/data/saidDidVoteContext';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(projectRoot, 'lib', 'data', 'generated');
@@ -170,7 +171,7 @@ interface StatedPositionSourceEntry {
 }
 
 interface SaidDidLinkEntry {
-  topicId: string;
+  topicId?: string;
   statedPositionDate: string | null;
   voteDate: string;
   billTitle: string;
@@ -1059,6 +1060,15 @@ async function main(): Promise<void> {
         freshByTopic.set(bucket.id, { statements, saidDidLinks });
       }
     }
+    const crecSaidDidByTopic = buildCrecSaidDidLinks(
+      Object.fromEntries(
+        [...freshByTopic.entries()].map(([topicId, fresh]) => [
+          topicId,
+          { statements: fresh.statements },
+        ]),
+      ),
+      memberVotes,
+    );
 
     // Start from a clone of the prior entry so the platform layer is preserved exactly.
     const memberTopics: Record<string, TopicPositionData> = priorTopics ? structuredClone(priorTopics) : {};
@@ -1074,13 +1084,13 @@ async function main(): Promise<void> {
       if (existingKey) {
         const entry = memberTopics[existingKey];
         // Said→Did is deterministic from roll-call votes, but failed/missing vote input is not absence.
-        if (bucket.id !== 'legislation') {
-          entry.saidDidLinks = mergeSaidDidLinksForRefresh(
-            entry.saidDidLinks,
-            fresh?.saidDidLinks,
-            canRefreshMemberSaidDid,
-          );
-        }
+        // CREC catch-all (`legislation`) also needs overlap-based pairing; a topic-only filter has no topic to match.
+        entry.saidDidLinks = mergeTopicSyncSaidDidLinks(
+          entry.saidDidLinks,
+          fresh?.saidDidLinks,
+          crecSaidDidByTopic[bucket.id],
+          canRefreshMemberSaidDid,
+        );
         // Only overlay statements when CREC actually refreshed; never wipe on a failed fetch.
         if (crec.searchOk) {
           // FAILURE≠ABSENCE (§6): a re-fetch only sees the current search pool, so a genuine
@@ -1105,7 +1115,12 @@ async function main(): Promise<void> {
       } else if (fresh || freshPlatform?.length) {
         const entry: TopicPositionData = {
           statements: fresh?.statements ?? [],
-          saidDidLinks: fresh?.saidDidLinks ?? [],
+          saidDidLinks: mergeTopicSyncSaidDidLinks(
+            undefined,
+            fresh?.saidDidLinks,
+            crecSaidDidByTopic[bucket.id],
+            canRefreshMemberSaidDid,
+          ),
         };
         if (freshPlatform?.length) entry.platformPositions = freshPlatform;
         if (fresh?.statedPosition) {
