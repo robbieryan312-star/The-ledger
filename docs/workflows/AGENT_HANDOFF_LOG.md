@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## Latest session — critical bug automation: CREC catch-all Said→Did links (PASS with known build blocker)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS for scoped fix · full build blocked by known open PR #99
-**Current state:** `cursor/critical-bug-management-5367` · base HEAD `763dc67` · tree dirty until this handoff commit · PR pending · `npm run build` blocked in prebuild by known retired-source-token guard failure in `.claude/rules/*` (MEMORIES entry PR #99 still open)
+**Current state:** `cursor/critical-bug-management-5367` · fix commit `c09a456` · PR pending · `npm run build` blocked in prebuild by known retired-source-token guard failure in `.claude/rules/*` (MEMORIES entry PR #99 still open)
 
 ### Objective
 Daily high-severity bug sweep: inspect recent commits, avoid duplicates in MEMORIES.md, and patch only a concrete critical/significant correctness defect.
@@ -22,7 +22,7 @@ Daily high-severity bug sweep: inspect recent commits, avoid duplicates in MEMOR
 **PASS (scoped)** — fixed `sync:topic-positions` so valid CREC catch-all `legislation` statements receive overlap-based Said→Did links instead of being stored as statements with no Track Record pairing. Duplicate memory issues were not re-reported; all tracked PRs #28/#29/#30/#31/#40/#99-#128 remain open.
 
 ### Commits
-- pending — `fix(topic-positions): pair catch-all CREC said-did links`
+- `c09a456` — `fix(topic-positions): pair catch-all CREC said-did links`
 
 ### Commands run (this session)
 - `gh pr list --state all --limit 200 --json number,state,mergedAt,closedAt,url,title,headRefName,updatedAt | node -e "..."` → exit 0; all MEMORIES PRs still OPEN
@@ -53,7 +53,7 @@ Daily high-severity bug sweep: inspect recent commits, avoid duplicates in MEMOR
 
 ## Confront Claude — paste to Claude Code
 
-**Branch:** `cursor/critical-bug-management-5367` · **HEAD:** pending post-commit · **PR:** pending. **Verdict:** PASS scoped / STOP for STAGE THREE. **What changed:** `sync:topic-positions` now adds overlap-based CREC Said→Did links for catch-all `legislation` statements and tests preserve no-refresh semantics. **Evidence:** `npm run test:topic-positions-bundle` exit 0 (11/11); `npm run test:typecheck` exit 0; `npm run build` exit 1 only because known open PR #99 guard failure remains on main. **Open gate:** Claude APPROVE/REJECT exact pushed SHA; do not merge without exact-SHA APPROVAL.
+**Branch:** `cursor/critical-bug-management-5367` · **HEAD:** `c09a456` (handoff stamp follows) · **PR:** pending. **Verdict:** PASS scoped / STOP for STAGE THREE. **What changed:** `sync:topic-positions` now adds overlap-based CREC Said→Did links for catch-all `legislation` statements and tests preserve no-refresh semantics. **Evidence:** `npm run test:topic-positions-bundle` exit 0 (11/11); `npm run test:typecheck` exit 0; `npm run build` exit 1 only because known open PR #99 guard failure remains on main. **Open gate:** Claude APPROVE/REJECT exact pushed SHA; do not merge without exact-SHA APPROVAL.
 
 ---
 
