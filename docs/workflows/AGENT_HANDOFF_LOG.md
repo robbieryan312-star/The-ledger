@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## Latest session — critical bug automation: CREC catch-all Said→Did links (PASS with known build blocker)
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS for scoped fix · full build blocked by known open PR #99
-**Current state:** `cursor/critical-bug-management-5367` · fix commit `c09a456` · PR pending · `npm run build` blocked in prebuild by known retired-source-token guard failure in `.claude/rules/*` (MEMORIES entry PR #99 still open)
+**Current state:** `cursor/critical-bug-management-5367` · fix commit `c09a456` · PR #129 https://github.com/robbieryan312-star/The-ledger/pull/129 · `npm run build` blocked in prebuild by known retired-source-token guard failure in `.claude/rules/*` (MEMORIES entry PR #99 still open)
 
 ### Objective
 Daily high-severity bug sweep: inspect recent commits, avoid duplicates in MEMORIES.md, and patch only a concrete critical/significant correctness defect.
@@ -53,7 +53,7 @@ Daily high-severity bug sweep: inspect recent commits, avoid duplicates in MEMOR
 
 ## Confront Claude — paste to Claude Code
 
-**Branch:** `cursor/critical-bug-management-5367` · **HEAD:** `c09a456` (handoff stamp follows) · **PR:** pending. **Verdict:** PASS scoped / STOP for STAGE THREE. **What changed:** `sync:topic-positions` now adds overlap-based CREC Said→Did links for catch-all `legislation` statements and tests preserve no-refresh semantics. **Evidence:** `npm run test:topic-positions-bundle` exit 0 (11/11); `npm run test:typecheck` exit 0; `npm run build` exit 1 only because known open PR #99 guard failure remains on main. **Open gate:** Claude APPROVE/REJECT exact pushed SHA; do not merge without exact-SHA APPROVAL.
+**Branch:** `cursor/critical-bug-management-5367` · **HEAD:** `c09a456` code fix (+ handoff stamps) · **PR:** https://github.com/robbieryan312-star/The-ledger/pull/129. **Verdict:** PASS scoped / STOP for STAGE THREE. **What changed:** `sync:topic-positions` now adds overlap-based CREC Said→Did links for catch-all `legislation` statements and tests preserve no-refresh semantics. **Evidence:** `npm run test:topic-positions-bundle` exit 0 (11/11); `npm run test:typecheck` exit 0; `npm run build` exit 1 only because known open PR #99 guard failure remains on main. **Open gate:** Claude APPROVE/REJECT exact pushed SHA; do not merge without exact-SHA APPROVAL.
 
 ---
 
