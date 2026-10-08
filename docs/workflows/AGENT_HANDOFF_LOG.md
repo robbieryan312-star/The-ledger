@@ -10,6 +10,53 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation: CREC catch-all Said→Did links (PASS with known build blocker)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS for scoped fix · full build blocked by known open PR #99
+**Current state:** `cursor/critical-bug-management-5367` · fix commit `c09a456` · PR #129 https://github.com/robbieryan312-star/The-ledger/pull/129 · `npm run build` blocked in prebuild by known retired-source-token guard failure in `.claude/rules/*` (MEMORIES entry PR #99 still open)
+
+### Objective
+Daily high-severity bug sweep: inspect recent commits, avoid duplicates in MEMORIES.md, and patch only a concrete critical/significant correctness defect.
+
+### Verdict / outcome
+**PASS (scoped)** — fixed `sync:topic-positions` so valid CREC catch-all `legislation` statements receive overlap-based Said→Did links instead of being stored as statements with no Track Record pairing. Duplicate memory issues were not re-reported; all tracked PRs #28/#29/#30/#31/#40/#99-#128 remain open.
+
+### Commits
+- `c09a456` — `fix(topic-positions): pair catch-all CREC said-did links`
+
+### Commands run (this session)
+- `gh pr list --state all --limit 200 --json number,state,mergedAt,closedAt,url,title,headRefName,updatedAt | node -e "..."` → exit 0; all MEMORIES PRs still OPEN
+- `git fetch --prune origin && git log --oneline --decorate -n 30 && git rev-list --left-right --count origin/main...HEAD` → exit 0; branch equals `origin/main`
+- `npm run test:topic-positions-bundle` → exit 0
+- `npm run test:typecheck` → exit 2 first attempt (local type mismatch), then exit 0 after type alignment
+- `npm run test:topic-positions-bundle && npm run test:typecheck` → exit 0
+- `npm run build 2>&1 | tee /opt/cursor/artifacts/critical-bug-build.log` → exit 1; known PR #99 guard blocker
+- `git diff --check` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `scripts/sync-topic-positions.ts` | modified | uses overlap-based CREC pairing for all statement buckets, including `legislation`, while preserving prior links when vote input is unavailable |
+| `scripts/lib/topicPositionsPreserve.ts` | modified | combines topic-only and CREC-overlap fresh links, preferring embedded CREC quote/URL links for duplicate votes |
+| `scripts/__tests__/topicPositionsPreserve.test.ts` | modified | adds regression coverage for catch-all links, no-refresh preservation, and duplicate preference |
+| `docs/workflows/IMPROVEMENT_BACKLOG.md` | modified | records fixed defect class |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this handoff entry |
+
+### Acceptance evidence
+- `/opt/cursor/artifacts/critical-bug-topic-tests.log`: 11 tests, 11 pass
+- `/opt/cursor/artifacts/critical-bug-typecheck.log`: `tsc --noEmit` exit 0
+- `/opt/cursor/artifacts/critical-bug-build.log`: build reached prebuild and failed only on known MEMORIES item PR #99 (`approvedSourceMatrixGuard` dead-source token in `.claude/rules/*`)
+
+### Open / next
+- Claude STAGE THREE review of the PR tip after push.
+- Full `npm run build` remains blocked on existing open PR #99; do not duplicate that PR.
+
+## Confront Claude — paste to Claude Code
+
+**Branch:** `cursor/critical-bug-management-5367` · **HEAD:** `c09a456` code fix (+ handoff stamps) · **PR:** https://github.com/robbieryan312-star/The-ledger/pull/129. **Verdict:** PASS scoped / STOP for STAGE THREE. **What changed:** `sync:topic-positions` now adds overlap-based CREC Said→Did links for catch-all `legislation` statements and tests preserve no-refresh semantics. **Evidence:** `npm run test:topic-positions-bundle` exit 0 (11/11); `npm run test:typecheck` exit 0; `npm run build` exit 1 only because known open PR #99 guard failure remains on main. **Open gate:** Claude APPROVE/REJECT exact pushed SHA; do not merge without exact-SHA APPROVAL.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
