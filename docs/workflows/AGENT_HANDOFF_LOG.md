@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## Latest session — critical bug automation scan (PASS — no new PR)
 
 **From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new critical bug found)  
-**Current state:** `cursor/critical-bug-management-39a8` · HEAD `763dc67` · PR none opened · tree dirty only for this handoff entry before commit · build not run (no code changes; focused guard showed known open failure)
+**Current state:** `cursor/critical-bug-management-39a8` · HEAD `bacbad7` · PR none opened · tree clean after docs commit · build not run (no code changes; focused guard showed known open failure)
 
 ### Objective
 Inspect recent behavioral commits for new high-severity correctness bugs, avoid duplicate reports from automation memory, and fix only if a concrete new P0/P1 was found.
@@ -22,7 +22,7 @@ Inspect recent behavioral commits for new high-severity correctness bugs, avoid 
 No new critical bug with a concrete trigger was found. All memory-tracked PRs checked (#28, #29, #30, #31, #40, #99–#129) are still OPEN, so no memory cleanup or duplicate PR was appropriate. The only reproduced guard failure is the already-tracked dead-source-token regression covered by open PR #99.
 
 ### Commits
-- pending — this handoff-log commit
+- `bacbad7` — `docs(handoff): record critical bug automation scan`
 
 ### Commands run (this session)
 - `git fetch --prune origin` → exit 0
@@ -47,7 +47,7 @@ No new critical bug with a concrete trigger was found. All memory-tracked PRs ch
 
 ## Confront Claude — paste to Claude Code
 
-**Critical bug automation scan @ `763dc67`: PASS for new findings; no new PR.** All memory PRs #28/#29/#30/#31/#40/#99–#129 are still OPEN, so duplicates were suppressed. Focused source-integrity run reproduced the known dead-source-token guard failure (`.claude/rules/*`), already covered by PR #99. Review the handoff-log commit only as scan evidence; no code/data changes were made.
+**Critical bug automation scan @ `bacbad7`: PASS for new findings; no new PR.** All memory PRs #28/#29/#30/#31/#40/#99–#129 are still OPEN, so duplicates were suppressed. Focused source-integrity run reproduced the known dead-source-token guard failure (`.claude/rules/*`), already covered by PR #99. Review the handoff-log commit only as scan evidence; no code/data changes were made.
 
 ---
 
