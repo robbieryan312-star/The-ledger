@@ -10,6 +10,47 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation scan (PASS — no new PR)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new critical bug found)  
+**Current state:** `cursor/critical-bug-management-39a8` · HEAD `763dc67` · PR none opened · tree dirty only for this handoff entry before commit · build not run (no code changes; focused guard showed known open failure)
+
+### Objective
+Inspect recent behavioral commits for new high-severity correctness bugs, avoid duplicate reports from automation memory, and fix only if a concrete new P0/P1 was found.
+
+### Verdict / outcome
+No new critical bug with a concrete trigger was found. All memory-tracked PRs checked (#28, #29, #30, #31, #40, #99–#129) are still OPEN, so no memory cleanup or duplicate PR was appropriate. The only reproduced guard failure is the already-tracked dead-source-token regression covered by open PR #99.
+
+### Commits
+- pending — this handoff-log commit
+
+### Commands run (this session)
+- `git fetch --prune origin` → exit 0
+- `gh pr view <memory PRs> --json number,state,mergedAt,url,title,headRefOid` → all tracked PRs OPEN
+- `git log --oneline --name-status -35 -- ':!docs/**' ':!*.md'` → inspected recent non-doc commit surface
+- `npm run test:source-integrity 2>&1 | tee /tmp/ledger-critical-scan-source-integrity.log` → pipeline exit masked by `tee`; log shows tests 133 / pass 132 / fail 1
+- `rg "not ok|failureType|error:|# fail|dead-source|votesmart|ERR_ASSERTION" /tmp/ledger-critical-scan-source-integrity.log` → known failure: `.claude/rules/*` dead-source token
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | recorded critical bug automation scan outcome and validation evidence |
+
+### Acceptance evidence
+- Memory PR state: PRs #28, #29, #30, #31, #40, #99–#129 all returned `OPEN`; duplicate bug classes suppressed.
+- Focused guard log: `/tmp/ledger-critical-scan-source-integrity.log` lines 56–66 show `not ok 11` for the dead-source token in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`; this matches memory entry for PR #99.
+- Focused guard log tail: tests 133 / pass 132 / fail 1.
+
+### Open / next
+- Existing PR #99 remains the open fix for the guard failure; no new PR opened.
+- No code/data fix made in this scan.
+
+## Confront Claude — paste to Claude Code
+
+**Critical bug automation scan @ `763dc67`: PASS for new findings; no new PR.** All memory PRs #28/#29/#30/#31/#40/#99–#129 are still OPEN, so duplicates were suppressed. Focused source-integrity run reproduced the known dead-source-token guard failure (`.claude/rules/*`), already covered by PR #99. Review the handoff-log commit only as scan evidence; no code/data changes were made.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
