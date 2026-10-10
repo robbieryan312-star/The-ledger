@@ -10,6 +10,48 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-10-10 — CRITICAL BUG SCAN (NO NEW UNTRACKED P0/P1)
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS (no new critical bug proven) · **Branch:** `cursor/critical-bug-detection-346c` · **HEAD:** `763dc67` · **Tree:** clean before handoff edit · **PR:** none opened
+
+### Objective
+Inspect recent commits for high-severity correctness bugs (data loss, crashes, security holes, significant user-facing breakage), deduplicate against automation `MEMORIES.md`, and open a fix PR only for a newly proven critical bug.
+
+### Process / duplicate filter
+- Read automation `MEMORIES.md` first: tracked bug PRs #28-#40 and #99-#129 remain open, so no matching bug was re-reported.
+- Inspected recent main history: HEAD `763dc67`; newest code-bearing stack was the 2026-07-25/26 CREC-yield, alleged-policy, provenance, and governance merge stack.
+- Traced current implementations around `lib/data/allegedPolicy.ts`, `lib/data/newsCorroboration.ts`, `lib/data/buildSaidDidDiffs.ts`, `lib/data/resolveRecordedOutlet.ts`, `lib/data/saidDidVoteContext.ts`, `lib/data/topicPositions.ts`, `scripts/lib/approvedMediaQuotes.ts`, and related UI/tests.
+- Duplicate severe issues encountered but not re-opened: retired-source guard failure (#99), Senate subdomain provenance label corruption (#100), unresolved-provenance Said-Did short-circuit (#113), alleged validation gaps (#123), plus other memory-tracked open issues.
+
+### Commands run (this session)
+- `gh pr list --repo robbieryan312-star/The-ledger --state all --json number,state,mergedAt,closedAt,url --limit 150` → exit 0; memory PRs #28-#40 and #99-#129 are still open.
+- `git log --oneline --decorate --max-count=30` / `git log --max-count=25 --name-status ...` → exit 0; scan target identified.
+- `npm run test:source-integrity` → exit 1 due known open PR #99 blocker:
+  `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`.
+- `npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/sourceIntegrity.test.ts` → exit 0; 74/74 pass.
+- `npm run test:docs-consistency` → exit 0; 19/19 pass.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | logged 2026-10-10 critical-bug scan evidence |
+
+### Acceptance evidence
+- No new untracked critical bug had a concrete trigger after duplicate filtering.
+- Targeted inspected-path guards passed: `# tests 74`, `# pass 74`, `# fail 0`.
+- Handoff-doc validation passed: `# tests 19`, `# pass 19`, `# fail 0`.
+- Full source-integrity suite remains red only on the already-tracked retired-token issue with open PR #99.
+
+### Open / next
+- Existing memory-tracked PRs remain awaiting review; do not open duplicates.
+- No code/data fix PR opened from this scan.
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-detection-346c` · `763dc67` before handoff edit · PR none. **Verdict:** PASS for scan / STOP for STAGE THREE only if Claude wants to review the scan evidence. **What changed:** handoff log only; no code/data changes; no new untracked P0/P1 bug proven. **Evidence:** memory PR state query exit 0 (tracked #28-#40/#99-#129 open); `npm run test:source-integrity` exit 1 on known PR #99 retired-token blocker; targeted guards exit 0 (74/74 pass); docs consistency exit 0 (19/19 pass). **Open gates:** #99 remains broad-suite blocker; existing memory PRs await review. **Repeat-work flag:** daily cron scan; no new spec delta.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
