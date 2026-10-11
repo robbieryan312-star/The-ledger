@@ -10,6 +10,56 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-10-11 — scheduled critical-bug scan (NO NEW CRITICAL)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new PR) / BUILD BLOCKED BY KNOWN OPEN PR #99
+**Current state:** `cursor/critical-bug-scan-e80f` · HEAD `763dc67` before this handoff commit · `origin/main` `763dc67` · tree dirty only this handoff entry · build blocked by already-tracked PR #99 defect
+
+### Objective
+Run the scheduled deep high-severity bug scan, avoid duplicate reports from automation memory, and only open a PR for a concrete untracked critical bug.
+
+### Verdict / outcome
+- Read `MEMORIES.md` from automation memory first after the mandatory Cursor corpus. All remembered PRs (#28, #29, #30, #31, #40, #99-#129) are still **OPEN**, so no memory cleanup was needed and no duplicate PR was opened.
+- Recent code-affecting commits since the latest remembered bug date (`2026-10-08`) contain only `c09a456` (`fix(topic-positions): pair catch-all CREC said-did links`), which is already tracked by open PR #129.
+- `origin/main` delta since audit tip `a42e0cb` is docs-only (`AGENT_HANDOFF_LOG.md`, `IMPROVEMENT_BACKLOG.md`); no new high-severity behavioral change was found.
+
+### Commands run (this session)
+- `printf 'setup status: '; if [ -f /tmp/cursor/async-install/install-user.status ]; then cat /tmp/cursor/async-install/install-user.status; elif [ -f /tmp/cursor/async-install/install-user.log ]; then pgrep -af 'install-user|npm install|yarn|pnpm' || true; else echo 'no async install markers'; fi\nprintf 'start status: '; if [ -f /tmp/cursor/start-user/start-user.status ]; then cat /tmp/cursor/start-user/start-user.status; elif [ -f /tmp/cursor/start-user/start-user.log ]; then echo 'log exists (possibly running)'; else echo 'no start markers'; fi\ngit status --short --branch\ngit log -1 --oneline` → exit 0
+- `for n in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129; do gh pr view "$n" --json number,state,mergedAt,closedAt,headRefName,title,url 2>/tmp/gh-pr-$n.err | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{if(!s.trim()){process.exit(1)} const p=JSON.parse(s); console.log(`${p.number}\t${p.state}\t${p.mergedAt||""}\t${p.closedAt||""}\t${p.url}\t${p.title}`)})' || { printf '%s\tERROR\t' "$n"; cat /tmp/gh-pr-$n.err; }; done` → exit 0; all listed OPEN
+- `git remote -v\ngit fetch --all --prune\ngit status --short --branch\ngit log --oneline --decorate --max-count=20 --all --date-order` → exit 0
+- `git rev-parse --short HEAD\ngit branch --show-current\ngit log --oneline --decorate --max-count=30 HEAD\ngit log --oneline --decorate --max-count=30 origin/main` → exit 0
+- `git log --all --since='2026-10-08 00:00 UTC' --date=short --pretty=format:'%h %ad %D %s' --name-status -- '*.ts' '*.tsx' '*.js' '*.jsx' '*.json' '.github/workflows/*' 'package.json'` → exit 0; only tracked PR #129 code commit
+- `git diff --stat a42e0cb..HEAD\ngit diff --name-status a42e0cb..HEAD` → exit 0; docs-only main delta
+- `git diff --check 2>&1 | tee /opt/cursor/artifacts/critical-bug-scan-diff-check.log\nnpm run build 2>&1 | tee /opt/cursor/artifacts/critical-bug-scan-build.log` → exit 1; first failed on trailing whitespace in this handoff entry, then build failed on already-tracked PR #99 defect
+- `git diff --check 2>&1 | tee /opt/cursor/artifacts/critical-bug-scan-diff-check-rerun.log` → exit 0 after handoff formatting fix
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Logged scheduled scan evidence and no-new-critical verdict |
+
+### Acceptance evidence
+- PR state evidence: #28, #29, #30, #31, #40, and #99-#129 all returned `OPEN` via `gh pr view`.
+- Recent code delta evidence: `git log --all --since='2026-10-08 00:00 UTC' -- ...` returned only `c09a456`, already tracked as PR #129 in memory.
+- Main delta evidence: `git diff --name-status a42e0cb..HEAD` returned only `M docs/workflows/AGENT_HANDOFF_LOG.md` and `M docs/workflows/IMPROVEMENT_BACKLOG.md`.
+- Handoff hygiene evidence: `git diff --check` rerun exited 0 after removing trailing whitespace.
+- Build blocker evidence: `npm run build` failed in `approvedSourceMatrixGuard.test.ts` because `votesmart` appears in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`; automation memory already tracks this as PR #99, still OPEN.
+
+### Open / next
+- Existing fixes remain awaiting review in their open PRs, including PR #129 for the latest tracked critical bug.
+- No new PR opened for this scan.
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-scan-e80f` · HEAD before handoff commit `763dc67` · no PR opened.
+**Verdict:** PASS for scheduled critical-bug scan; no untracked critical bug found. Build remains blocked by known open PR #99.
+**What changed:** Handoff log entry only.
+**Evidence:** remembered PR sweep all OPEN; recent code-affecting commit since `2026-10-08` is `c09a456`, already tracked by PR #129; `origin/main` delta since `a42e0cb` is docs-only; `npm run build` reproduces known PR #99 guard failure.
+**Open gates:** Claude can independently review the no-new-critical conclusion; existing PRs remain the active fixes.
+**Repeat-work flag:** Repeated scheduled scan — no spec delta.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
