@@ -154,6 +154,64 @@ export const SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH = {
   },
 };
 
+/** Broad keyword-only CREC/vote pairing — one "housing" hit across a 462-day gap is not a verified Said→Did pair. */
+export const CREC_SAIDDID_KNOWN_BAD_BROAD_KEYWORD_PAIR = {
+  label: 'S000033 continuing-resolution speech paired to later H.R. 6644 housing vote',
+  statement: {
+    title:
+      'Mr. SANDERS. Mr. President, as people all over this country understand, we are a nation today that faces enormous crises. Sadly, the continuing resolution passed Tuesday in the U.S. House and which will come to this body very shortly not only does nothing to address these crises but, in fact, it makes a bad situation much worse. Today, at a time when we have more income and wealth inequality than we have ever had in the history of this country, 60 percent of our people are living paycheck to paycheck. What that means--I grew up in a family living paycheck to paycheck. It means that people are worried about how they are going to afford housing. What happens if their landlord raises the rent? People go to the grocery store, and they see the high prices of food and wonder how they are going to feed their kids.',
+    date: '2025-03-13',
+    url: 'https://www.govinfo.gov/app/details/CREC-2025-03-13-pt1-PgS1732',
+    tier: 'official' as const,
+    topicId: 'economy-taxes',
+    verbatim: true,
+  },
+  vote: {
+    id: 'senate-119-2-00150',
+    billId: 'H.R. 6644',
+    billTitle: 'Motion to Invoke Cloture: Motion to Concur in the House Amendment to the Senate Amendment to H.R. 6644 with an Amendment (SA 5823)',
+    billDescription: 'A bill to increase the supply of housing in America, and for other purposes.',
+    date: '2026-06-18',
+    vote: 'Yea' as const,
+    result: 'Passed' as const,
+    category: 'Legislation',
+    source: {
+      name: 'Senate roll call',
+      url: 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00150.xml',
+      tier: 'official' as const,
+    },
+  },
+};
+
+/** Specific same-subject CREC/vote pair — shutdown speech to shutdown-pay resolution should remain pairable. */
+export const CREC_SAIDDID_KNOWN_GOOD_SHUTDOWN_PAIR = {
+  label: 'S000033 shutdown speech paired to S.Res. 526 shutdown-pay vote',
+  statement: {
+    title:
+      'Mr. SANDERS. Mr. President, we are now in the 38th day of a government shutdown. That means that Federal employees all over this country who have to feed their families are not getting paychecks. It means that air traffic controllers are forced to work crazy hours. These are hard-working people who are doing important work. They deserve respect. They deserve to be paid. This shutdown must end as quickly as possible.',
+    date: '2025-11-07',
+    url: 'https://www.govinfo.gov/app/details/CREC-2025-11-07-pt1-PgS7977',
+    tier: 'official' as const,
+    topicId: 'economy-taxes',
+    verbatim: true,
+  },
+  vote: {
+    id: 'senate-119-2-00110',
+    billId: 'S.Res. 526',
+    billTitle: 'Motion to Invoke Cloture on the Motion to Proceed to S. Res. 526',
+    billDescription: 'A resolution withholding the pay of Senators if a Government shutdown occurs.',
+    date: '2026-05-13',
+    vote: 'Yea' as const,
+    result: 'Passed' as const,
+    category: 'Legislation',
+    source: {
+      name: 'Senate roll call',
+      url: 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00110.xml',
+      tier: 'official' as const,
+    },
+  },
+};
+
 /** Holder/Paul filibuster narration — MUST reject as a Cruz stated position (C001098 civil regression). */
 export const PLATFORM_KNOWN_BAD_EVENT_NARRATION =
   'The day after the filibuster, Attorney General Eric Holder sent a letter to Paul , responding to the filibuster. Holder wrote, "Does the president have the authority to use a weaponized drone to kill an American not engaged in combat on U.S. soil? The answer to that is no." [198]';

@@ -1,11 +1,13 @@
 import type { VoteRecord } from '../types';
 import { saidDidSubjectsOverlap } from './sourceIntegrity';
-import { voteCongressGovUrl } from './profileRecordByTopic';
+import { RECORD_TOPIC_BUCKETS, recordKeywordMatches, voteCongressGovUrl } from './profileRecordByTopic';
 import { resolveRecordedOutlet } from './resolveRecordedOutlet';
 import type { SaidDidLinkEntry, TopicStatementEntry } from './topicPositions';
 
 /** Max Said→Did links kept per profile after CREC↔vote pairing. */
 export const MAX_SAID_DID_LINKS_PER_MEMBER = 15;
+const MIN_SHARED_CREC_POLICY_KEYWORDS = 2;
+const MAX_GENERIC_CREC_VOTE_GAP_DAYS = 366;
 
 /**
  * Prefer substantive Senate/House vote context when billTitle is procedural
@@ -24,6 +26,69 @@ export function enrichVoteBillTitle(vote: VoteRecord): string {
 
 export function voteSaidDidContext(vote: VoteRecord): string {
   return `${vote.billId}: ${enrichVoteBillTitle(vote)}`;
+}
+
+function parseDateMs(date: string | null | undefined): number | null {
+  if (!date?.trim()) return null;
+  const ms = new Date(date).getTime();
+  return Number.isNaN(ms) ? null : ms;
+}
+
+function daysBetween(startDate: string | null | undefined, endDate: string | null | undefined): number | null {
+  const start = parseDateMs(startDate);
+  const end = parseDateMs(endDate);
+  if (start === null || end === null) return null;
+  return Math.round((end - start) / (1000 * 60 * 60 * 24));
+}
+
+function compactBillId(value: string): string {
+  return value.toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+function quoteMentionsBill(quote: string, billNumber: string): boolean {
+  const compactBill = compactBillId(billNumber);
+  if (compactBill.length < 4) return false;
+  return compactBillId(quote).includes(compactBill);
+}
+
+function sharedPolicyKeywordCount(a: string, b: string): number {
+  const left = a.toLowerCase();
+  const right = b.toLowerCase();
+  const shared = new Set<string>();
+  for (const bucket of RECORD_TOPIC_BUCKETS) {
+    if (bucket.id === 'legislation') continue;
+    for (const keyword of bucket.keywords) {
+      if (recordKeywordMatches(left, keyword) && recordKeywordMatches(right, keyword)) {
+        shared.add(keyword.trim().toLowerCase());
+      }
+    }
+  }
+  return shared.size;
+}
+
+export interface CrecSaidDidCandidateQuality {
+  exactBillReference: boolean;
+  sharedPolicyKeywords: number;
+  gapDays: number;
+}
+
+export function crecSaidDidCandidateQuality(candidate: {
+  saidQuote: string;
+  saidDate: string | null | undefined;
+  voteDate: string;
+  billNumber: string;
+  voteContext: string;
+}): CrecSaidDidCandidateQuality | null {
+  const gapDays = daysBetween(candidate.saidDate, candidate.voteDate);
+  if (gapDays === null || gapDays < 0) return null;
+  if (!saidDidSubjectsOverlap(candidate.saidQuote, candidate.voteContext)) return null;
+
+  const exactBillReference = quoteMentionsBill(candidate.saidQuote, candidate.billNumber);
+  const sharedPolicyKeywords = sharedPolicyKeywordCount(candidate.saidQuote, candidate.voteContext);
+  if (!exactBillReference && sharedPolicyKeywords < MIN_SHARED_CREC_POLICY_KEYWORDS) return null;
+  if (!exactBillReference && gapDays > MAX_GENERIC_CREC_VOTE_GAP_DAYS) return null;
+
+  return { exactBillReference, sharedPolicyKeywords, gapDays };
 }
 
 function isOfficialCrecFloorStatement(s: TopicStatementEntry): boolean {
@@ -83,11 +148,32 @@ export function buildCrecSaidDidLinks(
     // No recorded outlet and no URL-derived host → omit (never invent a label).
     if (!saidOutlet) continue;
 
-    const match = orderedVotes.find((vote) => {
-      const didKey = `${vote.billId}:${vote.date}`;
-      if (usedDidKeys.has(didKey)) return false;
-      return saidDidSubjectsOverlap(saidQuote, voteSaidDidContext(vote));
-    });
+    const match = orderedVotes
+      .map((vote) => {
+        const didKey = `${vote.billId}:${vote.date}`;
+        if (usedDidKeys.has(didKey)) return null;
+        const quality = crecSaidDidCandidateQuality({
+          saidQuote,
+          saidDate: statement.date,
+          voteDate: vote.date,
+          billNumber: vote.billId,
+          voteContext: voteSaidDidContext(vote),
+        });
+        return quality ? { vote, quality } : null;
+      })
+      .filter((candidate): candidate is { vote: VoteRecord; quality: CrecSaidDidCandidateQuality } => Boolean(candidate))
+      .sort((a, b) => {
+        if (a.quality.exactBillReference !== b.quality.exactBillReference) {
+          return a.quality.exactBillReference ? -1 : 1;
+        }
+        if (a.quality.sharedPolicyKeywords !== b.quality.sharedPolicyKeywords) {
+          return b.quality.sharedPolicyKeywords - a.quality.sharedPolicyKeywords;
+        }
+        if (a.quality.gapDays !== b.quality.gapDays) {
+          return a.quality.gapDays - b.quality.gapDays;
+        }
+        return new Date(b.vote.date).getTime() - new Date(a.vote.date).getTime();
+      })[0]?.vote;
     if (!match) continue;
 
     const didKey = `${match.billId}:${match.date}`;

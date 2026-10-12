@@ -10,6 +10,63 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-10-12 — CREC SAID→DID STALE BROAD-KEYWORD PAIRING FIX
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS on scoped guards · FULL BUILD BLOCKED by existing PR #99 issue  
+**Current state:** `cursor/critical-bug-management-9c7f` · base HEAD `763dc67` · PR pending · tree dirty before commit · `npm run build` fails on known open PR #99 dead-source-token guard
+
+### Objective
+Fix an untracked high-severity correctness bug where `buildCrecSaidDidLinks` greedily paired broad/stale CREC floor remarks to later unrelated roll-call votes on a single keyword overlap.
+
+### What changed
+- `lib/data/saidDidVoteContext.ts` now scores CREC↔vote candidates by temporal plausibility, explicit bill references, shared policy-keyword specificity, and nearest gap instead of selecting the newest broad match.
+- `lib/data/buildSaidDidDiffs.ts` applies the same CREC plausibility check during pruning so existing profile JSON can shed stale broad-keyword pairs.
+- Added regression fixtures/tests for the exact S000033 March 2025 continuing-resolution speech ↔ June 2026 H.R. 6644 housing vote false pair, plus a shutdown pair that remains valid.
+- Reprocessed S000033 `saidDid.json`: pair count **14 → 2** high-confidence pairs; updated snapshot/checklist/fixture metadata.
+- `scripts/lib/profileReprocess.ts` now rewrites `pairCount`, `status`, and `honestGapNote` after pruning.
+
+### Commands run (this session)
+- `npx tsx --test scripts/__tests__/provenanceOutletGuard.test.ts` → exit 0
+- `npm run reprocess:profiles -- --members S000033` → exit 0 (`saidDid links 2 -> 2` final run)
+- `npm run test:source-integrity` → exit 1, known PR #99 blocker (`.claude/rules/*` dead-source token)
+- `npx tsx --test scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/profileCategoryIntegrity.test.ts scripts/__tests__/sourceIntegrity.test.ts` → exit 0
+- `npm run test:typecheck && npm run test:profile-snapshots` → exit 0 after scoped snapshot update
+- `npm run build` → exit 1, known PR #99 blocker in `approvedSourceMatrixGuard`
+- `git diff --check` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `lib/data/saidDidVoteContext.ts` | modified | CREC candidate quality gates + deterministic ranking |
+| `lib/data/buildSaidDidDiffs.ts` | modified | prune existing embedded CREC links with the same quality gate |
+| `lib/data/__fixtures__/sourceIntegrity.fixture.ts` | modified | bad broad-keyword fixture + good shutdown fixture |
+| `scripts/__tests__/provenanceOutletGuard.test.ts` | modified | regression coverage for rejected/kept CREC pair classes |
+| `scripts/lib/profileReprocess.ts` | modified | refresh saidDid metadata after pruning |
+| `lib/data/generated/profiles/S000033/saidDid.json` | modified | removed stale broad-keyword pairs; 2/15 high-confidence pairs remain |
+| `lib/data/generated/profiles/S000033/manifest.json` | modified | scoped reprocess timestamp |
+| `lib/data/__fixtures__/profileCategoryIntegrity.fixture.ts` | modified | frozen count 14 → 2 |
+| `lib/data/__fixtures__/profileSnapshots/S000033.snapshot.json` | modified | golden snapshot reflects 2 rendered Said→Did rows |
+| `PILOT_PROFILE_CHECKLIST.md` | modified | S000033 row 8 now says 2/15 after temporal/specificity pruning |
+
+### Acceptance evidence
+- Validation artifact: `/opt/cursor/artifacts/crec_pairing_validation.log`
+- Known bad H.R. 6644 / 2025-03-13 pair absent from `lib/data/generated/profiles/S000033/saidDid.json`.
+- Targeted guard command and profile snapshot command pass.
+
+### Open / next
+- Full build remains blocked by the existing open PR #99 issue: `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md` contain the retired-source token caught by `approvedSourceMatrixGuard`.
+- Claude STAGE THREE should review whether the conservative 2/15 S000033 Said→Did result is the correct honest-gap state or whether additional pairs need reacquisition with stronger bill-specific evidence.
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-management-9c7f` @ base `763dc67`; PR pending after commit/push.  
+**Verdict:** PASS scoped guards; STOP for STAGE THREE. Full build blocked by existing open PR #99, not this patch.  
+**What changed:** CREC Said→Did no longer pairs stale broad-keyword speeches to later unrelated votes; S000033 false H.R. 6644 pairs removed; pair count 14→2 with honest-gap metadata.  
+**Evidence:** targeted guards exit 0; typecheck+profile snapshots exit 0; `npm run build` exit 1 only at known PR #99 dead-source token. Artifact: `/opt/cursor/artifacts/crec_pairing_validation.log`.  
+**Open gates:** Claude review exact pushed SHA; PR #99 remains separate and should not be duplicated here.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
