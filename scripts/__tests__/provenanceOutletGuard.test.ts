@@ -12,8 +12,12 @@ import {
   PROVENANCE_KNOWN_BAD_MEDIA_NO_OUTLET,
   PROVENANCE_KNOWN_GOOD_CREC_URL_DERIVED,
 } from '../../lib/data/__fixtures__/provenanceOutletGuard.fixture';
+import {
+  CREC_SAIDDID_KNOWN_BAD_BROAD_KEYWORD_PAIR as SOURCE_CREC_BAD_PAIR,
+  CREC_SAIDDID_KNOWN_GOOD_SHUTDOWN_PAIR as SOURCE_CREC_GOOD_PAIR,
+} from '../../lib/data/__fixtures__/sourceIntegrity.fixture';
 import { resolveRecordedOutlet } from '../../lib/data/resolveRecordedOutlet';
-import { buildCrecSaidDidLinks } from '../../lib/data/saidDidVoteContext';
+import { buildCrecSaidDidLinks, crecSaidDidCandidateQuality, voteSaidDidContext } from '../../lib/data/saidDidVoteContext';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 
@@ -62,6 +66,51 @@ test('buildCrecSaidDidLinks omits pairs when outlet cannot be resolved', () => {
     ],
   );
   assert.equal(Object.keys(byTopic).length, 0);
+});
+
+test('buildCrecSaidDidLinks rejects broad stale keyword-only CREC vote pairs', () => {
+  assert.equal(
+    crecSaidDidCandidateQuality({
+      saidQuote: SOURCE_CREC_BAD_PAIR.statement.title,
+      saidDate: SOURCE_CREC_BAD_PAIR.statement.date,
+      voteDate: SOURCE_CREC_BAD_PAIR.vote.date,
+      billNumber: SOURCE_CREC_BAD_PAIR.vote.billId,
+      voteContext: voteSaidDidContext(SOURCE_CREC_BAD_PAIR.vote),
+    }),
+    null,
+  );
+
+  const byTopic = buildCrecSaidDidLinks(
+    {
+      'economy-taxes': {
+        statements: [SOURCE_CREC_BAD_PAIR.statement],
+      },
+    },
+    [SOURCE_CREC_BAD_PAIR.vote],
+  );
+  assert.equal(Object.values(byTopic).flat().length, 0);
+});
+
+test('buildCrecSaidDidLinks keeps specific CREC vote pairs with multiple shared policy keywords', () => {
+  const quality = crecSaidDidCandidateQuality({
+    saidQuote: SOURCE_CREC_GOOD_PAIR.statement.title,
+    saidDate: SOURCE_CREC_GOOD_PAIR.statement.date,
+    voteDate: SOURCE_CREC_GOOD_PAIR.vote.date,
+    billNumber: SOURCE_CREC_GOOD_PAIR.vote.billId,
+    voteContext: voteSaidDidContext(SOURCE_CREC_GOOD_PAIR.vote),
+  });
+  assert.ok(quality, 'expected shutdown fixture to remain pairable');
+  assert.ok(quality.sharedPolicyKeywords >= 2);
+
+  const byTopic = buildCrecSaidDidLinks(
+    {
+      'economy-taxes': {
+        statements: [SOURCE_CREC_GOOD_PAIR.statement],
+      },
+    },
+    [SOURCE_CREC_GOOD_PAIR.vote],
+  );
+  assert.equal(Object.values(byTopic).flat().length, 1);
 });
 
 test('lib/ and scripts/ contain no fabricated provenance ?? defaults', () => {

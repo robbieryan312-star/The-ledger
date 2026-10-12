@@ -1,6 +1,7 @@
 import type { SaidDidDiff } from '../types';
 import { RECORD_TOPIC_BUCKETS, recordKeywordMatches } from './profileRecordByTopic';
 import { resolveRecordedOutlet } from './resolveRecordedOutlet';
+import { crecSaidDidCandidateQuality } from './saidDidVoteContext';
 import { isDisqualifiedPlatformPosition, isVoteRestatementSaid, saidDidSubjectsOverlap } from './sourceIntegrity';
 import { getMemberTopicPositions, type TopicPositionData } from './topicPositions';
 import type { SaidDidLinkEntry } from './topicPositions';
@@ -179,6 +180,19 @@ export function pruneSaidDidLinksByTopic(
       const said = pickSaidForLink(topicId, topicData, link, byTopic);
       if (!said?.quote?.trim() || !said.url?.trim()) continue;
       if (isVoteRestatementSaid(said.quote)) continue;
+      if (
+        link.saidQuote?.trim() &&
+        link.saidUrl?.trim() &&
+        !crecSaidDidCandidateQuality({
+          saidQuote: link.saidQuote,
+          saidDate: link.statedPositionDate,
+          voteDate: link.voteDate,
+          billNumber: link.billNumber,
+          voteContext: `${link.billNumber}: ${link.billTitle}`,
+        })
+      ) {
+        continue;
+      }
       kept.push({ ...link, topicId });
     }
     if (kept.length > 0) out[topicId] = kept;

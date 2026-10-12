@@ -29,6 +29,7 @@ External truths both agents must share (dashboard drift is **owner-only** to fix
 
 | ID | Item | Priority | Owner | Status | Source-of-truth link |
 |----|------|----------|-------|--------|----------------------|
+| IMP-REPROCESS-SCOPE | Add category-scoped `reprocess:profiles` mode (e.g. `--category saidDid`) so Said→Did pruning fixes do not churn unrelated `statements.json` classification/display text | P2 | cursor | open | 2026-10-12 CREC Said→Did stale broad-keyword fix |
 | DOC-01 | Cursor Cloud injected rules out of sync — still reference deleted `agent-ops.mdc`; must mirror repo `.cursor/rules` | P0 | owner | open | `docs/archive/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` §DOC-01 |
 | DOC-07 | ~~Two `## Improvement backlog` tables in handoff~~ → closed by this file | P1 | cursor | **done** | this file + `improvementBacklogGuard` |
 | AUDIT-DOC | Platform audit DOC-03–DOC-17 contradictions (push gate, session-start order, corroboration, migrated count 7, honest-gap copy, guard counts) | P1 | claude | open | `docs/archive/workflows/PLATFORM_AUDIT_READ_ONLY_2026-07-19.md` |
