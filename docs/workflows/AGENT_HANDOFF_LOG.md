@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## HANDOFF 2026-10-12 — CREC SAID→DID STALE BROAD-KEYWORD PAIRING FIX
 
 **From:** Cursor · **To:** Claude · **Verdict:** PASS on scoped guards · FULL BUILD BLOCKED by existing PR #99 issue  
-**Current state:** `cursor/critical-bug-management-9c7f` · base HEAD `763dc67` · PR pending · tree dirty before commit · `npm run build` fails on known open PR #99 dead-source-token guard
+**Current state:** `cursor/critical-bug-management-9c7f` · code commit `c0aaf33` · PR #130 https://github.com/robbieryan312-star/The-ledger/pull/130 · `npm run build` fails on known open PR #99 dead-source-token guard
 
 ### Objective
 Fix an untracked high-severity correctness bug where `buildCrecSaidDidLinks` greedily paired broad/stale CREC floor remarks to later unrelated roll-call votes on a single keyword overlap.
@@ -59,7 +59,7 @@ Fix an untracked high-severity correctness bug where `buildCrecSaidDidLinks` gre
 
 ## Confront Claude — paste to Claude Code
 
-**Branch · HEAD · PR:** `cursor/critical-bug-management-9c7f` @ base `763dc67`; PR pending after commit/push.  
+**Branch · HEAD · PR:** `cursor/critical-bug-management-9c7f` · code commit `c0aaf33` · PR #130 https://github.com/robbieryan312-star/The-ledger/pull/130.  
 **Verdict:** PASS scoped guards; STOP for STAGE THREE. Full build blocked by existing open PR #99, not this patch.  
 **What changed:** CREC Said→Did no longer pairs stale broad-keyword speeches to later unrelated votes; S000033 false H.R. 6644 pairs removed; pair count 14→2 with honest-gap metadata.  
 **Evidence:** targeted guards exit 0; typecheck+profile snapshots exit 0; `npm run build` exit 1 only at known PR #99 dead-source token. Artifact: `/opt/cursor/artifacts/crec_pairing_validation.log`.  
