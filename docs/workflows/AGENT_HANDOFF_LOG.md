@@ -10,6 +10,58 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-10-14 — CRITICAL BUG SCAN AUTOMATION (PASS: no new PR)
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS (no untracked high-confidence critical bug found)  
+**Current state:** `cursor/critical-bug-management-d46c` · base HEAD `763dc67` · PR none opened · tree dirty only for this handoff entry · full source-integrity blocked by known open #99
+
+### Objective
+Inspect recent behavioral changes for critical correctness bugs, avoid duplicates from automation memory, and open a PR only for a new high-confidence fix.
+
+### Outcome
+- No new critical bug met the confidence bar after tracing the recent alleged-policy / provenance / Said-Did / news-corroboration paths.
+- Automation memory cleanup: PRs #28, #29, #30, #31, #40, and #99-#130 were checked; all are still `OPEN`, so no duplicate PR was opened and no memory entries were pruned.
+- Known guard failure remains covered by open PR #99: `approvedSourceMatrixGuard` reports contiguous retired-source token `votesmart` in Claude rule files.
+
+### Commands run (this session)
+- `cd /workspace && printf 'async-install status: ' && if [ -f /tmp/cursor/async-install/install-user.status ]; then cat /tmp/cursor/async-install/install-user.status; elif [ -f /tmp/cursor/async-install/install-user.log ]; then pgrep -af '/tmp/cursor/async-install|install-user' || true; else echo 'none'; fi && printf '\nbranch: ' && git branch --show-current && printf '\nstatus:\n' && git status --short && printf '\nrecent commits:\n' && git log --oneline --decorate -20` → exit 0
+- `cd /workspace && for n in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130; do gh pr view "$n" --json number,state,mergedAt,closedAt,url,title --jq '[.number,.state,(.mergedAt // ""),(.closedAt // ""),.url,.title] | @tsv'; done` → exit 0; all listed PRs `OPEN`
+- `cd /workspace && git log --date=short --pretty=format:'%h %ad %s' -40 --stat -- . ':(exclude)docs/workflows/AGENT_HANDOFF_LOG.md'` → exit 0
+- `cd /workspace && git show --stat --patch --find-renames --find-copies --unified=80 d36f4a9 -- lib/data/buildSaidDidDiffs.ts lib/data/resolveRecordedOutlet.ts lib/data/saidDidVoteContext.ts components/politicians/ProfileRecordByTopicPanel.tsx lib/types/index.ts scripts/__tests__/provenanceOutletGuard.test.ts` → exit 0
+- `rg '"tier"\s*:\s*"alleged"' /workspace/lib/data/generated/profiles --glob '*.json'` → only permitted `profiles/S000033/controversies.json`
+- `rg '"tier"\s*:\s*"alleged"' /workspace/lib/data/generated/topicPositions.json` → no matches
+- `cd /workspace && npm run test:source-integrity` → exit 1; known #99 failure only (`votesmart` token in Claude rule files)
+- `cd /workspace && npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/sourceIntegrity.test.ts` → exit 0; 74 pass / 0 fail
+
+### Files reviewed
+| Path | Why |
+|------|-----|
+| `MEMORIES.md` (automation memory) | Duplicate bug and cleanup gate |
+| `lib/data/buildSaidDidDiffs.ts` | Said-Did source selection and provenance omission behavior |
+| `lib/data/resolveRecordedOutlet.ts` | URL-derived outlet labels; known #100 excluded |
+| `lib/data/saidDidVoteContext.ts` | CREC floor statement pairing path |
+| `components/politicians/ProfileRecordByTopicPanel.tsx` | Statement render path and outlet handling |
+| `lib/data/allegedPolicy.ts` | Alleged controversy validator behavior |
+| `lib/data/newsCorroboration.ts` | News verification/corroboration semantics |
+| `lib/data/memberProfile.ts` | Migrated profile statement/news read path |
+| `scripts/lib/approvedMediaQuotes.ts` | Media Said two-source omission path |
+| `lib/data/sourceIntegrity.ts` | Subject-overlap and source-integrity guard logic |
+
+### Acceptance evidence
+- Targeted guard pass: `1..74`, `# pass 74`, `# fail 0`.
+- Full suite known failure: `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`; matching memory entry has open PR #99.
+- No new PR opened because no untracked high-confidence critical bug was found.
+
+### Open / next
+- Existing open bug-fix PRs remain awaiting review, especially #99 for the current full `test:source-integrity` blocker.
+- Continue the next scheduled scan from updated automation memory; do not duplicate open PR entries.
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG SCAN 2026-10-14:** branch `cursor/critical-bug-management-d46c` · base HEAD `763dc67` · verdict PASS/no new PR. Memory PRs #28/#29/#30/#31/#40/#99-#130 all still OPEN; no memory pruning. Full `test:source-integrity` fails only on known open #99 (`votesmart` token in Claude rule files). Targeted alleged/provenance/news/source guards pass: 74/74. Open gate: review/merge existing bug-fix PRs; no new critical fix from this scan.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
