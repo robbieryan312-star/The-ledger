@@ -10,6 +10,50 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation sweep (PASS — no new PR)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no untracked critical bug found)  
+**Current state:** `cursor/critical-bug-management-c536` · HEAD `763dc67` before this log commit · PR none for this sweep · tree dirty only for this handoff entry · build not run; targeted guard has known open failure PR #99
+
+### Objective
+Inspect recent commits for high-severity correctness bugs (data loss, crashes, security holes, or significant user-facing breakage) and avoid duplicate reports already tracked in automation memory.
+
+### Verdict / outcome
+**PASS** — no new untracked critical bug found. The recent functional candidates all map to existing open memory PRs (#99-#130) or intentional policy/guard changes.
+
+### Commits
+- Pending: this handoff-log commit.
+
+### Commands run (this session)
+- `gh pr list --state all --limit 150 --json number,state,mergedAt,closedAt,url,title,headRefName --jq '.[] | {number,state,mergedAt,closedAt,url,title,headRefName}'` → exit 0; all memory-tracked PRs remain open.
+- `git log --date=iso --pretty=format:'%h %ad %s' -n 40 && git diff --stat a42e0cb..HEAD` → exit 0; recent main tip after `a42e0cb` is docs-only.
+- `git show --stat --oneline db23b39 cc916da d36f4a9 18b5d3e d137a12 a739765 && git diff --name-only c08be19..HEAD` → exit 0; inspected recent functional change surfaces.
+- `npm run test:source-integrity` → exit 1; known open PR #99 failure: dead-source token in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`.
+- `npm run test:typecheck` → exit 0.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this critical-bug automation sweep entry and Confront Claude block. |
+
+### Acceptance evidence
+- Automation memory read first; duplicate list includes open PRs #99-#130, including every high-severity candidate observed in recent functional diffs.
+- GitHub PR inventory confirms tracked bug PRs #28-#31, #40, #99-#130 are still open; no memory cleanup was required.
+- Independent explore subagent result: "no untracked critical bug found"; candidates mapped to existing PRs #99-#130.
+- Targeted guard failure is diagnosed as existing PR #99, not a new finding.
+
+### Open / next
+- Existing critical-bug PRs remain awaiting review/merge, especially #99 because it still makes `npm run test:source-integrity` fail on main.
+- No new critical-bug PR opened from this sweep.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Critical-bug automation sweep:** branch `cursor/critical-bug-management-c536` · pre-log HEAD `763dc67` · no new PR. **Verdict:** PASS for "no untracked critical bug found"; all high-severity candidates in recent functional commits map to already-open PRs #99-#130. **Evidence:** PR inventory exit 0; recent diff review exit 0; `npm run test:typecheck` exit 0; `npm run test:source-integrity` exit 1 only for known PR #99 dead-source-token failure in `.claude/rules/*`. **Open gate:** Claude/owner review existing critical-bug PRs; no merge performed.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
