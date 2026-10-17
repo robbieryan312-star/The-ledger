@@ -10,6 +10,60 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — scheduled critical bug scan (PASS)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (no new critical bug PR)
+**Current state:** `cursor/critical-bug-management-cbff` · HEAD before handoff commit `763dc67` · tree clean before log edit · PR not opened
+
+### Objective
+Run the scheduled high-severity bug-finding automation: read persistent MEMORIES.md first, clean up tracked entries by PR state, inspect recent behavioral commits, and only patch/open a PR for a concrete critical bug.
+
+### Outcome
+- MEMORIES.md entries #28-#31, #40, and #99-#130 were checked against GitHub PR state; all referenced PRs remain open, so no duplicate investigation/reporting and no memory cleanup was required.
+- Recent commits were reviewed with emphasis on non-doc code changes in alleged-policy validation, provenance outlet resolution, news corroboration, and Said→Did pairing.
+- No distinct untracked critical bug met the concrete-trigger confidence bar. Known defects in these areas remain represented by open PRs in MEMORIES.md.
+
+### Commands run (this session)
+- `git status --short && git branch --show-current && git rev-parse --short HEAD && git log --oneline --decorate --max-count=20 && gh pr list --state all --json number,state,mergedAt,closedAt,url --limit 150` → exit 0
+- `git show --stat --name-status --find-renames --find-copies HEAD~20..HEAD && git show --stat --name-status --find-renames --find-copies --first-parent HEAD~10..HEAD` → exit 0
+
+### Files reviewed
+| Path | Why |
+|---|---|
+| `.cursor/rules/ledger-pre-ingest.mdc` | Cursor compliance gate |
+| `.cursor/rules/ledger-core-rules.mdc` | hard rules / reporting requirements |
+| `docs/CURSOR_IMPLEMENTATION_MANUAL.md` | Cursor implementation/reporting loop |
+| `AGENTS.md` | Cloud/runtime and build constraints |
+| `docs/AGENT_INDEX.md` | session-start routing |
+| `PROGRESS.md` | current milestone context |
+| `docs/OBJECTIVE_SOURCES.md` | source/key policy context |
+| `lib/data/SOURCE_LOOKUP.md` | data routing context |
+| `KEYS.md` | SET/EMPTY semantics |
+| `REPO.md` | canonical repo/branch |
+| `PILOT_PROFILE_CHECKLIST.md` | locked profile acceptance context |
+| `docs/workflows/IMPROVEMENT_BACKLOG.md` | canonical backlog context |
+| `lib/data/allegedPolicy.ts` | recent behavioral code path |
+| `lib/data/resolveRecordedOutlet.ts` | recent provenance code path |
+| `lib/data/buildSaidDidDiffs.ts` | recent Said→Did code path |
+| `lib/data/newsCorroboration.ts` | recent news corroboration code path |
+| `lib/data/saidDidVoteContext.ts` | recent CREC pairing code path |
+| `components/politicians/ControversySection.tsx` | recent alleged-policy render path |
+| `components/politicians/ProfileRecordByTopicPanel.tsx` | recent statement display path |
+
+### Acceptance evidence
+- Persistent memory read: all tracked bug PR entries were compared to `gh pr list --state all`; every tracked PR is still `OPEN`.
+- Recent commit changed-file review: latest non-doc code changes are the already-scanned alleged-policy/provenance/Said-Did/news areas; no new crash/data-loss/security trigger distinct from open memory entries was validated.
+
+### Open / next
+- Existing bug-fix PRs in MEMORIES.md remain awaiting review.
+- No critical bug PR opened from this scan.
+
+## Confront Claude — paste to Claude Code
+
+**Scheduled critical bug scan:** branch `cursor/critical-bug-management-cbff` · reviewed HEAD `763dc67` · no PR opened · PASS/no new high-confidence critical bug beyond open tracked PRs. Evidence: `gh pr list --state all --json number,state,mergedAt,closedAt,url --limit 150` confirmed all MEMORIES.md PRs still open; `git show --stat --name-status HEAD~20..HEAD` scoped recent non-doc changes; traced alleged-policy/provenance/news/Said-Did paths. Open gate: review remains pending on existing bug PRs (#28-#31, #40, #99-#130); no duplicate PR should be opened.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
