@@ -10,6 +10,48 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-10-18 — CRITICAL BUG SCAN (no new PR)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new high-confidence critical bug found)  
+**Current state:** `cursor/critical-bug-management-620d` · HEAD `763dc67` before this handoff commit · PR none · tree clean before log update · build not run; targeted guards below
+
+### Objective
+Inspect recent commits for critical correctness bugs, avoid duplicate reports from automation memory, and patch only a new high-confidence issue.
+
+### Verdict / outcome
+No new critical bug cleared the reporting bar. All tracked memory PRs checked in this session (#28, #29, #30, #31, #40, #99-#130) are still open, so no memory cleanup or duplicate PR was appropriate. The full `test:source-integrity` command still fails on the known open PR #99 retired-source-token defect in Claude rule files; changed-area guards pass when run directly.
+
+### Commands run (this session)
+- `pwd && git status --short && git rev-parse --abbrev-ref HEAD && git log --oneline -12` → exit 0
+- `for n in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130; do gh pr view "$n" --json number,state,mergedAt,closedAt,headRefName,title,url --jq '[.number,.state,(.mergedAt//""),(.closedAt//""),.headRefName,.url] | @tsv'; done` → exit 0; all OPEN
+- `git fetch origin --prune && git log --oneline --decorate --max-count=30 origin/main && git diff --stat origin/main~20..origin/main` → exit 0
+- `git diff --name-status c08be19..origin/main -- ':!docs/workflows/AGENT_HANDOFF_LOG.md' ':!*.md' && git diff --unified=80 c08be19..origin/main -- lib/data/allegedPolicy.ts lib/data/newsCorroboration.ts lib/data/sourceIntegrity.ts lib/data/resolveRecordedOutlet.ts lib/data/saidDidVoteContext.ts lib/data/buildSaidDidDiffs.ts components/politicians/ControversySection.tsx components/politicians/ProfileRecordByTopicPanel.tsx scripts/lib/approvedMediaQuotes.ts` → exit 0
+- `if [ -f /tmp/cursor/async-install/install-user.status ]; then printf 'install-status='; cat /tmp/cursor/async-install/install-user.status; elif [ -f /tmp/cursor/async-install/install-user.log ]; then pgrep -af 'install-user|npm install|npm ci' || true; printf '\ninstall-log-present\n'; else printf 'no-async-install\n'; fi; if [ -f /tmp/cursor/start-user/start-user.status ]; then printf 'start-status='; cat /tmp/cursor/start-user/start-user.status; elif [ -f /tmp/cursor/start-user/start-user.log ]; then printf 'start-log-present\n'; else printf 'no-start-script\n'; fi` → exit 0; no async install/start script
+- `npm run test:source-integrity && npm run test:alleged-policy && npm run test:provenance-outlet && npm run test:news-corroboration` → exit 1; known PR #99 failure (`votesmart` token in `.claude/rules/*`)
+- `npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/sourceIntegrity.test.ts` → exit 0; 74 pass / 0 fail
+- `git rev-parse --short HEAD && git status --short && git branch --show-current && gh pr list --head "$(git branch --show-current)" --json url,state,title --jq '.[] | [.url,.state,.title] | @tsv'` → exit 0; HEAD `763dc67`, no PR
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Recorded this critical-bug scan result and evidence |
+| `/opt/cursor/artifacts/code-tour-author-handoff.md` | created | Reviewer handoff artifact for this turn |
+
+### Acceptance evidence
+- Automation memory read: tracked bug PRs #28, #29, #30, #31, #40, #99-#130 are still open.
+- Changed-area guards: `# tests 74`, `# pass 74`, `# fail 0`.
+- Known blocker only: `approvedSourceMatrixGuard` reports `dead-source token "votesmart"` in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`; this matches open PR #99 and was not duplicated.
+
+### Open / next
+- PR #99 remains awaiting review/merge for the full source-integrity guard blocker.
+- No new bug-fix PR opened in this scan.
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-management-620d` · `763dc67` before handoff commit · no PR. **Verdict:** PASS / no new critical bug found. **Evidence:** memory PR sweep all OPEN; narrowed guards `npx tsx --test allegedPolicyGuard provenanceOutletGuard newsCorroboration sourceIntegrity` → 74 pass / 0 fail; full `test:source-integrity` still fails only on known PR #99 retired-token blocker. **Open gates:** review/merge PR #99; no new automation bug-fix PR to review from this run.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
