@@ -10,6 +10,45 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-10-20 — CRITICAL BUG SWEEP (NO NEW CRITICAL BUG)
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS (no new high-severity issue found)
+**Current state:** `cursor/critical-bug-detection-4bdf` · starting HEAD `763dc67` · PR opened: none · tree clean before handoff entry · targeted guards pass
+
+### Objective
+Inspect recent landed behavioral changes for critical correctness bugs; avoid duplicating bugs already tracked in automation memory with open PRs.
+
+### Verdict / outcome
+**PASS** — no new concrete critical bug found. Automation memory PRs #28, #29, #30, #31, #40, #99-#130 checked with `gh pr view`; all remain `OPEN`, so no memory cleanup or duplicate PR was appropriate.
+
+### Commands run (this session)
+- `git status --short --branch && git remote -v && git log --oneline --decorate -n 25` → exit 0
+- `for pr in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130; do gh pr view "$pr" --json number,state,mergedAt,url,headRefName --jq '[.number,.state,(.mergedAt // ""),.headRefName,.url] | @tsv'; done` → exit 0; all `OPEN`
+- `git log --name-status --pretty=format:'%h %s' -n 25 -- . ':!docs/**' ':!*.md' && git diff --stat 2dec61f..HEAD -- . ':!docs/**' ':!*.md' && git diff --name-only 2dec61f..HEAD -- . ':!docs/**' ':!*.md'` → exit 0
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/newsCorroboration.test.ts scripts/__tests__/provenanceOutletGuard.test.ts` → exit 0; 74 pass / 0 fail
+- Cursor explore subagent `Recent critical bug audit` → no new critical bug found outside open tracked PRs
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | recorded this no-new-critical-bug verification session |
+
+### Acceptance evidence
+- Memory entries reconciled: tracked PRs remained open, including duplicate-exclusion classes #100, #106, #123, #126, #127, #130.
+- Targeted guard output: `# tests 74`, `# pass 74`, `# fail 0`.
+- Independent read-only subagent found no new critical bug in changed alleged-policy / Said-Did / provenance code paths.
+
+### Open / next
+- Existing open memory PRs still await review; no duplicate PR opened from this cron sweep.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG SWEEP 2026-10-20:** no new high-severity bug found on `cursor/critical-bug-detection-4bdf` starting at `763dc67`; all memory-tracked PRs #28/#29/#30/#31/#40/#99-#130 remain OPEN; focused guards passed (`sourceIntegrity` + `allegedPolicy` + `newsCorroboration` + `provenanceOutlet`, 74/74). Review this handoff entry only; no fix PR opened.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
