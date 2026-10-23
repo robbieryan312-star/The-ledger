@@ -10,6 +10,46 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-10-23 — CRITICAL BUG AUTOMATION AUDIT (NO NEW PR)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new critical bug surfaced)  
+**Current state:** `cursor/critical-bug-management-bfb8` · HEAD `763dc67` before this handoff commit · PR not opened · tree clean before log edit · focused guard status: `test:source-integrity` fails on known open PR #99 only; `test:topic-positions-bundle` passes
+
+### Objective
+Inspect recent behavioral commits for high-severity correctness bugs, avoid duplicates from automation MEMORIES, and patch only a concrete new critical trigger.
+
+### Verdict / outcome
+No new critical bug was opened. MEMORIES tracked PRs #28, #29, #30, #31, #40, and #99-#130; `gh pr view` showed all are still OPEN, so no memory cleanup was needed and duplicate reports were avoided.
+
+### Commands run (this session)
+- `pwd && git status --short && git branch --show-current && git log --oneline -12 && python3 - <<'PY' ... setup marker check ... PY` → exit 0
+- `python3 - <<'PY' ... gh pr view remembered PRs ... PY` → exit 0; all remembered PRs still OPEN
+- `git fetch origin --prune && printf ... && git merge-base --short HEAD origin/main ...` → exit 129; unsupported `git merge-base --short` flag after fetch/refs printed
+- `mb=$(git merge-base HEAD origin/main); printf ...; git log --oneline --decorate --max-count=35 origin/main; ...` → exit 0
+- `for c in 18b5d3e d36f4a9 cf4bcfd cc916da db23b39 d137a12 a739765; do git show --name-status --format= $c; done` → exit 0
+- `npm run test:source-integrity && npm run test:topic-positions-bundle` → exit 1; source-integrity failed on known open #99 dead-source token
+- `npm run test:topic-positions-bundle` → exit 0; 8/8 passing
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this automation audit entry |
+
+### Acceptance evidence
+- `origin/main` equals current HEAD `763dc67`; recent behavioral commits reviewed: alleged-policy, Said-Did nominee overlap, CREC yield, purge/source-matrix guard.
+- Known duplicate guard failure evidence: `approvedSourceMatrixGuard.test.ts` reports dead-source token in `.claude/rules/*`; MEMORIES entry for PR #99 is OPEN.
+- Topic-position guard evidence: `npm run test:topic-positions-bundle` passed 8/8.
+
+### Open / next
+- No new PR from this run.
+- Existing open PR #99 still covers the source-integrity failure observed here.
+
+## Confront Claude — paste to Claude Code
+
+**Critical-bug automation audit:** branch `cursor/critical-bug-management-bfb8` · HEAD before log commit `763dc67` · no new PR. Reviewed recent behavioral commits and all MEMORIES PR states (#28/#29/#30/#31/#40/#99-#130 all OPEN). `test:source-integrity` FAILS only on known #99 dead-source token in `.claude/rules/*`; `test:topic-positions-bundle` PASS 8/8. Verdict: no new critical bug surfaced; do not duplicate existing PRs.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
