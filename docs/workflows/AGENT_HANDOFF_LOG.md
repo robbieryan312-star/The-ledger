@@ -10,6 +10,45 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation sweep 2026-10-24 (PASS)
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS (no new critical bug fix)  
+**Current state:** `cursor/critical-bug-management-309d` · base `origin/main` @ `763dc67` · tree dirty only for this handoff entry before commit · build not run (no app/code/data changes)
+
+### Objective
+Inspect recent commits for high-severity correctness bugs, avoid duplicates tracked in automation memory, and only open a PR for a concrete critical fix.
+
+### Verdict / outcome
+**PASS** — no new untracked critical bug found. Automation memory entries through PR #130 remain open; no memory cleanup was required. `origin/main` has only docs/handoff backlog changes since `a42e0cb`; recent automation refs are docs-only except the already-recorded open PR #130 branch.
+
+### Commits
+- Pending docs-only handoff commit for this session.
+
+### Commands run (this session)
+- `git status --short && git branch --show-current && git rev-parse --short HEAD && git log --oneline --decorate -n 30 && gh pr list --state all --limit 140 --json number,state,mergedAt,closedAt,headRefName,title,url,updatedAt` → exit 0
+- `git fetch --all --prune && git status --short && git rev-parse --short HEAD && git rev-parse --short origin/main && git log --oneline --decorate --since='2026-10-12' --all --not origin/main && git log --oneline --decorate -n 50 origin/main` → exit 0
+- `for ref in origin/cursor/critical-bug-management-bfb8 origin/cursor/critical-bug-management-98ab origin/cursor/critical-bug-detection-4bdf origin/cursor/critical-bug-scan-faaa origin/cursor/critical-bug-management-620d origin/cursor/critical-bug-management-cbff origin/cursor/critical-bug-management-c536 origin/cursor/critical-bug-management-d46c origin/cursor/critical-bug-management-9a8e origin/cursor/critical-bug-management-9c7f; do echo "=== $ref ==="; git log --oneline --decorate -n 3 "$ref"; git diff --name-status origin/main..."$ref"; done` → exit 0
+- `git diff --name-status a42e0cb..origin/main && git diff --stat a42e0cb..origin/main` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | logged this critical-bug automation audit |
+
+### Acceptance evidence
+- PR state survey: memory-tracked PRs #28-#31, #40, #99-#130 are still `OPEN`; no duplicate PR opened.
+- Main delta since last code merge: `docs/workflows/AGENT_HANDOFF_LOG.md` and `docs/workflows/IMPROVEMENT_BACKLOG.md` only.
+- Recent automation refs since PR #130: handoff docs only, except `origin/cursor/critical-bug-management-9c7f`, which is the already-tracked open PR #130 fix branch.
+
+### Open / next
+- Existing memory-tracked critical bug PRs remain awaiting review, including latest PR #130.
+
+## Confront Claude — paste to Claude Code
+
+**Critical bug automation sweep 2026-10-24:** PASS/no new bug-fix PR. Base `origin/main` @ `763dc67`; memory entries through PR #130 all remain open, so no duplicate was opened. Evidence: `origin/main` delta since `a42e0cb` is docs-only; recent non-main code branch is already-tracked PR #130. Claude should review existing open critical-bug PRs; no new Stage Two fix awaits review from this sweep.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
