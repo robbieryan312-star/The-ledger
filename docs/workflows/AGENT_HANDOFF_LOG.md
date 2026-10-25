@@ -10,6 +10,57 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-10-25 — CRITICAL BUG AUTOMATION SCAN
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS — no new high-confidence critical bug opened  
+**Current state:** `cursor/critical-bug-management-f3db` · HEAD `763dc67` before this log commit · PR none · tree dirty only after handoff update · focused recent-path tests pass; full source-integrity suite has known open PR #99 failure
+
+### Objective
+Inspect recent commits for critical correctness bugs, avoid duplicate reports from automation memory, and implement only a minimal fix for any new high-confidence critical issue.
+
+### Outcome
+- Checked MEMORIES.md tracked bug PRs against GitHub PR state; tracked PRs #28–#31, #40, and #99–#130 remain open, so no duplicate PR was opened for those defect classes.
+- Reviewed recent high-risk files changed since `c08be19` (`allegedPolicy`, `sourceIntegrity`, `buildSaidDidDiffs`, news/provenance helpers, controversy/topic UI, and generated migrated-profile data).
+- Found no distinct new critical bug with a concrete trigger beyond tracked open PRs.
+- Existing known defect still present: `approvedSourceMatrixGuard` reports the retired source token in Claude rule files; this matches MEMORIES.md entry for open PR #99.
+
+### Commands run (this session)
+- `git status --short --branch && git log -1 --oneline` → exit 0 (`cursor/critical-bug-management-f3db`, HEAD `763dc67`)
+- `gh pr list --repo robbieryan312-star/The-ledger --state all --limit 150 --json number,state,mergedAt,closedAt,url,title,headRefName` → exit 0
+- `git fetch origin --prune && git log --oneline --decorate --max-count=25 origin/main && git log --oneline --left-right --cherry-pick HEAD...origin/main --max-count=30` → exit 0
+- `git diff --stat c08be19..origin/main && git diff --name-only c08be19..origin/main` → exit 0
+- `npm run test:source-integrity 2>&1 | tee /opt/cursor/artifacts/critical-bug-scan-source-integrity.log` → command exit 0, TAP summary `# fail 1` (known PR #99)
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/newsCorroboration.test.ts 2>&1 | tee /opt/cursor/artifacts/critical-bug-scan-recent-paths.log` → exit 0, `# pass 74`, `# fail 0`
+- `npm run test:docs-consistency 2>&1 | tee /opt/cursor/artifacts/critical-bug-scan-docs-consistency.log` → exit 0, `# pass 19`, `# fail 0`
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this critical-bug automation scan handoff |
+| `/opt/cursor/artifacts/critical-bug-scan-source-integrity.log` | created | Full source-integrity guard output showing known PR #99 failure |
+| `/opt/cursor/artifacts/critical-bug-scan-recent-paths.log` | created | Focused recent-path regression output |
+
+### Acceptance evidence
+- Source-integrity log: known duplicate only — `not ok 11 - criterion (A): no contiguous dead-source token outside history exempts` with `.claude/rules/...` paths, matching open PR #99.
+- Focused recent-path log: `1..74`, `# pass 74`, `# fail 0`.
+- Docs consistency log: `1..19`, `# pass 19`, `# fail 0`.
+- Memory cleanup: no MEMORIES.md write needed; all tracked entries checked from `gh pr list` remain open.
+
+### Open / next
+- PR #99 still awaits review for the known source-integrity guard failure.
+- No new PR opened from this scan.
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-management-f3db` · pre-log HEAD `763dc67` · PR none opened.  
+**Verdict:** PASS for this scan; no new high-confidence critical bug found.  
+**What changed:** Handoff log updated with automation audit evidence only.  
+**Evidence:** `npm run test:source-integrity` produced TAP `# fail 1` for known open PR #99; focused recent-path command passed `# pass 74`, `# fail 0`; docs consistency passed `# pass 19`, `# fail 0`.  
+**Open gates:** Review/merge remains pending on existing PR #99; no new STAGE THREE review needed for a fix because no fix was made.  
+**Repeat-work flag:** Existing memory entries remain open; no duplicate reports opened.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
