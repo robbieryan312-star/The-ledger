@@ -10,6 +10,63 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — cron critical-bug scan (PASS — no new PR)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (no new non-duplicate critical bug found)
+**Current state:** `cursor/critical-bug-management-640f` · pre-log HEAD `763dc67` · tree dirty only for this handoff log while writing · PR none · build not run because known PR #99 guard failure blocks `test:source-integrity`
+
+### Objective
+Run the scheduled deep bug-finding scan against recent commits, avoid duplicate reports from automation memory, and open a fix PR only for a new high-confidence critical issue.
+
+### Verdict / outcome
+No new non-duplicate critical bug met the confidence bar. All tracked memory PRs #28, #29, #30, #31, #40, and #99-#130 remain `OPEN`; no memory cleanup was required.
+
+### Commits
+- Pending this docs commit — mandatory handoff log for the 2026-10-26 cron scan.
+
+### Commands run (this session)
+- `pwd && git status --short && git branch --show-current && git log --oneline -n 20 && if [ -f /tmp/cursor/async-install/install-user.status ]; then printf 'install-status='; cat /tmp/cursor/async-install/install-user.status; elif [ -f /tmp/cursor/async-install/install-user.log ]; then echo 'install-log-present'; pgrep -af 'install-user|npm install|npm' || true; else echo 'no-async-install'; fi && if [ -f /tmp/cursor/start-user/start-user.status ]; then printf 'start-status='; cat /tmp/cursor/start-user/start-user.status; elif [ -f /tmp/cursor/start-user/start-user.log ]; then echo 'start-log-present'; else echo 'no-start-user'; fi` -> exit 0
+- `for n in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130; do gh pr view "$n" --repo robbieryan312-star/The-ledger --json number,state,mergedAt,closedAt,headRefOid,headRefName,title,url --jq '[.number,.state,(.mergedAt//""),(.closedAt//""),(.headRefOid[0:7]),.headRefName,.url,.title] | @tsv'; done` -> exit 0; every PR returned `OPEN`
+- `git fetch --all --prune && git status --short && git rev-parse --short HEAD && git rev-parse --short origin/main && git log --oneline --decorate --max-count=30 origin/main` -> exit 0
+- `git show --stat --oneline --find-renames 377787d 09f14b4 18b5d3e d36f4a9 cf4bcfd cc916da db23b39 d137a12 59f427a --` -> exit 0
+- `git diff --find-renames --name-status c08be19..origin/main | awk '$1!="M" || $2 !~ /^docs\\// {print}' && git diff --find-renames --stat c08be19..origin/main -- ':!docs/workflows/AGENT_HANDOFF_LOG.md'` -> exit 0
+- `git diff --find-renames --unified=80 c08be19..origin/main -- lib/data/buildSaidDidDiffs.ts lib/data/sourceIntegrity.ts lib/data/saidDidVoteContext.ts lib/data/newsCorroboration.ts lib/data/allegedPolicy.ts scripts/lib/approvedMediaQuotes.ts components/politicians/ControversySection.tsx components/politicians/ProfileRecordByTopicPanel.tsx > /tmp/recent-code-diff.txt && wc -l /tmp/recent-code-diff.txt && git diff --find-renames --unified=60 c08be19..origin/main -- lib/data/generated/profiles/S000033 lib/data/generated/profiles/M000355 lib/data/generated/profiles/M001184 > /tmp/recent-data-diff.txt && wc -l /tmp/recent-data-diff.txt && node -e "const fs=require('fs'); for (const f of ['lib/data/generated/profiles/S000033/saidDid.json','lib/data/generated/profiles/S000033/news.json','lib/data/generated/profiles/S000033/controversies.json','lib/data/generated/profiles/S000033/endorsements.json','lib/data/generated/profiles/M000355/controversies.json','lib/data/generated/profiles/M001184/statements.json']) { try { const j=JSON.parse(fs.readFileSync(f,'utf8')); console.log(f, 'ok', Array.isArray(j)?j.length:Object.keys(j).join(',').slice(0,120)); } catch(e) { console.error(f,'ERR',e.message); process.exitCode=1; } }"` -> exit 0
+- `npm run test:source-integrity && npm run test:news-registry && npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/newsCorroboration.test.ts` -> exit 1; known PR #99 `votesmart` token failure in `.claude/rules/*`
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/newsCorroboration.test.ts` -> exit 0
+- `git status -sb && git remote -v && git config --get branch.$(git branch --show-current).remote || true && git config --get branch.$(git branch --show-current).merge || true` -> exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Logged the 2026-10-26 cron critical-bug scan evidence |
+
+### Acceptance evidence
+- Persistent memory read first; all tracked PRs were checked and remain open.
+- Recent code/data review found duplicate candidates only: PR #99 dead-source token guard failure, PR #100 Senate outlet derivation, PR #104 migrated mega-bundle exclusion, PR #111 statement preservation, PR #119/#123 alleged validation, PR #125/#130 broad Said-Did pairing.
+- Targeted non-duplicate checks passed: `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/newsCorroboration.test.ts` -> exit 0.
+- Evidence artifact: `/opt/cursor/artifacts/critical-bug-scan-summary.md`.
+
+### Open / next
+- Existing PR #99 still blocks aggregate `npm run test:source-integrity`; do not open a duplicate.
+- No new bug-memory entry and no bug-fix PR.
+
+## Owner visibility finding
+
+| Field | Detail |
+|-------|--------|
+| **What** | `npm run test:source-integrity` fails on the known dead-source-token guard |
+| **Where** | `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md`, `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`; existing PR #99 |
+| **Evidence** | Failure line: `dead-source token "votesmart" found outside history exempts` in `approvedSourceMatrixGuard.test.ts` |
+| **Severity** | P1 guard/build blocker already tracked |
+| **Repair** | Existing open PR #99; duplicate PR intentionally not opened |
+| **Action this turn** | Flagged only; direct non-duplicate targeted tests passed |
+
+## Confront Claude — paste to Claude Code
+
+**CRON CRITICAL-BUG SCAN:** branch `cursor/critical-bug-management-640f` · pre-log HEAD `763dc67` · PR none · Verdict PASS/no new non-duplicate critical bug. Evidence: all memory PRs #28/#29/#30/#31/#40/#99-#130 are still OPEN; aggregate `npm run test:source-integrity` fails only on known PR #99 dead-source-token issue; direct targeted tests `sourceIntegrity + allegedPolicy + provenanceOutlet + newsCorroboration` pass. Open gate: Claude should review this scan methodology/evidence; no merge/PR action requested.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
