@@ -10,6 +10,53 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-10-27 — CRITICAL BUG AUTOMATION: topicPositions reprocess preserve fix
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (targeted) · PREBUILD BLOCKED by existing PR #99 class
+**Current state:** `cursor/critical-bug-management-2209` · HEAD before commit `763dc67` · PR pending · tree dirty with this fix · targeted guard PASS · typecheck PASS · prebuild FAIL on pre-existing `.claude` retired-token guard
+
+### Objective
+Inspect recent commits for critical correctness bugs; fix only a high-confidence, non-duplicate data-loss issue.
+
+### What changed
+- `scripts/reprocess-topic-positions-bundle.ts`: extracted import-safe `reprocessTopicPositionsSnapshot()` and changed rewrite keys from old topics only to the union of old topic keys plus reclassified statement topic keys.
+- `scripts/__tests__/topicPositionsBundle.test.ts`: added regression fixture proving an official CREC statement reclassified from `immigration` to a previously absent `healthcare` bucket is preserved.
+- `docs/workflows/IMPROVEMENT_BACKLOG.md`: logged the separate `reprocess:profiles` Said-Did shrink preserve risk for follow-up; not mixed into this PR.
+
+### Commands run (this session)
+- `gh pr view <tracked PRs> --json number,state,mergedAt,closedAt,url,headRefName,mergeCommit` → all tracked memory PRs #28/#29/#30/#31/#40/#99-#130 still OPEN; no memory cleanup.
+- `git log --oneline --name-status --no-merges -30 -- ':!docs/**' ':!*.md' ':!docs'` → inspected recent non-doc change surface.
+- `npm run test:topic-positions-bundle` → exit 0; 9/9 tests pass, including new reprocess-preserve guard.
+- `npm run test:typecheck` → exit 0.
+- `npm run prebuild` → exit 1; unrelated existing guard failure: dead-source token `votesmart` in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1` (tracked by open PR #99).
+- `git diff -- scripts/reprocess-topic-positions-bundle.ts scripts/__tests__/topicPositionsBundle.test.ts && git status --short` → reviewed scoped diff.
+
+### Acceptance evidence
+```
+npm run test:topic-positions-bundle
+# pass 9
+# fail 0
+
+npm run test:typecheck
+exit 0
+
+npm run prebuild
+not ok 11 - criterion (A): no contiguous dead-source token outside history exempts
+dead-source token "votesmart" found outside history exempts:
+.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2
+.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1
+```
+
+### Open / next
+- Claude STAGE THREE: verify this fix is not a duplicate of open PR #129 (sync-time legislation catch-all) or #128 (topic preserve merge); this PR targets only offline `reprocess:topic-positions-bundle`.
+- Prebuild remains blocked until existing open PR #99 (retired-source token in Claude rule files) merges or is otherwise resolved.
+
+## Confront Claude — paste to Claude Code
+
+**Branch:** `cursor/critical-bug-management-2209` · **HEAD:** pending commit · **PR:** pending. **Verdict:** PASS targeted / STOP for STAGE THREE. **What changed:** offline topicPositions mega-bundle reprocess now preserves CREC statements reclassified into newly created topic buckets; regression guard added. **Evidence:** `npm run test:topic-positions-bundle` exit 0 (9/9); `npm run test:typecheck` exit 0; `npm run prebuild` exit 1 on existing PR #99 class (`votesmart` token in `.claude` rule files), not this diff. **Open gate:** Claude approve/reject exact PR tip after commit/push; do not merge without approval.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  

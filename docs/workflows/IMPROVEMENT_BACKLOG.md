@@ -52,6 +52,7 @@ External truths both agents must share (dashboard drift is **owner-only** to fix
 | IMP-ALLEGED-POLICY | alleged = contested person-claim only; banned surfaces omit; news listings keep media; verbatim+outcome on Controversies; **repair before removal** | P0 | cursor | **done** (merged `9ae85ea` → main `a42e0cb`) | `ledger-data-policy.mdc` · `allegedPolicyGuard.test.ts` · `newsCorroboration.ts` · S000033 controversies×2 · endorsements×3 |
 | IMP-SAIDDID-NOMINEE | Said→Did nominee-name overlap — topic-bucket equality alone paired Marvit↔Westercamp | P0 | cursor | **done** (on alleged PR) | `sourceIntegrity.ts` · `saidDid.json` 14/15 · fixture `SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH` |
 | IMP-PROVENANCE-DEFAULTS | Delete fabricated `??` outlet defaults; synthetic `DefunctSurveySource` in fixtures (no dead-source token); matrix criterion A reports file names | P0 | cursor | **done** (merged `9ae85ea` → main `a42e0cb`) | `resolveRecordedOutlet.ts` · `provenanceOutletGuard` · `approvedSourceMatrixGuard.test.ts` |
+| IMP-PROFILE-REPROCESS-PRESERVE | `reprocess:profiles` should preserve existing `saidDid.json` rows when a parser/provenance tightening shrinks prune output, or emit an explicit fetch-failed/partial diagnostic instead of silent count loss | P1 | cursor | open | `scripts/lib/profileReprocess.ts` · `pruneSaidDidLinksByTopic` |
 
 ---
 

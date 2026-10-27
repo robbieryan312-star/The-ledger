@@ -18,6 +18,7 @@ import {
   TOPIC_POSITIONS_KNOWN_BAD_NEW_BIOGUIDE,
 } from '../../lib/data/__fixtures__/topicPositionsBundleFreeze.fixture';
 import { validateTopicPositionsBundle } from '../../lib/data/sourceIntegrity';
+import { reprocessTopicPositionsSnapshot, type BundleSnapshot } from '../reprocess-topic-positions-bundle';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const BUNDLE = path.join(projectRoot, 'lib/data/generated/topicPositions.json');
@@ -96,4 +97,34 @@ test('topicPositions.json: no new bioguideIds beyond frozen set (mega-bundle fre
 test('fixture: known-bad new bioguideId would fail mega-bundle freeze guard', () => {
   const frozen = new Set<string>(TOPIC_POSITIONS_FROZEN_BIOGUIDE_IDS);
   assert.ok(!frozen.has(TOPIC_POSITIONS_KNOWN_BAD_NEW_BIOGUIDE));
+});
+
+test('reprocess preserves CREC statements reclassified into a new topic bucket', () => {
+  const snapshot: BundleSnapshot = {
+    meta: {},
+    byBioguideId: {
+      FIXTURE: {
+        immigration: {
+          statements: [
+            {
+              title: 'Mr. FIXTURE. Mr. President, Medicare patients need health insurance and hospital care.',
+              date: '2026-01-01',
+              url: 'https://www.govinfo.gov/app/details/CREC-2026-01-01/CREC-2026-01-01-pt1-PgS1',
+              tier: 'official',
+              topicId: 'immigration',
+            },
+          ],
+          saidDidLinks: [],
+        },
+      },
+    },
+  };
+
+  const stats = reprocessTopicPositionsSnapshot(snapshot);
+  const topics = snapshot.byBioguideId.FIXTURE;
+
+  assert.equal(stats.reclassified, 1);
+  assert.equal(topics.healthcare?.statements.length, 1);
+  assert.equal(topics.healthcare.statements[0].topicId, 'healthcare');
+  assert.equal(topics.healthcare.statements[0].title.includes('Medicare patients'), true);
 });
