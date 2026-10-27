@@ -7,7 +7,7 @@
  */
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { clean, segmentSentences } from '../lib/data/displaySummary';
 import { decodeHtmlEntities } from '../lib/data/htmlEntities';
 import { classifyTextToRecordTopicId } from '../lib/data/profileRecordByTopic';
@@ -49,7 +49,7 @@ interface TopicData {
   saidDidLinks: unknown[];
 }
 
-interface BundleSnapshot {
+export interface BundleSnapshot {
   meta: Record<string, unknown>;
   byBioguideId: Record<string, Record<string, TopicData>>;
 }
@@ -79,6 +79,25 @@ function retrimIncompleteTail(text: string): string {
 
 async function main(): Promise<void> {
   const snapshot = JSON.parse(await readFile(BUNDLE_FILE, 'utf8')) as BundleSnapshot;
+  const stats = reprocessTopicPositionsSnapshot(snapshot);
+
+  await writeFile(BUNDLE_FILE, `${JSON.stringify(snapshot, null, 2)}\n`, 'utf8');
+
+  console.log('reprocess-topic-positions-bundle: complete\n');
+  console.log('Positions before:', stats.positionsBefore);
+  console.log('Positions after:', stats.positionsAfter);
+  console.log('Dropped by class:', stats.dropCounts);
+  console.log('Members affected:', stats.membersAffected);
+  console.log('Statements reclassified:', stats.reclassified);
+}
+
+export function reprocessTopicPositionsSnapshot(snapshot: BundleSnapshot): {
+  dropCounts: Record<string, number>;
+  membersAffected: number;
+  positionsBefore: number;
+  positionsAfter: number;
+  reclassified: number;
+} {
   const dropCounts: Record<string, number> = {
     'vote-restatement': 0,
     'third-party': 0,
@@ -87,7 +106,7 @@ async function main(): Promise<void> {
     'site-furniture': 0,
     'citation-cruft': 0,
   };
-  let membersAffected = new Set<string>();
+  const membersAffected = new Set<string>();
   let positionsBefore = 0;
   let positionsAfter = 0;
   let reclassified = 0;
@@ -125,7 +144,9 @@ async function main(): Promise<void> {
       (statementsByTopic[stmt.topicId] ??= []).push(stmt);
     }
 
-    for (const [topicId, topic] of Object.entries(topics)) {
+    const topicIds = new Set([...Object.keys(topics), ...Object.keys(statementsByTopic)]);
+    for (const topicId of topicIds) {
+      const topic = topics[topicId] ?? { statements: [], saidDidLinks: [] };
       const original = topic.platformPositions ?? [];
       positionsBefore += original.length;
       const kept: PlatformPositionEntry[] = [];
@@ -169,17 +190,18 @@ async function main(): Promise<void> {
     }
   }
 
-  await writeFile(BUNDLE_FILE, `${JSON.stringify(snapshot, null, 2)}\n`, 'utf8');
-
-  console.log('reprocess-topic-positions-bundle: complete\n');
-  console.log('Positions before:', positionsBefore);
-  console.log('Positions after:', positionsAfter);
-  console.log('Dropped by class:', dropCounts);
-  console.log('Members affected:', membersAffected.size);
-  console.log('Statements reclassified:', reclassified);
+  return {
+    dropCounts,
+    membersAffected: membersAffected.size,
+    positionsBefore,
+    positionsAfter,
+    reclassified,
+  };
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+if (process.argv[1] != null && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
