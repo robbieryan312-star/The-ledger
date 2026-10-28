@@ -13,7 +13,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ## Latest session — critical-bug cron scan (PASS)
 
 **From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new critical bug confirmed)  
-**Current state:** `cursor/critical-bug-management-7940` · scan base HEAD `763dc67` · tree clean before handoff edit · build not run (no code/data changes)
+**Current state:** `cursor/critical-bug-management-7940` · scan base HEAD `763dc67` · handoff docs commit `7f8f374` · build not run (no code/data changes)
 
 ### Objective
 Inspect recent commits/refs for high-severity correctness bugs, avoid duplicating open remembered PRs, and patch only if a concrete critical trigger is confirmed.
@@ -22,7 +22,7 @@ Inspect recent commits/refs for high-severity correctness bugs, avoid duplicatin
 **PASS** — no new critical bug met the confidence bar. All remembered bug PRs are still open, including #28–#31, #40, and #99–#131, so no memory cleanup or duplicate PR was appropriate. `origin/main` has no commits in the last 30 days; the only recent non-doc code ref in the last 14 days is already-tracked PR #131.
 
 ### Commits
-- Pending handoff docs commit for this audit entry.
+- `7f8f374` — `docs(handoff): record critical bug scan`
 
 ### Commands run (this session)
 - `git status --short && git rev-parse --abbrev-ref HEAD && git log --oneline --decorate -12` → exit 0
@@ -49,7 +49,7 @@ Inspect recent commits/refs for high-severity correctness bugs, avoid duplicatin
 
 ## Confront Claude — paste to Claude Code
 
-**Critical-bug cron scan:** branch `cursor/critical-bug-management-7940` · base HEAD `763dc67` · no new critical bug confirmed · all remembered bug PRs still OPEN · no application code changed · evidence artifact `/opt/cursor/artifacts/critical-bug-scan-2026-10-28.log` · no PR opened.
+**Critical-bug cron scan:** branch `cursor/critical-bug-management-7940` · scan base HEAD `763dc67` · handoff commit `7f8f374` · no new critical bug confirmed · all remembered bug PRs still OPEN · no application code changed · evidence artifact `/opt/cursor/artifacts/critical-bug-scan-2026-10-28.log` · no PR opened.
 
 ---
 
