@@ -10,6 +10,50 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug automation audit (PASS)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (no new critical-bug PR opened)  
+**Current state:** `cursor/critical-bug-remediation-da6e` · HEAD before log commit `763dc67` · PR none · tree clean before log entry · targeted guard status PASS
+
+### Objective
+Inspect recent commits for high-severity correctness bugs (data loss, crashes, security holes, severe user-facing breakage), avoiding duplicates already tracked in automation memory.
+
+### Verdict / outcome
+**PASS** — no new high-confidence critical bug found with a concrete trigger outside existing open memory PRs. All tracked memory PRs checked via `gh pr list --state all --limit 200 --json ...`; the tracked PRs remain open, so no duplicate PR was opened and no memory cleanup was needed.
+
+### Commits
+- (this docs commit) — handoff log for critical-bug audit
+
+### Commands run (this session)
+- `pwd && git status --short && git branch --show-current && git log --oneline -n 20` → exit 0
+- `gh pr list --state all --limit 200 --json number,state,mergedAt,closedAt,url,title,headRefName,baseRefName,updatedAt` → exit 0
+- `git remote -v && git rev-parse --short HEAD && git rev-parse --short origin/main 2>/dev/null || true && git log --oneline origin/main..HEAD && git log --oneline HEAD..origin/main` → exit 0
+- `git log --date=short --pretty=format:'%h %ad %s' --name-status -n 35` → exit 0
+- `npx tsx --test scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/sourceIntegrity.test.ts` → exit 0 (`# tests 69`, `# pass 69`, `# fail 0`)
+- `git branch -vv` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | added this audit entry |
+
+### Acceptance evidence
+- Memory reconciliation: tracked critical-bug PRs #28, #29, #30, #31, #40, and #99-#131 are still `OPEN`; entries retained.
+- Recent top commits: `763dc67` and `6d6057b` are handoff/backlog docs; `a42e0cb` is a governance merge; latest code-touching integrity commits audited were `18b5d3e`, `d36f4a`, `cc916da`, `db23b39`, `d137a12`, and `a739765`.
+- Targeted guard evidence: provenance/alleged/source-integrity tests passed (`69/69`).
+
+### Open / next
+- No new PR from this run.
+- Existing open critical-bug PRs remain awaiting review/merge; do not duplicate them.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Critical-bug automation audit:** branch `cursor/critical-bug-remediation-da6e` · pre-log HEAD `763dc67` · no PR opened · verdict PASS/no new uncovered P0/P1 found. Evidence: `gh pr list` confirmed tracked memory PRs remain open; `git log --name-status -n 35` showed only docs/governance at tip plus already-tracked integrity areas; `npx tsx --test scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/sourceIntegrity.test.ts` passed `69/69`. Open gate: existing critical-bug PRs #28/#29/#30/#31/#40 and #99-#131 still need review/merge; no duplicate PR needed.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
