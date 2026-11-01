@@ -10,6 +10,54 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-11-01 — critical-bug scan automation (NO NEW BUG PR)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no fresh critical bug outside remembered open PRs) · BUILD BLOCKED by known open PR #99
+**Current state:** `cursor/critical-bug-remediation-0be5` · HEAD `763dc67` · PR none opened · tree clean before this handoff edit · `npm run build` unverified/pass-blocked by existing guard failure
+
+### Objective
+Scheduled high-severity bug scan: reconcile persistent memory, inspect recent merged behavioral changes, avoid duplicate PRs, and open a fix PR only for a new concrete critical bug.
+
+### Verdict / outcome
+No new critical bug with a concrete trigger was found outside bugs already tracked in MEMORIES.md with open PRs. All remembered entries (#28-#31, #40, #99-#131) are still OPEN, so none were deleted or re-reported. The current main build is still blocked by the already-tracked PR #99 defect: `approvedSourceMatrixGuard` finds the retired source token in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`.
+
+### Commands run (this session)
+- `git status --short && git branch --show-current && git log --oneline --decorate -n 25 && gh pr list --state all --limit 150 --json number,state,mergedAt,closedAt,url,title,headRefName` → exit 0
+- `git log --no-merges --oneline --name-status -n 18 -- ':!docs/**' ':!.cursor/**' ':!.claude/**' ':!README.md' && git show --stat --oneline --decorate --find-renames 18b5d3e d36f4a9 cf4bcfd cc916da db23b39` → exit 0
+- `git log --format='%h %cI %s' -n 40 && git show --find-renames --format=fuller --stat --name-only 763dc67 --` → exit 0
+- `{ npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts && npx tsx --test scripts/__tests__/provenanceOutletGuard.test.ts && npm run build; } 2>&1 | tee /opt/cursor/artifacts/critical-bug-scan-validation-2026-11-01.log` → shell exit 0 because `tee` masked upstream failure; log shows guard fail
+- `set -o pipefail; npx tsx --test scripts/__tests__/approvedSourceMatrixGuard.test.ts 2>&1 | tee /opt/cursor/artifacts/known-open-pr99-guard-failure-2026-11-01.log` → exit 1 (known open PR #99)
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | this scheduled audit entry |
+| `/opt/cursor/artifacts/critical-bug-scan-validation-2026-11-01.log` | created | combined validation log |
+| `/opt/cursor/artifacts/known-open-pr99-guard-failure-2026-11-01.log` | created | pipefail capture of known PR #99 failure |
+
+### Acceptance evidence
+- Current tip has no code commits after 2026-07-26; newest non-doc merged behavior inspected around `db23b39`, `cc916da`, `d36f4a9`, and `18b5d3e`.
+- Duplicate avoidance: PR state query shows memory-linked PRs #28-#31, #40, #99-#131 are all OPEN.
+- Known blocker evidence:
+  ```
+  not ok 4 - criterion (A): no contiguous dead-source token outside history exempts
+  dead-source token "votesmart" found outside history exempts:
+  .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2
+  .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1
+  ```
+
+### Open / next
+- Do not open a duplicate bug PR for the guard failure; PR #99 is still awaiting review.
+- Build remains blocked on main until PR #99 (or an equivalent approved fix) lands.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Scheduled critical-bug scan @ `763dc67`:** no new critical bug found outside remembered open PRs. MEMORIES.md unchanged because #28-#31, #40, #99-#131 are still OPEN. Build/prebuild is still blocked by known PR #99 (`approvedSourceMatrixGuard` retired-source token in `.claude/rules/*`); exact pipefail evidence in `/opt/cursor/artifacts/known-open-pr99-guard-failure-2026-11-01.log`. Please review/merge PR #99 or issue a new brief if it is rejected; do not duplicate it.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
