@@ -10,6 +10,46 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-11-02 — critical bug automation scan (no new fix)
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS (scan) · VERIFY FAIL is known/open (#99)  
+**Current state:** `cursor/critical-bug-inspection-86a0` · pre-log HEAD `763dc67` · PR none opened · tree clean before this handoff entry
+
+### Objective
+Inspect recent merged behavioral changes for critical correctness bugs; avoid duplicates already tracked in automation memory.
+
+### Outcome
+- No new high-confidence critical bug was found outside existing automation memory entries.
+- Automation memory cleanup: none. PRs recorded in memory (#28-31, #40, #99-#131) are still open in `gh pr list --state all`.
+- No code fix PR opened. Severe trigger scenarios found in the recent alleged-policy / Said-Did / news provenance paths map to already-open PRs, notably #99, #100, #113, #123, #125, #127, #128, and #131.
+
+### Commands run (this session)
+- `automation_memory read` → read `MEMORIES.md` version `ce52afa7ce3cd209`
+- `cd /workspace && printf 'async-status=' && if [ -f /tmp/cursor/async-install/install-user.status ]; then cat /tmp/cursor/async-install/install-user.status; elif [ -f /tmp/cursor/async-install/install-user.log ]; then echo log-present-no-status; pgrep -af 'install-user|npm install|npm ci' || true; else echo none; fi && printf '\nstart-status=' && if [ -f /tmp/cursor/start-user/start-user.status ]; then cat /tmp/cursor/start-user/start-user.status; elif [ -f /tmp/cursor/start-user/start-user.log ]; then echo log-present-no-status; else echo none; fi && git status --short --branch && git log --oneline --decorate --max-count=25 && gh pr list --state all --limit 150 --json number,state,mergedAt,closedAt,url,title,headRefName --repo robbieryan312-star/The-ledger` → exit 0
+- `cd /workspace && git status --short && git log -1 --format='HEAD %h %cI %s' && git diff --stat c08be19..HEAD && git diff --name-status c08be19..HEAD && git show --stat --oneline --decorate 9ae85ea && git show --stat --oneline --decorate 42818b1 && git show --stat --oneline --decorate 59f427a` → exit 0
+- `cd /workspace && git diff c08be19..HEAD -- lib/data/buildSaidDidDiffs.ts lib/data/sourceIntegrity.ts lib/data/newsCorroboration.ts lib/data/resolveRecordedOutlet.ts scripts/lib/approvedMediaQuotes.ts package.json scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/allegedPolicyGuard.test.ts | git diff --check --cached >/dev/null 2>&1; true [...]` → exit 0 (script/guard wiring listed)
+- `cd /workspace && if [ -d node_modules ]; then echo node_modules-present; npm run test:source-integrity; else echo node_modules-missing; fi` → exit 1
+
+### Acceptance evidence
+- Recent merged runtime/guard surface reviewed: `lib/data/buildSaidDidDiffs.ts`, `lib/data/sourceIntegrity.ts`, `lib/data/newsCorroboration.ts`, `lib/data/resolveRecordedOutlet.ts`, `scripts/lib/approvedMediaQuotes.ts`, `components/politicians/ControversySection.tsx`, `components/politicians/ProfileRecordByTopicPanel.tsx`, and changed guard files.
+- PR-state check evidence: tracked memory PRs remain open; no merged/closed memory cleanup was required.
+- Targeted guard evidence: `npm run test:source-integrity` ran 133 tests; 132 passed, 1 failed. Failure is existing memory item PR #99: dead-source token `votesmart` in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`.
+
+### Files touched
+| Path | Action | What changed |
+|---|---|---|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Logged this automation scan, PR-state evidence, and known guard failure |
+
+### Open / next
+- Do not open a duplicate PR for #99 or other memory-tracked open issues.
+- Non-critical doc drift observed while reading required docs: production URL/project is `the-ledger-s4dn` in `REPO.md`, `PROGRESS.md`, `docs/SETUP.md`, and older handoff entries, but `docs/workflows/IMPROVEMENT_BACKLOG.md` says the canonical project was renamed to `the-ledger-main` on 2026-07-21.
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-inspection-86a0` · pre-log HEAD `763dc67` · no PR opened for this scan. **Verdict:** PASS scan / STOP for STAGE THREE only if you want to audit the no-new-critical conclusion. **What changed:** handoff log only; no runtime code. **Evidence:** `gh pr list --state all --limit 150` confirms memory PRs still open; `npm run test:source-integrity` exit 1 due known open PR #99 dead-source token. **Open gates:** #99 remains awaiting review; no duplicate critical-bug PR from this run.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
