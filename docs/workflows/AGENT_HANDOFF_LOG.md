@@ -10,6 +10,55 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-11-04 — CRON CRITICAL BUG SCAN @ 763dc67
+
+**From:** Cursor Automation · **To:** Claude · **Verdict:** PASS (no new critical bug PR opened; known guard failure already covered by #99)  
+**Current state:** `cursor/critical-bug-remediation-83c5` · HEAD `763dc67` before this handoff commit · PR none · tree clean before log update · build not run · focused guards `20 pass / 1 known duplicate fail`
+
+### Objective
+Inspect recent commits for critical correctness bugs; avoid duplicate PRs using automation memory.
+
+### Verdict / outcome
+No new distinct high-severity bug was found with a concrete trigger outside already-tracked open PRs. The focused guard run reproduced the known retired-source-token failure already recorded in MEMORIES.md with open PR #99.
+
+### Commands run (this session)
+- `pwd && git status --short && git branch --show-current && git log --oneline -12` → exit 0
+- `for n in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131; do gh pr view "$n" --json number,state,mergedAt,closedAt,url --jq '[.number,.state,.mergedAt,.closedAt,.url] | @tsv'; done` → exit 0; all remembered PRs still OPEN
+- `git log --since='14 days ago' --oneline --decorate --no-merges --stat --max-count=40` → exit 0; no dated commits in that range
+- `git log --oneline --decorate --stat --max-count=40` → exit 0
+- `git show --stat --patch --find-renames --find-copies d36f4a9 ...` / `db23b39` / `d137a12` / `a739765` → exit 0; patch files written under `/tmp`
+- `if [ -f /tmp/cursor/async-install/install-user.status ]; then ... fi` → exit 0; no async install/start files
+- `npx tsx --test scripts/__tests__/approvedSourceMatrixGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/newsCorroboration.test.ts` → exit 1; 20 pass, 1 known duplicate fail in `approvedSourceMatrixGuard`
+- `date -u +%Y-%m-%dT%H:%M:%SZ && git rev-parse --short HEAD && git status --short` → exit 0; `2026-11-04T04:06:48Z`, `763dc67`, clean
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this cron bug-scan handoff |
+| `/opt/cursor/artifacts/critical-bug-scan-2026-11-04.log` | created | User-facing evidence artifact for scan and focused guard results |
+
+### Acceptance evidence
+- Memory duplicate check: PRs #28, #29, #30, #31, #40, #99-#131 all OPEN; no memory cleanup required.
+- Recent code areas reviewed: `approvedSourceMatrix.ts`, `resolveRecordedOutlet.ts`, `buildSaidDidDiffs.ts`, `newsCorroboration.ts`, `allegedPolicy.ts`, `sync-topic-positions.ts`, `profileMigrate.ts`, `saidDidVoteContext.ts`, and related guard patches.
+- Known duplicate failure: `approvedSourceMatrixGuard` reports `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`; matches MEMORIES.md entry dated 2026-08-01 / PR #99.
+
+### Open / next
+- No new PR from this scan.
+- Existing PR #99 remains the awaiting-review fix for the reproduced guard failure.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-remediation-83c5` · `763dc67` before this handoff commit · no new PR  
+**Verdict:** PASS for cron scan; STOP for duplicate fix because PR #99 already open  
+**What changed:** handoff log + artifact only; no code/data fix because no new distinct critical bug was found  
+**Evidence:** remembered PR sweep all OPEN; focused guard command exit 1 with 20 pass / 1 known duplicate fail (`approvedSourceMatrixGuard` token in Claude rule files)  
+**Open gates:** Claude/owner should review existing PR #99 for that known failure; no new gate from this scan  
+**Repeat-work flag:** Repeated known failure — no spec delta; fix awaiting review in open PR #99
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
