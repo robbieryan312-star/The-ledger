@@ -52,9 +52,9 @@ export function buildCrecSaidDidLinks(
       if (!isOfficialCrecFloorStatement(s)) continue;
       const stem = crecUrlStem(s.url);
       if (!stem || seenStems.has(stem)) continue;
-      // Said-vs-procedural: require spoken floor opener (Mr./Madam President), not bare lists.
+      // Said-vs-procedural: require the member's spoken floor opener, not bare lists.
       const title = (s.title ?? '').trim();
-      if (!/^(Mr\.|Madam)\s+[A-Z][A-Za-z.'-]+/i.test(title)) continue;
+      if (!/^(Mr|Mrs|Ms|Miss)\.\s+[A-Z][A-Za-z.'-]+/i.test(title)) continue;
       if (/\bI move to discharge\b/i.test(title) || /\bI move to proceed to\b/i.test(title)) continue;
       seenStems.add(stem);
       crecStatements.push({ ...s, topicId: s.topicId || topicId });
