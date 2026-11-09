@@ -64,6 +64,41 @@ test('buildCrecSaidDidLinks omits pairs when outlet cannot be resolved', () => {
   assert.equal(Object.keys(byTopic).length, 0);
 });
 
+test('buildCrecSaidDidLinks accepts female CREC floor-speech openers', () => {
+  const byTopic = buildCrecSaidDidLinks(
+    {
+      'economy-taxes': {
+        statements: [
+          {
+            title:
+              'Ms. WARREN. Madam President, I rise today in support of housing affordability and home ownership for families.',
+            date: '2026-06-22',
+            url: 'https://www.govinfo.gov/app/details/CREC-2026-06-22-pt1-PgS2982',
+            tier: 'official',
+            topicId: 'economy-taxes',
+            verbatim: true,
+          },
+        ],
+      },
+    },
+    [
+      {
+        id: 'v1',
+        billId: 'S.1',
+        billTitle: 'Housing Affordability Act',
+        billDescription: 'A bill to expand housing affordability and home ownership.',
+        date: '2026-06-23',
+        vote: 'Yea',
+        result: 'Passed',
+        category: 'Legislation',
+        source: { name: 'Senate', url: 'https://www.senate.gov', tier: 'official' },
+      } as never,
+    ],
+  );
+  assert.equal(byTopic['economy-taxes']?.length, 1);
+  assert.equal(byTopic['economy-taxes']?.[0]?.saidOutlet, 'Congressional Record (GovInfo)');
+});
+
 test('lib/ and scripts/ contain no fabricated provenance ?? defaults', () => {
   // Synthetic DefunctSurveySource stands in for retired survey APIs — pattern only.
   const pattern = String.raw`\?\?\s*'(Journalism|Congressional Record|Recorded position|DefunctSurveySource)'`;
