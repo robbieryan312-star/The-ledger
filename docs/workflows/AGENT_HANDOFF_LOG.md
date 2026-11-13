@@ -10,6 +10,54 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-11-13 — critical-bug automation scan (no new PR)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS — no new untracked critical bug found  
+**Current state:** `cursor/critical-bug-remediation-f5e5` · scan base HEAD `763dc67` · PR none · tree clean before handoff-log edit · typecheck pass
+
+### Objective
+Inspect recent commits for high-severity correctness regressions, avoid duplicate reports from automation memory, and fix only if a concrete critical bug is found.
+
+### Outcome
+- Read automation `MEMORIES.md`; all tracked critical bug PRs listed there remain **OPEN**, so no duplicate PR was opened.
+- Audited recent main-tip changes and a secondary explore audit covered Said-Did/CREC/provenance, sync preserve paths, and profile UI assembly.
+- No distinct untracked critical data-loss, crash, security, or major user-facing breakage trigger was found.
+- Known tracked issue still present: retired-source token regression in Claude docs is already recorded as PR #99 and remains open.
+
+### Commands run (this session)
+- `git status --short && git log --oneline --decorate -20` → exit 0
+- `gh pr list --state all --limit 120 --json number,state,mergedAt,closedAt,url,title` → exit 0
+- `git show --stat --oneline --name-status 763dc67 && git show --stat --oneline --name-status 6d6057b && git show --stat --oneline --name-status a42e0cb && git show --stat --oneline --name-status 09f14b4 && git show --stat --oneline --name-status 377787d` → exit 0
+- `git log --since='2026-11-09 00:00' --oneline --decorate --name-status` → exit 0 (no commits with those commit dates)
+- `git diff --stat 377787d^..HEAD && git diff --name-only 377787d^..HEAD` → exit 0
+- `git log --format='%h %cI %s' -20` → exit 0
+- `npm run test:typecheck` → exit 0
+- `git grep -n "VoteSmart\|votesmart" -- . ':(exclude).git' ':(exclude)docs/archive/**' ':(exclude)data/reports/file-inventory.json' || true` → exit 0; known PR #99 signal still present
+- `git status --short && git rev-parse --short HEAD` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this audit/no-new-critical-bug session record. |
+
+### Acceptance evidence
+- Typecheck: `npm run test:typecheck` completed with exit 0.
+- Duplicate-avoidance evidence: PR state query showed every memory-tracked PR #28-#31, #40, and #99-#132 still OPEN.
+- Independent audit evidence: explore subagent returned `NO NEW CRITICAL BUG FOUND`; it checked current `main` at `763dc67`, explicitly excluding already tracked PR themes.
+- Known defect evidence: `git grep` still finds the retired-source token in `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`; this matches existing automation memory entry PR #99, so no duplicate PR.
+
+### Open / next
+- No new critical bug PR from this run.
+- Existing open critical-bug PRs remain awaiting review, including PR #99 for the retired-source token regression.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**Critical-bug automation scan @ `763dc67`: PASS/no new untracked critical bug.** Memory read first; all tracked bug PRs #28-#31/#40/#99-#132 are still OPEN. Typecheck exit 0. Known retired-source token signal remains present but is already PR #99, so no duplicate PR was opened. Claude should review/merge or reject the existing open critical-bug PRs; no new code fix awaits review from this run.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
