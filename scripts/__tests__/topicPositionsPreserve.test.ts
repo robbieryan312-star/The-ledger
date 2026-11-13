@@ -1,7 +1,11 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import type { SaidDidLinkEntry } from '../../lib/data/topicPositions';
-import { canRefreshSaidDidLinks, mergeSaidDidLinksForRefresh } from '../lib/topicPositionsPreserve';
+import type { SaidDidLinkEntry, TopicStatementEntry } from '../../lib/data/topicPositions';
+import {
+  canRefreshSaidDidLinks,
+  mergeSaidDidLinksForRefresh,
+  mergeStatementsPreservingPriorMedia,
+} from '../lib/topicPositionsPreserve';
 
 const PRIOR_LINK: SaidDidLinkEntry = {
   topicId: 'healthcare',
@@ -36,4 +40,30 @@ test('topic sync can refresh Said-Did links to empty when member vote row is ava
 
   assert.equal(canRefresh, true);
   assert.deepEqual(merged, []);
+});
+
+const PRIOR_MEDIA_STATEMENT: TopicStatementEntry = {
+  title: 'Together we are going to guarantee health care to all as a right.',
+  date: '2019-04-10',
+  url: 'https://www.washingtonpost.com/politics/example-story/?utm_source=test',
+  tier: 'media',
+  topicId: 'healthcare',
+  verbatim: true,
+  outlet: 'Washington Post',
+};
+
+test('topic sync preserves prior media statements when fresh verification is empty', () => {
+  const merged = mergeStatementsPreservingPriorMedia([PRIOR_MEDIA_STATEMENT], []);
+
+  assert.deepEqual(merged, [PRIOR_MEDIA_STATEMENT]);
+});
+
+test('topic sync does not duplicate prior media statements refreshed from same article', () => {
+  const fresh = {
+    ...PRIOR_MEDIA_STATEMENT,
+    url: 'https://www.washingtonpost.com/politics/example-story/',
+  };
+  const merged = mergeStatementsPreservingPriorMedia([PRIOR_MEDIA_STATEMENT], [fresh]);
+
+  assert.deepEqual(merged, [fresh]);
 });

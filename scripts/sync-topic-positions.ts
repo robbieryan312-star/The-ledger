@@ -21,7 +21,11 @@ import { buildSyncSummary, emitSyncSummary } from './lib/syncKernel';
 import { fetchApprovedMediaStatementsForMember } from './lib/approvedMediaQuotes';
 import { isProceduralCrecText } from './lib/crecProceduralFilter';
 import { crecFloorSpeechOpenerRegex } from './lib/crecOpener';
-import { canRefreshSaidDidLinks, mergeSaidDidLinksForRefresh } from './lib/topicPositionsPreserve';
+import {
+  canRefreshSaidDidLinks,
+  mergeSaidDidLinksForRefresh,
+  mergeStatementsPreservingPriorMedia,
+} from './lib/topicPositionsPreserve';
 import { resolveGovInfoApiKey } from './lib/govinfoApiKey';
 import { isCeremonialCrecRemark } from '../lib/ceremonialCrecFilter';
 
@@ -1086,7 +1090,10 @@ async function main(): Promise<void> {
           // FAILURE≠ABSENCE (§6): a re-fetch only sees the current search pool, so a genuine
           // older committed floor speech can age out on a later run. Union fresh with prior
           // committed official CREC (dedup by URL stem) so re-sync only ADDs — never drops.
-          const merged: TopicStatementEntry[] = [...(fresh?.statements ?? [])];
+          const merged: TopicStatementEntry[] = mergeStatementsPreservingPriorMedia(
+            entry.statements,
+            fresh?.statements,
+          );
           for (const prior of entry.statements ?? []) {
             if (!isCommittedCrecStatement(prior)) continue;
             if (isProceduralCrecText(prior.title)) continue;
