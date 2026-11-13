@@ -11,6 +11,7 @@ import {
   NEWS_KNOWN_BAD_UNAPPROVED_OUTLET,
   SAID_DID_KNOWN_BAD_SUBJECT_MISMATCH,
   SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH,
+  SAID_DID_KNOWN_BAD_CROSS_TOPIC_GENERIC,
   SAID_DID_KNOWN_BAD_TAUTOLOGY,
   PLATFORM_KNOWN_BAD_EVENT_NARRATION,
   PLATFORM_KNOWN_BAD_CRAPO_ARREST,
@@ -198,6 +199,22 @@ test('known-bad nominee-mismatched Said→Did is rejected (Marvit≠Westercamp)'
   assert.ok(
     violations.some((v) => v.message.includes('no meaningful overlap')),
     'expected nominee-mismatch fixture to fail overlap guard',
+  );
+});
+
+test('known-bad cross-topic generic Said→Did is rejected (healthcare≠budget)', () => {
+  assert.equal(
+    saidDidSubjectsOverlap(
+      SAID_DID_KNOWN_BAD_CROSS_TOPIC_GENERIC.said.quote,
+      SAID_DID_KNOWN_BAD_CROSS_TOPIC_GENERIC.did.action,
+    ),
+    false,
+  );
+  assert.equal(isGenuineSaidDidDiff(SAID_DID_KNOWN_BAD_CROSS_TOPIC_GENERIC), false);
+  const violations = validateSaidDidDiffs([SAID_DID_KNOWN_BAD_CROSS_TOPIC_GENERIC], 'fixture');
+  assert.ok(
+    violations.some((v) => v.message.includes('no meaningful overlap')),
+    'expected cross-topic generic fixture to fail overlap guard',
   );
 });
 

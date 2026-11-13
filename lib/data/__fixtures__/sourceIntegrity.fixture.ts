@@ -154,6 +154,25 @@ export const SAID_DID_KNOWN_BAD_NOMINEE_MISMATCH = {
   },
 };
 
+/**
+ * Cross-topic generic keyword overlap — healthcare floor speech vs budget amendment.
+ * Shared "spending" alone must not override concrete topic mismatch.
+ */
+export const SAID_DID_KNOWN_BAD_CROSS_TOPIC_GENERIC = {
+  label: 'S000033 healthcare CREC Said paired with Paul spending amendment',
+  said: {
+    quote:
+      "Mr. SANDERS. Mr. President, the American people understand--whether they are Democrats, Republicans, or Independents--that our healthcare system is broken; it is dysfunctional; it is failing. We spend almost twice as much per person on healthcare--an unsustainable $13,000 for every man, woman, and child--than any other country on Earth, and yet the results of all of that spending are abysmal. While the insurance companies and the drug companies make hundreds of billions of dollars in profit, we have 85 million Americans who are uninsured or underinsured.",
+    url: 'https://www.govinfo.gov/app/details/CREC-2023-11-07-pt1-PgS5382',
+    verbatim: true,
+  },
+  did: {
+    action:
+      'Voted Nay — Paul Amdt. No. 5378: To reduce new budget authority for functions 150, 250, 500, and 600 in order to offset $70,000,000,000 of new spending by cutting foreign aid, refugee spending, and education spending.',
+    url: 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00099.xml',
+  },
+};
+
 /** Holder/Paul filibuster narration — MUST reject as a Cruz stated position (C001098 civil regression). */
 export const PLATFORM_KNOWN_BAD_EVENT_NARRATION =
   'The day after the filibuster, Attorney General Eric Holder sent a letter to Paul , responding to the filibuster. Holder wrote, "Does the president have the authority to use a weaponized drone to kill an American not engaged in combat on U.S. soil? The answer to that is no." [198]';

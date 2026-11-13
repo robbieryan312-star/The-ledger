@@ -1,6 +1,6 @@
 {
   "bioguideId": "S000033",
-  "pairCount": 14,
+  "pairCount": 12,
   "pairTarget": 15,
   "status": "partial",
   "byTopic": {
@@ -58,19 +58,6 @@
         "congressGovUrl": "https://www.congress.gov/bill/119th-congress/house-bill/6644",
         "voteChoice": "Yea",
         "tier": "official"
-      },
-      {
-        "topicId": "economy-taxes",
-        "statedPositionDate": "2024-12-16",
-        "saidQuote": "Mr. SANDERS. Madam President, the time is long overdue for Congress to get its priorities right. And we can begin moving in that direction by rejecting and voting no on a $900 billion defense bill which is full of waste and fraud and cost overruns. I find it amusing that anytime we come to the floor and Members point out that we have a housing crisis, that we have some 600 million Americans who are homeless, that we have millions and millions of people in this country spending 40, 50, 60 percent of their limited incomes on housing, and that we need to invest in low-income and affordable housing, what I hear is we don't have the money. We don't have the money to build affordable housing. When we have 85 million Americans who are uninsured or underinsured-- 60,000 die each year because they don't get to a doctor on time--well, we don't have the money to invest in primary healthcare.",
-        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2024-12-16-pt1-PgS7053-2",
-        "saidOutlet": "Congressional Record (GovInfo)",
-        "voteDate": "2026-07-14",
-        "billTitle": "Motion to Invoke Cloture: Motion to Proceed to S. 4784 — An original bill to authorize appropriations for fiscal year 2027 for military activities of the Department of Defense, for military construction, and for defense activities of the Department of Energy, to prescribe military personnel strengths for such fiscal...",
-        "billNumber": "S. 4784",
-        "congressGovUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/4784",
-        "voteChoice": "Nay",
-        "tier": "official"
       }
     ],
     "healthcare": [
@@ -111,19 +98,6 @@
         "billNumber": "Motion to Waive All Applicable Budgetary Discipline Re: Sanders Amdt. No. 5159",
         "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00101.xml",
         "voteChoice": "Yea",
-        "tier": "official"
-      },
-      {
-        "topicId": "healthcare",
-        "statedPositionDate": "2023-11-07",
-        "saidQuote": "Mr. SANDERS. Mr. President, the American people understand--whether they are Democrats, Republicans, or Independents--that our healthcare system is broken; it is dysfunctional; it is failing. We spend almost twice as much per person on healthcare--an unsustainable $13,000 for every man, woman, and child--than any other country on Earth, and yet the results of all of that spending are abysmal. While the insurance companies and the drug companies make hundreds of billions of dollars in profit, we have 85 million Americans who are uninsured or underinsured and over 60,000 people who die every single year because they can't get to a doctor when they need to.",
-        "saidUrl": "https://www.govinfo.gov/app/details/CREC-2023-11-07-pt1-PgS5382",
-        "saidOutlet": "Congressional Record (GovInfo)",
-        "voteDate": "2026-04-23",
-        "billTitle": "Paul Amdt. No. 5378 — To reduce new budget authority for functions 150, 250, 500, and 600 in order to offset $70,000,000,000 of new spending by cutting $45,000,000,000 of foreign aid, eliminating $5,000,000,000 in refugee spending, cutting $16,000,000,000 from the Department of Education, and cutting $4,000,000,000 ...",
-        "billNumber": "Paul Amdt. No. 5378",
-        "congressGovUrl": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00099.xml",
-        "voteChoice": "Nay",
         "tier": "official"
       }
     ],
@@ -197,5 +171,5 @@
       }
     ]
   },
-  "honestGapNote": "14 of 15 verified CREC floor-speech↔roll-call pairs after nominee-subject overlap + recorded-outlet resolution (2026-07-26)."
+  "honestGapNote": "12 of 15 verified CREC floor-speech↔roll-call pairs after nominee-subject overlap + concrete-topic mismatch rejection (2026-11-13)."
 }

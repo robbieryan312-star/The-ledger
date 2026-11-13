@@ -50,7 +50,7 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 - saidDid said-after-vote: **[]** · dup keys: **[]**
 
 #### Manifest parity
-- `saidDid`: manifest=`filled` vs file.status=`partial` (pairCount 14/15) — **PARITY_NOTE**
+- `saidDid`: manifest=`filled` vs file.status=`partial` (pairCount 12/15) — **PARITY_NOTE**
 - Other categories: manifest status matches content/honest-gap/fetch-failed as listed above
 
 #### Render :4210 @ 1280
@@ -64,10 +64,10 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 ### DEFECTS
 | Sev | What | Where | Evidence |
 |-----|------|-------|----------|
-| P2 | saidDid manifest=`filled` while file.status=`partial` (14/15) | `manifest.json` · `saidDid.json` | paste: `saidDid: manifest=filled pairCount=14 file.status=partial PARITY_NOTE` |
+| P2 | saidDid manifest=`filled` while file.status=`partial` (12/15) | `manifest.json` · `saidDid.json` | paste: `saidDid: manifest=filled pairCount=12 file.status=partial PARITY_NOTE` |
 
 ### RISKS
-- saidDid short of 15 (honest-gap; Marvit unpaired) — not fabrication
+- saidDid short of 15 (honest-gap; Marvit + cross-topic generic pairs unpaired) — not fabrication
 - News listings `isVerified:false` / UI UNVERIFIED while tier stays `media` — corroboration semantics; watch UX
 - lobbying.json exists outside manifest categories — discoverability gap
 

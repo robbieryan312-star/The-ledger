@@ -267,6 +267,13 @@ export function saidDidSubjectsOverlap(saidQuote: string, didAction: string): bo
   ) {
     return true;
   }
+  if (
+    saidTopic !== 'legislation' &&
+    voteTopic !== 'legislation' &&
+    saidTopic !== voteTopic
+  ) {
+    return false;
+  }
   const saidHits = matchedSubjectKeywords(saidQuote);
   const voteHits = matchedSubjectKeywords(billText);
   for (const k of saidHits) {
