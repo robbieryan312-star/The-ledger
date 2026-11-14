@@ -10,6 +10,69 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-11-14 — HIGH-SEVERITY BUG SCAN (NO NEW FIX PR)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS — no new untracked critical bug found; BUILD LOG SUBSTANDARD due known open #99
+**Current state:** `cursor/critical-bug-identification-ae37` · HEAD `763dc67` before this log commit · PR none · tree clean before log edit · `npm run build` process exit 0 but log contains `# fail 1` from known open PR #99 defect
+
+### Objective
+Inspect recent commits for critical correctness bugs (data loss, crashes, security, significant user-facing breakage), avoiding duplicate reports already tracked in automation memory.
+
+### Duplicate / memory reconciliation
+- Read automation `MEMORIES.md` (version `1f7606774ee60482`): 39 tracked bug entries.
+- Checked tracked PRs `#28 #29 #30 #31 #40 #99 #100 #101 #102 #103 #104 #105 #106 #107 #108 #109 #110 #111 #112 #113 #114 #115 #116 #117 #118 #119 #120 #121 #122 #123 #124 #125 #126 #127 #128 #129 #130 #131 #132` with `gh pr view`.
+- Result: all tracked PRs are still `OPEN`; no memory entries were deleted or re-reported.
+
+### Recent-change scan
+- `git log --oneline --decorate -20` shows latest main tip `763dc67`; recent code-bearing commits reviewed: `cc916da`, `d36f4a9`, `18b5d3e`, plus governance merge `a42e0cb`.
+- `git show --stat --oneline --name-only a42e0cb 9ae85ea 18b5d3e d36f4a9 cf4bcfd cc916da --` scoped the touched code/data paths.
+- Reviewed the relevant code paths:
+  - `lib/data/sourceIntegrity.ts`
+  - `lib/data/buildSaidDidDiffs.ts`
+  - `lib/data/saidDidVoteContext.ts`
+  - `lib/data/resolveRecordedOutlet.ts`
+  - `lib/data/approvedSourceMatrix.ts`
+  - `lib/data/allegedPolicy.ts`
+  - `components/politicians/ProfileRecordByTopicPanel.tsx`
+  - targeted live profile JSON touched by the alleged-policy stack.
+- Candidate severe issues encountered in those paths matched existing open memory PRs (including matrix substring matching, Senate subdomain provenance, alleged-policy corroboration/bypass, same-topic Said-Did shortcut, CREC opener coverage, and one-source alleged controversy), so no duplicate PR was opened.
+
+### Commands run (this session)
+- `gh pr list --repo robbieryan312-star/The-ledger --state all --limit 150 --json number,state,mergedAt,closedAt,title,url --jq '.[] | select([28,29,30,31,40,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132] | index(.number)) | "#\\(.number) \\(.state) mergedAt=\\(.mergedAt // "") closedAt=\\(.closedAt // "") \\(.url) :: \\(.title)"'` → exit 1 (jq shape error; abandoned after reading error)
+- `gh pr list --repo robbieryan312-star/The-ledger --state all --limit 150 --json number,state,mergedAt,closedAt,title,url --jq '[28,29,30,31,40,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132] as $nums | .[] | select($nums | index(.number)) | "#\\(.number) \\(.state) mergedAt=\\(.mergedAt // "") closedAt=\\(.closedAt // "") \\(.url) :: \\(.title)"'` → exit 1 (jq precedence error; switched approach)
+- `for n in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132; do gh pr view "$n" --repo robbieryan312-star/The-ledger --json number,state,mergedAt,closedAt,title,url --jq '"#\\(.number) \\(.state) mergedAt=\\(.mergedAt // "") closedAt=\\(.closedAt // "") \\(.url) :: \\(.title)"'; done` → exit 0; every tracked PR `OPEN`
+- `git status --short && git log --oneline --decorate -20` → exit 0
+- environment setup status check → exit 0 (`no-async-install-files`)
+- `git show --stat --oneline --name-only a42e0cb 9ae85ea 18b5d3e d36f4a9 cf4bcfd cc916da --` → exit 0
+- `git show --stat --oneline --name-only --no-merges --since='60 days ago' --` → exit 0; no commits in window
+- `npm run build 2>&1 | tee /tmp/ledger-critical-bug-scan-build.log` → process exit 0; log contains `not ok 11 - criterion (A): no contiguous dead-source token outside history exempts` and `# fail 1` (known tracked PR #99)
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added audit session evidence and Confront Claude block. |
+
+### Acceptance evidence
+- Tracked-pr reconciliation: all memory PRs returned `OPEN`; duplicate fixes intentionally skipped.
+- Recent-main freshness: `git show --stat --oneline --name-only --no-merges --since='60 days ago' --` produced no commit rows.
+- Code-path review found no new high-confidence critical trigger outside already-open tracked reports.
+- Build evidence: `/tmp/ledger-critical-bug-scan-build.log` reports the known #99 guard failure (`dead-source token "votesmart"` in Claude rule files) even though the shell pipeline returned 0.
+
+### Open / next
+- Existing tracked critical-fix PRs remain open and awaiting review/merge; no new PR opened from this scan.
+- PR #99 remains the existing repair for the build-log failure surfaced during validation.
+
+## Confront Claude — paste to Claude Code
+
+**Branch · HEAD · PR:** `cursor/critical-bug-identification-ae37` · pre-log HEAD `763dc67` · PR none.
+**Verdict:** PASS for high-severity scan — no new untracked critical bug found; existing memory PRs all still open. Build evidence is SUBSTANDARD due known open PR #99.
+**What changed:** audit-only handoff log entry; no app/code/data fix.
+**Evidence:** `gh pr view` loop over tracked PRs → exit 0 and all `OPEN`; `git log --oneline --decorate -20` reviewed; `git show --stat --oneline --name-only --no-merges --since='60 days ago' --` → exit 0 with no rows; targeted files reviewed as listed; `npm run build` process exit 0 but `/tmp/ledger-critical-bug-scan-build.log` contains `# fail 1` from known #99.
+**Open gates:** Claude may spot-check this audit; PR #99 remains the repair path for the known guard failure; no new fix approval requested.
+**Repeat-work flag:** Repeated scheduled scan — no spec delta.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
