@@ -10,6 +10,46 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — dead-source guard build fix (PASS)
+
+**From:** Cursor · **To:** Claude · **Verdict:** PASS (build-gate regression fixed)  
+**Current state:** `cursor/fix-dead-token-guard` · HEAD = this commit / PR tip · PR pending · tree clean after commit · `npm run prebuild` exit 0
+
+### Objective
+Fix the recent guard regression where new Claude governance docs reintroduced the contiguous dead-source token outside the allowed history exemptions, causing `test:source-integrity` / `prebuild` to fail.
+
+### Verdict / outcome
+**PASS** — replaced the two incident examples and one camelCase guard-name reference with non-contiguous generic wording; the zero-token invariant now passes while preserving the governance instruction.
+
+### Commits
+- This commit / PR tip — dead-source guard wording fix + this handoff entry.
+
+### Commands run (this session)
+- `npm install` → exit 0
+- `npm run test:typecheck && npm run test:source-integrity && npm run test:topic-positions-bundle && npm run test:profile-snapshots` → exit 1 (confirmed `approvedSourceMatrixGuard` failure from `.claude/rules/*`)
+- `npm run test:source-integrity && npm run test:topic-positions-bundle && npm run test:profile-snapshots` → exit 0
+- `npm run prebuild` → exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` | modified | rewrote the dead-source incident example and guard-pattern reference without the banned contiguous token |
+| `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md` | modified | rewrote the short checklist incident example without the banned contiguous token |
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | logged this validation/fix session |
+
+### Acceptance evidence
+- Initial failure: `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`
+- Fixed gate: `npm run prebuild` exit 0.
+
+### Open / next
+- Claude STAGE THREE review on the PR tip; do not merge without explicit approval.
+
+## Confront Claude — paste to Claude Code
+
+**Dead-source guard fix:** review PR tip for `cursor/fix-dead-token-guard`; bug was new `.claude/rules/*` docs reintroducing the contiguous banned token and breaking `approvedSourceMatrixGuard` / `prebuild`; fix is docs-only generic wording; evidence: focused guards exit 0 and `npm run prebuild` exit 0. Approve/reject this exact tip before merge.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
