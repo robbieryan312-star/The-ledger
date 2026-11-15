@@ -10,6 +10,48 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-11-15 — CRITICAL BUG AUTOMATION AUDIT (NO NEW FIX)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** NO NEW CRITICAL BUG FOUND · known open PR blockers remain  
+**Current state:** `cursor/critical-bug-identification-92be` · HEAD `763dc67` · PR none opened · tree clean before this handoff entry
+
+### Objective
+Inspect recent main commits for high-severity correctness bugs (data loss, crashes, security holes, significant user-facing breakage), avoid duplicate reports already tracked in automation memory, and fix only a concrete new critical bug.
+
+### Verdict / outcome
+No new high-confidence critical bug was identified outside the tracked open PR backlog. All MEMORIES.md entries still point at open PRs (#28, #29, #30, #31, #40, #99-#132), so no memory cleanup or duplicate PR was appropriate.
+
+### Commands run (this session)
+- `git fetch origin --quiet && git status --short && git rev-parse --abbrev-ref HEAD && git rev-parse --short HEAD && git log --oneline -8 origin/main` → exit 0
+- `for n in 28 29 30 31 40 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132; do gh pr view "$n" --repo robbieryan312-star/The-ledger --json number,state,mergedAt,url,title --jq '[.number,.state,(.mergedAt // ""),.url,.title] | @tsv'; done` → exit 0; all OPEN
+- `git log --date=iso --pretty=format:'%h%x09%ad%x09%s' -20 origin/main && git diff --stat origin/main~20..origin/main -- . ':(exclude)docs/**' ':(exclude).claude/**' ':(exclude).cursor/**' ':(exclude)CLAUDE.md' ':(exclude)AGENTS.md'` → exit 0
+- `npm run test:source-integrity && npx tsx --test scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/newsCorroboration.test.ts` → exit 1; known open PR #99 dead-source-token guard failure in `.claude/rules/*`
+- `npx tsx --test scripts/__tests__/sourceIntegrity.test.ts scripts/__tests__/allegedPolicyGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts scripts/__tests__/newsCorroboration.test.ts` → exit 0; 74 tests passed
+- `git status --short && git log --oneline origin/main -1 && git diff --stat` → exit 0; clean before handoff edit
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this verification handoff entry |
+
+### Acceptance evidence
+- Automation memory read first; duplicate scan skipped all still-open tracked PRs.
+- Recent non-doc main changes reviewed: `sourceIntegrity`, `buildSaidDidDiffs`, `allegedPolicy`, `newsCorroboration`, `resolveRecordedOutlet`, `saidDidVoteContext`, `approvedMediaQuotes`, and profile UI/data deltas.
+- Scoped integrity guard evidence: `/home/ubuntu/.cursor/projects/agent-repos-The-ledger/agent-tools/9531959d-f08a-4305-8fb2-a08a02032c06.txt` shows `# tests 74`, `# pass 74`, `# fail 0`.
+- Known blocker evidence: `/home/ubuntu/.cursor/projects/agent-repos-The-ledger/agent-tools/6b2d5968-77d1-4ca1-87af-c0f0b3d4fe5c.txt` shows `approvedSourceMatrixGuard.test.ts` failing on dead-source token in `.claude/rules/*`; automation memory maps that exact defect to open PR #99.
+
+### Open / next
+- No new critical-fix PR opened.
+- Existing open fixes remain awaiting review, including PR #99 for the current full `test:source-integrity` blocker.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG AUTOMATION 2026-11-15:** no new high-confidence critical bug found outside tracked open PRs. Memory PR sweep #28/#29/#30/#31/#40/#99-#132 all OPEN, so no duplicate PR and no memory cleanup. Recent-main audit covered alleged-policy/Said→Did/provenance/news paths. Full `npm run test:source-integrity` still fails on known PR #99 dead-source-token guard; scoped audited guards pass (`npx tsx --test sourceIntegrity/allegedPolicy/provenanceOutlet/newsCorroboration` → 74 pass / 0 fail). Review/merge existing open PRs before expecting full source-integrity green.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
