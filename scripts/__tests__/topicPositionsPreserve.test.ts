@@ -1,7 +1,12 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
 import test from 'node:test';
+import { fileURLToPath } from 'node:url';
 import type { SaidDidLinkEntry } from '../../lib/data/topicPositions';
 import { canRefreshSaidDidLinks, mergeSaidDidLinksForRefresh } from '../lib/topicPositionsPreserve';
+
+const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 
 const PRIOR_LINK: SaidDidLinkEntry = {
   topicId: 'healthcare',
@@ -36,4 +41,21 @@ test('topic sync can refresh Said-Did links to empty when member vote row is ava
 
   assert.equal(canRefresh, true);
   assert.deepEqual(merged, []);
+});
+
+test('topic sync checkpoints only after topicPositions snapshot is durable', () => {
+  const src = readFileSync(path.join(projectRoot, 'scripts/sync-topic-positions.ts'), 'utf8');
+  const block = src.match(/await runExclusive\(async \(\) => \{([\s\S]*?)\n    \}\);/)?.[1] ?? '';
+
+  assert.match(block, /await writeSnapshot\(rosterSize, byBioguideId, asOf, !!govinfoKey\);/);
+  assert.match(block, /await writeFile\(CHECKPOINT_FILE, JSON\.stringify\(checkpoint\) \+ '\\n', 'utf8'\);/);
+
+  const snapshotIndex = block.indexOf('await writeSnapshot(rosterSize, byBioguideId, asOf, !!govinfoKey);');
+  const checkpointIndex = block.indexOf(
+    "await writeFile(CHECKPOINT_FILE, JSON.stringify(checkpoint) + '\\n', 'utf8');",
+  );
+  assert.ok(
+    snapshotIndex < checkpointIndex,
+    'checkpoint must advance after the output snapshot is written to avoid crash-resume data loss',
+  );
 });

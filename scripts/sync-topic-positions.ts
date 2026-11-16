@@ -1142,10 +1142,12 @@ async function main(): Promise<void> {
         byBioguideId[leg.bioguideId] = memberTopics;
       }
       checkpoint[leg.bioguideId] = true;
-      await writeFile(CHECKPOINT_FILE, JSON.stringify(checkpoint) + '\n', 'utf8');
       completed += 1;
       if (completed % 10 === 0 || completed === pending.length) {
         await writeSnapshot(rosterSize, byBioguideId, asOf, !!govinfoKey);
+        // Advance the checkpoint only after the bundle is durable. If the run is
+        // interrupted first, the member is safely reprocessed instead of skipped.
+        await writeFile(CHECKPOINT_FILE, JSON.stringify(checkpoint) + '\n', 'utf8');
         console.log(
           `  progress: ${completed}/${pending.length} — ${Object.keys(byBioguideId).length} members with topic position data`,
         );
