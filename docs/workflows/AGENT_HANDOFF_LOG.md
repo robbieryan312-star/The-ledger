@@ -10,6 +10,54 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-11-16 — CRITICAL BUG SCAN (NO NEW PR)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new untracked critical bug found)  
+**Current state:** `cursor/critical-bug-remediation-a913` · pre-handoff HEAD `763dc67` · PR opened: none · tree clean before this handoff edit · build status: not run because targeted guard reproduces already-tracked open PR #99 failure
+
+### Objective
+Inspect recent commits for high-severity correctness bugs, avoid duplicate reports from automation `MEMORIES.md`, and open a fix PR only for a new, concrete critical bug.
+
+### Verdict / outcome
+No new untracked critical bug met the confidence bar. The concrete failure reproduced this run is already tracked in `MEMORIES.md` and PR #99 (`https://github.com/robbieryan312-star/The-ledger/pull/99`), which remains open.
+
+### Commits
+- This docs-only handoff commit records the scan; no code/data fix commit was produced.
+
+### Commands run (this session)
+- `git status --short && git log --oneline -12 && gh pr list --state all --limit 140 --json number,state,mergedAt,closedAt,url,title` → exit 0; tracked PRs #28-#31, #40, #99-#132 still open.
+- `git log --since='2026-11-09T00:00:00Z' --oneline --stat && git show --stat --oneline 18b5d3e && git show --name-only --oneline --no-renames 18b5d3e` → exit 0; only recent non-doc main change was guard/test fixture work.
+- `git show --stat --patch --find-renames 18b5d3e -- lib/data/__fixtures__/provenanceOutletGuard.fixture.ts scripts/__tests__/approvedSourceMatrixGuard.test.ts scripts/__tests__/provenanceOutletGuard.test.ts && git log -20 --format='%h %cI %s'` → exit 0.
+- `git ls-files .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md .claude/rules/CLAUDE_OWNER_DIRECTIVES.md && git grep -ni votesmart -- . ':!docs/archive' ':!docs/workflows/AGENT_HANDOFF_LOG.md' ':!docs/workflows/BATCH_SCALING.md' ':!docs/workflows/IMPROVEMENT_BACKLOG.md' ; echo git_grep_exit:$? && npm run test:source-integrity -- --grep approvedSourceMatrixGuard 2>&1 | tee /tmp/ledger-approved-source-matrix-check.log` → grep exit 0; first test pipeline masked failure with tee.
+- `set -o pipefail && npm run test:source-integrity -- --grep approvedSourceMatrixGuard 2>&1 | tee /tmp/ledger-critical-scan-source-integrity.log` → exit 1; one failing subtest matches open PR #99.
+- `gh pr view 99 --json number,state,mergedAt,closedAt,url,title,headRefName` → exit 0; PR #99 is OPEN.
+- `git rev-parse --short HEAD && git status --short && git branch --show-current` → exit 0; `763dc67`, clean tree, branch `cursor/critical-bug-remediation-a913`.
+- `git status -sb && git remote -v` → exit 0; branch clean before handoff edit.
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | recorded critical-bug scan evidence and duplicate-avoidance decision |
+| `/opt/cursor/artifacts/critical-bug-scan-summary.md` | created | user-facing evidence artifact |
+
+### Acceptance evidence
+- Existing duplicate check: PR #99 state `OPEN`, URL `https://github.com/robbieryan312-star/The-ledger/pull/99`.
+- Targeted guard evidence: `criterion (A): no contiguous dead-source token outside history exempts` fails with `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1`; this exactly matches the MEMORIES.md #99 entry.
+- Test summary: `# tests 133`, `# pass 132`, `# fail 1` in `/tmp/ledger-critical-scan-source-integrity.log`.
+- No new PR opened because the only concrete high-severity failure is already tracked by an open PR.
+
+### Open / next
+- Review/merge PR #99 to clear the existing source-integrity guard failure.
+- Continue critical-bug scan on future new commits; do not duplicate open memory entries.
+
+---
+
+## Confront Claude — paste to Claude Code
+
+**CRITICAL BUG SCAN 2026-11-16:** branch `cursor/critical-bug-remediation-a913` · pre-handoff HEAD `763dc67` · no new PR opened. `MEMORIES.md` tracked PRs checked: #28-#31, #40, #99-#132 still open. Targeted `test:source-integrity -- --grep approvedSourceMatrixGuard` exits 1 only on the known PR #99 dead-source-token regression (`.claude/rules/*` VoteSmart mentions). **Verdict:** no new untracked critical bug found; PR #99 remains the required fix gate. Claude should not expect a duplicate PR from this run.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
