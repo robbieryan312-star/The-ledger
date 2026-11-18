@@ -3,7 +3,8 @@ export function canRefreshSaidDidLinks(
   votesByBioguideId: Map<string, unknown>,
   bioguideId: string,
 ): boolean {
-  return votesLoaded && votesByBioguideId.has(bioguideId);
+  const votes = votesByBioguideId.get(bioguideId);
+  return votesLoaded && Array.isArray(votes) && votes.length > 0;
 }
 
 export function mergeSaidDidLinksForRefresh<T>(
