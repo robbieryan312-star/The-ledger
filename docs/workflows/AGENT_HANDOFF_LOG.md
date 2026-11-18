@@ -10,6 +10,47 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## Latest session — critical bug scan automation (PASS — no new PR)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new critical bug opened)  
+**Current state:** `cursor/critical-bug-remediation-5ff2` · pre-log HEAD `763dc67` · tree clean before this handoff edit · PR: none opened
+
+### Objective
+Inspect recent commits for high-severity correctness bugs, avoid duplicate reports from automation memory, and patch only if a new concrete critical trigger is found.
+
+### Verdict / outcome
+No new untracked critical bug met the confidence bar. All tracked memory entries checked still point to open PRs, so duplicate fixes were intentionally not opened. Existing open PR #99 still covers the known dead-source-token guard failure in Claude rule files.
+
+### Commands run (this session)
+- `pwd && cd /agent/repos/The-ledger && printf 'async-status=' && if [ -f /tmp/cursor/async-install/install-user.status ]; then cat /tmp/cursor/async-install/install-user.status; elif [ -f /tmp/cursor/async-install/install-user.log ]; then echo log-present; pgrep -af '/tmp/cursor/async-install|install-user' || true; else echo none; fi && printf '\nstart-status=' && if [ -f /tmp/cursor/start-user/start-user.status ]; then cat /tmp/cursor/start-user/start-user.status; elif [ -f /tmp/cursor/start-user/start-user.log ]; then echo log-present; else echo none; fi && git status --short && git branch --show-current && git log --oneline -12` → exit 0
+- `git fetch origin --prune && gh pr list --repo robbieryan312-star/The-ledger --state all --limit 200 --json number,state,mergedAt,closedAt,url,title,headRefName,headRefOid,baseRefName > /tmp/ledger-prs.json && python - <<'PY' ... PY` → exit 127 (`python` alias missing; JSON already written)
+- `python3 - <<'PY' ... PY` → exit 0; memory PRs #28-#31, #40, #99-#132 are open
+- `git status --short --branch && git log --oneline origin/main -20 && echo '--- branch ahead/behind ---' && git rev-list --left-right --count origin/main...HEAD && echo '--- diff stat origin/main...HEAD ---' && git diff --stat origin/main...HEAD && echo '--- recent local commits not on origin/main ---' && git log --oneline origin/main..HEAD` → exit 0; branch aligned with origin/main
+- `git log --oneline --name-only -30 -- ':!docs/**' ':!.claude/**' ':!CLAUDE.md' | awk 'NF{print}'` → exit 0
+- `git show --stat --oneline d36f4a9 && git show --stat --oneline 18b5d3e && git show --stat --oneline cc916da && git show --stat --oneline 337bfd5 && git show --stat --oneline d137a12` → exit 0
+- `npm run test:source-integrity && npm run test:topic-positions-bundle && npm run test:news-registry` (logged to `/opt/cursor/artifacts/critical-bug-scan-tests.log`) → exit 1; known PR #99 blocker
+- `npm run test:topic-positions-bundle` and `npm run test:news-registry` (logged to `/opt/cursor/artifacts/critical-bug-scan-remaining-tests.log`) → both exit 0
+
+### Files touched
+| Path | Action | What changed |
+|------|--------|--------------|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this scan entry and Confront Claude block |
+
+### Acceptance evidence
+- Automation memory duplicate check: tracked bug PRs remain open; no memory cleanup required.
+- Focused pass: `test:topic-positions-bundle` → 8/8 pass; `test:news-registry` → 6/6 pass.
+- Known blocker: `test:source-integrity` fails at `approvedSourceMatrixGuard.test.ts` because `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md` and `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md` contain the retired contiguous token; memory already records PR #99 open for this root cause.
+- Artifacts: `/opt/cursor/artifacts/critical-bug-scan-tests.log`, `/opt/cursor/artifacts/critical-bug-scan-remaining-tests.log`.
+
+### Open / next
+- Await review/merge of existing open PR #99 for the known guard failure. No duplicate PR opened this session.
+
+## Confront Claude — paste to Claude Code
+
+**Critical bug scan automation:** no new untracked high-severity bug found on `cursor/critical-bug-remediation-5ff2` at pre-log HEAD `763dc67`; duplicate memory PRs checked and still open. `test:topic-positions-bundle` 8/8 pass; `test:news-registry` 6/6 pass. `test:source-integrity` fails only on the already-tracked PR #99 dead-source-token guard in Claude rule files. Review this handoff/log evidence; no new PR to approve.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
