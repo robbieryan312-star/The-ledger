@@ -10,6 +10,57 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-11-20 — DEEP BUG-FINDING AUTOMATION (NO NEW CRITICAL BUG)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new critical bug found) · known duplicate guard failure still open in PR #99  
+**Current state:** `cursor/bc-87307910-4d56-4512-872a-f8903a017be0-8d0f` · pre-log HEAD `763dc67` · PR opened: none · tree was clean before this handoff entry · `test:source-integrity` FAIL on known dead-source-token issue
+
+### Objective
+Inspect recent main-branch commits for high-severity correctness bugs that escaped review, while avoiding duplicate reports for bugs already tracked in automation memory.
+
+### Verdict / outcome
+**PASS / no new critical bug found.** Automation memory PRs #28, #29, #30, #31, #40, and #99-#132 were checked; all remain **OPEN**, so no memory cleanup was needed and no duplicate PR was opened. The recent functional range `337bfd5..763dc67` was reviewed for data loss, crashes, security holes, null dereferences, and significant user-facing breakage. Every concrete defect observed mapped to an existing open-memory remediation thread or intentional policy/data repair.
+
+### Known duplicate still awaiting review
+| Field | Detail |
+|---|---|
+| **What** | `npm run test:source-integrity` fails on the existing dead-source-token guard regression |
+| **Where** | `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md`, `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`, `scripts/__tests__/approvedSourceMatrixGuard.test.ts` |
+| **Evidence** | `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1` |
+| **Severity** | P1 build/guard failure, already tracked |
+| **Repair** | Existing PR #99: https://github.com/robbieryan312-star/The-ledger/pull/99 |
+| **Action this turn** | Flagged only; no duplicate PR opened |
+
+### Commits
+- Pending docs commit for this handoff entry.
+
+### Commands run (this session)
+- `gh pr view <28,29,30,31,40,99-132> --json number,state,mergedAt,closedAt,url,title --jq ...` → all tracked PRs OPEN
+- `git log --max-count=40 --pretty=format:'--- %h %ad %s' --date=short --name-status -- . ':(exclude)docs/workflows/AGENT_HANDOFF_LOG.md' ':(exclude)docs/archive/**'` → recent functional files scoped
+- `git grep -n -i 'votesmart' -- . ':!docs/archive' ':!docs/workflows/AGENT_HANDOFF_LOG.md' ':!docs/workflows/BATCH_SCALING.md' ':!docs/workflows/IMPROVEMENT_BACKLOG.md' || true` → found known guard-triggering tokens
+- `npm run test:source-integrity` → exit 1 on known PR #99 issue; 132 pass / 1 fail
+- Explore subagent audit of `337bfd5..763dc67` → no new critical bug found; known source-integrity failure identified as duplicate
+
+### Files touched
+| Path | Action | What changed |
+|---|---|---|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this automation scan entry |
+
+### Acceptance evidence
+- Memory duplicate check: all listed PRs remained OPEN; no merged/closed memory entries to delete.
+- Targeted guard evidence saved at `/home/ubuntu/.cursor/projects/agent-repos-The-ledger/agent-tools/28ca292c-3f73-41a5-83dc-5675ee0a228f.txt`.
+- Source-integrity summary: `# pass 132`, `# fail 1`, failure in `approvedSourceMatrixGuard` criterion A.
+
+### Open / next
+- Review/merge or otherwise resolve existing PR #99 before relying on `prebuild`/`build` green on main.
+- No new bug-fix PR was opened by this automation run.
+
+## Confront Claude — paste to Claude Code
+
+**Deep bug scan:** no new critical bug found on `337bfd5..763dc67`; all automation-memory PRs checked and still OPEN; no duplicate PR opened. **Known gate remains red:** `npm run test:source-integrity` fails on the existing dead-source-token issue covered by PR #99 (`.claude/rules/*` still contain contiguous token examples). **Open gate:** Claude should review/resolve PR #99; no new STAGE THREE review is requested for a bug-fix PR from this run.
+
+---
+
 ## HANDOFF 2026-07-26 — MERGES + BERNIE INDEPENDENT AUDIT @ a42e0cb
 
 **From:** Cursor · **To:** Claude · **Verdict:** MERGES COMPLETE · AUDIT POSTED (not Bernie-locked)  
