@@ -10,6 +10,61 @@ block in this file (see `docs/CURSOR_IMPLEMENTATION_MANUAL.md` §9) — owner fo
 
 ---
 
+## HANDOFF 2026-11-21 — DEEP BUG-FINDING AUTOMATION (NO NEW CRITICAL BUG)
+
+**From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new critical bug found) · known duplicate guard failure still open in PR #99  
+**Current state:** `cursor/bc-70c40747-922a-4386-957f-7cbc3cf401c8-b674` · pre-log HEAD `32e31ee` · PR opened: none · tree was clean before this handoff entry · `test:source-integrity` FAIL on known dead-source-token issue
+
+### Objective
+Inspect recent main-branch commits for high-severity correctness bugs that escaped review, while avoiding duplicate reports for bugs already tracked in automation memory.
+
+### Verdict / outcome
+**PASS / no new critical bug found.** Automation memory PRs #28, #29, #30, #31, #40, and #99-#132 were checked; all remain **OPEN**, so no memory cleanup was needed and no duplicate PR was opened. The only repository changes after the prior scan boundary `763dc67` were in `docs/workflows/AGENT_HANDOFF_LOG.md`; there were no new functional code/data/script/component diffs to repair.
+
+### Known duplicate still awaiting review
+| Field | Detail |
+|---|---|
+| **What** | `npm run test:source-integrity` fails on the existing dead-source-token guard regression |
+| **Where** | `.claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md`, `.claude/rules/CLAUDE_OWNER_DIRECTIVES.md`, `scripts/__tests__/approvedSourceMatrixGuard.test.ts` |
+| **Evidence** | `dead-source token "votesmart" found outside history exempts: .claude/rules/CLAUDE_CODE_OPERATING_MANUAL.md:2; .claude/rules/CLAUDE_OWNER_DIRECTIVES.md:1` |
+| **Severity** | P1 build/guard failure, already tracked |
+| **Repair** | Existing PR #99: https://github.com/robbieryan312-star/The-ledger/pull/99 |
+| **Action this turn** | Flagged only; no duplicate PR opened |
+
+### Commits
+- Pending docs commit for this handoff entry.
+
+### Commands run (this session)
+- `gh pr view <28,29,30,31,40,99-132> --json number,state,mergedAt,closedAt,url,title --jq ...` → all tracked PRs OPEN
+- `git fetch origin main` → origin/main remained `32e31ee`
+- `git log origin/main --max-count=40 --pretty=format:'--- %h %ad %s' --date=short --name-status -- . ':(exclude)docs/workflows/AGENT_HANDOFF_LOG.md' ':(exclude)docs/archive/**'` → recent functional files scoped
+- `git log --reverse --pretty=format:'--- %h %ad %s' --date=short --name-status 763dc67..HEAD -- . ':(exclude)docs/workflows/AGENT_HANDOFF_LOG.md' ':(exclude)docs/archive/**'` → no functional changes since prior scan boundary
+- `git diff --stat 763dc67..HEAD && git diff --name-only 763dc67..HEAD && git show --stat --oneline --summary HEAD` → only `docs/workflows/AGENT_HANDOFF_LOG.md`
+- `npm run test:source-integrity 2>&1 | tee /tmp/ledger-2026-11-21-source-integrity.log` → TAP log showed known failure; pipeline exit masked by tee
+- `bash -o pipefail -c 'npm run test:source-integrity 2>&1 | tee /tmp/ledger-2026-11-21-source-integrity-pipefail.log'` → exit 1 on known PR #99 issue; 132 pass / 1 fail
+- `gh pr view 99 --json number,state,url,title,files --jq '{number,state,url,title,files:[.files[].path]}' && git diff --name-only 763dc67..HEAD` → PR #99 files match failing rule paths; post-boundary diff only handoff log
+
+### Files touched
+| Path | Action | What changed |
+|---|---|---|
+| `docs/workflows/AGENT_HANDOFF_LOG.md` | modified | Added this automation scan entry |
+
+### Acceptance evidence
+- Memory duplicate check: all listed PRs remained OPEN; no merged/closed memory entries to delete.
+- Post-boundary diff: `docs/workflows/AGENT_HANDOFF_LOG.md` only; no new app/lib/script/data changes since the prior scan.
+- Source-integrity summary: `# pass 132`, `# fail 1`, failure in `approvedSourceMatrixGuard` criterion A; duplicate of PR #99.
+
+### Open / next
+- Review/merge or otherwise resolve existing PR #99 before relying on `prebuild`/`build` green on main.
+- Handoff log retention currently exceeds the current last-3-session rule; not truncated in this scoped bug scan to avoid a large unrelated documentation rewrite.
+- No new bug-fix PR was opened by this automation run.
+
+## Confront Claude — paste to Claude Code
+
+**Deep bug scan:** no new critical bug found after prior boundary `763dc67`; all automation-memory PRs checked and still OPEN; no duplicate PR opened. **Known gate remains red:** `npm run test:source-integrity` fails on the existing dead-source-token issue covered by PR #99 (`.claude/rules/*` still contain contiguous token examples). **Open gate:** Claude should review/resolve PR #99; no new STAGE THREE review is requested for a bug-fix PR from this run.
+
+---
+
 ## HANDOFF 2026-11-20 — DEEP BUG-FINDING AUTOMATION (NO NEW CRITICAL BUG)
 
 **From:** Cursor automation · **To:** Claude · **Verdict:** PASS (no new critical bug found) · known duplicate guard failure still open in PR #99  
